@@ -2,13 +2,13 @@
 
 ## Ownership
 
-Copyright (c) 2026 Antti Tevanlinna. All rights reserved.
+Copyright (c) 2026 Bosser Oy (sole proprietor: Antti Tevanlinna). All rights reserved.
 
 ## Origin and Independence
 
-This project, **Agents 102**, is an independent work created and authored by Antti Tevanlinna. It is established as a separate body of intellectual property, distinct from any prior or concurrent training materials, consulting deliverables, or educational content — including, but not limited to, training programs developed in the context of employment or consulting engagements at F-Secure or any other organization.
+This project, **Agents 102**, is an independent work created by Antti Tevanlinna and owned by **Bosser Oy**, a single-person company. It is established as a separate body of intellectual property, distinct from any prior or concurrent training materials, consulting deliverables, or educational content — including, but not limited to, training programs developed in the context of employment or consulting engagements at F-Secure or any other organization.
 
-While the author brings professional experience in AI training and education — including running "Claude 101 for Business" sessions — this project represents an original, independently conceived work. Any similarity in subject matter reflects the author's domain expertise, not derivation from prior works created under other engagements.
+While the author brings professional experience in AI training and education — including running "Claude 101 for Business" sessions — this project represents an original, independently conceived work owned by Bosser Oy. Any similarity in subject matter reflects the author's domain expertise, not derivation from prior works created under other engagements.
 
 ## Key Distinctions
 
@@ -23,4 +23,4 @@ This project was initiated on **February 2026**, as evidenced by the git history
 
 ## Rights Reserved
 
-No part of this project may be reproduced, distributed, or used without the express permission of the author, unless a separate license is later attached to this project.
+No part of this project may be reproduced, distributed, or used without the express permission of Bosser Oy, unless a separate license is later attached to this project.

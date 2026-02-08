@@ -9,3 +9,4 @@ Training program for building AI agents. Aimed at non-coders, business leaders, 
 - Explain concepts in plain language first, then add technical detail where needed
 - Use practical, real-world examples that resonate with business contexts
 - Keep exercises hands-on and achievable without prior coding experience
+- This is independent intellectual property — see COPYRIGHT.md for details

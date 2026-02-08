@@ -59,6 +59,32 @@ The skill isn't predicting the future. It's learning to move through uncertainty
 
 This honesty builds trust. The leaders in the room know that anyone promising certainty is lying.
 
+## The Storyline
+
+The training follows a natural arc — not a thick curriculum, but a storyline. Smart people asking good questions about the future, one question leading to the next.
+
+**Act 1: "I can create something"**
+The empowerment moment. You sit down with Claude Code and make an agent that does something real. Skeptics become believers. The personal "I did that" feeling.
+
+**Act 2: "How do I scale it?"**
+The natural next question. I made one agent for myself — how does this become something a team, a department, an organization can use? The multiplier problem.
+
+**Act 3: "How do I control it?"**
+The serious questions arrive. Security. Reliability. Fabrication. Trust. Lifecycle. The things that separate a toy from something you'd stake your reputation on.
+
+**Act 4: The deep mechanics — and the flywheel**
+Now it gets methodical and visionary at the same time:
+- **Memory** — LLMs that retain and build context across interactions
+- **Self-introspection** — LLMs that can reflect on and check their own outputs
+- **Continuous improvement** — agents that get better over time
+- **The flywheel** — agents creating agents. The ultimate scaling mechanism. Not humans building each agent by hand, but agents that design, build, and improve other agents.
+
+## A Remark on What's Ahead
+
+We have only seen the tip of the iceberg of what large language models can do. The storyline of this training is deliberately light — not thick, not textbook-heavy. It rolls forward naturally, driven by curiosity: smart people asking good questions about a future that nobody fully understands yet.
+
+The depth is in the doing, not in the reading.
+
 ## The Value Proposition
 
 **We enable leaders to scale AI agent transformation across their organizations.**

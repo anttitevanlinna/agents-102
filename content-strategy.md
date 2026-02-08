@@ -79,6 +79,19 @@ Now it gets methodical and visionary at the same time:
 - **Continuous improvement** — agents that get better over time
 - **The flywheel** — agents creating agents. The ultimate scaling mechanism. Not humans building each agent by hand, but agents that design, build, and improve other agents.
 
+## Why Existing Approaches Fall Short
+
+The traditional tools and frameworks all share the same problem: none of them have a flywheel.
+
+- **LangChain** — a Python framework for building agents. Powerful, but it's a developer tool. You build an agent, it runs, that's it. No learning, no compounding.
+- **n8n, Make, Power Automate** — workflow engines where you can plug AI into individual steps. Great for automation. But the AI doesn't get better. It doesn't build on itself.
+- **ChatGPT** — you can have a conversation. But every chat is an island. No continuity, no flywheel.
+- **Claude Code** — you can build impressive things. But there is no inherent learning. It doesn't carry forward, doesn't compound.
+
+They are all one-shot tools. You use them, you get output, you start over. None of them have the mechanism where the system improves itself, where agents learn from what they've done, where agents create better agents.
+
+The flywheel isn't a feature of any current tool — it's a design pattern that needs to be understood and built on top of these tools. That's what this training teaches. Not "use this tool" but "understand what's missing everywhere, and learn to design for it."
+
 ## A Remark on What's Ahead
 
 We have only seen the tip of the iceberg of what large language models can do. The storyline of this training is deliberately light — not thick, not textbook-heavy. It rolls forward naturally, driven by curiosity: smart people asking good questions about a future that nobody fully understands yet.

@@ -9,9 +9,9 @@
 
 ## Audience
 
-Leaders who move first: CTOs, CEOs, heads of business functions, and the curious early movers willing to invest in understanding before directing.
+The builder leader: CEO, CTO, SVP of HR who wants to own the transformation — not outsource it. The one who is frustrated with transformation theatre and wants their people to *have* the competence, not rent it.
 
-Also: product managers, team leads, and practitioners who will become the multipliers — the people who carry the understanding forward and train the next wave.
+Also: product managers, team leads, and practitioners who will become champions — the people who carry the understanding forward and train the next wave, with their org's own structure.
 
 ## Four Pillars
 
@@ -81,6 +81,7 @@ Spotting fabrication by eye works for your own profile. It doesn't scale. This m
 - What can go wrong: prompt injection, data leakage, unintended actions
 - Thinking about trust boundaries
 - Security as a design habit, not an add-on
+- **Plug point:** participants integrate their own organization's security policies, compliance requirements, and data classification into their agent design
 
 ### Part 5: Lifecycle — From Experiment to Production
 
@@ -93,12 +94,14 @@ Spotting fabrication by eye works for your own profile. It doesn't scale. This m
 
 ### Part 6: Scaling the Movement
 
-**From "I get it" to "my organization gets it."**
+**From "I get it" to "my organization gets it." With your own structure.**
 
 - The multiplier model: why you can't train everyone, and don't need to
 - How to explain agents to your team without jargon
 - How to identify where agents create value in your domain
 - Creating the next wave: from trained leader to internal champion
+- **Plug point:** participants design the scaling approach using their org's own structure — not our template
+- The network: connecting with peers across companies doing the same transformation
 - Living with uncertainty: navigating what comes next without a fixed map
 
 ## Design Principles
@@ -106,7 +109,9 @@ Spotting fabrication by eye works for your own profile. It doesn't scale. This m
 - Exercise-led — every concept is learned by doing
 - Build incrementally — small pieces, growing complexity
 - Fundamentals-first, not tool-first
+- Framework + plug points — we provide the patterns, the org integrates their reality
 - Show the real thing, not polished demos
 - Honest about what we don't know
 - Every participant leaves able to multiply the knowledge
 - The four pillars (LLM-based, secure, lifecycle, reliable) are woven through, not bolted on
+- With your own structure — not our template applied to your org

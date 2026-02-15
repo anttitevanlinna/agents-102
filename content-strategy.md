@@ -2,36 +2,42 @@
 
 ## The Problem
 
-Everyone says agents will be the big thing. The press is full of it. Vendors are selling it. Boards are asking about it.
+Everyone says agents will be the big thing. The press is full of it. Vendors are selling it. Boards are asking about it. McKinsey, Deloitte, IBM — they've all published frameworks for the "agentic enterprise."
 
-But the reality is stark: only a tiny group of deeply technical people can actually build agents today. You need software engineering skills, the right tooling, and hard-won experience with LLMs. Meanwhile, every business function — HR, finance, ops, marketing — is being asked "how's your AI transformation going?" and they don't have a good answer.
+But here's what nobody says out loud: **without agent competence, there is no vision.** The consultancy frameworks are governance of an abstraction. Leadership reads the McKinsey report, approves a governance framework, launches an initiative portfolio — and 18 months later, nobody in the room has ever seen an agent work with their company's data.
 
-The big consulting firms are hedging. Companies are stuck. The gap between the narrative and the reality is enormous.
+Previous transformations — digital, agile, cloud — could be led from strategy alone. An executive didn't need to build software to envision a digital company. The agentic transformation is different. You cannot envision what agents do for your organization if you cannot think agents. Without that competence, the frameworks are theatre. Just governance of abstract. Just lists of initiatives. No felt vision.
+
+The gap is not between strategy and execution. The gap is between strategy and competence.
 
 ## Who Moves First
 
-Leaders. The CTO, the CEO, the heads of business functions. They move first — not by building agents themselves, but by understanding what's actually happening.
+The builder leader. The CEO, CTO, SVP of HR who wants to *own* the transformation — not outsource it to a consultancy. This is a psychographic, not a title. It's the leader who is personally frustrated with transformation theatre: governance frameworks that govern nothing real, initiative lists with no vision behind them, quarterly reviews that produce slides but no felt change.
+
+The builder leader wants their organization to *have* the competence, not rent it from a consultancy. They understand that when the consultancy leaves, the slides go stale — but when people learn to think agents, the capability compounds.
 
 They need to look outward at the super early adopters. These aren't people waiting for enterprise platforms. They're using Claude Code, ChatGPT, Codex — automating their lives and businesses right now. The things running in Claude Code today? Those are agents. Real ones, solving real problems.
 
-Leaders need to understand:
-- What is happening right now (not the hype — the reality)
-- What will be possible in 6 months
-- What will be possible in 12 months
-
-Once the leaders get it, they can move. And once they move, they can scale.
+Once the builder leader gets it, they can move. And once they move — with their own structure, their own policies, their own people — the path appears. The strategy emerges from the action.
 
 ## The Scaling Challenge
 
 You cannot train everyone at €1000/head. It's too expensive and too slow.
 
+**Teach everyone to think. Scale for future. With your own structure.**
+
+SAFe got the bias to action right ("launch trains, train everyone") but the rigidity wrong — SAFe's trains, SAFe's structure, SAFe's certification. The company adapted to SAFe, not SAFe to the company. We take the action bias and fix the ownership.
+
 The answer is a multiplier model:
-1. Train the first wave — leaders and early movers who invest deeply
-2. Those people become carriers — they don't just know about agents, they *get it*
-3. They train and pull the next wave forward
+1. Train the first wave — builder leaders and early movers who invest deeply
+2. Those people become champions — they don't just know about agents, they *think agents*
+3. Champions train and pull the next wave forward, with their org's own structure
 4. Critical mass creates a movement — the culture shifts
+5. The org joins a network of peers doing the same — learning faster together than alone
 
 The training doesn't just teach. It creates people who can multiply the understanding across their organization. Every graduate should be able to explain agents without jargon, show a real example, guide someone through their first experience, and make the case for where agents create value in their domain.
+
+And crucially: they do this with their own policies, their own systems, their own context. Not with our framework imposed — with our framework adapted to their reality. Framework + plug points.
 
 ## What We Teach
 
@@ -100,8 +106,12 @@ The depth is in the doing, not in the reading.
 
 ## The Value Proposition
 
-**We enable leaders to scale AI agent transformation across their organizations.**
+**Teach everyone to think. Scale for future. With your own structure.**
 
-Not by handing them a finished system. Not by promising a roadmap that doesn't exist. But by giving them the fundamentals, showing them what's real today, and equipping them to keep navigating as this evolves.
+We are the prerequisite for having a real agentic vision — not a governance slide deck. The consultancy frameworks are theatre without agent competence. We create the competence that makes the vision real.
 
-Honest confidence, not false certainty.
+The network of companies is the product. The training is the forum that creates it. We are the curator, not the authority — the network's collective experience is the authority. A bank trusts a logistics company that already deployed agents in a regulated environment more than it trusts any trainer or consultant.
+
+Not by handing them a finished system. Not by promising a roadmap that doesn't exist. But by giving them the fundamentals, showing them what's real today, connecting them to peers doing the same, and equipping them to keep navigating as this evolves.
+
+Honest confidence, not false certainty. When you start walking, the path appears.

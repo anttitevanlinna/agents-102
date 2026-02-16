@@ -88,18 +88,29 @@ Now it gets methodical and visionary at the same time:
 - **Continuous improvement** — agents that get better over time
 - **The flywheel** — agents creating agents. The ultimate scaling mechanism. Not humans building each agent by hand, but agents that design, build, and improve other agents.
 
-## Why Existing Approaches Fall Short
+## Why Existing Approaches Fall Short — and What Actually Has a Flywheel
 
-The traditional tools and frameworks all share the same problem: none of them have a flywheel.
+The traditional agent tools and frameworks all share the same problem: they are linear. You build an agent, it does its thing. Done. No compounding.
 
-- **LangChain** — a Python framework for building agents. Powerful, but it's a developer tool. You build an agent, it runs, that's it. No learning, no compounding.
-- **n8n, Make, Power Automate** — workflow engines where you can plug AI into individual steps. Great for automation. But the AI doesn't get better. It doesn't build on itself.
-- **ChatGPT** — you can have a conversation. But every chat is an island. No continuity, no flywheel.
-- **Claude Code** — you can build impressive things. But there is no inherent learning. It doesn't carry forward, doesn't compound.
+- **LangChain, CrewAI, AutoGen** — developer frameworks for building agents. Powerful, but each agent is a one-off. You build it, it runs, that's it.
+- **n8n, Make, Power Automate** — workflow engines where you can plug AI into individual steps. Great for automation. But the output is a workflow, not more capability.
+- **ChatGPT conversations** — every chat is an island. No continuity, no compounding.
 
-They are all one-shot tools. You use them, you get output, you start over. None of them have the mechanism where the system improves itself, where agents learn from what they've done, where agents create better agents.
+None of these have a ramp-to-stars. They are tools that produce output, not tools that produce more tools.
 
-The flywheel isn't a feature of any current tool — it's a design pattern that needs to be understood and built on top of these tools. That's what this training teaches. Not "use this tool" but "understand what's missing everywhere, and learn to design for it."
+**The secret insight: code-generating agents are the flywheel class.**
+
+Claude Code, ChatGPT Codex, and their successors are fundamentally different. They are agents that build agents. The output of using a code-generating agent is not just a result — it is more capability. One person with Claude Code can create an agent that creates agents. The thing you learn to use is the thing that makes everything else.
+
+This is the ramp-to-stars that no traditional agent framework has:
+- **Traditional agent**: you build it → it runs → done.
+- **Code-generating agent**: you build with it → it builds agents → those agents create value → you need more agents → you already know how to build them → the capability compounds.
+
+The flywheel is not a design pattern you bolt onto existing tools. It is inherent in the tool class. Code-generating agents are meta-tools: tools that make tools. Once a person learns to think with a code-generating agent, every problem becomes solvable — not because the agent knows the answer, but because the agent can build the thing that finds it.
+
+This is why Bootstrap uses Claude Code specifically. We are not teaching people to use an agent. We are teaching them to use the agent that makes all other agents. The consultancy frameworks (McKinsey, Deloitte, IBM) miss this entirely because they think about deploying agents, not about the meta-capability of building agents with agents.
+
+**What we teach is not "use this tool." It is "understand which class of tool compounds — and learn to think with it."**
 
 ## A Remark on What's Ahead
 

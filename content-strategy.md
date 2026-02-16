@@ -28,16 +28,19 @@ You cannot train everyone at €1000/head. It's too expensive and too slow.
 
 SAFe got the bias to action right ("launch trains, train everyone") but the rigidity wrong — SAFe's trains, SAFe's structure, SAFe's certification. The company adapted to SAFe, not SAFe to the company. We take the action bias and fix the ownership.
 
-The answer is a multiplier model:
-1. Train the first wave — builder leaders and early movers who invest deeply
-2. Those people become champions — they don't just know about agents, they *think agents*
-3. Champions train and pull the next wave forward, with their org's own structure
-4. Critical mass creates a movement — the culture shifts
-5. The org joins a network of peers doing the same — learning faster together than alone
+The answer is a five-step journey:
+
+1. **Bootstrap** — €500/person, 2-day intensive. Anyone can walk in. You build a real agent. The vision emerges from action.
+2. **Make Your Own** — a few key change leaders design the rollout with mentoring. Change strategy lab. Not just "we learned agents" — "we have a plan to transform."
+3. **Champions** — the best from Bootstrap learn to facilitate and adapt the framework. Train-the-trainer. The multiplier.
+4. **Scale** — champions run it inside their org, with their own structure, at their own pace. Zero external dependency.
+5. **Drive into Value Chains** — where do agents create real business value? Map your value chains. Rework them with agents. Learn from peers who've already done it.
+
+All materials are **co-branded with the customer and co-copyright for further development.** The org doesn't license our IP — they co-own it. Anti-SAFe by design: no lock-in, no certification dependency. If you stop working with us, you keep everything.
 
 The training doesn't just teach. It creates people who can multiply the understanding across their organization. Every graduate should be able to explain agents without jargon, show a real example, guide someone through their first experience, and make the case for where agents create value in their domain.
 
-And crucially: they do this with their own policies, their own systems, their own context. Not with our framework imposed — with our framework adapted to their reality. Framework + plug points.
+Framework + plug points. Their policies, their systems, their context. Not our template — their reality.
 
 ## What We Teach
 
@@ -108,9 +111,15 @@ The depth is in the doing, not in the reading.
 
 **Teach everyone to think. Scale for future. With your own structure.**
 
-We are the prerequisite for having a real agentic vision — not a governance slide deck. The consultancy frameworks are theatre without agent competence. We create the competence that makes the vision real.
+Three things: **Train → Curate → Connect.**
 
-The network of companies is the product. The training is the forum that creates it. We are the curator, not the authority — the network's collective experience is the authority. A bank trusts a logistics company that already deployed agents in a regulated environment more than it trusts any trainer or consultant.
+**Train:** We are the prerequisite for having a real agentic vision — not a governance slide deck. The consultancy frameworks are theatre without agent competence. We create the competence that makes the vision real. Starting at €500/person for a 2-day intensive — a steal compared to consulting, and you get 20 capable people instead of one deliverable.
+
+**Curate:** We track the frontier and know what works and what doesn't. 80% from the best public sources, 20% from the peer network's specific experience. No vendor tracks the full frontier. No consultant has 30 orgs' deployment data. We synthesize both.
+
+**Connect:** The peer network is the long-term product. Companies doing the same transformation, learning from each other. Not structured data collection — peer forums designed for how executives naturally share.
+
+All materials co-branded, co-copyright. The org co-owns everything for further development. No lock-in. No certification dependency.
 
 Not by handing them a finished system. Not by promising a roadmap that doesn't exist. But by giving them the fundamentals, showing them what's real today, connecting them to peers doing the same, and equipping them to keep navigating as this evolves.
 

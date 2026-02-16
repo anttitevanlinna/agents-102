@@ -3,15 +3,18 @@
 ## Format
 
 - Hands-on, exercise-led (not lecture-led)
-- 2 days (expandable to 4 for deeper practice)
+- **This outline covers Step 1: Bootstrap** — the 2-day intensive at €500/person
 - Skills are built incrementally — a small piece at a time
 - Every concept is learned by doing, not by slides
+- All materials co-branded with the customer, co-copyright for further development
+
+**The five-step journey:** Bootstrap (this) → Make Your Own (change strategy lab) → Champions (train-the-trainer) → Scale (champions run internally) → Drive into Value Chains (agentic rework + peer network). See `strategy/business-model-canvas.md` for the full journey.
 
 ## Audience
 
-The builder leader: CEO, CTO, SVP of HR who wants to own the transformation — not outsource it. The one who is frustrated with transformation theatre and wants their people to *have* the competence, not rent it.
+The builder leader: CEO, CTO, SVP of HR who wants to own the transformation — not outsource it. The one who is frustrated with transformation theatre and wants their people to *have* the competence, not rent it. Target: large Nordic companies — software companies and traditional companies striving for high digitalization.
 
-Also: product managers, team leads, and practitioners who will become champions — the people who carry the understanding forward and train the next wave, with their org's own structure.
+Also: product managers, team leads, and practitioners — the people who carry the understanding forward. The best from Bootstrap are invited into Champions (train-the-trainer).
 
 ## Four Pillars
 
@@ -92,16 +95,15 @@ Spotting fabrication by eye works for your own profile. It doesn't scale. This m
 - When to retire one
 - The organizational side: who owns the agent?
 
-### Part 6: Scaling the Movement
+### Part 6: What's Next — The Journey Beyond Bootstrap
 
 **From "I get it" to "my organization gets it." With your own structure.**
 
-- The multiplier model: why you can't train everyone, and don't need to
 - How to explain agents to your team without jargon
 - How to identify where agents create value in your domain
-- Creating the next wave: from trained leader to internal champion
-- **Plug point:** participants design the scaling approach using their org's own structure — not our template
-- The network: connecting with peers across companies doing the same transformation
+- **The next steps:** Make Your Own (change strategy lab for key leaders), Champions (train-the-trainer for the best from this cohort), Scale (champions run it internally)
+- **Plug point:** participants sketch the scaling approach using their org's own structure — not our template
+- Driving into value chains: where do agents create real business value in your processes?
 - Living with uncertainty: navigating what comes next without a fixed map
 
 ## Design Principles

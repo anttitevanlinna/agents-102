@@ -14,11 +14,13 @@ The authority on how to deploy agents lives in the collective experience of the 
 
 Our role: curate that collective intelligence. Distill it. Make it accessible. The training is the forum that brings orgs in and gives them shared language. The network is where trust and knowledge compound. The curated adaptation library — "here's how 30 companies actually handled agent security" — is the thing no vendor, no MOOC, and no consulting firm can produce. Only a network of peers who've done it can.
 
-**Phase 1: Train.** Orgs enter the network. They adapt the framework to their reality. They build real agents with their real policies.
+Three things, in order: **Train → Curate → Connect.**
 
-**Phase 2: Deploy best-in-class curated practices.** The network's collective experience, distilled and anonymized, becomes the most trusted source of agentic practice. Not our opinion — their peers' battle-tested results.
+**Train.** Orgs enter. They build real agents with their real policies. The vision emerges from competence, not from a slide deck.
 
-Think YPO, not SAFe. The events aren't the product — the peer network is. We are the curator, not the teacher.
+**Curate.** We track the frontier and distill what works and what doesn't. 80% from the best public sources, 20% from the peer network's specific experience.
+
+**Connect.** The peer network is the long-term product. Companies doing the same transformation, learning from each other. Think YPO, not SAFe. The events aren't the product — the peer network is.
 
 ---
 
@@ -112,20 +114,16 @@ The curriculum is not a fixed script. It's a **framework with plug points** — 
 
 ## Channels
 
-**Phase 1 — Direct delivery (we facilitate):**
-- Direct engagement with mid-market and enterprise L&D
-- Conference workshops and keynotes as lead generation
-- Pilot cohorts with design partners (3-5 orgs)
+**Train:** Direct engagement with enterprise L&D and digital leaders. Conference workshops as lead generation. Pilot cohorts with design partners (3-5 orgs). The €500 intensive is the lowest-friction entry.
 
-**Phase 2 — Community-assisted (we + champions facilitate):**
-- Champions co-facilitate inside their orgs, we support
-- Cross-org community shares adaptations and learnings
-- Partners (Nordic boutiques, independents) deliver with their own flavor
+**Curate:** Practice packs and synthesis delivered digitally to network members. Frontier research published continuously. The proto-practice pack can start before the network exists — curated from public sources.
 
-**Phase 3 — Community-led (champions facilitate, we maintain the framework):**
-- Champions run it internally, adapted to their org
-- Community of practice shares what works across orgs
-- We maintain the core framework, absorb the best community adaptations back in
+**Connect:** Peer forums (dinners, firesides), cross-org community, champion networks. Partners (Nordic boutiques, independents) deliver training with their own flavor — not franchisees, peers.
+
+**Delivery evolution over time:**
+- Early: we facilitate everything directly
+- Growth: we + champions co-facilitate, champions run adapted versions internally
+- Scale: champions facilitate, we maintain framework + curate + connect
 
 ---
 
@@ -144,39 +142,134 @@ The curriculum is not a fixed script. It's a **framework with plug points** — 
 
 ---
 
-## Revenue Streams
+## What We Sell — Three Things
 
-| Phase | What | Pricing model | Notes |
-|-------|------|---------------|-------|
-| Orient | Leadership workshop (1 day) | Per-session | Low barrier. Proves value. Gets buy-in. |
-| Build | Cohort program (4-6 weeks) | Per-seat, cohort-based | Core revenue. Includes org-specific adaptation work. |
-| Adapt | Plug point integration (we help integrate their policies, systems, context) | Per-engagement | This is the high-value customization. |
-| Grow | Champion development | Per-seat | Not certification — development. Champions learn to facilitate and adapt. |
-| Sustain | Network membership | Annual per-org | Access to the network: peer orgs, curated practices, adaptation library, updated framework |
-| Curated practices | Best-in-class practice packs (e.g. "Agent Security in Regulated Industries") | Included in membership or per-pack | Synthesized from network data + our frontier research. The Phase 2 product. |
+Everything we do is one of three things: **Train**, **Curate**, or **Connect**. In that order — because each enables the next.
 
-**Pricing logic:**
-- Orient is accessible — low barrier, proves value, first taste of the network
-- Build + Adapt is the entry fee — the cohort makes you a contributing member of the network
-- Grow is investment in the org's multiplier capacity
-- Sustain is network membership — you stay for the peers and the curated practices
-- Curated practices are the Phase 2 value — best-in-class patterns distilled from the network's collective experience
+### 1. TRAIN — Build agent competence
 
-**The long-term revenue is the network and its curated intelligence.** Training is how orgs enter (Phase 1). Curated best-in-class practices are why they stay (Phase 2). As more orgs deploy and share results, the curated practices get richer and more trusted — classic network economics.
+The entry point. People learn to think agents by building real ones with their org's own policies.
 
-**Not competing on price with MOOCs ($15) or free vendor training.** Competing on trust: peer-validated practices from companies who've actually done it.
+| Step | What | Pricing | Who |
+|------|------|---------|-----|
+| **Bootstrap** | 2-day hands-on intensive | **€500/person** | Anyone. 20 people × €500 = €10K — better than consulting day rates, and you create 20 capable people instead of one deliverable. |
+| **Make Your Own** | 4-6 week cohort + change strategy lab | Per-seat, cohort-based | For orgs that want to move fast. Plug points (their policies, systems, context) AND change strategy: a few key change leaders design the rollout with mentoring. Not just "we learned agents" — "we have a plan to transform." |
+| **Champions** | Train-the-trainer | Per-seat | The best from Bootstrap. They learn to facilitate, adapt, and carry it forward inside their org. |
+| **Scale** | Champions run it internally | Zero cost to us | Champions train their org with their own structure. We support, they deliver. |
+| **Drive into Value Chains** | Agentic rework + peer network | Annual per-org | Map value chains, identify where agents create real value. Learn from peers who've driven agents into similar processes. Curated practices + peer forums are the fuel. |
+
+The €500 Bootstrap is a steal — and that's deliberate. The goal is to get people building. Once they build, the vision emerges. The best from Bootstrap become Champions. Champions take it home and Scale. The Network is why they stay connected.
+
+### 2. CURATE — Know what works and what doesn't
+
+The 80/20 model. We curate the best agentic practices from two sources:
+
+- **80% frontier research** — public case studies, conference talks, open-source patterns, published deployments, protocol developments (MCP, A2A), academic work. We track the frontier continuously and distill it into practical guidance. Knowing what works and what doesn't is the core skill.
+- **20% peer premium** — specific, contextual, "how we actually handled it at our company" detail from the network. Anonymized, curated, quality-checked. The thing no public source provides.
+
+The combination is the unique value. No vendor tracks the full frontier (only their own ecosystem). No consultant has 30 orgs' deployment data. No MOOC updates fast enough. We synthesize frontier research WITH peer experience.
+
+**Output:** Practice packs (e.g. "Agent Security in Regulated Industries"), quarterly synthesis reports, updated framework modules.
+
+### 3. CONNECT — Peer network of companies
+
+The long-term product. Companies doing the same transformation, learning from each other.
+
+| What | Format | Pricing |
+|------|--------|---------|
+| **Network membership** | Annual per-org | Access to peer orgs, curated practices, adaptation library, updated framework |
+| **Peer forums** | Dinners, firesides, off-the-record sessions | Designed for how executives naturally share — not structured data collection |
+| **Practice sharing** | Anonymized case exchange | Reciprocity-based — you get because you give |
 
 ---
 
-## Our Role: Curator + Researcher
+## The Customer Journey — Five Steps
 
-We curate the absolute best from two sources:
+```
+1. BOOTSTRAP (2-day intensive, €500/person)
+   "I see what agents can do. I built one."
+       ↓
+2. MAKE YOUR OWN (cohort + change strategy lab, 4-6 weeks)
+   "We're building agents with our policies AND designing our change strategy."
+   A few key change leaders work with mentoring to plan the rollout.
+       ↓
+3. CHAMPIONS (train-the-trainer)
+   The best people from Bootstrap join. They learn to facilitate,
+   adapt the framework, and train the next wave inside their org.
+       ↓
+4. SCALE (champions run it internally)
+   Champions train their org — with their own structure, not ours.
+   The capability multiplies without us in the room.
+       ↓
+5. DRIVE INTO VALUE CHAINS (agentic rework)
+   The org has agent competence. Now: where does it create real value?
+   Map your value chains. Identify where agents transform the work.
+   Learn from peers who've already driven agents into similar processes.
+   The peer network + curated practices are the fuel for this step.
+```
 
-**1. Network intelligence** — peer companies' battle-tested adaptations. What actually worked when a bank deployed agent security. How a logistics company handled agent access to warehouse systems. Real orgs, real results.
+**The natural flow:** Bootstrap is the door — anyone can walk in. Make Your Own is where change leaders design the rollout. The best from Bootstrap become Champions. Champions Scale it inside the org. Then the real work begins: driving agents into the value chains where they create actual business value — learning from peers who've already done it.
 
-**2. Our own frontier research** — we actively track what's happening at the edge of agentics. The Agentics Foundation, Claude Flow, new protocols (MCP, A2A), emerging patterns, academic research, open-source tooling. We synthesize this into practical guidance before it shows up in vendor training or MOOCs.
+**Not every org takes every step.** Some will do Bootstrap and stop. That's fine — €500 is a standalone that delivers real value, not a teaser. But the pull is forward: once you build, you want your org to build. Once your org builds, you want to rework your value chains. Once you rework value chains, you want to know how 30 other companies did it.
 
-**The combination is the unique value.** No vendor tracks the full frontier (they track their own ecosystem). No consulting firm has the network data. No MOOC updates fast enough. We synthesize frontier research WITH network experience — "here's a new pattern emerging from the Agentics Foundation, and here's how 5 network companies have already started testing it."
+---
+
+## The Economics
+
+### Blue ocean pricing
+
+This is not priced against training competitors (MOOCs at €15, vendor training at €0, Aalto EE at €5K/person). It's priced against the alternative: consulting.
+
+| Step | Investment | Consulting equivalent | What you get instead |
+|------|-----------|----------------------|---------------------|
+| Bootstrap | 20 × €500 = **€10K** | 4-6 days of one consultant | 20 people who can think agents |
+| Make Your Own | **€25-40K** flat (5-10 change leaders) | 4-6 weeks of one senior consultant (€32-48K) | 5-10 capable change leaders + change strategy + working agents on your policies |
+| Champions | 5 × €3-5K = **€15-25K** | Ongoing consulting dependency | 5 internal trainers who scale it without us |
+| Scale | **€0** | More consulting | Champions run it — your structure, your pace |
+| **Total** | **~€50-75K** | €200-500K (McKinsey) or €100-300K/yr (Solita/Reaktor) | Org-wide competence + strategy + internal trainers + independence |
+
+**The pricing logic:**
+- Bootstrap is a steal — deliberately. Get people building. The vision emerges from action.
+- Make Your Own is priced as a transformation engagement, not a training course. Flat per-org, not per-seat. Includes mentoring.
+- Champions is the multiplier investment. 5 people × €4K = €20K → they train 200 people internally at zero additional cost.
+- Scale is free. Charging for Scale would be taxing their success. The capability is theirs.
+- Drive into Value Chains (Step 5) is where ongoing revenue lives — network membership, curated practices, peer forums.
+
+**For a large Nordic company** (DNA, S-Group, Finnair): ~€60K is 1-3% of L&D budget. Less than one senior consultant for a year. And the capability stays — permanently.
+
+### Co-branded, co-copyright
+
+All training materials are **co-branded** with the customer's identity and delivered with **co-copyright for further development**. The org doesn't license our materials — they co-own them.
+
+**Why this matters:**
+- **"With your own structure"** — literally. The materials are theirs to adapt, extend, and evolve.
+- **Anti-SAFe by design.** SAFe locks you into their IP, their certification, their materials. We give you co-ownership. No dependency.
+- **Champions are more effective** because they can freely adapt materials for their context — no "check with headquarters" friction.
+- **The capability truly stays.** Not just the people, but the training materials themselves. If you stop working with us, you still have everything.
+- **Natural lock-in without lock-in.** Once co-branded materials are embedded in internal L&D, they become part of the org's infrastructure. The switching cost is high — but it doesn't feel like lock-in because they own it.
+
+This is the opposite of the consulting model (deliverable stays, consultants leave, IP is theirs but dependency remains) and the opposite of the certification model (IP stays with the certifying body, you pay annually to use it). We give away the IP and keep the relationship — because the relationship (network, curation, frontier research) is more valuable than the materials.
+
+**Revenue builds in layers:**
+- Training revenue is immediate and repeatable
+- Co-branded materials create embedded presence inside the org
+- Network membership is recurring (Step 5)
+- Curated practices compound in value as the network grows
+- Champions delivering internally = zero marginal cost to us
+
+**The long-term revenue is the network and its curated intelligence.** Training is how orgs enter. Co-branded materials are how we embed. Curated practices are why they stay.
+
+---
+
+## Our Role: Curator + Researcher (the 80/20 model)
+
+We curate what works and what doesn't from two sources:
+
+**80% frontier research** — we actively track what's happening at the edge of agentics. The Agentics Foundation, Claude Flow, new protocols (MCP, A2A), emerging patterns, academic research, open-source tooling, public case studies, conference talks. We synthesize this into practical guidance before it shows up in vendor training or MOOCs. This is the volume — and it's within our control.
+
+**20% peer premium** — the network's specific, contextual experience. What actually worked when a bank deployed agent security. How a logistics company handled agent access to warehouse systems. Anonymized, curated, quality-checked. The detail that no public source provides.
+
+**The combination is the unique value.** No vendor tracks the full frontier (they track their own ecosystem). No consultant has 30 orgs' deployment data. No MOOC updates fast enough. We synthesize frontier research WITH peer experience. The 80% makes us useful from day one. The 20% makes us irreplaceable over time.
 
 | We do | We don't do |
 |-------|-------------|
@@ -274,9 +367,9 @@ Network becomes more valuable → attracts next org
 
 ---
 
-## Adjacent: Agentic Rework Frameworks
+## Agentic Rework Frameworks — Step 5
 
-Not part of this canvas. Separate product line: value stream mapping → agentic business process re-engineering. Natural entry point when leadership asks "where should we deploy agents first?" Developed separately.
+Previously flagged as a separate product line. Now integrated as Step 5 of the customer journey: once the org has agent competence (Bootstrap → Make Your Own → Champions → Scale), the question becomes "where do agents create real value in our business?" Value stream mapping → agentic business process re-engineering. The peer network and curated practices fuel this step — "here's how 12 companies drove agents into their logistics/compliance/customer service value chains."
 
 ---
 

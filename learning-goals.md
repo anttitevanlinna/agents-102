@@ -1,8 +1,10 @@
 # Agents 102 — Learning Goals
 
+**These goals describe the Bootstrap level** — the 2-day intensive (Step 1). Further capability develops through Make Your Own (Step 2), Champions (Step 3), Scale (Step 4), and Drive into Value Chains (Step 5). See `strategy/business-model-canvas.md` for the full journey.
+
 ## What Graduates Should Be Able To Do
 
-After this training, participants should be able to design, build, and manage real agent systems that create ongoing value in their organization. Not toy demos — working systems they'd stake their reputation on.
+After Bootstrap, participants should be able to design, build, and manage real agent systems that create ongoing value in their organization. Not toy demos — working systems they'd stake their reputation on.
 
 ## Example Projects (Ambition Level)
 
@@ -71,6 +73,7 @@ These projects require a set of core capabilities. These are the actual learning
 - Identify high-value agent opportunities in any business domain
 - Guide others through building their first agent
 - Create the conditions for agents to improve themselves (the flywheel)
+- The best from Bootstrap are ready for **Champions** (train-the-trainer) — the next step in the journey
 
 ## The Standard
 

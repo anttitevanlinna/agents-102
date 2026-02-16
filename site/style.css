@@ -1,0 +1,1336 @@
+/*
+ * =============================================================================
+ * Agents 102 — Site Styles
+ * =============================================================================
+ *
+ * Clean CSS for the Agents 102 training site.
+ * Visual language adapted from the Bosser design system.
+ * Dark theme, Inter font, orange accent (#ff6b35).
+ *
+ * Table of Contents:
+ *   1. Google Fonts Import
+ *   2. CSS Custom Properties
+ *   3. Reset & Base Styles
+ *   4. Layout
+ *   5. Navigation
+ *   6. Hero Section
+ *   7. Hero Particle Animation
+ *   8. Problem Section (The Gap)
+ *   9. What We Do (Pillars)
+ *  10. The Journey (Stepper)
+ *  11. For Leaders (Questions)
+ *  12. About Section
+ *  13. Contact Section
+ *  14. Footer
+ *  15. Buttons
+ *  16. Shared Section Styles
+ *  17. Keyframe Animations
+ *  18. Responsive Breakpoints
+ *  19. Smooth Scrolling & Accessibility
+ * =============================================================================
+ */
+
+
+/* =============================================================================
+   1. GOOGLE FONTS IMPORT
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+/* =============================================================================
+   2. CSS CUSTOM PROPERTIES
+   ============================================================================= */
+
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #111111;
+    --bg-tertiary: #1a1a1a;
+    --bg-card: #1e1e1e;
+
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #888888;
+
+    --accent: #ff6b35;
+    --accent-hover: #ff8555;
+    --accent-glow: rgba(255, 107, 53, 0.3);
+
+    --border: #333333;
+    --surface: #252525;
+
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --section-padding: 100px 0;
+    --section-padding-mobile: 60px 0;
+    --container-max-width: 1200px;
+    --container-padding: 0 24px;
+
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.4s ease;
+    --transition-particle: 4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* =============================================================================
+   3. RESET & BASE STYLES
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =============================================================================
+   4. LAYOUT
+   ============================================================================= */
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--container-padding);
+    overflow: visible;
+}
+
+
+/* =============================================================================
+   5. NAVIGATION — #main-nav, .nav-container, .logo, .nav-links, .nav-toggle
+   ============================================================================= */
+
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background var(--transition-base),
+                border-color var(--transition-base),
+                backdrop-filter var(--transition-base);
+}
+
+/* Scrolled state — JS adds .scrolled class on scroll */
+#main-nav.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: var(--border);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color var(--transition-base);
+}
+
+.logo:hover {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-base);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width var(--transition-base);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger toggle button (hidden on desktop, visible on mobile) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+    transform-origin: center;
+}
+
+/* Hamburger open state (JS toggles .open on .nav-toggle) */
+.nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =============================================================================
+   6. HERO SECTION — .hero, .hero-content, .hero-subtitle, .hero-title,
+      .hero-description, .hero-actions
+   ============================================================================= */
+
+.hero {
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-primary);
+}
+
+.hero > .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+}
+
+.hero-content {
+    max-width: 640px;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.08;
+    margin-bottom: 32px;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+
+/* =============================================================================
+   7. HERO PARTICLE ANIMATION — .hero-visual, .particle-container, .particle
+   ============================================================================= */
+
+.hero-visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: all var(--transition-particle);
+}
+
+.particle.glow {
+    box-shadow: 0 0 6px var(--accent);
+}
+
+.particle:nth-child(3n) {
+    background: rgba(255, 107, 53, 0.7);
+    width: 3px;
+    height: 3px;
+}
+
+.particle:nth-child(5n) {
+    background: rgba(255, 107, 53, 0.9);
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 12px rgba(255, 107, 53, 0.5);
+}
+
+.particle:nth-child(7n) {
+    background: rgba(255, 255, 255, 0.6);
+    width: 1.5px;
+    height: 1.5px;
+}
+
+
+/* =============================================================================
+   8. PROBLEM SECTION (The Gap) — .problem, .problem-content,
+      .problem-statement, .problem-title, .problem-text, .problem-contrast,
+      .problem-side, .problem-side--without, .problem-side--with,
+      .problem-side-title, .problem-list
+   ============================================================================= */
+
+.problem {
+    padding: var(--section-padding);
+    background: var(--bg-primary);
+}
+
+.problem-content {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.problem-statement {
+    max-width: 800px;
+}
+
+.problem-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.problem-text {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 800px;
+}
+
+.problem-contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.problem-side {
+    padding: 48px 40px;
+    min-height: 280px;
+}
+
+.problem-side--without {
+    background: linear-gradient(135deg, #1a1212 0%, #1e1a1a 100%);
+}
+
+.problem-side--with {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 107, 53, 0.03) 100%);
+}
+
+.problem-side-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.problem-side--without .problem-side-title {
+    color: #cc4444;
+}
+
+.problem-side--with .problem-side-title {
+    color: var(--accent);
+}
+
+.problem-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.problem-list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 24px;
+    position: relative;
+}
+
+.problem-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.problem-side--without .problem-list li {
+    color: var(--text-secondary);
+}
+
+.problem-side--without .problem-list li::before {
+    background: #cc4444;
+    opacity: 0.5;
+}
+
+.problem-side--with .problem-list li {
+    color: var(--text-primary);
+}
+
+.problem-side--with .problem-list li::before {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+
+/* =============================================================================
+   9. WHAT WE DO (Pillars) — .what-we-do, .section-label, .section-intro,
+      .pillars-grid, .pillar-card, .pillar-icon, .pillar-title,
+      .pillar-description, .pillar-detail
+   ============================================================================= */
+
+.what-we-do {
+    padding: var(--section-padding);
+    background: var(--bg-secondary);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.pillar-card {
+    background: var(--bg-card);
+    padding: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: border-color var(--transition-base),
+                transform var(--transition-base),
+                box-shadow var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-slow);
+}
+
+.pillar-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pillar-card:hover::before {
+    transform: scaleX(1);
+}
+
+.pillar-icon {
+    color: var(--accent);
+    margin-bottom: 24px;
+}
+
+.pillar-icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+.pillar-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.pillar-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-size: 1rem;
+}
+
+.pillar-detail {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-style: italic;
+}
+
+
+/* =============================================================================
+   10. THE JOURNEY (Stepper) — .journey, .journey-stepper, .journey-line,
+       .journey-line-progress, .journey-steps, .journey-step,
+       .journey-step-marker, .journey-step-number, .journey-step-content,
+       .journey-step-title, .journey-step-subtitle, .journey-step-text,
+       .journey-step-arrow, .journey-cta, .journey-cta-text
+   ============================================================================= */
+
+.journey {
+    padding: var(--section-padding);
+    background: var(--bg-primary);
+}
+
+.journey-stepper {
+    position: relative;
+    margin-top: 48px;
+}
+
+/* Vertical connecting line */
+.journey-line {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.journey-line-progress {
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, var(--accent), rgba(255, 107, 53, 0.4));
+    border-radius: 2px;
+    transition: height 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.journey-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+}
+
+.journey-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 0;
+    position: relative;
+    transition: transform var(--transition-base);
+}
+
+.journey-step:hover {
+    transform: translateX(4px);
+}
+
+.journey-step-marker {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: var(--bg-primary);
+    border: 3px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: all var(--transition-slow);
+}
+
+.journey-step:hover .journey-step-marker {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.journey-step-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: color var(--transition-slow);
+}
+
+.journey-step:hover .journey-step-number {
+    color: var(--text-primary);
+}
+
+.journey-step-content {
+    flex: 1;
+    padding-top: 4px;
+}
+
+.journey-step-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.journey-step-subtitle {
+    font-size: 0.875rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.journey-step-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.journey-step-arrow {
+    color: var(--text-muted);
+    padding-top: 12px;
+    opacity: 0.4;
+    transition: all var(--transition-base);
+}
+
+.journey-step:hover .journey-step-arrow {
+    color: var(--accent);
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+.journey-cta {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.journey-cta-text {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+}
+
+
+/* =============================================================================
+   11. FOR LEADERS (Questions) — .for-leaders, .leaders-questions,
+       .leaders-question, .leaders-question-mark, .leaders-question-text,
+       .leaders-closing, .leaders-closing-text
+   ============================================================================= */
+
+.for-leaders {
+    padding: var(--section-padding);
+    background: var(--bg-secondary);
+}
+
+.leaders-questions {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.leaders-question {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left var(--transition-base);
+}
+
+.leaders-question:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.leaders-question:hover {
+    padding-left: 12px;
+}
+
+.leaders-question-mark {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 40px;
+    opacity: 0.5;
+    transition: opacity var(--transition-base),
+                transform var(--transition-base);
+    user-select: none;
+}
+
+.leaders-question:hover .leaders-question-mark {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.leaders-question-text {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+    padding-top: 4px;
+}
+
+.leaders-closing {
+    margin-top: 64px;
+    text-align: center;
+}
+
+.leaders-closing-text {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+/* =============================================================================
+   12. ABOUT SECTION — .about, .about-grid, .about-content, .about-title,
+       .about-text, .about-linkedin, .about-stats, .about-stat,
+       .about-stat-number, .about-stat-label
+   ============================================================================= */
+
+.about {
+    padding: var(--section-padding);
+    background: var(--bg-secondary);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.about-content {
+    /* Left column: text content */
+}
+
+.about-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.about-text {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.about-text:last-of-type {
+    margin-bottom: 32px;
+}
+
+.about-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color var(--transition-base),
+                transform var(--transition-base);
+    padding: 12px 0;
+}
+
+.about-linkedin:hover {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+.about-linkedin svg {
+    transition: color var(--transition-base);
+}
+
+.about-linkedin:hover svg {
+    color: var(--accent);
+}
+
+/* Stats sidebar */
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.about-stat {
+    border-left: 3px solid var(--accent);
+    padding-left: 24px;
+}
+
+.about-stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.about-stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+
+/* =============================================================================
+   13. CONTACT SECTION — .contact, .contact-title, .contact-description,
+       .contact-info, .contact-item
+   ============================================================================= */
+
+.contact {
+    padding: var(--section-padding);
+    background: var(--bg-primary);
+    text-align: center;
+}
+
+.contact-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.contact-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-item h4 {
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.contact-item a,
+.contact-item span {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.125rem;
+    transition: color var(--transition-base);
+}
+
+.contact-item a:hover {
+    color: var(--accent);
+}
+
+
+/* =============================================================================
+   14. FOOTER — footer
+   ============================================================================= */
+
+footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    background: var(--bg-primary);
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+
+/* =============================================================================
+   15. BUTTONS — .cta-button, .cta-button--secondary
+   ============================================================================= */
+
+.cta-button {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background var(--transition-base),
+                transform var(--transition-base),
+                box-shadow var(--transition-base);
+    border: 2px solid var(--accent);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+}
+
+.cta-button:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.cta-button--secondary {
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+}
+
+.cta-button--secondary:hover {
+    background: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+
+/* =============================================================================
+   16. SHARED SECTION STYLES — .section-label, .section-intro
+   ============================================================================= */
+
+.section-label {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+}
+
+.section-intro {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+
+/* =============================================================================
+   17. KEYFRAME ANIMATIONS
+   ============================================================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Scroll-triggered fade-in (add .fade-in-up class via JS) */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =============================================================================
+   18. RESPONSIVE BREAKPOINTS
+   ============================================================================= */
+
+/* --- Tablet (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+
+    .hero-visual {
+        opacity: 0.4;
+    }
+
+    .problem {
+        padding: 80px 0;
+    }
+
+    .problem-contrast {
+        grid-template-columns: 1fr;
+        gap: 1px;
+    }
+
+    .problem-side {
+        min-height: auto;
+        padding: 40px 32px;
+    }
+
+    .what-we-do {
+        padding: 80px 0;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .pillar-card {
+        padding: 32px;
+    }
+
+    .journey {
+        padding: 80px 0;
+    }
+
+    .for-leaders {
+        padding: 80px 0;
+    }
+
+    .about {
+        padding: 80px 0;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .contact {
+        padding: 80px 0;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+}
+
+/* --- Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+
+    /* Navigation: hide links, show hamburger toggle */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 16px 24px;
+        font-size: 1.1rem;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Hero */
+    .hero > .container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .hero-visual {
+        display: none;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Problem */
+    .problem-title {
+        font-size: 1.75rem;
+    }
+
+    .problem-contrast {
+        grid-template-columns: 1fr;
+    }
+
+    .problem-side {
+        padding: 32px 24px;
+    }
+
+    /* Journey */
+    .journey-line {
+        left: 18px;
+    }
+
+    .journey-step-marker {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+    }
+
+    .journey-step {
+        gap: 20px;
+    }
+
+    .journey-step-title {
+        font-size: 1.25rem;
+    }
+
+    .journey-step-arrow {
+        display: none;
+    }
+
+    /* Leaders */
+    .leaders-question-text {
+        font-size: 1.125rem;
+    }
+
+    .leaders-question-mark {
+        font-size: 2rem;
+        min-width: 32px;
+    }
+
+    /* About */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .about-stat-number {
+        font-size: 2.5rem;
+    }
+
+    /* Contact */
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-description {
+        font-size: 1.1rem;
+    }
+}
+
+/* --- Small mobile (max-width: 480px) --- */
+@media (max-width: 480px) {
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .problem-side {
+        padding: 24px 20px;
+    }
+
+    .pillar-card {
+        padding: 24px;
+    }
+
+    .journey-step {
+        gap: 16px;
+        padding: 24px 0;
+    }
+
+    .leaders-question {
+        gap: 16px;
+        padding: 24px 0;
+    }
+
+    .leaders-question-mark {
+        display: none;
+    }
+
+    .cta-button {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cta-button--secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* =============================================================================
+   19. SMOOTH SCROLLING & ACCESSIBILITY
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .particle {
+        transition: none;
+    }
+
+    .fade-in-up {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(255, 107, 53, 0.3);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background: rgba(255, 107, 53, 0.3);
+    color: var(--text-primary);
+}

@@ -432,6 +432,79 @@
 
         footer a:hover { color: var(--accent); }
 
+        /* ========== Crowd Comparison ========== */
+        .crowd-section { margin-bottom: 40px; }
+        .crowd-section h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+        .crowd-intro { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }
+
+        .crowd-question { margin-bottom: 24px; }
+
+        .crowd-question-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .crowd-bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            gap: 8px;
+        }
+
+        .crowd-bar-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            width: 160px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .crowd-bar-track {
+            flex: 1;
+            height: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .crowd-bar-fill {
+            height: 100%;
+            background: var(--border);
+            border-radius: 3px;
+            transition: width 0.6s ease;
+            min-width: 2px;
+        }
+
+        .crowd-bar-fill.yours { background: var(--accent); }
+
+        .crowd-bar-pct {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            width: 36px;
+            flex-shrink: 0;
+        }
+
+        .crowd-bar-you {
+            font-size: 0.7rem;
+            color: var(--accent);
+            width: 30px;
+            flex-shrink: 0;
+        }
+
+        .crowd-empty {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
         /* ========== Responsive ========== */
         @media (max-width: 600px) {
             .container { padding: 0 16px; }
@@ -440,6 +513,8 @@
             .matrix-container { max-width: 320px; }
             .share-section { padding: 24px 16px; }
             .tradeoffs { grid-template-columns: 1fr; }
+            .crowd-bar-label { width: 120px; font-size: 0.7rem; }
+            .crowd-bar-you { width: 24px; font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -481,6 +556,8 @@
                 <div class="shareable-insight-text" id="shareable-insight-text"></div>
             </div>
 
+            <div id="crowd-section"></div>
+
             <div class="share-section">
                 <h3>Share your profile</h3>
                 <p>The link shows your results directly. No data collected. Completely anonymous.</p>
@@ -514,73 +591,73 @@
         // ==========================
         const questions = [
             {
-                number: 1,
+                number: 1, topic: 'roadmap',
                 text: "Your board asks for an AI agent roadmap. Your first move is\u2026",
                 answers: [
-                    { label: "Get 20 people building agents. The roadmap writes itself after that.", competence: 2, act: 2 },
-                    { label: "Hire a consultancy who has done this before.", competence: -2, act: 1 },
-                    { label: "Define the roadmap internally, then invest in capability.", competence: -1, act: 1 },
-                    { label: "Talk to companies who are already doing it. Learn from their experience.", competence: 1, act: -1 }
+                    { label: "Get 20 people building agents. The roadmap writes itself after that.", tag: 'build_first', short: 'Train 20 people', competence: 2, act: 2 },
+                    { label: "Hire a consultancy who has done this before.", tag: 'hire_consultancy', short: 'Hire consultancy', competence: -2, act: 1 },
+                    { label: "Define the roadmap internally, then invest in capability.", tag: 'define_internally', short: 'Define internally', competence: -1, act: 1 },
+                    { label: "Talk to companies who are already doing it. Learn from their experience.", tag: 'learn_from_peers', short: 'Learn from peers', competence: 1, act: -1 }
                 ]
             },
             {
-                number: 2,
+                number: 2, topic: 'rollout',
                 text: "You are rolling out AI agent capability. Do you start with whole teams \u2014 or find the early adopters and let them lead?",
                 answers: [
-                    { label: "Find the innovators. They will figure it out and pull others along.", competence: 2, act: 1 },
-                    { label: "Whole teams. Capability only matters when a team can use it together.", competence: -1, act: 1 },
-                    { label: "Innovators first, but inside a structured program.", competence: 1, act: 0 },
-                    { label: "Neither. We need to define what \u2018agent capability\u2019 means for us first.", competence: -1, act: -2 }
+                    { label: "Find the innovators. They will figure it out and pull others along.", tag: 'innovators_lead', short: 'Innovators lead', competence: 2, act: 1 },
+                    { label: "Whole teams. Capability only matters when a team can use it together.", tag: 'whole_teams', short: 'Whole teams', competence: -1, act: 1 },
+                    { label: "Innovators first, but inside a structured program.", tag: 'structured_innovators', short: 'Structured program', competence: 1, act: 0 },
+                    { label: "Neither. We need to define what \u2018agent capability\u2019 means for us first.", tag: 'define_first', short: 'Define capability first', competence: -1, act: -2 }
                 ]
             },
             {
-                number: 3,
+                number: 3, topic: 'platform',
                 text: "Your organization could standardize on one AI platform \u2014 or let teams pick their own tools. You\u2026",
                 answers: [
-                    { label: "Let people experiment. The best tools win.", competence: 2, act: 1 },
-                    { label: "Standardize. One platform, governed, secure, supported.", competence: -1, act: 1 },
-                    { label: "Pick a primary platform but allow exceptions for power users.", competence: 0, act: 0 },
-                    { label: "We are not ready to make that choice yet.", competence: 0, act: -2 }
+                    { label: "Let people experiment. The best tools win.", tag: 'let_experiment', short: 'Let people experiment', competence: 2, act: 1 },
+                    { label: "Standardize. One platform, governed, secure, supported.", tag: 'standardize', short: 'Standardize one', competence: -1, act: 1 },
+                    { label: "Pick a primary platform but allow exceptions for power users.", tag: 'primary_plus_exceptions', short: 'Primary + exceptions', competence: 0, act: 0 },
+                    { label: "We are not ready to make that choice yet.", tag: 'not_ready', short: 'Not ready yet', competence: 0, act: -2 }
                 ]
             },
             {
-                number: 4,
+                number: 4, topic: 'competitor',
                 text: "Your competitor announces they have deployed AI agents across customer service, logistics, and internal operations. You\u2026",
                 answers: [
-                    { label: "Already building. This validates our direction.", competence: 0, act: 2 },
-                    { label: "Need to accelerate. We are behind.", competence: 0, act: 1 },
-                    { label: "Not worried. First-mover advantage is overrated in enterprise AI.", competence: 0, act: -1 },
-                    { label: "Skeptical. Announcements are not results.", competence: 0, act: -2 }
+                    { label: "Already building. This validates our direction.", tag: 'already_building', short: 'Already building', competence: 0, act: 2 },
+                    { label: "Need to accelerate. We are behind.", tag: 'need_to_accelerate', short: 'Need to accelerate', competence: 0, act: 1 },
+                    { label: "Not worried. First-mover advantage is overrated in enterprise AI.", tag: 'not_worried', short: 'First-mover overrated', competence: 0, act: -1 },
+                    { label: "Skeptical. Announcements are not results.", tag: 'skeptical', short: 'Announcements \u2260 results', competence: 0, act: -2 }
                 ]
             },
             {
-                number: 5,
+                number: 5, topic: 'learning',
                 text: "When it comes to building new capabilities, your organization\u2026",
                 answers: [
-                    { label: "Learns by doing. Put tools in people\u2019s hands, get out of the way.", competence: 2, act: 1 },
-                    { label: "Learns through programs. Structured curricula, clear milestones.", competence: -1, act: 0 },
-                    { label: "Learns from peers. What are similar companies doing?", competence: 1, act: 0 },
-                    { label: "Learns from experts. We hire the best and absorb their knowledge.", competence: -2, act: 0 }
+                    { label: "Learns by doing. Put tools in people\u2019s hands, get out of the way.", tag: 'learn_by_doing', short: 'Learn by doing', competence: 2, act: 1 },
+                    { label: "Learns through programs. Structured curricula, clear milestones.", tag: 'structured_programs', short: 'Structured programs', competence: -1, act: 0 },
+                    { label: "Learns from peers. What are similar companies doing?", tag: 'learn_from_peers', short: 'Learn from peers', competence: 1, act: 0 },
+                    { label: "Learns from experts. We hire the best and absorb their knowledge.", tag: 'hire_experts', short: 'Hire the best experts', competence: -2, act: 0 }
                 ]
             },
             {
-                number: 6,
+                number: 6, topic: 'budget',
                 text: "You have \u20AC50K in AI budget. Where does it go?",
                 answers: [
-                    { label: "Train 50 people in agent fundamentals.", competence: 2, act: 1 },
-                    { label: "Hire one senior AI specialist.", competence: -1, act: 0 },
-                    { label: "License an enterprise AI platform.", competence: -1, act: 1 },
-                    { label: "Commission a strategic assessment.", competence: -2, act: -1 }
+                    { label: "Train 50 people in agent fundamentals.", tag: 'train_50_people', short: 'Train 50 people', competence: 2, act: 1 },
+                    { label: "Hire one senior AI specialist.", tag: 'hire_specialist', short: 'Hire one specialist', competence: -1, act: 0 },
+                    { label: "License an enterprise AI platform.", tag: 'license_platform', short: 'License platform', competence: -1, act: 1 },
+                    { label: "Commission a strategic assessment.", tag: 'strategic_assessment', short: 'Commission assessment', competence: -2, act: -1 }
                 ]
             },
             {
-                number: 7,
+                number: 7, topic: 'scaling',
                 text: "You trained 20 people. They built working agents. They want to scale. You\u2026",
                 answers: [
-                    { label: "Let the best ones become internal trainers. They carry it forward.", competence: 1, act: 1 },
-                    { label: "Bring in more external training. The experts should keep leading.", competence: -1, act: 1 },
-                    { label: "Build a center of excellence first. Structure before scale.", competence: -1, act: -1 },
-                    { label: "Slow down. Twenty is enough until we see results.", competence: 0, act: -2 }
+                    { label: "Let the best ones become internal trainers. They carry it forward.", tag: 'internal_trainers', short: 'Internal trainers', competence: 1, act: 1 },
+                    { label: "Bring in more external training. The experts should keep leading.", tag: 'more_external', short: 'More external training', competence: -1, act: 1 },
+                    { label: "Build a center of excellence first. Structure before scale.", tag: 'center_of_excellence', short: 'Center of excellence', competence: -1, act: -1 },
+                    { label: "Slow down. Twenty is enough until we see results.", tag: 'slow_down', short: 'Slow down, see results', competence: 0, act: -2 }
                 ]
             }
         ];
@@ -755,7 +832,9 @@
 
         function selectAnswer(answerIndex) {
             answers[currentQuestion] = answerIndex;
-            track('check_answer', { question: currentQuestion + 1, answer: answerIndex });
+            const q = questions[currentQuestion];
+            const a = q.answers[answerIndex];
+            track('check_answer', { question: currentQuestion + 1, topic: q.topic, choice: a.tag });
 
             const cards = questionAreaEl.querySelectorAll('.active .answer-card');
             cards.forEach(c => c.classList.remove('selected'));
@@ -855,6 +934,8 @@
 
             document.getElementById('shareable-insight-text').textContent = profile.question;
 
+            renderCrowd();
+
             document.getElementById('share-button').addEventListener('click', copyShareLink);
 
             window.scrollTo(0, 0);
@@ -930,6 +1011,114 @@
                 </svg>
                 <div class="matrix-note">Your position based on seven strategic choices. No right answer \u2014 only trade-offs.</div>
             `;
+        }
+
+        // ==========================
+        // Crowd comparison data
+        // Update these numbers from Umami dashboard periodically
+        // ==========================
+        const crowdData = {
+            lastUpdated: null,
+            totalResponses: 0,
+            // Profile counts: [Bias to Action, Deliberate Builder, Directed Momentum, Strategic Timing]
+            profiles: [0, 0, 0, 0],
+            // Counts per question: [answer0, answer1, answer2, answer3]
+            questions: [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+            ]
+        };
+
+        const profileOrder = [
+            { key: 'pioneer', name: 'Bias to Action' },
+            { key: 'methodical', name: 'Deliberate Builder' },
+            { key: 'planner', name: 'Directed Momentum' },
+            { key: 'evaluator', name: 'Strategic Timing' }
+        ];
+
+        function renderCrowd() {
+            const section = document.getElementById('crowd-section');
+
+            if (crowdData.totalResponses < 10) {
+                section.innerHTML = `
+                    <div class="crowd-section">
+                        <h3>How others answered</h3>
+                        <div class="crowd-empty">
+                            Not enough responses yet. Share your link and come back to see how others answered.
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const axes = calculateAxes();
+            const currentProfile = getProfile(axes);
+
+            let html = `
+                <div class="crowd-section">
+                    <h3>How others answered</h3>
+                    <p class="crowd-intro">${crowdData.totalResponses} people have taken this check.</p>
+            `;
+
+            // Profile distribution
+            const profileTotal = crowdData.profiles.reduce((a, b) => a + b, 0);
+            if (profileTotal > 0) {
+                html += `<div class="crowd-question">`;
+                html += `<div class="crowd-question-label">profiles</div>`;
+                profileOrder.forEach((p, i) => {
+                    const pct = Math.round(crowdData.profiles[i] / profileTotal * 100);
+                    const isYours = currentProfile.name === p.name;
+                    html += `
+                        <div class="crowd-bar-row">
+                            <div class="crowd-bar-label">${p.name}</div>
+                            <div class="crowd-bar-track">
+                                <div class="crowd-bar-fill ${isYours ? 'yours' : ''}" style="width: ${pct}%"></div>
+                            </div>
+                            <div class="crowd-bar-pct">${pct}%</div>
+                            <div class="crowd-bar-you">${isYours ? '\u2190 you' : ''}</div>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+
+            questions.forEach((q, qi) => {
+                const counts = crowdData.questions[qi];
+                const total = counts.reduce((a, b) => a + b, 0);
+
+                html += `<div class="crowd-question">`;
+                html += `<div class="crowd-question-label">${q.topic}</div>`;
+
+                q.answers.forEach((a, ai) => {
+                    const pct = total > 0 ? Math.round(counts[ai] / total * 100) : 0;
+                    const isYours = answers[qi] === ai;
+
+                    html += `
+                        <div class="crowd-bar-row">
+                            <div class="crowd-bar-label">${a.short}</div>
+                            <div class="crowd-bar-track">
+                                <div class="crowd-bar-fill ${isYours ? 'yours' : ''}" style="width: ${pct}%"></div>
+                            </div>
+                            <div class="crowd-bar-pct">${pct}%</div>
+                            <div class="crowd-bar-you">${isYours ? '\u2190 you' : ''}</div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            });
+
+            if (crowdData.lastUpdated) {
+                html += `<p style="text-align: center; font-size: 0.7rem; color: #555; margin-top: 16px;">Last updated: ${crowdData.lastUpdated}</p>`;
+            }
+            html += `</div>`;
+
+            section.innerHTML = html;
         }
 
         // ==========================

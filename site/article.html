@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... — Deploying Agents</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .article-container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .article-byline { color: var(--text-secondary, #b3b3b3); font-size: 0.9rem; margin-bottom: 0.5rem; font-style: italic; }
+        .article-meta { color: var(--text-muted, #666); font-size: 0.85rem; margin-bottom: 2rem; }
+        .article-meta span + span::before { content: " · "; }
+        .article-body { line-height: 1.7; }
+        .article-body h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1.5rem; line-height: 1.15; }
+        .article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+        .article-body p { margin-bottom: 1.2rem; }
+        .article-intro { font-size: 1.2rem; color: var(--text-secondary, #b3b3b3); border-left: 3px solid var(--accent, #ff6b35); padding-left: 1rem; margin: 0 0 2rem 0; line-height: 1.6; }
+        .article-body blockquote { border-left: 3px solid var(--accent, #ff6b35); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-secondary, #b3b3b3); }
+        .article-body a { color: var(--accent, #ff6b35); }
+        .article-body hr { border: none; border-top: 1px solid var(--border, #333); margin: 2.5rem 0; }
+        .article-body ul, .article-body ol { margin-bottom: 1.2rem; padding-left: 1.5rem; }
+        .article-body li { margin-bottom: 0.4rem; color: var(--text-secondary, #b3b3b3); }
+        .article-body strong { color: var(--text-primary, #fff); }
+        .article-body em { color: var(--text-secondary, #b3b3b3); }
+        .back-link { color: var(--text-muted, #666); text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { color: var(--accent, #ff6b35); }
+        .article-nav { max-width: 720px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .article-nav .logo { color: var(--accent, #ff6b35); text-decoration: none; font-weight: 700; }
+        .loading { text-align: center; padding: 4rem; color: var(--text-muted, #666); }
+        .error { text-align: center; padding: 4rem; color: #cc4444; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="article-nav">
+            <a href="index.html" class="logo">Deploying Agents</a>
+            <a href="index.html" class="back-link">&larr; Back</a>
+        </div>
+    </nav>
+
+    <article class="article-container">
+        <div id="article-content" class="loading">Loading article...</div>
+    </article>
+
+    <footer style="max-width: 720px; margin: 0 auto; padding: 1.5rem; border-top: 1px solid var(--border, #333);">
+        <a href="index.html" class="back-link">&larr; Back to Deploying Agents</a>
+    </footer>
+
+    <script>
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+            const container = document.getElementById('article-content');
+
+            if (!slug) {
+                container.className = 'error';
+                container.textContent = 'No article specified. Use ?slug=filename (without .md)';
+                return;
+            }
+
+            const mdPath = '../content/' + slug + '.md';
+
+            fetch(mdPath)
+                .then(function(res) {
+                    if (!res.ok) throw new Error('Article not found: ' + slug);
+                    return res.text();
+                })
+                .then(function(md) {
+                    var byline = '';
+                    var intro = '';
+                    var body = md;
+                    var lines = md.split('\n');
+                    var cursor = 0;
+
+                    // Strip front matter (--- block)
+                    if (lines[0] && lines[0].trim() === '---') {
+                        for (var i = 1; i < lines.length; i++) {
+                            if (lines[i].trim() === '---') {
+                                cursor = i + 1;
+                                // Skip blank line after front matter
+                                if (lines[cursor] === '') cursor++;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Byline (bold)
+                    if (lines[cursor] && lines[cursor].startsWith('**') && lines[cursor].endsWith('**')) {
+                        byline = lines[cursor].replace(/\*\*/g, '');
+                        cursor += 2; // skip blank line
+                    }
+
+                    // Next: intro (blockquote)
+                    if (lines[cursor] && lines[cursor].startsWith('> ')) {
+                        intro = lines[cursor].replace(/^> /, '');
+                        cursor += 2; // skip blank line
+                    }
+
+                    body = lines.slice(cursor).join('\n');
+
+                    // Reading time (body only, exclude sources)
+                    var bodyForCount = body.split('---')[0];
+                    var words = bodyForCount.split(/\s+/).length;
+                    var readTime = Math.ceil(words / 200) + ' min read';
+
+                    // Render
+                    var html = '';
+                    if (byline) html += '<p class="article-byline">' + byline + '</p>';
+                    html += '<div class="article-body">' + marked.parse(body) + '</div>';
+
+                    container.className = '';
+                    container.innerHTML = html;
+
+                    // Insert intro and meta after h1
+                    var h1 = container.querySelector('h1');
+                    if (h1) {
+                        document.title = h1.textContent + ' — Deploying Agents';
+
+                        var meta = document.createElement('div');
+                        meta.className = 'article-meta';
+                        meta.innerHTML = '<span>' + readTime + '</span>';
+                        h1.after(meta);
+
+                        if (intro) {
+                            var introEl = document.createElement('p');
+                            introEl.className = 'article-intro';
+                            introEl.textContent = intro;
+                            meta.after(introEl);
+                        }
+                    }
+                })
+                .catch(function(err) {
+                    container.className = 'error';
+                    container.textContent = err.message;
+                });
+        })();
+    </script>
+</body>
+</html>

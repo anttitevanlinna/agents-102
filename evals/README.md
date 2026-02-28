@@ -1,92 +1,106 @@
 # Evals Framework
 
-Lightweight evaluation for research and copy quality. Three themes, fifteen judges, no Python — subagents ARE the judges.
+Two execution modes: **Scorable API** (automated, repeatable, CI-friendly) and **subagent** (deep analysis, flexible). Four themes covering CTO prompting, editorial quality, epistemic integrity, and curriculum quality.
 
-## Three Themes
+## Scorable Judges
+
+Automated scoring via [Scorable](https://scorable.ai) LLM-as-a-Judge API. Each judge returns 0-1 scores with justifications per evaluator.
+
+| Theme | Judge ID | Evaluators |
+|-------|----------|------------|
+| A: CTO Prompt Quality | `6d829329-df54-4bf4-b2d7-6b16eec9753e` | Relevance, Specificity, Actionability, Evidence Grounding + auto |
+| B: Editorial Quality | `b1d1b71a-97ae-49c9-aa8f-8ab410085934` | Source Verifiability, Agentic Gate, Vendor Bias, Specificity, Nordic Label + auto |
+| C: Epistemic Integrity | `087dc020-fb3e-478f-9bac-f7d250fed506` | Predictive Integrity, Framing/Anchoring, Substantive Grounding + auto |
+| D: Curriculum Quality | `1481fb79-6d72-4a71-8f51-1903ad0c6cd4` | Pedagogical Alignment, Exercise-Led Design, Builder Voice, Plug Points + auto |
+
+### Run via script
+
+```bash
+# Score a single response
+./scripts/eval.sh <theme> "<response_text>" ["<request_text>"]
+
+# Examples:
+./scripts/eval.sh a "Klarna deployed agents handling 2.3M conversations..."
+./scripts/eval.sh b "$(cat continuous-research/findings/finance.md)"
+./scripts/eval.sh c "Agents will transform every business by 2027"
+./scripts/eval.sh d "$(cat curriculum/module-01-getting-going.md)"
+```
+
+### Run via curl
+
+```bash
+curl -s -X POST "https://api.scorable.ai/v1/judges/JUDGE_ID/execute/" \
+  -H "Authorization: Api-Key $SCORABLE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"response": "text to evaluate", "request": "optional context"}'
+```
+
+### Scorable response format
+
+```json
+{
+  "evaluator_results": [
+    {
+      "evaluator_name": "Source Verifiability Auditor",
+      "score": 0.85,
+      "justification": "4 of 5 claims have specific URLs..."
+    }
+  ]
+}
+```
+
+## Four Themes
 
 ### Theme A: "CTOs can find what they need by prompting"
 
 Tests whether the research content produces useful answers to realistic CTO questions.
 
-**Flow:**
+**Scorable judge:** `6d829329-df54-4bf4-b2d7-6b16eec9753e`
+**Evaluators:** Relevance, Specificity, Actionability, Evidence Grounding
+
+**Subagent flow:**
 1. Launch **responder agent** — reads all research files, answers 10 CTO questions, writes `results/responses.json`
 2. Launch **judge agent** — reads responses + judge prompts, scores each answer on 4 dimensions, writes `results/theme-a-scores.json`
-
-**4 judges:** Relevance, Specificity, Actionability, Evidence Grounding
 
 ### Theme B: "Articles are editorially sound"
 
 Tests whether individual findings meet editorial standards.
 
-**Flow:** Launch 3-4 **judge agents** in parallel (split by file group). Each reads findings files + judge prompts, scores each finding on 5 dimensions, writes `results/theme-b-batch-{N}.json`
+**Scorable judge:** `b1d1b71a-97ae-49c9-aa8f-8ab410085934`
+**Evaluators:** Source Verifiability, Agentic Gate, Vendor Bias, Specificity, Nordic Label
 
-**5 judges:** Source Verifiability, Agentic Gate, Vendor Bias, Specificity Gate, Nordic Label Accuracy
+**Subagent flow:** Launch 3-4 **judge agents** in parallel (split by file group). Each reads findings files + judge prompts, scores each finding on 5 dimensions, writes `results/theme-b-batch-{N}.json`
 
 ### Theme C: "Copy doesn't overreach"
 
-Tests whether user-facing text (quiz profiles, article headlines, insight copy) makes claims it can't support. Catches epistemic overreach: temporal predictions, false certainty, stale time anchors, dismissive framing, unfalsifiable claims, ungrounded analogies.
+Tests whether user-facing text makes claims it can't support. Catches epistemic overreach: temporal predictions, false certainty, stale time anchors, dismissive framing, unfalsifiable claims, ungrounded analogies.
 
-**Flow:** Launch **1 agent** per file group. Agent reads target files + judge prompt, extracts user-facing strings, applies 6 tests, writes `results/copy-eval.md`.
+**Scorable judge:** `087dc020-fb3e-478f-9bac-f7d250fed506`
+**Evaluators:** Predictive Integrity, Framing/Anchoring, Substantive Grounding
 
-**6 tests:** Temporal Prediction (error), False Certainty (error), Stale Time Anchor (warning), Dismissive Framing (warning), Unfalsifiable Claim (error), Ungrounded Analogy (warning)
+**Subagent flow:** Launch **1 agent** per file group. Agent reads target files + judge prompt, extracts user-facing strings, applies 6 tests, writes `results/copy-eval.md`.
 
-## How to Run
+### Theme D: "Curriculum modules are well designed"
 
-In Claude Code, use Task tool to launch subagents. Example:
+Tests whether training modules follow the pedagogical guardrails: Bloom's taxonomy, TBR 4Cs, builder voice, audience calibration, plug points, strategic throughline.
 
-### Theme A
-```
-# Agent 1: Responder
-Task(subagent_type="general-purpose", prompt="Read all files in continuous-research/findings/.
-Then read evals/test-cases/cto-questions.md. Answer each CTO question using ONLY the research
-as context. Write responses to evals/results/responses.json in format:
-[{question, response}, ...]")
+**Scorable judge:** `1481fb79-6d72-4a71-8f51-1903ad0c6cd4`
+**Evaluators:** Pedagogical Alignment, Exercise-Led Design, Builder Voice, Plug Points
 
-# Agent 2: Judge (after Agent 1 completes)
-Task(subagent_type="general-purpose", prompt="Read evals/results/responses.json and
-evals/judges/cto-prompt-judges.md. Score each response using all 4 judges.
-Write to evals/results/theme-a-scores.json")
-```
-
-### Theme B
-```
-# Launch 3-4 agents in parallel, each covering 3-5 files
-Task(subagent_type="general-purpose", prompt="Read evals/judges/editorial-judges.md and
-evals/test-cases/editorial-samples.md. Then read [file list]. Score each finding using
-all 5 judges. Write to evals/results/theme-b-batch-1.json")
-```
-
-### Theme C
-```
-Task(subagent_type="general-purpose", prompt="Read evals/judges/copy-epistemic-judges.md.
-Then read site/readiness/quiz.js and site/check/quiz.js. Apply all 6 tests to every
-user-facing string. Write findings to evals/results/copy-eval.md")
-```
+**Subagent flow:** Launch **1 agent** per module. Agent reads module + `curriculum/lecture-guardrails.md`, scores against all guardrails, writes `results/theme-d-module-{N}.json`.
 
 ## Scoring
 
+### Scorable (automated)
+- Each evaluator scores **0-1** with justification
+- **Pass threshold:** Average >= 0.7 across all evaluators
+- **Auto-flag:** Any evaluator score below 0.3 triggers review
+
+### Subagent (manual)
 - Each judge scores **1-5** with reasoning
 - **Pass threshold:** Average >= 3.5 across all judges
 - **Auto-flag:** Any individual score of 1 triggers review
 - Known weak points listed in `test-cases/editorial-samples.md` — these SHOULD score low (calibration check)
-
-## Results Format
-
-```json
-{
-  "theme": "a",
-  "timestamp": "2026-02-21T...",
-  "results": [{
-    "question": "...",
-    "scores": {
-      "relevance": {"score": 4, "reasoning": "..."},
-      "specificity": {"score": 5, "reasoning": "..."}
-    },
-    "pass": true
-  }],
-  "summary": {"avg_score": 4.0, "pass_rate": "9/10", "flags": []}
-}
-```
 
 ## Files
 
@@ -101,4 +115,6 @@ evals/
 │   └── editorial-samples.md     # File list + known weak points
 ├── results/                      # JSON output (gitignored except .gitkeep)
 └── README.md
+scripts/
+└── eval.sh                       # Scorable API runner
 ```

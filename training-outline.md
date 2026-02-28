@@ -1,5 +1,7 @@
 # Agents 102 — Training Outline (Draft)
 
+> **NOTE (2026-02-28): This outline is superseded by the 8-module structure in `CLAUDE.md` and `curriculum/lecture-guardrails.md`.** The module names, count, and arc below reflect an earlier design. The current source of truth for curriculum design is `curriculum/lecture-guardrails.md` (9 guardrails covering pedagogy, audience, strategy, and module-specific design decisions). This file is retained as historical input.
+
 ## Format
 
 - Hands-on, exercise-led (not lecture-led)

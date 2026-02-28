@@ -20,9 +20,9 @@
 
 Everyone has an AI strategy now. The board has seen the McKinsey report. A governance framework has been approved. An initiative portfolio is underway.
 
-Eighteen months from now, nobody in leadership will have seen an agent work with your company's data. The frameworks will govern an abstraction. The initiatives will produce slides. And the transformation will feel like theatre -- because it is.
+Without hands-on agent competence, these tend to produce the same result: governance of an abstraction. Initiatives that produce slides. Transformation that feels like theatre -- because nobody in the room has seen what agents actually do with real data.
 
-Previous transformations could be led from strategy alone. An executive did not need to build software to envision a digital company. The agentic shift is different. You cannot lead what you cannot picture. And you cannot picture it without building it.
+Previous transformations did not require this. You could envision a digital company without building software. Agents are different -- too new and too specific to each organization to picture from a strategy deck alone. The vision emerges when people build.
 
 The gap is between strategy and competence.
 
@@ -30,7 +30,7 @@ The gap is between strategy and competence.
 
 ## What We Do
 
-**Headline:** Train. Curate. Connect.
+**Headline:** Train. Curate. Connect. Advise.
 
 ### Train
 
@@ -49,6 +49,12 @@ No vendor tracks the full landscape. No consultant has deployment data from thir
 The peer network is the long-term product. Companies navigating the same transformation, learning from each other. A bank learns from a logistics company that already deployed agents in a regulated environment. That trust signal is worth more than any consultancy recommendation.
 
 Not structured data collection. Peer forums designed for how leaders actually share -- honest, off the record, practitioner to practitioner.
+
+### Advise
+
+Agent Platform Advisory. Context building, platform selection, and deployment -- done the agentic way. No person has comparative experience across agent platforms. The field moves too fast. People drive the context. Agents do the comparative heavy lifting.
+
+The advisory system is co-owned: deployed on your side, you keep it. The medium is the message -- the advisory itself demonstrates what agentic work looks like.
 
 ---
 

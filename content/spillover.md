@@ -19,9 +19,9 @@ status: published
 
 # When Will Agentic Coding Spill to Other Functions?
 
-Coding agents work. Not "showing promise" work. Not demo-day work. Production work. Spotify merges 650 agent-generated pull requests into production every month, saving 60-90% of engineering time on complex code migrations. Their CEO told investors in February 2026 that the company's best developers "have not written a single line of code since December." Karpathy went from 80% manual coding to 80% agent coding in weeks and called it "the biggest change to my basic coding workflow in two decades of programming."
+Coding agents work. Not "showing promise" work. Not demo-day work. Production work. Spotify merges 650 agent-generated pull requests into production every month, saving 60-90% of engineering time on complex code migrations [1]. Their CEO told investors that the company's best developers "have not written a single line of code since December." Karpathy went from 80% manual coding to 80% agent coding in weeks and called it "the biggest change to my basic coding workflow in two decades of programming."
 
-In Moore's terms, this looks like the chasm crossing — when the thing that was once only for experts becomes accessible. Whether the pattern holds beyond coding is the open question. And everyone watching it asks the same: when does this come to my function?
+In Moore's terms, this looks like the chasm crossing — when the thing that was once only for experts becomes accessible. Whether the pattern holds beyond coding is the open question. Everyone watching asks the same: when does this come to my function?
 
 To answer that, you have to understand why coding worked first. It was not the models. It was the domain.
 
@@ -57,13 +57,13 @@ Notice the pattern. Every domain where real agents are emerging has a fast verif
 
 ## The vendor narrative collapses
 
-Of our 112 evaluated sources, 21 were pure vendor fluff -- announcements without deployments, press releases without practitioners. Another 23 were chatbots mislabeled as agents. In our sample, 40% of sources labeled "agentic" were either vendor announcements without deployments or chatbots mislabeled as agents.
+Of our 112 evaluated sources, 21 were pure vendor fluff — announcements without deployments, press releases without practitioners. Another 23 were chatbots mislabeled as agents. In our sample, 40% of sources labeled "agentic" were either vendor announcements without real deployments or chatbots mislabeled as agents.
 
 This matters because of compound errors. Narayanan at Princeton explains why agents need "domain-specific verifiers like compilers" [9]. Without them, 95% per-step reliability collapses to 36% over 20 steps. The math is unforgiving. Every business domain without fast, objective verification is fighting that decay curve.
 
 Announcements without practitioners are billboards without roads. When SAP announces agents but practitioners are absent from the conversation, the signal is clear. When a domain has 10 vendor press releases and zero practitioner blog posts, the ratio tells you everything.
 
-Where verification doesn't exist, neither do agents. HR? Zero autonomous agent deployments found across the Nordics or globally [7]. Sales? Anssi Ruokonen at Basware reports 61% of agent deployments in finance were experiments that failed [8] — and finance is the *easy* domain. Strategy, procurement, product management — domains where verification infrastructure has not yet emerged. Narayanan frames this precisely: you need "domain-specific verifiers like compilers" for agents to self-correct [9]. Without them, compound errors kill autonomy.
+In our sample, where verification doesn't exist, neither do agents. HR? Zero autonomous agent deployments found across the Nordics or globally in our research [7]. Sales? Anssi Ruokonen at Basware reports 61% of agent deployments in finance were experiments that failed [8] — and finance is the *easy* domain. Strategy, procurement, product management — domains where verification infrastructure has not yet emerged. Narayanan frames this precisely: you need "domain-specific verifiers like compilers" for agents to self-correct [9]. Without them, compound errors kill autonomy.
 
 ## Learning to see the crossing
 
@@ -75,18 +75,18 @@ Stage two: practitioners flip. Multiple independent practitioners reported the s
 
 Stage three: enterprise credibility. Spotify published a three-part engineering blog series documenting 1,500+ merged pull requests. A CEO said it on an earnings call. This is the signal enterprises trust -- not because Spotify did anything solo builders had not done, but because "our team tried it" carries more weight than "some builder on X did it."
 
-Stage four: tooling democratizes. Lovable, built by Osika in Stockholm, reached 8 million users and 100,000 new products built on the platform every day. The thing that was once only for experts becomes accessible. In Moore's framework, this is what the chasm crossing looks like.
+Stage four: tooling democratizes. Lovable, built by Osika in Stockholm, reportedly reached 8 million users and 100,000 new products built on the platform every day. The thing that was once only for experts becomes accessible. In Moore's framework, this is what the chasm crossing looks like.
 
 Now you know the pattern. Where is your domain? Count the independent practitioners writing publicly. Not vendor announcements. Not analyst predictions. Practitioners describing what they built and what happened. When 10 to 20 of them say the same thing independently, that is your signal. When an enterprise team confirms what the solo builders have been reporting, that convergence is the credibility signal.
 
 ## The spillover sequence
 
-The spillover sequence, based on what's actually deployed:
+Based on what's actually deployed, the spillover sequence looks like this:
 
 **First wave (verification exists):** Coding. Finance and legal where reconciliation creates natural test suites.
-**Second wave (hybrid loops emerging):** Customer service, where resolution is measurable but human escalation needed. Compliance-heavy processes where rules provide verification.
-**Third wave (verification must be built):** Operations and HR — only with human-in-the-loop verification designed for the domain.
-**Open question:** Strategy, procurement, product management. Objective verification may not be possible.
+**Second wave (hybrid loops emerging):** Customer service, where resolution is measurable but human escalation is still needed. Compliance-heavy processes where rules provide verification.
+**Third wave (verification must be built):** Operations and HR — likely only with human-in-the-loop verification designed for the domain.
+**Open question:** Strategy, procurement, product management. Whether objective verification is possible here remains unclear.
 
 The loudest voices in this space don't even use the word "agents." Anton Osika at Lovable calls it "vibe coding." Junestrand calls Legora a "legal AI workspace." Ethan Mollick at Wharton writes about "Claude Cowork" — using Claude Code for non-technical work [10]. The market talks outcomes. The architecture is agentic. The label doesn't matter.
 

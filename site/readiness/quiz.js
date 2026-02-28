@@ -124,7 +124,7 @@
             verificationDesert: {
                 name: 'Verification Desert',
                 range: '4\u20137',
-                description: 'Your domain\u2019s structural infrastructure for agents is yours to build. In our research across 1,100+ sources, vendor announcements outnumbered verified deployments in every domain except coding. The path forward: build your verification loop first.'
+                description: 'Your domain\u2019s structural infrastructure for agents is yours to build. In our continuous research program across 1,100+ classified sources, vendor announcements outnumbered verified deployments in every domain except coding. The path forward: build your verification loop first.'
             },
             preAgent: {
                 name: 'Pre-Agent',
@@ -621,7 +621,7 @@
             var maxPsd = 4.6; // coding
 
             var html = '<div class="benchmark-title">Practitioner Signal Density</div>';
-            html += '<div class="benchmark-subtitle">How much real deployment evidence exists per domain (per-query score from 1,100+ sources)</div>';
+            html += '<div class="benchmark-subtitle">How much real deployment evidence exists per domain (per-query score from our continuous research program, 1,100+ classified sources)</div>';
 
             benchmarkOrder.forEach(function(key) {
                 var b = benchmarks[key];

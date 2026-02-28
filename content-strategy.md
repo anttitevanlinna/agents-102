@@ -122,13 +122,15 @@ The depth is in the doing, not in the reading.
 
 **Teach everyone to think. Scale for future. With your own structure.**
 
-Three things: **Train → Curate → Connect.**
+Four things: **Train → Curate → Connect → Advise.**
 
 **Train:** We are the prerequisite for having a real agentic vision — not a governance slide deck. The consultancy frameworks are theatre without agent competence. We create the competence that makes the vision real. Starting at €500/person for a 2-day intensive — a steal compared to consulting, and you get 20 capable people instead of one deliverable.
 
 **Curate:** We track the frontier and know what works and what doesn't. 80% from the best public sources, 20% from the peer network's specific experience. No vendor tracks the full frontier. No consultant has 30 orgs' deployment data. We synthesize both.
 
 **Connect:** The peer network is the long-term product. Companies doing the same transformation, learning from each other. Not structured data collection — peer forums designed for how executives naturally share.
+
+**Advise:** Agent Platform Advisory — context building, platform selection, and deployment. Done the agentic way, because no person has comparative experience across agent platforms. The field moves too fast. People drive the context (requirements, systems, constraints), agents do the comparative heavy lifting. The advisory system is co-owned: deployed on the customer's side, they keep it. Typically becomes relevant ~1 month after Bootstrap.
 
 All materials co-branded, co-copyright. The org co-owns everything for further development. No lock-in. No certification dependency.
 

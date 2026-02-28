@@ -1,6 +1,6 @@
-# Business Model Canvas — Agents 102 Training (Scaling Model)
+# Business Model Canvas — Agents 102 (Scaling Model)
 
-The training business. Value stream mapping / agentic business process re-engineering is a separate product line (see: agentic-rework-frameworks — not developed here).
+Four things: **Train → Curate → Connect → Advise.** The first three build agent competence and the network. The fourth — Agent Platform Advisory — helps organizations move from local agent building to deployed, governed platform decisions. Done the agentic way, not on PowerPoint.
 
 ## Design Principle
 
@@ -14,13 +14,15 @@ The authority on how to deploy agents lives in the collective experience of the 
 
 Our role: curate that collective intelligence. Distill it. Make it accessible. The training is the forum that brings orgs in and gives them shared language. The network is where trust and knowledge compound. The curated adaptation library — "here's how 30 companies actually handled agent security" — is the thing no vendor, no MOOC, and no consulting firm can produce. Only a network of peers who've done it can.
 
-Three things, in order: **Train → Curate → Connect.**
+Four things, in order: **Train → Curate → Connect → Advise.**
 
 **Train.** Orgs enter. They build real agents with their real policies. The vision emerges from competence, not from a slide deck.
 
 **Curate.** We track the frontier and distill what works and what doesn't. 80% from the best public sources, 20% from the peer network's specific experience.
 
 **Connect.** The peer network is the long-term product. Companies doing the same transformation, learning from each other. Think YPO, not SAFe. The events aren't the product — the peer network is.
+
+**Advise.** Agent Platform Advisory — context building, platform selection, and deployment. Done the agentic way: Bosser builds the agentic system that maps the organization's context (requirements, system landscape, users, governance needs), evaluates platforms, deploys to users, and generates training materials. The medium is the message — the advisory itself demonstrates what agentic work looks like. Co-owned: the system is deployed on the customer's side, they keep it. Bosser retains the right to learn from each engagement and extract patterns across organizations — feeding the peer premium.
 
 ---
 
@@ -101,7 +103,7 @@ The curriculum is not a fixed script. It's a **framework with plug points** — 
 |-------------|-----------|------------------|
 | Agent patterns | Four agentic design patterns (reflection, tool use, planning, multi-agent) | Their use cases, their processes |
 | Security & governance | Agent security principles, risk frameworks, failure modes | Their security policies, their compliance requirements, their data classification |
-| Agent building | Hands-on exercises using no-code platforms | Their preferred tools (n8n, Zapier, Copilot Studio, whatever they use) |
+| Agent building | Hands-on exercises using Claude Code | Their preferred tools and platforms for deployment |
 | Deployment | Deployment patterns, monitoring, human-in-the-loop design | Their infrastructure, their approval processes, their SLAs |
 | Ethics & boundaries | Agent ethics principles, boundary-setting patterns | Their values, their brand guidelines, their sensitive domains |
 | Evaluation | How to assess agent quality and fitness | Their KPIs, their definition of success |
@@ -142,9 +144,9 @@ The curriculum is not a fixed script. It's a **framework with plug points** — 
 
 ---
 
-## What We Sell — Three Things
+## What We Sell — Four Things
 
-Everything we do is one of three things: **Train**, **Curate**, or **Connect**. In that order — because each enables the next.
+Everything we do is one of four things: **Train**, **Curate**, **Connect**, or **Advise**. The first three form a sequence — each enables the next. Advise runs alongside, triggered when the org is ready to move from local agents to a deployed platform.
 
 ### 1. TRAIN — Build agent competence
 
@@ -181,9 +183,43 @@ The long-term product. Companies doing the same transformation, learning from ea
 | **Peer forums** | Dinners, firesides, off-the-record sessions | Designed for how executives naturally share — not structured data collection |
 | **Practice sharing** | Anonymized case exchange | Reciprocity-based — you get because you give |
 
+### 4. ADVISE — Agent Platform Advisory
+
+The moment orgs need help choosing and deploying an agent platform. Typically ~1 month after Bootstrap, when people are building local agents and the question shifts from "can we build agents?" to "where do our agents run?"
+
+**Why this must be agentic — it's not a stylistic choice:**
+
+No person has comparative experience across agent platforms. The field moves so fast that no consultant, no analyst, and no vendor engineer has deep hands-on experience with more than 1-2 platforms. A traditional consultancy sending a senior advisor to compare platforms is sending someone who has read the docs and maybe done one deployment. They're guessing — with confidence and a slide deck, but guessing.
+
+The comparative analysis is the agent's job. Agents can synthesize across platforms, test against requirements, and do the heavy lifting of comparative thinking at a speed and breadth no human can match. But agents can't provide context. Only the people who will use the platform — who know the requirements, the politics, the legacy systems, the team capabilities — can provide context.
+
+**Context is everything.** The right platform is 100% determined by the org's specific reality. There is no "best platform" — only the best platform for this org, these people, these systems, this governance structure, right now.
+
+**How it works — people drive, agents do the heavy lifting:**
+
+1. **Context mapping (people-driven, agent-synthesized)** — The people who will benefit from the platform articulate their reality: what they need, what they have, what constraints they face. An agentic system synthesizes their input, maps the requirements landscape, identifies gaps and conflicts, and produces a structured context document. Not interviews and spreadsheets — a living system that reflects the org's reality.
+
+2. **Platform evaluation (agent-driven, people-judged)** — The agentic system evaluates platform options against the mapped context. It does the comparative heavy lifting: feature analysis, constraint matching, integration assessment, cost modeling. The people review, challenge, and judge. The system does what no human can (compare 8 platforms against 40 requirements simultaneously). The people do what no agent can (decide what actually matters).
+
+3. **Deployment (agent-executed, people-guided)** — Once the platform is chosen, the agentic system handles deployment: configuration, user setup, onboarding materials, training guides. People guide the priorities and sequencing.
+
+4. **Training materials (agent-generated, people-validated)** — The system produces the materials needed for the org to train its own people on the chosen platform. Co-owned.
+
+**Market reality (Helsinki scan, Feb 2026):** No real players in agent platform advisory in the Helsinki consultancy landscape. The gap is structural — nobody can have the comparative experience because the field is too new and too fast-moving. This is not a gap that traditional consultancies will fill by hiring an "AI platform expert." The expertise doesn't exist in a person. It exists in a system that synthesizes across platforms, requirements, and deployment experiences.
+
+**The medium is the message.** The advisory itself is an agentic system. The CTO sees what an agentic workflow looks like in practice — not in a training exercise, but solving their actual platform decision. The people who participate in the advisory experience how agents amplify human judgment instead of replacing it. This is the most powerful demo possible.
+
+**Co-ownership model:**
+- The agentic advisory system is deployed on the customer's side. They keep it. They can re-run it as their context evolves, as new platforms emerge, as requirements change. The platform landscape WILL change — having the system means the org can re-evaluate without starting over.
+- Bosser retains the right to learn from each engagement and extract patterns. Each advisory makes the next one better. The cross-company pattern library — "here's how 12 organizations in regulated industries chose and deployed their agent platform" — feeds the peer premium.
+
+**Pricing:** Per engagement, scoped to the organization's complexity. Not recurring — the customer gets the system and the recommendation. They come back when context changes or when they need the next platform decision.
+
+**Relationship to the 5-step journey:** Advisory is independent. Some orgs do Bootstrap → Advisory. Some do Advisory without Bootstrap. Some do the full journey with Advisory alongside Make Your Own. The offering is modular — the org takes what it needs.
+
 ---
 
-## The Customer Journey — Five Steps
+## The Customer Journey — Five Steps + Advisory
 
 ```
 1. BOOTSTRAP (2-day intensive, €500/person)
@@ -206,11 +242,26 @@ The long-term product. Companies doing the same transformation, learning from ea
    Map your value chains. Identify where agents transform the work.
    Learn from peers who've already driven agents into similar processes.
    The peer network + curated practices are the fuel for this step.
+
+   ═══════════════════════════════════════════════════════════
+
+   AGENT PLATFORM ADVISORY (separate track, runs alongside)
+   Typically triggered ~1 month after Bootstrap.
+   "We have people building agents. Where do they run?"
+
+   Bosser builds the agentic system that maps context,
+   evaluates platforms, deploys, and generates training materials.
+   Co-owned. Deployed on customer side.
+
+   Can enter at any point — some orgs do Advisory without Bootstrap.
+   The advisory IS the demo of what agentic work looks like.
 ```
 
 **The natural flow:** Bootstrap is the door — anyone can walk in. Make Your Own is where change leaders design the rollout. The best from Bootstrap become Champions. Champions Scale it inside the org. Then the real work begins: driving agents into the value chains where they create actual business value — learning from peers who've already done it.
 
-**Not every org takes every step.** Some will do Bootstrap and stop. That's fine — €500 is a standalone that delivers real value, not a teaser. But the pull is forward: once you build, you want your org to build. Once your org builds, you want to rework your value chains. Once you rework value chains, you want to know how 30 other companies did it.
+**The Advisory runs alongside.** It's not a step in the sequence — it's a parallel service triggered when the org needs a platform decision. The timing varies: some orgs need it immediately after Bootstrap, others during Make Your Own, others much later. The advisory is modular and independent.
+
+**Not every org takes every step.** Some will do Bootstrap and stop. That's fine — €500 is a standalone that delivers real value, not a teaser. But the pull is forward: once you build, you want your org to build. Once your org builds, you want to rework your value chains. Once you rework value chains, you want to know how 30 other companies did it. And somewhere in that journey, you need a platform — that's when Advisory activates.
 
 ---
 
@@ -226,7 +277,8 @@ This is not priced against training competitors (MOOCs at €15, vendor training
 | Make Your Own | **€25-40K** flat (5-10 change leaders) | 4-6 weeks of one senior consultant (€32-48K) | 5-10 capable change leaders + change strategy + working agents on your policies |
 | Champions | 5 × €3-5K = **€15-25K** | Ongoing consulting dependency | 5 internal trainers who scale it without us |
 | Scale | **€0** | More consulting | Champions run it — your structure, your pace |
-| **Total** | **~€50-75K** | €200-500K (McKinsey) or €100-300K/yr (Solita/Reaktor) | Org-wide competence + strategy + internal trainers + independence |
+| **Total (training)** | **~€50-75K** | €200-500K (McKinsey) or €100-300K/yr (Solita/Reaktor) | Org-wide competence + strategy + internal trainers + independence |
+| **Platform Advisory** | **Per engagement** | Platform vendor professional services (€50-150K) or consultancy selection project (€100-200K) | Co-owned agentic system that maps context, selects platform, deploys + training materials. Customer keeps the system. |
 
 **The pricing logic:**
 - Bootstrap is a steal — deliberately. Get people building. The vision emerges from action.
@@ -285,10 +337,10 @@ We curate what works and what doesn't from two sources:
 
 | Resource | Why |
 |----------|-----|
-| Core framework + exercises | The entry point. Vendor-agnostic patterns, non-coder-accessible. Designed with plug points. |
+| Core framework + exercises | The entry point. Claude Code-based, accessible to chat users making the leap to systems. Designed with plug points. |
 | Research + curatorial capability | The real skill. Tracking the frontier (Agentics Foundation, protocols, tooling) AND distilling signal from network adaptations. |
 | Facilitators who can adapt | Not script-readers. People who can work with an org's context on the fly. |
-| No-code platform integrations | n8n, Zapier, etc. as hands-on labs. Org chooses their platform. |
+| Claude Code + platform knowledge | Claude Code desktop/web for hands-on building. Platform evaluation framework for deployment decisions. |
 | The network itself | The primary asset. Peer orgs, their champions, their trust relationships. |
 | Adaptation library | Curated collection of how orgs adapted the framework. Anonymized, battle-tested. The network's collective intelligence made tangible. |
 
@@ -305,6 +357,8 @@ We curate what works and what doesn't from two sources:
 | Synthesize — merge frontier research with network experience into curated practices | Quarterly |
 | Curate adaptation library | Ongoing (community-sourced) |
 | Facilitate community of practice | Ongoing |
+| Agent Platform Advisory — context mapping, evaluation, deployment | Per engagement |
+| Extract cross-engagement platform patterns into the advisory system | After each advisory engagement |
 
 **The critical activity is the synthesis.** Frontier research alone is academic. Network experience alone is anecdotal. The synthesis — "here's what's emerging AND here's what's proven" — is what makes our curated practices the best available. This is the thing we must be excellent at.
 
@@ -316,7 +370,7 @@ We curate what works and what doesn't from two sources:
 
 | Partner type | Role |
 |-------------|------|
-| No-code platforms | Hands-on lab environment. n8n, Zapier, Make. Org chooses. |
+| Platform ecosystem | Agent platforms for deployment. Org chooses based on their context. |
 | Independent facilitators / boutique firms | Deliver with their own style. Not franchisees — peers. |
 | Design partner orgs | Co-develop the framework through real use. First 3-5 orgs. |
 | AI vendors | Case studies, guest expertise. Not exclusivity. |
@@ -333,7 +387,7 @@ We curate what works and what doesn't from two sources:
 | Framework development | Fixed, upfront | Heaviest early investment. Must be excellent and adaptable. |
 | Facilitator network | Variable, per-cohort | Experienced people, not cheap. Quality matters. |
 | Adaptation work | Variable, per-org | Integrating plug points with org-specific context |
-| Platform/tooling | Fixed, low | n8n is open source; others have free tiers |
+| Platform/tooling | Fixed, low | Claude Code subscriptions; platform evaluation tooling |
 | Framework maintenance | Fixed, quarterly | Keep core current with agent landscape |
 | Community operations | Fixed, ongoing | Platform, events, curation |
 
@@ -360,6 +414,22 @@ Network becomes more valuable → attracts next org
 ```
 
 **Every org that joins makes the network more valuable for every other org.** A logistics company shares how they handled agent access to warehouse systems. A bank shares their compliance plug points. A healthcare org shares their patient data boundaries. None of them compete with each other — they all face the same novel problem (agent adoption) and learn faster together than alone.
+
+**The advisory has its own flywheel:**
+```
+Org needs a platform decision
+       ↓
+Bosser builds the agentic advisory system for their context
+       ↓
+The system maps requirements, evaluates platforms, deploys
+       ↓
+Bosser extracts patterns from the engagement
+       ↓
+Next advisory starts with richer patterns → faster, cheaper, better
+       ↓
+Cross-company platform intelligence compounds
+```
+Each advisory engagement makes the advisory system smarter. After 10 engagements, Bosser's platform intelligence — "how 10 organizations in different industries chose and deployed agent platforms, what worked, what didn't" — is something no vendor, no analyst, and no consultancy can replicate. The advisory feeds the network's knowledge, and the network feeds the advisory.
 
 **The training is the forum** — the structured occasion where organizations enter the network, build shared language, and start contributing. Without the training, the network has no entry point. Without the network, the training is just another course.
 

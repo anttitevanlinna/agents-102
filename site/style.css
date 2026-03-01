@@ -303,8 +303,15 @@ ul {
 
 .hero-actions {
     display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+.hero-actions .cta-button {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    padding: 14px 20px;
 }
 
 
@@ -729,68 +736,38 @@ ul {
     background: var(--bg-secondary);
 }
 
-.leaders-questions {
+.leaders-rows {
     display: flex;
     flex-direction: column;
     gap: 0;
+    margin-top: 48px;
 }
 
-.leaders-question {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 32px 0;
-    border-bottom: 1px solid var(--border);
-    transition: padding-left var(--transition-base);
-}
-
-.leaders-question:first-child {
-    border-top: 1px solid var(--border);
-}
-
-.leaders-question:hover {
-    padding-left: 12px;
-}
-
-.leaders-question-mark {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-    min-width: 40px;
-    opacity: 0.5;
-    transition: opacity var(--transition-base),
-                transform var(--transition-base);
-    user-select: none;
-}
-
-.leaders-question:hover .leaders-question-mark {
-    opacity: 1;
-    transform: scale(1.15);
-}
-
-.leaders-question-text {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    font-weight: 500;
-    color: var(--text-primary);
-    line-height: 1.4;
-    padding-top: 4px;
-}
-
-.leaders-grid {
+.leaders-row {
     display: grid;
     grid-template-columns: 1fr 340px;
     gap: 48px;
-    margin-top: 48px;
-    align-items: start;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
 }
 
-.leaders-quizzes {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    position: sticky;
-    top: 32px;
+.leaders-row:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.leaders-question-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.leaders-question-detail {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 .quiz-card {
@@ -801,7 +778,7 @@ ul {
     border-radius: 12px;
     text-decoration: none;
     color: inherit;
-    transition: border-color var(--transition-base), transform var(--transition-base);
+    transition: border-color var(--transition-base);
 }
 
 .quiz-card:hover {
@@ -1317,23 +1294,13 @@ footer p {
     }
 
     /* Leaders */
-    .leaders-grid {
+    .leaders-row {
         grid-template-columns: 1fr;
-        gap: 32px;
-        margin-top: 32px;
-    }
-
-    .leaders-quizzes {
-        position: static;
+        gap: 16px;
     }
 
     .leaders-question-text {
-        font-size: 1.125rem;
-    }
-
-    .leaders-question-mark {
-        font-size: 2rem;
-        min-width: 32px;
+        font-size: 1rem;
     }
 
     /* About */
@@ -1377,12 +1344,7 @@ footer p {
     }
 
     .leaders-question {
-        gap: 16px;
         padding: 24px 0;
-    }
-
-    .leaders-question-mark {
-        display: none;
     }
 
     .cta-button {

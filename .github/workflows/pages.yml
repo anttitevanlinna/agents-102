@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    paths: [site/**]
+    paths: [site/**, content/**]
 
 permissions:
   contents: read
@@ -22,6 +22,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Copy content into site
+        run: rm -rf site/content && cp -r content site/content
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -512,7 +512,8 @@ ul {
     overflow: hidden;
 }
 
-.pillar-card::before {
+.pillar-card::before,
+.cur-module::before {
     content: '';
     position: absolute;
     top: 0;
@@ -531,7 +532,8 @@ ul {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
-.pillar-card:hover::before {
+.pillar-card:hover::before,
+.cur-module:hover::before {
     transform: scaleX(1);
 }
 
@@ -1426,3 +1428,160 @@ footer p {
     background: rgba(255, 107, 53, 0.3);
     color: var(--text-primary);
 }
+
+
+/* =============================================================================
+   20. CURRICULUM PAGE — .cur-*
+   ============================================================================= */
+
+/* ── Layout ── */
+.cur-page { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── Nav ── */
+.cur-nav, .article-nav { margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.cur-nav { max-width: 960px; padding: 1.25rem 1.5rem; }
+.cur-nav .logo, .article-nav .logo { color: var(--accent); }
+.cur-nav .logo { font-size: 1.25rem; }
+.cur-nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.cur-nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.cur-nav-links a:hover, .cur-module-read a:hover, .back-link:hover { color: var(--accent); }
+
+/* ── Hero ── */
+.cur-hero { max-width: 960px; margin: 0 auto; padding: 5rem 1.5rem 3rem; position: relative; overflow: hidden; }
+.cur-hero-content { position: relative; z-index: 2; }
+.cur-hero-label, .cur-format-label, .cur-phase-label, .cur-callout-label { font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin-bottom: 0.5rem; }
+.cur-hero-label { font-size: 0.85rem; margin-bottom: 1rem; }
+.cur-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+.cur-hero-desc { color: var(--text-secondary); font-size: 1.15rem; line-height: 1.65; max-width: 640px; margin-bottom: 2rem; }
+.cur-hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.cur-hero-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+.cur-hero-stat strong { font-size: 1.5rem; }
+.cur-hero-stat span { font-size: 0.85rem; color: var(--text-muted); }
+
+/* ── Hero particles ── */
+.cur-hero-particles { position: absolute; top: 0; right: -5%; width: 55%; height: 100%; z-index: 1; opacity: 0.4; pointer-events: none; overflow: hidden; }
+
+/* ── Format bar ── */
+.cur-format, .cur-steps { display: grid; gap: 1px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.cur-format { grid-template-columns: repeat(3, 1fr); margin-bottom: 4rem; }
+.cur-format-item { padding: 1.5rem 1.75rem; background: var(--bg-card); }
+
+/* ── Phase sections ── */
+.cur-phase, .cur-after, .cur-principles { margin-bottom: 4rem; }
+.cur-phase-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.cur-phase-label { font-size: 0.8rem; }
+.cur-phase-title { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
+.cur-phase-desc, .cur-after-desc { color: var(--text-secondary); line-height: 1.6; max-width: 640px; }
+
+/* ── Module cards ── */
+.cur-modules { display: flex; flex-direction: column; gap: 1.5rem; }
+.cur-module { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; transition: border-color 0.3s; position: relative; overflow: hidden; }
+.cur-module:hover { border-color: rgba(255, 107, 53, 0.3); }
+
+.cur-module-head { display: flex; align-items: baseline; gap: 1.25rem; margin-bottom: 1rem; }
+.cur-module-num { font-size: 2.5rem; font-weight: 700; color: var(--accent); opacity: 0.35; line-height: 1; min-width: 60px; letter-spacing: -0.04em; }
+.cur-module-title { font-size: 1.35rem; font-weight: 600; line-height: 1.25; }
+
+.cur-module-body { padding-left: calc(60px + 1.25rem); }
+.cur-module-desc { color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem; }
+
+/* Callout boxes inside modules */
+.cur-callout { padding: 1.25rem 1.5rem; border-radius: 8px; margin-bottom: 1rem; }
+.cur-callout-label { margin-bottom: 0.4rem; }
+.cur-callout-text, .cur-format-text { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); }
+
+.cur-callout--build { background: rgba(255, 107, 53, 0.06); border: 1px solid rgba(255, 107, 53, 0.15); }
+.cur-callout--build .cur-callout-label,
+.cur-callout--plug .cur-callout-label { color: var(--accent); }
+
+.cur-callout--insight { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); }
+.cur-callout--insight .cur-callout-label { color: var(--text-muted); }
+
+.cur-callout--plug { background: rgba(255, 107, 53, 0.04); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; }
+
+.cur-module-read { margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted); }
+.cur-module-read a { transition: color 0.2s; }
+
+/* ── Mid-page CTA ── */
+.cur-mid-cta { text-align: center; padding: 3.5rem 2rem; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 4rem; background: linear-gradient(135deg, rgba(255, 107, 53, 0.04) 0%, transparent 100%); }
+.cur-mid-cta h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.cur-mid-cta p, .cur-final p { color: var(--text-secondary); max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.cur-mid-cta p { margin-bottom: 1.5rem; }
+
+/* ── What comes after (mini stepper) ── */
+.cur-after-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+.cur-after-desc { margin-bottom: 2rem; }
+.cur-steps { grid-template-columns: repeat(4, 1fr); margin-bottom: 1.5rem; }
+.cur-step { padding: 1.75rem 1.5rem; background: var(--bg-card); }
+.cur-step-num { font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+.cur-step-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.3; }
+.cur-step-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.cur-after-note { color: var(--text-muted); font-size: 0.95rem; font-style: italic; }
+
+/* ── Design principles grid ── */
+.cur-principles-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; }
+.cur-principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.cur-principle { padding: 1.25rem 1.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); }
+.cur-principle strong { font-size: 0.95rem; display: block; margin-bottom: 0.35rem; }
+.cur-principle span { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
+
+/* ── Final CTA ── */
+.cur-final { text-align: center; padding: 4rem 2rem; margin-bottom: 2rem; }
+.cur-final h2 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+.cur-final p { font-size: 1.1rem; margin-bottom: 2rem; }
+.cur-final-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.cur-final-links a { color: var(--accent); font-weight: 500; }
+
+/* ── About ── */
+.cur-about { padding: 2rem 0; border-top: 1px solid var(--border); margin-bottom: 1rem; }
+.cur-about p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem; }
+.cur-about a, .article-body a { color: var(--accent); }
+
+/* ── Footer ── */
+.cur-footer { padding: 1.5rem 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+
+/* ── Curriculum responsive ── */
+@media (max-width: 768px) {
+    .cur-hero-particles { display: none; }
+    .cur-format, .cur-principles-grid { grid-template-columns: 1fr; }
+    .cur-module { padding: 1.75rem; }
+    .cur-module-head { flex-direction: column; gap: 0.25rem; }
+    .cur-module-num { font-size: 1.75rem; min-width: auto; }
+    .cur-module-body { padding-left: 0; }
+    .cur-steps { grid-template-columns: repeat(2, 1fr); }
+    .cur-hero-stats { gap: 1.5rem; }
+    .cur-nav-links { gap: 1rem; }
+    .cur-nav-links a { font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+    .cur-steps { grid-template-columns: 1fr; }
+    .cur-hero h1 { font-size: 1.75rem; }
+}
+
+
+/* =============================================================================
+   21. ARTICLE PAGE — .article-*
+   ============================================================================= */
+
+.article-container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
+.article-byline { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; font-style: italic; }
+.article-meta { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; }
+.article-meta span + span::before { content: " · "; }
+.article-body { line-height: 1.7; }
+.article-body h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1.5rem; line-height: 1.15; }
+.article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+.article-body p { margin-bottom: 1.2rem; }
+.article-intro, .article-body blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--text-secondary); }
+.article-intro { font-size: 1.2rem; margin: 0 0 2rem 0; line-height: 1.6; }
+.article-body blockquote { margin: 1.5rem 0; }
+.article-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+.article-body ul, .article-body ol { margin-bottom: 1.2rem; padding-left: 1.5rem; }
+.article-body li, .article-body em { color: var(--text-secondary); }
+.article-body li { margin-bottom: 0.4rem; }
+.article-body strong { color: var(--text-primary); }
+.back-link { color: var(--text-muted); font-size: 0.9rem; }
+.article-nav { max-width: 720px; padding: 1rem 1.5rem; }
+.loading, .error { text-align: center; padding: 4rem; }
+.loading { color: var(--text-muted); }
+.error { color: #cc4444; }

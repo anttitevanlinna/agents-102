@@ -24,6 +24,45 @@ Business agents have none of this:
 - **Frameworks:** Nothing. Every business agent deployment is custom. There are no shared patterns, no reference architectures, no "here's how you build a finance agent."
 - **Mental model:** The business professional has no mental model for what an agent does. Not because they're slow — because nobody has given them one. The coding agent maps onto an existing practice (writing code). The business agent maps onto... what?
 
+## The two false archetypes
+
+When people try to understand business agents, they reach for the two things they already know. Both are wrong — and believing either one blocks the real architecture from forming.
+
+### False archetype 1: The chatbot
+
+"We'll give people an AI they can chat with." This is the default enterprise response. It's not an agent. It's a conversation.
+
+Chatting is not building. A person typing questions and reading answers is using a search engine with better prose. No tools. No autonomy. No multi-step work. No judgment. The AI answers — the human still does all the work.
+
+The chatbot archetype is seductive because it's safe. Nobody gets fired for deploying a chatbot. But it also produces nothing that compounds. Every conversation starts from zero. There is no memory, no learning, no capability that builds on itself. The chatbot doesn't do work — it assists a human who is doing work. That's a copilot at best, and a fancy FAQ at worst.
+
+The test: **Is the AI doing multi-step autonomous work with tools?** If a human has to read the output and then go do the actual task, it's a chatbot, not an agent. The business world is flooded with chatbots marketed as agents. This is the single biggest source of confusion — and the reason most enterprises think they "have agents" when they have chat interfaces.
+
+### False archetype 2: The workflow automation tool
+
+"We'll build it in n8n / Zapier / Make / Power Automate." This is the second default. It's also not an agent. It's a flowchart.
+
+Workflow automation tools are deterministic pipelines: if this, then that, then this. They are powerful for what they do — connecting systems, moving data, triggering actions. But they lack everything that makes an agent an agent:
+
+- **No autonomy.** The workflow follows a fixed path. It cannot decide to take a different approach when the first one fails. It cannot reason about what to do next. Every branch must be pre-defined by a human.
+- **No learning.** The workflow does the same thing the thousandth time as the first time. It does not get better. It does not adapt to new patterns. It does not accumulate judgment.
+- **No adaptability.** When the business process changes — a new regulation, a new vendor, a new approval step — someone must manually rewire the workflow. The tool cannot adapt on its own.
+- **No composability.** Workflows are brittle chains. You cannot easily combine two workflows into a larger capability. You cannot have one workflow reason about another. They don't compose — they concatenate.
+
+The workflow automation archetype is seductive because it feels like building. You drag boxes, draw arrows, connect APIs. It looks like architecture. But it produces rigid pipelines, not adaptive systems. The "agent" built in Zapier is an automation — useful, but fundamentally different from an agent that reasons, adapts, and exercises judgment.
+
+The test: **Can it handle a situation its builder didn't anticipate?** An agent reasons through novel situations. A workflow fails or follows the wrong branch. This is the categorical difference.
+
+### Why the false archetypes matter
+
+When an organization believes it has "deployed agents" but has actually deployed chatbots and workflow automations, it draws the wrong conclusions:
+
+- "We tried agents, they didn't deliver much" — because they didn't try agents.
+- "Agents are just chatbots with extra steps" — because that's all they built.
+- "Our automation team can handle this" — because they mapped it onto tools they already know.
+
+The real business agent sits in the space between these two: it reasons like the LLM behind the chatbot, but it acts like the automation tool. It has tools. It has autonomy. It adapts. It exercises judgment. And nobody has the architecture for building that thing in a business context.
+
 ## Why this gap exists
 
 Three reasons:

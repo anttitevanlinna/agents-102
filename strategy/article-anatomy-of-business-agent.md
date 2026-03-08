@@ -216,6 +216,48 @@ That's the architecture of a business agent. Not a platform. Not a framework. No
 
 The progression from interactive to headless is the trust gradient. It doesn't happen by decree — it happens because you've seen the system work, fixed its failures, and built confidence through cycles of trying and revising.
 
+### Why file-based RAG wins
+
+This isn't an accident. The Anthropic team building Claude Code noticed it early. As Boris Cherny put it: "we noticed file-based RAG with bash tools beats other solutions."
+
+Two reasons:
+
+**Zero dependencies.** No vector database. No embeddings pipeline. No framework. No SaaS platform. No infrastructure team. Just files. The barrier to entry is "can you create a directory." Everything you need ships with every operating system ever made — a file system and a text editor. Compare this to the typical enterprise RAG stack: vector DB (Pinecone, Weaviate, Chroma), embedding model, chunking strategy, retrieval pipeline, re-ranking, prompt assembly. Each component is a failure point, a vendor dependency, and a maintenance burden. Files have none of this.
+
+**LLMs are trained on text. Text files play to their strongest capability.** Claude Code reads and writes text. That's what it does best — by a wide margin. When your entire agent architecture IS text files, you're working with the grain of the model. Every other retrieval approach adds translation layers: text → embeddings → vectors → similarity search → retrieved chunks → reassembled context. Each translation loses information. File-based RAG skips all of it. The model reads the file. That's the retrieval.
+
+This also explains why the architecture is so accessible. You don't need to understand embeddings, vector similarity, or retrieval pipelines. You need to understand directories and text files. A procurement manager can open the context files, read them, and understand exactly what the agent knows. Try doing that with a vector database.
+
+### Who else is building this way
+
+We ran a research pass in March 2026 to find other practitioners applying the same pattern. The question: is this a convergent practice or a solo discovery?
+
+**The building blocks are converging. The full architecture is not.**
+
+At least 10-15 independent practitioners are building file-based business agent systems in Q1 2026. The convergent pattern: markdown files as the brain, Claude Code as the runtime, no application code, no database, everything human-readable and version-controlled.
+
+Six named practitioners:
+
+- **Brad Feld** runs an entire company from ~2,000 lines of markdown across 12 skill files (CompanyOS). Connected to 8 external systems. Has a weekly telemetry loop that measures skill usage. The closest match — but the improvement is metrics-driven, not architecture-driven. He measures what the system does, not which phase of the architecture needs fixing.
+
+- **Obie Fernandez** built a CTO operating system at ZAR — 11,579 lines of organizational knowledge in 3 weeks. Folders for context, decisions, meetings, playbooks, team. The context accumulates over time. But the structure emerged bottom-up (Claude designed the folder layout) rather than being deliberately architected.
+
+- **Mohit Tater** built a freelance business co-pilot from five markdown files. Has an `/improve-system` command where Claude suggests updates to the system's own files. This is the closest anyone has come to a "learn and revise" phase — the system explicitly modifies itself based on experience. But it's ad-hoc ("when something feels off"), not systematic.
+
+- **Seth Levine** runs his VC operations from a terminal using Brad Feld's CompanyOS. Drafting legal emails, analyzing fee proposals, managing calendar. User of the pattern, not architect of it.
+
+- **Emily Kramer (MKT1)** packages marketing frameworks as Claude Code skills for non-technical marketers. Domain-specific knowledge in markdown files. No learning loop.
+
+- **Othman Adi** built a planning-with-files system — persistent markdown for task plans, findings, and progress. Philosophy: "context windows are volatile like RAM; filesystem is persistent." But this is persistence, not learning.
+
+The broader trend confirms the technical foundation. Academic research (McMillan, 9,649 experiments across 11 models) shows frontier models benefit from filesystem-based context retrieval. Trade publications document the shift from complex retrieval stacks to simple file reading.
+
+**What nobody has articulated:** The five-phase lifecycle. Specifically: deliberate information curation as a prerequisite phase before defining goals. Goals emerging from context, not before it. A systematic learning loop where failures diagnose which phase — context, goals, or procedures — needs revision.
+
+Everyone else either treats files as a productivity tool (make my day more efficient) or lets structure emerge organically. Nobody has described the architecture as a designed learning system that gets smarter through targeted revision.
+
+**What this means:** The timing window is 6-12 months. The skills ecosystem is growing fast. Someone will eventually articulate the learning loop. But right now, the gap between "markdown files make agents smart" (convergent) and "here's the lifecycle that makes them learn" (not yet converging) is real — and it's the gap where the actual value lives.
+
 ### Why this is the missing architecture
 
 The business world has been looking for the business agent architecture in the wrong places. They looked at platforms — Salesforce AgentForce, ServiceNow, Microsoft Copilot Studio. They looked at workflow tools — n8n, Zapier, Make. They looked at agent frameworks — LangChain, CrewAI, AutoGen.
@@ -230,8 +272,16 @@ The architecture was never a platform. It was never a tool. It was a practice:
 
 Files in directories. An LLM that reads them. A human who steers the learning. That's the whole thing.
 
-The reason nobody found it is that it's too simple to sell. You can't package "write markdown files and iterate" as a enterprise platform. You can't charge a license fee for directories. You can't build a vendor ecosystem around text files.
+The reason nobody found it is that it's too simple to sell. You can't package "write markdown files and iterate" as an enterprise platform. You can't charge a license fee for directories. You can't build a vendor ecosystem around text files.
 
 But simplicity is the point. The architecture is simple so that the hard part — the domain knowledge, the judgment, the learning — stays with the people who have it. The business professionals. The ones who know what a good procurement decision looks like, what a compliant process requires, what a customer actually needs.
 
 The technology serves them. Not the other way around.
+
+### Bonus: what you get for free
+
+Two things that fall out of the file-based architecture that you didn't plan for but turn out to matter enormously:
+
+**Multi-agent is just reading and writing shared files.** You don't need a multi-agent framework. You don't need message passing, event buses, or orchestration layers. One agent writes its output to a file. Another agent reads that file as input. Files are the information transmission method. A market research agent writes findings to `context/market/`. A roadmap agent reads from that directory. They don't need to know about each other. They don't need to be coordinated. They share a file system. That's the coordination mechanism — the same one that has worked for every collaborative system since the invention of shared directories. When you want to add a third agent, you add a third directory. No framework changes. No protocol upgrades. No integration work.
+
+**Multi-user is Dropbox.** This sounds too simple to be true, but it works. Put the project directory in Dropbox, OneDrive, or any file sync service. Multiple people can now work with the same agent context. One person curates market information. Another updates customer feedback. A third refines the guardrails. Each person opens Claude Code in their synced copy of the directory. The agents read the same context files. The learning accumulates in the same place. You will be surprised, but it works — because the architecture is just files, and we solved multi-user file collaboration twenty years ago. No shared database. No access control system. No SaaS platform with seat licenses. A synced folder.

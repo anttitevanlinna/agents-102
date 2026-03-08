@@ -23,7 +23,7 @@ Claude Opus 4.6 (trained on essentially the entire internet through early 2025) 
 
 **What this means:**
 
-1. **The article has real originality.** This isn't "our take on what everyone's saying." It's naming something practitioners are doing but nobody has articulated as a pattern. The architecture emerged from watching what builders actually build.
+1. **The article has real originality.** This architecture is practitioner-originated — Antti built it before articulating it. The pattern emerged from doing, not from reading. That's how real architectural knowledge works: you build, you notice the structure, then you name it. The article is codifying lived practice, not synthesizing other people's ideas.
 
 2. **First-mover on the framing.** Whoever names the architecture owns the vocabulary. "Business agent" as a five-phase lifecycle with persistent context — that vocabulary is unclaimed.
 

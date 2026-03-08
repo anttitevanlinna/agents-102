@@ -18,15 +18,17 @@ This is why competence precedes vision. Without the felt experience of making an
 
 ## 3. Don't make general what you don't practice yourself
 
-Taleb's Silver Rule applied to transformation: you have no right to prescribe what you haven't rehearsed. The consultancies writing agentic enterprise frameworks have never built an agent. The analysts predicting the future of work have never made a workflow run autonomously. They universalize without practicing.
+The work ethic comes from Seth Godin: show up, do the work, ship it, learn from it, do it again. Not because someone is watching — because that's what practitioners do. The pen goes on the paper. The agent gets built. The module gets written. The exploration happens before the generalization.
 
-We practice first. Every principle we teach, we have applied. Every failure mode we warn about, we have hit. The curriculum is not a theory of agents — it is a record of practice, distilled into exercises that force participants to practice too.
+This means: we practice first. Every principle we teach, we have applied. Every failure mode we warn about, we have hit. The curriculum is not a theory of agents — it is a record of practice, distilled into exercises that invite participants to practice too.
+
+The consultancies writing agentic enterprise frameworks haven't built an agent. We have. That's not a criticism of them — it's a different kind of work. Ours is the kind where you put your hands on the thing before you tell others about the thing.
 
 ## 4. Leadership is going first, not showing the way
 
-Leadership is not vision statements, roadmaps, or inspiring speeches. Leadership is going first — into the uncertainty, into the failure, into the learning. The builder leader doesn't commission a report on agents. They sit down and build one. They fail. They learn. Then they can lead, because they've been there.
+Leadership is not vision statements, roadmaps, or inspiring speeches. Leadership is going first — into the uncertainty, into the failure, into the learning. The builder leader sits down and builds. They fail. They learn. Then they can lead, because they've been there.
 
-"Showing the way" implies you already know the destination. Nobody knows the destination. Going first means you learn the terrain by walking it.
+Going first means you learn the terrain by walking it. You don't need to know the destination. You need to be willing to move before the map is complete — and to bring others along by sharing honestly what you found.
 
 ## 5. The learning loop is the method
 
@@ -49,9 +51,9 @@ This cycle is built into the curriculum. Module 1 deliberately pushes until the 
 
 ## 7. Competence precedes vision
 
-This is the core insight that separates us from every competitor.
+This is the core insight.
 
-Consulting firms sell vision without competence. Developer bootcamps sell competence without vision. We insist on the sequence: competence first, then vision. You build the agent, you experience what it can and cannot do, and only then can you envision what this means for your organization.
+Others sell vision without competence. Or competence without vision. We insist on the sequence: competence first, then vision. You build the agent, you experience what it can and cannot do, and only then can you envision what this means for your organization.
 
 Without agent competence, there is no vision — just governance of an abstraction.
 
@@ -59,7 +61,7 @@ Without agent competence, there is no vision — just governance of an abstracti
 
 Digital transformation: an executive didn't need to write software to envision a digital company. Agile transformation: a leader didn't need to code to sponsor Scrum. Cloud transformation: a CTO didn't need to configure servers to move to AWS.
 
-The agentic transformation breaks this pattern. You cannot delegate understanding. The agent's behavior is emergent — it depends on instructions, context, tools, and the LLM's reasoning. You cannot predict it from a spec. You have to experience it. Leaders who skip the practice will govern abstractions and call it strategy.
+The agentic transformation breaks this pattern. You cannot delegate understanding. The agent's behavior is emergent — it depends on instructions, context, tools, and the LLM's reasoning. You cannot predict it from a spec. You have to experience it. Leaders who skip the practice end up governing abstractions. The felt experience is the prerequisite.
 
 ## 9. Honest confidence, not false certainty
 
@@ -67,7 +69,7 @@ We don't know where this is going. Nobody does. Promising a roadmap is lying. Pr
 
 What we do know: agents are being built right now, by real people, solving real problems. The capability compounds for those who start moving. The skill isn't predicting the future — it's learning to move through uncertainty.
 
-This honesty is not a weakness. It is the source of trust. The builder leaders in the room know that anyone promising certainty is lying. We're the ones who say: "We don't know the destination, but we've walked this terrain, and we'll walk it with you."
+This honesty is the source of trust. The people in the room know when someone is selling certainty they don't have. We'd rather say: "We don't know the destination, but we've walked this terrain, and we'll walk it with you."
 
 ## 10. Co-own, don't license
 
@@ -104,4 +106,4 @@ Practice (5, 6) → Mental models form (2) → Competence develops (7)
 
 You cannot skip steps. You cannot start with vision and work backward to competence. You cannot generalize from a framework you haven't applied. You cannot lead a transformation you haven't experienced.
 
-The path is: practice first, then understand, then lead, then scale. Everything else is theatre.
+The path is: practice first, then understand, then lead, then scale.

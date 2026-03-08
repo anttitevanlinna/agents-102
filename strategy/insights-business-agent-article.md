@@ -16,3 +16,17 @@ A Zapier workflow does the same thing on run 1,000 as it did on run 1. A busines
 That's why the workflow crowd hasn't arrived at the business agent architecture — they were solving a different problem. The architecture they built (trigger → step → step → output) has no place for accumulated context, no mechanism for revision, no way to get smarter over time.
 
 This is a key differentiator in positioning: we are not competing with workflow automation. We are solving the problem that workflow automation structurally cannot solve.
+
+## The archetype is novel — it's not in the training data
+
+Claude Opus 4.6 (trained on essentially the entire internet through early 2025) does not have this architecture as a known pattern. The five-phase business agent with context accumulation at the center hasn't been written down this way by anyone.
+
+**What this means:**
+
+1. **The article has real originality.** This isn't "our take on what everyone's saying." It's naming something practitioners are doing but nobody has articulated as a pattern. The architecture emerged from watching what builders actually build.
+
+2. **First-mover on the framing.** Whoever names the architecture owns the vocabulary. "Business agent" as a five-phase lifecycle with persistent context — that vocabulary is unclaimed.
+
+3. **Validates the research method.** People-first research surfacing what Google search cannot. The pattern exists in practice but not in published discourse. This is exactly the kind of insight that topic-search research would never find — because there's nothing to find yet.
+
+4. **Publication urgency.** Novel framing in a fast-moving field has a shelf life. Once one person writes it down well, others will adopt the vocabulary (or invent their own). Being first matters less than being clear — but being both first and clear is the best position.

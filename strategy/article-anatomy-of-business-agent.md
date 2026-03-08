@@ -200,9 +200,38 @@ This is the anatomy. Not a linear build-and-deploy. A learning loop where the sy
 
 ---
 
-## Phase 6: [To be continued]
+## That's it
 
-<!--
-Planned phases:
-- Phase 6: Trust gradient and scaling — from supervised to autonomous
--->
+Five phases. Surprisingly simple.
+
+You accumulate knowledge in directories. Context files, goal files, procedure files, guardrail files — tens of them, sometimes hundreds. All markdown. All readable. All version-controlled. Then you run it with Claude Code.
+
+That's the architecture of a business agent. Not a platform. Not a framework. Not a workflow tool. A directory of structured text and an LLM that can read it, reason about it, and act on it.
+
+### Two modes of running
+
+**Interactive: human in the seat.** You open Claude Code, give it the task, and watch it work. You steer. You catch mistakes. You redirect when it goes off track. This is how you start — Phase 4 is always interactive. You need to see what the system does before you trust it to do it alone.
+
+**Headless: the agent runs autonomously.** Claude Code runs without a human watching every step. It reads the context, follows the procedures, respects the guardrails, and produces output. A human reviews the output — not the process. This is where the system goes once you've cycled through Phases 4 and 5 enough times to trust it.
+
+The progression from interactive to headless is the trust gradient. It doesn't happen by decree — it happens because you've seen the system work, fixed its failures, and built confidence through cycles of trying and revising.
+
+### Why this is the missing architecture
+
+The business world has been looking for the business agent architecture in the wrong places. They looked at platforms — Salesforce AgentForce, ServiceNow, Microsoft Copilot Studio. They looked at workflow tools — n8n, Zapier, Make. They looked at agent frameworks — LangChain, CrewAI, AutoGen.
+
+The architecture was never a platform. It was never a tool. It was a practice:
+
+1. Curate the information.
+2. Define the goals.
+3. Write the procedures and guardrails.
+4. Try it out.
+5. Learn and revise.
+
+Files in directories. An LLM that reads them. A human who steers the learning. That's the whole thing.
+
+The reason nobody found it is that it's too simple to sell. You can't package "write markdown files and iterate" as a enterprise platform. You can't charge a license fee for directories. You can't build a vendor ecosystem around text files.
+
+But simplicity is the point. The architecture is simple so that the hard part — the domain knowledge, the judgment, the learning — stays with the people who have it. The business professionals. The ones who know what a good procurement decision looks like, what a compliant process requires, what a customer actually needs.
+
+The technology serves them. Not the other way around.

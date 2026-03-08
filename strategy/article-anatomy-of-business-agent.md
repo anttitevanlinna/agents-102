@@ -125,11 +125,84 @@ Three phases. All stable. All stored. All human-readable. This is the foundation
 
 ---
 
-## Phase 4: [To be continued]
+## Phase 4: Try it out
+
+Now you run it. Context is curated. Goals are defined. Procedures and guardrails are written. The CLAUDE.md ties it together. You open Claude Code and let the system work.
+
+It will fail.
+
+Not maybe. Not sometimes. It will fail. The first run will produce something that resembles what you wanted — close enough to see the shape, far enough to see the problems. This is not a setback. This is the method.
+
+### The failures are the information
+
+The problems that surface in Phase 4 are the most valuable output of the entire process so far. They tell you things that no amount of planning could have revealed:
+
+- The procedures assumed a sequence that doesn't work in practice.
+- The guardrails are too tight in one area and missing entirely in another.
+- The agent interpreted a goal differently than you intended — and sometimes its interpretation was better.
+- Information you thought was complete has gaps you couldn't see until the agent tried to use it.
+- Two goals contradict each other in edge cases you didn't anticipate.
+
+These failures are your friend. Every one of them is a specific, actionable insight about what needs to change. Not abstract — concrete. "The agent produced a roadmap that ignored the Q3 resource constraint because the strategy context didn't specify headcount limits." That's a gap you can fix in five minutes. You would never have found it by thinking harder about Phase 1.
+
+### How to try it
+
+Any structured thinking method works. First principles. Hypothesis testing. Just running it case by case. The point is: do it, observe what happens, and take notes.
+
+With Claude Code, Phase 4 is a session where you:
+
+1. **Run the system against a real task.** Not a test case — a real piece of work you actually need done. The roadmap agent drafts a real roadmap. The compliance agent reviews a real regulatory change.
+2. **Read the output critically.** Not "is it good?" but "where did it go wrong, and why?" The why matters more than the what — it tells you which phase to fix.
+3. **Review the session.** Look at how Claude Code reasoned through the task. Where did it make judgment calls? Were they the right ones? Where did it get stuck? Where did it confidently produce something wrong?
+
+---
+
+## Phase 5: Learn and revise
+
+Phase 4 produces failures. Phase 5 turns those failures into improvements. This is the OODA loop applied to the system itself.
+
+### Revise at the right level
+
+The failures from Phase 4 point backward to the phase where the problem originated:
+
+**Procedure failures → revise Phase 3.** The agent followed the wrong process, applied the wrong guardrail, or missed a quality criterion. Fix the procedures. Tighten the guardrails. Add the missing criterion. This is the most common type of revision — and the cheapest to make.
+
+**Goal failures → revise Phase 2.** The goals are impossible, contradictory, or not ranked correctly. The agent optimized for Goal 2 at the expense of Goal 1 because the priority wasn't clear. Or a goal that seemed important turns out to be irrelevant once you see the system in action. Change the goals. Re-prioritize. Drop the goal that doesn't serve the real purpose.
+
+**Context failures → revise Phase 1.** The information base is missing something critical. The agent couldn't make a good judgment because it didn't have the data. Or the information is there but structured wrong — organized by source when it should be organized by decision type. Go back and curate what's missing. Restructure what's misaligned.
+
+### Double learning
+
+The important discipline: don't just fix what broke. Ask whether the failure reveals something about the levels above it.
+
+A procedure failure might reveal that the goal was wrong. A goal failure might reveal that the context was incomplete. The levels are connected — a fix at one level often exposes a needed fix at another.
+
+This is what separates a learning loop from a debugging loop. Debugging fixes the symptom. Learning fixes the cause — and then checks whether the cause has a cause.
+
+### The cycle continues
+
+Phases 1-3 were never done correctly the first time. They were done well enough to reach Phase 4 — which is exactly right. The point of doing 1-3 imperfectly is to get to 4 quickly, where the real learning happens.
+
+After Phase 5, you go back to Phase 4. Try it again. New failures surface — fewer, different, more subtle. Revise again. Each cycle produces a system that is more reliable, more aligned with the actual work, and more trusted by the people who use it.
+
+```
+Phase 1 (Context) → Phase 2 (Goals) → Phase 3 (Procedures)
+    ↑                    ↑                    ↑
+    └────────────────────┴────────────────────┘
+                    Phase 5 (Learn & Revise)
+                         ↑
+                    Phase 4 (Try It Out)
+                         ↓
+                    [failures = information]
+```
+
+This is the anatomy. Not a linear build-and-deploy. A learning loop where the system gets better because the failures are specific and the revisions are targeted. The architecture is not the directory structure — it's this cycle.
+
+---
+
+## Phase 6: [To be continued]
 
 <!--
 Planned phases:
-- Phase 4: Execution — the agent works, produces output, iterates
-- Phase 5: Evaluation — how do you know it's working?
-- Phase 6: Trust gradient — from read-only to autonomous
+- Phase 6: Trust gradient and scaling — from supervised to autonomous
 -->

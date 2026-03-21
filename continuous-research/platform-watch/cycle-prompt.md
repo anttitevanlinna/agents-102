@@ -154,7 +154,13 @@ SOURCE TYPE CLASSIFICATION — label every URL:
 - [general press] — CNBC, TechCrunch. Bare facts only.
 - [vendor press release] — NOT EVIDENCE. Level 0.
 
-FRESHNESS: Only cite evidence from last 6 months.
+FRESHNESS — MANDATORY:
+- Only cite evidence from the last 6 months. Older = historical context only, explicitly dated.
+- Platforms move fast. A claim from October 2025 about Copilot Studio may be obsolete by March 2026.
+- EVERY source must include its publication date. No date = treat as unverifiable.
+- In state.md, dates travel WITH claims. Format: "claim text (Source, Mon YYYY)" — so staleness is visible.
+- When reviewing state.md, flag any claim older than 6 months for re-verification or removal.
+- A finding's expiry date = publication date + 6 months. After that, it needs re-verification or gets marked [STALE].
 
 URL RULE — THE MOST IMPORTANT RULE:
 Assume LLMs fabricate 10% of claims. The ONLY defense is re-verifiable sources.

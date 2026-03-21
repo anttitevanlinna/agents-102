@@ -212,6 +212,21 @@ The research program directly tests two critical assumptions from `strategy/assu
 6. **Nordic label precision:** Nordic-origin deployment ≠ Nordic-available platform ≠ Nordic-relevant pattern.
 7. **Fill the master research log** after each track completes.
 
+## Related: Platform Watch (separate research system)
+
+The **platform-watch** system (`platform-watch/`) tracks agent platform capabilities — what Microsoft, Google, OpenAI, and Anthropic can actually do for business users. It runs on a separate hourly OODA cycle with its own prompt (`platform-watch/cycle-prompt.md`).
+
+**How the two systems connect:**
+- **Domain research** (this system) finds practitioners doing agentic work in sales, finance, HR, etc. → Platform watch asks: on which platform? How?
+- **Platform watch** finds "platform X can't do Y" → Domain research asks: so how ARE people in that function doing Y?
+- **Source roster** (`source-roster.md`) needs domain-specific practitioners, not just tech/AI people. Each domain track should surface innovator practitioners per business function.
+
+**Two personas served:**
+1. **CTO planning AI transformation** — served by platform watch (which platform, what's real, what's marketing)
+2. **Business user who will USE agents** — served by domain research (what's possible in my function, who's doing it, what works)
+
+The personal→team→company agent framework (defined in `platform-watch/synthesis.md`) applies to domain research too — are the practitioners we find building personal agents, team agents, or company-wide agents?
+
 ## Research Log
 
 | Track | Date | Findings | Key Orientation |

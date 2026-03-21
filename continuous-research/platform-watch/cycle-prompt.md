@@ -10,6 +10,8 @@ This prompt drives each incremental research cycle. Run with `/loop 60m` or manu
 
 **The CTO question we answer:** Which platform can do which business use cases? Who is leading? Why?
 
+**Related: Domain practitioner research** (separate system, `../README.md` + `../findings/` + `../source-roster.md`). Tracks what practitioners are actually doing per business function (sales, finance, HR, compliance, operations, product). When you find a practitioner doing real agentic work, note which platform they're using — that feeds back into this system. When you find a platform gap, note which business function it blocks — that feeds the domain research.
+
 ## Cycle Execution
 
 ### Step 1: Read current state

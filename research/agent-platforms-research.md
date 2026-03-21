@@ -660,6 +660,30 @@ Use **Letta** for agents that need persistent memory across sessions and self-im
 
 **Orient:** 80-90% of agent projects fail in production. CrewAI-to-LangGraph migration is a real pattern. Anthropic's own guidance on long-running agents emphasizes progress files and git-based state. The production reality is much more constrained than vendor marketing suggests.
 
+### Round 5: March 2026 Landscape Update (6 searches)
+- "Claude Agent SDK update new features March 2026"
+- "AI agent platform framework production March 2026"
+- "LangGraph enterprise NVIDIA agent platform March 2026"
+- "OpenAI Frontier enterprise agent platform 2026"
+- "Bedrock AgentCore update March 2026 new features"
+- "A2A protocol agent production deployment real 2026"
+
+**Key developments:**
+
+1. **Bedrock AgentCore — 5 features in March:** Policy GA (Cedar-based agent governance outside agent code), Stateful MCP (session persistence in microVMs), AG-UI protocol (agent-user interface standard), Memory Streaming (Kinesis push for long-term memory), Shell Command API. First platform supporting all three protocols (MCP + A2A + AG-UI). ([AWS announcements](https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/), Mar 2026)
+
+2. **LangChain + NVIDIA enterprise partnership (Mar 16):** Deep Agents (long-running agent harness), NVIDIA AI-Q Blueprint (#1 deep research benchmark), OpenShell (secure sandbox), NIM microservices (2.6x throughput). LangChain: 1B cumulative downloads, 300+ enterprise LangSmith customers. ([LangChain blog](https://blog.langchain.com/nvidia-enterprise/), Mar 2026)
+
+3. **OpenAI Frontier (Feb 5):** Enterprise agent platform. Multi-vendor (supports Claude, Gemini, GPT). Named customers: HP, Intuit, Oracle, State Farm, Uber. Vendor-sourced results: manufacturer reduced 6 weeks → 1 day; investment firm freed 90% of sales time; energy producer +5% output = $1B+. Zero independent verification at 6+ weeks post-launch. ([OpenAI](https://openai.com/index/introducing-openai-frontier/); [TechCrunch](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/), Feb 2026)
+
+4. **Claude Agent SDK March updates:** Opus 4.6 + Sonnet 4.6 (1M context). Compaction API (beta) for infinite conversations. Data residency controls (US-only inference at 1.1x). MCP Elicitation (interactive forms). Effort parameter GA. ([platform.claude.com](https://platform.claude.com/docs/en/release-notes/overview); [npm](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk), Mar 2026)
+
+5. **A2A Protocol v0.3:** gRPC support, security card signing. Integrated into LangSmith Agent Server and Spring AI. 150+ partner organizations. Google offering Agent Engine, Cloud Run, GKE deployment paths. ([Google Cloud Blog](https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade), Mar 2026)
+
+6. **New entrant — Dify:** No-code/low-code agent platform, $30M funding, claims 280 enterprises and 1.4M deployments. Vendor claims, no independent verification.
+
+**Orient:** Bedrock AgentCore pulling ahead as the most complete managed runtime (policy + all three protocols). LangChain consolidating as the default framework layer with NVIDIA partnership. OpenAI Frontier is the newest platform competitor but still zero independent evidence. The framework-vs-platform distinction matters: LangGraph is logic, Bedrock/Azure/Frontier are hosting — they complement, not compete. Claude SDK data residency controls significant for EU/Nordic compliance.
+
 ### What Was Absent
 
 - No managed "Claude Agent Server" product from Anthropic
@@ -667,3 +691,6 @@ Use **Letta** for agents that need persistent memory across sessions and self-im
 - Limited independent verification of CrewAI's "60% Fortune 500" and "450M workflows" claims
 - Very few public postmortems of failed agent deployments (survivorship bias in discussions)
 - Limited information on actual concurrent agent limits in production (how many agents can really run simultaneously?)
+- No independent reviews of OpenAI Frontier at 6+ weeks post-launch
+- No independent reviews of Bedrock AgentCore Policy GA or other March features
+- No practitioner reports on LangChain Deep Agents (announced Mar 16, too early)

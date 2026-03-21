@@ -1,7 +1,7 @@
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-03-21 (cycle 19)
-OODA cycles: 4
+Last updated: 2026-03-21 (cycle 22)
+OODA cycles: 5
 
 ## Focus
 
@@ -99,6 +99,14 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - Accuracy/hallucination concerns documented for regulated domains
 - Pricing restructuring forces all-or-nothing purchasing
 
+### Post-GA update (cycle 22, Mar 21)
+- **Capacity issues STILL unresolved post-GA.** 63 outage reports in 24hrs around Mar 19 GA. Forum thread active since Dec 2025, no Google acknowledgment of root cause. Paul Roetzer (Marketing AI Institute): "far more of a flawed rollout than it is that they're not providing enough compute." ([Google Dev Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858); [Marketing AI Institute](https://www.marketingaiinstitute.com/blog/gemini-3-deep-think); [StatusGator](https://statusgator.com/services/google-workspace/google-workspace-studio), Mar 2026)
+- **"20M tasks" claim is vendor-sourced, unverifiable.** Google claims agents helped with 20M+ tasks in 30 days. No breakdown of what counts as a "task." Also claims 40% error reduction and 60% speed increase — no named customer, no methodology. All from vendor marketing. ([Google Workspace Blog](https://workspace.google.com/blog/product-announcements/introducing-google-workspace-studio-agents-for-everyday-work), Mar 2026)
+- **AI Tool Analysis review confirms 80/20 split.** Independent reviewer tested agent building: 80% of tasks genuinely no-code, 20% require "logic brain" (variable mapping, flow control). Gemini 3 PDF attachment reasoning works well (correctly reading invoice from misleading email subject). ([AI Tool Analysis](https://aitoolanalysis.com/google-workspace-studio/), practitioner analysis, Mar 2026)
+- **Gemini Enterprise for CX launched (NRF Jan 2026).** Named retail adopters: Kroger, Lowe's, Papa Johns, Woolworths. Papa Johns first to deploy omnichannel food ordering agent. All vendor-sourced, no metrics from any customer. ([Google Cloud Press Corner](https://www.googlecloudpresscorner.com/2026-01-11-Google-Cloud-Brings-Shopping-and-Customer-Service-Together-with-Gemini-Enterprise-for-Customer-Experience), vendor press release, Jan 2026)
+- **Promotional limits expire March 31.** Higher usage limits during initial launch are promotional only. Capacity may worsen after expiry. ([Google Workspace Updates](https://workspaceupdates.googleblog.com/2025/12/workspace-studio.html))
+- **Nordic: fifth consecutive zero.** No Finnish, Swedish, Norwegian, or Danish organizations found using Google Workspace agents.
+
 ### GA launch reality (from cycles 3-4)
 - Workspace Studio GA plagued by capacity issues — "at capacity" errors, quota exceeded on paid plans, 63 outages in 24hrs around launch ([Google Dev Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858), Mar 2026)
 - **Capacity issues NOT resolved post-GA (cycle 4, Mar 21).** Forum thread still active, no Google acknowledgment of root cause or timeline. StatusGator confirms ongoing outage reports. ([StatusGator](https://statusgator.com/services/google-workspace/google-workspace-studio), Mar 2026)
@@ -130,12 +138,13 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 
 ## Next Cycle Priorities
 
-1. **Workspace Studio practitioner reports.** GA is 2 days old (Mar 19). In 4-6 weeks (late April), first real user reports should appear. Track forums, blogs, Reddit. This is the #1 priority for next Google cycle.
-2. **Capacity/reliability stabilization.** Still broken as of Mar 21. Check if Google acknowledges or resolves.
-3. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 4 cycles. Deloitte, Decathlon, Nokia named as testers — watch for results. CGI partnership is a signal to track.
-4. **Governance gap solutions.** Agent lifecycle management when employees leave. Watch for Google or partner guidance.
-5. **EU deployment issues.** GitHub bugs suggest EU-specific failures. Track resolution — critical for Nordic customers.
-6. **Google Chat as agent delivery surface.** Still zero findings after 4 cycles.
+1. **Workspace Studio practitioner reports (late April).** GA is 2 days old. In 4-6 weeks, first real user reports should appear. Track forums, blogs, Reddit.
+2. **Capacity/reliability post-promotional-limits (April 1+).** Promotional higher limits expire March 31. Will capacity degrade?
+3. **Gemini Enterprise CX deployments.** Kroger, Lowe's, Papa Johns, Woolworths named — watch for independent metrics.
+4. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 5 cycles. Deloitte, Decathlon, Nokia, CGI to track.
+5. **Governance gap.** Agent lifecycle management when employees leave — still unaddressed.
+6. **EU deployment issues.** GitHub bugs (EU authorization errors) — track resolution.
+7. **Google Chat as agent delivery surface.** Still zero findings after 5 cycles.
 
 ## Sources
 
@@ -144,3 +153,5 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-biz01.md` — Business user agent capabilities research
 - `runs/2026-03-21-cycle13.md` — GA launch reality check: capacity issues, architectural limits, governance gaps
 - `runs/2026-03-21-cycle19.md` — Post-GA reality check: capacity still broken, Gemini Enterprise dev bugs, CGI channel play, evidence absence confirmed
+- `runs/2026-03-21-cycle22.md` — Post-GA update: capacity still unresolved, 20M tasks vendor claim, 80/20 no-code review, Gemini Enterprise CX retail customers, Nordic fifth zero
+- `runs/2026-03-21-landscape-update.md` — Cross-platform landscape: Bedrock AgentCore 5 features, LangChain+NVIDIA, OpenAI Frontier, Claude SDK updates, A2A v0.3

@@ -27,30 +27,51 @@ Anthropic/Claude is tracked opportunistically (when it surfaces in other platfor
 
 ### Step 3: OODA Loop
 
-**Observe:** Search for the latest on this cycle's platform, focused on BUSINESS USER experience:
+**Observe:** Search for the latest on this cycle's platform, focused on BUSINESS USER experience. Apply THREE lenses:
+
+**Lens 1: Business user experience**
 - What can a non-developer actually build or use?
 - Real user reports — business analysts, sales people, managers using agents
 - Team/shared agent capabilities — governance, sharing, permissions
-- Integration with business tools (CRM, ERP, SharePoint, email, calendar)
 - The personal→team→company promotion path — does any evidence exist?
 
-Search queries should target business users, not developers:
-- "Copilot Studio business user experience 2026"
-- "ChatGPT enterprise sales team workflow"
-- "Gemini Enterprise business analyst review"
-- "[platform] [business function] agent real experience"
-- "[platform] team agent sharing governance"
+**Lens 2: Enterprise integration reality (the killer test)**
+Real enterprises run 10-15+ systems: Salesforce, Snowflake, Redshift, Slack, Office 365, SharePoint, Jira, Confluence, Canva, Braze, Hightouch, etc. Test each platform against:
+- **Multi-tool:** Can the agent connect to 5+ systems in one workflow? Not just read — write back, trigger actions, move data.
+- **Multi-turn:** Does the agent remember across sessions? Can it learn from corrections? Does it build knowledge over time?
+- **Multi-system orchestration:** Can it coordinate actions across CRM + data warehouse + communication + documents in one task?
 
-Also search for the ABSENCE of things:
-- "[platform] agent limitations business users"
+**Lens 3: Enterprise security reality**
+Real enterprise agents must handle:
+- **RBAC:** Agent sees only what the user is authorized to see. Sales rep's agent ≠ finance director's agent.
+- **Agent identity:** Who IS the agent when it writes to Jira or Salesforce? User delegation or service account?
+- **Connector/tool SSO:** Can the agent authenticate to 10 systems via the user's SSO? Or does each connector need separate credentials?
+- **Skill-level permissions:** "Can read Salesforce contacts but cannot modify pipeline data" — granular, not all-or-nothing.
+- **Cross-system audit trails:** Every agent action traceable across all systems it touches.
+- **Data residency:** When agent pulls PII from Snowflake and synthesizes in LLM context, where does data transit?
+
+**Lens 4: The gap between demo and production**
+- Search for what DOESN'T work, not just what's announced
+- Connector count ≠ orchestration capability. 1,400 connectors means nothing if you can't chain 5 of them in one workflow.
+- SSO/auth across connectors is where most enterprise agent projects die.
+
+Search queries should target business users AND integration reality:
+- "[platform] multi-system agent workflow enterprise"
+- "[platform] Salesforce Snowflake integration agent"
+- "[platform] agent memory learning across sessions"
+- "[platform] business user experience 2026"
+- "[platform] agent limitations enterprise integration"
 - "[platform] agent not ready enterprise"
 
-**Orient:** Compare findings against current state.md. What's genuinely new? What changes the picture? Apply the personal→team→company framework — does this finding tell us something about which level the platform serves?
+**Orient:** Compare findings against current state.md. Apply all three lenses:
+1. Personal→team→company — which level does this serve?
+2. Integration reality — does this pass the multi-tool/multi-turn test?
+3. Demo vs production — is this real or marketing?
 
 **Decide:** Pick 1-3 findings worth adding. Quality gates:
 - From the last 6 months?
 - Source is practitioner-level or better? (Not vendor press release)
-- Tells us something about business user experience, not just developer experience?
+- Tells us something about business user experience or enterprise integration reality?
 - Adds something we don't already have?
 
 **Act:** Write findings.

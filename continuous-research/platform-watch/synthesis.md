@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
-Last updated: 2026-03-21 (cycle 18)
-Total OODA cycles: 18 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update + OpenAI market dynamics + Microsoft Wave 3/GTC deep dive)
+Last updated: 2026-03-21 (cycle 19)
+Total OODA cycles: 19 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update + OpenAI market dynamics + Microsoft Wave 3/GTC deep dive + Google post-GA reality check)
 
 ## Purpose
 
@@ -59,7 +59,7 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 **Anthropic: Standards + Best Engine — but infrastructure is failing.** Three-layer play: (1) open standards competitors adopt (MCP + Agent Skills), (2) model+runtime powering partners (Copilot Cowork), (3) own business surface (Cowork + plugins + marketplace). Computer Use (61.4% OSWorld) = sleeper for legacy integration. B2B marketplace launched Mar 6 (GitLab, Harvey, Snowflake). $100M partner network. **But: infrastructure fragility is now Level 3 convergence — 109 incidents in 90 days** (28 major, 81 minor, median 1h 8m). MCP enterprise governance being filled by third-party gateways (MintMCP, Stacklok, Lunar.dev), not Anthropic. Agent Teams = coding only, not business users. (See `claude-anthropic/state.md`)
 
-**Google: Strong Architecture, Weak Execution.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But GA launch plagued by capacity issues (63 outages in 24hrs), architectural limits (no webhooks, no state, no observability), and agent sprawl risk (ON by default, no lifecycle management). Gemini model stability undermines everything. Zero enterprise evidence. (See `google-workspace/state.md`)
+**Google: Strong Architecture, Weak Execution — capacity issues persist post-GA.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But capacity errors NOT resolved 2 days post-GA — users still hitting "at capacity" on paid plans. Architectural limits confirmed by independent analysis: no state persistence, no inbound triggers, no observability. Author warns "should never be used where strict correctness or transactional integrity is required." Gemini Enterprise developer bugs include EU-specific deployment failures (Nordic-relevant). CGI (90K consultants, strong Nordic) signed Gemini Enterprise channel deal but zero customer deployments named. Zero independent enterprise evidence after 4 research cycles. (See `google-workspace/state.md`)
 
 **Vertical SaaS: Ahead in Their Lanes.** Salesforce Agentforce ($540M+ ARR, 9,500+ paid), Zendesk (51% auto-resolution at SeatGeek), ServiceNow ($600M+ ACV), SAP Joule (deepest ERP agents), HubSpot Breeze (SMB-accessible). Customer service is the breakthrough domain with convergence-level evidence. The vertical advantage: they own the data context. The limitation: strong only in their lane, no cross-enterprise capability. Nordic signal: Finnair (80% chat resolution) and reMarkable are global Agentforce showcases. (See `vertical-saas/state.md`)
 

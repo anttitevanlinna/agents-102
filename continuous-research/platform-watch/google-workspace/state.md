@@ -1,7 +1,7 @@
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-03-21
-OODA cycles: 3
+Last updated: 2026-03-21 (cycle 19)
+OODA cycles: 4
 
 ## Focus
 
@@ -99,12 +99,19 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - Accuracy/hallucination concerns documented for regulated domains
 - Pricing restructuring forces all-or-nothing purchasing
 
-### GA launch reality (from cycle 3)
+### GA launch reality (from cycles 3-4)
 - Workspace Studio GA plagued by capacity issues — "at capacity" errors, quota exceeded on paid plans, 63 outages in 24hrs around launch ([Google Dev Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858), Mar 2026)
-- Architectural limitations prevent enterprise use: no webhook triggers, no state persistence, no observability/decision traces ([dev.to analysis](https://dev.to/alifar/google-workspace-studio-technical-overview-a63), Mar 2026)
+- **Capacity issues NOT resolved post-GA (cycle 4, Mar 21).** Forum thread still active, no Google acknowledgment of root cause or timeline. StatusGator confirms ongoing outage reports. ([StatusGator](https://statusgator.com/services/google-workspace/google-workspace-studio), Mar 2026)
+- Architectural limitations prevent enterprise use: no webhook triggers, no state persistence, no observability/decision traces. Author warns: "Workspace Studio should never be used where strict correctness or transactional integrity is required." ([dev.to analysis](https://dev.to/alifar/google-workspace-studio-technical-overview-a63), Mar 2026)
 - Agent sprawl/shadow AI risk: tool ON by default, no lifecycle management for orphaned agents. Forrester: "beyond skill level of most employees" ([UC Today](https://www.uctoday.com/productivity-automation/is-google-workspace-studios-rollout-already-ahead-of-your-governance-policy/), Mar 2026)
+- CCS Insight: only 12% of orgs have fully integrated automation strategies. Predicts 25% of compliance failures linked to unsanctioned AI by 2027. ([CCS Insight](https://www.ccsinsight.com/blog/google-workspace-studio-signals-a-new-front-line-for-business-first-ai-agents/), Dec 2025)
 - Microsoft Copilot Studio ahead on enterprise: model-agnostic, OpenAPI plugins, deeper governance. Google wins simplicity/price ([SourceForge comparison](https://sourceforge.net/software/compare/Google-Workspace-Studio-vs-Microsoft-Copilot-Studio/), [Revolgy](https://www.revolgy.com/insights/blog/google-workspace-vs-microsoft-365-2026-strategic-playbook-for-enterprises), Mar 2026)
 - All enterprise deployment claims remain vendor-sourced only — circular evidence ecosystem ([Google Cloud ROI report](https://cloud.google.com/transform/roi-of-ai-how-agents-help-business))
+- **BizTech Magazine article (Mar 2026) about Workspace Studio "transforming enterprise workflows" contains zero named customers, zero metrics, zero independent evidence** — filed as evidence of absence ([BizTech](https://biztechmagazine.com/article/2026/03/how-googles-workspace-studio-transforming-enterprise-workflows), Mar 2026)
+
+### Gemini Enterprise developer layer (from cycle 4)
+- GitHub issues show deployment friction: agent authorization errors in EU locations (FAILED_PRECONDITION), agents not appearing in Agent Gallery (SIGTERM after 2 min) ([GitHub #3534](https://github.com/google/adk-python/issues/3534), [GitHub #4453](https://github.com/google/adk-python/issues/4453), Mar 2026)
+- CGI equips 90K+ consultants with Gemini Enterprise (Jan 2026) — consultancy channel play, not deployment evidence. No named customers, no metrics. Nordic-relevant because CGI has strong Nordic presence. ([CGI](https://www.cgi.com/en/cgi-help-clients-accelerate-agentic-ai-outcomes-gemini-enterprise), [ChannelE2E](https://www.channele2e.com/news/cgi-expands-global-alliance-with-google-cloud-to-help-businesses-with-gemini-ai), Jan 2026)
 
 ## What We Need To Learn (business user focus)
 
@@ -123,11 +130,12 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 
 ## Next Cycle Priorities
 
-1. **Workspace Studio practitioner reports.** GA is 2 days old. In 4-6 weeks, first real user reports should appear. Track forums, blogs, Reddit.
-2. **Capacity/reliability stabilization.** Are the GA launch issues resolved? Check forums for improvement signals.
-3. **Gemini Enterprise Cloud deployments.** Still zero independent evidence. Deloitte, Decathlon, Nokia named as testers — watch for results.
+1. **Workspace Studio practitioner reports.** GA is 2 days old (Mar 19). In 4-6 weeks (late April), first real user reports should appear. Track forums, blogs, Reddit. This is the #1 priority for next Google cycle.
+2. **Capacity/reliability stabilization.** Still broken as of Mar 21. Check if Google acknowledges or resolves.
+3. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 4 cycles. Deloitte, Decathlon, Nokia named as testers — watch for results. CGI partnership is a signal to track.
 4. **Governance gap solutions.** Agent lifecycle management when employees leave. Watch for Google or partner guidance.
-5. **Head-to-head with M365 Copilot Studio.** Initial comparison done (cycle 3) — Microsoft leads on enterprise depth. Track if Google closes gap.
+5. **EU deployment issues.** GitHub bugs suggest EU-specific failures. Track resolution — critical for Nordic customers.
+6. **Google Chat as agent delivery surface.** Still zero findings after 4 cycles.
 
 ## Sources
 
@@ -135,3 +143,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-run02.md` — Developer-focused ecosystem research
 - `runs/2026-03-21-biz01.md` — Business user agent capabilities research
 - `runs/2026-03-21-cycle13.md` — GA launch reality check: capacity issues, architectural limits, governance gaps
+- `runs/2026-03-21-cycle19.md` — Post-GA reality check: capacity still broken, Gemini Enterprise dev bugs, CGI channel play, evidence absence confirmed

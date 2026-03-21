@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
-Last updated: 2026-03-21
-Total OODA cycles: 4 (initial developer-focused sweep) + business agent research starting
+Last updated: 2026-03-21 (cycle 8)
+Total OODA cycles: 4 (initial developer-focused sweep) + 4 business agent cycles
 
 ## Purpose
 
@@ -61,7 +61,7 @@ An agent that can only talk to one or two systems is a toy. A sales meeting prep
 |----------|------------------|---------------------------|---------|
 | **Microsoft** | 1,400+ connectors (Copilot Studio) | Power Automate (separate product, developer skill) | Broadest connector count but orchestration requires developers |
 | **Google** | ~10 integrations (Workspace Studio) | Apps Script + Vertex AI (developer) | Far behind on integrations |
-| **OpenAI** | Read-only connectors (Drive, SharePoint, Notion) | None — single-player architecture | Cannot write back to business systems |
+| **OpenAI** | Google/Microsoft write actions + Jira via Rovo MCP. 8+ new MCP connectors (March 2026). Still limited vs M365 1,400+ | None — single-player architecture | Evolving from read-only to write-capable. Still cannot orchestrate across 5+ systems. |
 | **Anthropic/MCP** | 6,400+ MCP servers | Developer setup required | Richest ecosystem but zero business-user accessibility |
 
 **The gap:** Connectors exist but orchestration across systems doesn't. Connecting to Salesforce AND Snowflake AND Slack in one agentic workflow requires custom development on every platform.
@@ -138,7 +138,7 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 | Business Use Case | Best Platform Today | Why | Caveat |
 |-------------------|-------------------|-----|--------|
-| Sales meeting prep | ChatGPT / Claude | Best at research + synthesis from unstructured data | Personal only, no CRM integration without developer |
+| Sales meeting prep | ChatGPT / Claude | Best at research + synthesis from unstructured data. ChatGPT now has FactSet/MSCI/Moody's integrations for financial data. | Personal only. ChatGPT connectors improving but still no Salesforce write-back. |
 | Team sales playbook agent | Copilot Studio | M365 + CRM connectors, shareable | No evidence of real deployments |
 | Finance reconciliation | Azure Foundry | Durable orchestration, audit trails | Requires developer, unreliable grounding reported |
 | HR onboarding workflow | Copilot Studio | M365 integration (SharePoint, Teams, Outlook) | No evidence of agentic HR workflows |
@@ -172,3 +172,4 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 | 1 | 2026-03-21 | Microsoft (dev focus) | Foundry GA. Broadest surface but unreliable. No enterprise evidence. |
 | 2 | 2026-03-21 | Google (dev focus) | ADK strong framework. Model stability problems. No enterprise evidence. |
 | 3 | 2026-03-21 | Anthropic (dev focus) | Best reasoning. MCP strategic moat. Token cost problems. No enterprise evidence. |
+| 8 | 2026-03-21 | OpenAI (business) | Connectors evolve from read-only to write-capable. Enterprise controls improving. Still zero named deployments. |

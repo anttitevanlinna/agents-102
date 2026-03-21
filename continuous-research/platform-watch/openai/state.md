@@ -1,7 +1,7 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-21
-OODA cycles: 2
+Last updated: 2026-03-21 (cycle 8)
+OODA cycles: 3
 
 ## Focus
 
@@ -17,8 +17,11 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 - Unified browser + research + conversation agent
 - Can navigate web, fill forms, do multi-step research
 - GPT-5.4 scores 75% on OSWorld-Verified (above 72.4% human average for software navigation)
+- GPT-5.4 (March 2026) adds autonomous desktop/browser/software navigation — out-of-the-box agentic computer use ([Fortune](https://fortune.com/2026/03/05/openai-new-model-gpt5-4-enterprise-agentic-anthropic/))
 - Operates in sandboxed virtual computer — cannot access user's browser sessions or logged-in business systems
 - Plus plan: only 40 agent messages/month. Pro ($200/mo) needed for real usage
+- **NEW: Recurring task scheduling** — completed tasks can be scheduled to recur (e.g., weekly metrics report every Monday). First step toward persistent business workflows. ([Help Center](https://help.openai.com/en/articles/11752874-chatgpt-agent))
+- **Independent review (Cybernews, March 2026):** Complex tasks take 5-30 minutes. Virtual desktop handover is fuzzy/awkward. Prompt injection risk acknowledged by OpenAI. ([Review](https://cybernews.com/ai-tools/chatgpt-agent-review/))
 - **Personal agent** tier — impressive demo, but sandboxed away from business systems
 
 ### Custom GPTs with Actions
@@ -32,10 +35,14 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 ### ChatGPT Enterprise / Team
 - Admin controls, SSO, SCIM (Enterprise only), data privacy
 - Shared workspace for custom GPTs
-- Connectors: Google Drive, SharePoint, Notion, GitHub, Asana, ClickUp (read-only)
+- **Connectors (updated March 2026):** Google Drive, SharePoint, Notion, GitHub, Asana, ClickUp — **now with WRITE actions for Google and Microsoft apps** (draft emails, create docs/spreadsheets, schedule meetings). Previously read-only. ([Release Notes](https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes))
+- **NEW MCP connectors:** Atlassian Rovo (Jira + Confluence + Compass, with Jira WRITE actions), Amplitude, Fireflies, Monday.com, Stripe, Hex, Egnyte, Vercel ([Release Notes](https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes))
+- **NEW: ChatGPT for Excel and Google Sheets** (beta) — spreadsheet integration ([Release Notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes))
+- **NEW: Financial data integrations** — FactSet, MSCI, Third Bridge, Moody's for market/company data ([Release Notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes))
+- **NEW: Enterprise agent controls** — workspace owners can enable/disable agent mode (default OFF), assign to specific roles, block specific domains, control app availability ([Help Center](https://help.openai.com/en/articles/11752874-chatgpt-agent))
 - EKM (Enterprise Key Management) disables all synced connectors
 - Single-player architecture: no shared agents, no team workflows, no compounding knowledge
-- **Team agent** tier — governance exists but agentic capability does not
+- **Team agent** tier — governance improving (role-based agent access, domain blocking) but agentic workflow capability still limited
 
 ### Responses API + Agents SDK
 - Developer tools for building custom agents
@@ -47,7 +54,7 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 | Level | OpenAI product | Maturity | Evidence (updated 2026-03-21) |
 |-------|---------------|----------|----------|
 | Personal | ChatGPT Agent + Custom GPTs | Shipping, widely used | 900M weekly users, 5M business seats. But 80% of Enterprise messages are plain chat. Usage is copilot, not agent. Agent mode is sandboxed and capped (40 msg/mo on Plus). |
-| Team | ChatGPT Team / Enterprise shared GPTs | Shipping | No evidence of team-level agentic workflows. Collaboration is read-only link sharing. Architecture is single-player. Connectors are read-only. |
+| Team | ChatGPT Team / Enterprise shared GPTs | Shipping | No evidence of team-level agentic workflows. Collaboration is read-only link sharing. Architecture is single-player. Connectors now include some write actions (Google/Microsoft apps, Jira via Rovo). Enterprise controls improving (role-based agent access). |
 | Company | Agents SDK + Responses API | Shipping | Developer-only. No business user path. Completely separate product from ChatGPT. |
 | Promotion path | Custom GPT → ? | **Broken** | Cannot promote a personal GPT to a governed team agent. No identity management, no audit trails, no access controls on GPTs. Each level requires starting over with different tools. |
 
@@ -78,7 +85,7 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 Multiple independent sources converge on the same set of structural gaps:
 
 1. **Single-player architecture** — no shared agents, no team workflows (Dust, eesel, multiple reviewers)
-2. **Read-only connectors** — can read Google Drive/SharePoint but cannot write to Salesforce/Zendesk/Jira (Dust, OpenAI docs)
+2. **~~Read-only~~ connectors evolving** — Google/Microsoft apps now support write actions (emails, docs, meetings). Jira write via Atlassian Rovo MCP. But Salesforce/Zendesk/custom systems still read-only or unavailable. (source: runs/2026-03-21-cycle08.md)
 3. **EKM kills connectors** — compliance-conscious orgs lose all data sync (OpenAI docs)
 4. **No workflow orchestration** — cannot chain actions across business systems (Dust, eesel)
 5. **No agent identity management** — unlike Microsoft Entra, no way to give agents governed identities (Bright Ideas)
@@ -146,6 +153,9 @@ Everything above is announced or in limited availability. Frontier customers are
 - [ ] Open Responses: gaining traction or stalling? Who else has joined?
 - [ ] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise?
 - [ ] Responses API `background: true` — anyone using async agent execution for business workflows?
+- [ ] **NEW:** Write-action connectors — is anyone using Jira write/Google Sheets creation via ChatGPT in production?
+- [ ] **NEW:** Recurring task scheduling — any business user reports of using scheduled agent tasks?
+- [ ] **NEW:** Market share erosion — what's gaining ground? Is this Claude/Gemini or vertical tools?
 
 ## Sources
 
@@ -153,3 +163,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-run00.md` — Developer-focused initial research
 - `runs/2026-03-21-biz01.md` — Business agent research
 - `runs/2026-03-21-codex-trajectory.md` — Platform trajectory deep dive
+- `runs/2026-03-21-cycle08.md` — Connector evolution, enterprise controls, GPT-5.4

@@ -1,7 +1,7 @@
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-03-21 (cycle 24)
-OODA cycles: 3
+Last updated: 2026-03-21 (cycle 25)
+OODA cycles: 4
 
 ## Focus
 
@@ -14,23 +14,25 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 ## Platform Summary
 
 ### Salesforce Agentforce — CRM / Sales / Service
-- **Scale (FY2026 full year):** 29,000 deals, 12,000 deployed customers, $800M ARR (up 169% YoY). Agentforce + Data 360 ARR exceeded $2.9B (up 200%+ YoY). 60%+ of Q4 bookings from existing customer expansion — suggesting real value, not just experimentation. Fastest-growing Salesforce product ever. ([Subscription Insider](https://www.subscriptioninsider.com/article-type/news/salesforce-fy2026-results-show-subscription-led-revenue-base-as-agentforce-becomes-a-fast-growing-layer); [CX Today](https://www.cxtoday.com/crm/agentforce-becomes-salesforces-fastest-growing-product-ever/), FY2026 results)
+- **Scale (FY2026 full year):** Q4 revenue $11.2B (+12%). 29,000 deals, 12,000 deployed customers, $800M ARR (up 169% YoY). Agentforce + Data 360 ARR exceeded $2.9B (up 200%+ YoY). 60%+ of Q4 bookings from existing customer expansion. Fastest-growing Salesforce product ever. ([Subscription Insider](https://www.subscriptioninsider.com/article-type/news/salesforce-fy2026-results-show-subscription-led-revenue-base-as-agentforce-becomes-a-fast-growing-layer); [CX Today](https://www.cxtoday.com/crm/agentforce-becomes-salesforces-fastest-growing-product-ever/); [Silicon Review](https://thesiliconreview.com/2026/03/salesforce-record-q4-fiscal-2026-results-agentforce), FY2026 results)
 - **Named deployments:**
+  - Reddit: 46% case deflection, 84% faster resolution (8.9 min → 1.4 min) — new Mar 2026
   - Finnair (Nordic): 80% chat resolution, 30% faster onboarding — first airline adopter ([Diginomica](https://diginomica.com/how-finnair-aims-fly-high-agentforce), [TechInformed](https://techinformed.com/agentforce-finnair-deployment/))
   - Wiley: 40%+ case resolution improvement, $213K saved ([TechInformed](https://techinformed.com/salesforce-launches-agentforce-saks-wiley-and-wyndham-spearhead-no-code-ai-for-enterprise/))
   - reMarkable (Nordic): 50% autonomous case handling + internal agents via Slack ([vendor case study — Level 0](https://www.salesforce.com/agentforce/metrics/))
   - 1-800Accountant: 70% repetitive inquiry automation during tax season ([Ksolves](https://www.ksolves.com/blog/salesforce/top-companies-using-agentforce))
-- **Limitations:** 15 topics max, 15 actions per topic per agent. $2/conversation creates budget unpredictability. Practitioners report hallucination and forced adoption. ([Salesforce Ben](https://www.salesforceben.com/where-are-we-really-at-with-agentforce-adoption/), [Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/))
-- **Practitioner verdict:** "Marketing veneer over underbaked AI" — but improving steadily (Salesforce Ben, Mar 2026)
+- **Limitations:** 15 topics max, 15 actions per topic per agent. Pricing shifted from $2/conversation to usage-based credits ($0.10/action) after "whiplash-inducing" backlash ([Monetizely](https://www.getmonetizely.com/blogs/the-doomed-evolution-of-salesforces-agentforce-pricing)). Atlas Reasoning Engine: session-to-session variance in production — identical scenarios triggering different paths. Salesforce added Agent Script (deterministic control layer), walking back autonomy promise. ([Salesforce Ben](https://www.salesforceben.com/why-agentforce-adoption-is-slower-than-expected-and-what-salesforce-needs-to-do/); [CIO.com](https://www.cio.com/article/4113617/salesforces-agentforce-recalibration-raises-costs-and-complexity-for-cios.html); [Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/))
+- **Practitioner verdict:** Convergent criticism (Level 2-3): adoption slower than marketed, autonomy walked back, pricing unstable. Greyhound Research CEO: "CIOs budgeted based on autonomy vision. What Salesforce is now saying is that autonomy without guardrails is unscalable." Compounding error problem: 85% per-step accuracy = 20% success on 10-step workflows. ([Salesforce Ben](https://www.salesforceben.com/why-agentforce-adoption-is-slower-than-expected-and-what-salesforce-needs-to-do/); [CIO.com](https://www.cio.com/article/4113617/salesforces-agentforce-recalibration-raises-costs-and-complexity-for-cios.html), Mar 2026)
 - **New deployment: UK police department "Bobby"** — non-emergency calls, 90+ topics, 20% reduction in human agent demand. ([Codleo](https://www.codleo.com/blog/salesforce-spring-26-release), Mar 2026)
 - **Salesforce's own Help Portal: 62% case resolution rate (target 80%).** This is Salesforce eating its own cooking and falling short. Initially only 2 of 6 test use cases worked well. ([Salesforce Ben 6-month review](https://www.salesforceben.com/agentforce-for-salesforce-help-6-month-review-and-whats-improved/), Mar 2026)
+- **Spring 2026 release:** Agentforce Contact Center (voice + digital + CRM), Agentforce Builder (no-code to pro-code). Acquisitions: Qualified (marketing agents), Cimulate (product discovery/commerce). Partners leading 70% of implementations. ([Salesforce](https://www.salesforce.com/news/stories/spring-2026-product-release-announcement/) — Level 0)
 - **93% accuracy claim insufficient for enterprise** — Six Sigma = 99.999%. Gap between claimed and observed accuracy is the story. ([Salesforce Ben adoption reality](https://www.salesforceben.com/where-are-we-really-at-with-agentforce-adoption/), Mar 2026)
 - **Nordic signal:** Strong. Finnair + reMarkable. Salesforce opened Stockholm office Dec 2025 for Nordic Agentforce adoption. World Tour events: Copenhagen (Apr 23), Oslo (May 20), Stockholm (May 27). Hiring Forward Deployed Engineers across Nordic capitals. Majblomman (Swedish nonprofit) won hackathon concept — not production.
-- **Evidence level:** Level 2-3 (customer service convergence)
+- **Evidence level:** Level 2-3 (customer service convergence; counter-evidence also at Level 2-3)
 
 ### Zendesk AI Agents — Customer Service
 - **Scale:** ~20,000 enterprise customers, 4.6B tickets/year.
-- **Forethought acquisition (March 11, 2026):** All-cash, largest in Zendesk history. Expected close end of March. Adds: self-learning agents with "Resolution Learning Loop" (detects workflow gaps, generates procedures), Browser Agent for "automation without API" (UI interaction), native voice automation. Integration timeline unknown. ([TechCrunch](https://techcrunch.com/2026/03/11/zendesk-acquires-agentic-customer-service-startup-forethought/); [CMSWire](https://www.cmswire.com/customer-experience/zendesk-acquires-forethought-for-self-learning-ai-agents/))
+- **Forethought acquisition (March 11, 2026):** All-cash, largest in Zendesk history (15th acquisition since going private for $10.2B in 2022; ~$500M M&A in past 18 months). Expected close end of March 2026. Adds: self-improving AI with "Resolution Learning Loop" (detects workflow gaps, generates procedures, tests before deployment), "computer use" for legacy systems without APIs, native voice automation. Forethought was handling 1B+ interactions/month pre-acquisition; $115M total funding. Futurum: accelerates roadmap by "over a year." Integration timeline unknown — key watch item. ([TechCrunch](https://techcrunch.com/2026/03/11/zendesk-acquires-agentic-customer-service-startup-forethought/); [CMSWire](https://www.cmswire.com/customer-experience/zendesk-acquires-forethought-for-self-learning-ai-agents/); [Futurum](https://futurumgroup.com/insights/will-zendesks-forethought-acquisition-enable-true-agentic-resolutions/))
 - **Named deployment:**
   - SeatGeek: 51% auto-resolution in 4 months, 57,000 queries autonomous during peak events ([TechBuzz.ai](https://www.techbuzz.ai/articles/zendesk-s-ai-agent-claims-80-issue-resolution-rate))
 - **Architecture:** Multi-step: understand query → search KB → execute actions (refunds, cancellations) → LLM verification. Genuinely agentic within bounded domain.
@@ -40,7 +42,7 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 - **Nordic signal:** None found
 
 ### ServiceNow (Now Assist / AI Agents) — IT Ops / Employee Service
-- **Scale:** $600M+ ACV, tracking to $1B+. 55x consumption growth since May 2025. 244 deals >$1M in Q4. ([Futurum](https://futurumgroup.com/insights/servicenow-q4-fy-2025-earnings-highlight-ai-platform-momentum/))
+- **Scale:** $600M+ ACV (doubled YoY), tracking to $1B+ in 2026. 244 deals >$1M in Q4 (~40% YoY growth). 35 deals >$1M for Now Assist in Q4 alone. Deals with 5+ Now Assist products grew 10x YoY. AI Control Tower volume 4x targets. Total revenue $3.6B Q4 (+20.5% YoY). 603 customers >$5M ACV. ([Futurum](https://futurumgroup.com/insights/servicenow-q4-fy-2025-earnings-highlight-ai-platform-momentum/); [ServiceNow IR](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-Reports-Fourth-Quarter-and-Full-Year-2025-Financial-Results-Board-of-Directors-Authorizes-Additional-5B-for-Share-Repurchase-Program/default.aspx))
 - **Named customers:** ExxonMobil, Standard Chartered, Merck — no detailed metrics from any. CVS Health and City of Raleigh as beta customers for Autonomous Workforce.
 - **Moveworks acquisition ($2.85B, Dec 2025):** 250 mutual customers. "Autonomous Workforce" launched Feb 26, 2026. L1 Service Desk AI Specialist in controlled availability, GA expected Q2 2026. "EmployeeWorks" combines Moveworks conversational AI + ServiceNow workflows. ([ServiceNow newsroom](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-launches-Autonomous-Workforce-that-thinks-and-acts-adds-Moveworks-to-the-ServiceNow-AI-Platform/default.aspx) — vendor Level 0)
 - **Internal claims:** 90% of IT requests handled autonomously, 99% faster than human. 89% of customer support autonomously. ([VentureBeat](https://venturebeat.com/orchestration/servicenow-resolves-90-of-its-own-it-requests-autonomously-now-it-wants-to) — bare facts)
@@ -51,11 +53,12 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 - **Evidence level:** Level 2 (strong revenue signal, weak deployment evidence)
 
 ### SAP Joule — ERP / Finance / Supply Chain / HR
-- **Scale:** 400+ AI use cases, 2,400+ Joule skills. Joule Studio Agent Builder GA January 2026.
+- **Scale:** 400+ AI use cases planned by EOY 2026, 2,100+ Joule skills. Joule Studio Agent Builder GA January 2026 (free trial for SAP Build customers Q1 2026).
 - **Unique position:** Only platform targeting core ERP processes — cash management, procurement, production planning, expense management. Deepest business process agents across any platform.
 - **Expert assessment:** Josh Bersin: "SAP really has its AI act together" — ahead of Workday. Multi-functional agents (recruiting + training) = where big ROI comes. ([Josh Bersin](https://joshbersin.com/2025/10/sap-jumps-ahead-in-ai-agents-with-joule-hcm-features-and-more/))
-- **Deployment evidence:** Accenture (Optisell, 3 weeks) and Western Sugar Cooperative (25% invoice processing reduction) — both vendor-sourced only ([SAP News Center](https://news.sap.com/2025/10/sap-connect-business-ai-new-joule-agents-embedded-intelligence/))
-- **Evidence level:** Level 1-2 (expert opinion + vendor-sourced metrics)
+- **Deployment evidence:** Bosch (Florian Haustein, Director Digital CX): "AI-powered case classification agent in SAP Service Cloud has been a game-changer" — no metrics, vendor-sourced. Accenture (Optisell, 3 weeks) and Western Sugar Cooperative (25% invoice processing reduction) — both vendor-sourced only. Production Planning Agent planned GA Q1 2026, Order Reliability Agent Q2 2026. ([SAP News Center](https://news.sap.com/2025/10/sap-connect-business-ai-new-joule-agents-embedded-intelligence/); [AIMultiple](https://research.aimultiple.com/sap-ai-agents/))
+- **Limitation:** Heavily customized SAP environments limit native AI agent effectiveness — many enterprises need third-party solutions.
+- **Evidence level:** Level 1-2 (expert opinion + vendor-sourced metrics; Bosch adds a name but no numbers)
 - **Nordic signal:** None found
 
 ### HubSpot Breeze — Marketing / Sales (SMB)
@@ -104,7 +107,7 @@ Vertical platforms win because they already own the data. Zendesk has the ticket
 
 ## What We Need To Learn
 
-- [x] Nordic companies on Zendesk, SAP, ServiceNow, or HubSpot agent platforms — **Answer: None found. Only Finnair (Salesforce). Nordic agentic AI funding $1.13B but concentrated in Lovable (coding). Startups: Agaton (Stockholm, conversation insights) and Noru (Helsinki, compliance) — too early. ([Tracxn](https://tracxn.com/d/explore/agentic-ai-startups-in-nordics/__NqYXQKSwbGhafqBWMcpVnhQNookbWaEIAvN4bPlb72Y))**
+- [x] Nordic companies on Zendesk, SAP, ServiceNow, or HubSpot agent platforms — **Answer: None found on vertical SaaS agents. Only Finnair + reMarkable (Salesforce). Nordea (largest Nordic bank) explicitly chose to build internally on AWS Bedrock rather than adopt vertical SaaS agents — 10K employees on internal platform, 91-95% resolution via Boost.ai chatbots. ([Hyperight](https://hyperight.com/banking-on-ai-nordea-poc-to-10000-users/))**
 - [x] Head-to-head practitioner comparison (someone who deployed 2+ platforms) — **Answer: Does not exist. All comparisons are vendor marketing or consultant opinion.**
 - [ ] Cost-effectiveness: vertical SaaS agents vs building on horizontal platforms
 - [ ] Multi-agent orchestration in production at any vertical vendor
@@ -117,14 +120,17 @@ Vertical platforms win because they already own the data. Zendesk has the ticket
 
 ## Next Cycle Priorities
 
-1. **Salesforce Agentforce practitioner deep-dive.** Best evidence base — dig into what practitioners report about real deployment experience beyond customer service.
-2. **ServiceNow deployment evidence.** Revenue signal is strong but deployment evidence is weak. Find practitioners who've implemented.
-3. **SAP Joule early GA results.** Cash Management Agent, Bid Analysis Agent — anyone using them?
-4. **Zendesk Forethought acquisition impact.** Self-learning agents — when do they ship?
-5. **Nordic vertical SaaS adoption.** Beyond Finnair and reMarkable.
+1. **Zendesk-Forethought integration.** Has deal closed? When do combined capabilities ship? Self-improving agents are the most technically interesting development.
+2. **ServiceNow Autonomous Workforce GA (Q2 2026).** First customer reports when L1 Service Desk Specialist reaches GA.
+3. **Agentforce beyond customer service.** All named deployments are customer service. Any evidence of sales/marketing/operations agents working?
+4. **Nordea build-vs-buy decision.** Why did Nordic's largest bank choose AWS Bedrock over vertical SaaS agents? Investigate.
+5. **Nordic signals at Salesforce World Tour Copenhagen (Apr 23).**
+6. **SAP Joule Production Planning Agent.** Was supposed to be GA Q1 2026 — any customer reports?
+7. **Compounding error problem.** 85% per step = 20% on 10 steps. Find practitioner sources quantifying this in production.
 
 ## Sources
 
 See `runs/` for detailed research logs:
 - `runs/2026-03-21-initial.md` — Initial survey of all five platforms
 - `runs/2026-03-21-cycle15.md` — Agentforce 62% reality, ServiceNow Moveworks, SAP zero evidence, Forethought deal, hallucination paradox, Nordic gap
+- `runs/2026-03-21-cycle25.md` — Reddit deployment, Agentforce counter-evidence convergence, ServiceNow Q4 details, Zendesk-Forethought acquisition details, SAP Bosch, Nordea build-vs-buy, compounding error insight

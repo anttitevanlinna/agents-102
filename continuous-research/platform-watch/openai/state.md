@@ -109,16 +109,47 @@ Multiple independent sources converge on the same set of structural gaps:
 - [x] Can a business user build something agentic in ChatGPT without developers? **Answer: No. Custom GPTs can do Q&A with API calls, but cannot orchestrate multi-step workflows, maintain state, or chain actions across systems.**
 - [x] Pricing: Enterprise vs Team vs Plus — what agent capabilities at each tier? **Answer: Documented above. The Plus→Pro cliff ($20→$200) gates agent capability. Business plan has no agent differentiation.**
 
+## Platform Trajectory: What OpenAI Is Building Toward
+
+**OpenAI is building an agent operating system** — models → APIs → SDK → platform → OS. The most ambitious agent platform play of any vendor.
+
+### The Full Stack (source: `runs/2026-03-21-codex-trajectory.md`)
+
+| Layer | Product | Status |
+|-------|---------|--------|
+| Primitives API | Responses API (stateless, composable) | Shipping. Replaces Assistants Aug 2026. [Docs](https://platform.openai.com/docs/guides/migrate-to-responses) |
+| Open Standard | Open Responses spec | Feb 2026. Hugging Face, Vercel, Ollama adopted. Anthropic/Google NOT. [Spec](https://www.openresponses.org/specification) |
+| Developer SDK | Agents SDK (19K stars, 10.3M downloads/mo) | Open-source, provider-agnostic. [GitHub](https://github.com/openai/openai-agents-python) |
+| Coding Platform | Codex (Skills + Automations + Worktrees + Plugins) | Shipping, evolving fast. [Skills docs](https://developers.openai.com/codex/skills) |
+| Consumer Agent | ChatGPT Agent (browser + research + code) | Shipping. [Announcement](https://openai.com/index/introducing-chatgpt-agent/) |
+| Enterprise Platform | Frontier (multi-vendor agent governance) | Limited availability. [Frontier](https://openai.com/index/introducing-openai-frontier/) |
+| Enterprise Builder | AgentKit (visual + connectors + guardrails) | Launched Feb 2026. [AgentKit](https://openai.com/index/introducing-agentkit/) |
+
+### Key Strategic Insights
+
+1. **Frontier manages agents from ALL vendors** (Anthropic, Google, custom) — positioning OpenAI as enterprise control plane regardless of which model wins. Named customers: Uber, State Farm, Intuit, Thermo Fisher. Deals with ServiceNow, Snowflake. ([TechCrunch](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/))
+
+2. **Codex Skills = the promotion path concept.** Packaged, shareable agent capabilities (SKILL.md + scripts). Today code-focused, but architecture is not code-specific — "Manage Projects" skill (Linear triage) is already a business process. ([Skills docs](https://developers.openai.com/codex/skills))
+
+3. **Open Responses = the Android play.** Give away the spec to own the ecosystem. Anthropic and Google haven't joined — betting on their own formats. ([InfoQ](https://www.infoq.com/news/2026/02/openai-open-responses/), [Criticism](https://michaellivs.com/blog/open-responses-missing-spec))
+
+4. **Altman vision: ChatGPT as digital identity.** Memory is "in its GPT-2 era." Agent personalization/learning is the endgame differentiator. But predictions run 12-18 months ahead of delivery. ([The Neuron](https://www.theneuron.ai/explainer-articles/openais-vision-for-2026-sam-altman-lays-out-the-roadmap/))
+
+### The Gap
+Everything above is announced or in limited availability. Frontier customers are named but no deployment evidence. AgentKit has no independent reviews. Skills are code-only. The vision is the most complete of any vendor. The execution evidence is zero.
+
 ## Next Cycle Questions
 
-- [ ] Are any enterprises using ChatGPT's new "Apps" (replacement for Connectors) for write-back to business systems?
-- [ ] What is the real adoption of agent mode in Enterprise tier? (OpenAI may publish data)
-- [ ] Has the Responses API / Agents SDK been used to build business-facing agents (not coding) by any named company?
-- [ ] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise? Posti? Neste? Nordea?
-- [ ] Microsoft Copilot vs ChatGPT Enterprise: which is winning for business agent use cases inside Microsoft shops?
+- [ ] Frontier: what are Uber / State Farm / Intuit actually running? Any public evidence?
+- [ ] Codex Skills: has anyone built a non-coding business skill?
+- [ ] AgentKit: any practitioner reviews now that it's launched?
+- [ ] Open Responses: gaining traction or stalling? Who else has joined?
+- [ ] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise?
+- [ ] Responses API `background: true` — anyone using async agent execution for business workflows?
 
 ## Sources
 
 See `runs/` for detailed research logs:
 - `runs/2026-03-21-run00.md` — Developer-focused initial research
-- `runs/2026-03-21-biz01.md` — Business agent research (this cycle)
+- `runs/2026-03-21-biz01.md` — Business agent research
+- `runs/2026-03-21-codex-trajectory.md` — Platform trajectory deep dive

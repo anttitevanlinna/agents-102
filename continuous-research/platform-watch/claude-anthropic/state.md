@@ -102,6 +102,36 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 
 **Key insight:** MCP governance is an **ecosystem play**, not an Anthropic-provided solution. Enterprises must select and deploy a gateway layer themselves. This is a training module implication.
 
+## Antspace — Anthropic's Hidden PaaS Platform (BREAKING)
+
+**Discovered March 18, 2026** by AprilNEA, who reverse-engineered the binaries inside Claude Code's Firecracker MicroVM. This is a big find.
+
+**What it is:** A Platform-as-a-Service built by Anthropic — essentially a Vercel competitor. Name likely from "Ant" (internal Anthropic nickname) + "Space" (hosting). Anthropic built a full deployment protocol from scratch rather than wrapping Vercel's API — signals strategic platform investment.
+
+**The full-stack flow (envisioned):**
+1. User describes what they want in natural language
+2. Claude generates the app in "Baku" (internal codename for claude.ai's web app builder — Vite + React + TypeScript)
+3. Supabase database auto-provisioned via MCP tools
+4. App deployed to Antspace
+5. Live application — user never leaves Anthropic's ecosystem
+
+**Technical details:**
+- Claude Code Web runs in Firecracker microVM (4 vCPUs, 16GB RAM, 252GB disk)
+- Core binary (`environment-runner`, 27MB Go executable) contains both a `VercelClient` and an `AntspaceClient`
+- Three-stage deploy: create deployment → upload tar.gz → stream NDJSON status updates
+- Includes BYOC (Bring Your Own Cloud) support for enterprises
+- Currently in staging status — early/internal but protocol is production-grade
+
+**Why it matters:** Anthropic is making the play to own the entire stack — from AI model to code runtime to hosting. As Maya Zehavi noted: they're gathering data on what people build with Claude to offer a more optimized end-to-end platform. This changes the three-layer strategy to potentially four layers: standards + engine + business surface + **hosting/runtime**.
+
+**Implication for our framework:** This could solve the "where does the app run?" enabler (Pattern 13) — if Anthropic ships Antspace, the runtime question has an answer for Claude-built apps. The BYOC support suggests enterprise-readiness is in scope.
+
+**Source type: [practitioner direct]** — reverse engineering of actual binaries, not vendor announcement.
+- AprilNEA's full technical analysis [SOURCE URL NEEDED — add when available]
+- AprilNEA's X thread [SOURCE URL NEEDED]
+- Maya Zehavi's analysis [SOURCE URL NEEDED]
+- WEEX coverage [SOURCE URL NEEDED]
+
 ## What We Need To Learn (next cycles)
 
 - [~] Cowork plugin adoption — who's building plugins? What for? Any business user reports? **Partial: One PM plugin review found (Medium, Mohit Aggarwal — [link](https://medium.com/@mohit15856/i-used-claude-coworks-product-management-plugin-for-a-month-honest-review-d38f25348a6d)). No enterprise deployment reports.**
@@ -115,6 +145,8 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 - [ ] Cowork plugin enterprise deployment with measurable outcomes
 - [ ] B2B marketplace customer reviews — re-check in 4 weeks
 - [ ] Agent Teams for business users — any roadmap signal?
+- [ ] **Antspace** — when does it move from staging to production? Public announcement? BYOC details?
+- [ ] Antspace + Supabase integration — how deep is the database layer?
 
 ## Sources
 

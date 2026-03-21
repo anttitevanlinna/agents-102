@@ -22,6 +22,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Copilot Cowork (Research Preview, March 2026) — Claude-powered, multi-step tasks across M365 apps
 - **Personal agent** tier — works for one user, in their apps
 - **Reliability problems:** crashes after 15-20 interactions, memory loss, document modification described as "practically useless" by users. Nadella reportedly called some integrations "almost unusable"
+- **Adoption decline:** Copilot market share among paid AI subscribers: 11.5%, down from 18.8% in Jul 2025 — 39% contraction ([Stackmatix](https://www.stackmatix.com/blog/copilot-market-adoption-trends)). Accuracy NPS: -19.8 (Jan 2026) [SOURCE NEEDED for direct URL]. 44.2% of lapsed users cite distrust of answers [SOURCE NEEDED]. One enterprise: 4,000 seats at $1.4M/year, 47 opened it, 12 used it more than once after 3 months ([Peter Girnus, X.com](https://x.com/gothburz/status/1999124665801880032), practitioner direct, Level 2)
 - **Copilot Memory** (GA for personal Copilot): persists preferences, working styles, recurring topics across sessions. Stored in Exchange Online hidden folders. AES-256 encrypted, GDPR/EU Data Boundary compliant. **Does NOT extend to custom agents in Copilot Studio.** ([European Collaboration Summit guide](https://collabsummit.eu/blog/microsoft-365-copilot-memory-enterprise-guide-european-organizations))
 
 ### Copilot Cowork (the personal agent play)
@@ -52,6 +53,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - In 2 months of preview, "tens of millions of agents" appeared in customer registries — unverifiable, likely includes any automated process
 - **Agent sprawl stats:** 29% of agents operate without IT/security approval; only 47% of orgs use any security tools for AI (Microsoft Cyber Pulse report, Feb 2026). CoreView: 53% of admin teams say AI is outpacing governance ([CoreView](https://www.coreview.com/blog/least-privilege-for-ai-in-microsoft-365-why-shadow-ai-is-a-real-risk); [VentureBeat](https://venturebeat.com/technology/microsoft-says-ungoverned-ai-agents-could-become-corporate-double-agents-its), Mar 2026)
 - **Governance for agents that don't yet exist in production** — but the shadow agent problem IS real and independently confirmed
+- **Ecosystem lock-in limitation (independently confirmed):** Entro Security analysis: "fundamentally anchored to the Microsoft ecosystem... enterprise agents don't confine themselves to one identity plane or one cloud runtime." Agent 365 governs M365/Azure/Entra agents — blind to Salesforce, Snowflake, Slack agents. ([Entro Security](https://entro.security/blog/microsoft-agent-365-pushes-ai-identity-forward-but-enterprise-agents-still-need-cross-environment-governance/), practitioner analysis, Mar 2026)
 
 ## Personal → Team → Company Progression
 

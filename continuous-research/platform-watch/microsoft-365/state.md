@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-21 (cycle 15)
-OODA cycles: 4
+Last updated: 2026-03-21 (cycle 18)
+OODA cycles: 5
 
 ## Focus
 
@@ -31,16 +31,27 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - **Status: Research Preview only.** Limited customer testing. No independent user reports exist. Broader Frontier access late March 2026.
 - This is the strongest personal agent concept in M365 but is NOT shipping broadly
 
-### Azure AI Foundry Agent Service (GA March 2026)
+### Azure AI Foundry Agent Service (GA March 16, 2026)
 - Enterprise infrastructure — durable orchestration, human-in-the-loop, multi-model
-- Private networking, Entra Agent ID
-- **Company-wide agent** tier — but requires developer involvement
+- **Now GA** with private networking (BYO VNet, no public egress), MCP auth (key/Entra/OAuth), production evaluations
+- Three agent types: Prompt (GA, no-code), Workflow (GA, visual/YAML), Hosted (Preview, containers)
+- Built on OpenAI Responses API — wire-compatible, minimal migration from existing Responses API code
+- Multi-model: Claude Opus 4.6, Sonnet 4.6, GPT-Realtime-1.5, Grok 4.0, NVIDIA Nemotron
+- Named customer: Corvus Energy (marine batteries, 1,500 vessels) — replacing manual inspection workflows. No metrics. ([Foundry GA blog](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/); [Redmondmag](https://redmondmag.com/articles/2026/03/17/microsoft-brings-production-ready-ai-agents-at-gtc.aspx), Mar 2026)
+- Hosted agent billing starts no earlier than April 1, 2026
+- Voice Live API (preview) — real-time speech-to-speech for customer service/field ops
+- **Company-wide agent** tier — requires developer involvement
 
 ### Microsoft Agent 365 (launches May 1, 2026)
 - Dedicated control plane for IT/security to observe, secure, and govern agents
 - Unified view across M365 Copilot and Copilot Studio agents
 - Part of E7 bundle or standalone add-on ($15/user/month)
-- **Governance for agents that don't yet exist in production** — infrastructure ahead of adoption
+- **Three pillars:** observability (Agent Registry), security (Agent ID in Entra), governance (Defender/Purview)
+- **Shadow agent detection:** can find and quarantine unsanctioned agents across the environment
+- **Microsoft's own deployment:** 500K+ agents found internally, 65K+ responses/day over 28 days ([Microsoft Official Blog](https://blogs.microsoft.com/blog/2026/03/09/introducing-the-first-frontier-suite-built-on-intelligence-trust/), Mar 2026)
+- In 2 months of preview, "tens of millions of agents" appeared in customer registries — unverifiable, likely includes any automated process
+- **Agent sprawl stats:** 29% of agents operate without IT/security approval; only 47% of orgs use any security tools for AI (Microsoft Cyber Pulse report, Feb 2026). CoreView: 53% of admin teams say AI is outpacing governance ([CoreView](https://www.coreview.com/blog/least-privilege-for-ai-in-microsoft-365-why-shadow-ai-is-a-real-risk); [VentureBeat](https://venturebeat.com/technology/microsoft-says-ungoverned-ai-agents-could-become-corporate-double-agents-its), Mar 2026)
+- **Governance for agents that don't yet exist in production** — but the shadow agent problem IS real and independently confirmed
 
 ## Personal → Team → Company Progression
 
@@ -51,9 +62,10 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 | Personal (agentic) | Copilot Cowork | Research Preview | Claude-powered multi-step. No independent user reports. Not broadly available. |
 | Team | Copilot Studio (full) | Shipping | Requires developer skills (Power Automate). One practitioner demo (edison365). No production deployment evidence. |
 | Team (pre-built) | Dynamics 365 agents | Shipping | HR, Sales, Finance agents exist but only for Dynamics 365 customers. Dow mentioned in vendor marketing (no specifics). |
-| Company | Azure Foundry Agent Service | GA March 2026 | Practitioners report hidden prompts, unreliable grounding. No named deployments. |
-| Company (security) | Entra Agent ID | Preview (Frontier) | Dedicated agent identity type. Least-privilege by default. High-privilege roles blocked. Preview only — requires Frontier access. |
-| Governance | Agent 365 | Launches May 2026 | Unified agent visibility. Part of E7 ($99/user). Not yet available. |
+| Company | Azure Foundry Agent Service | **GA March 16, 2026** | Private networking, multi-model, evaluations GA. Prompt + Workflow agents GA; Hosted Preview. Corvus Energy named (no metrics). |
+| Company (security) | Entra Agent ID | Preview → Agent 365 | Dedicated agent identity type. Least-privilege by default. Part of Agent 365 governance. |
+| Company (CUA) | Copilot Studio CUA | Preview | Multi-model (OpenAI + Claude Sonnet 4.5). Windows 365 for Agents. Session replay/audit. US-only. Zero deployments. |
+| Governance | Agent 365 | Launches May 1, 2026 | 500K agents found at Microsoft. Shadow agent detection. Registry + Agent ID + Defender/Purview. $15/user or E7 ($99/user). |
 | Promotion path | Lite → Studio → Teams publish → Agent 365 | **Not a designed workflow** | One-click upgrade exists but no practitioner has documented end-to-end promotion. Concept in marketing, not in tooling. |
 
 ## Enterprise Integration Reality (NEW — cycle 3)
@@ -134,12 +146,14 @@ This is the defining feature of Microsoft's business agent story. The gap is the
 | Copilot Studio for citizen developers | Shipping | Lite agents limited to Q&A; full Studio needs developers |
 | Copilot Cowork (personal agent) | Research Preview | Zero user reports |
 | Pre-built business agents | Shipping (Dynamics 365 only) | No independent production reports |
-| Entra Agent ID (agent security) | Preview (Frontier) | Thoughtful framework, blocked high-privilege roles. Preview only. |
+| Foundry Agent Service | **GA (March 16)** | Private networking, multi-model, evals. Corvus Energy named (no metrics). Zero case studies with outcomes. |
+| Entra Agent ID (agent security) | Part of Agent 365 | Dedicated agent identity. Conditional access, least-privilege. Launches May 1. |
+| CUA multi-model | Preview | OpenAI + Claude Sonnet 4.5. Windows 365 for Agents. Zero deployments. US-only. |
 | Multi-agent orchestration | GA (architecture) | Patterns documented. Zero production deployments found. |
 | 1,400+ connectors | Shipping | Mostly point-to-point. No evidence of 5+ connector agent workflows. |
-| Agent 365 (governance) | May 2026 | Not yet available |
-| E7 bundle ($99/user) | May 2026 | Not yet available |
-| "80,000 enterprises" using AI | Claimed | Azure-broad, not agent-specific |
+| Agent 365 (governance) | Preview → May 1 GA | 500K agents found at Microsoft. Shadow detection works. No external enterprise reports. |
+| E7 bundle ($99/user) | May 1, 2026 | Public preview April. Cowork NOT Day 1 GA — "directional, not deliverable." |
+| "90% Fortune 500" using Copilot | Claimed | Seat count, not agent adoption. 3.3% of M365 seats are paid Copilot. |
 
 ## What We Need To Learn (updated)
 
@@ -171,7 +185,7 @@ This is the defining feature of Microsoft's business agent story. The gap is the
 | Layer | Product | What it is | Runtime | Status |
 |-------|---------|-----------|---------|--------|
 | Open-source SDK | Microsoft Agent Framework | Merged SK + AutoGen | Any | GA |
-| Cloud Platform | Microsoft Foundry (Agent Service) | PaaS: 3 agent types (Prompt/Workflow/Hosted) | Azure cognitive services + Cosmos DB | Prompt: GA. Workflow/Hosted: Preview |
+| Cloud Platform | Microsoft Foundry (Agent Service) | PaaS: 3 agent types (Prompt/Workflow/Hosted) | Azure cognitive services + Cosmos DB + Responses API | Prompt: GA. Workflow: GA. Hosted: Preview. Private networking: GA. |
 | Low-Code Builder | Copilot Studio | Visual agent builder on PVA heritage | Power Platform / Dataverse | GA (with significant limits) |
 | Consumption | M365 Copilot | Built-in copilots in Office apps | M365 | GA |
 | Enterprise Suite | Agent 365 | Governance + autonomous business agents | M365 | May 2026 |
@@ -196,6 +210,14 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **A2A: preview works, zero real connections.** Public preview in Copilot Studio ([MS Learn](https://learn.microsoft.com/en-us/microsoft-copilot-studio/add-agent-agent-to-agent)). Only real A2A production deployment found: Tyson Foods/Gordon Food Service — on Google's platform, not Microsoft's. A2A ecosystem: 150+ orgs, Linux Foundation, v0.3.
 - **Nordic M365 agents: complete absence.** Zero named Nordic companies with M365 agent deployments across 4 research cycles. Cloudpartner.fi analyzing Security Copilot licensing for Finnish orgs — analysis, not deployment ([Cloudpartner.fi](https://learn.cloudpartner.fi/posts/security-copilot-scu-allocation-in-microsoft-365-e5-the-nordic-reality-check), Mar 2026).
 
+### From Wave 3 / GTC deep dive (cycle 18):
+- **Foundry Agent Service GA (March 16):** Private networking, multi-model, evaluations all GA. Built on OpenAI Responses API (wire-compatible). Corvus Energy (marine batteries, 1,500 vessels) is first named customer — replacing manual inspections with agent-driven intelligence. But: no metrics, no independent verification. Foundry GA blog contains zero customer case studies with measurable outcomes. ([Foundry GA blog](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/), Mar 2026)
+- **CUA multi-model:** Copilot Studio CUA now supports OpenAI CUA + Anthropic Claude Sonnet 4.5. New: credential management (Key Vault integration, never exposed to model), session replay with screenshots (Purview), Windows 365 for Agents (managed Cloud PC pools, auto-scale, Entra/Intune). Free tier: 2 pools, 50 hours. US-only. Zero named deployments. ([MS Copilot Blog](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/computer-using-agents-now-deliver-more-secure-ui-automation-at-scale/), Mar 2026)
+- **Agent 365 at scale:** Microsoft found 500K+ agents in own environment. Shadow agent detection is the killer feature — 29% of agents operate without IT approval (Cyber Pulse). CoreView confirms: 53% of admin teams say AI outpaces governance. The governance gap is real. ([VentureBeat](https://venturebeat.com/technology/microsoft-says-ungoverned-ai-agents-could-become-corporate-double-agents-its); [CoreView](https://www.coreview.com/blog/least-privilege-for-ai-in-microsoft-365-why-shadow-ai-is-a-real-risk), Mar 2026)
+- **Copilot Cowork: still no independent reviews.** "Broader Frontier access in late March" promised but 12 days later, zero practitioner reviews. Cowork is NOT a Day 1 GA feature of E7. Analyst caution: "directional, not deliverable at launch."
+- **E7 bundle math improves:** E3 ($36→$39) and E5 ($57→$60) price increases July 1 make E7's $99 bundle more attractive. Components individually: ~$117/user. But: frontline/task workers don't need it — segment carefully. ([CNBC](https://www.cnbc.com/2026/03/09/microsoft-office-365-e7-copilot-ai.html); [Fortune](https://fortune.com/2026/03/09/microsoft-copilot-cowork-ai-agents-anthropic-e7-m365-saas/), Mar 2026)
+- **Nordic: fifth consecutive zero.** No Nordic M365 agent deployments. Consulting ecosystem (EY Norway, Capgemini Norway, Arribatec, Sofigate) focused on readiness, not deployment.
+
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
 - [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence. Capgemini/KPMG cited only in vendor blog.**
@@ -204,9 +226,13 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - [x] Copilot Cowork Frontier rollout: early user reports? **Answer: Not yet — still Research Preview. Frontier opening late March.**
 - [x] E7 launch (May 2026): adoption signals? **Answer: Convergent skepticism from practitioners. Not GA yet. Zero adoption announcements.**
 - [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 4 cycles.**
-- [ ] Copilot Cowork independent reviews — re-check in 2-3 weeks after Frontier opens
-- [ ] E7 early adoption data — watch May-June 2026
+- [ ] Copilot Cowork independent reviews — "late March" broader Frontier access promised. 12 days later: zero reviews. Re-check early April.
+- [ ] E7 early adoption data — public preview April, GA May 1. Watch May-June 2026.
 - [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts
+- [ ] Foundry Agent Service production deployments — Corvus Energy is first named customer. Watch for outcomes/metrics.
+- [ ] CUA enterprise adoption — multi-model + Windows 365 for Agents shipped. Watch for first practitioner reports.
+- [ ] Agent 365 external enterprise reports — does shadow agent detection surface real governance discoveries?
+- [ ] Voice Live API — when does it GA? Any customer service deployment evidence?
 
 ## Sources
 
@@ -216,3 +242,4 @@ See `runs/` for detailed research logs:
 - `2026-03-21-integ01.md` — Enterprise integration, security, multi-tool
 - `2026-03-21-architecture.md` — Architecture deep dive (Foundry vs Copilot Studio)
 - `2026-03-21-cycle15.md` — E7 pricing skepticism, Cowork status, A2A, Foundry Workflows, Nordic gap
+- `2026-03-21-cycle18.md` — Wave 3/GTC: Foundry GA, Agent 365 at scale, CUA multi-model, Cowork still no reviews, E7 bundle math

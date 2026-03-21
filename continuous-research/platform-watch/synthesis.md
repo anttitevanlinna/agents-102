@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
-Last updated: 2026-03-21 (cycle 17)
-Total OODA cycles: 17 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update + OpenAI market dynamics)
+Last updated: 2026-03-21 (cycle 18)
+Total OODA cycles: 18 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update + OpenAI market dynamics + Microsoft Wave 3/GTC deep dive)
 
 ## Purpose
 
@@ -53,7 +53,7 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 ### Platform Trajectories (What They're Building Toward)
 
-**Microsoft: The Azure of Agents.** Own the governance/identity/security layer, not the apps. Nadella: "SaaS will dissolve into agents on CRUD databases." Foundry = PaaS (3 agent types, most powerful in Preview). Copilot Studio = PVA heritage, hits ceiling fast. Separate runtimes, no promotion path. Agent 365 governance (May 2026) = infrastructure ahead of adoption. Existential threat: agents bypass Office via open-source file libraries. 15M Copilot seats but low conversion from 440M M365. (See `microsoft-365/state.md`)
+**Microsoft: The Azure of Agents — now with governance teeth.** Own the governance/identity/security layer, not the apps. Nadella: "SaaS will dissolve into agents on CRUD databases." **Foundry Agent Service GA (March 16):** private networking, multi-model (Claude + GPT + Grok + Nemotron), built on Responses API. Prompt + Workflow agents GA; Hosted Preview. First named customer: Corvus Energy (no metrics). **Agent 365** (May 1) is the strongest differentiator — shadow agent detection found 500K agents inside Microsoft. 29% of enterprise agents operate without IT approval (Cyber Pulse). **CUA multi-model:** first platform offering both OpenAI + Claude for computer use, plus Windows 365 for Agents (managed cloud PCs). Copilot Cowork (the showcase): 12 days past "late March" Frontier access promise, zero independent reviews. E7 ($99/user) bundle math improves as E3/E5 prices rise July 1. 15M Copilot seats but low conversion from 450M M365. (See `microsoft-365/state.md`)
 
 **OpenAI: Agent Operating System — but losing enterprise ground.** Every layer from spec to governance: Open Responses spec → Agents SDK (19K stars) → Codex (Skills/Automations) → ChatGPT Agent → Frontier (multi-vendor governance) → AgentKit (visual builder). Skills = portable agent capabilities = closest to promotion path concept. Frontier manages agents from ALL vendors including Claude. **But: 7 weeks post-Frontier-launch with zero independent deployment evidence.** Named customers use aspirational language ("exploring," "trial"). Enterprise market share reversed: Anthropic 40% vs OpenAI 27% of enterprise LLM spend (Menlo Ventures, Feb 2026). OpenAI pivoting toward consumer super-app. EEA connector restriction blocks Nordic Plus/Pro users entirely. Vision most complete, execution gap widening. (See `openai/state.md`)
 
@@ -208,7 +208,13 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 **Pattern 22: Computer use has first production evidence — legacy system integration is the use case (NEW — cycle 17).** Mainstay (95% on 30K property tax portals) and Pace (insurance portals, Prudential deal) show computer use works on legacy systems without APIs. GPT-5.4 leads (75% OSWorld, above 72.4% human avg) vs Claude (72.7%). But both production cases are OpenAI launch partners (curated evidence). Consumer reliability convergence (Level 3): "impressive but unreliable" for autonomous use. TinyFish shows hybrid architecture (81% Mind2Web) outperforms vanilla computer use (43%). ([OpenAI blog](https://openai.com/index/introducing-gpt-5-4/); [Understanding AI](https://www.understandingai.org/p/chatgpt-agent-a-big-improvement-but); [TinyFish](https://www.tinyfish.ai/blog/mind2web), Mar 2026)
 
-**Pattern 23: EEA regulatory friction creates platform gaps for Nordic users (NEW — cycle 17).** OpenAI connectors (Google Drive, SharePoint, Outlook, etc.) explicitly excluded from EEA/Switzerland/UK for Plus and Pro users. Only Team/Enterprise/Edu get access. Individual Nordic business users on personal plans cannot use any write actions or connectors. This creates a structural disadvantage vs. Microsoft (no EEA restrictions on Copilot) and is a curriculum design consideration for our Bootstrap training. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167), Mar 2026)
+**Pattern 23: EEA regulatory friction creates platform gaps for Nordic users (cycle 17).** OpenAI connectors (Google Drive, SharePoint, Outlook, etc.) explicitly excluded from EEA/Switzerland/UK for Plus and Pro users. Only Team/Enterprise/Edu get access. Individual Nordic business users on personal plans cannot use any write actions or connectors. This creates a structural disadvantage vs. Microsoft (no EEA restrictions on Copilot) and is a curriculum design consideration for our Bootstrap training. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167), Mar 2026)
+
+**Pattern 24: Agent sprawl is the new shadow IT — governance before capability (NEW — cycle 18).** Microsoft found 500K agents internally. Cyber Pulse: 29% of enterprise agents operate without IT/security approval. CoreView: 53% of admin teams say AI outpaces governance. The problem is real and independently confirmed (Level 2-3). Agent 365 is the first product response — shadow detection, quarantine, Agent ID. For CTOs: the governance question ("do we know what agents we have?") may be more urgent than the platform question ("which vendor should we use?"). ([VentureBeat](https://venturebeat.com/technology/microsoft-says-ungoverned-ai-agents-could-become-corporate-double-agents-its); [CoreView](https://www.coreview.com/blog/least-privilege-for-ai-in-microsoft-365-why-shadow-ai-is-a-real-risk), Mar 2026)
+
+**Pattern 25: Foundry GA makes Microsoft the first vendor with production-ready agent PaaS (NEW — cycle 18).** Private networking (no public egress), multi-model (Claude + GPT + Grok + Nemotron), wire-compatible with Responses API, production evaluations — all GA. But: zero customer case studies with measurable outcomes in the GA announcement. Corvus Energy is named (marine batteries, 1,500 vessels) but provides no metrics. Infrastructure is real; adoption evidence is zero. ([Foundry GA blog](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/), Mar 2026)
+
+**Pattern 26: CUA multi-model is a unique Microsoft play (NEW — cycle 18).** Only platform offering both OpenAI CUA + Anthropic Claude Sonnet 4.5 for computer use, plus managed Cloud PC pools (Windows 365 for Agents). Credential management never exposes secrets to the model. Session replay with screenshots for compliance. But: US-only, zero named deployments, zero practitioner reviews. The capability is real; the evidence is zero. ([MS Copilot Blog](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/computer-using-agents-now-deliver-more-secure-ui-automation-at-scale/), Mar 2026)
 
 ## CTO Answer: Which Platform For What? (March 2026)
 
@@ -221,7 +227,7 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 | Compliance monitoring | **No clear leader** | None has proven cross-system monitoring | Entirely pre-chasm |
 | Legacy system integration | GPT-5.4 Computer Use / Claude Computer Use | GPT-5.4: 75% OSWorld (above human avg). Claude: 72.7%. Both work with ANY software — no API needed. | First production evidence: Mainstay (property tax), Pace (insurance/Prudential). Both OpenAI launch partners. Consumer reviews: "impressive but unreliable." Hybrid architectures (TinyFish) outperform vanilla. |
 | Multi-system orchestration (5+ tools) | **Custom build** (Agent SDK + MCP) | Only path that actually connects SF + Snowflake + Slack + Jira + SharePoint | Requires engineering team. No platform does this natively. |
-| Enterprise agent governance | OpenAI Frontier / Azure Agent 365 | Frontier: multi-vendor. Agent 365: M365-native. | Both announced, not proven. Frontier: limited availability. Agent 365: May 2026. E7 pricing skepticism widespread. |
+| Enterprise agent governance | **Azure Agent 365** / OpenAI Frontier | Agent 365: shadow agent detection, Agent ID, Purview audit. 500K agents found at Microsoft. Frontier: multi-vendor but zero evidence. | Agent 365 GA May 1. Frontier still limited availability. Agent 365 solves a real problem (29% of agents ungoverned) but product is untested externally. |
 | Customer service agent | **Zendesk or Salesforce Agentforce** | Zendesk: 51% auto-resolution (SeatGeek), outcome-based pricing. Salesforce: 80% chat resolution (Finnair), CRM integration. | Convergence-level evidence (Level 3). Bounded to customer service domain. |
 | IT operations / employee service | **ServiceNow** | $600M+ ACV, strongest IT ops context. | Most orgs at Phase 2 despite Phase 3 aspirations. 18-33 month maturity path. |
 | ERP / finance / supply chain | **SAP Joule** | Deepest business process agents (cash mgmt, procurement, production). Josh Bersin: "ahead of Workday." | Just reaching GA Q1 2026. Minimal production evidence. |
@@ -265,10 +271,13 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 6. **Workspace Studio adoption** — just went GA (Mar 19). Watch for practitioner reports beyond the capacity issues.
 7. **F-Secure pattern replication** — do other organizations hit the same three walls (data access, runtime, discoverability)?
 8. **MCP enterprise governance** — when does SSO/audit ship?
-9. **Computer Use in enterprise** — first evidence from Mainstay/Pace (OpenAI partners). Watch for independent reports + hybrid architectures (TinyFish pattern).
+9. **Computer Use in enterprise** — first evidence from Mainstay/Pace (OpenAI partners). Microsoft CUA now multi-model (OpenAI + Claude). Watch for independent reports + hybrid architectures (TinyFish pattern).
 10. **Domain practitioner discovery** — who are the innovator practitioners per business function? (Links to domain research: `../source-roster.md`)
 11. **Enterprise multi-vendor hedging** — is Intuit's dual OpenAI+Anthropic pattern becoming standard? What does this mean for platform commitment?
 12. **OpenAI consumer pivot impact** — does the super-app direction accelerate or decelerate enterprise agent capability?
+13. **Agent sprawl reality** — Agent 365 found 500K agents at Microsoft. Do other enterprises discover similar numbers? Is shadow agent governance the killer feature?
+14. **Copilot Cowork first reviews** — 12 days past "late March" Frontier access. Watch for first practitioner reports in April.
+15. **Foundry Agent Service adoption** — Corvus Energy named but no metrics. Watch for first production case studies with outcomes.
 
 ## Run Log
 
@@ -286,3 +295,4 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 | 15 | 2026-03-21 | Open-source frameworks (Ruflo) | 80% of gaps solved (orchestration, memory, registry). Missing 20% = enterprise wrapper (RBAC, governance, audit). Could disrupt all vendor platforms. |
 | 16 | 2026-03-21 | All platforms (multi-platform update) | Anthropic infra fragility Level 3 (109 incidents/90d). E7 pricing skepticism convergent. GPT-5.4 computer use. Agentforce own portal 62%. MCP governance = third-party ecosystem. Reasoning models worse at facts. Consolidation wave. |
 | 17 | 2026-03-21 | OpenAI (market dynamics + computer use) | Enterprise spend reversed: Anthropic 40% vs OpenAI 27%. Frontier still zero evidence at 7 weeks. EEA connector blocker for Nordic. Computer use first production evidence (Mainstay, Pace — both OpenAI partners). Reliability convergence: "impressive but unreliable." Intuit hedging across OpenAI + Anthropic. |
+| 18 | 2026-03-21 | Microsoft (Wave 3 / GTC deep dive) | Foundry Agent Service GA (private networking, multi-model). Agent 365: 500K agents at Microsoft, shadow detection. CUA multi-model (OpenAI + Claude). Cowork still zero reviews 12 days past promised Frontier access. E7 bundle math improves with July price increases. Agent sprawl = new shadow IT (29% ungoverned, Level 2-3). Nordic: fifth consecutive zero. |

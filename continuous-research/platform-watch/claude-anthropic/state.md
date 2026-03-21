@@ -1,7 +1,7 @@
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-03-21 (cycle 15)
-OODA cycles: 3
+Last updated: 2026-03-21 (cycle 24)
+OODA cycles: 4
 
 ## Focus
 
@@ -71,6 +71,10 @@ Timeline of recent failures:
 - March 18: Elevated errors on Claude.ai, Claude Code login affected.
 - March 21: Elevated error rates on Opus and Sonnet 4.6.
 
+**Anthropic SRE at QCon London (March 19):** Alex Palcuie (ex-Google Cloud SRE): "Claude goes down more often than any of us would like. Earlier today, I was involved in an incident, even if I'm at a conference." Has been using Claude for incident response since January — excels at log analysis ("reads at the speed of I/O") but "consistently confuses correlation with causation." Produces "80% story that's pretty and convincing" but misses root causes. NYE fraud detection success: Claude found 4,000 suspicious accounts that a human SRE would have missed. But: "It would be hypocritical to say Claude fixes everything. My team exists, we're hiring." Skills atrophy concern: AI use could degrade SRE skills over time. ([The Register](https://www.theregister.com/2026/03/19/anthropic_claude_sre/), domain trade publication, Mar 2026)
+
+**Uptime metrics (90 days):** API 99.34%, Claude Code 99.57%, Claude for Government 99.85%.
+
 Claude Code now accounts for 4% of all GitHub commits — demand outstripping infrastructure. Enterprise architect quoted: "raised red flags about single-provider risk." Plans: $5B compute spend in 2026.
 
 ### Security vulnerabilities
@@ -106,7 +110,7 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 - [~] B2B marketplace traction — which apps getting used? **Partial: Launched Mar 6, enterprise-only limited preview. Six partners (GitLab, Harvey, Lovable, Replit, Rogo, Snowflake). Zero customer reviews found. $200M Snowflake partnership. ([SiliconANGLE](https://siliconangle.com/2026/03/06/anthropic-launches-claude-marketplace-third-party-cloud-services/))**
 - [x] MCP enterprise governance — when does SSO/audit ship? **Answer: Not from Anthropic directly. Third-party gateways filling the gap (MintMCP, Stacklok, Lunar.dev, Itential). MCP spec ships enterprise features as extensions.**
 - [~] Computer Use in enterprise — anyone using it for legacy system integration? **Partial: NYSE uses Claude Code for legacy code refactoring + internal AI agents. This is Claude Code, not Computer Use for screen automation. Zero practitioner reports of Computer Use for mainframe/Citrix/legacy ERP automation.**
-- [x] Infrastructure reliability — improving or still fragile? **Answer: WORSE. 109 incidents in 90 days. Level 3 convergence. Not improving.**
+- [x] Infrastructure reliability — improving or still fragile? **Answer: WORSE. 109 incidents in 90 days. Level 3 convergence. Own SRE admits "Claude goes down more often than any of us would like" at QCon London (Mar 19). Team hiring, not shrinking. 5+ incidents in March 2026 alone. 99.34% API uptime = ~6 hours downtime per month.**
 - [ ] Political risk resolution — Pentagon situation outcome?
 - [ ] Cowork plugin enterprise deployment with measurable outcomes
 - [ ] B2B marketplace customer reviews — re-check in 4 weeks
@@ -118,3 +122,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-run03.md` — Developer-focused initial research
 - `runs/2026-03-21-trajectory.md` — Platform trajectory deep dive
 - `runs/2026-03-21-cycle15.md` — Infrastructure fragility (Level 3), MCP gateways, plugin adoption, marketplace, Agent Teams
+- `../cross-platform/runs/2026-03-21-cycle24.md` — SRE QCon London talk (Palcuie), 5+ March incidents, 99.34% API uptime, correlation/causation weakness

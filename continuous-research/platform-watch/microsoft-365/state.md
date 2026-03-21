@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-21 (cycle 21)
-OODA cycles: 6
+Last updated: 2026-03-21 (cycle 24)
+OODA cycles: 7
 
 ## Focus
 
@@ -30,7 +30,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Built with Anthropic's Claude, runs in Microsoft's cloud within M365 tenants
 - Multi-step: assembles presentations, pulls financials, emails teams, schedules prep — from a single request
 - Plan-based execution with checkpoints, human approval before changes applied
-- **Status: Research Preview only.** Limited customer testing. No independent user reports exist. Broader Frontier access late March 2026.
+- **Status: Research Preview only.** Limited customer testing. "Late March" broader Frontier access has not materialized as of March 21. Charles Lamanna (Microsoft President) says he's personally using it; LinkedIn commenters enthusiastic but zero independent deployment reports. Some Cowork usage may be included in $30/user plan (not E7-exclusive). ([LinkedIn](https://www.linkedin.com/posts/charleslamanna_its-been-great-to-see-the-excitement-around-activity-7436809874933587968-jyuB), Mar 2026)
 - This is the strongest personal agent concept in M365 but is NOT shipping broadly
 
 ### Azure AI Foundry Agent Service (GA March 16, 2026)
@@ -54,6 +54,9 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - In 2 months of preview, "tens of millions of agents" appeared in customer registries — unverifiable, likely includes any automated process
 - **Agent sprawl stats:** 29% of agents operate without IT/security approval; only 47% of orgs use any security tools for AI (Microsoft Cyber Pulse report, Feb 2026). CoreView: 53% of admin teams say AI is outpacing governance ([CoreView](https://www.coreview.com/blog/least-privilege-for-ai-in-microsoft-365-why-shadow-ai-is-a-real-risk); [VentureBeat](https://venturebeat.com/technology/microsoft-says-ungoverned-ai-agents-could-become-corporate-double-agents-its), Mar 2026)
 - **Governance for agents that don't yet exist in production** — but the shadow agent problem IS real and independently confirmed
+- **Licensing ambiguity confirmed by MVP analysis:** Agents don't map 1:1 to users — unclear whether orgs license builders or users. "The commercial model is still catching up with the technology." Pricing "fluid" during preview. 25 free licenses for Frontier program orgs through Dec 2026. ([Rob Quickenden](https://robquickenden.blog/2026/03/agent-365-nears-ga/), practitioner direct, Mar 2026)
+- **"Tens of thousands" of customers in preview** (vendor claim, Mar 2026). "Tens of millions of agents" in registry in 2 months — likely includes any automated process, not just agentic.
+- **March 2026 governance controls shipping:** Granular AI policy at department/group/individual level. Audit logs include prompts, model IDs, data accessed. GDPR-relevant. AI+security features become standard in M365 subscriptions July 1, 2026. ([Windows News](https://windowsnews.ai/article/power-platform-march-2026-update-agentic-apps-enhanced-governance-and-ai-development-acceleration.405823), Mar 2026)
 - **Ecosystem lock-in limitation (independently confirmed):** Entro Security analysis: "fundamentally anchored to the Microsoft ecosystem... enterprise agents don't confine themselves to one identity plane or one cloud runtime." Agent 365 governs M365/Azure/Entra agents — blind to Salesforce, Snowflake, Slack agents. ([Entro Security](https://entro.security/blog/microsoft-agent-365-pushes-ai-identity-forward-but-enterprise-agents-still-need-cross-environment-governance/), practitioner analysis, Mar 2026)
 
 ## Personal → Team → Company Progression
@@ -235,6 +238,12 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Copilot Studio multi-agent broken** — Ragnar Heil: MCP tool invocation fails on child agents, must proxy through parent. "Clunky, unintuitive, feels like a hack." No practitioner contradicts this. ([ragnarheil](https://ragnarheil.de/the-good-the-bad-and-the-ugly-of-copilot-studio-a-brutally-honest-review-going-into-late-2025/), practitioner direct, updated Jan 2026)
 - **Nordic: first signal — Corvus Energy (Norwegian).** Corvus Energy (Bergen/Porsgrunn, Norway) is the only named Foundry Agent Service customer — maritime battery inspection across 1,500+ vessels. Evidence is vendor-sourced only (no independent verification, no metrics). But it IS the first Nordic-origin deployment signal after six cycles of absence. For business-user M365 agents (Copilot Studio, M365 Copilot): still zero Nordic deployments. (source: runs/2026-03-21-cycle21.md)
 
+### From cycle 24 (Cowork/Agent 365 status check):
+- **Copilot Cowork: "late March" broader access still not shipped.** 21+ days past promise. First practitioner impressions are LinkedIn enthusiasm only — zero user reports with specific outcomes. Vendor exec (Lamanna) using it personally. Level 1 at best.
+- **Agent 365 licensing ambiguity will be adoption friction.** MVP Rob Quickenden's analysis: $15/user/month but agent-user mapping undefined. "Commercial model catching up with technology." Pricing "fluid." This licensing confusion pattern is convergent — 5+ practitioners have flagged it across cycles 15-24.
+- **Governance controls maturing faster than agents.** March 2026 shipped granular policy controls (per-department/group AI restrictions, prompt audit logs). Governance infrastructure arriving before the agents it governs — consistent pattern.
+- **Still zero production business agent deployments.** Seven research cycles, zero independent deployment evidence for M365 business agents. The announcement-to-deployment gap is now the defining feature.
+
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
 - [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence across 6 cycles.**
@@ -262,3 +271,4 @@ See `runs/` for detailed research logs:
 - `2026-03-21-cycle15.md` — E7 pricing skepticism, Cowork status, A2A, Foundry Workflows, Nordic gap
 - `2026-03-21-cycle18.md` — Wave 3/GTC: Foundry GA, Agent 365 at scale, CUA multi-model, Cowork still no reviews, E7 bundle math
 - `2026-03-21-cycle21.md` — Status check: Cowork 21+ days no reviews, Foundry 5 days post-GA zero new customers, CUA/Voice/Workflow triple zero, Nordic sixth zero, practitioners waiting not deploying
+- `2026-03-21-cycle24.md` — Cowork still Research Preview ("late March" not delivered), Agent 365 licensing ambiguity (Quickenden MVP analysis), governance controls shipping ahead of agents, seventh consecutive zero for production deployments

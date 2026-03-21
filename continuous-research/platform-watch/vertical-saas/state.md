@@ -1,7 +1,7 @@
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-03-21 (cycle 15)
-OODA cycles: 2
+Last updated: 2026-03-21 (cycle 24)
+OODA cycles: 3
 
 ## Focus
 
@@ -14,7 +14,7 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 ## Platform Summary
 
 ### Salesforce Agentforce — CRM / Sales / Service
-- **Scale:** 18,500+ deals, 9,500+ paid, $540M+ ARR (Q3 FY2026) ([Salesforce Q3 earnings](https://investor.salesforce.com/news/news-details/2025/Salesforce-Delivers-Record-Third-Quarter-Fiscal-2026-Results-Driven-by-Agentforce--Data-360/default.aspx), Dec 2025)
+- **Scale (FY2026 full year):** 29,000 deals, 12,000 deployed customers, $800M ARR (up 169% YoY). Agentforce + Data 360 ARR exceeded $2.9B (up 200%+ YoY). 60%+ of Q4 bookings from existing customer expansion — suggesting real value, not just experimentation. Fastest-growing Salesforce product ever. ([Subscription Insider](https://www.subscriptioninsider.com/article-type/news/salesforce-fy2026-results-show-subscription-led-revenue-base-as-agentforce-becomes-a-fast-growing-layer); [CX Today](https://www.cxtoday.com/crm/agentforce-becomes-salesforces-fastest-growing-product-ever/), FY2026 results)
 - **Named deployments:**
   - Finnair (Nordic): 80% chat resolution, 30% faster onboarding — first airline adopter ([Diginomica](https://diginomica.com/how-finnair-aims-fly-high-agentforce), [TechInformed](https://techinformed.com/agentforce-finnair-deployment/))
   - Wiley: 40%+ case resolution improvement, $213K saved ([TechInformed](https://techinformed.com/salesforce-launches-agentforce-saks-wiley-and-wyndham-spearhead-no-code-ai-for-enterprise/))
@@ -22,6 +22,7 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
   - 1-800Accountant: 70% repetitive inquiry automation during tax season ([Ksolves](https://www.ksolves.com/blog/salesforce/top-companies-using-agentforce))
 - **Limitations:** 15 topics max, 15 actions per topic per agent. $2/conversation creates budget unpredictability. Practitioners report hallucination and forced adoption. ([Salesforce Ben](https://www.salesforceben.com/where-are-we-really-at-with-agentforce-adoption/), [Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/))
 - **Practitioner verdict:** "Marketing veneer over underbaked AI" — but improving steadily (Salesforce Ben, Mar 2026)
+- **New deployment: UK police department "Bobby"** — non-emergency calls, 90+ topics, 20% reduction in human agent demand. ([Codleo](https://www.codleo.com/blog/salesforce-spring-26-release), Mar 2026)
 - **Salesforce's own Help Portal: 62% case resolution rate (target 80%).** This is Salesforce eating its own cooking and falling short. Initially only 2 of 6 test use cases worked well. ([Salesforce Ben 6-month review](https://www.salesforceben.com/agentforce-for-salesforce-help-6-month-review-and-whats-improved/), Mar 2026)
 - **93% accuracy claim insufficient for enterprise** — Six Sigma = 99.999%. Gap between claimed and observed accuracy is the story. ([Salesforce Ben adoption reality](https://www.salesforceben.com/where-are-we-really-at-with-agentforce-adoption/), Mar 2026)
 - **Nordic signal:** Strong. Finnair + reMarkable. Salesforce opened Stockholm office Dec 2025 for Nordic Agentforce adoption. World Tour events: Copenhagen (Apr 23), Oslo (May 20), Stockholm (May 27). Hiring Forward Deployed Engineers across Nordic capitals. Majblomman (Swedish nonprofit) won hackathon concept — not production.

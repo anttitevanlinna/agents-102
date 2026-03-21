@@ -1,7 +1,7 @@
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-03-21 (cycle 22)
-OODA cycles: 5
+Last updated: 2026-03-21 (cycle 24)
+OODA cycles: 6
 
 ## Focus
 
@@ -28,7 +28,8 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - Agents shareable via Drive → primitive personal→team promotion path
 - Kärcher: 90% reduction in drafting time for product planning (vendor-sourced)
 - Governance gap: no solution documented for when agent-building employees leave
-- **Verdict: the most interesting new development. Real but brand new, limited, unproven at scale.**
+- **Capacity issues persist post-GA:** "We are at capacity" errors continue across agents users try to build. Analysts note these are "text-based automations" — likely "flawed rollout" not compute shortage. 63 user outage reports in 24 hours on StatusGator (March 19). Promotional higher limits expire March 31 — capacity may worsen. "AI Expanded Access" add-on required for high AI usage since March 1. ([Google AI Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858); [StatusGator](https://statusgator.com/services/google-workspace/google-workspace-studio), Mar 2026)
+- **Verdict: the most interesting new development. Real but brand new, limited, unproven at scale. Capacity problems undermine enterprise trust.**
 
 ### AppSheet + Gemini (Team→Company tier)
 - AI Tasks in automations: extract data from photos/PDFs, categorize, route, prioritize
@@ -161,3 +162,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle19.md` — Post-GA reality check: capacity still broken, Gemini Enterprise dev bugs, CGI channel play, evidence absence confirmed
 - `runs/2026-03-21-cycle22.md` — Post-GA update (expanded): capacity officially acknowledged (21K outage reports), hard limits documented, Kärcher still only customer after 3 months, Gemini CX retail names, governance gap deepens (Vertex gets tools, Studio gets nothing), Nordic education moves but enterprise zero, Cloud Next '26 watch
 - `runs/2026-03-21-landscape-update.md` — Cross-platform landscape: Bedrock AgentCore 5 features, LangChain+NVIDIA, OpenAI Frontier, Claude SDK updates, A2A v0.3
+- `../cross-platform/runs/2026-03-21-cycle24.md` — Capacity issues persist post-GA (forum reports, StatusGator 63 outage reports), promotional limits expire March 31, AI Expanded Access add-on required

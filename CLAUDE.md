@@ -15,6 +15,14 @@ Training program for building AI agents. Four things: **Train → Curate → Con
 **Agent Platform Advisory** (separate offering, sold independently alongside the 5-step journey):
 Agent platform context building, selection, and deployment — done the agentic way, because no other way works. No person has comparative experience across agent platforms — the field moves too fast. The comparative analysis is the agent's job. Context is everything — only the org's people know their requirements, systems, and constraints. People drive, agents do the heavy lifting. Bosser builds the agentic system that synthesizes people's thinking into structured context, evaluates platforms against that context, deploys, and generates training materials. Co-owned: deployed on customer's side, customer keeps it, can re-run as context evolves. Bosser retains the right to learn and extract patterns across engagements (the peer premium). No real players in Helsinki (Feb 2026 scan). Timing: typically ~1 month after Bootstrap.
 
+**What our research has established (March 2026):**
+- **The entire business agent space is pre-chasm.** OpenAI's own COO confirmed it (Feb 2026). MIT: 95% of orgs report no measurable ROI. Zero named enterprises have production business agents with measurable outcomes on any horizontal platform.
+- **Customer service is the only domain crossing the chasm** — and it's happening on vertical SaaS (Salesforce Agentforce, Zendesk), not horizontal platforms. Level 3 convergence: 40-80% autonomous resolution across 3+ platforms.
+- **Vertical SaaS agents automate one process brilliantly — but companies run 200 processes.** The vertical advantage is data context (Zendesk owns tickets, Salesforce owns CRM, SAP owns ERP). But every vertical agent hits the same wall when real work crosses system boundaries. Multi-system orchestration is unsolved everywhere.
+- **No platform passes the enterprise reality test:** multi-tool (10+ systems), multi-turn (persistent memory), security (cross-system RBAC/audit), and the promotion path (personal→team→company) all remain unsolved.
+- **Platform strategy depends on infrastructure, not model quality.** Microsoft = Azure upsell (AWS shops cringe). OpenAI = most ambitious full-stack vision but nothing deployed. Anthropic = standards + best engine. Google = strong architecture, weak execution. The "which platform" question is premature — "what agent" comes first.
+- **The honest CTO advice:** Start with personal agents ($20/mo). Discover which of your 200 processes benefit. Then evaluate platforms against YOUR use cases. Plan for custom development — multi-system orchestration requires engineering on every platform. Build on standards (MCP, Agent Skills), not vendor lock-in.
+
 **Key files:**
 - Business model canvas: `strategy/business-model-canvas.md`
 - Assumption map: `strategy/assumption-map.md`
@@ -28,8 +36,20 @@ Agent platform context building, selection, and deployment — done the agentic 
 - Nordic agentic practices research: `continuous-research/nordic-agentic-practices-prompts.md`
 - Nordic agentic practices map (Q1 2026 synthesis): `continuous-research/nordic-agentic-practices-map.md`
 - Domain findings: `continuous-research/findings/` (7 domain files + 3 cross-cut files)
+- **Platform watch system:** `continuous-research/platform-watch/` (semi-autonomous hourly OODA cycles)
+  - Cross-platform synthesis: `continuous-research/platform-watch/synthesis.md`
+  - Cycle prompt (self-contained researcher instructions): `continuous-research/platform-watch/cycle-prompt.md`
+  - Per-platform state + run logs: `continuous-research/platform-watch/{openai,microsoft-365,google-workspace,claude-anthropic}/`
+  - Vertical SaaS agents: `continuous-research/platform-watch/vertical-saas/`
+- **Research insights:** `continuous-research/insights.md` — compressed arguments for content, training, advisory
 
-**Continuous research:** We run a forward-looking research program tracking what's just now becoming possible in agentic business practices — **beyond coding**. Agentic coding is a red ocean. Our focus is the other 90% of the company: operations, finance, HR, compliance, customer service, sales, product. We watch innovators and early adopters (Moore's adoption curve / Crossing the Chasm), then translate chasm-crossing patterns for our early majority buyers. All findings tagged Global vs. Nordic. See `continuous-research/` for the full system, source tiers, and OODA research prompts.
+**Continuous research — two systems:**
+
+1. **Domain research** (`continuous-research/README.md`) — what's becoming possible in agentic business practices, beyond coding. Tracks innovators and early adopters across operations, finance, HR, compliance, customer service, sales, product. Translates chasm-crossing patterns for early majority buyers. All findings tagged Global vs. Nordic.
+
+2. **Platform watch** (`continuous-research/platform-watch/`) — which platform can do which use cases for business users. Semi-autonomous hourly OODA cycles tracking Microsoft, Google, OpenAI, Anthropic, and vertical SaaS. Answers the CTO question with honest evidence-based assessment. Uses personal→team→company agent framework and enterprise reality test (multi-tool, multi-turn, security, promotion path).
+
+**How they connect:** Domain research finds practitioners doing agentic work → platform watch asks: on which platform, how? Platform watch finds gaps → domain research asks: so how ARE people in that function doing it? Research insights (`continuous-research/insights.md`) captures nuggets from both systems for content, training, and advisory.
 
 **Antti's practitioner credentials:** Author of Agents 101 (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at F-Secure, Neste, Posti. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
 

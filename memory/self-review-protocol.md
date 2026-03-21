@@ -1,0 +1,38 @@
+# Self-Review Protocol
+
+## Purpose
+Track corrections Antti makes so each session starts smarter. The goal: Antti's steering should diminish over time.
+
+## Correction Log
+
+| Date | What Antti corrected | Category | Heuristic extracted |
+|------|---------------------|----------|-------------------|
+| 2026-03-21 | "Microsoft is building according to its legacy moats — AWS companies will cringe" | Strategy | Platform strategy analysis must include infrastructure dependency. Don't evaluate platforms in isolation — evaluate them from the buyer's infrastructure reality. |
+| 2026-03-21 | "Take Finnair. Customer service is 1 of 200 processes they run" | Strategy | Never let a vendor success story stand alone. Always ask: what fraction of the company's processes does this cover? The impressive number (80% resolution) hides the real number (1/200 processes). |
+| 2026-03-21 | "We should start tracking insights — these nuggets add up" | Process | Create durable artifacts for emergent insights, not just research findings. The compressed argument is often more valuable than the detailed analysis. |
+| 2026-03-21 | "You should keep maintaining the core of this project" | Process | Don't let project memory drift. After deepening understanding, update CLAUDE.md, key files, and goals. The project's self-description should reflect current understanding, not the state when files were first written. |
+
+## Heuristics (apply before doing work)
+
+1. **Infrastructure-first platform analysis.** When discussing any platform, immediately ask: "What infrastructure does the buyer already run?" Microsoft advice to an AWS shop is different from Microsoft advice to an Azure shop. Never present platform recommendations without this context.
+
+2. **The 1-of-200 test.** When any vendor success story surfaces, ask: "What fraction of this company's processes does this cover?" An 80% number for 1 process out of 200 is a 0.4% number for the company. Always frame vendor wins in the context of total operational complexity.
+
+3. **Insights are first-class artifacts.** When a compressed argument emerges from discussion or research, capture it immediately in `continuous-research/insights.md`. Don't wait for a "research phase" — the insight is often more valuable than the analysis that produced it.
+
+4. **Project memory maintenance.** After any session that deepens understanding, update CLAUDE.md and related core files. The project should always describe its current state of knowledge, not its state when files were first created.
+
+5. **Antti thinks in strategic implications, not feature lists.** When presenting research, lead with "what this means for the buyer" not "what this platform does." Features are context; implications are the point.
+
+## Next-Session Predictions
+
+When starting a new session, check:
+- [ ] Have I read insights.md for current compressed arguments?
+- [ ] Am I applying the 1-of-200 test to any vendor success stories?
+- [ ] Am I leading with buyer implications, not feature lists?
+- [ ] Does CLAUDE.md reflect current understanding?
+
+## Pattern Watch
+
+Patterns to escalate to hard rules if they appear 3+ times:
+- (none yet — first session of tracking)

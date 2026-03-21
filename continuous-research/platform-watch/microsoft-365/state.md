@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-21 (cycle 24)
-OODA cycles: 7
+Last updated: 2026-03-21 (cycle 27)
+OODA cycles: 8
 
 ## Focus
 
@@ -32,6 +32,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Plan-based execution with checkpoints, human approval before changes applied
 - **Status: Research Preview only.** Limited customer testing. "Late March" broader Frontier access has not materialized as of March 21. Charles Lamanna (Microsoft President) says he's personally using it; LinkedIn commenters enthusiastic but zero independent deployment reports. Some Cowork usage may be included in $30/user plan (not E7-exclusive). ([LinkedIn](https://www.linkedin.com/posts/charleslamanna_its-been-great-to-see-the-excitement-around-activity-7436809874933587968-jyuB), Mar 2026)
 - This is the strongest personal agent concept in M365 but is NOT shipping broadly
+- **Cycle 27 update:** Silence is becoming the signal. 12+ days after announcement, zero independent reviews on any platform. Frontier rollout not confirmed as live. Ethan Mollick skeptical: Microsoft "has a tendency to launch a leading product and then let it sit for awhile." ([GeekWire](https://www.geekwire.com/2026/microsofts-new-copilot-cowork-integrates-anthropics-claude-in-rollout-of-new-e7-licensing-tier/), Mar 2026). Next meaningful check: April 1-7.
 
 ### Azure AI Foundry Agent Service (GA March 16, 2026)
 - Enterprise infrastructure — durable orchestration, human-in-the-loop, multi-model
@@ -43,6 +44,10 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Hosted agent billing starts no earlier than April 1, 2026
 - Voice Live API (preview) — real-time speech-to-speech for customer service/field ops
 - **Company-wide agent** tier — requires developer involvement
+- **Post-GA reliability issues (cycle 27):** Multiple practitioners report intermittent JSON parsing failures — agents return empty responses for "several hours per week." Code Interpreter containers failing in EastUS2 from Feb 21. Multi-region availability degradation March 9-10. One user evaluating Anthropic Claude as fallback. ([MS Q&A](https://learn.microsoft.com/en-us/answers/questions/5789805/azure-ai-foundry-agents-intermittently-failing-wit), Feb-Mar 2026, practitioner direct)
+- **Pre-GA technical limitations (status unknown post-GA):** Hidden system prompts consuming tokens invisibly, RAG grounding NOT enforced (agents hallucinate instead of using knowledge sources), portal-defined agents not accessible via API. ([Julian Smiles on Medium](https://medium.com/@juliansmiles_40140/azure-ai-foundry-agent-service-technical-limitations-6b0f00ff4adc), Jan 2026, practitioner direct)
+- **Private networking + Workflow agents bug:** Workflow agents fail with private networking enabled ("400 Cannot create a new response"). Individual agents work fine. Published agents use project identity instead of distinct agent identity, contradicting docs. ([GitHub issue](https://github.com/azure/azure-sdk-for-js/issues/37036), Feb 2026, practitioner direct)
+- **Named customers (GA announcement, all Level 0):** Corvus Energy, KPMG, NTT DATA, Fujitsu, YoungWilliams, Aon, Twilio. All partnership quotes — zero deployment metrics. NTT DATA claims "50% faster time to market" (vendor page only, unverified). ([Foundry GA blog](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/building-production-ready-secure-observable-ai-agents-with-real-time-voice-with-/4501074), Mar 2026)
 
 ### Microsoft Agent 365 (launches May 1, 2026)
 - Dedicated control plane for IT/security to observe, secure, and govern agents
@@ -95,6 +100,9 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 | Does agent respect Salesforce RBAC? | **No.** Entra Agent ID governs Microsoft resources only. External RBAC depends on connector OAuth credentials. Each system manages its own permissions independently. | [MS Learn: Entra Agent ID auth](https://learn.microsoft.com/en-us/entra/agent-id/identity-professional/authorization-agent-id) |
 | Connector SSO? | Works within Entra ID ecosystem. Non-Entra SSO planned (2025 Wave 2) but GA status unclear. Tokens ephemeral — not persisted. Long-running workflows need re-auth logic. SSO breaks with custom AD auth + Teams. | [MS Learn: SSO for connectors](https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave1/microsoft-copilot-studio/use-sso-connectors-agents) |
 | Unified cross-system audit? | **Does not exist.** Purview UAL covers M365 Copilot + Copilot Studio interactions. External system actions (Salesforce, Snowflake, Slack) logged in their own systems. SIEM integration (Sentinel/Splunk) required for consolidation. | [MS Learn: Purview audit](https://learn.microsoft.com/en-us/purview/audit-copilot) |
+| DLP bypass bug (Jan-Feb 2026)? | **Level 3 convergence.** CW1226324: Copilot work tab read/summarized confidential-labeled emails from Sent Items/Drafts despite DLP blocks. Detected Jan 21, fixed late Feb. UK NHS flagged internally (INC46740412). Root cause: code defect skipping sensitivity label checks. | [The Register](https://www.theregister.com/2026/02/18/microsoft_copilot_data_loss_prevention/), Feb 2026 |
+| Copilot Studio attack vectors? | **Tenable validated.** Microsoft Defender published top 10 misconfigurations: unauthenticated agents, maker-credential auth (agent uses builder's access), orphaned agents, prompt injection via email. Tenable independently validated SSRF via HttpRequestAction and "CoPhish" token-harvesting. | [MS Security Blog](https://www.microsoft.com/en-us/security/blog/2026/02/12/copilot-studio-agent-security-top-10-risks-detect-prevent/); [Derk van der Woude](https://derkvanderwoude.medium.com/copilot-studio-agent-security-baseline-6df35608ec07), Feb 2026 |
+| Entra Shadow AI Detection? | **GA March 31.** Network-layer detection of unknown AI apps. Surfaces unmanaged AI usage. Part of Agent 365 + E7 positioning. | [MS Security Blog](https://www.microsoft.com/en-us/security/blog/2026/03/20/secure-agentic-ai-end-to-end/), Mar 2026 |
 
 ### Memory & Learning
 
@@ -244,6 +252,14 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Governance controls maturing faster than agents.** March 2026 shipped granular policy controls (per-department/group AI restrictions, prompt audit logs). Governance infrastructure arriving before the agents it governs — consistent pattern.
 - **Still zero production business agent deployments.** Seven research cycles, zero independent deployment evidence for M365 business agents. The announcement-to-deployment gap is now the defining feature.
 
+### From cycle 27 (post-GA Foundry reliability, security surface, Cowork status):
+- **Foundry Agent Service: post-GA reliability is a real question.** Intermittent JSON parsing failures, Code Interpreter container failures (EastUS2 from Feb 21), multi-region degradation March 9-10. One practitioner evaluating Claude as fallback. Pre-GA limitations (broken RAG grounding, hidden system prompts) unconfirmed as fixed. Private networking breaks Workflow agents (headline GA feature). At day 5 post-GA, the only practitioner signals are bug reports, not success stories. ([MS Q&A](https://learn.microsoft.com/en-us/answers/questions/5789805/azure-ai-foundry-agents-intermittently-failing-wit); [Medium](https://medium.com/@juliansmiles_40140/azure-ai-foundry-agent-service-technical-limitations-6b0f00ff4adc); [GitHub](https://github.com/azure/azure-sdk-for-js/issues/37036), Feb-Mar 2026)
+- **Security surface expanding faster than governance.** DLP bypass = Level 3 convergence (Jan-Feb 2026, NHS + Microsoft + multiple security pubs). Copilot Studio top-10 misconfigurations: Tenable independently validated SSRF and CoPhish token-harvesting. Shadow agents at 29%. Governance product (Agent 365) doesn't ship until May 1. Microsoft simultaneously creating the problem and selling the solution. ([The Register](https://www.theregister.com/2026/02/18/microsoft_copilot_data_loss_prevention/); [MS Security Blog](https://www.microsoft.com/en-us/security/blog/2026/02/12/copilot-studio-agent-security-top-10-risks-detect-prevent/), Feb 2026)
+- **Copilot Cowork silence is becoming the signal.** 12+ days post-announcement, zero independent reviews. Frontier rollout not confirmed as live. Ethan Mollick skeptical about Microsoft's tendency to "launch and let sit." If zero reviews persist through April, this becomes a structural finding about the product.
+- **SemiAnalysis frames the existential threat.** "Claude for Excel effectively is what Copilot for Excel should have been." Azure revenue depends on renting GPUs to companies disrupting Office. ([SemiAnalysis](https://newsletter.semianalysis.com/p/claude-code-is-the-inflection-point), Feb 2026)
+- **Entra Shadow AI Detection GA March 31.** Network-layer identification of unknown AI apps. Part of the Agent 365 + E7 sell. ([MS Security Blog](https://www.microsoft.com/en-us/security/blog/2026/03/20/secure-agentic-ai-end-to-end/), Mar 2026)
+- **Nordic: seventh consecutive zero** for M365 business agent deployments. Corvus Energy (Foundry) remains the only Nordic signal, vendor-sourced.
+
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
 - [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence across 6 cycles.**
@@ -255,9 +271,11 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - [ ] Copilot Cowork independent reviews — re-check early April. If zero reviews persist through April, this becomes a structural finding.
 - [ ] E7 early adoption data — public preview April, GA May 1. Watch May-June 2026.
 - [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts. No new agent content since cycle 18.
-- [ ] Foundry Agent Service production deployments — still only Corvus Energy (no metrics). 5 days post-GA.
+- [ ] Foundry Agent Service production deployments — still only Corvus Energy (no metrics). Day 5 post-GA. Named partners (KPMG, NTT DATA, Twilio) are partnership quotes only. Watch 30-90 day window for first independent reports.
+- [ ] Foundry reliability: do intermittent failures (JSON parsing, Code Interpreter) persist? Do pre-GA limitations (broken RAG, hidden prompts) get fixed?
 - [ ] CUA enterprise adoption — zero practitioner reviews after multi-model + Windows 365 for Agents shipped.
 - [ ] Agent 365 external enterprise reports — zero external evidence. Watch post-May 1 GA.
+- [ ] Copilot market share: next data point expected from analyst surveys in Q2 2026. 11.5% → where?
 - [ ] Voice Live API — Preview, no GA date, zero deployments.
 - [ ] **INFLECTION POINT: May 1, 2026** — E7 + Agent 365 GA. If the deployment gap persists through May, it transitions from "early" to "structural."
 

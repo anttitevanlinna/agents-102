@@ -174,18 +174,21 @@ Updated 2026-03-21 with platform research findings.
 
 ## Fit Assessment
 
-### Where the fit is strong (validated by research)
+### Where the fit is strong (validated by research + field evidence)
 
 - **Pain 1 (can't formulate questions) ↔ Bootstrap + Advisory** — this is the core fit. No competitor addresses it. Consultancies sell answers to questions the buyer can't formulate. We build the competence to ask the right questions.
 - **Pain 2 (vendor demos one process) ↔ 1-of-200 framing** — research-grounded. Finnair case makes it tangible. No vendor will tell you this.
 - **Pain 4 (research landscape deceives) ↔ evidence-graded research** — our platform watch system produces exactly the honest, sourced assessment CTOs need. This is IP no competitor has.
 - **Pain 5 (consultancy theatre) ↔ exercise-led training** — F-Secure validates this. Real agents, real policies, real competence.
+- **Competence creates pull (F-Secure field evidence):** After 2 modules, pretty much everyone started building — dashboards, agents, apps — unprompted. The competence itself creates discovery. You don't need a process assessment to find agent candidates. Teach people to build and they find their own processes. This inverts the consultancy sequence (assess → identify → build → train) to the sequence that actually works (train → they identify → they build → assess what worked).
+- **Three predictable enablers emerge (F-Secure field evidence):** Builders hit three walls: (1) data access — agents need Snowflake, Salesforce, internal systems; (2) a platform to run what they built — "where does this live?"; (3) discoverability — how do others find and use what builders created. These three are the natural Bootstrap→Advisory handoff. "Your people are building. Here's what they need next."
 
 ### Where the fit is assumed (needs validation)
 
 - **Gain 6 (peer network) ↔ Connect** — untested. Assumption map Priority 1, 4, 13.
 - **Gain 8 (re-evaluate over time) ↔ co-owned advisory system** — not yet built. Assumption map Priority relates to advisory delivery.
 - **Pain reliever (infrastructure-first platform analysis)** — the insight is strong but the advisory system isn't built yet.
+- **Three enablers as convergence** — F-Secure is one deployment. Watch for the same three walls at the next org to confirm convergence.
 
 ### The core fit statement
 

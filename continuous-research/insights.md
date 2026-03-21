@@ -123,6 +123,46 @@ This is why Bootstrap precedes advisory. The 2-day hands-on experience gives the
 
 ---
 
+## Three Enablers That Emerge After Competence (F-Secure Evidence)
+
+**Thesis:** Once people can build agents, they discover three infrastructure needs the organization hasn't solved — data access, a platform to run what they built, and a way for others to find and use it.
+
+F-Secure evidence (March 2026): after 2 modules of Claude Code 101, pretty much everyone started building — dashboards, agents, applications. Not because they were told to, but because competence creates pull. But most builders hit walls. The walls are not about capability — they're about infrastructure:
+
+1. **Data access.** Agents need Snowflake, Salesforce, internal systems. Without access, the agent is a toy that works on sample data. This is the multi-tool problem from our platform research, experienced from the inside. It's also why vertical SaaS agents (Agentforce, Zendesk) have an advantage — they already own the data. For everything else, someone needs to connect the pipes.
+
+2. **A platform to run AI-generated apps.** People build personal agents that work. Then: "where does this live? How do I share it? Can it run when I'm not running it?" This is the promotion path problem — personal→team→company — that no platform has solved. F-Secure is hitting exactly the gap we documented across Microsoft, Google, OpenAI, and Anthropic.
+
+3. **Agent skills / user guidance.** Once builders create agents, other people in the org need to find them, understand what they do, and know how to use them. This is the discoverability and governance layer — what OpenAI is calling "Skills" and what Microsoft is building with Agent 365. Nobody has shipped it yet. F-Secure needs it now.
+
+**The implication for CTOs:** Bootstrap builds competence. Competence creates builders. Builders discover your real infrastructure gaps — and they discover them faster and more accurately than any consultancy assessment. The three enablers (data access, runtime platform, discoverability) are predictable and plannable. Budget for them.
+
+**The implication for Bosser:** This is the natural handoff from Bootstrap to Advisory. "Your people are building. Here's what they need next." The advisory engagement scopes these three enablers against the org's specific landscape.
+
+**Evidence level:** Level 2 (single deployment, strong signal). Watch for convergence as more orgs go through Bootstrap.
+
+**Applies to:** Advisory positioning, Bootstrap→advisory handoff, platform watch, value proposition canvas
+**Source:** F-Secure deployment experience (March 2026, Antti direct)
+**Date:** 2026-03-21
+
+---
+
+## Competence Creates Pull — People Find Their Own Processes
+
+**Thesis:** You don't need to tell people which processes to automate. Teach them to build agents, and they discover the right processes themselves.
+
+F-Secure evidence: after 2 modules, people started building dashboards, agents, and applications for their own work — unprompted. Nobody assigned "build an agent for X." The competence itself created the pull. This is stronger validation than any process assessment a consultancy could deliver, because the people who know the process best (the ones doing it) are the ones identifying the opportunity.
+
+This inverts the traditional transformation sequence. Consultancies do: assess processes → identify candidates → build solutions → train users. Our sequence is: train people → they identify candidates → they build solutions → assess what worked. The second sequence is faster, cheaper, and produces better candidates — because the domain expert and the builder are the same person.
+
+**The implication for CTOs:** Stop commissioning process assessments. Build competence. Your people will tell you where agents create value — and they'll be right more often than the consultancy, because they know the work.
+
+**Applies to:** Core value proposition, sales conversations, Bootstrap design
+**Source:** F-Secure deployment experience (March 2026, Antti direct)
+**Date:** 2026-03-21
+
+---
+
 ## Template
 
 Copy this for new insights:

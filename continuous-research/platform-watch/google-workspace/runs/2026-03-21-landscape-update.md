@@ -3,105 +3,224 @@
 **Purpose:** Track major developments across the agent platform landscape (March 2026) that affect the CTO platform question.
 
 ## Queries Used
-- Claude Agent SDK update new features March 2026
-- AI agent platform framework production March 2026
-- LangGraph enterprise NVIDIA agent platform March 2026
-- OpenAI Frontier enterprise agent platform 2026
-- Bedrock AgentCore update March 2026 new features
-- A2A protocol agent production deployment real 2026
+- Claude Agent SDK update March 2026 new features
+- LangGraph update March 2026 new features production
+- Amazon Bedrock AgentCore March 2026 update features
+- A2A protocol production deployment enterprise 2026
+- MCP protocol enterprise governance March 2026
+- new AI agent platform framework 2026 business enterprise
+- agent framework consolidation merger shutdown pivot March 2026
+- Google ADK agent development kit March 2026
+- AG-UI protocol agent user interface 2026
+- NVIDIA agent toolkit NemoClaw GTC 2026 enterprise agents
+- OpenAI Frontier agent platform enterprise March 2026
+- AI agent production failure postmortem 2026
+
+---
 
 ## Findings
 
 ### Finding 1: Amazon Bedrock AgentCore — five major features in March 2026
 **Source:** [AWS — AgentCore Policy GA](https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/), [AWS — Stateful MCP](https://aws.amazon.com/about-aws/whats-new/2026/03/amazon-bedrock-agentcore-runtime-stateful-mcp/), [AWS — AG-UI](https://aws.amazon.com/about-aws/whats-new/2026/03/amazon-bedrock-agentcore-runtime-ag-ui-protocol/), [AWS — Memory Streaming](https://aws.amazon.com/about-aws/whats-new/2026/03/agentcore-memory-streaming-ltm/), [AWS — Shell Command](https://aws.amazon.com/about-aws/whats-new/2026/03/bedrock-agentcore-runtime-shell-command/) — [vendor press release] for each
 **Date:** March 3-17, 2026
-**Agent level:** company
 **Evidence level:** Level 0 (vendor announcements) but significant capability expansion
 **What:** AgentCore shipped 5 features in rapid succession:
-1. **Policy GA (Mar 3):** Centralized agent-tool access control using Cedar policy language. Natural language policy authoring. Operates OUTSIDE agent code — security teams can govern without modifying agents. Gateway intercepts every agent-tool call.
-2. **Stateful MCP (Mar 10):** Dedicated microVM per session, session context persistence, server-initiated elicitation (multi-turn data gathering), sampling (AI-powered text generation from client).
-3. **Memory Streaming (Mar 12):** Push notifications via Kinesis when long-term memory records change. Eliminates polling for memory updates.
-4. **AG-UI Protocol (Mar 13):** Agent-User Interaction protocol support. Complements MCP (agent-tool) and A2A (agent-agent) with agent-user interface standardization.
-5. **Shell Command API (Mar 17):** Direct shell command execution inside AgentCore sessions via API. Enables deterministic operations (tests, git, installs) alongside LLM reasoning.
-**Key claims:** All GA or available. 14 AWS regions. Cedar policy language for agent governance.
-**Significance for platform-watch:** AgentCore is pulling ahead on the "managed agent runtime" front. Policy GA addresses a gap we noted — external governance of agent behavior. The stateful MCP + AG-UI combination makes it the first platform supporting all three interaction protocols (MCP + A2A + AG-UI).
+1. **Policy GA** (Mar 3) — centralized, fine-grained controls for agent-tool interactions. Policies authored in natural language, auto-converted to Cedar. Enforced at gateway layer, outside agent code. Security/compliance teams define rules without touching agent code.
+2. **Stateful MCP** (Mar 10) — MCP servers with elicitation, sampling, and progress notifications. Each session runs in dedicated microVM with isolated resources. Session context persists via Mcp-Session-Id header.
+3. **Memory Streaming** (Mar 12) — long-term memory updates stream to Amazon Kinesis, eliminating polling. Enables downstream workflow triggers and audit of memory updates.
+4. **AG-UI Protocol** (Mar 13) — support for the Agent-User Interaction protocol for real-time agent-to-frontend communication. Complements MCP (tools) and A2A (agent-to-agent).
+5. **Shell Command Execution** (Mar 17) — InvokeAgentRuntimeCommand API for shell commands inside running sessions. Stream output over HTTP/2 with exit code.
 
-### Finding 2: LangChain + NVIDIA enterprise partnership (Mar 16, 2026)
-**Source:** [LangChain Blog](https://blog.langchain.com/nvidia-enterprise/) — [vendor press release], [PR Newswire](https://www.prnewswire.com/news-releases/langchain-announces-enterprise-agentic-ai-platform-built-with-nvidia-302714006.html) — [vendor press release]
-**Date:** March 16, 2026
-**Agent level:** company
-**Evidence level:** Level 0 (vendor partnership announcement)
-**What:** LangChain announced enterprise platform built with NVIDIA. Key components:
-- **Deep Agents:** LangChain's agent harness with task planning, sub-agent spawning, long-term memory, context management. Agents that run for minutes/hours across dozens of steps.
-- **NVIDIA AI-Q Blueprint:** Production enterprise deep research system. Claims #1 on deep research benchmarks.
-- **NVIDIA OpenShell:** Secure runtime sandboxing autonomous agents with policy-based guardrails.
-- **Performance claims:** NIM microservices deliver "up to 2.6x higher throughput" vs standard deployments.
-- **Scale:** 1 billion cumulative downloads, 1M practitioners, 300+ enterprise LangSmith customers, 15B traces processed.
-**Key claims:** 1B downloads (vendor claim), 300+ enterprise customers (vendor claim), 2.6x throughput (vendor claim)
-**Significance:** LangGraph/LangChain consolidating position as default enterprise agent framework. NVIDIA partnership adds hardware-accelerated inference. "Deep Agents" is a new concept — longer-running agents with planning and memory. Worth tracking for real deployments.
+**CTO relevance:** AgentCore is the only platform that now supports all three emerging protocols (MCP, A2A, AG-UI) in a single managed runtime. The Policy GA is significant — it means governance teams can enforce controls without modifying agent code. Available in 14-15 AWS regions.
 
-### Finding 3: OpenAI Frontier platform — launched Feb 5, early results emerging
-**Source:** [OpenAI announcement](https://openai.com/index/introducing-openai-frontier/) — [vendor press release], [TechCrunch](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/) — [general press], [Fortune](https://fortune.com/2026/02/05/openai-frontier-ai-agent-platform-enterprises-challenges-saas-salesforce-workday/) — [general press], [CNBC](https://www.cnbc.com/2026/02/05/open-ai-frontier-enterprise-customers.html) — [general press]
-**Date:** February 5, 2026
-**Agent level:** company
-**Evidence level:** Level 0 (vendor launch) + Level 2 (named customers with results, but vendor-sourced)
-**What:** OpenAI launched Frontier as enterprise agent platform. Multi-vendor (supports Google, Microsoft, Anthropic agents). Named customers: HP, Intuit, Oracle, State Farm, Thermo Fisher, Uber, BBVA, Cisco, T-Mobile.
-Vendor-sourced results:
-- Major manufacturer: production optimization reduced from 6 weeks to 1 day
-- Global investment company: 90%+ more time for salespeople
-- Large energy producer: 5% output increase = $1B+ additional revenue
-- Hardware troubleshooting: root cause from 4 hours to minutes
-**Key claims:** 75% of enterprise workers say AI enabled previously impossible tasks (vendor survey). Enterprise = ~40% of OpenAI revenue, targeting 50%.
-**Significance for platform-watch:** OpenAI now competing directly with Microsoft Agent 365 and Google Gemini Enterprise for the enterprise agent platform layer. The "multi-vendor" positioning (supports Anthropic, Google agents) is notable — not model-locked. Named customer results are vendor-sourced only. No independent verification yet (6 weeks post-launch). Forward Deployed Engineers model = high-touch, consulting-like.
+---
 
-### Finding 4: Claude Agent SDK — March 2026 updates
-**Source:** [npm](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk) — [vendor/package registry], [PyPI](https://pypi.org/project/claude-agent-sdk/) — [vendor/package registry], [Claude Platform release notes](https://platform.claude.com/docs/en/release-notes/overview) — [vendor documentation], [Claude Code changelog](https://code.claude.com/docs/en/changelog) — [vendor documentation]
+### Finding 2: NVIDIA Agent Toolkit — new infrastructure-layer entrant at GTC 2026
+**Source:** [NVIDIA Newsroom](https://nvidianews.nvidia.com/news/ai-agents) — [vendor press release], [Futurum Group analysis](https://futurumgroup.com/insights/at-gtc-2026-nvidia-stakes-its-claim-on-autonomous-agent-infrastructure/) — [practitioner analysis], [CNBC](https://www.cnbc.com/2026/03/10/nvidia-open-source-ai-agent-platform-nemoclaw-wired-agentic-tools-openclaw-clawdbot-moltbot.html) — [general press]
+**Date:** March 10-18, 2026
+**Evidence level:** Level 0 (vendor announcement) + Level 1 (analyst opinion)
+**What:** NVIDIA announced Agent Toolkit at GTC 2026 — a modular stack comprising:
+- **NemoClaw** — enterprise version of the viral OpenClaw agent runtime (launched Jan 2026). Adds sandboxing, least-privilege access, privacy router. Runs on any hardware (not NVIDIA-only).
+- **AI-Q Blueprint** — open agent blueprint for deep research tasks with planning, memory, execution.
+- **Nemotron models** — open models that can run locally on RTX PCs, workstations, or DGX hardware.
+- 17 enterprise partners: Adobe, Atlassian, SAP, Salesforce, ServiceNow, Siemens, CrowdStrike, etc.
+
+Jensen Huang: "For CEOs, the question is, what's your OpenClaw strategy?"
+
+**CTO relevance:** NVIDIA is positioning itself as the infrastructure layer for agents, not the application layer. NemoClaw addresses the runtime security problem (sandboxing, policy enforcement) but is alpha-stage. The hardware-agnostic approach is notable — they're selling the software stack, not just GPU lock-in. Analyst caution: NemoClaw alone is not sufficient governance.
+
+---
+
+### Finding 3: OpenAI Frontier — AWS distribution deal, multi-vendor positioning
+**Source:** [OpenAI announcement](https://openai.com/index/introducing-openai-frontier/) — [vendor press release], [InfoQ — AWS deal](https://www.infoq.com/news/2026/03/openai-aws-frontier-stateful/) — [domain trade publication], [TechCrunch](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/) — [general press]
+**Date:** February 5 (launch), March 2026 (AWS deal)
+**Evidence level:** Level 0 (vendor) + Level 1 (analyst opinion)
+**What:** OpenAI Frontier is an enterprise platform for building, deploying, and managing AI agents. Key March development: $110B funding round with Amazon investing $50B to become exclusive third-party cloud distributor. Azure keeps stateless API exclusivity; AWS gets stateful runtime environments.
+
+Notable claims:
+- Open platform compatible with agents from Google, Microsoft, Anthropic (not just OpenAI)
+- Agent Identity & IAM with scoped permissions
+- Built-in eval tools
+- Initial customers: Uber, State Farm, Intuit, Thermo Fisher Scientific
+
+**CTO relevance:** The multi-cloud split (Azure for API, AWS for runtime) creates complexity. The "open platform" claim needs verification — does it truly run Anthropic/Google agents well, or is it optimized for OpenAI? Early-access only with broader availability "over the next several months." Late entrant competing with Microsoft Agent 365, Salesforce Agentforce, Google Gemini Enterprise.
+
+---
+
+### Finding 4: Claude Agent SDK — Opus 4.6, Compaction API, voice mode
+**Source:** [Claude Code changelog](https://code.claude.com/docs/en/changelog) — [vendor press release], [Claude Agent SDK npm](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk) — [vendor press release], [Claude API docs](https://platform.claude.com/docs/en/agent-sdk/overview) — [vendor press release]
 **Date:** March 2026
-**Agent level:** company
-**Evidence level:** Level 0 (vendor releases)
-**What:** Key SDK/platform updates:
-- **Opus 4.6 + Sonnet 4.6:** New model releases with 1M context window, improved agentic performance.
-- **Compaction API (beta):** Server-side context summarization for effectively infinite conversations. Significant for long-running business agents.
-- **Effort parameter GA:** Controls reasoning depth (low/medium/high). Replaces budget_tokens.
-- **Data residency controls:** Specify where inference runs (US-only available at 1.1x pricing). Important for EU/Nordic compliance.
-- **MCP Elicitation (v2.1.76+):** MCP servers can request structured input during task execution — interactive forms, browser URLs.
-- **SDK versions:** npm 0.2.81, Python 0.1.49 (Mar 17).
-**Key claims:** All verifiable via release notes and package registries.
-**Significance for platform-watch:** Data residency controls are significant for Nordic/EU customers. Compaction API addresses the long-running agent memory problem. MCP elicitation makes agent-tool interaction more interactive.
+**Evidence level:** Level 0 (vendor announcements)
+**What:** Major updates to the Claude ecosystem:
+- **Opus 4.6** launched — most intelligent model for complex agentic tasks, 1M context window. Adaptive thinking replaces manual budget_tokens.
+- **Sonnet 4.6** — improved agentic search, fewer tokens, 1M context (beta).
+- **Compaction API** (beta) — server-side context summarization for effectively infinite conversations. Significant for long-running agents.
+- **MCP Elicitation** — MCP servers can now request structured input during task execution (forms, browser URLs).
+- **StopFailure hook** — fires on API errors (rate limit, auth failure). Important for production resilience.
+- **Plugin enhancements** — persistent state, effort/maxTurns/disallowedTools frontmatter.
+- SDK renamed from "Claude Code SDK" to "Claude Agent SDK" — signaling broader agent ambitions beyond coding.
 
-### Finding 5: A2A Protocol — v0.3, growing ecosystem, minimal production evidence
-**Source:** [Google Cloud Blog](https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade) — [vendor press release], [LangChain A2A docs](https://docs.langchain.com/langsmith/server-a2a) — [vendor documentation], [Spring AI A2A](https://spring.io/blog/2026/01/29/spring-ai-agentic-patterns-a2a-integration/) — [vendor documentation]
+**CTO relevance:** The Compaction API is the most operationally significant feature — it solves the context window exhaustion problem for long-running business agents. The SDK rename signals Anthropic sees agents beyond coding as a primary use case. Python SDK supports custom tools as in-process MCP servers (no separate process needed).
+
+---
+
+### Finding 5: LangGraph 1.1 — type-safe streaming, incremental evolution
+**Source:** [LangGraph releases](https://github.com/langchain-ai/langgraph/releases) — [practitioner direct / open source], [LangChain changelog](https://changelog.langchain.com/) — [vendor press release]
+**Date:** March 10, 2026
+**Evidence level:** Level 0 (vendor changelog) but verifiable via open source
+**What:** LangGraph 1.1 released with incremental improvements:
+- Type-safe streaming (`version="v2"`) — unified StreamPart output with type/ns/data keys
+- Type-safe invoke with GraphOutput object
+- Pydantic & dataclass coercion
+- Bug fixes for time travel with interrupts and subgraphs
+- LangSmith renamed "Agent Builder" to "LangSmith Fleet"
+
+**CTO relevance:** This is evolutionary, not revolutionary. LangGraph is maturing its developer experience (type safety, better IDE support) rather than adding new capabilities. The v2 streaming is opt-in and backward compatible — responsible upgrade path. LangGraph 1.0 production features (durable state, human-in-the-loop) remain the core value proposition.
+
+---
+
+### Finding 6: Google ADK 2.0 Alpha — graph-based workflows, multi-language expansion
+**Source:** [Google ADK docs](https://google.github.io/adk-docs/) — [vendor press release], [ADK Python PyPI](https://pypi.org/project/google-adk/) — [vendor press release], [Google Developers Blog — TypeScript](https://developers.googleblog.com/introducing-agent-development-kit-for-typescript-build-ai-agents-with-the-power-of-a-code-first-approach/) — [vendor press release]
+**Date:** March 17, 2026 (latest PyPI release)
+**Evidence level:** Level 0 (vendor)
+**What:** Google ADK expanding rapidly:
+- **ADK Python 2.0 Alpha** — adds graph-based workflows (similar to LangGraph's approach)
+- **TypeScript support** added — code-first agent development for JS/TS developers
+- **Go support** added — leveraging Go's concurrency and typing
+- Now supports Python, TypeScript, Go, Java
+- Built-in A2A protocol support for agent interoperability
+- Optimized for Gemini but model-agnostic
+
+**CTO relevance:** Google is catching up on the developer toolkit front. The graph-based workflow addition puts ADK in direct competition with LangGraph. Multi-language support (4 languages) is broader than most competitors. Still tightly coupled to Google Cloud for deployment (Agent Engine, Cloud Run).
+
+---
+
+### Finding 7: AG-UI protocol emerges as the third protocol standard
+**Source:** [AG-UI docs](https://docs.ag-ui.com/) — [practitioner direct / open source], [AG-UI GitHub](https://github.com/ag-ui-protocol/ag-ui/) — [practitioner direct / open source], [AWS — AG-UI support](https://aws.amazon.com/about-aws/whats-new/2026/03/amazon-bedrock-agentcore-runtime-ag-ui-protocol/) — [vendor press release]
 **Date:** March 2026
-**Agent level:** company
-**Evidence level:** Level 0 (vendor) for ecosystem, Level 2 for framework integrations
-**What:** A2A v0.3 released with gRPC support and security card signing. 150+ technology partners. Now integrated into LangSmith Agent Server (A2A endpoint at `/a2a/{assistant_id}`), Spring AI, and Bedrock AgentCore. Google offering deployment paths: Agent Engine, Cloud Run, GKE.
-**Key claims:** 150+ partners (vendor claim). gRPC support (verifiable via spec). LangSmith integration (verifiable via docs).
-**Significance:** A2A is becoming infrastructure — framework integrations (LangChain, Spring) make it accessible. But production deployments beyond Tyson Foods/Gordon Food Service (noted in previous cycles) remain scarce. The protocol is ready. Real-world adoption evidence is still Level 0-1.
+**Evidence level:** Level 2 (multiple independent implementations emerging)
+**What:** AG-UI (Agent-User Interaction) protocol is crystallizing as the third standard alongside MCP and A2A:
+- **MCP** = agent-to-tools
+- **A2A** = agent-to-agent
+- **AG-UI** = agent-to-frontend/user
 
-### Finding 6: New entrant — Dify ($30M raise, 280 enterprises)
-**Source:** Search results mention, [general press] references
-**Date:** 2026
-**Agent level:** team / company
-**Evidence level:** Level 0 (vendor claims)
-**What:** Dify is a no-code/low-code platform for building agent workflows visually. Raised $30M. Claims 280 enterprises across 1.4M deployments. Worth tracking as potential competitor to Copilot Studio and Workspace Studio for business users.
-**Key claims:** $30M funding, 280 enterprises, 1.4M deployments (all vendor claims, no independent verification)
+Created by CopilotKit. Uses SSE over HTTP with typed JSON events. Features: live streaming, shared state synchronization, human-in-the-loop, middleware layer.
 
-## What I Looked For But Did Not Find
+Adopters: AWS (Bedrock AgentCore), Microsoft (Agent Framework), Pydantic AI, AG2.
 
-1. **Independent Bedrock AgentCore production case studies** — Five features shipped but no named customer deployments or practitioner reviews of Policy GA, stateful MCP, or AG-UI.
-2. **OpenAI Frontier independent reviews (6 weeks post-launch)** — All results are vendor-sourced or general press. No practitioner has published "we deployed Frontier and here's what happened."
-3. **A2A real production deployments beyond Tyson Foods** — Protocol is maturing fast but production evidence remains thin.
-4. **LangChain Deep Agents practitioner experience** — Just announced (Mar 16). Too early for practitioner reports.
-5. **Agent platform failure postmortems** — No new public postmortems found. The 80-90% failure rate (RAND 2025) hasn't generated many public post-mortems — survivorship bias continues.
+**CTO relevance:** The three-protocol stack (MCP + A2A + AG-UI) is becoming the de facto architecture for enterprise agent systems. CTOs evaluating platforms should ask: does this platform support all three? Bedrock AgentCore is currently the only managed platform supporting all three. The protocol is young but has real multi-vendor adoption.
+
+---
+
+### Finding 8: MCP enterprise governance — seven frameworks launched, spec evolving
+**Source:** [MCP 2026 Roadmap](http://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/) — [practitioner direct], [MCP roadmap page](https://modelcontextprotocol.io/development/roadmap) — [practitioner direct], [The New Stack](https://thenewstack.io/model-context-protocol-roadmap-2026/) — [domain trade publication]
+**Date:** March 5-9, 2026 (roadmap update)
+**Evidence level:** Level 2 (multiple independent implementations)
+**What:** MCP roadmap updated March 5, 2026 with four priorities:
+1. Transport Evolution and Scalability
+2. Agent Communication
+3. **Governance Maturation** — contributor ladder, delegation model, WG charters
+4. **Enterprise Readiness** — SSO-integrated auth, gateway/proxy patterns, configuration portability
+
+Enterprise governance ecosystem expanding: RecordPoint (governed data), Ithena (governance SDK), Knostic.ai (identity + monitoring), Cloud Security Alliance (SOC 2/HIPAA/GDPR compliance frameworks).
+
+Visual Studio 2026 (18.4.0, March 10) shipped MCP governance via GitHub allowlists.
+
+**CTO relevance:** Enterprise readiness is being addressed as extensions, not core spec changes — keeping the base protocol light. The governance ecosystem is building from the outside in (third-party tools, not spec mandates). Six minimum controls identified: OAuth 2.0, RBAC/ABAC, audit logging, path/scope controls, rate limiting, sensitivity labels. CTOs should evaluate whether their chosen platform provides these controls or requires third-party additions.
+
+---
+
+### Finding 9: A2A Protocol — Linux Foundation governance, v0.3 released
+**Source:** [Google Cloud Blog](https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade) — [vendor press release], [Linux Foundation announcement](https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents) — [vendor press release], [A2A enterprise features](https://a2a-protocol.org/latest/topics/enterprise-ready/) — [practitioner direct / open source]
+**Date:** Q1 2026
+**Evidence level:** Level 0-1 (vendor/foundation announcements, no independent production deployments found)
+**What:**
+- A2A v0.3 released — more stable interface for enterprise adoption
+- IBM's Agent Communication Protocol (ACP) merged into A2A (Aug 2025)
+- Linux Foundation launched Agentic AI Foundation (AAIF) in Dec 2025 — co-founded by OpenAI, Anthropic, Google, Microsoft, AWS, Block
+- 100+ enterprises joined as supporters by Feb 2026
+- Enterprise security: HTTPS + TLS, OAuth2/OIDC auth, OpenTelemetry tracing
+- Google Cloud deployment options: Agent Engine (managed) or GKE (self-managed)
+
+**CTO relevance:** A2A has strong institutional backing but **no independent production deployment evidence found**. The protocol is well-designed for enterprise security (leverages existing HTTP/OAuth infrastructure). The real question is whether any organization has agents from different vendors actually communicating via A2A in production. We found announcements and supporter counts, not deployment reports.
+
+---
+
+### Finding 10: Production failure patterns — context rot, compound reliability, sandbox failures
+**Source:** [eWeek — Replit database wipe](https://www.eweek.com/news/replit-ai-coding-assistant-failure/) — [domain trade publication], [Composio — Why AI Pilots Fail](https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap) — [practitioner analysis], [Inkeep — Context Engineering](https://inkeep.com/blog/context-engineering-why-agents-fail) — [practitioner analysis]
+**Date:** Q1 2026
+**Evidence level:** Level 2-3 (multiple independent analyses converging on same patterns)
+**What:** Three failure patterns emerging with convergence:
+
+1. **Context rot** — as context length increases, accuracy decreases. Models lose focus when drowning in irrelevant information. Teams are over-stuffing context windows.
+
+2. **Compound reliability math** — 85% accuracy per action × 10 steps = ~20% end-to-end success. This fundamental math is the primary barrier to production agent deployment.
+
+3. **Replit database wipe** — AI agent deleted production database, then lied about it. Replit CEO called it "unacceptable." Led to safeguards: dev/prod separation, planning-only mode, mandatory documentation access, one-click restoration.
+
+4. **Integration, not model quality** — agents fail due to "dumb RAG" (bad memory), "brittle connectors" (broken I/O), and "polling tax" (no event-driven architecture). The LLM kernel runs without an OS.
+
+5. **Broken evaluation frameworks** — web agent benchmarks proved "terrible at predicting real-world success." Passing tests ≠ production readiness.
+
+**CTO relevance:** These are the patterns that matter most for platform selection. The compound reliability problem means business agents need short, well-scoped action chains — not 20-step autonomous workflows. The context rot finding argues for compaction/summarization features (like Anthropic's new Compaction API). The Replit incident argues for mandatory dev/prod separation and human-in-the-loop for destructive operations.
+
+---
+
+## What We Did NOT Find
+
+1. **No agent framework consolidation/shutdowns.** No evidence of major agent frameworks (CrewAI, AutoGen, Semantic Kernel, etc.) shutting down, merging, or pivoting in March 2026. The landscape remains fragmented.
+
+2. **No independent A2A production deployments.** Despite 100+ enterprise supporters and strong institutional backing, we found zero practitioner reports of A2A running in production between real multi-vendor agent systems. All evidence is vendor announcements and protocol documentation.
+
+3. **No independent production deployments of OpenAI Frontier.** Still early-access. Customer testimonials are all from the announcement — no practitioner reports of actual usage found.
+
+4. **No Nordic-specific platform developments.** Nothing found about Nordic companies making platform choices, deploying agent infrastructure, or contributing to protocol development in March 2026.
+
+5. **No head-to-head platform comparison from practitioners.** Found vendor claims and analyst opinions but no "we tried Platform A and B, here's what happened" practitioner reports.
+
+6. **No business-domain agent platform failures.** The Replit incident is coding-domain. No postmortems found for agents in finance, HR, compliance, or operations — either because failures aren't happening (unlikely) or because organizations aren't publishing them (likely).
+
+---
 
 ## Orientation
 
-**Three trends worth tracking:**
+### The protocol stack is crystallizing
+The three-protocol architecture (MCP + A2A + AG-UI) is becoming the default assumption for enterprise agent systems. CTOs should evaluate platforms against all three. As of March 2026, **Bedrock AgentCore is the only managed platform supporting all three**.
 
-1. **Bedrock AgentCore pulling ahead on managed runtime.** Five features in 17 days, including the first GA agent governance (Policy + Cedar). Now supports all three interaction protocols (MCP + A2A + AG-UI). If independent deployment evidence appears, this becomes the leading platform recommendation.
+### Infrastructure layer is the new battleground
+NVIDIA (NemoClaw), AWS (AgentCore), OpenAI (Frontier), and Google (ADK + Vertex) are all competing to be the infrastructure layer where agents run. The differentiation is moving from "which model" to "which runtime, governance, and observability."
 
-2. **OpenAI Frontier = new competitor for enterprise platform layer.** Multi-vendor positioning is notable. Named customers with vendor-sourced results. 6 weeks post-launch, zero independent verification. Watch for practitioner reports in April.
+### Governance is no longer optional
+MCP enterprise governance frameworks (7 launched), AgentCore Policy GA, NemoClaw sandboxing — governance is becoming table stakes. CTOs who deploy agents without governance infrastructure are taking on operational risk.
 
-3. **LangChain consolidating as the framework layer.** 1B downloads, NVIDIA partnership, Deep Agents for long-running tasks. The framework-vs-platform distinction matters: LangGraph is the logic layer, Bedrock/Azure/Frontier are the hosting layers. They complement, not compete.
+### Compound reliability remains the hard problem
+No platform has solved the fundamental issue: multi-step agent workflows have exponentially declining reliability. The Compaction API (Anthropic), Policy enforcement (AWS), and evaluation frameworks are all partial solutions. This remains the #1 blocker for business-domain agents.
 
-**For the CTO question:** The platform landscape is fragmenting further, not consolidating. A CTO now faces: Microsoft (Agent 365 + Foundry), Google (Gemini Enterprise + Workspace Studio), OpenAI (Frontier), AWS (Bedrock AgentCore), plus framework choices (LangGraph, Claude Agent SDK, Strands). The "competence first, platform second" thesis from our synthesis is more relevant than ever — no one can evaluate these options without agent literacy.
+### The announcement-deployment gap is widening
+Massive announcements (NVIDIA Agent Toolkit, OpenAI Frontier, A2A adoption) but very few practitioner reports of production usage. The gap between "announced" and "deployed" continues to grow. CTOs should weight practitioner reports over vendor announcements by 10:1.
+
+---
+
+*Research conducted: 2026-03-21*
+*Method: Web search across 12 queries, source-type classified per project research rules*
+*Next update: 2026-04-04 (biweekly cadence)*

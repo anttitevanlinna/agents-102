@@ -682,7 +682,17 @@ Use **Letta** for agents that need persistent memory across sessions and self-im
 
 6. **New entrant — Dify:** No-code/low-code agent platform, $30M funding, claims 280 enterprises and 1.4M deployments. Vendor claims, no independent verification.
 
-**Orient:** Bedrock AgentCore pulling ahead as the most complete managed runtime (policy + all three protocols). LangChain consolidating as the default framework layer with NVIDIA partnership. OpenAI Frontier is the newest platform competitor but still zero independent evidence. The framework-vs-platform distinction matters: LangGraph is logic, Bedrock/Azure/Frontier are hosting — they complement, not compete. Claude SDK data residency controls significant for EU/Nordic compliance.
+6. **NVIDIA Agent Toolkit / NemoClaw (GTC 2026, Mar 10-18):** Enterprise agent runtime with sandboxing, least-privilege, privacy router. AI-Q Blueprint for deep research. 17 enterprise partners. Hardware-agnostic. Alpha stage. Jensen Huang: "For CEOs, the question is, what's your OpenClaw strategy?" ([NVIDIA Newsroom](https://nvidianews.nvidia.com/news/ai-agents), Mar 2026)
+
+7. **Google ADK 2.0 Alpha:** Graph-based workflows (competing with LangGraph), now supporting Python + TypeScript + Go + Java. Built-in A2A support. ([Google ADK docs](https://google.github.io/adk-docs/), Mar 2026)
+
+8. **AG-UI Protocol emerging as third standard:** Agent-User Interaction protocol (alongside MCP for tools, A2A for agents). Created by CopilotKit. Adopted by AWS, Microsoft Agent Framework, Pydantic AI. ([AG-UI docs](https://docs.ag-ui.com/), Mar 2026)
+
+9. **MCP enterprise governance ecosystem:** 7+ frameworks launched. Roadmap updated Mar 5: SSO-integrated auth, gateway/proxy patterns, configuration portability as extensions. Visual Studio 2026 shipped MCP governance via GitHub allowlists. ([MCP roadmap](https://modelcontextprotocol.io/development/roadmap), Mar 2026)
+
+10. **Production failure patterns converging:** Compound reliability (85% per step × 10 = 20%), context rot, Replit production database wipe (agent deleted DB then lied). Broken eval frameworks: benchmarks "terrible at predicting real-world success." ([eWeek](https://www.eweek.com/news/replit-ai-coding-assistant-failure/); [Composio](https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap), Q1 2026)
+
+**Orient:** Bedrock AgentCore pulling ahead as the most complete managed runtime (policy + all three protocols). LangChain consolidating as the default framework layer with NVIDIA partnership. OpenAI Frontier is the newest platform competitor but still zero independent evidence. The framework-vs-platform distinction matters: LangGraph is logic, Bedrock/Azure/Frontier are hosting — they complement, not compete. Claude SDK data residency controls significant for EU/Nordic compliance. The three-protocol stack (MCP + A2A + AG-UI) is crystallizing as enterprise architecture. NVIDIA entering as infrastructure layer. Compound reliability math (85%^10 = 20%) is the fundamental blocker for multi-step business agents.
 
 ### What Was Absent
 

@@ -117,20 +117,49 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 
 **Technical details:**
 - Claude Code Web runs in Firecracker microVM (4 vCPUs, 16GB RAM, 252GB disk)
-- Core binary (`environment-runner`, 27MB Go executable) contains both a `VercelClient` and an `AntspaceClient`
-- Three-stage deploy: create deployment → upload tar.gz → stream NDJSON status updates
-- Includes BYOC (Bring Your Own Cloud) support for enterprises
-- Currently in staging status — early/internal but protocol is production-grade
+- Core binary (`environment-runner`, 27MB Go executable, built with go1.25.7) from Anthropic monorepo (`github.com/anthropics/anthropic/api-go`). **Not stripped** — full debug symbols intact.
+- Binary contains both a `VercelClient` and an `AntspaceClient` — Antspace is the default deploy target, Vercel is the alternative
+- Three-stage deploy: create deployment (POST to control plane) → upload `dist.tar.gz` (multipart, size-limited) → stream NDJSON status (packaging → uploading → building → deploying → deployed)
+- Version string prefixed with `staging-` — early/internal but protocol is production-grade
 
-**Why it matters:** Anthropic is making the play to own the entire stack — from AI model to code runtime to hosting. As Maya Zehavi noted: they're gathering data on what people build with Claude to offer a more optimized end-to-end platform. This changes the three-layer strategy to potentially four layers: standards + engine + business surface + **hosting/runtime**.
+**Baku (web app builder) details:**
+- Template: Vite + React + TypeScript from `/opt/baku-templates/vite-template`
+- Dev server auto-managed via supervisord
+- File organization: `.baku/drafts/` and `.baku/explorations/`
+- Git commits authored as `claude@anthropic.com`, local-only version control
+- Pre-stop hooks prevent session termination if uncommitted changes, Vite errors, or TypeScript errors exist
 
-**Implication for our framework:** This could solve the "where does the app run?" enabler (Pattern 13) — if Anthropic ships Antspace, the runtime question has an answer for Claude-built apps. The BYOC support suggests enterprise-readiness is in scope.
+**Supabase integration — 6 MCP tools auto-available:**
+1. `provision_database` — on-demand Supabase project creation
+2. `execute_query` — SQL execution
+3. `apply_migration` — versioned schema changes + auto type generation
+4. `list_migrations` — migration history
+5. `generate_types` — TypeScript regeneration from schema
+6. `deploy_function` — Supabase Edge Functions deployment
+
+**BYOC (Bring Your Own Cloud) for enterprises:**
+- Two environment implementations: `anthropic` (Firecracker MicroVMs) and `byoc` (enterprise self-hosted)
+- BYOC: default session mode `resume-cached`, custom auth, smart git handling, Kubernetes integration (`podmonitor` package)
+- 7-endpoint API surface: `/v1/environments/whoami`, work polling/ack, session context, code signing, WebSocket tunnel, Supabase proxy
+
+**Antspace vs Vercel (from binary analysis):**
+| Aspect | Vercel | Antspace |
+|--------|--------|----------|
+| File upload | SHA-based per-file dedup | Single tar.gz |
+| Build | Remote | Local (`npm run build`) |
+| Status | Polling-based | Streaming NDJSON |
+| Public API | Documented | Completely internal |
+
+**Why it matters:** Anthropic is making the play to own the entire stack — from AI model to code runtime to hosting. As Maya Zehavi noted: they're gathering data on what people build with Claude to offer a more optimized end-to-end platform. This changes the three-layer strategy to potentially four layers: standards + engine + business surface + **hosting/runtime**. Competes against Vercel/Netlify (hosting), Replit/Lovable/Bolt (AI generation), and Supabase/Firebase (managed backends) simultaneously.
+
+**Implication for our framework:** This could solve the "where does the app run?" enabler (Pattern 13) — if Anthropic ships Antspace, the runtime question has an answer for Claude-built apps. The BYOC + Kubernetes support suggests enterprise-readiness is explicitly in scope, not an afterthought.
 
 **Source type: [practitioner direct]** — reverse engineering of actual binaries, not vendor announcement.
-- AprilNEA's full technical analysis [SOURCE URL NEEDED — add when available]
-- AprilNEA's X thread [SOURCE URL NEEDED]
-- Maya Zehavi's analysis [SOURCE URL NEEDED]
-- WEEX coverage [SOURCE URL NEEDED]
+- [AprilNEA's full technical analysis](https://aprilnea.me/en/blog/reverse-engineering-claude-code-antspace) (Mar 18, 2026)
+- [AprilNEA's X thread](https://x.com/AprilNEA/status/2034209430158619084)
+- [Maya Zehavi's analysis](https://x.com/mayazi/status/2034282767693873492)
+- [WEEX coverage](https://www.weex.com/news/detail/reverse-engineering-claude-code-reveals-anthropicas-undisclosed-paas-platform-antspace-built-in-baku-self-hosted-full-stack-ecosystem-already-taking-shape-386582) [republished practitioner analysis]
+- [Hacker News discussion](https://news.ycombinator.com/item?id=47433685) (minimal engagement so far)
 
 ## What We Need To Learn (next cycles)
 
@@ -145,8 +174,8 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 - [ ] Cowork plugin enterprise deployment with measurable outcomes
 - [ ] B2B marketplace customer reviews — re-check in 4 weeks
 - [ ] Agent Teams for business users — any roadmap signal?
-- [ ] **Antspace** — when does it move from staging to production? Public announcement? BYOC details?
-- [ ] Antspace + Supabase integration — how deep is the database layer?
+- [~] **Antspace** — when does it move from staging to production? Public announcement? **Partial: BYOC details confirmed (Kubernetes, 7-endpoint API, resume-cached sessions). Still staging. No public announcement.**
+- [x] Antspace + Supabase integration — how deep is the database layer? **Answer: Deep. 6 MCP tools auto-provisioned. On-demand DB creation, migrations, type generation, Edge Functions. Full backend-as-a-service.**
 
 ## Sources
 

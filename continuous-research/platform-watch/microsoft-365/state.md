@@ -16,6 +16,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - **Two tiers:** "Lite" (built inside M365 Copilot, business-user accessible, limited to Q&A bots grounded in M365 data) and "Full" (requires developer/power-user skills for connectors, Power Automate, APIs)
 - One-click upgrade from Lite to Full, but the **skill gap is not one-click** — business users hit a ceiling fast
 - Pre-built agents for HR (Employee Self-Service, Leave Management), Sales (Sales Order Agent), Finance (Reconciliation, Time & Expense) — but **embedded in Dynamics 365**, not available to general M365 customers
+- **Multi-model (March 2026):** Claude Sonnet 4 and Opus 4.1 now available for ALL agent types (not just CUA). Per-agent model selection via dropdown. Can mix Claude and OpenAI models across multi-agent systems. EU/EFTA requires admin opt-in. ([MS Copilot Blog](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/anthropic-joins-the-multi-model-lineup-in-microsoft-copilot-studio/), vendor announcement)
 
 ### Microsoft Copilot (personal assistant layer)
 - Embedded in M365 apps — summarize, draft, analyze
@@ -66,7 +67,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 | Team (pre-built) | Dynamics 365 agents | Shipping | HR, Sales, Finance agents exist but only for Dynamics 365 customers. Dow mentioned in vendor marketing (no specifics). |
 | Company | Azure Foundry Agent Service | **GA March 16, 2026** | Private networking, multi-model, evaluations GA. Prompt + Workflow agents GA; Hosted Preview. Corvus Energy named (no metrics). |
 | Company (security) | Entra Agent ID | Preview → Agent 365 | Dedicated agent identity type. Least-privilege by default. Part of Agent 365 governance. |
-| Company (CUA) | Copilot Studio CUA | Preview | Multi-model (OpenAI + Claude Sonnet 4.5). Windows 365 for Agents. Session replay/audit. US-only. Zero deployments. |
+| Company (CUA) | Copilot Studio CUA | Preview | Multi-model (OpenAI + Claude Sonnet 4.5). Windows 365 for Agents. Session replay/audit. US-only. Zero deployments. Academic benchmark (UI-CUBE): complex workflows 9-19% success vs. 97.9% human ([arXiv](https://arxiv.org/html/2511.17131)). |
 | Governance | Agent 365 | Launches May 1, 2026 | 500K agents found at Microsoft. Shadow agent detection. Registry + Agent ID + Defender/Purview. $15/user or E7 ($99/user). |
 | Promotion path | Lite → Studio → Teams publish → Agent 365 | **Not a designed workflow** | One-click upgrade exists but no practitioner has documented end-to-end promotion. Concept in marketing, not in tooling. |
 
@@ -225,13 +226,13 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Foundry Agent Service: 5 days post-GA, zero new customers.** No new named customers beyond Corvus Energy. Corvus still has no metrics. Capgemini/KPMG still vendor-blog-only. No practitioner has blogged about deploying Foundry Agent Service. (source: runs/2026-03-21-cycle21.md)
 - **CUA, Voice Live API, Workflow Agents: triple zero.** No practitioner reviews of CUA multi-model. Voice Live API still Preview, no GA date. No practitioner building Workflow Agents for business processes. Claude in Copilot Studio: CUA-only, no expansion. (source: runs/2026-03-21-cycle21.md)
 - **Practitioner analyst community: waiting, not deploying.** Rob Quickenden, Office365itpros, SAMexpert, Cloudpartner.fi, Ragnarheil.de — all analyzing pricing and questioning value. None covering successful agent deployments because none appear to exist. No updated Copilot Studio technical review for 2026. (source: runs/2026-03-21-cycle21.md)
-- **Nordic: sixth consecutive zero.** Zero Nordic M365 agent deployments across six research cycles. Cloudpartner.fi remains the only Nordic voice, focused on licensing analysis. (source: runs/2026-03-21-cycle21.md)
+- **Nordic: first signal — Corvus Energy (Norwegian).** Corvus Energy (Bergen/Porsgrunn, Norway) is the only named Foundry Agent Service customer — maritime battery inspection across 1,500+ vessels. Evidence is vendor-sourced only (no independent verification, no metrics). But it IS the first Nordic-origin deployment signal after six cycles of absence. For business-user M365 agents (Copilot Studio, M365 Copilot): still zero Nordic deployments. (source: runs/2026-03-21-cycle21.md)
 
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
 - [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence across 6 cycles.**
 - [x] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A? **Answer: No. Preview works, zero real-world connections.**
-- [x] Claude in Copilot Studio: expanding beyond Computer Use beta? **Answer: No expansion. CUA-only as of cycle 21.**
+- [x] Claude in Copilot Studio: expanding beyond Computer Use beta? **Answer: YES — Claude Sonnet 4 and Opus 4.1 now available for ALL Copilot Studio agent types. Per-agent model selection. Also in M365 Copilot, Word, Excel, PowerPoint. EU/EFTA requires admin opt-in.** ([MS Copilot Blog](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/anthropic-joins-the-multi-model-lineup-in-microsoft-copilot-studio/), vendor press release)
 - [x] Copilot Cowork Frontier rollout: early user reports? **Answer: No. 21+ days past "late March" broader access promise. Zero reviews.**
 - [x] E7 launch (May 2026): adoption signals? **Answer: No adoption signals. Convergent pricing skepticism from practitioners.**
 - [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 6 cycles.**

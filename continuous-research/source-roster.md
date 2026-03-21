@@ -42,6 +42,7 @@ These people build, ship, and publish. They show what's possible before enterpri
 | **Scott Wu** | CEO, Cognition (Devin) | X.com, blog | Devin = the first "AI software engineer." Real production data on autonomous agents. | |
 | **Thorsten Ball** | Engineer, Anthropic (Claude Code) | X.com, blog | Builds Claude Code. Knows the actual architecture. | |
 | **Matt Shumer** | CEO, HyperWrite/OthersideAI | X.com | Builds agent products. Vocal about what works and what doesn't. | |
+| **Reuven Cohen (rUv)** | CTO GenAI, EY Americas / Agentics Foundation | [X.com/@rUv](https://x.com/rUv), [GitHub/ruvnet](https://github.com/ruvnet), [agentics.org](https://agentics.org) | Built Claude Flow/Ruflo (14K stars, multi-agent orchestration). Unique position: solo builder velocity + enterprise context (EY). Could be the one who wires together the gaps nobody has filled (promotion path, multi-system orchestration, agent registry). Distinguishes "agentic engineering" from "vibe coding." Adrian Cockcroft (ex-Netflix/AWS VP) validated Claude Flow — segment 1→2 bridge. **WATCH:** Does Ruflo evolve from dev tool to business platform? | Prolific builder. 1M+ lines generated. Agentic engineering framing. (Mar 2026) |
 
 ## Segment B: First Enterprise Teams & Bridges
 
@@ -77,3 +78,4 @@ These people deploy agents inside real organizations or bridge the gap between b
 | Date | What changed |
 |------|-------------|
 | 2026-02-21 | Initial roster created. 13 people, 5 events. Nordic practitioners = zero (gap). |
+| 2026-03-21 | Added Reuven Cohen (rUv). Claude Flow/Ruflo builder + EY CTO. Watch for framework→platform evolution. |

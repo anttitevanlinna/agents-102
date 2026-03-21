@@ -159,18 +159,47 @@ This is the defining feature of Microsoft's business agent story. The gap is the
 - [x] Agent memory for custom agents? **Answer: No. Memory = personal Copilot only. Custom agents stateless. No correction learning.**
 - [x] Per-connector read/write permissions? **Answer: No toggle. Permissions follow user identity. Design-time action selection only.**
 
-### Open questions for cycle 4:
-- [ ] Copilot Cowork Frontier rollout (late March 2026): any early user reports?
-- [ ] E7 launch (May 2026): adoption signals? ROI arguments from Microsoft?
-- [ ] Dynamics 365 pre-built agents: actual usage in Dynamics-specific communities?
-- [ ] Computer-using agents (CUAs): do they solve the non-Microsoft system gap via screen interaction?
-- [ ] MCP ecosystem maturity: are third parties (CData, etc.) actually enabling multi-system agent orchestration?
-- [ ] Nordic companies: any M365 Copilot agent adoption signals?
-- [ ] Power Automate Agent Flows: practitioner reports of AI-driven orchestration vs. traditional flows?
+### Architecture deep dive (cycle 4):
+- [x] What is Foundry REALLY? **Answer: PaaS layer on Azure cognitive services. Three agent types: Prompt (no-code), Workflow (Preview, declarative), Hosted (Preview, containers). State in Cosmos DB. Not a new runtime — extension of existing Azure AI.** ([Docs](https://learn.microsoft.com/en-us/azure/foundry/concepts/architecture), [Agent Service](https://learn.microsoft.com/en-us/azure/foundry/agents/overview))
+- [x] What is Copilot Studio REALLY? **Answer: Descended from Power Virtual Agents. Runs on Power Platform/Dataverse runtime. Knowledge degrades >500 docs. Child agents can't run MCP servers. English-only generative. Legacy PVA constraints.** ([MVP review](https://ragnarheil.de/the-good-the-bad-and-the-ugly-of-copilot-studio-a-brutally-honest-review-going-into-late-2025/), [Enterprise guide](https://www.epcgroup.net/blog/microsoft-copilot-studio-enterprise-guide))
+- [x] How do they relate? **Answer: Separate platforms, separate runtimes. SaaS (Studio) vs PaaS (Foundry). NO promotion path. Interop via A2A only. "Any Studio agent can be built in Foundry, not reverse."** ([Comparison](https://techcommunity.microsoft.com/blog/microsoft-security-blog/microsoft-copilot-studio-vs-microsoft-foundry-building-ai-agents-and-apps/4483160))
+- [x] Multi-model routing? **Answer: Azure OpenAI models only for dynamic routing. 11,000+ catalog for selection but not routing. Claude Sonnet 4.5 in Copilot Studio beta (Computer Use only).** ([Foundry blog](https://devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-dec-2025-jan-2026/))
+- [x] Semantic Kernel / AutoGen status? **Answer: Merged into Microsoft Agent Framework. Both in maintenance mode.** ([Visual Studio Mag, Oct 2025](https://visualstudiomagazine.com/articles/2025/10/01/semantic-kernel-autogen--open-source-microsoft-agent-framework.aspx))
+
+## Architecture Map (as of March 2026)
+
+| Layer | Product | What it is | Runtime | Status |
+|-------|---------|-----------|---------|--------|
+| Open-source SDK | Microsoft Agent Framework | Merged SK + AutoGen | Any | GA |
+| Cloud Platform | Microsoft Foundry (Agent Service) | PaaS: 3 agent types (Prompt/Workflow/Hosted) | Azure cognitive services + Cosmos DB | Prompt: GA. Workflow/Hosted: Preview |
+| Low-Code Builder | Copilot Studio | Visual agent builder on PVA heritage | Power Platform / Dataverse | GA (with significant limits) |
+| Consumption | M365 Copilot | Built-in copilots in Office apps | M365 | GA |
+| Enterprise Suite | Agent 365 | Governance + autonomous business agents | M365 | May 2026 |
+| Interop | MCP, A2A, OpenAPI | Cross-runtime communication | Protocol layer | MCP: GA. A2A: Preview |
+
+**Key: Copilot Studio ≠ Foundry.** Different runtimes, different capabilities, no promotion path. Business users start in Studio (ceiling: Q&A bots). Developers build in Foundry (ceiling: Preview features). The gap between them is A2A protocol, not agent portability.
+
+## Nadella's Strategic Bet
+
+"SaaS will dissolve into a bunch of agents sitting on top of CRUD databases." ([SiliconANGLE, Feb 2026](https://siliconangle.com/2026/02/28/satyas-sacrifice-agents-threaten-office-microsoft-responds/))
+
+March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier models (reducing OpenAI dependence). The existential threat: Claude/agents can operate on Office file formats via open-source libraries — no Microsoft apps needed. Response: own governance/identity/security layer, not the apps.
+
+15M paid Copilot seats (160% YoY) but low conversion from 440M M365 users. Some enterprises downgrading. ([Windows News](https://windowsnews.ai/article/microsofts-2026-copilot-reorganization-four-pillars-one-ai-strategy.405446))
+
+### Open questions for next cycles:
+- [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
+- [ ] Workflow Agents: any practitioner building multi-step business workflows?
+- [ ] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A?
+- [ ] Claude in Copilot Studio: expanding beyond Computer Use beta?
+- [ ] Copilot Cowork Frontier rollout: early user reports?
+- [ ] E7 launch (May 2026): adoption signals?
+- [ ] Nordic companies: any M365 agent adoption?
 
 ## Sources
 
 See `runs/` for detailed research logs:
-- `2026-03-21-run01.md` — Developer/infrastructure focus (Azure Foundry, pricing, ecosystem)
-- `2026-03-21-biz01.md` — Business user focus (Copilot Studio, Cowork, pricing, reliability)
-- `2026-03-21-integ01.md` — Enterprise integration, security, multi-tool orchestration, memory, audit
+- `2026-03-21-run01.md` — Developer/infrastructure focus
+- `2026-03-21-biz01.md` — Business user focus
+- `2026-03-21-integ01.md` — Enterprise integration, security, multi-tool
+- `2026-03-21-architecture.md` — Architecture deep dive (Foundry vs Copilot Studio)

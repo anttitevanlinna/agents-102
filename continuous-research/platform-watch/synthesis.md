@@ -1,7 +1,7 @@
 # Agent Platform Watch — Living Synthesis
 
 Last updated: 2026-03-21
-Total research runs: 1
+Total research runs: 2
 
 ## Purpose
 
@@ -29,7 +29,17 @@ Track the latest developments, features, and practitioner experiences across the
 ### 2. Microsoft — Azure AI Foundry
 <!-- Latest developments, features, real user experiences -->
 
-*No findings yet.*
+**What it does:** Broadest agent platform surface area of any vendor. Foundry Agent Service (GA March 2026) is the core: fully managed agent hosting with private networking, durable orchestration (human-in-the-loop via Azure Durable Functions + SignalR), multi-model support (OpenAI, Anthropic, DeepSeek, Mistral, xAI, Meta), MCP server hosting, A2A protocol support, and model router for dynamic model selection. Adjacent: Copilot Studio (low-code agent builder for M365), GitHub Copilot (coding agents), AutoGen (multi-agent framework), Semantic Kernel (lightweight SDK). Platform itself is free — pay for consumed services.
+
+**What it does well:** Enterprise security infrastructure (Entra Agent ID, private networking with zero public egress, VNet isolation). Durable orchestration for long-running workflows with human approval loops. Multi-model flexibility — not locked to OpenAI. Deep integration with Azure/M365 ecosystem and 1,400+ connectors. Distribution channel: 80% of Fortune 500 already on Azure. Billing for agent hosting hasn't started yet (free through at least April 2026).
+
+**What it doesn't do well:** Practitioners report significant limitations: hidden system prompts injected by Azure that users cannot see or override; knowledge source grounding unreliable (agents ignore connected search indexes, hallucinate); tools fail randomly on identical parameters; MCP server integration produces generic errors; no custom code within Agent/Workflow service. The product surface is sprawling and confusing — developers struggle to choose between Azure OpenAI, Foundry, Copilot Studio, AutoGen, and Semantic Kernel. Boundaries between products are not crisp.
+
+**Enterprise adoption signals:** Microsoft claims 80,000+ enterprises use Foundry (80% of Fortune 500) — but this is Azure AI broadly, not agent-specific. No named enterprise deploying Foundry agents for a real business process was found in public evidence. No Copilot Studio agents running real business processes found either. The enterprise distribution advantage is real but the chasm-crossing signal for agents specifically has not appeared.
+
+**Key gap:** Zero public evidence of a named company running Foundry Agent Service agents in production for a specific business workflow with measurable results. Microsoft has the strongest enterprise distribution channel but the practitioner evidence of actual agent adoption lags far behind the marketing.
+
+*Sources: [Foundry Agent Service GA analysis](https://earezki.com/ai-news/2026-03-18-azure-weekly-foundry-agent-service-hits-ga-and-the-agentic-devops-era-officially-arrives/), [Technical limitations (Medium)](https://medium.com/@juliansmiles_40140/azure-ai-foundry-agent-service-technical-limitations-6b0f00ff4adc), [MS Q&A: Agent Studio limitations](https://learn.microsoft.com/en-us/answers/questions/5679468/azure-ai-foundry-agent-studio-no-option-for-custom), [Practitioner ecosystem confusion](https://medium.com/@speaktoharisudhan/azure-open-ai-vs-azure-ai-services-vs-azure-ai-foundry-c45e4a7d5013), [Enterprise pricing analysis](https://alrafayglobal.com/azure-ai-foundry-pricing-what-enterprises-need-to-know-before-scaling-ai/). Full details: `runs/2026-03-21-run01.md`*
 
 ### 3. Google — Gemini Agent Ecosystem
 <!-- Latest developments, features, real user experiences -->
@@ -54,3 +64,4 @@ Track the latest developments, features, and practitioner experiences across the
 | Run | Time | Focus | Key Finding |
 |-----|------|-------|-------------|
 | 0 | 2026-03-21 | OpenAI — Codex + Adjacent System | Codex maturing fast (85-90% on routine tasks) but no enterprise deployment evidence found. Ecosystem bifurcating: Codex for code, ChatGPT Agent for browser. Tools converging with Claude Code. |
+| 1 | 2026-03-21 | Microsoft — Azure AI Foundry | Foundry Agent Service GA (March 2026) with private networking + durable orchestration. Broadest surface area but practitioners report hidden prompts, unreliable grounding, tool failures. Ecosystem is sprawling and confusing. No named enterprise agent deployment found — distribution channel advantage not yet converted to agent adoption evidence. |

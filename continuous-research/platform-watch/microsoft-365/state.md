@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-21 (cycle 18)
-OODA cycles: 5
+Last updated: 2026-03-21 (cycle 21)
+OODA cycles: 6
 
 ## Focus
 
@@ -218,21 +218,29 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **E7 bundle math improves:** E3 ($36→$39) and E5 ($57→$60) price increases July 1 make E7's $99 bundle more attractive. Components individually: ~$117/user. But: frontline/task workers don't need it — segment carefully. ([CNBC](https://www.cnbc.com/2026/03/09/microsoft-office-365-e7-copilot-ai.html); [Fortune](https://fortune.com/2026/03/09/microsoft-copilot-cowork-ai-agents-anthropic-e7-m365-saas/), Mar 2026)
 - **Nordic: fifth consecutive zero.** No Nordic M365 agent deployments. Consulting ecosystem (EY Norway, Capgemini Norway, Arribatec, Sofigate) focused on readiness, not deployment.
 
+### From status check (cycle 21):
+- **Copilot Cowork: 21+ days past "late March" promise, still zero reviews.** Either rollout hasn't happened, NDAs are tight, or early testers have nothing notable to report. The absence itself is evidence — this is Microsoft's flagship personal agent product. (source: runs/2026-03-21-cycle21.md)
+- **Foundry Agent Service: 5 days post-GA, zero new customers.** No new named customers beyond Corvus Energy. Corvus still has no metrics. Capgemini/KPMG still vendor-blog-only. No practitioner has blogged about deploying Foundry Agent Service. (source: runs/2026-03-21-cycle21.md)
+- **CUA, Voice Live API, Workflow Agents: triple zero.** No practitioner reviews of CUA multi-model. Voice Live API still Preview, no GA date. No practitioner building Workflow Agents for business processes. Claude in Copilot Studio: CUA-only, no expansion. (source: runs/2026-03-21-cycle21.md)
+- **Practitioner analyst community: waiting, not deploying.** Rob Quickenden, Office365itpros, SAMexpert, Cloudpartner.fi, Ragnarheil.de — all analyzing pricing and questioning value. None covering successful agent deployments because none appear to exist. No updated Copilot Studio technical review for 2026. (source: runs/2026-03-21-cycle21.md)
+- **Nordic: sixth consecutive zero.** Zero Nordic M365 agent deployments across six research cycles. Cloudpartner.fi remains the only Nordic voice, focused on licensing analysis. (source: runs/2026-03-21-cycle21.md)
+
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
-- [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence. Capgemini/KPMG cited only in vendor blog.**
-- [x] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A? **Answer: No. Preview works, zero real-world connections. Only A2A production case is on Google's platform.**
-- [ ] Claude in Copilot Studio: expanding beyond Computer Use beta?
-- [x] Copilot Cowork Frontier rollout: early user reports? **Answer: Not yet — still Research Preview. Frontier opening late March.**
-- [x] E7 launch (May 2026): adoption signals? **Answer: Convergent skepticism from practitioners. Not GA yet. Zero adoption announcements.**
-- [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 4 cycles.**
-- [ ] Copilot Cowork independent reviews — "late March" broader Frontier access promised. 12 days later: zero reviews. Re-check early April.
+- [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence across 6 cycles.**
+- [x] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A? **Answer: No. Preview works, zero real-world connections.**
+- [x] Claude in Copilot Studio: expanding beyond Computer Use beta? **Answer: No expansion. CUA-only as of cycle 21.**
+- [x] Copilot Cowork Frontier rollout: early user reports? **Answer: No. 21+ days past "late March" broader access promise. Zero reviews.**
+- [x] E7 launch (May 2026): adoption signals? **Answer: No adoption signals. Convergent pricing skepticism from practitioners.**
+- [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 6 cycles.**
+- [ ] Copilot Cowork independent reviews — re-check early April. If zero reviews persist through April, this becomes a structural finding.
 - [ ] E7 early adoption data — public preview April, GA May 1. Watch May-June 2026.
-- [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts
-- [ ] Foundry Agent Service production deployments — Corvus Energy is first named customer. Watch for outcomes/metrics.
-- [ ] CUA enterprise adoption — multi-model + Windows 365 for Agents shipped. Watch for first practitioner reports.
-- [ ] Agent 365 external enterprise reports — does shadow agent detection surface real governance discoveries?
-- [ ] Voice Live API — when does it GA? Any customer service deployment evidence?
+- [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts. No new agent content since cycle 18.
+- [ ] Foundry Agent Service production deployments — still only Corvus Energy (no metrics). 5 days post-GA.
+- [ ] CUA enterprise adoption — zero practitioner reviews after multi-model + Windows 365 for Agents shipped.
+- [ ] Agent 365 external enterprise reports — zero external evidence. Watch post-May 1 GA.
+- [ ] Voice Live API — Preview, no GA date, zero deployments.
+- [ ] **INFLECTION POINT: May 1, 2026** — E7 + Agent 365 GA. If the deployment gap persists through May, it transitions from "early" to "structural."
 
 ## Sources
 
@@ -243,3 +251,4 @@ See `runs/` for detailed research logs:
 - `2026-03-21-architecture.md` — Architecture deep dive (Foundry vs Copilot Studio)
 - `2026-03-21-cycle15.md` — E7 pricing skepticism, Cowork status, A2A, Foundry Workflows, Nordic gap
 - `2026-03-21-cycle18.md` — Wave 3/GTC: Foundry GA, Agent 365 at scale, CUA multi-model, Cowork still no reviews, E7 bundle math
+- `2026-03-21-cycle21.md` — Status check: Cowork 21+ days no reviews, Foundry 5 days post-GA zero new customers, CUA/Voice/Workflow triple zero, Nordic sixth zero, practitioners waiting not deploying

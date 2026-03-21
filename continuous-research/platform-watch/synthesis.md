@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
-Last updated: 2026-03-21 (cycle 8)
-Total OODA cycles: 4 (initial developer-focused sweep) + 4 business agent cycles
+Last updated: 2026-03-21
+Total OODA cycles: 12+ (dev sweep + business agent + architecture deep dives + trajectory analysis)
 
 ## Purpose
 
@@ -32,20 +32,32 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 | Platform | Personal agent | Team agent | Company agent | Promotion path |
 |----------|---------------|------------|---------------|----------------|
-| **Microsoft** | Copilot in M365 | Copilot Studio | Azure Foundry | Three different products, no designed path |
-| **Google** | Gemini in Workspace | Gemini Enterprise ($25/user) | Vertex Agent Builder | Disconnected layers |
-| **OpenAI** | ChatGPT + Custom GPTs | ChatGPT Team/Enterprise | Agents SDK + Responses API | GPT → enterprise = rebuild |
-| **Anthropic** | Claude Projects | Claude Team/Enterprise | Agent SDK + Enterprise plug-ins | No team agent layer at all |
+| **Microsoft** | Copilot in M365 | Copilot Studio (PVA heritage) | Foundry (PaaS, Cosmos DB) | Three different products, different runtimes, no designed path |
+| **Google** | Gemini in Workspace | Workspace Studio (GA Mar 19) | Vertex Agent Builder | Disconnected layers. Studio is new and limited (50 exec/day) |
+| **OpenAI** | ChatGPT + Custom GPTs | ChatGPT Team/Enterprise | Frontier + AgentKit + Agents SDK | Most ambitious full-stack play. Frontier manages ALL vendor agents. |
+| **Anthropic** | Claude Cowork + plugins | Private plugin marketplaces | Agent SDK (self-host) | Plugin architecture could enable promotion. Not documented yet. |
 
-### Who Leads for Business Users? (Honest Assessment)
+### Platform Trajectories (What They're Building Toward)
 
-**Microsoft is the only serious contender for business agents today.** Not because their technology is best — it isn't. Because business users already live in M365. Copilot is embedded where they work. Copilot Studio lets power users build without developers. The distribution advantage is overwhelming.
+**Microsoft: The Azure of Agents.** Own the governance/identity/security layer, not the apps. Nadella: "SaaS will dissolve into agents on CRUD databases." Foundry = PaaS (3 agent types, most powerful in Preview). Copilot Studio = PVA heritage, hits ceiling fast. Separate runtimes, no promotion path. Agent 365 governance (May 2026) = infrastructure ahead of adoption. Existential threat: agents bypass Office via open-source file libraries. 15M Copilot seats but low conversion from 440M M365. (See `microsoft-365/state.md`)
 
-**Google is second** — Workspace penetration is real, Gemini Enterprise ($25/user) is GA. But model stability issues undermine trust.
+**OpenAI: Agent Operating System.** Every layer from spec to governance: Open Responses spec → Agents SDK (19K stars) → Codex (Skills/Automations) → ChatGPT Agent → Frontier (multi-vendor governance) → AgentKit (visual builder). Skills = portable agent capabilities = closest to promotion path concept. Frontier manages agents from ALL vendors including Claude. Named customers: Uber, State Farm, Intuit. Vision most complete, deployment evidence zero. Altman predictions run 12-18mo ahead. (See `openai/state.md`)
 
-**OpenAI has the widest consumer reach** (ChatGPT) but weakest enterprise/team tooling for business users. Custom GPTs are the closest to "business person builds an agent" but governance is primitive.
+**Anthropic: Standards + Best Engine.** Three-layer play: (1) open standards competitors adopt (MCP + Agent Skills), (2) model+runtime powering partners (Copilot Cowork), (3) own business surface (Cowork + plugins + marketplace). Computer Use (61.4% OSWorld) = sleeper for legacy integration. $100M partner network. But: infrastructure fragility (14 incidents in 7 days), no managed hosting, political risk. (See `claude-anthropic/state.md`)
 
-**Anthropic is developer-first.** Strongest reasoning but no business user surface. Copilot Cowork (Claude inside M365) is the interesting play — Claude's brain, Microsoft's body.
+**Google: Strong Architecture, Weak Execution.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But Gemini model stability undermines everything. Zero enterprise evidence. (See `google-workspace/state.md`)
+
+### Who Leads for Business Users? (Honest Assessment — Updated)
+
+**Nobody leads.** OpenAI's own COO confirmed (Feb 24, 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." MIT's GenAI Divide: 95% of organizations report no measurable ROI from AI.
+
+**Microsoft has the best distribution** — but Copilot Studio is PVA heritage with a low ceiling, Foundry's best features are Preview, and practitioners report unreliable grounding.
+
+**OpenAI has the most ambitious platform vision** — Frontier + AgentKit + Skills could become the agent OS. But everything is announced or limited availability. 900M users, 80% plain chat.
+
+**Anthropic has the strongest model + standards position** — MCP and Agent Skills adopted by everyone. Computer Use solves the "no API" problem. But no managed hosting, infrastructure fragility, and the business surface (Cowork) is brand new.
+
+**Google has the newest business user tool** — Workspace Studio just went GA. Worth watching, but unproven and limited.
 
 ## The Enterprise Integration Reality Test
 
@@ -138,14 +150,26 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 | Business Use Case | Best Platform Today | Why | Caveat |
 |-------------------|-------------------|-----|--------|
-| Sales meeting prep | ChatGPT / Claude | Best at research + synthesis from unstructured data. ChatGPT now has FactSet/MSCI/Moody's integrations for financial data. | Personal only. ChatGPT connectors improving but still no Salesforce write-back. |
-| Team sales playbook agent | Copilot Studio | M365 + CRM connectors, shareable | No evidence of real deployments |
-| Finance reconciliation | Azure Foundry | Durable orchestration, audit trails | Requires developer, unreliable grounding reported |
-| HR onboarding workflow | Copilot Studio | M365 integration (SharePoint, Teams, Outlook) | No evidence of agentic HR workflows |
+| Sales meeting prep (personal) | Claude Cowork / ChatGPT | Best reasoning (Claude) or broadest data integrations (ChatGPT: FactSet, MSCI, Moody's) | Personal only. Neither connects to your CRM without developer work. |
+| Team sales playbook agent | Copilot Studio | M365 + CRM connectors, shareable in Teams | PVA heritage, ceiling at Q&A bots. Zero production evidence. |
+| Finance reconciliation | Foundry (Workflow Agents) | Durable orchestration, Cosmos DB state, audit trails | Workflow Agents are Preview. Unreliable grounding reported. Requires developer. |
+| HR onboarding workflow | Copilot Studio + Power Automate | M365 integration (SharePoint, Teams, Outlook) | Power Automate = rigid trigger-action. No conversational exception handling. |
 | Compliance monitoring | **No clear leader** | None has proven cross-system monitoring | Entirely pre-chasm |
-| Customer service agent | **See vertical SaaS** | Zendesk, Intercom, Freshdesk agents may be ahead of the big four | Different research track needed |
+| Legacy system integration | Claude Computer Use | 61.4% OSWorld — works with ANY software user can see, no API needed | Beta. No enterprise deployment evidence. |
+| Multi-system orchestration (5+ tools) | **Custom build** (Agent SDK + MCP) | Only path that actually connects SF + Snowflake + Slack + Jira + SharePoint | Requires engineering team. No platform does this natively. |
+| Enterprise agent governance | OpenAI Frontier / Azure Agent 365 | Frontier: multi-vendor. Agent 365: M365-native. | Both announced, not proven. Frontier: limited availability. Agent 365: May 2026. |
+| Customer service agent | **Vertical SaaS** | Zendesk, Intercom, Freshdesk may be ahead of horizontal platforms | Not yet researched in this system |
 
-**The honest answer:** For business agents, nobody is ahead. Microsoft has the best distribution but unproven technology. The "which platform" question is premature — the "what agent" question comes first. Build capability with personal agents (cheap, low risk), discover what creates team value, then worry about platforms.
+### The Honest Answer for CTOs
+
+**The "which platform" question is premature.** No platform passes the enterprise reality test (multi-tool + multi-turn + security + SSO). The entire business agent space is pre-chasm — OpenAI's own COO confirmed it.
+
+**What to do instead:**
+1. **Start with personal agents** — cheap ($20/mo), low risk, builds organizational understanding
+2. **Discover which personal agents create team value** — this reveals your real use cases
+3. **Then evaluate platforms against YOUR use cases** — not against vendor marketing
+4. **Plan for custom development** — multi-system orchestration requires engineering on every platform
+5. **Watch the standards, not the platforms** — MCP and Agent Skills are adopted by everyone. Build on standards, not vendor lock-in.
 
 ## What We Did Not Find
 
@@ -155,21 +179,28 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 - **Nordic companies using business agents** — zero findings.
 - **Vertical SaaS agent capabilities** (Zendesk, ServiceNow, HubSpot, SAP) — not yet researched. May be ahead of the horizontal platforms for specific use cases.
 
-## Research Priorities (Next Cycles)
+## Research Priorities (Hourly Cycle — Semi-Autonomous)
 
-1. **Enterprise integration reality** — who is actually connecting 5+ business systems in one agentic workflow? Look for practitioners, not vendor demos.
-2. **Agent memory / learning** — any platform or framework offering persistent cross-session learning? This is the key missing capability.
-3. **MCP in enterprise** — is anyone deploying MCP servers at scale to connect business systems for non-developer users?
-4. **The custom-build path** — are enterprises building their own agent orchestration (SDK + MCP + custom state)? What does it take?
-5. **The promotion path** — has anyone written about personal→team→company agent lifecycle?
-6. **Vertical SaaS agents** — Zendesk, ServiceNow, HubSpot may be ahead of horizontal platforms for specific domains.
+The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Standing priorities:
+
+1. **Enterprise integration reality** — who is connecting 5+ systems in one agentic workflow? Practitioners, not demos.
+2. **Agent memory / learning** — any platform offering persistent cross-session learning?
+3. **Vertical SaaS agents** — Zendesk, ServiceNow, HubSpot may be ahead of horizontal platforms.
+4. **Frontier/AgentKit in practice** — what are Uber/State Farm/Intuit actually running on OpenAI Frontier?
+5. **Copilot Cowork rollout** — when Frontier access opens late March, what do users report?
+6. **Workspace Studio adoption** — it just went GA (Mar 19). Watch for practitioner reports.
+7. **MCP enterprise governance** — when does SSO/audit ship?
+8. **Computer Use in enterprise** — anyone using it for legacy system integration?
+9. **Domain practitioner discovery** — who are the innovator practitioners per business function? (Links to domain research: `../source-roster.md`)
 
 ## Run Log
 
 | Run | Time | Focus | Key Finding |
 |-----|------|-------|-------------|
-| 0 | 2026-03-21 | OpenAI (dev focus) | Codex 85-90% on routine coding. No enterprise evidence. |
-| 1 | 2026-03-21 | Microsoft (dev focus) | Foundry GA. Broadest surface but unreliable. No enterprise evidence. |
-| 2 | 2026-03-21 | Google (dev focus) | ADK strong framework. Model stability problems. No enterprise evidence. |
-| 3 | 2026-03-21 | Anthropic (dev focus) | Best reasoning. MCP strategic moat. Token cost problems. No enterprise evidence. |
-| 8 | 2026-03-21 | OpenAI (business) | Connectors evolve from read-only to write-capable. Enterprise controls improving. Still zero named deployments. |
+| 0-3 | 2026-03-21 | All platforms (dev focus) | Initial sweep. No enterprise evidence on any platform. |
+| 4-7 | 2026-03-21 | All platforms (business focus) | Microsoft: lite ceiling. Google: Workspace Studio new. OpenAI: 900M users, 80% chat. Zero business agent deployments anywhere. |
+| 8 | 2026-03-21 | OpenAI (business update) | Connectors evolving to write-capable. Enterprise controls improving. |
+| 9 | 2026-03-21 | Microsoft (integration reality) | "1,400 connectors" misleading. No cross-system identity/audit/memory. Power Automate is bottleneck. |
+| 10 | 2026-03-21 | OpenAI (trajectory) | Building agent OS: Spec→SDK→Codex→Frontier→AgentKit. Most ambitious stack. Skills = promotion path concept. |
+| 11 | 2026-03-21 | Microsoft (architecture) | Foundry = PaaS (best features Preview). Studio = PVA heritage. Separate runtimes, no promotion. Nadella sees existential threat. |
+| 12 | 2026-03-21 | Anthropic (trajectory) | Three-layer play: standards + engine + own surface. Computer Use = legacy integration sleeper. Infrastructure fragility risk. |

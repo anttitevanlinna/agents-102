@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
 Last updated: 2026-03-21
-OODA cycles: 2
+OODA cycles: 3
 
 ## Focus
 
@@ -22,6 +22,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Copilot Cowork (Research Preview, March 2026) — Claude-powered, multi-step tasks across M365 apps
 - **Personal agent** tier — works for one user, in their apps
 - **Reliability problems:** crashes after 15-20 interactions, memory loss, document modification described as "practically useless" by users. Nadella reportedly called some integrations "almost unusable"
+- **Copilot Memory** (GA for personal Copilot): persists preferences, working styles, recurring topics across sessions. Stored in Exchange Online hidden folders. AES-256 encrypted, GDPR/EU Data Boundary compliant. **Does NOT extend to custom agents in Copilot Studio.** ([European Collaboration Summit guide](https://collabsummit.eu/blog/microsoft-365-copilot-memory-enterprise-guide-european-organizations))
 
 ### Copilot Cowork (the personal agent play)
 - Built with Anthropic's Claude, runs in Microsoft's cloud within M365 tenants
@@ -46,12 +47,43 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 | Level | Microsoft product | Maturity | Evidence |
 |-------|------------------|----------|----------|
 | Personal | Copilot in M365 (lite agents) | Shipping | Business users can build Q&A bots. Reliability issues (crashes, memory loss). No agentic use evidence. |
+| Personal (memory) | Copilot Memory | Shipping | Persists user prefs across sessions. Personal Copilot only — does NOT work with Copilot Studio agents. |
 | Personal (agentic) | Copilot Cowork | Research Preview | Claude-powered multi-step. No independent user reports. Not broadly available. |
 | Team | Copilot Studio (full) | Shipping | Requires developer skills (Power Automate). One practitioner demo (edison365). No production deployment evidence. |
 | Team (pre-built) | Dynamics 365 agents | Shipping | HR, Sales, Finance agents exist but only for Dynamics 365 customers. Dow mentioned in vendor marketing (no specifics). |
 | Company | Azure Foundry Agent Service | GA March 2026 | Practitioners report hidden prompts, unreliable grounding. No named deployments. |
+| Company (security) | Entra Agent ID | Preview (Frontier) | Dedicated agent identity type. Least-privilege by default. High-privilege roles blocked. Preview only — requires Frontier access. |
 | Governance | Agent 365 | Launches May 2026 | Unified agent visibility. Part of E7 ($99/user). Not yet available. |
 | Promotion path | Lite → Studio → Teams publish → Agent 365 | **Not a designed workflow** | One-click upgrade exists but no practitioner has documented end-to-end promotion. Concept in marketing, not in tooling. |
+
+## Enterprise Integration Reality (NEW — cycle 3)
+
+### Multi-System Connector Orchestration
+
+| Question | Answer | Source |
+|----------|--------|--------|
+| Can Copilot Studio chain 5+ connectors in one agent? | Architecturally yes (multi-agent + connected agents + MCP). No production evidence of anyone doing it. | [MS Learn: multi-agent patterns](https://learn.microsoft.com/en-us/microsoft-copilot-studio/guidance/multi-agent-patterns) |
+| What does "1,400 connectors" mean? | Power Platform connectors — API wrappers. Standard (included) vs. Premium (paid). Each exposes specific actions. Most designed for point-to-point flows, not multi-step orchestration. | [MS Learn: connectors](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-connectors) |
+| Read vs. write control per connector? | **No per-connector read/write toggle.** Permissions follow connected user's identity. Design-time control only: choose which actions to expose. No runtime enforcement layer. | [MS Learn: connectors](https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-connectors) |
+| Power Automate as orchestration layer? | Required for complex cross-system workflows. Limitations: rigid trigger-action logic, no conversational exception handling, non-Microsoft connectors have limited depth. Agent Flows (new) add AI capability but licensing complexity. | [MS Learn: PA limits](https://learn.microsoft.com/en-us/power-automate/limits-and-config) |
+| Snowflake integration? | 4 patterns: Native Connector (read-only, no-code), MCP Server, Cortex REST APIs, Custom MCP. Knowledge source = read-only grounding. Tool mode = flexible delegation. | [Snowflake guide](https://medium.com/snowflake/the-ultimate-guide-for-connecting-snowflake-to-copilot-studio-which-pattern-fits-53157e790f43) |
+| Salesforce integration? | Connector exists. No production multi-step agent workflow documented. Write-back not documented in agent context. | [Holger Imbery blog](https://holgerimbery.blog/transform-your-sales-operations-integrate-salesforce-with-copilot-for-microsoft-365) |
+
+### Security & Identity
+
+| Question | Answer | Source |
+|----------|--------|--------|
+| What does Entra Agent ID do? | Dedicated identity type for AI agents. Least-privilege defaults. High-privilege roles (Global Admin, User Admin, etc.) BLOCKED. Azure RBAC scoped per-resource. Two auth modes: delegated (user scope) and unattended (autonomous). Preview only. | [MS Learn: Entra Agent ID auth](https://learn.microsoft.com/en-us/entra/agent-id/identity-professional/authorization-agent-id) |
+| Does agent respect Salesforce RBAC? | **No.** Entra Agent ID governs Microsoft resources only. External RBAC depends on connector OAuth credentials. Each system manages its own permissions independently. | [MS Learn: Entra Agent ID auth](https://learn.microsoft.com/en-us/entra/agent-id/identity-professional/authorization-agent-id) |
+| Connector SSO? | Works within Entra ID ecosystem. Non-Entra SSO planned (2025 Wave 2) but GA status unclear. Tokens ephemeral — not persisted. Long-running workflows need re-auth logic. SSO breaks with custom AD auth + Teams. | [MS Learn: SSO for connectors](https://learn.microsoft.com/en-us/power-platform/release-plan/2025wave1/microsoft-copilot-studio/use-sso-connectors-agents) |
+| Unified cross-system audit? | **Does not exist.** Purview UAL covers M365 Copilot + Copilot Studio interactions. External system actions (Salesforce, Snowflake, Slack) logged in their own systems. SIEM integration (Sentinel/Splunk) required for consolidation. | [MS Learn: Purview audit](https://learn.microsoft.com/en-us/purview/audit-copilot) |
+
+### Memory & Learning
+
+| Question | Answer | Source |
+|----------|--------|--------|
+| Persistent memory across sessions? | **Personal Copilot only.** Copilot Memory stores user prefs in Exchange Online. Does NOT extend to Copilot Studio custom agents. | [CollabSummit EU guide](https://collabsummit.eu/blog/microsoft-365-copilot-memory-enterprise-guide-european-organizations) |
+| Can agents learn from corrections? | **No.** No correction-based learning mechanism for custom agents. Agents are stateless between sessions. | [CollabSummit EU guide](https://collabsummit.eu/blog/microsoft-365-copilot-memory-enterprise-guide-european-organizations) |
 
 ## Pricing (2026)
 
@@ -65,7 +97,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 
 **Key insight:** Per-seat pricing means costs scale with headcount, not agent value. Licensing confusion is significant enough that multiple consultancies have built businesses around explaining it.
 
-## What We Know (cumulative from both research cycles)
+## What We Know (cumulative from all research cycles)
 
 ### From developer-focused research (cycle 1):
 - Broadest surface area but practitioners confused about which product to use
@@ -84,6 +116,15 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - **Licensing confusion** is itself a barrier to adoption — multiple explainer articles exist because the tiers are not self-evident.
 - **Agent 365 governance** (May 2026) is infrastructure ahead of adoption — governing agents that don't exist in production yet.
 
+### From integration/security research (cycle 3):
+- **"1,400 connectors" is misleading for agent workflows.** Connectors are API wrappers designed for Power Automate point-to-point flows. Having a connector ≠ having orchestration capability. The gap between "connect" and "orchestrate" is the enterprise reality.
+- **No cross-system identity.** Entra Agent ID governs Microsoft resources. External systems manage their own auth/RBAC independently. No unified agent identity across Salesforce + SharePoint + Snowflake.
+- **No cross-system audit.** Purview covers M365. External actions logged separately. SIEM required for consolidation.
+- **No agent memory for custom agents.** Copilot Memory = personal Copilot only. Copilot Studio agents are stateless between sessions. Cannot learn from corrections.
+- **No per-connector permission granularity.** Can't set "read Salesforce but don't write." Permissions follow user's identity in target system. Design-time action selection is the only control.
+- **Power Automate orchestration ceiling.** Rigid trigger-action logic, no conversational exception handling, non-Microsoft system depth limited. Agent Flows add AI but introduce licensing complexity.
+- **Zero production multi-system agent workflows found** across three cycles. Architecture docs exist. Conference demos exist. Named enterprises running multi-connector agent workflows: zero.
+
 ## The Announcement-to-Deployment Gap
 
 This is the defining feature of Microsoft's business agent story. The gap is the largest of any vendor we've researched:
@@ -93,29 +134,43 @@ This is the defining feature of Microsoft's business agent story. The gap is the
 | Copilot Studio for citizen developers | Shipping | Lite agents limited to Q&A; full Studio needs developers |
 | Copilot Cowork (personal agent) | Research Preview | Zero user reports |
 | Pre-built business agents | Shipping (Dynamics 365 only) | No independent production reports |
+| Entra Agent ID (agent security) | Preview (Frontier) | Thoughtful framework, blocked high-privilege roles. Preview only. |
+| Multi-agent orchestration | GA (architecture) | Patterns documented. Zero production deployments found. |
+| 1,400+ connectors | Shipping | Mostly point-to-point. No evidence of 5+ connector agent workflows. |
 | Agent 365 (governance) | May 2026 | Not yet available |
 | E7 bundle ($99/user) | May 2026 | Not yet available |
 | "80,000 enterprises" using AI | Claimed | Azure-broad, not agent-specific |
 
 ## What We Need To Learn (updated)
 
+### Answered in previous cycles:
 - [x] What can a business user actually build in Copilot Studio without developers? **Answer: Q&A bots grounded in M365 data. Ceiling hit fast for anything requiring external systems or workflows.**
-- [x] Are there real Copilot Studio agents running business processes? **Answer: No. Zero found across two research cycles.**
+- [x] Are there real Copilot Studio agents running business processes? **Answer: No. Zero found across three research cycles.**
 - [x] What does the personal→team promotion look like? **Answer: Not a designed workflow. Pieces exist but no one has documented doing it.**
 - [x] What are business users saying about M365 Copilot for agentic work? **Answer: Reliability complaints (crashes, memory loss). No agentic-use reports — only chatbot-use complaints.**
 - [x] Copilot Cowork — is this the personal agent play? **Answer: Yes, and it's the most promising piece. But Research Preview only, no user data.**
 - [x] Pricing for business users? **Answer: $30/user/month (Copilot) + potential credits. E7 at $99/user (May 2026). Per-seat not per-value.**
 
-### New questions for cycle 3:
-- [ ] Copilot Cowork: when it enters Frontier (late March), do early users report it working for real tasks?
-- [ ] E7 launch (May 2026): do enterprises adopt? At what scale? What's the ROI argument?
-- [ ] Are Dynamics 365 pre-built agents actually being used? Check Dynamics-specific communities.
-- [ ] Power Automate as the hidden requirement: are business users learning Power Automate to build agents, or giving up?
-- [ ] Nordic companies: any M365 Copilot agent adoption signals in Finnish/Nordic enterprise communities?
-- [ ] How does Agent 365 governance compare to what enterprises actually need?
+### Answered this cycle:
+- [x] Can Copilot Studio chain multiple connectors in one agent workflow? **Answer: Architecturally yes (multi-agent patterns, connected agents, MCP). Zero production evidence.**
+- [x] What does "1,400 connectors" actually mean for agents? **Answer: Power Platform API wrappers. Most for point-to-point flows. No read/write granularity. Orchestration ≠ connection.**
+- [x] Entra Agent ID — what does it do for agent security? **Answer: Dedicated agent identity, least-privilege defaults, blocked high-privilege roles. Microsoft resources only — doesn't extend to Salesforce/Snowflake RBAC. Preview.**
+- [x] Cross-system audit trail? **Answer: Does not exist. Purview covers M365 perimeter. External systems log independently. SIEM required.**
+- [x] Agent memory for custom agents? **Answer: No. Memory = personal Copilot only. Custom agents stateless. No correction learning.**
+- [x] Per-connector read/write permissions? **Answer: No toggle. Permissions follow user identity. Design-time action selection only.**
+
+### Open questions for cycle 4:
+- [ ] Copilot Cowork Frontier rollout (late March 2026): any early user reports?
+- [ ] E7 launch (May 2026): adoption signals? ROI arguments from Microsoft?
+- [ ] Dynamics 365 pre-built agents: actual usage in Dynamics-specific communities?
+- [ ] Computer-using agents (CUAs): do they solve the non-Microsoft system gap via screen interaction?
+- [ ] MCP ecosystem maturity: are third parties (CData, etc.) actually enabling multi-system agent orchestration?
+- [ ] Nordic companies: any M365 Copilot agent adoption signals?
+- [ ] Power Automate Agent Flows: practitioner reports of AI-driven orchestration vs. traditional flows?
 
 ## Sources
 
 See `runs/` for detailed research logs:
 - `2026-03-21-run01.md` — Developer/infrastructure focus (Azure Foundry, pricing, ecosystem)
 - `2026-03-21-biz01.md` — Business user focus (Copilot Studio, Cowork, pricing, reliability)
+- `2026-03-21-integ01.md` — Enterprise integration, security, multi-tool orchestration, memory, audit

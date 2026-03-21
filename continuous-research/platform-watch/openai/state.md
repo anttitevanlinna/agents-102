@@ -1,7 +1,7 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-21 (cycle 26)
-OODA cycles: 8
+Last updated: 2026-03-21 (cycle 29)
+OODA cycles: 9
 
 ## Focus
 
@@ -211,17 +211,20 @@ GPT-5.4: 75% OSWorld (above 72.4% human avg), leads computer use + knowledge wor
 - [x] EEA connector restriction — when does this get resolved? **Answer: Partial, inconsistent rollout underway (Gmail, Calendar, Drive, GitHub). Feature-flag based — some users get access, others in same cities don't. No full parity date. Reportedly accelerated by Anthropic's unrestricted European MCP access.**
 - [x] OpenAI consumer super-app pivot — does this accelerate enterprise gap? **Answer: Desktop super-app merge announced (ChatGPT + Codex + browser, March 16 internal). Consumer integrations (DoorDash, Uber, Expedia) US/Canada only. IPO Q4 2026. Strategy fragmenting across consumer/enterprise/IPO. OpenAI COO warned about "side quests."**
 - [x] TinyFish hybrid architecture (81% Mind2Web vs Operator 43%) — is this the pattern for production computer use? **Answer: YES — converging pattern. TinyFish now 90% Mind2Web. Stagehand v3 confirms same pattern (deterministic + AI hybrid, 44% faster). Skyvern at 85.8% WebVoyager. TinyFish selected for Windows 365 for Agents testing.**
-- [ ] Independent Frontier deployment reports — re-check after GA announcement (now at 7+ weeks with zero evidence, cycle 23 confirmed still zero)
-- [ ] Computer use: independent enterprise evidence beyond Mainstay/Pace (non-launch-partners)
+- [ ] Independent Frontier deployment reports — re-check after GA announcement (cycle 29: STILL zero at 7+ weeks. No new customers since Feb 5 launch.)
+- [x] Computer use: independent enterprise evidence beyond Mainstay/Pace (non-launch-partners) **Answer (cycle 29): Bridgers Agency ran 7-day field test — "excellent for agentic use cases" but "sometimes marks tasks as complete when they are not." Not production deployment. GPT-5.4 only 16 days old.** ([Bridgers Agency](https://bridgers.agency/en/blog/gpt-54-enterprise-review), Mar 2026)
 - [ ] Ramp data trend — re-check in 4 weeks to see if enterprise spending shift accelerates or stabilizes (cycle 23: Axios/EpochAI project revenue crossover Aug 2026)
-- [ ] Desktop super-app merge — does this improve or fragment enterprise experience? (cycle 23: Codex gets business features first, ChatGPT/Atlas later)
-- [ ] Klarna APP (Agentic Product Protocol) — does agent-discoverable commerce gain adoption beyond Klarna?
-- [ ] Agent identity standards — does Grantex IETF draft gain traction? Does OpenAI address the 93% unscoped API key problem?
-- [ ] EEA rollout completion — when does full parity arrive for Nordic users? (cycle 23: deep research connectors still blocked in EEA)
-- [ ] PE joint venture — does it close? Which portfolio companies are first deployments? Does $10M minimum make this irrelevant for Nordic mid-market?
-- [ ] Microsoft lawsuit — does it actually get filed? What happens to Frontier's multi-cloud strategy if stateful runtime is ruled inside Azure exclusivity?
-- [ ] Codex business features — does the super-app merge actually deliver non-coding agent capabilities? Timeline?
+- [x] Desktop super-app merge — does this improve or fragment enterprise experience? **Answer (cycle 29): Confirmed strategic retreat. Simo: "spreading efforts across too many apps." Codex gets non-coding features first, then ChatGPT/Atlas merge in. No timeline. Driven by Anthropic competitive pressure.** ([CNBC](https://www.cnbc.com/2026/03/19/openai-desktop-super-app-chatgpt-browser-codex.html), Mar 2026)
+- [x] Klarna APP (Agentic Product Protocol) — does agent-discoverable commerce gain adoption beyond Klarna? **Answer (cycle 29): No. Zero named retailer adoption. Protocol space fragmenting: Stripe+OpenAI, Google UCP, Visa+Cloudflare, Worldpay all have competing protocols. Klarna hedging by joining Google UCP.** ([PYMNTS](https://www.pymnts.com/news/artificial-intelligence/2026/klarna-joins-google-universal-commerce-protocol-advance-agentic-ai); [American Banker](https://www.americanbanker.com/payments/news/inside-klarnas-agentic-product-protocol), Mar 2026)
+- [ ] Agent identity standards — does Grantex IETF draft gain traction? Does OpenAI address the 93% unscoped API key problem? (cycle 29: no OpenAI response found)
+- [ ] EEA rollout completion — when does full parity arrive for Nordic users? (cycle 29: deep research connectors still blocked in EEA for Plus/Pro. No date announced.)
+- [ ] PE joint venture — does it close? (cycle 29: still in "advanced talks" as of March 16. Not signed. No portfolio company deployments.)
+- [ ] Microsoft lawsuit — does it actually get filed? (cycle 29: active threat, no filing. Negotiations ongoing.)
+- [x] Codex business features — does the super-app merge actually deliver non-coding agent capabilities? **Answer (cycle 29): Not yet. OpenAI exec told Fortune "very little specific to coding" in Codex architecture — but nothing shipped. Still requires terminal commands. Aspirational, not delivered.** ([Fortune](https://fortune.com/2026/03/04/openai-codex-growth-enterprise-ai-agents/), Mar 2026)
 - [ ] Five-front strategy fragmentation — which initiative gets deprioritized? Watch for IPO-driven narrowing.
+- [ ] AAIF MCP Dev Summit (April 2-3, NYC) — does this produce governance/enterprise MCP specs? Does it change platform dynamics?
+- [ ] Agentic commerce protocol consolidation — do Klarna APP / Stripe / Google UCP / Visa converge or fragment further?
+- [ ] GPT-5.4 computer use: independent production deployment (beyond launch partners and field tests)
 
 ## Cycle 20 Findings (2026-03-21)
 
@@ -280,6 +283,23 @@ Claude Code alone at $2.5B ARR, doubled since start of 2026. Anthropic captures 
 ### Frontier: Still Zero Independent Evidence at 7+ Weeks (Level 0)
 Re-confirmed in cycle 26 search. No change from cycle 23. No named customer has independently published outcomes. All metrics trace to OpenAI launch announcement. PE JV ($10B with TPG/Advent/Bain/Brookfield) still in talks, not signed.
 
+## Cycle 29 Findings (2026-03-21)
+
+### AAIF Rapid Growth — Standards Layer Consolidating Faster Than Platforms (Level 2)
+AAIF grew to 146+ member organizations (97 added in a single batch). Platinum: Google, Microsoft, AWS, Cloudflare, Bloomberg. Gold: Docker, IBM, Cisco, Salesforce, SAP, Shopify, Snowflake, Oracle. Three founding projects: MCP (97M+ monthly SDK downloads), goose (Block), AGENTS.md (60K+ projects). MCP Dev Summit: April 2-3, NYC. **Two-protocol standard consolidating: MCP (agent-to-tool, vertical) + A2A (agent-to-agent, horizontal).** Open Responses is a sideshow. ([Linux Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation); [CIO Dive](https://www.ciodive.com/news/big-tech-develop-open-standards-agentic-ai/807608/); [IntuitionLabs](https://intuitionlabs.ai/articles/agentic-ai-foundation-open-standards), Feb-Mar 2026)
+
+### Agentic Commerce Protocol Fragmentation (Level 1-2)
+Klarna APP has zero named retailer adoption beyond Klarna's own merchant network. Competing protocols proliferating: Stripe+OpenAI (Agentic Commerce Protocol), Google (Universal Commerce Protocol — Klarna joined), Visa+Cloudflare (Trusted Agent Protocol), Worldpay (MCP for merchants). Klarna hedging across multiple protocols. American Banker: "Large retailers may want to keep their customers in-house." ([PYMNTS](https://www.pymnts.com/news/artificial-intelligence/2026/klarna-joins-google-universal-commerce-protocol-advance-agentic-ai); [American Banker](https://www.americanbanker.com/payments/news/inside-klarnas-agentic-product-protocol), Mar 2026)
+
+### GPT-5.4 Computer Use — First Independent Field Test, Not Production (Level 2)
+Bridgers Agency ran 7-day test across three projects (law firm docs, B2B sales, investment analysis). Finding: "excellent for agentic use cases" but **"sometimes marks tasks as complete when they are not"** — requires verification layer. ARC-AGI-2 reasoning: 52.9% vs Opus 4.6's 68.8%. No independent non-launch-partner production deployment. Model only 16 days old. ([Bridgers Agency](https://bridgers.agency/en/blog/gpt-54-enterprise-review); [Awesome Agents](https://awesomeagents.ai/reviews/review-gpt-5-4/), Mar 2026)
+
+### Codex Business Expansion — Aspirational Only (Level 1)
+OpenAI exec told Fortune: "very little specific to coding" in Codex architecture. Plan to expand to non-technical workers via sandboxing. **But nothing shipped.** Still requires terminal commands. Super-app merge (announced March 19) = Codex becomes the surviving platform, ChatGPT/Atlas merge into it. No timeline. Driven by Anthropic competitive pressure. ([Fortune](https://fortune.com/2026/03/04/openai-codex-growth-enterprise-ai-agents/); [CNBC](https://www.cnbc.com/2026/03/19/openai-desktop-super-app-chatgpt-browser-codex.html), Mar 2026)
+
+### Frontier: Zero Evidence Confirmed for Ninth Consecutive Check (Level 0)
+Re-confirmed across three parallel research agents. No independent practitioner reports from any named customer. No GA date. No pricing. No new customers since Feb 5. Forward Deployed Engineers required. The 7+ weeks of silence is itself the finding. (source: runs/2026-03-21-cycle29.md)
+
 ## Sources
 
 See `runs/` for detailed research logs:
@@ -292,3 +312,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle20.md` — Enterprise decline accelerating (Ramp data), super-app merge, EEA partial rollout, hybrid computer-use convergence, Open Responses stalled
 - `runs/2026-03-21-cycle23.md` — PE joint venture, Axios revenue reversal, Frontier still zero evidence, AWS multi-cloud + Microsoft lawsuit risk, five-front strategy fragmentation
 - `runs/2026-03-21-cycle26.md` — Promptfoo acquisition, Agents SDK business deployments, cross-platform scan (Agentforce expansion, NVIDIA OpenShell, Anthropic Dispatch, Alibaba Wukong)
+- `runs/2026-03-21-cycle29.md` — AAIF growth (146+ members), agentic commerce fragmentation, GPT-5.4 first field test (Bridgers), Codex business aspirational, Frontier still zero, super-app strategic retreat

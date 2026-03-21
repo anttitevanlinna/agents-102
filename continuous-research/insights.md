@@ -103,6 +103,26 @@ Workspace Studio: 63 user-reported outages in 24 hours around GA. Capacity error
 
 ---
 
+## The CTO Can't Even See What to Research
+
+**Thesis:** The hardest problem isn't choosing a platform. It's knowing what questions to ask.
+
+A CTO looks at the agent landscape in March 2026 and sees: 4 horizontal platforms each telling a different story. 5+ vertical SaaS vendors each claiming their silo is the answer. Standards (MCP, A2A, Agent Skills) that may or may not matter. 200 internal processes, most never evaluated for agent potential. And a research landscape that actively deceives — Google's evidence is circular, Microsoft's connector counts are misleading, OpenAI's vision runs 12-18 months ahead of reality, and every vendor demo maps to zero production evidence.
+
+The CTO doesn't need a platform comparison matrix. They need structured context that makes the question askable. Before you can evaluate "which platform for invoice reconciliation," you need to know: Is invoice reconciliation even a good candidate? What does "agentic" mean for that process vs. a chatbot? Which of my 200 processes have the right characteristics (bounded scope, clear success criteria, escalation tolerance, data in one system)?
+
+This is why Bootstrap precedes advisory. The 2-day hands-on experience gives the organization enough understanding to formulate real questions instead of vendor-shaped ones. Without it, the CTO is choosing between marketing stories, not between real capabilities.
+
+**The implication for CTOs:** Don't start with "which platform." Start with "which of our processes should we even try." That requires building agent competence first — understanding what agents can and can't do, what makes a process a good candidate, and what the failure modes look like. Then the platform question answers itself.
+
+**The implication for Bosser:** The advisory service isn't "we help you choose a platform." It's "we help you see the landscape clearly enough to know what to evaluate." The structured context IS the deliverable. The platform recommendation falls out of it.
+
+**Applies to:** Advisory positioning, Bootstrap→advisory handoff, sales conversations, newsletter
+**Source:** Antti's observation + cumulative platform research (March 2026)
+**Date:** 2026-03-21
+
+---
+
 ## Template
 
 Copy this for new insights:

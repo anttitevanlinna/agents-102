@@ -92,11 +92,12 @@ Create file in the platform's `runs/` directory: `YYYY-MM-DD-HHMM.md`
 ## Findings
 
 ### [Finding title]
-**Source:** [URL] — [source type]
+**Source:** [FULL CLICKABLE URL — MANDATORY, no finding without it] — [source type label]
 **Date:** [source date]
 **Agent level:** [personal / team / company]
 **What:** [2-3 sentences — what specifically did we learn about business user experience?]
 **Evidence level:** [Level 1-4]
+**Key claims:** [list the specific verifiable claims this source supports — each must be re-checkable at the URL]
 
 ## What I Looked For But Did Not Find
 [This is often the most valuable output]
@@ -109,9 +110,11 @@ Create file in the platform's `runs/` directory: `YYYY-MM-DD-HHMM.md`
 
 Edit the platform's `state.md`:
 1. Update timestamp and cycle count
-2. Add new findings to the relevant section
+2. Add new findings to the relevant section — **every claim in state.md must include its source URL inline or in a Sources section.** Never write a claim in state.md without a traceable URL. If the URL is only in the run file, add a reference: `(source: runs/YYYY-MM-DD-HHMM.md)`
 3. Update the personal→team→company progression table if evidence changes
 4. Check off or add items in "What We Need To Learn"
+
+**URL preservation rule:** When synthesizing findings from run files into state.md, keep the URLs. A finding that loses its URL during synthesis becomes unverifiable and therefore untrusted.
 
 ### Step 6: Update synthesis (only if cross-platform insight emerges)
 
@@ -152,7 +155,17 @@ SOURCE TYPE CLASSIFICATION — label every URL:
 - [vendor press release] — NOT EVIDENCE. Level 0.
 
 FRESHNESS: Only cite evidence from last 6 months.
-EVERY CLAIM must have: (1) a specific URL, (2) a source type label.
+
+URL RULE — THE MOST IMPORTANT RULE:
+Assume LLMs fabricate 10% of claims. The ONLY defense is re-verifiable sources.
+- EVERY claim, statistic, and finding MUST have a specific, clickable URL.
+- No URL = the claim does not exist. Do not write it.
+- Do not guess or reconstruct URLs. If you cannot find the source URL, mark the claim [UNVERIFIED — NO URL] and do not include it in state.md.
+- When updating state.md, NEVER strip URLs from findings. Every claim in state.md must trace back to a URL in a run file.
+- A finding without a URL is worse than no finding — it creates false confidence.
+
+SOURCE TYPE LABEL: Every URL must also have a source type label (see classification above).
+
 CONFIRMATION BIAS GUARD: Test the hypothesis, don't confirm it. Search for counter-evidence.
 
 === END RULES ===

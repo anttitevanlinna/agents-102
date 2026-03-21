@@ -1,7 +1,7 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-21 (cycle 23)
-OODA cycles: 7
+Last updated: 2026-03-21 (cycle 26)
+OODA cycles: 8
 
 ## Focus
 
@@ -266,6 +266,20 @@ Gmail, Calendar, Drive, GitHub connectors appearing for some EEA users. ChatGPT 
 ### Codex: 2M WAU, Still Developer-Only, Business Vision Aspirational (Level 1-2)
 2M+ weekly active users. OpenAI positioning as "broader enterprise agent platform" for "tasks beyond software development." Independent: "built by engineers, for engineers... not the right tool for other parts of a business." Astral acquisition deepens developer focus. No non-coding Skills reported. ([eesel.ai](https://www.eesel.ai/blog/openai-codex); [Fortune](https://fortune.com/2026/02/02/openai-launches-codex-app-to-bring-coding-models-to-more-users-openclaw-ai-agents/), Mar 2026)
 
+## Cycle 26 Findings (2026-03-21)
+
+### Promptfoo Acquisition — Filling Security/Eval Gap via M&A (Level 0)
+OpenAI acquiring Promptfoo (AI security/eval startup). 350K+ developers, 130K MAU, 25%+ Fortune 500. ~$86M valuation. Integrates into Frontier for red-teaming, prompt injection detection, compliance monitoring. Open-source preserved. Shows OpenAI filling enterprise capability gaps via acquisition, not building. ([TechCrunch](https://techcrunch.com/2026/03/09/openai-acquires-promptfoo-to-secure-its-ai-agents/); [SecurityWeek](https://www.securityweek.com/openai-to-acquire-ai-security-startup-promptfoo/), Mar 2026)
+
+### OpenAI Agents SDK — Named Business Deployments (Level 2)
+Named business (non-coding) deployments using Agents SDK: Klarna (support, 2/3 tickets), Clay (sales, 10x growth), Box (enterprise search). Assistants API deprecation planned mid-2026; Responses API + Agents SDK become primary path. ([OpenAI](https://openai.com/index/new-tools-for-building-agents/), Mar 2026)
+
+### Claude Code Revenue Signal — $2.5B ARR (Level 2)
+Claude Code alone at $2.5B ARR, doubled since start of 2026. Anthropic captures 73% of NEW enterprise AI spending (first-time buyers). Revenue crossover with OpenAI projected August 2026. ([Axios](https://www.axios.com/2026/03/18/ai-enterprise-revenue-anthropic-openai); [EpochAI](https://epoch.ai/data-insights/anthropic-openai-revenue), Mar 2026)
+
+### Frontier: Still Zero Independent Evidence at 7+ Weeks (Level 0)
+Re-confirmed in cycle 26 search. No change from cycle 23. No named customer has independently published outcomes. All metrics trace to OpenAI launch announcement. PE JV ($10B with TPG/Advent/Bain/Brookfield) still in talks, not signed.
+
 ## Sources
 
 See `runs/` for detailed research logs:
@@ -277,3 +291,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle17.md` — Market share reversal, Frontier still vapor, EEA blocker, computer use first evidence, reliability convergence
 - `runs/2026-03-21-cycle20.md` — Enterprise decline accelerating (Ramp data), super-app merge, EEA partial rollout, hybrid computer-use convergence, Open Responses stalled
 - `runs/2026-03-21-cycle23.md` — PE joint venture, Axios revenue reversal, Frontier still zero evidence, AWS multi-cloud + Microsoft lawsuit risk, five-front strategy fragmentation
+- `runs/2026-03-21-cycle26.md` — Promptfoo acquisition, Agents SDK business deployments, cross-platform scan (Agentforce expansion, NVIDIA OpenShell, Anthropic Dispatch, Alibaba Wukong)

@@ -1,60 +1,124 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
 Last updated: 2026-03-21
-OODA cycles: 1
+OODA cycles: 2
 
 ## Focus
 
 OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely used AI product. But is anyone using it for agentic business work — not just chat?
+
+## Key Verdict (as of 2026-03-21)
+
+**Highest adoption, lowest agentic maturity for business.** ChatGPT has 900M weekly users and 5M paying business seats. But usage is overwhelmingly chatbot/copilot: writing, research, analysis, Q&A. No evidence of truly agentic business workflows in production at any named enterprise. The gap between "everyone uses it" and "anyone runs business processes with it" is the defining characteristic of OpenAI's business agent position.
 
 ## Business Agent Surface
 
 ### ChatGPT Agent (replaced Operator)
 - Unified browser + research + conversation agent
 - Can navigate web, fill forms, do multi-step research
-- **Personal agent** tier — the most accessible entry point of any platform
+- GPT-5.4 scores 75% on OSWorld-Verified (above 72.4% human average for software navigation)
+- Operates in sandboxed virtual computer — cannot access user's browser sessions or logged-in business systems
+- Plus plan: only 40 agent messages/month. Pro ($200/mo) needed for real usage
+- **Personal agent** tier — impressive demo, but sandboxed away from business systems
 
 ### Custom GPTs with Actions
-- Users build specialized assistants with API connections
-- GPT Store for sharing within orgs
-- **Personal → Team** tier — but limited orchestration
+- 3M+ created, ~159K public in GPT Store
+- GPT-5.2 (Dec 2025) added multi-step workflow capability
+- Business GPTs built for: proposal generation, onboarding FAQ, compliance Q&A, brand-voice content
+- Cannot trigger automations across systems or maintain persistent state between sessions
+- No promotion path to governed enterprise agent
+- **Personal → Team** tier — but limited to Q&A and content generation
 
 ### ChatGPT Enterprise / Team
-- Admin controls, SSO, data privacy
+- Admin controls, SSO, SCIM (Enterprise only), data privacy
 - Shared workspace for custom GPTs
-- **Team agent** tier — but governance is basic
+- Connectors: Google Drive, SharePoint, Notion, GitHub, Asana, ClickUp (read-only)
+- EKM (Enterprise Key Management) disables all synced connectors
+- Single-player architecture: no shared agents, no team workflows, no compounding knowledge
+- **Team agent** tier — governance exists but agentic capability does not
 
 ### Responses API + Agents SDK
 - Developer tools for building custom agents
 - Hosted containers, 1M token context
-- **Company-wide agent** tier — requires developers
+- **Company-wide agent** tier — requires developers, completely separate from ChatGPT product
 
 ## Personal → Team → Company Progression
 
-| Level | OpenAI product | Maturity | Evidence |
+| Level | OpenAI product | Maturity | Evidence (updated 2026-03-21) |
 |-------|---------------|----------|----------|
-| Personal | ChatGPT Agent + Custom GPTs | Shipping, widely used | High adoption but chatbot-level, not truly agentic |
-| Team | ChatGPT Team / Enterprise shared GPTs | Shipping | No evidence of team-level agentic workflows |
-| Company | Agents SDK + Responses API | Shipping | Developer-only, no business user path |
-| Promotion path | Custom GPT → ? | Weak | Can't promote a GPT to an enterprise agent |
+| Personal | ChatGPT Agent + Custom GPTs | Shipping, widely used | 900M weekly users, 5M business seats. But 80% of Enterprise messages are plain chat. Usage is copilot, not agent. Agent mode is sandboxed and capped (40 msg/mo on Plus). |
+| Team | ChatGPT Team / Enterprise shared GPTs | Shipping | No evidence of team-level agentic workflows. Collaboration is read-only link sharing. Architecture is single-player. Connectors are read-only. |
+| Company | Agents SDK + Responses API | Shipping | Developer-only. No business user path. Completely separate product from ChatGPT. |
+| Promotion path | Custom GPT → ? | **Broken** | Cannot promote a personal GPT to a governed team agent. No identity management, no audit trails, no access controls on GPTs. Each level requires starting over with different tools. |
 
-## What We Know (from developer-focused research)
+## Enterprise Deployment Evidence (business functions)
 
-- Codex: 85-90% success on routine coding tasks, 1.6M WAU
-- GPT-5 pricing favorable (~half of Sonnet, ~1/10 of Opus)
-- Assistants API deprecated (sunset Aug 2026), Responses API replacing
-- OpenAI's own team admits bottleneck is human QA, not model
-- No enterprise deployment evidence for any product
+### Klarna (fintech, Sweden — best available case)
+- ChatGPT Enterprise deployed to all 4,000 employees
+- 90% daily usage. Communications 93%, Marketing 88%, Legal 86%
+- **But:** All described use cases are chatbot/copilot (drafting, Q&A, summarizing)
+- The "700 agents replaced" claim refers to customer-facing chatbot (API-built), not internal agentic workflows
+- Source: Computer Weekly (independent) + OpenAI case study (Level 0)
+
+### Asana (project management, US)
+- "Cut research time by an hour per day" for engineering and data teams
+- Used for hypothesis testing, log analysis, data cleaning
+- **But:** This is analyst-copilot usage, not agentic workflows
+- Source: IntuitionLabs aggregation of multiple sources
+
+### Usage Pattern (OpenAI's own data)
+- Top 4 use cases: writing, research, programming, analysis
+- IT leads adoption (27% of business WAU), then professional services (17%), finance (6%)
+- Advanced features (Custom GPTs, Projects) used in only ~20% of Enterprise messages
+- "AI is augmenting expertise, not replacing it" — OpenAI's own framing
+- Source: OpenAI workplace adoption report (Jan 2026)
+
+## Structural Limitations for Business Agents (convergence — Level 3)
+
+Multiple independent sources converge on the same set of structural gaps:
+
+1. **Single-player architecture** — no shared agents, no team workflows (Dust, eesel, multiple reviewers)
+2. **Read-only connectors** — can read Google Drive/SharePoint but cannot write to Salesforce/Zendesk/Jira (Dust, OpenAI docs)
+3. **EKM kills connectors** — compliance-conscious orgs lose all data sync (OpenAI docs)
+4. **No workflow orchestration** — cannot chain actions across business systems (Dust, eesel)
+5. **No agent identity management** — unlike Microsoft Entra, no way to give agents governed identities (Bright Ideas)
+6. **No compliance audit trails** — Atlas not SOC 2 scoped, no SIEM/eDiscovery feeds (OpenAI docs)
+7. **Sandboxed agent environment** — Agent mode can't access logged-in business apps (multiple sources)
+8. **Model retirement velocity** — two rounds of model retirement in Feb-Mar 2026, breaking Custom GPTs (OpenAI docs)
+9. **Single-vendor model lock-in** — only OpenAI models, no routing to specialized models (Dust)
+
+## Pricing (as of March 2026)
+
+| Plan | Price | Agent capability |
+|------|-------|-----------------|
+| Free | $0 | No agent mode |
+| Go | $8/mo | Light usage |
+| Plus | $20/mo | 40 agent messages/month (barely testable) |
+| Pro | $200/mo | Meaningful agent usage |
+| Business | $25/user/mo | Team features, shared GPTs, admin controls |
+| Enterprise | Custom (sales call) | Full governance, SSO, SCIM, unlimited GPT-5.2 |
+
+**The cliff:** Plus → Pro is a 10x price jump ($20 → $200) for agent capability. Business plan has no agent mode differentiation from Plus.
 
 ## What We Need To Learn (business user focus)
 
-- [ ] ChatGPT Agent (post-Operator) — what can it actually do for business tasks? Meeting prep? Research?
-- [ ] Custom GPTs in enterprise — are teams building shared business GPTs? What for?
-- [ ] ChatGPT Enterprise adoption — real usage patterns, not seat counts
-- [ ] The GPT Store — is it being used inside companies? For what business processes?
-- [ ] Can a business user build something agentic in ChatGPT without developers?
-- [ ] Pricing: Enterprise vs Team vs Plus — what agent capabilities at each tier?
+- [x] ChatGPT Agent (post-Operator) — what can it actually do for business tasks? **Answer: Web research, comparison, report compilation. Cannot access business systems. Sandboxed. Capped at 40 msg/mo on Plus.**
+- [x] Custom GPTs in enterprise — are teams building shared business GPTs? What for? **Answer: Yes — for Q&A, content generation, onboarding. Not for agentic workflows. No evidence of multi-step autonomous GPTs in production.**
+- [x] ChatGPT Enterprise adoption — real usage patterns, not seat counts **Answer: 5M business seats. 80% plain chat. Top uses: writing, research, coding, analysis. Advanced features underused. Chatbot-level, not agentic.**
+- [x] The GPT Store — is it being used inside companies? For what business processes? **Answer: 3M GPTs created but dominated by consumer use. No evidence of enterprise GPT Store deployment for business processes.**
+- [x] Can a business user build something agentic in ChatGPT without developers? **Answer: No. Custom GPTs can do Q&A with API calls, but cannot orchestrate multi-step workflows, maintain state, or chain actions across systems.**
+- [x] Pricing: Enterprise vs Team vs Plus — what agent capabilities at each tier? **Answer: Documented above. The Plus→Pro cliff ($20→$200) gates agent capability. Business plan has no agent differentiation.**
+
+## Next Cycle Questions
+
+- [ ] Are any enterprises using ChatGPT's new "Apps" (replacement for Connectors) for write-back to business systems?
+- [ ] What is the real adoption of agent mode in Enterprise tier? (OpenAI may publish data)
+- [ ] Has the Responses API / Agents SDK been used to build business-facing agents (not coding) by any named company?
+- [ ] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise? Posti? Neste? Nordea?
+- [ ] Microsoft Copilot vs ChatGPT Enterprise: which is winning for business agent use cases inside Microsoft shops?
 
 ## Sources
 
-See `runs/` for detailed research logs.
+See `runs/` for detailed research logs:
+- `runs/2026-03-21-run00.md` — Developer-focused initial research
+- `runs/2026-03-21-biz01.md` — Business agent research (this cycle)

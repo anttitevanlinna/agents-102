@@ -173,14 +173,20 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 ### The Honest Answer for CTOs
 
-**The "which platform" question is premature.** No platform passes the enterprise reality test (multi-tool + multi-turn + security + SSO). The entire business agent space is pre-chasm — OpenAI's own COO confirmed it.
+**The hardest problem isn't choosing a platform. It's knowing what questions to ask.**
+
+A CTO looking at this landscape sees: 4 horizontal platforms each telling a different story, 5+ vertical SaaS vendors each claiming their silo is the answer, standards (MCP, A2A, Agent Skills) that may or may not matter, and 200 internal processes nobody has evaluated for agent potential. The research landscape itself actively deceives — Google's evidence is circular, Microsoft's connector counts are misleading, OpenAI's vision runs 12-18 months ahead of reality. Even knowing what to research requires agent competence the organization doesn't yet have.
+
+**The "which platform" question is premature.** No platform passes the enterprise reality test (multi-tool + multi-turn + security + promotion path). The entire business agent space is pre-chasm — OpenAI's own COO confirmed it. The table above is useful context, but acting on it without organizational understanding produces vendor-shaped decisions, not capability-shaped ones.
 
 **What to do instead:**
-1. **Start with personal agents** — cheap ($20/mo), low risk, builds organizational understanding
-2. **Discover which personal agents create team value** — this reveals your real use cases
-3. **Then evaluate platforms against YOUR use cases** — not against vendor marketing
-4. **Plan for custom development** — multi-system orchestration requires engineering on every platform
-5. **Watch the standards, not the platforms** — MCP and Agent Skills are adopted by everyone. Build on standards, not vendor lock-in.
+1. **Build agent competence first** — without hands-on experience, the organization can't formulate real questions. Every evaluation will be shaped by whichever vendor presented last.
+2. **Start with personal agents** — cheap ($20/mo), low risk. Discover which of your 200 processes actually benefit from agents vs. which are vendor fantasies.
+3. **Identify YOUR 5 high-value candidates** — look for: bounded scope, clear success criteria, escalation tolerance, data mostly in one system. Those are the characteristics that make customer service work — find them in your other 199 processes.
+4. **Then evaluate platforms against YOUR use cases** — not against vendor marketing. The infrastructure question matters: an AWS shop has different answers than an Azure shop.
+5. **Plan for custom development** — multi-system orchestration requires engineering on every platform. Build on standards (MCP, Agent Skills), not vendor lock-in.
+
+**The sequence matters:** Competence → discovery → context → platform. Skip to platform selection and you're choosing between marketing stories.
 
 ## What We Did Not Find
 

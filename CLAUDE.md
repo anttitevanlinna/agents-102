@@ -2,18 +2,20 @@
 
 Training program for building AI agents. Four things: **Train → Curate → Connect → Advise.**
 
-**Value prop:** Teach everyone to think. Scale for future. With your own structure.
+**Value prop:** The hardest problem isn't choosing an agent platform — it's knowing what questions to ask. Without agent competence, a CTO is choosing between marketing stories, not between real capabilities. We build the competence that makes the question askable. Teach everyone to think. Scale for future. With your own structure.
 
 **Buyer:** The builder leader — CEO/CTO/SVP HR who wants to own the transformation, not outsource it. Psychographic, not a title. Target: large Nordic companies in two segments: (1) software companies, (2) traditional companies striving for high digitalization.
 
-**Core insight:** The agentic transformation is different from digital/agile/cloud. Without agent competence, there is no vision — just governance of an abstraction. We are the prerequisite, not the complement.
+**Core insight:** The agentic transformation is different from digital/agile/cloud. Without agent competence, there is no vision — just governance of an abstraction. We are the prerequisite, not the complement. The sequence matters: **Competence → discovery → context → platform.** Skip to platform selection and you're choosing between vendor narratives. Every company runs 200 processes — vendors will sell you automation for the one process they own. The other 199 are yours to figure out, and you need agent competence to even know which 5 to try first.
 
 **Five-step customer journey:** Bootstrap (€500/person, 2 days) → Make Your Own (change strategy lab, 4-6 weeks, €25-40K/org) → Champions (train-the-trainer, €3-5K/person) → Scale (champions run internally, €0) → Drive into Value Chains (agentic rework + peer network).
 
 **Model:** Framework + plug points. Co-branded, co-copyright — the org co-owns all materials for further development. 80/20 curation: 80% frontier research + 20% peer premium. We are curator + researcher, not the authority.
 
 **Agent Platform Advisory** (separate offering, sold independently alongside the 5-step journey):
-Agent platform context building, selection, and deployment — done the agentic way, because no other way works. No person has comparative experience across agent platforms — the field moves too fast. The comparative analysis is the agent's job. Context is everything — only the org's people know their requirements, systems, and constraints. People drive, agents do the heavy lifting. Bosser builds the agentic system that synthesizes people's thinking into structured context, evaluates platforms against that context, deploys, and generates training materials. Co-owned: deployed on customer's side, customer keeps it, can re-run as context evolves. Bosser retains the right to learn and extract patterns across engagements (the peer premium). No real players in Helsinki (Feb 2026 scan). Timing: typically ~1 month after Bootstrap.
+The service isn't "we help you choose a platform." It's "we help you see the landscape clearly enough to know what to evaluate." A CTO facing 4 horizontal platforms, 5+ vertical SaaS vendors, emerging standards, and 200 internal processes can't even formulate the right question without structured context. The structured context IS the deliverable — the platform recommendation falls out of it.
+
+Done the agentic way, because no other way works. No person has comparative experience across agent platforms — the field moves too fast. The comparative analysis is the agent's job. Context is everything — only the org's people know their requirements, systems, and constraints. People drive, agents do the heavy lifting. Bosser builds the agentic system that synthesizes people's thinking into structured context, evaluates platforms against that context, deploys, and generates training materials. Co-owned: deployed on customer's side, customer keeps it, can re-run as context evolves. Bosser retains the right to learn and extract patterns across engagements (the peer premium). No real players in Helsinki (Feb 2026 scan). Timing: typically ~1 month after Bootstrap — because Bootstrap gives the vocabulary that makes advisory productive.
 
 **What our research has established (March 2026):**
 - **The entire business agent space is pre-chasm.** OpenAI's own COO confirmed it (Feb 2026). MIT: 95% of orgs report no measurable ROI. Zero named enterprises have production business agents with measurable outcomes on any horizontal platform.

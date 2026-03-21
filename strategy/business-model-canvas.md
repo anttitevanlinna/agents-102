@@ -70,13 +70,17 @@ The agentic transformation is fundamentally different. You cannot envision what 
 - McKinsey's "Factory vs Artisan" is meaningless if leadership can't imagine either pattern in their business
 - IBM's "manage agents as workers" is a metaphor without substance if nobody has worked alongside an agent
 - Governance structures govern nothing real. Initiative lists have no felt vision behind them. Maturity models describe levels nobody can picture.
+- **Platform selection becomes choosing between marketing stories.** A CTO facing 4 horizontal platforms, 5+ vertical SaaS vendors, and emerging standards can't even formulate the right question without agent competence. Every vendor will demo one process brilliantly — but the company runs 200 processes, and the vendor only owns one silo. Without competence, every evaluation is shaped by whichever vendor presented last.
 
 **The consultancy frameworks are theatre without agent competence.** We are not the execution layer under their strategy. We are the prerequisite. The vision — the real one, not the slide deck — emerges from competence. Strategies emerge from action, not analysis.
+
+**The sequence matters: Competence → discovery → context → platform.** Skip to platform selection and you're choosing between vendor narratives. Start with hands-on experience, discover which of your 200 processes actually benefit, build structured context, then the platform question answers itself. This is why Bootstrap precedes advisory.
 
 This is where we conjecture momentum. Once people can think agents, the vision becomes obvious. It is not handed down from a strategy deck. It emerges from building.
 
 **To the builder leader:**
 - "Your McKinsey framework is governance of an abstraction until your people can think agents"
+- "You're being asked to choose between platforms you can't evaluate, for processes you haven't tried to automate, with a team that doesn't yet know what 'agentic' means in practice"
 - "Join a network of companies figuring out agent adoption together — and deploy practices that are already proven by your peers"
 - Your people learn with your real policies, your real systems, your real problems
 - Phase 1: build the competence that makes your AI strategy real. Phase 2: access curated best practices from orgs who've already done it.

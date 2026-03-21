@@ -18,12 +18,20 @@ Read the target platform's `state.md` to know what we already know. Read `synthe
 
 ### Step 2: Determine focus
 
-The cycle focuses on ONE platform. Rotate based on cycle count:
+**Default rotation** (use unless you have a better idea):
 - Cycle % 3 == 0 → **Microsoft 365 / Copilot Studio / Azure** (`microsoft-365/`)
 - Cycle % 3 == 1 → **Google Workspace / Gemini Enterprise** (`google-workspace/`)
 - Cycle % 3 == 2 → **OpenAI ChatGPT / Custom GPTs** (`openai/`)
 
-Anthropic/Claude is tracked opportunistically (when it surfaces in other platform research) rather than as primary — because Claude has no business user surface of its own. Update `claude-anthropic/state.md` when relevant findings appear.
+Anthropic/Claude is tracked opportunistically when it surfaces in other platform research.
+
+**But you are semi-autonomous.** After reading the current state files and synthesis, you may make a DIVERGENT choice if you judge it adds more value:
+- **New platform:** If you spot a platform we're not tracking that matters (e.g., a vertical SaaS agent platform like ServiceNow, Zendesk AI, or a new entrant), create a new folder and start tracking it.
+- **Adjacent research question:** If the state files surface a question that cuts across platforms (e.g., "has anyone solved agent memory?", "what does the MCP enterprise governance roadmap look like?", "are there open-source agent platforms for business users?"), pursue it instead of the default rotation.
+- **Depth over breadth:** If one platform has a major new development (e.g., a Preview feature goes GA, a named enterprise reports real deployment), go deep on that instead of rotating.
+- **Follow practitioners:** If you find a practitioner writing about real business agent deployment experience, follow that thread wherever it leads.
+
+**Log your reasoning** in the run file: why you chose this focus, what you considered, what you deprioritized. This helps the human dispatcher understand your thinking and steer future cycles.
 
 ### Step 3: OODA Loop
 

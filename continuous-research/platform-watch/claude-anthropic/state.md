@@ -1,7 +1,7 @@
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-03-21
-OODA cycles: 2
+Last updated: 2026-03-21 (cycle 15)
+OODA cycles: 3
 
 ## Focus
 
@@ -61,8 +61,17 @@ Claude model + same agentic harness as Claude Cowork, running in M365 tenants. P
 
 ## Risks and Weaknesses
 
-### Infrastructure fragility
-14 incidents between Feb 27–Mar 5 when ChatGPT users flooded Claude. API spiked 300%. Enterprise tiers got timeout errors. Major global outage Mar 2. Enterprise architect: "raised red flags about single-provider risk." Plans: $5B compute spend in 2026. ([WebProNews](https://www.webpronews.com/claudes-infrastructure-crisis-what-the-chatgpt-exodus-really-means-for-anthropic/); [TechCrunch](https://techcrunch.com/2026/03/02/anthropics-claude-reports-widespread-outage/), Mar 2026)
+### Infrastructure fragility — LEVEL 3 CONVERGENCE (CRITICAL)
+**109 incidents in the last 90 days** (28 major outages, 81 minor), median duration 1h 8m. ([StatusGator](https://statusgator.com/services/claude), Mar 2026)
+
+Timeline of recent failures:
+- Feb 27–Mar 5: 14 incidents when ChatGPT users flooded Claude. API spiked 300%. Enterprise timeout errors. ([WebProNews](https://www.webpronews.com/claudes-infrastructure-crisis-what-the-chatgpt-exodus-really-means-for-anthropic/); [TechCrunch](https://techcrunch.com/2026/03/02/anthropics-claude-reports-widespread-outage/), Mar 2026)
+- March 11: Stalled chats, auth errors, "service unavailable." ([Medium](https://medium.com/@manzonjj/why-claude-keeps-crashing-unprecedented-demand-fragile-infrastructure-and-a-second-outage-in-24-50a64469e869), Mar 2026)
+- March 17: 6,800+ Downdetector reports, surging to 10,000+. ([GV Wire](https://gvwire.com/2026/03/17/claude-goes-down-for-thousands-downdetector-reports/))
+- March 18: Elevated errors on Claude.ai, Claude Code login affected.
+- March 21: Elevated error rates on Opus and Sonnet 4.6.
+
+Claude Code now accounts for 4% of all GitHub commits — demand outstripping infrastructure. Enterprise architect quoted: "raised red flags about single-provider risk." Plans: $5B compute spend in 2026.
 
 ### Security vulnerabilities
 CVE-2026-21852 (5.3 severity) — repo config manipulation to steal API keys. Shell command execution in untrusted repos. ([DevOps.com](https://devops.com/security-flaws-in-anthropics-claude-code-risk-stolen-data-system-takeover/), 2026)
@@ -76,23 +85,36 @@ Pentagon dispute over AI safeguards. Potential "supply-chain threat" designation
 ### Scale gap
 ~40-50M monthly actives vs OpenAI ~200M weekly actives. Consumer brand awareness much lower.
 
-## MCP Enterprise Roadmap (Gap)
+## MCP Enterprise Roadmap — Third-Party Gateways Filling the Gap (Level 2-3)
 
-Four priorities: transport scalability, agent communication, governance, enterprise readiness. Enterprise items: SSO-integrated auth, gateway patterns, config portability. **NOT shipped yet.** No enterprise working group. Community building stopgaps ([mcp-gateway-registry](https://github.com/agentic-community/mcp-gateway-registry)). ([Roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/); [New Stack](https://thenewstack.io/model-context-protocol-roadmap-2026/), Mar 2026)
+Four priorities: transport scalability, agent communication, governance, enterprise readiness. Enterprise items will ship as **extensions, not core spec changes.** ([Roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/); [New Stack](https://thenewstack.io/model-context-protocol-roadmap-2026/), Mar 2026)
+
+**Third-party MCP gateways converging on the governance gap (4+ independent solutions):**
+- **MintMCP:** SOC 2 Type II, SSO/OAuth, real-time tracing, HIPAA/GDPR export. ([Help Net Security](https://www.helpnetsecurity.com/2026/02/06/mintmcp-ai-agents-platform/), Feb 2026)
+- **Stacklok (ToolHive):** Identity, policy enforcement, OTel telemetry in Kubernetes. ([Stacklok blog](https://stacklok.com/blog/best-mcp-platforms-for-teams-that-need-access-control-and-audit-logs-2026/), 2026)
+- **Lunar.dev MCPX:** Immutable audit trail for compliance.
+- **Itential:** RBAC, SSO, audit for infrastructure automation.
+- **Scalekit:** Detailed analysis of SSO and scoped auth in enterprise MCP. ([Scalekit](https://www.scalekit.com/blog/enterprise-mcp-how-identity-sso-and-scoped-auth-actually-work), 2026)
+
+**Key insight:** MCP governance is an **ecosystem play**, not an Anthropic-provided solution. Enterprises must select and deploy a gateway layer themselves. This is a training module implication.
 
 ## What We Need To Learn (next cycles)
 
-- [ ] Cowork plugin adoption — who's building plugins? What for? Any business user reports?
+- [~] Cowork plugin adoption — who's building plugins? What for? Any business user reports? **Partial: One PM plugin review found (Medium, Mohit Aggarwal — [link](https://medium.com/@mohit15856/i-used-claude-coworks-product-management-plugin-for-a-month-honest-review-d38f25348a6d)). No enterprise deployment reports.**
 - [ ] Copilot Cowork Frontier rollout — real user experiences?
-- [ ] Agent Teams (forthcoming) — when? What does multi-agent collaboration look like?
-- [ ] B2B marketplace traction — which apps getting used?
-- [ ] MCP enterprise governance — when does SSO/audit ship?
-- [ ] Computer Use in enterprise — anyone using it for legacy system integration?
-- [ ] Infrastructure reliability — improving or still fragile?
+- [x] Agent Teams — when? What does multi-agent collaboration look like? **Answer: Released Feb 5, 2026 with Opus 4.6. Coding only (Claude Code). No business user capabilities. ([TechCrunch](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/))**
+- [~] B2B marketplace traction — which apps getting used? **Partial: Launched Mar 6, enterprise-only limited preview. Six partners (GitLab, Harvey, Lovable, Replit, Rogo, Snowflake). Zero customer reviews found. $200M Snowflake partnership. ([SiliconANGLE](https://siliconangle.com/2026/03/06/anthropic-launches-claude-marketplace-third-party-cloud-services/))**
+- [x] MCP enterprise governance — when does SSO/audit ship? **Answer: Not from Anthropic directly. Third-party gateways filling the gap (MintMCP, Stacklok, Lunar.dev, Itential). MCP spec ships enterprise features as extensions.**
+- [~] Computer Use in enterprise — anyone using it for legacy system integration? **Partial: NYSE uses Claude Code for legacy code refactoring + internal AI agents. This is Claude Code, not Computer Use for screen automation. Zero practitioner reports of Computer Use for mainframe/Citrix/legacy ERP automation.**
+- [x] Infrastructure reliability — improving or still fragile? **Answer: WORSE. 109 incidents in 90 days. Level 3 convergence. Not improving.**
 - [ ] Political risk resolution — Pentagon situation outcome?
+- [ ] Cowork plugin enterprise deployment with measurable outcomes
+- [ ] B2B marketplace customer reviews — re-check in 4 weeks
+- [ ] Agent Teams for business users — any roadmap signal?
 
 ## Sources
 
 See `runs/` for detailed research logs:
 - `runs/2026-03-21-run03.md` — Developer-focused initial research
 - `runs/2026-03-21-trajectory.md` — Platform trajectory deep dive
+- `runs/2026-03-21-cycle15.md` — Infrastructure fragility (Level 3), MCP gateways, plugin adoption, marketplace, Agent Teams

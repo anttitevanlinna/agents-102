@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
-Last updated: 2026-03-21
-Total OODA cycles: 15 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks)
+Last updated: 2026-03-21 (cycle 16)
+Total OODA cycles: 16 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update)
 
 ## Purpose
 
@@ -57,7 +57,7 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 **OpenAI: Agent Operating System.** Every layer from spec to governance: Open Responses spec → Agents SDK (19K stars) → Codex (Skills/Automations) → ChatGPT Agent → Frontier (multi-vendor governance) → AgentKit (visual builder). Skills = portable agent capabilities = closest to promotion path concept. Frontier manages agents from ALL vendors including Claude. Named customers: Uber, State Farm, Intuit. Vision most complete, deployment evidence zero. Altman predictions run 12-18mo ahead. (See `openai/state.md`)
 
-**Anthropic: Standards + Best Engine.** Three-layer play: (1) open standards competitors adopt (MCP + Agent Skills), (2) model+runtime powering partners (Copilot Cowork), (3) own business surface (Cowork + plugins + marketplace). Computer Use (61.4% OSWorld) = sleeper for legacy integration. $100M partner network. But: infrastructure fragility (14 incidents in 7 days), no managed hosting, political risk. (See `claude-anthropic/state.md`)
+**Anthropic: Standards + Best Engine — but infrastructure is failing.** Three-layer play: (1) open standards competitors adopt (MCP + Agent Skills), (2) model+runtime powering partners (Copilot Cowork), (3) own business surface (Cowork + plugins + marketplace). Computer Use (61.4% OSWorld) = sleeper for legacy integration. B2B marketplace launched Mar 6 (GitLab, Harvey, Snowflake). $100M partner network. **But: infrastructure fragility is now Level 3 convergence — 109 incidents in 90 days** (28 major, 81 minor, median 1h 8m). MCP enterprise governance being filled by third-party gateways (MintMCP, Stacklok, Lunar.dev), not Anthropic. Agent Teams = coding only, not business users. (See `claude-anthropic/state.md`)
 
 **Google: Strong Architecture, Weak Execution.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But GA launch plagued by capacity issues (63 outages in 24hrs), architectural limits (no webhooks, no state, no observability), and agent sprawl risk (ON by default, no lifecycle management). Gemini model stability undermines everything. Zero enterprise evidence. (See `google-workspace/state.md`)
 
@@ -190,6 +190,18 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 **Pattern 13: Three predictable enablers emerge after competence.** (F-Secure field evidence, Level 2.) Builders hit three walls: (1) data access (agents need Snowflake, Salesforce, internal systems), (2) runtime platform ("where does this live?"), (3) discoverability ("how do others find and use what I built?"). These are the natural handoff from training to advisory/platform work — and they're scoped, practical, two-way-door decisions.
 
+**Pattern 14: Computer use is the convergence point (NEW — cycle 16).** Both GPT-5.4 (75% OSWorld, Mar 2026) and Claude (61.4% OSWorld) now offer desktop interaction. This is the capability most relevant to legacy system integration — but neither has independent enterprise deployment evidence yet. GPT-5.4 surpasses human average (72.4%) on software navigation.
+
+**Pattern 15: Reasoning models are paradoxically worse at facts (NEW — cycle 16).** OpenAI o3: 33% hallucination on PersonQA (vs 16% o1). DeepSeek R1: 14.3% (vs V3 base: 3.9%). The "smartest" models are least reliable on facts. For customer-facing agents, factual reliability must be tested separately from reasoning capability. ([Suprmind](https://suprmind.ai/hub/ai-hallucination-rates-and-benchmarks/))
+
+**Pattern 16: Supervision architecture matters more than model quality (NEW — cycle 16).** Vertical Insure achieved "zero customer-facing hallucinations" via supervision layer, not better model. Salesforce's own portal: 62% resolution (target 80%, claimed 93%). The gap between claimed accuracy and real-world performance is the story across all vendors.
+
+**Pattern 17: MCP governance is an ecosystem play, not vendor-provided (NEW — cycle 16).** 4+ third-party MCP gateways (MintMCP, Stacklok, Lunar.dev, Itential) filling the enterprise governance gap. Anthropic's MCP spec ships enterprise features as extensions. Enterprises must select and deploy a gateway themselves.
+
+**Pattern 18: E7 pricing skepticism is convergent (NEW — cycle 16).** 5+ independent practitioners skeptical of Microsoft E7 at $99/user/month. Hidden consumption costs could push >$200/user. Copilot adoption baseline is only 3.3% (15M of 450M+ M365 seats). E7 faces the same distribution-vs-conversion challenge.
+
+**Pattern 19: Consolidation wave in vertical SaaS (NEW — cycle 16).** ServiceNow + Moveworks ($2.85B), Zendesk + Forethought, Salesforce + Convergence.ai + Cimulate, NICE + Cognigy (~$955M). 50+ agentic AI acquisitions in 2 years. Platform landscape will look different in 6 months.
+
 ## CTO Answer: Which Platform For What? (March 2026)
 
 | Business Use Case | Best Platform Today | Why | Caveat |
@@ -201,7 +213,7 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 | Compliance monitoring | **No clear leader** | None has proven cross-system monitoring | Entirely pre-chasm |
 | Legacy system integration | Claude Computer Use | 61.4% OSWorld — works with ANY software user can see, no API needed | Beta. No enterprise deployment evidence. |
 | Multi-system orchestration (5+ tools) | **Custom build** (Agent SDK + MCP) | Only path that actually connects SF + Snowflake + Slack + Jira + SharePoint | Requires engineering team. No platform does this natively. |
-| Enterprise agent governance | OpenAI Frontier / Azure Agent 365 | Frontier: multi-vendor. Agent 365: M365-native. | Both announced, not proven. Frontier: limited availability. Agent 365: May 2026. |
+| Enterprise agent governance | OpenAI Frontier / Azure Agent 365 | Frontier: multi-vendor. Agent 365: M365-native. | Both announced, not proven. Frontier: limited availability. Agent 365: May 2026. E7 pricing skepticism widespread. |
 | Customer service agent | **Zendesk or Salesforce Agentforce** | Zendesk: 51% auto-resolution (SeatGeek), outcome-based pricing. Salesforce: 80% chat resolution (Finnair), CRM integration. | Convergence-level evidence (Level 3). Bounded to customer service domain. |
 | IT operations / employee service | **ServiceNow** | $600M+ ACV, strongest IT ops context. | Most orgs at Phase 2 despite Phase 3 aspirations. 18-33 month maturity path. |
 | ERP / finance / supply chain | **SAP Joule** | Deepest business process agents (cash mgmt, procurement, production). Josh Bersin: "ahead of Workday." | Just reaching GA Q1 2026. Minimal production evidence. |
@@ -262,3 +274,4 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 | 13 | 2026-03-21 | Google (GA reality check) | Workspace Studio GA plagued by capacity issues. Architectural limits prevent enterprise use. All deployment claims vendor-sourced. |
 | 14 | 2026-03-21 | Vertical SaaS (initial survey) | Customer service = convergence-level. Vertical SaaS ahead in domain lanes. Finnair/reMarkable = Nordic signal. SAP deepest ERP agents. |
 | 15 | 2026-03-21 | Open-source frameworks (Ruflo) | 80% of gaps solved (orchestration, memory, registry). Missing 20% = enterprise wrapper (RBAC, governance, audit). Could disrupt all vendor platforms. |
+| 16 | 2026-03-21 | All platforms (multi-platform update) | Anthropic infra fragility Level 3 (109 incidents/90d). E7 pricing skepticism convergent. GPT-5.4 computer use. Agentforce own portal 62%. MCP governance = third-party ecosystem. Reasoning models worse at facts. Consolidation wave. |

@@ -1,7 +1,7 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-21 (cycle 8)
-OODA cycles: 3
+Last updated: 2026-03-21 (cycle 15)
+OODA cycles: 4
 
 ## Focus
 
@@ -145,17 +145,45 @@ Multiple independent sources converge on the same set of structural gaps:
 ### The Gap
 Everything above is announced or in limited availability. Frontier customers are named but no deployment evidence. AgentKit has no independent reviews. Skills are code-only. The vision is the most complete of any vendor. The execution evidence is zero.
 
+## Cycle 15 Findings (2026-03-21)
+
+### GPT-5.4 — Native Computer Use (Level 2)
+Released March 5, 2026. First OpenAI model with desktop interaction (keystrokes, mouse, menus).
+- GDPval: 83% on professional knowledge work (44 occupations), up from 70.9%. 33% fewer false claims.
+- OSWorld: 75% (above 72.4% human average).
+- Tool search: 47% token reduction, same accuracy across 250 tasks/36 MCP servers.
+- vs Opus 4.6: GPT-5.4 leads knowledge work + computer use. Opus 4.6 leads coding + web research.
+  ([Fortune](https://fortune.com/2026/03/05/openai-new-model-gpt5-4-enterprise-agentic-anthropic/); [BuildFastWithAI](https://www.buildfastwithai.com/blogs/gpt-5-4-review-benchmarks-2026), Mar 2026)
+
+### Frontier Deployments — Named But Unverified (Level 0-1)
+Uber (driver inquiries), Intuit (TurboTax), State Farm (claims processing) named as early adopters. BBVA, Cisco, T-Mobile piloted. All descriptions sourced from OpenAI launch announcement — no independent practitioner reports, no measurable outcomes. ([Fortune](https://fortune.com/2026/02/05/openai-frontier-ai-agent-platform-enterprises-challenges-saas-salesforce-workday/); [CNBC](https://www.cnbc.com/2026/02/05/open-ai-frontier-enterprise-customers.html), Feb 2026)
+
+### AgentKit — Mixed Reviews, Developer-Only (Level 2)
+Visual Agent Builder (beta), Connector Registry (beta). Praised for speed, criticized for OpenAI-model-lock-in and limited retrieval. Complementary to N8N/Zapier, not replacement. No business user deployments. ([Unite.AI](https://www.unite.ai/agentkit-by-openai-review/), 2026)
+
+### Codex Skills — Acknowledged Not for Business Users (Level 1)
+eesel.ai: "It was built by engineers, for engineers... npm install is a non-starter for customer support." ([eesel.ai](https://www.eesel.ai/blog/openai-codex), 2026)
+
+### Open Responses — Credible Backing, No Deployments (Level 1-2)
+Backed by Hugging Face, OpenRouter, Vercel, LM Studio, Ollama, vLLM. Anthropic/Google NOT joined. Replaces Assistants API (sunset Aug 26, 2026). Supports MCP natively. ([InfoQ](https://www.infoq.com/news/2026/02/openai-open-responses/); [Hugging Face](https://huggingface.co/blog/open-responses), Feb 2026)
+
+### Write-Action Connectors & Recurring Tasks — Shipped, Zero Adoption (Level 1)
+Write actions for Outlook, Google Docs/Sheets, Calendar. Jira write via Atlassian Rovo MCP. Disabled by default. Recurring tasks: 10 active limit, daily/weekly/monthly. Both features documented but zero practitioner reports of production use. ([OpenAI Help Center](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes); [gecco](https://www.geccohq.com/news/chatgpt-can-now-act-inside-outlook-google-docs-and-your-calendar); [Scheduled Tasks](https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt), Mar 2026)
+
 ## Next Cycle Questions
 
-- [ ] Frontier: what are Uber / State Farm / Intuit actually running? Any public evidence?
-- [ ] Codex Skills: has anyone built a non-coding business skill?
-- [ ] AgentKit: any practitioner reviews now that it's launched?
-- [ ] Open Responses: gaining traction or stalling? Who else has joined?
+- [x] Frontier: what are Uber / State Farm / Intuit actually running? **Answer: Named in launch announcement. Zero independent evidence. Descriptions read like vendor talking points.**
+- [x] Codex Skills: has anyone built a non-coding business skill? **Answer: No. Even OpenAI ecosystem acknowledges it's not built for non-developers.**
+- [x] AgentKit: any practitioner reviews now that it's launched? **Answer: Mixed reviews exist. Developer-only. No business user deployments.**
+- [~] Open Responses: gaining traction or stalling? **Partial: Credible backing (Hugging Face, Vercel). Anthropic/Google absent. No production deployment evidence yet.**
 - [ ] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise?
 - [ ] Responses API `background: true` — anyone using async agent execution for business workflows?
-- [ ] **NEW:** Write-action connectors — is anyone using Jira write/Google Sheets creation via ChatGPT in production?
-- [ ] **NEW:** Recurring task scheduling — any business user reports of using scheduled agent tasks?
-- [ ] **NEW:** Market share erosion — what's gaining ground? Is this Claude/Gemini or vertical tools?
+- [x] Write-action connectors — is anyone using Jira write/Google Sheets creation via ChatGPT in production? **Answer: Features shipped. Zero adoption evidence.**
+- [x] Recurring task scheduling — any business user reports? **Answer: Feature exists (10 task limit). Zero reports of business use.**
+- [ ] Market share erosion — what's gaining ground?
+- [ ] Frontier practitioner reports — re-check in 4 weeks (6+ weeks post-launch with no evidence is concerning)
+- [ ] GPT-5.4 computer use: anyone using it for legacy system integration?
+- [ ] Write-action connectors adoption — re-check as these are the closest to real business agent work
 
 ## Sources
 
@@ -164,3 +192,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-biz01.md` — Business agent research
 - `runs/2026-03-21-codex-trajectory.md` — Platform trajectory deep dive
 - `runs/2026-03-21-cycle08.md` — Connector evolution, enterprise controls, GPT-5.4
+- `runs/2026-03-21-cycle15.md` — Frontier deployments unverified, AgentKit reviews, GPT-5.4 computer use, write-actions shipped

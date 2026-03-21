@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-21
-OODA cycles: 3
+Last updated: 2026-03-21 (cycle 15)
+OODA cycles: 4
 
 ## Focus
 
@@ -187,14 +187,26 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 
 15M paid Copilot seats (160% YoY) but low conversion from 440M M365 users. Some enterprises downgrading. ([Windows News](https://windowsnews.ai/article/microsofts-2026-copilot-reorganization-four-pillars-one-ai-strategy.405446))
 
+### From E7/Cowork/A2A research (cycle 15):
+- **E7 pricing skepticism is convergent (Level 1).** 5+ independent practitioners skeptical of $99/user/month value: Office Watch ("65% price jump"), SAMexpert ("too high for broad adoption"), Office365itpros ("worth $99?"), US Cloud (hidden consumption could push >$200/user/month), Rob Quickenden (per-user-per-agent licensing confusion). ([Office Watch](https://office-watch.com/2026/microsoft-365-e7-a-99-frontier-suite-the-future-or-an-expensive-bundle/), [SAMexpert](https://samexpert.com/microsoft-365-e7-licensing-guide/), [Office365itpros](https://office365itpros.com/2026/03/17/is-the-new-agent-365-worth-99/), [US Cloud](https://www.uscloud.com/blog/microsoft-e7-and-the-new-economics-of-enterprise-ai/), [Rob Quickenden](https://robquickenden.blog/2026/03/agent-365-nears-ga/), Mar 2026)
+- **Copilot adoption baseline: 3.3%.** Only 15M paid seats out of 450M+ M365 commercial seats (Nadella, Q2 FY26 earnings, Jan 2026). E7 faces same distribution-vs-conversion challenge.
+- **Copilot Cowork: still zero independent reviews.** Frontier program opening late March — first practitioner reports expected within weeks.
+- **Foundry Workflow Agents: vendor-only evidence.** Capgemini ContractGPT and KPMG governance cited only in Microsoft's own blog ([Foundry blog](https://devblogs.microsoft.com/foundry/introducing-multi-agent-workflows-in-foundry-agent-service/), Mar 2026). No independent confirmation.
+- **Microsoft Agent Framework: Release Candidate.** Successor to Semantic Kernel + AutoGen. ([Foundry blog](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/), Mar 2026)
+- **A2A: preview works, zero real connections.** Public preview in Copilot Studio ([MS Learn](https://learn.microsoft.com/en-us/microsoft-copilot-studio/add-agent-agent-to-agent)). Only real A2A production deployment found: Tyson Foods/Gordon Food Service — on Google's platform, not Microsoft's. A2A ecosystem: 150+ orgs, Linux Foundation, v0.3.
+- **Nordic M365 agents: complete absence.** Zero named Nordic companies with M365 agent deployments across 4 research cycles. Cloudpartner.fi analyzing Security Copilot licensing for Finnish orgs — analysis, not deployment ([Cloudpartner.fi](https://learn.cloudpartner.fi/posts/security-copilot-scu-allocation-in-microsoft-365-e5-the-nordic-reality-check), Mar 2026).
+
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
-- [ ] Workflow Agents: any practitioner building multi-step business workflows?
-- [ ] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A?
+- [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence. Capgemini/KPMG cited only in vendor blog.**
+- [x] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A? **Answer: No. Preview works, zero real-world connections. Only A2A production case is on Google's platform.**
 - [ ] Claude in Copilot Studio: expanding beyond Computer Use beta?
-- [ ] Copilot Cowork Frontier rollout: early user reports?
-- [ ] E7 launch (May 2026): adoption signals?
-- [ ] Nordic companies: any M365 agent adoption?
+- [x] Copilot Cowork Frontier rollout: early user reports? **Answer: Not yet — still Research Preview. Frontier opening late March.**
+- [x] E7 launch (May 2026): adoption signals? **Answer: Convergent skepticism from practitioners. Not GA yet. Zero adoption announcements.**
+- [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 4 cycles.**
+- [ ] Copilot Cowork independent reviews — re-check in 2-3 weeks after Frontier opens
+- [ ] E7 early adoption data — watch May-June 2026
+- [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts
 
 ## Sources
 
@@ -203,3 +215,4 @@ See `runs/` for detailed research logs:
 - `2026-03-21-biz01.md` — Business user focus
 - `2026-03-21-integ01.md` — Enterprise integration, security, multi-tool
 - `2026-03-21-architecture.md` — Architecture deep dive (Foundry vs Copilot Studio)
+- `2026-03-21-cycle15.md` — E7 pricing skepticism, Cowork status, A2A, Foundry Workflows, Nordic gap

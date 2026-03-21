@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
 Last updated: 2026-03-21
-Total OODA cycles: 12+ (dev sweep + business agent + architecture deep dives + trajectory analysis)
+Total OODA cycles: 14 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS initial survey)
 
 ## Purpose
 
@@ -45,7 +45,9 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 **Anthropic: Standards + Best Engine.** Three-layer play: (1) open standards competitors adopt (MCP + Agent Skills), (2) model+runtime powering partners (Copilot Cowork), (3) own business surface (Cowork + plugins + marketplace). Computer Use (61.4% OSWorld) = sleeper for legacy integration. $100M partner network. But: infrastructure fragility (14 incidents in 7 days), no managed hosting, political risk. (See `claude-anthropic/state.md`)
 
-**Google: Strong Architecture, Weak Execution.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But Gemini model stability undermines everything. Zero enterprise evidence. (See `google-workspace/state.md`)
+**Google: Strong Architecture, Weak Execution.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But GA launch plagued by capacity issues (63 outages in 24hrs), architectural limits (no webhooks, no state, no observability), and agent sprawl risk (ON by default, no lifecycle management). Gemini model stability undermines everything. Zero enterprise evidence. (See `google-workspace/state.md`)
+
+**Vertical SaaS: Ahead in Their Lanes.** Salesforce Agentforce ($540M+ ARR, 9,500+ paid), Zendesk (51% auto-resolution at SeatGeek), ServiceNow ($600M+ ACV), SAP Joule (deepest ERP agents), HubSpot Breeze (SMB-accessible). Customer service is the breakthrough domain with convergence-level evidence. The vertical advantage: they own the data context. The limitation: strong only in their lane, no cross-enterprise capability. Nordic signal: Finnair (80% chat resolution) and reMarkable are global Agentforce showcases. (See `vertical-saas/state.md`)
 
 ### Who Leads for Business Users? (Honest Assessment — Updated)
 
@@ -146,6 +148,12 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 **Pattern 6: The real competition is M365 vs Workspace, not model vs model.** For business agents, the question isn't "which LLM is best" — it's "where do my employees already work?" That's Microsoft or Google for most enterprises.
 
+**Pattern 7: Vertical SaaS is ahead of horizontal for domain-specific agents.** Customer service has convergence-level evidence (Level 3): Zendesk 51% auto-resolution, Salesforce 80% chat at Finnair, HubSpot 84% deflection at Zeffy. The structural advantage is data context — verticals own the data. But the advantage is narrow (one lane per platform) and most deployed "agents" are still copilots.
+
+**Pattern 8: Customer service is the first domain to cross the agent threshold.** Across Zendesk, Salesforce, and HubSpot, customer service is where autonomous multi-step agents show real results. Clear success criteria (resolved or not) + bounded scope + human escalation tolerance = why this domain leads. Other domains (ERP, IT ops) are 6-12 months behind.
+
+**Pattern 9: Outcome-based pricing is emerging.** Zendesk ($1.50-$2.00/resolution), Salesforce ($2/conversation), HubSpot (credits). Aligns incentives but creates budget unpredictability. This may become the standard pricing model for business agents.
+
 ## CTO Answer: Which Platform For What? (March 2026)
 
 | Business Use Case | Best Platform Today | Why | Caveat |
@@ -158,7 +166,10 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 | Legacy system integration | Claude Computer Use | 61.4% OSWorld — works with ANY software user can see, no API needed | Beta. No enterprise deployment evidence. |
 | Multi-system orchestration (5+ tools) | **Custom build** (Agent SDK + MCP) | Only path that actually connects SF + Snowflake + Slack + Jira + SharePoint | Requires engineering team. No platform does this natively. |
 | Enterprise agent governance | OpenAI Frontier / Azure Agent 365 | Frontier: multi-vendor. Agent 365: M365-native. | Both announced, not proven. Frontier: limited availability. Agent 365: May 2026. |
-| Customer service agent | **Vertical SaaS** | Zendesk, Intercom, Freshdesk may be ahead of horizontal platforms | Not yet researched in this system |
+| Customer service agent | **Zendesk or Salesforce Agentforce** | Zendesk: 51% auto-resolution (SeatGeek), outcome-based pricing. Salesforce: 80% chat resolution (Finnair), CRM integration. | Convergence-level evidence (Level 3). Bounded to customer service domain. |
+| IT operations / employee service | **ServiceNow** | $600M+ ACV, strongest IT ops context. | Most orgs at Phase 2 despite Phase 3 aspirations. 18-33 month maturity path. |
+| ERP / finance / supply chain | **SAP Joule** | Deepest business process agents (cash mgmt, procurement, production). Josh Bersin: "ahead of Workday." | Just reaching GA Q1 2026. Minimal production evidence. |
+| Sales/marketing (SMB) | **HubSpot Breeze** | Most accessible for SMBs. 84% deflection at Zeffy. | Mostly copilot-level. 40% failure rate without config. |
 
 ### The Honest Answer for CTOs
 
@@ -176,8 +187,9 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 - **Business user building an agent without developer help** — on any platform. The zero-code promise is unfulfilled.
 - **Personal→team agent promotion** — on any platform. The lifecycle doesn't exist as a designed feature.
 - **Named enterprise with business agents in production** — on any platform. The entire space is pre-chasm.
-- **Nordic companies using business agents** — zero findings.
-- **Vertical SaaS agent capabilities** (Zendesk, ServiceNow, HubSpot, SAP) — not yet researched. May be ahead of the horizontal platforms for specific use cases.
+- **Nordic companies using business agents on horizontal platforms** — zero findings on Microsoft, Google, or OpenAI.
+- ~~**Vertical SaaS agent capabilities** — not yet researched.~~ **RESEARCHED (cycle 13-14).** Vertical SaaS IS ahead for domain-specific use cases. Customer service has convergence-level evidence. See `vertical-saas/state.md`.
+- **Nordic vertical SaaS signal found:** Finnair (Agentforce, 80% chat resolution — independently verified) and reMarkable (Agentforce, vendor-sourced). Salesforce opened Stockholm office Dec 2025. ServiceNow acquired Nordic Advania's Quality 360. No Nordic signal for Zendesk, SAP Joule, or HubSpot.
 
 ## Research Priorities (Hourly Cycle — Semi-Autonomous)
 
@@ -204,3 +216,5 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 | 10 | 2026-03-21 | OpenAI (trajectory) | Building agent OS: Spec→SDK→Codex→Frontier→AgentKit. Most ambitious stack. Skills = promotion path concept. |
 | 11 | 2026-03-21 | Microsoft (architecture) | Foundry = PaaS (best features Preview). Studio = PVA heritage. Separate runtimes, no promotion. Nadella sees existential threat. |
 | 12 | 2026-03-21 | Anthropic (trajectory) | Three-layer play: standards + engine + own surface. Computer Use = legacy integration sleeper. Infrastructure fragility risk. |
+| 13 | 2026-03-21 | Google (GA reality check) | Workspace Studio GA plagued by capacity issues. Architectural limits prevent enterprise use. All deployment claims vendor-sourced. |
+| 14 | 2026-03-21 | Vertical SaaS (initial survey) | Customer service = convergence-level. Vertical SaaS ahead in domain lanes. Finnair/reMarkable = Nordic signal. SAP deepest ERP agents. |

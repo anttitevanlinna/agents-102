@@ -1,7 +1,7 @@
 # Google Workspace / Gemini Enterprise — Platform State
 
 Last updated: 2026-03-21
-OODA cycles: 2
+OODA cycles: 3
 
 ## Focus
 
@@ -90,7 +90,7 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - Model stability problems: 503 errors, forced migrations, vanishing histories
 - Rate limits significantly lower than competitors
 
-### Business user layer (from cycle 2)
+### Business user layer (from cycles 2-3)
 - Workspace Studio is the first real "business user builds agents" product — but brand new and limited
 - Gemini-in-Workspace is a chatbot, not an agent. Sheets integration disappointing.
 - NotebookLM is a powerful research tool but not agentic
@@ -98,6 +98,13 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - Gemini Enterprise (Cloud) is GA but has zero independent deployment evidence
 - Accuracy/hallucination concerns documented for regulated domains
 - Pricing restructuring forces all-or-nothing purchasing
+
+### GA launch reality (from cycle 3)
+- Workspace Studio GA plagued by capacity issues — "at capacity" errors, quota exceeded on paid plans, 63 outages in 24hrs around launch ([Google Dev Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858), Mar 2026)
+- Architectural limitations prevent enterprise use: no webhook triggers, no state persistence, no observability/decision traces ([dev.to analysis](https://dev.to/alifar/google-workspace-studio-technical-overview-a63), Mar 2026)
+- Agent sprawl/shadow AI risk: tool ON by default, no lifecycle management for orphaned agents. Forrester: "beyond skill level of most employees" ([UC Today](https://www.uctoday.com/productivity-automation/is-google-workspace-studios-rollout-already-ahead-of-your-governance-policy/), Mar 2026)
+- Microsoft Copilot Studio ahead on enterprise: model-agnostic, OpenAPI plugins, deeper governance. Google wins simplicity/price ([SourceForge comparison](https://sourceforge.net/software/compare/Google-Workspace-Studio-vs-Microsoft-Copilot-Studio/), [Revolgy](https://www.revolgy.com/insights/blog/google-workspace-vs-microsoft-365-2026-strategic-playbook-for-enterprises), Mar 2026)
+- All enterprise deployment claims remain vendor-sourced only — circular evidence ecosystem ([Google Cloud ROI report](https://cloud.google.com/transform/roi-of-ai-how-agents-help-business))
 
 ## What We Need To Learn (business user focus)
 
@@ -116,14 +123,15 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 
 ## Next Cycle Priorities
 
-1. **Workspace Studio in the wild.** It just went GA. In 4-6 weeks, look for practitioner reports of real business workflows built. This is the key product to track.
-2. **Gemini Enterprise Cloud deployments.** Still zero. Keep watching for the first independent case study.
-3. **Pricing impact.** The all-or-nothing bundling will generate complaints. Track enterprise buyer reactions.
-4. **Governance gap.** What happens when agent-building employees leave? No solution documented. Watch for Google or partner guidance.
-5. **Head-to-head with M365 Copilot Agents.** Microsoft's agent builder in Copilot Studio is the direct competitor to Workspace Studio. Need comparison.
+1. **Workspace Studio practitioner reports.** GA is 2 days old. In 4-6 weeks, first real user reports should appear. Track forums, blogs, Reddit.
+2. **Capacity/reliability stabilization.** Are the GA launch issues resolved? Check forums for improvement signals.
+3. **Gemini Enterprise Cloud deployments.** Still zero independent evidence. Deloitte, Decathlon, Nokia named as testers — watch for results.
+4. **Governance gap solutions.** Agent lifecycle management when employees leave. Watch for Google or partner guidance.
+5. **Head-to-head with M365 Copilot Studio.** Initial comparison done (cycle 3) — Microsoft leads on enterprise depth. Track if Google closes gap.
 
 ## Sources
 
 See `runs/` for detailed research logs:
 - `runs/2026-03-21-run02.md` — Developer-focused ecosystem research
 - `runs/2026-03-21-biz01.md` — Business user agent capabilities research
+- `runs/2026-03-21-cycle13.md` — GA launch reality check: capacity issues, architectural limits, governance gaps

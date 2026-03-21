@@ -1,7 +1,7 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-21 (cycle 15)
-OODA cycles: 4
+Last updated: 2026-03-21 (cycle 17)
+OODA cycles: 5
 
 ## Focus
 
@@ -9,7 +9,7 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 
 ## Key Verdict (as of 2026-03-21)
 
-**Highest adoption, lowest agentic maturity for business.** ChatGPT has 900M weekly users and 5M paying business seats. But usage is overwhelmingly chatbot/copilot: writing, research, analysis, Q&A. No evidence of truly agentic business workflows in production at any named enterprise. **OpenAI's own COO Brad Lightcap confirmed this on Feb 24, 2026:** "We have not yet really seen enterprise AI penetrate enterprise business process" ([TechCrunch](https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/)). The gap between "everyone uses it" and "anyone runs business processes with it" is the defining characteristic of OpenAI's business agent position.
+**Highest adoption, declining enterprise position.** ChatGPT has 900M weekly users and 9M paying business seats (up from 5M, Feb 2026). But enterprise LLM spend share has flipped: Anthropic now holds ~40% vs OpenAI's ~27% (down from 50% in 2023), driven by coding ([Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/) via [Fortune](https://fortune.com/2026/02/05/chatgpt-openai-market-share-app-slip-google-rivals-close-the-gap/), Feb 2026). Usage remains overwhelmingly chatbot/copilot. No evidence of truly agentic business workflows in production. Frontier platform is 7 weeks post-launch with zero independent deployment evidence. **OpenAI's own COO Brad Lightcap confirmed on Feb 24, 2026:** "We have not yet really seen enterprise AI penetrate enterprise business process" ([TechCrunch](https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/)). OpenAI is responding by pivoting toward consumer "super-app" (travel, shopping, food) — which may further widen the enterprise gap.
 
 ## Business Agent Surface
 
@@ -36,13 +36,16 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 - Admin controls, SSO, SCIM (Enterprise only), data privacy
 - Shared workspace for custom GPTs
 - **Connectors (updated March 2026):** Google Drive, SharePoint, Notion, GitHub, Asana, ClickUp — **now with WRITE actions for Google and Microsoft apps** (draft emails, create docs/spreadsheets, schedule meetings). Previously read-only. ([Release Notes](https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes))
-- **NEW MCP connectors:** Atlassian Rovo (Jira + Confluence + Compass, with Jira WRITE actions), Amplitude, Fireflies, Monday.com, Stripe, Hex, Egnyte, Vercel ([Release Notes](https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes))
-- **NEW: ChatGPT for Excel and Google Sheets** (beta) — spreadsheet integration ([Release Notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes))
-- **NEW: Financial data integrations** — FactSet, MSCI, Third Bridge, Moody's for market/company data ([Release Notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes))
-- **NEW: Enterprise agent controls** — workspace owners can enable/disable agent mode (default OFF), assign to specific roles, block specific domains, control app availability ([Help Center](https://help.openai.com/en/articles/11752874-chatgpt-agent))
+- **⚠️ EEA/NORDIC BLOCKER:** Connectors are excluded from EEA, Switzerland, and UK for Plus and Pro users. Only Team/Enterprise/Edu plans get access in these regions. Individual Nordic business users cannot use write actions or any connectors. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167); [Cybernews](https://cybernews.com/how-to-use-vpn/access-apps-in-chatgpt-from-anywhere/), Mar 2026)
+- **MCP connectors:** Atlassian Rovo (Jira + Confluence + Compass, with Jira WRITE actions), Amplitude, Fireflies, Monday.com, Stripe, Hex, Egnyte, Vercel ([Release Notes](https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes))
+- ChatGPT for Excel and Google Sheets (beta) — spreadsheet integration ([Release Notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes))
+- Financial data integrations — FactSet, MSCI, Third Bridge, Moody's for market/company data ([Release Notes](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes))
+- Enterprise agent controls — workspace owners can enable/disable agent mode (default OFF), assign to specific roles, block specific domains, control app availability ([Help Center](https://help.openai.com/en/articles/11752874-chatgpt-agent))
 - EKM (Enterprise Key Management) disables all synced connectors
+- 92% Fortune 500 penetration, 9M paying business users (4x from Sept 2025), but 57% adoption concentrated in software dev, 20% use advanced features ([Christian & Timbers](https://www.christianandtimbers.com/insights/chatgpt-reached-92-of-the-fortune-500-in-24-months), Feb 2026)
 - Single-player architecture: no shared agents, no team workflows, no compounding knowledge
-- **Team agent** tier — governance improving (role-based agent access, domain blocking) but agentic workflow capability still limited
+- **Write actions and scheduled tasks: zero adoption evidence** — features shipped but no practitioner reports of production business use. Scheduled tasks called "half-baked" (no context, 10 max). (source: runs/2026-03-21-cycle17.md)
+- **Team agent** tier — governance improving but agentic workflow capability still limited
 
 ### Responses API + Agents SDK
 - Developer tools for building custom agents
@@ -143,7 +146,9 @@ Multiple independent sources converge on the same set of structural gaps:
 4. **Altman vision: ChatGPT as digital identity.** Memory is "in its GPT-2 era." Agent personalization/learning is the endgame differentiator. But predictions run 12-18 months ahead of delivery. ([The Neuron](https://www.theneuron.ai/explainer-articles/openais-vision-for-2026-sam-altman-lays-out-the-roadmap/))
 
 ### The Gap
-Everything above is announced or in limited availability. Frontier customers are named but no deployment evidence. AgentKit has no independent reviews. Skills are code-only. The vision is the most complete of any vendor. The execution evidence is zero.
+Everything above is announced or in limited availability. **Frontier is 7 weeks post-launch with zero independent deployment evidence.** Named customers use aspirational language ("exploring," "trial"). Consulting alliances (Accenture, BCG, Capgemini, McKinsey) and AWS exclusive cloud deal confirm go-to-market complexity — product requires hand-holding. Intuit hedging across both OpenAI and Anthropic shows even committed customers are not platform-committed. ([CNBC](https://www.cnbc.com/2026/02/23/open-ai-consulting-accenture-boston-capgemini-mckinsey-frontier.html); [PYMNTS](https://www.pymnts.com/partnerships/2026/intuit-and-anthropic-to-launch-customizable-ai-agents/), Feb 2026)
+
+AgentKit has mixed independent reviews (developer-only). Skills are code-only. The vision is the most complete of any vendor. The execution evidence is zero.
 
 ## Cycle 15 Findings (2026-03-21)
 
@@ -170,20 +175,44 @@ Backed by Hugging Face, OpenRouter, Vercel, LM Studio, Ollama, vLLM. Anthropic/G
 ### Write-Action Connectors & Recurring Tasks — Shipped, Zero Adoption (Level 1)
 Write actions for Outlook, Google Docs/Sheets, Calendar. Jira write via Atlassian Rovo MCP. Disabled by default. Recurring tasks: 10 active limit, daily/weekly/monthly. Both features documented but zero practitioner reports of production use. ([OpenAI Help Center](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes); [gecco](https://www.geccohq.com/news/chatgpt-can-now-act-inside-outlook-google-docs-and-your-calendar); [Scheduled Tasks](https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt), Mar 2026)
 
+## Cycle 17 Findings (2026-03-21)
+
+### Enterprise Market Share Reversal (Level 2)
+Anthropic holds ~40% of enterprise LLM spend (up from 24%), OpenAI fell to ~27% (from 50% in 2023). Anthropic wins ~70% of head-to-head enterprise matchups for new buyers. Claude Code hit $1B ARR run-rate in 6 months. Primary driver: coding (54% enterprise coding market). ChatGPT consumer app share dropped from 69% to 45%. OpenAI pivoting toward consumer "super-app." ([Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/); [Fortune](https://fortune.com/2026/02/05/chatgpt-openai-market-share-app-slip-google-rivals-close-the-gap/); [Android Headlines](https://www.androidheadlines.com/2026/03/anthropic-vs-openai-businesses-market-share-2026-analysis.html), Feb-Mar 2026)
+
+### Frontier: Still Zero Independent Evidence at 7 Weeks (Level 0)
+State Farm "exploring" (future tense). Uber use case is customer service chatbot. Intuit hedging across OpenAI + Anthropic. Consulting alliances (Accenture, BCG, Capgemini, McKinsey) confirm product requires hand-holding. AWS becomes exclusive third-party cloud distributor (part of $110B round). No GA timeline. No pricing. (source: runs/2026-03-21-cycle17.md)
+
+### EEA Connector Restriction — Nordic Blocker (Level 2)
+Connectors explicitly excluded from EEA/Switzerland/UK for Plus and Pro users. Only Team/Enterprise/Edu get access. Individual Nordic business users cannot use write actions or any connectors. No resolution timeline found. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167), Mar 2026)
+
+### GPT-5.4 Computer Use: First Production Evidence (Level 2)
+Two companies report production computer use on legacy systems: (1) Mainstay — 95% first-attempt success on ~30K property tax portals, 3x faster. (2) Pace (Sequoia-backed) — insurance portals, production deal with Prudential Financial, 50-75% cost savings vs BPOs. Both are OpenAI launch partners (curated evidence). ([OpenAI blog](https://openai.com/index/introducing-gpt-5-4/); [Jamie Cuffe on X.com](https://x.com/jamiecuffe/status/2029628903732482163); [BusinessWire/Prudential](https://www.businesswire.com/news/home/20251203008504/en/Pace-selected-by-Prudential-Financial-to-help-automate-its-insurance-operations-with-agentic-AI), Mar 2026)
+
+### Computer Use Consumer Reliability: Convergence on "Impressive But Unreliable" (Level 3)
+Multiple independent reviewers: Timothy B. Lee ("nowhere close to reliable enough"), NN/g (11 min vs 2 min manual for restaurant booking), Cybernews (5-30 min for complex tasks). Common: auth blocking, safety over-filtering, captcha barriers. Altman called it "experimental." ([Understanding AI](https://www.understandingai.org/p/chatgpt-agent-a-big-improvement-but); [NN/g](https://www.nngroup.com/articles/impressions-chatgpt-agent/); [Cybernews](https://cybernews.com/ai-tools/chatgpt-agent-review/), Feb-Mar 2026)
+
+### GPT-5.4 vs Claude Opus 4.6: Benchmark Split Confirmed (Level 2-3)
+GPT-5.4: 75% OSWorld (above 72.4% human avg), leads computer use + knowledge work, ~40% cheaper per output token. Claude Opus 4.6: 72.7% OSWorld, leads coding (SWE-Bench 80.8% vs 77.2%) + multi-agent orchestration. ([DataCamp](https://www.datacamp.com/blog/gpt-5-4-vs-claude-opus-4-6); [Artificial Analysis](https://artificialanalysis.ai/models/comparisons/gpt-5-4-vs-claude-opus-4-6), Mar 2026)
+
 ## Next Cycle Questions
 
-- [x] Frontier: what are Uber / State Farm / Intuit actually running? **Answer: Named in launch announcement. Zero independent evidence. Descriptions read like vendor talking points.**
+- [x] Frontier: what are Uber / State Farm / Intuit actually running? **Answer: Named in launch announcement. Zero independent evidence. State Farm "exploring." Uber = customer service chatbot. Intuit hedging across OpenAI + Anthropic.**
 - [x] Codex Skills: has anyone built a non-coding business skill? **Answer: No. Even OpenAI ecosystem acknowledges it's not built for non-developers.**
 - [x] AgentKit: any practitioner reviews now that it's launched? **Answer: Mixed reviews exist. Developer-only. No business user deployments.**
 - [~] Open Responses: gaining traction or stalling? **Partial: Credible backing (Hugging Face, Vercel). Anthropic/Google absent. No production deployment evidence yet.**
-- [ ] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise?
-- [ ] Responses API `background: true` — anyone using async agent execution for business workflows?
-- [x] Write-action connectors — is anyone using Jira write/Google Sheets creation via ChatGPT in production? **Answer: Features shipped. Zero adoption evidence.**
-- [x] Recurring task scheduling — any business user reports? **Answer: Feature exists (10 task limit). Zero reports of business use.**
-- [ ] Market share erosion — what's gaining ground?
-- [ ] Frontier practitioner reports — re-check in 4 weeks (6+ weeks post-launch with no evidence is concerning)
-- [ ] GPT-5.4 computer use: anyone using it for legacy system integration?
-- [ ] Write-action connectors adoption — re-check as these are the closest to real business agent work
+- [x] Are Nordic enterprises (beyond Klarna) deploying ChatGPT Enterprise? **Answer: No. Nordic AI narrative focused on sovereign models and infrastructure, not ChatGPT. EEA connector restriction is a structural blocker.**
+- [ ] Responses API `background: true` — anyone using async agent execution for business workflows? (Active bug reports suggest feature still maturing)
+- [x] Write-action connectors — is anyone using Jira write/Google Sheets creation via ChatGPT in production? **Answer: Features shipped. Zero adoption evidence. EEA users blocked.**
+- [x] Recurring task scheduling — any business user reports? **Answer: Feature exists (10 task limit). Called "half-baked." Zero reports of business use.**
+- [x] Market share erosion — what's gaining ground? **Answer: Anthropic at 40% enterprise spend vs OpenAI 27%. Claude Code $1B ARR. OpenAI pivoting to consumer super-app.**
+- [x] Frontier practitioner reports — re-check in 4 weeks **Answer: 7 weeks post-launch, still zero. Consulting alliances + AWS deal confirm complexity.**
+- [x] GPT-5.4 computer use: anyone using it for legacy system integration? **Answer: Mainstay (property tax portals) and Pace (insurance portals/Prudential) — both OpenAI launch partners. Consumer reliability convergence: "impressive but unreliable."**
+- [ ] EEA connector restriction — when does this get resolved? (Critical for Nordic market)
+- [ ] Independent Frontier deployment reports — re-check after GA announcement
+- [ ] Computer use: independent enterprise evidence (not OpenAI launch partners)
+- [ ] OpenAI consumer super-app pivot — does this accelerate enterprise gap?
+- [ ] TinyFish hybrid architecture (81% Mind2Web vs Operator 43%) — is this the pattern for production computer use?
 
 ## Sources
 
@@ -193,3 +222,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-codex-trajectory.md` — Platform trajectory deep dive
 - `runs/2026-03-21-cycle08.md` — Connector evolution, enterprise controls, GPT-5.4
 - `runs/2026-03-21-cycle15.md` — Frontier deployments unverified, AgentKit reviews, GPT-5.4 computer use, write-actions shipped
+- `runs/2026-03-21-cycle17.md` — Market share reversal, Frontier still vapor, EEA blocker, computer use first evidence, reliability convergence

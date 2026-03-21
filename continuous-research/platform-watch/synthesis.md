@@ -1,7 +1,7 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
-Last updated: 2026-03-21 (cycle 16)
-Total OODA cycles: 16 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update)
+Last updated: 2026-03-21 (cycle 17)
+Total OODA cycles: 17 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks + multi-platform update + OpenAI market dynamics)
 
 ## Purpose
 
@@ -55,7 +55,7 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 **Microsoft: The Azure of Agents.** Own the governance/identity/security layer, not the apps. Nadella: "SaaS will dissolve into agents on CRUD databases." Foundry = PaaS (3 agent types, most powerful in Preview). Copilot Studio = PVA heritage, hits ceiling fast. Separate runtimes, no promotion path. Agent 365 governance (May 2026) = infrastructure ahead of adoption. Existential threat: agents bypass Office via open-source file libraries. 15M Copilot seats but low conversion from 440M M365. (See `microsoft-365/state.md`)
 
-**OpenAI: Agent Operating System.** Every layer from spec to governance: Open Responses spec → Agents SDK (19K stars) → Codex (Skills/Automations) → ChatGPT Agent → Frontier (multi-vendor governance) → AgentKit (visual builder). Skills = portable agent capabilities = closest to promotion path concept. Frontier manages agents from ALL vendors including Claude. Named customers: Uber, State Farm, Intuit. Vision most complete, deployment evidence zero. Altman predictions run 12-18mo ahead. (See `openai/state.md`)
+**OpenAI: Agent Operating System — but losing enterprise ground.** Every layer from spec to governance: Open Responses spec → Agents SDK (19K stars) → Codex (Skills/Automations) → ChatGPT Agent → Frontier (multi-vendor governance) → AgentKit (visual builder). Skills = portable agent capabilities = closest to promotion path concept. Frontier manages agents from ALL vendors including Claude. **But: 7 weeks post-Frontier-launch with zero independent deployment evidence.** Named customers use aspirational language ("exploring," "trial"). Enterprise market share reversed: Anthropic 40% vs OpenAI 27% of enterprise LLM spend (Menlo Ventures, Feb 2026). OpenAI pivoting toward consumer super-app. EEA connector restriction blocks Nordic Plus/Pro users entirely. Vision most complete, execution gap widening. (See `openai/state.md`)
 
 **Anthropic: Standards + Best Engine — but infrastructure is failing.** Three-layer play: (1) open standards competitors adopt (MCP + Agent Skills), (2) model+runtime powering partners (Copilot Cowork), (3) own business surface (Cowork + plugins + marketplace). Computer Use (61.4% OSWorld) = sleeper for legacy integration. B2B marketplace launched Mar 6 (GitLab, Harvey, Snowflake). $100M partner network. **But: infrastructure fragility is now Level 3 convergence — 109 incidents in 90 days** (28 major, 81 minor, median 1h 8m). MCP enterprise governance being filled by third-party gateways (MintMCP, Stacklok, Lunar.dev), not Anthropic. Agent Teams = coding only, not business users. (See `claude-anthropic/state.md`)
 
@@ -83,7 +83,7 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 **Microsoft has the best distribution** — but Copilot Studio is PVA heritage with a low ceiling, Foundry's best features are Preview, and practitioners report unreliable grounding.
 
-**OpenAI has the most ambitious platform vision** — Frontier + AgentKit + Skills could become the agent OS. But everything is announced or limited availability. 900M users, 80% plain chat.
+**OpenAI has the most ambitious platform vision** — Frontier + AgentKit + Skills could become the agent OS. But everything is announced or limited availability. 900M users, 9M business seats, 80% plain chat. Enterprise market share declining (27%, down from 50%), pivoting to consumer super-app.
 
 **Anthropic has the strongest model + standards position** — MCP and Agent Skills adopted by everyone. Computer Use solves the "no API" problem. But no managed hosting, infrastructure fragility, and the business surface (Cowork) is brand new.
 
@@ -202,6 +202,14 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 **Pattern 19: Consolidation wave in vertical SaaS (NEW — cycle 16).** ServiceNow + Moveworks ($2.85B), Zendesk + Forethought, Salesforce + Convergence.ai + Cimulate, NICE + Cognigy (~$955M). 50+ agentic AI acquisitions in 2 years. Platform landscape will look different in 6 months.
 
+**Pattern 20: Enterprise LLM spend is reversing — Anthropic overtaking OpenAI (NEW — cycle 17).** Anthropic holds ~40% of enterprise LLM spend (up from 24%), OpenAI fell to ~27% (from 50% in 2023). Anthropic wins ~70% of head-to-head enterprise matchups. Primary driver: coding (54% enterprise coding market). Claude Code hit $1B ARR run-rate in 6 months. OpenAI responding by pivoting toward consumer super-app — which may further widen the enterprise gap. ([Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/); [Fortune](https://fortune.com/2026/02/05/chatgpt-openai-market-share-app-slip-google-rivals-close-the-gap/), Feb 2026)
+
+**Pattern 21: Even committed enterprise customers are multi-vendor hedging (NEW — cycle 17).** Intuit ($100M+/yr with OpenAI) simultaneously partnered with Anthropic for Claude Agent SDK. This isn't unusual — it's the rational strategy when no platform has proven enterprise deployment. The implication for CTOs: don't choose a platform, build on standards (MCP, Agent Skills) so you can hedge too. ([PYMNTS](https://www.pymnts.com/partnerships/2026/intuit-and-anthropic-to-launch-customizable-ai-agents/), Feb 2026)
+
+**Pattern 22: Computer use has first production evidence — legacy system integration is the use case (NEW — cycle 17).** Mainstay (95% on 30K property tax portals) and Pace (insurance portals, Prudential deal) show computer use works on legacy systems without APIs. GPT-5.4 leads (75% OSWorld, above 72.4% human avg) vs Claude (72.7%). But both production cases are OpenAI launch partners (curated evidence). Consumer reliability convergence (Level 3): "impressive but unreliable" for autonomous use. TinyFish shows hybrid architecture (81% Mind2Web) outperforms vanilla computer use (43%). ([OpenAI blog](https://openai.com/index/introducing-gpt-5-4/); [Understanding AI](https://www.understandingai.org/p/chatgpt-agent-a-big-improvement-but); [TinyFish](https://www.tinyfish.ai/blog/mind2web), Mar 2026)
+
+**Pattern 23: EEA regulatory friction creates platform gaps for Nordic users (NEW — cycle 17).** OpenAI connectors (Google Drive, SharePoint, Outlook, etc.) explicitly excluded from EEA/Switzerland/UK for Plus and Pro users. Only Team/Enterprise/Edu get access. Individual Nordic business users on personal plans cannot use any write actions or connectors. This creates a structural disadvantage vs. Microsoft (no EEA restrictions on Copilot) and is a curriculum design consideration for our Bootstrap training. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167), Mar 2026)
+
 ## CTO Answer: Which Platform For What? (March 2026)
 
 | Business Use Case | Best Platform Today | Why | Caveat |
@@ -211,7 +219,7 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 | Finance reconciliation | Foundry (Workflow Agents) | Durable orchestration, Cosmos DB state, audit trails | Workflow Agents are Preview. Unreliable grounding reported. Requires developer. |
 | HR onboarding workflow | Copilot Studio + Power Automate | M365 integration (SharePoint, Teams, Outlook) | Power Automate = rigid trigger-action. No conversational exception handling. |
 | Compliance monitoring | **No clear leader** | None has proven cross-system monitoring | Entirely pre-chasm |
-| Legacy system integration | Claude Computer Use | 61.4% OSWorld — works with ANY software user can see, no API needed | Beta. No enterprise deployment evidence. |
+| Legacy system integration | GPT-5.4 Computer Use / Claude Computer Use | GPT-5.4: 75% OSWorld (above human avg). Claude: 72.7%. Both work with ANY software — no API needed. | First production evidence: Mainstay (property tax), Pace (insurance/Prudential). Both OpenAI launch partners. Consumer reviews: "impressive but unreliable." Hybrid architectures (TinyFish) outperform vanilla. |
 | Multi-system orchestration (5+ tools) | **Custom build** (Agent SDK + MCP) | Only path that actually connects SF + Snowflake + Slack + Jira + SharePoint | Requires engineering team. No platform does this natively. |
 | Enterprise agent governance | OpenAI Frontier / Azure Agent 365 | Frontier: multi-vendor. Agent 365: M365-native. | Both announced, not proven. Frontier: limited availability. Agent 365: May 2026. E7 pricing skepticism widespread. |
 | Customer service agent | **Zendesk or Salesforce Agentforce** | Zendesk: 51% auto-resolution (SeatGeek), outcome-based pricing. Salesforce: 80% chat resolution (Finnair), CRM integration. | Convergence-level evidence (Level 3). Bounded to customer service domain. |
@@ -253,12 +261,14 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 2. **Enterprise integration reality** — who is connecting 5+ systems in one agentic workflow? Practitioners, not demos.
 3. **Agent memory / learning** — Ruflo's AgentDB is the most advanced. Anyone else? Anyone deploying it in enterprise?
 4. **Vertical SaaS deep-dives** — Salesforce Agentforce practitioner experience beyond customer service. ServiceNow deployment reality. SAP Joule early GA results.
-5. **Frontier/AgentKit in practice** — what are Uber/State Farm/Intuit actually running on OpenAI Frontier?
+5. ~~**Frontier/AgentKit in practice**~~ — **ANSWERED (cycle 17): zero independent evidence at 7 weeks. Re-check after GA.**
 6. **Workspace Studio adoption** — just went GA (Mar 19). Watch for practitioner reports beyond the capacity issues.
 7. **F-Secure pattern replication** — do other organizations hit the same three walls (data access, runtime, discoverability)?
 8. **MCP enterprise governance** — when does SSO/audit ship?
-9. **Computer Use in enterprise** — anyone using it for legacy system integration?
+9. **Computer Use in enterprise** — first evidence from Mainstay/Pace (OpenAI partners). Watch for independent reports + hybrid architectures (TinyFish pattern).
 10. **Domain practitioner discovery** — who are the innovator practitioners per business function? (Links to domain research: `../source-roster.md`)
+11. **Enterprise multi-vendor hedging** — is Intuit's dual OpenAI+Anthropic pattern becoming standard? What does this mean for platform commitment?
+12. **OpenAI consumer pivot impact** — does the super-app direction accelerate or decelerate enterprise agent capability?
 
 ## Run Log
 
@@ -275,3 +285,4 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 | 14 | 2026-03-21 | Vertical SaaS (initial survey) | Customer service = convergence-level. Vertical SaaS ahead in domain lanes. Finnair/reMarkable = Nordic signal. SAP deepest ERP agents. |
 | 15 | 2026-03-21 | Open-source frameworks (Ruflo) | 80% of gaps solved (orchestration, memory, registry). Missing 20% = enterprise wrapper (RBAC, governance, audit). Could disrupt all vendor platforms. |
 | 16 | 2026-03-21 | All platforms (multi-platform update) | Anthropic infra fragility Level 3 (109 incidents/90d). E7 pricing skepticism convergent. GPT-5.4 computer use. Agentforce own portal 62%. MCP governance = third-party ecosystem. Reasoning models worse at facts. Consolidation wave. |
+| 17 | 2026-03-21 | OpenAI (market dynamics + computer use) | Enterprise spend reversed: Anthropic 40% vs OpenAI 27%. Frontier still zero evidence at 7 weeks. EEA connector blocker for Nordic. Computer use first production evidence (Mainstay, Pace — both OpenAI partners). Reliability convergence: "impressive but unreliable." Intuit hedging across OpenAI + Anthropic. |

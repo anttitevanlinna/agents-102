@@ -157,9 +157,9 @@ What happens when you build competence first (F-Secure, March 2026): people buil
 
 The big platform decision might still come later — but by then it's informed by months of real usage, real needs, and real data about what works. The platform question answers itself when you have 50 people building and you know exactly what they need.
 
-**The implication for CTOs:** Don't start with the big decision. Build competence, and the decisions get smaller, faster, and more reversible. The heavyweight vendor evaluation is what organizations do when they lack competence. The lightweight choice is what organizations do when they have it.
+**The implication for CTOs:** Nobody should be making non-two-way-door decisions on the agent landscape right now. The entire space is pre-chasm. Every platform is immature. Every vendor story is 12-18 months ahead of reality. Betting small while making progress is what a smart CTO does. Build competence, and the decisions get smaller, faster, and reversible — two-way doors you can walk back through if the landscape shifts (and it will). The heavyweight vendor evaluation is what organizations do when they lack competence. The lightweight choice is what organizations do when they have it.
 
-**Applies to:** Core value proposition (strongest formulation yet), sales conversations, advisory positioning
+**Applies to:** Core value proposition (strongest formulation), sales conversations, advisory positioning, newsletter
 **Source:** F-Secure deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21
 

@@ -1,7 +1,7 @@
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-03-21 (cycle 25)
-OODA cycles: 7
+Last updated: 2026-03-21 (cycle 28)
+OODA cycles: 8
 
 ## Focus
 
@@ -74,14 +74,16 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 | Company | Vertex AI Agent Builder | GA | Developer-only, no business user path |
 | Promotion path | Studio → Gemini Enterprise | Theoretically possible | No one has documented doing it |
 
-## Pricing Landscape (March 2026)
+## Pricing Landscape (March 2026, updated cycle 28)
 
-- **Gemini in Workspace:** Bundled into Workspace plans (no longer pick-and-choose). AI Expanded Access add-on required from March 1, 2026 for higher usage.
-- **Workspace Studio:** Included in Business Standard/Plus and Enterprise plans.
+- **Gemini in Workspace:** Bundled into Workspace plans (no longer pick-and-choose). Standard access at lower limits free. Higher usage requires add-on.
+- **Workspace Studio:** Included in Business Standard/Plus and Enterprise plans. **Promotional higher limits expire March 31, 2026.**
+- **AI Expanded Access add-on:** 2,000 monthly Flow credits. No rollover. Price localized (not public). Available from March 1, 2026.
+- **AI Ultra Access add-on:** 25,000 monthly Flow credits + Deep Think access. No rollover. Price localized.
 - **NotebookLM Plus:** Part of Workspace. Enterprise tier via Cloud.
 - **Gemini Enterprise (Cloud):** ~$30/user/mo separately.
 - **AppSheet AI Tasks:** Enterprise Plus licensing required.
-- **The trap:** Google eliminated targeted AI seat purchasing. Orgs pay for all employees. CTO question: "Am I paying for everyone when only 20% use it?"
+- **The trap:** Google eliminated targeted AI seat purchasing AND moved to per-execution credits for agents. Orgs pay for all employees, then pay again per agent execution. CTO question: "Am I paying per-seat for everyone AND per-execution for agents?"
 
 ## What We Know (consolidated from all cycles)
 
@@ -123,6 +125,17 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - All enterprise deployment claims remain vendor-sourced only — circular evidence ecosystem ([Google Cloud ROI report](https://cloud.google.com/transform/roi-of-ai-how-agents-help-business))
 - **BizTech Magazine article (Mar 2026) about Workspace Studio "transforming enterprise workflows" contains zero named customers, zero metrics, zero independent evidence** — filed as evidence of absence ([BizTech](https://biztechmagazine.com/article/2026/03/how-googles-workspace-studio-transforming-enterprise-workflows), Mar 2026)
 
+### Cycle 28 update (Mar 21) — Credit cliff + Mattel PQA agent + ADK 2.0
+
+- **March 31 credit cliff: promotional limits expire, credit system takes over.** Three-tier pricing: standard (free, low limits) → AI Expanded Access (2,000 monthly Flow credits) → AI Ultra Access (25,000 monthly Flow credits + Deep Think). Credits don't roll over. Public pricing not disclosed — localized per currency. This fundamentally changes agent economics from per-seat to per-execution. Business users who built agents during the promotional window may see them throttled or stop running. ([Google Workspace Updates Blog — AI Expanded Access](https://workspaceupdates.googleblog.com/2026/02/google-workspace-ai-expanded-access.html), Feb 2026)
+- **Capacity issues still active post-GA.** Forum thread still growing in March 2026. New threads: "Quota exceeded" (5 replies, 177 views), "Persistent 429 Resource Exhausted Error" (0 replies), "Gemini AI studio broken" (86 views). March 5 skepticism thread: "Was Google AI Studio really able to return to normal operation?" (11 replies, 280 views). Google's only visible response remains from December 30, 2025. No resolution timeline communicated. ([Google AI Dev Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858), Mar 2026)
+- **Mattel PQA agent: first named multi-system business agent on Google Cloud.** Mattel + Insight presenting at Cloud Next '26: "Architecting for the Agent and Beyond: Inside Mattel's Product Quality World." Conversational Analytics Agent for Product Quality Analysis (PQA) integrating Google Cloud AI with Jira. Speaker: Joseph Vinhais (Chief Safety Officer, SVP Global Quality, Mattel). Background: Mattel previously reported 100x data processing improvement (month → minute), but that was analytics, not agentic. Session will be first public architecture disclosure. **Unverified until April 22-24.** ([Insight Cloud Next page](https://www.insight.com/en_US/shop/partner/google/google-cloud/google-cloud-next.html); [Google Cloud Blog — Mattel](https://cloud.google.com/transform/mattel-gen-ai-customer-feedback-real-time-product-improvements), vendor sources)
+- **GEAR program: Google's enterprise agent skilling play.** Free program targeting builders, devs, LOB leaders, IT decision-makers. 35 monthly learning credits on Google Skills. Progressive pathways (intro → build → deploy). Selective "Get Certified" cohort for Google Cloud customer employees only. No named participants, no deployment evidence, no graduates. Lowest-investment skilling approach compared to Anthropic ($100M partner network) and Microsoft (massive partner ecosystem). ([Google Cloud Blog — GEAR](https://cloud.google.com/blog/products/ai-machine-learning/gear-program-now-available); [GEAR FAQ](https://developers.google.com/profile/help/gear), Mar 2026)
+- **ADK 2.0 Alpha: graph workflows + TypeScript.** Graph-based deterministic routing, iterative loops, complex branching. TypeScript SDK (previously Python-only). New AgentTeam API for multi-agent coordination. Built-in eval framework. Streamlined Cloud Run deployment. Compatible with ADK 1.x (separate storage required). Alpha — not production-ready. Narrows gap with LangGraph/CrewAI. ([ADK 2.0 Docs](https://google.github.io/adk-docs/2.0/); [Moltbook-AI Roundup](https://moltbook-ai.com/posts/ai-agents-march-2026-roundup), Mar 2026)
+- **Cloud Next '26 agent sessions announced.** Key sessions: "Beyond the hype: Orchestrating end-to-end developer workflows with agents" (SPTL008), "Build Production-Ready Agents on Google Cloud" (BRK2-091), "From Prototype to Production: 45 Minutes to a Reliable Vertex AI Agent" (BRK2-014), "The Gemini 3 Playbook" (BRK2-086). Plus Mattel PQA session. ([Google Developers Blog](https://developers.googleblog.com/you-cant-stream-the-energy-a-developers-guide-to-google-cloud-next-26-in-vegas/), Mar 2026)
+- **Nordic enterprise agents: still zero — sixth consecutive cycle.** No new signals from Finland, Sweden, or Norway. Education continues. Enterprise agent deployments remain absent.
+- **Kärcher remains the ONLY named Studio customer — fourth consecutive cycle.** No new named customers since December 2025. "20 million tasks" claimed but no named orgs.
+
 ### Gemini Enterprise developer layer (from cycle 4)
 - GitHub issues show deployment friction: agent authorization errors in EU locations (FAILED_PRECONDITION), agents not appearing in Agent Gallery (SIGTERM after 2 min) ([GitHub #3534](https://github.com/google/adk-python/issues/3534), [GitHub #4453](https://github.com/google/adk-python/issues/4453), Mar 2026)
 - CGI equips 90K+ consultants with Gemini Enterprise (Jan 2026) — consultancy channel play, not deployment evidence. No named customers, no metrics. Nordic-relevant because CGI has strong Nordic presence. ([CGI](https://www.cgi.com/en/cgi-help-clients-accelerate-agentic-ai-outcomes-gemini-enterprise), [ChannelE2E](https://www.channele2e.com/news/cgi-expands-global-alliance-with-google-cloud-to-help-businesses-with-gemini-ai), Jan 2026)
@@ -144,14 +157,16 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 
 ## Next Cycle Priorities
 
-1. **Cloud Next '26 (April 22-24).** Agent-focused event. Watch for: Studio improvements, customer wins with metrics, governance for Studio, capacity fix timeline.
-2. **Post-promotional limits (April 1+).** Promotional higher limits expire March 31. Will capacity degrade? Will pricing change?
-3. **Workspace Studio practitioner reports (late April).** In 4-6 weeks post-GA, first real user reports should appear. Track forums, blogs, Reddit.
-4. **Papa Johns / retail CX results.** Any independent report on the food ordering agent?
-5. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 5 cycles. Deloitte (300+ agents built), Nokia, Decathlon, CGI to track.
-6. **Governance gap.** Vertex AI gets governance; Studio gets nothing. Any roadmap?
-7. **Nordic:** Svenska Spel (only enterprise signal, zero details). Norwegian DPIA spillover from education to enterprise?
-8. **Google Chat as agent delivery surface.** Still zero findings after 5 cycles.
+1. **Post-credit-cliff reality (April 1+).** Promotional limits expired March 31. Are agents throttled? Are orgs purchasing add-ons or abandoning automations? This is the #1 question.
+2. **Cloud Next '26 (April 22-24).** Agent-focused event. Watch for: Mattel PQA agent architecture, Studio improvements, new customer wins with metrics, governance for Studio, capacity fix timeline.
+3. **Mattel PQA session.** Is it genuinely agentic (multi-step, autonomous, cross-system) or analytics with a chat interface? First named multi-system agent on Google Cloud.
+4. **Workspace Studio practitioner reports (late April).** 5+ weeks post-GA. Track forums, blogs, Reddit for real user experiences.
+5. **Papa Johns / retail CX results.** Any independent report on the food ordering agent?
+6. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 6 cycles. Deloitte (300+ agents built), Nokia, Decathlon, CGI to track.
+7. **Governance gap.** Vertex AI gets governance; Studio gets nothing. Any Cloud Next roadmap?
+8. **Nordic:** Zero enterprise agent deployments — sixth consecutive cycle. Svenska Spel (zero details). Norwegian DPIA spillover?
+9. **Google Chat as agent delivery surface.** Still zero findings after 7 cycles.
+10. **GEAR program adoption.** Any graduates? Any deployments?
 
 ## Sources
 
@@ -161,5 +176,6 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle13.md` — GA launch reality check: capacity issues, architectural limits, governance gaps
 - `runs/2026-03-21-cycle19.md` — Post-GA reality check: capacity still broken, Gemini Enterprise dev bugs, CGI channel play, evidence absence confirmed
 - `runs/2026-03-21-cycle22.md` — Post-GA update (expanded): capacity officially acknowledged (21K outage reports), hard limits documented, Kärcher still only customer after 3 months, Gemini CX retail names, governance gap deepens (Vertex gets tools, Studio gets nothing), Nordic education moves but enterprise zero, Cloud Next '26 watch
+- `runs/2026-03-21-cycle28.md` — Pre-Cloud-Next state: credit cliff (March 31), GEAR skilling program, Mattel PQA multi-system agent, ADK 2.0 Alpha, capacity still broken, Nordic still zero
 - `runs/2026-03-21-landscape-update.md` — Cross-platform landscape: Bedrock AgentCore 5 features, LangChain+NVIDIA, OpenAI Frontier, Claude SDK updates, A2A v0.3
 - `../cross-platform/runs/2026-03-21-cycle24.md` — Capacity issues persist post-GA (forum reports, StatusGator 63 outage reports), promotional limits expire March 31, AI Expanded Access add-on required

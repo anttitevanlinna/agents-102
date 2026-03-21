@@ -1,7 +1,7 @@
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-21 (cycle 20)
-OODA cycles: 6
+Last updated: 2026-03-21 (cycle 23)
+OODA cycles: 7
 
 ## Focus
 
@@ -9,7 +9,7 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 
 ## Key Verdict (as of 2026-03-21)
 
-**Highest adoption, accelerating enterprise decline.** ChatGPT has 900M weekly users and 9M paying business seats. But the enterprise gap is widening faster than previously measured: Ramp AI Index (March 2026) shows Anthropic winning **~70% of head-to-head enterprise matchups** among first-time buyers (up from 50/50 just ten weeks ago). OpenAI saw its largest single-month spending decline since tracking began. 24.4% of Ramp businesses now pay for Anthropic vs 1-in-25 a year ago ([Ramp AI Index](https://ramp.com/velocity/ai-index-march-2026); [Axios](https://www.axios.com/2026/03/18/ai-enterprise-revenue-anthropic-openai), Mar 2026). Usage remains overwhelmingly chatbot/copilot. No evidence of truly agentic business workflows in production. Frontier platform is 7+ weeks post-launch with zero independent deployment evidence. **OpenAI's own COO Brad Lightcap confirmed on Feb 24, 2026:** "We have not yet really seen enterprise AI penetrate enterprise business process" ([TechCrunch](https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/)). OpenAI pivoting toward consumer super-app AND merging ChatGPT/Codex/browser into single desktop app (March 16 internal all-hands), while preparing Q4 2026 IPO — product strategy fragmenting across multiple fronts.
+**Highest adoption, accelerating enterprise decline, strategic fragmentation.** ChatGPT has 900M weekly users and 50M paid subscribers. But the enterprise gap is accelerating: Anthropic now commands **40% of enterprise LLM spending** vs OpenAI's 27% (reversed from 50%/12% in 2023). Ramp AI Index (March 2026) shows Anthropic winning **~70% of head-to-head enterprise matchups** among first-time buyers. Axios (March 18) reports EpochAI projects total revenue crossover in **August 2026**. OpenAI's revenue ($25B ARR) is 85% consumer subscriptions — losing money on each. Anthropic's ($19B ARR) is 85% enterprise. ([Ramp](https://ramp.com/velocity/ai-index-march-2026); [Axios](https://www.axios.com/2026/03/18/ai-enterprise-revenue-anthropic-openai), Mar 2026). Frontier platform is 7+ weeks post-launch with **zero independent deployment evidence** from any named customer. OpenAI responding with five simultaneous strategic initiatives: (1) desktop super-app merge (ChatGPT + Codex + Atlas, March 16 all-hands), (2) Frontier enterprise platform, (3) **$10B PE joint venture** with TPG/Advent/Bain Capital/Brookfield for forward-deployed engineer engagements ($10M minimum), (4) $50B AWS cloud deal (Microsoft weighing lawsuit), (5) Q4 2026 IPO. **OpenAI's own COO Brad Lightcap confirmed Feb 24:** "We have not yet really seen enterprise AI penetrate enterprise business process" ([TechCrunch](https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/)). Strategy is fragmenting across consumer/enterprise/IPO/legal fronts.
 
 ## Business Agent Surface
 
@@ -211,13 +211,17 @@ GPT-5.4: 75% OSWorld (above 72.4% human avg), leads computer use + knowledge wor
 - [x] EEA connector restriction — when does this get resolved? **Answer: Partial, inconsistent rollout underway (Gmail, Calendar, Drive, GitHub). Feature-flag based — some users get access, others in same cities don't. No full parity date. Reportedly accelerated by Anthropic's unrestricted European MCP access.**
 - [x] OpenAI consumer super-app pivot — does this accelerate enterprise gap? **Answer: Desktop super-app merge announced (ChatGPT + Codex + browser, March 16 internal). Consumer integrations (DoorDash, Uber, Expedia) US/Canada only. IPO Q4 2026. Strategy fragmenting across consumer/enterprise/IPO. OpenAI COO warned about "side quests."**
 - [x] TinyFish hybrid architecture (81% Mind2Web vs Operator 43%) — is this the pattern for production computer use? **Answer: YES — converging pattern. TinyFish now 90% Mind2Web. Stagehand v3 confirms same pattern (deterministic + AI hybrid, 44% faster). Skyvern at 85.8% WebVoyager. TinyFish selected for Windows 365 for Agents testing.**
-- [ ] Independent Frontier deployment reports — re-check after GA announcement (now at 7+ weeks with zero evidence)
+- [ ] Independent Frontier deployment reports — re-check after GA announcement (now at 7+ weeks with zero evidence, cycle 23 confirmed still zero)
 - [ ] Computer use: independent enterprise evidence beyond Mainstay/Pace (non-launch-partners)
-- [ ] Ramp data trend — re-check in 4 weeks to see if enterprise spending shift accelerates or stabilizes
-- [ ] Desktop super-app merge — does this improve or fragment enterprise experience?
+- [ ] Ramp data trend — re-check in 4 weeks to see if enterprise spending shift accelerates or stabilizes (cycle 23: Axios/EpochAI project revenue crossover Aug 2026)
+- [ ] Desktop super-app merge — does this improve or fragment enterprise experience? (cycle 23: Codex gets business features first, ChatGPT/Atlas later)
 - [ ] Klarna APP (Agentic Product Protocol) — does agent-discoverable commerce gain adoption beyond Klarna?
 - [ ] Agent identity standards — does Grantex IETF draft gain traction? Does OpenAI address the 93% unscoped API key problem?
-- [ ] EEA rollout completion — when does full parity arrive for Nordic users?
+- [ ] EEA rollout completion — when does full parity arrive for Nordic users? (cycle 23: deep research connectors still blocked in EEA)
+- [ ] PE joint venture — does it close? Which portfolio companies are first deployments? Does $10M minimum make this irrelevant for Nordic mid-market?
+- [ ] Microsoft lawsuit — does it actually get filed? What happens to Frontier's multi-cloud strategy if stateful runtime is ruled inside Azure exclusivity?
+- [ ] Codex business features — does the super-app merge actually deliver non-coding agent capabilities? Timeline?
+- [ ] Five-front strategy fragmentation — which initiative gets deprioritized? Watch for IPO-driven narrowing.
 
 ## Cycle 20 Findings (2026-03-21)
 
@@ -239,6 +243,29 @@ No new adopters since Jan 2026. AAIF (Agentic AI Foundation) under Linux Foundat
 ### Nordic: Klarna APP + Scattered Signals (Level 1-2)
 Klarna launched Agentic Product Protocol (APP) — open standard for agent-discoverable commerce, 100M+ products. Equinor reports $130M AI savings but "agent" claims vendor-sourced. TietoEVRY showcasing at Microsoft AI Tour. No Nordic company reporting truly agentic ChatGPT deployment. ([FinTech Magazine](https://fintechmagazine.com/news/what-is-klarnas-agent-protocol-doing-for-agentic-commerce), Mar 2026)
 
+## Cycle 23 Findings (2026-03-21)
+
+### Enterprise Revenue Shift — Axios/EpochAI Confirm Structural Reversal (Level 2-3)
+Axios (March 18): Anthropic commands 40% of enterprise LLM spending vs OpenAI's 27%. OpenAI still leads total revenue ($25B vs $19B ARR) but 85% is consumer subs (losing money). EpochAI projects total revenue crossover August 2026. WSJ reports OpenAI considering pivot from consumer bets to enterprise focus. ([Axios](https://www.axios.com/2026/03/18/ai-enterprise-revenue-anthropic-openai); [EpochAI](https://epoch.ai/data/ai_companies_revenue_reports.csv), Mar 2026)
+
+### PE Joint Venture — $10B Enterprise Distribution Subsidiary (Level 2)
+OpenAI in advanced talks with TPG, Advent International, Bain Capital, Brookfield for majority-owned subsidiary ($10B pre-money). PE firms invest $4B for equity + board seats. Forward Deployed Engineers (FDEs) embed inside client companies at $10M minimum per engagement. Already active in banks, telecoms, auto across three continents. Anthropic running parallel process with Blackstone, H&F, Permira (JV structure). Strategic admission: Frontier cannot sell itself — needs PE distribution and $10M implementation engagements. ([Reuters](https://money.usnews.com/investing/news/articles/2026-03-16/exclusive-openai-courts-private-equity-to-join-enterprise-ai-venture-sources-say); [Axios](https://www.axios.com/2026/03/17/private-equity-openai-anthropic), Mar 2026)
+
+### Frontier: Still Zero Independent Evidence (Level 0)
+Extensive search for independent deployment results from all named customers (Uber, State Farm, Intuit, Thermo Fisher, HP, Oracle, BBVA, Cisco, T-Mobile). Zero found. All metrics trace to OpenAI launch announcement. State Farm uses future tense. Intuit simultaneously building with Anthropic. No GA timeline. No pricing. Consulting alliances (Accenture, BCG, Capgemini, McKinsey) confirm product requires hand-holding. ([Multiple sources — see runs/2026-03-21-cycle23.md])
+
+### AWS Deal — Multi-Cloud Architecture + Microsoft Legal Risk (Level 2)
+$50B Amazon investment. Stateful/stateless architectural split: Azure keeps stateless API exclusivity, AWS gets stateful runtime (agents with memory/context). Frontier sold via Amazon Bedrock. Microsoft weighing lawsuit — dispute over whether stateful runtime falls outside Azure exclusivity clause. Government expansion: GovCloud + classified regions. ([InfoQ](https://www.infoq.com/news/2026/03/openai-aws-frontier-stateful/); [CNBC](https://www.cnbc.com/2026/03/19/openai-desktop-super-app-chatgpt-browser-codex.html), Mar 2026)
+
+### Desktop Super-App — Five Simultaneous Strategic Initiatives (Level 2)
+Fidji Simo (March 16 all-hands): merging ChatGPT + Codex + Atlas into single desktop app. Internal memo: "spreading our efforts across too many apps." Plan: Codex gets business features first, then ChatGPT/Atlas integrate. OpenAI now running five major initiatives simultaneously (super-app, Frontier, PE JV, AWS deal, IPO). Analyst: "risks diluting the very clarity that made ChatGPT dominant." ([CNBC](https://www.cnbc.com/2026/03/19/openai-desktop-super-app-chatgpt-browser-codex.html); [The Decoder](https://the-decoder.com/openai-plans-to-merge-chatgpt-codex-and-atlas-browser-into-a-single-desktop-superapp/), Mar 2026)
+
+### EEA/Nordic — Still Inconsistent, Deep Research Still Blocked (Level 2)
+Gmail, Calendar, Drive, GitHub connectors appearing for some EEA users. ChatGPT Agent for Pro users. Feature-flag rollout: same city, different access. Agent-powered deep research connectors explicitly "not currently available" in EEA. Nordic data center capacity slower than anticipated (Swedish municipal moratoriums, lower fiber density). OpenAI planned Stargate facility in northern Norway (hydro-powered). ([DataStudios](https://www.datastudios.org/post/chatgpt-agent-appears-in-europe-despite-no-formal-announcement); [4sysops](https://4sysops.com/archives/chatgpt-gmail-connector-openais-next-flop/), Mar 2026)
+
+### Codex: 2M WAU, Still Developer-Only, Business Vision Aspirational (Level 1-2)
+2M+ weekly active users. OpenAI positioning as "broader enterprise agent platform" for "tasks beyond software development." Independent: "built by engineers, for engineers... not the right tool for other parts of a business." Astral acquisition deepens developer focus. No non-coding Skills reported. ([eesel.ai](https://www.eesel.ai/blog/openai-codex); [Fortune](https://fortune.com/2026/02/02/openai-launches-codex-app-to-bring-coding-models-to-more-users-openclaw-ai-agents/), Mar 2026)
+
 ## Sources
 
 See `runs/` for detailed research logs:
@@ -249,3 +276,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle15.md` — Frontier deployments unverified, AgentKit reviews, GPT-5.4 computer use, write-actions shipped
 - `runs/2026-03-21-cycle17.md` — Market share reversal, Frontier still vapor, EEA blocker, computer use first evidence, reliability convergence
 - `runs/2026-03-21-cycle20.md` — Enterprise decline accelerating (Ramp data), super-app merge, EEA partial rollout, hybrid computer-use convergence, Open Responses stalled
+- `runs/2026-03-21-cycle23.md` — PE joint venture, Axios revenue reversal, Frontier still zero evidence, AWS multi-cloud + Microsoft lawsuit risk, five-front strategy fragmentation

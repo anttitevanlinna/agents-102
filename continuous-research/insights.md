@@ -159,6 +159,8 @@ The big platform decision might still come later — but by then it's informed b
 
 **The implication for CTOs:** Nobody should be making non-two-way-door decisions on the agent landscape right now. The entire space is pre-chasm. Every platform is immature. Every vendor story is 12-18 months ahead of reality. Betting small while making progress is what a smart CTO does. Build competence, and the decisions get smaller, faster, and reversible — two-way doors you can walk back through if the landscape shifts (and it will). The heavyweight vendor evaluation is what organizations do when they lack competence. The lightweight choice is what organizations do when they have it.
 
+**Corollary: any research that takes more than a week is irrational.** The landscape moves so fast that a 3-month vendor evaluation is stale before it's done. This applies to us too — our research runs in hourly cycles, not quarterly reports. The freshness window is weeks, not months.
+
 **Applies to:** Core value proposition (strongest formulation), sales conversations, advisory positioning, newsletter
 **Source:** F-Secure deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21

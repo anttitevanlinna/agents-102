@@ -147,6 +147,24 @@ F-Secure evidence (March 2026): after 2 modules of Claude Code 101, pretty much 
 
 ---
 
+## Competence Leads to Lightweight Choices, Not Big Decisions
+
+**Thesis:** Agent competence doesn't produce a strategy deck — it produces small, practical, reversible decisions that enable real progress by real people.
+
+The traditional transformation sequence is: assess → select platform → big procurement decision → 6-month pilot → maybe rollout. This produces PowerPoints and vendor lock-in before anyone knows what they actually need.
+
+What happens when you build competence first (F-Secure, March 2026): people build agents → they hit data access walls → the question becomes "we need MCPs for Snowflake and Salesforce" → then "where do we run simple apps?" These are lightweight choices: scoped, reversible, made by people who know what they need because they've built things. No board-level vendor evaluation needed. No 6-month assessment. Just practical people making practical decisions.
+
+The big platform decision might still come later — but by then it's informed by months of real usage, real needs, and real data about what works. The platform question answers itself when you have 50 people building and you know exactly what they need.
+
+**The implication for CTOs:** Don't start with the big decision. Build competence, and the decisions get smaller, faster, and more reversible. The heavyweight vendor evaluation is what organizations do when they lack competence. The lightweight choice is what organizations do when they have it.
+
+**Applies to:** Core value proposition (strongest formulation yet), sales conversations, advisory positioning
+**Source:** F-Secure deployment experience (March 2026, Antti direct)
+**Date:** 2026-03-21
+
+---
+
 ## Competence Creates Pull — People Find Their Own Processes
 
 **Thesis:** You don't need to tell people which processes to automate. Teach them to build agents, and they discover the right processes themselves.

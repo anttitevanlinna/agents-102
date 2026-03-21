@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-21 (cycle 27)
-OODA cycles: 8
+Last updated: 2026-03-21 (cycle 30)
+OODA cycles: 9
 
 ## Focus
 
@@ -23,7 +23,9 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Copilot Cowork (Research Preview, March 2026) — Claude-powered, multi-step tasks across M365 apps
 - **Personal agent** tier — works for one user, in their apps
 - **Reliability problems:** crashes after 15-20 interactions, memory loss, document modification described as "practically useless" by users. Nadella reportedly called some integrations "almost unusable"
-- **Adoption decline:** Copilot market share among paid AI subscribers: 11.5%, down from 18.8% in Jul 2025 — 39% contraction ([Stackmatix](https://www.stackmatix.com/blog/copilot-market-adoption-trends)). Accuracy NPS: -19.8 (Jan 2026) [SOURCE NEEDED for direct URL]. 44.2% of lapsed users cite distrust of answers [SOURCE NEEDED]. One enterprise: 4,000 seats at $1.4M/year, 47 opened it, 12 used it more than once after 3 months ([Peter Girnus, X.com](https://x.com/gothburz/status/1999124665801880032), practitioner direct, Level 2)
+- **Adoption decline:** Copilot market share among paid AI subscribers: 11.5%, down from 18.8% in Jul 2025 — 39% contraction ([Stackmatix](https://www.stackmatix.com/blog/copilot-market-adoption-trends); [Recon Analytics](https://www.reconanalytics.com/ai-choice-2026-why-licenses-dont-equal-adoption/), 150K+ respondents, Jan 2026). Accuracy NPS: -3.5 (Jul 2025) → -24.1 (Sep 2025) → -19.8 (Jan 2026) ([Stackmatix](https://www.stackmatix.com/blog/copilot-market-adoption-trends), citing Recon Analytics). 44.2% of lapsed users cite distrust of answers as primary churn reason. One enterprise: 4,000 seats at $1.4M/year, 47 opened it, 12 used it more than once after 3 months ([Peter Girnus, X.com](https://x.com/gothburz/status/1999124665801880032), practitioner direct, Level 2)
+- **User preference collapse (cycle 30):** When all three platforms available (Copilot, ChatGPT, Gemini), only 8% choose Copilot (vs. 70% ChatGPT, 18% Gemini). When Copilot is the only option, 68% use it — proving provisioning inflates metrics. 70% initially preferred Copilot but only 8% kept choosing it after trying alternatives. ChatGPT conversion rate 83.1% vs Copilot 35.8%. Gemini crossed Copilot in late Nov 2025 to claim #2. ([Recon Analytics](https://www.reconanalytics.com/ai-choice-2026-why-licenses-dont-equal-adoption/), 150K+ respondents, practitioner analysis, Level 2)
+- **Four adoption obstacles (cycle 30):** Confusion (multiple Copilot products, disjointed functionality), Cost ($30/user doubles M365 license, $7.2M/year for 20K employees), Camouflaged Contribution (ROI unmeasurable), Compliance (regulatory scrutiny). Australian gov trial: Teams summaries 72% usage but Excel data analysis only 20%. ([No Jitter](https://www.nojitter.com/ai-automation/4-obstacles-impede-paid-microsoft-365-adoption), Kevin Kieller, Mar 6, 2026, domain trade publication)
 - **Copilot Memory** (GA for personal Copilot): persists preferences, working styles, recurring topics across sessions. Stored in Exchange Online hidden folders. AES-256 encrypted, GDPR/EU Data Boundary compliant. **Does NOT extend to custom agents in Copilot Studio.** ([European Collaboration Summit guide](https://collabsummit.eu/blog/microsoft-365-copilot-memory-enterprise-guide-european-organizations))
 
 ### Copilot Cowork (the personal agent play)
@@ -32,7 +34,8 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - Plan-based execution with checkpoints, human approval before changes applied
 - **Status: Research Preview only.** Limited customer testing. "Late March" broader Frontier access has not materialized as of March 21. Charles Lamanna (Microsoft President) says he's personally using it; LinkedIn commenters enthusiastic but zero independent deployment reports. Some Cowork usage may be included in $30/user plan (not E7-exclusive). ([LinkedIn](https://www.linkedin.com/posts/charleslamanna_its-been-great-to-see-the-excitement-around-activity-7436809874933587968-jyuB), Mar 2026)
 - This is the strongest personal agent concept in M365 but is NOT shipping broadly
-- **Cycle 27 update:** Silence is becoming the signal. 12+ days after announcement, zero independent reviews on any platform. Frontier rollout not confirmed as live. Ethan Mollick skeptical: Microsoft "has a tendency to launch a leading product and then let it sit for awhile." ([GeekWire](https://www.geekwire.com/2026/microsofts-new-copilot-cowork-integrates-anthropics-claude-in-rollout-of-new-e7-licensing-tier/), Mar 2026). Next meaningful check: April 1-7.
+- **Cycle 27 update:** Silence is becoming the signal. 12+ days after announcement, zero independent reviews on any platform. Frontier rollout not confirmed as live. Ethan Mollick skeptical: Microsoft "has a tendency to launch a leading product and then let it sit for awhile." ([GeekWire](https://www.geekwire.com/2026/microsofts-new-copilot-cowork-integrates-anthropics-claude-in-rollout-of-new-e7-licensing-tier/), Mar 2026).
+- **Cycle 30 update:** Silence is now structural. Still zero independent hands-on reviews as of March 21. "Late March" broader Frontier access has not visibly materialized. All coverage remains announcement-based or vendor demo descriptions. NPI Financial caution: "treat that capability as directional, not deliverable, at launch." ([NPI Financial](https://www.npifinancial.com/blog/microsoft-365-e7-what-it-is-what-s-inside-and-what-enterprise-buyers-need-to-know), Mar 2026). If zero reviews persist through early April, this transitions from "early" to "the product isn't shipping." (source: runs/2026-03-21-cycle30.md)
 
 ### Azure AI Foundry Agent Service (GA March 16, 2026)
 - Enterprise infrastructure — durable orchestration, human-in-the-loop, multi-model
@@ -122,6 +125,8 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 | E7 Frontier Worker Suite | $99/user/month | E5 + Copilot + Agent 365 + security (launches May 2026) |
 
 **Key insight:** Per-seat pricing means costs scale with headcount, not agent value. Licensing confusion is significant enough that multiple consultancies have built businesses around explaining it.
+
+**E7 launch incentives (cycle 30):** Introductory discounts: 10% off for 10+ seats, 15% off for 100+ seats on annual terms. Partner programs launching April 1: CSP core incentives, Agent 365 in Immersion Briefings and PoCs. The discounts signal Microsoft expects adoption friction. ([MS Partner Blog](https://techcommunity.microsoft.com/blog/partnernews/partner-blog--introducing-microsoft-365-e7-the-frontier-suite/4500520), Mar 2026)
 
 ## What We Know (cumulative from all research cycles)
 
@@ -260,6 +265,14 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Entra Shadow AI Detection GA March 31.** Network-layer identification of unknown AI apps. Part of the Agent 365 + E7 sell. ([MS Security Blog](https://www.microsoft.com/en-us/security/blog/2026/03/20/secure-agentic-ai-end-to-end/), Mar 2026)
 - **Nordic: seventh consecutive zero** for M365 business agent deployments. Corvus Energy (Foundry) remains the only Nordic signal, vendor-sourced.
 
+### From cycle 30 (adoption reality check, Cowork silence, E7 pre-launch):
+- **User preference collapse quantified at scale.** Recon Analytics (150K+ respondents, Jan 2026): only 8% choose Copilot when all three platforms available. 70% initially preferred it (embedded in apps), but after trying alternatives, only 8% kept choosing it. ChatGPT conversion rate 83.1% vs Copilot 35.8%. This is the strongest independent evidence that M365 distribution ≠ product preference. ([Recon Analytics](https://www.reconanalytics.com/ai-choice-2026-why-licenses-dont-equal-adoption/), practitioner analysis, Level 2)
+- **Trust deficit blocks agent adoption progression.** Accuracy NPS trajectory (-3.5 → -24.1 → -19.8) and 44.2% distrust churn rate mean users won't delegate autonomous multi-step work to agents. The personal copilot → personal agent → team agent progression assumes foundational trust exists. It doesn't, and the data proves it at 150K-respondent scale.
+- **Copilot Cowork silence is now structural.** Zero independent reviews as of March 21 (12+ days post-announcement). "Late March" broader Frontier access not confirmed. NPI Financial: "directional, not deliverable at launch." If zero reviews persist through early April, this is not "early" — the product isn't shipping.
+- **E7 pre-launch signals suggest expected friction.** Introductory discounts (10-15%) and partner program acceleration (April 1) suggest Microsoft anticipates adoption resistance. ([MS Partner Blog](https://techcommunity.microsoft.com/blog/partnernews/partner-blog--introducing-microsoft-365-e7-the-frontier-suite/4500520), Mar 2026)
+- **Four adoption obstacles framework.** Confusion, Cost, Camouflaged Contribution, Compliance. Australian gov trial evidence: high-value features (Excel analysis) at 20% usage vs. low-effort features (Teams summaries) at 72%. ([No Jitter](https://www.nojitter.com/ai-automation/4-obstacles-impede-paid-microsoft-365-adoption), Mar 2026)
+- **Nordic: eighth consecutive zero** for M365 business agent deployments.
+
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
 - [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence across 6 cycles.**
@@ -268,7 +281,7 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - [x] Copilot Cowork Frontier rollout: early user reports? **Answer: No. 21+ days past "late March" broader access promise. Zero reviews.**
 - [x] E7 launch (May 2026): adoption signals? **Answer: No adoption signals. Convergent pricing skepticism from practitioners.**
 - [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 6 cycles.**
-- [ ] Copilot Cowork independent reviews — re-check early April. If zero reviews persist through April, this becomes a structural finding.
+- [ ] Copilot Cowork independent reviews — re-check early April. Zero reviews through March 21. If zero persist through April, product isn't shipping.
 - [ ] E7 early adoption data — public preview April, GA May 1. Watch May-June 2026.
 - [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts. No new agent content since cycle 18.
 - [ ] Foundry Agent Service production deployments — still only Corvus Energy (no metrics). Day 5 post-GA. Named partners (KPMG, NTT DATA, Twilio) are partnership quotes only. Watch 30-90 day window for first independent reports.
@@ -290,3 +303,5 @@ See `runs/` for detailed research logs:
 - `2026-03-21-cycle18.md` — Wave 3/GTC: Foundry GA, Agent 365 at scale, CUA multi-model, Cowork still no reviews, E7 bundle math
 - `2026-03-21-cycle21.md` — Status check: Cowork 21+ days no reviews, Foundry 5 days post-GA zero new customers, CUA/Voice/Workflow triple zero, Nordic sixth zero, practitioners waiting not deploying
 - `2026-03-21-cycle24.md` — Cowork still Research Preview ("late March" not delivered), Agent 365 licensing ambiguity (Quickenden MVP analysis), governance controls shipping ahead of agents, seventh consecutive zero for production deployments
+- `2026-03-21-cycle27.md` — Post-GA Foundry reliability issues, security surface expanding, Cowork 12+ days no reviews, SemiAnalysis existential threat framing
+- `2026-03-21-cycle30.md` — User preference collapse (8% when alternatives available, Recon Analytics 150K respondents), Cowork silence structural, E7 pre-launch discounts suggest friction, trust deficit blocks agent progression, eighth Nordic zero

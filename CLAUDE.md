@@ -26,6 +26,7 @@ Done the agentic way, because no other way works. No person has comparative expe
 - **The honest CTO advice:** Start with personal agents ($20/mo). Discover which of your 200 processes benefit. Then evaluate platforms against YOUR use cases. Plan for custom development — multi-system orchestration requires engineering on every platform. Build on standards (MCP, Agent Skills), not vendor lock-in.
 
 **Key files:**
+- Value proposition canvas: `strategy/value-proposition-canvas.md`
 - Business model canvas: `strategy/business-model-canvas.md`
 - Assumption map: `strategy/assumption-map.md`
 - Marketing plan: `strategy/marketing-plan.md`

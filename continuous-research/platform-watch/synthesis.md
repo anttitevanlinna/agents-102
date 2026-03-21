@@ -1,13 +1,27 @@
 # Agent Platform Watch — Cross-Platform Synthesis
 
 Last updated: 2026-03-21
-Total OODA cycles: 14 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS initial survey)
+Total OODA cycles: 15 (dev sweep + business agent + architecture deep dives + trajectory analysis + vertical SaaS + open-source frameworks)
 
 ## Purpose
 
 Answer the CTO question: **Which platform can do which use cases for business users? Who is leading? Why?**
 
 Not coding agents. Business agents — sales, finance, HR, compliance, operations, customer service. People who use SharePoint, not Git.
+
+## The Bottom Line (March 2026)
+
+**Nobody should be making non-two-way-door decisions on the agent landscape right now.** The entire business agent space is pre-chasm — OpenAI's own COO confirmed it. Every platform is immature. Every vendor story is 12-18 months ahead of reality. Betting small while making progress is what a smart CTO does.
+
+**The hardest problem isn't choosing a platform — it's knowing what questions to ask.** A CTO facing 4 horizontal platforms, 5+ vertical SaaS vendors, open-source frameworks, and 200 internal processes can't even formulate the right question without agent competence. Every evaluation is shaped by whichever vendor presented last.
+
+**The sequence that works: Competence → discovery → context → platform.**
+- Build competence (people who can build agents)
+- Discovery happens organically (people find their own high-value processes — you don't need a consultancy to tell them)
+- Three infrastructure enablers emerge predictably (data access, runtime platform, discoverability)
+- Platform questions become lightweight, reversible, two-way-door decisions — not heavyweight vendor evaluations
+
+**Field evidence (F-Secure, March 2026):** After 2 modules of agent training, pretty much everyone started building — dashboards, agents, apps — unprompted. Competence created pull. The builders then hit three walls: (1) data access (need MCPs for Snowflake, Salesforce), (2) where do apps run, (3) how do others find and use what was built. These are the real questions — scoped, practical, answerable. Not "which of the four platforms should we bet on."
 
 ## The Framework: Personal → Team → Company Agents
 
@@ -48,6 +62,20 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 **Google: Strong Architecture, Weak Execution.** Workspace Studio (GA Mar 19) is genuinely new — first real no-code agent builder. ADK strongest open-source framework. But GA launch plagued by capacity issues (63 outages in 24hrs), architectural limits (no webhooks, no state, no observability), and agent sprawl risk (ON by default, no lifecycle management). Gemini model stability undermines everything. Zero enterprise evidence. (See `google-workspace/state.md`)
 
 **Vertical SaaS: Ahead in Their Lanes.** Salesforce Agentforce ($540M+ ARR, 9,500+ paid), Zendesk (51% auto-resolution at SeatGeek), ServiceNow ($600M+ ACV), SAP Joule (deepest ERP agents), HubSpot Breeze (SMB-accessible). Customer service is the breakthrough domain with convergence-level evidence. The vertical advantage: they own the data context. The limitation: strong only in their lane, no cross-enterprise capability. Nordic signal: Finnair (80% chat resolution) and reMarkable are global Agentforce showcases. (See `vertical-saas/state.md`)
+
+### The Fifth Path: Open-Source Frameworks
+
+**The vendor platforms may not win.** The alternative is: open-source framework + MCP + your own infrastructure. No vendor platform, no lock-in, no Azure/GCP dependency.
+
+**Ruflo (rUv/Reuven Cohen)** — 22K GitHub stars, MIT licensed. Multi-agent orchestration with 60+ agents, swarm topologies, consensus algorithms. Crucially: **persistent memory/state** (AgentDB + RuVector knowledge graph) — the gap no vendor platform has filled. Plus agent registry with Q-learning routing, multi-provider support (Claude/GPT/Gemini/Ollama), and an IPFS plugin marketplace. Cohen is CTO of GenAI at EY Americas — sees both the builder world and enterprise reality. Adrian Cockcroft (ex-Netflix/AWS VP) validated it publicly.
+
+**What Ruflo has (the 80%):** Orchestration, persistent memory, agent registry, multi-provider routing, cost optimization. These are the hard problems.
+
+**What's missing (the enterprise 20%):** No RBAC/SSO, no promotion path concept (personal→team→company), no governance/audit trails, no multi-enterprise-system orchestration (routes across LLMs, not across Salesforce+Snowflake+Jira), still developer-only (no business user surface).
+
+**Why this matters:** The missing 20% is integration and governance engineering — solvable with existing technology. If someone (Cohen or otherwise) adds the enterprise wrapper, the open-source path becomes the platform nobody expected. This is the threat to every horizontal vendor: the answer might be "framework + standards + your infra" — not a vendor platform at all.
+
+**WATCH:** Does Ruflo evolve from developer tool to business platform? Does someone else wrap Ruflo's engine in an enterprise shell? See `source-roster.md` for tracking.
 
 ### Who Leads for Business Users? (Honest Assessment — Updated)
 
@@ -154,6 +182,14 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 **Pattern 9: Outcome-based pricing is emerging.** Zendesk ($1.50-$2.00/resolution), Salesforce ($2/conversation), HubSpot (credits). Aligns incentives but creates budget unpredictability. This may become the standard pricing model for business agents.
 
+**Pattern 10: Every vendor platform is infrastructure-locked.** Microsoft = Azure upsell. Google = GCP dependency. Even OpenAI's Frontier, while vendor-neutral for agents, requires OpenAI infrastructure. An AWS-native company evaluating any of these is implicitly evaluating an infrastructure migration. The open-source path (framework + MCP + own infra) is the only truly infrastructure-agnostic option.
+
+**Pattern 11: The vertical SaaS ceiling is 1 of 200.** Salesforce gets Finnair to 80% chat resolution — impressive, but customer service is 1 of 200 processes Finnair runs. Every vertical SaaS agent automates one silo. The other 199 processes are unsolved. The vendor will sell you automation for the one process they own. The other 199 are yours to figure out.
+
+**Pattern 12: Competence creates pull — people find their own processes.** (F-Secure field evidence, Level 2.) After agent training, people started building unprompted. They discovered their own high-value processes without a consultancy assessment. This inverts the traditional transformation sequence: instead of assess→identify→build→train, the sequence that works is train→they identify→they build→assess what worked.
+
+**Pattern 13: Three predictable enablers emerge after competence.** (F-Secure field evidence, Level 2.) Builders hit three walls: (1) data access (agents need Snowflake, Salesforce, internal systems), (2) runtime platform ("where does this live?"), (3) discoverability ("how do others find and use what I built?"). These are the natural handoff from training to advisory/platform work — and they're scoped, practical, two-way-door decisions.
+
 ## CTO Answer: Which Platform For What? (March 2026)
 
 | Business Use Case | Best Platform Today | Why | Caveat |
@@ -201,15 +237,16 @@ A CTO looking at this landscape sees: 4 horizontal platforms each telling a diff
 
 The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Standing priorities:
 
-1. **Enterprise integration reality** — who is connecting 5+ systems in one agentic workflow? Practitioners, not demos.
-2. **Agent memory / learning** — any platform offering persistent cross-session learning?
-3. **Vertical SaaS agents** — Zendesk, ServiceNow, HubSpot may be ahead of horizontal platforms.
-4. **Frontier/AgentKit in practice** — what are Uber/State Farm/Intuit actually running on OpenAI Frontier?
-5. **Copilot Cowork rollout** — when Frontier access opens late March, what do users report?
-6. **Workspace Studio adoption** — it just went GA (Mar 19). Watch for practitioner reports.
-7. **MCP enterprise governance** — when does SSO/audit ship?
-8. **Computer Use in enterprise** — anyone using it for legacy system integration?
-9. **Domain practitioner discovery** — who are the innovator practitioners per business function? (Links to domain research: `../source-roster.md`)
+1. **Open-source framework evolution** — does Ruflo or similar add the enterprise 20% (RBAC, governance, audit)? Does someone wrap it? Track rUv's GitHub activity and forks.
+2. **Enterprise integration reality** — who is connecting 5+ systems in one agentic workflow? Practitioners, not demos.
+3. **Agent memory / learning** — Ruflo's AgentDB is the most advanced. Anyone else? Anyone deploying it in enterprise?
+4. **Vertical SaaS deep-dives** — Salesforce Agentforce practitioner experience beyond customer service. ServiceNow deployment reality. SAP Joule early GA results.
+5. **Frontier/AgentKit in practice** — what are Uber/State Farm/Intuit actually running on OpenAI Frontier?
+6. **Workspace Studio adoption** — just went GA (Mar 19). Watch for practitioner reports beyond the capacity issues.
+7. **F-Secure pattern replication** — do other organizations hit the same three walls (data access, runtime, discoverability)?
+8. **MCP enterprise governance** — when does SSO/audit ship?
+9. **Computer Use in enterprise** — anyone using it for legacy system integration?
+10. **Domain practitioner discovery** — who are the innovator practitioners per business function? (Links to domain research: `../source-roster.md`)
 
 ## Run Log
 
@@ -224,3 +261,4 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 | 12 | 2026-03-21 | Anthropic (trajectory) | Three-layer play: standards + engine + own surface. Computer Use = legacy integration sleeper. Infrastructure fragility risk. |
 | 13 | 2026-03-21 | Google (GA reality check) | Workspace Studio GA plagued by capacity issues. Architectural limits prevent enterprise use. All deployment claims vendor-sourced. |
 | 14 | 2026-03-21 | Vertical SaaS (initial survey) | Customer service = convergence-level. Vertical SaaS ahead in domain lanes. Finnair/reMarkable = Nordic signal. SAP deepest ERP agents. |
+| 15 | 2026-03-21 | Open-source frameworks (Ruflo) | 80% of gaps solved (orchestration, memory, registry). Missing 20% = enterprise wrapper (RBAC, governance, audit). Could disrupt all vendor platforms. |

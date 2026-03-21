@@ -122,7 +122,7 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 ## Cross-Platform Patterns
 
-**Pattern 1: No enterprise chasm-crossing signal — anywhere.** Zero named enterprises report production business agent deployments with measurable outcomes on any platform.
+**Pattern 1: No enterprise chasm-crossing signal — anywhere.** Zero named enterprises report production business agent deployments with measurable outcomes on any platform. **OpenAI's own COO confirmed this Feb 24, 2026:** "We have not yet really seen enterprise AI penetrate enterprise business process" ([TechCrunch](https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/)). MIT's GenAI Divide study: 95% of organizations report no measurable ROI from AI, only 5% of custom AI solutions reached production with sustained value ([Legal.io/MIT](https://www.legal.io/articles/5719519/MIT-Report-Finds-95-of-AI-Pilots-Fail-to-Deliver-ROI-Exposing-GenAI-Divide)).
 
 **Pattern 2: The promotion path doesn't exist.** Every platform has personal, team, and enterprise tiers — but they're different products. Promoting an agent from personal to team to company means rebuilding, not upgrading.
 

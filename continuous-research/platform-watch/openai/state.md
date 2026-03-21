@@ -9,7 +9,7 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 
 ## Key Verdict (as of 2026-03-21)
 
-**Highest adoption, lowest agentic maturity for business.** ChatGPT has 900M weekly users and 5M paying business seats. But usage is overwhelmingly chatbot/copilot: writing, research, analysis, Q&A. No evidence of truly agentic business workflows in production at any named enterprise. The gap between "everyone uses it" and "anyone runs business processes with it" is the defining characteristic of OpenAI's business agent position.
+**Highest adoption, lowest agentic maturity for business.** ChatGPT has 900M weekly users and 5M paying business seats. But usage is overwhelmingly chatbot/copilot: writing, research, analysis, Q&A. No evidence of truly agentic business workflows in production at any named enterprise. **OpenAI's own COO Brad Lightcap confirmed this on Feb 24, 2026:** "We have not yet really seen enterprise AI penetrate enterprise business process" ([TechCrunch](https://techcrunch.com/2026/02/24/openai-coo-says-we-have-not-yet-really-seen-ai-penetrate-enterprise-business-processes/)). The gap between "everyone uses it" and "anyone runs business processes with it" is the defining characteristic of OpenAI's business agent position.
 
 ## Business Agent Surface
 
@@ -88,8 +88,8 @@ Multiple independent sources converge on the same set of structural gaps:
 2. **~~Read-only~~ connectors evolving** — Google/Microsoft apps now support write actions (emails, docs, meetings). Jira write via Atlassian Rovo MCP. But Salesforce/Zendesk/custom systems still read-only or unavailable. (source: runs/2026-03-21-cycle08.md)
 3. **EKM kills connectors** — compliance-conscious orgs lose all data sync (OpenAI docs)
 4. **No workflow orchestration** — cannot chain actions across business systems (Dust, eesel)
-5. **No agent identity management** — unlike Microsoft Entra, no way to give agents governed identities (Bright Ideas)
-6. **No compliance audit trails** — Atlas not SOC 2 scoped, no SIEM/eDiscovery feeds (OpenAI docs)
+5. **No agent identity management** — unlike Microsoft Entra, no way to give agents governed identities. Industry audit: 93% of agent projects use unscoped API keys, only 21.9% treat agents as identity-bearing entities ([AGAT](https://agatsoftware.com/blog/ai-agent-security-enterprise-2026/), [Grantex](https://grantex.dev/report/state-of-agent-security-2026))
+6. **No compliance audit trails** — Atlas not SOC 2 scoped, no SIEM/eDiscovery feeds. Industry audit: only 13% of agent projects include action logging (OpenAI docs, [AGAT](https://agatsoftware.com/blog/ai-agent-security-enterprise-2026/))
 7. **Sandboxed agent environment** — Agent mode can't access logged-in business apps (multiple sources)
 8. **Model retirement velocity** — two rounds of model retirement in Feb-Mar 2026, breaking Custom GPTs (OpenAI docs)
 9. **Single-vendor model lock-in** — only OpenAI models, no routing to specialized models (Dust)

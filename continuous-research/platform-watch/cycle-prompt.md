@@ -44,7 +44,9 @@ Then read `synthesis.md` — specifically the Research Priorities section (Tier 
 
 7. **Follow a thread.** If you find a practitioner writing about real business agent deployment, follow that thread wherever it leads — across platforms, across domains.
 
-**Decision criteria:** What would create the most value for a CTO trying to understand the agent landscape right now? Where is our knowledge thinnest relative to how much is happening? What's time-sensitive (just shipped, deal closing, enforcement deadline)? Remember: the CTO cares equally about "what to adopt" and "how to transform."
+8. **AI-native teams.** How do teams that deeply integrate AI into daily work actually operate? Not "teams using AI tools" — teams where AI is the co-worker, not the tool. Track: team characteristics (size, roles, skill profiles), daily practices (human/AI work division, review processes, context management), tool stacks (what they actually use, what they abandoned), working style (async vs. sync, communication patterns, pace), and failure modes. **Platform signal:** people describe tools when describing how they work — capture every tool mention, it feeds back into platform watch. Three-phase expansion: (1) AI-native teams → (2) AI-native product programs → (3) AI-native companies and their structure. State file: `ai-native-teams/state.md`. Seed signals: compound engineering (Every, Imprint, Autodesk), but the scope is broader than any single methodology.
+
+**Decision criteria:** What would create the most value for a CTO trying to understand the agent landscape right now? Where is our knowledge thinnest relative to how much is happening? What's time-sensitive (just shipped, deal closing, enforcement deadline)? Remember: the CTO cares equally about "what to adopt," "how to transform," and "what does the target state look like" (AI-native teams).
 
 **Consult the Research Priorities** in `synthesis.md` for standing questions organized by tier. Tier 1 items are time-sensitive. But you may override if you spot something more valuable.
 

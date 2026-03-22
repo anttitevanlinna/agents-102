@@ -227,6 +227,18 @@ The **platform-watch** system (`platform-watch/`) tracks agent platform capabili
 
 The personal→team→company agent framework (defined in `platform-watch/synthesis.md`) applies to domain research too — are the practitioners we find building personal agents, team agents, or company-wide agents?
 
+## Related: AI-Native Teams Research (new track, March 2026)
+
+The **ai-native-teams** track (`platform-watch/ai-native-teams/`) asks a different question from both platform watch and domain research: **"What does the target state look like?"**
+
+Platform watch asks "which platform?" Domain research asks "which processes?" AI-native teams research asks "what does the team that's already good at this actually look like?" — their characteristics, practices, tool stacks, working style, and structure.
+
+**Three-phase expansion:** (1) AI-native teams → (2) AI-native product programs → (3) AI-native companies.
+
+**Platform signal:** People describe tools when describing how they work. Every tool mention feeds back into platform watch — this is a secondary source of platform intelligence from practitioners who are deep users, not evaluators.
+
+**Seed signals:** Compound engineering (Every, Imprint, Autodesk) is one practice, but AI-native is broader than any single methodology.
+
 ## Research Log
 
 | Track | Date | Findings | Key Orientation |

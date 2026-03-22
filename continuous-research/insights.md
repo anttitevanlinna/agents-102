@@ -424,6 +424,40 @@ Every company has the technology. Nobody has the clarity. Platform comparisons a
 
 ---
 
+## AI Sales Agents Work as Augmentation, Fail as Replacement
+
+**Thesis:** AI SDR/sales agents have reached Level 3 convergence — but the pattern is specific: hybrid deployment (AI augments humans with heavy tuning) succeeds, while autonomous replacement fails catastrophically.
+
+10+ independent companies now report measurable outcomes from AI sales agents. SaaStr replaced a 10-person GTM team with 1.2 humans + 20 agents, closing $1M+ in revenue. Owner.com achieved 3x revenue per AE. Demandbase doubled pipeline with AI SDRs. But the counter-evidence is equally strong: 11x lost 70-80% of customers within months and falsified logos. Artisan's CEO admitted "extremely bad hallucinations." Klarna replaced 700 agents, then started rehiring. Lemkin's own caveat: his 20-agent stack required 47 iterations to stop being too aggressive on pricing, plus a dedicated AI operations person doing daily tuning.
+
+The convergence insight isn't "AI sales agents work" or "AI sales agents fail" — it's that the operating model determines the outcome. Hybrid deployment (AI drafts → human reviews → AI executes → human monitors) produces 2-3x productivity gains. Autonomous replacement produces customer churn and brand damage. This mirrors the "hybrid beats autonomous" pattern already confirmed across 15+ signals in other domains (cycle convergence research).
+
+Salesforce's own Help portal is a microcosm: they replaced search with Agentforce-only support, community pushed back ("unreliable results, takes longer"), and Salesforce reverted. Even the vendor can't use its own product autonomously.
+
+**The implication for CTOs:** If you're evaluating AI SDR tools, budget for a human-in-the-loop operating model from day one. "Replace 10 SDRs with AI" is the wrong framing. "Give 3 SDRs AI agents that triple their output" is the pattern that works. The AI ops role (daily tuning, prompt iteration, quality monitoring) is a new job category, not an optional extra.
+
+**Applies to:** Bootstrap Module 7 (agent platforms), advisory conversations, newsletter, sales/GTM domain research
+**Source:** Cycle 43 convergence analysis — SaaStr, Owner.com, Demandbase, 11x, Artisan, Broadn, GTM AI Podcast (March 2026)
+**Date:** 2026-03-22
+
+---
+
+## The Practitioner-Publishing Gap
+
+**Thesis:** The domains where AI agents are most transformative (finance, HR, compliance, operations) are the domains where practitioners publish least — creating a structural blind spot in the research ecosystem.
+
+Sales/GTM has active practitioner publishing: Lemkin blogs, Norton podcasts, the GTM AI Podcast covers deployments weekly. But in HR, compliance, and operations, 43 cycles of research find zero named practitioners sharing deployment experiences publicly. The signal comes only from vendors showcasing customer quotes (Level 0-1), not from practitioners sharing their own experience. The people deploying agents in these domains are inside enterprises and don't blog, don't tweet, don't present at conferences.
+
+This isn't because nothing is happening. ConductorOne's survey shows 95% of enterprises run AI agents autonomously. Ramp's finance agents process thousands of transactions. HPE's "Alfred" reduced manual finance effort by 90%. The deployments exist — the public knowledge doesn't.
+
+**The implication for CTOs:** The absence of public case studies in your domain doesn't mean nobody is doing it — it means the knowledge is trapped inside organizations. This is the gap our advisory fills: practitioners who have trained 200+ people across F-Secure, Neste, and Posti see the cross-organizational patterns that no single company's internal team can see.
+
+**Applies to:** Content strategy, newsletter positioning, advisory value proposition, Bootstrap Module 1 (setting expectations)
+**Source:** Cycle 43 meta-pattern — 43 cycles of practitioner discovery across 7 business domains
+**Date:** 2026-03-22
+
+---
+
 ## Template
 
 Copy this for new insights:

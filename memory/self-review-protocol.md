@@ -11,6 +11,8 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 | 2026-03-21 | "Take Finnair. Customer service is 1 of 200 processes they run" | Strategy | Never let a vendor success story stand alone. Always ask: what fraction of the company's processes does this cover? The impressive number (80% resolution) hides the real number (1/200 processes). |
 | 2026-03-21 | "We should start tracking insights — these nuggets add up" | Process | Create durable artifacts for emergent insights, not just research findings. The compressed argument is often more valuable than the detailed analysis. |
 | 2026-03-21 | "You should keep maintaining the core of this project" | Process | Don't let project memory drift. After deepening understanding, update CLAUDE.md, key files, and goals. The project's self-description should reflect current understanding, not the state when files were first written. |
+| 2026-03-22 | "Personal use is the foundation, not a step" — reframed my organizational-level framing | Strategy | Don't jump to organizational effects. Personal use is the irreducible foundation. The sequence has no shortcuts: personal use → personal competence → shared mental models → organizational effects. |
+| 2026-03-22 | "Leadership must use agents — living this at F-Secure. That is the true scaling unlock" | Strategy | Leadership personal use is the bridge between bottom-up energy and top-down credibility. Without it, mandates are empty. Add to every scaling discussion. |
 
 ## Heuristics (apply before doing work)
 
@@ -24,6 +26,10 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 
 5. **Antti thinks in strategic implications, not feature lists.** When presenting research, lead with "what this means for the buyer" not "what this platform does." Features are context; implications are the point.
 
+6. **Personal use is the irreducible foundation.** Never frame organizational transformation without grounding it in personal use first. The sequence: personal use → competence → shared mental models → organizational effects. Skip any step and it breaks.
+
+7. **Leadership personal use is the scaling unlock.** Bottom-up without leadership = isolated pockets. Top-down without personal experience = empty mandates. Always include "leadership must use agents personally" in scaling discussions.
+
 ## Next-Session Predictions
 
 When starting a new session, check:
@@ -31,8 +37,11 @@ When starting a new session, check:
 - [ ] Am I applying the 1-of-200 test to any vendor success stories?
 - [ ] Am I leading with buyer implications, not feature lists?
 - [ ] Does CLAUDE.md reflect current understanding?
+- [ ] Am I grounding organizational claims in personal use first?
+- [ ] Does my scaling discussion include leadership personal use?
 
 ## Pattern Watch
 
 Patterns to escalate to hard rules if they appear 3+ times:
-- (none yet — first session of tracking)
+- **"Ground in personal before organizational" (2x)** — Antti corrected organizational-level framing twice in session 2. One more occurrence → hard rule.
+- **"Strategy implications, not feature lists" (1x)** — watching

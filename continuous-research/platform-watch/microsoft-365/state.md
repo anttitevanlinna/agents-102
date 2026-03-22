@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-22 (cycle 36)
-OODA cycles: 11
+Last updated: 2026-03-22 (cycle 39)
+OODA cycles: 12
 
 ## Focus
 
@@ -21,6 +21,8 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 ### Microsoft Copilot (personal assistant layer)
 - Embedded in M365 apps — summarize, draft, analyze
 - Copilot Cowork (Research Preview, March 2026) — Claude-powered, multi-step tasks across M365 apps
+- **Cowork silence: seventh consecutive zero (cycle 39).** 13+ days post-announcement, zero independent reviews. "Late March" broader Frontier access has not visibly shipped. No YouTube demos, no Reddit threads, no blog posts from independent users. Mollick (Wharton): "cannot figure out any way to trigger GPT-5 Thinking Extended/Claude 4.5 Sonnet level responses — no deep thinking, no agentic actions, no document outputs." Also noted Anthropic's Cowork "was built in a couple of weeks using Claude Code and is being updated and evolving quickly" — questioning Microsoft's iteration speed. Teamblind insider: "we are cooked at Microsoft" citing stack rank culture and brain drain. Gartner: Cowork "does not support local computer use, cannot interact directly with local files or applications, and lacks native integrations with third-party tools." ([Mollick on X.com](https://x.com/emollick/status/1983962613576036736); [Teamblind](https://www.teamblind.com/post/how-did-microsoft-fumble-copilot-so-bad-when-claude-cowork-exists-kiishvku), Mar 2026)
+- **E7 pricing skepticism deepening (cycle 39):** SAMexpert (independent licensing expert): "$99/user/month at list price is too high for broad adoption." Hidden consumption charges for agentic workloads push effective costs >$200/user/month. US Cloud: E7 is "an entry fee into a consumption model." Context: only 15M Copilot paid seats (3% of 450M+ M365 base). ([SAMexpert](https://samexpert.com/microsoft-365-e7-licensing-guide/); [US Cloud](https://www.uscloud.com/blog/microsoft-e7-and-the-new-economics-of-enterprise-ai/), Mar 2026)
 - **Personal agent** tier — works for one user, in their apps
 - **Reliability problems:** crashes after 15-20 interactions, memory loss, document modification described as "practically useless" by users. Nadella reportedly called some integrations "almost unusable"
 - **Adoption decline:** Copilot market share among paid AI subscribers: 11.5%, down from 18.8% in Jul 2025 — 39% contraction ([Stackmatix](https://www.stackmatix.com/blog/copilot-market-adoption-trends); [Recon Analytics](https://www.reconanalytics.com/ai-choice-2026-why-licenses-dont-equal-adoption/), 150K+ respondents, Jan 2026). Accuracy NPS: -3.5 (Jul 2025) → -24.1 (Sep 2025) → -19.8 (Jan 2026) ([Stackmatix](https://www.stackmatix.com/blog/copilot-market-adoption-trends), citing Recon Analytics). 44.2% of lapsed users cite distrust of answers as primary churn reason. One enterprise: 4,000 seats at $1.4M/year, 47 opened it, 12 used it more than once after 3 months ([Peter Girnus, X.com](https://x.com/gothburz/status/1999124665801880032), practitioner direct, Level 2)

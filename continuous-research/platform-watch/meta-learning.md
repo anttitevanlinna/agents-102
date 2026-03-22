@@ -68,4 +68,7 @@ Each entry: cycle number, date, what the researcher learned about researching.
 ### Cycle 38 — 2026-03-22
 Business-domain practitioner discovery is far more productive when searching for specific people + their deployment stories than searching for "AI agent [domain] 2026." The SaaStr/Lemkin finding came from person-specific searches. Lenny's Newsletter and Every.to are better sources for business-domain agent practitioners than X.com — business people publish on Substack/newsletters, not Twitter. EU AI Act agent governance research revealed that the *absence* of guidance (15 months, zero AI Office documents on agents) is a stronger finding than any guidance document would be — absence at regulatory level is a positioning signal for our advisory.
 
+### Cycle 39 — 2026-03-22
+Cross-platform Tier 1 scans are most efficient when run in parallel via 3 subagents split by platform cluster (Microsoft, OpenAI+Anthropic, Google+Vertical SaaS) — each returns in ~7-8 minutes, covering ground that would take 30+ minutes sequentially. The most valuable finding this cycle (Mollick's Copilot skepticism) came from a person-specific search, not a topic search — reinforcing the heuristic that practitioner-name queries always outperform topic queries. When a finding is "continued absence," the cycle's value is in updating the count and noting any new signals that make the absence more meaningful (Mollick's voice adds credibility weight to the Cowork silence pattern).
+
 *(New cycle observations go here, newest first)*

@@ -1,7 +1,7 @@
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-03-22 (cycle 49)
-**OODA cycles:** 1
+**Last updated:** 2026-03-22 (cycle 51)
+**OODA cycles:** 2
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -119,20 +119,36 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 | Autodesk (Spletzer's team) | Unknown | CAD/Engineering | Compound engineering + plugin | Level 2 | [practitioner direct] |
 | AMPECO | ~100 (company) | EV charging | CODA orchestrator, cancelled sprints/grooming/demos, daily shipping, 20K tests | Level 2 | [AMPECO blog](https://www.ampeco.com/blog/how-we-built-an-ai-native-engineering-system/) |
 | Microsoft ISE (Sachdeva) | 1 human + 6 AI agents (experiment) | Financial services (loan processing) | AI-native engineering flow, 73% strategic work, "Hypervelocity Engineering" | Level 2 | [Applied Context](https://www.appliedcontext.ai/p/ai-native-engineering-flow) |
+| **Intercom CS (Declan Ivory)** | Unknown (avoided ~100 hires) | **Customer support** | 81% AI resolution, new roles (AI Ops Lead, Knowledge Manager, Conversation Designer), restructured job families, dedicated AI improvement time | Level 2 | [Intercom blog](https://www.intercom.com/blog/automate-customer-service-while-improving-customer-experience/) |
+| **Klarna CS (Siemiatkowski)** | Was ~700 CS agents replaced | **Customer support** | AI replaced 75% of CS volume, then REVERSED — quality dropped, now rehiring with hybrid "Uber-style" model | Level 3 (counter-signal) | [FinTech Weekly](https://www.fintechweekly.com/magazine/articles/klarna-hires-customer-service-after-ai-pivot) |
+| **Goldman Sachs (Argenti)** | Unknown | **Finance/Compliance** | Claude agents for trade accounting, KYC, reconciliation — tool deployment, not yet team restructuring | Level 2 | [American Banker](https://www.americanbanker.com/news/goldman-equips-ai-agents-do-trade-accounting-onboarding) |
 
 ## Convergence Patterns
 
 *Track emerging patterns across teams. A pattern becomes reportable at Level 3 (10-20 independent signals).*
 
+### Emerging Pattern D: Customer Service as Leading Edge for Non-Engineering AI-Nativeness
+Customer service is the first non-engineering function showing real team restructuring around AI. Two reasons: (1) high volume of routine queries creates a clear "AI handles volume, humans handle complexity" split, and (2) resolution rates provide clean verification metrics. Intercom (81% automated, new roles created) is the positive signal. Klarna (reversed after quality dropped) is the cautionary tale. Both confirm CS is where non-engineering AI-nativeness will emerge first — but the Klarna reversal shows it's harder than it looks.
+- Intercom: 81% automation, new roles, team restructuring — [practitioner direct]
+- Klarna: Reversed after replacing 700 agents — [multiple independent sources, Level 3]
+- Forrester/Orgvue: 55% of companies regret AI-driven layoffs — [academic/research survey]
+- Intercom customers (Anthropic, Sharesies, Lightspeed, WHOOP) achieving 50-84% resolution rates — [vendor case study]
+
+### Emerging Pattern E: The Verification Gap Blocks Non-Engineering AI-Nativeness
+Engineering AI-nativeness works because code verification is clean (tests pass or fail). Non-engineering functions lack this. Marketing copy, legal analysis, financial judgment, HR decisions have no equivalent of `pytest`. This structural gap explains why non-engineering teams adopt AI as tool (high adoption rates) but don't reorganize around it (zero AI-native teams). Mollick's "management as AI superpower" framework suggests the solution is building explicit evaluation/feedback loops — but no team has published evidence of doing this successfully at scale.
+- Mollick: "Management skills = AI skills" — [practitioner direct, Jan 2026]
+- P&G Cybernetic Teammate: 37% individual improvement in one-day experiment, but no sustained team practice — [academic/research]
+- Legal domain explicitly designs for "structured workflows with human oversight" — resists full AI-nativeness by design
+
 ## What We Did Not Find
 
-1. **Non-engineering AI-native teams — ZERO.** Searched specifically for marketing, finance, operations, HR teams operating AI-natively. Found adoption statistics (91% marketers, 67% finance use AI) but zero practitioner accounts of a specific non-engineering team that reorganized around AI as co-worker. The gap between "using AI tools" and "AI-native team" is enormous outside engineering. Only 10% of finance teams have AI embedded in core processes.
+1. **Non-engineering AI-native teams — still essentially ZERO** (updated cycle 51). One partial exception: Intercom's CS team genuinely restructured around AI (new roles, changed daily practices, 81% AI resolution). But Intercom is the vendor — they sell Fin, making their internal deployment a showcase. No independent non-engineering team has published a comparable transformation. Klarna tried and partially failed. Goldman Sachs deployed tools but didn't restructure the team. Marketing, HR, legal, operations, finance: zero AI-native teams found despite targeted searches.
 
-2. **Honest failure retrospectives from AI-native teams.** Macro statistics exist (42% abandon, 95% fail) but no specific team-level post-mortem. Sachdeva's "let AI run, review later failed" is the closest. Need: a team that tried to go AI-native and documented what broke.
+2. **Honest failure retrospectives from AI-native teams.** UPDATED: Klarna is now a documented failure case — CEO admitted "too much efficiency, not enough quality." Forrester/Orgvue data (55% of companies regret AI layoffs) provides macro confirmation. Still need: team-level post-mortems with specific "what broke" detail beyond the Klarna narrative.
 
-3. **Team size economics with specific numbers.** "1 person = 5 people" claims widespread but poorly sourced. AMPECO doesn't report headcount changes. Every Inc is the most specific data point. Amodei predicts $1B one-person company by 2026 (70-80% odds) — prediction, not evidence.
+3. **Team size economics with specific numbers.** "1 person = 5 people" claims widespread but poorly sourced. AMPECO doesn't report headcount changes. Every Inc is the most specific data point. Amodei predicts $1B one-person company by 2026 (70-80% odds) — prediction, not evidence. NEW: Intercom's "avoided ~100 hires" is the most concrete non-engineering data point.
 
-4. **AI-native team practices beyond engineering.** The entire published literature is about software teams. Not a single blog post, talk, or thread about a marketing/finance/operations team that restructured around AI as co-worker rather than tool. This is either pre-chasm, happening silently, or structurally different from engineering AI-nativeness.
+4. **AI-native team practices beyond engineering and customer service.** Marketing (91% using AI), finance (47% deployed agents), legal (52% in-house adoption), HR (predictions of 30% headcount reduction) — high tool adoption, zero team transformation evidence. The entire practitioner literature remains about software teams. CS is the only non-engineering function with even partial evidence of team-level restructuring.
 
 ## Sources
 

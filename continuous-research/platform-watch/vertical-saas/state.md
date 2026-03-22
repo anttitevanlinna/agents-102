@@ -1,7 +1,7 @@
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-03-22 (cycle 42)
-OODA cycles: 6
+Last updated: 2026-03-22 (cycle 45)
+OODA cycles: 7
 
 ## Focus
 
@@ -21,7 +21,12 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
   - Wiley: 40%+ case resolution improvement, $213K saved ([TechInformed](https://techinformed.com/salesforce-launches-agentforce-saks-wiley-and-wyndham-spearhead-no-code-ai-for-enterprise/))
   - reMarkable (Nordic): 50% autonomous case handling + internal agents via Slack ([vendor case study — Level 0](https://www.salesforce.com/agentforce/metrics/))
   - 1-800Accountant: 70% repetitive inquiry automation during tax season ([Ksolves](https://www.ksolves.com/blog/salesforce/top-companies-using-agentforce))
-- **Limitations:** 15 topics max, 15 actions per topic per agent. Pricing shifted from $2/conversation to usage-based credits ($0.10/action) after "whiplash-inducing" backlash ([Monetizely](https://www.getmonetizely.com/blogs/the-doomed-evolution-of-salesforces-agentforce-pricing)). Atlas Reasoning Engine: session-to-session variance in production — identical scenarios triggering different paths. Salesforce added Agent Script (deterministic control layer), walking back autonomy promise. ([Salesforce Ben](https://www.salesforceben.com/why-agentforce-adoption-is-slower-than-expected-and-what-salesforce-needs-to-do/); [CIO.com](https://www.cio.com/article/4113617/salesforces-agentforce-recalibration-raises-costs-and-complexity-for-cios.html); [Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/))
+  - Engine (travel): $2M anticipated savings, CSAT 3.7→4.3, deployed in 12 days ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
+  - Nexo: 62% case resolution as early adopter despite "technical debt" challenges ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
+  - Engie: 83% user assistance rate ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
+  - Safari365: turned 15% efficiency goals into 30%+ reality, 35 employees ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
+- **Limitations:** 15 topics max, 15 actions per topic per agent, 20-agent limit per org. Pricing shifted from $2/conversation to usage-based credits ($0.10/action) after "whiplash-inducing" backlash ([Monetizely](https://www.getmonetizely.com/blogs/the-doomed-evolution-of-salesforces-agentforce-pricing)). Atlas Reasoning Engine: session-to-session variance in production — identical scenarios triggering different paths. Salesforce added Agent Script (deterministic control layer), walking back autonomy promise. BYOM unsupported — locked into Salesforce's AI ecosystem. Token burn problem: agent retries approaches, consuming Flex Credits per turn. Topic conflicts: overlapping keywords cause Atlas Reasoning Engine to pause. External data latency compounds inference speed. 86% of IT leaders concerned agents add complexity without integration. ([Salesforce Ben](https://www.salesforceben.com/why-agentforce-adoption-is-slower-than-expected-and-what-salesforce-needs-to-do/); [CIO.com](https://www.cio.com/article/4113617/salesforces-agentforce-recalibration-raises-costs-and-complexity-for-cios.html); [Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/); [SPTech](https://sptechusa.com/blog/salesforce-agentforce-adoption-challenges-and-fixes/))
+- **FY2026 revenue arc (cycle 45):** Started with Feb 2025 revenue miss (forecast below estimates, citing slower Agentforce adoption). Recovered through FY2026: Q3 guidance raised to $41.45-41.55B. Final: $800M ARR, 29K deals. Salesforce internal ("Customer Zero"): 1.5M+ support requests handled (majority without humans), SDR agent generated $1.7M pipeline from dormant leads, 500K hours via Slack agents. ([US News](https://www.usnews.com/news/top-news/articles/2025-02-26/salesforce-forecasts-annual-revenue-below-estimates); [Salesforce IR](https://investor.salesforce.com/news/news-details/2025/Salesforce-Delivers-Record-Third-Quarter-Fiscal-2026-Results-Driven-by-Agentforce--Data-360/default.aspx))
 - **Practitioner verdict (strengthened cycle 42):** Convergent criticism (Level 2-3): adoption slower than marketed, autonomy walked back, pricing unstable. Sub-20% workflow adoption rates vs. 90%+ in natively integrated platforms. Healthcare: 23% inaccuracies in automated inventory orders. Manufacturing: 40% longer lead times when agents couldn't adapt. Architectural limits constrain multi-department scaling: 15 topics/15 actions per agent, 20-agent limit per org, Data Cloud subscription mandatory, $50-150K typical implementation. ([Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/), 2026) Greyhound Research CEO: "CIOs budgeted based on autonomy vision. What Salesforce is now saying is that autonomy without guardrails is unscalable." Compounding error problem: 85% per-step accuracy = 20% success on 10-step workflows. ([Salesforce Ben](https://www.salesforceben.com/why-agentforce-adoption-is-slower-than-expected-and-what-salesforce-needs-to-do/); [CIO.com](https://www.cio.com/article/4113617/salesforces-agentforce-recalibration-raises-costs-and-complexity-for-cios.html), Mar 2026)
 - **New deployment: UK police department "Bobby"** — non-emergency calls, 90+ topics, 20% reduction in human agent demand. ([Codleo](https://www.codleo.com/blog/salesforce-spring-26-release), Mar 2026)
 - **Expanding beyond customer service (cycle 40):**
@@ -57,8 +62,14 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 - **G2 reviews:** Top positives — Efficiency (22), Ease of Use (17). Top negatives — Inaccuracy (10), Poor Understanding (8), Limited AI (8), Complex Configuration (8). ([G2](https://www.g2.com/products/servicenow-ai-agents/reviews) — Level 2 aggregate)
 - **Security:** AppOmni found Now Assist agents vulnerable to prompt injection when misconfigured.
 - **Practitioner reality check:** Mark Orsborn: most orgs claiming Phase 3 maturity are actually Phase 2. CMDB accuracy below 90% threshold needed for agents. Realistic Phase 1→4: 18-33 months. ([Medium](https://medium.com/@markorsborn/the-four-phases-of-servicenow-ai-evolution-7733cf0d6efa))
+- **Cycle 45 updates:**
+  - **Paul Fipps confirmation (Diginomica interview, Mar 2026):** "We no longer have a level one Help Desk at ServiceNow. All of that level one help desk activity is now handled autonomously using agentic AI." Displaced L1 workers moved to cloud ops, L2, or data centers. Strongest practitioner-level statement yet — but vendor-internal only. ([Diginomica](https://diginomica.com/servicenows-paul-fipps-enterprise-ai-llm-reasons-its-platform-executes))
+  - **AI Gateway enforcement live (March 2026 release):** Governance layer now active. AI Stewards control agent connections across platforms (Microsoft Copilot Studio, AWS Bedrock, Google Vertex AI) via MCP. Automated client registration via CIMD. ServiceNow positioning as cross-platform governance hub. ([ServiceNow Community](https://www.servicenow.com/community/now-assist-articles/ai-gateway-what-s-new-in-the-march-2026-release/ta-p/3501670) — Level 0)
+  - **A.G.E.N.T. Method:** Practitioner-developed five-phase framework for designing AI Agent use cases on ServiceNow. Pattern from customer engagements — indicates accumulating real-world experience. ([ServiceNow Community](https://www.servicenow.com/community/ceg-ai-coe-articles/the-a-g-e-n-t-method-a-practical-framework-for-designing-ai/ta-p/3509219))
+  - **Implementation pain (counter-evidence):** AIx components are "very release-sensitive" — wrong patch level = missing UI, skills failing silently. Heavy dependency on AI Search quality. ([ServiceNow Spectaculars](https://servicenowspectaculars.com/servicenow-ai-experience-implementation-issues-2026/) — practitioner analysis)
+  - **Knowledge 2026 (Las Vegas, imminent):** Banking-focused roadmap talk signals financial services vertical push. ([ServiceNow Community](https://www.servicenow.com/community/financial-services-special/servicenow-knowledge-2026-roadmap-for-banking-leaders-from/ta-p/3508192))
 - **Nordic signal:** Acquired Advania's Quality 360 (Nordic company). No Nordic AI agent deployments found.
-- **Evidence level:** Level 2 (strong revenue signal, weak deployment evidence)
+- **Evidence level:** Level 2 (strong revenue signal, weak deployment evidence — unchanged despite Fipps confirmation, which is vendor-internal)
 
 ### SAP Joule — ERP / Finance / Supply Chain / HR
 - **Scale:** 400+ AI use cases planned by EOY 2026, 2,100+ Joule skills. Joule Studio Agent Builder GA January 2026 (free trial for SAP Build customers Q1 2026).
@@ -67,16 +78,42 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 - **Expert assessment:** Josh Bersin: "SAP really has its AI act together" — ahead of Workday. Multi-functional agents (recruiting + training) = where big ROI comes. ([Josh Bersin](https://joshbersin.com/2025/10/sap-jumps-ahead-in-ai-agents-with-joule-hcm-features-and-more/))
 - **Deployment evidence:** Bosch (Florian Haustein, Director Digital CX): "AI-powered case classification agent in SAP Service Cloud has been a game-changer" — no metrics, vendor-sourced. Accenture (Optisell, 3 weeks) and Western Sugar Cooperative (25% invoice processing reduction) — both vendor-sourced only. Production Planning Agent planned GA Q1 2026, Order Reliability Agent Q2 2026. ([SAP News Center](https://news.sap.com/2025/10/sap-connect-business-ai-new-joule-agents-embedded-intelligence/); [AIMultiple](https://research.aimultiple.com/sap-ai-agents/))
 - **Limitation:** Heavily customized SAP environments limit native AI agent effectiveness — many enterprises need third-party solutions.
-- **Evidence level:** Level 1-2 (expert opinion + vendor-sourced metrics; Bosch adds a name but no numbers)
+- **Cycle 45 updates:**
+  - **Structural adoption barrier identified (Horváth study, Jan 2026):** Survey of 200 SAP-using companies (>€200M revenue): 60% still in S/4HANA transformation phase. Joule adoption is "early bird stage" — most experience based on tests and proof-of-value. This explains the evidence vacuum: not that Joule doesn't work, but most SAP customers can't try it yet. ([E3 Magazine](https://e3mag.com/en/companies-are-still-wary-of-sap-joule/) — [domain trade publication])
+  - **Joule with SAP Signavio GA (Feb 2026):** Process analysis via natural language now generally available. ([SAP News](https://news.sap.com/2026/02/process-conversation-joule-sap-signavio-solutions-generally-available/) — Level 0)
+  - **Techzine independent assessment:** "The next 12 to 18 months will be crucial — then we will see whether SAP's vision of agentic AI will work in practice, or whether we will drown in a sea of specialized agents." ([Techzine](https://www.techzine.eu/blogs/applications/135190/sap-presents-15-joule-agents-for-finance-hr-and-supply-chain/) — [domain trade publication])
+  - **Josh Bersin update:** Joule "now becoming a standard front-end for business people" with A2A and MCP interoperability. ([Josh Bersin](https://joshbersin.com/2025/10/sap-jumps-ahead-in-ai-agents-with-joule-hcm-features-and-more/) — [practitioner analysis])
+  - **Production Planning Agent:** Was supposed to be GA Q1 2026 — no customer reports found. Evidence gap continues.
+  - **Still zero independent production deployment evidence.**
+- **Evidence level:** Level 1-2 (unchanged; Horváth study confirms structural reason for evidence vacuum)
 - **Nordic signal:** None found
 
 ### HubSpot Breeze — Marketing / Sales (SMB)
 - **Scale:** 15+ Breeze Agents. Defaults to GPT-5 since Jan 2026.
 - **Named deployment:** Zeffy: 84% support ticket deflection ([MyAskAI](https://myaskai.com/blog/hubspot-breeze-ai-agent-complete-guide-2026))
 - **Practitioner assessment:** 8/10 for day-to-day, but 40% failure rate without proper config. No custom instructions. Credits expire monthly ($470/month for 500 extra conversations). Limited integrations outside HubSpot (5/10). ([Simple Machines](https://www.simplemachinesmarketing.com/blog/hubspot-ai-whats-actually-useful-and-what-to-skip/), [Resolve247](https://resolve247.ai/blog/hubspot-breeze/))
+- **Cycle 45 update:** Agicap claims 750 hours/week saved (150 reps, 1 hr/day each) and 20% deal velocity increase — but this is a vendor case study on HubSpot's website (Level 0). Features used are copilot-level (call summaries, CRM automation, content drafting), not agentic. ([HubSpot](https://www.hubspot.com/case-studies/agicap-1) — [vendor case study])
 - **Truly agentic?** Mostly copilot-level. Prospecting Agent in "fully autonomous" mode is the exception.
-- **Evidence level:** Level 2
+- **Evidence level:** Level 2 (unchanged — Agicap is Level 0)
 - **Nordic signal:** None found
+
+### Sierra AI — Customer Service (Pure-Play) *(new cycle 45)*
+- **Scale:** ~$150M ARR (Jan 2026 est., Sacra), up from $26M (end 2024) — nearly 6x growth. $10B valuation (Sep 2025, $350M round led by Greenoaks).
+- **Platform:** Agent OS 2.0 with Agent Data Platform. Constellation model (multiple specialized AI models, not single foundation model). Voice agents surpassed text as primary channel by Sep 2025.
+- **Customers:** WeightWatchers, SiriusXM, Sonos, ADT. Fortune 1000 focus.
+- **Pricing:** Usage/outcome-based (per conversation or per resolution).
+- **Deployment channels:** Chat, SMS, WhatsApp, email, voice, ChatGPT — single agent across all.
+- **Concerns:** Valuation has grown faster than published track record. No specific deployment metrics found (resolution rates, CSAT, cost savings) despite $150M ARR. Expensive and non-transparent pricing. Onboarding requires considerable development work.
+- **Evidence level:** Level 2 (revenue confirmed via Sacra; deployment metrics absent)
+- **Nordic signal:** None found
+- ([Sacra](https://sacra.com/c/sierra/); [CMSWire](https://www.cmswire.com/customer-experience/sierra-ais-10b-valuation-marks-a-turning-point-for-conversational-ai/))
+
+### Emerging Competitors *(new cycle 45)*
+- **Oliv.ai:** B2B sales agents, $19/user/month flat-rate, 1-2 day deployment. Explicitly positioned against Salesforce Agentforce. ([Apex Hours](https://www.apexhours.com/agentforce-limitations-and-workarounds/))
+- **Suki AI:** Clinical documentation, healthcare vertical. Named in vertical AI landscape but no deployment evidence found.
+- **Writer:** Enterprise AI platform, $200M+ raised. Positioned as vertical AI agent builder.
+- **Lindy:** Sales and operations automation. Named in vertical AI landscape.
+- **Investment thesis (Level 1):** Bessemer says vertical AI "fundamentally larger opportunity than vertical SaaS" — competing for labor budgets, not software budgets. Y Combinator says 10x larger than SaaS companies they replace. ([GeekWire](https://www.geekwire.com/2026/the-rise-of-vertical-ai-agents-and-the-startups-racing-to-build-them/); [VC Cafe](https://www.vccafe.com/2026/01/07/vertical-ai-in-2026-the-good-the-bad-and-the-ugly/))
 
 ## Cross-Platform Patterns (updated cycle 15)
 
@@ -88,6 +125,9 @@ Vertical Insure achieved "zero customer-facing hallucinations" via supervision l
 
 ### Pattern 7: Consolidation wave accelerating
 ServiceNow + Moveworks ($2.85B), Zendesk + Forethought (undisclosed), Salesforce + Convergence.ai + Cimulate, NICE + Cognigy (~$955M). 50+ agentic AI acquisitions in past 2 years. Platform landscape will look different in 6 months.
+
+### Pattern 8: Governance-as-platform is the emerging battleground (Level 2, cycle 45)
+ServiceNow AI Gateway now enforces governance across heterogeneous agent platforms (Microsoft Copilot Studio, AWS Bedrock, Google Vertex AI) via MCP. Salesforce added Agent Script as a deterministic control layer. SAP emphasizes process mining + Signavio as governance context. The competitive differentiation is shifting from "who has the smartest agents" to "who controls the governance layer." This echoes the cloud era's shift from compute power to management planes.
 
 
 
@@ -110,8 +150,9 @@ Vertical platforms win because they already own the data. Zendesk has the ticket
 | Team | Salesforce Agentforce | Production | Finnair, Wiley — independently verified |
 | Team | Zendesk AI Agents | Production | SeatGeek — independently reported |
 | Team | HubSpot Breeze | Production | Zeffy — single report |
-| Team→Company | ServiceNow | Foundation | Strong revenue, weak deployment evidence |
-| Team→Company | SAP Joule | Early GA | Expert endorsement, minimal production evidence |
+| Team | Sierra AI | Production | $150M ARR, no published metrics |
+| Team→Company | ServiceNow | Foundation | Strong revenue, internal deployment, no external customer results |
+| Team→Company | SAP Joule | Early GA | Expert endorsement, S/4HANA migration blocks most customers |
 | Company | All platforms | Aspirational | No cross-function autonomous agent evidence anywhere |
 
 ## What We Need To Learn
@@ -124,18 +165,21 @@ Vertical platforms win because they already own the data. Zendesk has the ticket
 - [~] Customer service agent accuracy/hallucination rates in production — **Partial: Best models 0.7-1.5% on grounded tasks. Reasoning models paradoxically worse (o3: 33%, R1: 14.3%). Supervision architecture matters more than model quality. Salesforce own portal: 62% vs 80% target.**
 - [x] SAP Joule production deployment results (beyond vendor case studies) — **Answer: Zero independent evidence. Agents just reaching GA Q1 2026. Partner feedback (Accenture, Capgemini) all vendor-sourced.**
 - [ ] Zendesk-Forethought integration: when do combined capabilities ship?
-- [ ] ServiceNow Autonomous Workforce: GA Q2 2026 — watch for early customer reports
+- [~] ServiceNow Autonomous Workforce: GA Q2 2026 — watch for early customer reports. **Cycle 45: Paul Fipps confirmed L1 elimination internally. No external customer results yet. GA still expected Q2 2026.**
 - [ ] Nordic signal at Salesforce World Tour events (Copenhagen Apr 23, Oslo May 20, Stockholm May 27)
+- [ ] Sierra AI: find specific deployment metrics (resolution rates, CSAT) to match revenue claims
+- [ ] SAP Joule Production Planning Agent: customer reports post-GA
 
 ## Next Cycle Priorities
 
-1. **Zendesk-Forethought integration.** Has deal closed? When do combined capabilities ship? Self-improving agents are the most technically interesting development.
-2. **ServiceNow Autonomous Workforce GA (Q2 2026).** First customer reports when L1 Service Desk Specialist reaches GA.
-3. **Agentforce beyond customer service.** All named deployments are customer service. Any evidence of sales/marketing/operations agents working?
-4. **Nordea build-vs-buy decision.** Why did Nordic's largest bank choose AWS Bedrock over vertical SaaS agents? Investigate.
+1. **ServiceNow Knowledge 2026 (Las Vegas, imminent).** Watch for customer deployment announcements, especially banking/financial services. First external Autonomous Workforce results?
+2. **Zendesk-Forethought integration.** Deal expected to close end of March 2026. When do combined capabilities ship?
+3. **Sierra AI deployment metrics.** $150M ARR with no published outcomes is a yellow flag. Find practitioner reports.
+4. **SAP Joule Production Planning Agent.** Was supposed to be GA Q1 2026 — any customer reports? Order Reliability Agent expected Q2.
 5. **Nordic signals at Salesforce World Tour Copenhagen (Apr 23).**
-6. **SAP Joule Production Planning Agent.** Was supposed to be GA Q1 2026 — any customer reports?
-7. **Compounding error problem.** 85% per step = 20% on 10 steps. Find practitioner sources quantifying this in production.
+6. **Agentforce beyond customer service.** New named deployments (Engine, Nexo, Engie, Safari365) are all still customer service. Any sales/marketing/operations evidence?
+7. **Governance-as-platform competition.** ServiceNow AI Gateway vs. Salesforce Agent Script vs. SAP Signavio. Which approach is winning practitioner trust?
+8. **Oliv.ai and pure-play challengers.** Are low-cost, fast-deploy alternatives gaining traction vs. incumbent platforms?
 
 ## Sources
 
@@ -143,3 +187,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-initial.md` — Initial survey of all five platforms
 - `runs/2026-03-21-cycle15.md` — Agentforce 62% reality, ServiceNow Moveworks, SAP zero evidence, Forethought deal, hallucination paradox, Nordic gap
 - `runs/2026-03-21-cycle25.md` — Reddit deployment, Agentforce counter-evidence convergence, ServiceNow Q4 details, Zendesk-Forethought acquisition details, SAP Bosch, Nordea build-vs-buy, compounding error insight
+- `runs/2026-03-22-cycle45.md` — ServiceNow Autonomous Workforce (Fipps L1 elimination, AI Gateway enforcement, implementation pain), SAP Joule (Horváth study: S/4HANA blocks adoption), Agentforce new deployments (Engine, Nexo, Engie, Safari365) + FY2026 arc, Sierra AI ($150M ARR), vertical AI new entrants

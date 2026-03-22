@@ -16,19 +16,36 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 ### Source Reliability
 
-*(empty — will fill as cycles run)*
+1. **Vendor press releases create false convergence.** The same claim republished in 5+ outlets looks like convergence but traces to one source. Google's "80% automation" is the textbook case. Always trace to the original source. *(Observed: retrospective, C40, C42, C46)*
+2. **Practitioner X.com threads and blog posts are highest-signal per unit of research time.** One thread from someone who deployed reveals more than 10 vendor posts. *(Observed: retrospective, C38, C39, C41, C43)*
+3. **GitHub stars/commits are reliable adoption proxies.** Can't be faked like press coverage. Compound engineering plugin 5K→10.8K stars confirmed real adoption velocity. *(Observed: retrospective, C44)*
+4. **Domain trade press beats vendor announcements.** Chain Store Age, CX Dive, Axios, Diginomica cover the company, not the vendor. Best source for verifying vertical SaaS claims. *(Observed: C40, C42, C44, C45)*
+5. **Revenue is the most reliable adoption indicator.** Can't game revenue like press releases. Agentforce $800M ARR, ServiceNow $600M ACV are trustworthy. *(Observed: retrospective, C40, C45)*
+6. **Law firm analysis blogs are best for regulatory interpretation.** Baker McKenzie, Orrick, Bird & Bird explain what law means for deployers — better than EU pages or vendor blogs. *(Observed: C44)*
+7. **Transformation research has higher signal-to-noise.** Evidence is academic/practitioner-direct, not vendor-driven. Mollick, MIT, Quintero are all substantive and verifiable — unlike platform research where 80%+ is Level 0. *(Observed: C41)*
 
 ### Query Strategies
 
-*(empty — will fill as cycles run)*
+1. **Counter-evidence queries are the most productive.** "[Platform] limitations," "[platform] not ready," "failure rate," "problems" produce higher-value findings than success queries. Practitioners who hit walls write about walls. *(Observed: retrospective, C42, C43, C44, C45, C46)*
+2. **Person-specific searches always beat topic searches.** "Corey Haines marketing agent" finds signal immediately. "AI marketing agent 2026" finds noise. *(Observed: retrospective, C38, C39, C43)*
+3. **Business-domain practitioners publish on Substack/newsletters, not X.com.** Lenny's Newsletter, Every.to, SaaStr are better sources than Twitter for business-domain agent practitioners. *(Observed: C38, C43)*
+4. **For vendor-driven domains, search vendor announcement pages naming customer practitioners.** Berner/Honka came from Workday Sana announcement. When practitioners don't publish, vendors naming them is the discovery path. *(Observed: C43, C46)*
+5. **Searching for counter-evidence to our thesis strengthens or corrects it.** Either the counter-evidence is weak (thesis confirmed) or it reveals blind spots. Always worth running. *(Observed: retrospective, C41, C42)*
 
 ### Signal Detection
 
-*(empty — will fill as cycles run)*
+1. **Absence after repeated checking is evidence.** One cycle of absence means nothing. Six consecutive zeros = confirmed finding. Google Studio, Cowork, Antspace all confirmed via sustained absence. *(Observed: retrospective, C39, C46)*
+2. **Vendor feature walkback is stronger signal than original announcement.** Salesforce adding Agent Script = pulling back autonomy. Corrections reveal reality. *(Observed: retrospective, C42, C43)*
+3. **Practitioner sentiment shift predicts consensus 3-6 months ahead.** Karpathy on coding agents, Salesforce Ben on Agentforce limits. Leading indicator. *(Observed: retrospective, C42)*
+4. **The gap between announcement and deployment IS the finding.** "Oracle announced 40+ agents" + zero deployment stories = the gap is the story. Report the gap, not the announcement. *(Observed: retrospective, C40, C46)*
+5. **When nobody complains about a limit change, nobody is hitting the limits.** Google credit cliff silence confirms low adoption. Absence of user pain = absence of users. *(Observed: C46)*
 
 ### Anti-Patterns
 
-*(empty — will fill as cycles run)*
+1. **Broad topic searches surface Level 0 first.** "AI agent enterprise 2026" always finds Gartner before practitioners. Google ranks analysts above builders. *(Observed: retrospective, C38, C43)*
+2. **Searching for "Nordic" as primary query finds consultancies, not practitioners.** Nordic signal comes from global searches where a Nordic company appears. *(Observed: retrospective, C43)*
+3. **Trying to verify vendor claims usually fails.** Independent evidence doesn't exist. Note "vendor claim, unverified" and move on rather than burning cycles searching for confirmation. *(Observed: retrospective, C42)*
+4. **Practitioner-publishing gap in vendor-driven domains is structural.** HR/compliance/operations practitioners are inside enterprises and don't blog. Our "follow people who publish" method has an inherent blind spot here. Requires alternative discovery: trade press interviews, conference presentations, vendor pages naming customers. *(Observed: C43, C45, C46)*
 
 ---
 

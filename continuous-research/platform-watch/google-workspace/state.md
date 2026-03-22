@@ -1,7 +1,7 @@
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-03-21 (cycle 28)
-OODA cycles: 8
+Last updated: 2026-03-22 (cycle 31)
+OODA cycles: 9
 
 ## Focus
 
@@ -72,7 +72,7 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 | Team | AppSheet + Gemini | GA | One customer quote (Seegrid). Requires Enterprise Plus. |
 | Company | Gemini Enterprise (Cloud) | GA | Zero independent deployment reports. Reviews say "immature." |
 | Company | Vertex AI Agent Builder | GA | Developer-only, no business user path |
-| Promotion path | Studio → Gemini Enterprise | Theoretically possible | No one has documented doing it |
+| Promotion path | Studio → Gemini Enterprise | Theoretically possible | No one has documented doing it. Governance gap makes promotion unsafe — Studio has no equivalent of Vertex governance tools. |
 
 ## Pricing Landscape (March 2026, updated cycle 28)
 
@@ -136,6 +136,23 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - **Nordic enterprise agents: still zero — sixth consecutive cycle.** No new signals from Finland, Sweden, or Norway. Education continues. Enterprise agent deployments remain absent.
 - **Kärcher remains the ONLY named Studio customer — fourth consecutive cycle.** No new named customers since December 2025. "20 million tasks" claimed but no named orgs.
 
+### Cycle 31 update (Mar 22) — Governance contradiction + Nordic pattern strengthens + practitioner silence
+
+- **Google's own CISO warns about shadow agents — while shipping employee-accessible agent building.** Google Cloud CISO team published guidance on "shadow agents" (Mar 20, 2026): autonomous systems deployed without IT approval, introducing goal hijacking and RCE risks. Anton Chuvakin (known security practitioner at Google): "Shadow agents go beyond shadow AI." Meanwhile, Workspace Studio is ON by default for ALL Workspace users, and IT admins lack Microsoft-equivalent controls (no Purview DLP, no Agent Dashboard). UC Today: "A quiet rollout since December means many IT teams are catching up, not getting ahead." Google is simultaneously shipping the risk AND warning about it. ([Google Cloud CISO blog](https://cloud.google.com/transform/these-4-ai-governance-tips-help-counter-shadow-agents); [Chuvakin](https://security.googlecloudcommunity.com/ciso-blog-77/shadow-agents-a-new-era-of-shadow-ai-risk-in-the-enterprise-5831); [UC Today](https://www.uctoday.com/productivity-automation/is-google-workspace-studios-rollout-already-ahead-of-your-governance-policy/), Mar 2026)
+- **Capacity issues persist — Scheduled Release rollout intensifying demand.** March 2 rollout to Scheduled Release domains is increasing load while existing capacity errors remain unresolved. Forum thread active since Dec 2025 with no resolution. Google Admin Community now has its own thread. No fix timeline. ([Google AI Dev Forum](https://discuss.ai.google.dev/t/constant-capacity-issue-in-gemini-workspace-studio-we-are-at-capacity-well-be-back-soon/111858); [Google Admin Community](https://support.google.com/a/thread/393169706/we-are-at-capacity-we-ll-be-back-soon?hl=en), Mar 2026)
+- **Practitioner silence: 3+ months post-availability, zero independent deployment reports.** Despite 20M+ tasks claimed and GA since December 2025, no practitioner blog posts, X.com threads, or GitHub repos found from people who built real business agents with Workspace Studio and reported outcomes. The practitioner layer is completely silent. Combined with ongoing capacity issues, this is a significant negative signal. (source: runs/2026-03-22-cycle31.md — absence finding)
+- **ADK production challenges documented.** Practitioner analysis identifies: multi-user support requires workarounds (ADK assumes shared root agent); web UI breaks with custom per-user agents; documentation gap between tutorial and production; only one built-in tool per agent. LangChain still dominates job postings. ([DLabs.ai](https://dlabs.ai/blog/google-adk-production-challenges-and-how-to-solve-them/), practitioner analysis, 2026)
+- **Gemini 3 Thought Signatures: novel long-horizon agent reliability approach.** Encrypted reasoning state maintained across multi-turn interactions, preventing context drift. JetBrains reported 15% improvement with Gemini 3.1 Pro. Flash-Lite at $0.25/1M input tokens = cost leader. ([Google blog](https://blog.google/products/gemini/gemini-3/); [Gemini 3.1 Pro](https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-1-pro-on-gemini-cli-gemini-enterprise-and-vertex-ai), 2026)
+- **Papa Johns agent: confirmed agentic, but deployment future.** First partner for Google Cloud Food Ordering agent (Gemini Enterprise CX). Unified voice+text ordering, auto-deal-application, group ordering, proactive reordering. Systemwide by end 2026. Independent trade press confirms announcement but no deployment results yet. ([NRN](https://www.nrn.com/quick-service/papa-johns-announces-launch-of-voice-and-text-ai-food-ordering-agent-with-google); [Food on Demand](https://foodondemand.com/01132026/papa-johns-first-to-deploy-google-cloud-ai-ordering-agent/), Jan 2026)
+- **Gemini Enterprise consolidation.** Agentspace → Gemini Enterprise (Oct 2025). Mobile app launched Feb 2026. Agent Designer (no-code) GA. Named customers (Virgin Voyages, Banco BV, Harvey, Macquarie Bank) — all vendor-sourced, zero independent deployment evidence. Partner integrations: Box, ServiceNow, Workday, Salesforce. Pricing: $30/user/mo (Enterprise), $21/user/mo (Business). ([Cloudfresh](https://cloudfresh.com/en/blog/google-agentspace-evolves-into-gemini-enterprise/); [CIO Dive](https://www.ciodive.com/news/google-cloud-AI-agent-gemini-enterprise-platform/802404/), 2025-2026)
+- **Nordic enterprise agents: ZERO — seventh consecutive cycle.** New signals strengthen the pattern:
+  - **Telenor (Norway) chose Red Hat for agent infrastructure, NOT Google Cloud** — despite being a Google Cloud analytics customer. When they chose where to BUILD agents, they chose sovereign on-prem (Red Hat OpenShift AI). Their Google Cloud "Conversational Analytics" confirmed as chatbot-over-BI, not agentic. ([Datacenter Knowledge](https://www.datacenterknowledge.com/business/mwc-2026-red-hat-telenor-team-up-for-sovereign-norway-ai-factory), Mar 2026)
+  - **KONE (Finland) has 32K+ apps/agents on Microsoft Power Platform**, not Google. ([Microsoft customer story](https://www.microsoft.com/en/customers/story/26034-kone-power-apps))
+  - **Devoteam AI Agent Lab hackathons** in Stockholm (Mar 19), Oslo (Mar 11), Copenhagen, Helsinki planned — Google partner channel activity, not deployments. No results published. ([Devoteam](https://www.devoteam.com/news-and-pr/devoteam-organises-google-cloud-agentic-ai-hackathon-in-nine-cities-across-emea/))
+  - Svenska Spel event page: unchanged, zero details.
+  - **Pattern:** When Nordic enterprises deploy agents, they choose Microsoft (KONE) or sovereign infrastructure (Telenor/Red Hat). Google's Nordic presence = education + hackathons.
+- **Kärcher remains the ONLY named Studio customer — fifth consecutive cycle.**
+
 ### Gemini Enterprise developer layer (from cycle 4)
 - GitHub issues show deployment friction: agent authorization errors in EU locations (FAILED_PRECONDITION), agents not appearing in Agent Gallery (SIGTERM after 2 min) ([GitHub #3534](https://github.com/google/adk-python/issues/3534), [GitHub #4453](https://github.com/google/adk-python/issues/4453), Mar 2026)
 - CGI equips 90K+ consultants with Gemini Enterprise (Jan 2026) — consultancy channel play, not deployment evidence. No named customers, no metrics. Nordic-relevant because CGI has strong Nordic presence. ([CGI](https://www.cgi.com/en/cgi-help-clients-accelerate-agentic-ai-outcomes-gemini-enterprise), [ChannelE2E](https://www.channele2e.com/news/cgi-expands-global-alliance-with-google-cloud-to-help-businesses-with-gemini-ai), Jan 2026)
@@ -157,16 +174,17 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 
 ## Next Cycle Priorities
 
-1. **Post-credit-cliff reality (April 1+).** Promotional limits expired March 31. Are agents throttled? Are orgs purchasing add-ons or abandoning automations? This is the #1 question.
+1. **Post-credit-cliff reality (April 1+).** Credit enforcement begins. Are agents throttled? Are orgs purchasing add-ons or abandoning automations? This is the #1 question for next cycle.
 2. **Cloud Next '26 (April 22-24).** Agent-focused event. Watch for: Mattel PQA agent architecture, Studio improvements, new customer wins with metrics, governance for Studio, capacity fix timeline.
 3. **Mattel PQA session.** Is it genuinely agentic (multi-step, autonomous, cross-system) or analytics with a chat interface? First named multi-system agent on Google Cloud.
-4. **Workspace Studio practitioner reports (late April).** 5+ weeks post-GA. Track forums, blogs, Reddit for real user experiences.
-5. **Papa Johns / retail CX results.** Any independent report on the food ordering agent?
-6. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 6 cycles. Deloitte (300+ agents built), Nokia, Decathlon, CGI to track.
-7. **Governance gap.** Vertex AI gets governance; Studio gets nothing. Any Cloud Next roadmap?
-8. **Nordic:** Zero enterprise agent deployments — sixth consecutive cycle. Svenska Spel (zero details). Norwegian DPIA spillover?
-9. **Google Chat as agent delivery surface.** Still zero findings after 7 cycles.
+4. **Workspace Studio practitioner reports (late April).** 4+ months post-availability. The practitioner silence is a finding in itself — track whether it breaks.
+5. **Papa Johns deployment results.** Systemwide rollout planned end 2026. Any early results or pilot metrics?
+6. **Gemini Enterprise Cloud deployments.** Still zero independent evidence after 7 cycles. Deloitte (300+ agents built), Virgin Voyages (50+ agents planned), Nokia, Decathlon, CGI to track.
+7. **Governance gap vs. shadow agent risk.** Google's own CISO warns about shadow agents while Studio is ON by default. Watch for governance tools at Cloud Next.
+8. **Nordic:** Zero enterprise agent deployments — seventh consecutive cycle. Pattern: KONE → Microsoft, Telenor → Red Hat. Devoteam hackathon results from Stockholm/Oslo?
+9. **Google Chat as agent delivery surface.** Still zero findings after 8 cycles.
 10. **GEAR program adoption.** Any graduates? Any deployments?
+11. **ADK 2.0 Alpha practitioner reports.** Watch for battle reports from early adopters.
 
 ## Sources
 
@@ -179,3 +197,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle28.md` — Pre-Cloud-Next state: credit cliff (March 31), GEAR skilling program, Mattel PQA multi-system agent, ADK 2.0 Alpha, capacity still broken, Nordic still zero
 - `runs/2026-03-21-landscape-update.md` — Cross-platform landscape: Bedrock AgentCore 5 features, LangChain+NVIDIA, OpenAI Frontier, Claude SDK updates, A2A v0.3
 - `../cross-platform/runs/2026-03-21-cycle24.md` — Capacity issues persist post-GA (forum reports, StatusGator 63 outage reports), promotional limits expire March 31, AI Expanded Access add-on required
+- `runs/2026-03-22-cycle31.md` — Governance contradiction (CISO shadow agent warnings vs Studio ON by default), practitioner silence (3+ months, zero reports), Nordic pattern strengthens (Telenor → Red Hat, KONE → Microsoft), ADK production challenges, Gemini 3 Thought Signatures, Papa Johns agentic confirmation

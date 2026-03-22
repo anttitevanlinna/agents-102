@@ -18,9 +18,11 @@ This prompt drives each incremental research cycle. Run with `/loop 60m` or manu
 
 ## Cycle Execution
 
-### Step 1: Read current state
+### Step 1: Read current state and meta-learning
 
-Read `synthesis.md` — specifically the Research Priorities section (Tier 1/2/3) and the "What We Did Not Find" section. Read the source roster (`../source-roster.md`) to know who we're tracking. Optionally read a target platform's `state.md` if you're going deep on one platform.
+Read `meta-learning.md` first — the research heuristics and recent cycle observations. These tell you what previous cycles learned about how to research effectively. Apply them before choosing your focus.
+
+Then read `synthesis.md` — specifically the Research Priorities section (Tier 1/2/3) and the "What We Did Not Find" section. Read the source roster (`../source-roster.md`) to know who we're tracking. Optionally read a target platform's `state.md` if you're going deep on one platform.
 
 ### Step 2: Determine focus
 
@@ -177,7 +179,26 @@ Edit `synthesis.md` only when:
 
 Edit `../insights.md` only when a finding produces a thesis that's usable in training, advisory, or newsletter. Most cycles won't produce an insight — that's fine. An insight is a compressed argument, not a finding.
 
-### Step 8: Commit and push
+### Step 8: Meta-learning reflection
+
+Before committing, append 2-3 sentences to the **Cycle Observations** section in `meta-learning.md`. Reflect on what you learned about **how to research**, not what you learned about the domain. Examples:
+
+- "Searching [query] on [source] produced high/zero signal because..."
+- "This practitioner's X.com thread was more valuable than 5 vendor blog posts because..."
+- "I expected to find [X] but found nothing — next cycle I should try [Y] instead"
+- "The [source type] was unreliable because [reason] — avoid in future"
+- "Following [person]'s thread led to 3 new sources I wouldn't have found via topic search"
+- "Absence of evidence after N cycles is becoming a finding — [specific absence]"
+
+Format:
+```
+### Cycle [N] — [date]
+[2-3 sentences about research method learning]
+```
+
+If an observation matches an existing heuristic pattern 3+ times, promote it: move it from Cycle Observations to the appropriate Research Heuristics section.
+
+### Step 9: Commit and push
 
 ```
 git add continuous-research/

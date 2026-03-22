@@ -704,3 +704,275 @@ Use **Letta** for agents that need persistent memory across sessions and self-im
 - No independent reviews of OpenAI Frontier at 6+ weeks post-launch
 - No independent reviews of Bedrock AgentCore Policy GA or other March features
 - No practitioner reports on LangChain Deep Agents (announced Mar 16, too early)
+
+---
+
+## March 2026 Update — One Month Later
+
+**Date:** 2026-03-22
+**Rounds:** 4 parallel research agents (Claude Agent SDK, frameworks, cloud runtimes, production reality)
+
+The landscape moved significantly in one month. Key shifts: cloud runtimes hit GA, protocols converged into a standard stack, and production data reveals a stark adoption-vs-impact gap.
+
+---
+
+### Major Shifts Since February 2026
+
+#### 1. The Protocol Stack Crystallized: MCP + A2A + AG-UI
+
+Three protocols now form the standard agent communication stack:
+- **MCP** (Model Context Protocol) — agent-to-tool. Under Linux Foundation/AAIF since Dec 2025. 2026 roadmap published March 9: stateless horizontal scaling, Tasks primitive (SEP-1686), enterprise readiness (audit trails, SSO, gateway patterns).
+- **A2A** (Agent-to-Agent) — agent-to-agent. Still v0.3.x (no v0.4 announced). gRPC binding added. 150+ supporting organizations. Native in AWS AgentCore, Azure Foundry, Google Vertex AI.
+- **AG-UI** (Agent-User Interaction) — agent-to-frontend. New protocol from CopilotKit. Streams JSON events over HTTP. Already adopted by AWS AgentCore (March 13), Oracle, Google.
+
+**This is a genuine convergence signal.** Every major framework and cloud platform now supports at least MCP + A2A. The "how do agents talk to things?" question has a standard answer for the first time.
+
+Sources: [MCP 2026 Roadmap](http://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/) [practitioner direct], [A2A Protocol spec](https://a2a-protocol.org/latest/specification/) [practitioner direct], [AG-UI docs](https://docs.ag-ui.com/introduction) [practitioner direct]
+
+#### 2. Cloud Agent Runtimes Hit GA
+
+All three hyperscalers now offer production-grade managed agent runtimes:
+
+**Amazon Bedrock AgentCore** — Five major updates in March 2026 alone:
+- Cedar-based policy engine for real-time tool access control (GA, 13 regions)
+- Stateful MCP server features with dedicated microVM isolation (GA, 14 regions)
+- Memory streaming to Kinesis (GA, 15 regions)
+- AG-UI protocol support (GA)
+- Shell command execution inside running sessions (GA)
+- Pricing: consumption-based, $200 free tier credits. I/O wait and idle time are free.
+
+Sources: [AgentCore pricing](https://aws.amazon.com/bedrock/agentcore/pricing/) [vendor direct], [Policy GA](https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/) [vendor press release]
+
+**Azure AI Foundry Agent Service** — GA March 16, 2026:
+- Responses API-based runtime, wire-compatible with OpenAI agents
+- End-to-end private networking (BYO VNet, no public egress)
+- MCP auth expansion: key-based, Entra, Managed Identity, OAuth passthrough
+- Evaluations & observability GA
+- New preview: browser automation via Playwright, deep research tool, voice live
+- Hosted runtime billing starts April 1, 2026
+
+Source: [Foundry Agent Service GA](https://devblogs.microsoft.com/foundry/foundry-agent-service-ga/) [vendor press release]
+
+**Google Vertex AI Agent Engine** — Sessions and Memory Bank GA:
+- Sessions and long-term memory now GA
+- Express Mode (free tier + lower pricing)
+- Agent Designer (low-code visual design, preview)
+- A2A protocol support
+- VPC private deployment with CMEK encryption
+- Threat Detection for deployed agents (preview)
+- HIPAA workload support
+
+Source: [Vertex AI Agent Engine](https://docs.cloud.google.com/agent-builder/agent-engine/overview) [vendor direct]
+
+**Assessment:** The "agent server gap" identified in February is closing fast. AgentCore leads on feature velocity (5 GA launches in 3 weeks). Azure Foundry leads on enterprise governance. Google Vertex leads on low-code accessibility. The remaining gap: none are Claude-specific developer experiences — you still bring your own framework logic.
+
+#### 3. The Adoption-Impact Paradox
+
+The most important new data point: **NBER study of ~6,000 executives found 89% report zero productivity impact from AI agents, despite 57-69% adoption rates.** Average executive AI usage is just 1.5 hours/week.
+
+This is not a failure-rate statistic — it is worse. Organizations are adopting agents and seeing no measurable impact. The RAND 80% failure rate from 2025 still holds as a ballpark.
+
+Additional data points:
+- Deloitte: only 11% of organizations operationally use agentic systems
+- 40% of AI startups (5,600+) shut down within 24 months
+- Google DeepMind/MIT tested 180 multi-agent configurations: independent multi-agent systems amplify errors 17.2x. Sequential reasoning degrades 39-70% with multi-agent variants.
+
+Source: [LangChain State of Agent Engineering](https://www.langchain.com/state-of-agent-engineering) [vendor direct — self-reported survey], NBER study [academic/research]
+
+#### 4. What Actually Works in Production (Convergence Signal)
+
+Multiple independent sources converge on the same pattern:
+
+**Single agents with good tooling beat multi-agent systems.** The DeepMind/MIT finding that multi-agent amplifies errors is supported by practitioner reports. The "bag of agents" anti-pattern (throwing multiple agents at a problem) consistently fails. Hierarchical coordinator patterns work when multi-agent is truly needed.
+
+**Production agents are simpler than demos:**
+- 70% use off-the-shelf models (no fine-tuning)
+- 79% rely on manual prompt construction
+- 68% execute 10 or fewer steps before human intervention
+- 74% rely on human-in-the-loop evaluation
+- Autonomy is treated as a risk surface, not a goal
+
+**Quality is the #1 barrier (32%), not cost.** Cost dropped from #1 last year. Observability adoption (89%) has outpaced evals (52%).
+
+**What works:** Constrained domains (IT ops, compliance, support, finance ops), single-agent architectures, moderate autonomy (Level 2-3), typed interfaces, model routing for cost optimization.
+
+**What fails:** Dynamic orchestration, "bag of agents" anti-pattern, automating broken workflows, treating integration as an afterthought.
+
+**Coding agents specifically crossed a threshold** — even skeptics like Simon Willison now acknowledge they work. But for most other domains, the gap between demo and production remains wide.
+
+Sources: [Work-Bench: The Rise of the Agent Runtime](https://www.work-bench.com/post/the-rise-of-the-agent-runtime) [practitioner analysis], [AWS: Evaluating AI agents at Amazon](https://aws.amazon.com/blogs/machine-learning/evaluating-ai-agents-real-world-lessons-from-building-agentic-systems-at-amazon/) [practitioner direct]
+
+---
+
+### Framework Updates (March 2026)
+
+#### Claude Agent SDK
+- Renamed from Claude Code SDK. Latest: v0.2.81 (March 20, 2026)
+- New features: `tools` allowlist, `agentProgressSummaries`, structured outputs, `task_progress` events
+- **Compaction API** (beta): server-side context summarization for infinite conversations. Auto-summarizes when input > 150K tokens.
+- **Enterprise Agents Program** (Feb 24): pre-built agent plugins for finance, engineering, design with corporate IT controls
+- **Agent Skills** open standard (Dec 2025): organized instruction folders agents load dynamically. Adopted by Microsoft, OpenAI, Atlassian, Figma, Cursor, GitHub.
+- **Agent Teams** still experimental. Peer-to-peer mailbox system, file-locking task claims. Requires Opus 4.6. Practitioners report 3-5x wall-clock speedup but proportionally higher cost. No GA date announced.
+- **MCP Elicitation** (March): MCP servers can request structured input during execution
+- **Known issues:** SDK hang bug (#701 on GitHub), Opus 4.6 migration broke prefilling patterns (Chanl AI, LiveKit reports)
+
+Sources: [Claude Agent SDK docs](https://platform.claude.com/docs/en/agent-sdk/overview) [vendor direct], [Agent Skills spec](https://github.com/anthropics/skills/blob/main/spec/agent-skills-spec.md) [practitioner direct], [Hugo Lu production report](https://medium.com/@hugolu87/how-to-run-claude-agents-in-production-using-the-claude-sdk-756f9d3c93d8) [practitioner direct], [Chanl AI migration pain](https://www.chanl.ai/blog/claude-4-6-ai-agents-whats-different) [practitioner direct]
+
+#### LangGraph
+- Stable at v1.0 GA. CLI at v1.1.2.
+- March 10 release: type-safe streaming/invoke v2, Pydantic/dataclass coercion, node/task-level caching, deferred nodes
+- New sandbox integrations: Modal, Daytona, Runloop
+- LangChain survey (1,300+ respondents): 57% have agents in production. Named users: Uber, LinkedIn, Replit, Elastic, Klarna
+- Practitioner consensus: "Default to LangGraph unless you have strong reasons not to"
+
+Source: [LangGraph releases](https://github.com/langchain-ai/langgraph/releases) [practitioner direct]
+
+#### Microsoft Agent Framework
+- **RC 1.0.0rc1** released Feb 19, 2026. GA targeted end of Q1 — imminent but NOT yet shipped.
+- AutoGen entering maintenance-only mode. Semantic Kernel likewise.
+- Features: graph-based workflows, multi-provider (Claude, GPT, Bedrock, Ollama), A2A + AG-UI + MCP support
+- Enterprise validators (vendor-claimed): KPMG, BMW, Commerzbank, Fujitsu
+- **Microsoft Agent 365** is separate product — GA May 1, 2026 at $15/user/month
+
+Source: [MS Agent Framework RC](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/) [vendor press release], [InfoQ coverage](https://www.infoq.com/news/2026/02/ms-agent-framework-rc/) [domain trade publication]
+
+#### CrewAI
+- v1.10.1 (March 4). A2A protocol support added. No-code guardrails, enhanced memory/knowledge.
+- Enterprise platform (CrewAI AMP) launched — no independent verification of outcomes.
+- The "prototype in CrewAI, ship in LangGraph" pattern persists.
+
+Source: [CrewAI releases](https://github.com/crewAIInc/crewAI/releases) [practitioner direct]
+
+#### Strands Agents (AWS)
+- v1.30.0 (March 19). 14M downloads since May 2025 launch.
+- **Strands Labs** launched: experimental projects including physical AI agents (robots), AI Functions (natural language function definitions)
+- New: bidirectional streaming (voice), MCP resource support, A2A Agent class, nested multi-agent interrupt propagation
+
+Source: [Strands releases](https://github.com/strands-agents/sdk-python/releases) [practitioner direct], [AWS Strands Labs blog](https://aws.amazon.com/blogs/opensource/introducing-strands-labs-get-hands-on-today-with-state-of-the-art-experimental-approaches-to-agentic-development/) [vendor press release]
+
+---
+
+### New Entrants (Feb-March 2026)
+
+#### OpenAI Frontier (Feb 5, 2026)
+Enterprise platform for building/deploying/managing agents. "Agent-as-employee" model with shared business context, agent identity/IAM, SOC 2/ISO certified. Vendor-neutral (supports Anthropic agents). Early customers: HP, Intuit, Oracle, State Farm, Uber. Pricing: enterprise sales (estimated six-to-seven figures annually).
+
+Source: [OpenAI Frontier](https://openai.com/index/introducing-openai-frontier/) [vendor press release]
+
+#### OpenClaw
+Open-source agent tool, 100K+ GitHub stars. Intermediary between LLMs and computers. Creator subsequently joined OpenAI.
+
+Source: [KDnuggets](https://www.kdnuggets.com/openclaw-explained-the-free-ai-agent-tool-going-viral-already-in-2026) [tech press]
+
+#### New Relic AI Agent Platform (Feb 24, 2026)
+Observability-focused agent platform with OpenTelemetry tooling. Combines agent creation with monitoring.
+
+Source: [TechCrunch](https://techcrunch.com/2026/02/24/new-relic-launches-new-ai-agent-platform-and-opentelemetry-tools/) [tech press]
+
+---
+
+### Market Dynamics
+
+**"Black Tuesday for Software"** — Feb 3, 2026: 13% single-day drop in MSCI Software Index. SaaS "seat compression" is underway as agents reduce per-seat software demand. Wave of distressed consolidation expected. CIOs consolidating around "AI-ready superplatforms."
+
+**Agent runtime crystallizing as infrastructure category.** Work-Bench identifies four pillars: Execute (sandboxes, microVMs), Constrain (identity/access), Observe (tracing), Improve (evals/feedback). This maps to what AgentCore, Foundry, and Vertex are building.
+
+**Security gap is alarming.** 82% of executives report confidence their policies protect against unauthorized agent actions, but only 14.4% send agents to production with full security/IT approval. Amazon's own internal agent autonomously tore down a deployment environment, knocking an AWS service offline for 13 hours.
+
+Sources: [CSO Online: Runtime agent security](https://www.csoonline.com/article/4145127/runtime-the-new-frontier-of-ai-agent-security.html) [domain trade publication], [Work-Bench](https://www.work-bench.com/post/the-rise-of-the-agent-runtime) [practitioner analysis]
+
+---
+
+### Cost Data (March 2026)
+
+- Claude Code: averages ~$6/dev/day
+- Multi-agent enterprise systems: $10K-150K/month without optimization
+- One e-commerce firm: costs jumped from $5K/month prototyping to $50K/month staging (10x) due to unoptimized RAG queries
+- Dominant cost remains tokens, not compute
+- Cost is no longer the #1 production concern — quality is (32% cite it vs. cost dropping)
+- Failed agent runs that burn tokens without results are the real expense
+
+---
+
+### Updated "Agent Server" Gap Assessment
+
+**February assessment:** The gap was 70-80% closed by AgentCore and Azure Foundry.
+
+**March assessment:** The gap is now ~85-90% closed.
+
+What changed:
+- AgentCore added policy engine, stateful MCP, memory streaming, AG-UI, shell execution — all GA
+- Azure Foundry hit GA with private networking, durable orchestration, browser automation
+- Google Vertex added sessions/memory GA, threat detection, VPC deployment
+
+**What still remains:**
+1. No managed "Claude Agent Server" from Anthropic — you still bring your own containers
+2. All runtimes are generic, not Claude-specific developer experiences
+3. No turnkey "deploy Claude agent with one command" experience exists
+4. Cross-platform comparison is impossible — no one has benchmarked the same workload across all three
+
+---
+
+### Updated Recommendations
+
+The February recommendations remain sound with these adjustments:
+
+**Path 1 (Claude-native) update:** Claude Agent SDK v0.2.81 with Compaction API enables effectively infinite conversations. Agent Skills provide modular capability loading. Deploy to AgentCore for the most feature-rich managed runtime.
+
+**Path 2 (Maximum control) update:** LangGraph v1.0 with type-safe v2 APIs and node-level caching. Still the practitioner default for complex workflows.
+
+**Path 3 (Microsoft) update:** Agent Framework at RC, not yet GA. Wait for GA before production deployment. Azure Foundry Agent Service is GA and ready.
+
+**Path 4 (AWS) update:** Strands v1.30 with A2A support. AgentCore is the most feature-active runtime (5 GA launches in March alone).
+
+**New Path 6 (Google ecosystem):** Vertex AI Agent Engine with ADK. Sessions/memory GA. Best for teams already in GCP. ADK TypeScript support expands beyond Python.
+
+**New caution:** Multi-agent systems. The DeepMind/MIT evidence (17.2x error amplification) combined with practitioner reports suggests defaulting to single-agent architectures. Use multi-agent only when the task is genuinely parallelizable and you can afford the coordination overhead.
+
+---
+
+### What Was Not Found (March 2026 Update)
+
+- No independent benchmarks comparing AgentCore vs. Foundry vs. Vertex head-to-head
+- No Nordic-specific practitioner reports on any platform
+- No evidence Agent Teams exited experimental status
+- No A2A v0.4 announced
+- No independent verification of Microsoft Agent Framework enterprise validators (KPMG, BMW, etc.)
+- No public postmortems of the Amazon internal agent incident (13-hour outage)
+- No Python SDK feature parity with TypeScript for Claude Agent SDK
+- No pricing for OpenAI Frontier or Azure Foundry hosted runtime (both enterprise sales)
+
+---
+
+### Research Log — March 2026
+
+**Round 5: Claude Agent SDK & Anthropic (March 22, 2026)**
+- Claude Agent SDK npm page, CHANGELOG, release notes
+- Enterprise Agents Program, Agent Skills spec
+- Agent Teams documentation and practitioner reports (Heeki Park, Cobus Greyling)
+- MCP 2026 roadmap, MCP Elicitation
+- Practitioner production reports (Hugo Lu, Chanl AI, SDK hang bug)
+
+**Round 6: Frameworks Update (March 22, 2026)**
+- LangGraph releases and State of Agent Engineering survey
+- CrewAI v1.10 and A2A support
+- Strands Agents v1.30 and Strands Labs
+- Microsoft Agent Framework RC
+- OpenAI Frontier, OpenClaw, New Relic AI Agent Platform
+
+**Round 7: Cloud Runtimes (March 22, 2026)**
+- AgentCore 5 March GA launches (policy, MCP, memory, AG-UI, shell)
+- Azure Foundry Agent Service GA (March 16)
+- Google Vertex AI Agent Engine updates
+- AG-UI protocol emergence
+- A2A v0.3 ecosystem expansion
+
+**Round 8: Production Reality (March 22, 2026)**
+- NBER executive study (89% zero impact)
+- DeepMind/MIT multi-agent error amplification
+- LangChain survey (57% in production, quality #1 barrier)
+- Work-Bench agent runtime category analysis
+- Amazon internal agent incident
+- Market dynamics (Black Tuesday, seat compression)
+
+**Orient:** The landscape is maturing fast on infrastructure but the production impact gap is widening. Platforms are ready; organizations are not. The "agent server gap" is nearly closed technically but the "agent value gap" — between adoption and measurable impact — is the real story of March 2026.

@@ -77,6 +77,19 @@ These people deploy agents inside real organizations or bridge the gap between b
 
 **Gap narrowed but still thin.** Klarna is CEO-level not practitioner-level. Noru is building tools, not deploying governed agents. Still need: Nordic practitioners at enterprises who are building/deploying business agents and publishing about it.
 
+## Organizational Practices Watchlist
+
+Companies worth tracking not for their products, but for how they organize around agents. Organizational-level evidence is mostly absent in March 2026 — we're pre-chasm. These are the early signals to watch for convergence.
+
+| Company | What to watch | Why it matters | What we know (March 2026) |
+|---------|--------------|----------------|--------------------------|
+| **Tesla** | mobAi — radical organizational practices around AI agents. How work itself is structured when agents are assumed. | If Tesla is reorganizing work around agents (not just using agents within existing structures), that's the organizational transformation signal everyone else is missing. Most companies bolt agents onto existing processes. Tesla may be redesigning the processes themselves. | Thin — need practitioner-level detail. Discovery priority: find Tesla engineers/managers publishing about how their teams actually work with agents. |
+| **Anthropic** | Tiny teams, constant re-teaming. The organizational structure that produces Claude. | Anthropic is simultaneously the agent builder AND the most aggressive internal user. If they run with tiny teams that constantly re-form around problems, that's a living example of "agents change the org chart, not just the workflow." The re-teaming pattern may be the organizational equivalent of compound engineering — small units that recombine faster than large teams can coordinate. | Need specifics: how small are the teams? How often do they re-team? What does the internal agent use look like? Discovery priority: Anthropic employees publishing about internal practices, conference talks about org structure. |
+
+**What we're looking for:** Not "company X uses AI" — every company says that. We're looking for companies where agents have changed *how teams are structured, how work is allocated, how people coordinate.* The organizational design signal, not the tool adoption signal. This is the hardest evidence to find because companies don't usually publish org design changes — but it's also the most valuable for our advisory, because it answers "what does the org look like AFTER agents work?"
+
+**Discovery method:** Follow employees, not press releases. Tesla and Anthropic don't publish org design white papers. But their engineers and managers do speak at conferences, post on X.com and LinkedIn, and write blogs. Add individuals to the practitioner segments above as they surface.
+
 ## Events to Track
 
 | Event | When | Where | Why |
@@ -95,3 +108,4 @@ These people deploy agents inside real organizations or bridge the gap between b
 | 2026-03-21 | Added Reuven Cohen (rUv). Claude Flow/Ruflo builder + EY CTO. Watch for framework→platform evolution. |
 | 2026-03-22 | Added Dan Shipper (Every, compound engineering originator) and Will Larson (Imprint, independent validation). First named practitioners for the coding agent flywheel thesis. |
 | 2026-03-22 | Cycle 38: Added 7 business-domain practitioners. Segment A: Virat Singh (finance, 49K stars). Segment B: Lemkin/SaaStr (GTM, $1M+ revenue), Quintero (100+ companies), Raviv (20K+ PMs), Lau & Yao/Leapfin (accounting, production). Segment C: Siemiatkowski/Klarna (Nordic, course correction), Thelin & Ruth/Noru (Nordic, agentic compliance). First non-coding practitioners on roster. |
+| 2026-03-22 | New section: Organizational Practices Watchlist. Tesla (mobAi, radical practices) and Anthropic (tiny teams, constant re-teaming). Tracking companies for org design changes, not product/tool use. |

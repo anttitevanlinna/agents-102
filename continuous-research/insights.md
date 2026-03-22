@@ -261,6 +261,36 @@ This is our market. The gap between tool availability and organizational readine
 
 ---
 
+## The Spec Is the Moat — Convergence Across Domains
+
+**Thesis:** Four independent practitioners in four different domains converged on the same pattern in the same month: the human writes the spec, the coding agent executes, and the spec compounds. The spec — not the code, not the model, not the platform — is the moat.
+
+The evidence (Level 3 — convergence across 4+ independent practitioners):
+
+1. **Karpathy (ML research):** AutoResearch (42K stars, Mar 2026). `program.md` tells the agent what to explore. 700 experiments in 2 days, 20 kept improvements. "The researcher's new job is writing the spec." Tobi Lütke applied it to Shopify's Liquid engine: 53% faster rendering, 61% fewer allocations from 93 automated commits. ([GitHub](https://github.com/karpathy/autoresearch), [X.com](https://x.com/karpathy/status/2030371219518931079)) [practitioner direct]
+
+2. **Dan Shipper (business/media):** Compound engineering (5.1K stars). `CLAUDE.md` + plan-review cycle. 1 dev = 5 devs output at Every Inc. Will Larson validated independently at Imprint: "not shocking but extremely effective." ([every.to](https://every.to)) [practitioner direct]
+
+3. **Corey Haines (marketing):** Marketing Skills (15.4K stars). Encoded marketing domain expertise as agent-consumable skills. Built Magister (autonomous marketing agent) on top. Non-engineer creating structured context for agents. ([GitHub](https://github.com/coreyhaines31/marketingskills)) [practitioner direct]
+
+4. **Agents 102 (market intelligence):** `cycle-prompt.md` + `meta-learning.md`. 25 OODA cycles, 41 cross-platform patterns, compounding knowledge base. The spec is a natural-language research strategy that accumulates state and learns how to research better over time.
+
+The pattern is identical across all four: **human writes structured context in natural language → agent executes → output compounds → context improves → next cycle is better.** The domain doesn't matter (ML, business ops, marketing, market intelligence). The pattern does.
+
+What differs is the metric. Karpathy has val_bpb — a single scalar that enables full autonomy. Shipper has velocity (5x). Haines has GitHub stars (proxy). Our system has no single metric — it relies on the evidence ladder and human curation, which is why it's semi-autonomous rather than fully autonomous. The metric determines the autonomy level.
+
+**The double loop:** Karpathy's system learns about ML (single loop). Our system also learns about how to research (double loop — the meta-learning file). This is Argyris's double-loop learning applied to agentic systems: the system doesn't just improve its outputs, it improves its process for producing outputs.
+
+**The implication for CTOs:** Stop asking "which platform." Start asking: "who in my organization can write the spec?" The spec is `program.md` for research, `CLAUDE.md` for engineering, marketing skills for marketing, `cycle-prompt.md` for intelligence. The person who can describe the work so an agent can do it well — that person IS the competitive advantage. Training builds that capability. Everything else is commodity.
+
+**The implication for Bosser:** This is Level 3 convergence for our core thesis. Four independent practitioners, four domains, same month, same pattern. The ceiling is context-creation rate. Training raises the ceiling. The convergence makes the argument irrefutable — it's not one person's opinion, it's a pattern.
+
+**Applies to:** Core value proposition (strongest evidence yet), Bootstrap Module 8, advisory positioning, newsletter anchor piece
+**Source:** Karpathy AutoResearch ([Mar 2026](https://github.com/karpathy/autoresearch)), Dan Shipper compound engineering, Corey Haines Marketing Skills, Agents 102 platform watch system
+**Date:** 2026-03-22
+
+---
+
 ## Template
 
 Copy this for new insights:

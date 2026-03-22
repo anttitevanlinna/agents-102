@@ -231,10 +231,32 @@ But the deeper ceiling isn't tools. MCP servers, connectors, orchestration — t
 
 And here's the kicker: coding agents are also the best context-creation engines that exist. They read repos, crawl docs, query databases, analyze APIs, synthesize across sources, then output the structured artifacts (MCP servers, system prompts, eval criteria) that encode context for other agents. Manual curation can't keep up because enterprise context changes continuously and the coding agent re-derives it on demand.
 
+**First named methodology (March 2026):** "Compound engineering" (Dan Shipper/Kieran Klaassen, Every Inc) formalizes the flywheel: Plan → Work → Review → Compound. The "Compound" step captures learnings into CLAUDE.md and creates new agents, so each cycle makes the next faster. Specific claim: 1 developer ≈ 5 developers output. 5 products, each run by ~1 person, serving thousands of daily users. Will Larson (Imprint) independently validated: "not shocking but extremely effective." Plugin has 5,132 GitHub stars. Level 2 evidence — approaching convergence but needs 10-20 independent reports to reach Level 3.
+
 **The implication for CTOs:** "Which platform" becomes "which coding agent does my team adopt" — because the coding agent IS the platform that builds everything else. Tools commoditize. Context-creation capability doesn't. Training raises the ceiling. Everything else raises the floor.
 
 **Applies to:** Core value proposition, Bootstrap Module 8 (Agents Building Agents), advisory, newsletter, CLAUDE.md positioning
-**Source:** Platform watch synthesis Pattern 41 (strategic analysis, March 2026)
+**Source:** Platform watch synthesis Pattern 41 (strategic analysis, March 2026); compound engineering evidence (Every Inc, [practitioner direct](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents), Dec 2025/Mar 2026; Will Larson, [practitioner analysis](https://lethain.com/everyinc-compound-engineering/), Jan 2026)
+**Date:** 2026-03-22 (updated with compound engineering evidence)
+
+---
+
+## The Competence Gap Is Quantified — 78% Can't Keep Up
+
+**Thesis:** The #1 enterprise agent adoption blocker is organizational competence, not technology — and the data now proves it.
+
+78% of executives feel AI is advancing too fast for their training efforts. 82% of companies in early AI maturity have no talent strategy. Only 8.6% of companies have AI agents in production. 63.7% have no formalized AI initiative at all. HBR: "Most firms struggle to capture real value from AI not because the technology fails—but because their people, processes, and politics do."
+
+The pattern across multiple independent studies: rush to adopt → skip competence building → agent project fails → blame the technology. 60% of AI projects fail due to flawed ROI calculations and unrealistic expectations. Pilots fail because teams build agents before they build controls.
+
+This is our market. The gap between tool availability and organizational readiness is where Agents 102 creates value. Every platform vendor assumes the organization knows what to build, knows how agents work, and can evaluate options. None of that is true for 92% of companies.
+
+**The implication for CTOs:** The technology works. Your organization doesn't know how to use it yet. That's not a technology problem — it's a competence problem. Fix it before buying platforms.
+
+**The implication for Bosser:** This data makes the Bootstrap pitch concrete: "78% of executives say AI outpaces their training. 82% have no talent strategy. We close that gap in 2 days."
+
+**Applies to:** Sales conversations, newsletter, advisory positioning, Bootstrap value proposition
+**Source:** HBR ([Nov 2025](https://hbr.org/2025/11/overcoming-the-organizational-barriers-to-ai-adoption)), enterprise survey (120K+ respondents, [Joget/analyst compilation](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/)), InformationWeek ([Q1 2026](https://www.informationweek.com/machine-learning-ai/2026-enterprise-ai-predictions-fragmentation-commodification-and-the-agent-push-facing-cios))
 **Date:** 2026-03-22
 
 ---

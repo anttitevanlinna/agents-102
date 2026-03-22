@@ -88,6 +88,8 @@ Companies worth tracking not for their products, but for how they organize aroun
 
 **What we're looking for:** Not "company X uses AI" — every company says that. We're looking for companies where agents have changed *how teams are structured, how work is allocated, how people coordinate.* The organizational design signal, not the tool adoption signal. This is the hardest evidence to find because companies don't usually publish org design changes — but it's also the most valuable for our advisory, because it answers "what does the org look like AFTER agents work?"
 
+**Vocabulary warning:** Organizational-level insight won't arrive labeled "agents." People will say "team AI," "collaborative AI," "AI-native teams," "augmented workflows," "AI-first organization," or whatever framing their culture uses. Tesla won't say "we deploy agents" — they'll describe how mobAi changes team structure. Anthropic won't frame re-teaming as "agentic" — they'll talk about team size and velocity. Search for the practices and the org design changes, not for the word "agent."
+
 **Discovery method:** Follow employees, not press releases. Tesla and Anthropic don't publish org design white papers. But their engineers and managers do speak at conferences, post on X.com and LinkedIn, and write blogs. Add individuals to the practitioner segments above as they surface.
 
 ## Events to Track

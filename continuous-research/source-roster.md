@@ -25,6 +25,10 @@ For each person: what's their current position on agents? What did they say 6 mo
 
 Update this file after each research round. Add new people when they surface. Remove people who go quiet or become irrelevant.
 
+**Discovery method: global first, Nordic subset second.** Start with the global scan — that tells us what's hot and upcoming. Then check for Nordic practitioners doing the same thing — that tells us roll-out speed. If we search Nordic-first, we miss signals because the frontier practitioners are global.
+
+**The roster is thin on business-domain practitioners.** We have coding/infra people (Segment A) and academics (Segment B). We need people doing agent work in operations, finance, HR, compliance, customer service, sales, product. These people publish on LinkedIn and at industry events, not on X.com. The hourly research cycle should opportunistically discover and add them.
+
 ---
 
 ## Segment A: Solo Builders & Infrastructure Makers
@@ -43,6 +47,7 @@ These people build, ship, and publish. They show what's possible before enterpri
 | **Thorsten Ball** | Engineer, Anthropic (Claude Code) | X.com, blog | Builds Claude Code. Knows the actual architecture. | |
 | **Matt Shumer** | CEO, HyperWrite/OthersideAI | X.com | Builds agent products. Vocal about what works and what doesn't. | |
 | **Reuven Cohen (rUv)** | CTO GenAI, EY Americas / Agentics Foundation | [X.com/@rUv](https://x.com/rUv), [GitHub/ruvnet](https://github.com/ruvnet), [agentics.org](https://agentics.org) | Built Claude Flow/Ruflo (14K stars, multi-agent orchestration). Unique position: solo builder velocity + enterprise context (EY). Could be the one who wires together the gaps nobody has filled (promotion path, multi-system orchestration, agent registry). Distinguishes "agentic engineering" from "vibe coding." Adrian Cockcroft (ex-Netflix/AWS VP) validated Claude Flow — segment 1→2 bridge. **WATCH:** Does Ruflo evolve from dev tool to business platform? | Prolific builder. 1M+ lines generated. Agentic engineering framing. (Mar 2026) |
+| **Corey Haines** | SaaS marketer → agentic builder. Founder of Conversion Factory, Swipe Files, Magister Marketing | [X.com/@coreyhainesco](https://x.com/coreyhainesco), [GitHub/coreyhaines31](https://github.com/coreyhaines31), [corey.co](https://www.corey.co/) | **The chasm-crossing practitioner.** Non-engineer who encoded marketing domain expertise into Claude Code skills (Marketing Skills repo, 15.4K stars). Built Magister (autonomous marketing agent) on top. Built "Coding for Marketers" to bridge non-technical people into agentic tools. His trajectory IS the competence-first story: domain expert + coding agent = context creation at speed. Key insight: "The bottleneck holding back marketers from using agentic AI is that no marketing tools come with a CLI." This is the infrastructure gap between what agents can do and what business tools support. **WHY HE MATTERS FOR US:** He is literally doing what we say organizations need to learn — creating structured context (skills = encoded domain knowledge) for agents to use. His 15.4K GitHub stars on a MARKETING repo means he's reaching business people, not just developers. If marketing teams start reporting results from his skills, that's Level 3 convergence for "non-engineers using coding agents for business work." **WATCH:** Does Magister get enterprise adoption? Do independent marketing teams report measurable outcomes? | SaaS marketer → skills builder → platform builder. 34 skills, 52 CLI tools, 31 integration guides. Open source + commercial (Magister). (Mar 2026) |
 
 ## Segment B: First Enterprise Teams & Bridges
 

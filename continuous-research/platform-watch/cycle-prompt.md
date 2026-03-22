@@ -6,38 +6,53 @@ This prompt drives each incremental research cycle. Run with `/loop 60m` or manu
 
 **Business agents** — not coding agents. We track what a sales person, finance analyst, HR manager, compliance officer, or operations lead can do with agent platforms today. These people use SharePoint, Teams, Outlook, Salesforce, Google Workspace. Not Git, not terminals.
 
+**But also: who is doing the work.** Platforms are one axis. Practitioners are the other. A platform with no practitioners using it is vapor. A practitioner building real things on any platform is signal. We track both.
+
 **The framework:** Personal agent → Team agent → Company-wide agent. We track which platforms support each level and whether a promotion path exists between levels.
 
-**The CTO question we answer:** Which platform can do which business use cases? Who is leading? Why?
+**The CTO question we answer:** Which platform can do which business use cases? Who is leading? Why? And: who are the practitioners whose trajectory predicts what becomes mainstream 3-6 months later?
 
-**Related: Domain practitioner research** (separate system, `../README.md` + `../findings/` + `../source-roster.md`). Tracks what practitioners are actually doing per business function (sales, finance, HR, compliance, operations, product). When you find a practitioner doing real agentic work, note which platform they're using — that feeds back into this system. When you find a platform gap, note which business function it blocks — that feeds the domain research.
+**Geographic method: global first, Nordic subset second.** Always start with the global scan — that tells us what's hot and upcoming. Then check for Nordic signal as a subset — that tells us roll-out speed and local adoption patterns. If we start Nordic-first, we miss signals. The Nordic scan is never the primary research — it's the "and where are the Nordics on this?" follow-up.
+
+**Related: Domain practitioner research** (separate system, `../README.md` + `../search-logs/` + `../source-roster.md`). Tracks what practitioners are actually doing per business function (sales, finance, HR, compliance, operations, product). When you find a practitioner doing real agentic work, note which platform they're using — that feeds back into this system. When you find a platform gap, note which business function it blocks — that feeds the domain research.
 
 ## Cycle Execution
 
 ### Step 1: Read current state
 
-Read the target platform's `state.md` to know what we already know. Read `synthesis.md` for cross-platform context.
+Read `synthesis.md` — specifically the Research Priorities section (Tier 1/2/3) and the "What We Did Not Find" section. Read the source roster (`../source-roster.md`) to know who we're tracking. Optionally read a target platform's `state.md` if you're going deep on one platform.
 
 ### Step 2: Determine focus
 
-**Default rotation** (use unless you have a better idea):
-- Cycle % 3 == 0 → **Microsoft 365 / Copilot Studio / Azure** (`microsoft-365/`)
-- Cycle % 3 == 1 → **Google Workspace / Gemini Enterprise** (`google-workspace/`)
-- Cycle % 3 == 2 → **OpenAI ChatGPT / Custom GPTs** (`openai/`)
+**You are semi-autonomous. Choose the research bet that creates the most value this cycle.** There is no default rotation. Read the current state, assess where the biggest gap or freshest signal is, and go there.
 
-Anthropic/Claude is tracked opportunistically when it surfaces in other platform research.
+**Valid research modes** (pick one per cycle):
 
-**But you are semi-autonomous.** After reading the current state files and synthesis, you may make a DIVERGENT choice if you judge it adds more value:
-- **New platform:** If you spot a platform we're not tracking that matters (e.g., a vertical SaaS agent platform like ServiceNow, Zendesk AI, or a new entrant), create a new folder and start tracking it.
-- **Adjacent research question:** If the state files surface a question that cuts across platforms (e.g., "has anyone solved agent memory?", "what does the MCP enterprise governance roadmap look like?", "are there open-source agent platforms for business users?"), pursue it instead of the default rotation.
-- **Depth over breadth:** If one platform has a major new development (e.g., a Preview feature goes GA, a named enterprise reports real deployment), go deep on that instead of rotating.
-- **Follow practitioners:** If you find a practitioner writing about real business agent deployment experience, follow that thread wherever it leads.
+1. **Platform deep-dive.** Go deep on one platform — especially when something just shipped (GA, new feature, first deployment evidence). Update the platform's state.md.
 
-**Log your reasoning** in the run file: why you chose this focus, what you considered, what you deprioritized. This helps the human dispatcher understand your thinking and steer future cycles.
+2. **Cross-platform pattern.** Pursue a question that cuts across platforms (e.g., "has anyone solved agent memory?", "what does governance adoption look like across platforms?", "is the compound reliability problem being addressed anywhere?").
+
+3. **Practitioner discovery.** Hunt for named practitioners doing business-domain agent work. Not coding agents — business domain: operations, finance, HR, compliance, customer service, sales, product. Search for people who built something, deployed it, and published about results. When you find someone, add them to `../source-roster.md` with their trajectory. **This is as valuable as platform research.** The source roster currently has zero Nordic practitioners and almost no business-domain practitioners globally.
+
+4. **Practitioner deep-dive.** Pick someone from the source roster. Fetch their recent output (X.com posts, blog, LinkedIn, GitHub, YouTube, podcast). Map their trajectory: what do they think now vs. 3-6 months ago? The shift IS the story. Karpathy going from "agents don't work" to "coding agents work" in 6 months told us more than any platform analysis.
+
+5. **Vertical SaaS update.** Check deployment reality for Salesforce Agentforce, ServiceNow, Zendesk, SAP Joule, HubSpot. Practitioner reports, not vendor announcements.
+
+6. **Transformation methods.** How are organizations actually adopting agents? Not the technology — the organizational change. What works: competence-first vs. platform-first? Top-down mandate vs. bottom-up pull? Big vendor assessment vs. lightweight experiments? Who is writing about the HOW of agent transformation, not just the WHAT? This is the other half of the CTO question: "which platform" is one axis, "how to get there" is the other. Track: change management approaches, training-first models, governance-first models, failure patterns in adoption, successful adoption patterns. Our F-Secure evidence (competence creates pull) is Level 2 — look for convergence evidence from other organizations.
+
+7. **Follow a thread.** If you find a practitioner writing about real business agent deployment, follow that thread wherever it leads — across platforms, across domains.
+
+**Decision criteria:** What would create the most value for a CTO trying to understand the agent landscape right now? Where is our knowledge thinnest relative to how much is happening? What's time-sensitive (just shipped, deal closing, enforcement deadline)? Remember: the CTO cares equally about "what to adopt" and "how to transform."
+
+**Consult the Research Priorities** in `synthesis.md` for standing questions organized by tier. Tier 1 items are time-sensitive. But you may override if you spot something more valuable.
+
+**Log your reasoning** in the run file: why you chose this focus, what you considered, what you deprioritized.
 
 ### Step 3: OODA Loop
 
-**Observe:** Search for the latest on this cycle's platform, focused on BUSINESS USER experience. Apply THREE lenses:
+**Observe:** Search with the appropriate lens for your chosen focus.
+
+**For platform research, apply these lenses:**
 
 **Lens 1: Business user experience**
 - What can a non-developer actually build or use?
@@ -65,6 +80,19 @@ Real enterprise agents must handle:
 - Connector count ≠ orchestration capability. 1,400 connectors means nothing if you can't chain 5 of them in one workflow.
 - SSO/auth across connectors is where most enterprise agent projects die.
 
+**For practitioner research, apply these lenses:**
+
+**Lens 5: Practitioner trajectory**
+- What are they building? On which platform? With what results?
+- What did they think 3-6 months ago vs. now? The shift is the story.
+- Are they a solo builder (Segment A — shows what's possible) or an enterprise team (Segment B — shows what's viable)?
+- Is their work crossing the chasm? (i.e., are enterprise people starting to replicate it?)
+
+**Lens 6: Nordic subset**
+- After finding a global pattern or practitioner: is anyone in the Nordics doing the same thing?
+- Nordic signal confirms roll-out speed. Nordic absence confirms the gap.
+- Don't search "Nordic AI agents" as primary query — search for the global pattern, then check "[pattern] Nordic" or "[pattern] Finland/Sweden/Norway/Denmark."
+
 Search queries should target business users AND integration reality:
 - "[platform] multi-system agent workflow enterprise"
 - "[platform] Salesforce Snowflake integration agent"
@@ -72,29 +100,35 @@ Search queries should target business users AND integration reality:
 - "[platform] business user experience 2026"
 - "[platform] agent limitations enterprise integration"
 - "[platform] agent not ready enterprise"
+- "[practitioner name] agent blog/post/talk 2026"
+- "[business function] AI agent deployment results"
 
-**Orient:** Compare findings against current state.md. Apply all three lenses:
+**Orient:** Compare findings against current state. Apply relevant lenses:
 1. Personal→team→company — which level does this serve?
 2. Integration reality — does this pass the multi-tool/multi-turn test?
 3. Demo vs production — is this real or marketing?
+4. Practitioner trajectory — does this person's evolution predict what becomes mainstream?
 
 **Decide:** Pick 1-3 findings worth adding. Quality gates:
 - From the last 6 months?
 - Source is practitioner-level or better? (Not vendor press release)
-- Tells us something about business user experience or enterprise integration reality?
+- Tells us something about business user experience, enterprise integration reality, or practitioner trajectory?
 - Adds something we don't already have?
 
 **Act:** Write findings.
 
 ### Step 4: Write cycle log
 
-Create file in the platform's `runs/` directory: `YYYY-MM-DD-HHMM.md`
+Create file in the appropriate `runs/` directory: `YYYY-MM-DD-HHMM.md`
+
+For platform research, use the platform's runs/ directory. For cross-platform or practitioner research, use `cross-platform/runs/`.
 
 ```markdown
-# [Platform] OODA Cycle — [timestamp]
+# [Focus] OODA Cycle — [timestamp]
 
 **Focus area:** [specific aspect researched this cycle]
-**Agent level focus:** [personal / team / company / promotion path]
+**Research mode:** [platform deep-dive / cross-platform pattern / practitioner discovery / practitioner deep-dive / vertical SaaS / follow thread]
+**Why this focus:** [1-2 sentences on why you chose this over alternatives]
 
 ## Queries Used
 - [list each search query]
@@ -105,7 +139,7 @@ Create file in the platform's `runs/` directory: `YYYY-MM-DD-HHMM.md`
 **Source:** [FULL CLICKABLE URL — MANDATORY, no finding without it] — [source type label]
 **Date:** [source date]
 **Agent level:** [personal / team / company]
-**What:** [2-3 sentences — what specifically did we learn about business user experience?]
+**What:** [2-3 sentences — what specifically did we learn?]
 **Evidence level:** [Level 1-4]
 **Key claims:** [list the specific verifiable claims this source supports — each must be re-checkable at the URL]
 
@@ -113,16 +147,21 @@ Create file in the platform's `runs/` directory: `YYYY-MM-DD-HHMM.md`
 [This is often the most valuable output]
 
 ## Orientation
-[1-2 sentences — how does this change the picture for the CTO question?]
+[1-2 sentences — how does this change the picture?]
 ```
 
-### Step 5: Update platform state
+### Step 5: Update state files
 
-Edit the platform's `state.md`:
+**Platform research:** Edit the platform's `state.md`:
 1. Update timestamp and cycle count
-2. Add new findings to the relevant section — **every claim in state.md must include its source URL inline or in a Sources section.** Never write a claim in state.md without a traceable URL. If the URL is only in the run file, add a reference: `(source: runs/YYYY-MM-DD-HHMM.md)`
+2. Add new findings to the relevant section — **every claim in state.md must include its source URL inline or in a Sources section.** Never write a claim in state.md without a traceable URL.
 3. Update the personal→team→company progression table if evidence changes
 4. Check off or add items in "What We Need To Learn"
+
+**Practitioner discovery:** Edit `../source-roster.md`:
+1. Add the person to the correct segment (A: solo builders, B: enterprise teams, C: Nordic)
+2. Include: name, role, where to follow, why they matter, current position with date
+3. If they're doing business-domain agent work (not coding), note the domain
 
 **URL preservation rule:** When synthesizing findings from run files into state.md, keep the URLs. A finding that loses its URL during synthesis becomes unverifiable and therefore untrusted.
 
@@ -134,11 +173,15 @@ Edit `synthesis.md` only when:
 - The CTO answer table needs updating
 - Something lands in "What We Did Not Find" that we now found
 
-### Step 7: Commit and push
+### Step 7: Update insights (only if a compressed argument emerges)
+
+Edit `../insights.md` only when a finding produces a thesis that's usable in training, advisory, or newsletter. Most cycles won't produce an insight — that's fine. An insight is a compressed argument, not a finding.
+
+### Step 8: Commit and push
 
 ```
-git add continuous-research/platform-watch/
-git commit -m "platform-watch: [platform] — [one-line finding summary]"
+git add continuous-research/
+git commit -m "platform-watch: [focus] — [one-line finding summary]"
 git push -u origin main
 ```
 
@@ -149,6 +192,8 @@ git push -u origin main
 FOCUS: BUSINESS AGENTS, NOT CODING AGENTS. We track what sales people, finance analysts, HR managers, and operations leads can do with agent platforms. If a finding is about coding/development, it goes in the developer-focused section only.
 
 FRAMEWORK: Personal agent → Team agent → Company agent. Every finding should be tagged with which level it applies to.
+
+GEOGRAPHIC METHOD: Global first, Nordic subset second. Always start with the global scan. Then check for Nordic signal. Never search Nordic-first — you'll miss the global pattern.
 
 EVIDENCE LADDER:
 - Level 0: Commercial content (vendor press releases, blogs, case studies, analyst predictions). NOT EVIDENCE.

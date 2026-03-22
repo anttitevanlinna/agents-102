@@ -65,4 +65,7 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 38 — 2026-03-22
+Business-domain practitioner discovery is far more productive when searching for specific people + their deployment stories than searching for "AI agent [domain] 2026." The SaaStr/Lemkin finding came from person-specific searches. Lenny's Newsletter and Every.to are better sources for business-domain agent practitioners than X.com — business people publish on Substack/newsletters, not Twitter. EU AI Act agent governance research revealed that the *absence* of guidance (15 months, zero AI Office documents on agents) is a stronger finding than any guidance document would be — absence at regulatory level is a positioning signal for our advisory.
+
 *(New cycle observations go here, newest first)*

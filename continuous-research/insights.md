@@ -379,6 +379,35 @@ Living this at F-Secure (March 2026): when leadership engages personally with ag
 
 ---
 
+## CTO Research Network — The Peer Premium as a Live System
+
+**Thesis:** The credibility gap between "AI-produced research" and "CTO-trusted insight" closes when CTOs co-operate the research system and contribute back. A small network of advanced CTOs sharing a research engine is the anti-Gartner.
+
+The gap: even an enlightened CTO will doubt our research results. Single curator, possible selection bias, no track record, and the circularity of using coding agents to prove coding agents are the answer. No amount of methodology rigor fixes this — it's a trust problem, not a quality problem.
+
+The fix: co-use. A small network (5-10) of advanced CTOs who each steer the research system toward their own questions — their industry, their processes, their doubts. Each CTO's findings flow back into the shared knowledge base. What emerges:
+
+1. **Convergence from independent steering.** When 5 CTOs in different industries independently discover the same pattern, that's Level 3 evidence created by the network itself. No single consultant could produce this. No analyst firm does — they survey, they don't co-operate.
+2. **Selection bias eliminated.** We'd never ask the questions a logistics CTO or a CFO asks. Their steering pulls the research into territory we can't reach alone. The system gets smarter in directions we wouldn't choose.
+3. **The 80/20 inverts.** We provide 80% research infrastructure (the system, the cycles, the evidence ladder). CTOs provide 20% — but their 20% is grounded in real operations, making it worth more than our research alone. And each CTO gets everyone else's 20% back.
+4. **Skin in the game.** They're not buying a report. They're co-operating a system. That's a completely different trust relationship — closer to a research cooperative than a consulting engagement.
+
+This is the anti-Gartner: Gartner sells access to analysts' opinions. This sells access to a shared research engine where the CTOs ARE the analysts, with AI doing the legwork no individual could sustain. Gartner's moat is analyst headcount. Ours is network effects — each new CTO makes the system more valuable for all others.
+
+**Practical shape:** Invite-only. Post-Bootstrap CTOs who demonstrated genuine engagement (they built something, they got the mental models). Quarterly synthesis sessions (virtual or in Helsinki). Async steering via the research system. Co-owned findings — each CTO can use them internally. Bosser retains the right to synthesize cross-network patterns (the meta-premium).
+
+**Revenue model question:** Is this a subscription (€X/quarter for access + steering), a club (annual membership), or a loss-leader for advisory (the network surfaces the questions, advisory answers them)? TBD — but the value prop is clear before the pricing.
+
+**The implication for CTOs:** You don't need another analyst subscription. You need a shared research engine that gets smarter because YOU steer it — and because 5 other CTOs in different industries steer it too. The convergence across your independent findings is more trustworthy than any single expert's opinion.
+
+**The implication for Bosser:** This could be the durable competitive moat. Training can be copied. Research systems can be replicated. But a live network of advanced CTOs co-creating insight through a shared research engine — that's a network effect. First mover advantage is real here: the first network to reach 10 CTOs becomes the one others want to join.
+
+**Applies to:** Business model (new revenue stream / retention mechanism), customer journey (post-Bootstrap retention), advisory positioning, value proposition canvas
+**Source:** Antti's strategic observation — solving the credibility gap between AI research and CTO trust (March 2026)
+**Date:** 2026-03-22
+
+---
+
 ## Template
 
 Copy this for new insights:

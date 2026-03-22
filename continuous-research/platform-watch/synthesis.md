@@ -307,30 +307,41 @@ A CTO looking at this landscape sees: 4 horizontal platforms each telling a diff
 
 ## Research Priorities (Hourly Cycle — Semi-Autonomous)
 
-The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Standing priorities:
+The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Standing priorities reorganized after 25 cycles (March 22, 2026). Grouped by urgency.
 
-1. **Open-source framework evolution** — does Ruflo or similar add the enterprise 20% (RBAC, governance, audit)? Does someone wrap it? Track rUv's GitHub activity and forks.
-2. **Enterprise integration reality** — who is connecting 5+ systems in one agentic workflow? Practitioners, not demos.
-3. **Agent memory / learning** — Ruflo's AgentDB is the most advanced. Anyone else? Anyone deploying it in enterprise?
-4. **Vertical SaaS deep-dives** — Salesforce Agentforce practitioner experience beyond customer service. ServiceNow deployment reality. SAP Joule early GA results.
-5. ~~**Frontier/AgentKit in practice**~~ — **ANSWERED (cycle 17): zero independent evidence at 7 weeks. Re-check after GA.**
-6. **Workspace Studio adoption** — just went GA (Mar 19). Watch for practitioner reports beyond the capacity issues.
-7. **F-Secure pattern replication** — do other organizations hit the same three walls (data access, runtime, discoverability)?
-8. **MCP enterprise governance** — when does SSO/audit ship?
-9. **Computer Use in enterprise** — first evidence from Mainstay/Pace (OpenAI partners). Microsoft CUA now multi-model (OpenAI + Claude). Watch for independent reports + hybrid architectures (TinyFish pattern).
-10. **Domain practitioner discovery** — who are the innovator practitioners per business function? (Links to domain research: `../source-roster.md`)
-11. **Enterprise multi-vendor hedging** — is Intuit's dual OpenAI+Anthropic pattern becoming standard? What does this mean for platform commitment?
-12. **OpenAI consumer pivot impact** — does the super-app direction accelerate or decelerate enterprise agent capability?
-13. ~~**Agent sprawl reality**~~ — **ANSWERED (cycle 23): Independently confirmed. "Agents of Chaos" academic study proves governance gaps. Gravitee: 3M+ agents, 47% monitored. OWASP/NIST/CSA converging on standards. No named enterprise besides Microsoft admits to discovering shadow agents. Re-check for adoption evidence of governance tools (MintMCP, Stacklok, Lunar.dev).**
-14. **Copilot Cowork first reviews** — 12 days past "late March" Frontier access. Watch for first practitioner reports in April.
-15. **Foundry Agent Service adoption** — Corvus Energy named but no metrics. Watch for first production case studies with outcomes.
-16. **AgentCore adoption** — most complete runtime, zero adoption evidence. Watch for first enterprise deployment stories. (NEW cycle 23)
-17. **Agent governance tool adoption** — MintMCP, Stacklok, Lunar.dev all ship products but zero practitioner reports of deployment. Watch for first "we deployed X and here's what happened." (NEW cycle 23)
-18. **PE joint venture impact** — OpenAI + Anthropic both forming PE distribution. Does this change enterprise agent adoption patterns? Who are the first portfolio companies? (NEW cycle 23)
-19. **EU AI Act enforcement prep** — August 2, 2026 is 4.5 months away. Nordic companies deploy 20% faster than EU average but governance lagging. Watch for compliance-driven agent governance adoption. (NEW cycle 23)
-20. **AWS Bedrock AgentCore deep-dive** — most complete protocol support (MCP + A2A + AG-UI) plus Policy GA. Zero adoption evidence. Watch for first enterprise deployment stories, especially from AWS-native Nordic companies. (NEW cycles 18-22 synthesis)
-21. **Agent identity standards (AGAT/Grantex)** — 93% of agent projects use unscoped API keys. Grantex IETF draft submitted. NHI emerging as consensus framework. Watch for first adoption beyond proposals. (NEW cycles 18-22 synthesis)
-22. **Antspace evolution** — when does staging become production? Does BYOC extend to deployed apps (not just dev environments)? Does Anthropic announce publicly? Track AprilNEA and practitioner community for updates. (NEW — Antspace finding)
+### Tier 1: High-signal, time-sensitive (check every cycle)
+
+1. **Antspace evolution** — when does staging become production? Does BYOC extend to deployed apps? Does Anthropic announce publicly? This is the only candidate for a designed promotion path (personal→company). Track AprilNEA and practitioner community. (Opened cycle 22, still staging)
+2. **Copilot Cowork first reviews** — broader access was promised "late March." Watch for first practitioner reports. If nothing by mid-April, the silence IS the finding. (Opened cycle 21)
+3. **EU AI Act enforcement prep** — August 2, 2026 is 4.3 months away. Nordic companies deploy 20% faster than EU average but governance lagging. Watch for compliance-driven agent governance adoption — this could be the trigger that makes governance products matter. (Opened cycle 23)
+4. **Coding agent flywheel validation** — Pattern 41 is our strongest strategic claim but all evidence is logical analysis, not deployment stories. Need: (a) Who is using Claude Code or Codex to build MCP servers? (b) Do they see compounding (each agent builds faster)? (c) Is organizational learning rate truly the ceiling? **This is the research gap that matters most for our positioning.** (NEW — cycle 25 synthesis)
+5. **Zendesk-Forethought close** — deal expected end of March. Self-improving agents ("Resolution Learning Loop") + computer use for legacy systems. When do integrated agents ship? First evidence of agents that get better autonomously. (NEW — cycle 25)
+
+### Tier 2: Track actively (check every 2-3 cycles)
+
+6. **Agent governance tool adoption** — ConductorOne, Agent 365, Geordie AI, Stacklok, Lunar.dev all shipping. Zero practitioner deployment reports. Watch for first "we deployed X and here's what happened." The governance layer just started existing — first adoption evidence is the signal. (Opened cycle 23)
+7. **Workspace Studio post-GA adoption** — capacity issues persisted through GA (Mar 19). Promotional limits expire March 31. Watch for: (a) capacity improvement or worsening, (b) first practitioner reports beyond Kärcher, (c) Google Cloud Next '26 (April 22-24) for governance announcements. (Opened cycle 19)
+8. **Vertical SaaS beyond customer service** — all convergence evidence is customer service. Can Agentforce win in sales, operations, compliance? The 85% per-step / 20% on 10-step math predicts failure. Watch for counter-evidence. ServiceNow Autonomous Workforce Q2 GA. SAP Joule post-GA reality. (Opened cycle 14, sharpened cycle 25)
+9. **Nordea build-vs-buy investigation** — Nordic's largest bank chose AWS Bedrock over vertical SaaS. 10K employees on internal multi-model platform. Why? What gaps did they identify in vertical SaaS? This could be a signal for how large Nordic enterprises approach agents. (NEW — cycle 25)
+10. **F-Secure pattern replication** — competence → three walls (data access, runtime, discoverability). Only one org (Level 2). Do other orgs hit the same walls? Convergence evidence would upgrade our strongest advisory argument. (Opened cycle 22)
+
+### Tier 3: Background monitoring (check when rotation allows)
+
+11. **Enterprise integration reality** — who is connecting 5+ systems in one agentic workflow? Practitioners, not demos. A2A v0.3 has named adopters (S&P Global, ServiceNow, Tyson/Gordon Food) — watch for "how we implemented it" writeups. (Opened cycle 2)
+12. **Open-source framework evolution** — Ruflo (22K stars) has 80% of enterprise needs. Missing: RBAC, governance, audit. Does someone ship the enterprise wrapper? (Opened cycle 1)
+13. **Computer Use in enterprise** — Mainstay/Pace (OpenAI partners), TinyFish hybrid pattern. GPT-5.4: 75%, Claude: 72.7%. First independent deployment reports beyond launch partners? (Opened cycle 17)
+14. **AgentCore adoption** — most complete runtime (MCP + A2A + AG-UI + Policy GA), zero adoption evidence. AWS-native Nordic companies are the natural first movers. (Opened cycle 23)
+15. **PE joint venture impact** — OpenAI ($10B with TPG/Advent/Bain) + Anthropic both forming PE distribution. First portfolio company agent deployments? (Opened cycle 23)
+16. **Agent identity standards** — 93% unscoped API keys. NHI emerging as consensus framework. Grantex IETF draft. First adoption beyond proposals? (Opened cycle 22)
+17. **Domain practitioner discovery** — who are the innovator practitioners per business function? Feed names to `../source-roster.md`. (Ongoing)
+
+### Answered / Retired
+
+- ~~**Frontier/AgentKit in practice**~~ — ANSWERED (cycle 17): zero evidence at 7 weeks. Re-check only if GA announced.
+- ~~**Agent sprawl reality**~~ — ANSWERED (cycle 23): independently confirmed. 500K at Microsoft, 3M+ at Gravitee. OWASP/NIST/CSA converging. Folded into governance tool adoption tracking (priority 6).
+- ~~**Enterprise multi-vendor hedging**~~ — ANSWERED: multi-model is now default (Claude in Copilot, multiple models in Foundry/AgentCore). No longer a differentiating question.
+- ~~**OpenAI consumer pivot impact**~~ — ANSWERED: enterprise share declining (Ramp: 70% of new buyers go Anthropic). Consumer pivot accelerating, enterprise deprioritized. Impact is clear: enterprises hedging away from OpenAI dependence.
+- ~~**MCP enterprise governance**~~ — FOLDED into governance tool adoption (priority 6). Third-party ecosystem materializing (ConductorOne, Stacklok, etc.).
 
 ## Run Log
 

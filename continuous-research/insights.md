@@ -183,6 +183,62 @@ This inverts the traditional transformation sequence. Consultancies do: assess p
 
 ---
 
+## Agent Sprawl Is Real and Ungoverned
+
+**Thesis:** Shadow agents are the new shadow IT — and most organizations can't even see them, let alone govern them.
+
+Microsoft discovered 500K agents inside their own organization. 29% operate without IT approval. The "Agents of Chaos" academic study independently confirmed the governance gap. Gravitee found 3M+ agents across their customer base with only 47% monitored. Non-human identities already outnumber human identities 50:1 (projected 80:1). 82% of executives think they're protected. Only 24% have actual visibility.
+
+The governance product layer is just starting to exist: ConductorOne (MCP access management, March 19), Microsoft Agent 365 ($15/user/month, GA May 1), Geordie AI (agent security governance), AWS Bedrock AgentCore Policy (Cedar-based formal verification). Six months ago, none of these products existed. But adoption evidence is zero — all just shipped or are shipping.
+
+The four-layer enterprise agent stack is crystallizing: Models → Protocols (MCP + A2A + Agent Skills) → **Governance** → Applications. The gap between layers 2 and 3 is where the 95% failure rate originates.
+
+**The implication for CTOs:** You probably have shadow agents already. Before deploying more, audit what exists. The governance layer is just starting to ship — but waiting for it means falling behind. Start with visibility (what agents exist?) before adding capability (what should agents do?).
+
+**Applies to:** Bootstrap Module 4 (Security), advisory, platform watch
+**Source:** Platform watch cycles 23-25, Microsoft 500K agents (Agent 365 announcement), Agents of Chaos study, Gravitee data
+**Date:** 2026-03-22
+
+---
+
+## The Compounding Error Problem
+
+**Thesis:** 85% per-step accuracy sounds good. On a 10-step workflow, that's 20% end-to-end success. This is why customer service works and complex processes don't.
+
+Customer service agents succeed because the task is bounded: 2-3 step interactions with clear escalation paths. Zendesk gets 51% (SeatGeek), Salesforce gets 80% (Finnair), HubSpot gets 84% (Zeffy). But every agentic system that attempts longer chains hits the compound reliability wall: 0.85^10 = 0.20.
+
+Salesforce is experiencing this in real-time. Their own help portal achieves 62% resolution vs. 80% target. The Atlas Reasoning Engine shows session-to-session variance — identical scenarios, different paths. They responded by adding Agent Script (a deterministic control layer), effectively pulling back the autonomy promise. Multiple independent practitioners (Salesforce Ben, CIO.com, Greyhound Research) converge on this diagnosis.
+
+The math predicts domain boundaries precisely. Processes with 2-3 bounded steps and escalation tolerance: agents work now. Processes with 10+ steps crossing system boundaries: agents fail at rates that make them worse than humans. This isn't a model quality problem that better AI fixes — it's an architectural constraint that requires supervision design (short action chains, human-in-the-loop at decision points).
+
+**The implication for CTOs:** Design for 2-3 step action chains, not 20-step autonomy. The processes that work look like customer service: bounded scope, clear success criteria, escalation tolerance, data in one system. Find those characteristics in your 200 processes.
+
+**Applies to:** Bootstrap Module 5 (Output Quality), Module 6 (Evals), advisory, newsletter
+**Source:** Vertical SaaS research cycle 25 — Salesforce Ben, CIO.com, Greyhound Research CEO, Reddit deployment data, compound math analysis
+**Date:** 2026-03-22
+
+---
+
+## Coding Agents Are the Meta-Platform
+
+**Thesis:** The 199-process problem resolves to one question: which platform builds custom agents fastest? Only coding agent platforms compound.
+
+Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Workspace Studio can't write its own connectors. Claude Code and Codex can. They build the MCP server, the agent that uses it, the eval that tests it, and the next agent. This is the flywheel — and it only exists on coding agent platforms.
+
+The compounding math: each agent built creates reusable MCP servers and tools. The coding agent gets better at building the next agent because it has more context. The organization's agent capability grows superlinearly. No visual builder has this property.
+
+But the deeper ceiling isn't tools. MCP servers, connectors, orchestration — these are engineering problems that get solved within 6-12 months. What remains harder: how fast can the organization create the right context for agents to run? Context means knowing which processes benefit, what success looks like, what data matters, how to describe the work. That's a human learning rate, not a technical one.
+
+And here's the kicker: coding agents are also the best context-creation engines that exist. They read repos, crawl docs, query databases, analyze APIs, synthesize across sources, then output the structured artifacts (MCP servers, system prompts, eval criteria) that encode context for other agents. Manual curation can't keep up because enterprise context changes continuously and the coding agent re-derives it on demand.
+
+**The implication for CTOs:** "Which platform" becomes "which coding agent does my team adopt" — because the coding agent IS the platform that builds everything else. Tools commoditize. Context-creation capability doesn't. Training raises the ceiling. Everything else raises the floor.
+
+**Applies to:** Core value proposition, Bootstrap Module 8 (Agents Building Agents), advisory, newsletter, CLAUDE.md positioning
+**Source:** Platform watch synthesis Pattern 41 (strategic analysis, March 2026)
+**Date:** 2026-03-22
+
+---
+
 ## Template
 
 Copy this for new insights:

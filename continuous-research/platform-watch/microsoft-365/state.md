@@ -1,7 +1,7 @@
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-22 (cycle 39)
-OODA cycles: 12
+Last updated: 2026-03-22 (cycle 42)
+OODA cycles: 13
 
 ## Focus
 
@@ -21,7 +21,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 ### Microsoft Copilot (personal assistant layer)
 - Embedded in M365 apps — summarize, draft, analyze
 - Copilot Cowork (Research Preview, March 2026) — Claude-powered, multi-step tasks across M365 apps
-- **Cowork silence: seventh consecutive zero (cycle 39).** 13+ days post-announcement, zero independent reviews. "Late March" broader Frontier access has not visibly shipped. No YouTube demos, no Reddit threads, no blog posts from independent users. Mollick (Wharton): "cannot figure out any way to trigger GPT-5 Thinking Extended/Claude 4.5 Sonnet level responses — no deep thinking, no agentic actions, no document outputs." Also noted Anthropic's Cowork "was built in a couple of weeks using Claude Code and is being updated and evolving quickly" — questioning Microsoft's iteration speed. Teamblind insider: "we are cooked at Microsoft" citing stack rank culture and brain drain. Gartner: Cowork "does not support local computer use, cannot interact directly with local files or applications, and lacks native integrations with third-party tools." ([Mollick on X.com](https://x.com/emollick/status/1983962613576036736); [Teamblind](https://www.teamblind.com/post/how-did-microsoft-fumble-copilot-so-bad-when-claude-cowork-exists-kiishvku), Mar 2026)
+- **Cowork silence: ninth consecutive zero (cycle 42).** 13+ days post-announcement, zero independent reviews. We are now IN the "late March" broader Frontier access window — zero evidence of delivery. No YouTube demos, no Reddit threads, no blog posts from independent users. Mollick (Wharton): "cannot figure out any way to trigger GPT-5 Thinking Extended/Claude 4.5 Sonnet level responses — no deep thinking, no agentic actions, no document outputs." Also noted Anthropic's Cowork "was built in a couple of weeks using Claude Code and is being updated and evolving quickly" — questioning Microsoft's iteration speed. Teamblind insider: "we are cooked at Microsoft" citing stack rank culture and brain drain. Gartner: Cowork "does not support local computer use, cannot interact directly with local files or applications, and lacks native integrations with third-party tools." ([Mollick on X.com](https://x.com/emollick/status/1983962613576036736); [Teamblind](https://www.teamblind.com/post/how-did-microsoft-fumble-copilot-so-bad-when-claude-cowork-exists-kiishvku), Mar 2026)
 - **E7 pricing skepticism deepening (cycle 39):** SAMexpert (independent licensing expert): "$99/user/month at list price is too high for broad adoption." Hidden consumption charges for agentic workloads push effective costs >$200/user/month. US Cloud: E7 is "an entry fee into a consumption model." Context: only 15M Copilot paid seats (3% of 450M+ M365 base). ([SAMexpert](https://samexpert.com/microsoft-365-e7-licensing-guide/); [US Cloud](https://www.uscloud.com/blog/microsoft-e7-and-the-new-economics-of-enterprise-ai/), Mar 2026)
 - **Personal agent** tier — works for one user, in their apps
 - **Reliability problems:** crashes after 15-20 interactions, memory loss, document modification described as "practically useless" by users. Nadella reportedly called some integrations "almost unusable"

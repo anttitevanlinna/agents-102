@@ -291,6 +291,34 @@ What differs is the metric. Karpathy has val_bpb — a single scalar that enable
 
 ---
 
+## No Mental Models, No Vision — The Mechanism Behind Competence-First
+
+**Thesis:** You can't have a vision for the agentic future when you don't have the mental models for what agents do. Mental models are how humans reason about possibilities — without them, vision is governance of an abstraction.
+
+Previous transformations (digital, agile, cloud) could be vision-led because the concepts were accessible through analogy and analysis. A CEO didn't need to personally write code to envision a digital company. Consultancies could hand down the vision in slide decks.
+
+Agents are structurally different. "An agent that autonomously processes invoices across three systems with human escalation at decision points" — this sentence means nothing to someone who hasn't built or used an agent. They hear "automation" and think RPA. They hear "autonomous" and think chatbot. They hear "multi-system" and don't grasp why it's hard. The mental model gap isn't a knowledge gap — it's an experience gap. No amount of slides bridges it.
+
+The research now independently confirms the mechanism:
+- **Mollick (Wharton):** Individuals who build competence get 2-3x productivity. Their organizations get only 10-20%. The gap is shared mental models — each person discovers something, but there's no common language to propagate it.
+- **MIT/BCG:** 95% of organizations see no measurable ROI. The differentiator between leaders and laggards is organizational capability to absorb AI, not technology investment.
+- **HBR experimentation trap:** Hundreds of isolated experiments that never scale — because no shared vision connects them.
+- **HBR behavioral science:** Leaders assume employees are excited about AI. They're wrong. The gap between leadership enthusiasm and workforce readiness is a primary failure mode.
+
+The sequence is now evidence-backed: **No mental models → no shared vision → experiments stay isolated → no organizational learning → 95% fail.** Competence creates the mental models. Mental models create shared vision. Vision connects the experiments. Connected experiments create organizational learning. This is why Competence → Discovery → Context → Platform is the only sequence that works.
+
+The inverse is the consulting failure mode: Strategy → Roadmap → Execution assumes the vision can be handed down. For agents, this produces governance of an abstraction — maturity models where nobody can picture what "Level 3" actually looks like, initiative lists with no felt vision behind them, change programs that reproduce the consultancy's slides instead of the organization's future.
+
+**The implication for CTOs:** If you can't describe what an agent does for your top 5 processes — not from a vendor demo, but from building one — you don't have a vision yet. You have a slide deck. The 2-day Bootstrap isn't "training before strategy." It's "building the mental models that make strategy possible."
+
+**The implication for Bosser:** This is the sharpest formulation of our core positioning. Not "competence precedes vision" (too abstract). **"How can you have a vision when you don't have the mental models?"** — this is the question that makes CTOs pause. It names the mechanism. Every CTO knows they lack something but frames it as "we need a strategy." The reframe is: you don't need a strategy, you need mental models. Strategy follows.
+
+**Applies to:** Core value proposition (opening line for sales), Bootstrap opening, advisory positioning, newsletter, CLAUDE.md
+**Source:** Antti's observation + transformation methods research synthesis (MIT/BCG, Wharton/Mollick, HBR experimentation trap, HBR behavioral science — all March 2026)
+**Date:** 2026-03-22
+
+---
+
 ## Template
 
 Copy this for new insights:

@@ -304,7 +304,10 @@ Write to `continuous-research/findings/convergence-[pattern-name].md`:
 
 | Track | Round | Date | Findings Added | Orientation Summary |
 |-------|-------|------|----------------|---------------------|
-| | | | | |
+| Platform Agents | Incremental | 2026-03-23 | 6 platforms updated | SAP Joule upgraded from vaporware to early GA. ServiceNow Autonomous Workforce launched. Microsoft Release Wave 1 shipping April 2026. Agentforce polarizing. Workday+Sana launched. |
+| Practitioner Signals | Incremental | 2026-03-23 | 5 practitioners + enterprise failure data | Karpathy shifted to autonomous research agents. Mollick: orgs still early. Swyx: "context engineering." 85%^10 = 20% success rate insight. Nordic practitioner gap persists. |
+| Nordic Deployments | Incremental | 2026-03-23 | 6 company updates + startup landscape | Legora 3x'd to $5.55B. Sana Labs launched in Workday ($1.1B). Nordea cutting 1,500 jobs (AI-linked). Basware launched AP agents. Finland AI Act enforcement live. |
+| Convergence Update | Incremental | 2026-03-23 | 3 patterns strengthened + 3 new candidates | Hybrid (18+ signals), Governance (19+ signals), Narrow orchestration (22+ signals) all strengthened. Meta rogue agent = landmark security case. New: agent security, observability, context engineering. |
 
 ---
 

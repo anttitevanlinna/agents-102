@@ -462,6 +462,85 @@ This isn't because nothing is happening. ConductorOne's survey shows 95% of ente
 
 ---
 
+## The Amplification Paradox — Individual Up, Organization Flat
+
+**Thesis:** AI dramatically boosts individual productivity but organizational metrics stay flat. AI amplifies what's already there — strong teams thrive, weak teams fail faster. This explains both the success stories AND the 42-95% failure rates.
+
+DORA 2025 (n=5,000 engineers) found 21% more tasks completed, 98% more PRs merged individually — but organizational delivery metrics were flat. AI adoption improved individual throughput while having a NEGATIVE relationship with system stability. Mollick/P&G found individual + AI ≈ team without AI for average work, but teams + AI produce significantly more top-10% exceptional solutions. S&P Global: 42% of companies now abandon majority of AI initiatives pre-production, up from 17% one year prior — failure rate doubling annually.
+
+The paradox resolves when you understand AI as an amplifier, not a transformer. Strong teams with clear context, good practices, and verification systems get dramatically better. Weak teams with unclear context and broken processes get dramatically worse, faster. The median stays flat because the distribution widens — some teams 3x, others collapse.
+
+This is why competence comes first. Without it, AI amplifies the wrong things: unclear specs become more unclear code at higher velocity, broken processes become faster broken processes, bad decisions become more bad decisions with higher confidence.
+
+**The implication for CTOs:** Don't measure AI impact by counting tools deployed. Measure it by whether your best teams are getting 3x better. If your median is flat, the problem isn't the AI — it's that your teams don't have the context-creation capability to leverage it. Training fixes that. More tools don't.
+
+**Applies to:** Bootstrap positioning, advisory conversations, content strategy, newsletter
+**Source:** DORA 2025 Report ([dora.dev](https://dora.dev/research/2025/dora-report/), Sep 2025) [academic/research]; Mollick/P&G Cybernetic Teammate ([One Useful Thing](https://www.oneusefulthing.org/p/the-cybernetic-teammate), 2026) [practitioner direct / academic]; S&P Global ([Derosiaux/Medium](https://sderosiaux.medium.com/what-changed-in-q4-2025-and-why-enterprises-are-afraid-of-2026-2027-ccd4e632baae), Dec 2025) [practitioner analysis]
+**Date:** 2026-03-23
+
+---
+
+## Three Domains Have Crossed — The Pattern Predicts the Next
+
+**Thesis:** Three business domains now have Level 3 convergence evidence for agentic deployment: coding, customer service, and finance/accounting. The structural pattern that connects them predicts which domains cross next.
+
+The evidence:
+1. **Coding agents** — Level 4 (meta-pattern). 12+ independent signals. Compound engineering methodology approaching convergence. Claude Code #1 tool (zero to first in 8 months).
+2. **Customer service** — Level 3. Three platforms achieving 40-80% autonomous resolution (Agentforce, Zendesk, Intercom). Klarna reversal proves the limits of full replacement vs. hybrid.
+3. **Finance/accounting** — Level 3 (upgraded cycle 55). Eight+ independent companies: Pilot (autonomous bookkeeping), Basis, Accrual, Digits, Vic.ai, Numeric, Goldman Sachs (reconciliation agents), OpenCFO, HPE "Alfred" (90% manual reduction).
+
+The structural pattern connecting all three: **(1) rules are codified** (GAAP, resolution scripts, code specs), **(2) correctness is verifiable** (tests pass, tickets resolve, books balance), **(3) talent is constrained** (not enough accountants, not enough engineers, CS agents churn). Domains with all three properties are where autonomous agents converge first.
+
+**Next to cross (prediction):** Legal and compliance — rules are codified (statutes, regulations), correctness is verifiable (legal outcomes), and talent is constrained (lawyer shortage). Evidence already emerging: Legora ($5.55B), Garfield AI (SRA-authorized), Greenlite (AML/KYC). Operations/supply chain is showing agentic signals too: Pactum (procurement, 50+ enterprises, Nordic-origin), HappyRobot (logistics, DHL), RELEX (Helsinki, multi-agent supply chain).
+
+**The implication for CTOs:** If your process has codified rules, verifiable correctness, and talent constraints — it's a candidate for agentic deployment now. If it's judgment-heavy with no verification metric (strategy, creative, management) — wait. The domain characteristics predict readiness better than any vendor demo.
+
+**Applies to:** Advisory (which processes to pilot), Bootstrap Module 7, newsletter, content strategy
+**Source:** Platform watch cycles 40-57 synthesis; finance/accounting Level 3 upgrade (cycle 55); operations signals (cycle 57)
+**Date:** 2026-03-23
+
+---
+
+## Non-Engineering AI-Native Teams: Still Zero
+
+**Thesis:** Despite two targeted research cycles and extensive search, zero non-engineering teams have published evidence of genuine AI-native transformation — team restructuring around AI, not just tool adoption. This absence is itself a finding.
+
+The search was specific: teams where AI changed the team structure, daily practices, roles, and working style — not teams where people use ChatGPT. The result: engineering has AMPECO (cancelled sprints, daily shipping, CODA orchestrator), Microsoft ISE (1 human + 6 AI agents), Every (compound engineering). Customer service has one partial signal — Intercom (81% AI resolution, new roles created) — but Intercom is the vendor. Klarna tried and reversed.
+
+Beyond engineering and CS: nothing. Marketing has 91% AI tool adoption but zero team transformation. Finance has 47% agent deployment but zero restructuring. Legal has 52% in-house adoption but explicitly designs for "structured workflows with human oversight." HR has predictions of 30% headcount reduction but zero published practices.
+
+The structural explanation is the **verification gap**: engineering AI-nativeness works because code verification is clean (tests pass or fail). Non-engineering functions lack this equivalent. Marketing copy, legal analysis, financial judgment, HR decisions have no equivalent of `pytest`. Without clean verification, you can't give agents autonomy, so you can't restructure teams around agents.
+
+**The implication for CTOs:** If you're looking for models of AI-native teams outside engineering and CS, they don't exist yet. Your team will be among the first. This is both opportunity (competitive advantage) and risk (no playbook). The verification gap is the key to unlock: build explicit evaluation loops for your domain before restructuring teams.
+
+**Applies to:** Advisory (expectation setting), Bootstrap Module 7, AI-native teams research track
+**Source:** AI-native teams research cycles 49-51; Pragmatic Engineer survey (n≈1,000, Mar 2026); AMPECO blog (Feb 2026); Intercom blog
+**Date:** 2026-03-23
+
+---
+
+## Competence-First Reaches Level 3 — Moderna Validates at Enterprise Scale
+
+**Thesis:** The competence-first pattern (build competence before choosing platforms) has reached Level 3 convergence with the addition of Moderna/HBS as the first enterprise-scale validation.
+
+The evidence now spans 5+ independent sources:
+1. **Mollick (Wharton):** Leadership/Lab/Crowd framework — individual gains don't translate without shared mental models.
+2. **MIT (300+ deployments):** 95% of pilots fail. Line managers with competence outperform centralized AI labs.
+3. **Quintero (Every, 100+ companies):** "Clarity problem" is root cause. Documentation culture enables.
+4. **Shadow AI data:** ~50% unsanctioned use — demand exists, clarity doesn't.
+5. **F-Secure (March 2026):** After 2 modules, people built unprompted. Competence created pull. Level 2.
+6. **Moderna/HBS (NEW):** Enterprise-scale validation. Trained thousands in AI literacy before platform selection. Measurable outcomes. Published Harvard Business School case study. First large enterprise confirming the sequence works.
+
+Zero counter-evidence found across 53+ research cycles. No company has been found succeeding with "buy platform first, train later." The absence of counter-evidence is now itself Level 3 — we've looked systematically and found nothing.
+
+**The implication for CTOs:** This is no longer opinion. Five independent sources, including one Fortune 500 company, converge on the same pattern. Build competence first. The platform question answers itself afterward.
+
+**Applies to:** Core value proposition (strongest evidence), Bootstrap positioning, advisory, sales conversations
+**Source:** Cycle 53 convergence analysis; Moderna/HBS case study; F-Secure evidence; Mollick, MIT, Quintero
+**Date:** 2026-03-23
+
+---
+
 ## Template
 
 Copy this for new insights:

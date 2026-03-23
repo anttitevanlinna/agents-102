@@ -73,17 +73,21 @@ MIT GenAI Divide: 95% of organizations report no measurable ROI from AI. Zero na
 
 ---
 
-## Customer Service Is the Only Domain Crossing the Chasm
+## Three Domains Have Crossed — And the Pattern Predicts What's Next
 
-**Thesis:** Customer service has Level 3 convergence evidence. No other business domain does.
+**Thesis:** Customer service, coding, and finance/accounting have all reached Level 3 convergence. The structural pattern predicts which domains follow.
 
-Three platforms independently showing 40-80% autonomous resolution: Zendesk (51% SeatGeek), Salesforce (80% Finnair), HubSpot (84% Zeffy). Why this domain first? Clear success criteria + bounded scope + human escalation tolerance + high volume + data already in one system.
+Three domains now have convergence-level evidence for autonomous agents: (1) **Customer service** — three platforms independently showing 40-80% resolution (Zendesk/SeatGeek, Salesforce/Finnair, HubSpot/Zeffy). (2) **Coding** — compound engineering with 12+ independent signals (Every, Imprint, Autodesk, Anthropic, Microsoft CVP). (3) **Finance/accounting** — 8+ independent companies shipping autonomous agents (Pilot, Basis, Accrual, Digits, Vic.ai, Numeric, Goldman Sachs, OpenCFO).
 
-Every other business domain (finance, HR, compliance, operations) is still Level 1-2 at best. The lesson isn't "do customer service" — it's "look for processes with these same characteristics in YOUR domain."
+The structural pattern across all three: **(a) rules are codified** (GAAP/tax code, test suites, support playbooks), **(b) correctness is verifiable** (accurate numbers, passing tests, resolved tickets), **(c) talent supply is constrained** (CPA shortage, developer shortage, CS agent churn). This is a Level 4 meta-pattern candidate — it predicts that legal and compliance are next (codified rules, verifiable outcomes, specialist shortage).
 
-**Applies to:** Bootstrap content, domain research prioritization
-**Source:** Vertical SaaS research (March 2026)
-**Date:** 2026-03-21
+Counter-evidence doesn't negate convergence — it characterizes the deployment pattern. Finance: 86% of CFOs encountered hallucinations, ~40% of productivity lost to rework. The pattern is "autonomous with human oversight for material decisions." That's the mature pattern, not a failure mode.
+
+**The implication for CTOs:** Don't ask "when will agents work in my domain?" Ask: "Are our processes rules-based, verifiable, and talent-constrained?" If yes, the convergence is already happening. If no, you're in the second wave.
+
+**Applies to:** Bootstrap content, domain research prioritization, advisory, newsletter
+**Source:** Finance/accounting convergence validation cycle 55 + cross-domain analysis (March 2026)
+**Date:** 2026-03-23
 
 ---
 

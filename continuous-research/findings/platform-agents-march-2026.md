@@ -352,16 +352,97 @@ Workday claims from vendor materials:
 
 ---
 
+## New Platform Entrants & Protocol Updates (Cycle 61)
+
+### Zendesk + Forethought Acquisition (March 11, 2026)
+
+Zendesk's largest acquisition in two decades. Forethought (founded 2018, TechCrunch Battlefield winner, $115M raised) brings "Resolution Learning Loop" — AI agents that detect workflow gaps, generate new procedures, test them, and deploy. Named customers: Upwork, Grammarly, Airtable, Datadog. Supporting 1B+ monthly customer interactions.
+
+Zendesk claims its AI agents already resolve 80%+ of interactions end-to-end. Forethought adds native voice automation and the ability to extend AI into systems without APIs.
+
+- Source: https://techcrunch.com/2026/03/11/zendesk-acquires-agentic-customer-service-startup-forethought/ [general press — bare facts]
+- Source: https://www.computerweekly.com/news/366639959/Zendesk-to-acquire-Forethought-in-major-agentic-AI-play [general press]
+- Source: https://www.cxtoday.com/ai-automation-in-cx/zendesk-moves-to-expand-agentic-service-capabilities-with-forethought-acquisition/ [domain trade publication]
+- Source: https://futurumgroup.com/insights/will-zendesks-forethought-acquisition-enable-true-agentic-resolutions/ [analyst — Level 0]
+
+**Evidence level:** Level 0-1 (acquisition confirmed, capability claims unverified). The "80% resolution" claim is vendor-sourced. No independent deployment evidence from Forethought customers post-acquisition.
+**Finding category:** Platform Announcement.
+
+### AWS Bedrock AgentCore: Gaining Traction
+
+AgentCore SDK downloaded 2M+ times in 5 months since GA (October 2025). Framework-agnostic (LangGraph, CrewAI, etc.). New features: Policy (GA), Evaluations (Preview), Episodic Memory (Preview), Bidirectional Streaming for voice agents.
+
+Named customer deployments (all vendor-sourced — Level 0):
+- **PGA TOUR:** Multi-agent content generation, 1,000% speed increase, 95% cost reduction
+- **Workday:** Planning Agent with Code Interpreter, 30% reduction in routine analysis time
+- **Epsilon:** Campaign setup time reduced 30%, personalization up 20%
+- **CloudZero:** Migrated from Bedrock Agents to AgentCore, 5x faster response times
+- **Ericsson:** R&D agents for "double-digit gains across tens of thousands" workforce
+
+Practitioner feedback (Level 2): "Don't reach for AgentCore immediately — simple Bedrock invocations handle most use cases." Cost monitoring critical — agentic workflows consume more tokens than expected.
+
+- Source: https://dev.to/aws-builders/building-ai-agents-on-aws-in-2025-a-practitioners-guide-to-bedrock-agentcore-and-beyond-4efn [practitioner direct]
+- Source: https://www.rackspace.com/blog/amazon-bedrock-agentcore-preview-agentic-ai-platform [practitioner analysis]
+- Source: https://aws.amazon.com/blogs/apn/aws-partners-demonstrate-enterprise-ai-agent-solutions-with-amazon-bedrock-agentcore/ [vendor press release — Level 0]
+
+**Evidence level:** Level 1-2 (practitioner guides exist, but deployment outcomes are vendor-sourced).
+**Finding category:** Platform Announcement with practitioner interest.
+
+### Google Agentspace / Vertex AI Agent Builder
+
+Google Agentspace reached broader availability. Agent Engine sessions and Memory Bank moving to GA. New: Agent Threat Detection (Preview), private VPC deployment.
+
+Named interest from: Banco BV, Cohesity, Gordon Food Services, KPMG, Rubrik, Wells Fargo. PwC launched 120+ enterprise-ready agents on Google Cloud. Burns & McDonnell building Experience IQ with ADK.
+
+- Source: https://cloud.google.com/blog/products/ai-machine-learning/google-agentspace-enables-the-agent-driven-enterprise [vendor blog — Level 0]
+- Source: https://www.pwc.com/us/en/about-us/newsroom/press-releases/google-cloud-ai-agent-ecosystem.html [vendor press release — Level 0]
+
+**Evidence level:** Level 0-1 (vendor-sourced customer interest, no independent deployment outcomes).
+**Finding category:** Platform Announcement.
+
+### A2A Protocol: Gaining Institutional Backing
+
+A2A v0.3 released with gRPC support and security card signing. Linux Foundation adopted the project (June 2025). 150+ organizations in ecosystem. Key enterprise integrations announced:
+- **Salesforce** integrating into Agentforce
+- **SAP** collaborating on Joule enablement
+- **ServiceNow** Agent Control Tower integration
+- **S&P Global** adopted A2A for inter-agent communication
+- **Adobe** using A2A for distributed agent interoperability
+- **Huawei** open-sourcing A2A-T (telecom variant) at MWC 2026
+
+- Source: https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade [vendor blog — Level 0]
+- Source: https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents [industry consortium]
+- Source: https://technode.com/2026/03/02/mwc-2026-huawei-to-open-source-a2a-t-telecom-agent-protocol-software/ [tech press]
+
+**Assessment:** A2A is gaining institutional momentum — Linux Foundation governance, major platform integrations announced. This is a significant update from our previous finding of "no A2A adoption evidence." However, all integrations are announced, not deployed. The walled garden problem may be dissolving in principle but not yet in practice.
+
+**Evidence level:** Level 1 (institutional commitment, no deployment evidence).
+
+### Nordic Agentic AI Ecosystem
+
+18 active agentic AI companies in the Nordics, $1.13B total funding raised. 2 unicorns (Lovable at $653M funding is highest-funded). Key ecosystem moves:
+- **New Nordics AI (NNAI):** Nordic AI cooperation center launched in Stockholm (2025), bringing together AI Sweden + national organizations from Finland, Denmark, Norway, Iceland
+- **Sferical AI:** AstraZeneca, Ericsson, Saab, SEB, Wallenberg Investments jointly launched sovereign AI computing infrastructure for Swedish industry
+- **Equinix acquired atNorth** for $4B (Feb 2026) — 8 operational centers across all Nordic countries, optimized for AI workloads
+
+- Source: https://tracxn.com/d/explore/agentic-ai-startups-in-nordics/__NqYXQKSwbGhafqBWMcpVnhQNookbWaEIAvN4bPlb72Y [industry database]
+- Source: https://www.computerweekly.com/news/366634730/Big-tech-backers-put-Nordic-AI-bid-into-perspective [general press]
+
+**Evidence level:** Level 1 (ecosystem signals, not deployment evidence).
+
+---
+
 ## What We Did Not Find
 
 1. **No independent SAP Joule deployment case studies** with named customers and measurable outcomes from non-SAP sources. Reddit discussions about Joule are absent.
 2. **No Workday Illuminate practitioner evidence** — the gap between Workday's claims and practitioner reality remains the widest of any platform.
 3. **No Oracle Fusion agent customer deployments** — 29+ agents announced, zero customer stories found.
-4. **No ServiceNow Autonomous Workforce customer deployments** — only ServiceNow's own internal use cited.
-5. **No A2A (Agent-to-Agent) protocol adoption evidence** in enterprise platforms — all platforms operate within their own walled gardens.
+4. **No ServiceNow Autonomous Workforce customer deployments** — two beta customers named (CVS Health, City of Raleigh), zero results reported.
+5. **A2A protocol gaining institutional backing** but still no evidence of cross-platform agent interoperability in production.
 6. **No independent Microsoft Copilot Cowork reviews** — Research Preview only, 25th consecutive cycle with zero practitioner feedback.
 7. **No independent Dynamics 365 agent deployment case studies** — all quantified outcomes are vendor-sourced or Forrester TEI (commissioned).
 8. **No evidence Agent Mode in Office apps is changing sustained work patterns** — GA since Nov 2025, but no practitioner blogs describing ongoing use beyond initial impressions.
+9. **No independent Zendesk/Forethought deployment outcomes** post-acquisition — 80% resolution claim is vendor-sourced.
 
 ---
 
@@ -375,8 +456,12 @@ Workday claims from vendor materials:
 | Microsoft D365/Copilot | Account Reconciliation Agent | Release Wave 1 shipping April 2026. Agent Mode GA in Office. Cowork (Anthropic) in preview. Adoption crisis: 3.3% penetration, declining share. | ↑↓ (features up, adoption down) |
 | Oracle Fusion | 40+ agents announced | 29 new agents (Feb), no additional cost. Zero deployment evidence. | → (unchanged) |
 | Workday Illuminate | Zero practitioner evidence | Still zero. Vendor claims only. | → (unchanged) |
+| Zendesk | Forethought acquisition pending | Acquired Forethought (March 11). Claims 80% resolution. No independent evidence. | NEW |
+| AWS Bedrock AgentCore | N/A | GA Oct 2025. 2M+ SDK downloads. Named customers (vendor-sourced). Practitioner guides emerging. | NEW |
+| Google Agentspace | N/A | Agent Engine moving to GA. PwC 120+ agents. All vendor-sourced. | NEW |
+| A2A Protocol | No adoption evidence | Linux Foundation governance. 150+ orgs. Salesforce/SAP/ServiceNow integrating. Still announced, not deployed. | ↑ (institutional) |
 
-**The headline:** The platform agent wave is accelerating (ServiceNow Autonomous Workforce, Microsoft Release Wave 1, SAP Joule GA). But the announcement-to-deployment gap remains wide for all platforms except Salesforce Agentforce, which has real but polarizing deployment evidence. **Microsoft's paradox:** the most pervasive agent rollout (M365 is everywhere) paired with the most visible adoption crisis (3.3% penetration, declining share, users preferring competitors). The Anthropic pivot (Cowork built on Claude) is the most significant architectural signal — Microsoft is hedging away from GPT-only.
+**The headline:** The platform agent wave is accelerating (ServiceNow Autonomous Workforce, Microsoft Release Wave 1, SAP Joule GA, Zendesk+Forethought, AWS AgentCore GA). But the announcement-to-deployment gap remains wide for all platforms except Salesforce Agentforce, which has real but polarizing deployment evidence. **Microsoft's paradox:** the most pervasive agent rollout (M365 is everywhere) paired with the most visible adoption crisis (3.3% penetration, declining share, users preferring competitors). The Anthropic pivot (Cowork built on Claude) is the most significant architectural signal — Microsoft is hedging away from GPT-only. **A2A protocol gaining institutional backing** — the walled garden era may be ending in principle, though not yet in practice.
 
 ---
 

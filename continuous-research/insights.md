@@ -547,6 +547,40 @@ Zero counter-evidence found across 53+ research cycles. No company has been foun
 
 ---
 
+## Training > Tooling Is Now Level 3 Convergence
+
+**Thesis:** Every major 2026 survey says competence is the bottleneck, not platforms. Organizations that invest in people first outperform those that buy platforms first. Zero counter-evidence in 58 research cycles.
+
+The signal count crossed 10+ independent sources in cycle 58: PwC (38% cite skill gaps as top-3 barrier), Deloitte (n=3,235: "education was #1 talent adjustment"), BCG (companies with deeply engaged C-suite are 12x more likely to be top AI performers, invest 2x in upskilling), Meta (first company tying performance reviews to AI usage), Mollick at UNLEASH ("biggest constraint is leadership and organizational design, not technology"), shadow AI data (93% of enterprise ChatGPT use on non-corporate accounts — employees self-training because orgs aren't), Moderna (HBS: trained workforce first → 1,000s custom GPTs organically), MIT (95% pilot failure), Quintero (100+ companies), F-Secure (competence created pull).
+
+Zero platform-first success stories found across 58 cycles. The closest (PwC's 230K Copilot users) is actually competence-first — PwC's core business IS change management.
+
+Mollick's new "Leadership, Lab, Crowd" framework maps directly to our five-step journey: Bootstrap = seeding the Crowd, Champions = building the Lab, the buyer = Leadership. His separate observation that Fortune 50 CTOs "won't sign another five-year contract" reinforces: train people (durable) before betting platforms (shifting).
+
+**The implication for CTOs:** Stop evaluating platforms. Start building competence. The platform question becomes answerable once your people know what they need.
+
+**Applies to:** Core value proposition, marketing messaging, Bootstrap positioning, advisory conversations, newsletter content
+**Source:** Cycle 58 synthesis — PwC, Deloitte, BCG, Meta, Mollick/UNLEASH, shadow AI, Moderna/HBS, MIT, Quintero, F-Secure
+**Date:** 2026-03-23
+
+---
+
+## The Innovation Locus Is Inside (Not Arriving From Outside)
+
+**Thesis:** The most advanced AI users are already inside your organization — they're just doing it secretly. The transformation isn't about introducing AI, it's about making visible what's already happening and giving it structure.
+
+Mollick (UNLEASH, March 2026): "The locus of innovation is not with vendors but inside the organization already — the AI users." Shadow AI data confirms: 93% of enterprise ChatGPT use is on non-corporate accounts. 69% of organizations suspect employees use prohibited AI tools. Moderna case: once the workforce was trained, 1,000s of custom GPTs appeared organically — nobody assigned this work.
+
+This reframes the bootstrap offering fundamentally. We're not introducing AI to organizations. We're making visible what's already happening underground and giving it structure, governance, and strategic direction. The urgency isn't "you need to start" — it's "this is already happening whether you know it or not."
+
+**The implication for CTOs:** Your people are already using AI. The question isn't whether to adopt — it's whether to lead the adoption that's already underway, or let it happen chaotically.
+
+**Applies to:** Marketing messaging (urgency framing), Bootstrap positioning, advisory conversations
+**Source:** Mollick UNLEASH March 2026, shadow AI surveys, Moderna/HBS
+**Date:** 2026-03-23
+
+---
+
 ## Template
 
 Copy this for new insights:

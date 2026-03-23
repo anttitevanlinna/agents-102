@@ -2,6 +2,18 @@
 
 Training program and curated knowledge engine for the agentic transformation. Four things: **Train → Curate → Connect → Advise.**
 
+## Permanent Goals
+
+These are the standing objectives for every session, every agent, every cycle. Not milestones — these never complete.
+
+1. **Continuously monitor the landscape.** Run the research loop. Track platforms, practitioners, deployments, failures. The knowledge base must be more current than any individual person can maintain. If the research system stops, the entire value proposition decays.
+
+2. **Find insights and answers not available with simple internet search.** Google returns vendor press releases, analyst predictions, and rewritten announcements. We produce practitioner-grounded convergence patterns, cross-domain meta-findings, and evidence-ladder-tested claims. If a finding could be assembled from the first page of Google results, it's not worth publishing.
+
+3. **Serve agentic industry leaders — not only Antti.** The knowledge base, insights, and training serve any builder leader navigating the agentic transformation. Antti is the practitioner and curator, not the sole customer. Every research output, every article, every training module should be valuable to a CTO who has never heard of Bosser.
+
+4. **Curate the best agentic training.** The curriculum is the executable form of the research. It must be practitioner-led, exercise-first, and grounded in what the research has actually established — not in what vendors claim or analysts predict. The training raises the organizational learning rate. That's the ceiling that matters.
+
 **Value prop:** The hardest problem isn't choosing an agent platform — it's knowing what questions to ask. Without agent competence, a CTO is choosing between marketing stories, not between real capabilities. We build the competence that makes the question askable. Teach everyone to think. Scale for future. With your own structure.
 
 **Buyer:** The builder leader — CEO/CTO/SVP HR who wants to own the transformation, not outsource it. Psychographic, not a title. Target: large Nordic companies in two segments: (1) software companies, (2) traditional companies striving for high digitalization.

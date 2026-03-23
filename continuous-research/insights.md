@@ -501,20 +501,22 @@ The structural pattern connecting all three: **(1) rules are codified** (GAAP, r
 
 ---
 
-## Non-Engineering AI-Native Teams: Still Zero
+## Non-Engineering AI-Native: First Signal from Finance
 
-**Thesis:** Despite two targeted research cycles and extensive search, zero non-engineering teams have published evidence of genuine AI-native transformation — team restructuring around AI, not just tool adoption. This absence is itself a finding.
+**Thesis:** Despite extensive search, zero non-engineering teams have published evidence of genuine AI-native transformation. But the first individual-level signal just appeared — and it confirms the domain-crossing pattern.
 
-The search was specific: teams where AI changed the team structure, daily practices, roles, and working style — not teams where people use ChatGPT. The result: engineering has AMPECO (cancelled sprints, daily shipping, CODA orchestrator), Microsoft ISE (1 human + 6 AI agents), Every (compound engineering). Customer service has one partial signal — Intercom (81% AI resolution, new roles created) — but Intercom is the vendor. Klarna tried and reversed.
+The search was specific: teams where AI changed team structure, daily practices, roles, and working style. Engineering has AMPECO, Microsoft ISE, Every. Customer service has Intercom (but vendor) and Klarna (reversed). Beyond that: nothing published.
 
-Beyond engineering and CS: nothing. Marketing has 91% AI tool adoption but zero team transformation. Finance has 47% agent deployment but zero restructuring. Legal has 52% in-house adoption but explicitly designs for "structured workflows with human oversight." HR has predictions of 30% headcount reduction but zero published practices.
+But direct observation from F-Secure reveals a finance person who has been coding with Claude for 9 months — automating quarterly bookkeeping chores, now adding AI features via Claude Code, building an in-house tool to replace Excel spreadsheets. The profile matters: consulting background, minor in CS, but NOT a coder — "couldn't produce much more than hello world without AI." Claude is doing the actual coding. The consulting background provides structured thinking; the CS minor provides just enough technical vocabulary to steer the agent. Not a team restructuring yet — but the individual trajectory is unmistakable: automation → AI features → in-house production tooling. This is the same compound engineering pattern that Every, AMPECO, and Autodesk follow in software. A non-engineer finance person is doing it independently, in their own domain, with coding agents bridging the skill gap.
 
-The structural explanation is the **verification gap**: engineering AI-nativeness works because code verification is clean (tests pass or fail). Non-engineering functions lack this equivalent. Marketing copy, legal analysis, financial judgment, HR decisions have no equivalent of `pytest`. Without clean verification, you can't give agents autonomy, so you can't restructure teams around agents.
+Why finance? The **verification gap** predicts it: bookkeeping has verifiable correctness (the books must balance), which is the structural precondition our domain-crossing pattern identifies (codified rules + verifiable correctness + talent constraints). Marketing copy has no `pytest`. Bookkeeping does — the numbers must reconcile. This aligns with finance/accounting reaching Level 3 convergence in the platform watch.
 
-**The implication for CTOs:** If you're looking for models of AI-native teams outside engineering and CS, they don't exist yet. Your team will be among the first. This is both opportunity (competitive advantage) and risk (no playbook). The verification gap is the key to unlock: build explicit evaluation loops for your domain before restructuring teams.
+The structural explanation for why this doesn't show up in public research: it's happening inside enterprises, done by domain experts who don't blog or tweet about it. The practitioner-publishing gap. We see it because Antti is inside F-Secure training people.
 
-**Applies to:** Advisory (expectation setting), Bootstrap Module 7, AI-native teams research track
-**Source:** AI-native teams research cycles 49-51; Pragmatic Engineer survey (n≈1,000, Mar 2026); AMPECO blog (Feb 2026); Intercom blog
+**The implication for CTOs:** The non-engineering AI-native transformation won't start with team mandates. It starts with one domain expert who discovers coding agents and starts replacing their Excel workflows. The person doesn't need to be a developer — consulting background + enough technical vocabulary to steer the agent is sufficient. Coding agents bridge the skill gap. Look for the person who's already doing it — they're 9 months ahead of your transformation plan. The question isn't "should we do this?" It's "who's already doing it and how do we learn from them?"
+
+**Applies to:** Advisory (expectation setting + "find your internal pioneer"), Bootstrap Module 1 & 7, AI-native teams research, newsletter
+**Source:** AI-native teams research cycles 49-51; F-Secure direct observation (March 2026); domain-crossing pattern (cycles 55-57)
 **Date:** 2026-03-23
 
 ---

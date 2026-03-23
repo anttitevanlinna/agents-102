@@ -123,6 +123,7 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 | **Klarna CS (Siemiatkowski)** | Was ~700 CS agents replaced | **Customer support** | AI replaced 75% of CS volume, then REVERSED — quality dropped, now rehiring with hybrid "Uber-style" model | Level 3 (counter-signal) | [FinTech Weekly](https://www.fintechweekly.com/magazine/articles/klarna-hires-customer-service-after-ai-pivot) |
 | **Goldman Sachs (Argenti)** | Unknown | **Finance/Compliance** | Claude agents for trade accounting, KYC, reconciliation — tool deployment, not yet team restructuring | Level 2 | [American Banker](https://www.americanbanker.com/news/goldman-equips-ai-agents-do-trade-accounting-onboarding) |
 | **F-Secure (finance individual)** | 1 person | **Finance** | Consulting background + CS minor, NOT a coder ("couldn't produce more than hello world without AI"). 9 months coding with Claude, automating quarterly bookkeeping, building in-house tool to replace Excel, now adding AI features via Claude Code. The trajectory: automation → AI features → production tooling. | Level 2 | [direct observation, Mar 2026] — Nordic, first non-engineering coding-agent practitioner |
+| **F-Secure (technology director)** | 1 person | **Technology/Management** | CS minor background. Was: PowerPoints, Confluence pages. Now: building custom dashboards with coding agents, now building a hosting platform for AI apps. Trajectory: consumption (slides/docs) → creation (dashboards) → infrastructure (hosting). | Level 2 | [direct observation, Mar 2026] — Nordic, second non-engineering coding-agent practitioner |
 
 ## Convergence Patterns
 
@@ -134,6 +135,24 @@ Customer service is the first non-engineering function showing real team restruc
 - Klarna: Reversed after replacing 700 agents — [multiple independent sources, Level 3]
 - Forrester/Orgvue: 55% of companies regret AI-driven layoffs — [academic/research survey]
 - Intercom customers (Anthropic, Sharesies, Lightspeed, WHOOP) achieving 50-84% resolution rates — [vendor case study]
+
+### Emerging Pattern F: The CS Minor Effect — Domain Experts With Just Enough Technical Vocabulary
+**Level 2, emerging (2 signals from same org, watch for convergence)**
+
+A specific profile is emerging at F-Secure: people with a CS minor (not CS majors, not engineers) who are using coding agents to transform their non-engineering roles. Two cases:
+
+1. **Finance person** — consulting background + CS minor. 9 months coding with Claude. Automating quarterly bookkeeping → building in-house tool to replace Excel → now adding AI features. Trajectory: automation → AI features → production tooling.
+2. **Technology director** — CS minor. Was producing PowerPoints, Confluence pages. Now building custom dashboards → now building a hosting platform for AI apps. Trajectory: consumption (slides/docs) → creation (dashboards) → infrastructure (hosting).
+
+**The profile:** Not coders — "couldn't produce more than hello world without AI." But the CS minor provides just enough technical vocabulary (variables, functions, data structures, what code is) to steer a coding agent effectively. The consulting/management background provides structured thinking and clear problem decomposition. Claude does the actual coding.
+
+**Why this matters:** The AI-native transformation outside engineering may not require engineers. It may require domain experts with *just enough* technical literacy to direct coding agents. This is a lower bar than "learn to code" but higher than "use ChatGPT." The CS minor is a proxy for the real capability: being able to describe work in terms an agent can execute.
+
+**The output trajectory is also significant.** Both people moved from consumption artifacts (slides, docs, spreadsheets) to creation artifacts (tools, dashboards, apps). Coding agents didn't make them better at PowerPoint. Coding agents made PowerPoint obsolete — they now build the thing directly instead of describing it in slides.
+
+**Hypothesis:** Organizations will find their AI-native pioneers among people with this specific profile: domain expertise + just enough technical background + high agency. Not in the engineering team. Not among pure business people. In the gap between — the people who always wished they could build things but couldn't. Coding agents gave them the capability. The CS minor is a predictor, but the real variable is probably "technical curiosity + structured thinking."
+
+**WATCH:** Are there more at F-Secure? Is this pattern visible elsewhere? Does it replicate in other organizations after Bootstrap training?
 
 ### Emerging Pattern E: The Verification Gap Blocks Non-Engineering AI-Nativeness
 Engineering AI-nativeness works because code verification is clean (tests pass or fail). Non-engineering functions lack this. Marketing copy, legal analysis, financial judgment, HR decisions have no equivalent of `pytest`. This structural gap explains why non-engineering teams adopt AI as tool (high adoption rates) but don't reorganize around it (zero AI-native teams). Mollick's "management as AI superpower" framework suggests the solution is building explicit evaluation/feedback loops — but no team has published evidence of doing this successfully at scale.

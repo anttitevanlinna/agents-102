@@ -501,22 +501,26 @@ The structural pattern connecting all three: **(1) rules are codified** (GAAP, r
 
 ---
 
-## Non-Engineering AI-Native: First Signal from Finance
+## The CS Minor Effect — Where Non-Engineering AI-Nativeness Actually Starts
 
-**Thesis:** Despite extensive search, zero non-engineering teams have published evidence of genuine AI-native transformation. But the first individual-level signal just appeared — and it confirms the domain-crossing pattern.
+**Thesis:** Non-engineering AI-native transformation doesn't start with team mandates or platform decisions. It starts with domain experts who have just enough technical background to steer coding agents — and it transforms what they produce, not how fast they produce it.
 
-The search was specific: teams where AI changed team structure, daily practices, roles, and working style. Engineering has AMPECO, Microsoft ISE, Every. Customer service has Intercom (but vendor) and Klarna (reversed). Beyond that: nothing published.
+57 research cycles found zero published evidence of non-engineering AI-native teams. But direct observation at F-Secure reveals an emerging pattern with a specific profile:
 
-But direct observation from F-Secure reveals a finance person who has been coding with Claude for 9 months — automating quarterly bookkeeping chores, now adding AI features via Claude Code, building an in-house tool to replace Excel spreadsheets. The profile matters: consulting background, minor in CS, but NOT a coder — "couldn't produce much more than hello world without AI." Claude is doing the actual coding. The consulting background provides structured thinking; the CS minor provides just enough technical vocabulary to steer the agent. Not a team restructuring yet — but the individual trajectory is unmistakable: automation → AI features → in-house production tooling. This is the same compound engineering pattern that Every, AMPECO, and Autodesk follow in software. A non-engineer finance person is doing it independently, in their own domain, with coding agents bridging the skill gap.
+**Person 1 — Finance.** Consulting background, CS minor, NOT a coder ("couldn't produce more than hello world without AI"). Coding with Claude for 9 months. Automating quarterly bookkeeping → building in-house tool to replace Excel → now adding AI features via Claude Code. Trajectory: automation → AI features → production tooling.
 
-Why finance? The **verification gap** predicts it: bookkeeping has verifiable correctness (the books must balance), which is the structural precondition our domain-crossing pattern identifies (codified rules + verifiable correctness + talent constraints). Marketing copy has no `pytest`. Bookkeeping does — the numbers must reconcile. This aligns with finance/accounting reaching Level 3 convergence in the platform watch.
+**Person 2 — Technology director.** CS minor. Was: PowerPoints, Confluence pages. Now: building custom dashboards → building a hosting platform for AI apps. Trajectory: consumption (slides/docs) → creation (dashboards) → infrastructure (hosting).
 
-The structural explanation for why this doesn't show up in public research: it's happening inside enterprises, done by domain experts who don't blog or tweet about it. The practitioner-publishing gap. We see it because Antti is inside F-Secure training people.
+The profile connects them: CS minor (not CS major, not engineer), domain expertise, structured thinking, high agency. The CS minor provides just enough technical vocabulary — variables, functions, data structures, what code *is* — to steer a coding agent effectively. Claude does the actual coding. The domain expertise provides judgment about what to build.
 
-**The implication for CTOs:** The non-engineering AI-native transformation won't start with team mandates. It starts with one domain expert who discovers coding agents and starts replacing their Excel workflows. The person doesn't need to be a developer — consulting background + enough technical vocabulary to steer the agent is sufficient. Coding agents bridge the skill gap. Look for the person who's already doing it — they're 9 months ahead of your transformation plan. The question isn't "should we do this?" It's "who's already doing it and how do we learn from them?"
+**The output shift is the real story.** These people didn't get better at their old job. Their old job became obsolete. The finance person isn't making better spreadsheets — they're building the system that replaces spreadsheets. The director isn't making better slides — they're building the dashboard that makes slides unnecessary. Coding agents didn't accelerate consumption artifacts. They enabled creation artifacts. The shift is from *describing* things to *building* things.
 
-**Applies to:** Advisory (expectation setting + "find your internal pioneer"), Bootstrap Module 1 & 7, AI-native teams research, newsletter
-**Source:** AI-native teams research cycles 49-51; F-Secure direct observation (March 2026); domain-crossing pattern (cycles 55-57)
+This is why it's invisible to public research. It's happening inside enterprises, done by domain experts who don't blog or tweet. The practitioner-publishing gap. We see it because Antti is inside F-Secure training people. There could be thousands of these people. Nobody's counting because they don't identify as developers and don't show up in developer surveys.
+
+**The implication for CTOs:** Your AI-native pioneers are already in your organization. They're not in engineering. They're the finance person who's been quietly building tools for 9 months. The director who stopped making slides and started building dashboards. Look for the profile: domain expertise + technical curiosity + structured thinking. The CS minor is a predictor, but the real variable is "can this person describe work in terms an agent can execute?" After Bootstrap training, you'll have more of them — because training is what gives the rest of the organization the vocabulary the CS minors already have.
+
+**Applies to:** Advisory ("find your internal pioneers"), Bootstrap positioning (we create more of these people), Module 1 & 8, newsletter, AI-native teams research
+**Source:** F-Secure direct observation — 2 practitioners, emerging pattern (March 2026); domain-crossing pattern (cycles 55-57)
 **Date:** 2026-03-23
 
 ---

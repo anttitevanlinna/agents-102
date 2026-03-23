@@ -36,8 +36,8 @@ Done the agentic way, because no other way works. No person has comparative expe
 - Assumption map: `strategy/assumption-map.md`
 - Marketing plan: `strategy/marketing-plan.md`
 - Content strategy: `content-strategy.md`
-- Training outline: `training-outline.md`
-- Learning goals: `learning-goals.md`
+- Training outline: `curriculum/training-outline.md`
+- Learning goals: `curriculum/learning-goals.md`
 - Nordic digital leaders: `research/nordic-digital-leaders-findings.md`
 - All competitor/market research: `research/` directory (see MEMORY.md for index)
 - Continuous research system: `continuous-research/README.md`
@@ -71,7 +71,7 @@ A working version of this training already exists and is being delivered at F-Se
 
 **Scope:** Bootstrap (Step 1) — the 2-day intensive. Eight modules, each a single markdown file in `curriculum/`.
 
-**Source of truth:** `training-outline.md` defines the arc. `learning-goals.md` defines what graduates can do. `content-strategy.md` defines the storyline and positioning. Curriculum modules are the executable version of these three documents.
+**Source of truth:** `curriculum/training-outline.md` defines the arc. `curriculum/learning-goals.md` defines what graduates can do. `content-strategy.md` defines the storyline and positioning. Curriculum modules are the executable version of these three documents.
 
 **Modules:**
 1. `curriculum/module-01-getting-going.md` — Getting Going

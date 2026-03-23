@@ -171,21 +171,70 @@ Basware launched two distinct agents — AP Business Agent (decision support) an
 
 ---
 
-## NEW Pattern: Context Engineering as Framework (Level 1)
+## NEW Pattern: Context Engineering as Framework (Level 1 → approaching Level 2)
 
 **Hypothesis:** "Context engineering" is replacing "prompt engineering" as the core agent development paradigm.
 
-**Evidence:**
+**Evidence (updated):**
 - Swyx: "Everything that makes agents good is context engineering" (X.com, March 2026)
 - QCon London 2026 talk: "Context Engineering: Building the Knowledge Engine AI Agents Need"
-- The concept captures the shift from optimizing individual prompts to designing entire information supply systems
+- Dex Horthy's "12-factor Agents: Patterns of reliable LLM applications" — featured on Agent Reliability track at AI Engineer conference
+- Nina Lopatina (Contextual AI) at NeurIPS 2025: industry scrambling to turn context engineering into "full-stack discipline, complete with benchmarks and tooling"
+- Inkeep analysis: "Most production failures aren't model failures — they're context failures"
+- StartuphubAI: "Agentic RAG is the new baseline — context engineering shifts from component hacks to full system design"
+- AI Academy failure taxonomy: context window degradation as #1 production failure mode
 
 - Source: https://x.com/swyx/status/1940877277476409563 [practitioner direct]
 - Source: https://qconlondon.com/presentation/mar2026/context-engineering-building-knowledge-engine-ai-agents-need [conference talk]
+- Source: https://inkeep.com/blog/context-engineering-why-agents-fail [practitioner analysis]
+- Source: https://www.startuphub.ai/ai-news/ai-video/2026/agentic-rag-is-the-new-baseline-context-engineering-shifts-from-component-hacks-to-full-system-design/ [domain trade publication]
+- Source: https://ai-academy.training/2026/01/17/why-most-ai-agents-break-in-production-and-how-to-fix-them/ [practitioner analysis]
 
-**Signal count:** 3-5. Level 1 (conceptual framework, not deployment pattern).
+**Signal count:** 7-9 (up from 3-5). Approaching Level 2-3 threshold. Multiple independent practitioners AND conference tracks AND production failure analyses all pointing to the same conclusion: context, not model capability, is the primary determinant of agent success.
 
-**Relevance:** Maps to our training's emphasis on organizational context. When Agents 102 says "only the org's people know their requirements, systems, and constraints" — that IS context engineering.
+**Relevance:** Maps directly to:
+1. Our training's emphasis on organizational context ("only the org's people know their requirements, systems, and constraints")
+2. Our Agent Platform Advisory offering (building the system that synthesizes organizational knowledge into structured context)
+3. The failure taxonomy (context failures, not model failures)
+
+**Assessment upgrade:** Context engineering is graduating from buzzword to discipline. It has conference tracks, dedicated tooling emerging, and production failure data backing it up. Watch for: dedicated "context engineering" tools, frameworks, and job titles in Q2 2026.
+
+---
+
+## NEW Pattern: Agent Production Failure Taxonomy (Level 3 — CONFIRMED)
+
+**Hypothesis:** Agent failures follow predictable, classifiable patterns — and the root cause is integration/context, not model capability.
+
+**Evidence (Cycle 60):**
+
+| Failure Mode | Independent Sources | Level |
+|---|---|---|
+| Context window degradation | AI Academy, Inkeep, Composio | 3+ |
+| System illegibility (enterprise messiness) | Sweep, AzureTechInsider, Abu Dhabi Summit | 3+ |
+| Integration > intelligence | Composio, Hypersense, ISACA | 3+ |
+| Demo trap (works in notebook, fails in prod) | AI Academy, Abu Dhabi Summit, Company of Agents | 3+ |
+| Governance gap | ISACA, Composio, EY, Meta incident | 3+ |
+| Compounding error (85%^10 = 20%) | Composio, AI Academy, multiple | 3+ |
+| Infinite retry loops | AI Academy | 2 |
+
+**Key quantified findings:**
+- 88% of agents never reach production (Hypersense, Deloitte confirms at 86%)
+- Production agents require human intervention within 10 steps in 68% of cases (AzureTechInsider)
+- Cost of failed pilot: $500K+ in engineering salary burn (Composio)
+- 40% of agentic AI projects will be canceled by end of 2027 (Gartner — Level 0, but independently cited)
+
+**Signal count:** 15+ independent sources across practitioner blogs, conference talks, post-mortems, and surveys.
+
+**Verdict:** CONFIRMED at Level 3. The failure taxonomy is convergent — the same patterns appear across independent practitioners, conferences (Abu Dhabi, QCon London), and analyst surveys. The root cause is consistently integration/context/governance, not model capability.
+
+**What this means for our training:** The failure taxonomy is directly actionable for Modules 4-6 (Security, Output Quality, Evals). The "88% never reach production" statistic and "85%^10 = 20%" compounding error are powerful teaching tools. The "constraint over freedom" insight (successful agents are flexible pipelines, not open-ended thinkers) is the architectural takeaway.
+
+- Source: https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap [practitioner analysis]
+- Source: https://hypersense-software.com/blog/2026/01/12/why-88-percent-ai-agents-fail-production/ [domain trade publication]
+- Source: https://ai-academy.training/2026/01/17/why-most-ai-agents-break-in-production-and-how-to-fix-them/ [practitioner analysis]
+- Source: https://azuretechinsider.com/from-hype-to-reality-what-production-ai-agents-actually-look-like/ [practitioner analysis]
+- Source: https://www.sweep.io/blog/2025-the-year-enterprise-ai-hit-the-system-wall/ [practitioner direct]
+- Source: https://aiphoria.ai/blog/abu-dhabi-why-ai-agents-fail-in-production [conference report]
 
 ---
 
@@ -193,9 +242,13 @@ Basware launched two distinct agents — AP Business Agent (decision support) an
 
 1. **No counter-evidence against hybrid beats autonomous.** No examples of fully autonomous enterprise agents succeeding at multi-step workflows without human checkpoints. The Meta incident reinforces this.
 
-2. **No A2A (Agent-to-Agent protocol) enterprise adoption evidence.** Google's A2A remains protocol-stage. No enterprise deployment stories found.
+2. **No A2A (Agent-to-Agent protocol) enterprise deployment evidence.** A2A has 150+ organizations and Linux Foundation governance, but still zero production deployment stories. Institutional backing ≠ deployment.
 
-3. **No MCP enterprise deployment evidence.** MCP adoption is developer-focused (coding agents). No evidence of MCP being used for business process agents in enterprises.
+3. **No MCP enterprise deployment evidence beyond developer tools.** MCP at 10,000+ public servers, but adoption is developer/coding-focused. No evidence of MCP being used for business process agents in enterprises. The Intuit partnership (spring 2026 rollout) will be the first major test.
+
+4. **No independent Claude Cowork deployment stories.** Launched Feb 24, zero practitioner reviews found after 4 weeks.
+
+5. **No Google Cloud Agent Builder customer deployment stories.** PwC 120+ agents claimed, no details on outcomes.
 
 4. **No evidence that data quality has improved as a blocker.** The "77% fail on data" finding from February is not contradicted.
 

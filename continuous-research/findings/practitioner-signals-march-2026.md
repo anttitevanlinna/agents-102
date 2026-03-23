@@ -157,9 +157,95 @@ Research on agent failures in enterprise (March 2026):
 
 ---
 
+## Cycle 60 Update: Context Engineering Deepening + Agent Failure Taxonomy
+
+### Context Engineering: From Buzzword to Discipline (March 2026)
+
+The "context engineering" concept promoted by Swyx/Dex Horthy is now gaining QCon-level conference traction and practitioner adoption:
+
+**QCon London 2026 talk:** "Context Engineering: Building the Knowledge Engine AI Agents Need" — presented the insight that AI coding tools are "missing context" (team architectural decisions, Slack thread discussions). A practitioner's guide to building a "context engine" that continuously synthesizes organizational knowledge.
+- Source: https://qconlondon.com/presentation/mar2026/context-engineering-building-knowledge-engine-ai-agents-need [conference talk]
+
+**Inkeep analysis:** "Most production failures aren't model failures — they're context failures. Teams are drowning LLMs in irrelevant information, giving them ambiguous tools, and asking them to maintain coherence across bloated conversation histories."
+- Source: https://inkeep.com/blog/context-engineering-why-agents-fail [practitioner analysis]
+
+**Nina Lopatina (Contextual AI) at NeurIPS 2025:** Industry scrambling to turn context engineering from design patterns into a "full-stack discipline, complete with benchmarks and tooling designed for real-world complexity."
+- Source: referenced via Latent Space podcast [practitioner direct]
+
+**Shift from component to system:** The next frontier is full-system context design — end-to-end architectures for reasoning over billions of tokens, encompassing multimodal ingestion, hybrid search, constrained agents, and strategic context management.
+- Source: https://www.startuphub.ai/ai-news/ai-video/2026/agentic-rag-is-the-new-baseline-context-engineering-shifts-from-component-hacks-to-full-system-design/ [domain trade publication]
+
+**Evidence level:** Level 2 → approaching Level 3 (multiple independent practitioners, conference talks, and tools converging on the same concept).
+
+**Relevance to our training:** Context engineering IS what our Agent Platform Advisory offering does — building the system that synthesizes organizational knowledge into structured context for agents. The term validates our approach technically.
+
+### Agent Production Failure Taxonomy: Converging on Integration, Not Intelligence
+
+New practitioner sources strengthen the failure pattern:
+
+**AI Academy (Jan 2026) — Specific failure modes:**
+1. **Infinite retry loops:** Agent gets error, "apologizes," sends identical malformed query. Single request burns $50 in API credits in 3 minutes.
+2. **Context window degradation:** Performance degrades non-linearly. Agent perfect at step 2, hallucinating wildly at step 8 as context fills with intermediate noise.
+3. **The "Demo Trap":** Jupyter notebook demos look like magic. Production = different universe.
+4. **The Fix — Constraint over freedom:** Most successful production agents in 2026 look like "flexible pipelines" — freedom to reason within a step, rigid engineering between steps.
+- Source: https://ai-academy.training/2026/01/17/why-most-ai-agents-break-in-production-and-how-to-fix-them/ [practitioner analysis]
+
+**AzureTechInsider — Production reality:**
+Production agents execute at most 10 steps before requiring human intervention in 68% of cases. Not the hundred-step autonomous reasoning chains shown in demos.
+- Source: https://azuretechinsider.com/from-hype-to-reality-what-production-ai-agents-actually-look-like/ [practitioner analysis]
+
+**Sweep — Enterprise AI post-mortem (2025):**
+AI hasn't failed because models aren't smart enough — it's because enterprise systems weren't "legible" enough. Agents in customized Salesforce orgs skip steps, rules fire most-but-not-all of the time, edge cases and permission exceptions break everything.
+- Source: https://www.sweep.io/blog/2025-the-year-enterprise-ai-hit-the-system-wall/ [practitioner direct]
+
+**Machines Can Think AI Summit 2026 (Abu Dhabi):**
+"Building an AI agent that demos convincingly is easy, but deploying one that performs reliably in production is another thing entirely."
+- Source: https://aiphoria.ai/blog/abu-dhabi-why-ai-agents-fail-in-production [conference report]
+
+**Cost of failure quantified:** Five senior engineers × three months × shelved pilot = $500K+ in salary burn. "Half a million on plumbing instead of product." Beyond financial: leadership loses faith, VPs dismiss AI as hype, best engineers get frustrated and leave.
+- Source: https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap [practitioner analysis]
+
+**Evidence level:** Level 3 (convergence). Multiple independent sources — practitioner blogs, conference talks, post-mortems — all converge on the same pattern: agents fail on integration/context/governance, not on model capability. The "10 steps then human" finding and "constraint over freedom" pattern are independently confirmed across 5+ sources.
+
+**Updated failure taxonomy (Level 3 convergence):**
+
+| Failure Mode | Description | Sources |
+|---|---|---|
+| Context window degradation | Performance degrades non-linearly as context fills | AI Academy, Inkeep, Composio |
+| Infinite retry loops | Agent retries same malformed request, burning API credits | AI Academy |
+| System illegibility | Enterprise systems too customized/messy for agents | Sweep, AzureTechInsider |
+| Integration, not intelligence | RAG, connectors, event architecture — not the LLM | Composio, Hypersense |
+| Demo trap | Works in notebook, fails in production | AI Academy, Abu Dhabi Summit |
+| Governance gap | Power to act without rules to act by | ISACA, Composio, EY |
+
+### Anthropic Partner Ecosystem: Practitioner Signal
+
+**Cognizant (350,000 employees)** opened Claude access to all global employees, embedding it into client modernization engagements. **Accenture** training 30,000 professionals on Claude deployment. These are the largest-scale enterprise Claude rollouts reported.
+- Source: https://byteiota.com/claude-partner-network-anthropics-100m-enterprise-push/ [domain trade publication]
+- **Evidence level:** Level 1 (announced commitments, no deployment outcomes reported)
+- **Caveat:** Partner training ≠ deployment. 30,000 people trained is a vendor metric, not a production metric.
+
+---
+
+## Updated Source Roster (Cycle 60)
+
+| Person | Previous Position | March 2026 Position | Shift |
+|--------|------------------|---------------------|-------|
+| Karpathy | "Coding agents work, everything else is slop" (Dec 2025) | Building autonomous research agents (autoresearch). | Significant ↑ |
+| Mollick | — | "Co-intelligence → managing agents." Orgs still very early. | Stable, cautiously bullish |
+| Willison | Rigorous skeptic, agent security focus | Agents for non-developers ($23 cost). Quality validation concern persists. | Stable |
+| Swyx | AI Engineer community builder | "Context engineering" gaining QCon/NeurIPS traction. | Conceptual → discipline |
+| Chase | LangGraph orchestration | No significant shift | — |
+| Dex Horthy | Coined "context engineering" | 12-factor Agents talk at AI Engineer. Full-stack discipline emerging. | NEW — watch |
+| Nina Lopatina | Contextual AI | Context engineering benchmarks + tooling. | NEW — watch |
+
+---
+
 ## What We Did Not Find
 
 1. **No Nordic practitioners writing publicly about agent deployment in business processes.** The gap from February persists.
 2. **No Mikko Alasaarela / Agentics Helsinki public output** in March 2026.
 3. **No Harrison Chase trajectory change** — LangChain/LangGraph appears in maintenance mode rather than frontier-pushing.
 4. **No practitioner writing about agents in HR, compliance, or finance** from a first-person deployment perspective. The practitioner signal remains concentrated in coding and customer service.
+5. **No independent Claude Cowork deployment stories** — launched Feb 24, zero practitioner feedback found.
+6. **No Intuit + Anthropic deployment results** — partnership announced, spring 2026 rollout pending.

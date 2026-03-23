@@ -510,3 +510,142 @@ AI Finland declared Agentic AI as primary 2026 theme. Free AI Agent Fundamentals
 
 Previously tracked as Greenlite AI (Lawrence & Jin). Rebranded to Bretton AI after $75M Series B. Client base expanded: now includes Ramp, Mercury, Betterment, Gusto, RSM UK. OCC-regulated bank cut Enhanced Due Diligence review time by 70%.
 - Source: [FinTech Global](https://fintech.global/2025/05/22/regtech-innovator-greenlite-ai-secures-15m-to-scale-trusted-ai-compliance-agents/) [general press]
+
+---
+
+## Cycle 60 Incremental Update (March 23, 2026 — Research Expansion)
+
+### Anthropic Enterprise Push: Claude Cowork + Partner Network + Intuit
+
+**Significant new coverage area.** Anthropic has made the most aggressive enterprise agent push of any foundation model company in Q1 2026.
+
+**Claude Cowork (Feb 24, 2026):** Persistent workplace platform with deep native integrations (Google Drive, Gmail, DocuSign). Department-specific plug-ins for finance, legal, HR. Matt Piccolella (Anthropic): "We believe that the future of work means everybody having their own custom agent." Stock plug-ins target specific departments with basic skills common across companies, customizable to unique needs.
+- Source: https://techcrunch.com/2026/02/24/anthropic-launches-new-push-for-enterprise-agents-with-plugins-for-finance-engineering-and-design/ [general press — bare facts]
+- Source: https://markets.financialcontent.com/stocks/article/marketminute-2026-2-26-the-saaspocalypse-arrives-anthropics-claude-cowork-redefines-the-enterprise-frontier [general press]
+- **Evidence level:** Level 0-1 (product launched, no independent deployment evidence yet)
+
+**Intuit + Anthropic Partnership (Feb 24, 2026):** Multi-year deal. Two tracks:
+1. Mid-market businesses build custom AI agents on Intuit platform using Claude Agent SDK
+2. MCP integrations surface Intuit financial intelligence (TurboTax, Credit Karma, QuickBooks, Mailchimp) inside Claude products (Claude.ai, Claude for Enterprise, Cowork)
+- Use case: solopreneur connects transaction spreadsheet → Claude generates pay-enabled invoice via Intuit tools
+- Use case: restaurant group with 15 locations prompts Intuit to orchestrate Claude within Intuit Enterprise Suite
+- Rolling out spring 2026
+- Source: https://investors.intuit.com/news-events/press-releases/detail/1305/intuit-and-anthropic-partner-to-bring-trusted-financial-intelligence-and-custom-ai-agents-to-consumers-and-businesses [vendor press release — Level 0]
+- Source: https://www.pymnts.com/partnerships/2026/intuit-and-anthropic-to-launch-customizable-ai-agents/ [domain trade publication]
+- Source: https://www.cpapracticeadvisor.com/2026/02/25/intuit-partners-with-anthropic-to-bring-ai-to-small-business-management/178837/ [domain trade publication]
+- **Evidence level:** Level 0 (partnership announced, no deployment results yet)
+- **Finding category:** Platform Announcement — but significant for finance domain. First major accounting platform integrating agentic capabilities via MCP.
+
+**$100M Claude Partner Network:** Accenture training 30,000 on Claude deployment. Cognizant opened Claude to all 350,000 employees. Infosys integrated Claude into agentic platform (Feb). Deloitte joined as enterprise AI deployment partner.
+- Source: https://byteiota.com/claude-partner-network-anthropics-100m-enterprise-push/ [domain trade publication]
+- Source: https://pulse2.com/anthropic-100-million-invested-to-launch-claude-partner-network-for-enterprise-ai-adoption/ [domain trade publication]
+- **Evidence level:** Level 0 (vendor investment, partner commitments — no deployment outcomes)
+
+**MCP Protocol Adoption:** Donated to Agentic AI Foundation (Linux Foundation). 10,000+ active public MCP servers. Adopted by ChatGPT, Cursor, Gemini, Copilot, VS Code. Co-founded by Anthropic, Block, OpenAI with support from Google, Microsoft, AWS, Cloudflare, Bloomberg.
+- Source: https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation [vendor press release — Level 0 for claims, but bare fact of donation and adoption verifiable]
+- **Evidence level:** Level 2 (protocol adoption is independently verifiable across multiple products)
+
+**Assessment:** Anthropic is positioning Claude not as a coding assistant but as an enterprise agent platform. The Intuit deal is the clearest signal of agents entering finance/accounting via foundation model companies rather than legacy SaaS vendors. MCP at 10,000+ servers is genuine protocol adoption (Level 2-3). But: zero independent enterprise deployment outcomes reported. The partner network is investment, not evidence. Watch for: spring 2026 Intuit rollout and first Cowork deployment stories.
+
+### Google Vertex AI Agent Builder: Enterprise Governance + A2A Integration
+
+**New coverage area — filling a gap.** Google's agent platform has matured significantly since our initial assessment.
+
+**Agent Engine GA milestones:** Sessions and Memory Bank now Generally Available. Single-command deployment via ADK CLI (`adk deploy`). Easy onboarding — Gmail address sufficient, 90-day free trial.
+- Source: https://cloud.google.com/blog/products/ai-machine-learning/more-ways-to-build-and-scale-ai-agents-with-vertex-ai-agent-builder [vendor blog — Level 0]
+- Source: https://docs.cloud.google.com/agent-builder/agent-engine/overview [vendor documentation]
+
+**Enterprise Security Features:**
+- VPC Service Controls for data security
+- Agent Engine Threat Detection (Preview) via Security Command Center
+- Agent identities tied to Cloud IAM
+- Model Armor blocking prompt injection attacks
+- Tool governance via Cloud API Registry — administrators manage available tools org-wide
+- Source: https://cloud.google.com/blog/products/ai-machine-learning/new-enhanced-tool-governance-in-vertex-ai-agent-builder [vendor blog — Level 0]
+
+**A2A Protocol Native Support:** Agents built on Agent Engine can now communicate via A2A protocol natively. This is the first platform where the agent builder and inter-agent protocol are unified.
+
+**Gemini Enterprise Integration:** Agents registered within Gemini Enterprise give employees access to custom agents in one workspace.
+
+**Pricing:** Lowered runtime pricing, billing for additional services started January 28, 2026.
+- Source: https://docs.cloud.google.com/vertex-ai/docs/release-notes [vendor documentation]
+
+**What We Did Not Find (Google-specific):**
+1. No independent enterprise deployment case studies with measurable outcomes
+2. No practitioner blog posts from Google Cloud agent builders (outside Google's own materials)
+3. No Nordic deployments or Nordic-specific signals
+4. No comparison of Agent Builder vs. competing platforms in real enterprise settings
+5. PwC's 120+ agents — no details on which agents, what outcomes, which customers
+
+**Assessment:** Google has the most complete enterprise governance story (IAM, VPC, threat detection, tool governance) and the only platform natively unifying agent builder + A2A protocol. But: zero independent deployment evidence. Google Cloud's enterprise agent platform is architecturally impressive and governance-forward, but in the same position as ServiceNow — big announcements, no customer voices.
+
+**Evidence level:** Level 0-1 (platform capabilities documented, no deployment outcomes).
+**Finding category:** Platform Announcement with strong governance story.
+
+### AWS Bedrock AgentCore: Deepening Enterprise Evidence
+
+**Update to existing coverage.** Additional enterprise signals found.
+
+**New named deployments (vendor-sourced — Level 0):**
+- **Robinhood:** Scaled from 500M to 5B tokens daily in 6 months, 80% AI cost reduction, 50% development time cut
+- **Totemia (Travel):** Agent narrows 60 options to 5-10 recommendations. 65% reduced search time, 40% increased bookings, 25% conversion growth, 30,000 monthly users. Projecting 200-300% ROI year one.
+- **Amazon Devices Operations:** Task Planning agent converts business requirements to station-level instructions. Model Training agent for robotic vision — fine-tuning from days to under 1 hour.
+- **Apex Fintech Solutions (via Genpact):** Agent-to-agent communication for financial crime investigation via AgentCore Runtime + Observability.
+
+**Enterprise security:** Bedrock Guardrails block up to 88% harmful content. Automated Reasoning checks for hallucination detection (99% accuracy claimed). In scope for ISO, SOC, CSA STAR L2, GDPR, FedRAMP High, HIPAA eligible.
+- Source: https://aws.amazon.com/bedrock/agentcore/ [vendor documentation]
+- Source: https://aws.amazon.com/blogs/apn/aws-partners-demonstrate-enterprise-ai-agent-solutions-with-amazon-bedrock-agentcore/ [vendor blog — Level 0]
+- Source: https://interworks.com/blog/2026/03/06/building-ai-agents-in-aws-a-hands-on-amazon-bedrock-walkthrough/ [practitioner analysis]
+- Source: https://www.missioncloud.com/blog/amazon-bedrock-agentcore-ga-building-production-ready-ai-agents-at-enterprise-scale [practitioner analysis]
+
+**Practitioner guidance emerging:** Multiple independent practitioner guides now published. Key advice: "Don't reach for AgentCore immediately — simple Bedrock invocations handle most use cases." AWS itself acknowledges deployment is "the starting line, not the finish line."
+
+**Assessment update:** AWS has the strongest enterprise compliance posture (FedRAMP, HIPAA) and the most diverse deployment stories — but all quantified outcomes are vendor-sourced. The practitioner guide ecosystem is growing faster than other platforms. Robinhood's token scaling story (500M → 5B daily) suggests real production use, but the cost/speed claims need independent verification.
+
+**Evidence level:** Level 1-2 (practitioner guides + vendor-sourced deployment stories).
+
+### Agent Observability: Emerging as Infrastructure Category
+
+**New research area.** Agent observability is becoming foundational infrastructure for production agents. 89% of organizations have implemented observability for agents, with quality issues the primary production barrier (32%).
+
+**Key platforms (March 2026):**
+| Platform | Strength | Evidence |
+|----------|----------|----------|
+| LangSmith (LangChain) | Lowest friction for LangChain users. Zero measurable overhead. | [practitioner reviews] |
+| Arize AI | $70M Series C. Uber, PepsiCo, Tripadvisor. Deepest ML heritage. | [domain trade publication] |
+| Langfuse | Leading open-source (MIT). Self-hosting. Acquired by ClickHouse (Jan 2026). | [practitioner direct] |
+| Galileo AI | Luna-2 foundation models for eval intelligence. | [vendor blog] |
+| Portkey | AI Gateway + observability for production reliability. | [practitioner analysis] |
+| Datadog | Traditional APM expanding into AI observability. | [vendor press release] |
+
+**OpenTelemetry as emerging standard:** Community-driven effort to standardize AI agent telemetry. Could make platforms interchangeable.
+
+**Key insight for our training:** "If your LLM observability looks indistinguishable from traditional APM — just with tokens instead of SQL queries — you're monitoring infrastructure, not AI behavior." The distinction between monitoring infrastructure vs. monitoring AI behavior is a critical teaching point for Module 6 (Evals).
+
+- Source: https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/ [vendor blog — Level 0 for own product, useful for landscape]
+- Source: https://www.getmaxim.ai/articles/top-5-ai-observability-platforms-for-production-ai-systems-in-2026/ [practitioner analysis]
+- Source: https://research.aimultiple.com/agentic-monitoring/ [domain trade publication]
+
+**Evidence level:** Level 2-3 (convergence across practitioners that observability is required infrastructure).
+**Finding category:** Context (infrastructure category, not specific deployment).
+
+### Nordic Updates: Governance Convergence + Nordea Detail
+
+**Nordea AI Agents (expanded detail):** 12 AI Agents across four Nordic markets on boost.ai platform. 91% in-scope resolution rate (private banking), 95% (corporate). 220,000+ conversations/month.
+- Source: https://boost.ai/case-studies/nordea-employs-comprehensive-conversational-ai-strategy-to-scale-customer-service/ [vendor case study — Level 0]
+- **Assessment:** These are chatbots/copilots, NOT agentic (no multi-step autonomous work with tool use). Impressive scale but does not pass gate #1 (truly agentic?). Filed under Context.
+- **Nordic label:** Nordic-origin deployment (chatbot, not agent)
+
+**Nordic AI Governance Convergence (2026):**
+- Norway: AI Act implementation targeted summer 2026 (Nkom as coordinator)
+- Sweden: NIS2 entered force January 15, 2026. Management can face function prohibitions.
+- Finland: NIS2 fully implemented, 7 sector-specific authorities. AI Act high-risk deadline August 2, 2026.
+- Nordic firms deploy AI 20% faster than European average — but face AI Act + NIS2 + GDPR + ISO 42001 simultaneously
+- Source: https://www.twoday.com/blog/nordic-ai-governance-in-2026 [practitioner analysis]
+- **Nordic label:** Nordic-origin regulatory context
+
+**Nordic AI Infrastructure:** Equinix acquired atNorth for $4B (Feb 2026) — 8 data centers across all Nordic countries. New Nordics AI (NNAI) center launched (DKK 30M funding, 3 years). Nordic AI rankings declining: Finland 10th→15th, Denmark 16th→22nd, Sweden 17th→25th, Norway 24th→26th.
+- Source: https://www.intelligentdatacentres.com/2026/02/27/cpp-investments-and-equinix-to-acquire-atnorth-for-4-billion-expanding-nordic-data-centre-and-ai-capacity/ [domain trade publication]
+- Source: https://www.norden.org/en/news/new-centre-artificial-intelligence-launched-promote-use-ai-nordics-and-baltics [government source]
+
+**Assessment:** Nordic governance convergence (AI Act + NIS2 + GDPR simultaneously) creates both a compliance burden and a distinctive competence opportunity. Organizations that navigate all three simultaneously will have a governance advantage. This directly supports our finding that governance-first deploys faster — Nordic companies are being forced into governance-first by regulatory pressure. The declining AI rankings vs. faster deployment rate suggests Nordic companies are selective deployers rather than broad experimenters.

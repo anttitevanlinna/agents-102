@@ -597,6 +597,60 @@ Domains that lack ANY of these three properties lag behind. Marketing has no cod
 
 ---
 
+## Agentic Engineering Is a Named Discipline — And It's What We Teach
+
+**Thesis:** Three independent high-profile practitioners (Karpathy, Willison, Chase) have converged on "agentic engineering" as a named discipline in March 2026. Our training IS agentic engineering training — the term validates our entire curriculum.
+
+Karpathy coined "agentic engineering" in his No Priors podcast (March 20): "Code's not even the right verb anymore." He runs multiple coding agents in parallel on tiled monitors, decomposing work and reviewing outputs. Willison gave a fireside chat titled "agentic engineering" at the Pragmatic Summit (March 14). Harrison Chase pivoted LangChain from "framework" to "harness engineering" with Deep Agents — pre-built agent systems with planning, memory, and subagents.
+
+The discipline is coalescing around: decomposing work for agents, managing parallel agent workstreams, context engineering (what you feed the model matters more than the model), and quality assurance of agent output. This maps precisely to our curriculum arc: Module 1 (getting going with agents), Module 2-3 (building and coordinating agent systems), Module 5-6 (output quality and evals), Module 8 (agents building agents).
+
+The "December 2025 threshold" claim from Karpathy — the moment coding agents became reliable enough to flip from "human writes most code" to "agent writes most code" — is a powerful teaching reference point. Not yet confirmed by others (Level 2), but from an extremely credible source.
+
+**The implication for CTOs:** "Agentic engineering" is becoming a real job discipline, not a buzzword. Your engineers are already experiencing it. The question is whether your non-engineers (the other 90%) can learn it too. That's what our training delivers.
+
+**Applies to:** Core positioning (we teach agentic engineering), Bootstrap curriculum framing, newsletter, Module 1/8
+**Source:** Karpathy No Priors podcast (March 20), Willison Pragmatic Summit (March 14), Chase Deep Agents launch — cycle update March 23
+**Date:** 2026-03-23
+
+---
+
+## Agents Create Legal Risk, Not Just Technical Risk
+
+**Thesis:** AI agents introduce legal and licensing risks that go beyond prompt injection and hallucination — and most organizations aren't thinking about this.
+
+The chardet relicensing controversy (March 5, 2026) is the case study: a developer used Claude Code to rewrite the Python chardet library from LGPL to MIT license. The original author objected. Willison identified the complicating factors: the developer was familiar with the original codebase (not a clean room), Claude Code referenced parts of the original during rewrite, and Claude was likely trained on the original code. The legal status is unresolved.
+
+Willison's question captures it: "When the cost of generating code goes down that much, and we can re-implement it from test suites alone, what does that mean for the future of software?" This extends to business processes: when agents draft contracts, generate compliance documentation, or create internal policies by synthesizing existing materials, who owns the output? What licenses apply?
+
+Additionally, Willison flagged open source projects being "flooded with junk contributions" from agent users — people using GitHub to disable pull requests entirely. Agents operating at scale create institutional effects beyond the individual task.
+
+**The implication for CTOs:** Add legal/licensing review to your agent governance framework. Your security team is thinking about data leaks and prompt injection. They're probably not thinking about agents inadvertently creating IP/licensing liabilities or flooding your code review process with low-quality contributions.
+
+**Applies to:** Module 4 (Security), Module 7 (Agent Platforms), advisory conversations, newsletter
+**Source:** Willison chardet post (March 5), Pragmatic Summit fireside (March 14) — cycle update March 23
+**Date:** 2026-03-23
+
+---
+
+## Claude Cowork Has Enterprise Security Gaps That Matter
+
+**Thesis:** Claude Cowork is the first evidence of a non-developer agentic tool that actually works (6-8hr/week savings) — but its enterprise security posture has specific, named gaps that should inform platform advisory.
+
+Hackceleration's 6-week test confirmed Cowork "largely delivers on the promise" for autonomous multi-step work tasks: file organization, spreadsheet generation, Google Workspace integration. This is the first Level 2 evidence of a non-coding agent tool producing measurable productivity gains.
+
+But Harmonic Security's review identified critical enterprise gaps: Cowork access cannot be limited by user or role (organization-wide only), known supply chain CVEs exist (CVE-2025-59536, CVE-2026-21852), and — most critically — **Cowork activity is NOT captured in Audit Logs, Compliance API, or Data Exports.** Anthropic itself advises not to use it for regulated workloads.
+
+This pattern will repeat across all agent platforms: the capability arrives before the governance infrastructure. Deloitte deploying to 470,000 employees and PwC building compliant governance frameworks signals that the enterprise partners see this gap and are racing to close it.
+
+**The implication for CTOs:** Cowork works. The productivity gains are real. But don't deploy it for regulated workloads until audit logging is in place. The "capability before governance" pattern is exactly why governance-first deployment matters — deploy in low-risk domains first, expand as the governance infrastructure catches up.
+
+**Applies to:** Platform advisory, Module 4 (Security), Module 7 (Agent Platforms), newsletter
+**Source:** Hackceleration review, Harmonic Security assessment, Deloitte/PwC partnerships — cycle update March 23
+**Date:** 2026-03-23
+
+---
+
 ## Template
 
 Copy this for new insights:

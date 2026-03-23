@@ -6,16 +6,19 @@
 
 ## Summary of New Signals This Cycle
 
-**Four significant developments found:**
+**Six significant developments found:**
 1. **Workday acquired Sana Labs ($1.1B) → "Sana from Workday" launched March 17.** Three Nordic early adopters named (Berner Finland, Cheffelo Sweden, Telavox Sweden). This is the most significant platform development this cycle.
-2. **Salesforce Agentforce Sales — first non-customer-service GA use case.** Six specialized sales agents, Salesforce's own deployment: 130K untouched leads → 3,200 opportunities in 4 months.
-3. **Microsoft Agent 365 — governance separated from building.** New $15/user SKU for agent fleet governance, GA May 1. D365 Business Central Payables Agent named as concrete agentic ERP example.
-4. **Agentforce SMB free tier — first practitioner review (Level 2).** Christine Marshall (12x Salesforce MVP) tested: setup in 30 seconds, but locked to 4 predefined actions only.
+2. **Morgan Stanley MCP in production (Level 2).** First major bank demonstrating MCP in production API infrastructure (100+ APIs). Presented at QCon London. Non-coding business process.
+3. **Spotify multi-agent advertising system in production (Level 2).** Media plan creation 15-30 min → 5-10 seconds. Built on Google ADK + Gemini. Non-coding domain.
+4. **Salesforce Agentforce Sales — first non-customer-service GA use case.** Six specialized sales agents, Salesforce's own deployment: 130K untouched leads → 3,200 opportunities in 4 months.
+5. **Microsoft Agent 365 — governance separated from building.** New $15/user SKU for agent fleet governance, GA May 1. D365 Business Central Payables Agent named as concrete agentic ERP example.
+6. **ACP absorbed into A2A under Linux Foundation.** Protocol landscape simplified to two families: MCP (agent-to-tool) and A2A (agent-to-agent).
 
 **Persistent gaps confirmed:**
 - Copilot Cowork: still zero practitioner reviews (26th consecutive cycle)
 - ServiceNow Autonomous Workforce: still zero practitioner reviews (4 weeks post-launch)
 - Oracle Fusion agents: still zero deployment evidence despite 26A roster expansion
+- A2A: still zero independent production deployments despite 150+ orgs committed
 
 ---
 
@@ -259,9 +262,105 @@ The pattern: metered AI billing prevents the learning curve required for deploym
 2. **No ServiceNow Autonomous Workforce deployment stories** — 4 weeks post-launch, zero practitioner voices
 3. **No Oracle Fusion agent customer deployments** despite 26A roster expansion
 4. **No SAP Joule independent deployment case studies** — community friction signals but no success stories
-5. **No A2A production deployment evidence** (protocols agent still processing)
+5. **No A2A production deployment evidence** — despite ACP merging into A2A under Linux Foundation
 6. **No Nordic Microsoft/ServiceNow agent deployments**
 7. **No Agentforce Sales practitioner deployments** — too early (GA March 16/31)
+8. **No MCP enterprise business process deployment outside financial services** — Morgan Stanley is the sole confirmed case
+
+---
+
+## Protocols and Infrastructure Updates
+
+### 12. Morgan Stanley MCP Production Deployment — MAJOR (Level 2)
+
+First named major bank publicly demonstrating MCP in production API infrastructure. Jim Gough and Andreea Niculcea presented at QCon London (March 16-19, 2026): after five years building their API program, Morgan Stanley spent the last year rethinking it because MCP "went from obscurity to industry standard in roughly eighteen months."
+
+**Demo:** MCP alongside FINOS CALM (Common Architecture Language Model), compliance guardrails, zero-downtime rollouts across 100+ APIs. Claimed efficiency: first API deployment "shrank from two years to two weeks."
+
+- Source: https://www.infoq.com/news/2026/03/morgan-stanley-apis-mcp-calm/ [domain trade publication covering practitioner conference talk]
+
+**Evidence level:** Level 2 (named company, conference demo, 100+ APIs). The "2 years to 2 weeks" claim is a conference statement, not independently audited.
+
+**Significance:** This is the first MCP-in-production signal for a core business process (financial services API management), not coding. Passes all three gates.
+
+---
+
+### 13. Spotify Multi-Agent Advertising System — Production (Level 2)
+
+Spotify published a practitioner engineering blog (February 19, 2026) describing production deployment of "Ads AI" — a multi-agent advertising system.
+
+**Architecture:** RouterAgent → GoalResolverAgent, AudienceResolverAgent, BudgetAgent, ScheduleAgent → MediaPlannerAgent. Built on Google ADK 0.2.0 + Vertex AI (Gemini 2.5 Pro).
+
+**Production outcomes:**
+- Media plan creation: 15-30 minutes → 5-10 seconds
+- User inputs: 20+ form fields → 1-3 natural language messages
+- Agent response latency: 3-5 seconds with parallel execution
+- Processes real campaign data from thousands of campaigns
+
+- Source: https://engineering.atspotify.com/2026/02/our-multi-agent-architecture-for-smarter-advertising/ [practitioner direct]
+
+**Evidence level:** Level 2 (named company, specific measurable outcomes, practitioner engineering blog). Passes all three gates. This is sales/advertising operations — a non-coding business process domain.
+
+---
+
+### 14. ACP Absorbed into A2A — Protocol Landscape Simplified
+
+ACP (IBM/BeeAI Agent Communication Protocol) has been absorbed into A2A under the Linux Foundation. Two main protocol families remain:
+- **MCP** (agent-to-tool) — 10,000+ servers, entering D365, Morgan Stanley production
+- **A2A** (agent-to-agent coordination) — 150+ orgs committed, zero independent deployments
+
+- Source: https://agentcommunicationprotocol.dev [protocol documentation]
+
+---
+
+### 15. Google ADK Reaches GA (March 23, 2026)
+
+Google Agent Development Kit reached General Availability on March 23. Google also published "Developer's Guide to AI Agent Protocols" (March 18) describing a "suite of six protocols" alongside ADK. Spotify's production use of ADK 0.2.0 is the strongest independent validation.
+
+- Source: https://cloud.google.com/blog/products/ai-machine-learning/agent-development-kit-ga [vendor documentation]
+- Source: https://developers.googleblog.com/en/ [vendor blog — March 18 post]
+
+---
+
+### 16. Okta for AI Agents — Identity Layer (Early Access, March 16)
+
+Okta launched "Okta for AI Agents" in Early Access. Addresses machine identity, access controls, and credential management for agentic systems. References "Cross App Access Protocol" — Okta building its own agent authorization layer.
+
+When the IAM market leader builds agent identity as a dedicated product, enterprise adoption has reached the point where identity management is a blocking requirement.
+
+- Source: https://www.okta.com/blog/ [vendor announcements — Level 0]
+
+---
+
+### 17. New Relic AI Agent Observability — MCP-Specific Monitoring
+
+New Relic launched AI agent platform with explicit MCP observability: "see details of every MCP server call" and "monitor the entire Model Context Protocol request lifecycle automatically." When observability vendors build native MCP support, it signals enterprise adoption crossing the monitoring threshold.
+
+- Source: https://newrelic.com/platform/ai-monitoring [vendor product page — Level 0]
+
+---
+
+### 18. Counter-Signal: Enterprise AI Agent Skepticism at Level 3 Convergence
+
+Multiple independent sources converge on enterprise production challenges:
+- The Register (Jan 28): "AI agent hype cools as enterprises struggle to get into production"
+- The Register (Mar 17): "AI still doesn't work very well, businesses are faking it, reckoning coming"
+- Palo Alto CEO (Feb 18): "AI isn't great for business, yet"
+- Diginomica survey: 40% negative CIO sentiment, only 21.4% report >80% AI success rates
+- Anthropic Economic Index: API success rates drop to 50% on tasks >3.5 hours
+
+**Evidence level:** Level 3 (convergence). Validates the "fabrication is the teaching moment" thesis and the training program's market positioning.
+
+---
+
+### 19. NVIDIA GTC 2026 Agent Infrastructure (March 17-20)
+
+Three new pieces:
+- **OpenShell:** Open-source deny-by-default policy enforcement for coding agents (Apache 2.0)
+- **AI-Q Blueprint:** Enterprise search agent blueprint with explicit MCP for tool orchestration. Partners: Dell, ServiceNow, IBM, HPE, LangChain.
+- **AI Grid:** Distributed inference for telco/CDN. Comcast validated: 76.1% lower cost-per-token at burst loads.
+
+- Source: https://developer.nvidia.com/blog/ [vendor blog — Level 0, Comcast validation Level 1]
 
 ---
 
@@ -275,5 +374,8 @@ The pattern: metered AI billing prevents the learning curve required for deploym
 | ServiceNow | Bold framing, no evidence | "Go Live" events started. Mobile Voice Agents. Still zero deployment evidence. | → (events up, evidence flat) |
 | SAP Joule | L0-1 (GA but unverified) | New Concur agents (EAC). Community friction documented. Still no independent success stories. | → (friction visible) |
 | Oracle Fusion | Zero deployment evidence | 26A roster expansion (HCM, ERP, SCM, CX agents). Community friction. Still zero deployment evidence. | → (roster growing, evidence absent) |
+| MCP Protocol | 10K servers, coding-only | Morgan Stanley production (100+ APIs, QCon demo). New Relic monitoring. D365 integration. First non-coding deployment. | ↑↑ (crossing into business processes) |
+| A2A Protocol | Zero deployments, 150+ orgs | ACP absorbed. Google ADK GA. Still zero independent deployments. | → (governance up, adoption flat) |
+| Google ADK | Spotify ADK 0.2.0 | ADK GA (March 23). Spotify production validation. Six-protocol framework published. | ↑ (production-validated) |
 
 **The headline this cycle:** Workday's Sana acquisition and March 17 launch is the most significant platform development — it brings three named Nordic companies into the picture (Berner, Cheffelo, Telavox) and transforms Workday from "zero practitioner evidence" to "named Nordic early adopters with specific claims." Meanwhile, Salesforce continues expanding beyond customer service into sales and healthcare, and Microsoft is building governance infrastructure (Agent 365) faster than deployment evidence. The cross-platform "AI paywall" anti-pattern — metered pricing killing experimentation — is emerging as a Level 2 convergence pattern.

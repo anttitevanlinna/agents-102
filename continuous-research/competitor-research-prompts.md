@@ -79,8 +79,8 @@ Note strengths and gaps relative to Agents 102.
 
 #### Output Files
 
-- `research/competitors-direct-resources.md` — Program catalog (append each round)
-- `research/competitors-direct-findings.md` — Orientation log + evolving analysis
+- `continuous-research/archive/competitor-market/competitors-direct-resources.md` — Program catalog (append each round)
+- `continuous-research/archive/competitor-market/competitors-direct-findings.md` — Orientation log + evolving analysis
 
 #### OODA Round Instructions
 
@@ -149,8 +149,8 @@ Note what makes it work and lessons for Agents 102.
 
 #### Output Files
 
-- `research/competitors-elearning-resources.md` — Program catalog (append each round)
-- `research/competitors-elearning-findings.md` — Orientation log + evolving analysis
+- `continuous-research/archive/competitor-market/competitors-elearning-resources.md` — Program catalog (append each round)
+- `continuous-research/archive/competitor-market/competitors-elearning-findings.md` — Orientation log + evolving analysis
 
 #### OODA Round Instructions
 

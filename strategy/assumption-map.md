@@ -37,7 +37,7 @@ Synthesized from Martin WWHTBT analysis and Bland/Strategyzer assumption mapping
 
 - **Category:** Desirability — Buyer
 - **Criticality:** Critical. No buyer, no business.
-- **Evidence:** Partial-strong — F-Secure is buying. 9 of 15 Nordic digital leaders publicly frame the challenge as competence/people across both target segments. See `research/nordic-digital-leaders-findings.md`.
+- **Evidence:** Partial-strong — F-Secure is buying. 9 of 15 Nordic digital leaders publicly frame the challenge as competence/people across both target segments. See `continuous-research/archive/platform-agent/nordic-digital-leaders-findings.md`.
 - **The bet:** There is a meaningful population of CEOs/CTOs/SVPs at large Nordic software companies and digitalizing traditional companies who want to own AI agent transformation internally rather than outsource it — and who will invest budget in capability-building over advisory.
 - **What must be true:** (a) The psychographic is real and recognizable, not an idealized portrait. (b) These leaders have budget authority without routing through procurement that defaults to Aalto EE or an incumbent. (c) They have already experienced and rejected transformation theatre. (d) The two segments (software cos, digitalizing traditional cos) together form a large enough addressable market.
 - **F-Secure evidence:** Confirms at least one software company buyer exists. Does not yet confirm the "traditional company striving for digitalization" segment. Does not confirm volume.
@@ -63,7 +63,7 @@ Synthesized from Martin WWHTBT analysis and Bland/Strategyzer assumption mapping
 
 - **Category:** Desirability — Problem framing
 - **Criticality:** Critical. The entire positioning depends on this.
-- **Evidence:** Partial-strong — 9/15 Nordic digital leaders independently frame it as competence/people in public statements. Transformation frameworks research confirms all frameworks say "upskill" without providing the means. F-Secure bought competence-building, not strategy. See `research/nordic-digital-leaders-findings.md`.
+- **Evidence:** Partial-strong — 9/15 Nordic digital leaders independently frame it as competence/people in public statements. Transformation frameworks research confirms all frameworks say "upskill" without providing the means. F-Secure bought competence-building, not strategy. See `continuous-research/archive/platform-agent/nordic-digital-leaders-findings.md`.
 - **The bet:** The primary blocker is that people don't understand agents well enough to deploy them. Not that they lack strategy (McKinsey offers that) or tools (Microsoft offers that). Competence is the missing layer.
 - **What must be true:** Buyers frame their problem as a competence gap, not a strategy gap or a hiring gap. They recognize "our people don't understand agents" as the actual blocker.
 - **What would disprove it:** If buyers say "we need a strategy," "we need a technology partner," or "we need to hire AI talent" — and don't recognize competence as the bottleneck.
@@ -123,7 +123,7 @@ Synthesized from Martin WWHTBT analysis and Bland/Strategyzer assumption mapping
 
 - **Category:** Desirability — Timing
 - **Criticality:** High. Without urgency, the buyer defers.
-- **Evidence:** Partial-strong — F-Secure bought now. BCG: only 19% of Nordic workers use GenAI weekly vs 61% globally, EUR 60B+ GDP risk. Equinor at production scale (USD 130M saved). Novo Nordisk scaled to 20K Copilot users. Gartner predicts 40% of apps with agents by end 2026. See `research/nordic-digital-leaders-findings.md`.
+- **Evidence:** Partial-strong — F-Secure bought now. BCG: only 19% of Nordic workers use GenAI weekly vs 61% globally, EUR 60B+ GDP risk. Equinor at production scale (USD 130M saved). Novo Nordisk scaled to 20K Copilot users. Gartner predicts 40% of apps with agents by end 2026. See `continuous-research/archive/platform-agent/nordic-digital-leaders-findings.md`.
 - **The bet:** 2026 is the moment to invest. Waiting is costly.
 - **What would disprove it:** If interviews reveal "we're watching this space but not ready to invest yet" or "we'll revisit in 2027."
 - **Test:** In discovery interviews: "On a scale of 1-10, how urgent is building AI agent capability in your organization right now?" If average is below 6, timing may be too early for Nordic large companies.

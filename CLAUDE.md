@@ -38,8 +38,9 @@ Done the agentic way, because no other way works. No person has comparative expe
 - Content strategy: `content-strategy.md`
 - Training outline: `curriculum/training-outline.md`
 - Learning goals: `curriculum/learning-goals.md`
-- Nordic digital leaders: `research/nordic-digital-leaders-findings.md`
-- All competitor/market research: `research/` directory (see MEMORY.md for index)
+- Nordic digital leaders: `continuous-research/archive/platform-agent/nordic-digital-leaders-findings.md`
+- Competitor/market research (archived): `continuous-research/archive/competitor-market/`
+- Platform/agent research (archived): `continuous-research/archive/platform-agent/`
 - Continuous research system: `continuous-research/README.md`
 - Nordic agentic practices research: `continuous-research/nordic-agentic-practices-prompts.md`
 - Nordic agentic practices map (Q1 2026 synthesis): `continuous-research/nordic-agentic-practices-map.md`
@@ -168,7 +169,7 @@ Examples: security policies, data classification rules, compliance requirements,
 - Use practical, real-world examples that resonate with business contexts
 - Keep exercises hands-on and achievable without prior coding experience
 - Framework-integrative, not framework-driven — frameworks serve the situation
-- Research uses OODA loops — see `research/competitor-research-prompts.md` for competitor methodology and `continuous-research/nordic-agentic-practices-prompts.md` for ongoing agentic practices research
+- Research uses OODA loops — see `continuous-research/competitor-research-prompts.md` for competitor methodology and `continuous-research/nordic-agentic-practices-prompts.md` for ongoing agentic practices research
 - **Research focus: business processes, not coding.** Agentic coding is a red ocean. Track agents in operations, finance, HR, compliance, customer service, sales, product — the blue ocean where nobody is systematically curating what's possible
 - **Research editorial standard:** Practitioner-grounded, specific, verifiable. Not generic tech news or consultancy clickbait. Every claim needs a named company + specific practice + measurable outcome. "Deployment is happening" is not an insight — the secrets are in the "how" and "what really works." See research quality protocol below.
 

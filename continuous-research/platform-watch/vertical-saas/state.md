@@ -1,7 +1,7 @@
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-03-22 (cycle 52)
-OODA cycles: 8
+Last updated: 2026-03-23 (cycle 59)
+OODA cycles: 9
 
 ## Focus
 
@@ -101,7 +101,8 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 - **Named deployment:** Zeffy: 84% support ticket deflection ([MyAskAI](https://myaskai.com/blog/hubspot-breeze-ai-agent-complete-guide-2026))
 - **Practitioner assessment:** 8/10 for day-to-day, but 40% failure rate without proper config. No custom instructions. Credits expire monthly ($470/month for 500 extra conversations). Limited integrations outside HubSpot (5/10). ([Simple Machines](https://www.simplemachinesmarketing.com/blog/hubspot-ai-whats-actually-useful-and-what-to-skip/), [Resolve247](https://resolve247.ai/blog/hubspot-breeze/))
 - **Cycle 45 update:** Agicap claims 750 hours/week saved (150 reps, 1 hr/day each) and 20% deal velocity increase — but this is a vendor case study on HubSpot's website (Level 0). Features used are copilot-level (call summaries, CRM automation, content drafting), not agentic. ([HubSpot](https://www.hubspot.com/case-studies/agicap-1) — [vendor case study])
-- **Truly agentic?** Mostly copilot-level. Prospecting Agent in "fully autonomous" mode is the exception.
+- **Cycle 59 update:** New "Run Agent" workflow action (Feb 2026 beta) lets agents trigger inside automated HubSpot workflows — first step from copilot to agentic execution. 4 core agents now operational (Customer, Prospecting, Content, Data). Customer Agent supports 9 channels including voice (beta). Breeze Marketplace for pre-built agent configurations. ([Stream Creative](https://www.streamcreative.com/hubspot-ai-agents); [OnTheFuze](https://www.onthefuze.com/hubspot-insights-blog/hubspot-breeze-ai-agents-2026) — [practitioner analysis], Feb-Mar 2026)
+- **Truly agentic?** Mostly copilot-level. Prospecting Agent in "fully autonomous" mode and "Run Agent" workflow trigger are the exceptions. Moving toward agentic.
 - **Evidence level:** Level 2 (unchanged — Agicap is Level 0)
 - **Nordic signal:** None found
 

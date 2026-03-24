@@ -176,8 +176,14 @@ AI Finland (national network) shifted from chatbot/assistant focus to agentic AI
 
 **BCG Nordic data (confirmed):** Only 4% of Nordic companies achieve strong AI returns. The infrastructure-deployment gap is a recurring theme: billions invested in data centers, zero agent deployments documented.
 
+**Sana/Workday Nordic verification attempt:** Joona Honka (Berner) is independently confirmed — nominated for "Most Visionary AI Leader" at AI Finland 2025 Gala, role confirmed on berner.fi. But the specific "90% adoption / 400 ChatGPT licenses retired" claim appears ONLY in Workday's press release. Cheffelo and Telavox claims also vendor-sourced only. Worth monitoring for independent confirmation (Honka speaking at events, Berner publishing own results).
+
+**IMF Denmark labor study (counter-evidence):** ~20% of Danish workforce at risk of displacement, 6% of jobs have >50% of activities exposed to AI automation. But a separate study found AI tools had "no significant impact on earnings or recorded hours" so far — displacement fears outpacing actual impact.
+
+- Source: https://www.imf.org/en/publications/selected-issues-papers/issues/2025/08/25/the-impact-of-artificial-intelligence-on-denmarks-labor-market-569930 [academic/research]
+- Source: https://www.berner.fi/2025/11/joona-honka-ehdolla-ai-2025-gaalassa-vuoden-visionaarisin-tekoalyjohtaja-kategoriassa/ [practitioner direct — confirms person, not Sana claim]
 - Source: https://2hero.dev/hackathons/nordcloud-agentic-ai-software-systems-modernization-hackathon [vendor event page]
-- Evidence level: Level 0-1 (event participation, not deployment)
+- Evidence level: Level 0-1 (event participation, not deployment); Level 2 for IMF study
 
 ---
 

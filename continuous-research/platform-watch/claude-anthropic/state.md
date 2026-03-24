@@ -1,7 +1,7 @@
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-03-24 (cycle 68)
-OODA cycles: 6
+Last updated: 2026-03-24 (cycle 69)
+OODA cycles: 7
 
 ## Focus
 
@@ -40,6 +40,9 @@ Anthropic's ecosystem for **business users**. Initially developer-heavy, but Cow
 **Cycle 68 updates (March 24, 10:00):**
 - **Computer Use research preview launched March 23.** Claude Code and Cowork can click, scroll, navigate web, open apps, fill spreadsheets on macOS. Permission-first safety model. Prioritizes direct integrations first, falls back to screen-based control. Pro/Max subscribers only. macOS only. ([SiliconAngle](https://siliconangle.com/2026/03/23/anthropics-claude-gets-computer-use-capabilities-preview/), Mar 23, 2026)
 - **Pentagon court hearing March 24.** New filings reveal Pentagon told Anthropic they were "very close" one week after Trump declared relationship terminated. Anthropic cited "technical misunderstandings." Senator Warren called designation "retaliation." Judge Lin hearing today. ([TechCrunch](https://techcrunch.com/2026/03/20/new-court-filing-reveals-pentagon-told-anthropic-the-two-sides-were-nearly-aligned-a-week-after-trump-declared-the-relationship-kaput/), Mar 20)
+**Cycle 69 updates (March 24, 14:00):**
+- **Computer Use day 2:** CNBC mainstream coverage ([CNBC](https://www.cnbc.com/2026/03/24/anthropic-claude-ai-agent-use-computer-finish-tasks.html)). WorkOS comparison: Claude operates on user's real desktop (macOS) vs OpenAI's sandboxed virtual computer — fundamental architectural difference for business system access ([WorkOS](https://workos.com/blog/anthropics-computer-use-versus-openais-computer-using-agent-cua)). Zero practitioner reviews yet (expected within 1-2 weeks). No Willison/Karpathy commentary found on this launch.
+
 **Certifications** — "Claude Certified Architect" launched Mar 12. AWS/Kubernetes playbook. ([IntuitionLabs](https://intuitionlabs.ai/articles/claude-enterprise-deployment-training-guide-2026), 2026)
 **$100M Partner Network** — Accenture (30K), Deloitte (350K), PwC, Infosys. ([Anthropic](https://www.anthropic.com/news/claude-partner-network), 2026)
 

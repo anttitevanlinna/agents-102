@@ -651,6 +651,22 @@ This pattern will repeat across all agent platforms: the capability arrives befo
 
 ---
 
+## AML/KYC: The First Non-Obvious Domain to Reach Convergence
+
+**Thesis:** Compliance/AML is approaching convergence (Level 3) faster than any other under-represented domain — not because it's easy, but because it's structurally agent-friendly: rules-based, talent-constrained, high-volume, and verifiable.
+
+Seven independent signals now exist: Goldman Sachs, Greenlite, Diligent AI (with Scalapay deployment), Nasdaq Verafin (2,600+ FI customers, 80% alert reduction), JPMorgan (90% KYC productivity claim), WorkFusion ("Evan"), CleverChain. Four pass all three quality gates with independent trade press coverage. The talent shortage is the accelerant — 75% of financial institutions increased compliance headcount yet still report inadequate resources (Nasdaq Verafin survey). When you can't hire enough humans and the work is rules-based with verifiable outputs, agents become inevitable.
+
+The counter-signal: no regulator has formally endorsed autonomous AML decisioning. SARs (Suspicious Activity Reports) still require human sign-off. The convergence is happening in alert triage and false positive reduction — the high-volume grunt work — not in the judgment-heavy investigation layer. This is the same pattern as customer service: agents handle Level 1, humans handle Level 2+.
+
+**The implication for CTOs:** If you run a compliance function, AML/KYC alert triage is the highest-conviction agent use case outside customer service. The evidence base is approaching convergence. Start with false positive reduction (bounded, verifiable, audit-trailable) — not with SAR generation (judgment-heavy, regulator-facing).
+
+**Applies to:** Platform advisory, Bootstrap Module 7, newsletter content, compliance plug point in training
+**Source:** Cycle 66 convergence analysis — RegTech Analyst, PaymentsJournal, tech.eu, FinTech Magazine
+**Date:** 2026-03-24
+
+---
+
 ## Template
 
 Copy this for new insights:

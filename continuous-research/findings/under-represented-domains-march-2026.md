@@ -83,11 +83,22 @@
 - **Evidence level:** Level 2 (single experiment — one practitioner building an AI-first law firm, with self-reported metrics)
 - **Caveat:** The $45K savings claim is self-reported. Former Cooley lawyer, so has credibility, but independent verification absent.
 
-### What We Did NOT Find (Compliance/Legal)
-- **No named compliance officer at a bank who has deployed and reports on AI agents.** The compliance domain is entirely vendor-driven (WorkFusion, CleverChain, SymphonyAI, Napier AI) in public discourse.
+### Nasdaq Verafin — Digital Sanctions Analyst (AML) — CYCLE 66 ADDITION
+- **Domain:** Financial Crime / AML / Sanctions Screening
+- **Named practitioner:** No individual named — platform-level deployment across 2,600+ financial institutions.
+- **What it does:** AI agent autonomously dispositions, documents, and actions false positive sanctions screening alerts. Escalates true matches for human review. Also: Digital EDD Analyst for Enhanced Due Diligence, Entity Research Copilot for negative news/counterparty analysis.
+- **Measurable outcome:** 80%+ reduction in alert review workload. Entity Research Copilot used in "tens of thousands of cases" since Q2 2025. 75% of surveyed FIs report inadequate resources for financial crime despite increased hiring.
+- **Source:** [PaymentsJournal — domain trade publication](https://www.paymentsjournal.com/nasdaq-verafin-deploys-ai-agents-for-aml-compliance/); [FinTech Magazine — domain trade](https://fintechmagazine.com/news/nasdaq-verafin-launches-digital-workers-for-aml-compliance); [GlobeNewsWire — vendor press release](https://www.globenewswire.com/news-release/2025/07/21/3118638/6948/en/Nasdaq-Verafin-Announces-Launch-of-its-Agentic-AI-Workforce-Delivering-a-Step-Change-in-AML-Compliance-Efficiency.html)
+- **Evidence level:** Level 2 (platform with trade press coverage, 2,600+ FI customer base, but 80% metric is vendor-sourced)
+- **Significance:** Fourth independent AML/KYC agent signal (after Greenlite, Diligent AI, WorkFusion). Compliance/AML approaching convergence.
+
+### What We Did NOT Find (Compliance/Legal) — UPDATED CYCLE 66
+- **No named compliance officer at a bank who has deployed and reports on AI agents.** JPMorgan claims 90% KYC productivity improvement but no named individual found. The compliance domain remains dominated by vendor/platform announcements.
+- **No regulator formally endorsing autonomous AML agent decisioning.** Convergence is happening without regulatory blessing.
 - **Beyond Harvey, no law firm names specific lawyers who are deploying agents with measurable results.** The RSGI/Harvey report says firms have 18 AI solutions on average but only 20% of lawyers use them regularly.
-- **95% false positive rate in traditional AML monitoring** is the key driver — but we found no named bank saying "we deployed X agent and reduced false positives by Y%."
+- **95% false positive rate in traditional AML monitoring** is the key driver — but independent verification of claimed reductions remains scarce.
 - **Courts catching AI citation fabrication at accelerating rates** (120 cases through May 2025 → 660 by December 2025) — a critical counter-signal about reliability.
+- **Compliance/AML convergence status (cycle 66):** 7 total signals, 4 passing all quality gates (Greenlite, Diligent AI, Nasdaq Verafin, WorkFusion). Approaching Level 3 but needs 2-3 more independent signals with named practitioners.
 
 ---
 

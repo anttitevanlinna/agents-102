@@ -1,7 +1,7 @@
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-03-21 (cycle 24)
-OODA cycles: 4
+Last updated: 2026-03-24 (cycle 66)
+OODA cycles: 5
 
 ## Focus
 
@@ -28,6 +28,14 @@ Anthropic's ecosystem for **business users**. Initially developer-heavy, but Cow
 **Claude Cowork** — "Claude Code for the rest of your work." Desktop agent across computer environment. (Jan 2026 launch)
 **Plugins** — "Mini apps" — skill+connector bundles for domain-specific work. Finance, HR, legal templates. Private enterprise marketplaces. Connectors: Google Workspace, DocuSign, FactSet, MSCI, LegalZoom. ([Blog](https://claude.com/blog/cowork-plugins-across-enterprise); [TechCrunch](https://techcrunch.com/2026/02/24/anthropic-launches-new-push-for-enterprise-agents-with-plugins-for-finance-engineering-and-design/), Feb 24, 2026)
 **B2B Marketplace** — Apps from Snowflake, GitLab, Harvey AI, Replit, Rogo, Lovable. ([Digital Commerce 360](https://www.digitalcommerce360.com/2026/03/16/anthropic-launches-claude-b2b-marketplace-enterprise-ai-applications/), Mar 16, 2026)
+
+**Cycle 66 updates (March 24):**
+- **Self-serve Enterprise plans now available.** Previously sales-team-only. Any org can purchase directly. Single seat type: Claude + Claude Code + Cowork. Distribution acceleration move.
+- **21 plugins total** (11 Jan 30, 10 more Feb 24). Plugin architecture: skills + slash commands + MCP connectors + sub-agents. Private enterprise plugin marketplaces. PwC building industry-specific plugins for regulated sectors.
+- **Recurring + on-demand task scheduling** in Cowork. First persistent autonomous business workflow capability.
+- **First independent plugin review:** Medium/@boredhead rated all 21 plugins — first practitioner-level Cowork assessment found. ([Medium](https://medium.com/@boredhead/rating-claude-cowork-plugins-eba04fb1327f), Mar 2026)
+- **Named enterprise signals (Level 0):** Thomson Reuters (CEO Steve Hasker), NYSE (CTO Sridhar Masam), Epic (SVP R&D Seth Hain) at launch event. All vendor-channeled.
+- **Revenue signal:** Claude Code at "$1 billion in revenue — fastest-growing product of all time" per Anthropic's White. ([CNBC](https://www.cnbc.com/2026/02/24/anthropic-claude-cowork-office-worker.html), Feb 2026)
 **Certifications** — "Claude Certified Architect" launched Mar 12. AWS/Kubernetes playbook. ([IntuitionLabs](https://intuitionlabs.ai/articles/claude-enterprise-deployment-training-guide-2026), 2026)
 **$100M Partner Network** — Accenture (30K), Deloitte (350K), PwC, Infosys. ([Anthropic](https://www.anthropic.com/news/claude-partner-network), 2026)
 

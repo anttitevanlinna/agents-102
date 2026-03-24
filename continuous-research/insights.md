@@ -697,6 +697,22 @@ Berner (Finland) replaced 400 ChatGPT licenses with Workday Sana — 90% adoptio
 
 ---
 
+## The Infrastructure Layer Is Encoding the Chatbot→Agent Distinction
+
+**Thesis:** The OpenAI-AWS $110B deal structurally separates stateless (chatbot) from stateful (agent) infrastructure — the first time the chatbot-vs-agent distinction has been encoded in cloud architecture.
+
+Azure retains stateless API exclusivity — traditional model queries without session persistence. AWS gets stateful runtime distribution — models maintaining memory, context, and identity across ongoing workflows. The architectural split maps directly to the product distinction our training teaches: chatbots are request-response (stateless), agents are persistent autonomous workflows (stateful).
+
+This matters because it means the infrastructure layer is now betting that the future of enterprise AI is stateful agents, not stateless chatbots. And the bet is $50B (Amazon's investment) large. For organizations currently running Azure-based Copilot chatbots, the question becomes: when you want to upgrade to agents, does that mean migrating to AWS? The stateless/stateful split creates a potential cloud migration event that nobody is talking about yet.
+
+**The implication for CTOs:** Your current AI infrastructure (likely Azure + Copilot) may be optimized for chatbots. Agents need a different runtime. The cloud providers are now explicitly separating these architectures. This doesn't mean migrate now — but it means plan for a potential split between where your chatbots live (Azure) and where your agents will live (AWS/Bedrock or other stateful runtimes).
+
+**Applies to:** Platform advisory, Bootstrap Module 7, infrastructure assessment
+**Source:** OpenAI-AWS Frontier deal (March 2026), InfoQ analysis
+**Date:** 2026-03-24
+
+---
+
 ## Template
 
 Copy this for new insights:

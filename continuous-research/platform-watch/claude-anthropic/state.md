@@ -1,7 +1,7 @@
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-03-24 (cycle 66)
-OODA cycles: 5
+Last updated: 2026-03-24 (cycle 68)
+OODA cycles: 6
 
 ## Focus
 
@@ -36,6 +36,10 @@ Anthropic's ecosystem for **business users**. Initially developer-heavy, but Cow
 - **First independent plugin review:** Medium/@boredhead rated all 21 plugins — first practitioner-level Cowork assessment found. ([Medium](https://medium.com/@boredhead/rating-claude-cowork-plugins-eba04fb1327f), Mar 2026)
 - **Named enterprise signals (Level 0):** Thomson Reuters (CEO Steve Hasker), NYSE (CTO Sridhar Masam), Epic (SVP R&D Seth Hain) at launch event. All vendor-channeled.
 - **Revenue signal:** Claude Code at "$1 billion in revenue — fastest-growing product of all time" per Anthropic's White. ([CNBC](https://www.cnbc.com/2026/02/24/anthropic-claude-cowork-office-worker.html), Feb 2026)
+
+**Cycle 68 updates (March 24, 10:00):**
+- **Computer Use research preview launched March 23.** Claude Code and Cowork can click, scroll, navigate web, open apps, fill spreadsheets on macOS. Permission-first safety model. Prioritizes direct integrations first, falls back to screen-based control. Pro/Max subscribers only. macOS only. ([SiliconAngle](https://siliconangle.com/2026/03/23/anthropics-claude-gets-computer-use-capabilities-preview/), Mar 23, 2026)
+- **Pentagon court hearing March 24.** New filings reveal Pentagon told Anthropic they were "very close" one week after Trump declared relationship terminated. Anthropic cited "technical misunderstandings." Senator Warren called designation "retaliation." Judge Lin hearing today. ([TechCrunch](https://techcrunch.com/2026/03/20/new-court-filing-reveals-pentagon-told-anthropic-the-two-sides-were-nearly-aligned-a-week-after-trump-declared-the-relationship-kaput/), Mar 20)
 **Certifications** — "Claude Certified Architect" launched Mar 12. AWS/Kubernetes playbook. ([IntuitionLabs](https://intuitionlabs.ai/articles/claude-enterprise-deployment-training-guide-2026), 2026)
 **$100M Partner Network** — Accenture (30K), Deloitte (350K), PwC, Infosys. ([Anthropic](https://www.anthropic.com/news/claude-partner-network), 2026)
 
@@ -182,8 +186,10 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 - [ ] Cowork plugin enterprise deployment with measurable outcomes
 - [ ] B2B marketplace customer reviews — re-check in 4 weeks
 - [ ] Agent Teams for business users — any roadmap signal?
-- [~] **Antspace** — when does it move from staging to production? Public announcement? **Partial: BYOC details confirmed (Kubernetes, 7-endpoint API, resume-cached sessions). Still staging. No public announcement.**
+- [~] **Antspace** — when does it move from staging to production? Public announcement? **Partial: BYOC details confirmed (Kubernetes, 7-endpoint API, resume-cached sessions). Still staging. No public announcement. 35th consecutive silence (cycle 68).**
 - [x] Antspace + Supabase integration — how deep is the database layer? **Answer: Deep. 6 MCP tools auto-provisioned. On-demand DB creation, migrations, type generation, Edge Functions. Full backend-as-a-service.**
+- [ ] Computer Use practitioner feedback — launched March 23, zero reviews yet (1 day old). Monitor for first independent reports.
+- [~] Political risk resolution — Pentagon hearing March 24. Filings suggest "very close" to resolution, but outcome pending.
 
 ## Sources
 

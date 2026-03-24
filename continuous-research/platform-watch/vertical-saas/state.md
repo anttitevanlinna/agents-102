@@ -1,7 +1,7 @@
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-03-23 (cycle 59)
-OODA cycles: 9
+Last updated: 2026-03-24 (cycle 68)
+OODA cycles: 10
 
 ## Focus
 
@@ -173,7 +173,7 @@ Vertical platforms win because they already own the data. Zendesk has the ticket
 - [ ] Failure case studies (specific companies, not analyst predictions)
 - [~] Customer service agent accuracy/hallucination rates in production — **Partial: Best models 0.7-1.5% on grounded tasks. Reasoning models paradoxically worse (o3: 33%, R1: 14.3%). Supervision architecture matters more than model quality. Salesforce own portal: 62% vs 80% target.**
 - [x] SAP Joule production deployment results (beyond vendor case studies) — **Answer: Zero independent evidence. Agents just reaching GA Q1 2026. Partner feedback (Accenture, Capgemini) all vendor-sourced.**
-- [ ] Zendesk-Forethought integration: when do combined capabilities ship?
+- [~] Zendesk-Forethought integration: when do combined capabilities ship? **Partial (cycle 68): Acquisition announced March 11, expected to close end of March. Zendesk's largest acquisition in two decades. Forethought: self-improving AI agents, 1B+ monthly interactions. Follows Finnish Ultimate acquisition (2024). No integration details yet.**
 - [~] ServiceNow Autonomous Workforce: GA Q2 2026 — watch for early customer reports. **Cycle 45: Paul Fipps confirmed L1 elimination internally. No external customer results yet. GA still expected Q2 2026.**
 - [ ] Nordic signal at Salesforce World Tour events (Copenhagen Apr 23, Oslo May 20, Stockholm May 27)
 - [ ] Sierra AI: find specific deployment metrics (resolution rates, CSAT) to match revenue claims
@@ -189,6 +189,32 @@ Vertical platforms win because they already own the data. Zendesk has the ticket
 6. **Agentforce beyond customer service.** New named deployments (Engine, Nexo, Engie, Safari365) are all still customer service. Any sales/marketing/operations evidence?
 7. **Governance-as-platform competition.** ServiceNow AI Gateway vs. Salesforce Agent Script vs. SAP Signavio. Which approach is winning practitioner trust?
 8. **Oliv.ai and pure-play challengers.** Are low-cost, fast-deploy alternatives gaining traction vs. incumbent platforms?
+
+### Cycle 68 Updates (March 24)
+
+**Salesforce Agentforce updated metrics (SalesforceBen, [practitioner analysis]):**
+- 18,500 total customers, 9,500 paid, ~$540M ARR (up 330% YoY)
+- 50%+ of bookings from existing customer expansion — strongest value-delivery signal
+- CEO Benioff: "93% agent accuracy" — SalesforceBen notes falls far short of Six Sigma for regulated industries
+- Salesforce acknowledges: "as processes become more complex, their ability to reason consistently can start to waver"
+- Persistent barriers: Data Cloud dependency, $550/user/month pricing, setup complexity
+- Source: [SalesforceBen](https://www.salesforceben.com/revisiting-the-bullish-case-for-agentforce-in-2026/)
+
+**SAP Concur Joule agents announced (March 17, [Skift — domain trade publication]):**
+- Expense Automation Agent (virtual delegate creating expense reports automatically)
+- Expense Pre-Submit Audit Agent
+- Microsoft 365 Copilot integration (available now)
+- SAP Sales Cloud Booking Agent GA planned Q2 2026
+- First concrete, domain-specific Joule agents with clear functionality. Still zero customer deployment evidence.
+- Source: [Skift](https://skift.com/2026/03/17/sap-concur-adds-ai-agents-for-expense-automation-expands-amexgbt-partnership/)
+
+**ServiceNow AI Gateway — enforced MCP governance (March 2026 release):**
+- Enforced MCP server approvals — unapproved servers hidden from AI Agent Studio (previously advisory only)
+- CIMD auto-registration — 10+ platforms auto-configure
+- PII detection with payload blocking — single-toggle hard stop
+- First major enterprise platform making MCP governance mandatory
+- Beta customers named: City of Raleigh, CVS Health
+- Source: [ServiceNow Community](https://www.servicenow.com/community/now-assist-articles/ai-gateway-what-s-new-in-the-march-2026-release/ta-p/3501670)
 
 ## Sources
 

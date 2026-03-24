@@ -667,6 +667,36 @@ The counter-signal: no regulator has formally endorsed autonomous AML decisionin
 
 ---
 
+## Governance Ships Faster Than Agents
+
+**Thesis:** The supply of agent governance tools is outrunning the demand for agents themselves — because agent demand is blocked by governance gaps.
+
+In a single 2-week window (March 2026): ServiceNow shipped enforced MCP governance, A2A v1.0 released signed agent cards, NIST published agent identity standards, Stacklok shipped MCP Optimizer for Kubernetes, Lunar.dev launched tool-level ACLs, AWS Cedar Policy went GA. Eight independent signals from vendors, standards bodies, and open-source projects all converging on "governance must be solved before enterprise agent deployment scales."
+
+The pattern is recursive: enterprises won't deploy agents without governance → governance vendors ship solutions → but there are still no agents to govern → because enterprises won't deploy without governance. The chicken-egg breaks when one platform bundles governance tightly enough that the "governance decision" disappears into the "platform decision." ServiceNow's enforced MCP governance (mandatory, not advisory) is the first move in this direction.
+
+**The implication for CTOs:** Don't select governance tools separately from agent platforms. The platform that bundles governance wins — because it removes one of the three blockers (the other two being integration and skills).
+
+**Applies to:** Platform advisory, Bootstrap Module 4 (Security), Module 7 (Agent Platforms), newsletter
+**Source:** Cycle 68 governance convergence analysis — ServiceNow AI Gateway, A2A v1.0, NIST NCCoE, Stacklok, Lunar.dev, AWS Cedar
+**Date:** 2026-03-24
+
+---
+
+## Nordic Shadow AI Is the Entry Point
+
+**Thesis:** Nordic companies' first AI agent deployments are replacing shadow AI (consumer tools employees adopted without permission), not replacing processes.
+
+Berner (Finland) replaced 400 ChatGPT licenses with Workday Sana — 90% adoption in 40 days. The speed of adoption reveals that employees were already doing the work with consumer tools. The enterprise deployment didn't create new AI usage; it brought existing usage under governance. CatalyStone's Nordic HR survey (500 professionals, Sweden/Denmark/Finland) shows 46% piloting, only 14% operational, 40% not started.
+
+**The implication for buyer leaders:** Your employees are already using AI. The question isn't "should we adopt?" — it's "should we govern what's already happening?" The Bootstrap training's first insight ("useful AND unreliable") hits differently when participants realize their teams are already relying on unreliable tools without guardrails.
+
+**Applies to:** Bootstrap Module 1 (Getting Going), marketing/sales conversations, Nordic positioning
+**Source:** Cycle 68 — Berner/Joona Honka via HR Brew, CatalyStone Nordic HR Trends & Tech Report 2026
+**Date:** 2026-03-24
+
+---
+
 ## Template
 
 Copy this for new insights:

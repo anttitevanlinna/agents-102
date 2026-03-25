@@ -180,6 +180,61 @@ Three companies (Anthropic, OpenAI/Codex, Meta/Manus) converging on desktop-cont
 
 ---
 
+## NORDIC SIGNALS
+
+### Nordea — 1,500 Job Cuts, But "Agents" Are Chatbots
+
+Nordea announced 1,500 job cuts across the Nordics as part of its 2030 strategy, citing AI and automation. However, the AI "agents" deployed are **12 conversational AI bots on the boost.ai platform** — chatbot-tier, not agentic (no multi-step autonomous workflows). 91-95% resolution rate, 220K conversations/month.
+
+- Source: https://www.nordiskpost.com/2026/03/18/nordea-will-cut-1500-jobs-across-the-nordics/ [general press — bare fact]
+- Source: https://boost.ai/case-studies/nordea-employs-comprehensive-conversational-ai-strategy-to-scale-customer-service/ [vendor case study — Level 0]
+- Evidence level: Level 0. Fails all three gates — these are chatbots, not agents.
+- **Nordic drought continues: cycle 38 with no new enterprise agentic deployments beyond Equinor/NBIM.**
+
+### BCG Nordic Confirmation — "Only 4% Achieve Strong AI Returns"
+
+BCG published Nordic AI analysis arguing most Nordic companies are stuck in productivity-tool mode rather than transformative end-to-end initiatives. Validates our positioning but is consultancy framework (Level 0).
+
+- Source: https://www.bcg.com/publications/2026/nordic-ai-value-creation-or-bubble [analyst/consultancy — Level 0]
+
+---
+
+## DOMAIN UPDATES
+
+### SDR Agent Convergence — "Autonomous Replacement Fails, Augmentation Works" (Level 3)
+
+**This is a genuine convergence finding.** Multiple independent sources converge on the same pattern:
+
+- **50-70% of AI SDR tools churn within a year** (~2x human SDR turnover)
+- **Only 2% of companies successfully implement AI SDRs** in a way that sticks
+- **AI SDRs convert meetings at 15%** vs. human SDRs at 25%
+- **Companies using AI to augment (not replace) human SDRs see 2.8x more pipeline**
+- Every successful deployment requires **daily tuning** — "set it and forget it" called "the biggest lie in the market"
+
+The narrative has shifted from "AI SDRs fail" to "autonomous replacement fails, augmentation works." This is our strongest cross-domain example of the human-agent collaboration pattern.
+
+- Source: https://www.gtmaipodcast.com/p/the-ai-sdr-bubble-is-popping-heres [practitioner analysis]
+- Source: https://www.usergems.com/blog/are-ai-sdrs-worth-it [vendor with practitioner data]
+- Source: https://www.broadn.io/blogs/ai-sdrs-doomed-to-fail [practitioner analysis]
+- Source: https://nuacom.com/ai-sdrs-should-you-use-them-or-not/ [domain trade publication]
+- Evidence level: Level 3 (convergence). Multiple independent sources describing the same failure-then-pivot pattern.
+
+### HR Agents — Still Zero Deployments Globally
+
+Confirm's Transform 2026 launch (March 23) remains a vendor announcement with no customer evidence. Josh Bersin predicts agents will eliminate 30% of HR roles — Level 0 analyst prediction. The "40% of companies have deployed AI agents in HR" stat conflates chatbots with agents.
+
+**Verdict: ZERO verified autonomous HR agent deployments. 4th consecutive cycle confirming this.**
+
+### AML/Compliance — Approaching Convergence But Not There Yet
+
+Big bank names (JPM, Citi, Wells Fargo) attached to AML AI, but practitioner-level verification still missing. Domain trade press increasingly confident that "2026 is the transition from pilots to production." FCA says 75% of firms using "AI" but this conflates chatbots with agents.
+
+- Source: https://www.amlintelligence.com/2026/01/insight-agentic-ai-and-stablecoins-the-five-trends-redefining-aml-in-2026/ [domain trade publication]
+- Source: https://fintech.global/2026/02/16/agentic-ai-drives-next-phase-of-aml-innovation/ [domain trade publication]
+- Evidence level: Level 1-2. Worth deeper practitioner-focused search next cycle.
+
+---
+
 ## What We Did Not Find
 
 1. **No Copilot Cowork hands-on review** — 38th consecutive cycle. The "late March" Frontier program window is nearly closed.
@@ -188,6 +243,9 @@ Three companies (Anthropic, OpenAI/Codex, Meta/Manus) converging on desktop-cont
 4. **No A2A primary source for Tyson/Gordon deployment** — cited in summaries but original source needs verification.
 5. **No counter-evidence to agent security convergence** — nobody is arguing "agent security is not needed." The debate is about approach (identity-based vs. behavioral vs. intent-based), not necessity.
 6. **No Agentforce practitioner deployments** — still too early.
+7. **No new Nordic enterprise agent deployments** — 38th consecutive cycle. Nordea's "agents" are chatbots.
+8. **No HR agent deployment anywhere globally** — Confirm launch is vendor announcement only.
+9. **No Sana/Workday Nordic independent verification** — Joona Honka (Berner), Anton Nytorp (Cheffelo), Alexander Bergström (Telavox) still unverified.
 
 ---
 

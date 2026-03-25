@@ -257,3 +257,6 @@ Platform watch asks "which platform?" Domain research asks "which processes?" AI
 | Convergence: Hybrid | 2026-02-21 | 15+ signals | CONFIRMED. 5 failure mechanisms. AI drafts → human decides → AI executes → human monitors. |
 | Convergence: Governance | 2026-02-21 | 16 signals | CONFIRMED. Governance-first deploys faster. Without it: 9-month stalls. |
 | Convergence: Orchestration | 2026-02-21 | 20+ signals | CONFIRMED with counter-arguments. Know when to split. 40% of multi-agent pilots fail. |
+| **Incremental: Platform + CS** | **2026-03-25** | 6 platform announcements | Announcement-to-deployment gap still enormous. Oracle 600 agents, Workday acquired Sana $1.1B. Zero practitioner evidence for vertical SaaS agents. |
+| **Incremental: Nordic + EU AI Act** | **2026-03-25** | Ericsson rApp, 7 practitioners, 2 surveys | No new Nordic production agentic. Finland enforcement active, no actions. Nordic caution gap CONFIRMED (Level 3): BCG + Deloitte independently. |
+| **Incremental: Legal + Finance + HR** | **2026-03-25** | Legora $5.55B, Harvey $11B, Goldman CIO | Legal AI approaching convergence (Level 3). Goldman = credibility signal for finance agents. HR still zero agentic. |

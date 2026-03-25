@@ -321,6 +321,7 @@ Write to `continuous-research/findings/convergence-[pattern-name].md`:
 | Incremental: Platform + CS | 1 | 2026-03-25 | 6 platform announcements, 0 new production | Announcement-to-deployment gap still enormous. No practitioner evidence for any vertical SaaS agent. Oracle 600 agents, Workday acquired Sana $1.1B. |
 | Incremental: Nordic + EU AI Act | 1 | 2026-03-25 | Ericsson rApp, 7 Nordic practitioners, 2 market reports | No new Nordic production agentic. Finland enforcement active, no actions yet. BCG: 4% strong AI returns in Nordics. Nordic caution gap confirmed (Level 3). |
 | Incremental: Legal + Finance + HR | 1 | 2026-03-25 | Legora $5.55B, Harvey $11B, Goldman onboarding, Workday+Sana launch | Legal AI approaching convergence. Goldman = credibility signal for finance. HR still zero agentic deployments. |
+| All 7 domains | Incremental (08:00 UTC) | 2026-03-25 | 9 findings | Harvey $190M ARR + CMS 118hrs/yr. AI SDR 50-70% churn confirmed. Go Autonomous (Copenhagen) new Nordic agentic B2B. 65-75% CS ceiling converged. Deloitte Zora at HPE (40% faster reporting). Nordic banks still copilots. "Practitioner silence" + "legal pulling away from finance" meta-patterns. |
 
 ---
 

@@ -119,6 +119,6 @@ This is not a sales page. If you are a leader thinking seriously about agent com
 
 **CTA:** Start a conversation
 
-**Email:** tevanlin@gmail.com
+**Email:** antti@bosser.consulting
 
 Helsinki, Finland

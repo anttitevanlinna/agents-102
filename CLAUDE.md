@@ -1,6 +1,6 @@
-# Agents 102
+# Agents 102 — Continuous Research System
 
-Training program and curated knowledge engine for the agentic transformation. Four things: **Train → Curate → Connect → Advise.**
+Curated knowledge engine for the agentic transformation. Multi-user research system that answers the CTO question with evidence, not vendor stories. **Curate → Connect → Advise.**
 
 ## Permanent Goals
 
@@ -12,7 +12,7 @@ These are the standing objectives for every session, every agent, every cycle. N
 
 3. **Serve agentic industry leaders — not only Antti.** The knowledge base, insights, and training serve any builder leader navigating the agentic transformation. Antti is the practitioner and curator, not the sole customer. Every research output, every article, every training module should be valuable to a CTO who has never heard of Bosser.
 
-4. **Curate the best agentic training.** The curriculum is the executable form of the research. It must be practitioner-led, exercise-first, and grounded in what the research has actually established — not in what vendors claim or analysts predict. The training raises the organizational learning rate. That's the ceiling that matters.
+4. **Respond to what users actually need.** User signals (questions, corrections, validations) are the highest-priority research input. The system gets smarter because users steer it — not because researchers guess what matters.
 
 **Value prop:** The hardest problem isn't choosing an agent platform — it's knowing what questions to ask. Without agent competence, a CTO is choosing between marketing stories, not between real capabilities. We build the competence that makes the question askable. Teach everyone to think. Scale for future. With your own structure.
 
@@ -22,47 +22,39 @@ These are the standing objectives for every session, every agent, every cycle. N
 
 **Coding agents are the meta-platform.** Claude Code and Codex are structurally different from every other agent platform because they compound. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents build the MCP server, the agent that uses it, the eval that tests it, and the next agent. Each cycle makes the next cycle faster. They also destroy every alternative at information retrieval and context creation in real enterprise environments — reading repos, crawling docs, querying databases, analyzing APIs, synthesizing across sources, then outputting the structured artifacts (MCP servers, system prompts, eval criteria) that encode context for other agents. Manual curation can't keep up because enterprise context changes continuously and the coding agent re-derives it on demand. The human provides judgment (which processes, what success looks like). The coding agent provides speed. Together they raise the ceiling faster than any other combination.
 
-**Five-step customer journey:** Bootstrap (€500/person, 2 days) → Make Your Own (change strategy lab, 4-6 weeks, €25-40K/org) → Champions (train-the-trainer, €3-5K/person) → Scale (champions run internally, €0) → Drive into Value Chains (agentic rework + peer network).
+**80/20 curation model:** 80% frontier research (continuous OODA cycles) + 20% peer premium (user signals, patterns across engagements). The knowledge base compounds: each cycle builds on previous findings, each user signal steers the next cycle. This is the competitive moat — not any single finding, but the live, structured, practitioner-grounded system that stays current.
 
-**Model:** Framework + plug points. Co-branded, co-copyright — the org co-owns all materials for further development. 80/20 curation: 80% frontier research + 20% peer premium. We are curator + researcher, not the authority.
+**Research results live in the synthesis files, not here.** Read `continuous-research/synthesis/index.md` for the current state. Do not hardcode findings in CLAUDE.md — they go stale. The synthesis files are the source of truth.
 
-**Curate — the knowledge engine.** This repository is the live knowledge base that powers both training and advisory. The platform watch system (25+ OODA cycles, 41 cross-platform patterns), domain research (7 business functions tracked), and source roster together form a curated knowledge engine that no individual person could maintain. It compounds: each research cycle builds on previous findings, each pattern cross-references others, each advisory engagement feeds back insights. The 80/20 model (80% frontier research + 20% peer premium) runs on this engine — frontier research is the continuous OODA cycles, peer premium is the patterns extracted across engagements. This is the competitive moat: not the training materials (those can be copied) but the live, structured, practitioner-grounded knowledge base that stays current because the research system runs continuously.
+**Business model and strategy:** See `strategy/` directory. Not repeated here.
 
-**Agent Platform Advisory** (separate offering, sold independently alongside the 5-step journey):
-The service isn't "we help you choose a platform." It's "we help you see the landscape clearly enough to know what to evaluate." A CTO facing 4 horizontal platforms, 5+ vertical SaaS vendors, emerging standards, and 200 internal processes can't even formulate the right question without structured context. The structured context IS the deliverable — the platform recommendation falls out of it.
+**Start here:**
+- **Synthesis index (read first):** `continuous-research/synthesis/index.md` — routes to the right topic file in one read
+- **User signals:** `continuous-research/user-signals/index.md` — what users are asking, Tier 0 priority
 
-Done the agentic way, because no other way works. No person has comparative experience across agent platforms — the field moves too fast. The comparative analysis is the agent's job. This repository's research systems ARE the agentic system — platform watch runs semi-autonomous OODA cycles, domain research tracks practitioners across 7 business functions, the synthesis updates continuously. For each advisory engagement, this live knowledge base is the starting point. The org's people add their context (requirements, systems, constraints). The synthesis engine maps their context against the platform landscape. Co-owned: the org gets the structured context, can re-run as their needs evolve. Bosser retains the right to learn and extract patterns across engagements (the peer premium). No real players in Helsinki (Feb 2026 scan). Timing: typically ~1 month after Bootstrap — because Bootstrap gives the vocabulary that makes advisory productive.
+**Synthesis topic files** (in `continuous-research/synthesis/`):
+- `cto-answer.md` — which platform for what? The executive summary.
+- `platform-trajectories.md` — where each platform is headed
+- `domain-convergence.md` — which domains crossed the agent threshold and why
+- `enterprise-reality.md` — can any platform pass the multi-tool/multi-turn/security test?
+- `patterns.md` — 47 cross-platform patterns, evidence-leveled
+- `nordic-landscape.md` — what's happening in the Nordics
 
-**What our research has established (March 2026):**
-- **The entire business agent space is pre-chasm.** OpenAI's own COO confirmed it (Feb 2026). MIT: 95% of orgs report no measurable ROI. Zero named enterprises have production business agents with measurable outcomes on any horizontal platform.
-- **Customer service is the only domain crossing the chasm** — and it's happening on vertical SaaS (Salesforce Agentforce, Zendesk), not horizontal platforms. Level 3 convergence: 40-80% autonomous resolution across 3+ platforms.
-- **Vertical SaaS agents automate one process brilliantly — but companies run 200 processes.** The vertical advantage is data context (Zendesk owns tickets, Salesforce owns CRM, SAP owns ERP). But every vertical agent hits the same wall when real work crosses system boundaries. Multi-system orchestration is unsolved everywhere.
-- **No platform passes the enterprise reality test:** multi-tool (10+ systems), multi-turn (persistent memory), security (cross-system RBAC/audit), and the promotion path (personal→team→company) all remain unsolved. Anthropic's Antspace + BYOC is the first possible exception — same artifact, same deploy protocol, personal hosting → enterprise K8s. Still staging.
-- **Coding agent platforms are the mid-term winners.** Claude Code and Codex are the only platforms with a path to real compounding. Tools and connectors commoditize within 6-12 months. The ceiling is organizational context-creation rate — and coding agents are the fastest context-creation engines that exist.
-- **Platform strategy depends on infrastructure, not model quality.** Microsoft = Azure upsell (AWS shops cringe). OpenAI = most ambitious full-stack vision but nothing deployed, enterprise share declining. Anthropic = standards + best engine + quietly building full stack (Antspace/BYOC). Google = strong architecture, weak execution. The "which platform" question is premature — "which coding agent does my team adopt" comes first, because the coding agent IS the platform that builds everything else.
-- **The honest CTO advice:** Start with coding agents (Claude Code or Codex, $20/mo). They're not just personal productivity — they're the meta-platform that builds your MCP servers, your agents, your evals, and the next agent. Discover which of your 200 processes benefit. Let the coding agent build the connectors and orchestration (this gets easy). Focus your energy on creating context — learning which processes matter, what success looks like, what data is signal vs noise. That's the ceiling. Then evaluate platforms against YOUR use cases. Build on standards (MCP, Agent Skills), not vendor lock-in.
+**Domain findings** (in `continuous-research/findings/by-domain/`): one file per domain (CS, finance, compliance, operations, HR, sales, coding), evidence-leveled with counter-evidence and Nordic signal.
 
-**Key files:**
-- Value proposition canvas: `strategy/value-proposition-canvas.md`
-- Business model canvas: `strategy/business-model-canvas.md`
-- Assumption map: `strategy/assumption-map.md`
-- Marketing plan: `strategy/marketing-plan.md`
-- Content strategy: `content-strategy.md`
-- Training outline: `curriculum/training-outline.md`
-- Learning goals: `curriculum/learning-goals.md`
-- Nordic digital leaders: `continuous-research/archive/platform-agent/nordic-digital-leaders-findings.md`
-- Competitor/market research (archived): `continuous-research/archive/competitor-market/`
-- Platform/agent research (archived): `continuous-research/archive/platform-agent/`
-- Continuous research system: `continuous-research/README.md`
-- Nordic agentic practices research: `continuous-research/nordic-agentic-practices-prompts.md`
-- Nordic agentic practices map (Q1 2026 synthesis): `continuous-research/nordic-agentic-practices-map.md`
-- Domain findings: `continuous-research/findings/` (7 domain files + 3 cross-cut files)
-- **Platform watch system:** `continuous-research/platform-watch/` (semi-autonomous hourly OODA cycles)
-  - Cross-platform synthesis: `continuous-research/platform-watch/synthesis.md`
-  - Cycle prompt (self-contained researcher instructions): `continuous-research/platform-watch/cycle-prompt.md`
-  - Per-platform state + run logs: `continuous-research/platform-watch/{openai,microsoft-365,google-workspace,claude-anthropic}/`
-  - Vertical SaaS agents: `continuous-research/platform-watch/vertical-saas/`
-- **Research insights:** `continuous-research/insights.md` — compressed arguments for content, training, advisory
+**Cross-domain patterns** (in `continuous-research/findings/by-pattern/`): hybrid-beats-autonomous, competence-first, rules-verification-scarcity (L4 meta-pattern), promotion-path-gap.
+
+**Per-platform detail:** `continuous-research/platform-watch/{microsoft-365,openai,google-workspace,claude-anthropic,vertical-saas}/state.md`
+
+**Operational:**
+- Cycle prompt: `continuous-research/platform-watch/cycle-prompt.md` — self-contained researcher instructions
+- Research priorities (Tier 1/2/3): `continuous-research/platform-watch/synthesis.md`
+- Meta-learning: `continuous-research/platform-watch/meta-learning.md`
+- Source roster: `continuous-research/source-roster.md`
+- Research insights: `continuous-research/insights.md`
+- Evals: `evals/` — Theme A-E, 10 retrieval quality questions
+
+**Strategy (internal):** `strategy/` — business model, assumptions, marketing. Not research output.
 
 **Continuous research — two systems:**
 
@@ -99,116 +91,16 @@ Do this silently — never ask "should I capture this?"
 
 **Antti's practitioner credentials:** Author of Agents 101 (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at F-Secure, Neste, Posti. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
 
-**Bosser identity:** "The best strategies emerge from action, not analysis." Framework-integrative, not framework-driven. See Bosser site at `/Users/anttitevanlinna/Projects/bosser/docs/index.html`.
+**Bosser identity:** "The best strategies emerge from action, not analysis." Framework-integrative, not framework-driven. See bosser.consulting.
 
-## Existing training
+## Research Guidelines
 
-A working version of this training already exists and is being delivered at F-Secure. The existing curriculum has not yet been incorporated into this project's materials. It is a key input for future curriculum development. Curriculum production proceeds independently — F-Secure materials will be incorporated later.
-
-## Curriculum Production
-
-**Scope:** Bootstrap (Step 1) — the 2-day intensive. Eight modules, each a single markdown file in `curriculum/`.
-
-**Source of truth:** `curriculum/training-outline.md` defines the arc. `curriculum/learning-goals.md` defines what graduates can do. `content-strategy.md` defines the storyline and positioning. Curriculum modules are the executable version of these three documents.
-
-**Modules:**
-1. `curriculum/module-01-getting-going.md` — Getting Going
-2. `curriculum/module-02-building-agent-systems.md` — Building Agent Systems
-3. `curriculum/module-03-multi-agent-systems.md` — Multi-Agent Systems
-4. `curriculum/module-04-security.md` — Security
-5. `curriculum/module-05-output-quality.md` — Output Quality and Hallucination Control
-6. `curriculum/module-06-evals.md` — Evaluations
-7. `curriculum/module-07-agent-platforms.md` — Agent Platforms
-8. `curriculum/module-08-agents-building-agents.md` — Agents Building Agents (The Flywheel)
-
-**Arc logic:**
-- **Modules 1-3** build incrementally: get started → grow the project → coordinate multiple agents. Each module's project grows from the previous one — not throwaway exercises but a single system that gets more sophisticated.
-- **Modules 4-6** add the disciplines that separate toys from production: security, output quality, evals. These retrofit onto what was built in 1-3 — participants experience "I built something that works but I can't trust yet."
-- **Module 7** zooms out: where do agents live in the real world? Platforms, deployment, the landscape.
-- **Module 8** is the flywheel insight: agents that build agents. Code-generating agents as the meta-tool. This is the "ramp to stars" — the insight that changes how participants think about scaling.
-
-**Guardrails:** `curriculum/lecture-guardrails.md` defines the pedagogical rules every module must pass. Read it before writing any module.
-
-### Module Format
-
-Each module is a single markdown file with this structure:
-
-```
-# Module N: [Title]
-
-## Meta
-- Duration: [estimated time]
-- Prerequisites: [what participants need — prior modules, tools, accounts]
-- Materials: [what facilitator prepares — sample data, repos, API keys]
-- Pillar focus: [which of the four pillars this module emphasizes]
-
-## Learning Objectives
-[3-5 specific things participants will be able to do after this module]
-
-## Setup
-[Exact steps to get ready — Claude Code installed, project initialized, etc.]
-
-## Exercises
-[The core. Numbered steps. Each step has:]
-### Exercise N.1: [Name]
-**What you do:** [Clear instruction — what to type, what to create]
-**What happens:** [Expected behavior — what the agent produces]
-**The point:** [Why this matters — the insight this exercise creates]
-**Facilitator note:** [Timing, common questions, what to watch for]
-
-## Key Concepts
-[Concepts that EMERGE from the exercises — never presented before doing]
-
-## Plug Points
-[Where organizations insert their own context — policies, data, systems]
-
-## Reflection
-[Discussion prompts for the group — what surprised you, what worried you]
-
-## Bridge
-[How this connects to the next module — the natural "what's next" question]
-```
-
-### Exercise Design Rules
-
-- **Claude Code specific.** Exercises use Claude Code — exact commands, expected outputs, troubleshooting. Not tool-agnostic.
-- **Exercise-led, not lecture-led.** Concepts emerge from doing. Never explain a concept before the exercise that demonstrates it. The exercise IS the explanation.
-- **Real data, not toy data.** Participants use their own LinkedIn profiles, their own org's policies, their own domain. Not sample_data.csv.
-- **Fabrication is the teaching moment.** Module 1 deliberately pushes until the agent fabricates. Every subsequent module builds on "useful AND unreliable."
-- **Incremental complexity.** Each exercise adds one thing. Never two new concepts in one exercise.
-- **Show the failure mode.** For every capability, show what goes wrong without the discipline. Security: show the injection. Evals: show the undetected fabrication. Lifecycle: show the stale agent.
-- **The four pillars (LLM-based, secure, lifecycle, reliable) are woven through, not bolted on.** Every module touches reliability. Security is not just Module 4.
-
-### Plug Points Framework
-
-Plug points are where the organization's own reality replaces our generic content. Mark them clearly in exercises:
-
-```
-> **🔌 PLUG POINT:** [What the org inserts here]
-> Default: [What we provide if they don't have their own]
-```
-
-Examples: security policies, data classification rules, compliance requirements, domain-specific evaluation criteria, org structure for agent ownership.
-
-### Content Boundaries
-
-- **Technical depth:** Enough to build, not enough to become an ML engineer. Participants should understand WHY things work, not the math of HOW.
-- **No slides.** The markdown IS the material. Facilitator works from the same document.
-- **No vendor comparison.** We use Claude Code. We don't compare it to alternatives in the curriculum.
-- **COPYRIGHT:** All exercises, examples, and instructional language must be original. Never reproduce or adapt exercises from competitors, courses, or external training materials.
-
-## Project guidelines
-
-- **COPYRIGHT: Do not reproduce, paraphrase, or closely adapt training content from any external source.** All curriculum content must be original. When researching competitors or benchmarks, extract insights about positioning and market gaps — never copy exercises, module structures, or instructional language.
-- This is an educational project, not a software product
-- Prioritize clarity and accessibility over technical depth
-- Explain concepts in plain language first, then add technical detail where needed
-- Use practical, real-world examples that resonate with business contexts
-- Keep exercises hands-on and achievable without prior coding experience
-- Framework-integrative, not framework-driven — frameworks serve the situation
-- Research uses OODA loops — see `continuous-research/competitor-research-prompts.md` for competitor methodology and `continuous-research/nordic-agentic-practices-prompts.md` for ongoing agentic practices research
-- **Research focus: business processes, not coding.** Agentic coding is a red ocean. Track agents in operations, finance, HR, compliance, customer service, sales, product — the blue ocean where nobody is systematically curating what's possible
-- **Research editorial standard:** Practitioner-grounded, specific, verifiable. Not generic tech news or consultancy clickbait. Every claim needs a named company + specific practice + measurable outcome. "Deployment is happening" is not an insight — the secrets are in the "how" and "what really works." See research quality protocol below.
+- **Research focus: business processes, not coding.** Agentic coding is a red ocean. Track agents in operations, finance, HR, compliance, customer service, sales, product — the blue ocean where nobody is systematically curating what's possible.
+- **Editorial standard:** Practitioner-grounded, specific, verifiable. Every claim needs a named company + specific practice + measurable outcome. "Deployment is happening" is not an insight — the secrets are in the "how" and "what really works."
+- **Framework-integrative, not framework-driven.** Frameworks serve the situation, not the other way around.
+- **OODA loops for research.** See `continuous-research/platform-watch/cycle-prompt.md` for the self-contained researcher instructions.
+- **Obfuscation rule for user signals and practitioner observations:** Strip company names, person names, and identifying details from user-contributed content. Keep only the generalizable insight.
+- **COPYRIGHT:** Never reproduce training content from external sources. Research extracts positioning and market insights only.
 
 ## Research Method: People-First
 

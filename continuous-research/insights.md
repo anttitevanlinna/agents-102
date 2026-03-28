@@ -1,3 +1,16 @@
+---
+type: insight
+domain: cross-domain
+evidence_level: 3
+platforms: [salesforce, microsoft, google, openai, anthropic, servicenow, sap]
+nordic: true
+updated: 2026-03-24
+answers:
+  - "what compressed arguments work for CTOs?"
+  - "what patterns emerge across platforms?"
+  - "what are the key insights for training and advisory?"
+---
+
 # Research Insights
 
 Nuggets that emerge from research, analysis, and discussion. Each is a compressed argument — usable in training, advisory conversations, newsletter content, and the Bootstrap curriculum.

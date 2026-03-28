@@ -1,3 +1,17 @@
+---
+type: state
+domain: platform
+evidence_level: 3
+platforms: [openai, chatgpt, codex, frontier]
+nordic: true
+updated: 2026-03-24
+cycle: 69
+answers:
+  - "what can business users do with ChatGPT today?"
+  - "is OpenAI's enterprise platform real or vapor?"
+  - "how wide is the deployment gap?"
+---
+
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
 Last updated: 2026-03-24 (cycle 69)

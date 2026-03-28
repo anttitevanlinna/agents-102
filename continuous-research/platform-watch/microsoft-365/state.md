@@ -1,3 +1,17 @@
+---
+type: state
+domain: platform
+evidence_level: 3
+platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
+nordic: true
+updated: 2026-03-24
+cycle: 69
+answers:
+  - "what can business users do with Microsoft Copilot today?"
+  - "is Copilot Studio a real agent builder?"
+  - "why is Copilot adoption declining?"
+---
+
 # Microsoft 365 / Azure AI Foundry — Platform State
 
 Last updated: 2026-03-24 (cycle 69)

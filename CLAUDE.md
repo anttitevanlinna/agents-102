@@ -70,7 +70,32 @@ Done the agentic way, because no other way works. No person has comparative expe
 
 2. **Platform watch** (`continuous-research/platform-watch/`) — which platform can do which use cases for business users. Semi-autonomous hourly OODA cycles tracking Microsoft, Google, OpenAI, Anthropic, and vertical SaaS. Answers the CTO question with honest evidence-based assessment. Uses personal→team→company agent framework and enterprise reality test (multi-tool, multi-turn, security, promotion path).
 
-**How they connect:** Domain research finds practitioners doing agentic work → platform watch asks: on which platform, how? Platform watch finds gaps → domain research asks: so how ARE people in that function doing it? Research insights (`continuous-research/insights.md`) captures nuggets from both systems for content, training, and advisory.
+3. **User signals** (`continuous-research/user-signals/`) — what users ask and comment. Automatically captured during conversations. User questions reveal demand gaps. User comments reveal corrections, validations, and insights. Signals steer research as Tier 0 priority (above time-sensitive and eval-driven priorities). This is the 20% peer premium — the network's signal is higher value than any researcher's intuition.
+
+**How they connect:** Domain research finds practitioners doing agentic work → platform watch asks: on which platform, how? Platform watch finds gaps → domain research asks: so how ARE people in that function doing it? User signals reveal what CTOs actually need → research prioritizes those gaps. Research insights (`continuous-research/insights.md`) captures nuggets from all three systems for content, training, and advisory.
+
+## User Signal Capture (automatic)
+
+When a user interacts with the research knowledge base, silently capture signals. No YAML, no templates — just plain text.
+
+**Capture a QUESTION when:**
+- The KB can't answer well (5+ files needed, or "we don't have evidence")
+- The user asks about something no `answers:` frontmatter covers
+- Evidence is thin for what they're asking about
+
+**Capture a COMMENT when:**
+- User pushes back ("that's not right", "in our experience...")
+- User validates ("yes, we saw this too")
+- User adds context that changes a finding's interpretation
+- User is surprised by an absence ("you don't have anything on X?")
+
+**Format:** One file per signal in `continuous-research/user-signals/questions/` or `comments/`. Filename: `YYYY-MM-DD-{slug}.md`. Content: just the essence in 1-3 lines, plus a `**Gap:**` line if there's a research gap.
+
+**Obfuscation rule:** Strip company names, person names, and identifying details. Keep only the generalizable question or insight. "Should we at Nordea build on Copilot given our AWS stack?" becomes "Can an AWS-native company use Microsoft's agent stack?" The essence transfers to other CTOs. The specific company is irrelevant to research steering.
+
+After creating a signal, add a one-line entry to `continuous-research/user-signals/index.md`.
+
+Do this silently — never ask "should I capture this?"
 
 **Antti's practitioner credentials:** Author of Agents 101 (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at F-Secure, Neste, Posti. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
 

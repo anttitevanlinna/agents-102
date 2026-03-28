@@ -1,3 +1,15 @@
+---
+type: prompt
+domain: cross-domain
+evidence_level: null
+platforms: [microsoft, google, openai, anthropic, vertical-saas]
+nordic: false
+updated: 2026-03-22
+answers:
+  - "how does the platform watch research cycle work?"
+  - "what are the research rules and priorities?"
+---
+
 # Platform Watch — OODA Cycle Prompt
 
 This prompt drives each incremental research cycle. Run with `/loop 60m` or manually.
@@ -14,15 +26,17 @@ This prompt drives each incremental research cycle. Run with `/loop 60m` or manu
 
 **Geographic method: global first, Nordic subset second.** Always start with the global scan — that tells us what's hot and upcoming. Then check for Nordic signal as a subset — that tells us roll-out speed and local adoption patterns. If we start Nordic-first, we miss signals. The Nordic scan is never the primary research — it's the "and where are the Nordics on this?" follow-up.
 
-**Related: Domain practitioner research** (separate system, `../README.md` + `../search-logs/` + `../source-roster.md`). Tracks what practitioners are actually doing per business function (sales, finance, HR, compliance, operations, product). When you find a practitioner doing real agentic work, note which platform they're using — that feeds back into this system. When you find a platform gap, note which business function it blocks — that feeds the domain research.
+**Related: Domain practitioner research** (separate system, `../README.md` + `../search-logs/` + `../source-roster.md`). Tracks what practitioners are actually doing per business function (sales, finance, HR, compliance, operations, product). Domain findings live in `../findings/by-domain/` (one file per domain, evidence-leveled). Cross-domain patterns live in `../findings/by-pattern/`. When you find a practitioner doing real agentic work, note which platform they're using — that feeds back into this system. When you find a platform gap, note which business function it blocks — that feeds the domain research.
 
 ## Cycle Execution
 
 ### Step 1: Read current state and meta-learning
 
-Read `meta-learning.md` first — the research heuristics and recent cycle observations. These tell you what previous cycles learned about how to research effectively. Apply them before choosing your focus.
+Read `../user-signals/index.md` first — user questions and comments are the highest-priority steering input (Tier 0). If there are open signals, they take priority over everything except active Tier 1 deadlines.
 
-Then read `synthesis.md` — specifically the Research Priorities section (Tier 1/2/3) and the "What We Did Not Find" section. Read the source roster (`../source-roster.md`) to know who we're tracking. Optionally read a target platform's `state.md` if you're going deep on one platform.
+Then read `meta-learning.md` — the research heuristics and recent cycle observations. These tell you what previous cycles learned about how to research effectively. Apply them before choosing your focus.
+
+Then read the synthesis index (`../synthesis/index.md`) — it routes you to the right topic file in one read. For research priorities, read `synthesis.md` (the Tier 1/2/3 section). For domain gaps, read `../synthesis/domain-convergence.md`. For platform status, read `../synthesis/platform-trajectories.md`. Read the source roster (`../source-roster.md`) to know who we're tracking. Optionally read a target platform's `state.md` if you're going deep on one platform.
 
 ### Step 2: Determine focus
 
@@ -48,7 +62,17 @@ Then read `synthesis.md` — specifically the Research Priorities section (Tier 
 
 **Decision criteria:** What would create the most value for a CTO trying to understand the agent landscape right now? Where is our knowledge thinnest relative to how much is happening? What's time-sensitive (just shipped, deal closing, enforcement deadline)? Remember: the CTO cares equally about "what to adopt," "how to transform," and "what does the target state look like" (AI-native teams).
 
-**Consult the Research Priorities** in `synthesis.md` for standing questions organized by tier. Tier 1 items are time-sensitive. But you may override if you spot something more valuable.
+**Priority tiers:**
+```
+Tier 0: User signals (open questions, corrections) — ../user-signals/index.md
+Tier 1: Time-sensitive (enforcement deadlines, product launches, deal closings)
+Tier 2: Eval-driven gaps (failed retrieval quality evals) — ../../evals/test-cases/retrieval-quality-questions.md
+Tier 3: Researcher judgment (biggest gap, freshest signal)
+```
+
+Tier 0 always wins unless there's an active Tier 1 deadline. The evals tell you where the knowledge base has gaps — fill those first. User signals tell you what real CTOs actually need — fill those before everything.
+
+**Consult the Research Priorities** in `synthesis.md` (Tier 1/2/3 section — still lives there) for standing questions. Tier 1 items are time-sensitive. But you may override if you spot something more valuable.
 
 **Log your reasoning** in the run file: why you chose this focus, what you considered, what you deprioritized.
 
@@ -128,6 +152,16 @@ Create file in the appropriate `runs/` directory: `YYYY-MM-DD-HHMM.md`
 For platform research, use the platform's runs/ directory. For cross-platform or practitioner research, use `cross-platform/runs/`.
 
 ```markdown
+---
+type: run-log
+domain: [platform | finance | customer-service | compliance | operations | hr | sales | coding | cross-domain]
+evidence_level: [highest level found this cycle, 0-4]
+platforms: [platforms researched]
+nordic: [true if Nordic signal found]
+updated: [YYYY-MM-DD]
+cycle: [N]
+---
+
 # [Focus] OODA Cycle — [timestamp]
 
 **Focus area:** [specific aspect researched this cycle]
@@ -171,11 +205,18 @@ For platform research, use the platform's runs/ directory. For cross-platform or
 
 ### Step 6: Update synthesis (only if cross-platform insight emerges)
 
-Edit `synthesis.md` only when:
-- A finding changes the cross-platform comparison
-- A new pattern emerges across platforms
-- The CTO answer table needs updating
-- Something lands in "What We Did Not Find" that we now found
+The synthesis is split into topic files in `../synthesis/`. Edit the **specific topic file**, not the monolith:
+- Platform comparison changed → `../synthesis/platform-trajectories.md`
+- Domain convergence evidence → `../synthesis/domain-convergence.md`
+- Enterprise reality test updated → `../synthesis/enterprise-reality.md`
+- New cross-platform pattern → `../synthesis/patterns.md`
+- CTO answer changed → `../synthesis/cto-answer.md`
+- Nordic signal → `../synthesis/nordic-landscape.md`
+- New practitioner mapped → `../synthesis/practitioner-map.md`
+
+Also update `../synthesis/index.md` if a topic file's summary line changed.
+
+Research priorities and run log still live in `synthesis.md` (the original file).
 
 ### Step 7: Update insights (only if a compressed argument emerges)
 
@@ -203,7 +244,7 @@ If an observation matches an existing heuristic pattern 3+ times, promote it: mo
 ### Step 9: Commit and push
 
 ```
-git add continuous-research/
+git add continuous-research/platform-watch/ continuous-research/synthesis/ continuous-research/findings/ continuous-research/source-roster.md continuous-research/insights.md
 git commit -m "platform-watch: [focus] — [one-line finding summary]"
 git push -u origin main
 ```

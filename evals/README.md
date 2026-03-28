@@ -1,53 +1,36 @@
 # Evals Framework
 
-Two execution modes: **Scorable API** (automated, repeatable, CI-friendly) and **subagent** (deep analysis, flexible). Four themes covering CTO prompting, editorial quality, epistemic integrity, and curriculum quality.
+**Execution mode: LLM-as-judge via Claude subagents.** Five themes covering CTO prompting, editorial quality, epistemic integrity, curriculum quality, and research retrieval quality.
 
-## Scorable Judges
+> Note: Scorable API integration (Themes A-D) expired. All evals now run as Claude subagent judges. Scorable judge IDs retained below for reference only.
 
-Automated scoring via [Scorable](https://scorable.ai) LLM-as-a-Judge API. Each judge returns 0-1 scores with justifications per evaluator.
+| Theme | Focus | Evaluators | Judge file |
+|-------|-------|------------|------------|
+| A: CTO Prompt Quality | Do CTO questions get useful answers? | Relevance, Specificity, Actionability, Evidence Grounding | `judges/cto-prompt-judges.md` |
+| B: Editorial Quality | Do findings meet editorial standards? | Source Verifiability, Agentic Gate, Vendor Bias, Specificity, Nordic Label | `judges/editorial-judges.md` |
+| C: Epistemic Integrity | Does copy avoid overreach? | Predictive Integrity, Framing/Anchoring, Substantive Grounding | `judges/copy-epistemic-judges.md` |
+| D: Curriculum Quality | Do modules follow guardrails? | Pedagogical Alignment, Exercise-Led Design, Builder Voice, Plug Points | `judges/copy-epistemic-judges.md` |
+| **E: Retrieval Quality** | **Can the restructured KB answer questions in 3 files?** | **Retrieval Efficiency, Evidence Grounding, Counter-Evidence, Nordic Signal, Frontmatter Navigation** | **`judges/retrieval-quality-judges.md`** |
 
-| Theme | Judge ID | Evaluators |
-|-------|----------|------------|
-| A: CTO Prompt Quality | `6d829329-df54-4bf4-b2d7-6b16eec9753e` | Relevance, Specificity, Actionability, Evidence Grounding + auto |
-| B: Editorial Quality | `b1d1b71a-97ae-49c9-aa8f-8ab410085934` | Source Verifiability, Agentic Gate, Vendor Bias, Specificity, Nordic Label + auto |
-| C: Epistemic Integrity | `087dc020-fb3e-478f-9bac-f7d250fed506` | Predictive Integrity, Framing/Anchoring, Substantive Grounding + auto |
-| D: Curriculum Quality | `1481fb79-6d72-4a71-8f51-1903ad0c6cd4` | Pedagogical Alignment, Exercise-Led Design, Builder Voice, Plug Points + auto |
+### How to run (LLM judge)
 
-### Run via script
+Launch a Claude subagent with the judge prompt from the relevant `judges/*.md` file. Feed it the response to evaluate plus the eval criteria. The agent scores each evaluator and returns a structured verdict.
 
-```bash
-# Score a single response
-./scripts/eval.sh <theme> "<response_text>" ["<request_text>"]
-
-# Examples:
-./scripts/eval.sh a "Klarna deployed agents handling 2.3M conversations..."
-./scripts/eval.sh b "$(cat continuous-research/findings/finance.md)"
-./scripts/eval.sh c "Agents will transform every business by 2027"
-./scripts/eval.sh d "$(cat curriculum/module-01-getting-going.md)"
+```
+# Example: run Theme E eval Q3
+1. Launch responder agent → reads synthesis/index.md, answers "Which domain is leading?"
+2. Record: which files it read, the answer text
+3. Launch judge agent with judges/retrieval-quality-judges.md → scores the response
 ```
 
-### Run via curl
+### Legacy Scorable judge IDs (expired, retained for reference)
 
-```bash
-curl -s -X POST "https://api.scorable.ai/v1/judges/JUDGE_ID/execute/" \
-  -H "Authorization: Api-Key $SCORABLE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"response": "text to evaluate", "request": "optional context"}'
-```
-
-### Scorable response format
-
-```json
-{
-  "evaluator_results": [
-    {
-      "evaluator_name": "Source Verifiability Auditor",
-      "score": 0.85,
-      "justification": "4 of 5 claims have specific URLs..."
-    }
-  ]
-}
-```
+| Theme | Judge ID |
+|-------|----------|
+| A | `6d829329-df54-4bf4-b2d7-6b16eec9753e` |
+| B | `b1d1b71a-97ae-49c9-aa8f-8ab410085934` |
+| C | `087dc020-fb3e-478f-9bac-f7d250fed506` |
+| D | `1481fb79-6d72-4a71-8f51-1903ad0c6cd4` |
 
 ## Four Themes
 
@@ -102,19 +85,34 @@ Tests whether training modules follow the pedagogical guardrails: Bloom's taxono
 - **Auto-flag:** Any individual score of 1 triggers review
 - Known weak points listed in `test-cases/editorial-samples.md` — these SHOULD score low (calibration check)
 
+### Theme E: "Research answers CTO questions in 3 files, not 20"
+
+Tests whether the restructured knowledge base (synthesis topics, domain findings, frontmatter) enables fast retrieval with grounded answers.
+
+**Judge file:** `judges/retrieval-quality-judges.md`
+**Test cases:** `test-cases/retrieval-quality-questions.md` (10 questions)
+**Evaluators:** Retrieval Efficiency (files read), Evidence Grounding, Counter-Evidence Inclusion, Nordic Signal, Frontmatter Navigation
+
+**Subagent flow:**
+1. Launch **responder agent** — reads `continuous-research/synthesis/index.md` as entry point, answers one question, reports which files it read
+2. Launch **judge agent** — reads response + file list + judge criteria, scores on 5 evaluators
+3. **Eval-driven prioritization:** Failed evals become Tier 1 research priorities for the next OODA cycle
+
+**Pass criteria:** 3/5 evaluators pass. E1 (Retrieval Efficiency) fail = strong signal for MCP layer investment.
+
 ## Files
 
 ```
 evals/
 ├── judges/
-│   ├── cto-prompt-judges.md      # 4 judge prompts (Theme A)
-│   ├── editorial-judges.md       # 5 judge prompts (Theme B)
-│   └── copy-epistemic-judges.md  # 6 tests (Theme C)
+│   ├── cto-prompt-judges.md           # 4 judge prompts (Theme A)
+│   ├── editorial-judges.md            # 5 judge prompts (Theme B)
+│   ├── copy-epistemic-judges.md       # 6 tests (Theme C)
+│   └── retrieval-quality-judges.md    # 5 evaluators (Theme E)
 ├── test-cases/
-│   ├── cto-questions.md          # 10 CTO questions + expected traits
-│   └── editorial-samples.md     # File list + known weak points
-├── results/                      # JSON output (gitignored except .gitkeep)
+│   ├── cto-questions.md               # 10 CTO questions + expected traits (Theme A)
+│   ├── editorial-samples.md           # File list + known weak points (Theme B)
+│   └── retrieval-quality-questions.md # 10 retrieval questions + expected paths (Theme E)
+├── results/                           # Output (gitignored except .gitkeep)
 └── README.md
-scripts/
-└── eval.sh                       # Scorable API runner
 ```

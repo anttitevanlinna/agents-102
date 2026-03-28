@@ -1,3 +1,17 @@
+---
+type: state
+domain: cross-domain
+evidence_level: 2
+platforms: [claude-code, cursor, codex]
+nordic: true
+updated: 2026-03-22
+cycle: 51
+answers:
+  - "what does an AI-native team actually look like?"
+  - "how do teams divide work between humans and agents?"
+  - "what practices emerge in AI-native teams?"
+---
+
 # AI-Native Teams — Research Track
 
 **Last updated:** 2026-03-22 (cycle 51)

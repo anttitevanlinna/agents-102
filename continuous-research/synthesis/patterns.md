@@ -1,0 +1,110 @@
+---
+type: synthesis
+domain: cross-domain
+updated: 2026-03-28
+answers: ["cross-platform patterns", "what research established", "evidence patterns", "compound error problem", "agent reliability math", "agent security gap"]
+---
+
+# Cross-Platform Patterns (March 2026)
+
+47 patterns established across 65+ OODA cycles. Organized by evidence level.
+
+## Level 4: Cross-Domain Meta-Patterns
+
+**Pattern 47: The Access-Trust Gap.** Five independent data sources across legal, finance, cross-industry, and security all show the same structure: access/experimentation is widespread (54-95%), but trust/governance/production readiness is rare (5-22%), gaps always >35 points. The bottleneck is organizational trust-building, not technology access. **This is the strongest finding in the research program.** See [domain-convergence.md](domain-convergence.md) for detail.
+
+**Pattern 41: Coding agents are the only platforms that compound.** The 199-process problem resolves to: which platform makes custom development fastest? Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Claude Code and Codex can -- they build MCP servers, agents, evals, and the next agent. The real ceiling is organizational learning rate, not tools. See [cto-answer.md](cto-answer.md) for the CTO framing.
+
+**Level 4 domain meta-pattern:** Autonomous agents converge first where rules are codified, correctness is verifiable, and talent is constrained. See [domain-convergence.md](domain-convergence.md).
+
+## Level 3: Convergence (10-20 independent signals)
+
+**Pattern 1: No enterprise chasm-crossing -- anywhere.** Zero named enterprises report production business agent deployments with measurable outcomes on any horizontal platform. OpenAI's COO confirmed Feb 2026. MIT: 95% no measurable ROI.
+
+**Pattern 7: Vertical SaaS ahead of horizontal.** Customer service at Level 3 convergence: Zendesk 51%, Salesforce 80% (Finnair), HubSpot 84% (Zeffy). Structural advantage = data context.
+
+**Pattern 8: Customer service first domain to cross.** Clear success criteria + bounded scope + escalation tolerance = why CS leads. Other domains 6-12 months behind.
+
+**Pattern 30: Compound reliability is the fundamental math.** 85% per step x 10 steps = ~20% success. Multiple practitioners analyzing the same math. Design for short action chains.
+
+**Pattern 31: Announcement-to-deployment gap across ALL platforms.** Don't believe launch dates. Foundry GA: zero new customers in 5 days. Workspace Studio GA: capacity worsening. Frontier: zero evidence after 7+ weeks. Every platform ships announcements faster than deployments.
+
+**Pattern 33: Nordic enterprise agent deployments absent -- Level 3 absence.** Across 50+ cycles and 5 platforms, only 4 Nordic signals (1 independently verified). The Nordic market is pre-adoption. See [nordic-landscape.md](nordic-landscape.md).
+
+**Pattern 37: Agentforce counter-narrative Level 2-3.** Atlas Reasoning Engine shows session-to-session variance. Agent Script added (deterministic control). Pricing shifted from $2/conversation to credits. 77% B2B deployment failure (Oliv.ai). But 18,500 customers/$540M ARR = failing AND growing.
+
+**Pattern 38: Enterprise agent failure data convergent.** MIT 95%, Gartner 40%+ canceled by 2027, 46% of POCs scrapped, 32% stall after pilot. Context gap: agents access ~20% of enterprise data.
+
+**Pattern 43: "Training > Tooling" -- competence-first at Level 3.** Moderna (HBS): trained first, 1,000s of GPTs built organically. F-Secure: competence creates pull. SaaStr: "Training more important than vendor." Quintero: "CEO's AI skills correlate with org adoption." Klarna reversal. Mollick. Zero platform-first success stories across 58+ cycles.
+
+**Pattern 44: "Clarity is the ceiling, not capability."** Mollick's "Leadership, Lab, Crowd" + MIT 95% pilot failure + Quintero "clarity problem" + shadow AI (50% unsanctioned). The transformation sequence: competence -> clarity -> platform.
+
+**Pattern 45: Global regulatory convergence on agent governance.** Singapore (Jan 2026), Colorado (June 30), EU AI Act (Aug 2). Common themes: risk-based, human oversight, least-privilege, audit trails. EU gap: Commission admits considerations are "only preliminary."
+
+## Level 2-3: Strong Evidence, Approaching Convergence
+
+**Pattern 2: Promotion path doesn't exist.** Every platform has tiers but they're different products. Exception: Antspace + BYOC (staging). See [platform-trajectories.md](platform-trajectories.md).
+
+**Pattern 3: Reliability is the bottleneck, not capability.** Microsoft: unreliable grounding. Google: model stability. OpenAI: usage limits. Anthropic: token efficiency.
+
+**Pattern 4: MCP as cross-platform plumbing.** 6,400+ servers, adopted by all four. Reduces lock-in but requires developers.
+
+**Pattern 5: Coding agents dissolve framework vs platform distinction.** Business user + coding agent = developer. The "different markets" framing is becoming obsolete.
+
+**Pattern 10: Every vendor platform is infrastructure-locked.** Microsoft = Azure. Google = GCP. OpenAI = OpenAI infra. Open-source is the only infrastructure-agnostic option.
+
+**Pattern 11: Vertical SaaS ceiling is 1 of 200.** Salesforce automates CS -- 1 of 200 processes. The other 199 are yours.
+
+**Pattern 12: Competence creates pull.** F-Secure field evidence. After training, people build unprompted. Inverts the assess->identify->build->train sequence.
+
+**Pattern 13: Three predictable enablers after competence.** F-Secure: (1) data access, (2) runtime platform, (3) discoverability. The natural handoff from training to advisory.
+
+**Pattern 14: Computer use is the convergence point.** GPT-5.4 (75% OSWorld) and Claude (72.7%). Most relevant to legacy integration -- no independent enterprise evidence yet.
+
+**Pattern 15: Reasoning models paradoxically worse at facts.** o3: 33% hallucination (vs 16% o1). DeepSeek R1: 14.3% (vs V3: 3.9%).
+
+**Pattern 16: Supervision architecture > model quality.** Vertical Insure achieved zero customer-facing hallucinations via supervision, not better model.
+
+**Pattern 17: MCP governance is ecosystem, not vendor-provided.** 4+ third-party gateways. Enterprises select and deploy themselves.
+
+**Pattern 18: E7 pricing skepticism convergent.** 5+ practitioners skeptical at $99/user. Hidden costs >$200/user. Copilot at 3.3% adoption baseline.
+
+**Pattern 19: Consolidation wave in vertical SaaS.** ServiceNow + Moveworks ($2.85B), Zendesk + Forethought, 50+ acquisitions in 2 years.
+
+**Pattern 20: Enterprise LLM spend reversing.** Anthropic ~40% (from 24%), OpenAI ~27% (from 50%). Claude Code hit $1B ARR in 6 months.
+
+**Pattern 21: Enterprise customers multi-vendor hedging.** Intuit ($100M+/yr OpenAI) simultaneously partnered Anthropic. Build on standards, not platforms.
+
+**Pattern 22: Computer use -- first production evidence.** Mainstay (property tax), Pace (insurance/Prudential). Both OpenAI partners. "Impressive but unreliable."
+
+**Pattern 23: EEA regulatory friction creates platform gaps for Nordic.** OpenAI connectors excluded from EEA for Plus/Pro. Microsoft has no EEA restrictions.
+
+**Pattern 24: Bedrock AgentCore -- most complete runtime.** Five features in March. First to support MCP + A2A + AG-UI. Zero adoption evidence.
+
+**Pattern 25: Three-protocol stack crystallizing.** MCP (agent-to-tools) + A2A (agent-to-agent) + AG-UI (agent-to-frontend). AgentCore only platform supporting all three.
+
+**Pattern 26: NVIDIA entering infrastructure layer.** OpenShell + NemoClaw. 15+ partners. Hardware-agnostic software stack. Alpha.
+
+**Pattern 27: Agent governance gaps independently proven.** "Agents of Chaos" (38 researchers): agents leaked SSNs, accepted spoofing, deleted files on command. OWASP + NIST + CSA converging.
+
+**Pattern 28: OpenAI pivoting to PE distribution.** $10B joint venture. Forward Deployed Engineers at $10M min. Admission: enterprise agents need Palantir-style implementation.
+
+**Pattern 29: NIST agent identity standards.** Comments close April 2, 2026. Adapting OAuth/OIDC/SCIM. Combined with EU AI Act Aug 2 -- becoming compliance requirement.
+
+**Pattern 32: Hybrid deterministic+AI is production architecture.** TinyFish, Stagehand, Skyvern: ~80% deterministic + 20% AI. Pure AI unreliable, pure RPA brittle.
+
+**Pattern 34: Antspace + BYOC could collapse two of three enabler walls.** Runtime (#2) + data access (#1) solved if BYOC runs inside enterprise network. General-purpose agent runtime, not just web apps. See [platform-trajectories.md](platform-trajectories.md).
+
+**Pattern 35: AAIF (146 members) settles standards war.** MCP + AGENTS.md + goose under Linux Foundation. 97M monthly SDK downloads.
+
+**Pattern 36: Agent identity crisis quantified.** 50:1 NHI ratio. 82% executives overconfident. Traditional RBAC breaks for agents.
+
+**Pattern 39: A2A v0.3 reaching enterprise adoption.** S&P Global, ServiceNow, Tyson/Gordon Food Service (first cross-company agent collaboration).
+
+**Pattern 40: Agent governance product layer just started existing.** Six months ago: zero products. Now: ConductorOne, Agent 365, Geordie AI, AgentCore Policy, Agent Governance Toolkit. 25 tools at RSAC 2026, zero deployed customers report outcomes.
+
+**Pattern 42: EU AI Act has no agent-specific guidance 15 months in.** Static conformity model fails for runtime tool selection. Singapore filled the vacuum. Commission admits considerations "only preliminary."
+
+**Pattern 46: Vendor-driven vs practitioner-driven domains.** Explains why HR/compliance/operations are research dark spots. Vendor platforms deliver capability; practitioners are buyers, not builders -- and buyers don't publish.
+
+See `../platform-watch/synthesis.md` for full pattern descriptions with source URLs.

@@ -1,3 +1,15 @@
+---
+type: reference
+domain: cross-domain
+evidence_level: null
+platforms: []
+nordic: true
+updated: 2026-03-25
+answers:
+  - "who are the practitioners to follow?"
+  - "who builds what?"
+---
+
 # Source Roster — People to Follow
 
 Track these practitioners by name. Their trajectory over time IS the research signal.

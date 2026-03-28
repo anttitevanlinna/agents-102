@@ -1,3 +1,17 @@
+---
+type: state
+domain: platform
+evidence_level: 2
+platforms: [anthropic, claude-code, claude-cowork]
+nordic: false
+updated: 2026-03-24
+cycle: 69
+answers:
+  - "what is Anthropic's platform strategy?"
+  - "what can business users do with Claude today?"
+  - "how does Anthropic's three-layer play compare?"
+---
+
 # Anthropic — Claude / Claude Code — Platform State
 
 Last updated: 2026-03-24 (cycle 69)

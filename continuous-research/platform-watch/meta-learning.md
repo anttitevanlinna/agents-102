@@ -1,3 +1,15 @@
+---
+type: reference
+domain: cross-domain
+evidence_level: null
+platforms: []
+nordic: true
+updated: 2026-03-25
+answers:
+  - "how to research effectively?"
+  - "what has the system learned about researching?"
+---
+
 # Research Meta-Learning Log
 
 The system learns about the domain. This file is where the system learns about **how to research the domain.** After each cycle, the researcher reflects: what worked, what didn't, what to try differently. Over time, this becomes a compounding advantage — the system gets better at researching, not just better at knowing.

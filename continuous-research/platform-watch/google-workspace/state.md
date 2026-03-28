@@ -1,3 +1,17 @@
+---
+type: state
+domain: platform
+evidence_level: 2
+platforms: [google, gemini, workspace-studio, agent-builder]
+nordic: true
+updated: 2026-03-24
+cycle: 69
+answers:
+  - "what can business users do with Gemini today?"
+  - "is Workspace Studio a real agent builder?"
+  - "how does Google compare to Microsoft for business agents?"
+---
+
 # Google Workspace / Gemini Enterprise — Platform State
 
 Last updated: 2026-03-24 (cycle 69)

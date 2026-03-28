@@ -1,3 +1,17 @@
+---
+type: state
+domain: platform
+evidence_level: 3
+platforms: [salesforce, zendesk, servicenow, sap, workday]
+nordic: true
+updated: 2026-03-24
+cycle: 69
+answers:
+  - "which vertical SaaS platforms have real agent deployments?"
+  - "is customer service crossing the chasm?"
+  - "what are the limits of vertical SaaS agents?"
+---
+
 # Vertical SaaS Agent Platforms — Platform State
 
 Last updated: 2026-03-24 (cycle 69)

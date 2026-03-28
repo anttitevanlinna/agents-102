@@ -1,0 +1,96 @@
+---
+type: finding
+domain: cross-domain
+evidence_level: 3
+platforms: [multiple]
+practitioners: [F-Secure, Mollick/Wharton, MIT/BCG]
+nordic: true
+updated: 2026-03-28
+answers:
+  - "why does competence need to come before platform selection?"
+  - "what evidence supports competence-first?"
+  - "how does F-Secure validate the thesis?"
+  - "what's the mechanism behind competence-first?"
+  - "what's the competence gap in numbers?"
+---
+
+# Competence-First — Evidence for the Core Thesis
+
+**Evidence level:** Level 3 (convergence) | **Last updated:** 2026-03-28
+
+**Thesis:** Without agent competence, there is no vision — just governance of an abstraction. The sequence matters: Competence → Discovery → Context → Platform. Skip to platform selection and you're choosing between vendor narratives.
+
+## The Competence Gap Is Quantified
+
+- **78% of executives** feel AI advances too fast for their training efforts. Source: [InformationWeek](https://www.informationweek.com/machine-learning-ai/2026-enterprise-ai-predictions-fragmentation-commodification-and-the-agent-push-facing-cios)
+- **82% of companies in early AI maturity** have no talent strategy. Source: [Joget analysis](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/)
+- **Only 8.6% of companies** have AI agents in production. 63.7% have no formalized AI initiative. Source: [Joget analysis](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/)
+- **95% of organizations** report no measurable ROI from AI (MIT GenAI Divide study)
+- **60% of AI projects fail** due to flawed ROI calculations and unrealistic expectations
+- **OpenAI's own COO** (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." Source: [TechCrunch](https://techcrunch.com)
+
+The pattern: rush to adopt → skip competence building → agent project fails → blame the technology.
+
+## The Mechanism: No Mental Models, No Vision
+
+Previous transformations (digital, agile, cloud) could be vision-led because concepts were accessible through analogy. A CEO didn't need to write code to envision a digital company. Agents are structurally different. "An agent that autonomously processes invoices across three systems with human escalation at decision points" means nothing to someone who hasn't built or used an agent. They hear "automation" and think RPA. The mental model gap isn't knowledge — it's experience. No slides bridge it.
+
+**The sequence is evidence-backed:**
+No mental models → no shared vision → experiments stay isolated → no organizational learning → 95% fail.
+
+Competence creates mental models. Mental models create shared vision. Vision connects experiments. Connected experiments create organizational learning.
+
+## F-Secure Evidence (March 2026, Level 2)
+
+After 2 modules of Claude Code 101, pretty much everyone started building — dashboards, agents, applications. Unprompted. Competence created pull. But builders hit three infrastructure walls:
+
+1. **Data access.** Agents need Snowflake, Salesforce, internal systems. Without access, agents are toys on sample data.
+2. **A platform to run AI-generated apps.** "Where does this live? How do I share it?" — the promotion path problem.
+3. **Agent skills / user guidance.** Others need to find, understand, and use what builders create.
+
+**The implication:** Competence creates builders. Builders discover infrastructure gaps faster and more accurately than any consultancy assessment. The three enablers are predictable and plannable. This is the natural handoff from Bootstrap to Advisory.
+
+Source: F-Secure deployment experience, Antti direct [practitioner direct — first party]
+
+## Independent Research Confirmation
+
+- **Mollick (Wharton):** Individuals who build competence get 2-3x productivity. Organizations get only 10-20%. The gap is shared mental models — each person discovers something but no common language propagates it. Source: [Wharton research]
+- **MIT/BCG:** 95% of organizations see no measurable ROI. The differentiator: organizational capability to absorb AI, not technology investment. Source: [MIT/BCG study]
+- **HBR experimentation trap:** Hundreds of isolated experiments that never scale because no shared vision connects them. Source: [HBR Nov 2025](https://hbr.org/2025/11/overcoming-the-organizational-barriers-to-ai-adoption)
+- **HBR behavioral science:** Leaders assume employees are excited about AI. They're wrong. Leadership enthusiasm vs. workforce readiness gap is a primary failure mode.
+
+## Competence Creates Pull — People Find Their Own Processes
+
+You don't need to tell people which processes to automate. Teach them to build agents, and they discover the right processes themselves. F-Secure evidence: nobody assigned "build an agent for X." The competence itself created the pull. Domain experts identifying opportunities are right more often than consultancies because they know the work.
+
+This inverts the traditional transformation sequence:
+- **Consultancy model:** Assess processes → identify candidates → build solutions → train users
+- **Competence-first model:** Train people → they identify candidates → they build solutions → assess what worked
+
+The second is faster, cheaper, and produces better candidates.
+
+## Competence Leads to Lightweight Choices
+
+The traditional sequence: assess → select platform → big procurement → 6-month pilot → maybe rollout. Produces PowerPoints and vendor lock-in.
+
+What happens with competence first: people build → hit data access walls → "we need MCPs for Snowflake and Salesforce" → "where do we run simple apps?" These are lightweight, scoped, reversible decisions made by people who know what they need because they've built things. No board-level vendor evaluation needed.
+
+Nobody should be making non-two-way-door decisions on the agent landscape right now. The entire space is pre-chasm. Every platform is immature. Build competence, and the decisions get smaller, faster, and reversible.
+
+## Personal Use Is the Foundation
+
+The sequence has no shortcuts:
+1. **Personal use** — one person builds something for themselves. Gets the mental models.
+2. **Personal competence creates pull** — they see more possibilities, build more, unprompted.
+3. **Shared mental models** — enough people have personal experience that common language emerges.
+4. **Organizational effects** — vision, strategy, and coordination become possible.
+
+Skip step 1, nothing above holds.
+
+## Nordic Caution Gap — CONFIRMED (Level 3)
+
+Two independent surveys confirm Nordic companies are systematically more conservative on agentic AI:
+- **BCG Nordic AI Report (2026):** Only 4% of Nordic companies achieve strong AI returns. 54% experimenting with agents, 24% observing/planning. 60% allocate less than 5% of AI budgets to agentic initiatives. Source: [BCG](https://www.bcg.com/publications/2026/nordic-ai-value-creation-or-bubble)
+- **Deloitte Nordic AI Survey (Dec 2025):** 58% of Nordic organizations using agentic AI expect 3+ years for significant ROI (vs. 37% rest of Europe). Source: [Deloitte DK](https://www.deloitte.com/dk/en/issues/generative-ai/ai-roi-in-the-nordics.html)
+
+The gap between "agents arriving in your software" and "organizations not budgeting for them" is the exact competence gap Agents 102 addresses.

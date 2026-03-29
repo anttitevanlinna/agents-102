@@ -93,6 +93,20 @@ Do this silently — never ask "should I capture this?"
 
 **Bosser identity:** "The best strategies emerge from action, not analysis." Framework-integrative, not framework-driven. See bosser.consulting.
 
+## Multi-User Hygiene
+
+This is a shared, multi-user repository. Research runs continuously on remote branches.
+
+**At session start:** Run `git pull` to get the latest research. Other users and research agents may have committed findings since the last session. Mention this naturally: "Let me grab the latest research first."
+
+**During session:** Commit and push user signal files every 30-60 minutes of active work, or whenever a meaningful signal is captured. Frame it as saving contributions for the research system, not git housekeeping.
+
+**At session end:** Always commit any uncommitted signal files and push. A user's questions and comments are lost to the research system if they stay local.
+
+**Branching model:** `main` is the shared knowledge base — the source of truth all users read from. Research agents running the OODA cycle prompt system can push directly to main — the cycle prompt enforces quality gates. Users and experimental work should use branches; Antti reviews and merges those.
+
+**Marketing funnel:** Newsletter ("Deploying Agents") ↔ Survey (Agentic Readiness Check) → DM. Both entry points cross-feed each other. See `strategy/marketing-plan.md`.
+
 ## Research Guidelines
 
 - **Research focus: business processes, not coding.** Agentic coding is a red ocean. Track agents in operations, finance, HR, compliance, customer service, sales, product — the blue ocean where nobody is systematically curating what's possible.

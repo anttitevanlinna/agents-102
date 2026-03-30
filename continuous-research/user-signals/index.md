@@ -11,7 +11,8 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
-*None*
+- [2026-03-30](questions/2026-03-30-ai-native-team-leadership.md) — What does leadership look like for AI-native teams?
+- [2026-03-30](comments/2026-03-30-rotation-model-ai-native.md) — Rotation model: immerse → learn → return → next cohort. Fourth deployment model (not mandate/self-org/champion).
 
 ## Resolved
 

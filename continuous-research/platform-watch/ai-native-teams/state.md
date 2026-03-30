@@ -1,21 +1,22 @@
 ---
 type: state
 domain: cross-domain
-evidence_level: 2
-platforms: [claude-code, cursor, codex]
+evidence_level: 3
+platforms: [claude-code, cursor, codex, honk, intercom-fin]
 nordic: true
-updated: 2026-03-22
-cycle: 51
+updated: 2026-03-30
+cycle: 74
 answers:
   - "what does an AI-native team actually look like?"
   - "how do teams divide work between humans and agents?"
   - "what practices emerge in AI-native teams?"
+  - "what does leadership look like for AI-native teams?"
 ---
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-03-22 (cycle 51)
-**OODA cycles:** 2
+**Last updated:** 2026-03-30 (cycle 74)
+**OODA cycles:** 3
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -80,6 +81,16 @@ Not every team using Copilot is AI-native. The distinction:
 - How do they communicate (with each other, with AI, with stakeholders)?
 - How do they handle knowledge management?
 - What's the pace? Sprint cadence?
+
+### Leadership Models (added cycle 74)
+- What does the leader/manager of an AI-native team actually do daily?
+- Does the manager become a "spec writer"? What does the spec look like?
+- How are the four leadership functions (direction, people, project, technical) distributed?
+- Does the team need fewer managers or different managers?
+- What happens to middle management when individual output 5x's?
+- How do you evaluate performance when AI does the implementation work?
+- Is the "player-coach" model the pattern, or does it split as teams grow?
+- What's the hiring criteria for AI-native team members and leaders?
 
 ### Failure Modes and Lessons
 - What went wrong early?
@@ -168,6 +179,57 @@ A specific profile is emerging: people with just enough technical education (not
 
 **WATCH:** Is this pattern visible at other organizations? Does it replicate after agent training?
 
+### Emerging Pattern G: "The Spec Is the Leadership Act" — How AI-Native Teams Are Led
+**Level 3 (convergence — 6+ independent signals)**
+
+The leader of an AI-native team writes specifications that direct agents, then reviews whether output meets the spec. The management artifact shifts from verbal direction, Gantt charts, or sprint backlogs to written specifications in markdown. This is not a new skill — it's the same intent-communication skill good managers always had, expressed in a different medium.
+
+**Six independent signals:**
+1. **Karpathy** — program.md as the management artifact. "The human programs the organization. The agent programs the model." ([GitHub/autoresearch](https://github.com/karpathy/autoresearch), 2026) — [practitioner direct]
+2. **StrongDM (McCarthy)** — "attractor" repository contains zero code, just three markdown spec files. Humans write specs, agents implement, holdout scenarios validate. ([Simon Willison blog](https://simonwillison.net/), Feb 2026) — [practitioner direct]
+3. **Spotify** — Senior engineers define tasks in natural language, agents implement via Honk/Claude Code, engineers review async. "Developers act more as system architects and quality gatekeepers than direct authors." ([TechCrunch](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/), Feb 2026; [InfoQ/QCon London](https://www.infoq.com/news/2026/03/spotify-honk-rewrite/), Mar 2026) — [general press] + [practitioner analysis]
+4. **Mollick** — MBA managers outperformed coders in 4-day startup experiment because PRDs, design intent docs, and Five Paragraph Orders transfer directly as AI prompts. "The skills dismissed as 'soft' turned out to be the hard ones." ([One Useful Thing](https://www.oneusefulthing.org/p/management-as-ai-superpower), Jan 2026) — [practitioner direct / academic]
+5. **Osmani (Google Chrome)** — Published detailed spec-writing guide as the new core engineering skill. ([addyosmani.com](https://addyosmani.com/blog/good-spec/), 2026; also on [O'Reilly](https://www.oreilly.com/radar/how-to-write-a-good-spec-for-ai-agents/)) — [practitioner direct]
+6. **30+ agentic coding frameworks** — Spec-driven development mapped as dominant pattern. "Specifications may become the primary interface between humans and software systems." ([Vishal Mysore/Medium](https://medium.com/@visrow/spec-driven-development-is-eating-software-engineering-a-map-of-30-agentic-coding-frameworks-6ac0b5e2b484), Mar 2026) — [practitioner analysis]
+
+**What the daily leadership act looks like:**
+- Write the specification (what to build, acceptance criteria, constraints)
+- Review AI output against the spec
+- Redirect when agents drift (active monitoring, not post-hoc review — per Sachdeva finding)
+- Capture learnings into persistent context (compound engineering step — per Shipper/Every)
+- Architectural decisions about decomposition and scope
+
+**Three sub-models observed for how leadership functions redistribute:**
+
+| Model | Example | How it works | Scale |
+|-------|---------|-------------|-------|
+| **Distributed functions** | Anthropic (Ben Kuhn) | 4 leadership functions (direction, people, project, technical) split across different ICs. Management = coaching/hiring, not directing. "Member of Technical Staff" as anti-hierarchy title. | ~1,100 |
+| **Player-coach** | Intercom (Declan Ivory) | Leader is "part strategist, part operator" — analyzes AI system performance AND coaches the team. Named by Ivory as the model for AI-first support. | Mid-size |
+| **Data-as-manager** | Tesla (Joe Justice) | "Your manager is data." Information symmetry replaces information brokering. KPIs replace direction-setting. Employees choose projects daily. | ~70,000 |
+
+**What disappears:** Management-as-information-brokering (all three models eliminate it through transparency and tooling). Status meetings. Cascade briefings. The manager who exists to relay information up and down.
+
+**What remains human:** People development/coaching. Hiring judgment. Quality taste ("knowing what good looks like" — Mollick). Architectural decomposition decisions.
+
+**What transforms:** Direction-setting becomes spec-writing. Performance evaluation becomes output review. Coordination becomes context management (CLAUDE.md, shared specs, information symmetry).
+
+**The unsolved problem — performance evaluation:** DORA 2025 (n=5,000) confirms traditional engineering metrics can't separate AI-generated from human-authored work. Shopify's blunt approach: add AI usage to performance reviews (measuring input, not output quality). StrongDM's approach: holdout scenarios evaluate system output. Intercom's approach: resolution rate, CSAT, automation coverage evaluate system output. **Nobody has published a framework for evaluating the human spec-writer's quality.** This is the biggest open question for AI-native leadership.
+
+**Counter-evidence and failure modes:**
+- Mollick's "jagged frontier" — you don't reliably know what AI will handle well, making spec-scoping difficult
+- Sachdeva's finding — "let AI run, review later" fails; active monitoring essential (the spec alone is insufficient)
+- Wong (Fortune) — leaders instinctively tighten control when they should enable coherence; over-specification may be as damaging as under-specification
+- Mollick's "secret cyborg" data — 50%+ using AI secretly, official tools max at 20% usage; leadership trust failures are endemic
+- HBR survey — 93% of AI/data leaders identify human factors as primary barrier to AI adoption
+
+**Connection to existing patterns:**
+- Pattern A (role dissolution) explains WHY spec-writing becomes the leadership act — when roles blur into "product engineer," the remaining distinct act is specifying intent
+- Pattern C (amplification paradox) explains WHY good spec-writers thrive and bad ones fail faster — AI amplifies spec quality
+- Pattern E (verification gap) explains WHY this works in engineering first — specs can be verified against tests. In domains without verification, the spec-to-output feedback loop is broken
+- Pattern F (domain experts steering agents) suggests the spec-writer doesn't need to be an engineer — they need domain expertise + structured thinking + "just enough" technical vocabulary
+- Enterprise Case observation 5 ("conditions creator") is the organizational analog: someone sets up the conditions (tools, training, methodology) for spec-writing to happen, then gets out of the way
+- Enterprise Case observation 7 ("leader's practice level determines team trajectory") now connects directly: the leader who can write good specs and model the practice sets the team's ceiling
+
 ### Emerging Pattern E: The Verification Gap Blocks Non-Engineering AI-Nativeness
 Engineering AI-nativeness works because code verification is clean (tests pass or fail). Non-engineering functions lack this. Marketing copy, legal analysis, financial judgment, HR decisions have no equivalent of `pytest`. This structural gap explains why non-engineering teams adopt AI as tool (high adoption rates) but don't reorganize around it (zero AI-native teams). Mollick's "management as AI superpower" framework suggests the solution is building explicit evaluation/feedback loops — but no team has published evidence of doing this successfully at scale.
 - Mollick: "Management skills = AI skills" — [practitioner direct, Jan 2026]
@@ -175,6 +237,8 @@ Engineering AI-nativeness works because code verification is clean (tests pass o
 - Legal domain explicitly designs for "structured workflows with human oversight" — resists full AI-nativeness by design
 
 ## What We Did Not Find
+
+0. **A working framework for evaluating spec-writer quality in AI-native teams** (added cycle 74). Shopify measures AI usage (input metric). DORA 2025 says traditional metrics don't separate AI-generated from human work. StrongDM and Intercom evaluate system output, not the human's contribution. **Nobody has published "here's how we evaluate whether a person is good at directing AI."** Every CTO will need this within 12 months. This is the most significant research gap in the AI-native leadership space.
 
 1. **Non-engineering AI-native teams — first signal from F-Secure finance** (updated March 2026). One partial exception previously: Intercom's CS team (but Intercom is the vendor). NOW: **F-Secure has a finance person who has been coding with Claude for 9 months** — automating quarterly bookkeeping chores, now adding AI features via Claude Code, building an in-house tool to replace Excel spreadsheets. This is significant because: (a) finance, not engineering, (b) self-directed, not mandated, (c) 9-month trajectory shows sustained adoption not a one-off experiment, (d) "replacing Excel" = building production tooling, not prompting a chatbot, (e) the progression from automation → AI features mirrors the compound engineering pattern. Level 2 (single practitioner, direct observation). **This is the first named non-engineering person we've found building with coding agents for their own domain work at sustained pace.** The verification gap (Pattern E) may be less blocking in finance than other domains — bookkeeping has verifiable correctness (the books must balance), which is exactly the structural precondition our domain-crossing pattern predicts.
 

@@ -1,0 +1,3 @@
+What does leadership look like for AI-native teams? How do you lead a team where the AI does the implementation?
+
+**Gap:** ~~Current research has patterns on role dissolution (Pattern A) and ritual elimination (Pattern B), but zero findings on leadership model.~~ **ADDRESSED in cycle 74** (2026-03-30). New Pattern G: "The Spec Is the Leadership Act" — Level 3 convergence with 6 independent signals. Three leadership sub-models identified (distributed functions / player-coach / data-as-manager). Remaining gap: no practitioner has published a working framework for evaluating spec-writer quality. See `ai-native-teams/state.md` Pattern G.

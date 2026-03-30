@@ -726,6 +726,26 @@ This matters because it means the infrastructure layer is now betting that the f
 
 ---
 
+## Leadership Is Spec-Writing — And It Always Was
+
+**Thesis:** The leader of an AI-native team writes specifications that direct agents, then evaluates whether output meets the spec. This isn't a new skill — management always was spec-writing. The medium changed from verbal direction to markdown. The skill didn't.
+
+Mollick ran an MBA class where students built startups in 4 days using Claude Code. The students who succeeded were experienced managers — not coders. His explanation: traditional management formats (PRDs, design intent docs, Five Paragraph Orders) transfer directly as AI prompts. "The skills that are so often dismissed as 'soft' turned out to be the hard ones." Six independent signals converge on this: Karpathy's `program.md`, StrongDM's attractor repo (zero code, just spec files), Spotify's natural-language task descriptions, Mollick's MBA experiment, Osmani's spec-writing guide at Google, and 30+ agentic frameworks all adopting spec-driven development as the dominant pattern.
+
+The convergence is strong (Level 3). But there's no consensus on what *else* leadership requires beyond the spec. Three competing models exist: Anthropic distributes four leadership functions across different ICs (direction, people, project, technical — manager is coaching/hiring only). Intercom names the "player-coach" who does strategy AND operations. Tesla replaces managers with information symmetry — "your manager is data."
+
+What they DO agree on: management-as-information-brokering is dead. The manager who exists to relay information up and down is the role AI kills first — because information symmetry (Anthropic's notebooks in Slack, Tesla's all-data-visible) makes that function obsolete. What stays human: people development, hiring judgment, taste ("knowing what good looks like"), and architectural decomposition.
+
+The biggest unsolved problem: nobody has published a framework for evaluating spec-writer quality. DORA (n=5,000) confirms traditional metrics don't work. Shopify measures AI usage (blunt). StrongDM and Intercom evaluate system output, not the human's contribution. Every CTO will need this within 12 months. First person to publish a working framework owns the conversation.
+
+**The implication for CTOs:** Your best future leaders are your best current spec-writers — the people who communicate intent clearly enough that others (now agents) can execute without constant clarification. That's not your most technical person. It's your clearest thinker. Find them by looking at who writes the best PRDs, the best design docs, the best project briefs today. Those people are already practicing the leadership skill that matters most. The manager who leads through hallway conversations and Slack DMs — that person's medium doesn't transfer.
+
+**Applies to:** Advisory (leadership assessment), Bootstrap Module 8, newsletter, AI-native team design
+**Source:** Cycle 74 — Mollick/Wharton, Karpathy/AutoResearch, Ben Kuhn/Anthropic, Ivory/Intercom, Osmani/Google, StrongDM, Spotify/Honk, Fortune/Wong
+**Date:** 2026-03-30
+
+---
+
 ## Template
 
 Copy this for new insights:

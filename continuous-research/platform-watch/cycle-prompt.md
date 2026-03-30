@@ -36,7 +36,7 @@ Read `../user-signals/index.md` first — user questions and comments are the hi
 
 Then read `meta-learning.md` — the research heuristics and recent cycle observations. These tell you what previous cycles learned about how to research effectively. Apply them before choosing your focus.
 
-Then read the synthesis index (`../synthesis/index.md`) — it routes you to the right topic file in one read. For research priorities, read `synthesis.md` (the Tier 1/2/3 section). For domain gaps, read `../synthesis/domain-convergence.md`. For platform status, read `../synthesis/platform-trajectories.md`. Read the source roster (`../source-roster.md`) to know who we're tracking. Optionally read a target platform's `state.md` if you're going deep on one platform.
+Then read the synthesis index (`../synthesis/index.md`) — it routes you to the right topic file in one read. For research priorities, read `synthesis.md` (the Tier 1/2/3 section). For domain gaps, read `../synthesis/domain-convergence.md`. For platform status, read `../synthesis/platform-trajectories.md`. Read the source roster (`../source-roster.md`) to know who we're tracking. Read the company observations index (`../observations/README.md`) to know which companies we're already tracking — avoid duplicating existing cases, and look for updates to existing ones. Optionally read a target platform's `state.md` if you're going deep on one platform.
 
 ### Step 2: Determine focus
 
@@ -201,6 +201,12 @@ cycle: [N]
 2. Include: name, role, where to follow, why they matter, current position with date
 3. If they're doing business-domain agent work (not coding), note the domain
 
+**Company observations:** When a cycle surfaces company-level evidence of AI-native practices, team transformation, or organizational change:
+1. Check `../observations/README.md` — does the company already have a file?
+2. **Existing company:** Update its observation file with new evidence. Keep the standard structure (formation story, practices, what transfers, limitations, key insight).
+3. **New company:** Create `../observations/{company-slug}.md` following the structure in existing files. Add a row to the watch list table in `../observations/README.md`.
+4. Only create observation files for companies with operational detail — not announcements. The bar: we know HOW they work, not just THAT they use AI.
+
 **URL preservation rule:** When synthesizing findings from run files into state.md, keep the URLs. A finding that loses its URL during synthesis becomes unverifiable and therefore untrusted.
 
 ### Step 6: Update synthesis (only if cross-platform insight emerges)
@@ -244,7 +250,7 @@ If an observation matches an existing heuristic pattern 3+ times, promote it: mo
 ### Step 9: Commit and push
 
 ```
-git add continuous-research/platform-watch/ continuous-research/synthesis/ continuous-research/findings/ continuous-research/source-roster.md continuous-research/insights.md
+git add continuous-research/platform-watch/ continuous-research/synthesis/ continuous-research/findings/ continuous-research/observations/ continuous-research/source-roster.md continuous-research/insights.md
 git commit -m "platform-watch: [focus] — [one-line finding summary]"
 git push -u origin main
 ```

@@ -42,7 +42,11 @@ These are the standing objectives for every session, every agent, every cycle. N
 
 **Domain findings** (in `continuous-research/findings/by-domain/`): one file per domain (CS, finance, compliance, operations, HR, sales, coding), evidence-leveled with counter-evidence and Nordic signal.
 
-**Cross-domain patterns** (in `continuous-research/findings/by-pattern/`): hybrid-beats-autonomous, competence-first, rules-verification-scarcity (L4 meta-pattern), promotion-path-gap.
+**Cross-domain patterns** (in `continuous-research/findings/by-pattern/`): hybrid-beats-autonomous, competence-first, rules-verification-scarcity (L4 meta-pattern), promotion-path-gap, conditions-creator.
+
+**Company observations** (in `continuous-research/observations/`): practitioner-level case files on AI-native companies and teams. One file per company. See `observations/README.md` for the watch list and observation guidelines. Covers born-AI-native, transform-in-place, and mid-transition cases across scales from 3 to 182,000 people.
+
+**Research directions:** `continuous-research/research-directions-from-framework.md` — priority-ranked investigation topics from internal practitioner research (compound triggers, verification infrastructure, conditions creator role, experience-first adoption).
 
 **Per-platform detail:** `continuous-research/platform-watch/{microsoft-365,openai,google-workspace,claude-anthropic,vertical-saas}/state.md`
 

@@ -239,6 +239,14 @@ Platform watch asks "which platform?" Domain research asks "which processes?" AI
 
 **Seed signals:** Compound engineering (Every, Imprint, Autodesk) is one practice, but AI-native is broader than any single methodology.
 
+## Company Observations (`observations/`)
+
+Practitioner-level case files on organizations operating AI-natively. One file per company. Not vendor marketing — what teams actually do, how they formed, what works and what doesn't. See `observations/README.md` for the full watch list and observation guidelines.
+
+See `observations/README.md` for the full watch list. Cases span born-AI-native to mid-transition, from 3-person teams to 182K-person enterprises. Each file follows a standard structure: formation story, practices, what transfers, limitations, key insight.
+
+**Research directions** from these observations: `research-directions-from-framework.md` — compound trigger model, verification infrastructure progression, conditions creator role, experience-first adoption sequence, cross-functional ownership gap.
+
 ## Research Log
 
 | Track | Date | Findings | Key Orientation |

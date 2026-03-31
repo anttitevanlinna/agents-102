@@ -20,6 +20,7 @@ User questions and comments steer research as Tier 0 priority.
 - [2026-03-31](comments/2026-03-31-mobai-teaches-wrong-instinct.md) — MobAI teaches Phase 1 ("human watches AI") but trains wrong instinct for scale. At volume, you design systems that watch, not watch yourself.
 - [2026-03-31](comments/2026-03-31-mobai-no-chasm-crossing.md) — MobAI 1+ years old, no chasm crossing, no business results. Valid on-ramp but people outgrow it. Value is in what it leads to, not what it is.
 - [2026-03-31](comments/2026-03-31-mobai-facilitation-overhead.md) — Telecom experience: MobAI requires extraordinary facilitation, on-site, full attention. Works as sprint, doesn't replicate organically. Confirmed across 2 sectors.
+- [2026-03-31](comments/2026-03-31-wow-sequence-validated-fsecure.md) — "WOW → competence → sees future → acts" confirmed as informal strategy at enterprise for 1+ year. Elevates experience-first adoption from theory to validated playbook.
 
 ## Resolved
 

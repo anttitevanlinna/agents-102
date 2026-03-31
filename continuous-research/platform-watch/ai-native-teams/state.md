@@ -15,8 +15,8 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-03-30 (cycle 74)
-**OODA cycles:** 3
+**Last updated:** 2026-03-31 (cycle 75)
+**OODA cycles:** 4
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -149,6 +149,8 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 | **Goldman Sachs (Argenti)** | Unknown | **Finance/Compliance** | Claude agents for trade accounting, KYC, reconciliation — tool deployment, not yet team restructuring | Level 2 | [American Banker](https://www.americanbanker.com/news/goldman-equips-ai-agents-do-trade-accounting-onboarding) |
 | **Nordic software co. (finance, anonymized)** | 1 person | **Finance** | Non-coder with consulting background + just enough technical education. 9 months coding with Claude: bookkeeping automation → in-house tooling → AI features. Trajectory: automation → AI features → production tooling. | Level 2 | [direct observation, Mar 2026] — Nordic, first non-engineering coding-agent practitioner |
 | **Nordic software co. (tech director, anonymized)** | 1 person | **Technology/Management** | Non-coder with technical background. Was: slides and docs. Now: dashboards → hosting platform for AI apps. Trajectory: consumption → creation → infrastructure. | Level 2 | [direct observation, Mar 2026] — Nordic, second non-engineering coding-agent practitioner |
+| **Scania/TRATON AI-Enablement** | 4 | **Developer enablement** | MobAI: daily mob 09:00-12:00, rotating Driver/Navigator/Advisor, LLM as participant. Built DevEx Interview Agent deployed across TRATON Group. Inspired by Joe Justice workshop at Crisp. | Level 2 | [Crisp blog](https://blog.crisp.se/2025/06/02/michaelgothe/mob-programming-with-ai-inside-a-high-performing-teams-journey) + [Scania blog](https://www.scania.com/group/en/home/career/life-at-scania/software-developers-at-scania/blog-posts/blog-how-we-use-ai-to-build-a-developer-first-culture.html) — Nordic (Swedish) |
+| **Solita/ISS (Twin Project)** | Unknown | **Software development** | CollabAI: 15-min role rotation, one screen, AI generates prototypes/tests/models live. Controlled comparison vs. traditional agile. Vendor claims 100x prototyping, 500x decisions, 90% fewer meetings. | Level 0 (vendor case study) | [Solita case study](https://www.solita.fi/work/breaking-new-ground-in-software-development-with-ai-powered-collaboration/) — Nordic (Finnish), UNVERIFIED metrics |
 
 ## Convergence Patterns
 
@@ -229,6 +231,41 @@ The leader of an AI-native team writes specifications that direct agents, then r
 - Pattern F (domain experts steering agents) suggests the spec-writer doesn't need to be an engineer — they need domain expertise + structured thinking + "just enough" technical vocabulary
 - Enterprise Case observation 5 ("conditions creator") is the organizational analog: someone sets up the conditions (tools, training, methodology) for spec-writing to happen, then gets out of the way
 - Enterprise Case observation 7 ("leader's practice level determines team trajectory") now connects directly: the leader who can write good specs and model the practice sets the team's ceiling
+
+### Emerging Pattern H: Synchronous Co-Creation with AI (MobAI / CollabAI) — Opposite of Compound Engineering
+**Level 1-2, pre-convergence (added cycle 75)**
+
+A distinct AI-native team pattern: synchronous mob/ensemble work with AI as an active participant, rotating roles every 7-15 minutes. The opposite of compound engineering's "1 person + AI = 5 people" model.
+
+**Two methodology variants:**
+1. **MobAI** (Joe Justice, coined 2023) — mob programming + AI. Three roles: Driver, Navigator, Contributor. AI researches, suggests, automates. Applied beyond software (hardware, business, marketing). Trademarked. Delivered through JoeDX workshops and conference keynotes.
+2. **CollabAI** (Marko Taipale/Solita, Finland, book Jan 2026) — similar core: one goal, one screen, 15-min rotation, AI in the loop. Foreword by Joe Justice. Emerged from Solita/ISS "Twin Project" in Finland.
+
+**Practitioner evidence:**
+- Scania/TRATON AI-Enablement team (4 people, Swedish): daily mob 09:00-12:00, qualitative benefits reported, zero quantitative metrics. When they split up, "reintegration was painful." ([Crisp blog](https://blog.crisp.se/2025/06/02/michaelgothe/mob-programming-with-ai-inside-a-high-performing-teams-journey), Jun 2025) — [practitioner analysis]
+- Solita/ISS Twin Project (Finnish): controlled comparison claims 100x prototyping speed — but VENDOR CASE STUDY, unverified. ([Solita](https://www.solita.fi/work/breaking-new-ground-in-software-development-with-ai-powered-collaboration/)) — [vendor case study, Level 0]
+- Virpi Rowe/Sofigate (Finnish): 5-person workshop, 7-min timeboxes. Key finding: "humans aren't naturally inclined to leverage AI tools effectively." (LinkedIn, Sep 2023, historical)
+- WikiAgile robot build: completed faster than expected, AI suggestions sometimes inaccurate. (Summer 2024, historical)
+
+**The thesis:** Mob + AI maintains shared context and prevents architectural divergence that solo + AI creates. Collective prompt refinement > individual prompting. Learning velocity > output velocity.
+
+**Counter-evidence:**
+- METR study: AI increased completion time 19% for experienced developers — the baseline assumption that AI helps is itself questionable. ([METR](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/), Jul 2025) — [academic/research]
+- Compound engineering (Every Inc): 1 person + AI = 5 products. Adding humans adds coordination overhead.
+- Saarland University: human-AI pairs have fewer "broad" conversations than human-human pairs — developers accept AI suggestions too readily.
+- Zero head-to-head comparison exists: mob + AI vs. solo + AI.
+
+**Independent convergence signal (added cycle 75 update):**
+- **PALO IT × Singapore Airlines** (Gen-e2, early 2026): Independent consultancy arrived at "AI mob programming" without Joe Justice connection. Cross-functional mob + AI using GitHub Copilot. Metrics: 60%+ effort reduction, 5 weeks vs 9 weeks, 95% AI-generated code. Scaling to ~700 people. ([LinkedIn](https://www.linkedin.com/posts/palo-it_gene2-aiengineering-generativeai-activity-7414485967807369216-ph6v), [FutureCIO](https://futurecio.tech/palo-it-and-singapore-airlines-accelerate-the-adoption-of-genai-driven-digital-product-development/)) — [vendor case study + domain trade publication]
+- **DNA Finland** (CollabAI, 2026): Second named Finnish enterprise customer for Solita's CollabAI after ISS. Presented at Deep Dive event. ([Solita](https://www.solita.fi/events/deep-dive-into-solita-collabai/)) — [vendor case study]
+
+**AI under-utilization pattern:** Two independent MobAI sessions (Virpi Rowe 2023, WikiAgile automotive undated) report humans default to own expertise, don't actually leverage AI during mob sessions. If common, the "AI as team participant" thesis has a behavioral adoption barrier.
+
+**Learning angle (Anthropic study, Jan 2026):** AI assistance impairs learning by 17% — but mob programming's shared discussion could mitigate this by steering toward conceptual inquiry rather than delegation. Untested hypothesis. ([Anthropic](https://www.anthropic.com/research/AI-assistance-coding-skills)) — [academic/research]
+
+**Critical assessment (updated):** Nordic evidence still traces to Joe Justice's consulting network. But PALO IT/Singapore Airlines provides the first genuinely independent convergence signal — different geography (Asia), different methodology name (Gen-e2), different tools (GitHub Copilot), same conclusion (cross-functional mob + AI). Two ecosystems, not 10-20. Pre-convergence, not convergence. Confirmation bias risk downgraded from HIGH to MEDIUM.
+
+**WATCH for:** Singapore Airlines 700-person rollout results. More independent teams. Solution to AI under-utilization pattern. Academic mob + AI vs solo + AI comparison. Woody Zuill's opinion.
 
 ### Emerging Pattern E: The Verification Gap Blocks Non-Engineering AI-Nativeness
 Engineering AI-nativeness works because code verification is clean (tests pass or fail). Non-engineering functions lack this. Marketing copy, legal analysis, financial judgment, HR decisions have no equivalent of `pytest`. This structural gap explains why non-engineering teams adopt AI as tool (high adoption rates) but don't reorganize around it (zero AI-native teams). Mollick's "management as AI superpower" framework suggests the solution is building explicit evaluation/feedback loops — but no team has published evidence of doing this successfully at scale.

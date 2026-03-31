@@ -746,6 +746,30 @@ The biggest unsolved problem: nobody has published a framework for evaluating sp
 
 ---
 
+## AI Accelerates the Cheap Part — The WIP Explosion
+
+**Thesis:** AI accelerates creation (the cheap part of every value chain) while leaving decisions, review, and verification (the expensive parts) untouched. This increases WIP, lengthens cycle times, and makes overworked organisations WORSE, not better.
+
+The pattern is identical in software and business:
+
+In **software engineering**, before AI: write code (20% of calendar time) → make it right — review, test, integrate, deploy, verify (80%). After AI: write code (2%) → make it right (still 80%). For every hour of writing code there are 3-5 hours of making it production-ready: code review, integration testing, staging, regression, security review, compliance, deployment verification, monitoring. AI shrank the 20%. It left the 80% fully intact. The ratio flipped from 20:80 to 2:80 — but the 80% dominates end-to-end cycle time. Faros AI data (10,000+ developers): 98% more PRs merged, but review time increased 91%. DX (135,000 developers): time savings plateau at 4 hours then go net NEGATIVE because of organisational friction. Developers feel more productive (they wrote 5 PRs instead of 2) but the team isn't shipping faster because nothing flows through the system faster. More stuff started, same amount finished.
+
+In **business decision-making**, the parallel is exact. A strategy team produces 10 scenarios instead of 2. A marketing team drafts 20 campaigns instead of 4. Every consultant arrives with "AI-generated insights." More decision-material doesn't help someone already drowning in decisions. Every additional option requires evaluation. Every additional scenario requires consideration. The decision-maker can't tell which of the 10 scenarios is right any faster than they could with 2 — the judgment, context, and political considerations are the same. AI didn't improve any of those. The company that was making 5 decisions a month is still making 5 decisions a month — but now with 50 unresolved options piling up.
+
+This is **Little's Law** applied to AI: WIP = Throughput × Cycle Time. AI increases throughput (generation) but if review/decision capacity is fixed, WIP explodes. More items in the queue, each waiting longer. The system gets slower even though individual generation got faster. And it's **Goldratt's Theory of Constraints**: optimizing a non-constraint is waste. If the constraint is decisions/review, speeding up creation is optimizing the wrong thing.
+
+The **spec is the constraint that prevents the explosion.** Spec-driven leadership (Karpathy, StrongDM, Spotify — L3 convergence) narrows the option space BEFORE generation begins. "Here's what we're building. Here are the acceptance criteria. Everything else is out of scope." Without the spec, AI generates options that create decisions that consume the bottleneck. With the spec, AI generates within a constrained space where verification is tractable.
+
+The only path to end-to-end improvement is either: (1) automate the making-it-right pipeline (agent-evaluates-agent, machine-speed iteration — StrongDM, Karpathy autoresearch), or (2) constrain generation so volume doesn't overwhelm the existing pipeline (specs, bounded scope). Ideally both.
+
+**The implication for CTOs:** Before deploying AI, measure your REVIEW and DECISION capacity, not your GENERATION capacity. If your teams are already at high WIP with decisions queued, AI will make things worse. Either fix the downstream bottleneck first, deploy AI on the review/decision side (agent-evaluates-agent), or constrain generation with specs. "Adopt AI faster" without addressing the constraint is a recipe for higher WIP, longer cycle times, and the illusion of productivity.
+
+**Applies to:** Advisory (CTO playbook), newsletter ("Why Your AI Investment Is Making Things Worse"), training (Phase 4 — verification architecture), article draft (forming AI-native teams)
+**Source:** Practitioner session March 31, 2026 — synthesis of absorption bottleneck (L4, cycles 76+81), Little's Law framing, Goldratt TOC application, Faros/DX/DORA data, decision-speed bottleneck observation
+**Date:** 2026-03-31
+
+---
+
 ## Template
 
 Copy this for new insights:

@@ -115,6 +115,36 @@ Source: [AI UX Design Guide](https://www.aiuxdesign.guide/patterns/progressive-d
 3. **Counter-evidence — anyone who scaled AI review without hitting absorption.** Only Karpathy's scalar-metric constraint. The DX data (135K developers) shows NO companies where higher AI adoption correlated with better organizational outcomes. Remarkable absence of counter-evidence.
 4. **A formal mathematical model** of the generation-absorption gap as a function.
 
+## Five Solution Strategies (Cycle 82)
+
+No single strategy is universal. Each is domain-constrained. The combination approach is untested but likely optimal.
+
+| # | Strategy | Mechanism | Best example | Results | Works when... | Fails when... |
+|---|----------|-----------|-------------|---------|---------------|---------------|
+| 1 | **Eliminate human review** | Holdout scenarios + Digital Twins. Agent generates, separate evaluator checks against criteria agent never saw. | StrongDM (3 engineers, 32K lines production code) | Zero human review, 3-10x velocity | Greenfield, well-defined behavioral specs, testable output | Legacy code, judgment-heavy domains, accountability requirements |
+| 2 | **Scalar metric filter** | Run many experiments, human reviews only what improved the number. | Karpathy autoresearch (700 experiments → 20 winners) | 11% training speed gain from 2 days autonomous | Success measurable as single number (training loss, conversion rate, latency) | Most business domains — marketing quality, legal accuracy, strategic fit have no scalar metric |
+| 3 | **Agent-reviews-agent** | AI reviews AI output — finds issues, verifies to filter false positives, ranks by severity. | Anthropic Code Review, Greptile (82% bug catch), Ramp (financial transactions) | 80-85% agreement with human judgment at 500x cost reduction | Output is evaluable by another agent, false positives tolerable | Blind spot problem — reviewer may hallucinate. Early/unproven at scale. |
+| 4 | **Constrain generation** | Spec-driven development. Narrow option space BEFORE generation. | StrongDM (zero-code repo, 3 spec files), Karpathy (program.md), Spotify (task specs) | Reduces unpredictability, prevents decision queue explosion | Clear requirements, experienced spec writer | Exploratory work, unclear requirements, innovation/discovery phases |
+| 5 | **Tiered review + specialist filter** | Severity tiers, suppress low-value alerts, specialist intermediary reviews mid-tier, humans see only high-severity. | Cleveland Clinic (80% alert reduction), Swiss hospitals (72.4% acceptance rate) | **Most independently validated — 40 years of healthcare evidence (L3)** | High volume, classifiable severity, specialist intermediaries available | Novel/unprecedented situations that don't fit tiers |
+
+### The Untested Combo (Hypothesis)
+
+No practitioner combines strategies. The likely optimal approach for most organizations:
+
+1. **Constrain with specs** (Strategy 4) — reduce generation volume and unpredictability upfront
+2. **Agent-reviews-agent** (Strategy 3) — automated first-pass review of everything generated
+3. **Tiered human review** (Strategy 5) — humans see only what agents flagged as high-severity or low-confidence
+
+This is the healthcare model (tiered review) with AI-era additions (specs as constraints, agents as first-pass reviewers). Nobody has built this full stack yet.
+
+### Healthcare Is 20 Years Ahead
+
+Healthcare has been drowning in machine-generated alerts since the 1990s. Their solutions (alert tiering, suppression algorithms, specialist intermediaries, iterative threshold tuning) are L3 proven with 40 years of evidence. Engineering is reinventing these solutions from scratch. The transfer opportunity is massive — but requires someone who understands both domains.
+
+### Gap: Individual vs. Organizational
+
+All five strategies work at team level. None has demonstrated organizational-level absorption improvement. Faros AI (10K developers): no correlation between AI adoption and company-level productivity even where teams use these techniques. The team solves its review queue; the organization's decision/integration/coordination queues remain.
+
 ## CTO Advice
 
 The absorption bottleneck explains why your AI investment isn't showing up in organizational metrics. Individual developers produce more. The organization drowns in reviewing it.

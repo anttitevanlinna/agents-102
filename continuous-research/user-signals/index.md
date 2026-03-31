@@ -23,6 +23,11 @@ User questions and comments steer research as Tier 0 priority.
 - [2026-03-31](comments/2026-03-31-wow-sequence-validated-fsecure.md) — "WOW → competence → sees future → acts" confirmed as informal strategy at enterprise for 1+ year. Elevates experience-first adoption from theory to validated playbook.
 - [2026-03-31](comments/2026-03-31-littles-law-ai-wip.md) — Absorption bottleneck as Little's Law: AI increases generation but review is fixed, so WIP explodes. Overworked orgs do WORSE with AI.
 - [2026-03-31](comments/2026-03-31-decision-speed-bottleneck.md) — Decision speed is the real business bottleneck, not creation speed. AI accelerates the cheap part (creation), leaves the expensive part (decisions) untouched. Goldratt's TOC applies.
+- [2026-03-31](comments/2026-03-31-engineering-for-learning.md) — Engineering contract must shift from "build for stability" to "build for learning." The compounding is the system learning. Real moat = organizational learning rate.
+- [2026-03-31](comments/2026-03-31-broad-learning-early-signals.md) — "Broad learning" early signals: Cohen (memory architectures), Palantir (ontology/AIP), compound engineering, StrongDM. Three layers needed, nobody combines them.
+- [2026-03-31](comments/2026-03-31-broad-learning-ceiling.md) — Ceiling for broad learning = human judgment about what's worth learning. Scales until meta-learning > original learning. Unlearning is the hardest part (zombie stat audit as micro-example).
+- [2026-03-31](comments/2026-03-31-customer-truth-ceiling.md) — Practitioner's answer: ceiling = quality of evals grounded in customer truth. Three ceilings: products (customer), processes (operational metrics), strategy (human judgment).
+- [2026-03-31](comments/2026-03-31-meta-learning-gaps.md) — Four meta-learning gaps: problem-finding bias, no eval loop on own output, practitioner signals under-invested, no behavior-change measurement.
 
 ## Resolved
 

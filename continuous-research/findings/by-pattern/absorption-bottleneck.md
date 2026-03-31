@@ -1,7 +1,7 @@
 ---
 type: finding
 domain: cross-domain
-evidence_level: 3
+evidence_level: 4
 platforms: [multiple]
 practitioners: [Osmani, Faros AI, DX, DORA, CodeRabbit, Karpathy, Willison, Furze, NBER, Cursor/Graphite, Anthropic]
 nordic: false
@@ -17,7 +17,9 @@ answers:
 
 # The Absorption Bottleneck — When AI Generates Faster Than Humans Can Evaluate
 
-**Evidence level:** Level 3 (convergence — 10+ independent sources) | **Last updated:** 2026-03-31 | **Source:** Cycle 76
+**Evidence level:** Level 4 (cross-domain meta-pattern) | **Last updated:** 2026-03-31 | **Source:** Cycles 76 + 81
+
+**L4 upgrade (cycle 81):** The absorption bottleneck is confirmed across 6+ domains beyond engineering: academic peer review (21% of ICLR 2026 reviews fully AI-generated), healthcare (90-96% alert override rates, 40+ years of fatigue research), marketing (only 25.8% of web pages purely human-written, consumer trust dropped from 60% to 26%), legal (700+ court cases with AI hallucinations), customer service (Klarna reversal), and compliance/government (Stanford "cognitive escrow"). Three academic papers describe it as domain-independent cognitive failure. This is not an engineering problem — it's a human cognition problem that manifests wherever AI output volume exceeds human evaluation capacity.
 
 **The bottleneck sequence:**
 1. **Generation** — solved. Agents produce at superhuman speed.
@@ -109,7 +111,7 @@ Source: [AI UX Design Guide](https://www.aiuxdesign.guide/patterns/progressive-d
 ## What We Did Not Find
 
 1. **The term "absorption bottleneck" in prior literature.** Nobody uses this phrase. Genuinely novel framing that unifies six existing concepts.
-2. **Non-engineering domains experiencing absorption explicitly.** Legal and compliance show the preconditions (volume increasing, human review required) but haven't yet hit the wall because AI generation in those domains isn't as mature as coding agents.
+2. ~~**Non-engineering domains experiencing absorption explicitly.**~~ **RESOLVED (cycle 81):** Six non-engineering domains now show independent evidence — academic peer review (L3), healthcare (L3), marketing (L3), legal (L2), customer service (L2), compliance (L2). Finance is the only domain where the bottleneck hasn't manifested yet (still upstream at data ingestion). **Upgraded to L4 cross-domain meta-pattern.**
 3. **Counter-evidence — anyone who scaled AI review without hitting absorption.** Only Karpathy's scalar-metric constraint. The DX data (135K developers) shows NO companies where higher AI adoption correlated with better organizational outcomes. Remarkable absence of counter-evidence.
 4. **A formal mathematical model** of the generation-absorption gap as a function.
 

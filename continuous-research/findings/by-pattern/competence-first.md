@@ -25,8 +25,8 @@ answers:
 - **78% of executives** feel AI advances too fast for their training efforts. Source: [InformationWeek](https://www.informationweek.com/machine-learning-ai/2026-enterprise-ai-predictions-fragmentation-commodification-and-the-agent-push-facing-cios)
 - **82% of companies in early AI maturity** have no talent strategy. Source: [Joget analysis](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/)
 - **Only 8.6% of companies** have AI agents in production. 63.7% have no formalized AI initiative. Source: [Joget analysis](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/)
-- **95% of organizations** report no measurable ROI from AI (MIT GenAI Divide study)
-- **60% of AI projects fail** due to flawed ROI calculations and unrealistic expectations
+- **95% of custom/task-specific GenAI tools** report no measurable P&L impact (MIT NANDA, July 2025, N=52 interviews — narrow definition of success; ~40% success for general LLMs in same study. See cycle 80 audit)
+- **60% of AI projects fail** due to flawed ROI calculations and unrealistic expectations (TODO: verify critically — round-number stat without specific URL or methodology)
 - **OpenAI's own COO** (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." Source: [TechCrunch](https://techcrunch.com)
 
 The pattern: rush to adopt → skip competence building → agent project fails → blame the technology.
@@ -36,7 +36,7 @@ The pattern: rush to adopt → skip competence building → agent project fails 
 Previous transformations (digital, agile, cloud) could be vision-led because concepts were accessible through analogy. A CEO didn't need to write code to envision a digital company. Agents are structurally different. "An agent that autonomously processes invoices across three systems with human escalation at decision points" means nothing to someone who hasn't built or used an agent. They hear "automation" and think RPA. The mental model gap isn't knowledge — it's experience. No slides bridge it.
 
 **The sequence is evidence-backed:**
-No mental models → no shared vision → experiments stay isolated → no organizational learning → 95% fail.
+No mental models → no shared vision → experiments stay isolated → no organizational learning → most fail. [NOTE: The oft-cited "95% fail" is from MIT NANDA (N=52, narrow P&L-impact definition). Use directionally, not as precise measurement.]
 
 Competence creates mental models. Mental models create shared vision. Vision connects experiments. Connected experiments create organizational learning.
 
@@ -55,7 +55,7 @@ Source: F-Secure deployment experience, Antti direct [practitioner direct — fi
 ## Independent Research Confirmation
 
 - **Mollick (Wharton):** Individuals who build competence get 2-3x productivity. Organizations get only 10-20%. The gap is shared mental models — each person discovers something but no common language propagates it. Source: [Wharton research]
-- **MIT/BCG:** 95% of organizations see no measurable ROI. The differentiator: organizational capability to absorb AI, not technology investment. Source: [MIT/BCG study]
+- **MIT/BCG:** 95% of custom/task-specific GenAI tools report no measurable P&L impact (MIT NANDA, July 2025, N=52 interviews — narrow success definition, self-described as "directionally accurate"). The differentiator: organizational capability to absorb AI, not technology investment. Source: [MIT/BCG study] [NOTE: Small qualitative study with structural conflict of interest — MIT NANDA builds agent infrastructure. See cycle 80 audit.]
 - **HBR experimentation trap:** Hundreds of isolated experiments that never scale because no shared vision connects them. Source: [HBR Nov 2025](https://hbr.org/2025/11/overcoming-the-organizational-barriers-to-ai-adoption)
 - **HBR behavioral science:** Leaders assume employees are excited about AI. They're wrong. Leadership enthusiasm vs. workforce readiness gap is a primary failure mode.
 

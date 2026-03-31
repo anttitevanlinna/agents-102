@@ -76,7 +76,7 @@ Meanwhile OpenAI's Frontier is deliberately vendor-neutral (manages agents from 
 
 **Thesis:** OpenAI's own COO confirmed (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." The entire business agent space is pre-chasm.
 
-MIT GenAI Divide: 95% of organizations report no measurable ROI from AI. Zero named enterprises report production business agent deployments with measurable outcomes on any horizontal platform. The "which platform should we choose" question is premature — the "what agent should we build" question comes first.
+MIT NANDA GenAI Divide: 95% of custom/task-specific GenAI tools report no measurable P&L impact (July 2025, N=52 interviews — narrow success definition, directional not precise; ~40% success for general LLMs. See cycle 80 audit). Zero named enterprises report production business agent deployments with measurable outcomes on any horizontal platform. The "which platform should we choose" question is premature — the "what agent should we build" question comes first.
 
 **The implication for CTOs:** Stop evaluating platforms. Start with $20/month personal agents. Discover which processes benefit. Then evaluate platforms against YOUR discovered use cases, not vendor demos.
 
@@ -208,7 +208,7 @@ Microsoft discovered 500K agents inside their own organization. 29% operate with
 
 The governance product layer is just starting to exist: ConductorOne (MCP access management, March 19), Microsoft Agent 365 ($15/user/month, GA May 1), Geordie AI (agent security governance), AWS Bedrock AgentCore Policy (Cedar-based formal verification). Six months ago, none of these products existed. But adoption evidence is zero — all just shipped or are shipping.
 
-The four-layer enterprise agent stack is crystallizing: Models → Protocols (MCP + A2A + Agent Skills) → **Governance** → Applications. The gap between layers 2 and 3 is where the 95% failure rate originates.
+The four-layer enterprise agent stack is crystallizing: Models → Protocols (MCP + A2A + Agent Skills) → **Governance** → Applications. The gap between layers 2 and 3 is where most pilot failures originate.
 
 **The implication for CTOs:** You probably have shadow agents already. Before deploying more, audit what exists. The governance layer is just starting to ship — but waiting for it means falling behind. Start with visibility (what agents exist?) before adding capability (what should agents do?).
 
@@ -264,7 +264,7 @@ And here's the kicker: coding agents are also the best context-creation engines 
 
 78% of executives feel AI is advancing too fast for their training efforts. 82% of companies in early AI maturity have no talent strategy. Only 8.6% of companies have AI agents in production. 63.7% have no formalized AI initiative at all. HBR: "Most firms struggle to capture real value from AI not because the technology fails—but because their people, processes, and politics do."
 
-The pattern across multiple independent studies: rush to adopt → skip competence building → agent project fails → blame the technology. 60% of AI projects fail due to flawed ROI calculations and unrealistic expectations. Pilots fail because teams build agents before they build controls.
+The pattern across multiple independent studies: rush to adopt → skip competence building → agent project fails → blame the technology. 60% of AI projects fail due to flawed ROI calculations and unrealistic expectations (TODO: verify critically — round-number stat without specific URL or methodology). Pilots fail because teams build agents before they build controls.
 
 This is our market. The gap between tool availability and organizational readiness is where Agents 102 creates value. Every platform vendor assumes the organization knows what to build, knows how agents work, and can evaluate options. None of that is true for 92% of companies.
 
@@ -318,11 +318,11 @@ Agents are structurally different. "An agent that autonomously processes invoice
 
 The research now independently confirms the mechanism:
 - **Mollick (Wharton):** Individuals who build competence get 2-3x productivity. Their organizations get only 10-20%. The gap is shared mental models — each person discovers something, but there's no common language to propagate it.
-- **MIT/BCG:** 95% of organizations see no measurable ROI. The differentiator between leaders and laggards is organizational capability to absorb AI, not technology investment.
+- **MIT/BCG:** 95% of custom/task-specific GenAI tools report no measurable P&L impact (MIT NANDA, July 2025, N=52 interviews — narrow success definition, self-described as "directionally accurate"; ~40% success for general LLMs. See cycle 80 audit). The differentiator between leaders and laggards is organizational capability to absorb AI, not technology investment.
 - **HBR experimentation trap:** Hundreds of isolated experiments that never scale — because no shared vision connects them.
 - **HBR behavioral science:** Leaders assume employees are excited about AI. They're wrong. The gap between leadership enthusiasm and workforce readiness is a primary failure mode.
 
-The sequence is now evidence-backed: **No mental models → no shared vision → experiments stay isolated → no organizational learning → 95% fail.** Competence creates the mental models. Mental models create shared vision. Vision connects the experiments. Connected experiments create organizational learning. This is why Competence → Discovery → Context → Platform is the only sequence that works.
+The sequence is now evidence-backed: **No mental models → no shared vision → experiments stay isolated → no organizational learning → most fail.** [NOTE: The oft-cited "95% fail" is from MIT NANDA (N=52, narrow P&L-impact definition). Use directionally, not as precise measurement.] Competence creates the mental models. Mental models create shared vision. Vision connects the experiments. Connected experiments create organizational learning. This is why Competence → Discovery → Context → Platform is the only sequence that works.
 
 The inverse is the consulting failure mode: Strategy → Roadmap → Execution assumes the vision can be handed down. For agents, this produces governance of an abstraction — maturity models where nobody can picture what "Level 3" actually looks like, initiative lists with no felt vision behind them, change programs that reproduce the consultancy's slides instead of the organization's future.
 
@@ -429,7 +429,7 @@ This is the anti-Gartner: Gartner sells access to analysts' opinions. This sells
 
 **Thesis:** The primary blocker to enterprise AI agent adoption is not technology or platform choice — it's organizational clarity about what to do with AI, which only comes from hands-on competence.
 
-Four independent sources converge on this: (1) Ethan Mollick's "Leadership, Lab, Crowd" framework shows that individual AI productivity gains are real but don't automatically translate to organizational impact — the "organizational bridge" is unsolved. Workers discover use cases but hide them (fear of job loss or raised performance expectations). (2) MIT's study of 300+ AI deployments found 95% of pilots stall — not because the technology fails, but because centralized AI labs create bottlenecks, budgets go to the wrong functions (sales/marketing gets 50%+ when ROI is in back-office), and empowered line managers outperform centralized strategy. (3) Natalia Quintero (Every, 100+ company engagements): "They have a clarity problem. They lack a view on what they're trying to achieve." Documentation culture is the enabler. (4) ~50% of employees already use unsanctioned AI — the demand exists, the organizational clarity doesn't.
+Four independent sources converge on this: (1) Ethan Mollick's "Leadership, Lab, Crowd" framework shows that individual AI productivity gains are real but don't automatically translate to organizational impact — the "organizational bridge" is unsolved. Workers discover use cases but hide them (fear of job loss or raised performance expectations). (2) MIT NANDA's study found 95% of custom/task-specific GenAI tools report no measurable P&L impact (N=52 interviews, narrow success definition — see cycle 80 audit) — not because the technology fails, but because centralized AI labs create bottlenecks, budgets go to the wrong functions (sales/marketing gets 50%+ when ROI is in back-office), and empowered line managers outperform centralized strategy. (3) Natalia Quintero (Every, 100+ company engagements): "They have a clarity problem. They lack a view on what they're trying to achieve." Documentation culture is the enabler. (4) ~50% of employees already use unsanctioned AI — the demand exists, the organizational clarity doesn't.
 
 Every company has the technology. Nobody has the clarity. Platform comparisons are premature because the organization can't formulate the right questions without hands-on experience. After 41 research cycles, zero companies were found succeeding with a "buy platform first, train later" approach. The counter-evidence to competence-first simply doesn't exist.
 
@@ -477,7 +477,7 @@ This isn't because nothing is happening. ConductorOne's survey shows 95% of ente
 
 ## The Amplification Paradox — Individual Up, Organization Flat
 
-**Thesis:** AI dramatically boosts individual productivity but organizational metrics stay flat. AI amplifies what's already there — strong teams thrive, weak teams fail faster. This explains both the success stories AND the 42-95% failure rates.
+**Thesis:** AI dramatically boosts individual productivity but organizational metrics stay flat. AI amplifies what's already there — strong teams thrive, weak teams fail faster. This explains both the success stories AND the widely-reported high failure rates (42% abandonment per S&P Global; MIT NANDA's "95%" applies to custom/task-specific tools with narrow P&L-impact definition, N=52 — see cycle 80 audit).
 
 DORA 2025 (n=5,000 engineers) found 21% more tasks completed, 98% more PRs merged individually — but organizational delivery metrics were flat. AI adoption improved individual throughput while having a NEGATIVE relationship with system stability. Mollick/P&G found individual + AI ≈ team without AI for average work, but teams + AI produce significantly more top-10% exceptional solutions. S&P Global: 42% of companies now abandon majority of AI initiatives pre-production, up from 17% one year prior — failure rate doubling annually.
 
@@ -544,7 +544,7 @@ This is why it's invisible to public research. It's happening inside enterprises
 
 The evidence now spans 5+ independent sources:
 1. **Mollick (Wharton):** Leadership/Lab/Crowd framework — individual gains don't translate without shared mental models.
-2. **MIT (300+ deployments):** 95% of pilots fail. Line managers with competence outperform centralized AI labs.
+2. **MIT NANDA (N=52 interviews):** 95% of custom/task-specific GenAI tools report no measurable P&L impact (narrow success definition, directional — see cycle 80 audit). Line managers with competence outperform centralized AI labs.
 3. **Quintero (Every, 100+ companies):** "Clarity problem" is root cause. Documentation culture enables.
 4. **Shadow AI data:** ~50% unsanctioned use — demand exists, clarity doesn't.
 5. **F-Secure (March 2026):** After 2 modules, people built unprompted. Competence created pull. Level 2.
@@ -564,7 +564,7 @@ Zero counter-evidence found across 53+ research cycles. No company has been foun
 
 **Thesis:** Every major 2026 survey says competence is the bottleneck, not platforms. Organizations that invest in people first outperform those that buy platforms first. Zero counter-evidence in 58 research cycles.
 
-The signal count crossed 10+ independent sources in cycle 58: PwC (38% cite skill gaps as top-3 barrier), Deloitte (n=3,235: "education was #1 talent adjustment"), BCG (companies with deeply engaged C-suite are 12x more likely to be top AI performers, invest 2x in upskilling), Meta (first company tying performance reviews to AI usage), Mollick at UNLEASH ("biggest constraint is leadership and organizational design, not technology"), shadow AI data (93% of enterprise ChatGPT use on non-corporate accounts — employees self-training because orgs aren't), Moderna (HBS: trained workforce first → 1,000s custom GPTs organically), MIT (95% pilot failure), Quintero (100+ companies), F-Secure (competence created pull).
+The signal count crossed 10+ independent sources in cycle 58: PwC (38% cite skill gaps as top-3 barrier), Deloitte (n=3,235: "education was #1 talent adjustment"), BCG (companies with deeply engaged C-suite are 12x more likely to be top AI performers, invest 2x in upskilling), Meta (first company tying performance reviews to AI usage), Mollick at UNLEASH ("biggest constraint is leadership and organizational design, not technology"), shadow AI data (93% of enterprise ChatGPT use on non-corporate accounts — employees self-training because orgs aren't), Moderna (HBS: trained workforce first → 1,000s custom GPTs organically), MIT NANDA (95% of custom/task-specific tools, N=52, directional — cycle 80 audit), Quintero (100+ companies), F-Secure (competence created pull).
 
 Zero platform-first success stories found across 58 cycles. The closest (PwC's 230K Copilot users) is actually competence-first — PwC's core business IS change management.
 

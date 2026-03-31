@@ -134,7 +134,7 @@ Every research finding gets two tags:
 1. **Origin:** Global / Nordic / Both
 2. **Nordic applicability:** Direct (works as-is) / Requires adaptation (governance, regulatory, cultural) / Unknown
 
-This creates a distinctive editorial voice: "Globally, 40% of enterprise apps will include agents by end of 2026 (Gartner). In the Nordics, only 19% of workers use GenAI weekly (BCG). The capability exists globally. The adoption gap is Nordic-specific. Here's why — and here's what the Nordic early adopters did differently."
+This creates a distinctive editorial voice: "Globally, 40% of enterprise apps will include agents by end of 2026 (Gartner) (TODO: verify critically). In the Nordics, only 19% of workers use GenAI weekly (BCG) (TODO: verify critically). The capability exists globally. The adoption gap is Nordic-specific. Here's why — and here's what the Nordic early adopters did differently."
 
 The global-vs-Nordic lens is itself a value proposition. No global research firm provides it. No Nordic consultancy tracks the global edge closely enough. We do both.
 
@@ -264,7 +264,7 @@ See `observations/README.md` for the full watch list. Cases span born-AI-native 
 | Convergence: Platform agents | 2026-02-21 | 6 patterns | Data quality #1 killer. Vendor hype 12-24 months ahead of reality. |
 | Convergence: Hybrid | 2026-02-21 | 15+ signals | CONFIRMED. 5 failure mechanisms. AI drafts → human decides → AI executes → human monitors. |
 | Convergence: Governance | 2026-02-21 | 16 signals | CONFIRMED. Governance-first deploys faster. Without it: 9-month stalls. |
-| Convergence: Orchestration | 2026-02-21 | 20+ signals | CONFIRMED with counter-arguments. Know when to split. 40% of multi-agent pilots fail. |
+| Convergence: Orchestration | 2026-02-21 | 20+ signals | CONFIRMED with counter-arguments. Know when to split. 40% of multi-agent pilots fail (TODO: verify critically). |
 | **Incremental: Platform + CS** | **2026-03-25** | 6 platform announcements | Announcement-to-deployment gap still enormous. Oracle 600 agents, Workday acquired Sana $1.1B. Zero practitioner evidence for vertical SaaS agents. |
 | **Incremental: Nordic + EU AI Act** | **2026-03-25** | Ericsson rApp, 7 practitioners, 2 surveys | No new Nordic production agentic. Finland enforcement active, no actions. Nordic caution gap CONFIRMED (Level 3): BCG + Deloitte independently. |
 | **Incremental: Legal + Finance + HR** | **2026-03-25** | Legora $5.55B, Harvey $11B, Goldman CIO | Legal AI approaching convergence (Level 3). Goldman = credibility signal for finance agents. HR still zero agentic. |

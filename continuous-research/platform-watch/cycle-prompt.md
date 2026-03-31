@@ -297,6 +297,16 @@ Assume LLMs fabricate 10% of claims. The ONLY defense is re-verifiable sources.
 
 SOURCE TYPE LABEL: Every URL must also have a source type label (see classification above).
 
+ZOMBIE STAT RULE — MANDATORY:
+Round-number failure/success rates (e.g., "95% of AI pilots fail," "85% of ML projects never reach production," "80% of AI projects fail") are almost always zombie stats — small qualitative studies or analyst predictions stripped of caveats and weaponized by vendors. Before citing ANY round-number percentage about AI success/failure rates:
+1. Find the ORIGINAL source (not someone citing it). Who published it? What methodology? What sample size?
+2. Check the definition. "Fail" how? "Success" defined as what? Narrow definitions inflate failure rates by design.
+3. Check for conflict of interest. Does the source sell a product that solves the problem they're quantifying?
+4. Check the citation chain. If everyone cites a Fortune article that cites someone else, trace it back.
+5. If you can't find the original source with methodology after 2 searches, mark it: "[UNVERIFIED STAT — original source not found, do not cite as evidence]"
+6. If you find the original and it's a small qualitative study (N<200) or an analyst prediction, cite it WITH the caveats: sample size, methodology, definition of success/failure.
+Known zombie stats to NEVER cite without caveats: "95% fail" (MIT NANDA, N=52, custom tools only), "85% fail" (Gartner, analyst prediction), "80% fail" (RAND, specific to ambitious multi-step agents), "87% fail" (VentureBeat, methodology unclear).
+
 CONFIRMATION BIAS GUARD: Test the hypothesis, don't confirm it. Search for counter-evidence.
 
 === END RULES ===

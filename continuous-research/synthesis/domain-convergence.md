@@ -71,7 +71,7 @@ Five independent data sources all show the same structure: **access/experimentat
 | Cross-industry | 86% invest | 6% trust | 80 pts | HBR n=603 |
 | Security | 80.9% past planning | 14.4% approved | 66 pts | Gravitee n=900+ |
 | Finance | 54% priority | 15% ready | 39 pts | Deloitte CFO Signals |
-| All domains | 95% pilot | 5% production | 90 pts | MIT Nanda |
+| All domains | 95% pilot (custom/task-specific tools only) | 5% production | 90 pts | MIT NANDA (N=52, narrow P&L definition, see cycle 80 audit) |
 
 **The bottleneck is NOT technology access but organizational trust-building.** Platform selection is downstream of trust-building. Agents 102 IS the trust-building program.
 

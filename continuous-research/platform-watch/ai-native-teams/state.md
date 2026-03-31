@@ -117,7 +117,7 @@ When teams ship daily, biweekly sprint ceremonies lose their purpose. AI-native 
 - Every Inc: Plugin and compound engineering enable continuous deployment without coordination overhead. ([compound engineering plugin](https://github.com/nicholasgriffintn/compound-engineering-plugin), Mar 2026)
 
 ### Emerging Pattern C: The Amplification Paradox
-AI dramatically boosts individual productivity but organizational metrics stay flat. AI amplifies what's already there — strong teams thrive, weak teams fail faster. This explains both the AI-native success stories AND the 42-95% failure rates.
+AI dramatically boosts individual productivity but organizational metrics stay flat. AI amplifies what's already there — strong teams thrive, weak teams fail faster. This explains both the AI-native success stories AND the high failure rates (42% abandonment per S&P Global; the oft-cited "95% fail" from MIT NANDA applies only to custom/task-specific GenAI tools with a narrow P&L-impact success definition, N=52 interviews — see cycle 80 audit).
 - DORA 2025 (n=5,000): 21% more tasks, 98% more PRs merged individually, but org delivery metrics flat. AI adoption improves throughput but has NEGATIVE relationship with stability. ([DORA report](https://dora.dev/research/2025/dora-report/), Sep 2025) — [academic/research]
 - S&P Global: 42% of companies abandon majority of AI initiatives pre-production, up from 17% one year prior. ([Derosiaux/Medium](https://sderosiaux.medium.com/what-changed-in-q4-2025-and-why-enterprises-are-afraid-of-2026-2027-ccd4e632baae), Dec 2025) — [practitioner analysis]
 - Mollick/P&G: Individual + AI ≈ team without AI for average work, but teams + AI produce significantly more top-10% exceptional solutions. ([One Useful Thing](https://www.oneusefulthing.org/p/the-cybernetic-teammate), 2026) — [practitioner direct / academic]
@@ -222,7 +222,7 @@ The leader of an AI-native team writes specifications that direct agents, then r
 - Sachdeva's finding — "let AI run, review later" fails; active monitoring essential (the spec alone is insufficient)
 - Wong (Fortune) — leaders instinctively tighten control when they should enable coherence; over-specification may be as damaging as under-specification
 - Mollick's "secret cyborg" data — 50%+ using AI secretly, official tools max at 20% usage; leadership trust failures are endemic
-- HBR survey — 93% of AI/data leaders identify human factors as primary barrier to AI adoption
+- HBR survey — 93% of AI/data leaders identify human factors as primary barrier to AI adoption (TODO: verify critically)
 
 **Connection to existing patterns:**
 - Pattern A (role dissolution) explains WHY spec-writing becomes the leadership act — when roles blur into "product engineer," the remaining distinct act is specifying intent
@@ -283,7 +283,7 @@ Engineering AI-nativeness works because code verification is clean (tests pass o
 
 3. **Team size economics with specific numbers.** "1 person = 5 people" claims widespread but poorly sourced. AMPECO doesn't report headcount changes. Every Inc is the most specific data point. Amodei predicts $1B one-person company by 2026 (70-80% odds) — prediction, not evidence. NEW: Intercom's "avoided ~100 hires" is the most concrete non-engineering data point.
 
-4. **AI-native team practices beyond engineering and customer service.** Marketing (91% using AI), finance (47% deployed agents), legal (52% in-house adoption), HR (predictions of 30% headcount reduction) — high tool adoption, near-zero team transformation evidence. The entire practitioner literature remains about software teams. CS is the only non-engineering function with partial evidence of team-level restructuring. **NEW: F-Secure finance person (9 months with Claude, building in-house tools to replace Excel) is the first individual-level signal of non-engineering AI-nativeness from direct observation. Not team-level yet — but the trajectory (automation → AI features → in-house tooling) is the same pattern that compound engineering follows in software teams.**
+4. **AI-native team practices beyond engineering and customer service.** Marketing (91% using AI) (TODO: verify critically), finance (47% deployed agents) (TODO: verify critically), legal (52% in-house adoption) (TODO: verify critically), HR (predictions of 30% headcount reduction) (TODO: verify critically) — high tool adoption, near-zero team transformation evidence. The entire practitioner literature remains about software teams. CS is the only non-engineering function with partial evidence of team-level restructuring. **NEW: F-Secure finance person (9 months with Claude, building in-house tools to replace Excel) is the first individual-level signal of non-engineering AI-nativeness from direct observation. Not team-level yet — but the trajectory (automation → AI features → in-house tooling) is the same pattern that compound engineering follows in software teams.**
 
 ## Sources
 

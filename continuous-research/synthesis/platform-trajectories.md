@@ -7,7 +7,7 @@ answers: ["platform direction", "who leads", "platform comparison", "horizontal 
 
 # Platform Trajectories (March 2026)
 
-**Nobody leads.** OpenAI's own COO confirmed (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." MIT: 95% of organizations report no measurable ROI.
+**Nobody leads.** OpenAI's own COO confirmed (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." MIT NANDA: 95% of custom/task-specific GenAI tools report no measurable P&L impact (July 2025, N=52 interviews — directional, not precise. See cycle 80 audit).
 
 ## Microsoft: Azure of Agents
 
@@ -30,7 +30,7 @@ Most ambitious full-stack vision, widest execution gap, enterprise ground accele
 - **Frontier:** Eleventh+ consecutive check with zero independent deployment evidence. PE joint venture ($10B) = implicit admission Frontier can't self-serve.
 - **Enterprise decline:** Anthropic captures ~80% of API spend (was ~5% July 2025). Largest single-month subscription decline. Super-app merge defensive, not offensive.
 - **EEA/Nordic:** Agent mode NOT available in EEA. Worst platform for Nordic business agents.
-- **Deployment gap = Level 3 convergence:** 95% of GenAI pilots fail to reach production (MIT), 46% cite integration.
+- **Deployment gap = Level 3 convergence:** 95% of custom/task-specific GenAI tools report no measurable P&L impact (MIT NANDA, N=52, directional — see cycle 80 audit), 46% cite integration.
 
 See `../platform-watch/openai/state.md` for full evidence.
 

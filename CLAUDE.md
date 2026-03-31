@@ -287,6 +287,8 @@ FRESHNESS: Only cite evidence from last 6 months. Older sources = historical con
 
 EVERY CLAIM must have: (1) a specific URL, (2) a source type label from the list above. No URL = mark [SOURCE NEEDED].
 
+ZOMBIE STAT RULE: Round-number AI failure/success rates ("95% fail," "85% never reach production," "80% fail") are almost always zombie stats — small qualitative studies stripped of caveats. Before citing: (1) find the ORIGINAL source with methodology and sample size, (2) check how "failure" is defined, (3) check for conflict of interest, (4) trace the citation chain. If original not found after 2 searches: mark [UNVERIFIED STAT]. Known zombies: "95% fail" (MIT NANDA, N=52, custom tools only), "85% fail" (Gartner prediction), "80% fail" (RAND, multi-step agents only).
+
 CONFIRMATION BIAS GUARD: Test the hypothesis, don't confirm it. Actively search for counter-evidence.
 
 THREE GATES per finding:

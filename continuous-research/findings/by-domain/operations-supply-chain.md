@@ -20,7 +20,7 @@ answers:
 
 Operations/supply chain is the most mature domain for agentic AI after coding. Large global enterprises (Walmart, Amazon, DHL, Maersk, Siemens) run multi-agent systems in production. The shift: from single-purpose AI (demand forecasting, route optimization) to orchestrated multi-agent architectures where specialized agents handle procurement negotiation, inventory rebalancing, warehouse coordination, and logistics routing. Nordic angle is strong: Equinor ($330M cumulative savings), Maersk, IKEA, Scania, Boliden, ABB, Stora Enso, Wartsila all have significant deployments.
 
-The chasm is real: 49% of procurement teams run AI pilots, only 4% reach meaningful deployment. 95% of enterprise AI pilots deliver zero measurable return (MIT NANDA). The gap is governance, data readiness, and decision ownership — not technology.
+The chasm is real: 49% of procurement teams run AI pilots, only 4% reach meaningful deployment. 95% of custom/task-specific GenAI tools report no measurable P&L impact (MIT NANDA, July 2025, N=52 interviews — narrow definition of success, see cycle 80 audit). The gap is governance, data readiness, and decision ownership — not technology.
 
 ## Level 3+ Convergence Findings
 
@@ -71,14 +71,14 @@ Launched at MWC 2026 on AWS. Agentic AI for network optimization: 100M+ AI infer
 
 ### Failure rates are the real story
 - 49% of procurement teams running AI pilots, only 4% at meaningful deployment (EY Global CPO Survey)
-- 95% of enterprise AI pilots deliver zero measurable return (MIT NANDA, July 2025)
-- 40%+ of agentic AI projects will be canceled by end of 2027 (Gartner)
-- Companies using specialized vendors succeed 67% vs. 22% for in-house builds
+- 95% of custom/task-specific GenAI tools report no measurable P&L impact (MIT NANDA, July 2025, N=52 interviews — narrow success definition; ~40% success for general LLMs. See cycle 80 audit) [NOTE: Small qualitative study, use directionally, not as precise measurement.]
+- 40%+ of agentic AI projects will be canceled by end of 2027 (Gartner) (TODO: verify critically — analyst prediction, Level 0 on evidence ladder, no URL)
+- Companies using specialized vendors succeed 67% vs. 22% for in-house builds (TODO: verify critically — no URL or source attribution)
 - Decision design, not model accuracy, is the primary failure cause
 
 ## Counter-Evidence
 
-- **95% pilot failure rate (MIT NANDA)** is the dominant reality despite headline deployments at Walmart/DHL/Maersk scale
+- **High pilot failure rate (MIT NANDA: 95% of custom/task-specific GenAI tools, N=52, narrow P&L-impact definition)** is the dominant reality despite headline deployments at Walmart/DHL/Maersk scale
 - **Homegrown builds fail 78% of the time** — only specialized vendor tools have viable success rates
 - **Data fragmentation blocks most deployments** — sophisticated algorithms can't compensate for fragmented data and unstandardized processes
 - **Amazon Project Eluna is still a pilot** — even Amazon's internal agentic operations tool is recommending, not executing autonomously

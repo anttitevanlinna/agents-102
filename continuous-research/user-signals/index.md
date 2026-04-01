@@ -28,6 +28,7 @@ User questions and comments steer research as Tier 0 priority.
 - [2026-03-31](comments/2026-03-31-broad-learning-ceiling.md) — Ceiling for broad learning = human judgment about what's worth learning. Scales until meta-learning > original learning. Unlearning is the hardest part (zombie stat audit as micro-example).
 - [2026-03-31](comments/2026-03-31-customer-truth-ceiling.md) — Practitioner's answer: ceiling = quality of evals grounded in customer truth. Three ceilings: products (customer), processes (operational metrics), strategy (human judgment).
 - [2026-03-31](comments/2026-03-31-meta-learning-gaps.md) — Four meta-learning gaps: problem-finding bias, no eval loop on own output, practitioner signals under-invested, no behavior-change measurement.
+- [2026-04-01](comments/2026-04-01-memory-levels-gap.md) — Agent memory: personal exists (Zep etc), team = CLAUDE.md hack, company = crickets. Two levels missing. Same personal→team→company stall as platforms.
 
 ## Resolved
 

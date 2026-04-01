@@ -163,9 +163,80 @@ Observed: workshops that bring functions together produce excellent results, but
 
 ---
 
+## Priority 4: From Practitioner Essays (Year One) — Added April 2026
+
+Six research directions surfaced from cross-referencing one year of practitioner essays (`strategy/practitioner-essays-year-one.md`) with current research findings. These represent gaps the practitioner lived through but the research system hasn't investigated externally.
+
+### 4.1 Habit and Taste as Code
+
+**Finding (Oct 3 essay):** "Habit and taste as code." CLAUDE.md captures rules and process. But habits (automatic behaviors) and taste (aesthetic/quality judgment) are different from rules. StrongDM's holdout scenarios encode taste (what "good" looks like). Compound engineering's CLAUDE.md encodes habits. Nobody has named this as a distinct challenge.
+
+**What to investigate:**
+- Who is encoding taste and habit into agent systems, not just rules?
+- What does "taste" look like in machine-checkable form? Is it eval criteria? Style guides? Examples?
+- How do you transfer a senior engineer's or domain expert's judgment into agent context?
+- Connection to Mollick's "knowing what good looks like" as the human skill that remains
+
+### 4.2 Knowledge as Code — Git for Organizational Knowledge
+
+**Finding (Sep 12 essay):** "We've recently started curating text files into version control so they can be shared just as code. Knowledge is becoming like code." Git provides versioning, branching, merging, review, diffing for free. But nobody applies software engineering rigor (PRs, reviews, CI/CD) to organizational knowledge artifacts.
+
+**What to investigate:**
+- Is anyone applying software engineering practices to organizational knowledge management? Not code — knowledge artifacts.
+- What would CI/CD for knowledge look like? Automated staleness checks? Contradiction detection across files?
+- Connection to company memory gap (personal exists, team = CLAUDE.md hack, company = crickets)
+- The ETH Zurich counter-evidence: extensive context files may hinder agents. When does more knowledge become noise?
+
+### 4.3 The Billion Lines Problem — AI-Generated Codebase Explosion
+
+**Finding (Mar 20 essay, Wardley):** Agents produce so much code that codebases become unmanageable by any human. 1000+ features confuse users. The absorption bottleneck applies to the CODEBASE ITSELF, not just the review queue.
+
+**What to investigate:**
+- Does anyone have a strategy for managing AI-generated codebase explosion?
+- Is disposable code (generate, use, discard, regenerate) the answer rather than maintaining everything?
+- StrongDM's zero-code repo (specs only, code regenerated) — is this the model?
+- What happens to technical debt when code is disposable?
+- Connection to Red Queen dynamics: competition forces ever-larger codebases
+
+### 4.4 Cross-Team Knowledge Sharing — What Actually Works?
+
+**Finding (Jun 6 → Dec 5 essays):** "Sharing is caring" strategy designed for cross-team innovation sharing. Six months later: "We failed to imagine how that knowledge sharing could really work." The gap between intention and execution.
+
+**What to investigate:**
+- Who has actually made cross-team AI knowledge sharing work at enterprise scale?
+- Varonis AI Guild is suspicious (cycle 77). Citi has adoption, not knowledge sharing. Is there a real case?
+- Does the Conditions Creator pattern (cycle 72) solve this? Or is cross-team sharing a different problem from within-team adoption?
+- Connection to internal open source (research direction 2.2) — agents dissolve barriers but who invests in the shared infrastructure?
+
+### 4.5 Information Products for AI — Knowledge as Product Management
+
+**Finding (Dec 19 essay):** Prediction that teams will create and publish "information products" — curated, governed, reusable knowledge assets for AI consumption. This is company memory articulated as a product management problem, not an infrastructure problem.
+
+**What to investigate:**
+- Is anyone doing "information product management" for AI/LLM consumption?
+- Data products exist (Databricks, dbt). Knowledge products for LLMs don't. Why?
+- What would a "knowledge product" look like? Owner, quality standards, consumers, SLAs, versioning?
+- Connection to ArcticRex/Unblocked (team context delivery) — are they information products without naming them?
+- Connection to MCP servers as information products (structured data access with governance)
+
+### 4.6 Human-Mediated vs. Autonomous Agent Learning
+
+**Finding (Dec 19 prediction + Mar 13 practice):** "Agents will learn to learn" was the prediction. The curated agent project structure (OODA loop on CLAUDE.md) is human-mediated agent learning — human runs the cycle, updates context. The prediction was about AUTONOMOUS agent learning.
+
+**What to investigate:**
+- Where is the line between human-mediated learning (CLAUDE.md, manually curated) and autonomous agent learning (agent updates own context based on outcomes)?
+- Who is crossing that line? Karpathy's autoresearch (autonomous experimentation within scalar-metric constraint)?
+- What are the failure modes of autonomous agent learning? (Stale patterns, compounding errors, loss of human oversight)
+- Connection to the unlearning problem: autonomous learning that accumulates wrong patterns faster than anyone can audit
+- The zombie stat audit (cycle 80) as micro-example: the research system "learned" a bad stat and propagated it. What prevents autonomous agents from doing the same at 1000x speed?
+
+---
+
 ## Enterprise Practitioner Observations
 
 See: [`observations/enterprise-agentic-transformation-case.md`](observations/enterprise-agentic-transformation-case.md) — detailed observations from a year-long enterprise agentic transformation, including 7 original findings.
+
+See also: [`strategy/practitioner-essays-year-one.md`](../strategy/practitioner-essays-year-one.md) — 20 essays tracking the evolution of thinking over one year, with cross-reference to research findings.
 
 ---
 

@@ -1,12 +1,12 @@
-# Practitioner Essays — Year One of Agentic Transformation
+# Year One: Leading an Agentic Transformation from the Inside
 
-Reflective essays written during one year of leading an enterprise agentic transformation (April 2025 - March 2026). Originally shared as part of a weekly internal AI newsletter to the engineering organisation, then broadened to the whole company.
+These are essays I wrote during one year of leading an enterprise agentic transformation. April 2025 to March 2026. Originally shared weekly in an internal AI newsletter to the engineering organisation, then broadened to the whole company.
 
-These essays track the evolution of thinking: from finding the right metaphor for AI, through discovering that competence precedes vision, to recognising that AI engineering IS software engineering, to understanding the Red Queen dynamics of agentic competition.
+I started not knowing much. I ended knowing more — but mostly knowing better questions. The essays track that evolution honestly: from finding the right metaphor for AI, through discovering that competence precedes vision, to recognising that AI engineering IS software engineering, to understanding the Red Queen dynamics of agentic competition.
 
-Written by a practitioner in the work, not an observer of it.
+I have not cleaned these up to sound smarter in hindsight. What you read is what I thought at the time.
 
-## The Intellectual Arc
+## The Arc
 
 Four phases emerge across the year:
 
@@ -16,36 +16,28 @@ Four phases emerge across the year:
 
 **Phase 3: Scaling Reality (Oct–Dec 2025)** — Hitting the walls. Dependencies, context windows, reliability, missing evals. Failing and succeeding simultaneously. The honest accounting. Coding agents as breakthrough category.
 
-**Phase 4: Compounding (Jan–Mar 2026)** — Context is learning. The curated agent project structure (OODA in practice). Red Queen dynamics. The system learns, not just the person.
+**Phase 4: Compounding (Jan–Mar 2026)** — Context is learning. The curated agent project structure. Red Queen dynamics. The system learns, not just the person.
 
-## Cross-Reference: Essays ↔ Research Findings
+## What Independent Research Later Confirmed
 
-These essays predate and independently validate findings that OODA cycles later "discovered" through external research. The practitioner saw it first — the research confirmed it.
+I wrote these essays as they came to me. Months later, a systematic research effort (80+ research cycles across industry publications, practitioner accounts, and academic studies) independently arrived at the same patterns. The table below maps the essays to the external evidence. The practitioner saw it first. The research confirmed it.
 
-| Essay | Date | Research Finding | Validated |
-|-------|------|-----------------|-----------|
-| AI Beyond Personal Tool | Apr 17 | Personal → team → company agent framework | Before research |
-| Outcomes of AI / What Then? | Apr 25, Jun 27 | Experience-first adoption (WOW → competence → sees future → acts) | 10 months before cycle 78 |
-| Cycle Time, Speed, Quality | Jun 13, Aug 29 | Absorption bottleneck / Little's Law / decision speed | 9 months before cycle 76 |
-| What's After "Try AI"? | Jun 27 | Competence-first thesis: "aha moment" requires action, not vision | The origin observation |
-| Strategizing for the Change | Jun 6 | Conditions Creator pattern ("sharing is caring" + peer cascade) | 9 months before cycle 72 |
-| AI Engineering IS Software Engineering | Aug 22 | Verification infrastructure as universal gate | 7 months before L4 meta-pattern |
-| Knowledge Management | Sep 12 | Engineering for broad learning / company memory gap | 6 months before session insight |
-| Discipline, Habits, Context | Oct 3 | Spec-driven leadership / "habit and taste as code" | 5 months before cycle 74 |
-| Future of Dependencies | Nov 7 | Internal open source / cross-team agents dissolve barriers | Directly cited in research directions |
-| State of Agents | Dec 12 | Verification gap: "We don't have pretty much any evals" | Honest gap assessment |
-| Predictions 2026 | Dec 19 | Team agents, coding agents as meta-platform, agent learning | Multiple predictions confirmed by Mar 2026 |
-| Context is KING | Mar 6 | Engineering for broad learning: "context is how your agent learns" | The thesis stated directly |
-| Curated Agent Project | Mar 13 | OODA methodology applied to agent creation | The operational playbook |
-| The Red Queen | Mar 20 | Competitive compounding dynamics | The strategic frame |
-
-## Newsletter Value
-
-These essays are the raw material for 3-4 newsletter editions:
-- **"Year One: What I Got Right and Wrong"** — the honest retrospective, failures included
-- **"From Personal Tool to Organizational Weapon"** — the Phase 1→4 progression
-- **"Context Is Learning"** — the Mar 6 essay expanded with research evidence
-- **"The Red Queen Is Real"** — competitive dynamics with Goldratt/Little's Law framing
+| Essay | Date | What Independent Research Found |
+|-------|------|-------------------------------|
+| AI Beyond Personal Tool | Apr 17 | The personal → team → company progression is the dominant framework across all agent platforms |
+| Outcomes of AI / What Then? | Apr 25, Jun 27 | Experience-first adoption: WOW → competence → sees future → acts. 7 independent sources converged on this reversed sequence (Mollick/Wharton, Microsoft/HBR, BCG, McKinsey, Coursera, Workera, Infosys/MIT) |
+| Strategizing for the Change | Jun 6 | The Conditions Creator pattern: set up tools + peer networks + safety, then step back. Validated at Citi (4,000 champions, 182K employees), PwC Netherlands (300→6,000 in one year), Varonis (AI Guild) |
+| Cycle Time, Speed, Quality | Jun 13, Aug 29 | The Absorption Bottleneck: AI accelerates generation but review capacity is fixed. Faros AI (10K devs): 91% review time increase. DX (135K devs): time savings plateau then go net negative. Confirmed across 7 domains — engineering, healthcare, legal, academic review, marketing, customer service, compliance |
+| What's After "Try AI"? | Jun 27 | Competence-first is the only sequence with evidence: competence → discovery → context → platform. Skip to platform and you're choosing between vendor stories |
+| AI Engineering IS Software Engineering | Aug 22 | Verification infrastructure is the universal gate for AI-nativeness. Three levels: human review → rule-based checks → agent evaluates agent. You can't skip levels |
+| Knowledge Management | Sep 12 | The company memory gap: personal memory exists (competitive market), team memory barely exists (CLAUDE.md is the hack), company memory is crickets |
+| Discipline, Habits, Context | Oct 3 | Spec-driven leadership reached convergence across 6+ independent signals (Karpathy, StrongDM, Spotify, Mollick, Osmani, 30+ frameworks). The spec is the management artifact |
+| Future of Dependencies | Nov 7 | AI dissolves cross-team barriers because transaction cost of understanding other codebases approaches zero. The internal open source moment |
+| State of Agents | Dec 12 | "We don't have pretty much any evals" — this verification gap is industry-wide and the primary reason non-engineering domains can't go AI-native |
+| Predictions 2026 | Dec 19 | Team agents, coding agents as meta-platform, agent learning — all confirmed by March 2026 evidence |
+| Context is KING | Mar 6 | "Context is how your agent learns." The engineering contract must shift from build-for-stability to build-for-learning. Organizational learning rate is the real ceiling |
+| Curated Agent Project | Mar 13 | The OODA-based agent creation methodology — observe, orient, decide, act — is the operational playbook that scales |
+| The Red Queen | Mar 20 | Competitive compounding is real. Combined with Goldratt's Theory of Constraints and Little's Law: AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched |
 
 ---
 
@@ -919,4 +911,24 @@ Why I'm writing this... as always... keep learning new skills and ways. Try unde
 Over and out for this week.
 
 ---
+
+## What I Know Now That I Didn't Know Then
+
+A year in. Some things I got right. Some I got wrong. Here's what stuck.
+
+**Competence precedes vision.** I spent April agonising over the right analogy for AI. By June I realised people don't need analogies — they need the "aha" moment. Once someone builds something real with an agent, the vision forms itself. No slide deck does what 2 hours of hands-on experience does. The sequence is: experience first, vision second. Always.
+
+**AI engineering is software engineering.** I hoped AI would be different. It isn't. Quality, testing, architecture, dependencies, cycle time — all the same problems, amplified. The teams that had good engineering discipline before AI got better. The teams that didn't got faster at producing mess. AI is an amplifier, not a transformer.
+
+**Sharing is harder than building.** We built good things. We failed to share them well. Cross-team knowledge transfer remains the unsolved problem. Agents can dissolve the technical barriers. The social and organisational barriers are still there.
+
+**Context is everything.** More context makes AI better. But context must be curated, maintained, and governed — like code, not like a wiki. "Knowledge as code" is the frame I use now. Version it, review it, test it, share it.
+
+**The Red Queen is already running.** Competition doesn't wait. Every month we don't compound, someone else does. This isn't a project with a deadline. It's a permanent race where learning speed is the only durable advantage.
+
+**I still make mistakes.** More than I'd like. The difference is I make them faster now, and I learn from them sooner. That's the whole point.
+
+---
+
+*These essays were written from inside the work, not from above it. If they help you think about your own transformation, that's the best outcome I could hope for.*
 

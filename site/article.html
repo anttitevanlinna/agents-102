@@ -24,6 +24,7 @@
         </div>
     </nav>
 
+    <div class="wp-particles" id="wp-particles" style="display:none"></div>
     <div class="read-progress" id="read-progress"></div>
 
     <article class="article-container" id="article-standard">
@@ -131,6 +132,20 @@
                     if (isLongform) {
                         // ── Activate light theme for longform ──
                         document.body.classList.add('light-article');
+
+                        // ── Initialize particles (if script loaded) ──
+                        var wpContainer = document.getElementById('wp-particles');
+                        if (wpContainer && typeof WhitepaperParticles !== 'undefined') {
+                            wpContainer.style.display = '';
+                            // Defer init until phase h1s are in the DOM
+                            setTimeout(function() {
+                                var phaseH1sForParticles = container.querySelectorAll('.article-body h1');
+                                new WhitepaperParticles('wp-particles', {
+                                    particleCount: 80,
+                                    phaseElements: phaseH1sForParticles
+                                });
+                            }, 100);
+                        }
 
                         // Switch to longform layout with TOC sidebar
                         document.getElementById('article-standard').style.display = 'none';
@@ -307,5 +322,6 @@
                 });
         })();
     </script>
+    <script src="whitepaper-particles.js"></script>
 </body>
 </html>

@@ -2,30 +2,47 @@
 type: state
 domain: platform
 evidence_level: 2
-platforms: [anthropic, claude-code, claude-cowork]
+platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-03-24
-cycle: 69
+updated: 2026-04-02
+cycle: 70
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
   - "how does Anthropic's three-layer play compare?"
+  - "is Anthropic building a general-purpose agent platform?"
+  - "what is the IPO timeline and what does it mean?"
 ---
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-03-24 (cycle 69)
-OODA cycles: 7
+Last updated: 2026-04-02 (cycle 70)
+OODA cycles: 8
 
 ## Focus
 
 Anthropic's ecosystem for **business users**. Initially developer-heavy, but Cowork + plugins signal a real business user surface is emerging.
 
-## Key Verdict (as of 2026-03-21)
+## Key Verdict (as of 2026-04-02)
 
-**Three-layer platform play, not just "Intel Inside."** Anthropic is simultaneously: (1) setting open standards that competitors adopt (MCP + Agent Skills), (2) powering partner platforms (Microsoft Copilot Cowork), and (3) building its own business surface (Claude Cowork + plugins + marketplace). Most ambitious dual-channel strategy of any vendor. But infrastructure fragility, no managed hosting, and zero enterprise deployment evidence are real gaps.
+**Six-vector general-purpose agent platform, not just a coding tool.** Anthropic is building across: (1) Cowork (business user surface), (2) Agent SDK (developer harness), (3) Antspace (hosting/runtime, not yet public), (4) MCP + Agent Skills (open standards, 97M installs), (5) Computer Use + Dispatch (desktop automation + mobile), (6) Partner Network ($100M, Accenture/Deloitte/PwC). The IPO target (Q4 2026, $60B) creates urgency to demonstrate platform revenue. Anthropic captures 73% of new enterprise AI spend (Ramp, March 2026). Revenue doubled from $9B to $19B annualized in ~3 months. **But:** infrastructure fragility (109 incidents/90 days), two major security leaks in one week (Mythos + source code), and zero independent enterprise Cowork deployment evidence remain critical gaps. The platform thesis is real — the enterprise proof is not.
 
-## The Three-Layer Platform Strategy
+## The Six-Vector Platform Strategy (updated cycle 70)
+
+**Previous framing:** Three-layer play (standards + engine + business surface). **Updated framing:** Six reinforcing vectors that collectively form a general-purpose agent platform.
+
+```
+Vector 1: COWORK — business user surface (plugins, marketplace, scheduled tasks, Dispatch)
+Vector 2: AGENT SDK — developer harness (Python/TypeScript, general-purpose, not just coding)
+Vector 3: ANTSPACE — hosting/runtime (not yet public; BYOC, Firecracker, Supabase)
+Vector 4: MCP + AGENT SKILLS — open standards (97M installs, industry-wide adoption)
+Vector 5: COMPUTER USE + DISPATCH — desktop automation + mobile (human-level OSWorld, any app)
+Vector 6: PARTNER NETWORK — enterprise distribution ($100M, SI partners, certifications)
+```
+
+**How they reinforce:** Cowork uses Agent SDK harness. Cowork connects via MCP. Cowork loads Skills. Cowork controls legacy via Computer Use. Dispatch commands Cowork from phone. Antspace hosts what Cowork/Code builds. Partner Network distributes it all. Copilot Cowork distributes through Microsoft M365. One investment, every surface.
+
+## The Three-Layer Platform Strategy (original framing, still valid)
 
 ### Layer 1: Open Standards as Infrastructure
 **MCP** — 6,400+ servers, 97M monthly SDK downloads, Linux Foundation. Adopted by OpenAI, Google, Microsoft. ([Roadmap](https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/), Mar 2026)
@@ -57,6 +74,55 @@ Anthropic's ecosystem for **business users**. Initially developer-heavy, but Cow
 **Cycle 69 updates (March 24, 14:00):**
 - **Computer Use day 2:** CNBC mainstream coverage ([CNBC](https://www.cnbc.com/2026/03/24/anthropic-claude-ai-agent-use-computer-finish-tasks.html)). WorkOS comparison: Claude operates on user's real desktop (macOS) vs OpenAI's sandboxed virtual computer — fundamental architectural difference for business system access ([WorkOS](https://workos.com/blog/anthropics-computer-use-versus-openais-computer-using-agent-cua)). **Vercept acquisition ($50M, Feb 25)** explains technical lineage — purpose-built CV team (Girshick). UiPath stock fell 3.6% — market reads as RPA killer ([TechCrunch](https://techcrunch.com/2026/02/25/anthropic-acquires-vercept-ai-startup-agents-computer-use-founders-investors/)). **Safety: Opus 4.6 risk report** flags "elevated susceptibility to harmful misuse" in computer use settings. Claude Code weaponized in Mexican gov't cyberattack (150GB stolen) ([SecurityWeek](https://www.securityweek.com/hackers-weaponize-claude-code-in-mexican-government-cyberattack/)). Zero practitioner reviews yet. Re-run in 7 days.
 
+**Cycle 70 updates (April 2, 2026) — Platform Deep Dive:**
+
+**IPO and financial trajectory:**
+- IPO as soon as Q4 2026, targeting $60B+ raise. Current valuation $380B (Feb 2026 round). ([The Information via Investing.com](https://www.investing.com/news/stock-market-news/anthropic-considers-ipo-as-soon-as-q4-2026-the-information-4584016), Mar 27, 2026)
+- Revenue: $19B annualized by March 2026, up from $9B at year-end 2025. Revenue doubled in ~2 months. ([Let's Data Science](https://letsdatascience.com/blog/anthropic-revenue-doubled-60-billion-ipo-october-2026))
+- Claude Code alone: $2.5B annualized by Feb 2026, doubling since Jan 1.
+- 80% enterprise revenue mix. 8 of Fortune 10 are customers. 500+ spending $1M+/year.
+- Capital efficiency: $0.23 ARR per dollar raised vs OpenAI $0.11. Gross margins trending toward ~40%.
+
+**Ramp data — hard enterprise adoption numbers (Level 3):**
+- Anthropic captured **73% of new enterprise AI spend** in past 10 weeks (was 50/50 with OpenAI). ([Ramp AI Index March 2026](https://ramp.com/velocity/ai-index-march-2026))
+- 24.4% of Ramp businesses now pay for Claude (up from ~4% a year ago).
+- 4.9% month-over-month adoption growth — largest monthly gain ever tracked.
+- 55% of orgs with a gen AI vendor use Anthropic (up 32pp YoY).
+- New businesses choosing AI first time: ~70% choose Anthropic.
+- Source: [Ramp](https://ramp.com/velocity/ai-index-march-2026) [practitioner data — actual spend, not survey]
+
+**Cowork "bigger than Code" signal:**
+- Bloomberg (Apr 1): CCO Paul Smith says Cowork adoption in "first few weeks" exceeds Claude Code's comparable period. Engineering = 2-5% of staff; Cowork targets the other 95-98%. ([Bloomberg](https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-sees-cowork-agent-as-bigger-than-claude-code)) [general press — executive quote, treat as vendor claim until independently verified]
+
+**Agent SDK renamed from "Claude Code SDK":**
+- Now "Claude Agent SDK" — described as "a powerful, general-purpose agent harness adept at coding, as well as other tasks." Anthropic engineering blog confirms internal use for deep research, video creation, note-taking — "almost all of their major agent loops." ([Anthropic engineering](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents))
+
+**Claude Mythos leak (Mar 26):**
+- Next-gen model above Opus tier. "Step change" in capabilities. "Dramatically higher" than Opus 4.6 on coding, reasoning, cybersecurity. "Currently far ahead of any other AI model in cyber capabilities." Available only to select clients for cybersecurity defense. Not publicly released. Discovered via misconfigured data store. ([Fortune](https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/); [CoinDesk](https://www.coindesk.com/markets/2026/03/27/anthropic-s-massive-claude-mythos-leak-reveals-a-new-ai-model-that-could-be-a-cybersecurity-nightmare/))
+
+**Claude Code source code leak (Mar 31):**
+- 500K lines, 1,900 files accidentally included in NPM package. "Process error" due to fast release cycle. Became fastest-growing GitHub repo before DMCA takedowns. Overbroad DMCA hit thousands of unrelated repos, later scaled back. Competitors can now reverse-engineer the agent harness. ([Bloomberg](https://www.bloomberg.com/news/articles/2026-04-01/anthropic-accidentally-releases-source-code-for-claude-ai-agent); [BleepingComputer](https://www.bleepingcomputer.com/news/artificial-intelligence/claude-code-source-code-accidentally-leaked-in-npm-package/); [Fortune](https://fortune.com/2026/03/31/anthropic-source-code-claude-code-data-leak-second-security-lapse-days-after-accidentally-revealing-mythos/))
+
+**Two leaks in one week = operational risk signal.** Mythos + source code leaks in 5 days. Both operational process failures, not external attacks. For an IPO-bound company branding on safety, this is a credibility risk.
+
+**Pentagon conflict update:**
+- Federal judge blocked Pentagon's supply chain risk designation. "Nothing in the governing statute supports the Orwellian notion that an American company may be branded a potential adversary for expressing disagreement with the government." Both sides appealing. Conflict ongoing. ([CNN](https://www.cnn.com/2026/03/26/business/anthropic-pentagon-injunction-supply-chain-risk))
+
+**$50B infrastructure investment:**
+- American AI infrastructure (data centers with Fluidstack in TX and NY). First sites live 2026. This isn't just training — at this scale, it must include inference and hosting infrastructure (Antspace?). ([Anthropic](https://www.anthropic.com/news/anthropic-invests-50-billion-in-american-ai-infrastructure))
+
+**Dispatch shipped (Mar 17):**
+- Assign tasks from iPhone, Claude executes on Mac desktop. Persistent cross-device conversation thread. QR code pairing. Max initially, then Pro. ([CNBC](https://www.cnbc.com/2026/03/24/anthropic-claude-ai-agent-use-computer-finish-tasks.html))
+
+**Computer Use benchmark update:**
+- 72.5% on OSWorld vs human experts 72.4% = human-level performance on general computer use tasks. ([MacRumors](https://www.macrumors.com/2026/03/24/claude-use-mac-remotely-iphone/))
+
+**MCP at 97M installs:**
+- 4,750% growth in 16 months (from ~2M at Nov 2024 launch). OpenAI, Google DeepMind, Cohere, Mistral all ship MCP-compatible tooling. ([Artur Markus AI Unfiltered](https://www.arturmarkus.com/anthropics-model-context-protocol-hits-97-million-installs-on-march-25-mcp-transitions-from-experimental-to-foundation-layer-for-agentic-ai/))
+
+**Ben Thompson / Stratechery analysis:**
+- Anthropic enterprise business "reaching escape velocity." Got it right by focusing almost entirely on enterprise market. But notes AI models are commoditizing "faster than anyone predicted." Government conflict increases importance of finding compromise. ([Stratechery](https://stratechery.com/2026/anthropic-and-alignment/); [Stratechery](https://stratechery.com/2026/anthropics-skyrocketing-revenue-a-contract-compromise-nvidia-earnings/))
+
 **Certifications** — "Claude Certified Architect" launched Mar 12. AWS/Kubernetes playbook. ([IntuitionLabs](https://intuitionlabs.ai/articles/claude-enterprise-deployment-training-guide-2026), 2026)
 **$100M Partner Network** — Accenture (30K), Deloitte (350K), PwC, Infosys. ([Anthropic](https://www.anthropic.com/news/claude-partner-network), 2026)
 
@@ -82,11 +148,11 @@ Claude model + same agentic harness as Claude Cowork, running in M365 tenants. P
 
 | Level | Anthropic product | Maturity | Evidence |
 |-------|------------------|----------|----------|
-| Personal | Claude Cowork + plugins | Shipping (Jan 2026) | Business user surface exists. Plugin ecosystem growing. No independent deployment reports. |
-| Personal (via Microsoft) | Copilot Cowork | Research Preview (Mar 2026) | Claude in M365. No user reports yet. |
-| Team | Claude Team/Enterprise + private plugin marketplaces | Shipping/Announced | Plugin sharing via private marketplaces. No evidence of team agent workflows. |
-| Company | Agent SDK + enterprise plug-ins + B2B marketplace | Emerging | Self-host only. No managed hosting. Certifications launched. |
-| Promotion path | Plugin → marketplace → ? | Emerging | Plugin architecture could enable promotion (personal plugin → team marketplace → company standard). Not documented as designed workflow. |
+| Personal | Claude Cowork + plugins + Computer Use + Dispatch + scheduled tasks | Shipping (Jan-Mar 2026) | Full desktop agent: plugins, MCP connectors, Computer Use (human-level OSWorld), mobile Dispatch, recurring tasks. No independent deployment reports of business outcomes. |
+| Personal (via Microsoft) | Copilot Cowork | Research Preview (Mar 2026) | Claude in M365 E7 ($99/user/mo). No user reports yet. |
+| Team | Claude Team/Enterprise + private plugin marketplaces | Shipping/Announced | Plugin sharing via private marketplaces. Self-serve Enterprise plans now available. No evidence of team agent workflows. |
+| Company | Agent SDK + enterprise plug-ins + B2B marketplace + BYOC (Antspace) | Emerging | Agent SDK is general-purpose (renamed from Code SDK). BYOC in binary but not public. Certifications launched. $100M Partner Network. |
+| Promotion path | Plugin → marketplace → SDK deployment | Emerging | Plugin architecture enables promotion (personal plugin → team marketplace → company standard → SDK-built custom agent). Not documented as designed workflow but architecture supports it. |
 
 ## Risks and Weaknesses
 
@@ -206,7 +272,13 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 - [~] **Antspace** — when does it move from staging to production? Public announcement? **Partial: BYOC details confirmed (Kubernetes, 7-endpoint API, resume-cached sessions). Still staging. No public announcement. 35th consecutive silence (cycle 68).**
 - [x] Antspace + Supabase integration — how deep is the database layer? **Answer: Deep. 6 MCP tools auto-provisioned. On-demand DB creation, migrations, type generation, Edge Functions. Full backend-as-a-service.**
 - [ ] Computer Use practitioner feedback — launched March 23, zero reviews yet (1 day old). Monitor for first independent reports.
-- [~] Political risk resolution — Pentagon hearing March 24. Filings suggest "very close" to resolution, but outcome pending.
+- [x] Political risk resolution — Judge blocked Pentagon's supply chain risk designation (Mar 26). Both sides appealing. Conflict ongoing but Anthropic has legal protection for now.
+- [ ] IPO impact on platform strategy — does Q4 2026 IPO timeline accelerate Antspace launch or enterprise Cowork push?
+- [ ] Claude Mythos release timeline — when does the next-gen model ship publicly? What does it mean for agent capabilities?
+- [ ] Claude Code source leak consequences — do competitors use the leaked harness architecture? Does it accelerate open-source alternatives?
+- [ ] Cowork enterprise revenue — Bloomberg says faster adoption than Code. Need independent verification, not just executive claims.
+- [ ] Dispatch + Computer Use combined workflows — any practitioner reports of the full phone→desktop→legacy-system pipeline?
+- [ ] Channel conflict with Microsoft — does Copilot Cowork compete with or complement Claude's own Cowork? Any signals of tension?
 
 ## Sources
 
@@ -215,3 +287,4 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-trajectory.md` — Platform trajectory deep dive
 - `runs/2026-03-21-cycle15.md` — Infrastructure fragility (Level 3), MCP gateways, plugin adoption, marketplace, Agent Teams
 - `../cross-platform/runs/2026-03-21-cycle24.md` — SRE QCon London talk (Palcuie), 5+ March incidents, 99.34% API uptime, correlation/causation weakness
+- `runs/2026-04-02-anthropic-platform-deep-dive.md` — Full platform deep dive: IPO ($60B Q4 2026), Ramp data (73% new spend), Mythos leak, source code leak, Dispatch, Agent SDK rename, revenue trajectory ($19B ARR), enterprise adoption, competitive picture

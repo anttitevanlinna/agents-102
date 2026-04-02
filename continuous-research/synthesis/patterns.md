@@ -7,7 +7,7 @@ answers: ["cross-platform patterns", "what research established", "evidence patt
 
 # Cross-Platform Patterns (March 2026)
 
-47 patterns established across 65+ OODA cycles. Organized by evidence level.
+48 patterns established across 65+ OODA cycles. Organized by evidence level.
 
 ## Level 4: Cross-Domain Meta-Patterns
 
@@ -106,5 +106,7 @@ answers: ["cross-platform patterns", "what research established", "evidence patt
 **Pattern 42: EU AI Act has no agent-specific guidance 15 months in.** Static conformity model fails for runtime tool selection. Singapore filled the vacuum. Commission admits considerations "only preliminary."
 
 **Pattern 46: Vendor-driven vs practitioner-driven domains.** Explains why HR/compliance/operations are research dark spots. Vendor platforms deliver capability; practitioners are buyers, not builders -- and buyers don't publish.
+
+**Pattern 48: Coding agents pivoting to general-purpose business platforms.** Both Anthropic (SDK rename, Cowork scheduled tasks, Intuit partnership, Agent Skills) and OpenAI (Codex Plugins, Triggers, Sottiaux "very little specific to coding") are explicitly executing beyond coding. 10+ independent practitioners using coding agents for non-coding work (Rachitsky, Lieberman, Shipper). Thesis is directionally correct — architecture IS general-purpose — but enterprise-scale business process automation is unproven. Counter-evidence: compound error math, NBER productivity paradox (89% zero impact), Project Vend failures, coding-domain structural advantages absent in business processes. See `../findings/by-pattern/coding-agent-as-general-platform.md`.
 
 See `../platform-watch/synthesis.md` for full pattern descriptions with source URLs.

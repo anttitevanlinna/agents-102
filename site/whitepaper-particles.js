@@ -25,8 +25,14 @@ class WhitepaperParticles {
         this.particleCount = options.particleCount || 120;
         this.phaseElements = options.phaseElements ? Array.from(options.phaseElements) : [];
 
-        // Phase config: shapes (colors handled by CSS via phase class on h1)
-        this.phaseShapes = ['squiggleLeft', 'squiggleFull', 'squiggleMirrored', 'arrow'];
+        // Phase config: shapes and callout text
+        this.phaseShapes = ['squiggleLeft', 'squiggleFull', 'squiggleMirrored', 'squiggleFull'];
+        this.phaseCallouts = [
+            'navigate your complexity',
+            'connect the patterns',
+            'push through the walls',
+            'a little scales to a lot'
+        ];
 
         this.banners = []; // { el, container, particles, morphed }
 
@@ -62,7 +68,13 @@ class WhitepaperParticles {
                 particles.push(el);
             }
 
-            const banner = { el: h1, container, particles, morphed: false };
+            // Create callout text overlay
+            const callout = document.createElement('div');
+            callout.className = 'wp-phase-callout';
+            callout.textContent = this.phaseCallouts[index] || '';
+            container.appendChild(callout);
+
+            const banner = { el: h1, container, particles, callout, morphed: false };
             this.banners.push(banner);
 
             // Scatter particles instantly (no transition)
@@ -139,6 +151,13 @@ class WhitepaperParticles {
             el.style.left = (pos.x * w) + 'px';
             el.style.top = (pos.y * h) + 'px';
         });
+
+        // Fade in callout text after particles start morphing
+        if (banner.callout) {
+            setTimeout(() => {
+                banner.callout.classList.add('visible');
+            }, 400);
+        }
     }
 
     // ------------------------------------------------------------------

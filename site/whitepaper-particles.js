@@ -1,9 +1,10 @@
 /**
- * WhitepaperParticles — Interstitial particle interludes at phase transitions.
+ * WhitepaperParticles — Particles that live inside phase banner elements.
  *
- * At each phase boundary (h1), a full-viewport dark overlay fades in with
- * particles morphing into the phase's shape and a callout text. The interlude
- * auto-dismisses after 4 seconds or on scroll. Each phase plays once.
+ * Each phase h1 banner gets its own particle container. Particles scatter
+ * randomly on load, then morph into the phase's shape when the banner
+ * scrolls into view. No overlay, no dark background, no dismiss logic.
+ * Particles are subtle decoration within the natural visual breaks.
  *
  * Shapes:
  *   Phase 1: Squiggle left half (orientation, searching)
@@ -11,73 +12,74 @@
  *   Phase 3: Mirrored squiggle (tension reversed)
  *   Phase 4: Arrow (direction found, compounding)
  *
- * Adapted from design-particles/scan-agile-animation.js (squiggle coordinates)
- * and agents-102/site/animation.js (arrow generation). Self-contained — no imports.
+ * Coordinates traced from the Design Squiggle by Damien Newman.
  */
 
 class WhitepaperParticles {
     /**
-     * @param {string} containerId - ID of the container element
      * @param {Object} options
-     * @param {number} [options.particleCount=200] - Number of particle divs
      * @param {NodeList|Array} options.phaseElements - h1 elements marking phase boundaries
-     * @param {string[]} options.callouts - Text for each phase interlude
+     * @param {number} [options.particleCount=120] - Number of particles per banner
      */
-    constructor(containerId, options = {}) {
-        this.container = document.getElementById(containerId);
-        if (!this.container) {
-            console.warn(`WhitepaperParticles: container '${containerId}' not found`);
-            return;
-        }
-
-        this.particleCount = options.particleCount || 200;
+    constructor(options = {}) {
+        this.particleCount = options.particleCount || 120;
         this.phaseElements = options.phaseElements ? Array.from(options.phaseElements) : [];
-        this.callouts = options.callouts || [];
-        this.particles = [];
-        this.shownPhases = new Set(); // Track which interludes have played
-        this.active = false;
-        this.dismissTimer = null;
 
-        // Phase config: shapes
+        // Phase config: shapes (colors handled by CSS via phase class on h1)
         this.phaseShapes = ['squiggleLeft', 'squiggleFull', 'squiggleMirrored', 'arrow'];
-        // Phase accent colors for overlay text
-        this.phaseTextColors = ['#5b9bd5', '#e0a458', '#d94f4f', '#ff6b35'];
 
-        // Create overlay text element
-        this.textEl = document.createElement('div');
-        this.textEl.className = 'wp-overlay-text';
-        this.container.appendChild(this.textEl);
+        this.banners = []; // { el, container, particles, morphed }
 
-        this.createParticles();
-        this.scatterParticlesInstantly();
+        this.setupBanners();
         this.setupScrollObserver();
     }
 
     // ------------------------------------------------------------------
-    // PARTICLE CREATION
+    // BANNER SETUP
     // ------------------------------------------------------------------
 
-    createParticles() {
-        for (let i = 0; i < this.particleCount; i++) {
-            const el = document.createElement('div');
-            el.className = 'particle';
-            if (i % 10 === 0) el.classList.add('glow');
-            this.container.appendChild(el);
-            this.particles.push(el);
-        }
+    setupBanners() {
+        this.phaseElements.forEach((h1, index) => {
+            // The h1 needs position: relative + z-index to create a stacking context
+            // so that z-index: -1 on particle container puts particles behind text
+            // but still within the h1's visual bounds (above its background).
+            h1.style.position = 'relative';
+            h1.style.zIndex = '0';
+            h1.style.overflow = 'hidden';
+
+            // Create particle container inside the h1
+            const container = document.createElement('div');
+            container.className = 'wp-phase-particles';
+            h1.appendChild(container);
+
+            // Create particles
+            const particles = [];
+            for (let i = 0; i < this.particleCount; i++) {
+                const el = document.createElement('div');
+                el.className = 'particle';
+                if (i % 10 === 0) el.classList.add('glow');
+                container.appendChild(el);
+                particles.push(el);
+            }
+
+            const banner = { el: h1, container, particles, morphed: false };
+            this.banners.push(banner);
+
+            // Scatter particles instantly (no transition)
+            this.scatterBanner(banner);
+        });
     }
 
-    /** Place particles in scattered positions with no transition (initial state). */
-    scatterParticlesInstantly() {
+    /** Place particles in scattered positions with no transition. */
+    scatterBanner(banner) {
         const positions = this.getScatteredPositions();
-        const rect = this.container.getBoundingClientRect();
-        const w = rect.width || window.innerWidth;
-        const h = rect.height || window.innerHeight;
+        const rect = banner.container.getBoundingClientRect();
+        const w = rect.width || banner.el.offsetWidth || 800;
+        const h = rect.height || banner.el.offsetHeight || 120;
 
-        this.particles.forEach((el, i) => {
+        banner.particles.forEach((el, i) => {
             const pos = positions[i % positions.length];
             el.style.transition = 'none';
-            el.style.transitionDelay = '0ms';
             el.style.left = (pos.x * w) + 'px';
             el.style.top = (pos.y * h) + 'px';
         });
@@ -85,9 +87,8 @@ class WhitepaperParticles {
         // Re-enable transitions after layout
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                this.particles.forEach(el => {
+                banner.particles.forEach(el => {
                     el.style.transition = '';
-                    el.style.transitionDelay = '';
                 });
             });
         });
@@ -98,131 +99,45 @@ class WhitepaperParticles {
     // ------------------------------------------------------------------
 
     setupScrollObserver() {
-        if (this.phaseElements.length === 0) return;
+        if (this.banners.length === 0) return;
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
 
-                const index = this.phaseElements.indexOf(entry.target);
-                if (index === -1) return;
+                const banner = this.banners.find(b => b.el === entry.target);
+                if (!banner || banner.morphed) return;
 
-                this.triggerInterlude(index);
+                banner.morphed = true;
+                const index = this.banners.indexOf(banner);
+                this.morphBanner(banner, index);
             });
         }, {
-            // Trigger when the h1 enters the middle of the viewport
-            rootMargin: '-30% 0px -30% 0px',
+            rootMargin: '-20% 0px -20% 0px',
             threshold: 0
         });
 
-        this.phaseElements.forEach(el => observer.observe(el));
-
-        // Dismiss on scroll while active
-        this._scrollDismissHandler = () => {
-            if (this.active) {
-                this.dismissInterlude();
-            }
-        };
-    }
-
-    // ------------------------------------------------------------------
-    // INTERLUDE TRIGGER
-    // ------------------------------------------------------------------
-
-    triggerInterlude(phaseIndex) {
-        // Each phase plays once
-        if (this.shownPhases.has(phaseIndex)) return;
-        // Don't stack interludes
-        if (this.active) return;
-
-        this.shownPhases.add(phaseIndex);
-        this.active = true;
-
-        // Set text (with phase accent color)
-        const callout = this.callouts[phaseIndex] || '';
-        this.textEl.textContent = callout;
-        this.textEl.style.color = '';
-        this.textEl.classList.remove('visible');
-
-        // Morph particles to the phase shape
-        const shapeName = this.phaseShapes[phaseIndex];
-        const positions = this.getPositionsForShape(shapeName);
-        this.morphToPositions(positions);
-
-        // Show overlay
-        this.container.classList.add('active');
-
-        // Fade in text after 500ms
-        setTimeout(() => {
-            if (this.active) {
-                this.textEl.style.color = this.phaseTextColors[phaseIndex] || 'rgba(255,255,255,0.8)';
-                this.textEl.classList.add('visible');
-            }
-        }, 500);
-
-        // Listen for scroll to dismiss
-        window.addEventListener('scroll', this._scrollDismissHandler, { once: true, passive: true });
-
-        // Auto-dismiss after 4 seconds
-        this.dismissTimer = setTimeout(() => {
-            this.dismissInterlude();
-        }, 4000);
-    }
-
-    dismissInterlude() {
-        if (!this.active) return;
-        this.active = false;
-
-        // Clear the auto-dismiss timer if scroll dismissed first
-        if (this.dismissTimer) {
-            clearTimeout(this.dismissTimer);
-            this.dismissTimer = null;
-        }
-
-        // Fade out text first
-        this.textEl.classList.remove('visible');
-
-        // Fade out overlay after text fades (500ms)
-        setTimeout(() => {
-            this.container.classList.remove('active');
-            // Re-scatter particles while hidden for next interlude
-            setTimeout(() => {
-                this.scatterParticlesInstantly();
-            }, 900); // After the 0.8s overlay fade-out
-        }, 500);
-
-        // Remove scroll listener if it didn't fire
-        window.removeEventListener('scroll', this._scrollDismissHandler);
-    }
-
-    /** Reset: allow all interludes to play again. */
-    reset() {
-        this.shownPhases.clear();
-        this.dismissInterlude();
+        this.banners.forEach(b => observer.observe(b.el));
     }
 
     // ------------------------------------------------------------------
     // MORPH ENGINE
     // ------------------------------------------------------------------
 
-    /**
-     * Move each particle to a target position with staggered delay.
-     * Positions are normalized 0-1; scaled by container dimensions at runtime.
-     */
-    morphToPositions(positions) {
-        const rect = this.container.getBoundingClientRect();
-        const w = rect.width || window.innerWidth;
-        const h = rect.height || window.innerHeight;
-        const staggerMs = 8; // 8ms per particle = 1.6s cascade for 200 particles
+    morphBanner(banner, phaseIndex) {
+        const shapeName = this.phaseShapes[phaseIndex] || 'squiggleFull';
+        const positions = this.getPositionsForShape(shapeName);
 
-        this.particles.forEach((el, i) => {
+        const rect = banner.container.getBoundingClientRect();
+        const w = rect.width || banner.el.offsetWidth || 800;
+        const h = rect.height || banner.el.offsetHeight || 120;
+        const staggerMs = 6; // 6ms per particle = ~0.7s cascade for 120 particles
+
+        banner.particles.forEach((el, i) => {
             const pos = positions[i % positions.length];
-            const px = pos.x * w;
-            const py = pos.y * h;
-
             el.style.transitionDelay = (i * staggerMs) + 'ms';
-            el.style.left = px + 'px';
-            el.style.top = py + 'px';
+            el.style.left = (pos.x * w) + 'px';
+            el.style.top = (pos.y * h) + 'px';
         });
     }
 
@@ -250,7 +165,6 @@ class WhitepaperParticles {
         if (allPoints.length === need) return allPoints;
 
         if (allPoints.length > need) {
-            // Evenly sample from the full set
             const positions = [];
             for (let i = 0; i < need; i++) {
                 const idx = Math.floor(i * allPoints.length / need);
@@ -459,8 +373,6 @@ class WhitepaperParticles {
 
         // Filter to the chaotic left portion only
         const leftPoints = all.filter(p => p.x < 0.35);
-
-        // Take the first ~300 points (the specification says first ~300 of 750)
         const cropped = leftPoints.slice(0, 300);
 
         // Rescale x from 0.0-0.35 range to fill 0.05-0.95
@@ -543,10 +455,14 @@ class WhitepaperParticles {
     // ------------------------------------------------------------------
 
     destroy() {
-        this.particles.forEach(el => {
-            if (el.parentNode) el.parentNode.removeChild(el);
+        this.banners.forEach(banner => {
+            banner.particles.forEach(el => {
+                if (el.parentNode) el.parentNode.removeChild(el);
+            });
+            if (banner.container.parentNode) {
+                banner.container.parentNode.removeChild(banner.container);
+            }
         });
-        this.particles = [];
-        if (this.dismissTimer) clearTimeout(this.dismissTimer);
+        this.banners = [];
     }
 }

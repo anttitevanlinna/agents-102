@@ -24,7 +24,6 @@
         </div>
     </nav>
 
-    <div class="wp-interlude" id="wp-interlude"></div>
     <div class="read-progress" id="read-progress"></div>
 
     <article class="article-container" id="article-standard">
@@ -133,23 +132,15 @@
                         // ── Activate light theme for longform ──
                         document.body.classList.add('light-article');
 
-                        // ── Initialize particle interludes (if script loaded) ──
-                        var wpContainer = document.getElementById('wp-interlude');
-                        if (wpContainer && typeof WhitepaperParticles !== 'undefined') {
-                            // Defer init until phase h1s are in the DOM
+                        // ── Initialize phase banner particles (if script loaded) ──
+                        if (typeof WhitepaperParticles !== 'undefined') {
                             setTimeout(function() {
                                 var phaseH1sForParticles = container.querySelectorAll('.article-body h1');
-                                new WhitepaperParticles('wp-interlude', {
-                                    particleCount: 200,
+                                new WhitepaperParticles({
                                     phaseElements: phaseH1sForParticles,
-                                    callouts: [
-                                        'Finding the right metaphor. Learning to be wrong.',
-                                        'Cycle time is the metric. AI engineering IS software engineering.',
-                                        'Hitting the walls. Failing and succeeding at the same time.',
-                                        'Context is learning. The system compounds.'
-                                    ]
+                                    particleCount: 120
                                 });
-                            }, 100);
+                            }, 200);
                         }
 
                         // Switch to longform layout with TOC sidebar

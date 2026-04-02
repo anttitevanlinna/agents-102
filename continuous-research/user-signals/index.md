@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-02](comments/2026-04-02-no-company-agent.md) — There is no "company-human" — why assume we need "company-agent"? Personal agents + skill sharing + cross-agent messaging = company AI. Bottom-up beats top-down.
 - [2026-04-02](comments/2026-04-02-moltke-tesla-mission-control.md) — Intent Taktik: upstream intent bottleneck symmetric to absorption. Leaders freed from overhead when execution is cheap and info is ambient.
 - [2026-04-02](comments/2026-04-02-intent-taktik-live-case.md) — Live case: SVP asked "which platform?" AI produced 35 requirements in 2.5 days. Leadership can't absorb the output. The slow process WAS the filter — AI removed slowness and filter simultaneously.
 - [2026-04-02](comments/2026-04-02-tight-coupling-lockin.md) — Management chain is tightly coupled: 95% could run at AI speed but the 5% human judgment locks everything at human speed. Can't extract links. Must replace the chain. Chicken-and-egg: need Intent Taktik to approve Intent Taktik.

@@ -1559,37 +1559,34 @@ footer p {
 
 /* =============================================================================
    22. WHITEPAPER / LONG-FORM ARTICLE ENHANCEMENTS
+   "High-quality uncoated paper stock, not a screen."
+   Bosser orange goes BOLD. Phase colors deep and saturated.
+   Typography confident — black text, not gray.
    ============================================================================= */
 
 /* ── Light theme override ──
    Applied via body.light-article. Swaps the dark palette for a warm,
-   paper-like reading surface. All existing var() references just work. */
+   paper-stock reading surface. All existing var() references just work. */
 body.light-article {
-    --bg-primary: #fafaf8;
-    --bg-secondary: #f0efe8;
-    --bg-tertiary: #e8e7e0;
-    --bg-card: #ffffff;
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #888888;
-    --border: #ddd;
-    --surface: #e8e7e0;
+    --bg-primary: #f5f4f0;        /* warm paper stock, not clinical white */
+    --bg-secondary: #eae8e2;      /* slightly darker warm */
+    --bg-tertiary: #dfdcd4;       /* card borders, subtle structure */
+    --bg-card: #ffffff;            /* cards pop on the paper background */
+    --text-primary: #1a1a1a;      /* confident black, not gray */
+    --text-secondary: #4a4a4a;    /* secondary reads clearly */
+    --text-muted: #8a8a8a;        /* muted stays muted */
+    --border: #d4d1c9;            /* warm border, not cool gray */
+    --surface: #eae8e2;
+
+    /* Phase colors — deep and saturated for light backgrounds */
+    --phase-1: #3d7ab8;           /* deep blue, not pastel */
+    --phase-2: #c47d2e;           /* rich amber */
+    --phase-3: #b83d3d;           /* deep red */
+    --phase-4: #e05a1e;           /* strong Bosser orange, slightly deeper */
 }
 
 /* Smooth scroll for TOC anchor links */
 html { scroll-behavior: smooth; }
-
-/* ── Phase color progression — the journey told through color ──
-   Phase 1: cool blue  — orientation, finding your way
-   Phase 2: warm amber — discovery, things clicking
-   Phase 3: tense red  — hitting walls, failing + succeeding
-   Phase 4: accent orange — compounding, arrival */
-:root {
-    --phase-1: #5b9bd5;
-    --phase-2: #e0a458;
-    --phase-3: #d94f4f;
-    --phase-4: #ff6b35;
-}
 
 /* ── Progress bar ──
    Fixed strip at top of viewport. JS handles width & color transitions. */
@@ -1693,7 +1690,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── Author card ──
-   White card on the warm background. Initial circle in accent orange. */
+   White card on the paper background. Initial circle in Bosser orange. */
 .author-card {
     display: flex;
     align-items: center;
@@ -1703,13 +1700,14 @@ html { scroll-behavior: smooth; }
     border-radius: 8px;
     margin-bottom: 2.5rem;
     border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .author-card .author-initial {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--phase-4);
-    color: #fff;
+    background: var(--phase-4);  /* Bosser orange */
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1729,39 +1727,53 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── Phase banners (h1 inside article body) ──
-   Full-viewport-width colored band even though content is 720px max.
-   Uses the negative-margin trick to break out of the content column. */
+   Bold, not shy. Full-viewport-width colored band even though content
+   is 720px max. The phase banner is the visual event. */
 .article-body h1 {
-    /* Full-bleed: extend to viewport edges */
+    /* Full-bleed via negative margins */
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    padding-left: calc(50vw - 50%);
-    padding-right: calc(50vw - 50%);
-    /* Generous vertical space — feels like a chapter break */
-    padding-top: 80px;
-    padding-bottom: 40px;
-    margin-top: 4rem;
-    margin-bottom: 0.5rem;
+    padding: 4rem calc(50vw - 50%) 2.5rem;
+
+    /* Strong phase-tinted background — 12% opacity, not 8% */
+    background: rgba(224, 90, 30, 0.12);  /* default orange, overridden per phase */
+
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
     /* Typography */
     font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     line-height: 1.2;
-    /* Default banner background (overridden per phase below) */
-    background: rgba(255, 107, 53, 0.08);
+    margin-bottom: 0.5rem;
+    margin-top: 3rem;
 }
-/* The italic description paragraph right after the phase title */
+
+/* Phase-specific banner backgrounds */
+.article-body h1.phase-1 { background: rgba(61, 122, 184, 0.12); }
+.article-body h1.phase-2 { background: rgba(196, 125, 46, 0.12); }
+.article-body h1.phase-3 { background: rgba(184, 61, 61, 0.12); }
+.article-body h1.phase-4 { background: rgba(224, 90, 30, 0.15); }  /* slightly stronger — arrival */
+
+/* Phase description italic line */
+.article-body h1 + p em,
 .article-body h1 + p {
     color: var(--text-muted);
     font-style: italic;
     margin-bottom: 2.5rem;
 }
 
-/* Phase-specific banner backgrounds at 8% opacity */
-.phase-1 h1 { background: rgba(91, 155, 213, 0.08); }
-.phase-2 h1 { background: rgba(224, 164, 88, 0.08); }
-.phase-3 h1 { background: rgba(217, 79, 79, 0.08); }
-.phase-4 h1 { background: rgba(255, 107, 53, 0.08); }
+/* ── Essay title (h2) — subtler than thesis ── */
+.article-body h2 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    padding-top: 0;
+    border-top: none;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 500;  /* lighter than thesis — thesis is the visual anchor */
+}
 
-/* Phase-specific h2 colors */
+/* Phase-colored h2 */
 .phase-1 h2 { color: var(--phase-1); }
 .phase-2 h2 { color: var(--phase-2); }
 .phase-3 h2 { color: var(--phase-3); }
@@ -1775,90 +1787,62 @@ html { scroll-behavior: smooth; }
 }
 .essay-card:first-child { margin-top: 0; border-top: none; }
 
-/* ── Essay date — small muted label above the title ── */
+/* ── Essay dates — phase-colored timeline markers ── */
 .essay-date {
     display: block;
     font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.06em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-muted);
     margin-bottom: 0.25rem;
 }
-.phase-1 .essay-date { color: var(--phase-1); opacity: 0.6; }
-.phase-2 .essay-date { color: var(--phase-2); opacity: 0.6; }
-.phase-3 .essay-date { color: var(--phase-3); opacity: 0.6; }
-.phase-4 .essay-date { color: var(--phase-4); opacity: 0.6; }
+/* Phase-colored dates */
+.phase-1 .essay-date { color: var(--phase-1); }
+.phase-2 .essay-date { color: var(--phase-2); }
+.phase-3 .essay-date { color: var(--phase-3); }
+.phase-4 .essay-date { color: var(--phase-4); }
 
-/* ── Essay title (h2) ── */
-.article-body h2 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    padding-top: 0;
-    border-top: none;
-    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-    font-weight: 500;
-}
-
-/* ── Thesis blockquote ──
-   Bolder than surrounding text. 4px left border in the current phase color.
-   Subtle phase-tinted background at 3% opacity. */
+/* ── Thesis blockquote — the scanning layer ──
+   Bold orange bar. Impossible to miss while scrolling. */
 .article-body blockquote.thesis {
-    border-left: 4px solid var(--accent);
-    background: rgba(255, 107, 53, 0.03);
-    padding: 0.75rem 1rem;
+    border-left: 5px solid var(--phase-4);  /* thick orange bar */
+    background: rgba(224, 90, 30, 0.06);
+    padding: 1rem 1.25rem;
     margin: 0.5rem 0 1.5rem 0;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 500;
-}
-.article-body blockquote.thesis p {
-    font-weight: 500;
-    color: var(--text-primary);
+    line-height: 1.5;
 }
 
-/* Phase-colored thesis blockquotes */
-.phase-1 blockquote.thesis {
-    border-left-color: var(--phase-1);
-    background: rgba(91, 155, 213, 0.03);
-}
-.phase-2 blockquote.thesis {
-    border-left-color: var(--phase-2);
-    background: rgba(224, 164, 88, 0.03);
-}
-.phase-3 blockquote.thesis {
-    border-left-color: var(--phase-3);
-    background: rgba(217, 79, 79, 0.03);
-}
-.phase-4 blockquote.thesis {
-    border-left-color: var(--phase-4);
-    background: rgba(255, 107, 53, 0.03);
-}
+/* Phase-specific thesis colors */
+.phase-1 blockquote.thesis { border-left-color: var(--phase-1); background: rgba(61, 122, 184, 0.06); }
+.phase-2 blockquote.thesis { border-left-color: var(--phase-2); background: rgba(196, 125, 46, 0.06); }
+.phase-3 blockquote.thesis { border-left-color: var(--phase-3); background: rgba(184, 61, 61, 0.06); }
+.phase-4 blockquote.thesis { border-left-color: var(--phase-4); background: rgba(224, 90, 30, 0.06); }
 
 /* ── Research confirmation blockquote ──
-   Distinct from thesis — feels like an editorial annotation.
-   Teal accent, smaller font, quieter presence. */
+   Distinct from thesis — teal accent, editorial annotation feel. */
 .article-body blockquote.confirmed {
-    border-left: 3px solid #4ecdc4;
-    background: rgba(78, 205, 196, 0.04);
+    border-left: 3px solid #2a9d8f;        /* teal — distinct from orange */
+    background: rgba(42, 157, 143, 0.05);
     padding: 0.75rem 1rem;
     margin: 1.5rem 0;
     font-size: 0.9rem;
 }
-.article-body blockquote.confirmed strong {
-    color: #4ecdc4;
-}
+.article-body blockquote.confirmed strong { color: #2a9d8f; }
 
 /* ── CTA section ── */
 .article-cta {
-    background: var(--bg-tertiary);
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 2rem;
     margin-top: 3rem;
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .article-cta h2 { margin-top: 0; }
-.article-cta a { color: var(--accent); }
+.article-cta a { color: var(--phase-4); }
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
@@ -1868,12 +1852,15 @@ html { scroll-behavior: smooth; }
     }
     .toc-sidebar { display: none; }
     .toc-mobile { display: block; }
+}
 
-    /* On mobile the full-bleed h1 still works but needs smaller padding */
-    .article-body h1 {
-        padding-top: 48px;
-        padding-bottom: 24px;
-    }
+@media (max-width: 768px) {
+    .wp-phase-particles { display: none; }
+    .wp-phase-callout { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wp-phase-particles { display: none; }
 }
 
 
@@ -1887,7 +1874,7 @@ html { scroll-behavior: smooth; }
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: -1;  /* behind h1 text content */
+    z-index: -1;
     overflow: hidden;
 }
 
@@ -1895,14 +1882,14 @@ html { scroll-behavior: smooth; }
     position: absolute;
     width: 3px; height: 3px;
     border-radius: 50%;
-    opacity: 0.35;
+    opacity: 0.3;
     transition: left 3s cubic-bezier(0.4, 0, 0.2, 1),
                 top 3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: left, top;
 }
-.wp-phase-particles .particle:nth-child(3n) { width: 2px; height: 2px; opacity: 0.25; }
-.wp-phase-particles .particle:nth-child(5n) { width: 5px; height: 5px; opacity: 0.45; }
-.wp-phase-particles .particle:nth-child(7n) { width: 1.5px; height: 1.5px; opacity: 0.2; }
+.wp-phase-particles .particle:nth-child(3n) { width: 2px; height: 2px; opacity: 0.2; }
+.wp-phase-particles .particle:nth-child(5n) { width: 5px; height: 5px; opacity: 0.4; }
+.wp-phase-particles .particle:nth-child(7n) { width: 1.5px; height: 1.5px; opacity: 0.15; }
 .wp-phase-particles .particle.glow { box-shadow: 0 0 4px currentColor; }
 
 /* Default particle color (fallback) */
@@ -1930,96 +1917,49 @@ html { scroll-behavior: smooth; }
     pointer-events: none;
     white-space: nowrap;
 }
-.wp-phase-callout.visible { opacity: 0.3; }
+.wp-phase-callout.visible { opacity: 0.35; }
 .phase-1 .wp-phase-callout { color: var(--phase-1); }
 .phase-2 .wp-phase-callout { color: var(--phase-2); }
 .phase-3 .wp-phase-callout { color: var(--phase-3); }
 .phase-4 .wp-phase-callout { color: var(--phase-4); }
 
-/* Accessibility: respect reduced motion */
-@media (prefers-reduced-motion: reduce) { .wp-phase-particles { display: none; } }
-
-/* Mobile: hide particles on small screens */
-@media (max-width: 768px) { .wp-phase-particles { display: none; } }
-
-@media print { .wp-phase-particles { display: none !important; } }
-
 
 /* =============================================================================
    24. PRINT STYLESHEET
-   Light base theme means print is straightforward — mostly hide chrome
-   and ensure phase visuals survive in grayscale.
+   The light paper-stock theme prints beautifully — barely any overrides needed.
    ============================================================================= */
 
 @media print {
-    /* ── Reset to clean print surface ── */
-    body {
-        font-size: 11pt;
-        line-height: 1.6;
-        background: white !important;
-        color: black !important;
-    }
+    body { font-size: 11pt; line-height: 1.6; }
 
-    /* ── Hide interactive chrome ── */
-    nav,
-    footer,
-    .read-progress,
-    .toc-sidebar,
-    .toc-mobile,
-    .article-cta,
-    .wp-phase-particles {
-        display: none !important;
-    }
+    nav, footer, .read-progress, .toc-sidebar, .toc-mobile,
+    .article-cta, .wp-phase-particles, .wp-phase-callout { display: none !important; }
 
-    /* ── Full-width content ── */
-    .article-with-toc,
-    .article-container {
-        max-width: none;
-        padding: 0;
-    }
+    .article-with-toc, .article-container { max-width: none; padding: 0; }
 
-    /* ── Chapter breaks at each phase ── */
     .article-body h1 {
         page-break-before: always;
+        margin-left: 0; margin-right: 0;
+        padding-left: 0; padding-right: 0;
+        background: none !important;
+        border-top: 2px solid #333;
         padding-top: 1.5rem;
         margin-top: 0;
-        background: #f0f0f0 !important;
     }
-    .article-body h1:first-of-type {
-        page-break-before: avoid;
-    }
+    .article-body h1:first-of-type { page-break-before: avoid; }
 
-    /* ── Thesis blockquote — keep the left border emphasis ── */
     .article-body blockquote.thesis {
-        border-left: 4px solid #666;
+        border-left: 4px solid #333;
         background: #f5f5f5 !important;
-        font-weight: 500;
     }
 
-    /* ── Research confirmation — keep teal accent ── */
     .article-body blockquote.confirmed {
-        border-left: 3px solid #4ecdc4;
+        border-left: 3px solid #2a9d8f;
         background: #f0fafa !important;
     }
-    .article-body blockquote.confirmed strong {
-        color: #2a9d8f !important;
-    }
 
-    /* ── Author card ── */
-    .author-card {
-        border: 1px solid #ccc;
-        background: #f9f9f9 !important;
-    }
-    .author-card .author-initial {
-        background: #333 !important;
-        color: white !important;
-    }
+    .author-card { border: 1px solid #ccc; }
 
-    /* ── Links: hide underlines, show URLs for external links ── */
     a { text-decoration: none; }
-    a[href^="http"]::after {
-        content: " (" attr(href) ")";
-        font-size: 0.8em;
-        color: #666 !important;
-    }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
 }

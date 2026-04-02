@@ -876,6 +876,80 @@ This cost reality changes the ROI calculation for many business process use case
 
 ---
 
+## The Coding Agent Came Through the Coding Door — But It's Not a Coding Agent
+
+**Thesis:** Claude Code SDK and Codex are general-purpose autonomous agents that entered the market through coding because that's where verification was cheapest. The "coding agent" label is a go-to-market accident, not an architectural constraint.
+
+Why coding first? Not because the AI is better at code — because code has executable verification. Run the tests. See if it works. No human judgment required. Every other business domain lacks this: you can't auto-verify if an HR decision was fair, if a strategy memo was insightful, or if a vendor negotiation was optimal. Coding was the beachhead because verification was free.
+
+But look at what's actually been built: Claude Agent SDK powers "almost all of Anthropic's major agent loops" including non-coding tasks. Codex's product lead said "there's very little specific to coding" in the architecture. Lenny Rachitsky tells his 1M+ subscribers "everyone should use Claude Code — PMs, marketers, designers, founders." 10+ independent practitioners are using these tools for sales, publishing, research, and finance workflows. The architecture is general-purpose. The marketing was specific.
+
+Now add what's shipping: scheduled tasks (`/schedule`, `/loop`), Codex Triggers, 20+ Plugins (Slack, Figma, Notion, Gmail), MCP with 97M monthly downloads, Firecracker microVM sandboxes booting in 125ms, Anthropic Compliance API. Each piece alone is a feature. Together they're the infrastructure for always-on autonomous business agents.
+
+The counter-evidence is real: compound error math (95% per step × 20 steps = 36% success), the NBER paradox (89% of execs report zero AI productivity impact), Anthropic's own Project Vend (Claude lost money running a real shop), and zero enterprise-scale deployments. The thesis is directionally correct; the timeline is the whole game.
+
+**The implication for CTOs:** The platform you're looking for — the one that can connect to any system, build its own tools, run autonomously, and handle multi-step business work — already exists. It's called Claude Code. It entered through engineering, but the architecture serves any domain. Building competence NOW means your team moves first when enterprise infrastructure matures (Antspace BYOC, Codex cloud, governance APIs). Waiting for a "business agent platform" to appear is waiting for something that's already here wearing a different label.
+
+**Applies to:** CTO advisory (platform selection), training (Module 1 reframe), newsletter ("The Platform You're Looking For Already Exists"), Bootstrap curriculum
+**Source:** Pattern 48 research (April 2, 2026) — 10+ practitioner signals, Anthropic/OpenAI product analysis, Lenny Rachitsky, Alex Lieberman, Fortune/OpenAI, Bloomberg/Anthropic
+**Date:** 2026-04-02
+
+---
+
+## Anthropic's Six-Vector Platform Play
+
+**Thesis:** Anthropic isn't building a model company — it's building a full-stack agent platform, and every piece reinforces the others.
+
+Six vectors, shipping simultaneously: (1) **Cowork** — business users operate agents without a terminal. Adoption exceeding Claude Code's early trajectory per Bloomberg. (2) **Agent SDK** — developers build agents that power everything else. (3) **Antspace** — managed hosting with BYOC/Kubernetes. Still staging, but the binary shows production-grade architecture. (4) **MCP + Agent Skills** — open standards competitors are forced to adopt. 97M monthly downloads. (5) **Computer Use + Dispatch** — 72.5% on OSWorld. Assign from iPhone, execute on Mac, control any app including legacy systems with no API. (6) **Partner Network** — $100M committed, Accenture/Deloitte/PwC, 5x partner team scaling.
+
+The compounding logic: MCP creates the tool ecosystem → Agent SDK builds on it → Cowork makes it accessible → Antspace hosts it → Computer Use handles legacy systems → Partners distribute it. Each piece makes the others more valuable. No other company owns this end-to-end stack.
+
+The hard numbers: 73% of new enterprise AI spend goes to Anthropic (Ramp, past 10 weeks). Revenue doubled from $9B to $19B annualized in ~3 months. IPO targeting Q4 2026, $60B+.
+
+Counter-evidence matters: 109 infrastructure incidents in 90 days (getting worse). Two security leaks in one week (Mythos model + source code). Zero independent enterprise Cowork deployment evidence. Pentagon contract dispute unresolved. Model commoditization risk — Ben Thompson notes models commoditizing "faster than anyone predicted."
+
+**The implication for CTOs:** If you're evaluating agent platforms, Anthropic is the one building toward a complete stack. But the infrastructure fragility (99.34% uptime = ~6 hours downtime/month) is a real enterprise concern. The bet is: does the platform mature faster than the reliability degrades? For enterprises that can tolerate early-stage infrastructure, building on this stack now creates a compounding advantage. For regulated industries that need five-nines, wait — but track closely.
+
+**Applies to:** CTO advisory (platform trajectory), newsletter ("The Six-Vector Play"), competitive intelligence
+**Source:** Anthropic platform deep dive (April 2, 2026) — Bloomberg, Ramp, AprilNEA reverse engineering, Ben Thompson/Stratechery, Fortune, CNBC
+**Date:** 2026-04-02
+
+---
+
+## The Credit Cliff Adoption Experiment
+
+**Thesis:** Google's March 31 credit cliff accidentally produced the cleanest adoption test in 88 cycles — developers screamed, business users were silent, proving business agent adoption is near zero.
+
+Same credit system. Same transition date. Same bugs. Two user populations. Developers using Antigravity (Google's coding IDE) hit 7-day lockouts, ghost consumption, and broken quotas — 16,000+ forum views across 6+ threads. Pro users ($20/mo) and Ultra users ($250/mo) both affected. Meanwhile, Workspace Studio business users building agents? Not one complaint. Not one forum post. Not one Reddit thread. Complete silence.
+
+When the control group is this clean, the finding writes itself. If business users were building agents, they'd have been hit by the same credit transition and complained in the same forums. They didn't, because they weren't there.
+
+**The implication for CTOs:** Google's agent platform for business users (Workspace Studio) has near-zero adoption 4+ months after GA, despite 20M+ tasks claimed. The developer platform is real; the business platform is vapor. Treat Google Cloud Next (April 22-24) as the next reality check, but don't plan around Workspace Studio adoption.
+
+**Applies to:** CTO advisory (platform reality check), newsletter ("The Accidental Experiment")
+**Source:** Cycle 87 — Google AI Dev Forum threads (16K+ views), cross-referenced with business user silence
+**Date:** 2026-04-02
+
+---
+
+## The Framework Wars Are a Distraction
+
+**Thesis:** Framework choice doesn't determine production success — context engineering and domain knowledge do. CTOs asking "which framework?" are asking the wrong question.
+
+Four independent sources converged in March-April 2026: the Manus team (shipped improvements in hours vs weeks after adopting context engineering), Google's ADK team ("context engineering means treating context as a first-class system"), Stanford's ACE framework (ICLR 2026 — contexts as evolving playbooks), and multiple independent practitioners ("none of the frameworks were the variable that mattered — what mattered was knowing the problem well enough to tell when the agent was wrong").
+
+Meanwhile: 35+ open-source frameworks exist, only ONE has a named business process deployment (Marsh McLennan on Mastra, 75K employees). The 4 platforms accessible to business users (Dify at 134K stars, n8n at 150K+, Flowise, Rasa) are invisible in the framework comparison discourse because they're categorized as "workflow tools." The actual volume of agent-adjacent work is happening in tools the framework debates ignore.
+
+The stack is layering: Model → Runtime → Framework → Agent. Framework is Layer 3. CTOs should care more about Layer 2 (will my agent survive a crash? — Temporal, Inngest) and Layer 4 (does this solve my business problem?).
+
+**The implication for CTOs:** Stop evaluating frameworks. Start evaluating whether your team has context engineering skills and domain knowledge. The framework you pick matters less than how well your team can describe the problem to the agent, verify its output, and build the context architecture around it. If you must pick a framework, pick the one that matches your existing developer stack (TypeScript → Mastra, Python → LangGraph, .NET → MS Agent Framework) and move on.
+
+**Applies to:** CTO advisory (framework selection), training (skills focus), newsletter ("The Question You Should Stop Asking")
+**Source:** Cycle 88 — Manus blog, Google ADK blog, Stanford ACE (ICLR 2026), DEV Community practitioner reports, 35+ framework landscape analysis
+**Date:** 2026-04-02
+
+---
+
 Copy this for new insights:
 
 ```

@@ -1,0 +1,598 @@
+/*
+ * =============================================================================
+ * Kompassi — Minimap-Guided Continuous Scroll
+ * =============================================================================
+ *
+ * The problem with every prior layout: the reader gets lost in 27 essays.
+ * Spine tried a fixed timeline (too abstract). Deck tried snap-scroll (breaks
+ * narrative). Kide and Tuoli looked beautiful (no wayfinding). Logbook was
+ * fine but not bold.
+ *
+ * Kompassi's big idea: a MINIMAP — borrowed from code editors and Linear
+ * changelogs — that shows the ENTIRE article structure at a glance. Fixed
+ * on the right edge, always visible. Each essay is a tiny rectangle,
+ * phase-colored. The viewport position is a translucent highlight sliding
+ * down the minimap as you scroll. You always know: where you are, how far
+ * you've come, how far to go, and what's in each phase.
+ *
+ * The minimap is the "I've never seen a whitepaper do this" moment.
+ * CTOs who use VS Code will recognize the interaction pattern instantly.
+ * Everyone else just sees a beautiful, intuitive progress indicator.
+ *
+ * On hover, each minimap segment shows the essay title as a tooltip.
+ * Click any segment to jump there. Scroll is continuous and smooth —
+ * no snap, no interruption. The read-progress bar at top still works
+ * and changes color per phase.
+ *
+ * Degrades to print: minimap hidden, standard pagination.
+ * Degrades to mobile: minimap collapses to a thin phase-colored edge strip.
+ *
+ * Overrides section 22 of style.css. Load AFTER style.css.
+ * =============================================================================
+ */
+
+
+/* ── Hide default TOC, particles, callouts ── */
+
+.toc-sidebar,
+.toc-mobile,
+.wp-phase-particles,
+.wp-phase-callout {
+    display: none !important;
+}
+
+
+/* ── Layout: generous reading column, room for minimap on right ── */
+
+.article-with-toc {
+    display: block;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    /* Right padding for minimap clearance */
+    padding-right: calc(1.5rem + 64px);
+}
+
+.article-with-toc .article-body-wrap {
+    max-width: 640px;
+    overflow: visible;
+}
+
+
+/* ── Phase banners (h1) — full-bleed color band, but refined ── */
+
+.article-body h1 {
+    /* Full-bleed */
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 3.5rem calc(50vw - 50%) 2rem;
+
+    /* Typography: confident, not shouting */
+    font-weight: 600;
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    /* Phase-colored top border as primary accent */
+    border-top: 4px solid var(--phase-4);
+}
+
+.article-body h1:first-of-type {
+    margin-top: 0;
+}
+
+/* Phase-specific banner + border */
+.article-body h1.phase-1 {
+    background: rgba(61, 122, 184, 0.08);
+    border-top-color: var(--phase-1);
+}
+.article-body h1.phase-2 {
+    background: rgba(196, 125, 46, 0.10);
+    border-top-color: var(--phase-2);
+}
+.article-body h1.phase-3 {
+    background: rgba(184, 61, 61, 0.08);
+    border-top-color: var(--phase-3);
+}
+.article-body h1.phase-4 {
+    background: rgba(232, 98, 31, 0.10);
+    border-top-color: var(--phase-4);
+}
+
+
+/* ── Essay count badge — "Essay 7 of 27" inside the phase banner ── */
+
+.essay-counter {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    opacity: 0.7;
+}
+
+
+/* ── Essay cards — clean separation, phase-colored left accent ── */
+
+.essay-card {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    padding-left: 1.25rem;
+    border-top: none;
+    border-left: 3px solid transparent;
+    transition: border-left-color 0.3s ease;
+}
+
+.essay-card:first-child {
+    margin-top: 0;
+    border-top: none;
+}
+
+/* Phase-colored left accent when essay is "current" in viewport */
+.essay-card.reading {
+    border-left-color: var(--phase-4);
+}
+.essay-card.reading.phase-1 { border-left-color: var(--phase-1); }
+.essay-card.reading.phase-2 { border-left-color: var(--phase-2); }
+.essay-card.reading.phase-3 { border-left-color: var(--phase-3); }
+.essay-card.reading.phase-4 { border-left-color: var(--phase-4); }
+
+
+/* ── h2 (essay title) ── */
+
+.article-body h2 {
+    font-weight: 500;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+
+/* ── Essay dates ── */
+
+.essay-date {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* ── Thesis blockquote — the scanning layer ── */
+
+.article-body blockquote.thesis {
+    border-left: 4px solid var(--phase-4);
+    background: rgba(224, 90, 30, 0.05);
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0 1.5rem 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.phase-1 blockquote.thesis { border-left-color: var(--phase-1); background: rgba(61, 122, 184, 0.05); }
+.phase-2 blockquote.thesis { border-left-color: var(--phase-2); background: rgba(196, 125, 46, 0.05); }
+.phase-3 blockquote.thesis { border-left-color: var(--phase-3); background: rgba(184, 61, 61, 0.05); }
+.phase-4 blockquote.thesis { border-left-color: var(--phase-4); background: rgba(224, 90, 30, 0.05); }
+
+
+/* ── Confirmed blockquote ── */
+
+.article-body blockquote.confirmed {
+    border-left: 3px dashed #2a9d8f;
+    background: rgba(42, 157, 143, 0.04);
+    font-size: 0.88rem;
+    padding: 0.6rem 1rem;
+    margin: 1.5rem 0;
+}
+.article-body blockquote.confirmed strong { color: #2a9d8f; }
+
+
+/* ── Author card ── */
+
+.author-card {
+    box-shadow: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+
+/* =============================================================================
+   THE MINIMAP — the signature element
+   A fixed column of tiny rectangles on the right edge. Each rectangle = one
+   essay. Grouped by phase, phase-colored. A translucent viewport indicator
+   slides down as you scroll. Hover shows title. Click jumps.
+   ============================================================================= */
+
+.minimap {
+    position: fixed;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* The minimap total height adapts to viewport */
+    max-height: 70vh;
+}
+
+/* Phase group within minimap */
+.minimap-phase {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 3px 0;
+}
+
+/* Tiny separator between phases */
+.minimap-phase + .minimap-phase {
+    border-top: 1px solid var(--border);
+}
+
+/* Individual essay segment */
+.minimap-seg {
+    width: 28px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 2px;
+    opacity: 0.35;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    position: relative;
+    /* Height set by JS proportionally to essay length */
+    min-height: 4px;
+    background: var(--text-muted);
+}
+
+.minimap-seg:hover {
+    opacity: 0.8;
+    transform: scaleX(1.3);
+    transform-origin: right center;
+}
+
+.minimap-seg.active {
+    opacity: 1;
+    transform: scaleX(1.15);
+    transform-origin: right center;
+}
+
+/* Phase colors for segments */
+.minimap-seg.seg-phase-1 { background: var(--phase-1); }
+.minimap-seg.seg-phase-2 { background: var(--phase-2); }
+.minimap-seg.seg-phase-3 { background: var(--phase-3); }
+.minimap-seg.seg-phase-4 { background: var(--phase-4); }
+
+/* Phase label above each group — visible on hover of minimap area */
+.minimap-phase-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: right;
+    padding-right: 2px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.minimap:hover .minimap-phase-label {
+    opacity: 1;
+}
+
+/* Phase-colored labels */
+.minimap-phase-label.label-phase-1 { color: var(--phase-1); }
+.minimap-phase-label.label-phase-2 { color: var(--phase-2); }
+.minimap-phase-label.label-phase-3 { color: var(--phase-3); }
+.minimap-phase-label.label-phase-4 { color: var(--phase-4); }
+
+
+/* ── Tooltip — appears left of minimap on hover ── */
+
+.minimap-tooltip {
+    position: fixed;
+    right: 52px;
+    padding: 0.35rem 0.65rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 201;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.minimap-tooltip.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Essay number in tooltip */
+.minimap-tooltip .tooltip-num {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    margin-right: 0.35rem;
+}
+
+
+/* =============================================================================
+   PHASE BREADCRUMB — sticky bar below nav
+   Shows "Phase 2: Process Discovery  /  Essay 12 of 27" as you scroll.
+   Linear-style persistent context. This is what Spine's sticky label should
+   have been — but with essay count, phase progress, and full-width.
+   ============================================================================= */
+
+.phase-crumb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 150;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    background: rgba(245, 244, 240, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease, border-bottom-color 0.5s ease;
+}
+
+.phase-crumb.visible {
+    transform: translateY(0);
+}
+
+.phase-crumb-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Phase color dot in breadcrumb */
+.phase-crumb-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.phase-crumb-title {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.phase-crumb-essay {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Inline progress bar within the breadcrumb */
+.phase-crumb-progress {
+    width: 80px;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.phase-crumb-progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease, background 0.5s ease;
+    width: 0;
+}
+
+
+/* =============================================================================
+   THESIS MODE — press T to collapse body text, see only thesis + titles
+   Borrowed from Spine, but refined. In Kompassi it pairs with the minimap:
+   you see the structure in the minimap AND the thesis flow in the text.
+   ============================================================================= */
+
+body.thesis-mode .essay-card > *:not(.thesis):not(h2):not(.essay-date) {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+
+body.thesis-mode .essay-card > blockquote.thesis {
+    max-height: none;
+    opacity: 1;
+}
+
+/* Thesis mode toggle */
+.thesis-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    margin-left: 0.75rem;
+}
+.thesis-toggle:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+body.thesis-mode .thesis-toggle {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.thesis-toggle kbd {
+    font-family: var(--font-family);
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+    background: var(--surface);
+    border-radius: 3px;
+    border: 1px solid var(--border);
+}
+
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
+/* Tablet: minimap thinner, breadcrumb stays */
+@media (max-width: 1024px) {
+    .article-with-toc {
+        padding-right: calc(1.5rem + 40px);
+    }
+
+    .minimap-seg {
+        width: 18px;
+    }
+
+    .minimap-tooltip {
+        display: none;
+    }
+
+    .minimap-phase-label {
+        display: none;
+    }
+}
+
+/* Mobile: minimap becomes a thin edge strip, breadcrumb is primary nav */
+@media (max-width: 768px) {
+    .article-with-toc {
+        padding-right: 1.5rem;
+        max-width: none;
+    }
+
+    /* Minimap becomes a thin vertical strip on right edge */
+    .minimap {
+        right: 0;
+        width: 6px;
+        gap: 0;
+    }
+
+    .minimap-seg {
+        width: 6px;
+        border-radius: 0;
+        min-height: 3px;
+    }
+
+    .minimap-seg:hover {
+        transform: none;
+    }
+
+    .minimap-phase {
+        gap: 1px;
+        padding: 2px 0;
+    }
+
+    .minimap-phase-label,
+    .minimap-tooltip {
+        display: none;
+    }
+
+    /* Essay cards lose left accent on mobile (minimap replaces it) */
+    .essay-card {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .phase-crumb {
+        font-size: 0.7rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .phase-crumb-progress {
+        width: 48px;
+    }
+}
+
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .minimap-seg {
+        transition: none;
+    }
+    .phase-crumb {
+        transition: none;
+    }
+    .minimap-tooltip {
+        transition: none;
+    }
+    .essay-card {
+        transition: none;
+    }
+}
+
+
+/* =============================================================================
+   PRINT — minimap and breadcrumb hidden, clean text
+   ============================================================================= */
+
+@media print {
+    .minimap,
+    .phase-crumb,
+    .thesis-toggle,
+    .essay-counter {
+        display: none !important;
+    }
+
+    .essay-card {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .article-with-toc {
+        padding-right: 0;
+    }
+
+    /* Phase h1 gets a left color bar in print (like Kide) */
+    .article-body h1 {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 1rem;
+        padding-right: 0;
+        border-top: none;
+        background: none !important;
+        page-break-before: always;
+    }
+    .article-body h1:first-of-type { page-break-before: avoid; }
+    .article-body h1.phase-1 { border-left: 5px solid #3d7ab8; }
+    .article-body h1.phase-2 { border-left: 5px solid #c47d2e; }
+    .article-body h1.phase-3 { border-left: 5px solid #b83d3d; }
+    .article-body h1.phase-4 { border-left: 5px solid #e8621f; }
+}

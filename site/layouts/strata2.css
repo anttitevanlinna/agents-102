@@ -1,0 +1,558 @@
+/*
+ * =============================================================================
+ * Strata2 — Strata visuals + Selkä wayfinding
+ * =============================================================================
+ *
+ * The hybrid: geological paper-stock shifts from Strata, peripheral-vision
+ * wayfinding from Selkä. Reading on paper that changes color as you turn
+ * chapters, with wayfinding that whispers from the edges — visible when
+ * you pause, invisible when you read.
+ *
+ * FROM STRATA:
+ *   - Full-bleed background color shift per phase (the surface IS the chapter)
+ *   - Phase-section wrapping (JS groups essays into phase divs)
+ *   - Charter serif body font for sustained reading
+ *   - 5px phase-colored fault line at phase boundaries
+ *   - Stripped-back visual identity
+ *
+ * FROM SELKÄ:
+ *   - 6px left edge strip colored by current phase
+ *   - Phase marker (top-left) with mini-TOC of current phase's essays
+ *   - Scroll-pause dot map (right edge, appears after 1.2s idle)
+ *   - 1px progress whisper at the top
+ *   - Kide-inspired burnt/desaturated color palette
+ *
+ * Overrides section 22 of style.css. Load AFTER style.css.
+ * =============================================================================
+ */
+
+
+/* ── Palette: Selkä's burnt Kide tones ── */
+
+body.light-article {
+    --bg-primary: #f8f7f3;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #a0a09a;
+    --border: #e0ddd6;
+    --surface: #eceae4;
+    --accent: #d4571a;
+
+    /* Phase accent colors — Selkä's burnt, desaturated tones */
+    --phase-1: #3d6e99;         /* muted steel */
+    --phase-2: #a06928;         /* burnt amber */
+    --phase-3: #9e3535;         /* deep brick */
+    --phase-4: #d4571a;         /* Bosser orange */
+
+    /* Phase surfaces — Strata's background tints, retuned to Selkä palette */
+    --strata-1: #f2f4f6;        /* cool blue-gray */
+    --strata-2: #f7f4ee;        /* warm parchment */
+    --strata-3: #f6f2f2;        /* rose-tinted */
+    --strata-4: #f7f4ef;        /* warm cream */
+}
+
+
+/* ── Kill default wayfinding chrome — we bring our own ── */
+
+.toc-sidebar,
+.toc-mobile,
+.read-progress,
+.wp-phase-particles,
+.wp-phase-callout {
+    display: none !important;
+}
+
+
+/* ── Layout: single generous column, no sidebar ── */
+
+.article-with-toc {
+    display: block;
+    max-width: 1000px;
+    padding: 2rem 2rem;
+    margin: 0 auto;
+}
+
+.article-with-toc .article-body-wrap {
+    max-width: 640px;           /* 72 cpl at 17px — the sweet spot */
+    margin: 0 auto;
+    overflow: visible;
+}
+
+
+/* ── Body typography: Charter serif for sustained reading (from Strata) ── */
+
+body.light-article .article-body {
+    font-family: Charter, 'Bitstream Charter', Georgia, serif;
+    font-size: 1.0625rem;       /* 17px */
+    line-height: 1.75;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PHASE SECTIONS — full-bleed surface change (from Strata)
+   Each .phase-section wraps all essays in that phase.
+   The background change IS the phase transition.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.phase-section {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    transition: background-color 0.6s ease;
+}
+
+.phase-section.strata-1 { background: var(--strata-1); }
+.phase-section.strata-2 { background: var(--strata-2); }
+.phase-section.strata-3 { background: var(--strata-3); }
+.phase-section.strata-4 { background: var(--strata-4); }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PHASE TRANSITIONS (h1) — the geological fault line (from Strata)
+   A rupture, not a decoration. 5px phase-colored top rule.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.article-body h1 {
+    /* Undo default full-bleed */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    background: none !important;
+    position: relative;
+    overflow: visible;
+
+    /* Vertical event */
+    margin-top: 0;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0.5rem;
+
+    /* Typography: large, light, unmistakable */
+    font-weight: 200;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+
+    /* The fault line — thick phase-colored top rule */
+    border-top: 5px solid var(--text-muted);
+}
+
+.article-body h1:first-of-type {
+    border-top: none;
+    padding-top: 2rem;
+}
+
+/* Phase-colored fault lines */
+.article-body h1.phase-1 { border-top-color: var(--phase-1); color: var(--phase-1); background: none !important; }
+.article-body h1.phase-2 { border-top-color: var(--phase-2); color: var(--phase-2); background: none !important; }
+.article-body h1.phase-3 { border-top-color: var(--phase-3); color: var(--phase-3); background: none !important; }
+.article-body h1.phase-4 { border-top-color: var(--phase-4); color: var(--phase-4); background: none !important; }
+
+/* Phase description */
+.article-body h1 + p em,
+.article-body h1 + p {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+
+/* ── Essay title (h2) — confident sans-serif, phase-colored (from Strata) ── */
+
+.article-body h2 {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    border-top: none;
+    padding-top: 0;
+}
+
+.phase-1 h2 { color: var(--phase-1); }
+.phase-2 h2 { color: var(--phase-2); }
+.phase-3 h2 { color: var(--phase-3); }
+.phase-4 h2 { color: var(--phase-4); }
+
+
+/* ── Essay dates: monospace, phase-colored (from Strata) ── */
+
+.essay-date {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+}
+
+
+/* ── Essay cards: generous whitespace, hairline separators (from Strata) ── */
+
+.essay-card {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.essay-card:first-child {
+    margin-top: 0;
+    border-top: none;
+}
+
+.essay-card + .essay-card {
+    border-top: 1px solid var(--border);
+    padding-top: 3rem;
+}
+
+
+/* ── Thesis blockquote: the scanning layer (from Strata) ── */
+
+.article-body blockquote.thesis {
+    border-left: 4px solid;
+    background: rgba(0, 0, 0, 0.025);
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 0 1.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.phase-1 blockquote.thesis { border-left-color: var(--phase-1); }
+.phase-2 blockquote.thesis { border-left-color: var(--phase-2); }
+.phase-3 blockquote.thesis { border-left-color: var(--phase-3); }
+.phase-4 blockquote.thesis { border-left-color: var(--phase-4); }
+
+
+/* ── Confirmed blockquote ── */
+
+.article-body blockquote.confirmed {
+    border-left: 2px dashed #2a9d8f;
+    background: none;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 0;
+}
+
+
+/* ── Author card ── */
+
+.author-card {
+    box-shadow: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   WAYFINDING LAYER 1 — Left Edge Strip (from Selkä)
+   6px fixed strip on left edge, colored by current phase.
+   Peripheral vision catches the color shift between phases.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.strata2-edge {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    z-index: 100;
+    opacity: 0.5;
+    transition: background 1.2s ease;
+    pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   WAYFINDING LAYER 2 — Phase Marker with Mini-TOC (from Selkä)
+   Sticky label at top-left. Phase name + mini-TOC of current phase's
+   essay titles (clickable, current essay highlighted). Fades in when
+   you're deep in content. Whispers — doesn't shout.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.strata2-phase-marker {
+    position: fixed;
+    top: 12px;
+    left: 20px;
+    z-index: 101;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.6s ease, color 0.8s ease;
+    pointer-events: auto;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.strata2-phase-marker.visible {
+    opacity: 0.5;
+}
+
+.strata2-phase-marker .marker-count {
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-left: 0.5em;
+    opacity: 0.7;
+}
+
+/* Phase mini-TOC — essay titles within current phase */
+.strata2-phase-toc {
+    margin-top: 0.5rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: 0.6rem;
+    line-height: 1.6;
+    max-width: 200px;
+    opacity: 0.7;
+}
+
+.strata2-phase-toc a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    padding: 0.1rem 0;
+    transition: opacity 0.2s;
+    opacity: 0.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.strata2-phase-toc a.current {
+    opacity: 1;
+    font-weight: 600;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   WAYFINDING LAYER 3 — Scroll-Pause Dot Map (from Selkä)
+   Minimal dot-map at right edge. Each dot = one essay. Current = lit.
+   Appears after 1.2s of no scrolling. Disappears on scroll.
+   Click a dot to navigate.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.strata2-map {
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.strata2-map.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.strata2-map-phase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 8px;
+}
+
+.strata2-map-phase:last-child {
+    margin-bottom: 0;
+}
+
+.strata2-map-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+    margin: 2px 0;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.strata2-map-dot:hover {
+    transform: scale(1.8);
+}
+
+.strata2-map-dot.active {
+    transform: scale(2);
+    box-shadow: 0 0 6px currentColor;
+}
+
+/* Phase-colored active dots */
+.strata2-map-dot.active.phase-1 { background: var(--phase-1); color: var(--phase-1); }
+.strata2-map-dot.active.phase-2 { background: var(--phase-2); color: var(--phase-2); }
+.strata2-map-dot.active.phase-3 { background: var(--phase-3); color: var(--phase-3); }
+.strata2-map-dot.active.phase-4 { background: var(--phase-4); color: var(--phase-4); }
+
+/* Phase separator — tiny line between phase groups */
+.strata2-map-sep {
+    width: 1px;
+    height: 6px;
+    background: var(--border);
+    margin: 2px auto;
+    opacity: 0.5;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   WAYFINDING LAYER 4 — Progress Whisper (from Selkä)
+   1px hairline at the very top. Phase-colored. The reader registers it
+   without reading it. Replaces Strata's 3px progress bar.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.strata2-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1px;
+    background: var(--text-muted);
+    z-index: 102;
+    transition: width 80ms linear, background 1s ease;
+    width: 0;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .article-with-toc {
+        padding: 1rem 1rem;
+    }
+
+    .article-with-toc .article-body-wrap {
+        max-width: none;
+    }
+
+    .article-body h1 {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    body.light-article .article-body {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    .essay-card {
+        margin-bottom: 2.5rem;
+    }
+
+    .essay-card + .essay-card {
+        padding-top: 2.5rem;
+    }
+
+    /* Phase marker: hide mini-TOC on mobile, keep phase name */
+    .strata2-phase-toc {
+        display: none;
+    }
+
+    /* Map dots slightly smaller on mobile */
+    .strata2-map {
+        right: 8px;
+    }
+    .strata2-map-dot {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PRINT — the board handout
+   Each phase starts on a new page. Phase tints carry into print.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@page { margin: 20mm 18mm 25mm 22mm; }
+
+@media print {
+    body { font-size: 11pt; line-height: 1.65; }
+
+    /* Kill all interactive wayfinding */
+    nav, footer,
+    .strata2-edge,
+    .strata2-phase-marker,
+    .strata2-map,
+    .strata2-progress {
+        display: none !important;
+    }
+
+    /* Phase sections — light tint in print */
+    .phase-section {
+        margin-left: 0; margin-right: 0;
+        padding-left: 0; padding-right: 0;
+    }
+    .phase-section.strata-1 { background: #f2f4f6 !important; }
+    .phase-section.strata-2 { background: #f7f4ee !important; }
+    .phase-section.strata-3 { background: #f6f2f2 !important; }
+    .phase-section.strata-4 { background: #f7f4ef !important; }
+
+    /* Constrain measure */
+    .article-with-toc, .article-container { max-width: none; padding: 0; }
+    .article-body { max-width: 36em; }
+
+    /* Phase titles — page break + thick left rule */
+    .article-body h1 {
+        page-break-before: always;
+        border-top: none;
+        border-left: 5px solid #888;
+        padding-left: 1rem;
+        padding-top: 2rem;
+        margin-top: 0;
+        font-size: 24pt;
+    }
+    .article-body h1:first-of-type { page-break-before: avoid; }
+    .article-body h1.phase-1 { border-left-color: #3d6e99; }
+    .article-body h1.phase-2 { border-left-color: #a06928; }
+    .article-body h1.phase-3 { border-left-color: #9e3535; }
+    .article-body h1.phase-4 { border-left-color: #d4571a; }
+
+    /* Thesis — keep the bold bar */
+    .article-body blockquote.thesis {
+        border-left: 4px solid #d4571a;
+        background: #faf6f3 !important;
+    }
+
+    /* Confirmed — dashed teal */
+    .article-body blockquote.confirmed {
+        border-left: 2px dashed #2a9d8f;
+        background: #f0fafa !important;
+    }
+
+    .author-card { border: 1px solid #ccc; background: #fff !important; }
+
+    /* Orphan/widow control */
+    p { orphans: 3; widows: 3; }
+    h1, h2, h3 { page-break-after: avoid; }
+
+    a { text-decoration: none; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+
+    .article-body::after {
+        content: "bosser.consulting";
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.8em;
+        color: #999;
+    }
+}

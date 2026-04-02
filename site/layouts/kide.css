@@ -1,0 +1,136 @@
+/*
+ * Kide (Crystal) — Reaktor-style engineer's document
+ * One bold move: left-edge phase-colored rule on every essay.
+ * Everything else is deliberately silent. Mostly subtractive.
+ * Overrides section 22 of style.css. Load AFTER style.css.
+ */
+
+/* ── Desaturated, burnt palette ── */
+body.light-article {
+    --phase-1: #3d6e99;
+    --phase-2: #a06928;
+    --phase-3: #9e3535;
+    --phase-4: #d4571a;
+    --accent:  #d4571a;
+}
+
+/* ── Hide decoration: particles, callouts, TOC sidebar ── */
+.toc-sidebar,
+.toc-mobile,
+.wp-phase-particles,
+.wp-phase-callout,
+.read-progress { display: none !important; }
+
+/* ── Essay cards — left-edge rule, whitespace separation ── */
+.essay-card {
+    border-left: 3px solid var(--phase-4);
+    padding-left: 1.5rem;
+    margin-left: 0;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 3rem;
+}
+.essay-card:first-child { margin-top: 0; }
+
+.phase-1 .essay-card, .essay-card.phase-1 { border-left-color: var(--phase-1); }
+.phase-2 .essay-card, .essay-card.phase-2 { border-left-color: var(--phase-2); }
+.phase-3 .essay-card, .essay-card.phase-3 { border-left-color: var(--phase-3); }
+.phase-4 .essay-card, .essay-card.phase-4 { border-left-color: var(--phase-4); }
+
+/* ── Phase h1 — text only, no banners ── */
+.article-body h1 {
+    background: none !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    border-top: none;
+    margin-top: 4rem;
+    font-weight: 200;
+    font-size: 2.5rem;
+    letter-spacing: 0.04em;
+}
+.article-body h1.phase-1 { color: var(--phase-1); background: none !important; }
+.article-body h1.phase-2 { color: var(--phase-2); background: none !important; }
+.article-body h1.phase-3 { color: var(--phase-3); background: none !important; }
+.article-body h1.phase-4 { color: var(--phase-4); background: none !important; }
+
+/* Phase description — italic, muted */
+.article-body h1 + p em,
+.article-body h1 + p {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Phase label */
+.phase-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+/* ── Body text — generous Nordic leading ── */
+.article-body { font-size: 1rem; line-height: 1.72; }
+
+/* ── h2 — quieter than thesis ── */
+.article-body h2 {
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+/* ── Dates ── */
+.essay-date {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ── Thesis blockquote ── */
+.article-body blockquote.thesis {
+    background: rgba(var(--phase-color-rgb, 200,100,30), 0.04);
+    border-left: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.75rem 1rem;
+}
+
+/* ── Confirmed blockquote ── */
+.article-body blockquote.confirmed {
+    border-left: 2px dashed #2a9d8f;
+    background: none;
+    font-size: 0.85rem;
+}
+
+/* ── Author card — subtle, no shadow ── */
+.author-card {
+    box-shadow: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .essay-card {
+        border-left-width: 2px;
+        padding-left: 1rem;
+    }
+}
+
+/* ── Print ── */
+@media print {
+    @page { margin: 20mm 18mm 25mm 22mm; }
+
+    .essay-card { border-left: 3pt solid var(--phase-4); }
+    .phase-1 .essay-card, .essay-card.phase-1 { border-left-color: #3d6e99; }
+    .phase-2 .essay-card, .essay-card.phase-2 { border-left-color: #a06928; }
+    .phase-3 .essay-card, .essay-card.phase-3 { border-left-color: #9e3535; }
+    .phase-4 .essay-card, .essay-card.phase-4 { border-left-color: #d4571a; }
+
+    .article-body blockquote.thesis { background: #faf6f2 !important; }
+    p { orphans: 3; widows: 3; }
+}

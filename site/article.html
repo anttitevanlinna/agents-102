@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading... — Agents 102</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Layout switcher: ?layout=logbook|folio|spine|deck|kide|tuoli|strata|selka|kompassi
+        (function() {
+            var layout = new URLSearchParams(window.location.search).get('layout');
+            if (layout && /^(logbook|folio|spine|deck|kide|tuoli|strata|strata2|selka|kompassi)$/.test(layout)) {
+                document.write('<link rel="stylesheet" href="layouts/' + layout + '.css">');
+                window.__wpLayout = layout;
+            }
+        })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="e7541ca0-f7cb-4adb-ac15-b2f0f8b3a4b9"></script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -319,5 +329,13 @@
         })();
     </script>
     <script src="whitepaper-particles.js"></script>
+    <script>
+        // Load layout-specific JS if a layout variant is active
+        if (window.__wpLayout) {
+            var s = document.createElement('script');
+            s.src = 'layouts/' + window.__wpLayout + '.js';
+            document.body.appendChild(s);
+        }
+    </script>
 </body>
 </html>

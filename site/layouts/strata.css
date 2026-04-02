@@ -1,0 +1,456 @@
+/*
+ * =============================================================================
+ * Strata — Geological wayfinding for a 27-essay expedition
+ * =============================================================================
+ *
+ * THE PROBLEM: Every bold layout killed wayfinding. Every layout with
+ * wayfinding was safe but not bold. The reader needs both.
+ *
+ * THE MOVE: The phase IS the page. Not a banner across the top, not a
+ * color in the sidebar — the entire page surface shifts when you cross
+ * a phase boundary. Like geological strata: you SEE the era change in
+ * the ground beneath your feet.
+ *
+ * Four phases = four distinct paper stocks (background + accent hue).
+ * The reader can never get lost because the page itself tells them
+ * which epoch they're in. No TOC sidebar needed to orient. The page
+ * IS the orientation.
+ *
+ * Then: a persistent floating phase indicator (bottom-right) acts as
+ * the compass — current phase + essay count (e.g., "Phase 2 — 4 of 10").
+ * Small, always there, never intrusive. Like the page number on a book
+ * that also tells you the chapter.
+ *
+ * Wayfinding solved STRUCTURALLY, not with UI chrome.
+ * Now everything else can be stripped to the bone.
+ *
+ * Overrides section 22 of style.css. Load AFTER style.css.
+ * =============================================================================
+ */
+
+
+/* ── Phase paper stocks: four distinct surfaces ──
+   These are NOT tinted banners. The entire reading surface changes.
+   Subtle enough to read for 8 minutes per phase, distinct enough
+   that crossing the boundary is unmistakable. */
+
+body.light-article {
+    --bg-primary: #f5f4f0;      /* default warm paper */
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #8a8a8a;
+    --border: #d4d1c9;
+    --surface: #eae8e2;
+    --accent: #e8621f;
+
+    /* Phase palette — saturated, confident */
+    --phase-1: #2d6a9f;         /* steel blue */
+    --phase-2: #b87320;         /* burnt amber */
+    --phase-3: #a63232;         /* deep red */
+    --phase-4: #d4571a;         /* Bosser orange */
+
+    /* Phase surfaces — the geological strata */
+    --strata-1: #eef3f8;        /* cool: blue-gray paper stock */
+    --strata-2: #f7f3ec;        /* warm: parchment */
+    --strata-3: #f6f0ef;        /* rose-tinted stock */
+    --strata-4: #faf4ee;        /* warm cream — the arrival */
+}
+
+
+/* ── Hide default TOC sidebar — the strata IS the wayfinding ── */
+
+.toc-sidebar,
+.toc-mobile {
+    display: none !important;
+}
+
+
+/* ── Hide particles and callouts — strata don't need decoration ── */
+
+.wp-phase-particles,
+.wp-phase-callout {
+    display: none !important;
+}
+
+
+/* ── Layout: single generous column, no sidebar ──
+   Without the sidebar, the full viewport width is available.
+   Use it for breathing room, not for cramming in chrome. */
+
+.article-with-toc {
+    display: block;
+    max-width: 1000px;
+    padding: 2rem 2rem;
+    margin: 0 auto;
+}
+
+.article-with-toc .article-body-wrap {
+    max-width: 640px;    /* 72 cpl at 17px — the sweet spot */
+    margin: 0 auto;
+    overflow: visible;
+}
+
+
+/* ── Body typography: serif for sustained reading ── */
+
+body.light-article .article-body {
+    font-family: Charter, 'Bitstream Charter', Georgia, serif;
+    font-size: 1.0625rem;       /* 17px */
+    line-height: 1.75;
+}
+
+
+/* ── Phase sections: full-bleed surface change ──
+   Each .phase-section wraps all essays in that phase.
+   The JS (below in article.html logic) creates these wrappers.
+   The background change IS the phase transition. */
+
+.phase-section {
+    /* Full-bleed background via negative margins */
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    transition: background-color 0.6s ease;
+}
+
+.phase-section.strata-1 { background: var(--strata-1); }
+.phase-section.strata-2 { background: var(--strata-2); }
+.phase-section.strata-3 { background: var(--strata-3); }
+.phase-section.strata-4 { background: var(--strata-4); }
+
+
+/* ── Phase transitions (h1): the geological fault line ──
+   Not a banner. Not a decoration. A rupture.
+   The phase title sits in dramatic vertical space at the exact
+   boundary between two paper stocks. */
+
+.article-body h1 {
+    /* Undo default full-bleed */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    background: none !important;
+    position: relative;
+    overflow: visible;
+
+    /* The vertical event */
+    margin-top: 0;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0.5rem;
+
+    /* Typography: large, light, unmistakable */
+    font-weight: 200;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+
+    /* The one bold graphic move: a thick phase-colored top rule.
+       This is the stratum boundary — the visible geological layer. */
+    border-top: 5px solid var(--text-muted);
+}
+
+.article-body h1:first-of-type {
+    border-top: none;
+    padding-top: 2rem;
+}
+
+/* Phase-colored fault lines */
+.article-body h1.phase-1 { border-top-color: var(--phase-1); color: var(--phase-1); background: none !important; }
+.article-body h1.phase-2 { border-top-color: var(--phase-2); color: var(--phase-2); background: none !important; }
+.article-body h1.phase-3 { border-top-color: var(--phase-3); color: var(--phase-3); background: none !important; }
+.article-body h1.phase-4 { border-top-color: var(--phase-4); color: var(--phase-4); background: none !important; }
+
+/* Phase description */
+.article-body h1 + p em,
+.article-body h1 + p {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+
+/* ── Essay title (h2) — confident sans-serif, phase-colored ── */
+
+.article-body h2 {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    border-top: none;
+    padding-top: 0;
+}
+
+/* Keep phase colors on h2 — they're the local color signal */
+.phase-1 h2 { color: var(--phase-1); }
+.phase-2 h2 { color: var(--phase-2); }
+.phase-3 h2 { color: var(--phase-3); }
+.phase-4 h2 { color: var(--phase-4); }
+
+
+/* ── Essay dates: monospace, phase-colored ── */
+
+.essay-date {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+}
+
+
+/* ── Essay cards: generous whitespace, hairline separators ── */
+
+.essay-card {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.essay-card:first-child {
+    margin-top: 0;
+    border-top: none;
+}
+
+/* Hairline between essays — subtle enough to not compete with the
+   stratum boundary, present enough to mark essay transitions */
+.essay-card + .essay-card {
+    border-top: 1px solid var(--border);
+    padding-top: 3rem;
+}
+
+
+/* ── Thesis blockquote: the scanning layer ──
+   Still the most important visual element after the phase change.
+   Bold left bar, but now also slightly indented and larger —
+   it's the one thing a speed-reader catches on scroll. */
+
+.article-body blockquote.thesis {
+    border-left: 4px solid;
+    background: rgba(0, 0, 0, 0.025);
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 0 1.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+
+/* ── Confirmed blockquote ── */
+
+.article-body blockquote.confirmed {
+    border-left: 2px dashed #2a9d8f;
+    background: none;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 0;
+}
+
+
+/* ── Author card ── */
+
+.author-card {
+    box-shadow: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =============================================================================
+   THE FLOATING COMPASS — persistent phase indicator
+   The reader ALWAYS knows: which phase, which essay, how far.
+   Small capsule, bottom-right, updates on scroll via JS.
+   This replaces the TOC sidebar's wayfinding function.
+   ============================================================================= */
+
+.strata-compass {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+
+    /* Capsule shape */
+    background: rgba(26, 26, 26, 0.92);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 1;
+
+    /* Subtle entrance */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
+    pointer-events: none;
+
+    /* Left-edge phase color indicator */
+    border-left: 3px solid var(--accent);
+
+    /* Backdrop blur for glass effect over content */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.strata-compass.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.strata-compass .compass-phase {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.strata-compass .compass-count {
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 0.5rem;
+}
+
+/* Phase-colored left edge */
+.strata-compass.in-phase-1 { border-left-color: var(--phase-1); }
+.strata-compass.in-phase-2 { border-left-color: var(--phase-2); }
+.strata-compass.in-phase-3 { border-left-color: var(--phase-3); }
+.strata-compass.in-phase-4 { border-left-color: var(--phase-4); }
+
+
+/* =============================================================================
+   PROGRESS BAR — phase-colored, kept from default
+   ============================================================================= */
+
+.read-progress {
+    height: 3px;
+}
+
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .article-with-toc {
+        padding: 1rem 1rem;
+    }
+
+    .article-with-toc .article-body-wrap {
+        max-width: none;
+    }
+
+    .article-body h1 {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    body.light-article .article-body {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    .strata-compass {
+        bottom: 1rem;
+        right: 1rem;
+        font-size: 0.65rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .essay-card {
+        margin-bottom: 2.5rem;
+    }
+
+    .essay-card + .essay-card {
+        padding-top: 2.5rem;
+    }
+}
+
+
+/* =============================================================================
+   PRINT — the board handout
+   Each phase starts on a new page. The paper-stock concept translates
+   to a subtle tinted background in print (most printers handle this).
+   Phase titles get the same thick left rule as screen.
+   ============================================================================= */
+
+@page { margin: 20mm 18mm 25mm 22mm; }
+
+@media print {
+    body { font-size: 11pt; line-height: 1.65; }
+
+    /* Hide screen-only chrome */
+    nav, footer, .read-progress, .strata-compass { display: none !important; }
+
+    /* Phase sections — light tint in print */
+    .phase-section {
+        margin-left: 0; margin-right: 0;
+        padding-left: 0; padding-right: 0;
+    }
+    .phase-section.strata-1 { background: #eef3f8 !important; }
+    .phase-section.strata-2 { background: #f7f3ec !important; }
+    .phase-section.strata-3 { background: #f6f0ef !important; }
+    .phase-section.strata-4 { background: #faf4ee !important; }
+
+    /* Constrain measure */
+    .article-with-toc, .article-container { max-width: none; padding: 0; }
+    .article-body { max-width: 36em; }
+
+    /* Phase titles — page break + thick left rule */
+    .article-body h1 {
+        page-break-before: always;
+        border-top: none;
+        border-left: 5px solid #888;
+        padding-left: 1rem;
+        padding-top: 2rem;
+        margin-top: 0;
+        font-size: 24pt;
+    }
+    .article-body h1:first-of-type { page-break-before: avoid; }
+    .article-body h1.phase-1 { border-left-color: #2d6a9f; }
+    .article-body h1.phase-2 { border-left-color: #b87320; }
+    .article-body h1.phase-3 { border-left-color: #a63232; }
+    .article-body h1.phase-4 { border-left-color: #d4571a; }
+
+    /* Thesis — keep the bold bar */
+    .article-body blockquote.thesis {
+        border-left: 4px solid #e8621f;
+        background: #faf6f3 !important;
+    }
+
+    /* Confirmed — dashed teal */
+    .article-body blockquote.confirmed {
+        border-left: 2px dashed #2a9d8f;
+        background: #f0fafa !important;
+    }
+
+    .author-card { border: 1px solid #ccc; background: #fff !important; }
+
+    /* Orphan/widow control */
+    p { orphans: 3; widows: 3; }
+    h1, h2, h3 { page-break-after: avoid; }
+
+    a { text-decoration: none; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+
+    .article-body::after {
+        content: "bosser.consulting";
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.8em;
+        color: #999;
+    }
+}

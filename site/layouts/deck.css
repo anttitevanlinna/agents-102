@@ -1,0 +1,180 @@
+/*
+ * =============================================================================
+ * The Deck — Snap-Scroll Whitepaper Layout
+ * =============================================================================
+ *
+ * Thesis always visible at snap rest. Expand to read body text.
+ * Progress dots on right edge. Loads AFTER style.css section 22.
+ *
+ * Usage: add <link rel="stylesheet" href="layouts/deck.css"> to the article page.
+ * =============================================================================
+ */
+
+
+/* ── Hide default article chrome ── */
+.deck .toc-sidebar,
+.deck .toc-mobile,
+.deck .read-progress,
+.deck .wp-phase-particles,
+.deck .wp-phase-callout { display: none !important; }
+
+
+/* ── Snap-scroll container ── */
+.deck .article-body {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    max-width: none;
+    padding: 0;
+    scrollbar-width: none;          /* Firefox */
+}
+.deck .article-body::-webkit-scrollbar { display: none; }  /* Chrome/Safari */
+
+/* Override the flex wrapper — we ARE the viewport now */
+.deck .article-with-toc {
+    max-width: none;
+    padding: 0;
+    display: block;
+}
+.deck .article-with-toc .article-body-wrap {
+    max-width: none;
+    overflow: visible;
+}
+
+
+/* ── Essay cards become snap targets ── */
+.deck .essay-card {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem calc(50vw - 320px);
+    max-width: none;
+    margin: 0;
+    border-top: none;
+    box-sizing: border-box;
+}
+
+
+/* ── Phase h1 banners become snap-centered title cards ── */
+.deck .article-body h1 {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 3rem calc(50vw - 320px);
+    /* Bump phase tint for full-viewport impact */
+    box-sizing: border-box;
+}
+.deck .article-body h1.phase-1 { background: rgba(61, 122, 184, 0.10); }
+.deck .article-body h1.phase-2 { background: rgba(196, 125, 46, 0.10); }
+.deck .article-body h1.phase-3 { background: rgba(184, 61, 61, 0.10); }
+.deck .article-body h1.phase-4 { background: rgba(232, 98, 31, 0.10); }
+
+
+/* ── Thesis blockquote — stays inline, emphasized ── */
+.deck .article-body blockquote.thesis {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+
+/* ── Collapsed body text (JS wraps in .essay-body) ── */
+.deck .essay-card .essay-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+.deck .essay-card.expanded .essay-body {
+    max-height: 5000px;
+}
+
+
+/* ── "Read" expand button ── */
+.deck .essay-expand-btn {
+    font-size: 0.85rem;
+    font-family: var(--font-family);
+    color: var(--text-muted);
+    cursor: pointer;
+    margin-top: 1rem;
+    border: none;
+    background: none;
+    padding: 0;
+    transition: color 0.15s;
+}
+.deck .essay-expand-btn:hover {
+    color: var(--text-primary);
+}
+
+
+/* ── Progress dots (right edge) ── */
+.deck-dots {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 100;
+}
+.deck-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    padding: 0;
+}
+.deck-dot.active {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+/* Phase-colored dots */
+.deck-dot.dot-phase-1 { background: var(--phase-1); }
+.deck-dot.dot-phase-2 { background: var(--phase-2); }
+.deck-dot.dot-phase-3 { background: var(--phase-3); }
+.deck-dot.dot-phase-4 { background: var(--phase-4); }
+
+
+/* ── Mobile: softer snap, no dots, body auto-expanded ── */
+@media (max-width: 768px) {
+    .deck .article-body {
+        scroll-snap-type: y proximity;
+    }
+    .deck .essay-card {
+        padding: 2rem 1.5rem;
+    }
+    .deck .article-body h1 {
+        padding: 2rem 1.5rem;
+    }
+    .deck-dots {
+        display: none;
+    }
+    /* Auto-expand body text on mobile — no tap needed */
+    .deck .essay-card .essay-body {
+        max-height: none;
+    }
+    .deck .essay-expand-btn {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .deck .article-body {
+        scroll-snap-type: none;
+    }
+    .deck .essay-card .essay-body {
+        transition: none;
+    }
+}

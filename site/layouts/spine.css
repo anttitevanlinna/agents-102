@@ -1,0 +1,180 @@
+/* =============================================================================
+   SPINE LAYOUT — continuous scroll with living vertical timeline
+   Activated via ?layout=spine on article.html
+   ============================================================================= */
+
+/* ── Hide default TOC, particles, callouts ── */
+.toc-sidebar,
+.toc-mobile,
+.wp-phase-particles,
+.wp-phase-callout { display: none !important; }
+
+/* ── The spine — fixed vertical timeline on left edge ── */
+.spine {
+    position: fixed;
+    left: clamp(1rem, 4vw, 3rem);
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--border);
+    z-index: 50;
+    border-radius: 2px;
+}
+
+.spine-fill {
+    height: var(--scroll-pct, 0%);
+    background: var(--current-phase-color, var(--phase-1));
+    transition: background 1s ease;
+    width: 100%;
+    border-radius: 2px;
+}
+
+/* ── Content shift — make room for the spine ── */
+.article-with-toc,
+.article-container {
+    margin-left: clamp(3rem, 8vw, 5rem);
+}
+.article-with-toc {
+    gap: 0;           /* no sidebar gap needed */
+    max-width: 720px; /* reading column only */
+}
+
+/* ── Sticky phase label ── */
+.phase-label-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(245, 244, 240, 0.9);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+}
+
+/* ── Essay entrance animation ── */
+.essay-card {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.essay-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Thesis mode — collapse body text, keep thesis + headings ── */
+body.thesis-mode .essay-card > *:not(.thesis):not(h2):not(.essay-date) {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+
+/* Thesis blockquotes stay full size in thesis mode */
+body.thesis-mode .essay-card > blockquote.thesis {
+    max-height: none;
+    opacity: 1;
+}
+
+/* ── Phase banners (h1) — text only, no background ── */
+.article-body h1 {
+    background: none !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2.5rem 0 1.5rem;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+}
+
+/* Phase-colored h1 text */
+.article-body h1.phase-1 { color: var(--phase-1); background: none !important; }
+.article-body h1.phase-2 { color: var(--phase-2); background: none !important; }
+.article-body h1.phase-3 { color: var(--phase-3); background: none !important; }
+.article-body h1.phase-4 { color: var(--phase-4); background: none !important; }
+
+/* Thicker spine segment next to phase h1 — achieved via left border */
+.article-body h1::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * clamp(3rem, 8vw, 5rem) + clamp(1rem, 4vw, 3rem) - 1px);
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    border-radius: 4px;
+}
+.article-body h1.phase-1::before { background: var(--phase-1); }
+.article-body h1.phase-2::before { background: var(--phase-2); }
+.article-body h1.phase-3::before { background: var(--phase-3); }
+.article-body h1.phase-4::before { background: var(--phase-4); }
+
+/* ── Thesis mode toggle button ── */
+.thesis-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    margin-left: 0.75rem;
+}
+.thesis-toggle:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+body.thesis-mode .thesis-toggle {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.thesis-toggle kbd {
+    font-family: var(--font-family);
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+    background: var(--surface);
+    border-radius: 3px;
+    border: 1px solid var(--border);
+}
+
+/* ── Mobile — spine hides, animations disabled ── */
+@media (max-width: 768px) {
+    .spine { display: none; }
+    .phase-label-sticky { display: none; }
+
+    .article-with-toc,
+    .article-container {
+        margin-left: 0;
+    }
+
+    .essay-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .article-body h1::before { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .essay-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .spine-fill { transition: none; }
+}

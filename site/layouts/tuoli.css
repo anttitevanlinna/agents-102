@@ -1,0 +1,236 @@
+/*
+ * =============================================================================
+ * Tuoli — Copenhagen Design Museum Book Layout
+ * =============================================================================
+ *
+ * Narrow text column, thesis lines pulled into the wide right margin as
+ * Tufte sidenotes. Near-empty phase transition pages. The white space IS
+ * the confidence.
+ *
+ * Overrides section 22 of style.css. Load AFTER style.css.
+ * =============================================================================
+ */
+
+
+/* ── Theme override: cooler, watercolor tones ── */
+
+body.light-article {
+    --bg-primary: #fafaf8;
+    --text-primary: #222222;
+    --text-secondary: #555555;
+    --text-muted: #999999;
+    --border: #e5e3de;
+    --accent: #e06830;
+    --phase-1: #5b8db8;
+    --phase-2: #c49a4a;
+    --phase-3: #c06060;
+    --phase-4: #e06830;
+}
+
+
+/* ── Hide elements that don't belong in the tuoli ── */
+
+.toc-sidebar,
+.toc-mobile,
+.read-progress,
+.wp-phase-particles,
+.wp-phase-callout {
+    display: none !important;
+}
+
+
+/* ── Body: extremely generous leading ── */
+
+body.light-article .article-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    letter-spacing: 0.005em;
+}
+
+
+/* ── Layout: narrow column, offset left ── */
+
+.article-with-toc {
+    max-width: 1000px;
+    display: block;
+    padding: 2rem 1.5rem;
+    margin: 0 auto;
+}
+
+.article-with-toc .article-body-wrap {
+    max-width: 520px;
+    margin-left: 80px;
+    overflow: visible;
+}
+
+
+/* ── Phase transitions: dramatic emptiness ── */
+
+.article-body h1 {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 12vh;
+    background: none !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    border-top: none;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    /* Phase title typography — LIGHTER than body text */
+    font-weight: 300;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+/* Phase description: the italic whisper below the title */
+.article-body h1 + p em,
+.article-body h1 + p {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
+
+/* ── Essay title (h2) — present but not competing ── */
+
+.article-body h2 {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    border-top: none;
+    padding-top: 0;
+}
+
+
+/* ── Essay dates ── */
+
+.essay-date {
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* ── Essay cards: space as separator, no borders ── */
+
+.essay-card {
+    position: relative;
+    margin-bottom: 3.5rem;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+.essay-card:first-child {
+    border-top: none;
+}
+
+
+/* ── Thesis blockquote — inline default (mobile) ── */
+
+.article-body blockquote.thesis {
+    border-left: 2px solid;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 0.5rem 0 0.5rem 0.75rem;
+    margin: 0.5rem 0 1.5rem 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+/* ── Thesis as sidenotes (desktop) ── */
+
+@media (min-width: 1200px) {
+    .essay-card {
+        position: relative;
+    }
+
+    blockquote.thesis {
+        position: absolute;
+        right: -260px;
+        width: 220px;
+        border-left: 2px solid;
+        padding: 0 0 0 0.75rem;
+        margin: 0;
+        font-size: 0.85rem;
+        font-weight: 500;
+        line-height: 1.5;
+        background: none !important;
+        top: 0;
+    }
+}
+
+
+/* ── Confirmed blockquote: same teal, minimal ── */
+
+.article-body blockquote.confirmed {
+    font-size: 0.8rem;
+}
+
+
+/* ── Responsive: tighten on smaller screens ── */
+
+@media (max-width: 768px) {
+    .article-with-toc .article-body-wrap {
+        max-width: none;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .article-body h1 {
+        min-height: 40vh;
+        padding-bottom: 8vh;
+        font-size: clamp(2rem, 7vw, 3rem);
+    }
+}
+
+
+/* ── Print: Copenhagen book margins ── */
+
+@page {
+    margin: 22mm 55mm 25mm 22mm;  /* dramatically wide right margin */
+}
+
+@media print {
+    .article-body h1 {
+        page-break-before: right;  /* start on recto page */
+        min-height: auto;
+        padding-bottom: 4rem;
+        font-size: 28pt;
+        font-weight: 300;
+    }
+    .article-body h1:first-of-type {
+        page-break-before: avoid;
+    }
+
+    blockquote.thesis {
+        position: absolute;
+        right: -45mm;
+        width: 40mm;
+        font-size: 8.5pt;
+        border-left: 1.5px solid;
+        padding: 0 0 0 2mm;
+        margin: 0;
+        background: none !important;
+    }
+
+    .essay-card {
+        position: relative;
+    }
+
+    .article-with-toc .article-body-wrap {
+        max-width: 36em;
+        margin-left: 0;
+    }
+}

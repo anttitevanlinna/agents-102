@@ -24,7 +24,7 @@
         </div>
     </nav>
 
-    <div class="wp-particles" id="wp-particles" style="display:none"></div>
+    <div class="wp-interlude" id="wp-interlude"></div>
     <div class="read-progress" id="read-progress"></div>
 
     <article class="article-container" id="article-standard">
@@ -133,16 +133,21 @@
                         // ── Activate light theme for longform ──
                         document.body.classList.add('light-article');
 
-                        // ── Initialize particles (if script loaded) ──
-                        var wpContainer = document.getElementById('wp-particles');
+                        // ── Initialize particle interludes (if script loaded) ──
+                        var wpContainer = document.getElementById('wp-interlude');
                         if (wpContainer && typeof WhitepaperParticles !== 'undefined') {
-                            wpContainer.style.display = '';
                             // Defer init until phase h1s are in the DOM
                             setTimeout(function() {
                                 var phaseH1sForParticles = container.querySelectorAll('.article-body h1');
-                                new WhitepaperParticles('wp-particles', {
-                                    particleCount: 80,
-                                    phaseElements: phaseH1sForParticles
+                                new WhitepaperParticles('wp-interlude', {
+                                    particleCount: 200,
+                                    phaseElements: phaseH1sForParticles,
+                                    callouts: [
+                                        'Finding the right metaphor. Learning to be wrong.',
+                                        'Cycle time is the metric. AI engineering IS software engineering.',
+                                        'Hitting the walls. Failing and succeeding at the same time.',
+                                        'Context is learning. The system compounds.'
+                                    ]
                                 });
                             }, 100);
                         }

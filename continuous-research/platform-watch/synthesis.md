@@ -87,6 +87,10 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 
 **WATCH:** Does OpenShell gain adoption beyond NVIDIA's ecosystem? Does it become the default agent sandbox, or does each platform build its own? The Apache 2.0 license makes embedding into any platform frictionless.
 
+### The Seventh Path: Agent Infrastructure & Governance Meta-Layer
+
+**NEW — see `agent-infrastructure/state.md` for full tracking.** The emerging meta-layer for agent identity, runtime security, and governance across ALL platforms. 25+ products announced at RSAC 2026, zero independently verified deployed-customer outcomes. Key players: Okta for AI Agents (GA April 30 — agents as first-class identities), Astrix Security (NHI fingerprinting + four-method discovery), ConductorOne (AI Access Management + 3,000 MCP servers), Stacklok (ToolHive open-source MCP + supply chain attestation), Vorlon (forensic audit trail), NVIDIA OpenShell/NemoClaw (kernel-level sandboxing). Standards: OWASP Top 10 for Agentic Applications (Level 3 — practitioner-reviewed), NIST AI Agent Standards Initiative (Feb 2026), CSA CSAI Foundation (launched RSAC 2026). **The supply-demand irony:** governance tools are shipping before the agents they govern deploy at scale. The CTO question "who governs agents across ALL our platforms?" has no answer yet — no meta-layer exists.
+
 ### Who Leads for Business Users? (Honest Assessment — Updated)
 
 **Nobody leads.** OpenAI's own COO confirmed (Feb 24, 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." MIT NANDA GenAI Divide: 95% of custom/task-specific GenAI tools report no measurable P&L impact (July 2025, N=52 interviews — narrow success definition, directional. See cycle 80 audit).

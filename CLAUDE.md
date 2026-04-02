@@ -48,7 +48,7 @@ These are the standing objectives for every session, every agent, every cycle. N
 
 **Research directions:** `continuous-research/research-directions-from-framework.md` — priority-ranked investigation topics from internal practitioner research (compound triggers, verification infrastructure, conditions creator role, experience-first adoption).
 
-**Per-platform detail:** `continuous-research/platform-watch/{microsoft-365,openai,google-workspace,claude-anthropic,vertical-saas}/state.md`
+**Per-platform detail (12 categories):** `continuous-research/platform-watch/{microsoft-365,openai,google-workspace,claude-anthropic,aws-bedrock,vertical-saas,open-source-frameworks,rpa-to-agent,collaboration-platforms,agent-infrastructure,ai-native-startups,coding-agents}/state.md`
 
 **Operational:**
 - Cycle prompt: `continuous-research/platform-watch/cycle-prompt.md` — self-contained researcher instructions
@@ -64,7 +64,7 @@ These are the standing objectives for every session, every agent, every cycle. N
 
 1. **Domain research** (`continuous-research/README.md`) — what's becoming possible in agentic business practices, beyond coding. Tracks innovators and early adopters across operations, finance, HR, compliance, customer service, sales, product. Translates chasm-crossing patterns for early majority buyers. All findings tagged Global vs. Nordic.
 
-2. **Platform watch** (`continuous-research/platform-watch/`) — which platform can do which use cases for business users. Semi-autonomous hourly OODA cycles tracking Microsoft, Google, OpenAI, Anthropic, and vertical SaaS. Answers the CTO question with honest evidence-based assessment. Uses personal→team→company agent framework and enterprise reality test (multi-tool, multi-turn, security, promotion path).
+2. **Platform watch** (`continuous-research/platform-watch/`) — which platform can do which use cases for business users. Semi-autonomous hourly OODA cycles tracking Microsoft, Google, OpenAI, Anthropic, vertical SaaS, AWS Bedrock, and RPA-to-agent platforms (UiPath, Automation Anywhere, Power Automate). Answers the CTO question with honest evidence-based assessment. Uses personal→team→company agent framework and enterprise reality test (multi-tool, multi-turn, security, promotion path).
 
 3. **User signals** (`continuous-research/user-signals/`) — what users ask and comment. Automatically captured during conversations. User questions reveal demand gaps. User comments reveal corrections, validations, and insights. Signals steer research as Tier 0 priority (above time-sensitive and eval-driven priorities). This is the 20% peer premium — the network's signal is higher value than any researcher's intuition.
 

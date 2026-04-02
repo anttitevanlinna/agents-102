@@ -2,9 +2,9 @@
 type: prompt
 domain: cross-domain
 evidence_level: null
-platforms: [microsoft, google, openai, anthropic, vertical-saas]
+platforms: [microsoft, google, openai, anthropic, aws, vertical-saas, open-source-frameworks, rpa-to-agent, collaboration-platforms, agent-infrastructure, ai-native-startups, coding-agents]
 nordic: false
-updated: 2026-03-22
+updated: 2026-04-02
 answers:
   - "how does the platform watch research cycle work?"
   - "what are the research rules and priorities?"
@@ -23,6 +23,16 @@ This prompt drives each incremental research cycle. Run with `/loop 60m` or manu
 **The framework:** Personal agent → Team agent → Company-wide agent. We track which platforms support each level and whether a promotion path exists between levels.
 
 **The CTO question we answer:** Which platform can do which business use cases? Who is leading? Why? And: who are the practitioners whose trajectory predicts what becomes mainstream 3-6 months later?
+
+**12 platform categories tracked (expanded April 2026):**
+
+| Category | Platforms | State file |
+|----------|-----------|-----------|
+| Horizontal AI (4) | Microsoft 365, Google Workspace, OpenAI, Anthropic | `{microsoft-365,google-workspace,openai,claude-anthropic}/state.md` |
+| Infrastructure (2) | AWS Bedrock/AgentCore, Agent governance/identity layer | `{aws-bedrock,agent-infrastructure}/state.md` |
+| Vertical/Domain (2) | Enterprise SaaS (Salesforce, ServiceNow, SAP), AI-native startups (Harvey, Sierra, Sana.ai) | `{vertical-saas,ai-native-startups}/state.md` |
+| Build-your-own (2) | Open-source frameworks (LangGraph, CrewAI, Mastra), Coding agents (Claude Code, Copilot, Cursor) | `{open-source-frameworks,coding-agents}/state.md` |
+| Adjacent (2) | Collaboration (Atlassian Rovo, Slack, Notion, Zoom), RPA-to-agent (UiPath, Automation Anywhere) | `{collaboration-platforms,rpa-to-agent}/state.md` |
 
 **Geographic method: global first, Nordic subset second.** Always start with the global scan — that tells us what's hot and upcoming. Then check for Nordic signal as a subset — that tells us roll-out speed and local adoption patterns. If we start Nordic-first, we miss signals. The Nordic scan is never the primary research — it's the "and where are the Nordics on this?" follow-up.
 
@@ -59,6 +69,18 @@ Then read the synthesis index (`../synthesis/index.md`) — it routes you to the
 7. **Follow a thread.** If you find a practitioner writing about real business agent deployment, follow that thread wherever it leads — across platforms, across domains.
 
 8. **AI-native teams.** How do teams that deeply integrate AI into daily work actually operate? Not "teams using AI tools" — teams where AI is the co-worker, not the tool. Track: team characteristics (size, roles, skill profiles), daily practices (human/AI work division, review processes, context management), tool stacks (what they actually use, what they abandoned), working style (async vs. sync, communication patterns, pace), and failure modes. **Platform signal:** people describe tools when describing how they work — capture every tool mention, it feeds back into platform watch. Three-phase expansion: (1) AI-native teams → (2) AI-native product programs → (3) AI-native companies and their structure. State file: `ai-native-teams/state.md`. Seed signals: compound engineering (Every, Imprint, Autodesk), but the scope is broader than any single methodology.
+
+9. **RPA-to-agent transition.** Track UiPath Agent Builder, Automation Anywhere AI Agent Studio, and Power Automate's agent capabilities. The CTO question: "Should we extend our RPA investment to agents?" Most large Nordic companies have 3-7 year RPA investments. Track: what's genuinely agentic vs. rebranded RPA, practitioner deployment experiences, migration paths. State file: `rpa-to-agent/state.md`.
+
+10. **Collaboration platform agents.** Track agents arriving inside tools people already use: Atlassian Rovo, Slack (Agentforce integration), Notion AI agents, Zoom AI Companion. The "Trojan horse" thesis: do agents bypass platform selection by arriving through collaboration tools? Track: adoption evidence, capability boundaries, cross-system limitations. State file: `collaboration-platforms/state.md`.
+
+11. **Agent infrastructure & governance.** Track the meta-layer: Okta for AI Agents, NVIDIA OpenShell, ConductorOne, Entro, Stacklok, CSA CSAI Foundation. 25+ tools exist, zero deployed outcomes. The question: "Who governs agents across ALL platforms?" Track: first real deployments, standards convergence, survey data on agent security incidents. State file: `agent-infrastructure/state.md`.
+
+12. **AI-native startups.** Track AI-native companies disrupting enterprise SaaS: Harvey (legal), Sierra/Decagon (CS), Pilot/Basis (finance), Sana.ai/Workday (knowledge/HR, Nordic origin). The question: "Are AI-natives eating my vendors' lunch?" Track: revenue, churn, independent deployment evidence, failure modes (the 11x pattern). State file: `ai-native-startups/state.md`.
+
+13. **Coding agents (meta-platform).** Track Claude Code, GitHub Copilot, Cursor, Codex, Replit Agent. Not for coding productivity — for the meta-platform thesis: coding agents BUILD other agents, MCP servers, evals, and integrations. They're the factory that makes the factories. Track: compound engineering methodology, non-coding use cases, enterprise adoption. State file: `coding-agents/state.md`.
+
+14. **Open-source agent frameworks.** Track LangGraph, CrewAI, Mastra, Microsoft Agent Framework, Google ADK, Ruflo. The "build instead of buy" path. Track: enterprise deployments (currently near-zero for business agents), RBAC/governance features, framework consolidation. State file: `open-source-frameworks/state.md`.
 
 **Decision criteria:** What would create the most value for a CTO trying to understand the agent landscape right now? Where is our knowledge thinnest relative to how much is happening? What's time-sensitive (just shipped, deal closing, enforcement deadline)? Remember: the CTO cares equally about "what to adopt," "how to transform," and "what does the target state look like" (AI-native teams).
 

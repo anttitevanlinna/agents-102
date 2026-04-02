@@ -24,9 +24,33 @@ Seven topic files, each self-contained. Read this first, then go to the file tha
 
 ## Source files
 
-- Per-platform detail: `../platform-watch/{microsoft-365,openai,google-workspace,claude-anthropic}/state.md`
-- Vertical SaaS: `../platform-watch/vertical-saas/state.md`
-- Full archive (all 65+ OODA cycles, run log, research priorities): `../platform-watch/synthesis.md`
+**Horizontal AI platforms (4):**
+- `../platform-watch/microsoft-365/state.md` — Copilot, Cowork, Foundry, Agent 365
+- `../platform-watch/openai/state.md` — ChatGPT, Codex, Frontier, Agents SDK
+- `../platform-watch/google-workspace/state.md` — Gemini, Workspace Studio, ADK, Vertex
+- `../platform-watch/claude-anthropic/state.md` — Cowork, Antspace, MCP, Agent SDK
+
+**Infrastructure & cloud (2):**
+- `../platform-watch/aws-bedrock/state.md` — AgentCore, Q Business, Nova
+- `../platform-watch/agent-infrastructure/state.md` — Okta, NVIDIA OpenShell, governance tools, identity layer
+
+**Vertical & domain (2):**
+- `../platform-watch/vertical-saas/state.md` — Salesforce, ServiceNow, SAP, Zendesk, HubSpot
+- `../platform-watch/ai-native-startups/state.md` — Harvey, Sierra, Pilot, Intercom Fin, Sana.ai + Nordic startups
+
+**Build-your-own & developer (2):**
+- `../platform-watch/open-source-frameworks/state.md` — LangGraph, CrewAI, Mastra, ADK, MS Agent Framework
+- `../platform-watch/coding-agents/state.md` — Claude Code, Copilot, Cursor, Codex (the meta-platform)
+
+**Adjacent platforms (2):**
+- `../platform-watch/collaboration-platforms/state.md` — Atlassian Rovo, Slack, Notion AI, Zoom AI Companion
+- `../platform-watch/rpa-to-agent/state.md` — UiPath, Automation Anywhere, Power Automate
+
+**Research tracks (not platforms):**
+- `../platform-watch/ai-native-teams/state.md` — how AI-native teams actually operate
+
+**Operational:**
+- Full archive (87+ OODA cycles, run log, research priorities): `../platform-watch/synthesis.md`
 - Domain research: `../findings/`
 - Research insights: `../insights.md`
 - Practitioner roster: `../source-roster.md`

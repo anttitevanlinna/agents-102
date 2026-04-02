@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-02](comments/2026-04-02-three-goals.md) — Three goals: speed of evolution, speed of convergence to winners, sufficient compliance. Centralized platforms sacrifice #1 and #2 for #3. Distributed model can do all three via doctrine + output audit.
 - [2026-04-02](comments/2026-04-02-distributed-beats-centralized.md) — Distributed agents with shared doctrine (Auftragstaktik) may beat centralized platforms. Enterprise software mental model is wrong for agents.
 - [2026-04-02](comments/2026-04-02-no-company-agent.md) — There is no "company-human" — why assume we need "company-agent"? Personal agents + skill sharing + cross-agent messaging = company AI. Bottom-up beats top-down.
 - [2026-04-02](comments/2026-04-02-moltke-tesla-mission-control.md) — Intent Taktik: upstream intent bottleneck symmetric to absorption. Leaders freed from overhead when execution is cheap and info is ambient.

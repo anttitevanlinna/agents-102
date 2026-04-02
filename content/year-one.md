@@ -1,4 +1,6 @@
-# Year One: Leading an Agentic Transformation from the Inside
+# 27 Weeks Inside an Agentic Transformation
+
+*Antti Tevanlinna — 25 years leading technology transformations. Trained 200+ people on building AI agents. Member of Agentics Helsinki. Not an analyst — a practitioner who builds what he writes about.*
 
 These are essays I wrote during one year of leading an enterprise agentic transformation. April 2025 to March 2026. Originally shared weekly in an internal AI newsletter to the engineering organisation, then broadened to the whole company.
 
@@ -20,28 +22,23 @@ Four phases emerge across the year:
 
 ## What Independent Research Later Confirmed
 
-I wrote these essays as they came to me. Months later, a systematic research effort (80+ research cycles across industry publications, practitioner accounts, and academic studies) independently arrived at the same patterns. The table below maps the essays to the external evidence. The practitioner saw it first. The research confirmed it.
+I wrote these essays as they came to me. Months later, a systematic research effort independently arrived at the same patterns.
 
-| Essay | Date | What Independent Research Found |
-|-------|------|-------------------------------|
-| AI Beyond Personal Tool | Apr 17 | The personal → team → company progression is the dominant framework across all agent platforms |
-| Outcomes of AI / What Then? | Apr 25, Jun 27 | Experience-first adoption: WOW → competence → sees future → acts. 7 independent sources converged on this reversed sequence (Mollick/Wharton, Microsoft/HBR, BCG, McKinsey, Coursera, Workera, Infosys/MIT) |
-| Strategizing for the Change | Jun 6 | The Conditions Creator pattern: set up tools + peer networks + safety, then step back. Validated at Citi (4,000 champions, 182K employees), PwC Netherlands (300→6,000 in one year), Varonis (AI Guild) |
-| Cycle Time, Speed, Quality | Jun 13, Aug 29 | The Absorption Bottleneck: AI accelerates generation but review capacity is fixed. Faros AI (10K devs): 91% review time increase. DX (135K devs): time savings plateau then go net negative. Confirmed across 7 domains — engineering, healthcare, legal, academic review, marketing, customer service, compliance |
-| What's After "Try AI"? | Jun 27 | Competence-first is the only sequence with evidence: competence → discovery → context → platform. Skip to platform and you're choosing between vendor stories |
-| AI Engineering IS Software Engineering | Aug 22 | Verification infrastructure is the universal gate for AI-nativeness. Three levels: human review → rule-based checks → agent evaluates agent. You can't skip levels |
-| Knowledge Management | Sep 12 | The company memory gap: personal memory exists (competitive market), team memory barely exists (CLAUDE.md is the hack), company memory is crickets |
-| Discipline, Habits, Context | Oct 3 | Spec-driven leadership reached convergence across 6+ independent signals (Karpathy, StrongDM, Spotify, Mollick, Osmani, 30+ frameworks). The spec is the management artifact |
-| Future of Dependencies | Nov 7 | AI dissolves cross-team barriers because transaction cost of understanding other codebases approaches zero. The internal open source moment |
-| State of Agents | Dec 12 | "We don't have pretty much any evals" — this verification gap is industry-wide and the primary reason non-engineering domains can't go AI-native |
-| Predictions 2026 | Dec 19 | Team agents, coding agents as meta-platform, agent learning — all confirmed by March 2026 evidence |
-| Context is KING | Mar 6 | "Context is how your agent learns." The engineering contract must shift from build-for-stability to build-for-learning. Organizational learning rate is the real ceiling |
-| Curated Agent Project | Mar 13 | The OODA-based agent creation methodology — observe, orient, decide, act — is the operational playbook that scales |
-| The Red Queen | Mar 20 | Competitive compounding is real. Combined with Goldratt's Theory of Constraints and Little's Law: AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched |
+Fourteen of these essays were independently confirmed by systematic research (80+ OODA cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. The practitioner saw it first. The research confirmed it later.
+
+---
+
+---
+
+# Phase 1: Orientation
+
+*Finding the right metaphor. AI as personal tool → organizational tool. Learning to share, learning to be wrong, stretching assumptions.*
 
 ---
 
 ## 2025-04-17 — AI as Official Tool: AI Beyond Personal Tool
+
+> **The thesis:** AI is a team topic, not a personal hack.
 
 I started my AI learning and understanding from the personal viewpoint. I tried AI myself, and I didn't use it for proper work. That was my early days thinking.
 
@@ -55,9 +52,13 @@ I hope we can keep making LLM usage more public. LLMs miss half of their potenti
 
 I still make a lot of mistakes. I suppose that's both AI and learning curve working there. I try to force myself still to share — even when the artifact is not great yet.
 
+> **What research later confirmed:** The personal → team → company progression is the dominant framework across all agent platforms
+
 ---
 
 ## 2025-04-25 — Outcomes of AI: What Will It Be, What Do We Want
+
+> **The thesis:** The outcome can be whatever you choose — but choosing requires prototyping, not planning.
 
 AI can have many outcomes. AI can actually generate anything — especially the LLMs. That makes "let's do AI" an unspecific vision.
 
@@ -71,9 +72,13 @@ The better way to form visions is to prototype it. Draw a picture of the future 
 
 I hope we can collectively build this picture across the organisation. These pieces all form the bigger picture of the AI-infused technology of the future.
 
+> **What research later confirmed:** Experience-first adoption: WOW → competence → sees future → acts. 7 independent sources converged on this reversed sequence (Mollick/Wharton, Microsoft/HBR, BCG, McKinsey, Coursera, Workera, Infosys/MIT)
+
 ---
 
 ## 2025-05-02 — AI as the Eager Junior Developer: The Metaphor for AI
+
+> **The thesis:** The right analogy for AI must place it inside human accountability, not outside it.
 
 Our brain works with mental models and analogies. I remember that somebody said our brain is more like an analogy matcher than a computing machine. Our cognition works by finding patterns from our knowledge and then applying. At least my brain does not work like the computer sequentially.
 
@@ -101,6 +106,8 @@ I failed to see it myself. A few prompts with AI helped me narrow down to two an
 ---
 
 ## 2025-05-09 — Expect to Be Wrong with the Vision and Ideas
+
+> **The thesis:** Ship the wrong idea fast and you learn; polish the wrong idea slowly and you don't.
 
 I used to be worried about making a good impression — always. I wanted to be right. Being right equated to creating value. Being right was progress.
 
@@ -136,6 +143,8 @@ Creating new theory requires us to ask questions such as "what does the observed
 
 ## 2025-05-16 — Stretch and Shuffle Your Assumptions
 
+> **The thesis:** Your assumptions are Lego bricks — if you only use today's pieces, you can only build today's house.
+
 Vision and strategy thinking are about the future to be. The future is not objective. In fact, the future is very subjective. Everyone sees the future their own way. Everyone has their own bias.
 
 We carry a lot of baggage of history entering the discussion about the years to come. What works today is what we know. The problem is that the future will not be like today.
@@ -169,7 +178,17 @@ Interesting pictures of the future can be imagined. Let's be the paranoid optimi
 
 ---
 
+---
+
+# Phase 2: Process Discovery
+
+*Connecting AI to existing engineering discipline. Cycle time as the real metric. AI engineering IS software engineering.*
+
+---
+
 ## 2025-06-06 — Strategizing for the Change
+
+> **The thesis:** Set up the conditions for people to discover AI themselves — then get out of the way.
 
 We are taking early steps of the AI transformation. We are doing this big elephant of a transformation bit-by-bit.
 
@@ -185,9 +204,13 @@ The strategy is also not just "bottom up". The top-down element in the strategy 
 
 (OK. I know I start to sound a bit grandiose. But I hope this gives a bit of light on how the bigger picture holds together).
 
+> **What research later confirmed:** The Conditions Creator pattern: set up tools + peer networks + safety, then step back. Validated at Citi (4,000 champions, 182K employees), PwC Netherlands (300→6,000 in one year), Varonis (AI Guild)
+
 ---
 
 ## 2025-06-13 — Cycle Time, Speed, Quality and AI
+
+> **The thesis:** Lead time is the metric. Everything else is noise.
 
 The lead time is a classic "lean" metric. To calculate lead time, you basically start the clock when you get the "customer order". You stop the clock when the customer has gotten what they ordered. Now this is manufacturing, and we tune this slightly for our software world. Lead time is usually counted from creation of ticket to customer release (or deployment).
 
@@ -205,6 +228,8 @@ I hope we look at 2X speed up by finding better and quicker ways to build in the
 
 Lead time, I find, takes in quality as a driving input. It is a bit counter-intuitive but something I find true pretty much every time.
 
+> **What research later confirmed:** The Absorption Bottleneck: AI accelerates generation but review capacity is fixed. Faros AI (10K devs): 91% review time increase. DX (135K devs): time savings plateau then go net negative. Confirmed across 7 domains
+
 ---
 
 
@@ -212,6 +237,8 @@ Lead time, I find, takes in quality as a driving input. It is a bit counter-intu
 ---
 
 ## 2025-06-27 — What's After "Try AI"?
+
+> **The thesis:** Competence creates vision. Without the hands-on experience, you're choosing between stories, not strategies.
 
 I know it feels for many that we are missing the end goal of AI. The call to action has been "try AI and share." That's quite the activity-oriented goal and you are right to ask: what then?
 
@@ -231,9 +258,13 @@ This means, once you have the basic AI skill, I hope you start to go back to the
 
 The workflow will likely be quite different. More curation. More evaluation. Less algorithmic tinkering. Less time seeking information. But I cannot see the future exactly. I only see some of the interesting outline of the future to be. But that's ok. I feel I have enough direction to continue exploration.
 
+> **What research later confirmed:** Competence-first is the only sequence with evidence: competence → discovery → context → platform. Skip to platform and you're choosing between vendor stories
+
 ---
 
 ## 2025-08-01 — How I Learn AI and Keep Up to Date
+
+> **The thesis:** AI is learnable the same way everything else is — listen, try, write, repeat. There is no shortcut.
 
 I clearly was not an AI expert when I started working full-time on AI four months ago. I knew some of the general direction where things are headed, but pretty much all the detail in knowledge and skill was missing. Here are my main sources of keeping learning.
 
@@ -254,6 +285,8 @@ My experience is that AI is different but the same. It is learnable. And learnin
 ---
 
 ## 2025-08-15 — Toward Integration
+
+> **The thesis:** MCP and agent integration will collapse the handovers between process phases — change one thing, everything propagates.
 
 I have been doing product owner work for an internal AI team. I used to work as a solution architect way back then, so I like to take part in architecture discussions too. Both the PO and architect roles involve making proposals.
 
@@ -290,6 +323,8 @@ This same integration will happen in all end-to-end workflows. MCP is an example
 
 ## 2025-08-22 — AI Engineering IS Software Engineering
 
+> **The thesis:** AI engineering needs more discipline than traditional software, not less. Every facet of quality applies, amplified.
+
 Having been trying to figure out scaling of AI work for the last months, I've come to think AI engineering is no different from software engineering. The challenges and solutions are the same.
 
 Let me try list what I see.
@@ -306,9 +341,13 @@ The more I look at this, AI engineering needs even more control and discipline t
 
 Hence, AI engineering needs to be just as meticulous as good software engineering. I'm happy to be proven wrong too.
 
+> **What research later confirmed:** Verification infrastructure is the universal gate for AI-nativeness. Three levels: human review → rule-based checks → agent evaluates agent. You can't skip levels
+
 ---
 
 ## 2025-08-29 — Why Cycle Time Measures the Effects of AI
+
+> **The thesis:** End-to-end lead time captures everything — speed up one step while breaking another and the metric tells the truth.
 
 Cycle time and lead time are close cousins in engineering, and I will start with a bit of terminology. Please bear with me. I will sprinkle in historical references too — still bear with me.
 
@@ -342,9 +381,13 @@ Finally, the cycle time is a very cold and efficiency-oriented metric. It is ver
 
 We can always improve. The more I live, the more I notice business is a learning game. Product thinkers have coined the term "validation velocity" — a close cousin of "learning velocity". I would very much like to measure those. I (and we) simply haven't figured out how to count learning. Then we can't really put that to a number. In the absence of that, cycle time it is — but let's be mindful of the context, limitations but also opportunities.
 
+> **What research later confirmed:** The Absorption Bottleneck: AI accelerates generation but review capacity is fixed. Faros AI (10K devs): 91% review time increase. DX (135K devs): time savings plateau then go net negative. Confirmed across 7 domains
+
 ---
 
 ## 2025-09-12 — Time to Rethink Knowledge Management
+
+> **The thesis:** Knowledge is becoming like code — version it, review it, store it in files. Wikis are dead.
 
 I think you've seen this over and over again. The customer has a need. Sales talks to customer and finds out what they want. Sales talks to product and information is transferred. Product talks to the team and things are written down in specifications or backlog. This happens repeatedly. We talk, chat, and write down information. We redo the format over and over again inside the company. We are translators and information-mediators.
 
@@ -394,10 +437,14 @@ Human taste still needed. The need of differentiation will still be there. I hol
 
 If you want to get started today: store your AI output to cloud storage. For advanced users: put the material into version control and share to everyone.
 
+> **What research later confirmed:** The company memory gap: personal memory exists (competitive market), team memory barely exists (CLAUDE.md is the hack), company memory is crickets
+
 ---
 
 
 ## 2025-09-19 — In Praise of Continuous Improvement
+
+> **The thesis:** Performance is extensive tool integration — not talent, not effort, but how well your tools and process compound.
 
 One of the first learnings I got with agentic engineering was in a meetup where one very advanced AI product manager stated: "performance is just extensive tool integration." He meant that honing the tools and the workflow together is the way to exceptional performance. He and his team had integrated everything from roadmap to release in one fully integrated toolset which was full of AI.
 
@@ -429,6 +476,8 @@ I'm still unable to really "plan" my way into success. Continuous improvement is
 
 ## 2025-09-26 — Reflections on Q3
 
+> **The thesis:** We can't prove AI made us faster — but the trend is real, the teams with discipline got better, and now we know what's missing.
+
 I wrote down my impressions and thoughts on progress before summer. Now again a quarter is at the end, so why not look back.
 
 First of all: the amount of experimentation and activity with AI and LLMs has been very high across the organisation. We have broad adoption of AI chat tools for daily use. And of course, chat usage is not the point. We have the main development tools like GitHub Copilot, Cursor, Claude Code. The user count of AI and agentic coding tools now covers a clear majority of engineers.
@@ -453,7 +502,17 @@ The trend will continue. LLMs get better and more accurate. We learn to control 
 
 ---
 
+---
+
+# Phase 3: Scaling Reality
+
+*Hitting the walls. Dependencies, context windows, reliability, missing evals. Failing and succeeding simultaneously.*
+
+---
+
 ## 2025-10-03 — Discipline, Habits, and Context Engineering
+
+> **The thesis:** The agent inherits your habits — good and bad. "Habit and taste as code" is the new engineering challenge.
 
 Good habits lead to discipline. A habit is the automation in your brain that develops with repeated action. Your brain automates activity sequences over time. A habit is the triple of trigger, action, and reward. The behaviours where you feel success repeatedly form into habits over time.
 
@@ -469,9 +528,13 @@ I know I sound vague. But that is the translation job for months to come. Then w
 
 A colleague said at a town hall: "Product as code." Let me then add: "Habit and taste as code."
 
+> **What research later confirmed:** Spec-driven leadership reached convergence across 6+ independent signals (Karpathy, StrongDM, Spotify, Mollick, Osmani, 30+ frameworks). The spec is the management artifact
+
 ---
 
 ## 2025-10-10 — Being the best, being at the forefront
+
+> **The thesis:** Being the best is surprisingly achievable — the competition eats the same porridge. Focus and persistence beat talent.
 
 I used to be confused and torn on "being the best in the world". Our CEO has mentioned the ambition of being the best in the world many times over the time I've known him. Those mentions used to get my head in a state of semi-deep dissonance.
 
@@ -504,6 +567,8 @@ We were preparing to present at a prominent AI community event. I expected 200+ 
 ---
 
 ## 2025-10-24 — Vision prepares for serendipity
+
+> **The thesis:** Vision work is brain training for pattern matching — even the wrong vision primes you to spot the right opportunity.
 
 Even imperfect visions prepare you for the right stuff in the AI future.
 
@@ -563,6 +628,8 @@ PS: I want to give a nod to Risto Siilasmaa: the value of scenario work is to id
 
 ## 2025-11-07 — Future of dependencies
 
+> **The thesis:** AI makes the transaction cost of understanding someone else's code approach zero — the internal open source moment is here.
+
 I have been mindful for the whole year that we have trouble with dependencies. Heck, every company I have visited has struggled. Dependencies is one of those software engineering problems that can be alleviated but not fully cured.
 
 Dependencies inherently stem from division of labor and divisions of ownership. We need some set of teams to specialise and focus on domain A. Then we have other teams focus on domain B. Then team C owns platform where both domains depend on.
@@ -607,9 +674,13 @@ I think I hinted I will talk of future of dependencies. I know you hoped for the
 
 (Followup thoughts: Future of SOA in agentic world. Future of internal open source in agentic world.)
 
+> **What research later confirmed:** AI dissolves cross-team barriers because transaction cost of understanding other codebases approaches zero. The internal open source moment
+
 ---
 
 ## 2025-11-14 — You Transform Organisations
+
+> **The thesis:** Transformation is not about you — it's about the network of people changing together, one step at a time.
 
 I used to work in a company where our marketing slogan was "you transform organisations." That was catchy and it reminded me of many good things. I'm no longer in that company, but the slogan stays with me. It reminds me of important things in doing change.
 
@@ -631,6 +702,8 @@ Making people do bigger things is at core leadership. I have big dissonance myse
 
 ## 2025-11-28 — Six Months In: What the Data Actually Says
 
+> **The thesis:** Agentic coding doubled the effect of standard tools — but only when engineering discipline was already there.
+
 After roughly six months of pushing AI adoption across a technology organisation, we ran a data-driven retrospective. The key insight: cycle time improvements were real and measurable — the agentic coding cohort showed the most significant gains, roughly double the effect of standard code-completion tools — but the improvements were unevenly distributed across teams, with big variation month to month. The data made clear that you can't scale agentic engineering without excellent engineering practices underneath it; the teams combining AI tooling with strong process discipline saw the best results.
 
 The trend of cycle time improvement is clear. The second-level effects may be appearing. It is worth keeping an eye on the correlations of causations to higher-level metrics.
@@ -638,6 +711,8 @@ The trend of cycle time improvement is clear. The second-level effects may be ap
 ---
 
 ## 2025-12-05 — Failing and Succeeding at the Same Time
+
+> **The thesis:** Innovation means fumbling. If you're not failing at half the things you try, you're not trying enough things.
 
 In the previous weeks, I'd been looking back at six months of AI adoption. There has clearly been success. But there have also been bitter failures, confusion, not knowing and things that just don't work. I've personally tried to cope with repeated fails.
 
@@ -667,6 +742,8 @@ Five practitioner essays on the state and direction of agentic AI, written from 
 ---
 
 ## 2025-12-12 — State of Agents
+
+> **The thesis:** We don't have pretty much any evals — and that verification gap is why agents work in coding but not yet anywhere else.
 
 *(Disclaimer: not trying to be scientific or exhaustive. Also: please take this as feeling, observation — not as deeply researched truth)*
 
@@ -754,9 +831,13 @@ Want your agent running every Monday? Yep, you can't.
 
 *Don't even get me started....*
 
+> **What research later confirmed:** "We don't have pretty much any evals" — this verification gap is industry-wide and the primary reason non-engineering domains can't go AI-native
+
 ---
 
 ## 2025-12-19 — Predictions 2026
+
+> **The thesis:** Teams will publish agents for other teams, coding agents will outclass plain LLM agents, and the human in the loop will prove essential — not optional.
 
 2026 will be a ride. Here's my take on interesting agent trends.
 
@@ -818,9 +899,21 @@ The final trend is chatting to orchestrating. This is to scale and do many thing
 
 The funny thing about orchestrating is that... orchestrating can be best done by chatting in AI. :)
 
+> **What research later confirmed:** Team agents, coding agents as meta-platform, agent learning — all confirmed by March 2026 evidence
+
+---
+
+---
+
+# Phase 4: Compounding
+
+*Context is learning. The curated agent project structure. Red Queen dynamics. The system learns, not just the person.*
+
 ---
 
 ## 2026-03-06 — Context is KING / Context is learning
+
+> **The thesis:** Context is how your agent learns. More context, better agent. Files are the simplest context. Everything else is overhead.
 
 One thing I keep learning over and over again is the necessity of context. I realised that way back when we were discussing coding with AI. We noticed AI made assumptions and mistakes. Then we realised that was most often because AI just did not have the right rules to follow. It way back then actually had no rules. No context. Every chat started from zero.
 
@@ -850,9 +943,13 @@ You build context of what works with and for the LLM. You build context of what 
 
 The context is the memory of the LLM. The context is how your agent learns. That's next level.
 
+> **What research later confirmed:** "Context is how your agent learns." The engineering contract must shift from build-for-stability to build-for-learning. Organizational learning rate is the real ceiling
+
 ---
 
 ## 2026-03-13 — The Curated Agent Project Structure
+
+> **The thesis:** Get to step 5 in 2 hours, not 2 weeks. The OODA loop is the method. Iteration is the work. Planning is not.
 
 I've written down an agent project structure and practice. This foundation process names the flow and activity to create context-driven and evolving agent systems. Here are the core activities in rough sequence.
 
@@ -874,9 +971,13 @@ Think double loop learning. Your original goals were wrong when you started. At 
 
 We are all the time moving towards self-learning systems. I'm giving more and more complex things for the LLM to solve. I assume the LLM will think through complex sets of requirements and their implications. An LLM does not have a broad "sense" in the same way as humans. An LLM often does not have a broad vision of direction. Human is still clearly better for this. Details: LLM anytime for me. For LLM performance, you need the context. This process is the way to make that happen today.
 
+> **What research later confirmed:** The OODA-based agent creation methodology — observe, orient, decide, act — is the operational playbook that scales
+
 ---
 
 ## 2026-03-20 — The Red Queen
+
+> **The thesis:** Every month you don't compound, someone else does. The Red Queen is already running.
 
 Curt Grimm and Ken Smith put the red queen this way: "Here's the paradox: the more aggressively a firm competes, the greater its performance. But by competing so aggressively, it also forces its rivals to compete more aggressively, thus improving their performance. By being competitive — and thus successful — a firm also creates more competitive — and thus more successful — rivals for itself."
 
@@ -910,6 +1011,8 @@ Why I'm writing this... as always... keep learning new skills and ways. Try unde
 
 Over and out for this week.
 
+> **What research later confirmed:** Competitive compounding is real. Combined with Goldratt's Theory of Constraints and Little's Law: AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched
+
 ---
 
 ## What I Know Now That I Didn't Know Then
@@ -930,5 +1033,19 @@ A year in. Some things I got right. Some I got wrong. Here's what stuck.
 
 ---
 
-*These essays were written from inside the work, not from above it. If they help you think about your own transformation, that's the best outcome I could hope for.*
+## What To Do Monday Morning
+
+If these essays resonated, here's the sequence that works:
+
+1. **Get the experience.** Give yourself and 5 people Claude Code for a week. Build something real for your own work. Not a demo — something you'll use tomorrow.
+
+2. **Let competence create pull.** After the experience, people find their own processes to improve. You don't need a use case workshop. The domain experts ARE the best process identifiers.
+
+3. **Ask the real questions.** Once your people have built things, you'll discover three infrastructure needs: data access, a runtime for what they built, and a way for others to find and use it. These are scoped, practical, answerable.
+
+4. **DM me for results and real numbers. Let's talk more.** antti@bosser.consulting
+
+---
+
+*Built by [Bosser](https://bosser.consulting). Independent practitioner research for the agentic transformation.*
 

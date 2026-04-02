@@ -1555,3 +1555,379 @@ footer p {
 .loading, .error { text-align: center; padding: 4rem; }
 .loading { color: var(--text-muted); }
 .error { color: #cc4444; }
+
+
+/* =============================================================================
+   22. WHITEPAPER / LONG-FORM ARTICLE ENHANCEMENTS
+   ============================================================================= */
+
+/* ── Light theme override ──
+   Applied via body.light-article. Swaps the dark palette for a warm,
+   paper-like reading surface. All existing var() references just work. */
+body.light-article {
+    --bg-primary: #fafaf8;
+    --bg-secondary: #f0efe8;
+    --bg-tertiary: #e8e7e0;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #888888;
+    --border: #ddd;
+    --surface: #e8e7e0;
+}
+
+/* Smooth scroll for TOC anchor links */
+html { scroll-behavior: smooth; }
+
+/* ── Phase color progression — the journey told through color ──
+   Phase 1: cool blue  — orientation, finding your way
+   Phase 2: warm amber — discovery, things clicking
+   Phase 3: tense red  — hitting walls, failing + succeeding
+   Phase 4: accent orange — compounding, arrival */
+:root {
+    --phase-1: #5b9bd5;
+    --phase-2: #e0a458;
+    --phase-3: #d94f4f;
+    --phase-4: #ff6b35;
+}
+
+/* ── Progress bar ──
+   Fixed strip at top of viewport. JS handles width & color transitions. */
+.read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 1000;
+    transition: width 50ms linear;
+    width: 0;
+}
+
+/* ── Layout: wider container with TOC sidebar on desktop ── */
+.article-with-toc {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 1.5rem;
+}
+.article-with-toc .article-body-wrap {
+    max-width: 720px;
+    flex: 1;
+    min-width: 0;
+    /* Needed for the full-bleed h1 trick — children use calc(-50vw + 50%)
+       which requires overflow visible on ancestors up to the viewport. */
+    overflow: visible;
+}
+
+/* ── TOC sidebar (desktop) ──
+   Sticky left column. Phase names colored to match chapter. */
+.toc-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 5rem;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding-right: 1rem;
+    border-right: 1px solid var(--border);
+}
+.toc-sidebar a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 0.2rem 0;
+    transition: color 0.15s;
+}
+.toc-sidebar a:hover,
+.toc-sidebar a.active {
+    color: var(--accent);
+}
+/* Phase group labels */
+.toc-sidebar .toc-phase {
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.toc-sidebar .toc-phase:first-child { margin-top: 0; }
+/* Phase-colored TOC labels */
+.toc-sidebar .toc-phase.phase-1 { color: var(--phase-1); }
+.toc-sidebar .toc-phase.phase-2 { color: var(--phase-2); }
+.toc-sidebar .toc-phase.phase-3 { color: var(--phase-3); }
+.toc-sidebar .toc-phase.phase-4 { color: var(--phase-4); }
+/* Active link inherits phase color (set by JS via CSS custom property) */
+.toc-sidebar a.active-phase-1 { color: var(--phase-1); }
+.toc-sidebar a.active-phase-2 { color: var(--phase-2); }
+.toc-sidebar a.active-phase-3 { color: var(--phase-3); }
+.toc-sidebar a.active-phase-4 { color: var(--phase-4); }
+
+/* ── Mobile TOC ──
+   Collapsible details/summary, appears above content on small screens. */
+.toc-mobile {
+    display: none;
+    margin-bottom: 2rem;
+}
+.toc-mobile summary {
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.toc-mobile nav {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border);
+}
+.toc-mobile a {
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 0.15rem 0;
+    font-size: 0.8rem;
+}
+
+/* ── Author card ──
+   White card on the warm background. Initial circle in accent orange. */
+.author-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border);
+}
+.author-card .author-initial {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--phase-4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.author-card .author-info {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.author-card .author-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* ── Phase banners (h1 inside article body) ──
+   Full-viewport-width colored band even though content is 720px max.
+   Uses the negative-margin trick to break out of the content column. */
+.article-body h1 {
+    /* Full-bleed: extend to viewport edges */
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+    /* Generous vertical space — feels like a chapter break */
+    padding-top: 80px;
+    padding-bottom: 40px;
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+    /* Typography */
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    line-height: 1.2;
+    /* Default banner background (overridden per phase below) */
+    background: rgba(255, 107, 53, 0.08);
+}
+/* The italic description paragraph right after the phase title */
+.article-body h1 + p {
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+}
+
+/* Phase-specific banner backgrounds at 8% opacity */
+.phase-1 h1 { background: rgba(91, 155, 213, 0.08); }
+.phase-2 h1 { background: rgba(224, 164, 88, 0.08); }
+.phase-3 h1 { background: rgba(217, 79, 79, 0.08); }
+.phase-4 h1 { background: rgba(255, 107, 53, 0.08); }
+
+/* Phase-specific h2 colors */
+.phase-1 h2 { color: var(--phase-1); }
+.phase-2 h2 { color: var(--phase-2); }
+.phase-3 h2 { color: var(--phase-3); }
+.phase-4 h2 { color: var(--phase-4); }
+
+/* ── Essay separation (h2) ──
+   Each essay gets breathing room and a quiet top border. */
+.article-body h2 {
+    margin-top: 3rem;
+    margin-bottom: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+}
+
+/* ── Thesis blockquote ──
+   Bolder than surrounding text. 4px left border in the current phase color.
+   Subtle phase-tinted background at 3% opacity. */
+.article-body blockquote.thesis {
+    border-left: 4px solid var(--accent);
+    background: rgba(255, 107, 53, 0.03);
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0 1.5rem 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+.article-body blockquote.thesis p {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Phase-colored thesis blockquotes */
+.phase-1 blockquote.thesis {
+    border-left-color: var(--phase-1);
+    background: rgba(91, 155, 213, 0.03);
+}
+.phase-2 blockquote.thesis {
+    border-left-color: var(--phase-2);
+    background: rgba(224, 164, 88, 0.03);
+}
+.phase-3 blockquote.thesis {
+    border-left-color: var(--phase-3);
+    background: rgba(217, 79, 79, 0.03);
+}
+.phase-4 blockquote.thesis {
+    border-left-color: var(--phase-4);
+    background: rgba(255, 107, 53, 0.03);
+}
+
+/* ── Research confirmation blockquote ──
+   Distinct from thesis — feels like an editorial annotation.
+   Teal accent, smaller font, quieter presence. */
+.article-body blockquote.confirmed {
+    border-left: 3px solid #4ecdc4;
+    background: rgba(78, 205, 196, 0.04);
+    padding: 0.75rem 1rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+.article-body blockquote.confirmed strong {
+    color: #4ecdc4;
+}
+
+/* ── CTA section ── */
+.article-cta {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+.article-cta h2 { margin-top: 0; }
+.article-cta a { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .article-with-toc {
+        flex-direction: column;
+        max-width: 720px;
+    }
+    .toc-sidebar { display: none; }
+    .toc-mobile { display: block; }
+
+    /* On mobile the full-bleed h1 still works but needs smaller padding */
+    .article-body h1 {
+        padding-top: 48px;
+        padding-bottom: 24px;
+    }
+}
+
+
+/* =============================================================================
+   23. PRINT STYLESHEET
+   Light base theme means print is straightforward — mostly hide chrome
+   and ensure phase visuals survive in grayscale.
+   ============================================================================= */
+
+@media print {
+    /* ── Reset to clean print surface ── */
+    body {
+        font-size: 11pt;
+        line-height: 1.6;
+        background: white !important;
+        color: black !important;
+    }
+
+    /* ── Hide interactive chrome ── */
+    nav,
+    footer,
+    .read-progress,
+    .toc-sidebar,
+    .toc-mobile,
+    .article-cta {
+        display: none !important;
+    }
+
+    /* ── Full-width content ── */
+    .article-with-toc,
+    .article-container {
+        max-width: none;
+        padding: 0;
+    }
+
+    /* ── Chapter breaks at each phase ── */
+    .article-body h1 {
+        page-break-before: always;
+        padding-top: 1.5rem;
+        margin-top: 0;
+        background: #f0f0f0 !important;
+    }
+    .article-body h1:first-of-type {
+        page-break-before: avoid;
+    }
+
+    /* ── Thesis blockquote — keep the left border emphasis ── */
+    .article-body blockquote.thesis {
+        border-left: 4px solid #666;
+        background: #f5f5f5 !important;
+        font-weight: 500;
+    }
+
+    /* ── Research confirmation — keep teal accent ── */
+    .article-body blockquote.confirmed {
+        border-left: 3px solid #4ecdc4;
+        background: #f0fafa !important;
+    }
+    .article-body blockquote.confirmed strong {
+        color: #2a9d8f !important;
+    }
+
+    /* ── Author card ── */
+    .author-card {
+        border: 1px solid #ccc;
+        background: #f9f9f9 !important;
+    }
+    .author-card .author-initial {
+        background: #333 !important;
+        color: white !important;
+    }
+
+    /* ── Links: hide underlines, show URLs for external links ── */
+    a { text-decoration: none; }
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666 !important;
+    }
+}

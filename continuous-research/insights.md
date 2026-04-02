@@ -770,6 +770,62 @@ The only path to end-to-end improvement is either: (1) automate the making-it-ri
 
 ---
 
+## Intent Taktik — Freeing Leaders from the Work That Isn't Leadership
+
+**Thesis:** Most of what organizations call "leadership" is actually information routing and approval. AI removes the two constraints that created this work — expensive execution and human-routed information. Intent Taktik names what leadership becomes when those constraints dissolve: define intent, monitor trajectory, intervene on divergence. Everything else — planning ceremonies, status aggregation, change control, coordination meetings — was never leadership. It was overhead imposed by a world where execution was expensive and information moved through people. We call this **Intent Taktik** — a nod to Moltke's Auftragstaktik (mission command), combined with Tesla's "data is the manager."
+
+The absorption bottleneck (L4) describes the downstream problem: AI generates faster than humans can evaluate. But there's a symmetric **upstream intent bottleneck**: humans specify intent slower than AI can consume it. Leaders are squeezed from both ends — they can't feed intent fast enough into the system, and they can't absorb results fast enough to steer. AI sits in the middle, starving for direction and drowning people in output simultaneously.
+
+Traditional program management exists because of two constraints: (1) human execution is slow and expensive, so organizations must plan carefully before committing resources; (2) coordination requires information routing through humans, so organizations need layers to translate intent downward and aggregate results upward. AI removes constraint 1 — execution is fast and cheap, a bad spec costs an afternoon, not a quarter. Real-time trajectory data removes constraint 2 — shared dashboards replace the routing function. If both constraints dissolve, the entire apparatus between strategy and execution — program offices, project managers, steering committees, status reporting, change control boards — isn't leadership infrastructure. It's legacy overhead.
+
+**Intent Taktik isn't a new management philosophy.** Grove's OKRs, Moltke's Auftragstaktik, Marquet's Intent-Based Leadership, Drucker's MBO — they all wanted the same thing: align on intent, let people execute autonomously. They all partially failed because the coordination cost between intent and execution was too high for humans to bridge without middleware. OKRs degenerate into status reporting rituals because between "here's the objective" and "here's whether we hit it," there's a quarter of human-speed coordination that demands the middleware back. Grove wanted Intent Taktik. He got quarterly OKR review meetings. **AI is the enabling technology that makes these old ideas finally work.** Grove's tracking problem, Moltke's coordination problem, Drucker's measurement problem — all solved when AI handles the 95% coordination and trajectory monitoring that used to require human middleware.
+
+**Intent Taktik** combines two principles. **Moltke's Auftragstaktik** (mission command): communicate intent and objective, let people choose how. Decentralized execution, centralized purpose. **Tesla's "data is the manager"**: real-time metrics replace supervisory oversight, the system surfaces what's off-trajectory. Combined: don't evaluate output, monitor trajectory against intent. This is a fundamentally different leadership mode — one that scales, while output review does not. Under traditional management, AI creates more stuff to review (bottleneck). Under Intent Taktik, AI creates more telemetry on trajectory (asset). The same AI output that drowns a reviewing leader *feeds* a trajectory-monitoring leader.
+
+**The organization doesn't flatten to one layer — it compresses to two intent layers with AI-speed execution between them:**
+
+| Layer | Who | Does what | Speed |
+|---|---|---|---|
+| **Portfolio/company** | CEO/CTO/board | "Where do we play, what do we fund?" | Human (should be — one-way doors) |
+| **Product** | Intent Director (the evolved PM) | The Auftrag: what this product becomes, for whom, what success looks like | Human for intent, AI for synthesis upward |
+| **Everything below** | AI + humans with agent competence | Execution, coordination, dependency resolution, scenario simulation | AI speed |
+
+Portfolio/company intent and product intent are genuinely human layers — values, risk appetite, competitive positioning. What dissolves is everything between them: the program offices, project managers, status chains, dependency management, sprint ceremonies. That was coupling infrastructure for human-speed execution. With AI-speed execution, two intent layers replace twelve management layers.
+
+**What Intent Taktik frees leaders to do:**
+- **Hierarchical cascading** (months translating strategy through layers) → leaders write intent once, readable by humans and agents alike. No telephone game.
+- **Annual budget cycles** (quarterly reprioritization at best) → leaders experiment instead of debate. Cheap execution means you try three approaches instead of arguing about which one to plan.
+- **Cross-functional coordination** (weeks of alignment meetings) → shared trajectory dashboards. If both teams see the same data, leaders facilitate direction, not information exchange.
+- **Escalation paths** (when teams disagree, bump it up) → data resolves what used to require a meeting. Leaders intervene on judgment calls, not on information gaps.
+
+**The hard irreducible core — the part that IS leadership:** Intent alignment — humans agreeing on what to prioritize — doesn't automate. Two VPs competing for investment, a CTO choosing risk appetite, a board setting direction. This requires judgment, politics, values. Intent Taktik compresses alignment to fewer, higher-leverage decision points: quarterly strategic intent (worth the time) + continuous trajectory monitoring (no meetings needed) + exception-triggered course correction (flight director mode). Everything between — monthly steerings, weekly statuses, biweekly sprint plannings — was filling the gap between expensive execution and slow information. It was overhead, not leadership.
+
+**Precondition — competence:** Auftragstaktik required that subordinates understood doctrine well enough to make autonomous decisions. You can't give mission command to untrained troops. Similarly, Intent Taktik requires agent competence across the organization — understanding what agents can and can't do, what good intent looks like, how to read trajectory data. **Competence enables Intent Taktik. Without it, you get autonomous execution without shared intent — which is chaos, not leadership.**
+
+**Failure mode — wrong intent, autonomously amplified:** Moltke's system produced WWI when strategic intent was catastrophically wrong but tactical execution was brilliant. Tesla's data-driven management produces the wrong product efficiently when metrics measure the wrong thing. Goodhart's Law meets Auftragstaktik. Intent quality becomes the organizational ceiling — which is exactly why the leadership skill (defining intent, designing metrics, knowing when to intervene) becomes MORE valuable, not less.
+
+**Intent Taktik is a sixth strategy for the absorption bottleneck** — structurally different from the five already documented (eliminate review, scalar metrics, agent-reviews-agent, constrain generation, tiered review). All five still operate on output. Strategy 6: replace output review with trajectory monitoring. Don't make leaders faster at evaluating. Eliminate evaluation as the leadership mode. Define intent, instrument trajectory, intervene on divergence.
+
+**The implication for CTOs:** Intent Taktik isn't about removing leaders. It's about freeing them from the 80% of their current role that isn't actually leadership — the status meetings, the coordination overhead, the information routing, the approval queues. The three leadership skills that remain are the ones that always mattered most: (1) writing clear intent — the Auftrag, (2) designing trajectory metrics that don't Goodhart, (3) knowing when to intervene. Everything else was a tax imposed by constraints that AI is removing. The question for your org: what percentage of your leaders' time is spent on intent and judgment (the part that matters more than ever) vs. routing and approval (the part that's dissolving)?
+
+**Counter-evidence (honest advisory):** (1) Simonetti & Tripodi argue AI *kills* mission command by tempting leaders to overcentralize — because now they CAN see and control everything. The panopticon temptation. Data enables both Intent Taktik and micromanagement; culture determines which wins. (2) Gravitee 2026: 47% of enterprise agents aren't monitored at all — you can't do trajectory monitoring when half the fleet is flying dark. (3) Klarna's reversal — went too far, now rehiring. Intent Taktik requires competence as precondition; without it, you get chaos, not liberation.
+
+**Live case:** Anthropic/Claude Code — ~1 PM (Cat W) for ~50 engineers. Spec as Auftrag, product metrics as trajectory, exception-triggered intervention. No coordination overhead for 50 people because agents close the gap between intent and execution. (L2, single observation.)
+
+**Live case 2 — the tight coupling lock-in:** Large company SVP asked "which platform?" AI system produced 50 ideas → 35 requirements → forward plans in 2.5 days, contradiction-free. Leadership can't absorb the output. The LLM could handle 100 requirements and do 95% of the coordination/optimization better than humans. But nobody can extract any single link from the 12-link management chain — each link's interfaces assume human-speed, human-format actors. The 5% genuine judgment locks the 95% at human speed. **The chicken-and-egg:** you need Intent Taktik to approve Intent Taktik. The old chain can't process its own replacement.
+
+**The PM dissolution trajectory:** Traditional PM (project, program, and product) dissolves into something new. The 50:1 PM-to-engineer ratio (Anthropic/Claude Code) is a trajectory marker, not an endpoint — 100:1 or beyond is plausible as agents improve. The role doesn't disappear; it compresses upward. What dissolves: coordination, status tracking, dependency management, sprint ceremonies — the coupling work between chain links. What remains and scales: intent specification (the Auftrag), upward synthesis (compressing AI-volume results to leadership-absorbable decisions), and trajectory monitoring. The PM becomes bidirectional: intent downward, synthesis upward. The traditional PM was 80% downward translation (strategy → tasks). The Intent Taktik PM is 80% upward synthesis (AI output → absorbable decisions). The scarce skill flipped.
+
+**The adoption seam:** The tightly coupled management chain can't be upgraded link-by-link. But PM sits at the junction between strategy and execution — the single most important interface. Transform how PMs work (Auftrag downward, synthesis upward, trajectory monitoring) and you've changed the critical interface without requiring the whole chain to change simultaneously. PM is the seam where Intent Taktik enters the organization.
+
+**OODA validation (4 cycles, April 2, 2026):** Upstream intent bottleneck confirmed L3 in engineering (10+ practitioners). Downstream absorption confirmed L4 (7 domains). Nobody connects the two as symmetric — that framing is ours. "Intent engineering" crystallizing as discipline name but confined to engineering. Zero in non-technical functions. PM as entry point to carry the pattern across = first mover territory. Mollick's paradox confirms the framing: management *skills* become more valuable, management *roles* become less necessary. The skill is liberated from the role. Gallup span widening (10.9 → 12.1) is the early quantitative signal; Anthropic 50:1 and Meta 50:1 are the structural signals.
+
+**Applies to:** Advisory (org design, PM transformation entry point), newsletter ("Intent Taktik" — naming piece), training (Phase 4 — organizational design for AI), article pipeline (absorption bottleneck follow-up), AI-native team design
+**Source:** Practitioner session April 2, 2026 — synthesis of Moltke's Auftragstaktik + Tesla "data is the manager" + absorption bottleneck (L4) + Little's Law framing + line org planning analysis + 4 OODA validation cycles + live practitioner case (tight coupling lock-in)
+**Date:** 2026-04-02
+
+---
+
 ## Template
 
 Copy this for new insights:

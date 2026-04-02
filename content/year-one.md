@@ -24,7 +24,7 @@ Four phases emerge across the year:
 
 I wrote these essays as they came to me. Months later, a systematic research effort independently arrived at the same patterns.
 
-Fourteen of these essays were independently confirmed by systematic research (80+ OODA cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. The practitioner saw it first. The research confirmed it later.
+Eight of these essays were independently confirmed by systematic research (80+ OODA cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. The practitioner saw it first. The research confirmed it later.
 
 ---
 
@@ -71,8 +71,6 @@ Visioning is not easy. Visioning is the act to imagine the world in 1-2 years (s
 The better way to form visions is to prototype it. Draw a picture of the future architecture very quickly. Show the version to someone. See what the architecture could mean. Get feedback. Then throw out the prototype and keep the gained knowledge. Next step could be an experiment in giving some new data to Claude and see if it can do the job. Especially watch out for the benefit. Then extrapolate a bit. You build the vision bit by bit.
 
 I hope we can collectively build this picture across the organisation. These pieces all form the bigger picture of the AI-infused technology of the future.
-
-> **What research later confirmed:** Experience-first adoption: WOW → competence → sees future → acts. 7 independent sources converged on this reversed sequence (Mollick/Wharton, Microsoft/HBR, BCG, McKinsey, Coursera, Workera, Infosys/MIT)
 
 ---
 
@@ -258,8 +256,6 @@ This means, once you have the basic AI skill, I hope you start to go back to the
 
 The workflow will likely be quite different. More curation. More evaluation. Less algorithmic tinkering. Less time seeking information. But I cannot see the future exactly. I only see some of the interesting outline of the future to be. But that's ok. I feel I have enough direction to continue exploration.
 
-> **What research later confirmed:** Competence-first is the only sequence with evidence: competence → discovery → context → platform. Skip to platform and you're choosing between vendor stories
-
 ---
 
 ## 2025-08-01 — How I Learn AI and Keep Up to Date
@@ -380,8 +376,6 @@ We measure lead time (often called cycle time) primarily on story, task and bug 
 Finally, the cycle time is a very cold and efficiency-oriented metric. It is very one-sided and misses totally the "building the right product". It is the yin without the yang. For us, the balancing force must be the qualitative side of how and what. We ought to find ourselves thriving in the VUCA world. Any inspection of the cycle time metrics must be understood in the context of higher understanding, adaptability and versatility. To build the right product (stressing the word "right product"), we will need to keep building our understanding in conjunction to looking at the cycle time.
 
 We can always improve. The more I live, the more I notice business is a learning game. Product thinkers have coined the term "validation velocity" — a close cousin of "learning velocity". I would very much like to measure those. I (and we) simply haven't figured out how to count learning. Then we can't really put that to a number. In the absence of that, cycle time it is — but let's be mindful of the context, limitations but also opportunities.
-
-> **What research later confirmed:** The Absorption Bottleneck: AI accelerates generation but review capacity is fixed. Faros AI (10K devs): 91% review time increase. DX (135K devs): time savings plateau then go net negative. Confirmed across 7 domains
 
 ---
 
@@ -674,8 +668,6 @@ I think I hinted I will talk of future of dependencies. I know you hoped for the
 
 (Followup thoughts: Future of SOA in agentic world. Future of internal open source in agentic world.)
 
-> **What research later confirmed:** AI dissolves cross-team barriers because transaction cost of understanding other codebases approaches zero. The internal open source moment
-
 ---
 
 ## 2025-11-14 — You Transform Organisations
@@ -899,8 +891,6 @@ The final trend is chatting to orchestrating. This is to scale and do many thing
 
 The funny thing about orchestrating is that... orchestrating can be best done by chatting in AI. :)
 
-> **What research later confirmed:** Team agents, coding agents as meta-platform, agent learning — all confirmed by March 2026 evidence
-
 ---
 
 ---
@@ -943,8 +933,6 @@ You build context of what works with and for the LLM. You build context of what 
 
 The context is the memory of the LLM. The context is how your agent learns. That's next level.
 
-> **What research later confirmed:** "Context is how your agent learns." The engineering contract must shift from build-for-stability to build-for-learning. Organizational learning rate is the real ceiling
-
 ---
 
 ## 2026-03-13 — The Curated Agent Project Structure
@@ -970,8 +958,6 @@ But don't assume you get either of these steps right. Worry not. Human can learn
 Think double loop learning. Your original goals were wrong when you started. At least in 90% of cases. Your failures in step 4 are also feedback on your goals themselves. Go back to your original assumptions. Re-review. Do they hold? Many times the assumptions don't quite hold. OODA. Decide to change and refine your goals. Update the project. All of this is still a conversation in the LLM. Re-run the system. Check the results. It is all a cycle.
 
 We are all the time moving towards self-learning systems. I'm giving more and more complex things for the LLM to solve. I assume the LLM will think through complex sets of requirements and their implications. An LLM does not have a broad "sense" in the same way as humans. An LLM often does not have a broad vision of direction. Human is still clearly better for this. Details: LLM anytime for me. For LLM performance, you need the context. This process is the way to make that happen today.
-
-> **What research later confirmed:** The OODA-based agent creation methodology — observe, orient, decide, act — is the operational playbook that scales
 
 ---
 
@@ -1043,7 +1029,7 @@ If these essays resonated, here's the sequence that works:
 
 3. **Ask the real questions.** Once your people have built things, you'll discover three infrastructure needs: data access, a runtime for what they built, and a way for others to find and use it. These are scoped, practical, answerable.
 
-4. **DM me for results and real numbers. Let's talk more.** antti@bosser.consulting
+4. **If you are running or planning an agentic transformation, I will tell you exactly what worked behind the numbers in these essays.** antti@bosser.consulting
 
 ---
 

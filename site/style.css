@@ -1578,12 +1578,18 @@ body.light-article {
     --border: #d4d1c9;            /* warm border, not cool gray */
     --surface: #eae8e2;
 
+    /* Fix dual-orange: override accent for light context */
+    --accent: #e8621f;            /* brand orange in shadow — closer to #ff6b35 than #e05a1e */
+
     /* Phase colors — deep and saturated for light backgrounds */
     --phase-1: #3d7ab8;           /* deep blue, not pastel */
     --phase-2: #c47d2e;           /* rich amber */
     --phase-3: #b83d3d;           /* deep red */
-    --phase-4: #e05a1e;           /* strong Bosser orange, slightly deeper */
+    --phase-4: #e8621f;           /* Bosser orange — brand in shadow, not replaced */
 }
+
+/* Body text bump for sustained reading */
+body.light-article .article-body { font-size: 1.0625rem; } /* 17px — reduces cpl to ~72 */
 
 /* Smooth scroll for TOC anchor links */
 html { scroll-behavior: smooth; }
@@ -1610,7 +1616,7 @@ html { scroll-behavior: smooth; }
     padding: 2rem 1.5rem;
 }
 .article-with-toc .article-body-wrap {
-    max-width: 720px;
+    max-width: 640px;  /* ~72 cpl at 17px — Bringhurst sweet spot */
     flex: 1;
     min-width: 0;
     /* Needed for the full-bleed h1 trick — children use calc(-50vw + 50%)
@@ -1751,9 +1757,9 @@ html { scroll-behavior: smooth; }
 
 /* Phase-specific banner backgrounds */
 .article-body h1.phase-1 { background: rgba(61, 122, 184, 0.12); }
-.article-body h1.phase-2 { background: rgba(196, 125, 46, 0.12); }
+.article-body h1.phase-2 { background: rgba(196, 125, 46, 0.18); }  /* bumped — warm on warm needs more */
 .article-body h1.phase-3 { background: rgba(184, 61, 61, 0.12); }
-.article-body h1.phase-4 { background: rgba(224, 90, 30, 0.15); }  /* slightly stronger — arrival */
+.article-body h1.phase-4 { background: rgba(232, 98, 31, 0.18); }  /* the arrival — loudest banner */
 
 /* Phase description italic line */
 .article-body h1 + p em,
@@ -1790,8 +1796,8 @@ html { scroll-behavior: smooth; }
 /* ── Essay dates — phase-colored timeline markers ── */
 .essay-date {
     display: block;
-    font-size: 0.7rem;
-    font-weight: 500;
+    font-size: 0.75rem;
+    font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 0.25rem;
@@ -1809,8 +1815,8 @@ html { scroll-behavior: smooth; }
     background: rgba(224, 90, 30, 0.06);
     padding: 1rem 1.25rem;
     margin: 0.5rem 0 1.5rem 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 400;  /* lighter weight — the colored bar does the work */
     line-height: 1.5;
 }
 
@@ -1929,32 +1935,47 @@ html { scroll-behavior: smooth; }
    The light paper-stock theme prints beautifully — barely any overrides needed.
    ============================================================================= */
 
-@media print {
-    body { font-size: 11pt; line-height: 1.6; }
+@page { margin: 1in 0.75in; }
 
+@media print {
+    body { font-size: 12pt; line-height: 1.6; }
+
+    /* Hide chrome */
     nav, footer, .read-progress, .toc-sidebar, .toc-mobile,
     .article-cta, .wp-phase-particles, .wp-phase-callout { display: none !important; }
 
+    /* Constrain measure for print */
     .article-with-toc, .article-container { max-width: none; padding: 0; }
+    .article-body { max-width: 36em; }
 
+    /* Orphan/widow control */
+    p { orphans: 3; widows: 3; }
+    h1, h2, h3 { page-break-after: avoid; }
+
+    /* Phase banners — keep brand colors in print */
     .article-body h1 {
         page-break-before: always;
         margin-left: 0; margin-right: 0;
         padding-left: 0; padding-right: 0;
         background: none !important;
-        border-top: 2px solid #333;
         padding-top: 1.5rem;
         margin-top: 0;
     }
     .article-body h1:first-of-type { page-break-before: avoid; }
+    .article-body h1.phase-1 { border-left: 5px solid #3d7ab8; padding-left: 1rem; }
+    .article-body h1.phase-2 { border-left: 5px solid #c47d2e; padding-left: 1rem; }
+    .article-body h1.phase-3 { border-left: 5px solid #b83d3d; padding-left: 1rem; }
+    .article-body h1.phase-4 { border-left: 5px solid #e8621f; padding-left: 1rem; }
 
+    /* Thesis — keep Bosser orange bar */
     .article-body blockquote.thesis {
-        border-left: 4px solid #333;
-        background: #f5f5f5 !important;
+        border-left: 5px solid #e8621f;
+        background: #faf6f3 !important;
     }
 
+    /* Confirmed — keep teal, use dashed for B&W differentiation */
     .article-body blockquote.confirmed {
-        border-left: 3px solid #2a9d8f;
+        border-left: 3px dashed #2a9d8f;
         background: #f0fafa !important;
     }
 
@@ -1962,4 +1983,14 @@ html { scroll-behavior: smooth; }
 
     a { text-decoration: none; }
     a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+
+    /* Footer attribution */
+    .article-body::after {
+        content: "bosser.consulting";
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.8em;
+        color: #999;
+    }
 }

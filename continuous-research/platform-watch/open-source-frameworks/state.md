@@ -5,7 +5,7 @@ evidence_level: 2
 platforms: [langgraph, crewai, mastra, microsoft-agent-framework, google-adk, ruflo]
 nordic: false
 updated: 2026-04-02
-cycle: 1
+cycle: 2
 answers:
   - "should we build our own agent stack instead of buying vertical SaaS?"
   - "which open-source agent framework is production-ready for business processes?"
@@ -14,8 +14,8 @@ answers:
 
 # Open-Source Agent Frameworks -- Platform State
 
-Last updated: 2026-04-02 (cycle 1)
-OODA cycles: 1
+Last updated: 2026-04-02 (cycle 2 -- practitioner battle reports added)
+OODA cycles: 2
 
 ## Focus
 
@@ -260,13 +260,172 @@ Here's why:
 
 5. **The real play: coding agents building business agents.** The most promising path isn't choosing a framework -- it's using Claude Code or Codex to build the specific agent you need, on whatever framework fits your stack. The coding agent handles the framework complexity. You provide the business judgment. This is the meta-platform argument from our research.
 
+## Practitioner Battle Reports (April 2026)
+
+**This section captures what we couldn't find in vendor documentation: real people describing what it's actually like to build and deploy agents on these frameworks.** Evidence levels noted per finding. Most of this is Level 1-2 (single experiments and practitioner opinions). No convergence-level evidence (Level 3) found for any framework.
+
+### The Universal Finding: It's Not About the Framework
+
+The single strongest signal across all practitioner reports is that **framework choice is almost never the variable that determines success or failure.** What matters is:
+
+1. **Domain knowledge** -- knowing the problem well enough to catch the agent when it makes a bad call. A Reddit user running agents in production for real estate said they tried 4-5 frameworks before landing on one, noting "none of them were the variable that mattered -- what actually mattered was knowing the problem well enough to tell when the agent was wrong." ([DEV Community](https://dev.to/synsun/autogen-vs-langgraph-vs-crewai-which-agent-framework-actually-holds-up-in-2026-3fl8) -- [practitioner direct])
+
+2. **Infrastructure around the agent** -- state persistence, retries, deployment, monitoring. Same practitioner: "Learn the infrastructure side." The debugging workflow determines production survival more than any framework feature. ([DEV Community](https://dev.to/synsun/autogen-vs-langgraph-vs-crewai-which-agent-framework-actually-holds-up-in-2026-3fl8) -- [practitioner direct])
+
+3. **Context engineering, not prompt engineering** -- Manus team bet on context engineering and shipped improvements in hours instead of weeks. Google's ADK team: "Context engineering means treating context as a first-class system with its own architecture, lifecycle, and constraints." Stanford ACE framework (ICLR 2026): contexts as evolving playbooks that accumulate strategies. ([Manus blog](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus) -- [practitioner direct]; [Google Developers Blog](https://developers.googleblog.com/architecting-efficient-context-aware-multi-agent-framework-for-production/) -- [vendor press release]; [Softmax Data](https://softmaxdata.com/blog/the-biggest-lesson-from-ace-iclr-2026-the-power-of-agentic-engineering/) -- [academic/research])
+
+**Evidence level:** Level 3 (convergence). Multiple independent practitioners, the Manus team, Google ADK team, and Stanford researchers all converged on the same finding: the framework is secondary to context management and domain knowledge.
+
+---
+
+### LangGraph Practitioner Experiences
+
+**Moon Robert** (small team, 3 engineers + 1 ML specialist) rebuilt a competitive research pipeline across LangGraph, CrewAI, and AutoGen. Four sequential agents: researcher -> summarizer -> critic -> writer, with critic loop-back. **LangGraph won for their use case.** Key findings:
+- State machine model prevented runaway loops
+- LangSmith tracing: "from print statements everywhere to click on the node that failed"
+- Debugged agent failures *weekly* -- state visibility was critical
+- First run cost $4 in API tokens due to 11 revision cycles before adding revision count caps
+- Learning curve: "you can set up a CrewAI project in an afternoon; a robust LangGraph implementation requires deep understanding of state machines and async programming"
+
+([DEV Community](https://dev.to/synsun/autogen-vs-langgraph-vs-crewai-which-agent-framework-actually-holds-up-in-2026-3fl8) -- [practitioner direct])
+
+**Evidence level:** Level 2 (single experiment, well-documented)
+
+---
+
+### CrewAI Practitioner Experiences
+
+**Moon Robert** (same team as above) found CrewAI's role-based model immediately intuitive to a non-ML teammate reviewing code. But: "fighting the framework rather than using it" when implementing feedback loops. Team simplified the pipeline to avoid loops, making it "less capable than my LangGraph version." CrewAI's task flow is primarily designed for sequential or hierarchical execution, not arbitrary graph-shaped workflows. ([DEV Community](https://dev.to/synsun/autogen-vs-langgraph-vs-crewai-which-agent-framework-actually-holds-up-in-2026-3fl8) -- [practitioner direct])
+
+**Migration pattern confirmed by multiple sources:** CrewAI -> LangGraph is the most common migration path. Teams prototype in CrewAI (fast, intuitive), validate the concept, then hit CrewAI's control flow ceiling. ([Particula](https://particula.tech/blog/langgraph-vs-crewai-vs-openai-agents-sdk-2026) -- [domain trade publication]; [LevelUp GitConnected](https://levelup.gitconnected.com/langgraph-vs-crewai-vs-autogen-which-agent-framework-should-you-actually-use-in-2026-b8b2c84f1229) -- [practitioner analysis])
+
+**The ceiling:** Role-based paradigm couldn't express conditional branching and state rollback needed for compliance workflows. 56% more token overhead per request vs. LangGraph. Agents produce inconsistent output schemas without explicit Pydantic output models. ([MarkAICode](https://markaicode.com/vs/langgraph-vs-crewai-multi-agent-production/) -- [practitioner analysis])
+
+**Evidence level:** Level 2 (multiple practitioners report similar ceiling, but all at individual level)
+
+---
+
+### AutoGen Practitioner Experiences
+
+**Moon Robert's finding:** Speaker selection with `speaker_selection_method="auto"` was "unpredictable -- the manager would sometimes skip the critic entirely, or loop back to the researcher three times in a row." Switching to `round_robin` "fixed the chaos but made the flow rigid." Team had to write custom orchestration logic anyway, defeating the framework's purpose. ([DEV Community](https://dev.to/synsun/autogen-vs-langgraph-vs-crewai-which-agent-framework-actually-holds-up-in-2026-3fl8) -- [practitioner direct])
+
+**Note:** AutoGen is now in maintenance mode, merged into Microsoft Agent Framework. New projects should not start on AutoGen.
+
+**Evidence level:** Level 2 (single experiment)
+
+---
+
+### Mastra Practitioner Experiences
+
+**Kacper Wlodarczyk** (AI Engineer, Vstorm consultancy) built `pydantic-deep`, a batteries-included agent framework on PydanticAI, but also evaluated Mastra. Over two years and six projects at Vstorm, observed that production agents require "planning before acting, operating on real files, and delegating subtasks." Rather than copy-pasting across projects, extracted common components into reusable libraries. ([Medium](https://medium.com/@kacperwlodarczyk/we-built-a-batteries-included-ai-agent-framework-on-pydanticai-heres-the-architecture-53f228d673b6) -- [practitioner direct])
+
+**Developer experience:** Reviews highlight Mastra provides "a notably more enjoyable and productive experience than alternatives like LangChain." JavaScript-native design with clean TypeScript support. Thoughtful separation between deterministic workflows and probabilistic agents. ([Hillock Studio](https://hillock.studio/blog/mastra) -- [practitioner direct]; [Medium](https://justinrich.medium.com/mastra-agent-system-review-a-fresh-take-on-ai-development-04ca3e8e3a1b) -- [practitioner direct])
+
+**Production improvements (2026):** Token-threshold-based routing (auto-selects cheaper model for small inputs, stronger model for larger contexts). Workflow `stepExecutionPath` for debugging. Composite storage for production deployments. ([Mastra changelog](https://mastra.ai/blog/changelog-2026-03-23) -- [vendor press release])
+
+**Evidence level:** Level 2 (small number of practitioners, positive signal)
+
+---
+
+### n8n Practitioner Experiences (Visual Builder)
+
+**Nova** (agent builder for clients, 8-month review) built 20+ AI agents for clients. Flagship: textile company in Karachi -- WhatsApp message capture, intent analysis via OpenAI, inventory lookup in Google Sheets, multilingual response generation. Results: response time from 2 hours to 30 seconds, 85% of queries handled automatically. Also built a 47-node job application processor screening candidates through AI.
+
+**What worked:** Unlimited workflow complexity, code nodes fill gaps, version history, cost-effective ($20/month handling multiple projects).
+
+**What didn't work:**
+- Cryptic error messages wasted hours
+- No undo button -- deleted nodes required backup restoration
+- Community node documentation often nonexistent
+- Steep learning curve: 2-3 weeks for basic competency, **2 months for mastery**
+- Requires basic JavaScript knowledge -- non-technical users hit walls
+
+**Verdict: 4/5 stars.** "If you're serious about building AI agents as a business, n8n's learning curve pays off." But "countless late nights debugging."
+
+**Scale signal:** One user's busiest client processes 1,000+ interactions daily without issues.
+
+([DEV Community](https://dev.to/nova_gg/n8n-review-2026-i-used-it-for-8-months-to-build-ai-agents-honest-verdict-2aib) -- [practitioner direct])
+
+**Evidence level:** Level 2 (single practitioner, detailed and honest)
+
+**Important note:** n8n, Dify, and Flowise represent a different adoption path -- visual builders for business-adjacent users, not Python developers. This may be where real business process agent adoption is hiding, below the radar of the framework comparison articles.
+
+---
+
+### Dify and Flowise
+
+**Dify:** $30M Series Pre-A at $180M valuation (March 2026). Claims organizations use it for document review pipelines, internal copilots, customer support automation, invoice auditing, correspondence drafting. Zero independent practitioner reports found -- everything is vendor-sourced. ([BusinessWire](https://www.businesswire.com/news/home/20260309511426/en/Dify-Raises-$30-million-Series-Pre-A-to-Power-Enterprise-Grade-Agentic-Workflows) -- [vendor press release])
+
+**Flowise:** Acquired by Workday (August 2025). "Simple enough to prototype in minutes, yet powerful enough for production" but "difficult debugging and scaling limitations make it a poor choice for advanced production-grade solutions." Popular with enterprise IT teams including Fortune 500 companies. ([Voiceflow](https://www.voiceflow.com/blog/flowise-alternative) -- [practitioner analysis]; [AI Agents List](https://aiagentslist.com/agents/flowise) -- [domain trade publication])
+
+**Evidence level:** Level 0-1 (vendor claims, no independent practitioner evidence)
+
+---
+
+### PydanticAI Practitioner Experiences
+
+**Kacper Wlodarczyk** (Vstorm) built `pydantic-deep` on PydanticAI. Five standalone packages rather than a monolith. Backend abstraction proved foundational -- agents operate across ephemeral, filesystem, and sandboxed environments by changing one configuration line. "No custom runtime, no proprietary execution engine. Just a PydanticAI agent with the right toolsets pre-wired." ([Medium](https://medium.com/@kacperwlodarczyk/we-built-a-batteries-included-ai-agent-framework-on-pydanticai-heres-the-architecture-53f228d673b6) -- [practitioner direct])
+
+**Market position:** "Dark horse" -- smaller than LangGraph/CrewAI but gaining traction with teams prioritizing type safety and code quality. Leverages Python's type system to catch agent logic errors at development time. Feels familiar to FastAPI users. Supports 25+ model providers. ([DEV Community](https://dev.to/linou518/the-2026-ai-agent-framework-decision-guide-langgraph-vs-crewai-vs-pydantic-ai-b2h) -- [practitioner analysis])
+
+**Evidence level:** Level 2 (single practitioner, technically detailed)
+
+---
+
+### Production Failure Patterns (Cross-Framework)
+
+**Michael Hannecke** (Sovereign AI Strategist, bluetuple.ai) analyzed production agent failures across multiple organizations:
+- Tool calling fails 3-15% of the time in production
+- Multi-agent systems consume 15x more tokens than simple chat
+- A four-agent system costs ~EUR8,500/month vs EUR50 for simple applications
+- Prompt injection success rates ~11% -- unacceptable for financial/database access
+- Models effectively use only 8K-50K tokens despite larger advertised capacities
+- His advice: deploy only when you have "a specific use case with measurable ROI" and can tolerate 3-15% error rates
+
+([Medium](https://medium.com/@michael.hannecke/why-ai-agents-fail-in-production-what-ive-learned-the-hard-way-05f5df98cbe5) -- [practitioner direct])
+
+**Lilian Makena** (Robo Rhythms) found agents "drift off-task, loop on tool calls, or return outputs that looked right but were quietly wrong." The fix: "Routing belongs in your code, not in your prompt. LLM-based routing creates non-deterministic behavior that is hard to reproduce and nearly impossible to debug in production." ([Robo Rhythms](https://www.roborhythms.com/why-ai-agents-fail-in-production/) -- [practitioner direct])
+
+**GitHub Engineering Blog:** Multi-agent workflow failures "come down to missing structure" -- agents close issues other agents just opened, ship changes that fail downstream checks they didn't know existed. ([GitHub Blog](https://github.blog/ai-and-ml/generative-ai/multi-agent-workflows-often-fail-heres-how-to-engineer-ones-that-dont/) -- [practitioner analysis])
+
+**Vectara awesome-agent-failures repo:** Community-curated collection of failure modes. Documents Google Antigravity agent wiping a user's entire drive, Replit agent deleting production database and attempting to hide its actions. ([GitHub](https://github.com/vectara/awesome-agent-failures) -- [practitioner direct])
+
+**Composio report:** Five senior engineers spending 3 months on custom connectors for a shelved pilot = $500K+ in salary burn. Projects die from "Dumb RAG," "Brittle Connectors," and the "Polling Tax." ([Composio](https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap) -- [domain trade publication])
+
+**LangChain State of Agent Engineering (March 2026):** 57% of 1,300+ respondents have agents in production. Quality is the production killer (32% cite it as top barrier). Hallucinations and output consistency biggest challenges for 10K+ employee orgs. 89% have implemented observability; 62% have detailed step-level tracing. Production agents execute at most 10 steps before requiring human intervention in 68% of cases. ([LangChain](https://www.langchain.com/state-of-agent-engineering) -- [vendor press release]. Self-selected sample, treat as directional.)
+
+**Evidence level:** Level 3 (convergence). Multiple independent practitioners converge on the same failure patterns: tool calling unreliability, non-deterministic routing, insufficient observability, and the massive gap between demo and production.
+
+---
+
+### The Convergence Pattern: What Production Practitioners Actually Do
+
+Across all practitioner reports, a clear pattern emerges for teams that succeed:
+
+1. **Start with a single agent, not multi-agent** -- Hannecke: "Multi-agent complexity requires genuine business justification." Most successful deployments use one agent with tools, not a swarm.
+
+2. **Use deterministic code for everything except genuinely ambiguous decisions** -- "Input validation, output formatting, API call construction, error handling -- these don't benefit from LLM flexibility and actively suffer from LLM non-determinism." ([Zircon Tech](https://zircon.tech/blog/agentic-frameworks-in-2026-what-actually-works-in-production/) -- [practitioner analysis])
+
+3. **Invest in observability before scaling** -- "Every production agent system that failed at scale had the same root cause: insufficient observability." 94% of organizations with agents in production have observability in place.
+
+4. **Human-in-the-loop is a requirement, not a limitation** -- 47Billion's insurance company deployment: launched with minimal human oversight, discovered human checkpoints were essential for compliance, error recovery, and trust. ([47Billion](https://47billion.com/blog/ai-agents-in-production-frameworks-protocols-and-what-actually-works-in-2026/) -- [domain trade publication])
+
+5. **Frameworks are converging on the same standards** -- MCP for tool interoperability, A2A for agent-to-agent communication, OpenTelemetry for observability. "The framework you pick today doesn't have to be the framework you're stuck with forever." ([Softmax Data](https://softmaxdata.com/blog/definitive-guide-to-agentic-frameworks-in-2026-langgraph-crewai-ag2-openai-and-more/) -- [domain trade publication])
+
+**Evidence level:** Level 3-4 (convergence approaching meta-pattern). This is the most robust finding from the practitioner research.
+
+---
+
 ## What We Did Not Find
 
 - **No convergence-level evidence (Level 3) for any framework in business process automation.** Individual experiments exist. No pattern of 10-20 independent practitioners deploying the same type of business process agent on any single framework.
 - **No independent deployment metrics from any Fortune 500 company** on any of these frameworks. Every named enterprise is vendor-sourced.
 - **No Nordic enterprise deployments** on any open-source agent framework. Zero Nordic signal.
-- **No head-to-head production comparisons.** All comparisons are benchmark-level or opinion-level, not "we tried both in production and here's what happened."
-- **No business user interfaces.** Every framework is developer-only. No business user will configure agents on these platforms without engineering support.
+- **No head-to-head production comparisons.** Moon Robert's three-framework comparison is the closest we found, but it's one team on one use case. No "we ran both in production for 6 months" comparison exists.
+- **No business user interfaces.** Every code-first framework (LangGraph, CrewAI, Mastra, PydanticAI) is developer-only. Visual builders (n8n, Dify, Flowise) get closer but still require JavaScript/API literacy.
+- **No non-coding business process agent practitioner reports.** We found zero blog posts or threads from someone who built an HR onboarding agent, financial reconciliation agent, or compliance monitoring agent on any open-source framework and wrote about the experience. All practitioner reports are about coding/research/content generation agents.
+- **No Dify practitioner reports.** Despite $30M funding and claimed enterprise adoption, zero independent practitioners wrote about their Dify experience. This is suspicious -- either adoption is lower than claimed, or the user base isn't the blogging type.
+- **No long-term production reports.** All practitioner accounts describe building and initial deployment. Nobody has written "I ran this agent framework in production for 12 months, here's what happened." The longest report found is Nova's 8-month n8n review.
 
 ## What We Need To Learn
 
@@ -280,6 +439,11 @@ Here's why:
 - [ ] Google ADK adoption -- is anyone outside Google Cloud actually using it? Or is it a Google Cloud lock-in play?
 - [ ] Ruflo star count -- investigate whether stars are artificial (star-buying services, bot activity)
 - [ ] Business process agent templates -- are any frameworks shipping pre-built agents for HR, finance, compliance, or operations?
+- [ ] **n8n / Dify / Flowise deep dive** -- visual builders may be where real business process agent adoption is hiding. Need more practitioner reports from this segment.
+- [ ] **Long-term production reports** -- nobody has written about running agents for 12+ months. Need to track practitioners who wrote initial deployment reports and check back in 6 months.
+- [ ] **Workday + Flowise implications** -- what does Workday's acquisition mean for open-source agent builders? Is Flowise becoming an HR/Finance agent platform?
+- [ ] **"No framework" practitioners** -- find developers who deliberately chose no framework and succeeded. The Firecrawl article mentions a pipeline using direct API calls to DeepSeek V3 and Claude. Where else is this pattern working?
+- [ ] **Cost reality in production** -- Hannecke cites EUR8,500/month for a 4-agent system. Need more data points on actual production costs across frameworks.
 
 ## Sources
 

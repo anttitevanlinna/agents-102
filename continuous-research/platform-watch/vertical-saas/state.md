@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-03-24
-cycle: 69
+updated: 2026-04-03
+cycle: 87
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -35,7 +35,7 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
   - Wiley: 40%+ case resolution improvement, $213K saved ([TechInformed](https://techinformed.com/salesforce-launches-agentforce-saks-wiley-and-wyndham-spearhead-no-code-ai-for-enterprise/))
   - reMarkable (Nordic): 50% autonomous case handling + internal agents via Slack ([vendor case study — Level 0](https://www.salesforce.com/agentforce/metrics/))
   - 1-800Accountant: 70% repetitive inquiry automation during tax season ([Ksolves](https://www.ksolves.com/blog/salesforce/top-companies-using-agentforce))
-  - Engine (travel): $2M anticipated savings, CSAT 3.7→4.3, deployed in 12 days ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
+  - Engine (travel): $2M projected savings (forward-looking, not yet realized), CSAT 3.7→4.3, deployed in 12 days ([TechHQ](https://techhq.com/news/salesforce-agentforce-enterprise-agentic-ai/), Apr 2026) — [domain trade publication]
   - Nexo: 62% case resolution as early adopter despite "technical debt" challenges ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
   - Engie: 83% user assistance rate ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
   - Safari365: turned 15% efficiency goals into 30%+ reality, 35 employees ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))

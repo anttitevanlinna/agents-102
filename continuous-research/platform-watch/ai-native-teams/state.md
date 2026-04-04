@@ -4,8 +4,8 @@ domain: cross-domain
 evidence_level: 3
 platforms: [claude-code, cursor, codex, honk, intercom-fin]
 nordic: true
-updated: 2026-03-30
-cycle: 74
+updated: 2026-04-04
+cycle: 89
 answers:
   - "what does an AI-native team actually look like?"
   - "how do teams divide work between humans and agents?"
@@ -15,7 +15,7 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-04-03 (cycle 88)
+**Last updated:** 2026-04-04 (cycle 89)
 **OODA cycles:** 6
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
@@ -121,6 +121,18 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 - DORA 2025 (n=5,000): 21% more tasks, 98% more PRs merged individually, but org delivery metrics flat. AI adoption improves throughput but has NEGATIVE relationship with stability. ([DORA report](https://dora.dev/research/2025/dora-report/), Sep 2025) — [academic/research]
 - S&P Global: 42% of companies abandon majority of AI initiatives pre-production, up from 17% one year prior. ([Derosiaux/Medium](https://sderosiaux.medium.com/what-changed-in-q4-2025-and-why-enterprises-are-afraid-of-2026-2027-ccd4e632baae), Dec 2025) — [practitioner analysis]
 - Mollick/P&G: Individual + AI ≈ team without AI for average work, but teams + AI produce significantly more top-10% exceptional solutions. ([One Useful Thing](https://www.oneusefulthing.org/p/the-cybernetic-teammate), 2026) — [practitioner direct / academic]
+
+**Cycle 89 update — Absorption Bottleneck sub-pattern (approaching Level 3):**
+
+The Amplification Paradox has a specific operational mechanism: Little's Law. AI increases task/PR arrival rate while human review capacity (service rate) stays fixed. Queue grows. This is why org metrics stay flat even when individual output 98% more PRs.
+
+- Rishi Baldawa (Nov 2025): Explicit Little's Law application. GitClear data: 48% more copy-paste code, bug rates up 41% for Copilot users. Review service rate DOWN while arrival rate UP = queue breakdown. ([baldawa.com](https://rishi.baldawa.com/posts/pr-throughput/littles-law-ai-breaks-process/)) — [practitioner direct]
+- Faros Research (Jul 2025): 98% more PRs, but PR review time up 91%. Delivery metrics flat. "AI-driven coding gains evaporate when review bottlenecks can't match the new velocity." ([faros.ai](https://www.faros.ai/blog/ai-software-engineering)) — [domain research]
+- Simon Willison (Apr 2026): Running 4 parallel agents exhausts him by 11 AM. "Using every inch of my 25 years of experience...mentally exhausting." Cognitive load of oversight is the scarce resource, not compute. ([simonwillison.net](https://simonwillison.net/2026/Apr/2/lennys-podcast/)) — [practitioner direct]
+- ActivTrak (n=10,584, 180 days, Mar 2026): Email workload +104%, messaging +145%, deep-focus work -9%. "The data is unambiguous: AI does not reduce workloads." ([Fortune/ActivTrak](https://fortune.com/2026/03/13/ai-isnt-reducing-workloads-its-straining-employees-time-spent-emailing-doubled-deep-focus-work-fell/)) — [behavioral data, vendor-published with caveats]
+- UC Berkeley (n=200, 8 months, Feb 2026): Workers added more tasks instead of reducing hours. AI fills breaks, increases multitasking, reduces overall productivity despite initial gains. ([Fortune/Berkeley](https://fortune.com/2026/02/10/ai-future-of-work-white-collar-employees-technology-productivity-burnout-research-uc-berkeley/)) — [academic]
+
+**Counter-evidence — dark factory eliminates review bottleneck:** StrongDM (3 engineers, 32,000 lines production code since Jul 2025, no human writes or reviews code). Solution: scenario-based holdout testing as automated QA. Bottleneck shifts from review to specification quality. ([simonwillison.net](https://simonwillison.net/2026/Feb/7/software-factory/)) — [practitioner direct]. This is Goldratt confirmed: eliminate review constraint → specification constraint emerges next. The review bottleneck is an intermediate state, not permanent — but eliminating it requires significant QA infrastructure investment most teams don't have.
 
 ### Finding: "Let AI Run, Review Later" Fails — Active Monitoring Essential
 - Sachdeva's initial assumption that agents could work independently with post-hoc review proved ineffective. Active monitoring throughout development was essential for catching issues and enabling better design decisions. Foundational engineering skills became MORE critical, not less. ([Applied Context](https://www.appliedcontext.ai/p/ai-native-engineering-flow), Dec 2025) — [practitioner direct]

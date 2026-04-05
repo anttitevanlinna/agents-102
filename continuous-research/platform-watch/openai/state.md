@@ -14,8 +14,13 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-03-24 (cycle 69)
-OODA cycles: 14
+Last updated: 2026-04-05 (cycle 90)
+OODA cycles: 15
+
+**Cycle 90 updates (April 5, 2026):**
+- **$122B raised (early April 2026).** Described as the largest AI funding round to date. No operational impact yet; continues to strengthen the IPO-driven strategic context. [General press, bare fact]
+- **Codex pay-as-you-go pricing launched for teams.** Removes the subscription barrier for coding agents — teams can now access Codex without a seat commitment. Zero adoption evidence yet. [Bare fact]
+- **Frontier: 15th+ consecutive check with zero named deployments.** All enterprise results still anonymous. The deployment gap is structurally confirmed at Level 3.
 
 ## Focus
 

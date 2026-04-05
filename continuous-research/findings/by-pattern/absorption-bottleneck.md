@@ -5,7 +5,7 @@ evidence_level: 4
 platforms: [multiple]
 practitioners: [Osmani, Faros AI, DX, DORA, CodeRabbit, Karpathy, Willison, Furze, NBER, Cursor/Graphite, Anthropic]
 nordic: false
-updated: 2026-03-31
+updated: 2026-04-05
 answers:
   - "why doesn't AI productivity show up in organizational metrics?"
   - "what happens when agents generate faster than humans can evaluate?"
@@ -17,7 +17,9 @@ answers:
 
 # The Absorption Bottleneck — When AI Generates Faster Than Humans Can Evaluate
 
-**Evidence level:** Level 4 (cross-domain meta-pattern) | **Last updated:** 2026-03-31 | **Source:** Cycles 76 + 81
+**Evidence level:** Level 4 (cross-domain meta-pattern) | **Last updated:** 2026-04-05 | **Source:** Cycles 76 + 81 + 90
+
+**Mainstream crossing signal (cycle 90, April 2026):** HBR published "AI Doesn't Reduce Work — It Intensifies It" (Feb 2026). SXSW 2026 CMO data confirms $2-3 training overhead per $1 AI tool spend, with 60-70% tool abandonment without facilitation. The absorption bottleneck concept is now reaching mainstream business press — the practitioner-to-enterprise confirmation arc described in research methodology. Still no entity using the term "absorption bottleneck" specifically.
 
 **L4 upgrade (cycle 81):** The absorption bottleneck is confirmed across 6+ domains beyond engineering: academic peer review (21% of ICLR 2026 reviews fully AI-generated), healthcare (90-96% alert override rates, 40+ years of fatigue research), marketing (only 25.8% of web pages purely human-written, consumer trust dropped from 60% to 26%), legal (700+ court cases with AI hallucinations), customer service (Klarna reversal), and compliance/government (Stanford "cognitive escrow"). Three academic papers describe it as domain-independent cognitive failure. This is not an engineering problem — it's a human cognition problem that manifests wherever AI output volume exceeds human evaluation capacity.
 

@@ -3,9 +3,9 @@ type: finding
 domain: cross-domain
 evidence_level: 4
 platforms: [multiple]
-practitioners: [Osmani, Faros AI, DX, DORA, CodeRabbit, Karpathy, Willison, Furze, NBER, Cursor/Graphite, Anthropic]
+practitioners: [Osmani, Faros AI, DX, DORA, CodeRabbit, Karpathy, Willison, Furze, NBER, Cursor/Graphite, Anthropic, CircleCI, Ronacher, Bowley, Thoughtworks]
 nordic: false
-updated: 2026-04-05
+updated: 2026-04-06
 answers:
   - "why doesn't AI productivity show up in organizational metrics?"
   - "what happens when agents generate faster than humans can evaluate?"
@@ -17,7 +17,9 @@ answers:
 
 # The Absorption Bottleneck — When AI Generates Faster Than Humans Can Evaluate
 
-**Evidence level:** Level 4 (cross-domain meta-pattern) | **Last updated:** 2026-04-05 | **Source:** Cycles 76 + 81 + 90
+**Evidence level:** Level 4 (cross-domain meta-pattern) | **Last updated:** 2026-04-06 | **Source:** Cycles 76 + 81 + 90 + 91
+
+**Platform-scale quantitative confirmation (cycle 91, April 6, 2026):** CircleCI 2026 State of Software Delivery (8M+ PRs, 5,000+ teams) provides the largest quantitative dataset yet confirming the WIP accumulation dynamic: 59% more daily workflow runs (generation up), 7% DECLINE in median main-branch throughput (delivery down), 70.8% main-branch success rate (five-year low). Only 1 in 20 teams (5%) managed to scale both generation AND delivery. Independent practitioner Rob Bowley ([blog.robbowley.net](https://blog.robbowley.net/2026/04/02/more-code-less-delivery-but-does-the-circleci-2026-report-really-show-1-in-20-teams-are-benefiting/)) states directly: "for 95% of teams, AI is generating more work in progress that isn't shipping." Armin Ronacher (Feb 2026, [lucumr.pocoo.org](https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/)) independently identified review as "the final bottleneck" using queue dynamics identical to Little's Law. Thoughtworks analysis adds mechanism: AI code is "often syntactically correct but contextually misaligned" ([Thoughtworks](https://www.thoughtworks.com/insights/blog/generative-ai/a-thoughtworks-perspective-on-circleci-s-2026-state-of-software-)). Together: the Tier 0 user signal (Little's Law / WIP explosion) is now Level 3 confirmed with platform-scale data.
 
 **Mainstream crossing signal (cycle 90, April 2026):** HBR published "AI Doesn't Reduce Work — It Intensifies It" (Feb 2026). SXSW 2026 CMO data confirms $2-3 training overhead per $1 AI tool spend, with 60-70% tool abandonment without facilitation. The absorption bottleneck concept is now reaching mainstream business press — the practitioner-to-enterprise confirmation arc described in research methodology. Still no entity using the term "absorption bottleneck" specifically.
 
@@ -34,6 +36,10 @@ answers:
 
 | Metric | Source | What it shows |
 |--------|--------|--------------|
+| +59% workflow runs YoY | [CircleCI 2026](https://circleci.com/blog/five-takeaways-2026-software-delivery-report/) (8M+ PRs, 5K+ teams) — [domain trade publication] | Generation side exploding |
+| -7% main-branch throughput (median) | CircleCI 2026 (same dataset) | Delivery side collapsing |
+| 70.8% main-branch success rate | CircleCI 2026 (five-year low) | Quality collapsing under volume |
+| 95% of teams fail to scale both | CircleCI 2026 / [Bowley critique](https://blog.robbowley.net/2026/04/02/more-code-less-delivery-but-does-the-circleci-2026-report-really-show-1-in-20-teams-are-benefiting/) | WIP explosion is the norm, not the exception |
 | 91% increase in PR review time | [Faros AI](https://www.faros.ai/blog/ai-software-engineering) (10K+ devs) — [practitioner analysis] | More AI code = way more human review |
 | 98% more PRs merged per developer | Faros AI (same study) | Volume explodes |
 | 1.7x more issues in AI-generated code | [CodeRabbit](https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report) (470 PRs) — [practitioner analysis] | AI code needs MORE review, not less |

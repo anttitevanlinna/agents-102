@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
 nordic: true
-updated: 2026-04-03
-cycle: 87
+updated: 2026-04-06
+cycle: 91
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -310,6 +310,11 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Gartner: "assess now, adopt later" on E7.** Called Agent 365 "a work in progress with limited net new functionality." Bundle discount 13.2% underwhelms. Recommended as negotiation leverage, not immediate adoption. ([TechTarget](https://www.techtarget.com/searchitoperations/news/366639980/Microsoft-365-E7-adds-AI-governance-prices-draw-critiques), Mar 2026)
 - **Nordic: ninth consecutive zero** for M365 business agent deployments. BCG data confirms the gap: Nordic companies are buying tools, not redesigning workflows.
 
+### From cycle 91 (Cowork first independent review, April 6, 2026):
+- **Copilot Cowork — first independent hands-on review found (Day 27 post-Frontier access).** Nick DeCourcy (Bright Ideas Agency, M365 digital transformation consultant): "often generates useful plans and completes multi-step tasks" within M365, but "can still struggle with nuance, context interpretation, or complex exceptions." Compared against standalone Claude Cowork — Copilot Cowork is capability-limited (no local computer use, no third-party integrations outside M365). Governance required before enterprise deployment. **Critical caveat: reviewer is from Microsoft partner ecosystem, not an internal enterprise practitioner.** Level 2 — first independent review, but partner-tier not customer-tier. ([HubSite365](https://www.hubsite365.com/en-ww/crm-pages/copilot-cowork-first-look-at-microsoft-365-copilots-biggest-update-yet-69572f8a-3492-40b5-83f3-6c4ccb4235fd.htm), practitioner analysis, April 2026)
+- **Cowork vs. standalone Claude Cowork gap confirmed.** First comparative review shows standalone Claude Cowork more capable than Microsoft-integrated version. Copilot Cowork limitations: no local computer use, M365-only integrations. This gap is strategically significant — Microsoft sells Cowork as its flagship AI capability but it lags the underlying model's standalone product.
+- **Nordic: eleventh consecutive zero** for M365 business agent deployments.
+
 ### From cycle 36 (Cowork structural silence, Foundry one week post-GA, Nordic tenth zero):
 - **Cowork silence confirmed structural across 5 consecutive cycles.** 14+ days, zero independent reviews. Other Frontier features (Notebooks, Planner Agent) shipping on schedule — Cowork is the specific exception. Ben Thompson (Stratechery, March 10): Cowork proves model-agnosticism is dead for agentic work — model + harness must be integrated. Microsoft must partner with Anthropic for the capability it sells as its future. Microsoft leadership reshuffle March 17 (Roslansky, Clarke, Lamanna) 8 days after Cowork announcement. ([Stratechery](https://stratechery.com/2026/copilot-cowork-anthropics-integration-microsofts-new-bundle/), practitioner analysis). (source: runs/2026-03-22-cycle36.md)
 - **Foundry one week post-GA: zero new deployments, pre-GA bugs persist.** Corvus Energy still the only named customer (no metrics). All pre-GA reliability issues remain open: JSON parsing failures, Code Interpreter timeouts (EastUS2), agent identity bug, private networking breaks Workflow agents, intermittent refusals. Some practitioners evaluating Claude as fallback. Practitioner content = tutorials + bug reports only. Azure outage March 9-10 hit Norway East + Sweden Central. (source: runs/2026-03-22-cycle36.md)
@@ -325,8 +330,8 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - [x] Copilot Cowork Frontier rollout: early user reports? **Answer: No. 21+ days past "late March" broader access promise. Zero reviews.**
 - [x] E7 launch (May 2026): adoption signals? **Answer: No adoption signals. Convergent pricing skepticism from practitioners.**
 - [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 6 cycles.**
-- [x] Copilot Cowork independent reviews — **Answer: zero through March 22 (14+ days, 5 consecutive cycles). Other Frontier features shipping, Cowork not. Silence confirmed structural. Thompson: model-agnosticism dead for agentic work.**
-- [ ] Copilot Cowork — did March end without broader Frontier access? Check early April. If yes, Microsoft missed its own stated timeline.
+- [x] Copilot Cowork independent reviews — **Answer: First review found April 6 (cycle 91, Day 27 post-Frontier access). Partner ecosystem reviewer (HubSite365), not internal enterprise practitioner. Verdict: M365-native tasks work; exceptions need human review; standalone Claude Cowork more capable. Access still restricted — partner access ≠ general enterprise access.**
+- [x] Copilot Cowork — did March end without broader Frontier access? **Answer: YES. March ended without broader access (Frontier preview only March 30). Microsoft missed its stated "late March" broader access timeline. Access is still Frontier-tier restricted as of April 6.**
 - [ ] E7 early adoption data — public preview April, GA May 1. Watch May-June 2026.
 - [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts. No new agent content since cycle 18.
 - [x] Foundry Agent Service production deployments — **Answer: one week post-GA, still only Corvus Energy (no metrics). Zero new independently verified deployments. Named partners still partnership quotes only.**

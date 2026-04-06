@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-03-24
-cycle: 69
+updated: 2026-04-06
+cycle: 91
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -344,6 +344,17 @@ After 10 research cycles searching across X.com, Reddit, Hacker News, blogs, and
 
 ### EEA — Cosmetic Rebrand, Same Restrictions (Level 2)
 Connectors rebranded to "Apps." GitHub connector now global (including EEA). Core connectors (Drive, SharePoint, Dropbox, Box) still blocked for Plus/Pro in EEA. Deep research connectors still not available in EEA. No full parity date. ([OpenAI Help Center](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt); [DataStudios](https://www.datastudios.org/post/chatgpt-agent-appears-in-europe-despite-no-formal-announcement), Mar 2026)
+
+### Cycle 91 Updates (April 6, 2026)
+
+**Frontier named early adopters now public — still zero practitioner accounts (15th+ consecutive check).**
+Named customers: Uber, State Farm, Intuit, Thermo Fisher Scientific, HP, Oracle. Consulting alliances: Accenture, BCG, Capgemini, McKinsey. AI-native Frontier Partners: Harvey, Sierra, Clay, Abridge, Ambience, Decagon. Source: [CNBC](https://www.cnbc.com/2026/02/23/open-ai-consulting-accenture-boston-capgemini-mckinsey-frontier.html) (Feb 23, 2026, general press, announcement facts only). Zero practitioners at any of these organizations have written about Frontier deployments. AI-native partners (Harvey, Sierra) are where practitioner signal will emerge first — watch those sources. The announcement-to-deployment gap now exceeds 60 days with zero independent evidence. Level 1 for traditional enterprises; Level 2 for AI-native partners.
+
+**$122B funding round (April 2026).** Largest AI funding round to date. Budget implication: removes near-term runway constraint; extends Frontier infrastructure investment runway. [Multiple general press sources, bare fact] — Level 1.
+
+**Codex pay-as-you-go pricing for teams (April 2026).** Removes subscription barrier for coding agent access. Developer adoption impact to track. No business user impact. [General press, bare fact] — Level 1.
+
+---
 
 ### Frontier — Zero Evidence Confirmed for Tenth Consecutive Check (Level 0)
 Re-confirmed in cycle 32 across two parallel research agents. Zero independent deployment reports from any named customer. Zero new customers since Feb 5. Zero Frontier-related posts on Reddit/HN. All evidence traces to launch announcement. PE JV still unsigned as of March 16. (source: runs/2026-03-22-cycle32.md)

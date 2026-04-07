@@ -1,0 +1,3 @@
+Practitioner observes: teams building at 10x speed, shipping 10x features, but business impact unchanged. The assumption that development speed was the constraint gets exposed — it was the excuse. The real constraint is knowing what to build. This is NOT the decision-speed bottleneck (slow approvals). It's that organizations don't know what to want. Current research covers the absorption bottleneck (can't ship) but not the level above (shipped successfully, no business impact).
+
+**Gap:** Zero practitioner accounts of solving the delivery problem and then hitting the "now what?" wall. Research is stuck one level below. Adjacent to Jevons Paradox applied to product strategy.

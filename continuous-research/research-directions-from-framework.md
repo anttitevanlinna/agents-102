@@ -232,6 +232,37 @@ Six research directions surfaced from cross-referencing one year of practitioner
 
 ---
 
+## Priority 5: The Output-to-Outcome Gap — Added April 2026
+
+### 5.1 The Feature Throughput Trap: 10x Output, 1x Business Impact
+
+**Finding (practitioner signal, April 7):** The absorption bottleneck research (Level 3: CircleCI, Faros, Ronacher, Bowley) documents teams that can't ship what they generate. But there's a level above that: teams that CAN build, verify, and ship at 10x speed — and still see no business impact improvement. The assumption that development speed was the constraint gets exposed as an excuse. The real constraint was always knowing which of the 200 possible things to build actually moves the business.
+
+This is NOT the decision-speed bottleneck (Goldratt/TOC framing of slow approval chains). It's a different problem: not that decisions are queued waiting for approval, but that **organizations don't know what to want**. Fast execution with thin strategic intent just produces more verified, shipped, irrelevant features faster.
+
+**Current evidence status:** Zero practitioner accounts. Practitioners are still stuck one level below — writing about the WIP/review problem. Nobody has solved delivery well enough to discover this next problem. Adjacent signals:
+- Duperrin: "organizations mechanically consume any local improvement without overall progress" (consultant framing, not deployment evidence)
+- Mollick: "institutions move at institution speed" (academic framing)
+- ActivTrak (n=10,584): more activity, same outcomes (task level, not business outcome level)
+- Jevons Paradox applied to product: cheaper building → more features, not more impact
+
+**Connection to existing research:**
+- Extends absorption bottleneck (by-pattern) to the level above delivery
+- Connects to Intent Taktik thesis: quality of intent as the real ceiling
+- Connects to experience-first adoption (2.4): the WOW moment reveals what's possible, but doesn't tell you what's worth doing
+- Connects to verification infrastructure (2.1): verification solves "is it correct?" not "is it valuable?"
+
+**What to investigate:**
+- Any teams that solved the delivery problem (automated QA, CI/CD, fast deploy) and then hit the "now what?" wall?
+- Product teams reporting feature velocity up but business metrics flat — is anyone naming this pattern?
+- Connection to product discovery practices (Marty Cagan, Teresa Torres): does the "continuous discovery" community see AI speed as exposing their gap?
+- The Jevons Paradox in product: does cheaper building always lead to feature bloat rather than better features?
+- Counter-evidence: are there teams where 10x speed DID translate to 10x business impact? What was different? (Hypothesis: they had strong discovery/intent practices before AI accelerated execution)
+
+**Why this matters for our positioning:** This is the bridge between "teach people to build agents" (competence) and "know what to build" (strategic clarity). The competence-first sequence (competence → discovery → context → platform) predicts this gap. If we find practitioner evidence, it validates the entire value prop.
+
+---
+
 ## Enterprise Practitioner Observations
 
 See: [`observations/enterprise-agentic-transformation-case.md`](observations/enterprise-agentic-transformation-case.md) — detailed observations from a year-long enterprise agentic transformation, including 7 original findings.

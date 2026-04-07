@@ -110,7 +110,7 @@
 - LLM Suite updated every 8 weeks — rapid iteration cycle
 - 250,000 employees have access (entire workforce except branch/call center staff)
 - Segment-by-segment approach to training, not one-size-fits-all
-- Honest about the "value gap" between capability and enterprise capture
+- Direct about the "value gap" between capability and enterprise capture
 - $18B annual tech budget, still says it will take years
 
 **Assessment:** DIRECTLY RELEVANT — pure non-coding enterprise agent deployment. Waldron is the highest-profile enterprise AI leader speaking publicly about deploying agents across an entire non-coding workforce. However, NOTE: these are journalist-mediated interviews (McKinsey, CNBC), not his own direct publications. He does not appear to have a blog, X.com presence, or direct public output. His views are accessible only through interviews. LinkedIn posts are behind a login wall.
@@ -179,12 +179,12 @@
 
 **Key positions:**
 - "Management as AI superpower" — managing agents requires the same skills as managing people
-- "It's tremendously hard to find real examples of agents in production" — honest about the gap
+- "It's tremendously hard to find real examples of agents in production" — candid about the gap
 - Leadership + Lab + Crowd framework for organizational AI adoption
 - AI has "crossed the threshold into real, economically valuable work" — but bounded
 - Claude Cowork = "Claude Code for non-technical work" — noted as important shift
 
-**Assessment:** THE MOST IMPORTANT BRIDGE between builders and enterprise. Mollick is the only person on this list who writes primarily for non-technical business leaders about what agents actually do (and don't do) in real work. Every post is about non-coding domains. His "Management as AI superpower" thesis directly challenges the assumption that technical skills are what matter. His honesty about the gap between demos and production reality is valuable. High-signal, low-noise. Essential reading for anyone in non-coding agent deployment.
+**Assessment:** THE MOST IMPORTANT BRIDGE between builders and enterprise. Mollick is the only person on this list who writes primarily for non-technical business leaders about what agents actually do (and don't do) in real work. Every post is about non-coding domains. His "Management as AI superpower" thesis directly challenges the assumption that technical skills are what matter. His candor about the gap between demos and production reality is valuable. High-signal, low-noise. Essential reading for anyone in non-coding agent deployment.
 
 ---
 

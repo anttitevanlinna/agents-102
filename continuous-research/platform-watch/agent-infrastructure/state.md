@@ -176,7 +176,7 @@ All vendor-sourced. All should be treated with caution. But the convergence acro
 
 > "Who governs agents across ALL our platforms? Is there a meta-layer?"
 
-**Honest answer as of April 2026: Nobody. There is no meta-layer.**
+**Straight answer as of April 2026: Nobody. There is no meta-layer.**
 
 - **Okta** is closest to becoming the identity meta-layer (agents as first-class identities in Universal Directory, cross-platform discovery). But it's not GA until April 30 and has zero reported deployments.
 - **Astrix** has the most technically detailed discovery approach (four methods including NHI fingerprinting). But it's a point solution, not a governance platform.

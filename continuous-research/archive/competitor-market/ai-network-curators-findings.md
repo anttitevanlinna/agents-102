@@ -25,7 +25,7 @@ No organization scores above LOW-MEDIUM on proximity to the Agents 102 model.
 
 ## ORIENT
 
-### Is anyone doing this? Honest assessment.
+### Is anyone doing this? Assessment.
 
 **No. Nobody is doing this combination in the AI/agents space.**
 

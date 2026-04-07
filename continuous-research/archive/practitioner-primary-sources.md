@@ -185,10 +185,10 @@
 
 **Key positions/views:**
 - "Junior colleagues" framing for AI agents — pragmatic, measured. Emphasizes testing, gradual autonomy, human-in-the-loop.
-- His company's own research reveals the gap: most finance teams deployed agents as experiments, not solutions. He's honest about the failure rate.
+- His company's own research reveals the gap: most finance teams deployed agents as experiments, not solutions. He's candid about the failure rate.
 - Basware trains on 2 billion+ processed invoices — claims this data scale delivers context-aware predictions.
 
-**Assessment:** QUIET personal voice, SUBSTANTIVE company output. Ruokonen's views emerge through press quotes and company research reports, not personal posts, blogs, or talks. He is clearly doing real work (Head of Data & AI at a major Finnish fintech) but does not appear to be a public thought leader. His most useful output for our purposes is the "AI to ROI" research finding that 61% of agent deployments in finance were experiments that failed — this is honest data, rare in the space.
+**Assessment:** QUIET personal voice, SUBSTANTIVE company output. Ruokonen's views emerge through press quotes and company research reports, not personal posts, blogs, or talks. He is clearly doing real work (Head of Data & AI at a major Finnish fintech) but does not appear to be a public thought leader. His most useful output for our purposes is the "AI to ROI" research finding that 61% of agent deployments in finance were experiments that failed — this is hard data, rare in the space.
 
 ---
 
@@ -326,7 +326,7 @@
 | 6 | Mattias Fras | MEDIUM | Industry conferences + Podcasts | MODERATE (architecture focus) | Enterprise practitioner gold |
 | 7 | Trygve Karper | LOW-MEDIUM | LinkedIn + X.com (infrequent) | MODERATE (agentic SaaS) | Building but quiet |
 | 8 | Hege Skryseth | LOW (high impact) | Corporate comms + NHO keynote | MODERATE (mentions agentic AI) | $130M headline is powerful |
-| 9 | Anssi Ruokonen | LOW | Press quotes + Company reports | MODERATE (AI agents in finance) | Honest data (61% failure rate) |
+| 9 | Anssi Ruokonen | LOW | Press quotes + Company reports | MODERATE (AI agents in finance) | Hard data (61% failure rate) |
 | 10 | Roope Heinila | LOW (just launched) | Press releases | EXPLICIT (sales agents) | Too early to judge |
 | 11 | Mikkel Skarnager | LOW | Company blog only | EXPLICIT (compliance agents) | Good product, invisible person |
 | 12 | Erja Ylajarvi | VERY LOW | One conference talk | IMPLICIT (AI tools, not "agents") | Bold claims, no sustained output |
@@ -343,5 +343,5 @@ This suggests the "agent" label is still more a builder/community term than a ma
 2. **Osika and Junestrand are the strongest case studies** — but they tell vibe coding / legal AI stories, not agent stories. We would need to reframe their work through our lens.
 3. **Fras (Nordea) has the most useful enterprise practitioner insights** — architecture-first scaling, model-agnostic design, governance as 70%+ of the work. This is what our enterprise buyers need to hear.
 4. **Skryseth (Equinor) has the most powerful headline** — $130M saved by AI in one year. Hard to argue with.
-5. **Ruokonen (Basware) has the most honest data** — 61% of agent deployments in finance were experiments that failed. This is the kind of reality check our training should include.
+5. **Ruokonen (Basware) has the hardest data** — 61% of agent deployments in finance were experiments that failed. This is the kind of reality check our training should include.
 6. **Hellermark's "AI for human genius" framing** is the most articulate version of the augmentation position — directly relevant to how we position agents in our training.

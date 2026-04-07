@@ -113,7 +113,7 @@
 | Hands-On Intensity | 4 | "Real-world tools and techniques" — hands-on oriented |
 | Fundamentals vs. Tools | 3 | Mix of fundamentals and specific tools |
 
-**Strengths vs. Agents 102**: 9-week duration allows real depth. Mixed audience design is honest and well-positioned. Data Science Dojo has brand credibility. Includes both strategic and technical tracks.
+**Strengths vs. Agents 102**: 9-week duration allows real depth. Mixed audience design is direct and well-positioned. Data Science Dojo has brand credibility. Includes both strategic and technical tracks.
 
 **Gaps vs. Agents 102**: Prerequisites ("understand basics of LLMs") may exclude true beginners. No organizational transformation angle. Likely individual-focused. "Dojo" branding suggests developer tilt despite the mixed-audience claim.
 

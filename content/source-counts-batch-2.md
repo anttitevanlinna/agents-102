@@ -144,8 +144,8 @@ Per CLAUDE.md deduplication rule: each company should appear as a primary findin
 
 2. **Sales & Marketing has a vendor contamination problem.** HubSpot, Thalamus, and Demandbase are vendor product announcements dressed as findings. The AI SDR category (Salesforce, VTT, Qualified) is genuinely agentic. The content operations category (Aprimo, Sitecore) is genuinely agentic.
 
-3. **Product & Strategy is honestly thin — and the file knows it.** The orientation summary and "What We Did Not Find" section are the most valuable parts. Only 4 genuinely agentic findings, and one (Crayon) is a duplicate. The file correctly identifies this as the least mature domain.
+3. **Product & Strategy is thin — and the file knows it.** The orientation summary and "What We Did Not Find" section are the most valuable parts. Only 4 genuinely agentic findings, and one (Crayon) is a duplicate. The file correctly identifies this as the least mature domain.
 
-4. **Agentic Coding is the cleanest file editorially.** Explicit source tiering, honest "What We Did Not Find," correct self-labeling of vendor sources as Level 0. Only 3 genuine findings but all are strong. The structural analysis (5 ingredients) is the most valuable content for the comparative article.
+4. **Agentic Coding is the cleanest file editorially.** Explicit source tiering, direct "What We Did Not Find," correct self-labeling of vendor sources as Level 0. Only 3 genuine findings but all are strong. The structural analysis (5 ingredients) is the most valuable content for the comparative article.
 
 5. **Overall: 26 out of 56 findings (46%) pass the agentic gate.** The rest are vendor announcements, copilots, chatbots, dashboards, or ML models rebranded as "agents." This is consistent with the project's earlier finding that ~30 of ~95 across all domains are genuinely agentic.

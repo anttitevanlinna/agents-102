@@ -2,7 +2,7 @@
 
 These are essays I wrote during one year of leading an enterprise agentic transformation. April 2025 to March 2026. Originally shared weekly in an internal AI newsletter to the engineering organisation, then broadened to the whole company.
 
-I started not knowing much. I ended knowing more — but mostly knowing better questions. The essays track that evolution honestly: from finding the right metaphor for AI, through discovering that competence precedes vision, to recognising that AI engineering IS software engineering, to understanding the Red Queen dynamics of agentic competition.
+I started not knowing much. I ended knowing more — but mostly knowing better questions. The essays track that evolution: from finding the right metaphor for AI, through discovering that competence precedes vision, to recognising that AI engineering IS software engineering, to understanding the Red Queen dynamics of agentic competition.
 
 I have not cleaned these up to sound smarter in hindsight. What you read is what I thought at the time.
 
@@ -14,7 +14,7 @@ Four phases emerge across the year:
 
 **Phase 2: Process Discovery (Jun–Sep 2025)** — Connecting AI to existing engineering discipline. Cycle time as the real metric. "Sharing is caring" strategy. AI engineering IS software engineering. Lean thinking applies. Knowledge management must change.
 
-**Phase 3: Scaling Reality (Oct–Dec 2025)** — Hitting the walls. Dependencies, context windows, reliability, missing evals. Failing and succeeding simultaneously. The honest accounting. Coding agents as breakthrough category.
+**Phase 3: Scaling Reality (Oct–Dec 2025)** — Hitting the walls. Dependencies, context windows, reliability, missing evals. Failing and succeeding simultaneously. The real accounting. Coding agents as breakthrough category.
 
 **Phase 4: Compounding (Jan–Mar 2026)** — Context is learning. The curated agent project structure. Red Queen dynamics. The system learns, not just the person.
 

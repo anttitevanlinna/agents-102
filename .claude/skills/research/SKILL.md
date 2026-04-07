@@ -21,7 +21,7 @@ Tell the user what they have access to:
 > - Which business domains have crossed the agent threshold — and why?
 > - What are practitioners actually building — not what vendors announce?
 > - What's happening in the Nordics specifically?
-> - What does the honest CTO playbook look like?
+> - What does the real CTO playbook look like?
 > - What's the compound error problem and why it kills ambitious agent plans?
 > - Who are the named practitioners, by domain?
 >

@@ -9,7 +9,7 @@ A curated, continuously updated research system that answers the questions vendo
 - **Which platform actually leads?** (Nobody. The entire business agent space is pre-chasm. We show why.)
 - **Which domains have real agent deployments?** (Three have crossed. We name the companies and the evidence.)
 - **What are practitioners building — on what?** (60+ named practitioners tracked by domain. Not vendor claims.)
-- **What's the honest CTO playbook?** (Competence first, platform second. We show the evidence for that sequence.)
+- **What's the real CTO playbook?** (Competence first, platform second. We show the evidence for that sequence.)
 - **What's happening in the Nordics?** (Almost nothing — and that IS the finding.)
 
 Every claim is evidence-graded: Level 0 (vendor marketing) through Level 4 (cross-domain meta-pattern confirmed across independent sources). Counter-evidence included. Nordic signal tracked.

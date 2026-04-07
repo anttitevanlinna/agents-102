@@ -115,7 +115,7 @@ Spotting fabrication by eye works for your own profile. It doesn't scale. This m
 - Fundamentals-first, not tool-first
 - Framework + plug points — we provide the patterns, the org integrates their reality
 - Show the real thing, not polished demos
-- Honest about what we don't know
+- Direct about what we don't know
 - Every participant leaves able to multiply the knowledge
 - The four pillars (LLM-based, secure, lifecycle, reliable) are woven through, not bolted on
 - With your own structure — not our template applied to your org

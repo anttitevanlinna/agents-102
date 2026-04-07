@@ -58,15 +58,15 @@ This is fundamentals-first, not tool-first. Tools will change. Platforms will ma
 
 ## The Undertone: Embracing Uncertainty
 
-Most AI training sells certainty: five steps, a roadmap, a framework. That's comforting but dishonest.
+Most AI training sells certainty: five steps, a roadmap, a framework. That's comforting but misleading.
 
-This training is honest: **we don't know exactly where this is going.** Nobody does. The future will be lots of agents, created by lots of people and teams, in ways we can't fully predict.
+This training is direct: **we don't know exactly where this is going.** Nobody does. The future will be lots of agents, created by lots of people and teams, in ways we can't fully predict.
 
 But we do know that agents are being built right now, by real people, solving real problems. The future will be shaped by those who start moving — experimenting, learning, adapting — even without a complete map.
 
 The skill isn't predicting the future. It's learning to move through uncertainty.
 
-This honesty builds trust. The leaders in the room know that anyone promising certainty is lying.
+This directness builds trust. The leaders in the room know that anyone promising certainty is lying.
 
 ## The Storyline
 
@@ -136,4 +136,4 @@ All materials co-branded, co-copyright. The org co-owns everything for further d
 
 Not by handing them a finished system. Not by promising a roadmap that doesn't exist. But by giving them the fundamentals, showing them what's real today, connecting them to peers doing the same, and equipping them to keep navigating as this evolves.
 
-Honest confidence, not false certainty. When you start walking, the path appears.
+Earned confidence, not false certainty. When you start walking, the path appears.

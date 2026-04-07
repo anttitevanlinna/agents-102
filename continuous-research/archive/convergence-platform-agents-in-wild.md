@@ -96,7 +96,7 @@
 **What practitioners report:**
 - Up to 60% faster incident resolution, 40% reduction in service desk volume — these numbers come from vendor-side reporting but are described as "real-world" rather than lab results
 - Internal case: 88% of ServiceNow's own Virtual Agent chats were successful
-- Honest practitioner assessment: "Most organizations claiming Phase 3 maturity are actually in Phase 2 with aspirations" ([Medium - Mark Orsborn](https://medium.com/@markorsborn/the-four-phases-of-servicenow-ai-evolution-7733cf0d6efa))
+- Practitioner assessment: "Most organizations claiming Phase 3 maturity are actually in Phase 2 with aspirations" ([Medium - Mark Orsborn](https://medium.com/@markorsborn/the-four-phases-of-servicenow-ai-evolution-7733cf0d6efa))
 - Realistic progression from Phase 1 to Phase 4 takes 18-33 months
 - "Walled garden" problem: Now Assist works best with data already in ServiceNow; struggles to pull from external tools (Google Docs, Slack, Notion, Confluence) ([eesel.ai](https://www.eesel.ai/blog/servicenow-now-assist))
 - Requires dedicated ServiceNow development teams or external partners for effective implementation
@@ -115,7 +115,7 @@
 
 **What practitioners report:**
 - Effectively nothing. All evidence is from Workday's own announcements or analyst reports based on Workday briefings.
-- No independent forum threads, no honest assessments, no community discussions found.
+- No independent forum threads, no independent assessments, no community discussions found.
 
 **The pattern:** Too early. Workday's agents are shipping but have not yet reached the volume where independent practitioner voices emerge.
 
@@ -193,7 +193,7 @@ Executives and transformation leaders are enthusiastic. The people actually impl
 
 ---
 
-## 4. The Honest Assessment: Real vs. Vaporware
+## 4. The Real Assessment: Real vs. Vaporware
 
 ### REAL (deployed, working in production, independent evidence)
 - **Salesforce Agentforce for customer service deflection** — Multiple independent case studies with specific metrics. The 70% deflection rate for well-scoped FAQ scenarios is credible. BUT only for narrow, well-defined use cases with clean data.
@@ -211,7 +211,7 @@ Executives and transformation leaders are enthusiastic. The people actually impl
 - **Any "multi-agent orchestration" or "agentic enterprise" vision** — No vendor has demonstrated this working in production at enterprise scale. It remains a conference slide.
 
 ### THE UNCOMFORTABLE TRUTH
-The Carnegie Mellon finding is the most honest data point: **AI agents fail to complete real-world office tasks 70% of the time** [SOURCE NEEDED -- no URL for this specific CMU study; note that `real-vs-fake-agents.md` cites a different CMU figure (30-35% completion rate on multi-step tasks) with arXiv source arxiv.org/html/2602.16666 -- these may be inconsistent; reconcile or remove]. Platform agents don't escape this. They work for narrow, repetitive, well-structured tasks with clean data. They fail for anything requiring judgment, context-switching, or multi-system integration.
+The Carnegie Mellon finding is the hardest data point: **AI agents fail to complete real-world office tasks 70% of the time** [SOURCE NEEDED -- no URL for this specific CMU study; note that `real-vs-fake-agents.md` cites a different CMU figure (30-35% completion rate on multi-step tasks) with arXiv source arxiv.org/html/2602.16666 -- these may be inconsistent; reconcile or remove]. Platform agents don't escape this. They work for narrow, repetitive, well-structured tasks with clean data. They fail for anything requiring judgment, context-switching, or multi-system integration.
 
 ---
 

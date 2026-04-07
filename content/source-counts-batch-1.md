@@ -89,7 +89,7 @@
 4. **NAV Frida** — 270K inquiries, "answered" questions. Government Q&A bot. File acknowledges: "primarily informational/routing rather than transactional."
 5. **Kommune-Kari** — 500K conversations. "Answers citizen inquiries." Q&A bot across municipalities.
 
-**Credit to the file authors:** All five chatbots are explicitly labeled as "Classification: Chatbot/conversational AI" in the file. The file is honest about this. They are included as market context, not misclassified as agents.
+**Credit to the file authors:** All five chatbots are explicitly labeled as "Classification: Chatbot/conversational AI" in the file. The file is upfront about this. They are included as market context, not misclassified as agents.
 
 ---
 

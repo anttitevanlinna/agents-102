@@ -264,7 +264,7 @@ Mikko Alasaarela is a serial entrepreneur with genuine technical background (Nok
 | Public thought leadership | STRONG | High podcast velocity, conference speaker, multiple platforms, Finnish Parliament access |
 | Enterprise buyer network | MEDIUM | Sitra connection (via Linna), Nokia/Visma/Deutsche Telekom in speaking history, public sector via Pulkkinen's Kela background |
 
-### Honest Gaps
+### Gaps
 - **No published technical content.** No blog posts, papers, or GitHub repos showing agent architecture, deployment patterns, or governance frameworks in detail. His Medium posts are from the pre-agent era (blockchain, emotional AI).
 - **X.com output unclear.** Search indexing of X.com is poor; could not assess his tweet content or frequency.
 - **No recorded talks found publicly.** SHIFT, AI Monday, and Agentics Finland meetups do not appear to have public recordings.

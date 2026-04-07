@@ -122,9 +122,9 @@
 
 ## Assessment: Theory-Rich, Practice-Poor
 
-**The honest picture:** There are two parallel conversations happening that haven't met:
+**The real picture:** There are two parallel conversations happening that haven't met:
 
-**Thread A (Military-Academic):** Strong and serious. The U.S. Army, Marine Corps University, Army War College, and defense journals are actively debating whether AI enables or destroys Auftragstaktik. The Simonetti & Tripodi counter-thesis (AI *kills* Auftragstaktik by enabling overcentralization) is the most intellectually honest contribution. The Defence Horizon Journal and Army War College pieces argue for preserving mission command with AI augmentation. This is a real intellectual debate with named scholars and institutional backing — but it's about military command, not business management.
+**Thread A (Military-Academic):** Strong and serious. The U.S. Army, Marine Corps University, Army War College, and defense journals are actively debating whether AI enables or destroys Auftragstaktik. The Simonetti & Tripodi counter-thesis (AI *kills* Auftragstaktik by enabling overcentralization) is the most intellectually rigorous contribution. The Defence Horizon Journal and Army War College pieces argue for preserving mission command with AI augmentation. This is a real intellectual debate with named scholars and institutional backing — but it's about military command, not business management.
 
 **Thread B (Civilian-Emerging):** The "intent engineering" and "agent manager" conversation is structurally identical to Auftragstaktik — centralized intent, decentralized execution, defined authority — but nobody uses the military vocabulary. SQUER's Intent Engineer role is the strongest single practitioner signal. HBR's "agent manager" framing is mainstream but superficial. The Tomasev et al. academic paper formalizes delegation for AI agents. The Pathmode/Product Compass "intent engineering" framework is gaining traction.
 

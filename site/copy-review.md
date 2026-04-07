@@ -85,7 +85,7 @@ The subtitle could carry more weight -- something like "Hands-on AI agent traini
 - Curate section is too long and too detailed for its position on the page. "Eighty percent from the best public research -- emerging patterns, protocols, open-source tooling, real deployments. Twenty percent from peer companies in the network who share what actually worked and what did not." This is business model canvas language leaking into marketing copy. The 80/20 split is internal strategy. A buyer does not need percentages.
 - "No vendor tracks the full landscape. No consultant has deployment data from thirty organizations. We synthesize both." -- "We synthesize both" is weak and academic. The Bosser site would end on the contrast, not explain the conclusion.
 - Connect section: "That trust signal is worth more than any consultancy recommendation" -- "trust signal" is product/UX jargon. A CEO would say "that recommendation" or "that credibility." The Bosser site never uses the word "signal."
-- "Not structured data collection. Peer forums designed for how leaders actually share -- honest, off the record, practitioner to practitioner." -- "Structured data collection" is a term nobody was worried about. This reads like the copy is defending against an objection nobody raised.
+- "Not structured data collection. Peer forums designed for how leaders actually share -- candid, off the record, practitioner to practitioner." -- "Structured data collection" is a term nobody was worried about. This reads like the copy is defending against an objection nobody raised.
 
 **Suggested rewrites:**
 
@@ -94,7 +94,7 @@ The subtitle could carry more weight -- something like "Hands-on AI agent traini
 | Eighty percent from the best public research -- emerging patterns, protocols, open-source tooling, real deployments. Twenty percent from peer companies in the network who share what actually worked and what did not. | We track the frontier so you do not have to. The best public research, distilled. Plus what peer companies in the network share about what actually worked -- and what did not. |
 | No vendor tracks the full landscape. No consultant has deployment data from thirty organizations. We synthesize both. | No vendor tracks the full landscape. No consultant has deployment data from thirty organizations. We do. |
 | That trust signal is worth more than any consultancy recommendation. | That credibility is worth more than any consultant's recommendation. |
-| Not structured data collection. Peer forums designed for how leaders actually share -- honest, off the record, practitioner to practitioner. | Peer forums designed for how leaders actually share. Honest. Off the record. Practitioner to practitioner. |
+| Not structured data collection. Peer forums designed for how leaders actually share -- candid, off the record, practitioner to practitioner. | Peer forums designed for how leaders actually share. Candid. Off the record. Practitioner to practitioner. |
 
 ---
 

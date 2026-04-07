@@ -9,7 +9,7 @@ AI-native startups building agent-first products that compete directly with trad
 
 ## Key Verdict (as of 2026-04-02)
 
-**Real disruption is happening in legal and customer service. Finance/accounting is hot but pre-proof. HR and sales are lagging or cautionary.** The strongest AI-native startups (Harvey, Sierra, Decagon) have crossed $100M ARR and serve Fortune 500 customers — this is not hype. But the 11x implosion shows that funding and ARR claims in this space need hard scrutiny. The honest answer to the CTO question: AI-native startups are eating the bottom of the stack (document processing, ticket resolution, bookkeeping) while incumbents retain the top (workflow orchestration, compliance, ecosystem integration). The question is whether the bottom eats upward before the top eats downward.
+**Real disruption is happening in legal and customer service. Finance/accounting is hot but pre-proof. HR and sales are lagging or cautionary.** The strongest AI-native startups (Harvey, Sierra, Decagon) have crossed $100M ARR and serve Fortune 500 customers — this is not hype. But the 11x implosion shows that funding and ARR claims in this space need hard scrutiny. The answer to the CTO question: AI-native startups are eating the bottom of the stack (document processing, ticket resolution, bookkeeping) while incumbents retain the top (workflow orchestration, compliance, ecosystem integration). The question is whether the bottom eats upward before the top eats downward.
 
 ---
 
@@ -267,7 +267,7 @@ The SaaS disruption narrative in 2026 is real but nuanced:
 
 **"Are AI-native startups about to eat my enterprise vendors' lunch? Should I bet on them instead of Salesforce/ServiceNow/SAP?"**
 
-### The honest answer (as of April 2026):
+### The real answer (as of April 2026):
 
 **Not yet for your core systems. Yes for specific functions. Maybe in 18 months for more.**
 

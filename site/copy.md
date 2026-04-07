@@ -48,7 +48,7 @@ No vendor tracks the full landscape. No consultant has deployment data from thir
 
 The peer network is the long-term product. Companies navigating the same transformation, learning from each other. A bank learns from a logistics company that already deployed agents in a regulated environment. That trust signal is worth more than any consultancy recommendation.
 
-Not structured data collection. Peer forums designed for how leaders actually share -- honest, off the record, practitioner to practitioner.
+Not structured data collection. Peer forums designed for how leaders actually share -- candid, off the record, practitioner to practitioner.
 
 ### Advise
 

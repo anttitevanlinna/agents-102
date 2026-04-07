@@ -35,7 +35,7 @@ Are Nordic enterprises applying coding-agent-level autonomy to non-coding busine
 
 - **What Basware does:** InvoiceAI processes non-PO invoices with agentic capabilities. Trained on 2+ billion invoices. Organizations see 70-85% autonomous processing rates, with 15-30% requiring human involvement. [3]
 - **Verification mechanism:** Invoice accuracy against purchase orders and delivery receipts. Basware reports >97% accuracy on machine-readable PDF conversion. Anomaly detection distinguishes legitimate anomalies from errors.
-- **Multi-turn?** Partially. The AP automation is multi-step (extract > match > route > approve/flag) but Ruokonen himself advises treating agents "like junior colleagues" -- trust slowly, test thoroughly, keep human in loop. This is honest framing, not a fully autonomous claim. [4]
+- **Multi-turn?** Partially. The AP automation is multi-step (extract > match > route > approve/flag) but Ruokonen himself advises treating agents "like junior colleagues" -- trust slowly, test thoroughly, keep human in loop. This is direct framing, not a fully autonomous claim. [4]
 - **Evidence level:** L2-3 -- 2.5B invoice dataset gives real scale, but "agentic finance" vision is ahead of current autonomy.
 - **Source:** AI Intelligence News, Feb 2026, quoting Ruokonen on trust calibration.
 - **URL:** https://www.artificialintelligence-news.com/news/agentic-ai-drives-finance-roi-in-accounts-payable-automation/
@@ -56,7 +56,7 @@ Are Nordic enterprises applying coding-agent-level autonomy to non-coding busine
 - **Verification mechanism:** Claims 20% increase in win rates, 50% reduction in admin time in "early deployments." But: the company launched Feb 3, 2026. These are pre-seed metrics from beta.
 - **Multi-turn?** Claimed but not verified. The product description says agents research, summarize, draft content, provide strategic coaching "based on deal context." This could be multi-turn or could be a well-designed pipeline. No independent verification exists.
 - **Evidence level:** L2 (funded, credible team) but VERY early. The team is strong (Heinila scaled Smarp/Haiilo to $40M+ ARR, CTO had Feedtrail exit, COO is ex-McKinsey), and Tero Ojanpera (Silo AI co-founder) led the round. But the product just launched.
-- **Honest assessment:** Wait 6 months for customer evidence before counting this as confirmed spillover.
+- **Assessment:** Wait 6 months for customer evidence before counting this as confirmed spillover.
 - **URL:** https://optivian.ai/product/
 
 ### 5. Mikkel Skarnager (DK) -- Spektr -- Compliance Agents
@@ -75,7 +75,7 @@ Are Nordic enterprises applying coding-agent-level autonomy to non-coding busine
 - **Verification mechanism:** Unclear. A news lead either pans out or it does not, but this is editorial judgment, not automated verification.
 - **Multi-turn?** Unknown. Limited public detail on architecture. Ylajarvi has spoken at NAMS 2025 about AI transformation in media, comparing it to the data journalism shift, saying "if your editor-in-chief doesn't know what automating the news is about, you're in trouble." [8]
 - **Evidence level:** L2 -- real deployment in production newsroom, but more like an alerting/monitoring tool than an autonomous agent.
-- **Honest assessment:** This is closer to an AI-powered monitoring pipeline than a multi-turn autonomous agent. Still significant as a non-coding business function adoption, but not coding-agent-level autonomy.
+- **Assessment:** This is closer to an AI-powered monitoring pipeline than a multi-turn autonomous agent. Still significant as a non-coding business function adoption, but not coding-agent-level autonomy.
 - **URL:** https://lottaholmstrom.se/2025/04/25/keeping-the-audience-in-the-loop-my-nams-takeaways/
 
 ### 7. Joel Hellermark (SE) -- Sana Labs / Workday -- Enterprise Work Agents
@@ -195,7 +195,7 @@ Are Nordic enterprises applying coding-agent-level autonomy to non-coding busine
 **STRONGEST DOMAIN. Real spillover confirmed.**
 
 - Vic.ai: VicInbox live, autonomously processing AP emails with ERP cross-reference. Contract Agent and Analytics Agent in beta. 500M+ invoices at 99% accuracy. **Multi-turn autonomous execution.** [1]
-- Basware: InvoiceAI with agentic capabilities. 70-85% autonomous processing. 2B+ invoice training set. Ruokonen's "junior colleague" framing is honest about current limits. [3]
+- Basware: InvoiceAI with agentic capabilities. 70-85% autonomous processing. 2B+ invoice training set. Ruokonen's "junior colleague" framing is direct about current limits. [3]
 - Nordea/Danske/DNB: Conversational AI at scale but NOT autonomous agents. These are chatbots/copilots, not multi-turn executors. Nordea is hiring for agentic solutions (Dec 2025), suggesting it is coming but not here yet. [18]
 - **Verification mechanism:** Invoice matching, PO reconciliation, payment accuracy. Finance has the clearest verification: numbers either balance or they do not.
 - **Assessment:** Finance is the most advanced spillover domain in the Nordics. Vic.ai and Basware are genuine examples of coding-agent patterns (multi-step autonomous execution with verification) applied to a non-coding function. The banks lag behind the fintech/SaaS providers.
@@ -290,7 +290,7 @@ The domains where agents DON'T work lack fast verification:
 
 ## What We Did Not Find
 
-### Brutally honest assessment:
+### Blunt assessment:
 
 1. **The "spillover" framing may be misleading.** Finance AI (Vic.ai, Basware) and legal AI (Legora) did not arise from coding agents spilling over. They arose independently from domain-specific problems. The common pattern is multi-step autonomous execution with verification, but the practitioners did not learn this from coding agents -- they converged on it because it works.
 

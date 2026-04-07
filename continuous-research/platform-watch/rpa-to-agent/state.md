@@ -15,7 +15,7 @@ The RPA-to-agent transition: can enterprises extend existing RPA investments int
 
 **What's not proven:** Truly autonomous multi-turn agents running enterprise processes end-to-end. Zero independent evidence of production deployments where agents reason across multiple systems without pre-defined workflow paths. Every "success story" traces back to vendor press releases or partner case studies — Level 0 evidence.
 
-**The honest answer for now:** RPA vendors are adding an AI reasoning layer, not building native agent platforms. This makes existing RPA investments more valuable (self-healing, document AI, smarter routing), but it is NOT the same as building agents from scratch on native agent platforms (Claude, OpenAI, Bedrock). Whether the hybrid approach is "good enough" for enterprise use cases remains unproven by independent evidence.
+**The straight answer for now:** RPA vendors are adding an AI reasoning layer, not building native agent platforms. This makes existing RPA investments more valuable (self-healing, document AI, smarter routing), but it is NOT the same as building agents from scratch on native agent platforms (Claude, OpenAI, Bedrock). Whether the hybrid approach is "good enough" for enterprise use cases remains unproven by independent evidence.
 
 ## UiPath — Agentic Automation Platform
 
@@ -137,7 +137,7 @@ Power Automate is architecturally different from UiPath/AA — it's not a standa
 
 ## The CTO Question: "We Have RPA. What Now?"
 
-**Three options, honestly assessed:**
+**Three options, straight assessment:**
 
 ### Option 1: Extend RPA to Agentic (UiPath Maestro / AA APA)
 - **Pro:** Preserves existing RPA investment. Existing bots still run. Governance and compliance infrastructure transfers. Your RPA developers have jobs.
@@ -161,7 +161,7 @@ Power Automate is architecturally different from UiPath/AA — it's not a standa
 - **Pro:** Pragmatic migration path — doesn't require ripping out existing automation.
 - **Con:** Two systems to govern, two skill sets to maintain, integration complexity.
 - **Con:** The "hybrid" framing is exactly what RPA vendors are selling — so you need to distinguish between "hybrid by architectural choice" and "hybrid because the vendor bolted AI onto their existing product."
-- **Verdict:** Most likely path for large enterprises with significant RPA investment. But be honest: this is a transition strategy, not an end state.
+- **Verdict:** Most likely path for large enterprises with significant RPA investment. But be clear: this is a transition strategy, not an end state.
 
 **The Nordic angle:** Large Nordic companies (telecom, banking, energy, logistics) typically have 3-7 year RPA investments with UiPath or Automation Anywhere, 50-500 bots in production, and dedicated RPA teams. Telling them to abandon this is unrealistic. The real question is: can the agentic layer on top of RPA deliver enough value to justify the additional complexity, or should new agentic use cases be built natively?
 

@@ -2,7 +2,7 @@
 
 **Research date:** 2026-02-21
 **Research question:** Is "narrow specialists, orchestrated" a convergent design pattern with 10-20 independent adopters, or just a few examples?
-**Verdict:** Yes, convergent at 20+ independent adopters. But the honest picture is more nuanced than "multi-agent wins."
+**Verdict:** Yes, convergent at 20+ independent adopters. But the real picture is more nuanced than "multi-agent wins."
 
 ---
 
@@ -336,7 +336,7 @@ Flat topology where every agent communicates with every other agent. No hierarch
 
 ## 5. "Possible in 6 Months" — Realistic Path for Nordic Enterprises
 
-### The Honest Starting Point
+### The Starting Point
 
 - **Only 11% of organizations** had deployed agentic AI by mid-2025 (KPMG)
 - **40% of multi-agent pilots** fail within 6 months of production [SOURCE NEEDED]

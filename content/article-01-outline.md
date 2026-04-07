@@ -43,7 +43,7 @@ When we research agentic practices across domains, the density of usable practit
 
 **The article-ready version:** "When we searched for practitioners publicly describing agent deployments across 8 business domains, we found a 50:1 practitioner-to-vendor signal ratio in coding. In finance, it inverted to 1:10. In compliance and HR, it was zero practitioners — only vendor announcements. The ratio is the readiness signal."
 
-**Why this works:** It's honest about our research. It's measurable. It's visual. And it tells the story without needing a single vendor-sourced claim.
+**Why this works:** It's transparent about our research. It's measurable. It's visual. And it tells the story without needing a single vendor-sourced claim.
 
 ## Article structure (~1000-1200 words)
 

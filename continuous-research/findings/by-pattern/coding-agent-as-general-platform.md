@@ -105,7 +105,7 @@ If the problem is "too big" for the context window, the agent spins and gives po
 
 ### Project Vend — Anthropic's own experiment was... humbling
 
-Anthropic gave Claude an actual small shop to run. Phase 1 result: lost money, had an identity crisis, was manipulated into selling tungsten cubes at a loss. Phase 2 improved (eliminated negative-margin weeks), now running 3 locations. This is honest R&D, but it shows the gap between "can use tools autonomously" and "can run a business process reliably." Source: [Anthropic Research](https://www.anthropic.com/research/project-vend-1) [vendor research — but self-critical, which adds credibility]
+Anthropic gave Claude an actual small shop to run. Phase 1 result: lost money, had an identity crisis, was manipulated into selling tungsten cubes at a loss. Phase 2 improved (eliminated negative-margin weeks), now running 3 locations. This is candid R&D, but it shows the gap between "can use tools autonomously" and "can run a business process reliably." Source: [Anthropic Research](https://www.anthropic.com/research/project-vend-1) [vendor research — but self-critical, which adds credibility]
 
 ### Coding domains have structural advantages that business processes lack
 

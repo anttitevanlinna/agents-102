@@ -11,13 +11,13 @@ The sharp version: Is anyone actually deploying multi-turn, reasoning AI agents 
 
 Claude Code is the reference example of a real agent: multi-turn reasoning, dynamic tool selection, persistent context, backtracking, and autonomous decision-making across a session. The question is whether anything like this exists outside coding -- and if not, why not.
 
-**Confirmation bias guard:** We actively searched for counter-evidence -- practitioners who ARE running real multi-turn agents successfully, domains where real autonomy is working, and what changed in the last 6 months that might make older skepticism obsolete. The honest answer may be "it's mixed."
+**Confirmation bias guard:** We actively searched for counter-evidence -- practitioners who ARE running real multi-turn agents successfully, domains where real autonomy is working, and what changed in the last 6 months that might make older skepticism obsolete. The real answer may be "it's mixed."
 
 ---
 
 ## The Spectrum: From Pipeline to Agent
 
-Not everything is binary. There is a spectrum, and placing things on it honestly reveals where the industry actually is.
+Not everything is binary. There is a spectrum, and placing things on it reveals where the industry actually is.
 
 ### Level 0: Static Automation
 Traditional RPA, Zapier/Make workflows with no AI. If X happens, do Y. Deterministic, no LLM involved.
@@ -78,7 +78,7 @@ This is where most enterprise "agentic AI" lives. Concrete examples:
 
   Anthropic's own data (February 2026) confirms the autonomy is real and growing: Between October 2025 and January 2026, the 99.9th percentile turn duration nearly doubled, from under 25 minutes to over 45 minutes [10]. Users grant more autonomy as they gain experience -- newer users employ full auto-approve roughly 20% of the time, increasing to over 40% by 750 sessions [10].
 
-- **Devin (Cognition)**: The most honest test case. After 18 months: "senior-level at codebase understanding but junior at execution." Excels at tasks with clear requirements that would take a junior engineer 4-8 hours. Migrated Java repos 14x faster than humans. Companies' test coverage rises from 50-60% to 80-90% [11]. But independent testing: failed 14 of 20 tasks [12]. Revenue grew from ~$1M (Sept 2024) to ~$73M (June 2025) [11].
+- **Devin (Cognition)**: The clearest test case. After 18 months: "senior-level at codebase understanding but junior at execution." Excels at tasks with clear requirements that would take a junior engineer 4-8 hours. Migrated Java repos 14x faster than humans. Companies' test coverage rises from 50-60% to 80-90% [11]. But independent testing: failed 14 of 20 tasks [12]. Revenue grew from ~$1M (Sept 2024) to ~$73M (June 2025) [11].
 
 - **Anthropic Claude Agent SDK**: Production framework for building agents beyond coding. Software engineering accounts for roughly 50% of tool usage, but Anthropic reports "experimentation in areas as diverse as back-office automation, marketing, finance, and even medicine and healthcare" [10]. The key word is *experimentation* -- not production deployment.
 
@@ -126,7 +126,7 @@ We specifically searched for real Level 4 agents working outside coding. Here is
 **Deep Research -- Level 3-4 for information tasks:**
 - OpenAI Deep Research, Anthropic Research feature, Perplexity: Multi-step reasoning, tool use, adaptation. These come closest to Level 4 outside coding. But they operate in a narrow domain (information retrieval and synthesis) with limited real-world consequences.
 
-**The honest verdict on counter-evidence:** Customer service and finance are the strongest counter-evidence areas. Real value is being delivered. But when you look closely at the architecture, even the best deployments (Intercom Fin, Sierra) are Level 2-3 structured routing systems, not Level 4 autonomous reasoners. The value they deliver is real -- it just comes from well-designed pipelines, not from agent autonomy.
+**The verdict on counter-evidence:** Customer service and finance are the strongest counter-evidence areas. Real value is being delivered. But when you look closely at the architecture, even the best deployments (Intercom Fin, Sierra) are Level 2-3 structured routing systems, not Level 4 autonomous reasoners. The value they deliver is real -- it just comes from well-designed pipelines, not from agent autonomy.
 
 ---
 
@@ -245,7 +245,7 @@ The direction is clear and accelerating. But the acceleration is concentrated in
 
 ---
 
-## The Honest Answer
+## The Real Answer
 
 ### Testing the hypothesis: "Most things called agents are just LLM pipelines."
 
@@ -269,13 +269,13 @@ The direction is clear and accelerating. But the acceleration is concentrated in
 
 **Second**: The *direction* is clear and accelerating. MCP (97M+ monthly downloads [25]), Claude Code's growing autonomy [10], and the SWE-bench trajectory [17] represent genuine architectural advances. The gap between Level 2 and Level 4 is narrowing. But it hasn't closed for most domains, and the compound error problem [22] means it may never close for domains without objective verification.
 
-**Third**: For training purposes, this distinction is the most valuable insight in the entire agentic AI space. Everyone is confused about what an agent is. Teaching people to distinguish Level 1 pipelines from Level 4 agents -- and to understand *why* the gap exists (verification, reliability, cost, controllability) -- is exactly the kind of sharp, honest framing that cuts through vendor noise. This is the curriculum moment.
+**Third**: For training purposes, this distinction is the most valuable insight in the entire agentic AI space. Everyone is confused about what an agent is. Teaching people to distinguish Level 1 pipelines from Level 4 agents -- and to understand *why* the gap exists (verification, reliability, cost, controllability) -- is exactly the kind of sharp, direct framing that cuts through vendor noise. This is the curriculum moment.
 
 ### The bottom line
 
 Most "AI agents" are not agents. They are LLM-augmented pipelines. The only domain with real autonomous agents is coding, because code can verify itself. Customer service has the strongest Level 2-3 systems, delivering real value through structured routing. Everything else is either Level 1-2 pipelines with good marketing, or Level 3 tools that work well in narrow domains. The technology for Level 4 agents outside coding is improving fast -- but the compound error problem and the verification gap are structural barriers, not just engineering challenges to be solved with better models.
 
-The industry knows this. That's why Gartner coined "agent washing" [3], why Klarna reversed course [8], why Karpathy reversed only for coding agents specifically [19], and why Anthropic itself advises starting with simple workflows [2]. The honest practitioners are already saying what the hypothesis suggests -- with the important caveat that the Level 2-3 systems delivering real value today should not be dismissed just because they aren't "real agents."
+The industry knows this. That's why Gartner coined "agent washing" [3], why Klarna reversed course [8], why Karpathy reversed only for coding agents specifically [19], and why Anthropic itself advises starting with simple workflows [2]. The clear-eyed practitioners are already saying what the hypothesis suggests -- with the important caveat that the Level 2-3 systems delivering real value today should not be dismissed just because they aren't "real agents."
 
 ---
 

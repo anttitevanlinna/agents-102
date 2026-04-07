@@ -62,7 +62,7 @@ The spillover is happening **where the verification gap can be closed.** It is N
 | Domain | Customer service — autonomous issue resolution |
 | What they deployed | AI assistant handling 2/3 of all customer service chats (~1.3M conversations/month), equivalent to 800+ full-time agents. Multi-agent architecture using LangGraph. Multi-departmental escalation handling. |
 | Evidence of multi-turn agent | Yes — multi-agent system with LangGraph, dynamic routing across departments, multi-turn conversations resolving complex issues. Not a FAQ chatbot. 82% improvement in response times, 25% drop in repeat issues. |
-| Is it truly agentic? | Genuine multi-turn, multi-system agent. BUT: the critical learning is the *reversal*. After replacing 700 human agents, customer satisfaction dropped 22%. Siemiatkowski admitted cost was "a too predominant evaluation factor" and the bot left "empathetic gaps." Klarna rehired human agents and shifted to hybrid model. This is the most honest enterprise signal in the dataset. |
+| Is it truly agentic? | Genuine multi-turn, multi-system agent. BUT: the critical learning is the *reversal*. After replacing 700 human agents, customer satisfaction dropped 22%. Siemiatkowski admitted cost was "a too predominant evaluation factor" and the bot left "empathetic gaps." Klarna rehired human agents and shifted to hybrid model. This is the most revealing enterprise signal in the dataset. |
 | Source | https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396 |
 | Source | https://blog.langchain.com/customers-klarna/ |
 | Source | https://poly.ai/blog/klarna-ai-customer-service-lessons |
@@ -166,7 +166,7 @@ Finance has the clearest structured verification signals: numbers must balance, 
 - Klarna: 2/3 of all customer chats handled by multi-agent system (LangGraph), 800+ FTE equivalent. BUT: 22% satisfaction drop led to reversal. Now hybrid model.
 - Walmart: GenAI Customer Support Assistant "routes and resolves issues autonomously without human intervention."
 
-**The critical lesson:** Customer service agents can handle volume and routine multi-turn interactions. But when empathy, judgment, and relationship are required, the agents fail. Siemiatkowski's admission — "cost was too predominant" — is the most honest enterprise signal in the entire dataset.
+**The critical lesson:** Customer service agents can handle volume and routine multi-turn interactions. But when empathy, judgment, and relationship are required, the agents fail. Siemiatkowski's admission — "cost was too predominant" — is the most revealing enterprise signal in the entire dataset.
 
 **The verification gap is the problem here.** In coding: test passes or fails. In customer service: "Was the customer satisfied?" is a lagging, fuzzy signal. Klarna learned that resolution rate (structured metric) and satisfaction (human judgment) diverge.
 

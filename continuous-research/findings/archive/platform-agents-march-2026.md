@@ -225,7 +225,7 @@ Microsoft's own framing: "a first-year consultant — fast, structured, but alwa
 - Source: https://futurumgroup.com/insights/is-microsoft-365-copilot-agent-mode-ready-to-rival-human-accuracy/ [analyst — Level 0 for predictions, but Level 1 for benchmark analysis]
 - Source: https://www.spacebar.news/excel-ai-twenty-percent-of-the-time-it-works-every-time/ [practitioner analysis]
 
-**Assessment:** This is the most honest self-assessment from any platform vendor. The 57% vs 71% gap is real data. Useful for our training: demonstrates "useful AND unreliable" — exactly the insight Module 1 teaches.
+**Assessment:** This is the most candid self-assessment from any platform vendor. The 57% vs 71% gap is real data. Useful for our training: demonstrates "useful AND unreliable" — exactly the insight Module 1 teaches.
 
 ### CRITICAL COUNTER-EVIDENCE: Copilot Adoption Is Struggling
 

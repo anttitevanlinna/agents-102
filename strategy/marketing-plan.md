@@ -95,7 +95,7 @@ Convergence criteria: (1) genuinely new insight for the CTO, (2) buildable clien
 - Pure client-side: multiple answer strings encoded in URL, parsed and rendered
 - Both the actionability agent and the social/peer agent independently invented this — strongest convergence signal
 
-**Complexity:** Medium. ~300-400 lines of JS, ~80 lines of CSS, 7 facilitation prompts. URL-collection flow is manual (paste links in Slack, then combine) — honest, works, not slick.
+**Complexity:** Medium. ~300-400 lines of JS, ~80 lines of CSS, 7 facilitation prompts. URL-collection flow is manual (paste links in Slack, then combine) — plain, works, not slick.
 
 #### Winner 3: Nordic Readiness Benchmark (#7)
 
@@ -106,7 +106,7 @@ Convergence criteria: (1) genuinely new insight for the CTO, (2) buildable clien
 - Demonstrates the 80/20 curation skill in action — this IS the product, given away as proof
 - Research data already exists in our files
 - 28 data cards (7 questions x 4 answers), all static, all sourced
-- Intellectually honest: data supports AND challenges each position
+- Rigorous: data supports AND challenges each position
 
 **Complexity:** Medium. All static JS. Hard work is editorial: curating 28 sourced data points.
 

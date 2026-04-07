@@ -106,7 +106,7 @@ You are evaluating whether this finding has the required specificity: named comp
 
 ## Judge 5: Nordic Label Accuracy
 
-You are evaluating whether the Nordic/Global tagging on this finding is precise and honest.
+You are evaluating whether the Nordic/Global tagging on this finding is precise and accurate.
 
 **Input:** A research finding about an agentic business practice, including its origin and Nordic applicability tags.
 

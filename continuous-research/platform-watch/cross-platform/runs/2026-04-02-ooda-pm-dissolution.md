@@ -78,7 +78,7 @@ updated: 2026-04-02
 - MLQ.ai: https://mlq.ai/news/klarna-ceo-admits-aggressive-ai-job-cuts-went-too-far-starts-hiring-again-after-us-ipo/ [tech press]
 - CX Dive: https://www.customerexperiencedive.com/news/klarna-reinvests-human-talent-customer-service-AI-chatbot/747586/ [domain trade publication]
 
-**Nordic relevance:** Nordic-origin company (Swedish). Siemiatkowski is a practitioner speaking about his own deployment. The reversal is the most honest evidence available — a CEO admitting failure.
+**Nordic relevance:** Nordic-origin company (Swedish). Siemiatkowski is a practitioner speaking about his own deployment. The reversal is the most credible evidence available — a CEO admitting failure.
 
 ---
 

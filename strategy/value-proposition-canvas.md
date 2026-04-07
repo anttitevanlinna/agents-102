@@ -90,7 +90,7 @@ Updated 2026-03-21 with platform research findings.
 | Can't formulate the right questions | **Bootstrap gives the vocabulary. Advisory gives the structured context.** Together they turn "I don't know what to ask" into "I know exactly which 5 of my 200 processes to try first." |
 | Every vendor demos one process | **The 1-of-200 framing.** We teach how to evaluate: what fraction of your processes does this cover? What are the characteristics that make customer service work (bounded, high volume, escalation-tolerant)? Find those characteristics in your other 199 processes. |
 | Platform depends on infrastructure | **Infrastructure-first platform analysis.** We frame the platform question around where you already live (AWS, Azure, GCP, hybrid), not around vendor feature lists. |
-| Research landscape deceives | **Evidence-graded research.** Our platform watch rates every claim on an evidence ladder. Vendor press releases are Level 0. We report at Level 3 (convergence). CTOs get honest, sourced assessment — not recycled marketing. |
+| Research landscape deceives | **Evidence-graded research.** Our platform watch rates every claim on an evidence ladder. Vendor press releases are Level 0. We report at Level 3 (convergence). CTOs get sourced, evidence-graded assessment — not recycled marketing. |
 | Consultancy frameworks are theatre | **Competence precedes strategy.** We don't hand down a framework. Your people build agents in week 1. The vision emerges from doing, not from reading. |
 | Risk of choosing too early | **The sequence: competence → discovery → context → platform.** We actively prevent premature platform decisions. Start with $20/mo personal agents. Discover real use cases. Then evaluate. |
 | Risk of vendor dependency | **Build on standards, not platforms.** We teach MCP, Agent Skills — standards adopted by all platforms. Co-owned materials, co-copyright. If you stop working with us, you keep everything. |
@@ -178,7 +178,7 @@ Updated 2026-03-21 with platform research findings.
 
 - **Pain 1 (can't formulate questions) ↔ Bootstrap + Advisory** — this is the core fit. No competitor addresses it. Consultancies sell answers to questions the buyer can't formulate. We build the competence to ask the right questions.
 - **Pain 2 (vendor demos one process) ↔ 1-of-200 framing** — research-grounded. Finnair case makes it tangible. No vendor will tell you this.
-- **Pain 4 (research landscape deceives) ↔ evidence-graded research** — our platform watch system produces exactly the honest, sourced assessment CTOs need. This is IP no competitor has.
+- **Pain 4 (research landscape deceives) ↔ evidence-graded research** — our platform watch system produces exactly the sourced, evidence-graded assessment CTOs need. This is IP no competitor has.
 - **Pain 5 (consultancy theatre) ↔ exercise-led training** — F-Secure validates this. Real agents, real policies, real competence.
 - **Competence creates pull (F-Secure field evidence):** After 2 modules, pretty much everyone started building — dashboards, agents, apps — unprompted. The competence itself creates discovery. You don't need a process assessment to find agent candidates. Teach people to build and they find their own processes. This inverts the consultancy sequence (assess → identify → build → train) to the sequence that actually works (train → they identify → they build → assess what worked).
 - **Three predictable enablers emerge (F-Secure field evidence):** Builders hit three walls: (1) data access — agents need Snowflake, Salesforce, internal systems; (2) a platform to run what they built — "where does this live?"; (3) discoverability — how do others find and use what builders created. These three are the natural Bootstrap→Advisory handoff. "Your people are building. Here's what they need next."
@@ -192,7 +192,7 @@ Updated 2026-03-21 with platform research findings.
 
 ### The core fit statement
 
-**We are the prerequisite, not the complement.** Without agent competence, the CTO can't see what to research, can't evaluate platforms honestly, can't identify which of 200 processes to try first, and can't tell the difference between a vendor demo and a real capability. Bootstrap builds the competence. Advisory builds the structured context. Together they turn "I don't know what to ask" into "I know exactly what to do next."
+**We are the prerequisite, not the complement.** Without agent competence, the CTO can't see what to research, can't evaluate platforms clearly, can't identify which of 200 processes to try first, and can't tell the difference between a vendor demo and a real capability. Bootstrap builds the competence. Advisory builds the structured context. Together they turn "I don't know what to ask" into "I know exactly what to do next."
 
 The sequence matters: **Competence → discovery → context → platform.** We own the first three. The platform decision falls out of them.
 

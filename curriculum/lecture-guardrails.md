@@ -146,7 +146,7 @@ Practical rules for writing module content that actually works in a room full of
 
 - **Write like a practitioner, not a textbook.** "Here's what happens when you do this" — not "In this section, the learner will explore..."
 - **Second person.** Address the participant as "you." Not "the participant" or "learners."
-- **Confident but honest.** "This works. Here's where it breaks." No hedging, no overselling.
+- **Confident but direct.** "This works. Here's where it breaks." No hedging, no overselling.
 - **No jargon without earning it.** Every technical term is introduced through an exercise that makes it obvious, not through a definition. If you need a glossary, the module failed.
 
 ### Exercise writing
@@ -556,7 +556,7 @@ Examples:
 - Too regulated (compliance overhead dominates the learning)
 - Too novel (nobody has a baseline to compare the agent's output against)
 
-### The honest gap: Bootstrap is Step 1 of 5
+### The real gap: Bootstrap is Step 1 of 5
 
 After Bootstrap, three gaps remain:
 
@@ -564,7 +564,7 @@ After Bootstrap, three gaps remain:
 2. **Governance framework.** Bootstrap shows WHY governance matters (the compliance violation in Module 4). It doesn't build the org's governance framework. That's Make Your Own (Step 2).
 3. **Organizational buy-in.** 20 trained people in a 5000-person org. The executive recommendation starts the conversation. The real work is political and cultural.
 
-All three gaps exist. That's the funnel: Bootstrap → Make Your Own (governance + strategy) → Champions (multiply to the org) → Scale (self-sustaining). The honest answer is: Bootstrap is the step that makes all the others possible. Without it, there's nothing to govern, nothing to scale, and nobody to champion.
+All three gaps exist. That's the funnel: Bootstrap → Make Your Own (governance + strategy) → Champions (multiply to the org) → Scale (self-sustaining). The straight answer is: Bootstrap is the step that makes all the others possible. Without it, there's nothing to govern, nothing to scale, and nobody to champion.
 
 **Design implication for the executive recommendation (Module 8):** The recommendation should explicitly name these three gaps as the next steps. Not as weaknesses of the training — as the natural sequence. "Here's what we learned. Here's what we can now do. Here's what we still need: infrastructure, governance, and broader buy-in. Here's how we recommend getting there." This is the bridge to Make Your Own.
 
@@ -572,6 +572,6 @@ All three gaps exist. That's the funnel: Bootstrap → Make Your Own (governance
 
 Bosser offers Agent Platform Advisory as a separate, optional service (context building, selection, deployment — done the agentic way). This service typically becomes relevant ~1 month after Bootstrap, when people are building local agents and need a shared platform.
 
-**Module 7 is independent of the advisory.** It teaches platform thinking honestly — participants learn to evaluate platforms, understand deployment options, and make informed choices. If they can figure it out themselves, great. Module 7 does not sell the advisory. It gives participants the framework to decide whether they need help, and the vocabulary to evaluate help if they seek it.
+**Module 7 is independent of the advisory.** It teaches platform thinking straight — participants learn to evaluate platforms, understand deployment options, and make informed choices. If they can figure it out themselves, great. Module 7 does not sell the advisory. It gives participants the framework to decide whether they need help, and the vocabulary to evaluate help if they seek it.
 
 The advisory exists for organizations that want the platform decision made agentically — with Bosser building the system that maps context, evaluates options, deploys, and generates training materials. Co-owned, deployed on the customer's side. But Module 7 assumes the customer can choose whatever they like.

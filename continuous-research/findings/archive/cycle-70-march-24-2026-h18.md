@@ -53,7 +53,7 @@
 - https://www.salesforceben.com/revisiting-the-bullish-case-for-agentforce-in-2026/ [domain trade publication]
 - https://futurumgroup.com/insights/salesforce-q3-fy-2026-ai-agents-data-360-lift-bookings-and-fy26-outlook/ [analyst — Level 0 for predictions, factual for reported numbers]
 
-**Evidence level:** Level 2 approaching Level 3. Auditable financial disclosures give higher credibility than press releases. The 93% vs. Six Sigma gap is the honest practitioner assessment.
+**Evidence level:** Level 2 approaching Level 3. Auditable financial disclosures give higher credibility than press releases. The 93% vs. Six Sigma gap is the practitioner assessment.
 
 ---
 

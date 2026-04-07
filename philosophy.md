@@ -40,7 +40,7 @@ The consultancies writing agentic enterprise frameworks haven't built an agent. 
 
 We teach because we believe generous work compounds. The co-ownership model, the co-copyright, the "you keep everything when you stop working with us" — these aren't clever business tactics. They come from a genuine belief that giving away what you know creates more value than hoarding it.
 
-Seth Godin again: "Here, I made this for you." The training, the research, the curated practices — they are gifts first, products second. Not naively — we run a business. But the orientation is generous. When we share what we've learned about agents, openly, honestly, without holding back the good parts — trust builds. And trust is what makes the network work.
+Seth Godin again: "Here, I made this for you." The training, the research, the curated practices — they are gifts first, products second. Not naively — we run a business. But the orientation is generous. When we share what we've learned about agents, openly, without holding back the good parts — trust builds. And trust is what makes the network work.
 
 Kindness is the goal. We won't always live up to it. But the aspiration shapes how we write, how we teach, how we talk about competitors, and how we treat the people in the room.
 
@@ -48,7 +48,7 @@ Kindness is the goal. We won't always live up to it. But the aspiration shapes h
 
 Leadership is not vision statements, roadmaps, or inspiring speeches. Leadership is going first — into the uncertainty, into the failure, into the learning. The builder leader sits down and builds. They fail. They learn. Then they can lead, because they've been there.
 
-Going first means you learn the terrain by walking it. You don't need to know the destination. You need to be willing to move before the map is complete — and to bring others along by sharing honestly what you found.
+Going first means you learn the terrain by walking it. You don't need to know the destination. You need to be willing to move before the map is complete — and to bring others along by sharing what you found.
 
 ## 8. The learning loop is the method
 
@@ -89,13 +89,13 @@ We teach Claude Code. But we don't teach Claude Code. We teach what an LLM does,
 
 Tools change. Platforms mature and get replaced. The agent frameworks of 2026 will not be the agent frameworks of 2028. But the person who understands why agents work — not just how to use this particular tool — adapts to whatever comes next. Fundamentals-first means every exercise teaches a transferable principle through a specific tool, not the tool itself.
 
-## 13. Honest confidence, not false certainty
+## 13. Earned confidence, not false certainty
 
 We don't know where this is going. Nobody does. Promising a roadmap is lying. Promising certainty is selling comfort.
 
 What we do know: agents are being built right now, by real people, solving real problems. The capability compounds for those who start moving. The skill isn't predicting the future — it's learning to move through uncertainty.
 
-This honesty is the source of trust. The people in the room know when someone is selling certainty they don't have. We'd rather say: "We don't know the destination, but we've walked this terrain, and we'll walk it with you."
+This directness is the source of trust. The people in the room know when someone is selling certainty they don't have. We'd rather say: "We don't know the destination, but we've walked this terrain, and we'll walk it with you."
 
 ## 14. Co-own, don't license
 
@@ -155,7 +155,7 @@ Act on the future (2) → Practice (8, 9) → Discover what you don't know (2)
 → Vision becomes possible (11) → Leadership becomes real (7)
 → Generalization becomes legitimate (5) → Everyone teaches (15)
 → The network compounds (16) → Convergence replaces hype (17)
-→ Honest confidence, not false certainty (13)
+→ Earned confidence, not false certainty (13)
 ```
 
 Running through it all: generosity (6), fundamentals over tools (12), co-ownership (14), and the flywheel (18) that makes it compound. Applied beyond coding (19), where the real transformation lives. Grounded in people, not technology (4).

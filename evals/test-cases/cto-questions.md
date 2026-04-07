@@ -65,7 +65,7 @@ Each question includes expected traits — what a good answer SHOULD contain bas
 ## Q8: "How long does agent deployment typically take?"
 
 **Expected traits:**
-- Honest answer: varies widely, limited data
+- Straight answer: varies widely, limited data
 - Governance-first companies deploy faster
 - Without governance: 9-month stalls common
 - Should NOT make up timelines not in the research

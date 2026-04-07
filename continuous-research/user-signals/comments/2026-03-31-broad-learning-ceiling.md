@@ -12,6 +12,6 @@ Discussion: What's the ceiling for "engineering for broad learning"?
 
 **Unlearning is the hardest part.** A system engineered for broad learning accumulates stale patterns faster than any human system. The zombie stat audit (MIT 95% propagated across 10+ files) is exactly this at small scale. At 100x scale, how do you unlearn? Stale patterns propagate at machine speed but auditing them requires human judgment.
 
-**The honest answer:** It scales until the meta-learning problem gets harder than the original learning problem. But that ceiling is high — most organizations haven't started learning at the 1-team level. The value gap between "not learning at all" and "hitting the meta-learning ceiling" is enormous.
+**The straight answer:** It scales until the meta-learning problem gets harder than the original learning problem. But that ceiling is high — most organizations haven't started learning at the 1-team level. The value gap between "not learning at all" and "hitting the meta-learning ceiling" is enormous.
 
 **Waiting for practitioner's partial answer on the ceiling question.**

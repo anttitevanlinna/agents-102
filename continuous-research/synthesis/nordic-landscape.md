@@ -75,6 +75,6 @@ First genuine Nordic agentic operations cluster: **Danish companies.**
 
 ## Implication for Advisory
 
-Nordic CTOs asking "which platform?" are asking the wrong question when nobody in their peer group has deployed yet. The honest answer: build competence first, let your people discover which of your 200 processes benefit, and the platform question becomes lightweight.
+Nordic CTOs asking "which platform?" are asking the wrong question when nobody in their peer group has deployed yet. The straight answer: build competence first, let your people discover which of your 200 processes benefit, and the platform question becomes lightweight.
 
 See [cto-answer.md](cto-answer.md) for the full advisory framing. See [patterns.md](patterns.md) Pattern 33 for the Level 3 absence evidence.

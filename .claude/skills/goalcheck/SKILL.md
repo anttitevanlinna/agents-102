@@ -139,7 +139,7 @@ If you only do #3, you've failed.
 === EDITORIAL VOICE (Antti's style) ===
 - Simple > elaborate. Don't replace a claim with a different claim — remove false precision.
 - Name the underlying dynamic. Don't hedge with "may/might" — explain WHY structurally.
-- Keep texture. Don't strip provocative lines — make them honest.
+- Keep texture. Don't strip provocative lines — make them earned.
 - Reader as protagonist. "Yours to build" > "you lack."
 - Scope to experience: "In my experience" > "most companies."
 - CTOs and software leaders. Peer-to-peer.

@@ -8,7 +8,7 @@
 
 ## ORIENT: What the Landscape Actually Looks Like
 
-The core question asks about a specific management paradigm shift: from **review-and-approve** to **monitor-and-intervene**. The honest answer is that the field is converging on this direction from three separate angles, but nobody has built the unified "flight director dashboard" yet. What exists is a patchwork of technical monitoring tools, emerging organizational roles, and academic frameworks — all pointing at the same destination without anyone having arrived.
+The core question asks about a specific management paradigm shift: from **review-and-approve** to **monitor-and-intervene**. The real answer is that the field is converging on this direction from three separate angles, but nobody has built the unified "flight director dashboard" yet. What exists is a patchwork of technical monitoring tools, emerging organizational roles, and academic frameworks — all pointing at the same destination without anyone having arrived.
 
 The maturity gradient runs roughly:
 

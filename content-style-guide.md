@@ -59,7 +59,7 @@ This is the identity. Not ghostwritten. Not "AI-assisted." The AI wrote it, a hu
 - **Practitioner authority.** Antti is the author of Agents 101 (7 modules: including multi-agent workflows, evals, agents building agents). He has trained 200+ people at F-Secure, Neste, Posti. He is a member of Agentics Helsinki. He is not a journalist who needs interviews — he is a practitioner who builds the thing he writes about.
 - **Personal perspective.** Not "the research says" — "In my experience building multi-agent workflows..." or "When I teach evals to non-coders, the first thing that breaks is..."
 - **The "so what" for Nordic enterprises.** What does the Opus piece mean for a CTO at a 5,000-person Nordic company?
-- **Honest about uncertainty.** "I don't know if X, but here's what I'd bet on."
+- **Direct about uncertainty.** "I don't know if X, but here's what I'd bet on."
 - **Call to action.** Not salesy. Invite curiosity: "If this resonates, reply to this email" or "Take the readiness check."
 
 ## How Articles Get Made

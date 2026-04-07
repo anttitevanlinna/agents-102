@@ -99,7 +99,7 @@ This isn't a future vision. You can build Moltke's army today. April 2026. With 
 - Orchestration layer: $0 (agents call each other)
 - Consultancy engagement: $0
 
-**What's missing (honest):**
+**What's missing:**
 - Scheduling and triggers are early (shipping, not shipped)
 - MCP agent-to-agent discovery needs a registry (today it's a README)
 - Persistence across sessions needs file-based state management

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-04-02
-cycle: 70
+updated: 2026-04-06
+cycle: 91
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -70,7 +70,16 @@ Vector 6: PARTNER NETWORK — enterprise distribution ($100M, SI partners, certi
 
 **Cycle 68 updates (March 24, 10:00):**
 - **Computer Use research preview launched March 23.** Claude Code and Cowork can click, scroll, navigate web, open apps, fill spreadsheets on macOS. Permission-first safety model. Prioritizes direct integrations first, falls back to screen-based control. Pro/Max subscribers only. macOS only. ([SiliconAngle](https://siliconangle.com/2026/03/23/anthropics-claude-gets-computer-use-capabilities-preview/), Mar 23, 2026)
+- **Cowork Dispatch — live March 17, ~50% success rate on complex tasks (Apr 2026 check).** Mobile-triggered desktop agent control. Research preview launched Mar 17. Early practitioner test: ~50% success rate, browser automation and complex task chains failing. Bug fix shipped March 29 (Releasebot changelog: "Fixed message delivery in Cowork Dispatch"). Live but rough in Q1 2026. ([Latent Space](https://www.latent.space/p/ainews-claude-cowork-dispatch-anthropics), Mar 17, 2026) — [domain trade publication]
+- **Anthropic CCO adoption claim (Apr 1, Level 1).** Paul Smith stated Cowork week-1 adoption "stronger than Claude Code." No user numbers. Self-reported. ([Bloomberg](https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-sees-cowork-agent-as-bigger-than-claude-code), Apr 1, 2026) — [general press, executive opinion]
 - **Pentagon court hearing March 24.** New filings reveal Pentagon told Anthropic they were "very close" one week after Trump declared relationship terminated. Anthropic cited "technical misunderstandings." Senator Warren called designation "retaliation." Judge Lin hearing today. ([TechCrunch](https://techcrunch.com/2026/03/20/new-court-filing-reveals-pentagon-told-anthropic-the-two-sides-were-nearly-aligned-a-week-after-trump-declared-the-relationship-kaput/), Mar 20)
+**Cycle 91 updates (April 6, 2026):**
+- **Claude Mythos confirmed in early access testing.** Anthropic spokesperson confirmed (not just leaked) that Mythos (codename Capybara) is in early access with select customers. "A step change and most capable we've built to date." Cybersecurity-first rollout: being released first to defensive security organizations — reportedly "far ahead of any other AI model in cyber capabilities." No public general access date. Polymarket: June 30 (54% implied probability). Adds fourth pricing tier above Opus. Benchmark claims from leaked draft are vendor-adjacent until independent evaluators report. ([Fortune](https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/), general press, Mar 26, 2026) — Level 1
+
+**Cycle 90 updates (April 5, 2026):**
+- **Claude Mythos leaked (April 2, 2026).** Described as Anthropic's most capable model to date. Launch timing unconfirmed as of April 5. API housekeeping already happening: 1M token context beta retiring April 30 for Sonnet 4.5/4; Message Batches API max_tokens raised to 300k for Opus/Sonnet 4.6. [Bare fact; unconfirmed source] — UPDATED: Cycle 91 confirms spokesperson confirmation (not just leak).
+- **Copilot Cowork (Frontier preview March 30):** Entered broader Frontier preview. Zero independent hands-on reviews as of April 5 (26+ days since announcement). — UPDATED cycle 91: First review found (Day 27, partner-ecosystem reviewer).
+
 **Cycle 69 updates (March 24, 14:00):**
 - **Computer Use day 2:** CNBC mainstream coverage ([CNBC](https://www.cnbc.com/2026/03/24/anthropic-claude-ai-agent-use-computer-finish-tasks.html)). WorkOS comparison: Claude operates on user's real desktop (macOS) vs OpenAI's sandboxed virtual computer — fundamental architectural difference for business system access ([WorkOS](https://workos.com/blog/anthropics-computer-use-versus-openais-computer-using-agent-cua)). **Vercept acquisition ($50M, Feb 25)** explains technical lineage — purpose-built CV team (Girshick). UiPath stock fell 3.6% — market reads as RPA killer ([TechCrunch](https://techcrunch.com/2026/02/25/anthropic-acquires-vercept-ai-startup-agents-computer-use-founders-investors/)). **Safety: Opus 4.6 risk report** flags "elevated susceptibility to harmful misuse" in computer use settings. Claude Code weaponized in Mexican gov't cyberattack (150GB stolen) ([SecurityWeek](https://www.securityweek.com/hackers-weaponize-claude-code-in-mexican-government-cyberattack/)). Zero practitioner reviews yet. Re-run in 7 days.
 
@@ -259,7 +268,7 @@ Four priorities: transport scalability, agent communication, governance, enterpr
 ## What We Need To Learn (next cycles)
 
 - [~] Cowork plugin adoption — who's building plugins? What for? Any business user reports? **Partial: One PM plugin review found (Medium, Mohit Aggarwal — [link](https://medium.com/@mohit15856/i-used-claude-coworks-product-management-plugin-for-a-month-honest-review-d38f25348a6d)). No enterprise deployment reports.**
-- [ ] Copilot Cowork Frontier rollout — real user experiences?
+- [~] Copilot Cowork Frontier rollout — now in Frontier early access (March 30). Capital Group and Coca-Cola Beverages Africa cited as users — vendor-sourced, unverified.
 - [x] Agent Teams — when? What does multi-agent collaboration look like? **Answer: Released Feb 5, 2026 with Opus 4.6. Coding only (Claude Code). No business user capabilities. ([TechCrunch](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/))**
 - [~] B2B marketplace traction — which apps getting used? **Partial: Launched Mar 6, enterprise-only limited preview. Six partners (GitLab, Harvey, Lovable, Replit, Rogo, Snowflake). Zero customer reviews found. $200M Snowflake partnership. ([SiliconANGLE](https://siliconangle.com/2026/03/06/anthropic-launches-claude-marketplace-third-party-cloud-services/))**
 - [x] MCP enterprise governance — when does SSO/audit ship? **Answer: Not from Anthropic directly. Third-party gateways filling the gap (MintMCP, Stacklok, Lunar.dev, Itential). MCP spec ships enterprise features as extensions.**

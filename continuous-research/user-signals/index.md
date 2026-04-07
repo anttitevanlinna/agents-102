@@ -1,7 +1,7 @@
 ---
 type: index
 domain: cross-domain
-updated: 2026-03-28
+updated: 2026-04-05
 answers: ["what are users asking?", "what should research prioritize?", "user demand signals"]
 ---
 
@@ -36,7 +36,9 @@ User questions and comments steer research as Tier 0 priority.
 - [2026-03-31](comments/2026-03-31-broad-learning-ceiling.md) — Ceiling for broad learning = human judgment about what's worth learning. Scales until meta-learning > original learning. Unlearning is the hardest part (zombie stat audit as micro-example).
 - [2026-03-31](comments/2026-03-31-customer-truth-ceiling.md) — Practitioner's answer: ceiling = quality of evals grounded in customer truth. Three ceilings: products (customer), processes (operational metrics), strategy (human judgment).
 - [2026-03-31](comments/2026-03-31-meta-learning-gaps.md) — Four meta-learning gaps: problem-finding bias, no eval loop on own output, practitioner signals under-invested, no behavior-change measurement.
-- [2026-04-01](comments/2026-04-01-memory-levels-gap.md) — Agent memory: personal exists (Zep etc), team = CLAUDE.md hack, company = crickets. Two levels missing. Same personal→team→company stall as platforms.
+- [2026-04-01](comments/2026-04-01-memory-levels-gap.md) — Agent memory: personal exists (Zep etc), team = CLAUDE.md hack, company = crickets. Two levels missing. Same personal→team→company stall as platforms. **RESEARCHED cycle 88 (Apr 3):** Confirmed. AGENTS.md is de facto standard, AWS and Coworker.ai making org-level claims (zero independent verification). Academic papers now naming the gap (arXiv 2603.17787). Gap hardening.
+- [2026-04-05](questions/2026-04-05-rotation-model-external-gap.md) — Cycle 90: Rotation model (immerse → learn → return → seed next cohort) has zero external practitioner convergence. Cell division model also absent from literature. Both are ahead of published research.
+- [2026-04-05](questions/2026-04-05-littles-law-decision-speed-gap.md) — Cycle 90: Little's Law applied to AI WIP (generation up, review fixed, WIP explodes) and Goldratt TOC applied to AI decision speed bottleneck — both novel framings with zero external convergence. **Cycle 91 UPDATE: Little's Law/WIP signal upgraded to Level 3 convergence** (CircleCI 8M+ PR dataset + Ronacher + Bowley + Thoughtworks all confirm independently). Decision speed bottleneck (TOC framing) remains Level 1 — still no external convergence. **Cycle 92 UPDATE: Multi-domain opinion convergence emerging** — Harrington (supply chain, "hierarchical approval structures"), Fryrear (marketing, TOC framing explicitly), EM360Tech (general) all name the mechanism independently. Three domains, Level 1 opinions, no deployment data. Moving toward Level 2 but not there. Next signal to watch: practitioner reporting "our approval cycle is the measured bottleneck after AI deployment."
 
 ## Resolved
 

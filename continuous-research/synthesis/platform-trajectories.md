@@ -1,11 +1,25 @@
 ---
 type: synthesis
 domain: platform
-updated: 2026-03-28
+updated: 2026-04-03
 answers: ["platform direction", "who leads", "platform comparison", "horizontal platforms"]
 ---
 
-# Platform Trajectories (March 2026)
+# Platform Trajectories (April 2026)
+
+## Upcoming Events — Critical Watch Window
+Three major platform events in the next 3 weeks:
+- **April 15-16:** Salesforce TDX — Agentforce 360 roadmap, Vibes IDE + MCP integration, Parker Harris keynote. New deployment announcements expected.
+- **April 22-24:** Google Cloud Next — First major Google agent announcements of 2026. Session catalog shows AI agent interoperability as keynote theme.
+- **May 1:** Microsoft Agent 365 GA. Copilot Cowork now in Frontier early access (March 30).
+
+**Platform deployment evidence as of April 3:**
+- Salesforce: Level 2-3 (Engine, Williams-Sonoma, IRS, UK police Bobby — multiple industries)
+- Microsoft: Level 2 — **BREAKING SILENCE:** Capital Group and Coca-Cola Beverages Africa cited as first Cowork deployments (vendor-sourced, unverified)
+- Anthropic Cowork: Level 1-2 (CCO adoption claim; Dispatch 50% success rate on complex tasks)
+- OpenAI Frontier: Level 0 (21st consecutive zero for independent deployment evidence)
+- ServiceNow AW: Level 0 (self-report only; external GA Q2)
+- Google: N/A (Cloud Next April 22-24)
 
 **Nobody leads.** OpenAI's own COO confirmed (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." MIT NANDA: 95% of custom/task-specific GenAI tools report no measurable P&L impact (July 2025, N=52 interviews — directional, not precise. See cycle 80 audit).
 

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-03-24
-cycle: 69
+updated: 2026-04-03
+cycle: 87
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -14,8 +14,8 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-03-24 (cycle 69)
-OODA cycles: 11
+Last updated: 2026-04-07 (cycle 92)
+OODA cycles: 12
 
 ## Focus
 
@@ -35,7 +35,8 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
   - Wiley: 40%+ case resolution improvement, $213K saved ([TechInformed](https://techinformed.com/salesforce-launches-agentforce-saks-wiley-and-wyndham-spearhead-no-code-ai-for-enterprise/))
   - reMarkable (Nordic): 50% autonomous case handling + internal agents via Slack ([vendor case study — Level 0](https://www.salesforce.com/agentforce/metrics/))
   - 1-800Accountant: 70% repetitive inquiry automation during tax season ([Ksolves](https://www.ksolves.com/blog/salesforce/top-companies-using-agentforce))
-  - Engine (travel): $2M anticipated savings, CSAT 3.7→4.3, deployed in 12 days ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
+  - Engine (travel): $2M projected savings (forward-looking, not yet realized), CSAT 3.7→4.3, deployed in 12 days ([TechHQ](https://techhq.com/news/salesforce-agentforce-enterprise-agentic-ai/), Apr 2026) — [domain trade publication]
+  - **Falabella (cycle 92, Apr 2026):** Grupo Falabella (major LatAm retailer — Sodimac, Mall Plaza brands) deployed Agentforce on WhatsApp CS in Colombia. 60% autonomous resolution of WhatsApp service requests. Usage jumped from <50% to >70% of CS interactions within 3 weeks. 25% of conversations outside business hours (always-on coverage without staffing). ~2-month deployment timeline. Plans to expand to order cancellations, additional brands, sales/marketing/commerce. ([Salesforce Ben](https://www.salesforceben.com/whatsapp-first-strategies-with-agentforce/), Q1 2026 — [domain trade publication]; [Salesforce customer story](https://www.salesforce.com/customer-stories/grupo-falabella/) — Level 0)
   - Nexo: 62% case resolution as early adopter despite "technical debt" challenges ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
   - Engie: 83% user assistance rate ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
   - Safari365: turned 15% efficiency goals into 30%+ reality, 35 employees ([CX Today](https://www.cxtoday.com/crm/agentforce-case-studies/))
@@ -56,7 +57,7 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 
 ### Zendesk AI Agents — Customer Service
 - **Scale:** ~20,000 enterprise customers, 4.6B tickets/year.
-- **Forethought acquisition (March 11, 2026):** All-cash, largest in Zendesk history (15th acquisition since going private for $10.2B in 2022; ~$500M M&A in past 18 months). Expected close end of March 2026. Adds: self-improving AI with "Resolution Learning Loop" (detects workflow gaps, generates procedures, tests before deployment), "computer use" for legacy systems without APIs, native voice automation. Forethought was handling 1B+ interactions/month pre-acquisition; $115M total funding. Futurum: accelerates roadmap by "over a year." Integration timeline unknown — key watch item. ([TechCrunch](https://techcrunch.com/2026/03/11/zendesk-acquires-agentic-customer-service-startup-forethought/); [CMSWire](https://www.cmswire.com/customer-experience/zendesk-acquires-forethought-for-self-learning-ai-agents/); [Futurum](https://futurumgroup.com/insights/will-zendesks-forethought-acquisition-enable-true-agentic-resolutions/))
+- **Forethought acquisition — CLOSED March 26, 2026 (cycle 92):** Announced March 11, closed March 26. All-cash, largest in Zendesk history. Adds: self-improving AI with "Resolution Learning Loop" (detects workflow gaps, generates procedures, tests before deployment), "computer use" for legacy systems without APIs, native voice automation. Forethought was handling 1B+ interactions/month pre-acquisition; $115M total funding. Vendor claim: roadmap acceleration "over a year." Integration timeline for customer-facing capabilities unknown — key watch item. ([TechCrunch](https://techcrunch.com/2026/03/11/zendesk-acquires-agentic-customer-service-startup-forethought/); [CMSWire](https://www.cmswire.com/customer-experience/zendesk-acquires-forethought-for-self-learning-ai-agents/); [Morningstar/PR Newswire](https://www.morningstar.com/news/pr-newswire/20260326sf19710/zendesk-completes-acquisition-of-forethought), Mar 26 2026)
 - **Named deployment:**
   - SeatGeek: 51% auto-resolution in 4 months, 57,000 queries autonomous during peak events ([TechBuzz.ai](https://www.techbuzz.ai/articles/zendesk-s-ai-agent-claims-80-issue-resolution-rate))
   - **NEW (cycle 69): Hack'celeration independent review** — 3-month test across 3 deployments (15, 30, 80 agents). 200 real tickets: 68% fully autonomous resolution, 22% useful drafts, 10% correctly escalated. E-commerce client: first-response time 4 hours → 18 minutes. 30-agent team: AI handled 112 tickets/day autonomously. ([Hackceleration](https://hackceleration.com/zendesk-review/) — [practitioner analysis], Nov 2025)

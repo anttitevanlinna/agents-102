@@ -4,8 +4,8 @@ domain: cross-domain
 evidence_level: 3
 platforms: [claude-code, cursor, codex, honk, intercom-fin]
 nordic: true
-updated: 2026-03-30
-cycle: 74
+updated: 2026-04-04
+cycle: 89
 answers:
   - "what does an AI-native team actually look like?"
   - "how do teams divide work between humans and agents?"
@@ -15,8 +15,8 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-03-31 (cycle 75)
-**OODA cycles:** 4
+**Last updated:** 2026-04-04 (cycle 89)
+**OODA cycles:** 6
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -122,6 +122,18 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 - S&P Global: 42% of companies abandon majority of AI initiatives pre-production, up from 17% one year prior. ([Derosiaux/Medium](https://sderosiaux.medium.com/what-changed-in-q4-2025-and-why-enterprises-are-afraid-of-2026-2027-ccd4e632baae), Dec 2025) — [practitioner analysis]
 - Mollick/P&G: Individual + AI ≈ team without AI for average work, but teams + AI produce significantly more top-10% exceptional solutions. ([One Useful Thing](https://www.oneusefulthing.org/p/the-cybernetic-teammate), 2026) — [practitioner direct / academic]
 
+**Cycle 89 update — Absorption Bottleneck sub-pattern (approaching Level 3):**
+
+The Amplification Paradox has a specific operational mechanism: Little's Law. AI increases task/PR arrival rate while human review capacity (service rate) stays fixed. Queue grows. This is why org metrics stay flat even when individual output 98% more PRs.
+
+- Rishi Baldawa (Nov 2025): Explicit Little's Law application. GitClear data: 48% more copy-paste code, bug rates up 41% for Copilot users. Review service rate DOWN while arrival rate UP = queue breakdown. ([baldawa.com](https://rishi.baldawa.com/posts/pr-throughput/littles-law-ai-breaks-process/)) — [practitioner direct]
+- Faros Research (Jul 2025): 98% more PRs, but PR review time up 91%. Delivery metrics flat. "AI-driven coding gains evaporate when review bottlenecks can't match the new velocity." ([faros.ai](https://www.faros.ai/blog/ai-software-engineering)) — [domain research]
+- Simon Willison (Apr 2026): Running 4 parallel agents exhausts him by 11 AM. "Using every inch of my 25 years of experience...mentally exhausting." Cognitive load of oversight is the scarce resource, not compute. ([simonwillison.net](https://simonwillison.net/2026/Apr/2/lennys-podcast/)) — [practitioner direct]
+- ActivTrak (n=10,584, 180 days, Mar 2026): Email workload +104%, messaging +145%, deep-focus work -9%. "The data is unambiguous: AI does not reduce workloads." ([Fortune/ActivTrak](https://fortune.com/2026/03/13/ai-isnt-reducing-workloads-its-straining-employees-time-spent-emailing-doubled-deep-focus-work-fell/)) — [behavioral data, vendor-published with caveats]
+- UC Berkeley (n=200, 8 months, Feb 2026): Workers added more tasks instead of reducing hours. AI fills breaks, increases multitasking, reduces overall productivity despite initial gains. ([Fortune/Berkeley](https://fortune.com/2026/02/10/ai-future-of-work-white-collar-employees-technology-productivity-burnout-research-uc-berkeley/)) — [academic]
+
+**Counter-evidence — dark factory eliminates review bottleneck:** StrongDM (3 engineers, 32,000 lines production code since Jul 2025, no human writes or reviews code). Solution: scenario-based holdout testing as automated QA. Bottleneck shifts from review to specification quality. ([simonwillison.net](https://simonwillison.net/2026/Feb/7/software-factory/)) — [practitioner direct]. This is Goldratt confirmed: eliminate review constraint → specification constraint emerges next. The review bottleneck is an intermediate state, not permanent — but eliminating it requires significant QA infrastructure investment most teams don't have.
+
 ### Finding: "Let AI Run, Review Later" Fails — Active Monitoring Essential
 - Sachdeva's initial assumption that agents could work independently with post-hoc review proved ineffective. Active monitoring throughout development was essential for catching issues and enabling better design decisions. Foundational engineering skills became MORE critical, not less. ([Applied Context](https://www.appliedcontext.ai/p/ai-native-engineering-flow), Dec 2025) — [practitioner direct]
 
@@ -147,6 +159,7 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 | **Intercom CS (Declan Ivory)** | Unknown (avoided ~100 hires) | **Customer support** | 81% AI resolution, new roles (AI Ops Lead, Knowledge Manager, Conversation Designer), restructured job families, dedicated AI improvement time | Level 2 | [Intercom blog](https://www.intercom.com/blog/automate-customer-service-while-improving-customer-experience/) |
 | **Klarna CS (Siemiatkowski)** | Was ~700 CS agents replaced | **Customer support** | AI replaced 75% of CS volume, then REVERSED — quality dropped, now rehiring with hybrid "Uber-style" model | Level 3 (counter-signal) | [FinTech Weekly](https://www.fintechweekly.com/magazine/articles/klarna-hires-customer-service-after-ai-pivot) |
 | **Goldman Sachs (Argenti)** | Unknown | **Finance/Compliance** | Claude agents for trade accounting, KYC, reconciliation — tool deployment, not yet team restructuring | Level 2 | [American Banker](https://www.americanbanker.com/news/goldman-equips-ai-agents-do-trade-accounting-onboarding) |
+| **OpenAI Codex team (Rasmussen)** | Core <3, full team ~40 | **AI product development** | Full ownership per engineer, no standups/retros, weekly work-practice reinvention, mission-led not coordination-led | Level 2 | [Eng Leadership Newsletter](https://newsletter.eng-leadership.com/p/how-to-build-ai-native-engineering) (paywalled, Feb 2026) |
 | **Nordic software co. (finance, anonymized)** | 1 person | **Finance** | Non-coder with consulting background + just enough technical education. 9 months coding with Claude: bookkeeping automation → in-house tooling → AI features. Trajectory: automation → AI features → production tooling. | Level 2 | [direct observation, Mar 2026] — Nordic, first non-engineering coding-agent practitioner |
 | **Nordic software co. (tech director, anonymized)** | 1 person | **Technology/Management** | Non-coder with technical background. Was: slides and docs. Now: dashboards → hosting platform for AI apps. Trajectory: consumption → creation → infrastructure. | Level 2 | [direct observation, Mar 2026] — Nordic, second non-engineering coding-agent practitioner |
 | **Scania/TRATON AI-Enablement** | 4 | **Developer enablement** | MobAI: daily mob 09:00-12:00, rotating Driver/Navigator/Advisor, LLM as participant. Built DevEx Interview Agent deployed across TRATON Group. Inspired by Joe Justice workshop at Crisp. | Level 2 | [Crisp blog](https://blog.crisp.se/2025/06/02/michaelgothe/mob-programming-with-ai-inside-a-high-performing-teams-journey) + [Scania blog](https://www.scania.com/group/en/home/career/life-at-scania/software-developers-at-scania/blog-posts/blog-how-we-use-ai-to-build-a-developer-first-culture.html) — Nordic (Swedish) |
@@ -181,8 +194,24 @@ A specific profile is emerging: people with just enough technical education (not
 
 **WATCH:** Is this pattern visible at other organizations? Does it replicate after agent training?
 
+### Emerging Pattern I: Codex Team Model — Minimal Overhead, Full Ownership, Weekly Reinvention
+**Level 2 (single practitioner source — OpenAI Codex team, Feb 2026)**
+
+Specific operating model from the Codex team at OpenAI:
+- Core contributors fewer than 3; full team ~40
+- Engineers own full projects start-to-finish (no handoffs)
+- Rituals eliminated: daily standups, retrospectives, sprint planning
+- "Align on things" is the only meeting purpose
+- New discipline: **weekly reinvention of work practices** to eliminate productivity bottlenecks
+- Pair work encouraged for idea exchange, not execution
+- Leadership act: people selection + mission setting → then get out of the way
+
+This extends Pattern G (spec = leadership act) with operational detail. When ownership is fully distributed and agents handle execution, the leadership act shrinks to: (1) select the right people, (2) set the mission clearly, (3) continuously remove friction. Coordination overhead collapses.
+
+Source: Rasmussen, Eng Leadership Newsletter, Feb 2026 — [practitioner direct, paywalled]. https://newsletter.eng-leadership.com/p/how-to-build-ai-native-engineering
+
 ### Emerging Pattern G: "The Spec Is the Leadership Act" — How AI-Native Teams Are Led
-**Level 3 (convergence — 6+ independent signals)**
+**Level 3 (convergence — 7+ independent signals, cycle 88 update)**
 
 The leader of an AI-native team writes specifications that direct agents, then reviews whether output meets the spec. The management artifact shifts from verbal direction, Gantt charts, or sprint backlogs to written specifications in markdown. This is not a new skill — it's the same intent-communication skill good managers always had, expressed in a different medium.
 
@@ -275,7 +304,7 @@ Engineering AI-nativeness works because code verification is clean (tests pass o
 
 ## What We Did Not Find
 
-0. **A working framework for evaluating spec-writer quality in AI-native teams** (added cycle 74). Shopify measures AI usage (input metric). DORA 2025 says traditional metrics don't separate AI-generated from human work. StrongDM and Intercom evaluate system output, not the human's contribution. **Nobody has published "here's how we evaluate whether a person is good at directing AI."** Every CTO will need this within 12 months. This is the most significant research gap in the AI-native leadership space.
+0. **A working framework for evaluating spec-writer quality in AI-native teams** (added cycle 74, hardened cycle 88). Shopify measures AI usage (input metric). DORA 2025 (n=5,000) explicitly confirms traditional metrics cannot separate AI-generated from human work. StrongDM and Intercom evaluate system output, not the human's contribution. **Nobody has published "here's how we evaluate whether a person is good at directing AI."** DORA's independent confirmation upgrades this from KB gap to field-wide gap. **Level 3 absence finding** after 88 cycles: this is not a market timing problem, it's a fundamentally unsolved problem. Every CTO will need this within 12 months.
 
 1. **Non-engineering AI-native teams — first signal from F-Secure finance** (updated March 2026). One partial exception previously: Intercom's CS team (but Intercom is the vendor). NOW: **F-Secure has a finance person who has been coding with Claude for 9 months** — automating quarterly bookkeeping chores, now adding AI features via Claude Code, building an in-house tool to replace Excel spreadsheets. This is significant because: (a) finance, not engineering, (b) self-directed, not mandated, (c) 9-month trajectory shows sustained adoption not a one-off experiment, (d) "replacing Excel" = building production tooling, not prompting a chatbot, (e) the progression from automation → AI features mirrors the compound engineering pattern. Level 2 (single practitioner, direct observation). **This is the first named non-engineering person we've found building with coding agents for their own domain work at sustained pace.** The verification gap (Pattern E) may be less blocking in finance than other domains — bookkeeping has verifiable correctness (the books must balance), which is exactly the structural precondition our domain-crossing pattern predicts.
 

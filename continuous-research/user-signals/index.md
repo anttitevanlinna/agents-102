@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-02](questions/2026-04-02-epd-coordination-emerging-patterns.md) — How is PM/Design/Eng coordination changing with coding agents? Emerging patterns beyond known ones. **Answered:** 8 patterns documented in `findings/by-pattern/epd-coordination-shift.md`.
 - [2026-04-02](comments/2026-04-02-centralized-fast-with-agent-coordinator.md) — Centralized works fast too — if the coordinator is an agent, not a human. The bottleneck was never the architecture, it was the human at the center. Hybrid: agent general staff + distributed units + shared doctrine.
 - [2026-04-02](comments/2026-04-02-three-goals.md) — Three goals: speed of evolution, speed of convergence to winners, sufficient compliance. Centralized platforms sacrifice #1 and #2 for #3. Distributed model can do all three via doctrine + output audit.
 - [2026-04-02](comments/2026-04-02-distributed-beats-centralized.md) — Distributed agents with shared doctrine (Auftragstaktik) may beat centralized platforms. Enterprise software mental model is wrong for agents.

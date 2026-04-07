@@ -950,6 +950,54 @@ The stack is layering: Model → Runtime → Framework → Agent. Framework is L
 
 ---
 
+## Design Systems Are Now Agent Infrastructure
+
+**Thesis:** A mature design system is no longer just a consistency tool -- it's the context layer that determines whether coding agents produce design-compliant code or generic garbage.
+
+monday.com tried the naive approach: paste a Figma link into Cursor. Result: hard-coded colors, manual CSS, no design system compliance. Then they built an 11-node LangGraph agent with a custom design-system MCP, and the output "looks like it was written by someone who deeply understands the system." Figma's own MCP server now surfaces component props, token bindings, and accessibility attributes in machine-readable form. Katherine Yeh describes treating Claude Code skills like a design system -- layers, responsibilities, dependencies.
+
+The practical consequence: teams that invested in design systems over the past 5 years have an unexpected competitive advantage in the AI era. Their design system doubles as agent context. Teams without one get agent output that technically works but doesn't belong in their product.
+
+**The implication for CTOs:** Your design system team just became part of your AI infrastructure team. Every design token, component spec, and naming convention is now machine-readable context that directly affects coding agent output quality. If you don't have a design system, your agents will produce inconsistent work that requires manual cleanup -- defeating the purpose.
+
+**Applies to:** advisory, newsletter (EPD coordination shift), training
+**Source:** monday.com engineering blog, Figma MCP blog, Katherine Yeh practitioner account
+**Date:** 2026-04-02
+
+---
+
+## The 3-4 Agent Stream Cognitive Ceiling
+
+**Thesis:** One person can effectively steer 3-4 parallel agent streams before cognitive degradation sets in -- this creates a natural team-size formula for AI-native pods.
+
+Simon Willison (April 2026, Lenny's Podcast): "I can fire up four agents in parallel... I feel the effects before noon." This isn't the absorption bottleneck (too much output to review). It's the steering load -- the cognitive cost of maintaining context across multiple parallel autonomous processes. Research suggests managing an AI agent takes 3-4 hours/week, comparable to a human report, but yields 168 hours of output vs. 40.
+
+This gives us math for AI-native team sizing: if each person maxes at 3-4 streams, a 4-person pod manages 12-16 parallel streams. That appears to match the independently emerging "3-5 person pod" pattern (OpenAI Codex/Sora: 4 people; StrongDM: 3 people; multiple startups: 3-5 people).
+
+**The implication for CTOs:** Don't staff AI-native teams by headcount or feature count. Staff by cognitive bandwidth. "1 engineer + 10 agents" is technically possible but practically burns people out by noon. Design teams around sustainable steering capacity, not theoretical agent throughput.
+
+**Applies to:** advisory, training (team design), newsletter
+**Source:** Simon Willison on Lenny's Podcast (April 2026), LinearB research, WebProNews synthesis
+**Date:** 2026-04-02
+
+---
+
+## The PM Coding Trap
+
+**Thesis:** PMs gaining coding ability through AI tools is a trap when it replaces discovery, strategy, and stakeholder alignment -- three independent voices are converging on this warning.
+
+Saeed Khan: "Vibe Coding is NOT a Product Management Superpower." Bryce York: "If Your PMs Are Vibe-Coding Prototypes, Who's Doing the Product Management?" Nicole H: "PMs who obsess over their AI tool stack -- spending more time tweaking Claude workflows than talking to users." Survey data shows PMs don't want more time vibe coding -- they want more time on core PM tasks.
+
+This is the PM-specific manifestation of the absorption bottleneck. The tool enables building, so PMs build. But the scarce resource was never "can we build a prototype" -- it was "do we understand the problem well enough to know what to build." When implementation gets cheap, discovery and strategy appreciate in value. PMs who shift to coding are doing the now-abundant work and neglecting the now-scarce work.
+
+**The implication for CTOs:** If your PMs are spending half their week in Cursor, congratulate their initiative and then redirect them. The highest-value PM skill in 2026 is writing specifications so precise that agents can execute them -- not operating the agents themselves. Let engineers orchestrate agents. Let PMs orchestrate understanding.
+
+**Applies to:** advisory, training, newsletter (EPD coordination)
+**Source:** Saeed Khan (Medium), Bryce York (bryceyork.com), Nicole H (PostMVP)
+**Date:** 2026-04-02
+
+---
+
 Copy this for new insights:
 
 ```

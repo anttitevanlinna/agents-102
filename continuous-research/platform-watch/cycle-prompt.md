@@ -143,6 +143,13 @@ Real enterprise agents must handle:
 - Nordic signal confirms roll-out speed. Nordic absence confirms the gap.
 - Don't search "Nordic AI agents" as primary query — search for the global pattern, then check "[pattern] Nordic" or "[pattern] Finland/Sweden/Norway/Denmark."
 
+**Lens 7: Adoption lifecycle**
+We track early adopters → chasm → wide adoption. Every finding should be assessed against these four sub-questions:
+- **Transition trigger:** What tipped this domain/company from experimentation to production? Was it pricing innovation (Zendesk outcome-based), role creation (Intercom AI Ops Lead), a specific failure that forced learning (Klarna reversal), regulatory pressure, or something else? Name the mechanism, not just the state.
+- **Sub-niche beachhead:** Within the domain, which specific use case crossed first? "Finance crossed" is too broad — was it AP automation? Reconciliation? FP&A? The bowling alley is specific: one narrow use case proves the pattern, then adjacent use cases follow.
+- **Early majority signals:** Are pragmatists (not just enthusiasts) adopting? Pragmatists buy references, not vision. They ask "who else in my industry did this?" They evaluate risk, not upside. If a finding shows a non-innovator company adopting because a peer succeeded, that's an early majority signal — flag it explicitly.
+- **Whole product readiness:** For this domain/use case, does the full ecosystem exist? Technology alone doesn't cross the chasm. Check: (1) proven technology, (2) training/enablement available, (3) integration support, (4) governance framework, (5) reference customers willing to talk. Rate as: missing / partial / ready. A domain with strong technology but no training or governance is stuck at the chasm regardless of capability.
+
 Search queries should target business users AND integration reality:
 - "[platform] multi-system agent workflow enterprise"
 - "[platform] Salesforce Snowflake integration agent"

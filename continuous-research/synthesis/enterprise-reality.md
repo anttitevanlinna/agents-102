@@ -71,4 +71,23 @@ For an environment with SF + Snowflake + Redshift + Slack + O365 + SharePoint + 
 
 85% accuracy per step x 10 steps = ~20% end-to-end success. This is why narrow agents succeed (CS: 2-3 steps) and ambitious multi-step agents fail (80-90% failure, RAND). Design for short action chains, not 20-step autonomy.
 
+## 5. Whole Product Readiness (by domain)
+
+Technology alone doesn't cross the chasm (Moore). The whole product = technology + training + integration + governance + references. A domain with strong tech but no training is stuck. Rate per dimension: missing / partial / ready.
+
+| Domain | Technology | Training | Integration | Governance | References | Verdict |
+|--------|-----------|----------|-------------|------------|------------|---------|
+| **Customer service** | Ready | Partial (vendor-led) | Within-platform | Partial (vendor audit) | Ready (SeatGeek, Finnair, Zeffy) | **Closest to whole product** |
+| **Finance/accounting** | Ready | Missing | Partial (standalone) | Strong inherent (audit culture) | Emerging (Goldman, HPE) | Tech ahead of ecosystem |
+| **Coding agents** | Ready | Ready (CC101, docs, community) | N/A (meta-platform) | Emerging (CLAUDE.md, evals) | Ready (12+ practitioners) | **Whole product exists** |
+| **Sales/GTM (hybrid)** | Ready | Missing | Strong within CRM | Weak | Mostly negative | Chasm widening |
+| **Legal/compliance** | Ready | Partial (Harvey training) | Partial | Strong inherent | Emerging (CMS, A&O Shearman) | Access-trust gap is the blocker |
+| **Operations/supply chain** | Ready (narrow) | Missing | Strong (existing ERP/WMS) | Industrial safety helps | Emerging (Danfoss, Maersk) | Beachhead forming |
+| **Product management** | Ready (execution) / Partial (strategy) | Emerging (Reforge, Maven, ccforpms) | Partial (analytics MCP arriving) | Missing | Enthusiast-only (Rekhi, Torres) | Post-chasm execution, pre-chasm strategy |
+| **HR** | Partial (vendor demos) | Missing | Missing | Missing | Missing | Pre-pre-chasm |
+
+**The pattern:** Technology is "ready" or "partial" across almost every domain. The chasm isn't technological. The missing pieces are consistently **training** and **cross-system integration**. Governance varies — domains with existing audit culture (finance, legal, industrial) have a structural advantage. References are the trailing indicator — they appear only after the other dimensions are at least partial.
+
+**Implication:** "Which platform?" matters less than "who will train our people?" and "who will integrate across our systems?" The platform vendors provide technology. Nobody reliably provides the rest of the whole product. This is the gap Agents 102 fills for the training dimension.
+
 See [cto-answer.md](cto-answer.md) for platform recommendations per use case. See [platform-trajectories.md](platform-trajectories.md) for where each platform is headed.

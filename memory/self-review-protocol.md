@@ -13,6 +13,9 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 | 2026-03-21 | "You should keep maintaining the core of this project" | Process | Don't let project memory drift. After deepening understanding, update CLAUDE.md, key files, and goals. The project's self-description should reflect current understanding, not the state when files were first written. |
 | 2026-03-22 | "Personal use is the foundation, not a step" — reframed my organizational-level framing | Strategy | Don't jump to organizational effects. Personal use is the irreducible foundation. The sequence has no shortcuts: personal use → personal competence → shared mental models → organizational effects. |
 | 2026-03-22 | "Leadership must use agents — living this at F-Secure. That is the true scaling unlock" | Strategy | Leadership personal use is the bridge between bottom-up energy and top-down credibility. Without it, mandates are empty. Add to every scaling discussion. |
+| 2026-04-08 | Cagan is Level 1, not a practitioner — "He just talks" | Decision | Don't upgrade opinion-formers to practitioners just because they're influential. The evidence ladder is about what they DO, not who they are. Cagan writing about AI coaching ≠ Cagan building an AI coach. |
+| 2026-04-08 | "Not like all sales people suck at logical thinking" — I stereotyped domain practitioners | Style | When discussing people gradients, always frame as DENSITY (distribution in a population), never as attributes of individuals. "Lower density of systematic thinkers" not "unsystematic people." Every domain has strong logical thinkers — they're the seeds. |
+| 2026-04-08 | Structure gradient was about PEOPLE, not work — "Logic-strong people gravitate to coding" | Strategy | When Antti proposes a hypothesis, listen to what he's actually saying before expanding it. I jumped to work structure; he meant people structure. Both are valid but his was the sharper insight. Ask before elaborating. |
 
 ## Heuristics (apply before doing work)
 
@@ -39,9 +42,14 @@ When starting a new session, check:
 - [ ] Does CLAUDE.md reflect current understanding?
 - [ ] Am I grounding organizational claims in personal use first?
 - [ ] Does my scaling discussion include leadership personal use?
+- [ ] Am I distinguishing practitioners (build things) from opinion-formers (write about things) on the evidence ladder?
+- [ ] When Antti proposes a hypothesis, am I listening to what he's ACTUALLY saying before expanding?
+- [ ] When discussing people/domains, am I framing as density distributions, not stereotypes?
 
 ## Pattern Watch
 
 Patterns to escalate to hard rules if they appear 3+ times:
 - **"Ground in personal before organizational" (2x)** — Antti corrected organizational-level framing twice in session 2. One more occurrence → hard rule.
 - **"Strategy implications, not feature lists" (1x)** — watching
+- **"Listen to what Antti actually means, not what I think he means" (1x)** — I expanded his people-gradient hypothesis into a work-structure gradient. Both valid, but his was sharper. Watch for pattern of hijacking his insights with my frameworks.
+- **"Density, not stereotypes" (1x)** — watching

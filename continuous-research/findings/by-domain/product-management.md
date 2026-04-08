@@ -142,7 +142,12 @@ Source: [Haberlah 638-piece analysis](https://medium.com/@haberlah/what-638-prac
 
 **4. Survey bias.** The most-cited stats (Productboard n=379, 100% AI adoption) come from vendor surveys of their own users. No independent measurement exists.
 
-**5. Marty Cagan's silence.** The most influential PM thinker is notably absent from the AI-and-PM discourse. Either working on something or considers it not worth engaging.
+**5. Marty Cagan is NOT silent — he publishes on svpg.com, not in the PM Twitter/newsletter ecosystem.** Five AI articles (May 2025 — Feb 2026). Key positions:
+- **"Product Coaching and AI" (Feb 2026):** "Significant change to what we have been advocating for two decades." Recommends PMs use foundation models as personal product coaches — AI democratizes PM skill development. Source: [svpg.com](https://www.svpg.com/product-coaching-and-ai/) [practitioner direct]
+- **"Build vs Buy in the Age of AI" (Aug 2025):** Names MCP as critical enabler. Future = buy component services + build custom with AI agents on top. Thousands of embedded business rules won't be replicated by vibe coding. Source: [svpg.com](https://www.svpg.com/article-build-vs-buy-in-the-age-of-ai/) [practitioner direct]
+- **"Creating Intelligent Products" (Jun 2025):** Probabilistic solutions are integral, not edge cases. Challenges B2B/regulated industries who dismiss probabilistic AI. Source: [svpg.com](https://www.svpg.com/creating-intelligent-products/) [practitioner direct]
+
+Cagan's trajectory aligns with the competence-first thesis (AI builds PM competence, not just speed), the MCP infrastructure thesis, and the evals-as-PM-skill convergence. Research agents missed him because they searched PM Twitter/newsletter discourse, not his own blog. **Method lesson: always check the practitioner's own platform, not just where the conversation happens.**
 
 **6. Survivorship bias in practitioner voices.** The PMs publishing are enthusiasts building courses. The silent majority likely uses ChatGPT to clean up a doc occasionally and that's it.
 

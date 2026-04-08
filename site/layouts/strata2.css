@@ -489,8 +489,20 @@ body.light-article .article-body {
 
 @page { margin: 20mm 18mm 25mm 22mm; }
 
+/* ── Print cover page (hidden on screen) ── */
+
+.print-cover,
+.print-toc {
+    display: none;
+}
+
 @media print {
-    body { font-size: 11pt; line-height: 1.65; }
+    body {
+        font-size: 11pt;
+        line-height: 1.65;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
     /* Kill all interactive wayfinding */
     nav, footer,
@@ -501,7 +513,126 @@ body.light-article .article-body {
         display: none !important;
     }
 
-    /* Phase sections — light tint in print */
+    /* ── COVER PAGE ── */
+    .print-cover {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 85vh;
+        page-break-after: always;
+        padding: 0 1rem;
+    }
+
+    .print-cover-phase-bar {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 3rem;
+    }
+    .print-cover-phase-bar span {
+        width: 40px;
+        height: 5px;
+        display: block;
+    }
+    .print-cover-phase-bar .bar-1 { background: #3d6e99; }
+    .print-cover-phase-bar .bar-2 { background: #a06928; }
+    .print-cover-phase-bar .bar-3 { background: #9e3535; }
+    .print-cover-phase-bar .bar-4 { background: #d4571a; }
+
+    .print-cover-title {
+        font-family: Charter, 'Bitstream Charter', Georgia, serif;
+        font-size: 36pt;
+        font-weight: 200;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #1a1a1a;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .print-cover-subtitle {
+        font-family: Charter, 'Bitstream Charter', Georgia, serif;
+        font-size: 14pt;
+        font-weight: 400;
+        color: #4a4a4a;
+        line-height: 1.5;
+        max-width: 28em;
+        margin: 0 0 3rem 0;
+    }
+
+    .print-cover-author {
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 11pt;
+        color: #4a4a4a;
+        margin: 0 0 0.3rem 0;
+    }
+
+    .print-cover-org {
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 10pt;
+        color: #a0a09a;
+        margin: 0;
+    }
+
+    .print-cover-footer {
+        margin-top: auto;
+        padding-top: 3rem;
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 9pt;
+        color: #a0a09a;
+    }
+
+    /* ── TABLE OF CONTENTS ── */
+    .print-toc {
+        display: block !important;
+        page-break-after: always;
+        padding-top: 2rem;
+    }
+
+    .print-toc-title {
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 10pt;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #a0a09a;
+        margin: 0 0 2rem 0;
+    }
+
+    .print-toc-phase {
+        margin-bottom: 1.5rem;
+    }
+
+    .print-toc-phase-name {
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 9pt;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 0 0 0.4rem 0;
+        padding-left: 0;
+    }
+    .print-toc-phase-name.toc-phase-1 { color: #3d6e99; }
+    .print-toc-phase-name.toc-phase-2 { color: #a06928; }
+    .print-toc-phase-name.toc-phase-3 { color: #9e3535; }
+    .print-toc-phase-name.toc-phase-4 { color: #d4571a; }
+
+    .print-toc-entry {
+        font-family: Charter, 'Bitstream Charter', Georgia, serif;
+        font-size: 10.5pt;
+        line-height: 1.8;
+        margin: 0;
+        padding-left: 0;
+        color: #1a1a1a;
+    }
+
+    .print-toc-entry .toc-date {
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 8pt;
+        color: #a0a09a;
+        margin-right: 0.5em;
+    }
+
+    /* ── Phase sections — subtle tint in print ── */
     .phase-section {
         margin-left: 0; margin-right: 0;
         padding-left: 0; padding-right: 0;
@@ -511,11 +642,21 @@ body.light-article .article-body {
     .phase-section.strata-3 { background: #f6f2f2 !important; }
     .phase-section.strata-4 { background: #f7f4ef !important; }
 
-    /* Constrain measure */
+    /* ── Constrain measure ── */
     .article-with-toc, .article-container { max-width: none; padding: 0; }
     .article-body { max-width: 36em; }
 
-    /* Phase titles — page break + thick left rule */
+    /* ── Hide screen-only elements ── */
+    .author-card { display: none !important; }       /* cover page has author */
+    .article-meta { display: none !important; }       /* reading time — meaningless on paper */
+    .article-intro { display: none !important; }      /* cover subtitle replaces this */
+
+    /* ── HR separators — kill them, essay cards provide structure ── */
+    .article-body hr {
+        display: none !important;
+    }
+
+    /* ── Phase titles — new page + thick left rule ── */
     .article-body h1 {
         page-break-before: always;
         border-top: none;
@@ -531,27 +672,73 @@ body.light-article .article-body {
     .article-body h1.phase-3 { border-left-color: #9e3535; }
     .article-body h1.phase-4 { border-left-color: #d4571a; }
 
-    /* Thesis — keep the bold bar */
+    /* ── Essay titles — keep with thesis + first paragraph ── */
+    .essay-card h2,
+    .essay-date {
+        page-break-after: avoid;
+    }
+
+    /* ── Thesis blockquote — bold bar, never split ── */
     .article-body blockquote.thesis {
         border-left: 4px solid #d4571a;
         background: #faf6f3 !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
-    /* Confirmed — dashed teal */
+    /* ── Confirmed blockquote — dashed teal, never split ── */
     .article-body blockquote.confirmed {
         border-left: 2px dashed #2a9d8f;
         background: #f0fafa !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 
-    .author-card { border: 1px solid #ccc; background: #fff !important; }
+    /* ── All blockquotes — keep together ── */
+    .article-body blockquote {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
 
-    /* Orphan/widow control */
+    /* ── Essay cards — don't try to keep whole card on one page
+         (essays are too long). Instead keep title block together ── */
+    .essay-card {
+        break-inside: auto;
+        page-break-before: auto;
+    }
+
+    /* ── Closing sections ("What I Know Now", "What To Do Monday") — fresh page ── */
+    .essay-card.print-closing-section:first-of-type {
+        page-break-before: always;
+    }
+
+    /* ── Orphan/widow control ── */
     p { orphans: 3; widows: 3; }
     h1, h2, h3 { page-break-after: avoid; }
 
-    a { text-decoration: none; }
-    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+    /* ── Lists — keep items together ── */
+    li { page-break-inside: avoid; }
+    ul, ol { orphans: 2; widows: 2; }
 
+    /* ── Links — print URL only for external links, truncate long ones ── */
+    a { text-decoration: none; }
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.75em;
+        color: #888;
+        word-break: break-all;      /* prevent URL overflow */
+    }
+    /* Don't print URL for internal/anchor links */
+    a[href^="#"]::after,
+    a[href^="index"]::after,
+    a[href^="article"]::after {
+        content: none !important;
+    }
+
+    /* ── Bold text — slightly heavier for print legibility ── */
+    strong { font-weight: 700; }
+
+    /* ── Footer attribution ── */
     .article-body::after {
         content: "bosser.consulting";
         display: block;
@@ -560,4 +747,7 @@ body.light-article .article-body {
         font-size: 0.8em;
         color: #999;
     }
+
+    /* ── Page setup ── */
+    @page { margin: 20mm 18mm 25mm 22mm; }
 }

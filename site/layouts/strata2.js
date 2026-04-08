@@ -105,6 +105,106 @@
 
 
         // ══════════════════════════════════════════════════════════════════
+        // PRINT: Cover page + Table of Contents
+        // Injected before article body. Hidden on screen, shown in print.
+        // ══════════════════════════════════════════════════════════════════
+
+        (function buildPrintPages() {
+            var wrap = articleBody.closest('.article-body-wrap') || articleBody.parentNode;
+
+            // ── Cover page ──
+            var cover = document.createElement('div');
+            cover.className = 'print-cover';
+
+            // Extract title from first h1
+            var titleH1 = articleBody.querySelector('h1');
+            var titleText = titleH1 ? titleH1.textContent.trim() : document.title;
+
+            // Extract subtitle from the intro or first paragraph
+            var introEl = wrap.querySelector('.article-intro');
+            var subtitleText = introEl ? introEl.textContent : '';
+
+            // Extract author from author card
+            var authorCard = wrap.querySelector('.author-card .author-name');
+            var authorText = authorCard ? authorCard.textContent : 'Antti Tevanlinna';
+            var authorDetail = wrap.querySelector('.author-card .author-info div:last-child');
+            var authorDetailText = authorDetail ? authorDetail.textContent : '';
+
+            cover.innerHTML =
+                '<div class="print-cover-phase-bar">' +
+                    '<span class="bar-1"></span><span class="bar-2"></span>' +
+                    '<span class="bar-3"></span><span class="bar-4"></span>' +
+                '</div>' +
+                '<div class="print-cover-title">' + titleText + '</div>' +
+                (subtitleText ? '<div class="print-cover-subtitle">' + subtitleText + '</div>' : '') +
+                '<div class="print-cover-author">' + authorText + '</div>' +
+                (authorDetailText ? '<div class="print-cover-org">' + authorDetailText + '</div>' : '') +
+                '<div class="print-cover-footer">bosser.consulting</div>';
+
+            wrap.insertBefore(cover, wrap.firstChild);
+
+            // ── Table of contents ──
+            var toc = document.createElement('div');
+            toc.className = 'print-toc';
+            var tocInner = '<div class="print-toc-title">Contents</div>';
+
+            var phaseNames = {
+                'phase-1': 'Phase 1: Orientation',
+                'phase-2': 'Phase 2: Process Discovery',
+                'phase-3': 'Phase 3: Scaling Reality',
+                'phase-4': 'Phase 4: Compounding'
+            };
+
+            var currentTocPhase = null;
+            var tocPhaseHtml = '';
+            var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+            articleBody.querySelectorAll('h1, h2').forEach(function(heading) {
+                if (heading.tagName === 'H1') {
+                    // Close previous phase block
+                    if (currentTocPhase) {
+                        tocInner += '<div class="print-toc-phase">' + tocPhaseHtml + '</div>';
+                    }
+                    // Detect phase class
+                    var phClass = '';
+                    for (var c = 0; c < heading.classList.length; c++) {
+                        if (heading.classList[c].indexOf('phase-') === 0) { phClass = heading.classList[c]; break; }
+                    }
+                    var phaseName = phaseNames[phClass] || heading.textContent.trim();
+                    tocPhaseHtml = '<div class="print-toc-phase-name toc-' + phClass + '">' + phaseName + '</div>';
+                    currentTocPhase = phClass;
+                } else if (heading.tagName === 'H2') {
+                    var essayTitle = heading.textContent.trim();
+                    // Check for date in nearby date pill
+                    var datePill = heading.previousElementSibling;
+                    var dateStr = '';
+                    if (datePill && datePill.classList.contains('essay-date')) {
+                        dateStr = '<span class="toc-date">' + datePill.textContent + '</span>';
+                    }
+                    tocPhaseHtml += '<div class="print-toc-entry">' + dateStr + essayTitle + '</div>';
+                }
+            });
+            // Close last phase
+            if (currentTocPhase) {
+                tocInner += '<div class="print-toc-phase">' + tocPhaseHtml + '</div>';
+            }
+
+            toc.innerHTML = tocInner;
+
+            // ── Mark closing sections for print page breaks ──
+            articleBody.querySelectorAll('.essay-card').forEach(function(card) {
+                var h2 = card.querySelector('h2');
+                if (h2 && (h2.textContent.indexOf('What I Know Now') !== -1 ||
+                           h2.textContent.indexOf('What To Do Monday') !== -1)) {
+                    card.classList.add('print-closing-section');
+                }
+            });
+            wrap.insertBefore(toc, cover.nextSibling);
+
+        })();
+
+
+        // ══════════════════════════════════════════════════════════════════
         // LAYER 1 — Edge Strip
         // ══════════════════════════════════════════════════════════════════
 
@@ -181,9 +281,9 @@
 
         function getCurrentPhase(scrollPos) {
             var current = null;
-            for (var i = phaseH1s.length - 1; i >= 0; i--) {
-                if (phaseH1s[i].offsetTop <= scrollPos) {
-                    current = phaseH1s[i];
+            for (var i = phases.length - 1; i >= 0; i--) {
+                if (phases[i].el.offsetTop <= scrollPos) {
+                    current = phases[i].el;
                     break;
                 }
             }

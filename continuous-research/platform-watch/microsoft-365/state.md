@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
 nordic: true
-updated: 2026-04-06
-cycle: 91
+updated: 2026-04-09
+cycle: 94
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -14,8 +14,8 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-03-24 (cycle 69)
-OODA cycles: 16
+Last updated: 2026-04-09 (cycle 94)
+OODA cycles: 19
 
 ## Focus
 
@@ -65,6 +65,11 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
   - **UC Today / CX Today coverage:** Framing as "shift from assistant to execution engine." No independent user results. — [general press]
   - **Status as of April 8:** Zero independent practitioner hands-on reviews remain (no YouTube demos, no Reddit threads, no personal blog posts from users). All coverage is announcement-based, analyst speculation, or vendor-channeled testimonials. The product IS shipping to Frontier customers as of March 30, but nobody outside Microsoft/Anthropic's marketing channel has published results. The silence is 30+ days post-announcement.
   - **4sysops assessment (unchanged):** Cannot write code, execute shell commands, control browser, or autonomously follow up on email replies — "a natural language interface for Office." Confirmed: the agentic claim is ahead of the capability.
+  - **Cycle 94 update (April 9, 2026) — Cowork silence fully broken: two independent practitioner reviews now exist:**
+    - **Rob Quickenden (Microsoft MVP), April 6, 2026:** First genuine hands-on review via Frontier Programme/MVP Summit access. Positive on document quality ("PowerPoint and Word outputs far superior to prior Copilot"). Confirmed: multi-task queuing, file drag-and-drop, sensitivity label preservation. Limitations: 20 custom skill cap per user, tenant-level admin enablement required, sessions pause at approval gates. ([robquickenden.blog](https://robquickenden.blog/2026/04/copilot-cowork-walkthrough/), practitioner direct, Level 2)
+    - **Russ McKendrick (DevOps practitioner), April 3, 2026:** Custom skills build via day-job M365 licence. Positive on friction: "No registration, no admin configuration required — it just works." Hard constraints confirmed: OneDrive/SharePoint only (no local file access), 1 MB per skill file limit. Caveat: "Review outputs carefully, particularly early on." ([russmckendrick.medium.com](https://russmckendrick.medium.com/creating-custom-skills-for-copilot-cowork-e85d4af1b1b5), practitioner direct, Level 2)
+    - **Assessment:** Cowork is functional in Frontier Preview. Two Level 2 accounts. NOT yet convergence (far fewer than 10-20 independent reports). Both reviewers are broadly positive on ease of use vs. prior Copilot but neither has validated on production workloads at scale. EU data residency remains a structural blocker for Nordic buyers.
+    - **EU/Nordic blocker confirmed (March 10 / cycle 69 + 94):** Claude falls outside EU Data Boundary — blocked by default in EU/UK/EFTA tenants. No EU region hosting commitment from Anthropic. Nordic regulated industries cannot use without explicit admin opt-in and compliance review. ([Copilot at Work Substack](https://copilotatwork.substack.com/p/what-is-preventing-eu-organizations), practitioner direct)
 
 - **Cycle 69 update (March 24, 14:00) — EU/EFTA BLOCKED + 35th consecutive zero:** Anthropic models **disabled by default** in EU, EFTA, and UK tenants. Excluded from EU Data Boundary — Microsoft cannot extend standard data residency guarantees. Admins must explicitly opt in. Identity issue: Cowork executes as user identity, no dedicated AI agent identity model. **For Nordic companies: Cowork requires explicit compliance review + admin opt-in before any usage.** Regulated industries (finance, healthcare) face GDPR friction. Combined with 35 cycles of zero independent reviews, this is the weakest platform choice for Nordic enterprises. ([Copilot at Work Substack](https://copilotatwork.substack.com/p/what-is-preventing-eu-organizations); [2toLead](https://www.2tolead.com/insights/anthropic-models-on-default-copilot-admin-action-plan-and-risks); [UC Today](https://www.uctoday.com/unified-communications/microsoft-365-copilot-to-enable-anthropic-models-by-default-what-compliance-leads-need-to-know/); [Microsoft Learn](https://learn.microsoft.com/en-us/copilot/microsoft-365/connect-to-ai-subprocessor), Mar 2026). **Melius analyst (Mar 23):** Copilot is a "punch line," reorg is "red flag" — "you rarely reorganize anything into strength." ([247WallSt](https://247wallst.com/investing/2026/03/23/melius-analyst-microsofts-copilot-reorganization-is-a-red-flag/)). **4sysops technical teardown:** Cowork cannot write code, execute shell commands, control browser, or autonomously follow up on email replies — "a natural language interface for Office." ([4sysops](https://4sysops.com/archives/microsoft-365-copilot-wave-3-why-copilot-cowork-is-not-a-coworker/)). **MVP hedge (Mar 20):** Even MVPs publishing prep guides, not usage reports — "expected late March **or later**." ([FlowAltDelete](https://flowaltdelete.ca/2026/03/20/copilot-cowork-is-coming-heres-how-to-get-your-tenant-ready-on-day-1/))
 
@@ -86,6 +91,11 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - **Cycle 36 (one week post-GA):** Zero new independently verified customer deployments. Corvus Energy remains the only named customer (no metrics). All pre-GA reliability issues persist: JSON parsing failures, Code Interpreter container timeouts (EastUS2), agent identity bug, private networking breaks Workflow agents, intermittent request refusals. Some practitioners evaluating Claude as fallback. Practitioner content is exclusively tutorials and bug reports — zero "we deployed this in production" posts found. Azure outage March 9-10 hit Norway East and Sweden Central. (source: runs/2026-03-22-cycle36.md)
 
 - **Cycle 68 (March 24):** Rebranded from "Azure AI Foundry" to "Microsoft Foundry" at NVIDIA GTC. Added NVIDIA Nemotron models, Fireworks AI partnership for fine-tuning. GPT-5.4 mini and nano models available. First hyperscale cloud to power on NVIDIA Vera Rubin NVL72 in labs. Rebrand signals positioning as cloud-agnostic. E7 pricing pushback documented: Gartner says only 13.2% discount vs a la carte, Agent 365 is "a work in progress." 3% of M365 base has purchased Copilot. Real cost with agentic workloads could exceed $200/user/month. July 1 price increases coming (E3 $36→$39, E5 $57→$60). ([The Register](https://www.theregister.com/2026/03/09/microsoft_adds_a_premium_tier/); [SAMexpert](https://samexpert.com/microsoft-365-e7-licensing-guide/), Mar 2026)
+- **Cycle 94 (April 9, 2026) — Foundry reliability still unresolved, Anthropic fallback documented:**
+  - **JSON parsing failures confirmed ongoing:** Microsoft acknowledged service-side root cause (Feb 26–Mar 18). No permanent fix as of April 9. One production user explicitly evaluating Anthropic Claude as fallback "to ensure service continuity." ([MS Q&A](https://learn.microsoft.com/en-us/answers/questions/5789805/azure-ai-foundry-agents-intermittently-failing-wit), practitioner direct)
+  - **Code Interpreter EastUS2 still failing:** Onset Feb 21. Support case open, no public resolution as of April 9. ([MS Tech Community](https://techcommunity.microsoft.com/discussions/azure-ai-foundry-discussions/code-interpreter-container-failing-timeout-on-create-eastus2/4496481), practitioner direct)
+  - **JSON array parsing bug in Workflows:** JSON arrays of objects silently dropped, each object becomes empty, iteration crashes. ([GitHub #4195](https://github.com/microsoft/agent-framework/issues/4195), practitioner direct)
+  - Three distinct failure modes confirmed open as of April 9, 2026. Pattern: Foundry reliability is a structural issue, not isolated incidents.
 
 ### Microsoft Agent 365 (launches May 1, 2026)
 - Dedicated control plane for IT/security to observe, secure, and govern agents
@@ -108,7 +118,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 |-------|------------------|----------|----------|
 | Personal | Copilot in M365 (lite agents) | Shipping | Business users can build Q&A bots. Reliability issues (crashes, memory loss). No agentic use evidence. |
 | Personal (memory) | Copilot Memory | Shipping | Persists user prefs across sessions. Personal Copilot only — does NOT work with Copilot Studio agents. |
-| Personal (agentic) | Copilot Cowork | Research Preview | Claude-powered multi-step. No independent user reports. Not broadly available. |
+| Personal (agentic) | Copilot Cowork | Frontier Preview (GA May 1) | Claude-powered multi-step. **Two independent practitioner reviews (Quickenden Apr 6, McKendrick Apr 3): Level 2 evidence.** Document quality improvement confirmed. OneDrive-only file access, 20-skill cap, EU blocked by default. |
 | Team | Copilot Studio (full) | Shipping | Requires developer skills (Power Automate). One practitioner demo (edison365). No production deployment evidence. |
 | Team (pre-built) | Dynamics 365 agents | Shipping | HR, Sales, Finance agents exist but only for Dynamics 365 customers. Dow mentioned in vendor marketing (no specifics). |
 | Company | Azure Foundry Agent Service | **GA March 16, 2026** | Private networking, multi-model, evaluations GA. Prompt + Workflow agents GA; Hosted Preview. Corvus Energy named (no metrics). |

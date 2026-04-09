@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-04-03
-cycle: 87
+updated: 2026-04-09
+cycle: 94
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -50,6 +50,13 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
   - **RBC Wealth Management:** 4,500 financial advisors. Meeting prep from >1 hour to <1 minute. [ecosystem-sourced, not independently verified]
   - **Note:** Deployment evidence quality decreases outside customer service. IRS and Williams-Sonoma have independent confirmation. RBC is ecosystem-sourced only. Sales operations/finance deployments still thinner than CS.
 - **Salesforce's own Help Portal: 62% case resolution rate (target 80%).** This is Salesforce eating its own cooking and falling short. Initially only 2 of 6 test use cases worked well. ([Salesforce Ben 6-month review](https://www.salesforceben.com/agentforce-for-salesforce-help-6-month-review-and-whats-improved/), Mar 2026)
+- **Cycle 94 — New deployments + pre-TDX (April 9, 2026):**
+  - **Agentforce Contact Center (March 10, 2026):** New native CCaaS platform — Salesforce now owns telephony. Voice + digital + CRM + AI agents in one system. Voice containment: 40-60% (industry-dependent). Early adopters: Compass Working Capital (30 coaches, 7K families — 6,000 staff hours/year saved from post-call summaries, data entry, scheduling automation), Savant Systems (multi-audience routing). "Contact Center 100" program. US/Canada only. ([NoJitter](https://www.nojitter.com/ai-automation/salesforce-launches-agentforce-contact-center), Mar 10, 2026 — domain trade publication, Level 2)
+  - **Wyndham Hotels (hospitality — non-CS domain expansion):** 5,000+ Agentforce deployments across 8,300 hotels. Voice agents delivering zero hold times. +200bps direct bookings, +400bps guest satisfaction, "millions of dollars" in labor savings. International rollout beginning. (Q4 earnings call, Feb 27, 2026 — general press/exec-reported, Level 2. Independent hospitality trade press corroboration needed.)
+  - **SaaStr / Jason Lemkin (B2B sales — non-CS practitioner-direct):** 15 humans → 2.5 FTE + 20 agents. $2.7M revenue closed via Agentforce, $3.5M in pipeline. 72% email open rate. B2B event sponsorship sales domain. First substantive non-CS practitioner-self-reported deployment found. (Practitioner direct, Q1 2026, Level 2. Article body inaccessible — metrics confirmed second-hand from earnings references. Treat as Level 2 pending primary source access.)
+  - **Partner program restructure (March 10, 2026):** Salesforce collapsed 4-tier partner structure to 2 tiers, tied partner compensation to active Agentforce consumption (not seat sales). 170+ legacy distinctions → 28 core competencies. $1B in partner incentives. Structural signal: SI/partner ecosystem now incentivized to drive implementations, not demos. ([Channel Dive](https://www.channeldive.com/news/salesforce-consulting-partner-program-revamp-saas-benioff/813529/), Mar 2026 — domain trade publication)
+  - **"Agentforce Grid" (TDX preview, April 15-16):** Unknown capability name appearing in TDX session preview lists with no prior description. First public mention April 2026. Watch for April 15 reveal.
+  - **5.3% penetration reality:** 29K deals = only ~9,500 paid accounts = 5.3% of Salesforce customer base on paid Agentforce. Majority of growth is expansion buying within early adopters, not broad new adoption. ([Salesforce Ben](https://www.salesforceben.com/where-are-we-really-at-with-agentforce-adoption/), Dec 2025)
 - **Cycle 93 — TDX 2026 pre-scan (April 8, 2026):**
   - **TDX 2026: April 15-16, Moscone West, San Francisco.** 400+ sessions. "Agentforce 360, automation, Data 360, and core platform innovations" confirmed as focus areas. Hackathon showdown Day 1 ($50K grand prize). Sneak Peeks zone for pre-release features.
   - **Pre-announced (from Salesforce official sources — Level 0):** Agentforce Builder (conversational workspace, doc/canvas/script views, one-click simulation), Agent Script (deterministic control layer, "human-readable expression language"), Agentforce Voice (natural-language phone + CRM integration), Intelligent Context (unstructured data grounding). These are known Spring '26 capabilities being formally featured at TDX.

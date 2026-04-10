@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork]
 nordic: false
-updated: 2026-04-06
-cycle: 91
+updated: 2026-04-10
+cycle: 95
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -56,6 +56,11 @@ Anthropic's ecosystem for **business users**. Initially developer-heavy, but Cow
 - **Cowork Dispatch — live March 17, ~50% success rate on complex tasks (Apr 2026 check).** Mobile-triggered desktop agent control. Research preview launched Mar 17. Early practitioner test: ~50% success rate, browser automation and complex task chains failing. Bug fix shipped March 29 (Releasebot changelog: "Fixed message delivery in Cowork Dispatch"). Live but rough in Q1 2026. ([Latent Space](https://www.latent.space/p/ainews-claude-cowork-dispatch-anthropics), Mar 17, 2026) — [domain trade publication]
 - **Anthropic CCO adoption claim (Apr 1, Level 1).** Paul Smith stated Cowork week-1 adoption "stronger than Claude Code." No user numbers. Self-reported. ([Bloomberg](https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-sees-cowork-agent-as-bigger-than-claude-code), Apr 1, 2026) — [general press, executive opinion]
 - **Pentagon court hearing March 24.** New filings reveal Pentagon told Anthropic they were "very close" one week after Trump declared relationship terminated. Anthropic cited "technical misunderstandings." Senator Warren called designation "retaliation." Judge Lin hearing today. ([TechCrunch](https://techcrunch.com/2026/03/20/new-court-filing-reveals-pentagon-told-anthropic-the-two-sides-were-nearly-aligned-a-week-after-trump-declared-the-relationship-kaput/), Mar 20)
+**Cycle 95 updates (April 10, 2026):**
+- **Claude Managed Agents: GA as of April 8, 2026.** Closes the "no managed hosting" gap noted since Cycle 66. A new cloud service (separate from Antspace) that automates agent infrastructure: container configuration, state management, tool orchestration, error recovery. Pricing: $0.08/session-hour + Claude model fees + $10/1,000 web searches. Named early adopters: Notion Inc., Rakuten Group Inc., Asana Inc. Two features still in research preview: multi-agent spawning and automatic prompt refinement (internal claim: "+10 points task success"). The "months to weeks" development claim is vendor-sourced, not independently verified. ([SiliconAngle](https://siliconangle.com/2026/04/08/anthropic-launches-claude-managed-agents-speed-ai-agent-development/), Apr 8, 2026; author: Maria Deutscher) — [tech press, bare facts]
+- **Managed Agents ≠ Antspace.** These are two distinct products. Managed Agents = cloud-hosted service (Anthropic runs it). Antspace = self-hosted PaaS/BYOC (enterprise runs it in their own K8s). Antspace remains staging. Managed Agents is now GA.
+- **Antspace BYOC: Still staging, no change from Cycle 93.** No new public acknowledgment from Anthropic. BYOC path for enterprise K8s remains in code, not available to customers.
+
 **Cycle 93 updates (April 8, 2026):**
 - **Antspace status: Still staging, not GA.** Binary in Claude Code's Firecracker MicroVM contains `staging-` version prefix. Reverse-engineered by @AprilNEA (X.com) in March 2026. Anthropic has not publicly acknowledged Antspace. BYOC API endpoints exist in code but no enterprise availability confirmed. Zero public mentions on Anthropic's website, blog, GitHub, or job pages. Still internal/staging infrastructure. ([AprilNEA/blog](https://aprilnea.me/en/blog/reverse-engineering-claude-code-antspace), Mar 2026; [AprilNEA/X](https://x.com/AprilNEA/status/2034209430158619084)) — [practitioner analysis]
 - **Antspace promotion path still theoretical:** BYOC pattern (run environment-runner in enterprise K8s, orchestrated by Anthropic API) is in code but not available to enterprise customers. "Same artifact from personal to production" promotion path exists in architecture but not in product. The gap from synthesis.md remains open.

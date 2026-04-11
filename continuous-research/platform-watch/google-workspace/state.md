@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder]
 nordic: true
-updated: 2026-03-24
-cycle: 69
+updated: 2026-04-11
+cycle: 96
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -46,6 +46,7 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - **Post-GA silence (cycle 66, March 24):** GA completed March 19. Zero independent practitioner reviews in 5 days post-GA. Analyst commentary only: Forrester's Gownder warns "creating agents is beyond the skill level of most employees today." CCS Insight predicts compliance failures from unsanctioned AI tools. **Credit cliff imminent:** Promotional higher limits expire March 31 — AI Expanded Access add-on required. No user discussion or panic about pricing change — consistent with low real adoption. ([BizTech Magazine](https://biztechmagazine.com/article/2026/03/how-googles-workspace-studio-transforming-enterprise-workflows); [CCS Insight](https://www.ccsinsight.com/blog/google-workspace-studio-signals-a-new-front-line-for-business-first-ai-agents/), Mar 2026)
 - **Cycle 69 update (March 24, 14:00):** Credit cliff confirmed — March 31 deadline stands. Zero practitioner reviews 5 days post-GA across Reddit, forums, YouTube, and practitioner blogs. No panic about pricing change. **Capacity errors persist post-GA** — multiple user reports continue. **Google acknowledges breakage:** troubleshooting page states "agents that you previously created might encounter errors" and "rollout pace is being adjusted, and access may take longer than originally scheduled." Agent creation UI bug: workspace detection failure blocking new agent creation ([Google AI Dev Forum](https://discuss.ai.google.dev/t/agent-customizations-fails-to-detect-workspace-no-workspaces-found/130524)). If no reviews by April, transitions to "announced but not adopted" alongside Copilot Cowork.
 - **Verdict: the most interesting new development. Real but brand new, limited, unproven at scale. Capacity problems and credit cliff undermine enterprise trust. Zero post-GA practitioner evidence.**
+- **Cycle 96 update (April 11, 2026) — Google Cloud Next T-11 days, practitioner silence at 23 days post-GA:** Workspace Studio has been GA for 23 days. Zero independent practitioner reviews found across Reddit, YouTube, practitioner blogs. Google Cloud Next is April 22-24 (T-11 days) — historically the venue for major Google product announcements and the next expected break point. Pre-conference session list published April 10: "What's new with Gemini Enterprise," "The Agentic Enterprise: Google Workspace & Gemini Enterprise," "Gemini Enterprise: Building the Connected Enterprise" (Canvas tool mentioned). Third-party agent integrations flagged: ServiceNow, Comeen. No pre-conference product leaks or practitioner previews found. Norway marketing page (cloud.google.com/resources/content/gemini-enterprise-ai-agents-shift-norway) confirmed as marketing content only — no deployment case study. ([Google Workspace Blog](https://workspace.google.com/blog/events/10-must-see-sessions-at-cloud-next-2026), Apr 10, 2026 — [vendor, bare facts for session list]) **Status: "announced but not yet adopted" pattern holds. Google Cloud Next is the next checkpoint — watch April 22-24.**
 
 ### AppSheet + Gemini (Team→Company tier)
 - AI Tasks in automations: extract data from photos/PDFs, categorize, route, prioritize

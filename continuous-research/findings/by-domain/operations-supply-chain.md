@@ -67,6 +67,9 @@ Expert Insight: AI predictive maintenance monitoring dozens of ships in real tim
 ### Ericsson (Sweden) — Agentic rApp as a Service
 Launched at MWC 2026 on AWS. Agentic AI for network optimization: 100M+ AI inferences daily across 11M cells serving 2B+ subscribers. Q2 2026 broad availability. Source: [Telecom Lead](https://telecomlead.com/telecom-equipment/mwc-2026-ericsson-launches-agentic-rapp-as-a-service-on-aws-to-accelerate-ai-driven-autonomous-networks-124593) [domain trade]
 
+### C.H. Robinson (US) — Agentic logistics at scale (April 2026 update)
+30+ AI agents via "Always-on Logistics Planner" (launched Oct 2025). Completed 3 million+ autonomous shipping tasks in past year: billing, documentation, pricing, scheduling, carrier vetting. Price quotes: hours → 32 seconds. Results from Jan 2024–Jan 2026 truckload analysis: 11% faster speed to market, 7% increase in on-time pickup, >40% productivity gain. 100 trillion proprietary data points. Recognized as Gartner Magic Quadrant Leader for 3PL (2026). Named LTL freight classification agents launched Mar 2026 (reduce missed pickups). **Evidence assessment:** C.H. Robinson publishes its own results (corporate newsroom press releases). No independent third-party analysis found. But: (a) public company with audited financials, (b) Gartner Magic Quadrant recognition is independent evaluation, (c) results are directionally consistent with logistics industry patterns. **Level 2.** ([C.H. Robinson newsroom](https://www.chrobinson.com/en-us/about-us/newsroom/press-releases/2025/ai-performs-over-three-million-shipping-tasks/) — [corporate announcement]; [Gartner 3PL recognition](https://www.chrobinson.com/en-us/about-us/newsroom/press-releases/2026/chrobinson-named-a-leader-in-the-2026-gartner-magic-quadrant-for-3pl/) — [independent analyst], Q1-Q2 2026)
+
 ## Level 1 (Context Only)
 
 ### Failure rates are the real story

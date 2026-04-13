@@ -64,6 +64,12 @@ All AI used in recruitment or HR decision-making is "high-risk" under EU AI Act.
 ### Deutsche Telekom — AI Growth Hub
 AI platform bundling recruiting, skill management, talent management, resource management. Goal: convert all central HR processes to Growth Hubs by end 2025. Source: [Telekom CR Report](https://report.telekom.com/cr-report/2024/social/employee-development.html) [corporate report]
 
+### Johnson Controls — AI HR assistant, 100K employees (April 2026 update)
+Deployed "Omni" (Moveworks platform) in Microsoft Teams integrated with Workday. Deployed for 100K+ global employees. Cut HR call volume by 30-40%. Handles routine inquiries about onboarding, policy, payroll. **SOURCE CAVEAT:** The 30-40% metric appears in secondary HR process guides (Assembly Industries, Apr 2026), not independently verified. Original source is a Moveworks vendor case study on their blog — featuring Johnson Controls CHRO Marlon Sullivan in a webinar format (Deloitte-Moveworks co-produced). The call volume reduction metric lacks a defined baseline measurement. **Evidence level: Level 2, partially vendor-sourced.** ([Moveworks case study](https://www.moveworks.com/us/en/resources/blog/johnson-controls-reshaped-hr-with-ai) — vendor; corroborated by [Assembly Industries blog](https://assembly-industries.com/feeds/blog/automating-repetitive-hr-tasks-scale) — secondary, Apr 2026)
+
+### Josh Bersin — HR 2030 Agentic HR Vision (April 6, 2026)
+Leading HR analyst published "Introducing HR 2030: A Vision For Agentic Human Resources." Key framing: Systemic HR + AI Agent Cloud. Claims tech companies (Microsoft, Roblox, Google, Mastercard, ServiceNow) moving quickly; "most other industries are still struggling." 30-40% smaller HR teams predicted by 2030 (no source cited for this stat). Managers will interact with "AI Agent Cloud" for hiring, pay, promotion, hourly scheduling, training. Key challenge: coexisting with billions invested in transactional systems of record. **Evidence assessment: Level 1 (opinion/vision). No named deployment evidence or measurable results.** Bersin is signaling market direction, not reporting current deployment reality. ([Josh Bersin](https://joshbersin.com/2026/04/introducing-hr-2030-a-vision-for-agentic-human-resources/) — [practitioner analysis/opinion], Apr 6, 2026)
+
 ## Counter-Evidence
 
 - **HR is the weakest agentic domain.** March 2026 incremental research found "no truly agentic HR deployments anywhere."

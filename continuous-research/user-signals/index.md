@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-09](comments/2026-04-09-institutional-vs-individual-ai.md) — Individual AI ≠ institutional value. "Redesign the floor" thesis (a16z/Sivulka). Research gap: who's actually redesigning, not just electrifying? Maps to absorption bottleneck, competence-first, Intent Taktik.
 - [2026-04-02](questions/2026-04-02-epd-coordination-emerging-patterns.md) — How is PM/Design/Eng coordination changing with coding agents? Emerging patterns beyond known ones. **Answered:** 8 patterns documented in `findings/by-pattern/epd-coordination-shift.md`.
 - [2026-04-02](comments/2026-04-02-centralized-fast-with-agent-coordinator.md) — Centralized works fast too — if the coordinator is an agent, not a human. The bottleneck was never the architecture, it was the human at the center. Hybrid: agent general staff + distributed units + shared doctrine.
 - [2026-04-02](comments/2026-04-02-three-goals.md) — Three goals: speed of evolution, speed of convergence to winners, sufficient compliance. Centralized platforms sacrifice #1 and #2 for #3. Distributed model can do all three via doctrine + output audit.

@@ -172,7 +172,7 @@
                     }
                     var phaseName = phaseNames[phClass] || heading.textContent.trim();
                     tocPhaseHtml = '<div class="print-toc-phase-name toc-' + phClass + '">' + phaseName + '</div>';
-                    currentTocPhase = phClass;
+                    currentTocPhase = phClass || 'section';
                 } else if (heading.tagName === 'H2') {
                     var essayTitle = heading.textContent.trim();
                     // Check for date in nearby date pill

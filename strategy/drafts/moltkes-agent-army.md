@@ -1,9 +1,13 @@
 ---
-type: draft
-status: first-draft
-target: newsletter + advisory
 title: "Moltke's Agent Army: How to Build Company AI That Actually Works"
-date: 2026-04-02
+slug: "moltkes-agent-army"
+author: "Antti Tevanlinna"
+created_at: "2026-04-02"
+tags: ["strategy", "ai", "agents", "architecture"]
+newsletter: true
+estimated_reading_time: "10 min"
+status: "first-draft"
+target: "newsletter + advisory"
 ---
 
 # Moltke's Agent Army: How to Build Company AI That Actually Works

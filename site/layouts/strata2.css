@@ -196,6 +196,13 @@ body.light-article .article-body {
 }
 
 
+/* ── HRs: hidden — essay card borders provide separation ── */
+
+.article-body hr {
+    display: none;
+}
+
+
 /* ── Essay cards: generous whitespace, hairline separators (from Strata) ── */
 
 .essay-card {
@@ -222,12 +229,16 @@ body.light-article .article-body {
 .article-body blockquote.thesis {
     border-left: 4px solid;
     background: rgba(0, 0, 0, 0.025);
-    padding: 1rem 1.25rem;
-    margin: 0.5rem 0 1.75rem 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    margin: 0.5rem 0 1.5rem 0;
+    font-size: 0.95rem;
+    font-weight: 400;
     line-height: 1.5;
     font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.article-body blockquote.thesis p:last-child {
+    margin-bottom: 0;
 }
 
 .phase-1 blockquote.thesis { border-left-color: var(--phase-1); }
@@ -244,6 +255,10 @@ body.light-article .article-body {
     font-size: 0.85rem;
     padding: 0.5rem 1rem;
     margin: 1.5rem 0;
+}
+
+.article-body blockquote.confirmed p:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -434,6 +449,45 @@ body.light-article .article-body {
 
 
 /* ══════════════════════════════════════════════════════════════════════════
+   COVER LETTER — compact layout for short-form content
+   Add .cover-strata2 to the article body or a parent container.
+   Keeps Strata2 typography, tightens spacing for one-pagers.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.cover-strata2 .article-body h1 {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    border-top: 2px solid var(--text-muted);
+}
+
+.cover-strata2 .article-body h1:first-of-type {
+    border-top: none;
+    padding-top: 1rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+/* Byline italic — full contrast, not muted */
+.cover-strata2 .article-body h1 + p em,
+.cover-strata2 .article-body h1 + p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Tighter essay card spacing */
+.cover-strata2 .essay-card {
+    margin-bottom: 1.5rem;
+}
+
+.cover-strata2 .essay-card + .essay-card {
+    padding-top: 1.5rem;
+}
+
+/* Print overrides for cover letter — placeholder, real rules after base print block */
+
+
+/* ══════════════════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════════════════ */
 
@@ -487,7 +541,7 @@ body.light-article .article-body {
    Each phase starts on a new page. Phase tints carry into print.
    ══════════════════════════════════════════════════════════════════════════ */
 
-@page { margin: 20mm 18mm 25mm 22mm; }
+@page { margin: 25mm 20mm 28mm 22mm; }
 
 /* ── Print cover page (hidden on screen) ── */
 
@@ -504,13 +558,19 @@ body.light-article .article-body {
         print-color-adjust: exact;
     }
 
-    /* Kill all interactive wayfinding */
+    /* Kill all interactive wayfinding + particles */
     nav, footer,
     .strata2-edge,
     .strata2-phase-marker,
     .strata2-map,
-    .strata2-progress {
+    .strata2-progress,
+    .wp-phase-particles,
+    .wp-phase-callout,
+    .particle {
         display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
     }
 
     /* ── COVER PAGE ── */
@@ -637,10 +697,10 @@ body.light-article .article-body {
         margin-left: 0; margin-right: 0;
         padding-left: 0; padding-right: 0;
     }
-    .phase-section.strata-1 { background: #f2f4f6 !important; }
-    .phase-section.strata-2 { background: #f7f4ee !important; }
-    .phase-section.strata-3 { background: #f6f2f2 !important; }
-    .phase-section.strata-4 { background: #f7f4ef !important; }
+    .phase-section.strata-1,
+    .phase-section.strata-2,
+    .phase-section.strata-3,
+    .phase-section.strata-4 { background: #ffffff !important; }
 
     /* ── Constrain measure ── */
     .article-with-toc, .article-container { max-width: none; padding: 0; }
@@ -749,5 +809,94 @@ body.light-article .article-body {
     }
 
     /* ── Page setup ── */
-    @page { margin: 20mm 18mm 25mm 22mm; }
+    @page { margin: 25mm 20mm 28mm 22mm; }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       COVER LETTER print overrides — MUST come after base print rules
+       ══════════════════════════════════════════════════════════════════════ */
+
+    /* Kill cover page and TOC */
+    .cover-strata2 .print-cover,
+    .cover-strata2 .print-toc {
+        display: none !important;
+    }
+
+    /* Compact body */
+    .cover-strata2 .article-body {
+        font-size: 9.5pt;
+        line-height: 1.5;
+    }
+
+    /* Section headings — compact, no page breaks, no left rule */
+    .cover-strata2 .article-body h1 {
+        padding-top: 1rem;
+        padding-bottom: 0.4rem;
+        font-size: 14pt;
+        font-weight: 400;
+        border-top: 1.5px solid #ccc;
+        border-left: none;
+        padding-left: 0;
+        page-break-before: avoid;
+        margin-bottom: 0.2rem;
+    }
+
+    /* ── Hero zone ── */
+    .cover-strata2 .article-body h1:first-of-type {
+        color: #1a1a1a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        font-family: Charter, 'Bitstream Charter', Georgia, serif !important;
+        font-size: 28pt !important;
+        font-weight: 300 !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.15 !important;
+        padding-top: 25mm !important;
+        padding-bottom: 12mm !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-bottom: none !important;
+        page-break-before: avoid !important;
+    }
+
+    /* Byline — author name and title, prominent */
+    .cover-strata2 .article-body h1:first-of-type + p {
+        color: #1a1a1a;
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 10pt;
+        font-style: italic;
+        letter-spacing: 0.02em;
+        margin-bottom: 1rem;
+    }
+
+    /* Intro paragraph — the hook, separated from body by orange rule */
+    .cover-strata2 .article-body h1:first-of-type + p + p {
+        font-size: 11pt;
+        line-height: 1.5;
+        color: #1a1a1a;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 3px solid #d4571a;
+    }
+
+    /* Kill footer attribution */
+    .cover-strata2 .article-body::after {
+        content: none;
+    }
+
+    /* Tighter paragraphs */
+    .cover-strata2 .article-body p {
+        margin-bottom: 0.4rem;
+    }
+
+    /* Kill essay card spacing */
+    .cover-strata2 .essay-card {
+        margin-bottom: 0;
+    }
+
+    .cover-strata2 .essay-card + .essay-card {
+        padding-top: 0;
+        border-top: none;
+    }
 }

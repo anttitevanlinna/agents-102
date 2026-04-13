@@ -998,6 +998,24 @@ This is the PM-specific manifestation of the absorption bottleneck. The tool ena
 
 ---
 
+## The Transition Playbook Gap
+
+**Thesis:** Everyone agrees organizations must redesign for AI. Nobody has the map from here to there. The diagnosis has Level 3 convergence — the prescription has zero.
+
+At least 15 independent voices — Stanford (51 deployments), Harvard (P&G, N=776), Fed economists, practitioners (Sivulka/a16z, O'Reilly, Mollick), operators (Shopify, Klarna, Block) — converge on the same finding: individual AI productivity does not aggregate to institutional value without organizational change. The UK government Copilot trial (1,000 users, controlled) found zero productivity improvement from tool deployment alone. 89% of managers report no productivity change despite rising AI adoption (NBER). The evidence is beyond dispute.
+
+But the "redesigned floor" has no canonical form. Block says 3 roles + AI coordination. Bayer says autonomous teams of 6-10. Shopify says hiring constraint + performance reviews. AI-native startups ($1M-10M revenue per employee) were born that way — they never transitioned. The endpoint is visible. The path from a 5,000-person traditional org to an AI-native operating model is undocumented.
+
+Critical nuance: Sivulka's binary (redesign or fail) is too clean. The evidence supports three tiers: (1) Individual tool gains — real, don't aggregate; (2) Cultural adoption + light organizational change — Shopify model, changes norms/incentives/infrastructure without restructuring; (3) Full institutional redesign — changes roles, hierarchy, decision rights. Tier 2 is where most value lives for most organizations. Competence training IS Tier 2 — it changes what people know, what they try, what they expect. It doesn't require reorganizing the company. It requires reorganizing the mind. Tier 3 is risky (Bayer: mixed results, Klarna: reversed), and most CTOs won't attempt it without Tier 2 confidence first.
+
+**The implication for CTOs:** Stop asking "should we reorganize for AI?" (the answer is obviously yes). Start asking "which tier of organizational change do we need, for which use cases, in what sequence?" Goldman found 30% gains in customer support and coding with zero redesign — information-heavy, repetitive, individual work scales without restructuring. Cross-functional, judgment-heavy work does not. Map your processes to the tiers before touching the org chart.
+
+**Applies to:** advisory (the core framing for any engagement), training (Tier 2 IS what we deliver), newsletter (the electrification analogy + three tiers), strategy (our positioning IS the transition playbook gap)
+**Source:** a16z/Sivulka article + OODA cycle 94 (3 parallel agents: practitioner discovery, counter-evidence, convergence)
+**Date:** 2026-04-09
+
+---
+
 Copy this for new insights:
 
 ```

@@ -141,16 +141,11 @@
                         // ── Activate light theme for longform ──
                         document.body.classList.add('light-article');
 
-                        // ── Initialize phase banner particles (if script loaded) ──
-                        if (typeof WhitepaperParticles !== 'undefined') {
-                            setTimeout(function() {
-                                var phaseH1sForParticles = container.querySelectorAll('.article-body h1');
-                                new WhitepaperParticles({
-                                    phaseElements: phaseH1sForParticles,
-                                    particleCount: 120
-                                });
-                            }, 200);
+                        // ── Cover letter mode (?cover=true) ──
+                        if (params.get('cover') === 'true') {
+                            document.querySelector('.article-with-toc').classList.add('cover-strata2');
                         }
+
 
                         // Switch to longform layout with TOC sidebar
                         document.getElementById('article-standard').style.display = 'none';
@@ -162,7 +157,10 @@
                         container.querySelectorAll('blockquote').forEach(function(bq) {
                             var text = bq.textContent;
                             if (text.indexOf('The thesis:') !== -1) bq.classList.add('thesis');
-                            else if (text.indexOf('research later confirmed') !== -1) bq.classList.add('confirmed');
+                            else if (text.indexOf('research later confirmed') !== -1 ||
+                                     text.indexOf('What others are finding') !== -1 ||
+                                     text.indexOf('What research has shown') !== -1 ||
+                                     text.indexOf('predictions are aging') !== -1) bq.classList.add('confirmed');
                         });
 
                         // ── Author card detection ──

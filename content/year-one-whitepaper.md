@@ -1,10 +1,10 @@
-# 27 Weeks Inside an Agentic Transformation
+# 12 Essays from Inside an Agentic Transformation
 
-*Antti Tevanlinna — 25 years leading technology transformations. Trained 200+ people on building AI agents. Member of Agentics Helsinki. Not an analyst — a practitioner who builds what he writes about.*
+*Antti Tevanlinna — Founder, Bosser Oy. Creator of Agents 102. 25 years leading technology transformations. These essays were written from inside the transformation they describe.*
 
-These are essays I wrote during one year of leading an enterprise agentic transformation. April 2025 to March 2026. Originally shared weekly in an internal AI newsletter to the engineering organisation, then broadened to the whole company.
+These are 12 selected essays from the 27 I wrote during one year of leading an enterprise agentic transformation. April 2025 to March 2026. Originally shared weekly in an internal AI newsletter to the engineering organisation, then broadened to the whole company. The full set of 27 is available — DM me.
 
-I started not knowing much. I ended knowing more — but mostly knowing better questions. The essays track that evolution: from finding the right metaphor for AI, through discovering that competence precedes vision, to recognising that AI engineering IS software engineering, to understanding the Red Queen dynamics of agentic competition.
+I started not knowing much. I ended knowing more — but mostly finding out how important it is we share within our networks what works and where this is all going. The essays track that evolution: from finding the right metaphor for AI, through discovering that competence precedes vision, to recognising that AI engineering IS software engineering, to understanding the Red Queen dynamics of agentic competition.
 
 I have not cleaned these up to sound smarter in hindsight. What you read is what I thought at the time.
 
@@ -24,9 +24,9 @@ Four phases emerge across the year:
 
 I wrote these essays as they came to me. Months later, a systematic research effort independently arrived at the same patterns.
 
-Eight of these essays were independently confirmed by systematic research (80+ OODA cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. The practitioner saw it first. The research confirmed it later.
+Eight of these essays were independently confirmed by systematic research (90+ systematic internet research cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. I saw it unfolding first. The research confirmed it later.
 
----
+Skip around. Read what catches your eye. These essays work in any order.
 
 ---
 
@@ -60,8 +60,6 @@ The workflow will likely be quite different. More curation. More evaluation. Les
 
 ---
 
----
-
 # Phase 2: Process Discovery
 
 *Connecting AI to existing engineering discipline. Cycle time as the real metric. AI engineering IS software engineering.*
@@ -86,7 +84,9 @@ The strategy is also not just "bottom up". The top-down element in the strategy 
 
 (OK. I know I start to sound a bit grandiose. But I hope this gives a bit of light on how the bigger picture holds together).
 
-> **What research later confirmed:** The Conditions Creator pattern: set up tools + peer networks + safety, then step back. Validated at Citi (4,000 champions, 182K employees), PwC Netherlands (300→6,000 in one year), Varonis (AI Guild)
+> **What research later confirmed:** The Conditions Creator pattern: set up tools + peer networks + safety, then step back. Nobody has formally named this role — "Conditions Creator" is our label. The pattern is consistent across every successful case and conspicuously absent in every failure.
+>
+> One global bank embedded 4,000 volunteer peer champions across 182,000 employees — not managers, not appointed — reaching 70% adoption. A Big Four firm used network analysis to find naturally connected people (not the loudest AI fans), scaling from 300 to 6,000 in under a year. A security company achieved 100% engineering adoption through a practitioner guild that shaped standards through peer practice. A large-scale Microsoft/HBR study quantified why: peer influence (+8.9pp) beats leadership communication (0pp after controlling for peers). Leaders don't drive adoption. Peers do. The leader's job is to create the conditions for peer influence to happen.
 
 ---
 
@@ -150,13 +150,39 @@ Finally, the cycle time is a very cold and efficiency-oriented metric. It is ver
 
 We can always improve. The more I live, the more I notice business is a learning game. Product thinkers have coined the term "validation velocity" — a close cousin of "learning velocity". I would very much like to measure those. I (and we) simply haven't figured out how to count learning. Then we can't really put that to a number. In the absence of that, cycle time it is — but let's be mindful of the context, limitations but also opportunities.
 
----
+> **What research later confirmed:** The essay's warning — "speed up one step while breaking another and the metric tells the truth" — turned out to be the central story of AI in 2025-2026. A study of 8M+ pull requests across 5,000+ teams found 59% more daily workflow runs but a 7% *decline* in actual delivery throughput. PR review time increased 91%. Only 1 in 20 teams managed to scale both generation and delivery. The mechanism is Little's Law: double the generation with the same review capacity and the queue explodes — cycle time gets worse, not better. AI accelerates the cheap part (writing code) while leaving the expensive part (decisions, review, verification) untouched. End-to-end cycle time catches this. No other metric does.
+>
+> **Hindsight from our own data:** The initial AI improvement showed up in cycle time — but only to a ceiling. After that, improvement flowed into bigger PR line change volume. We did much more changes in the same number of PRs in the same time. Cycle time stayed flat while throughput per PR grew. If we had only measured cycle time, we would have missed half the story.
 
 ---
 
 # Phase 3: Scaling Reality
 
 *Hitting the walls. Dependencies, context windows, reliability, missing evals. Failing and succeeding simultaneously.*
+
+---
+
+## 2025-11-14 — You Transform Organisations
+
+> **The thesis:** Transformation is not about you — it's about the network of people changing together, one step at a time.
+
+I used to work in a company where our marketing slogan was "you transform organisations." That was catchy and it reminded me of many good things. I'm no longer in that company, but the slogan stays with me. It reminds me of important things in doing change.
+
+The first reminder is that change is not about me. I need to change, but it is not enough that I change. Organisational change is the whole team or big parts of a company changing at the same time. I can do stuff, but by myself I don't matter. The "you" reminds me how many people are needed to make the change happen.
+
+The second and more important reminder is that I need to encourage others to lead. Now there are countless ways to lead, but the more we have leaders, the faster our progress will be.
+
+The word "transform" and "you" together makes the catchiness. That you will transform.
+
+Transformation is a big word. I feel often it is overused, especially in business. The word is also very daunting. It feels it requires drastic action. That it requires drastic change. On most days, I'm not out for drastic change. I like my routine! And who am I to "transform" an organisation? Who are you to transform an organisation?
+
+But if I go with the fact that change is not about me, then it all can make sense. I have learned few things in my career. I have learned that power is in the network of people — and that the network is the power. Then the change simply is all about what we together think it is. I have also learned that there is no such thing as overnight change. Any profound change is actually an accumulation of tens of realisations and countless changes in how one approaches work.
+
+Change happens one step at a time. Change scales in the network.
+
+Making people do bigger things is at core leadership. I have big dissonance myself and I keep balancing between feeling like I can lead big things to not being sure of myself. I guess this feeling could be with many others. But the transformation, as daunting as that word is, is what I return to. I just want to make that happen. And then I remind myself, ... you transform organisations.
+
+> **What research later confirmed:** Wharton research quantified the gap this essay was wrestling with. Individual AI productivity gains: 2-3x. Organizational gains: only 10-20%. The difference is not technology — it is the network. Individual capability doesn't become organizational capability by itself. It takes what the researchers call a "Crowd" — people who scale what works sideways, one conversation at a time. Harvard Business School put it bluntly: "Most AI initiatives fail for organizational, not technical reasons." The transformation is not about you. It is about everyone around you changing together.
 
 ---
 
@@ -167,6 +193,36 @@ We can always improve. The more I live, the more I notice business is a learning
 After roughly six months of pushing AI adoption across a technology organisation, we ran a data-driven retrospective. The key insight: cycle time improvements were real and measurable — the agentic coding cohort showed the most significant gains, roughly double the effect of standard code-completion tools — but the improvements were unevenly distributed across teams, with big variation month to month. The data made clear that you can't scale agentic engineering without excellent engineering practices underneath it; the teams combining AI tooling with strong process discipline saw the best results.
 
 The trend of cycle time improvement is clear. The second-level effects may be appearing. It is worth keeping an eye on the correlations of causations to higher-level metrics.
+
+> This has been intentionally truncated and generalised.
+
+---
+
+## 2025-12-05 — Failing and Succeeding at the Same Time
+
+> **The thesis:** Innovation means fumbling. If you're not failing at half the things you try, you're not trying enough things.
+
+In the previous weeks, I'd been looking back at six months of AI adoption. There has clearly been success. But there have also been bitter failures, confusion, not knowing and things that just don't work. I've personally tried to cope with repeated fails.
+
+One of the first things we tried building was a local installer for developer tooling. It got working and it was used just a bit. Bad idea, as the need wasn't a daily one. Also, right after we had it, the ecosystem shifted and a better approach appeared. "Just because you can build it does not mean you should build it." (Lucky it did not take that long to build it.)
+
+I've experimented a lot with vibe coding. I built quite some code. Sometimes just to learn. Much of that code is just bad. A fail that taught me a lot about quality.
+
+In our AI working group, we had probably six to ten small innovations that never went anywhere.
+
+One of the big wants we had was to share learnings and good practices across sites and teams. We failed to imagine how that knowledge sharing could really work. Then we did not really action on that. Now not everything is a total fail, as training programs and communities of practice still transfer practices and ideas.
+
+There were many things I wanted and imagined. Didn't have the time. Didn't do.
+
+We made an 80% ready vision, but I never pushed enough to put it really on paper and share.
+
+In some ways, I like to classify this as the nature of innovation. When you do stuff that you don't know, you are bound to fumble. But it still feels so bad sometimes. It gives you anxiety. It gives you a feeling of insufficiency. And failing and being wrong just feels bad.
+
+I wanted this week to acknowledge those things. I'm sure there are many more things that we didn't really do well. Many I've already forgotten.
+
+This one is for those who believe failure and errors are part of learning.
+
+> **What research later confirmed:** This wasn't just us. Nobody actually knows the precise failure rate of AI initiatives — the commonly cited numbers (70-95%) all trace back to small qualitative studies with narrow definitions of success. The real finding: everybody is fumbling. The gap between pilot and production is real, significant, and mostly organizational — not technical. What this essay described as personal anxiety turns out to be the universal condition. The question was never whether you'd fail. It was whether you'd keep going.
 
 ---
 
@@ -260,7 +316,7 @@ Want your agent running every Monday? Yep, you can't.
 
 *Don't even get me started....*
 
-> **What research later confirmed:** "We don't have pretty much any evals" — this verification gap is industry-wide and the primary reason non-engineering domains can't go AI-native
+> **What research later confirmed:** You are not alone if you see these things. Every problem on this list — missing evals, unreliable outputs, context limits, no agent platform, no scheduling — turned out to be the universal condition, not a local gap. The verification problem is now confirmed as the structural gate for the entire industry. The reliability problem is now confirmed across 15+ independent cases where full autonomy failed at scale. If this essay read like a complaint list in December 2025, by mid-2026 it reads like a state-of-the-industry report.
 
 ---
 
@@ -328,7 +384,19 @@ The final trend is chatting to orchestrating. This is to scale and do many thing
 
 The funny thing about orchestrating is that... orchestrating can be best done by chatting in AI. :)
 
----
+> **Q2 2026 just got started and these predictions are aging as follows:**
+>
+> ***Teams will create and publish agents*** — Early signs. Platform vendors are building agent marketplaces and catalogs. But in practice, most organisations are still in "personal agents" mode. The team-to-team publishing hasn't happened at scale yet. Too early to call.
+>
+> ***Coding agents will prove better than plain LLM agents*** — Confirmed and then some. Claude Code and Codex are no longer just coding tools — they are architecturally general-purpose agent platforms. The code-generation loop (read context, plan, use tools, execute, iterate) turns out to have nothing coding-specific about it. Both Anthropic and OpenAI are explicitly pivoting these tools toward business automation. This prediction was right for the wrong reason — coding agents didn't just prove better, they started eating the entire agent platform category.
+>
+> ***Iterative human-operated agents dominate*** — Confirmed across 15+ independent signals. Full autonomy at scale has failed repeatedly — from customer service to drive-throughs to SDR outreach. The winning architecture everywhere: AI generates, human validates, AI executes, human monitors. The human in the loop is not a limitation. It's the design.
+>
+> ***Agents learn to learn*** — Happening, but slowly. Claude Code now has persistent memory (CLAUDE.md files, project context). Agent memory is real but primitive. The "start from zero every time" problem is being solved file by file, not through any breakthrough in agent learning. Good enough for now. Far from done.
+>
+> ***Information products will be needed*** — Not yet visible as a category. The MCP protocol (Model Context Protocol) is becoming the plumbing for connecting agents to enterprise data. But the governance layer — who owns the data, who curates it, who keeps it current — remains the unsolved problem. This prediction is still ahead of the market.
+>
+> ***From chatting to orchestrating*** — Emerging. Scheduled tasks, multi-agent coordination, background agents running autonomously — the infrastructure is shipping. But most users are still chatting, not orchestrating. The gap between what's possible and what people actually do remains wide.
 
 ---
 
@@ -396,6 +464,8 @@ Think double loop learning. Your original goals were wrong when you started. At 
 
 We are all the time moving towards self-learning systems. I'm giving more and more complex things for the LLM to solve. I assume the LLM will think through complex sets of requirements and their implications. An LLM does not have a broad "sense" in the same way as humans. An LLM often does not have a broad vision of direction. Human is still clearly better for this. Details: LLM anytime for me. For LLM performance, you need the context. This process is the way to make that happen today.
 
+> **What others are finding independently:** Andrej Karpathy [described the same pattern](https://x.com/karpathy/status/2039805659525644595) (19M views): collect raw data into a folder, have the LLM compile and maintain a knowledge base of `.md` files, iterate and query against it, file outputs back in to enhance it. "You rarely ever write or edit the wiki manually, it's the domain of the LLM." His context compounds exactly the way ours does. Same structure, same conclusion — arrived at separately.
+
 ---
 
 ## 2026-03-20 — The Red Queen
@@ -434,7 +504,9 @@ Why I'm writing this... as always... keep learning new skills and ways. Try unde
 
 Over and out for this week.
 
-> **What research later confirmed:** Competitive compounding is real. Combined with Goldratt's Theory of Constraints and Little's Law: AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched
+> **What research later confirmed:** Competitive compounding is real. AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched. The actual Red Queen market dynamics — where one company's acceleration forces competitors to respond — have not yet been observed at industry level.
+>
+> Are you the Red Queen?
 
 ---
 
@@ -444,7 +516,7 @@ A year in. Some things I got right. Some I got wrong. Here's what stuck.
 
 **Competence precedes vision.** I spent April agonising over the right analogy for AI. By June I realised people don't need analogies — they need the "aha" moment. Once someone builds something real with an agent, the vision forms itself. No slide deck does what 2 hours of hands-on experience does. The sequence is: experience first, vision second. Always.
 
-**AI engineering is software engineering.** I hoped AI would be different. It isn't. Quality, testing, architecture, dependencies, cycle time — all the same problems, amplified. The teams that had good engineering discipline before AI got better. The teams that didn't got faster at producing mess. AI is an amplifier, not a transformer.
+**AI engineering is software engineering.** Quality, testing, architecture, dependencies, cycle time — all the same problems, amplified. The teams that had good engineering discipline before AI got better. The teams that didn't got faster at producing mess. AI is an amplifier, not a transformer.
 
 **Sharing is harder than building.** We built good things. We failed to share them well. Cross-team knowledge transfer remains the unsolved problem. Agents can dissolve the technical barriers. The social and organisational barriers are still there.
 
@@ -452,7 +524,7 @@ A year in. Some things I got right. Some I got wrong. Here's what stuck.
 
 **The Red Queen is already running.** Competition doesn't wait. Every month we don't compound, someone else does. This isn't a project with a deadline. It's a permanent race where learning speed is the only durable advantage.
 
-**I still make mistakes.** More than I'd like. The difference is I make them faster now, and I learn from them sooner. That's the whole point.
+**I still make mistakes.** More than I'd like. The difference is I make them faster now, and I learn from them sooner. Do the work. Learn the fastest.
 
 ---
 
@@ -462,12 +534,12 @@ If these essays resonated, here's the sequence that works:
 
 1. **Get the experience.** Give yourself and 5 people Claude Code for a week. Build something real for your own work. Not a demo — something you'll use tomorrow.
 
-2. **Let competence create pull.** After the experience, people find their own processes to improve. You don't need a use case workshop. The domain experts ARE the best process identifiers.
+2. **Learn the NEW how.** Context engineering, agentic loops, learning loops and coping with non-deterministic execution. Start building systems.
 
-3. **Ask the real questions.** Once your people have built things, you'll discover three infrastructure needs: data access, a runtime for what they built, and a way for others to find and use it. These are scoped, practical, answerable.
+3. **Let competence create pull.** After the experience, people find their own processes to improve. You don't need a use case workshop. The domain experts ARE the best process identifiers.
 
-4. **If you are running or planning an agentic transformation, I will tell you exactly what worked behind the numbers in these essays.** antti@bosser.consulting
+4. **Scale deliberately.** Once your people have built things, you'll discover three infrastructure needs: data access, a runtime for what they built, and a way for others to find and use it. These are scoped, practical, answerable.
+
+5. **If you are running or planning an agentic transformation,** the journey and outcomes in detail. Reach me at antti@bosser.consulting
 
 ---
-
-*Built by [Bosser](https://bosser.consulting). Independent practitioner research for the agentic transformation.*

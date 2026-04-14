@@ -1,17 +1,25 @@
 # Collaboration Platforms Adding Agents — Platform State
 
-Last updated: 2026-04-02 (cycle 1)
-OODA cycles: 1
+Last updated: 2026-04-14 (cycle 96)
+OODA cycles: 2
 
 ## Focus
 
 Agents arriving inside collaboration tools enterprises already use — Atlassian, Slack, Notion, Zoom. The "Trojan horse" scenario: if agents ship embedded in Jira, Slack, and Confluence, does the CTO's platform choice become irrelevant? Tracked because this is how most business users will first encounter agents — not through a platform selection process, but through a feature toggle in a tool they already have open.
 
-## Key Verdict (as of 2026-04-02)
+## Key Verdict (as of 2026-04-14 — Cycle 96 update)
 
-**Agents are shipping inside collaboration tools — but they are shallow agents with hard boundaries.** Every platform has launched "agents" or "AI teammates" in the last 6 months: Atlassian Rovo Agents, Slack's Agentforce-powered Slackbot, Notion Custom Agents, Zoom AI Companion 3.0. Adoption numbers look real (Rovo: 5M+ MAU; Notion: 21,000 agents built in beta; Slack Agentforce: 86% internal adoption at Salesforce; Zoom AI Companion MAU tripled YoY). But the pattern across all four is the same: **strong within the tool's own data, weak the moment you need to cross system boundaries.** MCP support is expanding (Atlassian MCP Server GA, Slack as MCP client, Notion MCP integrations) but multi-system orchestration is nascent. These are co-pilot features marketed as agents, not autonomous multi-tool workers. The Trojan horse is real but it's a wooden horse — impressive on the outside, limited payload inside.
+**The Trojan horse has already entered the gates.** Agents are running in production inside collaboration tools — the question is no longer "will this happen?" but "how do we govern what's already arrived?" Key cycle 96 updates:
 
-**Evidence level: Level 2 (single experiments) trending toward Level 3 on adoption numbers, but Level 1 on actual agentic capability.** Vendor adoption stats are high but vendor-sourced. Independent practitioner evidence of multi-step autonomous work is thin across all four platforms.
+- **Notion Custom Agents cross the agentic threshold** for workspace-bound work. Remote (global HR company) runs agents that autonomously resolve 25%+ of IT tickets with >95% routing accuracy. Ramp runs 300+ production agents including a Product Oracle answering roadmap questions daily. These are named companies + specific practices + measurable outcomes — the best evidence in this category.
+- **Atlassian's governance-first design is the most mature answer** in this space. Agents in Jira (GA Feb 25, 2026) operate inside existing Jira permission structures with audit trails, OAuth 2.1, and human approval gates. Enterprise MCP usage is real: 93% from paid editions, 1/3 of operations are writes.
+- **Agent sprawl is now empirically documented as a crisis.** 94% of organizations report sprawl concern. 3M+ agents running across enterprises, 1.5M unsecured. Collaboration tools are the primary vector. Every major cloud provider (AWS, Microsoft, Google, ServiceNow) is now building agent registries in direct response.
+- **Agentforce in Slack remains vendor-only evidence.** No independent enterprise has published deployment results. $800M ARR is a real financial metric but doesn't tell us what Slack agents are actually doing.
+- **Zoom AI Companion has a new documented gap:** summarization quality degrades substantially for non-English content — Nordic-relevant.
+
+**Evidence level: Level 2-3 on adoption; Level 2 on agentic capability (Notion, Atlassian); Level 1 on Agentforce/Zoom.** Agent sprawl governance gap has reached Level 3 (multiple independent surveys converging on same finding).
+
+## Key Verdict (as of 2026-04-02 — original) [STALE — see above for current verdict]
 
 ---
 
@@ -31,9 +39,11 @@ Rovo is Atlassian's AI layer across Jira, Confluence, and Compass. Three compone
 ### Practitioner Evidence
 
 - **First Rovo Agent build report** — Automation Consultants (Atlassian partner) documented building their first Rovo Agent. Results described as "results we didn't [expect]" — suggestive of underwhelming outcomes. ([Atlassian Community: The Making of Our First Rovo Agent](https://community.atlassian.com/forums/App-Central-articles/The-Making-of-Our-First-Rovo-Agent-and-the-Results-We-Didn-t/ba-p/3160646)) [practitioner direct]
-- **Backend LLM swap issues (April 2026)** — New backend model broke attachment retrieval. Agents can no longer access files in primary Attachments field, only through comments/activity. ([Atlassian Community: Important Update](https://community.atlassian.com/forums/Atlassian-AI-Rovo-articles/Important-Update-Rovo-Agents-are-getting-a-new-backend-LLM-model/ba-p/3207356)) [practitioner direct]
+- **Backend LLM swap broke production agents (March 31, 2026)** — Mandatory migration to new backend model broke attachment-reliant workflows. Agents can no longer access files in primary Attachments field, only through comments/activity. Community urgency expressed — production workflows disrupted. ([Atlassian Community: Important Update](https://community.atlassian.com/forums/Atlassian-AI-Rovo-articles/Important-Update-Rovo-Agents-are-getting-a-new-backend-LLM-model/ba-p/3207356)) [practitioner direct]
+- **Agents in Jira governance design (Feb 25, 2026)** — Agents operate inside Jira's existing permission structures (not alongside), with audit logs, OAuth 2.1, and human approval required for high-impact changes. SVP Saxena: "What we don't want is agents that do 10 times the work but also create 10 times the chaos." Agents cannot delete or modify production code without approval. ([TechInformed: Atlassian adds AI agents to Jira](https://techinformed.com/atlassian-adds-ai-agents-to-jira-under-existing-permissions/)) [domain trade publication]
+- **MCP enterprise adoption is real** — Enterprises account for 50% of all Rovo MCP Server usage; 93% from paid editions. Nearly 1/3 of MCP operations are writes (creating/updating records). ([same source]) [domain trade publication]
 - **Limitation: no programmatic API for agents** — Marketplace apps cannot call Rovo agents programmatically; must go through the chat interface manually. ([Atlassian Community: Understanding Rovo Agent limitations](https://community.atlassian.com/forums/Atlassian-AI-Rovo-discussions/Understanding-Rovo-Agent-limitations-auto-creating-vs-publishing/td-p/3166960)) [practitioner direct]
-- **Bulk action cap** — limited to 20 work items per bulk action in Jira. Field mapping errors reported. ([eesel AI: Rovo review](https://www.eesel.ai/blog/rovo)) [practitioner analysis]
+- **Bulk action cap** — limited to 20 work items per bulk action in Jira. Cannot handle custom Jira fields. Context degradation reported in long-running projects. ([eesel AI: Rovo review](https://www.eesel.ai/blog/rovo)) [practitioner analysis]
 
 ### Pricing Reality
 
@@ -73,7 +83,9 @@ Slack is becoming the "agentic OS" for Salesforce — the conversational surface
 
 - **Salesforce as "Customer Zero"** — 6 months of internal testing. 86% of employees use Agentforce in Slack. Projected 500K+ employee hours saved annually. Started with HR and IT use cases before expanding. Key lesson: "success depends as much on change management as technical implementation." ([Salesforce: Deploying Agentforce](https://www.salesforce.com/news/stories/deploying-agentforce-slack-insights/)) [vendor case study — Level 0, but unusually detailed on change management lessons]
 - **Specialized > general agents** — Salesforce found specialized agents (Sales Agent, HR Agent) outperformed general-purpose ones. Sales Agent pulls pipeline data, forecasts, competitive intel without leaving Slack. ([same source]) [vendor case study]
-- **No independent enterprise deployment evidence found.** All adoption metrics are Salesforce's own numbers about their own product used internally. Classic vendor-sourced. [SOURCE NEEDED for independent deployments]
+- **Financial metrics confirm revenue reality (Q4 FY26)** — Agentforce ARR $800M, up 169% YoY. 29,000 deals closed, up 50% QoQ. 2.4 billion "agentic work units" in Agentforce and Slack. ([TechHQ: Agentforce numbers](https://techhq.com/news/salesforce-agentforce-enterprise-agentic-ai/)) [domain trade publication] — Revenue is reliable, "work units" is vendor-defined.
+- **Independent analyst concern (Futurum, Jan 2026)** — Keith Kirkpatrick: "The larger question around Agentforce is whether these productivity data points will ultimately result in top- or bottom-line benefits to the business." Time savings ≠ business value unless capacity redirected. Evidence is "experience-driven" not independently verified. ([Futurum: Slackbot GA analysis](https://futurumgroup.com/insights/salesforces-slackbot-goes-ga-is-this-the-real-test-for-agentforce/)) [practitioner analysis]
+- **No independent enterprise deployment evidence found (confirmed after Cycle 96).** 6+ targeted searches returned zero independent enterprise deployment stories. Every customer mention traces to Salesforce-curated sources. [SOURCE NEEDED for independent deployments — escalated to confirmed absence after second cycle]
 
 ### The Agentic Test
 
@@ -100,11 +112,22 @@ Notion has evolved from a workspace with AI assistance to a platform where Custo
 - **MCP integrations** — pre-configured: Linear, Figma, HubSpot, Slack, Notion Mail, Notion Calendar. Custom MCP server connections for internal tools. Wiz (security) integration via MCP announced. ([Notion Help: MCP connections](https://www.notion.com/help/mcp-connections-for-custom-agents); [Wiz: Notion MCP integration](https://www.wiz.io/blog/wiz-notion-mcp-agents-integration)) [vendor press release]
 - **Pricing: credit-based** — free trial through May 3, 2026. Then $10/1,000 credits on Business ($20/user/month) or Enterprise plans. ([Notion: Custom Agents help](https://www.notion.com/help/custom-agents)) [vendor]
 
+### Named Production Deployments (Cycle 96 additions)
+
+- **Remote (global HR company)** — IT team replaced help desk system with Custom Agents. Agents triage with >95% accuracy and autonomously resolve 25%+ of tickets. Saves IT team 20 hours per week. Keeps Slack and Notion in sync. (Source: Notion launch blog citing Remote; curated by vendor.) ([Notion: Introducing Custom Agents](https://www.notion.com/blog/introducing-custom-agents)) [vendor press release — Level 0 proximity, Level 2 in substance]
+- **Ramp ($32B fintech)** — Over 300 agents in production. "Product Oracle" answers roadmap questions daily (Slack-connected Q&A). "Sales Feedback Categorizer" maps inbound sales feedback to roadmap. "Referral Bonus Roy" identifies customers due referral bonuses and routes work to completion. Cut productivity-tool costs roughly 70%, teams moved 3x faster. Mid-2025 start. ([Creator Economy: Inside Ramp AI agents](https://creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles)) [practitioner direct — paywall limited]
+- **Notion internal** — 2,800 agents running continuously, more agents than the company has employees.
+
+**Caveat:** Both Remote and Ramp cases are surfaced via Notion's own launch materials. Named companies, named practices, measurable outcomes — but vendor-curated.
+
 ### Limitations (Practitioner-Sourced)
 
 - **Workspace confinement** — agents operate on Notion data. Cannot write data to external systems directly. No HTTP requests outside Notion's ecosystem. ([eesel AI: Notion AI limitations](https://www.eesel.ai/blog/notion-ai-limitations-best-practices); [Build to Launch: Notion AI Agents](https://buildtolaunch.substack.com/p/notion-ai-agents-examples-guide)) [practitioner analysis]
+- **Agents cannot create other agents** — manual setup required for each agent (practitioner-confirmed via BuildToLaunch review) [practitioner direct]
+- **Isolated agent editing** — locked to one agent when editing, no cross-agent bulk updates [practitioner direct]
+- **No audit trail for regulated industries** — explicitly flagged as unaddressed. Finance/healthcare deployments would require supplemental tooling. [practitioner direct]
 - **1,000-row data limit** — not designed for complex calculations or data analysis
-- **Slack integration gaps** — private messages and Slack grid unsupported. Triggers only work with public channels
+- **Slack integration gaps** — private messages and Slack Enterprise Grid unsupported. Triggers only work with public channels
 - **Static knowledge** — operates on Notion's copy of data, disconnected from live external databases. MCP alleviates this partially but integration depth varies
 - **No image generation** in automated workflows
 
@@ -138,9 +161,11 @@ Zoom AI Companion 3.0 is Zoom's expansion from meeting summarization to agentic 
 
 - **Knowledge silo** — strong within Zoom data (meetings, chats, recordings), near-useless for information living in Confluence, Google Docs, Zendesk, or other systems. ([eesel AI: Zoom AI review](https://www.eesel.ai/blog/zoom-ai); [Condado: Strategic Review](https://www.condado.com/news/zoom-ai-companion-3-0-for-enterprise-a-strategic-review)) [practitioner analysis]
 - **Zoom-universe confinement** — actions limited to Zoom products. Can retrieve from external connectors but orchestration stays within Zoom. ([same sources])
+- **Non-English degradation (Cycle 96 addition)** — Summarization quality degrades significantly with non-English content. Mixed-language meetings report substantially reduced accuracy. Nordic-relevant limitation. ([Condado review](https://www.condado.com/news/zoom-ai-companion-3-0-for-enterprise-a-strategic-review)) [domain trade publication]
+- **Data governance concern** — audio transcripts, screen-shared content, chat messages processed by third-party AI providers (Anthropic, OpenAI). Regulated industries need to assess carefully. ([same source]) [domain trade publication]
 - **Customer support complaints** — "AI chatbot goose chase" described by practitioners seeking help. ([tldv.io: Zoom AI Companion Review](https://tldv.io/blog/zoom-ai-companion-review/)) [practitioner analysis]
 - **Governance gap** — role-based access controls and audit trails need careful configuration. No formal agent governance framework. ([Condado review]) [domain trade publication]
-- **No absolute adoption numbers** — "tripled YoY" without a base number is a classic vendor opacity move
+- **Financial metrics confirm real adoption (Cycle 96):** Q4 FY26 revenue $1.247B (+5.3% YoY); enterprise revenue +7.1%; all top 10 deals included paid AI components. Revenue is reliable. "MAU tripled" without base number remains vendor opacity. ([NoJitter: AI Companion 3.0 GA](https://www.nojitter.com/ai-automation/zoom-ai-companion-3-0-now-generally-available)) [domain trade publication]
 
 ### The Agentic Test
 
@@ -181,6 +206,59 @@ Zoom AI Companion 3.0 is Zoom's expansion from meeting summarization to agentic 
 
 ---
 
+---
+
+## Agent Sprawl — The Governance Crisis (Cycle 96 addition)
+
+The agent sprawl problem this research category predicted is now empirically documented across multiple independent surveys.
+
+### Scale
+
+- **3M+ agents running in enterprises, 1.5M unsecured** — Gravitee State of AI Agent Security 2026 report. ([Gravitee/beam.ai](https://beam.ai/agentic-insights/ai-agent-sprawl-new-shadow-it)) [domain trade publication]
+- **94% of organizations concerned about sprawl** increasing complexity, technical debt, and security risk — OutSystems research. ([PRNewswire/OutSystems](https://www.prnewswire.com/apac/news-releases/agentic-ai-goes-mainstream-in-the-enterprise-but-94-raise-concern-about-sprawl-outsystems-research-finds-302739251.html)) [general press — stat only]
+- **80%+ of IT leaders** believe proliferating AI agents will create more complexity than value — 2026 Salesforce Connectivity Benchmark Report (n=1,050 IT leaders with Vanson Bourne and Deloitte Digital). ([CIO Dive: IT leaders grapple with agent sprawl](https://www.ciodive.com/news/it-leaders-grapple-ai-agent-sprawl-integration/811411/)) [domain trade publication]
+- **Only 36% have centralized governance; 12% use a centralized platform** — same survey.
+- **Average 12 agents per company today, projected 20 by 2027** — same survey.
+- **96% of IT leaders say agentic AI's long-term effectiveness depends on data integration** — same survey.
+- **35% cite siloed app integration as primary challenge** — same survey.
+
+### Collaboration Tools as Primary Vector
+
+Agent sprawl is driven by the Trojan horse dynamic: agents arriving via feature toggles in Jira, Slack, Notion, and Zoom require no procurement decision. Each tool brings its own agents. No one tool can govern agents from another tool. This is the mechanism by which 1.5M agents became unsecured.
+
+### Vendor Response: Agent Registries
+
+Every major cloud provider is now building agent registries in direct response to sprawl:
+- **AWS Agent Registry** (announced April 13, 2026) — visibility into every agent across the enterprise, metadata for all agents/tools/MCP servers ([thelettertwo.com: AWS Agent Registry](https://thelettertwo.com/2026/04/09/aws-unveils-agent-registry-to-bring-order-to-enterprise-ai-sprawl)) [domain trade publication]
+- **Microsoft** — Agent 365 + Entra Agent ID for identity management
+- **Google** — Cloud API Registry + Vertex AI Agent Builder
+- **ServiceNow** — AI Control Tower
+- **Okta** — AI agent identity solutions
+
+None of these registries specifically govern agents deployed inside collaboration tools yet.
+
+**Evidence level: Level 3** (multiple independent surveys converging on governance gap as the defining enterprise AI problem of 2026)
+
+---
+
+## A2A Protocol — The Cross-Tool Coordination Wildcard (Cycle 96 addition)
+
+**What's emerged:** A three-layer AI protocol stack is becoming the enterprise consensus architecture:
+- **MCP** — connects agents to tools and data (Atlassian, Slack, Notion, Zoom all MCP-enabled now)
+- **A2A (Agent-to-Agent)** — coordination layer for agent-to-agent communication and delegation
+- **WebMCP** — web access layer
+
+**A2A milestone:** One year in, the A2A Protocol (Linux Foundation hosted) has 150+ supporting organizations, integrated across Google, Microsoft, and AWS. Active production deployments in supply chain, financial services, insurance, IT operations.
+
+**Collaboration platform A2A gap:** No collaboration platform has announced A2A adoption as of April 2026. This is the critical next frontier. If Jira agents, Slack agents, and Notion agents adopt A2A, they could coordinate autonomously across tools — eliminating workspace confinement at protocol level rather than requiring a single-vendor platform.
+
+**Implication for the Trojan Horse thesis:** A2A adoption by collaboration platforms would transform the "wooden horse" into a real agent. The silo problem that limits all four platforms today would become architecturally solvable without a platform selection decision.
+
+**Source:** [DEV Community: MCP vs A2A 2026](https://dev.to/pockit_tools/mcp-vs-a2a-the-complete-guide-to-ai-agent-protocols-in-2026-30li) [practitioner analysis]; [A2A Protocol milestone](https://zexprwire.com/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year/) [general press — facts only]
+**Evidence level:** Level 2 on A2A adoption; confirmed absence for collaboration platform adoption
+
+---
+
 ## The Trojan Horse Thesis
 
 **Thesis:** Agents arriving through collaboration tools people already use will bypass the CTO's platform selection entirely. By the time the CTO forms a platform strategy, employees are already using agents in Jira, Slack, and Notion.
@@ -200,14 +278,20 @@ Zoom AI Companion 3.0 is Zoom's expansion from meeting summarization to agentic 
 4. **No governance framework.** None of these platforms offer formal verification, Cedar-style policy enforcement, or enterprise-grade agent governance. Running agents with write access to production Jira without governance is a disaster waiting to happen.
 5. **Vendor-sourced metrics only.** Salesforce's "86% adoption" is Salesforce using their own product. Notion's "21,000 agents" doesn't mean 21,000 useful agents. Zero independent verification of any adoption or outcome claim.
 
-### Verdict on the Trojan Horse
+### Verdict on the Trojan Horse (updated Cycle 96, April 2026)
 
-**The Trojan horse is real but it carries co-pilots, not agents.** These features will normalize AI interaction for millions of business users — which is significant. But they won't replace the need for a platform strategy because:
-- They can't orchestrate across systems (the thing enterprises actually need)
-- They have no governance framework (the thing security teams will demand)
-- They lock agent capability to one vendor's data silo (the thing CTOs should worry about)
+**The Trojan horse has already entered the gates. The question is now governance, not arrival.**
 
-The real risk isn't that these tools make platform choice irrelevant. It's that they create **agent sprawl** — every team picks up the agent in their favorite tool, creating a fragmented mess that's harder to govern than no agents at all.
+The previous verdict ("carries co-pilots, not agents") needs differentiation:
+
+- **Notion Custom Agents** now carries genuine agents for workspace-bound work. Remote and Ramp are running real production autonomous workflows. This passes the "multi-step autonomous" test within a constrained scope.
+- **Atlassian Rovo** is the most mature governance model in the category — agents inside existing permissions, audit trails, human approval gates. Still workspace-confined for agent-initiated actions, but MCP enables external clients to reach in.
+- **Agentforce in Slack** has real financial traction ($800M ARR) but zero independent enterprise deployment evidence. Still vendor-only.
+- **Zoom AI Companion** remains the shallowest — automation sequences, not autonomous reasoning.
+
+The real risk has materialized: **agent sprawl is now the defining enterprise governance problem.** 94% of organizations confirm it. 1.5M unsecured agents are running. Collaboration tools are the primary vector because they arrive as feature toggles, not procurement decisions. Every major cloud provider is now building agent registries in direct response.
+
+The platform choice doesn't disappear — it escalates to governance. "Which platform?" becomes "how do we govern the agents that arrived through every tool we already use before we had a strategy?" Atlassian's governance-first design is currently the best available template for this problem in the collaboration tool space.
 
 ---
 
@@ -240,27 +324,29 @@ The real risk isn't that these tools make platform choice irrelevant. It's that 
 
 ## What We Need To Learn
 
-- [ ] **Independent deployment evidence** — anyone outside Salesforce reporting real outcomes from Agentforce in Slack? Anyone outside Atlassian reporting Rovo Agent outcomes?
-- [ ] **MCP integration depth** — can agents actually DO things across system boundaries, or just read? Specifically: can a Notion agent create a Jira ticket via MCP? Can Slack's Agentforce update a Confluence page?
-- [ ] **Agent sprawl reality** — are enterprises experiencing governance problems from agents in multiple collaboration tools? Is anyone trying to unify governance across Rovo + Slack + Notion agents?
-- [ ] **Credit/consumption pricing impact** — as usage-based pricing kicks in (Rovo, Notion), does adoption plateau or collapse?
-- [ ] **Notion Custom Agents practitioner depth** — 21,000 agents built, but what are they actually doing? Are any running complex multi-step workflows in production?
-- [ ] **Nordic signal** — any Nordic companies deploying collaboration-tool agents beyond basic features?
-- [ ] **A2A protocol adoption** — will collaboration tools adopt Agent-to-Agent protocol, enabling agents in different tools to coordinate?
-- [ ] **Security incident watch** — when (not if) an agent with write access to production Jira creates a mess, that will be the governance wake-up call
+- [ ] **Independent deployment evidence for Agentforce in Slack** — CONFIRMED ABSENCE after 2 cycles. Zero independent enterprise deployment published. Every mention traces to Salesforce. Priority: find any non-Salesforce enterprise that has published Agentforce in Slack outcomes.
+- [ ] **MCP write depth in practice** — 1/3 of Rovo MCP operations are writes (confirmed), but which writes? Creating Jira tickets from external agents? Updating Confluence pages? Actual workflow examples from practitioners needed.
+- [ ] **Notion Custom Agents post-pricing (May 4, 2026)** — credit pricing just kicked in. Did adoption plateau, collapse, or continue? Remote/Ramp are named deployers — are they paying at scale?
+- [ ] **A2A protocol adoption by collaboration platforms** — None have adopted A2A as of April 2026. If one does, it changes the cross-tool coordination picture fundamentally. Watch Atlassian, Slack, and Notion announcements.
+- [ ] **Agent sprawl governance: who's winning?** — AWS Agent Registry, Microsoft Entra Agent ID, ServiceNow AI Control Tower all launched. Which are enterprises actually using to govern collaboration-tool agents? No evidence yet.
+- [ ] **Nordic signal** — Zoom's non-English degradation is Nordic-relevant but not Nordic-origin. Zero Nordic collaboration-tool deployments found after 2 cycles.
+- [ ] **First public security incident** — agents with write access to Jira, Confluence, Notion are running. The first publicized "agent made a mess in production" will be the governance wake-up call and a major finding for this category.
+- [ ] **Rovo pricing cliff impact** — Atlassian's consumption-based pricing transition in early 2026 was anticipated as a potential adoption brake. Has any team reported reducing Rovo usage due to cost?
 
 ## Sources
 
 All sources cited inline with URLs and source type labels. Key source types:
 - **Vendor press releases:** Atlassian, Salesforce/Slack, Notion, Zoom announcements — Level 0, used for "what was announced" only
-- **Practitioner direct:** Atlassian Community posts on Rovo limitations, backend model issues — Level 2
-- **Practitioner analysis:** eesel AI reviews of Rovo, Zoom, Notion — Level 2
+- **Practitioner direct:** Atlassian Community posts on Rovo limitations, backend model issues; BuildToLaunch on Notion agent limitations — Level 2
+- **Practitioner analysis:** eesel AI reviews of Rovo, Zoom, Notion; Futurum analyst assessment — Level 2
+- **Domain trade publication:** CIO Dive (agent sprawl survey), TechInformed (Agents in Jira governance), Condado (Zoom enterprise review), NoJitter — Level 2
 - **General press:** TechCrunch, SiliconANGLE, Computer Weekly — bare facts only
-- **Domain trade publication:** Deviniti (Atlassian statistics), Futurum (Agentforce analysis) — Level 1-2
 
-**What We Did Not Find:**
-- Independent (non-vendor) enterprise deployment evidence for ANY of these four platforms
-- Practitioner reports of multi-system agent orchestration through collaboration tools
-- Any formal governance framework for agents in collaboration tools
-- Nordic-specific deployment evidence
-- Head-to-head comparison of agent capabilities across collaboration platforms by an independent practitioner
+**What We Did Not Find (updated Cycle 96):**
+- Independent (non-vendor) enterprise deployment evidence for Agentforce in Slack — CONFIRMED ABSENCE after 2 cycles
+- Practitioner reports of multi-system agent orchestration through collaboration tools (agents reading from AND writing to 3+ systems autonomously)
+- Any formal governance framework specifically for agents in collaboration tools (registries are building but not yet governing collaboration tool agents)
+- Nordic-specific deployment evidence — confirmed absence after 2 cycles
+- Head-to-head practitioner comparison of agent capabilities across collaboration platforms
+- A2A protocol adoption by any collaboration platform — confirmed absence
+- First documented security incident from collaboration tool agent with write access

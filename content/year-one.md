@@ -24,7 +24,9 @@ Four phases emerge across the year:
 
 I wrote these essays as they came to me. Months later, a systematic research effort independently arrived at the same patterns.
 
-Eight of these essays were independently confirmed by systematic research (80+ OODA cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. The practitioner saw it first. The research confirmed it later.
+Eight of these essays were independently confirmed by systematic research (90+ systematic internet research cycles, industry publications, practitioner accounts, academic studies). The confirmations appear inline after each relevant essay. I saw it unfolding first. The research confirmed it later.
+
+Skip around. Read what catches your eye. These essays work in any order.
 
 ---
 
@@ -690,6 +692,8 @@ Change happens one step at a time. Change scales in the network.
 
 Making people do bigger things is at core leadership. I have big dissonance myself and I keep balancing between feeling like I can lead big things to not being sure of myself. I guess this feeling could be with many others. But the transformation, as daunting as that word is, is what I return to. I just want to make that happen. And then I remind myself, ... you transform organisations.
 
+> **What research later confirmed:** Wharton research quantified the gap this essay was wrestling with. Individual AI productivity gains: 2-3x. Organizational gains: only 10-20%. The difference is not technology — it is the network. Individual capability doesn't become organizational capability by itself. It takes what the researchers call a "Crowd" — people who scale what works sideways, one conversation at a time. Harvard Business School put it bluntly: "Most AI initiatives fail for organizational, not technical reasons." The transformation is not about you. It is about everyone around you changing together.
+
 ---
 
 ## 2025-11-28 — Six Months In: What the Data Actually Says
@@ -725,6 +729,8 @@ In some ways, I like to classify this as the nature of innovation. When you do s
 I wanted this week to acknowledge those things. I'm sure there are many more things that we didn't really do well. Many I've already forgotten.
 
 This one is for those who believe failure and errors are part of learning.
+
+> **What research later confirmed:** This wasn't just us. Nobody actually knows the precise failure rate of AI initiatives — the commonly cited numbers (70-95%) all trace back to small qualitative studies with narrow definitions of success. The real finding: everybody is fumbling. The gap between pilot and production is real, significant, and mostly organizational — not technical. What this essay described as personal anxiety turns out to be the universal condition. The question was never whether you'd fail. It was whether you'd keep going.
 
 ---
 
@@ -823,7 +829,7 @@ Want your agent running every Monday? Yep, you can't.
 
 *Don't even get me started....*
 
-> **What research later confirmed:** "We don't have pretty much any evals" — this verification gap is industry-wide and the primary reason non-engineering domains can't go AI-native
+> **What research later confirmed:** You are not alone if you see these things. Every problem on this list — missing evals, unreliable outputs, context limits, no agent platform, no scheduling — turned out to be the universal condition, not a local gap. The verification problem is now confirmed as the structural gate for the entire industry. The reliability problem is now confirmed across 15+ independent cases where full autonomy failed at scale. If this essay read like a complaint list in December 2025, by mid-2026 it reads like a state-of-the-industry report.
 
 ---
 
@@ -890,6 +896,20 @@ I predict a key facet of enterprise "IQ" is how we slice and dice our informatio
 The final trend is chatting to orchestrating. This is to scale and do many things at the same time.
 
 The funny thing about orchestrating is that... orchestrating can be best done by chatting in AI. :)
+
+> **Q2 2026 just got started and these predictions are aging as follows:**
+>
+> ***Teams will create and publish agents*** — Early signs. Platform vendors are building agent marketplaces and catalogs. But in practice, most organisations are still in "personal agents" mode. The team-to-team publishing hasn't happened at scale yet. Too early to call.
+>
+> ***Coding agents will prove better than plain LLM agents*** — Confirmed and then some. Claude Code and Codex are no longer just coding tools — they are architecturally general-purpose agent platforms. The code-generation loop (read context, plan, use tools, execute, iterate) turns out to have nothing coding-specific about it. Both Anthropic and OpenAI are explicitly pivoting these tools toward business automation. This prediction was right for the wrong reason — coding agents didn't just prove better, they started eating the entire agent platform category.
+>
+> ***Iterative human-operated agents dominate*** — Confirmed across 15+ independent signals. Full autonomy at scale has failed repeatedly — from customer service to drive-throughs to SDR outreach. The winning architecture everywhere: AI generates, human validates, AI executes, human monitors. The human in the loop is not a limitation. It's the design.
+>
+> ***Agents learn to learn*** — Happening, but slowly. Claude Code now has persistent memory (CLAUDE.md files, project context). Agent memory is real but primitive. The "start from zero every time" problem is being solved file by file, not through any breakthrough in agent learning. Good enough for now. Far from done.
+>
+> ***Information products will be needed*** — Not yet visible as a category. The MCP protocol (Model Context Protocol) is becoming the plumbing for connecting agents to enterprise data. But the governance layer — who owns the data, who curates it, who keeps it current — remains the unsolved problem. This prediction is still ahead of the market.
+>
+> ***From chatting to orchestrating*** — Emerging. Scheduled tasks, multi-agent coordination, background agents running autonomously — the infrastructure is shipping. But most users are still chatting, not orchestrating. The gap between what's possible and what people actually do remains wide.
 
 ---
 
@@ -997,7 +1017,9 @@ Why I'm writing this... as always... keep learning new skills and ways. Try unde
 
 Over and out for this week.
 
-> **What research later confirmed:** Competitive compounding is real. Combined with Goldratt's Theory of Constraints and Little's Law: AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched
+> **What research later confirmed:** Competitive compounding is real. AI accelerates the cheap part (generation) while leaving the expensive part (decisions, review, verification) untouched. The actual Red Queen market dynamics — where one company's acceleration forces competitors to respond — have not yet been observed at industry level.
+>
+> Are you the Red Queen?
 
 ---
 
@@ -1007,7 +1029,7 @@ A year in. Some things I got right. Some I got wrong. Here's what stuck.
 
 **Competence precedes vision.** I spent April agonising over the right analogy for AI. By June I realised people don't need analogies — they need the "aha" moment. Once someone builds something real with an agent, the vision forms itself. No slide deck does what 2 hours of hands-on experience does. The sequence is: experience first, vision second. Always.
 
-**AI engineering is software engineering.** I hoped AI would be different. It isn't. Quality, testing, architecture, dependencies, cycle time — all the same problems, amplified. The teams that had good engineering discipline before AI got better. The teams that didn't got faster at producing mess. AI is an amplifier, not a transformer.
+**AI engineering is software engineering.** Quality, testing, architecture, dependencies, cycle time — all the same problems, amplified. The teams that had good engineering discipline before AI got better. The teams that didn't got faster at producing mess. AI is an amplifier, not a transformer.
 
 **Sharing is harder than building.** We built good things. We failed to share them well. Cross-team knowledge transfer remains the unsolved problem. Agents can dissolve the technical barriers. The social and organisational barriers are still there.
 
@@ -1015,7 +1037,7 @@ A year in. Some things I got right. Some I got wrong. Here's what stuck.
 
 **The Red Queen is already running.** Competition doesn't wait. Every month we don't compound, someone else does. This isn't a project with a deadline. It's a permanent race where learning speed is the only durable advantage.
 
-**I still make mistakes.** More than I'd like. The difference is I make them faster now, and I learn from them sooner. That's the whole point.
+**I still make mistakes.** More than I'd like. The difference is I make them faster now, and I learn from them sooner. Do the work. Learn the fastest.
 
 ---
 
@@ -1025,11 +1047,13 @@ If these essays resonated, here's the sequence that works:
 
 1. **Get the experience.** Give yourself and 5 people Claude Code for a week. Build something real for your own work. Not a demo — something you'll use tomorrow.
 
-2. **Let competence create pull.** After the experience, people find their own processes to improve. You don't need a use case workshop. The domain experts ARE the best process identifiers.
+2. **Learn the NEW how.** Context engineering, agentic loops, learning loops and coping with non-deterministic execution. Start building systems.
 
-3. **Ask the real questions.** Once your people have built things, you'll discover three infrastructure needs: data access, a runtime for what they built, and a way for others to find and use it. These are scoped, practical, answerable.
+3. **Let competence create pull.** After the experience, people find their own processes to improve. You don't need a use case workshop. The domain experts ARE the best process identifiers.
 
-4. **If you are running or planning an agentic transformation, I will tell you exactly what worked behind the numbers in these essays.** antti@bosser.consulting
+4. **Scale deliberately.** Once your people have built things, you'll discover three infrastructure needs: data access, a runtime for what they built, and a way for others to find and use it. These are scoped, practical, answerable.
+
+5. **If you are running or planning an agentic transformation,** the journey and outcomes in detail. Reach me at antti@bosser.consulting
 
 ---
 

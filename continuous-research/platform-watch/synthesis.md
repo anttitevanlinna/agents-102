@@ -360,6 +360,7 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 18. **PE joint venture impact** — OpenAI ($10B with TPG/Advent/Bain) + Anthropic both forming PE distribution. First portfolio company agent deployments? (Opened cycle 23)
 19. **Agent identity standards** — 93% unscoped API keys. NHI emerging as consensus framework. Grantex IETF draft. First adoption beyond proposals? (Opened cycle 22)
 20. **Domain practitioner discovery** — who are the innovator practitioners per business function? Feed names to `../source-roster.md`. (Ongoing)
+21. **Headless enterprise SaaS — state of play** — Is enterprise SaaS going API-first/headless? If yes, coding agents bypass the connector bottleneck entirely — they wire into enterprise systems at model velocity, not vendor integration velocity. Tracks: which SaaS vendors ship headless/API-first, MCP servers as the new headless interface, practitioners building composable enterprise stacks via coding agents. Structural precondition for the Enterprise Integration Reality Test. Connects to connector velocity bottleneck (user signal 2026-04-13). (NEW — cycle 97)
 
 ### Answered / Retired
 

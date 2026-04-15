@@ -132,6 +132,40 @@ Multiple independent sources converge on the same new PM skills:
 
 Source: [Haberlah 638-piece analysis](https://medium.com/@haberlah/what-638-practitioner-voices-reveal-about-pms-ai-transformation-7d2fd16be10d), [Aman Khan](https://creatoreconomy.so/p/ai-skill-that-will-define-your-pm-career-aman-khan), [Lenny survey](https://www.lennysnewsletter.com/p/ai-tools-are-overdelivering-results) [practitioner direct / practitioner analysis]
 
+## Output-Outcome Gap — Product Focus Survey Finding (Level 2, cycle 100)
+
+**The 33-point gap is now quantified by an independent survey.** Product Focus (productfocus.com), an independent product management training firm, published a 3-part series "Product Management, Amplified" based on their 2026 Survey of the Product Management Profession (N=677, 40 countries). Part 1 and Part 2 are now fetched and verified.
+
+**The gap:** 97% of PMs report AI improved their personal productivity. Only 64% report improved product outcomes. 33-point gap between individual productivity and business impact.
+
+**Part 2: The Five Organizational Foundations.** Product Focus identified five conditions that predict outcome improvement. PMs with all five were over 5x more likely to report AI significantly improving product outcomes (44% vs 9%). Deadline hit rate: 86% with all five vs 44% with zero or one. Only 8% of respondents had all five in place.
+
+The five foundations are:
+
+1. **Customer Time** — Only 29% feel they spend enough time with customers. Among senior leaders (heads/directors), 75% say they don't have sufficient customer engagement. "AI helps you move faster toward assumptions rather than evidence" without genuine customer understanding.
+
+2. **Role Clarity** — 59% report clearly defined roles. Teams with role clarity hit deadlines 78% vs 48% without. 30-point execution gap.
+
+3. **Strategic Focus** — Only 25% spend most time on strategic activities. 60% are frequently disrupted by unplanned work. The gap between wanting and doing strategy remains substantial.
+
+4. **Leadership Recognition** — 67% say PM is recognized as a leadership role. Rises to 80% when PMs report to a CPO. Drops to ~50% when reporting into sales or engineering.
+
+5. **Clear Accountability** — 34% lack a clear primary metric. Without defined success measures, "everything feels equally urgent."
+
+**Evidence quality note:** Product Focus is an independent training organization (not a vendor platform), making this non-vendor survey data. N=677 across 40 countries is reasonable. The five foundations are structural/organizational — not AI-tool-specific. They correlate with all positive outcomes, not just AI ones, which makes them more credible (less likely to be a proxy for "AI-friendly orgs").
+
+**Attribution correction for previous cycles:** The phrase "AI does not fix the funnel. It reveals and amplifies whatever version of the funnel you are already operating" was attributed to John Cutler in the cycle 99 user signal update. Product Focus Part 1 and Part 2 do NOT name Cutler or Torres as sources. The Cutler framing is editorial synthesis, not a direct quote. Mark as [SYNTHESIS — not a Cutler direct quote] in any published content.
+
+**Part 3 (not yet fetched):** Titled "Steer First, Then Accelerate" — likely contains implementation recommendations. URL: https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/
+
+Sources:
+- Part 1: [https://www.productfocus.com/product-management-amplified-part-1-the-33-point-gap/](https://www.productfocus.com/product-management-amplified-part-1-the-33-point-gap/) [domain trade publication] — 2026
+- Part 2: [https://www.productfocus.com/product-management-amplified-part-2-its-not-just-the-ai-its-the-organisation/](https://www.productfocus.com/product-management-amplified-part-2-its-not-just-the-ai-its-the-organisation/) [domain trade publication] — 2026
+
+Agent level: team → company (organizational conditions, not individual tool use)
+
+---
+
 ## Counter-Evidence
 
 **1. Speed yes, quality unmeasured.** Every practitioner reports time savings. Zero evidence that AI-assisted PM work produces better decisions, better products, or fewer missed opportunities. Nobody's asking the quality question.

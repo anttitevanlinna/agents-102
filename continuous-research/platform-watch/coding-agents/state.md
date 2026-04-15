@@ -1,7 +1,7 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-04-02 (cycle 1)
-OODA cycles: 1
+Last updated: 2026-04-15 (cycle 100)
+OODA cycles: 2
 
 ## Focus
 
@@ -34,6 +34,24 @@ Coding agents as the **meta-platform** for the agentic transformation. This is N
 **Claude Cowork:** Graphical interface version launched Jan 2026 as research preview — for people who find the terminal intimidating. Extends Claude Code's capabilities to non-technical users. ([VentureBeat](https://venturebeat.com/orchestration/anthropic-says-claude-code-transformed-programming-now-claude-cowork-is) — [general press])
 
 **Governance:** Kong AI Gateway integration for enterprise Claude Code rollouts. ([Kong](https://konghq.com/blog/engineering/claude-code-governance-with-an-ai-gateway) — [practitioner direct])
+
+**April 2026 — Infrastructure layer shipped (cycle 100, April 15):**
+
+Three significant platform-layer additions in the April 10-15 window:
+
+1. **Claude Routines (April 14, research preview):** Scheduled automations that run on Anthropic's own cloud infrastructure — your machine does not need to be online. Triggers: schedule or GitHub event. Access: repos and connectors bundled. Usage limits: Pro 5/day, Max 15/day, Team/Enterprise 25/day. This offloads cron-job infrastructure management to Anthropic entirely. [9to5Mac, April 14, 2026 — [general press]] (https://9to5mac.com/2026/04/14/anthropic-adds-repeatable-routines-feature-to-claude-code-heres-how-it-works/)
+
+2. **Claude Managed Agents (April 8, public beta):** Fully managed agent harness — Anthropic hosts the runtime so builders don't. Provides: sandboxed code execution, checkpointing, credential management, scoped permissions, end-to-end tracing. Pricing: $0.08/session-hour + standard API token cost. API header: `managed-agents-2026-04-01`. Competes directly with AWS Bedrock AgentCore and Azure Foundry Agent Service. **Evidence gap:** No independent practitioner reports yet — too new. [The New Stack, April 8, 2026 — [domain trade publication]] (https://thenewstack.io/with-claude-managed-agents-anthropic-wants-to-run-your-ai-agents-for-you/)
+
+3. **ant CLI (Anthropic CLI, April 2026):** Command-line client for Claude API with native Claude Code integration. Enables versioning of API resources in YAML files. Positions Claude API access as a developer-first workflow tool, not just API calls. [Releasebot/Anthropic changelog — [vendor documentation]] (https://releasebot.io/updates/anthropic)
+
+**Notable April changelog entries (verified via code.claude.com/docs/en/changelog):**
+- v2.1.108 (Apr 14): 1-hour prompt caching TTL control, `/recap` session context feature, Skill tool access to slash commands
+- v2.1.101 (Apr 10): `/team-onboarding` command (generates teammate ramp-up guides), fixed command injection vulnerability
+- v2.1.98 (Apr 9): Interactive Google Vertex AI setup wizard, Monitor tool for streaming events, subprocess sandboxing with PID namespace isolation
+- v2.1.94 (Apr 7): Amazon Bedrock Mantle support, default effort level upgraded from medium to high
+
+**Platform trajectory signal:** The combination of Routines + Managed Agents + ant CLI completes the "build locally, deploy managed" loop Anthropic has been assembling. A developer can now: build in Claude Code CLI → test locally → deploy as a Managed Agent on Anthropic infrastructure → schedule via Routines. Antspace BYOC remains for enterprise data-residency cases.
 
 ---
 

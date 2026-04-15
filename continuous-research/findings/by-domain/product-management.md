@@ -156,11 +156,50 @@ The five foundations are:
 
 **Attribution correction for previous cycles:** The phrase "AI does not fix the funnel. It reveals and amplifies whatever version of the funnel you are already operating" was attributed to John Cutler in the cycle 99 user signal update. Product Focus Part 1 and Part 2 do NOT name Cutler or Torres as sources. The Cutler framing is editorial synthesis, not a direct quote. Mark as [SYNTHESIS — not a Cutler direct quote] in any published content.
 
-**Part 3 (not yet fetched):** Titled "Steer First, Then Accelerate" — likely contains implementation recommendations. URL: https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/
+**Part 3 (fetched cycle 101, Apr 15 2026):** Titled "Steer First, Then Accelerate" — the implementation recommendations article. Core thesis and key findings below.
+
+**Part 3: Steer First, Then Accelerate — Core Thesis and Recommendations**
+
+The central thesis of Part 3: "AI amplifies the system it's applied to. If your product team has some foundations in place, AI becomes the accelerant it's supposed to be. If the system is broken, you're just doing the wrong things faster."
+
+This directly names the mechanism behind the 33-point gap from Part 1 and the five foundations from Part 2. It is not a capability problem. It is a systems amplification problem. Broken system + AI = faster failure.
+
+**Recommendations for product team leads** (four of the five foundations are within leader control):
+
+1. **Define what product management owns.** Role clarity correlates with a 30-point improvement in deadline performance. "When PMs know their boundaries, they stop compensating for ambiguity and start executing against clear expectations." Fastest foundation to put in place — but defining the role is just the start; you need PMs who accept it and deliver on it.
+
+2. **Give every PM a primary metric.** 34% currently don't have one. "A clear metric focuses effort and creates a basis for saying no to work that doesn't serve the goal. Without it, everything feels equally urgent."
+
+3. **Protect strategic time structurally, not rhetorically.** 60% of PMs are frequently disrupted by unplanned work. "Telling people to focus on strategy while allowing constant interruption is not a strategy." Protecting time means changing how work flows into the team — triaging requests, shielding deep work, making the cost of disruption visible. But you also need PMs who can fill that protected time with genuine strategic craft.
+
+4. **Advocate for product management as a leadership function.** Where PMs report to a CPO, 80% say the role is recognised as leadership. Where they report into sales or engineering, it's closer to 50%. A CPO brings more than a reporting line — they bring a clear vision for what product stands for.
+
+5. **Customer time follows.** When firefighting is reduced and strategic focus is protected, PMs naturally have more space for customers. "It's the rarest foundation — only 29% feel they have enough — but it's the one most likely to improve as the others fall into place."
+
+**Recommendations for individual PMs:**
+
+- Push for role clarity; understand what great PM looks like in your leader's eyes
+- Propose your own primary metric if none exists — it changes how the organization sees you
+- Protect customer time with clearer role boundaries; "only 29% feel they spend enough time with customers and understanding the market"
+- Develop strategic craft: "As AI takes over more of the 'mechanical' work, the premium shifts to judgement"
+- "Use AI as a partner, not an oracle. The PMs getting the best results from AI are the ones who bring strong product expertise to the conversation. They prompt well, validate outputs, and apply product judgement."
+
+**Training and organizational readiness finding:**
+
+"Organisations with all five foundations in place are nearly six times more likely to rate their professional development as good. Send a capable PM on a training course in an organisation where product managers are seen as order takers and their days are consumed by firefighting. They come back full of new approaches — and within weeks, they'll be frustrated with an environment that pushes them right back into old patterns."
+
+The equation: **organisation foundations + PM development = results. Both matter. Neither alone is sufficient.**
+
+**Evidence level:** Part 3 is primarily normative (recommendations from survey data), not a new dataset. It synthesizes Parts 1 and 2 into a practitioner-facing action framework. The underlying evidence is the N=677 survey from Parts 1 and 2.
+
+**Implications for agentic transformation research:**
+
+The Part 3 framing — "steer first, then accelerate" — is a direct practitioner-grounded statement that the organizational sequence matters. This maps strongly to the competence-first pattern (Pattern 43): the transformation sequence is not tool → outcome, it is system → sequence → amplification. Steer = build the organizational system. Accelerate = add AI. Inverted = "doing the wrong things faster."
 
 Sources:
 - Part 1: [https://www.productfocus.com/product-management-amplified-part-1-the-33-point-gap/](https://www.productfocus.com/product-management-amplified-part-1-the-33-point-gap/) [domain trade publication] — 2026
 - Part 2: [https://www.productfocus.com/product-management-amplified-part-2-its-not-just-the-ai-its-the-organisation/](https://www.productfocus.com/product-management-amplified-part-2-its-not-just-the-ai-its-the-organisation/) [domain trade publication] — 2026
+- Part 3: [https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/](https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/) [domain trade publication] — 2026
 
 Agent level: team → company (organizational conditions, not individual tool use)
 

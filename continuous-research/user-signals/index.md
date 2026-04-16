@@ -11,6 +11,8 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-15](comments/2026-04-15-okr-strategy-clarity-problem.md) — OKR problem is actually strategy clarity problem is actually buy-in problem. Mike Fisher article "Build the Right Thing" — premature optimization of undefined strategy. Connects to Intent Taktik upstream bottleneck.
+- [2026-04-15](comments/2026-04-15-design-first-vs-competence-first.md) — "First Design, Then AI" (10X ORG / Krivitsky/Larman) contradicts competence-first evidence. Deeper: did "design the structure, behavior follows" ever work? SV builder culture vs. Nordic consensus. Gap: zero practitioner reports on AI-era culture change in practice.
 - [2026-04-09](comments/2026-04-09-institutional-vs-individual-ai.md) — Individual AI ≠ institutional value. "Redesign the floor" thesis (a16z/Sivulka). Research gap: who's actually redesigning, not just electrifying? Maps to absorption bottleneck, competence-first, Intent Taktik.
 - [2026-04-02](questions/2026-04-02-epd-coordination-emerging-patterns.md) — How is PM/Design/Eng coordination changing with coding agents? Emerging patterns beyond known ones. **Answered:** 8 patterns documented in `findings/by-pattern/epd-coordination-shift.md`.
 - [2026-04-02](comments/2026-04-02-centralized-fast-with-agent-coordinator.md) — Centralized works fast too — if the coordinator is an agent, not a human. The bottleneck was never the architecture, it was the human at the center. Hybrid: agent general staff + distributed units + shared doctrine.

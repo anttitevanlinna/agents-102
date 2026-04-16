@@ -94,3 +94,19 @@ Two independent surveys confirm Nordic companies are systematically more conserv
 - **Deloitte Nordic AI Survey (Dec 2025):** 58% of Nordic organizations using agentic AI expect 3+ years for significant ROI (vs. 37% rest of Europe). Source: [Deloitte DK](https://www.deloitte.com/dk/en/issues/generative-ai/ai-roi-in-the-nordics.html)
 
 The gap between "agents arriving in your software" and "organizations not budgeting for them" is the exact competence gap Agents 102 addresses.
+
+## Counter-Evidence Search: "Design First, Then AI" (2026-04-15)
+
+**Systematic search across 5 communities:** 10X ORG / Org Topologies, LeSS, sociotechnical design academics, SAFe, and Bayer's Dynamic Shared Ownership. 15+ searches, 3 rounds per target.
+
+**Result: No counter-evidence found at Level 2 or above.**
+
+The "design first" community consists of: (1) framework vendors selling a sequence with no public evidence (10X ORG uses a business novel, not case studies; SAFe AI-Native is a certification product), (2) one massive experiment (Bayer DSO — real org redesign at 100K+ people, but no documented AI connection), (3) misinterpreted McKinsey data (says "when deploying" = concurrent, not "before deploying"), and (4) a book (O'Reilly's Artificial Organizations) whose own cases describe competence-first sequences.
+
+**Key finding:** Nobody has documented a company that redesigned their org for AI and THEN saw AI work better. The closest candidate (Bayer) redesigned for speed/delayering, not specifically for AI readiness. The McKinsey State of AI 2025 workflow redesign finding (55% of high performers redesign workflows "when deploying" AI) supports concurrent adaptation — exactly what competence-first predicts.
+
+**The structural problem:** You cannot design an organization for a capability nobody in the organization understands. The redesign requires the knowledge that only comes from building.
+
+**Refined thesis:** Competence-first does not mean "never redesign." It means: the redesign is informed by competence, not the other way around. Competence → Discovery → Redesign → More Deployment.
+
+Full analysis: `platform-watch/cross-platform/runs/2026-04-15-ooda-design-first-counter-evidence.md`

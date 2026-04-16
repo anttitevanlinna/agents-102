@@ -286,4 +286,43 @@ See also: [`strategy/practitioner-essays-year-one.md`](../strategy/practitioner-
 
 ---
 
-*Research directions identified from enterprise transformation practitioner research, March 2026*
+## Priority 0 (User Signal): AI-Era Culture Change — Practitioner Reports
+
+**Trigger:** Company considering 10X ORG (Krivitsky/Larman) reorg. "First Design, Then AI" thesis contradicts competence-first evidence. Deeper question: does "design the structure, behavior follows" work for ANY transformation? 30-year track record (SAFe, LeSS, Spotify model) is mediocre at best.
+
+**The gold seam:** Who is actually writing practitioner accounts of AI-era organizational culture change? Not frameworks. Not prescriptions. People who tried to change their org's culture for AI and wrote about what actually happened.
+
+**What to investigate (people-first method):**
+
+1. **Practitioner accounts of AI culture change.** Who has written "we tried to change our org culture for AI, here's what happened"? Search for: blog posts, X.com threads, conference talks, podcast episodes where someone reports from inside the change. Not consultants advising — people living it.
+
+2. **The "design first" vs. "experience first" question.** Any cases where org redesign preceded AI deployment and produced results? Any cases where it preceded and failed? This is the direct evidence gap — our competence-first evidence is L3, but we haven't systematically searched for counter-evidence from the org design camp.
+
+3. **SV builder culture vs. non-SV pathways.** Shopify, Anthropic, Block = founder-driven builder culture. Who is doing culture change for AI without the SV playbook? Nordic examples. European examples. Non-tech companies. F-Secure (SVP HR leading) is our single case — who else?
+
+4. **The Lewinian theory of change in AI context.** "Unfreeze → move → refreeze" is the implicit model behind every org design framework. Is anyone in the change management / OD community challenging this for AI? Is "continuous unfreezing" replacing the traditional model?
+
+5. **Works councils and co-determination.** How do Nordic/European labor models interact with AI culture change? The SV playbook ignores this entirely. Is co-determination a brake or a forcing function for better adoption?
+
+**Named people to start with:**
+- Krivitsky, Larman, Flemm (10X ORG authors — what practitioner cases do they cite?)
+- Varonis team (only documented transform-in-place — was culture change explicit?)
+- Anyone at Moderna who wrote about the cultural side of their AI training program (not just the HBS case)
+- Shopify insiders (anyone beyond Lütke's memos writing about what actually changed inside?)
+- Klarna insiders (they reversed — anyone writing about why?)
+- Bayer insiders (mixed results — anyone writing about the cultural dimension?)
+
+**What we do NOT want:**
+- Consultancy frameworks for AI culture change (McKinsey, Deloitte, BCG — we have these, they're prescriptions not evidence)
+- "5 Steps to an AI Culture" listicles
+- Vendor success stories
+- Analyst predictions about future of work
+
+**Why this matters:** The Transition Playbook Gap insight (L3 in insights.md) says the diagnosis has convergence but the prescription has zero. Culture change practitioner reports are where the prescription lives — if it exists anywhere. If we find convergence on HOW culture actually changes for AI (not how it SHOULD change), that's a premium insight for every CTO we talk to.
+
+**Date added:** 2026-04-15
+**Source:** User signal — company considering 10X ORG reorganization
+
+---
+
+*Research directions identified from enterprise transformation practitioner research, March 2026. Updated April 2026.*

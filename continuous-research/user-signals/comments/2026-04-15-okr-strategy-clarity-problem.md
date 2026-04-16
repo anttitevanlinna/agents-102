@@ -1,0 +1,5 @@
+Company considering org redesign (10X ORG) thinks they have an OKR problem. They actually have a strategy clarity problem — no amount of OKR workshops fixes formless strategy. Underneath that: a "true convergence" / buy-in problem. Leadership hasn't made hard choices. OKR cascade can't cascade choices that haven't been made.
+
+Recommended article: Mike Fisher (CTO Etsy, VP Eng PayPal, CEO MyFitnessPal), "Build the Right Thing" (Apr 15 2026, mikefisher.substack.com). Outputs vs. outcomes. ROI as premature optimization. "Financials should function as guardrails, not goals." Wright Brothers vs. Langley: one optimized for visible progress, the other for understanding.
+
+**Gap:** The org design → OKR → strategy clarity → buy-in chain is a pattern we see but haven't documented as a finding. Companies reach for structural solutions (reorg, framework adoption, OKR workshops) when the problem is strategic ambiguity at the top. This is the Intent Taktik upstream bottleneck applied to non-AI transformations — fuzzy intent can't be cascaded regardless of the cascade mechanism.

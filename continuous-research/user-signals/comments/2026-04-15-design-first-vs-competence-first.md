@@ -1,0 +1,5 @@
+Org design frameworks (10X ORG / Org Topologies) prescribe "First Design, Then AI" — redesign the org structure before deploying AI. Contradicts competence-first evidence (L3). The deeper question: did "design the structure, behavior follows" ever work? SAFe, LeSS, Spotify model — 30-year track record of mediocre change from structural redesign. The diagnostic tools are useful; the theory of change is unproven.
+
+Separate tension: SV "builder culture" leadership style (Shopify memos, founder-driven) vs. Nordic consensus culture. The mechanism (hands-on experience → better decisions) appears culture-independent. The expression differs. F-Secure (SVP HR leading) validates non-SV pathway.
+
+**Gap:** No research on who is actually reporting practitioner experience of AI-era culture change. We have plenty on what orgs should do (frameworks), nothing on what practitioners report actually happened when they tried to change culture for AI. This is a gold-seam research direction — people-first method applied to culture change.

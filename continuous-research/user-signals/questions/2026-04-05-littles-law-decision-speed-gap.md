@@ -38,3 +38,12 @@ Still Level 1 overall. No practitioner has reported measured decision cycle time
 **TOC framing validation:** Rosenthal/Zuckerman OVIS and Nordenlund's three paradoxes both independently prescribe "redesign decision authority" — same diagnosis as Goldratt's constraint logic, without naming TOC. Cross-domain convergence on the prescription strengthens the hypothesis even without Level 2 data.
 
 **Measurement gap confirmed (cycle 96):** Direct search for non-engineering decision cycle data before/after AI deployment found nothing. The gap is structural: engineering teams publish PR cycle time data (Faros AI, CircleCI); business teams in marketing/finance/operations/HR do not publish decision latency data. No practitioner has reported this measurement anywhere.
+
+**Cycle 98 UPDATE (Apr 16, 2026):** Dedicated Track 2 search run. Still no Level 2 upgrade. Findings:
+- No named company found that measured decision-approval cycle time before and after AI deployment in a non-engineering domain.
+- Best candidate reviewed: CTO Advisor "Decision Authority Drift" case study (Apr 10, 2026) — practitioner Keith Townsend's own writing workflow, no external company, no metrics. Not Level 2.
+- Zombie stat alert: UiPath claim of "65% reduction in routine approvals requiring human intervention" — vendor-research, conflict of interest, no independent source found. Do not cite as evidence.
+- Zombie stat alert: Kellton "AI-powered decision systems reduce decision time by 50-70%" — [SOURCE NEEDED], no methodology found.
+- Structural gap persists: Enterprise approval workflow restructuring is happening (Salesforce Slack Approvals: "2 days → 2 hours" — but this is Salesforce's own internal use case, not a named third-party enterprise), but these are routine approval automations, not strategic decision-making restructuring.
+- **Pattern confirmed:** Vendors (UiPath, Salesforce) publish workflow automation metrics. Business leaders do not publish decision-latency data. The gap between "vendor claims restructuring happened" and "practitioner confirms restructuring measured" remains the story.
+- **Status: Level 1, held.** 13+ practitioner opinions (upgraded from "7-8" to "12-13" voices across 7+ domains by cycle 96), still no Level 2 data. Boundary is holding: opinions are converging but no one has published the measurement. Escalate to KB article as "emerging pattern — convergence of opinions, measurement gap as itself a finding."

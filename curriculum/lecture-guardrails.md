@@ -4,7 +4,7 @@ Rules for designing, reviewing, and generating curriculum modules. Every module 
 
 ---
 
-## 1. Bloom's Taxonomy Drives Everything
+## Bloom's Taxonomy Drives Everything
 
 Every module and every subsection within a module is designed against explicit learning goals, classified by Bloom's taxonomy level:
 
@@ -64,12 +64,12 @@ Not every module needs to reach Create. The progression across the 8-module arc:
 | 4. Security | Analyze → Evaluate | Break things, judge what's safe |
 | 5. Output Quality | Evaluate | Judge output, identify failure modes |
 | 6. Evals | Create | Design your own evaluation system |
-| 7. Agent Platforms | Understand → Evaluate | Map the landscape, judge what fits |
+| 7. From Personal to Team | Analyze → Evaluate | Redesign for shared use, judge what breaks |
 | 8. Agents Building Agents | Create | Build the meta-tool, design the flywheel |
 
 ---
 
-## 2. Training from the Back of the Room — 4 Cs Structure
+## Training from the Back of the Room — 4 Cs Structure
 
 Every module follows Sharon Bowman's 4 Cs framework, adapted for hands-on-keyboard training.
 
@@ -138,7 +138,7 @@ TBR was designed for classroom training with physical movement — wall charts, 
 
 ---
 
-## 3. Generation Tips and Tricks
+## Generation Tips and Tricks
 
 Practical rules for writing module content that actually works in a room full of busy professionals.
 
@@ -193,7 +193,7 @@ Practical rules for writing module content that actually works in a room full of
 
 ---
 
-## 4. Style and Vibe: For Builders
+## Style and Vibe: For Builders
 
 This training is for people who learn by doing. Not by reading. Not by listening. Not by being told what's important. They build something, and the understanding follows.
 
@@ -251,7 +251,7 @@ The implicit promise to every participant:
 
 ---
 
-## 5. Audience: The Chat-to-Systems Leap
+## Audience: The Chat-to-Systems Leap
 
 ### Entry requirement
 
@@ -290,7 +290,7 @@ That is the leap this training makes: **from chatting with AI to building system
 
 ---
 
-## 6. Training Strategy Decisions
+## Training Strategy Decisions
 
 Strategic choices that shape how every module is designed and delivered.
 
@@ -300,8 +300,8 @@ Everyone in the room works on the same company-relevant initiative. Not individu
 
 **How it works:**
 - The initiative is pre-agreed with the customer sponsor before the training. Example: "We want agents for our claims processing," "We need agent-driven competitive intelligence," "We want to automate our compliance reporting."
-- Antti and the sponsor scope it to something that (a) matters to the company, (b) is achievable as a growing prototype in 2 days, and (c) touches enough complexity to sustain 8 modules.
-- All exercises advance this initiative. Module 1: build the first piece. Module 2: grow it into a system. Module 3: split into coordinating agents. Modules 4-6: apply discipline to it. Module 7: deploy it. Module 8: see the flywheel.
+- Antti and the sponsor scope it to something that (a) matters to the company, (b) is achievable as a growing prototype across 8 modules, and (c) touches enough complexity to sustain the full arc.
+- All exercises advance this initiative. The system grows across modules — not throwaway exercises but a single system getting more sophisticated. See `content-strategy.md` for the module arc.
 
 **Why this works:** Relevance is not negotiable. A CTO sending 20 people to Bootstrap expects them to come back having worked on something real for the company — not a toy project they'll never touch again.
 
@@ -325,48 +325,64 @@ Modules 4-6 (Security, Output Quality, Evals) follow a two-phase pattern:
 
 **Why this order:** Jumping straight to "attack your own agent" is pedagogically risky. Participants might not find the vulnerability. The controlled example guarantees the teaching moment. The application to their own project guarantees the emotional impact.
 
-### The day split: flexible
+### Scheduling is a delivery decision
 
-Eight modules across 2 days. The split point is a facilitator decision based on pacing, energy, and cohort speed.
+Modules are self-contained units. Could be 2 days intensive, 8 weeks at 2 hours each, or any other configuration. The curriculum doesn't assume a schedule. Every module must work as a standalone session with prework before and homework after.
 
-**Design implication:** Every module must be self-contained enough to end a day. Modules 3, 4, and 5 are all viable Day 1 endpoints. The module format's Bridge section must work as both "next module" and "tomorrow morning" transitions.
+### The deliverable
 
-**Possible splits:**
-- After Module 3 (Multi-Agent): Day 1 = pure building. Day 2 = discipline + vision.
-- After Module 4 (Security): Day 1 = build it + break it. Day 2 = quality + evals + platforms + flywheel.
-- After Module 5 (Output Quality): Day 1 = build + reality check. Day 2 = evals + platforms + flywheel. Front-loads Day 1.
-
-### The deliverable: executive recommendation
-
-Bootstrap ends with a tangible deliverable for the executive sponsor: a recommendation on how to scale the agentic movement in the company.
-
-**How it's created:** Co-created live by the whole group in the final session (Module 8, Conclusions phase). The facilitator structures. The participants fill in from their 2 days of experience. Everyone owns it.
-
-**What it contains:** Emerged from the training — not a template filled in mechanically. It answers: "We spent 2 days building agents for [initiative]. Here's what we learned about what's possible, what's hard, and how we recommend the company scales this."
-
-**Why this works:** The CTO doesn't just get "20 trained people." They get 20 people who jointly produced a recommendation grounded in hands-on experience. That recommendation is the natural bridge to Make Your Own (Step 2 of the journey).
-
-**First cohort note:** The format of this deliverable may evolve after the first delivery. Start with "executive recommendation on how to scale the movement" and iterate based on what actually emerges.
+Bootstrap ends with a tangible deliverable for the executive sponsor. See Module 8 in `content-strategy.md` for the current format (double diamond, Rumelt-style strategy kernel). The format may evolve after the first delivery.
 
 ---
 
-## 7. Persona Insights and Teaching Moments
+## Module Reusability: One Library, Many Curriculums
 
-How the two archetypes in the room — the technical team lead and the marketing director — experience each module differently, and the design decisions that follow.
+Modules and exercises are **composable building blocks**, not chapters in a monolith. The same module library serves multiple curriculum variants — different audiences, different emphasis, ~80% shared content.
 
-### Module 1: Creativity and generative abundance with control
+### Known variants
 
-Module 1 is NOT about persistence, automation, or "what is an agent." It's about **creative power with guardrails.**
+- **Agents 102 (Bootstrap)** — the default. Hands-on builders making the chat-to-systems leap. Individual empowerment as the foundation.
+- **Agents 102 for Mid-Management** — more team/org transformation framing. Same building exercises, different reflection questions and throughline emphasis. "How does this change how your team works?" instead of "What will you build next?"
+- Future variants may include: executive briefing (compressed), domain-specific (e.g., agents for finance), advanced practitioners.
 
-The exercise: create a personal site with great guardrails that infuse differentiation and storytelling. Participants experience generative abundance — the tool produces more than they could alone — AND control — guardrails (like CLAUDE.md) shape the output to be genuinely theirs, not generic.
+### Design rules for reusability
 
-**Why this works as the entry point:**
-- Everyone already knows LLMs generate stuff (they've chatted). The new insight is: you can **structure** that generation. Guardrails that enforce your brand, your story, your differentiation.
-- The tech lead sees: "I can codify quality standards into the agent's instructions. This is different from prompting."
-- The marketing director sees: "The output sounds like ME, not like ChatGPT. Because I gave it my guardrails."
-- The leap from chat to system starts here: chat gives you generic output. A system with guardrails gives you differentiated output. That's the aha.
+1. **Separate universal core from audience-specific framing.** Every module has a core that's the same everywhere (the exercises, the concepts, the failure modes) and a framing layer that varies by audience (Connections questions, Conclusions prompts, "What This Unlocks" sections, facilitator notes about the room dynamic).
 
-**Note:** Antti has an existing outline for this module from his training materials. This will be incorporated when available.
+2. **Mark audience-specific content explicitly.** Use a clear marker in the module file:
+
+```
+> VARIANT: [audience] — [what changes here]
+> Default (Bootstrap): [the default version]
+> Mid-Management: [the variant version]
+```
+
+3. **Exercises are universal. Reflections are audience-specific.** Building an agent is building an agent — the tech is the same regardless of who's in the room. But "What did you learn?" means something different to an individual contributor vs. someone responsible for 50 people's productivity.
+
+4. **Plug points absorb audience variation.** The existing plug point framework already handles org-specific content. Extend it to handle audience-specific content. A plug point can have a default for Bootstrap AND a default for Mid-Management.
+
+5. **The throughlines flex, they don't change.** Roger Martin's "strategy as assumptions" lands for everyone. But the assumptions worth surfacing differ: a builder asks "will this agent work?" while a mid-manager asks "will my team adopt this?" Same framework, different questions.
+
+6. **One file per module, not one file per variant.** Variants live inside the module file as marked alternatives, not as separate copies. Forking files = drift. The mid-management version of Module 4 should never drift from the Bootstrap version of Module 4's core exercises.
+
+### Why this matters
+
+The anti-SAFe promise ("with your own structure") means the curriculum itself must be modular. If we can't reconfigure our own training for different audiences without rewriting, we're doing the thing we criticize. Composability isn't just a nice-to-have — it's the product architecture.
+
+---
+
+## Teaching Principles
+
+Design heuristics that apply across all modules. Not per-module prescriptions — those live in the content strategy.
+
+### Exercise pairing: solo building, pair review
+
+During exercises, everyone builds individually at their own pace and depth. Then they pair up to review each other's work.
+
+- Solo building: preserves individual pace. Nobody is waiting for their partner.
+- Pair review: cross-pollination. Each person sees a different approach to the same problem.
+
+**Design implication:** Exercises have a clear "build" phase (solo, timed) and a "review" phase (pairs, structured questions). The review isn't "show and tell" — it has specific prompts: "What did your partner do that you wouldn't have thought of? What would break in their approach?"
 
 ### The "system" concept: persistence + automation
 
@@ -376,68 +392,17 @@ For non-technical people, "system" clicks when two things combine:
 
 Neither alone is enough. Persistence without automation is just a saved document. Automation without persistence is a one-shot script. Together, they make "system" tangible.
 
-**Design implication:** The transition from Module 1 (creativity + control) to Module 2 (building systems) is where persistence and automation enter. Module 2 takes the creative agent from Module 1 and makes it a system: it persists, it runs, it grows.
+### Evals framing: strategic steering, not testing
+
+Evals are NOT testing. They are not quality control. They are not proofreading. **Evals are a tool for steering output toward strategically significant factors.** Making output more differentiated. More aligned with brand voice. More grounded in specific evidence. With clear metrics.
 
 ### Multi-agent framing: the assembly line
 
-The metaphor that lands for non-technical people: **assembly line.** "Each agent does one step and passes the work forward. Like a production line where each station adds something."
-
-This is a process mental model — marketing directors think in workflows, production, campaign stages. "Agent 1 gathers data. Agent 2 analyzes it. Agent 3 writes the report." Each step is understandable. The coordination is just: output of step N becomes input of step N+1.
-
-**Design implication:** Module 3 exercises should build a pipeline, not a mesh. Sequential hand-offs before orchestration. The assembly line is learnable. A web of agents talking to each other is not (at this level).
-
-### Security teaching moment: compliance violation
-
-The security moment that changes minds for BOTH personas: the agent violates a company policy.
-
-Not prompt injection (too technical for the marketer, too obvious for the tech lead). Not data leaks (abstract until you see your own data). A **compliance violation**: the agent produces output that breaks GDPR, brand guidelines, financial disclosure rules, or internal policy.
-
-- The tech lead realizes: "My tests don't catch policy violations. This is a different kind of failure."
-- The marketing director realizes: "This could go out to customers with MY name on it. This is MY problem."
-
-**Design implication:** Module 4's controlled example must include a compliance violation relevant to the initiative. The prepared agent should produce output that looks good but violates a specific policy. Both personas feel the business risk immediately.
-
-### Evals framing: strategic steering, not testing
-
-Evals are NOT testing. They are not quality control. They are not proofreading.
-
-**Evals are a tool for steering output toward strategically significant factors.** Making output more differentiated. More aligned with brand voice. More grounded in specific evidence. More actionable for the target reader. With clear metrics.
-
-- The tech lead hears "testing" and thinks they already know this. The strategic steering framing is new: "You're not checking if it works. You're measuring if it's differentiated enough to matter."
-- The marketing director hears "testing" and thinks "not my job." The strategic steering framing is their language: "You're measuring whether the output is on-brand, on-message, and sharper than the competition."
-
-**Design implication:** Module 6 exercises should have participants define what "good" means for their initiative — not generically, but strategically. "Good" isn't "factually correct." "Good" is "this output would make our CTO share it with the board." Then build automated checks for that standard.
-
-### Tech lead's breaking point: the scaling surprise
-
-The tech lead coasts through Modules 1-3 on technical fluency. Their assumption: "Agent systems are just another kind of software system."
-
-The breaking point: **what works for one query fails at 100.** The agent that was perfect in testing hallucinates under load, with edge cases, with real data variation. The demo-to-production gap. They've seen this in software, but it manifests differently with agents — you can't just fix a bug. The output is non-deterministic. The failure is statistical, not binary.
-
-**Design implication:** Module 5 (Output Quality) is where the tech lead's assumption breaks. The exercise should scale their working agent to real-volume inputs and show the failure distribution. "Your agent got 8 out of 10 right. Which 2 did it get wrong? Can you predict which ones it will get wrong next time? No? That's the new problem."
-
-### Exercise pairing: solo building, pair review
-
-During exercises, everyone builds individually at their own pace and depth. Then they pair up to review each other's work.
-
-- Solo building: preserves individual pace. The tech lead goes deeper technically. The marketing director focuses on output quality and business logic. Nobody is waiting for their partner.
-- Pair review: cross-pollination. The tech lead sees the marketer's approach ("why did you phrase the instruction that way?"). The marketer sees the tech lead's structure ("why did you split it into three steps?"). Both learn from the contrast.
-
-**Design implication:** Exercises have a clear "build" phase (solo, timed) and a "review" phase (pairs, structured questions). The review isn't "show and tell" — it has specific prompts: "What did your partner do that you wouldn't have thought of? What would break in their approach?"
-
-### Module 8 flywheel: all three insights land
-
-For non-technical people, the flywheel is not one insight but three:
-
-1. **Multiplication** — "You build one agent that builds the rest. You don't do this by hand." The marketer thinks: "I could create 10 campaign variants automatically."
-2. **Self-improvement** — "Each cycle improves the next. The system gets better by running." The marketer thinks: "My competitive analysis gets sharper every week without me touching it."
-3. **Org capability** — "Once your org can build agents, you can build agents for any problem. You don't need IT for every use case." The marketer thinks: "We're independent."
-
-**Design implication:** Module 8's demo + guided exercise should demonstrate all three in sequence. The guided exercise should let participants experience at least the multiplication insight hands-on (an agent generating another agent for their initiative). Self-improvement and org capability can be drawn out in the Conclusions phase as implications.
+The metaphor that lands: **assembly line.** "Each agent does one step and passes the work forward." Sequential hand-offs before orchestration. The assembly line is learnable. A web of agents talking to each other is not (at this level).
 
 ---
 
-## 8. The Throughline: Strategy as Discovery
+## The Throughline: Strategy as Discovery
 
 Every module echoes a single philosophical stance: **strategy is not a plan — it's a process of discovery through action.** This is Roger Martin's "Playing to Win" logic applied to agent work: you don't analyze your way to the right agent. You make choices, test them, learn, and make better choices.
 
@@ -445,65 +410,17 @@ Every module echoes a single philosophical stance: **strategy is not a plan — 
 
 These are not separate topics. They are lenses that recur in every module — in exercises, in reflections, in the Connections and Conclusions phases. They are how we talk about what's happening, not what we explicitly teach.
 
-**1. Continuous improvement — the system gets better because you keep learning**
+**1. Continuous improvement** — Building an agent is not a project with an end. It's a cycle: build → observe → adjust → build again. Toyota Kata pattern. Never present this as a methodology — it's what naturally happens when builders keep building. Name it when you see it.
 
-Building an agent is not a project with an end. It's a cycle: build → observe → adjust → build again. This is the Toyota Kata pattern: not "optimize once" but "develop the practice of improving."
+**2. Discovery and learning** — You cannot predict what an agent will do from its specification. You have to run it and see. This mirrors Martin's core argument: strategy is a bet, not a proof. When participants say "I thought it would do X but it did Y" — that's the moment. Celebrate it.
 
-How it echoes in each module:
-- **Module 1:** You build a site. It's good. But it could be better. You adjust the guardrails. It gets better. This is the loop.
-- **Module 2:** The system grows. Each addition creates new failure modes. You observe and adjust. Growing a system IS continuous improvement.
-- **Module 3:** Multi-agent coordination fails. You adjust the handoffs. The assembly line gets tighter. The improvement is in the seams.
-- **Module 4:** Security isn't a one-time audit. New capabilities → new risks. The security practice improves with each cycle.
-- **Module 5:** Output quality isn't fixed. You raise the bar. The agent adapts. You raise it again. Quality is a moving target.
-- **Module 6:** Evals are the infrastructure of improvement. Without measurement, improvement is guessing.
-- **Module 7:** Platforms evolve. What you deploy today will need updating. The practice of evaluating and adapting platforms is continuous.
-- **Module 8:** The flywheel IS continuous improvement made structural. The system improves itself.
-
-**Facilitator note:** Never present continuous improvement as a methodology or framework. It's what naturally happens when builders keep building. Name it when you see it: "Notice what you just did — you observed, adjusted, and improved. That's the practice."
-
-**2. Discovery and learning — you find out what works by doing, not by analyzing**
-
-The deepest lesson of agent work: you cannot predict what an agent will do from its specification. You have to run it and see. This mirrors Martin's core argument: strategy is a bet, not a proof. You make your best choice, then learn from reality.
-
-How it echoes:
-- **Module 1:** You write guardrails. You think they'll work. You run the agent. The output surprises you — sometimes better than expected, sometimes wrong. The surprise IS the learning.
-- **Module 2:** You design a system. It behaves differently from your design. The gap between plan and behavior is where learning lives.
-- **Module 3:** You can't design a multi-agent system on paper. You have to run it. The agents interact in ways you didn't predict. Discovery is unavoidable.
-- **Module 4:** Security analysis on paper misses what the agent actually does. You discover vulnerabilities by testing, not by reasoning.
-- **Module 5:** You think the output is good. You measure it. It's worse than you thought — or better in ways you didn't expect. Measurement reveals what assumption couldn't.
-- **Module 6:** Evals systematize discovery. They're not just checks — they're instruments for learning what your agent actually does.
-- **Module 7:** You evaluate a platform by using it, not by reading the vendor's feature list. Discovery beats analysis.
-- **Module 8:** The flywheel accelerates discovery. More agents → more experiments → more learning → better agents.
-
-**Facilitator note:** When participants say "I thought it would do X but it did Y" — that's the moment. Celebrate it: "You just learned something you couldn't have learned by reading. That's how agent work goes. Plan, run, discover, adjust."
-
-**3. Strategy as assumptions — every choice is a bet you can test**
-
-Roger Martin's insight: a strategy is a set of choices that hang together. Each choice rests on an assumption about reality. The quality of a strategy depends on surfacing those assumptions and testing them — not on the quality of the analysis that produced them.
-
-In agent work, every design decision is an assumption:
-- "This guardrail will prevent off-brand output" — assumption. Test it.
-- "Two agents are better than one for this task" — assumption. Test it.
-- "This eval catches the failures that matter" — assumption. Test it.
-- "This platform can handle our volume" — assumption. Test it.
-
-How it echoes:
-- **Module 1:** "Your guardrails express your assumptions about what 'good' looks like. Run the agent. Did reality confirm your assumption?"
-- **Module 2:** "You assumed this system design would work. Where did it break? That's your assumption being tested by reality."
-- **Module 3:** "You assumed splitting the work would be better. Was it? When is one agent better than three? You can only know by testing."
-- **Module 4:** "You assumed the agent was safe. The compliance violation just tested that assumption. What do you change?"
-- **Module 5:** "Your assumption about output quality was wrong. The measurements show it. Now you know. Adjust."
-- **Module 6:** "Evals are assumption-testing machines. Every eval you write encodes an assumption about what matters. Run them. Do they catch what matters? Or did you assume wrong about what 'good' means?"
-- **Module 7:** "Your platform choice rests on assumptions about scale, reliability, cost. Deploy. Test. Learn."
-- **Module 8:** "The executive recommendation you're about to co-create is a set of assumptions about where agents create value in your company. Label them as assumptions. Design experiments to test them. That's how you start Monday."
-
-**Facilitator note:** Use Martin's language explicitly: "What would have to be true for this to work?" This is the question that turns a decision into a testable hypothesis. Ask it during every Conclusions phase. It bridges from "we built a thing" to "we have a strategy for our organization."
+**3. Strategy as assumptions** — Every design decision is an assumption. "This guardrail will prevent off-brand output" — assumption. Test it. Use Martin's language: "What would have to be true for this to work?" This is the question that turns a decision into a testable hypothesis.
 
 ### How throughlines appear in the material
 
 Throughlines are NOT separate sections in each module. They emerge in:
 
-- **Connections (C1):** "What assumptions did you bring into this module? Let's surface them."
+- **Connections (C1):** "What assumptions did you bring into this module?"
 - **Exercise debrief moments:** "What surprised you? That surprise = an assumption that was wrong."
 - **Conclusions (C4):** "What would have to be true for this to work in your company?"
 - **The Bridge:** "The assumption you just tested leads naturally to the next question..."
@@ -512,66 +429,12 @@ The facilitator names the pattern when it appears. The material creates the cond
 
 ---
 
-## 9. The Sponsor's View: What the CTO Is Buying
+## Design Implications from the Sponsor's Perspective
 
-The CTO who sponsors Bootstrap is action-oriented. They want to scale the agentic movement from zero. They don't need convincing that agents matter — they need a path from "nobody in my org can build agents" to "the movement is self-sustaining."
+### Every module must produce a showable artifact
+
+Every module must produce something a participant can SHOW someone else. Not just knowledge in their head — an artifact, a demo, a story. "Let me show you what I built" is how movements start. This also creates WoW moments — participants surprised by what they just created — which fuel post-training adoption.
 
 ### Why training, not self-serve
 
-The CTO's natural instinct: "My people are smart. Give them Claude Pro licenses and they'll figure it out." Two reasons this doesn't work:
-
-1. **Self-serve plateaus at chatting.** Smart people will figure out better prompting. They will NOT cross the gap to building systems. The chat-to-systems leap is invisible from the chat side — you don't know what you're missing until someone shows you. Training crosses the gap in 2 days. Self-serve may never cross it.
-
-2. **Self-serve doesn't create teachers.** One person figures it out alone. They can't explain it to others. Training creates people who can teach others — and that's the only path from 20 to 2000. The multiplier effect is what the CTO is actually buying.
-
-**Design implication:** Every module must produce something a participant can SHOW someone else. Not just knowledge in their head — an artifact, a demo, a story. "Let me show you what I built" is how movements start.
-
-### What success looks like
-
-The CTO doesn't measure success in "agents deployed to production." That's too soon. The 30/60/90 day evidence:
-
-- **30 days: Changed conversations.** Meetings sound different. People talk about agents as tools they can build, not magic they need IT to provide. The vocabulary shifted. "We could build an agent for that" becomes a natural thing to say.
-- **60 days: People building and sharing.** 5+ people are building prototype agents on their own. They're sharing experiences — WoW moments, failures, discoveries. An informal community is forming. This is self-organizing, not mandated.
-- **90 days: Agents doing new things.** Agents are starting to do things the company was never able to do before. Not automating existing work — creating new capability. People are excited. The CTO hears about it without asking.
-
-**Design implication:** The training must create WoW moments — moments where participants think "I had no idea this was possible." These moments are what people share afterwards. They're what fuel the 30/60/90 day movement. Every module needs at least one moment where the participant is genuinely surprised by what they just created.
-
-### Choosing the initiative
-
-The pre-agreement conversation with the sponsor: "What should we work on during the training?"
-
-**The right initiative: one core process everyone knows.** Not a pain point. Not a moonshot. A process so familiar that everyone in the room can evaluate whether the agent is doing it well.
-
-Examples:
-- Making great sales materials
-- Designing the next feature
-- Preparing a competitive analysis
-- Writing a project proposal
-
-**Why "everyone knows" matters:** The initiative is the evaluation surface. When the agent produces output, every participant — tech lead and marketing director alike — can judge it because they know what good looks like. This connects directly to emergent knowledge: you learn by evaluating output against your own expertise.
-
-**What makes a bad initiative:**
-- Too specialized (only 3 people in the room understand it)
-- Too abstract ("improve our processes" — improve which process?)
-- Too regulated (compliance overhead dominates the learning)
-- Too novel (nobody has a baseline to compare the agent's output against)
-
-### The real gap: Bootstrap is Step 1 of 5
-
-After Bootstrap, three gaps remain:
-
-1. **Infrastructure + deployment.** Bootstrap teaches building and discipline. It doesn't set up CI/CD, cloud, or production monitoring. Engineering work follows.
-2. **Governance framework.** Bootstrap shows WHY governance matters (the compliance violation in Module 4). It doesn't build the org's governance framework. That's Make Your Own (Step 2).
-3. **Organizational buy-in.** 20 trained people in a 5000-person org. The executive recommendation starts the conversation. The real work is political and cultural.
-
-All three gaps exist. That's the funnel: Bootstrap → Make Your Own (governance + strategy) → Champions (multiply to the org) → Scale (self-sustaining). The straight answer is: Bootstrap is the step that makes all the others possible. Without it, there's nothing to govern, nothing to scale, and nobody to champion.
-
-**Design implication for the executive recommendation (Module 8):** The recommendation should explicitly name these three gaps as the next steps. Not as weaknesses of the training — as the natural sequence. "Here's what we learned. Here's what we can now do. Here's what we still need: infrastructure, governance, and broader buy-in. Here's how we recommend getting there." This is the bridge to Make Your Own.
-
-### Module 7 and the platform advisory
-
-Bosser offers Agent Platform Advisory as a separate, optional service (context building, selection, deployment — done the agentic way). This service typically becomes relevant ~1 month after Bootstrap, when people are building local agents and need a shared platform.
-
-**Module 7 is independent of the advisory.** It teaches platform thinking straight — participants learn to evaluate platforms, understand deployment options, and make informed choices. If they can figure it out themselves, great. Module 7 does not sell the advisory. It gives participants the framework to decide whether they need help, and the vocabulary to evaluate help if they seek it.
-
-The advisory exists for organizations that want the platform decision made agentically — with Bosser building the system that maps context, evaluates options, deploys, and generates training materials. Co-owned, deployed on the customer's side. But Module 7 assumes the customer can choose whatever they like.
+Self-serve plateaus at chatting. Smart people will figure out better prompting. They will NOT cross the gap to building systems. Training crosses the gap. Self-serve may never cross it. Self-serve also doesn't create teachers — and the multiplier effect is what the sponsor is actually buying.

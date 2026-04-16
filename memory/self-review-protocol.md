@@ -16,6 +16,10 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 | 2026-04-08 | Cagan is Level 1, not a practitioner — "He just talks" | Decision | Don't upgrade opinion-formers to practitioners just because they're influential. The evidence ladder is about what they DO, not who they are. Cagan writing about AI coaching ≠ Cagan building an AI coach. |
 | 2026-04-08 | "Not like all sales people suck at logical thinking" — I stereotyped domain practitioners | Style | When discussing people gradients, always frame as DENSITY (distribution in a population), never as attributes of individuals. "Lower density of systematic thinkers" not "unsystematic people." Every domain has strong logical thinkers — they're the seeds. |
 | 2026-04-08 | Structure gradient was about PEOPLE, not work — "Logic-strong people gravitate to coding" | Strategy | When Antti proposes a hypothesis, listen to what he's actually saying before expanding it. I jumped to work structure; he meant people structure. Both are valid but his was the sharper insight. Ask before elaborating. |
+| 2026-04-16 | "doesn't need to be new file" — I created module-map.md when training-outline.md existed | Process | Check existing files before creating new ones. One concept, one file. |
+| 2026-04-16 | "small fix: the exact numbering just leads to excessive re-writing" | Process | Use named sections, not numbered. Numbers create maintenance overhead. |
+| 2026-04-16 | "keep stuff fresh. Never leave behind stale content. We have git for history" | Process | Delete old content when replacing. Git is history. No "retained as historical input" markers. |
+| 2026-04-16 | "Learning goals actually IMHO part of strategy. No point in having another file that drifts" | Process | Consolidate related content into fewer files. Separate files = drift. |
 
 ## Heuristics (apply before doing work)
 
@@ -33,6 +37,14 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 
 7. **Leadership personal use is the scaling unlock.** Bottom-up without leadership = isolated pockets. Top-down without personal experience = empty mandates. Always include "leadership must use agents personally" in scaling discussions.
 
+8. **One concept, one file.** Before creating a new file, check if an existing file serves the purpose. Before keeping two files, ask if they should be one. Drift between files compounds silently.
+
+9. **Fix drift immediately.** When changing content in one file, check if related files need updating in the same pass. Don't let guardrails and strategy diverge for an entire session.
+
+10. **No numbered sections.** Use named sections. Numbers create maintenance overhead when you insert or reorder.
+
+11. **Consult research before curriculum/content work.** Read insights.md and patterns.md before writing or revising any module or content. The research system has 90+ cycles of evidence — use it. Don't build from first principles when evidence exists.
+
 ## Next-Session Predictions
 
 When starting a new session, check:
@@ -40,6 +52,9 @@ When starting a new session, check:
 - [ ] Am I applying the 1-of-200 test to any vendor success stories?
 - [ ] Am I leading with buyer implications, not feature lists?
 - [ ] Does CLAUDE.md reflect current understanding?
+- [ ] Are related files still in sync (content-strategy ↔ guardrails ↔ CLAUDE.md)?
+- [ ] Am I about to create a file that should be a section in an existing file?
+- [ ] Have I consulted insights.md and patterns.md before starting curriculum/content work?
 - [ ] Am I grounding organizational claims in personal use first?
 - [ ] Does my scaling discussion include leadership personal use?
 - [ ] Am I distinguishing practitioners (build things) from opinion-formers (write about things) on the evidence ladder?
@@ -53,3 +68,5 @@ Patterns to escalate to hard rules if they appear 3+ times:
 - **"Strategy implications, not feature lists" (1x)** — watching
 - **"Listen to what Antti actually means, not what I think he means" (1x)** — I expanded his people-gradient hypothesis into a work-structure gradient. Both valid, but his was sharper. Watch for pattern of hijacking his insights with my frameworks.
 - **"Density, not stereotypes" (1x)** — watching
+- **"One file, not two" (2x)** — created module-map.md instead of using existing file; kept learning-goals.md separate when it should be in strategy. → **ESCALATED TO HARD RULE (heuristic 8)**
+- **"No stale content" (1x)** — watching. But combined with the "fix drift immediately" correction, this is a process pattern about keeping files current.

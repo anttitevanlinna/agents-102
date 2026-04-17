@@ -488,6 +488,36 @@ body.light-article .article-body {
 
 
 /* ══════════════════════════════════════════════════════════════════════════
+   COMPACT MODE — same visuals, no navigation overlays
+   ?compact=true — keeps typography, phase colors, essay cards, edge strip,
+   progress whisper. Hides phase marker mini-TOC, dot map, mobile TOC.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.compact-mode .strata2-phase-marker,
+.compact-mode .strata2-map,
+.compact-mode .toc-mobile {
+    display: none !important;
+}
+
+/* No left offset needed without the phase marker */
+@media (min-width: 1100px) {
+    .compact-mode .article-with-toc { padding-left: 2rem; }
+}
+
+/* Compact print — no cover page, no TOC, no phase page breaks */
+@media print {
+    .compact-mode .print-cover,
+    .compact-mode .print-toc {
+        display: none !important;
+    }
+
+    .compact-mode .article-body h1 {
+        page-break-before: avoid;
+    }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════════════════ */
 

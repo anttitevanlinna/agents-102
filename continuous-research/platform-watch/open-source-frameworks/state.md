@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [langgraph, crewai, mastra, microsoft-agent-framework, google-adk, ruflo]
 nordic: false
-updated: 2026-04-02
-cycle: 2
+updated: 2026-04-17
+cycle: 3
 answers:
   - "should we build our own agent stack instead of buying vertical SaaS?"
   - "which open-source agent framework is production-ready for business processes?"
@@ -14,8 +14,8 @@ answers:
 
 # Open-Source Agent Frameworks -- Platform State
 
-Last updated: 2026-04-02 (cycle 2 -- practitioner battle reports added)
-OODA cycles: 2
+Last updated: 2026-04-17 (cycle 3 — Microsoft Agent Framework 1.0 GA, Google ADK rapid release cadence, LangGraph CVE critical)
+OODA cycles: 3
 
 ## Focus
 
@@ -25,9 +25,15 @@ Open-source frameworks for building custom AI agents. These are the "build" side
 
 **Answer (April 2026):** Maybe, if you have the engineering team. LangGraph and CrewAI have real enterprise traction. Microsoft Agent Framework is the enterprise play for Azure shops. Mastra is the TypeScript dark horse with surprisingly strong enterprise evidence. Google ADK is Google's answer. Ruflo is hype with zero independent enterprise evidence. But here's the thing -- almost all documented deployments are developer-built, developer-maintained systems. No business user is spinning up a LangGraph agent the way they might configure a Salesforce Agentforce topic. The "build" option requires permanent engineering investment.
 
-## Key Verdict (as of 2026-04-02)
+## Key Verdict (as of 2026-04-17)
 
-**The framework wars are real, but the winner depends on your stack, not the framework.** Six serious contenders, each optimized for a different developer ecosystem. LangGraph dominates Python/ML teams (97K stars, 300+ enterprise LangSmith customers). CrewAI is the fastest-growing multi-agent framework (45.9K stars, claims 60%+ Fortune 500 adoption). Mastra owns TypeScript (22.3K stars, named enterprise deployments at PayPal, Replit, Marsh McLennan). Microsoft Agent Framework is the enterprise convergence play (AutoGen + Semantic Kernel merged, Azure-native). Google ADK is the newest entrant with 1.0 across four languages. Ruflo has inflated star counts and zero independent enterprise evidence.
+**The framework market is not converging — it is segmenting.** Each framework is stabilizing into a lane: LangGraph (Python + complex stateful workflows, ~126K stars), Mastra (TypeScript-first, 23K stars, 300K weekly npm), CrewAI (rapid role-based prototyping), Microsoft Agent Framework (.NET/Azure enterprise — GA April 2–3), Google ADK (Google Cloud native — v1.31.0 released April 17). No single framework is "winning" across all stacks. CTOs should choose by ecosystem fit, not framework benchmarks.
+
+**Critical security alert (April 2026):** LangGraph CVE-2025-68664 (CVSS 9.3, RCE via deserialization) disclosed March 27, 2026. Any enterprise running LangGraph must confirm langchain-core ≥1.2.5 or ≥0.3.81. This is an underreported enterprise risk.
+
+**Microsoft Agent Framework 1.0 GA (April 2–3, 2026)** unifies Semantic Kernel + AutoGen into one SDK — architecturally significant for Azure shops, but zero documented enterprise deployments yet (too new). Migration from Semantic Kernel estimated at 2–4 hours per app.
+
+**Previous verdict (2026-04-02): The framework wars are real, but the winner depends on your stack, not the framework.** Six serious contenders, each optimized for a different developer ecosystem. LangGraph dominates Python/ML teams (97K stars, 300+ enterprise LangSmith customers). CrewAI is the fastest-growing multi-agent framework (45.9K stars, claims 60%+ Fortune 500 adoption). Mastra owns TypeScript (22.3K stars, named enterprise deployments at PayPal, Replit, Marsh McLennan). Microsoft Agent Framework is the enterprise convergence play (AutoGen + Semantic Kernel merged, Azure-native). Google ADK is the newest entrant with 1.0 across four languages. Ruflo has inflated star counts and zero independent enterprise evidence.
 
 **For business process agents specifically:** evidence is thin across all frameworks. Most documented deployments are coding/developer workflow agents, customer-facing chatbots, or data pipeline orchestration. True multi-step autonomous business process agents (HR onboarding, financial reconciliation, compliance monitoring) built on these frameworks remain rare and poorly documented.
 
@@ -413,6 +419,42 @@ Across all practitioner reports, a clear pattern emerges for teams that succeed:
 5. **Frameworks are converging on the same standards** -- MCP for tool interoperability, A2A for agent-to-agent communication, OpenTelemetry for observability. "The framework you pick today doesn't have to be the framework you're stuck with forever." ([Softmax Data](https://softmaxdata.com/blog/definitive-guide-to-agentic-frameworks-in-2026-langgraph-crewai-ag2-openai-and-more/) -- [domain trade publication])
 
 **Evidence level:** Level 3-4 (convergence approaching meta-pattern). This is the most robust finding from the practitioner research.
+
+---
+
+---
+
+## Cycle 104 Findings (2026-04-17)
+
+### Microsoft Agent Framework 1.0 GA — Architecturally Significant, Zero Deployments (Level 1)
+Microsoft shipped production-ready Agent Framework 1.0 on April 2–3, 2026, unifying Semantic Kernel and AutoGen into a single SDK (.NET and Python). Architecture: graph-based multi-agent workflows, A2A + MCP protocol support, declarative YAML agent definitions, middleware pipeline for compliance logging, multi-provider support (Azure OpenAI, Anthropic, Bedrock, Gemini, Ollama). Agent Governance Toolkit open-sourced simultaneously. Migration from Semantic Kernel: estimated 2–4 hours per app. **No named enterprise deployments found at GA time — too early.** The combined Semantic Kernel + AutoGen lineage represents 75,000+ combined GitHub stars of existing developer base now potentially migrating. This is the most significant framework release of Q1/Q2 2026 for Azure-native enterprises. ([Visual Studio Magazine](https://visualstudiomagazine.com/articles/2026/04/06/microsoft-ships-production-ready-agent-framework-1-0-for-net-and-python.aspx), Apr 6, 2026 — [tech press]; [Microsoft Open Source](https://opensource.microsoft.com), Apr 2026 — [vendor press release])
+
+**Evidence level:** Level 1 (announcement, no deployment evidence).
+
+### Google ADK — Active Release Cadence, Zero External Enterprise Deployments (Level 1)
+Google ADK is shipping at high velocity: v1.29.0 (Apr 9), v1.30.0 (Apr 13), v1.31.0 (Apr 17, released today). April 11–17 additions: Vertex AI Agent Engine Sandbox integration, Firestore support, BigQuery tools, Gemma 4 model support, Auth Provider in agent registry. **Key limitation confirmed by practitioners:** Multi-user isolation gap — ADK assumes a root agent shared across users; production multi-user apps require custom per-user agent classes, disabling built-in debugging tooling. State persistence gap: no built-in cross-restart context persistence. TypeScript docs significantly thinner than Python. No named external enterprise deployments found — only Google's own internal use confirmed at Cloud Next 2026. ([Google ADK GitHub releases](https://github.com/google/adk-python/releases), Apr 2026 — [practitioner direct]; [dlabs.ai](https://dlabs.ai/blog/google-adk-production-challenges-and-how-to-solve-them/), 2026 — [practitioner analysis])
+
+**Evidence level:** Level 1 for external adoption. Framework technically advancing rapidly but enterprise traction lags. Google Cloud Next 2026 includes a dedicated ADK "capabilities and roadmap" deep-dive session — signals investment but also roadmap-stage maturity.
+
+### LangGraph CVEs — Critical Enterprise Security Risk (Level 2)
+Three CVEs in LangChain/LangGraph disclosed March 27, 2026 by researcher Vladimir Tokarev (Cyera). **CVE-2025-68664 (CVSS 9.3, RCE):** Unsafe deserialization in langchain-core; arbitrary code execution from malicious checkpoint data. Requires langchain-core ≥1.2.5 or ≥0.3.81. **CVE-2026-34070 (CVSS 7.5):** Path traversal in prompt loading. Requires langchain-core ≥1.2.22. **CVE-2025-67644 (CVSS 7.3):** SQL injection in SQLite checkpointer. Requires langgraph-checkpoint-sqlite ≥3.0.1. **Any enterprise running LangGraph in production must verify patch status against CVE-2025-68664 immediately.** ([The Hacker News](https://thehackernews.com/2026/03/langchain-langgraph-flaws-expose-files.html), Mar 27, 2026 — [domain trade publication]; CVE researcher attribution to Cyera/Vladimir Tokarev)
+
+**Evidence level:** Level 2 (third-party security researcher disclosure, specific CVEs, CVSS scores).
+
+### LangGraph Release State + Interrupt 2026 Enterprise Signal (Level 2–3)
+LangGraph v1.1.6 stable (Apr 3, 2026); v1.1.7a2 alpha (Apr 14) adds graph lifecycle callback handlers. ~126K GitHub stars. Interrupt 2026 conference (May 13–14, SF) presenter list confirms breadth of enterprise adoption: Apple, LinkedIn, Lyft, Toyota, LATAM Airlines, Honeywell, Coinbase, Rippling. These are confirmed LangGraph production users who chose to present. The conference presenter list is independent signal (companies opt in to present their work). ([GitHub releases](https://github.com/langchain-ai/langgraph/releases), Apr 2026 — [practitioner direct]; [Interrupt 2026](https://interrupt.langchain.com/), Apr 2026 — [practitioner direct])
+
+**Evidence level:** Level 2–3 for "LangGraph is the dominant Python production framework." Conference presenter list upgrades the evidence above vendor-curated customer page alone.
+
+### Framework Segmentation Pattern — Now Level 3
+After independent framework comparisons from multiple practitioner-analysis sources: the framework market is not consolidating. Segmentation is stable: LangGraph (Python + stateful workflows), Mastra (TypeScript), CrewAI (rapid role-based prototyping), Microsoft Agent Framework (.NET/Azure), Google ADK (Google Cloud/Gemini native). Each lane is real and durable. No single framework is displacing the others across stacks. ([channel.tel](https://www.channel.tel/blog/ai-agent-frameworks-compared-2026-what-ships), 2026 — [practitioner analysis]; [langgraphjs.guide](https://langgraphjs.guide/comparison/), 2026 — [practitioner analysis]; multiple independent comparison articles converge)
+
+**Evidence level:** Level 3 (convergence across independent framework comparisons). CTOs should stop asking "which framework is best" and start asking "which framework fits our stack."
+
+### Mastra v1.24.0 + Marsh McLennan Claim (Level 1–2)
+Mastra v1.24.0 released April 7–8, 2026 (RAG observability spans, CloudExporter batching, AI SDK v6 compatibility). March release added Okta SSO/RBAC for enterprise auth — a genuine enterprise readiness signal. Named enterprise deployments claimed: Marsh McLennan (enterprise agentic search, 75–100K employees), SoftBank ("Satto Workspace," document workflow), Indeed (career counselor agent), Brex (in-app agents). **All attribution comes through Mastra's own announcement channels — no independent verification found for Marsh McLennan or SoftBank.** The Marsh McLennan claim is the most significant non-coding business deployment claim in this research cycle and warrants independent follow-up. Production issues resolved in changelog: memory leak in observational memory (OOM on multi-user deployments), PostgreSQL deadlock in parallel agents sharing resourceId — both indicate real production use before/during 1.0 GA. ([Mastra releases](https://github.com/mastra-ai/mastra/releases), Apr 2026 — [practitioner direct]; [Mastra Series A](https://mastra.ai/blog/series-a), 2026 — [vendor press release])
+
+**Evidence level:** Level 1–2. Changelog bugs suggest real production use. Customer attributions are vendor-sourced.
 
 ---
 

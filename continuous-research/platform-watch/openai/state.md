@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-04-06
-cycle: 91
+updated: 2026-04-17
+cycle: 104
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -381,6 +381,37 @@ Q4 2026 still targeted. Polymarket: 36% probability (down from ~55%). $1T+ IPO b
 
 ### Deutsche Telekom Partnership (Level 0)
 Multi-year collaboration for AI across European customers. ChatGPT Enterprise deployed to DT employees. First pilots Q1 2026. Vendor press release only — no independent evidence. ([OpenAI blog](https://openai.com/index/deutsche-telekom-collaboration/), Mar 2026)
+
+---
+
+## Cycle 104 Findings (2026-04-17)
+
+### GPT-4.1 Launch — Strong Agentic Coding Benchmark, Overtaken Within Days (Level 1)
+GPT-4.1 released ~April 14, 2026. SWE-bench Verified: 54.6% (up from GPT-4o's 33.2%). Positioned as primary base model for agentic coding workflows. However, by April 16, Claude Opus 4.7 (released April 16) reportedly overtook GPT-4.1 on SWE-bench Pro and MCP-Atlas tool use benchmarks. If confirmed by practitioners, GPT-4.1's window as the leading agentic coding base model closed within days. No practitioner-direct accounts of GPT-4.1 in production agentic workflows found in the April 11–17 window. The only named deployment (Moveworks upgrade to GPT-4.1) is vendor blog only, Level 0. ([OpenAI](https://openai.com/index/gpt-4-1/), Apr 2026 — [vendor press release, bare fact]; [lmcouncil.ai](https://lmcouncil.ai/benchmarks), 2026 — [third-party benchmark aggregator])
+
+**Evidence level:** Level 1. Benchmark figures are credible bare facts; no independent production deployment data.
+
+### Agents SDK Sandboxing Update (April 15, 2026) — Agentic Capability, No Deployment Evidence (Level 1)
+OpenAI updated Agents SDK (April 15, 2026) to add sandboxing — isolated compute environments for agents running long-horizon multi-step tasks. Python-first, TypeScript planned. Explicitly targets "in-distribution harness" for frontier model tasks. This is a genuine agentic infrastructure addition, not a chatbot feature. No practitioner reaction or deployment data found in this research window. ([TechCrunch](https://techcrunch.com/2026/04/15/openai-updates-its-agents-sdk-to-help-enterprises-build-safer-more-capable-agents/), Apr 15, 2026 — [tech press, bare fact])
+
+**Evidence level:** Level 1 (announcement only).
+
+### Frontier — 15th+ Consecutive Zero, Executive Admission (Level 3 negative)
+Named customers (Uber, Intuit, State Farm, Thermo Fisher, HP, Oracle) still have no practitioner accounts of multi-step autonomous agent deployments. No builder on X.com, Substack, or personal blog wrote about Frontier production usage in the April 11–17 window. Hacker News thread on Frontier launch showed dominant practitioner signal: skepticism about marketing claims and lock-in concerns; zero practitioners reported successful deployments. More notably: an OpenAI executive publicly acknowledged that widespread enterprise AI adoption has not yet been achieved. ([Hacker News](https://news.ycombinator.com/item?id=46899770), 2026 — [practitioner community]; [indexbox.io](https://www.indexbox.io/blog/openai-executive-enterprise-ai-adoption-remains-limited-despite-new-platform/), 2026 — [general press, bare fact])
+
+**Evidence level:** Level 3 negative. 15+ consecutive zero evidence checks. The executive admission upgrades this from absence-of-evidence to partial acknowledgment-of-gap.
+
+### Super-App Merge — No New Progress in April 11–17 Window (Level 1)
+The March 19–20 announcement (Codex as surviving platform, ChatGPT + Atlas merging in) stands with no new milestone in the target week. Strategic rationale remains competitive response to Anthropic share gains (73% of new enterprise AI spending) and Claude becoming the most-downloaded US app in March 2026. No timeline confirmed. ([MacRumors](https://www.macrumors.com/2026/03/20/openai-super-app-in-development-chatgpt/), Mar 2026 — [tech press])
+
+**Evidence level:** Level 1 (announcement, no progress update).
+
+### EEA — No Update in Target Window (Historical)
+No April 2026 update on EEA Agent Mode status found. The most recent confirmed source on EEA access (DataStudios, July 2025) is outside the 6-month freshness window. Status as of last confirmed cycle: Agent Mode not officially available in EEA/UK/Switzerland, with inconsistent A/B test access in some markets.
+
+**Evidence level:** Historical only. No current finding.
+
+---
 
 ## Sources
 

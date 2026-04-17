@@ -2,6 +2,8 @@
 
 This CLAUDE.md governs curriculum work. Read `lecture-guardrails.md` before writing any module.
 
+**For any content task, invoke the `/content-creation` skill.** Its session-start checklist (at `.claude/skills/content-creation/SKILL.md`) names the reading order and the 8-step generation pattern. Current state of what's built vs. what's next lives in `content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
+
 ## Scope
 
 **A portfolio of 3-4 trainings.** Bootstrap is the first. Mid-management, executive briefing, and domain-specific variants will follow. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.

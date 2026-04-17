@@ -390,6 +390,43 @@ The content produced through this loop is itself a demonstration of Module 6's p
 
 ---
 
+## State of play (as of 2026-04-17)
+
+Bootstrap training — snapshot of what exists. Refresh this section at the end of every significant session.
+
+**Fully built:**
+- **Training-level:** prework (snake / calendar / mental-frame read), training index page at `site/curriculum.html`
+- **Module 1 (Getting Going):** module file, Opening lecture (Context is King), Personal site with guardrails exercise (6 phases), Closing lecture (What just happened), Debrief (Claude retro)
+- **Module 6 slice:** Evals as steering lecture (prework), Steering eval exercise
+- **Supplementaries:** What is an Agent section 1 (the other two supplementaries are outline-only stubs)
+- **Reference:** Claude quick reference (install, files, connectors, skills, subagents, troubleshooting)
+- **Eval system:** lecture.md + exercise.md templates, 5 filled instances with eval-run logs, simulation protocol with 6 known Claude-behavior patterns
+
+**Partially built (module files exist as spines, content still needed):**
+- Modules 2, 3, 4, 5, 7 — module files have metadata, LOs, exercise/lecture names, bridge. Content files not yet written.
+- Module 8 — module file exists; Joint Double Diamond exercise and agent demo not written.
+
+**Open TODOs across the curriculum:**
+- Backfill Debrief sections for modules 2–8 (Module 1 is the reference pattern)
+- Consider renaming Module 1 to "Context is King" (requires cascade — see TODO comment at top of `trainings/bootstrap/getting-going.md`)
+- Supplementaries `building-guardrails.md` and `learning-and-compounding-systems.md` are outlines; sections fill in as their modules are built
+- Facilitator notes across all artifacts deferred per student-facing-first rule (below `---` rule; will be extracted to a dedicated artifact later)
+- Module 2 prework (personal scheduled agent) not yet scaffolded — students build on the connector proven during training prework
+
+**Workstream priorities (in rough order):**
+1. Module 2 content (Building Agent Systems — LLM brain exercise + Compounding lecture)
+2. Module 2 prework (personal scheduled agent — daily planner / email triage)
+3. Modules 3–5 content
+4. Supplementary sections as their modules land
+5. Module 7 content
+6. Module 8 content (Extend + Joint Double Diamond)
+7. Facilitator notes pass across everything
+8. Second training variant (mid-management) — reuse exercises/lectures/supplementaries; new `trainings/mid-management/` module files with audience-specific framing
+
+**Content types in use** (see `CLAUDE.md` for decision tree): lectures (inlined, single-sitting), exercises (inlined, one bounded activity), supplementaries (not inlined, progressive reference), quick reference (not inlined, flat lookup with pointers to official docs).
+
+---
+
 ## Reading List — Unallocated
 
 Articles and readings to include as prework/homework. Not yet assigned to specific modules.

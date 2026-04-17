@@ -9,6 +9,45 @@ Use this when the user asks to write or revise curriculum content: a module, exe
 
 This skill exists because curriculum production has specific conventions that the simple HTML renderer depends on, shareability rules across training variants, and a three-pass build to keep course-correction cheap. Violating any of these creates drift that rots fast.
 
+## Session start — read this first
+
+Before touching anything, read (in this order):
+
+1. **`curriculum/CLAUDE.md`** — rules of the house. Directory structure, content dev rules, prompt design rules, voice rules, Seth×Rory×Risto flavor, alignment duties, 8-step PDCA.
+2. **`curriculum/content-strategy.md`** — training-level arc + **State of play** section at the bottom (what's built, what's partial, what's next, open TODOs).
+3. **`philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
+4. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge).
+
+Then check `continuous-research/insights.md` and relevant domain findings before writing — per heuristic 11 (consult research before curriculum work).
+
+**Where things live:**
+
+```
+curriculum/
+  content-strategy.md       arc + state of play
+  CLAUDE.md                 rules
+  lecture-guardrails.md     pedagogy
+
+  trainings/<name>/         module files (slug-only filenames)
+  exercises/<slug>.md       shared library
+  lectures/<slug>.md        shared library
+  supplementary/<slug>.md   progressive reference docs (sections build up across modules)
+  reference/<slug>.md       flat lookup (links to official docs for depth)
+
+  evals/
+    lecture.md              reusable lecture eval template
+    exercise.md             reusable exercise eval template
+    instances/              filled-in evals per artifact with eval-run logs
+
+site/
+  curriculum.html           renderer (client-side markdown)
+  layouts/curriculum.css    typography + print CSS
+```
+
+**Verify locally:** `python3 -m http.server 8000` at repo root, open `http://localhost:8000/site/curriculum.html`.
+
+**When the user asks for new content:** invoke the PDCA loop below.
+
 ## The canonical generation pattern (PDCA loop)
 
 Every piece of curriculum content — lecture, exercise, or module — goes through this loop. Do the steps in order. Skipping a step is how sessions drift.

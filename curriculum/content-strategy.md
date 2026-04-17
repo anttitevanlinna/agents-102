@@ -1,8 +1,10 @@
 # Agents 102 — Content Strategy
 
-Working skeleton. Shuffle freely. Individual module files get written once this stabilizes.
+The training-level narrative: arc, storyline, audience, deliverable, supplementary materials. Per-module sections below carry the pedagogical scaffold (Connections, Exercise, Lecture, Reflection, Bridge).
 
-See `lecture-guardrails.md` for all pedagogical and design rules.
+**Alignment rule (important).** The module files in `trainings/bootstrap/` are the canonical spine for Bootstrap. The exercise named in each module section here MUST match the exercise in the corresponding module file. When one changes, the other changes in the same edit. Drift between the two is a process bug — not a matter of taste.
+
+See `lecture-guardrails.md` for all pedagogical and design rules. See `CLAUDE.md` for content development rules (including the one-exercise-per-module principle).
 
 ## Modules
 
@@ -134,40 +136,81 @@ The funnel: Bootstrap → Make Your Own → Champions → Scale → Drive into V
 
 ## Prework
 
-**Done before training day. Ensures Module 1 starts with building, not troubleshooting.**
+**Done before training day. Three tasks + one read. ~30 min for the tool-comfortable, up to ~60 for a first-time user.**
 
-1. **Make sure Claude Code works.** Install, authenticate, run a test conversation. If it doesn't work, fix it now — not in the room.
-2. **Create two scheduled agents using O365 connector:**
-   - **Daily planner** — pulls calendar, creates a structured daily plan. Runs every morning.
-   - **Email triage** — reads inbox, categorizes and prioritizes. Runs on schedule.
+### Before you start (5 min setup check)
 
-These are personal utility agents. They prove the whole chain works: Claude Code runs, the O365 connector is set up, scheduled execution works. The participant arrives on day one having already built two working agents. Module 1 can just get going.
+- **A Claude account** at claude.ai. The training runs on the Claude Pro or Team tier — the customer confirms licensing.
+- **Claude Code installed.** Use the **desktop app** (macOS/Windows) or the **web version** (claude.ai/code). **No terminal required.** If you've never used a terminal, stay with desktop or web.
+- **An hour.** More than it sounds like; less than it feels like.
 
-> CUSTOMER: Claude Code licenses for all participants. O365 access with calendar and email permissions.
+### Task 1 — Snake game (10 min)
+
+Open Claude Code. Start a new project. Paste this prompt:
+
+```
+Build me a snake game as a single HTML file. Save it as snake.html in this project.
+```
+
+Claude writes the file. Open `snake.html` in your browser. Play. Keep the file.
+
+*Proof: Claude Code can write code and save files on your machine.*
+
+### Task 2 — Your week in meetings (10 min)
+
+Two paths. Pick whichever matches your setup.
+
+**Path A — connector enabled** (Microsoft 365 or Google Workspace). Paste:
+
+```
+List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt in this project.
+```
+
+**Path B — no connector / no admin rights.** Attach a screenshot of your calendar week view. Then paste:
+
+```
+Based on the calendar screenshot I just shared, list my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt in this project.
+```
+
+*Proof: Claude can read your real work data — in whichever shape you can provide it — and produce a useful summary.*
+
+### Task 3 — Read the mental frame (10 min)
+
+Open `curriculum/supplementary/what-is-an-agent.md`. Read section 1: **LLM vs chat — what's the difference?** Two pages. You'll meet the rest as the training goes.
+
+*Proof: you arrive with a rough mental frame, not a blank one.*
 
 ---
 
-## Module 1: Getting Going
+You arrive on Day 1 with: Claude Code working, a snake game, a meetings summary, and a 2-page read. Module 1 just gets going.
+
+**Personal agents** (daily planner, email triage, or similar scheduled agents) — too ambitious to self-serve before class. **Moved to Module 2 prework** where Module 1's context is under the belt.
+
+> CUSTOMER: Claude Code licenses (Pro or Team tier) for all participants. Calendar connector (M365 or Google Workspace) enabled by IT before the cohort — or explicit acknowledgement that some participants will use the screenshot fallback.
+
+## Every student ships at least one real agent
+
+Standing promise of the training. Over the course of Bootstrap, every participant builds at least one agent that does something real in their work — not a toy demo, an agent with their data, solving their problem. **Demoed at the closing session (Module 8).** The demo moment is part of the deliverable, not just show-and-tell.
+
+---
+
+## Getting Going
 
 **Big idea:** With the right guardrails, you create output that's genuinely yours — not generic.
 
 **Warm-up. Everyone creates something real and sees what guardrails do to quality.**
 
 - Connections: "What have you used ChatGPT/Claude for? What was the best thing it made for you? What was generic about it?"
-- Exercise: Take your LinkedIn profile. Generate an HTML one-pager personal site from it — no guardrails, just the raw LLM.
-- Exercise: Now add the trainer's guardrail (a CLAUDE.md with differentiation, storytelling, and framing rules). Regenerate. See the difference. Average becomes great — not because you prompted better, but because the guardrail shaped the output.
-- Exercise: Push it — make the site bigger, more ambitious, more you. Add sections, claims, projects.
-- Exercise: Push until it breaks — find where the LLM starts inventing things about you
+- Lecture: **"Context is King"** — 15-min trainer demo. Two Claude windows, same second question ("what should we have for dinner?"), different first prime ("capital of Italy" vs "largest lake in Finland"). Same words, different answers — context colored everything. Third window with "I'm a cardiologist" extends the lesson: context isn't only about countries, it's whatever you tell it.
+- Exercise: **Personal site with guardrails** — 45-min build. Six phases. Phase 1: boring baseline. Phase 2: colleague-as-buyer differentiation frame (who comes to you for help, what problem you solve, how you guide — StoryBrand for work life). Phase 3: strengths that serve them. Phase 4: look back at the baseline — find three empty/wrong claims. Phase 5: anti-branding via mirror — what you hate, flipped, surfaces what you're great at. Phase 6: free iteration until "this is me."
 - Teaching moment: You are the world's best evaluator of your own profile. You caught the fabrication because you know the truth. That instinct is everything.
-- Exercise: Fix it with better guardrails. See the output improve. The guardrail IS the control.
-- Lecture: **"Context is King"** — trainer demo showing how context affects output. Same task, different context = different quality. The guardrail is structured context. This is the only lecture in Module 1.
 - Reflection: "What surprised you about what it got right? What surprised you about what it got wrong?"
 - Homework: Antti's LLM brain post (from whitepaper). Sections from "What is an Agent" supplementary doc (see below).
 - Bridge: You just made great output. But it's a one-shot. What if it could remember, grow, and compound?
 
 ---
 
-## Module 2: Build Your First Agents
+## Building Agent Systems
 
 **Big idea:** A system remembers, grows, and compounds. Chat doesn't. Your company's own content is the foundation.
 
@@ -181,11 +224,7 @@ The exercises are structurally the same across companies. What changes is what's
 
 - Connections: "How many of you saw the Karpathy LLM wiki post? What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?"
 - Concept: Three layers — raw sources (the company's content, immutable), wiki/brain (LLM-maintained, compounding), schema (the rules — CLAUDE.md)
-- Exercise: Set up the LLM brain for your initiative. Ingest the company's source materials. Watch the agent build the initial knowledge pages.
-- Exercise: Ingest more. See the brain update — cross-references, new pages, updated summaries. It compounds.
-- Exercise: Build an agent that does real work using the brain. Product company: agent that drafts a product brief from the knowledge base. Compliance company: agent that checks a process against policy. The agent reads from compiled knowledge, not raw files.
-- Exercise: Query the brain directly. Ask it questions. See how answers draw from structured knowledge, not one-shot retrieval.
-- Exercise: The lint operation — have the agent check its own brain for contradictions, gaps, stale claims. The system maintains itself.
+- Exercise: **Stand up your company brain** — Ingest the company's source materials. Watch the agent build the initial knowledge pages, add cross-references, refine summaries as you feed in more. Build an agent that does real work drawing from the compiled knowledge — drafting, checking, synthesizing. Query the brain directly. Let the agent lint its own brain for contradictions, gaps, stale claims. The system maintains itself.
 - Teaching moment: Persistence + automation = system. It remembers. It runs. It grows. And it's YOUR content — not generic.
 - Lecture: **"Compounding"** — how to make your agent learn and self-correct. Each cycle builds on the last. The brain gets sharper, not just bigger. Self-correction as a design pattern, not a wish. Reference: Pawel Huryn and his pragmatic instructions (see his X.com feed for specific recommendations).
 - Concept (emergent): File-based architecture. Why markdown files beat databases for this. The LLM writes text and is best at text.
@@ -194,7 +233,7 @@ The exercises are structurally the same across companies. What changes is what's
 
 ---
 
-## Module 3: Multi-Agent Systems
+## Multi-Agent Systems
 
 **Big idea:** Split the work. Each agent does one step and passes it forward.
 
@@ -206,12 +245,7 @@ Prework: Agent memory — agentic RAG vs. traditional RAG, filesystem as memory.
 - Concept: The assembly line — each agent does one job, passes work forward. Sequential pipeline, not a mesh.
 > CUSTOMER: Customer insights data — support tickets, NPS results, feedback forms, or similar. Also: list of review platforms where the company is discussed (G2, App Store, Trustpilot, etc.) and key competitors to monitor.
 
-- Exercise: Build three agents:
-  1. **Own customer comments** — ingests direct customer feedback (support tickets, NPS, feedback forms)
-  2. **Public reviews** — ingests what the market says about you (G2, App Store, Trustpilot, Reddit)
-  3. **Competitor remarks** — ingests what people say about alternatives (same public sources, different lens)
-- Exercise: Run 2 rounds each. Round 1 builds the base. Round 2 shows the brain getting sharper — new sources confirm, contradict, or deepen what round 1 found.
-- Exercise: Synthesize across all three. This is the finding no single agent could produce: "customers complain about X, competitor Y is praised for X." The gap between internal perception and external reality.
+- Exercise: **Assembly-line sentiment analysis** — Build three specialised agents that each see a different slice of reality: direct customer feedback (support tickets, NPS, feedback forms), public reviews (G2, App Store, Trustpilot, Reddit), and competitor remarks (same public sources, different lens). Run each agent for two rounds — round two shows the brain sharpening as new sources confirm, contradict, or deepen round one. Synthesize across all three. The finding no single agent could produce: "customers complain about X, competitor Y is praised for X." Internal perception vs. external reality.
 - Teaching moment: The seams are where it fails. Multi-agent coordination is a handoff problem. What happens when one agent's output is noisy or biased?
 - Lecture: **"Setting Up Proper Competitor Analysis"** — tips and tricks for scraping the internet (what works, what doesn't, what breaks). Synthesis techniques: how to turn noisy multi-source data into findings that hold up.
 - Concept (emergent): When is one agent better than three? Not always obvious. Three agents here because they see genuinely different data — not because splitting is inherently better.
@@ -220,7 +254,7 @@ Prework: Agent memory — agentic RAG vs. traditional RAG, filesystem as memory.
 
 ---
 
-## Module 4: Security
+## Security
 
 **Big idea:** Your agent just violated company policy. That's YOUR problem.
 
@@ -229,10 +263,9 @@ Prework: Agent memory — agentic RAG vs. traditional RAG, filesystem as memory.
 Prework: personal reading on the skills system (how skills scope agent capabilities, permissions, tool access).
 
 - Connections: "What's the worst thing your agent could do with access to company data?"
-- Exercise: Take the Module 3 sentiment analysis system. Analyse it against the company's security, legal, and compliance rules. Where does it violate? What data shouldn't it touch? What output shouldn't it produce?
+- Exercise: **Audit and contain with skills** — Analyse your Module 3 system against the company's security, legal, and compliance rules. Where does it violate? What data shouldn't it touch? What output shouldn't it produce? Apply the trainer's pre-built compliance skills, re-run, see what changes — what the agent can no longer do, and why that's the right answer.
 - Teaching moment: It looked good. It was wrong. Your tests wouldn't have caught this.
-- Exercise: Apply the pre-built compliance skills (provided by trainer) to the Module 3 agents. Re-run. See what changes — what the agent can no longer do, and why that's the right answer.
-- Optional exercise: Make your own personal skill — scope a boundary that matters to you.
+- Optional exercise: **Build your own skill** — scope a boundary that matters to you.
 > CUSTOMER: Security policies, legal rules, compliance processes — as usable documents. These get turned into skills before training. Can be separately billed prep work if Antti builds the skills from company policies.
 - Concept (emergent): Trust boundaries. What the agent can access vs. what it should access. Skills are how you enforce this.
 - Reflection: "What policy does your organization have that an agent could violate without knowing?"
@@ -240,18 +273,15 @@ Prework: personal reading on the skills system (how skills scope agent capabilit
 
 ---
 
-## Module 5: Output Quality and Hallucination Control
+## Output Quality and Hallucination Control
 
 **Big idea:** LLMs will always fabricate. The skill is spotting it, adjusting the rules, and seeing the improvement.
 
 Prework: 10 famous agent failures in real life (curated reading — TODO: build this list).
 
 - Connections: "From the prework — which failure surprised you most? Could it happen with your system?"
-- Lecture: **"Why LLMs Will Always Fabricate"** — not a bug to be fixed, a property to be managed. The statistical nature of generation. Why confidence and correctness are unrelated.
-- Exercise: Generate a real work product from your Module 2-3 system. Sentiment summary, competitor brief, whatever your initiative produces. Read it carefully.
-- Exercise: Spot the fabrication. What did it get wrong? What did it invent? What looks plausible but isn't supported by your source materials? You are the domain expert — use that.
-- Exercise: Adjust the generation rules — tighten guardrails, add constraints, require source citations, restrict claims. Regenerate.
-- Exercise: Compare before and after. See the improvement. See what you lost (sometimes tighter rules kill good output too).
+- Lecture: **"Why LLMs Will Always Fabricate"** — not a bug to be fixed, a property to be managed. The statistical nature of generation. Why confidence and correctness are unrelated. Includes the compound reliability math (85% per step × 10 steps = 20% end-to-end).
+- Exercise: **Find and tighten fabrication** — Apply the trainer's prompt pattern to your Module 2-3 output (optionally blend with internet search — the system will fabricate, that's designed). Spot what it got wrong, what it invented, what looks plausible but isn't supported. You are the domain expert — use that. Tighten the rules (add constraints, require citations, restrict claims). Regenerate. Compare. See what you gained. See what you lost — tighter rules kill good output too.
 - Concept (emergent): The quality loop — generate, evaluate, adjust rules, regenerate. This is the discipline. Not a one-time fix but a continuous practice.
 - Concept (emergent): The demo-to-production gap. Works once ≠ works reliably. Non-deterministic failure means you can't just "fix the bug."
 - Reflection: "How confident are you in your system's output now? What would it take to stake your reputation on it?"
@@ -259,7 +289,7 @@ Prework: 10 famous agent failures in real life (curated reading — TODO: build 
 
 ---
 
-## Module 6: Evaluations
+## Evaluations
 
 **Big idea:** Evals are strategic steering, not testing. You're measuring whether the output is differentiated enough to matter.
 
@@ -268,9 +298,9 @@ Prework: 10 famous agent failures in real life (curated reading — TODO: build 
 Prework: Ethan Mollick — "Garbage Can and Bitter Lesson."
 
 - Connections: "In Module 5 you spotted fabrication by eye and adjusted rules. What if you could automate that entire loop?"
-- Exercise: Take your Module 5 output. Build an eval that checks for the problems you found manually. Run it. Loop: generate → eval → adjust → regenerate until the output meets the bar. Experience the system converging on quality.
-- Exercise: Now the harder thing. Create a totally new eval criterion — not about correctness, but about what matters to YOU. Brand voice. Strategic differentiation. Depth of insight. Whatever makes your initiative's output worth sharing vs. forgettable. Something no generic eval would check for.
-- Exercise: Run your custom eval. See what it catches. See what it misses. Iterate the criterion itself — the eval is also an assumption to be tested.
+- Lecture / prework: **"Evals as steering"** — `curriculum/lectures/evals-as-steering.md`. Reframes evals as strategic steering (not testing), distinguishes convergence vs. steering evals, sets up the exercises.
+- Exercise: **Convergence eval — automate your Module 5 check** — Build an eval that checks for the fabrication patterns you found manually. Run it. Loop: generate → eval → adjust → regenerate until the output meets the bar. Experience the system converging on quality.
+- Exercise: **Steering eval** — Run the shared customer-case criterion pre-agreed with the sponsor (real stakes — see how one criterion reads across different agents' output). Then design your own — not about correctness, but about what matters to YOU (brand voice, strategic differentiation, something no generic eval would check). Iterate the criterion itself — see what it catches, see what it misses. The eval is also an assumption.
 - Teaching moment: Evals encode your assumptions about what matters. Wrong assumptions = wrong evals. The loop works for output AND for the evals themselves.
 - Concept (emergent): Two uses of evals — convergence (looping to a desired outcome) and steering (encoding preference into the system). Both are essential.
 - Throughline moment: "What would have to be true for these evals to be the right ones?"
@@ -279,7 +309,7 @@ Prework: Ethan Mollick — "Garbage Can and Bitter Lesson."
 
 ---
 
-## Module 7: From Personal to Team
+## From Personal to Team
 
 **Big idea:** Your agent works for you. Making it work for the team is a different problem.
 
@@ -288,9 +318,7 @@ Prework: Ethan Mollick — "Garbage Can and Bitter Lesson."
 Prework: 8 short stories on how the best have scaled personal agents to team/company level (TODO: curate). Must include variance — different approaches, different scales. Must include: a skill-based story (team capability encoded as a skill), a recurring simple agent running in the cloud (cron job, not enterprise platform). Goal: show there's no single right way.
 
 - Connections: "You've built something that works on your laptop. What would need to change for your whole team to use it?"
-- Exercise: Take your system. Identify what's personal — your credentials, your context, your assumptions baked into guardrails. List everything that breaks when someone else runs it.
-- Exercise: Redesign for the team. Shared access to the brain. Governance: who can ingest sources? Who can change the schema? Who sees the output? Build the access model.
-- Exercise: Hand it to a pair partner. Can they run it? Can they get useful output without your context? Where does it fail?
+- Exercise: **Promote from personal to team** — List everything personal about your system: credentials, context, assumptions baked into guardrails — everything that breaks when someone else runs it. Redesign for the team: shared access to the brain, governance (who can ingest sources? who changes schema? who sees output?). Hand the whole thing to a pair partner. Can they run it? Can they get useful output without your context? Where does it fail?
 - Teaching moment: The personal → team gap is not technical. It's about shared context, trust, and ownership. The agent that works because YOU know what it means doesn't work when 10 people interpret the output differently.
 - Concept (emergent): The promotion path. Personal agents, team agents, company agents are different products. Promotion means redesigning, not just sharing.
 - Reflection: "Who in your organization would own this system? Who decides what goes into the brain? Who's accountable when the output is wrong?"
@@ -298,7 +326,7 @@ Prework: 8 short stories on how the best have scaled personal agents to team/com
 
 ---
 
-## Module 8: Agents Building Agents (The Flywheel)
+## Agents Building Agents (The Flywheel)
 
 **Big idea:** The tool that builds tools compounds.
 
@@ -309,11 +337,9 @@ Prework: Risto — acting on the future and building hypotheses. Rumelt — crux
 > CUSTOMER: CTO/sponsor present for Module 8. Their agent has a special role in Diamond 2 — drafting the guiding policy. They need to be in the room.
 
 - Connections: "You've each built agents for one part of the initiative. What happens when they all run together?"
-- Demo: An agent that generates another agent for the initiative. The meta-tool in action.
-- Exercise: Use Claude Code to generate a new agent that extends your system — a new data source for the brain, a new kind of output, a new perspective. You describe what you want. The coding agent builds it. It works. That's multiplication.
-- The joint moment — double diamond, agent-powered:
-  - **Diamond 1 — Diagnose the cruxes.** Everyone's agents run on shared context. Agents synthesize a Rumelt-style crux list: what are the real obstacles to the agentic transformation here? Not generic risks — specific cruxes grounded in 8 modules of hands-on evidence. Agents prioritize. The room validates.
-  - **Diamond 2 — Paint the way forward.** CTO's agent takes the top 3 cruxes and drafts the guiding policy — how to resolve each one. Everyone's agents feed in actions and recommendations grounded in what they built. Personal agents cross-pollinate feedback across participants — your agent reads my agent's recommendations, flags conflicts, finds synergies.
+- Demo: **Agent generates agent** — the meta-tool in action. Sets up the Extend exercise.
+- Exercise: **Extend your system** — Use Claude Code to generate a new agent that extends your system — a new data source for the brain, a new kind of output, a new perspective. You describe what you want. The coding agent builds it. It works. That's multiplication.
+- Exercise: **Joint Double Diamond — diagnose and guide** — Everyone's agents run on shared context. First: agents synthesize a Rumelt-style crux list — real obstacles to the agentic transformation here, grounded in 8 modules of hands-on evidence. Agents prioritize. The room validates. Then: the CTO's agent takes the top 3 cruxes and drafts the guiding policy — how to resolve each one. Everyone's agents feed in actions and recommendations grounded in what they built. Personal agents cross-pollinate — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy.
 - Teaching moment: Self-improvement — each cycle makes the next one better. They just saw it: Diamond 2 output was sharper than Diamond 1 because agents built on each other's work.
 - Teaching moment: Org capability — 20 people just produced a Rumelt-style strategy kernel (diagnosis + guiding policy + coherent actions) that no consultant could deliver, because it's grounded in hands-on experience with the company's own content. And the agents did the synthesis.
 - The deliverable: The synthesized AI strategy IS the executive recommendation. Not co-created on a whiteboard — produced by the system they built.
@@ -324,20 +350,43 @@ Prework: Risto — acting on the future and building hypotheses. Rumelt — crux
 
 ## Supplementary Materials
 
-**"What is an Agent"** — 6-page reference document. Always available to participants. Not read cover-to-cover as prework — specific sections assigned as prework for relevant modules.
+Reference documents that build up progressively across modules. Participants read assigned sections before the module that next expands them, and own the complete document as a standing reference after the training.
 
-Sections (TODO: define):
-- What an LLM is and isn't
-- From chatbot to agent — what changes
-- Tools, memory, context, reasoning
-- Skills and permissions
-- Multi-agent coordination
-- The flywheel: agents building agents
+**Why these are not lectures.** Lectures are single-sitting events (a 15-min demo, or a 10-min reading before one module). Supplementaries cover concepts too complex to absorb in one sitting — their *progression* is the point. The "what is an agent" answer a participant needs in Module 1 is different from the one they need in Module 4. A monolithic reading can't meet them where they are; sections build as modules go.
 
-Section allocation to modules (TODO: fill in as modules solidify):
-- Module 1 homework: [which sections]
-- Module 3 prework: [which sections]
-- Module 4 prework: [which sections — skills]
+Three supplementaries, with more to be added as patterns emerge:
+
+1. **what-is-an-agent.md** — the agent-ness progression. LLM → chat → system → multi-agent → agents-that-judge → agents-building-agents. Sections added from Modules 1, 2, 3, 4, 5-6, 8.
+2. **building-guardrails.md** — the constraint / context discipline. Guardrails as structured context → schema for knowledge → skills as scoped boundaries → generation rules. Sections added from Modules 1, 2, 4, 5.
+3. **learning-and-compounding-systems.md** — the system-that-improves discipline. The brain → quality loop → eval iteration → agents building agents. Sections added from Modules 2, 5, 6, 8.
+
+See `supplementary/README.md` for the full pattern: filename convention, section structure, how modules reference, and the pass-by-opportunity build (sections fill in as the modules they serve are written).
+
+Sections are referenced from module files by title and section anchor, not inlined. Participants click through and see the full document in context — what's been covered, what's coming.
+
+## Quick reference (lookup, not progressive)
+
+Separate from supplementaries: `curriculum/reference/` holds flat lookup material — commands, connector setup, skill basics, troubleshooting. Different purpose from supplementaries (progressive, pedagogical). Curriculum content stays concept-focused; when a student needs an operational "how do I..." answer, content links to the reference:
+
+> Stuck on the connector? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
+
+Rule: if a lecture or exercise needs more than two sentences of "here's how to configure X," move X to the reference and link.
+
+Current reference: **Claude Quick Reference** (install, files, connectors, skills, subagents, troubleshooting). Living document — grows as training uncovers gaps.
+
+---
+
+## Content production — eval-driven
+
+Every lecture and exercise is evaluated with an LLM-as-judge before it ships. The eval system lives in `curriculum/evals/`:
+
+- `lecture.md` — reusable lecture eval template (13 judges)
+- `exercise.md` — reusable exercise eval template (13 judges including Scaffold provided and Prompt design)
+- `instances/<training>--<slug>.md` — filled-in evals for specific lecture/exercise pairs, with eval-run log
+
+Three possible verdicts: **APPROVE** (all judges pass), **APPROVE WITH TODOs** (essentials pass, contributory items deferred), **REVISE** (essentials fail). Good enough > polished — contributory TODOs ship with the content, appended as a labeled section at the bottom of the file.
+
+The content produced through this loop is itself a demonstration of Module 6's pedagogy: using steering evals to build a steering-evals lecture. Meta-alignment is the point.
 
 ---
 

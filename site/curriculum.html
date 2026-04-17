@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum — Agents 102</title>
+    <link rel="stylesheet" href="layouts/curriculum.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header class="curriculum-header">
+        <a href="curriculum.html" class="curriculum-home">Agents 102 — Curriculum</a>
+    </header>
+
+    <main>
+        <article class="module" id="module-body">Loading…</article>
+    </main>
+
+    <script>
+        (function () {
+            // Training definitions. Bootstrap = the default training (Step 1 of 5).
+            // Modules are slug-only — sequence is array position. Reorder by moving entries.
+            var TRAININGS = {
+                bootstrap: {
+                    label: 'Bootstrap',
+                    lede: 'Eight modules. Chat-to-systems leap. Build real agents on your own company content.',
+                    prework: { slug: 'prework', title: 'Prework — do this before Day 1' },
+                    modules: [
+                        { slug: 'getting-going',           title: 'Getting Going' },
+                        { slug: 'building-agent-systems', title: 'Building Agent Systems' },
+                        { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
+                        { slug: 'security',               title: 'Security' },
+                        { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
+                        { slug: 'evaluations',            title: 'Evaluations' },
+                        { slug: 'personal-to-team',       title: 'From Personal to Team' },
+                        { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
+                    ],
+                    supplementaries: [
+                        { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
+                        { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
+                        { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' }
+                    ],
+                    references: [
+                        { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
+                    ]
+                }
+            };
+            var DEFAULT_TRAINING = 'bootstrap';
+
+            var params       = new URLSearchParams(window.location.search);
+            var trainingKey  = params.get('training') || DEFAULT_TRAINING;
+            var moduleSlug   = params.get('module');
+            var directFile   = params.get('file'); // for standalone exercise/lecture viewing
+            var container    = document.getElementById('module-body');
+
+            // Standalone exercise or lecture view: ?file=exercises/raw-llm  or  ?file=lectures/context-is-king
+            if (directFile && !moduleSlug) {
+                loadAndRender('../curriculum/' + directFile + '.md', directFile);
+                return;
+            }
+
+            var training = TRAININGS[trainingKey];
+            if (!training) {
+                container.innerHTML = '<h1>Training not found</h1><p>No training named <code>' + esc(trainingKey) + '</code>. <a href="curriculum.html">Back to index</a>.</p>';
+                document.title = 'Training not found — Agents 102';
+                return;
+            }
+
+            if (!moduleSlug) {
+                renderTrainingIndex(training);
+                return;
+            }
+
+            // Prework page: ?training=bootstrap&prework=1 (or ?module=prework for convenience)
+            if (params.get('prework') === '1' || moduleSlug === 'prework') {
+                if (training.prework) {
+                    loadAndRender('../curriculum/trainings/' + trainingKey + '/' + training.prework.slug + '.md', training.prework.title);
+                    return;
+                }
+            }
+
+            var mod = training.modules.find(function (m) { return m.slug === moduleSlug; });
+            if (!mod) {
+                container.innerHTML = '<h1>Module not found</h1><p>No module <code>' + esc(moduleSlug) + '</code> in <code>' + esc(trainingKey) + '</code>. <a href="curriculum.html?training=' + trainingKey + '">Back</a>.</p>';
+                document.title = 'Module not found — Agents 102';
+                return;
+            }
+
+            loadAndRender('../curriculum/trainings/' + trainingKey + '/' + mod.slug + '.md', mod.title);
+
+            // ============================================================
+            // Core rendering: fetch markdown, expand includes, parse, inject
+            // ============================================================
+            function loadAndRender(path, fallbackTitle) {
+                fetch(path)
+                    .then(function (res) {
+                        if (!res.ok) throw new Error('Not found: ' + path);
+                        return res.text();
+                    })
+                    .then(expandIncludes)
+                    .then(function (md) {
+                        container.innerHTML = marked.parse(md);
+                        var h1 = container.querySelector('h1');
+                        document.title = (h1 ? h1.textContent : fallbackTitle) + ' — Agents 102';
+                        appendNav();
+                    })
+                    .catch(function (err) {
+                        container.innerHTML = '<h1>Could not load</h1><p>' + esc(err.message) + '</p><p><a href="curriculum.html">Back to index</a>.</p>';
+                        document.title = 'Load error — Agents 102';
+                    });
+            }
+
+            // Bottom nav:
+            //   - On a module page: prev module / all modules / next module
+            //   - On a standalone exercise/lecture page: back to the training index
+            function appendNav() {
+                var nav = '';
+                if (typeof mod !== 'undefined' && mod) {
+                    var i = training.modules.findIndex(function (m) { return m.slug === mod.slug; });
+                    var prev = i > 0 ? training.modules[i - 1] : null;
+                    var next = i >= 0 && i < training.modules.length - 1 ? training.modules[i + 1] : null;
+                    nav += '<nav class="page-nav">';
+                    nav += prev
+                        ? '<a class="nav-prev" href="curriculum.html?training=' + trainingKey + '&module=' + prev.slug + '">← ' + esc(prev.title) + '</a>'
+                        : '<span class="nav-prev nav-empty"></span>';
+                    nav += '<a class="nav-home" href="curriculum.html?training=' + trainingKey + '">All modules</a>';
+                    nav += next
+                        ? '<a class="nav-next" href="curriculum.html?training=' + trainingKey + '&module=' + next.slug + '">' + esc(next.title) + ' →</a>'
+                        : '<span class="nav-next nav-empty"></span>';
+                    nav += '</nav>';
+                } else if (directFile) {
+                    nav += '<nav class="page-nav">';
+                    nav += '<span class="nav-prev nav-empty"></span>';
+                    nav += '<a class="nav-home" href="curriculum.html">← Back to curriculum</a>';
+                    nav += '<span class="nav-next nav-empty"></span>';
+                    nav += '</nav>';
+                }
+                if (nav) container.insertAdjacentHTML('beforeend', nav);
+            }
+
+            // Expand standalone include links of the form:
+            //   [Any text](exercises/slug.md)    or    [Any text](lectures/slug.md)
+            // A link is an include only when it is the ENTIRE paragraph (its own line, no surrounding prose).
+            // If the file fetch fails, the link is left as-is (renders as a normal link).
+            function expandIncludes(md) {
+                var re = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+\.md)\)[ \t]*$/gm;
+                var matches = [];
+                var m;
+                while ((m = re.exec(md)) !== null) {
+                    matches.push({ full: m[0], path: m[2] });
+                }
+                if (matches.length === 0) return Promise.resolve(md);
+
+                // Fetch uniques in parallel
+                var uniquePaths = Array.from(new Set(matches.map(function (x) { return x.path; })));
+                var fetches = uniquePaths.map(function (p) {
+                    return fetch('../curriculum/' + p)
+                        .then(function (res) { return res.ok ? res.text() : null; })
+                        .catch(function () { return null; });
+                });
+
+                return Promise.all(fetches).then(function (results) {
+                    var map = {};
+                    uniquePaths.forEach(function (p, i) { map[p] = results[i]; });
+                    matches.forEach(function (mm) {
+                        var content = map[mm.path];
+                        if (content !== null && content !== undefined) {
+                            // Linkify the first H1 so the included exercise/lecture title
+                            // becomes a link to its standalone view.
+                            var standalone = mm.path.replace(/\.md$/, '');
+                            content = content.replace(/^# (.+)$/m,
+                                '# [$1](curriculum.html?file=' + standalone + ')');
+                            // Substitute once
+                            md = md.replace(mm.full, content);
+                        }
+                    });
+                    return md;
+                });
+            }
+
+            function renderTrainingIndex(t) {
+                var html = '<h1>' + esc(t.label) + '</h1>';
+                html += '<p class="lede">' + esc(t.lede) + '</p>';
+
+                if (t.prework) {
+                    html += '<h2 class="index-heading">Before Day 1</h2>';
+                    html += '<ol class="module-list index-prework">';
+                    html += '<li><a href="curriculum.html?training=' + trainingKey + '&module=' + t.prework.slug + '">' +
+                            '<span class="module-n">Prework</span> ' +
+                            '<span class="module-title">' + esc(t.prework.title) + '</span>' +
+                            '</a></li>';
+                    html += '</ol>';
+                }
+
+                html += '<h2 class="index-heading">The eight modules</h2>';
+                html += '<ol class="module-list">';
+                t.modules.forEach(function (m, i) {
+                    html += '<li><a href="curriculum.html?training=' + trainingKey + '&module=' + m.slug + '">' +
+                            '<span class="module-n">Module ' + (i + 1) + '</span> ' +
+                            '<span class="module-title">' + esc(m.title) + '</span>' +
+                            '</a></li>';
+                });
+                html += '</ol>';
+
+                if (t.supplementaries && t.supplementaries.length) {
+                    html += '<h2 class="index-heading">Supplementary materials (grow across the training)</h2>';
+                    html += '<ol class="module-list index-supplementaries">';
+                    t.supplementaries.forEach(function (s) {
+                        html += '<li><a href="curriculum.html?file=supplementary/' + s.slug + '">' +
+                                '<span class="module-n">Reference</span> ' +
+                                '<span class="module-title">' + esc(s.title) + '</span>' +
+                                '</a></li>';
+                    });
+                    html += '</ol>';
+                }
+
+                if (t.references && t.references.length) {
+                    html += '<h2 class="index-heading">Quick reference (lookup)</h2>';
+                    html += '<ol class="module-list index-references">';
+                    t.references.forEach(function (r) {
+                        html += '<li><a href="curriculum.html?file=reference/' + r.slug + '">' +
+                                '<span class="module-n">Lookup</span> ' +
+                                '<span class="module-title">' + esc(r.title) + '</span>' +
+                                '</a></li>';
+                    });
+                    html += '</ol>';
+                }
+
+                container.innerHTML = html;
+                document.title = t.label + ' Curriculum — Agents 102';
+            }
+
+            function esc(s) {
+                return String(s)
+                    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+            }
+        })();
+    </script>
+</body>
+</html>

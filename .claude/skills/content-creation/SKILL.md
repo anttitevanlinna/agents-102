@@ -5,48 +5,22 @@ description: Create or revise curriculum content for Agents 102 (modules, exerci
 
 # Content Creation — Agents 102 Curriculum
 
-Use this when the user asks to write or revise curriculum content: a module, exercise, lecture, a new training variant, or a review pass.
+This skill owns generation-time rules — the "doing" rules. For architecture (directory structure, include-links, material distribution, orchestrator pattern, Claude Code behavior verification), see `curriculum/CLAUDE.md`. For pedagogy (Bloom, 4 Cs, emergent knowledge/control/leadership, audience, throughlines, module reusability), see `curriculum/lecture-guardrails.md` — read before designing a module.
 
-This skill exists because curriculum production has specific conventions that the simple HTML renderer depends on, shareability rules across training variants, and a three-pass build to keep course-correction cheap. Violating any of these creates drift that rots fast.
+Use this skill when the user asks to write or revise curriculum content: a module, exercise, lecture, a new training variant, or a review pass.
 
 ## Session start — read this first
 
-Before touching anything, read (in this order):
+Before touching anything, read in this order:
 
-1. **`curriculum/CLAUDE.md`** — rules of the house. Directory structure, content dev rules, prompt design rules, voice rules, Seth×Rory×Risto flavor, alignment duties, 8-step PDCA.
-2. **`curriculum/content-strategy.md`** — training-level arc + **State of play** section at the bottom (what's built, what's partial, what's next, open TODOs).
-3. **`philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
-4. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge).
+1. **`curriculum/CLAUDE.md`** — architectural rules (directory structure, module file shape, include-links, F-Secure fence, material distribution, Claude Code behavior verification).
+2. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge/control/leadership, audience, throughlines, module reusability).
+3. **`curriculum/content-strategy.md`** — training-level arc + **State of play** section at the bottom (what's built, what's partial, what's next, open TODOs).
+4. **`philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
 
 Then check `continuous-research/insights.md` and relevant domain findings before writing — per heuristic 11 (consult research before curriculum work).
 
-**Where things live:**
-
-```
-curriculum/
-  content-strategy.md       arc + state of play
-  CLAUDE.md                 rules
-  lecture-guardrails.md     pedagogy
-
-  trainings/<name>/         module files (slug-only filenames)
-  exercises/<slug>.md       shared library
-  lectures/<slug>.md        shared library
-  supplementary/<slug>.md   progressive reference docs (sections build up across modules)
-  reference/<slug>.md       flat lookup (links to official docs for depth)
-
-  evals/
-    lecture.md              reusable lecture eval template
-    exercise.md             reusable exercise eval template
-    instances/              filled-in evals per artifact with eval-run logs
-
-site/
-  curriculum.html           renderer (client-side markdown)
-  layouts/curriculum.css    typography + print CSS
-```
-
 **Verify locally:** `python3 -m http.server 8000` at repo root, open `http://localhost:8000/site/curriculum.html`.
-
-**When the user asks for new content:** invoke the PDCA loop below.
 
 ## The canonical generation pattern (PDCA loop)
 
@@ -59,20 +33,22 @@ Every piece of curriculum content — lecture, exercise, or module — goes thro
 4. **Check learning goals** — pull the Bloom-tagged LOs verbatim from the module file into the eval instance. The LOs are the contract; the eval is the measure; the content must satisfy both.
 
 **Do:**
-5. **Generate / edit** — write, following the content development rules below. For prompts participants will copy, follow the prompt design rules.
+5. **Generate / edit** — write, following the content rules below. For prompts participants will copy, follow the prompt design rules.
 
 **Test:**
-6. **Simulate / test** — before the formal eval, run through the artifact as if you were a student. Role-play a persona (e.g., "SVP of HR at a Nordic software company, comfortable with ChatGPT but has never built an agent"), follow the instructions, make up realistic content, and report where things break. Catches what evals don't: ambiguous instructions, Claude-behavior mismatches, under-scaffolded phases, arc flow problems. See "Simulation protocol" below.
+6. **Simulate / test** — before the formal eval, run through the artifact as if you were a student. Role-play a persona, follow the instructions, make up realistic content, and report where things break. See "Simulation protocol" below.
 
 **Check:**
 7. **Eval** — run the LLM-as-judge on the draft. Antti does the taste review on top. Three possible verdicts: **APPROVE**, **APPROVE WITH TODOs** (essentials pass, contributory items deferred — good enough, ship), **REVISE**.
 
 **Act:**
-8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template (new judge), simulation protocol (new persona or failure mode), `content-creation` SKILL.md (new rule), `curriculum/CLAUDE.md` (new rule), `memory/self-review-protocol.md` (new correction + heuristic), `memory/MEMORY.md` (new index entry). The system should be smarter at the end of each cycle than at the start.
+8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template, simulation protocol, this SKILL.md, `curriculum/CLAUDE.md`, `memory/self-review-protocol.md`, `memory/MEMORY.md`. The system should be smarter at the end of each cycle than at the start.
+
+**This pattern generalizes beyond curriculum.** Articles, research findings, future trainings all follow the same shape: *input → plan → measure → contract → make → evaluate → improve*.
 
 ## Simulation protocol
 
-Use this to run the simulate/test step (step 6 of the generation loop).
+Use this to run the simulate/test step (step 6).
 
 **When to use:** After a first draft of any exercise (required) or lecture (optional — less useful for demo-script lectures; more useful for prework-reading). Before the formal eval. Can be repeated with different personas.
 
@@ -116,12 +92,20 @@ Be specific. Use your persona's voice. If the exercise has a flaw, you (as the s
 
 **Known Claude-behavior patterns to check during simulation** (living list — add as they surface):
 - **File preservation gap** — exercises that say "save this for later" don't work in Claude Code sessions; Claude keeps artifacts in memory but participants don't know that. Fix: either use Claude's memory (ask Claude to look back at its own output) or give explicit instructions for file duplication.
-- **Reading burden** — asking participants to read long generated artifacts twice to spot differences is excessive. Fix: ask Claude to do the comparison and surface the specific items.
+- **Reading burden / manual error-catching** — don't ask the student to manually read Claude's output to verify it, spot mistakes, or diff versions. That's busywork for a business audience and it foreshadows exactly the wrong lesson. Fix: ask Claude to audit Claude's work — have the student write the audit prompt, Claude runs it, results land as a list the student acts on. Reading for *emotional payoff* (feeling the citations land, feeling the output sound like your company) is different and stays. The banned pattern is "read this to check if Claude got it right." That job belongs to Module 5 (quality) and Module 6 (evals) methods, which Module 2's verification moments should foreshadow, not pre-empt.
 - **Niceness tax** — Claude's RLHF softens edgy claims during regeneration (hate-flips become generic virtues, anti-positioning becomes collaborative leadership). Fix: prompt explicitly says "keep the edge — don't soften stances."
 - **Question dump** — when asked to "ask these questions in turn," Claude sometimes dumps all questions at once. Fix: prompt says "ask one, wait for my answer, then ask the next."
 - **Overwrite anxiety** — when regenerating an artifact, Claude may ask "overwrite or create new?" Fix: prompt specifies the default ("overwrite the existing file").
 - **Preamble before action** — Claude narrates what it's about to do before doing it; can disrupt a "clean question-by-question rhythm" assumption. Fix: assume it will happen; design around it.
 - **Append-vs-integrate default** — when told "add X to context and regenerate," Claude often appends X as a new section rather than rewriting the existing output through X's lens. Simulation tell: the output grows a "What I love" / "How I help" section instead of the whole voice shifting. Fix: prompt must explicitly say "rewrite using X as voice-shaping context" when integration is the goal.
+- **Plan-mode preamble bloat** — even in plan mode, Claude opens the plan with 2–4 sentences of *"I'll now read your sources and propose…"* scene-setting before the actual plan. Eats participant attention; they skim the plan. Fix: design around it — prime the student to scroll past preamble to the proposed list, or add "go straight to the plan, no preamble" to the prompt.
+- **Citation-gap asymmetry** — with an explicit "cite or flag" rule, Claude abides for specific company claims but skirts the rule on conventional-wisdom claims (generic competitive knocks, industry truisms). The model treats "obvious" claims as not needing citation. Simulation tell: sourced claims + one or two uncited generic lines in the same output. Fix: either add "this includes conventional-wisdom claims" to the rule, or design the exercise to notice the gap as the teaching moment.
+- **Self-report inflation** — when asked to report what changed, Claude over-claims change. Lists four pages as sharpened when two got longer. The self-report is the LEAST trustworthy part of the output. Fix: never trust Claude's own summary of its work — instruct the participant to verify directly (open the file, read the top paragraph) and give them a literal push-back prompt.
+- **Default-acceptance on offered defaults** — when a prompt offers "default rules if you don't have your own," ~90% of participants take the defaults verbatim without customization. Fix: explicitly nudge customization — "Pick at least one you'd change" — or structure so the default is a starting point, not a free pass.
+- **Plan-mode approval inflation** — multi-page plans (7+ items) get rubber-stamped because the plan *looks* structured; participants approve without reading. The plan is exactly the moment that deserves close reading, and participants treat it as a form to sign. Fix: design the prompt to force a pushback — "suggest three topic merges you'd recommend" / "mark any page likely to be soft" — before approval. The act of answering back is what creates real reading.
+- **Source-type blindness on ingestion** — Claude silently ingests dense slideware (PPTX, PDF exports of decks) and derives claims from slide titles only. The brain ends up shallow on those sources; Claude doesn't report the thinness. Fix: either tell participants to convert slide-heavy sources to text before ingestion, or add an explicit extraction-depth check to the audit prompt ("for each source file, rate how much content you actually extracted — 1-10").
+- **Citation cargo-cult** — Claude dutifully cites `brain/x.md` in outputs, but the cited file may not actually contain the specific claim. Citations become performative: the format is right, the substance isn't verified. Especially common on conventional-wisdom claims (pattern #3, citation-gap asymmetry). Fix: periodic integrity check — "for each cited claim in the output, quote the sentence in the brain file that supports it."
+- **Self-audit charity** — when Claude is asked to critique its own work, it under-flags problems. "Pick 3 generic pages" returns 2 (with reality being 4). Charitable-by-default is the RLHF legacy. Fix: prompt the audit to over-flag — "be harsher than you think necessary," "flag at least N" — or have the audit run in a fresh session with no memory of having produced the work.
 
 **Prework-specific patterns** (from first prework simulation, 2026-04-17):
 - **Install cliff** — "install Claude Code" is a 25-min side quest if you land on the CLI path with no Node. For non-developer audiences, specify **desktop or web** explicitly. "No terminal required" is a real affordance worth stating.
@@ -137,49 +121,6 @@ A lecture or exercise file contains both student-facing content (what the room s
 Why: iterating on facilitator pacing while the student content is still in flux is wasted work. The demo changes → the timing estimates are wrong → the watch-fors are wrong. Lock the content; annotate the delivery second.
 
 The exercise eval's "Facilitator briefing complete" judge applies at Pass 3 completion, not at first draft. A first-draft lecture or exercise can ship APPROVE WITH TODOs where the TODO is "add facilitator notes."
-
-**This pattern generalizes beyond curriculum.** Articles, research findings, future trainings all follow the same shape: *input → plan → measure → contract → make → evaluate → improve*. Different artifacts point at different strategy documents, different eval templates, different contracts — but the loop is one.
-
-## Before touching any file
-
-Do all of this. Skipping steps is how sessions drift.
-
-1. **Read the rules of the house:**
-   - `curriculum/CLAUDE.md` — content development rules, structure, three-pass build, alignment duties
-   - `curriculum/lecture-guardrails.md` — pedagogical rules (Bloom's, TBR 4 Cs, builder style, throughlines)
-   - `curriculum/content-strategy.md` — training-level arc and storyline
-   - `philosophy.md` (repo root) — 19 beliefs behind the training. Philosophy is the spine. The teacher carries the whole story arc in the room — including parts that are deliberately not written. Written materials are backbone, not script. Content callouts to philosophy are **sparing** (1-2 per lecture/closing/opening max), **never front-loaded** (student experiences the thing, then the belief is named), and land where the student's felt experience makes them obvious.
-
-2. **Consult research before building from first principles.** The research system has 90+ OODA cycles of evidence. Use it.
-   - `continuous-research/insights.md` — compressed arguments
-   - `continuous-research/synthesis/*.md` — topic synthesis files
-   - `continuous-research/findings/by-domain/*.md` — per-domain evidence
-   - `continuous-research/findings/by-pattern/*.md` — cross-domain patterns
-
-3. **Copyright fence:** F-Secure delivers their own version of this training. F-Secure IPR. **Never import, reconcile, or paraphrase their materials.** Build from first principles + project research + Antti's practitioner experience. All exercises, examples, instructional language must be original.
-
-## Directory structure
-
-```
-curriculum/
-  content-strategy.md          — training-level arc (MUST stay aligned with module files)
-  lecture-guardrails.md        — universal pedagogy
-  CLAUDE.md                    — content development rules
-  trainings/<name>/            — one file per module, FLAT (no subdirs)
-    <slug>.md                  — slug-only filenames. Sequence is renderer array order.
-    ...
-  exercises/<slug>.md          — shared library, kebab-case slugs
-  lectures/<slug>.md           — shared library, kebab-case slugs
-```
-
-Exercises and lectures are **shared across all trainings** (Bootstrap, future Mid-Management, future Executive Briefing, etc.). One canonical file per exercise or lecture. Module files compose them by reference.
-
-**Supplementary materials** are a third student-facing content type at `curriculum/supplementary/<slug>.md`. These are multi-section reference documents that build up progressively across modules — too complex to absorb in one sitting. Unlike lectures and exercises, they're NOT inlined into module pages. Modules reference them as prework or homework; students own the complete document as a standing reference after the training. See `curriculum/supplementary/README.md` for the pattern.
-
-**Content-type decision:**
-- Can a single 15-min demo or 10-15 min reading deliver this? → **Lecture**
-- Is this a bounded activity the participant does? → **Exercise**
-- Does the answer need to grow across multiple modules, and serve as a standing reference? → **Supplementary**
 
 ## The three-pass build
 
@@ -259,9 +200,8 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
 - Variant markers where audience-specific framing diverges
 - Plug point defaults
 
-## Content rules (enforced always)
+## Content rules — structural
 
-**Structural:**
 - **One exercise = one bounded activity.** Internal arc (do → observe → adjust → observe again) is ONE exercise, not four. Never enumerate E1.1/E1.2/E1.3. Phases of an exercise are prose inside its description, not sub-bullets.
 - **No L1.1/L2.1 lecture numbering.** If a module has one lecture, name it. If multiple, name each.
 - **One H1 per file** (the title). The print CSS page-breaks before every H1; multiple H1s = awkward empty space.
@@ -274,15 +214,18 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
 - **No images** in this pass. If a module needs an image, flag it and the renderer gets a path-rewriting step.
 - **Short blockquotes.** The print CSS applies `page-break-inside: avoid`; a 40-line blockquote leaves a huge PDF gap.
 
-**Pedagogical:**
+## Content rules — pedagogical
+
 - **Claude Code specific.** Exact interactions, expected outputs, troubleshooting. Not tool-agnostic.
 - **Exercise-led, not lecture-led.** Concepts emerge from doing. Never explain before the exercise demonstrates.
 - **Real data, not toy data.** Participant's own profile, policies, domains.
-- **Failure is the teaching moment.** Design exercises that fail in instructive ways (Module 1 fabrication, Module 4 compliance violation, Module 5 hallucination).
+- **Failure is the teaching moment — in training.** Design exercises that fail in instructive ways (Module 1 fabrication, Module 4 compliance violation, Module 5 hallucination). **But design failure OUT of prework and setup.** Training-day failures are witnessed by a facilitator, debugged in the room, and land as learning. Prework failures happen on a Sunday evening with no recovery — the student loses the thread before Day 1 starts. Different domain, opposite rule: training = productive failure; prework/setup = smooth path with fallbacks named.
 - **Don't assume craft. Provide scaffolds.** If an exercise asks the participant to produce an artifact type they haven't built before (LLM-as-judge prompts, skills files, eval criteria, handoff formats), include an inline scaffold, OR a worked example from an adjacent domain they can adapt, OR an explicit pointer to the earlier exercise that built the same artifact. Participants don't create patterns from thin air. Any exercise that expects them to do so fails on the "Scaffold / worked example provided" judge.
-- **Riff on recognized business frameworks.** Exercises anchor new LLM skills on frameworks participants already know (StoryBrand, strategy-as-assumptions, Toyota Kata, Voice of Customer, Jobs-to-be-Done, Double Diamond, principle of least privilege, etc.). Three reasons: (1) **cognitive economy** — participants don't learn two new things at once; LLM behavior hangs on a familiar hook. (2) **Transferability** — they carry both the AI skill and the framework back to work. (3) **Engagement** — best-in-class frameworks beat generic toy exercises. Examples currently in the curriculum: Module 1 riffs on StoryBrand's buyer-guide + mirror positioning. Module 6 riffs on strategy-as-assumptions + LLM-as-judge as steering instrument. Future modules should name their framework at design time.
+- **Riff on recognized business frameworks.** Exercises anchor new LLM skills on frameworks participants already know (StoryBrand, strategy-as-assumptions, Toyota Kata, Voice of Customer, Jobs-to-be-Done, Double Diamond, principle of least privilege, etc.). Three reasons: (1) **cognitive economy** — participants don't learn two new things at once; LLM behavior hangs on a familiar hook. (2) **Transferability** — they carry both the AI skill and the framework back to work. (3) **Engagement** — best-in-class frameworks beat generic toy exercises. Name the framework at design time.
+- **Incremental complexity.** Each exercise adds one thing. Never two new concepts in one exercise.
+- **Four pillars woven through**, not bolted on: LLM-based, secure, lifecycle, reliable.
 
-### Prompt design rules (for any prompt participants copy into Claude Code)
+## Prompt design rules (for any prompt participants copy into Claude Code)
 
 - **No placeholders mid-prompt.** Don't write `[BRACKETS]` inline that the participant must find-and-replace. Not `[paste or attach]`, not `[your content]`, not `[DIMENSION NAME]` — none of these belong inside a prompt block the student is supposed to copy. Inline editing in Claude Code is tedious. **Every placeholder inside a code fence is a rule violation; check every prompt block you ship.** Handle variable content one of three ways:
   1. **Conversation before** — Claude asks for the values, then assembles the prompt internally
@@ -290,6 +233,8 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
   3. **Copy-paste right after the prompt** — user copies the prompt, then pastes the data (or attaches a file) as a separate step. The prompt references "the X I just shared" or "the X I'll paste next."
 - **Long prompts OK** up to ~1 page. Paragraph structure mandatory for readability.
 - **Prefer questions over slots.** If the agent needs simple input, it asks. Don't make the participant edit the prompt.
+- **Trust Claude's defaults for output shape.** Don't pad prompts with trailing specifications like *"The file should have a clear title, a Rules section, a Never line, plain markdown, no header block."* Claude infers that from the role and the question set. Specify shape ONLY when the teaching moment depends on it (e.g., a specific scoring format for an eval judge). Otherwise end with destination + "show me before saving." Long prompts look intimidating to business readers and train them to over-specify their own prompts — the opposite of what Module 2 teaches.
+- **Main body = golden path only. Troubleshooting goes elsewhere.** Don't inline "if sign-in fails with admin approval, ask IT…" or "if Claude fires all questions at once…" or "if you skipped plan mode by accident…" in the student-facing body. Those are defensive pre-emptions that bloat the happy path and tell the reader *this is going to go wrong*. The right homes for them: (1) the trainer's live Slack/Teams support channel during delivery, (2) the trailing facilitator notes below `<!-- maintainer -->` where watch-fors already live, or (3) the quick reference if the failure mode is generic and reusable. When the body reads like a calm, forward-moving narrative — ask, paste, watch what lands — the student stays in the flow. When it reads like a FAQ of edge cases, the student reads it as a minefield. Pick narrative.
 - **"Add X and regenerate" is a trap.** When X should shape the OUTPUT (voice, stance, framing), "add X" reads as "append X as a new section." Claude will grow a bullet list and call it done. Instead say: "rewrite using X as voice-shaping context" or "let X change how the output SOUNDS." Be explicit: is X getting APPENDED (a new section) or INTEGRATED (the whole thing gets rewritten through X's lens)? Name it.
 - **Vary closings deliberately.** Each mechanic has different strengths; pick per exercise:
   - **Claude-as-cold-critic** — reproducible, structured, produces an artifact. Use when feedback quality matters. Foreshadows LLM-as-judge.
@@ -300,43 +245,50 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
 
   Don't default to any one. When designing a close, ask: *what does this exercise actually need — structured feedback, social bonding, collective insight, private extraction, or public ownership?* Then pick. "Talk to your neighbor" is not a free pass; neither is "ask Claude for feedback."
 - Reference pattern: the "Help me build a steering eval judge" prompt in `curriculum/exercises/steering-eval.md`.
-- **Incremental complexity.** Each exercise adds one thing. Never two new concepts in one exercise.
-- **Four pillars woven through**, not bolted on: LLM-based, secure, lifecycle, reliable.
 
-**Voice and style:**
-- **Main body writes TO the student about their journey.** The reader of a lecture or exercise file is the student — not the facilitator. No facilitator instructions in the body (*"To the room,"* *"Have pairs discuss,"* *"Hear one or two out loud"*). Those are script directions and belong in facilitator notes (deferred artifact). The student-facing text speaks directly: *"You'll see…"*, *"Take a guess."*, *"Paste this prompt."*
-- **Trailing sections below a `---` horizontal rule are fine.** That space holds editorial metadata (TODOs, iteration log) AND facilitator notes (watch-fors, timings, decision points) for now. Facilitator notes will be extracted to a dedicated artifact later — don't mix them into the student-facing body. The `---` separator is the boundary between "for the student" and "for the production/delivery system."
-- **Flavor: Seth × Rory × Risto, not dry textbook.** Builder voice ≠ dry voice. Target:
-  - **Seth Godin** — gifts-first warmth, kindness as the goal. Short sentences that don't talk down.
-  - **Rory Sutherland** — counterintuitive reframes, wit, sideways looks. If the obvious take is obvious, find the weird one.
-  - **Risto Siilasmaa** — epistemic honesty. *"We don't know where this is going. Nobody does."* Naming uncertainty is the source of trust.
-  - **Questions to the reader are welcome** — sprinkled, not flooded. *What changed? Where does this break? Ever noticed that...?*
-  - **Dryness is a failure mode.** A sentence that makes the reader smile lands harder than three that explain.
-- **Second person.** "You" not "the participant" and not "the room."
+## Voice and style (generation-time)
+
+For the fuller emergent-knowledge / emergent-control / emergent-leadership stance and audience framing, see `curriculum/lecture-guardrails.md`. The one-paragraph summary for generation: write like a practitioner for a business leader making the chat-to-systems leap. Confident, direct, builder's voice. Concepts emerge from doing, never from a pre-explanation. Vocabulary arrives late. The student builds first; the name comes after.
+
+At the sentence level:
+
+- **Second person.** "You" — not "the participant," not "the room."
 - **Builder style.** Confident, direct, punchy. "Let's build. You build." See `memory/copy-taste.md`.
 - **General facts stated as facts.** "Claude reads the whole conversation every time." Not "the facilitator will explain that Claude..."
 - **No jargon without earning it.** Every technical term introduced through an exercise that makes it obvious.
 - **No motivational padding.** "AI is transforming the world" — everyone knows. Start with what they're about to do.
 - **No overview or summary sections.** TBR 4 Cs (Connections, Concepts, Concrete Practice, Conclusions) handle opening and closing.
 - **No further-reading lists.** If it matters, it's in the module.
+- **Flavor: Seth × Rory × Risto, not dry textbook.** Builder voice ≠ dry voice. Target:
+  - **Seth Godin** — gifts-first warmth, kindness as the goal. Short sentences that don't talk down.
+  - **Rory Sutherland** — counterintuitive reframes, wit, sideways looks. If the obvious take is obvious, find the weird one.
+  - **Risto Siilasmaa** — epistemic honesty. *"We don't know where this is going. Nobody does."* Naming uncertainty is the source of trust.
+  - **Questions to the reader are welcome** — sprinkled, not flooded. *What changed? Where does this break? Ever noticed that...?*
+  - **Dryness is a failure mode.** A sentence that makes the reader smile lands harder than three that explain.
 
-## Alignment duties (proactive, not reactive)
+### Business-audience jargon ban
 
-When editing a module file, check and update in the same edit:
+The reader is a business leader (SVP marketing, SVP ops, sales manager), not a developer. These words **cannot appear in student-facing text until a lecture or exercise earns them with a plain definition tied to what the student just did**: `embeddings`, `vector`/`vector database`, `RAG`/`retrieval-augmented generation`, `retrieval` (technical sense), `pipeline` (technical sense), `orchestration`/`orchestrator`, `schema` (use "rules"), `architecture` (use "layers"/"shape"), `subagent`, `frontmatter`, `prompt engineering`, `inference` (technical sense — "inference cost," "inference latency"), `fine-tuning`. "Framework" is fine for recognized business frameworks (StoryBrand, Toyota Kata, strategy-as-assumptions) — banned in tech senses like "RAG framework." An unearned tech word costs more than clarity: it creates jargon anxiety ("three things I don't know, and the trainer assumed I did"). Maintainer sections below `<!-- maintainer -->` are exempt. **The SVP test before shipping:** read as if you were an SVP marketing lead with zero technical background. Any flinch = replace or earn.
 
-1. **`curriculum/content-strategy.md`** — the Exercise bullet in the matching module section must have the same name and description as the module file. Drift between these two is a process bug, not an aesthetic choice.
+### Write TO the student; maintainer cut
 
-2. **`site/curriculum.html`** — the TRAININGS array. If a module is renamed, added, removed, or reordered, update the corresponding entry. Reorder = move one line in the array, nothing else.
+- **Main body writes TO the student about their journey.** The reader of a lecture or exercise file is the student — not the facilitator. No facilitator instructions in the body (*"To the room,"* *"Have pairs discuss,"* *"Hear one or two out loud"*). Those are script directions and belong in facilitator notes (deferred artifact). The student-facing text speaks directly: *"You'll see…"*, *"Take a guess."*, *"Paste this prompt."*
+- **Trailing sections below a `<!-- maintainer -->` HTML comment are maintainer-only and hidden from the student.** The renderer strips everything after `<!-- maintainer -->` before rendering — that's where editorial metadata (TODOs, iteration log, frameworks riffed on, eval-run notes) and facilitator notes (watch-fors, timings, decision points) live. **Do not use `---` as the cut marker** — a plain horizontal rule is legitimate body content (prework, quick-reference, supplementary files use `---` as visual dividers) and the renderer will render it normally. Only `<!-- maintainer -->` triggers the cut.
 
-3. **`memory/MEMORY.md`** — if a module title is referenced there (search for the old title), update it.
+### Philosophy callouts
 
-4. **`curriculum/CLAUDE.md`** — if you change a structural rule (three-pass build, include-link convention, filename format), update the docs in the same edit.
+Philosophy is the spine (`philosophy.md`, 19 beliefs). Callouts in content are **sparing** — one or two per lecture / closing / opening max, where a philosophy beat lands naturally from what the student just did. **Never front-loaded** — the student experiences the thing, then the belief is named. "What just happened, named" — not "here's what we believe, now do the exercise." Not every module hammers every belief. Session-level budget: within a day that has multiple lectures, avoid repeating the same belief number across lectures unless the repetition is deliberate and named (the second lecture explicitly builds on the first's callout). Unintended repetition dilutes the beat.
 
-Before closing any significant edit, run a grep for known sibling references:
+### Plug Points syntax
 
-```bash
-grep -rn "<old thing>" curriculum/ site/curriculum.html memory/MEMORY.md
 ```
+> PLUG POINT: [What the org inserts here]
+> Default: [What we provide if they don't have their own]
+```
+
+- **Make them specific.** Not *"insert your organization's policy here."* Instead: *"Open your company's data classification policy. Find the section on PII. Your agent's instructions need to reference this classification. If you don't have one, use this default: [default]."*
+- **Defaults must work.** Every plug point has a default that a participant without org-specific materials can use. Nobody gets stuck because their company doesn't have a policy document handy.
+- **Plug points are learning moments.** When a participant discovers their org doesn't have a policy for X — that's a finding. *"You just discovered a gap. That's valuable."*
 
 ## Variant framing (audience-specific content)
 
@@ -348,7 +300,7 @@ grep -rn "<old thing>" curriculum/ site/curriculum.html memory/MEMORY.md
 > Mid-Management: [the variant version]
 ```
 
-Exercises themselves are universal — same tech, same mechanics. Reflections are audience-specific — a builder asks "will this agent work?" while a mid-manager asks "will my team adopt this?"
+Exercises themselves are universal — same tech, same mechanics. Reflections are audience-specific.
 
 **Never fork files per variant.** Variants live inside the file with VARIANT markers. Forking = guaranteed drift.
 
@@ -398,11 +350,11 @@ Lectures must pass the lecture eval before going to Antti:
 
 **The eval is part of the pedagogy, not a formality.** Using steering evals to build a steering-evals lecture is the Module 8 flywheel.
 
-Exercise evals (for Pass 2/3 exercise files) are a future extension of this system — same pattern, different judges (does the exercise work, does it reliably produce the teaching moment, is the facilitator briefing complete).
+Exercise evals (for Pass 2/3 exercise files) are a future extension of this system — same pattern, different judges.
 
 ### TODO / ERROR markers in content
 
-Per the same rule: both the generation system (lecture / exercise files) and the eval system (eval instance files) can leave explicit TODO or ERROR markers for later pickup. These are first-class artifacts, not shameful debt.
+Both the generation system (lecture / exercise files) and the eval system (eval instance files) can leave explicit TODO or ERROR markers for later pickup. These are first-class artifacts, not shameful debt.
 
 Conventions:
 - Append a `**TODO (from eval pass YYYY-MM-DD — ...):**` section at the bottom of a lecture file when it ships with deferred items.
@@ -425,7 +377,3 @@ Conventions:
 ## When the rules feel restrictive
 
 That's a signal to upgrade the renderer or the conventions — not to bend the rule with a workaround that only some files follow. If you reach for frontmatter, Mermaid, images, multiple H1s, or anything the renderer doesn't handle — flag it. Don't silently add it.
-
-## Summary in one sentence
-
-Write curriculum as a shared library (`exercises/` + `lectures/` + `trainings/<name>/`), in three passes (index → skeleton → full), following the structural and pedagogical rules, and update every sibling file in the same edit.

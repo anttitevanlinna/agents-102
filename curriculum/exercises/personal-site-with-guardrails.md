@@ -106,7 +106,7 @@ Generic output comes from generic context. The LLM didn't get better between Pha
 
 **Time:** 45 minutes. Banter expected.
 
----
+<!-- maintainer -->
 
 **TODO (applied in pass 2 — 2026-04-17):**
 - Prompts now first-class in each phase — participant has a specific prompt to paste, not a vague "add to context."

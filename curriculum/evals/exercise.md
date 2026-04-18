@@ -110,11 +110,19 @@ Participant brings their own initiative's data, criterion, output. Never generic
 ### Voice *(universal)*
 
 - **Main body writes TO the student about their journey.** No facilitator instructions (*"Have the room do X"*, *"Tell participants Y"*) in the body. Those belong in facilitator notes (deferred artifact). The reader is the student. Speak to them directly: *"You'll paste…"*, *"Ask Claude…"*, *"Pair up and show your neighbor…"*
-- **Trailing sections below a `---` horizontal rule are allowed.** That space holds editorial metadata (TODOs, iteration log) AND facilitator notes (watch-fors, timings, decision points) for now. Facilitator notes will be extracted to a dedicated artifact later — don't mix them into the student-facing body.
+- **Trailing sections below a `<!-- maintainer -->` HTML comment are maintainer-only.** The curriculum renderer strips everything after `<!-- maintainer -->` before rendering. That space holds editorial metadata (TODOs, iteration log, frameworks riffed on, eval-run notes) AND facilitator notes (watch-fors, timings, decision points). **`---` is NOT the cut marker** — it's a legitimate horizontal rule that can appear in body prose.
 - Second person (`you`, not `the participant`, not `the room`)
 - **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-honesty. Questions to the reader welcome (sprinkled). Dryness is a failure mode.
 - No consultant-speak
 - No LLM-tell words: `honest`/`honestly`, `delve`, `landscape` (as verb), `importantly`, `crucial` (padding)
+
+### Business-audience language *(universal — essential)*
+
+Reader is a business leader (SVP marketing, SVP ops, sales manager), not a developer. These words **cannot appear in student-facing text unless plainly earned in this or a prior lecture/exercise in the arc**:
+
+`embeddings`, `vector`/`vector database`, `RAG`/`retrieval-augmented generation`, `retrieval` (tech sense), `pipeline` (tech sense), `orchestration`/`orchestrator`, `schema` (use "rules"), `architecture` (use "layers"/"shape"), `subagent`, `frontmatter`, `prompt engineering` (use "prompting"), `framework` in tech senses. Recognized business frameworks (StoryBrand, Toyota Kata, strategy-as-assumptions) are fine.
+
+Trailing sections below `<!-- maintainer -->` are exempt — those are maintainer-facing. Read the student-facing body as an SVP marketing lead with zero technical background; any flinch = replace or earn.
 
 ### Length *(universal)*
 
@@ -139,6 +147,7 @@ Named mechanics (exact prompts, score scales, expected output shapes), named art
 - Scaffold / worked example provided
 - Prompt design (when applicable — exercise includes copy-paste prompts)
 - Plug points real
+- Business-audience language (no unearned tech jargon)
 - Auto-fail red flags (none triggered)
 
 **Contributory (can TODO):**
@@ -160,6 +169,7 @@ Named mechanics (exact prompts, score scales, expected output shapes), named art
 - **Copy-paste prompt with inline `[BRACKET]` placeholders** the participant must find-and-replace — the exercise must use conversational or copy-paste-after patterns instead
 - More than one H1
 - Contains `---` YAML frontmatter
+- **Unearned tech jargon in student-facing text** — any of `embeddings`, `vector`/`vector database`, `RAG`, `retrieval` (tech sense), `pipeline` (tech sense), `orchestration`, `orchestrator`, `schema`, `architecture` (software sense), `subagent`, `frontmatter`, `RAG framework`, `prompt engineering` appears without having been plainly earned in this or a prior lecture/exercise
 
 ---
 
@@ -201,6 +211,7 @@ Return:
 | Scaffold / worked example provided | | |
 | Prompt design (if applicable) | | |
 | Plug points real | | |
+| Business-audience language | | |
 | Voice | | |
 | Length | | |
 | Specificity | | |

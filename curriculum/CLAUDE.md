@@ -1,8 +1,12 @@
 # Curriculum Production
 
-This CLAUDE.md governs curriculum work. Read `lecture-guardrails.md` before writing any module.
+This CLAUDE.md governs curriculum work.
 
-**For any content task, invoke the `/content-creation` skill.** Its session-start checklist (at `.claude/skills/content-creation/SKILL.md`) names the reading order and the 8-step generation pattern. Current state of what's built vs. what's next lives in `content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
+**Pointers:**
+- **For generation** (three-pass build, PDCA 8-step loop, content development rules, prompt design rules, exercise design rules, philosophy callout rules, plug point syntax, simulation protocol): see `.claude/skills/content-creation/SKILL.md` — invoked via the `/content-creation` skill. Subagents and anyone writing content must read it first.
+- **For pedagogy** (Bloom's taxonomy, 4 Cs, emergent knowledge/control/leadership, audience, throughlines, teaching principles): see `curriculum/lecture-guardrails.md`. Read before writing any module.
+
+Current state of what's built vs. what's next lives in `content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
 
 ## Scope
 
@@ -119,109 +123,92 @@ Requirements for the renderer to inline it:
 
 If the file is missing, the link renders as-is. This means Pass 1 module files can reference future Pass 2 exercise files without breaking.
 
-## Three-Pass Build
+## Alignment duties
 
-1. **Pass 1 — Module index files.** The spine for each module: metadata, LOs, ordered references to (not-yet-existing) exercises and lectures, framing sections. Tests the arc.
-2. **Pass 2 — Exercise + lecture skeletons.** One file per shared-library entry. Title, what the participant does, what happens, the point, facilitator notes, time estimate. Written into `exercises/` and `lectures/` — they belong to the library, not to any single training.
-3. **Pass 3 — Full content.** Flesh out each exercise and lecture file to the level a facilitator can run live.
+**`content-strategy.md` and module files stay aligned — always.** `content-strategy.md` carries the training-level narrative (Connections, Exercise, Lecture, Reflection, Bridge per module). The module files in `trainings/bootstrap/` carry the canonical spine. **The exercise named in each module section of content-strategy.md must match the exercise in the corresponding module file** — same name, same description. When one changes, the other changes in the same edit. Drift between the two is a process bug, not a matter of taste.
 
-**Trainer artifacts.** Some exercises reference artifacts the trainer brings (the Module 1 guardrail `CLAUDE.md`, Module 2 LLM brain scaffold, Module 4 compliance skills). These are real files — build them alongside the exercise text, not after. The exercise describes what happens when participants use the artifact. The artifact has to exist first.
+## Copyright fence
 
-## Exercise Design Rules
+**F-Secure delivers their own version of this training. Their materials are F-Secure IPR — off-limits for import, reconciliation, or paraphrase.** All exercises, examples, and instructional language must be original.
 
-- **Claude Code specific.** Exact commands, expected outputs, troubleshooting. Not tool-agnostic.
-- **Exercise-led, not lecture-led.** Concepts emerge from doing. Never explain before the exercise demonstrates it.
-- **Real data, not toy data.** Participants use their own profiles, policies, domains.
-- **Fabrication is the teaching moment.** Module 1 deliberately pushes until the agent fabricates.
-- **Incremental complexity.** Each exercise adds one thing. Never two new concepts in one exercise.
-- **One exercise = one bounded activity.** An exercise has an internal arc (do → observe → adjust → observe again) but that's one exercise, not four. Do NOT enumerate the arc as sub-exercises (E1.1, E1.2, E1.3 …). The description names the exercise and sketches the arc in one paragraph. The facilitator walks the participant through the rhythm; the participant doesn't tick off five boxes.
-- **Riff on a recognized business framework.** Every business-skill exercise anchors the new LLM skill on a framework participants already know — StoryBrand, strategy-as-assumptions, Voice of Customer, Jobs-to-be-Done, Toyota Kata, principle of least privilege, Double Diamond, etc. Three reasons: cognitive economy (LLM work is new; the framework is a familiar hook), transferability (they carry both skills back to work), engagement (best-in-class frameworks beat toy exercises). Name the framework at design time; the exercise eval enforces it.
-- **Content-strategy and module files stay aligned — always.** `content-strategy.md` carries the training-level narrative (Connections, Exercise, Lecture, Reflection, Bridge per module). The module files in `trainings/bootstrap/` carry the canonical spine. **The exercise named in each module section of content-strategy.md must match the exercise in the corresponding module file** — same name, same description. When one changes, the other changes in the same edit. Drift between the two is a process bug, not a matter of taste.
-- **Show the failure mode.** For every capability, show what goes wrong without the discipline.
-- **The four pillars (LLM-based, secure, lifecycle, reliable) are woven through, not bolted on.**
+## Working with actual Claude Code behavior
 
-## Plug Points Framework
+Curriculum content describes a real tool that ships on a real cadence. Getting the tool's current behavior wrong is the fastest way to erode trust with a business audience — an SVP who follows the exercise word-for-word and hits a different UI than we described is done listening.
 
-Plug points are where the organization's own reality replaces generic content:
+**Rules, enforced on every content pass:**
 
-```
-> PLUG POINT: [What the org inserts here]
-> Default: [What we provide if they don't have their own]
-```
+1. **Verify capabilities BEFORE drafting, not after.** Invoke the `claude-code-guide` agent with specific questions — feature name, GUI click-path in the desktop app, MCP dependencies, Git assumptions for cloud variants, current-as-of-date — before the first draft. Training-data memory of Claude Code goes stale within months; features land mid-year. Do not write from memory of how the tool worked six months ago.
 
-Examples: security policies, data classification rules, compliance requirements, domain-specific evaluation criteria, org structure for agent ownership.
+2. **Silence from a lookup isn't absence.** When a check-agent says "I couldn't find this" or "X is not native," press further: *"Did you check specific slash-commands / settings sections / sidebar options, or just search?"* The first capability check of this session missed `/loop` and `/schedule` entirely; the second missed the scheduled-task catch-up behavior. Absence claims need active confirmation, not inferred-from-silence.
 
-## Philosophy — the spine
+3. **Practitioner observation beats docs-based lookup.** When Antti says "I see X happen when I use the product," that's ground truth. Update the material to match; the docs may lag or the lookup may be out-of-date.
 
-`philosophy.md` (repo root) holds the 19 beliefs behind the training. Two clusters matter most for the story arc:
-- **Fundamental questions about the future** (where is this going, what's real vs. hype, who creates it, what do you do about it, where does the real transformation happen)
-- **Student's stance** (practice or theorize, tool or fundamentals, go first or wait, share or hoard, consumer or teacher, move without a map)
+4. **Training platform = Claude Code desktop (current) + Cowork (future).** Not Claude.ai (chat). If an exercise draft names `claude.ai` as the place to do the work, or leans on Claude.ai-only features (e.g., the chat-app connector panel, the chat-app schedule UI), it's wrong and must be revised. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via **Shift+P** (or Shift+Tab cycle).
 
-The philosophy threads through the training — in lectures, openings, closings. **The teacher carries the whole story arc in the room, including parts that are deliberately not written down.** Written materials are the backbone, not the script. Some parts remain human and just spoken in the right places.
+5. **Cloud/remote features carry a Git dependency — out of scope.** Remote tasks (Routines) run in Anthropic's cloud, but the runner needs a cloud source for the working directory — typically a cloud Git repo. Our training uses a local `~/agents-102-bootstrap/` folder. State cloud features exist; do not present them as a realistic upgrade path inside a business-audience exercise.
 
-**Rule for content:**
-- **Callouts are sparing.** One or two per lecture / closing / opening — where a philosophy beat lands naturally from what the student just did. Not every module hammers every belief.
-- **Never front-load the belief.** The student experiences the thing, then the belief is named. "What just happened, named" — not "here's what we believe, now do the exercise."
-- **Reference the file when relevant.** Content authors should read `philosophy.md` before a writing pass. Callouts can reference specific beliefs by number or name; students reading later can follow the thread.
+6. **When the exercise depends on a tool feature that behaves differently than expected, update the curriculum — not the student's workaround.** If a scheduled task catches up on wake (rather than silently skipping), that's a better teaching moment than a caveat. Write the actual behavior; the student doesn't need to know what we used to think was true.
 
-## Canonical Generation Pattern (PDCA)
+7. **Skill invocation — inline unless the skill is shipped with this module.** A curriculum artifact that invokes a skill by name (e.g., *"apply the crux skill to my challenge"*) requires the student's Claude Code to have that skill installed — otherwise it dies silently. Rule: inline the skill's move unless the same module's scaffold ships the skill. Module 2's Debrief inlines the crux move + names Rumelt directly; Module 8's Joint Double Diamond ships the `crux`, `assumption-test`, and `pre-mortem` skills and invokes them by name. The named-invocation reveal in Module 8 — "that move you did in Module 2 was a skill all along" — is stronger than leaking the invocation earlier where it can't work.
 
-Every piece of curriculum content follows this 8-step loop. Full detail in the `content-creation` skill.
+If you're about to write a sentence like "Claude Code doesn't have X" or "you'll need to use a different tool for Y," stop and run the capability check first. Those are exactly the sentences that turn out wrong.
 
-1. **Antti's input** — what to build, why
-2. **Ensure content strategy** — read and update `content-strategy.md` if this piece changes the arc
-3. **Check / agree on evals** — propose judges; update template if a missing judge is discovered; save instance
-4. **Check learning goals** — pull Bloom-tagged LOs into the eval instance (the contract)
-5. **Generate / edit** — write, following the content development rules below
-6. **Simulate / test** — role-play a student running the exercise; report where things break (ambiguous instructions, Claude-behavior mismatches, under-scaffolded phases, arc flow problems). See `content-creation` SKILL.md "Simulation protocol."
-7. **Eval** — LLM-as-judge + Antti's taste. APPROVE / APPROVE-WITH-TODOs / REVISE
-8. **Learning + system improvement** — update eval template, simulation protocol, skill, rules, memory with anything learned
+## Orchestrator pattern — disjoint file ownership
 
-The system should be smarter at the end of each cycle than at the start. This pattern generalizes beyond curriculum.
+When dispatching parallel subagents for curriculum work (implementation, not research), follow the orchestrator pattern in the project CLAUDE.md with one addition: **each subagent owns a disjoint set of files.** Two agents editing the same file race and overwrite. Before the second dispatch, check what the first batch is still working on and what it has already completed — if overlap exists, either wait for completion or narrow the second batch's scope. Use `TaskStop` when you catch yourself dispatching duplicate work.
 
-## Content Development Rules (for the simple HTML renderer)
+File-ownership examples from a Module 2 pivot:
+- Subagent 1: main exercise file + eval instance (exercise-only)
+- Subagent 2: prework + scaffold READMEs + scaffold CLAUDE.md (scaffold-only)
+- Subagent 3: module file (module-file-only)
+- Subagent 4: Module 8 skills + Module 8 module file (Module 8-only)
+- Subagent 5 (after 1-4): Module 3, Module 7, content-strategy alignment (ripple-only)
 
-The curriculum HTML renderer (`site/curriculum.html` + `site/layouts/curriculum.css`) is deliberately minimal. No build step, no frontmatter parser, no plugin system. To keep it that way, module and exercise/lecture files follow these rules:
+The shape: each agent's spec names every file it will touch; no two specs overlap.
 
-- **No YAML frontmatter.** The renderer passes the file straight to `marked.parse()`. Any `---` block at the top renders as a horizontal rule. Module metadata lives in the body under a `## Meta` heading.
-- **One H1 per file — it's the title.** The print CSS puts a page break before every H1. Multiple H1s in one file = awkward empty space in the PDF. Use H2/H3 for sections below.
-- **Basic markdown only.** Paragraphs, headings, lists, tables, fenced code, blockquotes, inline emphasis, links. No raw HTML blocks, no Mermaid, no admonition plugins, no MDX. If you reach for something exotic, the renderer won't handle it.
-- **Kebab-case filenames.** `raw-llm.md`, `context-is-king.md`. Slugs are short and descriptive — they appear in include links across multiple trainings.
-- **Cross-module links** use `curriculum.html?training=bootstrap&module=<slug>`, not relative markdown paths. Relative markdown links resolve from the HTML page, not from the markdown file, and will break.
-- **Include links** use the exact form `[Text](exercises/slug.md)` or `[Text](lectures/slug.md)` on their own paragraph. Anything else is a regular link. Don't point include links at subdirectories, relative paths, or files outside the two libraries.
-- **All pages link.** The renderer auto-links included content: when a module page inlines an exercise or lecture via an include-link, the inlined H1 becomes a hyperlink to the standalone view of that file. Module pages also show prev/next/all-modules navigation at the bottom. Standalone exercise/lecture pages link back to the curriculum index. Authors don't add these links manually — the renderer does it. Don't remove it when revising module files.
+## Material Distribution
 
-## Prompt Design Rules (for any prompt participants copy into Claude Code)
+How participants receive and work with training material (site + local files). Design rules for any module that ships a scaffold.
 
-- **No placeholders mid-prompt.** Don't use `[BRACKETS]` inline that the participant must find-and-replace. Not `[paste or attach]`, not `[your content]`, not `[NAME]`. **Every placeholder inside a code fence is a rule violation; check every prompt block you ship.** Handle variable content one of three ways:
-  1. **Conversation before** — Claude asks for the values, then assembles the prompt internally
-  2. **Conversation after (preferred for simple input)** — the prompt instructs Claude to ask the participant for the values in turn
-  3. **Copy-paste right after the prompt** — the user copies the prompt, then pastes the data (or attaches a file) as a separate step. The prompt references "the X I just shared" or "the X I'll paste next."
-- **Long prompts OK** up to ~1 page. Paragraph structure is mandatory for human readability — no wall-of-text prompts.
-- **Prefer asking questions over filling slots.** If the agent needs simple input, it asks. Don't make the participant edit the prompt.
-- **"Add X and regenerate" is a trap.** When X should shape the OUTPUT (voice, stance, framing), "add X" reads as "append X as a new section." Claude grows a bullet list and calls it done. Instead say: "rewrite using X as voice-shaping context" or "let X change how the output SOUNDS." Be explicit: is X getting APPENDED or INTEGRATED? Name it.
-- **Vary closings deliberately.** Each closing mechanic has different strengths; choose case by case:
-  - **Claude-as-cold-critic** (fresh window, no context, structured prompt): reproducible, artifact-producing. Good when feedback quality matters AND the participant needs an artifact they can act on. Foreshadows LLM-as-judge moves.
-  - **Pair exchange** ("show your neighbor"): social energy, unexpected angles, quick. Good for early bonding or when each person's domain expertise adds a unique angle. Variable quality — not for high-stakes feedback.
-  - **Group discussion**: room-wide pattern-finding. Good when collective observation surfaces what no individual sees (e.g., Module 3 cross-agent synthesis, Module 8 Double Diamond).
-  - **Solo reflection / retro with Claude**: private processing + learning extraction. Good for end-of-module debriefs (see Module 1 pattern).
-  - **Self-demo / "show your work" to the room**: claim ownership. Good when the artifact is sharable and the moment needs a small spotlight.
+**The shapes:**
 
-  Don't default to any one of these. When designing a close, ask: *what does this exercise actually need — structured feedback, social bonding, collective insight, private extraction, or public ownership?* Then pick.
+1. **Site** (curriculum content) — password-protected static URL per customer, co-branded. The same renderer we use locally (`site/curriculum.html`) hosted for the cohort. Prework, lectures, and exercises are read here. Download links for per-module zips live here too. Never ask participants to clone Git.
 
-The Steering eval exercise's "Help me build a steering eval judge" prompt is the reference pattern.
-- **Images are deferred.** If a module needs images, flag it and we'll add path rewriting to the renderer. Don't silently add `![...](./foo.png)` — it won't resolve correctly.
-- **Keep blockquotes moderate in length.** The print CSS applies `page-break-inside: avoid` to blockquotes; a 40-line blockquote leaves a huge whitespace gap in the PDF.
-- **Prefer short paragraphs and list items.** Builder style anyway, but the print layout amplifies the win.
-- **Write TO the student.** Lecture and exercise files are read by the student, not the facilitator. No facilitator instructions (*"To the room,"* *"Pairs trade guesses,"* *"Hear one or two out loud"*) in the main body — those are script directions and belong in facilitator notes (deferred artifact). Address the student directly: *"You'll see..."*, *"Take a guess."*, *"Paste this prompt."* State general facts as facts. **Trailing sections below a `---` horizontal rule are allowed** — that space holds editorial metadata (TODOs, iteration log) AND facilitator notes (watch-fors, timings, decision points) for now. Facilitator notes will be extracted to a dedicated artifact later.
-- **Flavor: Seth × Rory × Risto.** Builder voice isn't dry voice. The target tone:
-  - **Seth Godin** — gifts-first warmth, direct, short. *"Here, I made this for you."* Kindness is the goal.
-  - **Rory Sutherland** — counterintuitive reframes, wit, sideways looks. If the obvious answer is obvious, look at the weird one. Behavioral-economics analogies welcome where they fit.
-  - **Risto Siilasmaa** — epistemic honesty. *We don't know where this is going. Nobody does.* Naming what we don't know is the source of trust, not a sign of weakness.
-  - **Questions to the reader are welcome** — sprinkled, not flooded. *What changed? Where does this break? Ever noticed that...?* Questions invite thinking; statements alone close it down.
-  - **Dryness is a failure mode, not a sign of discipline.** The goal is reading pleasure alongside clarity. A sentence that makes the reader smile lands harder than three that explain.
+2. **Working directory on the participant's laptop** — one folder for the whole training, created during prework:
 
-If a rule starts feeling restrictive, that's a signal to upgrade the renderer — not to bend the rule with a workaround that only some files follow.
+   ```
+   ~/agents-102-bootstrap/           ← Day 2 onward: open THIS in Claude Code
+   ├── CLAUDE.md                      ← root guardrails, appears with the Module 2 scaffold
+   ├── brain/                         ← cross-module (Module 2 onward)
+   ├── agents/                        ← cross-module, custom agent files
+   ├── sources/                       ← cross-module, raw company material
+   ├── prework/                       ← open this for prework (snake.html, meetings.txt)
+   ├── module-1/                      ← open this on Day 1 — zero context, Debrief lands a CLAUDE.md here
+   ├── module-2/                      ← Module 2 prework writes challenge.md here
+   ├── ...
+   └── module-8/
+   ```
+
+   **Session scope changes at three seams: prework → Module 1 → Day 2 onward.** Open `prework/` for prework, `module-1/` for Day 1, the `agents-102-bootstrap/` root for everything Module 2 onward. Within each scope, write to the right subfolder (e.g., on Day 2 at root, the Module 2 prework brief at `module-2/challenge.md`, the crux at `module-2/crux.md`, etc. — no further reopens). Two folder switches total across the training. The switch between Day 1 and Day 2 is a natural seam — the move from "building one thing" (a site, scoped to Module 1) to "building a system" (a brain + agents + sources that span modules).
+
+   **Module 1 starts with zero context on purpose.** `module-1/` ships empty. No CLAUDE.md, no scaffolded material. The Debrief produces the student's first CLAUDE.md at `module-1/CLAUDE.md` — *their* file, not a trainer handout. That CLAUDE.md is scoped to Module 1 and stays there; Module 2 introduces a separate, wider root CLAUDE.md via its scaffold.
+
+   Cross-module artifacts (`brain/`, `agents/`, `sources/`, root `CLAUDE.md`) live at the root — everything Module 2 onward reads from. Per-module working files live inside `module-N/`.
+
+   **Not inside a synced folder** (OneDrive / Google Drive / Dropbox). Claude writes files faster than sync daemons reconcile — conflict copies will happen. Local only during the training.
+
+3. **Per-module zip — only where needed.** Some modules ship no scaffold (pure continuation on existing state); others ship files that drop into the tree. A zip is a patch, not a project.
+
+**Rules for zip-shipped scaffolds:**
+
+- **Drop-in, idempotent.** Unzipping the same zip twice produces the same tree. Files land at stable paths the exercise text names verbatim.
+- **Never clobber student work.** Don't ship a `CLAUDE.md` or agent file with the same name as one the student has been shaping. If a module needs a reference file, ship it as `CLAUDE-module-N-reference.md` or similar, and let the student decide what to integrate.
+- **Scoped to its module's artifacts.** Module 2 ships `sources/` (first batch), empty `brain/`, empty `agents/`, starter root `CLAUDE.md` (brand-new territory — no clobber risk). Module 4 ships `skills/<skill-name>.md` files (additive). Don't put a module's working files inside another module's folder.
+- **Named clearly.** Zip filename encodes module + purpose: `module-2-starter.zip`, `module-2-sources-batch-2.zip`, `module-4-compliance-skills.zip`. The exercise text names the zip.
+
+**The root `CLAUDE.md` is a living file.** It starts in Module 2's starter scaffold and grows through each Debrief — Claude proposes lines, student pastes in. Never ship a replacement `CLAUDE.md` that overwrites the accumulated one. Module 1's Debrief produces a separate, scoped `module-1/CLAUDE.md` (learnings from the personal-site exercise); it stays in `module-1/` and doesn't touch the root.
+
+**Trainer side:** scaffolds are maintained in Git inside the Agents 102 repo (`curriculum/scaffolds/<module-slug>/` is the expected location — to be created as scaffolds materialize). Empty folders use `.keep` placeholders so zip/unzip preserves structure; don't ship per-folder README.md files (working-directory instructions belong at the transition points in curriculum content — prework Step 0, the Module 2 Setup line, etc. — not duplicated per folder). Export zips per cohort, host on the customer's site or SharePoint. Participants never see Git.
 
 ## Content Boundaries
 

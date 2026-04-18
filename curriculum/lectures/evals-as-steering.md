@@ -66,7 +66,7 @@ Your criterion encodes a theory of what "good" means. The theory is a bet. Nobod
 
 *Module 7 takes this further: your eval works for you. When your eval becomes your team's eval, what changes? That's trust at scale.*
 
----
+<!-- maintainer -->
 
 **TODO (from eval pass 2026-04-17 — APPROVE WITH TODOs, length judge failed):**
 - Length undercooked (~520 vs 800–1200 target). Expansion candidates: (1) a worked micro-example of a convergence eval running once — what the judge output actually looks like; (2) a second steering-eval example from a different dimension (depth of insight or strategic differentiation, not just brand voice); (3) a paragraph on the LLM-as-judge mechanic — evals are usually run by other LLMs, and the lecture currently doesn't name this.

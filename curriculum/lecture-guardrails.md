@@ -1,6 +1,8 @@
 # Lecture Guardrails
 
-Rules for designing, reviewing, and generating curriculum modules. Every module must pass these guardrails before it ships.
+Rules for designing and reviewing curriculum modules. Every module must pass these guardrails before it ships.
+
+> **This document owns pedagogy** — the learning design that all modules embody. For generation rules (how to write a lecture/exercise file) see `.claude/skills/content-creation/SKILL.md`. For architecture (directory structure, include-links, distribution) see `curriculum/CLAUDE.md`.
 
 ---
 
@@ -138,66 +140,11 @@ TBR was designed for classroom training with physical movement — wall charts, 
 
 ---
 
-## Generation Tips and Tricks
-
-Practical rules for writing module content that actually works in a room full of busy professionals.
-
-### Voice and tone
-
-- **Write like a practitioner, not a textbook.** "Here's what happens when you do this" — not "In this section, the learner will explore..."
-- **Second person.** Address the participant as "you." Not "the participant" or "learners."
-- **Confident but direct.** "This works. Here's where it breaks." No hedging, no overselling.
-- **No jargon without earning it.** Every technical term is introduced through an exercise that makes it obvious, not through a definition. If you need a glossary, the module failed.
-
-### Exercise writing
-
-- **The instruction is the interface.** "Open Claude Code and type..." must be unambiguous. A participant who reads the instruction and does exactly what it says should get a working result. Test this by reading the instruction as literally as possible.
-- **Name the expected output.** "You should see something like..." with a realistic example. Not "the agent will respond" — show what a response looks like.
-- **Name the failure mode.** "If you see X instead, it means Y. Try Z." Anticipate the two or three most common wrong states.
-- **Time-box exercises.** State how long each exercise should take. "This should take 5-8 minutes. If you're stuck after 5, flag the facilitator." Prevents both rushing and rabbit holes.
-- **One instruction per step.** Not "Create a file, add the following content, and run the agent." Three steps: create, add, run.
-
-### Facilitator notes
-
-- **Inline, not appendixed.** Facilitator notes sit right next to the exercise they relate to, in a clearly marked block. The facilitator reads the same document as participants — they just see more.
-- **Timing is mandatory.** Every exercise and every C2 concept block has a time estimate. The facilitator needs to pace the day.
-- **"Watch for" notes.** Common participant behaviors that signal confusion, ahead-of-the-curve participants who need more challenge, energy dips that need a format change.
-- **Decision points.** "If the group is ahead of schedule, extend with X. If behind, skip Y without losing the arc." Every module must have at least one expandable and one skippable section.
-
-### Pacing a full day
-
-- **Energy follows a curve.** Morning: high energy, use for new concepts and challenging exercises. After lunch: low energy, use for hands-on building (activity prevents sleepiness). Late afternoon: second wind, use for synthesis and "what this unlocks."
-- **Never schedule a concept block (C2) right after lunch.** Schedule Concrete Practice instead. Listening after eating is a losing battle.
-- **Pair and regroup.** Solo work for focus → pair discussion for depth → group share for breadth. Rotate this pattern. Never more than 30 minutes in any single mode.
-- **Breaks are not optional.** 10 minutes every 60-75 minutes. A participant with a full bladder learns nothing. State break times at the start of the day and keep them.
-
-### Content density
-
-- **Less content, more practice.** A module that covers 3 concepts deeply beats one that surveys 8 concepts superficially. Every concept must have a Concrete Practice moment. If there's no time for practice, cut the concept.
-- **The "explain it at the pub" test.** If a participant can't explain the module's core insight in 2-3 sentences over a beer, the module tried to teach too much.
-- **One big idea per module.** Each module has exactly one core insight. Everything else serves it. Module 1's big idea: "With the right guardrails, you create output that's genuinely yours — not generic." Module 8's big idea: "The tool that builds tools compounds." If you can't state the big idea in one sentence, the module isn't focused.
-
-### Plug points
-
-- **Make them specific.** Not "insert your organization's policy here." Instead: "Open your company's data classification policy. Find the section on PII. Your agent's instructions need to reference this classification. If you don't have one, use this default: [provide default]."
-- **Defaults must work.** Every plug point has a default that a participant without org-specific materials can use. Nobody gets stuck because their company doesn't have a policy document handy.
-- **Plug points are learning moments.** When a participant discovers their org doesn't have a policy for X — that's a finding. "You just discovered a gap. That's valuable."
-
-### What NOT to generate
-
-- **No "overview" sections** that summarize what's about to happen. The Connections phase (C1) replaces this — it activates, not summarizes.
-- **No "summary" sections** that repeat what happened. The Conclusions phase (C4) replaces this — learners generate the summary.
-- **No "further reading" lists.** If it matters, it's in the module. If it doesn't matter enough for the module, it doesn't matter.
-- **No motivational padding.** "AI is transforming the world" — everyone in the room knows. Start with what they're about to do, not why it matters in the abstract.
-- **No diagrams described in words.** If a concept needs a diagram, say "Facilitator draws X on the whiteboard" — don't describe the diagram in prose. The facilitator will make it live.
-
----
-
 ## Style and Vibe: For Builders
 
 This training is for people who learn by doing. Not by reading. Not by listening. Not by being told what's important. They build something, and the understanding follows.
 
-The entire curriculum rests on three emergences:
+The entire curriculum rests on three emergences.
 
 ### Emergent knowledge
 
@@ -206,10 +153,11 @@ Knowledge is not transmitted. It emerges from practice.
 You don't explain what an agent is, then have them build one. They build one, and then they know what an agent is — from the inside out, not from a definition. The exercises produce the knowledge. The facilitator's job is to name what just happened, not to pre-explain what's about to happen.
 
 This means:
-- **No concept precedes its exercise.** The exercise is always first. The concept is the reflection on what was experienced.
+- **No *telling* precedes doing.** Verbal concept talk ("here's what X is, now go try it") is banned before the exercise. But *showing* is not telling — a live demo the student watches counts as experience. Module 1's opening lecture is a 15-min demo of context-shaping in action; the student hasn't built anything yet, but they've *seen* the phenomenon. Priming via demo is necessary when there's no prior experience to reflect on — the student needs an anchor to reach for. The rule, sharpened: tell nothing; let them experience (as actor OR watcher); name what just happened after.
 - **Vocabulary arrives late.** Participants have already built the thing before they learn what it's called. "What you just created — that pattern is called orchestration." Not "Orchestration is a pattern where..."
 - **Wrong mental models are useful.** If someone thinks agents are "just fancy chatbots," don't correct them up front. Let the exercises break that belief. A corrected misconception sticks harder than a delivered fact.
 - **The facilitator asks, doesn't tell.** "What did you notice?" beats "Here's what happened." Pull the insight from the room. If nobody gets there, ask a sharper question. Telling is the last resort.
+- **Mistakes are the curriculum.** When the agent fabricates, when the prompt injection works, when the multi-agent handoff fails — that's the learning. Don't prevent failure; design for it.
 
 ### Emergent control
 
@@ -233,21 +181,24 @@ This means:
 - **The training creates teachers, not graduates.** The real measure of a module isn't "did they get it?" but "can they make someone else get it?" That's the standard for Champions readiness.
 - **Agency over the material.** Participants are not consumers of the curriculum. They reshape it through plug points, through their own examples, through the questions they ask. By the end of Bootstrap, the best ones are already thinking "I could run this for my team." That's the point.
 
-### What this vibe sounds like in the material
-
-| Textbook style (avoid) | Builder style (use) |
-|------------------------|---------------------|
-| "In this module, you will learn about prompt injection attacks and their mitigations." | "You're going to break your own agent. Then you'll fix it." |
-| "Multi-agent architectures enable distributed task execution across specialized components." | "Your agent can't do everything. Let's split the work." |
-| "The evaluation framework provides systematic quality assurance for LLM outputs." | "Your agent is lying to you. Let's catch it." |
-| "Upon completion, participants will have gained an understanding of..." | "After this, you'll know how to..." |
-| "Consider the following scenario..." | "Try this." |
-
 ### The builder's contract
 
 The implicit promise to every participant:
 
 > We won't waste your time with theory you could read yourself. Every minute you spend here, you'll be building something real. You'll leave with something that works, the knowledge of where it breaks, and the ability to explain both to your team. The rest — the vision, the strategy, the scaling — emerges from that foundation. You go first. Then you help others go forward.
+
+---
+
+## Philosophy as the Spine
+
+`philosophy.md` (repo root) holds the 19 beliefs behind the training. Two clusters matter most for the story arc:
+
+- **Fundamental questions about the future** — where is this going, what's real vs. hype, who creates it, what do you do about it, where does the real transformation happen.
+- **Student's stance** — practice or theorize, tool or fundamentals, go first or wait, share or hoard, consumer or teacher, move without a map.
+
+Philosophy threads through the training in lectures, openings, closings. **The teacher carries the whole story arc in the room, including parts that are deliberately not written down.** Written materials are the backbone, not the script. Some parts remain human and just spoken in the right places.
+
+For the generation-time rule on how to deploy philosophy callouts in content (sparing, never front-loaded), see `.claude/skills/content-creation/SKILL.md`.
 
 ---
 
@@ -345,29 +296,16 @@ Modules and exercises are **composable building blocks**, not chapters in a mono
 - **Agents 102 for Mid-Management** — more team/org transformation framing. Same building exercises, different reflection questions and throughline emphasis. "How does this change how your team works?" instead of "What will you build next?"
 - Future variants may include: executive briefing (compressed), domain-specific (e.g., agents for finance), advanced practitioners.
 
-### Design rules for reusability
-
-1. **Separate universal core from audience-specific framing.** Every module has a core that's the same everywhere (the exercises, the concepts, the failure modes) and a framing layer that varies by audience (Connections questions, Conclusions prompts, "What This Unlocks" sections, facilitator notes about the room dynamic).
-
-2. **Mark audience-specific content explicitly.** Use a clear marker in the module file:
-
-```
-> VARIANT: [audience] — [what changes here]
-> Default (Bootstrap): [the default version]
-> Mid-Management: [the variant version]
-```
-
-3. **Exercises are universal. Reflections are audience-specific.** Building an agent is building an agent — the tech is the same regardless of who's in the room. But "What did you learn?" means something different to an individual contributor vs. someone responsible for 50 people's productivity.
-
-4. **Plug points absorb audience variation.** The existing plug point framework already handles org-specific content. Extend it to handle audience-specific content. A plug point can have a default for Bootstrap AND a default for Mid-Management.
-
-5. **The throughlines flex, they don't change.** Roger Martin's "strategy as assumptions" lands for everyone. But the assumptions worth surfacing differ: a builder asks "will this agent work?" while a mid-manager asks "will my team adopt this?" Same framework, different questions.
-
-6. **One file per module, not one file per variant.** Variants live inside the module file as marked alternatives, not as separate copies. Forking files = drift. The mid-management version of Module 4 should never drift from the Bootstrap version of Module 4's core exercises.
-
-### Why this matters
+### Why this matters (architectural rationale)
 
 The anti-SAFe promise ("with your own structure") means the curriculum itself must be modular. If we can't reconfigure our own training for different audiences without rewriting, we're doing the thing we criticize. Composability isn't just a nice-to-have — it's the product architecture.
+
+Core design commitments:
+
+1. **Separate universal core from audience-specific framing.** Every module has a core that's the same everywhere (the exercises, the concepts, the failure modes) and a framing layer that varies by audience (Connections questions, Conclusions prompts, "What This Unlocks" sections, facilitator notes about the room dynamic).
+2. **Exercises are universal. Reflections are audience-specific.** Building an agent is building an agent — the tech is the same regardless of who's in the room. But "What did you learn?" means something different to an individual contributor vs. someone responsible for 50 people's productivity.
+3. **The throughlines flex, they don't change.** Roger Martin's "strategy as assumptions" lands for everyone. But the assumptions worth surfacing differ: a builder asks "will this agent work?" while a mid-manager asks "will my team adopt this?" Same framework, different questions.
+4. **One file per module, not one file per variant.** Forking files = drift. The mid-management version of Module 4 should never drift from the Bootstrap version of Module 4's core exercises.
 
 ---
 
@@ -391,6 +329,20 @@ For non-technical people, "system" clicks when two things combine:
 2. **Automation** — "It runs without me. It did the work while I was in a meeting."
 
 Neither alone is enough. Persistence without automation is just a saved document. Automation without persistence is a one-shot script. Together, they make "system" tangible.
+
+### Progressive reveal: don't define the whole agent
+
+An agent is a 5-10-aspect thing (goal-oriented, multi-turn, autonomously-deciding, with LLM + harness + tools + context + guardrails + …). **Do not give the whole picture at the start — it overwhelms.** Each module turns on one aspect, as the exercise needs it:
+
+- Module 1 — context shapes output
+- Module 2 — persistence + automation = system; text file as the thing you author
+- Module 3 — coordination across agents (assembly line)
+- Module 4 — tool boundaries (skills)
+- Module 5-6 — reliability and steering
+- Module 7 — shared ownership
+- Module 8 — self-reference / compounding
+
+By the end, the student has the whole picture. At each moment, they have only the aspect the current work requires. Apparent contradictions between module-level definitions (*"agent = LLM + tools"* in prework vs. *"agent = markdown file"* in Module 2) resolve experientially, not in text — don't try to bridge them with a paragraph.
 
 ### Evals framing: strategic steering, not testing
 

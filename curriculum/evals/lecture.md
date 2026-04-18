@@ -74,12 +74,22 @@ The reader arrives curious, not pre-answered. If reading the lecture answers the
 ### Voice *(universal)*
 
 - **Main body writes TO the student (the reader), about their journey.** No facilitator instructions in the body. Phrases like *"To the room:"*, *"Pairs trade guesses"*, *"Hear one or two out loud"* are facilitator script and belong in facilitator notes (deferred artifact), not in the student-facing lecture. The student reading this file should feel addressed directly: *"You'll see..."*, *"Take a guess."*, *"Before you watch..."*
-- **Trailing sections below a `---` horizontal rule are allowed.** That space holds editorial metadata (TODOs, iteration log) AND facilitator notes (watch-fors, timings, decision points) for now. Facilitator notes will be extracted to a dedicated artifact later — don't mix them into the student-facing body. The `---` separator is the boundary between "for the student" and "for the production/delivery system."
+- **Trailing sections below a `<!-- maintainer -->` HTML comment are maintainer-only.** That space holds editorial metadata (TODOs, iteration log, frameworks riffed on, eval-run notes) AND facilitator notes (watch-fors, timings, decision points). The curriculum renderer strips everything after `<!-- maintainer -->` before rendering; it never reaches the student. **`---` is NOT the cut marker** — it's a legitimate horizontal rule that can appear in body prose. Use the HTML comment only.
 - Second person (`you`, not `the participant`, not `the room`)
 - **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-honesty about what we don't know. Questions to the reader welcome (sprinkled, not flooded). Dryness is a failure mode.
 - No consultant-speak
 - No jargon without earning it
 - No LLM-tell words: `honest`/`honestly`, `delve`, `landscape` (as verb), `importantly`, `crucial` (as padding)
+
+### Business-audience language *(universal — essential)*
+
+The reader is a business leader (SVP marketing, SVP operations, sales manager) — not a developer. These words **cannot appear in student-facing text unless this lecture (or a prior earned lecture/exercise in the arc) defines them plainly, tied to something the reader just experienced**:
+
+`embeddings`, `vector`/`vector database`, `RAG`/`retrieval-augmented generation`, `retrieval` (technical sense), `pipeline` (technical sense), `orchestration`/`orchestrator`, `schema` (use "rules"), `architecture` (use "layers"/"shape"), `subagent`, `frontmatter`, `prompt engineering` (use "prompting"), `framework` in technical senses like "RAG framework" (recognized business frameworks like StoryBrand/Toyota Kata are fine).
+
+An unearned tech word creates jargon anxiety — the reader takes the signal "three things I don't know, and the trainer assumed I did," not the signal the lecture intended. Check every paragraph by reading as an SVP marketing lead with zero technical background. Any flinch = replace or earn.
+
+Trailing sections below `<!-- maintainer -->` (facilitator notes, editorial metadata) are exempt.
 - Match the voice in `memory/copy-taste.md` and existing articles (`strategy/article-*.md`)
 
 ### Length *(universal, tune per lecture)*
@@ -110,6 +120,7 @@ Named examples, specific mechanics, concrete artifacts. Never generic:
 - Learning goal fit
 - Module-to-module arc
 - Exercise setup
+- Business-audience language (no unearned tech jargon)
 - Auto-fail red flags (none triggered)
 
 **Contributory judges** — can fail with a noted TODO. The content ships; the deferred polish is logged and picked up later.
@@ -130,6 +141,7 @@ Any of these = the lecture fails regardless of everything else. Fix before re-ru
 - **First person** (`I`, `we the trainers`) or third person (`the participant`) — must be second person
 - **Contains `---` YAML frontmatter** — the renderer doesn't parse it, renders as a horizontal rule
 - **More than one H1**
+- **Unearned tech jargon in student-facing text** — any of `embeddings`, `vector`/`vector database`, `RAG`, `retrieval` (tech sense), `pipeline` (tech sense), `orchestration`, `orchestrator`, `schema`, `architecture` (in the "software architecture" sense), `subagent`, `frontmatter`, `RAG framework`, `prompt engineering` appears without having been plainly earned in this or a prior lecture/exercise in the arc
 
 ---
 
@@ -164,6 +176,7 @@ Return your assessment as:
 | Learning goal fit | | |
 | Module-to-module arc | | |
 | Exercise setup | | |
+| Business-audience language | | |
 | Voice | | |
 | Length | | |
 | Specificity | | |

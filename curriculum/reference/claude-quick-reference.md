@@ -8,13 +8,26 @@ Scan, find what you need, copy the prompt. For deep feature documentation, each 
 
 ## Claude Code — install and open
 
-- **Desktop app** — download from claude.ai. macOS or Windows. No terminal needed.
-- **Web** — claude.ai/code. Nothing to install.
-- **Account tier** — Claude Pro or Team (for the training; your sponsor confirms the license).
+Primary surface for this training: **Claude Code desktop app.** macOS or Windows. No terminal required. Download from claude.ai, sign in, done.
 
-**Start a new project:** click *New Project*. Give it a name (e.g., `agents-102`). Claude Code opens with that project as its working directory — everything you do happens in that folder.
+- **Desktop app** — the one we use in class. Everything below assumes you're here.
+- **Web** — claude.ai/code. Works if you can't install locally; fewer features than desktop (connector set differs, scheduled triggers don't fire on a machine that isn't open).
+- **CLI** — exists and is powerful, but we don't use it. If you're comfortable with a terminal you can swap in, but you don't have to.
+- **Account tier** — Claude Pro or Team. Your sponsor confirms the license.
 
-*Official docs: [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) — install paths for macOS, Windows, and the web version.*
+*Official docs: [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview).*
+
+## Plan mode — look before you leap
+
+Claude Code has **plan mode**: Claude researches and proposes a plan instead of writing files immediately. You approve the plan, then Claude runs it.
+
+**Toggle it on:** Shift+P (or Shift+Tab cycles through permission modes — Default → Auto-accept → Plan → Auto; Plan is one of them).
+
+**When the footer reads *plan mode*** and you paste a prompt, Claude returns a plan. Read it. Ask for changes. When it's right, approve.
+
+**Toggle it off:** Shift+P again (or cycle with Shift+Tab back to Default).
+
+Use plan mode when a prompt is about to write many files, or touch anything you care about. Skip it for quick single-turn work.
 
 ## Working with files
 
@@ -40,17 +53,40 @@ Open filename.ext. Change the heading to "New heading." Save.
 
 *Official docs: Claude Code's file tools (Read / Write / Edit) and project scope.*
 
-## Connectors
+## Connectors — let Claude Code read your real data
 
-Connectors let Claude read data from other systems (your calendar, your inbox, your docs) without copy-paste.
+Connectors give Claude Code access to your actual calendar, inbox, Slack, Notion, GitHub, Linear, Drive. No copy-paste. No screenshots when this works.
 
-**Microsoft 365 (M365).** Your org's IT enables this at the tenant level. Once enabled, it appears in Claude's Connectors panel. Ask Claude naturally: *"List my meetings this week."* Claude uses the connector.
+**Enable a connector (desktop app):**
 
-**Google Workspace.** Similar — enabled at your Google org level. Once available, Claude has access to Calendar / Gmail / Drive depending on what was enabled.
+1. Click the **+** button next to the prompt box, or go to **Settings → Connectors**
+2. Pick the service (Gmail, Google Calendar, Slack, Linear, Notion, GitHub, etc.)
+3. Sign in with your work account — it's the same OAuth "sign in with Google/Microsoft" flow you've seen a hundred times
+4. Grant the specific permissions Claude asks for
 
-**No connector, no admin rights — the screenshot fallback.** Take a screenshot of whatever you want Claude to read (calendar week view, email list, whatever). Attach it to the chat. Write your prompt as if Claude is reading "the screenshot I just shared." Less automation, same result. Use this until IT enables the connector.
+Once enabled, ask Claude naturally: *"List my meetings this week."* Claude uses the connector.
 
-*Official docs: Anthropic's Connectors & Integrations documentation — what's available, what each connector can read/write, and the admin steps your IT needs to enable them at tenant level.*
+**M365 / Google Workspace — the IT-admin gate.** For a work account, the OAuth consent may need pre-approval from your IT admin at the tenant level (same as any third-party app). If authorization fails, that's the signal — ask IT to allow Claude Code.
+
+**Screenshot fallback.** If a connector isn't available or IT hasn't green-lit it yet, paste a screenshot of the calendar week view or inbox list. Write the prompt as if Claude is reading "the screenshot I just shared." Less automation, same teaching value. Use while waiting for IT.
+
+*Official docs: [Claude Code Desktop → Connectors](https://code.claude.com/docs/en/desktop).*
+
+## Scheduling — let Claude Code run on a clock
+
+Claude Code has three ways to schedule work. Pick the one that matches your intent.
+
+**Local scheduled task (GUI, desktop app — the everyday choice).** Sidebar: **Schedule → New task → New local task.** Name it, give it a prompt, pick a frequency (Daily 7:00am, Weekdays 9:00am, every 30 minutes, etc.). The task runs **on your laptop** when it fires. Inherits your connectors automatically.
+
+**Missed runs.** If the laptop was asleep at the scheduled time, Claude Code catches up **once** for the most recently missed slot when the app next comes online (within a 7-day window — older misses are dropped). So a daily task missed for three days runs once on wake, not three times in a row.
+
+**Time-aware prompts.** If a catch-up run firing at 11:00am for a 7:00am daily task would cause trouble, put the guardrail in the prompt itself: *"Only run if it's before 10:00am. Otherwise, report that you skipped today's run."* The scheduler will catch up; the prompt decides whether to actually do the work.
+
+**Routines (remote, runs in Anthropic's cloud).** Same Schedule sidebar: **New task → New remote task.** The Routine runs on Anthropic's infrastructure whether your laptop is on or not — but this assumes your files live in a Git repo in the cloud (typically GitHub), because the cloud runner needs somewhere to pull the working directory from. **Not what we use in this training** — our working directory is local on your laptop, not in Git. Good to know Routines exist; out of scope for these exercises. If your org already has a Git-backed workflow for AI work, Routines is the path later.
+
+**/loop (in-session only).** Type `/loop 5m <prompt>` and Claude runs the prompt every 5 minutes while the session is open. Closes when you close the session. Good for polling during a work block ("check the build every 5 minutes until it passes"). **Not** for morning automation.
+
+*Official docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [/loop](https://code.claude.com/docs/en/scheduled-tasks).*
 
 ## Skills
 

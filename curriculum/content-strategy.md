@@ -136,7 +136,7 @@ The funnel: Bootstrap → Make Your Own → Champions → Scale → Drive into V
 
 ## Prework
 
-**Done before training day. Three tasks + one read. ~30 min for the tool-comfortable, up to ~60 for a first-time user.**
+**Done before training day. One setup step + three tasks + one read. ~30 min for the tool-comfortable, up to ~60 for a first-time user.**
 
 ### Before you start (5 min setup check)
 
@@ -144,15 +144,25 @@ The funnel: Bootstrap → Make Your Own → Champions → Scale → Drive into V
 - **Claude Code installed.** Use the **desktop app** (macOS/Windows) or the **web version** (claude.ai/code). **No terminal required.** If you've never used a terminal, stay with desktop or web.
 - **An hour.** More than it sounds like; less than it feels like.
 
+### Step 0 — Your training working directory (5 min)
+
+You need one folder on your machine that holds everything you build across the training. Create it anywhere convenient — Desktop, Documents, wherever. Name it `agents-102-bootstrap/`.
+
+Then download the **training starter zip** (link in your welcome email) and unzip it *inside* that folder. You'll see empty subfolders appear: `prework/`, `module-1/`, `module-2/`, … through `module-8/`. That's your training home for two days.
+
+For the prework tasks below, **open the `prework/` subfolder in Claude Code** — not the whole root. Your workspace changes at three seams across the training: `prework/` now, `module-1/` on Day 1, the `agents-102-bootstrap/` root from Day 2 onward. Within each scope, files land in the right subfolder (on Day 2 the Module 2 brief writes to `module-2/challenge.md` from the root — you don't reopen for each artifact). Two folder switches total. The workspace stays clean without you thinking about it.
+
+*Not in OneDrive, Dropbox, or Google Drive.* A synced folder and an agent writing files at the same time fight each other. Keep this folder local.
+
 ### Task 1 — Snake game (10 min)
 
-Open Claude Code. Start a new project. Paste this prompt:
+In Claude Code, with `prework/` open, paste this prompt:
 
 ```
-Build me a snake game as a single HTML file. Save it as snake.html in this project.
+Build me a snake game as a single HTML file. Save it as snake.html.
 ```
 
-Claude writes the file. Open `snake.html` in your browser. Play. Keep the file.
+Claude writes the file. Open `snake.html` in your browser. Play.
 
 *Proof: Claude Code can write code and save files on your machine.*
 
@@ -163,13 +173,13 @@ Two paths. Pick whichever matches your setup.
 **Path A — connector enabled** (Microsoft 365 or Google Workspace). Paste:
 
 ```
-List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt in this project.
+List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
 ```
 
 **Path B — no connector / no admin rights.** Attach a screenshot of your calendar week view. Then paste:
 
 ```
-Based on the calendar screenshot I just shared, list my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt in this project.
+Based on the calendar screenshot I just shared, list my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
 ```
 
 *Proof: Claude can read your real work data — in whichever shape you can provide it — and produce a useful summary.*
@@ -182,11 +192,15 @@ Open `curriculum/supplementary/what-is-an-agent.md`. Read section 1: **LLM vs ch
 
 ---
 
-You arrive on Day 1 with: Claude Code working, a snake game, a meetings summary, and a 2-page read. Module 1 just gets going.
+You arrive on Day 1 with: a working directory ready for every module, Claude Code working, a snake game, a meetings summary, and a 2-page read. Module 1 just gets going.
 
-**Personal agents** (daily planner, email triage, or similar scheduled agents) — too ambitious to self-serve before class. **Moved to Module 2 prework** where Module 1's context is under the belt.
+**On Day 1, you'll open `module-1/` in Claude Code** — a genuinely empty folder. That's on purpose. Prework artifacts stay in `prework/`; Module 1 starts with nothing primed. On Day 2, you'll reopen at the `agents-102-bootstrap/` root — Module 2 ships a scaffold that unzips there, and from then on the root is home for the rest of the training.
 
-> CUSTOMER: Claude Code licenses (Pro or Team tier) for all participants. Calendar connector (M365 or Google Workspace) enabled by IT before the cohort — or explicit acknowledgement that some participants will use the screenshot fallback.
+**Module 2 has its own prework — name your next big challenge.** You'll get that assignment about a week before Day 2, once the first day is under your belt. That's the brief you'll build on for the rest of the training.
+
+**Personal scheduled agent** (daily planner, email triage, or similar) is now **Module 2 homework** — after you've built the brain, you schedule a daily touch with it. Easier as a follow-on than a cold prework task.
+
+> CUSTOMER: Claude Code licenses (Pro or Team tier) for all participants. Calendar connector (M365 or Google Workspace) enabled by IT before the cohort — or explicit acknowledgement that some participants will use the screenshot fallback. Training starter zip hosted somewhere participants can download (private site, customer SharePoint, or email attachment).
 
 ## Every student ships at least one real agent
 
@@ -212,44 +226,46 @@ Standing promise of the training. Over the course of Bootstrap, every participan
 
 ## Building Agent Systems
 
-**Big idea:** A system remembers, grows, and compounds. Chat doesn't. Your company's own content is the foundation.
+**Big idea:** A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can't.
 
-**Start the LLM brain. Build agents that use it. The company's content runs through everything from here.**
+**Build your challenge brain. Three sources, your real challenge, agents that work on it from Day 2 onward.**
 
-Each company brings their own content and goals — pre-agreed with the sponsor. One company has an AI-ready product knowledge base. Another has a great security/compliance process. Another has competitive intelligence they want to systematize. That content becomes the LLM brain, and the brain becomes the backbone of every exercise from Module 2 onward.
+A week before Day 2, each participant gets the Module 2 prework: **name your next big challenge.** The thing you actually need to move forward on at work — not a company-wide initiative, not a generic topic. The training brain is built around that. Three sources feed it: your Confluence, your Office365 workspace, and curated internet best practice on the challenge. The brain becomes the backbone of every exercise from Module 2 onward.
 
-The exercises are structurally the same across companies. What changes is what's inside the brain.
+The exercises are structurally the same across companies. What changes is whose challenge the brain serves.
 
-> CUSTOMER: Company knowledge base / content for the LLM brain. Pre-agreed with sponsor. Examples: product knowledge base, compliance process docs, competitive intelligence files, customer insights database/files. Must be in a format agents can read (text, markdown, PDF, structured data). This is the backbone of every exercise from here onward.
+> CUSTOMER: Participants will work on a live personal challenge — confirm this is acceptable to the sponsor. Confluence and Office365 connectors available for the cohort (IT enabled before Day 2). Participants are willing to share the *shape* of their work with the room for peer review — not the confidential content. No company-wide knowledge base pre-stage required.
 
-- Connections: "How many of you saw the Karpathy LLM wiki post? What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you?"
-- Concept: Three layers — raw sources (the company's content, immutable), wiki/brain (LLM-maintained, compounding), schema (the rules — CLAUDE.md)
-- Exercise: **Stand up your company brain** — Ingest the company's source materials. Watch the agent build the initial knowledge pages, add cross-references, refine summaries as you feed in more. Build an agent that does real work drawing from the compiled knowledge — drafting, checking, synthesizing. Query the brain directly. Let the agent lint its own brain for contradictions, gaps, stale claims. The system maintains itself.
-- Teaching moment: Persistence + automation = system. It remembers. It runs. It grows. And it's YOUR content — not generic.
-- Lecture: **"Compounding"** — how to make your agent learn and self-correct. Each cycle builds on the last. The brain gets sharper, not just bigger. Self-correction as a design pattern, not a wish. Reference: Pawel Huryn and his pragmatic instructions (see his X.com feed for specific recommendations).
-- Concept (emergent): File-based architecture. Why markdown files beat databases for this. The LLM writes text and is best at text.
-- Reflection: "What other content from your company would you feed this? What would change if your whole team had access to this brain?"
-- Bridge: You have agents doing real work with your content. But the job is getting too big for one agent. What do you split?
+- Connections: "Karpathy keeps a wiki about himself — not a chat history, a wiki he maintains with an LLM's help. How does that feel different from the last time you asked ChatGPT about something? And the challenge you named last week — what would it mean to have a wiki like that about *it*?"
+- Concept: Three layers — raw sources (your Confluence, Office365, curated internet best practice — immutable), wiki/brain (LLM-maintained, compounding), the rules file (CLAUDE.md)
+- Exercise: **Build your challenge brain** — Curate your three sources: what from Confluence, what from Office365, what internet best practice on the challenge. Plan mode first, then ingest: the agent proposes a topic list, you approve, it writes the brain. Build your first custom agent as a plain markdown file (instructions the model reads — what it's for, plus rules) that does one real job serving the challenge with source citations. Add a second batch of sources and watch existing pages *sharpen* instead of grow. Let the brain lint itself for contradictions, gaps, stale claims — you approve each proposed fix. Swap brains with a neighbor and notice how specific each one is to the person's challenge. The system maintains itself; the agent is text; the substrate is consistent — and it travels.
+- Teaching moment: Persistence + automation = system. It remembers. It runs. It grows. And it's YOUR challenge — not generic.
+- Lecture: **"Compounding"** — how to make your agent learn and self-correct. Each cycle builds on the last. The brain gets sharper, not just bigger. Self-correction as a design pattern, not a wish.
+- Concept (emergent): File-based shape. Why markdown files beat databases for this. The LLM writes text and is best at text.
+- Reflection: "What else about this challenge would you feed the brain? What would change if two colleagues working on the same challenge shared one?"
+- Debrief: The Module 1 retro pattern, adapted — plus one new move: name the **crux** of your challenge as you see it right now. (Don't polish it. First pass. The crux skill ships here as a lightweight deposit; Module 8 picks it up again with Rumelt fully named.)
+- Homework: **Personal agent homework** — schedule a daily touch with your challenge brain. The scheduled-agent pattern moves here from prework — easier once the brain exists.
+- Bridge: You have an agent doing real work on your challenge. But the job is bigger than one angle. What do you split?
 
 ---
 
 ## Multi-Agent Systems
 
-**Big idea:** Split the work. Each agent does one step and passes it forward.
+**Big idea:** One challenge, three angles. Each agent sees a slice the others miss.
 
-**User sentiment analysis. Three agents, two rounds each, one synthesis.**
+**Three lenses on your challenge brain. Two rounds each. One synthesis.**
 
-Prework: Agent memory — agentic RAG vs. traditional RAG, filesystem as memory. Agent tools and MCP.
+Prework: Agent memory — filesystem as memory, how agents carry context between runs. Agent tools.
 
-- Connections: "Your brain agent does everything. What if you had specialized agents that each see a different part of reality?"
+- Connections: "Your challenge brain does everything at once. What if you had three agents, each asking a different question of the same brain — and none of them the polite one?"
 - Concept: The assembly line — each agent does one job, passes work forward. Sequential pipeline, not a mesh.
-> CUSTOMER: Customer insights data — support tickets, NPS results, feedback forms, or similar. Also: list of review platforms where the company is discussed (G2, App Store, Trustpilot, etc.) and key competitors to monitor.
+> CUSTOMER: No additional data pre-load. The exercise runs on the challenge brain built in Module 2.
 
-- Exercise: **Assembly-line sentiment analysis** — Build three specialised agents that each see a different slice of reality: direct customer feedback (support tickets, NPS, feedback forms), public reviews (G2, App Store, Trustpilot, Reddit), and competitor remarks (same public sources, different lens). Run each agent for two rounds — round two shows the brain sharpening as new sources confirm, contradict, or deepen round one. Synthesize across all three. The finding no single agent could produce: "customers complain about X, competitor Y is praised for X." Internal perception vs. external reality.
+- Exercise: **Three lenses on your challenge** — Build three specialised agents that each interrogate your challenge brain from a different angle: *the risk lens* ("what's the biggest risk I'm not seeing?"), *the stakeholder lens* ("who haven't I engaged yet, and why does that matter?"), *the cheap-experiment lens* ("what's the smallest thing I could run this week to learn something real?"). Each agent reads the same brain but with a different instruction set. Run each for two rounds — round two sharpens as the agent notices what it missed. Synthesize across all three. The finding no single agent could produce: the risk you can only see once the stakeholder lens names who's been left out, and the experiment cheap enough to survive it.
 - Teaching moment: The seams are where it fails. Multi-agent coordination is a handoff problem. What happens when one agent's output is noisy or biased?
-- Lecture: **"Setting Up Proper Competitor Analysis"** — tips and tricks for scraping the internet (what works, what doesn't, what breaks). Synthesis techniques: how to turn noisy multi-source data into findings that hold up.
-- Concept (emergent): When is one agent better than three? Not always obvious. Three agents here because they see genuinely different data — not because splitting is inherently better.
-- Reflection: "What surprised you in the synthesis? Did any finding contradict what your company believes about itself?"
+- Lecture: **"Setting Up Proper Multi-Angle Analysis"** — what works, what doesn't, what breaks. Synthesis techniques: how to turn three agents' takes into findings that hold up.
+- Concept (emergent): When is one agent better than three? Not always obvious. Three agents here because they genuinely ask different questions — not because splitting is inherently better.
+- Reflection: "What surprised you in the synthesis? Did any lens contradict what you already believed about this challenge?"
 - Bridge: You built something that works. But can you trust it? Tomorrow we break it.
 
 ---
@@ -311,17 +327,17 @@ Prework: Ethan Mollick — "Garbage Can and Bitter Lesson."
 
 ## From Personal to Team
 
-**Big idea:** Your agent works for you. Making it work for the team is a different problem.
+**Big idea:** Your challenge brain works for you. Making it work for your team is a different problem.
 
-**Promotion: personal → team → company. What changes, what breaks.**
+**Promotion: personal → team → company. What changes, what breaks. Your Module 2 brain is the thing being promoted.**
 
 Prework: 8 short stories on how the best have scaled personal agents to team/company level (TODO: curate). Must include variance — different approaches, different scales. Must include: a skill-based story (team capability encoded as a skill), a recurring simple agent running in the cloud (cron job, not enterprise platform). Goal: show there's no single right way.
 
-- Connections: "You've built something that works on your laptop. What would need to change for your whole team to use it?"
-- Exercise: **Promote from personal to team** — List everything personal about your system: credentials, context, assumptions baked into guardrails — everything that breaks when someone else runs it. Redesign for the team: shared access to the brain, governance (who can ingest sources? who changes schema? who sees output?). Hand the whole thing to a pair partner. Can they run it? Can they get useful output without your context? Where does it fail?
-- Teaching moment: The personal → team gap is not technical. It's about shared context, trust, and ownership. The agent that works because YOU know what it means doesn't work when 10 people interpret the output differently.
-- Concept (emergent): The promotion path. Personal agents, team agents, company agents are different products. Promotion means redesigning, not just sharing.
-- Reflection: "Who in your organization would own this system? Who decides what goes into the brain? Who's accountable when the output is wrong?"
+- Connections: "Your challenge brain has been quietly working for you for a day and a half. Imagine handing it to a teammate tomorrow morning. What would go wrong by 10am?"
+- Exercise: **Promote your challenge brain** — Your Module 2 brain knows your challenge. It also knows things only you know — your read of who's political, the shortcut you take because you trust your own judgment, the credential you quietly dropped in a rule. List everything personal about it. Redesign for the team: shared access, governance (who adds to the brain? who changes the rules? who sees the output?), the parts that need a named owner rather than an individual hunch. Hand the whole thing to a pair partner. Can they run it? Where does it fail — and is the failure technical, or a question of shared understanding?
+- Teaching moment: The personal → team gap is not technical. It's about shared context, trust, and ownership. The brain that works because YOU know what it means doesn't work when 10 people interpret the output differently.
+- Concept (emergent): The promotion path. Personal, team, and company brains are different products. Promotion means redesigning, not just sharing.
+- Reflection: "Who in your organization would own this brain? Who decides what goes in? Who's accountable when the output is wrong?"
 - Bridge: You can build agents, secure them, evaluate them, and scale them to a team. What if you didn't have to build each one by hand?
 
 ---
@@ -339,7 +355,7 @@ Prework: Risto — acting on the future and building hypotheses. Rumelt — crux
 - Connections: "You've each built agents for one part of the initiative. What happens when they all run together?"
 - Demo: **Agent generates agent** — the meta-tool in action. Sets up the Extend exercise.
 - Exercise: **Extend your system** — Use Claude Code to generate a new agent that extends your system — a new data source for the brain, a new kind of output, a new perspective. You describe what you want. The coding agent builds it. It works. That's multiplication.
-- Exercise: **Joint Double Diamond — diagnose and guide** — Everyone's agents run on shared context. First: agents synthesize a Rumelt-style crux list — real obstacles to the agentic transformation here, grounded in 8 modules of hands-on evidence. Agents prioritize. The room validates. Then: the CTO's agent takes the top 3 cruxes and drafts the guiding policy — how to resolve each one. Everyone's agents feed in actions and recommendations grounded in what they built. Personal agents cross-pollinate — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy.
+- Exercise: **Joint Double Diamond — diagnose and guide** — Everyone's agents run on shared context. Three thinking skills run in sequence to do the heavy lifting: **crux** (Rumelt — find the load-bearing obstacle, not the long list), **assumption-test** (Roger Martin — what would have to be true for this guiding policy to work?), **pre-mortem** (Klein/Kahneman — it's 18 months from now and this failed; why?). First diamond: each agent runs the **crux** skill against its own module's hands-on evidence; the room synthesizes a shared crux list and picks the top three. Second diamond: the CTO's agent drafts a guiding policy for the top three cruxes; everyone's agents run **assumption-test** on it, then **pre-mortem** against it. Personal agents cross-pollinate — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy, with its load-bearing assumptions named and its most likely failure modes pre-identified.
 - Teaching moment: Self-improvement — each cycle makes the next one better. They just saw it: Diamond 2 output was sharper than Diamond 1 because agents built on each other's work.
 - Teaching moment: Org capability — 20 people just produced a Rumelt-style strategy kernel (diagnosis + guiding policy + coherent actions) that no consultant could deliver, because it's grounded in hands-on experience with the company's own content. And the agents did the synthesis.
 - The deliverable: The synthesized AI strategy IS the executive recommendation. Not co-created on a whiteboard — produced by the system they built.
@@ -395,33 +411,60 @@ The content produced through this loop is itself a demonstration of Module 6's p
 Bootstrap training — snapshot of what exists. Refresh this section at the end of every significant session.
 
 **Fully built:**
-- **Training-level:** prework (snake / calendar / mental-frame read), training index page at `site/curriculum.html`
+- **Training-level:** prework (Step 0 working-dir setup / snake / calendar / mental-frame read), training index page at `site/curriculum.html`
+- **Training starter scaffold:** `curriculum/scaffolds/training-starter/` — `prework/` folder + `module-1/` through `module-8/` with READMEs + root README. This zips to the training-starter.zip participants download during prework. Three-opens rule documented: `prework/` for prework, `module-1/` for Day 1, root for Day 2 onward.
 - **Module 1 (Getting Going):** module file, Opening lecture (Context is King), Personal site with guardrails exercise (6 phases), Closing lecture (What just happened), Debrief (Claude retro)
+- **Module 2 (Building Agent Systems):** module file with Connections + Prework Exercise link + Debrief, **Name your challenge** (`name-your-challenge.md`, Module 2 prework — delivered ~1 week before Day 2), **Build your challenge brain** exercise (`build-your-challenge-brain.md` — 3-source curation of Confluence/O365/internet best practice, plan mode, first custom agent, compound-on-second-batch, self-lint, neighbor swap), **Personal agent homework** (`personal-agent-homework.md` — schedule a daily touch with the brain; moved from prework to post-module), Compounding lecture, **crux skill deposit** in the Debrief (lightweight first-pass — Rumelt gets named fully in Module 8), Module 2 starter scaffold (`curriculum/scaffolds/module-2-starter/`). Main exercise APPROVE WITH TODOs after Pass 1 judge + Pass 2 simulation — **needs a re-run after the reframe from company brain to challenge brain.**
 - **Module 6 slice:** Evals as steering lecture (prework), Steering eval exercise
 - **Supplementaries:** What is an Agent section 1 (the other two supplementaries are outline-only stubs)
 - **Reference:** Claude quick reference (install, files, connectors, skills, subagents, troubleshooting)
-- **Eval system:** lecture.md + exercise.md templates, 5 filled instances with eval-run logs, simulation protocol with 6 known Claude-behavior patterns
+- **Eval system:** lecture.md + exercise.md templates (new Business-audience-language judge added 2026-04-17), 6 filled instances with eval-run logs, simulation protocol with 6 known Claude-behavior patterns
+- **Distribution convention:** documented in `curriculum/CLAUDE.md` → Material Distribution section (working-dir tree, zip rules, living root CLAUDE.md, no-sync rule)
 
 **Partially built (module files exist as spines, content still needed):**
-- Modules 2, 3, 4, 5, 7 — module files have metadata, LOs, exercise/lecture names, bridge. Content files not yet written.
-- Module 8 — module file exists; Joint Double Diamond exercise and agent demo not written.
+- Modules 3, 4, 5, 7 — module files have metadata, LOs, exercise/lecture names, bridge. Content files not yet written. Module 3 reframed to "three lenses on your challenge brain" (was company-wide customer feedback). Module 7 reframed to "promote your challenge brain" (was generic personal → team).
+- Module 8 — module file exists; Joint Double Diamond exercise and agent demo not written. Three thinking skills shipped in scaffold: **crux** (Rumelt), **assumption-test** (Roger Martin), **pre-mortem** (Klein/Kahneman). Joint Double Diamond runs them in sequence. The `crux` skill debuts briefly in Module 2's Debrief.
 
 **Open TODOs across the curriculum:**
 - Backfill Debrief sections for modules 2–8 (Module 1 is the reference pattern)
 - Consider renaming Module 1 to "Context is King" (requires cascade — see TODO comment at top of `trainings/bootstrap/getting-going.md`)
 - Supplementaries `building-guardrails.md` and `learning-and-compounding-systems.md` are outlines; sections fill in as their modules are built
 - Facilitator notes across all artifacts deferred per student-facing-first rule (below `---` rule; will be extracted to a dedicated artifact later)
-- Module 2 prework (personal scheduled agent) not yet scaffolded — students build on the connector proven during training prework
+- Module 2 prework (`name-your-challenge.md`) and Module 2 homework (`personal-agent-homework.md`) not yet scaffolded
+
+**Open TODOs from critical-review pass (2026-04-17):**
+- ~~**What-is-an-agent definitional wobble.**~~ *Resolved 2026-04-18.* Not a real problem — the gradual-reveal doctrine is the answer. An agent is a 5-10-aspect thing; each module turns on one aspect as the exercise needs it. Apparent contradictions between module-level framings resolve experientially, not in text. **Do not bridge them with a paragraph.** Principle now codified in `lecture-guardrails.md` → Teaching principles → "Progressive reveal: don't define the whole agent." Side-fix: the "never line" framing we had invented is gone — it's not part of classical agent architectures; the hardest constraint is just a high-priority rule.
+- ~~**Snake game promise unfulfilled.**~~ *Resolved 2026-04-18.* Snake is prework only — a one-shot proof that Claude Code writes files to your machine. Nothing more. The "glance at it again" line was already removed from prework.
+- **Capability verification overdue for Module 2 homework.** `personal-agent-homework.md` instructs *Schedule sidebar → New task → New local task* in the Claude Code desktop app. Per the capability-check rule (verify before drafting, not from memory), run a `claude-code-guide` agent pass before the next delivery. Prior sessions missed features; assume this is stale.
+- **No student-facing connector pre-check in Module 2 prework.** `name-your-challenge.md` says *"no connectors required for this prework"* — true for that task, but Day 2's Phase 1 leans hard on Confluence + OneDrive connectors. Add a pre-check step to Module 2 prework: "verify your Confluence and OneDrive connectors work now, not on Day 2 morning." Connector admin approval is slow; students with broken connectors on Day 2 lose Phase 1.
+- **Reading-list redundancy check.** Module 1 homework = Antti's LLM brain post. Module 2 prework = Karpathy's LLM Wiki post. Both cover maintained-knowledge-via-LLM. Confirm they earn their seats independently — if one subsumes the other, cut the duplicate. Worth a side-by-side read.
+- ~~**Exercise-led rule vs. Module 1 opening lecture.**~~ *Resolved 2026-04-18.* Rule refined in `lecture-guardrails.md`: no *telling* precedes doing, but *showing* (a live demo the student watches) counts as experience. Module 1's opening lecture stands — priming via demo is necessary when there's no prior experience to reflect on.
+- **Module 2 one-big-idea density.** Stated big idea: "a system remembers, grows, and compounds." Module 2 actually teaches persistence, custom-agent-as-markdown, plan mode, three-layer architecture, self-maintenance, crux naming. Six moves. Some hang on the big idea; some are orthogonal. Honest review needed: is this compounding-as-throughline, or Module 2 overloaded?
+- **Philosophy callout session-level budget.** Rule: 1-2 callouts per lecture max. Compounding lecture uses beliefs #3 + #12; What-just-happened lecture uses beliefs #2 + #3. Belief #3 appears in both — within-lecture budget but student hears it twice in one day. Need a session-level callout register or explicit "repetition across lectures is fine when intentional" note.
+- **Productive-failure doctrine vs. prework friction-removal.** `lecture-guardrails.md`: failure is the teaching moment. Recent prework edits added fallbacks and connector pre-checks. Not a contradiction — training-day failures are designed-in, prework failures lose the student. But the line isn't articulated. Add a one-line rule somewhere: *"Design failure INTO training; design it OUT of prework and setup."*
+- **"Each task opens the folder where its artifact lands" — rule phrasing drift.** Implied reading: every artifact justifies its own folder-open. Actual design: three session seams (prework, Module 1, Day 2), and within each seam artifacts write to the right subfolder. Tighten phrasing in `curriculum/CLAUDE.md` Material Distribution section and in `content-strategy.md` prework Step 0.
+
+**De-duplication sweep (ongoing):**
+Working-folder instructions were one instance of a broader pattern: the same rule/definition appearing in multiple files, each drifting at its own rate. Each sweep should pick one topic, confirm the single canonical home, and reduce everywhere else to a one-line reference. Candidates (in rough order of drift risk):
+- Prompt-design rules (`curriculum/CLAUDE.md` ↔ `.claude/skills/content-creation/SKILL.md` — currently duplicated; SKILL.md should own them, CLAUDE.md should reference).
+- Simulation protocol (same — SKILL.md owns; CLAUDE.md references).
+- "What is an agent" progression (supplementary owns; lectures/exercises reference rather than re-define).
+- CLAUDE.md content rules for student-facing voice (curriculum/CLAUDE.md vs lecture-guardrails.md — confirm one owns, the other references).
+- Business-audience-jargon ban list (memory vs curriculum/CLAUDE.md — reconcile).
+- Research quality protocol (project CLAUDE.md vs subagent injectable block — already has a canonical home; confirm no drift into curriculum files).
+
+The rule for every sweep: one canonical home per piece of content; everywhere else uses a one-line reference (by path). If a reader needs detail, they follow the link. Drift dies when there's only one place to edit.
 
 **Workstream priorities (in rough order):**
-1. Module 2 content (Building Agent Systems — LLM brain exercise + Compounding lecture)
-2. Module 2 prework (personal scheduled agent — daily planner / email triage)
-3. Modules 3–5 content
-4. Supplementary sections as their modules land
-5. Module 7 content
-6. Module 8 content (Extend + Joint Double Diamond)
-7. Facilitator notes pass across everything
-8. Second training variant (mid-management) — reuse exercises/lectures/supplementaries; new `trainings/mid-management/` module files with audience-specific framing
+1. **Module 2 eval + simulation RE-RUN** — the exercise reframed from "company brain" to "challenge brain" (3 sources: Confluence, O365, internet best practice; personal challenge, not shared company KB). Previous APPROVE WITH TODOs verdict is stale; re-evaluate against the new shape.
+2. **Name your challenge** prework (`name-your-challenge.md`) — Module 2 prework, delivered ~1 week before Day 2. Needs scaffold + eval.
+3. **Personal agent homework** (`personal-agent-homework.md`) — scheduled daily touch with the brain; moved from prework to Module 2 homework.
+4. Modules 3–5 content
+5. Supplementary sections as their modules land
+6. Module 7 content
+7. Module 8 content (Extend + Joint Double Diamond with the three thinking skills: crux, assumption-test, pre-mortem)
+8. Facilitator notes pass across everything
+9. Second training variant (mid-management) — reuse exercises/lectures/supplementaries; new `trainings/mid-management/` module files with audience-specific framing
 
 **Content types in use** (see `CLAUDE.md` for decision tree): lectures (inlined, single-sitting), exercises (inlined, one bounded activity), supplementaries (not inlined, progressive reference), quick reference (not inlined, flat lookup with pointers to official docs).
 

@@ -64,7 +64,7 @@ Pacing: 5–7 min shared-case warmup; 10–12 min design; 8–10 min iterate + p
 
 **Time:** 25–30 minutes. Banter welcomed and expected.
 
----
+<!-- maintainer -->
 
 **TODO (sharpening suggestions, APPROVE verdict — 2026-04-17):**
 - "Divergence IS the data — one eval, many reads" is strong but buried in Phase 1 prose — isolate as its own beat.

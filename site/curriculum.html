@@ -97,6 +97,7 @@
                         if (!res.ok) throw new Error('Not found: ' + path);
                         return res.text();
                     })
+                    .then(stripMaintainerTail)
                     .then(expandIncludes)
                     .then(function (md) {
                         container.innerHTML = marked.parse(md);
@@ -108,6 +109,23 @@
                         container.innerHTML = '<h1>Could not load</h1><p>' + esc(err.message) + '</p><p><a href="curriculum.html">Back to index</a>.</p>';
                         document.title = 'Load error — Agents 102';
                     });
+            }
+
+            // Everything below a `<!-- maintainer -->` HTML comment on its own line is
+            // maintainer metadata — editorial notes, facilitator intel, eval logs, TODO lists —
+            // and must not reach the student. Cut it off before rendering. We use an HTML
+            // comment rather than `---` as the cut marker because `---` is legitimately used
+            // in body prose as a visual horizontal rule (see prework, quick-reference,
+            // supplementary files). The HTML comment is invisible in any markdown renderer and
+            // only the cut sentinel — no collision risk.
+            function stripMaintainerTail(md) {
+                var lines = md.split('\n');
+                for (var i = 0; i < lines.length; i++) {
+                    if (/^<!--\s*maintainer\s*-->\s*$/i.test(lines[i])) {
+                        return lines.slice(0, i).join('\n').replace(/\s+$/, '');
+                    }
+                }
+                return md;
             }
 
             // Bottom nav:
@@ -165,6 +183,8 @@
                     matches.forEach(function (mm) {
                         var content = map[mm.path];
                         if (content !== null && content !== undefined) {
+                            // Strip maintainer tail so it doesn't bleed into module pages
+                            content = stripMaintainerTail(content);
                             // Linkify the first H1 so the included exercise/lecture title
                             // becomes a link to its standalone view.
                             var standalone = mm.path.replace(/\.md$/, '');

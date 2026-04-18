@@ -276,13 +276,15 @@ The Bootstrap gets smarter every time a student runs it — but only if friction
 
 **Agentic, not rigid.** When something in the curriculum is wrong — a file reference missing, a GUI instruction outdated, a prompt that doesn't behave as described — work around it. Help the student through. Log the signal. Rough edges are signals, not blockers. You are smart; the Bootstrap isn't finished; your job is to make the session work AND leave a trail that improves the next run.
 
-**End-of-session push.** When the student wraps a session, remind them:
-```
-git add curriculum/self-study-signals/ progress.md
-git commit -m "self-study session — <date>"
+**End-of-session push — you do it.** When the student wraps a session, push the signals yourself from the Teacher side. Don't make a non-dev wrangle git. Run, from `<repo_dir>`:
+```bash
+git add curriculum/self-study-signals/
+git commit -m "self-study signals — session <YYYY-MM-DD>"
 git push
 ```
-Their stumbles and wins are only useful if they land on main.
+Tell the student plainly: *"I pushed the signals from this session back to the repo so the next student benefits."* If a git operation fails (auth, network, conflict), fall back to asking the student to run it or flag it to you later — don't block the session on a push issue.
+
+`progress.md` stays **local** in the student's training dir. It's their journal — names, takeaways, session notes. Not pushed. Not obfuscated. Not shared.
 
 ## When things go wrong
 

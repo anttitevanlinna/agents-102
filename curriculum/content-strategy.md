@@ -411,6 +411,7 @@ The content produced through this loop is itself a demonstration of Module 6's p
 Bootstrap training — snapshot of what exists. Refresh this section at the end of every significant session.
 
 **Fully built:**
+- **Self-study delivery mode:** `/self-study` skill at `.claude/skills/self-study/SKILL.md` (also planted in the training-starter scaffold so the student's training dir gets it). Facilitator skill that sets up the working directory (`~/Documents/self-study/` default), starts the lecture server in the background from the Claude Code session itself (no second terminal), tracks progress in `progress.md`, and holds the 4 Cs cadence per module as a 1:1 conversation. Config file at `~/.claude/agents-102-self-study.json` stores training-dir path, repo path, and chosen port. Student journey: clone repo → `claude` → `/self-study`. Onboarding section in repo root `README.md`.
 - **Training-level:** prework (Step 0 working-dir setup / snake / calendar / mental-frame read), training index page at `site/curriculum.html`
 - **Training starter scaffold:** `curriculum/scaffolds/training-starter/` — `prework/` folder + `module-1/` through `module-8/` with READMEs + root README. This zips to the training-starter.zip participants download during prework. Three-opens rule documented: `prework/` for prework, `module-1/` for Day 1, root for Day 2 onward.
 - **Module 1 (Getting Going):** module file, Opening lecture (Context is King), Personal site with guardrails exercise (6 phases), Closing lecture (What just happened), Debrief (Claude retro)

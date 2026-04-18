@@ -28,6 +28,21 @@ Then type `/research` — the system orients you and asks what you're trying to 
 
 Or go straight to a question: *"Which platform should we build on?"* — and the system answers from 74+ research cycles of evidence.
 
+## Do the Training (Self-Study)
+
+Agents 102 Bootstrap is normally delivered in-person, 2-day intensive, with a trainer. You can also do it alone at your own pace — Claude Code becomes your facilitator.
+
+**Prerequisites:** repo cloned (you're here); Claude Code installed; Python 3 (pre-installed on macOS and most Linux).
+
+```bash
+cd agents-102
+claude
+```
+
+In Claude Code, type `/self-study`. The facilitator skill sets up your working directory (`~/Documents/self-study/` by default), starts the lecture server in the background itself (no separate terminal needed), tracks your progress across sessions, and walks you through the 4 Cs of each module — Connections, lecture read, exercise phases, Debrief.
+
+Expect ~14 hours total. Split it however fits — 30-minute sessions, a full weekend, a module a week.
+
 ## Example
 
 **You ask:** "Which domain is leading in agentic — why?"

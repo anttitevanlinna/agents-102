@@ -411,6 +411,8 @@ Strategies 3 and 4 are close cousins with opposite defaults: 3 is *push* (the ag
 
 Prework: 8 short practitioner stories, organised under the four strategies — context-share / skill-share / output-push / interface-pull (TODO: curate). Explicitly no "shared agent" story because those don't really work. Goal: show there's no single right way *and* show why "share the whole agent" isn't on the list.
 
+**TODO — add research-backed pre-read** (see Audit Notes below): bundle the *absorption bottleneck* (L4), *Access-Trust Gap* (Pattern 47, L4), and *announcement-to-deployment gap* (Pattern 31, L3) into a single short pre-read. Three walls practitioners hit when they try to scale past themselves. Primes the M7 generosity mood honestly — not as ceremony, but as meeting real constraints.
+
 - Connections: "Your challenge brain has been quietly working for you for a day and a half. What would you want your teammate to actually *have* — your folder, one of your skills, the morning output, or a way to ask it a question in Slack? And why that one?"
 - Exercise: **Pick a sharing strategy, ship it** — Ask the M7 question: *"I wonder if others could benefit?"* Pick ONE of the four proven strategies based on your challenge and team context. **Strategy A (share the context):** give a teammate a copy of your `brain/`, `sources/`, `CLAUDE.md`, `style.md` — they build their own agent on top of your curation. **Strategy B (share a skill):** extract one scoped capability from what you've built into a skill file — teammate plugs it into their agent. **Strategy C (share the output / push):** schedule your agent in the cloud (or on a recurring local run), deploy the output somewhere the team sees it. **Strategy D (share an interface / pull):** wrap your agent in something teammates can invoke — a Slack bot, a Teams @mention, a web form — and let them ask it questions in their own words. Pick ONE; redesign accordingly. In pairs: one partner experiences your chosen strategy from the receiving end. The real question isn't *does it work?* — it's *why did you pick this strategy for this challenge and this team?*
 - Teaching moment: "Shared agent" sounds sensible and is vendor-shaped ceremony. The real sharing is at context, skill, output (push), or interface (pull) — and the choice between the four IS the design decision. Different challenges want different strategies; different teams absorb different strategies. The room will split across all four, and that's the point.
@@ -598,3 +600,26 @@ Rules codified + correctness verifiable + talent constrained = agent-ready domai
 **6. Announcement-to-deployment gap** (Pattern 31, Level 3)
 Every platform ships announcements faster than deployments. Foundry GA: zero new customers in 5 days. Frontier: zero evidence after 7 weeks. The vendor bullshit detector.
 → Candidate: Module 7 prework reading or connections question. Inoculates against vendor pitches.
+
+**7. Absorption bottleneck** (Level 4 meta-pattern — highest-ROI import not yet in curriculum)
+Volume of mostly-correct output is the *next* wall after verification. CircleCI 2026 (8M PRs): +59% generation, −7% throughput; 95% of teams fail to scale both. Evals solve *quality*; absorption is the organisational capacity to *metabolise* what the agent produces.
+→ Candidate: **Module 7 pre-read** or M6→M7 bridge teaching moment. Frame: "Evals solve verification. Absorption is the next wall — and yours." Pairs naturally with the sharing strategies (output-push vs interface-pull have very different absorption profiles).
+→ Source: `continuous-research/findings/by-pattern/absorption-bottleneck.md`.
+
+---
+
+## Audit Notes — Research Alignment (2026-04-19)
+
+Gaps and reframes from the curriculum↔research audit. Apply at next revision of the named sections.
+
+**M7 pre-read bundle (compose one reading from three findings):**
+- Absorption bottleneck (#7 above) — the next wall after verification.
+- Access-Trust Gap (#3 above, Pattern 47 L4) — "access is easy; trust is the scarce thing you are actually distributing."
+- Announcement-to-deployment gap (#6 above, Pattern 31 L3) — vendor pitch inoculation.
+Together these prime the M7 generosity mood honestly: sharing is not a ceremony, it's running into three real walls practitioners have already hit.
+
+**Reframe "canonical" on four sharing strategies (line 401).** Research did not find a validated promotion path (`synthesis/cto-answer.md` §"What We Did Not Find"). The four strategies are Antti's practitioner taxonomy (F-Secure / Neste / Posti cohorts), not an L3 convergence finding. Relabel as *"four strategies that work in practice"* and note explicitly that the industry has no validated pattern yet — honesty positions the buyer.
+
+**M2 LLM Wiki + Claude Code choice — defensible by absence.** The counter-argument to "author intuition" is convergence-by-absence: no business-side practitioner has ever shipped proper agents on LangChain (2022+) or Copilot Studio (2023+) at any scale we've found. The alternative platforms produce consumers, not builders. File-based agentic RAG on a coding-agent substrate is where business-side builders exist. Teach confidently; cite the absence directly. (See user signal 2026-04-19.)
+
+**Sponsor-attends framing.** Defensible from competence-first + experience-first patterns, but no direct research on *sponsor-in-room-for-all-8-modules* vs. alternatives. Own it as practitioner conviction in sales conversations, not "the research shows."

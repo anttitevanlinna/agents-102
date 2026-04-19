@@ -11,6 +11,9 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-19](comments/2026-04-19-training-is-forcing-function.md) — M2+ exercises can't run without buyer infra (Claude Code access, sanctioned sources, runtime, skill-sharing permissions). Two outcome arcs on same curriculum: prepared companies accelerate through M7/M8; unprepared get forced to put in basics. Design property, not an accident.
+- [2026-04-19](comments/2026-04-19-post-training-walls-are-a-better-problem.md) — F-Secure validation (2 cohorts): the three post-training walls are real, but they're symptoms of success. Moving from "nobody building" to "builders stuck on data access" IS the transformation. Reframe walls as proof of life, not limitation.
+- [2026-04-19](comments/2026-04-19-claude-code-choice-defensible-by-absence.md) — Claude Code choice for training is defensible by absence: no business-side builder has ever shipped proper agents on LangChain (2022+) or Copilot Studio (2023+). Convergence-by-absence is still convergence.
 - [2026-04-15](comments/2026-04-15-okr-strategy-clarity-problem.md) — OKR problem is actually strategy clarity problem is actually buy-in problem. Mike Fisher article "Build the Right Thing" — premature optimization of undefined strategy. Connects to Intent Taktik upstream bottleneck.
 - [2026-04-15](comments/2026-04-15-design-first-vs-competence-first.md) — "First Design, Then AI" (10X ORG / Krivitsky/Larman) contradicts competence-first evidence. Deeper: did "design the structure, behavior follows" ever work? SV builder culture vs. Nordic consensus. Gap: zero practitioner reports on AI-era culture change in practice.
 - [2026-04-09](comments/2026-04-09-institutional-vs-individual-ai.md) — Individual AI ≠ institutional value. "Redesign the floor" thesis (a16z/Sivulka). Research gap: who's actually redesigning, not just electrifying? Maps to absorption bottleneck, competence-first, Intent Taktik.

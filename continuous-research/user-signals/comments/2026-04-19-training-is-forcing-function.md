@@ -1,0 +1,5 @@
+Practitioner observation: the Bootstrap training has a forcing function beyond pedagogy. From Module 2 onwards, exercises cannot run unless the buyer company has put in the basics — Claude Code access, sanctioned sources, somewhere to land outputs, permission to ship skills. Companies that arrive with these figured out see M7/M8 become acceleration (real sharing ships, real interface-pull works, compound trajectories). Companies that don't get forced to solve the problems they'd otherwise dodge.
+
+**Reframe:** The walls aren't only a post-training discovery. M2 is the first wall, in-training. The training extracts an infrastructure tax before it can deliver pedagogy. That's a feature, not a bug — no enablement program forces this.
+
+**Gap:** Research should track which named companies are "Arc 1 ready" vs. "Arc 2 unprepared" at training entry. Nordic software companies with coding-agent investments → Arc 1. Traditional enterprises with shadow-AI sprawl (Microsoft 500K agents, 29% no IT approval) → Arc 2. Predicts outcome distribution within a cohort.

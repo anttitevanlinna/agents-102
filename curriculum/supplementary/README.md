@@ -33,6 +33,22 @@ The system-that-improves discipline. From one-shot to self-correcting to meta-im
 - **Module 6:** The eval-iteration loop (the eval is also an assumption)
 - **Module 8:** Agents building agents — self-improvement as design
 
+### personal-to-company-gap.md
+Why a personal agent is so hard to turn into a company agent. The thousand tacit choices that make your own agent work — and why removing the tacit layer breaks everything. Organising insight: Polanyi's "we know more than we can tell." *Pass 1 skeleton written 2026-04-19.*
+- **Module 2:** The tacit choices that hold a personal agent together (Section 1)
+- **Module 3:** Implicit trust — why access doesn't transfer trust; the Access-Trust Gap (Section 2)
+- **Module 4:** Permissions are free at scale 1; skills-as-scoping is the design answer (Section 3)
+- **Module 5/6:** Taste is private, quality is public — eval-rubric-not-a-voice (Section 4)
+- **Module 7:** The four honest sharing shapes; why "share the whole agent" is a vendor pitch (Sections 5–6)
+- **Module 8:** The organisational absorption layer — what the company has to catch (Section 7)
+
+### agent-ready-data.md
+How leading companies make data and systems available to agents — a progression, not a doctrine. Files → MCP → CLIs → headless SaaS → semantic skills → semantic models. Each rung unlocks a new set of agents and a new set of people. *Pass 1 skeleton written 2026-04-19.*
+- **Module 2:** Files as the default — `sources/` + `brain/`
+- **Module 4:** MCP (agent's standard plug) + CLIs (handles agents already grip) — with scoped permissions
+- **Module 7:** Headless SaaS + semantic skills — sharing at the data layer, not the agent layer
+- **Module 8:** Semantic models — the company's shared meaning, made agent-readable; the substrate that makes agents compound
+
 ### cookbook-for-agent-system-design.md
 *"This is how you do it."* Practitioner recipes — the moves, in sequence, that take someone from chat to an agent system they'd stake their reputation on. Supersedes the earlier "lifecycle doc" idea (recipes compose; lifecycles gatekeep).
 - **Module 1:** Recipe 1 — a piece of output that is genuinely yours

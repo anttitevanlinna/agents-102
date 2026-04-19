@@ -1,4 +1,4 @@
-# Exercise: Build your challenge brain
+# Exercise: Build your challenge *brain*
 
 **What you do:**
 

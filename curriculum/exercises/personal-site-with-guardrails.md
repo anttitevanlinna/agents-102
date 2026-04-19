@@ -1,4 +1,4 @@
-# Exercise: Personal site with guardrails
+# Exercise: Personal site with *guardrails*
 
 **What you do:**
 

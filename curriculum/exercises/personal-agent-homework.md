@@ -1,4 +1,4 @@
-# Exercise: Your first scheduled agent
+# Exercise: Your first *scheduled* agent
 
 **What you do:**
 

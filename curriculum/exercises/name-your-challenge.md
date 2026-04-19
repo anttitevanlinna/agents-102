@@ -1,4 +1,4 @@
-# Exercise: Name your next big challenge
+# Exercise: Name your next big *challenge*
 
 **What you do:**
 

@@ -1,4 +1,4 @@
-# Exercise: Ground your output
+# Exercise: *Ground* your output
 
 **What you do:**
 

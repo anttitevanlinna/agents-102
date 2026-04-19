@@ -1,4 +1,4 @@
-# Exercise: Three retrievers, three minds
+# Exercise: Three retrievers, three *minds*
 
 **What you do:**
 

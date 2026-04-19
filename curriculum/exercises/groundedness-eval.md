@@ -1,4 +1,4 @@
-# Exercise: Groundedness eval
+# Exercise: *Groundedness* eval
 
 **What you do:**
 

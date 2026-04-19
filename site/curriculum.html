@@ -23,7 +23,7 @@
             var TRAININGS = {
                 bootstrap: {
                     label: 'Bootstrap',
-                    lede: 'Eight modules. Chat-to-systems leap. Build real agents on your own company content.',
+                    lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
                     prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
                     modules: [
                         { slug: 'getting-going',           title: 'Getting Going' },
@@ -190,8 +190,15 @@
                             var standalone = mm.path.replace(/\.md$/, '');
                             content = content.replace(/^# (.+)$/m,
                                 '# [$1](curriculum.html?file=' + standalone + ')');
-                            // Substitute once
-                            md = md.replace(mm.full, content);
+                            // Wrap in a phase block so CSS can give exercises vs. lectures
+                            // distinct backgrounds — visual rhythm for scrollers.
+                            var kind = mm.path.indexOf('exercises/') === 0 ? 'exercise' : 'lecture';
+                            var wrapped =
+                                '\n\n<section class="phase phase--' + kind + '">\n\n' +
+                                '<div class="phase-kicker">' + kind + '</div>\n\n' +
+                                content +
+                                '\n\n</section>\n\n';
+                            md = md.replace(mm.full, wrapped);
                         }
                     });
                     return md;
@@ -199,55 +206,114 @@
             }
 
             function renderTrainingIndex(t) {
-                var html = '<h1>' + esc(t.label) + '</h1>';
-                html += '<p class="lede">' + esc(t.lede) + '</p>';
+                // Split training label at last word to pair it with an oxblood period,
+                // echoing the design's "Bootstrap." hero treatment.
+                var heroHtml =
+                    '<div class="training-hero">' +
+                    '  <div class="training-eyebrow">The curriculum</div>' +
+                    '  <h1>' + esc(t.label) + '<span class="sep">.</span></h1>' +
+                    '  <p class="lede">' + renderAccents(t.lede) + '</p>' +
+                    '</div>';
+
+                var sectionsHtml = '';
 
                 if (t.prework) {
-                    html += '<h2 class="index-heading">Before Module 1</h2>';
-                    html += '<ol class="module-list index-prework">';
-                    html += '<li><a href="curriculum.html?training=' + trainingKey + '&module=' + t.prework.slug + '">' +
-                            '<span class="module-n">Prework</span> ' +
-                            '<span class="module-title">' + esc(t.prework.title) + '</span>' +
-                            '</a></li>';
-                    html += '</ol>';
+                    sectionsHtml +=
+                        '<h2 class="index-heading">Before Module 1</h2>' +
+                        '<ol class="module-list index-prework" data-big-ideas>' +
+                        cardHtml('00', t.prework.title, t.prework.slug, 'curriculum.html?training=' + trainingKey + '&module=' + t.prework.slug) +
+                        '</ol>';
                 }
 
-                html += '<h2 class="index-heading">The eight modules</h2>';
-                html += '<ol class="module-list">';
+                sectionsHtml += '<h2 class="index-heading">The eight modules</h2>';
+                sectionsHtml += '<ol class="module-list index-modules" data-big-ideas>';
                 t.modules.forEach(function (m, i) {
-                    html += '<li><a href="curriculum.html?training=' + trainingKey + '&module=' + m.slug + '">' +
-                            '<span class="module-n">Module ' + (i + 1) + '</span> ' +
-                            '<span class="module-title">' + esc(m.title) + '</span>' +
-                            '</a></li>';
+                    var num = String(i + 1).padStart(2, '0');
+                    sectionsHtml += cardHtml(num, m.title, m.slug, 'curriculum.html?training=' + trainingKey + '&module=' + m.slug);
                 });
-                html += '</ol>';
+                sectionsHtml += '</ol>';
 
                 if (t.supplementaries && t.supplementaries.length) {
-                    html += '<h2 class="index-heading">Supplementary materials (grow across the training)</h2>';
-                    html += '<ol class="module-list index-supplementaries">';
+                    sectionsHtml += '<h2 class="index-heading">Supplementary — grows across the training</h2>';
+                    sectionsHtml += '<ol class="module-list index-supplementaries">';
                     t.supplementaries.forEach(function (s) {
-                        html += '<li><a href="curriculum.html?file=supplementary/' + s.slug + '">' +
-                                '<span class="module-n">Reference</span> ' +
-                                '<span class="module-title">' + esc(s.title) + '</span>' +
-                                '</a></li>';
+                        sectionsHtml += simpleRowHtml('Reference', s.title, 'curriculum.html?file=supplementary/' + s.slug);
                     });
-                    html += '</ol>';
+                    sectionsHtml += '</ol>';
                 }
 
                 if (t.references && t.references.length) {
-                    html += '<h2 class="index-heading">Quick reference (lookup)</h2>';
-                    html += '<ol class="module-list index-references">';
+                    sectionsHtml += '<h2 class="index-heading">Quick reference</h2>';
+                    sectionsHtml += '<ol class="module-list index-references">';
                     t.references.forEach(function (r) {
-                        html += '<li><a href="curriculum.html?file=reference/' + r.slug + '">' +
-                                '<span class="module-n">Lookup</span> ' +
-                                '<span class="module-title">' + esc(r.title) + '</span>' +
-                                '</a></li>';
+                        sectionsHtml += simpleRowHtml('Lookup', r.title, 'curriculum.html?file=reference/' + r.slug);
                     });
-                    html += '</ol>';
+                    sectionsHtml += '</ol>';
                 }
 
-                container.innerHTML = html;
+                container.innerHTML = heroHtml + sectionsHtml;
                 document.title = t.label + ' Curriculum — Agents 102';
+
+                // Hydrate big ideas from each module's markdown so the card gets its
+                // one-liner without duplicating content in this file.
+                hydrateBigIdeas(t);
+            }
+
+            function cardHtml(num, title, slug, href) {
+                return '<li data-slug="' + esc(slug) + '">' +
+                    '<a href="' + href + '">' +
+                    '<span class="module-n">' + esc(num) + '</span>' +
+                    '<span class="module-body">' +
+                    '<span class="module-title">' + esc(title) + '</span>' +
+                    '<span class="module-big" data-big-idea>&nbsp;</span>' +
+                    '</span>' +
+                    '<span class="module-arrow">→</span>' +
+                    '</a></li>';
+            }
+
+            function simpleRowHtml(kind, title, href) {
+                return '<li><a href="' + href + '">' +
+                       '<span class="supp-kind">' + esc(kind) + '</span>' +
+                       '<span class="supp-title">' + esc(title) + '</span>' +
+                       '<span class="module-arrow">→</span>' +
+                       '</a></li>';
+            }
+
+            function hydrateBigIdeas(t) {
+                var items = [];
+                if (t.prework) items.push({ slug: t.prework.slug });
+                t.modules.forEach(function (m) { items.push({ slug: m.slug }); });
+
+                items.forEach(function (item) {
+                    var path = '../curriculum/trainings/' + trainingKey + '/' + item.slug + '.md';
+                    fetch(path)
+                        .then(function (res) { return res.ok ? res.text() : null; })
+                        .then(function (md) {
+                            if (!md) return;
+                            var idea = extractBigIdea(md);
+                            if (!idea) return;
+                            var host = container.querySelector('li[data-slug="' + item.slug + '"] [data-big-idea]');
+                            if (host) host.textContent = idea;
+                        })
+                        .catch(function () { /* leave card without big idea */ });
+                });
+            }
+
+            // Extract the first non-empty line under "## Big Idea" (up to the next heading).
+            function extractBigIdea(md) {
+                var m = md.match(/^##\s+Big Idea\s*\n+([\s\S]*?)(?=\n##\s|$)/m);
+                if (!m) return null;
+                var body = m[1].trim();
+                // Take the first paragraph only.
+                var firstPara = body.split(/\n\s*\n/)[0].trim();
+                // Collapse internal newlines.
+                firstPara = firstPara.replace(/\s*\n\s*/g, ' ');
+                return firstPara;
+            }
+
+            // Turn *word* into a gradient-accented italic span. Escapes everything else.
+            function renderAccents(s) {
+                return esc(s).replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
             }
 
             function esc(s) {

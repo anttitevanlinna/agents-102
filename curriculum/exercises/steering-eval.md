@@ -1,4 +1,4 @@
-# Exercise: Steering eval
+# Exercise: *Steering* eval
 
 **What you do:**
 

@@ -1,4 +1,4 @@
-# Exercise: Audit your agent
+# Exercise: *Audit* your agent
 
 **What you do:**
 

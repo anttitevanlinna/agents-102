@@ -71,6 +71,14 @@ The piece primes these exercises without giving away the discoveries:
 
 The reader arrives curious, not pre-answered. If reading the lecture answers the exercise's question, the lecture over-teaches.
 
+### Mood lands *(universal — essential)*
+
+Every Bootstrap module is engineered to produce a specific emotion by lecture's end — joy, compound, unease, deeper unease, rescue, leverage, generosity, or awe (see `content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph). The mood is the strategic contract.
+
+Score 1–10 for mood landing at close of lecture. **Pass threshold: 8+/10.** Below 8, something is stealing the mood — over-reassurance on a stewing mood (M3/M4 tidied up prematurely), tonal jolt, epistemic beat that reads as "homework" rather than the intended state, a close that resolves what the next module needs to pick up, or an opening that telegraphs the teaching moment and collapses the exercise ahead.
+
+Report must include: mood score + a one-line *"what's stealing the mood here"* note if below 8.
+
 ### Voice *(universal)*
 
 - **Main body writes TO the student (the reader), about their journey.** No facilitator instructions in the body. Phrases like *"To the room:"*, *"Pairs trade guesses"*, *"Hear one or two out loud"* are facilitator script and belong in facilitator notes (deferred artifact), not in the student-facing lecture. The student reading this file should feel addressed directly: *"You'll see..."*, *"Take a guess."*, *"Before you watch..."*
@@ -120,6 +128,7 @@ Named examples, specific mechanics, concrete artifacts. Never generic:
 - Learning goal fit
 - Module-to-module arc
 - Exercise setup
+- Mood lands (8+/10)
 - Business-audience language (no unearned tech jargon)
 - Auto-fail red flags (none triggered)
 

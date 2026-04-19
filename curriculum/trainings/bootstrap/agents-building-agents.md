@@ -40,5 +40,8 @@ After this module, you will be able to:
 - **The company's own strategic context** — feeds into all agents during the joint exercise.
 - **Agent demos.** Every participant shipped at least one real agent over the course of the training (promised from Module 1, built progressively from Module 2 onward). The closing session includes a demo round — each participant shows what their agent does, with their real data. The demo moment is part of the Module 8 deliverable, not separate from it.
 
+## Identity-naming close
+The sponsor — who sat alongside the room for all eight modules — names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No ceremony. A name the graduate can say to colleagues on Tuesday morning who weren't there. Identity persists; skills fade.
+
 ## Bridge
 The strategy you just produced is a set of assumptions. Label them. Design experiments to test them. That's how you start Monday. Bootstrap is Step 1 of 5 — Make Your Own is next.

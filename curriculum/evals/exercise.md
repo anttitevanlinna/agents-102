@@ -46,6 +46,18 @@ Enables these Bloom-tagged learning goals from the module file (the exercise tha
 Picks up from **[PREVIOUS EXERCISE OR MODULE — one-phrase hook]**.
 Subtly hands off to **[NEXT EXERCISE OR NEXT MODULE — one-phrase hook]**.
 
+### Mood lands *(universal — essential)*
+
+Every Bootstrap module is engineered to produce a specific emotion at phase ends and at exercise close. The mood is the strategic contract — not garnish. (See `content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph.)
+
+Scored per exercise on a 1–10 scale for each beat:
+- **End of each phase** — what emotion does the student carry into the next phase? Does it match the module's deliberate mood (joy / compound / unease / deeper unease / rescue / leverage / generosity / awe)?
+- **Close of exercise** — does the student leave in the mood the module needs, *and* primed for the next module's mood pickup?
+
+**Pass threshold: 8+/10 at every beat.** 7/10 is the facilitator-premium ceiling — it means the pedagogy lands with a trainer in the room but frays for self-study students. Below 8, something is stealing the mood: premature resolution of a stewing mood (M3/M4 tidied up), tonal jolt mid-exercise (leverage → audit without scaffold), epistemic beat that reads as "more work" rather than extended leverage, or a close that resolves what the next module needs to pick up.
+
+Report must include: mood score per phase + close, plus a one-line *"what's stealing the mood here"* note for any beat below 8.
+
 ### The teaching moment lands *(exercise-specific — essential)*
 
 The exercise is designed to reliably produce this aha:
@@ -143,6 +155,7 @@ Named mechanics (exact prompts, score scales, expected output shapes), named art
 - Framing fidelity
 - Learning goal fit
 - Module-to-module arc
+- Mood lands (8+/10 at every beat)
 - Teaching moment lands
 - Riffs on a recognized framework (when applicable — business-skill exercises)
 - Facilitator briefing complete
@@ -205,6 +218,7 @@ Return:
 | Framing fidelity | | |
 | Learning goal fit | | |
 | Module-to-module arc | | |
+| Mood lands (per-phase + close, 8+/10 required) | | |
 | Teaching moment lands | | |
 | Riffs on a recognized framework | | |
 | Failure modes named | | |

@@ -128,6 +128,10 @@ Use this to run the simulate/test step (step 6).
 
 **How to run:** Launch a general-purpose agent with the prompt template below. Give it the target file path(s) and a persona. It role-plays through the exercise, makes up realistic content, and reports.
 
+**The persona is never alone.** Bootstrap exercises are facilitated in two modes — *in-room* (human trainer) and *self-study* (Teacher Claude running in a side session, configured by the `/self-study` skill to nudge the student through the 4 Cs). **Default simulations to self-study mode** unless the prompt explicitly names in-room. Teacher Claude covers the facilitator role: it asks *"find me one row the judge got wrong"* when the student rubber-stamps Phase 3, pushes on ambiguous artifacts, runs the Debrief. A simulation that penalises an exercise because *"the solo SVP has no facilitator nudge"* is simulating the wrong setup — the SVP has Teacher Claude. Name Teacher Claude explicitly in the persona block so the simulator accounts for it, and tell the simulator to surface nudges Teacher Claude would make at each phase.
+
+**Mood judge — scored alongside mechanics.** Per the eval rubric, every exercise is scored 1–10 for mood landing at each phase-end and at close (8+/10 required). The simulation must report the mood score per beat and name what steals the mood where it drops below 8. A 7/10 is the facilitator-premium signature — meaning the mood lands in a trainer-facilitated room but frays elsewhere; treat 7 as "find what's stealing the mood," not "good enough."
+
 **Prompt template** (copy this into the agent invocation):
 
 ```
@@ -137,22 +141,29 @@ TARGET EXERCISE: [file path]
 
 PERSONA: [describe — role, seniority, LLM fluency, business context. Example: "SVP of HR at a 500-person Nordic software company. Has used ChatGPT weekly for drafting emails and performance reviews. Never built an agent, never used Claude Code before today. Arrived at this exercise having watched the Context is King lecture 15 minutes ago."]
 
+DELIVERY MODE: self-study. Teacher Claude is running in a side session (configured by the /self-study skill) and plays facilitator — it nudges through the 4 Cs, pushes on ambiguous artifacts, runs the Debrief, and catches rubber-stamping (*"find me one row the judge got wrong"*). Account for Teacher Claude at every phase; the student is NOT alone.
+
+MODULE MOOD CONTRACT: [state the module's deliberate mood — e.g., "Module 6 is unleashed leverage; student should leave feeling 'we can automate the loop.'" Pull from content-strategy.md per-module Mood (deliberate) paragraph.]
+
 ASSUME you have completed any prior module/lecture setup the exercise references.
 
 FOR EACH PHASE:
-1. Describe what you would paste or do — make up realistic content in your persona's voice (their "LinkedIn profile", "colleague", "strengths", "hate list", etc.)
-2. Predict what Claude would likely return — use your knowledge of how Claude behaves with these kinds of prompts
-3. Flag any moment you are confused, stuck, or unsure what the exercise wants
-4. Flag any moment Claude's likely output wouldn't match what the exercise assumes
-5. Record the state after the phase — what artifact you now have, what you'd do next
+1. Describe what you would paste or do — make up realistic content in your persona's voice
+2. Predict what Claude would likely return — use your knowledge of how Claude behaves
+3. Note what Teacher Claude would nudge on in the side session for this phase
+4. Flag any moment you're confused, stuck, or unsure what the exercise wants
+5. Flag any moment Claude's likely output wouldn't match what the exercise assumes
+6. Record the state after the phase — what artifact you now have
+7. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (match against the module mood contract; flag drift)
 
 AT THE END, report:
-- **Top 3 places the exercise could break in a real classroom** (specific, with which phase)
+- **Top 3 places the exercise could break** (specific, with phase)
 - **Top 3 ambiguous instructions** (quote them)
-- **Any under-scaffolded phase** (where a real participant would stall)
-- **Overall "this is me" rating** 1-10 for the final artifact (with reasoning)
-- **Arc flow** — does one phase lead naturally to the next?
-- **Claude-behavior mismatches** — places where Claude's usual output style clashes with the exercise's assumption
+- **Any under-scaffolded phase** where even Teacher Claude can't recover (distinguish from phases that only need facilitator nudging — those aren't breakage)
+- **Overall "this is me" / artifact quality rating** 1–10
+- **Mood summary**: score per phase + close, and a one-line *"what's stealing the mood"* note for any beat below 8. 8+/10 at every beat is the bar. 7 = facilitator-premium signature; say what would take it from 7 to 8.
+- **Arc flow** — does one phase feed the next?
+- **Claude-behavior mismatches** — specific places where Claude's style clashes with exercise assumption
 
 Be specific. Use your persona's voice. If the exercise has a flaw, you (as the student) will notice it. Under 800 words.
 ```

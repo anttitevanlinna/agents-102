@@ -21,7 +21,9 @@ After this module, you will be able to:
 
 ## Connections
 
-When you've used ChatGPT or Claude for your own work — a bio, a pitch, a post — where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
+**The sponsor speaks first.** The CEO / CTO / SVP who bought this training is in the room as a participant, not as a visitor. They open with one sentence in their own words — why they're here and what they don't yet know. *"I don't know what I'm doing here either — that's why we're all in this together."* No corporate kickoff, no agenda. The content of the sentence matters less than the fact that the sponsor said it, out loud, to the room, before anyone else. That's the license the next seven modules run on.
+
+Then the room: when you've used ChatGPT or Claude for your own work — a bio, a pitch, a post — where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 
 ## Lectures
 

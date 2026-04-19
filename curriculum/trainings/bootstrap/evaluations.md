@@ -22,9 +22,10 @@ After this module, you will be able to:
 [Evals as steering](lectures/evals-as-steering.md)
 
 ## Exercises
-- **Convergence eval — automate your Module 5 check** — Build an eval for the fabrication patterns you found by hand. Run the loop: generate → eval → adjust → regenerate, until output meets the bar. Experience convergence.
 
-[Steering eval](exercises/steering-eval.md)
+[Exercise: Groundedness eval](exercises/groundedness-eval.md)
+
+[Exercise: Steering eval](exercises/steering-eval.md)
 
 ## Key Concepts (Emergent)
 - **Two uses of evals**: convergence (looping to quality) and steering (encoding preference). Both essential.

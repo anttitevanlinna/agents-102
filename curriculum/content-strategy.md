@@ -116,11 +116,26 @@ The company brings their own content and goals. One company has a product knowle
 
 **What makes a bad initiative:** Too specialized (only 3 people understand it). Too abstract ("improve our processes"). Too regulated (compliance overhead dominates learning). Too novel (nobody has a baseline).
 
+## The sponsor takes the training with the cohort
+
+**Non-negotiable delivery requirement.** The CEO / CTO / SVP who bought the training sits in every module as a participant — not an observer, not a drop-in. Builds their own agent on their own challenge alongside the room. If the sponsor can't commit to all eight modules, we don't run the cohort.
+
+Why: the agentic transformation is the rare shift that can't be led from strategy alone — without agent competence, there's no vision, only governance of an abstraction. A sponsor who delegates the training to the room and waits for the Module 8 readout has built the same governance frame we're trying to escape. The sponsor learning alongside everyone else — visibly not-knowing on Module 1, visibly struggling on Module 3, visibly shipping on Module 8 — is what gives the cohort permission to lean into unease.
+
+In Module 1 Connections, the sponsor speaks first. Naked admission: *"I don't know what I'm doing here either. That's why we're all in this together."* Risto Siilasmaa's career is evidence that leaders who admit unknowing unlock rooms that leaders who perform certainty can't. Twenty SVPs watching the CTO model epistemic humility rewrites what's permitted for the next seven modules. The vulnerability moment is earned structurally, not performed — the sponsor can admit unknowing because they're actually about to not-know alongside everyone else.
+
+In Module 8, the sponsor's agent has the special role (drafting the guiding policy against the shared cruxes). That role only lands if the sponsor actually built an agent — which they did, because they took the training.
+
+> CUSTOMER: Sponsor (CEO / CTO / SVP HR — whoever bought the training) commits to all eight modules as a participant. Not negotiable at contracting. If sponsor bandwidth is the blocker, move the cohort date; don't run it without them.
+
 ## What Success Looks Like
 
+- **Day 8 (close):** Every graduate leaves as an **Agent builder** — a named identity they can say out loud, on Monday, to colleagues who weren't there. Not "I took a training." *"I'm an agent builder."* Identity persists; skills fade. Saying it changes who returns their calls.
 - **30 days:** Changed conversations. "We could build an agent for that" becomes natural.
 - **60 days:** 5+ people building prototype agents on their own. Sharing WoW moments and failures.
 - **90 days:** Agents doing things the company couldn't do before. The CTO hears about it without asking.
+
+**"Agent builder" is the graduate identity — not a certification.** Anti-SAFe: no badge, no exam, no license. Identity-naming is a different move from certification theatre. A Y Combinator founder is "YC alumni" for life because the program conferred an identity, not because they passed a test. Module 8's close explicitly confers *agent builder* as the name the graduate carries. They are someone who has built an agent that does something real with their company's own data — and who can do it again tomorrow on a new problem. That sentence is the identity. The Module 8 deliverable (the strategy kernel) is the evidence.
 
 ## Bootstrap Is Step 1 of 5
 
@@ -367,7 +382,7 @@ Prework: Ethan Mollick — "Garbage Can and Bitter Lesson."
 
 - Connections: "In Module 5 you spotted fabrication by eye and adjusted rules. What if you could automate that entire loop?"
 - Lecture / prework: **"Evals as steering"** — `curriculum/lectures/evals-as-steering.md`. Reframes evals as strategic steering (not testing), distinguishes convergence vs. steering evals, sets up the exercises.
-- Exercise: **Convergence eval — automate your Module 5 check** — Build an eval that checks for the fabrication patterns you found manually. Run it. Loop: generate → eval → adjust → regenerate until the output meets the bar. Experience the system converging on quality.
+- Exercise: **Groundedness eval** — Build an LLM-as-judge that runs M5's five-category classification on a briefing. Run the convergence loop (generate → eval → adjust → regenerate) until output clears the threshold. Then catch the judge being wrong and iterate the criterion. Convergence is the floor.
 - Exercise: **Steering eval** — Run the shared customer-case criterion pre-agreed with the sponsor (real stakes — see how one criterion reads across different agents' output). Then design your own — not about correctness, but about what matters to YOU (brand voice, strategic differentiation, something no generic eval would check). Iterate the criterion itself — see what it catches, see what it misses. The eval is also an assumption.
 - Teaching moment: Evals encode your assumptions about what matters. Wrong assumptions = wrong evals. The loop works for output AND for the evals themselves.
 - Concept (emergent): Two uses of evals — convergence (looping to a desired outcome) and steering (encoding preference into the system). Both are essential.
@@ -426,6 +441,7 @@ Prework: Risto — acting on the future and building hypotheses. Rumelt — crux
 - The deliverable: The synthesized AI strategy IS the executive recommendation. Not co-created on a whiteboard — produced by the system they built.
 - Throughline moment: "This strategy is a set of assumptions. Label them. Design experiments to test them. That's how you start Monday."
 - Reflection: "What will you build first when you get back to your desk?"
+- **Identity-naming close:** after the strategy deliverable lands, the sponsor names what just happened — *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's the identity you leave with. It's not a badge; it's what you can do."* The term is said out loud, by the sponsor, to the room. No certificate, no ceremony — one sentence that gives every graduate a name for themselves to say in meetings on Tuesday. Identity persists; skills fade.
 
 ---
 
@@ -485,7 +501,7 @@ Bootstrap training — snapshot of what exists. Refresh this section at the end 
 - **Module 4 (Security):** module file reframed (mood: epistemic humility, not guilt; big idea: *you can't tell if your agent is safe by looking at its output — the practice is running the check*). Two pre-built skills as the module's material, both written and shipping in `curriculum/scaffolds/module-4-starter/skills/`: `agent-security` (generic, ships with training — SKILL.md + stride.md + access-analysis.md + mitigations.md) and `company-ai-policy` **Nordic-baseline default** (SKILL.md + policies/gdpr-essentials.md + data-classification.md + ai-use-baseline.md + sector-rules-placeholder.md). **For in-company deliveries, `company-ai-policy` is replaced by a customer-specific version co-created with the buying organisation outside this repo (separately billable deliverable, ~0.5–1 day Antti time).** Scaffold README documents the two delivery modes. Prework with two sections: skills + agent-vs-software security. In-room lecture **The practice of risk**. Exercise **Audit your agent** — three phases on the student's Module 3 system, produces `module-4/policy-report.md`, `module-4/security-report.md`, `module-4/residual.md` with a "doors I'd rather not open" scoping rule. Lecture eval APPROVE; exercise eval APPROVE WITH TODOs (length soft-fails). Simulation 8/10 "this is me" — mood lands. Pass-1 patches applied (Phase 3 stop language, re-check granularity). **Blocking before first delivery:** capability check on skill drop-in + plain-language invocation.
 - **Cookbook supplementary (stub):** `supplementary/cookbook-for-agent-system-design.md` created as Pass 1 structural placeholder. Recipes 1–3 seeded with one-paragraph summaries pointing at the corresponding module's exercise file; Pass 2 per-recipe write-outs happen as each module reaches its own Pass 3. Supersedes the earlier "lifecycle doc" idea.
 - **Mood arc captured (M1–M6):** dedicated section in content-strategy names each module's deliberate mood and the handoff between them (joy → compound → unease → deeper unease → rescue → leverage). Parallel "Mood (deliberate)" lines now sit at the top of M3, M4, M5, M6 sections. Future authors of M4/M5/M6 content must respect the arc: resolving a mood too early steals the next module's teaching moment.
-- **Module 6 slice:** Evals as steering lecture + Steering eval exercise
+- **Module 6 slice:** Evals as steering lecture + Groundedness eval exercise (convergence — automates the M5 five-category hand-check) + Steering eval exercise (student-chosen dimension; starters: brand voice, depth of insight, strategic differentiation, customer-oriented)
 - **Supplementaries:** What is an Agent section 1 (other two are stubs)
 - **Reference:** Claude quick reference
 

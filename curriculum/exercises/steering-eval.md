@@ -58,7 +58,7 @@ Watch for reference examples that are all 5s — the participant is describing t
 
 Watch for criteria too vague to rate consistently — "insightful" without an anchor. Push for a measurable dimension with a clear reference point.
 
-Decision points: if a participant is stuck past 8 minutes picking a dimension, offer three starters (brand voice, depth of insight, strategic differentiation) and let them adapt one. If a participant has a working judge at 15 minutes, push them to iterate twice.
+Decision points: if a participant is stuck past 8 minutes picking a dimension, offer four starters (brand voice, depth of insight, strategic differentiation, customer-oriented) and let them adapt one. If a participant has a working judge at 15 minutes, push them to iterate twice.
 
 Pacing: 5–7 min shared-case warmup; 10–12 min design; 8–10 min iterate + pair discuss. Leave room for banter — the conversation is where the learning consolidates.
 

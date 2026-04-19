@@ -50,7 +50,7 @@ An agent that works but isn't secure is worse than no agent at all. This module 
 
 **What happens:** A controlled exercise where participants see a compliance violation happen in real time — their agent accesses or generates something it shouldn't, using their organization's actual policies as the test.
 
-**What you build:** Security guardrails retrofitted onto the agent system built in Day 1. Participants experience "I built something that works but I can't trust yet" — and then fix it.
+**What you build:** Security guardrails retrofitted onto the agent system built in earlier modules. Participants experience "I built something that works but I can't trust yet" — and then fix it.
 
 > **Your organization's policies go in here.** This is the first plug point: participants integrate their own security policies, data classification rules, and compliance requirements. Not our defaults — yours.
 

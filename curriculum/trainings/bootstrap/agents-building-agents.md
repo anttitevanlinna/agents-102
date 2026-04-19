@@ -38,7 +38,7 @@ After this module, you will be able to:
 ## Plug Points
 - **CTO/sponsor must be in the room.** Their agent has the special role in Diamond 2.
 - **The company's own strategic context** — feeds into all agents during the joint exercise.
-- **Agent demos.** Every participant shipped at least one real agent over the course of the training (promised at Day 1, built progressively from Module 2 onward). The closing session includes a demo round — each participant shows what their agent does, with their real data. The demo moment is part of the Module 8 deliverable, not separate from it.
+- **Agent demos.** Every participant shipped at least one real agent over the course of the training (promised from Module 1, built progressively from Module 2 onward). The closing session includes a demo round — each participant shows what their agent does, with their real data. The demo moment is part of the Module 8 deliverable, not separate from it.
 
 ## Bridge
 The strategy you just produced is a set of assumptions. Label them. Design experiments to test them. That's how you start Monday. Bootstrap is Step 1 of 5 — Make Your Own is next.

@@ -63,7 +63,7 @@ The advisory system is co-owned: deployed on your side, you keep it. The medium 
 **Headline:** Five steps from first agent to organizational capability.
 
 **1. Bootstrap**
-Two-day intensive. EUR 500 per person. You build a real agent. The skeptics in the room become believers. This is the door -- anyone can walk in.
+Hands-on intensive — eight modules, your schedule. EUR 500 per person. You build a real agent. The skeptics in the room become believers. This is the door -- anyone can walk in.
 
 **2. Make Your Own**
 A cohort of your change leaders designs the rollout. Four to six weeks. Not just "we learned agents" but "we have a plan to transform." Change strategy lab with mentoring.

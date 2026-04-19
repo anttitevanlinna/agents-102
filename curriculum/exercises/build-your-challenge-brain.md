@@ -79,7 +79,11 @@ Answer with a real task from your challenge. Claude reads the agent file, reads 
 
 **Phase 3 — Compound.**
 
-Something real landed for your challenge this week — a new Confluence page a colleague wrote, a fresh OneDrive doc, a practitioner article you hadn't found before. Pick one. Drop it into `sources/`. Paste:
+Now look at your brain and find the thinnest page — the one where Claude flagged "generic" in Phase 1, or where a topic you care about has only two claims. Three minutes: go find one more piece of material that would sharpen it. A Confluence page you skipped in Phase 1, a doc in OneDrive you almost pulled, a practitioner article from your preview list you didn't fetch yet. Drop the new file into `sources/`.
+
+(This is how it actually works at your desk — you notice a gap, you fill it. The training compresses that loop into three minutes.)
+
+Paste:
 
 ```
 I've added a new file to sources/. Update the brain — don't rebuild it. For topics you already have: integrate new claims, sharpen existing pages, drop any claim the new source contradicts. For new topics: add pages in the existing shape. Update index.md.
@@ -109,9 +113,19 @@ Review the brain. Find: two contradictions between topic pages; two claims that 
 
 Go through Claude's six proposals. Some will be right. Some will miss — reject those. The ones you approve, Claude applies. The brain you're leaving with is one you trusted enough to sign off on line by line.
 
-**Close — swap brains with your neighbor.**
+**Close — put it to work.**
 
-Swap laptops. Ask your neighbor's brain one specific question about *their* challenge. Share the **shape and mechanics** of what you built; keep the confidential substance to yourself. Does the answer sound like someone actually wrestling with the problem, or like a generic AI essay on the topic? Trade notes on voice, depth, thin spots. Your neighbor's brain tells you something about your own.
+Ask your brain the hardest open question on your challenge right now. Not *"summarize the sources"* — a real working question, the kind you'd stay late at the office to answer. *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"* *"Which of these three risks is actually load-bearing and which are decoration?"*
+
+Run it through the agent you built in Phase 2 — the one that reads the brain and cites sources. Paste:
+
+```
+Using my brain and the rules in the agent file, answer this question, citing which brain file each claim came from:
+```
+
+Then the question.
+
+Read the answer. If it's specific and every claim has a citation — the brain earned its keep; you leave with the first piece of real work it's done. If it's generic, hand-wavy, or leans on uncited knowledge — you know exactly where the brain is still thin. Either way, it's the move you'll repeat at your desk on Monday, and every Monday after.
 
 **What happens:**
 
@@ -147,7 +161,6 @@ Every module after this one uses the brain you just built.
 - Belief #2 — act on the future — lands implicitly: the challenge the participant brings is the future they're already acting on. Not named in body.
 
 **Deferred facilitator notes:**
-- Watch-fors: participant picks a challenge too broad ("digital transformation") — redirect to one concrete decision; too few sources make it through curation — fallback is to let Claude propose public-web substitutes; connector sign-in issues (live support via Slack/Teams during delivery, not in the student's read); Claude fires all three Phase 2 questions at once (tell the participant to answer in order — not a real break); Phase 3 "it got longer not sharper" failure mode; neighbor-swap running long.
+- Watch-fors: participant picks a challenge too broad ("digital transformation") — redirect to one concrete decision; too few sources make it through curation — fallback is to let Claude propose public-web substitutes; connector sign-in issues (live support via Slack/Teams during delivery, not in the student's read); Claude fires all three Phase 2 questions at once (tell the participant to answer in order — not a real break); Phase 3 "it got longer not sharper" failure mode; Phase 3 source-hunt running long (cap at 3 minutes — imperfect sources are fine, the integration is the lesson); Close "put it to work" question too vague (push back: "that's a topic, not a decision — what's the question you'd actually answer for your CEO?").
 - Decision points: if a cohort is uniformly short on internal-wiki access, pivot Phase 1 curation to OneDrive + internet-only — still teaches the move.
-- Confidentiality watch: in the neighbor swap, set the "share mechanics not substance" rule verbally at the start — some participants will default to showing everything.
 - Claude Code project setup verification belongs in the prework quick reference, not here.

@@ -9,10 +9,10 @@ The baseline is boring on purpose. You need it boring so you can feel how much t
 Open Claude Code. Paste your LinkedIn profile into the chat, then this prompt:
 
 ```
-Build me a personal HTML one-pager site from the LinkedIn profile above.
+Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as site.html in the current folder.
 ```
 
-Watch the result. It works. It looks okay. It's also generic — the site a competent LLM produces from a résumé when it doesn't know what matters. Claude keeps the version in its memory; you'll come back to it in Phase 4 without having to save anything.
+Watch the result. It works. It looks okay. It's also generic — the site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `site.html`, so the latest version always lives at that path.
 
 **Phase 2 — differentiation as a colleague-guide.**
 
@@ -80,17 +80,13 @@ Now make it yours. Color, layout, tone, a quote at the top, a section that shoul
 
 Open prompts. You drive.
 
-**Close — Claude as cold critic.** Open a fresh Claude window (no context). Paste this:
+**Close — Claude as cold critic.** Run `/clear` in your Claude Code session to wipe the conversation. You want a fresh Claude with no memory of building the site. Then paste this:
 
 ```
-Read this personal site. Two questions:
+Read site.html in this folder. Two questions:
 1. Quote the one line that feels most uniquely this person — not the best line, the most UNIQUELY them.
 2. Quote the most generic line that could be copy-pasted from anyone's site.
-
-Here's the site:
 ```
-
-Paste the site after the prompt.
 
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin — add one more sharp detail there and regenerate. Where Claude's pick of "uniquely you" matches your own gut — solid ground.
 

@@ -9,18 +9,52 @@ This skill owns generation-time rules — the "doing" rules. For architecture (d
 
 Use this skill when the user asks to write or revise curriculum content: a module, exercise, lecture, a new training variant, or a review pass.
 
+## Strategy-first generation — non-negotiable
+
+**Every piece of content aligns to strategy before you touch words.** Strategy-first is not a step; it is the frame around every step. Before drafting a lecture, exercise, prework, or homework, you must already know:
+
+1. **Which module** this belongs to, and its *big idea* from `content-strategy.md`.
+2. **Which mood** this module is engineered to produce — see the "Mood (deliberate)" paragraph at the top of each module's section in `content-strategy.md` and the "mood arc (M1 → M6)" synthesis section. The mood is the contract. An edit that makes M3 feel resolved, M4 feel tidy, M7 feel like governance, or M8 feel like a graduation ceremony is wrong *by strategic design*, not by taste.
+3. **Where it sits in the 8-module rhythm** — joy → compound → unease → deeper unease → rescue → leverage → generosity → awe. Each module's mood feeds the next; resolving a mood too early steals the next module's teaching moment.
+4. **Which canonical strategic structures** it honours when the module has them. M7 ships the **four sharing strategies** (share the context / a skill / the output-push / an interface-pull). "Share the whole agent" is *not* on the list — it's the vendor pitch, and promoting it in student-facing text violates strategy. When a module's strategy section names a canonical structure, use it verbatim; don't reinvent.
+
+If you can't answer those four questions before writing, stop and read `content-strategy.md` until you can. Strategy isn't the frame you impose on content after drafting; it's the frame that decides what to draft.
+
 ## Session start — read this first
 
 Before touching anything, read in this order:
 
-1. **`curriculum/CLAUDE.md`** — architectural rules (directory structure, module file shape, include-links, F-Secure fence, material distribution, Claude Code behavior verification).
-2. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge/control/leadership, audience, throughlines, module reusability).
-3. **`curriculum/content-strategy.md`** — training-level arc + **State of play** section at the bottom (what's built, what's partial, what's next, open TODOs).
+1. **`curriculum/content-strategy.md`** — **start here, not buried at #3 as before.** Training-level arc + mood-arc synthesis (M1 → M8 emotional shape) + per-module "Big idea" and "Mood (deliberate)" + **State of play** at the bottom. This is the strategic contract everything else serves.
+2. **`curriculum/CLAUDE.md`** — architectural rules (directory structure, module file shape, include-links, F-Secure fence, material distribution, Claude Code behavior verification).
+3. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge/control/leadership, audience, throughlines, module reusability).
 4. **`philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
 
 Then check `continuous-research/insights.md` and relevant domain findings before writing — per heuristic 11 (consult research before curriculum work).
 
 **Verify locally:** `python3 -m http.server 8000` at repo root, open `http://localhost:8000/site/curriculum.html`.
+
+## Module session runtime — 1h45 target
+
+Every Bootstrap module session targets **1h45 of facilitated content** (Connections → Lecture → Exercise → Debrief → Bridge). This fits a 2-hour calendar invite with ~15 minutes of buffer at start and end for joining, transitions, and overrun.
+
+**The 1h45 budget (defaults):**
+
+| Phase | Target | Role |
+|---|---|---|
+| Connections | 8–12 min | Warm-up question, room banter, pulls threads from prior module |
+| Lecture | 10–15 min | Concepts primed, foreshadowing the exercise, compound math / frames landed |
+| Exercise | 55–70 min | The substance — multi-phase, banter-inclusive, artifact-producing |
+| Debrief | 12–18 min | Retro-with-Claude + show-and-tell across the room; named artifact saved |
+| Bridge | 3–5 min | One-sentence handoff to next module, question lingers |
+| **Total** | **~105 min** | **= 1h45** |
+
+**What the extra time buys over a 60–75 min module:** richer exercises with multiple loops, room for pair discussion and banter (banter IS part of the learning — *"look at what mine produced"* is where pattern recognition consolidates), longer Debrief for cross-room comparison, and slack when something goes wrong in Claude Code and the facilitator needs to recover without losing the teaching moment.
+
+**Do not compress to fit a shorter slot.** If a customer wants 45-minute sessions, that's a variant with different exercise design (single-loop, less banter, no Debrief) — not the Bootstrap module trimmed. Mid-Management and Executive-Briefing variants will have their own runtime contracts.
+
+**Exercises in the shared library carry a 55–70 min target** when used inside a full Bootstrap module slot. Shorter exercises (20–30 min) are for drop-in use in other training formats or as warmups; they have different eval criteria (faster-to-insight, single artifact).
+
+**Lectures stay compact (10–15 min).** A longer lecture usually means the exercise isn't carrying its own weight — move concepts into the exercise's teaching moments rather than into more lecture minutes.
 
 ## The canonical generation pattern (PDCA loop)
 
@@ -28,8 +62,8 @@ Every piece of curriculum content — lecture, exercise, or module — goes thro
 
 **Plan:**
 1. **Antti's input** — what to build, why, any constraints or principles he's adding this turn.
-2. **Ensure content strategy** — read the relevant section of `curriculum/content-strategy.md`. If this piece changes the arc, update content-strategy in the same edit. Proactive alignment, not reactive.
-3. **Check / agree on evals** — propose the eval judges (contributory ones inferred from patterns; primary "leap test" steered by Antti). Update the eval template (`curriculum/evals/lecture.md` or `exercise.md`) if a missing judge is discovered. Save the filled instance to `curriculum/evals/instances/<training>--<slug>.md`.
+2. **Strategy alignment (mandatory first)** — read the relevant module's section in `curriculum/content-strategy.md`, INCLUDING its *Big idea* and *Mood (deliberate)* paragraphs. If this piece changes the arc, update content-strategy in the same edit. **Mood check:** state in one sentence what emotional state the student should leave this piece in, and how it sets up the next piece. If you can't state it, you haven't read enough strategy yet. Proactive alignment, not reactive — sibling files (module spine, content-strategy, eval instance, state of play) update in the same edit, not later.
+3. **Check / agree on evals** — propose the eval judges (contributory ones inferred from patterns; primary "leap test" steered by Antti). Update the eval template (`curriculum/evals/lecture.md` or `exercise.md`) if a missing judge is discovered. Save the filled instance to `curriculum/evals/instances/<training>--<slug>.md`. **Mood-aware eval:** if the module's strategic mood is unease or complexity, the eval's "leap test" should reward the unease, not punish it. A 7/10 artifact in M3 is the target, not a shortfall.
 4. **Check learning goals** — pull the Bloom-tagged LOs verbatim from the module file into the eval instance. The LOs are the contract; the eval is the measure; the content must satisfy both.
 
 **Do:**
@@ -45,6 +79,46 @@ Every piece of curriculum content — lecture, exercise, or module — goes thro
 8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template, simulation protocol, this SKILL.md, `curriculum/CLAUDE.md`, `memory/self-review-protocol.md`, `memory/MEMORY.md`. The system should be smarter at the end of each cycle than at the start.
 
 **This pattern generalizes beyond curriculum.** Articles, research findings, future trainings all follow the same shape: *input → plan → measure → contract → make → evaluate → improve*.
+
+## The mood arc — load-bearing constraint
+
+The 8-module Bootstrap arc has an engineered emotional progression. Authors MUST honour it; resolving a mood early steals the next module's teaching moment.
+
+| Module | Mood | Quote | Failure mode (wrong edit) |
+|---|---|---|---|
+| M1 | Joyful creation | *"I made this. It's me."* | Making it feel like a technical warm-up |
+| M2 | Satisfied compounding | *"It runs while I sleep."* | Making it feel like tool setup |
+| M3 | Unsettled competence | *"I wonder if this is right?"* | Resolving the doubt with verification or a clean artifact |
+| M4 | Deepened unease | *"Damn, this is complex stuff."* | Making security feel tidy or solved |
+| M5 | Mechanical rescue | *"Ahh, this is actually fixable."* | Premature rescue (M3/M4 haven't stewed long enough) |
+| M6 | Unleashed leverage | *"We can automate the loop."* | Making evals feel like compliance testing |
+| M7 | Generous impulse | *"This is starting to work. I wonder if others could benefit?"* | Making sharing feel like a governance chore |
+| M8 | Awe and curiosity | *"Oh shit. Where is this all going?"* | Making it feel like a tidy graduation ceremony |
+
+**One-line rhythm:** joy → compound → unease → deeper unease → rescue → leverage → generosity → awe. Build, doubt, fix, scale, wonder.
+
+**In practice:**
+- Before writing a Debrief, Close, or Bridge, check which mood this module must leave the student in, and which mood the next module picks up.
+- "Does it feel right to be uncertain here?" is a valid design question when the strategic mood is unease.
+- Do not add verification, check-this-URL, or fix-the-bug steps to a module whose mood is sustained doubt. Checking resolves doubt; doubt is the curriculum.
+- Do not front-load the rescue. M5 is the rescue module; M3/M4 are not.
+
+## The four sharing strategies (Module 7 canonical)
+
+Module 7 ships with four named strategies that practitioners actually use:
+
+1. **Share the context.** Teammates get your `brain/`, `sources/`, `CLAUDE.md`, `style.md` and build their own agents on top.
+2. **Share a skill.** Extract one scoped capability as a skill file; teammates plug it into their agents.
+3. **Share the output (push).** Deploy on a schedule; output lands where the team sees it.
+4. **Share an interface (pull).** Wrap the agent in a Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand.
+
+**"Share the whole agent" is not on the list.** It's the vendor pitch that doesn't hold up in practice. Any student-facing text that frames the M7 goal as "package your agent for others" violates strategy; replace with the four-strategy framing. Vendors sell agent marketplaces; practitioners share at context, skill, output, or interface layer.
+
+## Trust the prompt over scaffolds
+
+For exercises where the student is already working in Claude Code with a populated working directory, **prefer a well-crafted prompt over a pre-built scaffold file**. Students should *produce* agent files, rules files, and structure through the exercise — not unzip them. Scaffolds earn their keep when a module needs a trainer-authored artifact the student wouldn't produce themselves (Module 4's compliance skills, Module 2's initial empty `sources/brain/agents/` folders). Outside those cases, a one-page prompt does the job better: the student experiences the creation move, the artifact inherits their voice, and the training ships lighter.
+
+**Rule of thumb:** if the scaffold file contains text the student should have written in their own voice, it's wrong. Convert to a prompt that produces it.
 
 ## Simulation protocol
 
@@ -130,41 +204,12 @@ Work in passes. Finishing Pass 1 for all modules before starting Pass 2 is how y
 
 The spine for each module. No exercise/lecture content yet.
 
-```markdown
-# [Title]
+Use the canonical template in `curriculum/CLAUDE.md` → **Module File Shape** — architectural source of truth. Pass-1-specific guidance that overrides or refines the template:
 
-## Big Idea
-[One sentence. One idea per module. If you can't state it in one sentence, the module isn't focused.]
-
-## Meta
-- **Primary Bloom's level:** [Remember | Understand | Apply | Analyze | Evaluate | Create]
-- **Prework:** [list or "none"]
-- **Homework:** [list or "none"]
-- **Materials (trainer):** [artifacts the trainer brings — CLAUDE.md guardrails, pre-built skills, fabrication prompts, etc.]
-- **Plug points:** [where the org inserts its own context]
-
-## What You'll Learn
-After this module, you will be able to:
-- **[verb]** [specific thing] — verb-led, at the right Bloom's level
-
-## Lectures
-- **[Lecture name]** — [one-line description]
-
-## Exercises
-- **[Exercise name]** — [one-paragraph description of the arc in prose, not sub-bullets]
-
-## Key Concepts (Emergent)
-- [What emerges from doing the exercises. Concepts don't precede exercises.]
-
-## Plug Points
-- **[Specific plug point]** — [what the org inserts, default if we provide one]
-
-## Debrief
-[The 4th C — Conclusions. Pattern: ~5-minute personal retro run WITH Claude via a pasted prompt. Three questions: what went well, what was tedious, how to store the learnings as reusable context (guardrails, skills, evals — whatever the module's discipline is). Produces an artifact the student carries forward. Student-facing, conversational-prompt style. See `trainings/bootstrap/getting-going.md` for the reference pattern.]
-
-## Bridge
-[One sentence. Sets up the next module's question.]
-```
+- **Big Idea:** one sentence, one idea per module. If you can't state it in one sentence, the module isn't focused.
+- **What You'll Learn:** LO verbs lead; phrased at the right Bloom's level.
+- **Lectures / Exercises (Pass 1 form):** bullet list with one-line description for lectures, one-paragraph prose description for exercises. Include-links arrive in Pass 2 when the referenced files exist.
+- **Debrief:** the three retro questions shift to the module's discipline (Module 4 "what should be a skill," Module 6 "what should be an eval," etc.), not universally "guardrails."
 
 ### Pass 2 — Exercise + lecture skeletons
 
@@ -178,16 +223,16 @@ One file per entry in the shared library. These are the canonical files.
 **What happens:** [expected behavior, with a realistic example of output]
 **The point:** [why this matters — one or two sentences]
 **Facilitator note:** [timing estimate, common questions, watch-for behaviors, decision points for pacing]
-**Time:** [e.g., "8-12 minutes"]
+**Time:** [e.g., "55-70 minutes" for Bootstrap module slot; "20-30 minutes" for drop-in use]
 ```
 
 **Lecture file shape:**
 ```markdown
 # Lecture: [Name]
 
-[Content — under 10 minutes of facilitator talking per the 10-minute rule. Concepts serve the exercise that follows, not an abstract curriculum. Use participants' language from Connections.]
+[Content — 10-15 minutes of facilitator talking, inside a 1h45 Bootstrap module. Concepts serve the exercise that follows, not an abstract curriculum. Use participants' language from Connections.]
 
-**Time:** [e.g., "8-10 minutes"]
+**Time:** [e.g., "10-15 minutes"]
 ```
 
 ### Pass 3 — Full content
@@ -219,7 +264,7 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
 - **Claude Code specific.** Exact interactions, expected outputs, troubleshooting. Not tool-agnostic.
 - **Exercise-led, not lecture-led.** Concepts emerge from doing. Never explain before the exercise demonstrates.
 - **Real data, not toy data.** Participant's own profile, policies, domains.
-- **Failure is the teaching moment — in training.** Design exercises that fail in instructive ways (Module 1 fabrication, Module 4 compliance violation, Module 5 hallucination). **But design failure OUT of prework and setup.** Training-day failures are witnessed by a facilitator, debugged in the room, and land as learning. Prework failures happen on a Sunday evening with no recovery — the student loses the thread before Day 1 starts. Different domain, opposite rule: training = productive failure; prework/setup = smooth path with fallbacks named.
+- **Failure is the teaching moment — in training.** Design exercises that fail in instructive ways (Module 1 fabrication, Module 4 compliance violation, Module 5 hallucination). **But design failure OUT of prework and setup.** Training-day failures are witnessed by a facilitator, debugged in the room, and land as learning. Prework failures happen on a Sunday evening with no recovery — the student loses the thread before Module 1 starts. Different domain, opposite rule: training = productive failure; prework/setup = smooth path with fallbacks named.
 - **Don't assume craft. Provide scaffolds.** If an exercise asks the participant to produce an artifact type they haven't built before (LLM-as-judge prompts, skills files, eval criteria, handoff formats), include an inline scaffold, OR a worked example from an adjacent domain they can adapt, OR an explicit pointer to the earlier exercise that built the same artifact. Participants don't create patterns from thin air. Any exercise that expects them to do so fails on the "Scaffold / worked example provided" judge.
 - **Riff on recognized business frameworks.** Exercises anchor new LLM skills on frameworks participants already know (StoryBrand, strategy-as-assumptions, Toyota Kata, Voice of Customer, Jobs-to-be-Done, Double Diamond, principle of least privilege, etc.). Three reasons: (1) **cognitive economy** — participants don't learn two new things at once; LLM behavior hangs on a familiar hook. (2) **Transferability** — they carry both the AI skill and the framework back to work. (3) **Engagement** — best-in-class frameworks beat generic toy exercises. Name the framework at design time.
 - **Incremental complexity.** Each exercise adds one thing. Never two new concepts in one exercise.

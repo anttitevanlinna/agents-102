@@ -1,8 +1,8 @@
 # Eval Instance — Bootstrap / Training Prework
 
-Filled-in eval for the Bootstrap training-level prework (done before Day 1). Prework is a new artifact type — no template exists yet, so this instance doubles as the first exemplar. If the pattern holds after 2-3 prework evals, extract a `curriculum/evals/prework.md` template.
+Filled-in eval for the Bootstrap training-level prework (done before Module 1). Prework is a new artifact type — no template exists yet, so this instance doubles as the first exemplar. If the pattern holds after 2-3 prework evals, extract a `curriculum/evals/prework.md` template.
 
-**Target content:** The "## Prework" section of `curriculum/content-strategy.md` and the "Prework (training-level, done before Day 1)" line in `curriculum/trainings/bootstrap/getting-going.md`.
+**Target content:** The "## Prework" section of `curriculum/content-strategy.md` and the "Prework (training-level, done before Module 1)" line in `curriculum/trainings/bootstrap/getting-going.md`.
 
 **Eval runs:**
 - 2026-04-17 (pass 1 — simulation) — **REVISE**. Marja persona (SVP HR, MacBook, weekly ChatGPT user, O365 shop, ~30 min Sunday afternoon). Completion likelihood 3/10 against the stated 30-min budget; actual novice time 90–120 min. Three auto-fails: (a) Install cliff — CLI-first install assumes Node/npm, blocks non-developers for 25+ min; (b) O365 connector requires tenant admin consent, fiction for non-admin employees; (c) `what-is-an-agent.md` was a ghost file (referenced, didn't exist).
@@ -14,7 +14,7 @@ Filled-in eval for the Bootstrap training-level prework (done before Day 1). Pre
 
 ### Primary — the prework leap test
 
-By the time a participant walks into the room on Day 1, they can:
+By the time a participant starts Module 1, they can:
 - **Confirm Claude Code works on their machine** — they've used it, it ran, no install-day-one scramble
 - **Show one tangible artifact they built** (snake game HTML, plus the saved meetings file)
 - **Name what an agent is vs. what a chatbot is** — at least in rough terms — because they read the first section of *what-is-an-agent.md*

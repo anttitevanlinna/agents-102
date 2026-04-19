@@ -8,14 +8,33 @@ Scan, find what you need, copy the prompt. For deep feature documentation, each 
 
 ## Claude Code — install and open
 
-Primary surface for this training: **Claude Code desktop app.** macOS or Windows. No terminal required. Download from claude.ai, sign in, done.
+Three surfaces. Pick whichever fits your habits — the exercises work in all of them.
 
-- **Desktop app** — the one we use in class. Everything below assumes you're here.
-- **Web** — claude.ai/code. Works if you can't install locally; fewer features than desktop (connector set differs, scheduled triggers don't fire on a machine that isn't open).
-- **CLI** — exists and is powerful, but we don't use it. If you're comfortable with a terminal you can swap in, but you don't have to.
+- **CLI (terminal)** — recommended for self-study. The smoothest flow for the lecture server, folder switches, and pasted prompts.
+- **Desktop app** — macOS or Windows. Good alternative if you prefer a GUI.
+- **Web (claude.ai/code)** — works when you can't install locally, but can't reach the local lecture server at `localhost:8000`. Use desktop or CLI for self-study.
 - **Account tier** — Claude Pro or Team. Your sponsor confirms the license.
 
-*Official docs: [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview).*
+**Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) cover direct install.
+
+## First time in a terminal? (CLI path)
+
+Skip this section if you already use a terminal.
+
+**Open a terminal.**
+- **macOS:** Applications → Utilities → **Terminal.app**. Or press ⌘+Space, type "Terminal," press Enter.
+- **Windows:** Press Win+X, pick **Windows Terminal** (or PowerShell).
+
+**You need Git, Python 3, and Claude Code.** All three should come from your company's approved channel (self-service catalog, IT software request, or whatever your org uses for dev tools). If IT hasn't heard of one of them yet, that's worth surfacing — this training is a good reason to ask. On a personal laptop, the official project sites are the fallback.
+
+**Confirm each is installed.** In a terminal:
+- `git --version` → should print a version
+- `python3 --version` → should print a version (Windows may be `python --version`)
+- `claude --version` → should print a version. If "command not found," the CLI isn't on your PATH — restart the terminal or check the install options.
+
+**Tilde (`~`) means your home folder.** `~/Documents/agents-102-bootstrap/` is `/Users/yourname/Documents/agents-102-bootstrap/` on macOS, `C:\Users\yourname\Documents\agents-102-bootstrap\` on Windows. The shell expands it automatically. You don't type `~` into Finder or Explorer — only into the terminal.
+
+**Exit Claude Code CLI:** type `/exit` at the prompt. (Ctrl+C cancels the current prompt; two Ctrl+Cs in a row exits. `/exit` is cleaner.)
 
 ## Plan mode — look before you leap
 

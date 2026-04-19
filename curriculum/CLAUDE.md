@@ -14,7 +14,7 @@ Current state of what's built vs. what's next lives in `content-strategy.md` →
 
 **Source of truth:** `content-strategy.md` defines the Bootstrap arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library.
 
-**F-Secure delivers their own version of this training. Their materials are F-Secure IPR — off-limits for import, reconciliation, or paraphrase. Build from first principles + this project's research + Antti's practitioner experience.**
+See `## Copyright fence` below before importing anything from external training materials.
 
 ## Directory Structure
 
@@ -145,7 +145,7 @@ Curriculum content describes a real tool that ships on a real cadence. Getting t
 
 4. **Training platform = Claude Code desktop (current) + Cowork (future).** Not Claude.ai (chat). If an exercise draft names `claude.ai` as the place to do the work, or leans on Claude.ai-only features (e.g., the chat-app connector panel, the chat-app schedule UI), it's wrong and must be revised. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via **Shift+P** (or Shift+Tab cycle).
 
-5. **Cloud/remote features carry a Git dependency — out of scope.** Remote tasks (Routines) run in Anthropic's cloud, but the runner needs a cloud source for the working directory — typically a cloud Git repo. Our training uses a local `~/agents-102-bootstrap/` folder. State cloud features exist; do not present them as a realistic upgrade path inside a business-audience exercise.
+5. **Cloud/remote features carry a Git dependency — out of scope.** Remote tasks (Routines) run in Anthropic's cloud, but the runner needs a cloud source for the working directory — typically a cloud Git repo. Our training uses a local training directory (the default path lives in `.claude/skills/self-study/SKILL.md` — source of truth). State cloud features exist; do not present them as a realistic upgrade path inside a business-audience exercise.
 
 6. **When the exercise depends on a tool feature that behaves differently than expected, update the curriculum — not the student's workaround.** If a scheduled task catches up on wake (rather than silently skipping), that's a better teaching moment than a caveat. Write the actual behavior; the student doesn't need to know what we used to think was true.
 
@@ -174,22 +174,22 @@ How participants receive and work with training material (site + local files). D
 
 1. **Site** (curriculum content) — password-protected static URL per customer, co-branded. The same renderer we use locally (`site/curriculum.html`) hosted for the cohort. Prework, lectures, and exercises are read here. Download links for per-module zips live here too. Never ask participants to clone Git.
 
-2. **Working directory on the participant's laptop** — one folder for the whole training, created during prework:
+2. **Working directory on the participant's laptop** — one folder for the whole training, created during prework. The default path (`~/Documents/agents-102-bootstrap/`) is defined in `.claude/skills/self-study/SKILL.md`; everything below refers to it generically as the *training directory*.
 
    ```
-   ~/agents-102-bootstrap/           ← Day 2 onward: open THIS in Claude Code
+   <training-dir>/                     ← Module 2 onward: open THIS in Claude Code
    ├── CLAUDE.md                      ← root guardrails, appears with the Module 2 scaffold
    ├── brain/                         ← cross-module (Module 2 onward)
    ├── agents/                        ← cross-module, custom agent files
    ├── sources/                       ← cross-module, raw company material
    ├── prework/                       ← open this for prework (snake.html, meetings.txt)
-   ├── module-1/                      ← open this on Day 1 — zero context, Debrief lands a CLAUDE.md here
+   ├── module-1/                      ← open this for Module 1 — zero context, Debrief lands a CLAUDE.md here
    ├── module-2/                      ← Module 2 prework writes challenge.md here
    ├── ...
    └── module-8/
    ```
 
-   **Session scope changes at three seams: prework → Module 1 → Day 2 onward.** Open `prework/` for prework, `module-1/` for Day 1, the `agents-102-bootstrap/` root for everything Module 2 onward. Within each scope, write to the right subfolder (e.g., on Day 2 at root, the Module 2 prework brief at `module-2/challenge.md`, the crux at `module-2/crux.md`, etc. — no further reopens). Two folder switches total across the training. The switch between Day 1 and Day 2 is a natural seam — the move from "building one thing" (a site, scoped to Module 1) to "building a system" (a brain + agents + sources that span modules).
+   **Session scope changes at three seams: prework → Module 1 → Module 2 onward.** Open `prework/` for prework, `module-1/` for Module 1, the training-directory root for everything Module 2 onward. Within each scope, write to the right subfolder (e.g., at the root during Module 2, the prework brief at `module-2/challenge.md`, the crux at `module-2/crux.md`, etc. — no further reopens). Two folder switches total across the training. The switch between Module 1 and Module 2 is a natural seam — the move from "building one thing" (a site, scoped to Module 1) to "building a system" (a brain + agents + sources that span modules).
 
    **Module 1 starts with zero context on purpose.** `module-1/` ships empty. No CLAUDE.md, no scaffolded material. The Debrief produces the student's first CLAUDE.md at `module-1/CLAUDE.md` — *their* file, not a trainer handout. That CLAUDE.md is scoped to Module 1 and stays there; Module 2 introduces a separate, wider root CLAUDE.md via its scaffold.
 

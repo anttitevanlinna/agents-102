@@ -61,7 +61,9 @@ What could go wrong when a participant runs the exercise, and how the facilitato
 
 ### Time-boxed *(exercise-specific)*
 
-Realistic time estimate. Target: **20–30 minutes.** Banter and peer conversation are part of the design — don't try to compress the conversation out. Over 45 = too big. Under 10 = too shallow.
+Realistic time estimate. Target inside a Bootstrap module slot: **55–70 minutes** (the exercise is the substance of the 1h45 module — see `SKILL.md` → "Module session runtime — 1h45 target"). Banter and peer conversation are part of the design — don't compress the conversation out. Under 40 = exercise isn't carrying the module; content probably should move from lecture to exercise. Over 80 = exercise is competing for Debrief and Bridge time; split or trim.
+
+Drop-in use outside a Bootstrap module slot (warmups, micro-trainings): **20–30 minutes**, different eval posture (faster-to-insight, single artifact).
 
 ### Facilitator briefing complete *(exercise-specific — essential)*
 

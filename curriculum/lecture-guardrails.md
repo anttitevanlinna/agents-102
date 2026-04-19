@@ -348,9 +348,9 @@ By the end, the student has the whole picture. At each moment, they have only th
 
 Evals are NOT testing. They are not quality control. They are not proofreading. **Evals are a tool for steering output toward strategically significant factors.** Making output more differentiated. More aligned with brand voice. More grounded in specific evidence. With clear metrics.
 
-### Multi-agent framing: the assembly line
+### Multi-agent framing: assembly line or fan-in
 
-The metaphor that lands: **assembly line.** "Each agent does one step and passes the work forward." Sequential hand-offs before orchestration. The assembly line is learnable. A web of agents talking to each other is not (at this level).
+Two shapes land for business audiences: **assembly line** ("each agent does one step and passes the work forward" — sequential) and **fan-in** ("several specialists run in parallel, one synthesizer decides" — Module 3's shape). Both are learnable because both have *seams you can point at*. A web of agents talking to each other is not (at this level). In either shape the teaching moment is the same: **the seam is where it fails** — handoffs lose conflicts, dialects clash, synthesizers average to beige.
 
 ---
 

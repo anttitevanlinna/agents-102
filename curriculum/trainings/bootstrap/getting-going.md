@@ -7,7 +7,7 @@ With the right guardrails, you create output that's genuinely yours — not gene
 
 ## Meta
 - **Primary Bloom's level:** Apply
-- **Prework (training-level, done before Day 1):** ~30–60 min. Install Claude Code (desktop or web — no terminal). Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of `curriculum/supplementary/what-is-an-agent.md` ("LLM vs chat"). Full spec + prereq check in `content-strategy.md` Prework section.
+- **Prework (training-level, done before Module 1):** ~30–60 min. Install Claude Code (desktop or web — no terminal). Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of `curriculum/supplementary/what-is-an-agent.md` ("LLM vs chat"). Full spec + prereq check in `content-strategy.md` Prework section.
 - **Homework:** Antti's LLM brain post; selected sections from "What is an Agent" reference
 - **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief produces the student's first `CLAUDE.md` as an artifact they carry forward.
 - **Plug points:** participant's own LinkedIn profile — no org data needed yet
@@ -18,6 +18,10 @@ After this module, you will be able to:
 - **Apply** a structured guardrail and observe the effect on output quality
 - **Identify** fabrication in LLM output by using your own domain knowledge as the evaluator
 - **Adjust** guardrails to fix specific failure modes
+
+## Connections
+
+When you've used ChatGPT or Claude for your own work — a bio, a pitch, a post — where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 
 ## Lectures
 
@@ -47,10 +51,10 @@ Let's run a retro on what I just did. Three questions:
 2. What was tedious or frustrating?
 3. How can we store the learnings as guardrails — what should live in a CLAUDE.md file so I don't have to re-explain them next time?
 
-Ask me one question at a time. After I've answered all three, write a CLAUDE.md in this folder with the guardrails I should keep. Keep it short — rules I'd actually re-read next time, not a textbook.
+Ask me one question at a time. After I've answered all three, write the guardrails to `CLAUDE.md` in the current folder. Keep it short — rules I'd actually re-read next time, not a textbook.
 ```
 
-Answer each question as it comes. When Claude's done, a `CLAUDE.md` sits in this folder — your first one. Scoped to Module 1. On Day 2 you'll reopen Claude Code at the `agents-102-bootstrap/` root, and Module 2 brings its own, wider CLAUDE.md along.
+Answer each question as it comes. When Claude's done, `module-1/CLAUDE.md` sits in your training directory — your first one, scoped to this module. Module 2 brings its own, wider CLAUDE.md at the training-directory root.
 
 That's the mechanism every later module builds on: reflect, extract, encode as context.
 

@@ -1,6 +1,6 @@
 # What is an Agent
 
-A reference document that grows across the training. Each module adds the next section. This is section one — meant to be read before Day 1 so you walk in with a rough mental frame, not a blank one.
+A reference document that grows across the training. Each module adds the next section. This is section one — meant to be read before Module 1 so you walk in with a rough mental frame, not a blank one.
 
 ---
 

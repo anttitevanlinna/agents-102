@@ -16,7 +16,7 @@ Every claim is evidence-graded: Level 0 (vendor marketing) through Level 4 (cros
 
 ## Get Started
 
-**Prerequisites:** [Claude Code](https://claude.ai/code) installed. A terminal.
+**Prerequisites:** [Claude Code](https://claude.ai/code) installed — CLI is the smoothest for self-study, desktop app also works. Git and Python 3 available on your machine. **Install all of these through your company's approved channel** (IT self-service catalog, software request process, or whatever your org uses for dev tools) — direct download is a fallback for personal laptops. A terminal to clone the repo.
 
 ```bash
 git clone https://github.com/anttitevanlinna/agents-102.git
@@ -30,18 +30,13 @@ Or go straight to a question: *"Which platform should we build on?"* — and the
 
 ## Do the Training (Self-Study)
 
-Agents 102 Bootstrap is normally delivered in-person, 2-day intensive, with a trainer. You can also do it alone at your own pace — Claude Code becomes your facilitator.
+Agents 102 Bootstrap is an eight-module intensive — normally with a trainer, scheduled anywhere from a tight couple of days to a module-a-week over two months. You can also do it alone, at your own pace — Claude Code becomes your facilitator.
 
-**Prerequisites:** repo cloned (you're here); Claude Code installed; Python 3 (pre-installed on macOS and most Linux).
+In Claude Code, type `/self-study`. The facilitator sets up your working directory (`~/Documents/agents-102-bootstrap/` by default), starts the lecture server itself (no second terminal), leads you through prework, tracks progress across sessions, and holds the rhythm of each module.
 
-```bash
-cd agents-102
-claude
-```
+Expect ~14 hours total. Split it however fits — 30-minute sessions, a full weekend, a module a week. If you close Claude Code and come back later, type `/self-study` again and it picks up where you left off.
 
-In Claude Code, type `/self-study`. The facilitator skill sets up your working directory (`~/Documents/self-study/` by default), starts the lecture server in the background itself (no separate terminal needed), tracks your progress across sessions, and walks you through the 4 Cs of each module — Connections, lecture read, exercise phases, Debrief.
-
-Expect ~14 hours total. Split it however fits — 30-minute sessions, a full weekend, a module a week.
+Claude Code CLI is recommended (the terminal flow is smoothest), but the desktop app works too. Use whichever fits your habits. The lecture server runs on your machine at `localhost:8000`, so your browser needs to reach it — which means running Claude Code on the same machine you're reading lectures on.
 
 ## Example
 

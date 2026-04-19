@@ -46,7 +46,7 @@ You are the orchestrator. **Preserve your context window.** Delegate file readin
 | `site/index.html` | Landing page for Agents 102. Target: CTOs and digital leaders at large Nordic companies. |
 | `content/*.md` | Research article for Deploying Agents newsletter. Practitioner-grounded, named companies, verifiable sources. |
 | `content/year-one.md` | 27-essay whitepaper: one year inside an enterprise agentic transformation. Target: CTO peer sharing. |
-| `curriculum/*.md` | Training module for 2-day AI agent building workshop. Exercise-led, Bloom's taxonomy progression. |
+| `curriculum/*.md` | Training module for an eight-module AI agent building workshop — scheduled over days or weeks. Exercise-led, Bloom's taxonomy progression. |
 | `continuous-research/**/*.md` | Research finding or synthesis. Evidence-leveled, counter-evidenced, Nordic-aware. |
 
 ### Step 1: Baseline Eval

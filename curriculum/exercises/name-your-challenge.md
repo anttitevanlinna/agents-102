@@ -4,7 +4,7 @@
 
 Module 2 builds you a brain — one that helps you think through a real, live problem you're currently wrestling with. For that to work, you need to walk into class knowing which problem.
 
-*You've read two pieces on this move. Karpathy showed the pattern on himself — LLM as librarian, not answerer. Antti argued that the same move scales to company knowledge: files, not wikis; version it like code. Tomorrow you'll do it on your own challenge. Tonight you pick the challenge.*
+*You've read two pieces on this move. Karpathy showed the pattern on himself — LLM as librarian, not answerer. Antti argued that the same move scales to company knowledge: files, not wikis; version it like code. In Module 2 you'll do it on your own challenge. First you pick the challenge.*
 
 **What counts as a "next big challenge."**
 
@@ -26,7 +26,7 @@ Pick the one that's on your mind most often this month. If two are tied, pick th
 
 **Step 1 — write the brief.**
 
-Open Claude Code desktop. Open your `~/agents-102-bootstrap/module-2/` folder — that's where the brief will land, ready for Day 2. Paste this prompt:
+In Claude Code opened at your training directory, the brief will land in `module-2/` — ready for Module 2. Paste this prompt:
 
 ```
 I'm heading into a training where I'll build a working brain around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:
@@ -58,15 +58,26 @@ Keep it short. I'll use this as a scavenger-hunt list on training day.
 
 Scan the list. Some suggestions will be obvious; some will surprise you. Circle the two or three from each bucket you'd actually go pull first. Save the list — paste it into `source-preview.md` if you like, or keep it in chat.
 
-**Step 3 — verify your connectors** *(2 min — worth doing now, not Day 2 morning)*
+**Step 3 — verify your connectors** *(2 min — worth doing now, not when Module 2 starts)*
 
-Module 2 Phase 1 relies on your Confluence (or similar wiki) connector and your OneDrive/SharePoint connector. If either needs admin approval, it can take days — and you don't want to find out at 9am on Day 2 when the exercise starts.
+Module 2 Phase 1 relies on your Confluence (or similar wiki) connector and your OneDrive/SharePoint connector. If either needs admin approval, it can take days — and you don't want to find out when Module 2 starts and the exercise is waiting.
 
 In Claude Code desktop, click the **+** next to the prompt (or open **Settings → Connectors**). Enable the Confluence and OneDrive connectors. Sign in with your work account.
 
-If either asks for IT admin approval you don't have, reply to the training coordinator now — they'll route it. If it signs in cleanly, you're done. On Day 2 you won't think about this again.
+If either asks for IT admin approval you don't have, reply to the training coordinator now — they'll route it. If it signs in cleanly, you're done. When Module 2 starts you won't think about this again.
 
-**Step 4 — bring the brief to class.**
+**Step 4 — prime yourself on plan mode** *(15 min)*
+
+Module 2 turns on Claude Code's **plan mode** in Phase 1 — where Claude proposes what it's about to do before touching any files, and you approve. You'll want to recognize it before the exercise hits it rather than learn two things at once.
+
+Fifteen minutes. Pick one:
+
+- **Read** the [Claude quick reference](curriculum.html?file=reference/claude-quick-reference) — start with *"Plan mode — look before you leap,"* then skim the rest. The reading itself is short; the extra time is for actually toggling plan mode in your own Claude Code and feeling how the footer changes. Doing beats reading.
+- **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. A working practitioner showing how it feels in the hands, not a doc page.
+
+Either way: know where the toggle is, what the footer says when it's on, and why you'd reach for it.
+
+**Step 5 — bring the brief to class.**
 
 You're done. Module 2 builds the brain around the brief you just wrote. Come in with the one-paragraph brief and the source-preview list. That's all you need.
 
@@ -74,7 +85,7 @@ You're done. Module 2 builds the brain around the brief you just wrote. Come in 
 
 The hardest part of a brain isn't the tool — it's the scope. A brain about "our company" is a landfill. A brain about *this decision, this month* is a weapon. Picking the challenge well is half the work; Module 2 does the other half.
 
-**Time:** 20 minutes.
+**Time:** 35 minutes total — 20 minutes active (brief + sources + connectors) plus a 15-minute plan-mode primer.
 
 <!-- maintainer -->
 
@@ -83,7 +94,7 @@ The hardest part of a brain isn't the tool — it's the scope. A brain about "ou
 - Roger Martin strategy-as-assumptions — the challenge brief is a set of assumptions the brain will help you stress-test.
 
 **Prerequisites:**
-- Claude Code desktop installed, `~/agents-102-bootstrap/` directory created (per Step 0 of training prework).
+- Claude Code installed, training directory created (per Step 0 of training prework).
 - Steps 1 and 2 run on pure text conversation. Step 3 enables Confluence and OneDrive/SharePoint connectors — admin approval may be in play.
 
 **Watch-fors in class:**

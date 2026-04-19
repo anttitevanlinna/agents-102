@@ -33,6 +33,14 @@ The system-that-improves discipline. From one-shot to self-correcting to meta-im
 - **Module 6:** The eval-iteration loop (the eval is also an assumption)
 - **Module 8:** Agents building agents — self-improvement as design
 
+### cookbook-for-agent-system-design.md
+*"This is how you do it."* Practitioner recipes — the moves, in sequence, that take someone from chat to an agent system they'd stake their reputation on. Supersedes the earlier "lifecycle doc" idea (recipes compose; lifecycles gatekeep).
+- **Module 1:** Recipe 1 — a piece of output that is genuinely yours
+- **Module 2:** Recipe 2 — a compounding system around one live challenge
+- **Module 3:** Recipe 3 — a multi-agent system that answers a strategic question
+- **Modules 4–8:** Recipes 4–8 (scoped trust, quality loop, steering evals, team promotion, agents building agents) — placeholders; filled as each module stabilises.
+- **Beyond the training:** cloud deployment, team sharing, cross-org reuse, enterprise integration, observability, handoffs to non-agent systems — added when each practice is reliable enough that a working practitioner would recommend it without caveats.
+
 More supplementaries may be added as patterns emerge.
 
 ## Filename convention

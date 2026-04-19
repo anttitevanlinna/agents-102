@@ -31,7 +31,7 @@ The point is simple: the simplest possible setup beats the fancy ones, because i
 
 ## What this unlocks
 
-Your brain is company-specific. Your neighbor's is too. Queried side-by-side, they answered differently — because the underlying context is genuinely different. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A brain does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
+Your brain is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the brain you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A brain does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
 
 Every module after this leans on the brain you just built. Multi-agent systems (tomorrow) reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise — you built the substrate the rest of the training runs on.
 

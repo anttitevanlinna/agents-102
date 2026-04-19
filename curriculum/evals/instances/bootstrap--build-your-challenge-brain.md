@@ -18,7 +18,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 2 (Building 
 - Phase 1 time budget is aspirational — 10 min curation-to-sources transfer is realistically 20. Either bump module to 55–60 min or pre-stage one source bucket in prework.
 - Phase 3 "revisit soft-pages.md" assumes continuity across 25 minutes — consider a one-line reminder ("soft-pages.md from Phase 1 — the generic pages we parked").
 - Emotional arc dent Phase 2 → Phase 3: Phase 2 produces joy (first agent works); Phase 3 is housekeeping on the brain. Consider letting the agent consume the new source in Phase 3 — "your agent just got a new fact; watch it change" — instead of routing through brain-update first.
-- Neighbor-swap confidentiality note is in body but could be stronger — simulation showed Anneli overshared because the verbal reinforcement wasn't there.
+- ~~Neighbor-swap confidentiality note~~ — resolved 2026-04-18: neighbor swap replaced with "Close — put it to work" (participant runs a real working question against their own brain). Removes confidentiality surface entirely; classroom-only mechanic dropped in favor of a move that's identical in both modes.
 - "Plan mode" Shift+Tab cycle with three modes — novice cycles past. Consider emphasizing Shift+P as the canonical alternative.
 
 **New Claude-behavior patterns surfaced (added to content-creation skill known-patterns list):**
@@ -71,9 +71,9 @@ The exercise reliably produces these ahas:
 - **"Three pages got SHARPER in Phase 3."** — the compounding moment. A chat can't do this; a folder of markdown files can.
 - **"The agent is also just an .md file."** — the substrate moment. Knowledge, capability, and guardrail are the same kind of object.
 - **"Claude proposed search terms and sources I wouldn't have thought of."** — the guided-curation moment. New to this version. Curation becomes craft, not shovel.
-- **"My neighbor's brain answered their challenge in specifics, not generalities."** — the differentiation-at-personal-scale moment, parallel to Module 1's personal-site payoff. The contrast is stronger here because each neighbor's challenge is genuinely different.
+- **"The brain answered my real working question with specifics and citations, not a generic industry take."** — the differentiation-at-personal-scale moment, parallel to Module 1's personal-site payoff. The contrast holds because the challenge is the participant's own; a generic answer exposes thin spots they can feel immediately.
 
-If reasonable variation in participant skill can skip any of these moments, the exercise is fragile. Plan mode protects the first; the agent-rules defaults protect the second; the guided-curation prompt protects the third; the neighbor swap protects the fourth — genuinely different challenges force genuinely specific answers.
+If reasonable variation in participant skill can skip any of these moments, the exercise is fragile. Plan mode protects the first; the agent-rules defaults protect the second; the guided-curation prompt protects the third; the Close "put it to work" question forces the fourth — a real working question answered against your own brain either lands specific or reveals what's thin.
 
 ### Riffs on a recognized framework
 
@@ -93,11 +93,11 @@ Deferred in detail to facilitator notes; here as check material for simulation:
 - **Connectors not live** — Confluence or Office365 connector didn't install, or OAuth pending admin approval. Fallback: pull content manually (copy-paste from browser into markdown files in `sources/`), or skip to the internet-best-practice sources for this run.
 - **Phase 3 brain got longer, not sharper** — Claude padded. Fix: the literal push-back prompt is in the body.
 - **Custom agent boilerplate** — the "Rules" section reads like defaults, no voice. Fix: Phase 2's "change at least one so it's actually mine" line.
-- **Neighbor swap surfaces confidential substance** — participant defaults to showing the challenge in full. Fix: facilitator sets the "share shape, not substance" rule verbally at the start.
+- **Close "put it to work" question is vague** — participant asks "summarize my challenge" instead of a real working decision. Fix: push back in the body already ("not summarize the sources — a real working question"); facilitator can reinforce with "what's the question you'd answer for your CEO?"
 
 ### Time-boxed
 
-**Target: 45 minutes.** Phase 1 ~12 min (curation + ingest), Phase 2 ~12 min, Phase 3 ~10 min, Phase 4 ~6 min, swap ~5 min. Under 35 = rushed; over 55 = curation sprawled or Phase 3 didn't sharpen and we're diagnosing. Banter welcomed.
+**Target: 45 minutes.** Phase 1 ~12 min (curation + load), Phase 2 ~12 min, Phase 3 ~10 min (including 3-min source hunt), Phase 4 ~6 min, Close ~5 min. Under 35 = rushed; over 55 = curation sprawled or Phase 3 didn't sharpen and we're diagnosing. Banter welcomed.
 
 ### Facilitator briefing complete
 
@@ -125,7 +125,7 @@ Every prompt is a complete copy-paste block with no mid-prompt `[BRACKETS]` for 
 - **Phase 3 audit pushback** — direct prompt; tests Claude's self-report against the files.
 - **Phase 4** — direct prompt; Claude produces proposals, student approves/rejects each.
 
-Close (neighbor swap) uses prose, not a copy-paste prompt. Acceptable.
+Close ("put it to work") uses a copy-paste prompt the participant wraps their own working question with.
 
 ### Plug points real
 
@@ -134,7 +134,7 @@ Participant uses:
 - **Their own sources** — curated live in Phase 1 from Confluence / Office365 / internet, per the guided plan
 - **A task they choose** in Phase 2 (drawn from the challenge, not a generic demo)
 - **Their judgment** on Phase 3's "sharpened vs. longer" and Phase 4's proposed fixes
-- **Their neighbor's challenge-brain** in the close — genuinely different from their own, because the challenge is different
+- **A real working question from their challenge** in the close — the hardest open decision they face, answered against their own brain
 
 Nothing pre-built for any specific participant.
 
@@ -163,7 +163,7 @@ Named phases, concrete prompts, real file paths (`sources/`, `brain/`, `agents/`
 - ❌ No time estimate — present (45 min)
 - ❌ LLM-tell word — audit clean
 - ❌ Toy data instead of participant's own — uses their live challenge
-- ❌ Could run without the teaching moment — plan mode + Phase 3 audit + neighbor swap reinforce
+- ❌ Could run without the teaching moment — plan mode + Phase 3 audit + Close "put it to work" reinforce
 - ❌ Unfamiliar artifact from thin air — scaffolded (brief, plan mode, default rules, starter CLAUDE.md)
 - ❌ Mid-prompt `[BRACKET]` placeholder — audit clean
 - ❌ More than one H1 — one

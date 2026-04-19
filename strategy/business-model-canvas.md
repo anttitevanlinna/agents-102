@@ -158,7 +158,7 @@ The entry point. People learn to think agents by building real ones with their o
 
 | Step | What | Pricing | Who |
 |------|------|---------|-----|
-| **Bootstrap** | 2-day hands-on intensive | **€500/person** | Anyone. 20 people × €500 = €10K — better than consulting day rates, and you create 20 capable people instead of one deliverable. |
+| **Bootstrap** | Hands-on intensive — eight modules, scheduled over days or weeks | **€500/person** | Anyone. 20 people × €500 = €10K — better than consulting day rates, and you create 20 capable people instead of one deliverable. |
 | **Make Your Own** | 4-6 week cohort + change strategy lab | Per-seat, cohort-based | For orgs that want to move fast. Plug points (their policies, systems, context) AND change strategy: a few key change leaders design the rollout with mentoring. Not just "we learned agents" — "we have a plan to transform." |
 | **Champions** | Train-the-trainer | Per-seat | The best from Bootstrap. They learn to facilitate, adapt, and carry it forward inside their org. |
 | **Scale** | Champions run it internally | Zero cost to us | Champions train their org with their own structure. We support, they deliver. |
@@ -226,7 +226,7 @@ The comparative analysis is the agent's job. Agents can synthesize across platfo
 ## The Customer Journey — Five Steps + Advisory
 
 ```
-1. BOOTSTRAP (2-day intensive, €500/person)
+1. BOOTSTRAP (hands-on intensive — days or weeks, €500/person)
    "I see what agents can do. I built one."
        ↓
 2. MAKE YOUR OWN (cohort + change strategy lab, 4-6 weeks)

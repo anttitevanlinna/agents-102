@@ -5,10 +5,10 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Meta
 - **Primary Bloom's level:** Apply → Analyze
-- **Setup:** Close Module 1's Claude Code session (which was scoped to `module-1/`) and reopen Claude Code at the `agents-102-bootstrap/` root. The Module 2 starter zip unzips here.
-- **Prework:** (1) [Name your next big challenge](exercises/name-your-challenge.md) — pick your next big challenge and write a one-paragraph brief. Before class. (2) Karpathy's LLM Wiki post. (3) Candidate: Lindenberg on Claude Code memory architecture.
+- **Setup:** Close Module 1's Claude Code session (which was scoped to `module-1/`) and reopen at your training-directory root. The Module 2 starter zip unzips there.
+- **Prework:** (1) [Name your next big challenge](exercises/name-your-challenge.md) — pick your next big challenge and write a one-paragraph brief. Before class. (2) Karpathy's LLM Wiki post. (3) Plan-mode primer (15 min) — read the *Plan mode* section of the [Claude quick reference](../../reference/claude-quick-reference.md) and toggle it in your own Claude Code, OR watch Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk). (4) Candidate: Lindenberg on Claude Code memory architecture.
 - **Homework:** [Schedule your personal agent](exercises/personal-agent-homework.md) — schedule a daily agent that reads your challenge brain (one week of observation). Plus selected "What is an Agent" sections (tools, memory, context).
-- **Materials (trainer):** Module 2 zip that unpacks into the student's working directory — empty `sources/` (participant fills via curation on class day — no pre-load), empty `brain/`, empty `agents/`, and a root `CLAUDE.md` with starter rules. Plus an optional second batch of sources for Phase 3 — framed as a fresh Confluence page / OneDrive doc / article the trainer hands out during Phase 3, to simulate real-week source flow.
+- **Materials (trainer):** Module 2 zip that unpacks into the student's working directory — empty `sources/` (participant fills via curation on class day — no pre-load), empty `brain/`, empty `agents/`, and a root `CLAUDE.md` with starter rules. Phase 3's second batch comes from the participant themselves — they find another piece of material mid-exercise. No trainer injection; the three-minute "go find more" loop is part of the lesson.
 - **Plug points:** Each participant's own live challenge + curated sources from their Confluence / Office365 / internet. Sponsor pre-agreement: Confluence & Office365 connector access for the cohort; acceptance that the shape (not the substance) of challenges may be shared in the room.
 
 ## What You'll Learn
@@ -24,6 +24,8 @@ After this module, you will be able to:
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
 ## Connections
+Module 1 was for you. The site you built, the voice you sharpened, the fabrication you caught because nobody else could — that was the rehearsal. Now we turn to work. The rest of the training builds on the challenge you actually get paid to move — because that's where the system has to stand up.
+
 You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? Say it out loud before we build one.
 
 Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task — a challenge. Hold it. We're going to build a brain around it.
@@ -69,6 +71,12 @@ Look at my challenge brain. Find the load-bearing obstacle — the one thing tha
 ```
 
 Save Claude's answer. That one sentence is the seed Module 8 cashes in.
+
+> Your agent is "right" when it works. Every miss is context you haven't written yet — sharpen the brain, tighten a rule, rewrite the prompt. You won't spot tomorrow's mistakes by re-reading today's files. You spot them by running the system and watching where it bends.
+>
+> — Antti
+
+Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
 
 ## Bridge
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?

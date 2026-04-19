@@ -76,7 +76,7 @@ Updated 2026-03-21 with platform research findings.
 
 | Offering | What it is | Entry cost |
 |----------|-----------|------------|
-| **Bootstrap** | 2-day hands-on intensive. Build real agents with your policies. | €500/person |
+| **Bootstrap** | Hands-on intensive — eight modules, scheduled over days or weeks. Build real agents with your policies. | €500/person |
 | **Make Your Own** | 4-6 week cohort + change strategy lab. Design the rollout. | €25-40K/org |
 | **Champions** | Train-the-trainer. Internal facilitators who scale it. | €3-5K/person |
 | **Scale** | Champions run it internally with co-owned materials. | €0 |
@@ -101,7 +101,7 @@ Updated 2026-03-21 with platform research findings.
 
 | Gain | How we create it |
 |------|-----------------|
-| People who can build | **Bootstrap.** 2 days, 20 people building real agents. Not theory — the thing works at the end of day 1. |
+| People who can build | **Bootstrap.** Eight modules, 20 people building real agents — scheduled over days or spread over weeks, your cadence. Not theory — a working agent on real data lands in Module 1. |
 | Clear view of process candidates | **Advisory context mapping + Bootstrap experience.** People who've built agents can identify candidates. The advisory system structures that thinking. |
 | Internal scaling capability | **Champions + co-owned materials.** 5 champions × internal training = org-wide competence at zero marginal cost. |
 | Credible strategy grounded in understanding | **The sequence.** By the time you need a strategy, your people have built things. The strategy writes itself. |
@@ -146,7 +146,7 @@ Updated 2026-03-21 with platform research findings.
 
 #### Products & Services
 
-- **Bootstrap** — 2-day hands-on intensive with Claude Code
+- **Bootstrap** — hands-on intensive with Claude Code, scheduled over days or weeks
 - **Make Your Own** — extended cohort with organization's own context
 - **Champions** — train-the-trainer for those who want to multiply the capability
 
@@ -164,7 +164,7 @@ Updated 2026-03-21 with platform research findings.
 
 | Gain | How we create it |
 |------|-----------------|
-| "I built that" | **Exercise 1.1.** By end of day 1, a working agent on your real data. Not a demo — yours. |
+| "I built that" | **Exercise 1.1.** By end of Module 1, a working agent on your real data. Not a demo — yours. |
 | Transferable understanding | **Four pillars woven through every module.** LLM-based, secure, lifecycle, reliable — these are platform-agnostic. |
 | Career relevance | **Champions track.** The best learners become the organization's agent facilitators. Visible, valued, career-defining role. |
 | Confidence to experiment | **Show the failure mode.** For every capability, we show what goes wrong. You leave knowing the risks, not just the potential. |

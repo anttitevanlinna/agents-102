@@ -72,7 +72,7 @@ A graduate doesn't need to be a software engineer. But they need to be able to: 
 
 You cannot train everyone at 1000/head. Too expensive, too slow. The answer is a five-step journey:
 
-1. **Bootstrap** — 500/person, 2-day intensive. Anyone can walk in. You build a real agent.
+1. **Bootstrap** — 500/person, hands-on intensive over days or weeks. Anyone can walk in. You build a real agent.
 2. **Make Your Own** — key change leaders design the rollout. Change strategy lab.
 3. **Champions** — the best from Bootstrap learn to facilitate and adapt. Train-the-trainer.
 4. **Scale** — champions run it inside their org, with their own structure. Zero external dependency.
@@ -148,9 +148,9 @@ The funnel: Bootstrap → Make Your Own → Champions → Scale → Drive into V
 
 You need one folder on your machine that holds everything you build across the training. Create it anywhere convenient — Desktop, Documents, wherever. Name it `agents-102-bootstrap/`.
 
-Then download the **training starter zip** (link in your welcome email) and unzip it *inside* that folder. You'll see empty subfolders appear: `prework/`, `module-1/`, `module-2/`, … through `module-8/`. That's your training home for two days.
+Then download the **training starter zip** (link in your welcome email) and unzip it *inside* that folder. You'll see empty subfolders appear: `prework/`, `module-1/`, `module-2/`, … through `module-8/`. That's your training home for the whole run.
 
-For the prework tasks below, **open the `prework/` subfolder in Claude Code** — not the whole root. Your workspace changes at three seams across the training: `prework/` now, `module-1/` on Day 1, the `agents-102-bootstrap/` root from Day 2 onward. Within each scope, files land in the right subfolder (on Day 2 the Module 2 brief writes to `module-2/challenge.md` from the root — you don't reopen for each artifact). Two folder switches total. The workspace stays clean without you thinking about it.
+For the prework tasks below, **open the `prework/` subfolder in Claude Code** — not the whole root. Your workspace changes at three seams across the training: `prework/` now, `module-1/` for Module 1, the `agents-102-bootstrap/` root from Module 2 onward. Within each scope, files land in the right subfolder (during Module 2 the prework brief writes to `module-2/challenge.md` from the root — you don't reopen for each artifact). Two folder switches total. The workspace stays clean without you thinking about it.
 
 *Not in OneDrive, Dropbox, or Google Drive.* A synced folder and an agent writing files at the same time fight each other. Keep this folder local.
 
@@ -192,11 +192,11 @@ Open `curriculum/supplementary/what-is-an-agent.md`. Read section 1: **LLM vs ch
 
 ---
 
-You arrive on Day 1 with: a working directory ready for every module, Claude Code working, a snake game, a meetings summary, and a 2-page read. Module 1 just gets going.
+You arrive at Module 1 with: a working directory ready for every module, Claude Code working, a snake game, a meetings summary, and a 2-page read. Module 1 just gets going.
 
-**On Day 1, you'll open `module-1/` in Claude Code** — a genuinely empty folder. That's on purpose. Prework artifacts stay in `prework/`; Module 1 starts with nothing primed. On Day 2, you'll reopen at the `agents-102-bootstrap/` root — Module 2 ships a scaffold that unzips there, and from then on the root is home for the rest of the training.
+**For Module 1, you'll open `module-1/` in Claude Code** — a genuinely empty folder. That's on purpose. Prework artifacts stay in `prework/`; Module 1 starts with nothing primed. For Module 2, you'll reopen at the `agents-102-bootstrap/` root — Module 2 ships a scaffold that unzips there, and from then on the root is home for the rest of the training.
 
-**Module 2 has its own prework — name your next big challenge.** You'll get that assignment about a week before Day 2, once the first day is under your belt. That's the brief you'll build on for the rest of the training.
+**Module 2 has its own prework — name your next big challenge.** You'll get that assignment before Module 2 starts, once Module 1 is under your belt. That's the brief you'll build on for the rest of the training.
 
 **Personal scheduled agent** (daily planner, email triage, or similar) is now **Module 2 homework** — after you've built the brain, you schedule a daily touch with it. Easier as a follow-on than a cold prework task.
 
@@ -212,6 +212,8 @@ Standing promise of the training. Over the course of Bootstrap, every participan
 
 **Big idea:** With the right guardrails, you create output that's genuinely yours — not generic.
 
+**Mood (deliberate):** Joyful creation. The *"I made this. It's me."* moment. The student arrives as a chat user and walks out having produced something that is specifically, unmistakably theirs — caught Claude fabricating on facts they know cold, shaped the output with context, felt the "this is me" emotional payoff. Empowerment is the point; nothing else should compete for attention. Any edit that makes M1 feel like a technical warm-up (rather than a personal creative act) steals the joy — and the joy is what gets the student through the harder moods to come.
+
 **Warm-up. Everyone creates something real and sees what guardrails do to quality.**
 
 - Connections: "What have you used ChatGPT/Claude for? What was the best thing it made for you? What was generic about it?"
@@ -224,21 +226,58 @@ Standing promise of the training. Over the course of Bootstrap, every participan
 
 ---
 
+## The mood arc (M1 → M6)
+
+The emotional shape of the first six modules is deliberately engineered. Each module's mood feeds the next; resolving a mood early steals the next module's teaching moment.
+
+- **M1 — joyful creation.** *"I made this. It's me."* Context + guardrails produce output that's genuinely yours. Empowerment is the payoff.
+- **M2 — satisfied compounding.** *"It runs while I sleep."* Persistence + automation turn a one-shot into a system. Ownership is the payoff.
+- **M3 — unsettled competence.** *"I wonder if this is right?"* Multi-agent works; the output sits at an uneasy distance from trust. Doubt is planted, deliberately unresolved.
+- **M4 — deepened unease.** *"Damn, this is complex stuff."* Skills reveal what the agents were doing underneath. The problem gets more texture, not less. The doubt compounds.
+- **M5 — mechanical rescue.** *"Ahh, this is actually fixable."* Fabrication has patterns; the loop (spot → tighten → regenerate) works. Relief, earned honestly.
+- **M6 — unleashed leverage.** *"We can automate the loop."* Evals run the spotting-and-steering industrial. Empowered builder returns.
+- **M7 — generous impulse.** *"This is starting to work. I wonder if others could benefit?"* Generosity as a natural consequence — sharing from enthusiasm, not from obligation. The axis shifts from personal-mastery to team-ownership. Four strategies that actually work: share context, share a skill, share the output (push), share an interface (pull — e.g., Slack bot). "Share the whole agent" is not on the list — that's the vendor pitch.
+- **M8 — awe and curiosity.** *"Oh shit. Where is this all going?"* The flywheel lands. Agents building agents; trajectory accelerating; no visible ceiling. Awe at what the stack can actually do, curiosity about what comes next. The student leaves Bootstrap wanting the next move, not feeling done.
+
+**The eight-module rhythm in one line:** joy → compound → unease → deeper unease → rescue → leverage → generosity → awe. Build, doubt, fix, scale, wonder.
+
+Any edit that makes M3's output feel clean, or M4's security feel tidy, steals from M5 and M6. Any edit that makes M7 feel like a governance chore steals the generous impulse. Any edit that makes M8 feel like a tidy graduation ceremony steals the forward hunger — the right ending is *"I want the next move,"* not *"we're done here."* Honour the arc.
+
+---
+
+## The personal-to-work shift (M1 → M2)
+
+Module 1's artifact is personal: your site, your voice, your profile. Module 2's artifact is work: your board paper, your re-org, your vendor decision. The *substrate* continuity is strong — guardrails file → brain + agent files + CLAUDE.md — but the *subject* pivots, and we name the pivot openly rather than paper over it.
+
+> "The first thing you build is for you, because you're the only evaluator you can't fool. Then we turn to work — because that's where the system has to stand up."
+> — Antti
+
+The pedagogical logic:
+- **Personal first** because you are the one evaluator you cannot fool on your own content. Learning to spot fabrication on something you know cold is the foundation skill for everything that follows. Nobody else in the room can verify your site as precisely as you can.
+- **Work from Module 2 onward** because that is where the system actually has to stand up — where the compound shows up in your life, where the stakeholder isn't a mirror. The personal artifact was a rehearsal with the world's most honest evaluator. The work artifact is the real game.
+- The shift is a feature, not a seam to be hidden. Named clearly in M2's Connections so students feel the transition as intentional rather than as drift.
+
+This shift is *implicit* in the current Bootstrap material; Pass 3 work on the Module 2 module file should add a one-liner at the start of Connections that acknowledges it in student-facing language ("Module 1 was for you. From here on, we turn to the thing you actually get paid to move.").
+
+---
+
 ## Building Agent Systems
 
 **Big idea:** A system remembers, grows, and compounds around the one thing you need to make progress on. Chat can't.
 
-**Build your challenge brain. Three sources, your real challenge, agents that work on it from Day 2 onward.**
+**Mood (deliberate):** Satisfied compounding. The *"it runs while I sleep"* feeling. The student moves from one-shot output (M1's joy) to a living system — files that sharpen, an agent that reads them, a scheduled touch that lands in their inbox tomorrow morning in the company's house style. Ownership, not novelty, is the payoff: it's theirs, it persists, it's already compounding. Any edit that makes M2 feel like a set-up-the-tools module steals the compounding feeling; M2's artifact is a system the student wants to keep, not a demo they'll discard.
 
-A week before Day 2, each participant gets the Module 2 prework: **name your next big challenge.** The thing you actually need to move forward on at work — not a company-wide initiative, not a generic topic. The training brain is built around that. Three sources feed it: your Confluence, your Office365 workspace, and curated internet best practice on the challenge. The brain becomes the backbone of every exercise from Module 2 onward.
+**Build your challenge brain. Three sources, your real challenge, agents that work on it from Module 2 onward.**
+
+Before Module 2, each participant gets the Module 2 prework: **name your next big challenge.** The thing you actually need to move forward on at work — not a company-wide initiative, not a generic topic. The training brain is built around that. Three sources feed it: your Confluence, your Office365 workspace, and curated internet best practice on the challenge. The brain becomes the backbone of every exercise from Module 2 onward.
 
 The exercises are structurally the same across companies. What changes is whose challenge the brain serves.
 
-> CUSTOMER: Participants will work on a live personal challenge — confirm this is acceptable to the sponsor. Confluence and Office365 connectors available for the cohort (IT enabled before Day 2). Participants are willing to share the *shape* of their work with the room for peer review — not the confidential content. No company-wide knowledge base pre-stage required.
+> CUSTOMER: Participants will work on a live personal challenge — confirm this is acceptable to the sponsor. Confluence and Office365 connectors available for the cohort (IT enabled before Module 2). Participants are willing to share the *shape* of their work with the room for peer review — not the confidential content. No company-wide knowledge base pre-stage required.
 
 - Connections: "Karpathy keeps a wiki about himself — not a chat history, a wiki he maintains with an LLM's help. How does that feel different from the last time you asked ChatGPT about something? And the challenge you named last week — what would it mean to have a wiki like that about *it*?"
 - Concept: Three layers — raw sources (your Confluence, Office365, curated internet best practice — immutable), wiki/brain (LLM-maintained, compounding), the rules file (CLAUDE.md)
-- Exercise: **Build your challenge brain** — Curate your three sources: what from Confluence, what from Office365, what internet best practice on the challenge. Plan mode first, then ingest: the agent proposes a topic list, you approve, it writes the brain. Build your first custom agent as a plain markdown file (instructions the model reads — what it's for, plus rules) that does one real job serving the challenge with source citations. Add a second batch of sources and watch existing pages *sharpen* instead of grow. Let the brain lint itself for contradictions, gaps, stale claims — you approve each proposed fix. Swap brains with a neighbor and notice how specific each one is to the person's challenge. The system maintains itself; the agent is text; the substrate is consistent — and it travels.
+- Exercise: **Build your challenge brain** — Curate your three sources: what from Confluence, what from Office365, what internet best practice on the challenge. Plan mode first, then load: the agent proposes a topic list, you approve, it writes the brain. Build your first custom agent as a plain markdown file (instructions the model reads — what it's for, plus rules) that does one real job serving the challenge with source citations. Go find one more piece of material yourself mid-exercise and drop it in — watch existing pages *sharpen* instead of grow. Let the brain lint itself for contradictions, gaps, stale claims — you approve each proposed fix. Close by putting the brain to work: ask it the hardest open question on your challenge and read the citation-backed answer. The system maintains itself; the agent is text; the substrate is consistent — and it travels.
 - Teaching moment: Persistence + automation = system. It remembers. It runs. It grows. And it's YOUR challenge — not generic.
 - Lecture: **"Compounding"** — how to make your agent learn and self-correct. Each cycle builds on the last. The brain gets sharper, not just bigger. Self-correction as a design pattern, not a wish.
 - Concept (emergent): File-based shape. Why markdown files beat databases for this. The LLM writes text and is best at text.
@@ -251,63 +290,76 @@ The exercises are structurally the same across companies. What changes is whose 
 
 ## Multi-Agent Systems
 
-**Big idea:** One challenge, three angles. Each agent sees a slice the others miss.
+**Big idea:** Hire three agents to search. Three more to decide. The filesystem is the meeting room.
 
-**Three lenses on your challenge brain. Two rounds each. One synthesis.**
+**Mood (deliberate):** Module 3 ends in unease, not quality. The student walks out with a synthesized answer that works well enough to feel useful and *not quite* well enough to trust — and we don't resolve that feeling here. The right closing question is *"I wonder if this is right?"*, noted but not fixed. Module 5 is the quality module; it picks up the doubt Module 3 plants. Any edit to Module 3 that makes the output feel like a clean 10/10 is the wrong edit — it steals Module 5's teaching moment. Let it stew.
 
-Prework: Agent memory — filesystem as memory, how agents carry context between runs. Agent tools.
+**Two multi-agent shapes in one exercise. Retrieval = 3+1 separate Claude Code sessions on shared files. Synthesis = one session, three subagents (backward-planner, Martin's experimentator, Rory).**
 
-- Connections: "Your challenge brain does everything at once. What if you had three agents, each asking a different question of the same brain — and none of them the polite one?"
-- Concept: The assembly line — each agent does one job, passes work forward. Sequential pipeline, not a mesh.
-> CUSTOMER: No additional data pre-load. The exercise runs on the challenge brain built in Module 2.
+Prework: Two reads (`exercises/module-3-prework.md`). **Reading 1** — five practitioners automating their life with Claude Code and OpenClaw (Simon Willison, Andrej Karpathy, Thorsten Ball, Mitchell Hashimoto, Geoffrey Huntley); pick three, read one piece each, note one takeaway per practitioner. Calibrates what single-agent already does, so the added coordination in Module 3 is visible. OpenClaw context grounded in `continuous-research/findings/archive/computer-use-and-nordic-signals-march-24-2026.md` (OSS fourth path) + Karpathy's Fortune piece (Mar 21 2026). **Reading 2** — plain-language primer on Claude Code's subagent architecture: what it is (helper with instructions, own context, shared filesystem, returns a result), how to launch one (plain-language prompt — "Launch a subagent to…" / "Launch these three in parallel"), what you'll see (Task block in the transcript). Explicitly does not cover authoring via `/agents` — launching is enough for Phase 2.
 
-- Exercise: **Three lenses on your challenge** — Build three specialised agents that each interrogate your challenge brain from a different angle: *the risk lens* ("what's the biggest risk I'm not seeing?"), *the stakeholder lens* ("who haven't I engaged yet, and why does that matter?"), *the cheap-experiment lens* ("what's the smallest thing I could run this week to learn something real?"). Each agent reads the same brain but with a different instruction set. Run each for two rounds — round two sharpens as the agent notices what it missed. Synthesize across all three. The finding no single agent could produce: the risk you can only see once the stakeholder lens names who's been left out, and the experiment cheap enough to survive it.
-- Teaching moment: The seams are where it fails. Multi-agent coordination is a handoff problem. What happens when one agent's output is noisy or biased?
-- Lecture: **"Setting Up Proper Multi-Angle Analysis"** — what works, what doesn't, what breaks. Synthesis techniques: how to turn three agents' takes into findings that hold up.
-- Concept (emergent): When is one agent better than three? Not always obvious. Three agents here because they genuinely ask different questions — not because splitting is inherently better.
-- Reflection: "What surprised you in the synthesis? Did any lens contradict what you already believed about this challenge?"
-- Bridge: You built something that works. But can you trust it? Tomorrow we break it.
+- Connections: "Last module you were the librarian — you searched Confluence, pulled from OneDrive, chased down practitioner articles by hand. Today you hire three agents to do that search, and three more to decide what it means. One of them is Rory. What do you expect will get lost between them?"
+- Concept (staged, not front-loaded): two multi-agent shapes in Claude Code. Separate sessions (what you feel in Phase 1) and subagents (what you build in Phase 2). The filesystem is the meeting room in both.
+> CUSTOMER: No additional data pre-load. The exercise runs on the same three source zones curated in Module 2 (wiki / collab suite / curated internet). Connectors already in place from Module 2.
+
+- Exercise: **Three retrievers, three minds** — two phases, one strategic question about the student's challenge.
+  - *Phase 1 — Retrieval (3+1 sessions).* Student opens four Claude Code windows on the shared working directory. Three are retrievers, each pointed at one source zone (Confluence-retriever, Office365-retriever, internet-retriever), each with its own agent file and dialect. Run in parallel. Outputs land as markdown files in `module-3/retrievals/`. The fourth is the main session — reads the three as they arrive. The felt moment: three windows churning, files materialising in shared folders, *they're working together on the same problem.*
+  - *Phase 2 — Synthesis (subagents).* Main session now spawns three subagents inside one session: a **backward-from-end planner** (start at the outcome, work back to today), a **Martin-style experimentator** (*what would have to be true for this to work?* — the assumption test), and a **counterintuitive reframer** (the Rory seat — question the obvious take, steal an analogy from an unrelated field). Each subagent reads the retrievals and produces its stance. The main session combines into the optimal suggestion, guardrailed by a framework — Rumelt's kernel by default, or StoryBrand / JTBD / principle-of-least-privilege by challenge type.
+- Teaching moment: Seams are where it fails. Synthesizer left un-prompted averages three takes into beige. Laziness is designed in. **The output is meant to feel 7/10, not 10/10** — that unease is the handoff to Module 5, not a defect in the exercise. Also: Phase 1 and Phase 2 are two *different* multi-agent mechanisms. Student leaves knowing both — separate sessions vs. subagents — not just one.
+- Lecture: **"When to split an agent (and how)"** — splitting earns its keep only when the agents genuinely can't be one (different access, different dialect, different stance). Faking multi-agent with one prompt is the tell. And once you've decided to split: separate sessions when each agent needs its own persistent context/tools; subagents when the orchestrator wants quick parallel thinking in one flow. Anthropic's warning lands here — only a few situations where splitting wins. This is one of them.
+- Concept (emergent): Three stances beat one summarizer. Frameworks are the synthesizer's spine. Rumelt's crux skill from Module 2's Debrief comes back — here it's running inside an agent, not a human retro.
+- Reflection: "Does this feel right? Not in a way you can point at — just the off feeling. Where does the answer sit at that uneasy distance between 'stake my reputation on it' and 'something's not quite there'? Note the shape of the doubt in `module-3/wonder.md`. Don't fix it. Module 5 comes back for this."
+- Bridge: You just built something that works across three systems and thinks in three voices. Which means it just gained access to three systems. What's the worst thing it could do with that?
 
 ---
 
 ## Security
 
-**Big idea:** Your agent just violated company policy. That's YOUR problem.
+**Big idea:** You can't tell if your agent is safe by looking at its output. You need a way to check — and the practice is running the check, not waiting for certainty.
 
-**The compliance violation. Skills as the security architecture. Not prompt injection — business risk.**
+**Mood (deliberate):** Epistemic humility, not guilt. The student built something real in M2–M3. Some got lucky; most have small mistakes; everyone has risks they haven't assessed. The feeling isn't *"I screwed up"* — it's *"I'd like to be safe and I genuinely don't know how to know."* The lecture names the feeling as the permanent condition of working with agents, not a failure state. *"Damn, this is complex stuff — and the practice is doing the work, not reaching certainty."* The unease stays; Module 5 picks up the output-quality thread from here.
 
-Prework: personal reading on the skills system (how skills scope agent capabilities, permissions, tool access).
+**The skills-application module.** Skills arrive as the mechanism — but not as scoping-down. They show up as **expertise the student plugs in.** Two skills, two lenses: a pre-made `company-ai-policy` skill (co-built with the customer and teacher) and a generic `agent-security` skill (access-control analysis + agent-STRIDE, with agentic mitigations suggested).
 
-- Connections: "What's the worst thing your agent could do with access to company data?"
-- Exercise: **Audit and contain with skills** — Analyse your Module 3 system against the company's security, legal, and compliance rules. Where does it violate? What data shouldn't it touch? What output shouldn't it produce? Apply the trainer's pre-built compliance skills, re-run, see what changes — what the agent can no longer do, and why that's the right answer.
-- Teaching moment: It looked good. It was wrong. Your tests wouldn't have caught this.
-- Optional exercise: **Build your own skill** — scope a boundary that matters to you.
-> CUSTOMER: Security policies, legal rules, compliance processes — as usable documents. These get turned into skills before training. Can be separately billed prep work if Antti builds the skills from company policies.
-- Concept (emergent): Trust boundaries. What the agent can access vs. what it should access. Skills are how you enforce this.
-- Reflection: "What policy does your organization have that an agent could violate without knowing?"
-- Bridge: It's secure. But is the output actually good?
+Prework: two reads. (1) Skills — what they are, how they work, why they're the agent's way of borrowing expertise. (2) Agent security vs. classical software security — why the threat model shifts when the system is non-deterministic and tool-using, and why mitigations are agent-shaped (split / filter / review / gate) rather than firewall-shaped.
+
+- Connections: "You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder."
+- Lecture: **"The practice of risk"** — absolute certainty never exists. The practice is the loop: assess → mitigate → reassess residual risk → decide. Access control (what can it reach vs. should reach) and agent-STRIDE (spoof / tamper / repudiate / disclose / DoS / elevate, in agent shapes) are the two lenses. Agentic mitigations (split, filter, review, scope, gate) — not firewalls. And the best mitigation is the one you don't need: don't open the biggest risks in the first place. The `company-ai-policy` skill exists to tell you which doors not to open.
+- Exercise: **Audit your agent** — run two pre-made skills against your Module 3 system. Skill 1 (`company-ai-policy`) produces a policy-compliance report — for each policy rule: compliant / violating / "I can't tell." Skill 2 (`agent-security`) runs access-control analysis + agent-STRIDE and suggests ranked agentic mitigations. Read both reports. Pick ONE risk. Apply the mitigation the skill proposed. Re-run. See the residual risk shift — not vanish.
+- Teaching moment: Distributed, not dramatic. Some students are clean by luck; most have "I can't tell" rows they can't clear today; all have residual risk after mitigation. The variance across the room IS the teaching moment — and the loop (assess → mitigate → reassess) is portable to every agent they'll build.
+> CUSTOMER: The `company-ai-policy` skill is per-customer prep work. Built from the customer's data-usage policy, security policy, AI-use policy (if they have one), and any sector-specific compliance rules (GDPR, NIS2, DORA, MIFID, sector codes). Separately billed if Antti builds it. The `agent-security` skill is generic — shipped with the training.
+- Concept (emergent): Skills as expertise injection, not just scoping. Residual risk as a first-class artifact. The best mitigation is not opening the door.
+- Reflection: "What's one 'I can't tell' row you're leaving 'I can't tell' today — and what would it take to close it?"
+- Homework: extract one micro-skill from your own reading of a company policy rule (e.g., customer-data classification, retention boundaries). Every student produces one skill before Module 5. Plus: agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern).
+- Bridge: The agent is scoped, the residual risk is named. But the output inside the scope — can you trust what it actually says?
 
 ---
 
 ## Output Quality and Hallucination Control
 
-**Big idea:** LLMs will always fabricate. The skill is spotting it, adjusting the rules, and seeing the improvement.
+**Big idea:** There is truth out there. Your agent's job is to stay connected to it. When it can't reach the ground, it fills the gap — confidently, plausibly, wrong. Grounding is the discipline that makes the gap visible.
 
-Prework: 10 famous agent failures in real life (curated reading — TODO: build this list).
+**Mood (deliberate):** Rescue. The unease of M3 and M4 has been accumulating; here it finds a home. Fabrication has signature shapes — you CAN spot them — and the fix is mechanical: tighten the rules, regenerate, check again. *"Ahh, this is actually fixable."* But rescue, not triumph. The rules catch fabrication; they don't catch everything. M3's strategic uncertainty and M4's security residual still stand. Competence returns, now earned honestly because the student felt the doubt first and sees what rules can and cannot reach.
 
-- Connections: "From the prework — which failure surprised you most? Could it happen with your system?"
-- Lecture: **"Why LLMs Will Always Fabricate"** — not a bug to be fixed, a property to be managed. The statistical nature of generation. Why confidence and correctness are unrelated. Includes the compound reliability math (85% per step × 10 steps = 20% end-to-end).
-- Exercise: **Find and tighten fabrication** — Apply the trainer's prompt pattern to your Module 2-3 output (optionally blend with internet search — the system will fabricate, that's designed). Spot what it got wrong, what it invented, what looks plausible but isn't supported. You are the domain expert — use that. Tighten the rules (add constraints, require citations, restrict claims). Regenerate. Compare. See what you gained. See what you lost — tighter rules kill good output too.
-- Concept (emergent): The quality loop — generate, evaluate, adjust rules, regenerate. This is the discipline. Not a one-time fix but a continuous practice.
-- Concept (emergent): The demo-to-production gap. Works once ≠ works reliably. Non-deterministic failure means you can't just "fix the bug."
-- Reflection: "How confident are you in your system's output now? What would it take to stake your reputation on it?"
-- Bridge: You can spot fabrication by eye. But you won't always be there. What if you could automate what you just did — turn your judgment into rules a machine can run? That's evals.
+**Center of gravity:** GROUNDED as the discipline. Fabrication is the failure mode when there's no ground to stand on. The positive frame ("is the output connected to truth?") carries into every agent output the student will ever read.
+
+Prework: **two** public-record cases with documented organisational root causes (not ten headlines). Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Both cases have the organisational missing-check on public record — not just the symptom. Student arrives with one sentence per case: *"the missing organisational check was X."* Seeds M5's classification and lecture Technique 1 (citation re-verification).
+
+- Connections: "Remember the M3 feeling — this is almost right but not quite? Today we name the shape."
+- Lecture: **"Why LLMs Will Always Fabricate"** (TODO — not yet written) — leads with GROUNDED as the discipline, fabrication as the failure mode. Statistical nature of generation. Why confidence and correctness are unrelated. Includes compound reliability math (85% per step × 10 steps = 20% end-to-end) — the single most useful number a CTO can take away.
+- Exercise: **Ground your output** — Apply the trainer's Phase 1 over-reach prompt to your Module 3 synthesized answer. The prompt asks for specifics the sources don't carry (market-sizing, competitor internal strategy, verbatim quotes, analyst opinions, timed outcomes) — the agent will fabricate. Then classify every claim in five categories (GROUNDED / UNGROUNDED / MISREPRESENTS / OVERREACHES / UNGROUNDED-SHAPE) using your domain expertise. Then add three grounding rules (cite-the-ground, name-the-gap, represent-don't-extend), regenerate, compare. See what was invented, see what you lost because grounded rules kill good output too. Close with one line: *"Even with grounded output, the thing I still can't trust is X"* — M6 comes back for that line.
+- Concept (emergent): Grounded vs. ungrounded — the positive epistemic frame. The quality loop — generate → spot → tighten → regenerate → judge the tradeoff. The demo-to-production gap — works once ≠ works reliably.
+- Teaching moment: Rescue is real but bounded. Grounded catches the invented content. It doesn't catch sources that are wrong, framing that tilts, choices about what to include, or strategic judgment. M3's uncertainty and M4's residual both still stand.
+- Reflection: "The v1 vs v2 comparison — which specific line in v2 is a real improvement, and which is a loss you wish you hadn't taken? And what about this briefing still can't the grounding rules reach?"
+- Bridge: You can spot ungrounded output by eye. But you won't always be there. What if you could automate what you just did — turn your judgment into rules a machine can run? That's evals.
 
 ---
 
 ## Evaluations
 
 **Big idea:** Evals are strategic steering, not testing. You're measuring whether the output is differentiated enough to matter.
+
+**Mood (deliberate):** Leverage. In M5 the student spotted fabrication by eye; here they automate it. The mechanical fix gets industrial — evals run the loop so the student doesn't have to. *"Unleash the crunching power."* The mood shifts from relieved competence to empowered builder: *I can steer the system systematically, not just inspect its output one artifact at a time.* Also, the move from "checking the output" to "encoding what matters" — evals are the first artifact where the student's judgment gets pressed into a format a machine can run repeatedly.
 
 **Two things: loop into desired outcome. Create eval criteria that reflect what YOU care about.**
 
@@ -327,24 +379,37 @@ Prework: Ethan Mollick — "Garbage Can and Bitter Lesson."
 
 ## From Personal to Team
 
-**Big idea:** Your challenge brain works for you. Making it work for your team is a different problem.
+**Big idea:** You can't really share an agent. You can share context, a skill, the output, or an interface — and the choice is the design.
 
-**Promotion: personal → team → company. What changes, what breaks. Your Module 2 brain is the thing being promoted.**
+**Mood (deliberate):** Generosity as a natural consequence. By M7 the student's challenge brain has been quietly working for them for days — it produced outputs they trust, spotted mistakes they corrected, and became something they check before meetings. The mood isn't *"I should scale this because governance says so"* — it's *"this is starting to work. I wonder if others could benefit?"* A generative impulse, not a compliance impulse. That distinction matters: a system shared from enthusiasm promotes differently from one shared from obligation. The friction in M7's exercise (picking a strategy, shipping it, seeing what the receiver actually experiences) lands honestly because the student wants the sharing to work.
 
-Prework: 8 short stories on how the best have scaled personal agents to team/company level (TODO: curate). Must include variance — different approaches, different scales. Must include: a skill-based story (team capability encoded as a skill), a recurring simple agent running in the cloud (cron job, not enterprise platform). Goal: show there's no single right way.
+**Four known sharing strategies — pick one, ship it. "Share the whole agent" is not a strategy; it's a vendor pitch that doesn't hold up in practice.**
 
-- Connections: "Your challenge brain has been quietly working for you for a day and a half. Imagine handing it to a teammate tomorrow morning. What would go wrong by 10am?"
-- Exercise: **Promote your challenge brain** — Your Module 2 brain knows your challenge. It also knows things only you know — your read of who's political, the shortcut you take because you trust your own judgment, the credential you quietly dropped in a rule. List everything personal about it. Redesign for the team: shared access, governance (who adds to the brain? who changes the rules? who sees the output?), the parts that need a named owner rather than an individual hunch. Hand the whole thing to a pair partner. Can they run it? Where does it fail — and is the failure technical, or a question of shared understanding?
-- Teaching moment: The personal → team gap is not technical. It's about shared context, trust, and ownership. The brain that works because YOU know what it means doesn't work when 10 people interpret the output differently.
-- Concept (emergent): The promotion path. Personal, team, and company brains are different products. Promotion means redesigning, not just sharing.
-- Reflection: "Who in your organization would own this brain? Who decides what goes in? Who's accountable when the output is wrong?"
-- Bridge: You can build agents, secure them, evaluate them, and scale them to a team. What if you didn't have to build each one by hand?
+Vendors sell agent marketplaces. Practitioners don't share agents. Four strategies actually work in the field:
+
+1. **Share the context.** Give teammates your `brain/`, `sources/`, root `CLAUDE.md`, `style.md`. They build their own agent on top of your curation. Each person's agent looks slightly different; the context is shared; the curation compounds across the team. Lowest coordination cost; highest trust requirement (your teammates have to trust your curation).
+2. **Share a skill.** Extract one scoped capability as a skill file — a policy-check skill, a brand-voice skill, a citation-format skill. Teammates plug it into their own agents. Skills travel further than agents because they're bounded. (This is also where Module 4's skills-as-security-architecture work pays off — scoping is the sharing mechanism.)
+3. **Share the output (push).** Deploy the agent on a schedule or in the cloud; put the output somewhere the team sees it (an intranet page, the team's shared drive, a morning email). People consume what the agent produces without running it themselves. Scheduled, one-way, artifact-shaped.
+4. **Share an interface (pull).** Wrap the agent in something people can invoke — a Slack bot, a Teams @mention, a web form, a simple endpoint. The agent waits; the interface is the handle. Teammates ask in their own words and get the agent's answer on demand. Higher engineering lift (someone keeps the interface up) but zero trust cost and highest conversational fluency.
+
+Strategies 3 and 4 are close cousins with opposite defaults: 3 is *push* (the agent pushes output to you on a schedule), 4 is *pull* (you pull the agent's attention when you need it). Most teams want one or the other, not both.
+
+Prework: 8 short practitioner stories, organised under the four strategies — context-share / skill-share / output-push / interface-pull (TODO: curate). Explicitly no "shared agent" story because those don't really work. Goal: show there's no single right way *and* show why "share the whole agent" isn't on the list.
+
+- Connections: "Your challenge brain has been quietly working for you for a day and a half. What would you want your teammate to actually *have* — your folder, one of your skills, the morning output, or a way to ask it a question in Slack? And why that one?"
+- Exercise: **Pick a sharing strategy, ship it** — Ask the M7 question: *"I wonder if others could benefit?"* Pick ONE of the four proven strategies based on your challenge and team context. **Strategy A (share the context):** give a teammate a copy of your `brain/`, `sources/`, `CLAUDE.md`, `style.md` — they build their own agent on top of your curation. **Strategy B (share a skill):** extract one scoped capability from what you've built into a skill file — teammate plugs it into their agent. **Strategy C (share the output / push):** schedule your agent in the cloud (or on a recurring local run), deploy the output somewhere the team sees it. **Strategy D (share an interface / pull):** wrap your agent in something teammates can invoke — a Slack bot, a Teams @mention, a web form — and let them ask it questions in their own words. Pick ONE; redesign accordingly. In pairs: one partner experiences your chosen strategy from the receiving end. The real question isn't *does it work?* — it's *why did you pick this strategy for this challenge and this team?*
+- Teaching moment: "Shared agent" sounds sensible and is vendor-shaped ceremony. The real sharing is at context, skill, output (push), or interface (pull) — and the choice between the four IS the design decision. Different challenges want different strategies; different teams absorb different strategies. The room will split across all four, and that's the point.
+- Concept (emergent): Sharing layers — context, skill, output, interface — each with a different coordination cost, trust requirement, fidelity, and engineering lift. None of them is "ship the agent." Push (output) and pull (interface) are the two ways to deliver a running agent's value without making the consumer run one.
+- Reflection: "Who in your organisation would you share context with? Who should get a skill? Who just wants the output? Who'd actually use an @mention? And why is it almost never the same person across all four?"
+- Bridge: You can build agents, secure them, evaluate them, and ship any of four shared versions to your team. What if you didn't have to build each one by hand?
 
 ---
 
 ## Agents Building Agents (The Flywheel)
 
 **Big idea:** The tool that builds tools compounds.
+
+**Mood (deliberate):** Awe and curiosity. The *"oh shit — where is this all going?"* moment. After seven modules of building, doubting, fixing, scaling, sharing, the flywheel lands: agents building agents, capability compounding by construction, the student's own trajectory accelerating with no visible ceiling. Not fear. Not overwhelm. Genuine awe at what the stack they've been learning can actually do — and genuine curiosity about what comes next. The mood is generative: the student leaves Bootstrap *wanting the next move*, not feeling they've finished one. Any edit that makes M8 feel like a tidy graduation ceremony steals this — the right ending is forward hunger, not closure.
 
 **Everyone's agents run on shared context. The output is the synthesized AI strategy.**
 
@@ -370,11 +435,12 @@ Reference documents that build up progressively across modules. Participants rea
 
 **Why these are not lectures.** Lectures are single-sitting events (a 15-min demo, or a 10-min reading before one module). Supplementaries cover concepts too complex to absorb in one sitting — their *progression* is the point. The "what is an agent" answer a participant needs in Module 1 is different from the one they need in Module 4. A monolithic reading can't meet them where they are; sections build as modules go.
 
-Three supplementaries, with more to be added as patterns emerge:
+Four supplementaries, with more to be added as patterns emerge:
 
 1. **what-is-an-agent.md** — the agent-ness progression. LLM → chat → system → multi-agent → agents-that-judge → agents-building-agents. Sections added from Modules 1, 2, 3, 4, 5-6, 8.
 2. **building-guardrails.md** — the constraint / context discipline. Guardrails as structured context → schema for knowledge → skills as scoped boundaries → generation rules. Sections added from Modules 1, 2, 4, 5.
 3. **learning-and-compounding-systems.md** — the system-that-improves discipline. The brain → quality loop → eval iteration → agents building agents. Sections added from Modules 2, 5, 6, 8.
+4. **cookbook-for-agent-system-design.md** — *"this is how you do it."* Practitioner recipes, one per module's artifact, written out so a graduate can run them on Monday. Recipes 1–3 seeded from the Bootstrap spine; 4–8 follow the remaining modules. Extends beyond the training with cloud deployment, team sharing, cross-org reuse, enterprise integration, observability, handoffs. Supersedes the earlier "lifecycle doc" idea: recipes compose; lifecycles gatekeep.
 
 See `supplementary/README.md` for the full pattern: filename convention, section structure, how modules reference, and the pass-by-opportunity build (sections fill in as the modules they serve are written).
 
@@ -406,24 +472,27 @@ The content produced through this loop is itself a demonstration of Module 6's p
 
 ---
 
-## State of play (as of 2026-04-17)
+## State of play (as of 2026-04-19)
 
 Bootstrap training — snapshot of what exists. Refresh this section at the end of every significant session.
 
-**Fully built:**
-- **Self-study delivery mode:** `/self-study` skill at `.claude/skills/self-study/SKILL.md` (also planted in the training-starter scaffold so the student's training dir gets it). Facilitator skill that sets up the working directory (`~/Documents/self-study/` default), starts the lecture server in the background from the Claude Code session itself (no second terminal), tracks progress in `progress.md`, and holds the 4 Cs cadence per module as a 1:1 conversation. Config file at `~/.claude/agents-102-self-study.json` stores training-dir path, repo path, and chosen port. Student journey: clone repo → `claude` → `/self-study`. Onboarding section in repo root `README.md`.
-- **Training-level:** prework (Step 0 working-dir setup / snake / calendar / mental-frame read), training index page at `site/curriculum.html`
-- **Training starter scaffold:** `curriculum/scaffolds/training-starter/` — `prework/` folder + `module-1/` through `module-8/` with READMEs + root README. This zips to the training-starter.zip participants download during prework. Three-opens rule documented: `prework/` for prework, `module-1/` for Day 1, root for Day 2 onward.
-- **Module 1 (Getting Going):** module file, Opening lecture (Context is King), Personal site with guardrails exercise (6 phases), Closing lecture (What just happened), Debrief (Claude retro)
-- **Module 2 (Building Agent Systems):** module file with Connections + Prework Exercise link + Debrief, **Name your challenge** (`name-your-challenge.md`, Module 2 prework — delivered ~1 week before Day 2), **Build your challenge brain** exercise (`build-your-challenge-brain.md` — 3-source curation of Confluence/O365/internet best practice, plan mode, first custom agent, compound-on-second-batch, self-lint, neighbor swap), **Personal agent homework** (`personal-agent-homework.md` — schedule a daily touch with the brain; moved from prework to post-module), Compounding lecture, **crux skill deposit** in the Debrief (lightweight first-pass — Rumelt gets named fully in Module 8), Module 2 starter scaffold (`curriculum/scaffolds/module-2-starter/`). Main exercise APPROVE WITH TODOs after Pass 1 judge + Pass 2 simulation — **needs a re-run after the reframe from company brain to challenge brain.**
-- **Module 6 slice:** Evals as steering lecture (prework), Steering eval exercise
-- **Supplementaries:** What is an Agent section 1 (the other two supplementaries are outline-only stubs)
-- **Reference:** Claude quick reference (install, files, connectors, skills, subagents, troubleshooting)
-- **Eval system:** lecture.md + exercise.md templates (new Business-audience-language judge added 2026-04-17), 6 filled instances with eval-run logs, simulation protocol with 6 known Claude-behavior patterns
-- **Distribution convention:** documented in `curriculum/CLAUDE.md` → Material Distribution section (working-dir tree, zip rules, living root CLAUDE.md, no-sync rule)
+**Fully built** (content artifacts — what a student can actually do):
+- **Prework:** `curriculum/trainings/bootstrap/prework.md` (snake / calendar / mental-frame read)
+- **Module 1 (Getting Going):** module file + Opening lecture (Context is King) + Personal site with guardrails exercise + Closing lecture (What just happened) + Debrief
+- **Module 2 (Building Agent Systems):** module file, Name your challenge prework, Build your challenge brain exercise, Personal agent homework (now includes Step 2 "capture the look" → `style.md` + CLAUDE.md rule → stylised HTML output), Compounding lecture, Debrief with crux skill deposit. Main exercise APPROVE WITH TODOs — **needs re-run after the company→challenge brain reframe.**
+- **Module 3 (Multi-Agent Systems):** module file, Module 3 prework (five practitioners automating with Claude Code + OpenClaw, plus subagent primer), Three retrievers three minds exercise (two phases — sessions + subagents), When to split an agent (and how) lecture, Debrief tuned to deliberate unease. Exercise eval APPROVE WITH TODOs (length soft-fails); prework eval APPROVE WITH TODOs. Pass 3 mood correction applied — ending mood is "I wonder if this is right?" noted in `module-3/wonder.md`, Module 5 picks up the doubt. Capability questions (multi-session open, subagent launch phrasing) confirmed by Antti; both working. Self-study variant owes a recipe for opening four sessions when no trainer is present.
+- **Module 5 (Output Quality):** module file reframed (center of gravity: GROUNDED as the discipline; fabrication as the failure mode when there is no ground to stand on). One exercise **Ground your output** — student's M3 synthesis as target, three phases (over-reach generation → five-category classification → three grounding rules + regenerate), four forced artifacts (briefing-v1, briefing-v2, pattern.md with tradeoff, still-uncertain.md). Exercise eval APPROVE WITH TODOs (length ~1090; same shape as M2–M4). Simulation 7/10 "this is me"; mood rescue-but-not-triumph lands. Four pass-1 patches applied (Phase 2 pre-naming, compound-claim tagging, tightness scale, citation re-verification bridge to lecture). In-room lecture **Grounded — and three ways to check** written — leads with GROUNDED as discipline, includes compound reliability math (85%×10=20%), three takeaway detection techniques (citation re-verification, adversarial pass, consistency probe). Lecture eval dispatched. Debrief and bridge to M6 ("tomorrow we automate it") in module file.
+- **Module 4 (Security):** module file reframed (mood: epistemic humility, not guilt; big idea: *you can't tell if your agent is safe by looking at its output — the practice is running the check*). Two pre-built skills as the module's material, both written and shipping in `curriculum/scaffolds/module-4-starter/skills/`: `agent-security` (generic, ships with training — SKILL.md + stride.md + access-analysis.md + mitigations.md) and `company-ai-policy` **Nordic-baseline default** (SKILL.md + policies/gdpr-essentials.md + data-classification.md + ai-use-baseline.md + sector-rules-placeholder.md). **For in-company deliveries, `company-ai-policy` is replaced by a customer-specific version co-created with the buying organisation outside this repo (separately billable deliverable, ~0.5–1 day Antti time).** Scaffold README documents the two delivery modes. Prework with two sections: skills + agent-vs-software security. In-room lecture **The practice of risk**. Exercise **Audit your agent** — three phases on the student's Module 3 system, produces `module-4/policy-report.md`, `module-4/security-report.md`, `module-4/residual.md` with a "doors I'd rather not open" scoping rule. Lecture eval APPROVE; exercise eval APPROVE WITH TODOs (length soft-fails). Simulation 8/10 "this is me" — mood lands. Pass-1 patches applied (Phase 3 stop language, re-check granularity). **Blocking before first delivery:** capability check on skill drop-in + plain-language invocation.
+- **Cookbook supplementary (stub):** `supplementary/cookbook-for-agent-system-design.md` created as Pass 1 structural placeholder. Recipes 1–3 seeded with one-paragraph summaries pointing at the corresponding module's exercise file; Pass 2 per-recipe write-outs happen as each module reaches its own Pass 3. Supersedes the earlier "lifecycle doc" idea.
+- **Mood arc captured (M1–M6):** dedicated section in content-strategy names each module's deliberate mood and the handoff between them (joy → compound → unease → deeper unease → rescue → leverage). Parallel "Mood (deliberate)" lines now sit at the top of M3, M4, M5, M6 sections. Future authors of M4/M5/M6 content must respect the arc: resolving a mood too early steals the next module's teaching moment.
+- **Module 6 slice:** Evals as steering lecture + Steering eval exercise
+- **Supplementaries:** What is an Agent section 1 (other two are stubs)
+- **Reference:** Claude quick reference
+
+*Non-content infrastructure (delivery skill, scaffolds, eval system, material distribution, path conventions) lives in its canonical home; see `curriculum/CLAUDE.md` for the map. Don't restate it here.*
 
 **Partially built (module files exist as spines, content still needed):**
-- Modules 3, 4, 5, 7 — module files have metadata, LOs, exercise/lecture names, bridge. Content files not yet written. Module 3 reframed to "three lenses on your challenge brain" (was company-wide customer feedback). Module 7 reframed to "promote your challenge brain" (was generic personal → team).
+- Module 7 — module file has metadata, LOs, exercise/lecture names, bridge. Content files not yet written. Module 7 reframed to "promote your challenge brain" (was generic personal → team). Modules 3, 4, and 5 fully built (see above).
 - Module 8 — module file exists; Joint Double Diamond exercise and agent demo not written. Three thinking skills shipped in scaffold: **crux** (Rumelt), **assumption-test** (Roger Martin), **pre-mortem** (Klein/Kahneman). Joint Double Diamond runs them in sequence. The `crux` skill debuts briefly in Module 2's Debrief.
 
 **Open TODOs across the curriculum:**
@@ -437,35 +506,38 @@ Bootstrap training — snapshot of what exists. Refresh this section at the end 
 - ~~**What-is-an-agent definitional wobble.**~~ *Resolved 2026-04-18.* Not a real problem — the gradual-reveal doctrine is the answer. An agent is a 5-10-aspect thing; each module turns on one aspect as the exercise needs it. Apparent contradictions between module-level framings resolve experientially, not in text. **Do not bridge them with a paragraph.** Principle now codified in `lecture-guardrails.md` → Teaching principles → "Progressive reveal: don't define the whole agent." Side-fix: the "never line" framing we had invented is gone — it's not part of classical agent architectures; the hardest constraint is just a high-priority rule.
 - ~~**Snake game promise unfulfilled.**~~ *Resolved 2026-04-18.* Snake is prework only — a one-shot proof that Claude Code writes files to your machine. Nothing more. The "glance at it again" line was already removed from prework.
 - **Capability verification overdue for Module 2 homework.** `personal-agent-homework.md` instructs *Schedule sidebar → New task → New local task* in the Claude Code desktop app. Per the capability-check rule (verify before drafting, not from memory), run a `claude-code-guide` agent pass before the next delivery. Prior sessions missed features; assume this is stale.
-- **No student-facing connector pre-check in Module 2 prework.** `name-your-challenge.md` says *"no connectors required for this prework"* — true for that task, but Day 2's Phase 1 leans hard on Confluence + OneDrive connectors. Add a pre-check step to Module 2 prework: "verify your Confluence and OneDrive connectors work now, not on Day 2 morning." Connector admin approval is slow; students with broken connectors on Day 2 lose Phase 1.
+- **No student-facing connector pre-check in Module 2 prework.** `name-your-challenge.md` says *"no connectors required for this prework"* — true for that task, but Module 2's Phase 1 leans hard on Confluence + OneDrive connectors. Add a pre-check step to Module 2 prework: "verify your Confluence and OneDrive connectors work now, not when Module 2 starts." Connector admin approval is slow; students with broken connectors at Module 2 start lose Phase 1.
 - **Reading-list redundancy check.** Module 1 homework = Antti's LLM brain post. Module 2 prework = Karpathy's LLM Wiki post. Both cover maintained-knowledge-via-LLM. Confirm they earn their seats independently — if one subsumes the other, cut the duplicate. Worth a side-by-side read.
 - ~~**Exercise-led rule vs. Module 1 opening lecture.**~~ *Resolved 2026-04-18.* Rule refined in `lecture-guardrails.md`: no *telling* precedes doing, but *showing* (a live demo the student watches) counts as experience. Module 1's opening lecture stands — priming via demo is necessary when there's no prior experience to reflect on.
 - **Module 2 one-big-idea density.** Stated big idea: "a system remembers, grows, and compounds." Module 2 actually teaches persistence, custom-agent-as-markdown, plan mode, three-layer architecture, self-maintenance, crux naming. Six moves. Some hang on the big idea; some are orthogonal. Honest review needed: is this compounding-as-throughline, or Module 2 overloaded?
 - **Philosophy callout session-level budget.** Rule: 1-2 callouts per lecture max. Compounding lecture uses beliefs #3 + #12; What-just-happened lecture uses beliefs #2 + #3. Belief #3 appears in both — within-lecture budget but student hears it twice in one day. Need a session-level callout register or explicit "repetition across lectures is fine when intentional" note.
 - **Productive-failure doctrine vs. prework friction-removal.** `lecture-guardrails.md`: failure is the teaching moment. Recent prework edits added fallbacks and connector pre-checks. Not a contradiction — training-day failures are designed-in, prework failures lose the student. But the line isn't articulated. Add a one-line rule somewhere: *"Design failure INTO training; design it OUT of prework and setup."*
-- **"Each task opens the folder where its artifact lands" — rule phrasing drift.** Implied reading: every artifact justifies its own folder-open. Actual design: three session seams (prework, Module 1, Day 2), and within each seam artifacts write to the right subfolder. Tighten phrasing in `curriculum/CLAUDE.md` Material Distribution section and in `content-strategy.md` prework Step 0.
+- **"Each task opens the folder where its artifact lands" — rule phrasing drift.** Implied reading: every artifact justifies its own folder-open. Actual design: three session seams (prework, Module 1, Module 2 onward), and within each seam artifacts write to the right subfolder. Tighten phrasing in `curriculum/CLAUDE.md` Material Distribution section and in `content-strategy.md` prework Step 0.
 
-**De-duplication sweep (ongoing):**
-Working-folder instructions were one instance of a broader pattern: the same rule/definition appearing in multiple files, each drifting at its own rate. Each sweep should pick one topic, confirm the single canonical home, and reduce everywhere else to a one-line reference. Candidates (in rough order of drift risk):
-- Prompt-design rules (`curriculum/CLAUDE.md` ↔ `.claude/skills/content-creation/SKILL.md` — currently duplicated; SKILL.md should own them, CLAUDE.md should reference).
-- Simulation protocol (same — SKILL.md owns; CLAUDE.md references).
-- "What is an agent" progression (supplementary owns; lectures/exercises reference rather than re-define).
-- CLAUDE.md content rules for student-facing voice (curriculum/CLAUDE.md vs lecture-guardrails.md — confirm one owns, the other references).
-- Business-audience-jargon ban list (memory vs curriculum/CLAUDE.md — reconcile).
-- Research quality protocol (project CLAUDE.md vs subagent injectable block — already has a canonical home; confirm no drift into curriculum files).
+**De-duplication — canonical homes (keep current):**
+- **Architectural rules** (directory structure, include-links, module file shape, material distribution, orchestrator pattern) → `curriculum/CLAUDE.md`.
+- **Pedagogical rules** (Bloom, 4 Cs, emergent knowledge/control/leadership, audience, throughlines) → `curriculum/lecture-guardrails.md`.
+- **Generation-time rules** (three-pass build, PDCA loop, prompt design, simulation protocol, voice/style, jargon ban, philosophy callouts) → `.claude/skills/content-creation/SKILL.md`.
+- **Delivery mode + working-directory path** → `.claude/skills/self-study/SKILL.md`.
+- **Business model / strategy** → `strategy/` directory.
+- **F-Secure copyright fence** → `curriculum/CLAUDE.md` §Copyright fence.
+- **Research quality protocol** → project root `CLAUDE.md` + subagent injectable block.
 
-The rule for every sweep: one canonical home per piece of content; everywhere else uses a one-line reference (by path). If a reader needs detail, they follow the link. Drift dies when there's only one place to edit.
+The rule: one canonical home per piece of content; everywhere else uses a one-line reference. If a reader needs detail, they follow the link. When adding a new rule, add it in its canonical home only — pointers elsewhere if discoverability matters.
 
 **Workstream priorities (in rough order):**
+0. **Module runtime retrofit to 1h45** (rule added 2026-04-19). Every Bootstrap module session now targets 1h45 to fit a 2-hour calendar invite with ~15 min buffer. Current modules run 65–75 min; need +30–40 min of substance. New guidance lives in `.claude/skills/content-creation/SKILL.md` → "Module session runtime — 1h45 target" and in `curriculum/evals/exercise.md` time-box judge. Retrofit pass owed: M1 (Getting Going), M2 (Building Agent Systems), M3 (Multi-Agent Systems), M4 (Security), M5 (Output Quality), M6 (Evaluations) — extend exercises and Debriefs per the 1h45 budget; do not pad lectures. Options for the extra time: richer multi-loop exercises, longer Connections (group warmup), longer Debrief with cross-room show-and-tell, built-in pair discussion, facilitator-recovery slack.
 1. **Module 2 eval + simulation RE-RUN** — the exercise reframed from "company brain" to "challenge brain" (3 sources: Confluence, O365, internet best practice; personal challenge, not shared company KB). Previous APPROVE WITH TODOs verdict is stale; re-evaluate against the new shape.
-2. **Name your challenge** prework (`name-your-challenge.md`) — Module 2 prework, delivered ~1 week before Day 2. Needs scaffold + eval.
+2. **Name your challenge** prework (`name-your-challenge.md`) — Module 2 prework, delivered before Module 2 starts. Needs scaffold + eval.
 3. **Personal agent homework** (`personal-agent-homework.md`) — scheduled daily touch with the brain; moved from prework to Module 2 homework.
-4. Modules 3–5 content
-5. Supplementary sections as their modules land
-6. Module 7 content
-7. Module 8 content (Extend + Joint Double Diamond with the three thinking skills: crux, assumption-test, pre-mortem)
-8. Facilitator notes pass across everything
-9. Second training variant (mid-management) — reuse exercises/lectures/supplementaries; new `trainings/mid-management/` module files with audience-specific framing
+4. **Module 4 capability check** — verify skill drop-in + plain-language invocation work reliably in current Claude Code; pre-bake `/skill use` fallback into prompts if not. Blocking before first delivery.
+5. **Module 4 customer-version build template** — the out-of-repo process and input checklist for building the customer-specific `company-ai-policy` skill from a customer's policies. Referenced from `scaffolds/module-4-starter/README.md`. Needed to scope the separately-billable prep work and run a first customer engagement.
+8. Module 5 content (output quality, hallucination loop — picks up the mood from M3's `wonder.md` and M4's residual)
+9. Supplementary sections as their modules land
+10. Module 7 content
+11. Module 8 content (Extend + Joint Double Diamond with the three thinking skills: crux, assumption-test, pre-mortem)
+12. Facilitator notes pass across everything
+13. Second training variant (mid-management) — reuse exercises/lectures/supplementaries; new `trainings/mid-management/` module files with audience-specific framing
 
 **Content types in use** (see `CLAUDE.md` for decision tree): lectures (inlined, single-sitting), exercises (inlined, one bounded activity), supplementaries (not inlined, progressive reference), quick reference (not inlined, flat lookup with pointers to official docs).
 

@@ -128,7 +128,7 @@ A CTO looks at the agent landscape in March 2026 and sees: 4 horizontal platform
 
 The CTO doesn't need a platform comparison matrix. They need structured context that makes the question askable. Before you can evaluate "which platform for invoice reconciliation," you need to know: Is invoice reconciliation even a good candidate? What does "agentic" mean for that process vs. a chatbot? Which of my 200 processes have the right characteristics (bounded scope, clear success criteria, escalation tolerance, data in one system)?
 
-This is why Bootstrap precedes advisory. The 2-day hands-on experience gives the organization enough understanding to formulate real questions instead of vendor-shaped ones. Without it, the CTO is choosing between marketing stories, not between real capabilities.
+This is why Bootstrap precedes advisory. The hands-on experience gives the organization enough understanding to formulate real questions instead of vendor-shaped ones. Without it, the CTO is choosing between marketing stories, not between real capabilities.
 
 **The implication for CTOs:** Don't start with "which platform." Start with "which of our processes should we even try." That requires building agent competence first — understanding what agents can and can't do, what makes a process a good candidate, and what the failure modes look like. Then the platform question answers itself.
 
@@ -326,7 +326,7 @@ The sequence is now evidence-backed: **No mental models → no shared vision →
 
 The inverse is the consulting failure mode: Strategy → Roadmap → Execution assumes the vision can be handed down. For agents, this produces governance of an abstraction — maturity models where nobody can picture what "Level 3" actually looks like, initiative lists with no felt vision behind them, change programs that reproduce the consultancy's slides instead of the organization's future.
 
-**The implication for CTOs:** If you can't describe what an agent does for your top 5 processes — not from a vendor demo, but from building one — you don't have a vision yet. You have a slide deck. The 2-day Bootstrap isn't "training before strategy." It's "building the mental models that make strategy possible."
+**The implication for CTOs:** If you can't describe what an agent does for your top 5 processes — not from a vendor demo, but from building one — you don't have a vision yet. You have a slide deck. Bootstrap isn't "training before strategy." It's "building the mental models that make strategy possible."
 
 **The implication for Bosser:** This is the sharpest formulation of our core positioning. Not "competence precedes vision" (too abstract). **"How can you have a vision when you don't have the mental models?"** — this is the question that makes CTOs pause. It names the mechanism. Every CTO knows they lack something but frames it as "we need a strategy." The reframe is: you don't need a strategy, you need mental models. Strategy follows.
 

@@ -1,31 +1,36 @@
 # Agent Infrastructure & Governance — Platform State
 
-Last updated: 2026-04-02 (cycle 1)
-OODA cycles: 1
+Last updated: 2026-04-19 (cycle 105)
+OODA cycles: 2
 
 ## Focus
 
 The emerging meta-layer for agent identity, runtime security, and governance — the tools that govern agents across ALL platforms. Not any single agent platform, but the infrastructure that secures, discovers, and controls agents regardless of where they run. Tracked because the CTO question has shifted from "which agent platform?" to "who governs agents across all our platforms?"
 
-## Key Verdict (as of 2026-04-02)
+## Key Verdict (as of 2026-04-19)
 
 **Supply-demand irony: 25+ agent security products exist, zero independently verified deployed-customer outcomes.** Every vendor announced at RSAC 2026 (March). Every product is GA or "early preview." Survey data shows 80.9% of enterprises have moved past planning into active testing or production with agents (Gravitee, 2026). Yet only 14.4% report agents going live with full security/IT approval. The governance tools are being built before the agents they secure are deployed at scale — and the few agents that ARE deployed run without governance. This is the defining irony of Q1 2026: the security industry is selling locks for houses that aren't built yet, while the houses that exist have no doors.
 
-**Evidence level: Level 0-1 across the board.** Every finding below is vendor announcement, vendor survey, or single-vendor claim. Zero independent practitioner reports of deploying any of these governance tools in production. Zero convergence. This entire category is pre-evidence.
+**UPDATE (April 19, 2026):** The GA milestone is now crossed for one product: Okta for AI Agents reaches GA on April 30 — the **first major enterprise identity vendor to achieve production-ready agent governance.** This breaks the "all pre-GA" pattern. Deployment evidence is still zero. GA ≠ adoption.
+
+**Evidence level: Level 0-1 across the board.** Every finding below is vendor announcement, vendor survey, or single-vendor claim. Zero independent practitioner reports of deploying any of these governance tools in production. Zero convergence. This entire category is pre-evidence — but Okta's GA is the first concrete milestone.
 
 ## 1. Identity Layer — Agent as First-Class Identity
 
-### Okta for AI Agents — GA April 30, 2026
+### Okta for AI Agents — GA April 30, 2026 ★ FIRST GOVERNANCE PRODUCT TO GA ★
 
 The biggest bet: treating AI agents as first-class identities in the enterprise directory, alongside humans and service accounts.
 
 - **Universal Directory expansion:** AI agents get their own identity type with defined lifecycle (onboarding → active → decommissioned)
 - **Agent Gateway:** Centralized control plane for agent access to resources. Virtual MCP server capability — admins aggregate and expose tools from Okta's MCP registry
 - **Shadow agent detection:** Discovers unknown/unsanctioned agents in the environment and registers them as identities
-- **Audit trail:** All agent-resource interactions logged for compliance
-- **Status:** Early Access now, GA April 30, 2026
-- **Evidence level:** Level 0 — all information from Okta's own blog and press releases. Zero independent deployment evidence.
-- Sources: [Okta blog — AI Agents EA announcement](https://www.okta.com/blog/ai/okta-ai-agents-early-access-announcement/) [vendor press release]; [Okta Showcase 2026 press release](https://www.okta.com/newsroom/press-releases/showcase-2026/) [vendor press release]; [MSSP Alert coverage](https://www.msspalert.com/news/okta-wants-ai-agents-treated-like-identities-heres-why-that-matters) [domain trade publication]
+- **Certification workflows:** Agents brought into standard access-review cycles, human owners assigned, access revocable
+- **SIEM integration:** Agent activity (tool calls, authorization decisions, access attempts) logged to existing SIEM
+- **8,200+ platform integrations** extended to include Boomi, DataRobot, Google Vertex AI as agent-aware platforms
+- **Status:** GA April 30, 2026. EA active now. First enterprise governance product to cross the GA threshold (all others — ConductorOne, Stacklok, Vorlon, Astrix, NVIDIA OpenShell — remain pre-GA as of April 2026).
+- **Evidence level:** Level 0 for all capabilities (Okta sources). Level 1 bare fact for GA timing — independently confirmed by MSSP Alert and SiliconAngle. Zero independent deployment evidence.
+- **WARNING — DISQUALIFIED SOURCE:** Fortune article (fortune.com/2026/04/13/ai-agents-governance-identity-risk-okta/) appeared credible but author is Dan Mountstephen, SVP at Okta — undisclosed guest contributor. Level 0 vendor thought leadership. McDonald's chatbot breach and Replit database deletion cited in the article are real incidents documented independently elsewhere.
+- Sources: [Okta blog — AI Agents EA announcement](https://www.okta.com/blog/ai/okta-ai-agents-early-access-announcement/) [vendor press release]; [Okta Showcase 2026 press release](https://www.okta.com/newsroom/press-releases/showcase-2026/) [vendor press release]; [MSSP Alert coverage](https://www.msspalert.com/news/okta-wants-ai-agents-treated-like-identities-heres-why-that-matters) [domain trade publication]; [SiliconAngle — framework launch](https://siliconangle.com/2026/03/16/okta-unveils-new-framework-manage-ai-agents-upcoming-okta-ai-agents-platform/) [tech press, bare facts]
 
 ### Entro Security — NHI Discovery & Governance
 

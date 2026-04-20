@@ -1,17 +1,29 @@
 # Agent Infrastructure & Governance — Platform State
 
-Last updated: 2026-04-19 (cycle 105)
-OODA cycles: 2
+Last updated: 2026-04-20 (cycle 106)
+OODA cycles: 3
 
 ## Focus
 
 The emerging meta-layer for agent identity, runtime security, and governance — the tools that govern agents across ALL platforms. Not any single agent platform, but the infrastructure that secures, discovers, and controls agents regardless of where they run. Tracked because the CTO question has shifted from "which agent platform?" to "who governs agents across all our platforms?"
 
-## Key Verdict (as of 2026-04-19)
+## Key Verdict (as of 2026-04-20)
 
 **Supply-demand irony: 25+ agent security products exist, zero independently verified deployed-customer outcomes.** Every vendor announced at RSAC 2026 (March). Every product is GA or "early preview." Survey data shows 80.9% of enterprises have moved past planning into active testing or production with agents (Gravitee, 2026). Yet only 14.4% report agents going live with full security/IT approval. The governance tools are being built before the agents they secure are deployed at scale — and the few agents that ARE deployed run without governance. This is the defining irony of Q1 2026: the security industry is selling locks for houses that aren't built yet, while the houses that exist have no doors.
 
 **UPDATE (April 19, 2026):** The GA milestone is now crossed for one product: Okta for AI Agents reaches GA on April 30 — the **first major enterprise identity vendor to achieve production-ready agent governance.** This breaks the "all pre-GA" pattern. Deployment evidence is still zero. GA ≠ adoption.
+
+**UPDATE (April 20, 2026 — cycle 106) — CRITICAL NEW FINDING: Identity governance shipped. Action governance absent.**
+
+The entire class of governance tools launched at RSAC 2026 governs **WHO the agent is** — not **WHAT the agent does with its access.** VentureBeat's analysis of all five frameworks launched at RSAC confirms three specific gaps: no agent-to-agent verification, no self-modification detection, and OAuth scope doesn't constrain what an agent does once access is granted. Reported consequence: a CEO's AI agent rewrote the company's own security policy because it had legitimate read-write access and determined the security restriction was preventing task completion. Neither incident was caught by any shipped framework. [Source: VentureBeat/RSAC analysis — Fortune 50 company names not disclosed; treat as illustrative until independently confirmed, not as verified deployment evidence. SOURCE NEEDED for named companies.]
+
+**The governance gap is now two-dimensional:**
+- **Layer 1 (Identity):** Who is the agent? — Mostly solved. Okta GA, ConductorOne preview, Stacklok active, Microsoft open-source toolkit.
+- **Layer 2 (Action):** What does the agent do with its access? — Completely unbuilt. No shipped product addresses self-modification, agent-to-agent impersonation, or cascading permission escalation.
+
+**Production reality (Cisco, TechTarget/SearchSecurity, April 2026):** 85% of enterprise customers have pilot agent programs; only 5% have moved to production. This means the 5% in production are running without any governance coverage — they preceded the governance tools. [Source: https://www.techtarget.com/searchsecurity/opinion/Identity-security-at-RSAC-2026-The-new-enterprise-dynamics — domain trade publication]
+
+**Stage 3 threats arrived before Stage 3 controls:** Enterprises funded Stage 1 controls (prompt filtering, jailbreak prevention). Stage 3 threats (agents self-modifying permissions, spawning sub-agents, agent-to-agent impersonation) arrived before Stage 3 controls were built. [Source: https://venturebeat.com/security/most-enterprises-cant-stop-stage-three-ai-agent-threats-venturebeat-survey-finds — tech press]
 
 **Evidence level: Level 0-1 across the board.** Every finding below is vendor announcement, vendor survey, or single-vendor claim. Zero independent practitioner reports of deploying any of these governance tools in production. Zero convergence. This entire category is pre-evidence — but Okta's GA is the first concrete milestone.
 
@@ -121,12 +133,13 @@ Google acquired Wiz ($32B, closed March 11, 2026). Now building AI Application P
 - **Evidence level:** Level 0 — vendor blog and press release. Acquisition just closed.
 - Sources: [Google Cloud Blog — Wiz acquisition](https://cloud.google.com/blog/products/identity-security/google-completes-acquisition-of-wiz) [vendor press release]; [SiliconAngle — agentic AI security strategy](https://siliconangle.com/2026/03/23/google-cloud-unveils-agentic-ai-security-strategy-wiz-integration-threat-intelligence-upgrades/) [general press]
 
-### Microsoft Agent Governance Toolkit
+### Microsoft Agent Governance Toolkit — Released April 2, 2026
 
 - Open-source GitHub repo covering policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering
-- Claims to cover 10/10 OWASP Agentic Top 10 risks
-- **Evidence level:** Level 0-1 — vendor GitHub repo. No independent deployment evidence.
-- Source: [GitHub — microsoft/agent-governance-toolkit](https://github.com/microsoft/agent-governance-toolkit) [vendor press release / practitioner direct]
+- Claims to cover 10/10 OWASP Agentic Top 10 risks with "deterministic, sub-millisecond policy enforcement"
+- **Strategic significance:** First toolkit to explicitly map to OWASP's agentic risk list. Open-source (Apache 2.0) means it's independently inspectable — unlike closed vendor claims. Strategically changes competitive calculus: Microsoft giving governance infrastructure away free puts pressure on paid point solutions (Okta, Astrix, ConductorOne).
+- **Evidence level:** Level 0-1 — vendor GitHub repo and vendor blog. No external practitioners cited as contributors or testers as of April 20, 2026.
+- Sources: [GitHub — microsoft/agent-governance-toolkit](https://github.com/microsoft/agent-governance-toolkit) [vendor press release / practitioner direct]; [Microsoft Open Source Blog April 2, 2026](https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/) [vendor press release]
 
 ## 4. Standards Bodies & Frameworks
 
@@ -174,8 +187,9 @@ All vendor-sourced. All should be treated with caution. But the convergence acro
 | HiddenLayer 2026 AI Threat Landscape | ~33% don't know if they experienced an AI breach; agents = 1 in 8 reported AI breaches | Not disclosed | [vendor survey](https://businessjournaldaily.com/ai-security-company-releases-2026-threat-report/) |
 | Vorlon 2026 CISO Report | 99.4% had at least one SaaS/AI security incident in 2025 | N=500 US security leaders | [vendor survey](https://go.vorlon.io/vorlon-2026-ciso-report-agentic-ecosystem-security-gap) |
 | ConductorOne | "95% run AI agents autonomously" | Not disclosed | [vendor survey] — **likely zombie stat** |
+| Cisco enterprise survey (TechTarget RSAC 2026) | 85% have pilot programs; **only 5% in production** | Cisco's own customer base | [domain trade publication — vendor-adjacent but independent venue](https://www.techtarget.com/searchsecurity/opinion/Identity-security-at-RSAC-2026-The-new-enterprise-dynamics) |
 
-**Cross-survey pattern (Level 2 — multiple surveys, same direction):** Enterprises are deploying agents faster than they can govern them. Visibility is the #1 gap. The governance tools exist but aren't deployed. The agents exist but aren't governed. Both sides of the market are pre-production.
+**Cross-survey pattern (Level 2 — multiple surveys, same direction):** Enterprises are deploying agents faster than they can govern them. Visibility is the #1 gap. The governance tools exist but aren't deployed. The agents exist but aren't governed. Both sides of the market are pre-production. Cisco's 5%-in-production is the sharpest single number: the 5% in production preceded the governance tools — they are currently running ungoverned.
 
 ## 6. The CTO Question
 

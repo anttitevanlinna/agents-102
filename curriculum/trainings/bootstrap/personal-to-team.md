@@ -5,7 +5,7 @@ You can't really share an agent. You can share context, a skill, the output, or 
 
 ## Meta
 - **Primary Bloom's level:** Analyze → Evaluate
-- **Prework:** Three-walls pre-read — absorption bottleneck, Access-Trust Gap, announcement-to-deployment gap (the three walls practitioners hit when scaling past themselves). Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
+- **Prework:** Three-walls pre-read — **data access, runtime, discoverability** (the three walls practitioners actually hit in the first week of trying to share their work — F-Secure-validated). Absorption bottleneck + Access-Trust Gap as the strategic layer explaining why walls stall rollouts even after addressed. Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
 - **Homework:** Run the Monday artifact. Test one assumption. Ask for one name. Talk to one person.
 - **Materials (trainer):** Pattern catalog (`strategy/personal-to-team-patterns.md`) live in second tab. Branch-selection framing ready. Access-Trust Gap data point in lecture.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).

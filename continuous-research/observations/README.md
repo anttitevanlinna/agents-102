@@ -21,10 +21,12 @@ Practitioner-level observations of organisations operating AI-natively. Not vend
 | Shopify | E-commerce | ~10,000 | Mandated transition | Moderate case | [shopify.md](shopify.md) |
 | Varonis | Data security | Engineering org | Transform-in-place | Moderate case | [varonis.md](varonis.md) |
 | Every Inc | Media/software | ~10 | Born AI-native | Signal → moderate | [every-inc.md](every-inc.md) |
-| Intercom | Customer comms | Mid-size | CS function restructured | Moderate case | [intercom.md](intercom.md) |
+| Intercom | Customer comms + R&D | ~1,305 (R&D ~500) | CS restructured (Fin) + R&D 2x factory (Claude Code) | Deep (R&D, practitioner-direct); Moderate (CS) | [intercom.md](intercom.md) |
 | AMPECO | EV charging | Small | Transitioning | Signal | [ampeco.md](ampeco.md) |
 | Citi | Banking | ~182,000 | Champion-driven adoption | Moderate case | [citi.md](citi.md) |
 | Enterprise Case A | Cybersecurity | ~500 | Transitioning (1 year in) | Deep case (practitioner) | [enterprise-agentic-transformation-case.md](enterprise-agentic-transformation-case.md) |
+| Ramp | Fintech (cards + spend) | Mid-size (800+ internal builders) | Whole-company adoption (platform + spokes) | Deep case (practitioner-direct, CPO) | [ramp.md](ramp.md) |
+| Block | Fintech (Square + Cash App + etc.) | ~10,000+ | Org-design thesis: "from hierarchy to intelligence" | Signal / thesis (CEO-direct, early execution) | [block.md](block.md) |
 
 ---
 

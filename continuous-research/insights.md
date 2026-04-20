@@ -1034,6 +1034,58 @@ Three non-SV pathways are emerging: (1) Values-first (IKEA, Spotify) -- core val
 
 ---
 
+## CLAUDE.md That Learns — Promote-Demote Cycles Beat Growing Correction Logs
+
+**Thesis:** Most CLAUDE.md files are growing correction logs that never learn. Three structural blocks — Knowledge Architecture (promote observations → hypotheses → rules, demote on contradiction), Decision Journal (ADR-style, Claude-enforced), Quality Gate (project-specific testable eval criteria that themselves promote/prune) — turn memory into a reflection system. One practitioner report: 24 project-specific rules Claude wrote itself from patterns across dozens of sessions, never prompted to.
+
+The failure mode is the correction log: CLAUDE.md grows, Claude reads it, nothing in the mechanism tests whether a rule still holds or whether scattered observations form a pattern. "Memory without reflection is just storage." The fix is structural — force retrieval before the task, extract after the task, and make the store tiered so observations can climb or fall. A maintenance schedule prevents decay.
+
+This is a concrete mechanism for the `rules-verification-scarcity` L4 meta-pattern: rules need verification to stay load-bearing; the Quality Gate block IS the verification loop, and the Knowledge Architecture block is the place where verified rules get promoted into default behavior. It's also a concrete Bootstrap M2 scaffold — the "living CLAUDE.md" the curriculum promises, with teeth.
+
+Counter-points to hold: (1) single-practitioner source, one month of use — Level 2 evidence. (2) The 80% hit rate claim on decisions-with-journaled-alternatives is from the author's own practice; would want convergence before citing as a pattern. (3) Promotion-cycle overhead could itself decay if the maintenance schedule isn't run — the system is self-aware about this, but so are many systems that still rot.
+
+**The implication for CTOs:** Team CLAUDE.md conventions — especially engineering-team standards — should specify *structure* (tiered store + promotion rules + decision journal + quality gate + maintenance schedule), not just content. A flat, append-only CLAUDE.md is the agent equivalent of a wiki that nobody reads: mass without leverage. This is small enough to deploy in a week and load-bearing enough to compound.
+
+**Applies to:** Bootstrap M2 (living CLAUDE.md), Bootstrap M5/M6 (quality-gate pattern), Engineering Management training M5 (team rules of engagement), article pipeline (concrete pattern to cite when discussing agent memory systems)
+**Source:** Paweł Huryn (AI PM, productcompass.pm), *"Three Blocks That Make Claude Get Smarter Every Session"* — [productcompass.pm/p/claude-md-snippets](https://www.productcompass.pm/p/claude-md-snippets), x.com/PawelHuryn/status/2039095189843706022, 99.1K views [practitioner direct, single experiment, Level 2]
+**Date:** 2026-04-01
+
+---
+
+## Mid-Size Established Companies Can 2×–3× Engineering Throughput in 9–16 Months — Intercom + Ramp Convergence
+
+**Thesis:** Two independent mid-size established companies (Intercom R&D, Ramp whole-company) published operational reports within a week of each other in April 2026 showing the same playbook produced multiplicative throughput gains — not incremental improvements, not vendor demo numbers, but measured, transparent, self-critical reports from CTOs/CPOs naming the metric, the method, the uneven distribution, and the cost posture. This is **Level 3 convergence** on the "how to run the agentic transformation playbook on an existing engineering org" pattern.
+
+The shared playbook, in the order both companies describe running it: (1) **declare a target publicly** even if imperfect ("2x in 12 months" at Intercom; "most productive company in the world" at Ramp) — accountability is the forcing function, not a plan; (2) **pick an imperfect metric that creates pressure** (merged PRs per R&D head at Intercom; AI-session leaderboard + apps shipped at Ramp) and accept the criticism; (3) **build a dedicated platform team** that ships an internal Claude Code derivative (team-2x + plugin marketplace at Intercom; Glass + Dojo at Ramp) with auto-configuration, SSO, 30+ pre-connected tools, auto-updating skills; (4) **make distribution visible** (top 5% = 6x median at Intercom; L0–L3 ladder at Ramp) and use it to drive enablement not performance management (claimed); (5) **remove the CFO bottleneck** — both explicitly reject token-cost optimization in favor of leverage, with Ramp's math: "if someone is 2x more productive with AI, spend their entire salary again in tokens"; (6) **extend beyond R&D** — Intercom 1,100 Claude Code users out of 1,305 total company; Ramp non-engineers 12% of production PRs.
+
+The shape is *culture-and-tooling first, measurement and mandates second.* Both companies explicitly say they did not have a plan — they had a culture that moved fast, and they kept doubling down on what was working. Neither ran a formal change-management program.
+
+Counter-points to hold: (1) both companies are AI vendors (Fin at Intercom, AI features in Ramp products) with motivation to demonstrate success; (2) both have velocity-biased starting cultures that Nordic traditional companies (manufacturing, retail, logistics) don't have; (3) both are post-chasm — the playbook describes scaling an already-working practice, not crossing the chasm from nothing; (4) "if you're L0 you won't be here" is culturally aggressive for Nordic labor markets and should be flagged in training use.
+
+**The implication for CTOs:** The "we're still debating our AI strategy" stall is increasingly indefensible — two credible peers have published the operating model in full, with numbers, and the playbook is small enough to start in a week. The companies that shipped did not wait for a plan; they declared a target and iterated. This is the forward reference for the Engineering Management training.
+
+**Applies to:** Engineering Management training (anchor cases, both companies; module-by-module backing), advisory (countering the planning-first stall), newsletter (convergence story lands harder than either piece alone), article pipeline (specifically: 2x-in-9-months as a published result, not a projection)
+**Source:** Darragh Curran (CTO Intercom), [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later), 2026-04-16. Geoff Charles (CPO Ramp), *"How to get your company AI pilled"*, x.com/geoffintech/status/2042002590758572377, 2026-04-09. See `observations/intercom.md` Side A and `observations/ramp.md` for full capture.
+**Date:** 2026-04-20
+
+---
+
+## The Hierarchy-vs-Playbook Tension — Two Bets On Where This Goes
+
+**Thesis:** The AI-native-org conversation in early 2026 splits into two bets that are worth holding in tension rather than collapsing. Bet A (Intercom, Ramp, and most shipped playbooks): run the AI transformation on the existing hierarchy, measure the multiplier, keep the management layer. Bet B (Block, Jack Dorsey's thesis): the hierarchy itself is a legacy information-routing protocol and AI replaces it — normalize to three roles (IC, DRI, player-coach), no permanent middle management. Both bets are made by credible CEOs/CTOs with specific operating details. The bets have different evidence bases and different implications, and no honest training can pretend one has been settled.
+
+Bet A has deployment numbers (Intercom: 3x throughput; Ramp: 1,500 apps in 6 weeks) and names the role of the manager explicitly — the manager becomes a conditions-creator and platform-team leader. Bet B has an intellectual history (Roman Army → Prussian General Staff → railroads → matrix → Spotify/Valve → now), architectural specificity (capabilities + world model + intelligence layer + interfaces), and explicit acknowledgment that it's early-stage ("parts of it will likely break before they work"). Bet B argues Bet A is a transitional state — the multiplier is real but the organizational form underneath is obsolete.
+
+For training design, the implication is that the engineering-management buyer's role is the subject of the debate, not a neutral observer of it. An engineering management curriculum that only teaches Bet A risks training people for a role that a subset of the industry thinks is going away. A curriculum that only teaches Bet B is premature; no Nordic enterprise is ready to dismantle middle management tomorrow. Hold the tension: the job right now is to run the Bet A playbook well, with a sober awareness that Bet B is being seriously argued by people whose opinions matter.
+
+**The implication for CTOs:** Don't choose. Run the Bet A playbook because it's the one with shipped results, but read the Bet B writing because it pressure-tests where you're spending your org-design capital. If your middle management layer exists only to route information, AI is going to erode it whether you plan for that or not.
+
+**Applies to:** Engineering Management training (M4 vision — offer both as canonical vision statements; M6 reflection — use Dorsey's "what does your company understand that gets deeper every day?" as a prompt), advisory (hold the tension explicitly), article pipeline (the tension itself is a piece)
+**Source:** jack (Jack Dorsey, Block CEO), *"From Hierarchy to Intelligence"*, [block.xyz/inside/from-hierarchy-to-intelligence](https://block.xyz/inside/from-hierarchy-to-intelligence), 2026-03-31, 5.7M views. Paired with Intercom/Ramp convergence above. See `observations/block.md` for full capture.
+**Date:** 2026-04-20
+
+---
+
 Copy this for new insights:
 
 ```

@@ -161,6 +161,14 @@ The training runs two tracks simultaneously — not sequentially, not optionally
 
 Track 2 is why the brain doesn't decay after day 91. The frontier keeps moving; the brain keeps ingesting; the manager keeps crossing the next chasm forming upstream. *The future is already here, just not evenly distributed.* Track 2 is how you stay in the distribution.
 
+## Pair-training — Agentic Engineering 101
+
+The Engineering Management training has a designed pair: **Agentic Engineering 101** (strategy in `content-strategy-agentic-engineering-101.md`). Same backbone (brain + swarm), same agentic rule, same single-company-cohort assumption, same calibration question — scoped to individual software engineers climbing from L0 to L3.
+
+The pair pincers the transformation: manager creates conditions (EM), engineers run at capacity (101). Together, the single-company cohort generates aggregate L0→L2/L3 movement as the sponsor's finding. Manager's conditions × engineers' capability = compounding velocity.
+
+Delivery assumption (to validate): EM first or in parallel with 101. 101 runs best when manager has a brain populated and infrastructure growing. Possible sequences: (a) EM then 101 a cohort later, (b) EM and 101 in parallel cohorts, (c) combined program where manager and team run on intersecting weeks.
+
 ## Coalition as companions, not instruments
 
 The relational qualifier that reframes the whole training. Coalition isn't a resource to extract from — they're companions whose progress matters. The calibration question applies to them too:

@@ -10,7 +10,7 @@ Current state of what's built vs. what's next lives in `content-strategy.md` →
 
 ## Scope
 
-**A portfolio of 3-4 trainings.** Bootstrap is the first. Mid-management, executive briefing, and domain-specific variants will follow. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
+**A portfolio of 3-4 trainings.** Bootstrap is the first (for builder leaders making the chat-to-systems leap). Engineering Management is the second (for engineering managers leading agentic change; strategy in `content-strategy-engineering-management.md`). Agentic Engineering 101 is the third (for software engineer ICs, L0 → L3 path; strategy in `content-strategy-agentic-engineering-101.md`). Executive briefing and domain-specific variants will follow. The Engineering Management + Agentic Engineering 101 pair pincer the transformation — managers create conditions, engineers run at capacity. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
 
 **Source of truth:** `content-strategy.md` defines the Bootstrap arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library.
 
@@ -30,7 +30,8 @@ curriculum/
       building-agent-systems.md
       multi-agent-systems.md
       ...
-    mid-management/            # FUTURE
+    engineering-management/    # FUTURE — strategy in content-strategy-engineering-management.md
+    agentic-engineering-101/   # FUTURE — strategy in content-strategy-agentic-engineering-101.md
     executive-briefing/        # FUTURE
 
   exercises/                   # Shared library — one file per exercise

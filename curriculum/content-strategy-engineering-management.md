@@ -10,6 +10,49 @@ Skeleton. Second training in the portfolio. Outline-level — the backbone is se
 
 The offer compressed: leadership (your actual job) × agentic (the specific wave, not AI-in-general) × building (hands-on, you go first, the demonstration IS the leadership). CTO hears "the scaling move." Engineering manager hears "I don't have to become an IC builder again — I lead by building alongside my team, on our own real work, and leave with a running system that keeps learning after the training ends."
 
+## The correlation at the heart of the training
+
+**Theory × people-knowledge = actionable insight.** We supply the first. Only you supply the second. Agents amplify the multiplication — they can't substitute for either variable.
+
+- **We bring:** Kotter, ADKAR, Crossing the Chasm, PDCA, Toyota Kata, Rumelt's crux, Huryn's three blocks, Intercom's 2x playbook, Ramp's 8 moves, Block's thesis, Intent Taktik, the L0–L3 ladder, the absorption-bottleneck framing. And agents pre-built and ready to orchestrate.
+- **You bring:** your people. What makes them tick. Who trusts whom. Who's carrying what resentment from the last transformation. Who'll step up when nobody's looking. Who's quietly the best teacher on your team. What your team has tried before and what it left them believing. Nobody else in the room — including us — has this, and nothing in the research KB replaces it.
+- **Together:** agents figure out *with you* what's likely to work for your specific team, help you run it, and read the signal honestly afterward. Theory without people-knowledge = generic advice. People-knowledge without theory = stuck where you are. Both + agents = actionable, compounding insight.
+
+**Dorsey's question at team scale:** *what does your team understand that is genuinely hard to understand, and is that understanding getting deeper every day?* The brain is where that understanding compounds. Agents without it are generic; agents with it actually do the job.
+
+**M1 gets disproportionate weight.** A shallow diagnostic at M1 means shallow insight everywhere downstream. An honest M1 makes the whole rest of the training work. This is the load-bearing module.
+
+**Training value prop in one line:** *We supply the theory and the agents. You supply the people. Together, you build agents that actually do the job.*
+
+**Why it can't be pirated:** the most valuable input comes from the student. There's no shortcut around knowing your people — and our job is only to give you the frame and the agents that make that knowledge pay.
+
+## The student's journey — belief-update, not subject-matter mastery
+
+The student takes a journey. What matters at the end is not what they can *recite* — it's what they now *believe*, and how those beliefs will shape the next move they make on Monday.
+
+Subject matter is the vehicle. Belief-update is the product.
+
+**Beliefs the training is trying to form** (not exhaustive, not fixed):
+
+- *Strategies emerge from action, not analysis.* (Bosser-native)
+- *My knowledge of my people is my irreducible edge; agents amplify it, they don't substitute for it.*
+- *Belief in a move beats picking the "right" move. Half my bets will miss. That's the curriculum.*
+- *Vision is earned, not painted. Intent is declared and revised.*
+- *The coalition self-selects by engagement. I don't draft it.*
+- *I'm a conditions-creator, not an information-router.*
+- *Learning rate is the winning metric, not throughput.*
+- *The brain + swarm compounds. The plan doesn't.*
+
+**What this means for facilitation:**
+
+- Teacher Claude's job is **belief-formation**, not content-delivery. Ask questions that surface current beliefs; challenge them gently with the student's own data; help them articulate the updated position and commit it to the journal.
+- Evaluation (the calibration question) partly means *"have your beliefs shifted in useful directions?"*, not *"can you recall the framework?"*
+- Facilitator premium (in-cohort vs self-study) is about **belief-work under load** — pushing on beliefs when the student's interior flinches from updating them.
+- Reading assignments serve belief-formation. Intercom's 2x memo isn't assigned to extract facts; it's assigned to shift the student's belief about what's possible at an established mid-size eng org.
+- Exercises test belief under load: the student runs a move they believe in; reality pushes back; beliefs update. That's the loop.
+
+**The Rory twist:** most management training delivers subject matter and hopes beliefs come along. Ours targets beliefs and uses subject matter as the vehicle. Nobody gets paid for knowing Kotter. They get paid for acting on what they believe.
+
 ## Audience
 
 Engineering managers — primarily software engineering managers, with adjacent fits for data / platform / ML engineering management. 5–50 reports. The team they lead already builds software for a living; the question isn't *can they code* but *can they shift their team's practice from chatting to compounding engineering*.
@@ -127,17 +170,19 @@ M1–M3 = **set up.** M4–M6 = **let's lead** — student makes first moves WIT
 | M1 | Install the brain + stand up the starting swarm. Diagnose team + per-person ADKAR. First entries populate Block 1. | All three blocks installed + Block 1 populated + first scheduled agents running | diagnostic honesty | Brain in place; intervention backlog auto-promoted; weekly diagnostic agent scheduled |
 | M2 | **Search with starter questions — coalition self-selects.** Agents draft ~5–10 starter questions grounded in Block 1 + KB; student poses them through the week; response-analysis agent surfaces two shortlists simultaneously — candidate first moves AND coalition candidates (those who engaged with agency). | Block 1 (coalition tier seeded) + Block 2 (decision alternatives seeded from team voice) + Block 3 (first gates) | earned clarity after unease — *"I've searched honestly; this is the one I'll run"* | Two shortlists (move candidates + coalition candidates) + first-move picked + journaled decision + gate-watcher agent scheduled |
 | M3 | **Return + cross-pollinate + distill 2 crux + share.** Student returns with M2 data; synthesis agent reads own-team data + KB patterns + cohort cross-shared data (single-company cohort, frictionless). **Crux-finder agent** (invokes Bootstrap `crux` skill; cite Rumelt) distills to exactly 2 crux for this team with forced alternatives. Cohort share-back. Coalition formalizes around the 2 crux. | Block 1 (crux as top-tier rules) + Block 2 (crux-selection as major decision) + Block 3 (outside-view criteria) | co-creation through cross-pollination | 2 crux (terse, quotable) + named coalition + cohort share done + weekly check-in agent scheduled |
-| M4 | **Vision that moves the 2 crux.** Not abstract futures — a concrete one-year sketch of what moves these two specific crux from where they are to where they need to be. Multi-agent deliberation across Bet-A / Bet-B / hybrid postures, constrained by the crux. Reaction-rehearsal agents role-play team archetypes. | Block 2 (vision as crux-bound decision) + Block 3 (communication criteria) | let's lead — clarity of aim | `vision.md` (coalition-owned, crux-constrained) + first communication move rehearsed or done |
-| M5 | Conditions + ritual AS an agent. Rules of engagement = conditions; ritual = a running scheduled agent that produces signal, not a calendar event. | Block 3 (ritual criteria) + Block 1 (promotes ritual-relevant rules) | let's lead — first real move | `team-ai-rules.md` + one ritual agent scheduled and running during the training week |
-| M6 | Read signals + commit 90-day plan + schedule day-91 agent. First full maintenance pass. | All three — first full orchestrator/maintenance pass | let's lead — concrete commitment | 90-day plan as printout + day-91 agent scheduled + full swarm handed off to run autonomously |
+| M4 | **Intent (toward action).** Not a painted vision — an intent-based direction bound by the 2 crux. *"We're betting that moving these crux toward direction X will reshape the team's week. We don't know the full shape yet; we'll learn by running it."* Multi-agent deliberation across Bet-A / Bet-B / hybrid postures, constrained by the crux. Reaction-rehearsal agents role-play team archetypes. Vision is what the student *earns* over 90+ days — not what they write in week 4. | Block 2 (intent as crux-bound decision) + Block 3 (communication criteria) | let's lead — clarity of aim | `intent.md` (coalition-owned, crux-constrained) + first communication move rehearsed or done |
+| M5 | **PDCA honest reckoning — so what really happened as we tried to do as intended? Why?** Retrospective agent reads Block 2 decisions + Block 3 gate outcomes + Block 1 observations; root-cause agent (5 Whys) interrogates each deviation from intent; promotion/demotion agent sweeps Block 1. Student interrogates *with* the agents. Deming + Toyota Kata lineage. The 50%-wrong principle becomes visible here. | Block 1 (promotions/demotions) + Block 2 (decisions' retrospectives) + Block 3 (gates' performance) — all three reviewed | reflective honesty — *"some worked, some didn't, and naming it is the move"* | PDCA retrospective + all three blocks updated + surfaced learnings that shape M6 |
+| M6 | **Name the true shape of the challenge ahead.** After M1–M5, NOW the student can honestly name what the challenge actually is — usually different from the one they named at M1. Strategy earned, not assumed. Shape-finder agent reads 6 weeks of brain + PDCA + cohort share-backs, proposes candidate shape with evidence; alternative-shapes agent offers 2–3 contrasting framings; student picks, commits to Block 2 as top-level strategic decision. 90-day-plan agent synthesizes true shape + revised intent + Block 3 criteria. Day-91 agent scheduled. Full swarm handoff. Cohort share generates convergent company-wide signal back to sponsor. | Block 2 (true shape as earned strategy) + swarm committed to autonomous run | clear-eyed commitment — earned, not tidy | Named true shape + 90-day plan as printout + day-91 agent scheduled + swarm running autonomously + cohort finding back to sponsor |
 
 The agentic rule: **by M3 onward, the student should be able to close their laptop for a day and find the agents still working.** Diagnostic scans, check-ins, gate-watchers, ritual agents — all running. If every artifact requires the student typing, the exercise failed the rule.
 
 ## Mood arc
 
-**diagnostic honesty → specific clarity → co-creation → holding space → signal literacy → concrete commitment**
+**diagnostic honesty → earned clarity after unease → co-creation through cross-pollination → let's lead (clarity of aim) → reflective honesty (PDCA) → clear-eyed commitment (earned, not tidy)**
 
-Flatter volatility than Bootstrap. Leadership work, not personal discovery. The drama is in the team's reaction, not the student's interior. The three-blocks instrument is what lets the manager hold the drama without freezing — accumulated context, not real-time heroics.
+Flatter volatility than Bootstrap. Leadership work, not personal discovery. The drama is in the team's reaction, not the student's interior. The brain (three blocks + swarm) is what lets the manager hold the drama without freezing — accumulated context, not real-time heroics.
+
+**Arc shape (one-line):** See → Believe → Distill → Declare → Examine → Name. From seeing the team to naming the real challenge — earned across six modules of action and review.
 
 ## What works — grounded moves (companion reference)
 
@@ -199,7 +244,12 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - **The "agentic" rule:** every exercise has the student orchestrating agents that do the work. Chat-and-save is banned. Taste from Bootstrap M2 (brain), M5 (bake-off), M6 (orchestrator + eval loop), M8 (deliberation).
 - **The brain is built from M1** — the learn-and-compound pattern starts day one, not module three.
 - **M2 = search, not pick.** Starter questions to the team; coalition self-selects by engagement. No abstract coalition-guessing.
-- **M3 = return + cross-pollinate + 2 crux.** Rumelt's crux skill imported from Bootstrap M8 scaffold. Two crux, not a backlog. Vision in M4 is crux-bound.
+- **M3 = return + cross-pollinate + 2 crux.** Rumelt's crux skill imported from Bootstrap M8 scaffold. Two crux, not a backlog. Intent in M4 is crux-bound.
+- **M4 = Intent, not Vision.** Kotter step 3 reframed for 2026's epistemic reality: leaders *declare intent and let vision emerge over time.* Vision is earned across 90+ days of action and retrospection, not painted in week 4. Moltke lineage; matches Intent Taktik insight.
+- **Belief > correctness. 50% wrong is the curriculum.** Any action will do as long as the student believes in it enough to run with conviction. Expect half to miss. Progress = learning rate, not pick-rightness. Teacher Claude helps the student *run clean and read honest* — not second-guess the pick. Ancestry: Bosser's "best strategies emerge from action, not analysis."
+- **M5 = PDCA honest reckoning.** Deming + Toyota Kata. Not "run another ritual" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
+- **M6 = name the true shape of the challenge ahead.** Strategy earned from 6 weeks of action and review. Often different from the challenge named at M1. Only at M6 does the student commit the 90-day plan — grounded in the real challenge, not the week-1 guess. Cohort share generates a convergent company-wide signal back to the sponsor.
+- **Arc shape:** See → Believe → Distill → Declare → Examine → Name.
 - **The calibration question** — *did you make progress? did you lay ground for progress in the future?* — is Block 3's top-level gate and every module's closing ritual.
 
 **Open, awaiting decision:**

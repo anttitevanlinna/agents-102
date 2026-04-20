@@ -151,9 +151,52 @@ Two bets are being made by credible CEOs/CTOs in early 2026:
 
 All three heroes feed the same instrument. Kotter is the arc Block 2's decisions are plotted against. ADKAR is a tier in Block 1. The Chasm is both a Block 1 tier and a Block 3 criterion.
 
+## Two tracks running in parallel
+
+The training runs two tracks simultaneously — not sequentially, not optionally. Both live in the brain.
+
+**Track 1 — Team transformation.** The M1–M6 arc: see → believe → distill → declare → examine → name. The brain populates with your team's specifics. You run moves with conviction; half miss; you learn what works with *these* people. This is the visible track.
+
+**Track 2 — Frontier muscle.** Parallel, running through every week: reading practitioners (Darragh Curran, Geoff Charles, Jack Dorsey, Paweł Huryn, Andrej Karpathy, Simon Willison, and others surfaced by the research KB), cohort cross-share-backs, a **frontier-scanner agent in the swarm** that surfaces relevant signal weekly, the brain's Block 1 carrying a "what the frontier just did" tier alongside "what my team just did." The training's *AI-first is not static* commitment lived as practice, not slogan.
+
+Track 2 is why the brain doesn't decay after day 91. The frontier keeps moving; the brain keeps ingesting; the manager keeps crossing the next chasm forming upstream. *The future is already here, just not evenly distributed.* Track 2 is how you stay in the distribution.
+
+## Coalition as companions, not instruments
+
+The relational qualifier that reframes the whole training. Coalition isn't a resource to extract from — they're companions whose progress matters. The calibration question applies to them too:
+
+> *Did they make progress? Did they come with you on the ride?*
+
+If yes, the transformation compounds. If no, you did a solo move dressed as a team move — and the brain should catch that honestly, demote the rule, and update the hypothesis. A training whose star student moved their crux but left their coalition behind has not succeeded, by our definition.
+
+## Self-assessment — confidence as the baseline metric
+
+Every student answers one question at three moments:
+
+> **Rate 1–10: your confidence in leading your organization to an AI-first and agentic world.**
+
+- **Start of M1** — baseline. Honest, private to the brain, shared with cohort in aggregate only.
+- **End of M6** — immediate delta. Did confidence shift? In which direction? Why?
+- **Day-91 review** — sustained delta. A spike in M6 that collapses by day 91 is a *finding*, not a success — the training created temporary confidence rather than durable muscle. We want to know.
+
+Why a confidence rating and not a knowledge test:
+
+- **It's a belief metric, not a recall metric.** Aligns with the training's premise — beliefs are the product, subject matter is the vehicle.
+- **It's calibrated, not comparative.** Each student rates themselves against their own prior; cohort ranking is off-limits.
+- **It's honest enough to be useful.** The brain is where it lives; the manager's own Decision Journal reviews it. Not a performance-eval substitute.
+- **Aggregate delta is the sponsor's finding.** Single-company cohort: aggregate start → end → day-91 is a real measurement of transformation velocity. Worth as much as any training KPI the buyer currently uses.
+
+**Target movement (indicative, to be validated with cohort data):**
+
+- **Start avg:** ~4–5 (baseline — an engineering manager in an org that has declared AI transformation but hasn't equipped them to lead it; they feel the pressure, they don't feel the ground under their feet)
+- **End avg:** ~6–7 (earned, not inflated; they have the brain + swarm running, they've run moves with conviction, they've seen what worked and what didn't at their team's specifics, they know what the real gap is now)
+- **Day-91 avg:** should hold or climb — if it regresses, the training created momentum not muscle, and that's feedback we act on
+
+Delta target is ~+2. Not a 10/10 finish. Realistic. Matches the 50%-wrong principle: we're not promising transformed certainty, we're promising earned belief-shift grounded in real reps.
+
 ## AI-first is not static
 
-The frontier keeps moving. *The future is already here, just not evenly distributed.* Today's compounding engineering is tomorrow's baseline. A team that crosses one chasm and stops has fallen behind the next one forming upstream. Goal is a team that **keeps crossing**, not one that arrives. The three-blocks instrument is what keeps crossing possible — it learns at the rate the frontier moves.
+The frontier keeps moving. *The future is already here, just not evenly distributed.* Today's compounding engineering is tomorrow's baseline. A team that crosses one chasm and stops has fallen behind the next one forming upstream. Goal is a team that **keeps crossing**, not one that arrives. The brain (three blocks + swarm, Track 1 + Track 2) is what keeps crossing possible — it learns at the rate the frontier moves.
 
 ## Starting assumption for students
 
@@ -250,6 +293,10 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - **M5 = PDCA honest reckoning.** Deming + Toyota Kata. Not "run another ritual" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
 - **M6 = name the true shape of the challenge ahead.** Strategy earned from 6 weeks of action and review. Often different from the challenge named at M1. Only at M6 does the student commit the 90-day plan — grounded in the real challenge, not the week-1 guess. Cohort share generates a convergent company-wide signal back to the sponsor.
 - **Arc shape:** See → Believe → Distill → Declare → Examine → Name.
+- **Two tracks running in parallel:** Track 1 = team transformation (M1–M6 visible arc); Track 2 = frontier muscle (practitioners, cohort share, frontier-scanner agent, brain's frontier tier). Track 2 is why the brain doesn't decay after day 91.
+- **Coalition as companions, not instruments.** The relational qualifier. Calibration question applies to them too: *did they come with you on the ride?*
+- **Self-assessment metric:** 1–10 confidence rating ("Rate your confidence in leading your organization to an AI-first and agentic world") at start of M1, end of M6, day-91. Target delta ~+2 (baseline 4–5, end 6–7). Aggregate across single-company cohort = sponsor's finding.
+- **Training in six beats (plain-language):** take a shot at it → learn what people really feel → what's the real gap → build your muscle to see the future to come → take along the coalition on the ride → did you make progress?
 - **The calibration question** — *did you make progress? did you lay ground for progress in the future?* — is Block 3's top-level gate and every module's closing ritual.
 
 **Open, awaiting decision:**

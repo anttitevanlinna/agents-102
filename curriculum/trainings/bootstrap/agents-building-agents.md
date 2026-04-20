@@ -28,6 +28,33 @@ After this module, you will be able to:
   3. **`pre-mortem`** — the resulting plan gets the Klein/Kahneman treatment. 18 months from now, this failed — what happened? Concrete risks, early warning signals.
   Personal agents cross-pollinate throughout — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy — diagnosis, guiding policy, experiments, risks, signals. The skills ship in the Module 8 scaffold and the participant takes them home.
 
+## Tentative: Live Deliberation (direction under discussion — 2026-04-19)
+
+**Not committed. Flagged here so the direction is visible alongside the current exercise design.** Effects on runtime, infra, in-room vs. self-study, and flow still to be worked through.
+
+The peak of M8 moves from *"agents on shared context, humans orchestrate"* to **"networked personal agents in live deliberation, orchestrator-agent runs the rounds, humans join at the decision layer."** Each participant's personal agent — the one they've built across M1–M7 with their company's context — joins a shared runtime (Cowork or successor) as a first-class participant with persistent identity and an addressable handle. The room's agents deliberate with each other natively: positions posted, pushbacks via `@mention`, updated stances, convergence. Humans contribute by talking in the room AND by steering their agents at decision beats — they don't run the plumbing.
+
+**Why this is the right direction:**
+- **Genuine heterogeneity of context.** 10 real agents from 10 real orgs argue through a shared problem. The diversity is the insight. A single synthetic panel can't produce this.
+- **Entire M1–M7 arc pays off in M8.** The personal agent ARRIVES loaded with the student's brain, sources, skills, evals, sharing protocol. M8 is the payoff, not a new exercise.
+- **Agents orchestrating agents, applied to itself.** The orchestrator is also an agent. M8's own thesis made literal.
+- **Understandable magic.** Students read every message and `@mention`; the transcript is the mechanism. Legible even though networked.
+- **Designed to the capability that's landing, not the one from 6 months ago.** Networked agent runtimes, persistent identity, native agent-to-agent messaging are arriving. M8 is ahead of the curve, not chasing it.
+
+**What this replaces (if adopted):**
+- The Joint Double Diamond exercise becomes live-deliberated rather than shared-context-batch-run. The three skills (`crux`, `assumption-test`, `pre-mortem`) stay — they become the methods agents apply in rounds, not synchronous steps students run together.
+- "Agents on shared context, pooled manually" → "agents deliberate natively, orchestrator-agent pools and synthesizes."
+
+**Open questions under discussion:**
+- Strategy skills may move to M7 (tentative, 2026-04-20). `crux` / `assumption-test` / `pre-mortem` fit M7's "I should share but don't know how" storytelling as a genuine strategy problem. If adopted, M8 agents still invoke the skills during deliberation but teaching sits in M7. See `memory/project_m7_strategy_skills_move.md`.
+- Runtime dependency — Cowork trajectory or whatever is live at delivery time. Bridge design if capability is still landing.
+- Self-study variant — solo student can't gather a room of real personal agents; solo version uses persona-agents as approximation. Real peak is in-room.
+- How humans intervene without breaking the deliberation flow.
+- Whether the orchestrator-agent ships as a scaffold skill or is generated on-the-fly (fitting the flywheel thesis).
+- How F-Secure copyright fence interacts (they deliver their own M8).
+
+Detailed notes: `memory/project_m8_joint_panel.md`.
+
 ## Key Concepts (Emergent)
 - **Self-improvement**: each cycle makes the next sharper. Diamond 2 output is sharper than Diamond 1 because agents built on each other's work.
 - **Org capability**: 20 people just produced a Rumelt-style strategy kernel no consultant could deliver, because it's grounded in their company's own content. The agents did the synthesis.

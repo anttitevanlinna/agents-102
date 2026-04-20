@@ -8,11 +8,13 @@ Two phases. Phase 1 feels like multi-agent — three windows churning on the sam
 
 **Phase 0 — One question, written down.**
 
-Write the strategic question you want answered. One sentence. Not a topic, not a summary — a decision you'd stay late to make. *"What's the right next move on [my challenge] over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
+Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary — a decision you'd stay late to make. *"What's the right next move on [my challenge] over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
 
 **Phase 1 — Three retrievers, three windows.**
 
 Open your training directory in four Claude Code sessions. One per retriever, plus one main window where you'll work in Phase 2. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
+
+*A note on your M2 brain:* the retrievers search **live** — they don't re-read your M2 `sources/` or `brain/`. That's deliberate. Your brain becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
 
 *CLI users: open four terminal windows, each running `claude` in the training directory. Desktop users: open four Claude Code sessions on the training directory. Your trainer demos both live — this is the highest-friction step in the whole module; take the thirty seconds to get it right before you paste anything.*
 
@@ -58,7 +60,7 @@ Answer each retriever's questions as they come in. Let them run. Switch between 
 
 **Phase 2 — Three minds, one window.**
 
-Switch to your main window. The three retrievals are on disk. Now you'll spawn three minds inside *this* session — Claude Code calls them subagents, same idea as the agent files you built in Module 2, but running inside this conversation, in parallel. You prompt; Claude dispatches; they each return. Paste:
+Switch to your main window. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. Claude Code calls them **subagents** — Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return. Paste:
 
 ```
 Read the three files in module-3/retrievals/. You'll answer the question in module-3/question.md, but not by summarising. You'll spawn three subagents in parallel, each with a different stance. Each reads all three retrieval files and writes a short note (under 200 words) to module-3/stances/ with its take.

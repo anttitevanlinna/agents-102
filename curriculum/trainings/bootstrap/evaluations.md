@@ -5,20 +5,20 @@ The eval is infrastructure, not an artifact. Two loops compound: generation shar
 
 ## Meta
 - **Primary Bloom's level:** Create
-- **Prework:** Ethan Mollick — "Garbage Can and Bitter Lesson"
+- **Prework:** Ethan Mollick — "Garbage Can and Bitter Lesson". Also read your `module-5/still-uncertain.md` line from yesterday — the thing you flagged a grounded briefing still couldn't reach. That's today's starting point.
 - **Homework:** Chip Huyen *AI Engineering*, evals chapter (candidate)
-- **Materials (trainer):** `judges/groundedness-judge.md` handoff from Module 5's bake-off winner. Orchestrator reference prompt. Pre-flight capability check on long-running session + parallel tracks + meta-agent edit-and-apply.
+- **Materials (trainer):** `judges/groundedness-judge.md` handoff from Module 5's bake-off winner. Loop-coordinator reference prompt. Pre-flight capability check on long-running session + parallel tracks + meta-agent edit-and-apply.
 - **Plug points:** the topic for the two generation tracks (defaults to the Module 3 system's primary output); convergence threshold (default 90% claim-level agreement).
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Construct** a self-improving eval loop — orchestrator, parallel generation, judge, meta-agent, applied rule edits
+- **Construct** a self-improving eval loop — a coordinator Claude, parallel generation, a judge, a meta-agent, applied rule edits
 - **Evaluate** how a judge changes across rounds by reading the rule diffs and meta-agent reasoning
 - **Create** eval infrastructure that keeps learning from its own misses — on disk, re-runnable, sharper each cycle
 - **Distinguish** an eval-as-artifact (Module 5) from an eval-as-infrastructure (Module 6)
 
 ## Connections
-In Module 5 you picked a winner out of four judges. You watched it work. You trusted it. Good.
+In Module 5 you picked a winner out of four judges. You watched it work. You trusted it. Good. That judge sits at `judges/groundedness-judge.md` — the thing you'll feed it, today, is the thing that changes.
 
 Today the question shifts. What if the judge kept getting better — not because you edited it, but because it watched itself miss things? What if *you weren't in the room* while that happened?
 
@@ -53,7 +53,7 @@ Today the question shifts. What if the judge kept getting better — not because
 Produces a one-line addition to `module-6/eval-notes.md` naming the Monday loop.
 
 ## Bridge
-You just built an eval that improves itself. Who else on your team would want this?
+You just built an eval that improves itself. Who else on your team would want any of this?
 
 <!-- maintainer -->
 

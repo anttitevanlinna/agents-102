@@ -24,11 +24,11 @@ I'm building a knowledge brain for one specific challenge I'm working on. I'll d
 Ask me about my challenge first. Then propose the plan. I'll push back where it's off.
 ```
 
-Claude asks about your challenge. Answer in one paragraph — the real one, not a sanitised version. Claude proposes a plan. Push back where it's wrong, add what's missing. Then go collect: Confluence searches, OneDrive docs pulled through the Claude Code **+** button, practitioner articles. Aim for 8–10 items in `sources/`.
+Claude asks about your challenge. You already wrote a one-paragraph brief to `module-2/challenge.md` in prework — paste it, re-state it fresh, or tell Claude to read the file. Whichever feels right. Claude proposes a plan. Push back where it's wrong, add what's missing. Then go collect: Confluence searches, OneDrive docs pulled through the Claude Code **+** button, practitioner articles. Aim for 8–10 items in `sources/`.
 
 **Quality beats quantity. You are the curator.** Most brains fail in the first ten minutes, not the last ten.
 
-Turn on **plan mode** — Shift+Tab until the footer says *plan mode*. Claude proposes the work but doesn't touch files until you approve.
+**Plan mode** — Claude writes out what it's about to do before touching any files. You read the plan, approve, push back, or edit. Nothing commits until you say go. Think of it as a dry run you have to OK. Turn it on: Shift+Tab until the footer says *plan mode*.
 
 Paste this prompt:
 

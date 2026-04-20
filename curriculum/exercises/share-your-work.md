@@ -127,8 +127,9 @@ Your plans rest on assumptions. Some are wrong. The question is not *"will my ag
 ```
 Read module-7/jtbd.md, module-7/technical-plan.md, and module-7/people-plan.md.
 
-Run the assumption-test discipline (Roger Martin — "what would have to be true
-for this to work?"). But aim it at the SWITCH, not at generic sharing:
+Apply the assumption-test skill (the one that arrived with this module — Roger
+Martin's "what would have to be true for this to work?"). Aim it at the SWITCH,
+not at generic sharing:
 
 What would have to be true for this specific teammate, doing this specific
 job, to fire their current hire and use my candidate?
@@ -151,9 +152,9 @@ Mark the two or three you'd actually test this week. Those are what you ship fir
 The plan is on paper. Six months from now, they went back to Excel. Why?
 
 ```
-Run the pre-mortem discipline (Klein, Kahneman). It is six months from now. My
-teammate kept using their current hire. My candidate sat unused, or they tried
-it twice and fired it.
+Apply the pre-mortem skill (the one that arrived with this module —
+Klein/Kahneman). It is six months from now. My teammate kept using their
+current hire. My candidate sat unused, or they tried it twice and fired it.
 
 Read module-7/jtbd.md, module-7/technical-plan.md, module-7/people-plan.md, and
 module-7/assumptions.md.

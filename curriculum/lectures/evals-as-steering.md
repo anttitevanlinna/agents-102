@@ -1,5 +1,7 @@
 # Evals as Steering
 
+**Time:** 10–12 minutes.
+
 Module 5 was you as the eval.
 
 You read your system's output. A name appeared that shouldn't have. A number was plausible but unsupported. A claim sounded right but had no source. Your domain knowledge did the work — you knew where the truth lived, and where the LLM was guessing. You tightened the guardrails. You regenerated. Most of the improvements held. Some tightened too much — you lost good output along with the bad.

@@ -6,6 +6,8 @@ Yesterday in Module 5 you picked a winner out of four judges — a bake-off. The
 
 Today, you stop running it.
 
+**Eval as infrastructure** — not a score you check occasionally, but a judge that runs on every build, watches what it misses, and sharpens itself. The eval is live machinery now, not an artifact you inspect. That's the shift today.
+
 You set up an **orchestrator** — one Claude session whose whole job is to direct other work. It launches **two generation tracks in parallel**, each producing a fresh briefing on the same topic from your Module 3 system. A **continuous eval loop** runs alongside: your judge scores every output, a meta-agent watches what the judge missed, and the judge's own rules get rewritten between rounds. Three rounds. No intervention. You start it and walk away.
 
 You will come back to a dashboard: *round 1 caught 8 issues, round 2 caught 11 including the two you flagged as missed, round 3 caught 13 and both briefings converged on groundedness.* The judge you left with is sharper than the judge you started with — not because you edited it, but because it watched itself fail and patched itself.

@@ -8,6 +8,8 @@ Three phases. Forty-five minutes. Bring your Module 3 system; that's the target.
 
 **Phase 0 — Drop in the skills.**
 
+**Skill** — a short markdown file that teaches Claude one discipline. It lives in `skills/` and Claude picks it up when you invoke it by name in plain language. You don't run the file directly; you ask, Claude loads the skill, runs the move. Think of it like handing Claude a checklist it already knows how to execute.
+
 Unzip `module-4-skills.zip` into your training directory. You'll see two new folders under `skills/`:
 
 ```

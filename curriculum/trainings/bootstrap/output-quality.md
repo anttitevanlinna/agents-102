@@ -18,7 +18,7 @@ After this module, you will be able to:
 - **Identify** what a judge can and can't reach — the difference between a narrow tool that works and a broad tool that pretends
 
 ## Connections
-In Module 3 the synthesized answer sat at an uneasy distance — you'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Today that feeling gets a measurement. Four detectors run on the same briefing, a meta-evaluator scores them against a gold standard you wrote in two minutes, and you walk out with the first judge you can defend.
+In Module 3 the synthesized answer sat at an uneasy distance — you'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved — that's a different axis, and it stays where you put it. Today we measure what the system actually says inside its scope. Four detectors run on the same briefing, a meta-evaluator scores them against a gold standard you wrote in two minutes, and you walk out with the first judge you can defend.
 
 ## Lectures
 

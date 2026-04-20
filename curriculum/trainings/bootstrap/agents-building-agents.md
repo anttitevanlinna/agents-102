@@ -7,7 +7,7 @@ The tool that builds tools compounds.
 - **Primary Bloom's level:** Create
 - **Prework:** Risto on acting on the future and building hypotheses; Rumelt on crux / good strategy bad strategy
 - **Homework:** none (the strategy deliverable IS the closing artifact)
-- **Materials (trainer):** demo agent that generates another agent; shared-context scaffold for the joint Diamond 1 + 2 exercise; domain prediction framework (rules codified + correctness verifiable + talent constrained); three thinking-discipline skills shipped in the Module 8 scaffold — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman). Participants apply them in sequence during the synthesis and take them home.
+- **Materials (trainer):** demo agent that generates another agent; shared-context scaffold for the joint Diamond 1 + 2 exercise; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman) — arrive installed from Module 7 and re-apply here on the room-level problem.
 - **Plug points:** CTO/sponsor present; company's own context fed into all agents
 
 ## What You'll Learn
@@ -26,7 +26,7 @@ After this module, you will be able to:
   1. **`crux`** — every participant's agent runs the Rumelt discipline on their own brain folder. Obstacles, clusters, the load-bearing one named. The room pools cruxes; the CTO's agent synthesizes the top three and drafts the guiding policy.
   2. **`assumption-test`** — the guiding policy and its actions go through Roger Martin's discipline. What would have to be true for this to work? Assumptions ranked, top three pulled out, two-week experiments designed.
   3. **`pre-mortem`** — the resulting plan gets the Klein/Kahneman treatment. 18 months from now, this failed — what happened? Concrete risks, early warning signals.
-  Personal agents cross-pollinate throughout — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy — diagnosis, guiding policy, experiments, risks, signals. The skills ship in the Module 8 scaffold and the participant takes them home.
+  Personal agents cross-pollinate throughout — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy — diagnosis, guiding policy, experiments, risks, signals. The three skills arrived installed in Module 7; today they re-invoke at room scale on the strategy problem. Yesterday they ran against the student's own sharing problem; today the whole room runs them against company strategy. Same disciplines, bigger instrument.
 
 ## Tentative: Live Deliberation (direction under discussion — 2026-04-19)
 

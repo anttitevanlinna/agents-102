@@ -1,5 +1,7 @@
 # Context is King
 
+**Time:** 10 minutes.
+
 The same question. Two answers. What makes the difference?
 
 ## The demo you're about to see

@@ -7,7 +7,7 @@ You can't really share an agent. You can share context, a skill, the output, or 
 - **Primary Bloom's level:** Analyze → Evaluate
 - **Prework:** Three-walls pre-read — the three real walls a practitioner hits when trying to scale past themselves: **absorption bottleneck** (learning rate cap — your org can't absorb capability faster than people learn to use it), **Access-Trust Gap** (54–95% have access; 5–22% have production trust; gap always wider than 35 points — access doesn't convert to real use), **discoverability** (F-Secure-validated — nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
 - **Homework:** Run the Monday artifact. Test one assumption. Ask for one name. Talk to one person.
-- **Materials (trainer):** Pattern catalog (`strategy/personal-to-team-patterns.md`) live in second tab. Branch-selection framing ready. Access-Trust Gap data point in lecture.
+- **Materials (trainer):** Pattern catalog (`strategy/personal-to-team-patterns.md`) live in second tab. Branch-selection framing ready. Access-Trust Gap data point in lecture. Module 7 scaffold ships three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman). Students invoke them by name during the exercise; they stay installed for M8 and for any strategic decision from Monday onward.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 
 ## What You'll Learn
@@ -19,7 +19,7 @@ After this module, you will be able to:
 - **Pre-mortem** the firing — imagining the six-month failure where they kept using the incumbent, biased toward the social failure you're not seeing
 
 ## Connections
-Your brain has been working for you for a day and a half now. It produced something you trust enough to check before a meeting. You caught it wrong once, corrected it, watched the correction stick.
+By now you've built a brain, synthesis across three source zones, skills that audit your own system, a judge that got sharper by watching itself miss things. It's a stack. And somewhere in it is a thing that produced output you trust enough to check before a meeting. You caught it wrong once, corrected it, watched the correction stick.
 
 The question that shows up on its own: *could this help someone else?*
 
@@ -29,15 +29,15 @@ Two questions to warm up: who's the one person who came to mind just now? And wh
 
 ## Lectures
 
-The short frame, before the exercise: three walls. Access is easy (54–95% of enterprises have it). Trust is scarce (5–22% have production readiness). The gap is always wider than 35 points. That gap is social, not technical — which is why strategy tools beat deployment tools today.
+**Time:** 10–12 minutes. No separate lecture file; the framing below runs straight into the exercise.
 
-The four strategies that work in practice — share the context, share a skill, share the output (push), share an interface (pull). The fifth strategy, "share the whole agent," is the vendor pitch. It sounds right. It doesn't hold up. You'll see why in the next hour.
+Start with the move that matters most: **interview for the job.** Christensen and Moesta put it plainly — people don't buy products, they hire them for jobs. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface — any of those is a candidate for hire against whatever they're using today. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting — it reads your brain, drafts the hypothesis, asks you the five to eight questions that plug real holes.
 
-Before any of that, the move that matters most: interview for the job. Christensen and Moesta put it plainly — people don't buy products, they hire them for jobs. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface — any of those is a candidate for hire against whatever they're using today. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting — it reads your brain, drafts the hypothesis, asks you the five to eight questions that plug real holes.
+Then the candidates: **four strategies that work in practice** — share the context, share a skill, share the output (push), share an interface (pull). The fifth strategy, "share the whole agent," is the vendor pitch. It sounds right. It doesn't hold up. You'll see why in the next hour.
 
-The disciplines you'll apply after — Roger Martin's assumption-test, Klein's pre-mortem — are not agent tools. They're strategy tools. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
+The disciplines you'll apply after — Roger Martin's **assumption-test**, Klein's **pre-mortem** — are not agent tools. They're strategy tools. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
 
-No separate lecture file. The framing above runs ten to twelve minutes, straight into the exercise.
+One data point to keep in your back pocket while you run the exercise: **the Access-Trust Gap.** 54–95% of enterprises have access. 5–22% have production trust. The gap is always wider than 35 points. That gap is social, not technical — which is why strategy tools beat deployment tools today. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
 
 ## Exercises
 
@@ -46,7 +46,7 @@ No separate lecture file. The framing above runs ten to twelve minutes, straight
 ## Key Concepts (Emergent)
 
 - **Interview for the outcome before designing the solution.** The transferable skill. The teammate's job comes first; your candidate comes second. Monday you'll face a different adoption problem and the move is the same — agent reads your context, drafts a JTBD hypothesis, asks you seven targeted questions, produces a brief with an outcome statement. Christensen, Moesta, Ulwick — they didn't write it for agent work. You just applied it to agent work.
-- **The agent does the heavy lifting on the interview.** Your brain already carries 80% of the teammate's job. Phase 1's move is the agent reading what's on disk, hypothesising, then using a structured ask-questions tool to plug holes. Not freeform chat. The bounded-question primitive earns its keep here.
+- **The agent does the heavy lifting on the interview.** Your brain already carries 80% of the teammate's job. Phase 1's move is the agent reading what's on disk, hypothesising, then asking a defined set of questions to plug the real holes. Not freeform chat — a bounded ask. That's what makes it reliable.
 - **The outcome statement is the design contract.** In Ulwick's form: *"minimize/increase [metric] when [doing the job]."* Everything downstream — the candidate, the patterns, the plans, the assumptions, the pre-mortem — runs against that statement. A candidate that doesn't move the metric isn't a candidate.
 - **The third outcome vector is where the interview earns its keep.** Speed and quality are the obvious axes. The non-obvious one — dependency removed, anxiety reduced, scope expanded, workload shifted — is what chatting surfaces. If an interview returns only speed and quality, it went shallow.
 - **The Access-Trust Gap.** Access is easy; trust is the scarce thing you are actually distributing. The gap is always wider than 35 points, across every source that's measured it. You felt it in the exercise — your technical plan filled quickly, your people plan stalled on names.

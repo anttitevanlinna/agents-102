@@ -45,7 +45,7 @@ You've had three agents search your company and three more decide. The output lo
 > Default: pick the top-ranked risk from the `agent-security` report. Students can override if a specific "I can't tell" row from the policy report bothers them more. The point isn't to fix the biggest risk; it's to run the full loop on one real risk.
 
 > PLUG POINT: The micro-skill the student writes for homework.
-> Default: one policy rule that's specific to the student's organisation — customer-data classification, retention window, the one rule legal cares most about. The student extracts it into a short skill file and brings it to Module 5.
+> Default: one policy rule that's specific to the student's organisation — customer-data classification, retention window, the one rule legal cares most about. The student extracts it into a short skill file that sits alongside their agent rules from here onward — reused whenever the agent touches data that rule applies to.
 
 ## Debrief
 Five-minute retro with Claude. Three questions, tuned to this module's epistemic humility:

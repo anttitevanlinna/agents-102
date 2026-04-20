@@ -42,7 +42,7 @@ Grounded isn't "accurate." A grounded claim can still be wrong, if the source it
 
 **Don't pick a method. Run the candidates.**
 
-Here's where most advice on hallucination goes wrong. Somebody tells you *"use retrieval-augmented generation,"* or *"do a consistency check,"* or *"prompt it to cite sources."* A single method, presented as the answer. You try it, catch some things, miss others, never know what you missed, and move on feeling vaguely better.
+Here's where most advice on hallucination goes wrong. Somebody tells you *"just have the agent read your files before it answers,"* or *"do a consistency check,"* or *"prompt it to cite sources."* A single method, presented as the answer. You try it, catch some things, miss others, never know what you missed, and move on feeling vaguely better.
 
 That's intuition. The move is empirical.
 

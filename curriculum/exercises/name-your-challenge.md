@@ -35,7 +35,7 @@ I'm heading into a training where I'll build a working brain around one live cha
 2. What have you already tried, read, or decided? What's ruled out, what's still open?
 3. What would "a good answer" look like a month from now? How would you know the brain helped?
 
-When I've answered all three, write a one-paragraph brief to challenge.md. Show it to me before saving.
+When I've answered all three, write a one-paragraph brief to module-2/challenge.md. Show it to me before saving.
 ```
 
 Claude asks, you answer, the brief lands. Read it. If it doesn't sound like the thing actually keeping you up, edit it — you're the domain expert.

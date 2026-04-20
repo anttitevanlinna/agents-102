@@ -5,15 +5,15 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## Meta
 - **Primary Bloom's level:** Create
-- **Prework:** [Before Module 3](exercises/module-3-prework.md) — five practitioners automating their life with Claude Code and OpenClaw (pick three, read one piece each); a plain-language primer on Claude Code's subagent architecture (what it is, how to launch one, what you'll see)
+- **Prework:** [Before Module 3](exercises/module-3-prework.md) — five practitioners automating their life with Claude Code and OpenClaw (pick three, read one piece each); a plain-language primer on how Claude Code launches helper agents (sometimes called subagents) — what they are, how to start one, what you'll see
 - **Homework:** selected "What is an Agent" sections (multi-agent coordination)
 - **Materials (trainer):** no scaffold zip. The module runs on the Module 2 state (brain, sources, working directory). All agent files are produced by prompts the student pastes — same pattern as Module 2's custom-agent move. Trainer brings: the four prompts (three retrievers + synthesizer) and the framework-prompted strategic question, visible on the site.
 - **Plug points:** the participant's three source zones (Confluence or equivalent wiki, Office365 or equivalent collab suite, curated internet); the framework the synthesizer uses; any fourth subagent persona the student wants to add
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Design** a multi-agent pipeline in two shapes: parallel sessions on shared files (retrieval) and subagents inside one session (synthesis)
-- **Build** three retrieval agents, each speaking its own source's dialect, and a synthesizer that orchestrates three subagent personas
+- **Design** a multi-agent setup in two shapes: parallel sessions on shared files (retrieval) and subagents inside one session (synthesis)
+- **Build** three retrieval agents, each speaking its own source's dialect, and a synthesizer that coordinates three subagent personas
 - **Analyze** handoff failure modes — where conflicts get papered over, dialects clash, the synthesizer averages to beige
 - **Create** a framework-guided answer to a real strategic question about the student's own challenge
 - **Evaluate** when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins

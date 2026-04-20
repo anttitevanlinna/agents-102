@@ -12,11 +12,11 @@ You can't really share an agent. You can share context, a skill, the output, or 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** the load-bearing obstacle to sharing your work — applying the crux discipline to a sharing problem, separating social obstacles from technical ones
-- **Select** a sharing strategy from the four that work (share context / share a skill / share the output / share an interface) against your real infrastructure
+- **Interview** for the job your teammate is trying to get done — using an agentic Jobs-to-be-Done pattern (the agent reads your brain, drafts a hypothesis, asks you targeted questions), and write the outcome statement that becomes the design contract
+- **Select** a sharing strategy from the four that work (share context / share a skill / share the output / share an interface) against the outcome the teammate wants moved — not against the infrastructure you happen to have
 - **Redesign** for shared use by producing both a technical plan and a people plan — ownership, governance, operating, accountability, propagation
-- **Test** the assumptions the plan rests on — surfacing what would have to be true, ranking by load-bearing weight
-- **Pre-mortem** the rollout — imagining the six-month failure, biased toward the social failure you're not seeing
+- **Test** the switch the teammate would have to make — surfacing what would have to be true for them to fire their current hire and use your candidate
+- **Pre-mortem** the firing — imagining the six-month failure where they kept using the incumbent, biased toward the social failure you're not seeing
 
 ## Connections
 Your brain has been working for you for a day and a half now. It produced something you trust enough to check before a meeting. You caught it wrong once, corrected it, watched the correction stick.
@@ -33,7 +33,9 @@ The short frame, before the exercise: three walls. Access is easy (54–95% of e
 
 The four strategies that work in practice — share the context, share a skill, share the output (push), share an interface (pull). The fifth strategy, "share the whole agent," is the vendor pitch. It sounds right. It doesn't hold up. You'll see why in the next hour.
 
-The three disciplines you'll apply — Rumelt's crux, Martin's assumption-test, Klein's pre-mortem — are not agent tools. They're strategy tools. You're using them on a strategy problem that happens to involve agents.
+Before any of that, the move that matters most: interview for the job. Christensen and Moesta put it plainly — people don't buy products, they hire them for jobs. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface — any of those is a candidate for hire against whatever they're using today. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting — it reads your brain, drafts the hypothesis, asks you the five to eight questions that plug real holes.
+
+The disciplines you'll apply after — Roger Martin's assumption-test, Klein's pre-mortem — are not agent tools. They're strategy tools. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
 
 No separate lecture file. The framing above runs ten to twelve minutes, straight into the exercise.
 
@@ -43,12 +45,15 @@ No separate lecture file. The framing above runs ten to twelve minutes, straight
 
 ## Key Concepts (Emergent)
 
-- **The promotion path is a strategy choice, not a setup move.** Personal, team, and company agents are different products. Picking which to promote, what to leave personal, how to govern — those are strategy decisions.
+- **Interview for the outcome before designing the solution.** The transferable skill. The teammate's job comes first; your candidate comes second. Monday you'll face a different adoption problem and the move is the same — agent reads your context, drafts a JTBD hypothesis, asks you seven targeted questions, produces a brief with an outcome statement. Christensen, Moesta, Ulwick — they didn't write it for agent work. You just applied it to agent work.
+- **The agent does the heavy lifting on the interview.** Your brain already carries 80% of the teammate's job. Phase 1's move is the agent reading what's on disk, hypothesising, then using a structured ask-questions tool to plug holes. Not freeform chat. The bounded-question primitive earns its keep here.
+- **The outcome statement is the design contract.** In Ulwick's form: *"minimize/increase [metric] when [doing the job]."* Everything downstream — the candidate, the patterns, the plans, the assumptions, the pre-mortem — runs against that statement. A candidate that doesn't move the metric isn't a candidate.
+- **The third outcome vector is where the interview earns its keep.** Speed and quality are the obvious axes. The non-obvious one — dependency removed, anxiety reduced, scope expanded, workload shifted — is what chatting surfaces. If an interview returns only speed and quality, it went shallow.
 - **The Access-Trust Gap.** Access is easy; trust is the scarce thing you are actually distributing. The gap is always wider than 35 points, across every source that's measured it. You felt it in the exercise — your technical plan filled quickly, your people plan stalled on names.
 - **The four sharing strategies.** Share the context / share a skill / share the output (push) / share an interface (pull). "Share the whole agent" is not on the list. The choice between the four IS the design decision.
-- **The pattern catalog is a design language.** Not a menu. You pick one to three patterns, match them to your crux, stack where useful. Other people in the room picked differently — that's the point.
+- **The pattern catalog is a design language.** Not a menu. You pick one to three patterns, match them to the outcome you're moving, stack where useful. Other people in the room picked differently — that's the point.
 - **The people plan weighs equal to the technical plan.** Ownership, governance, operating, accountability, propagation. A deliverable missing the people plan is incomplete even with a perfect technical plan. A perfect technical plan with no people plan is a PowerPoint.
-- **The crux is usually social.** You walked in thinking the obstacle was technical. Nine times out of ten the crux is trust, ownership, or attention. That reframe is the exercise's teaching moment.
+- **Firing the incumbent is the test.** Every job already has a current hire — Excel, a colleague, gut feel, nothing. The real question isn't *"will they adopt my agent?"* It's *"what would have to be true for them to fire what they use today?"* That question is social nine times out of ten.
 
 ## Plug Points
 

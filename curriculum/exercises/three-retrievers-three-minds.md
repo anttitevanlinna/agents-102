@@ -4,23 +4,23 @@
 
 One mind won't do. Last module you were the librarian — searched Confluence, pulled from OneDrive, chased practitioner articles by hand. Today you hire three agents to do the searching, and three more to do the deciding. The filesystem is the meeting room.
 
-Two phases. Phase 1 feels like multi-agent — three windows churning on the same folder, files materialising side by side. Phase 2 *is* multi-agent the way Claude Code ships it natively — one window, three minds spawned inside it, working in parallel.
+Two phases. Phase 1 feels like multi-agent — three sessions churning on the same folder, files materialising side by side. Phase 2 *is* multi-agent the way Claude Code ships it natively — one session, three minds spawned inside it, working in parallel.
 
 **Phase 0 — One question, written down.**
 
 Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary — a decision you'd stay late to make. *"What's the right next move on [my challenge] over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
 
-**Phase 1 — Three retrievers, three windows.**
+**Phase 1 — Three retrievers, three sessions.**
 
-Open your training directory in four Claude Code sessions. One per retriever, plus one main window where you'll work in Phase 2. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
+Open your training directory in four Claude Code sessions. One per retriever, plus one main session where you'll work in Phase 2. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
 
 *A note on your M2 brain:* the retrievers search **live** — they don't re-read your M2 `sources/` or `brain/`. That's deliberate. Your brain becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
 
-*CLI users: open four terminal windows, each running `claude` in the training directory. Desktop users: open four Claude Code sessions on the training directory. Your trainer demos both live — this is the highest-friction step in the whole module; take the thirty seconds to get it right before you paste anything.*
+*Start four Claude Code sessions in the training directory. (Desktop users: four app sessions. CLI users: four terminal sessions, each running `claude`. Web users: four browser sessions.) Your trainer demos both live — this is the highest-friction step in the whole module; take the thirty seconds to get it right before you paste anything.*
 
-**The rhythm:** paste all three retriever prompts first, into Windows 1, 2, and 3. Each retriever will come back with its proposals and ask you to confirm. Answer all three confirmations — quickly, don't polish. Then the three retrievers run in parallel. *Now* switch between windows and watch files land in `module-3/retrievals/`. The paperwork step is yours; the search is theirs.
+**The rhythm:** paste all three retriever prompts first, into Sessions 1, 2, and 3. Each retriever will come back with its proposals and ask you to confirm. Answer all three confirmations — quickly, don't polish. Then the three retrievers run in parallel. *Now* switch between sessions and watch files land in `module-3/retrievals/`. The paperwork step is yours; the search is theirs.
 
-In Window 1, paste:
+In Session 1, paste:
 
 ```
 You are the Confluence retriever for my challenge. Your job: find every piece of internal wiki material that matters to the strategic question in module-3/question.md. Read the question first.
@@ -32,7 +32,7 @@ Then:
 4. End the file with a "Conflicts and gaps" section — where internal pages disagree, where the wiki is thin, what's conspicuously missing.
 ```
 
-In Window 2, paste:
+In Session 2, paste:
 
 ```
 You are the Office365 retriever for my challenge. Your job: find the relevant recent documents and email threads for the strategic question in module-3/question.md.
@@ -44,7 +44,7 @@ Then:
 4. End the file with "Conflicts and gaps" — disagreements between sources, things that should exist but don't, names conspicuously missing.
 ```
 
-In Window 3, paste:
+In Session 3, paste:
 
 ```
 You are the internet retriever for my challenge. Your job: find practitioner-grade external material on the strategic question in module-3/question.md. No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 12 months.
@@ -56,11 +56,11 @@ Then:
 4. End the file with "Conflicts and gaps" — where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can't tell me.
 ```
 
-Answer each retriever's questions as they come in. Let them run. Switch between windows if you want — three agents are now working for you at once. Watch the files appear in `module-3/retrievals/`. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
+Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want — three agents are now working for you at once. Watch the files appear in `module-3/retrievals/`. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
 
-**Phase 2 — Three minds, one window.**
+**Phase 2 — Three minds, one session.**
 
-Switch to your main window. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. Claude Code calls them **subagents** — Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return. Paste:
+Switch to your main session. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. Claude Code calls them **subagents** — Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return. Paste:
 
 ```
 Read the three files in module-3/retrievals/. You'll answer the question in module-3/question.md, but not by summarising. You'll spawn three subagents in parallel, each with a different stance. Each reads all three retrieval files and writes a short note (under 200 words) to module-3/stances/ with its take.
@@ -92,7 +92,7 @@ Don't fix it here. Write one line to `module-3/wonder.md` — the single thing a
 
 **What happens:**
 
-Three windows run searches in parallel on your challenge, and you *see* the work being done in the shared folder. One window runs three stances on the retrievals and combines them against Rumelt's kernel. You get a strategic answer to your real question — and you catch where it glossed. Module 5 comes back for the gloss.
+Three sessions run searches in parallel on your challenge, and you *see* the work being done in the shared folder. One session runs three stances on the retrievals and combines them against Rumelt's kernel. You get a strategic answer to your real question — and you catch where it glossed. Module 5 comes back for the gloss.
 
 **The point:**
 
@@ -128,6 +128,6 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files —
 - When Module 3 ships in self-study (no trainer to demo the four-session open), the exercise body needs a short recipe replacing the "Your trainer demos both live" line. Hold for the self-study pass; the live-trainer version ships as-is.
 
 **Deferred facilitator notes:**
-- Watch-fors: (a) opening 4 Claude Code windows on the same directory is the single highest-friction step — pre-flight check with the room, name which window is Window 1 / 2 / 3 / Main; (b) retrievers return non-comparable outputs by design, student may try to normalise them — that's exactly what the synthesizer is for, let them feel the asymmetry; (c) the synthesizer left under-prompted will average three stances into beige — the prompt forces conflict-naming before the answer, but coach any room that slips past it; (d) Rory seat produces dad jokes if the student writes "be witty" — coach toward Sutherland's actual move (reframe the problem, steal an analogy, question the anchor); (e) Phase 2 subagent invocation is new for most participants — demo once, then let them drive.
-- Decision points: if a cohort is uniformly short on internal wiki access, collapse Window 1 and Window 2 into one retriever that reads whatever they have, and spend the time saved on Phase 2; the multi-agent lesson survives with two retrievers.
-- Time budget: Phase 0 ~3 min, Phase 1 ~25 min (windows open, prompts paste, retrievers run, student watches & answers), Phase 2 ~15 min, Close ~7 min. Over 60 = retrievers sprawled; under 40 = Phase 1 didn't actually produce the felt moment of concurrency.
+- Watch-fors: (a) starting 4 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room, name which session is Session 1 / 2 / 3 / Main; (b) retrievers return non-comparable outputs by design, student may try to normalise them — that's exactly what the synthesizer is for, let them feel the asymmetry; (c) the synthesizer left under-prompted will average three stances into beige — the prompt forces conflict-naming before the answer, but coach any room that slips past it; (d) Rory seat produces dad jokes if the student writes "be witty" — coach toward Sutherland's actual move (reframe the problem, steal an analogy, question the anchor); (e) Phase 2 subagent invocation is new for most participants — demo once, then let them drive.
+- Decision points: if a cohort is uniformly short on internal wiki access, collapse Session 1 and Session 2 into one retriever that reads whatever they have, and spend the time saved on Phase 2; the multi-agent lesson survives with two retrievers.
+- Time budget: Phase 0 ~3 min, Phase 1 ~25 min (sessions started, prompts paste, retrievers run, student watches & answers), Phase 2 ~15 min, Close ~7 min. Over 60 = retrievers sprawled; under 40 = Phase 1 didn't actually produce the felt moment of concurrency.

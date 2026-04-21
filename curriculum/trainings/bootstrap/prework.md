@@ -10,14 +10,16 @@ Your facilitator (self-study skill or trainer) walks you through these. You don'
 - **Claude Code installed** — desktop or web, no terminal required. Pick whichever fits your habits; all the exercises work in both.
 - **About 45 minutes.** More than it sounds like. Less than it feels like.
 
-### One small thing for lectures — ask Claude to start the lecture server
+### One small thing for the recap site — ask Claude to start a local server
 
-Lectures render from markdown files via a small local web page. Nothing gets uploaded. You don't run the server; Claude does, inside the session you're already in. This is also your first agentic move of the training — you ask, the agent does.
+The training has a recap site — every lecture, exercise, and module page rendered clean. You won't read it during teaching (your facilitator teaches inline). You'll come back to it after each lecture or exercise to see what you just lived through, on the official material.
 
-Paste this prompt into Claude Code:
+The site runs locally from markdown files. Nothing uploaded. You don't run the server; Claude does, inside the session you're already in. This is also your first agentic move of the training — you ask, the agent does.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
-Start a local web server on port 8000 serving the training repo root, running in the background so I can read lectures in my browser. Tell me the URL to open and remind me how to stop the server at end of day.
+Start a local web server on port 8000 serving the training repo root, running in the background so I can use it as a recap site for the training. Tell me the URL to open and remind me how to stop the server at end of day.
 ```
 
 Claude starts the server and hands back a URL — something like `http://localhost:8000/site/curriculum.html`. Open it. You should see the curriculum home page. Bookmark it.
@@ -28,7 +30,7 @@ If the URL doesn't load or Claude reports a port conflict, tell Claude — it'll
 
 Why a snake game? Because you can tell if it works. No ambiguity — either the snake moves or it doesn't. Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.
 
-In your open Claude Code session, paste this prompt:
+**Prompt** *(copy → Claude Code)*
 
 ```
 Build me a snake game as a single HTML file. Save it as snake.html.
@@ -42,19 +44,23 @@ Keep the file. It's yours.
 
 ## Task 2 — Your week in meetings (10 min)
 
-Two paths. Pick whichever matches your setup.
+Quick concept first. **A *connector* is a way for Claude to talk directly to one of your work apps — your calendar, your email, your files.** When a connector is on, Claude can fetch your real data ("list my meetings this week") instead of you having to copy-paste it. Connectors are turned on by your IT — not something you install yourself. **How to check:** in Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**. If you see Microsoft 365 or Google Workspace enabled, you have one. If not, you don't — and that's fine.
 
-**Path A — you have a calendar connector** (Microsoft 365 or Google Workspace, enabled for Claude by your IT).
+Two paths. Pick the one that matches what you saw.
 
-Paste this prompt:
+**Path A — you have a calendar connector enabled** (Microsoft 365 or Google Workspace).
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
 ```
 
-**Path B — no connector, or you don't have admin rights to enable one.**
+**Path B — no connector, or you're not sure.** Default to this one if in doubt.
 
-Take a screenshot of your calendar week view. Then paste this prompt:
+Take a screenshot of your calendar week view, then:
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine — ask me where it saved if you can't locate it. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
@@ -62,7 +68,7 @@ I just took a screenshot of my calendar week view. Find the most recent screensh
 
 *Proof: Claude can read your real work data — in whichever shape you can provide it — and produce a useful summary.*
 
-Stuck on the connector or need specific commands? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
+Stuck on the connector or want specific click-paths? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
 
 ## Task 3 — Read the mental frame (10 min)
 

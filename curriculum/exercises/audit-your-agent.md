@@ -46,7 +46,7 @@ Write the report to module-4/policy-report.md. Be specific. Be honest. An "I can
 Read the brain and agent files properly — don't skim. Quote the specific lines or files that support each verdict.
 ```
 
-While this runs, resist the urge to switch windows. The report is more useful when you read it cold. Expect the skill to find things you didn't think about — and to leave things "I can't tell" you thought were settled.
+While this runs, resist the urge to switch away. The report is more useful when you read it cold. Expect the skill to find things you didn't think about — and to leave things "I can't tell" you thought were settled.
 
 When the report lands, open `module-4/policy-report.md`. Read every row. Don't fix anything yet. Notice which rows surprise you. Notice which "I can't tell" rows you'd want to close and which you wouldn't even know how to.
 

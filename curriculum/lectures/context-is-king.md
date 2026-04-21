@@ -14,7 +14,7 @@ In the other window, the first prompt is *"What is the largest lake in Finland?"
 
 Same words. Different answer. The first exchange became context, and the context colored everything after.
 
-Before you watch the second window run, take a guess. What will it suggest? Your guess reveals what you already know about how this works — and what you're about to learn.
+Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works — and what you're about to learn.
 
 ## What just happened
 
@@ -34,7 +34,7 @@ Context is whatever you tell it. A fact. A role. A preference. A constraint. All
 
 ## The move you're about to make
 
-So far the context has been one message you typed. Ephemeral. Gone when you close the tab.
+So far the context has been one message you typed. Ephemeral. Gone when you close the chat window.
 
 What if the context was a file the agent reads at the start of every conversation? A file you wrote once, tuned carefully, that shaped every answer without you ever retyping it? Same mechanism. Different shelf life.
 

@@ -168,7 +168,7 @@ This exercise is one of the three Bootstrap magic beats (M3, M6, M8). M5 picks t
 **Facilitator notes:**
 
 *Watch-fors:*
-- **Chair-sitter.** Student refuses to walk away. Push them out: *"The whole point is to come back. Close the laptop."* Offer a specific thing to do in the window (debrief prep, a walk, the Phase 2b delta annotation) so the walk-away feels purposeful, not idle.
+- **Chair-sitter.** Student refuses to walk away. Push them out: *"The whole point is to come back. Close the laptop."* Offer a specific thing to do in that time (debrief prep, a walk, the Phase 2b delta annotation) so the walk-away feels purposeful, not idle.
 - **Dashboard skim.** Student glances at dashboard and declares it "worked" without reading the judge-diff files. Push: *"Open round-2/judge-diff.md. Read the specific rule that changed. Why did the meta-agent change that one and not another?"*
 - **Meta-agent distrust.** Student doesn't believe the judge actually learned, suspects cosmetic logging. This is healthy — lean into it. *"Compare judges/groundedness-judge.md to last session's version. Diff the rules. That's the evidence."*
 - **Deltas.md skipped.** Student doesn't annotate Phase 2b, so the meta-agent only learns from patterns in its own output. The loop still works but the human-signal demonstration is thinner. Not a failure — note for next cohort whether Phase 2b should be mandatory.

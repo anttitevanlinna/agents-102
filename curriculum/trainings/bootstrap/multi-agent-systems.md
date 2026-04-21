@@ -30,7 +30,7 @@ Last module you were the librarian. You searched Confluence, pulled from OneDriv
 [Exercise: Three retrievers, three minds](exercises/three-retrievers-three-minds.md)
 
 ## Key Concepts (Emergent)
-- **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (what you feel in Phase 1 — three windows churning, artifacts landing in shared folders). Subagents inside one session (what you build in Phase 2 — the native Claude Code primitive). Same idea, different surfaces. The filesystem is the meeting room in both.
+- **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (what you feel in Phase 1 — three sessions churning, artifacts landing in shared folders). Subagents inside one session (what you build in Phase 2 — the native Claude Code primitive). Same idea, different surfaces. The filesystem is the meeting room in both.
 - **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
 - **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is where the lesson lives.
 - **Three stances beat one summarizer.** The synthesizer's three subagents — a backward-from-end planner, a *what-would-have-to-be-true* experimentator (Roger Martin), and a counterintuitive reframer (the Rory seat) — each interrogate the retrieved material from a stance one agent won't hold at once. The main session makes the call.
@@ -71,7 +71,7 @@ You just built something that works across three systems. Which means it just ga
 - Anthropic's multi-agent warning — only a few situations where splitting wins; this exercise is engineered to be one of them
 
 **Watch-fors (deferred to facilitator notes pass):**
-- Phase 1: opening 3+1 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room before turning them loose; name which window is which
+- Phase 1: starting 3+1 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room before turning them loose; name which session is which
 - Retrievers return non-comparable outputs by design; student may try to "normalise" them — that's exactly what the synthesizer is for
 - Synthesizer left un-prompted will average to beige; prompt must force "show me where these disagree" before the summary
 - Phase 2: subagent invocation is new for most participants; demo once, then let them drive

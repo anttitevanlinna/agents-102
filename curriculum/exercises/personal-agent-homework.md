@@ -90,7 +90,7 @@ A brain that sits there is a document. A brain that gets read by an agent on a s
 
 **Frameworks riffed on:**
 - Toyota Kata — the morning agent is a daily PDSA beat on the challenge. Running it, observing, adjusting — kata made file-based.
-- Drucker-adjacent knowledge-work rituals — attaches a file-based system to the morning routine participants already have.
+- Drucker-adjacent knowledge-work routines — attaches a file-based system to the morning routine participants already have.
 - Design-system-as-text-file — `style.md` is a brand-pattern file the way the brain is a knowledge-pattern file. Same substrate move.
 
 **Cross-module ripple from Step 2 (style.md + CLAUDE.md rule):**

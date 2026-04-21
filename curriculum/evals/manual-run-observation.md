@@ -7,9 +7,9 @@ Keep this open in a side pane. Write one line per observation as it happens — 
 ## Setup
 
 - **Training dir:** `~/Documents/agents-102-bootstrap-sim/` (not your real one; throwaway so you can rerun)
-- **Two Claudes:** Teacher (`/self-study` at repo root) + Workbench (at training dir). Standard self-study shape.
+- **Two Claudes:** Teacher (`/self-study` at repo root) + Builder (at training dir). Standard self-study shape.
 - **Persona:** play one consistent character — suggestion: SVP Marketing at a 400-person Nordic software co, used ChatGPT weekly, never built an agent. Stay in character; don't break frame to evaluate.
-- **Recording:** session transcripts are auto-captured at `~/.claude/projects/<slug>/<session-id>.jsonl`. Grab both session IDs at start (Teacher + Workbench) — you'll feed them to the Post-Run Judge after.
+- **Recording:** session transcripts are auto-captured at `~/.claude/projects/<slug>/<session-id>.jsonl`. Grab both session IDs at start (Teacher + Builder) — you'll feed them to the Post-Run Judge after.
 
 ## Watch-fors (only humans catch these)
 
@@ -56,7 +56,7 @@ Common triggers: ambiguous instruction you had to re-read; Claude behavior that 
 
 ### Claude behavior mismatches
 
-When Workbench Claude's actual behavior differs from what the exercise assumes, note:
+When Builder Claude's actual behavior differs from what the exercise assumes, note:
 - Module + phase + what happened + what exercise expected: _____________
 
 These upgrade the "Known Claude-behavior patterns" list in SKILL.md.

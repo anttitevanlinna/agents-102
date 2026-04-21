@@ -38,7 +38,7 @@ Answer five questions. Keep it fast — your gut verdict plus one sentence. You'
 
 Four detectors, four different methods for catching ungroundedness. They're agents you spawn in parallel, each writing to its own file. Claude Code runs them as subagents inside one session.
 
-Open your main window. Paste:
+In your main session, paste:
 
 ```
 Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.

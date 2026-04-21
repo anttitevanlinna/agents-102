@@ -21,9 +21,11 @@ After this module, you will be able to:
 
 ## Connections
 
-**The sponsor speaks first.** The CEO / CTO / SVP who bought this training is in the room as a participant, not as a visitor. They open with one sentence in their own words — why they're here and what they don't yet know. *"I don't know what I'm doing here either — that's why we're all in this together."* No corporate kickoff, no agenda. The content of the sentence matters less than the fact that the sponsor said it, out loud, to the room, before anyone else. That's the license the next seven modules run on.
+> **In-room cohort opening — self-study readers, skip to the question below.**
+>
+> Let's hear from your sponsor first — the CEO / CTO / SVP who brought you here. They're in the room with you, as a participant, not as a visitor. They've got one sentence in their own words: why they're here, and what they don't yet know. Something like *"I want to learn this with you, not delegate it."* No corporate kickoff, no agenda. What matters isn't the sentence — it's that your sponsor said it, out loud, before anyone else. That's the license the next seven modules run on.
 
-Then the room: when you've used ChatGPT or Claude for your own work — a bio, a pitch, a post — where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
+**The question — to you:** when you've used ChatGPT or Claude for your own work — a bio, a pitch, a post — where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 
 ## Lectures
 
@@ -45,20 +47,41 @@ Then the room: when you've used ChatGPT or Claude for your own work — a bio, a
 
 ## Debrief
 
-Five minutes. A personal retro — with Claude. Paste this:
+Five minutes. A retro — and **the second pass on your rules file.** You wrote the first version of `personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro captures what you noticed *about the work* — different lens, different rules. Two passes; the second is where the file starts compounding.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
-Let's run a retro on what I just did. Three questions:
-1. What went well — where did adding context clearly make the output better?
-2. What was tedious or frustrating?
-3. How can we store the learnings as guardrails — what should live in a CLAUDE.md file so I don't have to re-explain them next time?
+Read personal-brand-generation.md in this folder first — you'll need it for Q3.
 
-Ask me one question at a time. After I've answered all three, write the guardrails to `CLAUDE.md` in the current folder. Keep it short — rules I'd actually re-read next time, not a textbook.
+Then walk me through three retro questions on the site we just built — one at a time, wait for each answer, no preamble. Just ask Q1 once you've read the file.
+
+Q1: Which framework move landed sharpest — StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, or the visual-steal for chrome? Which one made the site noticeably more "me"?
+
+Q2: Where did you produce the most generic version, and what specific context fixed it?
+
+Q3: Tell me one or two rules from the current personal-brand-generation.md that you (Claude) think are weak, missing, or wrong based on what we actually did today. Name them concretely — quote the rule, say what's off, ask if I agree.
+
+After my answer to Q3, UPDATE personal-brand-generation.md — integrate the retro into the existing file (sharpen weak rules, add what's missing, remove what turned out wrong). Don't append a "retro notes" section; rewrite the file as the better version. When you're done, tell me in 2–3 lines what changed and why — the rules added, the rules sharpened, the rules removed. I shouldn't have to open the file to know.
 ```
 
-Answer each question as it comes. When Claude's done, `module-1/CLAUDE.md` sits in your training directory — your first one, scoped to this module. Module 2 brings its own, wider CLAUDE.md at the training-directory root.
+*(end of prompt)*
 
-That's the mechanism every later module builds on: reflect, extract, encode as context.
+Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn't match your sense of the work. That's the pattern — every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a markdown file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
+
+**Then — Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. Run `/clear` in your Claude Code session to wipe the conversation — you want a fresh Claude with no memory of building the site. Then:
+
+**Prompt** *(copy → Claude Code, fresh session after /clear)*
+
+```
+Read site.html in this folder. Two questions:
+1. Quote the one line that feels most uniquely this person — not the best line, the most UNIQUELY them.
+2. Quote the most generic line that could be copy-pasted from anyone's site.
+```
+
+*(end of prompt)*
+
+Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin — add one more sharp detail there and regenerate. Where Claude's pick of *"uniquely you"* matches your own gut — solid ground.
 
 ## Bridge
-You just made great output. But it's a one-shot. What if it could remember, grow, and compound?
+You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it — the brain, the agents, the room rules — so every future module's work builds on every previous one.

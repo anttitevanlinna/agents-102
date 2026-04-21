@@ -15,7 +15,7 @@ For each Bootstrap module file:
   - Number of exercises
   - Debrief mechanism (3 retro questions, discipline-specific)
   - Artifact names Teacher should expect the student to produce
-  - Workbench folder switches at the right seams
+  - Builder folder switches at the right seams
 
 Flag mismatches.
 

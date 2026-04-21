@@ -69,7 +69,7 @@ Top management gets it. The team doesn't. Bottleneck = absorption at team scale.
 
 The student leaves with **a running brain + swarm and the 90-day plan that lives inside it.**
 
-The **brain** is a CLAUDE.md-anchored folder the manager has been building since M1 — Bootstrap's M2 aesthetic ported to leadership. It holds their team's diagnostic, their decisions, the criteria they're watching, the interventions they've run or rehearsed, and the rules Claude has promoted on its own. The **swarm** is the set of scheduled agents that feed the brain while the manager leads: diagnostic scans, gate-watchers, coalition check-ins, ritual agents, the maintenance agent.
+The **brain** is a CLAUDE.md-anchored folder the manager has been building since M1 — Bootstrap's M2 aesthetic ported to leadership. It holds their team's diagnostic, their decisions, the criteria they're watching, the interventions they've run or rehearsed, and the rules Claude has promoted on its own. The **swarm** is the set of scheduled agents that feed the brain while the manager leads: diagnostic scans, gate-watchers, coalition check-ins, cadence agents, the maintenance agent.
 
 The 90-day plan is a printout of the brain's current state, not a separately authored document. When the student gets back to work on Monday, they don't pick up a plan — they pick up an instrument that keeps running and keeps learning. The brain compounds from day one through day 91 and beyond.
 
@@ -93,14 +93,14 @@ Force active retrieval: before any intervention, Claude reads what's already kno
 ### Block 2 — Decision Journal
 *Reviewable reasoning. Every leadership decision Claude-enforced.*
 
-Before any significant decision — first move, coalition pick, vision phrasing, ritual choice, 90-day commitment — Claude searches the journal for prior decisions in that area. Follow unless new information invalidates. If new, log context + what else was on the table + why this option won + trade-offs accepted.
+Before any significant decision — first move, coalition pick, vision phrasing, exercise choice, 90-day commitment — Claude searches the journal for prior decisions in that area. Follow unless new information invalidates. If new, log context + what else was on the table + why this option won + trade-offs accepted.
 
 Over 90 days the journal produces a **traceable chain of reasoning**. The manager can see their own frame update. Huryn's observation holds: decisions made with forced-alternatives review have disproportionately better outcomes than confident gut calls.
 
 ### Block 3 — Quality Gate
 *Leadership criteria that sharpen with use.*
 
-Project-specific testable criteria for "is this leadership move working?" Not vague aspirations. Specific checks — *"coalition member shipped agent to own team this week," "visibility ritual run without manager prompting," "first-move metric visible to >50% of team"*. Criteria evolve: catches get promoted to automatic gates; never-triggered checks get pruned; recurring misses get new gates.
+Project-specific testable criteria for "is this leadership move working?" Not vague aspirations. Specific checks — *"coalition member shipped agent to own team this week," "visibility exercise run without manager prompting," "first-move metric visible to >50% of team"*. Criteria evolve: catches get promoted to automatic gates; never-triggered checks get pruned; recurring misses get new gates.
 
 Replaces the "I think it's going well" confidence trap. Anthropic's own finding ports: *agents confidently praise work they produced.* Managers do the same. The Quality Gate makes praise earn its place.
 
@@ -111,15 +111,15 @@ Periodic system review: prune stale rules, check hypothesis evidence, review whe
 
 ### The calibration question (Block 3's top-level gate)
 
-Every move the student makes — every ritual, every decision, every intervention — gets asked one question at the close:
+Every move the student makes — every exercise, every decision, every intervention — gets asked one question at the close:
 
 > **Did you make progress? Did you lay ground for progress in the future?**
 
-It's the top-level Quality Gate criterion. All the specific checks (coalition member shipped, ritual run without prompting, first-move metric visible) are instantiations. If the specific criteria pass but the answer to the calibration question is "no," the specific criteria were the wrong criteria — rewrite them.
+It's the top-level Quality Gate criterion. All the specific checks (coalition member shipped, exercise run without prompting, first-move metric visible) are instantiations. If the specific criteria pass but the answer to the calibration question is "no," the specific criteria were the wrong criteria — rewrite them.
 
 **Why this question is load-bearing:**
 
-- **It resolves the force-action / free-will tension.** The training forces the move; the student brings the judgment; progress is how we know it worked. A student who decides M5's scripted ritual is wrong for their team and invents a variant isn't violating the curriculum — they're exercising it. The calibration question sorts it: progress = curriculum; no progress = evasion.
+- **It resolves the force-action / free-will tension.** The training forces the move; the student brings the judgment; progress is how we know it worked. A student who decides M5's scripted exercise is wrong for their team and invents a variant isn't violating the curriculum — they're exercising it. The calibration question sorts it: progress = curriculum; no progress = evasion.
 - **It's calibrated, not comparative.** A manager with three eager L3s has different progress potential than one with fifteen L0 sceptics. Both can make progress. The bar is honest self-assessment, not cohort ranking.
 - **It's witnessed.** In-cohort: peers call progress-or-not on each other. Self-study: Teacher Claude runs the calibration. Same question, different facilitator.
 - **It pairs with Block 2.** Every journaled decision gets retrospective checks at weekly cadence (during training) and at day-91 (first full review). If the answer is "stirred, not advanced," the rule gets demoted and the hypothesis rewritten.
@@ -225,7 +225,7 @@ M1–M3 = **set up.** M4–M6 = **let's lead** — student makes first moves WIT
 | M5 | **PDCA honest reckoning — so what really happened as we tried to do as intended? Why?** Retrospective agent reads Block 2 decisions + Block 3 gate outcomes + Block 1 observations; root-cause agent (5 Whys) interrogates each deviation from intent; promotion/demotion agent sweeps Block 1. Student interrogates *with* the agents. Deming + Toyota Kata lineage. The 50%-wrong principle becomes visible here. | Block 1 (promotions/demotions) + Block 2 (decisions' retrospectives) + Block 3 (gates' performance) — all three reviewed | reflective honesty — *"some worked, some didn't, and naming it is the move"* | PDCA retrospective + all three blocks updated + surfaced learnings that shape M6 |
 | M6 | **Name the true shape of the challenge ahead.** After M1–M5, NOW the student can honestly name what the challenge actually is — usually different from the one they named at M1. Strategy earned, not assumed. Shape-finder agent reads 6 weeks of brain + PDCA + cohort share-backs, proposes candidate shape with evidence; alternative-shapes agent offers 2–3 contrasting framings; student picks, commits to Block 2 as top-level strategic decision. 90-day-plan agent synthesizes true shape + revised intent + Block 3 criteria. Day-91 agent scheduled. Full swarm handoff. Cohort share generates convergent company-wide signal back to sponsor. | Block 2 (true shape as earned strategy) + swarm committed to autonomous run | clear-eyed commitment — earned, not tidy | Named true shape + 90-day plan as printout + day-91 agent scheduled + swarm running autonomously + cohort finding back to sponsor |
 
-The agentic rule: **by M3 onward, the student should be able to close their laptop for a day and find the agents still working.** Diagnostic scans, check-ins, gate-watchers, ritual agents — all running. If every artifact requires the student typing, the exercise failed the rule.
+The agentic rule: **by M3 onward, the student should be able to close their laptop for a day and find the agents still working.** Diagnostic scans, check-ins, gate-watchers, cadence agents — all running. If every artifact requires the student typing, the exercise failed the rule.
 
 ## Mood arc
 
@@ -239,7 +239,7 @@ Flatter volatility than Bootstrap. Leadership work, not personal discovery. The 
 
 Full synthesis lives in `curriculum/research-grounded-moves-engineering-management.md` — structured as This week / This month / This quarter / This year, with citations to the KB. Keep it in sync with `observations/`, `findings/by-pattern/`, `insights.md` as the research evolves.
 
-Each of the six modules draws moves from this file. M2's first-move exercise picks from This week + This month. M3's coalition work picks from This week #4 (influencers) + This month #6 (skills marketplace). M5's ritual picks from This month #7 (tiered verification) + This quarter #11 (conditions-creator role). M6's 90-day plan commits to a subset of This quarter + This year.
+Each of the six modules draws moves from this file. M2's first-move exercise picks from This week + This month. M3's coalition work picks from This week #4 (influencers) + This month #6 (skills marketplace). M5's exercise picks from This month #7 (tiered verification) + This quarter #11 (conditions-creator role). M6's 90-day plan commits to a subset of This quarter + This year.
 
 ## Three things NOT to do — surface as M1 warnings
 
@@ -298,14 +298,14 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - **M3 = return + cross-pollinate + 2 crux.** Rumelt's crux skill imported from Bootstrap M8 scaffold. Two crux, not a backlog. Intent in M4 is crux-bound.
 - **M4 = Intent, not Vision.** Kotter step 3 reframed for 2026's epistemic reality: leaders *declare intent and let vision emerge over time.* Vision is earned across 90+ days of action and retrospection, not painted in week 4. Moltke lineage; matches Intent Taktik insight.
 - **Belief > correctness. 50% wrong is the curriculum.** Any action will do as long as the student believes in it enough to run with conviction. Expect half to miss. Progress = learning rate, not pick-rightness. Teacher Claude helps the student *run clean and read honest* — not second-guess the pick. Ancestry: Bosser's "best strategies emerge from action, not analysis."
-- **M5 = PDCA honest reckoning.** Deming + Toyota Kata. Not "run another ritual" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
+- **M5 = PDCA honest reckoning.** Deming + Toyota Kata. Not "run another exercise" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
 - **M6 = name the true shape of the challenge ahead.** Strategy earned from 6 weeks of action and review. Often different from the challenge named at M1. Only at M6 does the student commit the 90-day plan — grounded in the real challenge, not the week-1 guess. Cohort share generates a convergent company-wide signal back to the sponsor.
 - **Arc shape:** See → Believe → Distill → Declare → Examine → Name.
 - **Two tracks running in parallel:** Track 1 = team transformation (M1–M6 visible arc); Track 2 = frontier muscle (practitioners, cohort share, frontier-scanner agent, brain's frontier tier). Track 2 is why the brain doesn't decay after day 91.
 - **Coalition as companions, not instruments.** The relational qualifier. Calibration question applies to them too: *did they come with you on the ride?*
 - **Self-assessment metric:** 1–10 confidence rating ("Rate your confidence in leading your organization to an AI-first and agentic world") at start of M1, end of M6, day-91. Target delta ~+2 (baseline 4–5, end 6–7). Aggregate across single-company cohort = sponsor's finding.
 - **Training in six beats (plain-language):** take a shot at it → learn what people really feel → what's the real gap → build your muscle to see the future to come → take along the coalition on the ride → did you make progress?
-- **The calibration question** — *did you make progress? did you lay ground for progress in the future?* — is Block 3's top-level gate and every module's closing ritual.
+- **The calibration question** — *did you make progress? did you lay ground for progress in the future?* — is Block 3's top-level gate and every module's closing exercise.
 
 **Open, awaiting decision:**
 - Training name.
@@ -318,7 +318,7 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - **M1 install mechanics.** Three blocks pasted, populated by a guided diagnostic. Specify the exact prompts Claude runs to elicit first-pass ADKAR per person and first-pass Chasm tier per team. Lowest-risk now that the mechanism is settled; design sprint next.
 - **M4 vision exercise.** Kotter step 3. How does the coalition co-draft a vision in the room, in 45–60 min, that holds up against a team? Hold Bet A / Bet B tension honestly.
 - **"Let's lead" first-moves — what can realistically be DONE during training.** The coalition is not physically present for most of the training. Which moves can be rehearsed with partners in the room? Which require the student to break out mid-module and call/message a coalition member? Format decision is entangled with this.
-- **Block-sharpening rituals per module.** Each of M2–M6 must have a named 5–10 min ritual that moves material into the right block. Design these as a set, not one at a time.
+- **Block-sharpening exercises per module.** Each of M2–M6 must have a named 5–10 min exercise that moves material into the right block. Design these as a set, not one at a time.
 
 **Bootstrap reuse candidates:**
 - Context is King (M1 Bootstrap lecture) → M3 co-build framing.

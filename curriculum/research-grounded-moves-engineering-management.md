@@ -35,7 +35,7 @@ Audience: software engineering manager, 5–50 reports, leadership has declared 
 6. **Run an internal skills marketplace for Claude Code (or equivalent).** One person writes an agent that does X well; package as a reusable skill for the team. Intercom's plugin repo: 31% of R&D contributing in 3 months. Ramp's Dojo: 350+ skills in 6 weeks.
    *Source:* [coding-agent-as-general-platform.md], [observations/intercom.md], [observations/ramp.md]
 
-7. **Implement a tiered verification ritual for AI-generated output.** Low-risk → auto-approve via agent review. Mid-tier → human spot-check. High-stakes → full human validation.
+7. **Implement a tiered verification exercise for AI-generated output.** Low-risk → auto-approve via agent review. Mid-tier → human spot-check. High-stakes → full human validation.
    *Why:* Absorption bottleneck: 59% more PRs generated YoY, 7% throughput decline, 3.4× compound review burden. "Review harder" doesn't scale; agents reviewing agents does (80–85% parity with humans at 500× cost reduction).
    *Source:* [absorption-bottleneck.md → CircleCI 2026, Faros AI 10K devs], [hybrid-beats-autonomous.md]
 

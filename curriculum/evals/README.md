@@ -111,7 +111,7 @@ When you want wide coverage fast — after a meaningful content pass, before a c
 > When all 4 complete, read the output files and synthesize a prioritized fix list.
 
 **Subagent prompt rules:**
-- Subagents do NOT read CLAUDE.md. Inline the critical rules each subagent needs (banned-word list, Workbench scoping for path-consistency, mood contracts for seams). See prior runs in `instances/` for prompt patterns.
+- Subagents do NOT read CLAUDE.md. Inline the critical rules each subagent needs (banned-word list, Builder scoping for path-consistency, mood contracts for seams). See prior runs in `instances/` for prompt patterns.
 - Each subagent OWNS its output file. No overlap.
 - Subagents reply with short summaries; the full report is on disk. Main thread reads outputs, not raw files.
 

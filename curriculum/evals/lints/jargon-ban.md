@@ -23,6 +23,9 @@ READ IN SEQUENCE (arc order):
 BANNED WORDS (from SKILL.md § Business-audience jargon ban):
 embeddings, vector, vector database, RAG, retrieval-augmented generation, retrieval (technical sense), pipeline (technical sense), orchestration, orchestrator, schema, architecture, subagent, frontmatter, prompt engineering, inference (technical sense), fine-tuning
 
+HARD-BANNED WORDS (never earnable — substitute "exercise"):
+ritual, practice (as a noun for a training activity), ceremony
+
 Exempt contexts (do NOT flag): content below `<!-- maintainer -->` cut, TODO comments, eval template slots, the project CLAUDE.md / content-strategy.md / guardrails files (authoring-side, not student-facing).
 
 For each banned word, for each file in arc order:

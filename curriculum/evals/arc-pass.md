@@ -1,6 +1,6 @@
 # Arc Pass — Static end-to-end eval
 
-Read all 8 Bootstrap modules + the content-strategy arc **in one session** before any manual run. Catches arc-level drift that per-exercise evals miss by design: stolen moods, premature rescues, seam breaks, vocabulary leaks across modules. Cheap (~10 min, one Judge prompt); runs without spinning up Teacher/Workbench/student.
+Read all 8 Bootstrap modules + the content-strategy arc **in one session** before any manual run. Catches arc-level drift that per-exercise evals miss by design: stolen moods, premature rescues, seam breaks, vocabulary leaks across modules. Cheap (~10 min, one Judge prompt); runs without spinning up Teacher/Builder/student.
 
 **Run this BEFORE the manual end-to-end run.** The manual run is scarce; spend it on what only a live session reveals (Teacher Claude facilitation quality, felt-mood timing, persona drift). Don't burn it on arc problems a Judge can flag statically.
 

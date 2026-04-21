@@ -104,7 +104,7 @@ The training rests on three bets. If any turns out wrong, the training's shape w
 
 ## Curation principle — we don't invent, we curate the best
 
-**The training doesn't manufacture its own wisdom.** It brings in specific skills and actionable insights from the best practitioners — Klaassen's compound engineering, Huryn's three-block memory, Ronacher's long-running patterns, Willison's daily-practice notes, Cherny's file-based practice — and slots each one into the module where it handles a student's actual issue or blocker.
+**The training doesn't manufacture its own wisdom.** It brings in specific skills and actionable insights from the best practitioners — Klaassen's compound engineering, Paweł Huryn's three-block memory, Ronacher's long-running patterns, Willison's daily-practice notes, Cherny's file-based practice — and slots each one into the module where it handles a student's actual issue or blocker.
 
 **Skill, not theory.** We import what's *doable on Tuesday*, not what sounds good in a deck. Klaassen's four-step loop lands in M1 because it resolves the "I don't know where to compound starts" blocker on day one. Huryn's three blocks land in M1 because they solve "my CLAUDE.md is six lines and I never look at it." Ronacher's plan.md pattern lands in M3 because it's what keeps a multi-hour agent from drifting. The test for import: can the student apply it in the session, on their own work, without more lectures?
 
@@ -226,7 +226,7 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 
 | # | Title | Lead dimension | Mood | Artifact |
 |---|---|---|---|---|
-| M1 | **Ship with agents** | Compounding (how) | Joyful creation — *"it works, on my repo"* | Trivial bug from the student's own backlog shipped via Plan → Work → Review → Compound + first pass at Huryn's three-block memory + rules file seeded by session retro |
+| M1 | **Ship with agents** | Compounding (how) | Joyful creation — *"it works, on my repo"* | Trivial bug from the student's own backlog shipped via Plan → Work → Review → Compound + first pass at Paweł Huryn's three-block memory + rules file seeded by session retro |
 | M2 | **Build your memory for your codebase** | Compounding (how) deepens | Satisfied compounding — *"it reads my system now"* | Single-repo memory → multi-repo memory → memory connected to business rules and company info; agents wired to each layer; compounding loop carried from M1 |
 | M3 | **Long-running tasks — send-off** *(working title)* | Long-running (technical) — setup + launch | Unleashed leverage — *"I just sent an agent off with real work"* | Concept taught + challenge named + verifier built on student's real work + verifier checked lightly on a small example + mid-long task launched, running between M3 and M4 |
 | M4 | **Long-running tasks — return** *(working title)* | Long-running (technical) — retrospective + next-run prep | Grounded rescue — *"the return isn't a grind, it's a system"* | Return to the scene: diff read, drift named, failures caught + learnings integrated into memory + verifier sharpened for next run + one judge promoted to reusable artifact for M5 |
@@ -247,7 +247,7 @@ Closer to Bootstrap's arc than Engineering Management's. This is personal discov
 
 **The exercise has two jobs at once.** Headline job: fix a trivial bug the student picks from their own backlog — small enough to ship in-session, visible enough to feel like a win. Below the headline, the exercise installs the **compounding substrate** that M2–M6 will ride on.
 
-**Huryn's three-block memory gets its first entries during the bug fix:**
+**Paweł Huryn's three-block memory gets its first entries during the bug fix:**
 - Block 1 (Knowledge Architecture): at least one observation the student made about the codebase during the fix, promoted where appropriate from raw note toward hypothesis
 - Block 2 (Decision Journal): the trade-off the student made in the fix, logged with the alternative considered
 - Block 3 (Quality Gate): at least one testable criterion for "did this fix really land" — a check the student can re-run
@@ -400,6 +400,26 @@ These two trainings are designed to pincer the transformation:
 - **Huryn three blocks** (`insights.md`) — memory structure, direct import from Bootstrap M2 lineage.
 - **Cross-cutting:** `coding-agent-as-general-platform`, `absorption-bottleneck` (M4 names it), `conditions-creator` (M5 lives it from IC side), `rules-verification-scarcity` (M4 meta-pattern).
 
+## Delivery architecture
+
+**The compounding lives in the student's real repo. The curriculum lives in a content folder next to it.**
+
+Two artifacts per student:
+
+1. **Content folder** — `agents-102-content-agentic-engineering-101/` (zip shipped at training start). Contains `lectures/`, `exercises/`, `prework/`, `reference/`. All markdown. Claude reads from this folder at the Nerd's direction; the student skims when they want to. Same markdown renders via the cohort site for projection and human browsing — the file-on-disk is the source of truth for agentic reading.
+
+2. **The student's real repo** — where compounding actually happens. The student picks this repo in prework. The repo's root `CLAUDE.md` (or `.claude/CLAUDE.md`) grows each module. Decision-journal entries land as ADRs in the repo's existing convention (or `docs/adr/NNNN-slug.md` if none). Three-block memory (M2+) lands in `.claude/memory/`. No separate training directory, no `module-N/` folders, no file-ceremony. Work happens where work belongs.
+
+**Repo choice matters but isn't a blood oath.** Criteria: one the student owns or co-owns, one they'll still work in six months, one dense enough that compounding has somewhere to land. If a student switches repos mid-training (team change, project end, wrong choice in prework), replay M1 → M(current) on the new repo in an evening.
+
+**Replay is first-class, not remedial.** The Nerd fast-paths replay — *"you've done this shape; let's regenerate the artifacts for this repo"* — because the pedagogy already landed. Replay is artifact regeneration, not re-learning. **Design constraint on every module:** exercises must produce artifacts deterministically enough to replay. Modules with a room-scale moment (M5 deliberation) or multi-day wait (M3 send-off) carry an explicit replay-variant path.
+
+**Prework is agentic end-to-end.** No "create this file, paste this content, commit these lines." The student unzips the content folder, points Claude at it, asks Claude to walk them through prework. Claude runs the repo-choice conversation, the bug-finding conversation, the install check. Pre-fabricating state the student could generate in conversation violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy.
+
+**The Nerd reads the content folder.** It doesn't carry Klaassen / Huryn / Ronacher in its head — it reads `lectures/the-wizard-move.md` and `exercises/ship-trivial-bug.md` and surfaces what's there at blockers. Curriculum becomes Claude-readable reference, not human-only reading material.
+
+**No persistent training-dir state.** Everything the student needs after M1 lives in either their repo (compounding artifacts) or their head (the pedagogy). If the student can't reconstruct the prior module from `git log` + the repo's current `CLAUDE.md`, the module didn't land.
+
 ## Format
 
 - **Length:** likely 2 days or 6 weeks (consistent with Engineering Management)
@@ -421,13 +441,24 @@ These two trainings are designed to pincer the transformation:
 - M5 sharpened — its artifact is the component the engineer's agent brings to M6
 - Pair with Engineering Management lands live in M6
 
+**First long-running-gen cycle landed 2026-04-21 (evening) — M1 dependencies built:**
+- `curriculum/trainings/agentic-engineering-101/ship-with-agents.md` (Pass 1 module spine)
+- `curriculum/trainings/agentic-engineering-101/prework.md`
+- `curriculum/lectures/the-wizard-move.md` (Pass 2 skeleton)
+- `curriculum/exercises/ship-trivial-bug.md` (Pass 3, the M1 target)
+- `curriculum/evals/instances/agentic-engineering-101--ship-with-agents.md`
+- `site/curriculum.html` TRAININGS entry added
+- Klaassen + Huryn (Paweł, name corrected) practitioner sources verified — both `[practitioner direct]`, within 6 months
+- Bootstrap reuse audit: `context-is-king.md` reused as prework reading; plan-mode primer confirmed missing but NOT built — exercise teaches plan mode in-flight, named retrospectively per exercise-first-head-on pedagogy. Compound/compounding lecture deferred to M2 per strategy doc.
+- Pedagogy sharpened: **exercise-first head-on, "why it worked" names the shape retrospectively.** Klaassen + Huryn attributed at P5 as peer recognition, not curriculum authority.
+
 **Open — decide before Pass 1:**
 
 1. ~~**Training name.**~~ **Settled 2026-04-21: *Agentic Engineering 101*.** Matches the sales-site program tile; strategy doc and site name are now aligned.
 2. **First cohort posture — revenue event or evidence-gathering event?** Intercom and Ramp are going to be every competitor's anchor cases within 6 months. Our third case (a Nordic single-company cohort we observe directly) is a durable advantage. Worth running the first delivery at cost to own that case.
 3. **M3 title.** Working title *Long-running tasks* names the capability plainly but lacks the spice of *Ship with agents* / *Toward the factory pattern*. Candidates: *Close the laptop*, *Hours, not minutes*, *The long run*, *Walk away*. Builder CTO taste test worth running; *Close the laptop* leads for evocativeness. (Old question about splitting M3 into two modules is now moot — long-running tasks earned its own module via the four-area frame.)
 4. **M4 — which job is it doing?** Three different teaching moments currently live in M4: build judges (craft), tiered PR review (process), auto-approval policy (organisational). An IC can't unilaterally set policy. Resolution: M4 teaches judge-building + tiered-review proposal; organisation-level auto-approval is the *question* an engineer brings back to their manager (who took EM). Clean seam between trainings.
-5. **M1 install mechanic.** What happens in the first session? Opening bid: instructor demonstrates a wizard-level move on a volunteer's actual codebase → each student shares one trick they brought → one real PR shipped through Claude Code with plan mode used deliberately → CLAUDE.md seeded with session's rules. Memory + scheduled agent move to M2. No "diagnose the gap" posture anywhere.
+5. ~~**M1 install mechanic.**~~ **Settled 2026-04-21 and built.** Instructor demonstrates a wizard-level move on a volunteer's actual codebase → each student shares one trick they brought → one real PR shipped through Claude Code with plan mode used deliberately → `module-1/CLAUDE.md` seeded with session's rules. No "diagnose the gap" posture anywhere. (TODO before first delivery: menu of 3–5 wizard-move demo options per cohort's volunteer-codebase shape.)
 6. **M5 factory component — single track or branch?** Opening bid: branch. Engineer picks the component their team actually needs (skill / orchestration pattern / MCP server / judge / meta-agent). Primary: MCP server (generalises). Reach: meta-agent. Same pattern as Bootstrap M7's two branches.
 7. **Skill-scaffold question — where do `crux`, `assumption-test`, `pre-mortem` arrive?** Bootstrap delivers them in M7 scaffold, invokes in M8. Likely analogue: M5 scaffold ships them (for the factory-component design move), M6 re-invokes at room scale on the engineering problem.
 8. **Prerequisite — Bootstrap hard-required, assumed-but-not-enforced, or irrelevant?** Leaning irrelevant. Engineers arrive with chatting fluency; Bootstrap is aimed at non-technical builder leaders. Different baselines.
@@ -454,4 +485,4 @@ These two trainings are designed to pincer the transformation:
 
 ---
 
-*Last updated: 2026-04-21 evening. Four-area frame (how × technical) replaces three-outcomes framing. M3 promoted to long-running-tasks as its own headline. Next: capability check on Opus 4.7 long-running behaviour, decide open questions 1–4, start Pass 1 module files.*
+*Last updated: 2026-04-21 late. M1 dependencies built in first long-running-gen cycle (ship-with-agents spine + ship-trivial-bug exercise Pass 3 + the-wizard-move lecture + prework + eval instance + site registration). Pedagogy sharpened to exercise-first head-on with retrospective naming. Huryn first-name corrected to Paweł. Next: Antti reshape pass on drafts, then simulation + LLM-judge eval runs, then Compound step on long-running strategy.*

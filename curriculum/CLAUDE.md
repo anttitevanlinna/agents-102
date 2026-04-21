@@ -172,6 +172,8 @@ The shape: each agent's spec names every file it will touch; no two specs overla
 
 How participants receive and work with training material (site + local files). Design rules for any module that ships a scaffold.
 
+**Bootstrap conventions are documented here. Agentic Engineering 101 uses a different delivery model** — content folder unzipped by student, all compounding artifacts land in the student's real repo (no training-dir state, no `module-N/` folders). See `content-strategy-agentic-engineering-101.md` § "Delivery architecture" for canonical AE101 rules. Future trainings choose one model per audience; don't mix.
+
 **The shapes:**
 
 1. **Site** (curriculum content) — password-protected static URL per customer, co-branded. The same renderer we use locally (`site/curriculum.html`) hosted for the cohort. Prework, lectures, and exercises are read here. Download links for per-module zips live here too. Never ask participants to clone Git.

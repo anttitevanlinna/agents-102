@@ -14,8 +14,8 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-04-09 (cycle 94)
-OODA cycles: 19
+Last updated: 2026-04-18 (cycle 104)
+OODA cycles: 20
 
 ## Focus
 
@@ -112,6 +112,7 @@ Microsoft's agent ecosystem as it serves **business users** — not developers. 
 - **"Tens of thousands" of customers in preview** (vendor claim, Mar 2026). "Tens of millions of agents" in registry in 2 months — likely includes any automated process, not just agentic.
 - **March 2026 governance controls shipping:** Granular AI policy at department/group/individual level. Audit logs include prompts, model IDs, data accessed. GDPR-relevant. AI+security features become standard in M365 subscriptions July 1, 2026. ([Windows News](https://windowsnews.ai/article/power-platform-march-2026-update-agentic-apps-enhanced-governance-and-ai-development-acceleration.405823), Mar 2026)
 - **Ecosystem lock-in limitation (independently confirmed):** Entro Security analysis: "fundamentally anchored to the Microsoft ecosystem... enterprise agents don't confine themselves to one identity plane or one cloud runtime." Agent 365 governs M365/Azure/Entra agents — blind to Salesforce, Snowflake, Slack agents. ([Entro Security](https://entro.security/blog/microsoft-agent-365-pushes-ai-identity-forward-but-enterprise-agents-still-need-cross-environment-governance/), practitioner analysis, Mar 2026)
+- **Cycle 104 — SAMexpert pre-GA analysis: hidden cost structure and incomplete GA (April 18, 2026):** SAMexpert (the licensing firm that identified E7 effective cost >$200/user) publishes Agent 365 pre-GA breakdown. **The two-bill problem:** "$15/user on the M365 bill + execution costs on a separate Azure bill (consumption-based). Different teams manage these separately — no cross-visibility by default. The $15/user is a governance floor, not the full cost of deploying AI agents." **Four unresolved gaps at GA (May 1):** (1) No published consumption cost guidance from Microsoft; (2) Exact licensing boundary not defined; (3) No Product Terms documentation available; (4) Autonomous agents with independent identities remain in preview at GA — not available day one. **Security caveat:** Threat detection features stay in public preview at launch — creating incomplete protection. **Adoption prediction:** Microsoft's 3% Copilot adoption rate suggests Agent 365 will face similar challenges. SAMexpert anticipates "significant discounting." ([SAMexpert](https://samexpert.com/agent-365/) — [domain trade publication / licensing specialist], Apr 2026). Assessment: Agent 365 GA will be structurally incomplete. The governance capability is real; the pricing transparency and full feature set are not ready at launch.
 
 ## Personal → Team → Company Progression
 

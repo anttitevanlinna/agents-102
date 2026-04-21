@@ -1,15 +1,17 @@
 # AI-Native Startups — Platform State
 
-Last updated: 2026-04-02 (cycle 1)
-OODA cycles: 1
+Last updated: 2026-04-17 (cycle 2)
+OODA cycles: 2
 
 ## Focus
 
 AI-native startups building agent-first products that compete directly with traditional enterprise SaaS incumbents. Not horizontal AI platforms (OpenAI, Anthropic) — these are vertical AI companies attacking specific enterprise functions: legal, finance, customer service, HR, sales. Tracked because the "build vs. buy" question for CTOs now includes a third option: buy from an AI-native vendor that may outperform the legacy incumbent.
 
-## Key Verdict (as of 2026-04-02)
+## Key Verdict (as of 2026-04-17)
 
-**Real disruption is happening in legal and customer service. Finance/accounting is hot but pre-proof. HR and sales are lagging or cautionary.** The strongest AI-native startups (Harvey, Sierra, Decagon) have crossed $100M ARR and serve Fortune 500 customers — this is not hype. But the 11x implosion shows that funding and ARR claims in this space need hard scrutiny. The answer to the CTO question: AI-native startups are eating the bottom of the stack (document processing, ticket resolution, bookkeeping) while incumbents retain the top (workflow orchestration, compliance, ecosystem integration). The question is whether the bottom eats upward before the top eats downward.
+**Sana is no longer an independent AI-native — acquired by Workday (Nov 2025, $1.1B). Harvey's Spectre agent is internal infrastructure, not a deployed law firm product. Sierra crossed $150M ARR. Pilot launched "fully autonomous" AI Accountant but evidence remains Level 1. The finance domain has products shipping but still zero independent outcome verification. Decagon's black-box problem and high contract minimums ($95K+) are real friction points now appearing in practitioner discussion. No new AI-native startup disruption signals have crossed the 11x threshold this cycle.**
+
+**Previous verdict (2026-04-02): Real disruption is happening in legal and customer service. Finance/accounting is hot but pre-proof. HR and sales are lagging or cautionary.** The strongest AI-native startups (Harvey, Sierra, Decagon) have crossed $100M ARR and serve Fortune 500 customers — this is not hype. But the 11x implosion shows that funding and ARR claims in this space need hard scrutiny. The answer to the CTO question: AI-native startups are eating the bottom of the stack (document processing, ticket resolution, bookkeeping) while incumbents retain the top (workflow orchestration, compliance, ecosystem integration). The question is whether the bottom eats upward before the top eats downward.
 
 ---
 
@@ -19,9 +21,10 @@ AI-native startups building agent-first products that compete directly with trad
 
 - **ARR:** $190M as of January 2026 (up from $100M in August 2025 — nearly doubled in 5 months) ([Artificial Lawyer](https://www.artificiallawyer.com/2026/01/08/harvey-hits-190m-arr-building-memory-personalisation/), Jan 2026 — [domain trade publication])
 - **Valuation:** $11B (March 2026, $200M round led by Sequoia + GIC) ([CNBC](https://www.cnbc.com/2026/03/25/legal-ai-startup-harvey-raises-200-million-at-11-billion-valuation.html), Mar 2026 — [general press])
-- **Scale:** 100,000+ lawyers across 1,300+ organizations. Major firms include O'Melveny, A&O Shearman, Latham & Watkins ([Harvey blog](https://www.harvey.ai/blog/harvey-raises-at-dollar11-billion-valuation-to-scale-agents-across-law-firms-and-enterprises), Mar 2026 — [vendor press release])
-- **Product:** Building "Memory" personalization — agents that learn firm-specific patterns over time ([Artificial Lawyer](https://www.artificiallawyer.com/2026/01/08/harvey-hits-190m-arr-building-memory-personalisation/), Jan 2026 — [domain trade publication])
-- **Evidence level:** Level 2-3. Revenue figures from independent trade publication. Customer names from vendor. No independent deployment outcome metrics yet — we know firms are paying, but not what results they're getting.
+- **Scale:** 100,000+ lawyers across 1,300+ organizations. >70% of Am Law 10 firms. New HSBC deployment announced April 2026. Axiom partnership (April 8, 2026) brings Harvey to in-house legal teams via Axiom's T&T portfolio. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/04/14/harveys-gabe-pereyra-on-legal-agents-world-models/), Apr 2026 — [domain trade publication])
+- **Spectre agent (April 2026 update):** Harvey's "Spectre" is an internal agent infrastructure for Harvey's own operations (~800 employees), NOT a deployed law firm product. It handles engineering tasks and some non-engineering work triggered by system monitoring. Co-founder Gabe Pereyra presents it as a model for what a "law firm world model" could look like — but explicitly acknowledges "agents still make mistakes and those mistakes can be unintuitive." No external law firm deployment of Spectre was found. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/04/03/harveys-spectre-agent-points-to-law-firm-world-model/), Apr 3, 2026 — [domain trade publication]; [Artificial Lawyer](https://www.artificiallawyer.com/2026/04/14/harveys-gabe-pereyra-on-legal-agents-world-models/), Apr 14, 2026 — [domain trade publication])
+- **Known limitations (April 2026):** (1) Document attachment drops prompt limit from 100,000 to 4,000 characters — forces manual query fragmentation. (2) Hallucination risk with legal citations — requires verification. (3) Ethical wall problem: Harvey calls this "the most important unsolved problem" — autonomous agents risk breaching information barriers between client matters. (4) Pricing opacity: enterprise quotes have been cut 60% after pushback, suggesting rack rates are not real. ([fahimai review](https://www.fahimai.com/harvey-ai), Apr 2026 — [domain trade publication])
+- **Evidence level:** Level 2-3. ARR from independent trade publication. Spectre is internal, not client-facing — that's important for CTOs evaluating "Harvey agents." The ethical wall problem is a genuine deployment blocker for multi-matter firms, not a marketing claim.
 - **Threat to incumbents:** Thomson Reuters (Westlaw), LexisNexis. Harvey doesn't replace these — yet. It sits alongside them. But if "Memory" works, Harvey accumulates firm-specific knowledge that becomes switching-cost moat.
 
 ### EvenUp
@@ -56,10 +59,11 @@ Legal is the most advanced AI-native vertical. Harvey's growth rate ($100M → $
 
 ### Pilot
 
-- **Product:** "AI Accountant" — fully autonomous bookkeeper, monthly close in one hour, zero human intervention claimed ([CPA Practice Advisor](https://www.cpapracticeadvisor.com/2026/02/04/pilot-rolls-out-fully-autonomous-ai-accountant/177453/), Feb 2026 — [domain trade publication])
-- **Founded by:** Jessica McKellar (former Dropbox VP Engineering)
-- **Claim:** Can onboard new businesses and configure accounting systems autonomously
-- **Evidence level:** Level 1. Bold claims, domain trade coverage, but no independent outcome data. "Zero human intervention" is an extraordinary claim requiring extraordinary evidence.
+- **Product:** "AI Accountant" — launched February 4, 2026. Claimed fully autonomous bookkeeper: onboards businesses, configures accounting systems, closes historical books, produces financial statements (P&L, cash flow, balance sheet) with zero human involvement. ([CPA Practice Advisor](https://www.cpapracticeadvisor.com/2026/02/04/pilot-rolls-out-fully-autonomous-ai-accountant/177453/), Feb 2026 — [domain trade publication])
+- **Founded by:** Jessica McKellar (former Dropbox VP Engineering). 7,000+ startup clients over 10 years.
+- **Caveat Pilot themselves state:** "If there is a judgment call that could have a real material impact, it will signal that it needs a human response before moving on." — meaning the "zero human intervention" claim applies only to non-judgment tasks.
+- **Independent evidence gap (April 2026):** No independent accountant or customer accounts of production deployment found. Trade coverage (Accounting Today, CPA Practice Advisor, Insightful Accountant) is entirely based on CEO quotes with zero outside voices. One anecdotal case (2.5 years of books in one month) is unnamed and unverified. Reviews on SoftwareAdvice note that "much of the real work still needs people" in existing Pilot service — the AI Accountant is an extension of this model.
+- **Evidence level:** Level 1. Strong vendor narrative, domain trade coverage, but no independent outcome data 2+ months after launch. "Zero human intervention" is an extraordinary claim that remains unverified.
 
 ### Accrual
 
@@ -90,14 +94,13 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 
 ### Sierra
 
-- **ARR:** $100M in 21 months (reached November 2025) ([TechCrunch](https://techcrunch.com/2025/11/21/bret-taylors-sierra-reaches-100m-arr-in-under-two-years/), Nov 2025 — [general press])
+- **ARR:** $150M as of January 2026 (up from $100M in November 2025) ([Sacra](https://sacra.com/c/sierra/), Apr 2026 — [domain trade publication / independent financial analysis])
+- **Valuation:** $10B ([CMSWire](https://www.cmswire.com/customer-experience/sierra-ais-10b-valuation-marks-a-turning-point-for-conversational-ai/), 2026 — [tech press])
 - **Founders:** Bret Taylor (ex-Salesforce co-CEO, ex-Facebook CTO) + Clay Bavor (ex-Google VP)
-- **Enterprise reach:** 40% of Fortune 50 ([vendor claim])
-- **Customers:** Deliveroo, Discord, Ramp, Rivian, SoFi, ADT, Bissell, Cigna, SiriusXM ([TechCrunch](https://techcrunch.com/2025/11/21/bret-taylors-sierra-reaches-100m-arr-in-under-two-years/), Nov 2025 — [general press])
-- **2026 developments:**
-  - Ghostwriter (March 2026) — AI agent that builds other AI agents from plain English ([Sierra](https://sierra.ai/author/bret-taylor), Mar 2026 — [vendor press release])
-  - Acquired Opera Tech (Tokyo-based enterprise AI), March 2026
-- **Evidence level:** Level 2-3. Revenue independently reported. Customer list credible and diverse. The "40% of Fortune 50" claim is vendor-sourced but plausible given the customer names. Missing: independent resolution rates and outcome metrics from customers.
+- **New deployment (April 2026):** Blue Shield of California deployed Sierra-powered AI voice agent through Stellarus partnership for a large national employer, reporting 4.4/5 CSAT across thousands of member interactions. Healthcare, highly regulated. ([thecscafe.com](https://www.thecscafe.com/p/sierra-350m-10b-ai-agents-customer-success), Apr 2026 — [domain trade publication])
+- **New product (April 2026):** First Level 1 PCI-compliant conversational AI platform — agents can collect card and ACH payments across chat and voice. Expands into regulated financial transaction handling. ([myaskai.com](https://myaskai.com/blog/sierra-ai-complete-guide-2026), Apr 2026 — [tech press])
+- **Known limitations (April 2026):** (1) Inconsistent support response during technical issues — operational risk for live deployments. (2) Pricing unpredictability: per-conversation model means quarterly costs hard to forecast; channel/language expansion triggers non-visible price jumps. (3) Despite strong demo metrics, enterprise leaders cite gaps in workforce management, agent collaboration, and operational visibility for long-term ROI. ([aiagentslist.com review](https://aiagentslist.com/agents/sierra), Apr 2026 — [practitioner analysis])
+- **Evidence level:** Level 2-3. ARR from independent financial analysis (Sacra). Blue Shield deployment is the first named healthcare customer with a specific outcome metric (CSAT score). Vendor claims still dominate — we know firms are buying but limited on what resolution rates look like independently.
 - **Threat to incumbents:** Direct competitor to Salesforce Service Cloud, Zendesk, Freshdesk. Bret Taylor literally ran Salesforce — he knows exactly what enterprise CX buyers want. This is the most credible threat to an incumbent.
 
 ### Intercom Fin
@@ -111,12 +114,13 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 
 ### Decagon
 
-- **Valuation:** $4.5B (January 2026) ([Microsoft for Startups](https://www.microsoft.com/en-us/startups/blog/decagon-building-the-ai-concierge-for-modern-customer-experience/), 2026 — [vendor press release])
+- **Valuation:** $4.5B (January 2026, first tender offer completed March 4, 2026) ([TechCrunch](https://techcrunch.com/2026/03/04/decagon-completes-first-tender-offer-at-4-5b-valuation/), Mar 2026 — [general press])
 - **Funding:** ~$481M across five rounds. 300+ employees.
-- **Customers:** Notion, Rippling, Duolingo, Chime, Hertz, Eventbrite, Substack, Riot Games
-- **Claims:** 80% deflection rate, 65% cost reduction, 93% agent quality score ([vendor claims])
+- **Customers:** Notion, Rippling, Duolingo, Chime, Hertz, Eventbrite, Substack, Riot Games, Avis Budget Group, Oura Health. 100+ large customers.
+- **Known limitations (April 2026):** (1) Black box problem — users cannot see why the AI did what it did; difficult to diagnose errors during live customer interactions. (2) Contract minimums $95K–$590K+/year — prohibitive for non-enterprise. (3) 6-week minimum onboarding — not a self-serve product; requires Agent Engineers. (4) G2 Ticket Resolution score 7.9/10 — lowest of its category metrics — suggests real-world resolution quality below marketing claims. (5) Heavy data quality dependency — poor internal documentation degrades performance significantly. ([Decagon review aggregation](https://www.g2.com/products/decagon/reviews), [pagergpt.ai](https://pagergpt.ai/alternative/decagon-reviews), Apr 2026 — [practitioner analysis])
+- **Vendor ROI claim:** $800K savings per $250K spent ([vendor claim — unverified])
 - **Innovation:** Agent Operating Procedures (AOPs) — natural language workflows that "compile into code." Spring 2026: outbound voice (proactive AI calls).
-- **Evidence level:** Level 1-2. Impressive customer list but metrics are vendor-sourced. Decagon grew from stealth (June 2024) to $4.5B in 18 months — that's Sierra-level velocity.
+- **Evidence level:** Level 1-2. Impressive customer list but metrics are vendor-sourced. The black box complaint and 7.9/10 G2 resolution score are the first independent friction signals visible in practitioner review aggregation. Decagon grew from stealth (June 2024) to $4.5B in 18 months — velocity is real, but production quality evidence is still thin.
 
 ### Customer Service Domain Summary
 
@@ -125,6 +129,15 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 ---
 
 ## HR — Early and Fragmented
+
+### Sana (formerly Sana.ai — Stockholm, Sweden)
+
+- **Status (April 2026): No longer independent.** Workday acquired Sana on November 4, 2025 for $1.1B. Sana is now Workday's AI knowledge layer. ([ArcticStartup](https://arcticstartup.com/sana-acquired-by-workday/), 2025 — [domain trade publication])
+- **Product post-acquisition:** "Sana for Workday" — gives Workday customers a new interface to query Workday data, run reports, invoke transactions, analyze data via Sana Agent. Integrates with Salesforce, Teams, Slack, SharePoint. Bundled with 750+ HR/leadership/management courses. Rollout began in 2026. ([reworked.co](https://www.reworked.co/digital-workplace/workday-finalizes-sana-acquisition-to-build-front-door-for-work/), Nov 2025 — [domain trade publication])
+- **Nordic signal:** Swedish AI Reform initiative — backed by Sana/Workday foundation — providing free access to AI tools for 2.3 million Swedes across public sector, education, and civil society. Announced at AI Summit with PM Ulf Kristersson. ([Scandinavian MIND](https://scandinavianmind.com/swedish-ai-reform-launches-to-give-2-3-million-swedes-free-access-to-advanced-ai-tools/), 2026 — [domain trade publication]) — NOTE: This is free access, not enterprise deployment. A large-scale public sector initiative, but not evidence of agentic HR deployment.
+- **Scale before acquisition:** 1M+ users, hundreds of enterprises.
+- **Evidence level:** Level 2. The Workday integration is shipping but no independent outcome data from "Sana for Workday" has emerged yet. The Josh Bersin analysis (March 2026) is vendor-aligned (Bersin became a Workday partner simultaneously) — treat with skepticism.
+- **CTO relevance:** If you're a Nordic company evaluating knowledge/HR AI, Sana is now a Workday bet, not an independent AI-native startup. The "third option" (buy from AI-native) in this category has effectively collapsed into the incumbent.
 
 ### Lattice AI
 

@@ -8,13 +8,12 @@ answers: ["platform direction", "who leads", "platform comparison", "horizontal 
 # Platform Trajectories (April 2026)
 
 ## Upcoming Events — Critical Watch Window
-Three major platform events in the next 3 weeks:
-- **April 15-16:** Salesforce TDX — Agentforce 360 roadmap, Vibes IDE + MCP integration, Parker Harris keynote. New deployment announcements expected.
-- **April 22-24:** Google Cloud Next — First major Google agent announcements of 2026. Session catalog shows AI agent interoperability as keynote theme.
-- **May 1:** Microsoft Agent 365 GA. Copilot Cowork now in Frontier early access (March 30).
+- **April 15-16:** Salesforce TDX — COMPLETED. Key reveal: "Headless 360" (60+ MCP tools, Agent Script open-source, Vibes 2.0 with Claude Sonnet 4.5 default, AgentExchange 13K+ listings). Agentforce Grid = Beta prototyping tool (not GA). No new independent Finance/HR/Operations deployments announced. See `vertical-saas/runs/2026-04-16-cycle103.md` for full post-event analysis.
+- **April 22-24:** Google Cloud Next — "The agentic cloud" keynote. Key sessions: "Agentic SOC," "Observability in the Age of Autonomous Agents." Watch for Workspace agent GA updates.
+- **May 1:** Microsoft Agent 365 GA.
 
-**Platform deployment evidence as of April 3:**
-- Salesforce: Level 2-3 (Engine, Williams-Sonoma, IRS, UK police Bobby — multiple industries)
+**Platform deployment evidence as of April 16:**
+- Salesforce: Level 2-3 (Engine, Williams-Sonoma, IRS, UK police Bobby — multiple industries; Grupo Globo/Vibes 2.0 as dev tooling). Beyond-CS frontier still needs independent Finance/HR/Operations evidence.
 - Microsoft: Level 2 — **BREAKING SILENCE:** Capital Group and Coca-Cola Beverages Africa cited as first Cowork deployments (vendor-sourced, unverified)
 - Anthropic Cowork: Level 1-2 (CCO adoption claim; Dispatch 50% success rate on complex tasks)
 - OpenAI Frontier: Level 0 (21st consecutive zero for independent deployment evidence)

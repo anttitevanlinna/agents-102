@@ -132,6 +132,79 @@ Multiple independent sources converge on the same new PM skills:
 
 Source: [Haberlah 638-piece analysis](https://medium.com/@haberlah/what-638-practitioner-voices-reveal-about-pms-ai-transformation-7d2fd16be10d), [Aman Khan](https://creatoreconomy.so/p/ai-skill-that-will-define-your-pm-career-aman-khan), [Lenny survey](https://www.lennysnewsletter.com/p/ai-tools-are-overdelivering-results) [practitioner direct / practitioner analysis]
 
+## Output-Outcome Gap — Product Focus Survey Finding (Level 2, cycle 100)
+
+**The 33-point gap is now quantified by an independent survey.** Product Focus (productfocus.com), an independent product management training firm, published a 3-part series "Product Management, Amplified" based on their 2026 Survey of the Product Management Profession (N=677, 40 countries). Part 1 and Part 2 are now fetched and verified.
+
+**The gap:** 97% of PMs report AI improved their personal productivity. Only 64% report improved product outcomes. 33-point gap between individual productivity and business impact.
+
+**Part 2: The Five Organizational Foundations.** Product Focus identified five conditions that predict outcome improvement. PMs with all five were over 5x more likely to report AI significantly improving product outcomes (44% vs 9%). Deadline hit rate: 86% with all five vs 44% with zero or one. Only 8% of respondents had all five in place.
+
+The five foundations are:
+
+1. **Customer Time** — Only 29% feel they spend enough time with customers. Among senior leaders (heads/directors), 75% say they don't have sufficient customer engagement. "AI helps you move faster toward assumptions rather than evidence" without genuine customer understanding.
+
+2. **Role Clarity** — 59% report clearly defined roles. Teams with role clarity hit deadlines 78% vs 48% without. 30-point execution gap.
+
+3. **Strategic Focus** — Only 25% spend most time on strategic activities. 60% are frequently disrupted by unplanned work. The gap between wanting and doing strategy remains substantial.
+
+4. **Leadership Recognition** — 67% say PM is recognized as a leadership role. Rises to 80% when PMs report to a CPO. Drops to ~50% when reporting into sales or engineering.
+
+5. **Clear Accountability** — 34% lack a clear primary metric. Without defined success measures, "everything feels equally urgent."
+
+**Evidence quality note:** Product Focus is an independent training organization (not a vendor platform), making this non-vendor survey data. N=677 across 40 countries is reasonable. The five foundations are structural/organizational — not AI-tool-specific. They correlate with all positive outcomes, not just AI ones, which makes them more credible (less likely to be a proxy for "AI-friendly orgs").
+
+**Attribution confirmed (cycle 102, Apr 15 2026):** The phrase "AI does not fix the funnel. It reveals and amplifies whatever version of the funnel you are already operating" IS a direct Cutler quote — confirmed by fetching TBM 415 ("Demand Mix, Shaping, and AI as (Dys)function Multiplier," cutlefish.substack.com, ~April 9, 2026). Additional Cutler quotes from the same article: "If your system is oriented around managing scarcity and negotiating access to engineering, AI will make that system more intense." "If you keep the same mental model, AI will not clean anything up. It will accelerate the dynamics you already have." Also: TBM 412 ("Institutionalized Overload (Now With AI)," March 27, 2026): "AI gives us a tool that can amplify the pattern while making it feel like we're finally taming it." **Critical note:** Cutler and Product Focus arrived at the same pattern INDEPENDENTLY — Cutler via organizational systems analysis (Level 1), Product Focus via N=677 survey (Level 2-3). Two independent sources converging on "AI amplifies the existing system" = this pattern is now reportable at Level 3 across the broader literature. Safe to cite Cutler directly in published content.
+
+**Part 3 (fetched cycle 101, Apr 15 2026):** Titled "Steer First, Then Accelerate" — the implementation recommendations article. Core thesis and key findings below.
+
+**Part 3: Steer First, Then Accelerate — Core Thesis and Recommendations**
+
+The central thesis of Part 3: "AI amplifies the system it's applied to. If your product team has some foundations in place, AI becomes the accelerant it's supposed to be. If the system is broken, you're just doing the wrong things faster."
+
+This directly names the mechanism behind the 33-point gap from Part 1 and the five foundations from Part 2. It is not a capability problem. It is a systems amplification problem. Broken system + AI = faster failure.
+
+**Recommendations for product team leads** (four of the five foundations are within leader control):
+
+1. **Define what product management owns.** Role clarity correlates with a 30-point improvement in deadline performance. "When PMs know their boundaries, they stop compensating for ambiguity and start executing against clear expectations." Fastest foundation to put in place — but defining the role is just the start; you need PMs who accept it and deliver on it.
+
+2. **Give every PM a primary metric.** 34% currently don't have one. "A clear metric focuses effort and creates a basis for saying no to work that doesn't serve the goal. Without it, everything feels equally urgent."
+
+3. **Protect strategic time structurally, not rhetorically.** 60% of PMs are frequently disrupted by unplanned work. "Telling people to focus on strategy while allowing constant interruption is not a strategy." Protecting time means changing how work flows into the team — triaging requests, shielding deep work, making the cost of disruption visible. But you also need PMs who can fill that protected time with genuine strategic craft.
+
+4. **Advocate for product management as a leadership function.** Where PMs report to a CPO, 80% say the role is recognised as leadership. Where they report into sales or engineering, it's closer to 50%. A CPO brings more than a reporting line — they bring a clear vision for what product stands for.
+
+5. **Customer time follows.** When firefighting is reduced and strategic focus is protected, PMs naturally have more space for customers. "It's the rarest foundation — only 29% feel they have enough — but it's the one most likely to improve as the others fall into place."
+
+**Recommendations for individual PMs:**
+
+- Push for role clarity; understand what great PM looks like in your leader's eyes
+- Propose your own primary metric if none exists — it changes how the organization sees you
+- Protect customer time with clearer role boundaries; "only 29% feel they spend enough time with customers and understanding the market"
+- Develop strategic craft: "As AI takes over more of the 'mechanical' work, the premium shifts to judgement"
+- "Use AI as a partner, not an oracle. The PMs getting the best results from AI are the ones who bring strong product expertise to the conversation. They prompt well, validate outputs, and apply product judgement."
+
+**Training and organizational readiness finding:**
+
+"Organisations with all five foundations in place are nearly six times more likely to rate their professional development as good. Send a capable PM on a training course in an organisation where product managers are seen as order takers and their days are consumed by firefighting. They come back full of new approaches — and within weeks, they'll be frustrated with an environment that pushes them right back into old patterns."
+
+The equation: **organisation foundations + PM development = results. Both matter. Neither alone is sufficient.**
+
+**Evidence level:** Part 3 is primarily normative (recommendations from survey data), not a new dataset. It synthesizes Parts 1 and 2 into a practitioner-facing action framework. The underlying evidence is the N=677 survey from Parts 1 and 2.
+
+**Implications for agentic transformation research:**
+
+The Part 3 framing — "steer first, then accelerate" — is a direct practitioner-grounded statement that the organizational sequence matters. This maps strongly to the competence-first pattern (Pattern 43): the transformation sequence is not tool → outcome, it is system → sequence → amplification. Steer = build the organizational system. Accelerate = add AI. Inverted = "doing the wrong things faster."
+
+Sources:
+- Part 1: [https://www.productfocus.com/product-management-amplified-part-1-the-33-point-gap/](https://www.productfocus.com/product-management-amplified-part-1-the-33-point-gap/) [domain trade publication] — 2026
+- Part 2: [https://www.productfocus.com/product-management-amplified-part-2-its-not-just-the-ai-its-the-organisation/](https://www.productfocus.com/product-management-amplified-part-2-its-not-just-the-ai-its-the-organisation/) [domain trade publication] — 2026
+- Part 3: [https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/](https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/) [domain trade publication] — 2026
+
+Agent level: team → company (organizational conditions, not individual tool use)
+
+---
+
 ## Counter-Evidence
 
 **1. Speed yes, quality unmeasured.** Every practitioner reports time savings. Zero evidence that AI-assisted PM work produces better decisions, better products, or fewer missed opportunities. Nobody's asking the quality question.

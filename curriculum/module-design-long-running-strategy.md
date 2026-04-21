@@ -36,8 +36,10 @@ A short plan from me, approved in 2 minutes of plan-mode-style review before gen
 - **Arc** — phases / beats / subsections
 - **Length band** (per Bootstrap 1h45 target, or relevant variant)
 - **Practitioners to weave in** — per the curation principle, specific named sources (Klaassen, Huryn, Ronacher, Willison, Cherny, etc.)
+- **Vision-detail split explicit.** Name which claims in the piece are vision-layer (Antti's framing, don't need KB backing) vs. detail-layer (practitioner claims, must have KB backing). Every detail-layer claim comes with a source file or URL on the plan. See `memory/project_vision_times_detail.md`.
+- **Research-backing check.** For every detail-layer claim in the plan, point at a specific file in `continuous-research/` or a practitioner-direct URL. If the claim is unsourced, either run an OODA before generating, drop the claim, or move it to vision-layer and label as framing.
 - **Banned-word scan committed** — I will grep for `honest`, `delve`, `landscape` (verb), `importantly`, `crucial` before handoff
-- **Self-eval committed** — I will run the relevant eval template on my own draft
+- **Self-eval committed** — I will run the relevant eval template on my own draft (including the "Research-backed claims" judge)
 - **Simulation committed** — I will dispatch the simulation protocol with a student persona as a SEPARATE agent (not me reviewing my own work)
 
 Antti approves, reshapes, or redirects the plan. **Once approved, no re-opening.** I execute.

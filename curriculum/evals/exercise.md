@@ -146,6 +146,28 @@ Trailing sections below `<!-- maintainer -->` are exempt — those are maintaine
 
 Named mechanics (exact prompts, score scales, expected output shapes), named artifacts from earlier modules, realistic participant dimensions.
 
+### Research-backed claims *(universal — essential)*
+
+Every factual claim in the exercise — about practitioner behavior, tool capability, industry pattern, convergence, failure mode, number, or named company practice — must have support in the research KB.
+
+**What counts as support:**
+- A specific file in `continuous-research/` that captures the claim (observations, insights, platform-watch runs, user-signals)
+- A direct practitioner-direct URL (blog, GitHub, conference talk, podcast) with source-type label per project CLAUDE.md's evidence ladder
+- Convergence already documented in `continuous-research/synthesis/` or `continuous-research/findings/by-pattern/`
+
+**What doesn't count:**
+- Vendor press releases dressed up as claims
+- Round-number zombie stats without methodology trace
+- "Analysts say" / "Gartner predicts" framings
+- Claims inferred from single demos without practitioner convergence
+- Anything older than 6 months without explicit dating
+
+**The vision-detail rule.** Antti supplies the vision (framing, arc, governing rule). Research supplies the detail (practitioners, numbers, shipped practices). Detail-layer claims need KB backing; vision-layer framings are labeled as framing, not empirical finding.
+
+**The chasm-crossing filter.** Detail we cite should sit in the "just-hitting-beyond-early-adopters" zone: stuff that works, proven by solo builders 3-6 months ago, now being picked up by first enterprise teams. Bleeding-edge toys not replicated = held loose. Commodity patterns = not worth citing.
+
+When the judge fires: list every unsourced detail-layer claim, either (a) source it, (b) OODA to capture, or (c) cut.
+
 ---
 
 ## Essential vs contributory (what can TODO, what can't)

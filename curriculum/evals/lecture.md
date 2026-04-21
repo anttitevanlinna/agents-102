@@ -117,6 +117,28 @@ Named examples, specific mechanics, concrete artifacts. Never generic:
 - Include specific numbers where relevant (compound reliability math, convergence thresholds)
 - Avoid "organizations often…" / "many teams have found…" / "in practice, you might…"
 
+### Research-backed claims *(universal — essential)*
+
+Every factual claim in the lecture — about practitioner behavior, tool capability, industry pattern, convergence, failure mode, number, or named company practice — must have support in the research KB.
+
+**What counts as support:**
+- A specific file in `continuous-research/` that captures the claim (observations, insights, platform-watch runs, user-signals)
+- A direct link to practitioner-direct source (blog post, GitHub repo, conference talk, podcast) labeled per the evidence-ladder source-type rules in project CLAUDE.md
+- Convergence already documented in `continuous-research/synthesis/` or `continuous-research/findings/by-pattern/`
+
+**What doesn't count:**
+- Vendor press releases dressed up as claims
+- Round-number zombie stats ("95% of AI agents fail") without methodology trace
+- "Analysts say" / "Gartner predicts" / generic industry framings
+- Claims inferred from single demos without practitioner convergence
+- Anything older than 6 months presented without explicit dating
+
+**The vision-detail rule.** Antti supplies the vision (framing, arc, governing rule). Research supplies the detail (practitioners, numbers, shipped practices). If a claim is detail-layer and unsourced, it fails this judge. If a claim is vision-layer (a framing Antti owns, like "compounding is the side-product of smart process"), it doesn't need KB backing — but such claims are labeled as framing, not as empirical finding.
+
+**The chasm-crossing filter.** The detail we cite should sit in the "just-hitting-beyond-early-adopters" zone: stuff that works, proven by solo builders 3-6 months ago, now being picked up by first enterprise teams. Bleeding-edge toys not yet replicated = held loose. Commodity patterns = not curriculum-worthy.
+
+When the judge fires: list every unsourced detail-layer claim in the lecture and either (a) add the source, (b) run an OODA to capture one, or (c) cut the claim.
+
 ---
 
 ## Essential vs contributory judges (what can TODO, what can't)

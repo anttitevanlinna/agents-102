@@ -54,7 +54,7 @@ Why would busy senior leaders show up — to record a video for the cohort, or t
 6. **Visible ladder.** Alumni speaker → paid advisor → co-delivered training with Antti → Champion in Step 3 of the 5-step funnel. The video interview is rung 1 of a real progression.
 7. **Honorarium.** Modest fee for the recorded interview. Signals professional engagement, not favor. Does not motivate attendance on its own.
 
-**The deepest honesty:** the alumni program IS the wedge for building the network, not a perk after it. If we don't design the network (peer introductions, signal channel, gathering cadence), speaking becomes a favor to Antti and the second cohort is harder to staff than the first.
+**The deepest directness:** the alumni program IS the wedge for building the network, not a perk after it. If we don't design the network (peer introductions, signal channel, gathering cadence), speaking becomes a favor to Antti and the second cohort is harder to staff than the first.
 
 ## Infrastructure needed to make the network real
 

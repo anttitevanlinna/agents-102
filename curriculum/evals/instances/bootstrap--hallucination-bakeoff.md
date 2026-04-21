@@ -8,7 +8,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 5 (Output Qu
 
 **Eval runs:**
 - 2026-04-19 (pass 1, PDCA test+check) — **APPROVE WITH TODOs.** 14/16 judges pass clean; Length fails softly (~1,150 words vs. 400–700 target — four inline prompts and a multi-beat Close drive it; same shape as M2/M3 exercises). Mood lands (rescue-not-triumph honored by the still-uncertain line and the known-limit line). One contributory ambiguity on **what counts as a "specific claim"** in Phase 0 vs. Phase 1 — detectors and gold standard may tokenize the briefing differently, which can null-out the scoreboard. Three simulation-surfaced fixes below. No auto-fail red flags triggered. The exercise is a genuine magic beat — four detectors, a meta-eval, a measured winner — and the understandable-magic bar is met by the scoreboard + the judge's known-limit line.
-- Judge's overall: *"Strong rescue-beat exercise; the bake-off pattern lands, the gold-standard-size rule is honest, and the Close refuses triumph. Two watch-items: (1) claim-tokenization alignment between gold standard and detectors, which can produce zero overlap; (2) the 'don't read the briefing' gate is load-bearing for the gold-standard integrity but currently only one sentence."*
+- Judge's overall: *"Strong rescue-beat exercise; the bake-off pattern lands, the gold-standard-size rule is plain, and the Close refuses triumph. Two watch-items: (1) claim-tokenization alignment between gold standard and detectors, which can produce zero overlap; (2) the 'don't read the briefing' gate is load-bearing for the gold-standard integrity but currently only one sentence."*
 
 **Simulations:**
 - 2026-04-19 (pass 1) — SVP-Strategy persona, 300-person Nordic industrial-software company, weekly Claude user for a year, completed M1–M4 yesterday. Delivery mode: self-study, Teacher Claude in a side session. **"This is me" rating: 8/10** on the scoreboard + judge file. Scoreboard moment is the strongest beat of the module so far — *"I didn't guess which detector was best. I watched the table fill in and it told me."* Mood scores below. Three specific fixes, three ambiguities, two Claude-behavior mismatches, and one strategic-question flag surfaced.
@@ -92,7 +92,7 @@ All five have diagnostic + fix. Coverage is strong.
 
 ### Time-boxed
 
-55–70 min, broken down: Phase 0 ~12, Phase 1 ~15, Phase 2 ~20, Phase 3 ~10, Close ~5. Hits the 1h45 module slot cleanly. Watch-time (Phases 1+2 combined ~20 min) is explicitly named as the "visceral moment" — the exercise owns its own runtime honestly.
+55–70 min, broken down: Phase 0 ~12, Phase 1 ~15, Phase 2 ~20, Phase 3 ~10, Close ~5. Hits the 1h45 module slot cleanly. Watch-time (Phases 1+2 combined ~20 min) is explicitly named as the "visceral moment" — the exercise owns its own runtime plainly.
 
 ### Facilitator briefing complete
 
@@ -138,7 +138,7 @@ Defaults work. Customization is earned, not forced.
 
 ### Voice
 
-Second person throughout. Builder voice ("Four detectors, same briefing, one scoreboard"). No consultant-speak. No "the participant" / "the room." Seth-warmth + Rory-reframes present ("Four detectors fought on the same input...the winner got promoted to a reusable judge file. No intuition."). Risto-honesty in the still-uncertain line.
+Second person throughout. Builder voice ("Four detectors, same briefing, one scoreboard"). No consultant-speak. No "the participant" / "the room." Seth-warmth + Rory-reframes present ("Four detectors fought on the same input...the winner got promoted to a reusable judge file. No intuition."). Risto-directness in the still-uncertain line.
 
 LLM-tell words: none found on scan. No `honest`/`honestly`, `delve`, `landscape`, `importantly`, `crucial`.
 
@@ -196,7 +196,7 @@ None requiring rewrite. Phases 1 and 2 are watch-phases where Teacher Claude's j
 
 ### Strategic question flags
 
-One. **What if the briefing's five gold-standard claims all happen to be grounded?** (The student picked from "clearly grounded to clearly ungrounded" — if their gut calls four grounded + one partly, the scoreboard's recall column is weird and the "winner" call is shakier.) The exercise's gold-standard prompt explicitly instructs *"mix, don't cherry-pick"* — which mitigates — but the student's verdicts are what they are. This is not a break; it's a genuine teaching moment (the scoreboard is honest about its own input quality). Worth naming in Pass 3 facilitator notes as: *"if the gold standard ends up 4:1 grounded-to-ungrounded, the scoreboard still works — the qualitative 'what this detector caught that others missed' column carries the teaching moment when precision/recall are thin."*
+One. **What if the briefing's five gold-standard claims all happen to be grounded?** (The student picked from "clearly grounded to clearly ungrounded" — if their gut calls four grounded + one partly, the scoreboard's recall column is weird and the "winner" call is shakier.) The exercise's gold-standard prompt explicitly instructs *"mix, don't cherry-pick"* — which mitigates — but the student's verdicts are what they are. This is not a break; it's a genuine teaching moment (the scoreboard is plain about its own input quality). Worth naming in Pass 3 facilitator notes as: *"if the gold standard ends up 4:1 grounded-to-ungrounded, the scoreboard still works — the qualitative 'what this detector caught that others missed' column carries the teaching moment when precision/recall are thin."*
 
 ---
 
@@ -211,7 +211,7 @@ One. **What if the briefing's five gold-standard claims all happen to be grounde
 - *Phase 0.* Persona opens Claude Code in `~/Documents/agents-102-bootstrap/`. Pastes briefing prompt; Claude asks whether to overwrite if `module-5/briefing.md` exists (overwrite-anxiety pattern from SKILL.md). Says "overwrite." Briefing lands. Does NOT open it (the rule holds, barely). Pastes gold-standard prompt. Claude proposes five claims, asks one at a time. Persona verdicts them gut-first. `gold-standard.md` lands. Mood 8 — "did I get those right?" is the *correct* feeling.
 - *Phase 1.* Pastes four-detector prompt. Four subagent lines scroll past (assuming capability check passes). Four files land in `module-5/detectors/`. Resists reading them. Teacher Claude nudges: *"Phase 2 does the comparing — trust the meta-evaluator."* Mood 8.
 - *Phase 2.* Pastes meta-evaluator prompt. Scoreboard lands as a markdown table. Reads it. The "detector X won because Y" beat lands. Persona says out loud: *"okay — that's the row."* Mood 9. THIS is the module's rescue moment.
-- *Phase 3.* Pastes judge prompt. `judges/groundedness-judge.md` lands, 18 lines, "Known limit:" line reads like the honest-epistemic closer it should. Mood 8.
+- *Phase 3.* Pastes judge prompt. `judges/groundedness-judge.md` lands, 18 lines, "Known limit:" line reads like the plain-epistemic closer it should. Mood 8.
 - *Close.* Writes the still-uncertain line. Teacher Claude runs the 3-question retro. Persona leaves with: *"I can defend this judge. I know what it doesn't catch. And M6 is where it starts running itself."* Mood 9.
 
 **Judge of the eval:** the bake-off exercise is the strongest magic beat on the M3–M8 ramp so far. The scoreboard moment earns the rescue without stealing M6's leverage moment. Ship with the three fixes; the length debt is accepted.

@@ -1,6 +1,6 @@
 # Lecture: The practice of risk
 
-You built something. It works. Would you bet your job on it being safe? Probably not. And that feeling — that specific, uncomfortable, *I'd like to know and I don't* feeling — is the most honest thing in the room today.
+You built something. It works. Would you bet your job on it being safe? Probably not. And that feeling — that specific, uncomfortable, *I'd like to know and I don't* feeling — is the most plain thing in the room today.
 
 Here's the hard part: that feeling doesn't go away. Not with more testing, not with a better policy, not with a certification. Agent systems don't hand you certainty. You can wait for it, or you can get to work.
 
@@ -20,7 +20,7 @@ Put the three together: you don't get *secure / not secure.* You get *safe enoug
 
 **The practice is the answer.**
 
-You don't get certainty. You get a loop. Four steps, honest, repeatable.
+You don't get certainty. You get a loop. Four steps, plain, repeatable.
 
 **Assess.** Point a lens at the system and see what it reveals. Today you'll use two. The `company-ai-policy` skill runs your company's actual rules against your actual agent. The `agent-security` skill runs access-control analysis and an agent-shaped version of STRIDE. Neither skill makes you an expert — each skill IS the expert. Your job is to read the reports with judgment.
 
@@ -40,11 +40,11 @@ Should your agent have write access to that system? If not — scope down before
 
 The `company-ai-policy` skill exists partly to tell you which doors not to open. Your company has already decided. Your job is to notice.
 
-Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This isn't timid design; it's honest design. Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for.
+Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This isn't timid design; it's plain design. Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for.
 
 **The uncomfortable part, said plainly.**
 
-Some of your agents are going to be wrong, in ways you won't catch, and ship output you won't love. That's true for every agent in production anywhere in the world right now. The organisations that handle this well aren't the ones with the best technology. They're the ones that run the loop openly, name residual risks honestly, and close doors they don't need to open.
+Some of your agents are going to be wrong, in ways you won't catch, and ship output you won't love. That's true for every agent in production anywhere in the world right now. The organisations that handle this well aren't the ones with the best technology. They're the ones that run the loop openly, name residual risks plainly, and close doors they don't need to open.
 
 You can't buy certainty. You can build a practice. Today you run the practice once, on your own system, with two skills doing the expert work. Tomorrow you'll recognise the shape when it shows up in the next agent you build.
 

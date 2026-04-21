@@ -22,7 +22,7 @@ Note what's not on the list: *"because three is more thorough."* More agents is 
 
 Ask yourself: *can I write one prompt that produces the same quality of output?* If yes, you didn't need to split. Write the one prompt. Keep your life small.
 
-The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the honest default.
+The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the plain default.
 
 **And once you've decided to split — which shape?**
 
@@ -47,7 +47,7 @@ We just spent a module showing you multi-agent works. Next Monday, you will be t
 **Placement in module:** After the exercise, before the Debrief. The exercise proves both shapes work; the lecture names them and draws the boundary. Per the no-telling-precedes-doing rule, the "start with don't" default is safer delivered after the exercise — pre-exercise it sounds like a disclaimer, post-exercise it lands.
 
 **Frameworks riffed on:**
-- Anthropic's multi-agent warning — named directly as the honest default. Only a few situations where splitting wins.
+- Anthropic's multi-agent warning — named directly as the plain default. Only a few situations where splitting wins.
 - Principle of least coordination (energy borrowed from least-privilege) — minimum number of agents to do the job.
 - "Ship less, ship better" (Seth Godin) — applied to agent count, not features.
 

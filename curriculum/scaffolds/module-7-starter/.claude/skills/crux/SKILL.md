@@ -5,7 +5,7 @@ description: Find the load-bearing obstacle before prescribing. Use on a messy c
 
 # Crux — diagnose before you prescribe
 
-Richard Rumelt's *Good Strategy Bad Strategy*. Most strategy is a list of goals with a motivational verb attached. Real strategy starts with an honest diagnosis: what is actually in the way? Out of everything in the way, which single obstacle — if it moved — would release pressure on the rest? That one is the crux.
+Richard Rumelt's *Good Strategy Bad Strategy*. Most strategy is a list of goals with a motivational verb attached. Real strategy starts with an plain diagnosis: what is actually in the way? Out of everything in the way, which single obstacle — if it moved — would release pressure on the rest? That one is the crux.
 
 This skill forces the sequence. Diagnosis, then guiding policy, then coherent actions. In that order.
 

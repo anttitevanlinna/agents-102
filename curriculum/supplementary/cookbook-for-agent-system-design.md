@@ -42,13 +42,13 @@ Read any recipe in order or any recipe standalone. They stand alone; together th
 
 *Referenced from: Module 3 (multi-agent-systems).*
 
-**What you end with:** a fan-in pipeline that retrieves from three source zones in parallel (three Claude Code sessions on shared files), then synthesises through three subagent stances in one session (backward-from-end planner, Martin's *what would have to be true?*, Sutherland-style reframer), guardrailed by a strategic framework (Rumelt's kernel by default). Output is a framework-shaped answer to your real strategic question — and an honest note of what about the answer you're not sure about.
+**What you end with:** a fan-in pipeline that retrieves from three source zones in parallel (three Claude Code sessions on shared files), then synthesises through three subagent stances in one session (backward-from-end planner, Martin's *what would have to be true?*, Sutherland-style reframer), guardrailed by a strategic framework (Rumelt's kernel by default). Output is a framework-shaped answer to your real strategic question — and an plain note of what about the answer you're not sure about.
 
 **The moves, in order:**
 
 *(To be written out as Pass 3 completes. Current Module 3 exercise file is the seed. Pattern: write the strategic question → open four Claude Code sessions on the shared directory → paste three retriever prompts (one per source zone) → let them run in parallel, answer their confirmations → main session spawns three subagent stances → stances return, then synthesiser combines against the framework → note the uneasy distance in `module-3/wonder.md`. The uneasy distance is the feature, not the bug — Recipe 5 picks it up.)*
 
-**The test:** the answer is specific enough that you'd bring it to your CEO as a starting draft, and honest enough that you know which sentence you wouldn't stake your reputation on yet.
+**The test:** the answer is specific enough that you'd bring it to your CEO as a starting draft, and plain enough that you know which sentence you wouldn't stake your reputation on yet.
 
 **Why this is recipe 3:** some work genuinely needs more than one agent — when access, dialect, or stance differ, coordination earns its keep. Most work doesn't. Learn the move; respect the default.
 
@@ -91,7 +91,7 @@ Add a recipe when the practice is reliable enough that a working practitioner wo
 - Chip Huyen's AI Engineering as the quality bar for practitioner-writing in this space.
 
 **Why this supersedes the earlier "lifecycle doc" idea:**
-- Lifecycle implies one canonical path; cookbook implies many recipes the practitioner composes. The agentic build space is too varied for a single lifecycle to hold honestly.
+- Lifecycle implies one canonical path; cookbook implies many recipes the practitioner composes. The agentic build space is too varied for a single lifecycle to hold plainly.
 - Recipes compose; lifecycles gatekeep. We're anti-gatekeeping.
 - Cookbook extends naturally (new recipes) without the earlier recipes going stale. A lifecycle doc goes stale the moment the world shifts — which it does every quarter.
 

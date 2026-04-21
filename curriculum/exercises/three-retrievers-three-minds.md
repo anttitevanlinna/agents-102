@@ -106,7 +106,7 @@ Read the three stances side by side before Claude combines them. That's where th
 
 Read the synthesizer's answer next to the three retrievals. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
 
-You can't tell yet. Three retrievers read honestly, three stances pushed sharply, a framework held the synthesis together — and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct. Anyone who ships agent output to a real stakeholder meets it. Pretending you don't is the real failure.
+You can't tell yet. Three retrievers read plainly, three stances pushed sharply, a framework held the synthesis together — and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct. Anyone who ships agent output to a real stakeholder meets it. Pretending you don't is the real failure.
 
 Don't fix it here. Write one line to `module-3/wonder.md` — the single thing about this answer you're not sure about. Loose, not tidy. You're noting, not resolving.
 

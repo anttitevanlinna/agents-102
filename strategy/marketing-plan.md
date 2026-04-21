@@ -61,7 +61,7 @@ Ran a diverge-converge with 5 parallel design agents, each exploring a different
 | 3 | Social/Peer | Leadership Team Divergence Map | Same as #2 — independently invented by a second agent |
 | 4 | Social/Peer | Industry Blind Spots Board | Where your industry diverges most from others on the same questions |
 | 5 | Deep Insight | The Contradiction Map | Which of your 7 answers fight each other — tensions you carry but haven't named |
-| 6 | Deep Insight | Budget Honesty Test | Your philosophy says one thing, your budget answer says another |
+| 6 | Deep Insight | Budget Reality Test | Your philosophy says one thing, your budget answer says another |
 | 7 | Evidence | Nordic Readiness Gap Scorecard | Each answer calibrated against real BCG/Gartner/company data |
 | 8 | Evidence | Implied Risk Exposure Estimate | Back-of-envelope EUR calculation with transparent assumptions |
 | 9 | Content | Profile-Specific Decision Briefing | 1,200-word briefing with named companies, board question, and 90-day moves |
@@ -128,7 +128,7 @@ Each layer takes the CTO deeper. Build in this order — each is independently v
 
 - **#9 Decision Briefing** — high value, overlaps with #7. Could be a v2 enhancement: combine the benchmark data cards with a narrative briefing per profile.
 - **#10 Framework Comparison** — extremely valuable for the "Directed Momentum" and "Strategic Timing" CTOs who read McKinsey. High maintenance cost (frameworks update quarterly). Consider as a standalone content piece rather than a quiz feature.
-- **#6 Budget Honesty Test** — elegant subset of #5 (contradictions). The implied investment portfolio bar chart is a strong visual. Could fold into the Contradiction Map as a special case.
+- **#6 Budget Reality Test** — elegant subset of #5 (contradictions). The implied investment portfolio bar chart is a strong visual. Could fold into the Contradiction Map as a special case.
 - **#1 90-Day Playbook** — useful but risks feeling generic. The best elements are already in #9.
 - **#4 Industry Blind Spots** — clever, requires volume. Add when 100+ responses accumulate per segment.
 - **#8 Risk Exposure Estimate** — the transparent back-of-envelope calculation is compelling but requires company size input. Consider as an add-on to #7.

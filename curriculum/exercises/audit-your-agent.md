@@ -43,7 +43,7 @@ Apply the company-ai-policy skill to the agent system I built in module-2 and mo
 
 For each rule in the skill's policies, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
 
-Write the report to module-4/policy-report.md. Be specific. Be honest. An "I can't tell" is a better answer than a confident guess.
+Write the report to module-4/policy-report.md. Be specific. Be plain. An "I can't tell" is a better answer than a confident guess.
 
 Read the memory and agent files properly — don't skim. Quote the specific lines or files that support each verdict.
 ```
@@ -131,7 +131,7 @@ The best mitigation is the one you didn't need. You just named one.
 
 **What happens:**
 
-Two pre-built skills read your Module 3 system honestly and produce reports you couldn't have produced by hand — one in policy language, one in threat-model language. You pick one risk, apply one agentic mitigation, observe the residual, and name one door you won't open. You ran the loop once. The loop is portable to every agent you build from here.
+Two pre-built skills read your Module 3 system plainly and produce reports you couldn't have produced by hand — one in policy language, one in threat-model language. You pick one risk, apply one agentic mitigation, observe the residual, and name one door you won't open. You ran the loop once. The loop is portable to every agent you build from here.
 
 **The point:**
 
@@ -168,7 +168,7 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 
 **Watch-fors (deferred to facilitator notes pass):**
 - **Shame spiral.** Student reads a violation row and takes it personally. Coach: *"The variance across the room is the teaching. No one got a clean report. The variance is data, not judgment on you."*
-- **"I can't tell" avoidance.** Student reclassifies an honest "I can't tell" as compliant or violating just to have a clear answer. Coach: *"'I can't tell' is the correct answer when evidence isn't there. Push Claude back — 'what evidence would you need to decide?' — and accept the honest state."*
+- **"I can't tell" avoidance.** Student reclassifies an plain "I can't tell" as compliant or violating just to have a clear answer. Coach: *"'I can't tell' is the correct answer when evidence isn't there. Push Claude back — 'what evidence would you need to decide?' — and accept the plain state."*
 - **Over-mitigation.** Student picks one risk, then can't stop at one. Coach: *"Run the full loop on one. We're practising the loop, not clearing the backlog. The rest is homework — not today's."*
 - **Skill as oracle.** Student treats the report as ground truth. Seed doubt in debrief: *"Where would this skill's report itself be wrong? What's missing?"* Skills are experts, not oracles.
 - **Skill not picked up.** If Phase 0 fails (skill doesn't invoke), don't debug in front of the room — switch to the facilitator's pre-run reports as a worked example and let students run the exercise on them. Pedagogy survives; capability check failure is the fix afterwards.

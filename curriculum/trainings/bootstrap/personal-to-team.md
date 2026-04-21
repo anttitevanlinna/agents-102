@@ -20,7 +20,7 @@ By now you've built a memory, synthesis across three source zones, skills that a
 
 The question that shows up on its own: *could this help someone else?*
 
-Hold that feeling. It's not a governance question yet. It's a generous one. Today we turn it into a plan — honestly, against real friction, without the vendor pitch.
+Hold that feeling. It's not a governance question yet. It's a generous one. Today we turn it into a plan — plainly, against real friction, without the vendor pitch.
 
 Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
 
@@ -84,7 +84,7 @@ You've built a system. You've secured it, evaluated it, and designed the sharing
 **Plug Points (trainer):**
 
 > PLUG POINT: Branch selection — does your company have cloud agent infrastructure (N8N / Cowork / Power Automate / Make / an internal runtime), or only personal Claudes?
-> Default: students pick live, based on what they can actually deploy to this week — not what procurement might approve in Q3. Branch B (personal Claudes only) is the honest path for most Nordic buyers on day one. It's not a consolation prize.
+> Default: students pick live, based on what they can actually deploy to this week — not what procurement might approve in Q3. Branch B (personal Claudes only) is the plain path for most Nordic buyers on day one. It's not a consolation prize.
 
 > PLUG POINT: Ownership model — who in your organization would own this?
 > Default: if you can't name a person, write UNASSIGNED. That's Monday's question for your manager. Missing names are findings, not failures.

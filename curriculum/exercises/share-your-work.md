@@ -142,7 +142,7 @@ Show me both before saving.
 
 *(end of prompt)*
 
-Answer honestly. The UNASSIGNED lines are the most valuable lines in this exercise — they are the questions you walk into your manager's office with on Monday.
+Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise — they are the questions you walk into your manager's office with on Monday.
 
 **Phase 4 — Assumption-test the switch (10 min).**
 
@@ -243,7 +243,7 @@ A candidate picked because it fits the infrastructure is shopping. A candidate p
 - **Capability check before delivery:** confirm Claude Code's AskUserQuestion tool is available in the student's environment (student-facing name: "ask-questions tool"). The tool renders bounded multiple-choice questions inline and is the Phase 1 interaction primitive. If unavailable in a cohort's build, fall back to Claude asking structured questions one at a time with numbered options the student picks by number — mechanically similar, pedagogically weaker.
 - **Phase 1 is the magic beat.** The teaching moment is the student experiencing that the agent already had 80% of the teammate's job on disk, and that seven targeted questions plug the remaining 20%. If the agent's hypothesis just parrots back the student's own assumptions, the magic fails. Teacher Claude (self-study) or facilitator (in-room) nudges: *"Did the agent actually read your memory, or did it guess from file names? Find one claim in the JTBD brief that surprised you. If nothing surprised you, ask the agent to try again — the outcome is not the job you already had in mind."*
 - **Third-axis surfacing.** If the three outcome vectors come back as speed / quality / (weak generic "other"), push: *"If speed and quality stayed flat, what else would your teammate want? Dependency removed? Anxiety reduced? Scope they could take on that they can't today? Workload shifted to someone else?"* The non-obvious axis is where interviewing-for-outcomes earns its keep and is the lesson students take to Monday's adoption problem.
-- **Branch selection around 14 min in** (start of Phase 2). Most Nordic cohorts land heavily in Branch B — don't apologize for it, frame it as the honest pattern for most buyers on day one.
+- **Branch selection around 14 min in** (start of Phase 2). Most Nordic cohorts land heavily in Branch B — don't apologize for it, frame it as the plain pattern for most buyers on day one.
 - **Phase 2 selection test is *does this move the outcome*, not *does this fit my infra*.** Watch for students picking patterns because they're technically feasible rather than because they do the job. Nudge: *"Why would your teammate fire their current hire and use this? Answer that in one sentence. If you can't, pick a different pattern."*
 - **Phase 3 stall on people-plan names.** Their technical plan fills quickly; the people plan stalls on *who owns it?* That stall IS the teaching moment. Protect it. UNASSIGNED lines are the Monday artifact.
 - **Phases 4 and 5 are where students run out of time.** Designed. Before Phase 4 starts, say aloud: *"If you don't finish these, you have Monday's work. That's the intended outcome for at least half of you."* Removes the shame. Hardness is a feature.

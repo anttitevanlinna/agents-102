@@ -94,7 +94,7 @@ Audience: software engineering manager, 5–50 reports, leadership has declared 
 
 3. **Don't treat full autonomy as the target state.** 15 independent signals (Klarna, McDonald's, Zillow, Air Canada, SaaStr, Qualtrics...) show autonomous agents at scale fail. Gartner: 50% of companies that cut CS staff for AI will rehire by 2027. Compound reliability: 85% per step × 10 steps = 20% end-to-end. Agents work for 2–3 step interactions; fail on 10+ step multi-system processes. *Do instead:* hybrid from day one. AI generates → human validates → AI executes → human monitors. Measure augmentation, not replacement.
 
-## Two things the research honestly doesn't know yet
+## Two things the research candidly doesn't know yet
 
 1. **How this transfers to non-velocity-biased organizations.** Intercom and Ramp both operated in velocity cultures and chose aggressive stances (*"if you're L0 you won't be here"*). Nordic labor norms, manufacturing, retail, logistics likely require different operating models. F-Secure evidence exists internally but isn't independently verified. Material gap for Nordic context — name it in training, don't paper over it.
 

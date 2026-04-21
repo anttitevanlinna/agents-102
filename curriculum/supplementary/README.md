@@ -39,7 +39,7 @@ Why a personal agent is so hard to turn into a company agent. The thousand tacit
 - **Module 3:** Implicit trust — why access doesn't transfer trust; the Access-Trust Gap (Section 2)
 - **Module 4:** Permissions are free at scale 1; skills-as-scoping is the design answer (Section 3)
 - **Module 5/6:** Taste is private, quality is public — eval-rubric-not-a-voice (Section 4)
-- **Module 7:** The four honest sharing shapes; why "share the whole agent" is a vendor pitch (Sections 5–6)
+- **Module 7:** The four plain sharing shapes; why "share the whole agent" is a vendor pitch (Sections 5–6)
 - **Module 8:** The organisational absorption layer — what the company has to catch (Section 7)
 
 ### agent-ready-data.md

@@ -34,7 +34,7 @@ If you have a security background, half of this will sound wrong. That's the poi
 
 *What matters for mitigations.* Classical security favours perimeter and access control — firewalls, role-based access, patching. Agent mitigations are shaped differently. You scope (give the agent less). You split (break one agent into two with different trust levels). You filter (post-process outputs before they leave the system). You gate (a human checks before a sensitive action). You review (another agent judges the first's output). None of these are firewalls; all of them are agent-shaped.
 
-*And one honest note.* Absolute certainty is not available. You don't get proofs; you get well-designed loops. Classical security gave you the feeling of certainty — patched, audited, signed off. Agent security gives you a practice: assess, mitigate, reassess residual, decide. If that feels uncomfortable, it should. The practice *is* the work.
+*And one plain note.* Absolute certainty is not available. You don't get proofs; you get well-designed loops. Classical security gave you the feeling of certainty — patched, audited, signed off. Agent security gives you a practice: assess, mitigate, reassess residual, decide. If that feels uncomfortable, it should. The practice *is* the work.
 
 **What to bring to class:** nothing on paper. Come knowing (a) what shape a skill has, and (b) that agent security is not the same discipline as software security. Tomorrow's lecture picks up both.
 

@@ -62,7 +62,7 @@ These are the standing objectives for every session, every agent, every cycle. N
 
 **Continuous research — two systems:**
 
-1. **Domain research** (`continuous-research/README.md`) — what's becoming possible in agentic business practices, beyond coding. Tracks innovators and early adopters across operations, finance, HR, compliance, customer service, sales, product. Translates chasm-crossing patterns for early majority buyers. All findings tagged Global vs. Nordic.
+1. **Domain research** (`continuous-research/README.md`) — what's becoming possible in agentic practices across operations, finance, HR, compliance, customer service, sales, product, AND coding. Tracks innovators and early adopters. Translates chasm-crossing patterns for early majority buyers. All findings tagged Global vs. Nordic. Coding was previously excluded as a red ocean; lifted 2026-04-21 to support the Agentic Engineering 101 training — coding agents are the meta-platform and we need practitioner-grounded evidence on L3 practice, factory patterns, multi-agent deliberation, and what's landing in Claude Code monthly.
 
 2. **Platform watch** (`continuous-research/platform-watch/`) — which platform can do which use cases for business users. Semi-autonomous hourly OODA cycles tracking Microsoft, Google, OpenAI, Anthropic, vertical SaaS, AWS Bedrock, and RPA-to-agent platforms (UiPath, Automation Anywhere, Power Automate). Answers the CTO question with evidence-based assessment. Uses personal→team→company agent framework and enterprise reality test (multi-tool, multi-turn, security, promotion path).
 
@@ -113,7 +113,7 @@ This is a shared, multi-user repository. Research runs continuously on remote br
 
 ## Research Guidelines
 
-- **Research focus: business processes, not coding.** Agentic coding is a red ocean. Track agents in operations, finance, HR, compliance, customer service, sales, product — the blue ocean where nobody is systematically curating what's possible.
+- **Research focus: agentic practices across business AND engineering.** Original rule (2025): business processes only, coding was a red ocean. **Lifted 2026-04-21** when the Agents 102 portfolio added the Agentic Engineering 101 training. Coding agents are the meta-platform and L3 practice is under-curated even in the "red ocean" — practitioner-grounded evidence on factory patterns (Intercom, Ramp), multi-agent engineering deliberation, MCP server ecosystems, skills marketplaces, eval-as-infrastructure at PR scale, and what lands in Claude Code / Codex / Cursor monthly is directly needed to keep the training current. Business-process research (operations, finance, HR, compliance, customer service, sales, product) remains the primary body of work; coding research is now a peer track, not an exclusion.
 - **Editorial standard:** Practitioner-grounded, specific, verifiable. Every claim needs a named company + specific practice + measurable outcome. "Deployment is happening" is not an insight — the secrets are in the "how" and "what really works."
 - **Framework-integrative, not framework-driven.** Frameworks serve the situation, not the other way around.
 - **OODA loops for research.** See `continuous-research/platform-watch/cycle-prompt.md` for the self-contained researcher instructions.

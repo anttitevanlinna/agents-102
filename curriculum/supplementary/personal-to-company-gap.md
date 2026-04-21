@@ -14,7 +14,7 @@ Module touchpoints:
 - M3 — names implicit trust (Section 2)
 - M4 — scope of permissions (Section 3)
 - M5/M6 — taste vs. team consensus (Section 4)
-- M7 — the four honest sharing shapes, and what each one gives up (Section 5)
+- M7 — the four plain sharing shapes, and what each one gives up (Section 5)
 - M7/M8 — why "share the whole agent" fails (Section 6)
 - M8 — the absorption + semantic layer — what the org has to pick up (Section 7)
 
@@ -97,7 +97,7 @@ What this section will cover in Pass 2:
 - Named examples (to fill in): practitioner reports of personal-voice agents that shipped; team agents that over-averaged
 - The Module 7 implication: "share a skill" (factual capability) scales; "share the whole agent" (including the voice) doesn't
 
-## The four honest sharing shapes — and what each one gives up
+## The four plain sharing shapes — and what each one gives up
 
 *Referenced from: Module 7 (from-personal-to-team).*
 
@@ -114,7 +114,7 @@ The design question isn't "which strategy is best" — it's "which tacit asset d
 
 - The choice frame — the strategy follows from which tacit asset carries the value
 - Which sharing strategy each Module 7 persona would actually pick, and why
-- The honest limits of each strategy (Pass 2: named failure modes per strategy)
+- The plain limits of each strategy (Pass 2: named failure modes per strategy)
 - Note on provenance: this is a practitioner taxonomy (F-Secure / Neste / Posti cohorts), not a research-convergent pattern. The industry has not yet validated a canonical promotion path (Pattern 2: promotion path doesn't exist on any platform). Teaching it as Antti's design, not field consensus.
 
 ## Why "share the whole agent" is a vendor pitch, not a strategy
@@ -148,7 +148,7 @@ What this section will cover in Pass 2:
 - The semantic layer link (see `agent-ready-data.md` § Semantic models)
 - Named practitioner examples of teams who hit absorption and recovered (Pass 2 — research-verified)
 - The Module 8 strategy-deliverable connection: the CTO's three predicted walls include absorption, and naming it up front is what separates this training's strategy output from a generic "agent rollout plan"
-- The honest ending: the company agent problem is an *organisational* problem dressed up as a *technical* one. The training can't solve it in a week. It can name it, which is more than most training does.
+- The plain ending: the company agent problem is an *organisational* problem dressed up as a *technical* one. The training can't solve it in a week. It can name it, which is more than most training does.
 
 ## Summary
 

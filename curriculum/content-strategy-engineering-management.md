@@ -16,11 +16,11 @@ The offer compressed: leadership (your actual job) × agentic (the specific wave
 
 - **We bring:** Kotter, ADKAR, Crossing the Chasm, PDCA, Toyota Kata, Rumelt's crux, Huryn's three blocks, Intercom's 2x playbook, Ramp's 8 moves, Block's thesis, Intent Taktik, the L0–L3 ladder, the absorption-bottleneck framing. And agents pre-built and ready to orchestrate.
 - **You bring:** your people. What makes them tick. Who trusts whom. Who's carrying what resentment from the last transformation. Who'll step up when nobody's looking. Who's quietly the best teacher on your team. What your team has tried before and what it left them believing. Nobody else in the room — including us — has this, and nothing in the research KB replaces it.
-- **Together:** agents figure out *with you* what's likely to work for your specific team, help you run it, and read the signal honestly afterward. Theory without people-knowledge = generic advice. People-knowledge without theory = stuck where you are. Both + agents = actionable, compounding insight.
+- **Together:** agents figure out *with you* what's likely to work for your specific team, help you run it, and read the signal plainly afterward. Theory without people-knowledge = generic advice. People-knowledge without theory = stuck where you are. Both + agents = actionable, compounding insight.
 
 **Dorsey's question at team scale:** *what does your team understand that is genuinely hard to understand, and is that understanding getting deeper every day?* The memory is where that understanding compounds. Agents without it are generic; agents with it actually do the job.
 
-**M1 gets disproportionate weight.** A shallow diagnostic at M1 means shallow insight everywhere downstream. An honest M1 makes the whole rest of the training work. This is the load-bearing module.
+**M1 gets disproportionate weight.** A shallow diagnostic at M1 means shallow insight everywhere downstream. An plain M1 makes the whole rest of the training work. This is the load-bearing module.
 
 **Training value prop in one line:** *We supply the theory and the agents. You supply the people. Together, you build agents that actually do the job.*
 
@@ -120,7 +120,7 @@ It's the top-level Quality Gate criterion. All the specific checks (coalition me
 **Why this question is load-bearing:**
 
 - **It resolves the force-action / free-will tension.** The training forces the move; the student brings the judgment; progress is how we know it worked. A student who decides M5's scripted exercise is wrong for their team and invents a variant isn't violating the curriculum — they're exercising it. The calibration question sorts it: progress = curriculum; no progress = evasion.
-- **It's calibrated, not comparative.** A manager with three eager L3s has different progress potential than one with fifteen L0 sceptics. Both can make progress. The bar is honest self-assessment, not cohort ranking.
+- **It's calibrated, not comparative.** A manager with three eager L3s has different progress potential than one with fifteen L0 sceptics. Both can make progress. The bar is plain self-assessment, not cohort ranking.
 - **It's witnessed.** In-cohort: peers call progress-or-not on each other. Self-study: Teacher Claude runs the calibration. Same question, different facilitator.
 - **It pairs with Block 2.** Every journaled decision gets retrospective checks at weekly cadence (during training) and at day-91 (first full review). If the answer is "stirred, not advanced," the rule gets demoted and the hypothesis rewritten.
 
@@ -175,7 +175,7 @@ The relational qualifier that reframes the whole training. Coalition isn't a res
 
 > *Did they make progress? Did they come with you on the ride?*
 
-If yes, the transformation compounds. If no, you did a solo move dressed as a team move — and the memory should catch that honestly, demote the rule, and update the hypothesis. A training whose star student moved their crux but left their coalition behind has not succeeded, by our definition.
+If yes, the transformation compounds. If no, you did a solo move dressed as a team move — and the memory should catch that plainly, demote the rule, and update the hypothesis. A training whose star student moved their crux but left their coalition behind has not succeeded, by our definition.
 
 ## Self-assessment — confidence as the baseline metric
 
@@ -183,7 +183,7 @@ Every student answers one question at three moments:
 
 > **Rate 1–10: your confidence in leading your organization to an AI-first and agentic world.**
 
-- **Start of M1** — baseline. Honest, private to the memory, shared with cohort in aggregate only.
+- **Start of M1** — baseline. Plain, private to the memory, shared with cohort in aggregate only.
 - **End of M6** — immediate delta. Did confidence shift? In which direction? Why?
 - **Day-91 review** — sustained delta. A spike in M6 that collapses by day 91 is a *finding*, not a success — the training created temporary confidence rather than durable muscle. We want to know.
 
@@ -191,7 +191,7 @@ Why a confidence rating and not a knowledge test:
 
 - **It's a belief metric, not a recall metric.** Aligns with the training's premise — beliefs are the product, subject matter is the vehicle.
 - **It's calibrated, not comparative.** Each student rates themselves against their own prior; cohort ranking is off-limits.
-- **It's honest enough to be useful.** The memory is where it lives; the manager's own Decision Journal reviews it. Not a performance-eval substitute.
+- **It's plain enough to be useful.** The memory is where it lives; the manager's own Decision Journal reviews it. Not a performance-eval substitute.
 - **Aggregate delta is the sponsor's finding.** Single-company cohort: aggregate start → end → day-91 is a real measurement of transformation velocity. Worth as much as any training KPI the buyer currently uses.
 
 **Target movement (indicative, to be validated with cohort data):**
@@ -218,18 +218,18 @@ M1–M3 = **set up.** M4–M6 = **let's lead** — student makes first moves WIT
 
 | # | Move | Blocks sharpened | Mood | Artifact (direction) |
 |---|---|---|---|---|
-| M1 | Install the memory + stand up the starting swarm. Diagnose team + per-person ADKAR. First entries populate Block 1. | All three blocks installed + Block 1 populated + first scheduled agents running | diagnostic honesty | Brain in place; intervention backlog auto-promoted; weekly diagnostic agent scheduled |
-| M2 | **Search with starter questions — coalition self-selects.** Agents draft ~5–10 starter questions grounded in Block 1 + KB; student poses them through the week; response-analysis agent surfaces two shortlists simultaneously — candidate first moves AND coalition candidates (those who engaged with agency). | Block 1 (coalition tier seeded) + Block 2 (decision alternatives seeded from team voice) + Block 3 (first gates) | earned clarity after unease — *"I've searched honestly; this is the one I'll run"* | Two shortlists (move candidates + coalition candidates) + first-move picked + journaled decision + gate-watcher agent scheduled |
+| M1 | Install the memory + stand up the starting swarm. Diagnose team + per-person ADKAR. First entries populate Block 1. | All three blocks installed + Block 1 populated + first scheduled agents running | diagnostic directness | Brain in place; intervention backlog auto-promoted; weekly diagnostic agent scheduled |
+| M2 | **Search with starter questions — coalition self-selects.** Agents draft ~5–10 starter questions grounded in Block 1 + KB; student poses them through the week; response-analysis agent surfaces two shortlists simultaneously — candidate first moves AND coalition candidates (those who engaged with agency). | Block 1 (coalition tier seeded) + Block 2 (decision alternatives seeded from team voice) + Block 3 (first gates) | earned clarity after unease — *"I've searched plainly; this is the one I'll run"* | Two shortlists (move candidates + coalition candidates) + first-move picked + journaled decision + gate-watcher agent scheduled |
 | M3 | **Return + cross-pollinate + distill 2 crux + share.** Student returns with M2 data; synthesis agent reads own-team data + KB patterns + cohort cross-shared data (single-company cohort, frictionless). **Crux-finder agent** (invokes Bootstrap `crux` skill; cite Rumelt) distills to exactly 2 crux for this team with forced alternatives. Cohort share-back. Coalition formalizes around the 2 crux. | Block 1 (crux as top-tier rules) + Block 2 (crux-selection as major decision) + Block 3 (outside-view criteria) | co-creation through cross-pollination | 2 crux (terse, quotable) + named coalition + cohort share done + weekly check-in agent scheduled |
 | M4 | **Intent (toward action).** Not a painted vision — an intent-based direction bound by the 2 crux. *"We're betting that moving these crux toward direction X will reshape the team's week. We don't know the full shape yet; we'll learn by running it."* Multi-agent deliberation across Bet-A / Bet-B / hybrid postures, constrained by the crux. Reaction-rehearsal agents role-play team archetypes. Vision is what the student *earns* over 90+ days — not what they write in week 4. | Block 2 (intent as crux-bound decision) + Block 3 (communication criteria) | let's lead — clarity of aim | `intent.md` (coalition-owned, crux-constrained) + first communication move rehearsed or done |
-| M5 | **PDCA honest reckoning — so what really happened as we tried to do as intended? Why?** Retrospective agent reads Block 2 decisions + Block 3 gate outcomes + Block 1 observations; root-cause agent (5 Whys) interrogates each deviation from intent; promotion/demotion agent sweeps Block 1. Student interrogates *with* the agents. Deming + Toyota Kata lineage. The 50%-wrong principle becomes visible here. | Block 1 (promotions/demotions) + Block 2 (decisions' retrospectives) + Block 3 (gates' performance) — all three reviewed | reflective honesty — *"some worked, some didn't, and naming it is the move"* | PDCA retrospective + all three blocks updated + surfaced learnings that shape M6 |
-| M6 | **Name the true shape of the challenge ahead.** After M1–M5, NOW the student can honestly name what the challenge actually is — usually different from the one they named at M1. Strategy earned, not assumed. Shape-finder agent reads 6 weeks of memory + PDCA + cohort share-backs, proposes candidate shape with evidence; alternative-shapes agent offers 2–3 contrasting framings; student picks, commits to Block 2 as top-level strategic decision. 90-day-plan agent synthesizes true shape + revised intent + Block 3 criteria. Day-91 agent scheduled. Full swarm handoff. Cohort share generates convergent company-wide signal back to sponsor. | Block 2 (true shape as earned strategy) + swarm committed to autonomous run | clear-eyed commitment — earned, not tidy | Named true shape + 90-day plan as printout + day-91 agent scheduled + swarm running autonomously + cohort finding back to sponsor |
+| M5 | **PDCA plain reckoning — so what really happened as we tried to do as intended? Why?** Retrospective agent reads Block 2 decisions + Block 3 gate outcomes + Block 1 observations; root-cause agent (5 Whys) interrogates each deviation from intent; promotion/demotion agent sweeps Block 1. Student interrogates *with* the agents. Deming + Toyota Kata lineage. The 50%-wrong principle becomes visible here. | Block 1 (promotions/demotions) + Block 2 (decisions' retrospectives) + Block 3 (gates' performance) — all three reviewed | reflective directness — *"some worked, some didn't, and naming it is the move"* | PDCA retrospective + all three blocks updated + surfaced learnings that shape M6 |
+| M6 | **Name the true shape of the challenge ahead.** After M1–M5, NOW the student can plainly name what the challenge actually is — usually different from the one they named at M1. Strategy earned, not assumed. Shape-finder agent reads 6 weeks of memory + PDCA + cohort share-backs, proposes candidate shape with evidence; alternative-shapes agent offers 2–3 contrasting framings; student picks, commits to Block 2 as top-level strategic decision. 90-day-plan agent synthesizes true shape + revised intent + Block 3 criteria. Day-91 agent scheduled. Full swarm handoff. Cohort share generates convergent company-wide signal back to sponsor. | Block 2 (true shape as earned strategy) + swarm committed to autonomous run | clear-eyed commitment — earned, not tidy | Named true shape + 90-day plan as printout + day-91 agent scheduled + swarm running autonomously + cohort finding back to sponsor |
 
 The agentic rule: **by M3 onward, the student should be able to close their laptop for a day and find the agents still working.** Diagnostic scans, check-ins, gate-watchers, cadence agents — all running. If every artifact requires the student typing, the exercise failed the rule.
 
 ## Mood arc
 
-**diagnostic honesty → earned clarity after unease → co-creation through cross-pollination → let's lead (clarity of aim) → reflective honesty (PDCA) → clear-eyed commitment (earned, not tidy)**
+**diagnostic directness → earned clarity after unease → co-creation through cross-pollination → let's lead (clarity of aim) → reflective directness (PDCA) → clear-eyed commitment (earned, not tidy)**
 
 Flatter volatility than Bootstrap. Leadership work, not personal discovery. The drama is in the team's reaction, not the student's interior. The memory (three blocks + swarm) is what lets the manager hold the drama without freezing — accumulated context, not real-time heroics.
 
@@ -249,9 +249,9 @@ The research names three common manager moves that backfire. These land in M1's 
 2. **Don't mandate tool usage or put AI in performance reviews.** Amazon Kiro: mandates → protest → tool deleted production (6.3M lost orders). Microsoft/HBR: mandates have ZERO direct effect; peer influence is +8.9pp. Mandates without competence create compliance, not capability. [source: Don'ts #2]
 3. **Don't treat full autonomy as the target state.** 15 independent failure signals (Klarna, McDonald's, Zillow, Air Canada). Compound reliability math: 85% per step × 10 steps = 20% end-to-end. Hybrid from day one. [source: Don'ts #3]
 
-## Two things the research honestly doesn't know yet
+## Two things the research candidly doesn't know yet
 
-These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to pretend there's an answer where there isn't.
+These land in M4 (vision) and M6 (90-day plan) as directness moments — refuse to pretend there's an answer where there isn't.
 
 1. **How this transfers to non-velocity-biased organizations** (Nordic manufacturing/retail/logistics). The playbook evidence comes from velocity cultures. Material gap.
 2. **What competence-first looks like 18 months post-chasm.** Research is pre-chasm. We don't know if the sequence shifts once competence is widespread.
@@ -297,8 +297,8 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - **M2 = search, not pick.** Starter questions to the team; coalition self-selects by engagement. No abstract coalition-guessing.
 - **M3 = return + cross-pollinate + 2 crux.** Rumelt's crux skill imported from Bootstrap M8 scaffold. Two crux, not a backlog. Intent in M4 is crux-bound.
 - **M4 = Intent, not Vision.** Kotter step 3 reframed for 2026's epistemic reality: leaders *declare intent and let vision emerge over time.* Vision is earned across 90+ days of action and retrospection, not painted in week 4. Moltke lineage; matches Intent Taktik insight.
-- **Belief > correctness. 50% wrong is the curriculum.** Any action will do as long as the student believes in it enough to run with conviction. Expect half to miss. Progress = learning rate, not pick-rightness. Teacher Claude helps the student *run clean and read honest* — not second-guess the pick. Ancestry: Bosser's "best strategies emerge from action, not analysis."
-- **M5 = PDCA honest reckoning.** Deming + Toyota Kata. Not "run another exercise" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
+- **Belief > correctness. 50% wrong is the curriculum.** Any action will do as long as the student believes in it enough to run with conviction. Expect half to miss. Progress = learning rate, not pick-rightness. Teacher Claude helps the student *run clean and read plain* — not second-guess the pick. Ancestry: Bosser's "best strategies emerge from action, not analysis."
+- **M5 = PDCA plain reckoning.** Deming + Toyota Kata. Not "run another exercise" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
 - **M6 = name the true shape of the challenge ahead.** Strategy earned from 6 weeks of action and review. Often different from the challenge named at M1. Only at M6 does the student commit the 90-day plan — grounded in the real challenge, not the week-1 guess. Cohort share generates a convergent company-wide signal back to the sponsor.
 - **Arc shape:** See → Believe → Distill → Declare → Examine → Name.
 - **Two tracks running in parallel:** Track 1 = team transformation (M1–M6 visible arc); Track 2 = frontier muscle (practitioners, cohort share, frontier-scanner agent, memory's frontier tier). Track 2 is why the memory doesn't decay after day 91.
@@ -316,7 +316,7 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 
 **TODOs sharper than the skeleton:**
 - **M1 install mechanics.** Three blocks pasted, populated by a guided diagnostic. Specify the exact prompts Claude runs to elicit first-pass ADKAR per person and first-pass Chasm tier per team. Lowest-risk now that the mechanism is settled; design sprint next.
-- **M4 vision exercise.** Kotter step 3. How does the coalition co-draft a vision in the room, in 45–60 min, that holds up against a team? Hold Bet A / Bet B tension honestly.
+- **M4 vision exercise.** Kotter step 3. How does the coalition co-draft a vision in the room, in 45–60 min, that holds up against a team? Hold Bet A / Bet B tension plainly.
 - **"Let's lead" first-moves — what can realistically be DONE during training.** The coalition is not physically present for most of the training. Which moves can be rehearsed with partners in the room? Which require the student to break out mid-module and call/message a coalition member? Format decision is entangled with this.
 - **Block-sharpening exercises per module.** Each of M2–M6 must have a named 5–10 min exercise that moves material into the right block. Design these as a set, not one at a time.
 

@@ -10,7 +10,7 @@ Your job today: ask for too much, see the ungrounded output appear, classify whe
 
 **Phase 1 — Ask for more than the ground carries.**
 
-You've seen your Module 3 system produce an honest synthesised answer. Now you'll ask it for the kind of briefing your CEO would love and your sources can't support. The prompt below requests specific numbers, named competitors' internal strategy, verbatim quotes, analyst opinions — things your sources almost certainly don't contain. The agent will write something anyway. That something is ungrounded output.
+You've seen your Module 3 system produce an plain synthesised answer. Now you'll ask it for the kind of briefing your CEO would love and your sources can't support. The prompt below requests specific numbers, named competitors' internal strategy, verbatim quotes, analyst opinions — things your sources almost certainly don't contain. The agent will write something anyway. That something is ungrounded output.
 
 Open a fresh Claude Code session in your training directory. Paste:
 
@@ -81,7 +81,7 @@ Re-read the sources and retrievals. Produce the briefing again with these three 
 At the end, add a short note: what did you have to drop or soften compared to v1 because it couldn't be grounded?
 ```
 
-Read `module-5/briefing-v2.md` next to v1. Read slowly. Notice what happened to the ungrounded content. Notice what happened to the confidence. Notice what's shorter. Notice what got dropped that you sort of wish had stayed — because grounded rules are not free, and somewhere in v2 you've paid for the honesty.
+Read `module-5/briefing-v2.md` next to v1. Read slowly. Notice what happened to the ungrounded content. Notice what happened to the confidence. Notice what's shorter. Notice what got dropped that you sort of wish had stayed — because grounded rules are not free, and somewhere in v2 you've paid for the directness.
 
 Add one paragraph to `module-5/pattern.md` under a heading `## The grounding tradeoff`:
 

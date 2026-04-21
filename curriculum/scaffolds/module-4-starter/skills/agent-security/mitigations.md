@@ -101,6 +101,6 @@ Often more than one shape applies. PII in memory/ leaking into output: **scope**
 
 **The best mitigation is the one you don't need.** Before picking scope, split, filter, gate, or review — ask whether the agent should have this capability at all. If the answer is no, scoping down to not-granted beats every mitigation that happens after the fact.
 
-Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for. Avoidance beats reduction. This isn't timid design; it's honest design.
+Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for. Avoidance beats reduction. This isn't timid design; it's plain design.
 
 Suggest the mitigation. Acknowledge what the residual will be after the mitigation lands. Name the door the user might rather not open at all.

@@ -126,7 +126,7 @@ Participant brings their own initiative's data, criterion, output. Never generic
 - **Main body writes TO the student about their journey.** No facilitator instructions (*"Have the room do X"*, *"Tell participants Y"*) in the body. Those belong in facilitator notes (deferred artifact). The reader is the student. Speak to them directly: *"You'll paste…"*, *"Ask Claude…"*, *"Pair up and show your neighbor…"*
 - **Trailing sections below a `<!-- maintainer -->` HTML comment are maintainer-only.** The curriculum renderer strips everything after `<!-- maintainer -->` before rendering. That space holds editorial metadata (TODOs, iteration log, frameworks riffed on, eval-run notes) AND facilitator notes (watch-fors, timings, decision points). **`---` is NOT the cut marker** — it's a legitimate horizontal rule that can appear in body prose.
 - Second person (`you`, not `the participant`, not `the room`)
-- **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-honesty. Questions to the reader welcome (sprinkled). Dryness is a failure mode.
+- **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-directness. Questions to the reader welcome (sprinkled). Dryness is a failure mode.
 - No consultant-speak
 - No LLM-tell words: `honest`/`honestly`, `delve`, `landscape` (as verb), `importantly`, `crucial` (padding)
 

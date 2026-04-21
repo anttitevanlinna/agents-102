@@ -6,7 +6,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 5 (Output Qu
 
 **Eval runs:**
 - 2026-04-19 (pass 1) — **APPROVE WITH TODOs.** 15/16 judges pass; Length fails softly (~1090 words vs. 400–700 target — same shape as M2/M3/M4). No auto-fail red flags. Two pass-1 patches applied: (a) Phase 3 pre-naming of the "three probably true things" removed — was dulling the aha by telling the student what they were about to discover; replaced with *"Read slowly. Notice what happened to the ungrounded content. Notice what happened to the confidence…"* — the observational prompt keeps the discovery intact; (b) Phase 2 paste-size fallback added — *"or, if v1 ran long, skip the paste and tell Claude to read `module-5/briefing-v1.md` directly"* — removes the awkwardness risk for long v1 briefings.
-- Judge's overall: *"Strongest exercise in the bootstrap library so far — the five-category spectrum is a real conceptual contribution (not a riff), the tradeoff paragraph forces the honesty M5's mood requires, and the only material complaint is length, which is the same complaint every prompt-heavy exercise in this training has earned."*
+- Judge's overall: *"Strongest exercise in the bootstrap library so far — the five-category spectrum is a real conceptual contribution (not a riff), the tradeoff paragraph forces the directness M5's mood requires, and the only material complaint is length, which is the same complaint every prompt-heavy exercise in this training has earned."*
 
 **Open before first delivery:**
 - **Lecture rename + reframe owed.** "Why LLMs Will Always Fabricate" needs to lead with GROUNDED as the discipline (positive frame) and treat fabrication as the failure mode. Drift between lecture and exercise framing will catch up later. Working slug candidate: `grounded.md` or `why-grounded-is-the-whole-job.md`.
@@ -34,7 +34,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 5 (Output Qu
 After completing this exercise, the participant can:
 - **Classify any agent output on a five-category grounded/ungrounded spectrum** — walk through specific claims in a briefing, memo, or report and name each one GROUNDED / UNGROUNDED / MISREPRESENTS / OVERREACHES / UNGROUNDED-SHAPE with one line of evidence per classification.
 - **Write three grounding rules for their own output type** — cite-the-ground, name-the-gap, represent-don't-extend, adapted to their work (briefing, memo, customer-facing, internal). Can articulate which shape of fabrication each rule catches.
-- **Judge the grounding tradeoff honestly** — point at a specific line in their v2 output that improved and a specific line that got lost, and state whether the tighter rules are the right setting for the specific output type and stakes.
+- **Judge the grounding tradeoff plainly** — point at a specific line in their v2 output that improved and a specific line that got lost, and state whether the tighter rules are the right setting for the specific output type and stakes.
 
 If a builder leader walks out with `module-5/briefing-v1.md`, `module-5/briefing-v2.md`, `module-5/pattern.md` (with the tradeoff paragraph), and `module-5/still-uncertain.md`, and can say *"I know the loop; I can run it on any output next Monday"* — it's good enough.
 
@@ -44,7 +44,7 @@ Leads with the module's Big Idea: **There is truth out there. Your agent's job i
 
 Avoids:
 - **Framing fabrication as a bug to be fixed** — the exercise frames it as the failure mode of ungroundedness, not a defect that can be patched once.
-- **Framing grounding as eliminating uncertainty** — the exercise explicitly closes with what grounding can't reach; the `still-uncertain.md` artifact is the honest limit.
+- **Framing grounding as eliminating uncertainty** — the exercise explicitly closes with what grounding can't reach; the `still-uncertain.md` artifact is the plain limit.
 - **Framing grounding as free** — the tradeoff paragraph forces the student to name what was lost with v2.
 - **Framing the loop as one-time** — "the loop is portable to every agent output you'll ever read" is named in the Point section.
 
@@ -58,7 +58,7 @@ Enables these LGs from `trainings/bootstrap/output-quality.md`:
 
 ### Module-to-module arc
 
-Picks up from **Module 3's `wonder.md`** — the student's honest "this feels almost right" note. The exercise explicitly connects: *"That unease had a shape. Today we name the shape."* Module 3's synthesized answer IS the target material.
+Picks up from **Module 3's `wonder.md`** — the student's plain "this feels almost right" note. The exercise explicitly connects: *"That unease had a shape. Today we name the shape."* Module 3's synthesized answer IS the target material.
 
 Picks up the residual thread from **Module 4** — grounded rules don't close M4's security residual; they operate on a different axis (output fidelity, not access/policy). The Close names this.
 
@@ -69,7 +69,7 @@ Hands off to **Module 6 (Evaluations)** via the Bridge — "turn your judgment i
 The exercise is designed to reliably produce these ahas:
 - **"The briefing sounded right until I checked each claim."** Confidence and correctness are unrelated — felt, not told.
 - **"Most of the specific claims were ungrounded."** The dominant-pattern finding is the shape of the problem in the student's actual system.
-- **"The grounded version is better AND worse."** v2 is shorter, more honest, sometimes less satisfying. The tradeoff is earned, not told.
+- **"The grounded version is better AND worse."** v2 is shorter, more plain, sometimes less satisfying. The tradeoff is earned, not told.
 - **"Grounding doesn't catch everything."** The Close names what rules can't reach — sources being wrong, framing, inclusion/exclusion, strategic judgment. Hunger for M6.
 - **"I can run this on any output forever."** Portability explicit in the Point section.
 

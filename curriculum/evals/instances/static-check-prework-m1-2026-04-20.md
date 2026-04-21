@@ -63,7 +63,7 @@ Already logged in `delivery-incidents.md` as a "known incident before first real
 
 **What:** Line 3: *"Three tasks and one read. About 45 minutes."* Task headings: 10 + 10 + 10 = 30. Plus "5 min setup check" = 35. Gap of 10.
 
-**Fix:** Either extend sub-task time estimates (more honest — prework always takes longer) or drop total to 35-40. Recommend 40-50 as stated range.
+**Fix:** Either extend sub-task time estimates (more plain — prework always takes longer) or drop total to 35-40. Recommend 40-50 as stated range.
 
 ---
 

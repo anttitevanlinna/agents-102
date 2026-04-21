@@ -6,7 +6,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 4 (Security)
 
 **Eval runs:**
 - 2026-04-19 (pass 1) — **APPROVE WITH TODOs.** 15/16 judges pass; Length fails softly (~1,050 words vs. 400–700 target — three inline prompts drive it; same shape and verdict as Module 2 and Module 3 exercises). No auto-fail red flags. Pass-1 patch applied: Phase 3 risk-selection coaching sharpened — added *"If you're tempted by the smallest one on the list, pick the one above it"* — to lift the "student picks easiest risk" failure mode from known-watch-for to structural nudge.
-- Judge's overall: *"Strong exercise — three forced artifacts, honest residual, the skill-as-expert teaching moment is engineered into the structure rather than asserted; length and the unverified skill-invocation behaviour are the only loose ends, and both are knowable in advance."*
+- Judge's overall: *"Strong exercise — three forced artifacts, plain residual, the skill-as-expert teaching moment is engineered into the structure rather than asserted; length and the unverified skill-invocation behaviour are the only loose ends, and both are knowable in advance."*
 
 **Open before first delivery (blocking):**
 - **Capability check — skill drop-in + invocation phrasing.** The exercise depends on `module-4-skills.zip` dropping skills that auto-invoke via *"Apply the X skill to Y."* If invocation phrasing is unreliable in current Claude Code, the room dies in Phase 1. Run `claude-code-guide` before first delivery and pre-bake a `/skill use ...` fallback into the prompts if plain-language invocation is not reliable. This is a pre-flight blocker, not a post-hoc polish.
@@ -30,7 +30,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 4 (Security)
 ### Primary — the leap test
 
 After completing this exercise, the participant can:
-- **Produce a policy-compliance report and a security report on their own agent system** — two files in their working directory, each grounded in the student's actual memory/sources/agents content, with honest "I can't tell" rows where evidence is thin.
+- **Produce a policy-compliance report and a security report on their own agent system** — two files in their working directory, each grounded in the student's actual memory/sources/agents content, with plain "I can't tell" rows where evidence is thin.
 - **Apply one agentic mitigation and articulate the residual** — the student picks a risk, watches a mitigation land (scope / split / filter / gate / review), re-runs the check, and writes a paragraph naming what's still true after the fix.
 - **Name one door they'd rather not open** — a scoping rule written from their own judgment, not prescribed by the skill. They can explain why avoidance beats reduction for that specific risk.
 
@@ -52,7 +52,7 @@ Enables these LGs from `trainings/bootstrap/security.md`:
 - **Analyze** a working agent system against company policy rules and agent-specific risks using two pre-made skills — Phase 1 and Phase 2.
 - **Distinguish** compliant / violating / "I can't tell" — Phase 1 output requires this classification explicitly.
 - **Apply** an agentic mitigation (scope, split, filter, review, gate) — Phase 3.
-- **Evaluate** residual risk honestly — Phase 3's residual paragraph + Close's scoping rule.
+- **Evaluate** residual risk plainly — Phase 3's residual paragraph + Close's scoping rule.
 
 ### Module-to-module arc
 
@@ -64,17 +64,17 @@ Hands off to **Module 5 (Output Quality and Hallucination Control)** — the age
 
 The exercise is designed to reliably produce these ahas:
 - **"The skill found things I didn't think of."** The `agent-security` skill running agent-STRIDE surfaces risk categories the student hasn't encountered. Expertise injection as an experience, not a claim.
-- **"'I can't tell' is most of the rows."** Honest variance in the policy report. Matches the mood contract (epistemic humility).
+- **"'I can't tell' is most of the rows."** Plain variance in the policy report. Matches the mood contract (epistemic humility).
 - **"The mitigation reduced, didn't eliminate."** Phase 3 re-check shows a shifted residual, not a clean pass. Earned, not told.
 - **"I'd rather just not open that door."** The Close makes this concrete; the student writes a scoping rule from their own judgment.
 - **"The loop is portable."** Stated at the end; the student's recognition that this move works on every agent they build.
 
-Plan mode protection: the exercise forces artifact production (three files), forces honest classification (the "I can't tell" scaffold), and forces residual naming (Phase 3 prompt explicitly asks for what's still true). A student can't run the exercise without producing the teaching artifacts.
+Plan mode protection: the exercise forces artifact production (three files), forces plain classification (the "I can't tell" scaffold), and forces residual naming (Phase 3 prompt explicitly asks for what's still true). A student can't run the exercise without producing the teaching artifacts.
 
 ### Failure modes named
 
 - **Skill doesn't invoke.** Facilitator pre-runs reports on the facilitator's own system; if Phase 0 fails, students read the facilitator's reports as worked examples and run Phase 3 against them. Pedagogy survives.
-- **Student reclassifies "I can't tell" as clear.** Coach: *"push back on Claude — 'what evidence would you need to decide?' — and accept the honest state."*
+- **Student reclassifies "I can't tell" as clear.** Coach: *"push back on Claude — 'what evidence would you need to decide?' — and accept the plain state."*
 - **Shame spiral on a violating row.** Coach the room: *"The variance across the room is the teaching. No one got a clean report."*
 - **Over-mitigation.** Student tries to mitigate three risks in one go. Coach: *"one loop, one risk. The rest is homework."*
 - **Thin Module 3 system.** Some students' memorys/sources are thin; their reports will be thin. Finding, not fail.

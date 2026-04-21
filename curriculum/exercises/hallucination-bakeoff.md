@@ -124,7 +124,7 @@ At the end of the file, add a one-line "Known limit:" — the failure mode this 
 
 *(end of prompt)*
 
-Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Named after what it does. Narrow on purpose. The "known limit" line matters — it names the thing you measured and decided not to chase. Honest about what it is and what it isn't.
+Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Named after what it does. Narrow on purpose. The "known limit" line matters — it names the thing you measured and decided not to chase. Plain about what it is and what it isn't.
 
 **Close — what you just did, named.**
 

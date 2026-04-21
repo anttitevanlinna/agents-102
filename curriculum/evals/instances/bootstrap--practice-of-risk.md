@@ -38,13 +38,13 @@ The lecture enables these Bloom-tagged LGs from `trainings/bootstrap/security.md
 - **Analyze** a working agent system against company policy rules and agent-specific risks using two pre-made skills
 - **Distinguish** compliant / violating / "I can't tell" for each rule — and recognise that "I can't tell" is a real answer, not a failure
 - **Apply** an agentic mitigation (scope, split, filter, review, gate) to a specific risk and observe the residual shift
-- **Evaluate** residual risk honestly — what's left after mitigation, and whether the best move is to not open the door in the first place
+- **Evaluate** residual risk plainly — what's left after mitigation, and whether the best move is to not open the door in the first place
 
 Enables, does not achieve. The lecture gives the mental model and the loop vocabulary; the exercise runs the loop.
 
 ### Module-to-module arc
 
-Picks up from **Module 3 (Multi-Agent Systems)** — *"you just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?"* The lecture opens with the feeling that question left behind ("would you bet your job on it being safe?") and reframes it as the honest condition of the work.
+Picks up from **Module 3 (Multi-Agent Systems)** — *"you just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?"* The lecture opens with the feeling that question left behind ("would you bet your job on it being safe?") and reframes it as the plain condition of the work.
 
 Hands off to **Module 5 (Output Quality)** via the Bridge — the agent is scoped, the residual is named, but the output *inside* the scope has its own trust problem. M5 picks up fabrication and hallucination as the next layer.
 

@@ -46,7 +46,7 @@ Here's where most advice on hallucination goes wrong. Somebody tells you *"just 
 
 That's intuition. The move is empirical.
 
-You have a briefing. You don't know which detection method will catch what matters on *your* output, with *your* sources, on *your* strategic question. Nobody does — not the vendors, not the frameworks, not the blog posts. The only honest answer is to run several candidate methods in parallel and measure which one catches what your gold standard says should have been caught.
+You have a briefing. You don't know which detection method will catch what matters on *your* output, with *your* sources, on *your* strategic question. Nobody does — not the vendors, not the frameworks, not the blog posts. The only plain answer is to run several candidate methods in parallel and measure which one catches what your gold standard says should have been caught.
 
 Four candidates, chosen because they fail in different directions — so the scoreboard gives you real spread:
 
@@ -64,7 +64,7 @@ The winner (or an ensemble of the top two) becomes a judge file you carry into M
 
 **What this buys you.**
 
-Not certainty. Certainty isn't available. What you buy is a *grounded choice about grounding* — you know which detector won on your material, you know why, you know what it misses, and the judge file you save honestly names its own blind spot.
+Not certainty. Certainty isn't available. What you buy is a *grounded choice about grounding* — you know which detector won on your material, you know why, you know what it misses, and the judge file you save plainly names its own blind spot.
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
 
@@ -87,7 +87,7 @@ Today you run the bake-off by hand — well, not by hand. You set up four detect
 - **Compound reliability math — both directions.** Single-pass: 85%^10 = 20% (the trap). Loop-based: 10% → 1% → 0.1% → 0.01% with 90%-catch detector + fix (the escape). Naming both halves is what converts the math from despair to design. The second half is the strategic bridge to M6 — evals aren't a quality gate, they're the mechanism that collapses the error rate.
 - **Grounded-ness as epistemic stance** — journalism/research/legal drafting recognisable move.
 - **Bake-off / method tournament** — the empirical-selection pattern lifted from serious evals practice (Antti's own, among others). Lecture names WHY bake-off beats intuition; exercise runs the bake-off.
-- **Gold standard as the measuring stick** — tiny (5 claims), honest, enough to measure against. No vendor benchmark; your own judgment is the judge of the judges.
+- **Gold standard as the measuring stick** — tiny (5 claims), plain, enough to measure against. No vendor benchmark; your own judgment is the judge of the judges.
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
@@ -96,7 +96,7 @@ Today you run the bake-off by hand — well, not by hand. You set up four detect
 **Why four, not three, and not ten:**
 - Four gives the scoreboard real spread without drowning the student. Three collapses on close races; ten is paralysis.
 - Each of the four maps to a distinct failure mode (invention, overreach, citation cargo-cult, inherited fluency). The methods aren't redundant; they're complementary.
-- Ensemble of top two is the honest ship — the lecture primes the student to expect that outcome rather than a clean single winner.
+- Ensemble of top two is the plain ship — the lecture primes the student to expect that outcome rather than a clean single winner.
 
 **Rejected framings:**
 - *"Three techniques you'll use"* (previous version) — taught methods-to-know when the point is methods-to-measure. Empirical selection is the transferable skill; memorising three techniques is not.

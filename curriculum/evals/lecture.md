@@ -84,7 +84,7 @@ Report must include: mood score + a one-line *"what's stealing the mood here"* n
 - **Main body writes TO the student (the reader), about their journey.** No facilitator instructions in the body. Phrases like *"To the room:"*, *"Pairs trade guesses"*, *"Hear one or two out loud"* are facilitator script and belong in facilitator notes (deferred artifact), not in the student-facing lecture. The student reading this file should feel addressed directly: *"You'll see..."*, *"Take a guess."*, *"Before you watch..."*
 - **Trailing sections below a `<!-- maintainer -->` HTML comment are maintainer-only.** That space holds editorial metadata (TODOs, iteration log, frameworks riffed on, eval-run notes) AND facilitator notes (watch-fors, timings, decision points). The curriculum renderer strips everything after `<!-- maintainer -->` before rendering; it never reaches the student. **`---` is NOT the cut marker** — it's a legitimate horizontal rule that can appear in body prose. Use the HTML comment only.
 - Second person (`you`, not `the participant`, not `the room`)
-- **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-honesty about what we don't know. Questions to the reader welcome (sprinkled, not flooded). Dryness is a failure mode.
+- **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-directness about what we don't know. Questions to the reader welcome (sprinkled, not flooded). Dryness is a failure mode.
 - No consultant-speak
 - No jargon without earning it
 - No LLM-tell words: `honest`/`honestly`, `delve`, `landscape` (as verb), `importantly`, `crucial` (as padding)

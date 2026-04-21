@@ -12,7 +12,7 @@ After this module, you will be able to:
 - **Analyze** a working agent system against company policy rules and agent-specific risks using two pre-made skills
 - **Distinguish** compliant / violating / "I can't tell" for each rule — and recognise that "I can't tell" is a real answer, not a failure
 - **Apply** an agentic mitigation (scope, split, filter, review, gate) to a specific risk and observe the residual shift
-- **Evaluate** residual risk honestly — what's left after mitigation, and whether the best move is to not open the door in the first place
+- **Evaluate** residual risk plainly — what's left after mitigation, and whether the best move is to not open the door in the first place
 
 ## Connections
 You've had three agents search your company and three more decide. The output looked reasonable. Think of a time you shipped something to a real stakeholder — a deck, a memo, a number — and found out later something was off. What did you wish someone had checked before it went out?
@@ -28,7 +28,7 @@ You've had three agents search your company and three more decide. The output lo
 ## Key Concepts (Emergent)
 - **Certainty is a fantasy; the practice is the answer.** Classical software security sells you *secure / not secure*. Agent security can't — non-deterministic system, unbounded input, emergent tool use. You never get a proof; you get a loop. Run the loop, not the anxiety.
 - **Two lenses, two skills.** The `company-ai-policy` skill carries what your company has already decided is off-limits. The `agent-security` skill carries agent-STRIDE and access-control analysis. You didn't have to become a policy expert or a threat modeller — the skill IS the expert.
-- **"I can't tell" is a real answer.** Most rows in the policy report land here. They're not failures; they're the honest state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
+- **"I can't tell" is a real answer.** Most rows in the policy report land here. They're not failures; they're the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
 - **Mitigations are agent-shaped.** Scope, split, filter, review, gate. Not firewalls. An agentic system earns its safety through loop design, not perimeter.
 - **Residual risk is a first-class artifact.** After mitigation, something remains. You name it, accept it on record, or close the door. The best mitigation is the one you didn't need — avoidance beats reduction.
 - **Skills as expertise injection** (named late). Skills are how an agent borrows capability it doesn't natively have. They scope DOWN (what it can't do) and scope UP (what expertise it brings). Module 7 comes back for sharing them.
@@ -42,7 +42,7 @@ Five minutes. Claude reviews the audit session and sharpens the skill files you 
 ```
 Review this session and sharpen the skills. Read skills/company-ai-policy/ and skills/agent-security/ (every file). Scan the audit output in module-4/ — both reports, the mitigation, the residual. Look back over the session: which rows did the skill mark "I can't tell" because the rule itself was ambiguous, where did the skill flag a non-issue, what specific failure class did it miss that you only caught by eye, where did the mitigation reduce one risk but shift another?
 
-Then rewrite whichever skill file needs it most. Integrate, don't append. Sharpen rules that wobbled, add the failure class the skill didn't catch, tighten the "I can't tell" criteria so the column stays honest rather than avoidant. Do NOT add verification steps that pretend to resolve residual risk — the honest "can't tell" is the discipline. Don't add a "retro notes" section; rewrite the file as the better version.
+Then rewrite whichever skill file needs it most. Integrate, don't append. Sharpen rules that wobbled, add the failure class the skill didn't catch, tighten the "I can't tell" criteria so the column stays plain rather than avoidant. Do NOT add verification steps that pretend to resolve residual risk — the plain "can't tell" is the discipline. Don't add a "retro notes" section; rewrite the file as the better version.
 
 When you're done, tell me in 3–5 lines: which skill you edited, what you added, what you sharpened, what you removed, and why — grounded in specific rows from the audit. Name at least one door the rules now say to keep closed.
 ```
@@ -93,7 +93,7 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 
 **Watch-fors (deferred to facilitator notes pass):**
 - Shame spiral. A student whose agent violates outright will treat it as personal failure. The lecture's frame ("certainty is a fantasy") lands this, but coach in room: *"The variance across the room is the teaching moment. No one got a clean report."*
-- "I can't tell" avoidance. Students will try to push ambiguous rows into clear buckets. Coach: *"'I can't tell' is the correct answer when the evidence isn't there. Leaving it honest is the discipline."*
+- "I can't tell" avoidance. Students will try to push ambiguous rows into clear buckets. Coach: *"'I can't tell' is the correct answer when the evidence isn't there. Leaving it plain is the discipline."*
 - Over-mitigation. A student picks one risk and tries to mitigate three. Coach back: *"Run the full loop on one. We're practising the loop, not clearing the backlog."*
 - Skill as magic. Students may treat the skill's report as ground truth. The skill is an expert, not an oracle — it can miss things. Plant the doubt in debrief: *"Where would this skill's report itself be wrong?"*
 

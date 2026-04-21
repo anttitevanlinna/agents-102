@@ -76,10 +76,10 @@ No stolen mood. Nothing telegraphs the bake-off's winner. The loop math provides
 
 ### Voice
 
-Second person throughout. No facilitator script in the body. Rory-reframe in *"That's intuition. The move is empirical."* Risto-honesty in *"Later models will fabricate less; they won't stop."* Seth-warmth in closing *"the difference between a memo that holds up and a memo that detonates."*
+Second person throughout. No facilitator script in the body. Rory-reframe in *"That's intuition. The move is empirical."* Risto-directness in *"Later models will fabricate less; they won't stop."* Seth-warmth in closing *"the difference between a memo that holds up and a memo that detonates."*
 
 LLM-tell check:
-- `honest` — appears once in *"The only honest answer is to run several candidate methods in parallel…"* — this is the adjective-use pattern (honest as modifier), not the "honestly, I think…" tell. Acceptable; consistent with prior M4 ruling.
+- `plain` — appears once in *"The only plain answer is to run several candidate methods in parallel…"* — this is the adjective-use pattern (plain as modifier), not the "plainly, I think…" tell. Acceptable; consistent with prior M4 ruling.
 - `delve` — no.
 - `landscape` verb — no.
 - `importantly` — no.

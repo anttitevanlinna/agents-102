@@ -89,7 +89,7 @@ At one company, the AI transformation is led by SVP HR. Not a builder-CEO. A peo
 
 You don't need Silicon Valley's style. You need the mechanism. Experience changes minds. Changed minds change organisations.
 
-### The honest answer
+### The plain answer
 
 Nobody can tell you what your AI-ready organisation looks like. Not a framework. Not a consultancy. Not a book with a 2x2 matrix. Not me.
 

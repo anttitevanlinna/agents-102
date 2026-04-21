@@ -42,7 +42,7 @@ Rank the risks in the final list, highest first. Show your ranking reasoning in 
 ## Style rules
 
 - **Be specific.** "The agent has broad filesystem write access" is generic; "`agents/synthesizer.md` can write to `agents/`, so a synthesizer run could edit its own or sibling agent instructions" is specific. Quote files. Name paths.
-- **Be honest about uncertainty.** If the evidence isn't in the files you read, say so — "I can't tell whether the agent has been used to produce external-facing output yet." Don't guess severity you can't support.
+- **Be plain about uncertainty.** If the evidence isn't in the files you read, say so — "I can't tell whether the agent has been used to produce external-facing output yet." Don't guess severity you can't support.
 - **Don't propose mitigations you didn't analyse.** If you flag a risk, name the mitigation shape. If you can't name a mitigation with confidence, say "mitigation needs a human call" and name what question the human has to answer.
 - **Skip what doesn't apply.** If a STRIDE category doesn't produce a real risk in this specific system, write one line: "No notable risk in this system." Don't invent.
 

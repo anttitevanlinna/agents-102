@@ -43,14 +43,14 @@ Read the files properly. Don't skim. Quote the specific lines or paths that supp
 
 **Compliant:** the evidence in the files clearly shows the rule is honoured. Quote the specific file and sentence.
 
-**Violating:** the evidence in the files clearly shows the rule is broken. Quote the specific file and sentence. Don't soften this — a violation stated honestly is more useful than a hedge.
+**Violating:** the evidence in the files clearly shows the rule is broken. Quote the specific file and sentence. Don't soften this — a violation stated plainly is more useful than a hedge.
 
-**"I can't tell":** either the evidence isn't present, or it's ambiguous, or the rule is about behaviour that you can't observe from files alone (e.g., "external sharing of outputs" — you can't tell from the agent system itself what got shared with whom). **This is a real answer, not a failure.** Leaving a rule in this column is honest; reclassifying to hide uncertainty is the failure.
+**"I can't tell":** either the evidence isn't present, or it's ambiguous, or the rule is about behaviour that you can't observe from files alone (e.g., "external sharing of outputs" — you can't tell from the agent system itself what got shared with whom). **This is a real answer, not a failure.** Leaving a rule in this column is plain; reclassifying to hide uncertainty is the failure.
 
 ## Style rules
 
 - **Be specific.** Quote files. Name paths. One-line evidence per verdict.
-- **Be honest.** "I can't tell" is a better answer than a confident guess.
+- **Be plain.** "I can't tell" is a better answer than a confident guess.
 - **Don't invent content.** If the rule asks about something not present in the system, that's usually "I can't tell" — not "compliant by default."
 - **Don't moralise.** You're reporting findings, not lecturing on best practice.
 

@@ -95,7 +95,7 @@ Method: Web search verification of each URL, claim matching, source classificati
 
 - URL: https://www.artificiallawyer.com/2025/12/01/max-junestrand-legora-were-setting-the-precedent/
 - Fetched: YES (confirmed via web search; article title and quote indexed)
-- Claimed fact verified: **YES** — Junestrand stated: "Well, I'll be honest Richard, so at Legora, we don't do yearly planning. We plan for about one quarter ahead." The interview covers how they only plan one quarter ahead because AI is moving so fast.
+- Claimed fact verified: **YES** — Junestrand stated: "Well, I'll be plain Richard, so at Legora, we don't do yearly planning. We plan for about one quarter ahead." The interview covers how they only plan one quarter ahead because AI is moving so fast.
 - Source type: **Domain trade publication interview** — Artificial Lawyer is a specialized legal technology publication. The interview is with Max Junestrand (CEO/co-founder of Legora), a practitioner speaking in a domain-specific publication. This is stronger than general press because the interviewer (Richard Tromans) understands the domain.
 - PASSES quality gate: **YES**
 - Notes: Published December 1, 2025. Legora is a Swedish legal AI company that has raised $150M and works with major firms including White & Case and Cleary Gottlieb. The "no yearly planning" quote illustrates how fast AI is moving in practice, not just in theory.

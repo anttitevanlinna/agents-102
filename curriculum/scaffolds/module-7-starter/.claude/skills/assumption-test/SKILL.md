@@ -70,4 +70,4 @@ Signal it would show: ...
 
 - If the user says "all three feel equally important," push back. Equal weight means you haven't ranked them — you've just sorted them alphabetically in your head.
 - An experiment that requires a budget line, a committee, or a new hire isn't a two-week experiment. Redesign it until it fits inside what one person can do on a Monday.
-- Resist the word *validate*. Experiments don't validate assumptions, they attack them. If the assumption survives an honest attack, that's evidence. If the experiment is shaped to confirm, it's theatre.
+- Resist the word *validate*. Experiments don't validate assumptions, they attack them. If the assumption survives an plain attack, that's evidence. If the experiment is shaped to confirm, it's theatre.

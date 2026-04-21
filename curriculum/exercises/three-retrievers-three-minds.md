@@ -8,7 +8,7 @@ Two phases. Phase 1 feels like multi-agent — three sessions churning on the sa
 
 **Phase 0 — One question, written down.**
 
-Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary — a decision you'd stay late to make. *"What's the right next move on [my challenge] over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
+Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary — a decision you'd stay late to make. Something like *"what's the right next move on the thing I wrote down yesterday, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
 
 **Phase 1 — Three retrievers, three sessions.**
 
@@ -16,35 +16,49 @@ Open your training directory in four Claude Code sessions. One per retriever, pl
 
 *A note on your M2 memory:* the retrievers search **live** — they don't re-read your M2 `sources/` or `memory/`. That's deliberate. Your memory becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
 
-*Start four Claude Code sessions in the training directory. (Desktop users: four app sessions. CLI users: four terminal sessions, each running `claude`. Web users: four browser sessions.) Your trainer demos both live — this is the highest-friction step in the whole module; take the thirty seconds to get it right before you paste anything.*
+*Start four Claude Code sessions in the training directory. Desktop users: open four app sessions side by side. CLI users: four terminal sessions, each running `claude` from the training directory. Web users: four browser sessions. Name them in your head — Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
 
-**The rhythm:** paste all three retriever prompts first, into Sessions 1, 2, and 3. Each retriever will come back with its proposals and ask you to confirm. Answer all three confirmations — quickly, don't polish. Then the three retrievers run in parallel. *Now* switch between sessions and watch files land in `module-3/retrievals/`. The paperwork step is yours; the search is theirs.
+**The rhythm:** paste all three retriever prompts first, into Sessions 1, 2, and 3. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript — confirm inline, quickly, don't polish. Then the three retrievers run in parallel. *Now* switch between sessions and watch files land in `module-3/retrievals/`. The paperwork step is yours; the search is theirs.
 
-In Session 1, paste:
+In Session 1 —
+
+**Prompt** *(copy → Claude Code)*
 
 ```
-You are the Confluence retriever for my challenge. Your job: find every piece of internal wiki material that matters to the strategic question in module-3/question.md. Read the question first.
+You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to the strategic question in module-3/question.md. Read the question first.
 
 Then:
-1. Propose 6–8 search terms for our internal wiki. Ask me to confirm or sharpen them before running anything.
-2. Run the searches through the + button. Open the pages. Read them properly.
-3. Write your findings to module-3/retrievals/confluence.md — one paragraph per finding, naming the page/space and one line on why this matters for the question. Keep only what speaks to the question; don't summarise the wiki.
+1. Propose 6–8 search terms for my team's wiki — Confluence, Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it's ambiguous.
+2. Run the searches through the + button connector. Open the pages. Read them properly.
+3. Write your findings to module-3/retrievals/wiki.md — one paragraph per finding, naming the page/space and one line on why this matters for the question. Keep only what speaks to the question; don't summarise the wiki.
 4. End the file with a "Conflicts and gaps" section — where internal pages disagree, where the wiki is thin, what's conspicuously missing.
+
+Sources first. Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write "[NOT FOUND]" — do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
 ```
 
-In Session 2, paste:
+*(end of prompt)*
+
+In Session 2 —
+
+**Prompt** *(copy → Claude Code)*
 
 ```
-You are the Office365 retriever for my challenge. Your job: find the relevant recent documents and email threads for the strategic question in module-3/question.md.
+You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for the strategic question in module-3/question.md.
 
 Then:
-1. Ask me for three clues — names of documents I remember, people I've been mailing about this, or SharePoint sites to check. Use them.
-2. Pull the content through the + button, either by attaching documents directly or by using the OneDrive / SharePoint connector.
-3. Write your findings to module-3/retrievals/o365.md — what documents and threads show, who said what, what's recent, what's decided, what's still open. Name where sources disagree; don't smooth over contradictions.
+1. Ask me for three clues — names of documents I remember, people I've been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.
+2. Pull the content through the + button — attach documents directly, or use whichever connector matches my doc store (OneDrive, SharePoint, Google Drive).
+3. Write your findings to module-3/retrievals/docs.md — what documents and threads show, who said what, what's recent, what's decided, what's still open. Name where sources disagree; don't smooth over contradictions.
 4. End the file with "Conflicts and gaps" — disagreements between sources, things that should exist but don't, names conspicuously missing.
+
+Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write "[NOT FOUND]" — do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
 ```
 
-In Session 3, paste:
+*(end of prompt)*
+
+In Session 3 —
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 You are the internet retriever for my challenge. Your job: find practitioner-grade external material on the strategic question in module-3/question.md. No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 12 months.
@@ -54,13 +68,19 @@ Then:
 2. Fetch them. Read them.
 3. Write your findings to module-3/retrievals/internet.md — what each practitioner says that's specific, with the URL, and one line on how their situation maps (or doesn't) to mine.
 4. End the file with "Conflicts and gaps" — where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can't tell me.
+
+Sources first. Every finding cites the URL you actually fetched and the author. If a fetch fails or returns nothing useful, write "[NOT FOUND]" — do not fabricate article titles, quotes, or author positions from prior knowledge.
 ```
+
+*(end of prompt)*
 
 Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want — three agents are now working for you at once. Watch the files appear in `module-3/retrievals/`. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
 
 **Phase 2 — Three minds, one session.**
 
-Switch to your main session. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. Claude Code calls them **subagents** — Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return. Paste:
+Switch to your main session. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. Claude Code calls them **subagents** — Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Read the three files in module-3/retrievals/. You'll answer the question in module-3/question.md, but not by summarising. You'll spawn three subagents in parallel, each with a different stance. Each reads all three retrieval files and writes a short note (under 200 words) to module-3/stances/ with its take.
@@ -77,6 +97,8 @@ Then, using Rumelt's strategy kernel as the spine — diagnosis (what's really g
 
 Before you answer: tell me where the retrievals had conflicts or gaps that weakened any stance.
 ```
+
+*(end of prompt)*
 
 Read the three stances side by side before Claude combines them. That's where the thinking actually is. The combined answer is the artifact; the three stances are the reasoning.
 
@@ -111,7 +133,7 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files —
 
 **Plug points:**
 - The strategic question — participant-written, one sentence, lives in `module-3/question.md`
-- The three source zones — Confluence / Office365 / internet by default; swap Notion/SharePoint wiki/Guru for Confluence, Google Workspace for Office365. Prompt language swaps 1:1.
+- The three source zones — wiki / docs / internet. Prompt language is permissive (student names their wiki and doc store inline — Confluence / Notion / SharePoint wiki / Guru; OneDrive / SharePoint / Google Drive). No swap needed; the retrievers ask.
 - The Rumelt kernel default — can be swapped by challenge type (StoryBrand for positioning challenges, JTBD for product/feature calls, principle of least privilege for access decisions). Swap happens in one line of Phase 2's synthesizer prompt.
 - The Rory seat — optional swap for a premortem voice (Kahneman/Klein) on risk-heavy challenges, or a JTBD interviewer on customer-facing ones. Keep three stances. Keep them genuinely different.
 

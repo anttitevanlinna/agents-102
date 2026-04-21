@@ -16,7 +16,9 @@ Two loops compounding. Generation sharpens under eval pressure. The eval sharpen
 
 **Phase 1 — Set the orchestrator (12 min).**
 
-Open a fresh Claude Code session in your training directory. Paste:
+Open a fresh Claude Code session in your training directory.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Build me an orchestrator for a self-improving eval loop. Save it as module-6/orchestrator.md.
@@ -38,6 +40,8 @@ At the end of round 3, write a summary to module-6/dashboard.md: issues caught p
 Before you write the orchestrator file, show me the 3-round pseudo-code outline in under 20 lines. I'll approve the shape, then you save the full file.
 ```
 
+*(end of prompt)*
+
 Claude proposes the orchestrator. Read the structure — not the prose, the shape. Two tracks. Three rounds. Judge → meta-agent → judge edit. Approve. Save.
 
 You now have a conductor on disk.
@@ -46,15 +50,23 @@ You now have a conductor on disk.
 
 Create the empty run folders:
 
+**Prompt** *(copy → Claude Code)*
+
 ```
 Create module-6/runs/round-1/, round-2/, round-3/ and module-6/dashboard.md.
 ```
 
+*(end of prompt)*
+
 Start the loop:
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Read module-6/orchestrator.md and run it end to end. Do all three rounds. Do not stop for confirmation between rounds. Write outputs to the paths specified. When round 3 finishes, write module-6/dashboard.md.
 ```
+
+*(end of prompt)*
 
 Claude starts. Round 1 begins. Both generation tracks run. The judge lands its first scores.
 
@@ -64,7 +76,9 @@ The facilitator uses this window for a parallel activity — the debrief prep be
 
 **Phase 2b (optional, during the walk-away window).**
 
-Open `module-6/runs/round-1/judgment-A.md` once it lands (give it ~5 minutes). Skim for two claims the judge marked GROUNDED that you don't believe. Open the cited source file. Confirm. If the judge is wrong, write a two-line `module-6/runs/round-2/deltas.md` before round 2 starts:
+Open `module-6/runs/round-1/judgment-A.md` once it lands (give it ~5 minutes). Skim for two claims the judge marked GROUNDED that you don't believe. Open the cited source file. Confirm. If the judge is wrong, write a two-line `module-6/runs/round-2/deltas.md` before round 2 starts.
+
+Example shape (do not paste — write your own against what you actually saw):
 
 ```
 Claim: "Competitor X cut pricing 15% in Q3." Judge marked GROUNDED citing sources/competitive-notes.md. The file mentions pricing pressure but does not state the 15% figure. Judge's GROUNDED rule is too lenient on numeric precision.
@@ -87,19 +101,21 @@ Open `module-6/dashboard.md`. Read it end to end. You should see something like:
 - Round 3: briefing-A caught 13 issues, briefing-B caught 12. Claim-level agreement between A and B: 94%. Convergence verdict: YES.
 - Final judge state: two rules tightened, one loosened, one new category edge handled.
 
-**Integrity check.** Before you celebrate, verify the judge actually changed on disk. Paste:
+**Integrity check.** Before you celebrate, verify the judge actually changed on disk.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Diff judges/groundedness-judge.md against its state at the end of Module 5. Show me every line that changed. Confirm: at least one rule was actually rewritten (not just appended, not just logged). If no rule changed in the file itself, tell me — the meta-agent may have proposed edits without applying them.
 ```
 
+*(end of prompt)*
+
 Read the diff. At least one rule line must be different from yesterday's version. If the file is unchanged, the "self-improving" claim failed silently — flag it to the facilitator. If the diff is real, the loop worked.
 
 Open `module-6/runs/round-2/judge-diff.md` and `round-3/judge-diff.md`. Each one names a specific rule that got edited and the reasoning. That's the proof — the judge didn't drift, it learned. You can read what it learned.
 
-Now the artifact beat. Write one line to `module-6/eval-notes.md`:
-
-*"Started with a judge that passed M5. Three rounds later, the judge has [N] new rules because it watched itself miss [thing] and [thing]. The loop runs on the output AND on the loop itself. My evals get sharper every time I run them — not when I edit them."*
+Now the artifact beat. Write one line to `module-6/eval-notes.md` — in your own words — naming how many new rules the judge picked up across the three rounds, the two specific things it watched itself miss, and what changed for you about evals now that the loop runs on the loop itself.
 
 Save.
 

@@ -78,7 +78,7 @@ You've built a system. You've secured it, evaluated it, and designed the sharing
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze → Evaluate
-- **Materials (trainer):** Pattern catalog (`strategy/personal-to-team-patterns.md`) live in second tab. Branch-selection framing ready. Access-Trust Gap data point in lecture. Module 7 scaffold ships three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman). Students invoke them by name during the exercise; they stay installed for M8 and for any strategic decision from Monday onward.
+- **Materials (trainer):** Pattern catalog ships inside the Module 7 scaffold at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. Access-Trust Gap data point in lecture. Module 7 scaffold ships three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman). Students invoke them by name during the exercise; they stay installed for M8 and for any strategic decision from Monday onward.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 
 **Plug Points (trainer):**

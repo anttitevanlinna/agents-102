@@ -34,7 +34,9 @@ You don't run the skills from these files. You invoke them by asking, in plain l
 
 **Phase 1 — Policy audit.**
 
-Open a fresh Claude Code session in your training directory. Paste:
+Open a fresh Claude Code session in your training directory.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Apply the company-ai-policy skill to the agent system I built in module-2 and module-3. The system is: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/retrievals/ and module-3/stances/.
@@ -46,13 +48,34 @@ Write the report to module-4/policy-report.md. Be specific. Be honest. An "I can
 Read the memory and agent files properly — don't skim. Quote the specific lines or files that support each verdict.
 ```
 
-While this runs, resist the urge to switch away. The report is more useful when you read it cold. Expect the skill to find things you didn't think about — and to leave things "I can't tell" you thought were settled.
+*(end of prompt)*
 
-When the report lands, open `module-4/policy-report.md`. Read every row. Don't fix anything yet. Notice which rows surprise you. Notice which "I can't tell" rows you'd want to close and which you wouldn't even know how to.
+While this runs, stay with it. The report is more useful when you read it cold. Expect the skill to find things you didn't think about — and to leave things "I can't tell" you thought were settled.
+
+**Phase 1.5 — Ask Claude what's in the report.**
+
+Two full reports read row-by-row by eye is Module 2's trap all over again. Let the agent do the first pass. When the policy report lands, stay in the same session —
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Read module-4/policy-report.md. Tell me:
+1. The top three surprises — rows where the verdict is not what a careful reader would have predicted from my files alone.
+2. The three rows where "I can't tell" is most likely hiding a real compliance gap — rows where the missing evidence would probably come back as violating, not compliant, if it surfaced.
+3. One row that looks compliant on the surface but where you'd still push back.
+
+Keep each point to one or two sentences. Quote the specific rule name so I can find the row.
+```
+
+*(end of prompt)*
+
+Read Claude's three lists. THEN open `module-4/policy-report.md` and find the rows Claude flagged — you're reading with a hypothesis, not row-by-row from scratch. Notice which of Claude's surprises match yours and which don't. That mismatch is data.
 
 **Phase 2 — Security audit with STRIDE.**
 
-In the same session, paste:
+In the same session —
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Apply the agent-security skill to the same system. Run both the access-control analysis and the agent-STRIDE pass.
@@ -66,6 +89,8 @@ For each risk flagged (access or STRIDE), suggest one agentic mitigation — sco
 Write the report to module-4/security-report.md. Include the ranked mitigation suggestions.
 ```
 
+*(end of prompt)*
+
 Read `module-4/security-report.md` alongside the policy report. Two different lenses; some risks will overlap, some won't. That's correct.
 
 You now have the assessment half of the loop. The uncomfortable feeling is the evidence.
@@ -74,12 +99,14 @@ You now have the assessment half of the loop. The uncomfortable feeling is the e
 
 Pick ONE risk. Not the easiest. Not the scariest. The one where applying a mitigation will teach you the most about your system. If the policy report has an outright violation, consider that. If it doesn't, pick the top-ranked risk from the security report. If you're tempted by the smallest one on the list, pick the one above it.
 
-In the same session, paste:
+Write the risk you picked on a sticky (or in a scratch note) in one sentence. Then —
+
+**Prompt** *(copy → Claude Code)*
 
 ```
-From the two reports, I'm picking this risk to mitigate: [one sentence, in your own words].
+I've picked one risk from the two reports to mitigate. Ask me which one — ask me to name it in one sentence, and ask which mitigation shape the skill suggested for it (scope, split, filter, gate, or review).
 
-The skill suggested [scope / split / filter / gate / review]. Walk me through applying this mitigation to my system — what file changes, what agent instructions change, what new skill or rule might need to land.
+Once I've told you, walk me through applying that mitigation to my system — what file changes, what agent instructions change, what new skill or rule might need to land.
 
 DO NOT make any changes yet. Describe the diff in plain English first and stop. Wait for me to type "apply" before you touch a file. If I want something different, I'll tell you.
 
@@ -88,7 +115,9 @@ After I confirm and the change lands, re-run the check the skill performed for t
 Then: write one paragraph to module-4/residual.md naming what's still true after the mitigation. Not what we fixed — what's left. Be specific.
 ```
 
-Confirm the diff. Watch the change land. Re-run the check. Read the residual.
+*(end of prompt)*
+
+Claude asks; you answer with the risk you picked. Confirm the diff. Watch the change land. Re-run the check. Read the residual.
 
 *The risk didn't go away.* That's expected. A mitigation reduces, it doesn't eliminate. The residual paragraph is the artifact — name it, accept it on record, and keep going.
 

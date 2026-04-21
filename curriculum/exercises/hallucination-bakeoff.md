@@ -12,25 +12,33 @@ Four phases. 55–70 minutes. The work is mostly done by the four detectors and 
 
 Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 synthesized answer as the test corpus — your sources, your retrievals, your stances, your real question. The briefing already lives somewhere on the edge of ungroundedness; that's why it's the right test.
 
-First, produce a fresh briefing so every detector sees the same output. Open your training directory in Claude Code. Paste:
+First, produce a fresh briefing so every detector sees the same output. Open your training directory in Claude Code.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
+This briefing is the test corpus — we WANT it to overreach in places so the detectors have something to catch. Blend general knowledge where sources don't cover; don't hedge.
+
 Produce a one-page executive briefing on the strategic question in module-3/question.md, using the material in module-3/retrievals/ and module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
 ```
 
+*(end of prompt)*
+
 Save it. **Do not open it yet.** Your gut verdicts are the measuring stick the meta-evaluator uses to score the four detectors. Reading the briefing first biases your verdicts toward whatever felt confident on the page — exactly the failure mode we're measuring. Blind gold standard first, then the bake-off.
 
-Now the gold standard. Claude scans the briefing, proposes five specific claims spanning the grounded–ungrounded spectrum, and you verdict each one in one line. Five is the ceiling — more is busywork, fewer is noise. Paste:
+Now the gold standard. Claude scans the briefing, proposes five specific claims spanning the grounded–ungrounded spectrum, and you verdict each one in one line. Five is the ceiling — more is busywork, fewer is noise.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Open module-5/briefing.md. Scan it and propose exactly five specific claims — one number, one named competitor behaviour, one quote, one market-sizing statement, one Monday outcome. Pick claims that sit across the spectrum from clearly-grounded to clearly-ungrounded — mix deliberately, don't cherry-pick. Quote each claim verbatim from the briefing — the exact sentence or phrase, so the meta-evaluator can match detector findings back to it.
 
-Then, for each claim, ask me:
+Then ask me, for each claim in turn: the verbatim claim, and whether it's grounded in the sources (yes / no / partly — and one line why).
 
-"Claim N — verbatim: [claim]. Is this grounded in the sources? (yes / no / partly — and one line why.)"
-
-Ask one question, wait for my answer, then the next. After five answers, write module-5/gold-standard.md with the five verbatim claims, my verdicts, and my one-line reasoning per claim.
+Ask one claim at a time, wait for my answer, then the next. After five answers, write module-5/gold-standard.md with the five verbatim claims, my verdicts, and my one-line reasoning per claim.
 ```
+
+*(end of prompt)*
 
 Answer five questions. Keep it fast — your gut verdict plus one sentence. You're not grading the briefing; you're giving the meta-evaluator something to measure against.
 
@@ -38,7 +46,9 @@ Answer five questions. Keep it fast — your gut verdict plus one sentence. You'
 
 Four detectors, four different methods for catching ungroundedness. They're agents you spawn in parallel, each writing to its own file. Claude Code runs them as subagents inside one session.
 
-In your main session, paste:
+In your main session:
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
@@ -54,13 +64,15 @@ Detector 4 — Conventional-wisdom flag. Some claims sound like general business
 Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
 ```
 
+*(end of prompt)*
+
 Watch the four subagent lines scroll past. Each one is reading the same briefing with a different lens. You'll have four files of findings within a minute or two. Don't read them yet. The next phase is where the scoring happens, and reading ahead biases you the same way reading the briefing would have.
 
 **Phase 2 — Meta-evaluator scores the bake-off.**
 
 Now the tournament. A fifth agent — the meta-evaluator — reads all four detector files, compares them to the gold standard you wrote in Phase 0, and produces a scoreboard. You don't compare them by hand. The meta-evaluator measures precision (of what the detector flagged, how much was actually ungrounded by your gold standard?), recall (of what your gold standard said was ungrounded, how much did the detector catch?), and coverage (did the detector look at claims your gold standard cared about?).
 
-Paste:
+**Prompt** *(copy → Claude Code)*
 
 ```
 You are the meta-evaluator for a four-way detector bake-off. Your inputs:
@@ -71,7 +83,7 @@ You are the meta-evaluator for a four-way detector bake-off. Your inputs:
 Your job: score each detector against my gold standard, produce a scoreboard, name a winner.
 
 For each detector:
-1. Match detector findings to gold-standard claims by substring overlap, not exact match. Each of my five claims was quoted verbatim from the briefing; find that same phrase in the detector's output.
+1. Match detector findings to gold-standard claims by strict substring match. Each of my five claims was quoted verbatim from the briefing. If you can't find the verbatim phrase from the gold-standard claim in the detector's output, count as MISS — do not reason about semantic similarity, do not paraphrase-match, do not accept "close enough."
 2. For each gold-standard claim, check whether the detector flagged it. If I said "not grounded," the detector should have flagged it; count as a hit. If I said "grounded," the detector should NOT have flagged it; a flag is a false positive.
 3. Compute precision (hits / total flagged) and recall (hits / total I said were not grounded). Coverage = how many of my five claims the detector even looked at.
 4. One line of qualitative notes — what this detector caught that others missed, what it missed, where its method is strong, where it's weak.
@@ -82,8 +94,10 @@ Save the scoreboard to module-5/scoreboard.md as a table:
 
 After the table, name ONE winner. Do not return "all four are useful" — force the pick. If top two are within 10% precision and 10% recall of each other, name the single winner first, THEN propose a two-method ensemble and say what each catches that the other doesn't. Maximum ensemble cap: two methods. Never three.
 
-At the bottom, add a one-line recommendation: "For output of this shape, use [detector or ensemble] because [reason]."
+At the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.
 ```
+
+*(end of prompt)*
 
 Watch the scoreboard land. Read it. This is the magic beat — not because the agents did something opaque, but because you can now see which method actually worked on your output. Not intuition. Measurement.
 
@@ -93,7 +107,7 @@ Four detectors read the same briefing. One method caught more of what your exper
 
 The winner (or the two-method ensemble) is worth keeping. You'll save it as a judge file — a named, reusable prompt you can run against any future briefing, not just this one. Module 6 picks this file up and turns it into infrastructure.
 
-Paste:
+**Prompt** *(copy → Claude Code)*
 
 ```
 Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:
@@ -108,6 +122,8 @@ Write the judge as a markdown file to judges/groundedness-judge.md — a short h
 At the end of the file, add a one-line "Known limit:" — the failure mode this judge doesn't catch, based on what lost the bake-off.
 ```
 
+*(end of prompt)*
+
 Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Named after what it does. Narrow on purpose. The "known limit" line matters — it names the thing you measured and decided not to chase. Honest about what it is and what it isn't.
 
 **Close — what you just did, named.**
@@ -118,7 +134,7 @@ This pattern — run several candidates in parallel, score them empirically, kee
 
 One thing the bake-off can't reach: your gold standard was five claims. A real production judge wants hundreds. The method is the same; the scale is the difference. That's next module.
 
-Write one line to `module-5/still-uncertain.md`: *"The judge I just built catches [what it catches]. What it won't catch is [what it won't catch]. The first place I'd trust it in production is [where]. The first place I wouldn't is [where]."*
+Write one sentence to `module-5/still-uncertain.md` naming the one thing this judge caught in today's bake-off that you'd want running on every briefing you write from tomorrow.
 
 Module 6 comes back for this file. You'll turn this judge into infrastructure — scaled gold standard, running on every build, feeding corrections back into itself.
 

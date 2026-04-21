@@ -15,7 +15,7 @@ After this module, you will be able to:
 - **Evaluate** residual risk honestly — what's left after mitigation, and whether the best move is to not open the door in the first place
 
 ## Connections
-You've had three agents search your company and three more decide. The output looked reasonable. But would you show it to your CFO on Monday? Name the thing you'd want to check first — from a risk angle — before letting any of this near a real stakeholder.
+You've had three agents search your company and three more decide. The output looked reasonable. Think of a time you shipped something to a real stakeholder — a deck, a memo, a number — and found out later something was off. What did you wish someone had checked before it went out?
 
 ## Lectures
 

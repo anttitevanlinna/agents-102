@@ -59,7 +59,7 @@ You just built something that works across three systems. Which means it just ga
 **Plug Points (trainer):**
 
 > PLUG POINT: The three source zones the retrievers cover.
-> Default: Confluence / Office365 / curated internet (the same three the student curated in Module 2). Swap Confluence for Notion/SharePoint wiki/Guru; swap Office365 for Google Workspace. The pattern holds; the tools vary.
+> Default: wiki / docs / curated internet — the retrievers ask the student inline which specific tools they use (Confluence / Notion / SharePoint wiki / Guru for wiki; OneDrive / SharePoint / Google Drive for docs). Prompt language is permissive by design — no trainer swap required; the pattern holds across toolchains.
 
 > PLUG POINT: The framework the synthesizer uses.
 > Default: Rumelt's strategy kernel (diagnosis → guiding policy → coherent actions). Alternatives by challenge type: StoryBrand for positioning challenges, Jobs-to-be-Done for product/feature decisions, principle of least privilege for security/access decisions.

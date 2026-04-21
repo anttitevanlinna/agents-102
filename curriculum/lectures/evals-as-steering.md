@@ -46,15 +46,15 @@ Convergence = the floor. Steering = the ceiling.
 
 ## What you'll do in class
 
-Three exercises, in this order.
+One exercise. You turn the judge you picked yesterday into live machinery.
 
-First, you'll automate your Module 5 catch. Build a convergence eval. Run the loop. See what shakes out.
+An orchestrator runs three rounds on two briefings in parallel. Your Module 5 judge scores both. A meta-agent watches what the judge missed — and rewrites the judge's own rules between rounds. You start it. You close the laptop. You walk.
 
-Second, you'll run a shared customer-case eval — one criterion, agreed with the sponsor, drawn from a real strategic concern of the company. One criterion. Many agents' outputs.
+When you come back, the dashboard shows what the judge caught in round 1, what it caught in round 2 after patching itself, what it caught in round 3. The judge on disk is a different file than the one you left — sharper, because it watched itself fail.
 
-Third, you'll design your own steering eval. Not correctness. What matters to YOU. Brand voice. Differentiation. Depth. Whatever makes your initiative's output worth sharing rather than forgettable.
+That's both kinds of eval at once. Convergence lives in the scoring. Steering lives in what the judge's rules come to encode across rounds — the failure classes you cared enough to flag, the shapes of claim you don't want slipping past.
 
-Then you'll run that criterion. And think hard about what it catches and what it misses.
+Hold the steering question while the loop runs. What SHOULD this judge come to encode by round three that it doesn't encode today?
 
 ## One question to hold
 

@@ -56,6 +56,16 @@ Every Bootstrap module session targets **1h45 of facilitated content** (Connecti
 
 **Lectures stay compact (10–15 min).** A longer lecture usually means the exercise isn't carrying its own weight — move concepts into the exercise's teaching moments rather than into more lecture minutes.
 
+## Two generation modes
+
+Curriculum content gets produced in one of two modes. Pick deliberately at session start.
+
+**Strategy-session mode** (iterative small turns): Antti types a design move, I capture, we iterate per-turn. Right for shaping strategy, making design decisions, reshaping structure. The PDCA loop below describes this mode's cadence.
+
+**Long-running generation mode** (plan → walk away → return): Antti pins a plan in two turns, I generate a full lecture or exercise end-to-end while he's elsewhere, he comes back to review a 70%-there draft + simulation report + my self-eval. Right for producing content when strategy is stable and the reference artifact is populated. Strategy lives in `curriculum/module-design-long-running-strategy.md` — read it before starting a long-running session. The file compounds: every long-running session closes with a Compound step that rewrites its rules.
+
+The PDCA loop below covers both modes — the step order is the same — but long-running mode compresses the Plan step into two turns with explicit sign-off, and the Do/Test/Check steps run without Antti in the loop until handoff.
+
 ## The canonical generation pattern (PDCA loop)
 
 Every piece of curriculum content — lecture, exercise, or module — goes through this loop. Do the steps in order. Skipping a step is how sessions drift.

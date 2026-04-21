@@ -5,7 +5,7 @@ description: Audit an agent system for access-control risk and agent-STRIDE thre
 
 # Agent Security — audit skill
 
-Run this skill against an agent system in the current working directory. The system is usually: a `brain/` folder, a `sources/` folder, an `agents/` folder with one or more `*.md` agent files, a root `CLAUDE.md`, and any prior module outputs (e.g., `module-3/retrievals/`, `module-3/stances/`). Read them first; don't skim.
+Run this skill against an agent system in the current working directory. The system is usually: a `memory/` folder, a `sources/` folder, an `agents/` folder with one or more `*.md` agent files, a root `CLAUDE.md`, and any prior module outputs (e.g., `module-3/retrievals/`, `module-3/stances/`). Read them first; don't skim.
 
 ## What to produce
 

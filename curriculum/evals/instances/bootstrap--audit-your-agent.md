@@ -20,7 +20,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 4 (Security)
 
 **Simulation-surfaced TODOs — still open after pass 1:**
 - **Phase 1 report depth variance.** Students with thin Module 3 systems (or customers using the Nordic-baseline default skill instead of a custom `company-ai-policy`) will get 3–4 rows of mostly "I can't tell" and read it as the exercise being broken. Watch-for already named in facilitator notes; accept as a coaching-layer fix rather than body-copy fix. Thin report = thin system; that IS data.
-- **"Read the brain and agent files properly — don't skim" is aspirational.** Directed at the LLM's politeness; no way for the student to verify Claude complied. Accept — the alternative (asking the student to audit Claude's file reads) violates the "no manual error-catching" rule.
+- **"Read the memory and agent files properly — don't skim" is aspirational.** Directed at the LLM's politeness; no way for the student to verify Claude complied. Accept — the alternative (asking the student to audit Claude's file reads) violates the "no manual error-catching" rule.
 - **STRIDE rankings feel arbitrary to non-security students.** Skill ranks for them; "skill as oracle" watch-for seeds the doubt in debrief. Structural fix would be asking the skill to show its ranking reasoning, but that moves the exercise from 45 min toward 60 min. Accept; debrief handles it.
 
 ---
@@ -30,7 +30,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 4 (Security)
 ### Primary — the leap test
 
 After completing this exercise, the participant can:
-- **Produce a policy-compliance report and a security report on their own agent system** — two files in their working directory, each grounded in the student's actual brain/sources/agents content, with honest "I can't tell" rows where evidence is thin.
+- **Produce a policy-compliance report and a security report on their own agent system** — two files in their working directory, each grounded in the student's actual memory/sources/agents content, with honest "I can't tell" rows where evidence is thin.
 - **Apply one agentic mitigation and articulate the residual** — the student picks a risk, watches a mitigation land (scope / split / filter / gate / review), re-runs the check, and writes a paragraph naming what's still true after the fix.
 - **Name one door they'd rather not open** — a scoping rule written from their own judgment, not prescribed by the skill. They can explain why avoidance beats reduction for that specific risk.
 
@@ -56,7 +56,7 @@ Enables these LGs from `trainings/bootstrap/security.md`:
 
 ### Module-to-module arc
 
-Picks up from **Module 3's "Three retrievers, three minds"** — the student's Module 3 system is the target. The brain, sources, agents, and `module-3/retrievals/` and `module-3/stances/` are all inputs to the audit. The system the student built by hand is now being read back to them by two experts.
+Picks up from **Module 3's "Three retrievers, three minds"** — the student's Module 3 system is the target. The memory, sources, agents, and `module-3/retrievals/` and `module-3/stances/` are all inputs to the audit. The system the student built by hand is now being read back to them by two experts.
 
 Hands off to **Module 5 (Output Quality and Hallucination Control)** — the agent is scoped, the residual is named. The next question (the one M5 carries): can you trust what the agent says *inside* the scope? The homework micro-skill extraction also seeds M5's prework.
 
@@ -77,7 +77,7 @@ Plan mode protection: the exercise forces artifact production (three files), for
 - **Student reclassifies "I can't tell" as clear.** Coach: *"push back on Claude — 'what evidence would you need to decide?' — and accept the honest state."*
 - **Shame spiral on a violating row.** Coach the room: *"The variance across the room is the teaching. No one got a clean report."*
 - **Over-mitigation.** Student tries to mitigate three risks in one go. Coach: *"one loop, one risk. The rest is homework."*
-- **Thin Module 3 system.** Some students' brains/sources are thin; their reports will be thin. Finding, not fail.
+- **Thin Module 3 system.** Some students' memorys/sources are thin; their reports will be thin. Finding, not fail.
 - **Student picks easiest risk.** The exercise nudges toward "the one that teaches you the most" but doesn't enforce. Facilitator coaches if the pick is trivially easy.
 
 ### Time-boxed
@@ -122,7 +122,7 @@ All three paragraph-structured. Longest (Phase 2) ~180 words, well under ~1-page
 ### Plug points real
 
 - **The `company-ai-policy` skill** — per-customer, pre-built from actual policies. Nordic-baseline default for demo/thin cases.
-- **The student's Module 3 system** — brain, sources, agents, module-3 artifacts. Their actual work.
+- **The student's Module 3 system** — memory, sources, agents, module-3 artifacts. Their actual work.
 - **The student's chosen risk** — Phase 3, participant-picked.
 - **The student's residual paragraph** — Phase 3, participant-written.
 - **The student's "door I'd rather not open"** — Close, participant-authored scoping rule.
@@ -154,7 +154,7 @@ Second person, builder, Seth × Rory × Risto. Opening: *"Two skills. Two report
 - Named mitigation shapes (scope / split / filter / gate / review).
 - Named file paths (`module-4/policy-report.md`, `module-4/security-report.md`, `module-4/residual.md`, `skills/company-ai-policy/SKILL.md`, `skills/agent-security/SKILL.md`).
 - Named zip file (`module-4-skills.zip`) with specific internal structure shown.
-- Named Module 3 artifacts as inputs (`brain/`, `sources/`, `agents/`, `CLAUDE.md`, `module-3/retrievals/`, `module-3/stances/`).
+- Named Module 3 artifacts as inputs (`memory/`, `sources/`, `agents/`, `CLAUDE.md`, `module-3/retrievals/`, `module-3/stances/`).
 - Named classification values ("compliant / violating / 'I can't tell'").
 - Named risk-ranking method (severity × likelihood, three-tier).
 - Named agentic mitigation types (five specific options).

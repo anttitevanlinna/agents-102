@@ -11,7 +11,7 @@
 
 Every sharing pattern is a variant of one of four. This is the top-level taxonomy; the rest of the document is context-specific patterns underneath each.
 
-1. **Share the context** — teammates build their own agents on your brain/, sources/, CLAUDE.md, style.md. They run their own agents against your context.
+1. **Share the context** — teammates build their own agents on your memory/, sources/, CLAUDE.md, style.md. They run their own agents against your context.
 2. **Share a skill** — extract a scoped capability; teammates plug it into their agents.
 3. **Share the output (push)** — deploy on a schedule; output lands where the team sees it.
 4. **Share an interface (pull)** — wrap the agent; teammates invoke on demand (Slack bot, web form, HTTP endpoint).

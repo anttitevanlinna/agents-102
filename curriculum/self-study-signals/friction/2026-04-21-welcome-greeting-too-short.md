@@ -9,7 +9,7 @@
 2. What this training is in one sentence (chat → systems leap, builder leaders).
 3. Shape of what's coming (8 modules, ~1h45 each, your pace).
 4. Why two Claude windows (set up the model before the student hits it).
-5. What they leave with (a working brain + agents, their own).
+5. What they leave with (a working memory + agents, their own).
 6. *Then:* "Let's set up your workspace."
 
 Keep the voice (Seth warmth + Rory wit, not corporate onboarding). Test against new readers — does it orient without overwhelming?

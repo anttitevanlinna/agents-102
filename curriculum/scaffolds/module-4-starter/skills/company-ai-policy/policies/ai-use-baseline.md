@@ -10,7 +10,7 @@ A conservative default AI-use policy for organisations that haven't yet publishe
 
 **Rule:** AI / agent systems should be used for clearly-defined purposes — support work, research, drafting, analysis. Novel uses should be approved before deployment, not discovered in production.
 
-**Audit check:** Look at what the agent system does today (the prompts in `agents/`, the module outputs, the brain). Is the purpose clear and bounded? Or has the agent drifted into uses beyond what the user originally scoped?
+**Audit check:** Look at what the agent system does today (the prompts in `agents/`, the module outputs, the memory). Is the purpose clear and bounded? Or has the agent drifted into uses beyond what the user originally scoped?
 
 **Common violation pattern:** An agent started as a "research helper" but over modules has been used for drafting customer-facing content, making hiring judgments, or producing content the user hasn't reviewed carefully. Scope creep.
 
@@ -53,7 +53,7 @@ A conservative default AI-use policy for organisations that haven't yet publishe
 
 ### AI-6 — Data governance for AI inputs
 
-**Rule:** Data fed to AI systems inherits the organisation's data governance rules — classification, retention, lawful basis, purpose limitation. If the data couldn't be put into a shared wiki, it can't be put into an agent's brain or sources.
+**Rule:** Data fed to AI systems inherits the organisation's data governance rules — classification, retention, lawful basis, purpose limitation. If the data couldn't be put into a shared wiki, it can't be put into an agent's memory or sources.
 
 **Audit check:** Does the agent read data that wouldn't pass a shared-wiki test? A personal email, a contract with an NDA, a customer conversation marked privileged, a regulator communication — all inherit their governance requirements.
 

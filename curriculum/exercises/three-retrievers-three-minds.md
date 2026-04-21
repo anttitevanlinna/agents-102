@@ -14,7 +14,7 @@ Open your `module-2/challenge.md` from yesterday. What's the sharpest decision h
 
 Open your training directory in four Claude Code sessions. One per retriever, plus one main session where you'll work in Phase 2. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
 
-*A note on your M2 brain:* the retrievers search **live** — they don't re-read your M2 `sources/` or `brain/`. That's deliberate. Your brain becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
+*A note on your M2 memory:* the retrievers search **live** — they don't re-read your M2 `sources/` or `memory/`. That's deliberate. Your memory becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
 
 *Start four Claude Code sessions in the training directory. (Desktop users: four app sessions. CLI users: four terminal sessions, each running `claude`. Web users: four browser sessions.) Your trainer demos both live — this is the highest-friction step in the whole module; take the thirty seconds to get it right before you paste anything.*
 

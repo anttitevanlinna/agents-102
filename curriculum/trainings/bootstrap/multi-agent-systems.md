@@ -4,11 +4,8 @@
 Hire three agents to search. Three more to decide. The filesystem is the meeting room.
 
 ## Meta
-- **Primary Bloom's level:** Create
 - **Prework:** [Before Module 3](exercises/module-3-prework.md) — five practitioners automating their life with Claude Code and OpenClaw (pick three, read one piece each); a plain-language primer on how Claude Code launches helper agents (sometimes called subagents) — what they are, how to start one, what you'll see
 - **Homework:** selected "What is an Agent" sections (multi-agent coordination)
-- **Materials (trainer):** no scaffold zip. The module runs on the Module 2 state (brain, sources, working directory). All agent files are produced by prompts the student pastes — same pattern as Module 2's custom-agent move. Trainer brings: the four prompts (three retrievers + synthesizer) and the framework-prompted strategic question, visible on the site.
-- **Plug points:** the participant's three source zones (Confluence or equivalent wiki, Office365 or equivalent collab suite, curated internet); the framework the synthesizer uses; any fourth subagent persona the student wants to add
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -36,7 +33,30 @@ Last module you were the librarian. You searched Confluence, pulled from OneDriv
 - **Three stances beat one summarizer.** The synthesizer's three subagents — a backward-from-end planner, a *what-would-have-to-be-true* experimentator (Roger Martin), and a counterintuitive reframer (the Rory seat) — each interrogate the retrieved material from a stance one agent won't hold at once. The main session makes the call.
 - **Frameworks are the synthesizer's spine.** Without one it summarises. With Rumelt's kernel / strategy-as-assumptions / JTBD / principle-of-least-privilege, it decides.
 
-## Plug Points
+## Debrief
+
+Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is what you just produced: the four agent prompts, the retrieval files, the synthesizer's briefing, the conversation. Claude reviews, rewrites the root `CLAUDE.md` in place, reports what changed. You push back on anything that's off.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Review this session and update the rules. Read CLAUDE.md at the root, then scan agents/ (every file), module-3/retrievals/ (every file), and the synthesized briefing. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
+
+Then rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape — what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a "retro notes" section; rewrite the file as the better version.
+
+When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why — grounded in specific moments from the session. Name at least one handoff seam where the rules wobbled.
+```
+
+*(end of prompt)*
+
+Read Claude's summary. Push back where it's wrong — *"no, the planner and the reframer really did need to be separate"* / *"you missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. The artifact: `module-3/wonder.md` — one line naming what feels off. Not a fix. A held question. Module 5 picks it up.
+
+## Bridge
+You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
+
+<!-- maintainer -->
+
+**Plug Points (trainer):**
 
 > PLUG POINT: The three source zones the retrievers cover.
 > Default: Confluence / Office365 / curated internet (the same three the student curated in Module 2). Swap Confluence for Notion/SharePoint wiki/Guru; swap Office365 for Google Workspace. The pattern holds; the tools vary.
@@ -46,19 +66,6 @@ Last module you were the librarian. You searched Confluence, pulled from OneDriv
 
 > PLUG POINT: The three synthesizer stances.
 > Default: backward-from-end planner, Martin's *what-would-have-to-be-true* experimentator, counterintuitive reframer (the Rory seat). Students can swap the Rory seat for another sharp stance if one fits their challenge better — e.g., a premortem voice (Kahneman/Klein) for risk-heavy challenges, a JTBD interviewer voice for customer-facing ones. Keep three; keep them genuinely different.
-
-## Debrief
-Five-minute retro with Claude. Three questions, tuned to this module's deliberate unease:
-1. Where does the synthesized answer feel *almost* right but not quite? Name the shape of the doubt, not a specific fix.
-2. Which of the three stances (planner / experimentator / reframer) are you most tempted to trust — and is that trust earned, or just the one that sounded the most confident?
-3. If you had to hand this answer to your CEO tomorrow, which one sentence would you rewrite first, and which would you leave exactly as it is?
-
-The artifact: `module-3/wonder.md` — the student's honest note of what feels off in their own synthesized answer. Not a fix, not a coordination rule yet. A held question. Module 5 picks it up.
-
-## Bridge
-You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
-
-<!-- maintainer -->
 
 **TODO:** Pass 2 exercise + lecture drafts. **No scaffold zip** — agent files emerge from the student's prompts during the exercise (same pattern as Module 2's custom-agent move). The four prompts (three retrievers + synthesizer with three subagent stances) are the artifacts to get right in Pass 2. Shared handoff file shape can be established inside the prompt text (e.g., "write your findings to `module-3/retrievals/<source>.md`"); doesn't need to be pre-created.
 

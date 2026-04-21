@@ -107,7 +107,7 @@ The 8-module Bootstrap arc has an engineered emotional progression. Authors MUST
 
 Module 7 ships with four named strategies that practitioners actually use:
 
-1. **Share the context.** Teammates get your `brain/`, `sources/`, `CLAUDE.md`, `style.md` and build their own agents on top.
+1. **Share the context.** Teammates get your `memory/`, `sources/`, `CLAUDE.md`, `style.md` and build their own agents on top.
 2. **Share a skill.** Extract one scoped capability as a skill file; teammates plug it into their agents.
 3. **Share the output (push).** Deploy on a schedule; output lands where the team sees it.
 4. **Share an interface (pull).** Wrap the agent in a Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand.
@@ -116,9 +116,29 @@ Module 7 ships with four named strategies that practitioners actually use:
 
 ## Trust the prompt over scaffolds
 
-For exercises where the student is already working in Claude Code with a populated working directory, **prefer a well-crafted prompt over a pre-built scaffold file**. Students should *produce* agent files, rules files, and structure through the exercise — not unzip them. Scaffolds earn their keep when a module needs a trainer-authored artifact the student wouldn't produce themselves (Module 4's compliance skills, Module 2's initial empty `sources/brain/agents/` folders). Outside those cases, a one-page prompt does the job better: the student experiences the creation move, the artifact inherits their voice, and the training ships lighter.
+For exercises where the student is already working in Claude Code with a populated working directory, **prefer a well-crafted prompt over a pre-built scaffold file**. Students should *produce* agent files, rules files, and structure through the exercise — not unzip them. Scaffolds earn their keep when a module needs a trainer-authored artifact the student wouldn't produce themselves (Module 4's compliance skills, Module 2's initial empty `sources/memory/agents/` folders). Outside those cases, a one-page prompt does the job better: the student experiences the creation move, the artifact inherits their voice, and the training ships lighter.
 
 **Rule of thumb:** if the scaffold file contains text the student should have written in their own voice, it's wrong. Convert to a prompt that produces it.
+
+## Debrief pattern — Claude self-compounds from Module 2 onward
+
+**Module 1 Debrief is interactive by design** — it's the student's first-ever reflection move. Claude asks a few grounded questions one-at-a-time, the student answers, Claude updates the rules file and reports. The interview scaffolds the muscle.
+
+**Module 2 onward, Debriefs default to Claude self-improving.** No three-question interview. The session itself is the evidence — Claude reviews the artifacts produced (memory pages, agent files, policy reports, eval judges), reads the relevant rules file (`CLAUDE.md`, skill file, agent file), looks back over the conversation, and rewrites the rules file in place. It reports in 3–5 lines what it added / sharpened / removed and why, grounded in specific session moments. The student reads the summary and pushes back where the agent got it wrong. Push-back is the only human-in-the-loop.
+
+Why the shift: by Module 2 the student has seen the rehearsal. The question-the-student pattern becomes facilitator theatre; the artifact is what the rule should change with. Asking *"Q1 — where did compounding show up?"* makes the student do the agent's job. The self-compounding pattern teaches the right move — *"let the agent review its own work and sharpen the rules"* — which is exactly what Module 6 (evals) formalises. Running self-compounding retros from M2 onward primes that muscle four modules early.
+
+**The canonical M2+ Debrief prompt shape:**
+
+```
+Review this session and update [rules file]. Read [rules file] at [path], then scan [relevant artifact folders]. Look back over our conversation: which rules did we lean on, which did we work around, which never came up, where did the output wobble?
+
+Then rewrite [rules file]. Integrate, don't append. Sharpen weak rules, add what's missing, remove what turned out wrong. Don't add a "retro notes" section; rewrite the file as the better version.
+
+When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why — grounded in specific moments from the session.
+```
+
+Per-module variation: which rules file (`CLAUDE.md` root / a specific skill / an agent file / an eval judge); which artifact folders to scan; which failure modes to look for (e.g., Module 4 retro looks for compliance blind spots; Module 6 retro looks for judge calibration drift). The shape holds: *review → rewrite in place → report*. Never *ask the student three questions and propose lines to paste.*
 
 ## Simulation protocol
 
@@ -188,8 +208,8 @@ Be specific. Use your persona's voice. If the exercise has a flaw, you (as the s
 - **Self-report inflation** — when asked to report what changed, Claude over-claims change. Lists four pages as sharpened when two got longer. The self-report is the LEAST trustworthy part of the output. Fix: never trust Claude's own summary of its work — instruct the participant to verify directly (open the file, read the top paragraph) and give them a literal push-back prompt.
 - **Default-acceptance on offered defaults** — when a prompt offers "default rules if you don't have your own," ~90% of participants take the defaults verbatim without customization. Fix: explicitly nudge customization — "Pick at least one you'd change" — or structure so the default is a starting point, not a free pass.
 - **Plan-mode approval inflation** — multi-page plans (7+ items) get rubber-stamped because the plan *looks* structured; participants approve without reading. The plan is exactly the moment that deserves close reading, and participants treat it as a form to sign. Fix: design the prompt to force a pushback — "suggest three topic merges you'd recommend" / "mark any page likely to be soft" — before approval. The act of answering back is what creates real reading.
-- **Source-type blindness on ingestion** — Claude silently ingests dense slideware (PPTX, PDF exports of decks) and derives claims from slide titles only. The brain ends up shallow on those sources; Claude doesn't report the thinness. Fix: either tell participants to convert slide-heavy sources to text before ingestion, or add an explicit extraction-depth check to the audit prompt ("for each source file, rate how much content you actually extracted — 1-10").
-- **Citation cargo-cult** — Claude dutifully cites `brain/x.md` in outputs, but the cited file may not actually contain the specific claim. Citations become performative: the format is right, the substance isn't verified. Especially common on conventional-wisdom claims (pattern #3, citation-gap asymmetry). Fix: periodic integrity check — "for each cited claim in the output, quote the sentence in the brain file that supports it."
+- **Source-type blindness on ingestion** — Claude silently ingests dense slideware (PPTX, PDF exports of decks) and derives claims from slide titles only. The memory ends up shallow on those sources; Claude doesn't report the thinness. Fix: either tell participants to convert slide-heavy sources to text before ingestion, or add an explicit extraction-depth check to the audit prompt ("for each source file, rate how much content you actually extracted — 1-10").
+- **Citation cargo-cult** — Claude dutifully cites `memory/x.md` in outputs, but the cited file may not actually contain the specific claim. Citations become performative: the format is right, the substance isn't verified. Especially common on conventional-wisdom claims (pattern #3, citation-gap asymmetry). Fix: periodic integrity check — "for each cited claim in the output, quote the sentence in the memory file that supports it."
 - **Self-audit charity** — when Claude is asked to critique its own work, it under-flags problems. "Pick 3 generic pages" returns 2 (with reality being 4). Charitable-by-default is the RLHF legacy. Fix: prompt the audit to over-flag — "be harsher than you think necessary," "flag at least N" — or have the audit run in a fresh session with no memory of having produced the work.
 
 **Prework-specific patterns** (from first prework simulation, 2026-04-17):
@@ -303,8 +323,8 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
 
 - **Match prompt paths to Builder scope — no duplication.** Every path inside a prompt block the student pastes must be written relative to wherever the Builder is currently open. Concretely:
   - **Prework + Module 1** — the Builder is open INSIDE the folder that holds the artifacts (`<training-dir>/prework/` for prework, `<training-dir>/module-1/` for M1). Prompts use **bare filenames** here: `snake.html`, `site.html`, `CLAUDE.md`. A `prework/` or `module-1/` prefix inside one of these prompts would create a duplicated-path bug (`prework/prework/snake.html`).
-  - **Module 2 onward** — the Builder is open at the training-dir ROOT (per self-study SKILL.md seam 3) and stays there. Prompts use **single-segment `module-N/` prefixes** for per-module artifacts (`module-6/orchestrator.md`) and **bare references** for crossmodule artifacts (`brain/`, `sources/`, `agents/`, `CLAUDE.md`). Never deeper nesting, never `../brain/`. This shape matches where files actually live from the Builder's perspective and produces the shortest correct prompt.
-  - **Why per-module Builder-reopens were rejected for M2+:** every M2+ exercise reads crossmodule artifacts; `../brain/` in every prompt is noisier than `module-N/foo.md` once.
+  - **Module 2 onward** — the Builder is open at the training-dir ROOT (per self-study SKILL.md seam 3) and stays there. Prompts use **single-segment `module-N/` prefixes** for per-module artifacts (`module-6/orchestrator.md`) and **bare references** for crossmodule artifacts (`memory/`, `sources/`, `agents/`, `CLAUDE.md`). Never deeper nesting, never `../memory/`. This shape matches where files actually live from the Builder's perspective and produces the shortest correct prompt.
+  - **Why per-module Builder-reopens were rejected for M2+:** every M2+ exercise reads crossmodule artifacts; `../memory/` in every prompt is noisier than `module-N/foo.md` once.
   - **Prose exception:** prose outside prompt blocks may name files by their canonical path (`module-4/residual.md`) for reader orientation even when the prompt below uses a shorter form.
   - **The failure mode this catches:** path duplication from mismatch between Builder scope and prompt path. Every new prompt: where will the Builder be when the student pastes this? Write the path that works from there.
 - **No placeholders mid-prompt.** Don't write `[BRACKETS]` inline that the participant must find-and-replace. Not `[paste or attach]`, not `[your content]`, not `[DIMENSION NAME]` — none of these belong inside a prompt block the student is supposed to copy. Inline editing in Claude Code is tedious. **Every placeholder inside a code fence is a rule violation; check every prompt block you ship.** Handle variable content one of three ways:

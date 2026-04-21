@@ -1,6 +1,6 @@
 # Exercise: Share your work
 
-Your brain has been working for you for days now. It catches things you'd have missed, keeps a tone you taught it, and produces something you check before meetings. The question arrives on its own: *could this help someone else?*
+Your memory has been working for you for days now. It catches things you'd have missed, keeps a tone you taught it, and produces something you check before meetings. The question arrives on its own: *could this help someone else?*
 
 Hold the impulse. Then do the opposite of what vendors want you to do.
 
@@ -8,23 +8,23 @@ You are not going to ask *"what should I share with my teammate?"* That question
 
 So the starting question is theirs, not yours: **what job is my teammate trying to get done, and which sharing shape does it?**
 
-You'll interview for that job (the agent reads your brain and does most of the work). You'll pick a candidate against the outcome — not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll test the switch. You'll pre-mortem the firing. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
+You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome — not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll test the switch. You'll pre-mortem the firing. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
 
 **What you do:**
 
 **Phase 1 — Interview for the job (12 min).**
 
-You've built six modules of context. Your brain knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting — it reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
+You've built six modules of context. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting — it reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
 
 Paste this:
 
 ```
-Read my brain/, sources/, module-3/, module-5/, and module-6/.
+Read my memory/, sources/, module-3/, module-5/, and module-6/.
 
 Based only on what you find there, draft a Jobs-to-be-Done hypothesis for a
 sharing decision I'm working on. Cover four things:
 
-1. The one teammate (named if my brain names them) most likely to benefit from
+1. The one teammate (named if my memory names them) most likely to benefit from
    what I've built.
 2. The job they're trying to get done — in their language, not mine. Functional
    part, and at least one emotional or social part (anxiety, reputation,
@@ -40,7 +40,7 @@ sharing decision I'm working on. Cover four things:
      recurring meeting they could stop attending.
 
 Then use your ask-questions tool to confirm or correct each piece. Five to eight
-questions, each with three or four options you drew from my brain. I'll pick.
+questions, each with three or four options you drew from my memory. I'll pick.
 Don't ask me to type freeform answers — the point is that you already have most
 of this on disk.
 
@@ -51,7 +51,7 @@ When I'm done picking, write module-7/jtbd.md with:
 - The outcome statement in this form: "minimize/increase [metric] when [doing
   the job]." Pick the vector that cuts deepest — not all three.
 
-Anchor every claim to a specific file and line in my brain, plus the questions
+Anchor every claim to a specific file and line in my memory, plus the questions
 I answered. Show me the file before saving.
 ```
 
@@ -81,7 +81,7 @@ Write `module-7/branch.md`. For each pattern picked, one sentence: *this pattern
 
 The four strategies, as a reminder:
 
-1. **Share the context.** Your `brain/`, `sources/`, `CLAUDE.md`, `style.md` travel. Teammates build on top.
+1. **Share the context.** Your `memory/`, `sources/`, `CLAUDE.md`, `style.md` travel. Teammates build on top.
 2. **Share a skill.** Extract one scoped capability. Teammates plug it in.
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
 4. **Share an interface (pull).** Wrap the agent. Teammates invoke — Slack bot, Teams @mention, web form.
@@ -105,7 +105,7 @@ File 1: module-7/technical-plan.md — how the candidate delivers the outcome.
 
 File 2: module-7/people-plan.md — equally load-bearing. Cover all five:
 - Ownership: named person accountable. Not a role.
-- Governance: who can add to the brain, change the rules, see the output.
+- Governance: who can add to the memory, change the rules, see the output.
 - Operating: who notices when the outcome metric slips. What they do about it. If the obvious name is also the person who benefits most, name a second person who'd notice independently — otherwise the only alarm is the person with a reason to silence it.
 - Accountability: who decides the candidate is no longer doing the job — who
   fires the hire.
@@ -186,7 +186,7 @@ In self-study, ask Teacher Claude to read all your module-7 files and push back 
 
 **What happens:**
 
-The interview will surprise you. Your brain already knew 80% of this teammate's job — the agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one — anxiety, dependency, scope, workload) is usually the one that actually matters.
+The interview will surprise you. Your memory already knew 80% of this teammate's job — the agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one — anxiety, dependency, scope, workload) is usually the one that actually matters.
 
 Your pattern selection will look different under the outcome test than under the infrastructure test. Patterns you'd have picked because they're easy don't move the metric. Patterns you'd have ruled out because they seem hard turn out to be the only ones that do the job. That's the reframe.
 
@@ -209,7 +209,7 @@ A candidate picked because it fits the infrastructure is shopping. A candidate p
 **Facilitator notes:**
 
 - **Capability check before delivery:** confirm Claude Code's AskUserQuestion tool is available in the student's environment (student-facing name: "ask-questions tool"). The tool renders bounded multiple-choice questions inline and is the Phase 1 interaction primitive. If unavailable in a cohort's build, fall back to Claude asking structured questions one at a time with numbered options the student picks by number — mechanically similar, pedagogically weaker.
-- **Phase 1 is the magic beat.** The teaching moment is the student experiencing that the agent already had 80% of the teammate's job on disk, and that seven targeted questions plug the remaining 20%. If the agent's hypothesis just parrots back the student's own assumptions, the magic fails. Teacher Claude (self-study) or facilitator (in-room) nudges: *"Did the agent actually read your brain, or did it guess from file names? Find one claim in the JTBD brief that surprised you. If nothing surprised you, ask the agent to try again — the outcome is not the job you already had in mind."*
+- **Phase 1 is the magic beat.** The teaching moment is the student experiencing that the agent already had 80% of the teammate's job on disk, and that seven targeted questions plug the remaining 20%. If the agent's hypothesis just parrots back the student's own assumptions, the magic fails. Teacher Claude (self-study) or facilitator (in-room) nudges: *"Did the agent actually read your memory, or did it guess from file names? Find one claim in the JTBD brief that surprised you. If nothing surprised you, ask the agent to try again — the outcome is not the job you already had in mind."*
 - **Third-axis surfacing.** If the three outcome vectors come back as speed / quality / (weak generic "other"), push: *"If speed and quality stayed flat, what else would your teammate want? Dependency removed? Anxiety reduced? Scope they could take on that they can't today? Workload shifted to someone else?"* The non-obvious axis is where interviewing-for-outcomes earns its keep and is the lesson students take to Monday's adoption problem.
 - **Branch selection around 14 min in** (start of Phase 2). Most Nordic cohorts land heavily in Branch B — don't apologize for it, frame it as the honest pattern for most buyers on day one.
 - **Phase 2 selection test is *does this move the outcome*, not *does this fit my infra*.** Watch for students picking patterns because they're technically feasible rather than because they do the job. Nudge: *"Why would your teammate fire their current hire and use this? Answer that in one sentence. If you can't, pick a different pattern."*
@@ -234,7 +234,7 @@ Supporting research inline via prework three-walls reading: Access-Trust Gap (Pa
 **Claude-behavior watch-fors:**
 
 - **Ask-questions tool dump.** Some Claude Code builds will send all eight questions in a single AskUserQuestion call; others serialise one-at-a-time. Either renders fine — the student picks options; there's no freeform typing — but the one-at-a-time variant lets the agent refine mid-interview. Don't sweat it either way; flag if the tool returns freeform text prompts instead of bounded options (then the tool isn't actually being invoked, and you've fallen back to chat — nudge the student to re-run the Phase 1 prompt and name the tool explicitly).
-- **Brain-reading vs. guessing.** Claude will sometimes fabricate a confident JTBD hypothesis from file names alone without actually reading the files. Tell: the hypothesis is generic, cites no specific line. Fix prompt at top of Phase 1 already says "anchor every claim to a specific file and line in my brain." If the output still has no anchors, push: *"quote the sentence from my brain that made you think this."*
+- **Memory-reading vs. guessing.** Claude will sometimes fabricate a confident JTBD hypothesis from file names alone without actually reading the files. Tell: the hypothesis is generic, cites no specific line. Fix prompt at top of Phase 1 already says "anchor every claim to a specific file and line in my memory." If the output still has no anchors, push: *"quote the sentence from my memory that made you think this."*
 - **Default-acceptance on Phase 1 hypothesis.** Students rubber-stamp what the agent returns. Teacher Claude or facilitator: *"pick one thing that's probably wrong. Ask it to try again on that piece."*
 - **Append-vs-integrate on Phase 4.** Assumption-test should reshape the plans' confidence, not append a new "assumptions" paragraph. Prompt says so; watch the output.
 - **Plan-mode preamble bloat on Phase 3.** Prime students to scroll past.

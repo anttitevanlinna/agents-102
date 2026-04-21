@@ -10,7 +10,7 @@ The General Data Protection Regulation applies to all personal data of EU / EEA 
 
 **Rule:** Personal data may only be processed on a lawful basis — consent, contract, legal obligation, vital interests, public task, or legitimate interests. The agent system must not process personal data outside the lawful basis that authorised the original collection.
 
-**Audit check:** Look for files containing personal data (`brain/`, `sources/`, `module-*/`). For each: is there evidence of why this data is being processed by an agent, and does that purpose match the original collection basis? Files with no context on source or purpose are usually "I can't tell."
+**Audit check:** Look for files containing personal data (`memory/`, `sources/`, `module-*/`). For each: is there evidence of why this data is being processed by an agent, and does that purpose match the original collection basis? Files with no context on source or purpose are usually "I can't tell."
 
 **Common violation pattern:** Customer call notes collected for sales follow-up being read by an agent producing competitive analysis. Different purpose, likely beyond the original lawful basis.
 
@@ -20,7 +20,7 @@ The General Data Protection Regulation applies to all personal data of EU / EEA 
 
 **Audit check:** For each file the agent reads containing personal data, ask: does the agent need the names to do its job? If it could work with role references ("the IT Director," "the procurement lead") instead of names, the data hasn't been minimised.
 
-**Common violation pattern:** `brain/people.md` or `brain/contacts.md` as canonical files with named individuals. Usually convenient for the user, usually more data than the agent strictly needs for its output.
+**Common violation pattern:** `memory/people.md` or `memory/contacts.md` as canonical files with named individuals. Usually convenient for the user, usually more data than the agent strictly needs for its output.
 
 ### GDPR-3 — Purpose limitation
 
@@ -34,7 +34,7 @@ The General Data Protection Regulation applies to all personal data of EU / EEA 
 
 **Rule:** Personal data should not be kept longer than necessary for the purpose. Agent systems often accumulate data indefinitely because nobody's thinking about retention.
 
-**Audit check:** Are there files in `brain/`, `sources/`, or `module-*/` that contain personal data older than the purpose requires? (E.g., call notes from a lost deal 2 years ago still in `sources/`.) Usually "I can't tell" unless timestamps are explicit.
+**Audit check:** Are there files in `memory/`, `sources/`, or `module-*/` that contain personal data older than the purpose requires? (E.g., call notes from a lost deal 2 years ago still in `sources/`.) Usually "I can't tell" unless timestamps are explicit.
 
 **Common violation pattern:** Training directories that started as fresh workspaces accumulating real personal data over months without retention discipline.
 
@@ -44,7 +44,7 @@ The General Data Protection Regulation applies to all personal data of EU / EEA 
 
 **Audit check:** Could the user enumerate every individual whose personal data is somewhere in this agent system? If not, a data subject request ("please delete all my data") cannot be honoured completely. Usually "I can't tell" unless the user has built a data-subject map.
 
-**Common violation pattern:** Personal data in multiple places (brain, sources, agent outputs, prior module artifacts) with no central index of who appears where.
+**Common violation pattern:** Personal data in multiple places (memory, sources, agent outputs, prior module artifacts) with no central index of who appears where.
 
 ### GDPR-6 — International transfers
 

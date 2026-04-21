@@ -1,6 +1,6 @@
 ---
 name: crux
-description: Find the load-bearing obstacle before prescribing. Use on a messy challenge, a brain folder, or a set of notes when someone is about to jump to solutions. Produces an ordered obstacle list, the named crux, a first-pass guiding policy, and the three actions it implies.
+description: Find the load-bearing obstacle before prescribing. Use on a messy challenge, a memory folder, or a set of notes when someone is about to jump to solutions. Produces an ordered obstacle list, the named crux, a first-pass guiding policy, and the three actions it implies.
 ---
 
 # Crux — diagnose before you prescribe
@@ -14,7 +14,7 @@ This skill forces the sequence. Diagnosis, then guiding policy, then coherent ac
 ## Input
 
 One of:
-- A brain folder (notes, source files, observations about a situation)
+- A memory folder (notes, source files, observations about a situation)
 - A challenge brief written in prose
 - A messy set of bullets from a meeting
 

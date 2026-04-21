@@ -29,7 +29,7 @@ All other prompt blocks surveyed:
 
 - personal-site-with-guardrails.md (M1, `module-1/` scope): uses bare `site.html`, `snake.html`, `CLAUDE.md`. PASS.
 - personal-agent-homework.md (M2 homework, root scope): `module-2/morning-agent/morning.md`, `module-2/morning-agent/latest.html`, bare `style.md`, `CLAUDE.md`. PASS.
-- build-your-challenge-brain.md (M2): bare `sources/`, `brain/`, `agents/`, `CLAUDE.md`; `module-2/soft-pages.md`. PASS.
+- build-your-challenge-memory.md (M2): bare `sources/`, `memory/`, `agents/`, `CLAUDE.md`; `module-2/soft-pages.md`. PASS. *(Renamed from build-your-challenge-brain.md 2026-04-21.)*
 - three-retrievers-three-minds.md (M3): `module-3/question.md`, `module-3/retrievals/<name>.md`, `module-3/stances/<name>.md`. PASS.
 - audit-your-agent.md (M4): `module-4/policy-report.md`, `module-4/security-report.md`, `module-4/residual.md`, bare `skills/`. PASS.
 - hallucination-bakeoff.md (M5): `module-5/briefing.md`, `module-5/gold-standard.md`, `module-5/detectors/<name>.md`, `module-5/scoreboard.md`, `module-5/still-uncertain.md`, bare `judges/groundedness-judge.md`. PASS.
@@ -64,7 +64,7 @@ Verdict: **MISSING-TIMES + THIN.** Even generously adding targets, stated exerci
 |-------|--------|--------|--------|
 | Connections | [NO TIME STATED] | 8-12 | MISSING |
 | Lecture: compounding | 10 min | 10-15 | OK |
-| Exercise: build-your-challenge-brain | 45 min | 55-70 | UNDER |
+| Exercise: build-your-challenge-memory | 45 min | 55-70 | UNDER |
 | Debrief | ~5 min | 12-18 | UNDER |
 | Bridge | [NO TIME STATED] | 3-5 | MISSING |
 | **TOTAL (stated)** | ~60 min | 90-110 | **THIN + MISSING-TIMES** |
@@ -162,7 +162,7 @@ Verdict: **MISSING-TIMES.** M8 has no explicit time targets on any phase. Exerci
 
 ### RAG / retrieval-augmented generation
 - **First occurrence:** `curriculum/lectures/grounded.md` line 45 (student-facing) — *"Somebody tells you 'use retrieval-augmented generation,' or 'do a consistency check,'…"* Used without plain-English definition; the student is left to infer. **UNEARNED.** The phrase is quoted as what students might have heard, but that doesn't earn it for an SVP who has not heard it.
-- `build-your-challenge-brain.md` line 147 mentions "File-based agentic RAG (Boris Cherny / Anthropic observation)" — in maintainer section. EXEMPT.
+- `build-your-challenge-memory.md` line 147 mentions "File-based agentic RAG (Boris Cherny / Anthropic observation)" — in maintainer section. EXEMPT.
 - grounded.md lines 103, 111 — in maintainer section. EXEMPT.
 - **Verdict:** UNEARNED in grounded.md. Fix: drop the phrase or add a one-clause gloss ("RAG — feeding the agent retrieved documents so it quotes from them").
 

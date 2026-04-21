@@ -31,7 +31,7 @@ After the table, add a short summary section:
 ## How to read the agent system
 
 The system usually lives in the current working directory:
-- `brain/` — cross-module knowledge files
+- `memory/` — cross-module knowledge files
 - `sources/` — raw input material (internal docs, exports, call notes, policy text)
 - `agents/` — agent instruction files (`*.md`)
 - Root `CLAUDE.md` — cross-module rules

@@ -4,11 +4,8 @@
 You don't pick a detection method because someone said so. You run several in parallel on your own output, let a meta-evaluator score them against a gold standard you wrote, and keep the winner. Quality is measured, not assumed.
 
 ## Meta
-- **Primary Bloom's level:** Evaluate (method selection) → Synthesize (winning judge saved as reusable file)
 - **Prework:** [Before Module 5](exercises/module-5-prework.md) — two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Student arrives with one sentence per case: "the missing organisational check was X."
 - **Homework:** Chip Huyen *AI Engineering* (O'Reilly 2025) — selected sections (candidate); the student's own `module-5/still-uncertain.md` carried into Module 6 prework
-- **Materials (trainer):** the student's Module 3 synthesized answer and retrievals — no pre-built failing agent. The briefing that comes out of Module 3's synthesis IS the test corpus.
-- **Plug points:** briefing target, four detector methods, gold standard size
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -37,7 +34,35 @@ In Module 3 the synthesized answer sat at an uneasy distance — you'd stake you
 - **Grounded is the discipline; the bake-off is how you build the check.** There IS truth out there. Sources carry shards of it. A judge that's been measured against a gold standard is the machine that keeps the output connected to the ground when you're not in the room.
 - **What the judge can't reach.** The bake-off's gold standard was five claims you wrote in two minutes. A production judge wants hundreds, running on every build, learning from its own corrections. Same method, bigger scale. Next module.
 
-## Plug Points
+## Debrief
+
+Five minutes. Claude reviews the bake-off and sharpens the judge file you just saved. The evidence is what the scoreboard produced: four detector outputs, the meta-eval's reasoning, the gold standard you wrote, the winning judge. Claude reviews, rewrites `judges/groundedness-judge.md` in place, reports what changed. You push back on anything that's off.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Review this session and sharpen the winning judge. Read judges/groundedness-judge.md, then scan module-5/detectors/ (all four), module-5/gold-standard.md, and the meta-eval's scoreboard. Look back over the session: where did the winning detector catch something the others missed, where was the meta-eval charitable to a generic claim, which claim-shape did no detector flag, where did a citation get cargo-culted (present but not load-bearing), what specific failure class slipped past everyone?
+
+Then rewrite judges/groundedness-judge.md. Integrate, don't append. Tighten the scope statement so the judge knows what it's for, add the specific claim-shape or source-type the bake-off revealed it doesn't handle, sharpen the "Known limit:" line so it names a real failure class, not a platitude. Don't add a "retro notes" section; rewrite the file as the better version.
+
+When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why — grounded in specific rows from the scoreboard. Name the one claim-shape this judge will still miss.
+```
+
+*(end of prompt)*
+
+Read Claude's summary. Push back where it's wrong — *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft — say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up tomorrow; it's the seed of the student's first production eval.
+
+## Bridge
+You ran the bake-off once. Five claims, four detectors, one judge. Now imagine the gold standard has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
+
+<!-- maintainer -->
+
+**Meta (trainer):**
+- **Primary Bloom's level:** Evaluate (method selection) → Synthesize (winning judge saved as reusable file)
+- **Materials (trainer):** the student's Module 3 synthesized answer and retrievals — no pre-built failing agent. The briefing that comes out of Module 3's synthesis IS the test corpus.
+- **Plug points:** briefing target, four detector methods, gold standard size
+
+**Plug Points (trainer):**
 
 > PLUG POINT: The briefing target.
 > Default: the Module 3 synthesized briefing the student already produced. Any over-reaching output the student cares about also works (a board paper, a Monday memo, a customer-facing proposal).
@@ -47,19 +72,6 @@ In Module 3 the synthesized answer sat at an uneasy distance — you'd stake you
 
 > PLUG POINT: The gold standard size.
 > Default: five claims. Raise to seven for cohorts whose briefings run long; never below five (precision/recall get noisy).
-
-## Debrief
-Five-minute retro with Claude, tuned to the module's mechanical-rescue mood:
-1. Looking at the scoreboard, which detector won and why — not which one you expected to win, but what you saw in the numbers? Name the specific row that made the call for you.
-2. Your `module-5/still-uncertain.md` line — what specifically won't this judge catch? Is it the shape of claim it doesn't flag, the type of source it can't read, or the judgment call no detector can make?
-3. If you ran this bake-off next week on a different output — a pricing memo, a compliance summary, a customer proposal — what's the first detector you'd swap in or out? And what's the first claim you'd put in next week's gold standard?
-
-The artifact: `judges/groundedness-judge.md` — the winner of the bake-off, saved as a portable judge prompt with a stated scope and a "known limit" line. Module 6 picks this file up; it's the seed of the student's first production eval.
-
-## Bridge
-You ran the bake-off once. Five claims, four detectors, one judge. Now imagine the gold standard has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
-
-<!-- maintainer -->
 
 **Reshape (2026-04-19):** M5 shifted from "student manually classifies claims" to **hallucination bake-off** — one of the three designated magic beats in M3–M8. The student operates as panel-setup + scoreboard-watcher + winner-saver, not as the classifier. Meta-eval picks the winner; student watches. Previous exercise (`ground-your-output.md`) superseded; the grounded/ungrounded/misrepresents/overreaches/ungrounded-shape vocabulary is no longer required material.
 

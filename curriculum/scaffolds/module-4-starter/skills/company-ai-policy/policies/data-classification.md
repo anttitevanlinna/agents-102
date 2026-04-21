@@ -13,9 +13,9 @@ Nordic-baseline four-tier classification. Most regulated Nordic organisations ru
 
 ### CLASS-1 — Data tier identified
 
-**Rule:** Every source file in `sources/` and every entry in `brain/` should have its classification tier identified — either in the file itself, in a sibling README, or as a naming convention.
+**Rule:** Every source file in `sources/` and every entry in `memory/` should have its classification tier identified — either in the file itself, in a sibling README, or as a naming convention.
 
-**Audit check:** Look at `sources/` and `brain/`. Are files labelled with their classification tier? If a file contains obviously-sensitive content (commercial numbers, named individuals, legal-privileged language) without a classification label, that's usually a violation.
+**Audit check:** Look at `sources/` and `memory/`. Are files labelled with their classification tier? If a file contains obviously-sensitive content (commercial numbers, named individuals, legal-privileged language) without a classification label, that's usually a violation.
 
 **Common pattern:** A `sources/` folder with 20 files, none labelled. The user knows which are sensitive; the agent doesn't. "I can't tell" is almost always the verdict.
 
@@ -25,7 +25,7 @@ Nordic-baseline four-tier classification. Most regulated Nordic organisations ru
 
 **Audit check:** Is there any restricted data in the system (special-category personal data, material non-public information, security-sensitive content)? If yes, is it in a scoped folder that only specific agents read? Is there any log of access?
 
-**Common violation pattern:** Restricted data mixed into general `sources/` or `brain/` folders, readable by every agent, with no access logging.
+**Common violation pattern:** Restricted data mixed into general `sources/` or `memory/` folders, readable by every agent, with no access logging.
 
 ### CLASS-3 — Confidential data doesn't leak into public-tier output
 
@@ -61,4 +61,4 @@ Nordic-baseline four-tier classification. Most regulated Nordic organisations ru
 
 The point of classification isn't bureaucracy — it's reducing the surface area for accidents. A system where every file is tier-labelled and tiers are honoured makes information disclosure risk visible. A system with no labels hides the risk inside convenience.
 
-If the user's system has no tier discipline, the baseline recommendation is: add one rule to CLAUDE.md — *"any file in sources/ or brain/ without an explicit tier label is treated as Confidential."* Makes the default safe, forces explicit labelling to relax.
+If the user's system has no tier discipline, the baseline recommendation is: add one rule to CLAUDE.md — *"any file in sources/ or memory/ without an explicit tier label is treated as Confidential."* Makes the default safe, forces explicit labelling to relax.

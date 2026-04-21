@@ -4,11 +4,8 @@
 The tool that builds tools compounds.
 
 ## Meta
-- **Primary Bloom's level:** Create
 - **Prework:** Risto on acting on the future and building hypotheses; Rumelt on crux / good strategy bad strategy
 - **Homework:** none (the strategy deliverable IS the closing artifact)
-- **Materials (trainer):** demo agent that generates another agent; shared-context scaffold for the joint Diamond 1 + 2 exercise; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman) — arrive installed from Module 7 and re-apply here on the room-level problem.
-- **Plug points:** CTO/sponsor present; company's own context fed into all agents
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -23,7 +20,7 @@ After this module, you will be able to:
 ## Exercises
 - **Extend your system** — Use Claude Code to generate a new agent (new data source, new output, new perspective). You describe. The coding agent builds. It works. That's multiplication.
 - **Joint Double Diamond — diagnose and guide** — Everyone's agents run on shared context. The synthesis IS the sequence of three skills applied in order:
-  1. **`crux`** — every participant's agent runs the Rumelt discipline on their own brain folder. Obstacles, clusters, the load-bearing one named. The room pools cruxes; the CTO's agent synthesizes the top three and drafts the guiding policy.
+  1. **`crux`** — every participant's agent runs the Rumelt discipline on their own memory folder. Obstacles, clusters, the load-bearing one named. The room pools cruxes; the CTO's agent synthesizes the top three and drafts the guiding policy.
   2. **`assumption-test`** — the guiding policy and its actions go through Roger Martin's discipline. What would have to be true for this to work? Assumptions ranked, top three pulled out, two-week experiments designed.
   3. **`pre-mortem`** — the resulting plan gets the Klein/Kahneman treatment. 18 months from now, this failed — what happened? Concrete risks, early warning signals.
   Personal agents cross-pollinate throughout — your agent reads mine, flags conflicts, finds synergies. Output: the synthesized AI strategy — diagnosis, guiding policy, experiments, risks, signals. The three skills arrived installed in Module 7; today they re-invoke at room scale on the strategy problem. Yesterday they ran against the student's own sharing problem; today the whole room runs them against company strategy. Same disciplines, bigger instrument.
@@ -36,7 +33,7 @@ The peak of M8 moves from *"agents on shared context, humans orchestrate"* to **
 
 **Why this is the right direction:**
 - **Genuine heterogeneity of context.** 10 real agents from 10 real orgs argue through a shared problem. The diversity is the insight. A single synthetic panel can't produce this.
-- **Entire M1–M7 arc pays off in M8.** The personal agent ARRIVES loaded with the student's brain, sources, skills, evals, sharing protocol. M8 is the payoff, not a new exercise.
+- **Entire M1–M7 arc pays off in M8.** The personal agent ARRIVES loaded with the student's memory, sources, skills, evals, sharing protocol. M8 is the payoff, not a new exercise.
 - **Agents orchestrating agents, applied to itself.** The orchestrator is also an agent. M8's own thesis made literal.
 - **Understandable magic.** Students read every message and `@mention`; the transcript is the mechanism. Legible even though networked.
 - **Designed to the capability that's landing, not the one from 6 months ago.** Networked agent runtimes, persistent identity, native agent-to-agent messaging are arriving. M8 is ahead of the curve, not chasing it.
@@ -62,13 +59,38 @@ Detailed notes: `memory/project_m8_joint_panel.md`.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply to the company's 200 processes to pick the first 5 to try.
 - **Skills as thinking disciplines — reusable tools you take home.** `crux`, `assumption-test`, `pre-mortem` aren't Module 8 props. They're named, portable disciplines participants point Claude at from Tuesday onward, on any decision that feels too big to eyeball.
 
-## Plug Points
-- **CTO/sponsor must be in the room.** Their agent has the special role in Diamond 2.
-- **The company's own strategic context** — feeds into all agents during the joint exercise.
-- **Agent demos.** Every participant shipped at least one real agent over the course of the training (promised from Module 1, built progressively from Module 2 onward). The closing session includes a demo round — each participant shows what their agent does, with their real data. The demo moment is part of the Module 8 deliverable, not separate from it.
+## Debrief
+
+Five minutes. Claude reviews the room's deliberation and sharpens whichever file carried the load — the orchestrator's rules, the strategy judge, the rules of engagement that governed how the agents argued. The evidence is what the room produced: the pooled cruxes, the guiding policy, the ranked assumptions, the pre-mortem, the orchestrator transcript. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Review this session and sharpen the file that carried the most weight — most likely the orchestrator's rules or the deliberation judge, whichever governed how the room's agents argued and converged. Read that file, then scan module-8/ — pooled cruxes, guiding policy, assumptions, pre-mortem, orchestrator transcript. Look back over the deliberation: where did the flywheel stall (an agent waiting on another that never finished), which role in the round was under-specified so two agents played it or none did, where did the room converge too fast on a wrong assumption, where did a pushback land and change a stance (capture that as a rule), what did the room fail to decide and why?
+
+Then rewrite the file. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Don't add a "retro notes" section; rewrite the file as the better version. Do not close every loop — some of what the room couldn't decide should stay open, named.
+
+When you're done, tell me in 3–5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why — grounded in specific moments from the deliberation. Name one thing the room genuinely didn't resolve.
+```
+
+*(end of prompt)*
+
+Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve — it's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again on Tuesday, on Wednesday, on the next problem the room doesn't know yet it has. You just watched it compound.
 
 ## Identity-naming close
 The sponsor — who sat alongside the room for all eight modules — names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No ceremony. A name the graduate can say to colleagues on Tuesday morning who weren't there. Identity persists; skills fade.
 
 ## Bridge
 The strategy you just produced is a set of assumptions. Label them. Design experiments to test them. That's how you start Monday. Bootstrap is Step 1 of 5 — Make Your Own is next.
+
+<!-- maintainer -->
+
+**Meta (trainer):**
+- **Primary Bloom's level:** Create
+- **Materials (trainer):** demo agent that generates another agent; shared-context scaffold for the joint Diamond 1 + 2 exercise; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman) — arrive installed from Module 7 and re-apply here on the room-level problem.
+- **Plug points:** CTO/sponsor present; company's own context fed into all agents
+
+**Plug Points (trainer):**
+- **CTO/sponsor must be in the room.** Their agent has the special role in Diamond 2.
+- **The company's own strategic context** — feeds into all agents during the joint exercise.
+- **Agent demos.** Every participant shipped at least one real agent over the course of the training (promised from Module 1, built progressively from Module 2 onward). The closing session includes a demo round — each participant shows what their agent does, with their real data. The demo moment is part of the Module 8 deliverable, not separate from it.

@@ -1,8 +1,10 @@
-# Eval Instance — Bootstrap / Build your challenge brain exercise
+# Eval Instance — Bootstrap / Build your challenge memory exercise
 
 Filled-in instance of `curriculum/evals/exercise.md` for the Module 2 (Building Agent Systems) exercise in the Bootstrap training.
 
-**Target exercise file:** `curriculum/exercises/build-your-challenge-brain.md`
+**Target exercise file:** `curriculum/exercises/build-your-challenge-memory.md`
+
+**Note on vocabulary:** renamed 2026-04-21 from *"brain"* → *"memory"* as part of a project-wide rename (our own vocabulary for the `brain/` folder → `memory/`, to free "Second Brain" for external-concept citation). Historical run notes below still say "brain" — intentional, they describe what the exercise was called at the time. Judges and structural content reference "memory" going forward.
 
 **Eval runs:**
 - 2026-04-17 (pass 1) — **APPROVE WITH TODOs** — 15/16 judges pass; Length fails (~900 words vs. 400–700 target). Three pass-2 sharpen items applied: (1) "Quality beats quantity — you are the curator" promoted to its own line with Rory-style reframe ("Most brains fail in the first ten minutes, not the last ten"); (2) "Ten seconds here saves an hour" + "Don't hover" padding removed; (3) Phase 3 seam tightened — added "Second batch made the first batch better. Chat literally cannot do this." so the compounding aha lands before the audit pivot; Module 5/6 forward-reference line removed from body.
@@ -19,7 +21,7 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 2 (Building 
 - Phase 3 "revisit soft-pages.md" assumes continuity across 25 minutes — consider a one-line reminder ("soft-pages.md from Phase 1 — the generic pages we parked").
 - Emotional arc dent Phase 2 → Phase 3: Phase 2 produces joy (first agent works); Phase 3 is housekeeping on the brain. Consider letting the agent consume the new source in Phase 3 — "your agent just got a new fact; watch it change" — instead of routing through brain-update first.
 - ~~Neighbor-swap confidentiality note~~ — resolved 2026-04-18: neighbor swap replaced with "Close — put it to work" (participant runs a real working question against their own brain). Removes confidentiality surface entirely; classroom-only mechanic dropped in favor of a move that's identical in both modes.
-- "Plan mode" Shift+Tab cycle with three modes — novice cycles past. Consider emphasizing Shift+P as the canonical alternative.
+- ~~"Plan mode" Shift+Tab cycle with three modes — novice cycles past. Consider emphasizing Shift+P as the canonical alternative.~~ — resolved 2026-04-21: prompt-toggle (*"Enable plan mode"*) named as the primary method; Shift+P removed from all material (unreliable); desktop mode dropdown named as the GUI alternative; Shift+Tab kept as keyboard alternative.
 
 **New Claude-behavior patterns surfaced (added to content-creation skill known-patterns list):**
 - **Plan-mode approval inflation** — 7-page plans get rubber-stamped; the plan *looks* structured so participants approve without reading. The self-audit prompt catches it but assumes reading happened.
@@ -34,8 +36,8 @@ Filled-in instance of `curriculum/evals/exercise.md` for the Module 2 (Building 
 ### Primary — the leap test
 
 After completing this exercise, the participant can:
-- **Describe compounding** — point to a specific moment in Phase 3 when a brain page about their challenge got *sharper* from new sources (not just longer), and explain why that matters
-- **Recognize the substrate pattern** — state in plain terms that the brain is markdown files, the custom agent is also a markdown file, and the rules file (`CLAUDE.md`) is also a markdown file — one kind of object doing three jobs — and why that beats a fancier setup
+- **Describe compounding** — point to a specific moment in Phase 3 when a memory page about their challenge got *sharper* from new sources (not just longer), and explain why that matters
+- **Recognize the substrate pattern** — state in plain terms that the memory is markdown files, the custom agent is also a markdown file, and the rules file (`CLAUDE.md`) is also a markdown file — one kind of object doing three jobs — and why that beats a fancier setup
 - **Build a second custom agent solo** — back at work, pick a different recurring job on the same challenge (or a new one) and create another `agents/<name>.md` file without trainer support
 
 If an SVP marketing or SVP operations walks out able to do these three things, and says "this is something I'd actually use on Monday for the challenge I'm carrying," it's good enough.
@@ -45,25 +47,25 @@ If an SVP marketing or SVP operations walks out able to do these three things, a
 Leads with Module 2's Big Idea: **A system remembers, grows, and compounds. Chat doesn't. Your next big challenge is the foundation.**
 
 Avoids:
-- Framing the brain as "documentation" (documentation is static; a brain compounds)
+- Framing the memory as "documentation" (documentation is static; a memory compounds)
 - Framing the custom agent as a "chatbot" (chatbot = single turn; agent = a reusable role with rules, invoked by pointing Claude at the file)
 - Framing the root `CLAUDE.md` as a "system prompt" (tech jargon; the rules file is a living document students edit every module)
-- Framing the brain as "knowledge management" at company scale — the scope is *this challenge*, not the whole company
+- Framing the memory as "knowledge management" at company scale — the scope is *this challenge*, not the whole company
 
 ### Learning goal fit
 
 Enables these LOs from `trainings/bootstrap/building-agent-systems.md`:
-- **Build** an LLM brain on your next big challenge, curated from internal wikis, recent work, and practitioner best practice — Phase 1 curates then ingests
+- **Build** an LLM memory on your next big challenge, curated from internal wikis, recent work, and practitioner best practice — Phase 1 curates then ingests
 - **Construct** your first custom agent — a plain markdown file with instructions (what it's for, and the rules it follows) — Phase 2
 - **Use** Claude Code's plan mode to review multi-step agent actions before they run — Phase 1 uses plan mode; Phase 2 contrasts with direct execution
 - **Analyze** the three layers of the system — emerges from Phases 1–3; named in the Compounding lecture after
-- **Evaluate** whether the brain is compounding or merely growing — Phase 3's "sharper, not longer" check + audit pushback is the direct measurement
+- **Evaluate** whether the memory is compounding or merely growing — Phase 3's "sharper, not longer" check + audit pushback is the direct measurement
 
 ### Module-to-module arc
 
-Picks up from **Name your next big challenge** (prework) — the one-paragraph brief in `module-2/challenge.md` is the seed Phase 1 curation grows from. Also picks up from **Module 1 (Getting Going)** — "same move, different shelf" references the Module 1 guardrail/context mechanism at brain-page and agent-file level.
+Picks up from **Name your next big challenge** (Module 2 opener, first 15 min) — the one-paragraph brief in `module-2/challenge.md` is the seed Phase 1 curation grows from. Also picks up from **Module 1 (Getting Going)** — "same move, different shelf" references the Module 1 guardrail/context mechanism at memory-page and agent-file level.
 
-Hands off to **Schedule your personal agent** (homework) — the brain built here is what the scheduled agent reads every morning. Also hands off to **Module 3 (Multi-Agent Systems)** via the Bridge ("the job is getting too big for one agent — what do you split?") and to Module 7/8 where personal brains get promoted to team and synthesized across people.
+Hands off to **Schedule your personal agent** (homework) — the memory built here is what the scheduled agent reads every morning. Also hands off to **Module 3 (Multi-Agent Systems)** via the Bridge ("the job is getting too big for one agent — what do you split?") and to Module 7/8 where personal memories get promoted to team and synthesized across people.
 
 ### The teaching moment lands
 
@@ -71,16 +73,16 @@ The exercise reliably produces these ahas:
 - **"Three pages got SHARPER in Phase 3."** — the compounding moment. A chat can't do this; a folder of markdown files can.
 - **"The agent is also just an .md file."** — the substrate moment. Knowledge, capability, and guardrail are the same kind of object.
 - **"Claude proposed search terms and sources I wouldn't have thought of."** — the guided-curation moment. New to this version. Curation becomes craft, not shovel.
-- **"The brain answered my real working question with specifics and citations, not a generic industry take."** — the differentiation-at-personal-scale moment, parallel to Module 1's personal-site payoff. The contrast holds because the challenge is the participant's own; a generic answer exposes thin spots they can feel immediately.
+- **"The memory answered my real working question with specifics and citations, not a generic industry take."** — the differentiation-at-personal-scale moment, parallel to Module 1's personal-site payoff. The contrast holds because the challenge is the participant's own; a generic answer exposes thin spots they can feel immediately.
 
-If reasonable variation in participant skill can skip any of these moments, the exercise is fragile. Plan mode protects the first; the agent-rules defaults protect the second; the guided-curation prompt protects the third; the Close "put it to work" question forces the fourth — a real working question answered against your own brain either lands specific or reveals what's thin.
+If reasonable variation in participant skill can skip any of these moments, the exercise is fragile. Plan mode protects the first; the agent-rules defaults protect the second; the guided-curation prompt protects the third; the Close "put it to work" question forces the fourth — a real working question answered against your own memory either lands specific or reveals what's thin.
 
 ### Riffs on a recognized framework
 
 - **Karpathy's LLM Wiki pattern** — named explicitly in prework; this exercise IS the operationalization.
 - **Second Brain / personal knowledge management** (Tiago Forte lineage) — the vibe transfers for those who've heard of it. The scope pivot (whole-life → single live challenge) sharpens the Second Brain idea rather than dilutes it.
-- **Jobs-to-be-Done** — what is this brain *hired* to help you do? The challenge brief is the job spec.
-- **Librarian and library** — Phase 2 frames the agent as the librarian for the brain. Classical knowledge-work framing; lands instantly.
+- **Jobs-to-be-Done** — what is this memory *hired* to help you do? The challenge brief is the job spec.
+- **Librarian and library** — Phase 2 frames the agent as the librarian for the memory. Classical knowledge-work framing; lands instantly.
 - **File-based agentic RAG** (Boris Cherny / Anthropic observation) — stays in trailing metadata (not in student-facing body per business-audience rule). Emerges as a concept in the Compounding lecture via plain language.
 
 Integrated, not decorative.
@@ -88,10 +90,10 @@ Integrated, not decorative.
 ### Failure modes named
 
 Deferred in detail to facilitator notes; here as check material for simulation:
-- **Weak prework brief** — participant shows up with "improve sales performance." Phase 1 curation produces generic search terms. Fix: trainer intercepts in Module 2 opening, 2-minute narrowing conversation with the room.
+- **Weak in-session brief** — participant produces "improve sales performance" in the Module 2 opener (`name-your-challenge.md`). Phase 1 curation produces generic search terms. Fix: trainer intercepts in Module 2 opening, 2-minute narrowing conversation with the room before Phase 1 curation starts.
 - **Phase 1 curation is thin** — Claude proposes three obvious search terms and no practitioner authors. Fix: push back in conversation — "give me three practitioners by name, not topic areas."
 - **Connectors not live** — Confluence or Office365 connector didn't install, or OAuth pending admin approval. Fallback: pull content manually (copy-paste from browser into markdown files in `sources/`), or skip to the internet-best-practice sources for this run.
-- **Phase 3 brain got longer, not sharper** — Claude padded. Fix: the literal push-back prompt is in the body.
+- **Phase 3 memory got longer, not sharper** — Claude padded. Fix: the literal push-back prompt is in the body.
 - **Custom agent boilerplate** — the "Rules" section reads like defaults, no voice. Fix: Phase 2's "change at least one so it's actually mine" line.
 - **Close "put it to work" question is vague** — participant asks "summarize my challenge" instead of a real working decision. Fix: push back in the body already ("not summarize the sources — a real working question"); facilitator can reinforce with "what's the question you'd answer for your CEO?"
 
@@ -105,13 +107,13 @@ Deferred in detail to facilitator notes; here as check material for simulation:
 
 ### Scaffold / worked example provided
 
-Participants haven't built a curated source list, a brain, or a custom agent before. The exercise provides:
-- **The prework brief** as the anchoring artifact — Phase 1 curation keys to it.
+Participants haven't built a curated source list, a memory, or a custom agent before. The exercise provides:
+- **The opener brief** as the anchoring artifact — Phase 1 curation keys to it (produced by `name-your-challenge.md` in the first 15 min of Module 2).
 - **The three-sources framing** in the Phase 1 prompt — Claude proposes under three named buckets, not free-form.
 - **Plan mode** in Phase 1 ingestion — Claude proposes the topic list, student approves. The scaffold is Claude's draft.
-- **Default rules** in Phase 2's prompt — "cite the brain file for every claim, never invent, ask when a source is thin, keep my voice." Student accepts or overrides. No blank-page moment.
+- **Default rules** in Phase 2's prompt — "cite the memory file for every claim, never invent, ask when a source is thin, keep my voice." Student accepts or overrides. No blank-page moment.
 - **Root `CLAUDE.md` (in the Module 2 starter scaffold)** — gives Claude the topic-page shape, citation convention, and index format.
-- **Explicit file-path references** throughout — `sources/`, `brain/`, `agents/`, `module-2/soft-pages.md` — so students see exactly where things land.
+- **Explicit file-path references** throughout — `sources/`, `memory/`, `agents/`, `module-2/soft-pages.md` — so students see exactly where things land.
 
 ### Prompt design
 
@@ -134,7 +136,7 @@ Participant uses:
 - **Their own sources** — curated live in Phase 1 from Confluence / Office365 / internet, per the guided plan
 - **A task they choose** in Phase 2 (drawn from the challenge, not a generic demo)
 - **Their judgment** on Phase 3's "sharpened vs. longer" and Phase 4's proposed fixes
-- **A real working question from their challenge** in the close — the hardest open decision they face, answered against their own brain
+- **A real working question from their challenge** in the close — the hardest open decision they face, answered against their own memory
 
 Nothing pre-built for any specific participant.
 
@@ -144,7 +146,7 @@ Student-facing body audited: no `embeddings`, `vector`, `RAG`, `retrieval` (tech
 
 ### Voice
 
-Second person, builder, Seth/Rory/Risto flavor. Opening "A chat forgets. A brain remembers." No consultant-speak, no LLM-tell words.
+Second person, builder, Seth/Rory/Risto flavor. Opening "A chat forgets. A memory remembers." No consultant-speak, no LLM-tell words.
 
 ### Length
 
@@ -152,7 +154,7 @@ Second person, builder, Seth/Rory/Risto flavor. Opening "A chat forgets. A brain
 
 ### Specificity
 
-Named phases, concrete prompts, real file paths (`sources/`, `brain/`, `agents/`, `module-2/soft-pages.md`, `module-2/challenge.md`), realistic challenge examples (pricing redesign, EU market entry, replatforming decision), named mechanics (plan mode, Shift+Tab, **+** button, Settings → Connectors).
+Named phases, concrete prompts, real file paths (`sources/`, `memory/`, `agents/`, `module-2/soft-pages.md`, `module-2/challenge.md`), realistic challenge examples (pricing redesign, EU market entry, replatforming decision), named mechanics (plan mode, Shift+Tab, **+** button, Settings → Connectors).
 
 ---
 

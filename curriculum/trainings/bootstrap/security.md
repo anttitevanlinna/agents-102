@@ -4,11 +4,8 @@
 You can't tell if your agent is safe by looking at its output. You need a way to check — and the practice is running the check, not waiting for certainty.
 
 ## Meta
-- **Primary Bloom's level:** Analyze → Evaluate
 - **Prework:** [Before Module 4](exercises/module-4-prework.md) — two reads: (1) skills as expertise the agent plugs in, (2) agent security vs. classical software security (why the threat model shifts and why mitigations are agent-shaped)
 - **Homework:** extract one micro-skill from your own reading of a company policy rule; agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern)
-- **Materials (trainer):** `module-4-skills.zip` — two skill files drop into `skills/`: `company-ai-policy/` (pre-built per customer from their data-usage, security, AI-use, and sector-specific rules) and `agent-security/` (generic, ships with the training — access-control analysis + agent-STRIDE + agentic-mitigation suggestions)
-- **Plug points:** the customer's data-usage policy, security policy, AI-use policy, and sector-specific compliance rules (pre-converted into the `company-ai-policy` skill by Antti — separately billable); the student's chosen risk to mitigate; the student's own micro-skill from homework
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -36,7 +33,35 @@ You've had three agents search your company and three more decide. The output lo
 - **Residual risk is a first-class artifact.** After mitigation, something remains. You name it, accept it on record, or close the door. The best mitigation is the one you didn't need — avoidance beats reduction.
 - **Skills as expertise injection** (named late). Skills are how an agent borrows capability it doesn't natively have. They scope DOWN (what it can't do) and scope UP (what expertise it brings). Module 7 comes back for sharing them.
 
-## Plug Points
+## Debrief
+
+Five minutes. Claude reviews the audit session and sharpens the skill files you used. The evidence is what the audit produced: the two reports, the "I can't tell" rows, the mitigation you applied, the residual that's still true. Claude reviews, rewrites the skill in place, reports what changed. You push back on anything that's off.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Review this session and sharpen the skills. Read skills/company-ai-policy/ and skills/agent-security/ (every file). Scan the audit output in module-4/ — both reports, the mitigation, the residual. Look back over the session: which rows did the skill mark "I can't tell" because the rule itself was ambiguous, where did the skill flag a non-issue, what specific failure class did it miss that you only caught by eye, where did the mitigation reduce one risk but shift another?
+
+Then rewrite whichever skill file needs it most. Integrate, don't append. Sharpen rules that wobbled, add the failure class the skill didn't catch, tighten the "I can't tell" criteria so the column stays honest rather than avoidant. Do NOT add verification steps that pretend to resolve residual risk — the honest "can't tell" is the discipline. Don't add a "retro notes" section; rewrite the file as the better version.
+
+When you're done, tell me in 3–5 lines: which skill you edited, what you added, what you sharpened, what you removed, and why — grounded in specific rows from the audit. Name at least one door the rules now say to keep closed.
+```
+
+*(end of prompt)*
+
+Read Claude's summary. Push back where it's wrong — *"that rule wasn't ambiguous, I just didn't have the evidence"* / *"you loosened 'I can't tell' — put it back."* The artifact: `module-4/residual.md` — the student's named residuals and one scoping rule that avoids opening a door they'd rather leave closed. The unease stays. Nothing today resolves it. That's the curriculum.
+
+## Bridge
+The agent is scoped, the residual risk is named. But the output *inside* the scope — can you trust what it actually says?
+
+<!-- maintainer -->
+
+**Meta (trainer):**
+- **Primary Bloom's level:** Analyze → Evaluate
+- **Materials (trainer):** `module-4-skills.zip` — two skill files drop into `skills/`: `company-ai-policy/` (pre-built per customer from their data-usage, security, AI-use, and sector-specific rules) and `agent-security/` (generic, ships with the training — access-control analysis + agent-STRIDE + agentic-mitigation suggestions)
+- **Plug points:** the customer's data-usage policy, security policy, AI-use policy, and sector-specific compliance rules (pre-converted into the `company-ai-policy` skill by Antti — separately billable); the student's chosen risk to mitigate; the student's own micro-skill from homework
+
+**Plug Points (trainer):**
 
 > PLUG POINT: The `company-ai-policy` skill content.
 > Default: Antti pre-builds this from the customer's data-usage policy, security policy, AI-use policy (if one exists), and any sector-specific rules (GDPR, NIS2, DORA, MIFID II, industry codes). This is separately billable prep work. If policies are thin or absent, the skill defaults to a Nordic-baseline bundle (GDPR + general data-classification + a conservative AI-use policy template) and the gaps become a finding rather than a blocker.
@@ -46,19 +71,6 @@ You've had three agents search your company and three more decide. The output lo
 
 > PLUG POINT: The micro-skill the student writes for homework.
 > Default: one policy rule that's specific to the student's organisation — customer-data classification, retention window, the one rule legal cares most about. The student extracts it into a short skill file that sits alongside their agent rules from here onward — reused whenever the agent touches data that rule applies to.
-
-## Debrief
-Five-minute retro with Claude. Three questions, tuned to this module's epistemic humility:
-1. Which row in your policy report was the most uncomfortable — a clear violation, or an "I can't tell" you couldn't close today? What made it uncomfortable?
-2. The mitigation you applied reduced a risk; it didn't eliminate it. Name the residual in one sentence — the thing that's still true after you shipped the fix.
-3. What's one door in your system you'd rather not open at all, now that you've seen what's behind it? Write it as a scoping rule.
-
-The artifact: `module-4/residual.md` — the student's named residual risks and one scoping rule that avoids opening a door they'd rather leave closed. Not a fix list. A kept record of what's still true.
-
-## Bridge
-The agent is scoped, the residual risk is named. But the output *inside* the scope — can you trust what it actually says?
-
-<!-- maintainer -->
 
 **TODO:** Pass 3 polish on lecture (currently draft from pass 1); facilitator notes pass after student-facing content stabilises. The homework micro-skill is new — needs a short template in Module 5 prework so students actually bring the file.
 

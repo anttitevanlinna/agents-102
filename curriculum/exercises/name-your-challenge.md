@@ -2,47 +2,53 @@
 
 **What you do:**
 
-Module 2 builds you a brain — one that helps you think through a real, live problem you're currently wrestling with. For that to work, you need to walk into class knowing which problem.
+Module 2 builds you a memory — a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before we build anything, we pin the problem.
 
-*You've read two pieces on this move. Karpathy showed the pattern on himself — LLM as librarian, not answerer. Antti argued that the same move scales to company knowledge: files, not wikis; version it like code. In Module 2 you'll do it on your own challenge. First you pick the challenge.*
+*You've read two pieces on this move in prework. Karpathy showed the pattern on himself — LLM as librarian, not answerer. Antti argued that the same move scales to company knowledge: files, not wikis; version it like code. In the next 15 minutes you name the one challenge we'll aim all of it at.*
 
 **What counts as a "next big challenge."**
 
-Something live. Something you're actively stuck on or moving through right now — a decision you have to make, a bet you're placing, a piece of work where you don't yet see the shape. Not finished. Not hypothetical. Not generic.
+A real, midsized-to-large initiative you own, that you will actually be working on during these training weeks or the weeks right after. We're going to build you a system that helps stuff happen on this initiative. Two tests:
+
+1. **You own it.** It's yours to move. Not your boss's, not the org's in the abstract.
+2. **Work ships from it.** A memo, a plan, a decision, a brief, a campaign, a rollout — something the system can help you produce.
+
+If both are true, it's in. A topic that sounds vague in a sentence (*"improve marketing"*) is fine if you're the person who owns marketing this quarter and real work ships from it.
 
 Good:
-- *The pricing redesign we're shipping in Q2 — I don't know whether to go usage-based or stay on seats.*
-- *Our EU market entry — Germany vs. Netherlands first, and how we staff it.*
-- *The platform replatforming decision — build, buy, or partner, and the org implications of each.*
-- *How I coach my team through the agentic shift without losing the strong people who are skeptical.*
+- *The pricing redesign we're shipping in Q2 — usage-based vs. seats, the pilot cohort, and how we brief the sales org.*
+- *Our EU market entry — Germany vs. Netherlands first, staffing model, and the first-year commercial plan.*
+- *Improve marketing across the funnel — I own it as CMO, and the next two quarters land positioning, content ops, and a new segment play.*
+- *The platform replatforming decision and rollout — build, buy, or partner, and the org changes each choice forces.*
+- *Our AI strategy for the next two quarters — which processes we move first, what we stop doing, how we brief the board.*
+- *Rolling out agentic ways of working to 300 engineers over the next two quarters — without losing the skeptics.*
 
-Bad:
-- *Improve marketing.* (Too vague — no decision at stake.)
-- *The re-org we did last year.* (Finished — nothing to decide.)
-- *AI strategy.* (A category, not a challenge. Which decision, which week?)
-- *Becoming a better leader.* (Self-improvement, not a live call.)
+Bad (the genuine non-starters):
+- *The re-org we did last year.* (Done — no work left to ship.)
+- *Becoming a better leader.* / *Being a better human being.* (Self-improvement — nothing for a system to produce.)
+- *Understanding AI.* (A learning goal — a system can't ship your understanding for you.)
 
-Pick the one that's on your mind most often this month. If two are tied, pick the one where a better thought-partner would actually change what you do.
+Pick the one you'll be carrying anyway over the next few weeks. If two are tied, pick the one where a sharper thought-partner would actually change what you do this month.
 
-**Step 1 — write the brief.**
+**Write the brief.**
 
-In Claude Code opened at your training directory, the brief will land in `module-2/` — ready for Module 2. Paste this prompt:
+In Claude Code opened at your training directory, the brief will land in `module-2/` — ready for the rest of the module. Paste this prompt:
 
 ```
-I'm heading into a training where I'll build a working brain around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:
+I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:
 
-1. In one sentence, what's the challenge? A decision you have to make, a bet you're placing, a piece of work you don't yet see the shape of.
+1. In one sentence, what's the initiative? A real, midsized-to-large piece of work you're carrying over the next few weeks — scope, stakes, still open.
 2. What have you already tried, read, or decided? What's ruled out, what's still open?
-3. What would "a good answer" look like a month from now? How would you know the brain helped?
+3. Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?
 
 When I've answered all three, write a one-paragraph brief to module-2/challenge.md. Show it to me before saving.
 ```
 
 Claude asks, you answer, the brief lands. Read it. If it doesn't sound like the thing actually keeping you up, edit it — you're the domain expert.
 
-**Step 2 — preview your sources.**
+**Preview your sources.**
 
-The brain will be built from three kinds of raw material: pages from your company's Confluence (or wiki), docs and emails from Office365, and a few practitioner articles from the open web. On training day you'll actually pull them. Right now you're just scouting.
+The memory will be built from three kinds of raw material: pages from your company's Confluence (or wiki), docs and emails from Office365, and a few practitioner articles from the open web. Next phase you'll actually pull them. Right now you're scouting.
 
 Paste this prompt:
 
@@ -53,57 +59,33 @@ Based on the challenge brief you just wrote, suggest where I'd go looking for ra
 - 2 to 3 OneDrive / SharePoint folder names likely to hold relevant docs, emails, or decks
 - 2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge, with one link each if you know them
 
-Keep it short. I'll use this as a scavenger-hunt list on training day.
+Keep it short. I'll use this as a scavenger-hunt list in the next phase.
 ```
 
-Scan the list. Some suggestions will be obvious; some will surprise you. Circle the two or three from each bucket you'd actually go pull first. Save the list — paste it into `source-preview.md` if you like, or keep it in chat.
-
-**Step 3 — verify your connectors** *(2 min — worth doing now, not when Module 2 starts)*
-
-Module 2 Phase 1 relies on your Confluence (or similar wiki) connector and your OneDrive/SharePoint connector. If either needs admin approval, it can take days — and you don't want to find out when Module 2 starts and the exercise is waiting.
-
-In Claude Code desktop, click the **+** next to the prompt (or open **Settings → Connectors**). Enable the Confluence and OneDrive connectors. Sign in with your work account.
-
-If either asks for IT admin approval you don't have, reply to the training coordinator now — they'll route it. If it signs in cleanly, you're done. When Module 2 starts you won't think about this again.
-
-**Step 4 — prime yourself on plan mode** *(15 min)*
-
-Module 2 turns on Claude Code's **plan mode** in Phase 1 — where Claude proposes what it's about to do before touching any files, and you approve. You'll want to recognize it before the exercise hits it rather than learn two things at once.
-
-Fifteen minutes. Pick one:
-
-- **Read** the [Claude quick reference](curriculum.html?file=reference/claude-quick-reference) — start with *"Plan mode — look before you leap,"* then skim the rest. The reading itself is short; the extra time is for actually toggling plan mode in your own Claude Code and feeling how the footer changes. Doing beats reading.
-- **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. A working practitioner showing how it feels in the hands, not a doc page.
-
-Either way: know where the toggle is, what the footer says when it's on, and why you'd reach for it.
-
-**Step 5 — bring the brief to class.**
-
-You're done. Module 2 builds the brain around the brief you just wrote. Come in with the one-paragraph brief and the source-preview list. That's all you need.
+Scan the list. Some suggestions will be obvious; some will surprise you. Circle the two or three from each bucket you'd actually go pull first.
 
 **The point:**
 
-The hardest part of a brain isn't the tool — it's the scope. A brain about "our company" is a landfill. A brain about *this decision, this month* is a weapon. Picking the challenge well is half the work; Module 2 does the other half.
+The hardest part of a memory isn't the tool — it's the scope. A memory about "our company" is a landfill. A memory about *this decision, this month* is a weapon. Picking the challenge well is half the work; the rest of the module does the other half.
 
-**Time:** 35 minutes total — 20 minutes active (brief + sources + connectors) plus a 15-minute plan-mode primer.
+**Time:** 15 minutes.
 
 <!-- maintainer -->
 
+**Role in Module 2:** This is the opening exercise of Module 2 — the first 15 minutes of the main session. Prework handed them the nudge ("bring a live challenge"); this exercise pins it into `module-2/challenge.md` before `build-your-challenge-memory` runs. Do not treat as prework — students skip prework, and the rest of Module 2 cannot proceed without a pinned challenge.
+
 **Frameworks riffed on:**
-- Jobs-to-be-Done framing (*what is this brain hired to help you do?*) — narrows scope from topic to outcome.
-- Roger Martin strategy-as-assumptions — the challenge brief is a set of assumptions the brain will help you stress-test.
+- Jobs-to-be-Done framing (*what is this memory hired to help you do?*) — narrows scope from topic to outcome.
+- Roger Martin strategy-as-assumptions — the challenge brief is a set of assumptions the memory will help you stress-test.
 
 **Prerequisites:**
-- Claude Code installed, training directory created (per Step 0 of training prework).
-- Steps 1 and 2 run on pure text conversation. Step 3 enables Confluence and OneDrive/SharePoint connectors — admin approval may be in play.
+- Claude Code installed, training directory created (per training prework Step 0).
+- Both prompts run on pure text conversation — no connectors required for this exercise. Connector verification is a separate prework item.
 
 **Watch-fors in class:**
-- Participants who show up with a generic brief ("improve sales performance") — redirect in the first 10 minutes of Module 2 opening. The brain won't work without narrowing.
-- Participants who picked something already-decided — the brain becomes a post-mortem exercise, low energy. Push for something still open.
-- Source-preview list quality varies by how specific the brief is. Weak brief → generic suggestions. Use the source-preview list as a diagnostic for brief quality.
-
-**Time budget tension (noted for review):**
-- 20 minutes is plausible for three steps (two Claude conversations + connector enablement), assuming connectors sign in cleanly. If admin approval is in flight, Step 3 becomes an email-to-IT and is 1 minute. Realistic floor: 20; ceiling: 30 if everything needs retry. Flag for Antti: consider splitting "brief before, sources + connectors on day" if time-critical.
+- Participants who show up with a generic brief ("improve sales performance") — redirect in the first few minutes. The memory won't work without narrowing. Facilitator may run a 2-minute narrowing conversation with the room before unleashing the prompt.
+- Participants who picked something already-decided — the memory becomes a post-mortem exercise, low energy. Push for something still open.
+- Source-preview list quality varies by how specific the brief is. Weak brief → generic suggestions. Use the source-preview list as a diagnostic for brief quality before `build-your-challenge-memory` starts.
 
 **Deferred per student-facing-first rule:**
 - Facilitator notes: how to coach participants mid-class when the brief is too broad or too narrow; the "one-sentence test" — if they can't state the challenge in one sentence, the brief isn't ready; fallback when a participant genuinely doesn't have a live challenge (rare but happens — assign them a teammate's challenge they're close to, or a live org-wide decision the whole cohort can discuss).

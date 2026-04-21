@@ -12,7 +12,7 @@ You've spent three modules shaping agents with prompts, files, and rules. Skills
 
 *What it is not.* Not a separate model. Not a plugin store. Not something you install per-seat. A skill lives next to your agent files — same working directory, same filesystem. If you can write a markdown file, you can write a skill.
 
-*Why skills matter for Module 4.* Until now, you've added expertise by writing prompts or dropping material into `sources/` or `brain/`. That works, but everything lives in one pile. Skills scope expertise. Two skills are about to arrive in your training directory — one carries your company's policies, one carries agent-security thinking. You won't need to be a policy expert or a threat modeller; the skills will be. That's the move: **the skill is the expert.**
+*Why skills matter for Module 4.* Until now, you've added expertise by writing prompts or dropping material into `sources/` or `memory/`. That works, but everything lives in one pile. Skills scope expertise. Two skills are about to arrive in your training directory — one carries your company's policies, one carries agent-security thinking. You won't need to be a policy expert or a threat modeller; the skills will be. That's the move: **the skill is the expert.**
 
 *What you'll see.* A `skills/` folder in your training directory. Inside: `company-ai-policy/SKILL.md` and `agent-security/SKILL.md`. You'll invoke them tomorrow in plain language — *"apply the company-ai-policy skill to my module-3 system"* — and Claude Code loads the skill, reads its rules, and runs.
 
@@ -49,7 +49,7 @@ If you have a security background, half of this will sound wrong. That's the poi
 - **Non-determinism as a design property, not a bug** — the practitioner framing of LLM behaviour that M5 and M6 carry forward.
 
 **Prerequisites:**
-- Modules 1–3 completed; training directory populated with brain/, sources/, agents/, module-1..3/.
+- Modules 1–3 completed; training directory populated with memory/, sources/, agents/, module-1..3/.
 - `module-4-skills.zip` downloaded from the training site (or available at session start).
 - No connector changes since Module 3.
 

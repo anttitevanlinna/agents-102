@@ -26,13 +26,13 @@ Read any recipe in order or any recipe standalone. They stand alone; together th
 
 *Referenced from: Module 2 (building-agent-systems).*
 
-**What you end with:** a text-on-disk brain for one real decision you're making, curated from three source zones (internal wiki, internal collab suite, curated internet), served by a custom agent that cites back to sources, and a daily scheduled touch that renders in your company's house style.
+**What you end with:** a text-on-disk memory for one real decision you're making, curated from three source zones (internal wiki, internal collab suite, curated internet), served by a custom agent that cites back to sources, and a daily scheduled touch that renders in your company's house style.
 
 **The moves, in order:**
 
-*(To be written out as Pass 3 completes. Current Module 2 exercise + homework files are the seed. Pattern: pick a live challenge (prework) → curate three sources with Claude's help → load into a brain with plan-mode review → build a custom agent as a markdown file with rules → add sources, watch pages sharpen not grow → let the brain audit itself → schedule a daily touch → extract the house style into `style.md` → every HTML output inherits it. The root `CLAUDE.md` grows across the whole training, one rule at a time.)*
+*(To be written out as Pass 3 completes. Current Module 2 exercise + homework files are the seed. Pattern: pick a live challenge (prework) → curate three sources with Claude's help → load into a memory with plan-mode review → build a custom agent as a markdown file with rules → add sources, watch pages sharpen not grow → let the memory audit itself → schedule a daily touch → extract the house style into `style.md` → every HTML output inherits it. The root `CLAUDE.md` grows across the whole training, one rule at a time.)*
 
-**The test:** a week after training, you're still reading the morning output, and the brain is noticeably sharper than the day you built it.
+**The test:** a week after training, you're still reading the morning output, and the memory is noticeably sharper than the day you built it.
 
 **Why this is recipe 2:** persistence + automation = system. A chat can't compound. A folder of markdown can.
 
@@ -69,7 +69,7 @@ These are the recipes that extend the cookbook beyond Bootstrap. Placeholders no
 Written as they stabilise:
 
 - **Cloud deployment.** Moving a working local system to a hosted runtime (Cowork / Routines / equivalent). What changes, what breaks, what becomes easier.
-- **Team sharing.** Promoting brains and agents from personal scope to shared scope — without the usual collaboration-software rot.
+- **Team sharing.** Promoting memorys and agents from personal scope to shared scope — without the usual collaboration-software rot.
 - **Cross-org reuse.** Pattern libraries, agent marketplaces, the sensible portions of each.
 - **Integration with existing enterprise systems.** ERP, CRM, data warehouse, iPaaS.
 - **Observability and cost control.** Watching what the agent actually does and what it costs when it does.

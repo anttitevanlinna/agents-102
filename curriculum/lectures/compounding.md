@@ -2,7 +2,7 @@
 
 You just did something a chat can't do.
 
-Not the ingestion — a long enough prompt ingests. Not the task — a good prompt does tasks. The thing you did that a chat can't do is **Phase 3**. You dropped new sources into the folder, asked Claude to update the brain, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That's compounding. And you can't picture it from a description — you had to see it.
+Not the ingestion — a long enough prompt ingests. Not the task — a good prompt does tasks. The thing you did that a chat can't do is **Phase 3**. You dropped new sources into the folder, asked Claude to update the memory, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That's compounding. And you can't picture it from a description — you had to see it.
 
 ## Two words, held together
 
@@ -15,7 +15,7 @@ Either one alone is a toy. A saved document with no agent is just a document. An
 
 ## Why the sharpening happens
 
-When you added the second batch, Claude didn't start over. It read the existing topic pages first — as *context* — then read the new sources, then integrated. The existing brain was part of the prompt for updating the brain. That's why pages got sharper: the old claims and the new claims met each other, and the ones that couldn't survive the meeting got cut.
+When you added the second batch, Claude didn't start over. It read the existing topic pages first — as *context* — then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That's why pages got sharper: the old claims and the new claims met each other, and the ones that couldn't survive the meeting got cut.
 
 This is the same mechanism from Module 1 — context shapes output — run at system scale. The *context* for today's work is what yesterday's work produced. Tomorrow's context will be what today's work produced. The loop is the product.
 
@@ -23,7 +23,7 @@ Pawel Huryn writes about this as *pragmatic instructions*: keep the rules small,
 
 ## The detail that's easy to miss
 
-The brain is a folder of markdown files. That's it. No database. No special tool. No paid tier. No setup. And the agent you just built — the one sitting in `agents/` — is also a markdown file. Instructions the model reads at the start of every run. Same substrate for the knowledge, same substrate for the capability, same substrate as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels — paste the agent file into any LLM tool and it still works.
+The memory is a folder of markdown files. That's it. No database. No special tool. No paid tier. No setup. And the agent you just built — the one sitting in `agents/` — is also a markdown file. Instructions the model reads at the start of every run. Same substrate for the knowledge, same substrate for the capability, same substrate as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels — paste the agent file into any LLM tool and it still works.
 
 That might look like a limitation. It isn't. Language models are strongest at reading and writing text — that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it's best at. Every fancier setup that promised to "fix" this added a layer that the model had to work *around*.
 
@@ -31,19 +31,19 @@ The point is simple: the simplest possible setup beats the fancy ones, because i
 
 ## What this unlocks
 
-Your brain is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the brain you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A brain does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
+Your memory is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn't a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That's the point the whole training turns on: *generic AI becomes your AI when you shape the context that surrounds it.* Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.
 
-Every module after this leans on the brain you just built. Multi-agent systems (tomorrow) reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise — you built the substrate the rest of the training runs on.
+Every module after this leans on the memory you just built. Multi-agent systems (tomorrow) reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn't build a training exercise — you built the substrate the rest of the training runs on.
 
-## One thing before you close the laptop
+## One more compounding turn
 
-Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the brain is growing but not compounding. Paste this before you leave:
+Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding. One more turn of the loop, paste this:
 
 ```
-Look at the brain I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what's the one question you'd ask me right now to pull the missing insight out of my head?
+Look at the memory I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what's the one question you'd ask me right now to pull the missing insight out of my head?
 ```
 
-Claude comes back with three pointed requests. Answer one. Let it update the page. The brain just got a fourth round of compounding — and your laptop is still open. You steer; the system maintains; the loop runs.
+Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
 **Time:** 10 minutes.
 

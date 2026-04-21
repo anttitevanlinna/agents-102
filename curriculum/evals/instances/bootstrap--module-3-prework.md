@@ -51,7 +51,7 @@ Analyze (handoff failure modes) and Create (framework-guided answer) are downstr
 
 ### Module-to-module arc
 
-Picks up from **Module 2** explicitly: "Module 3 runs on the brain you already built in Module 2." Also forward-references the Module 2 Karpathy LLM Wiki prework — explicitly steers the student to read something of Karpathy's *other* than the Wiki, to avoid duplicate reading.
+Picks up from **Module 2** explicitly: "Module 3 runs on the memory you already built in Module 2." Also forward-references the Module 2 Karpathy LLM Wiki prework — explicitly steers the student to read something of Karpathy's *other* than the Wiki, to avoid duplicate reading.
 
 Hands off to **Module 3 Phase 2** — the subagent primer's "launch in parallel" phrasing is identical to the Phase 2 synthesizer prompt's phrasing. No re-teaching needed in the room.
 

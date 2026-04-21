@@ -105,7 +105,7 @@ Three copy-paste prompts in student-facing body:
 
 ### Plug points real *(exercise-specific — essential)*
 
-- **Topic for two generation tracks:** defaults to student's Module 3 system primary output topic. Real plug point — student uses their own sources, brain, retrievals.
+- **Topic for two generation tracks:** defaults to student's Module 3 system primary output topic. Real plug point — student uses their own sources, memory, retrievals.
 - **Convergence threshold:** default 90% claim-level agreement. Regulated-industry variant to 95%+.
 - **Walk-away duration:** 25-30 min default; compressible to 15 min / 2 rounds for short slots (with mood cost noted).
 - **Deltas.md (Phase 2b):** student's own judgment pressed against the judge.
@@ -133,7 +133,7 @@ Exercise body (above `<!-- maintainer -->`): ~900 words. **Over target** (400–
 
 ### Specificity *(universal)*
 
-Strong. Named file paths (`module-6/runs/round-N/judge-diff.md`), named output shapes, realistic example numbers ("round 1 caught 8 issues, round 2 caught 11"), named artifacts from prior modules (`judges/groundedness-judge.md`, `module-3/retrievals/`, `sources/`, `brain/`). The example dashboard output is illustrative, not prescriptive — good.
+Strong. Named file paths (`module-6/runs/round-N/judge-diff.md`), named output shapes, realistic example numbers ("round 1 caught 8 issues, round 2 caught 11"), named artifacts from prior modules (`judges/groundedness-judge.md`, `module-3/retrievals/`, `sources/`, `memory/`). The example dashboard output is illustrative, not prescriptive — good.
 
 ---
 

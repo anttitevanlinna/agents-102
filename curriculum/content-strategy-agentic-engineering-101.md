@@ -24,7 +24,7 @@ Software engineers, individual contributors. 1–8 years experience. They write 
 
 Generic Claude Code usage without codebase knowledge = generic output that gets reviewed harshly. Codebase knowledge without structured agent practice = expertise that doesn't compound. Both + agents = L3 velocity.
 
-**Dorsey's question at IC scale:** *what does your understanding of this codebase gain every day?* The brain is where it compounds.
+**Dorsey's question at IC scale:** *what does your understanding of this codebase gain every day?* The memory is where it compounds.
 
 ## The student's journey — structural muscle, not syntax mastery
 
@@ -32,7 +32,7 @@ Students leave with *muscle*, not with recall. Muscle = structural practice that
 
 **Beliefs the training forms:**
 
-- *My brain is my edge — not my keystrokes.*
+- *My memory is my edge — not my keystrokes.*
 - *Mastery isn't knowledge; it's structural practice that stays current as the frontier moves.*
 - *Agents that build agents is the L3 identity.*
 - *Quality is infrastructure, not craft heroics.*
@@ -41,7 +41,7 @@ Students leave with *muscle*, not with recall. Muscle = structural practice that
 
 **The Rory:** most engineering training sells syntax and framework checklists. Ours sells a practice that compounds for years. The syntax we teach will be obsolete by the training's second cohort; the practice won't.
 
-## The backbone — the brain (three blocks + swarm), IC-scope
+## The backbone — the memory (three blocks + swarm), IC-scope
 
 Same Bootstrap / Engineering Management backbone, ported to IC scale. See `content-strategy-engineering-management.md` § "The Backbone — The Brain" for the parent description.
 
@@ -58,9 +58,9 @@ Shape, not settled detail. Exercises designed case-by-case, agentic, chat-and-sa
 
 | # | Move | Mood | Ladder step | Artifact (direction) |
 |---|---|---|---|---|
-| M1 | **Ship real work with agents.** Plan mode + CLAUDE.md + their actual PR queue. Build one working thing in the session. First agents scheduled. | joyful creation — *"it works, and it's on my repo"* | L0 → L1 | One shipped PR driven through Claude Code + brain installed + weekly scan agent scheduled |
-| M2 | **Build your brain for your codebase.** Three blocks populated with real codebase observations. Skills for recurring personal workflows. Sources curated. | satisfied compounding — *"it reads my system now"* | L1 → L1.5 | Populated brain + 3–5 personal skills + codebase-reader agent scheduled |
-| M3 | **Orchestrate, don't type.** Multi-agent execution on a real task — subagents + orchestrator. Read trajectory, not lines. First "close your laptop, agents kept working" experience. | unleashed leverage — *"I'm directing, not typing"* | L1.5 → L2 | Real task shipped via orchestration + subagent pattern in the brain's skill library |
+| M1 | **Ship real work with agents.** Plan mode + CLAUDE.md + their actual PR queue. Build one working thing in the session. First agents scheduled. | joyful creation — *"it works, and it's on my repo"* | L0 → L1 | One shipped PR driven through Claude Code + memory installed + weekly scan agent scheduled |
+| M2 | **Build your memory for your codebase.** Three blocks populated with real codebase observations. Skills for recurring personal workflows. Sources curated. | satisfied compounding — *"it reads my system now"* | L1 → L1.5 | Populated memory + 3–5 personal skills + codebase-reader agent scheduled |
+| M3 | **Orchestrate, don't type.** Multi-agent execution on a real task — subagents + orchestrator. Read trajectory, not lines. First "close your laptop, agents kept working" experience. | unleashed leverage — *"I'm directing, not typing"* | L1.5 → L2 | Real task shipped via orchestration + subagent pattern in the memory's skill library |
 | M4 | **Evals as infrastructure.** Auto-review for low-risk PRs; tiered verification for the rest. Absorption bottleneck named and fixed at the PR level. Judge agents ported in. | honest rescue — *"the review queue is a system, not a grind"* | L2 ship | Tiered review setup on their actual PR workflow + gate-watcher agent live |
 | M5 | **Build agents that build agents.** Contribute to the team skills marketplace (if it exists) or bootstrap one. MCP server for a team-specific capability. Meta-agents that generate others. | generous compound — *"my skill just shipped to everyone"* | L2 → L3 | At least one skill contributed to the team repo + one meta-agent pattern live |
 | M6 | **Stay at the frontier.** Personal practice for L3 durability: reading rhythm, skills-update cadence, public work, cohort cross-pollination. Self-assessment + day-91 review scheduled. | mastery as generative hunger — *"I want the next move"* | L3 durable | Frontier-scanner running + day-91 reflection agent scheduled + personal public artifact shipped |
@@ -91,14 +91,14 @@ Delta target ~+3. Bigger than Engineering Management's +2 because the ladder her
 
 Same shape as Engineering Management:
 
-- **Track 1 — Personal IC capability.** M1–M6 arc. The brain populates with codebase specifics. Runs with conviction; half miss; learns what works on this codebase.
-- **Track 2 — Frontier muscle.** Parallel. Reading Karpathy, Willison, Huryn, Cherny, Sottiaux and whoever's shipping this quarter. Cohort cross-share. Frontier-scanner agent. Brain's frontier tier alongside codebase tier. Why the brain doesn't decay after day 91.
+- **Track 1 — Personal IC capability.** M1–M6 arc. The memory populates with codebase specifics. Runs with conviction; half miss; learns what works on this codebase.
+- **Track 2 — Frontier muscle.** Parallel. Reading Karpathy, Willison, Huryn, Cherny, Sottiaux and whoever's shipping this quarter. Cohort cross-share. Frontier-scanner agent. Brain's frontier tier alongside codebase tier. Why the memory doesn't decay after day 91.
 
 ## Pair with Engineering Management
 
 These two trainings are designed to pincer the transformation:
 
-- **Manager takes Engineering Management** → leads with conditions-creator practice, brain + swarm at team scale, Intercom/Ramp playbook.
+- **Manager takes Engineering Management** → leads with conditions-creator practice, memory + swarm at team scale, Intercom/Ramp playbook.
 - **Team takes Agentic Engineering 101** → engineers level up from L0/L1 toward L3 on the ladder the manager is creating conditions for.
 - **Together:** single-company cohort generates aggregate L0→L2/L3 movement as the sponsor's finding. Manager's conditions × engineers' capability = compounding transformation velocity.
 
@@ -121,7 +121,7 @@ Same set as Engineering Management; different lens:
 - **Intercom R&D 2x** (`observations/intercom.md` Side A) — M4 (93.6% Agent-driven PRs, 19.2% auto-approved), M5 (team-2x plugin repo: 267 skills, 31% R&D contributing), M6 (top 5% = 6× median as L3 destination chart).
 - **Ramp AI-pilled** (`observations/ramp.md`) — M1 (L0–L3 ladder as diagnostic), M5 (Glass + Dojo as contribution targets), cost-posture (leverage over tokens) as cultural frame.
 - **Block Hierarchy→Intelligence** (`observations/block.md`) — pressure-test at M6 (what does an L3 engineer's role become when the hierarchy thins?).
-- **Huryn three blocks** (`insights.md`) — the brain structure, direct import from Bootstrap M2 lineage.
+- **Huryn three blocks** (`insights.md`) — the memory structure, direct import from Bootstrap M2 lineage.
 - **Cross-cutting:** `coding-agent-as-general-platform`, `absorption-bottleneck` (M4 named it), `conditions-creator` (M5 lives it from IC side), `rules-verification-scarcity` (M4 meta-pattern).
 
 ## Preferences for next sessions (captured for continuity)

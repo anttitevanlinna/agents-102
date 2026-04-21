@@ -4,7 +4,7 @@ Canonical exercise files. One file per exercise. Shared across all trainings (Bo
 
 ## Filename convention
 
-`<slug>.md` — kebab-case. Example: `raw-llm.md`, `add-guardrail.md`, `build-llm-brain.md`.
+`<slug>.md` — kebab-case. Example: `raw-llm.md`, `add-guardrail.md`, `build-llm-memory.md`.
 
 ## File shape
 

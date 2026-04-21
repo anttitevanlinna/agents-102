@@ -52,6 +52,7 @@
             var moduleSlug   = params.get('module');
             var directFile   = params.get('file'); // for standalone exercise/lecture viewing
             var container    = document.getElementById('module-body');
+            var directFileParent = null; // set by extractParent() if the file declares <!-- parent: <slug> -->
 
             // Standalone exercise or lecture view: ?file=exercises/raw-llm  or  ?file=lectures/context-is-king
             if (directFile && !moduleSlug) {
@@ -97,6 +98,7 @@
                         if (!res.ok) throw new Error('Not found: ' + path);
                         return res.text();
                     })
+                    .then(extractParent)
                     .then(stripMaintainerTail)
                     .then(expandIncludes)
                     .then(function (md) {
@@ -109,6 +111,17 @@
                         container.innerHTML = '<h1>Could not load</h1><p>' + esc(err.message) + '</p><p><a href="curriculum.html">Back to index</a>.</p>';
                         document.title = 'Load error — Agents 102';
                     });
+            }
+
+            // A file can declare its canonical parent module with `<!-- parent: <slug> -->`
+            // (invisible HTML comment, usually at the top of the file). When present, the
+            // "Back to …" link on the standalone page targets that module instead of the
+            // training index. Example in a prework or exercise file:
+            //   <!-- parent: building-agent-systems -->
+            function extractParent(md) {
+                var m = md.match(/<!--\s*parent:\s*([a-zA-Z0-9_-]+)\s*-->/);
+                if (m) directFileParent = m[1];
+                return md;
             }
 
             // Everything below a `<!-- maintainer -->` HTML comment on its own line is
@@ -149,7 +162,13 @@
                 } else if (directFile) {
                     nav += '<nav class="page-nav">';
                     nav += '<span class="nav-prev nav-empty"></span>';
-                    nav += '<a class="nav-home" href="curriculum.html">← Back to curriculum</a>';
+                    if (directFileParent) {
+                        var parentMod = training.modules.find(function (m) { return m.slug === directFileParent; });
+                        var parentTitle = parentMod ? parentMod.title : directFileParent;
+                        nav += '<a class="nav-home" href="curriculum.html?training=' + trainingKey + '&module=' + directFileParent + '">← Back to ' + esc(parentTitle) + '</a>';
+                    } else {
+                        nav += '<a class="nav-home" href="curriculum.html">← Back to curriculum</a>';
+                    }
                     nav += '<span class="nav-next nav-empty"></span>';
                     nav += '</nav>';
                 }

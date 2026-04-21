@@ -6,11 +6,8 @@
 With the right guardrails, you create output that's genuinely yours — not generic.
 
 ## Meta
-- **Primary Bloom's level:** Apply
 - **Prework (training-level, done before Module 1):** ~30–60 min. Install Claude Code (desktop or web — no terminal). Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of `curriculum/supplementary/what-is-an-agent.md` ("LLM vs chat"). Full spec + prereq check in `content-strategy.md` Prework section.
 - **Homework:** Antti's LLM brain post; selected sections from "What is an Agent" reference
-- **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief produces the student's first `CLAUDE.md` as an artifact they carry forward.
-- **Plug points:** participant's own LinkedIn profile — no org data needed yet
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -41,9 +38,6 @@ After this module, you will be able to:
 - Guardrails are structured context, not a checklist
 - You are the world's best evaluator of your own profile — domain expertise IS the eval
 - The guardrail IS the control: average output becomes great not because you prompted better
-
-## Plug Points
-- **The trainer's CLAUDE.md** has a default (differentiation / storytelling / framing). Variant: orgs with a brand guide can substitute. Default works on its own.
 
 ## Debrief
 
@@ -84,4 +78,14 @@ Read site.html in this folder. Two questions:
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin — add one more sharp detail there and regenerate. Where Claude's pick of *"uniquely you"* matches your own gut — solid ground.
 
 ## Bridge
-You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it — the brain, the agents, the room rules — so every future module's work builds on every previous one.
+You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it — the memory, the agents, the room rules — so every future module's work builds on every previous one.
+
+<!-- maintainer -->
+
+**Meta (trainer):**
+- **Primary Bloom's level:** Apply
+- **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief produces the student's first `CLAUDE.md` as an artifact they carry forward.
+- **Plug points:** participant's own LinkedIn profile — no org data needed yet
+
+**Plug Points (trainer):**
+- **The trainer's CLAUDE.md** has a default (differentiation / storytelling / framing). Variant: orgs with a brand guide can substitute. Default works on its own.

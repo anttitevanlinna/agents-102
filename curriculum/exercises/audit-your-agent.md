@@ -37,13 +37,13 @@ You don't run the skills from these files. You invoke them by asking, in plain l
 Open a fresh Claude Code session in your training directory. Paste:
 
 ```
-Apply the company-ai-policy skill to the agent system I built in module-2 and module-3. The system is: the brain in brain/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/retrievals/ and module-3/stances/.
+Apply the company-ai-policy skill to the agent system I built in module-2 and module-3. The system is: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/retrievals/ and module-3/stances/.
 
 For each rule in the skill's policies, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
 
 Write the report to module-4/policy-report.md. Be specific. Be honest. An "I can't tell" is a better answer than a confident guess.
 
-Read the brain and agent files properly — don't skim. Quote the specific lines or files that support each verdict.
+Read the memory and agent files properly — don't skim. Quote the specific lines or files that support each verdict.
 ```
 
 While this runs, resist the urge to switch away. The report is more useful when you read it cold. Expect the skill to find things you didn't think about — and to leave things "I can't tell" you thought were settled.
@@ -143,7 +143,7 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 - **Over-mitigation.** Student picks one risk, then can't stop at one. Coach: *"Run the full loop on one. We're practising the loop, not clearing the backlog. The rest is homework — not today's."*
 - **Skill as oracle.** Student treats the report as ground truth. Seed doubt in debrief: *"Where would this skill's report itself be wrong? What's missing?"* Skills are experts, not oracles.
 - **Skill not picked up.** If Phase 0 fails (skill doesn't invoke), don't debug in front of the room — switch to the facilitator's pre-run reports as a worked example and let students run the exercise on them. Pedagogy survives; capability check failure is the fix afterwards.
-- **Report depth varies.** Some students' Module 3 systems are thin (short brain, light sources); their reports will be thin. That's a finding, not a fail — coach: *"A thin system has fewer risks AND less evidence. Both are true."*
+- **Report depth varies.** Some students' Module 3 systems are thin (short memory, light sources); their reports will be thin. That's a finding, not a fail — coach: *"A thin system has fewer risks AND less evidence. Both are true."*
 
 **Why 45 minutes, not 30:**
 - Two skills running sequentially, each takes real time. Students need to *read* both reports, not skim. Phase 3's diff-and-apply is the heart of the loop and can't be compressed.

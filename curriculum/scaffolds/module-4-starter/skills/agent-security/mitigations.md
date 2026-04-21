@@ -95,7 +95,7 @@ Match the mitigation to the risk. A rough guide:
 | Consequential action needs human judgment | **Gate** |
 | Output quality requires adversarial check | **Review** |
 
-Often more than one shape applies. PII in brain/ leaking into output: **scope** removes it from brain/ in the first place (best); **filter** catches what slips through (second line); **review** flags anything the filter misses (third line). Defence in depth works; single shapes are fragile.
+Often more than one shape applies. PII in memory/ leaking into output: **scope** removes it from memory/ in the first place (best); **filter** catches what slips through (second line); **review** flags anything the filter misses (third line). Defence in depth works; single shapes are fragile.
 
 ## The meta-rule
 

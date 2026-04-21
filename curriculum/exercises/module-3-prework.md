@@ -40,7 +40,7 @@ When the job is done, it returns a single result to the main agent and disappear
 
 For the full reference, search *"Claude Code subagents"* in Anthropic's docs or open Claude Code's in-app help. You're after the shape: *helper with instructions, own context, returns a result — you summon it by asking.*
 
-**What to bring to class:** the three one-line practitioner takeaways. That's it — Module 3 runs on the brain you already built in Module 2.
+**What to bring to class:** the three one-line practitioner takeaways. That's it — Module 3 runs on the memory you already built in Module 2.
 
 **Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the subagent primer.
 
@@ -52,7 +52,7 @@ For the full reference, search *"Claude Code subagents"* in Anthropic's docs or 
 
 **Prerequisites:**
 - Claude Code installed (same as prior modules).
-- Module 2 completed; brain in place.
+- Module 2 completed; memory in place.
 - Web access — all five practitioner sites are public.
 
 **URL verification owed (before first delivery):**

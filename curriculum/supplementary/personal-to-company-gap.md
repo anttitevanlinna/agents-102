@@ -34,7 +34,7 @@ Named concept to introduce early: **tacit vs. explicit knowledge** (Polanyi — 
 
 *Referenced from: Module 2 (building-agent-systems).*
 
-Your Module 2 challenge brain works. You know it works. What you probably don't know is *why* it works — because the reasons live in choices you made without noticing.
+Your Module 2 challenge memory works. You know it works. What you probably don't know is *why* it works — because the reasons live in choices you made without noticing.
 
 You picked the three documents that matter and left out the twelve that don't. You wrote the rules file in a voice that sounds like you, which means when the agent drafts in that voice, you recognise the result. You know which output sentence smells off because it matches a mistake you've seen before. You re-run the prompt when the answer feels lazy, and you don't re-run it when it feels right — and "feels right" is doing enormous work.
 

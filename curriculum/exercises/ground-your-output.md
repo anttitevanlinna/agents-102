@@ -2,7 +2,7 @@
 
 **What you do:**
 
-There is truth out there. Your sources represent pieces of it. Your retrievals, your brain, your call notes — each carries a shard of what actually happened and what's actually the case. The agent's job is to connect its output to that ground.
+There is truth out there. Your sources represent pieces of it. Your retrievals, your memory, your call notes — each carries a shard of what actually happened and what's actually the case. The agent's job is to connect its output to that ground.
 
 When it can't reach the ground — when you ask for more than the sources carry — it fills the gap. Confidently. Plausibly. With good grammar. The output is ungrounded, and the agent won't tell you which parts.
 
@@ -147,10 +147,10 @@ This covers most observed fabrication patterns in LLM output. The five-category 
 - The three rules in Phase 3 are the default spine. Students can add domain-specific rules in their own voice (a Nordic compliance team might add "no regulatory predictions"; a commercial team might add "no competitor pricing claims").
 - The briefing format — executive briefing by default; swap for a memo, slack post, board paper.
 
-**Why Module 3's synthesis output is the target, not Module 2's brain:**
+**Why Module 3's synthesis output is the target, not Module 2's memory:**
 - M3's synthesis is the richest, most over-reaching output in the training so far. The planner / experimentator / reframer stances layered over three retrievals give the agent many places to drift off the ground.
 - The Module 3 `wonder.md` artifact explicitly named "this feels almost right" — M5 comes back for that feeling. The emotional arc is honoured.
-- M2's brain is reference material; running the loop on reference would be weirder and less charged than running it on a strategic answer the student already cares about.
+- M2's memory is reference material; running the loop on reference would be weirder and less charged than running it on a strategic answer the student already cares about.
 
 **Lecture implications (owed):**
 - Current lecture slug: "Why LLMs Will Always Fabricate." Still correct at the failure-mode level, but the lecture body must lead with GROUNDED (the discipline) and treat fabrication as the negative case. Revised framing for the lecture: *"There is truth out there. Your agent is a statistical generator with no model of it. Grounding is the discipline that makes the agent's output connect to the truth rather than approximate it."* Consider renaming to "Grounded" or "Why grounded output is the whole job."

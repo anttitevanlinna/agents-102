@@ -113,7 +113,7 @@ If this lecture's format isn't clear, default to prework-reading target. If it's
 
 Named examples, specific mechanics, concrete artifacts. Never generic:
 - Refer to specific exercises by name (from earlier modules)
-- Use named artifacts participants have seen (their LLM brain, their Module N output, their CLAUDE.md)
+- Use named artifacts participants have seen (their LLM memory, their Module N output, their CLAUDE.md)
 - Include specific numbers where relevant (compound reliability math, convergence thresholds)
 - Avoid "organizations often…" / "many teams have found…" / "in practice, you might…"
 

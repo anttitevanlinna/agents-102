@@ -21,15 +21,15 @@ Use this file as the lens when running Section 2 of the agent-security audit.
 
 **Classical:** an attacker modifies data or code in transit or at rest.
 
-**Agent-adapted:** the agent's own **instructions or context** get modified. Could be by another agent (a subagent that writes back to `agents/`), by the user accidentally, by a read that overwrites a brain file, or by the agent itself if it has write access to its own instructions.
+**Agent-adapted:** the agent's own **instructions or context** get modified. Could be by another agent (a subagent that writes back to `agents/`), by the user accidentally, by a read that overwrites a memory file, or by the agent itself if it has write access to its own instructions.
 
 **Common patterns:**
 - An agent file that can be edited by another agent as part of normal operation (`synthesizer.md` writes to `agents/` without scoping).
 - A CLAUDE.md at the root that a subagent overwrites during a routine run.
-- A brain file that the agent updates automatically; the update drops or rewrites a rule that was load-bearing.
+- A memory file that the agent updates automatically; the update drops or rewrites a rule that was load-bearing.
 - User workflow where "save the agent's suggestions" writes into the instruction files, not a separate output folder.
 
-**What to look for:** any path where the agent writes to its own instruction files (`agents/*.md`, root `CLAUDE.md`, `brain/*.md` if the brain is prescriptive); any automatic-update loop that touches prescriptive files.
+**What to look for:** any path where the agent writes to its own instruction files (`agents/*.md`, root `CLAUDE.md`, `memory/*.md` if the memory is prescriptive); any automatic-update loop that touches prescriptive files.
 
 ## R — Repudiation
 
@@ -52,7 +52,7 @@ Use this file as the lens when running Section 2 of the agent-security audit.
 **Agent-adapted:** the agent produces output that contains information the user is allowed to see but the **downstream consumer** of the output is not. The agent has no model of who's going to read its output next. A synthesiser output pasted into an email, shared in Slack, or handed to a stakeholder can carry PII, confidential pricing, legal-sensitive language, or customer names that shouldn't leave the building.
 
 **Common patterns:**
-- `brain/people.md` or `brain/contacts.md` with named individuals, emails, phone numbers — surfaces in every synthesiser output.
+- `memory/people.md` or `memory/contacts.md` with named individuals, emails, phone numbers — surfaces in every synthesiser output.
 - A pricing model or rate card in `sources/` — any summary the agent produces about commercial strategy is at risk of including real numbers.
 - Call notes or meeting notes in `sources/` naming specific customers, deals, or internal debates.
 - An agent trained on legal-sensitive material that produces language legal wouldn't sign off.

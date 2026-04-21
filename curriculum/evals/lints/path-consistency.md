@@ -28,7 +28,7 @@ Find every link of form `curriculum.html?...`. For each:
 - Other `?file=...` or `?page=...` links: verify the renderer supports the param. Read site/curriculum.html to confirm what query params are actually handled. Report any href that uses an unsupported param.
 
 === CHECK 3 — Literal file paths referenced in prompts exist in the scaffold ===
-Find every file path pattern in student-facing prompts or instructions: `prework/foo`, `module-N/bar`, `brain/`, `sources/`, `agents/`, `skills/`, `CLAUDE.md`, etc.
+Find every file path pattern in student-facing prompts or instructions: `prework/foo`, `module-N/bar`, `memory/`, `sources/`, `agents/`, `skills/`, `CLAUDE.md`, etc.
 - At the point in the curriculum where this path is first written TO: does the scaffold (see curriculum/scaffolds/training-starter/ and per-module scaffolds) create the parent directory? If the write lands in a nonexistent dir, Claude Code will either error or succeed in creating it — different modes produce different student experience. Report: (a) paths written TO that do not have a seeded parent directory, (b) paths READ FROM that are not guaranteed to exist at that phase.
 
 === CHECK 4 — Filename conventions ===

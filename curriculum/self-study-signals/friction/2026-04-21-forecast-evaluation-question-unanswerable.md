@@ -1,0 +1,9 @@
+**Context:** Module 2 prework, `curriculum/exercises/name-your-challenge.md` Step 1 question 3: *"What would 'a good answer' look like a month from now? How would you know the brain helped?"*
+**Signal:** Two problems in one line.
+(a) *"Brain"* lands without enough priming — the primer was *"Module 2 builds you a brain — one that helps you think through a real, live problem,"* which is abstract. A student who skipped the Karpathy + Antti readings has no concrete picture, so when *"the brain"* shows up in question 3 it reads as out-of-the-blue.
+(b) The question itself is structurally un-answerable at this point. Asking a student to forecast success criteria for a thing they've never built and never used is Module 6 (evals) vocabulary dropped into Module 2 prework. They have no reference point for "help" — the question sounds smart but lands empty, and the student either fakes an answer or gets stuck.
+**Gap:** Premature-evaluation questions in prework / early modules. The student can only answer evaluation questions grounded in experience they already have — *current* stuckness, *current* thinking partners, *current* frustration — not forecasted what-good-looks-like criteria.
+**Fix:**
+- Strengthened the brain primer in paragraph 1 with a one-breath concrete description (*"a folder of your own notes and source material that Claude reads before answering, so it's grounded in your world, not the open internet. Think of it as a curated library Claude checks first."*).
+- Replaced question 3 with a grounded version: *"Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?"*
+**Principle:** For future content reviews — audit every "how would you know it worked?" / "what does good look like?" / "what's the success criterion?" question. If the student hasn't yet experienced the thing, the question is forecast-in-advance and empty. Invert to current state.

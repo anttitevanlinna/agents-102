@@ -4,11 +4,8 @@
 The eval is infrastructure, not an artifact. Two loops compound: generation sharpens under eval pressure, and the eval sharpens from watching what slipped past.
 
 ## Meta
-- **Primary Bloom's level:** Create
 - **Prework:** Ethan Mollick — "Garbage Can and Bitter Lesson". Also read your `module-5/still-uncertain.md` line from yesterday — the thing you flagged a grounded briefing still couldn't reach. That's today's starting point.
 - **Homework:** Chip Huyen *AI Engineering*, evals chapter (candidate)
-- **Materials (trainer):** `judges/groundedness-judge.md` handoff from Module 5's bake-off winner. Loop-coordinator reference prompt. Pre-flight capability check on long-running session + parallel tracks + meta-agent edit-and-apply.
-- **Plug points:** the topic for the two generation tracks (defaults to the Module 3 system's primary output); convergence threshold (default 90% claim-level agreement).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -37,25 +34,38 @@ Today the question shifts. What if the judge kept getting better — not because
 - **The eval gets smarter by watching what slipped past.** Not by being edited — by observing its own misses and proposing rule changes the meta-agent applies.
 - **Orchestrator pattern.** One session directs parallel tracks. The shape the student recognizes from Module 3's fan-out, now running a quality discipline instead of a content discipline.
 
-## Plug Points
-- **Topic for the two generation tracks.** Default: the Module 3 system's primary output. The student has been working this brain all week; the eval loop bites on real material.
-- **Convergence threshold.** Default 90% claim-level agreement between the two tracks. Regulated-industry cohorts push to 95%+.
-- **Walk-away duration.** Default 25-30 min. Compressed variants trim to 15 min + 2 rounds; note this costs some of the mood.
-
 ## Debrief
 
-~5-minute personal retro run WITH Claude via a pasted prompt. Three questions, shifted to this module's discipline:
+Five minutes. Claude reviews the eval loop's run and sharpens the judge's prompt — the same judge the meta-agent has been editing all module. The evidence is the round-by-round diff trail: what the meta-agent changed, what it under-flagged, what it missed. Claude reviews, rewrites `judges/groundedness-judge.md` in place, reports what changed. You push back on anything that's off.
 
-1. **What should be an eval that runs every time?** — Name one quality check you've been running manually that belongs on the loop. The whole training has been training your eye; which judgment is ready to leave your eye?
-2. **Where did the judge improve most?** — Open the judge-diff files. Which rule change did the meta-agent get right, and which one do you disagree with? The disagreement is the next iteration.
-3. **What's Monday's first always-on eval?** — Not the most important one. The first one. Smallest thing you'd put on a loop tomorrow. Where is it, what does it score, who needs to see the output?
+**Prompt** *(copy → Claude Code)*
 
-Produces a one-line addition to `module-6/eval-notes.md` naming the Monday loop.
+```
+Review this session and sharpen the judge beyond what the meta-agent reached. Read judges/groundedness-judge.md in its current state, then scan module-6/rounds/ (every round's generation + judge output + rule diffs) and the meta-agent's reasoning trail. Look back over the session: which rule change did the meta-agent get right, which one made the judge worse and got reverted (or should have), what specific boundary case did the loop never test, where did the judge mis-rate in the same way across multiple rounds (a stuck bias the meta-agent kept missing), what did the judge under-flag that you caught by eye?
+
+Then rewrite judges/groundedness-judge.md. Integrate, don't append. Add the rule the loop never reached, sharpen a rule the meta-agent softened, remove a rule that turned out to fire on the wrong thing. The judge is infrastructure now — every rule should name the failure class it catches. Don't add a "retro notes" section; rewrite the file as the better version.
+
+When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why — grounded in specific rounds. Name one boundary case the next run should test.
+```
+
+*(end of prompt)*
+
+Read Claude's summary. Push back where it's wrong — *"the meta-agent was right to soften that rule, put it back"* / *"you added a rule the loop already had in round 2."* The artifact: the sharpened `judges/groundedness-judge.md` plus one line added to `module-6/eval-notes.md` naming Monday's first always-on eval. This is the module's thesis made literal — the judge got sharper across rounds by watching itself; you just did another pass, and next run the meta-agent will keep going without you.
 
 ## Bridge
 You just built an eval that improves itself. Who else on your team would want any of this?
 
 <!-- maintainer -->
+
+**Meta (trainer):**
+- **Primary Bloom's level:** Create
+- **Materials (trainer):** `judges/groundedness-judge.md` handoff from Module 5's bake-off winner. Loop-coordinator reference prompt. Pre-flight capability check on long-running session + parallel tracks + meta-agent edit-and-apply.
+- **Plug points:** the topic for the two generation tracks (defaults to the Module 3 system's primary output); convergence threshold (default 90% claim-level agreement).
+
+**Plug Points (trainer):**
+- **Topic for the two generation tracks.** Default: the Module 3 system's primary output. The student has been working this memory all week; the eval loop bites on real material.
+- **Convergence threshold.** Default 90% claim-level agreement between the two tracks. Regulated-industry cohorts push to 95%+.
+- **Walk-away duration.** Default 25-30 min. Compressed variants trim to 15 min + 2 rounds; note this costs some of the mood.
 
 **Mood contract:** unleashed leverage — *"we can automate the loop."* The walk-away window + dashboard-on-return are load-bearing. Do not let the student sit through the whole run.
 

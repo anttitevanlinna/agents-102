@@ -57,7 +57,7 @@ Enables these LOs from `trainings/bootstrap/multi-agent-systems.md`:
 
 ### Module-to-module arc
 
-Picks up from **Build your challenge brain** (Module 2) — the same three source zones (wiki / collab suite / internet) that the student curated by hand last module are now the source zones the three retrievers work. The root `CLAUDE.md` from Module 2 is what each window reads; the `agents/` folder is already populated with the librarian agent from Module 2. The crux skill from the Module 2 Debrief previews Rumelt's kernel, which the Phase 2 synthesizer spine names out loud.
+Picks up from **Build your challenge memory** (Module 2) — the same three source zones (wiki / collab suite / internet) that the student curated by hand last module are now the source zones the three retrievers work. The root `CLAUDE.md` from Module 2 is what each window reads; the `agents/` folder is already populated with the librarian agent from Module 2. The crux skill from the Module 2 Debrief previews Rumelt's kernel, which the Phase 2 synthesizer spine names out loud.
 
 Hands off to **Module 4 (Security)** via the Bridge — the system just gained access to three systems at once, and three of its minds hold stances an SVP might not want on the record. Module 4 opens with the blast radius Phase 1 just created. Also feeds Module 5 — the Close's named seam failure is exactly the fabrication and gloss pattern Module 5 comes back for with better tooling than eyeball.
 
@@ -106,7 +106,7 @@ Participants haven't built multi-window retrieval or multi-subagent synthesis be
 - **File-path shapes embedded in the prompts** — `module-3/retrievals/{confluence,o365,internet}.md`, `module-3/stances/`, `module-3/question.md`, `module-3/coordination-rule.md`. The student never invents a path.
 - **Stance definitions named in Phase 2** — each subagent stance is defined in the prompt itself (backward-from-end, Martin's *what would have to be true?*, Sutherland-style reframe). No blank-page moment.
 - **Rumelt's kernel explicit in the synthesizer prompt** — diagnosis / guiding policy / coherent actions spelled out, not left to the student to recall.
-- **The Module 2 state is the starting scaffold** — brain, sources, root `CLAUDE.md`, one agent file already exist. Module 3 extends it; nothing fresh-out-of-zip.
+- **The Module 2 state is the starting scaffold** — memory, sources, root `CLAUDE.md`, one agent file already exist. Module 3 extends it; nothing fresh-out-of-zip.
 
 ### Prompt design
 

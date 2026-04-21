@@ -14,9 +14,9 @@ Prompts use paths relative to **wherever the Workbench is scoped at that moment.
 |---|---|---|
 | Prework | `<training-dir>/prework/` | bare filenames |
 | Module 1 | `<training-dir>/module-1/` | bare filenames |
-| Modules 2-8 | `<training-dir>/` (root) | `module-N/foo.md` for per-module artifacts; bare for crossmodule (`brain/`, `sources/`, `agents/`, `CLAUDE.md`) |
+| Modules 2-8 | `<training-dir>/` (root) | `module-N/foo.md` for per-module artifacts; bare for crossmodule (`memory/`, `sources/`, `agents/`, `CLAUDE.md`) |
 
-Why Workbench doesn't reopen per-module for M2-M8: every M2+ exercise reads crossmodule artifacts. `../brain/` in every prompt is worse than `module-N/foo.md` once per per-module save.
+Why Workbench doesn't reopen per-module for M2-M8: every M2+ exercise reads crossmodule artifacts. `../memory/` in every prompt is worse than `module-N/foo.md` once per per-module save.
 
 ## Violations that existed
 

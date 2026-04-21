@@ -23,7 +23,7 @@ Build me an orchestrator for a self-improving eval loop. Save it as module-6/orc
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Launch two parallel generation tracks by dispatching two subagents at the same time. Each track regenerates a briefing on the same topic using sources in sources/, brain/, and module-3/retrievals/. Save as module-6/runs/round-N/briefing-A.md and briefing-B.md.
+1. Launch two parallel generation tracks by dispatching two subagents at the same time. Each track regenerates a briefing on the same topic using sources in sources/, memory/, and module-3/retrievals/. Save as module-6/runs/round-N/briefing-A.md and briefing-B.md.
 
 2. Run the judge at judges/groundedness-judge.md against both briefings. Save judgments as module-6/runs/round-N/judgment-A.md and judgment-B.md.
 
@@ -69,7 +69,7 @@ Open `module-6/runs/round-1/judgment-A.md` once it lands (give it ~5 minutes). S
 ```
 Claim: "Competitor X cut pricing 15% in Q3." Judge marked GROUNDED citing sources/competitive-notes.md. The file mentions pricing pressure but does not state the 15% figure. Judge's GROUNDED rule is too lenient on numeric precision.
 
-Claim: "Regulators are likely to act within six months." Judge marked GROUNDED citing brain/regulatory-outlook.md. The file says "eventually" — not a timeline. Judge's UNGROUNDED-SHAPE rule should trigger on probability+timeline claims even when topic is covered.
+Claim: "Regulators are likely to act within six months." Judge marked GROUNDED citing memory/regulatory-outlook.md. The file says "eventually" — not a timeline. Judge's UNGROUNDED-SHAPE rule should trigger on probability+timeline claims even when topic is covered.
 ```
 
 Save it. Don't tell Claude. The orchestrator is already watching for that file.

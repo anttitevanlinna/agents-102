@@ -40,11 +40,30 @@ Skip this section if you already use a terminal.
 
 Claude Code has **plan mode**: Claude researches and proposes a plan instead of writing files immediately. You approve the plan, then Claude runs it.
 
-**Toggle it on:** Shift+P (or Shift+Tab cycles through permission modes — Default → Auto-accept → Plan → Auto; Plan is one of them).
+**Toggle it on — three ways, pick whichever:**
+- Tell Claude *"Enable plan mode."* (Works anywhere. Recommended default.)
+- Use the **mode dropdown** at the bottom of the Claude Code desktop app — pick *Plan* from the list.
+- Keyboard: Shift+Tab to cycle permission modes (Default → Auto-accept → Plan → Auto).
 
-**When the footer reads *plan mode*** and you paste a prompt, Claude returns a plan. Read it. Ask for changes. When it's right, approve.
+**When the footer reads *plan mode*** and you paste a prompt, Claude returns a plan instead of writing files. When the plan is ready, Claude Code pauses and asks:
 
-**Toggle it off:** Shift+P again (or cycle with Shift+Tab back to Default).
+> *Claude has written up a plan and is ready to execute. Would you like to proceed?*
+>
+> *1. Yes, and use auto mode*
+> *2. Yes, manually approve edits*
+> *3. No, refine with Ultraplan on Claude Code on the web*
+> *4. Tell Claude what to change*
+
+**What each option does, and when to pick it:**
+
+- **1. Yes, and use auto mode** — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). **This is the friendly default for most Bootstrap exercises.**
+- **2. Yes, manually approve edits** — Claude pauses for each file write. You OK each one. Slower, safer. Pick this when the plan touches something you care deeply about (editing a live policy file, modifying production-adjacent work).
+- **3. No, refine with Ultraplan on Claude Code on the web** — Sends the plan to a cloud-based refinement tool. Not used in Bootstrap; ignore.
+- **4. Tell Claude what to change** — Opens a text box. You type specific feedback (*"merge buyer-tone and buyer-segments into one page,"* *"add a topic for competitive response"*). Claude rewrites the plan. Pick this when the plan is mostly right but something is off. Cheaper than re-running the whole prompt from scratch.
+
+**Rule of thumb for Bootstrap:** plan looks solid → option 1. Plan is close but needs a tweak → option 4 with one sentence of feedback. Plan is fundamentally wrong → option 4 describing the change, or exit plan mode and re-paste the prompt with sharper instructions.
+
+**Turning it off — usually no action needed.** Plan mode exits automatically after you approve a plan and Claude runs it; the footer goes back to *default* on its own. You only need to toggle off manually if you want out *before* executing a plan (e.g., you changed your mind and want to exit without running) — tell Claude *"Disable plan mode"*, pick *Default* from the mode dropdown, or cycle with Shift+Tab.
 
 Use plan mode when a prompt is about to write many files, or touch anything you care about. Skip it for quick single-turn work.
 

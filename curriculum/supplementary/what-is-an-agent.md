@@ -22,7 +22,7 @@ Close the chat window — that conversation ends. Start a new one — the model 
 
 A chat ends. A system doesn't. That's not a feature; that's the whole difference.
 
-If you write instructions into a file the model reads at the start of every conversation, the instructions persist — even though the model itself has no memory. That file is context. Sometimes people call it a *guardrail* when it shapes behaviour, a *prompt* when it kicks off a task, or a *brain* when it holds knowledge. Different names, same mechanism: text the model re-reads at the start.
+If you write instructions into a file the model reads at the start of every conversation, the instructions persist — even though the model itself has no session memory. That file is context. Sometimes people call it a *guardrail* when it shapes behaviour, a *prompt* when it kicks off a task, or a *memory* when it holds knowledge. Different names, same mechanism: text the model re-reads at the start.
 
 If you add **connectors, actions, and tools** — the things the model can call to fetch data from your work apps, do things in them, write files, run code, talk to other agents — it stops being a chatbot and starts being an agent. A chatbot has words. An agent has words and hands. That's the step-change.
 
@@ -35,7 +35,7 @@ If the agent runs on a schedule, chains to another agent, or decides what to do 
 Each module adds the next part of the answer:
 
 - **Module 1:** Context is the mechanism. You already have a taste from the prework — the snake game and the meetings summary both happened because Claude read your input and produced output shaped by it.
-- **Module 2:** Context in a file, growing over time (the "brain"). Where chat's amnesia gets cured.
+- **Module 2:** Context in a file, growing over time (the "memory"). Where chat's amnesia gets cured.
 - **Module 3:** Multiple agents doing different jobs, passing work between them.
 - **Module 4:** Tools with boundaries — skills.
 - **Module 5–6:** How do you know the output is actually good?

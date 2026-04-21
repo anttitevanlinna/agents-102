@@ -6,7 +6,7 @@
 
 **Eval runs:**
 - 2026-04-19 — initial PDCA test+check pass (pre-JTBD frame).
-- 2026-04-20 — **JTBD reframe.** Exercise rewritten against Jobs-to-be-Done opening frame (Christensen/Moesta/Ulwick). Starting question shifts from *"what should I share?"* to *"what job is my teammate trying to get done, and which sharing shape does it?"* Phase 1 is now the agentic interview (agent reads brain + uses ask-questions tool + writes `jtbd.md` with outcome statement). Phase 2 selection test shifts from *fits my infra* to *moves the outcome metric*. Phase 4 assumption-test aimed at the SWITCH (firing the incumbent), not at generic sharing. Phase 5 pre-mortem is of the firing-that-didn't-happen, not of the rollout-that-broke. Closing is a Monday conversation, not a Monday deployment. Primary leap test, two new judges (JTBD frame lands; Outcome-vector discovery works) added below. **Verdict: APPROVE WITH TODOs** (essential judges pass; contributory TODOs noted at the bottom). See report for simulation outcomes.
+- 2026-04-20 — **JTBD reframe.** Exercise rewritten against Jobs-to-be-Done opening frame (Christensen/Moesta/Ulwick). Starting question shifts from *"what should I share?"* to *"what job is my teammate trying to get done, and which sharing shape does it?"* Phase 1 is now the agentic interview (agent reads memory + uses ask-questions tool + writes `jtbd.md` with outcome statement). Phase 2 selection test shifts from *fits my infra* to *moves the outcome metric*. Phase 4 assumption-test aimed at the SWITCH (firing the incumbent), not at generic sharing. Phase 5 pre-mortem is of the firing-that-didn't-happen, not of the rollout-that-broke. Closing is a Monday conversation, not a Monday deployment. Primary leap test, two new judges (JTBD frame lands; Outcome-vector discovery works) added below. **Verdict: APPROVE WITH TODOs** (essential judges pass; contributory TODOs noted at the bottom). See report for simulation outcomes.
 
 ---
 
@@ -15,7 +15,7 @@
 ### Primary — the leap test *(JTBD-aware, 2026-04-20)*
 
 After completing this exercise, the participant can:
-- Leave with a **JTBD brief anchored in the teammate's language**, including an **outcome statement in Ulwick's canonical form** ("minimize/increase [metric] when [doing the job]") — anchored to specific brain files and the 2-3 confirmations the ask-questions tool plugged.
+- Leave with a **JTBD brief anchored in the teammate's language**, including an **outcome statement in Ulwick's canonical form** ("minimize/increase [metric] when [doing the job]") — anchored to specific memory files and the 2-3 confirmations the ask-questions tool plugged.
 - Select a **sharing candidate because it moves the outcome metric** — not because it matches the infrastructure they happen to have. Branch B is first-class; Branch A adds on top.
 - Produce **both technical and people plans**, with UNASSIGNED lines named explicitly as Monday's questions.
 - Run **assumption-test and pre-mortem against the SWITCH** (would the teammate fire their current hire?), not against a generic sharing problem.
@@ -50,11 +50,11 @@ Checks:
 
 ### Ask-questions tool lands as a new primitive *(exercise-specific — essential, new 2026-04-20)*
 
-Does the ask-questions tool (Claude Code's `AskUserQuestion` or runtime equivalent) land as a **distinct interaction primitive** — bounded multiple-choice form, options drawn from the brain — rather than as a chatbot gimmick (Claude dumps a numbered list in chat and waits for freeform typing)?
+Does the ask-questions tool (Claude Code's `AskUserQuestion` or runtime equivalent) land as a **distinct interaction primitive** — bounded multiple-choice form, options drawn from the memory — rather than as a chatbot gimmick (Claude dumps a numbered list in chat and waits for freeform typing)?
 
 Checks:
 - Phase 1 prompt explicitly invokes the ask-questions tool by name.
-- Prompt specifies 5–8 questions, each with 3–4 options drawn from what the agent found in the brain.
+- Prompt specifies 5–8 questions, each with 3–4 options drawn from what the agent found in the memory.
 - Prompt explicitly rules out freeform typing ("Don't ask me to type freeform answers").
 - Maintainer section flags the capability check — confirm the tool fires as a structured form in the student's runtime, not a chat dump.
 - Self-study simulation verifies the bounded-form interaction felt different from normal chat (named as "a new move" by the student).
@@ -119,7 +119,7 @@ If reasonable variation in participant skill can skip the primary aha (e.g., stu
 
 ### Failure modes named
 
-- Agent's Phase 1 hypothesis is generic / fabricated from file names → prompt requires anchoring to specific file+line; push: *"quote the sentence in my brain that made you think this."*
+- Agent's Phase 1 hypothesis is generic / fabricated from file names → prompt requires anchoring to specific file+line; push: *"quote the sentence in my memory that made you think this."*
 - Student rubber-stamps Phase 1 output → Teacher Claude/facilitator: *"pick one thing that's probably wrong. Ask the agent to try again on that piece."*
 - Third outcome vector not surfaced → explicit nudge in prompt; facilitator follow-up: *"if speed and quality stayed flat, what else would your teammate want?"*
 - Student picks pattern because it fits infra rather than because it moves the outcome → *"why would your teammate fire their current hire and use this? One sentence."*
@@ -154,7 +154,7 @@ Five-plus top-tier business frameworks, pedagogically central (each owns a move)
 - Pattern catalog (`strategy/personal-to-team-patterns.md`) as reference — WIP with `[TODO]` placeholders on many examples; framed explicitly as "prompt to invent for your situation" in the exercise body.
 - Four sharing strategies listed inline in Phase 2 as memory aid.
 - Outcome statement template given in Ulwick's canonical form.
-- Prior modules have built brain/skills/artifacts; no new artifact type is produced from thin air.
+- Prior modules have built memory/skills/artifacts; no new artifact type is produced from thin air.
 - Ask-questions tool: the prompt names the student-facing behavior explicitly (bounded multiple-choice, no freeform typing). Fallback named in maintainer notes.
 
 ### Prompt design
@@ -164,7 +164,7 @@ Five-plus top-tier business frameworks, pedagogically central (each owns a move)
 
 ### Plug points real
 
-- Phase 1: student's real teammate, real brain content, real job.
+- Phase 1: student's real teammate, real memory content, real job.
 - Phase 2: real buyer infrastructure (Branch A / B).
 - Phase 3: named person from their org for ownership, governance, operating.
 - Phase 5: the failure story anchored to their specific situation.

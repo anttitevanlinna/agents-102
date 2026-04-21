@@ -18,7 +18,7 @@ The offer compressed: leadership (your actual job) × agentic (the specific wave
 - **You bring:** your people. What makes them tick. Who trusts whom. Who's carrying what resentment from the last transformation. Who'll step up when nobody's looking. Who's quietly the best teacher on your team. What your team has tried before and what it left them believing. Nobody else in the room — including us — has this, and nothing in the research KB replaces it.
 - **Together:** agents figure out *with you* what's likely to work for your specific team, help you run it, and read the signal honestly afterward. Theory without people-knowledge = generic advice. People-knowledge without theory = stuck where you are. Both + agents = actionable, compounding insight.
 
-**Dorsey's question at team scale:** *what does your team understand that is genuinely hard to understand, and is that understanding getting deeper every day?* The brain is where that understanding compounds. Agents without it are generic; agents with it actually do the job.
+**Dorsey's question at team scale:** *what does your team understand that is genuinely hard to understand, and is that understanding getting deeper every day?* The memory is where that understanding compounds. Agents without it are generic; agents with it actually do the job.
 
 **M1 gets disproportionate weight.** A shallow diagnostic at M1 means shallow insight everywhere downstream. An honest M1 makes the whole rest of the training work. This is the load-bearing module.
 
@@ -41,7 +41,7 @@ Subject matter is the vehicle. Belief-update is the product.
 - *The coalition self-selects by engagement. I don't draft it.*
 - *I'm a conditions-creator, not an information-router.*
 - *Learning rate is the winning metric, not throughput.*
-- *The brain + swarm compounds. The plan doesn't.*
+- *The memory + swarm compounds. The plan doesn't.*
 
 **What this means for facilitation:**
 
@@ -67,17 +67,17 @@ Top management gets it. The team doesn't. Bottleneck = absorption at team scale.
 
 ## Deliverable
 
-The student leaves with **a running brain + swarm and the 90-day plan that lives inside it.**
+The student leaves with **a running memory + swarm and the 90-day plan that lives inside it.**
 
-The **brain** is a CLAUDE.md-anchored folder the manager has been building since M1 — Bootstrap's M2 aesthetic ported to leadership. It holds their team's diagnostic, their decisions, the criteria they're watching, the interventions they've run or rehearsed, and the rules Claude has promoted on its own. The **swarm** is the set of scheduled agents that feed the brain while the manager leads: diagnostic scans, gate-watchers, coalition check-ins, cadence agents, the maintenance agent.
+The **memory** is a CLAUDE.md-anchored folder the manager has been building since M1 — Bootstrap's M2 aesthetic ported to leadership. It holds their team's diagnostic, their decisions, the criteria they're watching, the interventions they've run or rehearsed, and the rules Claude has promoted on its own. The **swarm** is the set of scheduled agents that feed the memory while the manager leads: diagnostic scans, gate-watchers, coalition check-ins, cadence agents, the maintenance agent.
 
-The 90-day plan is a printout of the brain's current state, not a separately authored document. When the student gets back to work on Monday, they don't pick up a plan — they pick up an instrument that keeps running and keeps learning. The brain compounds from day one through day 91 and beyond.
+The 90-day plan is a printout of the memory's current state, not a separately authored document. When the student gets back to work on Monday, they don't pick up a plan — they pick up an instrument that keeps running and keeps learning. The memory compounds from day one through day 91 and beyond.
 
 ## The Backbone — The Brain (Three Blocks + Swarm)
 
 *"The manager's instrument."*
 
-The brain is the folder the manager builds from M1 onward. Three structural blocks inside it (Knowledge Architecture, Decision Journal, Quality Gate) are the spine; the swarm of scheduled agents is what keeps the brain alive between sessions and beyond training. Same Bootstrap M2 aesthetic — *"It runs while I sleep"* → here as *"It learns while I lead."*
+The memory is the folder the manager builds from M1 onward. Three structural blocks inside it (Knowledge Architecture, Decision Journal, Quality Gate) are the spine; the swarm of scheduled agents is what keeps the memory alive between sessions and beyond training. Same Bootstrap M2 aesthetic — *"It runs while I sleep"* → here as *"It learns while I lead."*
 
 The three-blocks structure is borrowed and adapted from Paweł Huryn's *"Three Blocks That Make Claude Get Smarter Every Session"* (see `continuous-research/insights.md` → "CLAUDE.md That Learns"). Port: from personal IC use to engineering-management practice. The swarm is Bootstrap-M2-scale agent orchestration, applied to leadership work rather than to writing.
 
@@ -153,21 +153,21 @@ All three heroes feed the same instrument. Kotter is the arc Block 2's decisions
 
 ## Two tracks running in parallel
 
-The training runs two tracks simultaneously — not sequentially, not optionally. Both live in the brain.
+The training runs two tracks simultaneously — not sequentially, not optionally. Both live in the memory.
 
-**Track 1 — Team transformation.** The M1–M6 arc: see → believe → distill → declare → examine → name. The brain populates with your team's specifics. You run moves with conviction; half miss; you learn what works with *these* people. This is the visible track.
+**Track 1 — Team transformation.** The M1–M6 arc: see → believe → distill → declare → examine → name. The memory populates with your team's specifics. You run moves with conviction; half miss; you learn what works with *these* people. This is the visible track.
 
-**Track 2 — Frontier muscle.** Parallel, running through every week: reading practitioners (Darragh Curran, Geoff Charles, Jack Dorsey, Paweł Huryn, Andrej Karpathy, Simon Willison, and others surfaced by the research KB), cohort cross-share-backs, a **frontier-scanner agent in the swarm** that surfaces relevant signal weekly, the brain's Block 1 carrying a "what the frontier just did" tier alongside "what my team just did." The training's *AI-first is not static* commitment lived as practice, not slogan.
+**Track 2 — Frontier muscle.** Parallel, running through every week: reading practitioners (Darragh Curran, Geoff Charles, Jack Dorsey, Paweł Huryn, Andrej Karpathy, Simon Willison, and others surfaced by the research KB), cohort cross-share-backs, a **frontier-scanner agent in the swarm** that surfaces relevant signal weekly, the memory's Block 1 carrying a "what the frontier just did" tier alongside "what my team just did." The training's *AI-first is not static* commitment lived as practice, not slogan.
 
-Track 2 is why the brain doesn't decay after day 91. The frontier keeps moving; the brain keeps ingesting; the manager keeps crossing the next chasm forming upstream. *The future is already here, just not evenly distributed.* Track 2 is how you stay in the distribution.
+Track 2 is why the memory doesn't decay after day 91. The frontier keeps moving; the memory keeps ingesting; the manager keeps crossing the next chasm forming upstream. *The future is already here, just not evenly distributed.* Track 2 is how you stay in the distribution.
 
 ## Pair-training — Agentic Engineering 101
 
-The Engineering Management training has a designed pair: **Agentic Engineering 101** (strategy in `content-strategy-agentic-engineering-101.md`). Same backbone (brain + swarm), same agentic rule, same single-company-cohort assumption, same calibration question — scoped to individual software engineers climbing from L0 to L3.
+The Engineering Management training has a designed pair: **Agentic Engineering 101** (strategy in `content-strategy-agentic-engineering-101.md`). Same backbone (memory + swarm), same agentic rule, same single-company-cohort assumption, same calibration question — scoped to individual software engineers climbing from L0 to L3.
 
 The pair pincers the transformation: manager creates conditions (EM), engineers run at capacity (101). Together, the single-company cohort generates aggregate L0→L2/L3 movement as the sponsor's finding. Manager's conditions × engineers' capability = compounding velocity.
 
-Delivery assumption (to validate): EM first or in parallel with 101. 101 runs best when manager has a brain populated and infrastructure growing. Possible sequences: (a) EM then 101 a cohort later, (b) EM and 101 in parallel cohorts, (c) combined program where manager and team run on intersecting weeks.
+Delivery assumption (to validate): EM first or in parallel with 101. 101 runs best when manager has a memory populated and infrastructure growing. Possible sequences: (a) EM then 101 a cohort later, (b) EM and 101 in parallel cohorts, (c) combined program where manager and team run on intersecting weeks.
 
 ## Coalition as companions, not instruments
 
@@ -175,7 +175,7 @@ The relational qualifier that reframes the whole training. Coalition isn't a res
 
 > *Did they make progress? Did they come with you on the ride?*
 
-If yes, the transformation compounds. If no, you did a solo move dressed as a team move — and the brain should catch that honestly, demote the rule, and update the hypothesis. A training whose star student moved their crux but left their coalition behind has not succeeded, by our definition.
+If yes, the transformation compounds. If no, you did a solo move dressed as a team move — and the memory should catch that honestly, demote the rule, and update the hypothesis. A training whose star student moved their crux but left their coalition behind has not succeeded, by our definition.
 
 ## Self-assessment — confidence as the baseline metric
 
@@ -183,7 +183,7 @@ Every student answers one question at three moments:
 
 > **Rate 1–10: your confidence in leading your organization to an AI-first and agentic world.**
 
-- **Start of M1** — baseline. Honest, private to the brain, shared with cohort in aggregate only.
+- **Start of M1** — baseline. Honest, private to the memory, shared with cohort in aggregate only.
 - **End of M6** — immediate delta. Did confidence shift? In which direction? Why?
 - **Day-91 review** — sustained delta. A spike in M6 that collapses by day 91 is a *finding*, not a success — the training created temporary confidence rather than durable muscle. We want to know.
 
@@ -191,20 +191,20 @@ Why a confidence rating and not a knowledge test:
 
 - **It's a belief metric, not a recall metric.** Aligns with the training's premise — beliefs are the product, subject matter is the vehicle.
 - **It's calibrated, not comparative.** Each student rates themselves against their own prior; cohort ranking is off-limits.
-- **It's honest enough to be useful.** The brain is where it lives; the manager's own Decision Journal reviews it. Not a performance-eval substitute.
+- **It's honest enough to be useful.** The memory is where it lives; the manager's own Decision Journal reviews it. Not a performance-eval substitute.
 - **Aggregate delta is the sponsor's finding.** Single-company cohort: aggregate start → end → day-91 is a real measurement of transformation velocity. Worth as much as any training KPI the buyer currently uses.
 
 **Target movement (indicative, to be validated with cohort data):**
 
 - **Start avg:** ~4–5 (baseline — an engineering manager in an org that has declared AI transformation but hasn't equipped them to lead it; they feel the pressure, they don't feel the ground under their feet)
-- **End avg:** ~6–7 (earned, not inflated; they have the brain + swarm running, they've run moves with conviction, they've seen what worked and what didn't at their team's specifics, they know what the real gap is now)
+- **End avg:** ~6–7 (earned, not inflated; they have the memory + swarm running, they've run moves with conviction, they've seen what worked and what didn't at their team's specifics, they know what the real gap is now)
 - **Day-91 avg:** should hold or climb — if it regresses, the training created momentum not muscle, and that's feedback we act on
 
 Delta target is ~+2. Not a 10/10 finish. Realistic. Matches the 50%-wrong principle: we're not promising transformed certainty, we're promising earned belief-shift grounded in real reps.
 
 ## AI-first is not static
 
-The frontier keeps moving. *The future is already here, just not evenly distributed.* Today's compounding engineering is tomorrow's baseline. A team that crosses one chasm and stops has fallen behind the next one forming upstream. Goal is a team that **keeps crossing**, not one that arrives. The brain (three blocks + swarm, Track 1 + Track 2) is what keeps crossing possible — it learns at the rate the frontier moves.
+The frontier keeps moving. *The future is already here, just not evenly distributed.* Today's compounding engineering is tomorrow's baseline. A team that crosses one chasm and stops has fallen behind the next one forming upstream. Goal is a team that **keeps crossing**, not one that arrives. The memory (three blocks + swarm, Track 1 + Track 2) is what keeps crossing possible — it learns at the rate the frontier moves.
 
 ## Starting assumption for students
 
@@ -212,18 +212,18 @@ Chatting-level fluency. Not Bootstrap-level. Build a working system fast — lik
 
 ## Six modules (shape, not settled exercise detail)
 
-M1–M3 = **set up.** M4–M6 = **let's lead** — student makes first moves WITH the guiding coalition during the training itself, not just designs them for later. Each module produces a rehearsed or executed leadership move plus a sharpening of the brain.
+M1–M3 = **set up.** M4–M6 = **let's lead** — student makes first moves WITH the guiding coalition during the training itself, not just designs them for later. Each module produces a rehearsed or executed leadership move plus a sharpening of the memory.
 
 **Exercises are designed case-by-case** through iterative content-creation passes (per `.claude/skills/content-creation/SKILL.md`), not fixed in this doc. The table below is the starting shape — *what the module is for*, not *what the exercise will be verbatim*. Hard rule: **every exercise is agentic** — student orchestrates agents that do the leadership work. Chat-and-save is banned.
 
 | # | Move | Blocks sharpened | Mood | Artifact (direction) |
 |---|---|---|---|---|
-| M1 | Install the brain + stand up the starting swarm. Diagnose team + per-person ADKAR. First entries populate Block 1. | All three blocks installed + Block 1 populated + first scheduled agents running | diagnostic honesty | Brain in place; intervention backlog auto-promoted; weekly diagnostic agent scheduled |
+| M1 | Install the memory + stand up the starting swarm. Diagnose team + per-person ADKAR. First entries populate Block 1. | All three blocks installed + Block 1 populated + first scheduled agents running | diagnostic honesty | Brain in place; intervention backlog auto-promoted; weekly diagnostic agent scheduled |
 | M2 | **Search with starter questions — coalition self-selects.** Agents draft ~5–10 starter questions grounded in Block 1 + KB; student poses them through the week; response-analysis agent surfaces two shortlists simultaneously — candidate first moves AND coalition candidates (those who engaged with agency). | Block 1 (coalition tier seeded) + Block 2 (decision alternatives seeded from team voice) + Block 3 (first gates) | earned clarity after unease — *"I've searched honestly; this is the one I'll run"* | Two shortlists (move candidates + coalition candidates) + first-move picked + journaled decision + gate-watcher agent scheduled |
 | M3 | **Return + cross-pollinate + distill 2 crux + share.** Student returns with M2 data; synthesis agent reads own-team data + KB patterns + cohort cross-shared data (single-company cohort, frictionless). **Crux-finder agent** (invokes Bootstrap `crux` skill; cite Rumelt) distills to exactly 2 crux for this team with forced alternatives. Cohort share-back. Coalition formalizes around the 2 crux. | Block 1 (crux as top-tier rules) + Block 2 (crux-selection as major decision) + Block 3 (outside-view criteria) | co-creation through cross-pollination | 2 crux (terse, quotable) + named coalition + cohort share done + weekly check-in agent scheduled |
 | M4 | **Intent (toward action).** Not a painted vision — an intent-based direction bound by the 2 crux. *"We're betting that moving these crux toward direction X will reshape the team's week. We don't know the full shape yet; we'll learn by running it."* Multi-agent deliberation across Bet-A / Bet-B / hybrid postures, constrained by the crux. Reaction-rehearsal agents role-play team archetypes. Vision is what the student *earns* over 90+ days — not what they write in week 4. | Block 2 (intent as crux-bound decision) + Block 3 (communication criteria) | let's lead — clarity of aim | `intent.md` (coalition-owned, crux-constrained) + first communication move rehearsed or done |
 | M5 | **PDCA honest reckoning — so what really happened as we tried to do as intended? Why?** Retrospective agent reads Block 2 decisions + Block 3 gate outcomes + Block 1 observations; root-cause agent (5 Whys) interrogates each deviation from intent; promotion/demotion agent sweeps Block 1. Student interrogates *with* the agents. Deming + Toyota Kata lineage. The 50%-wrong principle becomes visible here. | Block 1 (promotions/demotions) + Block 2 (decisions' retrospectives) + Block 3 (gates' performance) — all three reviewed | reflective honesty — *"some worked, some didn't, and naming it is the move"* | PDCA retrospective + all three blocks updated + surfaced learnings that shape M6 |
-| M6 | **Name the true shape of the challenge ahead.** After M1–M5, NOW the student can honestly name what the challenge actually is — usually different from the one they named at M1. Strategy earned, not assumed. Shape-finder agent reads 6 weeks of brain + PDCA + cohort share-backs, proposes candidate shape with evidence; alternative-shapes agent offers 2–3 contrasting framings; student picks, commits to Block 2 as top-level strategic decision. 90-day-plan agent synthesizes true shape + revised intent + Block 3 criteria. Day-91 agent scheduled. Full swarm handoff. Cohort share generates convergent company-wide signal back to sponsor. | Block 2 (true shape as earned strategy) + swarm committed to autonomous run | clear-eyed commitment — earned, not tidy | Named true shape + 90-day plan as printout + day-91 agent scheduled + swarm running autonomously + cohort finding back to sponsor |
+| M6 | **Name the true shape of the challenge ahead.** After M1–M5, NOW the student can honestly name what the challenge actually is — usually different from the one they named at M1. Strategy earned, not assumed. Shape-finder agent reads 6 weeks of memory + PDCA + cohort share-backs, proposes candidate shape with evidence; alternative-shapes agent offers 2–3 contrasting framings; student picks, commits to Block 2 as top-level strategic decision. 90-day-plan agent synthesizes true shape + revised intent + Block 3 criteria. Day-91 agent scheduled. Full swarm handoff. Cohort share generates convergent company-wide signal back to sponsor. | Block 2 (true shape as earned strategy) + swarm committed to autonomous run | clear-eyed commitment — earned, not tidy | Named true shape + 90-day plan as printout + day-91 agent scheduled + swarm running autonomously + cohort finding back to sponsor |
 
 The agentic rule: **by M3 onward, the student should be able to close their laptop for a day and find the agents still working.** Diagnostic scans, check-ins, gate-watchers, cadence agents — all running. If every artifact requires the student typing, the exercise failed the rule.
 
@@ -231,7 +231,7 @@ The agentic rule: **by M3 onward, the student should be able to close their lapt
 
 **diagnostic honesty → earned clarity after unease → co-creation through cross-pollination → let's lead (clarity of aim) → reflective honesty (PDCA) → clear-eyed commitment (earned, not tidy)**
 
-Flatter volatility than Bootstrap. Leadership work, not personal discovery. The drama is in the team's reaction, not the student's interior. The brain (three blocks + swarm) is what lets the manager hold the drama without freezing — accumulated context, not real-time heroics.
+Flatter volatility than Bootstrap. Leadership work, not personal discovery. The drama is in the team's reaction, not the student's interior. The memory (three blocks + swarm) is what lets the manager hold the drama without freezing — accumulated context, not real-time heroics.
 
 **Arc shape (one-line):** See → Believe → Distill → Declare → Examine → Name. From seeing the team to naming the real challenge — earned across six modules of action and review.
 
@@ -290,10 +290,10 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - Hold Bet A / Bet B tension in M4 vision module; do not collapse.
 
 **Settled with customer:**
-- **Format is either 2 days (intensive) or 6 modules over 6 weeks (distributed).** Customer-negotiated. The 6-week format lets real team reactions feed the brain between sessions — stronger fit for the backbone, but 2-day intensive is viable if the customer needs speed.
-- **Cohort is always single-company.** Cross-pollination between students' brains (especially in M3) is frictionless — no anonymization, no opt-in friction. Agents can read across the cohort's brains within the ground rules the company sets.
-- **The "agentic" rule:** every exercise has the student orchestrating agents that do the work. Chat-and-save is banned. Taste from Bootstrap M2 (brain), M5 (bake-off), M6 (orchestrator + eval loop), M8 (deliberation).
-- **The brain is built from M1** — the learn-and-compound pattern starts day one, not module three.
+- **Format is either 2 days (intensive) or 6 modules over 6 weeks (distributed).** Customer-negotiated. The 6-week format lets real team reactions feed the memory between sessions — stronger fit for the backbone, but 2-day intensive is viable if the customer needs speed.
+- **Cohort is always single-company.** Cross-pollination between students' memorys (especially in M3) is frictionless — no anonymization, no opt-in friction. Agents can read across the cohort's memorys within the ground rules the company sets.
+- **The "agentic" rule:** every exercise has the student orchestrating agents that do the work. Chat-and-save is banned. Taste from Bootstrap M2 (memory), M5 (bake-off), M6 (orchestrator + eval loop), M8 (deliberation).
+- **The memory is built from M1** — the learn-and-compound pattern starts day one, not module three.
 - **M2 = search, not pick.** Starter questions to the team; coalition self-selects by engagement. No abstract coalition-guessing.
 - **M3 = return + cross-pollinate + 2 crux.** Rumelt's crux skill imported from Bootstrap M8 scaffold. Two crux, not a backlog. Intent in M4 is crux-bound.
 - **M4 = Intent, not Vision.** Kotter step 3 reframed for 2026's epistemic reality: leaders *declare intent and let vision emerge over time.* Vision is earned across 90+ days of action and retrospection, not painted in week 4. Moltke lineage; matches Intent Taktik insight.
@@ -301,7 +301,7 @@ These land in M4 (vision) and M6 (90-day plan) as honesty moments — refuse to 
 - **M5 = PDCA honest reckoning.** Deming + Toyota Kata. Not "run another exercise" — examine what happened against what was intended, and why. The 50%-wrong principle becomes visible; the learning is the output.
 - **M6 = name the true shape of the challenge ahead.** Strategy earned from 6 weeks of action and review. Often different from the challenge named at M1. Only at M6 does the student commit the 90-day plan — grounded in the real challenge, not the week-1 guess. Cohort share generates a convergent company-wide signal back to the sponsor.
 - **Arc shape:** See → Believe → Distill → Declare → Examine → Name.
-- **Two tracks running in parallel:** Track 1 = team transformation (M1–M6 visible arc); Track 2 = frontier muscle (practitioners, cohort share, frontier-scanner agent, brain's frontier tier). Track 2 is why the brain doesn't decay after day 91.
+- **Two tracks running in parallel:** Track 1 = team transformation (M1–M6 visible arc); Track 2 = frontier muscle (practitioners, cohort share, frontier-scanner agent, memory's frontier tier). Track 2 is why the memory doesn't decay after day 91.
 - **Coalition as companions, not instruments.** The relational qualifier. Calibration question applies to them too: *did they come with you on the ride?*
 - **Self-assessment metric:** 1–10 confidence rating ("Rate your confidence in leading your organization to an AI-first and agentic world") at start of M1, end of M6, day-91. Target delta ~+2 (baseline 4–5, end 6–7). Aggregate across single-company cohort = sponsor's finding.
 - **Training in six beats (plain-language):** take a shot at it → learn what people really feel → what's the real gap → build your muscle to see the future to come → take along the coalition on the ride → did you make progress?

@@ -22,15 +22,15 @@ Named-company examples to seed Pass 2: Stripe (headless SaaS archetype), Shopify
 
 *Referenced from: Module 2 (building-agent-systems).*
 
-The cheapest way to make data available to an agent is to put it in a folder the agent can read. Markdown, text, PDF, spreadsheets — a well-curated `sources/` folder answers 60-70% of what a business agent needs on day one. No integration project. No vendor conversation. No admin consent. You build the brain first; you wire the systems second.
+The cheapest way to make data available to an agent is to put it in a folder the agent can read. Markdown, text, PDF, spreadsheets — a well-curated `sources/` folder answers 60-70% of what a business agent needs on day one. No integration project. No vendor conversation. No admin consent. You build the memory first; you wire the systems second.
 
 Why this works: the model's strongest skill is reading text. The model's *weakest* skill is picking the right tool out of fifteen badly-named ones. A team that starts with files and graduates to integrations ships faster than a team that starts with a platform selection.
 
 What this section will cover in Pass 2:
-- The `sources/` pattern (raw company material) + `brain/` pattern (curated, indexed) from Module 2
+- The `sources/` pattern (raw company material) + `memory/` pattern (curated, indexed) from Module 2
 - What goes in files (policies, documentation, meeting notes, strategy docs, FAQs, brand guidelines) vs. what needs a live connection (current inventory, open tickets, today's pipeline)
 - The practitioner observation: teams over-integrate and under-curate. The file layer is almost always more valuable than the next integration.
-- Named examples (to fill in): practitioner teams publishing their own file-first playbooks — Karpathy's personal wiki pattern, Boris Cherny on `CLAUDE.md`, enterprise teams with `brain/` conventions.
+- Named examples (to fill in): practitioner teams publishing their own file-first playbooks — Karpathy's personal wiki pattern, Boris Cherny on `CLAUDE.md`, enterprise teams with `memory/` conventions.
 
 ## MCP — the agent's standard plug
 

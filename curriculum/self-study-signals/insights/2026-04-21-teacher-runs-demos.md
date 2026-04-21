@@ -4,7 +4,7 @@
 
 **Reframe:**
 - **Teacher runs illustrative/demo prompts** — anywhere the student is meant to *watch*, not operate (the Context-is-King two-prompt comparison, lecture demos, side-by-side runs). Teacher is the model in the demo; the student reads the conversation unfold. No file lands in training-dir.
-- **Builder runs the student's exercise work** — anywhere the artifact has to be the student's own (personal site, brain pages, agents, eval runs, audits, debrief artifacts). Files land in training-dir. The student is the operator; that's what makes the work theirs.
+- **Builder runs the student's exercise work** — anywhere the artifact has to be the student's own (personal site, memory pages, agents, eval runs, audits, debrief artifacts). Files land in training-dir. The student is the operator; that's what makes the work theirs.
 
 **Split test:** *"Does the file land in the training-dir?"* Yes → Builder. No → Teacher.
 

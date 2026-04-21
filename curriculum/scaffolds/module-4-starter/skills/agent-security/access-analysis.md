@@ -15,7 +15,7 @@ Produce a table. Every row is one access the agent has. Two columns: **What the 
 - **Web search** — same, but scoped to query results (slightly narrower)
 - **File reads** — any file the agent reads, including those outside the immediate working directory if the agent has been pointed at them
 - **File writes** — where in the filesystem the agent writes. Default: the training directory. If the agent's been granted broader scope (the whole `~/Documents/`, the home directory, specific external paths), record it.
-- **Agent instruction files** — can the agent edit `agents/*.md`, root `CLAUDE.md`, or `brain/*.md`? This is a form of access that's often overlooked.
+- **Agent instruction files** — can the agent edit `agents/*.md`, root `CLAUDE.md`, or `memory/*.md`? This is a form of access that's often overlooked.
 - **Tool access** — any `tools/` directory, MCP servers configured, `/skill` invocations, subagent dispatch, shell command execution
 - **Skill access** — what skills are in `skills/` and what they themselves reach (skills can add their own connectors, tools, or file writes)
 

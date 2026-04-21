@@ -37,7 +37,7 @@ curriculum/
   exercises/                   # Shared library — one file per exercise
     raw-llm.md
     add-guardrail.md
-    build-llm-brain.md
+    build-llm-memory.md
     ...
 
   lectures/                    # Shared library — one file per lecture
@@ -144,7 +144,7 @@ Curriculum content describes a real tool that ships on a real cadence. Getting t
 
 3. **Practitioner observation beats docs-based lookup.** When Antti says "I see X happen when I use the product," that's ground truth. Update the material to match; the docs may lag or the lookup may be out-of-date.
 
-4. **Training platform = Claude Code desktop (current) + Cowork (future).** Not Claude.ai (chat). If an exercise draft names `claude.ai` as the place to do the work, or leans on Claude.ai-only features (e.g., the chat-app connector panel, the chat-app schedule UI), it's wrong and must be revised. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via **Shift+P** (or Shift+Tab cycle).
+4. **Training platform = Claude Code desktop (current) + Cowork (future).** Not Claude.ai (chat). If an exercise draft names `claude.ai` as the place to do the work, or leans on Claude.ai-only features (e.g., the chat-app connector panel, the chat-app schedule UI), it's wrong and must be revised. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via the prompt (*"Enable plan mode"*), the desktop mode dropdown, or Shift+Tab cycle.
 
 5. **Cloud/remote features carry a Git dependency — out of scope.** Remote tasks (Routines) run in Anthropic's cloud, but the runner needs a cloud source for the working directory — typically a cloud Git repo. Our training uses a local training directory (the default path lives in `.claude/skills/self-study/SKILL.md` — source of truth). State cloud features exist; do not present them as a realistic upgrade path inside a business-audience exercise.
 
@@ -179,8 +179,8 @@ How participants receive and work with training material (site + local files). D
 
    ```
    <training-dir>/                     ← Module 2 onward: open THIS in Claude Code
-   ├── CLAUDE.md                      ← root guardrails, appears with the Module 2 scaffold
-   ├── brain/                         ← cross-module (Module 2 onward)
+   ├── CLAUDE.md                      ← NOT shipped; student creates in Module 2 Debrief, grows each module
+   ├── memory/                        ← cross-module (Module 2 onward)
    ├── agents/                        ← cross-module, custom agent files
    ├── sources/                       ← cross-module, raw company material
    ├── prework/                       ← open this for prework (snake.html, meetings.txt)
@@ -190,11 +190,13 @@ How participants receive and work with training material (site + local files). D
    └── module-8/
    ```
 
-   **Session scope changes at three seams: prework → Module 1 → Module 2 onward.** Open `prework/` for prework, `module-1/` for Module 1, the training-directory root for everything Module 2 onward. Within each scope, write to the right subfolder (e.g., at the root during Module 2, the prework brief at `module-2/challenge.md`, the crux at `module-2/crux.md`, etc. — no further reopens). Two folder switches total across the training. The switch between Module 1 and Module 2 is a natural seam — the move from "building one thing" (a site, scoped to Module 1) to "building a system" (a brain + agents + sources that span modules).
+   **Session scope changes at three seams: prework → Module 1 → Module 2 onward.** Open `prework/` for prework, `module-1/` for Module 1, the training-directory root for everything Module 2 onward. Within each scope, write to the right subfolder (e.g., at the root during Module 2, the prework brief at `module-2/challenge.md`, the crux at `module-2/crux.md`, etc. — no further reopens). Two folder switches total across the training. The switch between Module 1 and Module 2 is a natural seam — the move from "building one thing" (a site, scoped to Module 1) to "building a system" (a memory + agents + sources that span modules).
 
-   **Module 1 starts with zero context on purpose.** `module-1/` ships empty. No CLAUDE.md, no scaffolded material. The Debrief produces the student's first CLAUDE.md at `module-1/CLAUDE.md` — *their* file, not a trainer handout. That CLAUDE.md is scoped to Module 1 and stays there; Module 2 introduces a separate, wider root CLAUDE.md via its scaffold.
+   **Module 1 starts with zero context on purpose.** `module-1/` ships empty. No CLAUDE.md, no scaffolded material. The Debrief produces the student's first CLAUDE.md at `module-1/CLAUDE.md` — *their* file, not a trainer handout. That CLAUDE.md is scoped to Module 1 and stays there.
 
-   Cross-module artifacts (`brain/`, `agents/`, `sources/`, root `CLAUDE.md`) live at the root — everything Module 2 onward reads from. Per-module working files live inside `module-N/`.
+   **Module 2 also starts with zero context at the root.** Training-dir root is empty of rules when Module 2 begins — no `CLAUDE.md`, no READMEs in `memory/` / `sources/` / `agents/`. Rules that matter for the exercise (sources-first, citation, distinctive-not-descriptive, topic-page shape) live in the Phase 1 prompts the student pastes. The Module 2 Debrief produces the wider root `CLAUDE.md` — written by Claude from session evidence, pushed back on by the student. Same pattern as Module 1's scoped rules file, one level up. Do NOT ship a pre-written CLAUDE.md at the root; it violates the "student writes their own rules" principle Module 1 teaches, and prior versions that shipped a 60-line pre-authored file caused agents to auto-execute behavior the student never authorized.
+
+   Cross-module artifacts (`memory/`, `agents/`, `sources/`, root `CLAUDE.md`) live at the root — everything Module 2 onward reads from. Per-module working files live inside `module-N/`.
 
    **Not inside a synced folder** (OneDrive / Google Drive / Dropbox). Claude writes files faster than sync daemons reconcile — conflict copies will happen. Local only during the training.
 
@@ -204,10 +206,10 @@ How participants receive and work with training material (site + local files). D
 
 - **Drop-in, idempotent.** Unzipping the same zip twice produces the same tree. Files land at stable paths the exercise text names verbatim.
 - **Never clobber student work.** Don't ship a `CLAUDE.md` or agent file with the same name as one the student has been shaping. If a module needs a reference file, ship it as `CLAUDE-module-N-reference.md` or similar, and let the student decide what to integrate.
-- **Scoped to its module's artifacts.** Module 2 ships `sources/` (first batch), empty `brain/`, empty `agents/`, starter root `CLAUDE.md` (brand-new territory — no clobber risk). Module 4 ships `skills/<skill-name>.md` files (additive). Don't put a module's working files inside another module's folder.
+- **Scoped to its module's artifacts.** Module 2 ships three empty folders only — `memory/`, `sources/`, `agents/` (each with a `.keep` placeholder). No `CLAUDE.md`, no READMEs. Rules arrive through Phase 1 prompts; the root `CLAUDE.md` lands at Debrief, written by Claude from session evidence. Module 4 ships `skills/<skill-name>.md` files (additive). Don't put a module's working files inside another module's folder.
 - **Named clearly.** Zip filename encodes module + purpose: `module-2-starter.zip`, `module-2-sources-batch-2.zip`, `module-4-compliance-skills.zip`. The exercise text names the zip.
 
-**The root `CLAUDE.md` is a living file.** It starts in Module 2's starter scaffold and grows through each Debrief — Claude proposes lines, student pastes in. Never ship a replacement `CLAUDE.md` that overwrites the accumulated one. Module 1's Debrief produces a separate, scoped `module-1/CLAUDE.md` (learnings from the personal-site exercise); it stays in `module-1/` and doesn't touch the root.
+**The root `CLAUDE.md` is a living file — written by the student, not shipped.** It's *created* in Module 2's Debrief (Claude writes the first version from session evidence, student pushes back) and then *grows* through every subsequent module's Debrief (Claude reviews the session, rewrites in place, integrates-don't-appends; student reads the 2–3 line summary of what changed). No pre-authored CLAUDE.md ever lands in the training-dir root; that violates the "student writes their own rules" principle and causes agents to auto-execute behavior the student never authorized. Module 1's Debrief produces a separate, scoped `module-1/CLAUDE.md` that stays in `module-1/` and doesn't touch the root.
 
 **Trainer side:** scaffolds are maintained in Git inside the Agents 102 repo (`curriculum/scaffolds/<module-slug>/` is the expected location — to be created as scaffolds materialize). Empty folders use `.keep` placeholders so zip/unzip preserves structure; don't ship per-folder README.md files (working-directory instructions belong at the transition points in curriculum content — prework Step 0, the Module 2 Setup line, etc. — not duplicated per folder). Export zips per cohort, host on the customer's site or SharePoint. Participants never see Git.
 

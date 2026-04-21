@@ -22,13 +22,13 @@ The agent-ness progression. Starts at "LLM isn't a chatbot," ends at "agents bui
 ### building-guardrails.md
 The constraint / context discipline. "Guardrails" isn't one thing — it's the same pattern scaled up across modules.
 - **Module 1:** Guardrails as structured context (`CLAUDE.md`)
-- **Module 2:** The schema layer of the LLM brain — guardrails for knowledge
+- **Module 2:** The schema layer of the LLM memory — guardrails for knowledge
 - **Module 4:** Skills — scoped guardrails, trust boundaries
 - **Module 5:** Generation rules as guardrails (citations, claim restrictions)
 
 ### learning-and-compounding-systems.md
 The system-that-improves discipline. From one-shot to self-correcting to meta-improving.
-- **Module 2:** The LLM brain — compounding as the core pattern
+- **Module 2:** The LLM memory — compounding as the core pattern
 - **Module 5:** The quality loop (generate → evaluate → adjust → regenerate)
 - **Module 6:** The eval-iteration loop (the eval is also an assumption)
 - **Module 8:** Agents building agents — self-improvement as design
@@ -44,7 +44,7 @@ Why a personal agent is so hard to turn into a company agent. The thousand tacit
 
 ### agent-ready-data.md
 How leading companies make data and systems available to agents — a progression, not a doctrine. Files → MCP → CLIs → headless SaaS → semantic skills → semantic models. Each rung unlocks a new set of agents and a new set of people. *Pass 1 skeleton written 2026-04-19.*
-- **Module 2:** Files as the default — `sources/` + `brain/`
+- **Module 2:** Files as the default — `sources/` + `memory/`
 - **Module 4:** MCP (agent's standard plug) + CLIs (handles agents already grip) — with scoped permissions
 - **Module 7:** Headless SaaS + semantic skills — sharing at the data layer, not the agent layer
 - **Module 8:** Semantic models — the company's shared meaning, made agent-readable; the substrate that makes agents compound

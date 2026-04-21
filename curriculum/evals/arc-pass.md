@@ -49,7 +49,7 @@ For each seam M1→M2, M2→M3, M3→M4, M4→M5, M5→M6, M6→M7, M7→M8:
 Any banned business-audience jargon appearing before it's earned (see .claude/skills/content-creation/SKILL.md § Business-audience jargon ban)? Any term introduced in Mn still undefined when used in Mn+1?
 
 ## State carry-over
-Does M2 actually build on M1's artifact? M3 on M2's brain? M5 on M3/M4's residual doubt? M8 on M1–M7's accumulated stack? Flag modules that reset instead of compound.
+Does M2 actually build on M1's artifact? M3 on M2's memory? M5 on M3/M4's residual doubt? M8 on M1–M7's accumulated stack? Flag modules that reset instead of compound.
 
 ## Philosophy callout density
 Per heuristic: sparing, never front-loaded, no unintended repetition across modules. Flag any module that over-quotes, front-loads, or repeats a callout already spent.

@@ -103,6 +103,21 @@ This is the 20% function-specific reality layer. Without it, the agents produce 
 3. 48 hours before: leaders drop sources into a shared folder. Antti reviews; if a leader's sources are thin, Antti coaches via a 10-min call.
 4. Session day: agents load both layers at the start of Build 1.
 
+## Runtime architecture
+
+Two environments, different jobs. Do not mix them.
+
+**Participants run Cowork.** Each leader works in their own Cowork session — the multiplayer Claude environment. Cowork is the right fit for senior operators because the setup friction is minimal (desktop or web, no terminal, no CLI), the interaction feels like Claude.ai but with proper multi-file context, and each leader can keep their session open across all four hours with their sources and voice samples loaded. Individual sessions by default — the honest excavation work in Build 1 Phase B stays private to the leader, no peer-visible live typing. Shared-mode Cowork can be invoked for specific collaborative moments (co-curating the knowledge base in Build 1 Phase A, co-editing the variance map in Phase D) where working on the same document in real time is the point. Default individual; shared by design when named.
+
+**Synthesiser(s) run Claude Code.** The orchestrator agents — the ones that read all function artifacts, build the variance map, run agent cross-pollination in Build 2, draft the forward plan, and run the agent-deliberation moments on the big screen — run in Claude Code. Antti drives. Claude Code is where the heavy orchestration lives: multi-agent deliberation, subagent spawning, reading dozens of files at once, compound synthesis across the whole room's output. This is not participant-facing; it is the engine behind the reveals.
+
+**Why the split matters:**
+- Leaders never touch Claude Code. They work in the environment they can recognise and adopt on Monday morning with their own teams. Cowork is also the forward-compatible choice — it is where business-leader agent work is heading.
+- The synthesis work that would choke Cowork (multi-file orchestration, orchestrator-of-orchestrators, live cross-reading) runs in Claude Code where the tooling is mature.
+- The split mirrors the session's central argument: *agents do the prep, humans do the judgment.* Claude Code is the prep machinery — out of sight, humming. Cowork is where the leaders actually decide.
+
+**What Antti needs on-site:** two laptops (one for Cowork demos at the front, one for the Claude Code synthesiser), reliable network, a big screen for the synthesiser output, and the Claude Code session pre-loaded with each leader's sources + the research-base symlink 24 hours before the engagement.
+
 ## Agent architecture per leader
 
 Each leader leaves the session with a saved, reusable agent: `prompt + rules + sources + voice-samples`. The four-part frame from the Bosser agent-sharing model — *context + guardrails + LLM harness + prompt* — is what they build, whether they name it that or not.
@@ -137,13 +152,13 @@ A team-first build: co-curate → query → artifact → synthesize with varianc
 **Phase A — Co-curate the knowledge base (15 min).**
 The room assembles the agents' knowledge base live, on the big screen. Every leader's function sources go in alongside the Bosser research base (`continuous-research/`). As each leader drops material, they tag it with one honest line — *"what this source assumes is true,"* *"what it's silent on,"* *"what I wish it said."* Curation becomes a confession ritual dressed as a file-tagging task. The room sees its collective knowledge stack take shape for the first time. **The opening WOW lives here** — the room has never seen its own material on one table next to a frontier-research layer. The 80/20 knowledge model becomes tangible.
 
-**Phase B — Query (30 min, private).**
-Each leader queries the freshly-curated base in private (not Cowork — see below). Antti ships three prompt packs in the session:
+**Phase B — Query (30 min, individual Cowork).**
+Each leader queries the freshly-curated base in their own Cowork session (individual mode, not shared — the excavation stays confidential). Antti ships three prompt packs in the session:
 - *Assumption pack:* "What would have to be true for our current X plan to work? Which of those have we tested? Which are bets?"
 - *Blocker pack:* "What stops us from moving on X tomorrow, honestly? What gets mentioned in one-on-ones but never in the LT?"
 - *Wish pack:* "If no capability constraint existed, what would we do? What capability do I wish existed that would collapse this problem?"
 
-The querying agent pushes back — *"you named three assumptions; the fourth one your sources keep circling is..."*. Agent as excavator, not stenographer. **Why private, not Cowork:** honest wishes don't get typed if five peers can see them live; the excavation needs confidentiality. Cowork shows up later, in Phase D, when findings are pooled and the variance map is built collaboratively on the big screen.
+The querying agent pushes back — *"you named three assumptions; the fourth one your sources keep circling is..."*. Agent as excavator, not stenographer. Individual (not shared) Cowork for this phase specifically: honest wishes don't get typed if peers can see them live. Shared-mode Cowork and big-screen synthesis arrive in Phase D once the excavation is done and findings are ready to pool.
 
 **Phase C — Build your artifact (25 min).**
 Each leader produces their function's artifact on X. Template has three mandatory sections — *my assumptions, my blockers, my wishes* — front-loaded, not appendix. Agent checks the artifact for thin assumption-surfacing and flags before the leader closes.
@@ -287,7 +302,7 @@ Within 48 hours:
 - Close = sponsor walks the curated plan + personal findings round (Q1 surfaces implicitly) + CEO one-line close.
 
 **Key design moves that landed (do not drift from):**
-- Private (not Cowork) for the honest-excavation queries. Cowork in Phase D synthesis only.
+- Runtime split: participants run Cowork (individual mode for excavation; shared mode only in named phases); synthesisers run Claude Code (orchestration, variance mapping, plan synthesis). Leaders never touch Claude Code.
 - Three mandatory artifact sections: assumptions / blockers / wishes — front-loaded.
 - Variance map with three overlays is the shared-understanding artifact, not a generic picture.
 - D round protected at 30 min absolute minimum. Cut Layers 1–3 before cutting this.

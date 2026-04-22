@@ -102,6 +102,16 @@ The training rests on three bets. If any turns out wrong, the training's shape w
 
 **Why naming these matters.** A training that hides its assumptions makes design decisions on inherited authority. Surfaced, each module becomes testable — *is this module exercising the assumption or merely assuming it?* If M3's long-running exercise doesn't actually produce the compounding feeling of M1 at larger scale, assumption 3 is off for that module and we reshape. The assumptions are the spine; the modules are bones hanging off them.
 
+## Woven design rules — apply to every module and exercise
+
+Two ambient rules that thread through every exercise and module. Not standalone LOs. Not strategic choices. Design defaults that, if honoured, surface naturally as the student does the work — and if neglected, leave the student doing chat-shaped work that doesn't compound.
+
+**1. The Compound step is visible in every module.** Plan → Work → Review → **Compound** (Klaassen). The fourth step is what makes the loop a loop. M1's Debrief is the canonical instance — Claude reviews the session and rewrites the rules file in place. M2-M6 each have their own Compound move sitting in the same structural place: memory promotion at M2's session close (observation → hypothesis → rule, decision logged, quality criterion added); learnings-into-memory at M4's return (verifier sharpened, judge promoted to team kit); gate spec and constraint shipped to team kit at M5's close; technical decision document signed and team kit fed at M6's close. **Test on draft:** if a module's exercise produces an artifact and ends without a Compound move that updates rules / memory / team kit / verifier in place, the module is missing its fourth step.
+
+**2. Specs over chats.** When the student needs the agent to do something non-trivial, the move is *write the spec, point the agent at it* — not type the request in chat (Klaassen). Markdown specs are the lingua franca: plan.md (M3 long-running), ADRs (M1 onward), judges (M4), gate specs (M5 Q), blast-radius constraints (M5 S), team kit contributions (M4-M6), the technical decision document (M6). Chat is for the quick stuff and for steering at decision beats. **Test on draft:** if an exercise asks the student to type a paragraph of intent into chat where a markdown spec would have served — and the spec would have been re-readable by a teammate — the exercise is teaching the wrong move. Convert to spec.
+
+**Rory:** every competitor will teach prompt engineering. We teach spec engineering — because specs compound and chats don't. Specs are the artifact you point your next agent at, the artifact your teammate can read, the artifact that lives past the session. Chats die at session close.
+
 ## Curation principle — we don't invent, we curate the best
 
 **The training doesn't manufacture its own wisdom.** It brings in specific skills and actionable insights from the best practitioners — Klaassen's compound engineering, Paweł Huryn's three-block memory, Ronacher's long-running patterns, Willison's daily-practice notes, Cherny's file-based practice — and slots each one into the module where it handles a student's actual issue or blocker.
@@ -229,9 +239,9 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 | M1 | **Ship with agents** | Compounding (how) | Joyful creation — *"it works, on my repo"* | Trivial bug from the student's own backlog shipped via Plan → Work → Review → Compound + first pass at Paweł Huryn's three-block memory + rules file seeded by session retro |
 | M2 | **Build your memory for your codebase** | Compounding (how) deepens | Satisfied compounding — *"it reads my system now"* | Single-repo memory → multi-repo memory → memory connected to business rules and company info; agents wired to each layer; compounding loop carried from M1 |
 | M3 | **Long-running tasks — send-off** *(working title)* | Long-running (technical) — setup + launch | Unleashed leverage — *"I just sent an agent off with real work"* | Concept taught + challenge named + verifier built on student's real work + verifier checked lightly on a small example + mid-long task launched, running between M3 and M4 |
-| M4 | **Long-running tasks — return** *(working title)* | Long-running (technical) — retrospective + next-run prep | Grounded rescue — *"the return isn't a grind, it's a system"* | Return to the scene: diff read, drift named, failures caught + learnings integrated into memory + verifier sharpened for next run + one judge promoted to reusable artifact for M5 |
-| M5 | **When agents meet agents** | Team integration (how) peak; every dimension plugs in | Awe + ownership — *"the team's agents just decided it together"* | A technical decision document produced BY the room's agents on the CTO's real open question, grounded in every participant's codebase knowledge, with ranked assumptions and named experiments |
-| M6 | **Where is this all going?** *(working title)* | Outside the four areas — the human close | *"Where is this all going?"* — the question itself is what the student carries home, not the answer | Each student speaks from opinion, fear, and hope. Room discussion follows. Trainer closes with a lecture on where this is going, including what they don't know. No artifact beyond what each student carries out — not all answers to team work happen in training |
+| M4 | **Long-running tasks — return** *(working title)* | Long-running (technical) — retrospective + next-run prep + first contribution to **the team kit** | Grounded rescue — *"the return isn't a grind, it's a system"* | Return to the scene: diff read, drift named, failures caught + learnings integrated into memory + verifier sharpened for next run + one judge shipped to the team kit (the side-story births here) |
+| M5 | **Earn the trust** *(Q+S)* | Quality + Security as veto-stakeholder discipline; team-axis ramp | Earned trust — *"my agent practice just became something my staff engineer and my CISO can sign off on"* | Two ~20-min exercises: (1) promote one M4 judge into a tiered-review **gate spec**; (2) audit the M3 agent's tool surface and install one **blast-radius constraint**. Both ship to the team kit. |
+| M6 | **Agents meet agents** *(+ closing human beat)* | Team integration (how) peak; every dimension plugs in; Risto closing folded in | Awe + ownership → *"where is this all going?"* | Live deliberation on the CTO's real engineering problem, grounded in every participant's codebase knowledge AND the cohort's accreted team kit. Closes on opinion/fear/hope round + Antti's lecture of the future (~30 min compressed close). |
 
 **Agentic walk-away test:** by M3 onward, the student closes the laptop and finds the agents still working. If every artifact requires typing, the exercise failed the rule.
 
@@ -239,9 +249,9 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 
 ## Mood arc
 
-**joyful creation → satisfied compounding → unleashed leverage → grounded rescue → awe + ownership → *"where is this all going?"***
+**joyful creation → satisfied compounding → unleashed leverage → grounded rescue → earned trust → awe + ownership → *"where is this all going?"***
 
-Closer to Bootstrap's arc than Engineering Management's. This is personal discovery — the engineer experiencing their own capability multiplication (M1–M2), then the send-off and return on mid-long work (M3–M4), then the room's collective agency (M5), then an plain human close (M6). Leadership drama is absent here; the drama is in the engineer's own interior (am I still keeping up?) and the team's infrastructure (is our floor rising?), met at peer scale in M5 and left deliberately open at M6. The training refuses to close the big question — *where is this all going?* — because plainly nobody knows. The question itself is what the student carries home.
+Closer to Bootstrap's arc than Engineering Management's. Personal discovery first — the engineer experiencing their own capability multiplication (M1–M2), then the send-off and return on mid-long work (M3–M4), then the discipline that earns veto-stakeholder signoff (M5), then the room's collective agency culminating in the open question (M6). Leadership drama is absent; the drama is in the engineer's own interior (*am I still keeping up?*), in the team's infrastructure (*is our floor rising?* — the team kit makes this visible), and in M6's deliberate refusal to close the big question. *Where is this all going?* — nobody plain knows. The question is what the student carries home.
 
 ## M1 in detail — fix a trivial bug, prime repo-level compounding
 
@@ -287,6 +297,8 @@ Closer to Bootstrap's arc than Engineering Management's. This is personal discov
 
 **Real-work requirement lands naturally here** — the mid-long task is drawn from the student's own backlog, running on the student's own codebase. No toy task would survive the inter-module gap.
 
+**Team kit side-story — seed only.** At M3's close, a one-line nudge: *"if your verifier shape would help another task or another teammate, name it in your CLAUDE.md."* No shared file yet. The noticing precedes the contribution. Birth happens in M4.
+
 ## M4 in detail — the return
 
 **M4 opens with the student returning to the scene** of M3's send-off. The artifact the agent produced during the gap is waiting. The retrospective is the module.
@@ -294,7 +306,7 @@ Closer to Bootstrap's arc than Engineering Management's. This is personal discov
 **The three moves in M4:**
 1. **Return to the scene.** Read what actually happened. Where did the agent drift? Where did the verifier catch something (or fail to)? Where was the output plausible-but-wrong? First-hand encounter with the failure modes M3 named.
 2. **Process results and learnings.** Structured Debrief: what traveled into memory about this codebase / this task shape / this verifier's blind spots. Judge agent built to triage what the verifier missed — not abstract evals infrastructure, judgment specifically tuned to what just failed.
-3. **Prepare for better the next time — including the team's next time.** Memory updated (Block 1 observations promoted, Block 2 decisions logged, Block 3 quality criteria sharpened). Verifier rewritten to catch what it missed. One judge promoted to reusable artifact and shipped to the team repo — this is the factory-component move (formerly carved out as a separate M5; it lives here because it belongs to the return, not to its own session).
+3. **Prepare for better the next time — including the team's next time.** Memory updated (Block 1 observations promoted, Block 2 decisions logged, Block 3 quality criteria sharpened). Verifier rewritten to catch what it missed. **One judge shipped to the team kit — the side-story births here.** First file in the cohort-shared substrate (real Git repo when the cohort has one, e.g. `agents-102-team-kit`; named folder otherwise). Tiny: one judge, no manifesto. The student's first contribution to a thing that will compound across M5 and M6 by accretion, not by design. Klaassen-true: the Intercom 267-skill plugin repo started with one skill, not a charter.
 
 **Evals arrive when they're necessary, not when the curriculum says.** Students don't learn "evals as infrastructure" abstractly. They build the specific judges their specific task drift demanded. Abstract eval theory is what M4 avoids; situated judge-building is what M4 delivers.
 
@@ -304,12 +316,39 @@ Closer to Bootstrap's arc than Engineering Management's. This is personal discov
 - Intercom R&D's 93.6% agent-driven PRs with 19.2% auto-approved — evidence that the tiered-review shape is real and shipping.
 - Ramp's Glass + Dojo — evidence that quality infrastructure is a factory component, not a separate craft.
 
-## M5 in detail — ported from Bootstrap M8
+## M5 in detail — earn the trust (Quality + Security)
 
-The peak. Each participant's M1–M5 stack — codebase memory, factory components, skills, judges, orchestrator — arrives at M6 as a **first-class agent on a shared runtime**. The room's agents deliberate live on a real engineering problem fed in by the CTO at the start of the cohort.
+**The veto-stakeholder module.** After M3+M4's long-running pair has produced something that ran for hours and shipped autonomously, Quality and Security become real, not theoretical. Two ~20-minute exercises, neither dominant — Q first, S second. Compact module by design.
+
+**Mood (deliberate):** earned trust — *"my agent practice just became something my staff engineer and my CISO can sign off on."* Not anxiety. Not theatre. Earned, because the long-running output is the evidence that needed gating.
+
+**Why here in the arc.** Q+S between long-running and team peak. Long-running creates the visceral *"what just shipped while I was at lunch?"* moment that Q+S answers; the team peak (M6) then multiplies blast radius, which Q+S has just bounded. Putting Q+S after the team peak would close the training on hygiene, killing the room.
+
+**Exercise 1 — Promote the gate (Q, ~20 min).** Student takes one judge they shipped to the team kit at M4, designs the smallest possible gate around it: auto-approve threshold, what it checks, what it sends back to human review. Writes the policy as a markdown spec the agent reads. Tests it on one PR. Ships the gate spec to the team kit. Foreshadows the tiered-review system the engineer brings back to their manager (who took Engineering Management — this is where the EM/AE101 pincer lands organisationally).
+
+**Exercise 2 — Bound the blast radius (S, ~20 min).** Student opens their M3 agent's tool/connector/action surface, names the worst thing it could ship, picks one constraint to install. Menu (student picks one): least-privilege scope reduction · prompt-injection guard on input the agent reads · audit-trail hook on tool calls · secrets-handling check. Implements. Verifies the agent still works. Ships the constraint to the team kit.
+
+**Both exercises produce contributions to the team kit.** The gate spec becomes a team-shared judge-policy. The constraint becomes a team-shared guard. The side-story compounds — by end of M5, the cohort's collective infrastructure is non-trivial.
+
+**Real-work requirement holds.** Both exercises operate on the student's actual M4 judges and M3 agent, on the student's real codebase. No abstract Q/S frameworks; specific gates and specific constraints on specific systems.
+
+**What M5 refuses to do:**
+- Frame Q+S as compliance. They're infrastructure that earns trust, not paperwork that submits to it.
+- Cover all of Q or all of S. Two ~20-min exercises pick one move each. The breadth is the team kit's job over time, not one module's job.
+- Carry the closing human beat. M5 ends on earned trust. The *"where is this all going?"* shift belongs to M6.
+
+**Anchor cases:** Intercom Tier 1/2/3 review structure (the gating system Q exercise foreshadows; 19.2% auto-approved at the lowest tier); Ramp Glass + Dojo (judges as quality infrastructure, the team kit's destination shape).
+
+## M6 in detail — agents meet agents + closing human beat
+
+**One module, two jobs.** The peak deliberation (the +3 cognitive climb) and the closing human beat (the Risto bookend, compressed but alive). The mood inside M6 downshifts deliberately: awe + ownership during the deliberation → *"where is this all going?"* in the closing 30 minutes. Closing on awe alone is salesy; closing on the open question is honest.
+
+### The deliberation (~70 min)
+
+Each participant's M1–M5 stack — codebase memory, factory components, judges, gates, constraints, contributions to the team kit — arrives at M6 as a **first-class agent on a shared runtime**. The room's agents deliberate live on a real engineering problem fed in by the CTO at the start of the cohort.
 
 **The fuel — a real engineering problem.** The CTO picks one the company is genuinely sitting on:
-- A migration plan (monorepo ↔ polyrepo; on-prem → cloud; language / framework migration)
+- A migration plan (monorepo ↔ polyrepo; on-prem → cloud; language/framework migration)
 - An architecture decision with cross-service blast radius
 - A platform choice with codebase realities the vendors' sales decks don't know about
 - A performance or reliability pathology spanning teams
@@ -317,46 +356,63 @@ The peak. Each participant's M1–M5 stack — codebase memory, factory componen
 
 **The heterogeneity is the insight.** No individual holds the whole picture. The queue handler's quirks live in one engineer's memory, the auth layer's debt lives in another's, the deploy pipeline's scars live in a third. The deliberation assembles it.
 
-**The three thinking-discipline skills re-invoke here on the engineering substrate.** `crux` finds the load-bearing technical obstacle. `assumption-test` surfaces what would have to be true for the proposed architecture to work. `pre-mortem` names what breaks at scale. Same disciplines as Bootstrap M8, code-and-systems substrate. (These arrive installed somewhere earlier in the arc — Module 5 scaffold is the likely carrier; to be settled in Pass 1.)
+**The team kit is what the deliberation reads first.** Each agent loads the cohort's accreted contributions (judges, gates, constraints, skills) before joining the deliberation. The infrastructure the room raised over M4–M5 is what makes M6 possible. *That's* the visible compounding — by M6 the student sees the floor they collectively raised over five modules.
+
+**The three thinking-discipline skills re-invoke here on the engineering substrate.** `crux` finds the load-bearing technical obstacle. `assumption-test` surfaces what would have to be true for the proposed architecture to work. `pre-mortem` names what breaks at scale. Same disciplines as Bootstrap M8, code-and-systems substrate. (These arrive installed somewhere earlier in the arc — likely M4 or M5 scaffold; to be settled in Pass 1.)
 
 **The mechanism is visible.** Students read every message and `@mention` in the transcript. Nothing hides behind orchestration magic. Humans contribute by talking in the room AND by steering their agents at decision beats — they don't run the plumbing.
 
-**Artifact:** a technical decision document — engineering equivalent of Rumelt's kernel. Diagnosis of the crux, guiding policy, ranked assumptions, named experiments to run on Monday. Signed by the room, not one author.
+**Artifact:** a technical decision document — engineering equivalent of Rumelt's kernel. Diagnosis of the crux, guiding policy, ranked assumptions, named experiments to run on Monday. Signed by the room.
 
-**Open questions inherited from Bootstrap M8** (tracked, not resolved):
-- Runtime dependency — Cowork trajectory at delivery time; bridge design if capability still landing
-- Self-study variant — solo student uses persona-stand-ins drawn from their own agent stack
-- Human intervention beats without breaking deliberation flow
-- Whether orchestrator-agent ships as scaffold or is generated on-the-fly (the flywheel thesis)
-- F-Secure copyright fence (they deliver their own versions of this training family)
+### The closing human beat (~30 min)
 
-Detailed notes: `memory/project_m8_joint_panel.md` (Bootstrap M8's equivalent work applies).
+The training closes on directness, not triumph. Folded into M6 because the 6-module cap forced the choice; survives because the lecture-of-the-future was never about runtime, it was about the trainer's standing to close on uncertainty.
 
-## M6 in detail — the human close
+- **15 min — opinion / fear / hope round.** Each student speaks briefly from each register:
+  - *Opinion:* what they actually think about where agentic engineering is going
+  - *Fear:* what they're quietly worried about (own obsolescence, team readiness, craft erosion, what happens to junior engineers)
+  - *Hope:* what they want to happen for their work, their team, their practice, their next three years
 
-**M6 is human.** No live deliberation. No agent fireworks. No new artifact to ship. After M5's peak, the training slows down deliberately and hands the room back to the people in it.
+  The vulnerability of naming fear and hope alongside opinion is part of the pedagogy. The room scale is shorter than a standalone module would have made it; the briefness is the price the 6-cap charged.
 
-**Sourced from three registers — opinion, fear, hope.** Each student speaks from inside:
-
-- **Opinion** — what they actually think about where agentic engineering is going, including the half-formed intuitions they haven't said out loud yet
-- **Fear** — what they're quietly worried about: their own obsolescence, their team's readiness, their company's pace, what happens to junior engineers, what happens to craft, what this does to how they identify as an engineer
-- **Hope** — what they want to happen: for their work, their team, their practice, the craft itself, their own next three years
-
-The three registers aren't pick-one. Each student speaks from each, briefly, in the room. The vulnerability of naming fear and hope alongside opinion is part of the pedagogy — the training closes on directness, not triumph.
-
-**Discussion follows.** Unstructured, room-scale, human-led. No agents moderating. No Nerd summarizing mid-flow (though one may help capture themes post-hoc). Patterns will emerge — probably convergences on specific fears (job security, craft erosion), specific hopes (leverage, autonomy, interesting work), specific unresolved opinions (where is the ceiling, what breaks first, what this does to teams). The facilitator holds space, doesn't redirect.
-
-**The closing beat — a lecture of the future.** The trainer (Antti in the canonical delivery) delivers a 15–20 minute lecture on where this is going. Not a prediction deck. Risto-style directness: *here's how I see it, including what I don't know, including what I've been wrong about before.* Names directions, names uncertainties, names what they're watching for, names what they're betting on. The Rory discipline applies: counterintuitive reframes over obvious takes. The Seth discipline applies: warmth and generosity, not posturing.
+- **15–20 min — Antti's lecture of the future.** Risto-style directness: *here's how I see it, including what I don't know, including what I've been wrong about before.* Names directions, names uncertainties, names what they're betting on. The Rory discipline: counterintuitive reframes over obvious takes. The Seth discipline: warmth and generosity, not posturing.
 
 **What M6 refuses to do:**
 - Close the big question. *Where is this all going?* is left open, on purpose.
-- Package the training into a 90-day commitment plan. Students leave with the question, not with a worksheet.
-- Confer an identity ("you are now an agent builder"). This isn't Bootstrap's M8 — different audience, different closing move. Engineers are already engineers; the training sharpens, it doesn't re-name.
-- Pretend the team-work answers arrived in the training. They didn't. Not all answers to team work happen in training — and saying so out loud is part of the directness.
+- Confer an identity ("you are now an agent builder"). Engineers are already engineers; the training sharpens, doesn't re-name.
+- Pretend the team-work answers arrived in the training. They didn't. Saying so out loud is part of the directness.
+- Package into a 90-day commitment plan. Students leave with the question, not with a worksheet.
 
-**Self-study variant.** The opinion/fear/hope round can be structured as written reflection in the Agentic Nerd (student speaks each register, nerd records, themes surface over a structured sequence). The lecture-of-the-future beat is the harder piece to port — a pre-recorded or written version by Antti stands in, acknowledging the compromise. Live-room version is always richer than self-study here; this is the module where the in-room cohort has the biggest advantage.
+**Open questions inherited from Bootstrap M8** (tracked, not resolved): runtime dependency on Cowork trajectory at delivery time; bridge design if capability still landing; whether orchestrator-agent ships as scaffold or is generated on-the-fly; F-Secure copyright fence. See `memory/project_m8_joint_panel.md`.
 
-**Why the training ends this way.** Engineers are pattern-matchers trained to seek closure. Closing on an explicitly-open question is deliberate counterprogramming. It trusts students to carry the question without needing it answered. It also matches the research reality — nobody plain knows where this is going, and a training that pretends otherwise is lying. The Risto frame: naming uncertainty is the source of trust. A trainer who closes on "here's how I see it, but I could be wrong" is more trustworthy than one who closes on "here's the plan."
+**Self-study variant.** Solo student opinion/fear/hope round happens in writing with the Agentic Nerd as listener; the lecture-of-the-future is a pre-recorded or written version by Antti; deliberation uses persona-stand-ins drawn from the student's own agent stack.
+
+**Why the training ends this way.** Engineers are pattern-matchers trained to seek closure. Closing on an explicitly-open question is deliberate counterprogramming. Risto: naming uncertainty is the source of trust. A trainer who closes on *"here's how I see it, but I could be wrong"* is more trustworthy than one who closes on *"here's the plan."*
+
+## Team kit — the side-story that compounds (cross-module)
+
+Not its own module. A side-story that accretes from M4 onward, mirroring how Intercom's 267-skill plugin repo (31% R&D contributing) was actually born — by accretion, not by design.
+
+**The design rule:** team infra is born from one student noticing *"this would help my teammate too"* and shipping one file. Then it grows by accretion, one contribution per module from M4 onward. Never charter-first. The opposite — *"let's design the team plugin architecture in M5"* — produces exactly the corporate-platform-team thing Klaassen ridicules. We refuse it.
+
+**Per-module accretion:**
+
+| Module | Move | Cumulative state |
+|---|---|---|
+| M1 | None. Student is solo on their repo. | empty |
+| M2 | Seed the noticing — *"if a rule starts feeling like 'this is what good engineers on this team do' rather than 'this is what I do,' jot the name in your CLAUDE.md."* | one note in personal CLAUDE.md |
+| M3 | One-line nudge at close — *"if your verifier shape would help another task, name it."* | one more note |
+| M4 | **The birth.** Return-and-integrate ends with: *ship one judge to the team kit.* Tiny. One judge. No manifesto. | 1 file/student × cohort = ~10 contributions |
+| M5 (Q+S) | Q exercise: *if your gate generalizes, add it.* S exercise: *if your constraint generalizes, add it.* Two more potential contributions per student. | ~30 files, real shape forming |
+| M6 | Each student's agent reads the team kit at start of deliberation. **Cohort's collective infrastructure is what makes deliberation possible.** | ~30+ files plus everything generated in deliberation |
+
+**Substrate.** Default: a real shared Git repo (e.g. `agents-102-team-kit`) — single-company cohort can spin one up at training start. Survives past the training. Fallback: a folder on the cohort's training site (read-write, scoped). Last resort only: mocked shared folder for the training (works during, dies after).
+
+**Naming.** Student-facing: **the team kit**. Plain, builderly, no platform-team energy. Klaassen attribution as **plugin repo** when introduced (M4's birth move).
+
+**Self-study variant.** Solo student's "team kit" is artifacts they could ship to their team Monday — the contribution lives in their actual team's repo, named-and-deployable. Same move, real teammates instead of cohort peers. Lands harder than mocking a fake cohort.
+
+**What this closes:** the team-axis cliff (no longer "three solo modules then a room" — team-shape work seeded at M2's noticing, grown across M4–M5, peaks at M6). Klaassen's shared-team-infrastructure principle. CTO's *"raises the team floor"* checkbox — visible artifact, not vibes. Quality's *"infrastructure not heroics"* — quality lives in team kit's judges, not in one engineer's vigilance.
 
 ## Self-assessment metric
 
@@ -377,9 +433,28 @@ These two trainings are designed to pincer the transformation:
 
 - **Manager takes Engineering Management** → leads with conditions-creator practice, memory + swarm at team scale, Intercom/Ramp playbook.
 - **Team takes Agentic Engineering 101** → engineers level up on the ladder the manager is creating conditions for.
-- **Together, in a single-company cohort:** M6's live deliberation is where the pincer lands. Manager's M1–M5 stack (team-2x infrastructure, review policy, onboarding patterns) meets engineers' M1–M5 stack (codebase memory, factory components, orchestrators, judges) in one room, on one real problem. The manager's agent proposes conditions; the engineers' agents pressure-test on actual code. The aggregate L0→L2/L3 movement across the cohort is the sponsor's finding.
+- **Together, in a single-company cohort:** M6's live deliberation is where the pincer lands. Manager's stack (team-2x infrastructure, review policy, onboarding patterns) meets engineers' stack (codebase memory, judges, gates, blast-radius constraints, team kit contributions) in one room, on one real problem. The manager's agent proposes conditions; the engineers' agents pressure-test on actual code. The aggregate L0→L2/L3 movement across the cohort is the sponsor's finding.
+- **The M5 Q+S handoff is organisational.** M5's Q exercise produces a tiered-review gate spec; the question of whether that gate is *organisationally* approved for auto-shipping crosses into the manager's territory (taught in EM). Clean seam between trainings — IC builds the gate, manager owns the approval policy.
 
-**Design assumption (to verify):** 101 works best when the manager has done EM first or is doing it in parallel. M1 of 101 includes a "does your manager know what you're about to build?" moment — if the team has the team-2x infrastructure already, ride it; if not, M5 includes bootstrapping it.
+**Design assumption (to verify):** 101 works best when the manager has done EM first or is doing it in parallel. M1 of 101 includes a "does your manager know what you're about to build?" moment — if the team has the team-2x infrastructure already, ride it; if not, M5/M6 include bootstrapping it.
+
+## Supplementary material (planned)
+
+Bootstrap pattern (`curriculum/supplementary/`): multi-section reference documents that build progressively, too dense to absorb in a single session, NOT inlined into modules. Referenced as prework, homework, or post-training reference. Stand as reference after training. AE101 uses the same pattern to handle breadth concerns the 6-module canonical curriculum can't carry without bloat.
+
+**Why supplementary, not module material.** The 6-module cap is canonical — every cohort runs it. Breadth concerns (Quality at scale, Security for regulated environments, complete tool catalog) are real but cohort-dependent. A regulated-industry cohort needs the GDPR/PCI/HIPAA reference; a startup cohort doesn't. Putting either in the canonical curriculum makes one cohort suffer for the other's needs. Supplementary lets each cohort pull what they need.
+
+**Planned supplementaries (none built yet — created when first cohort needs them):**
+
+1. **`quality-at-scale.md`** — beyond the M5 Q gate spec: test discipline as agent velocity rises, regression detection patterns, codebase entropy monitoring, observability for agent work, loop reproducibility. Reference for staff engineers who own the floor at organisations with > 50 engineers shipping agent-driven PRs. Pulls in CTO #4 (test discipline holds), Quality items #1-2, #4-5, #8.
+
+2. **`security-for-regulated-environments.md`** — beyond the M5 S blast-radius constraint: data egress control, regulated-data scope boundaries (GDPR, PCI, HIPAA, IP-sensitive code), incident response patterns when an agent ships something bad. Reference for cohorts in finance, healthcare, public sector, or anywhere AppSec needs more than M5's single constraint. Pulls in Security items #5, #7, #9.
+
+3. **`what-engineers-actually-use-daily.md`** — reference catalog of the daily-use surface a Willison-reader CTO expects covered: plan mode (depth + when), CLAUDE.md patterns, MCP servers (when worth the setup, when not), scheduled agents (Claude Code's `/schedule`, when to reach for it), subagents (when one earns its keep over the main session), judge patterns (the M5 menu expanded). Reference, not curriculum — students dip in when they hit a blocker the canonical exercises don't cover.
+
+4. **`multi-repo-working-patterns.md`** — beyond M2's three-layer memory: cross-service memory patterns, monorepo vs. polyrepo trade-offs at agent scale, when to spin up a dedicated agent per service vs. one orchestrator across services, how the team kit lives across multiple repos. Reference for engineers whose reality is 6+ services. Likely pulls in CTO #5 and Klaassen #7.
+
+**When to build them.** Don't build ahead. Build the supplementary the first cohort actually asks for. The supplementary doc is justified by a real cohort question, not by a curriculum-author intuition. (Same posture as Bootstrap — the supplementaries that exist were the ones cohorts needed, not the ones the author predicted.)
 
 ## Hard exclusions
 
@@ -394,11 +469,11 @@ These two trainings are designed to pincer the transformation:
 
 ## Anchor cases (research-grounded)
 
-- **Intercom R&D 2x** (`observations/intercom.md` Side A) — M4 (93.6% Agent-driven PRs, 19.2% auto-approved), M5 (team-2x plugin repo: 267 skills, 31% R&D contributing as the factory-pattern anchor).
-- **Ramp AI-pilled** (`observations/ramp.md`) — M1 (L0–L3 ladder as internal diagnostic; we borrow the posture, not the label), M5 (Glass + Dojo as factory-component contribution targets), cost-posture (leverage over tokens) as cultural frame.
+- **Intercom R&D 2x** (`observations/intercom.md` Side A) — M4 (93.6% Agent-driven PRs), M5 (Tier 1/2/3 review structure with 19.2% auto-approved at lowest tier — the gate Q exercise foreshadows), team kit side-story (267-skill plugin repo with 31% R&D contributing — the accretion pattern we mirror).
+- **Ramp AI-pilled** (`observations/ramp.md`) — M1 (L0–L3 ladder as internal diagnostic; we borrow the posture, not the label), M5 (Glass + Dojo as judges-as-quality-infrastructure, the team kit's destination shape), cost-posture (leverage over tokens) as cultural frame.
 - **Block Hierarchy→Intelligence** (`observations/block.md`) — pressure-test throughout (what does an L3 engineer's role become when the hierarchy thins?).
 - **Huryn three blocks** (`insights.md`) — memory structure, direct import from Bootstrap M2 lineage.
-- **Cross-cutting:** `coding-agent-as-general-platform`, `absorption-bottleneck` (M4 names it), `conditions-creator` (M5 lives it from IC side), `rules-verification-scarcity` (M4 meta-pattern).
+- **Cross-cutting:** `coding-agent-as-general-platform`, `absorption-bottleneck` (M4 names it), `conditions-creator` (M6 lives it from IC side), `rules-verification-scarcity` (M4–M5 meta-pattern).
 
 ## Delivery architecture
 
@@ -424,13 +499,22 @@ Two artifacts per student:
 
 - **Length:** likely 2 days or 6 weeks (consistent with Engineering Management)
 - **Cohort:** single-company
-- **Session runtime per module:** revisit — Bootstrap's 1h45 canonical may not hold for an audience further up the ladder; candidate is 2h for M3 / M5 / M6 given orchestration and deliberation runtime
+- **Modules:** 6 (cap, non-negotiable as of 2026-04-22)
+- **Session runtime per module:** Bootstrap's 1h45 canonical likely doesn't hold uniformly here. Working bid: M1 / M2 ~ 1h45; M3 / M4 ~ 2h (long-running send-off and return need orchestration headroom); **M5 ~ 1h30 (compact: 2 × 20-min exercises)**; M6 ~ 2h15 (deliberation 70 min + closing human beat 30 min + frame/transition 35 min). Total facilitated: ~11h30 across 2 days, comfortably inside two 7-hour days with breaks.
 - **Belief > correctness, 50%-wrong-is-curriculum** (ports from Engineering Management)
 - **Calibration question** (*did you make progress? did you lay ground?*) applies to every module
 
-## State of play (2026-04-21)
+## State of play (rolling)
 
-**Settled this session:**
+**Settled 2026-04-22 (strategy-tuning session):**
+- **6-module cap, non-negotiable.** Old M6 (standalone human close) dropped; closing human beat folded into new M6.
+- **New M5 = Earn the trust (Q+S).** Two ~20-min exercises (gate spec + blast-radius constraint), both shipped to the team kit. Veto-stakeholder discipline as its own module, not woven hygiene.
+- **New M6 = Agents meet agents + closing human beat.** Old M5's deliberation + compressed Risto closing in one module. Cost: lecture-of-the-future shrinks from full module to 15–20 min closing beat.
+- **Team kit as side-story that compounds.** Born at M4 (one judge), grows by accretion across M5 (gate + constraint), peaks at M6 (each agent reads team kit before deliberation). Substrate: real shared Git repo when cohort has one. Naming: "the team kit" student-facing, "plugin repo" Klaassen attribution.
+- **Mood arc updated:** joyful creation → satisfied compounding → unleashed leverage → grounded rescue → **earned trust** → awe + ownership → *"where is this all going?"*
+- **Format update:** runtime per module no longer uniform — M5 compact (~1h30), M6 longest (~2h15), others 1h45–2h.
+
+**Settled 2026-04-21:**
 - Positioning ("you already think you're using Claude Code")
 - Buyer (builder CTO, technical, Willison-reader)
 - Audience (self-taught mid-layer, uneven floor, plan-mode-wrong, CLAUDE.md-under-used)
@@ -485,4 +569,64 @@ Two artifacts per student:
 
 ---
 
-*Last updated: 2026-04-21 late. M1 dependencies built in first long-running-gen cycle (ship-with-agents spine + ship-trivial-bug exercise Pass 3 + the-wizard-move lecture + prework + eval instance + site registration). Pedagogy sharpened to exercise-first head-on with retrospective naming. Huryn first-name corrected to Paweł. Next: Antti reshape pass on drafts, then simulation + LLM-judge eval runs, then Compound step on long-running strategy.*
+*Last updated: 2026-04-22 (strategy-tuning session). 6-module cap committed. Old M6 (standalone human close) dropped; closing beat folded into new M6. New M5 = Earn the trust (Q+S), 2 × 20-min exercises. New M6 = agents meet agents + closing human beat. Team kit side-story (M4 birth → M5 accretion → M6 substrate) replaces factory-component-as-branch. Overflow checklist: 35 of 40 absorbed (canonical modules + Woven design rules + planned supplementaries), 5 still open. **Supplementary tier added** (`quality-at-scale.md`, `security-for-regulated-environments.md`, `what-engineers-actually-use-daily.md`, `multi-repo-working-patterns.md`) — built on first cohort demand, not in advance. Next: write LOs for M2–M6 spines; keep overflow alive as personas surface new items.*
+
+---
+
+## Overflow — outside-in checklist
+
+Living target state. Four personas read the curriculum top-to-bottom; each ticks the boxes their role cares about. Items leave this list as they get absorbed into module LOs or strategy decisions; new items enter as personas surface them. **The goal is not to empty the list — the goal is to keep current state and need state visible side by side.** A box stays open as long as no module's LO addresses it.
+
+Captured 2026-04-22. Items checked (✅) name the module/move that absorbed them. Strikethrough means cut as out-of-scope.
+
+### Builder CTO (the buyer)
+
+- [ ] Output delta per engineer-month — measurable, not vibes
+- [x] Works on our codebase — lands in the warts, not a sandbox ✅ *real-work requirement universal across modules*
+- [ ] Survives the next model release — capability-shape, not version-shape ⚠ *needs LO craft when M2–M6 spines drafted*
+- [x] Covers what I actually use daily — plan mode, CLAUDE.md, MCP, scheduled agents, subagents, judges ✅ *canonical: plan mode + CLAUDE.md + judges in M1–M5; supplementary: `what-engineers-actually-use-daily.md` for MCP + scheduled agents + subagents reference*
+- [x] Cross-service reality — 6+ repos is normal ✅ *canonical: M2 multi-repo memory + team kit across repos in M4–M6; supplementary: `multi-repo-working-patterns.md` for breadth*
+- [x] Trust calibration / tiered review — when does autonomous shipping become safe ✅ *M5 Q exercise (gate spec) + organisational handoff to EM*
+- [x] Raises the team floor — not "we made one new wizard" ✅ *team kit side-story compounds across M4–M6*
+- [x] Evals as infrastructure — the line between ships and ships-safely-at-scale ✅ *M4 judge-building + M5 Q gate*
+- [ ] Habit on Monday — sticky practice, not theatre *(load-bearing for day-91 +3; needs LO somewhere)*
+- [x] Honest about what nobody knows — Risto detector ✅ *M6 closing human beat (lecture-of-the-future)*
+
+### Kieran Klaassen (the practitioner)
+
+- [x] Plan → Work → Review → Compound is the unit, visible everywhere ✅ *M1 establishes; codified as Woven design rule #1*
+- [x] The Compound step is the discipline — explicit move in every module ✅ *Woven design rule #1 — applied as design test on every module draft*
+- [x] Specs over chats — stop typing in chat; write the spec, point the agent at it ✅ *Woven design rule #2 — applied as design test on every exercise draft*
+- [ ] Background agents are everyday, not advanced — multiple agents concurrent by mid-training *(M3 has one mid-long task; default-everywhere is a real choice)*
+- [x] Agents review agents — second agent reading first's PR is daily practice ✅ *M5 Q exercise IS this*
+- [x] Evals are the unlock — judges that read intent, not unit tests ✅ *M4 + M5 Q*
+- [x] Whole codebase is context — search-then-edit, multi-file refactors, repo-aware as default ✅ *canonical: M2 plan-mode-at-depth on multi-layer memory; supplementary: `multi-repo-working-patterns.md` for breadth*
+- [x] Trust calibration is a designed system — auto-approve / tier-2 / tier-3 is a decision ✅ *M5 Q gate spec*
+- [x] Shared team infrastructure compounds the team — Intercom 267-skill pattern ✅ *team kit side-story*
+- [x] Don't waste the loop on toy problems — real backlog from day one ✅ *real-work requirement universal*
+
+### Quality (staff/platform engineer who owns the floor)
+
+- [x] Test discipline holds when agents ship ✅ *supplementary: `quality-at-scale.md`*
+- [x] Regression detection ✅ *supplementary: `quality-at-scale.md`*
+- [ ] Definition of "done" for agent work — explicit, not implicit *(natural fit M5 Q gate spec; settle when M5 spine drafted)*
+- [x] Codebase entropy is monitored ✅ *supplementary: `quality-at-scale.md`*
+- [x] Observability — you can tell what an agent did, why, against what spec ✅ *partial via M5 S audit-trail; breadth in supplementary `quality-at-scale.md`*
+- [x] Verification gates before trust ✅ *M5 Q gate spec*
+- [x] Failure mode catalog — named, not vibes ✅ *M3 names them up front*
+- [x] Reproducibility — loop run twice produces equivalent-quality output ✅ *supplementary: `quality-at-scale.md`*
+- [x] Judge calibration — judges themselves are tested ✅ *M5 Q gate design forces calibration*
+- [x] Quality is infrastructure, not heroics ✅ *team kit + M5 Q*
+
+### Security (CISO / AppSec / security-eng lead)
+
+- [x] Secrets handling — agent doesn't leak credentials ✅ *M5 S blast-radius menu option*
+- [x] Least-privilege tooling — narrowest-possible scope per task ✅ *M5 S blast-radius menu option*
+- [x] Prompt injection resistance ✅ *M5 S blast-radius menu option*
+- [x] Audit trail — who did what, when, with what authority ✅ *M5 S blast-radius menu option*
+- [x] Data egress control — what leaves the perimeter, to which model provider ✅ *supplementary: `security-for-regulated-environments.md`*
+- [x] Supply chain hygiene — skills, MCP servers, shared agent files have known provenance ✅ *team kit substrate (real Git repo, signed commits)*
+- [x] Regulated data scope — GDPR/PCI/HIPAA/IP-sensitive code bounded ✅ *supplementary: `security-for-regulated-environments.md`*
+- [x] Auto-approval blast radius — bounded, named, recoverable ✅ *M5 S exercise IS this*
+- [x] Incident response — agent does something bad, can trace and revoke ✅ *supplementary: `security-for-regulated-environments.md`*
+- [x] Trust boundaries between agents — no agent inherits another's authority by accident ✅ *M6 deliberation inherits constraints set in M5 S*

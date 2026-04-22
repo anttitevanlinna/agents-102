@@ -20,6 +20,10 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 | 2026-04-16 | "small fix: the exact numbering just leads to excessive re-writing" | Process | Use named sections, not numbered. Numbers create maintenance overhead. |
 | 2026-04-16 | "keep stuff fresh. Never leave behind stale content. We have git for history" | Process | Delete old content when replacing. Git is history. No "retained as historical input" markers. |
 | 2026-04-16 | "Learning goals actually IMHO part of strategy. No point in having another file that drifts" | Process | Consolidate related content into fewer files. Separate files = drift. |
+| 2026-04-22 | "I find it interesting the quality and security did not come up" — outside-in audit anchored only on CTO + Klaassen | Process | Outside-in audits must include VETO stakeholders (Quality, Security), not just buyers + practitioners. Throughput personas miss what gating personas catch. Default persona set: buyer + practitioner + Q veto + S veto. |
+| 2026-04-22 | "We may need to drop something that existed before. Respect the 6 module cap" — I proposed a 7th module without surfacing the cap trade-off | Process | When proposing additions in a capacity-constrained domain (modules, runtime, page count), name the trade-off WITHOUT being asked. "Adding X means dropping Y — here are the candidates, here's what each costs." Never propose additions without the subtraction. |
+| 2026-04-22 | "To be woven in as happens pretty much every exercise/module" — I'd treated woven design rules as strategic choices | Decision | Distinguish woven rules (apply universally to all artifacts; design tests) from strategic choices (commit one direction with named trade-off; opposite must not be dumb). Woven rules don't need a meeting; they need codification. Strategic choices need explicit commit. Mistaking one for the other wastes session time. |
+| 2026-04-22 | "Overflow can be handled as supplementary material" — I didn't propose existing pattern reuse | Process | When overflow items pile up, check EXISTING repo patterns (Bootstrap's `supplementary/` directory, the team kit, etc.) before proposing each item needs its own strategy decision. Pattern reuse closes overflow faster than per-item deliberation. Default first ask: "is there an existing pattern this fits?" |
 
 ## Heuristics (apply before doing work)
 
@@ -45,6 +49,14 @@ Track corrections Antti makes so each session starts smarter. The goal: Antti's 
 
 11. **Consult research before curriculum/content work.** Read insights.md and patterns.md before writing or revising any module or content. The research system has 90+ cycles of evidence — use it. Don't build from first principles when evidence exists.
 
+12. **Outside-in audits include veto stakeholders, not just buyers.** When auditing curriculum / strategy / artifact against personas, the default set is FOUR not two: the buyer (CTO/SVP), the practitioner whose pattern we import (Klaassen-equivalent), the Quality veto (staff engineer / platform lead), the Security veto (CISO / AppSec). Throughput personas catch leverage gaps; veto personas catch deployment-killer gaps. Both are needed.
+
+13. **Capacity-constrained additions name the subtraction.** When proposing to add a module / page / lecture / exercise to a domain with a hard cap (6 modules, 1h45 runtime, single H1), surface the trade-off without being asked. "Adding X means dropping Y. Candidates: [Y1 cost, Y2 cost, Y3 cost]. My recommendation: drop Y2 because [reason]." Never propose additions without surfacing the subtraction.
+
+14. **Distinguish woven rules from strategic choices.** Woven rule = applies to all artifacts as a design test (e.g., "Compound visible every module," "specs over chats"). Strategic choice = commit one direction; opposite must not be dumb (Roger Martin test). Woven rules get codified once; strategic choices need explicit commit each time. Don't burn session time deliberating over rules that should just apply universally.
+
+15. **Pattern reuse before per-item deliberation.** When overflow items pile up (audit findings, open questions, edge cases), first ask: "is there an existing repo pattern this fits?" Bootstrap's `supplementary/` for breadth concerns. Side-stories for things that compound across modules. Plug points for org-specific content. Pattern reuse closes overflow 5x faster than per-item strategy decisions.
+
 ## Next-Session Predictions
 
 When starting a new session, check:
@@ -58,6 +70,10 @@ When starting a new session, check:
 - [ ] Am I grounding organizational claims in personal use first?
 - [ ] Does my scaling discussion include leadership personal use?
 - [ ] Am I distinguishing practitioners (build things) from opinion-formers (write about things) on the evidence ladder?
+- [ ] Am I including veto stakeholders (Quality + Security) in any outside-in audit, not just buyers + practitioners?
+- [ ] If I'm proposing an addition to a capacity-constrained domain, am I naming what gets cut?
+- [ ] Am I distinguishing woven design rules (apply universally) from strategic choices (commit one direction)?
+- [ ] Before treating overflow as needing per-item strategy decisions, did I check for existing patterns (supplementaries, side-stories, plug points)?
 - [ ] When Antti proposes a hypothesis, am I listening to what he's ACTUALLY saying before expanding?
 - [ ] When discussing people/domains, am I framing as density distributions, not stereotypes?
 

@@ -475,6 +475,40 @@ Bootstrap pattern (`curriculum/supplementary/`): multi-section reference documen
 - **Huryn three blocks** (`insights.md`) — memory structure, direct import from Bootstrap M2 lineage.
 - **Cross-cutting:** `coding-agent-as-general-platform`, `absorption-bottleneck` (M4 names it), `conditions-creator` (M6 lives it from IC side), `rules-verification-scarcity` (M4–M5 meta-pattern).
 
+## Pre-engagement contract — the buyer states the knowledge home
+
+**Before any student touches Module 1, the buyer (sponsor CTO) takes a position on one question: *where does durable engineering knowledge live in this company so an agent can read it next time?***
+
+This is a pre-engagement artifact, not an in-room debate. The trainer does not arrive at M1 ready to settle an ADR-vs-CLAUDE.md debate — that debate already happened, weeks earlier, with the sponsor.
+
+**What the buyer commits to (one sentence per artifact):**
+
+| Artifact | The buyer names where it lives |
+|---|---|
+| Decision records (M1 onward) | e.g., `docs/adr/NNNN-slug.md`, repo wiki, Linear + linkback, team Notion |
+| Rules for the next session (M1 onward) | e.g., root `CLAUDE.md`, `.claude/CLAUDE.md`, `AGENTS.md` |
+| Memory / knowledge architecture (M2 onward) | e.g., `.claude/memory/`, external wiki with pointer file, shared team repo |
+| Team kit — judges, gate specs, constraints (M4 onward) | e.g., shared plugin repo, monorepo `.claude/` directory, team-kit Git repo |
+
+**Student moves, two legitimate paths, one forbidden.** In the exercise, the student either (a) accepts the company default — the sponsor's call, fine, most will — or (b) proposes a better home *with a reason the team can argue with*. Both are learning. "I don't want to pick one" is not on the list. Refusing to leave durable knowledge anywhere violates the compounding premise the whole training runs on.
+
+**Why the pre-engagement contract is load-bearing:**
+
+- **The trainer doesn't settle a repo-convention debate in the room.** That debate is a sponsor responsibility, not a Module 1 tangent. The trainer arrives with the sponsor's answer already in hand.
+- **The forcing function runs upstream.** Same pattern as [training-as-forcing-function](../memory/project_training_as_forcing_function.md) — the buyer has to take a position on a question their engineering org has often deferred. "Where does engineering knowledge live so an agent can read it?" is a valuable artifact in itself. Half the CTOs will discover their org doesn't have an answer. That discovery IS sales output.
+- **The best part isn't the answer. It's that they had to pick.** *Rory.*
+- **Override is legitimate, not rebellion.** Engineers often have a better sense of their own repo than a sponsor picking top-down. The exercise honours that — a reasoned override feeds back to the sponsor as a signal worth hearing. A passive acceptance is not failure either; the sponsor has real authority here.
+
+**Where this shows up in content:**
+
+- **Sales/pre-engagement materials** name the contract and include a one-page worksheet the sponsor fills before the cohort starts. (TODO before first cohort — belongs with the buyer sales pack.)
+- **Module 1's exercise (`ship-trivial-bug.md`)** references the sponsor-stated ADR home as the default. Override path is explicit.
+- **Module 2's memory exercise** references the sponsor-stated memory home.
+- **Module 4 onward** references the sponsor-stated team-kit substrate.
+- **The Agentic Nerd skill** reads the contract (a simple markdown file in the content folder, populated per cohort) and surfaces the sponsor-stated default at the right blocker in each module.
+
+**Rory:** every competitor sells training and assumes the repo conventions will sort themselves out. We sell training and make the buyer answer a question their CTO hasn't wanted to answer — *where does our engineering knowledge live?* Half of them discover they don't have one. That's the most valuable thing the training does all week, and it happens before Day 1.
+
 ## Delivery architecture
 
 **The compounding lives in the student's real repo. The curriculum lives in a content folder next to it.**

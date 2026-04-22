@@ -1,6 +1,6 @@
 # Ship a trivial bug
 
-**What you do:** run one trivial bug from your repo through Plan → Work → Review end-to-end in Claude Code, with plan mode used deliberately. Log the trade-off as an ADR in the repo. Name the shape of what you just did — after you've done it.
+**What you do:** run one trivial bug from your repo through Plan → Work → Review end-to-end in Claude Code, with plan mode used deliberately. Log the trade-off as a decision-journal entry where your team's durable knowledge lives — the home your sponsor named (or one you can argue is better). Name the shape of what you just did — after you've done it.
 
 **What happens:** a real PR ships in about an hour. You read the diff carefully, push back on a line Claude wrote that isn't quite right, write one decision record, and recognize the four-step loop after you ran it.
 
@@ -45,12 +45,14 @@ Read the diff. Not skim. Read it. Find one line you would have written different
 **Prompt** *(copy → Claude Code)*
 
 ```
-I want to push back on one line in your diff. Let's talk it through, then write an ADR in this repo's convention. If there's no ADR convention yet, start docs/adr/NNNN-slug.md — that becomes the convention.
+I want to push back on one line in your diff. Let's talk it through, then write a decision-journal entry where this company keeps durable engineering knowledge. My sponsor's default for this cohort is [SPONSOR-STATED HOME — e.g., docs/adr/NNNN-slug.md, team Notion + linkback file, repo wiki]. If I know a better home for this team's knowledge, I'll say so and we'll go there with a one-line reason. Not picking a home is not on the table.
 ```
 
 *(end of prompt)*
 
-Talk it through. Whoever has the better argument wins. Claude writes the ADR either way. Now the repo has one decision record — seeded where decisions belong, in the repo. Ship the PR (merge or draft). The PR is the visible artifact; the ADR is the one that compounds.
+Talk it through. Whoever has the better argument wins. Claude writes the entry either way. Now the team has one decision record — seeded where this company's decisions actually belong. Ship the PR (merge or draft). The PR is the visible artifact; the decision record is the one that compounds.
+
+**Sponsor-stated default?** The buyer took a position before the training began — *"in this company, engineering knowledge lives here."* That's the first path. **Reasoned override?** You know your repo better than anyone picking top-down; a reasoned move to a better home is a legitimate second path (and feeds back to the sponsor as a signal). **"None of these"** isn't a path — the compounding loop needs somewhere durable to read next time.
 
 ## Phase 5 — Why it worked (5 min)
 
@@ -73,10 +75,12 @@ On to the Compound step — the Debrief writes your repo's `CLAUDE.md` from the 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
 - **Exercise time band:** 55–70 min inside a 1h45 module (Connections 10 / Lecture 10 / Exercise 55–70 / Debrief 15 / Bridge 5). Buffer to 70 on first cohort delivery — engineers overshoot P3 on real code.
-- **Artifact locations in the student's repo (see content-strategy-agentic-engineering-101.md § Delivery architecture):**
-  - Decision-journal entry → `docs/adr/NNNN-slug.md` or the repo's existing ADR convention
-  - Rules file (written at Debrief) → root `CLAUDE.md` or `.claude/CLAUDE.md`
-  - Three-block memory (M2+) → `.claude/memory/`
+- **Artifact locations — governed by the pre-engagement contract** (see content-strategy-agentic-engineering-101.md § "Pre-engagement contract" and § "Delivery architecture"):
+  - Decision-journal entry → **sponsor-stated home** (ADR convention, team wiki + linkback, Notion + pointer file, etc.); `docs/adr/NNNN-slug.md` is a reasonable default if the sponsor punted.
+  - Rules file (written at Debrief) → **sponsor-stated home** for agent-rules; root `CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md` are the common shapes.
+  - Three-block memory (M2+) → **sponsor-stated memory home**; `.claude/memory/` is the common shape.
+  - **Student override is legitimate, not rebellion.** If the student proposes a better home with a reason, Claude goes there and the override feeds back to the sponsor.
+  - **Opting out is not a path.** The exercise doesn't complete without a durable home for the decision record.
   - No `module-1/` folder, no `prework/bug.md`, no training-dir state.
 - **Frameworks riffed on:**
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Convergence Level 3. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.

@@ -15,7 +15,7 @@ After this module, you will be able to:
 - **Run** Plan → Work → Review end-to-end on a trivial bug in your own repo, with plan mode used deliberately
 - **Recognize** the shape of what you just ran, named by two practitioners who wrote it up before you did
 - **Seed** your repo's `CLAUDE.md` from a session retro — the file the next session reads first
-- **Log** one decision-journal entry as an ADR in the repo, capturing a trade-off you made during the fix
+- **Log** one decision-journal entry where your team keeps durable knowledge — the home your sponsor named, or a better one you can argue for
 
 ## Connections
 
@@ -37,6 +37,8 @@ After this module, you will be able to:
 
 ## Plug Points
 The student's own repo and the bug Claude surfaced in prework. No company data needed yet. If the student arrives having drifted from their prework choice, Phase 1 runs a fresh bug-surfacing conversation — criteria unchanged: small, visible, yours, shippable in an hour.
+
+The **sponsor-stated knowledge home** (pre-engagement contract — see `content-strategy-agentic-engineering-101.md` § "Pre-engagement contract") supplies the default for where the decision-journal entry and rules file land in Phase 4 and the Debrief. Student can override with a reasoned alternative; opting out is not a path.
 
 ## Debrief
 

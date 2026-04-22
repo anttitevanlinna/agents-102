@@ -105,7 +105,9 @@ If the student invokes `/self-study reset` or asks to start over, delete the con
 
 The student is in Claude Code, opened at the cloned repo root. They have just invoked `/self-study` for the first time. They don't know the shape of what's coming. Don't overwhelm.
 
-1. **Greet briefly.** *"I'll be your facilitator for Agents 102. Before we start, let's set up your workspace."*
+1. **Greet briefly, name the license in one line.** *"I'll be your facilitator for Agents 102. Quick note on the terms: you have a personal usage license — learn from it, run the exercises, own everything you build, apply it at your own workplace. The only asks: don't redistribute the curriculum files or teach this as your own training. Full terms show up at the bottom of every page on the recap site once we start it, and in `COPYRIGHT.md` if you want the detail. Let's set up your workspace."*
+
+   Say this once, move on. Don't lecture on IP. The student is here to build.
 
 2. **Pick the training directory.** Default: `~/Documents/agents-102-bootstrap/`. Offer it; let them override. Hard rule: **not** inside OneDrive, iCloud, Dropbox, or Google Drive — sync daemons fight Claude's writes. If they insist, explain the risk once and proceed.
 

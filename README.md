@@ -88,3 +88,13 @@ Agents 102 is made of two parts with deliberately different terms:
 - **Open — public knowledge base.** [`continuous-research/`](continuous-research/) is open for reading, quoting, forking, and contribution. Contribute findings, user signals, and observations back — the system gets smarter when you use it. See [`continuous-research/LICENSE.md`](continuous-research/LICENSE.md) for terms.
 
 The split is deliberate: the research system is a public good; the curriculum and content are Bosser IP. For licensing questions, contact [bosser.consulting](https://bosser.consulting).
+
+### If you're a student
+
+You've been granted a **personal usage license** — designed to be generous where it matters and firm where it has to be. In short:
+
+**You can:** learn from every module, run every exercise, **own everything you build** (agents, skills, memory pages, evals, sites — your outputs are yours, not Bosser's), **apply anything you learn at your own workplace** (that's the whole point of the training), share your own artifacts with teammates inside your company, and quote briefly with attribution.
+
+**You can't:** redistribute the curriculum files, teach the material as your own training, resell or transfer your seat, build a competing course from it, or feed the proprietary files into a public AI dataset.
+
+The simple test: *am I using this for my own learning, my own work, or teammates inside my own company?* If yes, you're inside the license. Full terms in [`COPYRIGHT.md`](COPYRIGHT.md) § Student Usage License.

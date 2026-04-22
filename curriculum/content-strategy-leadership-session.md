@@ -4,15 +4,15 @@
 >
 > **Internal name:** *Execution Session.* What the team calls it in strategy docs, capacity plans, and CRM. Captures the working-session nature and the fact that this offering sits above train-the-trainer in the journey as the commitment-layer multiplier.
 
-> A one-shot, on-site working session for the top leadership team of a single company. Four hours. 10% slides, 90% doing. The leadership team walks in with a strategic topic X they already owe someone a decision on. They walk out with real progress on X AND a felt answer to two anchor questions: *what is AI-native?* and *am I ready to lead it?*
+> A one-shot, on-site working session for the top leadership team of a single company. Four hours. 10% slides, 90% building. The topic is the agentic transformation itself — the one thing every LT has on its plate and can't really duck. They walk out having built agents together, and with felt answers to two anchor questions: *what is AI-native?* and *am I ready to lead it?*
 >
-> This is not a training masquerading as a taster. It is a strategic working session that happens to teach agent fluency as a side-effect.
+> This is not a training masquerading as a taster. It is a working session that happens to teach agent fluency as a side-effect.
 
 ## What this is
 
-A single 4-hour facilitated session. The leadership team of a software company (mid-level AI knowledge, mid-way through AI transformation) builds functional agents on a strategic topic their CEO pins pre-engagement. The agents produce a shared understanding of topic X; then the agents and humans together produce a forward plan the room commits to.
+A single 4-hour facilitated session. The leadership team of a software company (mid-level AI knowledge, mid-way through AI transformation) builds functional agents together — on their own function's real sources and voice. The agents produce a shared picture of where the transformation actually sits across the room; then the agents and humans together produce a forward plan the room commits to.
 
-The session is AI-native *by being one*, for four hours, on one question the team actually cares about.
+The session is AI-native *by being one*, for four hours, on the one topic every LT owes an answer on.
 
 ## Who it's for
 
@@ -26,17 +26,17 @@ The session is AI-native *by being one*, for four hours, on one question the tea
 
 | Situation | Fit |
 |---|---|
-| LT wants to make real progress on one strategic question AND raise their own floor on agents in the same day | **Leadership Session (this)** |
+| LT wants felt answers to *what is AI-native* and *am I ready to lead it* — and to raise their own floor on agents in the same day | **Leadership Session (this)** |
 | LT wants multi-week builder training for their own hands | Bootstrap |
 | Engineering managers need to lead teams through the agentic shift | Engineering Management |
 | Software engineers need to become agent-native ICs | AE101 |
-| Sponsor-of-a-cohort needs a preview before a full training | Variant of this session, 2 hrs, no strategic topic |
+| Sponsor-of-a-cohort needs a preview before a full training | Variant of this session, 2 hrs, no forward plan |
 
 ## Positioning
 
-**External pitch:** *"Four hours. One strategic question you owe your board. You'll leave with the answer drafted, a plan your team committed to, and a felt definition of what AI-native means — because you just led a session that was one."*
+**External pitch:** *"Four hours. Your leadership team builds agents together — on their own data, in their own voice. They walk out with felt answers to two questions: what is AI-native, and am I ready to lead it? Training is the dividend. Conviction is the product."*
 
-The sale is not "your execs will learn about agents." The sale is "your leadership team will make progress on a question you've been stuck on, using a method you'll then want to fund across the company." Training is the dividend, not the product.
+The sale is not "your execs will learn about agents." The sale is "your leadership team will answer the questions they couldn't answer before — and find a method they want to fund across the company." Training is the dividend; conviction is the product.
 
 ## The two anchor questions
 
@@ -52,8 +52,8 @@ Personal. Not "is our company ready" (a committee question that never resolves).
 
 Two outcomes, both genuine, neither a pretext for the other.
 
-1. **Shared understanding of topic X.** One live-generated document. Every function's view is in it. Trade-offs that are usually invisible because they span functions are now on one page.
-2. **Forward plan on topic X.** Differentiated by function, synthesised by agents, shaped and committed by humans. Owners and next two moves for each function.
+1. **Shared understanding** of where the agentic transformation actually sits across the room. One live-generated document. Every function's view is in it. Assumptions, blockers, and wishes that are usually invisible because they span functions are now on one page.
+2. **Forward plan** across three layers — company, function, personal. Differentiated by function, synthesised by agents, shaped and committed by humans. Owners and next two moves for each.
 
 Agent competence is the side-effect each leader carries out of both.
 
@@ -63,7 +63,7 @@ Agent competence is the side-effect each leader carries out of both.
 
 **Facilitator:** Antti lives. This session cannot be delegated to a junior facilitator for the first 20+ engagements. The room is senior, the topic is real, the agent-deliberation moments need a practitioner who can recover from wobble in 15 seconds.
 
-**Pre-session load:** 1 full day of prep per engagement. Antti reads the strategic topic materials, meets the CEO for 30 min to pin topic X, reviews each leader's curated sources 24–48 hours before the session.
+**Pre-session load:** 1 full day of prep per engagement. Antti reviews each leader's curated sources 24–48 hours before the session, coaches any whose curation is thin, and takes a 20-min call with the CEO to walk the register shifts for the Open and Close.
 
 **On-site setup:** one room, U-shape or round table (not classroom), good screen for agent-deliberation reveal, reliable network. Coffee matters more than slides.
 
@@ -71,7 +71,7 @@ Agent competence is the side-effect each leader carries out of both.
 
 | Block | Time | What happens |
 |---|---|---|
-| Open | 20 min | CEO names topic X. Antti frames the arc + names Q1/Q2. Brief agent-vs-chatbot distinction. |
+| Open | 20 min | CEO sets the why. Antti frames the arc + names Q1/Q2. Brief agent-vs-chatbot distinction. |
 | Build 1 — shared understanding | 90 min | Co-curate the knowledge base → private query with assumption/blocker/wish packs → build function artifact → **sponsor synthesizes + shows variance**. Output: one shared-picture document with three variance overlays (assumptions / blockers / wishes). |
 | Break | 15 min | Biology and cross-function chatter. The chatter is part of the work. |
 | Build 2 — plan forward: "Can you lead?" | 90 min | Three-layer planning (company / my org / me — cross-pollinated) → **the D round**: private Socratic with own agent → desire paragraph → "I want this because Y" round the room. Q2 gets answered here. |
@@ -91,17 +91,18 @@ The `continuous-research/` folder is packaged as the agent base context. Every l
 This is the 80% frontier-research layer. It is the reason the agents do not produce vendor-flavoured mush — they are grounded in practitioner evidence, labeled at source-type level, freshness-checked.
 
 **Layer 2 — LT member curated sources (per-leader, per-topic).**
-Each leader brings 3–5 real sources on topic X from their own function. Examples: CFO brings the capital plan + two audit memos + the latest board finance deck. CMO brings the last three campaign post-mortems + the competitive positioning doc. SVP HR brings the engagement survey narrative + the org design memo + the all-hands deck.
+Each leader brings 3–5 real sources from their own function — the ones that actually describe how their function runs today and where the agentic transformation is (or isn't) landing in it. Examples: CFO brings the capital plan + two audit memos + the latest board finance deck. CMO brings the last three campaign post-mortems + the competitive positioning doc. SVP HR brings the engagement survey narrative + the org design memo + the all-hands deck.
 
 This is the 20% function-specific reality layer. Without it, the agents produce generic briefs. With it, each leader's agent speaks their function's actual view on their actual data.
 
 **Why this matters strategically.** The research folder stops being an internal knowledge asset and becomes a *live product component*. Every session consumes it, every session gets sharper as the research compounds. The 80/20 curation model shows up at the point of sale, not just in the marketing copy.
 
 **Preparation flow:**
-1. Antti + CEO pin topic X (30 min, 6 weeks out).
-2. Each leader receives a one-page brief: the topic, the two anchor questions, the source curation ask (3–5 real sources from their function).
+1. Antti briefs the CEO on the session shape and their pre-engagement role (30 min, any time pre-engagement).
+2. Each leader receives a one-page brief: the two anchor questions, the source curation ask (3–5 real sources from their function), and what to expect.
 3. 48 hours before: leaders drop sources into a shared folder. Antti reviews; if a leader's sources are thin, Antti coaches via a 10-min call.
-4. Session day: agents load both layers at the start of Build 1.
+4. Day before: 20-min CEO pre-call on the Open and Close register shifts.
+5. Session day: agents load both layers at the start of Build 1.
 
 ## Runtime architecture
 
@@ -134,10 +135,10 @@ This is the artifact they carry into Monday. The folder is the deliverable; the 
 
 ### Open (20 min)
 
-**CEO (3 min).** Names topic X. Why now. What decision hangs on it. This is not a welcome speech — it is the framing that makes the next four hours real. If the CEO reads from a slide, the room disengages; if the CEO speaks plainly, the room locks in.
+**CEO (3 min).** Sets the why. Why now, why this room, why the agentic transformation can't be led by approving from the top. This is not a welcome speech — it is the framing that makes the next four hours real. If the CEO reads from a slide, the room disengages; if the CEO speaks plainly, the room locks in.
 
 **Antti (15 min).** Frames the arc:
-- The two outcomes (progress on X, plan forward on X) — stated plainly.
+- The two outcomes (shared understanding, forward plan) — stated plainly.
 - The two anchor questions (Q1, Q2) — stated plainly, with *"we will not answer these for you; you will know by the close because of what you did."*
 - One mini-concept: agent vs. chatbot vs. copilot — the three-word distinction, using the connector/action/tool triple from the business-audience ban list.
 - One mini-concept: agent = context + guardrails + LLM + prompt. Named once.
@@ -145,23 +146,23 @@ This is the artifact they carry into Monday. The folder is the deliverable; the 
 
 **Transition (2 min).** Leaders open Claude, pull their sources, the research-base symlink is verified loaded. Build 1 starts.
 
-### Build 1 — shared understanding on X (90 min)
+### Build 1 — shared understanding (90 min)
 
-A team-first build: co-curate → query → artifact → synthesize with variance. Engineered to surface not only the facts of topic X, but the *unsaid material* underneath it — the assumptions the room has not tested, the blockers nobody names in LT, the wishes nobody voices because they feel unrealistic.
+A team-first build: co-curate → query → artifact → synthesize with variance. Engineered to surface not only each function's stated view of the agentic transformation, but the *unsaid material* underneath it — the assumptions the room has not tested, the blockers nobody names in LT, the wishes nobody voices because they feel unrealistic.
 
 **Phase A — Co-curate the knowledge base (15 min).**
 The room assembles the agents' knowledge base live, on the big screen. Every leader's function sources go in alongside the Bosser research base (`continuous-research/`). As each leader drops material, they tag it with one honest line — *"what this source assumes is true,"* *"what it's silent on,"* *"what I wish it said."* Curation becomes a confession ritual dressed as a file-tagging task. The room sees its collective knowledge stack take shape for the first time. **The opening WOW lives here** — the room has never seen its own material on one table next to a frontier-research layer. The 80/20 knowledge model becomes tangible.
 
 **Phase B — Query (30 min, individual Cowork).**
 Each leader queries the freshly-curated base in their own Cowork session (individual mode, not shared — the excavation stays confidential). Antti ships three prompt packs in the session:
-- *Assumption pack:* "What would have to be true for our current X plan to work? Which of those have we tested? Which are bets?"
-- *Blocker pack:* "What stops us from moving on X tomorrow, honestly? What gets mentioned in one-on-ones but never in the LT?"
+- *Assumption pack:* "What would have to be true for our agentic transformation to work? Which of those have we tested? Which are bets?"
+- *Blocker pack:* "What stops us from moving on the transformation tomorrow, honestly? What gets mentioned in one-on-ones but never in the LT?"
 - *Wish pack:* "If no capability constraint existed, what would we do? What capability do I wish existed that would collapse this problem?"
 
 The querying agent pushes back — *"you named three assumptions; the fourth one your sources keep circling is..."*. Agent as excavator, not stenographer. Individual (not shared) Cowork for this phase specifically: honest wishes don't get typed if peers can see them live. Shared-mode Cowork and big-screen synthesis arrive in Phase D once the excavation is done and findings are ready to pool.
 
 **Phase C — Build your artifact (25 min).**
-Each leader produces their function's artifact on X. Template has three mandatory sections — *my assumptions, my blockers, my wishes* — front-loaded, not appendix. Agent checks the artifact for thin assumption-surfacing and flags before the leader closes.
+Each leader produces their function's artifact — how the agentic transformation actually looks from their seat. Template has three mandatory sections — *my assumptions, my blockers, my wishes* — front-loaded, not appendix. Agent checks the artifact for thin assumption-surfacing and flags before the leader closes.
 
 **Phase D — Sponsor synthesizes + shows variance (20 min). The Build 1 WOW lands here.**
 CEO drives. An orchestrator agent lays all artifacts side by side and produces a variance map with three overlays:
@@ -175,12 +176,12 @@ CEO lands one line per overlay: *"here is the assumption we keep betting on with
 
 Coffee, biology, cross-function chatter. The chatter is part of the work — leaders compare what their agents produced, tell each other the surprise, start forming their forward-plan instincts before Build 2 starts. Do not try to script this; create space for it.
 
-### Build 2 — plan forward on X: "Can you lead?" (90 min)
+### Build 2 — plan forward: "Can you lead?" (90 min)
 
 Three-layer planning ending in the desire turn. Each layer compresses faster than the last. Layer 3 is harsh on purpose — LT members are personally accountable, and they cannot hide behind the organization. The desire turn is where Q2 (*are you going to lead?*) gets answered — not as a yes/no show of hands but as *"I want this because Y,"* which is a truer answer than compliance.
 
 **Layer 1 — our company (20 min).**
-Orchestrator agent drafts the company-level plan for X from Build 1's shared picture + the three variance overlays. Room shapes live on the big screen — *"the procurement dependency is missing,"* *"the Nordic go-to-market line is wrong."* Agent rewrites. Two loops. CEO lands it.
+Orchestrator agent drafts the company-level plan from Build 1's shared picture + the three variance overlays. Room shapes live on the big screen — *"the procurement dependency is missing,"* *"the Nordic go-to-market line is wrong."* Agent rewrites. Two loops. CEO lands it.
 
 **Layer 2 — my org (25 min). Agents cross-pollinate.**
 Each leader drafts their function's plan. Cross-pollination mechanic: every leader's agent reads the *other* function plans and returns three things — *"here's a dependency you're ignoring,"* *"here's a tactic from CMO's plan that transfers to yours,"* *"here's where your plan contradicts SVP HR's."* Agents as lateral consultants across the room. Leaders revise against what the cross-pollination surfaces. This is where strategies and tactics travel between functions without political cost — nobody has to be the person who said *"your plan contradicts mine"*; the agent said it.
@@ -249,18 +250,17 @@ Avoid: consultant-speak ("leverage," "synergy"), vendor-speak ("enterprise-grade
 
 The CEO signs a one-page engagement that states:
 
-1. **Topic X is pinned 6 weeks out.** Fuzzy topics are sent back to sharpen.
-2. **Every LT member attends in person for the full 4 hours.** No partial attendance, no remote participation. Non-negotiable. A session with an absent CFO is not worth running.
-3. **Each LT member curates 3–5 real sources on X, dropped in a shared folder 48 hours before.** Thin curation triggers a 10-min coaching call from Antti.
-4. **The CEO owns the open (3 min), the Build 1 variance-landing (Phase D), the sponsor-reads-the-plan move at Close, and goes first in the D-round "I want this because Y" round.** Not delegated.
-5. **CEO takes a 20-minute coaching call the day before the session.** Antti walks the CEO through the register shifts: declarative in the close, honest-about-what-is-soft in the plan, *real* (not operating-principles) in the I-want round. If the CEO opens the I-want round with a polished answer, the rest of the room collapses to compliance — this call exists to prevent that single failure mode.
-6. **Outputs travel.** The shared-picture document, the variance map, the forward plan, and each leader's agent folder are the property of the client. Antti retains no confidential content. Each leader's desire paragraph is private to that leader; not shared with the buyer, not retained.
+1. **Every LT member attends in person for the full 4 hours.** No partial attendance, no remote participation. Non-negotiable. A session with an absent CFO is not worth running.
+2. **Each LT member curates 3–5 real sources from their own function, dropped in a shared folder 48 hours before.** Thin curation triggers a 10-min coaching call from Antti.
+3. **The CEO owns the open (3 min), the Build 1 variance-landing (Phase D), the sponsor-reads-the-plan move at Close, and goes first in the D-round "I want this because Y" round.** Not delegated.
+4. **CEO takes a 20-minute coaching call the day before the session.** Antti walks the CEO through the register shifts: declarative in the close, honest-about-what-is-soft in the plan, *real* (not operating-principles) in the I-want round. If the CEO opens the I-want round with a polished answer, the rest of the room collapses to compliance — this call exists to prevent that single failure mode.
+5. **Outputs travel.** The shared-picture document, the variance map, the forward plan, and each leader's agent folder are the property of the client. Antti retains no confidential content. Each leader's desire paragraph is private to that leader; not shared with the buyer, not retained.
 
 ## Post-session artifacts
 
 Within 48 hours:
 - **Shared-picture document** (3–5 pages) — from Build 1 Phase D.
-- **Variance map** (assumption / blocker / wish overlays) — the three strategic facts the room surfaced. This is often the most valuable artifact; it names the hidden material behind topic X.
+- **Variance map** (assumption / blocker / wish overlays) — the three strategic facts the room surfaced. This is often the most valuable artifact; it names the hidden material underneath the transformation as the room actually sees it.
 - **Forward plan** (three layers: company / my org / me — differentiated by function, owners, next two moves, dependencies).
 - **Each leader's agent folder** (`sources/`, `rules.md`, voice samples, working prompts including the three query-prompt packs). The reusable artifact that keeps compounding after Antti leaves.
 - **Session Loom** (30 min cut — Build 1 variance reveal + Build 2 cross-pollination + the I-want round if leaders consent to recording). The Monday-morning asset.
@@ -274,7 +274,7 @@ Within 48 hours:
 - **A Bootstrap replacement.** Bootstrap is 8 modules for builder leaders who want to become agent-fluent. This is 4 hours for operators who need to decide.
 - **A training pitch disguised as a session.** The session delivers genuine strategic work. If downstream training is funded, it is because the LT felt the shift — not because Antti upsold.
 - **A platform recommendation.** The session is platform-agnostic. If the CTO asks, Antti has a view; if nobody asks, it does not come up.
-- **A diagnostic of their current AI transformation.** The session does not dwell on where they are; it moves forward on X. Diagnosis is a separate engagement.
+- **A diagnostic of their current AI transformation.** The session does not dwell on where they are; it moves forward. Diagnosis is a separate engagement.
 
 ## Variants (future)
 
@@ -296,7 +296,7 @@ Within 48 hours:
 **Seeded:** 2026-04-22. Strategy session with Antti. Shape iterated through several passes in one sitting.
 
 **Canonical shape converged:**
-- Two outcomes (progress on X + agent competence as side-effect) + two anchor questions (Q1 *what is AI-native?* / Q2 *are you ready to lead it?*).
+- Two outcomes (shared understanding + forward plan; agent competence as side-effect) + two anchor questions (Q1 *what is AI-native?* / Q2 *are you ready to lead it?*).
 - Build 1 = co-curate → private query with three prompt packs (assumption / blocker / wish) → function artifact → sponsor-led variance synthesis with three overlays. WOW #1 at the curation moment and the variance reveal.
 - Build 2 = three-layer planning (company / my org / me) with agent cross-pollination → the D round (private Socratic with own agent → desire paragraph → "I want this because Y" round the room). Q2 gets answered in the D round, not the Close.
 - Close = sponsor walks the curated plan + personal findings round (Q1 surfaces implicitly) + CEO one-line close.

@@ -486,6 +486,10 @@ Conventions:
 - Log the eval run result at the top of the instance file (`**Eval runs:**` section).
 - Visible during internal iteration; clean up before customer-facing delivery.
 
+## Copyright — every new asset is Bosser IP
+
+Every module, exercise, lecture, eval, scaffold, reference page, article, essay, strategy doc, site asset, memory page, or skill created through this skill is **© 2026 Bosser Oy, all rights reserved** the moment it lands under `curriculum/`, `content/`, `strategy/`, `site/`, `memory/`, `evals/`, `scripts/`, or `.claude/`. No separate per-file header is required — the per-folder `COPYRIGHT.md` and the root `COPYRIGHT.md` cover everything. Just do not write curriculum / content / strategy output into `continuous-research/` (that directory is the open public knowledge base, covered by `continuous-research/LICENSE.md`), and do not reproduce training content from external sources into the proprietary scope. See root `CLAUDE.md` § "COPYRIGHT — two-tier rule" for the full wording.
+
 ## Red flags (stop and rethink)
 
 - You wrote more than one bullet under `## Exercises` for phases of a single activity

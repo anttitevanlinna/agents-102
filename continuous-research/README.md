@@ -2,6 +2,8 @@
 
 Track what's just now becoming possible in agentic business practices — **beyond coding**. Translate it for the early majority before anyone else does.
 
+> **Open for contribution.** This directory is the public knowledge base. You may read, quote, fork, and contribute under the terms in [`LICENSE.md`](LICENSE.md). The rest of the Agents 102 repository (curriculum, content, strategy, site) is proprietary to Bosser Oy — see the root [`COPYRIGHT.md`](../COPYRIGHT.md).
+
 ## Scope: Business Processes, Not Code
 
 **Agentic coding is a red ocean.** Every vendor, bootcamp, and developer community is already there. Claude Code, Codex, Cursor, GitHub Copilot — the coding space is saturated with tools, tutorials, and competition.

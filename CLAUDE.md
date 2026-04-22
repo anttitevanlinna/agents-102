@@ -118,7 +118,11 @@ This is a shared, multi-user repository. Research runs continuously on remote br
 - **Framework-integrative, not framework-driven.** Frameworks serve the situation, not the other way around.
 - **OODA loops for research.** See `continuous-research/platform-watch/cycle-prompt.md` for the self-contained researcher instructions.
 - **Obfuscation rule for user signals and practitioner observations:** Strip company names, person names, and identifying details from user-contributed content. Keep only the generalizable insight.
-- **COPYRIGHT:** Never reproduce training content from external sources. Research extracts positioning and market insights only.
+- **COPYRIGHT — two-tier rule:**
+  - **Proprietary scope:** `curriculum/`, `content/`, `strategy/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, and the root docs (`philosophy.md`, `content-style-guide.md`, `README.md`, `CLAUDE.md`, `PROMPT.md`) are **© 2026 Bosser Oy, all rights reserved.** Any new module, exercise, lecture, article, strategy doc, site asset, memory page, eval, script, or Claude Code skill created under those paths is automatically covered. Do NOT reuse without written permission. Do NOT reproduce training content from external sources into those paths.
+  - **Public scope:** `continuous-research/` is the open knowledge base. Anyone may read, quote, fork, and contribute under the terms in `continuous-research/LICENSE.md`. Contributions grant Bosser Oy and the community a perpetual, non-exclusive license to use and adapt. Research must honour the evidence ladder, source-type labels, freshness rule, and obfuscation rule defined elsewhere in this file.
+  - **Per-folder notices:** Each proprietary top-level folder carries a short `COPYRIGHT.md` pointing back to the root `COPYRIGHT.md`. When creating a new top-level proprietary folder, add one. Do NOT add one to `continuous-research/` or its subfolders — that directory is covered by `continuous-research/LICENSE.md`.
+  - **When in doubt, the root [`COPYRIGHT.md`](COPYRIGHT.md) is the source of truth.**
 
 ## Research Method: People-First
 
@@ -312,7 +316,7 @@ When a task spans many files (audits, research runs, bulk edits), use this patte
 This keeps the main context window free for user interaction and synthesis instead of burning it on raw file content.
 
 **Marketing funnel:** Newsletter ("Deploying Agents") ↔ Survey (Agentic Readiness Check) → DM. Both entry points cross-feed each other. See `strategy/marketing-plan.md`.
-- This is independent intellectual property — see COPYRIGHT.md for details
+- This is independent intellectual property owned by **Bosser Oy** — see [`COPYRIGHT.md`](COPYRIGHT.md) for the two-tier scope (proprietary training product vs. open research base).
 
 ## Self-Review Protocol
 

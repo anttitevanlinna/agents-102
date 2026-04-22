@@ -87,8 +87,9 @@ This file applies its own governing rule — **compounding is the side-product o
 3. **Rewrite** the "Rules the file has learned" section at the bottom — integrate, don't append, per the M2+ Debrief pattern
 4. **Rewrite** the "Failure modes to pre-empt" section if new modes surfaced
 5. **Append** one entry to the run history with what the session taught — one line per session, date + module + the single biggest lesson
+6. **Cross-surface corrections → `/compound`.** Any correction from the reshape diff that applies BEYOND the long-running strategy itself — writing-surface leaks (banned words, register errors), sales_copy leaks, student_facing mood violations, research claim issues, strategy-doc divergence — gets promoted via the `/compound` skill. That writes a schema-validated entry in `memory/compounded/` and (for content/pedagogy/sales surfaces) proposes a one-line amendment to the matching `memory/check_*.md` compendium. *Rule of thumb:* if the correction would apply to a non-long-running session too, it belongs in `/compound`, not just in this file.
 
-If this Compound step is skipped, the strategy stops learning. This file becomes stale the moment the loop breaks.
+If this Compound step (especially #6) is skipped, the strategy stops learning AND cross-surface corrections don't propagate. This file becomes stale the moment the loop breaks.
 
 ## Context for a fresh session picking this up
 

@@ -255,7 +255,11 @@ None of these are evidence. They can be referenced for context but never present
 
 ## Subagent Injectable Rules Block
 
-**Copy-paste this entire block into every research and content subagent prompt.** Do not paraphrase or abbreviate. Subagents do not read CLAUDE.md — this is their only source of quality rules.
+**Canonical source: `.claude/rules/research-rules.md`** (for research subagents) and `.claude/rules/content-rules.md` (for content subagents — points at the `memory/check_*.md` compendium for the relevant surface).
+
+Every research and content subagent launch MUST read the relevant rule file and prepend its full contents verbatim to the subagent prompt. Subagents do not read CLAUDE.md — the rule file is the only way they receive these rules. One edit to the rule file propagates to every future subagent; no copy-paste drift.
+
+The block below is kept in CLAUDE.md for quick reference and must stay in sync with `.claude/rules/research-rules.md`. When updating, edit the file first, then sync this block.
 
 ```
 === MANDATORY RESEARCH RULES (copy-pasted from project rules) ===

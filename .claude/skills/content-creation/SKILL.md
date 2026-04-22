@@ -20,6 +20,14 @@ Use this skill when the user asks to write or revise curriculum content: a modul
 
 If you can't answer those four questions before writing, stop and read `content-strategy.md` until you can. Strategy isn't the frame you impose on content after drafting; it's the frame that decides what to draft.
 
+## Rule files to load before generating
+
+Before writing any student-facing surface, ALSO read:
+- `.claude/rules/content-rules.md` — routes you to the right compendium for today's surface (writing / sales_copy / student_facing / pedagogy)
+- The specific `memory/check_*.md` compendium it names (e.g. `check_student_facing.md` for modules/exercises/lectures/Nerd-Teacher prompts)
+
+These are the rules that fire at generation time. Loading them after drafting catches half of what loading them before drafting would have prevented.
+
 ## Session start — read this first
 
 Before touching anything, read in this order:
@@ -86,7 +94,7 @@ Every piece of curriculum content — lecture, exercise, or module — goes thro
 7. **Eval** — run the LLM-as-judge on the draft. Antti does the taste review on top. Three possible verdicts: **APPROVE**, **APPROVE WITH TODOs** (essentials pass, contributory items deferred — good enough, ship), **REVISE**.
 
 **Act:**
-8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template, simulation protocol, this SKILL.md, `curriculum/CLAUDE.md`, `memory/self-review-protocol.md`, `memory/MEMORY.md`. The system should be smarter at the end of each cycle than at the start.
+8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template, simulation protocol, this SKILL.md, `curriculum/CLAUDE.md`, `memory/self-review-protocol.md`, `memory/MEMORY.md`. **Then invoke `/compound`** for any correction that applies beyond this one cycle — writing-surface leaks (banned words, register), student_facing mood violations, research-claim issues, pedagogy failures. `/compound` writes a schema-validated entry in `memory/compounded/` and (for content/pedagogy/sales surfaces) proposes a one-line amendment to the matching `check_*.md` compendium. Without step 8's `/compound` call, corrections stay trapped in this cycle's artifact and don't propagate to future sessions. The system should be smarter at the end of each cycle than at the start.
 
 **This pattern generalizes beyond curriculum.** Articles, research findings, future trainings all follow the same shape: *input → plan → measure → contract → make → evaluate → improve*.
 

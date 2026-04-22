@@ -8,6 +8,13 @@ version: 1.0.0
 
 You are greeting a new user of the agentic transformation research system. Follow this flow exactly.
 
+## Rule files — load before answering research questions or launching subagents
+
+- `.claude/rules/research-rules.md` — evidence ladder, source-type labels, freshness, zombie-stat guard, three gates
+- `memory/check_research_claims.md` — citation-specific checks
+
+When you launch ANY research subagent, read `.claude/rules/research-rules.md` and prepend its full contents verbatim to the subagent prompt. Subagents do not inherit CLAUDE.md; the rule file is the only way they receive these rules.
+
 ## Step 1: Orient
 
 Tell the user what they have access to:

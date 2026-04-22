@@ -29,7 +29,7 @@ The pipeline has 6 stages. Invoke at any stage — if a draft already exists, sk
 3. When OODA returns, extract: named examples, specific data points, counter-evidence
 4. Decide together: is there enough for an article? What's the thesis?
 
-**Research agents MUST include the injectable rules block from CLAUDE.md.** No exceptions. Every source needs a URL and type label. Evidence ladder applies.
+**Research agents MUST inherit the rules file.** Before launching, read `.claude/rules/research-rules.md` and prepend its full contents to the subagent prompt. Do not paraphrase; do not summarize; paste verbatim. No exceptions. Every source needs a URL and type label. Evidence ladder applies.
 
 ### Stage 3: Rough Cut
 **Trigger:** `/article draft <topic>` or naturally after Stage 2
@@ -78,15 +78,25 @@ target: <linkedin|newsletter|site>
 
 **When positioning elements and you can't see the output:** Ask Antti what's overlapping instead of guessing fixes. Blind pixel-nudging wastes rounds.
 
-### Stage 6: Publish Prep
+### Stage 6: Publish Prep — gated
 **Trigger:** `/article publish <file>` or Antti says it's ready.
-**Action:**
-1. Update frontmatter: `status: draft` → `status: ready`
-2. Run `/goalcheck <file> a` (CTO conversion eval) if the article targets CTOs
-3. Final check: no LLM tell words, no orphaned placeholders, all sources have URLs
-4. Commit with descriptive message
-5. Push to main
-6. Note: another agent handles publishing to Bosser site — just get it to main
+
+**Pre-flight gate (blocks the `status: draft → ready` flip):**
+
+1. **Load rule files.** Read `.claude/rules/content-rules.md` and the relevant compendium (sales_copy for buyer-facing, writing for internal).
+2. **Banned-word scan — blocking.** Grep for `\bhonest`, `\bdelve`, `\blandscape\b.*verb`, `\bimportantly`, `\bcrucial`, `\britual`, `\bceremony`. Any hit blocks the flip. Fix or get explicit Antti override before proceeding.
+3. **Source-URL scan — blocking.** Every factual claim needs a URL. Grep for unsourced statistic patterns (round-number percentages, "studies show", "research finds" without `[`). Any unsourced claim blocks the flip. Mark `[SOURCE NEEDED]` or remove.
+4. **Orphaned-placeholder scan — blocking.** Grep for `[OPENING —`, `[CLOSING —`, `[TODO`, `[SOURCE NEEDED`, `[UNVERIFIED STAT`. Any hit blocks the flip.
+5. **Goalcheck — blocking if article targets CTOs.** Parse frontmatter. If `audience` includes CTO or `target` is newsletter/site/linkedin, run `/goalcheck <file> a` and require a passing signal. A failing goalcheck blocks the flip. "We'll fix it later" is not allowed — later is now.
+
+Only after all five gates pass:
+
+6. Update frontmatter: `status: draft` → `status: ready`
+7. Commit with descriptive message
+8. Push to main
+9. Note: another agent handles publishing to Bosser site — just get it to main
+
+**Override:** Antti can override any gate with an explicit "ship it anyway" instruction. Log the override in the commit message so `/refresh` can audit later whether overrides correlate with post-hoc corrections.
 
 ## What this skill does NOT do
 
@@ -96,9 +106,17 @@ target: <linkedin|newsletter|site>
 - **Polish prose.** Rough is better than smooth. Blunt short lines that Antti can accept/reject individually.
 - **Make the article longer.** Shorter is always better. If a line doesn't earn its place, cut it.
 
+## Rule files to load before writing
+
+Before drafting, editing, or finalizing any article, read:
+- `.claude/rules/research-rules.md` — evidence ladder, source-type labels, freshness, zombie-stat guard
+- `.claude/rules/content-rules.md` — points to the right compendium for this surface (sales_copy for buyer-facing, writing for internal)
+
+Prepend these to any research subagent prompt verbatim.
+
 ## Content standards
 
-- **Sources:** Every factual claim needs a named company + specific practice + URL. Evidence ladder from CLAUDE.md applies.
+- **Sources:** Every factual claim needs a named company + specific practice + URL. Evidence ladder from `.claude/rules/research-rules.md` applies.
 - **Freshness:** Only cite last 6 months. Older = historical context only, explicitly dated.
 - **Tone:** Practitioner, not analyst. "I tried this" beats "research suggests." First person where it's true.
 - **Structure:** Setup → patterns/examples → what's evolving → what to do. Not: introduction → body → conclusion.

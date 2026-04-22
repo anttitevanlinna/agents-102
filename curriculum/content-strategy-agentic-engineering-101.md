@@ -182,6 +182,8 @@ Captured here so the scope is visible while the strategy grows. **No skill file 
 **Per-module logic that will live in the skill (or beside it):**
 Each module ships with a block that the Agentic Nerd reads — the practitioner skills to surface for this module's expected blockers, the push-back moves for this module's likely rubber-stamps, the Debrief prompt template. Structure TBD. Candidates: module-embedded YAML block, a separate `module-N/nerd.md` per module, or a single curated registry the nerd consults by module slug. Pick during Pass 1.
 
+**The Nerd reads the per-cohort pre-engagement contract.** At population time, the sponsor's answers from [`strategy/ae101-sponsor-prework.md`](../strategy/ae101-sponsor-prework.md) are written to `content/pre-engagement-contract.md` in the cohort's content bundle. The Nerd reads this file at the blockers where students would otherwise see `[SPONSOR-STATED HOME — e.g., …]` placeholders (M1 Phase 4, M2 memory setup, M4 team-kit intro), substitutes the actual sponsor answer, and handles overrides — writing *"student X proposed Y instead of the sponsor default Z because W"* to `content/overrides.md` for the trainer's cohort-close memo.
+
 **Content that will feed the skill's skill-surfacing logic:**
 - Klaassen's compound-engineering four-step loop → M1, surfaced at the "I fixed the bug, now what?" blocker
 - Huryn's three blocks → M1 at the "my CLAUDE.md is six lines" blocker
@@ -501,11 +503,12 @@ This is a pre-engagement artifact, not an in-room debate. The trainer does not a
 
 **Where this shows up in content:**
 
-- **Sales/pre-engagement materials** name the contract and include a one-page worksheet the sponsor fills before the cohort starts. (TODO before first cohort — belongs with the buyer sales pack.)
+- **Sponsor-facing worksheet** — [`strategy/ae101-sponsor-prework.md`](../strategy/ae101-sponsor-prework.md). The asset we send to the sponsor weeks before Day 1 (one question, four answers, 15 min). Ops converts the four answers into `content/pre-engagement-contract.md` inside the cohort's content bundle.
 - **Module 1's exercise (`ship-trivial-bug.md`)** references the sponsor-stated ADR home as the default. Override path is explicit.
 - **Module 2's memory exercise** references the sponsor-stated memory home.
 - **Module 4 onward** references the sponsor-stated team-kit substrate.
-- **The Agentic Nerd skill** reads the contract (a simple markdown file in the content folder, populated per cohort) and surfaces the sponsor-stated default at the right blocker in each module.
+- **The Agentic Nerd skill** reads `content/pre-engagement-contract.md` at the blocker in each module and substitutes the sponsor's actual answer into the student's prompt — the student never sees a `[SPONSOR-STATED HOME — e.g., …]` placeholder if the contract file is populated.
+- **Override handling** — when a student proposes a better home with a reason, the Nerd logs the override to `content/overrides.md`. The trainer collects these for the cohort-close memo sent back to the sponsor. *"Your six engineers agreed with the default on decisions, split 3/3 on memory, proposed a team-kit repo structure by 4/6."* That's a Q3 planning artifact, not just training output.
 
 **Rory:** every competitor sells training and assumes the repo conventions will sort themselves out. We sell training and make the buyer answer a question their CTO hasn't wanted to answer — *where does our engineering knowledge live?* Half of them discover they don't have one. That's the most valuable thing the training does all week, and it happens before Day 1.
 

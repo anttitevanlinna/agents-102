@@ -1,7 +1,9 @@
-# Eval instance — AE101 M1 "Ship with agents"
+# Eval instance — AE101 M1 "Getting going + context (+ MCP + first skills)"
 
 **Target artifact:** `curriculum/exercises/ship-trivial-bug.md`
-**Module file:** `curriculum/trainings/agentic-engineering-101/ship-with-agents.md`
+**Module file:** `curriculum/trainings/agentic-engineering-101/getting-going.md`
+
+> **Post-restructure note (2026-04-22):** M1 renamed from "Ship with agents" to "Getting going + context" as part of the 6+2 shape. Eval judges below are pre-restructure; re-audit needed when the MCP/first-skill orientation ramp gets added to the module body (Pass 2 work).
 **Eval template:** `curriculum/evals/exercise.md`
 
 **Eval runs:**

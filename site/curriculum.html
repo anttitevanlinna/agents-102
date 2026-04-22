@@ -54,14 +54,6 @@
                     references: [
                         { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
                     ]
-                },
-                'agentic-engineering-101': {
-                    label: 'Agentic Engineering 101',
-                    lede: 'Six modules for self-taught software engineers using Claude Code. Become the Claude wizard on your own codebase.',
-                    prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
-                    modules: [
-                        { slug: 'ship-with-agents', title: 'Ship with agents' }
-                    ]
                 }
             };
             var DEFAULT_TRAINING = 'bootstrap';
@@ -100,6 +92,9 @@
             }
 
             var mod = training.modules.find(function (m) { return m.slug === moduleSlug; });
+            if (!mod && training.optionalModules) {
+                mod = training.optionalModules.find(function (m) { return m.slug === moduleSlug; });
+            }
             if (!mod) {
                 container.innerHTML = '<h1>Module not found</h1><p>No module <code>' + esc(moduleSlug) + '</code> in <code>' + esc(trainingKey) + '</code>. <a href="curriculum.html?training=' + trainingKey + '">Back</a>.</p>';
                 document.title = 'Module not found — Agents 102';
@@ -166,9 +161,10 @@
             function appendNav() {
                 var nav = '';
                 if (typeof mod !== 'undefined' && mod) {
-                    var i = training.modules.findIndex(function (m) { return m.slug === mod.slug; });
-                    var prev = i > 0 ? training.modules[i - 1] : null;
-                    var next = i >= 0 && i < training.modules.length - 1 ? training.modules[i + 1] : null;
+                    var allModules = training.modules.concat(training.optionalModules || []);
+                    var i = allModules.findIndex(function (m) { return m.slug === mod.slug; });
+                    var prev = i > 0 ? allModules[i - 1] : null;
+                    var next = i >= 0 && i < allModules.length - 1 ? allModules[i + 1] : null;
                     nav += '<nav class="page-nav">';
                     nav += prev
                         ? '<a class="nav-prev" href="curriculum.html?training=' + trainingKey + '&module=' + prev.slug + '">← ' + esc(prev.title) + '</a>'
@@ -263,13 +259,27 @@
                         '</ol>';
                 }
 
-                sectionsHtml += '<h2 class="index-heading">The eight modules</h2>';
+                var moduleCountWord = (function (n) {
+                    var words = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+                    return words[n] || String(n);
+                })(t.modules.length);
+                sectionsHtml += '<h2 class="index-heading">The ' + moduleCountWord + ' modules</h2>';
                 sectionsHtml += '<ol class="module-list index-modules" data-big-ideas>';
                 t.modules.forEach(function (m, i) {
                     var num = String(i + 1).padStart(2, '0');
                     sectionsHtml += cardHtml(num, m.title, m.slug, 'curriculum.html?training=' + trainingKey + '&module=' + m.slug);
                 });
                 sectionsHtml += '</ol>';
+
+                if (t.optionalModules && t.optionalModules.length) {
+                    sectionsHtml += '<h2 class="index-heading">Optional extensions — when the cohort wants more</h2>';
+                    sectionsHtml += '<ol class="module-list index-modules" data-big-ideas>';
+                    t.optionalModules.forEach(function (m, i) {
+                        var num = String(t.modules.length + i + 1).padStart(2, '0');
+                        sectionsHtml += cardHtml(num, m.title, m.slug, 'curriculum.html?training=' + trainingKey + '&module=' + m.slug);
+                    });
+                    sectionsHtml += '</ol>';
+                }
 
                 if (t.supplementaries && t.supplementaries.length) {
                     sectionsHtml += '<h2 class="index-heading">Supplementary — grows across the training</h2>';
@@ -321,6 +331,7 @@
                 var items = [];
                 if (t.prework) items.push({ slug: t.prework.slug });
                 t.modules.forEach(function (m) { items.push({ slug: m.slug }); });
+                if (t.optionalModules) t.optionalModules.forEach(function (m) { items.push({ slug: m.slug }); });
 
                 items.forEach(function (item) {
                     var path = '../curriculum/trainings/' + trainingKey + '/' + item.slug + '.md';

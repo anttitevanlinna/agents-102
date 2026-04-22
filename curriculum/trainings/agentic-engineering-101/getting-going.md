@@ -1,7 +1,9 @@
-# Ship with agents
+# Getting going + context (+ MCP + first skills)
 
 ## Big Idea
-The first compound loop closes on a trivial bug from your own backlog — the substrate every module after this one rides on.
+The first compound loop closes on a trivial bug from your own backlog — while you wire one MCP, invoke your first skill, and seed the substrate every module after this one rides on.
+
+> **Pass 2 TODO (post-restructure 2026-04-22):** grow the front with the MCP + first-skill orientation ramp. Current content ports from the pre-restructure "Ship with agents" spine; MCP/skill beats live in strategy but not yet in the module body.
 
 ## Meta
 - **Primary Bloom's level:** Apply (run the loop end-to-end) + Analyze (recognize the shape after you ran it)

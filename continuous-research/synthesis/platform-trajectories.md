@@ -1,7 +1,7 @@
 ---
 type: synthesis
 domain: platform
-updated: 2026-04-03
+updated: 2026-04-22
 answers: ["platform direction", "who leads", "platform comparison", "horizontal platforms"]
 ---
 
@@ -9,16 +9,16 @@ answers: ["platform direction", "who leads", "platform comparison", "horizontal 
 
 ## Upcoming Events — Critical Watch Window
 - **April 15-16:** Salesforce TDX — COMPLETED. Key reveal: "Headless 360" (60+ MCP tools, Agent Script open-source, Vibes 2.0 with Claude Sonnet 4.5 default, AgentExchange 13K+ listings). Agentforce Grid = Beta prototyping tool (not GA). No new independent Finance/HR/Operations deployments announced. See `vertical-saas/runs/2026-04-16-cycle103.md` for full post-event analysis.
-- **April 22-24:** Google Cloud Next — "The agentic cloud" keynote. Key sessions: "Agentic SOC," "Observability in the Age of Autonomous Agents." Watch for Workspace agent GA updates.
+- **April 22-24:** Google Cloud Next — IN PROGRESS (Day 1 scanned, cycle 107). Key Day 1 findings: Gemini 3.1 Pro NOT GA'd (still preview). A2A Protocol 1.0 confirmed at Linux Foundation (pre-event, TSC includes Microsoft + AWS + Salesforce + SAP). Workspace Studio Day 34 silence, no new customers. Deep Research Max announced April 21 (pre-event). AG-UI/BRK3-024/Mattel PQA sessions pending Day 2-3. **Follow-up cycle April 23-25 mandatory.**
 - **May 1:** Microsoft Agent 365 GA.
 
-**Platform deployment evidence as of April 16:**
+**Platform deployment evidence as of April 22 (cycle 107):**
 - Salesforce: Level 2-3 (Engine, Williams-Sonoma, IRS, UK police Bobby — multiple industries; Grupo Globo/Vibes 2.0 as dev tooling). Beyond-CS frontier still needs independent Finance/HR/Operations evidence.
 - Microsoft: Level 2 — **BREAKING SILENCE:** Capital Group and Coca-Cola Beverages Africa cited as first Cowork deployments (vendor-sourced, unverified)
-- Anthropic Cowork: Level 1-2 (CCO adoption claim; Dispatch 50% success rate on complex tasks)
+- Anthropic Cowork: **UPGRADED Level 2** — Cowork GA April 2026 (RBAC, group spend limits, connectors); Managed Agents first practitioner reports Level 2 (Zalta: positive, unicodeveloper: critical-honest); Shopify Sidekick on Vertex AI (vendor-sourced, Level 1). Promotion path (personal→team→company) **first designed path on any platform**. See `coding-agents/state.md` cycle 101 section.
 - OpenAI Frontier: Level 0 (21st consecutive zero for independent deployment evidence)
 - ServiceNow AW: Level 0 (self-report only; external GA Q2)
-- Google: N/A (Cloud Next April 22-24)
+- Google Workspace/ADK: Day 1 scanned. Studio Day 34 silence confirmed. Gemini 3.1 Pro NOT GA. A2A Protocol 1.0 at Linux Foundation (multi-vendor). Developer layer (ADK/Vertex) advancing; business-user layer (Studio) structurally limited. Full verdict after April 23-25.
 
 **Nobody leads.** OpenAI's own COO confirmed (Feb 2026): "We have not yet really seen enterprise AI penetrate enterprise business process." MIT NANDA: 95% of custom/task-specific GenAI tools report no measurable P&L impact (July 2025, N=52 interviews — directional, not precise. See cycle 80 audit).
 

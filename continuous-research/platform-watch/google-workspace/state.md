@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder]
 nordic: true
-updated: 2026-04-11
-cycle: 96
+updated: 2026-04-22
+cycle: 107
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -14,8 +14,8 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-04-20 (cycle 106)
-OODA cycles: 16
+Last updated: 2026-04-22 (cycle 107)
+OODA cycles: 17
 
 ## Focus
 
@@ -225,21 +225,54 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
 - [~] Google Chat as agent delivery surface — any evidence?
   → *Partially answered (cycle 34): Four official quickstart paths documented (ADK, A2A, A2UI, Gemini Enterprise Chat apps). One practitioner post (Kanshi Tanaike, A2UI, Feb 2026). Developer-facing only. Zero independent deployment reports.*
 
+- **Cycle 107 update (April 22, 2026) — Cloud Next Day 1 research cycle: LIVE EVENT — partial picture, Day 2-3 needed for full read:**
+
+  **CONFIRMED ANNOUNCEMENTS (vendor-sourced, Level 0 — "announced" not "deployed"):**
+
+  1. **Gemini 3.1 Pro GA: NOT YET.** Still in preview as of Day 1. Google's own documentation and blog confirm preview-only status. The Feb 27 launch blog explicitly stated "soon" for GA. Cloud Next sessions are demonstrating capabilities, not announcing GA. Pre-event analysis from IT Pro correctly predicted Google would not use this event for a new model launch. [Source: docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-1-pro — vendor; blog.google/gemini-models/gemini-3-1-pro/ — vendor, Feb 19, 2026] **Evidence level: Level 0 (vendor). Expectation NOT met.**
+
+  2. **Ironwood TPU: GA confirmed pre-event (November 2025), not a Cloud Next 2026 announcement.** Ironwood was announced at Cloud Next '25 (April 2025). GA announcement came November 6, 2025. The "coming weeks" GA language from Nov 2025 has passed. At Cloud Next 2026, Ironwood is *being used and demonstrated* — it is not a new announcement. Named customers from November 2025: Anthropic (up to 1M TPUs), Lightricks, Essential AI. [Source: cloud.google.com/blog/products/compute/ironwood-tpus-and-new-axion-based-vms — vendor, Nov 6, 2025] **Evidence level: Level 0 (vendor). This is infrastructure background, not a Day 1 announcement.**
+
+  3. **A2A Protocol 1.0 + Linux Foundation governance: pre-event, not a Cloud Next 2026 announcement.** A2A 1.0 was announced pre-event (exact date unclear but flagged in earlier cycles). Linux Foundation launched the A2A Protocol Project at Open Source Summit North America, June 23, 2025. Technical Steering Committee: AWS, Cisco, Google, IBM Research, Microsoft, Salesforce, SAP, ServiceNow. 150+ participating organizations. Production deployments confirmed inside Azure AI Foundry and Amazon Bedrock AgentCore. This is the context for Cloud Next sessions, not new at the event. [Source: linuxfoundation.org/press/linux-foundation-launches-agent2agent-protocol — independent, Jun 23, 2025; a2a-protocol.org/latest/announcing-1.0/ — independent] **Evidence level: Level 2 (multiple independent confirmations). Ratification happened before April 22.**
+
+  4. **A2UI v0.9: published April 17, 2026 (pre-event).** Framework-agnostic standard for declaring UI intent. A2A 1.0 confirmed as "officially launched" in this post. Ecosystem implementations: AG2, Vercel, Oracle, Rebel App Studio, Very Good Ventures. [Source: developers.googleblog.com/a2ui-v0-9-generative-ui/ — vendor, Apr 17, 2026] **Evidence level: Level 0 (vendor, 5 days pre-event).**
+
+  5. **Google Agentspace → Gemini Enterprise: Deep Research and Idea Generation agents announced at Cloud Next '25 (2025), not 2026.** The Agentspace announcement with Deep Research, Idea Generation, and NotebookLM for Enterprise was at Cloud Next 2025 (October 2025 merger into Gemini Enterprise). Named customer interest at that time: Banco BV, Cohesity, Gordon Food Services, KPMG, Rubrik, Wells Fargo. These are customer interest signals, not deployments. [Source: blog.google/feed/cloud-next-latest-features-google-agentspace/ — vendor, Cloud Next '25] **Evidence level: Level 0 (vendor, prior event).**
+
+  6. **Deep Research Max: announced April 21, 2026 (day before Cloud Next, not at the keynote).** Built on Gemini 3.1 Pro. Public preview via paid Gemini API tiers. MCP integration for enterprise data sources. Collaborating with FactSet, S&P Global, PitchBook on MCP. Enterprise Google Cloud availability listed as "soon." [Source: blog.google/innovation-and-ai/models-and-research/gemini-models/next-generation-gemini-deep-research/ — vendor, Apr 21, 2026] **Evidence level: Level 0 (vendor).**
+
+  7. **Gemini Enterprise release notes (April 2026 pre-event GAs):** ADK Agents on Vertex AI Agent Engine now GA (cross-project). Dropbox federated data store GA (April 7). Jira + Confluence Cloud connectors GA (April 3). A2UI + A2A agent registration in public preview. Agent Gallery marketplace access for end users in preview. [Source: docs.cloud.google.com/gemini/enterprise/docs/release-notes — vendor] **Evidence level: Level 0 (vendor).**
+
+  8. **Apigee MCP now GA (April 10, 2026 pre-event).** Enterprises can expose APIs as MCP tools for agentic AI. Transform APIs via OpenAPI Specifications, managed endpoints, semantic search in API hub. [Source: cloud.google.com/blog — vendor, Apr 10, 2026] **Evidence level: Level 0 (vendor).**
+
+  9. **Workspace Studio: no new customers confirmed.** Kärcher remains the only named Studio deployment across all coverage at Day 1. Sessions at Cloud Next reference enterprise collaboration transformation (Nvidia, Capital One, Compass, Avery Dennison, Intuit) but none specifically tied to Workspace Studio deployments. Structural limitation analysis (Zenphi, April 2026) confirmed: no external triggers, no loops, cannot send emails, no Calendar/Meet integration. This context makes absence of new named customers unsurprising. Practitioner silence now Day 34. **Expectation NOT met: no second named customer found at Day 1.**
+
+  10. **BRK3-024 session (April 22 5:15PM): content pre-described, not yet delivered.** Session covers defense-in-depth strategy, three AI security layers (content/network/identity), centralized governance blueprint, enterprise-readiness checklist. No new product announcements in session abstract — this is a practitioner guidance session, not a product launch. Full session content not yet independently reported. **Watch for: post-session coverage April 23-24.**
+
+  **AGENT INTEROPERABILITY STANDARDS STATUS (April 22, 2026):**
+  - A2A Protocol 1.0: launched (pre-event, Linux Foundation hosted). TSC includes AWS, Cisco, Google, IBM, Microsoft, Salesforce, SAP, ServiceNow. 150+ organizations. Production in Azure AI Foundry and AWS Bedrock AgentCore.
+  - A2UI v0.9: released April 17 (pre-event). Framework-agnostic generative UI standard.
+  - AG-UI protocol: referenced in Cloud Next session BRK2-094 ("Generative UI for any agent, anywhere: A2UI, AG-UI, MCP Apps") scheduled April 23. Content not yet reported.
+  - MCP: already widely adopted. Apigee MCP GA is Google's enterprise entry point. Deep Research Max adds MCP for private data access.
+  - **Key finding:** All three protocols (A2A, A2UI/AG-UI, MCP) are being positioned as complementary, not competing. A2A = agent-to-agent transport. MCP = tool/data context. A2UI/AG-UI = UI rendering. Google is building the full stack. If this holds at L3 evidence, it changes the platform lock-in calculus.
+
+  **WHAT WAS EXPECTED BUT NOT CONFIRMED AT DAY 1:**
+  - Gemini 3.1 Pro GA: still in preview. No GA announcement at keynote.
+  - Workspace Studio second named customer: not found. Kärcher remains sole case.
+  - New model announcement: confirmed absent (consistent with Google's pattern of separate model launches from Cloud Next).
+  - BRK3-024 content: session scheduled for 5:15PM — results not indexed by Day 1 close.
+
+  **STATUS: Day 1 partial picture. Key sessions in BRK2-084 (What's new with Gemini, 11AM), BRK2-091 (Build production-ready agents, 12:30PM), BRK3-024 (Governance/security, 5:15PM) scheduled today. Independent post-session coverage not yet indexed. Run follow-up cycle April 23-25 for: (1) session recap coverage, (2) practitioner reactions on X.com/LinkedIn/blogs, (3) Gemini 3.1 Pro GA date if announced in sessions, (4) Mattel PQA architecture disclosure, (5) AG-UI session content from April 23.**
+
 ## Next Cycle Priorities
 
-1. **Post-credit-cliff reality (April 1+).** Credit enforcement begins March 31. Are agents throttled? Are orgs purchasing add-ons or abandoning automations? This is the #1 question for next cycle.
-2. **Cloud Next '26 (April 22-24).** Agent-focused event. Watch for: Mattel PQA agent architecture disclosure, Studio improvements/governance, new customer wins with metrics, capacity fix timeline, Nordic-specific announcements.
-3. **Mattel PQA session (April 22, 11am).** Is it genuinely agentic (multi-step, autonomous, cross-system) or analytics with a chat interface? First named multi-system business agent on Google Cloud.
-4. **Workspace Studio practitioner reports (late April).** 4+ months post-availability. Practitioner silence continues — track whether Cloud Next breaks it.
-5. **Gemini 3.1 Pro real-world agent deployment evidence.** Benchmarks are strong. Is anyone deploying production agents with 3.1 Pro? Agno stress test shows promise but high latency.
-6. **Papa Johns deployment results.** Systemwide rollout planned end 2026. Any early results or pilot metrics?
-7. **Gemini Enterprise Cloud deployments.** Zero independent evidence after 8 cycles. Systematic counter-evidence search confirms absence is real, not a research gap.
-8. **Governance gap vs. shadow agent risk.** Google's CISO warns about shadow agents while Studio is ON by default. Watch for governance tools at Cloud Next.
-9. **Nordic:** Zero enterprise agent deployments — eighth consecutive cycle. Devoteam hackathons completed without published results. Codento Apr 29 debrief may surface signals. Pattern deeply established: Microsoft/sovereign > Google for Nordic agent deployments.
-10. **ADK 2.0 Alpha practitioner reports.** Still zero after initial release. Watch for battle reports.
-11. **Devoteam hackathon results.** Oslo/Helsinki/Stockholm completed. Will they publish outcomes? Silence so far.
-12. **GEAR program adoption.** Any graduates? Any deployments?
-13. **Google Chat as agent delivery surface.** Still zero findings.
+1. **Cloud Next Day 2-3 session content (April 23-25).** BRK3-024 governance content (5:15PM April 22), BRK2-094 AG-UI session (April 23), Mattel PQA architecture disclosure. Independent post-session coverage should index by April 24.
+2. **Gemini 3.1 Pro GA date.** Sessions may announce a specific GA date even without GA today. Watch for session Q&A coverage.
+3. **Workspace Studio second named customer.** Still watching. If no new customer by April 25 close, this becomes a definitive pattern: 5+ months, one customer.
+4. **Practitioner reactions.** X.com, LinkedIn, dev.to in the 48-72 hours after keynote. Do practitioners engage with what was shown? This is the leading indicator for whether Cloud Next breaks the 34-day silence.
+5. **AG-UI/A2A cross-vendor standards adoption.** What exactly did the cross-vendor interoperability session (Atlassian, Datadog, Harness, LangChain) announce? If A2A becomes the MCP-equivalent for agent-to-agent, platform switching cost drops.
+6. **Nordic:** Codento debrief April 29. Watch for any Nordic-specific Cloud Next coverage.
+7. **Mattel PQA architecture.** First named multi-system business agent on Google Cloud. Is it genuinely agentic?
 
 ## Sources
 

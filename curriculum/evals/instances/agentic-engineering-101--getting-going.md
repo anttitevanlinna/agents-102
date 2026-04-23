@@ -1,6 +1,6 @@
 # Eval instance — AE101 M1 "Getting going + context (+ MCP + first skills)"
 
-**Target artifact:** `curriculum/exercises/ship-trivial-bug.md`
+**Target artifact:** SUPERSEDED 2026-04-23 late. Original target was `curriculum/exercises/ship-trivial-bug.md` (one mega-exercise with three phases). Split into three shared-library exercises: `curriculum/exercises/orient-and-introspect.md`, `curriculum/exercises/fix-tests-first.md`, `curriculum/exercises/compound-and-close.md`. This instance is retained for history; refactor into three per-exercise instances at next eval pass.
 **Module file:** `curriculum/trainings/agentic-engineering-101/getting-going.md`
 
 > **Post-restructure note (2026-04-22):** M1 renamed from "Ship with agents" to "Getting going + context" as part of the 6+2 shape. Eval judges below are pre-restructure; re-audit needed when the MCP/first-skill orientation ramp gets added to the module body (Pass 2 work).

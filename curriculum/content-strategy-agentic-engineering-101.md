@@ -207,26 +207,29 @@ Leadership drama is absent; drama is in the engineer's interior (*am I still kee
 
 ## M1 in detail — getting going + context
 
-**Three phases, one loop** (reshape 2026-04-23 per Antti):
-1. **Orient + introspect (~15–20 min).** Claude reads the repo; the student interrogates Claude's own read via an introspection prompt + `/context`. The bounded window and the unread slice become visible.
-2. **Fix it right (~40–45 min).** No plan mode. Tests-first, root-cause-driven. Ship the PR. Seed a short rule into `CLAUDE.md` mid-exercise — while the move is warm, before the retro.
-3. **Retro + MCP + close the ticket (~30 min).** Claude extends `CLAUDE.md` in place from session evidence (no Q1/Q2/Q3 interview); short MCP framing (connector / action / tool); wire one connector and close the bug's ticket outside the repo. MCP install specifics live in `curriculum/reference/mcp-and-connectors.md`, not in the exercise body.
+**Three exercises, one loop** (reshape 2026-04-23 late: split from one mega-exercise to three shared-library exercises; connective tissue is the same repo + same bug carried across):
 
-**Orientation is short, not a setup ramp.** Prework has done Claude Code install + repo-choice + bug-surfacing. M1 starts in the chat with the repo open; Phase 1 is a read-and-introspect move, not a connector-wiring step. MCP lands at P3 against a real job (ticket close-out) the student just earned.
+1. **`orient-and-introspect` (~15–20 min).** Claude reads the repo; the student interrogates Claude's own read via an introspection prompt + `/context`. The bounded window and the unread slice become visible.
+2. **`fix-tests-first` (~35–40 min).** No plan mode. Tests-first, root-cause-driven. Ship the PR. Stop there; the compound step lives in Ex3.
+3. **`compound-and-close` (~30 min).** Claude reviews the full session (Ex1 + Ex2) and writes `./CLAUDE.local.md` from evidence — no Q1/Q2/Q3 interview, no pre-existing rule being extended; the rule is born here. Short MCP framing (connector / action / tool); wire one connector and close the bug's ticket outside the repo. MCP install specifics live in `curriculum/reference/mcp-and-connectors.md`, not in the exercise body.
 
-**Themes plant experientially** (§ "Recurring themes"): mirror (P1's repo read reflects the student's prompt); self-aware + grain of salt (P1's introspection prompt; P3's retro summary; verify-against-artifact in both); 90% correct (`/context` makes the unread slice visible); compounding (P2's rule-write IS the first compound step; P3 extends it).
+**Why three exercises, not three phases.** Each move is a distinct skill with its own artifact: Ex1 produces the delta between Claude's self-report and `/context`; Ex2 produces a shipped PR; Ex3 produces `./CLAUDE.local.md` (born from session evidence) + the closed ticket. Three natural pause points where the Nerd can catch rubber-stamping. Matches M3's three-exercises-on-one-feature shape. The compound loop end-to-end survives because artifacts chain: Ex1's read scopes Ex2's fix; Ex2's session is what Ex3 compounds.
+
+**Orientation is short, not a setup ramp.** Prework has done Claude Code install + repo-choice + bug-surfacing. M1 starts in the chat with the repo open; Ex1 is a read-and-introspect move, not a connector-wiring step. MCP lands at Ex3 against a real job (ticket close-out) the student just earned.
+
+**Themes plant experientially** (§ "Recurring themes"): mirror (Ex1's repo read reflects the student's prompt); self-aware + grain of salt (Ex1's introspection prompt; Ex3's compound summary; verify-against-artifact in both); 90% correct (`/context` makes the unread slice visible); compounding (Ex3's rule-write is the first compound step; every module after M1 extends it).
 
 **No plan mode in M1.** Restraint is deliberate — M2 owns plan-mode-at-depth on multi-file work. Running plan mode on a trivial bug is overhead. M1 teaches where plan mode *doesn't* earn its keep, by contrast.
 
 **Huryn's three-block memory is seeded, not named.** Materials land through the phases (observation at P1 → Block 1 candidate; TDD rule + diff push-back → Block 2 candidate; the failing test → Block 3 candidate). The three-block *frame* earns its name at M4 when materials get rearranged. Don't teach three-block at M1 — that's pre-explanation.
 
-**Klaassen attribution** happens inside Claude's P3 retro summary — the retro prompt asks Claude to name the shape and cite the practitioner if one fits. Peer recognition, not a lecture.
+**Klaassen attribution** happens inside Claude's Ex3 retro summary — the retro prompt asks Claude to name the shape and cite the practitioner if one fits. Peer recognition, not a lecture.
 
-If the student leaves with only a bug fix, M1 failed. If they leave with a `CLAUDE.md` written from session evidence, a PR shipped, a ticket closed via a connector, and mirror / grain-of-salt / 90% experienced (not lectured), M1 worked.
+If the student leaves with only a bug fix, M1 failed. If they leave with a `./CLAUDE.local.md` written from session evidence, a PR shipped, a ticket closed via a connector, and mirror / grain-of-salt / 90% experienced (not lectured), M1 worked.
 
 *Naming: canonical "compound engineering" per Klaassen; our learning-area name "compounding engineering" is our framing; "compound" reserved for the Klaassen loop step.*
 
-**No Skill use at M1 — resolved 2026-04-23.** Prior strategy had *"1–2 pre-installed skills invoked during the bug fix."* Dropped: P1 uses `/context` (slash command, not a Skill), P3 uses MCP (connector, not a Skill), and M3 now carries the first Skill use + first subagent + first authoring together — which is the right concentration. One primitive introduced per module, earned at the moment the student needs it.
+**No Skill use at M1 — resolved 2026-04-23.** Prior strategy had *"1–2 pre-installed skills invoked during the bug fix."* Dropped: Ex1 uses `/context` (slash command, not a Skill), Ex3 uses MCP (connector, not a Skill), and M3 now carries the first Skill use + first subagent + first authoring together — which is the right concentration. One primitive introduced per module, earned at the moment the student needs it.
 
 ## M2 in detail — plan mode, done right
 
@@ -517,7 +520,7 @@ This is a pre-engagement artifact, not an in-room debate. The trainer does not a
 
 **Where it shows up:**
 - **Sponsor-facing worksheet** — [`strategy/ae101-sponsor-prework.md`](../strategy/ae101-sponsor-prework.md). Sent to sponsor weeks before Day 1 (one question, four answers, 15 min). Ops converts answers into `content/pre-engagement-contract.md` in the cohort's content bundle.
-- **M1 exercise** (`ship-trivial-bug.md`) references sponsor-stated ADR + rules-file + ticket-tracker homes as defaults; override path explicit.
+- **M1 exercises** (`orient-and-introspect.md` / `fix-tests-first.md` / `compound-and-close.md`) reference sponsor-stated ADR + rules-file + ticket-tracker homes as defaults; override path explicit.
 - **M3 Q+S exercise** references sponsor-stated team-kit home; first skill-shaped contributions land there.
 - **M4 memory exercise** references sponsor-stated memory home.
 - **The Agentic Nerd** reads `content/pre-engagement-contract.md` at module blockers and substitutes the sponsor's actual answer. When a student overrides, the Nerd logs it to `content/overrides.md` for the trainer's cohort-close memo: *"Your six engineers agreed on decisions, split 3/3 on memory, proposed a team-kit repo by 4/6."* That's a Q3 planning artifact.
@@ -538,7 +541,7 @@ Two artifacts per student:
 
 **Prework is agentic end-to-end.** No "create this file, paste this content, commit these lines." The student unzips the content folder, points Claude at it, asks Claude to walk them through prework. Claude runs the repo-choice conversation, the bug-finding conversation, the install check. Pre-fabricating state the student could generate in conversation violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy.
 
-**The Nerd reads the content folder.** It doesn't carry Klaassen / Huryn / Ronacher in its head — it reads `lectures/the-wizard-move.md` and `exercises/ship-trivial-bug.md` and surfaces what's there at blockers. Curriculum becomes Claude-readable reference, not human-only reading material.
+**The Nerd reads the content folder.** It doesn't carry Klaassen / Huryn / Ronacher in its head — it reads `lectures/the-wizard-move.md` and the three M1 exercise files (`orient-and-introspect.md` / `fix-tests-first.md` / `compound-and-close.md`) and surfaces what's there at blockers. Curriculum becomes Claude-readable reference, not human-only reading material.
 
 **No persistent training-dir state.** Everything the student needs after M1 lives in either their repo (compounding artifacts) or their head (the pedagogy). If the student can't reconstruct the prior module from `git log` + the repo's current `CLAUDE.md`, the module didn't land.
 
@@ -582,7 +585,7 @@ Two artifacts per student:
 - `curriculum/trainings/agentic-engineering-101/getting-going.md` (Pass 1 spine; needs MCP/first-skill ramp grown at front)
 - `curriculum/trainings/agentic-engineering-101/prework.md`
 - `curriculum/lectures/the-wizard-move.md` (Pass 2 skeleton)
-- `curriculum/exercises/ship-trivial-bug.md` (Pass 3)
+- `curriculum/exercises/orient-and-introspect.md` / `fix-tests-first.md` / `compound-and-close.md` (Pass 3; split 2026-04-23 late from original `ship-trivial-bug.md` mega-exercise)
 - `curriculum/evals/instances/agentic-engineering-101--getting-going.md`
 - Klaassen + Huryn practitioner sources verified — `[practitioner direct]`, within 6 months
 - Pedagogy: **exercise-first head-on; "why it worked" names the shape retrospectively.** Practitioners attributed as peer recognition, not curriculum authority.
@@ -597,8 +600,10 @@ Two artifacts per student:
 - v3 shape emerged from Antti-driven reshape: *"the exercise is about reading a plan well; execution is M3's concern"* — stopping at approval and naming the design pattern (human read → push-back → agent read → grill → approve) replaces the original execute-and-retro shape
 - Three-persona sims (Maija mid-competent / Greg opinionated senior / Jin fast operator) + LLM-as-judge all APPROVE WITH TODOs on v3; polish layer applied 2026-04-23
 
-**M1 reconstruction (2026-04-23, Antti-driven):**
-- `curriculum/exercises/ship-trivial-bug.md` — reshaped to three phases: P1 orient + introspect (`/context`); P2 fix tests-first, no plan mode, seed `CLAUDE.md` mid-exercise; P3 retro extends `CLAUDE.md` + short MCP framing + close the ticket via connector. Themes (mirror / grain-of-salt / 90% / compounding) plant experientially in P1–P2, no lecture.
+**M1 compounding-story lecture added (2026-04-23 late):** `curriculum/lectures/how-this-training-was-built.md` — 5–7 min **closer** (not opener) that tells the story of how this training was compounded (bulletpoints → wrong prototypes → human steering → codified rules → longer sessions → agents checking agents → sweeping changes). The meta-frame only lands once the student has lived through the loop on their own repo. Sits after `compound-and-close` (Ex3) and before the Bridge to M2. Opener slot stays with `the-wizard-move.md`: demo the ceiling before the exercises, name the pattern after.
+
+**M1 reconstruction (2026-04-23, Antti-driven; split into three exercises 2026-04-23 late):**
+- **Three shared-library exercises** (split from `ship-trivial-bug.md` mega-exercise): `curriculum/exercises/orient-and-introspect.md` (Ex1); `curriculum/exercises/fix-tests-first.md` (Ex2); `curriculum/exercises/compound-and-close.md` (Ex3). Same repo + same bug carried across all three. Ex1: orient + introspect (`/context`); Ex2: fix tests-first, no plan mode, seed `./CLAUDE.local.md` mid-exercise; Ex3: retro extends `./CLAUDE.local.md` + short MCP framing + close the ticket via connector. Themes (mirror / grain-of-salt / 90% / compounding) plant experientially across Ex1–Ex2, no lecture. `ship-trivial-bug.md` deleted as superseded.
 - **NEW file** `curriculum/reference/mcp-and-connectors.md` — first entry in `curriculum/reference/`. Per-tracker install (`gh` CLI for GitHub Issues / Atlassian Rovo MCP for Jira / Composio or Merge for Linear), tenant-admin fallbacks, "Last verified" date to track freshness. Exercise points at it; specifics stay out of the exercise body so they don't drift when Claude Code's install surface changes.
 - Capability check via `claude-code-guide` confirmed MCP is CLI-first in Claude Code today (2026-Q2). No GUI marketplace. Informed P3 design + the reference file.
 - Strategy-doc § "M1 in detail" rewritten to the three-phase shape; module-table artifact column updated.
@@ -629,9 +634,12 @@ Two artifacts per student:
 - M5: canonical multi-hour task that requires agentic persistence but finishes in-session; monitoring + recovery patterns.
 - M7: problem-selection protocol (how the CTO picks the right engineering problem); self-study variant with persona-stand-ins.
 - Frontier reading list — named practitioners (Karpathy, Willison, Huryn, Cherny, Sottiaux et al.); refreshed per cohort.
+- **Git + `gh` CLI through Claude Code — likely optional lecture or supplementary.** Most engineers have the CLI muscles; some do not, and a non-trivial fraction run Git only through the IDE. Short module showing how Claude Code drives Git (commit, branch, PR-open via `gh`) closes the gap without burning a core slot. Candidate homes: optional supplementary in `curriculum/supplementary/`, or a 5-min callout inside M2's plan-mode module (where multi-file branches earn their keep). Ties to existing `reference/mcp-and-connectors.md` (`gh` is already the cleanest GitHub Issues path). Confirm audience need before placing — survey during pre-engagement.
 
 **Parking lot — lecture ideas (captured, not yet placed):**
 - **"AI-native vs. AI-first vs. AI-driven: who cares?"** — short lecture, reframe move. Key idea: nobody should care about the label; it's all about the learning rate. Candidate slot: M4 or M8. Rory-flavour; dismisses the category-war with one line and redirects to the real axis (organisational learning). Keep short.
+
+*(Placed 2026-04-23 late: "How this training was built" — originally parked for M8 as a closer; Antti redirected to M1 as the **closer** (not opener). Meta-frame lands after the student has run the compound loop on their own repo. File: `curriculum/lectures/how-this-training-was-built.md`. Opener stays with `the-wizard-move.md` (demo the ceiling before; name the pattern after).)*
 
 **Bootstrap reuse candidates:** Plan mode primer → M2 **NOT PORTED** (v3 authored fresh; Bootstrap's primer is builder-leader voiced and has no forced-push-back mechanic) · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination bake-off → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem focus). `crux` / `assumption-test` / `pre-mortem` NOT ported.
 

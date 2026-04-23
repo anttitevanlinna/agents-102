@@ -33,7 +33,7 @@ For each candidate, give me your read (fit / marginal / wrong shape) and why. If
 
 Claude will ask, you'll describe, it'll screen. Push back on the read if it misses something about the codebase. You know what's really there; Claude's reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
 
-**The point:** pick once, pick well. M5 inherits the same task — we re-run it packaged, so the contrast is the pedagogy.
+**The point:** pick once, pick well. M5 inherits the same task; we re-run it packaged, so the contrast is the pedagogy.
 
 ---
 
@@ -48,33 +48,33 @@ Claude audits your system as a subagent: fresh context, ranked report back.
 ```
 Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything in `.claude/memory/` (or wherever my memory lives), the ADRs in this repo, the skills in `.claude/skills/`, and the connectors I've wired.
 
-Run this in a fresh context — spawn a sub-task via the Task tool, or `/clear` if you prefer. The goal: Claude reads your setup without the current conversation colouring it. Return a structured report.
+Run this in a fresh context. Spawn a sub-task via the Task tool, or `/clear` if you prefer. The goal: Claude reads your setup without the current conversation colouring it. Return a structured report.
 
 Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do to a multi-hour run.
 
-For each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today — add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.
+For each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.
 ```
 
 *(end of prompt)*
 
-Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis* — walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
+Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
 
 ### The fill (~25 min)
 
-Pick the ones that will hurt the agent most — probably two or three, not all five. Close each in conversation. M5 teaches you what the others were for.
+Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. M5 teaches you what the others were for.
 
 For each of the three, keep it conversational:
 
-- **Observation or rule:** *"Add this to memory — the payments service treats idempotency keys case-sensitively even though the docs don't say so."*
+- **Observation or rule:** *"Add this to memory: the payments service treats idempotency keys case-sensitively even though the docs don't say so."*
 - **Sharpen an existing rule:** *"In my `CLAUDE.local.md`, under 'testing', replace the current mocking rule with one that says: integration tests hit a real Postgres in Docker; unit tests mock at the service boundary, never at the repository."* (Team-worthy version would go in a PR against `CLAUDE.md` separately.)
-- **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind — not mid-run.
-- **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read — *the gap IS the finding*. Write one line in memory naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context.
+- **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-run.
+- **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in memory naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context.
 
-Push back when Claude writes something that doesn't match the codebase. You know what's actually there — Claude's drafting off your memory, and the memory is exactly what we just admitted is thin in spots.
+Push back when Claude writes something that doesn't match the codebase. You know what's actually there; Claude's drafting off your memory, and the memory is exactly what we just admitted is thin in spots.
 
 ---
 
-## Phase 3 — See the frame (~15 min)
+## Phase 3: See the frame (~15 min)
 
 **Prompt** *(copy → Claude Code)*
 
@@ -82,21 +82,21 @@ Push back when Claude writes something that doesn't match the codebase. You know
 Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange what's there into Paweł Huryn's three-block memory frame:
 
 - Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)
-- Block 2: decisions with alternatives (architectural or design choices + what else was considered — the ADRs live here)
-- Block 3: quality criteria (what I expect to be true of shipped code in this codebase — the test-strategy skill contributes)
+- Block 2: decisions with alternatives (architectural or design choices + what else was considered; the ADRs live here)
+- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; the test-strategy skill contributes)
 
 Don't invent new material. Rearrange what's there.
 
-Before you name the frame or propose a new structure, show me one concrete example from each block — quote a specific observation from my memory (Block 1), a specific ADR I've already written (Block 2), a specific check from my test-strategy skill (Block 3).
+Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR I've already written (Block 2), a specific check from my test-strategy skill (Block 3).
 ```
 
 *(end of prompt)*
 
-Read the examples first. This is the moment where you should recognise your own work — *"oh, that ADR I wrote in M3 — that's a Block 2 entry. I've been doing this for four modules."* If you don't feel the recognition, the rearrangement isn't landing; ask Claude to quote different examples until one lands.
+Read the examples first. This is the moment where you should recognise your own work: *"oh, that ADR I wrote in M3, that's a Block 2 entry. I've been doing this for four modules."* If you don't feel the recognition, the rearrangement isn't landing; ask Claude to quote different examples until one lands.
 
 Once the frame is named through your own material, let Claude propose the actual rearrangement. File moves, renames, new index page, whatever fits. Approve, push back, or redirect.
 
-**Framework**: Huryn's three-block memory. Not a template you fill — a frame that names what you've been building.
+**Framework**: Huryn's three-block memory. Not a template you fill; a frame that names what you've been building.
 
 ---
 
@@ -104,9 +104,9 @@ Once the frame is named through your own material, let Claude propose the actual
 
 Phase 3 is where the exercise ends. The module's Debrief takes over:
 
-1. Claude self-compounds your personal `CLAUDE.local.md` from session evidence — integrates, sharpens, removes. Team-worthy rules get flagged in the summary, not auto-PRed.
+1. Claude self-compounds your personal `CLAUDE.local.md` from session evidence: integrates, sharpens, removes. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
-3. You paste the send-off prompt to the same session and close the laptop (or stop the run when you've seen enough — traces are data).
+3. You paste the send-off prompt to the same session and close the laptop (or stop the run when you've seen enough; traces are data).
 
 See the module file for the two Debrief prompts.
 

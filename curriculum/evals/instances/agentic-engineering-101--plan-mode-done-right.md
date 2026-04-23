@@ -52,7 +52,7 @@ All five LOs map directly to exercise phases (P2/P3 Run+Push back, P3 Read, P5 R
 ## Module-to-module arc *(universal)*
 
 Picks up from **M1's Plan → Work → Review → Compound loop on a 60-min trivial bug** — same loop, Plan step at deeper scope.
-Subtly hands off to **M3's first authored judge + gate spec** — the push-back moves at P3 are the raw material for M3's judge ("did the fix really land?"). Discipline becomes infrastructure.
+Subtly hands off to **M3's first authored judge + gate spec** — the push-back moves at P3 are the raw material for M3's judge ("did the fix really land?"). Discipline becomes infrastructure. Module-to-module on the second-read move itself: **M2 teaches the walk-down-branches move inline as a prompt; M3 reveals the same move as a shipped skill (Pocock's grill-me) and has the student author one of their own.** The skill reveal lands with M3's first-Skill-use / first-subagent / first-authoring trio, where it belongs.
 
 ## Mood lands *(universal — essential)*
 

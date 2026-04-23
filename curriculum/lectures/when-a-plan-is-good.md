@@ -6,15 +6,31 @@ Three things a good plan has. Three pressures that quietly make bad plans look g
 
 ## What plan mode actually is
 
-Plan mode in Claude Code is a permission state, not a feature. You press Shift+Tab until the status bar reads **plan** — the agent is now read-only. It reads files, runs shell commands to explore, writes a plan file, but it can't edit or execute until you approve. The plan file has a descriptive name now — `migrate-auth-hash-calm-otter.md`, not random words — which is a small quality-of-life thing that matters more than it sounds: the plan has an identity you can come back to.
+Plan mode in Claude Code is a permission state, not a feature. You press Shift+Tab until the status bar reads **plan**. The agent is now read-only. It reads files, runs shell commands to explore, writes a plan file, but it can't edit or execute until you approve. The plan file has a descriptive name now (`migrate-auth-hash-calm-otter.md`, not random words). That's a small quality-of-life thing that matters more than it sounds: the plan has an identity you can come back to.
 
 The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes."
 
+### Optional: ask plan mode directly
+
+A 30-second move before we name the three things. Enter plan mode in your own session right now and ask Claude what shifted from its side.
+
+Ask Claude to describe what changed in its behaviour when plan mode turned on.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?
+```
+
+*(end of prompt)*
+
+Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.
+
 ## Three things a good plan has
 
-- **A specific file list.** Not "update the config" — *which* config, *which* keys. A plan that names three files has made three decisions. A plan that says "the relevant files" has made zero.
+- **A specific file list.** Not "update the config." *Which* config, *which* keys. A plan that names three files has made three decisions. A plan that says "the relevant files" has made zero.
 - **A verification step that could actually fail.** *"Run the tests"* is cosmetic; *"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing"* is a gate. The test is whether, reading the step alone, you could tell Claude it failed and Claude would know what to fix.
-- **Named assumptions.** Good plans flag what they're assuming — library versions, schema shapes, whether a teammate's migration ran last week. A plan without assumptions isn't assumption-free; it's just assumption-silent.
+- **Named assumptions.** Good plans flag what they're assuming (library versions, schema shapes, whether a teammate's migration ran last week). A plan without assumptions isn't assumption-free; it's just assumption-silent.
 
 Three things. That's the read.
 
@@ -22,17 +38,17 @@ Three things. That's the read.
 
 - **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It often isn't. It's a draft formatted like a decision. The formatting is the trap.
 - **Reasonableness passes for rightness.** Each step sounds reasonable, so the plan sounds right. But three reasonable steps in the wrong order still ship a bug. Read the sequence, not the steps.
-- **You already agree with it.** The plan matches what you'd have written, which feels like alignment — but Claude wrote it from a partial read of the codebase and your instinct isn't a substitute for the read. Agreement is cheap; the read is what matters.
+- **You already agree with it.** The plan matches what you'd have written, which feels like alignment. But Claude wrote it from a partial read of the codebase and your instinct isn't a substitute for the read. Agreement is cheap; the read is what matters.
 
 ## What you do with this
 
-In the exercise, you push back twice with what you can see — one soft item, then either an assumption check or a committed change — via *keep planning with feedback* at the approval prompt. Claude regenerates. Then you hand the plan to a second agent — `grill-me` — that walks down every unresolved branch of the decision tree, one question at a time, suggesting answers. You confirm or correct each. The plan sharpens again. You approve.
+In the exercise, you push back twice with what you can see (one soft item, then either an assumption check or a committed change) via *keep planning with feedback* at the approval prompt. Claude regenerates. Then you ask Claude for a second-pass read that walks down every unresolved branch of the decision tree, one question at a time, suggesting answers. You confirm or correct each. The plan sharpens again. You approve.
 
 Then you stop. No execution. You've done the work; that's the exercise.
 
-The discipline isn't the mode. It's two reads, paired — yours, then grill's. One kind of scrutiny catches one kind of miss. Paired, they usually give the complete read.
+The discipline isn't the mode. It's two reads, paired: yours, then the agent's walk-down. One kind of scrutiny catches one kind of miss. Paired, they usually give the complete read.
 
-After you've done it once, you'll feel when a plan needs grill and when your own read was enough. That's the whole thing.
+After you've done it once, you'll feel when a plan needs the second read and when your own read was enough. That's the whole thing.
 
 <!-- maintainer -->
 

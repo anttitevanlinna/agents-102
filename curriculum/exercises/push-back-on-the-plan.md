@@ -1,10 +1,10 @@
 # Push back on the plan
 
-**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent (`grill-me`) that walks down every unresolved branch and surfaces what you missed. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the grill caught. That gap is the skill this module is building.
+**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent that walks down every unresolved branch and surfaces what you missed. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**What happens:** Claude writes a plan. You pick *keep planning with feedback* and send two push-backs: what YOU see. Claude regenerates. Then you invoke grill-me; it asks one question at a time, walking down branches you didn't think to check, suggesting answers. You confirm or correct. The plan sharpens again. You approve. You don't run the code. You ask Claude what grilling surfaced that your push-back didn't, and whether any of it would have mattered in execution.
+**What happens:** Claude writes a plan. You pick *keep planning with feedback* and send two push-backs: what YOU see. Claude regenerates. Then you run a second-pass read: Claude asks one question at a time, walking down branches you didn't think to check, suggesting answers. You confirm or correct. The plan sharpens again. You approve. You don't run the code. You ask Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 
-**The point:** reading a plan is finite. A first pass by a human + a second pass by an agent isn't belt-and-braces. It's the complete read. Two different kinds of scrutiny catch two different kinds of miss. The exercise installs the pairing as a move. No execution needed; you've already done the work of making the plan good. **Execution is next module's concern.**
+**The point:** reading a plan is finite. A first pass by a human plus a second pass by an agent isn't belt-and-braces. It's the complete read. Two different kinds of scrutiny catch two different kinds of miss. The exercise installs the pairing as a move. No execution needed; you've already done the work of making the plan good. **Execution is next module's concern.**
 
 **Time:** 60 minutes.
 
@@ -18,10 +18,12 @@ If nothing fits, ask Claude to surface three candidates from recent issues, PRs,
 
 Shift+Tab until the status bar shows **plan**. Paste the prompt. Then send a second message with your task in 2–3 sentences: what, why, the one constraint you care about most.
 
+Ask Claude to work in plan mode and write a detailed plan file you can read and push back on.
+
 **Prompt** *(copy → Claude Code)*
 
 ```
-Work in plan mode on the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. I'm going to push back on it before approving, and then run a grill-me pass, so give me enough detail in each step that I can actually read it. Files touched, shape of the change, what you'd check before declaring it done. Don't optimize for short.
+Work in plan mode on the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. I'm going to push back on it before approving, and then run a second-pass read that walks down unresolved branches, so give me enough detail in each step that I can actually read it. Files touched, shape of the change, what you'd check before declaring it done. Don't optimize for short.
 ```
 
 *(end of prompt)*
@@ -30,7 +32,7 @@ Then a second message with your task: what, why, the one constraint that matters
 
 Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan.** Not skim. Read. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
-## Phase 3: Two push-backs (15 min)
+## Phase 3: Push back twice (15 min)
 
 **Don't approve yet.** At the approval prompt, pick **keep planning with feedback**. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.
 
@@ -44,47 +46,51 @@ Two messages, your phrasing, specific to what you saw. Claude acknowledges each,
 
 Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. Find is easier than judge.
 
-## Phase 4: Grill me (15 min)
+## Phase 4: Second-pass read (15 min)
 
-Now hand the plan to a second agent that reads differently than you do. Send:
+Now hand the plan to a second agent that reads differently than you do.
+
+Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Invoke the grill-me skill on the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven't named. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct one question at a time.
+Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven't named. Ask me one question at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct one at a time.
 ```
 
 *(end of prompt)*
 
-Grill asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
+The second read asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
 
-Typical session: 5–12 questions. Stop when grill starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. Grill doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not grill's.
+Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
 ## Phase 5: Stop. See the design pattern. (10 min)
 
 **Don't execute the plan.** You've done the work of making it good; that's the exercise. Execution is next module's concern.
 
+Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
+
 **Prompt** *(copy → Claude Code)*
 
 ```
-Looking back at this session: what new information and decisions did grilling surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
+Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
 ```
 
 *(end of prompt)*
 
-Claude answers. Read carefully. The pattern it names should be something like: *read the plan yourself → push back on what you can see → grill-me for what you can't → approve.* Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). Grill catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
+Claude answers. Read carefully. The pattern it names should be something like: *read the plan yourself → push back on what you can see → second-pass read for what you can't → approve.* Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 
 Neither is complete. Paired, they usually are.
 
-**Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. Grill catches the rest. That's the move.
+**Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
 
 On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run tomorrow. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 <!-- maintainer -->
 
 **Meta (trainer):**
-- **Primary Bloom's level:** Apply + Analyze + Evaluate (the grill-compare at P5 is the Evaluate beat)
-- **Exercise time band:** 60 min inside a 1h45 module (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Phase breakdown: P1 5 / P2 15 / P3 15 / P4 15 / P5 10. Grill-me (P4) can stretch on real codebases; Debrief absorbs the overflow.
+- **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
+- **Exercise time band:** 60 min inside a 1h45 module (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Phase breakdown: P1 5 / P2 15 / P3 15 / P4 15 / P5 10. The second-pass read (P4) can stretch on real codebases; Debrief absorbs the overflow.
 - **Execution-free by design.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern. When asked *"why don't we execute?"* the trainer answers: *"you've done the work of making the plan good; recognising a good plan is the skill."*
 - **Artifact locations — governed by the pre-engagement contract:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
@@ -93,11 +99,11 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
   - No training-dir state.
 - **Frameworks riffed on:**
   - **Plan mode** (Anthropic Claude Code). Activation via Shift+Tab; push-back via *keep planning with feedback* at the approval prompt. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
-  - **grill-me skill** — Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md), MIT license, commit `a6bdfd9`, 2026-04-22). Socratic requirement elicitation — walks down branches of a decision tree one at a time with recommended answers. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved.
+  - **Socratic walk-down-branches move** — Matt Pocock's grill-me skill ([mattpocock/skills](https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md), MIT license, commit `a6bdfd9`, 2026-04-22). Socratic requirement elicitation — walks down branches of a decision tree one at a time with recommended answers. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved. **In M2 we inline the behaviour as a prompt; the skill reveal — "that second-pass read you did was a skill all along, here's how to author one" — lands in M3 as authoring material, so we don't front-run M3's first-Skill-use moment by invoking it by name here.**
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's four-step loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
   - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
-- **The Pocock-name caveat.** "Grill" primes adversarial critique; the skill is actually Socratic elicitation. The exercise runs the skill on its real semantics (requirement elicitation), not the name's implication. A genuinely adversarial **red-team-me** skill — imagine the worst way this plan fails, argue for it — is different and is an authoring opportunity for a later module (M3 judges or the skill-authoring arc). Don't confuse the two in class.
+- **The Pocock-name caveat.** Pocock's original name "grill" primes adversarial critique; the skill is actually Socratic elicitation. We teach the move on its real semantics (requirement elicitation), not the name's implication. A genuinely adversarial **red-team-me** skill (imagine the worst way this plan fails, argue for it) is different and is an authoring opportunity for a later module (M3 judges or the skill-authoring arc). Don't confuse the two in class.
 
 **Watch-fors:**
 - **P3 rubber-stamp.** Student hits "approve" under 60 seconds without sending a push-back message. Diagnostic: no keep-planning-with-feedback branch in the scrollback. Push-back move: *"pick keep planning with feedback — send one soft-item message before approving."*

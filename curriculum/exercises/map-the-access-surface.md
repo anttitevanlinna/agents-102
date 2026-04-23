@@ -12,23 +12,27 @@
 
 ## Phase 1: invoke the skill (~7 min)
 
-Start a new Claude Code session at your repo root, with the content folder already unzipped from prework (`content/skills/access-control-analysis/` is where the curated skill lives).
+Start a new Claude Code session at your repo root. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name.
+
+Before you invoke, confirm it's there. Ask Claude: *"list my installed skills."* You should see `access-control-analysis` and `stride`. If not, prework's install step didn't finish; re-run it before continuing.
+
+Ask Claude to invoke the access-control-analysis skill on the feature you brought to M3 and save the surface map into the repo.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Use the access-control-analysis skill at content/skills/access-control-analysis/ to analyse the feature I'm shipping. The feature is [name the feature in one sentence, e.g., "the webhook handler for billing events in src/billing/webhooks.ts"]. Read the skill's instructions, then run it against the feature's code and any adjacent files the skill tells you to read.
+Invoke the access-control-analysis skill as a subagent against the feature I brought to Module 3. First ask me to name the feature in one sentence: which file it mostly lives in, what it does, what the external or user-facing surface is. Wait for my answer.
 
-Produce the surface map the skill asks for. Save it at content/m3-working/access-surface.md so I can read it alongside you.
+Then run the skill in a fresh-context subagent so its structured pass doesn't pollute this thread. When it returns, save the surface map at .claude/scratch/access-surface.md in this repo so I can read it alongside you. Create the directory if it doesn't exist.
 ```
 
 *(end of prompt)*
 
-Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
+Answer the one-sentence feature question. Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
 
 ## Phase 2: sit with the map (~3 min)
 
-Open the file. Read it end to end without typing anything. Your instinct is going to be to scan; don't. Read.
+Open `.claude/scratch/access-surface.md`. Read it end to end without typing anything.
 
 While you read, hold two questions in mind:
 
@@ -38,6 +42,8 @@ While you read, hold two questions in mind:
 ## Phase 3: write the delta (~7 min)
 
 Now you decide.
+
+Ask Claude to interview you for the two deltas and integrate them into the map.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -50,7 +56,7 @@ Second: which surface the skill missed that I know matters, with the reason I kn
 
 Ask for the first answer. Wait. Then ask for the second.
 
-When you have both, add them to content/m3-working/access-surface.md in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
+When you have both, add them to .claude/scratch/access-surface.md in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
 ```
 
 *(end of prompt)*
@@ -78,7 +84,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Agentic Nerd logic:**
 - **P1 blocker — student can't point Claude at the feature.** Nerd runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*
-- **P1 skill-invocation confusion.** Nerd: *"the skill's SKILL.md tells the agent what to read and how; you don't need to know — you just point Claude at the skill directory and name the feature."*
+- **P1 skill-invocation confusion.** Nerd: *"the skill was installed as a personal skill at prework; Claude Code auto-discovers it by name. You don't need a path. Just name the feature in one sentence and let the skill run as a subagent."*
 - **P2 skip (student starts typing immediately after skill finishes).** Nerd interrupts: *"three minutes, read the map first. The delta is the teaching moment, not the skill output."*
 - **P3 generic delta entry.** Nerd: *"is that reason true for this codebase, or true for any codebase? sharpen to something your codebase has that a generic stack wouldn't."*
 - **P3 zero misses.** Student reports the skill caught everything. Nerd: *"that's rare. Look again at the part of your feature you'd describe as 'the weird bit.' Often that's where the skill's generic pass is thinnest."*
@@ -91,10 +97,10 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Plug points:**
 - Student's own feature (from Connections)
-- Curated access-control analysis skill (`content/skills/access-control-analysis/`) — see Pass 2/3 skill authorship TODO
+- Curated access-control analysis skill — ships in content folder, installed to `~/.claude/skills/access-control-analysis/SKILL.md` at prework. Authorship TODO for Pass 2.
 
-**TODO (Pass 3):**
-- Write `content/skills/access-control-analysis/SKILL.md` — Bosser-curated from Saltzer & Schroeder lineage + Shostack's threat-modeling adjacency.
+**TODO (Pass 2/3):**
+- Write `content/skills/access-control-analysis/SKILL.md` — Bosser-curated from Saltzer & Schroeder lineage + Shostack's threat-modeling adjacency. YAML frontmatter must be the exact Claude Code Skill format (verify against current docs — the subagent-dispatch mechanic claimed by `claude-code-guide` agent on 2026-04-23 needs WebFetch confirmation before the frontmatter is written).
 - Worked-example output snippet (what a "surface map" actually looks like for a realistic feature). Defer to first sim.
-- Verify `content/m3-working/` as the in-session scratch path — or should working files land in the student's repo directly? Check against delivery architecture (no training-dir state rule). Resolution: `content/m3-working/` is acceptable because the delta feeds Ex2 in-session and doesn't need to persist. Alternative: land the map at `.claude/scratch/m3/access-surface.md` in the student's repo. Pick before first cohort.
+- Scratch path resolved: `.claude/scratch/access-surface.md` in the student's repo. Consistent with the strategy doc's "compounding lives in the student's repo" and with M4's `.claude/memory/` convention. Add `.claude/scratch/` to `.gitignore` if it isn't already (note for the repo-prep step in prework, or handle in-exercise on first write).
 - Three-persona simulation.

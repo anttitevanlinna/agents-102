@@ -23,18 +23,20 @@ Pick one. Start a new Claude Code session in that repo.
 
 ## 4. Let Claude walk you through the rest (15 min)
 
-Ask Claude to read the wizard-move framing, screen three candidate bugs, and confirm the repo is ready for Module 1.
+Ask Claude to read the wizard-move framing, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-I'm starting a six-module training called Agentic Engineering 101. The curriculum content is unzipped somewhere on my machine. Ask me for the path, then do three things:
+I'm starting a six-module training called Agentic Engineering 101. The curriculum content is unzipped somewhere on my machine. Ask me for the path, then do four things:
 
 1. Read lectures/the-wizard-move.md and tell me the framing in your own words, in under two minutes. I want it landed before Module 1 starts.
 
-2. Ask me for three bugs I could fix in an hour. I'll tell you the symptom for each. Screen them against these criteria: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
+2. Install the training's curated skills as personal skills. Copy every folder under content/skills/ to ~/.claude/skills/ (preserve the per-skill folder structure, keep SKILL.md capitalisation). Confirm each skill folder now exists at ~/.claude/skills/<name>/SKILL.md. These are personal to me, removable after training with rm -rf.
 
-3. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
+3. Ask me for three bugs I could fix in an hour. I'll tell you the symptom for each. Screen them against these criteria: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
+
+4. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
 
 Ask one question at a time if you need to, no preamble.
 ```
@@ -50,9 +52,9 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 **Meta:**
 - **Runtime:** 30 min target. Steps 1–2 are crisp; step 3 is where time can expand if the student's repo is messy.
 - **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude.
-- **Artifacts at end of prework:** student's mental list. Content folder path, chosen repo (Claude Code open in it), one picked bug (in the scrollback). No files created.
+- **Artifacts at end of prework:** content folder path, chosen repo (Claude Code open in it), one picked bug (in the scrollback), and two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md` (auto-discovered by Claude Code in every session, invokable by name; removable after training with `rm -rf`).
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback TBD. Don't absorb install debugging into M1 time.
 - **Delivery:** classroom cohorts get the zip link via email + Slack/Teams ahead of Day 1. Self-study students download from the site.
 
 **TODO:**
-- **Build the content folder zip.** Before first cohort: packaging script that zips `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/trainings/agentic-engineering-101/prework.md`, and `curriculum/reference/` into `agents-102-content-agentic-engineering-101.zip`. Verify unzip produces the paths referenced by step 3's prompt (`lectures/the-wizard-move.md`, `reference/claude-code-for-engineers.md` resolvable from the content folder root).
+- **Build the content folder zip.** Before first cohort: packaging script that zips `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/trainings/agentic-engineering-101/prework.md`, `curriculum/reference/`, and the curated M3 skills (`content/skills/access-control-analysis/SKILL.md`, `content/skills/stride/SKILL.md` — to be written in Pass 2) into `agents-102-content-agentic-engineering-101.zip`. Verify unzip produces the paths referenced by the prompts: `lectures/the-wizard-move.md`, `reference/claude-code-for-engineers.md`, and `content/skills/<name>/SKILL.md` all resolvable from the content folder root. The install step in step 4's prompt copies every folder under `content/skills/` to `~/.claude/skills/` — so the zip must put the curated skills under exactly that path.

@@ -8,7 +8,6 @@ Reading a plan is finite. Your own read catches some of it, a second agent walki
 - **Prework:** about 10 min. Surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
 - **Homework:** none. M3 opens on a fresh pair of compact exercises.
 - **Materials (trainer):** content folder already on student's machine from M1. No new scaffolds.
-- **Plug points:** the student's own repo (carried from M1) + one backlog task the student brings.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -39,12 +38,6 @@ After this module, you will be able to:
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is the plan-reading skill you're building
 - You don't have to execute a plan to know it's good. The work of making it good is the exercise
 - Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
-
-## Plug Points
-
-Student's own repo (carried from M1) and a backlog task they surface in prework. No company data needed yet; the task is already theirs.
-
-The Compound step writes the new pattern to your personal `CLAUDE.local.md` by default (gitignored, no PR). If the pattern is team-worthy, flag it for a separate PR against team `CLAUDE.md` (sponsor-stated home per pre-engagement contract: `./CLAUDE.md` / `./.claude/CLAUDE.md` / `AGENTS.md`). Student override with a reasoned alternative is legitimate; opting out is not a path.
 
 ## Debrief
 

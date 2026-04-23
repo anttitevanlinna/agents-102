@@ -8,7 +8,6 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 - **Prework:** about 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1). Content folder unzipped, Claude Code open on the repo you'll grow, one bug surfaced in conversation with Claude.
 - **Homework:** none. Module 2's setup lives in Module 2's prework.
 - **Materials (trainer):** content folder (`agents-102-content-agentic-engineering-101.zip`) shipped before prework; no trainer scaffolds beyond that. All compounding artifacts land in the student's repo (see content strategy § Delivery architecture). Claude Code specifics (MCP install per tracker, tenant-admin fallbacks) live in [MCP and connectors](../reference/mcp-and-connectors.md), updated as Claude Code's install surface changes.
-- **Plug points:** the student's own repo + the bug Claude surfaced in prework + the sponsor-stated ticket tracker.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -41,11 +40,6 @@ After this module, you will be able to:
 - The compound step lives in Ex3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
 - Personal rules (`./CLAUDE.local.md`, gitignored) vs. team rules (`./CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
 
-## Plug Points
-The student's own repo and the bug Claude surfaced in prework. No company data needed yet. If the student arrives having drifted from their prework choice, Ex1 runs a fresh bug-surfacing conversation. Criteria unchanged: small, visible, yours, shippable in an hour.
-
-The **sponsor-stated knowledge home** and **sponsor-stated ticket tracker** (pre-engagement contract; see `content-strategy-agentic-engineering-101.md` § "Pre-engagement contract") supply the defaults: where team `CLAUDE.md` lives if/when a rule earns team review, and which connector gets wired (P3). Session compounds land in `CLAUDE.local.md` by default (personal, gitignored); no sponsor input needed. Student can override with a reasoned alternative; opting out is not a path.
-
 ## Debrief
 The compound step runs inside the `compound-and-close` exercise. Claude reviews the full session (Ex1 + Ex2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) Claude calls it out in the summary so the student can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
 
@@ -76,7 +70,7 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **Ex3 compound-summary confabulation** — Claude's 3–5 line summary name-drops session moments without quoting. Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
 - **Ex3 MCP install gate** — corporate tenant blocks connector install. Nerd surfaces the tenant-admin fallback per tracker from [MCP and connectors](../reference/mcp-and-connectors.md). Never a blocker; always a fallback path.
 - **Self-compounding at every module from M1** — the Nerd never interviews the student with Q1/Q2/Q3. Claude reviews session evidence, rewrites rules file in place, reports 3–5 lines, student pushes back. Same shape across the training.
-- **Repo change mid-training** — supported. Replay M1 → M(current) on new repo in an evening. Nerd fast-paths replay (pedagogy already landed; regenerate artifacts for new substrate).
+- **Repo change mid-training** — supported. Replay M1 → M(current) on new repo in an evening. Nerd fast-paths replay (pedagogy already landed; regenerate artifacts for the new repo).
 
 **Plug points (trainer):**
 - Student's repo (chosen in prework) + bug Claude surfaced in prework + sponsor-stated ticket tracker.

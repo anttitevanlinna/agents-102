@@ -2,7 +2,7 @@
 
 **What you do:** Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn't fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on the feature you just security-tested, ask Claude if the test strategy is any good, sharpen if needed, and ship to the team kit.
 
-**What happens:** You end with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in the team-kit home your sponsor named. It's the first authored skill of the module, and the first file of yours that crosses teammates.
+**What happens:** You end with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in the team-kit home your sponsor named. The first authored skill of the module.
 
 **The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at M6.
 
@@ -59,7 +59,7 @@ Don't just reassure me. Name weak parts.
 
 *(end of prompt)*
 
-Read the critique. Push back on it where Claude is wrong (*"no, that section is fine because X"*) and accept where Claude is right. Claude revises SKILL.md based on the push-back. One pass; don't loop.
+Read the critique. Push back where Claude is wrong (*"no, that section is fine because X"*); accept where Claude is right. Claude revises SKILL.md from your push-back.
 
 ## Phase 3: invoke the skill on the security-tested feature (~6 min)
 
@@ -77,9 +77,7 @@ Then, in the same response, answer: go check the test strategy related to the fe
 
 *(end of prompt)*
 
-Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, one more sharpen on the skill itself (not the output; the skill). Then invoke again.
-
-**Two rounds max.** If the second invocation still produces something weak, ship the skill with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
+Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill itself (not the output; the skill). Then invoke again. If the result is still weak, ship the skill with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
 
 ## Phase 4: ship (~2 min)
 
@@ -95,7 +93,7 @@ Tell me when it's in.
 
 *(end of prompt)*
 
-The first file of yours that crosses teammates is now in the team kit. Debrief will integrate the session.
+Shipped to the team kit. Debrief will integrate the session.
 
 ---
 

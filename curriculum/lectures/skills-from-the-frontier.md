@@ -10,7 +10,7 @@ That split isn't accidental. It's a claim about what you can produce well on a T
 
 ## What's a skill, one breath
 
-A skill in Claude Code is a named, scoped capability the agent can invoke — a markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` (or equivalent in a team-kit substrate). You've used one already — grill-me in Module 2. Today you invoke two more and author one.
+A skill in Claude Code is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` (or equivalent team-kit home). You've used one already, grill-me in Module 2. Today you invoke two more and author one.
 
 Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
@@ -24,7 +24,7 @@ We curated these skills because doing STRIDE well is the kind of thing a senior 
 
 You can. Because you'll author it the way the training authors everything — through conversation with Claude, not by hand-crafting markdown. Claude asks you what it needs to encode the skill. You push back where your codebase doesn't fit the default. The skill comes out tuned to your system because YOU fed it your system.
 
-**Voice three — the team kit, starting today.** The skill you author at the end of this module ships to the team kit. That substrate your sponsor named in the pre-engagement contract — shared Git repo, monorepo `.claude/` directory, whatever your team landed on. The first file lands there today. Intercom's 267-skill plugin repo (31% of R&D contributing) was born the same way — one engineer's contribution, then another, then accretion. Not a platform-team design document.
+**Voice three — the team kit, starting today.** The skill you author at the end of this module ships to the team kit. The home your sponsor named in the pre-engagement contract: shared Git repo, monorepo `.claude/` directory, whatever your team landed on. The first file lands there today. Intercom's 267-skill plugin repo (31% of R&D contributing) was born the same way — one engineer's contribution, then another, then accretion. Not a platform-team design document.
 
 ## Why this proportion matters
 
@@ -38,14 +38,14 @@ The module title isn't rhetorical. By the end of 1h45, you'll have three things 
 - An ADR naming one hardening decision under STRIDE pressure (from STRIDE skill)
 - A test-strategy skill that codifies how testing actually works on your system, shipped to the team kit
 
-None of those are compliance artifacts. They're infrastructure. The word "trust" here doesn't mean "we followed a checklist." It means "the next engineer who touches this feature can see the thinking."
+None of those are compliance artifacts. They're the thinking, written down. The word "trust" here doesn't mean "we followed a checklist." It means "the next engineer who touches this feature can see the thinking."
 
 ## What to watch for while you work
 
 - **Ex1:** the access-control skill will flag surfaces. Your job isn't to agree — your job is to decide what it got right, what it underweighted, what it missed that you know matters.
 - **Ex2:** STRIDE does the breadth, you make one call. Resist the urge to harden against everything. Pick one. Write the ADR.
 - **Ex3:** when you author the test-strategy skill, Claude will offer you a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
-- **Across all three:** skills live in specific places. Curated ones in `content/skills/<name>/`. Your authored skill at the team-kit path your sponsor named. Don't invent new homes.
+- **Across all three:** skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name — you don't point at a path. The one you author lands at the team-kit path your sponsor named. Don't invent new homes.
 
 Go.
 

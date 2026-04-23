@@ -8,7 +8,6 @@ Walk what you've built against a real multi-hour task, fill the worst gaps, send
 - **Prework:** none beyond the last three modules; bring a multi-hour task you've been avoiding (see Connections).
 - **Homework:** none for M4. The task runs between M4 and M5, and M5 opens with the return.
 - **Materials (trainer):** none. Everything the student needs lives in their repo or in conversation.
-- **Plug points:** student's own multi-hour task + sponsor-stated rules-file home + sponsor-stated memory and business-rules home.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -42,12 +41,6 @@ You've watched Claude work for three modules on short loops: a bug fix, a plan r
 - The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude loads both at session start (see [reference § 1](../reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
 - Every send-off is an experiment, not a production run you need to get right first time. This is the operator's posture
-
-## Plug Points
-- **Student's own multi-hour task** (surfaced in Connections, carried through every phase)
-- **Personal rules home** (`./CLAUDE.local.md` by default, gitignored; or `~/.claude/CLAUDE.md` for cross-repo patterns): the file Claude self-compounds at Debrief
-- **Team rules home**: sponsor-stated (`./CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md`). Not session-compounded; team-worthy rules PR-gated
-- **Sponsor-stated memory + business-rules home** (pre-engagement contract): where the business-rules pointer from Phase 2 fill lands. Default: a pointer file in the repo naming where the real material lives (external wiki, team Notion, or the repo itself)
 
 ## Debrief
 

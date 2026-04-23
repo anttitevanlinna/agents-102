@@ -1,15 +1,13 @@
 # Earn the trust
 
 ## Big Idea
-Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. The team kit is born here.
+Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. The team kit is born here, a shared home your teammates can read, so the skill you author this hour is the first artifact of yours that crosses engineers.
 
 ## Meta
 - **Primary Bloom's level:** Apply + Evaluate + Create (invoke, decide, author)
 - **Prework:** bring a small feature you're working on right now (see Connections for the size rule). No pre-written files; the feature lives in your repo.
 - **Homework:** none. The authored skill ships at M3's close.
-- **Materials (trainer):** content folder carries two curated skills (`access-control-analysis/`, `stride/`) under `content/skills/`. Students invoke from there; no install step.
-- **Plug points:** student's own feature + sponsor-stated team-kit home (pre-engagement contract).
-
+- **Materials (trainer):** content folder ships two curated skills (`access-control-analysis/SKILL.md`, `stride/SKILL.md`) under `content/skills/`. Prework installs them as personal skills at `~/.claude/skills/<name>/SKILL.md` via an agentic step (Claude does the copy). Students invoke by name, no path. Removable after training with one `rm -rf`.
 ## What You'll Learn
 After this module, you will be able to:
 - **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context). Read what it surfaces, name what a first-read missed
@@ -18,7 +16,7 @@ After this module, you will be able to:
 - **Author** a test-strategy skill through conversation with Claude (one question at a time) tuned to your codebase's actual testing conventions, not a generic pyramid
 - **Evaluate** the authored skill by asking it to disclose its own weakest part, then pushing back on the critique
 - **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
-- **Ship** one authored skill to the team-kit home. The first artifact of yours that crosses teammates
+- **Ship** one authored skill to the team-kit home
 
 ## Connections
 
@@ -47,16 +45,15 @@ The question, to you: what's the feature, and what's the surface you're most ner
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre
 - One skill shipped beats three skills drafted; the team kit grows by accretion
 
-## Plug Points
+**Self-aware / grain of salt (Theme 4):** Ex3's move is to ask the authored skill to disclose its own weakest part, then push back on the critique; the skill introspects, you verify against the session artifact.
 
-- **Student's own feature** (surfaced in Connections, carried across all three exercises)
-- **Sponsor-stated team-kit home** (pre-engagement contract). Default: shared Git repo spun up at training start. Shipped skill lands here.
-- **Sponsor-stated ADR home** (pre-engagement contract). Hardening decision from Ex2 lands here. Default: `docs/adr/NNNN-slug.md` or the repo's existing convention.
-- **Curated skills ship in the content folder** (`content/skills/access-control-analysis/`, `content/skills/stride/`). Training IP; not contributed to the team kit. Clean separation: *curated-for-you* stays in content, *authored-by-us* goes to the team kit.
+**Mirror (Theme 3):** the access-control and STRIDE skills reflect the feature's access surface back at you, and the gap between your first read and the skill's output is the thing you name aloud.
+
+**90% correct (Theme 1):** curated skills from the frontier are strong, not oracular; the hardening decision in Ex2 and the weak-spot push-back in Ex3 are where the last 10% earns your judgement rather than a rubber stamp.
 
 ## Debrief
 
-12–15 minutes. Claude reviews the session, rewrites the relevant rules files in place, reports what changed. You push back on the summary.
+Ask Claude to review the session, integrate one codebase-specific pattern into `CLAUDE.local.md`, and sharpen the authored test-strategy skill from session evidence.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -78,7 +75,7 @@ Tell me in 3–5 lines: what pattern you named in `CLAUDE.local.md` (and whether
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong; quote the session moment. Two files changed this module (`CLAUDE.local.md` + the test-strategy skill); check both. Team-rule flags in the summary are for your decision later; they don't auto-PR.
+12–15 minutes. Claude reviews the session, rewrites the relevant rules files in place, reports what changed. You push back on the summary. Read it. Push back where it's wrong; quote the session moment. Two files changed this module (`CLAUDE.local.md` + the test-strategy skill); check both. Team-rule flags in the summary are for your decision later; they don't auto-PR.
 
 ## Bridge
 

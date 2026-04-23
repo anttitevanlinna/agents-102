@@ -12,12 +12,14 @@
 
 ## Phase 1: invoke the skill on the mapped surface (~7 min)
 
+Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Ex1.
+
 **Prompt** *(copy → Claude Code)*
 
 ```
-Use the stride skill at content/skills/stride/ to threat-model the feature. Read the access surface map I built in the previous exercise at content/m3-working/access-surface.md; that's your input. Run STRIDE against the surfaces on the map (the skill will tell you how it structures the pass).
+Invoke the stride skill as a subagent. The input is the access-surface map I built in the previous exercise at .claude/scratch/access-surface.md. Read it first so you can tell STRIDE which surfaces to walk. Run the skill in a fresh-context subagent so the six-category pass doesn't flood this thread.
 
-Produce a threat list in the skill's output format. Save it at content/m3-working/stride-threats.md. Flag which threats the skill thinks are high-severity for this feature; don't decide yet. I'll decide next.
+When it returns, save the threat list at .claude/scratch/stride-threats.md. Flag which threats the skill rates high-severity for this feature. Don't pick one yet. I'll decide next.
 ```
 
 *(end of prompt)*
@@ -27,6 +29,8 @@ Let it run. The output will have more entries than you want to deal with. That's
 ## Phase 2: pick the one (~8 min)
 
 You're going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.
+
+Ask Claude to walk you through the pick, one question at a time.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -44,9 +48,11 @@ One question at a time. Don't assemble into a plan. I want to walk through the r
 
 *(end of prompt)*
 
-Answer each. Don't rush the first question. The "most plausible incident story" is the move that makes STRIDE useful rather than performative.
+Answer each. The "most plausible incident story" is the move that makes STRIDE useful rather than performative.
 
 ## Phase 3: write the ADR (~5 min)
+
+Ask Claude to draft the ADR in your repo's convention and show it before saving.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -55,12 +61,14 @@ Write an ADR for the hardening decision we just made. Use my repo's ADR conventi
 
 Ground each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.
 
-Show me the ADR before saving. I'll push back once.
+Show me the ADR before saving.
 ```
 
 *(end of prompt)*
 
 Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship.
+
+If STRIDE's six categories feel like the wrong lens for your feature (some features are really abuse-case or insider-threat shaped, where Elevation-of-Privilege + Repudiation carry everything and Spoofing + Tampering don't fit), say so in the Alternatives considered section. *"STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y's terms"* is a legitimate ADR move. The skill is a tool; the call is yours.
 
 ---
 
@@ -89,12 +97,12 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - ADR home not resolved — sponsor's pre-engagement contract hadn't named one. Default to `docs/adr/` and flag at Debrief.
 
 **Plug points:**
-- Student's access surface map (from Ex1) — Phase 1 input
+- Student's access surface map (from Ex1 at `.claude/scratch/access-surface.md`) — Phase 1 input
 - Sponsor-stated ADR home (from pre-engagement contract) — Phase 3 output path
-- Curated STRIDE skill (`content/skills/stride/`) — see Pass 3 skill authorship TODO
+- Curated STRIDE skill — ships in content folder, installed to `~/.claude/skills/stride/SKILL.md` at prework. Authorship TODO for Pass 2.
 
-**TODO (Pass 3):**
-- Write `content/skills/stride/SKILL.md` — Bosser-curated from Kohnfelder & Garg's original memo, sharpened against Shostack's *Threat Modeling: Designing for Security*. Check for forkable practitioner versions in the Claude Code community before authoring from scratch.
+**TODO (Pass 2/3):**
+- Write `content/skills/stride/SKILL.md` — Bosser-curated from Kohnfelder & Garg's original memo, sharpened against Shostack's *Threat Modeling: Designing for Security*. Check for forkable practitioner versions in the Claude Code community before authoring from scratch. YAML frontmatter must be the exact Claude Code Skill format; subagent-dispatch mechanic claimed by `claude-code-guide` on 2026-04-23 needs WebFetch confirmation before the frontmatter is written.
 - Minimal ADR template if the repo has no convention (`docs/adr/0001-feature-hardening.md` with Context / Decision / Consequences / Alternatives considered).
 - Three-persona simulation — mid-competent / opinionated senior (the senior will likely argue STRIDE is dated; good; exercise survives the argument because the authoring move stands) / fast operator.
-- Decide `content/m3-working/` scratch convention (shared with Ex1; see Ex1 TODO).
+- Scratch path resolved: `.claude/scratch/stride-threats.md` in the student's repo. Same convention as Ex1.

@@ -144,22 +144,5 @@ Generic output comes from generic context. The LLM didn't get better between Pha
 
 <!-- maintainer -->
 
-**TODO (applied in pass 2 — 2026-04-17):**
-- Prompts now first-class in each phase — participant has a specific prompt to paste, not a vague "add to context."
-- Phase 5 dropped "optional" — required phase; mirror is the most distinctive move in the exercise.
-
-**TODO (applied in pass 3 — 2026-04-17, from student-persona simulation):**
-- Phase 1: dropped "save this output somewhere" — Claude keeps it in session memory; no preservation instruction needed.
-- Phase 4: replaced the "read both versions" cognitive-load ask with a Claude-driven comparison prompt. Claude looks back at its own earlier output and surfaces three specific generic/empty claims. Zero reading burden; pedagogically fitting (Claude observing its own pre-context output).
-- Phase 2 Q3: added fallback for participants without a crisp single story ("describe a pattern you've solved more than once").
-- Phase 5: added "Keep the edge — don't soften stances into generic virtues" to the mirror prompt — counters Claude's RLHF niceness tax on edgy claims.
-
-**TODO (applied in pass 4 — 2026-04-17, append-vs-integrate fix):**
-- Phase 3 + Phase 5 prompts were saying "add X to context and regenerate" — Claude reads that as "append X as a new section" and produces a bullet list rather than a voice-rewritten site. Updated both prompts to direct Claude to REWRITE using X as voice-shaping context, not append X as a new section. Added the "add vs. rewrite" pattern to prompt design rules and to the simulation protocol's known Claude-behavior list.
-
-**TODO (applied in pass 5 — 2026-04-17, neighbor → Claude-as-cold-critic):**
-- Phase 6 closing was "pair exchange: show your neighbor, they tell you the one line that feels most uniquely you." For this specific exercise, replaced with Claude-as-cold-critic: fresh session, no context, structured prompt asking for the most-uniquely-you line and the most generic line. Produces an artifact, foreshadows Module 6.
-- **But the design rule is not "always Claude" — it's vary deliberately.** CLAUDE.md + SKILL.md now list five closing mechanics (Claude-critic, pair, group, solo retro, show-to-room) and frame selection as a per-exercise design question. Module 1's answer is Claude-critic. Module 3 or 8 might well be group discussion.
-
 **Deferred per student-facing-first rule:**
 - Facilitator notes: watch-fors (generic Phase 2 answers; Phase 3 strengths that don't serve anyone specific; Phase 5 hate-list that doesn't flip cleanly), decision points, per-phase timings (Phase 6 free iteration tends to run long), Claude Code setup prerequisites.

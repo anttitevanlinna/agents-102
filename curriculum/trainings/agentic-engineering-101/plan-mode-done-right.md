@@ -113,7 +113,6 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 - Community plan-critique skills — none found in shipped Claude Code as of 2026-04-22. If a practitioner-authored skill emerges, surface it at the Nerd's P3 blocker.
 - Lecture worked-example decision: add a 30-sec plan-snippet example between "three things" and "three pressures"? Defer to first cohort sim feedback.
 
-**TODO (Pass 3 / pre-first-cohort):**
-- Three-persona simulation sweep — mid-competent engineer, opinionated senior, fast operator. Mandatory for AE101 modules per content-creation SKILL.md.
-- Wizard-demo choice for M2 opener — does the trainer demo plan-mode push-back on a volunteer repo? If so, what's the demo pattern? Menu of 2–3 options for cohort flexibility.
-- Confirm *keep planning with feedback* UX is stable across Claude Code versions before first cohort. Capability check pulled the flow from v2.1.110 changelog; verify on the cohort's version. Also verify whether softening-on-regeneration (Claude accepts push-back verbally but re-softens the step in the revised plan) is a reliable pattern — if yes, it's a named failure mode; if not, can remove from watch-fors.
+**TODO (pre-first-cohort):**
+- Wizard-demo choice for M2 opener — does the trainer demo plan-mode push-back on a volunteer repo? Menu of 2–3 options for cohort flexibility.
+- Verify *keep planning with feedback* UX on the cohort's Claude Code version. Also verify whether softening-on-regeneration (Claude acknowledges push-back but re-softens the step) is reliable — if yes, named failure mode; if not, drop from watch-fors.

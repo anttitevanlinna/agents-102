@@ -67,7 +67,7 @@ Go.
 - Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) + Intercom's 267-skill plugin repo (observations/intercom.md).
 - Test strategy as discipline — Kent Beck + Google Testing Blog's test-pyramid framing. Named but not leaned on — the student's authored skill is theirs.
 
-**TODO (Pass 3):**
-- Verify skill-invocation UX in current Claude Code build before first cohort (where skills live in content folder, how the student invokes from there).
-- Three-persona simulation sweep with the lecture + exercises.
-- Consider whether a 30-second worked-example (what a curated STRIDE skill invocation actually looks like) should live in the lecture or in the exercise's opening beat. Defer to first sim.
+**TODO (pre-first-cohort):**
+- Verify skill-invocation UX on current Claude Code build (where skills live in content folder, how students invoke).
+- Three-persona sim sweep with this lecture + the M3 exercises.
+- Worked-example (30s) of a curated STRIDE invocation — lecture or exercise opener? Defer to first sim.

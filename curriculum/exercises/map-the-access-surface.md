@@ -16,14 +16,14 @@ Start a new Claude Code session at your repo root. The `access-control-analysis`
 
 Before you invoke, confirm it's there. Ask Claude: *"list my installed skills."* You should see `access-control-analysis` and `stride`. If not, prework's install step didn't finish; re-run it before continuing.
 
-Ask Claude to invoke the access-control-analysis skill on the feature you brought to M3 and save the surface map into the repo.
+Ask Claude to invoke the access-control-analysis skill on the feature you brought to M3 and save the surface map to a temp directory of its choosing.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
 Invoke the access-control-analysis skill as a subagent against the feature I brought to Module 3. First ask me to name the feature in one sentence: which file it mostly lives in, what it does, what the external or user-facing surface is. Wait for my answer.
 
-Then run the skill in a fresh-context subagent so its structured pass doesn't pollute this thread. When it returns, save the surface map at .claude/scratch/access-surface.md in this repo so I can read it alongside you. Create the directory if it doesn't exist.
+Then run the skill in a fresh-context subagent so its structured pass doesn't pollute this thread. When it returns, save the surface map to a session-scratch location OUTSIDE this repo. Pick a sensible temp path for my OS (something under $TMPDIR, /tmp, or equivalent), create the directory, and tell me the absolute path. This is scratch, not memory; it doesn't belong in the repo.
 ```
 
 *(end of prompt)*
@@ -32,7 +32,7 @@ Answer the one-sentence feature question. Let the skill run. It'll read the code
 
 ## Phase 2: sit with the map (~3 min)
 
-Open `.claude/scratch/access-surface.md`. Read it end to end without typing anything.
+Open the file Claude just wrote (it gave you the absolute path). Read it end to end without typing anything.
 
 While you read, hold two questions in mind:
 
@@ -56,7 +56,7 @@ Second: which surface the skill missed that I know matters, with the reason I kn
 
 Ask for the first answer. Wait. Then ask for the second.
 
-When you have both, add them to .claude/scratch/access-surface.md in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
+When you have both, add them to the surface map file you wrote earlier (the path you told me) in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
 ```
 
 *(end of prompt)*
@@ -97,10 +97,10 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Plug points:**
 - Student's own feature (from Connections)
-- Curated access-control analysis skill — ships in content folder, installed to `~/.claude/skills/access-control-analysis/SKILL.md` at prework. Authorship TODO for Pass 2.
+- Curated access-control analysis skill — ships in content folder at `content/skills/access-control-analysis/SKILL.md`, installed to `~/.claude/skills/access-control-analysis/SKILL.md` at prework.
 
-**TODO (Pass 2/3):**
-- Write `content/skills/access-control-analysis/SKILL.md` — Bosser-curated from Saltzer & Schroeder lineage + Shostack's threat-modeling adjacency. YAML frontmatter must be the exact Claude Code Skill format (verify against current docs — the subagent-dispatch mechanic claimed by `claude-code-guide` agent on 2026-04-23 needs WebFetch confirmation before the frontmatter is written).
+**Scratch path:** Claude picks a temp directory for the student's OS (`$TMPDIR`, `/tmp`, or equivalent) and reports the absolute path back. Kept deliberately outside the repo — this is session scratch, not memory. M4 teaches the durable tier (`.claude/memory/`); the contrast between `/tmp/`-tier ephemeral and `.claude/memory/`-tier durable is pedagogy. No gitignore concern; nothing lives in the repo. Windows-native caveat: if a cohort lands without WSL, revisit — `%TEMP%` is fine but path conventions differ.
+
+**TODO (Pass 3):**
 - Worked-example output snippet (what a "surface map" actually looks like for a realistic feature). Defer to first sim.
-- Scratch path resolved: `.claude/scratch/access-surface.md` in the student's repo. Consistent with the strategy doc's "compounding lives in the student's repo" and with M4's `.claude/memory/` convention. Add `.claude/scratch/` to `.gitignore` if it isn't already (note for the repo-prep step in prework, or handle in-exercise on first write).
 - Three-persona simulation.

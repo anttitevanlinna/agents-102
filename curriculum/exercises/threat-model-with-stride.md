@@ -17,9 +17,9 @@ Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map fr
 **Prompt** *(copy → Claude Code)*
 
 ```
-Invoke the stride skill as a subagent. The input is the access-surface map I built in the previous exercise at .claude/scratch/access-surface.md. Read it first so you can tell STRIDE which surfaces to walk. Run the skill in a fresh-context subagent so the six-category pass doesn't flood this thread.
+Invoke the stride skill as a subagent. The input is the access-surface map I built in the previous exercise. The absolute path should be in scrollback from when you wrote it; if not, ask me for it. Read it first so you can tell STRIDE which surfaces to walk. Run the skill in a fresh-context subagent so the six-category pass doesn't flood this thread.
 
-When it returns, save the threat list at .claude/scratch/stride-threats.md. Flag which threats the skill rates high-severity for this feature. Don't pick one yet. I'll decide next.
+When it returns, save the threat list alongside the surface map (same temp directory). Flag which threats the skill rates high-severity for this feature. Don't pick one yet. I'll decide next.
 ```
 
 *(end of prompt)*
@@ -97,12 +97,11 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - ADR home not resolved — sponsor's pre-engagement contract hadn't named one. Default to `docs/adr/` and flag at Debrief.
 
 **Plug points:**
-- Student's access surface map (from Ex1 at `.claude/scratch/access-surface.md`) — Phase 1 input
+- Student's access surface map from Ex1 (in the temp directory Claude chose; path in scrollback) — Phase 1 input
 - Sponsor-stated ADR home (from pre-engagement contract) — Phase 3 output path
-- Curated STRIDE skill — ships in content folder, installed to `~/.claude/skills/stride/SKILL.md` at prework. Authorship TODO for Pass 2.
+- Curated STRIDE skill — ships in content folder at `content/skills/stride/SKILL.md`, installed to `~/.claude/skills/stride/SKILL.md` at prework.
 
-**TODO (Pass 2/3):**
-- Write `content/skills/stride/SKILL.md` — Bosser-curated from Kohnfelder & Garg's original memo, sharpened against Shostack's *Threat Modeling: Designing for Security*. Check for forkable practitioner versions in the Claude Code community before authoring from scratch. YAML frontmatter must be the exact Claude Code Skill format; subagent-dispatch mechanic claimed by `claude-code-guide` on 2026-04-23 needs WebFetch confirmation before the frontmatter is written.
-- Minimal ADR template if the repo has no convention (`docs/adr/0001-feature-hardening.md` with Context / Decision / Consequences / Alternatives considered).
-- Three-persona simulation — mid-competent / opinionated senior (the senior will likely argue STRIDE is dated; good; exercise survives the argument because the authoring move stands) / fast operator.
-- Scratch path resolved: `.claude/scratch/stride-threats.md` in the student's repo. Same convention as Ex1.
+**Scratch path:** threat list lands alongside Ex1's surface map in the same Claude-chosen temp directory. Outside the repo; no gitignore concern. See Ex1 maintainer note on the `/tmp`-tier vs `.claude/memory/`-tier pedagogy.
+
+**TODO (pre-first-cohort):**
+- Three-persona simulation — mid-competent / opinionated senior (the senior will likely argue STRIDE is dated — exercise survives the argument because the authoring move stands) / fast operator.

@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Author** a test-strategy skill through conversation with Claude (one question at a time) tuned to your codebase's actual testing conventions, not a generic pyramid
 - **Evaluate** the authored skill by asking it to disclose its own weakest part, then pushing back on the critique
 - **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
-- **Ship** one authored skill to the team-kit home
+- **Ship** one authored skill personal-first, and know when it's a team PR
 
 ## Connections
 
@@ -124,19 +124,9 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
 
-**Open questions surfaced for later passes:**
-- Access-control analysis skill authorship: Bosser-authored? Does an existing practitioner skill exist in the wild worth forking (MIT) instead? Capability check before Pass 2.
-- STRIDE skill: same question — does a practitioner-authored STRIDE skill exist in Claude Code community? Last checked: not as of 2026-04-22; re-verify before first cohort.
-- ADR convention: if the sponsor repo has none, what's the training default? `docs/adr/0001-slug.md` with minimal template (context / decision / consequences)?
-- Team-kit home spin-up: who's responsible for creating the shared Git repo if the sponsor answered "we don't have one"? Ops-side, before training Day 1.
+**Open questions for later passes:**
+- ADR convention if the sponsor repo has none — training default `docs/adr/0001-slug.md` (context / decision / consequences)?
+- Team-kit home spin-up if the sponsor answered "we don't have one" — Ops-side, before Day 1.
 
-**TODO (Pass 2 / Pass 3):**
-- Write `content/skills/access-control-analysis/SKILL.md` (Bosser-authored, curated from sources named in lecture).
-- Write `content/skills/stride/SKILL.md` (Bosser-authored unless a forkable practitioner version emerges).
-- Write `curriculum/exercises/map-the-access-surface.md` (Pass 2/3).
-- Write `curriculum/exercises/threat-model-with-stride.md` (Pass 2/3).
-- Write `curriculum/exercises/author-test-strategy-skill.md` (Pass 2/3).
-- Write `curriculum/lectures/skills-from-the-frontier.md` (Pass 2/3).
-- Three-persona simulation sweep (mid-competent / opinionated senior / fast operator). Mandatory for AE101 modules.
-- Eval instance: `curriculum/evals/instances/agentic-engineering-101--earn-the-trust.md`.
-- Capability check: current Claude Code skill invocation UX (where skills live in the content folder, how the student invokes from there). Verify before first Pass 2 draft.
+**TODO (pre-first-cohort):**
+- Capability check: current Claude Code skill invocation UX (where skills live in content folder, how students invoke from there).

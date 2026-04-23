@@ -24,7 +24,7 @@ You've watched Claude work for three modules on short loops: a bug fix, a plan r
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
-*You do the surfacing. Claude doesn't read your roadmap or your Jira, and we don't want it to. At Phase 1, Claude screens your candidates against the three criteria (sustained coherence, requirement-weaving, multi-file reasoning) and gives you a fit read. The picking is yours; the screening is the agent's.*
+*Claude can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Task-surfacing is still your judgement about what's been sitting. At Phase 1, come with one or two candidates and Claude screens them for fit.*
 
 ## Lectures
 
@@ -38,13 +38,15 @@ You've watched Claude work for three modules on short loops: a bug fix, a plan r
 - Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
 - Un-packaged is by design. M5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
-- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude loads both at session start (see [reference § 1](../reference/claude-code-for-engineers.md))
+- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude loads both at session start (see [Claude Code for engineers § 1](../reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
-- Every send-off is an experiment, not a production run you need to get right first time. This is the operator's posture
+- Every send-off is an experiment, not a production run you need to get right first time
 
 ## Debrief
 
-12–15 minutes. Claude self-compounds your personal `CLAUDE.local.md` from the session (not team `CLAUDE.md`, which is PR-gated); the send-off then launches with both rules files going into the test (Claude loads them together at session start).
+12–15 minutes. You nudge the compound step: Claude rewrites your personal `CLAUDE.local.md` from session evidence (not team `CLAUDE.md`, which is PR-gated), you push back on the summary, then the send-off launches with both rules files going into the test (Claude loads them together at session start).
+
+Ask Claude to review the session and rewrite your personal `CLAUDE.local.md` from evidence, flagging team-worthy rules for a separate PR.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -60,19 +62,23 @@ Tell me in 3–5 lines: what you added to `CLAUDE.local.md`, what you sharpened,
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong; quote the session moment. When `CLAUDE.local.md` is the best version of itself it's going to be tonight, compose and paste the send-off prompt to the same session:
+Read the summary. Push back where it's wrong; quote the session moment. When `CLAUDE.local.md` is where you want it for tonight, send the task off.
+
+Before you send: the agent will commit as it works. If you'd rather keep tonight's run off your main branch, ask Claude in this same session to make a branch or a worktree for the task first. Whatever your repo's convention is.
+
+Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
 **Prompt** *(copy → Claude Code, final move of the module)*
 
 ```
-I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically) plus the memory in `.claude/memory/` (or wherever my memory lives), the ADRs, and the skills in `.claude/skills/`. That's everything you have. Go.
+I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills at `.claude/skills/`. That's everything you have. Go.
 
 I'm going to close the laptop. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
 ```
 
 *(end of prompt)*
 
-Let it run. Leave the laptop awake and plugged in. On macOS that means `caffeinate` in a side terminal, or System Settings → Battery → prevent sleep on power; on Linux, disable screen/session lock for the night; on Windows, power plan set to never-sleep. If you watch for a bit and see the agent wobbling in a way that already tells you what M5 will diagnose, stop the run. Traces are data. You don't owe the experiment a completed artifact; you owe it a result you can read.
+Let it run. Keep the laptop awake and plugged in overnight (power settings → prevent sleep on power). If you watch for a bit and see the agent wobbling in a way that already tells you what next module will diagnose, stop the run. You don't owe the experiment a completed artifact; you owe it a result you can read.
 
 ## Bridge
 
@@ -89,7 +95,7 @@ M5 opens with what came back, or what you caught before it went further. We read
 **Agentic Nerd logic (TODO — skill not yet created):**
 - **Connections blocker** — student can't name a task. Nerd runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over multi-hour).
 - **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Nerd: *"which of these will hurt the agent most given the task? fill those."*
-- **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Nerd: *"the un-packaged run needs a sponge, not a rock. M5 teaches you what the other two were for."*
+- **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Nerd: *"Three is the budget. Skip the other two — you'll see next module why."*
 - **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode (per fast-operator sim, 2026-04-23): skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Nerd hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
 - **Phase 3 Huryn-as-lecture** — Claude names the three-block frame before quoting the student's own ADR as the Block 2 example. Nerd interrupts: *"name the frame only after showing me one of my own ADRs as Block 2 — recognition first."*
 - **Debrief pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Nerd: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
@@ -123,8 +129,7 @@ M5 opens with what came back, or what you caught before it went further. We read
 - M5 capability-check handoff — M4's send-off mechanism (continue the current session) assumes the laptop can be left running or the session can be safely terminated mid-run. Capability-check resolves overnight-execution behaviour before M5 Pass 2.
 - Agentic Nerd skill — Nerd logic in this maintainer block is the module-specific piece; the running companion is still TODO at portfolio level.
 
-**TODO (Pass 3):**
-- Three-persona simulation sweep (mid-competent / opinionated-senior / fast-operator). Mandatory for AE101 modules.
+**TODO (pre-first-cohort):**
+- Re-simulation after the 2026-04-23 reshape (see eval instance).
 - Task-size calibration reference (as above).
-- Eval instance fill + LLM-judge run (`curriculum/evals/instances/agentic-engineering-101--run-the-first-experiment.md`).
-- Capability check: Claude Code behaviour when a session is left running overnight vs. terminated mid-run — what's preserved, what's lost. Verify before first cohort.
+- Capability check: Claude Code behaviour when a session is left running overnight vs. terminated mid-run — what's preserved, what's lost.

@@ -1,8 +1,8 @@
 # Exercise: Author your test-strategy skill
 
-**What you do:** Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn't fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on the feature you just security-tested, ask Claude if the test strategy is any good, sharpen if needed, and ship to the team kit.
+**What you do:** Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn't fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on the feature you just security-tested, ask Claude if the test strategy is any good, sharpen if needed, and ship it personally first.
 
-**What happens:** You end with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in the team-kit home your sponsor named. The first authored skill of the module.
+**What happens:** You end with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in your personal skills folder. A strong candidate for a team PR. But that PR starts with a human conversation, not an agent commit.
 
 **The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at M6.
 
@@ -14,12 +14,9 @@
 
 Skills aren't hand-crafted. They're authored through conversation.
 
-Two paths for the ship destination. Pick one before pasting the prompt.
+The ship destination is your personal skills folder: `~/.claude/skills/test-strategy/SKILL.md`. Auto-discovered in every session you run, across every repo.
 
-- **Team-kit home your sponsor named**: if the pre-engagement contract pinned a shared Git repo, monorepo `.claude/` path, or other home, use that. Trainer has it on the board in the cohort room.
-- **Self-study or sponsor-unresolved**: ship to `.claude/skills/test-strategy/SKILL.md` in your own repo for now. The skill lives with the code it's tuned to until the team kit home arrives. Takes one move to relocate later.
-
-Substitute your chosen path into the prompt below.
+This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons we'll name in Phase 4. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -30,14 +27,10 @@ Cover at minimum: which testing framework, what's mocked and what isn't, where t
 
 Ask ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says "write unit tests first" is useless. I need you to extract codebase-specific detail.
 
-When you have enough, write SKILL.md at the path I'm about to give you. Follow Claude Code's skill file convention (frontmatter with name + description, then instructions). Show me before saving.
-
-My ship path is:
+When you have enough, write SKILL.md at `~/.claude/skills/test-strategy/SKILL.md`. Follow Claude Code's skill file convention (frontmatter with name + description, then instructions). Show me before saving.
 ```
 
 *(end of prompt)*
-
-After Claude asks for the path, paste the one you chose above.
 
 Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
 
@@ -81,19 +74,19 @@ Read the output. If the strategy doesn't cover the hardening decision, or if Cla
 
 ## Phase 4: ship (~2 min)
 
-**Prompt** *(copy → Claude Code)*
+The skill is already at `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1, sharpened in Phase 2). Auto-discovered in every session you run. That's the ship.
 
-```
-Confirm the skill file's current content at its team-kit path, then commit it with a one-line message naming the feature area the skill is tuned for (pick it up from the skill content) and tagging it "M3 AE101 first authored skill."
+**A strong candidate for a team PR, after you talk to the team.**
 
-If the team-kit home is a separate git repo, push. If it's a path in my main repo's .claude/ directory, commit in this repo.
+A test-strategy skill encodes codebase conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. If it's accurate for you, it's accurate for them.
 
-Tell me when it's in.
-```
+So: show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who'd use it: *"does this match how you actually write tests on this codebase?"* If they say yes, PR it. If they push back, you just got the real review for free. Sharpen the skill, ship it sharper.
 
-*(end of prompt)*
+Agents don't unilaterally change shared team infrastructure. You do. The conversation is the move; the PR is the artifact of the conversation.
 
-Shipped to the team kit. Debrief will integrate the session.
+If your team-kit home isn't live yet, keep the skill personal for now. When the home arrives, same rule: talk first, PR second.
+
+Shipped. Debrief will integrate the session.
 
 ---
 

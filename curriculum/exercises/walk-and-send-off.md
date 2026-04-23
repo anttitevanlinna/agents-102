@@ -12,11 +12,11 @@
 
 ## Phase 1: Pick the task (~10 min)
 
-Start a new Claude Code session in your repo. Paste this prompt and work through it in conversation:
+Start a new Claude Code session in your repo. You've come in with one or two candidate tasks in mind (Connections). Claude screens them: it can't scan your roadmap or Jira, and we don't want it to. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
+
+Ask Claude to screen your candidates against the three long-run criteria and help you scope the winner.
 
 **Prompt** *(copy → Claude Code)*
-
-You've come in with one or two candidate tasks in mind (Connections). Claude screens them. It can't scan your roadmap or Jira, and we don't want it to; the picking work is your judgement about what's been sitting, and Claude's job is to check fit.
 
 ```
 I'm about to run my first long-running experiment. I've come with one or two candidate tasks from my backlog: multi-hour work I haven't got to, or tasks I'd rather an agent took the first pass at.
@@ -31,24 +31,24 @@ For each candidate, give me your read (fit / marginal / wrong shape) and why. If
 
 *(end of prompt)*
 
-Claude will ask, you'll describe, it'll screen. Push back on the read if it misses something about the codebase. You know what's really there; Claude's reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
+Push back when the read misses something about the codebase. Claude is reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
 
-**The point:** pick once, pick well. M5 inherits the same task; we re-run it packaged, so the contrast is the pedagogy.
+**The point:** pick one task well. You'll use it again next module.
 
 ---
 
 ## Phase 2: Walk and fill (~35 min)
 
-### The audit (~10 min)
+### Run the audit (~10 min)
 
-Claude audits your system as a subagent: fresh context, ranked report back.
+Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything in `.claude/memory/` (or wherever my memory lives), the ADRs in this repo, the skills in `.claude/skills/`, and the connectors I've wired.
+Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at `.claude/skills/`, and the connectors I've wired.
 
-Run this in a fresh context. Spawn a sub-task via the Task tool, or `/clear` if you prefer. The goal: Claude reads your setup without the current conversation colouring it. Return a structured report.
+Run this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.
 
 Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do to a multi-hour run.
 
@@ -59,9 +59,11 @@ For each item, say: (a) what's thin, (b) what a properly-prepared agent would ne
 
 Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
 
-### The fill (~25 min)
+### Fill the gaps (~25 min)
 
-Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. M5 teaches you what the others were for.
+Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. You'll see next module what the others were for.
+
+Memory-path note, first time through: the default home is `.claude/memory/` in your repo, gitignored (parallel to `CLAUDE.local.md`). If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on. If `.claude/memory/` is new to your repo, ask Claude to add it to `.gitignore` the first time it writes there. (This is the three-block memory you're authoring, separate from Claude Code's auto memory at `~/.claude/projects/<project>/memory/`, which Claude writes for its own recall.)
 
 For each of the three, keep it conversational:
 
@@ -70,11 +72,13 @@ For each of the three, keep it conversational:
 - **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-run.
 - **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in memory naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context.
 
-Push back when Claude writes something that doesn't match the codebase. You know what's actually there; Claude's drafting off your memory, and the memory is exactly what we just admitted is thin in spots.
+Push back when Claude writes something that doesn't match the codebase. The memory is what you just admitted is thin in spots; don't let it re-seed itself with drift.
 
 ---
 
 ## Phase 3: See the frame (~15 min)
+
+Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -88,13 +92,15 @@ Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange 
 Don't invent new material. Rearrange what's there.
 
 Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR I've already written (Block 2), a specific check from my test-strategy skill (Block 3).
+
+If you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.
 ```
 
 *(end of prompt)*
 
-Read the examples first. This is the moment where you should recognise your own work: *"oh, that ADR I wrote in M3, that's a Block 2 entry. I've been doing this for four modules."* If you don't feel the recognition, the rearrangement isn't landing; ask Claude to quote different examples until one lands.
+Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
 
-Once the frame is named through your own material, let Claude propose the actual rearrangement. File moves, renames, new index page, whatever fits. Approve, push back, or redirect.
+Once the frame is named through your own material, let Claude propose the actual rearrangement. Cap the proposal at one or two file moves or renames; larger reorganisation is a separate session, not a mid-module sweep (the send-off fires next, and you want the tree settled before it does).
 
 **Framework**: Huryn's three-block memory. Not a template you fill; a frame that names what you've been building.
 
@@ -104,7 +110,7 @@ Once the frame is named through your own material, let Claude propose the actual
 
 Phase 3 is where the exercise ends. The module's Debrief takes over:
 
-1. Claude self-compounds your personal `CLAUDE.local.md` from session evidence: integrates, sharpens, removes. Team-worthy rules get flagged in the summary, not auto-PRed.
+1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence — integrates, sharpens, removes — and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
 3. You paste the send-off prompt to the same session and close the laptop (or stop the run when you've seen enough; traces are data).
 
@@ -154,8 +160,8 @@ See the module file for the two Debrief prompts.
 - Voice-smuggling at Phase 3 or Debrief — if it starts sounding like M5's unleashed leverage, student thinks this is the leverage moment. It isn't. M4 is readiness without completion.
 - Package-pre-empt at Debrief — the highest-probability module-specific failure.
 
-**TODO (Pass 3):**
-- Three-persona simulation sweep (mid-competent / opinionated-senior / fast-operator), self-study mode with Agentic Nerd present. Mood scores per phase.
-- Worked-example task shapes by engineer archetype (backend / frontend / platform / data) — reference file at `curriculum/reference/picking-a-first-long-task.md`.
-- Capability check: session-left-running behaviour overnight; mid-run Ctrl+C trace preservation.
-- Paired simulation against the M5 return exercise to verify the un-packaged artifact has enough surface area for M5's diagnosis-by-contrast.
+**TODO (pre-first-cohort):**
+- Re-simulation after the 2026-04-23 reshape.
+- Worked-example task shapes by engineer archetype (backend / frontend / platform / data) at `curriculum/reference/picking-a-first-long-task.md`.
+- Capability check: session-left-running overnight; mid-run Ctrl+C trace preservation.
+- Paired sim against M5's return exercise — does the un-packaged artifact give M5 enough surface for diagnosis-by-contrast?

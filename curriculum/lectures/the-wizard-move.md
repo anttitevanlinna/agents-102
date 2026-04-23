@@ -6,9 +6,25 @@ You've already done the hard part. You found this training because you use Claud
 
 So we won't do it.
 
-## What a wizard-level move looks like
+## Context is King
 
-In a minute, someone in the room will volunteer their codebase. A real one — not a demo repo, not the Hello World you cloned to try the tool. Something with daily mess. On that codebase, in this session, we'll do a move together that takes an hour to describe and three minutes to run.
+The same question. Two answers. What makes the difference?
+
+Two Claude chat windows.
+
+In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian — pasta, osso buco, risotto.
+
+In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish — salmon, rye bread, meatballs.
+
+Same words. Different answer. The first exchange became context, and the context colored everything after.
+
+Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works — and what you're about to learn.
+
+One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking — because you told it who you are, and every answer after took that into account.
+
+Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.
+
+That's the move. Not a clever prompt, not a slash command you didn't know. Loading the right context before the question. Everything else in this training is about how to earn the second window on any codebase, any Monday.
 
 You'll watch what's *possible* — not what's missing. That's the posture of this training.
 
@@ -26,7 +42,7 @@ In the Connections question you just answered — the trick you brought — the 
 
 **Grade.** There's no certificate at the end. The builder CTO who funded this training doesn't buy certification theater and we won't sell it.
 
-**Pick a winner vendor.** Claude Code is the substrate — we made that choice so we can teach at depth. The training teaches the practices that stay durable as the model improves, not the model itself.
+**Pick a winner vendor.** Claude Code is the tool we picked so we can teach at depth. The training teaches the practices that stay durable as the model improves, not the model itself.
 
 ## What you'll do today
 
@@ -39,11 +55,17 @@ Let's go.
 <!-- maintainer -->
 
 **Meta:**
-- **Pass:** Pass 2 skeleton. Pass 3 adds the concrete wizard-move demo choice (see open question in the module file).
 - **Placement:** M1 opener, after Connections, before the exercise.
-- **Runtime:** 10 min. The live wizard demo on a volunteer codebase runs inside this slot — the lecture prose is the 5–7 min setup; the demo fills the rest.
+- **Runtime:** 10 min. 5–7 min lecture prose + 3 min live two-session demo on the volunteer's codebase.
 - **Voice:** Seth × Rory × Risto — warm + counterintuitive + direct about what this refuses to be.
 
-**TODO (2026-04-21 session close):**
-- **Wizard-demo menu.** 3–5 candidate moves worth running live on a volunteer codebase. Candidates to flesh out: full-repo-map-in-one-turn, scheduled-agent-set-up-live, subagent-dispatched-for-refactor-audit, MCP-server-for-local-service, compound-loop-on-facilitator's-own-repo. Each needs: setup time, failure modes, recovery if live demo goes sideways. Before first delivery.
-- **Pass 3 polish.** Current lecture is skeleton prose; some register carries training-author warmth (Greg-persona sim hallucinated motivational lines). Trim sentences that read as pep-talk before first cohort. Keep the Rory beats; cut the warmth.
+**The Context is King demo (stolen verbatim from Bootstrap):**
+- Two chat windows. Capital-of-Italy → pasta suggestion. Largest-lake-of-Finland → Finnish dinner. Same second prompt, different answer, because the first exchange became context.
+- Third window: cardiologist-preparing-dinner-for-patients → heart-healthy suggestion. Context is whatever you tell it.
+- Not adapted for engineers. The universality is the point — the lesson lands because it is not about code. Engineers come in expecting a clever-prompt flex and get a 60-second demo that reframes the whole training.
+
+**Demo watch-fors:**
+- Room wants something code-specific up front — hold. The exercise is on their codebase; the opener isn't. The abstract demo is what makes Monday-on-their-repo feel inevitable rather than impressive.
+
+**TODO (pre-first-cohort):**
+- **Register polish.** Greg-persona sim hallucinated pep-talk lines — trim training-author warmth; keep the Rory beats.

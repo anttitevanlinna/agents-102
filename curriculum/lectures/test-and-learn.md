@@ -69,7 +69,7 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 - Don't pre-teach Ronacher's three-pattern. M5 does it through diagnosis; naming the pieces here steals M5's contrast.
 - Don't turn "cancel is legit" into a disclaimer. It's a practitioner rule, not a safety net. Frame it as *what real operators do*, not *what nervous students can fall back on*.
 
-**TODO (Pass 3):**
-- Re-verify Huryn source URL + freshness (flagged stale-suspect per M4 generation-cycle plan).
-- Three-persona simulation pass covering this lecture as prework (some cohorts may ship lectures as pre-reading rather than live — verify register holds under both delivery modes).
-- If Ronacher's three-pattern source isn't within 6 months at M5 drafting, replace with a named convergence pattern from the research KB.
+**TODO (pre-first-cohort):**
+- Re-verify Huryn source URL + freshness.
+- Three-persona sim covering this lecture as prework — register holds under both live and pre-reading modes?
+- If Ronacher's three-pattern source isn't within 6 months at M5 drafting, swap for a named convergence pattern from the research KB.

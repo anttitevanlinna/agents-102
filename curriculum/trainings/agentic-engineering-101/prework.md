@@ -1,38 +1,48 @@
 # Prework: before Module 1
 
-Land at Module 1 with the content folder on disk, Claude Code open on a repo that matters, one trivial bug picked, and the wizard-move framing in your head. About 30 minutes.
+Land at Module 1 with Claude Code open in the repo you're going to grow, the content folder visible to Claude, one trivial bug picked, and the wizard-move framing in your head. About 30 minutes.
 
-## 1. Unzip the content folder (2 min)
+## 1. Pick THE repo (10 min)
 
-Unzip `agents-102-content-agentic-engineering-101.zip` somewhere you'll find it. `~/agents-102/`, alongside your repo, your call. Claude will read from this folder during the training.
-
-## 2. Make sure Claude Code is working (2 min)
-
-CLI or desktop, your call. Signed in, sends a prompt, reads a file. If it's not, this is the moment to fix it.
-
-## 3. Pick THE repo (10 min)
-
-One decision: which repo are you going to grow rules + memory on over the next six weeks?
+One decision: which repo are you going to grow rules and memory on over the next six weeks?
 
 - One you own or co-own
 - One you'll still work in six months
 - Dense enough that compounding has somewhere to land (the Hello World you cloned to try Claude Code isn't it)
-- Real work ahead at two sizes. Module 1 ships a one-line fix. Module 4 onward runs test-and-learn experiments on bigger things — an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
+- Real work ahead at two sizes. Module 1 ships a one-line fix. Module 4 onward runs test-and-learn experiments on bigger things (an epic you're about to start, a refactor that's been sitting, a feature with unknowns). The repo should have both.
 
-Pick one. Start a new Claude Code session in that repo.
+Pick one. Every module of this training opens Claude Code against this repo. Worktrees fine. All compounding lands here.
 
-## 4. Let Claude walk you through the rest (15 min)
+## 2. Start a new Claude Code session in THAT repo (2 min)
 
-Ask Claude to read the wizard-move framing, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1.
+CLI or desktop, your call. Open a new session with the repo as the working directory. Send a prompt, read a file. If Claude Code isn't working, this is the moment to fix it.
+
+## 3. Unzip the content folder (2 min)
+
+Unzip `agents-102-content-agentic-engineering-101.zip` to `~/Documents/ae101-content/`. Note the absolute path; the next step hands it to Claude.
+
+## 4. Point Claude at the content folder (1 min)
+
+In the Claude Code session you just opened, type this slash command. **Replace the placeholder with your actual absolute path before hitting enter.**
+
+```
+/add-dir /absolute/path/to/content/folder
+```
+
+Session-only for now. M1's compound step pins it permanently to `.claude/settings.local.json` so future sessions load it automatically.
+
+## 5. Let Claude walk you through the rest (15 min)
+
+Ask Claude to read the wizard-move framing, install the curated skills from the content folder, screen three candidate bugs, and confirm the repo is ready for Module 1.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-I'm starting a six-module training called Agentic Engineering 101. The curriculum content is unzipped somewhere on my machine. Ask me for the path, then do four things:
+I'm starting a six-module training called Agentic Engineering 101. Before anything else: check your working directories. You should see a content folder alongside the repo — it contains `lectures/`, `exercises/`, `content/skills/`, and `reference/`. If you don't see it, stop and tell me to run `/add-dir <path>` first. If you do see it, confirm the absolute path back to me, then do four things:
 
-1. Read lectures/the-wizard-move.md and tell me the framing in your own words, in under two minutes. I want it landed before Module 1 starts.
+1. Read lectures/the-wizard-move.md from the content folder and tell me the framing in your own words, in under two minutes. I want it landed before Module 1 starts.
 
-2. Install the training's curated skills as personal skills. Copy every folder under content/skills/ to ~/.claude/skills/ (preserve the per-skill folder structure, keep SKILL.md capitalisation). Confirm each skill folder now exists at ~/.claude/skills/<name>/SKILL.md. These are personal to me, removable after training with rm -rf.
+2. Install the training's curated skills as personal skills. Copy every folder under content/skills/ in the content folder to ~/.claude/skills/ (preserve the per-skill folder structure, keep SKILL.md capitalisation). Confirm each skill folder now exists at ~/.claude/skills/<name>/SKILL.md. These are personal to me, auto-discovered by Claude Code in every session, removable after training with rm -rf.
 
 3. Ask me for three bugs I could fix in an hour. I'll tell you the symptom for each. Screen them against these criteria: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
 
@@ -43,18 +53,21 @@ Ask one question at a time if you need to, no preamble.
 
 *(end of prompt)*
 
-## 5. Bring to M1
+## 6. Bring to M1
 
 Connections question. We'll ask at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a frustration instead.
 
 <!-- maintainer -->
 
 **Meta:**
-- **Runtime:** 30 min target. Steps 1–2 are crisp; step 3 is where time can expand if the student's repo is messy.
-- **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude.
-- **Artifacts at end of prework:** content folder path, chosen repo (Claude Code open in it), one picked bug (in the scrollback), and two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md` (auto-discovered by Claude Code in every session, invokable by name; removable after training with `rm -rf`).
+- **Runtime:** 30 min target. Steps 1–4 are crisp; step 5 is where time can expand if the student's repo is messy.
+- **Delivery architecture:** student's repo is the working directory across every module. Prework adds the content folder via `/add-dir` (session-only). M1 Ex3 compound step promotes the path to `.claude/settings.local.json` under `additionalDirectories` so every subsequent session auto-loads it. Split kept clean: rules → `CLAUDE.local.md`; config → `settings.local.json`. Skills install to `~/.claude/skills/` (user-level), auto-discover in every session regardless of cwd.
+- **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The one exception is the `/add-dir` slash command, which is a UI primitive not a file-edit.
+- **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk + added to the session via `/add-dir`, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback TBD. Don't absorb install debugging into M1 time.
 - **Delivery:** classroom cohorts get the zip link via email + Slack/Teams ahead of Day 1. Self-study students download from the site.
 
-**TODO:**
-- **Build the content folder zip.** Before first cohort: packaging script that zips `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/trainings/agentic-engineering-101/prework.md`, `curriculum/reference/`, and the curated M3 skills (`content/skills/access-control-analysis/SKILL.md`, `content/skills/stride/SKILL.md` — to be written in Pass 2) into `agents-102-content-agentic-engineering-101.zip`. Verify unzip produces the paths referenced by the prompts: `lectures/the-wizard-move.md`, `reference/claude-code-for-engineers.md`, and `content/skills/<name>/SKILL.md` all resolvable from the content folder root. The install step in step 4's prompt copies every folder under `content/skills/` to `~/.claude/skills/` — so the zip must put the curated skills under exactly that path.
+**TODO (pre-first-cohort):**
+- **Sim + eval the two minimal skills** on a real Node.js backend. Skill bodies are deliberately minimal (situation + audience + output shape, no methodology teaching).
+
+**Packaging:** `scripts/build-ae101-content-zip.sh` builds `agents-102-content-agentic-engineering-101.zip` from repo. Run before each cohort; host per customer.

@@ -1,27 +1,27 @@
 # Plan mode, done right
 
 ## Big Idea
-Reading a plan is finite — your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see, grill-me for what you can't. Paired, they give a complete read; neither alone does.
+Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see, grill-me for what you can't. Paired, they give a complete read; neither alone does.
 
 ## Meta
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the push-back is the Evaluate beat)
-- **Prework:** about 10 min — surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
-- **Homework:** none — M3 opens on a fresh pair of compact exercises.
+- **Prework:** about 10 min. Surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
+- **Homework:** none. M3 opens on a fresh pair of compact exercises.
 - **Materials (trainer):** content folder already on student's machine from M1. No new scaffolds.
 - **Plug points:** the student's own repo (carried from M1) + one backlog task the student brings.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions — the three things that separate a plan from a draft
-- **Push back** twice via *keep planning with feedback* — a soft item plus either an assumption or a committed change — so the plan reflects what you can see
+- **Run** plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions: the three things that separate a plan from a draft
+- **Push back** twice via *keep planning with feedback* (a soft item plus either an assumption or a committed change) so the plan reflects what you can see
 - **Invoke** the `grill-me` skill as a second-pass read that walks down unresolved branches you didn't think to check
 - **Recognize** the pairing as a repeatable design pattern: human read → push-back → agent read → grill → approve
 - **Name** plan-mode approval inflation as the thing the pairing defeats, not a moralistic warning
-- **Write** one named pattern into your personal `CLAUDE.local.md` (gitignored) that captures how plans get read in this codebase — if it's team-worthy, flag it for a separate PR against team `CLAUDE.md` (see [reference § 1](../reference/claude-code-for-engineers.md))
+- **Write** one named pattern into your personal `CLAUDE.local.md` (gitignored) that captures how plans get read in this codebase. If it's team-worthy, flag it for a separate PR against team `CLAUDE.md` (see [reference § 1](../reference/claude-code-for-engineers.md))
 
 ## Connections
 
-**The question — to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work? Write one line, or paste it in chat if you're remote. The room harvests everyone's before the lecture names the pattern.
+**The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work? Write one line, or paste it in chat if you're remote. The room harvests everyone's before the lecture names the pattern.
 
 ## Lectures
 
@@ -34,17 +34,17 @@ After this module, you will be able to:
 ## Key Concepts (Emergent)
 - A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
-- Assumption-silent isn't assumption-free — every plan assumes something, and the good ones say what
-- Structure is persuasive — a 7-item plan with headers looks like a decision even when it's a draft
+- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what
+- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft
 - One kind of scrutiny catches one kind of miss; a human read and an agent decision-tree walk catch different things, and the gap between them is the plan-reading skill you're building
-- You don't have to execute a plan to know it's good — the work of making it good is the exercise
-- Plan mode is a permission state, not a mood — it's what makes the read possible, not the read itself
+- You don't have to execute a plan to know it's good. The work of making it good is the exercise
+- Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
 
 ## Plug Points
 
-Student's own repo (carried from M1) and a backlog task they surface in prework. No company data needed yet — the task is already theirs.
+Student's own repo (carried from M1) and a backlog task they surface in prework. No company data needed yet; the task is already theirs.
 
-The Compound step writes the new pattern to your personal `CLAUDE.local.md` by default (gitignored, no PR). If the pattern is team-worthy, flag it for a separate PR against team `CLAUDE.md` (sponsor-stated home per pre-engagement contract — `./CLAUDE.md` / `./.claude/CLAUDE.md` / `AGENTS.md`). Student override with a reasoned alternative is legitimate; opting out is not a path.
+The Compound step writes the new pattern to your personal `CLAUDE.local.md` by default (gitignored, no PR). If the pattern is team-worthy, flag it for a separate PR against team `CLAUDE.md` (sponsor-stated home per pre-engagement contract: `./CLAUDE.md` / `./.claude/CLAUDE.md` / `AGENTS.md`). Student override with a reasoned alternative is legitimate; opting out is not a path.
 
 ## Debrief
 
@@ -53,24 +53,24 @@ The Compound step writes the new pattern to your personal `CLAUDE.local.md` by d
 **Prompt** *(copy → Claude Code)*
 
 ```
-Review this session. We took a real backlog task through plan mode, I pushed back twice via keep-planning-with-feedback (a soft item, then an assumption check or a committed change), and then ran a grill-me pass that walked down the unresolved branches. We approved the sharpened plan and stopped — didn't execute.
+Review this session. We took a real backlog task through plan mode, I pushed back twice via keep-planning-with-feedback (a soft item, then an assumption check or a committed change), and then ran a grill-me pass that walked down the unresolved branches. We approved the sharpened plan and stopped; didn't execute.
 
 Read the original plan, the plan after my two push-backs, and the plan after grill-me. Scan the scrollback for the branches grill surfaced and how I answered. What's the DESIGN PATTERN I just ran?
 
-Then integrate one named pattern into my personal `CLAUDE.local.md` (create it at the repo root and add to `.gitignore` if it doesn't exist — this is my personal file, not team `CLAUDE.md`). **Name the branch, not the rule.** Quote the specific branch grill surfaced or the specific line my push-back sharpened — something like *"plans touching the webhook ingress layer need a grill pass on cache-invalidation before approval — the router's 60-second memoization is invisible from a first read."* Not *"always pair push-back with grill"* (generic rubric). Integrate, don't append. If a plan-reading rule exists, sharpen it with this session's specific branch.
+Then integrate one named pattern into my personal `CLAUDE.local.md` (create it at the repo root and add to `.gitignore` if it doesn't exist; this is my personal file, not team `CLAUDE.md`). **Name the branch, not the rule.** Quote the specific branch grill surfaced or the specific line my push-back sharpened. Something like *"plans touching the webhook ingress layer need a grill pass on cache-invalidation before approval; the router's 60-second memoization is invisible from a first read."* Not *"always pair push-back with grill"* (generic rubric). Integrate, don't append. If a plan-reading rule exists, sharpen it with this session's specific branch.
 
-If the pattern is team-worthy — useful to every engineer shipping this codebase — flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
+If the pattern is team-worthy (useful to every engineer shipping this codebase) flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
 
-When you're done, tell me in 3–5 lines: what pattern you named, where it landed, which moment in the session made you pick that one over others — and whether grill-me surfaced anything my push-back would have caught on a slower day. I shouldn't have to open the file to know.
+When you're done, tell me in 3–5 lines: what pattern you named, where it landed, which moment in the session made you pick that one over others, and whether grill-me surfaced anything my push-back would have caught on a slower day. I shouldn't have to open the file to know.
 ```
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong — quote the session moment, tell Claude what it misread. One named pattern per session; don't let the rules file grow a generic-rubric section.
+Read the summary. Push back where it's wrong. Quote the session moment, tell Claude what it misread. One named pattern per session; don't let the rules file grow a generic-rubric section.
 
 ## Bridge
 
-You built a plan you trust without running it — and you ran grill-me on something small enough that the pairing *felt* worth the 15 minutes. M3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch grill surfaced today, before a teammate needs to ask.
+You built a plan you trust without running it, and you ran grill-me on something small enough that the pairing *felt* worth the 15 minutes. M3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch grill surfaced today, before a teammate needs to ask.
 
 <!-- maintainer -->
 

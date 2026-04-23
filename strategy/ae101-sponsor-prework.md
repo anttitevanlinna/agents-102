@@ -2,7 +2,7 @@
 
 **Audience:** the sponsor CTO (or equivalent buyer) who signed the cohort for their team.
 **Purpose:** the one question the training needs answered *before* Day 1 — *where does durable engineering knowledge live in this company so an agent can read it next time?*
-**Runtime:** 15 minutes, once. Four answers, one reason each.
+**Runtime:** 15–20 minutes, once. Five answers, one reason each.
 **Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. The Agentic Nerd reads it at the right blocker in each module and substitutes your answer into the student's workflow. No student asks *"where should this go?"* — your answer is already in the prompt.
 
 This is the asset we send to the sponsor after contract signature, weeks before Day 1. It's a pre-engagement deliverable, not a training artifact.
@@ -20,11 +20,11 @@ You're the right person to answer because:
 - **Your answer is overridable, not final.** Your engineers are often right about their own repo. If one proposes a better home with a reason, we go there — and we feed the reasoning back to you at close. Your answer is the default, not a decree.
 - **Opting out isn't available** — the compounding loop requires a durable home. A cohort where nobody picks one produces six engineers with disposable memory. Every week. For six weeks.
 
-Half the CTOs who fill this worksheet discover their company doesn't have an answer to one of the four questions. That discovery is the most valuable thing the training does, and it happens before Day 1.
+Half the CTOs who fill this worksheet discover their company doesn't have an answer to one of these questions. That discovery is the most valuable thing the training does, and it happens before Day 1.
 
 ---
 
-## The four answers
+## The five answers
 
 For each, one home, one reason. Under three sentences each.
 
@@ -88,6 +88,21 @@ Reason:
 
 ---
 
+### 5. Ticket tracker — which system tracks bugs, epics, and tasks for this team?
+
+*Shows up:* Module 1. The first loop closes by closing a real ticket through an MCP connection. We need to know the target.
+
+*Common shapes:* Jira. Linear. GitHub Issues. Shortcut. Azure DevOps. If the team uses more than one, name the primary one for this cohort.
+
+**Your answer:**
+
+```
+System: 
+Reason: 
+```
+
+---
+
 ## If you don't have an answer for one (or more)
 
 That's the most common case. Pick the one you'd trial for this cohort, note that it's provisional, and tell us you want to see what the engineers push back on. We collect the overrides at close; you get a memo with *"your six engineers agreed with the default on decisions, disagreed on memory (three proposed external wiki, three proposed in-repo), and four of six proposed a team-kit repo structure."* That's a Q3 planning artifact.
@@ -106,7 +121,7 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 <!-- maintainer -->
 
 **Maintainer notes:**
-- Ship alongside the signed contract and the cohort prework email. Sponsor fills in 15 minutes; ops converts the four answers into `content/pre-engagement-contract.md` in the content bundle.
+- Ship alongside the signed contract and the cohort prework email. Sponsor fills in 15–20 minutes; ops converts the five answers into `content/pre-engagement-contract.md` in the content bundle.
 - **Asset status:** v0 — sponsor-facing, not yet sent to a real sponsor. First cohort delivery is the first test. Iterate from sponsor feedback.
 - **Tone check:** sponsor is a builder CTO (reads Willison, uses Claude Code daily). Direct, short, no consultant padding. The Rory beats ("Half the CTOs who fill this worksheet discover…") earn their keep because the sponsor wants a transformation artifact, not a training vendor's paperwork. If a real sponsor finds any line smells like vendor-speak, trim.
 - **Override handling** — the Nerd writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution. The trainer collects these for the close memo. Implementation lives in the Agentic Nerd skill (not yet built).

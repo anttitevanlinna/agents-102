@@ -2,7 +2,7 @@
 
 **What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. The skill will walk the six STRIDE categories against every surface on your map and produce a threat list. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
 
-**What happens:** STRIDE does the breadth — Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in 20 minutes and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
+**What happens:** STRIDE does the breadth: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in 20 minutes and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
 
 **The point:** Threat modeling is only useful if it produces a decision. STRIDE's value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.
 
@@ -10,21 +10,21 @@
 
 ---
 
-## Phase 1 — invoke the skill on the mapped surface (~7 min)
+## Phase 1: invoke the skill on the mapped surface (~7 min)
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Use the stride skill at content/skills/stride/ to threat-model the feature. Read the access surface map I built in the previous exercise at content/m3-working/access-surface.md — that's your input. Run STRIDE against the surfaces on the map (the skill will tell you how it structures the pass).
+Use the stride skill at content/skills/stride/ to threat-model the feature. Read the access surface map I built in the previous exercise at content/m3-working/access-surface.md; that's your input. Run STRIDE against the surfaces on the map (the skill will tell you how it structures the pass).
 
-Produce a threat list in the skill's output format. Save it at content/m3-working/stride-threats.md. Flag which threats the skill thinks are high-severity for this feature; don't decide yet — I'll decide next.
+Produce a threat list in the skill's output format. Save it at content/m3-working/stride-threats.md. Flag which threats the skill thinks are high-severity for this feature; don't decide yet. I'll decide next.
 ```
 
 *(end of prompt)*
 
 Let it run. The output will have more entries than you want to deal with. That's expected.
 
-## Phase 2 — pick the one (~8 min)
+## Phase 2: pick the one (~8 min)
 
 You're going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.
 
@@ -35,23 +35,23 @@ I want to pick one threat from the STRIDE list to harden against in this PR. Hel
 
 Ask me: if this feature caused a security incident next Tuesday, what's the most plausible story? Wait for my answer.
 
-Then: of the threats on the list, which one most closely matches that story? If my answer points at a threat the skill didn't surface, tell me — that's a gap in the map, not a reason to ignore the threat. Name it.
+Then: of the threats on the list, which one most closely matches that story? If my answer points at a threat the skill didn't surface, tell me. That's a gap in the map, not a reason to ignore the threat. Name it.
 
 Then: is the hardening decision obvious once we've named the threat, or do I need to see alternatives? If alternatives, name 2–3 and recommend one, with the reason.
 
-One question at a time. Don't assemble into a plan — I want to walk through the reasoning.
+One question at a time. Don't assemble into a plan. I want to walk through the reasoning.
 ```
 
 *(end of prompt)*
 
-Answer each. Don't rush the first question — the "most plausible incident story" is the move that makes STRIDE useful rather than performative.
+Answer each. Don't rush the first question. The "most plausible incident story" is the move that makes STRIDE useful rather than performative.
 
-## Phase 3 — write the ADR (~5 min)
+## Phase 3: write the ADR (~5 min)
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Write an ADR for the hardening decision we just made. Use my repo's ADR convention — check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).
+Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).
 
 Ground each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.
 
@@ -60,13 +60,13 @@ Show me the ADR before saving. I'll push back once.
 
 *(end of prompt)*
 
-Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back — the ADR should read like one engineer explaining a call to another. Ship.
+Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship.
 
 ---
 
 ## What this sets up
 
-The next exercise authors a test-strategy skill and invokes it on this feature — which is now security-tested. The hardening decision you just made becomes a test case in the test strategy. The ADR is in the repo. The threats you rejected are documented. Your CISO has something to read.
+The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision you just made becomes a test case in the test strategy. The ADR is in the repo. The threats you rejected are documented. Your CISO has something to read.
 
 <!-- maintainer -->
 

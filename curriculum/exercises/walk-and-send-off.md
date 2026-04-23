@@ -1,47 +1,47 @@
 # Walk and send off
 
-**What you do:** Pick a multi-hour task you've been avoiding. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off — un-packaged — to the same Claude Code session. Close the laptop, or stop the run when you've seen enough.
+**What you do:** Pick a multi-hour task you've been avoiding. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Close the laptop, or stop the run when you've seen enough.
 
 **What happens:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). M5 opens with whatever came back.
 
-**The point:** This is the first experiment of a two-run arc. The un-packaged send-off tonight teaches M5 what packaging adds — a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
+**The point:** This is the first experiment of a two-run arc. The un-packaged send-off tonight teaches M5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
-**Time:** 60 minutes inside a 2h module slot (Phases 1–3). The Debrief + send-off (~15–20 min) is owned by the module file, not this exercise — the two together close M4.
+**Time:** 60 minutes inside a 2h module slot (Phases 1–3). The Debrief + send-off (~15–20 min) is owned by the module file, not this exercise; the two together close M4.
 
 ---
 
-## Phase 1 — Pick the task (~10 min)
+## Phase 1: Pick the task (~10 min)
 
-Open Claude Code in your repo. Paste this prompt and work through it in conversation:
+Start a new Claude Code session in your repo. Paste this prompt and work through it in conversation:
 
 **Prompt** *(copy → Claude Code)*
 
-You've come in with one or two candidate tasks in mind (Connections). Claude screens them — it can't scan your roadmap or Jira, and we don't want it to; the picking work is your judgement about what's been sitting, and Claude's job is to check fit.
+You've come in with one or two candidate tasks in mind (Connections). Claude screens them. It can't scan your roadmap or Jira, and we don't want it to; the picking work is your judgement about what's been sitting, and Claude's job is to check fit.
 
 ```
-I'm about to run my first long-running experiment. I've come with one or two candidate tasks from my backlog — multi-hour work I haven't got to, or tasks I'd rather an agent took the first pass at.
+I'm about to run my first long-running experiment. I've come with one or two candidate tasks from my backlog: multi-hour work I haven't got to, or tasks I'd rather an agent took the first pass at.
 
 Ask me to describe each candidate in a line or two. Then screen them against three criteria:
 - Sustained coherence across multi-hour work
 - Requirement-weaving (multiple things need to hold at once)
 - Multi-file reasoning
 
-For each candidate, give me your read — fit / marginal / wrong shape — and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more tonight.
+For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more tonight.
 ```
 
 *(end of prompt)*
 
-Claude will ask, you'll describe, it'll screen. Push back on the read if it misses something about the codebase — you know what's really there; Claude's reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
+Claude will ask, you'll describe, it'll screen. Push back on the read if it misses something about the codebase. You know what's really there; Claude's reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
 
 **The point:** pick once, pick well. M5 inherits the same task — we re-run it packaged, so the contrast is the pedagogy.
 
 ---
 
-## Phase 2 — Walk and fill (~35 min)
+## Phase 2: Walk and fill (~35 min)
 
 ### The audit (~10 min)
 
-Claude audits your system as a subagent — fresh context, ranked report back.
+Claude audits your system as a subagent: fresh context, ranked report back.
 
 **Prompt** *(copy → Claude Code)*
 

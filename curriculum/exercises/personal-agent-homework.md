@@ -20,7 +20,7 @@ For the risk-scan and next-move jobs, no connector needed — the agent reads yo
 
 **Step 2 — capture the look.**
 
-Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website — colours, typography, headers, the voice — and store it as a pattern the agent reuses forever. Same substrate lesson as the memory: text on disk, referenced by name.
+Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website (colours, typography, headers, the voice) and store it as a pattern the agent reuses forever. Same lesson as the memory: text on disk, referenced by name.
 
 Remember Module 1's snake.html? Claude writes HTML files. You're about to give those files a house style.
 
@@ -91,7 +91,7 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 **Frameworks riffed on:**
 - Toyota Kata — the morning agent is a daily PDSA beat on the challenge. Running it, observing, adjusting — kata made file-based.
 - Drucker-adjacent knowledge-work routines — attaches a file-based system to the morning routine participants already have.
-- Design-system-as-text-file — `style.md` is a brand-pattern file the way the memory is a knowledge-pattern file. Same substrate move.
+- Design-system-as-text-file — `style.md` is a brand-pattern file the way the memory is a knowledge-pattern file. Same move.
 
 **Cross-module ripple from Step 2 (style.md + CLAUDE.md rule):**
 - `style.md` lives at the training-directory root, so every subsequent module's agents inherit the house style the moment they produce HTML output. Module 3's synthesizer answer, Module 7's team report, Module 8's strategic deliverable — all can render stylised without a second styling exercise. The rule line in `CLAUDE.md` is the mechanism.

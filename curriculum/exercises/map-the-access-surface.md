@@ -1,8 +1,8 @@
 # Exercise: Map the access surface
 
-**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide — on the record, in your repo — which surface it flagged that you'd underweighted, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
+**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it flagged that you'd underweighted, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
 
-**What happens:** The access-control analysis skill runs a structured pass across the feature — user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You then sit with the map for three minutes and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
+**What happens:** The access-control analysis skill runs a structured pass across the feature: user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You then sit with the map for three minutes and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
 
 **The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment that the skill can't have.
 
@@ -10,9 +10,9 @@
 
 ---
 
-## Phase 1 — invoke the skill (~7 min)
+## Phase 1: invoke the skill (~7 min)
 
-Open Claude Code at your repo root, with the content folder already unzipped from prework (`content/skills/access-control-analysis/` is where the curated skill lives).
+Start a new Claude Code session at your repo root, with the content folder already unzipped from prework (`content/skills/access-control-analysis/` is where the curated skill lives).
 
 **Prompt** *(copy → Claude Code)*
 
@@ -26,16 +26,16 @@ Produce the surface map the skill asks for. Save it at content/m3-working/access
 
 Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
 
-## Phase 2 — sit with the map (~3 min)
+## Phase 2: sit with the map (~3 min)
 
 Open the file. Read it end to end without typing anything. Your instinct is going to be to scan; don't. Read.
 
 While you read, hold two questions in mind:
 
-- Which surface did the skill flag that I'd underweighted? (The one that made you go *"oh — that's actually exposed"*.)
+- Which surface did the skill flag that I'd underweighted? (The one that made you go *"oh, that's actually exposed"*.)
 - Which surface do I know matters that the skill missed? (The one where your codebase knowledge beats the skill's breadth.)
 
-## Phase 3 — write the delta (~7 min)
+## Phase 3: write the delta (~7 min)
 
 Now you decide.
 
@@ -44,20 +44,20 @@ Now you decide.
 ```
 I read the access surface map. I'm going to tell you two things, one at a time:
 
-First: which surface the skill flagged that I'd underweighted — and why it matters in this codebase specifically. Ask me after I answer if the reason I gave is codebase-specific or generic; if generic, push me to sharpen it.
+First: which surface the skill flagged that I'd underweighted, and why it matters in this codebase specifically. Ask me after I answer if the reason I gave is codebase-specific or generic; if generic, push me to sharpen it.
 
-Second: which surface the skill missed that I know matters — with the reason I know.
+Second: which surface the skill missed that I know matters, with the reason I know.
 
 Ask for the first answer. Wait. Then ask for the second.
 
-When you have both, add them to content/m3-working/access-surface.md in a section called "Codebase-tuned delta" — integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
+When you have both, add them to content/m3-working/access-surface.md in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
 ```
 
 *(end of prompt)*
 
-Answer. Push back on the sharpening question until the reason names something specific to your codebase — *"the billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
+Answer. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
-## Phase 4 — handoff check (optional, up to ~3 min)
+## Phase 4: handoff check (optional, up to ~3 min)
 
 You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
 

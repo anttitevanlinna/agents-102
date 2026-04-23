@@ -335,9 +335,11 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
 
 ## Prompt design rules (for any prompt participants copy into Claude Code)
 
-- **Canonical presentation shape — open label, blank line, fenced code block, close marker.** Every prompt the student is meant to copy ships in this shape, in both module/exercise files and Teacher Claude's chat:
+- **Canonical presentation shape — action lead-in, open label, blank line, fenced code block, close marker.** Every prompt the student is meant to copy ships in this shape, in both module/exercise files and Teacher Claude's chat:
 
   ```
+  Ask Claude to <one-sentence semantic summary of what the prompt does>.
+
   **Prompt** *(copy → Claude Code)*
 
   ​```
@@ -347,7 +349,7 @@ Flesh out each exercise and lecture file to facilitator-runnable prose. Add:
   *(end of prompt)*
   ```
 
-  The label `**Prompt**` + the action hint `*(copy → Claude Code)*` (or `*(copy → Builder Claude)*` in self-study chat) make the affordance unmistakable; the fenced block is what the student copies; the closing `*(end of prompt)*` line mirrors the open and makes the boundary visible — without it, the student doesn't know where copy stops and the next instruction starts. **Don't** lead in with prose like *"Now paste this:"* or *"Try this prompt:"* — the label carries it. Don't wrap prompts in blockquotes (`>`), inline backticks, or naked indentation. Path-A / Path-B branches: label the path first, then the prompt block under it. One-line context note before the label is fine when the prompt needs framing; don't restate what the prompt says. After the closing marker, name the expected return shape in one line if it matters (*"Builder writes a file called X and tells you so"*).
+  The **action lead-in** is a single sentence with a command verb (*Ask Claude to…*, *Have Claude…*, *Run X against Y*) summarizing what the prompt achieves. Under 20 words. Prompts get copy-pasted and often run before being fully read; the lead-in is what the skimming student sees. The label `**Prompt**` + the action hint `*(copy → Claude Code)*` (or `*(copy → Builder Claude)*` in self-study chat) make the affordance unmistakable; the fenced block is what the student copies; the closing `*(end of prompt)*` line mirrors the open and makes the boundary visible — without it, the student doesn't know where copy stops and the next instruction starts. **Don't** lead in with mechanical narration like *"Now paste this:"* or *"Try this prompt:"* — the label carries the mechanical affordance. The action lead-in above is semantic (*what the prompt does*), not mechanical (*what the student does*); both the semantic lead-in and the mechanical ban hold together. Don't wrap prompts in blockquotes (`>`), inline backticks, or naked indentation. Path-A / Path-B branches: label the path first, then the prompt block under it. After the closing marker, name the expected return shape in one line if it matters (*"Builder writes a file called X and tells you so"*). Compendium mirror: `memory/check_student_facing.md § 16`.
 
 - **Match prompt paths to Builder scope — no duplication.** Every path inside a prompt block the student pastes must be written relative to wherever the Builder is currently open. Concretely:
   - **Prework + Module 1** — the Builder is open INSIDE the folder that holds the artifacts (`<training-dir>/prework/` for prework, `<training-dir>/module-1/` for M1). Prompts use **bare filenames** here: `snake.html`, `site.html`, `CLAUDE.md`. A `prework/` or `module-1/` prefix inside one of these prompts would create a duplicated-path bug (`prework/prework/snake.html`).

@@ -5,21 +5,21 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 
 ## Meta
 - **Primary Bloom's level:** Apply (run the three-phase loop end-to-end) + Analyze (read Claude's own introspection against `/context`; read the retro summary against session moments)
-- **Prework:** about 30 min — [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1). Content folder unzipped, Claude Code open on the repo you'll grow, one bug surfaced in conversation with Claude.
-- **Homework:** none — Module 2's setup lives in Module 2's prework.
-- **Materials (trainer):** content folder (`agents-102-content-agentic-engineering-101.zip`) shipped before prework; no trainer scaffolds beyond that. All compounding artifacts land in the student's repo (see `content-strategy-agentic-engineering-101.md` § Delivery architecture). Claude Code specifics (MCP install per tracker, tenant-admin fallbacks) live in `curriculum/reference/mcp-and-connectors.md` — updated as Claude Code's install surface changes.
+- **Prework:** about 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1). Content folder unzipped, Claude Code open on the repo you'll grow, one bug surfaced in conversation with Claude.
+- **Homework:** none. Module 2's setup lives in Module 2's prework.
+- **Materials (trainer):** content folder (`agents-102-content-agentic-engineering-101.zip`) shipped before prework; no trainer scaffolds beyond that. All compounding artifacts land in the student's repo (see `content-strategy-agentic-engineering-101.md` § Delivery architecture). Claude Code specifics (MCP install per tracker, tenant-admin fallbacks) live in `curriculum/reference/mcp-and-connectors.md`, updated as Claude Code's install surface changes.
 - **Plug points:** the student's own repo + the bug Claude surfaced in prework + the sponsor-stated ticket tracker.
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** an orient → fix → compound → extend loop end-to-end on a trivial bug in your own repo
-- **Introspect** on Claude's read of your repo and verify the self-report against `/context` — the instrument that shows where the 10% lives
-- **Fix** the bug tests-first, root-cause-driven, no plan mode — and seed the preference into your personal `CLAUDE.local.md` mid-exercise (gitignored, yours; [reference § 1](../reference/claude-code-for-engineers.md) for the four-layer hierarchy)
-- **Wire** one connector and close the bug's ticket — the first move outside the repo
+- **Introspect** on Claude's read of your repo and verify the self-report against `/context`, the instrument that shows where the 10% lives
+- **Fix** the bug tests-first, root-cause-driven, no plan mode, and seed the preference into your personal `CLAUDE.local.md` mid-exercise (gitignored, yours; [reference § 1](../reference/claude-code-for-engineers.md) for the four-layer hierarchy)
+- **Wire** one connector and close the bug's ticket. The first move outside the repo
 
 ## Connections
 
-**The question — to you:** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session. Write it on a sticky, or paste it in chat if you're remote. The room harvests everyone's before the training adds its own.
+**The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session. Write it on a sticky, or paste it in chat if you're remote. The room harvests everyone's before the training adds its own.
 
 ## Lectures
 
@@ -30,23 +30,23 @@ After this module, you will be able to:
 [Ship a trivial bug](exercises/ship-trivial-bug.md)
 
 ## Key Concepts (Emergent)
-- Plan mode is overhead on a trivial bug — M2 is where it earns its keep
-- Claude can introspect on its own read; the self-report is a hypothesis, not ground truth — verify against `/context`
-- The 10% Claude couldn't address lives in the slice of the repo it didn't load — your job is to steer what lands in the window
+- Plan mode is overhead on a trivial bug. M2 is where it earns its keep
+- Claude can introspect on its own read; the self-report is a hypothesis, not ground truth. Verify against `/context`
+- The 10% Claude couldn't address lives in the slice of the repo it didn't load. Your job is to steer what lands in the window
 - A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
-- The first compound step closes before the retro — Phase 2's rule to `CLAUDE.local.md` is the first one; Phase 3 extends it
-- Personal rules (`CLAUDE.local.md`, gitignored) vs. team rules (`CLAUDE.md`, PR-reviewed) is a split worth learning early — session compounds default to personal; team-worthy rules earn their own PR
+- The first compound step closes before the retro. Phase 2's rule to `CLAUDE.local.md` is the first one; Phase 3 extends it
+- Personal rules (`CLAUDE.local.md`, gitignored) vs. team rules (`CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
 
 ## Plug Points
-The student's own repo and the bug Claude surfaced in prework. No company data needed yet. If the student arrives having drifted from their prework choice, Phase 1 runs a fresh bug-surfacing conversation — criteria unchanged: small, visible, yours, shippable in an hour.
+The student's own repo and the bug Claude surfaced in prework. No company data needed yet. If the student arrives having drifted from their prework choice, Phase 1 runs a fresh bug-surfacing conversation. Criteria unchanged: small, visible, yours, shippable in an hour.
 
-The **sponsor-stated knowledge home** and **sponsor-stated ticket tracker** (pre-engagement contract — see `content-strategy-agentic-engineering-101.md` § "Pre-engagement contract") supply the defaults: where team `CLAUDE.md` lives if/when a rule earns team review, and which connector gets wired (P3). Session compounds land in `CLAUDE.local.md` by default (personal, gitignored) — no sponsor input needed. Student can override with a reasoned alternative; opting out is not a path.
+The **sponsor-stated knowledge home** and **sponsor-stated ticket tracker** (pre-engagement contract; see `content-strategy-agentic-engineering-101.md` § "Pre-engagement contract") supply the defaults: where team `CLAUDE.md` lives if/when a rule earns team review, and which connector gets wired (P3). Session compounds land in `CLAUDE.local.md` by default (personal, gitignored); no sponsor input needed. Student can override with a reasoned alternative; opting out is not a path.
 
 ## Debrief
-The retro runs inside Exercise Phase 3 — Claude reviews the session, extends `CLAUDE.local.md` in place (personal, gitignored), reports 3–5 lines, student pushes back. If any rule is team-worthy — one every engineer on this codebase would benefit from — Claude calls it out in the summary so the student can open a PR against team `CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
+The retro runs inside Exercise Phase 3. Claude reviews the session, extends `CLAUDE.local.md` in place (personal, gitignored), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) Claude calls it out in the summary so the student can open a PR against team `CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
 
 ## Bridge
-You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep — multi-file work, two reads (yours + grill), approval inflation catches as the teaching moment. `CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `CLAUDE.md` if this repo has one — both concatenate into context).
+You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep: multi-file work, two reads (yours + grill), approval inflation catches as the teaching moment. `CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `CLAUDE.md` if this repo has one; both concatenate into context).
 
 <!-- maintainer -->
 

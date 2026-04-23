@@ -1,30 +1,30 @@
 # Earn the trust
 
 ## Big Idea
-Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week — two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. The team kit is born here.
+Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. The team kit is born here.
 
 ## Meta
 - **Primary Bloom's level:** Apply + Evaluate + Create (invoke, decide, author)
 - **Prework:** bring a small feature you're working on right now (see Connections for the size rule). No pre-written files; the feature lives in your repo.
-- **Homework:** none — the authored skill ships at M3's close.
+- **Homework:** none. The authored skill ships at M3's close.
 - **Materials (trainer):** content folder carries two curated skills (`access-control-analysis/`, `stride/`) under `content/skills/`. Students invoke from there; no install step.
 - **Plug points:** student's own feature + sponsor-stated team-kit home (pre-engagement contract).
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Invoke** a curated access-control analysis skill on a feature you're shipping — as a subagent, fresh context — read what it surfaces, name what a first-read missed
+- **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context). Read what it surfaces, name what a first-read missed
 - **Apply** a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo's convention
 - **Discriminate** when a job belongs in a subagent (breadth-first curated skills, long structured output) versus the main thread (one-question-at-a-time authoring, interactive steering)
-- **Author** a test-strategy skill through conversation with Claude — one question at a time, tuned to your codebase's actual testing conventions, not a generic pyramid
+- **Author** a test-strategy skill through conversation with Claude (one question at a time) tuned to your codebase's actual testing conventions, not a generic pyramid
 - **Evaluate** the authored skill by asking it to disclose its own weakest part, then pushing back on the critique
 - **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
-- **Ship** one authored skill to the team-kit home — the first artifact of yours that crosses teammates
+- **Ship** one authored skill to the team-kit home. The first artifact of yours that crosses teammates
 
 ## Connections
 
-**Bring a small feature you're working on right now.** Not a typo-fix, not a quarter-long epic — something with an external or user-facing surface that you could ship in a few hours. Too small and Claude crunches it in thirty seconds with nothing interesting to surface. Too large and you're still waiting when the bell rings. You've watched Claude work for two modules — pick the size that fits the rhythm you've seen.
+**Bring a small feature you're working on right now.** Not a typo-fix, not a quarter-long epic; something with an external or user-facing surface that you could ship in a few hours. Too small and Claude crunches it in thirty seconds with nothing interesting to surface. Too large and you're still waiting when the bell rings. You've watched Claude work for two modules. Pick the size that fits the rhythm you've seen.
 
-The question — to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? Write one line. The room's features will differ wildly; that's the point.
+The question, to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? Write one line. The room's features will differ wildly; that's the point.
 
 ## Lectures
 
@@ -40,11 +40,11 @@ The question — to you: what's the feature, and what's the surface you're most 
 
 ## Key Concepts (Emergent)
 - A curated skill is a gift from the frontier; you invoke it, you don't re-derive it
-- The access surface is what STRIDE chews on — STRIDE before access-mapping is threat-modeling pub-quiz
+- The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; breadth is the team kit's job across many students, not yours in 20 minutes
-- A test-strategy skill authored on your codebase is worth more than a perfect generic one — the skill carries your conventions, not a textbook's
+- A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's
 - Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
-- Invoke the skill on the thing you just built — authoring without invocation is theatre
+- Invoke the skill on the thing you just built. Authoring without invocation is theatre
 - One skill shipped beats three skills drafted; the team kit grows by accretion
 
 ## Plug Points
@@ -61,35 +61,35 @@ The question — to you: what's the feature, and what's the surface you're most 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Review this session. We ran three exercises on a small feature I'm shipping: invoked the access-control analysis skill, invoked the STRIDE skill and made one hardening decision, then authored a test-strategy skill through conversation — asked it to disclose its weakest part, pushed back, invoked it on the security-tested feature, shipped it to the team kit.
+Review this session. We ran three exercises on a small feature I'm shipping: invoked the access-control analysis skill, invoked the STRIDE skill and made one hardening decision, then authored a test-strategy skill through conversation. Asked it to disclose its weakest part, pushed back, invoked it on the security-tested feature, shipped it to the team kit.
 
 Read the access-control output, the STRIDE output + ADR, the authored test-strategy skill file, and the invocation output. Scan the scrollback for the decisions I made and the push-backs I pushed.
 
 Then do two things:
 
-1. Integrate one named pattern into my personal `CLAUDE.local.md` (create it at repo root + add to `.gitignore` if it doesn't exist — this is my personal file, not team `CLAUDE.md`). Something specific to THIS codebase, from THIS session's evidence. Quote the surface the access-control skill flagged that I'd underweighted, or the STRIDE branch I hardened, or the test-strategy assumption I corrected. Name the branch, not the rule. Not "always run STRIDE" (generic). Something like "features touching the billing webhook need access-control mapping before STRIDE — the event-replay path is invisible from a first read."
+1. Integrate one named pattern into my personal `CLAUDE.local.md` (create it at repo root + add to `.gitignore` if it doesn't exist; this is my personal file, not team `CLAUDE.md`). Something specific to THIS codebase, from THIS session's evidence. Quote the surface the access-control skill flagged that I'd underweighted, or the STRIDE branch I hardened, or the test-strategy assumption I corrected. Name the branch, not the rule. Not "always run STRIDE" (generic). Something like "features touching the billing webhook need access-control mapping before STRIDE; the event-replay path is invisible from a first read."
 
-If the pattern is team-worthy — every engineer shipping this codebase should know it — flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
+If the pattern is team-worthy (every engineer shipping this codebase should know it) flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
 
-2. Review the test-strategy skill I authored. Sharpen it in place if my session evidence shows it's weak somewhere — a convention I named that isn't fully encoded, a codebase-specific failure mode I mentioned in conversation but isn't in the skill yet. Integrate, don't append.
+2. Review the test-strategy skill I authored. Sharpen it in place if my session evidence shows it's weak somewhere: a convention I named that isn't fully encoded, a codebase-specific failure mode I mentioned in conversation but isn't in the skill yet. Integrate, don't append.
 
 Tell me in 3–5 lines: what pattern you named in `CLAUDE.local.md` (and whether any are team-worthy flags), what you sharpened in the skill, and which moment in the session made you pick those over others. I shouldn't have to open the files to know.
 ```
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong — quote the session moment. Two files changed this module (`CLAUDE.local.md` + the test-strategy skill); check both. Team-rule flags in the summary are for your decision later — they don't auto-PR.
+Read the summary. Push back where it's wrong; quote the session moment. Two files changed this module (`CLAUDE.local.md` + the test-strategy skill); check both. Team-rule flags in the summary are for your decision later; they don't auto-PR.
 
 ## Bridge
 
-You earned the first two signatures — your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
+You earned the first two signatures. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
 
 <!-- maintainer -->
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer)
-- **Mood target:** earned trust — *"my agent practice is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
+- **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships to sponsor-stated team-kit home. No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
 **Agentic Nerd logic (TODO — skill not yet created):**

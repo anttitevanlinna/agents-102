@@ -1,31 +1,31 @@
 # Run the first experiment
 
 ## Big Idea
-Walk what you've built against a real multi-hour task, fill the worst gaps, send it off un-packaged — and learn from what the agent does with your system as it stands.
+Walk what you've built against a real multi-hour task, fill the worst gaps, send it off un-packaged, and learn from what the agent does with your system as it stands.
 
 ## Meta
 - **Primary Bloom's level:** Apply + Analyze + Create (walk, fill, launch the experiment)
 - **Prework:** none beyond the last three modules; bring a multi-hour task you've been avoiding (see Connections).
-- **Homework:** none for M4 — the task runs between M4 and M5 and M5 opens with the return.
+- **Homework:** none for M4. The task runs between M4 and M5, and M5 opens with the return.
 - **Materials (trainer):** none. Everything the student needs lives in their repo or in conversation.
 - **Plug points:** student's own multi-hour task + sponsor-stated rules-file home + sponsor-stated memory and business-rules home.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Pick** a multi-hour real task from your backlog that demands sustained coherence, requirement-weaving, and multi-file reasoning — scoped in conversation with Claude, not typed into a form
-- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis — a subagent audit you then push back on
+- **Pick** a multi-hour real task from your backlog that demands sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude, not typed into a form
+- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired at the sponsor-stated home (or the gap named explicitly)
-- **Recognize** Huryn's three-block memory in your own material — Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria) — not built-to-spec, arranged from what you've been making for four modules
-- **Compound** the session into your personal `CLAUDE.local.md` — Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
-- **Send off** the task un-packaged in the same Claude Code session — no plan.md, no verifier, no reference artifact — and close the laptop, or stop the run mid-flight when you've seen enough; traces are data either way
+- **Recognize** Huryn's three-block memory in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
+- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
+- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and close the laptop, or stop the run mid-flight when you've seen enough; traces are data either way
 
 ## Connections
 
-You've watched Claude work for three modules on short loops — a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you close the laptop.
+You've watched Claude work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you close the laptop.
 
-**The question — to you:** come with one or two candidate tasks from your backlog — multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ — migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
+**The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
-*You do the surfacing. Claude doesn't read your roadmap or your Jira — and we don't want it to. At Phase 1, Claude screens your candidates against the three criteria (sustained coherence, requirement-weaving, multi-file reasoning) and gives you a fit read. The picking is yours; the screening is the agent's.*
+*You do the surfacing. Claude doesn't read your roadmap or your Jira, and we don't want it to. At Phase 1, Claude screens your candidates against the three criteria (sustained coherence, requirement-weaving, multi-file reasoning) and gives you a fit read. The picking is yours; the screening is the agent's.*
 
 ## Lectures
 
@@ -36,54 +36,54 @@ You've watched Claude work for three modules on short loops — a bug fix, a pla
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
 
 ## Key Concepts (Emergent)
-- Gap analysis is *walk the system you have against the system the task needs* — a move you'll use forever
+- Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
-- Un-packaged is by design. M5 teaches packaging by diagnosing what the un-packaged run gets wrong — a lesson no lecture can land
-- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent — Claude loads both at session start (see [reference § 1](../reference/claude-code-for-engineers.md))
+- Un-packaged is by design. M5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
+- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude loads both at session start (see [reference § 1](../reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
-- Every send-off is an experiment, not a production run you need to get right first time — this is the operator's posture
+- Every send-off is an experiment, not a production run you need to get right first time. This is the operator's posture
 
 ## Plug Points
 - **Student's own multi-hour task** (surfaced in Connections, carried through every phase)
-- **Personal rules home** (`./CLAUDE.local.md` by default, gitignored; or `~/.claude/CLAUDE.md` for cross-repo patterns) — the file Claude self-compounds at Debrief
-- **Team rules home** — sponsor-stated (`./CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md`). Not session-compounded; team-worthy rules PR-gated
-- **Sponsor-stated memory + business-rules home** (pre-engagement contract) — where the business-rules pointer from Phase 2 fill lands. Default: a pointer file in the repo naming where the real material lives (external wiki, team Notion, or the repo itself)
+- **Personal rules home** (`./CLAUDE.local.md` by default, gitignored; or `~/.claude/CLAUDE.md` for cross-repo patterns): the file Claude self-compounds at Debrief
+- **Team rules home**: sponsor-stated (`./CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md`). Not session-compounded; team-worthy rules PR-gated
+- **Sponsor-stated memory + business-rules home** (pre-engagement contract): where the business-rules pointer from Phase 2 fill lands. Default: a pointer file in the repo naming where the real material lives (external wiki, team Notion, or the repo itself)
 
 ## Debrief
 
-12–15 minutes. Claude self-compounds your personal `CLAUDE.local.md` from the session (not team `CLAUDE.md` — that's PR-gated); the send-off then launches with both rules files going into the test (Claude loads them together at session start).
+12–15 minutes. Claude self-compounds your personal `CLAUDE.local.md` from the session (not team `CLAUDE.md`, which is PR-gated); the send-off then launches with both rules files going into the test (Claude loads them together at session start).
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Review this session. I walked my system against [the task we scoped]; filled gaps in memory and my rules files; saw my ADRs and test-strategy skill rearrange into Huryn's three blocks.
+Review this session. I walked my system against the task we just scoped; filled gaps in memory and my rules files; saw my ADRs and test-strategy skill rearrange into Huryn's three blocks.
 
-Read `CLAUDE.md` (team), `CLAUDE.local.md` (personal, mine — create it at repo root + add to `.gitignore` if it doesn't exist), the memory files, the ADRs, and this scrollback. Then rewrite `CLAUDE.local.md` in place (not team `CLAUDE.md` — that's PR-gated) — integrate what I learned about this codebase today, sharpen what turned out thin under the walk, remove what turned out wrong. Don't append "session notes"; rewrite the file as the better version.
+Read `CLAUDE.md` (team), `CLAUDE.local.md` (personal, mine; create it at repo root + add to `.gitignore` if it doesn't exist), the memory files, the ADRs, and this scrollback. Then rewrite `CLAUDE.local.md` in place (not team `CLAUDE.md`, which is PR-gated). Integrate what I learned about this codebase today, sharpen what turned out thin under the walk, remove what turned out wrong. Don't append "session notes"; rewrite the file as the better version.
 
-If any rule is team-worthy — one every engineer shipping this codebase should know — flag it in your summary, don't PR it. I'll decide separately whether to open a PR against team `CLAUDE.md`.
+If any rule is team-worthy (one every engineer shipping this codebase should know) flag it in your summary, don't PR it. I'll decide separately whether to open a PR against team `CLAUDE.md`.
 
 Tell me in 3–5 lines: what you added to `CLAUDE.local.md`, what you sharpened, what you removed, which team-rule flags you noted, and which moment in the session made you pick those over others.
 ```
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong — quote the session moment. When `CLAUDE.local.md` is the best version of itself it's going to be tonight, compose and paste the send-off prompt to the same session:
+Read the summary. Push back where it's wrong; quote the session moment. When `CLAUDE.local.md` is the best version of itself it's going to be tonight, compose and paste the send-off prompt to the same session:
 
 **Prompt** *(copy → Claude Code, final move of the module)*
 
 ```
-I want you to take [the task we scoped] end to end. Work from the rules I've set up — `CLAUDE.md` (team) and `CLAUDE.local.md` (personal) both load automatically — plus the memory in `.claude/memory/` (or wherever my memory lives), the ADRs, and the skills in `.claude/skills/`. That's everything you have. Go.
+I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically) plus the memory in `.claude/memory/` (or wherever my memory lives), the ADRs, and the skills in `.claude/skills/`. That's everything you have. Go.
 
 I'm going to close the laptop. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
 ```
 
 *(end of prompt)*
 
-Let it run. Leave the laptop awake and plugged in — on macOS that means `caffeinate` in a side terminal, or System Settings → Battery → prevent sleep on power; on Linux, disable screen/session lock for the night; on Windows, power plan set to never-sleep. If you watch for a bit and see the agent wobbling in a way that already tells you what M5 will diagnose, stop the run. Traces are data. You don't owe the experiment a completed artifact; you owe it a result you can read.
+Let it run. Leave the laptop awake and plugged in. On macOS that means `caffeinate` in a side terminal, or System Settings → Battery → prevent sleep on power; on Linux, disable screen/session lock for the night; on Windows, power plan set to never-sleep. If you watch for a bit and see the agent wobbling in a way that already tells you what M5 will diagnose, stop the run. Traces are data. You don't owe the experiment a completed artifact; you owe it a result you can read.
 
 ## Bridge
 
-M5 opens with what came back — or what you caught before it went further. We read it together.
+M5 opens with what came back, or what you caught before it went further. We read it together.
 
 <!-- maintainer -->
 

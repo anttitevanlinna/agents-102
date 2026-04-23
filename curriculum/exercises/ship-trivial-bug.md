@@ -1,21 +1,21 @@
 # Ship a trivial bug
 
-**What you do:** run one trivial bug from your repo through a deliberate three-phase loop. Orient and introspect (Phase 1). Fix it tests-first, no plan mode (Phase 2). Retro, wire one MCP, close the ticket (Phase 3). Your personal `CLAUDE.local.md` (gitignored, yours — see [reference § 1](../reference/claude-code-for-engineers.md)) gets seeded from what you did, not from a template.
+**What you do:** run one trivial bug from your repo through a deliberate three-phase loop. Orient and introspect (Phase 1). Fix it tests-first, no plan mode (Phase 2). Retro, wire one MCP, close the ticket (Phase 3). Your personal `CLAUDE.local.md` (gitignored, yours; see [reference § 1](../reference/claude-code-for-engineers.md)) gets seeded from what you did, not from a template.
 
-**What happens:** a real PR ships. A personal `CLAUDE.local.md` is born from session evidence (gitignored — doesn't touch team review). One ticket closes via MCP. You've seen `/context` — the instrument that shows where the 10% you couldn't address actually lives.
+**What happens:** a real PR ships. A personal `CLAUDE.local.md` is born from session evidence (gitignored; doesn't touch team review). One ticket closes via MCP. You've seen `/context`, the instrument that shows where the 10% you couldn't address actually lives.
 
-**The point:** every module after this one rides on this loop. The loop isn't the bug fix — the loop is the shape: orient, fix, compound, extend. Teach the shape abstractly and engineers nod. Run it head-on and the shape lives in muscle memory.
+**The point:** every module after this one rides on this loop. The loop isn't the bug fix. The loop is the shape: orient, fix, compound, extend. Teach the shape abstractly and engineers nod. Run it head-on and the shape lives in muscle memory.
 
 **Time:** 85–95 minutes, three phases.
 
-## Phase 1 — Open and introspect (15–20 min)
+## Phase 1: Open and introspect (15–20 min)
 
-Claude Code is open on your repo. Prework gave Claude a rough look at what's here. Now: deliberate orientation, then the instrument that shows you what Claude actually read.
+Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then the instrument that shows you what Claude actually read.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Read enough of this repo to tell me what's here — the shape, the substrate, what looks load-bearing, what's been touched recently, what looks stale. Don't try to be complete. Read what you judge worth reading; skip what you judge isn't.
+Read enough of this repo to tell me what's here: the shape, the structure, what looks load-bearing, what's been touched recently, what looks stale. Don't try to be complete. Read what you judge worth reading; skip what you judge isn't.
 ```
 
 *(end of prompt)*
@@ -32,7 +32,7 @@ What did you read, and why those files? What didn't you read, and why not? Name 
 
 *(end of prompt)*
 
-Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing — the self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Take it with a grain of salt; verify against the actual output and the instrument below.
+Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Take it with a grain of salt; verify against the actual output and the instrument below.
 
 Now look at the instrument directly. In the Claude Code chat, type:
 
@@ -40,78 +40,78 @@ Now look at the instrument directly. In the Claude Code chat, type:
 /context
 ```
 
-That's the slash command for the context window — what's loaded, how much, what's been consumed reading files. Look at the number. The rest of the repo — the slice Claude *didn't* load — is where the 10% it couldn't address lives. Not a bug; the shape of working with a bounded window. Your job going forward is to steer what lands in those bytes.
+That's the slash command for the context window: what's loaded, how much, what's been consumed reading files. Look at the number. The rest of the repo (the slice Claude *didn't* load) is where the 10% it couldn't address lives. Not a bug; the shape of working with a bounded window. Your job going forward is to steer what lands in those bytes.
 
-## Phase 2 — Fix it right (40–45 min)
+## Phase 2: Fix it right (40–45 min)
 
 No plan mode here. Plan mode earns its keep in M2 on multi-file work; on a trivial bug, it's overhead. The move is tests-first, root-cause-driven.
 
-Bring the bug back. In prework, Claude surfaced three candidates and you picked one. Paste the bug — a sentence or two — back into the conversation. If prework's scrollback is still open, tell Claude to look back.
+Bring the bug back. In prework, Claude surfaced three candidates and you picked one. Paste the bug (a sentence or two) back into the conversation. If prework's scrollback is still open, tell Claude to look back.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Find the root cause of this bug by writing the tests that would reveal it. Run the tests — confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
+Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
 ```
 
 *(end of prompt)*
 
-Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back — quote the line and say why. Whoever has the better argument wins.
+Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
 
 Ask Claude to commit, push a branch, and open the PR (merge or draft, your call).
 
-Now write the rule — while the move is warm, before the retro.
+Now write the rule, while the move is warm, before the retro.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Look at the loop we just ran — tests first, root cause not symptom, diff read with a push-back. Write a short rule into my personal `CLAUDE.local.md` at the root of this repo (create it if it doesn't exist; add it to `.gitignore` if it's not already). Four to six lines. Name the preference concretely enough that the next session reads it and runs the same loop without being prompted. If the file exists, integrate — don't append.
+Look at the loop we just ran: tests first, root cause not symptom, diff read with a push-back. Write a short rule into my personal `CLAUDE.local.md` at the root of this repo (create it if it doesn't exist; add it to `.gitignore` if it's not already). Four to six lines. Name the preference concretely enough that the next session reads it and runs the same loop without being prompted. If the file exists, integrate; don't append.
 
-If this rule is team-worthy — if every engineer shipping this codebase would benefit — flag it when you tell me what you wrote, so I can open a PR against team `CLAUDE.md` separately. Don't PR it automatically.
+If this rule is team-worthy (if every engineer shipping this codebase would benefit) flag it when you tell me what you wrote, so I can open a PR against team `CLAUDE.md` separately. Don't PR it automatically.
 
 When you're done, tell me in two lines what you wrote and why.
 ```
 
 *(end of prompt)*
 
-Read what Claude wrote into the file. Push back if it misread the move — quote the session moment that should have gone in differently. This is the first compound step. Every module extends this file from here.
+Read what Claude wrote into the file. Push back if it misread the move. Quote the session moment that should have gone in differently. This is the first compound step. Every module extends this file from here.
 
-## Phase 3 — Retro, MCP, close the ticket (30 min)
+## Phase 3: Retro, MCP, close the ticket (30 min)
 
 ### Retro (~10 min)
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Review this session end-to-end — Phase 1's orientation and introspection, the /context read, the TDD bug fix, the diff push-back, the rule we just seeded. Rewrite `CLAUDE.local.md` in place (integrate, don't append — this is my personal gitignored file, not the team `CLAUDE.md`). Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
+Review this session end-to-end: Phase 1's orientation and introspection, the /context read, the TDD bug fix, the diff push-back, the rule we just seeded. Rewrite `CLAUDE.local.md` in place (integrate, don't append; this is my personal gitignored file, not the team `CLAUDE.md`). Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
 
-If any rule is team-worthy — one every engineer on this codebase should know — flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
+If any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
 
-Tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why. Be specific about session moments — I shouldn't need to open the file to know.
+Tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why. Be specific about session moments. I shouldn't need to open the file to know.
 ```
 
 *(end of prompt)*
 
-Read Claude's summary. Push back where it misreads — quote the moment. That push-back is the reflection move. The rules file stops being a blank template and starts being yours.
+Read Claude's summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file stops being a blank template and starts being yours.
 
-### MCP — why your agent needs to reach outside the repo (~5 min)
+### MCP: why your agent needs to reach outside the repo (~5 min)
 
-Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation — the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together — **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call) — full primer in `reference/mcp-and-connectors.md`.
+Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in `reference/mcp-and-connectors.md`.
 
 One connector, two actions (read + update), is enough to close the loop you just ran on the bug in the tracker your team actually lives in.
 
 ### Close the ticket (~15 min)
 
-Wire one connector to your ticket tracker, read the ticket matching the bug you just fixed, update it with a close-out note and the PR link. Your sponsor named the tracker (Linear, Jira, GitHub Issues, or similar) in the pre-engagement contract — use that one.
+Wire one connector to your ticket tracker, read the ticket matching the bug you just fixed, update it with a close-out note and the PR link. Your sponsor named the tracker (Linear, Jira, GitHub Issues, or similar) in the pre-engagement contract. Use that one.
 
-**Two-minute setup.** If your tracker is GitHub Issues: in Claude Code, check `gh auth status` — Claude runs `gh` for you via Bash, no MCP install needed. For Linear or Jira: follow the install line in `reference/mcp-and-connectors.md` for your tracker. That reference stays current with Claude Code's install surface; this exercise doesn't carry the command itself so it can't go stale.
+**Two-minute setup.** If your tracker is GitHub Issues: in Claude Code, check `gh auth status`. Claude runs `gh` for you via Bash, no MCP install needed. For Linear or Jira: follow the install line in `reference/mcp-and-connectors.md` for your tracker. That reference stays current with Claude Code's install surface; this exercise doesn't carry the command itself so it can't go stale.
 
 Once the connector (or `gh`) is live:
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Read the ticket for the bug we just fixed. Tell me what it says — the reporter, the description, any comments on it. If you can't find a matching ticket, search by the bug's keywords; if there still isn't one, say so and we'll create one.
+Read the ticket for the bug we just fixed. Tell me what it says: the reporter, the description, any comments on it. If you can't find a matching ticket, search by the bug's keywords; if there still isn't one, say so and we'll create one.
 ```
 
 *(end of prompt)*
@@ -126,11 +126,11 @@ Update the ticket: short close-out note naming what the root cause was and how w
 
 *(end of prompt)*
 
-Read the close-out. If Claude wrote something that reads stiff or wrong, push back — tell it how your team actually writes ticket comments. It'll adjust.
+Read the close-out. If Claude wrote something that reads stiff or wrong, push back. Tell it how your team actually writes ticket comments. It'll adjust.
 
 Ship the update. The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
 
-You ran the loop. You have a PR, a rules file born from session evidence, and a ticket that closed itself from inside Claude Code. The substrate is in place.
+You ran the loop. You have a PR, a rules file born from session evidence, and a ticket that closed itself from inside Claude Code. Your setup is in place.
 
 <!-- maintainer -->
 

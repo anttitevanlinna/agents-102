@@ -67,6 +67,20 @@ Dorsey's question at IC scale: *what does your understanding of this codebase ga
 
 What motivates the engineer is customer value + intrinsic satisfaction with the work. A training that bolts "improvement practice" onto real work fails — practice gets dropped when the sprint is on fire. **Compounding is the side-product of smart process.** Chase it directly and you get improvement theatre. *"If you just try to make a sprint to improve, you will not make this into habit."* Habit for you AND your agents — both compound from doing the work well.
 
+## Recurring themes — the practitioner reality the curriculum lives inside
+
+Four themes surface across modules. Not rules — rules tell you what to do. Themes tell you why the rules make sense. Each module hits multiple themes; each theme shows up in multiple modules. Named here once; compounded module by module.
+
+**1. Claude is 90% correct.** Rule of thumb, not a benchmark. Ten percent of instructions don't get followed. Ten percent of requirements don't get woven in. Ten percent of what should have been read doesn't get read. The training's job isn't to eliminate the 10% — you can't — it's to teach the steering that catches it and the system that works regardless. Every module is an instance: M2's plan-mode push-back catches instructions-not-followed; M4's memory catches requirements-not-woven; M3's gate + M6's verifier catch what nobody read.
+
+**2. The system is built by compounding. You can't imagine it a priori.** There is no reference architecture for agentic engineering. There is a loop — plan, work, review, compound — and each pass teaches what was missing. Next pass is better. Same shape at every scope: the bug fix (M1), the multi-file task (M2), the memory (M4), the long-running job (M5/M6). *"Give me the complete blueprint"* is the wrong question; *"run the loop"* is the answer. This is the epistemology, too: big-design-up-front fails precisely because the designer can't predict what the agent will get 90% right.
+
+**3. The LLM is a mirror. Quality of practice reflects.** The operator is the ceiling — not the model, not the tools. An engineer who approaches the work with a learning stance makes their LLM learn. An engineer who types requests into chat gets chat-shaped output back. Also the answer to *"my colleague tried Claude and it sucked"* — their practice sucked. The mirror is diagnostic, not motivational: it shows parts of your practice you hadn't noticed yet. Uncomfortable, useful.
+
+**4. The LLM is mechanically self-aware — ask it. (Grain of salt.)** Claude can introspect: what it thinks it can do, why it did what it did, what was missing in your prompt. That's the interface you use to run the other three themes — the compounding loop's Review step is a conversation with the model about its own output. The caveat is load-bearing: self-report is the least trustworthy channel. Claude confabulates reasons. Move: *ask, then verify against the artifact* — the file, the scrollback, the actual behavior. Introspection generates hypotheses; the artifact rules.
+
+**How the four sit together.** 90% names the problem. Compounding names the method. Mirror names the operator. Self-awareness names the interface — the channel you use to run the other three. Miss any one and the training's mechanics look arbitrary; hold all four and every module's shape follows.
+
 ## Load-bearing assumptions
 
 Three bets. If any is wrong, the training's shape needs a rethink, not a polish.
@@ -166,9 +180,9 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 
 | # | Title | Lead dimension | Mood | Artifact |
 |---|---|---|---|---|
-| M1 | **Getting going + context** *(+ MCP + first skills)* | Compounding (how) | Joyful creation — *"it works, on my repo"* | Claude Code up and running + one MCP connected + 1–2 pre-installed skills invoked during a trivial bug fix from the student's own backlog + Plan → Work → Review → Compound loop + first pass at Paweł Huryn's three-block memory + rules file seeded by session retro |
+| M1 | **Getting going + context** *(+ MCP)* | Compounding (how) | Joyful creation — *"it works, on my repo"* | Three-phase loop on a trivial bug from the student's own backlog: P1 orient + introspect (`/context` shows the unread slice); P2 fix tests-first, no plan mode, seed `CLAUDE.md` mid-exercise; P3 retro extends `CLAUDE.md` + wire one connector + close the bug's ticket outside the repo. Skill-invocation deferred to M3 pending adjudication. |
 | M2 | **Plan mode, done right** | Compounding (how) deepens | Grounded competence — *"I can feel when a plan is good before approving it"* | A well-designed plan on multi-file work the student actually has to do, pushed back on before approval, executed, and retrospectively named as plan-mode-at-depth. Plan-mode approval inflation catches as the key teaching moment. |
-| M3 | **Earn the trust — quality + security** | Software factory (tech) + team integration (how) via team-kit seed + **first authored skill** | Earned trust — *"my agent practice is something my staff engineer and my CISO can sign off on, before I even try anything big"* | Two ~20-min exercises: (1) build a judge on M1's bug fix, package as skill file, wrap in **gate spec** + ship to the team kit; (2) audit M1's agent tool surface, install one **blast-radius constraint**, package as skill + ship to the team kit. Team kit is BORN here. |
+| M3 | **Earn the trust — quality + security** | Software factory (tech) + team integration (how) via team-kit seed + **first authored skill** | Earned trust — *"my agent practice is something my staff engineer and my CISO can sign off on, before I even try anything big"* | Three exercises on a small feature the student is shipping: (1) invoke curated access-control analysis skill, name surface delta; (2) invoke curated STRIDE skill, pick one hardening decision → ADR; (3) author a test-strategy skill through conversation with Claude, ask it to disclose its weakest part, invoke on the security-tested feature, ship to team kit. Two curated skills used, one authored skill shipped. Team kit is BORN here. |
 | M4 | **Memory that reads your system** | Compounding (how) | Satisfied compounding — *"it reads my system now"* | Single-repo memory → multi-repo memory → memory connected to business rules and company info; agents wired to each layer; compounding loop from M1/M2 carried forward; team-kit-authored memory-navigation skills used. |
 | M5 | **Long-running tasks — send-off** | Long-running (tech) — setup + launch | Unleashed leverage — *"I just sent an agent off with real work"* | Concept taught + challenge named + verifier built on student's real work + verifier checked lightly on a small example + mid-long task launched, running between M5 and M6 |
 | M6 | **Long-running tasks — return** | Long-running (tech) — retrospective + next-run prep + **second authored skill** | Grounded rescue — *"the return isn't a grind, it's a system"* | Return to the scene: diff read, drift named, failures caught + learnings integrated into memory + **verifier sharpened and packaged as a skill**, shipped to the team kit. |
@@ -189,48 +203,66 @@ Core (M1–M6) runs through personal discovery, instrument mastery, discipline-e
 
 Leadership drama is absent; drama is in the engineer's interior (*am I still keeping up?*), the team's infrastructure (*is our floor rising?* — team kit makes this visible), and M8's deliberate refusal to close the big question. *Where is this all going?* — nobody plain knows. The question is what the student carries home.
 
-## M1 in detail — getting going + context (+ MCP + first skills)
+## M1 in detail — getting going + context
 
-**Three jobs at once:** (1) orientation — Claude Code open, one MCP wired, 1–2 pre-installed skills invoked; (2) fix a trivial bug from the student's own backlog, ships in-session; (3) install the **compounding substrate** M2–M8 ride on.
+**Three phases, one loop** (reshape 2026-04-23 per Antti):
+1. **Orient + introspect (~15–20 min).** Claude reads the repo; the student interrogates Claude's own read via an introspection prompt + `/context`. The bounded window and the unread slice become visible.
+2. **Fix it right (~40–45 min).** No plan mode. Tests-first, root-cause-driven. Ship the PR. Seed a short rule into `CLAUDE.md` mid-exercise — while the move is warm, before the retro.
+3. **Retro + MCP + close the ticket (~30 min).** Claude extends `CLAUDE.md` in place from session evidence (no Q1/Q2/Q3 interview); short MCP framing (connector / action / tool); wire one connector and close the bug's ticket outside the repo. MCP install specifics live in `curriculum/reference/mcp-and-connectors.md`, not in the exercise body.
 
-**Orientation is short, not ceremony.** Prework has done Claude Code install + repo-choice. M1 starts: *"Claude Code is open; repo pointed at; wire one MCP and invoke your first skill."* Skills introduced as *"a scoped capability your agent calls when the moment fits"* — vocabulary arrives at the moment of invocation.
+**Orientation is short, not a setup ramp.** Prework has done Claude Code install + repo-choice + bug-surfacing. M1 starts in the chat with the repo open; Phase 1 is a read-and-introspect move, not a connector-wiring step. MCP lands at P3 against a real job (ticket close-out) the student just earned.
 
-**Huryn's three-block memory gets its first entries during the bug fix:**
-- Block 1 (Knowledge Architecture): an observation about the codebase, promoted from raw note toward hypothesis where apt
-- Block 2 (Decision Journal): the trade-off made, with alternative considered
-- Block 3 (Quality Gate): at least one testable criterion for "did this fix really land"
+**Themes plant experientially** (§ "Recurring themes"): mirror (P1's repo read reflects the student's prompt); self-aware + grain of salt (P1's introspection prompt; P3's retro summary; verify-against-artifact in both); 90% correct (`/context` makes the unread slice visible); compounding (P2's rule-write IS the first compound step; P3 extends it).
 
-**Klaassen's four-step loop is the exercise shape.** Plan (plan mode used deliberately) → Work (agent edits + tests) → Review (student reads diff, pushes back) → **Compound** (retro — Claude rewrites rules file in place, reports 3–5 lines, student pushes back). Rules file is what next session reads first — that's how M1 makes M2 faster.
+**No plan mode in M1.** Restraint is deliberate — M2 owns plan-mode-at-depth on multi-file work. Running plan mode on a trivial bug is overhead. M1 teaches where plan mode *doesn't* earn its keep, by contrast.
 
-If the student leaves with only a bug fix, M1 failed. If they leave with a memory that's starting to learn and a retro habit they can run Tuesday, M1 worked.
+**Huryn's three-block memory is seeded, not named.** Materials land through the phases (observation at P1 → Block 1 candidate; TDD rule + diff push-back → Block 2 candidate; the failing test → Block 3 candidate). The three-block *frame* earns its name at M4 when materials get rearranged. Don't teach three-block at M1 — that's pre-explanation.
 
-*Naming: canonical "compound engineering" per Klaassen; our learning-area name "compounding engineering" is our framing; "compound" reserved for the Klaassen four-step loop.*
+**Klaassen attribution** happens inside Claude's P3 retro summary — the retro prompt asks Claude to name the shape and cite the practitioner if one fits. Peer recognition, not a lecture.
+
+If the student leaves with only a bug fix, M1 failed. If they leave with a `CLAUDE.md` written from session evidence, a PR shipped, a ticket closed via a connector, and mirror / grain-of-salt / 90% experienced (not lectured), M1 worked.
+
+*Naming: canonical "compound engineering" per Klaassen; our learning-area name "compounding engineering" is our framing; "compound" reserved for the Klaassen loop step.*
+
+**Skill-invocation divergence — open for Antti:** prior strategy had *"1–2 pre-installed skills invoked during the bug fix."* The reconstructed three-phase shape drops explicit Skill-invocation — P1 uses `/context` (slash command, not a Skill), P3 uses MCP (connector, not a Skill). Options: (a) leave M1 without explicit Skill-use; first authoring + first use both land at M3; (b) reinstate a Skill-invocation beat inside one of the three phases. Deferred for Antti.
 
 ## M2 in detail — plan mode, done right
 
-**Plan mode at depth.** M1 used it on a trivial bug; M2 is the subject — what a good plan looks like, what push-back teaches, where plan-mode approval inflation bites.
+**Plan mode at depth.** M1 used it on a trivial bug; M2 is the subject — what a good plan looks like, what two reads (human + agent) catch that one doesn't, where plan-mode approval inflation bites. Mood: **grounded competence** — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."*
 
-**Core exercise — non-trivial plan, pushed back on before approval:**
-1. Student picks a task from backlog — needs plan mode, executes in-session (~30–60 min of agent work).
-2. Agent proposes a plan. Looks structured — 7+ items, clear sections, reasonable-sounding.
-3. **Teaching move: forced push-back.** Cannot approve as-is; must propose at least two merges, name at least one soft item, flag assumptions the agent shouldn't make. **Plan-mode approval inflation** named here — structured plans get rubber-stamped without reading; answering back creates real reading.
-4. Execute + retro. Read diff, rate plan accuracy after the fact. Retro writes into rules file — *what a good plan looks like for this student on this codebase*.
+**Core exercise — pair the reads, stop at approval:**
+1. Student picks a multi-file task from backlog (~30–60 min of agent work).
+2. Enter plan mode, read the plan carefully before touching approval.
+3. **First read — two push-backs via *keep planning with feedback*.** One soft item (the step that reads clean but skips something) + one of (assumption OR committed change). What YOU can see. Claude regenerates. Watch for softening-on-regeneration (RLHF-niceness tell inside plan mode).
+4. **Second read — grill-me (Matt Pocock's MIT-licensed skill, forked to `curriculum/skills/external/pocock-skills/grill-me/`).** Walks down unresolved branches of the decision tree one question at a time, recommending an answer per branch. Student confirms or corrects each. Claude incorporates into a sharpened plan.
+5. **Approve. Stop. No execution.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern.
+6. **Retrospective names the pattern.** What did grill surface that push-back didn't? Would it have mattered? The design pattern: *human read → push-back → agent read → grill → approve.* One kind of scrutiny catches one kind of miss; paired, they give the complete read.
 
-**What M2 refuses:** plan mode as a feature tour. Plan mode is a discipline, not a toggle.
+**What M2 refuses:** plan mode as a feature tour (it's a discipline, not a toggle); three-push-back-quota (n=3 produces a performative third one, killed in v3 reshape); plan-execution (the work of making a plan good IS the exercise; running the code is different-skill territory).
 
 ## M3 in detail — earn the trust (Quality + Security), before you need it
 
-**Veto-stakeholder module, moved earlier.** Two ~20-min exercises — Q first, S second. Compact. **Team kit born here.** Discipline installed before M5's long-running send-off, so the student never feels exposed.
+**Veto-stakeholder module, moved earlier.** Three exercises on a small feature the student is shipping — **S-first, then Q.** Runtime 1h45 (lifted from the earlier 1h30 compact; three exercises + richer Debrief warrant the rhythm of the other modules). **Team kit born here.** Discipline installed before M5's long-running send-off, so the student never feels exposed.
 
-**Exercise 1 — Build the first judge + gate (Q, ~20 min).** Take M1's bug fix, build the smallest judge around it: *did the fix really land? what would catch it failing?* Judge written as a markdown spec the agent reads. **Packaged as a skill file** — named, scoped, invocable. Wrapped in a gate spec: auto-approve threshold, what it checks, what goes to human review. Skill + gate spec shipped to team kit. Team kit is born — one skill, one gate, one student's contribution.
+**Why curated-then-authored.** Students USE two curated skills for security, AUTHOR one of their own for quality. STRIDE authored by a novice = Wikipedia copy-paste; test strategy authored by an engineer on their own codebase = *theory × codebase-knowledge* — the correlation at the heart of the training. The proportion shown:authored matches the claim: we curate; you build.
 
-**Exercise 2 — Bound the blast radius (S, ~20 min).** Open M1 agent's tool/connector/action surface, name the worst thing it could have shipped, pick one constraint. Menu: least-privilege scope reduction · prompt-injection guard · audit-trail hook on tool calls · secrets-handling check. Implement. Verify agent still works. **Package as skill file,** ship to team kit.
+**Why S-first.** The test-strategy skill (Ex3) invokes on the feature that's already been access-mapped and threat-modeled. Abuse cases STRIDE surfaced become test cases. Q consuming S's output is denser pedagogy than two standalone beats.
 
-Both exercises produce skill-shaped team-kit contributions. Cohort end-of-M3 has ~2 files/student × cohort size — substrate for M4's memory-navigation helpers, M6's second authoring, M7's deliberation. **Real-work requirement holds** — both operate on the student's actual M1 fix and M1 agent.
+**Feature rule — pedagogy, not prescription.** Student brings a small feature they're shipping this week. Too small: Claude crunches it in thirty seconds with nothing interesting to surface. Too large: still waiting when the bell rings. Students have already seen how quickly Claude works across M1–M2; trust their calibration. Connections framing, not a checklist.
 
-**What M3 refuses:** frame Q+S as compliance (they're infrastructure); cover all of Q or all of S (breadth is the team kit's job); pretend the judge/constraint covers everything M5/M6 throws.
+**Exercise 1 — Map the access surface (S primer, ~20 min).** Invoke the curated access-control analysis skill on the feature. Read what it surfaces. Decide: which surface did it flag that you'd underweighted? What did it miss that you know matters? Name the delta — this is the access-mapping that STRIDE will consume.
 
-**Anchor cases:** Intercom Tier 1/2/3 review (19.2% auto-approved at lowest tier — tiered-review is shippable); Ramp Glass + Dojo (judges as quality infrastructure); Intercom's 267-skill plugin repo with 31% R&D contributing (team-kit accretion pattern).
+**Exercise 2 — Threat-model with STRIDE (S main, ~20 min).** Invoke the curated STRIDE skill on the mapped access surface. The skill does the breadth (six categories against every surface); you make one call — pick the threat worth hardening against, write the decision as an ADR in the repo's convention (sponsor-stated home; default `docs/adr/NNNN-slug.md`). The framework picks the threat if you've named the worst case right. No menu-shopping.
+
+**Exercise 3 — Author your test-strategy skill (Q, ~25–30 min).** Author through conversation, not a markdown editor. Student prompts Claude to ask the questions needed to encode a test-strategy skill for THIS codebase — framework, mocking policy, integration boundary, what "flaky" means here, what regression scope looks like. One question at a time (prompt says so — otherwise Claude dumps all five). Claude writes SKILL.md; student pushes back on codebase specifics. **Force-push-back move:** ask the skill to disclose its own weakest part before shipping. Student pushes back on the self-critique — which is the reflection move; this IS theme #4 (mechanically self-aware) used as designed. **Invocation closes the loop:** run the skill on the security-tested feature, prompt Claude *"go check the test strategy related to the feature — is it good?"* Ship to the team-kit substrate.
+
+**Curated skills ship with the training.** Both S skills live in the content folder (`content/skills/access-control-analysis/`, `content/skills/stride/`). Training IP — Bosser-curated, lecture attributes sources (Kohnfelder & Garg for STRIDE origins; Shostack for sharpening; Saltzer & Schroeder for least-privilege lineage). Not team-kit contributions — curated-for-you stays in content; authored-by-us goes to the team kit. Clean separation.
+
+**Team-kit accretion at end-of-M3.** One authored skill per student shipped = ~10 contributions (cohort of 10). Readable at a glance, cohort-pattern-matchable. Substrate for M4's memory-navigation helpers, M6's second authoring, M7's deliberation.
+
+**What M3 refuses:** frame Q+S as compliance (they're infrastructure); ask the student to author STRIDE or access-control from scratch (novice-authoring = Wikipedia copy-paste); ask the student to spot-check Claude's skill output manually (the self-critique move puts Claude in the critic seat, where it belongs — check_student_facing #9); skill-authoring by opening a markdown editor (the authoring move is conversation, not keyboard-crafting).
+
+**Anchor cases:** Intercom Tier 1/2/3 review (19.2% auto-approved at lowest tier — tiered-review is shippable); Ramp Glass + Dojo (judges as quality infrastructure); Intercom's 267-skill plugin repo with 31% R&D contributing (team-kit accretion pattern). STRIDE lineage: Kohnfelder & Garg (1999 Microsoft memo) + Shostack (*Threat Modeling: Designing for Security*, 2014).
 
 ## M4 in detail — memory that reads your system
 
@@ -332,8 +364,8 @@ Skills are a first-class capability in Claude Code (scoped, named, reusable move
 | Module | Using | Authoring |
 |---|---|---|
 | M1 | 1–2 pre-installed skills invoked during bug fix; vocabulary arrives at the moment of invocation | none |
-| M2 | Pre-installed plan-sharpening skills, surfaced by the Nerd at blockers (specific skills TBD at Pass 1) | none |
-| M3 | Uses pre-installed skills if they sharpen the judge/constraint work | **Authors first skill** — Q judge + S constraint, each packaged as a skill file, shipped to team kit (team kit born) |
+| M2 | **grill-me** (Matt Pocock, MIT, forked to `curriculum/skills/external/pocock-skills/grill-me/` at commit `a6bdfd9`, 2026-04-22) — Socratic requirement elicitation, walks down unresolved branches of the plan's decision tree. Invoked at P4 as the second-pass read after student's own push-back. | none |
+| M3 | **Invokes two curated skills** — `access-control-analysis` + `stride` (Bosser-curated, ship in content folder) — on a feature the student is shipping | **Authors first skill** — test-strategy skill, written through conversation with Claude (not by typing markdown), self-critique pre-ship, invoked on the security-tested feature, shipped to team kit (team kit born) |
 | M4 | Uses team-kit authored skills from M3 as memory-navigation helpers | none |
 | M5 | Uses team-kit skills during send-off (verifier-shaped skills from M3 apply) | none |
 | M6 | Uses team-kit skills during return-and-diff | **Authors second skill** — sharpened verifier packaged as skill, shipped to team kit |
@@ -356,10 +388,10 @@ Not its own module. Side-story that accretes from M3 onward, mirroring how Inter
 |---|---|---|
 | M1 | None — solo on own repo | empty |
 | M2 | Seed the noticing — *"if a rule your agent just followed would serve a teammate, jot the name"* | one note in personal CLAUDE.md |
-| M3 | **The birth.** Q+S exercises end with *package + ship*. Two skill files per student | ~20 contributions (cohort of 10) |
-| M4 | Students use team-kit skills as memory-navigation helpers; cohort adds a few memory-helper skills | ~25 files |
-| M5 | Pre-send-off reads the team kit for verifier + constraints. No new authoring | ~25 files |
-| M6 | **Second authoring** — sharpened verifier packaged as skill, shipped | ~35 files |
+| M3 | **The birth.** Q exercise ends with *author + self-critique + invoke + ship*. One authored skill per student (test-strategy); two curated S skills stay in content folder | ~10 contributions (cohort of 10) |
+| M4 | Students use team-kit skills as memory-navigation helpers; cohort adds a few memory-helper skills | ~15 files |
+| M5 | Pre-send-off reads the team kit for verifier + constraints. No new authoring | ~15 files |
+| M6 | **Second authoring** — sharpened verifier packaged as skill, shipped | ~25 files |
 | M7 *(optional)* | Deliberation agents load accreted skills as first read; new skills may emerge mid-deliberation | ~35+ plus generated |
 | M8 *(optional)* | None — human close | unchanged |
 
@@ -477,7 +509,7 @@ Two artifacts per student:
 - **Session runtime per module (working bid):**
   - M1 Getting going + context ~2h (the orientation ramp + the bug fix; slightly longer than M2 because of MCP/skill setup)
   - M2 Plan mode ~1h45
-  - M3 Q+S ~1h30 (compact: 2 × 20-min exercises)
+  - M3 Earn the trust ~1h45 (3 exercises: 2 × invoke curated skill + 1 × author-your-own)
   - M4 Memory ~1h45
   - M5 Send-off ~2h (orchestration headroom)
   - M6 Return ~2h (retrospective + skill authoring)
@@ -493,6 +525,8 @@ Two artifacts per student:
 
 **Also settled:** first cohort runs at full price (revenue event, not discount-for-evidence); Bootstrap is irrelevant as prerequisite; `crux` / `assumption-test` / `pre-mortem` NOT ported (engineers already have those instincts; M7 runs on the cohort's own authored engineering skills).
 
+**Recurring themes named (2026-04-23):** the four practitioner-truths the curriculum lives inside — 90% correct (problem), compounding builds the system (method), LLM as mirror (operator), mechanically self-aware (interface). See new § "Recurring themes." Frame for every subsequent module spine; modules earn themes, not recite them.
+
 **M1 dependencies built (2026-04-21 long-running-gen cycle):**
 - `curriculum/trainings/agentic-engineering-101/getting-going.md` (Pass 1 spine; needs MCP/first-skill ramp grown at front)
 - `curriculum/trainings/agentic-engineering-101/prework.md`
@@ -502,16 +536,41 @@ Two artifacts per student:
 - Klaassen + Huryn practitioner sources verified — `[practitioner direct]`, within 6 months
 - Pedagogy: **exercise-first head-on; "why it worked" names the shape retrospectively.** Practitioners attributed as peer recognition, not curriculum authority.
 
+**M2 dependencies built (2026-04-22 long-running-gen cycle, v3 reshape 2026-04-23):**
+- `curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` (module spine)
+- `curriculum/exercises/push-back-on-the-plan.md` (Pass 3; v3 shape — two push-backs + grill + stop, no execution)
+- `curriculum/lectures/when-a-plan-is-good.md` (Pass 2 skeleton, 10–12 min)
+- `curriculum/evals/instances/agentic-engineering-101--plan-mode-done-right.md` (filled eval, reshape log at top)
+- `curriculum/skills/external/pocock-skills/grill-me/` — Pocock's grill-me skill forked with MIT LICENSE + attribution at commit `a6bdfd9` (2026-04-22)
+- Site renderer: AE101 registered in `TRAININGS` with M1 + M2
+- v3 shape emerged from Antti-driven reshape: *"the exercise is about reading a plan well; execution is M3's concern"* — stopping at approval and naming the design pattern (human read → push-back → agent read → grill → approve) replaces the original execute-and-retro shape
+- Three-persona sims (Maija mid-competent / Greg opinionated senior / Jin fast operator) + LLM-as-judge all APPROVE WITH TODOs on v3; polish layer applied 2026-04-23
+
+**M1 reconstruction (2026-04-23, Antti-driven):**
+- `curriculum/exercises/ship-trivial-bug.md` — reshaped to three phases: P1 orient + introspect (`/context`); P2 fix tests-first, no plan mode, seed `CLAUDE.md` mid-exercise; P3 retro extends `CLAUDE.md` + short MCP framing + close the ticket via connector. Themes (mirror / grain-of-salt / 90% / compounding) plant experientially in P1–P2, no lecture.
+- **NEW file** `curriculum/reference/mcp-and-connectors.md` — first entry in `curriculum/reference/`. Per-tracker install (`gh` CLI for GitHub Issues / Atlassian Rovo MCP for Jira / Composio or Merge for Linear), tenant-admin fallbacks, "Last verified" date to track freshness. Exercise points at it; specifics stay out of the exercise body so they don't drift when Claude Code's install surface changes.
+- Capability check via `claude-code-guide` confirmed MCP is CLI-first in Claude Code today (2026-Q2). No GUI marketplace. Informed P3 design + the reference file.
+- Strategy-doc § "M1 in detail" rewritten to the three-phase shape; module-table artifact column updated.
+- **Still outstanding:** module file `getting-going.md` LO + runtime + Debrief block update (deferred until Skill-invocation divergence resolves). Three-persona sim on the new shape. Antti reviewing opener (Connections + wizard-move lecture) after this pass.
+
+**Skill-invocation divergence (open for Antti):** prior strategy had M1 invoking 1–2 pre-installed Skills. The reconstructed three-phase shape drops explicit Skill use — P1 uses `/context` (slash command, not a Skill), P3 uses MCP (connector, not a Skill). Options: (a) no Skill use in M1; first authoring + first use both land at M3; (b) reinstate a Skill beat inside one of the three phases. Resolving either way is a small edit; deferring for Antti.
+
 **Open — decide before Pass 1:**
 
-1. **M1 MCP selection.** Single-click-install defaults for the cohort. Needs capability check via `claude-code-guide`: current Claude Code desktop connector path, sensible defaults (GitHub, filesystem, a search MCP), tenant-admin fallback for locked-down tenants.
-2. **M2 plan-mode exercise shape.** Reuse Bootstrap's plan-mode primer or author fresh? Needs an exercise that forces push-back before approval — the teaching moment, no Bootstrap precedent.
-3. **M3 Q+S exercise artifacts.** Proposal: Q wraps a judge around M1's bug fix; S bounds M1 agent's blast radius. Both on M1 real work. Validate before Pass 2.
-4. **Site renderer.** Add an `optionalModules` field to the TRAININGS schema (parallel to Bootstrap's `supplementaries`) or use title-prefix workaround? Recommendation: add the field.
-5. **Optional-module sell line.** AE101 equivalent of Bootstrap's *"Plus two optional extensions…"*: A/B *"Plus two optional modules when the cohort wants the team peak."*
+1. ~~**M1 MCP selection.**~~ **Resolved 2026-04-23** — capability check completed; findings codified in `curriculum/reference/mcp-and-connectors.md`. GitHub Issues via `gh` CLI is the cleanest default; Jira via Atlassian Rovo MCP; Linear via Composio or Merge. Tenant-admin fallbacks per tracker.
+2. ~~**M3 Q+S exercise artifacts.**~~ **Resolved 2026-04-23** — reshaped to three exercises on a small feature the student is shipping: (1) invoke curated access-control analysis skill; (2) invoke curated STRIDE skill + ADR hardening decision; (3) author test-strategy skill via conversation, self-critique, invoke on security-tested feature, ship. Module spine drafted at `curriculum/trainings/agentic-engineering-101/earn-the-trust.md`. See § "M3 in detail" for shape.
+3. **Site renderer.** Add an `optionalModules` field to the TRAININGS schema (parallel to Bootstrap's `supplementaries`) or use title-prefix workaround? Recommendation: add the field.
+4. **Optional-module sell line.** AE101 equivalent of Bootstrap's *"Plus two optional extensions…"*: A/B *"Plus two optional modules when the cohort wants the team peak."*
+5. **Red-team-me skill.** Pocock's grill-me is Socratic-elicitation, not adversarial. A genuinely adversarial *"imagine the worst way this plan fails, argue for it"* skill is a real authoring opportunity — likely M3 (judge-building) or the skill-authoring arc. Not M2.
+
+**M3 dependencies built (2026-04-23, Antti-driven strategy-session reshape):**
+- `curriculum/trainings/agentic-engineering-101/earn-the-trust.md` — Pass 1 spine, three-exercise shape (S-first), runtime 1h45, feature-size framing as pedagogy (small/large tradeoff, trust student's Claude-speed calibration).
+- Strategy-doc § "M3 in detail" rewritten; module-table artifact column updated; Skills table + Team-kit table + Format runtime synced.
+- Shape pinned in-session: *curated S skills (access-control-analysis + STRIDE) + authored Q skill (test-strategy)*; self-critique move via *"disclose the weakest part"*; invocation-closes-loop via *"go check the test strategy — is it good?"*; skill authored through conversation, not markdown editor.
+- **Still outstanding:** Pass 2 exercise files (3), Pass 2 lecture, curated skill files (access-control-analysis + STRIDE), eval instance, three-persona sim. Feature-size Connections framing needs simulation to verify it lands without prescription.
 
 **TODOs for Pass 1:**
-- Write M2–M8 module spines (7 files). Next long-running-gen session per `module-design-long-running-strategy.md`.
+- Write M4–M8 module spines (5 files). Next long-running-gen sessions per `module-design-long-running-strategy.md`.
 - Grow `getting-going.md` M1 file with MCP + first-skill ramp at the front.
 - Write research-grounded-moves companion file (EM has one; 101 doesn't).
 - **Capability checks:** Opus 4.7 long-running behaviour (before M5 drafts); MCP setup (before M1 drafts). Both via `claude-code-guide`.
@@ -520,9 +579,9 @@ Two artifacts per student:
 - M7: problem-selection protocol (how the CTO picks the right engineering problem); self-study variant with persona-stand-ins.
 - Frontier reading list — named practitioners (Karpathy, Willison, Huryn, Cherny, Sottiaux et al.); refreshed per cohort.
 
-**Bootstrap reuse candidates:** Plan mode primer → M2 · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination bake-off → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem substrate). `crux` / `assumption-test` / `pre-mortem` NOT ported.
+**Bootstrap reuse candidates:** Plan mode primer → M2 **NOT PORTED** (v3 authored fresh; Bootstrap's primer is builder-leader voiced and has no forced-push-back mechanic) · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination bake-off → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem substrate). `crux` / `assumption-test` / `pre-mortem` NOT ported.
 
-*Decision history is in `git log`. Last updated 2026-04-22.*
+*Decision history is in `git log`. Last updated 2026-04-23 (themes + M1 three-phase reconstruction + `reference/mcp-and-connectors.md` created + M3 reshape: three exercises, S-first, curated-S-authored-Q, runtime 1h45, `earn-the-trust.md` spine drafted).*
 
 ---
 

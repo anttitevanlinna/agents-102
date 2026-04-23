@@ -8,16 +8,17 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 - **Prework:** bring a small feature you're working on right now (see Connections for the size rule). No pre-written files; the feature lives in your repo.
 - **Homework:** none — the authored skill ships at M3's close.
 - **Materials (trainer):** content folder carries two curated skills (`access-control-analysis/`, `stride/`) under `content/skills/`. Students invoke from there; no install step.
-- **Plug points:** student's own feature + sponsor-stated team-kit substrate (pre-engagement contract).
+- **Plug points:** student's own feature + sponsor-stated team-kit home (pre-engagement contract).
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Invoke** a curated access-control analysis skill on a feature you're shipping, read what it surfaces, name what a first-read missed
-- **Apply** a curated STRIDE skill to the mapped surface, pick one threat worth hardening against, write the decision as an ADR in your repo's convention
+- **Invoke** a curated access-control analysis skill on a feature you're shipping — as a subagent, fresh context — read what it surfaces, name what a first-read missed
+- **Apply** a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo's convention
+- **Discriminate** when a job belongs in a subagent (breadth-first curated skills, long structured output) versus the main thread (one-question-at-a-time authoring, interactive steering)
 - **Author** a test-strategy skill through conversation with Claude — one question at a time, tuned to your codebase's actual testing conventions, not a generic pyramid
 - **Evaluate** the authored skill by asking it to disclose its own weakest part, then pushing back on the critique
 - **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
-- **Ship** one authored skill to the team-kit substrate — the first artifact of yours that crosses teammates
+- **Ship** one authored skill to the team-kit home — the first artifact of yours that crosses teammates
 
 ## Connections
 
@@ -49,7 +50,7 @@ The question — to you: what's the feature, and what's the surface you're most 
 ## Plug Points
 
 - **Student's own feature** (surfaced in Connections, carried across all three exercises)
-- **Sponsor-stated team-kit substrate** (pre-engagement contract). Default: shared Git repo spun up at training start. Shipped skill lands here.
+- **Sponsor-stated team-kit home** (pre-engagement contract). Default: shared Git repo spun up at training start. Shipped skill lands here.
 - **Sponsor-stated ADR home** (pre-engagement contract). Hardening decision from Ex2 lands here. Default: `docs/adr/NNNN-slug.md` or the repo's existing convention.
 - **Curated skills ship in the content folder** (`content/skills/access-control-analysis/`, `content/skills/stride/`). Training IP; not contributed to the team kit. Clean separation: *curated-for-you* stays in content, *authored-by-us* goes to the team kit.
 
@@ -66,16 +67,18 @@ Read the access-control output, the STRIDE output + ADR, the authored test-strat
 
 Then do two things:
 
-1. Integrate one named pattern into my repo's CLAUDE.md — something specific to THIS codebase, from THIS session's evidence. Quote the surface the access-control skill flagged that I'd underweighted, or the STRIDE branch I hardened, or the test-strategy assumption I corrected. Name the branch, not the rule. Not "always run STRIDE" (generic). Something like "features touching the billing webhook need access-control mapping before STRIDE — the event-replay path is invisible from a first read."
+1. Integrate one named pattern into my personal `CLAUDE.local.md` (create it at repo root + add to `.gitignore` if it doesn't exist — this is my personal file, not team `CLAUDE.md`). Something specific to THIS codebase, from THIS session's evidence. Quote the surface the access-control skill flagged that I'd underweighted, or the STRIDE branch I hardened, or the test-strategy assumption I corrected. Name the branch, not the rule. Not "always run STRIDE" (generic). Something like "features touching the billing webhook need access-control mapping before STRIDE — the event-replay path is invisible from a first read."
+
+If the pattern is team-worthy — every engineer shipping this codebase should know it — flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
 
 2. Review the test-strategy skill I authored. Sharpen it in place if my session evidence shows it's weak somewhere — a convention I named that isn't fully encoded, a codebase-specific failure mode I mentioned in conversation but isn't in the skill yet. Integrate, don't append.
 
-Tell me in 3–5 lines: what pattern you named in CLAUDE.md, what you sharpened in the skill, and which moment in the session made you pick those over others. I shouldn't have to open the files to know.
+Tell me in 3–5 lines: what pattern you named in `CLAUDE.local.md` (and whether any are team-worthy flags), what you sharpened in the skill, and which moment in the session made you pick those over others. I shouldn't have to open the files to know.
 ```
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong — quote the session moment. Two files changed this module (`CLAUDE.md` + the test-strategy skill); check both.
+Read the summary. Push back where it's wrong — quote the session moment. Two files changed this module (`CLAUDE.local.md` + the test-strategy skill); check both. Team-rule flags in the summary are for your decision later — they don't auto-PR.
 
 ## Bridge
 
@@ -87,7 +90,7 @@ You earned the first two signatures — your staff engineer sees a test-strategy
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer)
 - **Mood target:** earned trust — *"my agent practice is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
-- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, CLAUDE.md update) live in the student's real repo and the sponsor-stated team-kit substrate. No training-dir state.
+- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships to sponsor-stated team-kit home. No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
 **Agentic Nerd logic (TODO — skill not yet created):**
 - **Connections blocker** — student can't pick a feature. Nerd runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
@@ -102,7 +105,7 @@ You earned the first two signatures — your staff engineer sees a test-strategy
 **Watch-fors (cross-phase):**
 - Feature sprawl — student brings the whole epic. Cap at Connections; redirect to a sliceable sub-part.
 - Curated-skill reverence — student treats the STRIDE skill as oracle. Remind: the skill is good; the decision is yours.
-- Team-kit substrate unresolved — if the sponsor answered "we don't have one" on the pre-engagement contract, the training-start default (shared Git repo) should already be live by M3. Verify before Ex3's ship step.
+- Team-kit home unresolved — if the sponsor answered "we don't have one" on the pre-engagement contract, the training-start default (shared Git repo) should already be live by M3. Verify before Ex3's ship step.
 - Skill-authoring-by-typing — student opens an editor to hand-write SKILL.md. Redirect to conversation: the authoring move is prompting Claude, pushing back, not keyboard-crafting markdown.
 
 **Decision points:**
@@ -114,7 +117,7 @@ You earned the first two signatures — your staff engineer sees a test-strategy
 **Plug points (trainer):**
 - Student's own feature (surfaced in Connections)
 - Sponsor-stated ADR home (Ex2)
-- Sponsor-stated team-kit substrate (Ex3 ship step)
+- Sponsor-stated team-kit home (Ex3 ship step)
 - Agentic Nerd moves at each rubber-stamp risk
 
 **Frameworks riffed on (attributed in lecture):**
@@ -122,13 +125,13 @@ You earned the first two signatures — your staff engineer sees a test-strategy
 - **Access control analysis** — composite practice; anchor attribution Saltzer & Schroeder's 1975 least-privilege principle + Microsoft's threat-modeling adjacency. Curated skill ships in `content/skills/access-control-analysis/`.
 - **Test strategy as discipline** — Kent Beck + James Bach's exploratory-testing lineage + Google Testing Blog's test-pyramid framing. Named at lecture; the student's authored skill is theirs, not a framework import.
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
-- **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's CLAUDE.md pattern (Claude writes from session evidence; student pushes back).
+- **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
 
 **Open questions surfaced for later passes:**
 - Access-control analysis skill authorship: Bosser-authored? Does an existing practitioner skill exist in the wild worth forking (MIT) instead? Capability check before Pass 2.
 - STRIDE skill: same question — does a practitioner-authored STRIDE skill exist in Claude Code community? Last checked: not as of 2026-04-22; re-verify before first cohort.
 - ADR convention: if the sponsor repo has none, what's the training default? `docs/adr/0001-slug.md` with minimal template (context / decision / consequences)?
-- Team-kit substrate spin-up: who's responsible for creating the shared Git repo if the sponsor answered "we don't have one"? Ops-side, before training Day 1.
+- Team-kit home spin-up: who's responsible for creating the shared Git repo if the sponsor answered "we don't have one"? Ops-side, before training Day 1.
 
 **TODO (Pass 2 / Pass 3):**
 - Write `content/skills/access-control-analysis/SKILL.md` (Bosser-authored, curated from sources named in lecture).

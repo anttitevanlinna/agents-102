@@ -1,8 +1,8 @@
 # Ship a trivial bug
 
-**What you do:** run one trivial bug from your repo through a deliberate three-phase loop. Orient and introspect (Phase 1). Fix it tests-first, no plan mode (Phase 2). Retro, wire one MCP, close the ticket (Phase 3). Your repo's `CLAUDE.md` gets seeded from what you did, not from a template.
+**What you do:** run one trivial bug from your repo through a deliberate three-phase loop. Orient and introspect (Phase 1). Fix it tests-first, no plan mode (Phase 2). Retro, wire one MCP, close the ticket (Phase 3). Your personal `CLAUDE.local.md` (gitignored, yours — see [reference § 1](../reference/claude-code-for-engineers.md)) gets seeded from what you did, not from a template.
 
-**What happens:** a real PR ships. `CLAUDE.md` is born from session evidence. One ticket closes via MCP. You've seen `/context` — the instrument that shows where the 10% you couldn't address actually lives.
+**What happens:** a real PR ships. A personal `CLAUDE.local.md` is born from session evidence (gitignored — doesn't touch team review). One ticket closes via MCP. You've seen `/context` — the instrument that shows where the 10% you couldn't address actually lives.
 
 **The point:** every module after this one rides on this loop. The loop isn't the bug fix — the loop is the shape: orient, fix, compound, extend. Teach the shape abstractly and engineers nod. Run it head-on and the shape lives in muscle memory.
 
@@ -65,7 +65,9 @@ Now write the rule — while the move is warm, before the retro.
 **Prompt** *(copy → Claude Code)*
 
 ```
-Look at the loop we just ran — tests first, root cause not symptom, diff read with a push-back. Write a short rule into CLAUDE.md at the root of this repo (or wherever this repo keeps agent rules — check first). Four to six lines. Name the preference concretely enough that the next session reads it and runs the same loop without being prompted. If the file exists, integrate — don't append.
+Look at the loop we just ran — tests first, root cause not symptom, diff read with a push-back. Write a short rule into my personal `CLAUDE.local.md` at the root of this repo (create it if it doesn't exist; add it to `.gitignore` if it's not already). Four to six lines. Name the preference concretely enough that the next session reads it and runs the same loop without being prompted. If the file exists, integrate — don't append.
+
+If this rule is team-worthy — if every engineer shipping this codebase would benefit — flag it when you tell me what you wrote, so I can open a PR against team `CLAUDE.md` separately. Don't PR it automatically.
 
 When you're done, tell me in two lines what you wrote and why.
 ```
@@ -81,7 +83,9 @@ Read what Claude wrote into the file. Push back if it misread the move — quote
 **Prompt** *(copy → Claude Code)*
 
 ```
-Review this session end-to-end — Phase 1's orientation and introspection, the /context read, the TDD bug fix, the diff push-back, the rule we just seeded. Rewrite CLAUDE.md in place (integrate, don't append). Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
+Review this session end-to-end — Phase 1's orientation and introspection, the /context read, the TDD bug fix, the diff push-back, the rule we just seeded. Rewrite `CLAUDE.local.md` in place (integrate, don't append — this is my personal gitignored file, not the team `CLAUDE.md`). Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
+
+If any rule is team-worthy — one every engineer on this codebase should know — flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
 
 Tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why. Be specific about session moments — I shouldn't need to open the file to know.
 ```
@@ -133,16 +137,17 @@ You ran the loop. You have a PR, a rules file born from session evidence, and a 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (run the three-phase loop) + Analyze (read Claude's own introspection against `/context`; read the retro summary against session moments)
 - **Exercise time band:** 85–95 min inside a 2h M1 slot (Connections 10 / Lecture 10 / Exercise 85–95 / Bridge 5). 2h is deliberate for M1 — longer than M2–M4's 1h45 because of the orientation ramp + MCP wiring.
-- **Delivery architecture** (strategy doc § "Delivery architecture"): all compounding artifacts land in the student's real repo. `CLAUDE.md` is seeded at P2, extended at P3 retro. No training-dir state. No `module-1/` folder. No `prework/bug.md`.
+- **Delivery architecture** (strategy doc § "Delivery architecture"): all compounding artifacts land in the student's real repo. `CLAUDE.local.md` (personal, gitignored) is seeded at P2, extended at P3 retro. Team `CLAUDE.md` is untouched unless the student explicitly chooses to PR a team-worthy rule. No training-dir state. No `module-1/` folder. No `prework/bug.md`. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Artifact locations — governed by the pre-engagement contract** (strategy doc § "Pre-engagement contract"):
-  - Rules file (seeded at P2, extended at P3) → sponsor-stated home; root `CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md` are the common shapes.
+  - **Personal rules file** (seeded at P2, extended at P3) → `./CLAUDE.local.md` by default (gitignored). Cross-repo-portable personal rules → `~/.claude/CLAUDE.md` as an override. Both load alongside team `CLAUDE.md` at session start per `reference/claude-code-for-engineers.md § 1`.
+  - **Team rules home** → sponsor-stated (pre-engagement contract); `./CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md` are the common shapes. PR-gated; not session-compounded.
   - PR → the student's usual VCS (GitHub / GitLab / etc.); whatever the team already uses.
   - Ticket tracker (P3) → sponsor-stated tracker (Linear / Jira / GitHub Issues / other).
   - **Student override is legitimate, not rebellion.** A reasoned move to a better home feeds back to the sponsor as signal.
   - **Opting out is not a path.** Compound step needs a durable home.
 
 **Frameworks riffed on:**
-- **TDD (test-driven development)** — Phase 2's tests-first, root-cause-driven fix riffs on a framework engineers already know. Named implicitly ("tests-first"); the rule seeded into CLAUDE.md is the student's own TDD-style preference.
+- **TDD (test-driven development)** — Phase 2's tests-first, root-cause-driven fix riffs on a framework engineers already know. Named implicitly ("tests-first"); the rule seeded into `CLAUDE.local.md` is the student's own TDD-style preference.
 - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Convergence Level 3. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`. Attributed inside Claude's P3 retro summary (the retro prompt asks it to cite if one fits), not in a lecture.
 - **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials are seeded in M1 (observation at P1 → Block 1; TDD rule + diff push-back → Block 2; the test itself → Block 3). The three-block *frame* earns its name in M4 when the materials get rearranged. Don't teach three-block in M1.
 
@@ -150,21 +155,21 @@ You ran the loop. You have a PR, a rules file born from session evidence, and a 
 - **Theme 3 (mirror)** — P1's "read the repo" shows the student their prompt reflected in Claude's read.
 - **Theme 4 (self-aware, grain of salt)** — P1's introspection prompt; P3's retro summary; the "verify against artifact" move in both.
 - **Theme 1 (90% correct)** — `/context` makes the bounded window and the unread slice visible.
-- **Theme 2 (compounding builds the system)** — P2's rule-to-CLAUDE.md is the first compound step; P3 extends it; the file grows across the training.
+- **Theme 2 (compounding builds the system)** — P2's rule-to-`CLAUDE.local.md` is the first compound step; P3 extends it; the file grows across the training.
 
 **Watch-fors:**
 - **P1 skim past introspection.** Student reads Claude's repo summary without running the second prompt. Diagnostic: conversation moves to the bug fix without a "what did you read/skip" exchange. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **P1 `/context` skipped.** Slash command is easy to miss as "a line of prose" rather than a command. Nerd push if they skip: *"type /context in the chat — look at the number."*
 - **P2 tests-skipped.** Student pastes the bug and Claude jumps straight to a fix. Common failure mode. Nerd push: *"back up — what's the failing test that would prove this bug exists?"* If the repo has no test infrastructure on this path, log *"no verifier here"* and name it as the first Quality-Gate entry (landing in M4).
 - **P2 diff rubber-stamp.** Student says "looks fine" under 30 seconds. Nerd push: *"find me one line you'd have written differently — not wrong, just different."*
-- **P2 CLAUDE.md rule-rubber-stamp.** Student accepts whatever Claude writes without reading. Nerd push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
+- **P2 `CLAUDE.local.md` rule-rubber-stamp.** Student accepts whatever Claude writes without reading. Nerd push: *"read it aloud — if you opened a new session tomorrow, would this line make you run the same loop?"*
 - **P3 retro confabulation.** Claude's 3–5 line summary name-drops moments without quoting. Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
 - **P3 MCP install gate.** Corporate tenant blocks connector install. Tenant-admin fallback named per tracker (see Phase 3 TODO). Do not treat as blocker — fallback path always exists.
 
 **Decision points:**
 - **P2 runs over 50 min.** Bug wasn't trivial. Let it complete; trim P3 MCP exercise to read-only (skip the update), flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.
 - **Student finishes P1–P2 under 45 min total.** Picked something too small. Offer second bug, or use saved time to explore `/context` and introspection more deliberately.
-- **Student's repo has no test infrastructure.** P2 ends without test verification. Log "no verifier on this path" in the CLAUDE.md rule — real finding, not exercise failure. M4 picks it up.
+- **Student's repo has no test infrastructure.** P2 ends without test verification. Log "no verifier on this path" in the `CLAUDE.local.md` rule — real finding, not exercise failure. M4 picks it up.
 - **Student's sponsor stated a tracker the cohort's Claude Code can't connect to.** Fall back to create-a-markdown-ticket in the repo; MCP exercise converts to *"write a ticket into `docs/tickets/` and link the PR."* Sponsor gets a signal.
 
 **Plug points:**
@@ -184,7 +189,7 @@ You ran the loop. You have a PR, a rules file born from session evidence, and a 
 **Arc:**
 - Picks up from: Connections (trick exchange) + the-wizard-move lecture (framing).
 - Hands off to: Bridge into M2.
-- M2 picks up: plan mode at depth on multi-file work, now that the bug-fix loop is muscle memory and CLAUDE.md exists as the next session's first read.
+- M2 picks up: plan mode at depth on multi-file work, now that the bug-fix loop is muscle memory and `CLAUDE.local.md` (+ team `CLAUDE.md` if it exists) sits at the top of the next session's read.
 
 **Dependencies shipped 2026-04-23 (reconstruction pass):**
 - **`curriculum/reference/mcp-and-connectors.md`** — flat-lookup reference for MCP install, per-tracker (GitHub `gh` CLI / Jira Rovo MCP / Linear third-party bridge), tenant-admin fallbacks. Exercise P3 points at it; reference stays current with Claude Code's install surface.

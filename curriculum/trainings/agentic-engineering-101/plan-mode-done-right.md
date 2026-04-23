@@ -17,7 +17,7 @@ After this module, you will be able to:
 - **Invoke** the `grill-me` skill as a second-pass read that walks down unresolved branches you didn't think to check
 - **Recognize** the pairing as a repeatable design pattern: human read → push-back → agent read → grill → approve
 - **Name** plan-mode approval inflation as the thing the pairing defeats, not a moralistic warning
-- **Write** one named pattern into your repo's `CLAUDE.md` that captures how plans get read in this codebase
+- **Write** one named pattern into your personal `CLAUDE.local.md` (gitignored) that captures how plans get read in this codebase — if it's team-worthy, flag it for a separate PR against team `CLAUDE.md` (see [reference § 1](../reference/claude-code-for-engineers.md))
 
 ## Connections
 
@@ -44,11 +44,11 @@ After this module, you will be able to:
 
 Student's own repo (carried from M1) and a backlog task they surface in prework. No company data needed yet — the task is already theirs.
 
-The **sponsor-stated rules home** (pre-engagement contract) is where the Compound step writes the new pattern. Default: root `CLAUDE.md` / `.claude/CLAUDE.md` / `AGENTS.md` per sponsor's call. Student override with a reasoned alternative is legitimate; opting out is not a path.
+The Compound step writes the new pattern to your personal `CLAUDE.local.md` by default (gitignored, no PR). If the pattern is team-worthy, flag it for a separate PR against team `CLAUDE.md` (sponsor-stated home per pre-engagement contract — `./CLAUDE.md` / `./.claude/CLAUDE.md` / `AGENTS.md`). Student override with a reasoned alternative is legitimate; opting out is not a path.
 
 ## Debrief
 
-15 minutes. Claude reviews the session, writes one named pattern into your repo's `CLAUDE.md`, reports what it added and why. You push back on the summary.
+15 minutes. Claude reviews the session, writes one named pattern into your personal `CLAUDE.local.md` (gitignored), reports what it added and why. You push back on the summary. If the pattern is team-worthy, Claude flags it so you can decide whether to open a separate PR against team `CLAUDE.md`.
 
 **Prompt** *(copy → Claude Code)*
 
@@ -57,7 +57,9 @@ Review this session. We took a real backlog task through plan mode, I pushed bac
 
 Read the original plan, the plan after my two push-backs, and the plan after grill-me. Scan the scrollback for the branches grill surfaced and how I answered. What's the DESIGN PATTERN I just ran?
 
-Then integrate one named pattern into my repo's CLAUDE.md (or .claude/CLAUDE.md if that's the convention). **Name the branch, not the rule.** Quote the specific branch grill surfaced or the specific line my push-back sharpened — something like *"plans touching the webhook ingress layer need a grill pass on cache-invalidation before approval — the router's 60-second memoization is invisible from a first read."* Not *"always pair push-back with grill"* (generic rubric). Integrate, don't append. If a plan-reading rule exists, sharpen it with this session's specific branch.
+Then integrate one named pattern into my personal `CLAUDE.local.md` (create it at the repo root and add to `.gitignore` if it doesn't exist — this is my personal file, not team `CLAUDE.md`). **Name the branch, not the rule.** Quote the specific branch grill surfaced or the specific line my push-back sharpened — something like *"plans touching the webhook ingress layer need a grill pass on cache-invalidation before approval — the router's 60-second memoization is invisible from a first read."* Not *"always pair push-back with grill"* (generic rubric). Integrate, don't append. If a plan-reading rule exists, sharpen it with this session's specific branch.
+
+If the pattern is team-worthy — useful to every engineer shipping this codebase — flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
 
 When you're done, tell me in 3–5 lines: what pattern you named, where it landed, which moment in the session made you pick that one over others — and whether grill-me surfaced anything my push-back would have caught on a slower day. I shouldn't have to open the file to know.
 ```
@@ -76,7 +78,7 @@ You built a plan you trust without running it — and you ran grill-me on someth
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the grill-compare is the Evaluate beat)
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer)
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"grill did everything; my push-back was pointless."* Diagnostic: student at P5 reports grill caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item grill softened; your voice-of-experience beats grill's breadth on that axis."*
-- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.md` at root, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state.
+- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
 **Agentic Nerd logic (TODO — skill not yet created):**
 - **P1 blocker** — student can't surface a fitting task. Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.

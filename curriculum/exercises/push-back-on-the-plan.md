@@ -78,7 +78,7 @@ Neither is complete. Paired, they usually are.
 
 **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. Grill catches the rest. That's the move.
 
-On to the Compound step — the Debrief writes the pattern into your `CLAUDE.md` in a shape you can re-run tomorrow.
+On to the Compound step — the Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run tomorrow. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 <!-- maintainer -->
 
@@ -89,7 +89,7 @@ On to the Compound step — the Debrief writes the pattern into your `CLAUDE.md`
 - **Artifact locations — governed by the pre-engagement contract:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
   - Execution artifacts (diff, PR) → student's real repo
-  - Compound-step rules update → sponsor-stated rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md` per pre-engagement contract)
+  - Compound-step rules update → personal `CLAUDE.local.md` at repo root (gitignored); team-worthy rules flagged for separate PR against sponsor-stated team rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md` per pre-engagement contract). See `reference/claude-code-for-engineers.md § 1`.
   - No training-dir state.
 - **Frameworks riffed on:**
   - **Plan mode** (Anthropic Claude Code). Activation via Shift+Tab; push-back via *keep planning with feedback* at the approval prompt. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
@@ -130,7 +130,7 @@ On to the Compound step — the Debrief writes the pattern into your `CLAUDE.md`
 
 **Arc:**
 - Picks up from: M1's Plan → Work → Review → Compound loop, run on a 60-min trivial bug. M2 runs the same loop at deeper Plan scope.
-- Hands off to: M2 Debrief (Compound step) — one named pattern about what a good plan looks like for this student on this repo goes into `CLAUDE.md`.
+- Hands off to: M2 Debrief (Compound step) — one named pattern about what a good plan looks like for this student on this repo goes into personal `CLAUDE.local.md` (team-worthy flag for separate PR if applicable).
 - M3 picks up: the judge-building move — the push-backs the student sent at P3 are the raw material for M3's first judge ("did the fix really land?"). The push-back discipline becomes the gate spec.
 
 **Frameworks riffed on (attributed at P5):**

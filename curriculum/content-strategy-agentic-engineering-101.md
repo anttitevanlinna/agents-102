@@ -51,7 +51,7 @@ Software engineers, individual contributors, 1–8 years. Adjacent fits: platfor
 
 **Self-taught means uneven practice, not uneven ability.** Two engineers on the same team have wildly different repertoires. Training pools tricks, levels the floor, raises the ceiling — never signals that anyone's current practice is wrong. It's partial. So is ours.
 
-**Why narrow to software engineers:** the L3 path is most legible here (Intercom, Ramp). Coding agents are the meta-platform; software ICs already touch the substrate. Adjacent variants later.
+**Why narrow to software engineers:** the L3 path is most legible here (Intercom, Ramp). Coding agents are the meta-platform; software ICs already live in the tools. Adjacent variants later.
 
 ## The correlation at the heart of the training
 
@@ -180,12 +180,12 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 
 | # | Title | Lead dimension | Mood | Artifact |
 |---|---|---|---|---|
-| M1 | **Getting going + context** *(+ MCP)* | Compounding (how) | Joyful creation — *"it works, on my repo"* | Three-phase loop on a trivial bug from the student's own backlog: P1 orient + introspect (`/context` shows the unread slice); P2 fix tests-first, no plan mode, seed `CLAUDE.md` mid-exercise; P3 retro extends `CLAUDE.md` + wire one connector + close the bug's ticket outside the repo. Skill-invocation deferred to M3 pending adjudication. |
+| M1 | **Getting going + context** *(+ MCP)* | Compounding (how) | Joyful creation — *"it works, on my repo"* | Three-phase loop on a trivial bug from the student's own backlog: P1 orient + introspect (`/context` shows the unread slice); P2 fix tests-first, no plan mode, seed `CLAUDE.md` mid-exercise; P3 retro extends `CLAUDE.md` + wire one connector + close the bug's ticket outside the repo. No Skill use at M1 — first Skill use, first subagent, first authoring all land together at M3. |
 | M2 | **Plan mode, done right** | Compounding (how) deepens | Grounded competence — *"I can feel when a plan is good before approving it"* | A well-designed plan on multi-file work the student actually has to do, pushed back on before approval, executed, and retrospectively named as plan-mode-at-depth. Plan-mode approval inflation catches as the key teaching moment. |
 | M3 | **Earn the trust — quality + security** | Software factory (tech) + team integration (how) via team-kit seed + **first authored skill** | Earned trust — *"my agent practice is something my staff engineer and my CISO can sign off on, before I even try anything big"* | Three exercises on a small feature the student is shipping: (1) invoke curated access-control analysis skill, name surface delta; (2) invoke curated STRIDE skill, pick one hardening decision → ADR; (3) author a test-strategy skill through conversation with Claude, ask it to disclose its weakest part, invoke on the security-tested feature, ship to team kit. Two curated skills used, one authored skill shipped. Team kit is BORN here. |
-| M4 | **Memory that reads your system** | Compounding (how) | Satisfied compounding — *"it reads my system now"* | Single-repo memory → multi-repo memory → memory connected to business rules and company info; agents wired to each layer; compounding loop from M1/M2 carried forward; team-kit-authored memory-navigation skills used. |
-| M5 | **Long-running tasks — send-off** | Long-running (tech) — setup + launch | Unleashed leverage — *"I just sent an agent off with real work"* | Concept taught + challenge named + verifier built on student's real work + verifier checked lightly on a small example + mid-long task launched, running between M5 and M6 |
-| M6 | **Long-running tasks — return** | Long-running (tech) — retrospective + next-run prep + **second authored skill** | Grounded rescue — *"the return isn't a grind, it's a system"* | Return to the scene: diff read, drift named, failures caught + learnings integrated into memory + **verifier sharpened and packaged as a skill**, shipped to the team kit. |
+| M4 | **Accumulate + run the first experiment** | Compounding (how) + long-running (tech) | Curious readiness — *"I've built enough to try; let's see what the agent does"* | Pick the multi-hour task → walk what you've built against it → fill the worst gaps → see Huryn's three-block frame in your own material → **send off un-packaged** (no plan.md, no verifier, no reference artifact). The result will be "not great" by design — that's the data M5 reads. |
+| M5 | **Learn from the test, re-send packaged** | Long-running (tech) + compounding (how) | Learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture"* | Return to the un-packaged run → name what went wrong → teach Ronacher's three-pattern (reference artifact + plan.md + external verifier) through diagnosis of the M4 failures → build the verifier (first eval, named) → assemble reference + plan → **re-send the same task, packaged**. Second experiment: same task, changed variable. |
+| M6 | **Spot gaps, build the loop** | Long-running (tech) + compounding (how) + team integration (how) + **second authored skill** | Practitioner fluency — *"I know how to test, I know how to learn, I know how to encode"* | Return to the packaged run. Diff against the un-packaged baseline. Subtler gaps now — drift, verifier blind spots, rules that would have prevented the subtler miss. Author the second skill — the learning loop packaged (verifier / judge / gap-finder — shape follows what the two runs taught). Ship to team kit. |
 | M7 *(optional)* | **When agents meet agents** | Team integration (how) peak + software factory peak | Awe + ownership | Live deliberation on the CTO's real engineering problem, grounded in every participant's codebase knowledge AND the cohort's accreted team kit. Technical decision document produced by the room. |
 | M8 *(optional)* | **Where is this all going?** | Human close | Open question — *"nobody plain knows"* | Opinion / fear / hope round + Antti's lecture of the future. Closes on directness, not triumph. Optional because a cohort that stops at M6 still lands a complete training; a cohort that wants the full arc takes both M7 and M8. |
 
@@ -195,9 +195,11 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 
 ## Mood arc
 
-**joyful creation → grounded competence → earned trust → satisfied compounding → unleashed leverage → grounded rescue → *(optional: awe + ownership → "where is this all going?")***
+**joyful creation → grounded competence → earned trust → curious readiness → learning through contrast → practitioner fluency → *(optional: awe + ownership → "where is this all going?")***
 
-Core (M1–M6) runs through personal discovery, instrument mastery, discipline-earned-before-you-need-it, memory that compounds, and the long-running pair that stretches the flywheel at mid-hour scale. Less dramatic stew than Bootstrap; deliberate linear ramp that suits the wider audience band (novice → mid-level) without dropping anyone. Discipline installed early (M3 Q+S before M5 send-off) means the student *feels* covered when they push the agent off for hours, not retrofitted after.
+**M4–M6 spirit: you are testing, and you are learning.** The arc is **test → learn → encode.** M4 runs the first experiment (un-packaged send-off); M5 reads the result, teaches packaging through the contrast the student just felt, and runs the second experiment (same task, packaged); M6 reads that result, encodes what two runs taught into a skill for the team kit. Every send-off is an experiment, not a production run the student needs to get right first time. This is the operator's posture at L3 — and the frame that makes evals, verifiers, and plan.md earn their names through felt need, not prescription.
+
+Core (M1–M6) runs through personal discovery, instrument mastery, discipline-earned-before-you-need-it, and then a three-module experimental cycle — curious readiness, learning through contrast, practitioner fluency — that turns a long-running task into a sequence the student runs on themselves. Less dramatic stew than Bootstrap; deliberate linear ramp that suits the wider audience band (novice → mid-level) without dropping anyone. Discipline installed early (M3 Q+S before M5 send-off) means the student *feels* covered when they push the agent off for hours, not retrofitted after.
 
 **Optional (M7–M8)** carry the peak the core can't fit in six. M7 is the room's collective agency — cohort agents on a shared runtime, real engineering problem, technical decision document live. M8 is the human close — opinion/fear/hope + Antti's lecture of the future.
 
@@ -224,7 +226,7 @@ If the student leaves with only a bug fix, M1 failed. If they leave with a `CLAU
 
 *Naming: canonical "compound engineering" per Klaassen; our learning-area name "compounding engineering" is our framing; "compound" reserved for the Klaassen loop step.*
 
-**Skill-invocation divergence — open for Antti:** prior strategy had *"1–2 pre-installed skills invoked during the bug fix."* The reconstructed three-phase shape drops explicit Skill-invocation — P1 uses `/context` (slash command, not a Skill), P3 uses MCP (connector, not a Skill). Options: (a) leave M1 without explicit Skill-use; first authoring + first use both land at M3; (b) reinstate a Skill-invocation beat inside one of the three phases. Deferred for Antti.
+**No Skill use at M1 — resolved 2026-04-23.** Prior strategy had *"1–2 pre-installed skills invoked during the bug fix."* Dropped: P1 uses `/context` (slash command, not a Skill), P3 uses MCP (connector, not a Skill), and M3 now carries the first Skill use + first subagent + first authoring together — which is the right concentration. One primitive introduced per module, earned at the moment the student needs it.
 
 ## M2 in detail — plan mode, done right
 
@@ -250,11 +252,13 @@ If the student leaves with only a bug fix, M1 failed. If they leave with a `CLAU
 
 **Feature rule — pedagogy, not prescription.** Student brings a small feature they're shipping this week. Too small: Claude crunches it in thirty seconds with nothing interesting to surface. Too large: still waiting when the bell rings. Students have already seen how quickly Claude works across M1–M2; trust their calibration. Connections framing, not a checklist.
 
-**Exercise 1 — Map the access surface (S primer, ~20 min).** Invoke the curated access-control analysis skill on the feature. Read what it surfaces. Decide: which surface did it flag that you'd underweighted? What did it miss that you know matters? Name the delta — this is the access-mapping that STRIDE will consume.
+**Subagents introduced, deliberately.** Ex1 and Ex2 invoke the curated skills **as subagents** — fresh context, black-box run, structured output lands back in the main thread without polluting scrollback. Long, breadth-first skills belong in subagents; the primitive earns its first visible use at exactly the module where curated skills make their first visible use. Ex3 (test-strategy authoring) stays in the main thread — one-question-at-a-time conversation is *not* a subagent job, and the contrast is half the pedagogy. The student leaves M3 knowing which jobs belong in which thread, not just that subagents exist.
 
-**Exercise 2 — Threat-model with STRIDE (S main, ~20 min).** Invoke the curated STRIDE skill on the mapped access surface. The skill does the breadth (six categories against every surface); you make one call — pick the threat worth hardening against, write the decision as an ADR in the repo's convention (sponsor-stated home; default `docs/adr/NNNN-slug.md`). The framework picks the threat if you've named the worst case right. No menu-shopping.
+**Exercise 1 — Map the access surface (S primer, ~20 min).** Invoke the curated access-control analysis skill on the feature **as a subagent**. Read what it surfaces. Decide: which surface did it flag that you'd underweighted? What did it miss that you know matters? Name the delta — this is the access-mapping that STRIDE will consume.
 
-**Exercise 3 — Author your test-strategy skill (Q, ~25–30 min).** Author through conversation, not a markdown editor. Student prompts Claude to ask the questions needed to encode a test-strategy skill for THIS codebase — framework, mocking policy, integration boundary, what "flaky" means here, what regression scope looks like. One question at a time (prompt says so — otherwise Claude dumps all five). Claude writes SKILL.md; student pushes back on codebase specifics. **Force-push-back move:** ask the skill to disclose its own weakest part before shipping. Student pushes back on the self-critique — which is the reflection move; this IS theme #4 (mechanically self-aware) used as designed. **Invocation closes the loop:** run the skill on the security-tested feature, prompt Claude *"go check the test strategy related to the feature — is it good?"* Ship to the team-kit substrate.
+**Exercise 2 — Threat-model with STRIDE (S main, ~20 min).** Invoke the curated STRIDE skill **as a subagent** on the mapped access surface. The skill does the breadth (six categories against every surface); you make one call — pick the threat worth hardening against, write the decision as an ADR in the repo's convention (sponsor-stated home; default `docs/adr/NNNN-slug.md`). The framework picks the threat if you've named the worst case right. No menu-shopping.
+
+**Exercise 3 — Author your test-strategy skill (Q, ~25–30 min).** Author through conversation, not a markdown editor. Student prompts Claude to ask the questions needed to encode a test-strategy skill for THIS codebase — framework, mocking policy, integration boundary, what "flaky" means here, what regression scope looks like. One question at a time (prompt says so — otherwise Claude dumps all five). Claude writes SKILL.md; student pushes back on codebase specifics. **Force-push-back move:** ask the skill to disclose its own weakest part before shipping. Student pushes back on the self-critique — which is the reflection move; this IS theme #4 (mechanically self-aware) used as designed. **Invocation closes the loop:** run the skill on the security-tested feature, prompt Claude *"go check the test strategy related to the feature — is it good?"* Ship to the team kit.
 
 **Curated skills ship with the training.** Both S skills live in the content folder (`content/skills/access-control-analysis/`, `content/skills/stride/`). Training IP — Bosser-curated, lecture attributes sources (Kohnfelder & Garg for STRIDE origins; Shostack for sharpening; Saltzer & Schroeder for least-privilege lineage). Not team-kit contributions — curated-for-you stays in content; authored-by-us goes to the team kit. Clean separation.
 
@@ -264,44 +268,78 @@ If the student leaves with only a bug fix, M1 failed. If they leave with a `CLAU
 
 **Anchor cases:** Intercom Tier 1/2/3 review (19.2% auto-approved at lowest tier — tiered-review is shippable); Ramp Glass + Dojo (judges as quality infrastructure); Intercom's 267-skill plugin repo with 31% R&D contributing (team-kit accretion pattern). STRIDE lineage: Kohnfelder & Garg (1999 Microsoft memo) + Shostack (*Threat Modeling: Designing for Security*, 2014).
 
-## M4 in detail — memory that reads your system
+## M4 in detail — accumulate + run the first experiment
 
-**Three memory layers, built in order:**
-1. **Repo memory.** M1's single-repo memory grows — M2 plan-mode feeds observations; M3 judge/gate feeds quality criteria.
-2. **Multi-repo memory.** Cross-service patterns, team conventions, cross-repo dependencies and failure modes.
-3. **Business rules and company info.** Agents wire to the layer above code — business rules, customer segments, team commitments.
+**Spirit: testing and learning.** M4 doesn't prepare, it tests. The student walks what they've built against a task they care about, fills the obvious gaps, and sends off — un-packaged — to see what the agent does with their system as it stands. The result will be instructive: not catastrophic, not polished, somewhere in the middle. That middle IS the lesson M5 reads.
 
-**Make it compound.** M1's four-step loop carries through — every retro promotes across all three layers.
+**M4 is the first experiment of a two-run arc.** Same task runs twice across M4 → M5, with packaging as the changed variable between runs. The contrast teaches what no lecture could — what Ronacher's three-pattern (reference artifact + plan.md + external verifier) actually adds. M5 teaches packaging by diagnosing M4's failures; M6 encodes what two runs taught.
 
-**Why here, not before.** Memory without M3's Q+S discipline grows without quality criteria that mean anything; Block 3 stays abstract. With M3's judge + gate in hand, quality criteria are real. Memory compounds around actual practice, not prospective practice.
+**Four exercise moves + module-level close:**
 
-## M5 in detail — long-running tasks, send-off
+Exercise (Phases 1–3, inside the exercise file `walk-and-send-off.md`):
+1. **Pick the task.** Student arrives with **one or two candidates** they've surfaced themselves (Connections prompts this). Claude **screens** — reads each candidate against three criteria (sustained coherence, requirement-weaving, multi-file reasoning), returns fit / marginal / wrong-shape with reasons. The picking is the student's judgement; the screening is the agent's. **Claude does NOT go looking for candidates in roadmap / Jira / PM tools** — it can't access them, and even if it could, task-surfacing is a human judgement about what's been sitting. The task stays the same through M4 and M5's re-send — we're changing prep, not goal. Scoped task lives in scrollback (or a short repo note if the student prefers).
+2. **Walk what you've built.** Claude audits (as a subagent) the root `CLAUDE.md` + memory files + ADRs + the M3 test-strategy skill + wired connectors against the task. Returns a ranked top 5: what's thin, missing, or wrong *given this task*. Framework named: **gap analysis** — walk the system you have against the system the task needs. Student picks the ones that will hurt the agent most — usually two or three, not all five (the sponge-not-rock rule applies: M5 teaches what the others were for).
+3. **Fill the worst gaps.** New observation written, rule articulated, business-rules pointer wired at the sponsor-stated home (or gap named — *"we don't have this; the gap IS the finding"*). Additional connectors the task will need get wired now, while the student's mind is on the task.
+4. **See the three-block frame.** Claude rearranges the now-thicker memory into **Huryn's three blocks** — Block 1 (observation → hypothesis → rule), Block 2 (decisions with alternatives — ADRs already live here), Block 3 (quality criteria — the M3 test-strategy skill contributes). Frame earns its name through recognition: Claude quotes one of the student's own ADRs as the Block 2 example before naming the frame.
 
-**M5 and M6 are a coupled pair.** M5 sets up and launches; M6 returns and processes. **The gap between modules is the walk-away** — the schedule *is* the walk-away.
+Module-level close (owned by the module file's Debrief + Bridge):
+5. **Debrief — compound CLAUDE.md.** Claude self-compounds the root rules file from session evidence; student pushes back on the 3–5 line summary. The rules file is going into the test with the student.
+6. **Send off, un-packaged.** Student passes the final prompt to the **same Claude Code session** (no new session, no `/schedule`, no cloud runner). No plan.md, no verifier, no reference artifact — just *"here's my system, go do X."* Laptop closes, or the student watches and stops mid-run when they've seen enough. **Traces are data either way.** Student never owes the experiment a completed artifact — they owe it a result they can read.
+
+**Mood: curious readiness** — *"I've built enough to try something; let's see what the agent does with it."* Stakes back in the room; no compliance framing.
+
+**Themes earned**: compounding (four modules of practice now visible and rearrangeable); mirror (the un-packaged run will reflect the student's actual prompting + memory quality straight back — the mirror is about to show them something); 90% correct (the send-off sets up the felt experience of the 10% that M5 will diagnose).
+
+**Task-design requirement — load-bearing.** The task must be hard enough that an un-packaged run will be "not great." Sustained coherence, requirement-weaving, multi-file reasoning. Otherwise the contrast M5 teaches on doesn't land. If the task is simple enough to succeed un-packaged, it's the wrong task. The Nerd helps calibrate at pick-time — sponge, not rock. The un-packaged run has to underdeliver visibly, not fail catastrophically.
+
+**Why here, not before.** Accumulation without M3's Q+S discipline grows without quality criteria that mean anything; Block 3 stays abstract. With M3's judge + gate + authored skill in hand, quality criteria are real. What M4 thickens is grounded in actually-shipped work.
+
+**Cancel mid-run is legitimate — not a fallback.** Real practitioners stop long-running agents when early traces reveal the failure mode; no need to burn hours to know it wobbled. M4 names this at Debrief so students don't confuse *experiment completion* with *module completion*. The module completes when the student has read a result — any result the traces contain.
+
+## M5 in detail — learn from the test, re-send packaged
+
+**Spirit: testing and learning.** M5 opens with the return. Student reads what the un-packaged M4 agent produced. Not great, as the task design guaranteed — drift, missed requirements, plausible-but-wrong. That result IS the teaching material. *What would have caught this at hour 2, not at hour 6?* The question drives everything M5 does.
+
+**The pedagogy is contrast, not prescription.** Ronacher's three-pattern lands here — but not as a best-practices lecture. Each piece (reference artifact + plan.md + external verifier) earns its name as the thing that would have caught a specific failure the student just read in the M4 artifact. Engineers respond to diagnosis, not prescription.
 
 **Five moves:**
-1. **Teach the concept.** What makes a task long-running (multi-hour, sustained coherence, walk-away possible).
-2. **Explain the challenge.** Failure modes named up front: argue-loops, hallucinated commit hashes, context rot, goal drift, plausible-but-wrong.
-3. **Build the verifier** on the student's real work. External verifier component of the three-pattern (reference artifact + plan.md + external verifier). Candidates: tests-as-verifier, lint/compile, bash hook, minimal judge.
-4. **Check it lightly** on a small example. Proof it catches a failure before we trust the real run.
-5. **Send off a mid-long task** (2–4 hours) that actually completes between M5 and M6.
+1. **Return to the un-packaged run.** Read the artifact together — student + Claude. Name what went wrong: drift, hallucination, goal confusion, missing context, requirement-skipping. Claude points out patterns the student misses. This is the first time the 10% has shown up at scale — direct experience of *"Claude is 90% correct"* (theme #1) at multi-hour scope.
+2. **Teach the three-pattern through contrast.** For each failure: *what would have caught this?* A reference artifact with success criteria would have pinned X. A plan.md the agent could re-read would have stopped Y's drift at hour 2. A mid-run verifier would have surfaced Z before it compounded. The three pieces earn their names from the M4 evidence, not a whiteboard.
+3. **Build the verifier.** **First eval, named.** The verifier isn't testing-adjacent or eval-ish; it *is* an eval — an automated check that decides whether agent-produced work meets a quality bar. Anchor cases: Ramp Glass + Dojo (LLM-as-judge), Intercom Tier 1/2/3 (gate in CI). The student's verifier is shaped against the specific failures M4's run surfaced — tests, lint, compile, bash hook, or a minimal judge. Practitioners call these judges when they're LLM-based, verifiers when deterministic, gates when placed in CI; all three are evals.
+4. **Assemble reference artifact + plan.md.** Package what M4 walked-and-filled into the agent-readable spec: scope + success criteria, pointing at the relevant memory pages and skills, plus a task-local plan.md the agent re-reads when it drifts. Built in conversation with Claude, not typed into a markdown editor.
+5. **Re-send the same task, packaged.** Second experiment. Same variables except the packaging. Agent runs again — overnight (2-day intensive) or a few hours in-session with the verifier firing as it works (gives the room something to watch), or a week (6-week format). Student closes the laptop the second time.
 
-**Format dependency.** 2-day intensive: M5 ends day 1, agent runs overnight, M6 opens day 2. 6-week format: M5 week N, M6 week N+1, agent runs a week between. Both preserve the structural walk-away.
+**Mood: learning through contrast** — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* The student knows *why* the three-pattern matters because they just read the failure modes it exists to catch.
 
-**Real-work requirement lands naturally** — no toy task would survive the inter-module gap.
+**Themes earned**: 90% correct (the move that catches the 10%, felt directly this time); evals as infrastructure (the word earns its full weight through diagnosed contrast); mechanically self-aware + grain of salt (Claude's read of its own M4 run verified against the artifact).
 
-## M6 in detail — long-running tasks, return
+**Format dependency.** 2-day intensive: M4 ends day 1, un-packaged run overnight, M5 morning of day 2 teaches from the return + re-sends packaged, re-run happens day-2 afternoon while the room covers transitions + M6 prep, M6 opens with the second return. 6-week format: one extra week vs. the old single-run shape — M4 wk N send, M5 wk N+1 re-send, M6 wk N+2 return.
 
-Student returns to the scene of M5's send-off. The artifact the agent produced during the gap is waiting. The retrospective is the module.
+**Open — Pass 2 dependencies:** canonical task shape + execution target for overnight/week runs (laptop vs. scheduled) pending capability check on Opus 4.7 long-running behaviour.
+
+## M6 in detail — spot gaps, build the loop
+
+**Spirit: testing and learning.** Two runs in the pocket now. The un-packaged M4 run (baseline) and the packaged M5 re-run (second experiment). M6 returns to the packaged run — subtler misses this time, subtler drift. The student reads for gaps the verifier didn't catch, for rules that would have prevented the subtler mistake, for the next turn of the learning wheel. **Encoding is the third phase of test → learn → encode**: what two runs taught, packaged so future runs inherit it.
+
+**What the student walks away with:**
+- *I know how to test.* Every long-running send-off is an experiment — hypothesis about the prep, data from the run, lesson for the next one. Not a production run you have to get right first time.
+- *I know how to learn.* Reading an agent's artifact for gaps — drift, thin memory, missing rules, verifier blind spots — is a trained eye, not a protocol. Two runs gave the eye its first reps.
+- *I know how to encode.* The loop that turns a lesson into rules the next run inherits — memory update, verifier sharpening, skill packaging — each a turn of the same wheel. The loop is the shippable thing; artifacts are downstream.
 
 **Three moves:**
-1. **Return to the scene.** Read what happened. Where did the agent drift? Where did the verifier catch (or miss)? First-hand encounter with the failure modes M5 named.
-2. **Process results and learnings.** Structured Debrief: what traveled into memory about this codebase / this task shape / this verifier's blind spots. Judge agent sharpened to triage what the verifier missed.
-3. **Prepare for better — including the team's next time.** Memory updated (Block 1/2/3). **Verifier rewritten and packaged as a skill file** — second authoring move, mirroring M3. Shipped to team kit.
+1. **Diff against the baseline.** Read the packaged run alongside the un-packaged one. Where did the packaging catch what it was meant to catch? Where did it not? What new failure modes surfaced that the three-pattern didn't anticipate? The contrast across two runs teaches what one run couldn't.
+2. **Name the gaps, name the loop.** Claude as co-reader, not quizmaster. What rule would have caught this upstream? What check, if it had fired mid-run, would have surfaced the drift earlier? What belongs in memory? What belongs in the verifier? What belongs in a new skill? Each answer is one turn of the learning wheel.
+3. **Package the learning system.** **Second authored skill**, written through conversation (mirrors M3's authoring move — not by opening a markdown editor). The skill IS the loop: *"here's how to spot a gap of this shape next time; here's the check that catches it."* Shape follows what the two runs taught — often a sharpened verifier, often a judge, often a gap-finder. Shipped to the team kit.
 
-**Evals arrive when they're necessary, not when the curriculum says.** Students build the specific judges their specific task drift demanded. Situated judge-building, not abstract eval theory.
+**Mood: practitioner fluency** — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. The student closes the laptop at M6 holding the move, not just the file.
 
-For a core-only cohort, M6 ends on grounded rescue — *"the return isn't a grind, it's a system."* For M7+M8 cohorts, the rescue-feeling is what makes M7's deliberation feel earned.
+**Evals, named and explained.** M5 gave the student their first eval (the external verifier at M5's diagnosis-driven build); M6 is where the word earns its full weight. Quick framing — not a lecture in disguise — *"your verifier is an eval; your judge is an eval; your gate is an eval. An eval is the automated check that says *this agent-produced thing meets our bar*. Practitioners call them judges when LLM-based, verifiers when deterministic, gates when placed in CI. All three are evals."* Anchor cases: Ramp Glass, Intercom Tier 1/2/3. The loop-shaped skill authored at M6 IS an eval — that's not incidental, that's the move.
+
+**Scheduled agents — callout, not an exercise.** The two-run send-off pattern generalises to a scheduled agent running on cadence — `/schedule`, `/loop`, cron-triggered runs. A competent engineer leaves knowing the primitive exists, when it fits (standing verifier runs, nightly codebase sweeps, rule-drift monitoring), and how it composes with the loop they just built (their skill becomes the thing the scheduled agent invokes). Not an authoring exercise in core — lands naturally post-training or in a followup module.
+
+**Themes earned**: self-aware + grain of salt (the whole module is conversation with Claude about Claude's output across two runs; the artifacts rule, the self-reports don't); compounding (Klaassen's Review + Compound step made explicit across two runs of the same task — true iterative encoding, not a single-pass retrospective).
+
+For a core-only cohort, M6 lands on practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* For M7+M8 cohorts, that fluency is what makes M7's deliberation feel earned — the student arrives at M7 knowing they can steer a learning system, not just attend a panel.
 
 ## M7 in detail (optional) — when agents meet agents
 
@@ -363,12 +401,12 @@ Skills are a first-class capability in Claude Code (scoped, named, reusable move
 
 | Module | Using | Authoring |
 |---|---|---|
-| M1 | 1–2 pre-installed skills invoked during bug fix; vocabulary arrives at the moment of invocation | none |
+| M1 | None — `/context` is a slash command, MCP is a connector. First Skill use lands at M3, concentrated with first subagent + first authoring. | none |
 | M2 | **grill-me** (Matt Pocock, MIT, forked to `curriculum/skills/external/pocock-skills/grill-me/` at commit `a6bdfd9`, 2026-04-22) — Socratic requirement elicitation, walks down unresolved branches of the plan's decision tree. Invoked at P4 as the second-pass read after student's own push-back. | none |
-| M3 | **Invokes two curated skills** — `access-control-analysis` + `stride` (Bosser-curated, ship in content folder) — on a feature the student is shipping | **Authors first skill** — test-strategy skill, written through conversation with Claude (not by typing markdown), self-critique pre-ship, invoked on the security-tested feature, shipped to team kit (team kit born) |
-| M4 | Uses team-kit authored skills from M3 as memory-navigation helpers | none |
-| M5 | Uses team-kit skills during send-off (verifier-shaped skills from M3 apply) | none |
-| M6 | Uses team-kit skills during return-and-diff | **Authors second skill** — sharpened verifier packaged as skill, shipped to team kit |
+| M3 | **Invokes two curated skills as subagents** — `access-control-analysis` + `stride` (Bosser-curated, ship in content folder) — on a feature the student is shipping. Subagent primitive introduced deliberately here: breadth-first skills belong in subagents, interactive authoring stays in main thread. | **Authors first skill** — test-strategy skill, written through conversation with Claude in the main thread (not by typing markdown, not as a subagent), self-critique pre-ship, invoked on the security-tested feature, shipped to team kit (team kit born) |
+| M4 | Uses M3's authored test-strategy skill and the curated S skills during accumulation, if they earn their keep for the coming task. No new authoring. | none |
+| M5 | Bake-in reads the team kit for any skill the task needs (verifier-shaped or otherwise); reference artifact names the invocations | none |
+| M6 | Uses team-kit skills during return-and-diff | **Authors second skill** — the learning loop packaged (often a sharpened verifier, often a judge, often a gap-finder). Shape follows what the run demanded. Shipped to team kit. |
 | M7 *(optional)* | Deliberation agents load the cohort's accreted skills as their first read; peak use-case | Spontaneous — skills may emerge from deliberation and get added to the team kit mid-module |
 | M8 *(optional)* | none (human close) | none |
 
@@ -389,9 +427,9 @@ Not its own module. Side-story that accretes from M3 onward, mirroring how Inter
 | M1 | None — solo on own repo | empty |
 | M2 | Seed the noticing — *"if a rule your agent just followed would serve a teammate, jot the name"* | one note in personal CLAUDE.md |
 | M3 | **The birth.** Q exercise ends with *author + self-critique + invoke + ship*. One authored skill per student (test-strategy); two curated S skills stay in content folder | ~10 contributions (cohort of 10) |
-| M4 | Students use team-kit skills as memory-navigation helpers; cohort adds a few memory-helper skills | ~15 files |
-| M5 | Pre-send-off reads the team kit for verifier + constraints. No new authoring | ~15 files |
-| M6 | **Second authoring** — sharpened verifier packaged as skill, shipped | ~25 files |
+| M4 | Accumulation reads and invokes team-kit skills where the coming task needs them. No new authoring. | ~10 files |
+| M5 | Bake-in names the skill invocations the task will use. Reference artifact points at team-kit entries. No new authoring | ~10 files |
+| M6 | **Second authoring** — learning loop packaged as skill (verifier / judge / gap-finder — shape follows run), shipped | ~20 files |
 | M7 *(optional)* | Deliberation agents load accreted skills as first read; new skills may emerge mid-deliberation | ~35+ plus generated |
 | M8 *(optional)* | None — human close | unchanged |
 
@@ -444,7 +482,7 @@ Planned (none built yet):
 - ML engineering (model training, fine-tuning) — out of scope
 - Non-software-engineering domains — future variants
 - Leading change at team scale — that's Engineering Management
-- Vendor/platform comparison — Claude Code is the substrate
+- Vendor/platform comparison — Claude Code is the platform we teach on
 - Certification, certificates, graduation ceremonies — builder CTO's allergy
 
 ## Anchor cases (research-grounded)
@@ -466,7 +504,9 @@ This is a pre-engagement artifact, not an in-room debate. The trainer does not a
 | Artifact | The buyer names where it lives |
 |---|---|
 | Decision records (M1 onward) | e.g., `docs/adr/NNNN-slug.md`, repo wiki, Linear + linkback, team Notion |
-| Rules for the next session (M1 onward) | e.g., root `CLAUDE.md`, `.claude/CLAUDE.md`, `AGENTS.md` |
+| **Team rules for the next session** — rules every engineer shipping this codebase should inherit (M1 onward) | e.g., `./CLAUDE.md`, `./.claude/CLAUDE.md`, `AGENTS.md`. Changes to this file go through normal PR review. |
+| **Personal rules for this codebase** — rules the engineer needs but doesn't want in team review every session (M1 onward) | Default: `./CLAUDE.local.md` (gitignored, loads alongside `CLAUDE.md` — see [reference/claude-code-for-engineers.md § 1](../curriculum/reference/claude-code-for-engineers.md). Cross-repo-portable personal rules → `~/.claude/CLAUDE.md`. |
+| **Team-rule review cadence** (M1 onward) | Who reviews team-rule PRs, how fast. Sponsor names this so it doesn't become the compound-loop bottleneck. |
 | Team kit — skills, gate specs, constraints (M3 onward) | e.g., shared plugin repo, monorepo `.claude/` directory, team-kit Git repo |
 | Memory / knowledge architecture (M4 onward) | e.g., `.claude/memory/`, external wiki with pointer file, shared team repo |
 
@@ -477,7 +517,7 @@ This is a pre-engagement artifact, not an in-room debate. The trainer does not a
 **Where it shows up:**
 - **Sponsor-facing worksheet** — [`strategy/ae101-sponsor-prework.md`](../strategy/ae101-sponsor-prework.md). Sent to sponsor weeks before Day 1 (one question, four answers, 15 min). Ops converts answers into `content/pre-engagement-contract.md` in the cohort's content bundle.
 - **M1 exercise** (`ship-trivial-bug.md`) references sponsor-stated ADR + rules-file homes as defaults; override path explicit.
-- **M3 Q+S exercise** references sponsor-stated team-kit substrate; first skill-shaped contributions land there.
+- **M3 Q+S exercise** references sponsor-stated team-kit home; first skill-shaped contributions land there.
 - **M4 memory exercise** references sponsor-stated memory home.
 - **The Agentic Nerd** reads `content/pre-engagement-contract.md` at module blockers and substitutes the sponsor's actual answer. When a student overrides, the Nerd logs it to `content/overrides.md` for the trainer's cohort-close memo: *"Your six engineers agreed on decisions, split 3/3 on memory, proposed a team-kit repo by 4/6."* That's a Q3 planning artifact.
 
@@ -489,7 +529,7 @@ Two artifacts per student:
 
 1. **Content folder** — `agents-102-content-agentic-engineering-101/` (zip shipped at training start). Contains `lectures/`, `exercises/`, `prework/`, `reference/`. All markdown. Claude reads from this folder at the Nerd's direction; the student skims when they want to. Same markdown renders via the cohort site for projection and human browsing — the file-on-disk is the source of truth for agentic reading.
 
-2. **The student's real repo** — where compounding actually happens. The student picks this repo in prework. The repo's root `CLAUDE.md` (or `.claude/CLAUDE.md`) grows each module. Decision-journal entries land as ADRs in the repo's existing convention (or `docs/adr/NNNN-slug.md` if none). Three-block memory (M4+) lands in `.claude/memory/`. Skills authored at M3 and M6 live in the team-kit substrate (per the pre-engagement contract). No separate training directory, no `module-N/` folders, no file-ceremony. Work happens where work belongs.
+2. **The student's real repo** — where compounding actually happens. The student picks this repo in prework. **Session-compounded rules default to `CLAUDE.local.md`** (gitignored, personal, no PR friction) — this is where session Debriefs write. The team-shared `CLAUDE.md` changes only when a rule is team-worthy enough to earn review — rare by design. Decision-journal entries land as ADRs in the repo's existing convention (or `docs/adr/NNNN-slug.md` if none). Three-block memory (M4+) lands in `.claude/memory/`. Skills authored at M3 and M6 live in the team-kit home (per the pre-engagement contract). The personal/team split is part of the training — every Debrief teaches the judgement *"does this belong in my local file or in the shared one?"* See [reference/claude-code-for-engineers.md § 1](../curriculum/reference/claude-code-for-engineers.md) for the four-layer hierarchy the training leans on. No separate training directory, no `module-N/` folders, no file-ceremony. Work happens where work belongs.
 
 **Repo choice matters but isn't a blood oath.** Criteria: one the student owns or co-owns, one they'll still work in six months, one dense enough that compounding has somewhere to land. If a student switches repos mid-training (team change, project end, wrong choice in prework), replay M1 → M(current) on the new repo in an evening.
 
@@ -507,12 +547,12 @@ Two artifacts per student:
 - **Cohort:** single-company
 - **Modules:** 6 core + 2 optional extensions. Core is canonical — every cohort runs it. Optional extensions run when the sponsor has appetite for the team peak and the closing beat.
 - **Session runtime per module (working bid):**
-  - M1 Getting going + context ~2h (the orientation ramp + the bug fix; slightly longer than M2 because of MCP/skill setup)
+  - M1 Getting going + context ~2h (the orientation ramp + the bug fix + the connector wire; slightly longer than M2 because of MCP setup)
   - M2 Plan mode ~1h45
   - M3 Earn the trust ~1h45 (3 exercises: 2 × invoke curated skill + 1 × author-your-own)
-  - M4 Memory ~1h45
-  - M5 Send-off ~2h (orchestration headroom)
-  - M6 Return ~2h (retrospective + skill authoring)
+  - M4 Accumulate + run the first experiment ~2h (walk + fill + frame + send-off)
+  - M5 Learn from the test, re-send packaged ~2h (return-and-diagnose + verifier build + assemble + re-send)
+  - M6 Spot gaps, build the loop ~2h (two-run diff + loop skill authoring)
   - M7 *(optional)* ~2h (deliberation 70 min + frame 50 min)
   - M8 *(optional)* ~1h30 (opinion/fear/hope 30 min + lecture 40 min + close 20 min)
   - Total core: ~11h. Total with optional: ~14h30.
@@ -521,11 +561,21 @@ Two artifacts per student:
 
 ## State of play (rolling)
 
-**Current shape (settled 2026-04-22 restructure):** 6 core + 2 optional. M1 Getting going + context + MCP · M2 Plan mode, done right · M3 Earn the trust (Q+S, team kit BIRTH) · M4 Memory · M5 Long-running send-off · M6 Long-running return · M7 *(optional)* Agents meet agents · M8 *(optional)* Where is this all going? Skills thread: using from M1, authoring at M3 + M6. Core runtime ~11h over 2 days; +M7/M8 adds ~3h30. Pre-engagement contract: rules home referenced at M1, team kit home at M3, memory home at M4.
+**Current shape (M4–M6 reframed 2026-04-23; structure settled 2026-04-22):** 6 core + 2 optional. M1 Getting going + context + MCP · M2 Plan mode, done right · M3 Earn the trust (Q+S, team kit BIRTH) · **M4 Accumulate + run the first experiment (un-packaged send-off)** · **M5 Learn from the test, re-send packaged** · **M6 Spot gaps, build the loop** · M7 *(optional)* Agents meet agents · M8 *(optional)* Where is this all going? Skills thread: using from M1, authoring at M3 + M6. Core runtime ~11h over 2 days; +M7/M8 adds ~3h30. Pre-engagement contract: rules home referenced at M1, team kit home at M3, memory home at M4.
 
 **Also settled:** first cohort runs at full price (revenue event, not discount-for-evidence); Bootstrap is irrelevant as prerequisite; `crux` / `assumption-test` / `pre-mortem` NOT ported (engineers already have those instincts; M7 runs on the cohort's own authored engineering skills).
 
 **Recurring themes named (2026-04-23):** the four practitioner-truths the curriculum lives inside — 90% correct (problem), compounding builds the system (method), LLM as mirror (operator), mechanically self-aware (interface). See new § "Recurring themes." Frame for every subsequent module spine; modules earn themes, not recite them.
+
+**Gap-closers landed (2026-04-23):**
+- **Subagents as primitive — lands at M3.** Ex1 + Ex2 invoke curated skills as subagents; Ex3 stays main-thread. Contrast is the pedagogy: student leaves M3 knowing which jobs belong in which thread, not just that subagents exist. LO row added to `earn-the-trust.md`; strategy § M3 paragraph added.
+- **Evals explained + called out — M5 + M6.** M5: the verifier IS the student's first eval; word lands with the move. M6: the word earns full weight — judges / verifiers / gates are all evals, with Ramp Glass + Intercom Tier 1/2/3 as anchors. Situated judge-building stays, but the vocabulary is no longer absent.
+- **Scheduled agents — callout at M6, not an exercise.** `/schedule`, `/loop`, cron-triggered runs named as the generalisation of the M5 send-off pattern. Lecture callout + Debrief naming; authoring-a-scheduled-agent lands post-training or in a followup, not inside core runtime.
+
+**M4–M6 reframe (2026-04-23, Antti-driven, two-pass):**
+- **Pass 1 — accumulate → bake in → spot gaps.** Named the arc. Fixed M4's "three layers built in sequence" + "memory-nav helpers from M3" (M3 ships a test-strategy skill, not nav helpers); M6's verifier-vs-judge terminology drift; located the meta-capability the training claims ("can build learning systems").
+- **Pass 2 — two-run arc, spirit "you are testing and you are learning."** M4 runs the first experiment (un-packaged send-off); M5 reads the result, teaches packaging through diagnosed contrast, re-sends same task packaged (second experiment); M6 reads the packaged run, encodes what two runs taught into a skill. The contrast is the pedagogy — Ronacher's three-pattern earns its name from M4's felt failure modes, not a lecture. Mood arc: curious readiness → learning through contrast → practitioner fluency. Replaces Pass 1's deliberate-preparation / unleashed-leverage / forward-looking-confidence. Task-design requirement is load-bearing: M4's un-packaged run has to be "not great" for M5's contrast to land — sponge, not rock.
+- Strategy doc § M4 / M5 / M6 rewritten for the two-run arc; module table + mood arc + format runtime synced; scheduled-agents callout and evals-named callouts absorbed into the new M5 + M6 shape.
 
 **M1 dependencies built (2026-04-21 long-running-gen cycle):**
 - `curriculum/trainings/agentic-engineering-101/getting-going.md` (Pass 1 spine; needs MCP/first-skill ramp grown at front)
@@ -551,9 +601,9 @@ Two artifacts per student:
 - **NEW file** `curriculum/reference/mcp-and-connectors.md` — first entry in `curriculum/reference/`. Per-tracker install (`gh` CLI for GitHub Issues / Atlassian Rovo MCP for Jira / Composio or Merge for Linear), tenant-admin fallbacks, "Last verified" date to track freshness. Exercise points at it; specifics stay out of the exercise body so they don't drift when Claude Code's install surface changes.
 - Capability check via `claude-code-guide` confirmed MCP is CLI-first in Claude Code today (2026-Q2). No GUI marketplace. Informed P3 design + the reference file.
 - Strategy-doc § "M1 in detail" rewritten to the three-phase shape; module-table artifact column updated.
-- **Still outstanding:** module file `getting-going.md` LO + runtime + Debrief block update (deferred until Skill-invocation divergence resolves). Three-persona sim on the new shape. Antti reviewing opener (Connections + wizard-move lecture) after this pass.
+- **Still outstanding:** module file `getting-going.md` LO + runtime + Debrief block update (divergence now resolved — no Skill use at M1; update pending next editing pass). Three-persona sim on the new shape. Antti reviewing opener (Connections + wizard-move lecture) after this pass.
 
-**Skill-invocation divergence (open for Antti):** prior strategy had M1 invoking 1–2 pre-installed Skills. The reconstructed three-phase shape drops explicit Skill use — P1 uses `/context` (slash command, not a Skill), P3 uses MCP (connector, not a Skill). Options: (a) no Skill use in M1; first authoring + first use both land at M3; (b) reinstate a Skill beat inside one of the three phases. Resolving either way is a small edit; deferring for Antti.
+**Skill-invocation divergence — resolved 2026-04-23.** Option (a) picked: no Skill use at M1. First Skill use + first subagent + first authoring all land at M3, concentrated. Rationale: one primitive per module, earned at the moment the student needs it. Strategy doc § M1 + module table + skills table synced.
 
 **Open — decide before Pass 1:**
 
@@ -571,7 +621,7 @@ Two artifacts per student:
 
 **TODOs for Pass 1:**
 - Write M4–M8 module spines (5 files). Next long-running-gen sessions per `module-design-long-running-strategy.md`.
-- Grow `getting-going.md` M1 file with MCP + first-skill ramp at the front.
+- Update `getting-going.md` M1 file — LO + runtime + Debrief block to reflect the three-phase shape (no Skill use at M1).
 - Write research-grounded-moves companion file (EM has one; 101 doesn't).
 - **Capability checks:** Opus 4.7 long-running behaviour (before M5 drafts); MCP setup (before M1 drafts). Both via `claude-code-guide`.
 - M1: flesh out wizard-demo + student-trick + MCP wire + first skill invocation.
@@ -579,7 +629,10 @@ Two artifacts per student:
 - M7: problem-selection protocol (how the CTO picks the right engineering problem); self-study variant with persona-stand-ins.
 - Frontier reading list — named practitioners (Karpathy, Willison, Huryn, Cherny, Sottiaux et al.); refreshed per cohort.
 
-**Bootstrap reuse candidates:** Plan mode primer → M2 **NOT PORTED** (v3 authored fresh; Bootstrap's primer is builder-leader voiced and has no forced-push-back mechanic) · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination bake-off → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem substrate). `crux` / `assumption-test` / `pre-mortem` NOT ported.
+**Parking lot — lecture ideas (captured, not yet placed):**
+- **"AI-native vs. AI-first vs. AI-driven: who cares?"** — short lecture, reframe move. Key idea: nobody should care about the label; it's all about the learning rate. Candidate slot: M4 or M8. Rory-flavour; dismisses the category-war with one line and redirects to the real axis (organisational learning). Keep short.
+
+**Bootstrap reuse candidates:** Plan mode primer → M2 **NOT PORTED** (v3 authored fresh; Bootstrap's primer is builder-leader voiced and has no forced-push-back mechanic) · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination bake-off → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem focus). `crux` / `assumption-test` / `pre-mortem` NOT ported.
 
 *Decision history is in `git log`. Last updated 2026-04-23 (themes + M1 three-phase reconstruction + `reference/mcp-and-connectors.md` created + M3 reshape: three exercises, S-first, curated-S-authored-Q, runtime 1h45, `earn-the-trust.md` spine drafted).*
 

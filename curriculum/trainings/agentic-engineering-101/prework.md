@@ -8,7 +8,7 @@ Unzip `agents-102-content-agentic-engineering-101.zip` somewhere you'll find it 
 
 ## 2. Pick THE repo (10 min)
 
-One decision: which repo are you going to grow a `CLAUDE.md` on over the next six weeks?
+One decision: which repo are you going to grow rules + memory on over the next six weeks? (Your session-compounded rules live in a personal `CLAUDE.local.md` — gitignored — so this repo decision doesn't commit your team to in-flight rule changes. See [reference/claude-code-for-engineers.md § 1](../../reference/claude-code-for-engineers.md) for the four-layer hierarchy.)
 
 - One you own or co-own
 - One you'll still work in six months

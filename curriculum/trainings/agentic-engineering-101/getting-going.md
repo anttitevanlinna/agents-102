@@ -1,7 +1,7 @@
 # Getting going + context (+ MCP)
 
 ## Big Idea
-The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a `CLAUDE.md` born from the session, close the bug's ticket via one connector. The substrate every module after this one rides on.
+The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug's ticket via one connector. The loop every module after this one rides on.
 
 ## Meta
 - **Primary Bloom's level:** Apply (run the three-phase loop end-to-end) + Analyze (read Claude's own introspection against `/context`; read the retro summary against session moments)
@@ -14,7 +14,7 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 After this module, you will be able to:
 - **Run** an orient → fix → compound → extend loop end-to-end on a trivial bug in your own repo
 - **Introspect** on Claude's read of your repo and verify the self-report against `/context` — the instrument that shows where the 10% lives
-- **Fix** the bug tests-first, root-cause-driven, no plan mode — and seed the preference into `CLAUDE.md` mid-exercise
+- **Fix** the bug tests-first, root-cause-driven, no plan mode — and seed the preference into your personal `CLAUDE.local.md` mid-exercise (gitignored, yours; [reference § 1](../reference/claude-code-for-engineers.md) for the four-layer hierarchy)
 - **Wire** one connector and close the bug's ticket — the first move outside the repo
 
 ## Connections
@@ -33,19 +33,20 @@ After this module, you will be able to:
 - Plan mode is overhead on a trivial bug — M2 is where it earns its keep
 - Claude can introspect on its own read; the self-report is a hypothesis, not ground truth — verify against `/context`
 - The 10% Claude couldn't address lives in the slice of the repo it didn't load — your job is to steer what lands in the window
-- A `CLAUDE.md` born from how you actually worked reads different from one written from a blank page
-- The first compound step closes before the retro — Phase 2's rule to `CLAUDE.md` is the first one; Phase 3 extends it
+- A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
+- The first compound step closes before the retro — Phase 2's rule to `CLAUDE.local.md` is the first one; Phase 3 extends it
+- Personal rules (`CLAUDE.local.md`, gitignored) vs. team rules (`CLAUDE.md`, PR-reviewed) is a split worth learning early — session compounds default to personal; team-worthy rules earn their own PR
 
 ## Plug Points
 The student's own repo and the bug Claude surfaced in prework. No company data needed yet. If the student arrives having drifted from their prework choice, Phase 1 runs a fresh bug-surfacing conversation — criteria unchanged: small, visible, yours, shippable in an hour.
 
-The **sponsor-stated knowledge home** and **sponsor-stated ticket tracker** (pre-engagement contract — see `content-strategy-agentic-engineering-101.md` § "Pre-engagement contract") supply the defaults for where `CLAUDE.md` lives (P2/P3) and which connector gets wired (P3). Student can override with a reasoned alternative; opting out is not a path.
+The **sponsor-stated knowledge home** and **sponsor-stated ticket tracker** (pre-engagement contract — see `content-strategy-agentic-engineering-101.md` § "Pre-engagement contract") supply the defaults: where team `CLAUDE.md` lives if/when a rule earns team review, and which connector gets wired (P3). Session compounds land in `CLAUDE.local.md` by default (personal, gitignored) — no sponsor input needed. Student can override with a reasoned alternative; opting out is not a path.
 
 ## Debrief
-The retro runs inside Exercise Phase 3 — Claude reviews the session, extends `CLAUDE.md` in place, reports 3–5 lines, student pushes back. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
+The retro runs inside Exercise Phase 3 — Claude reviews the session, extends `CLAUDE.local.md` in place (personal, gitignored), reports 3–5 lines, student pushes back. If any rule is team-worthy — one every engineer on this codebase would benefit from — Claude calls it out in the summary so the student can open a PR against team `CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
 
 ## Bridge
-You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep — multi-file work, two reads (yours + grill), approval inflation catches as the teaching moment. `CLAUDE.md` sits at the top of the next session, waiting to be read.
+You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep — multi-file work, two reads (yours + grill), approval inflation catches as the teaching moment. `CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `CLAUDE.md` if this repo has one — both concatenate into context).
 
 <!-- maintainer -->
 
@@ -53,7 +54,7 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **Primary Bloom's level:** Apply + Analyze
 - **Session runtime:** 2h (Connections 10 / Lecture 10 / Exercise 85–95 / Bridge 5). 2h is deliberate for M1 — longer than M2–M4's 1h45 because of the orient+introspect ramp and the MCP close-out. Other modules run at 1h45.
 - **Opening-bid install mechanic:** trainer demos a wizard-level move on a volunteer's codebase → Connections harvests tricks each student brought → Exercise Phase 1 each student runs the orient + introspect move on their own repo → Phase 2 tests-first bug fix → Phase 3 retro extends `CLAUDE.md` + ticket close-out via connector. No separate module-level Debrief.
-- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo (root `CLAUDE.md`, `.claude/memory/` from M4). No training-dir state.
+- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4. No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 
 **Agentic Nerd logic (TODO — skill not yet created; strategy doc §"Prep notes — the `agentic-nerd` skill" + §"Delivery architecture"):**
@@ -61,7 +62,8 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **P1 `/context` skipped** — slash command read as prose, not as a command. Nerd push: *"type /context in the chat — look at the number."*
 - **P1 drifted bug** — student has drifted from prework choice. Nerd runs fresh bug-surfacing conversation. Criteria unchanged.
 - **P2 tests-skipped** — student pastes bug and Claude jumps to a fix. Nerd push: *"back up — what's the failing test that would prove this bug exists?"* (If no test infrastructure on this path, log "no verifier here" as a note that lands in M4.)
-- **P2 diff / rule rubber-stamp** — student says "looks fine" or accepts Claude's CLAUDE.md rule without reading. Nerd push: *"find me one line you'd have written differently — not wrong, just different"* / *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
+- **P2 diff / rule rubber-stamp** — student says "looks fine" or accepts Claude's `CLAUDE.local.md` rule without reading. Nerd push: *"find me one line you'd have written differently — not wrong, just different"* / *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
+- **P3 team vs. personal ambiguity** — Claude writes a rule that's team-worthy (*"always validate webhook signatures before dispatch — our payment flow got bitten by this"*) but lands it in `CLAUDE.local.md` without flagging. Nerd push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so I can open a PR against team `CLAUDE.md` separately — don't PR it automatically, but name it."*
 - **P3 retro confabulation** — Claude's 3–5 line summary name-drops session moments without quoting. Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
 - **P3 MCP install gate** — corporate tenant blocks connector install. Nerd surfaces the tenant-admin fallback per tracker from `reference/mcp-and-connectors.md`. Never a blocker; always a fallback path.
 - **Self-compounding at every module from M1** — the Nerd never interviews the student with Q1/Q2/Q3. Claude reviews session evidence, rewrites rules file in place, reports 3–5 lines, student pushes back. Same shape across the training.
@@ -72,7 +74,7 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - Repo change mid-training is a supported replay path, not a failure mode.
 
 **Frameworks riffed on:**
-- **TDD (test-driven development)** — Phase 2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule seeded into `CLAUDE.md` is the student's own TDD-style preference.
+- **TDD (test-driven development)** — Phase 2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule seeded into `CLAUDE.local.md` is the student's own TDD-style preference.
 - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Convergence Level 3. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`. Attributed inside Claude's Phase 3 retro summary, not in a lecture.
 - **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4.
 

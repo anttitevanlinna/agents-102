@@ -4,7 +4,7 @@
 
 ---
 
-You sent off an un-packaged run last night and you have something to read this morning. Stopped, finished, ran out of credit, doesn't matter. The artefact is data either way.
+You sent off an un-packaged run at the close of M4 and you have something to read now. Stopped, finished, ran out of credit, doesn't matter. The artefact is data either way.
 
 Here is the move M5 asks of you. It cuts against most engineering instinct.
 

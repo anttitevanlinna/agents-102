@@ -16,11 +16,11 @@ After this module, you will be able to:
 - **Build** a verifier shaped against your dominant failure using one of Cherny's three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task M4 sent off
 - **Re-send** the packaged version of the same task in the same Claude Code session and close the laptop a second time
-- **Compound** (Klaassen's fourth step) the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence; you push back on the summary. Team-worthy rules get flagged for separate PR; they don't auto-ship.
+- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence; you push back on the summary. Team-worthy rules get flagged for separate PR; they don't auto-ship.
 
 ## Connections
 
-You sent off an un-packaged run at the close of M4 and read the pre-read. You walk in this morning with the artefact in front of you. The in-room lecture below opens the session.
+You sent off an un-packaged run at the close of M4 and read the pre-read. You walk in with the artefact in front of you. The in-room lecture below opens the session.
 
 ## Lectures (before the exercise)
 
@@ -76,7 +76,7 @@ I'm closing the laptop. If the verifier fails, fix and re-run; don't paper over.
 
 *(end of prompt)*
 
-Let it run. Keep the laptop awake and plugged in (power settings → prevent sleep on power). Same cancel-is-legit rule from last night: stop when you've seen what you needed to see. The traces are still data.
+Let it run. Keep the laptop awake and plugged in (power settings → prevent sleep on power). Same cancel-is-legit rule from M4: stop when you've seen what you needed to see. The traces are still data.
 
 Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is legitimate practice. Past ten and you've become the agent; call it and read what's there.
 

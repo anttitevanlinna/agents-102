@@ -8,7 +8,7 @@
 
 **Time:** 15–20 minutes.
 
-> **Quick timebox note.** The read across M1–M6 artefacts is wide and we keep the beat short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. We do not chase a perfect note. The arc is yours; the note is just the agent helping you see it.
+> **Quick timebox note.** The read across M1–M6 artefacts is wide and we keep the beat short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. We do not chase a perfect note. The arc is yours; the note is just the agent helping you see it.
 
 ---
 

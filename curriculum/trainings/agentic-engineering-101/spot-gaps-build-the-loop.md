@@ -20,7 +20,7 @@ After this module, you will be able to:
 
 ## Connections
 
-You walk in this morning holding two runs of the same task. The un-packaged M4 send-off. The packaged M5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate — and a shape for what to do about each one.
+You walk in holding two runs of the same task. The un-packaged M4 send-off. The packaged M5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate — and a shape for what to do about each one.
 
 ## Lectures (before the exercise)
 

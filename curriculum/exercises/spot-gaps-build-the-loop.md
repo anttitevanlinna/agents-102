@@ -4,7 +4,7 @@
 
 **What happens:** You end with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/<skill-name>/SKILL.md`. Auto-discovered in every future session. Whichever shape the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates flagged for a human conversation, not an auto-PR.
 
-**The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship tonight is how next week's run inherits what this week's two runs cost you.
+**The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
 
 **Time:** 40–50 minutes inside a 2h module slot.
 

@@ -1,10 +1,10 @@
 # Walk and send off
 
-**What you do:** Pick a multi-hour task you've been avoiding. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake overnight, or stop the run when you've seen enough.
+**What you do:** Pick a multi-hour task you've been avoiding. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What happens:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). M5 opens with whatever came back.
 
-**The point:** This is the first experiment of a two-run arc. The un-packaged send-off tonight teaches M5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
+**The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches M5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
 **Time:** 60 minutes inside a 2h module slot (Phases 1–3). The Debrief + send-off (~15–20 min) is owned by the module file, not this exercise; the two together close M4.
 
@@ -26,7 +26,7 @@ Ask me to describe each candidate in a line or two. Then screen them against thr
 - Requirement-weaving (multiple things need to hold at once)
 - Multi-file reasoning
 
-For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more tonight.
+For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.
 ```
 
 *(end of prompt)*

@@ -6,7 +6,7 @@
 
 Close the laptop for a second. Look at what you just shipped.
 
-Your second authored skill. Shape decided by what two runs of the same task actually taught — not by a template. For most of you it came out as a sharpened verifier. For some as a fresh judge. For a few as a gap-finder that reads the next agent-produced artefact for the shape of failure you saw this morning. Different shapes, same move. The thing you built reads an agent's work and decides whether it meets a bar.
+Your second authored skill. Shape decided by what two runs of the same task actually taught — not by a template. For most of you it came out as a sharpened verifier. For some as a fresh judge. For a few as a gap-finder that reads the next agent-produced artefact for the shape of failure you saw at M5. Different shapes, same move. The thing you built reads an agent's work and decides whether it meets a bar.
 
 That thing has a name.
 
@@ -24,13 +24,13 @@ Naming it matters because the word is what lets you compose. Once you see the ve
 
 Ramp's engineering org runs a plugin-style marketplace: an internal catalogue of skills their engineers author and share. Geoff Charles, Ramp's CPO, put the count at 350 in April 2026. His framing: *"the models were good enough. The harness wasn't."* For a long time the industry talked about agents as if the model was the limit. Ramp's answer was that the limit was the kit around the model: the skills, the judges, the conventions. They built the harness. The model got better on its own.
 
-That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year. That is Klaassen's compound step at team scale: how a kit of that size gets built. Accretion, one contribution at a time.
+That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year. That is the compound step at team scale: how a kit of that size gets built. Accretion, one contribution at a time.
 
 ## The shape it grows into — one org
 
 Darragh Curran runs engineering at Intercom. In April he published a post called *"2x — nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The org is 500 people.
 
-Read that as your verifier from this morning, scaled. Same primitive. An automated check that says *this meets the bar.* Placed in CI, fed by convention, trusted by a human team that set the thresholds. The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
+Read that as your verifier from M5, scaled. Same primitive. An automated check that says *this meets the bar.* Placed in CI, fed by convention, trusted by a human team that set the thresholds. The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
 
 That is not an aspirational vendor story. That is a post from the person running the org, with numbers.
 
@@ -40,7 +40,7 @@ One thing your skill can do that you did not try today: run on a schedule.
 
 Claude Code ships three scheduling primitives. A Desktop local task for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
 
-Three places this fits naturally. A standing verifier run — the judge reads last night's long-running send-off at 07:00 and has a summary waiting when you open the laptop. A nightly codebase sweep — the gap-finder reads the repo for the drift shape you saw this morning and opens an issue when it finds one. Rule-drift monitoring — a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
+Three places this fits naturally. A standing verifier run — the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep — the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring — a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 
 Keep the primitive in the kit. You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The scheduled-agents reference page in the content folder walks through the specifics. ([Scheduled agents](../reference/scheduled-agents.md).)
 
@@ -48,7 +48,7 @@ Keep the primitive in the kit. You do not have to wire it today. You do need to 
 
 The specific Claude you used today will be replaced. Probably within months. Opus 4.7 will be Opus 4.8, then something with a different name. Every one of those models will be better at the work than the current one. None of that changes the move.
 
-The three pieces Ronacher named — reference, plan, verifier — are not model features. The encode loop you ran this morning — diff, name the gaps, package the learning — is not a model feature. They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
+The three pieces Ronacher named — reference, plan, verifier — are not model features. The encode loop you ran at M6 — diff, name the gaps, package the learning — is not a model feature. They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
 
 That stance survives every model change. Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
 

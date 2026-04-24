@@ -14,7 +14,7 @@ Not "did the run succeed." Not "should I have spec'd it tighter." A diagnostic q
 
 ## Three failure modes you'll use to read
 
-Practitioners running multi-hour coding agents in the last six months name the same three failure modes, in roughly the same order. Use them as the lens for tomorrow's read.
+Practitioners running multi-hour coding agents in the last six months name the same three failure modes, in roughly the same order. Use them as the lens for the M5 read.
 
 **Goal drift.** The instructions get buried as the conversation grows. By hour one the agent is solving an adjacent problem with confidence. Starts early. Hard to spot until you compare what was asked against what was done.
 

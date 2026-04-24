@@ -6,7 +6,7 @@
 
 Three modules in, you've worked short loops. M1 closed a bug and wired a connector. M2 read one plan twice. M3 shipped a feature with security mapped and a test-strategy skill you authored in conversation. Every one finished inside the session. You watched Claude work, you steered, you stopped, you shipped.
 
-Today is structurally different. Today you launch a multi-hour task and close the laptop. The agent keeps going while you aren't there to steer. You'll come back tomorrow (or next week, if that's your format) to a result. That result is the point.
+Today is structurally different. Today you launch a multi-hour task and close the laptop. The agent keeps going while you aren't there to steer. You'll come back to a result whenever the next M5 slot lands. That result is the point.
 
 ## The spirit
 
@@ -24,7 +24,7 @@ Run one — today, un-packaged. You'll walk what you've built against the task, 
 
 Run two — M5, packaged. We'll read what came back, find what went wrong, and you'll learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
 
-The contrast is the lesson. No lecture on "best practices for long-running agents" lands the way *you just watched this fail, here's what would have caught it* lands. That's why we launch un-packaged tonight — to earn tomorrow's teaching moment.
+The contrast is the lesson. No lecture on "best practices for long-running agents" lands the way *you just watched this fail, here's what would have caught it* lands. That's why we launch un-packaged here, to earn the M5 teaching moment.
 
 ## Two frameworks you'll use today
 
@@ -36,13 +36,13 @@ The contrast is the lesson. No lecture on "best practices for long-running agent
 
 **Cancel is legitimate. Traces are data.**
 
-If you launch the task tonight and after twenty minutes you can see Claude is hallucinating file paths, arguing with itself, or missing a requirement you now realise wasn't in the prompt — stop it. You've got the data you need. Burning six hours to confirm it doesn't teach you more than stopping at twenty minutes with an observation.
+If you launch the task and after twenty minutes you can see Claude is hallucinating file paths, arguing with itself, or missing a requirement you now realise wasn't in the prompt — stop it. You've got the data you need. Burning six hours to confirm it doesn't teach you more than stopping at twenty minutes with an observation.
 
 What you owe the experiment is a result you can read, not a completed artifact. Any trace counts.
 
 ## What happens after
 
-Tomorrow morning, M5 opens with the return. We read what came back together, diagnose what went wrong, and you learn packaging not from a slide but from *"here's the piece that would have caught this specific thing."*
+M5 opens with the return when the next slot lands. We read what came back together, diagnose what went wrong, and you learn packaging not from a slide but from *"here's the piece that would have caught this specific thing."*
 
 Walk your system. Fill the gaps. See the three blocks in your own work. Send it off, un-packaged. Read the result.
 

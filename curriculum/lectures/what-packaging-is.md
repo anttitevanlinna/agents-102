@@ -18,7 +18,7 @@ Armin Ronacher's posts on long-running coding agents over the last six months ke
 
 **External verifier.** An automated check that decides whether a piece of agent-produced work meets a quality bar. Tests, lint, compile, a deterministic shell hook, or a separate background agent that reads the work and judges it. The verifier is the move that catches plausible-but-wrong before you trust it.
 
-Each piece exists because of one of the failure modes you read this morning. Reference artefact catches goal drift (the spec stays readable mid-run). plan.md catches context rot (durable state survives the window). Verifier catches plausible-but-wrong (you don't have to be the one to spot it).
+Each piece exists because of one of the failure modes you read at the start of M5. Reference artefact catches goal drift (the spec stays readable mid-run). plan.md catches context rot (durable state survives the window). Verifier catches plausible-but-wrong (you don't have to be the one to spot it).
 
 ## Three shapes the verifier takes
 
@@ -56,9 +56,9 @@ Two camps, both real. M5 teaches the extend camp because your task wanted it. Th
 
 The verifier is an eval. If you didn't already call it that, M6 will. An automated check that says *this agent-produced thing meets our bar.*
 
-M6 is where this move scales. Same shape, different question. Today: did my run pass? Tomorrow at M6: do all our runs pass, do they pass faster, who reviewed what? Your verifier becomes a judge in the team kit. The kit grows by accretion, one engineer at a time, until the team has the infrastructure Curran's R&D org runs on.
+M6 is where this move scales. Same shape, different question. M5 asks: did my run pass? M6 asks: do all our runs pass, do they pass faster, who reviewed what? Your verifier becomes a judge in the team kit. The kit grows by accretion, one engineer at a time, until the team has the infrastructure Curran's R&D org runs on.
 
-That's tomorrow. Tonight, the laptop is closed and the second run is going.
+That's M6. The laptop is closed now and the second run is going.
 
 <!-- maintainer -->
 

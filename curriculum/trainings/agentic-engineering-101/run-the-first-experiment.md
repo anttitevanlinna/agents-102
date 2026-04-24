@@ -15,8 +15,8 @@ After this module, you will be able to:
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired at the sponsor-stated home (or the gap named explicitly)
 - **Recognize** Huryn's three-block memory in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
-- **Compound** (Klaassen's fourth step) the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
-- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and leave it running overnight (laptop awake, lid open, power plugged in), or stop the run mid-flight when you've seen enough; traces are data either way
+- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
+- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and leave it running while you step away (laptop awake, lid open, power plugged in), or stop the run mid-flight when you've seen enough; traces are data either way
 
 ## Connections
 
@@ -62,9 +62,9 @@ Tell me in 3–5 lines: what you added to `CLAUDE.local.md`, what you sharpened,
 
 *(end of prompt)*
 
-Read the summary. Push back where it's wrong; quote the session moment. When `CLAUDE.local.md` is where you want it for tonight, send the task off.
+Read the summary. Push back where it's wrong; quote the session moment. When `CLAUDE.local.md` is where you want it, send the task off.
 
-Before you send: the agent will commit as it works. If you'd rather keep tonight's run off your main branch, ask Claude in this same session to make a branch or a worktree for the task first. Whatever your repo's convention is.
+Before you send: the agent will commit as it works. If you'd rather keep this run off your main branch, ask Claude in this same session to make a branch or a worktree for the task first. Whatever your repo's convention is.
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
@@ -73,12 +73,12 @@ Ask Claude to run the scoped task end-to-end in this same session, with your rul
 ```
 I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills at `.claude/skills/`. That's everything you have. Go.
 
-I'm leaving the laptop awake overnight and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
+I'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
 ```
 
 *(end of prompt)*
 
-Let it run. Keep the laptop awake and plugged in overnight (power settings → prevent sleep on power). If you watch for a bit and see the agent wobbling in a way that already tells you what next module will diagnose, stop the run. You don't owe the experiment a completed artifact; you owe it a result you can read.
+Let it run. Keep the laptop awake and plugged in while it runs (power settings → prevent sleep on power). If you watch for a bit and see the agent wobbling in a way that already tells you what next module will diagnose, stop the run. You don't owe the experiment a completed artifact; you owe it a result you can read.
 
 Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is legitimate practice. Past ten and you've become the agent; call it and read what's there.
 
@@ -86,7 +86,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 
 
 ## Bridge
 
-M5 opens with what came back, or what you caught before it went further. Tomorrow you'll start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/<project-folder>/`, so the new session can find and read your M4 session directly. Close this window after the run is done if you want; the trace is on disk either way. We read it together.
+M5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/<project-folder>/`, so the new session can find and read your M4 session directly. Close this window after the run is done if you want; the trace is on disk either way. We read it together.
 
 <!-- maintainer -->
 

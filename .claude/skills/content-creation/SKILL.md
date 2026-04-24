@@ -9,6 +9,19 @@ This skill owns generation-time rules — the "doing" rules. For architecture (d
 
 Use this skill when the user asks to write or revise curriculum content: a module, exercise, lecture, a new training variant, or a review pass.
 
+## Session shape default — apply the training's own pattern to producing the training
+
+When designing or opening a generation session, default to the shape of the training's own pattern applied to the meta-task. If the training teaches a move, the work of producing the training content should be doing that move.
+
+- Generating M5 content → run M5's *diagnose / package / re-send* on the session. The initial proposal is the un-packaged run; the reference-artefact + plan + verifier are the packaging; the subagent dispatch + loop is the re-send.
+- Generating M6 content → run M6's exercise prompts (diff two runs + name gaps + author encoding skill) on the session's own artefacts.
+- Updating this SKILL.md → run the SKILL.md's own PDCA loop on the SKILL.md update.
+- Generating a Bootstrap exercise → run the exercise's own forcing function on the design of the exercise.
+
+**The Rory test:** the filter for whether we understand a pattern is whether we can run it on ourselves. If the session can't apply the pattern to its own generation, we don't yet understand the pattern well enough to ship it. Apply the default at session-open so the first 3–5 turns aren't spent re-discovering the meta-move every cycle.
+
+Canonical source: `memory/compounded/2026-04-24-content_creation-meta-move-training-on-training.md`.
+
 ## Strategy-first generation — non-negotiable
 
 **Every piece of content aligns to strategy before you touch words.** Strategy-first is not a step; it is the frame around every step. Before drafting a lecture, exercise, prework, or homework, you must already know:

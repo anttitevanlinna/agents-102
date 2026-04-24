@@ -49,7 +49,7 @@ Simple round. Trainer and group pick the exact form — pair exchange, whole-roo
 
 10–15 minutes. No canonical self-compound prompt here — the encode step already happened when you shipped the second skill in the exercise. The round makes room for the human close that practitioner fluency warrants.
 
-**Self-study variant.** Teacher Claude invites the same two-part articulation in conversation and lets the scrollback carry it. Optional keepsake note if you want one; not required.
+**Self-study variant.** Teacher Claude invites the same two-part articulation in conversation and lets the scrollback carry it. Optional keepsake note if you want one; not required. If you've already shipped a skill that fires on your real-work gap shape and you can name the move in one sentence, that's the marker. Close the laptop. The articulation is optional, not the practitioner-fluency gate.
 
 ## Closing
 

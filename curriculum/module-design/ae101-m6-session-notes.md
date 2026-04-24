@@ -299,13 +299,13 @@ Story of Module 6 drafted from notes. 5–7 min opener, first-person past, signe
 - Jin (fast operator): 8.3 average. Monday-portability HIGH. Practitioner fluency lands; arc-retro and Debrief thin but not blocking for this archetype.
 
 **What stayed as TODO (not fixed this cycle):**
-- Antti's rewrite pass on Story lecture in final voice (maintainer TODO — writing not structural).
-- Three-persona sim re-run after fixes land (confirm Greg 7 → 8 climb).
-- Capability freshness re-check before cohort delivery.
-- Intercom post freshness re-check at cohort date.
+- Antti's rewrite pass on Story lecture in final voice (maintainer TODO — writing not structural; Antti-only).
+- Capability freshness re-check before cohort delivery (pre-cohort-gated).
+- Intercom post freshness re-check at cohort date (pre-cohort-gated).
 
-**Fixes surfaced but NOT applied (deferred per scope):**
-- Debrief self-study variant is thin for fast operators (Jin's note). Could add an optional skip path — "if the skill you shipped is already the marker, type one line and close." Kept current shape; flagged as next-cycle consideration. Neither Greg nor Jin called it blocking; Maria accepted it.
+**Closed this cycle (post-first-pass):**
+- **Greg re-sim confirmed 7.0 → 8.0 climb.** All three original Greg-persona flags resolved; one minor nit caught and applied (Ramp paragraph's *"is worth sitting with"* → *"His framing:"*).
+- **Debrief fast-operator skip path added** in module file self-study variant: *"If you've already shipped a skill that fires on your real-work gap shape and you can name the move in one sentence, that's the marker. Close the laptop. The articulation is optional, not the practitioner-fluency gate."* Jin's non-blocking flag addressed.
 
 ## Loop final summary
 

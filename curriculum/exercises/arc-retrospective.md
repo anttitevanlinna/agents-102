@@ -57,7 +57,7 @@ Once the note reads true to you, save it. You'll come back to it. Not every week
 - **Agent writes a template retrospective.** *"You learned X, then Y, then Z."* No quotes, no specificity. Diagnostic: zero file quotes in the note. Fix: re-run the prompt; insist on quotes from the student's actual files.
 - **Agent praises without evidence.** *"Your test-strategy skill shows strong thinking."* Diagnostic: an adjective without a quoted line underneath. Fix: Nerd push *"quote the line in the skill that earns that sentence."*
 - **Student accepts the first draft.** Default-acceptance, same failure mode as every authoring move. Diagnostic: the student saves without a push-back turn. Fix: ask what one sentence in the note isn't true to your experience. Revise from the answer.
-- **Artefact list empty or thin.** If the student didn't ship artefacts at one or more modules (common for remote / self-study variants), the agent's arc reads thin. Fix: the note names the gap honestly. The absence is data.
+- **Artefact list empty or thin.** If the student didn't ship artefacts at one or more modules (common for remote / self-study variants), the agent's arc reads thin. Fix: the note names the gap directly. The absence is data.
 - **Agent invents a pattern to tidy the arc.** An over-clean narrative (*"clear progression from X to Y"*) where the student's experience was messier. Fix: push back with a specific messier moment. Ask the agent to fold it in rather than smooth it out.
 
 **Watch-fors:**

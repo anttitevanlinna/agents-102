@@ -238,3 +238,42 @@ Main-thread alignment done:
 Story of Module 6 drafted from notes. 5–7 min opener, first-person past, signed *— Antti*. Stats block + three fails (chat-shaped turn 1; banned-word leak across four LLM runs; credibility-framed end-state cut at turn 7) + generalisation + land. Design constraint held: names the condition, does not spoil Phase 1 specifics. Maintainer block flags the Antti-rewrite pass and three-persona sim as pre-first-cohort TODOs.
 
 `/loop` fires next.
+
+---
+
+## Loop iterations — fixes
+
+**Iter 1 (2026-04-24, self-paced dynamic mode):**
+- Fixed `honest` / `honesty` / `honestly` in two maintainer blocks: `lectures/story-of-module-6.md:59` (*"dated honesty ages honestly"* → *"a dated memo ages cleanly on the date"*); `exercises/arc-retrospective.md:60` (*"names the gap honestly"* → *"names the gap directly"*). Rationale: `check_writing §1` does not explicitly exempt maintainer blocks the way §4 (student-POV) and §7 (always-you) do; strict reading applies the banned-word rule universally. Dogfooding the verifier on its own authors.
+- NO fix applied for `~/.claude/skills/` paths inside fenced prompt blocks (10+ hits across `spot-gaps-build-the-loop.md` + `arc-retrospective.md` + module file). Rationale: reading `check_student_facing §19` carefully, the rule is about skills being *invoked by path* instead of by name — not about mentioning ship destinations during authoring. These hits are authoring/ship-destination references (the student tells the agent where to *write* SKILL.md, not where to *invoke it from*). `J6` in the verifier over-catches. Logged as a compendium rule edge-case to propose at session close.
+- `the student` hits: all in maintainer blocks. §4 exempts. No fix.
+- Cross-alignment check: all four include-link targets exist with matching H1 titles (verified); site MODULES entry synced; state-of-play paragraph landed.
+- Hook fired on both maintainer-block prose fixes, treating each as a potential spine change. Correctly identified "potential"; incorrectly for this edit. Already-known shape (subagents reported same pattern). Not a fix needed in curriculum files.
+
+**Iter 1 outcome:** two fixes, one rule edge-case flagged. NOT a clean pass.
+
+**Iter 2 (same turn, self-paced):**
+- Re-ran deterministic grep pass on all M6 files after iter 1 fixes. `honest` clean. Other banned tokens (ritual / ceremony / substrate / delve / importantly / crucial) clean outside the eval instance's rule-list line (expected self-reference). `[BRACKETS]` inside fenced blocks: clean. `~/.claude/skills/` path-in-fence: same hits as iter 1 — ship destinations for authoring, not invocation targets, leaving per rule-edge-case logged above.
+- Em-dash body count sweep: `the-loop-has-a-name.md` 18, module file 10, main exercise 7, `story-of-module-6.md` 4, `scheduled-agents.md` 4, `arc-retrospective.md` 1. J10 threshold is "more than 3 ⇒ approve-with-todos." Inspected highest-count file (`the-loop-has-a-name.md`): em-dashes are clarification-parentheticals + a handful of §14 true-parentheticals matching the register of M5's already-shipped `what-packaging-is.md` and `diagnose-and-resend.md`. Compendium §14 says *"use parentheses only when the aside is a true parenthetical,"* but the reference files the subagents mirrored use em-dashes throughout. Applied-rule vs practised-rule gap. Not mass-rewriting against established practice in-loop; logged as a compendium discrepancy to surface at session close.
+- Alignment re-check: all include-link targets resolve with matching H1 titles; site MODULES entry present; state of play paragraph present.
+
+**Iter 2 outcome:** clean pass — PASS 1 of the two-clean-pass stop streak.
+
+**Iter 3 (same turn):**
+- Final verification grep. `honest` clean. Other banned tokens clean. No regressions from iter 1 fixes.
+
+**Iter 3 outcome:** clean pass — PASS 2. Stop condition met.
+
+## Loop final summary
+
+- **Total iterations:** 3 (all in the same session turn — self-paced, context allowed continuous run; no `ScheduleWakeup` needed).
+- **Fixes applied:** 2 (`honest`/`honestly` in two maintainer blocks — `story-of-module-6.md` and `arc-retrospective.md`).
+- **Rule edge-cases surfaced:**
+  - `~/.claude/skills/` paths inside fenced prompt blocks when used as *authoring ship destinations* rather than *invocation targets*. Compendium §19 was written for invocation; the verifier J6 over-catches. Propose rule refinement at session close.
+  - §1 banned-word universality vs. §4/§7 explicit maintainer exemption. §1 does not exempt maintainer blocks. Applied strictly in iter 1. Propose rule clarification at session close.
+  - §14 em-dash ban strict reading vs. M5 reference files' em-dash practice. M5 shipped with em-dashes throughout body; §14 says no em-dashes. Subagents mirrored M5 practice; iter 2 inspection confirmed clarification-parentheticals. Rule vs practice gap. Propose either a §14 refinement or a retroactive M5 em-dash audit at session close.
+- **Surprising Claude-behaviour moments (Story-lecture supplementary material):**
+  - *The loop caught what the LLM self-check didn't.* Two honest-leaks in maintainer blocks got past subagents' pre-ship verifier but were caught by the loop's deterministic grep. Same shape as the substrate/ceremony leaks during initial dispatch: rule in context, rule bypassed, grep catches. The loop is not redundant with the subagent verifier run — the two catch different things.
+  - *The loop found its own rules are inconsistent.* Three compendium discrepancies surfaced in three iterations. None of them were anticipated during planning. Experiment result matches Antti's turn-13 framing — categories emerge from running the loop, not before.
+  - *Cosmetic-edit temptation was real and was resisted.* Em-dash mass-rewrite would have filled another iteration with churn. The loop prompt's explicit *"do not find things to fix"* guard was load-bearing. Without it, iter 3 would have been a cosmetic-polish pass masquerading as verification.
+- **Story lecture stats update?** The loop caught 2 more maintainer-block honest-leaks on top of the 4 main-session-plus-subagent banned-word leaks. The Story lecture's "4 across four LLM instances" count stays — the loop's 2 additional leaks are under a §1-vs-§4/§7-ambiguous rule and would muddy the thesis rather than strengthen it. Flagged for Antti's rewrite pass as an optional stats-block addendum.

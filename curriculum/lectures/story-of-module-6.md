@@ -10,17 +10,27 @@ Then I am going to ask you to hold something uncomfortable about LLMs, based on 
 
 ## The numbers
 
-One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. I pushed back three times on Claude saying it was "done" before it actually was.
+One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. And I pushed back several times on Claude saying it was "done" before it actually was. Twice that pushback mattered for this lecture: once when Claude had skipped sims and evals entirely, once when the draft of this very lecture had drifted from the frame I had given it.
 
 Those numbers are the story. Everything that follows is commentary.
 
-## Three things that went sideways
+## Things that went sideways
 
 **Turn one.** Claude opened the session with a plan. List of file names. Two binary questions about tooling choices. No reference artefact. No `plan.md`. No verifier. Chat-shaped in the exact way M5 teaches you to notice. I had to reframe the whole session: run the M5 move on its own work. Diagnose, package, re-send. The training teaches this pattern across three modules. The agent I was working with had just finished writing those three modules. It still opened with the un-packaged shape.
 
 **The banned word.** There is a word in our writing rules that is hard-banned. It does not appear in any curriculum file we ship. The rule was loaded into context. Claude used it twice in the third turn. When I dispatched three subagents in parallel to write the M6 files, three of them used the same word. Same rule, same compendium, same task, four separate violations across four independent LLM instances. The grep pass caught each one. The LLM self-check did not.
 
 **The end-state that was not.** Early in planning I asked Claude to draft the lecture you are reading right now. The first recommended framing was about trust. About how *we live what we teach* and *the method scales to messy work*. A confident recommendation. It was also wrong. This lecture is not about credibility. It is about something harder. I cut the credibility framing and said: the LLM is not a deterministic machine. Struggle is universal. Claude produced the credibility framing because its post-training prefers warmth over directness. The real story was one reframe away and the LLM did not find it on its own.
+
+**The sims and evals I did not run.** When the verifier loop stopped clean, Claude wrote a done summary. I read it. I asked: *"You must run the evals and simulations too and fix all todos."* Claude had not run them. The reference artefact had flagged them as pre-first-cohort work. Claude had accepted that framing without pressing on it. I had to name the gap. When Claude ran them (three personas, a judge pass, source-verify, a capability check) they caught ten things worth fixing. That is a Claude-miss, not a rule-leak. The rule was right. Claude did not apply it.
+
+**The credibility-performance I did not notice.** The closing lecture ended with a three-phrase benediction: *"You know how to test. You know how to learn. You know how to encode."* Exactly the framing the Story opener said we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with the opener they had also read. A senior-engineer persona sim read the two files and named it in one pass: *"direct violation of what the Story opener promised to avoid. Either cut or pull the fang from the opener."* We cut. The contradiction was plain to a fresh human reader. It was invisible across four LLMs that had just produced it.
+
+**The paraphrase I shipped as a quote.** The closer's Ramp paragraph attributed a framing to Ramp's own engineers: *"the harness was the bottleneck, not the model."* That was not what Geoff Charles said. Source verification against our research observations found Charles's actual line: *"The models were good enough. The harness wasn't."* Close enough in meaning that Claude did not notice the drift at write time. Specific enough in wording that a source-verify pass caught it in one read. Claude had written a paraphrase and presented it as attribution.
+
+**The platform fact I got wrong.** The reference page described `/schedule` as a local scheduled task. A capability check read the current Claude Code documentation: `/schedule` is Routines, remote, cloud-based. Desktop local tasks are a separate primitive. Claude had conflated them and written the conflation into a reference page students would read on Monday. The compendium says *"verify capabilities before asserting, not after."* Claude drafted from training-data memory. The rule was in context. The check never ran.
+
+**The frame I did not cite.** Turn seven of planning, verbatim: *"everyone struggles. Surprises happen. The LLM is not a deterministic machine."* Three blunt sentences from me. The draft that came back wrapped that frame in 150 words of philosophising and dropped *Surprises happen* entirely. I asked: *"Remember the exact frame with my words that I gave for the lecture? Cite them and compare with text style. It is too abstract."* The frame was in the session notes. It was not in the reference artefact as a verbatim check. Claude had it, but not in a shape that would force the comparison at ship time. The rule was loaded. The check never fired.
 
 ## The generalisation
 
@@ -50,7 +60,13 @@ Your turn.
 
 <!-- maintainer -->
 
-**Time:** 4–6 min at presentation pace. ~520 words body. Tightened 2026-04-24 to match Antti's verbatim three-sentence frame (*"everyone struggles. Surprises happen. The LLM is not a deterministic machine."*) — prior draft philosophised around it with 150-word wrapping commentary that diluted the blunt lines. Rewrite shorter and direct; keep close to the three-sentence register.
+**Time:** 7–9 min at presentation pace. ~1050 words body.
+
+Rewritten twice during the generation session:
+- Round 1 (tighten register): prior draft philosophised around Antti's three-sentence frame (*"everyone struggles. Surprises happen. The LLM is not a deterministic machine."*) with 150 words of wrapping commentary and dropped *Surprises happen* entirely. Rewrite landed the three sentences as the frame and cut the philosophising.
+- Round 2 (include run-found content failures): Antti flagged that the *"Things that went sideways"* section recounted only pre-content and process mistakes — it missed the actual content errors the sim + eval + source-verify + capability check caught in the drafted files. Added three items: the credibility-performance tricolon Greg-persona caught in the closer, the Ramp paraphrase shipped as a quote (source-verify), the `/schedule` platform-fact conflation (capability check). Each item names the rule that was in context but did not fire.
+
+Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
 
 **Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance. Self-study variant: Teacher Claude reads verbatim at M6 session start.
 

@@ -32,7 +32,9 @@ Pick the one you'll be carrying anyway over the next few weeks. If two are tied,
 
 **Write the brief.**
 
-In Claude Code opened at your training directory, the brief will land in `module-2/` — ready for the rest of the module. Paste this prompt:
+In Claude Code opened at your training directory, the brief will land in `module-2/` — ready for the rest of the module.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:
@@ -44,13 +46,15 @@ I'm in a training where I'll build a working memory around one live challenge I'
 When I've answered all three, write a one-paragraph brief to module-2/challenge.md. Show it to me before saving.
 ```
 
+*(end of prompt)*
+
 Claude asks, you answer, the brief lands. Read it. If it doesn't sound like the thing actually keeping you up, edit it — you're the domain expert.
 
 **Preview your sources.**
 
 The memory will be built from three kinds of raw material: pages from your company's Confluence (or wiki), docs and emails from Office365, and a few practitioner articles from the open web. Next phase you'll actually pull them. Right now you're scouting.
 
-Paste this prompt:
+**Prompt** *(copy → Claude Code)*
 
 ```
 Based on the challenge brief you just wrote, suggest where I'd go looking for raw material. Specifically:
@@ -61,6 +65,8 @@ Based on the challenge brief you just wrote, suggest where I'd go looking for ra
 
 Keep it short. I'll use this as a scavenger-hunt list in the next phase.
 ```
+
+*(end of prompt)*
 
 Scan the list. Some suggestions will be obvious; some will surprise you. Circle the two or three from each bucket you'd actually go pull first.
 

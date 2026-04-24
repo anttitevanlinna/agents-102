@@ -88,3 +88,150 @@ Two things I want to name before the plan, because they'll shape steps:
 - **Dynamic import in main.js.** Noted above — leaning toward cutting it.
 
 Ready for push-back.
+
+## Phase 3
+
+> keep planning with feedback
+
+> Step 2's "re-enters the win path" in the unauthed branch hand-waves the post-login handoff — no explicit call site, no auth-failure render, no word on whether the game loop pausing is implicit in `state.done`.
+
+> Step 1's "two lines to persist `j.user` under `lemmings_user`" is sold as minor but introduces a second localStorage key that splits the auth truth across all current and future `api.js` callers (scores, levels, future flows). Alternative: decode the JWT payload for `getCurrentUser()`, single source of truth. I'd take the JWT-decode version.
+
+Both push-backs hold. Taking PB2 as written. Taking PB1 with one correction on the game-loop pause question.
+
+---
+
+### PB2 — JWT-decode for `getCurrentUser()`, drop `lemmings_user`
+
+You're right. Checked `backend/server.js`: `sign(user)` writes `{ id, email, role }` into the JWT payload (line 20). Everything callers need is already inside the token we're persisting — adding `lemmings_user` would be storing a weaker copy of data we already have, and splitting the invalidation story (clear one, forget the other, `getCurrentUser()` returns a ghost email for a token that no longer authenticates).
+
+**Step 1 — revised.** `api.js` gains `getCurrentUser()` only. No `lemmings_user` key, no `JSON.stringify(j.user)` writes, no changes to the `register`/`login` success paths.
+
+```js
+// src/api.js — additive
+export function getCurrentUser() {
+  const t = localStorage.getItem('lemmings_token');
+  if (!t) return null;
+  try {
+    const payload = JSON.parse(atob(t.split('.')[1]));
+    return { id: payload.id, email: payload.email, role: payload.role };
+  } catch { return null; }
+}
+```
+
+Three properties that matter:
+- **Single source of truth.** `lemmings_token` is the only auth key. Clearing it logs you out completely; no ghost user lingering.
+- **No signature check on the client.** We're reading the payload for display + the `user_id` we pass to `submitScore`. The server still verifies the signature on every `POST /scores`. If someone hand-crafts a JWT in their devtools, the server rejects it — same security posture as before.
+- **Expiry-aware is a freebie.** The payload also has `exp` (JWT default when `expiresIn: '7d'` is set). Treat `exp < Date.now()/1000` as `null` — a stale token stops rendering as "logged in" without a server roundtrip. One extra line; worth it.
+
+**Downstream impact.**
+- Step 2's "Read `getCurrentUser()`" clause is unchanged in shape — the function's output is still `{ id, email }`-ish.
+- Manual check step "Refresh the page. Overlay gone, `localStorage` still has token + user" becomes "…still has token" — one key to reason about.
+- The `CLAUDE.local.md` note about `api.js` being imported-but-unwired tightens: `api.js` is now the single auth surface. Future `uploadLevel` / scores-by-level flows read from the same `getCurrentUser()` — no grep-and-replace when a second caller lands.
+- Test harness: `endscreen.test.js` can stub `getCurrentUser` directly; no `localStorage` dance in tests.
+
+---
+
+### PB1 — unauthed branch, called out explicitly
+
+You're right that "re-enters the win path" is doing too much work in one phrase. Writing out the call sites.
+
+One correction inside your push-back, though: **the game loop does not pause on `state.done`.** `setInterval(step, 1000/30)` keeps firing 30 times a second regardless. What `state.done` gates is the one-shot status write and (after this PR) the one-shot `showEndScreen` call — the `if (!state.done && ...)` wrap means the work happens exactly once, not that the loop stops. The lemmings keep updating, the canvas keeps redrawing. For the end-screen that's fine — the overlay sits on top of a canvas that's still ticking behind it; visually the player doesn't notice because every lemming has already terminated into `'saved'` or `'dead'`. No pause needed, no pause proposed.
+
+If you'd rather freeze the loop on win, that's a one-liner (`clearInterval(loopHandle)` — requires capturing the handle, which `main.js` currently doesn't), and I'd add it as a small separate step. Not doing it by default; say the word.
+
+**Step 2 — revised.** `src/endscreen.js` exports three functions instead of one, so the call sites are visible:
+
+```
+showEndScreen(state)           // entry point from main.js on win
+submitAndRenderLeaderboard(u)  // the "win path" — auth already resolved
+renderLoginForm(onSuccess)     // unauthed branch
+```
+
+Flow:
+
+1. `showEndScreen(state)` unhides `#endscreen`. Reads `getCurrentUser()`.
+2. **Authed branch:** call `submitAndRenderLeaderboard(user)` with the decoded user. Inside: `await submitScore(user.id, null, state.saved)`, check the response (`j.error` → render "Submit failed: <error>. Leaderboard below.", do NOT block the fetch), `await topScores()`, slice to 10, render table.
+3. **Unauthed branch:** `renderLoginForm(onSuccess)` paints email + password + Submit into `#endscreen`. Submit handler:
+   - `const j = await login(email, password);`
+   - If `j.token` is present → success. Call `onSuccess()`, where `onSuccess = () => submitAndRenderLeaderboard(getCurrentUser())`. That's the explicit handoff. The login form's DOM is replaced in place by the leaderboard render (clear `#endscreen.innerHTML`, then paint the leaderboard).
+   - If `j.error === 'no such user'` → fall through to `register(email, password)`. Same `onSuccess` branch on token.
+   - If `j.error === 'wrong password'` → render the form again with "Wrong password — try again or use a different email." `onSuccess` is not called; the user retries in place.
+   - Any network throw → "Couldn't reach the server. Your score wasn't submitted. Play again?" Static end-state; no retry loop.
+4. **Score-lost case.** If the unauthed flow ends without a successful login (user closes the tab, network dies), the score is gone. Acceptable — the ask is "submit on win," not "queue and retry." Noted in the copy on the form: "Log in to record your score."
+
+**Auth-failure render — what actually goes on screen:**
+
+| State | `#endscreen` contents |
+|---|---|
+| Authed, submit 200 | Leaderboard table + "You — rank N" highlight |
+| Authed, submit 4xx with `j.error` | "Submit failed: <error>. Leaderboard below." + table |
+| Authed, submit network throw | "Couldn't reach the leaderboard. Your score wasn't submitted." (no table) |
+| Unauthed, first paint | Login form, "Log in to record your score" |
+| Unauthed, `wrong password` | Login form, "Wrong password — try again or use a different email." |
+| Unauthed, login network throw | "Couldn't reach the server. Your score wasn't submitted. Play again?" |
+| Unauthed, login → register → success | Leaderboard table (via `onSuccess`) |
+
+**Downstream impact.**
+- Step 6 (tests) gains a fourth target: **auth handoff.** Stub `login` to resolve with `{ token: <fake-jwt-with-id-and-email> }`, stub `submitScore` and `topScores`. Assert `submitScore` is called exactly once, with `user.id` decoded from the stubbed token. This pins the handoff contract — the push-back's core worry.
+- Step 7 (manual checks) gains: "wrong-password path renders error inline, no console throw"; "login-throw path renders static error, no retry loop, no second submit attempt if the user clicks Play-again."
+- Step 3 (main.js wiring) is unchanged in shape. Still a fire-and-forget `showEndScreen(state)` call at the `state.done` transition on the win branch. The game loop continues — by design, as above.
+- The "dynamic import vs. plain import" branch I had leaning toward plain import — I'll cut it now. Plain `import { showEndScreen } from './endscreen.js'` at the top of `main.js`. The parse-time cost argument for dynamic import was weak; kill the branch.
+
+---
+
+Net: Step 1 is smaller (one function added, one key, not two). Step 2 is longer but the call sites are named and the auth-failure matrix is on the page. One unresolved branch closed (dynamic import). One new branch: **freeze the loop on win?** — tracked for the walk-down.
+
+Ready for the walk-down.
+
+## Phase 4 — Q1
+
+> Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven't named. Ask me one question at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct one at a time.
+
+Walking the unresolved-branches list from Phase 3. Taking them in order of blast radius on the diff.
+
+**Q1 — Freeze the game loop on win?**
+
+Checked `src/main.js`: line 72 is `setInterval(step, 1000 / 30);` — return value is discarded, no handle in scope. So "freeze on win" isn't a one-liner in the current shape; it's three small changes: capture the handle (`const loopHandle = setInterval(...)`), `clearInterval(loopHandle)` inside the `state.done` branch on win, and a decision on whether lose also freezes (current lose path also keeps ticking).
+
+**Recommendation: don't freeze.** Three reasons:
+1. By the time `state.done && state.saved >= state.goal`, every lemming has terminated into `'saved'` or `'dead'` — the loop is doing no visible work. The overlay sits on a canvas that's rendering a stable frame.
+2. Freezing on win but not on lose is an inconsistency the plan would have to justify; freezing both changes current lose behaviour for no leaderboard reason.
+3. It adds a captured handle to `main.js`'s top-level — small, but it's the kind of "while I'm in here" change that grows PRs. The ask is "wire the leaderboard."
+
+If you want the freeze anyway (e.g., CPU on laptops, or the overlay backdrop is semi-transparent and the moving canvas is distracting), say the word and I'll add it as Step 2b with the handle capture.
+
+Confirm or correct.
+
+## Phase 4 — Q2
+
+You confirmed Q1:
+
+> Confirmed. Don't freeze. Your three reasons hold, and the codebase read backs them: the loop ticks but `step()` early-returns on `state.done`, so there's no wasted work and no visible motion behind the overlay. Capturing a handle to `clearInterval` on win-only also introduces a win/lose asymmetry the leaderboard feature doesn't need to justify. Keep the PR scoped to the ask; if CPU or distraction complaints surface post-ship, add the handle then.
+
+Moving to the highest-blast-radius unresolved branch: **auth UX**. The current plan defaults to "login form on end-screen, fall back to register." Two live alternatives from Phase 2 are still on the table.
+
+**Q2 — Confirm the login-then-register default, or switch to silent anonymous auto-register?**
+
+Options:
+- **(a) Login form, register fallback** (current default). First-time player sees email+password before their score lands. Score is tied to an identity they chose.
+- **(b) Silent anonymous auto-register on first win.** Generate `lemmings-<random>@anon.local` + random password, call `register`, persist the token. Zero friction; score submits immediately. Email column on the leaderboard becomes a wall of `lemmings-7f3a@anon.local` rows.
+- **(c) No submit, show-only top 10.** Drops the auth step entirely, also drops the core ask.
+
+**Recommendation: stay with (a).** `backend/server.js` returns `email` on `/scores/top` rows — an anonymous-id leaderboard reads as spam and kills the social reason the feature exists. (b) also lies to the user about what persistence means: clear cookies, lose the "account" permanently, no recovery path. (a) is ~30 more lines (form + two handlers, already specced in Step 2's matrix) and the auth-failure render is written. Keep it.
+
+Confirm or correct.
+
+## Phase 5
+
+> Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
+
+**What the second-pass surfaced that the push-backs didn't.**
+
+- **Loop-freeze was never a real option.** The push-backs named the auth-handoff and the storage duplication. Neither asked whether `setInterval` returns a handle in scope — it doesn't. "One-liner" turned into three changes plus a win/lose asymmetry decision. Reading the code killed the branch.
+- **Anonymous auto-register is a product decision, not a code one.** The `email` column on `/scores/top` is what makes the leaderboard read as spam or not. That only surfaces when you re-read the server response shape alongside the UX option.
+- **Dynamic import died on a re-read.** Not in a push-back — in the act of walking the branch list and noticing the parse-time argument was weak on its own terms.
+
+**Would they have mattered in execution.** The loop-freeze one, yes — I'd have started capturing a handle before noticing the asymmetry, and backed out. The auth-UX one, yes — shipping (b) and then reading the leaderboard would have been the "oh" moment in staging. Dynamic import, no — cosmetic.
+
+**The pattern.** Push-backs attack the plan's claims. The second-pass walks the plan's *unresolved branches* one at a time, recommending an answer and reading the code before asking. Push-backs find wrongness; the walk-down finds *unfinished-ness*. Run both, in that order, before the first edit.

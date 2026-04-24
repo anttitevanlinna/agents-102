@@ -70,7 +70,7 @@ Read the three answers. You should now have a working description of three piece
 
 ## Phase 3: Build the verifier (~20 min)
 
-Three shapes the verifier takes. Pick the one matching your dominant failure.
+Three shapes the verifier takes. Pick the one matching your dominant failure. The comfortable shape is rarely the right one; match the failure, not your familiarity.
 
 - **Background-agent verifier** — separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
 - **Deterministic shell-hook** — tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory).

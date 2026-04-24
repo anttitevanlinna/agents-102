@@ -20,13 +20,7 @@ An eval is the automated check that says *this agent-produced thing meets our ba
 
 Naming it matters because the word is what lets you compose. Once you see the verifier, the judge, the gate, and the skill as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 
-## The shape it grows into — one team
-
-Ramp's engineering org runs a plugin-style marketplace: an internal catalogue of skills their engineers author and share. Geoff Charles, Ramp's CPO, put the count at 350 in April 2026. His framing: *"the models were good enough. The harness wasn't."* For a long time the industry talked about agents as if the model was the limit. Ramp's answer was that the limit was the kit around the model: the skills, the judges, the conventions. They built the harness. The model got better on its own.
-
-That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year. That is the compound step at team scale: how a kit of that size gets built. Accretion, one contribution at a time.
-
-## The shape it grows into — one org
+## The shape it grows into
 
 Darragh Curran runs engineering at Intercom. In April he published a post called *"2x — nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The org is 500 people.
 

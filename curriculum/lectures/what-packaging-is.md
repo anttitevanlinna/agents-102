@@ -36,16 +36,6 @@ Darragh Curran (CTO, Intercom) published a post in April 2026 called "2x — nin
 
 That is your verifier from Phase 3, scaled to a 500-person engineering org. Same shape, scaled.
 
-## What you didn't build today, but should know exists
-
-Two extension primitives the kit ships with that you didn't reach for in M5.
-
-**Subagents for context isolation.** When the working window starts to fill, dispatch a subagent on the next chunk. It runs in its own clean window and returns a summary. Convergent across recent practitioner posts. Useful when context rot is the failure mode you're fighting.
-
-**Manual /compact at around 60% context.** Don't wait for auto-compact. Triggered explicitly when you can feel the window getting full. Same convergence: practitioner posts in the last six months write the same heuristic. Not a fix for goal drift; a fix for window-pressure-induced context rot.
-
-Neither is packaging. Both extend session length without it. Keep them in the kit alongside the three-pattern.
-
 ## The counter-camp
 
 Not everyone agrees that the right move is to extend session length. Sourcegraph's Amp (their coding-agent product) explicitly rejects auto-compaction and bets on short focused sessions plus manual handoff between them. The argument: the cleanest context is a fresh one, and the engineer's job is to package the handoff, not to keep one session running.

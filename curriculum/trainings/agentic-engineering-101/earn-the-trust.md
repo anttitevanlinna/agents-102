@@ -85,7 +85,7 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
-- **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer)
+- **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 

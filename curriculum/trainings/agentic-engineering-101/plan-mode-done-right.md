@@ -71,7 +71,7 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
-- **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer)
+- **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 

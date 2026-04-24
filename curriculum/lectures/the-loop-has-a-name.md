@@ -24,7 +24,7 @@ Naming it matters because the word is what lets you compose. Once you see the ve
 
 Ramp's engineering org runs a plugin-style marketplace: an internal catalogue of skills their engineers author and share. Geoff Charles, Ramp's CPO, put the count at 350 in April 2026. His framing: *"the models were good enough. The harness wasn't."* For a long time the industry talked about agents as if the model was the limit. Ramp's answer was that the limit was the kit around the model: the skills, the judges, the conventions. They built the harness. The model got better on its own.
 
-That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year. That is how a kit of that size gets built. Accretion, one contribution at a time.
+That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year. That is Klaassen's compound step at team scale: how a kit of that size gets built. Accretion, one contribution at a time.
 
 ## The shape it grows into — one org
 

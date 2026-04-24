@@ -8,6 +8,8 @@
 
 **Time:** 25–30 minutes.
 
+> **Quick timebox note.** This is the longest beat in M3 and the place where authoring conversations spiral. We keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is M6's job.
+
 ---
 
 ## Phase 1: ask Claude to author the skill (~12 min)

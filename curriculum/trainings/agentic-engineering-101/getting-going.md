@@ -1,7 +1,7 @@
 # Getting going + context (+ MCP)
 
 ## Big Idea
-The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug's ticket via one connector. The loop every module after this one rides on.
+The first compound loop (Kieran Klaassen at Every calls it *compound engineering*: plan, work, review, compound) closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug's ticket via one connector. The loop every module after this one rides on.
 
 ## Meta
 - **Primary Bloom's level:** Apply (run the three-phase loop end-to-end) + Analyze (read Claude's own introspection against `/context`; read the retro summary against session moments)
@@ -54,7 +54,8 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
-- **Session runtime:** 2h (Connections 10 / Lecture 10 / Exercise 85–95 / Bridge 5). 2h is deliberate for M1 — longer than M2–M4's 1h45 because of the orient+introspect ramp and the MCP close-out. Other modules run at 1h45.
+- **Session runtime:** 2h (Connections 10 / Lecture 10 / Exercise 95 / Bridge 5). Trainer demos slowly, room copy-pastes concurrently — fits 2h in-class. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 40 / compound-and-close 37 (compound retro + MCP wire + ticket close). 2h is deliberate for M1 — longer than M2–M6's 1h45 because of the orient+introspect ramp and the MCP close-out.
+- **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: Nerd surfaces the agentic specificity — *"the loop you just ran was orient → fix → compound → close on YOUR repo, with a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** trainer demos a wizard-level move on a volunteer's codebase → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (compound-and-close) compound `./CLAUDE.local.md` from session evidence + ticket close-out via connector. No separate module-level Debrief.
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
@@ -79,6 +80,6 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex3 is the student's own TDD-style preference.
 - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Convergence Level 3. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`. Attributed inside Claude's Ex3 compound summary, not in a lecture.
-- **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4.
+- **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4. **Design intent (do not flag in audits):** M1 has no explicit three-block language and that is correct. The compound move at Ex3 produces material that rearranges into the three blocks at M4; explicit naming here would steal M4's recognition moment.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

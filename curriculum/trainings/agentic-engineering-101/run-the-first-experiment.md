@@ -15,7 +15,7 @@ After this module, you will be able to:
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired at the sponsor-stated home (or the gap named explicitly)
 - **Recognize** Huryn's three-block memory in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
-- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
+- **Compound** (Klaassen's fourth step) the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
 - **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and leave it running overnight (laptop awake, lid open, power plugged in), or stop the run mid-flight when you've seen enough; traces are data either way
 
 ## Connections
@@ -92,7 +92,7 @@ M5 opens with what came back, or what you caught before it went further. Tomorro
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
-- **Session runtime:** 2h (Connections 10 / Lecture 12 / Exercise 60 / Debrief 15 / Send-off 10 / Bridge 3 + buffer)
+- **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: Nerd reframes — *"enough is a question for M5. The experiment is the point."*
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The send-off at Debrief happens IN the same Claude Code session the student used for walk + fill + frame + retro. No new session, no scheduled agent, no cloud runner — just pass the final prompt to the agent you've been talking to, then leave the laptop awake overnight and walk away.
 

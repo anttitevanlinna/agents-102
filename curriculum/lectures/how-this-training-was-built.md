@@ -42,6 +42,8 @@ You let Claude read your repo. The first read was partly wrong. You saw the wron
 
 By the end of the training, you will have a rules file shaped by how you actually worked. Not a rules file written from a blank page. Not a template the trainer handed you. Yours, grown from evidence.
 
+The pattern has a name. Kieran Klaassen at Every calls it *compound engineering*. The retro you just ran was step four of his loop: plan, work, review, compound.
+
 The loop is the shape. The bug today was the excuse.
 
 **Time:** 5–7 minutes.
@@ -54,7 +56,7 @@ The loop is the shape. The bug today was the excuse.
 - **Arc position:** closes M1, after `compound-and-close` (Ex3) and before the Bridge to M2. Pairs with `the-wizard-move` lecture (demo-style opener): wizard-move shows the ceiling before the student runs the loop; this one names the pattern after they have lived through it. The meta-frame only lands once the student has the muscle memory.
 
 **Frameworks riffed on:**
-- **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Named in Ex3's retro; this lecture tells the story without naming the framework so Klaassen's name earns itself later.
+- **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Named at this lecture's close as the deterministic seam to Ex3's retro citation. The lecture tells the story experientially first; the practitioner lands at the end so the four-step term arrives after the student has run all four steps. Removes the prior gamble where Klaassen's name lived only in the retro prompt and depended on Claude reliably citing him.
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the lecture IS the theme, told as a first-person story about the training itself.

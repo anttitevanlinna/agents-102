@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Build** a verifier shaped against your dominant failure using one of Cherny's three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task M4 sent off
 - **Re-send** the packaged version of the same task in the same Claude Code session and close the laptop a second time
-- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence; you push back on the summary. Team-worthy rules get flagged for separate PR; they don't auto-ship.
+- **Compound** (Klaassen's fourth step) the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence; you push back on the summary. Team-worthy rules get flagged for separate PR; they don't auto-ship.
 
 ## Connections
 
@@ -92,7 +92,7 @@ M6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
-- **Session runtime:** ~2h (Connections 5–8 / Exercise 65 / Closing lecture 12–15 / Debrief 12–15 / Re-send 5 / Bridge 3 + buffer). Mirrors M4's 2h block; closing lecture is the structural addition over M4's shape.
+- **Session runtime:** 1h45 (Connections 5 / In-room opener lecture 6 / Exercise 60 / Debrief 12 / Re-send 3 / Closing lecture 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Closing lecture sits after Debrief + Re-send (structural addition over M4 — names Ronacher's three-pattern from felt evidence). Pre-read (`reading-the-return.md`) lands at the close of M4 Debrief, separate from this module's runtime. Exercise breakdown: Phase 1 read-the-return 15 / Phase 2 align-then-reverse 10 / Phase 3 build-verifier 18 / Phase 4 assemble-reference-and-plan 17.
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: Nerd reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The re-send at Debrief happens in the same Claude Code session the student used for diagnose + build + assemble + retro. No new session, no scheduled agent, no cloud runner.
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. Self-study Teacher Claude shares the link in the M4 close-out message. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.

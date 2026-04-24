@@ -41,7 +41,7 @@ You walk in this morning holding two runs of the same task. The un-packaged M4 s
 
 **Themes landing in this module:**
 - **Self-aware + grain of salt.** The whole module is conversation with Claude about Claude's output across two runs. The artefacts rule; self-reports don't. Phase 1 push-backs and the closing lecture's judge-built-from-diagnosis move surface it
-- **Compounding.** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it
+- **Compounding (Klaassen).** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it
 
 ## Debrief
 
@@ -65,7 +65,7 @@ Simple round. Trainer and group pick the exact form — pair exchange, whole-roo
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
-- **Session runtime:** 85–110 min. Story opener 5–7 / Exercise 40–50 / Arc-retrospective 15–20 / Debrief 10–15 / Closer 15–18 + buffer. Fits the AE101 2h slot.
+- **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. Both runs already live in the repo; M6 reads + authors + ships in-place. No training-dir state, no `module-N/` folders. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room. Self-study Teacher Claude reads it aloud at session open.

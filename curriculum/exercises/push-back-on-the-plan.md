@@ -64,6 +64,8 @@ The second read asks one question at a time. Some will feel trivial (*"which log
 
 Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
+> **Timebox check.** When the slot ends, we stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch tomorrow when you actually ship the work. The exercise teaches the move. You take the move home.
+
 ## Phase 5: Stop. See the design pattern. (10 min)
 
 **Don't execute the plan.** You've done the work of making it good; that's the exercise. Execution is next module's concern.

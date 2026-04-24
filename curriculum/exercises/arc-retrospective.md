@@ -8,6 +8,8 @@
 
 **Time:** 15–20 minutes.
 
+> **Quick timebox note.** The read across M1–M6 artefacts is wide and we keep the beat short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. We do not chase a perfect note. The arc is yours; the note is just the agent helping you see it.
+
 ---
 
 Open a new Claude Code session in your repo. A fresh session, so there's no scrollback coloring the read. Ask the agent to walk the artefacts you've authored and write the arc from them.

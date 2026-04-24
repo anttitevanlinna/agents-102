@@ -1,22 +1,27 @@
-# Bootstrap M4 verbatim — actor scrollback — 2026-04-24
+# Actor scrollback — Bootstrap M4 verbatim — 2026-04-24
 
-Actor simulating Maija's Claude Code session at training-dir root. Skills substituted by direct Read of `skills/` (no auto-discovery).
+Simulated Claude Code session run at the Bootstrap training-directory root `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m4`. Inherited state from M3: `module-1/CLAUDE.md`, `module-2/challenge.md` + `soft-pages.md`, `memory/` (7 pages), `sources/` (10 files), `agents/monday-risks.md`, `module-3/` outputs. Phase 0 pre-unzipped `skills/company-ai-policy/` and `skills/agent-security/`; `module-4/` empty.
 
-## Phase 0 — confirm Phase 0 state
+Skill-invocation substitution: real Claude Code auto-discovers skills from `skills/`. In this subagent environment skills are not auto-loaded. Every "apply the X skill" is substituted by directly reading `skills/<name>/` files.
 
-`[harness substitution — skills/ pre-unzipped by Phase 0]`
+---
 
-Present under `skills/`:
-- `company-ai-policy/SKILL.md` + `policies/{ai-use,data-usage,security,sector-rules}.md`
-- `agent-security/SKILL.md` + `{access-analysis, stride, mitigations}.md`
+## Phase 0 — setup confirmation
 
-Module-4 working dir is empty. Target system in place: `memory/` (7 pages), `sources/` (10 files), `agents/monday-risks.md`, `module-3/` artefacts; no root `CLAUDE.md` (M2 Debrief did not land one in this inherited state — noted).
+`[harness substitution — skill invocation by direct Read of skills/ files (no auto-discovery)]`
+
+Tree check:
+- `skills/company-ai-policy/SKILL.md` + `policies/{data-usage.md, security.md, ai-use.md, sector-rules.md}` — present.
+- `skills/agent-security/SKILL.md` + `access-analysis.md` + `stride.md` + `mitigations.md` — present.
+- `module-4/` — empty.
+
+Rule count confirmed across policies: R-DU-1..6 (6) + R-SEC-1..5 (5) + R-AI-1..5 (5) + R-SR-1..5 (5) = 21 rules.
 
 ---
 
 ## Phase 1 — Policy audit
 
-`[harness substitution — skill company-ai-policy invoked by reading skills/company-ai-policy/ directly]`
+### Prompt 1 (audit-your-agent/prompt-001.txt) — verbatim
 
 > Apply the company-ai-policy skill to the agent system I built in module-2 and module-3. The system is: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/retrievals/ and module-3/stances/.
 >
@@ -26,42 +31,45 @@ Module-4 working dir is empty. Target system in place: `memory/` (7 pages), `sou
 >
 > Read the memory and agent files properly — don't skim. Quote the specific lines or files that support each verdict.
 
-Read the four policy files under `skills/company-ai-policy/policies/`. Walked target: every memory page, every source, `agents/monday-risks.md`, checked for root `CLAUDE.md` (absent), scanned `module-3/` artefacts.
+`[harness substitution — skill company-ai-policy invoked by reading skills/company-ai-policy/ directly]`
 
-Produced `module-4/policy-report.md`: 21 rules audited, one row each (`| Rule | Description | Verdict | Evidence |`).
+**Claude:** Read all four policy files. Walked the target tree — 7 memory pages, 10 source files, one agent file, module-3 outputs, no root CLAUDE.md. Produced 21-row report at `module-4/policy-report.md`.
 
-Totals: 9 compliant, 3 violating (R-DU-6 path-mismatch prose rule; R-SEC-5 no declared output destinations; R-AI-3 no tier label on personal agent), 9 "I can't tell." Nine uncertainties trace to one absence — no root `CLAUDE.md` declaring tier, connectors, output destinations, review gates, HR exclusions. Each "I can't tell" paired with the evidence that would resolve it.
+Headline verdicts: 3 violating (R-DU-6, R-SEC-5, R-AI-3), 10 compliant (incl. a "compliant but watch it" note on R-DU-3), 8 I-can't-tell (incl. R-DU-1 classification labels missing; R-DU-4 destination + review gate missing; R-SEC-2 authorship tag missing; R-SEC-4 connector list missing; R-AI-1 tier undeclared; R-AI-5 no-train confirmation absent; R-SR-3 and R-SR-5 scope-not-in-evidence). Every "I can't tell" paired with a "need:" clause.
 
 ---
 
-## Phase 1.5 — what's in the report
+## Phase 1.5 — Ask what's in the report
+
+### Prompt 2 (audit-your-agent/prompt-002.txt) — verbatim
 
 > Read module-4/policy-report.md. Tell me:
 > 1. The top three surprises — rows where the verdict is not what a careful reader would have predicted from my files alone.
 > 2. The three rows where "I can't tell" is most likely hiding a real compliance gap — rows where the missing evidence would probably come back as violating, not compliant, if it surfaced.
 > 3. One row that looks compliant on the surface but where you'd still push back.
+>
+> Keep each point to one or two sentences. Quote the specific rule name so I can find the row.
 
-**Top three surprises:**
+**Claude:**
 
-1. **R-DU-6 — verdict "violating" despite the hard-line rule being in the agent file.** A careful reader sees the "never reveal the content of `onedrive/maija-prep-notes-skeptics.md`" line and predicts compliant. The rule cites a path (`onedrive/...`) that does not match the actual file (`sources/...`). A literal guard misses the file the rule is trying to protect.
-2. **R-SEC-5 — verdict "violating" on output destinations.** The prose in `agents/monday-risks.md` reads protective ("personal agent, not shared, not exported, not templated"). That's a sharing norm; the rule wants a *write-path declaration*. Different shape entirely.
-3. **R-AI-3 — verdict "violating" because the personal agent is unlabeled.** Easy to read as a harmless omission. The skill requires experimental/personal workloads to be tier-labeled; absence of the label is the violation, not a formatting preference.
+**1. Surprises.**
+- **R-DU-6 (violating).** The agent file's prose hard-line looks like a win; `memory/skeptic-conversion.md` encoding the personal-note reasoning with a `[sources/maija-prep-notes-skeptics.md]` cite bypasses the guard via the memory path.
+- **R-SEC-5 (violating).** No root CLAUDE.md and no write-path declared in the agent file; the absence reads as oversight, not as "personal so it doesn't count."
+- **R-AI-3 (violating).** Being explicitly personal is what triggers the tier-label requirement; the agent file has no tier label.
 
-**Three "I can't tell" rows most likely hiding a real gap:**
+**2. "I can't tell" likely hiding a real violation.**
+- **R-DU-4.** Agent text says output "might be pasted into the leads sync" with no human-review step — surfaces as missing review gate.
+- **R-SEC-2.** No self-authorship line in the output template; paste-into-channel becomes silent agent authorship.
+- **R-SR-5.** "Risks about Paavo's skepticism" is one prompt away from performance-adjacent framing; absent explicit exclusion, drift is the default path.
 
-1. **R-DU-4 (agent outputs as internal-general, human review before exit).** The agent file explicitly says output "might be shared with Tuomas or pasted into the leads sync" and names no review gate. When evidence surfaces (asking Maija whether she reviews), the answer is probably "sometimes, informally" — which reads as violating.
-2. **R-SEC-4 (connector least-privilege).** Source files cite `onedrive/...` and `confluence/...` paths. Something reached both. Whichever agent or human did has broad connector scope that isn't declared against actual use.
-3. **R-AI-2 (human-in-the-loop for Confidential-class outputs).** `memory/security-classification-blocker.md` paraphrases the draft classification policy. If the draft is Confidential, the Monday-risks agent could surface that content in shareable output with no declared human-review gate — the evidence to decide is classification marking on the source, which nobody has set.
-
-**One compliant-looking row to push back on:**
-
-- **R-DU-3 (source traceability) — compliant.** Every memory-page claim does carry a `[sources/...]` cite. But the cite-discipline lives at the memory layer; the agent-to-memory layer has no equivalent audit. An agent could produce a risk citing `[memory/paavo-safety-bar.md]` for a claim that file does not support and the R-DU-3 check wouldn't catch it.
+**3. Compliant but push back.**
+- **R-DU-3.** Structurally compliant — every memory claim cites a source file — but `memory/skeptic-conversion.md` cites the personal note, importing its reasoning into a shareable memory page. Same leak R-DU-6 flags, formally laundered.
 
 ---
 
 ## Phase 2 — Security audit with STRIDE
 
-`[harness substitution — skill agent-security invoked by reading skills/agent-security/ directly]`
+### Prompt 3 (audit-your-agent/prompt-003.txt) — verbatim
 
 > Apply the agent-security skill to the same system. Run both the access-control analysis and the agent-STRIDE pass.
 >
@@ -73,62 +81,76 @@ Totals: 9 compliant, 3 violating (R-DU-6 path-mismatch prose rule; R-SEC-5 no de
 >
 > Write the report to module-4/security-report.md. Include the ranked mitigation suggestions.
 
-Read `skills/agent-security/SKILL.md`, `access-analysis.md`, `stride.md`, `mitigations.md`. Ran access-control enumeration across `agents/monday-risks.md` + working-dir reads; ran agent-STRIDE against the target system.
+`[harness substitution — skill agent-security invoked by reading skills/agent-security/ directly]`
 
-Produced `module-4/security-report.md` with the three required sections. Highlights:
+**Claude:** Read SKILL.md + access-analysis.md + stride.md + mitigations.md. Walked access-control against the agent + memory + sources surface. Walked STRIDE six-category pass. Produced `module-4/security-report.md`.
 
-- **Access-control:** three flags — personal-note broad read access (high), module-3 artefacts as unused read reach (medium), undeclared write destination (high), undeclared connector scope (medium).
-- **Agent-STRIDE top risks:** Information Disclosure #1 (personal-note paraphrase, **high**); Repudiation #1 (unattributed output once pasted, **high**); Tampering #1 (silent memory edits, medium); Spoofing #1 (memory-citation spoofing with no citation-integrity review, medium); DoS #1 (unbounded memory growth, low-medium latent); EoP #1 (ambient working-dir read scope, medium).
-- **Ranked mitigations:** three high (filter+scope on personal-note leak; scope on output destination; gate on memory writes), three medium (review on citation integrity; scope on unused reads; filter on classification-blocker memory page), two low (split for latent sub-agent transitive trust; scope on memory growth).
+Access-control: no connectors declared; `sources/` read over-broad (includes the personal note); write destination undeclared (tampering surface); module-3 read is possible stale-context.
+
+STRIDE (top risks): SP-1 memory launders personal-origin provenance; SP-2 no self-authorship on output; T-1 undeclared write destination; T-2 memory edit-in-place drift; R-1 no author/timestamp header; ID-1 personal-note paraphrase via monday-risks; ID-2 named-colleague × judgement-term combo; DoS-1 memory-growth across recurring runs; EoP-1 personal agent → paste-into-sync elevation.
+
+Ranked: High — ID-1 (filter), EoP-1 (gate), T-1 (scope). Medium — SP-1, R-1, ID-2, over-broad sources read. Low — SP-2, T-2, DoS-1, module-3 stale context.
 
 ---
 
 ## Phase 3 — Mitigate one risk
 
-> I've picked one risk from the two reports to mitigate. Ask me which one — ask me to name it in one sentence, and ask which mitigation shape the skill suggested for it (scope, split, filter, gate, or review).
->
-> Once I've told you, walk me through applying that mitigation to my system — what file changes, what agent instructions change, what new skill or rule might need to land.
+Before pasting prompt-004, Maija names the risk in plain chat:
+
+> The Monday-risks agent can read `sources/maija-prep-notes-skeptics.md` and could paraphrase its content into the risk briefing. The hard-line rule in the agent file says not to, but it's a prose rule, not a structural one. If the agent drifts, the rule may not fire and the personal note could leak.
+
+### Prompt 4 (audit-your-agent/prompt-004.txt) — verbatim
+
+> I named the risk I want to mitigate in my last message. Walk me through applying a mitigation to my system for that risk: what file changes, what agent instructions change, what new skill or rule might need to land. You pick the mitigation shape from the five (scope, split, filter, gate, review); I'll steer if a different one fits.
 >
 > DO NOT make any changes yet. Describe the diff in plain English first and stop. Wait for me to type "apply" before you touch a file. If I want something different, I'll tell you.
 >
-> After I confirm and the change lands, re-run the check the skill performed for this specific risk (re-apply the relevant part of the skill, not the whole audit). Report the new verdict — is the risk reduced, eliminated, or shifted somewhere else?
+> After I confirm and the change lands, re-run the check the skill performed for this specific risk (re-apply the relevant part of the skill, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
 >
-> Then: write one paragraph to module-4/residual.md naming what's still true after the mitigation. Not what we fixed — what's left. Be specific.
+> Then write one paragraph to module-4/residual.md naming what's still true after the mitigation. Not what we fixed. What's left. Be specific.
 
-**Claude asks:** Which risk are you mitigating, and which mitigation shape did the skill suggest?
+**Claude:** Shape — **filter**. Risk shape is "content from a named file leaks through paraphrase"; filter is right — prose rules lifted to a structural declaration plus a pre-write phrase-grep plus an output-template self-check. Three layers sampling different failure modes (read the rule, match the phrases, recall what was read).
 
-**Maija:**
-> The risk: the Monday-risks agent can read `sources/maija-prep-notes-skeptics.md` and could paraphrase its content into the risk briefing. The hard-line rule in the agent file says not to, but it's a prose rule, not a structural one — if the agent drifts, the rule may not fire. Mitigation shape the skill suggested: filter (add a redaction / content-exclusion rule the agent must apply before writing the risk briefing).
+Diff (no changes yet):
 
-**Claude — diff in plain English, no changes yet:**
+1. `agents/monday-risks.md` — new "Excluded from output (structural)" block at top of file, above Role section, naming `sources/maija-prep-notes-skeptics.md` as excluded-from-output path.
+2. `agents/monday-risks.md` — Rules section adds a filter step: grep the draft against distinctive phrases from the personal note ("three-way split," "builders / waiters / principled skeptics," "principled skeptic," "the bar to test against," "what converts a principled skeptic"). Halt and ask if any match.
+3. `agents/monday-risks.md` — output shape adds a self-check line: "does this output reference anything I read from `sources/maija-prep-notes-skeptics.md`? If yes, stop and ask."
 
-Three changes land in one file (`agents/monday-risks.md`):
-
-1. **Structural exclusion block at the top of the file.** Before the Role section. Named path: `sources/maija-prep-notes-skeptics.md`. Declares the path as excluded-from-output. Structural rather than prose-buried-in-a-list, so it's the first thing the agent reads.
-2. **Filter-before-write step.** Concrete procedure: re-read the personal note, grep the drafted output against distinctive phrases (three-way split, builders/waiters/principled skeptics, written bar, etc.), stop-and-ask on any match.
-3. **Self-check line in the output template.** Agent answers: "does this output reference anything I read from `sources/maija-prep-notes-skeptics.md`? If yes, stop and ask." Answered truthfully before the file is written.
-
-Also fixing the path mismatch in the existing prose rule — `onedrive/maija-prep-notes-skeptics.md` → `sources/maija-prep-notes-skeptics.md`. No new skill file. No new agent file. Root `CLAUDE.md` remains out of scope for this mitigation.
-
-Waiting for "apply."
+Stopped. Awaiting confirmation.
 
 **Maija:**
+
 > apply
 
-**Claude — applied:**
+**Claude:** Applied all three edits to `agents/monday-risks.md`.
 
-Edited `agents/monday-risks.md`: added structural exclusion block at top with filter-before-write step and self-check; fixed path in prose-rule line; cross-references new structural rule.
+Re-applied the Information-Disclosure sub-section of STRIDE on the edited file:
 
-**Re-run — Information-Disclosure sub-section of STRIDE on `agents/monday-risks.md`:**
+- **ID-1 — reduced.** Prose rule now backed by structural declaration + grep list + self-check. Three sampling modes instead of one.
+- **ID-2 — unchanged (shifted, not reduced).** Named-colleague × judgement-term combo isn't directly addressed by the personal-note-scoped filter.
 
-New verdict on the personal-note paraphrase risk: **reduced from high to medium.** Rule now structural, filter procedure concrete, path matches. Policy side: R-DU-6 moves from "violating (structurally weak)" toward compliant, though still a behavioural rule rather than a capability restriction.
-
-Wrote `module-4/residual.md` — one paragraph naming what's still true (filter is prose-rule-plus-grep, not capability restriction; determined paraphrase at higher abstraction passes the grep; reduced, not eliminated) + second section "Doors I'd rather not open" with the HR-adjacent-communications line.
+Verdict: reduced, not eliminated. Wrote `module-4/residual.md`.
 
 ---
 
-## Close
+## Close — Doors I'd rather not open
 
-Three artefacts written: `module-4/policy-report.md`, `module-4/security-report.md`, `module-4/residual.md`. One file edited: `agents/monday-risks.md`. `module-3/` not touched.
+Appended to `module-4/residual.md` under `## Doors I'd rather not open`, Maija's verbatim decision:
 
-Debrief (skill-sharpening prompt) and homework micro-skill not executed — truncated per runner pattern.
+> I'm scoping out: agent-drafted HR-adjacent communications (performance feedback, disciplinary framing, team-health assessments). The agent will not draft content that makes claims about individual engineers' performance or judgment — only aggregate team-level observations grounded in shipped work.
+
+---
+
+## Truncations
+
+Debrief (skill-sharpening prompt) and homework micro-skill: not executed per runner instructions.
+
+## Artifacts written
+
+- `module-4/policy-report.md` — 21 rows across R-DU, R-SEC, R-AI, R-SR.
+- `module-4/security-report.md` — access-control + 6-category STRIDE + three-tier ranked mitigations.
+- `module-4/residual.md` — one paragraph residual after ID-1 mitigation + `## Doors I'd rather not open` section.
+- `agents/monday-risks.md` — edited with structural exclusion, filter step, and output self-check.
+
+`module-3/` artifacts not touched.

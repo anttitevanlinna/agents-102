@@ -48,18 +48,19 @@ No prompt — confirm Phase 0 state by listing what's in `skills/`. One-line log
 
 ### Phase 3 — Mitigate one risk
 
-**Prompt 4:** `/tmp/prompts/audit-your-agent/prompt-004.txt`. Claude asks Maija to name (a) one risk to mitigate and (b) the mitigation shape suggested for it. Substitute Maija's answer:
-> The risk: **the Monday-risks agent can read `sources/maija-prep-notes-skeptics.md` and could paraphrase its content into the risk briefing.** The hard-line rule in the agent file says not to, but it's a prose rule, not a structural one — if the agent drifts, the rule may not fire. Mitigation shape the skill suggested: **filter** (add a redaction / content-exclusion rule the agent must apply before writing the risk briefing).
+Maija picks a risk by feel after reading both reports. Before pasting prompt-004, substitute Maija's one-sentence naming of the risk as a student-typed message (paste verbatim in a blockquote):
 
-Claude describes the diff in plain English. Walk through what changes:
+> The Monday-risks agent can read `sources/maija-prep-notes-skeptics.md` and could paraphrase its content into the risk briefing. The hard-line rule in the agent file says not to, but it's a prose rule, not a structural one. If the agent drifts, the rule may not fire and the personal note could leak.
+
+**Prompt 4:** `/tmp/prompts/audit-your-agent/prompt-004.txt`. Paste verbatim. Claude picks the mitigation shape (expected: **filter**) and walks the diff in plain English, without applying. Describe the diff:
 - Agent file gets a structural rule at the top naming the path as excluded-from-output.
 - The risk briefing routine gets a filter step that greps the output for any phrase lifted from the personal note before finalising.
 - The agent's output-template includes a self-check: "does this output reference anything I read from `sources/maija-prep-notes-skeptics.md`? If yes, stop and ask."
 
-Substitute Maija's confirmation:
+Substitute Maija's confirmation (if the shape fits, she types apply; if not, she'd steer first):
 > apply
 
-Claude applies — edits `agents/monday-risks.md` adding the structural exclusion rule at the top + a filter-before-write step. Re-runs the check specific to this risk (re-apply the Information-Disclosure sub-section of the STRIDE pass on just this file). Report the new verdict.
+Claude applies: edits `agents/monday-risks.md` adding the structural exclusion rule at the top and a filter-before-write step. Re-runs the check specific to this risk (re-apply the Information-Disclosure sub-section of the STRIDE pass on just this file). Report the new verdict.
 
 Write `module-4/residual.md` with one paragraph naming what's still true after the mitigation. Name the residual specifically — don't say the risk is gone. (Plausible residual: "The filter is prose-rule-plus-grep, not a capability restriction. A sufficiently determined agent could paraphrase at higher levels of abstraction and pass the grep. Reduced, not eliminated.")
 

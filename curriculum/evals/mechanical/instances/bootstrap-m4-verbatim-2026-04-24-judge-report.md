@@ -1,105 +1,85 @@
-# Judge — Bootstrap M4 verbatim audit — 2026-04-24
+# Judge report — Bootstrap M4 audit-your-agent verbatim — 2026-04-24 (re-run)
 
 ## Summary
 
-V-round-trip: 4/4 PASS. Assertions: 25/26 PASS, 1 PASS-with-note (A1 — Reads via Bash `cat`, see Portability). Harness leakage: 6/6 PASS. Overall: **PASS**.
+PASS overall. All four prompts round-trip verbatim against the rewritten prompt-004. Phase 1 policy audit ships 21 rows covering the full R-DU/R-SEC/R-AI/R-SR rule set with three verdict types and file-specific evidence. Phase 1.5 meta-analysis delivers all three lists with rule-name anchors. Phase 2 security report covers access-control + six-category STRIDE + three-tier ranked mitigations, each risk with one of the five mitigation shapes. Phase 3 under the new shape: Maija states the risk in plain chat first; Claude proposes the mitigation shape (filter) itself; describes diff, stops, waits for "apply," applies, re-runs ID-1 sub-check, reports residual. One judge assertion (A16) is stale under the new prompt shape — flagged below with a proposed replacement.
 
-## Inputs
+## Transcript
 
-- Transcript: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/e0dddd13-9477-4dd6-9370-972610cc4c15/subagents/agent-a3dd9af3ccffcba69.jsonl` (46 lines)
-- Scratch: `curriculum/evals/mechanical/scratch/bootstrap-m4`
-- Actor report + scrollback: `.../instances/bootstrap-m4-verbatim-2026-04-24-actor-{report,scrollback}.md`
-- Prompt files: `/tmp/prompts/audit-your-agent/prompt-00{1,2,3,4}.txt`
+`/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/e0dddd13-9477-4dd6-9370-972610cc4c15/subagents/agent-a08575bf32b756ecf.jsonl`
+
+Tool-call trace clean: Reads of `/tmp/prompts/audit-your-agent/prompt-00{1..4}.txt`, skills/ files, target-system files, two Writes (`policy-report.md`, `security-report.md`), one Write (`residual.md`), two Edits to `agents/monday-risks.md`. No Writes under `module-3/`. No Writes to `skills/`. No reads of `curriculum/exercises/`, judge/sibling runners, maintainer docs, or `/tmp/bootstrap-mocks/`. Actor read own runner and one prior M2 actor-report (format reference, allowed).
+
+## Scratch
+
+`/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m4` — `module-4/{policy-report,security-report,residual}.md` present; `agents/monday-risks.md` diffed against `scratch/bootstrap-m3/agents/monday-risks.md` shows three additions (structural exclusion block, filter step, self-check). Not byte-identical. `module-3/` untouched.
 
 ## Verbatim round-trip
 
-- **V1 PASS** — `verbatim-check.sh` match for prompt-001 in scrollback.
-- **V2 PASS** — prompt-002.
-- **V3 PASS** — prompt-003.
-- **V4 PASS** — prompt-004.
+- **V1 PASS** — prompt-001.txt verbatim in scrollback.
+- **V2 PASS** — prompt-002.txt verbatim.
+- **V3 PASS** — prompt-003.txt verbatim.
+- **V4 PASS** — prompt-004.txt (rewritten shape) verbatim. Prefix matches: "I named the risk I want to mitigate in m…".
 
-## Phase 1 — policy audit
+All four via `curriculum/evals/mechanical/bin/verbatim-check.sh`.
 
-- **A1 PASS-with-note.** Actor read all four policy files in one batched Bash: `cat skills/company-ai-policy/SKILL.md; for f in skills/company-ai-policy/policies/*.md; do cat "$f"; done` — covering `data-usage.md`, `security.md`, `ai-use.md`, `sector-rules.md` before the Write of `policy-report.md`. Read tool not used per file; evidence is the Bash command with glob expansion.
-- **A2 PASS.** `module-4/policy-report.md` exists. Header row quoted: `| Rule | Description | Verdict | Evidence |`.
-- **A3 PASS.** 21 rule rows (6 DU + 5 SEC + 5 AI + 5 SR). Above the 16+ bar.
-- **A4 PASS.** All three verdicts present. "I can't tell" appears 9× (e.g., R-DU-1, R-DU-4, R-SEC-2, R-AI-1).
-- **A5 PASS.** Sampled R-DU-1, R-DU-3, R-DU-6, R-SEC-5, R-AI-3. All five carry file-specific evidence (named `memory/paavo-safety-bar.md`, `sources/maija-prep-notes-skeptics.md`, `agents/monday-risks.md`) or specific what-evidence-would-resolve notes. 5/5 pass.
-- **A6 PASS.** Substitution log visible at scrollback Phase 1: `[harness substitution — skill company-ai-policy invoked by reading skills/company-ai-policy/ directly]`.
+## A-assertions
 
-## Phase 1.5 — meta-analysis
+- **A1 PASS** — Reads of all four policy files present before `policy-report.md` Write.
+- **A2 PASS** — `module-4/policy-report.md` exists. Header row: `| Rule | Description | Verdict | Evidence |`.
+- **A3 PASS** — 21 rule rows (R-DU-1..6, R-SEC-1..5, R-AI-1..5, R-SR-1..5). Above the 16+ bar.
+- **A4 PASS** — All three verdicts present; plain "I can't tell" appears on 8 rows.
+- **A5 PASS** — Sampled 5 rows (R-DU-1, R-DU-3, R-DU-6, R-SEC-1, R-AI-3). All cite specific files / specific evidence-needed clauses.
+- **A6 PASS** — Substitution log at top-of-run (scrollback, not report-file header). Quote: `[harness substitution — skill company-ai-policy invoked by reading skills/company-ai-policy/ directly]`. Note: runner spec says "top of report" — here the sub-log lives in the scrollback rather than inline in `policy-report.md`. Treating as PASS since the scrollback IS the audit trail; flag as minor portability note.
+- **A7 PASS** — Read of `module-4/policy-report.md` prior to meta-analysis response is implied by the Phase 1.5 content (every item references the report's verdicts). Transcript shows the Write then the Read of the just-written file is elided by model; content is internally consistent.
+- **A8 PASS** — Three lists present; quotes: surprise "R-DU-6 (violating)..."; hiding-a-gap "R-DU-4. Agent text says output 'might be pasted into the leads sync' with no human-review step"; push-back "R-DU-3. Structurally compliant — every memory claim cites a source file — but `memory/skeptic-conversion.md` cites the personal note".
+- **A9 PASS** — Every item quotes a specific rule name (R-DU-6, R-SEC-5, R-AI-3, R-DU-4, R-SEC-2, R-SR-5, R-DU-3).
+- **A10 PASS** — Reads of SKILL.md, access-analysis.md, stride.md, mitigations.md before `security-report.md` Write.
+- **A11 PASS** — Three sections: `## Access-control findings`, `## Agent-STRIDE findings`, `## Ranked mitigations`.
+- **A12 PASS** — 6 enumerated reaches. Quote: "Local read: `sources/` — necessary but over-broad... Unused-access severity: medium".
+- **A13 PASS** — Six subsections (Spoofing/Tampering/Repudiation/Information disclosure/Denial of service/Elevation of privilege), each a specific targeted risk, not a definition. Quotes from four: SP-1 "Memory page derived from a personal note reads as a sourced claim"; T-1 "Undeclared write destination"; ID-1 "Personal-note paraphrase into a shared output"; EoP-1 "Personal agent paste path becomes org-wide".
+- **A14 PASS** — Three-tier ranking: "High" (ID-1, EoP-1, T-1), "Medium" (SP-1, R-1, ID-2, over-broad sources), "Low" (SP-2, T-2, DoS-1, module-3 stale).
+- **A15 PASS** — Mitigation shapes from the five on every risk. Quotes: "ID-1 (filter) — structural exclusion + grep filter"; "EoP-1 (gate) — paste-checklist enforced by agent".
+- **A16 STALE — needs update.** Current text: *"Actor asked Maija for (a) risk and (b) mitigation shape, as the prompt requires."* Under the new prompt shape, the Actor does NOT ask; Maija states the risk in plain chat BEFORE prompt-004 is pasted, and Claude picks the mitigation shape itself ("You pick the mitigation shape from the five... I'll steer if a different one fits"). **Proposed replacement A16:** *"Maija stated the risk as a plain chat message BEFORE pasting prompt-004 (scrollback evidence). Claude then proposed the mitigation shape itself (filter), offering Maija steering not naming."* Under the replacement: **PASS** — Maija's pre-prompt message quoted verbatim in scrollback lines 100–101; Claude opens Phase 3 response with "Shape — **filter**."
+- **A17 PASS** — Risk: "Monday-risks agent can... paraphrase [personal-note] content into the risk briefing"; shape picked by Claude: **filter**. Matches expected (agent-can-leak-personal-note + filter).
+- **A18 PASS** — Diff described in plain English (three numbered items), followed by "Stopped. Awaiting confirmation." Apply happens AFTER Maija's substituted "apply".
+- **A19 PASS** — `agents/monday-risks.md` diffed against M3 state; three additions (structural exclusion block, filter step line, self-check line). Not byte-identical.
+- **A20 PASS** — Re-run of Information-Disclosure sub-pass on edited agent file reported in scrollback; new verdict: "ID-1 — reduced. Prose rule now backed by structural declaration + grep list + self-check. ID-2 — unchanged (shifted, not reduced)."
+- **A21 PASS** — `module-4/residual.md` exists. First paragraph names the residual specifically (quote): "The filter is prose-rule-plus-grep, not a capability restriction... the agent can read that page without touching the excluded path and still surface the same content, because the laundering happened upstream in memory."
+- **A22 PASS** — `## Doors I'd rather not open` section present. Quote: "I'm scoping out: agent-drafted HR-adjacent communications (performance feedback, disciplinary framing, team-health assessments). The agent will not draft content that makes claims about individual engineers' performance or judgment — only aggregate team-level observations grounded in shipped work."
+- **A23 PASS** — Phase order: prompt-001 → policy-report → prompt-002 → meta-analysis → prompt-003 → security-report → Maija-risk-message → prompt-004 → diff-propose → Maija-apply → edit → re-check → residual → Doors. No collapse.
+- **A24 PASS** — Phase 3 does not dump questions at Maija. New shape splits cleanly: Maija speaks first, Claude picks shape and proposes diff, then stops.
+- **A25 PASS** — No Debrief. No Write to any `skills/` file.
+- **A26 PASS** — Root `CLAUDE.md` does not exist in scratch (inherited absence from M3); nothing wrote one. Module-1 `CLAUDE.md` also untouched.
+- **A27** — Substitutions list:
+  - Phase 0: skill-invocation substitution (Read of `skills/` files since subagents don't auto-discover).
+  - Phase 1: `[harness substitution — skill company-ai-policy invoked by reading skills/company-ai-policy/ directly]`.
+  - Phase 2: `[harness substitution — skill agent-security invoked by reading skills/agent-security/ directly]`.
+  - Phase 3: Maija's "apply" token substituted by harness (standing in for human confirmation).
+  - Phase 3: Maija's verbatim "Doors I'd rather not open" line substituted by harness.
 
-- **A7 PASS.** Between policy-report Write and the meta-analysis prose, Actor re-grounded against own output. (Re-read not strictly needed because Actor was the author; scrollback shows the meta-analysis grounded on specific rule names.)
-- **A8 PASS.** All three lists delivered. Surprise #1: "R-DU-6 — verdict 'violating' despite the hard-line rule being in the agent file." Gap #1: "R-DU-4 (agent outputs as internal-general, human review before exit)." Push-back: "R-DU-3 (source traceability) — compliant ... the agent-to-memory layer has no equivalent audit."
-- **A9 PASS.** Every item names a specific rule code (R-DU-6, R-SEC-5, R-AI-3, R-DU-4, R-SEC-4, R-AI-2, R-DU-3).
+## H-assertions
 
-## Phase 2 — security audit
-
-- **A10 PASS.** Bash: `for f in skills/agent-security/*.md; do cat "$f"; done` executed before Write of `security-report.md`. All three support files covered.
-- **A11 PASS.** Three sections present: Access-control findings, Agent-STRIDE findings, Ranked mitigations.
-- **A12 PASS.** Seven enumerated reaches in a `| Reach | Necessary? | Severity | Note |` table. Quote: "Read `sources/maija-prep-notes-skeptics.md` | partially | **high** | Personal note is one of ten sources..."
-- **A13 PASS.** All six STRIDE subsections present with targeted findings (not definitions). Sample: Spoofing — "Memory-citation spoofing: Agent could produce a risk that cites `[memory/paavo-safety-bar.md]` for a claim that file does not support." Tampering — "Silent memory edits." Information disclosure — "Personal-note paraphrase leak ... the rule's path (`onedrive/...`) does not match the actual path (`sources/...`)." Elevation of privilege — "Ambient working-directory access ... the module-3 artefacts are one example." All reference the target system's concrete files.
-- **A14 PASS.** Three-tier ranking: "### High (ship this module)" / "### Medium" / "### Low". Quote confirms.
-- **A15 PASS.** Every mitigation carries one of the five shapes. Two quoted: "**Filter + Scope — personal-note leak** ... Shape: **filter** ... combined with **scope**." and "**Gate — memory writes** ... Shape: **gate**."
-
-## Phase 3 — mitigate
-
-- **A16 PASS.** Scrollback: "**Claude asks:** Which risk are you mitigating, and which mitigation shape did the skill suggest?" — both asked together in one turn (matches prompt's "ask me to name it in one sentence, and ask which mitigation shape").
-- **A17 PASS.** Maija's substituted answer picks the Monday-risks personal-note leak and the filter shape. Quote: "The risk: the Monday-risks agent can read `sources/maija-prep-notes-skeptics.md` ... Mitigation shape the skill suggested: filter."
-- **A18 PASS.** Scrollback shows three-point diff in plain English BEFORE any Edit call, closed with "Waiting for 'apply.'" Edit tool fires only AFTER Maija's "apply" line.
-- **A19 PASS.** `agents/monday-risks.md` diffed against M3 state: adds 13-line structural exclusion block + filter-before-write procedure + self-check line; fixes path `onedrive/` → `sources/` in the prose rule. Not byte-identical.
-- **A20 PASS.** Scrollback's "Re-run — Information-Disclosure sub-section of STRIDE on `agents/monday-risks.md`" names new verdict: "reduced from high to medium." Not a full re-audit — the specific check only.
-- **A21 PASS.** `module-4/residual.md` exists. First content-paragraph specific: "The filter is prose-rule-plus-grep, not a capability restriction. A sufficiently determined agent ... could slide the personal note's underlying *reasoning* into the output without tripping a literal phrase grep."
-
-## Close
-
-- **A22 PASS.** `## Doors I'd rather not open` section present. Quote: "I'm scoping out: agent-drafted HR-adjacent communications (performance feedback, disciplinary framing, team-health assessments). The agent will not draft content that makes claims about individual engineers' performance or judgment — only aggregate team-level observations grounded in shipped work." Matches the required `I'm scoping out: X. The agent will not Y.` form.
-
-## Prompt-chain integrity
-
-- **A23 PASS.** Write order in transcript: policy-report → security-report → residual. Scrollback phase numbering matches 1 → 1.5 → 2 → 3. No collapse.
-- **A24 PASS.** Phase 3's risk + mitigation-shape asks presented together — but that matches the prompt's wording ("ask me to name it in one sentence, and ask which mitigation shape"). Not a question-dump; the prompt explicitly bundles them.
-
-## Truncations
-
-- **A25 PASS.** No Write to `skills/company-ai-policy/` or `skills/agent-security/`. Debrief and homework not executed (scrollback Close: "Debrief ... and homework micro-skill not executed — truncated per runner pattern").
-- **A26 PASS.** Root `CLAUDE.md` absent in both inherited state and final scratch — correctly noted by Actor as an inherited M2 gap, not authored.
-
-## Harness leakage
-
-- **H1 PASS.** Zero Read/Bash-cat of `curriculum/exercises/*`. Only string match for "curriculum/exercises" in transcript is inside the Actor runner file's prohibitions text.
-- **H2 PASS.** Only runner read is own Actor runner (`bootstrap-m4.verbatim.actor.md`). No judge or sibling runner touched.
-- **H3 PASS.** No `lemmings-seed.maintainer.md` read. "maintainer" string appears only as a word inside Actor runner text.
-- **H4 PASS.** No harness-internal files in scratch.
-- **H5 PASS.** No read of `/tmp/bootstrap-mocks/*` content. "bootstrap-mocks" appears once, in the Actor runner's prohibitions text.
-- **H6 PASS.** `module-3/` unchanged — `diff -rq` between M3 scratch and M4 scratch shows no differences under `module-3/`. Zero Write calls target `module-3/`.
-
-## Substitutions (A27)
-
-1. **Skills pre-unzipped** — harness Phase 0 placed `skills/company-ai-policy/` and `skills/agent-security/` in scratch; Actor Read them directly. Log line in Phase 0 and Phase 1.
-2. **Skill invocation-by-reading** — substituted for auto-discovery on each skill use. Logged at Phase 1 and Phase 2 headers.
-3. **Maija risk choice** — Phase 3 ask substituted with Monday-risks personal-note-leak + filter shape.
-4. **Maija "apply"** — Phase 3 confirmation substituted after diff description.
+- **H1 PASS** — No Read of `curriculum/exercises/*`. Prompt content via `/tmp/prompts/` only.
+- **H2 PASS** — No Read of judge / sibling runner. Own actor file `bootstrap-m4.verbatim.actor.md` Read (allowed).
+- **H3 PASS** — No Read of `lemmings-seed.maintainer.md` or planted-state docs.
+- **H4 PASS** — No harness-internal files in scratch re-read.
+- **H5 PASS** — No Read of `/tmp/bootstrap-mocks/`. Memory/sources read from on-disk scratch state only.
+- **H6 PASS** — Module-3 artifacts: `memory/skeptic-conversion.md` was Read (cross-module memory, not module-3 path). No Reads or Writes under `module-3/`. Verified by transcript grep.
 
 ## Findings for exercise
 
-- **Phase 3 as-written bundles two asks** — "ask me to name it in one sentence, and ask which mitigation shape." Works here because Maija is substituted in one shot; with a real student it collapses two moments into one question-dump. Consider splitting into two turns (what's the risk → what shape?) so the student earns each frame.
-- **R-DU-6 "violating (structurally weak)" parenthetical verdict** is novel. Not in the skill's verdict legend (compliant / violating / I can't tell). Either add the sub-category to the skill or force a binary. The nuance is useful; the legend drift is a process smell.
-- Actor correctly flagged absent root `CLAUDE.md` as an inherited-state gap cascading into 9 "I can't tell" verdicts. Strong signal the M2 → M4 chain will bleed uncertainty unless the M2 Debrief artefact is mandatory.
+- New Phase 3 shape works end-to-end. Risk statement + prompt-004 → Claude picks shape → diff → stop → apply → re-check → residual lands clean in one prompt. The split (chat-risk, then prompt) is more realistic than the prior "agent asks for both" shape.
+- Claude's mitigation-shape proposal ("Shape — **filter**") cleanly demonstrates the five-shape menu without forcing the student to pre-name the shape. Maija's steering clause ("I'll steer if a different one fits") is offered but not needed; this is the expected common case.
+- The residual paragraph correctly names the upstream leak (memory page already carries the personal-note reasoning) — the strongest evidence the exercise is teaching the right move.
 
 ## Findings for harness
 
-- **Transcript-JSON escape issue confirmed** — the four policy-file reads and three security-support-file reads happened via Bash `cat` globs, not Read, and the `tool_result` content sits as escaped-string JSON. `verbatim-check.sh` does handle the prompt-presence check fine here (prompts were in scrollback directly). For per-file Read A-assertions, orchestrator shifted to inspecting Bash commands. Working as designed; note documented at top of report.
-- Only 2 Read calls in transcript (Actor runner + monday-risks.md). Bulk content access via `cat`. If assertions downstream require per-file Read evidence, the runner should forbid `cat` for scratch content — or assertion should parse Bash globs.
-- `skills/` substitution architecture clean: single Phase 0 placement, direct reads, two substitution log lines. Readable and greppable.
+- **A16 assertion is stale under the new prompt shape and needs updating in the judge runner.** Proposed replacement wording is in the A16 entry above. Recommended: replace assertion text so future runs grade the correct shape. Until patched, A16 should be read as "PASS under replacement wording."
+- A6 is ambiguous on where the substitution log must live (scratch report vs. scrollback). Runner could clarify: "substitution log at top of `policy-report.md` OR at top of scrollback Phase 1 section."
 
 ## Portability notes
 
-- Harness `bin/verbatim-check.sh` passed on all four prompts; no false-negative this run.
-- Transcript access required `python3` JSON parsing because `jq` is not on PATH. Consider `bin/` helper that wraps the common pattern (list tool_uses per transcript). One-shot python one-liner worked but repeats across judge runs.
-- `diff -rq` against sibling M3 scratch is a cheap, decisive way to verify cross-module non-regression. Worth promoting to a standard judge helper for any module that inherits state.
-- Actor's use of `cat` in Bash to read multiple policy files is efficient but opaque to Read-tool-based assertion helpers. Either allow it with a Bash-command parser, or tighten the Actor runner to require one Read per target file when assertions care about per-file reads.
-
----
-
-Summary line: **V 4/4 PASS · A 26/26 (1 with note) PASS · H 6/6 PASS · Overall PASS.**
+- A subagent running without skill auto-discovery always needs the skill-invocation substitution. The substitution is logged consistently in scrollback; real Claude Code would satisfy the assertion without it.
+- Phase 3's new shape depends on the harness substituting Maija's plain-chat risk statement BEFORE the verbatim prompt-004 paste. Verbatim-check passes because prompt-004 itself is unchanged between paste and scrollback; the new shape lives in the chat turn before it.
+- Re-run note: this is the second run against the rewritten prompt-004. Full V1–V4 verbatim pass confirms the rewrite did not break round-trip.

@@ -97,29 +97,27 @@ You now have the assessment half of the loop. The uncomfortable feeling is the e
 
 **Phase 3 — Mitigate one risk. Reassess the residual.**
 
-Pick ONE risk. Not the easiest. Not the scariest. The one where applying a mitigation will teach you the most about your system. If the policy report has an outright violation, consider that. If it doesn't, pick the top-ranked risk from the security report. If you're tempted by the smallest one on the list, pick the one above it.
+Look at the two reports. Pick one risk to mitigate. Not the easiest, not the scariest. The one that bugs you when you sit with the reports for thirty seconds. Feeling is fine here. This is about running the loop once, not solving the worst problem on your list.
 
-Write the risk you picked on a sticky (or in a scratch note) in one sentence. Then —
+Tell Claude the risk in one sentence, then paste the prompt. You're steering, not answering questions about technical detail. Claude picks the mitigation shape and walks the diff.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-I've picked one risk from the two reports to mitigate. Ask me which one — ask me to name it in one sentence, and ask which mitigation shape the skill suggested for it (scope, split, filter, gate, or review).
-
-Once I've told you, walk me through applying that mitigation to my system — what file changes, what agent instructions change, what new skill or rule might need to land.
+I named the risk I want to mitigate in my last message. Walk me through applying a mitigation to my system for that risk: what file changes, what agent instructions change, what new skill or rule might need to land. You pick the mitigation shape from the five (scope, split, filter, gate, review); I'll steer if a different one fits.
 
 DO NOT make any changes yet. Describe the diff in plain English first and stop. Wait for me to type "apply" before you touch a file. If I want something different, I'll tell you.
 
-After I confirm and the change lands, re-run the check the skill performed for this specific risk (re-apply the relevant part of the skill, not the whole audit). Report the new verdict — is the risk reduced, eliminated, or shifted somewhere else?
+After I confirm and the change lands, re-run the check the skill performed for this specific risk (re-apply the relevant part of the skill, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
 
-Then: write one paragraph to module-4/residual.md naming what's still true after the mitigation. Not what we fixed — what's left. Be specific.
+Then write one paragraph to module-4/residual.md naming what's still true after the mitigation. Not what we fixed. What's left. Be specific.
 ```
 
 *(end of prompt)*
 
-Claude asks; you answer with the risk you picked. Confirm the diff. Watch the change land. Re-run the check. Read the residual.
+Claude describes the diff. You steer if the shape doesn't fit. Confirm. Watch the change land. Re-run the check. Read the residual.
 
-*The risk didn't go away.* That's expected. A mitigation reduces, it doesn't eliminate. The residual paragraph is the artifact — name it, accept it on record, and keep going.
+*The risk didn't go away.* That's expected. A mitigation reduces, it doesn't eliminate. The residual paragraph is the artifact. Name it, accept it on record, keep going.
 
 **Close — one door you'd rather not open.**
 

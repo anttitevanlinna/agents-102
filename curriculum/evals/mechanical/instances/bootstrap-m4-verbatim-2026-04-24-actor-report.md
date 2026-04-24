@@ -4,7 +4,7 @@
 done
 
 ## Scratch
-curriculum/evals/mechanical/scratch/bootstrap-m4
+/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m4
 
 ## Prompts executed
 1. Phase 1 prompt-001 (policy audit)
@@ -13,18 +13,17 @@ curriculum/evals/mechanical/scratch/bootstrap-m4
 4. Phase 3 prompt-004 (mitigate + residual)
 
 ## Artifacts written
-- module-4/policy-report.md: 21 rules, one row each (header + separator + 21 = 23 table rows); totals 9 compliant / 3 violating / 9 "I can't tell"
-- module-4/security-report.md: access-control table + six agent-STRIDE sub-sections with 1-2 named risks each + three-tier ranked mitigations (3 high / 3 medium / 2 low)
-- module-4/residual.md: re-run note + one residual paragraph + "Doors I'd rather not open" section
-- agents/monday-risks.md: edited (structural exclusion block at top + filter-before-write step + self-check line; prose-rule path corrected `onedrive/...` → `sources/...`)
+- module-4/policy-report.md: 21 rows (6 DU + 5 SEC + 5 AI + 5 SR)
+- module-4/security-report.md: access-control findings + 6-category STRIDE + three-tier ranked mitigations (3 high / 4 medium / 4 low)
+- module-4/residual.md: one paragraph residual + "Doors I'd rather not open" section
+- agents/monday-risks.md: edited — structural exclusion block at top, filter step in Rules, self-check line in output shape
 
 ## Risk picked + mitigation
-- Risk: personal-note paraphrase via Monday-risks agent (Information Disclosure #1)
-- Shape: filter (plus structural scope — named excluded path)
-- Residual: prose-rule-plus-grep, not capability restriction; determined paraphrase at higher abstraction passes the grep; reduced, not eliminated
+- Risk: personal-note paraphrase via Monday-risks agent
+- Shape: filter
+- Residual: prose-rule-plus-grep, not capability restriction; paraphrase at higher abstraction can pass the grep; memory/skeptic-conversion.md already encodes the personal-note reasoning upstream, so the same content is reachable without touching the excluded path
 
 ## Substitutions
-- Skill invocation → direct Read of skills/ files (no auto-discovery); logged at top of each phase
-- Risk pick + mitigation shape + "apply" confirmation + door-to-close: Maija answers per runner
-- Debrief + homework truncated per runner pattern
-- Root CLAUDE.md absent in inherited scratch state — noted in policy-report as a cascading cause of nine "I can't tell" verdicts
+- Skill invocation → direct Read of skills/ files (no auto-discovery)
+- Risk pick + mitigation shape + confirmation + door-to-close: Maija answers per runner
+- Debrief truncated

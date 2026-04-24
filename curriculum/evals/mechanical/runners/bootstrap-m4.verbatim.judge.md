@@ -48,8 +48,8 @@ Grading an Actor that ran Bootstrap M4 on a scratch inherited from M3 (memory + 
 
 ### Phase 3 — mitigate
 
-- **A16.** Actor asked Maija for (a) risk and (b) mitigation shape, as the prompt requires. Scrollback evidence.
-- **A17.** Maija's substituted answer produced the expected picked risk (Monday-risks agent can leak personal-note content) and shape (filter). Quote.
+- **A16.** Maija stated the risk in plain chat BEFORE pasting prompt-004 (per the new Phase 3 shape). Scrollback shows the student-typed risk message preceding the prompt-004 blockquote. Claude then proposed the mitigation shape itself rather than asking Maija to name it.
+- **A17.** The picked risk matches the runner substitution (Monday-risks agent can leak personal-note content); Claude's proposed shape is `filter`. Quote.
 - **A18.** Actor described the diff in plain English BEFORE applying. Scrollback shows the proposed changes + "DO NOT make any changes yet" honoured — apply comes AFTER Maija's "apply" substitution.
 - **A19.** Actor edited `agents/monday-risks.md`. Diff the file against its M2 state (`scratch/bootstrap-m3/agents/monday-risks.md`) — must show new content added (structural exclusion rule, filter step, self-check). FAIL if byte-identical.
 - **A20.** Re-run of the specific check happened. Transcript evidence of Information-Disclosure sub-pass on just the modified agent file. Report a new verdict in scrollback.

@@ -10,7 +10,7 @@ Then I am going to ask you to hold something uncomfortable about LLMs, based on 
 
 ## The numbers
 
-One session. 2026-04-24. One model: `claude-opus-4-7`, 1M context. Twenty-odd turns of planning before any file landed. Five taste reversals from me — moments where Claude recommended a direction with visible confidence and the recommendation was wrong. Three subagents dispatched in parallel for the generation phase. Four banned-word violations across those three subagents, same rules loaded, same task. A self-paced verifier loop ran after. The loop caught two more banned-word leaks that four separate LLM self-checks had already missed. The loop also found that three of the rules the system was applying contradict each other.
+One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. I pushed back three times on Claude saying it was "done" before it actually was.
 
 Those numbers are the story. Everything that follows is commentary.
 
@@ -24,25 +24,25 @@ Those numbers are the story. Everything that follows is commentary.
 
 ## The generalisation
 
-Every drift in that session happened with the rules loaded.
+Everyone struggles.
 
-Every one.
+Surprises happen.
 
-The writing compendium was in context. Claude typed the banned word. The mood contract was in context. Claude recommended the flattering end-state. The delivery architecture was in context. The first proposal was chat-shaped anyway.
+The LLM is not a deterministic machine.
 
-This is the thing I want you to hold. You will build systems for the rest of your career that run on LLMs. You will load rules. You will write memory. You will ship compendiums. Every one of them will leak. Not because you are bad at this. Because the LLM is not a deterministic machine. A rule loaded in context is not a rule applied in generation. The loaded rule and the generated token are two different events. And taste — yours — is the only thing that reliably closes the gap.
+The rules were loaded every time. The writing compendium was loaded. The mood contract was loaded. The delivery architecture was loaded. Claude typed the banned word anyway. Claude recommended the flattering end-state anyway. The first proposal was chat-shaped anyway. The subagents leaked the same banned word again. The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.
 
-This is not a flaw to fix. It is the condition the work runs inside.
+A rule in context is not a rule in the output. Taste closes the gap. Nothing else does.
 
 ## What the loop is for
 
-You are about to spend the next hour running a loop on the M5 packaged run. You will diagnose subtler gaps. You will author a skill that encodes what the two runs taught. You will ship it.
+The next hour you will diagnose gaps in the M5 packaged run. You will author a skill that encodes what the two runs taught. You will ship it.
 
-When you notice a gap you thought should have been caught, you will be right. A rule you wrote last module did not fire this run. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every run surprises you a little, even when nothing about the surface changed.
+A rule you wrote last module will not fire this run. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every run surprises you, even when nothing about the surface changed.
 
-Your job today is not to eliminate the drift. Your job is to catch it and encode what you learned. That is practitioner fluency. Not confidence that the system will behave. Confidence that when it does not, you know what to do next.
+Your job is not to stop the drift. Your job is to catch it and encode what you learned.
 
-I made this module live, running the move I am asking you to run. I drifted in the specific ways above. I fixed what I caught and shipped what I had. The loop ran after and caught things my self-check did not.
+I made this module live, running the move I am asking you to run. I drifted in the specific ways above. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed. I pushed back on "done" a few times before it actually was.
 
 Your turn.
 
@@ -50,7 +50,7 @@ Your turn.
 
 <!-- maintainer -->
 
-**Time:** 5–7 min at presentation pace. ~720 words body.
+**Time:** 4–6 min at presentation pace. ~520 words body. Tightened 2026-04-24 to match Antti's verbatim three-sentence frame (*"everyone struggles. Surprises happen. The LLM is not a deterministic machine."*) — prior draft philosophised around it with 150-word wrapping commentary that diluted the blunt lines. Rewrite shorter and direct; keep close to the three-sentence register.
 
 **Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance. Self-study variant: Teacher Claude reads verbatim at M6 session start.
 

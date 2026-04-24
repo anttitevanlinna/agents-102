@@ -44,6 +44,10 @@ The rules were loaded every time. The writing compendium was loaded. The mood co
 
 A rule in context is not a rule in the output. Taste closes the gap. Nothing else does.
 
+## Then I continued to make the compounding from the run
+
+After the files shipped, I kept going. I ran the M6 exercise on the M6 generation itself. The diff found my own `/loop` had stopped grep-clean while the closer still carried a credibility-performance tricolon the opener had explicitly said we would cut. Four LLMs wrote and verified that closer. A persona-sim caught it in one read. So I authored a new skill — `curriculum-pre-ship-audit` — that dispatches sim + eval + source-verify + capability-check in parallel, and blocks "done" until all four return GO. I amended the SKILL.md PDCA step where the skill has to fire. I updated the reference-artefact template to hold your exact words verbatim. Eight rules compounded that day. Each one points at the forcing function it needs to live in. One got the title: *a rule in memory that does not force is worse than no rule.* That was the meta-finding. Compounding is not enough. The rule has to block the next mistake.
+
 ## What the loop is for
 
 The next hour you will diagnose gaps in the M5 packaged run. You will author a skill that encodes what the two runs taught. You will ship it.

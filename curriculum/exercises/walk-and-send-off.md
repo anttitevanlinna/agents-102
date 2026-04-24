@@ -46,7 +46,7 @@ Ask Claude to audit your system as a subagent and return a ranked top-5 of what 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at `.claude/skills/`, and the connectors I've wired.
+Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including the test-strategy skill I authored at M3), and the connectors I've wired.
 
 Run this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.
 
@@ -112,7 +112,7 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 
 1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence — integrates, sharpens, removes — and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
-3. You paste the send-off prompt to the same session and close the laptop (or stop the run when you've seen enough; traces are data).
+3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in (macOS: `caffeinate -dims`; Linux/Windows: power-plan → prevent sleep). Don't close the lid — sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish (mid-tool Ctrl+C can corrupt the session's `.jsonl` and break resume); clean interrupts between tool calls are fine. Traces are data either way.
 
 See the module file for the two Debrief prompts.
 
@@ -152,7 +152,7 @@ See the module file for the two Debrief prompts.
 - Student passes the final prompt to the SAME Claude Code session they've been in for 90+ minutes. No new session. No `/schedule`, no `/loop`, no cloud runner.
 - Student closes the laptop (power settings + plugged in) OR stops the run mid-flight when observation is sufficient.
 - Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
-- **Capability-check open:** behaviour on overnight session-left-running vs. mid-run Ctrl+C. Verify before first cohort; Pass 3 reflects findings.
+- **Capability verified 2026-04-23:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 9`.
 
 **Watch-fors (cross-phase):**
 - Task sprawl at Phase 1 — the biggest single failure mode; everything downstream is sized by the task pick.
@@ -163,5 +163,4 @@ See the module file for the two Debrief prompts.
 **TODO (pre-first-cohort):**
 - Re-simulation after the 2026-04-23 reshape.
 - Worked-example task shapes by engineer archetype (backend / frontend / platform / data) at `curriculum/reference/picking-a-first-long-task.md`.
-- Capability check: session-left-running overnight; mid-run Ctrl+C trace preservation.
 - Paired sim against M5's return exercise — does the un-packaged artifact give M5 enough surface for diagnosis-by-contrast?

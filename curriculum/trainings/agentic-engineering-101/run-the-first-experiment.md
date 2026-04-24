@@ -16,11 +16,11 @@ After this module, you will be able to:
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired at the sponsor-stated home (or the gap named explicitly)
 - **Recognize** Huryn's three-block memory in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
 - **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
-- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and close the laptop, or stop the run mid-flight when you've seen enough; traces are data either way
+- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and leave it running overnight (laptop awake, lid open, power plugged in), or stop the run mid-flight when you've seen enough; traces are data either way
 
 ## Connections
 
-You've watched Claude work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you close the laptop.
+You've watched Claude work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you sleep.
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
@@ -73,16 +73,20 @@ Ask Claude to run the scoped task end-to-end in this same session, with your rul
 ```
 I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills at `.claude/skills/`. That's everything you have. Go.
 
-I'm going to close the laptop. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
+I'm leaving the laptop awake overnight and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
 ```
 
 *(end of prompt)*
 
 Let it run. Keep the laptop awake and plugged in overnight (power settings → prevent sleep on power). If you watch for a bit and see the agent wobbling in a way that already tells you what next module will diagnose, stop the run. You don't owe the experiment a completed artifact; you owe it a result you can read.
 
+Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is legitimate practice. Past ten and you've become the agent; call it and read what's there.
+
+Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 min). It plants the question and the three failure modes you'll use to read what comes back.
+
 ## Bridge
 
-M5 opens with what came back, or what you caught before it went further. We read it together.
+M5 opens with what came back, or what you caught before it went further. Tomorrow you'll start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/<project-folder>/`, so the new session can find and read your M4 session directly. Close this window after the run is done if you want; the trace is on disk either way. We read it together.
 
 <!-- maintainer -->
 
@@ -90,9 +94,9 @@ M5 opens with what came back, or what you caught before it went further. We read
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 2h (Connections 10 / Lecture 12 / Exercise 60 / Debrief 15 / Send-off 10 / Bridge 3 + buffer)
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: Nerd reframes — *"enough is a question for M5. The experiment is the point."*
-- **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The send-off at Debrief happens IN the same Claude Code session the student used for walk + fill + frame + retro. No new session, no scheduled agent, no cloud runner — just pass the final prompt to the agent you've been talking to, then close the laptop.
+- **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The send-off at Debrief happens IN the same Claude Code session the student used for walk + fill + frame + retro. No new session, no scheduled agent, no cloud runner — just pass the final prompt to the agent you've been talking to, then leave the laptop awake overnight and walk away.
 
-**Agentic Nerd logic (TODO — skill not yet created):**
+**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
 - **Connections blocker** — student can't name a task. Nerd runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over multi-hour).
 - **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Nerd: *"which of these will hurt the agent most given the task? fill those."*
 - **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Nerd: *"Three is the budget. Skip the other two — you'll see next module why."*
@@ -126,10 +130,9 @@ M5 opens with what came back, or what you caught before it went further. We read
 
 **Open questions surfaced for later passes:**
 - Task-size calibration guide — current Nerd logic names the constraint (sustained coherence, requirement-weaving, multi-file) but doesn't give worked examples. Worth a short reference file like `curriculum/reference/picking-a-first-long-task.md` with 3–4 shape-examples by engineer archetype (backend / frontend / platform / data).
-- M5 capability-check handoff — M4's send-off mechanism (continue the current session) assumes the laptop can be left running or the session can be safely terminated mid-run. Capability-check resolves overnight-execution behaviour before M5 Pass 2.
+- M5 handoff: send-off mechanism documented in `reference/claude-code-for-engineers.md § 9` (laptop-sleep freezes session; Ctrl+C mid-tool can corrupt `.jsonl`; no session budget cap). M5 Pass 2 reads the reference when drafting the return exercise.
 - Agentic Nerd skill — Nerd logic in this maintainer block is the module-specific piece; the running companion is still TODO at portfolio level.
 
 **TODO (pre-first-cohort):**
 - Re-simulation after the 2026-04-23 reshape (see eval instance).
 - Task-size calibration reference (as above).
-- Capability check: Claude Code behaviour when a session is left running overnight vs. terminated mid-run — what's preserved, what's lost.

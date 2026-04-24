@@ -1,7 +1,7 @@
 # Earn the trust
 
 ## Big Idea
-Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. The team kit is born here, a shared home your teammates can read, so the skill you author this hour is the first artifact of yours that crosses engineers.
+Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.
 
 ## Meta
 - **Primary Bloom's level:** Apply + Evaluate + Create (invoke, decide, author)
@@ -87,9 +87,9 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer)
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
-- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships to sponsor-stated team-kit home. No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
+- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
-**Agentic Nerd logic (TODO — skill not yet created):**
+**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
 - **Connections blocker** — student can't pick a feature. Nerd runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
 - **Ex1 passivity** — student reads access-control output and moves on without deciding. Nerd: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."*
 - **Ex2 menu-shopping** — student picks a STRIDE threat because it's easiest, not because it's real. Nerd: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."*

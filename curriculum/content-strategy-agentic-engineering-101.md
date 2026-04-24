@@ -152,7 +152,7 @@ Not a flat list. Two dimensions, two areas on each.
 
 |  | **How (practice)** | **Technical (capability)** |
 |---|---|---|
-|  | **1. Compounding engineering** — personal flywheel. Memory grows with the codebase; skills accumulate; agents run while you sleep. The daily practice that stays current as the frontier moves. | **2. Long-running tasks** — Opus 4.7's sustained-execution capability made real. Hand the agent a multi-hour job, close the laptop, come back to a finished PR. The specific capability behind the L1→L2 leap. |
+|  | **1. Compounding engineering** — personal flywheel. Memory grows with the codebase; skills accumulate; agents run while you sleep. The daily practice that stays current as the frontier moves. | **2. Long-running tasks** — Opus 4.7's sustained-execution capability made real. Hand the agent a multi-hour job, leave it running overnight, come back to a finished PR. The specific capability behind the L1→L2 leap. |
 |  | **4. Team integration** — your work reaches colleagues. Factory components ship. Agents meet agents on real problems. The practice that turns personal leverage into team velocity. | **3. Software factory pattern** — the team industrialises production. Evals as quality-control infrastructure. Shared skills, orchestrators, MCP servers, meta-agents. The Intercom/Ramp endpoint. |
 
 **Why two axes, not four line items.** Every module advances several dimensions at once — one-area-per-module would teach demos, not capability. You can't wield long-running tasks without the compounding practice to feed them context. You can't ship factory components without the team-integration practice to make them land. The training binds the axes so engineers leave with capabilities they can actually hold, not tricks they can't reproduce.
@@ -193,7 +193,7 @@ Shape, not settled detail. Exercises designed case-by-case. Agentic throughout; 
 | M7 *(optional)* | **When agents meet agents** | Team integration (how) peak + software factory peak | Awe + ownership | Live deliberation on the CTO's real engineering problem, grounded in every participant's codebase knowledge AND the cohort's accreted team kit. Technical decision document produced by the room. |
 | M8 *(optional)* | **Where is this all going?** | Human close | Open question — *"nobody plain knows"* | Opinion / fear / hope round + Antti's lecture of the future. Closes on directness, not triumph. Optional because a cohort that stops at M6 still lands a complete training; a cohort that wants the full arc takes both M7 and M8. |
 
-**Agentic walk-away test:** by M3 onward, you close the laptop and find the agents still working. If every artifact requires typing, the exercise failed the rule.
+**Agentic walk-away test:** by M3 onward, you walk away from the desk and find the agents still working. If every artifact requires typing, the exercise failed the rule.
 
 **Real-work requirement (universal across modules):** examples, cases, bugs, PRs, and references come from your own company and codebase. Not toy data. Not case studies of other firms dressed up as exercises. The training lands only when the artifacts are yours.
 
@@ -273,7 +273,7 @@ If you leave with only a bug fix, M1 failed. If you leave with a `./CLAUDE.local
 
 **What M3 refuses:** frame Q+S as compliance (they're infrastructure); ask you to author STRIDE or access-control from scratch (novice-authoring = Wikipedia copy-paste); ask you to spot-check Claude's skill output manually (the self-critique move puts Claude in the critic seat, where it belongs — check_student_facing #9); skill-authoring by opening a markdown editor (the authoring move is conversation, not keyboard-crafting).
 
-**Anchor cases:** Intercom Tier 1/2/3 review (19.2% auto-approved at lowest tier — tiered-review is shippable); Ramp Glass + Dojo (judges as quality infrastructure); Intercom's 267-skill plugin repo with 31% R&D contributing (team-kit accretion pattern). STRIDE lineage: Kohnfelder & Garg (1999 Microsoft memo) + Shostack (*Threat Modeling: Designing for Security*, 2014).
+**Anchor cases:** Intercom Tier 1/2/3 review (19.2% auto-approved at lowest tier — tiered-review is shippable); Intercom's 267-skill plugin repo with 31% R&D contributing (team-kit accretion pattern). STRIDE lineage: Kohnfelder & Garg (1999 Microsoft memo) + Shostack (*Threat Modeling: Designing for Security*, 2014).
 
 ## M4 in detail — accumulate + run the first experiment
 
@@ -291,7 +291,7 @@ Exercise (Phases 1–3, inside the exercise file `walk-and-send-off.md`):
 
 Module-level close (owned by the module file's Debrief + Bridge):
 5. **Debrief — compound CLAUDE.local.md.** You nudge the compound step: Claude rewrites your personal rules file from session evidence and reports a 3–5 line summary; you push back where it misread. The rules file is going into the test with you.
-6. **Send off, un-packaged.** You pass the final prompt to the **same Claude Code session** (no new session, no `/schedule`, no cloud runner). No plan.md, no verifier, no reference artifact — just *"here's my system, go do X."* Laptop closes, or you watch and stop mid-run when you've seen enough. **Traces are data either way.** You never owe the experiment a completed artifact — you owe it a result you can read.
+6. **Send off, un-packaged.** You pass the final prompt to the **same Claude Code session** (no new session, no `/schedule`, no cloud runner). No plan.md, no verifier, no reference artifact — just *"here's my system, go do X."* Laptop stays awake overnight, or you watch and stop mid-run when you've seen enough. **Traces are data either way.** You never owe the experiment a completed artifact — you owe it a result you can read.
 
 **Mood: curious readiness** — *"I've built enough to try something; let's see what the agent does with it."* Stakes back in the room; no compliance framing.
 
@@ -309,10 +309,20 @@ Module-level close (owned by the module file's Debrief + Bridge):
 
 **The pedagogy is contrast, not prescription.** Ronacher's three-pattern lands here — but not as a best-practices lecture. Each piece (reference artifact + plan.md + external verifier) earns its name as the thing that would have caught a specific failure you just read in the M4 artifact. Engineers respond to diagnosis, not prescription.
 
+**Delivery shape (three lectures plus exercise plus Debrief).** M5 is the only module in the arc that earns a closing meta-lecture (compounded rule: meta-frame lectures are closers, not openers — they land AFTER the student lives the pattern). The three lectures sit in semantic positions on the page, not all under one heading.
+
+- **Pre-read** (`lectures/reading-the-return.md`, ~5 min) — lands at the close of M4 Debrief while the un-packaged run is going. Plants the M5 question and the three failure-mode vocabulary. Deliberately does not name the three-pattern.
+- **In-room opener** (`lectures/learning-through-contrast.md`, ~6 min) — lands at M5 session start, after the room has gathered. Names the M5 spirit (*read first, fix later*) and the diagnostic stance. Restates the three lenses in one breath each for anyone who didn't pre-read. Names one operational primitive (manual `/compact` at ~60%) for the active diagnosis session, then carries an FAQ ("what if I'm not there to compact?") that bridges to what packaging actually does for hands-off runs (descriptive only — the Ronacher names earn in the closer). Both lectures included in the module's `## Lectures (before the exercise)` section.
+- **Exercise** (`exercises/diagnose-and-resend.md`, ~65 min) — four phases. Phase 1 read the return through the three failure-mode lenses (15 min); Phase 2 align-then-run-in-reverse to earn the three-pattern (10 min); Phase 3 build the verifier shaped against the dominant failure using Cherny's three-shape menu (20 min); Phase 4 assemble the reference artefact + plan.md in conversation (20 min).
+- **Debrief + re-send** (~15–20 min, owned by the module file) — self-compound `CLAUDE.local.md`, then re-send the same task packaged. Mirrors M4's send-off-in-Debrief shape.
+- **Closing lecture** (`lectures/what-packaging-is.md`, 12–15 min) — included in the module's `## Closing` section after Debrief. Names Ronacher's three-pattern from felt evidence, attributes Cherny's three stop-hook shapes, anchors at org scale with Intercom 2x numbers, names two extension primitives the student didn't build (subagents-for-isolation, /compact at ~60%), names the Sourcegraph Amp counter-camp, and bridges to M6 (your verifier IS your first eval).
+
+All three lecture files carry a maintainer-block source-verification list — every URL must be opened and confirmed against the original before first cohort.
+
 **Five moves:**
 1. **Return to the un-packaged run.** Read the artifact together — you + Claude. Name what went wrong: drift, hallucination, goal confusion, missing context, requirement-skipping. Claude points out patterns you miss. This is the first time the 10% has shown up at scale — direct experience of *"Claude is 90% correct"* (theme #1) at multi-hour scope.
 2. **Teach the three-pattern through contrast.** For each failure: *what would have caught this?* A reference artifact with success criteria would have pinned X. A plan.md the agent could re-read would have stopped Y's drift at hour 2. A mid-run verifier would have surfaced Z before it compounded. The three pieces earn their names from the M4 evidence, not a whiteboard.
-3. **Build the verifier.** **First eval, named.** The verifier isn't testing-adjacent or eval-ish; it *is* an eval — an automated check that decides whether agent-produced work meets a quality bar. Anchor cases: Ramp Glass + Dojo (LLM-as-judge), Intercom Tier 1/2/3 (gate in CI). Your verifier is shaped against the specific failures M4's run surfaced — tests, lint, compile, bash hook, or a minimal judge. Practitioners call these judges when they're LLM-based, verifiers when deterministic, gates when placed in CI; all three are evals.
+3. **Build the verifier.** **First eval, named.** The verifier isn't testing-adjacent or eval-ish; it *is* an eval — an automated check that decides whether agent-produced work meets a quality bar. Anchor cases: Ronacher's MiniJinja validation loop (reference artifact + align-then-run), Cherny's three stop-hook shapes (background-agent / shell-hook / Ralph re-feed), Intercom Tier 1/2/3 (gate in CI, 19.2% auto-approved at lowest tier). Your verifier is shaped against the specific failures M4's run surfaced — tests, lint, compile, bash hook, or a minimal judge. Practitioners call these judges when they're LLM-based, verifiers when deterministic, gates when placed in CI; all three are evals.
 4. **Assemble reference artifact + plan.md.** Package what M4 walked-and-filled into the agent-readable spec: scope + success criteria, pointing at the relevant memory pages and skills, plus a task-local plan.md the agent re-reads when it drifts. Built in conversation with Claude, not typed into a markdown editor.
 5. **Re-send the same task, packaged.** Second experiment. Same variables except the packaging. Agent runs again — overnight (2-day intensive) or a few hours in-session with the verifier firing as it works (gives the room something to watch), or a week (6-week format). Student closes the laptop the second time.
 
@@ -340,7 +350,7 @@ Module-level close (owned by the module file's Debrief + Bridge):
 
 **Mood: practitioner fluency** — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. You close the laptop at M6 holding the move, not just the file.
 
-**Evals, named and explained.** M5 gave you your first eval (the external verifier at M5's diagnosis-driven build); M6 is where the word earns its full weight. Quick framing — not a lecture in disguise — *"your verifier is an eval; your judge is an eval; your gate is an eval. An eval is the automated check that says *this agent-produced thing meets our bar*. Practitioners call them judges when LLM-based, verifiers when deterministic, gates when placed in CI. All three are evals."* Anchor cases: Ramp Glass, Intercom Tier 1/2/3. The loop-shaped skill authored at M6 IS an eval — that's not incidental, that's the move.
+**Evals, named and explained.** M5 gave you your first eval (the external verifier at M5's diagnosis-driven build); M6 is where the word earns its full weight. Quick framing — not a lecture in disguise — *"your verifier is an eval; your judge is an eval; your gate is an eval. An eval is the automated check that says *this agent-produced thing meets our bar*. Practitioners call them judges when LLM-based, verifiers when deterministic, gates when placed in CI. All three are evals."* Anchor cases: Ramp Dojo (350-skill marketplace), Intercom Tier 1/2/3 (19.2% auto-approved, 14.6 min vs 75.8 min org median). The loop-shaped skill authored at M6 IS an eval — that's not incidental, that's the move.
 
 **Scheduled agents — callout, not an exercise.** The two-run send-off pattern generalises to a scheduled agent running on cadence — `/schedule`, `/loop`, cron-triggered runs. A competent engineer leaves knowing the primitive exists, when it fits (standing verifier runs, nightly codebase sweeps, rule-drift monitoring), and how it composes with the loop they just built (their skill becomes the thing the scheduled agent invokes). Not an authoring exercise in core — lands naturally post-training or in a followup module.
 
@@ -495,7 +505,7 @@ Planned (none built yet):
 ## Anchor cases (research-grounded)
 
 - **Intercom R&D 2x** (`observations/intercom.md` Side A) — M4 (93.6% Agent-driven PRs), M5 (Tier 1/2/3 review structure with 19.2% auto-approved at lowest tier — the gate Q exercise foreshadows), team kit side-story (267-skill plugin repo with 31% R&D contributing — the accretion pattern we mirror).
-- **Ramp AI-pilled** (`observations/ramp.md`) — M1 (L0–L3 ladder as internal diagnostic; we borrow the posture, not the label), M5 (Glass + Dojo as judges-as-quality-infrastructure, the team kit's destination shape), cost-posture (leverage over tokens) as cultural frame.
+- **Ramp AI-pilled** (`observations/ramp.md`) — M1 (L0–L3 ladder as internal diagnostic; we borrow the posture, not the label), M6 (Dojo's 350-skill marketplace as the team kit's destination shape; Glass framed as the "harness was the bottleneck" insight, not as a judge), cost-posture (leverage over tokens) as cultural frame.
 - **Block Hierarchy→Intelligence** (`observations/block.md`) — pressure-test throughout (what does an L3 engineer's role become when the hierarchy thins?).
 - **Huryn three blocks** (`insights.md`) — memory structure, direct import from Bootstrap M2 lineage.
 - **Cross-cutting:** `coding-agent-as-general-platform`, `absorption-bottleneck` (M4 names it), `conditions-creator` (M6 lives it from IC side), `rules-verification-scarcity` (M4–M5 meta-pattern).
@@ -577,7 +587,7 @@ Two artifacts per student:
 
 **Gap-closers landed (2026-04-23):**
 - **Subagents as primitive — lands at M3.** Ex1 + Ex2 invoke curated skills as subagents; Ex3 stays main-thread. Contrast is the pedagogy: you leave M3 knowing which jobs belong in which thread, not just that subagents exist. LO row added to `earn-the-trust.md`; strategy § M3 paragraph added.
-- **Evals explained + called out — M5 + M6.** M5: the verifier IS your first eval; word lands with the move. M6: the word earns full weight — judges / verifiers / gates are all evals, with Ramp Glass + Intercom Tier 1/2/3 as anchors. Situated judge-building stays, but the vocabulary is no longer absent.
+- **Evals explained + called out — M5 + M6.** M5: the verifier IS your first eval; word lands with the move. M6: the word earns full weight — judges / verifiers / gates are all evals, with Ramp Dojo (350-skill marketplace) + Intercom Tier 1/2/3 as anchors. Situated judge-building stays, but the vocabulary is no longer absent.
 - **Scheduled agents — callout at M6, not an exercise.** `/schedule`, `/loop`, cron-triggered runs named as the generalisation of the M5 send-off pattern. Lecture callout + Debrief naming; authoring-a-scheduled-agent lands post-training or in a followup, not inside core runtime.
 
 **M4–M6 reframe (2026-04-23, Antti-driven, two-pass):**

@@ -59,7 +59,7 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 
-**Agentic Nerd logic (TODO — skill not yet created; strategy doc §"Prep notes — the `agentic-nerd` skill" + §"Delivery architecture"):**
+**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **Ex1 `/context` skipped** — slash command read as prose, not as a command. Nerd push: *"type /context in the chat — look at the number."*
 - **Ex1 drifted bug** — student has drifted from prework choice. Nerd runs fresh bug-surfacing conversation. Criteria unchanged.
@@ -82,9 +82,5 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4.
 
 **TODO (pre-first-cohort):**
-- **Three-persona sim on the three new exercises** (Maija / Greg / Jin). Focus: Ex1 introspection feel, Ex2 tests-first + diff push-back, Ex3 compound move + MCP gate realism. Archive per-persona reports under `curriculum/evals/instances/sims/agentic-engineering-101--<exercise-slug>--<persona>.md`.
-- **Agentic Nerd skill creation.** Referenced throughout as if it exists. Prep notes in `content-strategy-agentic-engineering-101.md` § "Prep notes — the `agentic-nerd` skill." Current exercises survive without it.
-- **Register audit — motivational-warmth residue.** Greg-persona sim (2026-04-21) hallucinated pep-talk lines not in the files — tell that surrounding prose carries warmth. Re-read as senior-opinionated reader; trim training-author warmth.
-- **Eval instance split.** `agentic-engineering-101--getting-going.md` was authored against the deleted `ship-trivial-bug.md` mega-exercise. Split into three per-exercise instances at next eval pass.
-- **Wizard-demo choice** — menu of 3–5 demo patterns for the opener. Antti reviewing opener overall.
+- **Three-persona sim on the three new exercises** (Maija / Greg / Jin). Focus: Ex1 introspection feel, Ex2 tests-first + diff push-back, Ex3 compound move + MCP gate realism, register-drift (Greg-persona catches residual training-author warmth the grep scan misses). Archive per-persona reports under `curriculum/evals/instances/sims/agentic-engineering-101--<exercise-slug>--<persona>.md`.
 - **Self-study Connections variant** — Nerd collects and reflects thematic tendencies from the student's shared tricks.

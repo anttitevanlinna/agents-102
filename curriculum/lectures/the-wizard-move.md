@@ -50,8 +50,6 @@ Fix one trivial bug from your own backlog, end-to-end, with plan mode used delib
 
 You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.
 
-Let's go.
-
 <!-- maintainer -->
 
 **Meta:**

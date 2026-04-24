@@ -70,6 +70,7 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 - Don't turn "cancel is legit" into a disclaimer. It's a practitioner rule, not a safety net. Frame it as *what real operators do*, not *what nervous students can fall back on*.
 
 **TODO (pre-first-cohort):**
-- Re-verify Huryn source URL + freshness.
 - Three-persona sim covering this lecture as prework — register holds under both live and pre-reading modes?
 - If Ronacher's three-pattern source isn't within 6 months at M5 drafting, swap for a named convergence pattern from the research KB.
+
+**Source freshness** (2026-04-23): Huryn `productcompass.pm/p/claude-md-snippets` verified at 2026-03-31 — within 6 months.

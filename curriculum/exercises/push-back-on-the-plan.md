@@ -125,7 +125,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - Student's own backlog task (surfaced at P1)
 - Sponsor-stated rules home for the Debrief's Compound step
 
-**Agentic Nerd logic (TODO — skill not yet created):**
+**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
 - **P1:** if student can't surface a fitting task, Nerd runs the three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
 - **P3 rubber-stamp:** if student approves before 60s with no push-back messages in scrollback, Nerd invokes the forcing-function: *"pick keep planning with feedback. Send one soft item — one step that reads clean but skips something."*
 - **P3 performative:** if push-back messages appear in under 3 min without step numbers or specific concerns, Nerd asks for specificity — *"which step, which words? say the thing you'd want a senior reviewer to catch."*

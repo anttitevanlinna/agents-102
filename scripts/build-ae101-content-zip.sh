@@ -24,8 +24,7 @@ cp -R curriculum/lectures                                        "$ROOT/lectures
 cp -R curriculum/exercises                                       "$ROOT/exercises"
 cp    curriculum/trainings/agentic-engineering-101/prework.md    "$ROOT/prework.md"
 cp -R curriculum/reference                                       "$ROOT/reference"
-cp -R content/skills/access-control-analysis                     "$ROOT/content/skills/"
-cp -R content/skills/stride                                      "$ROOT/content/skills/"
+cp -R content/skills/* "$ROOT/content/skills/"
 
 rm -f "$OUT"
 (cd "$STAGE" && zip -qr "$OLDPWD/$OUT" "agents-102-content-agentic-engineering-101")

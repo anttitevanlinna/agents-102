@@ -239,7 +239,12 @@ Three mechanisms. Pick by intent.
 
 **M4/M5/M6 send-off implications:** the un-packaged M4 send-off runs in the **same Claude Code session** (not `/loop`, not scheduled). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents are the generalisation M6 names as a callout, not an authoring exercise.
 
-Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks).
+**Session lifecycle — three gotchas** (verified 2026-04-23):
+1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight runs, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
+2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
+3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic run can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
+
+Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works.md). Ctrl+C corruption tracked in GitHub issues #3003, #17466, #18880.
 
 ---
 

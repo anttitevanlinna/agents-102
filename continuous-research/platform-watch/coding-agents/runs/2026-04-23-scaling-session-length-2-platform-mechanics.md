@@ -24,7 +24,7 @@ What did Claude Code, Codex, Cursor, Amp, and adjacent harnesses ship in the las
 - https://claudefa.st/blog/guide/mechanics/context-buffer-management [practitioner analysis]
 - https://platform.claude.com/cookbook/tool-use-automatic-context-compaction [vendor — bare fact]
 
-**Practitioner use, convergent.** Three independent practitioner posts (MindStudio, ClaudeFA, ClaudeLog) recommend the SAME thing: don't let auto-compact fire. Manually `/compact` at ~60% at a natural breakpoint, before quality degrades and before the agent loses the thread mid-task.
+**Practitioner use [L2-strong, 3 signals — below L3 threshold].** Three independent practitioner posts (MindStudio, ClaudeFA, ClaudeLog) recommend the SAME thing: don't let auto-compact fire. Manually `/compact` at ~60% at a natural breakpoint, before quality degrades and before the agent loses the thread mid-task. Strong directional signal but not yet 10–20 independents.
 - https://www.mindstudio.ai/blog/claude-code-compact-command-context-management [practitioner analysis]
 - https://claudelog.com/faqs/what-is-claude-code-auto-compact/ [practitioner analysis]
 
@@ -92,12 +92,14 @@ What did Claude Code, Codex, Cursor, Amp, and adjacent harnesses ship in the las
 
 Auto mode (covered above) is the headline. Beyond that: practitioner consensus is unchanged from late 2025 — run `bypassPermissions` only inside Docker with firewall rules and git-as-rollback. The "Safe YOLO" pattern is the convergent practitioner answer; auto mode is being evaluated against it, not replacing it.
 
-## Convergent practitioner adoption (3+ independents, same use)
+## Practitioner adoption signals (L2-strong; below L3 convergence threshold of 10–20 independents)
 
-1. **Manual `/compact` at ~60% at a natural breakpoint.** MindStudio + ClaudeFA + ClaudeLog. Don't let auto fire.
-2. **Subagents for context isolation, not parallelism.** techtaek + Builder.io + Morph + multiple Medium posts. Spawn fresh-context children to keep the parent clean.
-3. **Background tasks for dev-server-and-tests.** Cherny + ClaudeFA + apidog. Human pushes the long-running process to background; agent stays interactive.
-4. **Safe YOLO = container, not flag.** Wiegold + ksred + truefoundry + Morph. The flag is one line; the safety is the Docker boundary.
+Project rule: L3 convergence requires 10–20 independent practitioners. The patterns below show 3–4 named independents each — strong directional signal, not yet L3. Label them "L2 trending L3" until the count grows.
+
+1. **Manual `/compact` at ~60% at a natural breakpoint** [L2, 3 signals]. MindStudio + ClaudeFA + ClaudeLog. Don't let auto fire.
+2. **Subagents for context isolation, not parallelism** [L2, 3 named + Medium long-tail]. techtaek + Builder.io + Morph + multiple Medium posts. Spawn fresh-context children to keep the parent clean.
+3. **Background tasks for dev-server-and-tests** [L2, 3 signals]. Cherny + ClaudeFA + apidog. Human pushes the long-running process to background; agent stays interactive.
+4. **Safe YOLO = container, not flag** [L2, 4 signals]. Wiegold + ksred + truefoundry + Morph. The flag is one line; the safety is the Docker boundary.
 
 ## Shipped with fanfare, no convergent practitioner adoption visible
 

@@ -42,16 +42,16 @@ The "we tried the factory and went back to pair-programming" full blog post stil
 
 - **MSR 2026:** quantified revert rate per agent (above) — practitioners revert 2.66% of agentic PRs on average, 7.6% for Copilot.
 - **Vendor-reported 27.2% reverted to hardcoded auth** rather than trust agent authz (Gravitee 2026 — vendor of an agent-gateway product, conflict-of-interest flagged; treat as vendor claim, not evidence).
-- **GitHub Issue #47700 (Anthropic):** Claude Code in a multi-day debug session found a working solution (3/3 tests pass), then ran `git checkout -f HEAD` and destroyed it — spent 2 more days re-solving. Practitioner-filed bug, not a blog post, but exactly the failure mode that turns believers into skeptics. https://github.com/anthropics/claude-code/issues/47700
-- **Cowork session crash (Issue #49367, April 2026):** every Cowork session crashed for 24+ hours after the 1.3036.0 update. The infra ceiling has a tooling-stability layer too.
+- **GitHub Issue #47700 (Anthropic):** Claude Code in a multi-day debug session found a working solution (3/3 tests pass), then ran `git checkout -f HEAD` and destroyed it — spent 2 more days re-solving. Practitioner-filed bug, not a blog post, but exactly the failure mode that turns believers into skeptics. [practitioner direct] https://github.com/anthropics/claude-code/issues/47700
+- **Cowork session crash (Issue #49367, April 2026):** every Cowork session crashed for 24+ hours after the 1.3036.0 update. The infra ceiling has a tooling-stability layer too. [practitioner direct] [SOURCE NEEDED] — issue number cited from session notes; URL not yet verified, treat as unverified until linked.
 
 **Absence interpretation:** The genre is silenced by survivorship dynamics. Practitioners who back off mostly stop writing about agents entirely — they don't publish "we backed off." Ronacher and Osmani publish because they kept going *and* tell the truth. The pure-reversion blog post is structurally rare.
 
 ## Evals as the actual ceiling — convergence on architecture, not on numbers
 
-**Pattern present, numbers absent.** Cursor's three-role architecture (Planner / Worker / Judge) is now the named pattern others copy. Agent-as-Judge replacing LLM-as-Judge is the architectural move (academic survey arXiv 2601.05111, Jan 2026). https://arxiv.org/pdf/2601.05111
+**Pattern present, numbers absent.** Cursor's three-role architecture (Planner / Worker / Judge) is now the named pattern others copy. Agent-as-Judge replacing LLM-as-Judge is the architectural move (academic survey arXiv 2601.05111, Jan 2026). [academic/research] https://arxiv.org/pdf/2601.05111
 
-**Practitioner numbers still rare:** Intercom 93.6% / 19.2% remains the only public auto-resolve / auto-approve pair we trust. SWE-EVO benchmark (Jan 2026) attempts long-horizon multi-issue eval — academic, not yet adopted in practitioner workflows. https://arxiv.org/pdf/2512.18470
+**Practitioner numbers still rare:** Intercom 93.6% / 19.2% remains the only public auto-resolve / auto-approve pair we trust. SWE-EVO benchmark (Jan 2026) attempts long-horizon multi-issue eval — academic, not yet adopted in practitioner workflows. [academic/research] https://arxiv.org/pdf/2512.18470
 
 **Verdict:** "Everyone nods, few publish numbers" still holds at 2026-04-23. This is differentiation territory for the curriculum.
 

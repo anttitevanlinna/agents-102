@@ -38,7 +38,7 @@ Counter-evidence in pure form. Million-line Rust browser engine built by *"close
 ### Andrej Karpathy (autoresearch) — early 2026
 
 8-hour autoresearch run on 16 GPUs, ~910 experiments, ~$9 in Claude Code API costs. Runtime is long, but architecture is parallel — *"factorial grids of 10–13 experiments per wave."* In coding, he describes directing *"fleets of AI agents — up to 20 in parallel."* Karpathy is on team parallel, not team marathon-session.
-- [SkyPilot: Scaling autoresearch](https://blog.skypilot.co/scaling-autoresearch/) [vendor analysis]
+- [SkyPilot: Scaling autoresearch](https://blog.skypilot.co/scaling-autoresearch/) [vendor press release] (Level 0 — SkyPilot blog about own platform; use only for the bare fact that the run happened)
 - [autoresearch repo](https://github.com/karpathy/autoresearch) [practitioner direct]
 
 ### Vincent Qiao (`/resume` mechanics) — 2026
@@ -61,7 +61,7 @@ Worth flagging as **what I looked for but didn't find**: his recent posts ("A La
 
 1. **Context rot crosses a cliff at 300–400k tokens** on the 1M model, well before the hard limit. Named by Thariq (Anthropic), Huntley (147–152k on the 200k model — same fraction), with one unattributed mechanics post (claudefa.st) on the 33–45k unusable buffer. **Convergence: L2, trending toward L3** — only 2 named practitioners plus one unattributed source; needs one more named practitioner direct to lock in L3.
 
-2. **The platform-native answer to "how do I run longer?" is "don't — fan out instead."** Cherny, Wilson Lin, Karpathy, Huntley all converge on parallel sessions / loops with fresh context over single long sessions. Different architectures (worktrees, planner-worker, GPU-grid, Ralph loop) — same underlying move. **Convergence: L3.**
+2. **The platform-native answer to "how do I run longer?" is "don't — fan out instead."** Cherny, Wilson Lin, Karpathy, Huntley all converge on parallel sessions / loops with fresh context over single long sessions. Different architectures (worktrees, planner-worker, GPU-grid, Ralph loop) — same underlying move. **Convergence: L2 with 4 named signals, trending L3** (L3 threshold is 10–20 independent practitioners; 4 frontier names is strong but below bar).
 
 3. **State lives in artefacts, not in context.** Ralph's *"progress lives in your files and git history,"* Wilson Lin's judge-agent-decides-then-fresh-cycle, Vincent's `~/.claude/projects/` JSONL files — same idea, different surfaces. **Consistent L2 across 3 frontier practitioners; pattern matches our prior L3 reference-artefact finding.**
 
@@ -104,8 +104,8 @@ The honest read: **no practitioner in the last 6 months publicly documents a 10-
 
 ## Convergence assessment
 
-- **Pattern 1: L2 trending toward L3** (2 named practitioners + 1 unattributed mechanics post). **Pattern 2: L3** (Cherny, Wilson Lin, Karpathy, Huntley converging). **Pattern 3: L2 strong, leaning on prior L3 reference-artefact finding** (3 named frontier practitioners).
-- **Pattern 4 (compact-with-hints): L2–L3.** Strong from Thariq + Anthropic-direct content, supported by third-party guides; could use one more named-practitioner direct post to lock in L3.
-- **Counter-evidence is itself convergent at L3** — multiple frontier practitioners have actively reversed away from single-long-session as the target.
+- **Pattern 1: L2 trending toward L3** (2 named practitioners + 1 unattributed mechanics post). **Pattern 2: L2 with 4 named signals, trending L3** (Cherny, Wilson Lin, Karpathy, Huntley converging — strong but below the 10–20 threshold). **Pattern 3: L2 strong, leaning on prior L3 reference-artefact finding** (3 named frontier practitioners).
+- **Pattern 4 (compact-with-hints): L2.** Strong from Thariq + Anthropic-direct content, supported by third-party guides; needs more named-practitioner-direct posts to climb.
+- **Counter-evidence is itself convergent at L2 with 3–4 named signals** — multiple frontier practitioners have actively reversed away from single-long-session as the target; below L3 threshold but directionally strong.
 
 **The strongest finding is the negative one: the practitioner frontier has moved past single-session-length-extension as a worthwhile goal.** That reframes M5 more than any positive mechanic does.

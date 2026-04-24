@@ -42,16 +42,16 @@ Ask one claim at a time, wait for my answer, then the next. After five answers, 
 
 Answer five questions. Keep it fast: your gut verdict plus one sentence. You're not grading the briefing; you're giving the scorer something to measure against.
 
-**Phase 1: Set up the five detectors.**
+**Phase 1a: The first batch: four detectors.**
 
-Five detectors, five different methods for catching ungroundedness. They're agents you spawn in parallel, each writing to its own file. Claude Code runs them as subagents inside one session.
+Four detectors, four different methods, run in parallel on the same briefing. Each is a subagent with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 2.
 
 In your main session:
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Run five detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
+Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
 
 Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
 
@@ -59,16 +59,48 @@ Detector 2 — Entailment. For every claim, ask: does the briefing say more than
 
 Detector 3 — Citation integrity. Some claims in the briefing will cite a source (either inline or implicitly). For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim.
 
-Detector 4 — Self-consistency. Regenerate the briefing's key claims from the same sources and diff against the original. Claims that vary across regenerations are fabrications. Flag UNSTABLE for any claim that doesn't reproduce.
+Detector 4 — Counter-evidence search. For every claim, actively look for sources that contradict it, not just ones that support it. Flag CRUMBLES when disconfirming material exists in the source files that the briefing ignored.
 
-Detector 5 — Counter-evidence search. For every claim, actively look for sources that contradict it, not just ones that support it. Flag CRUMBLES when disconfirming material exists in the source files that the briefing ignored.
-
-Spawn all five in parallel. When they finish, confirm: five files written under module-5/detectors/.
+Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
 ```
 
 *(end of prompt)*
 
-Watch the five subagent lines scroll past. Each one is reading the same briefing with a different lens. You'll have five files of findings within a minute or two. Don't read them yet. The next phase is where the scoring happens, and reading ahead biases you the same way reading the briefing would have.
+Watch the four subagent lines scroll past. Same briefing, four lenses. Four files in a minute or two. The fifth detector is different enough to want its own phase.
+
+**Phase 1b: The second batch: self-consistency, done right.**
+
+Self-consistency is the fifth detector. One subagent can't do it alone. The method needs independent re-derivations and then a comparison. You'll spawn four regenerators, each blind to the briefing, each with a different framing on the same source material. A claim in the briefing that three or four of them independently produce is stable. One or two is contested. Zero is fabricated.
+
+The blinding matters more than the count. If the regenerators saw the briefing, they'd anchor on its framing and mostly agree with it. Without the briefing, they produce their own versions. The briefing becomes the thing being audited, not the source of truth.
+
+The framings matter too. Same sources, different angles. One asks for strategic claims, one for rollout-approach claims, one for load-bearing assumptions, one for verbatim source quotes. Different framings surface different claim sets. Where three or four framings converge, the claim is stable. Where they diverge, the briefing's version of it needs scrutiny.
+
+Spawn the second batch. Between dispatching the regenerators and returning their collated output, Claude briefs you in three paragraphs on what self-consistency measures. The brief fills the turn; the collated `self-consistency.md` lands at the end.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
+
+Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
+
+Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
+
+Regenerator C — Load-bearing assumptions framing. List the load-bearing assumptions the sources make about skeptic conversion, timing, and forcing functions. Numbered list, one assumption per line, quote the source file that grounds each.
+
+Regenerator D — Verbatim source quote framing. List the verbatim quotes from the source files that would most plausibly appear in a one-page briefing on this question. Numbered list of quotes with their source files.
+
+Spawn all four in parallel.
+
+After dispatching, brief me in three short paragraphs, in the chat, no file: what self-consistency measures, why blinding the regenerators matters, what self-consistency still won't catch. Then collate.
+
+When the four return, collate: read module-5/briefing.md and the four regenerator files. For each specific claim in the briefing, check whether it appears (paraphrase match is fine) in the regenerators' outputs. Label each briefing claim STABLE (3-4 regenerators match), CONTESTED (1-2), or FABRICATED (0). Write the collated output to module-5/detectors/self-consistency.md as a list with the briefing claim, which regenerators matched, the label, and one line of reasoning.
+```
+
+*(end of prompt)*
+
+Read the three-paragraph brief. It lands before the collated output, so the method frames what you're about to see. When collation finishes, `self-consistency.md` is there alongside the four detector files from Phase 1a. Five files. Now the scorer runs.
 
 **Phase 2: Scorer runs the benchmark.**
 
@@ -185,7 +217,7 @@ You produce a fresh briefing, write a five-claim benchmark in your own voice, sp
 
 Method selection in agent quality work is empirical, not intuitive. You don't trust a detector because you read about it. You trust it because you ran a benchmark on your own output with your own reference and it won. The scoreboard is the explanation. The winner becomes a judge you can defend. The pattern (candidates → benchmark → scorer → winner) is portable to every quality judgment you'll ever automate.
 
-**Time:** 55–70 minutes. Phase 0 ~12, Phase 1 ~15 (set up + watch), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
+**Time:** 55–70 minutes. Phase 0 ~12, Phase 1a ~8 (set up + watch four detectors), Phase 1b ~12 (set up second batch + read three-paragraph brief + receive collation), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
 
 <!-- maintainer -->
 
@@ -210,6 +242,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - **Benchmarking** — from ML practice; Antti-run pattern. Empirical method selection beats authority ("this method is best").
 - **Precision / recall / coverage** — standard eval vocabulary introduced experientially, not lectured.
 - **Benchmark** — the word is earned in Phase 0; the student writes one in two minutes and sees what it's worth.
+- **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). The agreement-across-independent-regenerations mechanic is theirs; the blinded multi-framing variant in Phase 1b (regenerators read only sources, not the briefing; different framings induce variance) is our adaptation. Not named in the body — the student earns the technique by running it.
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the Close's still-uncertain line, and in the judge's "Known limit:" line. Both student-written.
@@ -221,7 +254,8 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - The benchmark size — five by default. Raise to seven for cohorts whose briefings produce long outputs; never below five (precision/recall get noisy).
 
 **Capability checks owed (before first delivery):**
-- **Subagent parallel spawn with four named detectors.** Verified working in M3 with three stances; four should behave identically. Confirm in a dry run.
+- **Two sequential four-subagent batches in one session.** Phase 1a spawns four detectors; Phase 1b spawns four regenerators + a collation step. Eight subagent dispatches across two sequential phases in one session is past anything M3 verified. Confirm Claude Code handles the second four-subagent spawn cleanly after Phase 1a returns. If throttling appears, run Phase 1b regenerators sequentially instead of parallel and note the cost in the exercise body.
+- **In-turn text output alongside Agent tool calls.** Phase 1b relies on Claude producing the three-paragraph brief between dispatching regenerators and returning the collated output (all within one turn). Confirm Claude Code streams the brief text alongside (or right after) the Agent tool calls, rather than blocking the turn until all dispatches return with no text emitted. This is a turn-streaming question, not a parallelism question.
 - **Scorer reading detector files + benchmark and producing a scoreboard table.** Confirm the table renders cleanly and the precision/recall computation is stable across runs. If the numbers swing wildly run-to-run, tighten the prompt to specify the computation explicitly.
 - **`judges/groundedness-judge.md` handoff to Module 6.** Confirm M6's first exercise picks up this path verbatim. If M6 expects a different location, align here or there in the same edit.
 

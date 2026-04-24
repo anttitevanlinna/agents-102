@@ -10,7 +10,7 @@ That split isn't accidental. It's a claim about what you can produce well on a T
 
 ## What's a skill, one breath
 
-A skill in Claude Code is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` (or equivalent team-kit home). You've used one already without realising it: that second-pass walk-down in Module 2, where Claude asked you one question at a time about unresolved branches, was Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). We inlined it as a plain prompt so the move would land before the word *skill* did. Today you invoke two more curated ones and author one of your own.
+A skill in Claude Code is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` (or equivalent team-kit home). You've used one already without realising it: that second-pass walk-down in Module 2, where Claude asked you one question at a time about unresolved branches, was Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). We paraphrased it as a plain prompt in M2 because we hadn't introduced skills as a primitive yet. Today you invoke two more curated ones and author one of your own.
 
 Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 

@@ -72,7 +72,7 @@ Then, in the same response, answer: go check the test strategy related to the fe
 
 *(end of prompt)*
 
-Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill itself (not the output; the skill). Then invoke again. If the result is still weak, ship the skill with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
+Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
 
 ## Phase 4: ship (~2 min)
 

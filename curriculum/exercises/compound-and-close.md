@@ -4,7 +4,7 @@
 
 **What happens:** your rules file is born from how you actually worked, not from a template. The first move outside the repo happens on a real job: the ticket for the bug you just shipped.
 
-**The point:** the compound step (Klaassen's fourth — plan, work, review, compound) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread. Then the loop closes where the team actually reads it: the tracker.
+**The point:** the compound step (Klaassen's fourth, plan-work-review-compound) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread. Then the loop closes where the team actually reads it: the tracker.
 
 **Time:** 30 minutes.
 
@@ -30,7 +30,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 
 Read Claude's summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
 
-> **Quick timebox note before we start MCP.** This is the last beat of M1 and we keep it tight. One connector, one ticket close-out, stop there. If a tenant gate blocks the install, take the fallback path and move on. Wiring a second connector, debugging this one deeper, or extending the close-out into a richer flow is good homework, not in-room work. The point right now is one connector firing on one ticket. Proof the loop closes outside the repo.
+> **Quick timebox note.** Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework. If a tenant gate blocks the install, take the fallback path and move on.
 
 ## MCP — why your agent needs to reach outside the repo (~5 min)
 

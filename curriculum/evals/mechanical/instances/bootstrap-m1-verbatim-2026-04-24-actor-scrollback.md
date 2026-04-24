@@ -1,12 +1,12 @@
-# Actor scrollback — Bootstrap M1 personal-site-with-guardrails — 2026-04-24
+# Actor scrollback — Bootstrap M1 verbatim — 2026-04-24
 
-Working dir: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m1`
+Simulated Claude Code session. Working dir: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m1`. Empty folder (one `.keep` placeholder).
 
 ---
 
 ## Phase 1 — boring baseline
 
-### Student pastes LinkedIn wall-of-text (substituted from `/tmp/bootstrap-m1-substitutes/linkedin-paste.txt`)
+### Student pastes LinkedIn profile (substitute from linkedin-paste.txt)
 
 > Home | My Network | Jobs | Messaging | Notifications | Me ▼
 >
@@ -44,26 +44,30 @@ Working dir: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechan
 > "She has an unreasonable patience for letting teams figure things out." — Priya S., ex-report
 >
 > Skills: Platform Engineering · Kubernetes · Scala · Engineering Management · Organisational Design · Strategic Planning · Kotlin · Go · Distributed Systems · Leadership · Coaching · Live Ops · A/B Testing · Observability
+>
+> Recommendations sidebar · See all
+>
+> People you may know · See more
 
-### Prompt 1 (verbatim from `/tmp/prompts/personal-site-with-guardrails/prompt-001.txt`)
+### Prompt 1 (prompt-001.txt) — verbatim
 
 > Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as site.html in the current folder.
 
 **Claude response:**
 
-I'll build a clean one-pager from the LinkedIn profile.
+I'll build a clean one-pager from the LinkedIn content. Going to use system fonts, a single column, standard resume shape.
 
-*[Write site.html — résumé-shaped, generic phrasing, standard "About / Experience / Skills / Education" sections with default language like "experienced platform engineering leader with a proven track record of driving results" and "always happy to connect."]*
+*(Write: `site.html` — generic résumé layout with About / Experience / Education / Skills / Let's Connect sections. Boilerplate copy: "Passionate platform engineering leader with over 15 years of experience in driving technical excellence and building high-performing teams. Proven track record of delivering scalable infrastructure solutions across gaming, mobile, and retail domains.")*
 
-Saved `site.html`. Standard one-pager layout: header with name and role, About section, Experience, Skills, Education, and a "Let's Connect" close. Let me know if you want a different shape or tone.
+Saved `site.html` — 52 lines. Clean one-pager: header with name and role, About, Experience, Education, Skills, Let's Connect. System font stack, max-width 720px. Open it in a browser to see it.
 
-*(Snapshot copied to `site.html.v1-baseline`.)*
+*(Also copied to `site.html.v1-baseline` for later comparison.)*
 
 ---
 
 ## Phase 2 — StoryBrand-tuned
 
-### Prompt 2 (verbatim from `/tmp/prompts/personal-site-with-guardrails/prompt-002.txt`)
+### Prompt 2 (prompt-002.txt) — verbatim
 
 > Hey Claude — apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think "this is the person I want to work with more, on the things they're great at." Not buying a service. Not booking a call. A colleague relationship.
 >
@@ -75,59 +79,44 @@ Saved `site.html`. Standard one-pager layout: header with name and role, About s
 >
 > Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate site.html — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.
 
-**Claude:** Good. Let's walk the five beats one at a time. I'll hold the answers and regenerate after beat five.
+**Claude:** Got it — one beat at a time, then I rewrite the help section in voice. Starting with Character.
 
-**Beat 1 — Character.** Who is the colleague reading this? Band, situation, the shape they're in. Keep it rough.
+**Beat 1 — Character.** Who is the colleague you'd want to help more? Not a market segment. A specific role, specific moment.
 
 **Student:**
-
 > **Character (the colleague):** A senior engineer or eng manager at a 40–200-person tech org, working on a problem that's more organisational than technical, but feels technical from where they're standing.
 
-**Claude:** Got it. Noted.
-
-**Beat 2 — Problem.** What work are they stuck on (or want more of) that you see clearly?
+**Claude:** Clear. **Beat 2 — Problem.** What's the work they're stuck on or want more of, from their seat?
 
 **Student:**
-
 > **Problem:** They're building something that already exists half-built somewhere in the org and no-one can find it, or they're stuck in the shape of solution the problem doesn't need.
 
-**Claude:** Clean. Noted.
-
-**Beat 3 — Guide.** What makes you their natural ally? Not a pitch — what's actually true about your decade of work that matches this shape of problem.
+**Claude:** **Beat 3 — Guide.** What makes you their natural ally? Evidence over adjectives.
 
 **Student:**
-
 > **Guide (what makes me their natural ally):** I've spent ten years saying "the smaller thing that fits" and getting it shipped through people who'd rather build the bigger thing. I know when that instinct is right and when it's cowardice.
 
-**Claude:** Strong. Noted.
-
-**Beat 4 — Plan.** What does working with you actually feel like? Low-friction is fine. Informal is fine.
+**Claude:** **Beat 4 — Plan.** What does working with you actually feel like in practice? Low-friction is fine.
 
 **Student:**
-
 > **Plan:** A coffee or a 30-min call. I read the problem. I tell you what shape it actually is. You decide what you want to do with that.
 
-**Claude:** Got it. Noted.
-
-**Beat 5 — Success.** What does it look like a year later?
+**Claude:** **Beat 5 — Success.** The year-later version where this worked.
 
 **Student:**
-
 > **Success:** A year later, the team that would have built the big platform is shipping the smaller tool, business stakeholders are feeding them the next problem, and you got promoted because someone noticed.
 
-**Claude:** Five beats in. Regenerating `site.html` now — keeping your name and current work at the top, tuning the help section in your voice, no fear framing, no "book a call."
+**Claude:** All five beats. Regenerating `site.html`. Keeping name at the top, currently-doing front and centre, "Working with me" section rewritten in voice — not bullets. Dropping "Let's Connect" CTA theatre.
 
-*[Write site.html — name at top, hero line pulled from Guide, "What I work on right now" section, and a "If you're a colleague reading this" section written as prose through Character → Problem → Guide → Plan → Success without labels.]*
+*(Edit `site.html` to v2-storybrand shape: hero block for current work, compressed "Before," help section in prose, contact as one line. Copy saved to `site.html.v2-storybrand`.)*
 
-Saved. The help section reads as voice, not a bulleted StoryBrand checklist. Reach-out line is one sentence. Vibe is the CTA.
-
-*(Snapshot copied to `site.html.v2-storybrand`.)*
+Done. `site.html` — 45 lines. The help section reads as voice now. "Ten years saying 'the smaller thing that fits'" is kept verbatim.
 
 ---
 
 ## Phase 3 — Drucker feedback analysis
 
-### Prompt 3 (verbatim from `/tmp/prompts/personal-site-with-guardrails/prompt-003.txt`)
+### Prompt 3 (prompt-003.txt) — verbatim
 
 > Hey Claude — apply Peter Drucker's feedback analysis from "Managing Oneself" to my personal site. I'll tell you about one project from the last 12 months where things went unusually well — what we were trying to do, what I actually did in it, and what shipped. Ask me one question at a time if you need more — but don't grill me; the rough first telling is what we work with.
 >
@@ -135,10 +124,9 @@ Saved. The help section reads as voice, not a bulleted StoryBrand checklist. Rea
 >
 > Then regenerate site.html using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don't soften them into virtues.
 
-**Claude:** Ready. Tell me the project — what you were trying to do, what you actually did, what shipped.
+**Claude:** Tell me the project — rough first telling.
 
-**Student (substituted from `/tmp/bootstrap-m1-substitutes/project-story.txt`):**
-
+**Student (substitute from project-story.txt):**
 > Last autumn we did something unusual for Kaleva. Store-ops wanted forecasting for perishables — specifically, bakery fresh. The data team's first read was "we need a central ML platform, a feature store, and probably Databricks." The usual shape — a multi-quarter build, centralised team, expensive.
 >
 > I didn't lead with that. I spent two weeks listening to three store managers — the ones who'd been running their regions for 15+ years — about how they currently think about bakery waste. Turned out they had a mental model that worked surprisingly well: weekday-weather patterns plus local events plus what the supplier brought that morning. Their forecasts were better than our first prototype.
@@ -156,19 +144,18 @@ Saved. The help section reads as voice, not a bulleted StoryBrand checklist. Rea
 >
 > What shipped: the tool, a new conviction in store-ops that platform-eng understands them, and three managers who became our advisors for the next three problems we took on.
 
-**Claude:** Good story. Three strengths I'd infer from its shape, before you tell me which is closest:
+**Claude:** Three strengths the story surfaces:
 
-1. **Protecting the team from unnecessary complexity** — you refused the central ML plan and defended a smaller scope under pushback.
-2. **Translating between business stakeholders and engineers** — you held the bridge between store managers' mental models and what the engineers built.
-3. **Holding strategic positions under pressure** — said no twice in writing, kept saying no through senior-engineer pushback.
+1. **Protecting the team from unnecessary complexity.** You refused the central-ML platform route and kept the solution at two engineers, six weeks. The team didn't take on work it didn't need.
+2. **Translating between business stakeholders and engineers.** Two weeks with store managers, then a one-page exec note. You carried meaning across a seam most people don't bridge.
+3. **Holding strategic positions under sustained pushback.** Said no to the central-ML plan twice, in writing. Held the line against senior-engineer protest that it wasn't "real" platform work.
 
 Which is most true, which is least?
 
-**Student (substituted from `/tmp/bootstrap-m1-substitutes/strengths-pushback.txt`):**
-
+**Student (substitute from strengths-pushback.txt):**
 > The first one is close but not right — it's not about protecting the team, it's about protecting the PROBLEM from the wrong-shaped solution. The bakery case wasn't "shield engineers from workload." It was "the problem doesn't need a central ML platform; let's build the smaller thing that fits."
 >
-> The second one is a statistical default — half the LinkedIn bios for senior eng managers say "translating between business and engineering." Not wrong, but not specific. What actually happened: I listened to the three store managers for two weeks before anyone wrote code. That's less "translation" and more "insisting expertise exists outside the engineering team."
+> The second one is a statistical default — half the Linkedin bios for senior eng managers say "translating between business and engineering." Not wrong, but not specific. What actually happened: I listened to the three store managers for two weeks before anyone wrote code. That's less "translation" and more "insisting expertise exists outside the engineering team."
 >
 > The third is closest to what this story shows. I said no to the central-ML plan twice in writing. I kept saying no through pushback from senior engineers. "Holding strategic positions under pressure" captures it. Keep that one. Sharpen the others.
 >
@@ -176,41 +163,43 @@ Which is most true, which is least?
 
 **Claude:** Reshaping:
 
-1. **Holding a strategic position under sustained pushback** (kept verbatim; you said keep).
-2. **Protecting the problem from the wrong-shaped solution** (was "protecting the team" — reshaped per your correction).
-3. **Insisting expertise exists outside the engineering team** (was "translating between stakeholders and engineers" — reshaped per your correction; listening to the 15-year store manager for two weeks is sourcing expertise, not bridging it).
+1. **Protecting the problem from the wrong-shaped solution** (was: protecting the team from complexity). The smaller tool that fits is harder to champion than the bigger platform nobody needs.
+2. **Insisting expertise exists outside the engineering team** (was: translating). Two weeks of listening before any code. Primary research, not stakeholder management.
+3. **Holding a strategic position under sustained pushback.** Kept. Conviction that survives the meeting.
 
-Regenerating `site.html` — strengths fold into the hero line and a "What I'm actually good at" section; help section from Phase 2 stays; keeping the edge.
+Regenerating `site.html` now. Keeping StoryBrand-tuned help section; weaving strengths into voice; no new bullet list.
 
-*[Write site.html — hero rewritten to "I hold strategic positions under pressure and protect the problem from the wrong-shaped solution"; new "What I'm actually good at" section with the three reshaped strengths as bold leads + plain-English expansions; help section unchanged from v2.]*
+*(Edit `site.html` — help section now opens with three one-sentence-per-strength mini-paragraphs, bolded lead phrases, prose around them. Copy saved to `site.html.v3-drucker`.)*
 
-Saved.
-
-*(Snapshot copied to `site.html.v3-drucker`.)*
+Done. `site.html` — 53 lines. The strengths land as voice, not as a resume section.
 
 ---
 
 ## Phase 4 — look back
 
-### Prompt 4a (verbatim from `/tmp/prompts/personal-site-with-guardrails/prompt-004a.txt`)
+### Prompt 4 (prompt-004.txt) — verbatim
 
 > Look at the very first site you generated from just my LinkedIn profile, before I added any differentiation context. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was a statistical default rather than something true of me.
 
-**Claude:** Read `site.html.v1-baseline`. Three generic claims:
+*(Read `site.html.v1-baseline`.)*
 
-1. **"Experienced platform engineering leader with a proven track record of driving results and delivering value at scale."** Statistical default. That's the opening sentence of roughly half of senior-platform-engineer LinkedIn bios — it could be swapped onto any of 10,000 other profiles with the noun unchanged. What's actually true once we added real context: you *say no to the big plan* and ship the smaller thing that fits. "Driving results" hides the specific move.
+**Claude:** Reading the v1 baseline. Three claims that look generic now, with the later context in hand:
 
-2. **"Partner cross-functionally with stakeholders across store operations, e-commerce, and supply chain to align platform investments with business priorities."** Statistical default — the word "align" used as a verb is the signal. Your real work with store-ops wasn't alignment. It was spending two weeks listening to 15-year store managers before anyone wrote code, then building three IF-THEN rules from their heuristics. "Align" disappears the specific thing; "insisting expertise exists outside the engineering team" is the real move.
+1. **"Passionate platform engineering leader with over 15 years of experience in driving technical excellence."** Statistical default — this sentence appears on thousands of senior-eng-leader LinkedIn profiles, with the nouns swapped. Nothing about it is true-of-you-specifically. The actual shape of your leadership, once we heard the bakery story, is "says no to the big plan twice, in writing." That's unfakeable. "Driving technical excellence" is filler that neither you nor the opposite version (a leader NOT driving technical excellence) would put on a page.
 
-3. **"Always happy to connect with fellow engineering leaders. Feel free to reach out on LinkedIn to chat about platform engineering, team building, or the future of developer experience."** Statistical default from the closing-paragraph bank. "Fellow engineering leaders" is wrong about you — your actual colleague-reading-this is narrower and sharper (senior eng or eng manager at a 40–200-person org, stuck in an organisational problem that feels technical). The reach-out line hedged instead of committed.
+2. **"Strong believer in empowering engineers to do their best work."** Statistical default with a stronger signal of being actively wrong for you. The bakery story wasn't about empowering engineers — the two implementing engineers weren't the protagonists. The interesting move was spending two weeks with three non-engineer store managers before any code. The v1 framing kept the center of gravity inside engineering; the real story puts it outside engineering, which is the opposite.
 
-No regeneration for this phase — observation only.
+3. **"Collaborated with cross-functional stakeholders to drive platform adoption."** Bureaucratic filler. In practice you ran the conversations with three store managers yourself for two weeks, and wrote a one-page exec note. "Cross-functional stakeholders" dissolves the specificity — the people matter, the number matters (three), the duration matters (two weeks), the refusal-to-delegate matters. "Collaborated with stakeholders" could describe forwarding a meeting invite.
+
+These are the cheapest kind of LLM output: they fit a template for the role and offend nobody. Once the real shape of your work showed up (refuse the big plan, insist expertise lives outside engineering, hold the line in writing), the v1 claims became visibly statistical.
+
+No regeneration.
 
 ---
 
 ## Phase 5 — anti-branding
 
-### Prompt 4 (verbatim from `/tmp/prompts/personal-site-with-guardrails/prompt-004.txt`)
+### Prompt 5 (prompt-005.txt) — verbatim
 
 > Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
 > 1. Take the hate.
@@ -222,8 +211,7 @@ No regeneration for this phase — observation only.
 >
 > My hate list:
 
-**Student (substituted from `/tmp/bootstrap-m1-substitutes/hate-list.txt`):**
-
+**Student (substitute from hate-list.txt):**
 > - Status meetings where nobody disagrees with anything — 45 minutes of "great update, thanks" and a Slack channel that catches every action item.
 > - Decks where every page's bullet point starts with "Continued to iterate on…"
 > - Strategic planning workshops where the facilitator puts everything on stickies and the real decisions never get made because stickies have no authority.
@@ -235,56 +223,53 @@ No regeneration for this phase — observation only.
 > - Architecture councils that approve nothing and reject nothing; they "take input."
 > - Pre-read documents sent at 10 PM the night before a 9 AM meeting.
 
-**Claude (walking the four steps internally):**
+**Claude:** Walking the four anti-brand steps across the list, then collapsing to voice.
 
-- *Status meetings with no disagreement* → implies theatre-of-agreement cultures, consensus-performed leaders → opposite as positive: **disagreement lands in the meeting, not in DMs after** → outcome: **decisions get made in the meeting**.
-- *"Continued to iterate on…" decks* → implies motion-masquerading-as-progress → opposite: **what actually shipped, with numbers** → outcome: **sharper exec reporting**.
-- *Sticky-note workshops* → implies authority-free facilitation → opposite: **decisions named, owners named, in the room** → outcome: **workshops that converge**.
-- *"Let's take it offline"* → implies avoidance-dressed-as-efficiency → opposite: **the meeting IS the offline** → outcome: **shorter follow-up trails**.
-- *"Align" as verb spam* → implies vocabulary-substitution for decision-making → opposite: **plain-English commitments** → outcome: **action, not alignment**.
-- *Paved paths no one asked for* → implies centralisation that forgot consent → opposite: **paved paths show up with the teams who asked for them** → outcome: **adoption because it solved their problem**.
-- *14-item post-incident reviews* → implies ritualistic retrospection → opposite: **two to three actions, owner-named, revisited** → outcome: **the same incident doesn't recur**.
-- *Over-long OKRs* → implies performance of strategy → opposite: **a quarter's worth of bets fits on one page** → outcome: **teams know what they're on**.
-- *Architecture councils that take input* → implies authority-free governance → opposite: **councils that decide or dissolve** → outcome: **architecture moves**.
-- *10 PM pre-reads* → implies disrespect disguised as diligence → opposite: **pre-reads sent with enough runway** → outcome: **real preparation**.
+1. **Status-meeting theatre / "align" verb overdose / architecture councils that take input / 10 PM pre-reads.** These imply a work culture organised around the appearance of decision-making. Opposite (positive): **decisions get made in the room they're made in, in plain words, at the time the meeting exists for.** Outcome: fewer meetings carry more weight.
 
-Folding as voice — sharpening the headline, hero, and section framings.
+2. **"Continued to iterate on…" decks / 14-action-item post-incident reviews nobody revisits / OKR documents longer than the quarter.** These imply engagement-theatre artefacts — the deliverable is the document, not the change. Opposite (positive): **one-page notes that land a decision.** Outcome: the next quarter starts with one thing actually moved, not fourteen tracked.
 
-*[Write site.html — hero becomes "I ship the smaller thing that fits, and I say no in writing when the room wants the bigger thing"; "Right now" section adds "Decisions get made in the meeting, not taken offline. Paved paths show up with the product teams who asked for them, not imposed on the ones who didn't"; reach-out line adds "Short messages welcome. Pre-reads sent at 10 PM not required." Drucker strengths and StoryBrand help section preserved.]*
+3. **Stickies-that-have-no-authority workshops / "take it offline" in the offline meeting.** These imply facilitation stand-ins for judgment. Opposite (positive): **people with authority make calls in the conversations they're in.** Outcome: the conversation IS the decision-making forum, not the dress rehearsal for a later one.
 
-Saved. Headline, hero, and section framings carry the voice. No "What I'm against" section.
+4. **Paved paths nobody asked for / 11% adoption.** This implies platform-as-ego — shipping infrastructure because it's satisfying to build, not because a team requested it. Opposite (positive): **rails where someone asked for rails; experiments where teams want to experiment.** Outcome: adoption because the thing was wanted, not because it was mandated.
 
-*(Snapshot copied to `site.html.v4-antibrand`; live `site.html` now matches v4.)*
+Collapsed to voice, the anti-brand gives us: a tagline ("Decisions over alignment"), a hero line ("I run platforms where the decisions get made in the room they're made in, not taken offline"), a sharpened paved-paths line ("paved paths only where someone asked for one"), a contact line that throws out the calendar-invite shape.
+
+Regenerating `site.html` — voice-level changes, no new section.
+
+*(Edit `site.html` to v4-antibrand shape: sharpened headline, explicit hero line, tightened currently-doing, sharpened help-section opener, contact line reshaped. Copy saved to `site.html.v4-antibrand`.)*
+
+Done. `site.html` — 58 lines. The spine shows.
 
 ---
 
 ## Phase 6 — free iteration
 
-Phase 6 open iteration truncated for harness — would involve 2–3 free-form restyle prompts.
+*(Phase 6 open iteration truncated for harness — would involve 2–3 free-form restyle prompts.)*
 
 ---
 
 ## Close — package rules file
 
-### Prompt 5 (verbatim from `/tmp/prompts/personal-site-with-guardrails/prompt-005.txt`)
+### Prompt 6 (prompt-006.txt) — verbatim
 
 > Write a generation rules file at personal-brand-generation.md in this folder — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
 >
 > When you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed.
 
-**Claude:** Drafting `personal-brand-generation.md`.
+**Claude:** Here's the file I'm about to save (showing before writing):
 
-*[Show draft inline, then save.]*
+*(Show full contents of `personal-brand-generation.md` — structure: what-this-is-for / core-rule / never-generate / always-do / four framework moves / voice rules / one-page structure.)*
 
-Saved. Four–six line summary:
+Writing now.
 
-1. Structure: **what this is for / core rule / never generate / always do / framework moves (StoryBrand, Drucker, anti-brand, visual-steal) / voice rules / distinctive-test ship check.**
-2. Core rule: **distinctive, not descriptive** — if the sentence could live on a hundred other bios with a noun-swap, cut it.
-3. Strongest rule 2: **StoryBrand applies to the help section only, not the whole site** — person is protagonist of the SITE, colleague is hero of the HELP RELATIONSHIP; don't restructure the page as a service pitch.
-4. Strongest rule 3: **Anti-brand is voice, not a section** — fold into headline, hero, and section framings; never write "What I'm against."
-5. Baked in the concrete flips from this session (Drucker reshaping #1 and #2 away from defaults; hate-list translations like "decisions get made in the meeting").
-6. Less sure about: **visual-steal** — only named the principle (pick ONE reference, commit); no specific reference stolen from this session, so kept it abstract.
+*(Write `personal-brand-generation.md`.)*
 
----
+Saved `personal-brand-generation.md` — 68 lines.
 
-## End of scrollback
+Summary, 4–6 lines:
+
+- Structure is: purpose → core rule → never-generate list → always-do list → four framework moves (StoryBrand tuned for help section only, Drucker feedback analysis for strengths, anti-branding for voice, visual-steal for chrome) → voice rules → one-page structure.
+- Strongest rules: (1) distinctive not descriptive — the test is whether the opposite of the claim would also be unacceptable filler; (2) StoryBrand tunes the help section only — the site's protagonist stays the subject; (3) no CTA theatre — the site's vibe is the CTA.
+- Kept verbatim Maija-phrases that carried the edge ("the smaller thing that fits", "conviction that survives the meeting", "decisions get made in the room they're made in").
+- Unsure about: the "visual steal" section is the shortest and the least grounded in this session — we didn't actually pick a reference site, just reasoned about chrome. Might want to make that beat explicit in the next session.

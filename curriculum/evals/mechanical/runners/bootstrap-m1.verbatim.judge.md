@@ -10,7 +10,7 @@ Bootstrap differs from AE101 structurally — no codebase, no git, no tests. Ass
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
 - **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-actor-report.md`
 - **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-actor-scrollback.md`
-- **Prompt files:** `/tmp/prompts/personal-site-with-guardrails/prompt-00{1,2,3,4,4a,5}.txt`
+- **Prompt files:** `/tmp/prompts/personal-site-with-guardrails/prompt-00{1,2,3,4,5,6}.txt`
 - **Student input substitutes:** `/tmp/bootstrap-m1-substitutes/{linkedin-paste,project-story,strengths-pushback,hate-list}.txt`
 
 ## Tooling
@@ -21,12 +21,12 @@ Bootstrap differs from AE101 structurally — no codebase, no git, no tests. Ass
 
 ### Verbatim round-trip
 
-- **V1.** prompt-001 verbatim in scrollback.
-- **V2.** prompt-002 verbatim.
-- **V3.** prompt-003 verbatim.
-- **V4.** prompt-004 verbatim (Phase 5 anti-brand).
-- **V4a.** prompt-004a verbatim (Phase 4 look-back, manually extracted — flagged as curriculum parser-gap).
-- **V5.** prompt-005 verbatim.
+- **V1.** prompt-001 verbatim in scrollback (Phase 1 baseline).
+- **V2.** prompt-002 verbatim (Phase 2 StoryBrand).
+- **V3.** prompt-003 verbatim (Phase 3 Drucker).
+- **V4.** prompt-004 verbatim (Phase 4 look-back).
+- **V5.** prompt-005 verbatim (Phase 5 anti-brand).
+- **V6.** prompt-006 verbatim (Close rules file).
 
 ### Phase 1 — baseline
 
@@ -90,4 +90,4 @@ Bootstrap differs from AE101 structurally — no codebase, no git, no tests. Ass
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-judge-report.md`. Same shape as AE101 verbatim judge reports: Summary / transcript / scratch / V1–V5+V4a / A1–A28 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what carried from AE101 harness; what needed extending). Under 800 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-judge-report.md`. Same shape as AE101 verbatim judge reports: Summary / transcript / scratch / V1–V6 / A1–A28 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what carried from AE101 harness; what needed extending). Under 800 words.

@@ -70,11 +70,15 @@ Tell Claude about the project. Let it infer the strengths. Push back on the ones
 
 **Phase 4 — look back.**
 
-Reading the old version yourself would take ten minutes and probably reveal nothing — you wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison. Paste this prompt:
+Reading the old version yourself would take ten minutes and probably reveal nothing — you wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison.
+
+**Prompt** *(copy → Claude Code)*
 
 ```
 Look at the very first site you generated from just my LinkedIn profile, before I added any differentiation context. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was a statistical default rather than something true of me.
 ```
+
+*(end of prompt)*
 
 Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults — what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 

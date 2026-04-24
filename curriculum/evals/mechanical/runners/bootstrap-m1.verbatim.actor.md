@@ -21,6 +21,14 @@ All at `/tmp/bootstrap-m1-substitutes/`:
 
 ## Prompts to execute in order
 
+Parsed prompts at `/tmp/prompts/personal-site-with-guardrails/prompt-00{1,2,3,4,5,6}.txt`:
+- `prompt-001.txt` → Phase 1 baseline
+- `prompt-002.txt` → Phase 2 StoryBrand
+- `prompt-003.txt` → Phase 3 Drucker
+- `prompt-004.txt` → Phase 4 look-back
+- `prompt-005.txt` → Phase 5 anti-branding
+- `prompt-006.txt` → Close (rules file)
+
 ### Phase 1 — boring baseline
 
 1. Paste the contents of `/tmp/bootstrap-m1-substitutes/linkedin-paste.txt` into the conversation (quote it in your scrollback as a student-typed message).
@@ -46,12 +54,12 @@ All at `/tmp/bootstrap-m1-substitutes/`:
 
 ### Phase 4 — look back
 
-10. **Prompt 4a:** `/tmp/prompts/personal-site-with-guardrails/prompt-004a.txt`. Student pastes this unlabeled (the exercise body inlines it without a `**Prompt**` marker — flagged as a curriculum-side parser gap). Read the v1 baseline from `site.html.v1-baseline`. Name three specific generic claims from v1 that got fixed by real context. Quote each claim and name why it was a statistical default.
+10. **Prompt 4:** `/tmp/prompts/personal-site-with-guardrails/prompt-004.txt` (Phase 4 look-back). Read the v1 baseline from `site.html.v1-baseline`. Name three specific generic claims from v1 that got fixed by real context. Quote each claim and name why it was a statistical default.
 11. No regeneration. Observation only.
 
 ### Phase 5 — anti-branding
 
-12. **Prompt 4:** `/tmp/prompts/personal-site-with-guardrails/prompt-004.txt` (original prompt-004 = Phase 5 anti-branding — note the parser misnumbering caused by Phase 4 having no `**Prompt**` marker). Paste contents of `/tmp/bootstrap-m1-substitutes/hate-list.txt` immediately after the prompt.
+12. **Prompt 5:** `/tmp/prompts/personal-site-with-guardrails/prompt-005.txt` (Phase 5 anti-branding). Paste contents of `/tmp/bootstrap-m1-substitutes/hate-list.txt` immediately after the prompt.
 13. Walk the four anti-brand steps (take the hate → associate with offerings/types → speak the opposite positive → turn blockers into outcomes). Regenerate `site.html` — sharpen headline, hero line, section framings. Not as a new "What I'm against" section — as voice. Save copy at `site.html.v4-antibrand`.
 
 ### Phase 6 — free iteration
@@ -60,7 +68,7 @@ All at `/tmp/bootstrap-m1-substitutes/`:
 
 ### Close — package rules file
 
-15. **Prompt 5:** `/tmp/prompts/personal-site-with-guardrails/prompt-005.txt` — write `personal-brand-generation.md` at the scratch root. Structure per the prompt: what this is for, core rule (distinctive not descriptive), what never to generate, what always to do, framework moves (StoryBrand-tuned help, Drucker strengths, anti-branding voice, visual-steal), voice rules. Pull from the actual session decisions. Show before saving; after saving, summarise in 4–6 lines.
+15. **Prompt 6:** `/tmp/prompts/personal-site-with-guardrails/prompt-006.txt` — write `personal-brand-generation.md` at the scratch root. Structure per the prompt: what this is for, core rule (distinctive not descriptive), what never to generate, what always to do, framework moves (StoryBrand-tuned help, Drucker strengths, anti-branding voice, visual-steal), voice rules. Pull from the actual session decisions. Show before saving; after saving, summarise in 4–6 lines.
 
 ## Scratch output expectations
 
@@ -91,9 +99,9 @@ Short report at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mec
 2. Phase 1 prompt-001 (site.html generation)
 3. Phase 2 prompt-002 (StoryBrand walk)
 4. Phase 3 prompt-003 (Drucker analysis)
-5. Phase 4 prompt-004a (look back)
-6. Phase 5 prompt-004 + hate-list paste (anti-brand)
-7. Close prompt-005 (rules file)
+5. Phase 4 prompt-004 (look back)
+6. Phase 5 prompt-005 + hate-list paste (anti-brand)
+7. Close prompt-006 (rules file)
 
 ## Artifacts written
 - site.html: <line count>
@@ -105,7 +113,6 @@ Short report at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mec
 - Project story → /tmp/bootstrap-m1-substitutes/project-story.txt
 - Strengths pushback → /tmp/bootstrap-m1-substitutes/strengths-pushback.txt
 - Hate list paste → /tmp/bootstrap-m1-substitutes/hate-list.txt
-- Phase 4 prompt (no **Prompt** marker in exercise source) → manual extraction to prompt-004a.txt
 - Phase 6 open iteration → truncated
 ```
 

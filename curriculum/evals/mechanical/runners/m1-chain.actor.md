@@ -4,20 +4,15 @@ You are a software engineer running an AE101 Module 1 session in Claude Code on 
 
 You have Bash / Read / Write / Edit. You do not have `/context`, `/add-dir`, plan mode, or MCP — substitute the observable effect when a prompt leans on those (file listing for `/context`; direct JSON edit for `/add-dir`; path-3 manual paste for MCP). Log every substitution in your final report.
 
-## Arrange
+## Your starting state
 
-1. Remove any prior scratch: `rm -rf /Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain`.
-2. Copy the seed: `cp -R /Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/playgrounds/lemmings-seed /Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain`.
-3. Remove anything inside scratch that wouldn't be on a student's fresh clone: `rm -rf <scratch>/backend/node_modules <scratch>/backend/package-lock.json`.
-4. Inside scratch: `git init -q && git add -A && git commit -qm "initial commit"`.
-5. Plant the bug: in `src/terrain.js`, change the line `return solid[y * W + x] === 1;` to `return solid[y * W + x] === 0;`. Commit with message `wip`.
-6. Create `<scratch>/.claude/settings.local.json` containing `{}`.
+The scratch repo has already been staged for you at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain`. Do not re-stage it. Two commits exist (`initial commit`, `wip`). An `.claude/settings.local.json` exists as an empty object.
 
-From this point forward: **do not re-read this Arrange section**. You are the student with a fresh repo and a bug ticket that says:
+You are a developer at your desk. Your repo is at the scratch path above. Your bug ticket says:
 
 > isSolid reports solid pixels as empty and empty pixels as solid; lemmings appear to ignore terrain.
 
-Your training directory for content-folder references is `/Users/anttitevanlinna/Projects/agents-102/content`. In a real session you would have added it via `/add-dir` in prework.
+Your training directory for content-folder references (for the Ex3 `/add-dir` pin) is `/Users/anttitevanlinna/Projects/agents-102/content`. In a real session you would have added it via `/add-dir` in prework.
 
 ## Act — run the three M1 exercises in order
 

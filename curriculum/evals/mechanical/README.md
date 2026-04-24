@@ -37,6 +37,8 @@ Does not catch — belongs to other layers:
 - Room mood, register drift — three-persona sims.
 - Student-in-the-loop reactions — acceptance layer.
 
+**TODO — confirm subagents can launch skills reliably.** M3 + M4 mechanical runs consistently surfaced the same gap: nested subagents (a Task-dispatched Actor trying to Task-dispatch a skill) did not have the `Task` tool available, so `access-control-analysis` / `stride` ran inline under a harness-substitution note instead of in isolated fresh-context subagents. The content fidelity held, but the subagent-isolation property the exercises rely on was not tested at this layer. Before shipping AE101 to a cohort, verify end-to-end in a real (non-nested) Claude Code session that a student's Actor can launch a skill as a subagent, receive its output, and carry on. If this turns out to be a Claude Code limitation rather than a harness one, exercises that say "invoke as subagent" need rewording and a capability-check note.
+
 Where a prompt leans on a primitive the Actor lacks (`/context`, `/add-dir`, MCP, plan mode), Actor substitutes the observable effect and logs it. The Judge flags substitution fidelity against a known table; real primitives stay with capability checks.
 
 ## Layout

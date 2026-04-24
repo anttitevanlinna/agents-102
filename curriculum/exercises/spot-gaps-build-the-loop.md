@@ -12,7 +12,7 @@
 
 ## Phase 1: Diff and name the gaps (~15 min)
 
-Open a new Claude Code session in the same repo. Two runs of the same task are on disk now: the M4 un-packaged run (baseline, no reference artefact, no plan.md, no verifier), and the M5 packaged re-run (same task, all three pieces in play). Both runs left commits, file changes, and session transcripts at `~/.claude/projects/<project-folder>/`. That's the auto-stored scrollback Claude Code keeps for every session.
+Open a new Claude Code session in the same repo. Two runs of the same task are on disk now: the M4 un-packaged run (baseline, no reference artefact, no plan.md, no verifier), and the M5 packaged re-run (same task, all three pieces in play). Both runs left commits, file changes, and session transcripts under `~/.claude/projects/` in a folder matching this repo. That's the auto-stored scrollback Claude Code keeps for every session.
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 

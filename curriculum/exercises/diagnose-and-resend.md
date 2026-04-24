@@ -12,7 +12,7 @@
 
 ## Phase 1: Read the return (~15 min)
 
-Open a new Claude Code session in the same repo you ran M4 in. The artefact lives in two places: the repo (commits made by the M4 agent, files modified, branch state) and the M4 session transcript at `~/.claude/projects/<project-folder>/`, where Claude Code stores every session's scrollback. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
+Open a new Claude Code session in the same repo you ran M4 in. The artefact lives in two places: the repo (commits made by the M4 agent, files modified, branch state) and the M4 session transcript under `~/.claude/projects/` — Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
 
 Ask Claude to read the M4 artefact through the three failure-mode lenses and quote specific moments for each.
 
@@ -21,7 +21,7 @@ Ask Claude to read the M4 artefact through the three failure-mode lenses and quo
 ```
 I sent off a multi-hour task at the end of M4 un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
 
-Read what the M4 agent did. Start with the repo state: commits since the M4 send-off, files it modified, branch state. Then read the M4 session transcript. Claude Code stores every session's scrollback at `~/.claude/projects/<project-folder>/`; find the most recent session for this project and walk through it. That's where the agent's reasoning trail lives. The file changes alone miss the drift and the dead-ends.
+Read what the M4 agent did. Start with the repo state: commits since the M4 send-off, files it modified, branch state. Then read the M4 session transcript. Claude Code stores every session's scrollback under `~/.claude/projects/` in a folder matching this repo; find the folder, then walk the most recent session. That's where the agent's reasoning trail lives. The file changes alone miss the drift and the dead-ends.
 
 Then walk the work through three lenses:
 

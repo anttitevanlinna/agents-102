@@ -86,7 +86,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 
 
 ## Bridge
 
-M5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/<project-folder>/`, so the new session can find and read your M4 session directly. Close this window after the run is done if you want; the trace is on disk either way. We read it together.
+M5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your M4 session directly. Close this window after the run is done if you want; the trace is on disk either way. We read it together.
 
 <!-- maintainer -->
 

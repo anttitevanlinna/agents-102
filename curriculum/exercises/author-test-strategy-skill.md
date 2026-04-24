@@ -67,7 +67,7 @@ Invoke the test-strategy skill we just wrote on the feature I'm shipping: the sa
 
 Produce the test strategy the skill asks you to produce.
 
-Then, in the same response, answer: go check the test strategy related to the feature. Is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?
+Then, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?
 ```
 
 *(end of prompt)*

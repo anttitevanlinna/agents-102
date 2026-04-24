@@ -23,7 +23,7 @@ Read my work across the training. Specifically:
 - Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
 - The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).
 - Both skills I authored at `~/.claude/skills/` during the training (the test-strategy skill from earlier, and the skill I authored today).
-- The M4 un-packaged run artefact (commits, files, the session transcript at `~/.claude/projects/<project-folder>/` from the earliest long-running run).
+- The M4 un-packaged run artefact (commits, files, the session transcript under `~/.claude/projects/` in a folder matching this repo — the earliest long-running run).
 - The M5 packaged re-run artefact (commits, files, the session transcript from the re-send of the same task).
 
 Run this audit in a fresh sub-task via the Task tool, so the read isn't colored by this conversation.

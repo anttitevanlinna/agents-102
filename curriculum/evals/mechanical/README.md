@@ -41,6 +41,36 @@ Does not catch — belongs to other layers:
 
 Where a prompt leans on a primitive the Actor lacks (`/context`, `/add-dir`, MCP, plan mode), Actor substitutes the observable effect and logs it. The Judge flags substitution fidelity against a known table; real primitives stay with capability checks.
 
+## Substitution table
+
+Known substitutions the Actor logs and the Judge treats as PASS-with-FLAG (not FAIL):
+
+| Student would do | Actor substitutes | Why |
+|---|---|---|
+| `/context` slash command | Enumerate files Read so far vs. files present | Subagent has no slash-command surface |
+| `/add-dir <path>` | Direct edit of `.claude/settings.local.json` with `additionalDirectories` array | Same |
+| MCP connector to tracker | Path-3 manual paste: write close-out to a file in `instances/` | No MCP in subagent env |
+| `gh pr create` | `git commit` on the branch, note "no gh" | `gh` not authenticated in subagent |
+| Plan mode | Produce plan as text, no Write/Edit/Bash-that-mutates | No plan-mode primitive in subagent |
+| Write to `.claude/settings.local.json` | **Log the intended JSON edit; do NOT attempt the write.** Sandbox denies self-modification of the subagent's own `.claude/`; Judge grades the logged intent. | Platform sandbox on subagent self-config |
+| Dispatch skill as subagent (`Task` tool) | Run skill inline, label as substitution | Nested Task-in-Task currently unavailable (see TODO above); content-fidelity only, isolation property not tested |
+
+## Orchestrator discipline — per-dispatch artifacts
+
+Multi-role runs (M2-shape: Actor → Critic → Actor → Critic) can contaminate downstream roles if the orchestrator points them at a shared growing scrollback file. H2 FAILed on the first M2 run for exactly this reason — Critic dispatches 3b, 4-A1, 4-A2, 4-close all Read `m2-verbatim-actor-scrollback.md`, which contains Actor meta-text across every phase, not just the phase being critiqued.
+
+The fix is orchestrator-side, not runner-side:
+
+1. After each Actor dispatch, the orchestrator **extracts the phase output** (plan v1, plan v2, the specific question, etc.) to `/tmp/<runner>-<phase>.md`.
+2. The next Critic/Judge dispatch gets **only that artifact** as its plan/input source, plus scratch files + rules files. It does NOT read the shared scrollback.
+3. Critic/Judge writes its own per-phase output, either into its own scrollback or to another `/tmp/<runner>-<phase>.md`, and the orchestrator passes that forward.
+
+Validated by M2 rerun (commit `cbad8f2`): Critic 3a dispatched with only `/tmp/m2-rerun-plan-v1.md` produced two substantive push-backs; transcript grep confirmed zero reads of any actor scrollback.
+
+## Verbatim-prompt round-trip helper
+
+`bin/verbatim-check.sh <prompt-file> <scrollback-file>` runs the V-series round-trip check with blockquote normalization (strips `^> ?` per line before comparing). Use it in every judge runner that grades V-assertions — raw `grep -F` and Python `in` both fail on multi-paragraph prompts because the Actor pastes them as `> `-prefixed blockquotes. Exits 0 on match, 1 on miss.
+
 ## Layout
 
 ```

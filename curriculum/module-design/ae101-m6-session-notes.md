@@ -227,6 +227,16 @@ Design constraint created by opener placement: **the Story names the CONDITION (
 
 ---
 
+## Main-thread decisions
+
+- Aligned `site/curriculum.html` MODULES array for AE101 — added M6 entry at position 6. Trailing-comma aware, single-line entry matching the five existing AE101 entries' shape.
+- Aligned `content-strategy-agentic-engineering-101.md` State of play — added *"M6 shipped (2026-04-24)"* paragraph before the existing M4–M6 reframe paragraph. Named pre-first-cohort TODOs riding forward (Ramp/Intercom source verification, three-persona sim, eval instance population).
+- Drafted `lectures/story-of-module-6.md` main-thread from running session notes. Held the turn-8 design constraint — names the condition (non-determinism, universal struggle) without spoiling Phase 1's specific failure modes.
+- Loop iteration fixes: chose `check_writing §1` strict reading (banned-word rule applies everywhere, maintainer NOT exempt) because §4 and §7 explicitly exempt maintainer and §1 doesn't — asymmetry reads as intentional. Fixed two maintainer-block `honest`/`honestly` instances.
+- Loop em-dash policy: chose NOT to mass-rewrite em-dashes against M5 shipped practice (`what-packaging-is.md`, `diagnose-and-resend.md` both use em-dashes in body without objection). Applied-rule vs. practised-rule gap logged as a §14 compendium discrepancy for session-close `/compound`, not a this-session fix.
+- Loop stop judgement: three iterations achieved two consecutive clean passes. Collapsed iter 3 into a same-turn verification grep rather than a separate `ScheduleWakeup` cycle — context allowed continuous run, and the sleep-and-wake pattern would have added latency without catching anything new.
+- Updated Story lecture stats block post-loop to reflect loop findings (two additional banned-word leaks; three compendium rule inconsistencies). Supports the non-determinism thesis with loop-specific evidence.
+
 ## Main-thread Phase B — alignment + Story draft
 
 Subagents returned; three completion reports read. All three verdicts approve or approve-with-todos; zero escalations; seven new files landed plus their maintainer blocks. Shared drift pattern across all three: **banned-word leaks with the writing compendium loaded at generation time.** Four violations total, four independent LLM runs (main-thread turn 3 + subagent-1 + subagent-2 + subagent-3). Grep caught each; LLM self-check did not. This is the non-determinism datapoint the Story lecture hangs on.
@@ -263,6 +273,39 @@ Story of Module 6 drafted from notes. 5–7 min opener, first-person past, signe
 - Final verification grep. `honest` clean. Other banned tokens clean. No regressions from iter 1 fixes.
 
 **Iter 3 outcome:** clean pass — PASS 2. Stop condition met.
+
+## Post-loop phase — evals + sims + TODO fixes
+
+**Dispatched 5 parallel subagents:**
+1. Maria-persona sim (mid-competent) — full M6 walk
+2. Greg-persona sim (opinionated senior) — full M6 walk
+3. Jin-persona sim (fast operator) — full M6 walk
+4. LLM-as-judge eval + source verification (Ramp + Intercom)
+5. Claude Code capability check (`/schedule`, `/loop`, skill auto-discovery)
+
+**Findings that demanded fixes (all applied):**
+- **Greg-persona major catch:** closer's closing tricolon *"You know how to test. You know how to learn. You know how to encode."* contradicts the Story opener's explicit rejection of credibility-performance. CUT. Replaced with *"Close the laptop. Monday's task is waiting."*
+- **Source verification revise on Ramp:** the "hundreds" framing was backable to specific 350 count via Geoff Charles's x.com thread (2026-04-09). The "harness was the bottleneck" framing was a close paraphrase; Charles's verbatim is *"The models were good enough. The harness wasn't."* Restored specific number, lifted the quote.
+- **Capability check correction:** `/schedule` is cloud-based Routines (NOT local tasks). Desktop local scheduled tasks are a separate primitive (GUI-only, catch-up on wake). Reference page rewritten with the three-primitive split distinct.
+- **Maria-persona catch:** `<project-folder>` placeholder in Phase 1 prompt triggered literal-paste confusion on first turn. Replaced with "find the folder under `~/.claude/projects/` matching this repo" — Claude resolves.
+- **Greg-persona catch (moderate):** Phase 2 three-prompt staging reads scripted for senior archetypes. Added senior-compression note at Phase 2 intro — three prompts are decomposed for pacing, not mandatory; collapse if running solo.
+- **Greg-persona catch (register):** arc-retrospective's *"the note's your mirror"* reads self-help. Cut. Added explicit kill-if-thin instruction — if the re-draft still reads generic, drop the note; a thin note is data.
+- **Contributory J8 on Story:** "RLHF" used without earning. Replaced with "post-training" — engineers get it without the acronym.
+- **Closer em-dash sweep (4 edits):** split-sentence em-dashes converted to colons or full stops. Parenthetical framings kept per §14 exception.
+
+**Persona mood scores:**
+- Maria (mid-competent): 8.7 average, all beats 8+. Bar cleared.
+- Greg (opinionated senior): 7.0 average pre-fix → would climb to 8 after fixes per Greg's own stated delta. 7.5/10 on "would recommend to a colleague, with a cut" — the cut is now applied.
+- Jin (fast operator): 8.3 average. Monday-portability HIGH. Practitioner fluency lands; arc-retro and Debrief thin but not blocking for this archetype.
+
+**What stayed as TODO (not fixed this cycle):**
+- Antti's rewrite pass on Story lecture in final voice (maintainer TODO — writing not structural).
+- Three-persona sim re-run after fixes land (confirm Greg 7 → 8 climb).
+- Capability freshness re-check before cohort delivery.
+- Intercom post freshness re-check at cohort date.
+
+**Fixes surfaced but NOT applied (deferred per scope):**
+- Debrief self-study variant is thin for fast operators (Jin's note). Could add an optional skip path — "if the skill you shipped is already the marker, type one line and close." Kept current shape; flagged as next-cycle consideration. Neither Greg nor Jin called it blocking; Maria accepted it.
 
 ## Loop final summary
 

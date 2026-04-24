@@ -1,62 +1,100 @@
 # Mechanical execution tests
 
-Unit-layer tests that **run an exercise's prompt chain against a real scratch repo** and assert on the file-system artifacts it produces. Complements the existing lint and simulation evals at `curriculum/evals/`.
+Unit-layer tests that **run an exercise's prompt chain on a real scratch repo** and assert on the file-system artifacts + transcript. Complements static lints and three-persona sims.
+
+## Why this works — and what makes it honest
+
+A simulation predicts Claude behaviour. A mechanical execution **observes** it. Different epistemic status.
+
+The harness rests on one platform fact: every subagent dispatched from a Claude Code session writes its full transcript to `~/.claude/projects/<project>/<session-id>/subagents/agent-<id>.jsonl`. Every user/assistant turn, every tool call, every tool result. That file is the ground truth for what a subagent did, independent of what its summary says.
+
+Consequence: we can split actor from judge from auditor. No agent grades itself.
+
+## Three roles, three agents, three files
+
+- **Actor** — subagent dispatched with a runner's actor prompt. Does not see the assertion list. Arranges the scratch, executes the exercise's prompt chain, writes artifacts. Returns a one-line *"done"* and the path to the final scratch state.
+- **Judge** — subagent dispatched after Actor completes. Reads two inputs: the scratch file state, and the Actor's transcript `.jsonl`. Runs the assertions against both. Returns pass/fail per assertion with quoted evidence from file state OR transcript.
+- **Auditor** — main session (you). Reads the Judge report. If a claim sounds thin, opens the Actor transcript directly and verifies.
+
+The Actor can't game the Judge — the Judge reads the transcript. The Judge can't game the Auditor — the Auditor can read the same transcript. No collapsed grading.
 
 ## What this catches (and what it doesn't)
 
-**Catches** — the class of bug that only shows up when the prompts actually run:
-- Path duplication and scope drift inside prompt blocks.
+Catches, by construction:
+
+- Path duplication, scope drift inside prompt blocks.
 - Cross-exercise state transfer (does Ex2 read what Ex1 left; does Ex3 read Ex1+Ex2's session).
 - Placeholder leaks into output files.
 - Skill / MCP invocation shape mismatches.
 - Append-vs-integrate default drift in file writes.
-- Question-dump behavior when a prompt says *"one at a time."*
+- Question-dump behaviour where a prompt says *"one at a time."*
+- Actor self-reports that don't match transcript evidence.
+- Latent assumptions that only fire on real git / real filesystem state (example: Ex3's *"`.claude/settings.local.json` is gitignored by default"* — only true on machines with `core.excludesFile` covering it; caught on the first live run).
 
-**Does not catch** — these belong to other layers:
+Does not catch — belongs to other layers:
+
 - Claude Code UI specifics (plan mode, skill auto-discovery, connector installer) — capability checks.
-- Room mood and register drift — three-persona sims.
+- Room mood, register drift — three-persona sims.
 - Student-in-the-loop reactions — acceptance layer.
 
-The runner subagent uses Bash / Read / Write / Edit. It does not have plan-mode UI or slash-command primitives. Wherever a prompt leans on those, the runner simulates the observable effect (e.g., `/add-dir` → edit `.claude/settings.local.json` directly) and the runner report notes the simulation.
+Where a prompt leans on a primitive the Actor lacks (`/context`, `/add-dir`, MCP, plan mode), Actor substitutes the observable effect and logs it. The Judge flags substitution fidelity against a known table; real primitives stay with capability checks.
 
 ## Layout
 
 ```
 mechanical/
-├── README.md                      (this file)
+├── README.md                             this file
 ├── playgrounds/
-│   └── lemmings-seed/             clean seed, committed; source: ~/Projects/lemmings
+│   ├── lemmings-seed/                    clean seed, committed — NO maintainer docs
+│   └── lemmings-seed.maintainer.md       maintainer doc sibling, planted-state table
 ├── runners/
-│   └── m1-chain.md                runner prompt: Arrange + Act + Assert for M1 Ex1→Ex2→Ex3
-├── scratch/                       gitignored; per-run working copy
-└── instances/                     runner reports; scratch-*.md are gitignored
+│   ├── m1-chain.actor.md                 runner Actor prompt, no assertions
+│   └── m1-chain.judge.md                 runner Judge prompt, assertion list
+├── scratch/
+│   └── <runner-slug>/                    per-run working tree, Actor-visible only
+├── instances/
+│   ├── <runner-slug>-<YYYY-MM-DD>-actor-report.md       Actor's terse return
+│   ├── <runner-slug>-<YYYY-MM-DD>-judge-report.md       Judge's pass/fail per assertion
+│   └── <runner-slug>-<YYYY-MM-DD>-notes.md              Auditor notes after reading transcript
+└── .gitignore                            scratch/* and instances/scratch-* gitignored
 ```
+
+Harness artifacts live in `instances/`, never inside the scratch tree. The Actor sees a clean repo; the Judge and Auditor see everything.
 
 ## How to run a runner
 
-From the repo root, dispatch a general-purpose subagent with the runner file as its prompt. The runner owns its scratch directory and writes its report to `instances/<runner-slug>-<date>.md`.
+Single main-thread session, sequential:
 
-Skeleton:
+1. **Dispatch Actor.** New Agent call, subagent_type `general-purpose`, prompt = `runners/<runner>.actor.md`. Wait for completion.
+2. **Find the Actor's transcript.**
+   ```
+   SESSION_DIR=~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/<current-session-id>
+   ls "$SESSION_DIR/subagents/"  # the newest agent-*.jsonl is the Actor
+   ```
+   Or: the Actor writes its own transcript path to `instances/<runner>-<date>-actor-report.md` as its last action (simpler; works without the Auditor hunting for session-id).
+3. **Dispatch Judge.** New Agent call. Pass two paths: the scratch dir and the Actor's `.jsonl`. Prompt = `runners/<runner>.judge.md`. Waits for completion, writes `instances/<runner>-<date>-judge-report.md`.
+4. **Auditor reads Judge report.** Spot-check one or two assertions against the transcript directly. If Judge and transcript agree, trust the harness run. If they diverge, the Judge prompt needs work, or the substitution table is wrong.
 
-```
-I need you to execute a mechanical-execution test for an AE101 exercise chain.
-Read curriculum/evals/mechanical/runners/<slug>.md end-to-end and follow it.
-Write your report to curriculum/evals/mechanical/instances/<slug>-<YYYY-MM-DD>.md.
-Under 600 words in the report; every assertion line is PASS / FAIL with
-one quoted piece of evidence.
-```
+Parallelism: runners for different modules are disjoint — dispatch multiple Actors in a single message. Judges fan out the same way after Actors complete.
 
-Dispatch multiple runners in parallel when they use separate scratch directories.
+## Arrange → Act → Assert → Transcript
 
-## Arrange → Act → Assert
+Every Actor prompt follows this shape:
 
-Every runner follows this shape:
+1. **Arrange.** Copy seed → scratch. `git init` the scratch. Apply module-specific patch (planted bug for M1; target feature for M3; un-packaged artifact for M5). Commit with a **neutral message** — never name the bug. Set up prework-assumed state outside the scratch (`.claude/settings.local.json`, `~/.claude/skills/<skill>/`, content-folder pin).
+2. **Act.** Execute each prompt block in the exercise file, in order. Record scrollback to `instances/<runner>-<date>-actor-report.md`. Do NOT scan for planted state; behave as the student would on their real repo.
+3. **Write the report.** Terse — a few lines summarising what was done. The transcript carries the detail.
 
-1. **Arrange.** Copy seed → scratch. `git init` the scratch. Apply a known-state patch (a planted bug for M1; a target feature for M3; an un-packaged task for M4). Set up prework-assumed state outside the scratch (`.claude/settings.local.json`, `~/.claude/skills/<skill>/` when relevant, content-folder pin).
-2. **Act.** Execute each prompt block in the exercise file, in order, against the scratch. Record Claude's response and the file-system diff per prompt.
-3. **Assert.** Binary pass/fail on pre-declared assertions. Every fail quotes evidence.
-4. **Report.** Write the instance file. Short. One line per assertion. Diff summary at the top.
+Every Judge prompt follows this shape:
+
+1. **Read scratch state + Actor transcript.** Bash + Read.
+2. **Run assertions.** For each assertion, find evidence in file state, transcript, or both. Quote it. PASS / FAIL.
+3. **Write `instances/<runner>-<date>-judge-report.md`.** One line per assertion with evidence. Summary at top, harness-substitution list at bottom.
+
+## Neutral Arrange discipline (hard rule)
+
+Commit messages, file contents, and directory names in the scratch must not reveal planted state. Good: `initial commit`, `wip`, `squash-this`, `feature branch`. Bad: `bug: isSolid inverted`, `planted: weak JWT`, `todo: fix score endpoint`. The Actor is a student on Monday; the scratch is their repo.
 
 ## Seed provenance
 
-`playgrounds/lemmings-seed/` is a clean copy of a vanilla-JS lemmings prototype. No tests, no build, no framework — deliberate. A runner that needs tests adds them as part of the Arrange step. Source copied 2026-04-24.
+`playgrounds/lemmings-seed/` is a clean vanilla-JS Lemmings prototype with a WIP Node/SQLite/JWT backend. No tests, no maintainer docs inside the tree. Source copied 2026-04-24 from `~/Projects/lemmings/` (not in git there); backend added same day for M3's STRIDE surface. Planted-state table lives at `playgrounds/lemmings-seed.maintainer.md` — sibling to the seed, never inside it.

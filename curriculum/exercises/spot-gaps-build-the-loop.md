@@ -21,7 +21,7 @@ Ask Claude to read both runs side by side and name where packaging caught, where
 ```
 I have two runs of the same multi-hour task on disk. The M4 run was un-packaged — no reference artefact, no plan.md, no verifier. The M5 run was packaged — all three pieces in play, verifier fired during the run.
 
-Read both. Start with repo state: commits since M4 send-off, commits since M5 re-send, what each run touched. Then read both session transcripts under `~/.claude/projects/<project-folder>/`. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
+Read both. Start with repo state: commits since M4 send-off, commits since M5 re-send, what each run touched. Then read both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/` in a folder matching this repo. Find the folder and walk the M4 session and the M5 session. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
 
 Walk the diff across four dimensions:
 
@@ -46,6 +46,8 @@ You should close Phase 1 with a ranked gap list (three to five items) and a domi
 ## Phase 2: Author the second skill (~25–35 min)
 
 Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
+
+The three prompts below (author, critique, invoke) are decomposed for pacing. If you've run this move before and are working solo, collapse them: paste the first prompt and ask the same conversation to critique before save and invoke after. The three moves don't change.
 
 Three common shapes from the convergence of practitioners running long tasks:
 

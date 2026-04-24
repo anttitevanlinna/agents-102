@@ -10,7 +10,7 @@ Then I am going to ask you to hold something uncomfortable about LLMs, based on 
 
 ## The numbers
 
-One session. 2026-04-24. One model: `claude-opus-4-7`, 1M context. Twenty-odd turns of planning before any file landed. Five taste reversals from me — moments where Claude recommended a direction with visible confidence and the recommendation was wrong. Three subagents dispatched in parallel for the generation phase. Four banned-word violations across those three subagents, same rules loaded, same task. A self-paced verifier loop ran after.
+One session. 2026-04-24. One model: `claude-opus-4-7`, 1M context. Twenty-odd turns of planning before any file landed. Five taste reversals from me — moments where Claude recommended a direction with visible confidence and the recommendation was wrong. Three subagents dispatched in parallel for the generation phase. Four banned-word violations across those three subagents, same rules loaded, same task. A self-paced verifier loop ran after. The loop caught two more banned-word leaks that four separate LLM self-checks had already missed. The loop also found that three of the rules the system was applying contradict each other.
 
 Those numbers are the story. Everything that follows is commentary.
 
@@ -20,7 +20,7 @@ Those numbers are the story. Everything that follows is commentary.
 
 **The banned word.** There is a word in our writing rules that is hard-banned. It does not appear in any curriculum file we ship. The rule was loaded into context. Claude used it twice in the third turn. When I dispatched three subagents in parallel to write the M6 files, three of them used the same word. Same rule, same compendium, same task, four separate violations across four independent LLM instances. The grep pass caught each one. The LLM self-check did not.
 
-**The end-state that was not.** Early in planning I asked Claude to draft the lecture you are reading right now. The first recommended framing was about trust. About how *we live what we teach* and *the method scales to messy work*. A confident recommendation. It was also wrong. This lecture is not about credibility. It is about something harder. I cut the credibility framing and said: the LLM is not a deterministic machine. Struggle is universal. Claude produced the credibility framing because its RLHF prefers warmth over directness. The real story was one reframe away and the LLM did not find it on its own.
+**The end-state that was not.** Early in planning I asked Claude to draft the lecture you are reading right now. The first recommended framing was about trust. About how *we live what we teach* and *the method scales to messy work*. A confident recommendation. It was also wrong. This lecture is not about credibility. It is about something harder. I cut the credibility framing and said: the LLM is not a deterministic machine. Struggle is universal. Claude produced the credibility framing because its post-training prefers warmth over directness. The real story was one reframe away and the LLM did not find it on its own.
 
 ## The generalisation
 

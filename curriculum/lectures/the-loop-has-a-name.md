@@ -14,7 +14,7 @@ That thing has a name.
 
 Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 
-Practitioners call them judges when the check is itself an LLM reading the work. Verifiers when the check is deterministic — tests, lint, compile, a shell hook that returns true or false. Gates when the same check is placed in CI and a pull request can't merge without it. Three names, one thing. All three are evals.
+Practitioners call them judges when the check is itself an LLM reading the work. Verifiers when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. Gates when the same check is placed in CI and a pull request can't merge without it. Three names, one thing. All three are evals.
 
 An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. The word carries more weight in the vendor literature than it deserves. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules.
 
@@ -22,9 +22,9 @@ Naming it matters because the word is what lets you compose. Once you see the ve
 
 ## The shape it grows into — one team
 
-Ramp's engineering org runs a plugin-style marketplace — an internal catalogue of skills their engineers author and share. Last public count put it in the hundreds. The framing from Ramp's own engineers is worth sitting with: *the harness was the bottleneck, not the model.* For a long time the industry talked about agents as if the model was the limit. Ramp's answer was that the limit was the kit around the model — the skills, the judges, the conventions. They built the harness. The model got better on its own.
+Ramp's engineering org runs a plugin-style marketplace: an internal catalogue of skills their engineers author and share. Geoff Charles, Ramp's CPO, put the count at 350 in April 2026. His framing is worth sitting with: *"the models were good enough. The harness wasn't."* For a long time the industry talked about agents as if the model was the limit. Ramp's answer was that the limit was the kit around the model: the skills, the judges, the conventions. They built the harness. The model got better on its own.
 
-That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year — that is how a kit of that size gets built. Accretion, one contribution at a time.
+That is the destination shape of what you started authoring at M3 and doubled at M6. Two skills is not a marketplace. Two skills from each of twenty engineers, filtered through human conversation into the ones that carry across the team, compounded over a year. That is how a kit of that size gets built. Accretion, one contribution at a time.
 
 ## The shape it grows into — one org
 
@@ -38,7 +38,7 @@ That is not an aspirational vendor story. That is a post from the person running
 
 One thing your skill can do that you did not try today: run on a schedule.
 
-Claude Code ships scheduling primitives. `/schedule` for a cron-style routine. `/loop` for a self-pacing repeat. The invocation that fits your work depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
+Claude Code ships three scheduling primitives. A Desktop local task for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
 
 Three places this fits naturally. A standing verifier run — the judge reads last night's long-running send-off at 07:00 and has a summary waiting when you open the laptop. A nightly codebase sweep — the gap-finder reads the repo for the drift shape you saw this morning and opens an issue when it finds one. Rule-drift monitoring — a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 
@@ -56,11 +56,11 @@ That stance survives every model change. Practitioner fluency lives in the stanc
 
 Two bridges. The room picks one.
 
-**Core close.** You walk out of M6 holding the move. Monday morning, pick one multi-hour task from your real backlog — the one you have been avoiding because it is too big to hold in your head. Assemble the reference. Open a `plan.md` the agent owns. Point a verifier at the output. Run. Read the artefact. Name the gap. Encode. That is the training continuing without a trainer in the room.
+**Core close.** You walk out of M6 holding the move. Monday morning, pick one multi-hour task from your real backlog. The one you have been avoiding because it is too big to hold in your head. Assemble the reference. Open a `plan.md` the agent owns. Point a verifier at the output. Run. Read the artefact. Name the gap. Encode. That is the training continuing without a trainer in the room.
 
 **Into M7.** If the cohort continues to deliberation, the agent you built across six modules is about to meet other agents. Each engineer brings their stack — their rules, their memory, their skills, their kit. The room deliberates live on a real engineering problem the CTO is actually sitting on. What makes that deliberation work is what you raised together over six modules. The kit is already in the room.
 
-Either way, the loop has a name and you own the move. Close the laptop. You know how to test. You know how to learn. You know how to encode.
+Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 
 <!-- maintainer -->
 

@@ -9,7 +9,11 @@ Target artifacts:
 - `curriculum/reference/scheduled-agents.md` (reference for closer's scheduled-agents callout)
 
 **Eval runs:**
-- (stubbed; to be populated before first cohort)
+- 2026-04-24 LLM-as-judge pass — see `curriculum/module-design/ae101-m6-eval-findings.md`. Four files scored; all approve-with-todos. Essentials pass across all four.
+- 2026-04-24 three-persona sim — Maria (mid-competent) 8.7 avg, all beats 8+. Greg (opinionated senior) 7.0 avg pre-fix, stated delta to 8+ after fixes. Jin (fast operator) 8.3 avg, Monday-portability high. Greg 7s localised to closer's closing tricolon, Phase 2 three-prompt staging, arc-retro solo viability — first two fixed this cycle, third left as register tension with a maintainer flag.
+- 2026-04-24 source verification — Ramp 350-skill count restored via Geoff Charles; Charles's *"the models were good enough. The harness wasn't."* lifted from paraphrase to direct quote; Intercom 19.2% / 14.6 vs 75.8 / 86% / 500-R&D all HOLD; freshness clean.
+- 2026-04-24 Claude Code capability check (via `claude-code-guide`) — `/schedule` corrected from "local" to Routines (remote); Desktop local tasks distinguished as separate GUI-only primitive with catch-up on wake; `/loop` self-paced mode confirmed supported; skill auto-discovery confirmed current.
+- Pending pre-first-cohort: Antti's rewrite pass on Story lecture in final voice; three-persona sim re-run post-fix (confirm Greg 7 → 8 climb); capability + freshness re-checks within two weeks of cohort delivery.
 
 ---
 
@@ -54,52 +58,64 @@ If a working software engineer walks out of this module able to do these three t
 - Credibility-performance (*"we live what we teach; look how well we encoded"*).
 - Trainer-monologue retrospective (Claude writes the arc; student reads; no artefact).
 
-## Contributory judges (stubbed)
+## Contributory judges (populated 2026-04-24)
 
-To be populated before first cohort. Names from the `ae101-m6-verifier.md` judge set:
+Scores averaged across the four M6 files (exercises: spot-gaps-build-the-loop, arc-retrospective; lectures: story-of-module-6, the-loop-has-a-name). Per-file detail in `curriculum/module-design/ae101-m6-eval-findings.md`.
 
-- **J1 — Mood match** (practitioner fluency; 1–5; 3 or below ⇒ revise).
-- **J2 — LO match** (no orphaned LO; no activity without an LO; 1–5).
-- **J3 — Banned-word clean** (ritual / ceremony / substrate / honest / delve / importantly / crucial / landscape-as-verb; binary).
-- **J4 — Student-POV clean** (zero *the student* in body; binary).
-- **J5 — Placeholder-in-fence clean** (zero `[BRACKETS]` inside fenced prompt blocks; binary).
-- **J6 — Skill-invocation clean** (installed skills invoked by name, never by path; binary).
-- **J7 — AE101 delivery architecture** (no training-dir state, no `module-N/` paths, real repo; binary).
-- **J8 — Earn tech terms** (every technical term primed on first use in AE101; 1–5).
-- **J9 — Prompt action lead-in** (every fenced prompt preceded by a one-sentence verb-led lead-in under 20 words; 1–5).
-- **J10 — Em-dash discipline** (count body em-dashes; more than three that split short sentences ⇒ approve-with-todos).
-- **J11 — Link format** (inline links use target H1 title, not filename; zero backtick code-span paths in body; 1–5).
-- **J12 — LLM-vs-agent-vs-Claude discipline** (LLM for thinking, agent for acting, Claude for product/version/disambiguation; 1–5).
-- **J13 — Action-header discipline** (action sections use command verbs; lecture sections may stay declarative; 1–5).
+- **J1 — Mood match:** 4/5. Practitioner fluency lands; closer carries vendor-plug risk that the maintainer watch-for addresses.
+- **J2 — LO match:** 5/5. Every LO covered; no orphans.
+- **J3 — Banned-word clean:** clean across all four files.
+- **J4 — Student-POV clean:** clean across all four.
+- **J5 — Placeholder-in-fence clean:** clean.
+- **J6 — Skill-invocation clean:** clean (skills invoked by name; `~/.claude/skills/<name>/SKILL.md` appears only as ship-destination, never as invocation target).
+- **J7 — AE101 delivery architecture:** clean (real repo, no training-dir state, no `module-N/` paths).
+- **J8 — Earn tech terms:** 4/5. Eval / judge / verifier / gate earned load-bearing at the closer; upstream terms primed in prior AE101 modules.
+- **J9 — Prompt action lead-in:** 5/5. Every fenced prompt preceded by verb-led lead-in under 20 words.
+- **J10 — Em-dash discipline:** 3/5 on the closer (sweep recommended pre-cohort); 4+/5 elsewhere.
+- **J11 — Link format:** 5/5. Titles used, no backtick code-span paths.
+- **J12 — LLM-vs-agent-vs-Claude discipline:** 4/5. Minor first-person-memo blurring in story-of-module-6 (acceptable in voice).
+- **J13 — Action-header discipline:** 5/5.
 
-## Three-persona sim (stubbed)
+## Three-persona sim (run 2026-04-24)
 
-Three personas to run before first cohort:
+- **Maria — mid-competent practitioner.** Mood average 8.7. Every beat 8 or above. No blockers. Flagged: `<project-folder>` placeholder literal-paste snag in Phase 1 (fixed); skill-shape trichotomy felt rigid for hybrid gaps (addressed via maintainer watch-for + flex language); both-runs-balance drift on first-pass diff (addressed via quote-rule push-back already in exercise body).
+- **Greg — opinionated senior.** Mood average 7.0 pre-fix. Reads *"would recommend to a colleague, with a cut"*. Biggest catch: closer's closing tricolon *"You know how to test. You know how to learn. You know how to encode."* read as credibility-performance and contradicted the Story opener's explicit rejection of that framing. CUT this cycle. Secondary: Phase 2 three-prompt staging reads as group-room choreography for senior solo mode (senior-compression note added at Phase 2 intro). Tertiary: arc-retrospective solo viability thin (kill-if-thin instruction added; register-smell *"the note's your mirror"* cut). Greg's stated delta after fixes: 7 → 8. Re-run sim post-fix to confirm.
+- **Jin — fast operator.** Mood average 8.3. Monday-portability HIGH (specific skill he'd wire to a Desktop local scheduled task on real work next week). Arc-retrospective earned its keep barely at 6 min vs 15 budget; Debrief in self-study thin at 3 min. Neither blocking; noted for next-cycle consideration.
 
-- **Mid-competent practitioner** — has shipped with agents once or twice, mid-diagnosis stamina. Watch for: Phase 1 over-diagnosis, skill-shape mismatch at Phase 2.
-- **Opinionated senior** — register smell detector. Watch for: any beat that reads as permission-asking or credibility-performance, especially in the Story opener and the closing-lecture attributions.
-- **Fast operator** — finishes the main exercise in 30 min. Watch for: Phase 2 ships a thin skill that doesn't fire on the diagnosed gap; arc-retrospective runs short because the student didn't engage both runs.
+Target met on mood-at-close for Maria and Jin. Greg at 7.0 pre-fix cleared the *facilitator-premium-signature* threshold in the predicted-post-fix direction — re-run warranted before first cohort to confirm the climb.
 
-Target: 8+/10 on mood-at-close for all three personas. Any senior-premium 7/10 on the closer warrants a register sweep.
+## Source-verification gate (run 2026-04-24)
 
-## Source-verification gate (pre-first-cohort)
+- **Ramp Dojo — 350-skill marketplace.** **HOLDS with specific number.** `observations/ramp.md` confirms "350+ skills shared" from Geoff Charles, x.com/geoffintech/status/2042002590758572377, 2026-04-09. [practitioner direct]. **Action:** update closer from "hundreds" to "350" with Charles attributed.
+- **Ramp "harness was the bottleneck" framing.** **REVISE — close paraphrase, not verbatim.** Charles's exact line in the observation file: *"The models were good enough. The harness wasn't."* [practitioner direct]. **Action:** lift the verbatim quote into the closer instead of the paraphrase.
+- **Intercom Tier 1/2/3.** **HOLDS — all numbers.** `observations/intercom.md` + Curran *"2x — nine months later,"* ideas.fin.ai/p/2x-nine-months-later, 2026-04-16. [practitioner direct]. 19.2% auto-approved ✓ / 14.6 min vs 75.8 min org median ✓ / 86% ≤20 lines ✓ / 500-person R&D ✓.
+- **Freshness:** Curran post is 8 days old as of run; well inside 6-month window. Ramp post 15 days old; same.
 
-Before the closer ships, every URL + number + fallback named in the closing lecture's maintainer block must be live-verified:
-
-- **Ramp Dojo — 350-skill marketplace.** Verify against `continuous-research/observations/ramp.md` or the original Ramp post. Source-type label required.
-- **Intercom Tier 1/2/3** — 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D. Verify against `https://ideas.fin.ai/p/2x-nine-months-later` and `continuous-research/observations/intercom.md`. Source-type label required.
-
-Freshness: 6-month window. If any number drifts, update the lecture before the cohort.
+Proposed edit text and per-file judge detail: `curriculum/module-design/ae101-m6-eval-findings.md`.
 
 ---
 
 ## Verdict
 
-**(stubbed — populate after first LLM-as-judge run and three-persona sim.)**
+**approve-with-todos** (2026-04-24 LLM-as-judge run + three-persona sim + source-verify + capability check). All essential judges pass on all four files. Earlier blockers resolved this cycle:
+- Closer source-verify edit: *"hundreds"* → *"350"*, paraphrase → verbatim Charles quote — **applied**.
+- Em-dash sweep on closer (four split-sentence em-dashes converted; parenthetical framings kept) — **applied**.
+- Greg-persona closing-tricolon cut (*"You know how to test..."* → *"Close the laptop. Monday's task is waiting."*) — **applied**.
+- Scheduled-agents reference page three-primitive split — **applied**.
+- Phase 2 senior-compression note at exercise intro — **applied**.
+- Arc-retrospective kill-if-thin instruction + register-smell cut — **applied**.
+- Story lecture `RLHF` unearned-term fix — **applied**.
+- Main exercise Phase 1 `<project-folder>` placeholder snag — **applied**.
+
+**Remaining TODOs before first cohort:**
+- Antti's rewrite pass on the Story of Module 6 lecture in final voice (maintainer TODO — writing pass, not structural).
+- Three-persona sim re-run after fixes land to confirm Greg mood-at-close climbs from 7 → 8.
+- Capability freshness re-check within two weeks of cohort delivery (`/schedule`, `/loop`, skill auto-discovery).
+- Intercom post freshness re-check at cohort date (currently 2026-04-16, within the six-month window by a wide margin).
+- Next-cycle consideration (non-blocking): Debrief round self-study variant for fast operators — Jin finished in 3 min; consider an optional skip path when the shipped skill is already the practitioner-fluency marker.
 
 ## Next
 
-1. Run LLM-as-judge per `curriculum/evals/exercise.md` template against the main exercise and arc-retrospective.
-2. Run three-persona sim against the module spine + both exercises + the closer.
-3. Source-verify both lecture numbers.
-4. Populate convergent findings + essential/contributory judges from run output.
+1. Antti rewrites the Story of Module 6 opener in his final voice.
+2. Re-run three-persona sim post-fix; confirm mood climbs.
+3. Source + capability freshness re-checks pre-cohort.

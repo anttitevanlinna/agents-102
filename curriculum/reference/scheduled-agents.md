@@ -6,11 +6,11 @@ Lookup page for the three ways Claude Code runs on a clock. Pick the one that ma
 
 ## The three primitives
 
-### `/schedule` — local scheduled task
+### Desktop local task — the everyday choice
 
-The everyday choice. A prompt runs on your laptop on a cadence (daily 7:00am, weekdays 9:00am, every 30 minutes).
+A prompt runs on your laptop on a cadence (daily 7:00am, weekdays 9:00am, every 30 minutes).
 
-**How to set one up.** Open the **Schedule** sidebar, pick **New task → New local task**, name it, paste the prompt, pick a frequency.
+**How to set one up.** Open the **Schedule** sidebar, pick **New task → New local task**, name it, paste the prompt, pick a frequency. GUI-only today; no slash command.
 
 **Missed runs catch up on wake.** If the laptop slept through 7:00am, the task fires once when the app next comes online (7-day window — older misses drop). Put a time guard in the prompt itself if a late-morning catch-up would cause trouble: *"Only run if it's before 10:00am. Otherwise report that you skipped today's run."*
 
@@ -18,39 +18,46 @@ The everyday choice. A prompt runs on your laptop on a cadence (daily 7:00am, we
 
 ### `/loop` — in-session recurring
 
-Type `/loop <interval> <prompt>` and the prompt fires every interval while the session is open. Closes when the session closes.
+Type `/loop <interval> <prompt>` and the prompt fires every interval while the session is open. Closes when the session closes. No catch-up on wake (the session has to be live).
+
+Omit the interval (`/loop <prompt>`) for self-paced mode: Claude picks the cadence based on activity.
 
 Good for polling and iteration during active work. *"Check the build every 5 minutes until it passes."* *"Re-run the verifier every 2 minutes on each new commit."* *"Re-read the draft every 3 minutes and tighten one section."* Ralph-style re-feed sits here.
 
-### Routines — remote, Git-dependent
+### `/schedule` / Routines — remote, Git-dependent
 
-Same Schedule sidebar: **New task → New remote task.** Runs on Anthropic's cloud whether your laptop is on or off. The cloud runner needs somewhere to pull from, which typically means a cloud Git repo.
+Type `/schedule daily PR review at 9am` or use the sidebar: **New task → New remote task.** The prompt runs on Anthropic's cloud whether your laptop is on or off. The cloud runner needs somewhere to pull from, which typically means a connected GitHub repo cloned fresh on each run.
 
-**Not the default for AE101.** Your real repo is local in these exercises; Routines assumes the working directory lives in the cloud. Good to know the primitive exists; reach for it when your team already has a Git-backed workflow for agent work.
+**Not the default for AE101.** Your real repo is local in these exercises; Routines assumes the working directory lives in a cloud Git repo. Good to know the primitive exists; reach for it when your team already has a Git-backed workflow for agent work. No catch-up on wake (runs in the cloud; the cloud doesn't sleep).
 
 ## When each fits
 
 | Primitive | Good for | Not for |
 |---|---|---|
-| `/schedule` | Standing verifier runs, nightly codebase sweeps, rule-drift monitoring, scheduled research OODA loops | Anything that needs to react in the same session you're actively working in |
+| Desktop local task | Standing verifier runs, nightly codebase sweeps, rule-drift monitoring, scheduled research OODA loops. Catch-up on wake means weekend misses don't drop on Monday | Anything that needs to react in the same session you're actively working in |
 | `/loop` | Iterative polish on active work, continuous check-and-fix, Ralph-style re-feed patterns | Morning automation when you're not at the laptop |
-| Routines | Cloud-Git workflows, multi-machine scenarios where any laptop might be off | Local-repo training work (AE101 default) |
+| `/schedule` (Routines) | Cloud-Git workflows, multi-machine scenarios where any laptop might be off | Local-repo training work (AE101 default) |
 
 ## How it composes with an authored skill
 
 The scheduled agent invokes the skill. The skill is the thing that catches the gap, judges the output, or packages the move. The scheduler just tells it when.
 
-**Nightly verifier run.** `/schedule` at 2:00am → prompt reads *"Invoke the `commit-verifier` skill on the last 24h of commits. Report anything the skill flags."* The skill is the check; the schedule is the cadence.
+**Nightly verifier run.** Desktop local task at 2:00am → prompt reads *"Invoke the `commit-verifier` skill on the last 24h of commits. Report anything the skill flags."* The skill is the check; the schedule is the cadence.
 
 **Continuous polish loop.** `/loop 3m` while editing → prompt reads *"Invoke the `tighten-draft` skill on the current file. Propose changes."* The skill is the move; the loop is the rhythm.
 
-**Rule-drift monitor.** `/schedule` weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."* Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.
+**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."* Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.
 
-*Official docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [/loop](https://code.claude.com/docs/en/scheduled-tasks).*
+*Official docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [/loop](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines).*
 
 <!-- maintainer -->
 
+**Capability verification (2026-04-24, `claude-code-guide` agent):**
+- `/schedule` creates cloud-based Routines; GUI equivalent is Schedule sidebar → New task → New remote task. Git-connected repo required.
+- Desktop local tasks are GUI-only (Schedule sidebar → New task → New local task). Catch-up on wake: Desktop fires one catch-up run for the most recently missed time within a 7-day window.
+- `/loop` supports fixed interval (`/loop 5m <prompt>`) and self-paced mode (omit interval); no catch-up (session-bound).
+- Skills auto-discover at `~/.claude/skills/<name>/SKILL.md` within the same session; no restart, no registration.
+
 **TODO (pre-first-cohort):**
-- Capability verification: confirm `/schedule` + `/loop` exact syntax and current-as-of-date behaviour via the `claude-code-guide` agent before first cohort ships. Verify the 7-day catch-up window and "fires once on wake" claim haven't changed since `claude-quick-reference.md § Scheduling` was last verified. Trust-but-verify — WebFetch the official docs URL directly since both claims are load-bearing for M6's closing-lecture scheduled-agents callout.
-- Freshness: this page is platform-fact-heavy. Re-verify on the same cadence as `reference/claude-quick-reference.md`.
-- Cross-link: once M6's closing lecture ships, confirm the scheduled-agents callout links here with the target's title (*"Scheduled agents"*) not the filename.
+- Re-verify on the same cadence as `reference/claude-quick-reference.md` — capability surface changes mid-year.
+- Cross-link check: once M6's closing lecture ships, confirm the scheduled-agents callout links here with the target's title (*"Scheduled agents"*) not the filename.

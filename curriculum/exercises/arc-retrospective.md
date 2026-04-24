@@ -35,7 +35,9 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 
 Read the note. Push back where the agent over-generalises, or where it praises without quoting. This isn't a retrospective report card; it's a reading. The quoted moments are the substance. If the note reads generic, ask the agent to re-draft with more quotes and less framing.
 
-Once the note reads true to you, save it. You'll come back to it. Not every week. But the next time you hit a long task and feel stuck on how to prepare it, the note's your mirror.
+If after one re-draft the note still reads thin, drop it. A thin note is data: it tells you the artefacts don't yet carry the density the arc-reading needs. Better no note than a template.
+
+If the note reads true, save it. You'll re-read it when the next long task stalls.
 
 <!-- maintainer -->
 

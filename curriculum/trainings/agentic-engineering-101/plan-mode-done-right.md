@@ -113,6 +113,4 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 - Community plan-critique skills — none found in shipped Claude Code as of 2026-04-22. If a practitioner-authored skill emerges, surface it at the Nerd's P3 blocker.
 - Lecture worked-example decision: add a 30-sec plan-snippet example between "three things" and "three pressures"? Defer to first cohort sim feedback.
 
-**TODO (pre-first-cohort):**
-- Wizard-demo choice for M2 opener — does the trainer demo plan-mode push-back on a volunteer repo? Menu of 2–3 options for cohort flexibility.
-- Verify *keep planning with feedback* UX on the cohort's Claude Code version. Also verify whether softening-on-regeneration (Claude acknowledges push-back but re-softens the step) is reliable — if yes, named failure mode; if not, drop from watch-fors.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

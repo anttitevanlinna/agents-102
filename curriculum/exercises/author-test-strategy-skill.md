@@ -122,8 +122,4 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 - Sponsor-stated team-kit home — Phase 1 authoring path + Phase 4 ship destination
 - Hardening decision ADR (from Ex2) — read by Phase 3 invocation
 
-**TODO (Pass 3):**
-- Worked-example: what a *good* first-pass SKILL.md looks like for a realistic codebase (e.g., a Node.js service with Jest + Playwright + Docker-Postgres integration). Ship inline or link to a reference file. Defer to first sim.
-- Confirm Claude Code's current skill file format (frontmatter schema, any required fields). Capability check before first cohort.
-- Team-kit home Ops runbook — who creates the default repo if sponsor answered "we don't have one," when, how the students get access. Cross-cutting TODO, not M3-specific.
-- Three-persona simulation — this is the authoring exercise, the one most likely to surface the default-acceptance and generic-pyramid failure modes. Worth a detailed sim before first cohort.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

@@ -160,7 +160,4 @@ See the module file for the two Debrief prompts.
 - Voice-smuggling at Phase 3 or Debrief — if it starts sounding like M5's unleashed leverage, student thinks this is the leverage moment. It isn't. M4 is readiness without completion.
 - Package-pre-empt at Debrief — the highest-probability module-specific failure.
 
-**TODO (pre-first-cohort):**
-- Re-simulation after the 2026-04-23 reshape.
-- Worked-example task shapes by engineer archetype (backend / frontend / platform / data) at `curriculum/reference/picking-a-first-long-task.md`.
-- Paired sim against M5's return exercise — does the un-packaged artifact give M5 enough surface for diagnosis-by-contrast?
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

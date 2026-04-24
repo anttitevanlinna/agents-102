@@ -101,6 +101,4 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Scratch path:** Claude picks a temp directory for the student's OS (`$TMPDIR`, `/tmp`, or equivalent) and reports the absolute path back. Kept deliberately outside the repo — this is session scratch, not memory. M4 teaches the durable tier (`.claude/memory/`); the contrast between `/tmp/`-tier ephemeral and `.claude/memory/`-tier durable is pedagogy. No gitignore concern; nothing lives in the repo. Windows-native caveat: if a cohort lands without WSL, revisit — `%TEMP%` is fine but path conventions differ.
 
-**TODO (Pass 3):**
-- Worked-example output snippet (what a "surface map" actually looks like for a realistic feature). Defer to first sim.
-- Three-persona simulation.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

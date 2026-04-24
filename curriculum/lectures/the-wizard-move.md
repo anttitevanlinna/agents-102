@@ -65,5 +65,4 @@ You become the Claude wizard by running the loop on real work and letting the ha
 **Demo watch-fors:**
 - Room wants something code-specific up front — hold. The exercise is on their codebase; the opener isn't. The abstract demo is what makes Monday-on-their-repo feel inevitable rather than impressive.
 
-**TODO (pre-first-cohort):**
-- **Register polish.** Greg-persona sim hallucinated pep-talk lines — trim training-author warmth; keep the Rory beats.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

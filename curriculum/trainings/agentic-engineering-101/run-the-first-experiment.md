@@ -131,8 +131,6 @@ M5 opens with what came back, or what you caught before it went further. Tomorro
 **Open questions surfaced for later passes:**
 - Task-size calibration guide — current Nerd logic names the constraint (sustained coherence, requirement-weaving, multi-file) but doesn't give worked examples. Worth a short reference file like `curriculum/reference/picking-a-first-long-task.md` with 3–4 shape-examples by engineer archetype (backend / frontend / platform / data).
 - M5 handoff: send-off mechanism documented in `reference/claude-code-for-engineers.md § 9` (laptop-sleep freezes session; Ctrl+C mid-tool can corrupt `.jsonl`; no session budget cap). M5 Pass 2 reads the reference when drafting the return exercise.
-- Agentic Nerd skill — Nerd logic in this maintainer block is the module-specific piece; the running companion is still TODO at portfolio level.
+- Agentic Nerd skill — Nerd logic in this maintainer block is the module-specific piece; the running companion lives at `content/skills/agentic-nerd/SKILL.md` (installed personally at prework).
 
-**TODO (pre-first-cohort):**
-- Re-simulation after the 2026-04-23 reshape (see eval instance).
-- Task-size calibration reference (as above).
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

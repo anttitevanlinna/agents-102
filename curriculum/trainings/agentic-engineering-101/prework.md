@@ -67,7 +67,6 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback TBD. Don't absorb install debugging into M1 time.
 - **Delivery:** classroom cohorts get the zip link via email + Slack/Teams ahead of Day 1. Self-study students download from the site.
 
-**TODO (pre-first-cohort):**
-- **Sim + eval the two minimal skills** on a real Node.js backend. Skill bodies are deliberately minimal (situation + audience + output shape, no methodology teaching).
-
 **Packaging:** `scripts/build-ae101-content-zip.sh` builds `agents-102-content-agentic-engineering-101.zip` from repo. Run before each cohort; host per customer.
+
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

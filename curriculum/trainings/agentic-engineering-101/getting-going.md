@@ -81,6 +81,4 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Convergence Level 3. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`. Attributed inside Claude's Ex3 compound summary, not in a lecture.
 - **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4.
 
-**TODO (pre-first-cohort):**
-- **Three-persona sim on the three new exercises** (Maija / Greg / Jin). Focus: Ex1 introspection feel, Ex2 tests-first + diff push-back, Ex3 compound move + MCP gate realism, register-drift (Greg-persona catches residual training-author warmth the grep scan misses). Archive per-persona reports under `curriculum/evals/instances/sims/agentic-engineering-101--<exercise-slug>--<persona>.md`.
-- **Self-study Connections variant** — Nerd collects and reflects thematic tendencies from the student's shared tricks.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

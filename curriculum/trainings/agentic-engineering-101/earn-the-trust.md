@@ -128,5 +128,4 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 - ADR convention if the sponsor repo has none — training default `docs/adr/0001-slug.md` (context / decision / consequences)?
 - Team-kit home spin-up if the sponsor answered "we don't have one" — Ops-side, before Day 1.
 
-**TODO (pre-first-cohort):**
-- Capability check: current Claude Code skill invocation UX (where skills live in content folder, how students invoke from there).
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

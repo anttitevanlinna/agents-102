@@ -103,5 +103,4 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 
 **Scratch path:** threat list lands alongside Ex1's surface map in the same Claude-chosen temp directory. Outside the repo; no gitignore concern. See Ex1 maintainer note on the `/tmp`-tier vs `.claude/memory/`-tier pedagogy.
 
-**TODO (pre-first-cohort):**
-- Three-persona simulation — mid-competent / opinionated senior (the senior will likely argue STRIDE is dated — exercise survives the argument because the authoring move stands) / fast operator.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

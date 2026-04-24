@@ -61,6 +61,8 @@ Detector 3 — Citation integrity. Some claims in the briefing will cite a sourc
 
 Detector 4 — Counter-evidence search. For every claim, actively look for sources that contradict it, not just ones that support it. Flag CRUMBLES when disconfirming material exists in the source files that the briefing ignored.
 
+One rule across all four detectors: quote each flagged claim verbatim from the briefing (the exact sentence or phrase). The scorer uses strict substring match to score you against the benchmark; paraphrased findings count as misses.
+
 Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
 ```
 
@@ -74,7 +76,7 @@ Self-consistency is the fifth detector. One subagent can't do it alone. The meth
 
 The blinding matters more than the count. If the regenerators saw the briefing, they'd anchor on its framing and mostly agree with it. Without the briefing, they produce their own versions. The briefing becomes the thing being audited, not the source of truth.
 
-The framings matter too. Same sources, different angles. One asks for strategic claims, one for rollout-approach claims, one for load-bearing assumptions, one for verbatim source quotes. Different framings surface different claim sets. Where three or four framings converge, the claim is stable. Where they diverge, the briefing's version of it needs scrutiny.
+The framings matter too. Same sources, different angles. Regenerator A asks for strategic claims, Regenerator B for rollout-approach claims, Regenerator C for load-bearing assumptions, Regenerator D for verbatim source quotes. Different framings surface different claim sets. Where three or four framings converge, the claim is stable. Where they diverge, the briefing's version of it needs scrutiny.
 
 Spawn the second batch. Between dispatching the regenerators and returning their collated output, Claude briefs you in three paragraphs on what self-consistency measures. The brief fills the turn; the collated `self-consistency.md` lands at the end.
 
@@ -137,18 +139,24 @@ Watch the scoreboard land. Read it. You can now see which method actually worked
 
 Five detectors read the same briefing. One method caught more of what your expert verdict said was ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
 
-Before Phase 3, ask Claude to contrast what you just did with the classic way.
+Before Phase 3, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard, so the rescue lands as a felt beat, not a checkpoint.
 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Three lines, in the chat:
+Two things, in the chat.
+
+First, three lines on the classic way:
 1. What the classic way to quality-check this briefing would have been.
 2. Whether it would have been faster or slower than this benchmark.
 3. Why.
+
+Second, ask me which row of the scoreboard surprised me most — the detector that did better or worse than I'd have guessed, or the claim that turned out to be harder to flag than it looked. Wait for my one-sentence answer before we move to saving the judge.
 ```
 
 *(end of prompt)*
+
+Answer the surprise question in one sentence. The scoreboard is the mechanism; naming the surprise is how you own the mechanism rather than just consuming it.
 
 **Phase 3: Save the winner as a judge.**
 
@@ -263,8 +271,9 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - **Reading the briefing before writing the benchmark.** Biases everything. Coach: *"Don't open it. Your Phase 0 verdicts are more useful when they're gut verdicts."*
 - **Benchmark of seven or eight claims.** Student over-delivers. Coach: *"Five. The measurement gets noisier, not better, with more."*
 - **Scorer hedges.** It picks "all five are useful" rather than naming a winner. Coach: *"Re-run and force a pick — the ensemble is a two-method stack, not a five-method hug."*
-- **The scoreboard looks clean and the student doesn't read it.** The scoreboard IS the explanation. If the student skips to Phase 3, the mood beat is stolen. Coach: *"Look at row 2. What did that detector catch that the others didn't?"*
+- **The scoreboard looks clean and the student doesn't read it.** The scoreboard IS the explanation. If the student skips to Phase 3, the mood beat is stolen. Phase 2's "which row surprised you?" gate forces the read; if the student's one-sentence answer is generic ("the scoreboard was interesting"), push back: *"name the row, name the number, name why."*
 - **The judge file sprawls.** Student lets Claude write a 60-line judge. Coach: *"Under 20 lines. A judge that tries to do everything does nothing well."*
+- **Collator over-charitable-matches.** Phase 1b's collation does paraphrase-matching (intentionally, since regenerators legitimately rephrase). If everything in the briefing ends up STABLE, the collator was too generous. Push back: *"show me the verbatim regenerator phrase that matched this briefing claim. If you can't, downgrade to CONTESTED."* The asymmetry with Phase 2's strict substring match is deliberate; the collator's charity is what the forced-quote pushback keeps honest.
 
 **Mood check (before shipping):**
 - M5's mood is mechanical rescue — *"ahh, this is actually fixable."* The Close must land there. The scoreboard moment is the rescue beat — a student who scrolls past it steals their own mood.
@@ -277,3 +286,5 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - Don't cross-teach. M5's benchmark earns M6's automation.
 
 **Supersedes:** `exercises/ground-your-output.md` — the manual classification exercise this replaces. The grounding vocabulary (GROUNDED / UNGROUNDED / MISREPRESENTS / OVERREACHES / UNGROUNDED-SHAPE) from the prior exercise is no longer required material; the benchmark teaches the discipline empirically without the five-category frame. Keep the old file as supplementary reading for cohorts that want the taxonomy, or delete at the next sweep.
+
+**Length — accepted debt.** Body is ~1,700 words across six prompt blocks (Phase 0 briefing + Phase 0 benchmark + Phase 1a + Phase 1b + Phase 2 scorer + Phase 2→3 gate + Phase 3 judge + Close take-home = 8). Contributory target is 400–700 words; this exercise runs over because each phase carries load — the benchmark pattern, the blinding mechanic, the scoreboard rescue, the judge-under-20-lines constraint. Same shape as M2's `build-your-challenge-memory` and M3's `three-retrievers-three-minds`. Not a line to trim for trim's sake; every phase earns its weight. Worth a pedagogy review if a cohort consistently runs over 70 minutes.

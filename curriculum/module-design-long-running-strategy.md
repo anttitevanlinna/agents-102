@@ -25,8 +25,12 @@ Required:
 - The module's "in detail" section if written
 - The peer Bootstrap lecture or exercise, if porting or riffing on one (`curriculum/lectures/` or `curriculum/exercises/`)
 - The eval template that will be used as the verifier (`curriculum/evals/lecture.md` or `curriculum/evals/exercise.md`)
+- **Frame to land** section — verbatim user-provided framings (3–7 word blunt sentences, named thesis, quoted lines from Antti's planning messages) captured as direct quotes. NOT paraphrased. This is the cite-and-compare source at ship time: the author re-reads these exact sentences and holds the draft against them. Paraphrasing drifts — the M6 generation's turn-7 frame (*"everyone struggles. Surprises happen. The LLM is not a deterministic machine."*) got wrapped in 150 words of philosophising and dropped one sentence entirely because it was captured only in session notes, not as a verbatim check in the reference.
+- **Done-means criterion** — explicit list of what "done" includes. **MUST name the `curriculum-pre-ship-audit` skill invocation as a blocking gate**, not deferred as *"pre-first-cohort TODO."* Per-cohort freshness re-checks are legitimate pre-cohort TODOs. First-pass sim + eval + source-verify + capability-check are not.
 
 ### 2. Plan.md (the up-front plan)
+
+**The plan is a snapshot, not a forecast.** It captures the session's current understanding at the moment of dispatch. The session's actual shape will differ — user nudges, reversals, and discoveries will reshape it. The plan tracks where we thought we were going; the session notes track where we actually went. Don't let the plan's tidiness (clean three-phase layout, neat dependencies) paper over the five-nudge, two-reversal reality a live session produces. A plan that reads as forecast rather than snapshot will mislead the author at mid-session when the session has drifted from it.
 
 A short plan from me, approved in 2 minutes of plan-mode-style review before generation starts. **Pre-flight precedes the plan.** Before drafting the plan block, confirm the `MEMORY.md` PRE-FLIGHT checklist ran — self-review-protocol Next-session-predictions read, relevant `feedback_*` memories grepped, delivery architecture pinned for the training. The plan block should name the pre-flight as done; if any item couldn't run, name it and pause. Running the plan without pre-flight is how prior-session corrections leak back in.
 
@@ -49,12 +53,18 @@ Antti approves, reshapes, or redirects the plan. **Once approved, no re-opening.
 
 ### 3. External verifier
 
-Two verifiers run on close, before handoff:
+**The `curriculum-pre-ship-audit` skill is the composite verifier.** Invoke by name at end of generation cycle against the file list. It dispatches four parallel checks:
 
-1. **Eval template** (`curriculum/evals/lecture.md` or `curriculum/evals/exercise.md`) filled in as an instance at `curriculum/evals/instances/<training>--<module-slug>.md`
-2. **Simulation** — launch a separate general-purpose agent with a student persona, run through the artifact end-to-end, report breakage. Protocol lives in `.claude/skills/content-creation/SKILL.md` § "Simulation protocol."
+1. **Three-persona sim** (mid-competent / opinionated senior / fast operator) — walks the files, scores mood per beat, quotes landed/unlanded sentences.
+2. **LLM-as-judge eval** per `curriculum/evals/lecture.md` or `curriculum/evals/exercise.md` template, filled as an instance at `curriculum/evals/instances/<training>--<module-slug>.md`.
+3. **Source verification** — every numeric claim, practitioner attribution, verbatim quote checked against `continuous-research/observations/` or primary source.
+4. **Claude Code capability check** via the `claude-code-guide` agent — every platform-fact claim current-as-of-date.
 
-Both results ship alongside the draft.
+Any REVISE blocks "done." Approve-with-todos acceptable when TODOs land in maintainer blocks.
+
+**`/loop` stop-condition is augmented.** Two clean passes on grep + verifier is necessary but not sufficient. The `curriculum-pre-ship-audit` skill must also return GO before `/loop` declares done. Grep-cheap dimensions alone don't sample the same errors a senior-persona sim does — M6 generation 2026-04-24 `/loop` stopped clean while a credibility-performance tricolon was still in the closer's last line.
+
+All four results ship alongside the draft.
 
 ## The session shape
 

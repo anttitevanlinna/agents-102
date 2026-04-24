@@ -178,3 +178,63 @@ Design constraint created by opener placement: **the Story names the CONDITION (
 - Turn 1 pre-flight: pulled, loaded `check_student_facing`, loaded `project_ae101_delivery_architecture` — kept me from defaulting to Bootstrap's training-dir assumption.
 - Turn 1 pinned AE101's own mood (*practitioner fluency*) against the Bootstrap SKILL.md mood table (M6 = *unleashed leverage*). Bootstrap mood would have been the default if I'd stayed in the skill's rhythm table and not the AE101 strategy doc.
 - Turn 3 scoped the dominant failure to one, not three. M5's *Phase 1 over-diagnosis* nudge applies to me too.
+
+---
+
+## Subagent decisions
+
+- [subagent-2, the-loop-has-a-name.md]: dropped the hard "350-skill marketplace" number in body, used "hundreds" with a source-verification TODO — rationale: reference artifact flags the 350 number as unverified; shipping the exact count would create a cross-cohort liability the TODO can't retroactively fix. Restore the number if a primary Ramp post pins it.
+- [subagent-2, the-loop-has-a-name.md]: both bridges (Monday-morning core-close + M7 deliberation) ship in the lecture text, trainer/room picks one at delivery — rationale: reference artifact calls for both; picking one at author-time would constrain delivery unnecessarily.
+- [subagent-2, the-loop-has-a-name.md]: zero philosophy callouts in body, one flagged in maintainer (compounding, latent in Ramp accretion beat) — rationale: maintainer watch-for says "don't bolt 19 beliefs on."
+- [subagent-2, the-loop-has-a-name.md]: Ronacher's three-pattern invoked by shorthand (reference, plan, verifier) not re-earned — rationale: earned in M5 closer (`what-packaging-is.md`); re-earning would read as repetition.
+- [subagent-2, the-loop-has-a-name.md]: "ceremony" banned-token slipped in first draft ("more ceremony in the vendor literature than it deserves"), caught on deterministic grep pass, swapped to "weight" — rationale: banned word list in active context but the idiom "carries ceremony" read natural enough to bypass. Grep caught what taste missed. Candidate Story-lecture datapoint.
+
+## Escalations
+
+(none — subagent-2)
+
+---
+
+## Subagent decisions
+
+- [subagent-1, spot-gaps-build-the-loop.md]: compressed exercise to 2 phases (diff+name-gaps as Phase 1; author-the-second-skill as Phase 2) — matches reference's "Phase 1 compressed, Phase 2 canonical" directive; keeps the authoring move as the weight-bearing beat.
+- [subagent-1, spot-gaps-build-the-loop.md]: kept three skill shapes (sharpened-verifier / LLM-judge / gap-finder) as menu rather than pre-selecting — preserves M5's "shape follows evidence" pedagogy; student picks from their own diff.
+- [subagent-1, spot-gaps-build-the-loop.md]: Phase 1 diff framed across 4 dimensions (caught / missed / introduced / where-fix-belongs) — richer than M5's three-lens diagnosis because two runs means the comparison itself is the substance.
+- [subagent-1, spot-gaps-build-the-loop.md]: invocation-as-test beat writes the skill by its name in the prompt ("invoke the skill we just authored — by its name") — enforces check_student_facing §19 (skills by name, never by path) at the exact moment students want to paste the path.
+- [subagent-1, spot-gaps-build-the-loop.md]: team-PR framed as human-conversation-first, explicitly banning auto-PR — extends M3's rule; called out in Phase 2 ship step and in the watch-fors.
+- [subagent-1, arc-retrospective.md]: single-move exercise, one prompt, mirrors orient-and-introspect.md structure — matches "bounded-activity shared-library shape" directive.
+- [subagent-1, arc-retrospective.md]: artefact list named explicitly in the prompt (CLAUDE.md, CLAUDE.local.md, .claude/memory/, ADRs, both skills, M4 run, M5 re-run) — no placeholders; students skim, so the list must be in the prompt itself.
+- [subagent-1, arc-retrospective.md]: prompt uses Task-tool sub-task for fresh read — matches the M4 audit pattern so the move rhymes with earlier modules and the arc-reading isn't colored by current conversation.
+- [subagent-1, arc-retrospective.md]: save destination left open (ADR / memo / standalone file) — reduces retrospective time spent on filing decision; matches practitioner-fluency mood where the save matters more than the shelf.
+- [subagent-1, arc-retrospective.md]: added reusability notes for EM and Bootstrap variants in maintainer block — exercise primary-use is AE101 M6 but shape is generic; flagged for future trainings without adding variant-noise to body.
+- [subagent-1, both files]: ran verifier grep pass before save on both files; spot-gaps-build-the-loop.md shipped with 4 body em-dashes (within discipline), arc-retrospective.md with 1; zero banned-word violations; zero placeholders in fences; zero path-leaks in prompts.
+
+## Subagent decisions
+
+- [subagent-3, spot-gaps-build-the-loop.md]: Meta "Plug points" listed in first-person-to-student voice ("your two artefacts") — rationale: consistent with "always you, never the student" compendium rule; reads natural in Meta list.
+- [subagent-3, spot-gaps-build-the-loop.md]: Bridge split into two labeled paragraphs (core-only / M7+M8) rather than one sentence with an OR — rationale: reference artefact says "ship both framings — trainer picks"; labels make the pick crisp.
+- [subagent-3, spot-gaps-build-the-loop.md]: Key Concepts shape — 5 emergent bullets leading, 2 theme callouts under a sublabel — rationale: matches compounded/2026-04-23-pedagogy-key-concepts-shape.md pattern.
+- [subagent-3, spot-gaps-build-the-loop.md]: Debrief section headed "Debrief" (declarative, not verb-led) — rationale: the section is a round of articulation (understanding), not an action sequence; J13 allows declarative for understanding-shaped sections.
+- [subagent-3, scheduled-agents.md]: Flat table for "When each fits" rather than prose list — rationale: reference page convention (scannable lookup).
+- [subagent-3, scheduled-agents.md]: Three composition examples under "How it composes with an authored skill" (nightly verifier / continuous polish / rule-drift monitor) — rationale: reference-artefact specified "how it composes," examples make the pattern concrete without inflating length.
+- [subagent-3, scheduled-agents.md]: Rule-drift example names M6's second skill as a wire-candidate — rationale: links the reference back to the module that introduces it without creating a curriculum circular-reference.
+- [subagent-3, eval instance]: Primary leap test framed as three items (articulate encode in own words / skill fires on diagnosed shape / name three gap-homes with quoted evidence) — rationale: mirrors reference-artefact mood description; third item guards against the "gap-home confusion" watch-for.
+- [subagent-3, eval instance]: Three-persona sim pre-seeded with mid-competent / opinionated-senior / fast-operator — rationale: matches the proven persona set from M3 eval instance (earn-the-trust) that caught real issues.
+
+## Escalations
+
+(none from subagent-3)
+
+---
+
+## Main-thread Phase B — alignment + Story draft
+
+Subagents returned; three completion reports read. All three verdicts approve or approve-with-todos; zero escalations; seven new files landed plus their maintainer blocks. Shared drift pattern across all three: **banned-word leaks with the writing compendium loaded at generation time.** Four violations total, four independent LLM runs (main-thread turn 3 + subagent-1 + subagent-2 + subagent-3). Grep caught each; LLM self-check did not. This is the non-determinism datapoint the Story lecture hangs on.
+
+Main-thread alignment done:
+- `site/curriculum.html` MODULES array — AE101 M6 entry added at position 6.
+- `content-strategy-agentic-engineering-101.md` § State of play — M6-shipped paragraph added with pre-first-cohort TODOs flagged.
+
+Story of Module 6 drafted from notes. 5–7 min opener, first-person past, signed *— Antti*. Stats block + three fails (chat-shaped turn 1; banned-word leak across four LLM runs; credibility-framed end-state cut at turn 7) + generalisation + land. Design constraint held: names the condition, does not spoil Phase 1 specifics. Maintainer block flags the Antti-rewrite pass and three-persona sim as pre-first-cohort TODOs.
+
+`/loop` fires next.

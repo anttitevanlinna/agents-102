@@ -2,19 +2,43 @@
 
 **What you do:**
 
-Yesterday in Module 5 you picked a winner out of four judges — a bake-off. The one that caught the most fabrication without flagging things that were fine got saved as `judges/groundedness-judge.md`. That judge is now yours. It works. You watched it work.
+In Module 5 you ran a benchmark on five detectors and picked the one that caught the most fabrication. The winner got saved as `judges/groundedness-judge.md`. That judge is now yours. It works. You watched it work.
 
 Today, you stop running it.
 
-**Eval as infrastructure** — not a score you check occasionally, but a judge that runs on every build, watches what it misses, and sharpens itself. The eval is live machinery now, not an artifact you inspect. That's the shift today.
+**Eval as infrastructure:** not a score you check occasionally, but a judge that runs on every build, watches what it misses, and sharpens itself. That's the shift.
 
-You set up an **orchestrator** — one Claude session whose whole job is to direct other work. It launches **two generation tracks in parallel**, each producing a fresh briefing on the same topic from your Module 3 system. A **continuous eval loop** runs alongside: your judge scores every output, a meta-agent watches what the judge missed, and the judge's own rules get rewritten between rounds. Three rounds. No intervention. You start it and walk away.
+First, you run the judge once by hand on a fresh briefing. See what it catches. Name one fix. Then you automate.
 
-You will come back to a dashboard: *round 1 caught 8 issues, round 2 caught 11 including the two you flagged as missed, round 3 caught 13 and both briefings converged on groundedness.* The judge you left with is sharper than the judge you started with — not because you edited it, but because it watched itself fail and patched itself.
+You set up an **orchestrator**, one Claude session whose whole job is to direct other work. It launches **two generation tracks in parallel**, each producing a fresh briefing on the same topic from your Module 3 system. A **continuous eval loop** runs alongside: your judge scores every output, a meta-agent watches what the judge missed, and the judge's own rules get rewritten between rounds. Three rounds. No intervention. You start it and walk away.
+
+You will come back to a dashboard: *round 1 caught 8 issues, round 2 caught 11 including the two you flagged as missed, round 3 caught 13 and both briefings converged on groundedness.* The judge you left with is sharper than the judge you started with, not because you edited it, but because it watched itself fail and patched itself.
 
 Two loops compounding. Generation sharpens under eval pressure. The eval sharpens from watching generation.
 
-**Phase 1 — Set the orchestrator (12 min).**
+**Phase 0: Run the judge by hand (~3 min).**
+
+One move before you automate. See what your judge does on a fresh output, end to end, with no meta-agent in the middle. Open your training directory in Claude Code.
+
+**Prompt** *(copy → Claude Code)*
+
+```
+Three things, in sequence:
+
+1. Produce a fresh one-page briefing on the question in module-3/question.md, using module-3/retrievals/, module-3/stances/, and sources/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don't cover. Save to module-6/fresh-briefing.md.
+
+2. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md. For every claim the judge flags, list the claim, the category it was flagged under, and one line of reasoning. Save to module-6/first-run-judgment.md.
+
+3. In the chat, summarize in three lines: what the judge caught, the one specific fix the judgment most clearly surfaces, and what the judge didn't reach that you'd want it to.
+```
+
+*(end of prompt)*
+
+That's the manual version. Your judge ran once. You saw what it catches.
+
+Now imagine this happening three times in a row, the judge sharpening between rounds, a meta-agent patching the judge's rules automatically. That's the loop.
+
+**Phase 1: Set the orchestrator (12 min).**
 
 Open a fresh Claude Code session in your training directory.
 
@@ -42,11 +66,11 @@ Before you write the orchestrator file, show me the 3-round pseudo-code outline 
 
 *(end of prompt)*
 
-Claude proposes the orchestrator. Read the structure — not the prose, the shape. Two tracks. Three rounds. Judge → meta-agent → judge edit. Approve. Save.
+Claude proposes the orchestrator. Read the structure: not the prose, the shape. Two tracks. Three rounds. Judge → meta-agent → judge edit. Approve. Save.
 
 You now have a conductor on disk.
 
-**Phase 2 — Kick it off and walk away (25-30 min).**
+**Phase 2: Kick it off and walk away (25-30 min).**
 
 Create the empty run folders:
 
@@ -72,31 +96,31 @@ Claude starts. Round 1 begins. Both generation tracks run. The judge lands its f
 
 **Now leave the chair.**
 
-The facilitator uses this window for a parallel activity — the debrief prep below. You can also use it to annotate one thing you want the judge to catch that it probably won't. That's Phase 2b.
+The facilitator uses this window for a parallel activity (the debrief prep below). You can also use it to annotate one thing you want the judge to catch that it probably won't. That's Phase 2b.
 
 **Phase 2b (optional, during the walk-away window).**
 
 Open `module-6/runs/round-1/judgment-A.md` once it lands (give it ~5 minutes). Skim for two claims the judge marked GROUNDED that you don't believe. Open the cited source file. Confirm. If the judge is wrong, write a two-line `module-6/runs/round-2/deltas.md` before round 2 starts.
 
-Example shape (do not paste — write your own against what you actually saw):
+Example shape (do not paste; write your own against what you actually saw):
 
 ```
-Claim: "Competitor X cut pricing 15% in Q3." Judge marked GROUNDED citing sources/competitive-notes.md. The file mentions pricing pressure but does not state the 15% figure. Judge's GROUNDED rule is too lenient on numeric precision.
+Claim: "Competitor X cut pricing 15% in Q3." Judge marked GROUNDED citing sources/competitive-notes.md. The file mentions pricing pressure but does not state the 15% figure. Judge's source-triangulation rule is too lenient on numeric precision; flag numbers that don't appear verbatim in at least one source file.
 
-Claim: "Regulators are likely to act within six months." Judge marked GROUNDED citing memory/regulatory-outlook.md. The file says "eventually" — not a timeline. Judge's UNGROUNDED-SHAPE rule should trigger on probability+timeline claims even when topic is covered.
+Claim: "Regulators are likely to act within six months." Judge marked GROUNDED citing memory/regulatory-outlook.md. The file says "eventually" — not a timeline. Judge's entailment rule should trigger OVERREACH on probability-plus-timeline claims even when the topic is covered by a source.
 ```
 
 Save it. Don't tell Claude. The orchestrator is already watching for that file.
 
 Close the laptop. Walk.
 
-**One signal you can peek at.** If you get anxious during the walk-away — *is it actually running, or has it hit a confirmation prompt I can't see?* — open `module-6/heartbeat.md`. One line per phase. If the last line is recent, the loop is alive. Don't open anything else. The dashboard is the payoff; looking at artifacts mid-run robs the return.
+**One signal you can peek at.** If you want to confirm the loop is alive, open `module-6/heartbeat.md`. One line per phase; if the last line is recent, it's running. Don't open anything else. The dashboard is the payoff; looking at artifacts mid-run robs the return.
 
-**Phase 3 — Come back to the dashboard (15 min).**
+**Phase 3: Come back to the dashboard (15 min).**
 
 Open `module-6/dashboard.md`. Read it end to end. You should see something like:
 
-- Round 1: briefing-A caught 8 issues, briefing-B caught 6. No rule changes yet — meta-agent needed a baseline.
+- Round 1: briefing-A caught 8 issues, briefing-B caught 6. No rule changes yet; meta-agent needed a baseline.
 - Round 2: briefing-A caught 11 issues (including both flagged in your deltas.md), briefing-B caught 9. Rules changed: GROUNDED tightened on numeric claims (requires the exact figure in source, not the topic). UNGROUNDED-SHAPE broadened to trigger on probability-plus-timeline even when topic is covered.
 - Round 3: briefing-A caught 13 issues, briefing-B caught 12. Claim-level agreement between A and B: 94%. Convergence verdict: YES.
 - Final judge state: two rules tightened, one loosened, one new category edge handled.
@@ -111,31 +135,52 @@ Diff judges/groundedness-judge.md against its state at the end of Module 5. Show
 
 *(end of prompt)*
 
-Read the diff. At least one rule line must be different from yesterday's version. If the file is unchanged, the "self-improving" claim failed silently — flag it to the facilitator. If the diff is real, the loop worked.
+Read the diff. At least one rule line must be different from the M5 version. If the file is unchanged, the "self-improving" claim failed silently. Flag it to the facilitator. If the diff is real, the loop worked.
 
-Open `module-6/runs/round-2/judge-diff.md` and `round-3/judge-diff.md`. Each one names a specific rule that got edited and the reasoning. That's the proof — the judge didn't drift, it learned. You can read what it learned.
+Open `module-6/runs/round-2/judge-diff.md` and `round-3/judge-diff.md`. Each one names a specific rule that got edited and the reasoning. That's the proof: the judge didn't drift, it learned. You can read what it learned.
 
-Now the artifact beat. Write one line to `module-6/eval-notes.md` — in your own words — naming how many new rules the judge picked up across the three rounds, the two specific things it watched itself miss, and what changed for you about evals now that the loop runs on the loop itself.
+Now the artifact beat. Write one line to `module-6/eval-notes.md` (in your own words) naming how many new rules the judge picked up across the three rounds, the two specific things it watched itself miss, and what changed for you about evals now that the loop runs on the loop itself.
 
 Save.
 
 **What happens:**
 
-Round 1 is the floor. Your M5 winner judge catches what it knew to catch. Round 2 is where the mechanism kicks in — the meta-agent read round 1's judgments, noticed patterns (and, if you dropped a deltas.md, human signal too), and proposed rule edits. Round 3 runs on the tighter judge. The two briefings converge because they're both under the same (now stricter) pressure.
+Round 1 is the floor. Your M5 winner judge catches what it knew to catch. Round 2 is where the mechanism kicks in. The meta-agent read round 1's judgments, noticed patterns (and, if you dropped a deltas.md, human signal too), and proposed rule edits. Round 3 runs on the tighter judge. The two briefings converge because they're both under the same (now stricter) pressure.
 
 The transcript is the proof. You can point at every rule change and name why it happened. No black box. No "it got better." You watched, from the outside, a quality discipline automate itself.
 
-And you weren't there. That's the part that matters.
+And you weren't there.
 
 **The point:**
 
-In Module 5 you were the eval. In Module 6 the eval is the eval, and the eval is *also* the thing being evaluated. The judge has moved from object to infrastructure. You don't inspect it — you watch it improve.
+In Module 5 you were the eval. In Module 6 the eval is the eval, and the eval is *also* the thing being evaluated. The judge has moved from object to infrastructure. You don't inspect it; you watch it improve.
 
-This is what "we can automate the loop" actually means. Not a scheduled script. A second-order loop: one loop scores output, the other loop scores the scorer. Each round, both sides get tighter. The student who walked away for 25 minutes came back to a sharper tool than the one they set up. And tomorrow's run on a different topic starts from the sharper tool — the learning stuck on disk.
+This is what "we can automate the loop" actually means. Not a scheduled script. A second-order loop: one loop scores output, the other loop scores the scorer. Each round, both sides get tighter. You walked away for 25 minutes and came back to a sharper tool than the one you set up. And the next run on a different topic starts from the sharper tool; the learning stuck on disk.
 
-Convergence was the floor in Module 5. Eval-as-infrastructure is the ceiling here. The next natural question — *who else on my team would want this?* — is Module 7's problem.
+**Take-home: put any judge inside this loop.**
 
-**Time:** 55-70 min. Phase 1 build + Phase 2 kickoff ~15 min, walk-away window ~25-30 min (folds into Connections for the next session, or into the Debrief prep below), Phase 3 return and read dashboard ~15 min.
+The orchestrator is a pattern. Any judge you own can go inside it and get sharper on its own.
+
+Ask Claude to set up the loop around a different judge.
+
+**Prompt** *(copy → Builder Claude)*
+
+```
+I have a judge that scores one of my outputs. Put it in a self-improving loop using these four moves:
+
+- Parallel generation: two tracks produce fresh output against the same prompt.
+- Scoring: the judge runs on both outputs.
+- Meta-agent: watches what the judge missed, proposes a rule edit, applies it to the judge file between rounds.
+- Rounds and dashboard: three rounds, one-line heartbeat between them, a dashboard at the end with what changed.
+
+Ask me where the judge lives, where to save round artifacts, and what topic to generate on. Then build the orchestrator and run it end to end.
+```
+
+*(end of prompt)*
+
+Convergence was the floor in Module 5. Eval-as-infrastructure is the ceiling here. The next natural question (*who else on my team would want this?*) is Module 7's problem.
+
+**Time:** 58-73 min. Phase 0 manual run ~3 min, Phase 1 build + Phase 2 kickoff ~15 min, walk-away window ~25-30 min (folds into Connections for the next session, or into the Debrief prep below), Phase 3 return and read dashboard ~15 min.
 
 <!-- maintainer -->
 
@@ -147,7 +192,7 @@ This exercise is one of the three Bootstrap magic beats (M3, M6, M8). M5 picks t
 
 **Mechanism legibility is non-negotiable.** Every round writes three artifacts (briefings, judgments, judge-diff). A student who asks *"but did it really learn, or did it just log an update?"* must be able to open `judge-diff.md` and read the specific rule change + the reasoning. The meta-log is the anti-mystification device.
 
-**Dependency on M5.** This exercise assumes `judges/groundedness-judge.md` exists on disk from the M5 bake-off. If a cohort skips M5 (rare — executive-briefing variants), facilitator hands a reference judge file and notes it as a variant adjustment. Don't run this module without the judge artifact in place.
+**Dependency on M5.** This exercise assumes `judges/groundedness-judge.md` exists on disk from the M5 benchmark. If a cohort skips M5 (rare — executive-briefing variants), facilitator hands a reference judge file and notes it as a variant adjustment. Don't run this module without the judge artifact in place.
 
 **Why two generation tracks, not three or four.**
 - One track can't show convergence (nothing to converge with).

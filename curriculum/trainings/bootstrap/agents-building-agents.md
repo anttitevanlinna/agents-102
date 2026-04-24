@@ -11,8 +11,8 @@ The tool that builds tools compounds.
 After this module, you will be able to:
 - **Use** Claude Code to generate a new agent that extends your system
 - **Orchestrate** the three strategy skills (`crux`, `assumption-test`, `pre-mortem`) at room scale against a real company question
-- **Produce** a Rumelt-style strategy kernel — diagnosis, guiding policy, experiments, ranked risks — grounded in your actual files
-- **Read** the flywheel itself — why the cycle that sharpened the kernel just now is the one that sharpens it again on Tuesday
+- **Produce** a strategy kernel (diagnosis, guiding policy, experiments, ranked risks) grounded in your actual files
+- **Read** the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Bootstrap)
 
 ## Connections
 
@@ -30,22 +30,22 @@ Hold that. M8 doesn't answer it. It shows you the shape of an answer you'll keep
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
-[Exercise: Joint Double Diamond — diagnose and guide](exercises/joint-double-diamond.md)
+[Exercise: Joint Double Diamond (diagnose and guide)](exercises/joint-double-diamond.md)
 
-The three skills arrived installed in Module 7 on your own sharing problem. Today they re-invoke at room scale on the company question — `crux` finds the load-bearing obstacle, `assumption-test` surfaces what would have to be true, `pre-mortem` names what breaks. Same disciplines. Bigger instrument.
+The three skills arrived installed in Module 7 on your own sharing problem. Today they re-invoke at room scale on the company question. `crux` finds the load-bearing obstacle. `assumption-test` surfaces what would have to be true. `pre-mortem` names what breaks. Same disciplines. Bigger instrument.
 
 ## Key Concepts (Emergent)
 
 - **Self-improvement**: each cycle sharpens the next. The Diamond 2 output reads sharper than Diamond 1 because the agents built on each other's work inside the same session.
-- **Org capability**: twenty people (or one student's full M1–M7 stack plus Teacher Claude's orchestration) just produced a Rumelt-style strategy kernel no consultant could deliver, because it's grounded in your company's own files.
+- **Org capability**: twenty people (or one student's full M1–M7 stack plus Teacher Claude's orchestration) just produced a strategy kernel no consultant could deliver, because it's grounded in your company's own files.
 - **The three predictable walls after Bootstrap**: data access, runtime platform, discoverability. The kernel you just wrote names which wall bites first.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
-- **Skills as thinking disciplines — reusable tools you take home.** `crux`, `assumption-test`, `pre-mortem` aren't Module 8 props. They're named, portable disciplines you point Claude at from Tuesday onward, on any decision that feels too big to eyeball.
-- **Grounding when agents read agents.** Every agent publishes what it has and what it doesn't — a context manifest. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
+- **Skills as thinking disciplines (reusable tools you take home).** `crux`, `assumption-test`, `pre-mortem` aren't Module 8 props. They're named, portable disciplines you point Claude at after training, on any decision that feels too big to eyeball.
+- **Grounding when agents read agents.** Every agent publishes what it has and what it doesn't: a context manifest. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
 
 ## Debrief
 
-Five minutes. Claude reviews the session and sharpens whichever file carried the load — the orchestrator's rules, the strategy kernel itself, the rules that governed how the agents argued. The evidence is what you produced: the context manifests, the pooled cruxes, the guiding policy, the ranked assumptions, the pre-mortem. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
+Five minutes. Claude reviews the session and sharpens whichever file carried the load: the orchestrator's rules, the strategy kernel itself, the rules that governed how the agents argued. The evidence is what you produced: the context manifests, the pooled cruxes, the guiding policy, the ranked assumptions, the pre-mortem. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
 
 **Prompt** *(copy → Builder Claude)*
 
@@ -59,19 +59,19 @@ When you're done, tell me in 3–5 lines: which file you rewrote, what you added
 
 *(end of prompt)*
 
-Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve — it's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again on Tuesday, on Wednesday, on the next problem you don't yet know you have. You just watched it compound.
+Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Bootstrap, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
 
 ## Identity-naming close
 
-**In-room:** the sponsor — who sat alongside the room for all eight modules — names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No ceremony. A name the graduate can say on Tuesday morning to colleagues who weren't there. Identity persists; skills fade.
+**In-room:** the sponsor (who sat alongside the room for all eight modules) names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again on the next problem. That's what you carry out of this room."* No certificate. No graduation. A name the graduate can say, back at work, to colleagues who weren't there. Identity persists; skills fade.
 
-> **In-room cohort — self-study readers, Teacher Claude delivers this beat instead.**
+> **In-room cohort. Self-study readers, Teacher Claude delivers this beat instead.**
 
-**Self-study parallel:** Teacher Claude delivers the naming as a reflective line: *"You are now an agent builder. You built agents that do real work on your own data. You can build another one Tuesday on a new problem. That's what you carry out — not the modules, not the files. The fact that you can make the next one."*
+**Self-study parallel:** Teacher Claude delivers the naming as a reflective line: *"You are now an agent builder. You built agents that do real work on your own data. You can build another one on the next problem. That's what you carry out. Not the modules, not the files. The fact that you can make the next one."*
 
 ## Bridge
 
-The kernel you just produced is a set of assumptions dressed as a policy. Label them. Design experiments to test them. That's Monday. Bootstrap is Step 1 of 5 — Make Your Own is next. You don't graduate. You have a flywheel.
+The kernel you just produced is a set of assumptions dressed as a policy. Label them. Design experiments to test them. That's the first move after Bootstrap. Bootstrap is Step 1 of 5 (Make Your Own is next). You don't graduate. You have a flywheel.
 
 <!-- maintainer -->
 

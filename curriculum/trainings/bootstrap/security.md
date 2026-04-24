@@ -1,21 +1,21 @@
 # Security
 
 ## Big Idea
-You can't tell if your agent is safe by looking at its output. You need a way to check — and the practice is running the check, not waiting for certainty.
+You can't tell if your agent is safe by looking at its output. You need a way to check. The practice is running the check, not waiting for certainty.
 
 ## Meta
-- **Prework:** [Before Module 4](exercises/module-4-prework.md) — two reads: (1) skills as expertise the agent plugs in, (2) agent security vs. classical software security (why the threat model shifts and why mitigations are agent-shaped)
+- **Prework:** [Before Module 4](exercises/module-4-prework.md). Two reads: (1) skills as expertise the agent plugs in, (2) agent security vs. classical software security (why the threat model shifts and why mitigations are agent-shaped)
 - **Homework:** extract one micro-skill from your own reading of a company policy rule; agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern)
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Analyze** a working agent system against company policy rules and agent-specific risks using two pre-made skills
-- **Distinguish** compliant / violating / "I can't tell" for each rule — and recognise that "I can't tell" is a real answer, not a failure
+- **Distinguish** compliant / violating / "I can't tell" for each rule (and recognise that "I can't tell" is a real answer, not a failure)
 - **Apply** an agentic mitigation (scope, split, filter, review, gate) to a specific risk and observe the residual shift
-- **Evaluate** residual risk plainly — what's left after mitigation, and whether the best move is to not open the door in the first place
+- **Evaluate** residual risk plainly. What's left after mitigation, and whether the best move is to not open the door in the first place
 
 ## Connections
-You've had three agents search your company and three more decide. The output looked reasonable. Think of a time you shipped something to a real stakeholder — a deck, a memo, a number — and found out later something was off. What did you wish someone had checked before it went out?
+You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
 
 ## Lectures
 
@@ -26,11 +26,11 @@ You've had three agents search your company and three more decide. The output lo
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
 
 ## Key Concepts (Emergent)
-- **Certainty is a fantasy; the practice is the answer.** Classical software security sells you *secure / not secure*. Agent security can't — non-deterministic system, unbounded input, emergent tool use. You never get a proof; you get a loop. Run the loop, not the anxiety.
-- **Two lenses, two skills.** The `company-ai-policy` skill carries what your company has already decided is off-limits. The `agent-security` skill carries agent-STRIDE and access-control analysis. You didn't have to become a policy expert or a threat modeller — the skill IS the expert.
+- **Certainty is a fantasy; the practice is the answer.** Classical software security sells you *secure / not secure*. Agent security can't (non-deterministic system, unbounded input, emergent tool use). You never get a proof; you get a loop. Run the loop, not the anxiety.
+- **Two lenses, two skills.** The `company-ai-policy` skill carries what your company has already decided is off-limits. The `agent-security` skill carries agent-STRIDE and access-control analysis. You didn't have to become a policy expert or a threat modeller. The skill IS the expert.
 - **"I can't tell" is a real answer.** Most rows in the policy report land here. They're not failures; they're the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
 - **Mitigations are agent-shaped.** Scope, split, filter, review, gate. Not firewalls. An agentic system earns its safety through loop design, not perimeter.
-- **Residual risk is a first-class artifact.** After mitigation, something remains. You name it, accept it on record, or close the door. The best mitigation is the one you didn't need — avoidance beats reduction.
+- **Residual risk is a first-class artifact.** After mitigation, something remains. You name it, accept it on record, or close the door. The best mitigation is the one you didn't need. Avoidance beats reduction.
 - **Skills as expertise injection** (named late). Skills are how an agent borrows capability it doesn't natively have. They scope DOWN (what it can't do) and scope UP (what expertise it brings). Module 7 comes back for sharing them.
 
 ## Debrief
@@ -40,19 +40,21 @@ Five minutes. Claude reviews the audit session and sharpens the skill files you 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Review this session and sharpen the skills. Read skills/company-ai-policy/ and skills/agent-security/ (every file). Scan the audit output in module-4/ — both reports, the mitigation, the residual. Look back over the session: which rows did the skill mark "I can't tell" because the rule itself was ambiguous, where did the skill flag a non-issue, what specific failure class did it miss that you only caught by eye, where did the mitigation reduce one risk but shift another?
+Review this session and sharpen the skills. Read skills/company-ai-policy/ and skills/agent-security/ (every file). Scan the audit output in module-4/ (both reports, the mitigation, the residual). Look back over the session: which rows did the skill mark "I can't tell" because the rule itself was ambiguous, where did the skill flag a non-issue, what specific failure class did it miss that you only caught by eye, where did the mitigation reduce one risk but shift another?
 
-Then rewrite whichever skill file needs it most. Integrate, don't append. Sharpen rules that wobbled, add the failure class the skill didn't catch, tighten the "I can't tell" criteria so the column stays plain rather than avoidant. Do NOT add verification steps that pretend to resolve residual risk — the plain "can't tell" is the discipline. Don't add a "retro notes" section; rewrite the file as the better version.
+Then rewrite whichever skill file needs it most. Integrate, don't append. Sharpen rules that wobbled, add the failure class the skill didn't catch, tighten the "I can't tell" criteria so the column stays plain rather than avoidant. Do NOT add verification steps that pretend to resolve residual risk. The plain "can't tell" is the discipline. Don't add a "retro notes" section; rewrite the file as the better version.
 
-When you're done, tell me in 3–5 lines: which skill you edited, what you added, what you sharpened, what you removed, and why — grounded in specific rows from the audit. Name at least one door the rules now say to keep closed.
+When you're done, tell me in 3–5 lines: which skill you edited, what you added, what you sharpened, what you removed, and why, grounded in specific rows from the audit. Name at least one door the rules now say to keep closed.
 ```
 
 *(end of prompt)*
 
-Read Claude's summary. Push back where it's wrong — *"that rule wasn't ambiguous, I just didn't have the evidence"* / *"you loosened 'I can't tell' — put it back."* The artifact: `module-4/residual.md` — the student's named residuals and one scoping rule that avoids opening a door they'd rather leave closed. The unease stays. Nothing today resolves it. That's the curriculum.
+Read Claude's summary. Push back where it's wrong. *"That rule wasn't ambiguous, I just didn't have the evidence"* / *"you loosened 'I can't tell', put it back."* The artifact is the residual file in `module-4/`: your named residuals and one scoping rule that avoids opening a door you'd rather leave closed. The unease stays. Nothing today resolves it. That's the curriculum.
+
+One thing does travel: the two skills live on disk now. Point them at the other agents you've built. You'll find different "I can't tell" rows everywhere you look. You are continuing to build your agents, aren't you? Even a second one?
 
 ## Bridge
-The agent is scoped, the residual risk is named. But the output *inside* the scope — can you trust what it actually says?
+The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
 
 <!-- maintainer -->
 

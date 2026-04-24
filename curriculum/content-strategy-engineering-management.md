@@ -292,7 +292,7 @@ These land in M4 (vision) and M6 (90-day plan) as directness moments — refuse 
 **Settled with customer:**
 - **Format is either 2 days (intensive) or 6 modules over 6 weeks (distributed).** Customer-negotiated. The 6-week format lets real team reactions feed the memory between sessions — stronger fit for the backbone, but 2-day intensive is viable if the customer needs speed.
 - **Cohort is always single-company.** Cross-pollination between students' memorys (especially in M3) is frictionless — no anonymization, no opt-in friction. Agents can read across the cohort's memorys within the ground rules the company sets.
-- **The "agentic" rule:** every exercise has the student orchestrating agents that do the work. Chat-and-save is banned. Taste from Bootstrap M2 (memory), M5 (bake-off), M6 (orchestrator + eval loop), M8 (deliberation).
+- **The "agentic" rule:** every exercise has the student orchestrating agents that do the work. Chat-and-save is banned. Taste from Bootstrap M2 (memory), M5 (benchmark), M6 (orchestrator + eval loop), M8 (deliberation).
 - **The memory is built from M1** — the learn-and-compound pattern starts day one, not module three.
 - **M2 = search, not pick.** Starter questions to the team; coalition self-selects by engagement. No abstract coalition-guessing.
 - **M3 = return + cross-pollinate + 2 crux.** Rumelt's crux skill imported from Bootstrap M8 scaffold. Two crux, not a backlog. Intent in M4 is crux-bound.

@@ -111,7 +111,7 @@ The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md`
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
 
 **Word count:** ~830 words body.
 

@@ -95,6 +95,8 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
 **Meta (trainer):**
 - **Time:** 25–30 minutes (12 / 5 / 6 / 2)
 - **Primary Bloom's level:** Create + Evaluate

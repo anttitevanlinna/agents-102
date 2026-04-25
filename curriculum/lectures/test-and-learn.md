@@ -48,6 +48,8 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 
 <!-- maintainer -->
 
+
+**Quality:** draft 2026-04-25 (REVISE: cut em-dashes lines 23/25/31/33/39 per check_student_facing #14)
 **Word count:** ~620 words body.
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" section is load-bearing — it's where the experimental stance lands.

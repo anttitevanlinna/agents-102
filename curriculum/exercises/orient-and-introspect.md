@@ -42,6 +42,8 @@ You've seen the window. Hand off to the fix.
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Time:** 15–20 min inside M1's 2h slot. First of three exercises on the same bug / same repo.

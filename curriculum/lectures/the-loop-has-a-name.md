@@ -58,6 +58,8 @@ Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 
 <!-- maintainer -->
 
+
+**Quality:** draft 2026-04-25 (REVISE: cut em-dashes L9/L37/L55; rewrite L45 4-em-dash sentence into 3 short sentences; pre-cohort source verification per maintainer; capability recheck on /schedule and /loop)
 **Word count:** ~950 words body.
 
 **Time:** 15–18 min at presentation pace.

@@ -76,6 +76,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 <!-- maintainer -->
 
+
+**Quality:** approve-with-todos 2026-04-25 (check_writing, check_student_facing #14 — line 34 narrative em-dashes to swap to parens, check_prompts, check_pedagogy)
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 3 / 7 / 3)
 - **Primary Bloom's level:** Apply + Evaluate

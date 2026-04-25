@@ -50,6 +50,8 @@ The loop is the shape. The bug today was the excuse.
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in)
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).
 - **Time band:** 5–7 min closer inside M1's 2h slot. Shorter than the 10–15 min default because it frames rather than teaches; the exercises did the teaching.

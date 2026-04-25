@@ -64,6 +64,8 @@ Your turn.
 
 <!-- maintainer -->
 
+
+**Quality:** draft 2026-04-25 (REVISE: decide signature em-dash convention L63; strip rewrite-archaeology block lines 69–71 per check_writing #3 rules-are-rules-history-is-git)
 **Time:** 7–9 min at presentation pace. ~1050 words body.
 
 Rewritten twice during the generation session:

@@ -42,6 +42,8 @@ If the note reads true, save it. You'll re-read it when the next long task stall
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
 **Word count:** ~320 words body.
 
 **Primary Bloom's level:** Evaluate (student pushes back on the agent's arc-reading against their own sense of it).

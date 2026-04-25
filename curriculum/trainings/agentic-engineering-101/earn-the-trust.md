@@ -73,6 +73,8 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 
 <!-- maintainer -->
 
+
+**Quality:** approve-with-todos 2026-04-25 (check_writing — `practice`-as-noun line 36 to fix; check_student_facing #21; check_pedagogy progression-with-variations; check_prompts; check_strategy_tie_in; check_lectures)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.

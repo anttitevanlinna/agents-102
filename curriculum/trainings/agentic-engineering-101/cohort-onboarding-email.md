@@ -48,7 +48,7 @@ Looking forward to it.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
+**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 #21 agent-vocab, check_pedagogy v2026-04-25)
 
 **Customisation per cohort:**
 - Replace bracketed placeholders (`[Day 1 date and time]`, `[or admin name]`, `[X working days before Day 1]`, `[Trainer name]`).

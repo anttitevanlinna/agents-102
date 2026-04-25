@@ -55,6 +55,8 @@ Open your repo. Let's go.
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
 **Word count:** ~340 words body.
 
 **Time:** ~5 min at presentation pace. Tighter than the closing; this is a room-opener, not a topic.

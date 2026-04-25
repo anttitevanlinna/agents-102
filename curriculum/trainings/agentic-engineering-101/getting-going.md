@@ -56,6 +56,8 @@ Optional. Skipping either piece does not break M2. Both sit in the gap between M
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing voice-quartet, check_student_facing #14 em-dash flag noted + #21 agent-vocab, check_pedagogy, check_strategy_tie_in, check_lectures)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
 - **Session runtime:** 2h (Connections 10 / Lecture 10 / Exercise 95 / Bridge 5). Trainer demos slowly, room copy-pastes concurrently — fits 2h in-class. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 40 / compound-and-close 37 (compound retro + MCP wire + ticket close). 2h is deliberate for M1 — longer than M2–M6's 1h45 because of the orient+introspect ramp and the MCP close-out.

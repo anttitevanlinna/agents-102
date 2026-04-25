@@ -53,6 +53,8 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing voice-quartet; check_student_facing #21 + #7 compound-varies; check_pedagogy; check_prompts; check_strategy_tie_in §3+§5+§6; check_lectures)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.

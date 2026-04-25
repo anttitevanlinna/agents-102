@@ -134,7 +134,7 @@ Read both files. Push back if the reference reads like generic best practices in
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
+**Quality:** draft 2026-04-25 (REVISE: `substrate` banned-word line 159 maintainer block — replace with `source material` or `input` before re-tagging compendium-audited)
 
 **Word count:** ~810 words body.
 

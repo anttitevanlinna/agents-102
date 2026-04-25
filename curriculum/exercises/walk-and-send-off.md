@@ -115,7 +115,7 @@ See the module file for the two Debrief prompts.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
+**Quality:** approve-with-todos 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing #14 — line 112 narrative em-dash to fix + #21 agent-vocab, check_pedagogy progression-with-variations, check_prompts)
 
 **Word count:** ~750 words body.
 

@@ -73,6 +73,8 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 
 <!-- maintainer -->
 
+
+**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 8 / 5)
 - **Primary Bloom's level:** Apply + Evaluate

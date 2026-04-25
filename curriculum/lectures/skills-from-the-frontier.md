@@ -51,6 +51,8 @@ Go.
 
 <!-- maintainer -->
 
+
+**Quality:** draft 2026-04-25 (REVISE: cut em-dashes lines 7/19/23/25/27/31/45/48 per check_student_facing #14; verify Intercom 267-skill / 31% numbers against observation file)
 **Meta (trainer):**
 - **Time:** 10–12 minutes
 - **Primary Bloom's level:** Understand + Apply (primes three exercises)

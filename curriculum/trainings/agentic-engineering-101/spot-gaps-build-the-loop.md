@@ -71,6 +71,8 @@ Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and pr
 
 <!-- maintainer -->
 
+
+**Quality:** approve-with-todos 2026-04-25 (check_writing — `practice`-as-noun lines 19+88 to fix; check_student_facing #14 — body em-dashes lines 8/16/18/23/37/60 to split; check_strategy_tie_in §6 — standalone Themes section to convert to inline breadcrumbs; check_pedagogy; check_lectures)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).

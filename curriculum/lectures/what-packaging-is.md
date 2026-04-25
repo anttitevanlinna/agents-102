@@ -60,6 +60,8 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 
 <!-- maintainer -->
 
+
+**Quality:** draft 2026-04-25 (REVISE: pre-cohort source verification on every URL + number per maintainer; confirm Cherny three-shape framing is his vs synthesis; pin Sourcegraph Amp counter-camp to specific practitioner URL)
 **Word count:** ~770 words body.
 
 **Time:** 12–15 min at presentation pace.

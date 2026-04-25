@@ -68,6 +68,8 @@ M5 opens with what came back, or what you caught before it went further. When th
 
 <!-- maintainer -->
 
+
+**Quality:** approve-with-todos 2026-04-25 (check_writing — `practice`-as-noun line 61 to fix; check_student_facing #21 + #22 line-22 atmosphere-vs-time-anchor flag; check_pedagogy; check_prompts; check_strategy_tie_in; check_lectures)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.

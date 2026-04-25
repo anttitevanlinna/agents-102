@@ -52,6 +52,8 @@ You become the Claude wizard by running the loop on real work and letting the ha
 
 <!-- maintainer -->
 
+
+**Quality:** draft 2026-04-25 (REVISE: cut em-dashes lines 15/17/21/23/29/37 — list-introducers convert to colons, parenthetical-pairs to parens)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
 - **Runtime:** 10 min. 5–7 min lecture prose + 3 min live two-session demo on the volunteer's codebase.

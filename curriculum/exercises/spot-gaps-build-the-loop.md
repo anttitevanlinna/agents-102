@@ -16,7 +16,7 @@ Open a new Claude Code session in the same repo. Two runs of the same task are o
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I have two runs of the same multi-hour task on disk. The M4 run was un-packaged — no reference artefact, no plan.md, no verifier. The M5 run was packaged — all three pieces in play, verifier fired during the run.
@@ -35,7 +35,6 @@ For every claim, quote a specific moment from the artefacts. Don't generalise.
 End with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.
 ```
 
-*(end of prompt)*
 
 Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted. Expect Claude to over-credit the packaging on first pass. A fair push-back is *"name one thing the verifier missed, concretely."*
 
@@ -59,25 +58,24 @@ Pick the one the diff points at. If the dominant gap is "verifier missed drift a
 
 Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
-I want to author a skill for my personal kit. Shape: one of sharpened-verifier, LLM-judge, or gap-finder. I'll tell you which after you ask me. This is the second skill I've authored this way; the first was my test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`, author it in the same shape.
+Author a second skill for my personal kit. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same shape as my first authored skill at `~/.claude/skills/test-strategy/SKILL.md`.
 
-Ask me the questions you need to encode this skill well for my codebase and my workflow. Cover at minimum: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in concrete terms I can defend to a teammate, what it should flag vs. what it should let through, how it should output (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.
+Interview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.
 
-Ask ONE question at a time. Wait for my reply. Push back when my answer is generic. A judge that says "check if the output is good" is useless. A verifier that duplicates the existing test suite is noise. I need codebase-specific and failure-specific detail.
+Push back when my answer is generic. A judge that says "check if the output is good" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.
 
-When you have enough, write SKILL.md at `~/.claude/skills/<skill-name>/SKILL.md`. You propose the skill name from what we encoded. Frontmatter (name + description) then instructions. Show me before saving.
+When you have enough, propose a skill name. Write `~/.claude/skills/<proposed-name>/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving.
 ```
 
-*(end of prompt)*
 
 Answer each question. When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment: *"no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically."*
 
 Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:
@@ -89,13 +87,12 @@ Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me
 Don't reassure me. Name weak parts.
 ```
 
-*(end of prompt)*
 
 Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.
 
 Now invoke the skill on the packaged run you just diffed. Authoring without invocation is theatre.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.
@@ -105,7 +102,6 @@ Produce whatever output the skill asks you to produce (pass/fail, ranked finding
 Then, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?
 ```
 
-*(end of prompt)*
 
 If the output doesn't catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
 
@@ -114,6 +110,8 @@ The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md`
 **Team-kit candidate, via human conversation.** If the skill encodes something your whole team would benefit from — a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team's project shape — it's a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: *"does this match how you'd check this kind of work?"* If they say yes, PR it. If they push back, you got the real review for free. Agents don't unilaterally change shared team infrastructure. You do.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Word count:** ~830 words body.
 

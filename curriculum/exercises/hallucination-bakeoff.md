@@ -14,7 +14,7 @@ Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 
 
 First, produce a fresh briefing so every detector sees the same output. Open your training directory in Claude Code.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 This briefing is the test corpus — we WANT it to overreach in places so the detectors have something to catch. Blend general knowledge where sources don't cover; don't hedge.
@@ -22,13 +22,12 @@ This briefing is the test corpus — we WANT it to overreach in places so the de
 Produce a one-page executive briefing on the strategic question in module-3/question.md, using the material in module-3/retrievals/ and module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
 ```
 
-*(end of prompt)*
 
 Save it. **Don't open it yet.** Your gut verdicts are the measuring stick. Blind verdicts first, then the run.
 
 Now the benchmark. Claude scans the briefing, proposes five specific claims spanning the grounded–ungrounded spectrum, and you verdict each one in one line. Five is the ceiling; more is busywork, fewer is noise.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Open module-5/briefing.md. Scan it and propose exactly five specific claims — one number, one named competitor behaviour, one quote, one market-sizing statement, one Monday outcome. Pick claims that sit across the spectrum from clearly-grounded to clearly-ungrounded — mix deliberately, don't cherry-pick. Quote each claim verbatim from the briefing — the exact sentence or phrase, so the scorer can match detector findings back to it.
@@ -38,17 +37,18 @@ Then ask me, for each claim in turn: the verbatim claim, and whether it's ground
 Ask one claim at a time, wait for my answer, then the next. After five answers, write module-5/benchmark.md with the five verbatim claims, my verdicts, and my one-line reasoning per claim.
 ```
 
-*(end of prompt)*
 
 Answer five questions. Keep it fast: your gut verdict plus one sentence. You're not grading the briefing; you're giving the scorer something to measure against.
 
 **Phase 1a: The first batch: four detectors.**
 
-Four detectors, four different methods, run in parallel on the same briefing. Each is a subagent with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 2.
+Four detectors, four different methods, run in parallel on the same briefing. Each is a <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 2.
 
 In your main session:
 
-**Prompt** *(copy → Claude Code)*
+<div class="rt-code">
+
+**Prompt** *(Claude Code)*
 
 ```
 Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
@@ -66,13 +66,35 @@ One rule across all four detectors: quote each flagged claim verbatim from the b
 Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
 ```
 
-*(end of prompt)*
+</div>
+<div class="rt-cowork">
 
-Watch the four subagent lines scroll past. Same briefing, four lenses. Four files in a minute or two. The fifth detector is different enough to want its own phase.
+**Prompt** *(Claude Code)*
+
+```
+Run four detectors on module-5/briefing.md in parallel. Each detector is an agent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
+
+Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
+
+Detector 2 — Entailment. For every claim, ask: does the briefing say more than the sources actually support? A source that says "one customer complained" doesn't support "the market is unhappy." Flag OVERREACH when the briefing stretches what the source said.
+
+Detector 3 — Citation integrity. Some claims in the briefing will cite a source (either inline or implicitly). For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim.
+
+Detector 4 — Counter-evidence search. For every claim, actively look for sources that contradict it, not just ones that support it. Flag CRUMBLES when disconfirming material exists in the source files that the briefing ignored.
+
+One rule across all four detectors: quote each flagged claim verbatim from the briefing (the exact sentence or phrase). The scorer uses strict substring match to score you against the benchmark; paraphrased findings count as misses.
+
+Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
+```
+
+</div>
+
+
+Watch the four <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> lines scroll past. Same briefing, four lenses. Four files in a minute or two. The fifth detector is different enough to want its own phase.
 
 **Phase 1b: The second batch: self-consistency, done right.**
 
-Self-consistency is the fifth detector. One subagent can't do it alone. The method needs independent re-derivations and then a comparison. You'll spawn four regenerators, each blind to the briefing, each with a different framing on the same source material. A claim in the briefing that three or four of them independently produce is stable. One or two is contested. Zero is fabricated.
+Self-consistency is the fifth detector. One <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> can't do it alone. The method needs independent re-derivations and then a comparison. You'll spawn four regenerators, each blind to the briefing, each with a different framing on the same source material. A claim in the briefing that three or four of them independently produce is stable. One or two is contested. Zero is fabricated.
 
 The blinding matters more than the count. If the regenerators saw the briefing, they'd anchor on its framing and mostly agree with it. Without the briefing, they produce their own versions. The briefing becomes the thing being audited, not the source of truth.
 
@@ -80,7 +102,9 @@ The framings matter too. Same sources, different angles. Regenerator A asks for 
 
 Spawn the second batch. Between dispatching the regenerators and returning their collated output, Claude briefs you in three paragraphs on what self-consistency measures. The brief fills the turn; the collated `self-consistency.md` lands at the end.
 
-**Prompt** *(copy → Claude Code)*
+<div class="rt-code">
+
+**Prompt** *(Claude Code)*
 
 ```
 Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
@@ -100,7 +124,30 @@ After dispatching, brief me in three short paragraphs, in the chat, no file: wha
 When the four return, collate: read module-5/briefing.md and the four regenerator files. For each specific claim in the briefing, check whether it appears (paraphrase match is fine) in the regenerators' outputs. Label each briefing claim STABLE (3-4 regenerators match), CONTESTED (1-2), or FABRICATED (0). Write the collated output to module-5/detectors/self-consistency.md as a list with the briefing claim, which regenerators matched, the label, and one line of reasoning.
 ```
 
-*(end of prompt)*
+</div>
+<div class="rt-cowork">
+
+**Prompt** *(Claude Code)*
+
+```
+Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
+
+Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
+
+Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
+
+Regenerator C — Load-bearing assumptions framing. List the load-bearing assumptions the sources make about skeptic conversion, timing, and forcing functions. Numbered list, one assumption per line, quote the source file that grounds each.
+
+Regenerator D — Verbatim source quote framing. List the verbatim quotes from the source files that would most plausibly appear in a one-page briefing on this question. Numbered list of quotes with their source files.
+
+Spawn all four in parallel.
+
+After dispatching, brief me in three short paragraphs, in the chat, no file: what self-consistency measures, why blinding the regenerators matters, what self-consistency still won't catch. Then collate.
+
+When the four return, collate: read module-5/briefing.md and the four regenerator files. For each specific claim in the briefing, check whether it appears (paraphrase match is fine) in the regenerators' outputs. Label each briefing claim STABLE (3-4 regenerators match), CONTESTED (1-2), or FABRICATED (0). Write the collated output to module-5/detectors/self-consistency.md as a list with the briefing claim, which regenerators matched, the label, and one line of reasoning.
+```
+
+</div>
 
 Read the three-paragraph brief. It lands before the collated output, so the method frames what you're about to see. When collation finishes, `self-consistency.md` is there alongside the four detector files from Phase 1a. Five files. Now the scorer runs.
 
@@ -108,7 +155,7 @@ Read the three-paragraph brief. It lands before the collated output, so the meth
 
 A sixth agent (the scorer) reads all five detector files, compares them to the benchmark you wrote in Phase 0, and produces a scoreboard. You don't compare them by hand. The scorer measures precision (of what the detector flagged, how much was actually ungrounded by your benchmark?), recall (of what your benchmark said was ungrounded, how much did the detector catch?), and coverage (did the detector look at claims your benchmark cared about?).
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 You are the scorer for a five-way detector benchmark. Your inputs:
@@ -133,7 +180,6 @@ After the table, name ONE winner. Do not return "all five are useful" — force 
 At the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.
 ```
 
-*(end of prompt)*
 
 Watch the scoreboard land. Read it. You can now see which method actually worked on your output. Not intuition. Measurement.
 
@@ -141,7 +187,7 @@ Five detectors read the same briefing. One method caught more of what your exper
 
 Before Phase 3, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard, so the rescue lands as a felt beat, not a checkpoint.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Two things, in the chat.
@@ -154,7 +200,6 @@ First, three lines on the classic way:
 Second, ask me which row of the scoreboard surprised me most — the detector that did better or worse than I'd have guessed, or the claim that turned out to be harder to flag than it looked. Wait for my one-sentence answer before we move to saving the judge.
 ```
 
-*(end of prompt)*
 
 Answer the surprise question in one sentence. The scoreboard is the mechanism; naming the surprise is how you own the mechanism rather than just consuming it.
 
@@ -162,7 +207,7 @@ Answer the surprise question in one sentence. The scoreboard is the mechanism; n
 
 The winner (or the two-method ensemble) is worth keeping. You'll save it as a judge file: a named, reusable prompt you can run against any future briefing, not just this one. Module 6 picks this file up and turns it into infrastructure.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:
@@ -177,7 +222,6 @@ Write the judge as a markdown file to judges/groundedness-judge.md — a short h
 At the end of the file, add a one-line "Known limit:" — the failure mode this judge doesn't catch, based on what lost the benchmark.
 ```
 
-*(end of prompt)*
 
 Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Named after what it does. Narrow on purpose. The "known limit" line matters. It names the thing you measured and decided not to chase. Plain about what it is and what it isn't.
 
@@ -193,7 +237,7 @@ The five techniques are portable. Point the same pattern at a customer email, a 
 
 Ask Claude to set up the system on a new output.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I have output I want to quality-control against fabrication. Set up a benchmarking system for me using these five techniques:
@@ -209,7 +253,6 @@ Keep the techniques that fit my output; swap any that don't for methods that cat
 Ask me what output I want to check and where my sources live. Then build me five detectors, a five-claim benchmark I'll annotate, and a scorer that picks a winner. Save under judges/.
 ```
 
-*(end of prompt)*
 
 One thing the benchmark can't reach: yours was five claims. A real production judge wants hundreds. The method is the same; the scale is the difference. That's next module.
 

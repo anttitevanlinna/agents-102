@@ -2,12 +2,12 @@
 
 Before Module 1. Three tasks and one read. About 45 minutes.
 
-Your facilitator (self-study skill or trainer) walks you through these. You don't need to set anything up first. By the time you read this, Claude Code is already open at your working directory. Files land there.
+Your facilitator (self-study skill or trainer) walks you through these. You don't need to set anything up first. By the time you read this, <span class="rt-code">Claude Code is already open at your working directory</span><span class="rt-cowork">your working directory is already connected in Cowork</span>. Files land there.
 
 ## Before you start (5 min setup check)
 
 - **A Claude account** at claude.ai. The training runs on Claude Pro or Team tier (your sponsor confirms the license).
-- **Claude Code installed** (desktop or web, no terminal required). Pick whichever fits your habits; all the exercises work in both.
+<span class="rt-code">- **Claude Code installed** (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both.</span><span class="rt-cowork">- **Cowork enabled** in your Claude Desktop app — the *Cowork* tab next to *Chat*. No terminal required.</span>
 - **About 45 minutes.** More than it sounds like. Less than it feels like.
 
 ### One small thing for the recap site — ask Claude to start a local server
@@ -16,7 +16,7 @@ The training has a recap site (every lecture, exercise, and module page rendered
 
 The site runs locally from markdown files. Nothing uploaded. You don't run the server; Claude does, inside the session you're already in. This is also your first agentic move of the training — you ask, the agent does.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Start a local web server on port 8000 serving the training repo root, running in the background so I can use it as a recap site for the training. Tell me the URL to open and remind me how to stop the server at end of day.
@@ -30,7 +30,7 @@ If anything goes wrong, tell Claude and let it sort it out. Don't debug it yours
 
 Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn't). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Build me a snake game as a single HTML file. Save it as snake.html.
@@ -50,7 +50,7 @@ Two paths. Pick the one that matches what you saw.
 
 **Path A — you have a calendar connector enabled** (Microsoft 365 or Google Workspace).
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
@@ -60,7 +60,7 @@ List my main meetings this week. Summarize the shape of the week in 5 lines. Sav
 
 Take a screenshot of your calendar week view, then:
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as meetings.txt.

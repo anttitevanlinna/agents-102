@@ -22,11 +22,7 @@ After this module, you will be able to:
 
 **The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work? Write one line, or paste it in chat if you're remote. The room harvests everyone's before the lecture names the pattern.
 
-## Lectures
-
 [Lecture: When a plan is good](lectures/when-a-plan-is-good.md)
-
-## Exercises
 
 [Exercise: Push back on the plan](exercises/push-back-on-the-plan.md)
 
@@ -39,29 +35,17 @@ After this module, you will be able to:
 - You don't have to execute a plan to know it's good. The work of making it good is the exercise
 - Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
 
-## Debrief
+## Save if it earned itself
 
-15 minutes. Claude reviews the session, writes one named pattern into your personal `CLAUDE.local.md` (gitignored), reports what it added and why. You push back on the summary. If the pattern is team-worthy, Claude flags it so you can decide whether to open a separate PR against team `CLAUDE.md`.
+The full compound move ran at M1. M2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next. There is no quota.
 
-Ask Claude to review the session and write one named pattern into your personal `CLAUDE.local.md`, flagging it if it's team-worthy.
+Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code, only if something earned itself)*
 
 ```
-Review this session. We took a real backlog task through plan mode, I pushed back twice via keep-planning-with-feedback (a soft item, then an assumption check or a committed change), and then ran a second-pass read that walked down the unresolved branches one question at a time. We approved the sharpened plan and stopped; didn't execute.
-
-Read the original plan, the plan after my two push-backs, and the plan after the second-pass read. Scan the scrollback for the branches the second read surfaced and how I answered. What's the DESIGN PATTERN I just ran?
-
-Then integrate one named pattern into my personal `CLAUDE.local.md` (create it at the repo root and add to `.gitignore` if it doesn't exist; this is my personal file, not team `CLAUDE.md`). **Name the branch, not the rule.** Quote the specific branch the second read surfaced or the specific line my push-back sharpened. Something like *"plans touching the webhook ingress layer need a second-pass walk on cache-invalidation before approval; the router's 60-second memoization is invisible from a first read."* Not *"always pair push-back with a second read"* (generic rubric). Integrate, don't append. If a plan-reading rule exists, sharpen it with this session's specific branch.
-
-If the pattern is team-worthy (useful to every engineer shipping this codebase) flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
-
-When you're done, tell me in 3–5 lines: what pattern you named, where it landed, which moment in the session made you pick that one over others, and whether the second-pass read surfaced anything my push-back would have caught on a slower day. I shouldn't have to open the file to know.
+If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop.
 ```
-
-*(end of prompt)*
-
-Read the summary. Push back where it's wrong. Quote the session moment, tell Claude what it misread. One named pattern per session; don't let the rules file grow a generic-rubric section.
 
 ## Bridge
 
@@ -74,6 +58,7 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
+- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1 blocker** — student can't surface a fitting task. Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.

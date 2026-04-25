@@ -19,11 +19,7 @@ In Module 5 you picked a winner out of five detectors. You watched it work. You 
 
 The question shifts at M6. What if the judge kept getting better, not because you edited it, but because it watched itself miss things? What if *you weren't in the room* while that happened?
 
-## Lectures
-
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
-
-## Exercises
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
@@ -38,7 +34,7 @@ The question shifts at M6. What if the judge kept getting better, not because yo
 
 Five minutes. Claude reviews the eval loop's run and sharpens the judge's prompt (the same judge the meta-agent has been editing all module). The evidence is the round-by-round diff trail: what the meta-agent changed, what it under-flagged, what it missed. Claude reviews, rewrites the groundedness judge file in place, reports what changed. You push back on anything that's off.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Review this session and sharpen the judge beyond what the meta-agent reached. Read judges/groundedness-judge.md in its current state, then scan module-6/rounds/ (every round's generation + judge output + rule diffs) and the meta-agent's reasoning trail. Look back over the session: which rule change did the meta-agent get right, which one made the judge worse and got reverted (or should have), what specific boundary case did the loop never test, where did the judge mis-rate in the same way across multiple rounds (a stuck bias the meta-agent kept missing), what did the judge under-flag that you caught by eye?
@@ -48,7 +44,6 @@ Then rewrite judges/groundedness-judge.md. Integrate, don't append. Add the rule
 When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.
 ```
 
-*(end of prompt)*
 
 Read Claude's summary. Push back where it's wrong. *"The meta-agent was right to soften that rule, put it back"* / *"you added a rule the loop already had in round 2."* The artifact: the sharpened groundedness judge file plus one line added to the M6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The judge got sharper across rounds by watching itself; you just did another pass, and the next run the meta-agent will keep going without you.
 

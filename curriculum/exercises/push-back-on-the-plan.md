@@ -20,13 +20,12 @@ Shift+Tab until the status bar shows **plan**. Paste the prompt. Then send a sec
 
 Ask Claude to work in plan mode and write a detailed plan file you can read and push back on.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
-Work in plan mode on the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. I'm going to push back on it before approving, and then run a second-pass read that walks down unresolved branches, so give me enough detail in each step that I can actually read it. Files touched, shape of the change, tests you'd write or update before any code lands, what you'd check before declaring it done. Don't optimize for short.
+Plan the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you'd write or update before any code lands, and what you'd check before declaring it done. Detail over brevity.
 ```
 
-*(end of prompt)*
 
 Then a second message with your task: what, why, the one constraint that matters most.
 
@@ -52,13 +51,12 @@ Now hand the plan to a second agent that reads differently than you do.
 
 Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven't named. Ask me one question at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct one at a time.
 ```
 
-*(end of prompt)*
 
 The second read asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
 
@@ -72,13 +70,12 @@ Typical session: 5–12 questions. Stop when the second read starts reaching: a 
 
 Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
 ```
 
-*(end of prompt)*
 
 Claude answers. Read carefully. The pattern it names should be something like: *read the plan yourself → push back on what you can see → second-pass read for what you can't → approve.* Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 
@@ -105,6 +102,8 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's four-step loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
   - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
+
 **Watch-fors:**
 - **P3 rubber-stamp.** Student hits "approve" under 60 seconds without sending a push-back message. Diagnostic: no keep-planning-with-feedback branch in the scrollback. Push-back move: *"pick keep planning with feedback — send one soft-item message before approving."*
 - **P3 performative push-back.** Three messages in under 3 minutes, none name steps or specific concerns. Diagnostic: message reads *"step 3 is vague."* Push-back move: *"which step says what? which words are the vague ones? if you can't point at them, it's not a soft item — it's a vibe."*

@@ -1,22 +1,26 @@
+<!-- todo: reshape alongside the M4 plugin-authoring exercise — separate /content-creation session -->
+
 # Exercise: Prework — Before Module 4
 
 **What you do:**
 
-Two reads. Together, 25–35 minutes. Neither asks you to build anything. Module 4 runs two pre-made skills against the system you built in Modules 2–3 — these reads calibrate your eyes for what the skills are and why the risk question is different than you might expect.
+Two reads. Together, 25–35 minutes. Neither asks you to build anything. Module 4 has you author one security plugin against the system you built in Modules 2–3 — these reads calibrate your eyes for what a plugin is and why the risk question is different than you might expect.
 
-**Reading 1 — Skills, in plain language.**
+**Reading 1 — Plugins and skills, in plain language.**
 
-You've spent three modules shaping agents with prompts, files, and rules. Skills are the next layer: a small, named bundle of expertise the agent loads when it's relevant. Not magic. A folder.
+You've spent three modules shaping agents with prompts, files, and rules. Plugins are the next layer: a small, named bundle of expertise the agent loads when it's relevant. Not magic. A folder of files, packaged once.
 
-*What a skill is.* A folder under `skills/` with a `SKILL.md` inside and any supporting files the skill needs. The `SKILL.md` declares what the skill is for, when to use it, and how. Supporting files hold the content — policy text, reference lists, templates, whatever the skill reads from. When a task matches a skill's purpose, the agent loads it and behaves differently.
+*What a skill is.* A `SKILL.md` plus any supporting files the skill needs. The `SKILL.md` declares what the skill is for, when to use it, and how. Supporting files hold the content — policy text, reference lists, templates, whatever the skill reads from. When a task matches a skill's purpose, the agent loads it and behaves differently.
 
-*What it is not.* Not a separate model. Not a plugin store. Not something you install per-seat. A skill lives next to your agent files — same working directory, same filesystem. If you can write a markdown file, you can write a skill.
+*What a plugin is.* A small bundle that ships one or more skills together. The student authors plugins by chatting with Claude — describe what you want, Claude builds the manifest and skill files. The plugin is then installed in your runtime so the skills become invocable by name in any new session.
 
-*Why skills matter for Module 4.* Until now, you've added expertise by writing prompts or dropping material into `sources/` or `memory/`. That works, but everything lives in one pile. Skills scope expertise. Two skills are about to arrive in your training directory — one carries your company's policies, one carries agent-security thinking. You won't need to be a policy expert or a threat modeller; the skills will be. That's the move: **the skill is the expert.**
+*What it is not.* Not a separate model. Not magic. Not something you install per-seat. A plugin you author lives in your runtime — same machine, same filesystem.
 
-*What you'll see.* A `skills/` folder in your training directory. Inside: `company-ai-policy/SKILL.md` and `agent-security/SKILL.md`. You'll invoke them tomorrow in plain language — *"apply the company-ai-policy skill to my module-3 system"* — and Claude Code loads the skill, reads its rules, and runs.
+*Why plugins matter for Module 4.* Until now, you've added expertise by writing prompts or dropping material into `sources/` or `memory/`. That works, but everything lives in one pile. Skills scope expertise. Tomorrow you'll author one security plugin with two lenses — a policy lens (your company's rules) and an agent-security lens (STRIDE adapted for agents). You won't need to be a policy expert or a threat modeller; the plugin will be. That's the move: **the skill is the expert, and you author it.**
 
-One thing to think about before class: *what's one expertise you'd want your agent to borrow, if you could point at a folder and say "be that kind of expert"?* Not a lecture topic — a concrete move. Retention rules. Brand voice. Your CFO's favourite metric framing. Three words in a note.
+*What you'll do.* In Module 4 you'll describe each lens to Claude in plain language. Claude builds the plugin. You install it (the install step depends on which runtime you're working with — the exercise names the path). Then you invoke the plugin against the agent system you built in Modules 2–3 and read the report. The artifact is yours; you keep using it Monday.
+
+One thing to think about before class: *what's one expertise you'd want your agent to borrow, if you could point at a plugin and say "be that kind of expert"?* Not a lecture topic — a concrete move. Retention rules. Brand voice. Your CFO's favourite metric framing. Three words in a note.
 
 **Reading 2 — Agent security is different from software security.**
 
@@ -50,7 +54,7 @@ If you have a security background, half of this will sound wrong. That's the poi
 
 **Prerequisites:**
 - Modules 1–3 completed; training directory populated with memory/, sources/, agents/, module-1..3/.
-- `module-4-skills.zip` downloaded from the training site (or available at session start).
+- `module-4-starter/policies/` reference material available (downloaded from the training site or available at session start) — input the student reads while authoring the security plugin in M4. Per the no-pre-shipped-plugins rule, no plugin / skill files ship in M4; the student authors them.
 - No connector changes since Module 3.
 
 **Capability notes (confirmed, no check owed):**

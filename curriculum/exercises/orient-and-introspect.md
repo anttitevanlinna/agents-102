@@ -10,25 +10,23 @@
 
 Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then the instrument that shows you what Claude actually read.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Read enough of this repo to tell me what's here: the shape, the structure, what looks load-bearing, what's been touched recently, what looks stale. Don't try to be complete. Read what you judge worth reading; skip what you judge isn't.
 ```
 
-*(end of prompt)*
 
 Claude reads and reports. Let it finish.
 
 Now introspect on the read:
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 What did you read, and why those files? What didn't you read, and why not? Name the specific files or directories you skipped and the call you made on each.
 ```
 
-*(end of prompt)*
 
 Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Take it with a grain of salt; verify against the actual output and the instrument below.
 
@@ -47,6 +45,7 @@ You've seen the window. Hand off to the fix.
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Time:** 15–20 min inside M1's 2h slot. First of three exercises on the same bug / same repo.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 3 (mirror)** — Claude's read reflects the student's prompt back at them.

@@ -20,7 +20,7 @@ The ship destination is your personal skills folder: `~/.claude/skills/test-stra
 
 This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons we'll name in Phase 4. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.
@@ -32,7 +32,6 @@ Ask ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then
 When you have enough, write SKILL.md at `~/.claude/skills/test-strategy/SKILL.md`. Follow Claude Code's skill file convention (frontmatter with name + description, then instructions). Show me before saving.
 ```
 
-*(end of prompt)*
 
 Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
 
@@ -40,7 +39,7 @@ Answer each question. When Claude asks something like *"is this codebase Jest?"*
 
 Default-acceptance is the failure mode here. Most students will read Claude's first draft and approve it. Before you ship, ask the skill what's weakest about itself.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Before I ship the test-strategy skill, I want you to critique it. Read the SKILL.md you just wrote. Tell me:
@@ -52,7 +51,6 @@ Before I ship the test-strategy skill, I want you to critique it. Read the SKILL
 Don't just reassure me. Name weak parts.
 ```
 
-*(end of prompt)*
 
 Read the critique. Push back where Claude is wrong (*"no, that section is fine because X"*); accept where Claude is right. Claude revises SKILL.md from your push-back.
 
@@ -60,7 +58,7 @@ Read the critique. Push back where Claude is wrong (*"no, that section is fine b
 
 Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Invoke the test-strategy skill we just wrote on the feature I'm shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.
@@ -70,7 +68,6 @@ Produce the test strategy the skill asks you to produce.
 Then, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?
 ```
 
-*(end of prompt)*
 
 Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
 
@@ -102,6 +99,7 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 - **Time:** 25–30 minutes (12 / 5 / 6 / 2)
 - **Primary Bloom's level:** Create + Evaluate
 - **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I pushed it through a self-critique, I invoked it and it produced something real, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: Nerd enforces the Phase 2 self-critique beat and pushes at the pyramid-dressed-as-codebase-specific question.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 question-dump.** Claude fires all questions at once instead of one at a time. Nerd: *"tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill."*

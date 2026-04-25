@@ -10,25 +10,23 @@
 
 ## Step 1: Summarize the entry points
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Read the repo and summarize the main entry points — which files get loaded first, what they do, which module each depends on. Save your summary to notes/entrypoints.md so you can refer to it later.
 ```
 
-*(end of prompt)*
 
 Claude reads the repo, produces the summary file.
 
 ## Step 2: Layer in the dependency graph
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Open notes/entry-points.md, the file you just created, and extend it with a dependency graph for each entry. Use a simple indented list under each entry's section.
 ```
 
-*(end of prompt)*
 
 Claude reads the file and adds the dependency layer.
 

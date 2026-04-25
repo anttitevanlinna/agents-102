@@ -14,7 +14,7 @@
 
 Open a new Claude Code session in your repo. A fresh session, so there's no scrollback coloring the read. Ask the agent to walk the artefacts you've authored and write the arc from them.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Read my work across the training. Specifically:
@@ -33,7 +33,6 @@ Write a one-page note on what changed across this body of work. Not a changelog.
 Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.
 ```
 
-*(end of prompt)*
 
 Read the note. Push back where the agent over-generalises, or where it praises without quoting. This isn't a retrospective report card; it's a reading. The quoted moments are the substance. If the note reads generic, ask the agent to re-draft with more quotes and less framing.
 

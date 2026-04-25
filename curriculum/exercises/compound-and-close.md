@@ -12,7 +12,7 @@ The PR shipped. Now compound the session, then make the first move outside the r
 
 ## Compound (~10 min)
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
@@ -26,7 +26,6 @@ If any rule is team-worthy (one every engineer on this codebase should know) fla
 Tell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.
 ```
 
-*(end of prompt)*
 
 Read Claude's summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
 
@@ -50,23 +49,21 @@ The teaching moment is the agent reaching across a tool boundary with a real eng
 
 If you have a live connector (1 or 2):
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Read the ticket for the bug we just fixed. Tell me what it says: the reporter, the description, any comments on it. If you can't find a matching ticket, search by the bug's keywords; if there still isn't one, say so and we'll create one.
 ```
 
-*(end of prompt)*
 
 Claude reads the ticket (or confirms there isn't one). Then:
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Show me what you'll write before you post it.
 ```
 
-*(end of prompt)*
 
 Read the close-out. If Claude wrote something stiff or wrong, push back. Tell it how your team actually writes ticket comments. It'll adjust.
 
@@ -79,6 +76,7 @@ You ran the loop. You have a PR, a rules file born from session evidence, and a 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).
 - **Time:** 30 min inside M1's 2h slot. Third of three exercises on the same bug / same repo.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the retro extends `./CLAUDE.local.md` from session evidence. Klaassen attribution earned here (Claude cites the practitioner if one fits).

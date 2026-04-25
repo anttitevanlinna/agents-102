@@ -68,7 +68,7 @@ Save. Click **Run now** once. Double-click `latest.html` in your file browser �
 
 **Step 5 — let it run for a week.**
 
-Don't retune for the first three days. Let it land as it is. Every morning, open `latest.html`. Watch for:
+Don't retune for the first three days. Watch what it produces as-is. Every morning, open `latest.html`. Watch for:
 - Days when the output is genuinely useful — what made it work?
 - Days when the output is comical or wrong — what was missing from the memory that would have saved it?
 - Claims the agent made that you, the domain expert, know are off — those are your next memory edits.

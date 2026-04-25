@@ -14,15 +14,12 @@
 
 Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Ex1.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
-Invoke the stride skill as a subagent. The input is the access-surface map I built in the previous exercise. The absolute path should be in scrollback from when you wrote it; if not, ask me for it. Read it first so you can tell STRIDE which surfaces to walk. Run the skill in a fresh-context subagent so the six-category pass doesn't flood this thread.
-
-When it returns, save the threat list alongside the surface map (same temp directory). Flag which threats the skill rates high-severity for this feature. Don't pick one yet. I'll decide next.
+Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next.
 ```
 
-*(end of prompt)*
 
 Let it run. The output will have more entries than you want to deal with. That's expected.
 
@@ -32,7 +29,7 @@ You're going to pick one threat worth hardening against. Not five. One. The move
 
 Ask Claude to walk you through the pick, one question at a time.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I want to pick one threat from the STRIDE list to harden against in this PR. Help me narrow:
@@ -46,7 +43,6 @@ Then: is the hardening decision obvious once we've named the threat, or do I nee
 One question at a time. Don't assemble into a plan. I want to walk through the reasoning.
 ```
 
-*(end of prompt)*
 
 Answer each. The "most plausible incident story" is the move that makes STRIDE useful rather than performative.
 
@@ -54,7 +50,7 @@ Answer each. The "most plausible incident story" is the move that makes STRIDE u
 
 Ask Claude to draft the ADR in your repo's convention and show it before saving.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).
@@ -64,7 +60,6 @@ Ground each section in what we discussed: the plausible incident story is the Co
 Show me the ADR before saving.
 ```
 
-*(end of prompt)*
 
 Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship.
 
@@ -82,6 +77,7 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - **Time:** 20 minutes (7 / 8 / 5)
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: Nerd makes student name the specific future engineer they'd want this ADR to be useful for.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 skill invocation ambiguity.** Student points the skill at the feature rather than the access-surface map. Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."*

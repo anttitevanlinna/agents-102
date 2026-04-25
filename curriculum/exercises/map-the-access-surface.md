@@ -2,7 +2,7 @@
 
 **What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it flagged that you'd underweighted, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
 
-**What happens:** The access-control analysis skill runs a structured pass across the feature: user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You then sit with the map for three minutes and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
+**What happens:** The access-control analysis skill runs a structured pass across the feature: user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You read it against your own knowledge of the feature and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
 
 **The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment that the skill can't have.
 
@@ -18,7 +18,7 @@ Before you invoke, confirm it's there. Ask Claude: *"list my installed skills."*
 
 Ask Claude to invoke the access-control-analysis skill on the feature you brought to M3 and save the surface map to a temp directory of its choosing.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Invoke the access-control-analysis skill as a subagent against the feature I brought to Module 3. First ask me to name the feature in one sentence: which file it mostly lives in, what it does, what the external or user-facing surface is. Wait for my answer.
@@ -26,18 +26,18 @@ Invoke the access-control-analysis skill as a subagent against the feature I bro
 Then run the skill in a fresh-context subagent so its structured pass doesn't pollute this thread. When it returns, save the surface map to a session-scratch location OUTSIDE this repo. Pick a sensible temp path for my OS (something under $TMPDIR, /tmp, or equivalent), create the directory, and tell me the absolute path. This is scratch, not memory; it doesn't belong in the repo.
 ```
 
-*(end of prompt)*
 
 Answer the one-sentence feature question. Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
 
-## Phase 2: sit with the map (~3 min)
+## Phase 2: walk the map in conversation (~3 min)
 
-Open the file Claude just wrote (it gave you the absolute path). Read it end to end without typing anything.
+Ask Claude to walk you through the surface map in chat — categories, key findings, ambiguous spots — so you've seen the structured read before deciding your deltas in Phase 3.
 
-While you read, hold two questions in mind:
+**Prompt** *(Claude Code)*
 
-- Which surface did the skill flag that I'd underweighted? (The one that made you go *"oh, that's actually exposed"*.)
-- Which surface do I know matters that the skill missed? (The one where your codebase knowledge beats the skill's breadth.)
+```
+Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I'll tell you in the next phase.
+```
 
 ## Phase 3: write the delta (~7 min)
 
@@ -45,7 +45,7 @@ Now you decide.
 
 Ask Claude to interview you for the two deltas and integrate them into the map.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I read the access surface map. I'm going to tell you two things, one at a time:
@@ -59,7 +59,6 @@ Ask for the first answer. Wait. Then ask for the second.
 When you have both, add them to the surface map file you wrote earlier (the path you told me) in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
 ```
 
-*(end of prompt)*
 
 Answer. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
@@ -81,6 +80,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 - **Time:** 20 minutes (7 / 3 / 7 / 3)
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: Nerd pushes Phase 3 harder.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 blocker — student can't point Claude at the feature.** Nerd runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*

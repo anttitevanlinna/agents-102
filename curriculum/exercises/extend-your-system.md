@@ -27,7 +27,7 @@ If the brief takes more than five minutes, your gap is too big. Narrow it.
 
 **Phase 2 — Generate (15 min).**
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
 Read module-8/extension-brief.md. Build the agent described in it. Write the agent file to agents/<slug>.md — the slug comes from the job, not the technology.
@@ -42,7 +42,6 @@ The agent file must include:
 Show me the file before saving. After I approve, save it to agents/<slug>.md, then run it once end-to-end on real input from my system. Report what it produced, where it hesitated, and where a source was thin.
 ```
 
-*(end of prompt)*
 
 **Phase 3 — Run and judge (5 min).**
 

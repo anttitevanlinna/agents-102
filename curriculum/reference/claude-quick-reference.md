@@ -6,14 +6,22 @@ Scan, find what you need, copy the prompt. For deep feature documentation, each 
 
 **Root docs:** [docs.anthropic.com](https://docs.anthropic.com) — the source of truth for Claude Code features. This reference is a shortcut; the docs are the full answer.
 
-## Claude Code — install and open
+## Pick your surface — three modes
 
-Three surfaces. Pick whichever fits your habits — the exercises work in all of them.
+The exercises run on any of these three. Same engine underneath, three ways to reach it. Pick whichever fits your habits.
 
-- **CLI (terminal)** — recommended for self-study. The smoothest flow for the lecture server, folder switches, and pasted prompts.
-- **Desktop app** — macOS or Windows. Good alternative if you prefer a GUI.
-- **Web (claude.ai/code)** — works when you can't install locally, but can't reach the local lecture server at `localhost:8000`. Use desktop or CLI for self-study.
-- **Account tier** — Claude Pro or Team. Your sponsor confirms the license.
+- **Claude Code CLI (terminal)** — recommended if you live in the terminal. Smoothest flow for the lecture server, folder switches, and pasted prompts. Skills install as folders in `~/.claude/skills/<name>/SKILL.md`.
+- **Claude Code Desktop app** — macOS or Windows GUI. Good alternative if you prefer a window over a terminal. Skills install as `.plugin` files via the Desktop plugin loader.
+- **Claude Cowork** — same Claude Desktop app, *Cowork* tab. Connect your training-directory folder once; same prompts, same artifacts. Best if you don't want to think about CLI plumbing. Skills install as `.plugin` files via the *Save plugin* button — one click.
+
+**Account tier:** Claude Pro or Team. Your sponsor confirms the license.
+
+**What's the same across all three:** the agent engine, `CLAUDE.md` files (loaded the same way from your training folder), parallel subagents (Cowork's UI calls them *agents*), the prompts in this curriculum.
+
+**What's different:**
+- **Plan mode** is a Claude Code feature (CLI and Desktop) — Cowork doesn't have a named plan mode. The exercises that use plan mode in Code phrase the same discipline differently in Cowork: *"Before you do anything, write a plan."* Same move, different invocation.
+- **Skills install** differs by mode (folder for CLI, plugin for Desktop and Cowork). The exercises name the difference where it matters; otherwise the prompts are mode-agnostic.
+- **Vocabulary** — Code says *subagent*, Cowork's UI says *agent*. The site swaps the word to match what you see on screen.
 
 **Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) cover direct install.
 
@@ -163,3 +171,59 @@ Rule of thumb: if the current conversation is producing confused output, start a
 ---
 
 **This document grows.** If you hit something during the training that belongs here and isn't, flag it — the reference gets updated. For anything feature-specific, the [official Anthropic docs](https://docs.anthropic.com) are the source of truth.
+
+<!-- maintainer -->
+
+## Maintainer audit — Cowork architecture (verified 2026-04-25)
+
+End-to-end practitioner test. Cut for students by the renderer; here for trainer / future-author reference.
+
+### What was verified
+
+| Claim | Evidence |
+|---|---|
+| Cowork uses the same agent engine as Claude Code | Anthropic docs: *"Claude Cowork uses the same agentic architecture that powers Claude Code"* ([cowork product page](https://claude.com/product/cowork), [getting started](https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork)) |
+| `CLAUDE.md` loads from connected folder | Probe Test 1 — planted secret phrase returned verbatim |
+| Parallel subagents dispatch | Probe Test 5 — three `subagents/agent-*.jsonl` files in transcript, `agentType: general-purpose` |
+| Cowork session transcripts ARE Claude Code `.jsonl` format | On-disk inspection of `~/Library/Application Support/Claude/local-agent-mode-sessions/<workspace>/<session>/local_<id>/.claude/projects/<project>/<sessionId>.jsonl` — same `parentUuid`/`type`/`message` shape, same `subagents/` subfolder |
+| Folder-local `.claude/skills/` NOT auto-registered in Cowork | Probe Test 3 — Cowork's `<available_skills>` shows only centralised namespaces (`anthropic-skills:*`, `cowork-plugin-management:*`, `operations:*`); folder-local `probe-skill` did not appear |
+| Plugin-authoring flow end-to-end | One sentence in Cowork → `cowork-plugin-management:create-cowork-plugin` skill builds `.claude-plugin/plugin.json` + `skills/<name>/SKILL.md` + README → zipped → presented as `[Install your plugin](computer://...)` link + *Save plugin* button |
+| The same `.plugin` artifact installs in Cowork AND Claude Code | `michael-jackson.plugin` authored in Cowork, installed in Code, invoked with same trigger phrase, identical output |
+| Plugin install needs new session to take effect | Verified: install → start new session → invoke. Skill registry reads at boot. |
+| Skill namespacing convention `<plugin-name>:<skill-name>` | Both runtimes; `michael-jackson:michael-jackson-voice`, `cowork-plugin-management:create-cowork-plugin` |
+
+### Known gaps
+
+- **No plan mode in Cowork.** Code's plan mode (Shift+P / Shift+Tab cycle / *"Enable plan mode"*) does not exist. Discipline (*think before doing*) is universal; the Cowork-mode prose teaches it through prompt phrasing rather than naming a feature.
+- **CLI does NOT load Desktop plugins.** The `.plugin` install path is Desktop-only — Code Desktop and Cowork share the plugin loader; the CLI reads `~/.claude/skills/<name>/SKILL.md` directly. Three modes, three install paths:
+  1. CLI (terminal) → folder skills in `~/.claude/skills/`
+  2. Code Desktop → plugin install
+  3. Cowork → plugin via *Save plugin*
+- **Authoring is smooth in both Code Desktop and Cowork; install path is asymmetric.** Cowork's *Save plugin* button is the smoothest registry-add. Code Desktop's plugin loader requires a manual step.
+- **Folder-local `.claude/agents/` NOT auto-registered in Cowork either.** Subagents dispatch as the built-in `general-purpose` context. Custom agent definitions have to come through plugins, same as skills.
+
+### Probes — all clear (2026-04-25, Antti)
+
+- **Multi-session on the same connected folder — PASS.** Cowork runs multiple sessions concurrently against one connected folder. M3's four-session pattern is unblocked.
+- **Long-running file-write across rounds — PASS.** Three sequential rounds with 30-second waits + 90-second walk-away — all three files landed; round-2 referenced round-1; round-3 synthesised both. M6's walk-away orchestrator is unblocked.
+- **Footnote:** a trailing 45-second sleep at the end of the last walk-away tripped a Cowork workspace timeout — the files were already on disk by then. Implication: **M6's orchestrator should be doing work, not sleeping**, when scheduled to walk away. Real work (subagent dispatch, file writes, judging) doesn't trip the timeout; explicit sleeps do. The M6 design naturally has Claude working through rounds, so this is not a blocker — just don't write *"sleep for N seconds"* into the orchestrator prompt.
+
+### Implications for Bootstrap content
+
+**Architecture rule (Antti, 2026-04-25):** No pre-shipped plugins anywhere. Plugin-authoring is taught **once, in M4**. Other modules carry context as inline prompts or `.md` references the student reads. The student authors plugins; we don't hand them any.
+
+**Same content, three install paths — but install matters in only one place.**
+- M2's `CLAUDE.md` move works in all three modes.
+- M2's plan-mode language wraps in `.rt-code` (CLI + Desktop); `.rt-cowork` teaches the same discipline through prompt phrasing.
+- M3 / M5 / M6 parallel subagent dispatch verified; *agent* / *subagent* terminology fork via switcher.
+- **M4 is the canonical plugin-authoring teach.** Student authors a security guardrail as a plugin via chat with Claude, installs it, invokes it. Per-runtime install affordance: Cowork *Save plugin* (smoothest), Desktop plugin loader, CLI authors SKILL.md into `~/.claude/skills/<name>/SKILL.md`. Same move, three installs.
+- M5 / M6 / M7 / M8 do **not** introduce new plugins. Context lives in inline prompts and `.md` files the student reads.
+- AE101 is unaffected. AE101 uses CLI + folder skills only.
+
+### Why this section is in the Bootstrap reference, not AE101's
+
+AE101 and Bootstrap are separate trainings with separate audiences and separate reference docs. AE101 students don't use Cowork and don't need its details. Cowork architecture lives here, in the Bootstrap reference, full stop.
+
+### Capability-check trust note
+
+A capability-check agent told us early in the audit that Cowork was a separate codebase from Claude Code. The agent was wrong; the official docs say same architecture. Practitioner observation + direct WebFetch sided against the agent. Pattern matches platform compendium § 4: *"Trust-but-verify the capability-check agent too — WebFetch the URL yourself when the assertion is load-bearing; agents can hallucinate credible-sounding official answers."*

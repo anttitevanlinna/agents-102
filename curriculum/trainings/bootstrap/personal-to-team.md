@@ -24,19 +24,15 @@ Hold that feeling. It's not a governance question yet. It's a generous one. At M
 
 Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
 
-## Lectures
-
 **Time:** 10–12 minutes. No separate lecture file; the framing below runs straight into the exercise.
 
 Start with the move that matters most: **interview for the job.** Christensen and Moesta put it plainly. People don't buy products, they hire them for jobs. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they're using now. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.
 
 Then the candidates: **four strategies that work in practice.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth strategy, "share the whole agent," is the vendor pitch. It sounds right. It doesn't hold up. You'll see why in the next hour.
 
-The disciplines you'll apply after (Roger Martin's **assumption-test**, Klein's **pre-mortem**) are not agent tools. They're strategy tools. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
+The disciplines you'll apply after (Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*) are not agent tools. They're strategy tools, named inline in the prompts you'll paste. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
 
 One data point to keep in your back pocket while you run the exercise: **the Access-Trust Gap.** 54–95% of enterprises have access. 5–22% have production trust. The gap is always wider than 35 points. That gap is social, not technical. Which is why strategy tools beat deployment tools at M7. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
-
-## Exercises
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
@@ -56,7 +52,7 @@ One data point to keep in your back pocket while you run the exercise: **the Acc
 
 Five minutes. Claude reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your M7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, pre-mortem. Claude reviews, rewrites the sharing artifact in place, reports what changed. You push back on anything that's off.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Review this session and sharpen the sharing artifact. Read everything in module-7/ (sharing-problem, outcome, patterns, technical-plan, people-plan, assumptions, premortem, monday) and identify which single file is the sharing artifact itself (the skill file, the interface spec, the output schedule, the context export, whichever pattern I picked produces the thing the teammate actually touches). Then look back over the session: where did the teammate's job-to-be-done stay unnamed or too abstract, where does the artifact leak more than the teammate needs (over-shared) or less than they can use (under-shared), where is the people plan thin (no name, no owner, no handoff), which assumption would have to be true for this to land and isn't?
@@ -66,7 +62,6 @@ Then rewrite the sharing artifact. Integrate, don't append. Name the teammate's 
 When you're done, tell me in 3–5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why, grounded in specific moments from the exercise. Name the one assumption the artifact still depends on.
 ```
 
-*(end of prompt)*
 
 Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your M7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
@@ -78,7 +73,7 @@ You've built a system. You've secured it, evaluated it, and designed the sharing
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze → Evaluate
-- **Materials (trainer):** Pattern catalog ships inside the Module 7 scaffold at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. Access-Trust Gap data point in lecture. Module 7 scaffold ships three thinking-discipline skills — `crux` (Rumelt), `assumption-test` (Roger Martin), `pre-mortem` (Klein/Kahneman). Students invoke them by name during the exercise; they stay installed for M8 and for any strategic decision from Monday onward.
+- **Materials (trainer):** Pattern catalog ships inside the Module 7 scaffold at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. Access-Trust Gap data point in lecture. **No pre-shipped plugins** (per Antti 2026-04-25 — M4 is the canonical plugin-authoring module). The three thinking-disciplines — Rumelt on *crux*, Roger Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are named inline in prompt bodies, same pattern as M2's Debrief. Students take the techniques home as moves they can name and run, not as installed plugins.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 
 **Plug Points (trainer):**

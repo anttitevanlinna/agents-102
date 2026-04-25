@@ -8,7 +8,7 @@ Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to n
 - **Prework:** none beyond holding the M4 un-packaged artefact and the M5 packaged re-run accessible — both live in your repo and scrollback
 - **Homework:** none. M6 closes the core. For M7/M8 cohorts the bridge carries into agents-meet-agents deliberation; for core-only cohorts the bridge is Monday-morning real work
 - **Materials (trainer):** none. Two runs in your repo, conversation, and your authored second skill carry the module
-- **Plug points:** your two artefacts (M4 un-packaged, M5 packaged); sponsor-stated team-kit home (second-skill ship destination for team-PR candidates); sponsor-stated memory home (where gaps-belong-in-memory land)
+- **Plug points:** your two artefacts (M4 un-packaged, M5 packaged); your team's shared-skills home (second-skill ship destination for team-PR candidates); your team's shared-memory home (where gaps-belong-in-memory land)
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -26,8 +26,6 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 [Story of Module 6](lectures/story-of-module-6.md)
 
-## Exercises
-
 [Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
 
 [Arc-named retrospective](exercises/arc-retrospective.md)
@@ -43,15 +41,13 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 - **Self-aware + grain of salt.** The whole module is conversation with Claude about Claude's output across two runs. The artefacts rule; self-reports don't. Phase 1 push-backs and the closing lecture's judge-built-from-diagnosis move surface it
 - **Compounding (Klaassen).** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it
 
-## Debrief
+## Human close
 
-Simple round. Trainer and group pick the exact form — pair exchange, whole-room round, silent write-then-share. Each person speaks briefly on two things: one key learning from the six modules, and one personal thought on the future of their practice. Human-voiced, not agent-mediated — no host beat here, including when the Nerd is otherwise in session.
+10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the M6 compound. This slot is the human round the practitioner-fluency mood warrants. The trainer reads the room and picks the form (pair exchange, whole-room round, quiet write-then-share, or skip the round when energy is spent). Not agent-mediated; the round stays human even if a host-skill is otherwise running.
 
-10–15 minutes. No canonical self-compound prompt here — the encode step already happened when you shipped the second skill in the exercise. The round makes room for the human close that practitioner fluency warrants.
+*You ran the loop on your own work three ways. The kit is yours.*
 
-*You know how to test, you know how to learn, you know how to encode. And you know what your job is: you are the bread, not the filling.*
-
-**Self-study variant.** Teacher Claude invites the same two-part articulation in conversation and lets the scrollback carry it. Optional keepsake note if you want one; not required. If you've already shipped a skill that fires on your real-work gap shape and you can name the move in one sentence, that's the marker. Close the laptop. The articulation is optional, not the practitioner-fluency gate.
+**Self-study variant.** Close the laptop. The encode step already happened when you shipped the second skill. If you can name the move in one sentence, that's the marker; no further articulation required.
 
 ## Closing
 
@@ -81,6 +77,7 @@ Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and pr
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. Both runs already live in the repo; M6 reads + authors + ships in-place. No training-dir state, no `module-N/` folders. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room. Self-study Teacher Claude reads it aloud at session open.
+- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (TODO — Nerd skill not yet written; trainer covers by default in cohort):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Nerd: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*

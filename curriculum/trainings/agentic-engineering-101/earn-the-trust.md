@@ -20,15 +20,11 @@ After this module, you will be able to:
 
 ## Connections
 
-**Bring a small feature you're working on right now.** Not a typo-fix, not a quarter-long epic; something with an external or user-facing surface that you could ship in a few hours. Too small and Claude crunches it in thirty seconds with nothing interesting to surface. Too large and you're still waiting when the bell rings. You've watched Claude work for two modules. Pick the size that fits the rhythm you've seen.
+**Bring a small feature you're working on right now.** Not a typo-fix, not a quarter-long epic; something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you're still waiting when the bell rings. You've watched the agent work for two modules. Pick the size that fits the rhythm you've seen.
 
 The question, to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? Write one line. The room's features will differ wildly; that's the point.
 
-## Lectures
-
 [Lecture: Skills from the frontier, skills of your own](lectures/skills-from-the-frontier.md)
-
-## Exercises
 
 [Exercise: Map the access surface](exercises/map-the-access-surface.md)
 
@@ -37,7 +33,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
 ## Key Concepts (Emergent)
-- A curated skill is a gift from the frontier; you invoke it, you don't re-derive it
+- A curated skill is upstream practice packaged for you to invoke. You don't re-derive it
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; breadth is the team kit's job across many students, not yours in 20 minutes
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's
@@ -47,35 +43,21 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 **Self-aware / grain of salt (Theme 4):** Ex3's move is to ask the authored skill to disclose its own weakest part, then push back on the critique; the skill introspects, you verify against the session artifact.
 
-**Mirror (Theme 3):** the access-control and STRIDE skills reflect the feature's access surface back at you, and the gap between your first read and the skill's output is the thing you name aloud.
+**Mirror (Theme 3):** the access-control and STRIDE skills produce a structured read of your feature's access surface. Comparing your first read to theirs is the thing you name aloud.
 
 **90% correct (Theme 1):** curated skills from the frontier are strong, not oracular; the hardening decision in Ex2 and the weak-spot push-back in Ex3 are where the last 10% earns your judgement rather than a rubber stamp.
 
-## Debrief
+## Sharpen the skill from evidence
 
-Ask Claude to review the session, integrate one codebase-specific pattern into `CLAUDE.local.md`, and sharpen the authored test-strategy skill from session evidence.
+M3's compound lives in the skill you authored, not in the rules-file. Skills are the surface that just got tested under push-back; that's where today's evidence wants to land. The rules-file move sits this one out.
 
-**Prompt** *(copy → Claude Code)*
+Ask Claude to sharpen the one section of your authored test-strategy skill that session evidence underdelivered.
+
+**Prompt** *(Claude Code)*
 
 ```
-Review this session. We ran three exercises on a small feature I'm shipping: invoked the access-control analysis skill, invoked the STRIDE skill and made one hardening decision, then authored a test-strategy skill through conversation. Asked it to disclose its weakest part, pushed back, invoked it on the security-tested feature, shipped it to the team kit.
-
-Read the access-control output, the STRIDE output + ADR, the authored test-strategy skill file, and the invocation output. Scan the scrollback for the decisions I made and the push-backs I pushed.
-
-Then do two things:
-
-1. Integrate one named pattern into my personal `CLAUDE.local.md` (create it at repo root + add to `.gitignore` if it doesn't exist; this is my personal file, not team `CLAUDE.md`). Something specific to THIS codebase, from THIS session's evidence. Quote the surface the access-control skill flagged that I'd underweighted, or the STRIDE branch I hardened, or the test-strategy assumption I corrected. Name the branch, not the rule. Not "always run STRIDE" (generic). Something like "features touching the billing webhook need access-control mapping before STRIDE; the event-replay path is invisible from a first read."
-
-If the pattern is team-worthy (every engineer shipping this codebase should know it) flag it in your summary below, don't PR it. I'll decide whether to open a separate PR against team `CLAUDE.md`.
-
-2. Review the test-strategy skill I authored. Sharpen it in place if my session evidence shows it's weak somewhere: a convention I named that isn't fully encoded, a codebase-specific failure mode I mentioned in conversation but isn't in the skill yet. Integrate, don't append.
-
-Tell me in 3–5 lines: what pattern you named in `CLAUDE.local.md` (and whether any are team-worthy flags), what you sharpened in the skill, and which moment in the session made you pick those over others. I shouldn't have to open the files to know.
+Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back. Find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
 ```
-
-*(end of prompt)*
-
-12–15 minutes. Claude reviews the session, rewrites the relevant rules files in place, reports what changed. You push back on the summary. Read it. Push back where it's wrong; quote the session moment. Two files changed this module (`CLAUDE.local.md` + the test-strategy skill); check both. Team-rule flags in the summary are for your decision later; they don't auto-PR.
 
 ## Bridge
 
@@ -85,9 +67,9 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 
 Optional. Skipping either piece does not break M3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
 
-**Read — Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min).** Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for M3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for M3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
 
-**Optional deeper scan — [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min).** Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for M3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for M3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 
@@ -96,6 +78,7 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
+- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Connections blocker** — student can't pick a feature. Nerd runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
@@ -135,3 +118,10 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 **Open questions for later passes:**
 - ADR convention if the sponsor repo has none — training default `docs/adr/0001-slug.md` (context / decision / consequences)?
 - Team-kit home spin-up if the sponsor answered "we don't have one" — Ops-side, before Day 1.
+
+**Open items from pre-ship audit:**
+
+- **First-cohort watch-for: relocated team-worthy flag stays codebase-grounded.** Live runtime check during first cohort; trainer watches that the team-worthy decision stays codebase-specific (not "yes, every team should know about STRIDE" generic).
+- **Self-study Nerd nudge: team-worthy flagging anxiety at end-of-session** (Maija sim, mid-competent persona). Belongs in the self-study Nerd skill, out of cohort scope. Carried to the self-study workstream.
+
+Audit artifacts at `analytics/ae101-readiness-audit/preship-m3-debrief/`.

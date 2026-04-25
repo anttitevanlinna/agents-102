@@ -4,7 +4,7 @@
 A system remembers, grows, and compounds. Chat doesn't. Your next big challenge is the foundation.
 
 ## Meta
-- **Setup:** End Module 1's Claude Code session (scoped to `module-1/`) and start a fresh one at your training-directory root. The Module 2 starter zip unzips there (three empty folders: `memory/`, `sources/`, `agents/`, and nothing else). Your Module 1 rules file at `module-1/CLAUDE.md` stays where it is, scoped to Module 1. The wider training-dir root rules file (`./CLAUDE.md`) doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+- **Setup:** <span class="rt-code">End Module 1's session (scoped to `module-1/`) and start a fresh one at your training-directory root.</span><span class="rt-cowork">End Module 1's Cowork session (connected to `module-1/`) and start a fresh one connected to your training-directory root.</span> The Module 2 starter zip unzips there (three empty folders: `memory/`, `sources/`, `agents/`, and nothing else). Your Module 1 rules file at `module-1/CLAUDE.md` stays where it is, scoped to Module 1. The wider training-dir root rules file (`./CLAUDE.md`) doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 - **Prework:** [Module 2 prework](curriculum.html?file=exercises/module-2-prework). (1) [Bring a live challenge on your mind](curriculum.html?file=exercises/module-2-prework#1-bring-a-live-challenge-on-your-mind). We'll pin it down together in the first 15 minutes of class. (2) [Verify your Confluence and OneDrive connectors](curriculum.html?file=exercises/module-2-prework#2-verify-your-connectors-2-min--worth-doing-now-not-when-class-starts). (3) [Plan-mode primer (15 min)](curriculum.html?file=exercises/module-2-prework#3-plan-mode-primer-15-min). (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
 - **Homework:** [Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected "What is an Agent" sections (tools, memory, context).
 
@@ -12,26 +12,22 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 After this module, you will be able to:
 - **Build** an LLM memory on your next big challenge, curated from internal wikis, recent work, and practitioner best practice
 - **Construct** your first custom agent (a plain markdown file with instructions: what it's for, and the rules it follows) that does real work against that challenge using the memory
-- **Use** Claude Code's plan mode to review multi-step agent actions before they run
+<span class="rt-code">- **Use** Claude Code's plan mode to review multi-step agent actions before they run</span><span class="rt-cowork">- **Ask** Claude to write a plan first, and review multi-step agent actions before they run</span>
 - **Analyze** the three layers of the system (raw sources, the memory, the rules file) and explain why plain text beats a database here
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Connections
 Module 1 was for you. The site you built, the voice you sharpened, the fabrication you caught because nobody else could. That was the rehearsal. Now we turn to work. The rest of the training builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
-You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? Take a moment with it, then we build one.
+You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We'll build one shortly.
 
 Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. We're going to build a memory around it.
 
 And one more: if everything you've read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?
 
-## Exercises
-
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
-
-## Lectures
 
 [Lecture: Compounding](lectures/compounding.md)
 
@@ -44,7 +40,7 @@ And one more: if everything you've read, drafted, and half-figured-out on that c
 
 Five minutes. A retro, **and your first `./CLAUDE.md` at this directory.** You walked into Module 2 with an empty training-dir root: no rules file. Now you've run the whole memory flow (curate → ingest → build → update → maintain) and the rules that actually matter for YOUR agent are visible. Visible in what worked, what rubbed, what you had to repeat. Claude writes the rules file from the session. You push back on anything off.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: module-2/challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
@@ -56,13 +52,12 @@ Structure however makes sense for how we actually worked today — section heade
 When you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. I shouldn't have to open the file to know what's in it.
 ```
 
-*(end of prompt)*
 
 Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
 
 One more move before you close.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Look at my challenge memory. Find the load-bearing obstacle — the one thing that, if solved, unlocks the others. Richard Rumelt calls this the "crux."
@@ -75,7 +70,6 @@ Rules:
 One sentence. Save it to module-2/crux.md and show me before saving.
 ```
 
-*(end of prompt)*
 
 **Push back on the first crux.** Claude's first answer is usually too abstract: a tidy restatement of the problem, not the mechanism underneath. Read what it writes. If the sentence reads like something you'd put on a slide titled *"The Challenge,"* it's a problem statement, not a crux. Push: *"that's a restatement. What's the specific obstacle that, if it moved, would release pressure on the rest? Name the mechanism, not the goal."* Second try is usually sharper. Third try is usually right. The crux is worth the three rounds. It's the seed Module 8 cashes in.
 

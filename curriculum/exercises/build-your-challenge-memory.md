@@ -6,7 +6,7 @@ A chat forgets. A memory remembers.
 
 You've just pinned your challenge in `module-2/challenge.md` (the opener). Now you build a memory around it — scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
-Before class you unzipped the Module 2 scaffold: empty `sources/`, empty `memory/`, empty `agents/`, and a root `CLAUDE.md` with the rules Claude follows when it writes pages. Open the working directory in Claude Code. Four phases: curate, put to work, compound, self-maintain.
+Before class you unzipped the Module 2 scaffold: empty `sources/`, empty `memory/`, empty `agents/`, and a root `CLAUDE.md` with the rules Claude follows when it writes pages. <span class="rt-code">Start a new session in the working directory.</span><span class="rt-cowork">Connect the working directory in Cowork.</span> Four phases: curate, put to work, compound, self-maintain.
 
 **Phase 1 — Curate, ingest, build.**
 
@@ -20,7 +20,7 @@ A memory is only as good as what goes into it. Most people sabotage this step by
 
 **Beat 1 — Curate.** Claude surveys what's available and asks about your world.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats:
@@ -34,13 +34,12 @@ I'm building a knowledge memory for one specific challenge I'm working on. Do th
 One rule for the plan: only recommend sources I would feel comfortable sharing with an LLM today. If something is likely to be sensitive — board material, personal emails, customer data, HR records — flag it as "skip for now, revisit after Module 4" rather than putting it in the plan. I'll push back where the plan is off.
 ```
 
-*(end of prompt)*
 
 Push back, sharpen, add what's missing. The plan is the list — nothing's in `sources/` yet.
 
 **Beat 2 — Ingest.** Now Claude pulls the content into `sources/`. Agent does the heavy lifting; you don't copy-paste.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:
@@ -53,15 +52,23 @@ For every source in the curation plan we just agreed, create one file in sources
 When done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I'll attach whatever I want to include before we build the memory.
 ```
 
-*(end of prompt)*
 
 Look at Claude's three lists. Anything in list (3) — NOT REACHABLE — stays a reference file unless you decide to include it, in which case use the **+** button to attach the file; Claude will save the content into `sources/` when attached. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
 
-**Beat 3 — Build memory.** Now the memory gets built from what's actually on disk. Turn on plan mode first — Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.
+**Beat 3 — Build memory.** Now the memory gets built from what's actually on disk. <span class="rt-code">Turn on plan mode first — Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first — what it's about to do before touching files, so you can review and steer before files commit.</span>
+
+<div class="rt-code">
 
 Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with four options. For this exercise: **option 1 (Yes, and use auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing — pick **option 4 (Tell Claude what to change)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here. Full rundown in the [quick reference](curriculum.html?file=reference/claude-quick-reference).
 
-**Prompt** *(copy → Claude Code)*
+</div>
+<div class="rt-cowork">
+
+Heads up: when Claude finishes the plan, read it before saying go. If the topic split looks right, tell Claude to proceed. If two topics should merge or something's missing, type one sentence of feedback and ask Claude to rewrite the plan before executing.
+
+</div>
+
+**Prompt** *(Claude Code)*
 
 ```
 Read every real-content file in sources/. For each major topic you find, create a markdown file in memory/ with a clear title, 3–5 key claims, and an "open questions" section for things the sources disagree on or leave unclear. Then write memory/index.md that links to every topic page with a one-line description.
@@ -75,7 +82,6 @@ Rules — non-negotiable:
 3. Distinctive, not descriptive. Extract what's specific to my situation — my company, my sources, my challenge. If a claim could appear in a competitor's memory on the same kind of problem, it's too generic; rewrite or cut.
 ```
 
-*(end of prompt)*
 
 Claude returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so. If something's missing, add it.
 
@@ -83,17 +89,16 @@ Approve. Claude writes the files.
 
 Now ask Claude to audit itself:
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? List the generic ones in module-2/soft-pages.md.
 ```
 
-*(end of prompt)*
 
 That list is your first quality check. You'll sharpen those pages in Phase 3.
 
-**What plan mode just did for you.** The memory build wrote 5–8 files in one shot — the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's plan mode's job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to *default*. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.
+<span class="rt-code">**What plan mode just did for you.** The memory build wrote 5–8 files in one shot — the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's plan mode's job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to *default*. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span><span class="rt-cowork">**What asking for a plan just did for you.** The memory build wrote 5–8 files in one shot — the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's the job of asking Claude to plan first: make Claude think before it makes extensive output, give you one review point instead of many. Rule of thumb going forward: ask for a plan first on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span>
 
 **Phase 2 — Your first custom agent.**
 
@@ -101,7 +106,7 @@ A library without a librarian is a cost. Give it one.
 
 An agent, at its simplest, is a markdown file: instructions the model reads at the start of every run — what this agent is for, and the rules it follows. Same stuff as the memory. Same stuff as the Module 1 guardrail. Text on disk, re-used.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time:
@@ -112,19 +117,17 @@ Help me create my first custom agent as a markdown file in agents/. Ask me these
 Pick a filename from the job. Show me the file before saving.
 ```
 
-*(end of prompt)*
 
 Claude asks. You answer. The agent file lands in `agents/`.
 
 Now use it. Fresh message.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Read the agent file you just created, apply its role and rules, and use my memory. Ask me for the specific task, then do it. Cite which memory file each claim came from.
 ```
 
-*(end of prompt)*
 
 Answer with a real task from your challenge. Claude reads the agent file, reads the memory, cites sources, stays inside its rules. The citations tell you whether the memory earned its keep or whether Claude filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
 
@@ -132,7 +135,7 @@ Answer with a real task from your challenge. Claude reads the agent file, reads 
 
 A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: find the thinnest memory page, get one more source in, let the new source make the old pages better. Claude does the legwork — you only step in if there's a file only you can attach.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Look at memory/ and identify the thinnest page — the one where Phase 1's audit flagged "generic" in module-2/soft-pages.md, or where a topic has only two claims, or where the stress-test in Phase 2 revealed light content. Name it in one sentence.
@@ -142,13 +145,12 @@ Then look at the curation plan we agreed in Beat 1 and at sources/ itself: what'
 Then go get it using the same methods as Beat 2 (fetch public URL, pull via connector, link to a local path, or tell me if it needs my attach). Land it in sources/ as a new file. Stop there — don't update memory yet; I want to see the new source first.
 ```
 
-*(end of prompt)*
 
 Look at what Claude named and at the new `sources/` file. If it's wrong — the page isn't actually the thinnest, or the source won't help — push back in one sentence. If Claude asked for an attachment, decide whether you want to include it; use **+** if yes.
 
 When the new source is in place:
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Update the memory from the new source — don't rebuild it. For topics you already have: integrate new claims, sharpen existing pages, drop any claim the new source contradicts. For new topics: add pages in the existing shape. Update memory/index.md.
@@ -156,13 +158,12 @@ Update the memory from the new source — don't rebuild it. For topics you alrea
 When you're done, tell me three topic pages that got sharper (not longer) from this update — and one page where a claim got dropped or replaced.
 ```
 
-*(end of prompt)*
 
 Second batch made the first batch better. Chat literally cannot do this.
 
 Now — don't take Claude's report at face value. Push back:
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Go through every page you just claimed got sharper. Check whether the top of each page actually got rewritten, or whether the old framing is still sitting above a new section. For any where the old is still there, rewrite the top — let the new direction replace the old, don't preserve both.
@@ -170,19 +171,17 @@ Go through every page you just claimed got sharper. Check whether the top of eac
 Also revisit module-2/soft-pages.md. For each, sharpen the top paragraph so it names what's specific to my challenge, not generic.
 ```
 
-*(end of prompt)*
 
 That last line picks up the soft pages you parked in Phase 1 — where they finally get real.
 
 **Phase 4 — Let it maintain itself.**
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don't have one; two places where older pages likely went stale given what's in the newer sources. For each, propose a specific fix. Don't apply them yet — ask me to approve or reject each one.
 ```
 
-*(end of prompt)*
 
 Go through Claude's six proposals. Some will be right. Some will miss — reject those. The ones you approve, Claude applies. The memory you're leaving with is one you trusted enough to sign off on line by line.
 
@@ -192,13 +191,12 @@ Ask your memory the hardest open question on your challenge right now. Not *"sum
 
 Run it through the agent you built in Phase 2 — the one that reads the memory and cites sources.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Using my memory and the rules in the agent file, answer this question, citing which memory file each claim came from:
 ```
 
-*(end of prompt)*
 
 Then the question.
 

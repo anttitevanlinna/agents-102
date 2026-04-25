@@ -9,6 +9,48 @@ This CLAUDE.md governs curriculum work.
 
 Current state of what's built vs. what's next lives in `content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
 
+## Quality-state tagging
+
+Every student-facing artifact (module, exercise, lecture, prework) carries a Quality line in its maintainer block. The tag is the contract between sessions — without it, every audit re-runs from scratch and every "cleared" claim is unverifiable.
+
+**Six states, ordered cheap → expensive (each tier earns the right to spend the next):**
+
+| State | What it means | Trigger | Cost |
+|---|---|---|---|
+| `draft` | Fresh from generation; no audit | Default on creation | — |
+| `compendium-audited` | Static rules cleared at ship time | `curriculum-pre-ship-audit` skill clears | minutes (grep) |
+| `sim-passed` | Three-persona register/smell sim cleared 8+/10 each | Three-persona sim returns ≥8 across all three | minutes (one subagent) |
+| `mechanical-tested` | Prompt chain executes on a real scratch repo and passes assertions | `curriculum/evals/mechanical/` Actor + Judge run clears (judge report on disk) | tens of minutes (real execution + grading) |
+| `cohort-tested` | Survived ≥1 real cohort delivery | Manual after delivery; lists cohorts + post-cohort changes | hours/days (live delivery) |
+| `battle-tested` | ≥3 cohorts in trailing 12 months | Computed from cohort log | months |
+
+**Order is cheap-before-expensive.** Burn the cheap audits first; only spend mechanical execution on prompts that already cleared compendium + sim. A prompt that fails register-sim doesn't deserve a mechanical run yet — the register fix is going to change the prompt anyway.
+
+**Mechanical and sim sample different error classes** (per `check_pedagogy.md` #21 verification layers): sim *predicts* what a competent reader would react to (cheap, broad pattern-match); mechanical *observes* what Claude actually does on a real scratch repo (expensive, falsifiable). Both are pre-cohort; neither replaces the other.
+
+**Format** (in maintainer block — top-state line + dimension log):
+```
+**Quality:** <top-state> <YYYY-MM-DD>
+- compendium-audited <YYYY-MM-DD> (<compendium-versions-and-audits-applied>)
+- sim-passed <YYYY-MM-DD> (<persona names + scores>)
+- mechanical-tested <YYYY-MM-DD> (<judge-report-path> PASS)
+- cohorts: <none yet | list cohort-name + date + post-cohort changes>
+```
+
+The top-state line is the highest tier currently valid. The dimension log lists each tier's last audit date and provenance. A reader checks both — top-state at a glance, dimensions for staleness reasoning.
+
+**Auto-degrade — touch-based only, not time-based:**
+
+- **File touched after audit date** → that tier and all higher tiers degrade to the highest tier still valid. The audit-against-old-content tag becomes meaningless when the content moves.
+- **Compendium amended in a way that changes a rule the file was audited against** → `compendium-audited` tier degrades; if that was the floor for higher tiers, they degrade too.
+- **No time clock.** A file untouched for two years against a stable compendium is still valid. A file edited yesterday against an audit from this morning is stale.
+
+Same-session edits during the audit-and-tag cycle don't trigger degrade (audit is as-of-end-of-session). Cosmetic edits below `<!-- maintainer -->` (maintainer-block-only changes that don't touch student-facing content) also don't degrade — the audit was against student-facing content.
+
+**Pre-first-cohort default** is `compendium-audited` once the audit skill clears. `cohort-tested` and `battle-tested` only apply after live delivery; lists cohort-name + date + what changed in the file as a result.
+
+Canonical source: `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md`.
+
 ## Scope
 
 **A portfolio of 3-4 trainings.** Bootstrap is the first (for builder leaders making the chat-to-systems leap). Engineering Management is the second (for engineering managers leading agentic change; strategy in `content-strategy-engineering-management.md`). Agentic Engineering 101 is the third (for software engineer ICs, L0 → L3 path; strategy in `content-strategy-agentic-engineering-101.md`). Executive briefing and domain-specific variants will follow. The Engineering Management + Agentic Engineering 101 pair pincer the transformation — managers create conditions, engineers run at capacity. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
@@ -145,7 +187,7 @@ Curriculum content describes a real tool that ships on a real cadence. Getting t
 
 3. **Practitioner observation beats docs-based lookup.** When Antti says "I see X happen when I use the product," that's ground truth. Update the material to match; the docs may lag or the lookup may be out-of-date.
 
-4. **Training platform = Claude Code desktop (current) + Cowork (future).** Not Claude.ai (chat). If an exercise draft names `claude.ai` as the place to do the work, or leans on Claude.ai-only features (e.g., the chat-app connector panel, the chat-app schedule UI), it's wrong and must be revised. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via the prompt (*"Enable plan mode"*), the desktop mode dropdown, or Shift+Tab cycle.
+4. **Training platform = Claude Code (CLI + Desktop) + Cowork — both current as of 2026-04-25.** Not Claude.ai (chat). Bootstrap is dual-runtime: same prompts, same artifacts, same `.plugin` files install in either. Differences live in (a) install-step UI language and (b) terminology (*subagent* in Code, *agent* in Cowork). If an exercise draft names `claude.ai` as the place to do the work, or leans on Claude.ai-only features, it's wrong. For the runtime split, see `curriculum/reference/claude-code-for-engineers.md` § *Claude Cowork — same engine, different surface*. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via the prompt (*"Enable plan mode"*), the desktop mode dropdown, or Shift+Tab cycle. For Cowork: the *Cowork* tab in Claude Desktop, *Customize → Browse plugins*, *Save plugin* button after authoring, and the connected-folder model in place of CWD.
 
 5. **Cloud/remote features carry a Git dependency — out of scope.** Remote tasks (Routines) run in Anthropic's cloud, but the runner needs a cloud source for the working directory — typically a cloud Git repo. Our training uses a local training directory (the default path lives in `.claude/skills/self-study/SKILL.md` — source of truth). State cloud features exist; do not present them as a realistic upgrade path inside a business-audience exercise.
 
@@ -215,6 +257,35 @@ How participants receive and work with training material (site + local files). D
 **The root `CLAUDE.md` is a living file — written by the student, not shipped.** It's *created* in Module 2's Debrief (Claude writes the first version from session evidence, student pushes back) and then *grows* through every subsequent module's Debrief (Claude reviews the session, rewrites in place, integrates-don't-appends; student reads the 2–3 line summary of what changed). No pre-authored CLAUDE.md ever lands in the training-dir root; that violates the "student writes their own rules" principle and causes agents to auto-execute behavior the student never authorized. Module 1's Debrief produces a separate, scoped `module-1/CLAUDE.md` that stays in `module-1/` and doesn't touch the root.
 
 **Trainer side:** scaffolds are maintained in Git inside the Agents 102 repo (`curriculum/scaffolds/<module-slug>/` is the expected location — to be created as scaffolds materialize). Empty folders use `.keep` placeholders so zip/unzip preserves structure; don't ship per-folder README.md files (working-directory instructions belong at the transition points in curriculum content — prework Step 0, the Module 2 Setup line, etc. — not duplicated per folder). Export zips per cohort, host on the customer's site or SharePoint. Participants never see Git.
+
+## Classroom delivery — default mode
+
+Classroom (cohort + trainer) is the primary delivery mode. Self-study is bonus / beta. Author for classroom first.
+
+**The default classroom shape:**
+
+1. **Trainer projects the recap site.** No slides — the curriculum site IS the slide. Modules, exercises, lectures, prompts, all rendered as the student will later see them in their own browser. Prompt-block chrome (header chip + Copy button) is part of the projected surface; legibility at projection distance is a design constraint, not a polish step.
+2. **Every exercise is follow-along by default.** Trainer demos slowly on the projected screen — types or pastes the prompt, sends, narrates as the response streams. The room copy-pastes the same prompt into their own laptop session concurrently and watches their own agent execute. Per `check_pedagogy.md` #24, the time budget is the slower of the two paces (usually the trainer's), not their sum.
+3. **Frequent designed conversation pauses.** Every exercise is broken by short stop-and-talk beats so stragglers catch up and the room digests what they just saw. Conversation pauses are a structural feature of the exercise, not improvisation between phases — author them in. A 25-minute exercise without a single designed pause is a draft, not a finished exercise.
+
+**What trainers actually do (and don't):**
+
+- **Trainer's screen is shared most of the session.** Whatever is on the trainer's screen is visible to the room. There is no private trainer-only pane during delivery. Anything the trainer needs to read in private has to happen before screen-share starts, or live on a separate physical surface (printed sheet, phone, second device) — never in a window the trainer would have to toggle.
+- **Trainers do NOT read maintainer blocks during the session.** Cognitive load of running the room + projecting + operating their own Claude Code is already maxed; there is no spare attention to context-switch to a maintainer-only document mid-flow. Pretending maintainer blocks are runtime scripts is a design mistake. Two consequences:
+  - **Run-time cues live in student-visible prose.** A pause beat written as *"Take 90 seconds and compare what your session printed with the person next to you"* reads as instruction to the room AND as cue to the trainer — the same sentence does both jobs. This is the only run-time surface that doesn't require a context switch.
+  - **Pre-rehearsal trainer material is its own artifact.** Failure modes, why each phase teaches what it teaches, what to listen for in the room, when to compress vs. linger — these belong in a per-module trainer guide read once before delivery, not in a maintainer block pretending to be a script. Maintainer blocks stay narrow: source citations, eval logs, design history, customisation notes. (Format of the per-module trainer guide is TBD; the principle is "read in prep, not during.")
+
+**What this means for authors:**
+
+- **No megaprompts in classroom-target exercises.** A 30-line prompt the trainer types live is dead air for the room. Split into smaller prompts at natural pause points; if the prompt genuinely needs to be long, the trainer pastes it from the recap site (Copy button) and uses the wait for one of the designed conversation pauses.
+- **Phase boundaries should land at conversation-pause beats.** Not "here's a transition sentence to Phase 2" but "here's where the trainer asks the room what they noticed and then everyone moves on together."
+- **Long agent waits (multi-minute send-offs, multi-file audits) are the natural pause anchors.** While the agent runs, the trainer talks. Design those waits in deliberately rather than apologising for them.
+- **Trainer-only material lives in maintainer blocks** below `<!-- maintainer -->`. Per-phase: what to demo, what to skip, where the room usually gets stuck, what conversation prompt fills a 90-second agent wait. The block is a script, not a footnote — write it that way.
+
+**What this DOESN'T mean:**
+
+- Self-study isn't second-class — it just inherits the same structure with the host-skill (Teacher Claude / Agentic Nerd, per `check_pedagogy.md` #25) playing the trainer's role. Designing for classroom-first usually produces self-study material that works without modification.
+- Conversation pauses aren't "stop and reflect on your feelings" beats. They're "the room compares notes on what their session just produced" beats — concrete, exercise-anchored, short.
 
 ## Content Boundaries
 

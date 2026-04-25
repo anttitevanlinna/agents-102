@@ -12,11 +12,11 @@ Read the un-packaged M4 run through three failure-mode lenses, build the validat
 ## What You'll Learn
 After this module, you will be able to:
 - **Diagnose** an un-packaged multi-hour run through three named failure-mode lenses (goal drift, context rot, plausible-but-wrong), quoting specific moments in your own artefact for each
-- **Earn** Ronacher's three-pattern (reference artefact + plan.md + external verifier) by mapping each piece to the failure it would have caught. The three pieces become tools, not vocabulary
-- **Build** a verifier shaped against your dominant failure using one of Cherny's three shapes (background-agent, shell-hook, or Ralph re-feed)
+- **Earn** the three-pattern (reference artefact + plan.md + external verifier) by mapping each piece to the failure it would have caught. The three pieces become tools, not vocabulary
+- **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task M4 sent off
-- **Re-send** the packaged version of the same task in the same Claude Code session and close the laptop a second time
-- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence; you push back on the summary. Team-worthy rules get flagged for separate PR; they don't auto-ship.
+- **Re-send** the packaged version of the same task in the same Claude Code session and let it run a second time
+- **Compound by subtraction:** cut one rule diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life
 
 ## Connections
 
@@ -28,45 +28,33 @@ You sent off an un-packaged run at the close of M4 and read the pre-read. You wa
 
 [Lecture: Learning through contrast](lectures/learning-through-contrast.md)
 
-## Exercises
-
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
 ## Key Concepts (Emergent)
 - The three failure modes earn their names by reading them in your own artefact, not from a slide
-- Ronacher's three-pattern is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
-- Cherny's three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
+- The three-pattern (Ronacher) is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
+- The three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson. No lecture replicates this
 - Your verifier is your first eval. M6 gives evals their full weight as team infrastructure
 - The kit grows: subagents for context isolation and `/compact` at ~60% extend session length without packaging. Worth knowing alongside the three-pattern
 
-## Debrief
+## Cut what diagnosis killed
 
-12–15 minutes total. Two moves. First, a retro with Claude. Claude reviews the session, rewrites your personal `CLAUDE.local.md` from evidence, reports what changed. You push back on the summary. Second, once the rules file is where you want it for this run: the re-send.
+The un-packaged M4 send-off was the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.
 
-Ask Claude to review the session and rewrite your personal `CLAUDE.local.md` from evidence, flagging team-worthy rules for a separate PR.
+Ask Claude to cut one rule diagnosis killed, or to say so and stop if all rules held.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code, only if a rule earned cutting)*
 
 ```
-Review this session. I diagnosed my un-packaged M4 run through three failure modes (goal drift, context rot, plausible-but-wrong); built a verifier shaped against the worst one; assembled a reference artefact + plan.md for the re-send.
-
-Read `CLAUDE.md` (team), `CLAUDE.local.md` (personal, mine), the memory files, the ADRs, the verifier I just built, the reference and plan I just assembled, and this scrollback. Then rewrite `CLAUDE.local.md` in place. Integrate what I learned diagnosing the M4 run, sharpen what turned out thin under diagnosis, remove what turned out wrong. Don't append "session notes"; rewrite the file as the better version.
-
-If any rule is team-worthy (one every engineer running multi-hour agents on this codebase should know) flag it in your summary, don't PR it. I'll decide separately whether to open a PR against team `CLAUDE.md`.
-
-Tell me in 3–5 lines: what you added to `CLAUDE.local.md`, what you sharpened, what you removed, which team-rule flags you noted, and which moment in this session made you pick those over others.
+Read ./CLAUDE.local.md. Read this M5 scrollback: the three failure modes I named, the verifier I built, the reference and plan I assembled. Find the one rule diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
 ```
-
-*(end of prompt)*
-
-Read the summary. Push back where it's wrong; quote the session moment.
 
 Now the re-send. Same task as M4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. You're not re-explaining the task; you're invoking what you assembled.
 
 Ask Claude to re-run the same M4 task using the reference, plan.md, and verifier you just built.
 
-**Prompt** *(copy → Claude Code, final move of the module)*
+**Prompt** *(Claude Code, final move of the module)*
 
 ```
 Run the task we sent un-packaged at M4. Same scope, same goal. The reference and plan.md we assembled are at the path we wrote; the verifier is ready to fire. Go.
@@ -74,11 +62,8 @@ Run the task we sent un-packaged at M4. Same scope, same goal. The reference and
 I'm closing the laptop. If the verifier fails, fix and re-run; don't paper over. Tell me what shipped, what didn't, and what the verifier surfaced.
 ```
 
-*(end of prompt)*
 
-Let it run. Keep the laptop awake and plugged in (power settings → prevent sleep on power). Same cancel-is-legit rule from M4: stop when you've seen what you needed to see. The traces are still data.
-
-Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is legitimate practice. Past ten and you've become the agent; call it and read what's there.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from M4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more — that's a result worth reading.
 
 ## Closing
 
@@ -104,6 +89,7 @@ Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap 
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: Nerd reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The re-send at Debrief happens in the same Claude Code session the student used for diagnose + build + assemble + retro. No new session, no scheduled agent, no cloud runner.
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. Self-study Teacher Claude shares the link in the M4 close-out message. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
+- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (TODO — Nerd skill not yet written; trainer covers by default in cohort):
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Nerd: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*

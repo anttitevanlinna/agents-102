@@ -49,7 +49,14 @@ body {
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Flex column so the footer hugs content instead of leaving a tract of cream
+       below short pages (training picker, error states, single-screen modules). */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+main { flex: 1 0 auto; }
 
 ::selection { background: var(--accent); color: var(--ink-text); }
 
@@ -61,6 +68,10 @@ body {
     padding: 1.1rem 2rem;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .curriculum-header::before {
@@ -97,6 +108,77 @@ body {
 }
 
 .curriculum-home:hover { color: var(--accent-2); }
+
+/* ── Runtime switcher (Bootstrap only) ──
+   Bootstrap is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+   pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
+   phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
+   the body.runtime-* class hides the inactive variant.
+
+   Verified facts driving the design — see curriculum/reference/claude-code-for-engineers.md
+   § Claude Cowork — same engine, different surface. */
+
+.runtime-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: var(--ink-text);
+}
+
+.runtime-switcher[hidden] { display: none; }
+
+.runtime-switcher-label {
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.runtime-switcher-btn {
+    background: transparent;
+    color: var(--ink-text);
+    border: 1px solid var(--ink-line);
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+    font: inherit;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.runtime-switcher-btn:hover { opacity: 1; }
+
+.runtime-switcher-btn.is-active {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    color: var(--ink);
+    opacity: 1;
+}
+
+/* Hide the inactive runtime's prose. Three modes, four classes:
+     .rt-cli      visible only when runtime is cli
+     .rt-desktop  visible only when runtime is desktop
+     .rt-cowork   visible only when runtime is cowork
+     .rt-code     visible when runtime is cli OR desktop (any Claude Code surface)
+   Authors use the broad .rt-code for the common Code-vs-Cowork fork (plan mode,
+   subagent terminology, four-session pattern). Use the narrow .rt-cli / .rt-desktop
+   only where install affordances actually differ (M4, M7).
+
+   Both inline (<span>) and block (<div>) wrappers respond to the same classes —
+   wrap whole prompt blocks in <div class="rt-…"> when the prompt body itself
+   forks (fenced-code can't carry inline spans inside, so the wrap goes around). */
+
+body.runtime-cli     .rt-desktop,
+body.runtime-cli     .rt-cowork  { display: none; }
+
+body.runtime-desktop .rt-cli,
+body.runtime-desktop .rt-cowork  { display: none; }
+
+body.runtime-cowork  .rt-cli,
+body.runtime-cowork  .rt-desktop,
+body.runtime-cowork  .rt-code    { display: none; }
 
 /* ── Footer: license notice, visible on every module page ── */
 
@@ -327,6 +409,193 @@ main::before {
     font-size: 1em;
 }
 
+/* ----------------------------------------------------------------
+   Prompt blocks + copy buttons
+   ----------------------------------------------------------------
+   Author markup:
+     **Prompt** *(Claude Code)*
+
+     ```
+     <prompt content>
+     ```
+   The renderer wraps the label paragraph + the following <pre> in
+   .prompt-block, surfaces destination + optional context as a header
+   chip, and adds a Copy button to the <pre>. Every other <pre> in
+   the document also gets a Copy button (universal affordance). */
+
+.module .prompt-block {
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--line-2);
+    border-radius: 5px;
+    background: var(--bg-2);
+    overflow: hidden;
+}
+
+.module .prompt-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.4rem 0.55rem 0.4rem 0.95rem;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--line-2);
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+.module .prompt-block__label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.module .prompt-block__arrow {
+    color: var(--fg-3);
+}
+
+.module .prompt-block__dest {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.module .prompt-block__context {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-2);
+    font-size: 0.92em;
+}
+
+.module .prompt-block__context::before {
+    content: "·";
+    margin-right: 0.5rem;
+    color: var(--fg-4);
+}
+
+.module .prompt-block .prompt-block__pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--bg-2);
+}
+
+/* Copy button — two flavours.
+   1. In-header (.copy-btn--in-header): mounted into the prompt-block header,
+      pushed to the right edge. Always visible, no overlay. This is the prompt
+      case (the canonical copy affordance for the training).
+   2. Overlay (.copy-btn, default): absolute-positioned in the top-right of a
+      bare <pre>. Used only for standalone code snippets that have no header
+      bar. Hover-emerges so it doesn't compete with code reading. */
+
+.module pre {
+    position: relative;
+}
+
+.module .copy-btn {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.module .copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.module .copy-btn--copied,
+.module .copy-btn--copied:hover {
+    opacity: 1;
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Overlay flavour on standalone <pre>. */
+.module pre > .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0.55;
+    z-index: 2;
+}
+
+.module pre:hover > .copy-btn,
+.module pre > .copy-btn:focus-visible {
+    opacity: 1;
+}
+
+/* In-header flavour — pushed to the right edge of the header row. */
+.module .prompt-block__header .copy-btn--in-header {
+    margin-left: auto;
+}
+
+/* Inside ink-dark exercise phases — invert chrome to read on dark bg.
+   Header sits visibly above body (~9% vs ~3% cream tint) so the destination
+   chip and copy button read as a separate row. Border lifted to ink-text
+   alpha so the widget has a real frame, not a 1px shadow. */
+.phase--exercise .prompt-block {
+    background: rgba(244,236,219,.03);
+    border-color: rgba(244,236,219,.18);
+}
+
+.phase--exercise .prompt-block__header {
+    background: rgba(244,236,219,.09);
+    border-bottom-color: rgba(244,236,219,.14);
+}
+
+/* Label drops slightly so the destination ("Claude Code", "Builder Claude")
+   wins the header. Student needs to glance and know where this paste goes. */
+.phase--exercise .prompt-block__label {
+    color: var(--warm);
+    font-size: 0.72rem;
+}
+.phase--exercise .prompt-block__arrow { color: var(--ink-muted); }
+.phase--exercise .prompt-block__dest {
+    color: var(--ink-text);
+    font-size: 0.84rem;
+}
+.phase--exercise .prompt-block__context { color: var(--ink-text-2); }
+.phase--exercise .prompt-block__context::before { color: var(--ink-muted); }
+.phase--exercise .prompt-block .prompt-block__pre {
+    background: rgba(244,236,219,.03);
+}
+
+/* Copy button reads as a button on dark — bright enough plate, real text
+   colour, real border. Was three near-blacks stacked; now it sits forward. */
+.phase--exercise .copy-btn {
+    background: rgba(244,236,219,.10);
+    border-color: rgba(244,236,219,.22);
+    color: var(--ink-text);
+}
+
+.phase--exercise .copy-btn:hover {
+    color: var(--warm);
+    border-color: var(--warm);
+    background: rgba(201,121,66,.12);
+}
+
+.phase--exercise .copy-btn--copied,
+.phase--exercise .copy-btn--copied:hover {
+    background: var(--warm);
+    border-color: var(--warm);
+    color: var(--ink);
+}
+
+@media print {
+    .module .copy-btn { display: none; }
+}
+
 .module blockquote {
     border-left: 3px solid var(--accent);
     margin: 2.5rem 0;
@@ -362,10 +631,13 @@ main::before {
     color: var(--fg-3);
 }
 
+/* Markdown `---` rules become pure whitespace inside the module body —
+   the section-mark above each h2 already does the visual separation work,
+   and a hairline rule on top of that reads as ceremony. */
 .module hr {
     border: none;
-    border-top: 1px solid var(--line);
     margin: 2.5rem 0;
+    height: 0;
 }
 
 .module table {
@@ -514,7 +786,9 @@ main::before {
     margin-bottom: 3rem;
 }
 
-.module-list.index-modules { grid-template-columns: 1fr 1fr; }
+/* Single-column editorial rows — each row gets the big-idea italic line
+   as the main scan target, not a 2-up grid where titles dominate. */
+.module-list.index-modules { grid-template-columns: 1fr; }
 
 .module-list.index-modules > li,
 .module-list.index-prework > li {
@@ -553,13 +827,12 @@ main::before {
 .module-list.index-prework > li > a {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    column-gap: 1.5rem;
+    column-gap: 1.75rem;
     align-items: start;
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 1.85rem 2rem;
     color: var(--fg);
     text-decoration: none;
     border-bottom: none;
-    min-height: 180px;
 }
 
 .module-list.index-modules .module-n,
@@ -597,11 +870,14 @@ main::before {
 
 .module-list.index-modules .module-big,
 .module-list.index-prework .module-big {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
     color: var(--fg-2);
     text-wrap: pretty;
+    max-width: 38em;
 }
 
 .module-list.index-modules .module-big:empty,
@@ -719,19 +995,19 @@ main::before {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     letter-spacing: .02em;
     text-transform: lowercase;
-    margin: 0 0 1.25rem;
+    margin: 0 0 2.25rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .phase-kicker::before {
     content: "";
-    width: 1.5rem;
-    height: 1px;
+    width: 2.75rem;
+    height: 2px;
     background: currentColor;
     display: inline-block;
 }
@@ -772,16 +1048,39 @@ main::before {
 
 .phase--exercise h2::before { background: var(--warm); }
 
-.phase--exercise h1 + p { color: var(--ink-text-2); }
-.phase--exercise h1 + p::first-letter { color: var(--warm); }
 .phase--exercise h2 + p { color: var(--ink-text); }
+
+/* Inside a phase block (embedded OR standalone), the H1 is a section title,
+   not a page lede. Strip the drop-cap and lede sizing that .module h1 + p
+   would otherwise apply — the phase-kicker already announces the section. */
+.phase h1 + p::first-letter { all: unset; }
+.phase h1 + p {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    min-height: 0;
+}
+.phase--exercise h1 + p { color: var(--ink-text-2); }
 
 .phase--exercise p,
 .phase--exercise li { color: var(--ink-text-2); }
 
 .phase--exercise strong { color: var(--ink-text); }
 
-.phase--exercise em { color: var(--warm); }
+/* Lead-in bold openers ("What you do:", "What happens:", "Time:") use the
+   oxblood accent on cream. On ink that reads as near-black — invisible.
+   Swap to the warm amber, the dark-mode accent equivalent. */
+.phase--exercise p > strong:first-child { color: var(--warm); }
+
+/* List-item lead-ins ("Sharpened verifier.", "Meta:") follow the cream rule
+   that keeps them as neutral text colour rather than amber — otherwise
+   key:value bullets all pop. On ink, neutral text is --ink-text. */
+.phase--exercise li > strong:first-child { color: var(--ink-text); }
+
+/* Body em on dark stays light cream — italic + serif is the emphasis cue;
+   amber-on-ink reads as link/highlight and floods paragraphs. Heading ems
+   keep their gradient via the more-specific h1/h2 em rules below. */
+.phase--exercise em { color: var(--ink-text); }
 
 /* Gradient-accented em inside the black-ink exercise headings.
    Picks up the Bosser orange → Arctic blue shift from the ai-training hero. */
@@ -920,8 +1219,50 @@ main::before {
 
 .page-nav a:hover { color: var(--accent); }
 
+.page-nav .nav-prev,
+.page-nav .nav-next {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 0.7rem;
+    max-width: 24em;
+}
+.page-nav .nav-next { grid-template-columns: 1fr auto; }
 .page-nav .nav-prev { justify-self: start; }
 .page-nav .nav-next { justify-self: end; text-align: right; }
+.page-nav .nav-arrow {
+    font-style: normal;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.page-nav .nav-prev:hover .nav-arrow { color: var(--accent); transform: translateX(-3px); }
+.page-nav .nav-next:hover .nav-arrow { color: var(--accent); transform: translateX(3px); }
+.page-nav .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+.page-nav .nav-title {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    font-size: 0.98rem;
+    line-height: 1.3;
+}
+.page-nav .nav-prev:hover .nav-title,
+.page-nav .nav-next:hover .nav-title { color: var(--accent); }
+.page-nav .nav-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-wrap: pretty;
+}
 .page-nav .nav-home {
     justify-self: center;
     font-family: var(--font-body);
@@ -931,6 +1272,133 @@ main::before {
     letter-spacing: .01em;
 }
 .page-nav .nav-empty { /* keeps the grid slot */ }
+
+/* ============================================================================
+   Reading progress — thin oxblood hairline at very top of viewport, fills
+   left-to-right as the student scrolls. Cheap depth signal, sits over the
+   sticky breadcrumb without competing with it.
+   ============================================================================ */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    z-index: 100;
+    pointer-events: none;
+    transition: width .08s linear;
+}
+@media print { .reading-progress { display: none !important; } }
+
+/* ============================================================================
+   Top breadcrumb — appears on every interior page (training index, module,
+   standalone exercise/lecture). Lets the student pop up one level without
+   scrolling to the bottom-of-page nav.
+   ============================================================================ */
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    /* Breaks out of the 40em column to span the reading band edge-to-edge —
+       the cream backdrop covers content scrolling under it instead of leaving
+       a strip on either side. */
+    margin: -3rem -2rem 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    background: rgba(239,230,210,0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.top-nav-back {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+    display: inline-block;
+}
+
+.top-nav-back:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+}
+
+/* ============================================================================
+   Module hero — promotes the H1 + "## Big Idea" paragraph into a single
+   editorial unit at the top of every module page. Module number sits to the
+   left like a chapter number; title sets weight; italic big-idea line frames
+   what the student is about to do.
+   ============================================================================ */
+
+.module-hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.75rem;
+    align-items: baseline;
+    margin: 0 0 3rem;
+}
+
+.module-hero-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 2.4rem;
+    letter-spacing: -.02em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    align-self: start;
+    padding-top: 0.75rem;
+}
+
+.module .module-hero-title {
+    grid-column: 2;
+    margin: 0;
+}
+
+.module .module-hero-title::after { display: none; }
+
+.module-hero-big {
+    grid-column: 2;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--fg-2);
+    margin: 1.25rem 0 0;
+    max-width: 32em;
+    text-wrap: pretty;
+}
+
+.module-hero-big em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* When the hero owns the title, the drop-cap on the next paragraph would
+   collide with the italic big-idea line. Suppress it — the hero is the lede. */
+.module-hero + p::first-letter { all: unset; }
+.module-hero + p {
+    font-size: 1.05rem;
+    color: var(--fg-2);
+}
+
+@media (max-width: 640px) {
+    .module-hero { grid-template-columns: 1fr; column-gap: 0; row-gap: 0.5rem; margin-bottom: 2.25rem; }
+    .module-hero-num { padding-top: 0; font-size: 1.85rem; }
+    .module .module-hero-title { grid-column: 1; }
+    .module-hero-big { grid-column: 1; font-size: 1.2rem; margin-top: 0.75rem; }
+}
 
 /* ============================================================================
    Print styles — unchanged spirit, adapted to the editorial palette.
@@ -949,6 +1417,14 @@ main::before {
     .curriculum-header { display: none !important; }
     .curriculum-footer { display: none !important; }
     .page-nav { display: none !important; }
+    .top-nav { display: none !important; }
+
+    /* Module hero collapses to a clean chapter header on paper. */
+    .module-hero { display: block; margin-bottom: 1rem; }
+    .module-hero-num {
+        font-size: 11pt; color: #555; margin-bottom: 0.25rem; padding-top: 0;
+    }
+    .module-hero-big { font-size: 12pt; color: #333; margin-top: 0.5rem; max-width: none; }
 
     main { padding: 0; display: block; }
     .module { max-width: none; }

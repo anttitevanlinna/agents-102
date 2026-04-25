@@ -10,6 +10,12 @@
 <body>
     <header class="curriculum-header">
         <a href="curriculum.html" class="curriculum-home">Agents 102 — Curriculum</a>
+        <div id="runtime-switcher" class="runtime-switcher" hidden>
+            <span class="runtime-switcher-label">Working with:</span>
+            <button type="button" data-runtime="cowork"  class="runtime-switcher-btn">Cowork</button>
+            <button type="button" data-runtime="desktop" class="runtime-switcher-btn">Claude Code Desktop</button>
+            <button type="button" data-runtime="cli"     class="runtime-switcher-btn">Claude Code CLI</button>
+        </div>
     </header>
 
     <main>
@@ -78,6 +84,92 @@
             var container    = document.getElementById('module-body');
             var directFileParent = null; // set by extractParent() if the file declares <!-- parent: <slug> -->
 
+            // ============================================================
+            // Runtime switcher — Bootstrap only.
+            //
+            // Bootstrap supports three modes. The header toggle reveals them in
+            // audience-friendliness order:
+            //  - cowork   Cowork (Desktop tab). Skills as .plugin files. No plan mode.
+            //  - desktop  Claude Code Desktop. Skills as .plugin files.
+            //  - cli      Claude Code CLI (terminal). Skills as folders in ~/.claude/skills/.
+            //
+            // AE101 pages do not show the toggle and force runtime-cli (the CLI is
+            // AE101's home runtime). The class lives on <body>; CSS hides the inactive
+            // variants.
+            //
+            // Wrapping pattern in markdown:
+            //  - Inline phrase fork:  <span class="rt-desktop">install via Customize</span>
+            //  - Whole-prompt fork:   <div class="rt-cowork">…fenced code block…</div>
+            //                         (raw-HTML blocks are valid markdown; marked.js
+            //                         passes them through. Keep blank lines around the
+            //                         markdown content inside the div so it parses.)
+            //
+            // Class semantics:
+            //  - .rt-cli      visible only in cli
+            //  - .rt-desktop  visible only in desktop
+            //  - .rt-cowork   visible only in cowork
+            //  - .rt-code     visible in cli AND desktop (i.e. anything Claude Code,
+            //                 either surface). Use this for the most common fork —
+            //                 plan mode, subagent terminology, the four-session pattern —
+            //                 where Code/Cowork is the meaningful split and CLI/Desktop
+            //                 don't differ. Use the narrower .rt-cli / .rt-desktop only
+            //                 where the install affordance actually differs (M4, M7).
+            //
+            // Choice persists in localStorage. Default is 'cowork' — Bootstrap's
+            // most-friendly mode; matches the leftmost button position.
+            //
+            // Verified facts driving this design (see Bootstrap-side reference
+            // curriculum/reference/claude-quick-reference.md, maintainer audit):
+            //  - same agent engine across all three; CLAUDE.md + subagents identical
+            //  - .plugin install path: Desktop + Cowork; CLI uses folder skills
+            //  - no plan mode in Cowork (use prompt-level discipline instead)
+            //  - terminology: subagent (Code), agent (Cowork)
+            // ============================================================
+            var RUNTIME_KEY = 'agents102-runtime';
+            var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
+            var DEFAULT_RUNTIME = 'cowork';
+            var trainingSupportsRuntimeSwitch = (trainingKey === 'bootstrap');
+
+            function getRuntime() {
+                if (!trainingSupportsRuntimeSwitch) return 'cli'; // AE101 lives in the CLI
+                var stored = null;
+                try { stored = window.localStorage.getItem(RUNTIME_KEY); } catch (e) {}
+                return VALID_RUNTIMES[stored] ? stored : DEFAULT_RUNTIME;
+            }
+
+            function applyRuntime(runtime) {
+                document.body.classList.remove('runtime-cli', 'runtime-desktop', 'runtime-cowork');
+                document.body.classList.add('runtime-' + runtime);
+                var sw = document.getElementById('runtime-switcher');
+                if (!sw) return;
+                if (!trainingSupportsRuntimeSwitch) { sw.hidden = true; return; }
+                sw.hidden = false;
+                var btns = sw.querySelectorAll('.runtime-switcher-btn');
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].classList.toggle('is-active', btns[i].getAttribute('data-runtime') === runtime);
+                }
+            }
+
+            function setRuntime(runtime) {
+                if (!trainingSupportsRuntimeSwitch) return;
+                if (!VALID_RUNTIMES[runtime]) return;
+                try { window.localStorage.setItem(RUNTIME_KEY, runtime); } catch (e) {}
+                applyRuntime(runtime);
+            }
+
+            // Wire toggle clicks once at boot.
+            (function wireRuntimeSwitcher() {
+                var sw = document.getElementById('runtime-switcher');
+                if (!sw) return;
+                sw.addEventListener('click', function (ev) {
+                    var t = ev.target;
+                    if (!t || t.tagName !== 'BUTTON') return;
+                    setRuntime(t.getAttribute('data-runtime'));
+                });
+            })();
+
+            applyRuntime(getRuntime());
+
             // Standalone exercise or lecture view: ?file=exercises/raw-llm  or  ?file=lectures/context-is-king
             if (directFile && !moduleSlug) {
                 loadAndRender('../curriculum/' + directFile + '.md', directFile);
@@ -130,9 +222,14 @@
                     .then(expandIncludes)
                     .then(function (md) {
                         container.innerHTML = marked.parse(md);
+                        decoratePrompts(container);
                         var h1 = container.querySelector('h1');
                         document.title = (h1 ? h1.textContent : fallbackTitle) + ' — Agents 102';
+                        if (typeof mod !== 'undefined' && mod) buildModuleHero(mod);
+                        wrapStandaloneIfNeeded();
+                        prependTopNav();
                         appendNav();
+                        installReadingProgress();
                     })
                     .catch(function (err) {
                         container.innerHTML = '<h1>Could not load</h1><p>' + esc(err.message) + '</p><p><a href="curriculum.html">Back to index</a>.</p>';
@@ -168,6 +265,88 @@
                 return md;
             }
 
+            // Standalone exercise / lecture pages get the same phase wrapper they
+            // wear when embedded inside a parent module — so the same content reads
+            // the same way regardless of how the student arrived. Without this,
+            // clicking a linkified exercise title from a module page flips the room
+            // from ink-dark to cream and back.
+            function wrapStandaloneIfNeeded() {
+                if (!directFile) return;
+                var kind = null;
+                if (directFile.indexOf('exercises/') === 0) kind = 'exercise';
+                else if (directFile.indexOf('lectures/') === 0) kind = 'lecture';
+                if (!kind) return;
+
+                var section = document.createElement('section');
+                section.className = 'phase phase--' + kind;
+                var kicker = document.createElement('div');
+                kicker.className = 'phase-kicker';
+                kicker.textContent = kind;
+                section.appendChild(kicker);
+                while (container.firstChild) section.appendChild(container.firstChild);
+                container.appendChild(section);
+            }
+
+            // Top breadcrumb: appears on every module / standalone-file / training-index page.
+            // Lets the student jump back one level without scrolling. Skipped on the bare
+            // training picker (no training context yet).
+            function prependTopNav() {
+                if (!training) return;
+                // Skip on the training index itself — there's no level above it.
+                if (!moduleSlug && !directFile) return;
+                var nav = document.createElement('nav');
+                nav.className = 'top-nav';
+                nav.innerHTML = '<a class="top-nav-back" href="curriculum.html?training=' + trainingKey + '">← ' + esc(training.label) + '</a>';
+                container.insertBefore(nav, container.firstChild);
+            }
+
+            // Promote the module's first H1 + "## Big Idea" paragraph into a single
+            // editorial hero: module number, title, italic big-idea line. Removes the
+            // now-redundant "## Big Idea" heading + paragraph from the body so the
+            // student isn't reading the same sentence twice.
+            function buildModuleHero(modRef) {
+                var h1 = container.querySelector('h1');
+                if (!h1) return;
+
+                var bigIdeaHtml = null;
+                var h2s = container.querySelectorAll('h2');
+                for (var i = 0; i < h2s.length; i++) {
+                    if (h2s[i].textContent.trim().toLowerCase() === 'big idea') {
+                        var sib = h2s[i].nextElementSibling;
+                        if (sib && sib.tagName === 'P') {
+                            bigIdeaHtml = sib.innerHTML;
+                            sib.remove();
+                        }
+                        h2s[i].remove();
+                        break;
+                    }
+                }
+
+                var allModules = training.modules.concat(training.optionalModules || []);
+                var idx = allModules.findIndex(function (m) { return m.slug === modRef.slug; });
+                var num = idx >= 0 ? String(idx + 1).padStart(2, '0') : null;
+
+                var hero = document.createElement('header');
+                hero.className = 'module-hero';
+                if (num) {
+                    var n = document.createElement('div');
+                    n.className = 'module-hero-num';
+                    n.textContent = num;
+                    hero.appendChild(n);
+                }
+                var titleClone = h1.cloneNode(true);
+                titleClone.classList.add('module-hero-title');
+                hero.appendChild(titleClone);
+                if (bigIdeaHtml) {
+                    var big = document.createElement('p');
+                    big.className = 'module-hero-big';
+                    big.innerHTML = bigIdeaHtml;
+                    hero.appendChild(big);
+                }
+                h1.parentNode.insertBefore(hero, h1);
+                h1.remove();
+            }
+
             // Bottom nav:
             //   - On a module page: prev module / all modules / next module
             //   - On a standalone exercise/lecture page: back to the training index
@@ -180,11 +359,23 @@
                     var next = i >= 0 && i < allModules.length - 1 ? allModules[i + 1] : null;
                     nav += '<nav class="page-nav">';
                     nav += prev
-                        ? '<a class="nav-prev" href="curriculum.html?training=' + trainingKey + '&module=' + prev.slug + '">← ' + esc(prev.title) + '</a>'
+                        ? '<a class="nav-prev" href="curriculum.html?training=' + trainingKey + '&module=' + prev.slug + '">' +
+                            '<span class="nav-arrow">←</span>' +
+                            '<span class="nav-text">' +
+                                '<span class="nav-title">' + esc(prev.title) + '</span>' +
+                                '<span class="nav-big" data-nav-big="' + esc(prev.slug) + '">&nbsp;</span>' +
+                            '</span>' +
+                          '</a>'
                         : '<span class="nav-prev nav-empty"></span>';
                     nav += '<a class="nav-home" href="curriculum.html?training=' + trainingKey + '">All modules</a>';
                     nav += next
-                        ? '<a class="nav-next" href="curriculum.html?training=' + trainingKey + '&module=' + next.slug + '">' + esc(next.title) + ' →</a>'
+                        ? '<a class="nav-next" href="curriculum.html?training=' + trainingKey + '&module=' + next.slug + '">' +
+                            '<span class="nav-text">' +
+                                '<span class="nav-title">' + esc(next.title) + '</span>' +
+                                '<span class="nav-big" data-nav-big="' + esc(next.slug) + '">&nbsp;</span>' +
+                            '</span>' +
+                            '<span class="nav-arrow">→</span>' +
+                          '</a>'
                         : '<span class="nav-next nav-empty"></span>';
                     nav += '</nav>';
                 } else if (directFile) {
@@ -201,6 +392,45 @@
                     nav += '</nav>';
                 }
                 if (nav) container.insertAdjacentHTML('beforeend', nav);
+                hydrateNavBigIdeas();
+            }
+
+            // Fill the italic big-idea preview slot under each prev/next link by
+            // fetching the linked module's markdown and pulling its "## Big Idea"
+            // paragraph. Lets the student decide "continue or stop here?" without
+            // clicking through.
+            function hydrateNavBigIdeas() {
+                container.querySelectorAll('.nav-big[data-nav-big]').forEach(function (slot) {
+                    var slug = slot.getAttribute('data-nav-big');
+                    if (!slug) return;
+                    fetch('../curriculum/trainings/' + trainingKey + '/' + slug + '.md')
+                        .then(function (res) { return res.ok ? res.text() : null; })
+                        .then(function (md) {
+                            if (!md) return;
+                            var idea = extractBigIdea(md);
+                            if (idea) slot.textContent = idea;
+                        })
+                        .catch(function () { /* leave the slot blank */ });
+                });
+            }
+
+            // Thin oxblood hairline at the very top of the viewport that fills as
+            // the student scrolls. Cheap depth cue — signals progress without
+            // taking real-estate. Fixed-position; survives sticky-nav stacking.
+            function installReadingProgress() {
+                if (document.querySelector('.reading-progress')) return;
+                var bar = document.createElement('div');
+                bar.className = 'reading-progress';
+                document.body.appendChild(bar);
+                var update = function () {
+                    var doc = document.documentElement;
+                    var max = doc.scrollHeight - doc.clientHeight;
+                    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+                    bar.style.width = pct + '%';
+                };
+                window.addEventListener('scroll', update, { passive: true });
+                window.addEventListener('resize', update);
+                update();
             }
 
             // Expand standalone include links of the form:
@@ -312,8 +542,18 @@
                     sectionsHtml += '</ol>';
                 }
 
+                // Trainer guide — same doc for every training. Surfaced at the
+                // bottom of every training index. Not hidden; students may peek.
+                sectionsHtml += '<h2 class="index-heading">For trainers</h2>';
+                sectionsHtml += '<ol class="module-list index-references">';
+                sectionsHtml += simpleRowHtml('Trainers', 'Delivery guide', 'curriculum.html?file=trainer-guide');
+                sectionsHtml += '</ol>';
+
                 container.innerHTML = heroHtml + sectionsHtml;
                 document.title = t.label + ' Curriculum — Agents 102';
+
+                prependTopNav();
+                installReadingProgress();
 
                 // Hydrate big ideas from each module's markdown so the card gets its
                 // one-liner without duplicating content in this file.
@@ -376,6 +616,140 @@
             // Turn *word* into a gradient-accented italic span. Escapes everything else.
             function renderAccents(s) {
                 return esc(s).replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
+            }
+
+            // ============================================================
+            // Prompt block decoration
+            // ============================================================
+            // Author convention (canonical):
+            //
+            //     Lead-in sentence with a command verb.
+            //
+            //     **Prompt** *(Claude Code)*
+            //
+            //     ```
+            //     <prompt content>
+            //     ```
+            //
+            // The renderer:
+            //   1. Wraps the **Prompt** label paragraph + the following <pre> in a
+            //      .prompt-block container with a labelled header (destination chip
+            //      + optional context note) and a Copy button on the <pre>.
+            //   2. Adds a small Copy button to every other <pre> too (snippets,
+            //      shell commands — copy is universally useful).
+            //   3. Strips any leftover "*(end of prompt)*" paragraph from older
+            //      files that still carry the closing marker.
+            //
+            // The destination string inside the *(...)* italic is parsed as
+            // "destination[, context note]". Examples:
+            //   *(Claude Code)*
+            //   *(Builder Claude)*
+            //   *(Claude Code, fresh session after /clear)*
+            //   *(Claude Code, final move of the module)*
+            //
+            // Runtime-aware destination chip:
+            // When the author writes the canonical "Claude Code" destination, the
+            // chip renders three runtime-tagged spans (cowork / desktop / cli);
+            // CSS hides the inactive ones based on body.runtime-*. Authors don't
+            // need to fork prompt blocks just for the chip label — only fork the
+            // prompt body or context note when those genuinely differ. Any other
+            // destination (e.g. "Builder Claude") renders verbatim.
+            function decoratePrompts(root) {
+                Array.from(root.querySelectorAll('p')).forEach(function (p) {
+                    var strong = p.querySelector('strong');
+                    if (!strong || strong.textContent.trim() !== 'Prompt') return;
+                    var pre = p.nextElementSibling;
+                    if (!pre || pre.tagName !== 'PRE') return;
+
+                    var em = p.querySelector('em');
+                    var label = em ? em.textContent.trim() : '';
+                    label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+                    var parts = label.split(/,\s*/);
+                    var dest = parts[0] || 'Claude Code';
+                    var context = parts.slice(1).join(', ');
+                    var destHtml = (dest === 'Claude Code')
+                        ? '<span class="rt-cowork">Cowork</span>' +
+                          '<span class="rt-desktop">Claude Code Desktop</span>' +
+                          '<span class="rt-cli">Claude Code CLI</span>'
+                        : esc(dest);
+
+                    var wrap = document.createElement('div');
+                    wrap.className = 'prompt-block';
+                    var header = document.createElement('div');
+                    header.className = 'prompt-block__header';
+                    header.innerHTML =
+                        '<span class="prompt-block__label">Prompt</span>' +
+                        '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
+                        '<span class="prompt-block__dest">' + destHtml + '</span>' +
+                        (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
+
+                    p.parentNode.insertBefore(wrap, p);
+                    wrap.appendChild(header);
+                    wrap.appendChild(pre);
+                    pre.classList.add('prompt-block__pre');
+                    p.remove();
+
+                    // Copy button lives in the header (right-aligned) — out of the
+                    // way of the prompt's first line of text.
+                    addCopyButton(pre, header);
+                });
+
+                // Universal copy buttons on every standalone <pre> — overlay style,
+                // since those blocks don't have a header bar to host it.
+                root.querySelectorAll('pre:not(.prompt-block__pre)').forEach(function (pre) {
+                    addCopyButton(pre);
+                });
+
+                // Back-compat: drop "*(end of prompt)*" leftovers from unmigrated files.
+                Array.from(root.querySelectorAll('p, em')).forEach(function (n) {
+                    var t = n.textContent.trim();
+                    if (t === '(end of prompt)' || t === '*(end of prompt)*') {
+                        var host = n.tagName === 'EM' ? n.parentNode : n;
+                        if (host && host.tagName === 'P') host.remove();
+                    }
+                });
+            }
+
+            // host: optional element to append the button to (e.g. the prompt-block
+            // header). Defaults to appending into the <pre> as an overlay.
+            function addCopyButton(pre, host) {
+                var mountTarget = host || pre;
+                if (mountTarget.querySelector(':scope > .copy-btn')) return;
+                var btn = document.createElement('button');
+                btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
+                btn.type = 'button';
+                btn.setAttribute('aria-label', 'Copy to clipboard');
+                btn.textContent = 'Copy';
+                btn.addEventListener('click', function (ev) {
+                    ev.preventDefault();
+                    var code = pre.querySelector('code') || pre;
+                    var text = code.innerText;
+                    var done = function () {
+                        btn.textContent = 'Copied';
+                        btn.classList.add('copy-btn--copied');
+                        setTimeout(function () {
+                            btn.textContent = 'Copy';
+                            btn.classList.remove('copy-btn--copied');
+                        }, 1400);
+                    };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(done, fallback);
+                    } else {
+                        fallback();
+                    }
+                    function fallback() {
+                        var ta = document.createElement('textarea');
+                        ta.value = text;
+                        ta.style.position = 'fixed';
+                        ta.style.opacity = '0';
+                        document.body.appendChild(ta);
+                        ta.select();
+                        try { document.execCommand('copy'); done(); }
+                        catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
+                        document.body.removeChild(ta);
+                    }
+                });
+                mountTarget.appendChild(btn);
             }
 
             function esc(s) {

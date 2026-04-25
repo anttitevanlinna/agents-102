@@ -2,19 +2,27 @@
 
 **What you do:**
 
-In Module 7 you pointed three strategy skills — `crux`, `assumption-test`, `pre-mortem` — at your own sharing problem. One person, one problem. Today the same three skills run at room scale against a real company question: **what's the company's strategy for agents, over the next six months, grounded in what we've actually built?**
+In Module 7 you ran three thinking-disciplines on your own sharing problem — Rumelt's *crux*, Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*. One person, one problem. Today the same three disciplines run at room scale against a real company question: **what's the company's strategy for agents, over the next six months, grounded in what we've actually built?** The disciplines are named inline in the prompts you'll paste — same shape as M2's Debrief.
 
 The deliverable: a Rumelt-style strategy kernel — diagnosis, guiding policy, near-term experiments, ranked risks — synthesised from everyone's agents reading everyone's work. Not the CEO's strategy from a consulting deck. Your strategy, from your system.
 
-Two diamonds. The first diverges then narrows to diagnosis. The second diverges then narrows to a guiding policy plus experiments plus risks. The three skills are the methods; the agents are the instrument.
+Two diamonds. The first diverges then narrows to diagnosis. The second diverges then narrows to a guiding policy plus experiments plus risks. The three disciplines are the methods; the agents are the instrument.
 
 **Time:** 55 minutes. Phase 1 fifteen, Phase 2 fifteen, Phase 3 fifteen, synthesis and read-out ten.
+
+**The five-line shape (read this before you dive in):**
+
+1. Grounding (before Phase 1, ~5 min) — every agent writes a `context-manifest.md` so others can see what it carries and what it doesn't.
+2. Phase 1 — pool the *cruxes* (Rumelt). Output: `crux.md` per agent → `pooled-cruxes.md`.
+3. Phase 2 — diagnose the top three, then drift each into a *guiding policy* move. Output: `guiding-policy.md` per agent → `composite-policy.md`.
+4. Phase 3 — pressure-test the composite with *what would have to be true?* (Roger Martin) and *pre-mortem* (Klein and Kahneman). Output: `assumptions.md` + `premortem.md`.
+5. Synthesis + read-out — the strategy kernel lands as one file; the room reads it back.
 
 **Before you start — the grounding rule:**
 
 Twenty agents (or in self-study, one student's M1–M7 stack plus persona-stand-ins) are about to read each other's memory folders. They know different things. Depth varies. The ground truth: every agent **publishes what it has and what it doesn't have** before it speaks to another agent's work. No agent cites a claim without pointing at the file it came from.
 
-**Prompt** *(copy → Builder Claude — run once at the start, before Phase 1)*
+**Prompt** *(Builder Claude, run once at the start, before Phase 1)*
 
 ```
 Write module-8/<my-name>/context-manifest.md. List:
@@ -27,18 +35,17 @@ Write module-8/<my-name>/context-manifest.md. List:
 Keep it dense. Half a page. The point is other agents (and other people) can see at a glance what I bring and what I don't, before they cite me or weigh my position.
 ```
 
-*(end of prompt)*
 
 The manifest is the ground. Every claim in every round after this one cites the file it came from. An agent that can't cite is an agent that's improvising — and the room (or the orchestrator) calls that out.
 
 **Phase 1 — Diamond 1 diverge: pool the cruxes (15 min).**
 
-Every agent in the room runs the `crux` skill against the company-strategy question, using its own memory and what it can see of neighbouring agents' published work.
+Every agent in the room runs the *crux* move (Rumelt) against the company-strategy question, using its own memory and what it can see of neighbouring agents' published work.
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
-Apply the crux skill to this question:
+Find the crux of this question (Rumelt — the load-bearing obstacle that, if removed, collapses several others):
 
 "What's our company's strategy for agents over the next six months — the one load-bearing obstacle that, if we remove it, unlocks the rest?"
 
@@ -52,7 +59,6 @@ Rules:
 Save to module-8/<my-name>/crux.md.
 ```
 
-*(end of prompt)*
 
 **In-room**: once everyone's `crux.md` is published, the CTO's (or sponsor's) agent reads all of them. It synthesises the top three cruxes across the room. Everyone reads the synthesis — it's the first moment the room sees its own shape.
 
@@ -61,11 +67,11 @@ Save to module-8/<my-name>/crux.md.
 
 **Self-study parallel (Phase 1):** The student's M1–M7 agents stand in for the room. Teacher Claude orchestrates the pooling: each of the student's major agents (the memory-librarian, the researcher, the skeptic if they built one, the judge) publishes a crux from its own angle. Teacher Claude then runs the CTO-agent synthesis move itself — reads them, clusters, names the top three for the student's company as the agents see it. The diversity isn't twenty real people; it's the diversity of angles your own system has accumulated. That's still real signal.
 
-**Phase 2 — Diamond 1 converge to diagnosis, then Diamond 2 diverge to guiding policy (15 min).**
+**Phase 2 — converge to diagnosis, drift to guiding policy (15 min).**
 
-With the top three cruxes named, every agent now drafts one guiding policy move — Rumelt's sense: a policy is not a goal, it's a *how* that pivots around the crux.
+The top three cruxes from Phase 1 ARE the diagnosis (Diamond 1's narrow point). Now drift outward again: every agent drafts one guiding policy move that pivots around the crux. Rumelt's sense — a policy is not a goal, it's a *how*.
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
 Read module-8/pooled-cruxes.md (the synthesis) and your own module-8/<my-name>/crux.md.
@@ -79,7 +85,6 @@ Cite every claim against a memory file or a pooled-cruxes entry. Don't add anyth
 Save to module-8/<my-name>/guiding-policy.md.
 ```
 
-*(end of prompt)*
 
 **In-room:** the CTO's agent reads every policy file, clusters, and drafts the single composite policy for the company — same citation rule. Pushback rounds: any participant can `@mention` the synthesising agent with *"the second action is missing the data-access wall from module-4/compliance.md line 8"* and force a re-synthesis.
 
@@ -90,23 +95,22 @@ Save to module-8/<my-name>/guiding-policy.md.
 
 **Phase 3 — Diamond 2 converge: pressure-test the policy with assumption-test, then pre-mortem (15 min).**
 
-Every agent now turns `assumption-test` on the composite guiding policy, then runs `pre-mortem` on the survivors.
+Every agent now runs Roger Martin's *what would have to be true?* on the composite guiding policy, then a Klein/Kahneman *pre-mortem* on the survivors.
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
 Read module-8/composite-policy.md (or your own guiding-policy.md in self-study).
 
-First, apply the assumption-test skill. What would have to be true for this policy and its three actions to work? List the top five assumptions. For each: confidence (high / medium / low) against specific evidence in my memory; one two-week experiment to test it.
+First, run Roger Martin's assumption-test. What would have to be true for this policy and its three actions to work? List the top five assumptions. For each: confidence (high / medium / low) against specific evidence in my memory; one two-week experiment to test it.
 
-Then apply the pre-mortem skill on the policy. It is 18 months from now. The policy failed. Write three failure stories — one social, one technical, one 'the failure I'm not seeing.' For each, one early warning sign visible in week two.
+Then run a pre-mortem (Klein and Kahneman) on the policy. It is 18 months from now. The policy failed. Write three failure stories — one social, one technical, one 'the failure I'm not seeing.' For each, one early warning sign visible in week two.
 
 Cite every claim against a memory file, a module-8 file, or a pooled-cruxes entry.
 
 Save the assumption-test to module-8/<my-name>/assumptions.md and the pre-mortem to module-8/<my-name>/premortem.md.
 ```
 
-*(end of prompt)*
 
 **In-room:** the orchestrator-agent pools the assumptions and pre-mortems across the room, clusters, and surfaces the two or three that appear in most agents' lists. Those are the load-bearing ones. The room argues about them.
 
@@ -124,13 +128,12 @@ Close the session with a single file: `module-8/strategy-kernel.md`. Four sectio
 - **Experiments.** The two or three assumptions you will test in the next two weeks. Each with owner, experiment, success signal.
 - **Risks.** The one pre-mortem failure story the room (or the student) agreed was most likely unseen. One early warning sign.
 
-**Prompt** *(copy → Builder Claude — for the student compiling their own kernel, or for the orchestrator-agent compiling the room's)*
+**Prompt** *(Builder Claude, for the student compiling their own kernel, or for the orchestrator-agent compiling the room's)*
 
 ```
 Read every module-8/*/ file. Write module-8/strategy-kernel.md with the four sections — diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where two agents conflicted, name the conflict in one line under the relevant section.
 ```
 
-*(end of prompt)*
 
 **In-room:** one participant reads the kernel aloud. Not the sponsor. A participant who wasn't the loudest voice in the diamonds. The read-out is three minutes.
 
@@ -147,7 +150,7 @@ Read every module-8/*/ file. Write module-8/strategy-kernel.md with the four sec
 
 **What happens:**
 
-One agent working alone can't produce a company-grade strategy kernel grounded in your actual data. Twenty agents (or one student's M1–M7 stack plus persona-stand-ins orchestrated by Teacher Claude) can — because the three skills compose. Crux finds the load-bearing obstacle. Assumption-test surfaces what has to be true. Pre-mortem names what breaks. The composite is a Rumelt kernel that a consultant could not produce in a month, because it cites your files.
+One agent working alone can't produce a company-grade strategy kernel grounded in your actual data. Twenty agents (or one student's M1–M7 stack plus persona-stand-ins orchestrated by Teacher Claude) can — because the three disciplines compose. Crux finds the load-bearing obstacle. Assumption-test surfaces what has to be true. Pre-mortem names what breaks. The composite is a Rumelt kernel that a consultant could not produce in a month, because it cites your files.
 
 The diamonds didn't converge on the first try. Pushback rounds were the work. The flywheel that sharpened the kernel just now is the one that will sharpen it again on Tuesday, on Wednesday, on the next problem you don't yet know you have.
 
@@ -160,10 +163,10 @@ You do not graduate. You have a flywheel.
 <!-- maintainer -->
 
 **Frameworks riffed on:**
-- Rumelt — `crux`, guiding policy, strategy kernel (diagnosis + policy + coherent actions)
-- Roger Martin — `assumption-test`, what would have to be true
-- Klein / Kahneman — `pre-mortem`, 18-month failure story
-- Double Diamond (Design Council) — diverge then converge, twice; the three skills are the methods that do the converging
+- Rumelt — *crux*, guiding policy, strategy kernel (diagnosis + policy + coherent actions). Named inline in prompts.
+- Roger Martin — *assumption-test* (what would have to be true). Named inline.
+- Klein / Kahneman — *pre-mortem*, 18-month failure story. Named inline.
+- Double Diamond (Design Council) — diverge then converge, twice; the three disciplines are the methods that do the converging.
 - Agents orchestrating agents — the M8 thesis made literal; the orchestrator is also an agent
 
 **Trainer artifacts required:**

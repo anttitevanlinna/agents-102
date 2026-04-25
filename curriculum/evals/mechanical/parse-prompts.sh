@@ -2,8 +2,11 @@
 # Extract fenced prompt blocks from a curriculum exercise file.
 #
 # Convention in exercise files: a block meant for the student to copy is
-# marked with a line containing `**Prompt**` and closed with `*(end of prompt)*`.
-# The content is a triple-backtick fenced block between the two markers.
+# marked with a line containing `**Prompt**` immediately followed (after a blank
+# line) by a triple-backtick fenced code block. The fence's closing ``` marks
+# the end of the prompt. The site renderer wraps the label + fence in a chrome
+# block with a Copy button and a destination chip; this parser only needs the
+# label-then-fence shape.
 #
 # Usage: parse-prompts.sh <exercise.md>
 # Output: writes prompt-NNN.txt files to $OUT_DIR (default: /tmp/prompts/<slug>/)

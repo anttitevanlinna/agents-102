@@ -24,13 +24,9 @@ After this module, you will be able to:
 
 **The question, to you:** when you've used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 
-## Lectures
-
 [Opening: Context is King](lectures/context-is-king.md)
 
 [Closing: What just happened](lectures/what-just-happened.md)
-
-## Exercises
 
 [Personal site with guardrails](exercises/personal-site-with-guardrails.md)
 
@@ -43,7 +39,7 @@ After this module, you will be able to:
 
 Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro captures what you noticed *about the work* (different lens, different rules). Two passes; the second is where the file starts compounding.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Read personal-brand-generation.md in this folder first. You'll need it for Q3.
@@ -59,13 +55,12 @@ Q3: Tell me one or two rules from the current personal-brand-generation.md that 
 After my answer to Q3, UPDATE personal-brand-generation.md. Integrate the retro into the existing file (sharpen weak rules, add what's missing, remove what turned out wrong). Don't append a "retro notes" section; rewrite the file as the better version. When you're done, tell me in 2–3 lines what changed and why: the rules added, the rules sharpened, the rules removed. I shouldn't have to open the file to know.
 ```
 
-*(end of prompt)*
 
 Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a markdown file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
-**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. Run `/clear` in your Claude Code session to wipe the conversation (you want a fresh Claude with no memory of building the site). Then:
+**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run `/clear` in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Start a new Cowork session on the same connected folder (you want a fresh Claude with no memory of building the site)</span>. Then:
 
-**Prompt** *(copy → Claude Code, fresh session after /clear)*
+**Prompt** *(Claude Code, fresh session)*
 
 ```
 Read site.html in this folder. Two questions:
@@ -73,7 +68,6 @@ Read site.html in this folder. Two questions:
 2. Quote the most generic line that could be copy-pasted from anyone's site.
 ```
 
-*(end of prompt)*
 
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there and regenerate. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 

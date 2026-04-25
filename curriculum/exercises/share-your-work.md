@@ -16,7 +16,7 @@ You'll interview for that job (the agent reads your memory and does most of the 
 
 You've built six modules of context. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting — it reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
 Read my memory/, sources/, module-3/, module-5/, and module-6/.
@@ -55,7 +55,6 @@ Anchor every claim to a specific file and line in my memory, plus the questions
 I answered. Show me the file before saving.
 ```
 
-*(end of prompt)*
 
 Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat — *"try again; the struggle is something else"* — and let it try once more. The third outcome vector is where this phase earns its keep. Speed and quality are the obvious axes. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
 
@@ -69,7 +68,7 @@ You have an outcome statement. Now you pick what you'd offer the teammate. Two b
 
 Pick based on what your company actually runs today. Not on what procurement might approve in Q3.
 
-Open the pattern catalog — `patterns/personal-to-team-patterns.md` (shipped with this module's scaffold; your Builder Claude can read it directly). Skim the four top-level strategies. Pick **one to three patterns.**
+Have Builder Claude walk you through the pattern catalog at `patterns/personal-to-team-patterns.md` (shipped with this module's scaffold) — the four top-level strategies, then the patterns under each. Pick **one to three patterns.**
 
 The selection test is not *does this pattern fit my infrastructure?* Infrastructure is a constraint, not a guide. The selection test is:
 
@@ -92,19 +91,18 @@ The four strategies, as a reminder:
 
 **Phase 2.5 — Crux the sharing problem (5 min).**
 
-Before you draft plans, find the load-bearing obstacle. The sharing problem always has one — and it's almost never the technical one your builder brain surfaced first. The `crux` skill (installed with this module's scaffold — Rumelt's discipline) names it out loud.
+Before you draft plans, find the load-bearing obstacle. The sharing problem always has one — and it's almost never the technical one your builder brain surfaced first. Rumelt's *crux* is the move: of all the obstacles in the way, name the one that, if removed, collapses several others.
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
-Apply the crux skill to my sharing problem. Read module-7/jtbd.md and module-7/branch.md, plus anything else in module-7/ so far. The question is not "how do I share?" — it's "what's the single load-bearing obstacle between my teammate and firing their current hire?"
+Find the crux of my sharing problem (Rumelt — the load-bearing obstacle that, if removed, collapses several others). Read module-7/jtbd.md and module-7/branch.md, plus anything else in module-7/ so far. The question is not "how do I share?" — it's "what's the single load-bearing obstacle between my teammate and firing their current hire?"
 
 List the obstacles you see — technical, social, political, habitual, governance, trust. Cluster them. Name the crux: the one that, if removed, collapses several others. State it in one sentence.
 
 Save to module-7/crux.md. Show me before saving.
 ```
 
-*(end of prompt)*
 
 Read what lands. If the crux is technical ("we don't have a Slack bot"), push back — technical obstacles are almost never the crux at Week 1. If the crux is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
 
@@ -112,7 +110,7 @@ Read what lands. If the crux is technical ("we don't have a Slack bot"), push ba
 
 You're drafting two documents side by side. Neither is optional.
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
 Read module-7/jtbd.md and module-7/branch.md. Help me draft two files in
@@ -140,7 +138,6 @@ not failures.
 Show me both before saving.
 ```
 
-*(end of prompt)*
 
 Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise — they are the questions you walk into your manager's office with on Monday.
 
@@ -148,14 +145,13 @@ Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercis
 
 Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* — that's a builder question. The question is Roger Martin's: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
 Read module-7/jtbd.md, module-7/technical-plan.md, and module-7/people-plan.md.
 
-Apply the assumption-test skill (the one that arrived with this module — Roger
-Martin's "what would have to be true for this to work?"). Aim it at the SWITCH,
-not at generic sharing:
+Run Roger Martin's assumption-test on these plans — *what would have to be true
+for this to work?* Aim it at the SWITCH, not at generic sharing:
 
 What would have to be true for this specific teammate, doing this specific
 job, to fire their current hire and use my candidate?
@@ -167,11 +163,10 @@ List the top five assumptions the switch depends on. For each:
   small experiment, one quick check.
 
 Order from most load-bearing to least. Save to module-7/assumptions.md.
-Let the assumption-test change the confidence in the plans — don't just add a
-new section. Show me before saving.
+Let the assumption-test change the confidence in the plans — don't just append
+a new section. Show me before saving.
 ```
 
-*(end of prompt)*
 
 Mark the two or three you'd actually test this week. Those are what you ship first — not the full rollout.
 
@@ -179,12 +174,12 @@ Mark the two or three you'd actually test this week. Those are what you ship fir
 
 The plan is on paper. Six months from now, they went back to Excel. Why?
 
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ```
-Apply the pre-mortem skill (the one that arrived with this module —
-Klein/Kahneman). It is six months from now. My teammate kept using their
-current hire. My candidate sat unused, or they tried it twice and fired it.
+Run a pre-mortem (Klein and Kahneman). It is six months from now. My teammate
+kept using their current hire. My candidate sat unused, or they tried it twice
+and fired it.
 
 Read module-7/jtbd.md, module-7/technical-plan.md, module-7/people-plan.md, and
 module-7/assumptions.md.
@@ -203,7 +198,6 @@ this were starting to happen.
 Save to module-7/premortem.md.
 ```
 
-*(end of prompt)*
 
 The third story is the one to read twice.
 

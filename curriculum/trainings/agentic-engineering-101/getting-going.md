@@ -4,7 +4,7 @@
 The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug's ticket via one connector. The loop every module after this one rides on.
 
 ## Meta
-- **Primary Bloom's level:** Apply (run the three-phase loop end-to-end) + Analyze (read Claude's own introspection against `/context`; read the retro summary against session moments)
+- **Primary Bloom's level:** Apply (run the three-phase loop end-to-end) + Analyze (read the agent's own introspection against `/context`; read the retro summary against session moments)
 - **Prework:** about 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1). Content folder unzipped, Claude Code open on the repo you'll grow, one bug surfaced in conversation with Claude.
 - **Homework:** none. Module 2's setup lives in Module 2's prework.
 - **Materials (trainer):** content folder (`agents-102-content-agentic-engineering-101.zip`) shipped before prework; no trainer scaffolds beyond that. All compounding artifacts land in the student's repo (see content strategy § Delivery architecture). Claude Code specifics (MCP install per tracker, tenant-admin fallbacks) live in [MCP and connectors](../reference/mcp-and-connectors.md), updated as Claude Code's install surface changes.
@@ -12,7 +12,7 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo
-- **Introspect** on Claude's read of your repo and verify the self-report against `/context`, the instrument that shows where the 10% lives
+- **Introspect** on the agent's read of your repo and verify the self-report against `/context`, the instrument that shows where the 10% lives
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
 - **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [reference § 1](../reference/claude-code-for-engineers.md) for the four-layer hierarchy) and close the bug's ticket via one connector. The first move outside the repo
 
@@ -20,11 +20,7 @@ After this module, you will be able to:
 
 **The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session. Write it on a sticky, or paste it in chat if you're remote. The room harvests everyone's before the training adds its own.
 
-## Lectures
-
 [The wizard move](lectures/the-wizard-move.md)
-
-## Exercises
 
 [Orient and introspect](exercises/orient-and-introspect.md)
 
@@ -34,14 +30,14 @@ After this module, you will be able to:
 
 ## Key Concepts (Emergent)
 - Plan mode is overhead on a trivial bug. M2 is where it earns its keep
-- Claude can introspect on its own read; the self-report is a hypothesis, not ground truth. Verify against `/context`
-- The 10% Claude couldn't address lives in the slice of the repo it didn't load. Your job is to steer what lands in the window
+- The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Verify against `/context`
+- The 10% the agent couldn't address lives in the slice of the repo it didn't load. Your job is to steer what lands in the window
 - A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
 - The compound step lives in Ex3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
 - Personal rules (`./CLAUDE.local.md`, gitignored) vs. team rules (`./CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
 
 ## Debrief
-The compound step runs inside the `compound-and-close` exercise. Claude reviews the full session (Ex1 + Ex2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) Claude calls it out in the summary so the student can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
+The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Ex1 + Ex2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so the student can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
 
 ## Closing lecture
 
@@ -68,6 +64,7 @@ Optional. Skipping either piece does not break M2. Both sit in the gap between M
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
+- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*

@@ -10,9 +10,9 @@ Three small steps:
 
 1. **Open your LinkedIn profile in your browser** — the page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
 2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page — headers, navigation, the recommendations sidebar, all of it. It will look like a wall of text. That's fine. Claude reads through it.
-3. **Paste it into your Claude Code session, then send this prompt right after** (in the same message, or as the next one):
+3. <span class="rt-code">**Paste it into your Claude Code session, then send this prompt right after** (in the same message, or as the next one):</span><span class="rt-cowork">**Paste it into your Cowork session, then send this prompt right after** (in the same message, or as the next one):</span>
 
-**Prompt** *(copy → Claude Code, after pasting your LinkedIn)*
+**Prompt** *(Claude Code, after pasting your LinkedIn)*
 
 ```
 Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as site.html in the current folder.
@@ -32,7 +32,7 @@ Notice the move you're about to make: **name the framework, tune it, ask Claude 
 
 One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the *whole site*, the colleague becomes the protagonist of the page — and you get a service site with your name in the footer. Wrong shape. **The site stays a personal site; you stay the protagonist of the page.** StoryBrand shapes the *colleague-help section*, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page's spine.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Hey Claude — apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think "this is the person I want to work with more, on the things they're great at." Not buying a service. Not booking a call. A colleague relationship.
@@ -54,7 +54,7 @@ Claude walks you through the five tuned beats. Answer each in your own words; do
 
 Same agentic move: **name the framework, ask Claude to run it.** *"Hey Claude, apply Drucker's feedback analysis to this story."* The model knows Drucker; you don't have to explain it.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Hey Claude — apply Peter Drucker's feedback analysis from "Managing Oneself" to my personal site. I'll tell you about one project from the last 12 months where things went unusually well — what we were trying to do, what I actually did in it, and what shipped. Ask me one question at a time if you need more — but don't grill me; the rough first telling is what we work with.
@@ -64,7 +64,6 @@ Then YOU infer the three strengths the story reveals. Not "leadership" or "commu
 Then regenerate site.html using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don't soften them into virtues.
 ```
 
-*(end of prompt)*
 
 Tell Claude about the project. Let it infer the strengths. Push back on the ones that miss. Read the regenerated site — same StoryBrand spine, sharper because the strengths are evidence-derived rather than self-reported.
 
@@ -72,13 +71,12 @@ Tell Claude about the project. Let it infer the strengths. Push back on the ones
 
 Reading the old version yourself would take ten minutes and probably reveal nothing — you wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Look at the very first site you generated from just my LinkedIn profile, before I added any differentiation context. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was a statistical default rather than something true of me.
 ```
 
-*(end of prompt)*
 
 Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults — what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 
@@ -92,7 +90,7 @@ Same agentic pattern again: **name the framework, tune it, ask Claude to run it.
 
 Give Claude a few specific things you hate about work — not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
 
-**Prompt** *(copy → Claude Code, then paste your hate list right after)*
+**Prompt** *(Claude Code, then paste your hate list right after)*
 
 ```
 Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
@@ -106,7 +104,6 @@ After step 4, regenerate site.html — keep me as the protagonist, keep the Stor
 My hate list:
 ```
 
-*(end of prompt)*
 
 Read the new version. The site gets sharper. Three frameworks now layered — StoryBrand for the help relationship, Drucker for the strengths, anti-branding for the voice. Each one applied by name. That's the move.
 
@@ -122,7 +119,7 @@ Open prompts. You drive.
 
 The site is done. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it — two passes; the second is where the file starts compounding.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Write a generation rules file at personal-brand-generation.md in this folder — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
@@ -130,7 +127,6 @@ Write a generation rules file at personal-brand-generation.md in this folder —
 When you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed.
 ```
 
-*(end of prompt)*
 
 Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent — text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
 

@@ -307,23 +307,21 @@ When you talk to the student about what they're doing, **say "exercise."** Never
 
 ## Prompt presentation — the canonical shape
 
-When you give the student a prompt to run, present it in this exact shape — open label, blank line, fenced code block, close marker — so it's visually scannable AND the boundary is unmissable:
+When you give the student a prompt to run, present it in this exact shape — label with destination, blank line, fenced code block — so it's visually scannable AND the boundary is unmissable:
 
 ```
-**Prompt** *(copy → Builder Claude)*
+**Prompt** *(Builder Claude)*
 
 ​```
 <the prompt content goes here, no placeholders mid-prompt>
 ​```
-
-*(end of prompt)*
 ```
 
 Rules:
 
 - **Lead with the label `**Prompt**`**, not with sentences like *"Now paste this into the Builder:"*. The label + the code fence carries that meaning. Prose narration around every prompt slows reading.
-- **The action hint goes in the parenthetical** after the label: `*(copy → Builder Claude)*`, or `*(copy → Builder Claude — Module 1 session)*` when the seam matters. Short. One affordance per prompt.
-- **Close with `*(end of prompt)*`** immediately after the closing fence. Mirrors the open. Without it the prompt's boundary is easy to miss in chat — the student doesn't know where copy stops and your next instruction starts. One italic line, every time.
+- **The destination goes in the parenthetical** after the label: `*(Builder Claude)*`, or `*(Builder Claude, Module 1 session)*` when the seam matters. Short. One destination per prompt. **Do not write `copy → ` inside the parenthetical** — on the rendered site a Copy button ships with every prompt block; in chat the student knows what to do with a labelled fenced block. The instruction is dead weight.
+- **Do not close with `*(end of prompt)*`.** The closing code fence already marks the boundary; on the rendered site the prompt-block chrome surrounds it visibly. The closing italic line was belt-and-braces from a prior version of the system and is now gone. One opening label, one fenced block, no closer.
 - **The prompt body lives in a fenced code block.** No leading `> ` blockquote, no inline backticks, no naked indentation. Code fence, every time — the student's eye is trained to find it and copy.
 - **Path-A / Path-B style branches:** label each path first (*"**Path A** — you have a calendar connector"*), then the prompt block under it. Don't pre-narrate which path they're on; let them pick.
 - **Conversational lead-in stays minimal.** A one-line context note before the label is fine when the prompt needs framing (*"This one will ask you a few questions in turn — answer each as it comes."*). Don't restate what the prompt says.

@@ -13,24 +13,19 @@ Walk what you've built against a real multi-hour task, fill the worst gaps, send
 After this module, you will be able to:
 - **Pick** a multi-hour real task from your backlog that demands sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude, not typed into a form
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
-- **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired at the sponsor-stated home (or the gap named explicitly)
-- **Recognize** Huryn's three-block memory in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
-- **Compound** the session into your personal `CLAUDE.local.md`. Claude rewrites in place from evidence, you push back on the summary. Team-worthy rules get flagged for a separate PR against team `CLAUDE.md`; they don't auto-ship.
-- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and leave it running while you step away (laptop awake, lid open, power plugged in), or stop the run mid-flight when you've seen enough; traces are data either way
+- **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
+- **Recognize** the three-block memory pattern in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
+- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and let it run; traces are data either way
 
 ## Connections
 
-You've watched Claude work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you sleep.
+You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you sleep.
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
-*Claude can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Task-surfacing is still your judgement about what's been sitting. At Phase 1, come with one or two candidates and Claude screens them for fit.*
-
-## Lectures
+*The agent can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Task-surfacing is still your judgement about what's been sitting. At Phase 1, come with one or two candidates and the agent screens them for fit.*
 
 [Lecture: Test and learn](lectures/test-and-learn.md)
-
-## Exercises
 
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
 
@@ -38,37 +33,19 @@ You've watched Claude work for three modules on short loops: a bug fix, a plan r
 - Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
 - Un-packaged is by design. M5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
-- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude loads both at session start (see [Claude Code for engineers § 1](../reference/claude-code-for-engineers.md))
+- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers § 1](../reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
 - Every send-off is an experiment, not a production run you need to get right first time
 
-## Debrief
+## Send it off
 
-12–15 minutes. You nudge the compound step: Claude rewrites your personal `CLAUDE.local.md` from session evidence (not team `CLAUDE.md`, which is PR-gated), you push back on the summary, then the send-off launches with both rules files going into the test (Claude loads them together at session start).
-
-Ask Claude to review the session and rewrite your personal `CLAUDE.local.md` from evidence, flagging team-worthy rules for a separate PR.
-
-**Prompt** *(copy → Claude Code)*
-
-```
-Review this session. I walked my system against the task we just scoped; filled gaps in memory and my rules files; saw my ADRs and test-strategy skill rearrange into Huryn's three blocks.
-
-Read `CLAUDE.md` (team), `CLAUDE.local.md` (personal, mine; create it at repo root + add to `.gitignore` if it doesn't exist), the memory files, the ADRs, and this scrollback. Then rewrite `CLAUDE.local.md` in place (not team `CLAUDE.md`, which is PR-gated). Integrate what I learned about this codebase today, sharpen what turned out thin under the walk, remove what turned out wrong. Don't append "session notes"; rewrite the file as the better version.
-
-If any rule is team-worthy (one every engineer shipping this codebase should know) flag it in your summary, don't PR it. I'll decide separately whether to open a PR against team `CLAUDE.md`.
-
-Tell me in 3–5 lines: what you added to `CLAUDE.local.md`, what you sharpened, what you removed, which team-rule flags you noted, and which moment in the session made you pick those over others.
-```
-
-*(end of prompt)*
-
-Read the summary. Push back where it's wrong; quote the session moment. When `CLAUDE.local.md` is where you want it, send the task off.
+No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at M5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
 Before you send: the agent will commit as it works. If you'd rather keep this run off your main branch, ask Claude in this same session to make a branch or a worktree for the task first. Whatever your repo's convention is.
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
-**Prompt** *(copy → Claude Code, final move of the module)*
+**Prompt** *(Claude Code, final move of the module)*
 
 ```
 I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills at `.claude/skills/`. That's everything you have. Go.
@@ -76,11 +53,10 @@ I want you to take the task we scoped earlier in this session end to end. Work f
 I'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
 ```
 
-*(end of prompt)*
 
-Let it run. Keep the laptop awake and plugged in while it runs (power settings → prevent sleep on power). If you watch for a bit and see the agent wobbling in a way that already tells you what next module will diagnose, stop the run. You don't owe the experiment a completed artifact; you owe it a result you can read.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stopping the run is fine; the trace is the result.
 
-The laptop running while you step away is your first async move. You will want more later.
+Async runs are a face of the work you'll see more of from here on.
 
 Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is legitimate practice. Past ten and you've become the agent; call it and read what's there.
 
@@ -97,6 +73,7 @@ M5 opens with what came back, or what you caught before it went further. When th
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: Nerd reframes — *"enough is a question for M5. The experiment is the point."*
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The send-off at Debrief happens IN the same Claude Code session the student used for walk + fill + frame + retro. No new session, no scheduled agent, no cloud runner — just pass the final prompt to the agent you've been talking to, then leave the laptop awake overnight and walk away.
+- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Connections blocker** — student can't name a task. Nerd runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over multi-hour).

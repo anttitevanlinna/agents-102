@@ -16,7 +16,7 @@ Start a new Claude Code session in your repo. You've come in with one or two can
 
 Ask Claude to screen your candidates against the three long-run criteria and help you scope the winner.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I'm about to run my first long-running experiment. I've come with one or two candidate tasks from my backlog: multi-hour work I haven't got to, or tasks I'd rather an agent took the first pass at.
@@ -29,7 +29,6 @@ Ask me to describe each candidate in a line or two. Then screen them against thr
 For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.
 ```
 
-*(end of prompt)*
 
 Push back when the read misses something about the codebase. Claude is reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
 
@@ -43,7 +42,7 @@ Push back when the read misses something about the codebase. Claude is reading t
 
 Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including the test-strategy skill I authored at M3), and the connectors I've wired.
@@ -55,7 +54,6 @@ Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwire
 For each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.
 ```
 
-*(end of prompt)*
 
 Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
 
@@ -80,7 +78,7 @@ Push back when Claude writes something that doesn't match the codebase. The memo
 
 Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange what's there into Paweł Huryn's three-block memory frame:
@@ -96,7 +94,6 @@ Before you name the frame or propose a new structure, show me one concrete examp
 If you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.
 ```
 
-*(end of prompt)*
 
 Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
 
@@ -117,6 +114,8 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 See the module file for the two Debrief prompts.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Word count:** ~750 words body.
 

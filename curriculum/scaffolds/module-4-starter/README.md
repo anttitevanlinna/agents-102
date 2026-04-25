@@ -1,76 +1,58 @@
 # Module 4 starter scaffold
 
-Content of `module-4-skills.zip` — the scaffold students unzip into the training directory at Module 4, Phase 0.
+Reference material the student reads while authoring their security plugin during M4. **No pre-shipped plugin ships** (per Antti 2026-04-25 — strict rule: no pre-shipped plugins anywhere in Bootstrap; M4 is the canonical plugin-authoring module, taught once, here).
 
 ## What ships
 
 ```
-skills/
-  agent-security/           # generic — ships with training
-    SKILL.md
-    stride.md
-    access-analysis.md
-    mitigations.md
-  company-ai-policy/        # per-delivery — default is Nordic-baseline
-    SKILL.md
-    policies/
-      gdpr-essentials.md
-      data-classification.md
-      ai-use-baseline.md
-      sector-rules-placeholder.md
+policies/                          # input material the student reads, not a plugin
+  gdpr-essentials.md
+  data-classification.md
+  ai-use-baseline.md
+  sector-rules-placeholder.md
 ```
 
-## Two skills, two delivery modes
+Drop into `module-4/policies/` in the training directory at Phase 0. The student reads these while authoring the plugin in the exercise.
 
-### `agent-security` — generic, ships as-is
+## What used to ship and was removed (2026-04-25)
 
-Access-control analysis + agent-STRIDE + agentic-mitigation suggestions. Same content for every training, every delivery. Maintained in this repo.
+Two pre-built skills (`agent-security/` generic, `company-ai-policy/` Nordic-baseline) used to ship under `skills/`. Removed: pre-shipped plugins violate the strict rule (Antti 2026-04-25). M4 now teaches plugin-authoring as the canonical move, once. The policy-content half travels forward as reference `.md` (above); the agent-security/STRIDE half is named in the exercise body and authored inline by the student.
 
-### `company-ai-policy` — delivery-specific
+## Two delivery modes (input only — no pre-built plugin either way)
 
-**This repo ships the Nordic-baseline default** — conservative fallback used for self-study, demos, and open-enrolment deliveries without a customer. It encodes GDPR essentials, general data-classification discipline, and a prudent AI-use template.
+### Self-study / open enrolment
 
-**For in-company deliveries, the Nordic-baseline default is replaced** with a customer-specific version. The customer's version is:
+Nordic-baseline policy reference files ship from this repo: GDPR essentials, general data-classification discipline, a prudent AI-use template, sector-rules placeholder. The student reads these, then authors their plugin in the exercise.
 
-- **Co-created** with the buying organisation as a separate deliverable.
-- **Built outside this repository** — it encodes the customer's actual policies (data-usage, security, AI-use, sector-specific) and belongs to the customer, not the repo.
+### In-company delivery
+
+The Nordic-baseline reference is replaced by **customer-specific policy reference material**:
+
+- **Co-distilled** from the customer's actual policies (data-usage, security, AI-use, sector-specific) by Antti, before the engagement.
+- **Built outside this repository** — the customer's policies belong to the customer, not the repo.
 - **Separately billable** — approximately 0.5–1 day of Antti's time per customer, plus customer-side input time.
-- **Deliverable to the customer** — the built skill is theirs to keep and reuse beyond the training.
+- **Inputs from the customer:**
+  - Data-usage policy (mandatory)
+  - Security policy (mandatory)
+  - AI-use policy (if one exists; otherwise the baseline template is adapted)
+  - Sector-specific rules (as applicable — MIFID II, NIS2, DORA, MDR, national public-sector rules, etc.)
+  - Any internal guidance on prohibited uses or approval thresholds
+- **Output:** `policies/*.md` reference material — same shape as the Nordic-baseline files, customer-specific content. The student reads these while authoring the plugin during M4.
 
-Do NOT commit customer-specific policy content to this repo. The Nordic-baseline is the repo's canonical version; the customer version travels with the engagement.
+Do NOT commit customer-specific policy content to this repo.
 
-## Build process for the customer version (reference)
+## Per-runtime install paths (the student's plugin, authored in the exercise)
 
-Inputs from the customer:
-- Data-usage policy (mandatory)
-- Security policy (mandatory)
-- AI-use policy (if one exists; otherwise the baseline template is adapted)
-- Sector-specific rules (as applicable — MIFID II, NIS2, DORA, MDR, national public-sector rules, etc.)
-- Any internal guidance on prohibited uses or approval thresholds
+The student authors the plugin during Phase 2 of the exercise. Install paths differ per runtime:
 
-Output:
-- `skills/company-ai-policy/SKILL.md` — adapted from the baseline SKILL.md, with customer-specific framing
-- `skills/company-ai-policy/policies/*.md` — one file per distinct rule set from the customer, each following the structure of the baseline files (rules with specific audit-check instructions and common violation patterns)
+- **Cowork** — *Save plugin* button after authoring (smoothest path).
+- **Claude Code Desktop** — plugin loader.
+- **Claude Code CLI** — `~/.claude/skills/<plugin-name>/SKILL.md`.
 
-Delivery:
-- The skill ships to the customer as part of the training package.
-- The customer owns it; can maintain, extend, and reuse it outside the Agents 102 context.
+The exercise body names the path matching the student's runtime.
 
-## Zip packaging
+## Owed before first delivery
 
-The training site hosts `module-4-skills.zip` as a download link. For Bootstrap deliveries:
-
-- **Nordic-baseline variant:** zip contains both skill folders as-is from this repo. For self-study and open enrolments.
-- **Customer variant:** zip replaces the `company-ai-policy/` folder with the customer-specific version built outside this repo. `agent-security/` is unchanged.
-
-The student's Phase 0 experience is the same in either case — unzip, skills appear in `skills/`, invoke in Phase 1.
-
-## Capability checks before first delivery
-
-See `curriculum/evals/instances/bootstrap--audit-your-agent.md` for the current list. In brief:
-
-1. Skill drop-in: does current Claude Code pick up `skills/<name>/` without restart?
-2. Invocation phrasing: does *"apply the X skill to Y"* dispatch reliably, or is `/skill use X` needed?
-3. Visibility: does Claude Code show a "skill loaded" indicator in the transcript?
-
-Run `claude-code-guide` before the first live delivery. If plain-language invocation is unreliable, pre-bake the `/skill use ...` fallback into the exercise's Phase 1 / Phase 2 prompts.
+- **M4 reshape session.** The exercise body currently carries a surgical-pass strip of pre-shipped framing; full plugin-authoring reshape (per-runtime install affordances, authoring scaffold, reference-vs-plugin distinction in body prose) is owed in a separate `/content-creation` session.
+- **Capability check on per-runtime plugin install paths.** Verify all three runtimes' authoring-and-install flows in current Claude Code / Cowork builds. Run `claude-code-guide` before the first live delivery.
+- **Customer-input checklist** for distilling customer policies into reference `.md` material.

@@ -16,7 +16,7 @@ Open a new Claude Code session in the same repo you ran M4 in. The artefact live
 
 Ask Claude to read the M4 artefact through the three failure-mode lenses and quote specific moments for each.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 I sent off a multi-hour task at the end of M4 un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
@@ -34,7 +34,6 @@ For EACH lens, quote one specific moment from the artefact (commit message, file
 End with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.
 ```
 
-*(end of prompt)*
 
 Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. **Framework**: this is *diagnosis through named failure modes*. The vocabulary is the lens, the artefact is the substance.
 
@@ -46,7 +45,7 @@ For each named failure, ask the question that earns the three-pattern: *what val
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 For each of the three failures we just named, walk it backwards: what specific validation would have caught it at hour 2?
@@ -62,7 +61,6 @@ For each failure I diagnosed, map it to the validation category that would have 
 Don't name frameworks or practitioners by label ("Ronacher's three-pattern," "Huntley's Ralph," etc.) — walk from the specific failure to the specific validation. The naming happens later.
 ```
 
-*(end of prompt)*
 
 Read the three answers. You should now have a working description of three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.
 
@@ -78,7 +76,7 @@ Three shapes the verifier takes. Pick the one matching your dominant failure. Th
 
 Ask Claude to build the verifier shape that matches your dominant failure, scoped to the M4 task.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Build the verifier for my dominant failure. I'll tell you which shape after you ask me — background-agent (qualitative judge), shell-hook (deterministic), or Ralph re-feed (drift-anchoring).
@@ -94,7 +92,6 @@ If Ralph re-feed: write the loop wrapper and the check it runs each iteration.
 Show me the verifier before you save anything; I'll push back, then we save.
 ```
 
-*(end of prompt)*
 
 Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or vice versa). The fit between failure shape and verifier shape is the teaching moment.
 
@@ -108,7 +105,7 @@ Reference artefact pins the task's success criteria and points at the relevant m
 
 Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Build me two task-scoped artefacts for re-running the M4 task packaged.
@@ -130,13 +127,14 @@ Second, plan.md. A working document the agent owns and mutates as it runs. Shoul
 Propose the file paths (next to each other; same task-scoped folder). Show me both files before you save. I'll push back, then we save.
 ```
 
-*(end of prompt)*
 
 Read both files. Push back if the reference reads like generic best practices instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
 
 **The exercise ends here.** The module's Debrief takes over: self-compound `CLAUDE.local.md`, then re-send the same task with reference + plan.md + verifier all in play.
 
 <!-- maintainer -->
+
+**Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Word count:** ~810 words body.
 

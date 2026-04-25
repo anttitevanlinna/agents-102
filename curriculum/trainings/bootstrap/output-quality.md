@@ -18,11 +18,7 @@ After this module, you will be able to:
 ## Connections
 In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it). Today we measure what the system actually says inside its scope. Five detectors run on the same briefing, a scorer measures them against a benchmark you wrote in two minutes, and you walk out with the first judge you can defend.
 
-## Lectures
-
 [Lecture: Grounded, and five candidates to measure](lectures/grounded.md)
-
-## Exercises
 
 [Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)
 
@@ -39,7 +35,7 @@ In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your r
 
 Five minutes. Claude reviews the benchmark and sharpens the judge file you just saved. The evidence is what the scoreboard produced: five detector outputs, the scorer's reasoning, the benchmark you wrote, the winning judge. Claude reviews, rewrites the groundedness judge file in place, reports what changed. You push back on anything that's off.
 
-**Prompt** *(copy → Claude Code)*
+**Prompt** *(Claude Code)*
 
 ```
 Review this session and sharpen the winning judge. Read judges/groundedness-judge.md, then scan module-5/detectors/ (all five), module-5/benchmark.md, and the scorer's scoreboard. Look back over the session: where did the winning detector catch something the others missed, where was the scorer charitable to a generic claim, which claim-shape did no detector flag, where did a citation get cargo-culted (present but not load-bearing), what specific failure class slipped past everyone?
@@ -49,7 +45,6 @@ Then rewrite judges/groundedness-judge.md. Integrate, don't append. Tighten the 
 When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why — grounded in specific rows from the scoreboard. Name the one claim-shape this judge will still miss.
 ```
 
-*(end of prompt)*
 
 Read Claude's summary. Push back where it's wrong — *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft — say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up next; it's the seed of your first production eval.
 

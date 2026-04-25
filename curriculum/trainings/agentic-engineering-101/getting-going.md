@@ -50,6 +50,14 @@ The compound step runs inside the `compound-and-close` exercise. Claude reviews 
 ## Bridge
 You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep: multi-file work, two reads (yours + grill), approval inflation catches as the teaching moment. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
 
+## Homework after M1 — between-module reading
+
+Optional. Skipping either piece does not break M2. Both sit in the gap between M1 and M2; engineers who do them arrive at M2 with practitioner voice and worktree-readiness as recognition rather than novelty.
+
+**Watch — [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for M2: frames the practitioner voice the rest of AE101 earns through exercises. The moves you will live in M2 through M6 show up here first as one person's working rhythm.
+
+**Read — [Multi-session and Git: survival guide](../reference/multi-session-git.md) (~10 min).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Why for M2: the Git footing you will want once you start running more than one session at a time. You will want to run multiple sessions. Find your way to do it over time. There is no rush.
+
 <!-- maintainer -->
 
 **Meta (trainer):**
@@ -59,8 +67,9 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 - **Opening-bid install mechanic:** trainer demos a wizard-level move on a volunteer's codebase → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (compound-and-close) compound `./CLAUDE.local.md` from session evidence + ticket close-out via connector. No separate module-level Debrief.
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
+- **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
-**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
+**Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **Ex1 `/context` skipped** — slash command read as prose, not as a command. Nerd push: *"type /context in the chat — look at the number."*
 - **Ex1 drifted bug** — student has drifted from prework choice. Nerd runs fresh bug-surfacing conversation. Criteria unchanged.
@@ -79,7 +88,5 @@ You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mod
 
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex3 is the student's own TDD-style preference.
-- **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Convergence Level 3. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`. Attributed inside Claude's Ex3 compound summary, not in a lecture.
-- **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4. **Design intent (do not flag in audits):** M1 has no explicit three-block language and that is correct. The compound move at Ex3 produces material that rearranges into the three blocks at M4; explicit naming here would steal M4's recognition moment.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+- **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Attributed inside Claude's Ex3 compound summary, not in a lecture.
+- **Three-block memory** — Paweł Huryn (productcompass.pm). Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4 via recognition — explicit naming here would steal it.

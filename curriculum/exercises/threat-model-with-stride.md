@@ -83,7 +83,7 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: Nerd makes student name the specific future engineer they'd want this ADR to be useful for.
 
-**Agentic Nerd logic:**
+**Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 skill invocation ambiguity.** Student points the skill at the feature rather than the access-surface map. Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."*
 - **P2 menu-shopping.** Student picks the easiest-to-harden threat rather than the real one. Nerd: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."*
 - **P2 everything-is-high.** Student wants to harden against three. Nerd: *"which one keeps you awake — or keeps your staff engineer awake on your behalf? That's the one. The others get rejected explicitly in the ADR, which is better than hardening against all of them half-heartedly."*
@@ -102,5 +102,3 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - Curated STRIDE skill — ships in content folder at `content/skills/stride/SKILL.md`, installed to `~/.claude/skills/stride/SKILL.md` at prework.
 
 **Scratch path:** threat list lands alongside Ex1's surface map in the same Claude-chosen temp directory. Outside the repo; no gitignore concern. See Ex1 maintainer note on the `/tmp`-tier vs `.claude/memory/`-tier pedagogy.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

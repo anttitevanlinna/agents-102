@@ -1,6 +1,6 @@
 # Personal-to-Team Agent Patterns
 
-**Status:** DRAFT / WIP (2026-04-20). Scaffold is mine; the authoritative patterns need Antti's practitioner detail. Examples below are dummies to show the shape — replace with real.
+**Status:** DRAFT / WIP. Scaffold is mine; the authoritative patterns need Antti's practitioner detail. Examples below are dummies to show the shape — replace with real.
 
 **Purpose — three uses at once:**
 1. **Article** — "Design Patterns for Personal-to-Team Agents." Fills a real gap; builder-credibility content.

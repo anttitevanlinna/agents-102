@@ -81,6 +81,14 @@ Tell me in 3–5 lines: what pattern you named in `CLAUDE.local.md` (and whether
 
 You earned the first two signatures. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
 
+## Pre-reads before M3
+
+Optional. Skipping either piece does not break M3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
+
+**Read — Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min).** Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for M3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+
+**Optional deeper scan — [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min).** Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for M3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
+
 <!-- maintainer -->
 
 **Meta (trainer):**
@@ -89,7 +97,7 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
-**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
+**Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Connections blocker** — student can't pick a feature. Nerd runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
 - **Ex1 passivity** — student reads access-control output and moves on without deciding. Nerd: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."*
 - **Ex2 menu-shopping** — student picks a STRIDE threat because it's easiest, not because it's real. Nerd: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."*
@@ -115,7 +123,7 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 - Student's own feature (surfaced in Connections)
 - Sponsor-stated ADR home (Ex2)
 - Sponsor-stated team-kit home (Ex3 ship step)
-- Agentic Nerd moves at each rubber-stamp risk
+- Push-back moves at each rubber-stamp risk (trainer covers by default; Nerd covers when enabled)
 
 **Frameworks riffed on (attributed in lecture):**
 - **STRIDE** — Loren Kohnfelder & Praerit Garg (1999 Microsoft memo), sharpened by Adam Shostack (*Threat Modeling: Designing for Security*, 2014). Curated skill ships in `content/skills/stride/`.
@@ -127,5 +135,3 @@ You earned the first two signatures. Your staff engineer sees a test-strategy sk
 **Open questions for later passes:**
 - ADR convention if the sponsor repo has none — training default `docs/adr/0001-slug.md` (context / decision / consequences)?
 - Team-kit home spin-up if the sponsor answered "we don't have one" — Ops-side, before Day 1.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

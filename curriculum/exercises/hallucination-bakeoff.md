@@ -231,11 +231,6 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 **Pattern: benchmarking.** One of the three designated magic beats in M3–M8 (alongside M3 multi-retriever + multi-stance and M8 agents-building-agents). The student operates as the scorer setup-and-observer, not as the classifier. Claude audits Claude; the student reads the scoreboard and saves the winner.
 
-**Why this shape (and not Ralph):**
-- Ralph is one generator iterating against a fixed judge.
-- Benchmarking is N judges competing on a fixed input, scored by a scorer.
-- Different lesson: Ralph teaches *iterate until threshold*; benchmarking teaches *pick methods empirically*.
-
 **Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The Close's still-uncertain line keeps the broader uncertainty alive.
 
 **Understandable magic bar.** After the exercise the student must be able to say, unprompted: *"five detectors ran in parallel on the same briefing, a scorer measured them against a five-claim benchmark I wrote myself, detector X won because it caught Y, now I have a judge file I trust for this shape of output."* No black-box move anywhere. If any phase leaves the student unable to describe what just happened, the phase is broken.
@@ -243,8 +238,6 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 **Walk-away calibration.** M5 is "bounded benchmark run" on the ramp — NOT walk-away. The student sets up the benchmark, starts the run, watches it execute (~20 min across Phases 1 and 2 combined). They don't leave the chair; they also don't classify by hand. Watching the scoreboard fill is the visceral moment.
 
 **Benchmark = five claims, deliberately.** Small enough that the student does it in two minutes. Large enough that precision/recall are meaningful. The scale-up ("production judges want hundreds") is M6's problem, named out loud here so the student sees the seam.
-
-**Banned pattern — student manually reads detector outputs to pick the winner.** This is exactly what the previous Module 5 exercise did and what made it the weakest module. The scorer is non-negotiable. If a simulation reports the student "reads the five files to decide," the exercise is broken — fix the scorer prompt until it lands.
 
 **Frameworks riffed on:**
 - **Benchmarking** — from ML practice; Antti-run pattern. Empirical method selection beats authority ("this method is best").
@@ -261,13 +254,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - The five detector methods — these five are calibrated to produce a tight race on a Module 3 shaped briefing. Domain-specific cohorts may swap one in (regulatory-claim flag for compliance teams, pricing-claim flag for commercial teams); keep the ensemble cap at two methods stacked.
 - The benchmark size — five by default. Raise to seven for cohorts whose briefings produce long outputs; never below five (precision/recall get noisy).
 
-**Capability checks owed (before first delivery):**
-- **Two sequential four-subagent batches in one session.** Phase 1a spawns four detectors; Phase 1b spawns four regenerators + a collation step. Eight subagent dispatches across two sequential phases in one session is past anything M3 verified. Confirm Claude Code handles the second four-subagent spawn cleanly after Phase 1a returns. If throttling appears, run Phase 1b regenerators sequentially instead of parallel and note the cost in the exercise body.
-- **In-turn text output alongside Agent tool calls.** Phase 1b relies on Claude producing the three-paragraph brief between dispatching regenerators and returning the collated output (all within one turn). Confirm Claude Code streams the brief text alongside (or right after) the Agent tool calls, rather than blocking the turn until all dispatches return with no text emitted. This is a turn-streaming question, not a parallelism question.
-- **Scorer reading detector files + benchmark and producing a scoreboard table.** Confirm the table renders cleanly and the precision/recall computation is stable across runs. If the numbers swing wildly run-to-run, tighten the prompt to specify the computation explicitly.
-- **`judges/groundedness-judge.md` handoff to Module 6.** Confirm M6's first exercise picks up this path verbatim. If M6 expects a different location, align here or there in the same edit.
-
-**Watch-fors (deferred to facilitator notes pass):**
+**Watch-fors:**
 - **Reading the briefing before writing the benchmark.** Biases everything. Coach: *"Don't open it. Your Phase 0 verdicts are more useful when they're gut verdicts."*
 - **Benchmark of seven or eight claims.** Student over-delivers. Coach: *"Five. The measurement gets noisier, not better, with more."*
 - **Scorer hedges.** It picks "all five are useful" rather than naming a winner. Coach: *"Re-run and force a pick — the ensemble is a two-method stack, not a five-method hug."*
@@ -285,6 +272,3 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - M6 picks the judge up and turns it into infrastructure — scaled benchmark, scheduled runs, corrections feeding back, the steering counterpart (encoding preference, not groundedness).
 - Don't cross-teach. M5's benchmark earns M6's automation.
 
-**Supersedes:** `exercises/ground-your-output.md` — the manual classification exercise this replaces. The grounding vocabulary (GROUNDED / UNGROUNDED / MISREPRESENTS / OVERREACHES / UNGROUNDED-SHAPE) from the prior exercise is no longer required material; the benchmark teaches the discipline empirically without the five-category frame. Keep the old file as supplementary reading for cohorts that want the taxonomy, or delete at the next sweep.
-
-**Length — accepted debt.** Body is ~1,700 words across six prompt blocks (Phase 0 briefing + Phase 0 benchmark + Phase 1a + Phase 1b + Phase 2 scorer + Phase 2→3 gate + Phase 3 judge + Close take-home = 8). Contributory target is 400–700 words; this exercise runs over because each phase carries load — the benchmark pattern, the blinding mechanic, the scoreboard rescue, the judge-under-20-lines constraint. Same shape as M2's `build-your-challenge-memory` and M3's `three-retrievers-three-minds`. Not a line to trim for trim's sake; every phase earns its weight. Worth a pedagogy review if a cohort consistently runs over 70 minutes.

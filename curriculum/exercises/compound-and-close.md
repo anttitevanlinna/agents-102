@@ -97,7 +97,7 @@ You ran the loop. You have a PR, a rules file born from session evidence, and a 
 
 **Plug points:**
 - Sponsor-stated tracker (Linear / Jira / GitHub Issues / other).
-- Agentic Nerd push-back moves at retro and MCP gate.
+- Push-back moves at retro and MCP gate (trainer covers by default; Nerd covers when enabled).
 
 **Arc:**
 - Picks up from: `fix-tests-first` — the rule seeded at that exercise is the file the retro rewrites.

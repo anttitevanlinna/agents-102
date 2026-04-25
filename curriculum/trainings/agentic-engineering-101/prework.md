@@ -68,5 +68,3 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - **Delivery:** classroom cohorts get the zip link via email + Slack/Teams ahead of Day 1. Self-study students download from the site.
 
 **Packaging:** `scripts/build-ae101-content-zip.sh` builds `agents-102-content-agentic-engineering-101.zip` from repo. Run before each cohort; host per customer.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

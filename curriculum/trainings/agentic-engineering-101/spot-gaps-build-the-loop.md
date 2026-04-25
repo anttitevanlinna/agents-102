@@ -45,9 +45,11 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 ## Debrief
 
-Simple round. Trainer and group pick the exact form — pair exchange, whole-room round, silent write-then-share. Each person speaks briefly on two things: one key learning from the six modules, and one personal thought on the future of their practice. Human-voiced, not agent-mediated. The Agentic Nerd stays out of this one.
+Simple round. Trainer and group pick the exact form — pair exchange, whole-room round, silent write-then-share. Each person speaks briefly on two things: one key learning from the six modules, and one personal thought on the future of their practice. Human-voiced, not agent-mediated — no host beat here, including when the Nerd is otherwise in session.
 
 10–15 minutes. No canonical self-compound prompt here — the encode step already happened when you shipped the second skill in the exercise. The round makes room for the human close that practitioner fluency warrants.
+
+*You know how to test, you know how to learn, you know how to encode. And you know what your job is: you are the bread, not the filling.*
 
 **Self-study variant.** Teacher Claude invites the same two-part articulation in conversation and lets the scrollback carry it. Optional keepsake note if you want one; not required. If you've already shipped a skill that fires on your real-work gap shape and you can name the move in one sentence, that's the marker. Close the laptop. The articulation is optional, not the practitioner-fluency gate.
 
@@ -61,6 +63,16 @@ Simple round. Trainer and group pick the exact form — pair exchange, whole-roo
 
 **M7/M8 cohorts:** Your agent stack — codebase memory, two authored skills, verifier, team-kit contributions — arrives at M7 as a first-class participant. Agents meet agents on a real engineering problem.
 
+## When to reach for parallel worktrees
+
+Parallel worktrees are the natural next move once the second-skill loop is landing. Cherny calls them his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The mechanics live in [Multi-session and Git: survival guide](../reference/multi-session-git.md); the instinct earns itself in use. Find your way to do it over time.
+
+## Pre-reads before M6
+
+Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and primes two moves the module will name from your own two-run evidence.
+
+**Read — Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for M6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
+
 <!-- maintainer -->
 
 **Meta (trainer):**
@@ -70,7 +82,7 @@ Simple round. Trainer and group pick the exact form — pair exchange, whole-roo
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. Both runs already live in the repo; M6 reads + authors + ships in-place. No training-dir state, no `module-N/` folders. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room. Self-study Teacher Claude reads it aloud at session open.
 
-**Agentic Nerd logic (TODO — skill not yet created):**
+**Push-back moves** (TODO — Nerd skill not yet written; trainer covers by default in cohort):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Nerd: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
 - **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Nerd: *"two runs, maybe three gaps each. Pick the three that cost the most. The second skill you author at Phase 2 fits one shape."*
 - **Phase 2 skill-shape mismatch** — student picks a sharpened-verifier shape when the dominant gap was a drift the verifier wouldn't have seen, or a judge shape when the gap is deterministic. Nerd surfaces the menu: *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
@@ -107,13 +119,10 @@ Simple round. Trainer and group pick the exact form — pair exchange, whole-roo
 - **Intercom Tier 1/2/3** — Darragh Curran. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D. Closing lecture org-scale anchor.
 - **Compound engineering** — Kieran Klaassen. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
 
-**Open questions surfaced for later passes:**
-- Two-run reading stamina: does Phase 1's diagnosis-across-two-runs hold student attention, or does the second run fade? First-cohort observation.
-- Skill-shape menu calibration: do the three shapes (sharpened verifier / judge / gap-finder) cover the gaps students actually surface, or do some gaps want a fourth shape?
-- Arc-retrospective for core-only cohorts: is the 15–20 min forward-looking beat enough to carry what M7 would otherwise carry, or does it need more room?
-- Debrief round form selection: which form works best with this specific mood (pair exchange / whole-room round / silent write-then-share)? Cohort data will settle it.
+**First-cohort observation questions:**
+- Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?
+- Skill-shape menu — do the three shapes cover the gaps students surface?
+- Arc-retrospective for core-only cohorts — 15–20 min enough, or does it want more room?
+- Debrief round form — which works best with this mood (pair / whole-room / silent write-then-share)?
 
-**TODO (pre-first-cohort):**
-- Three-persona sim of the full module file (this file) — does the Story opener land permission-giving rather than credibility-performance? Does the Debrief round close on practitioner fluency without drifting into performance?
-- Eval instance: `curriculum/evals/instances/agentic-engineering-101--spot-gaps-build-the-loop.md` populated with LLM-as-judge runs and three-persona sim scores before first cohort.
-- Source verification on the closing lecture's numbers: Ramp Dojo 350-skill marketplace (verify against `continuous-research/observations/ramp.md` or original post), Intercom Tier 1/2/3 figures (19.2% auto-approved, 14.6 vs 75.8 min, 86% ≤20 lines, 500-person R&D — verify against `https://ideas.fin.ai/p/2x-nine-months-later` and `continuous-research/observations/intercom.md`).
+Pre-cohort open items for M6: see `pre-cohort-todos.md`.

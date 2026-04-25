@@ -1,6 +1,6 @@
 # Assumption Map — Agents 102
 
-Synthesized from Martin WWHTBT analysis and Bland/Strategyzer assumption mapping. Priority-ordered by criticality x uncertainty. Updated 2026-02-15 with F-Secure market evidence and Nordic large-company targeting.
+Synthesized from Martin WWHTBT analysis and Bland/Strategyzer assumption mapping. Priority-ordered by criticality x uncertainty. Includes F-Secure market evidence and Nordic large-company targeting.
 
 **Evidence anchor:** An existing version of this training is being delivered at F-Secure. This is real market acceptance, not hypothesis.
 

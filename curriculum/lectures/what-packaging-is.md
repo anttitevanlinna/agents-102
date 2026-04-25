@@ -36,6 +36,14 @@ Darragh Curran (CTO, Intercom) published a post in April 2026 called "2x — nin
 
 That is your verifier from Phase 3, scaled to a 500-person engineering org. Same shape, scaled.
 
+## The 80/20 ratio
+
+You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. Kieran Klaassen names the ratio directly: 80% planning and review, 20% execution. In his words: *"Claude writes the test. The test fails — the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The ratio itself is named in [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The packaging you just built IS the 80% side. The re-send was the 20%.
+
+## What the run cost
+
+Name it plainly. The re-send consumed some number of hours of Opus time, and those hours are real money on the org's bill. That is the CTO-legible answer to *why bother packaging*. Agent hours are cost to the org the same way engineer hours are. Packaging converts those hours into reliable output instead of reliably wrong output. Without it, you paid for a run that missed the goal; with it, you paid for a run that landed. The ROI calculation is the one you just ran on yourself.
+
 ## The counter-camp
 
 Not everyone agrees that the right move is to extend session length. Sourcegraph's Amp (their coding-agent product) explicitly rejects auto-compaction and bets on short focused sessions plus manual handoff between them. The argument: the cleanest context is a fresh one, and the engineer's job is to package the handoff, not to keep one session running.
@@ -48,7 +56,7 @@ The verifier is an eval. If you didn't already call it that, M6 will. An automat
 
 M6 is where this move scales. Same shape, different question. M5 asks: did my run pass? M6 asks: do all our runs pass, do they pass faster, who reviewed what? Your verifier becomes a judge in the team kit. The kit grows by accretion, one engineer at a time, until the team has the infrastructure Curran's R&D org runs on.
 
-That's M6. The laptop is closed now and the second run is going.
+That's M6. The laptop is closed now and the second run is going. Next you will measure the reliability of the verifier you just built. The number is the gap.
 
 <!-- maintainer -->
 
@@ -56,7 +64,7 @@ That's M6. The laptop is closed now and the second run is going.
 
 **Time:** 12–15 min at presentation pace.
 
-**Delivery mode:** In-room close after Debrief. Self-study Teacher Claude reads the same content as the M5 Conclusions.
+**Delivery mode:** In-room close after Debrief. Self-study Nerd reads the same content as the M5 Conclusions.
 
 **Source verification — MUST DO before first cohort. Every URL and number below is currently sourced from internal OODA runs and observation files; each must be opened against the original and confirmed.**
 

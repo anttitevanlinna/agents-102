@@ -23,14 +23,14 @@ Ask Claude to work in plan mode and write a detailed plan file you can read and 
 **Prompt** *(copy → Claude Code)*
 
 ```
-Work in plan mode on the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. I'm going to push back on it before approving, and then run a second-pass read that walks down unresolved branches, so give me enough detail in each step that I can actually read it. Files touched, shape of the change, what you'd check before declaring it done. Don't optimize for short.
+Work in plan mode on the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. I'm going to push back on it before approving, and then run a second-pass read that walks down unresolved branches, so give me enough detail in each step that I can actually read it. Files touched, shape of the change, tests you'd write or update before any code lands, what you'd check before declaring it done. Don't optimize for short.
 ```
 
 *(end of prompt)*
 
 Then a second message with your task: what, why, the one constraint that matters most.
 
-Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan.** Not skim. Read. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. When you have two push-backs forming in your head, move on. Don't wait for the clock.
+Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan.** Not skim. Read. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice (15 min)
 
@@ -105,8 +105,6 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's four-step loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
   - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
-- **The Pocock-name caveat.** Pocock's original name "grill" primes adversarial critique; the skill is actually Socratic elicitation. We teach the move on its real semantics (requirement elicitation), not the name's implication. A genuinely adversarial **red-team-me** skill (imagine the worst way this plan fails, argue for it) is different and is an authoring opportunity for a later module (M3 judges or the skill-authoring arc). Don't confuse the two in class.
-
 **Watch-fors:**
 - **P3 rubber-stamp.** Student hits "approve" under 60 seconds without sending a push-back message. Diagnostic: no keep-planning-with-feedback branch in the scrollback. Push-back move: *"pick keep planning with feedback — send one soft-item message before approving."*
 - **P3 performative push-back.** Three messages in under 3 minutes, none name steps or specific concerns. Diagnostic: message reads *"step 3 is vague."* Push-back move: *"which step says what? which words are the vague ones? if you can't point at them, it's not a soft item — it's a vibe."*
@@ -127,7 +125,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - Student's own backlog task (surfaced at P1)
 - Sponsor-stated rules home for the Debrief's Compound step
 
-**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
+**Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1:** if student can't surface a fitting task, Nerd runs the three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
 - **P3 rubber-stamp:** if student approves before 60s with no push-back messages in scrollback, Nerd invokes the forcing-function: *"pick keep planning with feedback. Send one soft item — one step that reads clean but skips something."*
 - **P3 performative:** if push-back messages appear in under 3 min without step numbers or specific concerns, Nerd asks for specificity — *"which step, which words? say the thing you'd want a senior reviewer to catch."*

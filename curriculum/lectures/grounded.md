@@ -78,17 +78,6 @@ Now you run the benchmark by hand. Well, not by hand. You set up five detectors,
 
 **Placement in module:** After Connections, before the exercise. Primes the empirical-method-selection frame; the exercise runs the benchmark on the student's own M3 material. All five detectors are practised in the exercise (unlike the earlier three-technique version where only citation re-verification was practised hands-on). Lecture and exercise are tightly coupled now.
 
-**What changed (2026-04-20):**
-- Reframed from "three techniques you'll use" to "candidates to measure." Empirical selection is the teaching move, not method knowledge.
-- Panel expanded to five detectors to match the benchmark exercise.
-- Per-technique depth reduced — the exercise's detector prompts carry the full specification. Lecture names each in a paragraph, explains why each matters, and hands off to the exercise. Previous version over-explained because only one technique was practised; now all five are practised, so redundant explanation moved to the exercise prompts where it actually fires.
-
-**What changed (2026-04-24):**
-- Canonical panel moved from four detectors to five. Dropped conventional-wisdom flag (subjective threshold, hard to tune, noisy). Added self-consistency (regen-and-diff) and counter-evidence search. Net effect: weakest method out, two stronger ones in.
-- Counter-evidence search framed as disconfirmation discipline, no practitioner name attached in body text.
-- "What this buys you" section rewritten to honor the new exercise's teaching move — grounded choice about grounding, judge file with named blind spot.
-- Bridge to M6 sharpened — M5 produces the judge, M6 is where the judge enters a self-improving loop. The M5→M6 handoff IS the strategic arc.
-
 **Frameworks riffed on:**
 - **Compound reliability math — both directions.** Single-pass: 85%^10 = 20% (the trap). Loop-based: 10% → 1% → 0.1% → 0.01% with 90%-catch detector + fix (the escape). Naming both halves is what converts the math from despair to design. The second half is the strategic bridge to M6 — evals aren't a quality gate, they're the mechanism that collapses the error rate.
 - **Grounded-ness as epistemic stance** — journalism/research/legal drafting recognisable move.

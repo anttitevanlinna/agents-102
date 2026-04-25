@@ -59,7 +59,7 @@ Open your repo. Let's go.
 
 **Time:** ~5 min at presentation pace. Tighter than the closing; this is a room-opener, not a topic.
 
-**Delivery mode:** In-room only. Self-study Teacher Claude opens M5 with the same content as the C1 framing for the exercise.
+**Delivery mode:** In-room only. Self-study Nerd opens M5 with the same content as the C1 framing for the exercise.
 
 **Source verification — MUST DO before first cohort:**
 - The three failure modes are convergent practitioner vocabulary (sourced via the 2026-04-21 long-running OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md`). Confirm against pre-read attribution at delivery time; the lecture must NOT diverge from the pre-read on these terms.
@@ -87,4 +87,4 @@ Open your repo. Let's go.
 **TODO (pre-first-cohort):**
 - Three-persona sim: does the in-room opener carry the room AND the student who didn't pre-read? Is the one-sentence-per-mode sufficient, or does a non-reader still feel underprepared at Phase 1?
 - Confirm framing alignment with pre-read (no contradictions, no different vocabulary).
-- Test the "Open your repo. Let's go." closer in self-study mode — does Teacher Claude need to add a transition prompt, or does the line work as-is?
+- Test the "Open your repo. Let's go." closer in self-study mode — does the Nerd need to add a transition prompt, or does the line work as-is?

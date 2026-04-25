@@ -1,0 +1,88 @@
+# Simulation protocol
+
+Loaded when running step 6 (simulate/test) of the PDCA loop in `SKILL.md`.
+
+**When to use:** After a first draft of any exercise (required) or lecture (optional — less useful for demo-script lectures; more useful for prework-reading). Before the formal eval. Can be repeated with different personas.
+
+**How to run:** Launch a general-purpose agent with the prompt template below. Give it the target file path(s) and a persona. It role-plays through the exercise, makes up realistic content, and reports.
+
+**The persona is never alone.** Bootstrap exercises are facilitated in two modes — *in-room* (human trainer) and *self-study* (Teacher Claude running in a side session, configured by the `/self-study` skill to nudge the student through the 4 Cs). **Default simulations to self-study mode** unless the prompt explicitly names in-room. Teacher Claude covers the facilitator role: it asks *"find me one row the judge got wrong"* when the student rubber-stamps Phase 3, pushes on ambiguous artifacts, runs the Debrief. A simulation that penalises an exercise because *"the solo SVP has no facilitator nudge"* is simulating the wrong setup — the SVP has Teacher Claude. Name Teacher Claude explicitly in the persona block so the simulator accounts for it, and tell the simulator to surface nudges Teacher Claude would make at each phase.
+
+**Mood judge — scored alongside mechanics.** Per the eval rubric, every exercise is scored 1–10 for mood landing at each phase-end and at close (8+/10 required). The simulation must report the mood score per beat and name what steals the mood where it drops below 8. A 7/10 is the facilitator-premium signature — meaning the mood lands in a trainer-facilitated room but frays elsewhere; treat 7 as "find what's stealing the mood," not "good enough."
+
+**Prompt template** (copy this into the agent invocation):
+
+```
+You are simulating a student running a curriculum exercise for Agents 102. Role-play a typical participant, follow the exercise instructions end to end, and report where things break. Independent judgment — the author won't see your reasoning.
+
+TARGET EXERCISE: [file path]
+
+PERSONA: [describe — role, seniority, LLM fluency, business context. Example: "SVP of HR at a 500-person Nordic software company. Has used ChatGPT weekly for drafting emails and performance reviews. Never built an agent, never used Claude Code before today. Arrived at this exercise having watched the Context is King lecture 15 minutes ago."]
+
+DELIVERY MODE: self-study. Teacher Claude is running in a side session (configured by the /self-study skill) and plays facilitator — it nudges through the 4 Cs, pushes on ambiguous artifacts, runs the Debrief, and catches rubber-stamping (*"find me one row the judge got wrong"*). Account for Teacher Claude at every phase; the student is NOT alone.
+
+MODULE MOOD CONTRACT: [state the module's deliberate mood — e.g., "Module 6 is unleashed leverage; student should leave feeling 'we can automate the loop.'" Pull from content-strategy.md per-module Mood (deliberate) paragraph.]
+
+ASSUME you have completed any prior module/lecture setup the exercise references.
+
+FOR EACH PHASE:
+1. Describe what you would paste or do — make up realistic content in your persona's voice
+2. Predict what Claude would likely return — use your knowledge of how Claude behaves
+3. Note what Teacher Claude would nudge on in the side session for this phase
+4. Flag any moment you're confused, stuck, or unsure what the exercise wants
+5. Flag any moment Claude's likely output wouldn't match what the exercise assumes
+6. Record the state after the phase — what artifact you now have
+7. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (match against the module mood contract; flag drift)
+
+AT THE END, report:
+- **Top 3 places the exercise could break** (specific, with phase)
+- **Top 3 ambiguous instructions** (quote them)
+- **Any under-scaffolded phase** where even Teacher Claude can't recover (distinguish from phases that only need facilitator nudging — those aren't breakage)
+- **Overall "this is me" / artifact quality rating** 1–10
+- **Mood summary**: score per phase + close, and a one-line *"what's stealing the mood"* note for any beat below 8. 8+/10 at every beat is the bar. 7 = facilitator-premium signature; say what would take it from 7 to 8.
+- **Arc flow** — does one phase feed the next?
+- **Claude-behavior mismatches** — specific places where Claude's style clashes with exercise assumption
+
+Be specific. Use your persona's voice. If the exercise has a flaw, you (as the student) will notice it. Under 800 words.
+```
+
+**What simulation catches that eval doesn't:**
+- **Ambiguous instructions** that seem clear on paper but trip a real participant
+- **Claude-behavior mismatches** — e.g., you tell Claude to "ask these questions in turn" but Claude often dumps all five at once unless nudged
+- **Under-scaffolded phases** — where the participant has to infer too much
+- **Arc flow breaks** — where Phase N doesn't feed Phase N+1 smoothly
+- **"This is me" failures** — the final artifact rating shows if the emotional payoff actually lands
+
+**Known Claude-behavior patterns to check during simulation** (living list — add as they surface):
+- **File preservation gap** — exercises that say "save this for later" don't work in Claude Code sessions; Claude keeps artifacts in memory but participants don't know that. Fix: either use Claude's memory (ask Claude to look back at its own output) or give explicit instructions for file duplication.
+- **Reading burden / manual error-catching** — don't ask the student to manually read Claude's output to verify it, spot mistakes, or diff versions. That's busywork for a business audience and it foreshadows exactly the wrong lesson. Fix: ask Claude to audit Claude's work — have the student write the audit prompt, Claude runs it, results land as a list the student acts on. Reading for *emotional payoff* (feeling the citations land, feeling the output sound like your company) is different and stays. The banned pattern is "read this to check if Claude got it right." That job belongs to Module 5 (quality) and Module 6 (evals) methods, which Module 2's verification moments should foreshadow, not pre-empt.
+- **Niceness tax** — Claude's RLHF softens edgy claims during regeneration (hate-flips become generic virtues, anti-positioning becomes collaborative leadership). Fix: prompt explicitly says "keep the edge — don't soften stances."
+- **Question dump** — when asked to "ask these questions in turn," Claude sometimes dumps all questions at once. Fix: prompt says "ask one, wait for my answer, then ask the next."
+- **Overwrite anxiety** — when regenerating an artifact, Claude may ask "overwrite or create new?" Fix: prompt specifies the default ("overwrite the existing file").
+- **Preamble before action** — Claude narrates what it's about to do before doing it; can disrupt a "clean question-by-question rhythm" assumption. Fix: assume it will happen; design around it.
+- **Append-vs-integrate default** — when told "add X to context and regenerate," Claude often appends X as a new section rather than rewriting the existing output through X's lens. Simulation tell: the output grows a "What I love" / "How I help" section instead of the whole voice shifting. Fix: prompt must explicitly say "rewrite using X as voice-shaping context" when integration is the goal.
+- **Plan-mode preamble bloat** — even in plan mode, Claude opens the plan with 2–4 sentences of *"I'll now read your sources and propose…"* scene-setting before the actual plan. Eats participant attention; they skim the plan. Fix: design around it — prime the student to scroll past preamble to the proposed list, or add "go straight to the plan, no preamble" to the prompt.
+- **Citation-gap asymmetry** — with an explicit "cite or flag" rule, Claude abides for specific company claims but skirts the rule on conventional-wisdom claims (generic competitive knocks, industry truisms). The model treats "obvious" claims as not needing citation. Simulation tell: sourced claims + one or two uncited generic lines in the same output. Fix: either add "this includes conventional-wisdom claims" to the rule, or design the exercise to notice the gap as the teaching moment.
+- **Self-report inflation** — when asked to report what changed, Claude over-claims change. Lists four pages as sharpened when two got longer. The self-report is the LEAST trustworthy part of the output. Fix: never trust Claude's own summary of its work — instruct the participant to verify directly (open the file, read the top paragraph) and give them a literal push-back prompt.
+- **Default-acceptance on offered defaults** — when a prompt offers "default rules if you don't have your own," ~90% of participants take the defaults verbatim without customization. Fix: explicitly nudge customization — "Pick at least one you'd change" — or structure so the default is a starting point, not a free pass.
+- **Plan-mode approval inflation** — multi-page plans (7+ items) get rubber-stamped because the plan *looks* structured; participants approve without reading. The plan is exactly the moment that deserves close reading, and participants treat it as a form to sign. Fix: design the prompt to force a pushback — "suggest three topic merges you'd recommend" / "mark any page likely to be soft" — before approval. The act of answering back is what creates real reading.
+- **Source-type blindness on ingestion** — Claude silently ingests dense slideware (PPTX, PDF exports of decks) and derives claims from slide titles only. The memory ends up shallow on those sources; Claude doesn't report the thinness. Fix: either tell participants to convert slide-heavy sources to text before ingestion, or add an explicit extraction-depth check to the audit prompt ("for each source file, rate how much content you actually extracted — 1-10").
+- **Citation cargo-cult** — Claude dutifully cites `memory/x.md` in outputs, but the cited file may not actually contain the specific claim. Citations become performative: the format is right, the substance isn't verified. Especially common on conventional-wisdom claims (pattern #3, citation-gap asymmetry). Fix: periodic integrity check — "for each cited claim in the output, quote the sentence in the memory file that supports it."
+- **Self-audit charity** — when Claude is asked to critique its own work, it under-flags problems. "Pick 3 generic pages" returns 2 (with reality being 4). Charitable-by-default is the RLHF legacy. Fix: prompt the audit to over-flag — "be harsher than you think necessary," "flag at least N" — or have the audit run in a fresh session with no memory of having produced the work.
+
+**Prework-specific patterns:**
+- **Install cliff** — "install Claude Code" is a 25-min side quest if you land on the CLI path with no Node. For non-developer audiences, specify **desktop or web** explicitly. "No terminal required" is a real affordance worth stating.
+- **Connector admin gate** — Microsoft 365 / Google Workspace connectors often need tenant admin consent. A builder leader can't self-serve through this on a Sunday. Every connector instruction needs a **fallback path** (screenshot-paste, CSV export, manual copy) that works without admin.
+- **Ghost file references** — referencing `foo.md` in prework when `foo.md` doesn't exist yet is a hard fail. Either ship the file (write the section, even if minimal) or inline the content. Don't reference files that live in a future pass.
+
+**Multi-persona simulation:** for high-stakes exercises, run 2-3 simulations with different personas (CTO, marketing lead, HR director) to surface persona-specific breakage. Not required for every exercise.
+
+**For strong-audience trainings (engineers, senior ICs, CTOs), three-persona sweep is the default.** Cover the audience triangle: (a) mid-layer competent — follows instructions, catches structural gaps; (b) opinionated senior — rejects scripted moves, catches register smell, quotes lines they'd argue with; (c) fast operator — reads for value-add vs. remediation, catches where content condescends to already-competent practice. Single-persona sim over-indexes on the persona's failure mode; three-persona sim surfaces **two failure modes a mid-layer sim misses**: scripted-vs-skill framing (senior refuses performance) and register smell (senior hallucinates pep-talk lines when the prose is too warm even where specific sentences are clean).
+
+## Student-facing first, facilitator notes later
+
+A lecture or exercise file contains both student-facing content (what the room sees and does) and facilitator notes (timing, watch-fors, decision points, pacing). **Generate the student-facing content first.** Get the demo, the priming, the teaching moment, the transition right. Facilitator notes are a later pass — added when the content stabilizes.
+
+Why: iterating on facilitator pacing while the student content is still in flux is wasted work. The demo changes → the timing estimates are wrong → the watch-fors are wrong. Lock the content; annotate the delivery second.
+
+The exercise eval's "Facilitator briefing complete" judge applies at Pass 3 completion, not at first draft. A first-draft lecture or exercise can ship APPROVE WITH TODOs where the TODO is "add facilitator notes."

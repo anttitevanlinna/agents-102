@@ -25,7 +25,7 @@ Do NOT invoke for trivial edits ("fix a typo"), conversational back-and-forth, o
 Ask (or infer from context):
 
 1. **type:** `correction | pattern | decision | taste`
-2. **surface:** `writing | sales_copy | student_facing | pedagogy | content_creation | research | platform | strategy`
+2. **surface:** `writing | sales_copy | student_facing | prompts | lectures | strategy_tie_in | pedagogy | content_creation | research | platform | strategy`
 3. **severity:** `low | medium | high | critical`
    - `high` if this correction has happened before (check `memory/compounded/` + `memory/feedback_*.md` + self-review correction log)
    - `critical` if un-fixed, it ships to a buyer or student
@@ -78,7 +78,17 @@ Append a one-liner under a "## Compounded learnings" section:
 
 If the section doesn't exist yet, create it. Keep MEMORY.md lines under ~150 chars.
 
-### Step 5 — Propose compendium amendment (content/pedagogy/sales surfaces only)
+### Step 5 — Strike the source from `self-review-protocol.md`
+
+If the correction came from a session-log entry in `memory/self-review-protocol.md` (the most common path — self-review surfaces it, `/compound` promotes it), **strike that entry** in the same edit cycle.
+
+Mechanism: open `self-review-protocol.md`, find the matching narrative under the dated session entry, delete the bullet/paragraph. The compounded entry is the canonical record now; a duplicate in the session log is sediment.
+
+If the correction came from elsewhere (immediate post-correction `/compound` mid-session, or pattern-observation across sessions), nothing to strike.
+
+The principle: a correction lives in **one canonical home**. Either the session log (small / not yet ripe for compounding) or the compounded entry + matching compendium (escalated). Never both.
+
+### Step 6 — Propose compendium amendment (content/pedagogy/sales/prompts/lectures/strategy_tie_in surfaces)
 
 If `proposed_compendium_amendment` is non-empty, show Antti:
 
@@ -92,7 +102,7 @@ If `proposed_compendium_amendment` is non-empty, show Antti:
 
 Do NOT silently amend compendiums. Always surface the diff for approval.
 
-### Step 6 — Check for escalation
+### Step 7 — Check for escalation
 
 After writing, check: did this correction's `severity` just go from `medium` → `high` (i.e., recurrence)? If yes, flag:
 

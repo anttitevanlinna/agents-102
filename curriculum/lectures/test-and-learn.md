@@ -54,7 +54,7 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 
 **Frameworks attributed:**
 - **Gap analysis** — generic business-analysis framework; no single attribution. Named as *walk the system you have against the system the task needs.*
-- **Huryn's three-block memory** — Paweł Huryn. Practitioner-direct source verified in M1 generation cycle (2026-04-21). Freshness re-check required before first cohort delivery.
+- **Huryn's three-block memory** — Paweł Huryn. Practitioner-direct. Freshness re-check required before first cohort delivery.
 - **Ronacher's three-pattern** — Armin Ronacher. Named here only as forward reference to M5 (reference artifact + plan.md + external verifier). M5 owns the teaching; this lecture just puts the word on the table so the student knows what's coming.
 - **Compound engineering** — Kieran Klaassen. Implicit in the *test → learn → encode* framing; not name-attributed in this lecture (Klaassen attribution lives at Debrief in M1 and here-onwards is experienced, not recited).
 
@@ -69,6 +69,4 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 - Don't pre-teach Ronacher's three-pattern. M5 does it through diagnosis; naming the pieces here steals M5's contrast.
 - Don't turn "cancel is legit" into a disclaimer. It's a practitioner rule, not a safety net. Frame it as *what real operators do*, not *what nervous students can fall back on*.
 
-**Source freshness** (2026-04-23): Huryn `productcompass.pm/p/claude-md-snippets` verified at 2026-03-31 — within 6 months.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+**Source freshness:** Huryn `productcompass.pm/p/claude-md-snippets` verified at 2026-03-31 — within 6 months.

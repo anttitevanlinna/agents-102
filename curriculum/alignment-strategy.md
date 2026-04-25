@@ -49,7 +49,7 @@ Agent 2 — **writing compendium.** Load `memory/check_writing.md`. Grep banned 
 
 Agent 3 — **pedagogy compendium.** Load `memory/check_pedagogy.md`. Check delegation boundaries, student-brings-candidates-Claude-screens, n≥2-instances-with-contrast for pattern-recognition LOs, one-exercise-per-module, emergent-knowledge ordering (concepts after exercises).
 
-Agent 4 — **platform claims.** Every sentence asserting Claude Code behavior, `CLAUDE.md` layer semantics, connector/action/tool capability, or Anthropic infra gets verified against `curriculum/reference/claude-code-for-engineers.md` and, for load-bearing claims, a WebFetch to the official docs. Trust-but-verify the capability-check agent (source: compounded entry 2026-04-23 platform-verify-at-assertion).
+Agent 4 — **platform claims.** Every sentence asserting Claude Code behavior, `CLAUDE.md` layer semantics, connector/action/tool capability, or Anthropic infra gets verified against `curriculum/reference/claude-code-for-engineers.md` and, for load-bearing claims, a WebFetch to the official docs. Trust-but-verify the capability-check agent (see `compounded/` entry on platform-verify-at-assertion).
 
 Output: four files at `curriculum/_compliance-<target-slug>-<YYYY-MM-DD>-<agent>.md`. Main thread synthesizes a single punch list for Antti.
 
@@ -108,7 +108,7 @@ When in doubt, fire. The cost is one parallel dispatch; the cost of shipping un-
 
 Output: three files at `curriculum/_sim-<target-slug>-<YYYY-MM-DD>-<persona>.md`. Synthesize mood aggregate + convergent findings into the punch list. Persona findings often catch what Loops A and B miss (register smell, condescension, felt-experience).
 
-**LLM-as-judge vs. persona sim:** When verdicts disagree, trust the personas. LLM-judge catches rule violations (Loops A and B do this); personas catch felt-experience smells. Source: compounded entry 2026-04-23 long-running-session rules (*"LLM-judge is procedural compliance; persona sim is the authoritative mood signal"*).
+**LLM-as-judge vs. persona sim:** When verdicts disagree, trust the personas. LLM-judge catches rule violations (Loops A and B do this); personas catch felt-experience smells. *"LLM-judge is procedural compliance; persona sim is the authoritative mood signal."*
 
 ## Re-run cadence
 

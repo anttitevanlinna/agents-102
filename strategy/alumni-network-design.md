@@ -108,4 +108,4 @@ Without the network, each step has to be re-sourced. With the network, each step
 
 ---
 
-**Status:** 2026-04-19 — design captured from conversation; not yet operationalised. Next step is recording the first alumni interview and booking the first gathering venue once the first non-F-Secure cohort is scheduled.
+**Status:** design captured from conversation; not yet operationalised. Next step is recording the first alumni interview and booking the first gathering venue once the first non-F-Secure cohort is scheduled.

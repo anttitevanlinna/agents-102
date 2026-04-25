@@ -75,7 +75,7 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
-**Agentic Nerd push-backs** (skill at `content/skills/agentic-nerd/SKILL.md`, installed to `~/.claude/skills/` at prework):
+**Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1 blocker** — student can't surface a fitting task. Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
 - **P3 rubber-stamp** — student approves under 60s with no push-back messages. Nerd: *"pick keep planning with feedback — send one soft item before approving."*
 - **P3 generic push-back** — messages lack step numbers or specific concerns. Nerd: *"which step, which words? say the thing you'd want a senior reviewer to catch."*
@@ -101,16 +101,10 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 - Student's own repo (carried from M1)
 - Student's own backlog task (surfaced in M2 prework)
 - Sponsor-stated rules home for the Compound step
-- Agentic Nerd push-back moves at P3
+- Push-back moves at P3 (trainer covers by default; Nerd covers when enabled)
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
 - **Plan mode** (Anthropic Claude Code). Activation Shift+Tab; push-back via *keep planning with feedback* at the approval prompt (chat-based, the exercise's path). In-place plan-file editing via Ctrl+G / Ctrl+X Ctrl+E is a practitioner primitive mentioned at Debrief, not the exercise's move — chat-based push-back keeps the student in conversation with the agent. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
 - **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
 - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). Vision-layer attribution, optional at Debrief; most engineers have seen this in strategy readings.
 
-**Open questions surfaced for later passes:**
-- Plan-mode + subagents: known gap per GitHub issue #43777 (plan-mode constraint doesn't propagate to spawned subagents). Not an M2 issue — M2 works at main-session scope. Flag for M5 (long-running) where subagent behavior matters more.
-- Community plan-critique skills — none found in shipped Claude Code as of 2026-04-22. If a practitioner-authored skill emerges, surface it at the Nerd's P3 blocker.
-- Lecture worked-example decision: add a 30-sec plan-snippet example between "three things" and "three pressures"? Defer to first cohort sim feedback.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

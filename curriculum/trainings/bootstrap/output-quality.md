@@ -74,7 +74,7 @@ You ran the benchmark once. Five claims, five detectors, one judge. Now imagine 
 > PLUG POINT: The benchmark size.
 > Default: five claims. Raise to seven for cohorts whose briefings run long; never below five (precision/recall get noisy).
 
-**Reshape (2026-04-19):** M5 shifted from "student manually classifies claims" to **hallucination benchmark** — one of the three designated magic beats in M3–M8. The student operates as benchmark-setup + scoreboard-watcher + winner-saver, not as the classifier. Scorer picks the winner; student watches. Previous exercise (`ground-your-output.md`) superseded; the grounded/ungrounded/misrepresents/overreaches/ungrounded-shape vocabulary is no longer required material.
+**Canonical shape:** M5 is the **hallucination benchmark** — one of the three designated magic beats in M3–M8. The student operates as benchmark-setup + scoreboard-watcher + winner-saver, not as the classifier. Scorer picks the winner; student watches. Supersedes `ground-your-output.md`; the grounded/ungrounded/misrepresents/overreaches/ungrounded-shape vocabulary is no longer required material.
 
 **Superseded exercise:** `ground-your-output.md` kept alive as supplementary reading for cohorts that want the five-category taxonomy. Delete at the next sweep if unused by delivery date. The benchmark teaches grounded-ness as a discipline empirically without needing the five-category frame up front.
 

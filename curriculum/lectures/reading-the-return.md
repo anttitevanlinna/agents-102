@@ -38,7 +38,7 @@ We read it together at M5 open.
 
 **Time:** ~5 min read.
 
-**Delivery mode:** Pre-read. Lands at the close of M4 Debrief, after the send-off prompt has been pasted. Self-study Teacher Claude shares the link as part of the M4 close-out summary.
+**Delivery mode:** Pre-read. Lands at the close of M4 Debrief, after the send-off prompt has been pasted. Self-study Nerd shares the link as part of the M4 close-out summary.
 
 **Source verification — MUST DO before first cohort:**
 - Open https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ and confirm: 10h figure, 2.2M tokens, lexer→parser→runtime sequence, Rust snapshot test reuse. *(Currently sourced from the 2026-04-21 long-running practitioner OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md` line 11; verify against original.)*
@@ -52,7 +52,7 @@ We read it together at M5 open.
 **Watch-fors (delivery):**
 - Don't pre-empt the three-pattern (reference / plan.md / verifier). The pre-read names failure modes, not fixes. Naming the fixes here collapses the M5 contrast.
 - Don't drift to "best practices" register. This is a question to plant, not a checklist to deliver.
-- Self-study mode: Teacher Claude shares the link with a one-liner. The pre-read is short enough to read; don't paraphrase it.
+- Self-study mode: the Nerd shares the link with a one-liner. The pre-read is short enough to read; don't paraphrase it.
 
 **Philosophy callouts:** none. The question is the beat.
 

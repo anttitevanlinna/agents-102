@@ -62,7 +62,7 @@ Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 
 **Time:** 15–18 min at presentation pace.
 
-**Delivery mode:** In-room close after Debrief. Self-study Teacher Claude reads the same content as the M6 closing beat, invites the Monday-morning OR M7 bridge in conversation based on whether the student is continuing.
+**Delivery mode:** In-room close after Debrief. Self-study Nerd reads the same content as the M6 closing beat, invites the Monday-morning OR M7 bridge in conversation based on whether the student is continuing.
 
 **Source verification — MUST DO before first cohort. Every URL and number below is currently sourced from internal OODA runs and observation files; each must be opened against the original and confirmed.**
 
@@ -82,7 +82,7 @@ URLs and numbers to verify:
 - Mood stays practitioner-fluency. If the Ramp and Intercom numbers land as vendor-plug ("here's what the big co does, aspire to that"), the mood slips into compliance-feel. They are anchors of the destination shape, not product placements. Pace accordingly.
 - "One word" beat is the earning moment for *eval*. Don't rush it. The student has just built the thing; the word lands because the thing is already in hand.
 - Scheduled-agents stays a callout, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the section grows past 90 seconds in rehearsal, cut.
-- Monday-morning vs. M7 bridge — both are shipped in the lecture. The trainer or the room picks which lands. For self-study, Teacher Claude asks which path the student is on and reads only the matching bridge.
+- Monday-morning vs. M7 bridge — both are shipped in the lecture. The trainer or the room picks which lands. For self-study, the Nerd asks which path the student is on and reads only the matching bridge.
 - Risto voice on "the specific Claude will be replaced." Flat epistemic honesty, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.
 
 **Philosophy callouts:** at most one. The *compounding* theme (Klaassen's review-and-compound move, visible in the kit-grows-by-accretion beat) surfaces naturally in the Ramp section; no need to name-tag it. Do not bolt the 19 beliefs onto this lecture.

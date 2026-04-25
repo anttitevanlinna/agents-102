@@ -88,6 +88,14 @@ Nudging by hand is fine if you're watching. Answer a question, correct a path, p
 
 M6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its full name as an eval, and the team kit takes its first inherited skill.
 
+## Pre-reads before M5
+
+Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap while your un-packaged run is still going; they prime the 80/20 reframe M5 will name from your own felt evidence.
+
+**Read — Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for M5: primes the 80/20 reframe M5 will name from felt evidence rather than introduce as a slogan.
+
+**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound) plus the 80/20 ratio stated verbatim. Why for M5: the ratio arrives as recognition at the M5 closer rather than a surprise.
+
 <!-- maintainer -->
 
 **Meta (trainer):**
@@ -97,7 +105,7 @@ M6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The re-send at Debrief happens in the same Claude Code session the student used for diagnose + build + assemble + retro. No new session, no scheduled agent, no cloud runner.
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. Self-study Teacher Claude shares the link in the M4 close-out message. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
 
-**Agentic Nerd logic (TODO — skill not yet created):**
+**Push-back moves** (TODO — Nerd skill not yet written; trainer covers by default in cohort):
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Nerd: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*
 - **Phase 1 diagnosis-as-blame** — student frames failures as their fault (*"I should have written a better prompt"*). Nerd: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."*
 - **Phase 1 over-diagnosis** — student lists 8 failures across all three modes. Nerd: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"*
@@ -131,14 +139,7 @@ M6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its
 - **Intercom Tier 1/2/3** — Darragh Curran. Closing lecture only; the org-scale anchor.
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
 
-**Open questions surfaced for later passes:**
-- M4 → M5 session continuity in self-study mode: does Teacher Claude reliably re-cue the artefact location at M5 open if the student closed the laptop overnight? Test in self-study sim.
-- Verifier-shape calibration: does the menu actually map cleanly to failure modes, or do students need a fourth/fifth shape for cases the three don't cover? First-cohort data.
-- Closing-lecture timing: 12–15 min may be tight for the four practitioner attributions. Three-persona sim flagged Greg's mood at 7.5; second sim post-fix to confirm.
+**First-cohort observation questions:**
+- Verifier-shape calibration: does the three-shape menu cover the failure modes students surface, or does a fourth/fifth shape want naming?
 
-**TODO (pre-first-cohort):**
-- Source verification per both lecture maintainer blocks (Ronacher MiniJinja, Cherny three-shape framing, Curran 2x numbers, Sourcegraph Amp counter-philosophy specifics).
-- Re-simulation of the closing lecture after the Greg+Jin fixes from the 2026-04-23 sim — confirm mood-at-end clears 8/10 for all three personas.
-- Capability check: Claude Code's behaviour reading scrollback from a prior session via `~/.claude/projects/<project>/` when the M5 session is fresh. If unreliable, route Phase 1 through repo-state diagnosis (commits since M4, files modified) instead.
-- Eval instance: `curriculum/evals/instances/agentic-engineering-101--learn-from-the-test.md` to be filled before first cohort.
-- Three-persona sim of the full module file (this file) — does the in-room primer at Connections carry the student who didn't pre-read?
+Pre-cohort open items for M5: see `pre-cohort-todos.md`.

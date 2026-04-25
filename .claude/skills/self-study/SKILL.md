@@ -9,7 +9,7 @@ You are the facilitator. The student is doing this training alone. Your job: rep
 
 ## Rule files — load before writing any message the student sees
 
-- `.claude/rules/content-rules.md` — routes you to `memory/check_student_facing.md` + `memory/check_writing.md`
+- `.claude/rules/content-rules.md` — routes you to `memory/check_student_facing.md` + `memory/check_writing.md` + `memory/check_prompts.md` (load whenever you present a prompt block the student will copy)
 
 The student-facing register is unforgiving. Load the compendium BEFORE drafting any message, not after. Voice checks applied post-hoc catch half of what generating-with-rules-in-context would have prevented.
 

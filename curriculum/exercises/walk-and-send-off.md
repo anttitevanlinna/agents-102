@@ -152,7 +152,7 @@ See the module file for the two Debrief prompts.
 - Student passes the final prompt to the SAME Claude Code session they've been in for 90+ minutes. No new session. No `/schedule`, no `/loop`, no cloud runner.
 - Student closes the laptop (power settings + plugged in) OR stops the run mid-flight when observation is sufficient.
 - Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
-- **Capability verified 2026-04-23:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 9`.
+- **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 9`.
 
 **Watch-fors (cross-phase):**
 - Task sprawl at Phase 1 — the biggest single failure mode; everything downstream is sized by the task pick.

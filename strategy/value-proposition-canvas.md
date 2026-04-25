@@ -2,7 +2,7 @@
 
 Two canvases: one for the **builder leader** (buyer), one for the **end learner** (user). The builder leader buys the transformation. The learner experiences it.
 
-Updated 2026-03-21 with platform research findings.
+Updated with platform research findings.
 
 ---
 

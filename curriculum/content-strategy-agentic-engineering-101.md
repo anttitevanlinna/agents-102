@@ -1,6 +1,6 @@
 # Content Strategy — Agentic Engineering 101
 
-Third training in the portfolio. Skeleton → storyline. Updated 2026-04-21.
+Third training in the portfolio. Skeleton → storyline.
 
 Paired with Engineering Management; the two pincer the transformation (manager creates conditions, engineers run at capacity).
 
@@ -55,7 +55,7 @@ Software engineers, individual contributors, 1–8 years. Adjacent fits: platfor
 
 ## Competitive shape of the field — where AE101 sits
 
-Sourced from the 2026-04-24 blind OODAs (`analytics/ooda-curriculums-landscape.md`, `analytics/ooda-competition.md`). Re-run the scan when the field moves; the archetypes are more durable than any single offering.
+Sourced from blind OODAs at `analytics/ooda-curriculums-landscape.md` and `analytics/ooda-competition.md`. Re-run the scan when the field moves; the archetypes are more durable than any single offering.
 
 **Six archetypes in the market today:**
 
@@ -245,7 +245,7 @@ Leadership drama is absent; drama is in your interior (*am I still keeping up?*)
 
 ## M1 in detail — getting going + context
 
-**Three exercises, one loop** (reshape 2026-04-23 late: split from one mega-exercise to three shared-library exercises; connective tissue is the same repo + same bug carried across):
+**Three exercises, one loop** (shared-library; connective tissue is the same repo + same bug carried across):
 
 1. **`orient-and-introspect`.** Claude reads the repo; you interrogate Claude's own read via an introspection prompt + `/context`. The bounded window and the unread slice become visible.
 2. **`fix-tests-first`.** No plan mode. Tests-first, root-cause-driven. Ship the PR. Stop there; the compound step lives in Ex3.
@@ -267,11 +267,11 @@ If you leave with only a bug fix, M1 failed. If you leave with a `./CLAUDE.local
 
 *Naming: canonical "compound engineering" per Klaassen; our learning-area name "compounding engineering" is our framing; "compound" reserved for the Klaassen loop step.*
 
-**No Skill use at M1 — resolved 2026-04-23.** Prior strategy had *"1–2 pre-installed skills invoked during the bug fix."* Dropped: Ex1 uses `/context` (slash command, not a Skill), Ex3 uses MCP (connector, not a Skill), and M3 now carries the first Skill use + first subagent + first authoring together — which is the right concentration. One primitive introduced per module, earned at the moment you need it.
+**No Skill use at M1.** Ex1 uses `/context` (slash command, not a Skill), Ex3 uses MCP (connector, not a Skill). M3 carries the first Skill use + first subagent + first authoring together — the right concentration. One primitive introduced per module, earned at the moment you need it.
 
-**Homework after M1 — optional, between-module reading (added 2026-04-24).** Pre-reads and homework are the slots where gap-fixes land without bloating in-class time. M1 ships two optional homework pieces between M1 and M2; skipping either does not break M2.
+**Homework after M1 — optional, between-module reading.** Pre-reads and homework are the slots where gap-fixes land without bloating in-class time. M1 ships two optional homework pieces between M1 and M2; skipping either does not break M2.
 
-1. **Watch — Boris Cherny, *[Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0)* (~30 min, May 2025) [practitioner direct].** The canonical Cherny talk on how he and the Claude Code team actually use the tool — plan mode, verification loops, parallel worktrees, CLAUDE.md compounding, slash commands, subagent map-reduce for migrations, "finish the migration" rule. Frames the practitioner voice the training lives inside; the exact moves M2–M6 then earn through exercises. The "single biggest productivity unlock" (parallel worktrees) gets seen here first so later beats land as recognition, not novelty. **Freshness-rule exception logged (Antti, 2026-04-24):** sits outside the 6-month window; kept because the philosophy behind Claude Code lands here better than in any successor, and Boris himself still references it as THE reference. Successor content (Feb/Mar 2026) is strategy-angled, not workflow-angled, and does not replace the pedagogy match. See M1 module file maintainer block for the full rationale; do not let freshness-checker auto-flag. **Carries by inclusion:** parallel worktrees (#2 — mechanical on-ramp, paired with the survival guide below), subagent map-reduce (#6), slash commands as dual-use human/agent tools (#7), "finish the migration" rule (#10).
+1. **Watch — Boris Cherny, *[Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0)* (~30 min, May 2025) [practitioner direct].** The canonical Cherny talk on how he and the Claude Code team actually use the tool — plan mode, verification loops, parallel worktrees, CLAUDE.md compounding, slash commands, subagent map-reduce for migrations, "finish the migration" rule. Frames the practitioner voice the training lives inside; the exact moves M2–M6 then earn through exercises. The "single biggest productivity unlock" (parallel worktrees) gets seen here first so later beats land as recognition, not novelty. **Freshness-rule exception logged:** sits outside the 6-month window; kept because the philosophy behind Claude Code lands here better than in any successor, and Boris himself still references it as THE reference. Successor content (Feb/Mar 2026) is strategy-angled, not workflow-angled, and does not replace the pedagogy match. See M1 module file maintainer block for the full rationale; do not let freshness-checker auto-flag. **Carries by inclusion:** parallel worktrees (#2 — mechanical on-ramp, paired with the survival guide below), subagent map-reduce (#6), slash commands as dual-use human/agent tools (#7), "finish the migration" rule (#10).
 
 2. **Read — Multi-session and Git: survival guide.** A short reference page (to be authored; new file in `curriculum/reference/`) covering: worktrees vs. branches vs. clones; how to open N Claude Code sessions on the same repo without wrecking each other's state; stashing and switching between sessions; resolving the conflict when two sessions edit the same file; recovering from an agent that committed to the wrong branch. Doubles as the on-ramp for the parallel-worktrees gap (#2). **Carries one line of the multisession permission beat (#11):** *"You will want to run multiple sessions. Find your way to do it over time — there's no rush."* Builds on prework's Git assumption; does not re-teach Git fundamentals.
 
@@ -289,7 +289,7 @@ Both pieces sit between M1 and M2 in the reading flow. Engineers who do both arr
 5. **Approve. Stop. No execution.** You do not run the code. The exercise is about reading a plan well; execution is M3's concern.
 6. **Retrospective names the pattern.** What did grill surface that push-back didn't? Would it have mattered? The design pattern: *human read → push-back → agent read → grill → approve.* One kind of scrutiny catches one kind of miss; paired, they give the complete read.
 
-**What M2 refuses:** plan mode as a feature tour (it's a discipline, not a toggle); three-push-back-quota (n=3 produces a performative third one, killed in v3 reshape); plan-execution (the work of making a plan good IS the exercise; running the code is different-skill territory).
+**What M2 refuses:** plan mode as a feature tour (it's a discipline, not a toggle); three-push-back-quota (n=3 produces a performative third one); plan-execution (the work of making a plan good IS the exercise; running the code is different-skill territory).
 
 ## M3 in detail — earn the trust (Quality + Security), before you need it
 
@@ -317,7 +317,7 @@ Both pieces sit between M1 and M2 in the reading flow. Engineers who do both arr
 
 **Anchor cases:** Intercom Tier 1/2/3 review (19.2% auto-approved at lowest tier — tiered-review is shippable); Intercom's 267-skill plugin repo with 31% R&D contributing (team-kit accretion pattern). STRIDE lineage: Kohnfelder & Garg (1999 Microsoft memo) + Shostack (*Threat Modeling: Designing for Security*, 2014).
 
-**Pre-reads before M3 — agentic security awareness (added 2026-04-24).** Curation over invention — AE101 sends engineers to canonical practitioner writing before M3 so STRIDE + access-control land inside the wider modern-agentic threat class, not as a substitute for it. Both pieces optional; neither is required to pass M3. Label each with title + one-sentence summary + reading time + *"why this matters for M3."*
+**Pre-reads before M3 — agentic security awareness.** Curation over invention — AE101 sends engineers to canonical practitioner writing before M3 so STRIDE + access-control land inside the wider modern-agentic threat class, not as a substitute for it. Both pieces optional; neither is required to pass M3. Label each with title + one-sentence summary + reading time + *"why this matters for M3."*
 
 1. **Read — Simon Willison, *[The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)* (~10–15 min).** Names the modern threat class — private data + untrusted content + external communication = compromise surface. Durable mental model students carry into Ex1 (access map) and Ex2 (STRIDE). Willison is THE practitioner voice on this. [practitioner direct]
 2. **Optional deeper scan — [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min).** Broader checklist for engineers who want the wider surface beyond the trifecta. [practitioner direct]
@@ -383,12 +383,12 @@ All three lecture files carry a maintainer-block source-verification list — ev
 
 **Open — Pass 2 dependencies:** canonical task shape + execution target for overnight/week runs (laptop vs. scheduled) pending capability check on Opus 4.7 long-running behaviour.
 
-**Pre-reads before M5 — 80/20 frame (added 2026-04-24).** Two Klaassen pieces land in the M4→M5 gap while the un-packaged run is going overnight. Engineers who do both arrive with ratio + metaphor; engineers who do the short one get the metaphor. Label each with title + one-sentence summary + reading time.
+**Pre-reads before M5 — 80/20 frame.** Two Klaassen pieces land in the M4→M5 gap while the un-packaged run is going overnight. Engineers who do both arrive with ratio + metaphor; engineers who do the short one get the metaphor. Label each with title + one-sentence summary + reading time.
 
 1. **Read — Kieran Klaassen, *[You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich)* (~5 min).** The identity metaphor — you're the bread, the model is the filling; humans frame and taste-check. [practitioner direct]
 2. **Read (longer) — Kieran Klaassen, *[Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide)* (~15–20 min).** The four-step loop + the 80/20 ratio stated verbatim (80% planning+review, 20% execution). [practitioner direct]
 
-**In-class beats added 2026-04-24:**
+**In-class beats:**
 - **Ratio named at M5 closer** — the existing `lectures/what-packaging-is.md` gets one beat naming the 80/20 ratio from felt evidence (the student just lived un-packaged vs. packaged), attributes Klaassen, quotes one line from the pre-read. Not a new lecture. **Carries:** 80/20 mechanics (#1 part A).
 - **Cost/latency callout at M5 closer** — one beat near the re-send moment: *"this run cost X hours of Opus time; that's the ROI calculation packaging earns."* Low-weight CTO-buyer relevance. **Carries:** cost/latency (#8).
 - **Verifier-as-stop-hook line in M5 exercise** — one line naming the verifier as a bash stop-hook in implementation (it already IS one) + one-line forward-pointer for students who want to extend. Vocabulary fix, not a new move. **Carries:** hooks (#9).
@@ -424,13 +424,13 @@ All three lecture files carry a maintainer-block source-verification list — ev
 
 For a core-only cohort, M6 lands on practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* For M7+M8 cohorts, that fluency is what makes M7's deliberation feel earned — you arrive at M7 knowing you can steer a learning system, not just attend a panel.
 
-**Pre-reads before M6 — verifier reliability + fan-out review (added 2026-04-24).** Klaassen piece lands in the M5→M6 gap. Covers both the 10-run reliability measurement AND the per-feedback-agent fan-out pattern; may double-duty cleanly. Label with title + one-sentence summary + reading time + *"why this matters for M6."*
+**Pre-reads before M6 — verifier reliability + fan-out review.** Klaassen piece lands in the M5→M6 gap. Covers both the 10-run reliability measurement AND the per-feedback-agent fan-out pattern; may double-duty cleanly. Label with title + one-sentence summary + reading time + *"why this matters for M6."*
 
 1. **Read — Kieran Klaassen, *[My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)* (~10 min).** Runs the verifier 10 consecutive times before trusting it (reliability is a number, not a vibe); per-feedback specialised agents in parallel (fan-out review shape). Student arrives at M6 already knowing reliability is a measured property and that one verifier can become a panel. [practitioner direct]
 
 **Open TODO:** confirm whether this one piece carries both #3 (fan-out) and #4 (reliability) sufficiently, or whether a dedicated fan-out companion piece is needed before first cohort. **Carries:** verifier reliability (#4), fan-out review (#3).
 
-**In-class beats added 2026-04-24:**
+**In-class beats:**
 - **Identity beat at M6 close** — one extra line in the practitioner-fluency round: *"I know how to test, I know how to learn, I know how to encode — and I know what my job is: I'm the bread, not the filling."* Single sentence, human-voiced close. **Carries:** 80/20 identity (#1 part B).
 - **Worktrees callout at M6 scheduled-agents section** — one paragraph naming parallel worktrees as the natural when-to-reach-for-it beat, anchored on Cherny's "single biggest productivity unlock." Recognition, not novelty (students met it in the M1→M2 video). Includes the multisession permission line one more time: *"Find your way to do it over time."* **Carries:** parallel worktrees in-curriculum beat (#2 closer), multisession permission (#11 closer).
 
@@ -654,7 +654,7 @@ Two artifacts per student:
 - **Belief > correctness, 50%-wrong-is-curriculum** (ports from Engineering Management)
 - **Calibration question** (*did you make progress? did you lay ground?*) applies to every module
 
-## OODA gap-analysis index (2026-04-24)
+## OODA gap-analysis index
 
 Three parallel blind OODAs against AE101: "what would Boris Cherny teach in 6 modules today" + same for Kieran Klaassen + a convergence scan across 14 published agentic-engineering curriculums. Reports at `analytics/ooda-cherny-curriculum.md`, `analytics/ooda-klaassen-curriculum.md`, `analytics/ooda-curriculums-landscape.md`. A fourth competitive-landscape OODA at `analytics/ooda-competition.md`. Ten gaps surfaced + one cross-module affective beat; all placed into per-module homework / pre-read / closer slots so no new lectures and no in-class time were added.
 
@@ -684,75 +684,31 @@ Three parallel blind OODAs against AE101: "what would Boris Cherny teach in 6 mo
 - **Test→learn→encode two-run arc.** Same task, packaging as the changed variable. No analog in the 14-curriculum scan.
 - **Real-work-only requirement + mood arc engineering.** Both structural, both unique.
 
-## State of play (rolling)
+## Strategic state
 
-**Current shape (M4–M6 reframed 2026-04-23; structure settled 2026-04-22):** 6 core + 2 optional. M1 Getting going + context + MCP · M2 Plan mode, done right · M3 Earn the trust (Q+S, team kit BIRTH) · **M4 Accumulate + run the first experiment (un-packaged send-off)** · **M5 Learn from the test, re-send packaged** · **M6 Spot gaps, build the loop** · M7 *(optional)* Agents meet agents · M8 *(optional)* Where is this all going? Skills thread: using from M1, authoring at M3 + M6. Core runtime ~11h over 2 days; +M7/M8 adds ~3h30. Pre-engagement contract: rules home referenced at M1, team kit home at M3, memory home at M4.
+**Current shape:** 6 core + 2 optional. M1 Getting going + context + MCP · M2 Plan mode, done right · M3 Earn the trust (Q+S, team kit BIRTH) · **M4 Accumulate + run the first experiment (un-packaged send-off)** · **M5 Learn from the test, re-send packaged** · **M6 Spot gaps, build the loop** · M7 *(optional)* Agents meet agents · M8 *(optional)* Where is this all going? Skills thread: using from M1, authoring at M3 + M6. Core runtime ~11h over 2 days; +M7/M8 adds ~3h30. Pre-engagement contract: rules home referenced at M1, team kit home at M3, memory home at M4.
 
-**Also settled:** first cohort runs at full price (revenue event, not discount-for-evidence); Bootstrap is irrelevant as prerequisite; `crux` / `assumption-test` / `pre-mortem` NOT ported (engineers already have those instincts; M7 runs on the cohort's own authored engineering skills).
+**Also:** first cohort runs at full price (revenue event, not discount-for-evidence); Bootstrap is irrelevant as prerequisite; `crux` / `assumption-test` / `pre-mortem` are NOT ported (engineers already have those instincts; M7 runs on the cohort's own authored engineering skills).
 
-**Recurring themes named (2026-04-23):** the four practitioner-truths the curriculum lives inside — 90% correct (problem), compounding builds the system (method), LLM as mirror (operator), mechanically self-aware (interface). See new § "Recurring themes." Frame for every subsequent module spine; modules earn themes, not recite them.
+**Recurring themes:** the four practitioner-truths the curriculum lives inside — 90% correct (problem), compounding builds the system (method), LLM as mirror (operator), mechanically self-aware (interface). See § "Recurring themes." Modules earn themes, not recite them.
 
-**Gap-closers landed (2026-04-23):**
-- **Subagents as primitive — lands at M3.** Ex1 + Ex2 invoke curated skills as subagents; Ex3 stays main-thread. Contrast is the pedagogy: you leave M3 knowing which jobs belong in which thread, not just that subagents exist. LO row added to `earn-the-trust.md`; strategy § M3 paragraph added.
-- **Evals explained + called out — M5 + M6.** M5: the verifier IS your first eval; word lands with the move. M6: the word earns full weight — judges / verifiers / gates are all evals, with Ramp Dojo (350-skill marketplace) + Intercom Tier 1/2/3 as anchors. Situated judge-building stays, but the vocabulary is no longer absent.
-- **Scheduled agents — callout at M6, not an exercise.** `/schedule`, `/loop`, cron-triggered runs named as the generalisation of the M5 send-off pattern. Lecture callout + Debrief naming; authoring-a-scheduled-agent lands post-training or in a followup, not inside core runtime.
+**Cross-cutting strategic decisions:**
+- **Subagents as primitive land at M3.** Ex1 + Ex2 invoke curated skills as subagents; Ex3 stays main-thread. Contrast is the pedagogy: you leave M3 knowing which jobs belong in which thread, not just that subagents exist.
+- **Evals named at M5 + M6.** M5: the verifier IS your first eval; word lands with the move. M6: the word earns full weight — judges / verifiers / gates are all evals, with Ramp Dojo (350-skill marketplace) + Intercom Tier 1/2/3 as anchors.
+- **Scheduled agents are a callout at M6, not an exercise.** `/schedule`, `/loop`, cron-triggered runs named as the generalisation of the M5 send-off pattern. Authoring-a-scheduled-agent lives post-training, not in core runtime.
+- **M1's closing lecture `how-this-training-was-built.md` is a closer, not opener.** Meta-frame lands after the student lives the compound loop on their own repo. Sits after `compound-and-close` (Ex3), before the Bridge to M2. Opener slot stays with `the-wizard-move.md`.
+- **No Skill use at M1.** First Skill + first subagent + first authoring concentrate at M3 — one primitive per module, earned at the moment you need it.
 
-**M6 shipped (2026-04-24):** full module file + main exercise + arc-retrospective forward-looking beat + closing lecture (*the loop has a name*) + scheduled-agents reference page + eval instance stub. Session generated live via the M5 move on its own work — diagnose un-packaged proposal, assemble reference/plan/verifier, dispatch three parallel subagents, run `/loop` for continuous re-verification. Opener lecture (*Story of Module 6*) authored main-thread from generation-session notes. AE101 MODULES array in `site/curriculum.html` synced. Pre-first-cohort TODOs: Ramp Dojo and Intercom 2x source verification on the closing lecture; three-persona sim on all three new student-facing files; eval instance full population.
+**Open — decide before next Pass:**
 
-**M4–M6 reframe (2026-04-23, Antti-driven, two-pass):**
-- **Pass 1 — accumulate → bake in → spot gaps.** Named the arc. Fixed M4's "three layers built in sequence" + "memory-nav helpers from M3" (M3 ships a test-strategy skill, not nav helpers); M6's verifier-vs-judge terminology drift; located the meta-capability the training claims ("can build learning systems").
-- **Pass 2 — two-run arc, spirit "you are testing and you are learning."** M4 runs the first experiment (un-packaged send-off); M5 reads the result, teaches packaging through diagnosed contrast, re-sends same task packaged (second experiment); M6 reads the packaged run, encodes what two runs taught into a skill. The contrast is the pedagogy — Ronacher's three-pattern earns its name from M4's felt failure modes, not a lecture. Mood arc: curious readiness → learning through contrast → practitioner fluency. Replaces Pass 1's deliberate-preparation / unleashed-leverage / forward-looking-confidence. Task-design requirement is load-bearing: M4's un-packaged run has to be "not great" for M5's contrast to land — sponge, not rock.
-- Strategy doc § M4 / M5 / M6 rewritten for the two-run arc; module table + mood arc + format runtime synced; scheduled-agents callout and evals-named callouts absorbed into the new M5 + M6 shape.
+1. **Site renderer.** Add an `optionalModules` field to the TRAININGS schema (parallel to Bootstrap's `supplementaries`) or use title-prefix workaround? Recommendation: add the field.
+2. **Optional-module sell line.** AE101 equivalent of Bootstrap's *"Plus two optional extensions…"*: A/B *"Plus two optional modules when the cohort wants the team peak."*
+3. **Red-team-me skill.** Pocock's grill-me is Socratic-elicitation, not adversarial. A genuinely adversarial *"imagine the worst way this plan fails, argue for it"* skill is a real authoring opportunity — likely M3 (judge-building) or the skill-authoring arc. Not M2.
 
-**M1 dependencies built (2026-04-21 long-running-gen cycle):**
-- `curriculum/trainings/agentic-engineering-101/getting-going.md` (Pass 1 spine; needs MCP/first-skill ramp grown at front)
-- `curriculum/trainings/agentic-engineering-101/prework.md`
-- `curriculum/lectures/the-wizard-move.md` (Pass 2 skeleton)
-- `curriculum/exercises/orient-and-introspect.md` / `fix-tests-first.md` / `compound-and-close.md` (Pass 3; split 2026-04-23 late from original `ship-trivial-bug.md` mega-exercise)
-- `curriculum/evals/instances/agentic-engineering-101--getting-going.md`
-- Klaassen + Huryn practitioner sources verified — `[practitioner direct]`, within 6 months
-- Pedagogy: **exercise-first head-on; "why it worked" names the shape retrospectively.** Practitioners attributed as peer recognition, not curriculum authority.
-
-**M2 dependencies built (2026-04-22 long-running-gen cycle, v3 reshape 2026-04-23):**
-- `curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` (module spine)
-- `curriculum/exercises/push-back-on-the-plan.md` (Pass 3; v3 shape — two push-backs + grill + stop, no execution)
-- `curriculum/lectures/when-a-plan-is-good.md` (Pass 2 skeleton, 10–12 min)
-- `curriculum/evals/instances/agentic-engineering-101--plan-mode-done-right.md` (filled eval, reshape log at top)
-- `curriculum/skills/external/pocock-skills/grill-me/` — Pocock's grill-me skill forked with MIT LICENSE + attribution at commit `a6bdfd9` (2026-04-22)
-- Site renderer: AE101 registered in `TRAININGS` with M1 + M2
-- v3 shape emerged from Antti-driven reshape: *"the exercise is about reading a plan well; execution is M3's concern"* — stopping at approval and naming the design pattern (human read → push-back → agent read → grill → approve) replaces the original execute-and-retro shape
-- Three-persona sims (Maija mid-competent / Greg opinionated senior / Jin fast operator) + LLM-as-judge all APPROVE WITH TODOs on v3; polish layer applied 2026-04-23
-
-**M1 compounding-story lecture added (2026-04-23 late):** `curriculum/lectures/how-this-training-was-built.md` — 5–7 min **closer** (not opener) that tells the story of how this training was compounded (bulletpoints → wrong prototypes → human steering → codified rules → longer sessions → agents checking agents → sweeping changes). The meta-frame only lands once you have lived through the loop on your own repo. Sits after `compound-and-close` (Ex3) and before the Bridge to M2. Opener slot stays with `the-wizard-move.md`: demo the ceiling before the exercises, name the pattern after.
-
-**M1 reconstruction (2026-04-23, Antti-driven; split into three exercises 2026-04-23 late):**
-- **Three shared-library exercises** (split from `ship-trivial-bug.md` mega-exercise): `curriculum/exercises/orient-and-introspect.md` (Ex1); `curriculum/exercises/fix-tests-first.md` (Ex2); `curriculum/exercises/compound-and-close.md` (Ex3). Same repo + same bug carried across all three. Ex1: orient + introspect (`/context`); Ex2: fix tests-first, no plan mode, seed `./CLAUDE.local.md` mid-exercise; Ex3: retro extends `./CLAUDE.local.md` + short MCP framing + close the ticket via connector. Themes (mirror / grain-of-salt / 90% / compounding) plant experientially across Ex1–Ex2, no lecture. `ship-trivial-bug.md` deleted as superseded.
-- **NEW file** `curriculum/reference/mcp-and-connectors.md` — first entry in `curriculum/reference/`. Per-tracker install (`gh` CLI for GitHub Issues / Atlassian Rovo MCP for Jira / Composio or Merge for Linear), tenant-admin fallbacks, "Last verified" date to track freshness. Exercise points at it; specifics stay out of the exercise body so they don't drift when Claude Code's install surface changes.
-- Capability check via `claude-code-guide` confirmed MCP is CLI-first in Claude Code today (2026-Q2). No GUI marketplace. Informed P3 design + the reference file.
-- Strategy-doc § "M1 in detail" rewritten to the three-phase shape; module-table artifact column updated.
-- **Still outstanding:** module file `getting-going.md` LO + runtime + Debrief block update (divergence now resolved — no Skill use at M1; update pending next editing pass). Three-persona sim on the new shape. Antti reviewing opener (Connections + wizard-move lecture) after this pass.
-
-**Skill-invocation divergence — resolved 2026-04-23.** Option (a) picked: no Skill use at M1. First Skill use + first subagent + first authoring all land at M3, concentrated. Rationale: one primitive per module, earned at the moment you need it. Strategy doc § M1 + module table + skills table synced.
-
-**Open — decide before Pass 1:**
-
-1. ~~**M1 MCP selection.**~~ **Resolved 2026-04-23** — capability check completed; findings codified in `curriculum/reference/mcp-and-connectors.md`. GitHub Issues via `gh` CLI is the cleanest default; Jira via Atlassian Rovo MCP; Linear via Composio or Merge. Tenant-admin fallbacks per tracker.
-2. ~~**M3 Q+S exercise artifacts.**~~ **Resolved 2026-04-23** — reshaped to three exercises on a small feature you're shipping: (1) invoke curated access-control analysis skill; (2) invoke curated STRIDE skill + ADR hardening decision; (3) author test-strategy skill via conversation, self-critique, invoke on security-tested feature, ship. Module spine drafted at `curriculum/trainings/agentic-engineering-101/earn-the-trust.md`. See § "M3 in detail" for shape.
-3. **Site renderer.** Add an `optionalModules` field to the TRAININGS schema (parallel to Bootstrap's `supplementaries`) or use title-prefix workaround? Recommendation: add the field.
-4. **Optional-module sell line.** AE101 equivalent of Bootstrap's *"Plus two optional extensions…"*: A/B *"Plus two optional modules when the cohort wants the team peak."*
-5. **Red-team-me skill.** Pocock's grill-me is Socratic-elicitation, not adversarial. A genuinely adversarial *"imagine the worst way this plan fails, argue for it"* skill is a real authoring opportunity — likely M3 (judge-building) or the skill-authoring arc. Not M2.
-
-**M3 dependencies built (2026-04-23, Antti-driven strategy-session reshape):**
-- `curriculum/trainings/agentic-engineering-101/earn-the-trust.md` — Pass 1 spine, three-exercise shape (S-first), runtime 1h45, feature-size framing as pedagogy (small/large tradeoff, trust your Claude-speed calibration).
-- Strategy-doc § "M3 in detail" rewritten; module-table artifact column updated; Skills table + Team-kit table + Format runtime synced.
-- Shape pinned in-session: *curated S skills (access-control-analysis + STRIDE) + authored Q skill (test-strategy)*; self-critique move via *"disclose the weakest part"*; invocation-closes-loop via *"go check the test strategy — is it good?"*; skill authored through conversation, not markdown editor.
-- **Still outstanding:** three-persona sim. Feature-size Connections framing needs simulation to verify it lands without prescription.
-
-**TODOs for Pass 1:**
-- Write M5–M8 module spines (4 files). Next long-running-gen sessions per `module-design-long-running-strategy.md`.
+**TODOs:**
+- Write M7–M8 module spines (2 files). Next long-running-gen sessions per `module-design-long-running-strategy.md`.
 - Write research-grounded-moves companion file (EM has one; 101 doesn't).
-- **Capability check:** Opus 4.7 long-running behaviour before M5 drafts (via `claude-code-guide`).
-- M5: canonical multi-hour task that requires agentic persistence but finishes in-session; monitoring + recovery patterns.
+- M5: canonical multi-hour task that requires agentic persistence but finishes in-session; monitoring + recovery patterns (already drafted in `diagnose-and-resend.md`; freshness + capability re-check before first cohort per `pre-cohort-todos.md`).
 - M7: problem-selection protocol (how the CTO picks the right engineering problem); self-study variant with persona-stand-ins.
 - Frontier reading list — named practitioners (Karpathy, Willison, Huryn, Cherny, Sottiaux et al.); refreshed per cohort.
 - **Git + `gh` CLI through Claude Code — likely optional lecture or supplementary.** Most engineers have CLI muscles; some don't, and a non-trivial fraction run Git only through the IDE. Short module showing how Claude Code drives Git (commit, branch, PR-open via `gh`) closes the gap without burning a core slot. Candidate homes: optional supplementary, or a 5-min callout inside M2. Confirm audience need during pre-engagement.
@@ -760,11 +716,7 @@ Three parallel blind OODAs against AE101: "what would Boris Cherny teach in 6 mo
 **Parking lot — lecture ideas (captured, not yet placed):**
 - **"AI-native vs. AI-first vs. AI-driven: who cares?"** — short lecture, reframe move. Key idea: nobody should care about the label; it's all about the learning rate. Candidate slot: M4 or M8. Rory-flavour; dismisses the category-war with one line and redirects to the real axis (organisational learning). Keep short.
 
-*(Placed 2026-04-23 late: "How this training was built" — originally parked for M8 as a closer; Antti redirected to M1 as the **closer** (not opener). Meta-frame lands after you have run the compound loop on your own repo. File: `curriculum/lectures/how-this-training-was-built.md`. Opener stays with `the-wizard-move.md` (demo the ceiling before; name the pattern after).)*
-
-**Bootstrap reuse candidates:** Plan mode primer → M2 **NOT PORTED** (v3 authored fresh; Bootstrap's primer is builder-leader voiced and has no forced-push-back mechanic) · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination benchmark → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem focus). `crux` / `assumption-test` / `pre-mortem` NOT ported.
-
-*Decision history is in `git log`. Last updated 2026-04-23 (themes + M1 three-phase reconstruction + `reference/mcp-and-connectors.md` created + M3 reshape: three exercises, S-first, curated-S-authored-Q, runtime 1h45, `earn-the-trust.md` spine drafted).*
+**Bootstrap reuse:** Plan mode primer NOT ported to M2 (v3 authored fresh; Bootstrap's primer is builder-leader voiced, no forced-push-back mechanic) · Context is King → M1 · Compounding lecture → M4 · When to split an agent → M5 · Hallucination benchmark → M3 Q · Orchestrator + eval loop → M5 · M8 joint-deliberation → M7 (engineering-problem focus). `crux` / `assumption-test` / `pre-mortem` NOT ported.
 
 ---
 

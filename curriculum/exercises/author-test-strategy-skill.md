@@ -103,7 +103,7 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 - **Primary Bloom's level:** Create + Evaluate
 - **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I pushed it through a self-critique, I invoked it and it produced something real, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: Nerd enforces the Phase 2 self-critique beat and pushes at the pyramid-dressed-as-codebase-specific question.
 
-**Agentic Nerd logic:**
+**Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 question-dump.** Claude fires all questions at once instead of one at a time. Nerd: *"tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill."*
 - **P1 generic answers.** Student gives pyramid-shaped answers (*"unit first, then integration, then e2e"*). Nerd: *"is that actually how your codebase's tests run, or how you think they should? A skill encoding the first is useful; the second is a wish."*
 - **P1 missed detail.** Student mentions something in conversation that doesn't make it into SKILL.md. Nerd catches: *"you said X earlier — is that in the skill? if not, add it."*
@@ -123,5 +123,3 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 - Student's feature (Ex1 + Ex2 carried forward) — Phase 3 invocation target
 - Sponsor-stated team-kit home — Phase 1 authoring path + Phase 4 ship destination
 - Hardening decision ADR (from Ex2) — read by Phase 3 invocation
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

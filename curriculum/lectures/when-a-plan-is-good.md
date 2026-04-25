@@ -10,6 +10,8 @@ Plan mode in Claude Code is a permission state, not a feature. You press Shift+T
 
 The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes."
 
+You will notice that you are waiting while Claude thinks. Other sessions could be making progress elsewhere. Not today, but soon.
+
 ### Optional: ask plan mode directly
 
 A 30-second move before we name the three things. Enter plan mode in your own session right now and ask Claude what shifted from its side.

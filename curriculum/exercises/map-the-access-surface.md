@@ -82,7 +82,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: Nerd pushes Phase 3 harder.
 
-**Agentic Nerd logic:**
+**Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 blocker — student can't point Claude at the feature.** Nerd runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*
 - **P1 skill-invocation confusion.** Nerd: *"the skill was installed as a personal skill at prework; Claude Code auto-discovers it by name. You don't need a path. Just name the feature in one sentence and let the skill run as a subagent."*
 - **P2 skip (student starts typing immediately after skill finishes).** Nerd interrupts: *"three minutes, read the map first. The delta is the teaching moment, not the skill output."*
@@ -100,5 +100,3 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 - Curated access-control analysis skill — ships in content folder at `content/skills/access-control-analysis/SKILL.md`, installed to `~/.claude/skills/access-control-analysis/SKILL.md` at prework.
 
 **Scratch path:** Claude picks a temp directory for the student's OS (`$TMPDIR`, `/tmp`, or equivalent) and reports the absolute path back. Kept deliberately outside the repo — this is session scratch, not memory. M4 teaches the durable tier (`.claude/memory/`); the contrast between `/tmp/`-tier ephemeral and `.claude/memory/`-tier durable is pedagogy. No gitignore concern; nothing lives in the repo. Windows-native caveat: if a cohort lands without WSL, revisit — `%TEMP%` is fine but path conventions differ.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

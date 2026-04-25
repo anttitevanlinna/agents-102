@@ -70,6 +70,6 @@ Pacing: 5–7 min shared-case warmup; 10–12 min design; 8–10 min iterate + p
 - "Divergence IS the data — one eval, many reads" is strong but buried in Phase 1 prose — isolate as its own beat.
 - "Write down one thing your criterion MISSES" is present in Phase 3's flow — promote to a labeled closing beat to harden the third leap-test outcome.
 
-**Applied in pass 3 (2026-04-17):**
+**Applied in pass 3:**
 - Scaffold rewritten as conversational prompt (no mid-prompt placeholders) per new prompt-design rules in `curriculum/CLAUDE.md`.
 - Score 3 label now "present but weak" (was "OK — acceptable but forgettable") — generalizes to non-brand-voice dimensions.

@@ -72,7 +72,7 @@ Rewritten twice during the generation session:
 
 Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
 
-**Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance. Self-study variant: Teacher Claude reads verbatim at M6 session start.
+**Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance. Self-study variant: the Nerd reads verbatim at M6 session start.
 
 **Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Antti reshapes in final voice; rough-cut blunt lines per `check_writing §5`. Do NOT polish past *read-aloud-in-5-7-min direct memo* — polish moves it toward credibility-performance which Antti cut in turn 7 of the generation session.
 

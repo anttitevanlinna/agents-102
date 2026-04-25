@@ -12,7 +12,7 @@
 
 ## Phase 1: Read the return (~15 min)
 
-Open a new Claude Code session in the same repo you ran M4 in. The artefact lives in two places: the repo (commits made by the M4 agent, files modified, branch state) and the M4 session transcript under `~/.claude/projects/` — Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
+Open a new Claude Code session in the same repo you ran M4 in. The artefact lives in two places: the repo (commits made by the M4 agent, files modified, branch state) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
 
 Ask Claude to read the M4 artefact through the three failure-mode lenses and quote specific moments for each.
 
@@ -72,9 +72,9 @@ Read the three answers. You should now have a working description of three piece
 
 Three shapes the verifier takes. Pick the one matching your dominant failure. The comfortable shape is rarely the right one; match the failure, not your familiarity.
 
-- **Background-agent verifier** — separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
-- **Deterministic shell-hook** — tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory).
-- **Ralph re-feed** — loop the prompt with a check baked in; agent re-runs against its own output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.
+- **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
+- **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
+- **Ralph re-feed.** Loop the prompt with a check baked in; agent re-runs against its own output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.
 
 Ask Claude to build the verifier shape that matches your dominant failure, scoped to the M4 task.
 
@@ -116,11 +116,13 @@ Build me two task-scoped artefacts for re-running the M4 task packaged.
 First, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:
 - The task scope and success criteria, in two or three sentences
 - Pointers to the memory pages, ADRs, skills, and connectors most relevant to THIS task
-- The constraints the verifier we just built will enforce
-- A "done means" line — what the agent should produce that signals task completion
+- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)
+- **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
+- A "done means" line — what the agent should produce that signals task completion (tests green + requirements met)
 
 Second, plan.md. A working document the agent owns and mutates as it runs. Should start with:
 - The task broken into 3–7 phases the agent can re-anchor against
+- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
 - A "current phase" line the agent updates as it progresses
 - A "decisions log" section the agent appends to when it makes a load-bearing choice
 - A "what I tried that didn't work" section to prevent context-rot re-derivations
@@ -178,9 +180,4 @@ Read both files. Push back if the reference reads like generic best practices in
 - Reference artefact + plan.md + verifier all loaded; agent re-reads at every working-window pressure point.
 - Same close-the-laptop or stop-when-you've-seen-enough rule as M4.
 
-**TODO (pre-first-cohort):**
-- Three-persona sim against the exercise (Maija mid-competent / Greg opinionated senior / Jin fast operator); confirm mood-at-end clears 8 for all three.
-- Capability check: Claude Code reading prior-session scrollback under `~/.claude/projects/<project>/` reliably enough to ground Phase 1 diagnosis. If unreliable, route diagnosis through repo-state only (commits + file changes + branch).
-- Source verification: confirm Cherny's three-shape framing is his actual taxonomy in the cited interview, not synthesised. If synthesised, soften Phase 3 menu language to "three shapes practitioners use."
-- Worked-example reference + plan.md pair for the Nerd's reference library, by engineer archetype (backend / frontend / platform / data).
-- Eval instance: `curriculum/evals/instances/agentic-engineering-101--diagnose-and-resend.md` to be filled before first cohort.
+Pre-cohort open items: see `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

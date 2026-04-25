@@ -45,7 +45,7 @@ The training must BE agentic, not teach *about* agents. Prompting with extra ste
 - **Source-watching background agent** — watches an inbox, folder, or queue and acts unattended. First true walk-away.
 - **Agents spawning agents that spawn judges** — compound autonomy. Peak of the curve at M8.
 
-**Current gap** (2026-04-19 audit): M3 and M8 are agentic; M4–M7 retreat to scaffolded prompting. M5 (output quality) is the weakest — manual claim classification, no automation. The curriculum has roughly 1.5 of the required 3 magic beats across M3–M8. Steering target: honor M3's existing multi-agent work, rewrite M5 (benchmark), rewrite M6 (orchestrator + self-improving eval), keep M8 as peak compound. M4 and M7 stay functional-supporting.
+**Current gap:** M3 and M8 are agentic; M4–M7 retreat to scaffolded prompting. M5 (output quality) is the weakest — manual claim classification, no automation. The curriculum has roughly 1.5 of the required 3 magic beats across M3–M8. Steering target: honor M3's existing multi-agent work, rewrite M5 (benchmark), rewrite M6 (orchestrator + self-improving eval), keep M8 as peak compound. M4 and M7 stay functional-supporting.
 
 **Ramp of trust distance** (so students aren't dropped into cold water):
 
@@ -449,7 +449,7 @@ Vendors sell agent marketplaces. Practitioners don't share agents. Four strategi
 
 Strategies 3 and 4 are close cousins with opposite defaults: 3 is *push* (the agent pushes output to you on a schedule), 4 is *pull* (you pull the agent's attention when you need it). Most teams want one or the other, not both.
 
-Prework (as of 2026-04-20): **Three-walls pre-read** bundling the three real walls a practitioner hits when scaling past themselves: **absorption bottleneck** (L4 — learning-rate cap; your org can't absorb capability faster than people learn to use it), **Access-Trust Gap** (Pattern 47, L4 — 54-95% access, 5-22% production trust, 35+ point gap; access doesn't convert to real use), **discoverability** (F-Secure-validated — nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). The announcement-to-deployment gap (Pattern 31) was removed from the bundle on 2026-04-20 — it's a research/media pattern for reading vendor noise, not a wall a practitioner hits inside their own rollout. (Data access + runtime walls from the original F-Secure post-training-walls set are technical prerequisites students meet BEFORE they encounter the three sharing walls; they surface in M2 prework and M4, not here.) Plus Rumelt on *crux / Good Strategy Bad Strategy*, Roger Martin on *strategy as assumptions / what would have to be true?*, Gary Klein on *pre-mortem* (migrated from M8 — the strategy skills are now M7 material). The 8 practitioner stories originally TODO'd are superseded by the patterns catalog (`strategy/personal-to-team-patterns.md`) which students consult live during the exercise.
+Prework: **Three-walls pre-read** bundling the three real walls a practitioner hits when scaling past themselves: **absorption bottleneck** (L4 — learning-rate cap; your org can't absorb capability faster than people learn to use it), **Access-Trust Gap** (Pattern 47, L4 — 54-95% access, 5-22% production trust, 35+ point gap; access doesn't convert to real use), **discoverability** (F-Secure-validated — nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). The announcement-to-deployment gap (Pattern 31) was removed from the bundle — it's a research/media pattern for reading vendor noise, not a wall a practitioner hits inside their own rollout. (Data access + runtime walls from the original F-Secure post-training-walls set are technical prerequisites students meet BEFORE they encounter the three sharing walls; they surface in M2 prework and M4, not here.) Plus Rumelt on *crux / Good Strategy Bad Strategy*, Roger Martin on *strategy as assumptions / what would have to be true?*, Gary Klein on *pre-mortem* (migrated from M8 — the strategy skills are now M7 material). The 8 practitioner stories originally TODO'd are superseded by the patterns catalog (`strategy/personal-to-team-patterns.md`) which students consult live during the exercise.
 
 - Connections: "Your challenge memory has been quietly working for you for a day and a half. What would you want your teammate to actually *have* — your folder, one of your skills, the morning output, or a way to ask it a question in Slack? And why that one?"
 - Exercise: **Share your work** — Strategy skills (Rumelt's `crux`, Martin's `assumption-test`, Klein's `pre-mortem`) absorbed from M8 apply to the sharing problem itself. Diagnose the load-bearing obstacle (usually social, not technical — the module's teaching moment). Pick 1–3 patterns from the **personal-to-team patterns catalog** (`strategy/personal-to-team-patterns.md`) that fit your real situation. Two branches, both first-class: **Branch A (cloud agent infra — N8N / Cowork / Power Automate / equivalent)** pushes toward plan mode + real deployment. **Branch B (personal Claudes only)** splits work into skills + data sources; teammates run their own Claudes. Student picks live. Deliverables: **technical plan AND people plan** (ownership, governance, operating, accountability, propagation) — missing people plan = incomplete even with perfect technical. Assumption-test names what would have to be true; pre-mortem imagines the 6-month failure (biased toward the social failure you're not seeing). **Hardness is a feature:** students may not complete final passages. What doesn't finish in-room = Monday's work. Forcing-function principle.
@@ -528,7 +528,7 @@ The content produced through this loop is itself a demonstration of Module 6's p
 
 ---
 
-## Open TODO — blind-OODA gap analysis (added 2026-04-24)
+## Open TODO — blind-OODA gap analysis
 
 **Run the same check AE101 just ran.** AE101's strategy file (`content-strategy-agentic-engineering-101.md`) now carries an OODA gap-analysis index + a competitive-shape section sourced from three blind OODAs: "what would practitioner X teach in 6 modules today" × 2, plus a convergence scan across 14 published curriculums, plus a competition scan. Reports live in `analytics/ooda-*.md`. The process surfaced 10 gaps + whitespace AE101 owns + six competitive archetypes + a Nordic-window read.
 
@@ -567,7 +567,7 @@ Bootstrap training — snapshot of what exists. Refresh this section at the end 
 *Non-content infrastructure (delivery skill, scaffolds, eval system, material distribution, path conventions) lives in its canonical home; see `curriculum/CLAUDE.md` for the map. Don't restate it here.*
 
 **Partially built (module files exist as spines, content still needed):**
-- Module 8 — module file exists with Extend + Joint Double Diamond exercises (inline in module file, no separate exercise files yet). Strategy skills (`crux` / `assumption-test` / `pre-mortem`) migrated to Module 7 as of 2026-04-20 — M8 agents still invoke them during deliberation but teaching sits in M7. Live Deliberation direction flagged tentatively in M8 file (networked personal agents on shared runtime, orchestrator-as-agent, humans at decision layer — pending capability landing). The `crux` skill debuts in Module 2's Debrief.
+- Module 8 — module file exists with Extend + Joint Double Diamond exercises (inline in module file, no separate exercise files yet). Strategy skills (`crux` / `assumption-test` / `pre-mortem`) live in Module 7 — M8 agents still invoke them during deliberation but teaching sits in M7. Live Deliberation direction flagged tentatively in M8 file (networked personal agents on shared runtime, orchestrator-as-agent, humans at decision layer — pending capability landing). The `crux` skill debuts in Module 2's Debrief.
 
 **Open TODOs across the curriculum:**
 - Backfill Debrief sections for modules 2–8 (Module 1 is the reference pattern)
@@ -576,7 +576,7 @@ Bootstrap training — snapshot of what exists. Refresh this section at the end 
 - Facilitator notes across all artifacts deferred per student-facing-first rule (below `---` rule; will be extracted to a dedicated artifact later)
 - Module 2 prework (`name-your-challenge.md`) and Module 2 homework (`personal-agent-homework.md`) not yet scaffolded
 
-**Open TODOs from critical-review pass (2026-04-17):**
+**Open TODOs from critical-review pass:**
 - ~~**What-is-an-agent definitional wobble.**~~ *Resolved 2026-04-18.* Not a real problem — the gradual-reveal doctrine is the answer. An agent is a 5-10-aspect thing; each module turns on one aspect as the exercise needs it. Apparent contradictions between module-level framings resolve experientially, not in text. **Do not bridge them with a paragraph.** Principle now codified in `lecture-guardrails.md` → Teaching principles → "Progressive reveal: don't define the whole agent." Side-fix: the "never line" framing we had invented is gone — it's not part of classical agent architectures; the hardest constraint is just a high-priority rule.
 - ~~**Snake game promise unfulfilled.**~~ *Resolved 2026-04-18.* Snake is prework only — a one-shot proof that Claude Code writes files to your machine. Nothing more. The "glance at it again" line was already removed from prework.
 - **Capability verification overdue for Module 2 homework.** `personal-agent-homework.md` instructs *Schedule sidebar → New task → New local task* in the Claude Code desktop app. Per the capability-check rule (verify before drafting, not from memory), run a `claude-code-guide` agent pass before the next delivery. Prior sessions missed features; assume this is stale.
@@ -600,7 +600,7 @@ Bootstrap training — snapshot of what exists. Refresh this section at the end 
 The rule: one canonical home per piece of content; everywhere else uses a one-line reference. If a reader needs detail, they follow the link. When adding a new rule, add it in its canonical home only — pointers elsewhere if discoverability matters.
 
 **Workstream priorities (in rough order):**
-0. **Module runtime retrofit to 1h45** (rule added 2026-04-19). Every Bootstrap module session now targets 1h45 to fit a 2-hour calendar invite with ~15 min buffer. Current modules run 65–75 min; need +30–40 min of substance. New guidance lives in `.claude/skills/content-creation/SKILL.md` → "Module session runtime — 1h45 target" and in `curriculum/evals/exercise.md` time-box judge. Retrofit pass owed: M1 (Getting Going), M2 (Building Agent Systems), M3 (Multi-Agent Systems), M4 (Security), M5 (Output Quality), M6 (Evaluations) — extend exercises and Debriefs per the 1h45 budget; do not pad lectures. Options for the extra time: richer multi-loop exercises, longer Connections (group warmup), longer Debrief with cross-room show-and-tell, built-in pair discussion, facilitator-recovery slack.
+0. **Module runtime retrofit to 1h45.** Every Bootstrap module session targets 1h45 to fit a 2-hour calendar invite with ~15 min buffer. Current modules run 65–75 min; need +30–40 min of substance. New guidance lives in `.claude/skills/content-creation/SKILL.md` → "Module session runtime — 1h45 target" and in `curriculum/evals/exercise.md` time-box judge. Retrofit pass owed: M1 (Getting Going), M2 (Building Agent Systems), M3 (Multi-Agent Systems), M4 (Security), M5 (Output Quality), M6 (Evaluations) — extend exercises and Debriefs per the 1h45 budget; do not pad lectures. Options for the extra time: richer multi-loop exercises, longer Connections (group warmup), longer Debrief with cross-room show-and-tell, built-in pair discussion, facilitator-recovery slack.
 1. **Module 2 eval + simulation RE-RUN** — the exercise reframed from "company memory" to "challenge memory" (3 sources: Confluence, O365, internet best practice; personal challenge, not shared company KB). Previous APPROVE WITH TODOs verdict is stale; re-evaluate against the new shape.
 2. **Name your challenge** prework (`name-your-challenge.md`) — Module 2 prework, delivered before Module 2 starts. Needs scaffold + eval.
 3. **Personal agent homework** (`personal-agent-homework.md`) — scheduled daily touch with the memory; moved from prework to Module 2 homework.
@@ -664,7 +664,7 @@ Volume of mostly-correct output is the *next* wall after verification. CircleCI 
 
 ---
 
-## Audit Notes — Research Alignment (2026-04-19)
+## Audit Notes — Research Alignment
 
 Gaps and reframes from the curriculum↔research audit. Apply at next revision of the named sections.
 

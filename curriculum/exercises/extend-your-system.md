@@ -2,30 +2,30 @@
 
 **What you do:**
 
-You've been building agents for seven modules. Today you don't build one — you describe one, and the coding agent builds it. The tool that builds tools. The move stops being linear the moment you see it land.
+You've been building agents for seven modules. Today you don't build one. You describe one, and the coding agent builds it. The tool that builds tools. The move stops being linear the moment you see it land.
 
 Pick one extension to your system. Something you'd actually use from Tuesday onward. Not a demo. A real gap.
 
 Three shapes to choose from (pick one):
 
-- **New data source.** An agent that reads from somewhere your current system doesn't — a second wiki, a folder of PDFs, a connector you just enabled, a different team's `memory/`.
-- **New output.** An agent that produces a shape you don't have yet — a one-page brief, a weekly digest, a pre-meeting prep note, a Slack-ready summary of something you usually write long-form.
-- **New perspective.** An agent that reads the same memory but argues with it — a skeptic, a devil's advocate, a persona-agent that holds the view your own voice suppresses.
+- **New data source.** An agent that reads from somewhere your current system doesn't: a second wiki, a folder of PDFs, a connector you just enabled, a different team's `memory/`.
+- **New output.** An agent that produces a shape you don't have yet: a one-page brief, a weekly digest, a pre-meeting prep note, a Slack-ready summary of something you usually write long-form.
+- **New perspective.** An agent that reads the same memory but argues with it: a skeptic, a devil's advocate, a persona-agent that holds the view your own voice suppresses.
 
 **Time:** 25 minutes. If you finish early, ship a second one.
 
-**Phase 1 — Describe (5 min).**
+**Phase 1. Describe (5 min).**
 
 Open `module-8/extension-brief.md`. Write four lines, no more:
 
 - The gap. One sentence. *"I don't have anything that does X."*
 - The job it gets done. One sentence. *"On Mondays I need to Y; today I Z by hand."*
 - What it reads. Which files, which `memory/` pages, which sources.
-- What it writes. One file, named — or an output shape, described.
+- What it writes. One file, named (or an output shape, described).
 
 If the brief takes more than five minutes, your gap is too big. Narrow it.
 
-**Phase 2 — Generate (15 min).**
+**Phase 2. Generate (15 min).**
 
 **Prompt** *(Builder Claude)*
 
@@ -43,9 +43,9 @@ Show me the file before saving. After I approve, save it to agents/<slug>.md, th
 ```
 
 
-**Phase 3 — Run and judge (5 min).**
+**Phase 3. Run and judge (5 min).**
 
-Claude ran your new agent. Look at the output. Don't read it to admire it — read it to find the weakness.
+Claude ran your new agent. Look at the output. Don't read it to admire it. Read it to find the weakness.
 
 Push back in chat:
 - *"Cite the memory file for the second claim. That felt generic."*
@@ -56,7 +56,7 @@ One or two rounds of push-back. The artifact: a new agent in `agents/` that you 
 
 **What happens:**
 
-You described. The tool built. You judged. The cycle took 25 minutes. The second agent next week will take ten — same tool, less describing, because your vocabulary for what you want is sharper. That's the compound.
+You described. The tool built. You judged. The cycle took 25 minutes. The second agent next week will take ten. Same tool, less describing, because your vocabulary for what you want is sharper. That's the compound.
 
 **The point:**
 

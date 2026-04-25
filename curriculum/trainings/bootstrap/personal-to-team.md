@@ -4,7 +4,7 @@
 You can't really share an agent. You can share context, a skill, the output, or an interface. The choice is a strategy decision, not a deployment decision.
 
 ## Meta
-- **Prework:** Three-walls pre-read: the three real walls a practitioner hits when trying to scale past themselves. **Absorption bottleneck** (learning rate cap; your org can't absorb capability faster than people learn to use it). **Access-Trust Gap** (54–95% have access; 5–22% have production trust; gap always wider than 35 points; access doesn't convert to real use). **Discoverability** (F-Secure-validated; nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
+- **Prework:** Three-walls pre-read: the three real walls a practitioner hits when trying to scale past themselves. **Absorption bottleneck** (learning rate cap; your org can't absorb capability faster than people learn to use it). **Access-Trust Gap** (most enterprises have given far more people access than they trust to run real production work; access doesn't convert to real use). **Discoverability** (F-Secure-validated; nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
 - **Homework:** Run the next-step artifact. Test one assumption. Ask for one name. Talk to one person.
 
 ## What You'll Learn
@@ -32,7 +32,7 @@ Then the candidates: **four strategies that work in practice.** Share the contex
 
 The disciplines you'll apply after (Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*) are not agent tools. They're strategy tools, named inline in the prompts you'll paste. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
 
-One data point to keep in your back pocket while you run the exercise: **the Access-Trust Gap.** 54–95% of enterprises have access. 5–22% have production trust. The gap is always wider than 35 points. That gap is social, not technical. Which is why strategy tools beat deployment tools at M7. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
+One observation to keep in your back pocket while you run the exercise: **the Access-Trust Gap.** In our practice, most companies have rolled out access far ahead of trust. Large fractions of the workforce can reach the agent, a much smaller fraction is trusted to run it on real production work. The gap is wide, and it's social, not technical. Which is why strategy tools beat deployment tools at M7. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
@@ -42,7 +42,7 @@ One data point to keep in your back pocket while you run the exercise: **the Acc
 - **The agent does the heavy lifting on the interview.** Your memory already carries 80% of the teammate's job. Phase 1's move is the agent reading what's on disk, hypothesising, then asking a defined set of questions to plug the real holes. Not freeform chat. A bounded ask. That's what makes it reliable.
 - **The outcome statement is the design contract.** In Ulwick's form: *"minimize/increase [metric] when [doing the job]."* Everything downstream (the candidate, the patterns, the plans, the assumptions, the pre-mortem) runs against that statement. A candidate that doesn't move the metric isn't a candidate.
 - **The third outcome vector is where the interview earns its keep.** Speed and quality are the obvious axes. The non-obvious one (dependency removed, anxiety reduced, scope expanded, workload shifted) is what chatting surfaces. If an interview returns only speed and quality, it went shallow.
-- **The Access-Trust Gap.** Access is easy; trust is the scarce thing you are actually distributing. The gap is always wider than 35 points, across every source that's measured it. You felt it in the exercise. Your technical plan filled quickly, your people plan stalled on names.
+- **The Access-Trust Gap.** Access is easy; trust is the scarce thing you are actually distributing. The gap is wide everywhere we've looked. You felt it in the exercise: your technical plan filled quickly, your people plan stalled on names.
 - **The four sharing strategies.** Share the context / share a skill / share the output (push) / share an interface (pull). "Share the whole agent" is not on the list. The choice between the four IS the design decision.
 - **The pattern catalog is a design language.** Not a menu. You pick one to three patterns, match them to the outcome you're moving, stack where useful. Other people in the room picked differently. That's the point.
 - **The people plan weighs equal to the technical plan.** Ownership, governance, operating, accountability, propagation. A deliverable missing the people plan is incomplete even with a perfect technical plan. A perfect technical plan with no people plan is a PowerPoint.
@@ -73,6 +73,7 @@ You've built a system. You've secured it, evaluated it, and designed the sharing
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze → Evaluate
+- **Source-verification debt — Access-Trust Gap stat.** Earlier drafts carried *"54–95% access, 5–22% production trust, gap always wider than 35 points."* The number range circulates across consultancy reports and analyst posts, but the original methodology, sample size, and definition of "production trust" couldn't be traced inside the 6-month freshness window per `check_research_claims.md` § zombie-stat rule. `[UNVERIFIED STAT]` — current draft is qualitative ("wide gap, in our practice"). If a verified primary source surfaces (sample size, methodology, recency under 6 months), restore the number with inline citation; otherwise keep qualitative.
 - **Materials (trainer):** Pattern catalog ships inside the Module 7 scaffold at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. Access-Trust Gap data point in lecture. **No pre-shipped plugins** (per Antti 2026-04-25 — M4 is the canonical plugin-authoring module). The three thinking-disciplines — Rumelt on *crux*, Roger Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are named inline in prompt bodies, same pattern as M2's Debrief. Students take the techniques home as moves they can name and run, not as installed plugins.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 

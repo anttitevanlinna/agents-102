@@ -46,7 +46,7 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 ```
 
 
-Read Claude's summary. Push back where it's wrong — *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft — say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up next; it's the seed of your first production eval.
+Read Claude's summary. Push back where it's wrong: *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft, say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up next; it's the seed of your first production eval.
 
 ## Bridge
 You ran the benchmark once. Five claims, five detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.

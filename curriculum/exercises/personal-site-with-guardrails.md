@@ -2,14 +2,14 @@
 
 **What you do:**
 
-**Phase 1 — the boring baseline.**
+**Phase 1. The boring baseline.**
 
 The baseline is boring on purpose. You need it boring so you can feel how much the later phases change. Don't skip it, even if your instinct is "I know what's coming."
 
 Three small steps:
 
-1. **Open your LinkedIn profile in your browser** — the page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
-2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page — headers, navigation, the recommendations sidebar, all of it. It will look like a wall of text. That's fine. Claude reads through it.
+1. **Open your LinkedIn profile in your browser.** The page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
+2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine. Claude reads through it.
 3. <span class="rt-code">**Paste it into your Claude Code session, then send this prompt right after** (in the same message, or as the next one):</span><span class="rt-cowork">**Paste it into your Cowork session, then send this prompt right after** (in the same message, or as the next one):</span>
 
 **Prompt** *(Claude Code, after pasting your LinkedIn)*
@@ -20,17 +20,17 @@ Build me a personal HTML one-pager site from the LinkedIn profile above. Save it
 
 The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
 
-Watch the result. It works. It looks okay. It's also generic — the site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `site.html`, so the latest version always lives at that path.
+Watch the result. It works. It looks okay. It's also generic. The site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `site.html`, so the latest version always lives at that path.
 
-**Phase 2 — apply a framework you know.**
+**Phase 2. Apply a framework you know.**
 
-The goal of this site isn't to sell anything. It's the opposite: when a colleague — yours, or a peer outside the company you'd happily work with — lands on it, they should think *"this is the person I want to work with more, on the things they're great at."* Not *"I should book a discovery call."* A colleague relationship, not a sales funnel.
+The goal of this site isn't to sell anything. It's the opposite: when a colleague (yours, or a peer outside the company you'd happily work with) lands on it, they should think *"this is the person I want to work with more, on the things they're great at."* Not *"I should book a discovery call."* A colleague relationship, not a sales funnel.
 
-Donald Miller's **StoryBrand** is the obvious framework for *"what kind of help is this person to others."* Half of LinkedIn uses it — and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We'll invoke it explicitly AND **tune** it: the hero isn't you, it's the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What's left is the part that actually says *"I'm the greatest colleague ever; let's work more together."*
+Donald Miller's **StoryBrand** is the obvious framework for *"what kind of help is this person to others."* Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We'll invoke it explicitly AND **tune** it: the hero isn't you, it's the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What's left is the part that actually says *"I'm the greatest colleague ever; let's work more together."*
 
-Notice the move you're about to make: **name the framework, tune it, ask Claude to run it.** The model already knows StoryBrand — you don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Hey Claude, apply X to Y, but tune for Z."* That's the move. Module 1 starts here; you'll use it everywhere.
+Notice the move you're about to make: **name the framework, tune it, ask Claude to run it.** The model already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Hey Claude, apply X to Y, but tune for Z."* That's the move. Module 1 starts here; you'll use it everywhere.
 
-One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the *whole site*, the colleague becomes the protagonist of the page — and you get a service site with your name in the footer. Wrong shape. **The site stays a personal site; you stay the protagonist of the page.** StoryBrand shapes the *colleague-help section*, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page's spine.
+One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the *whole site*, the colleague becomes the protagonist of the page, and you get a service site with your name in the footer. Wrong shape. **The site stays a personal site; you stay the protagonist of the page.** StoryBrand shapes the *colleague-help section*, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page's spine.
 
 **Prompt** *(Claude Code)*
 
@@ -46,11 +46,11 @@ Skip Stakes and Call-to-Action — no fear-framing, no "book a chat." The site's
 Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate site.html — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.
 ```
 
-Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version — same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
+Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
 
-**Phase 3 — strengths, the way Drucker would find them.**
+**Phase 3. Strengths, the way Drucker would find them.**
 
-*"What am I great at?"* is a terrible question. Most people freeze on it — even people who are great at things. Peter Drucker's answer in **"Managing Oneself"** is to invert it: you don't introspect for strengths, you look at the **evidence** — projects where things went unusually well, with you in them. The strengths are reverse-engineered from results. Concrete-to-abstract beats abstract-to-concrete every time.
+*"What am I great at?"* is a terrible question. Most people freeze on it, even people who are great at things. Peter Drucker's answer in **"Managing Oneself"** is to invert it: you don't introspect for strengths, you look at the **evidence**. Projects where things went unusually well, with you in them. The strengths are reverse-engineered from results. Concrete-to-abstract beats abstract-to-concrete every time.
 
 Same agentic move: **name the framework, ask Claude to run it.** *"Hey Claude, apply Drucker's feedback analysis to this story."* The model knows Drucker; you don't have to explain it.
 
@@ -65,11 +65,11 @@ Then regenerate site.html using those strengths as voice-shaping context — let
 ```
 
 
-Tell Claude about the project. Let it infer the strengths. Push back on the ones that miss. Read the regenerated site — same StoryBrand spine, sharper because the strengths are evidence-derived rather than self-reported.
+Tell Claude about the project. Let it infer the strengths. Push back on the ones that miss. Read the regenerated site. Same StoryBrand spine, sharper because the strengths are evidence-derived rather than self-reported.
 
-**Phase 4 — look back.**
+**Phase 4. Look back.**
 
-Reading the old version yourself would take ten minutes and probably reveal nothing — you wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison.
+Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison.
 
 **Prompt** *(Claude Code)*
 
@@ -78,17 +78,17 @@ Look at the very first site you generated from just my LinkedIn profile, before 
 ```
 
 
-Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults — what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
+Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults. What most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 
 No regeneration in this phase. Just observation.
 
-**Phase 5 — anti-branding (the mirror).**
+**Phase 5. Anti-branding (the mirror).**
 
-Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding** — Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
+Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
 
-Same agentic pattern again: **name the framework, tune it, ask Claude to run it.** This is the third time you're using it in one exercise — at this point it's a move you own.
+Same agentic pattern again: **name the framework, tune it, ask Claude to run it.** This is the third time you're using it in one exercise; at this point it's a move you own.
 
-Give Claude a few specific things you hate about work — not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
+Give Claude a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
 
 **Prompt** *(Claude Code, then paste your hate list right after)*
 
@@ -105,19 +105,19 @@ My hate list:
 ```
 
 
-Read the new version. The site gets sharper. Three frameworks now layered — StoryBrand for the help relationship, Drucker for the strengths, anti-branding for the voice. Each one applied by name. That's the move.
+Read the new version. The site gets sharper. Three frameworks now layered: StoryBrand for the help relationship, Drucker for the strengths, anti-branding for the voice. Each one applied by name. That's the move.
 
-**Phase 6 — free iteration.**
+**Phase 6. Free iteration.**
 
-Now make it yours. Color, layout, tone, a quote at the top, a section that shouldn't exist on most sites but does on yours because the rest of you doesn't fit a template either. Iterate until looking at the screen makes you say — *"yes, this is me."*
+Now make it yours. Color, layout, tone, a quote at the top, a section that shouldn't exist on most sites but does on yours because the rest of you doesn't fit a template either. Iterate until looking at the screen makes you say *"yes, this is me."*
 
 Open prompts. You drive.
 
-**Tip — steal a look and feel by naming the site.** Claude knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia — earthy, no-nonsense, lots of white space"* / *"channel Craigslist if Craigslist had taste"* — all valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. *"Hey Claude, restyle site.html to feel like X."* Try two or three, keep the one that lands.
+**Tip: steal a look and feel by naming the site.** Claude knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. *"Hey Claude, restyle site.html to feel like X."* Try two or three, keep the one that lands.
 
-**Close — package what you learned.**
+**Close. Package what you learned.**
 
-The site is done. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it — two passes; the second is where the file starts compounding.
+The site is done. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
 
 **Prompt** *(Claude Code)*
 
@@ -128,17 +128,17 @@ When you're done, tell me in 4–6 lines what's in the file: the structure you u
 ```
 
 
-Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent — text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
+Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
 
 **What happens:**
 
-Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase — Claude's output is shaped entirely by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely "you" the output.
+Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. Claude's output is shaped entirely by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely "you" the output.
 
 That's the whole of Module 1's big idea, proven with your own name on it.
 
 **The point:**
 
-Generic output comes from generic context. The LLM didn't get better between Phase 1 and Phase 6 — you did. You became better at feeding it what it needs to produce YOUR output instead of everyone-else's. The same mechanism scales: business proposals, competitor analysis, compliance reviews, product strategy. Anything where output quality depends on "is this genuinely ours or just fine?"
+Generic output comes from generic context. The LLM didn't get better between Phase 1 and Phase 6. You did. You became better at feeding it what it needs to produce YOUR output instead of everyone-else's. The same mechanism scales: business proposals, competitor analysis, compliance reviews, product strategy. Anything where output quality depends on "is this genuinely ours or just fine?"
 
 **Time:** 45 minutes. Banter expected.
 

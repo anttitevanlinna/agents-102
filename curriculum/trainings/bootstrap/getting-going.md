@@ -1,4 +1,4 @@
-<!-- TODO: consider renaming module to "Context is King" (currently "Getting Going"). Would align module name to its Big Idea. Cascade: this filename (rename getting-going.md → context-is-king.md), site/curriculum.html MODULES slug entry, content-strategy.md headings, memory references, existing lecture collision (lecture is already named "Context is King" — resolve by renaming module AND renaming lecture, e.g., lecture becomes "The two windows" or similar). -->
+<!-- TODO: consider renaming module to "Context is King" (currently "Getting Going"). Would align module name to its Big Idea. Cascade: this filename (rename getting-going.md → context-is-king.md), site/curriculum.html MODULES slug entry, content-strategy.md headings, memory references, existing lecture collision (lecture is already named "Context is King"; resolve by renaming module AND renaming lecture, e.g., lecture becomes "The two windows" or similar). -->
 
 # Getting Going
 
@@ -32,7 +32,7 @@ After this module, you will be able to:
 
 ## Key Concepts (Emergent)
 - Guardrails are structured context, not a checklist
-- You are the world's best evaluator of your own profile — domain expertise IS the eval
+- You are the world's best evaluator of your own profile. Domain expertise IS the eval
 - The guardrail IS the control: average output becomes great not because you prompted better
 
 ## Debrief

@@ -4,21 +4,21 @@
 
 A chat forgets. A memory remembers.
 
-You've just pinned your challenge in `module-2/challenge.md` (the opener). Now you build a memory around it — scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
+You've just pinned your challenge in `module-2/challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
 Before class you unzipped the Module 2 scaffold: empty `sources/`, empty `memory/`, empty `agents/`, and a root `CLAUDE.md` with the rules Claude follows when it writes pages. <span class="rt-code">Start a new session in the working directory.</span><span class="rt-cowork">Connect the working directory in Cowork.</span> Four phases: curate, put to work, compound, self-maintain.
 
-**Phase 1 — Curate, ingest, build.**
+**Phase 1. Curate, ingest, build.**
 
 A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: Claude helps you curate a plan, then Claude pulls the actual content into `sources/`, then Claude builds `memory/` from what's on disk.
 
-**Always comply with your company's AI policy.** Whatever rules your org has about what can and can't go through an LLM — enterprise agreement, data classification, regulated-data carve-outs — those hold here. If in doubt, check before uploading.
+**Always comply with your company's AI policy.** Whatever rules your org has about what can and can't go through an LLM (enterprise agreement, data classification, regulated-data carve-outs) those hold here. If in doubt, check before uploading.
 
-**Ease yourself in.** Even inside what policy allows, bring only what you feel comfortable sharing with an LLM today. If an email thread, a deck, or a doc feels sensitive, skip it — Module 4 is the proper conversation about classification, data boundaries, and what an agent should never see. Right now, curate with the material you'd share with a smart assistant without a second thought.
+**Ease yourself in.** Even inside what policy allows, bring only what you feel comfortable sharing with an LLM today. If an email thread, a deck, or a doc feels sensitive, skip it. Module 4 is the proper conversation about classification, data boundaries, and what an agent should never see. Right now, curate with the material you'd share with a smart assistant without a second thought.
 
 ---
 
-**Beat 1 — Curate.** Claude surveys what's available and asks about your world.
+**Beat 1. Curate.** Claude surveys what's available and asks about your world.
 
 **Prompt** *(Claude Code)*
 
@@ -35,9 +35,9 @@ One rule for the plan: only recommend sources I would feel comfortable sharing w
 ```
 
 
-Push back, sharpen, add what's missing. The plan is the list — nothing's in `sources/` yet.
+Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sources/` yet.
 
-**Beat 2 — Ingest.** Now Claude pulls the content into `sources/`. Agent does the heavy lifting; you don't copy-paste.
+**Beat 2. Ingest.** Now Claude pulls the content into `sources/`. Agent does the heavy lifting; you don't copy-paste.
 
 **Prompt** *(Claude Code)*
 
@@ -53,13 +53,13 @@ When done, tell me the three lists: (1) fetched and saved as content, (2) linked
 ```
 
 
-Look at Claude's three lists. Anything in list (3) — NOT REACHABLE — stays a reference file unless you decide to include it, in which case use the **+** button to attach the file; Claude will save the content into `sources/` when attached. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
+Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case use the **+** button to attach the file; Claude will save the content into `sources/` when attached. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
 
-**Beat 3 — Build memory.** Now the memory gets built from what's actually on disk. <span class="rt-code">Turn on plan mode first — Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first — what it's about to do before touching files, so you can review and steer before files commit.</span>
+**Beat 3. Build memory.** Now the memory gets built from what's actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it's about to do before touching files, so you can review and steer before files commit.</span>
 
 <div class="rt-code">
 
-Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with four options. For this exercise: **option 1 (Yes, and use auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing — pick **option 4 (Tell Claude what to change)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here. Full rundown in the [quick reference](curriculum.html?file=reference/claude-quick-reference).
+Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with four options. For this exercise: **option 1 (Yes, and use auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **option 4 (Tell Claude what to change)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here. Full rundown in the [quick reference](curriculum.html?file=reference/claude-quick-reference).
 
 </div>
 <div class="rt-cowork">
@@ -98,13 +98,13 @@ Pick 3 memory pages at random. For each, is the top claim something specific to 
 
 That list is your first quality check. You'll sharpen those pages in Phase 3.
 
-<span class="rt-code">**What plan mode just did for you.** The memory build wrote 5–8 files in one shot — the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's plan mode's job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to *default*. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span><span class="rt-cowork">**What asking for a plan just did for you.** The memory build wrote 5–8 files in one shot — the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's the job of asking Claude to plan first: make Claude think before it makes extensive output, give you one review point instead of many. Rule of thumb going forward: ask for a plan first on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span>
+<span class="rt-code">**What plan mode just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's plan mode's job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to *default*. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span><span class="rt-cowork">**What asking for a plan just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's the job of asking Claude to plan first: make Claude think before it makes extensive output, give you one review point instead of many. Rule of thumb going forward: ask for a plan first on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span>
 
-**Phase 2 — Your first custom agent.**
+**Phase 2. Your first custom agent.**
 
 A library without a librarian is a cost. Give it one.
 
-An agent, at its simplest, is a markdown file: instructions the model reads at the start of every run — what this agent is for, and the rules it follows. Same stuff as the memory. Same stuff as the Module 1 guardrail. Text on disk, re-used.
+An agent, at its simplest, is a markdown file: instructions the model reads at the start of every run. What this agent is for, and the rules it follows. Same stuff as the memory. Same stuff as the Module 1 guardrail. Text on disk, re-used.
 
 **Prompt** *(Claude Code)*
 
@@ -131,9 +131,9 @@ Read the agent file you just created, apply its role and rules, and use my memor
 
 Answer with a real task from your challenge. Claude reads the agent file, reads the memory, cites sources, stays inside its rules. The citations tell you whether the memory earned its keep or whether Claude filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
 
-**Phase 3 — Compound.**
+**Phase 3. Compound.**
 
-A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: find the thinnest memory page, get one more source in, let the new source make the old pages better. Claude does the legwork — you only step in if there's a file only you can attach.
+A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: find the thinnest memory page, get one more source in, let the new source make the old pages better. Claude does the legwork. You only step in if there's a file only you can attach.
 
 **Prompt** *(Claude Code)*
 
@@ -146,7 +146,7 @@ Then go get it using the same methods as Beat 2 (fetch public URL, pull via conn
 ```
 
 
-Look at what Claude named and at the new `sources/` file. If it's wrong — the page isn't actually the thinnest, or the source won't help — push back in one sentence. If Claude asked for an attachment, decide whether you want to include it; use **+** if yes.
+Look at what Claude named and at the new `sources/` file. If it's wrong (the page isn't actually the thinnest, or the source won't help) push back in one sentence. If Claude asked for an attachment, decide whether you want to include it; use **+** if yes.
 
 When the new source is in place:
 
@@ -161,7 +161,7 @@ When you're done, tell me three topic pages that got sharper (not longer) from t
 
 Second batch made the first batch better. Chat literally cannot do this.
 
-Now — don't take Claude's report at face value. Push back:
+Now don't take Claude's report at face value. Push back:
 
 **Prompt** *(Claude Code)*
 
@@ -172,9 +172,9 @@ Also revisit module-2/soft-pages.md. For each, sharpen the top paragraph so it n
 ```
 
 
-That last line picks up the soft pages you parked in Phase 1 — where they finally get real.
+That last line picks up the soft pages you parked in Phase 1. They finally get real here.
 
-**Phase 4 — Let it maintain itself.**
+**Phase 4. Let it maintain itself.**
 
 **Prompt** *(Claude Code)*
 
@@ -183,13 +183,13 @@ Review the memory. Find: two contradictions between topic pages; two claims that
 ```
 
 
-Go through Claude's six proposals. Some will be right. Some will miss — reject those. The ones you approve, Claude applies. The memory you're leaving with is one you trusted enough to sign off on line by line.
+Go through Claude's six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory you're leaving with is one you trusted enough to sign off on line by line.
 
-**Close — put it to work.**
+**Close. Put it to work.**
 
-Ask your memory the hardest open question on your challenge right now. Not *"summarize the sources"* — a real working question, the kind you'd stay late at the office to answer. *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"* *"Which of these three risks is actually load-bearing and which are decoration?"*
+Ask your memory the hardest open question on your challenge right now. Not *"summarize the sources."* A real working question, the kind you'd stay late at the office to answer. *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"* *"Which of these three risks is actually load-bearing and which are decoration?"*
 
-Run it through the agent you built in Phase 2 — the one that reads the memory and cites sources.
+Run it through the agent you built in Phase 2. That's the one that reads the memory and cites sources.
 
 **Prompt** *(Claude Code)*
 
@@ -200,7 +200,7 @@ Using my memory and the rules in the agent file, answer this question, citing wh
 
 Then the question.
 
-Read the answer. If it's specific and every claim has a citation — the memory earned its keep; you leave with the first piece of real work it's done. If it's generic, hand-wavy, or leans on uncited knowledge — you know exactly where the memory is still thin. Either way, it's the move you'll repeat at your desk on Monday, and every Monday after.
+Read the answer. If it's specific and every claim has a citation, the memory earned its keep; you leave with the first piece of real work it's done. If it's generic, hand-wavy, or leans on uncited knowledge, you know exactly where the memory is still thin. Either way, it's the move you'll repeat at your desk on Monday, and every Monday after.
 
 **What happens:**
 
@@ -208,7 +208,7 @@ Four phases, one system. You curated. You loaded it. You put it to work. You add
 
 **The point:**
 
-Two things combined make a system: *persistence* (it remembers) and *automation* (it runs). Either alone is a toy. Together they compound — each cycle smarter than the last, because the thing learning is the same thing you trust to do the next task. Your challenge is buried in wiki pages, email threads, documents nobody re-reads. Once it lives in a memory an agent can read and improve, the economics change.
+Two things combined make a system: *persistence* (it remembers) and *automation* (it runs). Either alone is a toy. Together they compound. Each cycle smarter than the last, because the thing learning is the same thing you trust to do the next task. Your challenge is buried in wiki pages, email threads, documents nobody re-reads. Once it lives in a memory an agent can read and improve, the economics change.
 
 Every module after this one uses the memory you just built.
 

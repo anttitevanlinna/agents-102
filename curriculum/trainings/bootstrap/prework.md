@@ -7,14 +7,16 @@ Your facilitator (self-study skill or trainer) walks you through these. You don'
 ## Before you start (5 min setup check)
 
 - **A Claude account** at claude.ai. The training runs on Claude Pro or Team tier (your sponsor confirms the license).
-<span class="rt-code">- **Claude Code installed** (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both.</span><span class="rt-cowork">- **Cowork enabled** in your Claude Desktop app — the *Cowork* tab next to *Chat*. No terminal required.</span>
+<span class="rt-code">- **Claude Code installed** (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both.</span><span class="rt-cowork">- **Cowork enabled** in your Claude Desktop app (the *Cowork* tab next to *Chat*). No terminal required.</span>
 - **About 45 minutes.** More than it sounds like. Less than it feels like.
 
-### One small thing for the recap site — ask Claude to start a local server
+### One small thing for the recap site
 
 The training has a recap site (every lecture, exercise, and module page rendered clean). You won't read it during teaching (your facilitator teaches inline). You'll come back to it after each lecture or exercise to see what you just lived through, on the official material.
 
-The site runs locally from markdown files. Nothing uploaded. You don't run the server; Claude does, inside the session you're already in. This is also your first agentic move of the training — you ask, the agent does.
+<div class="rt-code">
+
+The site runs locally from markdown files. Nothing uploaded. You don't run the server; Claude does, inside the session you're already in. This is also your first agentic move of the training. You ask, the agent does.
 
 **Prompt** *(Claude Code)*
 
@@ -26,7 +28,19 @@ Claude starts the server and hands back a URL (something like `http://localhost:
 
 If anything goes wrong, tell Claude and let it sort it out. Don't debug it yourself; that's the agent's job.
 
-## Task 1 — Snake game (10 min)
+</div>
+<div class="rt-cowork">
+
+The site renders from the markdown in your connected folder. Two paths to reach it, depending on what your trainer set up:
+
+1. **Customer-hosted recap site (default for cohorts).** Your trainer or sponsor shares a password-protected URL: the same curriculum, hosted for your cohort. Open the link in your browser and bookmark it. That's the recap site for the training.
+2. **Local file fallback.** If you're running self-study or want a local view, open `site/curriculum.html` from your connected folder directly in your browser. On macOS: in Finder, navigate to the training directory, right-click `site/curriculum.html`, *Open With → your browser*. On Windows: same move from File Explorer. The page loads from `file://` and reads the markdown next to it. No server, no port. Bookmark the resulting tab.
+
+Cowork runs in an isolated environment, so the *Code*-style "ask Claude to start a port-8000 server" move doesn't reach your browser the same way. The hosted URL or the `file://` open does the job without it.
+
+</div>
+
+## Task 1. Snake game (10 min)
 
 Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn't). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.
 
@@ -42,13 +56,13 @@ Keep the file. It's yours.
 
 *Proof: Claude Code can write code and save files on your machine.*
 
-## Task 2 — Your week in meetings (10 min)
+## Task 2. Your week in meetings (10 min)
 
 Quick concept first. **A *connector* is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).** When a connector is on, Claude can fetch your real data ("list my meetings this week") instead of you having to copy-paste it. Connectors are turned on by your IT (not something you install yourself). **How to check:** in Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**. If you see Microsoft 365 or Google Workspace enabled, you have one. If not, you don't, and that's fine.
 
 Two paths. Pick the one that matches what you saw.
 
-**Path A — you have a calendar connector enabled** (Microsoft 365 or Google Workspace).
+**Path A. You have a calendar connector enabled** (Microsoft 365 or Google Workspace).
 
 **Prompt** *(Claude Code)*
 
@@ -70,7 +84,7 @@ I just took a screenshot of my calendar week view. Find the most recent screensh
 
 Stuck on the connector or want specific click-paths? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
 
-## Task 3 — Read the mental frame (10 min)
+## Task 3. Read the mental frame (10 min)
 
 If you only do one thing from this prework, do this. The rest builds on it.
 

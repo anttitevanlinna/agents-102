@@ -36,7 +36,7 @@ The three thinking-disciplines you applied in Module 7 on your own sharing probl
 - **Org capability**: twenty people (or one student's full M1–M7 stack plus Teacher Claude's orchestration) just produced a strategy kernel no consultant could deliver, because it's grounded in your company's own files.
 - **The three predictable walls after Bootstrap**: data access, runtime platform, discoverability. The kernel you just wrote names which wall bites first.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed plugins. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball — same shape as the M2 Debrief move.
+- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed plugins. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the M2 Debrief move.
 - **Grounding when agents read agents.** Every agent publishes what it has and what it doesn't: a context manifest. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
 
 ## Debrief

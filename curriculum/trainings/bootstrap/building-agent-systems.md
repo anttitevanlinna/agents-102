@@ -5,7 +5,7 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Meta
 - **Setup:** <span class="rt-code">End Module 1's session (scoped to `module-1/`) and start a fresh one at your training-directory root.</span><span class="rt-cowork">End Module 1's Cowork session (connected to `module-1/`) and start a fresh one connected to your training-directory root.</span> The Module 2 starter zip unzips there (three empty folders: `memory/`, `sources/`, `agents/`, and nothing else). Your Module 1 rules file at `module-1/CLAUDE.md` stays where it is, scoped to Module 1. The wider training-dir root rules file (`./CLAUDE.md`) doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
-- **Prework:** [Module 2 prework](curriculum.html?file=exercises/module-2-prework). (1) [Bring a live challenge on your mind](curriculum.html?file=exercises/module-2-prework#1-bring-a-live-challenge-on-your-mind). We'll pin it down together in the first 15 minutes of class. (2) [Verify your Confluence and OneDrive connectors](curriculum.html?file=exercises/module-2-prework#2-verify-your-connectors-2-min--worth-doing-now-not-when-class-starts). (3) [Plan-mode primer (15 min)](curriculum.html?file=exercises/module-2-prework#3-plan-mode-primer-15-min). (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
+- **Prework:** [Module 2 prework](curriculum.html?file=exercises/module-2-prework). (1) [Bring a live challenge on your mind](curriculum.html?file=exercises/module-2-prework#1-bring-a-live-challenge-on-your-mind). We'll pin it down together in the first 15 minutes of class. (2) [Verify your Confluence and OneDrive connectors](curriculum.html?file=exercises/module-2-prework#2-verify-your-connectors-2-min--worth-doing-now-not-when-class-starts). (3) <span class="rt-code">[Plan-mode primer (15 min)](curriculum.html?file=exercises/module-2-prework#3-plan-first-primer-15-min)</span><span class="rt-cowork">[Plan-first primer (15 min)](curriculum.html?file=exercises/module-2-prework#3-plan-first-primer-15-min)</span>. (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
 - **Homework:** [Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected "What is an Agent" sections (tools, memory, context).
 
 ## What You'll Learn
@@ -75,14 +75,14 @@ One sentence. Save it to module-2/crux.md and show me before saving.
 
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
 >
-> — Antti
+> Antti
 
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
 
 ## Bridge
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?
 
-Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, competitive watching, drafting replies — all fine starters. You only learn by doing. Go build.
+Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, competitive watching, drafting replies are all fine starters. You only learn by doing. Go build.
 
 <!-- maintainer -->
 

@@ -1,46 +1,46 @@
-# Exercise: Prework — Before Module 3
+# Exercise: Prework before Module 3
 
 **What you do:**
 
-Two reads. Together, 30–40 minutes. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything — just to arrive with your eyes calibrated.
+Two reads. Together, 30–40 minutes. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything. Just to arrive with your eyes calibrated.
 
-**Reading 1 — Five practitioners, automating their life.**
+**Reading 1. Five practitioners, automating their life.**
 
-Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos — working practitioners who've folded **Claude Code** and **OpenClaw** (the open-source counterpart to Claude Code in the agent-coding space) into daily research, writing, shipping. You don't need to install OpenClaw for anything in this training — you're just seeing how practitioners pick between the two.
+Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded **Claude Code** and **OpenClaw** (the open-source counterpart to Claude Code in the agent-coding space) into daily research, writing, shipping. You don't need to install OpenClaw for anything in this training; you're just seeing how practitioners pick between the two.
 
 Five people worth knowing. **Pick three. Read one piece each.**
 
-1. **Simon Willison** — *simonwillison.net.* Daily public journal of using Claude Code, OpenClaw, and his own `llm` CLI on real projects: Datasette, research notes, blog automation. Browse the recent "Claude Code" and "OpenClaw" tags.
-2. **Andrej Karpathy** — *karpathy.ai + X.com/karpathy.* Showed you the LLM Wiki pattern already in Module 2 prework; has been publicly comparing Claude Code and OpenClaw on coding-agent workflows (including the recent Fortune interview on "the loopy era of AI"). Look at his recent threads and podcast appearances.
-3. **Thorsten Ball** — *thorstenball.com + the Sourcegraph blog.* Direct, opinionated Claude Code vs. OpenClaw comparisons from someone who ships tooling for both. Read his most recent piece.
-4. **Mitchell Hashimoto** — *mitchellh.com.* HashiCorp founder, now Ghostty. Writes candidly about using Claude Code as daily driver on his own codebases and poking at OpenClaw for self-hosted work. Find his "how I use Claude Code" posts.
-5. **Geoffrey Huntley** — *ghuntley.com.* Long-form on agentic coding and personal workflow automation; OSS-leaning, so OpenClaw shows up. Read his most recent "agents" piece.
+1. **Simon Willison** (*simonwillison.net*). Daily public journal of using Claude Code, OpenClaw, and his own `llm` CLI on real projects: Datasette, research notes, blog automation. Browse the recent "Claude Code" and "OpenClaw" tags.
+2. **Andrej Karpathy** (*karpathy.ai + X.com/karpathy*). Showed you the LLM Wiki pattern already in Module 2 prework; has been publicly comparing Claude Code and OpenClaw on coding-agent workflows (including the recent Fortune interview on "the loopy era of AI"). Look at his recent threads and podcast appearances.
+3. **Thorsten Ball** (*thorstenball.com + the Sourcegraph blog*). Direct, opinionated Claude Code vs. OpenClaw comparisons from someone who ships tooling for both. Read his most recent piece.
+4. **Mitchell Hashimoto** (*mitchellh.com*). HashiCorp founder, now Ghostty. Writes candidly about using Claude Code as daily driver on his own codebases and poking at OpenClaw for self-hosted work. Find his "how I use Claude Code" posts.
+5. **Geoffrey Huntley** (*ghuntley.com*). Long-form on agentic coding and personal workflow automation; OSS-leaning, so OpenClaw shows up. Read his most recent "agents" piece.
 
 For each one you pick, note one thing in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
 
-This isn't about copying their setups. It's about calibrating the ceiling — how much one agent, well-shaped, can already do — so that when Module 3 adds three more, you know what the added coordination is buying you.
+This isn't about copying their setups. It's about calibrating the ceiling: how much one agent, well-shaped, can already do. So that when Module 3 adds three more, you know what the added coordination is buying you.
 
-**Reading 2 — Claude Code's subagents, in plain language.**
+**Reading 2. Claude Code's subagents, in plain language.**
 
 Module 3 Phase 2 spawns three subagents in one session. Ten minutes of orientation saves you from learning the mechanic cold in the room.
 
 *What it is.* A subagent in Claude Code is a helper the main agent dispatches to do one focused job. It gets:
 
-- its own **instructions** — what it's for, what rules it follows;
-- its own **context window** — a clean slate, so its work doesn't clutter yours;
-- access to the same **filesystem** — it reads and writes in your working directory, same as the main session.
+- its own **instructions** (what it's for, what rules it follows);
+- its own **context window** (a clean slate, so its work doesn't clutter yours);
+- access to the same **filesystem** (it reads and writes in your working directory, same as the main session).
 
 When the job is done, it returns a single result to the main agent and disappears. You can dispatch several in parallel.
 
 *How to launch one.* You don't type a special command. You ask Claude, in plain language, to use one. *"Launch a subagent to review the three retrieval files and write its take to `module-3/stances/planner.md`."* Claude picks it up and dispatches. To run several at once: *"Launch these three subagents in parallel,"* and list them. Claude fires them together, waits for all three to return, then continues.
 
-*What you'll see.* While a subagent is working, it appears in your transcript as a running **Task** or **Agent** block — usually collapsed, with a short description of what it's doing. You can't chat with it; it's running its own conversation separately. When it finishes, the block closes with a short result, and Claude's main session picks up from there. In the Phase 2 exercise, three Task blocks will run side by side, each one writing a stance file to `module-3/stances/` as it completes.
+*What you'll see.* While a subagent is working, it appears in your transcript as a running **Task** or **Agent** block (usually collapsed, with a short description of what it's doing). You can't chat with it; it's running its own conversation separately. When it finishes, the block closes with a short result, and Claude's main session picks up from there. In the Phase 2 exercise, three Task blocks will run side by side, each one writing a stance file to `module-3/stances/` as it completes.
 
 *What you don't need.* You don't need to write an agent definition file for Module 3. You don't need to use the `/agents` slash command. Defining your own reusable subagents is a later move; launching ones that the main session describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
 
-For the full reference, search *"Claude Code subagents"* in Anthropic's docs or open Claude Code's in-app help. You're after the shape: *helper with instructions, own context, returns a result — you summon it by asking.*
+For the full reference, search *"Claude Code subagents"* in Anthropic's docs or open Claude Code's in-app help. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
-**What to bring to class:** the three one-line practitioner takeaways. That's it — Module 3 runs on the memory you already built in Module 2.
+**What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
 
 **Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the subagent primer.
 

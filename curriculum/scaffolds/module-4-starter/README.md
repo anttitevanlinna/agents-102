@@ -16,7 +16,7 @@ Drop into `module-4/policies/` in the training directory at Phase 0. The student
 
 ## What used to ship and was removed (2026-04-25)
 
-Two pre-built skills (`agent-security/` generic, `company-ai-policy/` Nordic-baseline) used to ship under `skills/`. Removed: pre-shipped plugins violate the strict rule (Antti 2026-04-25). M4 now teaches plugin-authoring as the canonical move, once. The policy-content half travels forward as reference `.md` (above); the agent-security/STRIDE half is named in the exercise body and authored inline by the student.
+Two pre-built skills (`agent-security/` generic, `company-ai-policy/` Nordic-baseline) used to ship under `skills/`. Removed: pre-shipped plugins violate the strict rule (Antti 2026-04-25). M4 now teaches plugin-authoring as the canonical move, once, split across two exercises so first-time authoring gets real time. The policy-content half travels forward as reference `.md` (above); the agent-security half is named in the *Author a security plugin* exercise body — four named attack classes (prompt injection direct + indirect, secrets-in-context, tool-confusion, plugin supply-chain) the student's lens MUST cover.
 
 ## Two delivery modes (input only — no pre-built plugin either way)
 
@@ -41,18 +41,18 @@ The Nordic-baseline reference is replaced by **customer-specific policy referenc
 
 Do NOT commit customer-specific policy content to this repo.
 
-## Per-runtime install paths (the student's plugin, authored in the exercise)
+## Per-runtime install paths (the student's plugin, authored in the *Author a security plugin* exercise)
 
-The student authors the plugin during Phase 2 of the exercise. Install paths differ per runtime:
+The student authors the plugin during Phase 2 of *Author a security plugin*. Install paths differ per runtime:
 
-- **Cowork** — *Save plugin* button after authoring (smoothest path).
-- **Claude Code Desktop** — plugin loader.
-- **Claude Code CLI** — `~/.claude/skills/<plugin-name>/SKILL.md`.
+- **Cowork** — *Save plugin* button below the rendered file bundle (smoothest path; needs the most explicit scaffolding because Cowork users have less terminal fluency to fall back on).
+- **Claude Code Desktop** — plugin loader points at the folder Claude wrote.
+- **Claude Code CLI** — `~/.claude/plugins/<plugin-name>/` with manifest at the root and `skills/<lens-name>/SKILL.md` per lens.
 
-The exercise body names the path matching the student's runtime.
+The *Author a security plugin* exercise body uses paired `.rt-cli` / `.rt-desktop` / `.rt-cowork` divs so the renderer surfaces the path matching the student's runtime.
 
 ## Owed before first delivery
 
-- **M4 reshape session.** The exercise body currently carries a surgical-pass strip of pre-shipped framing; full plugin-authoring reshape (per-runtime install affordances, authoring scaffold, reference-vs-plugin distinction in body prose) is owed in a separate `/content-creation` session.
 - **Capability check on per-runtime plugin install paths.** Verify all three runtimes' authoring-and-install flows in current Claude Code / Cowork builds. Run `claude-code-guide` before the first live delivery.
 - **Customer-input checklist** for distilling customer policies into reference `.md` material.
+- **Em-dash sweep** across module file + both M4 exercises (small open item; not blocking).

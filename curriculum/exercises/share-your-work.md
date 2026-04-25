@@ -4,17 +4,19 @@ Your memory has been working for you for days now. It catches things you'd have 
 
 Hold the impulse. Then do the opposite of what vendors want you to do.
 
-You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job your teammate is trying to get done.** Christensen and Moesta showed it in consumer research, Ulwick turned it into a method — people don't buy products, they hire them for jobs. Applied to a sharing decision: your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface — any of those is a candidate for hire. Does it do the job better than what they currently use?
+You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job your teammate is trying to get done.** Christensen and Moesta showed it in consumer research, Ulwick turned it into a method: people don't buy products, they hire them for jobs. Applied to a sharing decision: your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
 
 So the starting question is theirs, not yours: **what job is my teammate trying to get done, and which sharing shape does it?**
 
-You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome — not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll test the switch. You'll pre-mortem the firing. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
+You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome, not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll test the switch. You'll pre-mortem the firing. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
 
 **What you do:**
 
-**Phase 1 — Interview for the job (12 min).**
+**Phase 1. Interview for the job (12 min).**
 
-You've built six modules of context. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting — it reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
+You've built six modules of context. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
+
+<div class="rt-code">
 
 **Prompt** *(Builder Claude)*
 
@@ -55,43 +57,89 @@ Anchor every claim to a specific file and line in my memory, plus the questions
 I answered. Show me the file before saving.
 ```
 
+</div>
+<div class="rt-cowork">
 
-Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat — *"try again; the struggle is something else"* — and let it try once more. The third outcome vector is where this phase earns its keep. Speed and quality are the obvious axes. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
+**Prompt** *(Builder Claude)*
 
-**Phase 2 — Pick the candidate that moves the outcome (13 min).**
+```
+Read my memory/, sources/, module-3/, module-5/, and module-6/.
+
+Based only on what you find there, draft a Jobs-to-be-Done hypothesis for a
+sharing decision I'm working on. Cover four things:
+
+1. The one teammate (named if my memory names them) most likely to benefit from
+   what I've built.
+2. The job they're trying to get done — in their language, not mine. Functional
+   part, and at least one emotional or social part (anxiety, reputation,
+   dependency on someone else).
+3. Their current hire for this job — what they use today. Excel, a colleague,
+   their gut, a vendor tool, nothing. Every job already has an incumbent.
+4. Three candidate outcome vectors — what "better" would mean for them:
+   - Speed (same job, faster)
+   - Quality (same job, less variance, better output)
+   - Other — inferred from my context, not assumed. Something specific:
+     dependency removed, anxiety reduced, scope they could take on, workload
+     shifted, loyalty to an incumbent preserved, reputation protected, a
+     recurring meeting they could stop attending.
+
+Then confirm or correct each piece with me using a numbered-options format.
+Present five to eight questions, one at a time or as a single numbered list.
+Each question gets three or four lettered options (a / b / c / d) drawn from
+my memory. I reply with the letter (or letters). Don't ask me to type
+freeform answers — the point is that you already have most of this on disk,
+and the bounded options are what keep me from drifting back into chat.
+
+When I'm done picking, write module-7/jtbd.md with:
+- The teammate (named).
+- The job, in their language, with functional + emotional/social components.
+- The current hire and what's broken about it.
+- The outcome statement in this form: "minimize/increase [metric] when [doing
+  the job]." Pick the vector that cuts deepest — not all three.
+
+Anchor every claim to a specific file and line in my memory, plus the answers
+I gave. Show me the file before saving.
+```
+
+</div>
+
+
+Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat (*"try again; the struggle is something else"*) and let it try once more. The third outcome vector is where this phase earns its keep. Speed and quality are the obvious axes. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
+
+**Phase 2. Pick the candidate that moves the outcome (13 min).**
 
 You have an outcome statement. Now you pick what you'd offer the teammate. Two branches, both first-class.
 
-**Branch B — personal Claudes only.** Most of the room is here. Your teammates run their own Claude Code. Sharing travels as files and skills. Three of the four sharing strategies were built for exactly this situation. Branch B students often ship faster than Branch A because they don't wait on IT.
+**Branch B. Personal Claudes only.** Most of the room is here. Your teammates run their own Claude Code. Sharing travels as files and skills. Three of the four sharing strategies were built for exactly this situation. Branch B students often ship faster than Branch A because they don't wait on IT.
 
-**Branch A — you also have cloud agent infrastructure.** N8N, Cowork, Power Automate, Make, an internal platform someone on your team can deploy to. If you're here, you stack Branch A's extra patterns (central deployment, hosted interfaces, output push at scale) on top of Branch B. You don't skip the file-and-skill sharing; you add runtime to it.
+**Branch A. You also have cloud agent infrastructure.** N8N, Cowork, Power Automate, Make, an internal platform someone on your team can deploy to. If you're here, you stack Branch A's extra patterns (central deployment, hosted interfaces, output push at scale) on top of Branch B. You don't skip the file-and-skill sharing; you add runtime to it.
 
 Pick based on what your company actually runs today. Not on what procurement might approve in Q3.
 
-Have Builder Claude walk you through the pattern catalog at `patterns/personal-to-team-patterns.md` (shipped with this module's scaffold) — the four top-level strategies, then the patterns under each. Pick **one to three patterns.**
+Have Builder Claude walk you through the pattern catalog at `patterns/personal-to-team-patterns.md` (shipped with this module's scaffold). It covers the four top-level strategies, then the patterns under each. Pick **one to three patterns.**
 
 The selection test is not *does this pattern fit my infrastructure?* Infrastructure is a constraint, not a guide. The selection test is:
 
 > **Does this candidate move the outcome metric?**
 
-If your outcome is *"minimize time to draft a customer briefing I'd stake my reputation on,"* an MCP-native context share probably doesn't do it — Slack-bot pull or scheduled morning push more likely does. If your outcome is *"reduce days when my forecast is off by more than 20%,"* a skill-share probably moves that metric — a Slack bot doesn't. The pattern has to do the job.
+If your outcome is *"minimize time to draft a customer briefing I'd stake my reputation on,"* an MCP-native context share probably doesn't do it. Slack-bot pull or scheduled morning push more likely does. If your outcome is *"reduce days when my forecast is off by more than 20%,"* a skill-share probably moves that metric. A Slack bot doesn't. The pattern has to do the job.
 
 Write `module-7/branch.md`. For each pattern picked, one sentence: *this pattern moves the outcome because [concrete mechanism].* Not *because it fits our infra.* The infra line is a footnote.
 
-**About the catalog.** It's live. Some patterns have full practitioner examples; some have `[TODO]` fields. Where you hit a TODO, that's your prompt to invent the pattern for your situation — the scaffold (name, context, forces, solution, traps, people plan) is there. Fill it against your outcome statement and move on.
+**About the catalog.** It's live. Some patterns have full practitioner examples; some have `[TODO]` fields. Where you hit a TODO, that's your prompt to invent the pattern for your situation. The scaffold (name, context, forces, solution, traps, people plan) is there. Fill it against your outcome statement and move on.
 
 The four strategies, as a reminder:
 
 1. **Share the context.** Your `memory/`, `sources/`, `CLAUDE.md`, `style.md` travel. Teammates build on top.
 2. **Share a skill.** Extract one scoped capability. Teammates plug it in.
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
-4. **Share an interface (pull).** Wrap the agent. Teammates invoke — Slack bot, Teams @mention, web form.
+4. **Share an interface (pull).** Wrap the agent. Teammates invoke via Slack bot, Teams @mention, web form.
 
 "Share the whole agent" is not on the list. It sounds right in a deck. It doesn't work in the field.
 
-**Phase 2.5 — Crux the sharing problem (5 min).**
+**Phase 2.5. Crux the sharing problem (5 min).**
 
-Before you draft plans, find the load-bearing obstacle. The sharing problem always has one — and it's almost never the technical one your builder brain surfaced first. Rumelt's *crux* is the move: of all the obstacles in the way, name the one that, if removed, collapses several others.
+Before you draft plans, find the load-bearing obstacle. The sharing problem always has one, and it's almost never the technical one your builder brain surfaced first. Rumelt's *crux* is the move: of all the obstacles in the way, name the one that, if removed, collapses several others.
 
 **Prompt** *(Builder Claude)*
 
@@ -104,9 +152,9 @@ Save to module-7/crux.md. Show me before saving.
 ```
 
 
-Read what lands. If the crux is technical ("we don't have a Slack bot"), push back — technical obstacles are almost never the crux at Week 1. If the crux is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
+Read what lands. If the crux is technical ("we don't have a Slack bot"), push back. Technical obstacles are almost never the crux at Week 1. If the crux is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
 
-**Phase 3 — Draft both plans (18 min).**
+**Phase 3. Draft both plans (18 min).**
 
 You're drafting two documents side by side. Neither is optional.
 
@@ -139,11 +187,11 @@ Show me both before saving.
 ```
 
 
-Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise — they are the questions you walk into your manager's office with on Monday.
+Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise. They are the questions you walk into your manager's office with on Monday.
 
-**Phase 4 — Assumption-test the switch (10 min).**
+**Phase 4. Assumption-test the switch (10 min).**
 
-Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* — that's a builder question. The question is Roger Martin's: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
+Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. The question is Roger Martin's: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
 
 **Prompt** *(Builder Claude)*
 
@@ -168,9 +216,9 @@ a new section. Show me before saving.
 ```
 
 
-Mark the two or three you'd actually test this week. Those are what you ship first — not the full rollout.
+Mark the two or three you'd actually test this week. Those are what you ship first, not the full rollout.
 
-**Phase 5 — Pre-mortem the firing (7 min).**
+**Phase 5. Pre-mortem the firing (7 min).**
 
 The plan is on paper. Six months from now, they went back to Excel. Why?
 
@@ -205,24 +253,24 @@ The third story is the one to read twice.
 
 Write `module-7/monday.md` with three lines:
 - The teammate I'll talk to first. (Just them. Not a rollout.)
-- The one question I'll actually ask about their job. (Not *"want to try my agent?"* — something like *"walk me through how you currently do X."*)
+- The one question I'll actually ask about their job. (Not *"want to try my agent?"* but something like *"walk me through how you currently do X."*)
 - The assumption I'll test this week.
 
 In self-study, ask Teacher Claude to read all your module-7 files and push back on one thing: *"Is the outcome statement really the teammate's outcome, or is it the builder's wish dressed in their language?"* One sharp pushback beats a compliant summary.
 
 **What happens:**
 
-The interview will surprise you. Your memory already knew 80% of this teammate's job — the agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one — anxiety, dependency, scope, workload) is usually the one that actually matters.
+The interview will surprise you. Your memory already knew 80% of this teammate's job. The agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
 
 Your pattern selection will look different under the outcome test than under the infrastructure test. Patterns you'd have picked because they're easy don't move the metric. Patterns you'd have ruled out because they seem hard turn out to be the only ones that do the job. That's the reframe.
 
-Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the Access-Trust Gap in your own work — not an abstraction. The gap between a confident technical plan and a hedged people plan is the thing industry papers over.
+Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the Access-Trust Gap in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the thing industry papers over.
 
-The pre-mortem will tell you things you half-knew. The third story — the failure you're not seeing — is usually some version of *"they never fired their current hire in the first place."*
+The pre-mortem will tell you things you half-knew. The third story (the failure you're not seeing) is usually some version of *"they never fired their current hire in the first place."*
 
 **The point:**
 
-Before you design a solution, **interview for the outcome.** That's the transferable skill. The sharing decision is one instance. Monday you'll face a different adoption problem — rolling out a new process, proposing a tool, onboarding a hire — and the move is the same. Agent reads your context. Drafts a hypothesis about the job someone is trying to get done. Asks you seven targeted questions. Produces a brief with an outcome statement. You pick the candidate that moves the outcome. You draft both plans. You test the switch, not the solution.
+Before you design a solution, **interview for the outcome.** That's the transferable skill. The sharing decision is one instance. Monday you'll face a different adoption problem (rolling out a new process, proposing a tool, onboarding a hire) and the move is the same. Agent reads your context. Drafts a hypothesis about the job someone is trying to get done. Asks you seven targeted questions. Produces a brief with an outcome statement. You pick the candidate that moves the outcome. You draft both plans. You test the switch, not the solution.
 
 Christensen and Moesta gave us the switch interview. Ulwick gave us the outcome statement. Rumelt, Martin, and Klein gave us the three strategy disciplines. You just applied all of them to an agent-sharing decision. They'll travel.
 

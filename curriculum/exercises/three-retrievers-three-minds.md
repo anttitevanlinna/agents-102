@@ -2,25 +2,36 @@
 
 **What you do:**
 
-One mind won't do. Last module you were the librarian — searched Confluence, pulled from OneDrive, chased practitioner articles by hand. Today you hire three agents to do the searching, and three more to do the deciding. The filesystem is the meeting room.
+One mind won't do. Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased practitioner articles by hand. Today you hire three agents to do the searching, and three more to do the deciding. The filesystem is the meeting room.
 
-Two phases. Phase 1 feels like multi-agent — three sessions churning on the same folder, files materialising side by side. Phase 2 *is* multi-agent the way Claude Code ships it natively — one session, three minds spawned inside it, working in parallel.
+Two phases. Phase 1 feels like multi-agent: three sessions churning on the same folder, files materialising side by side. Phase 2 *is* multi-agent the way Claude Code ships it natively: one session, three minds spawned inside it, working in parallel.
 
-**Phase 0 — One question, written down.**
+**Phase 0. One question, written down.**
 
-Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary — a decision you'd stay late to make. Something like *"what's the right next move on the thing I wrote down yesterday, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
+Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary. A decision you'd stay late to make. Something like *"what's the right next move on the thing I wrote down yesterday, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
 
-**Phase 1 — Three retrievers, three sessions.**
+**Phase 1. Three retrievers, three sessions.**
 
 <span class="rt-code">Open your training directory in four Claude Code sessions.</span><span class="rt-cowork">Open four Cowork sessions on this connected folder.</span> One per retriever, plus one main session where you'll work in Phase 2. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
 
-*A note on your M2 memory:* the retrievers search **live** — they don't re-read your M2 `sources/` or `memory/`. That's deliberate. Your memory becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
+*A note on your M2 memory:* the retrievers search **live**. They don't re-read your M2 `sources/` or `memory/`. That's deliberate. Your memory becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
 
-<span class="rt-code">*Start four Claude Code sessions in the training directory. Desktop users: open four app sessions side by side. CLI users: four terminal sessions, each running `claude` from the training directory. Name them in your head — Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*</span><span class="rt-cowork">*Open four Cowork sessions on this connected folder. Name them in your head — Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*</span>
+<div class="rt-code">
 
-**The rhythm:** paste all three retriever prompts first, into Sessions 1, 2, and 3. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript — confirm inline, quickly, don't polish. Then the three retrievers run in parallel. *Now* switch between sessions and watch files land in `module-3/retrievals/`. The paperwork step is yours; the search is theirs.
+*Start four Claude Code sessions in the training directory. Desktop users: open four app sessions side by side. CLI users: four terminal sessions, each running `claude` from the training directory. Name them in your head: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
 
-In Session 1 —
+</div>
+<div class="rt-cowork">
+
+*Open four Cowork sessions on this connected folder. The path: in Claude Desktop, open the *Cowork* tab and start a new session pointed at your training directory. Repeat three more times; each new session connects to the same folder. You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. Name them in your head: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
+
+*If your Cowork build doesn't yet support four concurrent sessions on one connected folder, fall back to running the three retrievers as agents inside one main session: same shape as Phase 2's three-minds pattern below, just one phase earlier. You lose the visceral feel of three sessions writing files side by side, but you keep the parallel-retrieval mechanic intact. Ask Claude to dispatch three retriever agents in parallel, one per source zone, each writing to `module-3/retrievals/`. Read the rest of Phase 1, then if needed adapt the three retriever prompts below into agent dispatches inside Session 4.*
+
+</div>
+
+**The rhythm:** paste all three retriever prompts first, into Sessions 1, 2, and 3. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript. Confirm inline, quickly, don't polish. Then the three retrievers run in parallel. *Now* switch between sessions and watch files land in `module-3/retrievals/`. The paperwork step is yours; the search is theirs.
+
+In Session 1:
 
 **Prompt** *(Claude Code)*
 
@@ -37,7 +48,7 @@ Sources first. Every finding cites the specific page title and URL you actually 
 ```
 
 
-In Session 2 —
+In Session 2:
 
 **Prompt** *(Claude Code)*
 
@@ -54,7 +65,7 @@ Sources first. Every finding cites the specific document name (and path or URL) 
 ```
 
 
-In Session 3 —
+In Session 3:
 
 **Prompt** *(Claude Code)*
 
@@ -71,11 +82,11 @@ Sources first. Every finding cites the URL you actually fetched and the author. 
 ```
 
 
-Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want — three agents are now working for you at once. Watch the files appear in `module-3/retrievals/`. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
+Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Three agents are now working for you at once. Watch the files appear in `module-3/retrievals/`. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
 
-**Phase 2 — Three minds, one session.**
+**Phase 2. Three minds, one session.**
 
-Switch to your main session. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. <span class="rt-code">Claude Code calls them **subagents**</span><span class="rt-cowork">Cowork calls them **agents**</span> — Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return.
+Switch to your main session. The three retrievals are on disk. Now you'll spawn three minds inside *this* session. <span class="rt-code">Claude Code calls them **subagents**.</span><span class="rt-cowork">Cowork calls them **agents**.</span> Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return.
 
 <div class="rt-code">
 
@@ -123,25 +134,25 @@ Before you answer: tell me where the retrievals had conflicts or gaps that weake
 
 Read the three stances side by side before Claude combines them. That's where the thinking actually is. The combined answer is the artifact; the three stances are the reasoning.
 
-**Close — does this feel right?**
+**Close. Does this feel right?**
 
 Ask Claude to recap the three retrievals' core claims next to its synthesized answer. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
 
-You can't tell yet. Three retrievers read plainly, three stances pushed sharply, a framework held the synthesis together — and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct. Anyone who ships agent output to a real stakeholder meets it. Pretending you don't is the real failure.
+You can't tell yet. Three retrievers read plainly, three stances pushed sharply, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct. Anyone who ships agent output to a real stakeholder meets it. Pretending you don't is the real failure.
 
 For once, you edit the `.md` file by hand. The line you write here is what M5 picks up. The doubt has to be in your voice, not Claude's.
 
-Don't fix it here. Write one line to `module-3/wonder.md` — the single thing about this answer you're not sure about. Loose, not tidy. You're noting, not resolving.
+Don't fix it here. Write one line to `module-3/wonder.md`: the single thing about this answer you're not sure about. Loose, not tidy. You're noting, not resolving.
 
 **Module 5 comes back for this.** That's where we build the tools to name what's off and decide what to do. For now, let it stew.
 
 **What happens:**
 
-Three sessions run searches in parallel on your challenge, and you *see* the work being done in the shared folder. One session runs three stances on the retrievals and combines them against Rumelt's kernel. You get a strategic answer to your real question — and you catch where it glossed. Module 5 comes back for the gloss.
+Three sessions run searches in parallel on your challenge, and you *see* the work being done in the shared folder. One session runs three stances on the retrievals and combines them against Rumelt's kernel. You get a strategic answer to your real question, and you catch where it glossed. Module 5 comes back for the gloss.
 
 **The point:**
 
-Multi-agent has two shapes in Claude Code. Parallel sessions on shared files — the visceral one. <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> in one session — the native one. The filesystem is the meeting room in both. The seams are where the work fails, not where the work lands.
+Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: the visceral one. <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> in one session: the native one. The filesystem is the meeting room in both. The seams are where the work fails, not where the work lands.
 
 **Time:** 50 minutes.
 

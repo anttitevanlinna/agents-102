@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder]
 nordic: true
-updated: 2026-04-23
-cycle: 108
+updated: 2026-04-25
+cycle: 110
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -63,6 +63,15 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
   - **Workspace Studio — Day 35 silence, Skills feature added:** Cloud Next added Skills to Studio and announced rollout to business/enterprise/education. No second named Studio customer confirmed — vendor blog uses "Fortune 500" generically. Kärcher remains sole named customer (5+ months). Source: [workspace.google.com/blog next-2026 announcements](https://workspace.google.com/blog/product-announcements/10-more-announcements-workspace-at-next-2026) [vendor].
   - **Infrastructure:** TPU 8t (9,600-TPU superpod, 3x prior gen) + TPU 8i (optimized for running millions of concurrent agents). $750M partner fund for agentic AI development.
   - **Status: Cloud Next closed the announcement chapter. Watch window now April 28–May 10 for independent practitioner reactions, and May 2–15 for first post-GA enterprise deployment reports on Gemini Enterprise Agent Platform.**
+
+- **Cycle 110 update (April 25, 2026) — POST-EVENT DAY 1: Studio growth claims, Gemini 3.1 Pro still preview, Shopify Sidekick evidence, Day 3 wrap-up confirmed:**
+  - **Workspace Studio vendor growth claims (Level 0 — unverified):** Google claimed 3.5M monthly active users, 170M tasks/month, 700% growth in 3 months at Cloud Next. No methodology, no independent verification. These figures are structurally inconsistent with the 400 runs/month cap for most tiers (unless the majority of users are on free trial or below the cap). [Source: Cloud Next vendor announcements — vendor claim, Level 0]
+  - **Studio structural limitations unchanged (Level 2 — Zenphi confirmed):** No external triggers, no loops, no email sending, 400 runs/month cap confirmed by Zenphi (independent Google Workspace automation specialist) as the defining ceiling. Governance dashboard remains on roadmap — not yet in product. Agentic loops and MCP server integration added at Cloud Next are new features, but the core enterprise automation gaps persist. [Source: https://zenphi.com/google-workspace-studio-limitations/ — domain trade publication, confirmed April 2026]
+  - **Kärcher still the ONLY independently named Workspace Studio customer.** Danfoss (80% email order automation, 42h → near real-time) and Suzano (SQL agent, 95% query time reduction, 50K employees) are using Gemini Enterprise Agent Platform / Vertex, NOT Workspace Studio. The 38-day practitioner silence for Studio specifically continues despite Cloud Next. Second Studio customer: still absent.
+  - **Gemini 3.1 Pro: NOT GA as of Cloud Next Day 3 (April 24).** "Featured model" in announcements but no confirmed GA product page. Pre-event expectation of GA at Cloud Next broken for the second time (first: pre-event cycle 106, second: during event cycles 107-108). Still preview.
+  - **Day 3 (April 24) no unique new announcements found.** Wrap-up summaries confirm Days 1-2 coverage in Cycle 108 captured the full picture. No major Day 3 surprises.
+  - **Shopify Sidekick on Claude/Vertex — key signal for Google Workspace tier:** Shopify presented their Sidekick architecture at Cloud Next (Claude on Gemini Enterprise Agent Platform via Vertex AI). This is a Vertex/developer tier deployment, not Workspace Studio. It confirms Claude + Vertex as a production-grade stack at consumer scale, but does nothing to validate Studio's enterprise readiness for business users. [Source: https://www.googlecloudevents.com/next-vegas/session/3913106/ — vendor event, Shopify presenting own work]
+  - **Status: Post-event watch window. Practitioner-direct reactions (blog posts, X threads) predicted April 28–May 4. First Studio enterprise deployment reports: May 2–15. Next research cycle should run May 1–5.**
 
 - **Cycle 106 update (April 20, 2026) — T-2 days, Zenphi confirms structural gaps, two-tier split confirmed, Cloud Next = product launch + standards ratification:**
   - **Structural gaps confirmed by Zenphi (independent):** No external triggers, no loops, cannot send emails, no Calendar/Meet integration, no document generation. "Personal automation assistant, not enterprise workflow platform." This is the independent explanation for 31 days of practitioner silence — the product genuinely cannot do what enterprise workflows require.

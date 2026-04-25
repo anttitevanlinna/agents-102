@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-04-20
-cycle: 105
+updated: 2026-04-25
+cycle: 110
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -51,6 +51,12 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
   - **RBC Wealth Management:** 4,500 financial advisors. Meeting prep from >1 hour to <1 minute. [ecosystem-sourced, not independently verified]
   - **Note:** Deployment evidence quality decreases outside customer service. IRS and Williams-Sonoma have independent confirmation. RBC is ecosystem-sourced only. Sales operations/finance deployments still thinner than CS.
 - **Salesforce's own Help Portal: 62% case resolution rate (target 80%).** This is Salesforce eating its own cooking and falling short. Initially only 2 of 6 test use cases worked well. ([Salesforce Ben 6-month review](https://www.salesforceben.com/agentforce-for-salesforce-help-6-month-review-and-whats-improved/), Mar 2026)
+- **Cycle 110 — TDX DAY 9: BUILDER GAP CONFIRMED LEVEL 3, PERSONAL PRACTITIONER POSTS STILL EMERGING (April 25, 2026):**
+  - **Builder gap: Level 3 confirmed.** Day 9 post-TDX rescan found no disconfirming signals. Three independent sources (SalesforceDevops.net/Keenan, Apex Hours/Hema, Salesforce Ben/Domingo) continue as the consistent reference points. Search for counter-evidence ("Headless 360 benefits admins," "TDX no-code uplift") returned Tim Combridge (SF Ben technical writer) noting positive workflow impact for both admins and developers — this is the strongest counter-signal, but characterizes improvement in individual workflow speed, not the structural gap (admins still can't build and deploy Headless 360 agents without software engineering skills). Level 3 threshold met: 3+ independent observers, same structural finding, no disconfirmation.
+  - **Personal practitioner blog posts (Day 9): still within prediction window.** No personal attendee blog posts or X.com threads from TDX found in this cycle beyond what cycle 106 documented. Meta-learning prediction: 7-10 days. Day 9 = still forming. Recommend rescan April 26-28 for attendee-level accounts.
+  - **Engine Travel Eva agent (April 25 check): still Level 0 vendor claim.** Now 10 days post-TDX. Zero independent trade publication confirmation (no CX Dive, Diginomica, CXToday article) found. Metrics (50% autonomous cases, 15% support time, built in 12 days) remain vendor PR only. This is now a confirmed pattern: 10 days post-event, no independent confirmation = likely to remain Level 0.
+  - **Updated state file metadata:** cycle 110 (April 25). Builder gap at Level 3.
+
 - **Cycle 106 — TDX BUILDER GAP APPROACHING LEVEL 3 (April 20, 2026):**
   - **Builder Gap — three independent observers, same pattern:** SalesforceDevops.net (Keenan), Apex Hours (Hema), and Salesforce Ben (Domingo) independently identified: Headless 360 targets pro-code/coding-agent-fluent developers while the Trailblazer base is predominantly low-code admins. No bridge program or upskilling path announced at TDX. Keenan: "The storefront opened yesterday. The factory came online today. The workforce question remains unanswered." Three independent observers, same structural finding — approaching Level 3. Rescan April 22-25 when personal attendee posts appear to confirm or disconfirm. [Source: https://salesforcedevops.net/index.php/2026/04/15/tdx-2026-reporters-notebook-salesforce-goes-headless-and-widens-the-builder-gap/ — domain trade publication, April 15, 2026]
   - **Autonomy walkback confirmed by Salesforce AI COO:** Madhav Thattai: "as processes become more complex, [LLM] ability to reason consistently can start to waver. That's why our approach is using LLMs for flexible reasoning and communication, while ensuring deterministic execution where accuracy really matters." Agent Script (deterministic control layer, open-sourced at TDX) is the product manifestation. The company itself no longer claims full autonomous reasoning for complex workflows. [Source: https://www.salesforceben.com/revisiting-the-bullish-case-for-agentforce-in-2026/ — domain trade publication, Feb 16, 2026, confirmed by TDX Agent Script announcement]

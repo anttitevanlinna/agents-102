@@ -33,11 +33,13 @@ Every student-facing artifact (module, exercise, lecture, prework) carries a Qua
 **Quality:** <top-state> <YYYY-MM-DD>
 - compendium-audited <YYYY-MM-DD> (<compendium-versions-and-audits-applied>)
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)
-- mechanical-tested <YYYY-MM-DD> (<judge-report-path> PASS)
+- mechanical-tested <YYYY-MM-DD> (<judge-report-path> @ <short-sha> PASS)
 - cohorts: <none yet | list cohort-name + date + post-cohort changes>
 ```
 
 The top-state line is the highest tier currently valid. The dimension log lists each tier's last audit date and provenance. A reader checks both — top-state at a glance, dimensions for staleness reasoning.
+
+**Why the SHA pin on `mechanical-tested`.** Mechanical instance reports are latest-only and overwrite on rerun (per `curriculum/evals/README.md` § *Naming rule*). Without a SHA, the tag's date and the linked file's content can drift — a Quality line dated 2026-04-24 could point to a 2026-05 rerun's report. Pin the short-sha at audit time (`git rev-parse --short HEAD` after writing the report) so a stale tag is detectable. The other tiers don't need SHAs: `compendium-audited` and `sim-passed` cite versions/personas inline; `cohort-tested` and `battle-tested` are computed from cohort logs.
 
 **Auto-degrade — touch-based only, not time-based:**
 

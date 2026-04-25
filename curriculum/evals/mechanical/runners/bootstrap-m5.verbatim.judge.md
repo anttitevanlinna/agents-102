@@ -98,4 +98,4 @@ Grading seven Actor dispatches that together ran Bootstrap M5 (setup + five para
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m5-verbatim-2026-04-24-judge-report.md`. Shape: Summary / seven transcript paths / scratch / V1–V7 / A1–A27 / H1–H6 / Findings for exercise / Findings for harness / Portability notes (how this substitution pattern handled the "five subagents in parallel" primitive at orchestrator level; what reused from M3's three-retriever-plus-synthesizer precedent). Under 1100 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m5-verbatim-judge-report.md`. Shape: Summary / seven transcript paths / scratch / V1–V7 / A1–A27 / H1–H6 / Findings for exercise / Findings for harness / Portability notes (how this substitution pattern handled the "five subagents in parallel" primitive at orchestrator level; what reused from M3's three-retriever-plus-synthesizer precedent). Under 1100 words.

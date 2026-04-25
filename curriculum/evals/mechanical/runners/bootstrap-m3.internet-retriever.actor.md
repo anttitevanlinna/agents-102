@@ -40,10 +40,10 @@ Write `module-3/retrievals/internet.md`:
 
 ## Report
 
-Append to `.../instances/bootstrap-m3-verbatim-2026-04-24-internet-retriever-report.md`:
+Append to `.../instances/bootstrap-m3-verbatim-internet-retriever-report.md`:
 
 ```markdown
-# Actor — internet retriever — 2026-04-24
+# Actor — internet retriever
 Status: done
 Output: module-3/retrievals/internet.md
 Mocks read: <list of 4>

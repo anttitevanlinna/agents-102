@@ -69,12 +69,12 @@ Log both substitutions.
 
 ## Report
 
-Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m6-chain-verbatim-2026-04-24-actor-scrollback.md` per standard shape.
+Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m6-chain-verbatim-actor-scrollback.md` per standard shape.
 
-Short report at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m6-chain-verbatim-2026-04-24-actor-report.md`:
+Short report at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m6-chain-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — M6 chain verbatim — 2026-04-24
+# Actor report — M6 chain verbatim
 
 ## Status
 <done / error>

@@ -6,8 +6,8 @@ Grading an Actor that ran Bootstrap M2's two chained exercises (name-your-challe
 
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m2`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
-- **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-2026-04-24-actor-report.md`
-- **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-2026-04-24-actor-scrollback.md`
+- **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-report.md`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/name-your-challenge/prompt-00{1,2}.txt` + `/tmp/prompts/build-your-challenge-memory/prompt-00{1..11}.txt`
 - **Mock connector library:** `/tmp/bootstrap-mocks/{confluence,onedrive,practitioners}/*.md`
 
@@ -98,4 +98,4 @@ Each via `verbatim-check.sh`.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-2026-04-24-judge-report.md`. Shape: Summary / transcript / scratch / V1–V13 / A1–A32 / H1–H6 / Findings for exercise / Findings for harness / Portability notes (what reused from Bootstrap M1; what new for M2). Under 900 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-judge-report.md`. Shape: Summary / transcript / scratch / V1–V13 / A1–A32 / H1–H6 / Findings for exercise / Findings for harness / Portability notes (what reused from Bootstrap M1; what new for M2). Under 900 words.

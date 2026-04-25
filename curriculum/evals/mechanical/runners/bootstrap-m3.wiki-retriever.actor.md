@@ -36,10 +36,10 @@ Read the question + each mock Confluence file before writing. If a mock file's c
 
 ## Report
 
-Append a 3-line report to `.../instances/bootstrap-m3-verbatim-2026-04-24-wiki-retriever-report.md`:
+Append a 3-line report to `.../instances/bootstrap-m3-verbatim-wiki-retriever-report.md`:
 
 ```markdown
-# Actor — wiki retriever — 2026-04-24
+# Actor — wiki retriever
 Status: done
 Output: module-3/retrievals/wiki.md
 Mocks read: <list>

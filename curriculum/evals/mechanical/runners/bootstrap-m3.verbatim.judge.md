@@ -84,4 +84,4 @@ Grading four Actor subagents that together ran Bootstrap M3 (three retrievers in
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m3-verbatim-2026-04-24-judge-report.md`. Shape: Summary / 4 transcript paths / scratch / V1–V4 / A1–A24 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what this M3 design confirms about multi-session pedagogy: the three-role separation plus per-source dispatch substitutes for four-parallel-sessions cleanly; stance-inline substitutes for nested Task at content-fidelity but not isolation). Under 1000 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m3-verbatim-judge-report.md`. Shape: Summary / 4 transcript paths / scratch / V1–V4 / A1–A24 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what this M3 design confirms about multi-session pedagogy: the three-role separation plus per-source dispatch substitutes for four-parallel-sessions cleanly; stance-inline substitutes for nested Task at content-fidelity but not isolation). Under 1000 words.

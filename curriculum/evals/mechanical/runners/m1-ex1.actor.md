@@ -21,16 +21,16 @@ Read `curriculum/exercises/orient-and-introspect.md`. The exercise contains two 
 
 The exercise also tells the student to type `/context` as a slash command. You don't have it. Substitute the observable effect — list files you actually read vs. files present in the tree. Call it out as a substitution.
 
-Work in the scratch directory. When reading files, actually open them. When producing a response, write it somewhere so the Judge can inspect it. Use `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-<YYYY-MM-DD>-actor-scrollback.md` for the scrollback (both prompts + your responses).
+Work in the scratch directory. When reading files, actually open them. When producing a response, write it somewhere so the Judge can inspect it. Use `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-actor-scrollback.md` for the scrollback (both prompts + your responses).
 
 ## Report
 
-When done, write `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-<YYYY-MM-DD>-actor-report.md`. Replace `<YYYY-MM-DD>` with today's date.
+When done, write `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-actor-report.md`
 
 Shape:
 
 ```markdown
-# Actor report — M1 Ex1 — <YYYY-MM-DD>
+# Actor report — M1 Ex1
 
 ## Status
 <done / stopped / error>

@@ -48,11 +48,11 @@ Read each prompt file, quote its content verbatim in a blockquote in your scroll
 
 - **Prompt 4:** `/tmp/prompts/compound-and-close/prompt-001.txt` (compound step — writes `./CLAUDE.local.md` and edits `.claude/settings.local.json` and `.gitignore`)
 - **Prompt 5:** `/tmp/prompts/compound-and-close/prompt-002.txt` (read the ticket — you have NO MCP connector; follow path 3: write the close-out to a file instead). Substitute by writing the ticket-read output as "no live connector; falling back to path 3."
-- **Prompt 6:** `/tmp/prompts/compound-and-close/prompt-003.txt` (update-ticket / post close-out). Substitute by writing the close-out to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-close-out-draft.md` (path 3).
+- **Prompt 6:** `/tmp/prompts/compound-and-close/prompt-003.txt` (update-ticket / post close-out). Substitute by writing the close-out to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-close-out-draft.md` (path 3).
 
 ## Report
 
-Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-actor-scrollback.md`.
+Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-scrollback.md`.
 
 Shape per prompt:
 
@@ -134,10 +134,10 @@ Shape per prompt:
 <path-3 substitution: write to close-out-draft file>
 ```
 
-Also write a short report to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-actor-report.md`:
+Also write a short report to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — M1 chain verbatim — 2026-04-24
+# Actor report — M1 chain verbatim
 
 ## Status
 <done / error>
@@ -162,7 +162,7 @@ Also write a short report to `/Users/anttitevanlinna/Projects/agents-102/curricu
 - Files Ex3 wrote: <list>
 
 ## Scrollback path
-/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-actor-scrollback.md
+/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-scrollback.md
 
 ## Harness substitutions
 - /context: <what you did>

@@ -6,8 +6,8 @@ Grading an Actor that ran M6's spot-gaps-build-the-loop + arc-retrospective end-
 
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m6`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
-- **Actor report:** `curriculum/evals/mechanical/instances/m6-chain-verbatim-2026-04-24-actor-report.md`
-- **Actor scrollback:** `curriculum/evals/mechanical/instances/m6-chain-verbatim-2026-04-24-actor-scrollback.md`
+- **Actor report:** `curriculum/evals/mechanical/instances/m6-chain-verbatim-actor-report.md`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/m6-chain-verbatim-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/spot-gaps-build-the-loop/prompt-00{1,2,3,4}.txt`, `/tmp/prompts/arc-retrospective/prompt-001.txt`
 - **Substitute transcripts:** `/tmp/m5-substitute-transcript.md`, `/tmp/m6-m5-rerun-transcript.md`
 - **Authored skill:** newly-created `~/.claude/skills/<name>/SKILL.md` (Actor reports the name + path)
@@ -79,4 +79,4 @@ Grading an Actor that ran M6's spot-gaps-build-the-loop + arc-retrospective end-
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m6-chain-verbatim-2026-04-24-judge-report.md`. Same shape as M3/M4/M5 judge reports. Under 800 words. Short quotes. Leave artifacts in place.
+Write `curriculum/evals/mechanical/instances/m6-chain-verbatim-judge-report.md`. Same shape as M3/M4/M5 judge reports. Under 800 words. Short quotes. Leave artifacts in place.

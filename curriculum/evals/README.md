@@ -61,27 +61,18 @@ The full arc run, live, with a real human. Rare, expensive, highest signal for f
 - `arc-pass.md` — single-session static full-arc judge (a short-cut acceptance; redundant once integration seams run regularly)
 - `manual-run-observation.md` — sheet the human fills live during the run
 - `post-run-judge.md` — transcript-grounded judge that converts one run into reusable signal
-- `instances/manual-run-YYYY-MM-DD.md` — filled observation sheets
+- `instances/manual-run--<scope>.md` — filled observation sheets, latest only, overwrite on re-run
 
 **Don't automate the acceptance layer.** Live humans catch things no transcript captures — persona fatigue, patronizing nudges, jump-cut seams that read fine on paper. That's the slot the manual run fills.
-
-### Current state of the acceptance layer — DEFERRED (2026-04-20)
-
-The acceptance-layer artifacts exist (`arc-pass.md`, `manual-run-observation.md`, `post-run-judge.md`, plus the tailored `manual-run-prework-m1-2026-04-20.md` instance). **None has been executed acceptance-style.** This is deliberate.
-
-**Why deferred:**
-- Unit (3 lints) + integration (8 seams) + 1 arc-pass already covered 32 distinct checks in ~4 min wall clock via 4 parallel subagents. Result: ~18 easy fixes + 1 M8 structural finding + several deferred-but-small items.
-- The acceptance layer is expensive (hours of focused human time or elaborate sim harness) and catches only what the lower layers can't — persona energy, facilitator-premium gaps, live Claude-behavior surprises, jump-cut seams invisible on paper.
-- Spending acceptance time before lower layers are clean wastes the expensive signal on bugs already catchable cheaper.
 
 **Triggers to run acceptance:**
 1. Unit + integration + arc-pass all clean on the module(s) in scope.
 2. A cohort is imminent (first-of-kind delivery, major customer, new variant).
 3. A deferred risk (persona-energy collapse, Teacher Claude facilitation quality, live Claude-behavior drift) needs direct observation.
 
-**How to run when triggered:** use `manual-run-observation.md` as the live sheet; tailor to the module range. After the run, fire `post-run-judge.md` against the auto-captured JSONL transcripts. See `curriculum/evals/instances/manual-run-prework-m1-2026-04-20.md` for a ready-to-run instance tailored to prework + M1.
+**How to run when triggered:** use `manual-run-observation.md` as the live sheet; tailor to the module range. After the run, fire `post-run-judge.md` against the auto-captured JSONL transcripts.
 
-**Do NOT auto-build more acceptance-layer infrastructure.** The earlier impulse (a 3-pane tmux sim harness) was premature per the testing pyramid principle. Acceptance catches what it catches; no amount of automation removes the human-in-the-loop value proposition at this layer.
+**Do NOT auto-build more acceptance-layer infrastructure.** Acceptance catches what it catches; no amount of automation removes the human-in-the-loop value proposition at this layer.
 
 ## How to use (authoring edit flow)
 
@@ -100,13 +91,13 @@ When you want wide coverage fast — after a meaningful content pass, before a c
 
 > I want to run the full curriculum testing battery (unit + integration + static arc) on Bootstrap. Use the orchestrator pattern: launch 4 parallel subagents with `run_in_background: true`, each owning disjoint output files. Then synthesize.
 >
-> **Subagent 1 — Unit lints across all Bootstrap.** Run `curriculum/evals/lints/path-consistency.md`, `time-budget.md`, `jargon-ban.md` across prework + M1-M8 + all included exercises/lectures/supplementaries. Write output to `curriculum/evals/instances/lints-full-bootstrap-YYYY-MM-DD.md`. Reply with a 5-line summary.
+> **Subagent 1 — Unit lints across all Bootstrap.** Run `curriculum/evals/lints/path-consistency.md`, `time-budget.md`, `jargon-ban.md` across prework + M1-M8 + all included exercises/lectures/supplementaries. Write output to `curriculum/evals/instances/lints-full-bootstrap.md` (overwrite). Reply with a 5-line summary.
 >
-> **Subagent 2 — Seam judges 1-4.** Apply `curriculum/evals/seams/seam-judge.md` to seams prework→M1, M1→M2, M2→M3, M3→M4. Pull mood contracts from `curriculum/content-strategy.md` "Mood (deliberate)" paragraphs per module. Write to `curriculum/evals/seams/instances/seams-1-to-4-YYYY-MM-DD.md`. Reply with a 5-line summary.
+> **Subagent 2 — Seam judges 1-4.** Apply `curriculum/evals/seams/seam-judge.md` to seams prework→M1, M1→M2, M2→M3, M3→M4. Pull mood contracts from `curriculum/content-strategy.md` "Mood (deliberate)" paragraphs per module. Write to `curriculum/evals/seams/instances/seams-1-to-4.md` (overwrite). Reply with a 5-line summary.
 >
-> **Subagent 3 — Seam judges 5-8.** Same, for seams M4→M5, M5→M6, M6→M7, M7→M8. Write to `curriculum/evals/seams/instances/seams-5-to-8-YYYY-MM-DD.md`. Reply with a 5-line summary.
+> **Subagent 3 — Seam judges 5-8.** Same, for seams M4→M5, M5→M6, M6→M7, M7→M8. Write to `curriculum/evals/seams/instances/seams-5-to-8.md` (overwrite). Reply with a 5-line summary.
 >
-> **Subagent 4 — Arc-pass.** Apply `curriculum/evals/arc-pass.md` to all 8 modules. Write to `curriculum/evals/instances/arc-pass-YYYY-MM-DD.md`. Reply with top 3 findings.
+> **Subagent 4 — Arc-pass.** Apply `curriculum/evals/arc-pass.md` to all 8 modules. Write to `curriculum/evals/instances/arc-pass.md` (overwrite). Reply with top 3 findings.
 >
 > When all 4 complete, read the output files and synthesize a prioritized fix list.
 
@@ -127,7 +118,7 @@ When you want wide coverage fast — after a meaningful content pass, before a c
 For targeted edits, run one lint / one seam / one eval rather than the full battery:
 
 - **Lint a single file:** paste the lint prompt from `lints/<name>.md`, point at the one file, get structured findings back.
-- **One seam judge:** copy `seams/seam-judge.md`, fill the LEFT/RIGHT slots for the seam, run it. Save the instance to `seams/instances/<seam>-YYYY-MM-DD.md`.
+- **One seam judge:** copy `seams/seam-judge.md`, fill the LEFT/RIGHT slots for the seam, run it. Save the instance to `seams/instances/<seam>.md` (overwrite the previous one).
 - **Arc-pass:** always full-arc by design; don't subset.
 
 ## What lives where (map)
@@ -154,9 +145,13 @@ curriculum/evals/
 ├── manual-run-observation.md          ACCEPTANCE: live observation sheet
 ├── post-run-judge.md                  ACCEPTANCE: transcript judge
 └── instances/
-    ├── bootstrap--*.md                filled unit evals
-    └── manual-run-YYYY-MM-DD.md       filled acceptance runs
+    ├── <training>--<slug>.md          per-artifact unit evals (one file per module/exercise/lecture)
+    ├── lints-full-<training>.md       latest full-arc lint sweep (overwrite)
+    ├── arc-pass.md                    latest arc-pass (overwrite)
+    └── manual-run--<scope>.md         latest acceptance run per scope (overwrite)
 ```
+
+**Naming rule:** instance filenames carry no dates. One latest report per artifact (module / exercise / lecture / seam / scope). Re-runs overwrite. History is in git. Dated filenames pile up; the latest report is the only one that says what's true now.
 
 ## The economy of the pyramid
 

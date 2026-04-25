@@ -51,12 +51,12 @@ The take-home prompt sets up a portable benchmarking kit for a NEW output (a pri
 
 ## Report
 
-Write scrollback to `.../instances/bootstrap-m5-verbatim-2026-04-24-scorer-scrollback.md`.
+Write scrollback to `.../instances/bootstrap-m5-verbatim-scorer-scrollback.md`.
 
-Short report at `.../instances/bootstrap-m5-verbatim-2026-04-24-scorer-report.md`:
+Short report at `.../instances/bootstrap-m5-verbatim-scorer-report.md`:
 
 ```markdown
-# Actor — Bootstrap M5 scorer — 2026-04-24
+# Actor — Bootstrap M5 scorer
 Status: done
 Scoreboard: module-5/scoreboard.md
 Winner: <detector name or ensemble>

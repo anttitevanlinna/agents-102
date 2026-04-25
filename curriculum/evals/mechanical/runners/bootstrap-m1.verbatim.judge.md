@@ -8,8 +8,8 @@ Bootstrap differs from AE101 structurally — no codebase, no git, no tests. Ass
 
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m1`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
-- **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-actor-report.md`
-- **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-actor-scrollback.md`
+- **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-report.md`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/personal-site-with-guardrails/prompt-00{1,2,3,4,5,6}.txt`
 - **Student input substitutes:** `/tmp/bootstrap-m1-substitutes/{linkedin-paste,project-story,strengths-pushback,hate-list}.txt`
 
@@ -90,4 +90,4 @@ Bootstrap differs from AE101 structurally — no codebase, no git, no tests. Ass
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-judge-report.md`. Same shape as AE101 verbatim judge reports: Summary / transcript / scratch / V1–V6 / A1–A28 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what carried from AE101 harness; what needed extending). Under 800 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-judge-report.md`. Same shape as AE101 verbatim judge reports: Summary / transcript / scratch / V1–V6 / A1–A28 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what carried from AE101 harness; what needed extending). Under 800 words.

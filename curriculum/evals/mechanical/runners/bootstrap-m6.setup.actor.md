@@ -61,12 +61,12 @@ Paste prompt-003 verbatim. Create:
 
 ## Report
 
-Scrollback: `.../instances/bootstrap-m6-verbatim-2026-04-24-setup-scrollback.md`.
+Scrollback: `.../instances/bootstrap-m6-verbatim-setup-scrollback.md`.
 
-Short report: `.../instances/bootstrap-m6-verbatim-2026-04-24-setup-report.md`:
+Short report: `.../instances/bootstrap-m6-verbatim-setup-report.md`:
 
 ```markdown
-# Actor — Bootstrap M6 setup — 2026-04-24
+# Actor — Bootstrap M6 setup
 Status: done
 Phase 0: module-6/fresh-briefing.md (<lines>), module-6/first-run-judgment.md (<flags>, all with per-claim feedback)
 Phase 1: module-6/orchestrator.md (<lines>), pseudo-code delivered

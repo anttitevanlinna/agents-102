@@ -20,16 +20,16 @@ Read each exercise file. For every fenced prompt block the exercise tells the st
 
 1. `curriculum/exercises/orient-and-introspect.md` — orient + introspect.
 2. `curriculum/exercises/fix-tests-first.md` — tests-first bug fix. The bug is above; paste it back when the exercise asks. Ship a commit when tests are green.
-3. `curriculum/exercises/compound-and-close.md` — compound `./CLAUDE.local.md` from session evidence, pin the content folder in `.claude/settings.local.json`, close the ticket. The harness has no MCP connector: take path 3 (manual paste) and write the close-out note to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-<YYYY-MM-DD>-close-out-draft.md` instead of posting to a tracker.
+3. `curriculum/exercises/compound-and-close.md` — compound `./CLAUDE.local.md` from session evidence, pin the content folder in `.claude/settings.local.json`, close the ticket. The harness has no MCP connector: take path 3 (manual paste) and write the close-out note to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-close-out-draft.md` instead of posting to a tracker.
 
 ## Report
 
-Write `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-<YYYY-MM-DD>-actor-report.md`. Replace `<YYYY-MM-DD>` with today's date.
+Write `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-chain-actor-report.md`
 
 Shape:
 
 ```markdown
-# Actor report — M1 chain — <YYYY-MM-DD>
+# Actor report — M1 chain
 
 ## Status
 <1 line: done / stopped / error>

@@ -6,7 +6,7 @@ You are grading an Actor subagent that executed AE101 Module 1 on a scratch repo
 
 - **Scratch path:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>` — a `.jsonl` under `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/<session>/subagents/agent-*.jsonl`. If the dispatcher didn't fill this in, find it: `ls -t ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*/subagents/agent-*.jsonl | head -1`.
-- **Actor report:** `curriculum/evals/mechanical/instances/m1-chain-<YYYY-MM-DD>-actor-report.md`.
+- **Actor report:** `curriculum/evals/mechanical/instances/m1-chain-actor-report.md`.
 
 ## How to read the transcript
 
@@ -74,12 +74,12 @@ Binary PASS / FAIL with evidence (file path + contents, transcript line + quoted
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m1-chain-<YYYY-MM-DD>-judge-report.md`.
+Write `curriculum/evals/mechanical/instances/m1-chain-judge-report.md`.
 
 Shape:
 
 ```markdown
-# Judge report — M1 chain — <YYYY-MM-DD>
+# Judge report — M1 chain
 
 ## Summary
 <2–3 lines: pass count, most interesting failure, one transcript surprise.>

@@ -71,7 +71,7 @@ Each module has a 1h45 target. Note actual time per phase when it deviates >20%:
 
 ## After the run
 
-1. Save this sheet filled out at `curriculum/evals/instances/manual-run-YYYY-MM-DD.md`.
+1. Save this sheet filled out at `curriculum/evals/instances/manual-run--<scope>.md`.
 2. Feed both JSONL transcripts + this sheet to the Post-Run Judge (`curriculum/evals/post-run-judge.md`).
 3. The Judge produces curriculum change proposals grounded in transcript evidence.
 4. Triage: the things YOU caught that the Judge missed → upgrade the simulation protocol or the per-exercise evals with a new judge. That's the system getting smarter.

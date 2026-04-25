@@ -85,9 +85,9 @@ mechanical/
 ├── scratch/
 │   └── <runner-slug>/                    per-run working tree, Actor-visible only
 ├── instances/
-│   ├── <runner-slug>-<YYYY-MM-DD>-actor-report.md       Actor's terse return
-│   ├── <runner-slug>-<YYYY-MM-DD>-judge-report.md       Judge's pass/fail per assertion
-│   └── <runner-slug>-<YYYY-MM-DD>-notes.md              Auditor notes after reading transcript
+│   ├── <runner-slug>-actor-report.md       Actor's terse return
+│   ├── <runner-slug>-judge-report.md       Judge's pass/fail per assertion
+│   └── <runner-slug>-notes.md              Auditor notes after reading transcript
 └── .gitignore                            scratch/* and instances/scratch-* gitignored
 ```
 
@@ -103,8 +103,8 @@ Single main-thread session, sequential:
    SESSION_DIR=~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/<current-session-id>
    ls "$SESSION_DIR/subagents/"  # the newest agent-*.jsonl is the Actor
    ```
-   Or: the Actor writes its own transcript path to `instances/<runner>-<date>-actor-report.md` as its last action (simpler; works without the Auditor hunting for session-id).
-3. **Dispatch Judge.** New Agent call. Pass two paths: the scratch dir and the Actor's `.jsonl`. Prompt = `runners/<runner>.judge.md`. Waits for completion, writes `instances/<runner>-<date>-judge-report.md`.
+   Or: the Actor writes its own transcript path to `instances/<runner>-actor-report.md` as its last action (simpler; works without the Auditor hunting for session-id).
+3. **Dispatch Judge.** New Agent call. Pass two paths: the scratch dir and the Actor's `.jsonl`. Prompt = `runners/<runner>.judge.md`. Waits for completion, writes `instances/<runner>-judge-report.md`.
 4. **Auditor reads Judge report.** Spot-check one or two assertions against the transcript directly. If Judge and transcript agree, trust the harness run. If they diverge, the Judge prompt needs work, or the substitution table is wrong.
 
 Parallelism: runners for different modules are disjoint — dispatch multiple Actors in a single message. Judges fan out the same way after Actors complete.
@@ -114,14 +114,14 @@ Parallelism: runners for different modules are disjoint — dispatch multiple Ac
 Every Actor prompt follows this shape:
 
 1. **Arrange.** Copy seed → scratch. `git init` the scratch. Apply module-specific patch (planted bug for M1; target feature for M3; un-packaged artifact for M5). Commit with a **neutral message** — never name the bug. Set up prework-assumed state outside the scratch (`.claude/settings.local.json`, `~/.claude/skills/<skill>/`, content-folder pin).
-2. **Act.** Execute each prompt block in the exercise file, in order. Record scrollback to `instances/<runner>-<date>-actor-report.md`. Do NOT scan for planted state; behave as the student would on their real repo.
+2. **Act.** Execute each prompt block in the exercise file, in order. Record scrollback to `instances/<runner>-actor-report.md`. Do NOT scan for planted state; behave as the student would on their real repo.
 3. **Write the report.** Terse — a few lines summarising what was done. The transcript carries the detail.
 
 Every Judge prompt follows this shape:
 
 1. **Read scratch state + Actor transcript.** Bash + Read.
 2. **Run assertions.** For each assertion, find evidence in file state, transcript, or both. Quote it. PASS / FAIL.
-3. **Write `instances/<runner>-<date>-judge-report.md`.** One line per assertion with evidence. Summary at top, harness-substitution list at bottom.
+3. **Write `instances/<runner>-judge-report.md`.** One line per assertion with evidence. Summary at top, harness-substitution list at bottom.
 
 ## Neutral Arrange discipline (hard rule)
 

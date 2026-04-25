@@ -6,8 +6,8 @@ You are grading an Actor subagent that executed AE101 Module 3 end-to-end (3 exe
 
 - **Scratch path:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m3`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>` (dispatcher substitutes).
-- **Actor report:** `curriculum/evals/mechanical/instances/m3-chain-verbatim-2026-04-24-actor-report.md`
-- **Actor scrollback:** `curriculum/evals/mechanical/instances/m3-chain-verbatim-2026-04-24-actor-scrollback.md`
+- **Actor report:** `curriculum/evals/mechanical/instances/m3-chain-verbatim-actor-report.md`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/m3-chain-verbatim-actor-scrollback.md`
 - **Authored skill:** `~/.claude/skills/test-strategy/SKILL.md`
 - **Prompt files:** `/tmp/prompts/map-the-access-surface/prompt-00{1,2}.txt`, `/tmp/prompts/threat-model-with-stride/prompt-00{1,2,3}.txt`, `/tmp/prompts/author-test-strategy-skill/prompt-00{1,2,3}.txt`.
 
@@ -72,4 +72,4 @@ Transcript evidence outranks self-reports.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m3-chain-verbatim-2026-04-24-judge-report.md`. Shape mirrors M1 verbatim judge (Summary / transcript path / scratch path / V1-V8 / A1-A21 / H1-H5 / findings-for-exercises / findings-for-harness). Under 700 words. Short quotes. Leave artifacts in place.
+Write `curriculum/evals/mechanical/instances/m3-chain-verbatim-judge-report.md`. Shape mirrors M1 verbatim judge (Summary / transcript path / scratch path / V1-V8 / A1-A21 / H1-H5 / findings-for-exercises / findings-for-harness). Under 700 words. Short quotes. Leave artifacts in place.

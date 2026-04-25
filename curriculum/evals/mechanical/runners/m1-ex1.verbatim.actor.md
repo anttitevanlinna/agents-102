@@ -39,7 +39,7 @@ For each prompt: Read the prompt file, quote its content in your response scroll
 
 ## Report
 
-Write to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-verbatim-2026-04-24-actor-scrollback.md`.
+Write to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-verbatim-actor-scrollback.md`.
 
 Shape per prompt:
 
@@ -69,10 +69,10 @@ Shape per prompt:
 <your substitution output + a one-line note on the substitution>
 ```
 
-Also write a short report to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-verbatim-2026-04-24-actor-report.md`:
+Also write a short report to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — M1 Ex1 verbatim — 2026-04-24
+# Actor report — M1 Ex1 verbatim
 
 ## Status
 <done / error>
@@ -86,7 +86,7 @@ Also write a short report to `/Users/anttitevanlinna/Projects/agents-102/curricu
 3. /context (substituted)
 
 ## Scrollback
-/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-verbatim-2026-04-24-actor-scrollback.md
+/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-verbatim-actor-scrollback.md
 
 ## Harness substitutions
 - /context: <what you did>

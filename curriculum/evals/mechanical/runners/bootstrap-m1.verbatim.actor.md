@@ -81,12 +81,12 @@ No git, no tests, no commits — Bootstrap's student-side doesn't use git in M1.
 
 ## Report
 
-Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-actor-scrollback.md` using the standard per-prompt verbatim/response shape.
+Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-scrollback.md` using the standard per-prompt verbatim/response shape.
 
-Short report at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-2026-04-24-actor-report.md`:
+Short report at `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — Bootstrap M1 verbatim — 2026-04-24
+# Actor report — Bootstrap M1 verbatim
 
 ## Status
 <done / error>

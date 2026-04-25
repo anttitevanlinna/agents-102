@@ -7,8 +7,8 @@ You did not run the exercise. An Actor subagent did. Your inputs are: the scratc
 - **Exercise file (ground truth for what the Actor should have done):** `/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/orient-and-introspect.md`
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-ex1`
 - **Actor transcript:** find it with `ls -t ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*/subagents/agent-*.jsonl | head -1`. This is the most recent subagent `.jsonl`, which should be the Actor you're grading.
-- **Actor scrollback:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-<YYYY-MM-DD>-actor-scrollback.md`
-- **Actor report:** same directory, `m1-ex1-<YYYY-MM-DD>-actor-report.md`
+- **Actor scrollback:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-actor-scrollback.md`
+- **Actor report:** same directory, `m1-ex1-actor-report.md`
 
 Read the transcript before grading. Transcript evidence outranks Actor self-reports. To inspect:
 
@@ -50,12 +50,12 @@ jq -c 'select(.type=="assistant") | .message.content[]? | select(.type=="tool_us
 
 ## Report
 
-Write `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-<YYYY-MM-DD>-judge-report.md`.
+Write `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m1-ex1-judge-report.md`.
 
 Shape:
 
 ```markdown
-# Judge report — M1 Ex1 — <YYYY-MM-DD>
+# Judge report — M1 Ex1
 
 ## Summary
 <2–3 lines: pass count, most interesting observation.>

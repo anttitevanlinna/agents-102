@@ -6,8 +6,8 @@ Grading an Actor that ran Bootstrap M4 on a scratch inherited from M3 (memory + 
 
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m4`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
-- **Actor report:** `.../instances/bootstrap-m4-verbatim-2026-04-24-actor-report.md`
-- **Actor scrollback:** `.../instances/bootstrap-m4-verbatim-2026-04-24-actor-scrollback.md`
+- **Actor report:** `.../instances/bootstrap-m4-verbatim-actor-report.md`
+- **Actor scrollback:** `.../instances/bootstrap-m4-verbatim-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/audit-your-agent/prompt-00{1,2,3,4}.txt`
 - **Skills in scratch:** `skills/company-ai-policy/` + `skills/agent-security/`
 - **Outputs:** `module-4/{policy-report,security-report,residual}.md`, edited `agents/monday-risks.md`
@@ -84,4 +84,4 @@ Grading an Actor that ran Bootstrap M4 on a scratch inherited from M3 (memory + 
 
 ## Report
 
-Write `.../instances/bootstrap-m4-verbatim-2026-04-24-judge-report.md`. Shape: Summary / transcript / scratch / V1–V4 / A1–A27 / H1–H6 / Findings for exercise / Findings for harness / Portability notes. Under 1000 words.
+Write `.../instances/bootstrap-m4-verbatim-judge-report.md`. Shape: Summary / transcript / scratch / V1–V4 / A1–A27 / H1–H6 / Findings for exercise / Findings for harness / Portability notes. Under 1000 words.

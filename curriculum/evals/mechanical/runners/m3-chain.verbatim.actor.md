@@ -73,7 +73,7 @@ Commit the ADR. Do not commit SKILL.md (it's in home dir).
 
 ## Report
 
-Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m3-chain-verbatim-2026-04-24-actor-scrollback.md`.
+Write scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m3-chain-verbatim-actor-scrollback.md`.
 
 Shape per prompt (same as M1 chain verbatim runner):
 
@@ -97,10 +97,10 @@ Shape per prompt (same as M1 chain verbatim runner):
 <...and so on for every prompt + every substituted student message>
 ```
 
-Plus a short report to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m3-chain-verbatim-2026-04-24-actor-report.md`:
+Plus a short report to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/m3-chain-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — M3 chain verbatim — 2026-04-24
+# Actor report — M3 chain verbatim
 
 ## Status
 <done / error>

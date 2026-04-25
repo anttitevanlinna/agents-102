@@ -105,12 +105,12 @@ Still absent (produced by Debrief, which this runner does NOT execute): the trai
 
 ## Report
 
-Scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-2026-04-24-actor-scrollback.md` per standard shape.
+Scrollback to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-scrollback.md` per standard shape.
 
-Short report at `.../bootstrap-m2-verbatim-2026-04-24-actor-report.md`:
+Short report at `.../bootstrap-m2-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — Bootstrap M2 verbatim — 2026-04-24
+# Actor report — Bootstrap M2 verbatim
 
 ## Status
 <done / error>

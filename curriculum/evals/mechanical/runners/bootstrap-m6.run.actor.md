@@ -65,12 +65,12 @@ Log in scrollback: `Prompt-006 (take-home generic loop) deliberately skipped —
 
 ## Report
 
-Scrollback: `.../instances/bootstrap-m6-verbatim-2026-04-24-run-scrollback.md`.
+Scrollback: `.../instances/bootstrap-m6-verbatim-run-scrollback.md`.
 
-Short report: `.../instances/bootstrap-m6-verbatim-2026-04-24-run-report.md`:
+Short report: `.../instances/bootstrap-m6-verbatim-run-report.md`:
 
 ```markdown
-# Actor — Bootstrap M6 run — 2026-04-24
+# Actor — Bootstrap M6 run
 Status: done
 Phase 2b: 3 rounds × (briefing + judgment + strategy-diff) + meta/heartbeat
 Dashboard: module-6/dashboard.md (<lines>)

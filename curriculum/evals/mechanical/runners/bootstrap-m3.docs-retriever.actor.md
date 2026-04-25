@@ -42,10 +42,10 @@ Write `module-3/retrievals/docs.md`:
 
 ## Report
 
-Append to `.../instances/bootstrap-m3-verbatim-2026-04-24-docs-retriever-report.md`:
+Append to `.../instances/bootstrap-m3-verbatim-docs-retriever-report.md`:
 
 ```markdown
-# Actor — docs retriever — 2026-04-24
+# Actor — docs retriever
 Status: done
 Output: module-3/retrievals/docs.md
 Mocks read: <list>

@@ -66,7 +66,7 @@ Known contradictions to specifically verify (flag if either side breaks):
 
 ## Reporting
 
-After pre-flight, fill this block and save to `curriculum/evals/instances/pre-flight-YYYY-MM-DD.md`:
+After pre-flight, fill this block and save to `curriculum/evals/instances/pre-flight--<cohort>.md` (overwrite the previous one for that cohort):
 
 ```
 Volunteer: [name]

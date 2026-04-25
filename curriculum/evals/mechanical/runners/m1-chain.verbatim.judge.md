@@ -6,8 +6,8 @@ You are grading an Actor subagent that executed AE101 Module 1 end-to-end (3 exe
 
 - **Scratch path:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain-verbatim`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>` (the dispatcher fills it in; if blank, find the newest under `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*/subagents/agent-*.jsonl`).
-- **Actor report:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-actor-report.md`.
-- **Actor scrollback:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-actor-scrollback.md`.
+- **Actor report:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-report.md`.
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-scrollback.md`.
 - **Prompt files:** `/tmp/prompts/orient-and-introspect/prompt-00{1,2}.txt`, `/tmp/prompts/fix-tests-first/prompt-001.txt`, `/tmp/prompts/compound-and-close/prompt-00{1,2,3}.txt`.
 
 ## How to read the transcript
@@ -77,12 +77,12 @@ Binary PASS / FAIL with evidence. Every fail quotes the evidence.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m1-chain-verbatim-2026-04-24-judge-report.md`.
+Write `curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md`.
 
 Shape:
 
 ```markdown
-# Judge report — M1 chain verbatim — 2026-04-24
+# Judge report — M1 chain verbatim
 
 ## Summary
 <2–3 lines: pass count, most interesting failure, one surprise from the transcript.>

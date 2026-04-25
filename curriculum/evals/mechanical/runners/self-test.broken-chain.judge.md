@@ -11,8 +11,8 @@ Your job is to confirm that the harness CAUGHT this discontinuity. If the harnes
 
 - Scratch: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/broken-chain`
 - Actor transcript: `ls -t ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*/subagents/agent-*.jsonl | head -1` (the most recent Actor dispatch)
-- Actor scrollback: `curriculum/evals/mechanical/instances/self-test-broken-chain-2026-04-24-actor-scrollback.md`
-- Actor report: `.../self-test-broken-chain-2026-04-24-actor-report.md`
+- Actor scrollback: `curriculum/evals/mechanical/instances/self-test-broken-chain-actor-scrollback.md`
+- Actor report: `.../self-test-broken-chain-actor-report.md`
 - Parsed prompts: `/tmp/prompts/broken-chain/prompt-00{1,2}.txt`
 
 ## Assertions
@@ -50,10 +50,10 @@ Your job is to confirm that the harness CAUGHT this discontinuity. If the harnes
 
 ## Report
 
-Write to `curriculum/evals/mechanical/instances/self-test-broken-chain-2026-04-24-judge-report.md`. Shape:
+Write to `curriculum/evals/mechanical/instances/self-test-broken-chain-judge-report.md`. Shape:
 
 ```markdown
-# Judge report — self-test broken-chain — 2026-04-24
+# Judge report — self-test broken-chain
 
 ## Verdict
 HARNESS WORKS / HARNESS BROKEN — 1 line.

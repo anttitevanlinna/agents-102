@@ -75,12 +75,12 @@ Do NOT execute the Debrief from the module file (skill-sharpening prompt). Do NO
 
 ## Report
 
-Write scrollback to `.../instances/bootstrap-m4-verbatim-2026-04-24-actor-scrollback.md` per standard shape.
+Write scrollback to `.../instances/bootstrap-m4-verbatim-actor-scrollback.md` per standard shape.
 
-Short report at `.../instances/bootstrap-m4-verbatim-2026-04-24-actor-report.md`:
+Short report at `.../instances/bootstrap-m4-verbatim-actor-report.md`:
 
 ```markdown
-# Actor report — Bootstrap M4 verbatim — 2026-04-24
+# Actor report — Bootstrap M4 verbatim
 
 ## Status
 <done / error>

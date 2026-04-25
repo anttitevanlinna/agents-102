@@ -51,12 +51,12 @@ After five answers, write `module-5/benchmark.md` with the five verbatim claims,
 
 ## Report
 
-Write scrollback to `.../instances/bootstrap-m5-verbatim-2026-04-24-setup-scrollback.md`.
+Write scrollback to `.../instances/bootstrap-m5-verbatim-setup-scrollback.md`.
 
-Short report at `.../instances/bootstrap-m5-verbatim-2026-04-24-setup-report.md`:
+Short report at `.../instances/bootstrap-m5-verbatim-setup-report.md`:
 
 ```markdown
-# Actor — Bootstrap M5 setup — 2026-04-24
+# Actor — Bootstrap M5 setup
 Status: done
 Briefing: module-5/briefing.md (<line count>)
 Benchmark: module-5/benchmark.md (5 claims)

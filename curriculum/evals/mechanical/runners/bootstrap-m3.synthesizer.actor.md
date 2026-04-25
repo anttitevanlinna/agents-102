@@ -48,10 +48,10 @@ Do NOT execute the Debrief — that's owned by the module file and truncated for
 
 ## Report
 
-Write `.../instances/bootstrap-m3-verbatim-2026-04-24-synthesizer-report.md`:
+Write `.../instances/bootstrap-m3-verbatim-synthesizer-report.md`:
 
 ```markdown
-# Actor — synthesizer (main session) — 2026-04-24
+# Actor — synthesizer (main session)
 Status: done
 Retrievals read: 3
 Stances produced: 3 (inline substitution)

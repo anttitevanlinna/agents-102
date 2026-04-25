@@ -109,6 +109,9 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 
 **Quality:** draft 2026-04-25
 - compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in)
+- sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE — workhorse exercise; long agent waits ARE the designed conversation pauses)
+
+**Cohort-facilitator audit (2026-04-25):** APPROVE without TODOs. The exercise is cohort-ready. One stylistic note for next pass: *"The uncomfortable feeling is the evidence."* (Phase 2 close) reads as a slogan when projected silently to 12 SVPs; consider moving to lecture closer or cutting on next polish.
 
 **Pairs with:** [Author a security plugin](author-security-plugin.md) — Module 4's first exercise, produces the plugin this exercise runs.
 

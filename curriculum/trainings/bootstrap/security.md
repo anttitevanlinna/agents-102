@@ -56,6 +56,14 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 
 <!-- maintainer -->
 
+**Quality:** draft 2026-04-25
+- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_strategy_tie_in, check_pedagogy)
+- sim-passed 2026-04-25 (mid-competent + opinionated-senior + fast-operator + security-skeptic + cohort-facilitator personas; APPROVE-WITH-TODOs)
+
+**Cohort-facilitator audit (2026-04-25):**
+- **Time math owed verification.** Lecture 10 + author exercise 25 + audit exercise 45 + Connections 5 + Debrief 5 + transitions ≈ 98 min. Fits 1h45 only if Phase 2 of the author exercise is two turns. Realistic for prepared cohort; tight for first run. Trim lecture to 8 if needed.
+- **Repetition trim:** *"the plugin carries the expertise you fed it"* / *"the plugin you authored is the expert"* lands three times across this module file + the two exercises. Cut the Key Concepts instance on next polish since the exercises earn it.
+
 **Meta (trainer):**
 - **Primary Bloom's level:** Create → Analyze → Evaluate (authoring + applying + evaluating residual)
 - **Materials (trainer):** `module-4-starter.zip` — policy reference `.md` files drop into `module-4/policies/` (Nordic-baseline for self-study; customer-distilled for in-company deliveries — both as input the student reads while authoring, NOT as a pre-built plugin). The student authors one security plugin during the *Author a security plugin* exercise carrying two lenses (policy + agent-security with named attack classes). Per Antti 2026-04-25 strict rule: no pre-shipped plugins anywhere in Bootstrap; M4 is the canonical plugin-authoring module — the move is split into two exercises so plugin-authoring gets real time.

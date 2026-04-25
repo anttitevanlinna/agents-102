@@ -129,6 +129,13 @@ The expert is not you reading every file by hand. The expert is the plugin, and 
 
 **Quality:** draft 2026-04-25
 - compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in)
+- sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE-WITH-TODOs — see TODOs below)
+
+**Cohort-facilitator audit findings (2026-04-25, before first cohort):**
+- **Phase 1 freeze case:** the SVP who arrives without an opinion on company policy needs a prework dictation prep step ("Before M4, type three to five lines about your company's data, somewhere you can paste from"). Add to `module-4-prework.md` — currently absent.
+- **Tool-confusion needs an inline gloss.** The other three named attack classes are self-explanatory at projection distance; *tool-confusion* projected as is reads abstract. One-sentence example needed inline in the body where the class first lands ("agent uses the production DB connector when test would do" or similar).
+- **Phase 3 runtime-fork sync sentence.** Add one line at the top of Phase 3 before the three runtime blocks: *"Cowork users follow the chat-button install. Desktop and CLI follow your runtime's block. We sync at the verify prompt."* Helps the trainer when the room is mixed-runtime.
+- **90-min facilitator dry-run owed before first cohort.** Specifically: Phase 3 install moment with one colleague on Cowork and one on CLI, plus one colleague playing the freezing-SVP for Phase 1. Surfaces the runtime-fork hazard and the freeze case at the same time.
 
 **Pairs with:** [Audit your agent](audit-your-agent.md) — Module 4's second exercise, runs the plugin authored here.
 

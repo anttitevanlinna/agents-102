@@ -169,7 +169,7 @@ McKinsey can talk to 500 CTOs. They can't track what's happening on X.com at the
 
 ## Connection to Business Model
 
-This is the 80% frontier research from the business model canvas (`strategy/business-model-canvas.md`), brought forward in time. We start producing it before the peer network exists.
+This is the 80% frontier research from Bosser's business model canvas (private — see the `bosser-strategy` skill), brought forward in time. We start producing it before the peer network exists.
 
 - **Train** — the quiz is the first touch. Research makes it valuable.
 - **Curate** — the research program IS the curation activity, started before the network exists.
@@ -179,7 +179,7 @@ When the peer network eventually forms (Step 5), the 20% peer premium layers on 
 
 ### Assumptions Tested
 
-The research program directly tests two critical assumptions from `strategy/assumption-map.md`:
+The research program directly tests two critical assumptions from Bosser's strategic assumption map (private — see the `bosser-strategy` skill):
 
 - **P1:** Can we curate frontier best-in-class agentic practice at quality and pace? The monthly/quarterly cadence is the test.
 - **P2:** Is the 80% frontier curation alone valuable enough? If CTOs share, bookmark, and forward the research — before any peer premium exists — the answer is yes.

@@ -9,7 +9,7 @@ A belief filter disguised as a quiz. Inspired by David J. Bland's validation exp
 - Two cards side by side — pick A or B. No middle ground. Force the choice.
 - Results page with sharp, provocative personality typing
 - Email capture for "builder leaders" — offer the proto-practice pack as reward
-- Every answer maps to a specific assumption from `strategy/assumption-map.md`
+- Every answer maps to a specific assumption from Bosser's strategic assumption map (private — see the `bosser-strategy` skill)
 
 ## Design
 

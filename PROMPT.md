@@ -15,4 +15,4 @@ Research uses OODA loops, not monolithic sweeps. See `continuous-research/compet
 
 ## Business Model
 
-See `strategy/business-model-canvas.md` for the current business model canvas.
+Business model canvas lives in the private `bosser-strategy` skill (migrated 2026-04-26).

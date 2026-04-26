@@ -1,6 +1,6 @@
 # Story of Module 6
 
-*5–7 min opener for M6. First-person past. Antti reshapes in final voice.*
+*The engineer who built this module ran the M5/M6 loop on its own creation. What follows is the memo from that session: a record of one engineer's struggle with the same loop you're about to run.*
 
 ---
 
@@ -65,12 +65,8 @@ Your turn.
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-25 (REVISE: decide signature em-dash convention L63; strip rewrite-archaeology block lines 69–71 per check_writing #3 rules-are-rules-history-is-git)
-**Time:** 7–9 min at presentation pace. ~1050 words body.
-
-Rewritten twice during the generation session:
-- Round 1 (tighten register): prior draft philosophised around Antti's three-sentence frame (*"everyone struggles. Surprises happen. The LLM is not a deterministic machine."*) with 150 words of wrapping commentary and dropped *Surprises happen* entirely. Rewrite landed the three sentences as the frame and cut the philosophising.
-- Round 2 (include run-found content failures): Antti flagged that the *"Things that went sideways"* section recounted only pre-content and process mistakes — it missed the actual content errors the sim + eval + source-verify + capability check caught in the drafted files. Added three items: the credibility-performance tricolon Greg-persona caught in the closer, the Ramp paraphrase shipped as a quote (source-verify), the `/schedule` platform-fact conflation (capability check). Each item names the rule that was in context but did not fire.
+**Quality:** compendium-audited 2026-04-26 (check_writing — framed-memo exception applied per 2026-04-26-writing-creator-name-banned-student-facing.md, signature L63 retained inside the framing convention; rewrite-archaeology block stripped per #3; check_student_facing #14 em-dashes not flagged in body; check_lectures opener placement; check_strategy_tie_in)
+**Time:** 7–9 min at presentation pace. ~1050 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
 Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
 

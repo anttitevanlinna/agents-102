@@ -169,12 +169,31 @@ function buildToc(t) {
   return `    <ol>\n${items}\n    </ol>`;
 }
 
+function buildTopNav(t, customer) {
+  // Short labels for chips: "Prework", "M1", "M2", … so the row stays scannable.
+  const chips = t.modules
+    .map((m, i) => {
+      const label = m.slug === 'prework' ? 'Prework' : `M${i}`;
+      return `      <li><a href="#${m.slug}" data-target="${m.slug}">${label}</a></li>`;
+    })
+    .join('\n');
+  return `<nav class="workbook-topnav" aria-label="Workbook navigation">
+  <a class="workbook-topnav__home" href="#top">${escHtml(t.label)} — ${escHtml(customer)}</a>
+  <ol class="workbook-topnav__modules">
+${chips}
+  </ol>
+</nav>
+<div class="reading-progress" aria-hidden="true"></div>`;
+}
+
 function buildBody(trainingKey, customer) {
   const t = TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
 
+  const topNav = buildTopNav(t, customer);
+
   const cover = `
-<header class="workbook-cover">
+<header class="workbook-cover" id="top">
   <p class="eyebrow">${escHtml(customer)} workbook</p>
   <h1 class="cover-title">${escHtml(t.label)}</h1>
   <p class="lede">${escHtml(t.lede)}</p>
@@ -198,13 +217,64 @@ ${buildToc(t)}
 
   // Wrap everything in <main> so SPA's main-scoped styles apply.
   // body.workbook scopes flip layout from row (one module) to column (all of them).
-  return '<main>\n' + cover + '\n' + modules + '\n</main>\n';
+  return topNav + '\n<main>\n' + cover + '\n' + modules + '\n</main>\n';
 }
 
 // Read curriculum.css verbatim. Single source of truth — workbook-specific
 // rules (cover, TOC, print) live in that file too, scoped via .workbook-*
 // classes that the SPA never emits.
 const SPA_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.css'), 'utf8');
+
+// Inline JS — reading-progress bar (ported from SPA installReadingProgress)
+// and active-module highlighting in the topnav via IntersectionObserver.
+const WORKBOOK_JS = `
+(function () {
+  // Reading progress bar
+  var bar = document.querySelector('.reading-progress');
+  if (bar) {
+    var update = function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      bar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  // Active-module highlight in topnav. Observes each module section; the
+  // most-visible one wins the .is-active class on its corresponding chip.
+  var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');
+  if (!chips.length || !('IntersectionObserver' in window)) return;
+  var chipBySlug = {};
+  chips.forEach(function (a) { chipBySlug[a.getAttribute('data-target')] = a; });
+
+  var visible = {};
+  var setActive = function () {
+    var bestSlug = null;
+    var bestRatio = 0;
+    Object.keys(visible).forEach(function (slug) {
+      if (visible[slug] > bestRatio) { bestRatio = visible[slug]; bestSlug = slug; }
+    });
+    chips.forEach(function (a) { a.classList.remove('is-active'); });
+    if (bestSlug && chipBySlug[bestSlug]) chipBySlug[bestSlug].classList.add('is-active');
+  };
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var slug = e.target.id;
+      visible[slug] = e.isIntersecting ? e.intersectionRatio : 0;
+    });
+    setActive();
+  }, { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-80px 0px -40% 0px' });
+
+  Object.keys(chipBySlug).forEach(function (slug) {
+    var sec = document.getElementById(slug);
+    if (sec) io.observe(sec);
+  });
+})();
+`;
 
 function template(title, content) {
   // body.runtime-cli matches the SPA's default; CSS hides rt-cowork / rt-desktop
@@ -219,6 +289,7 @@ function template(title, content) {
 </head>
 <body class="runtime-cli workbook">
 ${content}
+<script>${WORKBOOK_JS}</script>
 </body>
 </html>
 `;

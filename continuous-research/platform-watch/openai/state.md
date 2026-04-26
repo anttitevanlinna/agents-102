@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-04-17
-cycle: 104
+updated: 2026-04-26
+cycle: 111
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -16,6 +16,11 @@ answers:
 
 Last updated: 2026-04-05 (cycle 90)
 OODA cycles: 15
+
+**Cycle 111 updates (April 26, 2026):**
+- **OpenAI Workspace Agents — research preview, April 22, 2026.** Shared, long-running team-level agents that persist across sessions. Run on Codex (cloud-hosted). Event/schedule triggers. Connects to: Slack, Google Drive, Microsoft apps, Salesforce, Notion — with WRITE access. Admin org controls: who can build/run/publish, which tools/apps/actions allowed. **Custom GPTs deprecated for Business/Enterprise** — migration required (timeline TBD). Free until May 6, then credit-based pricing. This is OpenAI's first real team-agent product — addresses the "single-player architecture" gap documented across 15+ cycles. Research preview: architecture is real, enterprise deployment patterns are zero. Gartner "First Take" (same day): "governance hurdles" from AI write access across enterprise systems. Sources: [OpenAI](https://openai.com/index/introducing-workspace-agents-in-chatgpt/) — [vendor]; [VentureBeat](https://venturebeat.com/orchestration/openai-unveils-workspace-agents-a-successor-to-custom-gpts-for-enterprises-that-can-plug-directly-into-slack-salesforce-and-more) — [general press]; [Gartner](https://www.gartner.com/en/documents/7760821) — [analyst]; [The New Stack](https://thenewstack.io/openai-shared-workspace-agents/) — [domain trade publication]
+- **GPT-5.5 — April 23, 2026.** Six weeks after GPT-5.4 (March 5). Explicitly positioned as agentic: "built to handle autonomous, multi-step computer work with minimal instruction." API: $5/$30/million tokens — double GPT-5.4 ($2.50/$15). Benchmarks: Terminal-Bench 2.0 82.7%, Expert-SWE 73.1%, OSWorld-Verified 78.7%. Available Plus/Pro/Business/Enterprise. API available April 24. The 6-week release cadence is the strategic signal: establishing enterprise lock-in before procurement evaluation windows close — analyst framing confirmed independently. Sources: [OpenAI](https://openai.com/index/introducing-gpt-5-5/) — [vendor]; [TechCrunch](https://techcrunch.com/2026/04/23/openai-chatgpt-gpt-5-5-ai-model-superapp/) — [general press]; [Let's Data Science](https://letsdatascience.com/blog/openai-gpt-5-5-six-weeks-after-5-4-doubled-price) — [domain trade publication]
+- **Frontier: Superseded by Workspace Agents as the team-agent track.** Frontier had 17+ consecutive zero-deployment checks. Workspace Agents is now the primary team-level agent product. The deployment gap finding applies to Workspace Agents going forward.
 
 **Cycle 90 updates (April 5, 2026):**
 - **$122B raised (early April 2026).** Described as the largest AI funding round to date. No operational impact yet; continues to strengthen the IPO-driven strategic context. [General press, bare fact]
@@ -64,9 +69,9 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 - Enterprise agent controls — workspace owners can enable/disable agent mode (default OFF), assign to specific roles, block specific domains, control app availability ([Help Center](https://help.openai.com/en/articles/11752874-chatgpt-agent))
 - EKM (Enterprise Key Management) disables all synced connectors
 - 92% Fortune 500 penetration, 9M paying business users (4x from Sept 2025), but 57% adoption concentrated in software dev, 20% use advanced features ([Christian & Timbers](https://www.christianandtimbers.com/insights/chatgpt-reached-92-of-the-fortune-500-in-24-months), Feb 2026)
-- Single-player architecture: no shared agents, no team workflows, no compounding knowledge
+- **Workspace Agents (research preview, April 22, 2026):** Shared, persistent agents replace the single-player architecture. Custom GPTs being deprecated for Business/Enterprise. Persistent cross-session state, Codex-powered, Slack integration, org controls. Free until May 6. Research preview only — zero enterprise deployment evidence yet. ([OpenAI](https://openai.com/index/introducing-workspace-agents-in-chatgpt/), Apr 22, 2026 — [vendor])
 - **Write actions and scheduled tasks: zero adoption evidence** — features shipped but no practitioner reports of production business use. Scheduled tasks called "half-baked" (no context, 10 max). (source: runs/2026-03-21-cycle17.md)
-- **Team agent** tier — governance improving but agentic workflow capability still limited
+- **Team agent** tier — architecture upgraded to Workspace Agents (shared, persistent). Deployment evidence: still zero.
 
 ### Responses API + Agents SDK
 - Developer tools for building custom agents
@@ -80,7 +85,7 @@ OpenAI's ecosystem as it serves **business users**. ChatGPT is the most widely u
 | Personal | ChatGPT Agent + Custom GPTs | Shipping, widely used | 910M weekly users, 9M business seats. But 80% of Enterprise messages are plain chat. Usage is copilot, not agent. Agent mode is sandboxed and capped (40 msg/mo on Plus). Connectors rebranded to "Apps" (Mar 2026). GPT-5.4 mini/nano released for subagent cost optimization. EEA: Agent mode officially blocked, silent A/B testing only ([DataStudios](https://www.datastudios.org/post/chatgpt-agent-appears-in-europe-despite-no-formal-announcement)). |
 | Team | ChatGPT Team / Enterprise shared GPTs | Shipping | No evidence of team-level agentic workflows. Write-action connectors shipped (Outlook, Google Docs/Sheets, Calendar, Jira via Rovo) but zero production adoption evidence (cycle 35). Architecture is single-player. Salesforce Agentforce integration live but zero adoption evidence. Codex non-coding Skills announced but zero adoption evidence ([Fortune](https://fortune.com/2026/03/04/openai-codex-growth-enterprise-ai-agents/), Mar 2026). |
 | Company | Agents SDK + Responses API + Frontier | Shipping / Limited availability | Developer-only path (SDK). Frontier at 8+ weeks with zero independent deployment evidence (eleventh consecutive zero). HP and Oracle added as named customers (vendor-sourced). PE JV ($10B) unsigned. AWS deal expanded to $138B — Microsoft weighing lawsuit. IPO (Q4 2026, Polymarket 36%) driving product strategy. |
-| Promotion path | Custom GPT → ? | **Broken** | Cannot promote a personal GPT to a governed team agent. No identity management, no audit trails, no access controls on GPTs. Super-app merge confirmed (WSJ Mar 19): Codex as surviving platform, ChatGPT + Atlas fold in. No timeline. Fidji Simo leading. Each level still requires starting over with different tools. |
+| Promotion path | Custom GPT → Workspace Agent | **Partial — research preview** | Custom GPTs deprecated for Business/Enterprise — migration to Workspace Agents required. Workspace Agents add persistence, shared state, org controls, and multi-system write access. This is the first designed promotion path — but only from personal to team. Company-tier (Frontier → Agents SDK) still requires starting over with developer tools. Deployment evidence: zero (research preview). ([OpenAI](https://openai.com/index/introducing-workspace-agents-in-chatgpt/), Apr 22, 2026) |
 
 ## Enterprise Deployment Evidence (business functions)
 

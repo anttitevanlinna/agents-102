@@ -44,6 +44,8 @@ By the end of the training, you will have a rules file shaped by how you actuall
 
 The pattern has a name. Kieran Klaassen at Every calls it *compound engineering*. The retro you just ran was step four of his loop: plan, work, review, compound.
 
+**Mental models only come from doing.** You just did.
+
 The loop is the shape. The bug today was the excuse.
 
 **Time:** 5–7 minutes.

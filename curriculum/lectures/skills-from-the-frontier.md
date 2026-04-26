@@ -13,7 +13,7 @@ A skill in Claude Code is a named, scoped capability the agent can invoke. A mar
 
 Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
-## The three voices in the room today
+## The three voices in play today
 
 **Voice one: historical practitioners.** The two security skills you'll invoke didn't spring from nowhere. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo (yes, that old; threat modeling predates most web frameworks you use). Adam Shostack sharpened it into a discipline in *Threat Modeling: Designing for Security* (2014); if you buy one security book this year, it's that. Access-control analysis threads back further. Saltzer & Schroeder's 1975 paper on the least-privilege principle is still the most-cited piece of computer security writing for a reason.
 
@@ -45,6 +45,8 @@ None of those are compliance artifacts. They're the thinking, written down. The 
 - **Ex2:** STRIDE does the breadth, you make one call. Resist the urge to harden against everything. Pick one. Write the ADR.
 - **Ex3:** when you author the test-strategy skill, Claude will offer you a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
 - **Across all three:** skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name. You don't point at a path. The one you author lands at the team-kit path your sponsor named. Don't invent new homes.
+
+**Don't make general what you don't practice yourself.** That's the principle underneath the curate-vs-author split. The curated skills come from people who did the work; the one you author covers what only you do.
 
 Go.
 

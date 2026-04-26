@@ -43,6 +43,8 @@ What you owe the experiment is a result you can read, not a completed artifact. 
 
 M5 opens with the return when the next slot lands. We read what came back together, diagnose what went wrong, and you learn packaging not from a slide but from *"here's the piece that would have caught this specific thing."*
 
+**Rehearse, apply, fail, try again.** That's the loop you're stepping into. The first run wasn't supposed to be the right one.
+
 Walk your system. Fill the gaps. See the three blocks in your own work. Send it off, un-packaged. Read the result.
 
 <!-- maintainer -->

@@ -47,11 +47,13 @@ That stance survives every model change. Practitioner fluency lives in the stanc
 
 ## Where this goes next
 
-Two bridges. The room picks one.
+Two bridges. Which one fits depends on where you're going next.
 
-**Core close.** You walk out of M6 holding the move. Monday morning, pick one multi-hour task from your real backlog. The one you have been avoiding because it is too big to hold in your head. Assemble the reference. Open a `plan.md` the agent owns. Point a verifier at the output. Run. Read the artefact. Name the gap. Encode. That is the training continuing without a trainer in the room.
+**Core close.** You walk out of M6 holding the move. Monday morning, pick one multi-hour task from your real backlog. The one you have been avoiding because it is too big to hold in your head. Assemble the reference. Open a `plan.md` the agent owns. Point a verifier at the output. Run. Read the artefact. Name the gap. Encode. That is the training continuing under your own steam.
 
 **Into M7.** If the cohort continues to deliberation, the agent you built across six modules is about to meet other agents. Each engineer brings their stack: their rules, their memory, their skills, their kit. The room deliberates live on a real engineering problem the CTO is actually sitting on. What makes that deliberation work is what you raised together over six modules. The kit is already in the room.
+
+**Agents that build agents.** That is the flywheel. It starts with what you encoded today.
 
 Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 

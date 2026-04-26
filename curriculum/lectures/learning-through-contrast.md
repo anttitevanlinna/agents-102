@@ -1,9 +1,5 @@
 # Learning through contrast
 
-*~5 min in-room opener for M5. Lands at the start of the M5 session, after the room has gathered and the M4 artefact is in front of each student. Names the M5 spirit (read first, fix later) and the diagnostic stance the exercise depends on. Doesn't name the three-pattern. The exercise earns it.*
-
----
-
 You sent off an un-packaged run at the close of M4 and you have something to read now. Stopped, finished, ran out of credit, doesn't matter. The artefact is data either way.
 
 Here is the move M5 asks of you. It cuts against most engineering instinct.
@@ -51,6 +47,8 @@ Phase 2 inverts the move: for each named failure, ask what validation would have
 
 Phases 3 and 4 build. Then the module re-sends.
 
+**Practice beats external proof.** The run shows you what no benchmark can.
+
 Open your repo. Let's go.
 
 <!-- maintainer -->
@@ -60,6 +58,8 @@ Open your repo. Let's go.
 **Word count:** ~340 words body.
 
 **Time:** ~5 min at presentation pace. Tighter than the closing; this is a room-opener, not a topic.
+
+**Design intent:** Names the M5 spirit (read first, fix later) and the diagnostic stance the exercise depends on. Doesn't name the three-pattern. The exercise earns it.
 
 **Delivery mode:** In-room only. Self-study Nerd opens M5 with the same content as the C1 framing for the exercise.
 

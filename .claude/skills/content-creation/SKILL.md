@@ -72,7 +72,7 @@ Before touching anything, read in this order:
 1. **`bosser-strategy:content-strategy.md`** — Training-level arc + mood-arc synthesis + per-module "Big idea" and "Mood (deliberate)". The strategic contract everything else serves.
 2. **`curriculum/CLAUDE.md`** — architectural rules (directory structure, module file shape, include-links, F-Secure fence, material distribution, Claude Code behavior verification).
 3. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge/control/leadership, audience, throughlines).
-4. **`philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
+4. **`bosser-strategy:philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
 
 Then check `continuous-research/insights.md` and relevant domain findings.
 

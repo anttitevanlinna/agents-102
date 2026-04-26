@@ -18,7 +18,7 @@ You are auditing the full Bootstrap arc for end-to-end coherence. This is a sing
 
 ARC CONTRACT:
 - bosser-strategy:content-strategy.md (focus on the mood-arc synthesis section + per-module "Mood (deliberate)" paragraphs)
-- philosophy.md (the 19 beliefs)
+- `bosser-strategy:philosophy.md` (the 19 beliefs)
 
 MODULES IN SEQUENCE:
 - curriculum/trainings/bootstrap/prework.md

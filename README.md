@@ -84,7 +84,7 @@ Built by [Bosser](https://bosser.consulting). Independent. Practitioner-led.
 
 Agents 102 is made of two parts with deliberately different terms:
 
-- **Proprietary — © 2026 Bosser Oy.** The training product and its supporting assets: `curriculum/`, `content/`, `strategy/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, and the root docs (`philosophy.md`, `content-style-guide.md`, `README.md`, `CLAUDE.md`, `PROMPT.md`). No reuse without written permission. See [`COPYRIGHT.md`](COPYRIGHT.md).
+- **Proprietary — © 2026 Bosser Oy.** The training product and its supporting assets: `curriculum/`, `content/`, `strategy/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, and the root docs (`bosser-strategy:philosophy.md`, `content-style-guide.md`, `README.md`, `CLAUDE.md`, `PROMPT.md`). No reuse without written permission. See [`COPYRIGHT.md`](COPYRIGHT.md).
 - **Open — public knowledge base.** [`continuous-research/`](continuous-research/) is open for reading, quoting, forking, and contribution. Contribute findings, user signals, and observations back — the system gets smarter when you use it. See [`continuous-research/LICENSE.md`](continuous-research/LICENSE.md) for terms.
 
 The split is deliberate: the research system is a public good; the curriculum and content are Bosser IP. For licensing questions, contact [bosser.consulting](https://bosser.consulting).

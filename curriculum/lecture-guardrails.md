@@ -191,7 +191,7 @@ The implicit promise to every participant:
 
 ## Philosophy as the Spine
 
-`philosophy.md` (repo root) holds the 19 beliefs behind the training. Two clusters matter most for the story arc:
+`bosser-strategy:philosophy.md` (repo root) holds the 19 beliefs behind the training. Two clusters matter most for the story arc:
 
 - **Fundamental questions about the future** — where is this going, what's real vs. hype, who creates it, what do you do about it, where does the real transformation happen.
 - **Student's stance** — practice or theorize, tool or fundamentals, go first or wait, share or hoard, consumer or teacher, move without a map.

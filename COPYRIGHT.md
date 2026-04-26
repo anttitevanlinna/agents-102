@@ -27,11 +27,10 @@ The following are proprietary to **Bosser Oy** and may not be reproduced, redist
 
 - `curriculum/` — all modules, exercises, lectures, evals, scaffolds, reference material, supplementary files, and training variants
 - `content/` — articles, essays, whitepapers, case material, and any drafts or outlines
-- `strategy/` — business model, marketing plan, value-proposition canvas, assumption map, and strategy drafts
 - `site/` — website copy, layout, design, curriculum renderer, and all site assets (including covers, images, stylesheets, JS)
 - `memory/` — self-review protocol, feedback logs, and any operator memory
 - `.claude/` — skills, settings, and any Claude Code configuration shipped with this project
-- `philosophy.md`, `content-style-guide.md`, `PROMPT.md`, and the root `README.md` / `CLAUDE.md`
+- `content-style-guide.md`, `PROMPT.md`, and the root `README.md` / `CLAUDE.md`
 - `evals/` and `scripts/` shipped with this project
 
 Any new file created under these paths — including but not limited to new modules, exercises, lectures, articles, strategy documents, site copy, and content-creation assets — is automatically covered by this notice as part of the Agents 102 body of work owned by Bosser Oy.

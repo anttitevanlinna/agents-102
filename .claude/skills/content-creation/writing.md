@@ -161,7 +161,7 @@ The reader is a business leader (SVP marketing, SVP ops, sales manager), not a d
 
 ### Philosophy callouts
 
-Philosophy is the spine (`philosophy.md`, 19 beliefs). Callouts in content are **sparing** — one or two per lecture / closing / opening max, where a philosophy beat lands naturally from what the student just did. **Never front-loaded** — the student experiences the thing, then the belief is named. Session-level budget: within a day with multiple lectures, avoid repeating the same belief number across lectures unless the repetition is deliberate and named.
+Philosophy is the spine (`bosser-strategy:philosophy.md`, 19 beliefs). Callouts in content are **sparing** — one or two per lecture / closing / opening max, where a philosophy beat lands naturally from what the student just did. **Never front-loaded** — the student experiences the thing, then the belief is named. Session-level budget: within a day with multiple lectures, avoid repeating the same belief number across lectures unless the repetition is deliberate and named.
 
 ### Plug Points syntax
 

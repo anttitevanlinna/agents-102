@@ -46,7 +46,7 @@ This is a shared, multi-user repository. Research runs continuously on remote br
 
 ## Copyright — two-tier rule
 
-- **Proprietary scope:** `curriculum/`, `content/`, `strategy/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, and root docs (`philosophy.md`, `content-style-guide.md`, `README.md`, `CLAUDE.md`, `PROMPT.md`) are **© 2026 Bosser Oy, all rights reserved.** Any new module, exercise, lecture, article, strategy doc, site asset, memory page, eval, script, or Claude Code skill under those paths is automatically covered. Do NOT reuse without written permission. Do NOT reproduce training content from external sources into those paths.
+- **Proprietary scope:** `curriculum/`, `content/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, and root docs (`content-style-guide.md`, `README.md`, `CLAUDE.md`, `PROMPT.md`) are **© 2026 Bosser Oy, all rights reserved.** Any new module, exercise, lecture, article, site asset, memory page, eval, script, or Claude Code skill under those paths is automatically covered. Do NOT reuse without written permission. Do NOT reproduce training content from external sources into those paths.
 - **Public scope:** `continuous-research/` is the open knowledge base. Read, quote, fork, and contribute under `continuous-research/LICENSE.md`. Contributions grant Bosser Oy and the community a perpetual, non-exclusive license.
 - **Per-folder notices:** Each proprietary top-level folder carries a short `COPYRIGHT.md` pointing back to the root `COPYRIGHT.md`. When creating a new proprietary folder, add one. Do NOT add one to `continuous-research/`.
 - **When in doubt, the root [`COPYRIGHT.md`](COPYRIGHT.md) is the source of truth.**

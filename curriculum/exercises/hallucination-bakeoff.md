@@ -289,7 +289,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). The agreement-across-independent-regenerations mechanic is theirs; the blinded multi-framing variant in Phase 1b (regenerators read only sources, not the briefing; different framings induce variance) is our adaptation. Not named in the body — the student earns the technique by running it.
 
 **Philosophy callout (sparing):**
-- Belief #8 — name what you don't know — lands in the Close's still-uncertain line, and in the judge's "Known limit:" line. Both student-written.
+- Belief #21 — name what you don't know — lands in the Close's still-uncertain line, and in the judge's "Known limit:" line. Both student-written.
 - Belief #14 — practice beats external proof — continues from M4. Named in maintainer-space, experienced in body.
 
 **Plug points:**

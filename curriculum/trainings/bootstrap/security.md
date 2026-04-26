@@ -94,7 +94,7 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 - **Assumption-test** (Roger Martin) — the "what would have to be true for this to be safe?" move is carried from Module 3's synthesizer into the policy lens of the plugin the student authors (the "I can't tell" column).
 
 **Philosophy callout (sparing):**
-- Belief #8 — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
+- Belief #21 — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
 - Belief #14 — practice beats external proof — anchors the lecture's core message. Named in maintainer-space, experienced in body.
 
 **Capability check owed (per-runtime plugin authoring + install):** see *Author a security plugin* exercise maintainer block — Cowork *Save plugin* button, Desktop plugin loader, CLI `~/.claude/plugins/<name>/`, plain-language invocation reliability across all three runtimes, plugin-loaded visibility on session start. Run `claude-code-guide` before first delivery.

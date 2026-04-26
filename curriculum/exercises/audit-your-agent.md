@@ -126,7 +126,7 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 - **Roger Martin's *what would have to be true*** — surfaces in the policy lens's "I can't tell" column as "what evidence would I need to decide?"
 
 **Philosophy callout (sparing):**
-- Belief #8 — name what you don't know — lands in the "I can't tell" column and in the residual paragraph. Student writes both; the belief is earned, not announced.
+- Belief #21 — name what you don't know — lands in the "I can't tell" column and in the residual paragraph. Student writes both; the belief is earned, not announced.
 - Belief #14 — practice beats external proof — the whole exercise enacts it. Named in the lecture, lived in the exercise.
 
 **Plug points:**

@@ -66,7 +66,7 @@ That's the whole job.
 
 **Philosophy callout (sparing):**
 - Belief #14 — practice beats external proof — is the core message. Not announced as a belief; carried by the full lecture arc.
-- Belief #8 — name what you don't know — lands in the "residual risk as artifact" beat.
+- Belief #21 — name what you don't know — lands in the "residual risk as artifact" beat.
 
 **Capability check owed:**
 - None specific to the lecture. Capability checks for the exercise are in the exercise file.

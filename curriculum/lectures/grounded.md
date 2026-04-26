@@ -85,7 +85,7 @@ Now you run the benchmark by hand. Well, not by hand. You set up five detectors,
 - **Benchmark as the measuring stick** — tiny (5 claims), plain, enough to measure against. No vendor reference; your own judgment is the judge of the judges.
 
 **Philosophy callout (sparing):**
-- Belief #8 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
+- Belief #21 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
 - Belief #14 — practice beats external proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
 
 **Why five, not three, and not ten:**

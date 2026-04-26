@@ -139,7 +139,7 @@ This covers most observed fabrication patterns in LLM output. The five-category 
 - **Domain-expert-as-verifier** — the student's existing expertise is the scarce resource; the agent's output is cheap. Exercise inverts the usual framing.
 
 **Philosophy callout (sparing):**
-- Belief #8 — name what you don't know — lands in Phase 3's "Not in source material" rule, and in the Close's "still-uncertain" line. Student writes them themselves; the belief is earned.
+- Belief #21 — name what you don't know — lands in Phase 3's "Not in source material" rule, and in the Close's "still-uncertain" line. Student writes them themselves; the belief is earned.
 - Belief #14 — practice beats external proof — continues from M4. Named in maintainer-space, experienced in body.
 
 **Plug points:**

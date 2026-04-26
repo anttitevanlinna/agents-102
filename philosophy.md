@@ -151,6 +151,22 @@ This is the anti-SAFe principle. SAFe got the bias to action right but the owner
 
 When you stop working with us, you keep everything. The capability stays inside your organization because the people have it, and the materials are theirs.
 
+## 21. Name what you don't know
+
+Confidence built on hidden uncertainty is fragile. The practitioner writes the limit down. *I can't tell.* *Still uncertain.* *Known limit.* These lines look like weakness from outside; they are evidence the work is honest from inside.
+
+The agent will produce confident-looking output regardless. RLHF prefers warmth over directness; the model fills in plausible answers where the right answer is *I don't know.* Catching that gap is the move. Asking the model to flag what it can't tell. Writing your own *still-uncertain* line at the close. Treating the limit as part of the artefact, not a confession bolted onto the end.
+
+This is how earned confidence (#13) actually gets earned. You don't claim certainty you haven't tested; you name the gap and keep working. The *I can't tell* column in an audit, the *Known limit* line in a judge's report, the *still-uncertain* line in a closing memo — each is the belief in body. Every column outside it has been tested. The things inside it are still open. That distinction is the contract.
+
+## 22. Share, don't hoard
+
+Every artifact you produce — a `CLAUDE.md` line, an ADR, a skill, a memory entry — is for the next reader as much as for you. Next-week-you. The next engineer who picks up this feature. The cohort teammate writing the same kind of skill on a different codebase. Hoarding wins the next sprint; sharing compounds across quarters.
+
+The compound move at the end of every module is the belief in body. Claude reviews the session and rewrites the rules file in place; that file is the share artifact for the next session. You author a skill in conversation, and the skill ships to the team kit when it's ready. The handoff is constant.
+
+This is the operational face of generosity (#6). Generosity in the abstract sounds like charity; in practice it shows up as written work that survives you reading it later. The team that pools its tricks raises the floor for everyone. The engineer who keeps tricks private doesn't even keep them — three months from now they're forgotten, and the floor is the same as it was before.
+
 ---
 
 ## How these beliefs connect
@@ -166,7 +182,7 @@ Act on the future (2) → Practice (8, 9) → Discover what you don't know (2)
 → Earned confidence, not false certainty (13)
 ```
 
-Running through it all: generosity (6), fundamentals over tools (12), the practitioner discipline that beats external proof (14), co-ownership (20), and the flywheel (18) that makes it compound. Applied beyond coding (19), where the real transformation lives. Grounded in people, not technology (4).
+Running through it all: generosity (6), operationalised as share-don't-hoard (22). Naming what you don't know (21) — the move that earns confidence (13) instead of performing it. Fundamentals over tools (12), the practitioner discipline that beats external proof (14), co-ownership (20), and the flywheel (18) that makes it compound. Applied beyond coding (19), where the real transformation lives. Grounded in people, not technology (4).
 
 You cannot skip steps. You cannot start with vision and work backward to competence. You cannot generalize from a framework you haven't applied. You cannot lead a transformation you haven't experienced.
 

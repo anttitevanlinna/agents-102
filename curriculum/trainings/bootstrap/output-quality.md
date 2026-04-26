@@ -80,7 +80,7 @@ You ran the benchmark once. Five claims, five detectors, one judge. Now imagine 
 - **Compound reliability math** (85% × 10 steps ≈ 20% end-to-end) — carried in the lecture, makes the "why measure, not guess" case.
 
 **Philosophy callout (sparing):**
-- Belief #8 — name what you don't know — lands in the judge's "Known limit:" line and the Close's `still-uncertain.md` line. Both student-written.
+- Belief #21 — name what you don't know — lands in the judge's "Known limit:" line and the Close's `still-uncertain.md` line. Both student-written.
 - Belief #14 — practice beats external proof — continues from M4.
 
 **Mood contract — mechanical rescue, not triumph:**

@@ -173,7 +173,7 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: th
 
 **Philosophy callout (sparing):**
 - Belief #2 — act on the future — lands implicitly in the Close. The student just produced a real answer to their real question; the brief comes from what they're already acting on. Not named in body.
-- Belief #12 — share, don't hoard — lands implicitly in the coordination rule the student writes back into `CLAUDE.md`: their learning compounds into the next handoff, not just their own memory.
+- Belief #22 — share, don't hoard — lands implicitly in the coordination rule the student writes back into `CLAUDE.md`: their learning compounds into the next handoff, not just their own memory.
 
 **Capability notes (confirmed):**
 - Multi-window / multi-session on the same working directory: CLI = four terminal windows, desktop = four sessions. Trainer demos both live in Phase 1. Confirmed by Antti as working. (Self-study variant will need a dedicated recipe file — see variant TODO below.)

@@ -20,23 +20,23 @@ That's what separates a practitioner from a tourist. A tourist runs an agent and
 
 Today's experiment is the first of two. Same task, two runs across M4 → M5.
 
-Run one — today, un-packaged. You'll walk what you've built against the task, fill the worst gaps, and send it off with no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent will work with what you've given it.
+Run one. Today, un-packaged. You'll walk what you've built against the task, fill the worst gaps, and send it off with no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent will work with what you've given it.
 
-Run two — M5, packaged. We'll read what came back, find what went wrong, and you'll learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
+Run two. M5, packaged. We'll read what came back, find what went wrong, and you'll learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
 
 The contrast is the lesson. No lecture on "best practices for long-running agents" lands the way *you just watched this fail, here's what would have caught it* lands. That's why we launch un-packaged here, to earn the M5 teaching moment.
 
 ## Two frameworks you'll use today
 
-**Gap analysis.** Walk the system you have against the system the task needs. Claude audits your setup as a subagent, returns a ranked list of thin spots, and you fill the worst three. You'll use this move on every future agent hand-off, forever. Not a template — a question: *what's between what I've got and what this task is asking for?*
+**Gap analysis.** Walk the system you have against the system the task needs. Claude audits your setup as a subagent, returns a ranked list of thin spots, and you fill the worst three. You'll use this move on every future agent hand-off, forever. Not a template. A question: *what's between what I've got and what this task is asking for?*
 
-**Huryn's three-block memory.** Paweł Huryn's frame for how a practitioner's memory organises itself — Block 1 observations → hypotheses → rules, Block 2 decisions with alternatives, Block 3 quality criteria. The punchline: you've already been building this for four modules. Your M1 `CLAUDE.local.md` seed is Block 1. Your M3 ADR is Block 2. Your test-strategy skill is Block 3. At Phase 3 today, Claude will show you the frame in your own material. You'll recognise it, not learn it.
+**Huryn's three-block memory.** Paweł Huryn's frame for how a practitioner's memory organises itself: Block 1 observations → hypotheses → rules, Block 2 decisions with alternatives, Block 3 quality criteria. The punchline: you've already been building this for four modules. Your M1 `CLAUDE.local.md` seed is Block 1. Your M3 ADR is Block 2. Your test-strategy skill is Block 3. At Phase 3 today, Claude will show you the frame in your own material. You'll recognise it, not learn it.
 
 ## One rule about running the experiment
 
 **Cancel is legitimate. Traces are data.**
 
-If you launch the task and after twenty minutes you can see Claude is hallucinating file paths, arguing with itself, or missing a requirement you now realise wasn't in the prompt — stop it. You've got the data you need. Burning six hours to confirm it doesn't teach you more than stopping at twenty minutes with an observation.
+If you launch the task and after twenty minutes you can see Claude is hallucinating file paths, arguing with itself, or missing a requirement you now realise wasn't in the prompt, stop it. You've got the data you need. Burning six hours to confirm it doesn't teach you more than stopping at twenty minutes with an observation.
 
 What you owe the experiment is a result you can read, not a completed artifact. Any trace counts.
 
@@ -49,7 +49,7 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-25 (REVISE: cut em-dashes lines 23/25/31/33/39 per check_student_facing #14)
+**Quality:** compendium-audited 2026-04-26 (check_writing voice-quartet, check_student_facing #14, check_lectures, check_strategy_tie_in, check_research_claims)
 **Word count:** ~620 words body.
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" section is load-bearing — it's where the experimental stance lands.

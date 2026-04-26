@@ -6,7 +6,7 @@
 
 Close the laptop for a second. Look at what you just shipped.
 
-Your second authored skill. Shape decided by what two runs of the same task actually taught — not by a template. For most of you it came out as a sharpened verifier. For some as a fresh judge. For a few as a gap-finder that reads the next agent-produced artefact for the shape of failure you saw at M5. Different shapes, same move. The thing you built reads an agent's work and decides whether it meets a bar.
+Your second authored skill. Shape decided by what two runs of the same task actually taught. Not by a template. For most of you it came out as a sharpened verifier. For some as a fresh judge. For a few as a gap-finder that reads the next agent-produced artefact for the shape of failure you saw at M5. Different shapes, same move. The thing you built reads an agent's work and decides whether it meets a bar.
 
 That thing has a name.
 
@@ -34,7 +34,7 @@ One thing your skill can do that you did not try today: run on a schedule.
 
 Claude Code ships three scheduling primitives. A Desktop local task for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
 
-Three places this fits naturally. A standing verifier run — the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep — the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring — a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
+Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep — the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring — a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 
 Keep the primitive in the kit. You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The scheduled-agents reference page in the content folder walks through the specifics. ([Scheduled agents](../reference/scheduled-agents.md).)
 
@@ -42,7 +42,7 @@ Keep the primitive in the kit. You do not have to wire it today. You do need to 
 
 The specific Claude you used today will be replaced. Probably within months. Opus 4.7 will be Opus 4.8, then something with a different name. Every one of those models will be better at the work than the current one. None of that changes the move.
 
-The three pieces Ronacher named — reference, plan, verifier — are not model features. The encode loop you ran at M6 — diff, name the gaps, package the learning — is not a model feature. They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
+The three pieces Ronacher named (reference, plan, verifier) are not model features. The encode loop you ran at M6 (diff, name the gaps, package the learning) is not a model feature. They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
 
 That stance survives every model change. Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
 
@@ -52,14 +52,14 @@ Two bridges. The room picks one.
 
 **Core close.** You walk out of M6 holding the move. Monday morning, pick one multi-hour task from your real backlog. The one you have been avoiding because it is too big to hold in your head. Assemble the reference. Open a `plan.md` the agent owns. Point a verifier at the output. Run. Read the artefact. Name the gap. Encode. That is the training continuing without a trainer in the room.
 
-**Into M7.** If the cohort continues to deliberation, the agent you built across six modules is about to meet other agents. Each engineer brings their stack — their rules, their memory, their skills, their kit. The room deliberates live on a real engineering problem the CTO is actually sitting on. What makes that deliberation work is what you raised together over six modules. The kit is already in the room.
+**Into M7.** If the cohort continues to deliberation, the agent you built across six modules is about to meet other agents. Each engineer brings their stack: their rules, their memory, their skills, their kit. The room deliberates live on a real engineering problem the CTO is actually sitting on. What makes that deliberation work is what you raised together over six modules. The kit is already in the room.
 
 Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-25 (REVISE: cut em-dashes L9/L37/L55; rewrite L45 4-em-dash sentence into 3 short sentences; pre-cohort source verification per maintainer; capability recheck on /schedule and /loop)
+**Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared L9/L37/L45/L55; check_student_facing, check_lectures meta-frame closer, check_strategy_tie_in. Pre-cohort: verify Intercom Curran 19.2%/14.6/75.8/86%/500-people numbers + capability recheck on `/schedule` and `/loop` per check_platform_and_boundaries.)
 **Word count:** ~950 words body.
 
 **Time:** 15–18 min at presentation pace.

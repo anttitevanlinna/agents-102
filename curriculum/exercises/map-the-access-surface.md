@@ -31,7 +31,7 @@ Answer the one-sentence feature question. Let the skill run. It'll read the code
 
 ## Phase 2: walk the map in conversation (~3 min)
 
-Ask Claude to walk you through the surface map in chat — categories, key findings, ambiguous spots — so you've seen the structured read before deciding your deltas in Phase 3.
+Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you've seen the structured read before deciding your deltas in Phase 3.
 
 **Prompt** *(Claude Code)*
 
@@ -77,7 +77,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-25 (check_writing, check_student_facing #14 — line 34 narrative em-dashes to swap to parens, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy)
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 3 / 7 / 3)
 - **Primary Bloom's level:** Apply + Evaluate

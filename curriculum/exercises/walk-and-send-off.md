@@ -109,13 +109,13 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 
 1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence — integrates, sharpens, removes — and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
-3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in (macOS: `caffeinate -dims`; Linux/Windows: power-plan → prevent sleep). Don't close the lid — sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish (mid-tool Ctrl+C can corrupt the session's `.jsonl` and break resume); clean interrupts between tool calls are fine. Traces are data either way.
+3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in (macOS: `caffeinate -dims`; Linux/Windows: power-plan → prevent sleep). Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish (mid-tool Ctrl+C can corrupt the session's `.jsonl` and break resume); clean interrupts between tool calls are fine. Traces are data either way.
 
 See the module file for the two Debrief prompts.
 
 <!-- maintainer -->
 
-**Quality:** approve-with-todos 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing #14 — line 112 narrative em-dash to fix + #21 agent-vocab, check_pedagogy progression-with-variations, check_prompts)
+**Quality:** compendium-audited 2026-04-26 (check_writing v2026-04-25 voice-quartet, check_student_facing #14 + #21 agent-vocab, check_pedagogy progression-with-variations, check_prompts)
 
 **Word count:** ~750 words body.
 

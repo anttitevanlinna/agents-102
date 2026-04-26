@@ -4,7 +4,7 @@
 
 ---
 
-Two moves today. You're going to INVOKE two skills this module — one for access-control analysis, one for STRIDE threat modeling. Both were written by us, curated from people who earned the right to teach this. Then you're going to AUTHOR one skill yourself — a test-strategy skill tuned to your codebase. Not written for you. Written by you, in conversation with Claude.
+Two moves today. You're going to INVOKE two skills this module: one for access-control analysis, one for STRIDE threat modeling. Both were written by us, curated from people who earned the right to teach this. Then you're going to AUTHOR one skill yourself: a test-strategy skill tuned to your codebase. Not written for you. Written by you, in conversation with Claude.
 
 That split isn't accidental. It's a claim about what you can produce well on a Tuesday afternoon and what you can't.
 
@@ -16,19 +16,19 @@ Skills are how agentic knowledge compounds across teammates. A Slack thread abou
 
 ## The three voices in the room today
 
-**Voice one — historical practitioners.** The two security skills you'll invoke didn't spring from nowhere. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo (yes, that old — threat modeling predates most web frameworks you use). Adam Shostack sharpened it into a discipline in *Threat Modeling: Designing for Security* (2014); if you buy one security book this year, it's that. Access-control analysis threads back further — Saltzer & Schroeder's 1975 paper on the least-privilege principle is still the most-cited piece of computer security writing for a reason.
+**Voice one: historical practitioners.** The two security skills you'll invoke didn't spring from nowhere. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo (yes, that old; threat modeling predates most web frameworks you use). Adam Shostack sharpened it into a discipline in *Threat Modeling: Designing for Security* (2014); if you buy one security book this year, it's that. Access-control analysis threads back further. Saltzer & Schroeder's 1975 paper on the least-privilege principle is still the most-cited piece of computer security writing for a reason.
 
 We curated these skills because doing STRIDE well is the kind of thing a senior security engineer does in their head after ten years of practice. You can learn it. You shouldn't re-derive it from scratch in twenty minutes.
 
-**Voice two — you, right now.** The test-strategy skill you'll author doesn't have a curated version we could ship. Here's why: a good test strategy on your codebase depends on what you already know — which framework you use, where the flaky tests actually fail, what a "unit test" means in a system that talks to five external services, which regressions have historically slipped through review. Nobody outside your team can write that skill well. We shouldn't try.
+**Voice two: you, right now.** The test-strategy skill you'll author doesn't have a curated version we could ship. Here's why: a good test strategy on your codebase depends on what you already know: which framework you use, where the flaky tests actually fail, what a "unit test" means in a system that talks to five external services, which regressions have historically slipped through review. Nobody outside your team can write that skill well. We shouldn't try.
 
-You can. Because you'll author it the way the training authors everything — through conversation with Claude, not by hand-crafting markdown. Claude asks you what it needs to encode the skill. You push back where your codebase doesn't fit the default. The skill comes out tuned to your system because YOU fed it your system.
+You can. Because you'll author it the way the training authors everything: through conversation with Claude, not by hand-crafting markdown. Claude asks you what it needs to encode the skill. You push back where your codebase doesn't fit the default. The skill comes out tuned to your system because YOU fed it your system.
 
-**Voice three — the team kit, starting today.** The skill you author at the end of this module ships to the team kit. The home your sponsor named in the pre-engagement contract: shared Git repo, monorepo `.claude/` directory, whatever your team landed on. The first file lands there today. Intercom's 267-skill plugin repo (31% of R&D contributing) was born the same way — one engineer's contribution, then another, then accretion. Not a platform-team design document.
+**Voice three: the team kit, starting today.** The skill you author at the end of this module ships to the team kit. The home your sponsor named in the pre-engagement contract: shared Git repo, monorepo `.claude/` directory, whatever your team landed on. The first file lands there today. Intercom's 267-skill plugin repo (31% of R&D contributing) was born the same way: one engineer's contribution, then another, then accretion. Not a platform-team design document.
 
 ## Why this proportion matters
 
-Two curated, one authored. The ratio tracks the claim we make about the training: *we curate the best practitioner moves; you build what you know best, which is your own system.* Flipped the other way — three authored skills — and you'd be reinventing STRIDE on a Tuesday. Flipped the other way again — three curated skills — and you'd leave with no authored skills of your own, and the team kit wouldn't be born here. This proportion is deliberate.
+Two curated, one authored. The ratio tracks the claim we make about the training: *we curate the best practitioner moves; you build what you know best, which is your own system.* Flipped the other way (three authored skills) and you'd be reinventing STRIDE on a Tuesday. Flipped the other way again (three curated skills) and you'd leave with no authored skills of your own, and the team kit wouldn't be born here. This proportion is deliberate.
 
 ## What "earn the trust" means
 
@@ -42,17 +42,17 @@ None of those are compliance artifacts. They're the thinking, written down. The 
 
 ## What to watch for while you work
 
-- **Ex1:** the access-control skill will flag surfaces. Your job isn't to agree — your job is to decide what it got right, what it underweighted, what it missed that you know matters.
+- **Ex1:** the access-control skill will flag surfaces. Your job isn't to agree; your job is to decide what it got right, what it underweighted, what it missed that you know matters.
 - **Ex2:** STRIDE does the breadth, you make one call. Resist the urge to harden against everything. Pick one. Write the ADR.
 - **Ex3:** when you author the test-strategy skill, Claude will offer you a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
-- **Across all three:** skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name — you don't point at a path. The one you author lands at the team-kit path your sponsor named. Don't invent new homes.
+- **Across all three:** skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name. You don't point at a path. The one you author lands at the team-kit path your sponsor named. Don't invent new homes.
 
 Go.
 
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-25 (REVISE: cut em-dashes lines 7/19/23/25/27/31/45/48 per check_student_facing #14; verify Intercom 267-skill / 31% numbers against observation file)
+**Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared; check_student_facing, check_lectures opener, check_strategy_tie_in. Pre-cohort: verify Intercom 267-skill / 31%-of-R&D numbers against `continuous-research/observations/intercom.md` per check_research_claims.)
 **Meta (trainer):**
 - **Time:** 10–12 minutes
 - **Primary Bloom's level:** Understand + Apply (primes three exercises)

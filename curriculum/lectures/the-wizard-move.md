@@ -12,21 +12,21 @@ The same question. Two answers. What makes the difference?
 
 Two Claude chat windows.
 
-In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian — pasta, osso buco, risotto.
+In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
 
-In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish — salmon, rye bread, meatballs.
+In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs.
 
 Same words. Different answer. The first exchange became context, and the context colored everything after.
 
-Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works — and what you're about to learn.
+Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
 
-One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking — because you told it who you are, and every answer after took that into account.
+One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
 
 Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.
 
 That's the move. Not a clever prompt, not a slash command you didn't know. Loading the right context before the question. Everything else in this training is about how to earn the second window on any codebase, any Monday.
 
-You'll watch what's *possible* — not what's missing. That's the posture of this training.
+You'll watch what's *possible*. Not what's missing. That's the posture of this training.
 
 ## The population we're teaching
 
@@ -34,7 +34,7 @@ Every engineer in this room is self-taught on Claude Code. Nobody sat you down w
 
 So do the people around you.
 
-In the Connections question you just answered — the trick you brought — the room gets its first leveling move. Everyone's partial, including us. The training pools what's partial into a shared floor, then raises the ceiling.
+In the Connections question you just answered (the trick you brought), the room gets its first leveling move. Everyone's partial, including us. The training pools what's partial into a shared floor, then raises the ceiling.
 
 ## What this training refuses to do
 
@@ -53,7 +53,7 @@ You become the Claude wizard by running the loop on real work and letting the ha
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-25 (REVISE: cut em-dashes lines 15/17/21/23/29/37 — list-introducers convert to colons, parenthetical-pairs to parens)
+**Quality:** compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
 - **Runtime:** 10 min. 5–7 min lecture prose + 3 min live two-session demo on the volunteer's codebase.

@@ -31,7 +31,7 @@ Read Claude's summary. Push back where it misreads. Quote the moment. That push-
 
 > **Quick timebox note.** Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework. If a tenant gate blocks the install, take the fallback path and move on.
 
-## MCP — why your agent needs to reach outside the repo (~5 min)
+## MCP: why your agent needs to reach outside the repo (~5 min)
 
 Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](../reference/mcp-and-connectors.md).
 
@@ -74,7 +74,7 @@ You ran the loop. You have a PR, a rules file born from session evidence, and a 
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-25 (check_writing, check_student_facing #14 — header em-dash line 34 to swap to colon, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).
 - **Time:** 30 min inside M1's 2h slot. Third of three exercises on the same bug / same repo.

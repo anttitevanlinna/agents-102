@@ -4,14 +4,14 @@ Land at Module 1 with Claude Code open in the repo you're going to grow, the con
 
 ## 0. Confirm the laptop is ready (2 min)
 
-You should have got an onboarding email about a week ago. If you ran through it, skim this and move on. If you didn't, run the four checks now — Module 1 assumes all four are green.
+You should have got an onboarding email about a week ago. If you ran through it, skim this and move on. If you didn't, run the four checks now. Module 1 assumes all four are green.
 
 - **Claude Pro or Team license, active.** Sign in at claude.ai. Confirm your account shows the plan.
 - **Claude Code installed and reachable.** AE101 runs on the Claude Code CLI by default; the desktop app is fine too if you prefer it. Open Claude Code, send any prompt, confirm a real response comes back.
 - **A repo you own or co-own.** Step 1 below has the full criteria; for now, confirm one comes to mind.
 - **Network and `~/Documents` writable.** From the network you'll use during the training, confirm Claude Code responds at normal speed and that you can write files under `~/Documents/`.
 
-If any of the four is broken, fix it before Step 1. Reply to the onboarding email if you need help — the trainer would rather sort it now than at the start of Module 1.
+If any of the four is broken, fix it before Step 1. Reply to the onboarding email if you need help. The trainer would rather sort it now than at the start of Module 1.
 
 ## 1. Pick THE repo (10 min)
 
@@ -40,7 +40,7 @@ In the Claude Code session you just opened, run this slash command. No edits nee
 /add-dir ~/Documents/ae101-content
 ```
 
-Session-only for now. M1's compound step pins it permanently to `.claude/settings.local.json` so future sessions load it automatically. (If you unzipped somewhere else, swap the path — but the canonical location is what every later prompt assumes.)
+Session-only for now. M1's compound step pins it permanently to `.claude/settings.local.json` so future sessions load it automatically. (If you unzipped somewhere else, swap the path; the canonical location is what every later prompt assumes.)
 
 ## 5. Let Claude walk you through the rest (12 min)
 
@@ -67,7 +67,7 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 <!-- maintainer -->
 
-**Quality:** approve-with-todos 2026-04-25 (check_writing; check_student_facing #14 — body em-dashes lines 7/14/43 to split; check_prompts; check_pedagogy §11)
+**Quality:** compendium-audited 2026-04-26 (check_writing; check_student_facing #14 + #21; check_prompts; check_pedagogy §11)
 
 **Meta:**
 - **Runtime:** 30 min target. Steps 1–4 are crisp; step 5 is where time can expand if the student's repo is messy.

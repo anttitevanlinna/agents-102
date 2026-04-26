@@ -5,7 +5,7 @@ Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to n
 
 ## Meta
 - **Primary Bloom's level:** Analyze + Evaluate + Create (diagnose, judge, build)
-- **Prework:** none beyond holding the M4 un-packaged artefact and the M5 packaged re-run accessible — both live in your repo and scrollback
+- **Prework:** none beyond holding the M4 un-packaged artefact and the M5 packaged re-run accessible. Both live in your repo and scrollback
 - **Homework:** none. M6 closes the core. For M7/M8 cohorts the bridge carries into agents-meet-agents deliberation; for core-only cohorts the bridge is Monday-morning real work
 - **Materials (trainer):** none. Two runs in your repo, conversation, and your authored second skill carry the module
 - **Plug points:** your two artefacts (M4 un-packaged, M5 packaged); your team's shared-skills home (second-skill ship destination for team-PR candidates); your team's shared-memory home (where gaps-belong-in-memory land)
@@ -13,14 +13,14 @@ Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to n
 ## What You'll Learn
 After this module, you will be able to:
 - **Diagnose** (Analyze) the packaged M5 run alongside the un-packaged M4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
-- **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill — using two runs' evidence, not prescription.
+- **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill, using two runs' evidence, not prescription.
 - **Author** (Create) the second skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
-- **Name** (Understand) evals with full weight — verifier = judge = gate = eval — anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
+- **Name** (Understand) evals with full weight (verifier = judge = gate = eval), anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
 - **Articulate** (Evaluate) one key learning and one personal thought on the future in the Debrief round. Not a performance; a marker of where your practice stands after six modules.
 
 ## Connections
 
-You walk in holding two runs of the same task. The un-packaged M4 send-off. The packaged M5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate — and a shape for what to do about each one.
+You walk in holding two runs of the same task. The un-packaged M4 send-off. The packaged M5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
 ## Lectures (before the exercise)
 
@@ -34,7 +34,7 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
-- The second authored skill IS the loop — it packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with M3
+- The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with M3
 - Encoding is the third phase of test → learn → encode. Two runs tested; this module's reading learned; the skill encodes
 
 **Themes landing in this module:**
@@ -57,7 +57,7 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 **Core-only cohorts:** On Monday, pick a task your team is sitting on, send it off packaged, read the return through the lens you just built. The loop is yours now.
 
-**M7/M8 cohorts:** Your agent stack — codebase memory, two authored skills, verifier, team-kit contributions — arrives at M7 as a first-class participant. Agents meet agents on a real engineering problem.
+**M7/M8 cohorts:** Your agent stack (codebase memory, two authored skills, verifier, team-kit contributions) arrives at M7 as a first-class participant. Agents meet agents on a real engineering problem.
 
 ## When to reach for parallel worktrees
 
@@ -72,7 +72,7 @@ Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and pr
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-26 (check_student_facing #14 — body em-dashes lines 8/16/18/23/37/60 to split; check_strategy_tie_in §6 — standalone Themes section to convert to inline breadcrumbs; check_writing; check_pedagogy; check_lectures. `practice`-as-noun lines 19+88 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
+**Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared L8/L16/L18/L23/L37/L60; check_strategy_tie_in §6 — standalone Themes section L40-43 to convert to inline Key Concept breadcrumbs; check_pedagogy; check_lectures. `practice`-as-noun lines 19+88 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).

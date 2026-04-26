@@ -33,7 +33,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
 ## Key Concepts (Emergent)
-- A curated skill is upstream practice packaged for you to invoke. You don't re-derive it
+- A curated skill is upstream work packaged for you to invoke. You don't re-derive it
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; breadth is the team kit's job across many students, not yours in 20 minutes
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's
@@ -74,7 +74,7 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-25 (check_writing — `practice`-as-noun line 36 to fix; check_student_facing #21; check_pedagogy progression-with-variations; check_prompts; check_strategy_tie_in; check_lectures)
+**Quality:** compendium-audited 2026-04-26 (check_writing; check_student_facing #21; check_pedagogy progression-with-variations; check_prompts; check_strategy_tie_in; check_lectures)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.

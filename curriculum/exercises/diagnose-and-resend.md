@@ -134,7 +134,7 @@ Read both files. Push back if the reference reads like generic best practices in
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-25 (REVISE: `substrate` banned-word line 159 maintainer block — replace with `source material` or `input` before re-tagging compendium-audited)
+**Quality:** compendium-audited 2026-04-26 (check_writing — `substrate` swapped to `source material` line 159; check_student_facing, check_prompts, check_pedagogy)
 
 **Word count:** ~810 words body.
 
@@ -156,7 +156,7 @@ Read both files. Push back if the reference reads like generic best practices in
 - **Phase 4 plan.md-as-project-plan** — student writes a Gantt-shaped plan instead of an agent-mutable document. Diagnostic: the plan.md has a "current phase" line the agent updates and a "decisions log" the agent appends to. If neither, redo.
 
 **Plug points:**
-- Student's own M4 artefact (Phase 1 substrate)
+- Student's own M4 artefact (Phase 1 source material)
 - Repo's existing CI / hook / pre-commit conventions (Phase 3 shell-hook integration)
 - Sponsor-stated task-scoped folder convention (Phase 4 file paths)
 

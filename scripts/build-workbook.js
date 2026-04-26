@@ -167,6 +167,12 @@ const SPA_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'u
 const WORKBOOK_INIT_JS = `
 (function () {
   if (window.CurriculumRuntime) {
+    // Numbered hero per module (lifts H1 + Big Idea into module-hero block).
+    var trainingKey = document.body.getAttribute('data-training');
+    document.querySelectorAll('main > section.module').forEach(function (mod) {
+      var num = CurriculumRuntime.moduleNumber(trainingKey, mod.id);
+      CurriculumRuntime.buildModuleHero(mod, num);
+    });
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.installReadingProgress();
   }
@@ -202,7 +208,7 @@ const WORKBOOK_INIT_JS = `
 })();
 `;
 
-function template(title, content) {
+function template(title, content, trainingKey) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,7 +217,7 @@ function template(title, content) {
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
 </head>
-<body class="runtime-cli workbook">
+<body class="runtime-cli workbook" data-training="${trainingKey}">
 ${content}
 <script>${SPA_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
@@ -235,7 +241,7 @@ if (!CR.TRAININGS[trainingKey]) {
 const outDir = path.join(ROOT, 'site/clients', customer);
 fs.mkdirSync(outDir, { recursive: true });
 const body = buildBody(trainingKey, customer);
-const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body);
+const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
 const outFile = path.join(outDir, 'index.html');
 fs.writeFileSync(outFile, html);
 

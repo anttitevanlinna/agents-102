@@ -89,48 +89,12 @@
             //  - no plan mode in Cowork (use prompt-level discipline instead)
             //  - terminology: subagent (Code), agent (Cowork)
             // ============================================================
-            var RUNTIME_KEY = 'agents102-runtime';
-            var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
-            var DEFAULT_RUNTIME = 'cowork';
-            var trainingSupportsRuntimeSwitch = (trainingKey === 'bootstrap');
-
-            function getRuntime() {
-                if (!trainingSupportsRuntimeSwitch) return 'cli'; // AE101 lives in the CLI
-                var stored = null;
-                try { stored = window.localStorage.getItem(RUNTIME_KEY); } catch (e) {}
-                return VALID_RUNTIMES[stored] ? stored : DEFAULT_RUNTIME;
-            }
-
-            function applyRuntime(runtime) {
-                document.body.classList.remove('runtime-cli', 'runtime-desktop', 'runtime-cowork');
-                document.body.classList.add('runtime-' + runtime);
-                var sw = document.getElementById('runtime-switcher');
-                if (!sw) return;
-                if (!trainingSupportsRuntimeSwitch) { sw.hidden = true; return; }
-                sw.hidden = false;
-                var btns = sw.querySelectorAll('.runtime-switcher-btn');
-                for (var i = 0; i < btns.length; i++) {
-                    btns[i].classList.toggle('is-active', btns[i].getAttribute('data-runtime') === runtime);
-                }
-            }
-
-            function setRuntime(runtime) {
-                if (!trainingSupportsRuntimeSwitch) return;
-                if (!VALID_RUNTIMES[runtime]) return;
-                try { window.localStorage.setItem(RUNTIME_KEY, runtime); } catch (e) {}
-                applyRuntime(runtime);
-            }
-
-            // Wire toggle clicks once at boot.
-            (function wireRuntimeSwitcher() {
-                var sw = document.getElementById('runtime-switcher');
-                if (!sw) return;
-                sw.addEventListener('click', function (ev) {
-                    var t = ev.target;
-                    if (!t || t.tagName !== 'BUTTON') return;
-                    setRuntime(t.getAttribute('data-runtime'));
-                });
-            })();
+            // Runtime switcher logic lives in layouts/curriculum.js (shared).
+            // SPA wires once at boot below.
+            function getRuntime() { return CurriculumRuntime.getRuntime(trainingKey); }
+            function applyRuntime(runtime) { CurriculumRuntime.applyRuntime(trainingKey, runtime); }
+            function setRuntime(runtime) { CurriculumRuntime.setRuntime(trainingKey, runtime); }
+            CurriculumRuntime.wireRuntimeSwitcher(trainingKey);
 
             applyRuntime(getRuntime());
 
@@ -221,16 +185,7 @@
                 var kind = null;
                 if (directFile.indexOf('exercises/') === 0) kind = 'exercise';
                 else if (directFile.indexOf('lectures/') === 0) kind = 'lecture';
-                if (!kind) return;
-
-                var section = document.createElement('section');
-                section.className = 'phase phase--' + kind;
-                var kicker = document.createElement('div');
-                kicker.className = 'phase-kicker';
-                kicker.textContent = kind;
-                section.appendChild(kicker);
-                while (container.firstChild) section.appendChild(container.firstChild);
-                container.appendChild(section);
+                CurriculumRuntime.wrapStandaloneInPhase(container, kind);
             }
 
             // Top breadcrumb: appears on every module / standalone-file / training-index page.
@@ -250,47 +205,9 @@
             // editorial hero: module number, title, italic big-idea line. Removes the
             // now-redundant "## Big Idea" heading + paragraph from the body so the
             // student isn't reading the same sentence twice.
+            // buildModuleHero lives in layouts/curriculum.js (shared).
             function buildModuleHero(modRef) {
-                var h1 = container.querySelector('h1');
-                if (!h1) return;
-
-                var bigIdeaHtml = null;
-                var h2s = container.querySelectorAll('h2');
-                for (var i = 0; i < h2s.length; i++) {
-                    if (h2s[i].textContent.trim().toLowerCase() === 'big idea') {
-                        var sib = h2s[i].nextElementSibling;
-                        if (sib && sib.tagName === 'P') {
-                            bigIdeaHtml = sib.innerHTML;
-                            sib.remove();
-                        }
-                        h2s[i].remove();
-                        break;
-                    }
-                }
-
-                var allModules = training.modules.concat(training.optionalModules || []);
-                var idx = allModules.findIndex(function (m) { return m.slug === modRef.slug; });
-                var num = idx >= 0 ? String(idx + 1).padStart(2, '0') : null;
-
-                var hero = document.createElement('header');
-                hero.className = 'module-hero';
-                if (num) {
-                    var n = document.createElement('div');
-                    n.className = 'module-hero-num';
-                    n.textContent = num;
-                    hero.appendChild(n);
-                }
-                var titleClone = h1.cloneNode(true);
-                titleClone.classList.add('module-hero-title');
-                hero.appendChild(titleClone);
-                if (bigIdeaHtml) {
-                    var big = document.createElement('p');
-                    big.className = 'module-hero-big';
-                    big.innerHTML = bigIdeaHtml;
-                    hero.appendChild(big);
-                }
-                h1.parentNode.insertBefore(hero, h1);
-                h1.remove();
+                CurriculumRuntime.buildModuleHero(container, CurriculumRuntime.moduleNumber(trainingKey, modRef.slug));
             }
 
             // Bottom nav:
@@ -504,13 +421,7 @@
             // so the slot stays empty; hydrateBigIdeas fills it via fetch.
             var cardHtml = CurriculumRuntime.cardHtml;
 
-            function simpleRowHtml(kind, title, href) {
-                return '<li><a href="' + href + '">' +
-                       '<span class="supp-kind">' + esc(kind) + '</span>' +
-                       '<span class="supp-title">' + esc(title) + '</span>' +
-                       '<span class="module-arrow">→</span>' +
-                       '</a></li>';
-            }
+            var simpleRowHtml = CurriculumRuntime.simpleRowHtml;
 
             function hydrateBigIdeas(t) {
                 var items = [];
@@ -534,21 +445,9 @@
             }
 
             // Extract the first non-empty line under "## Big Idea" (up to the next heading).
-            function extractBigIdea(md) {
-                var m = md.match(/^##\s+Big Idea\s*\n+([\s\S]*?)(?=\n##\s|$)/m);
-                if (!m) return null;
-                var body = m[1].trim();
-                // Take the first paragraph only.
-                var firstPara = body.split(/\n\s*\n/)[0].trim();
-                // Collapse internal newlines.
-                firstPara = firstPara.replace(/\s*\n\s*/g, ' ');
-                return firstPara;
-            }
+            var extractBigIdea = CurriculumRuntime.extractBigIdea;
 
-            // Turn *word* into a gradient-accented italic span. Escapes everything else.
-            function renderAccents(s) {
-                return esc(s).replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
-            }
+            var renderAccents = CurriculumRuntime.renderAccents;
 
             // ============================================================
             // Prompt block decoration

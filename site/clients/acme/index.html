@@ -1653,7 +1653,7 @@ body.workbook { padding-top: 3rem; }
 }
 </style>
 </head>
-<body class="runtime-cli workbook">
+<body class="runtime-cli workbook" data-training="agentic-engineering-101">
 <nav class="workbook-topnav" aria-label="Workbook navigation">
   <a class="workbook-topnav__home" href="#top">Agentic Engineering 101 — acme</a>
   <ol class="workbook-topnav__modules">
@@ -3026,6 +3026,54 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 
     var DEFAULT_TRAINING = 'bootstrap';
 
+    // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
+    var RUNTIME_KEY = 'agents102-runtime';
+    var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
+    var DEFAULT_RUNTIME = 'cowork';
+
+    function trainingSupportsRuntimeSwitch(trainingKey) {
+        return trainingKey === 'bootstrap';
+    }
+
+    function getRuntime(trainingKey) {
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) return 'cli';
+        var stored = null;
+        try { stored = window.localStorage.getItem(RUNTIME_KEY); } catch (e) {}
+        return VALID_RUNTIMES[stored] ? stored : DEFAULT_RUNTIME;
+    }
+
+    function applyRuntime(trainingKey, runtime) {
+        document.body.classList.remove('runtime-cli', 'runtime-desktop', 'runtime-cowork');
+        document.body.classList.add('runtime-' + runtime);
+        var sw = document.getElementById('runtime-switcher');
+        if (!sw) return;
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) { sw.hidden = true; return; }
+        sw.hidden = false;
+        var btns = sw.querySelectorAll('.runtime-switcher-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.toggle('is-active', btns[i].getAttribute('data-runtime') === runtime);
+        }
+    }
+
+    function setRuntime(trainingKey, runtime) {
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) return;
+        if (!VALID_RUNTIMES[runtime]) return;
+        try { window.localStorage.setItem(RUNTIME_KEY, runtime); } catch (e) {}
+        applyRuntime(trainingKey, runtime);
+    }
+
+    function wireRuntimeSwitcher(trainingKey) {
+        var sw = document.getElementById('runtime-switcher');
+        if (!sw) return;
+        sw.addEventListener('click', function (ev) {
+            var t = ev.target;
+            if (t && t.classList.contains('runtime-switcher-btn')) {
+                var rt = t.getAttribute('data-runtime');
+                if (rt) setRuntime(trainingKey, rt);
+            }
+        });
+    }
+
     // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
     var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
@@ -3057,9 +3105,21 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
     }
 
     // Extract the first paragraph after `## Big Idea` from a module's markdown.
+    // Returns null when the section is missing (matches SPA's hydrate semantics).
     function extractBigIdea(md) {
-        var m = md.match(/^##\s*Big Idea\s*\n([^\n]+(?:\n(?!#)[^\n]+)*)/m);
-        return m ? m[1].trim() : '';
+        var m = md.match(/^##\s+Big Idea\s*\n+([\s\S]*?)(?=\n##\s|$)/m);
+        if (!m) return null;
+        var body = m[1].trim();
+        // Take the first paragraph only.
+        var firstPara = body.split(/\n\s*\n/)[0].trim();
+        // Collapse internal newlines so card chrome lays out cleanly.
+        return firstPara.replace(/\s*\n\s*/g, ' ');
+    }
+
+    // Turn *word* into a `.accent` span; escape everything else.
+    // Used by the SPA training-index lede.
+    function renderAccents(s) {
+        return esc(s).replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
     }
 
     // ── DOM runtime (browser only) ──────────────────────────────────────────
@@ -3157,6 +3217,89 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
         });
     }
 
+    // Compute the 2-digit number for a module slug within a training.
+    // Prework = "00", modules = "01"..., optionalModules continue from there.
+    function moduleNumber(trainingKey, slug) {
+        var t = TRAININGS[trainingKey];
+        if (!t) return null;
+        if (t.prework && t.prework.slug === slug) return '00';
+        var i = t.modules.findIndex(function (m) { return m.slug === slug; });
+        if (i >= 0) return String(i + 1).padStart(2, '0');
+        if (t.optionalModules) {
+            var j = t.optionalModules.findIndex(function (m) { return m.slug === slug; });
+            if (j >= 0) return String(t.modules.length + j + 1).padStart(2, '0');
+        }
+        return null;
+    }
+
+    // Pull the H1 + Big Idea out of a rendered module element and replace
+    // them with a numbered hero block. Used by both SPA (one module per page)
+    // and workbook (every module section, on init).
+    function buildModuleHero(moduleEl, num) {
+        var h1 = moduleEl.querySelector('h1');
+        if (!h1 || h1.closest('.module-hero')) return;
+
+        var bigIdeaHtml = null;
+        var h2s = moduleEl.querySelectorAll(':scope > h2');
+        for (var i = 0; i < h2s.length; i++) {
+            if (h2s[i].textContent.trim().toLowerCase() === 'big idea') {
+                var sib = h2s[i].nextElementSibling;
+                if (sib && sib.tagName === 'P') {
+                    bigIdeaHtml = sib.innerHTML;
+                    sib.remove();
+                }
+                h2s[i].remove();
+                break;
+            }
+        }
+
+        var hero = document.createElement('header');
+        hero.className = 'module-hero';
+        if (num) {
+            var n = document.createElement('div');
+            n.className = 'module-hero-num';
+            n.textContent = num;
+            hero.appendChild(n);
+        }
+        var titleClone = h1.cloneNode(true);
+        titleClone.classList.add('module-hero-title');
+        hero.appendChild(titleClone);
+        if (bigIdeaHtml) {
+            var big = document.createElement('p');
+            big.className = 'module-hero-big';
+            big.innerHTML = bigIdeaHtml;
+            hero.appendChild(big);
+        }
+        h1.parentNode.insertBefore(hero, h1);
+        h1.remove();
+    }
+
+    // Standalone exercise / lecture pages get the same phase wrapper they
+    // wear when embedded inside a parent module. Pass the container element
+    // and the kind ('exercise' | 'lecture').
+    function wrapStandaloneInPhase(container, kind) {
+        if (!kind || (kind !== 'exercise' && kind !== 'lecture')) return;
+        if (container.querySelector(':scope > .phase')) return; // already wrapped
+        var section = document.createElement('section');
+        section.className = 'phase phase--' + kind;
+        var kicker = document.createElement('div');
+        kicker.className = 'phase-kicker';
+        kicker.textContent = kind;
+        section.appendChild(kicker);
+        while (container.firstChild) section.appendChild(container.firstChild);
+        container.appendChild(section);
+    }
+
+    // Supplementary / reference rows on the training index. Different shape
+    // from cardHtml — flat row with kind label + title.
+    function simpleRowHtml(kind, title, href) {
+        return '<li><a href="' + href + '">' +
+               '<span class="supp-kind">' + esc(kind) + '</span>' +
+               '<span class="supp-title">' + esc(title) + '</span>' +
+               '<span class="module-arrow">→</span>' +
+               '</a></li>';
+    }
+
     function installReadingProgress() {
         if (document.querySelector('.reading-progress')) return;
         var bar = document.createElement('div');
@@ -3207,13 +3350,31 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
         // DOM (browser only)
         decoratePrompts: decoratePrompts,
         addCopyButton: addCopyButton,
-        installReadingProgress: installReadingProgress
+        installReadingProgress: installReadingProgress,
+        buildModuleHero: buildModuleHero,
+        moduleNumber: moduleNumber,
+        wrapStandaloneInPhase: wrapStandaloneInPhase,
+        simpleRowHtml: simpleRowHtml,
+        renderAccents: renderAccents,
+
+        // Runtime switcher
+        getRuntime: getRuntime,
+        applyRuntime: applyRuntime,
+        setRuntime: setRuntime,
+        wireRuntimeSwitcher: wireRuntimeSwitcher,
+        trainingSupportsRuntimeSwitch: trainingSupportsRuntimeSwitch
     };
 });
 </script>
 <script>
 (function () {
   if (window.CurriculumRuntime) {
+    // Numbered hero per module (lifts H1 + Big Idea into module-hero block).
+    var trainingKey = document.body.getAttribute('data-training');
+    document.querySelectorAll('main > section.module').forEach(function (mod) {
+      var num = CurriculumRuntime.moduleNumber(trainingKey, mod.id);
+      CurriculumRuntime.buildModuleHero(mod, num);
+    });
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.installReadingProgress();
   }

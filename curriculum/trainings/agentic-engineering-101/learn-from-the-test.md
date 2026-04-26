@@ -35,6 +35,7 @@ You sent off an un-packaged run at the close of M4 and read the pre-read. You wa
 - The three-pattern (Ronacher) is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
 - The three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson. No lecture replicates this
+- **Practice beats external proof.** You read the failure in your own artefact, named the three modes from what you saw, and shaped the validation yourself. No benchmark told you what went wrong; the run did. From here, that's the discipline that carries the work
 - Your verifier is your first eval. M6 gives evals their full weight as team infrastructure
 - The kit grows: subagents for context isolation and `/compact` at ~60% extend session length without packaging. Worth knowing alongside the three-pattern
 

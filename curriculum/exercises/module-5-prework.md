@@ -81,7 +81,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - **"Revision repeated the failure"** — the Deloitte detail illustrates why the DISCIPLINE beats the ONE-TIME ACKNOWLEDGEMENT, reinforcing M4's "practice beats proof" carryover.
 
 **Philosophy callout (sparing):**
-- Belief #14 — practice beats proof — lives in the Deloitte revision-failure detail. Student reads it; belief is earned without naming.
+- Belief #14 — practice beats external proof — lives in the Deloitte revision-failure detail. Student reads it; belief is earned without naming.
 
 **Watch-fors for the room (deferred to facilitator notes):**
 - **"But these are old cases."** Mata is 2023. Deloitte is 2025. The pattern holds. Coach: *"The lessons aren't dated. The root-cause visibility is what's rare, and these have it."*

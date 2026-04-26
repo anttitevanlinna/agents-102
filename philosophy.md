@@ -97,13 +97,13 @@ What we do know: agents are being built right now, by real people, solving real 
 
 This directness is the source of trust. The people in the room know when someone is selling certainty they don't have. We'd rather say: "We don't know the destination, but we've walked this terrain, and we'll walk it with you."
 
-## 14. Co-own, don't license
+## 14. Practice beats external proof
 
-The materials, the frameworks, the exercises — co-branded, co-copyright. The organization owns what it builds with us. No lock-in, no certification dependency, no recurring license.
+The frameworks promise certainty: this method works, that benchmark is right, here's the answer. The room nods. The work doesn't change.
 
-This is the anti-SAFe principle. SAFe got the bias to action right but the ownership wrong — SAFe's trains, SAFe's structure, SAFe's certification. The company adapted to SAFe, not SAFe to the company. We take the action bias and fix the ownership.
+What changes the work is the run. Yours, on your task, with your system as it stands. You read what came back. You name the failure modes from what you see, not from a paper. You build the validation that would have caught it next time. The proof was external; the practice is yours.
 
-When you stop working with us, you keep everything. The capability stays inside your organization because the people have it, and the materials are theirs.
+Two runs of the same task with packaging as the only changed variable beats every benchmark, because it answers the only question that matters: did packaging help on YOUR work? A practitioner stops asking which method is best and runs the experiment. The thing you can hold up afterwards is the trace, the diagnosis, the verifier — evidence built by doing, not borrowed from a slide.
 
 ## 15. Everyone becomes a teacher
 
@@ -143,6 +143,14 @@ The other 90% of the company — operations, finance, HR, compliance, customer s
 
 This is a philosophical bet, not just a market positioning choice. We believe the agentic future will be shaped more by what happens in procurement, customer service, and compliance than by what happens in engineering. Engineering will adopt agents first — but the real impact, the real transformation, is in the departments that have never thought of themselves as "technical." Those are the people we teach. That's where the change movement lives.
 
+## 20. Co-own, don't license
+
+The materials, the frameworks, the exercises — co-branded, co-copyright. The organization owns what it builds with us. No lock-in, no certification dependency, no recurring license.
+
+This is the anti-SAFe principle. SAFe got the bias to action right but the ownership wrong — SAFe's trains, SAFe's structure, SAFe's certification. The company adapted to SAFe, not SAFe to the company. We take the action bias and fix the ownership.
+
+When you stop working with us, you keep everything. The capability stays inside your organization because the people have it, and the materials are theirs.
+
 ---
 
 ## How these beliefs connect
@@ -158,7 +166,7 @@ Act on the future (2) → Practice (8, 9) → Discover what you don't know (2)
 → Earned confidence, not false certainty (13)
 ```
 
-Running through it all: generosity (6), fundamentals over tools (12), co-ownership (14), and the flywheel (18) that makes it compound. Applied beyond coding (19), where the real transformation lives. Grounded in people, not technology (4).
+Running through it all: generosity (6), fundamentals over tools (12), the practitioner discipline that beats external proof (14), co-ownership (20), and the flywheel (18) that makes it compound. Applied beyond coding (19), where the real transformation lives. Grounded in people, not technology (4).
 
 You cannot skip steps. You cannot start with vision and work backward to competence. You cannot generalize from a framework you haven't applied. You cannot lead a transformation you haven't experienced.
 

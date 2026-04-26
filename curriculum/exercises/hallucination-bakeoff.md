@@ -290,7 +290,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the Close's still-uncertain line, and in the judge's "Known limit:" line. Both student-written.
-- Belief #14 — practice beats proof — continues from M4. Named in maintainer-space, experienced in body.
+- Belief #14 — practice beats external proof — continues from M4. Named in maintainer-space, experienced in body.
 
 **Plug points:**
 - The briefing target — Module 3 briefing by default; any over-reaching output the student already cares about also works.

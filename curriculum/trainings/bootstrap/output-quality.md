@@ -81,7 +81,7 @@ You ran the benchmark once. Five claims, five detectors, one judge. Now imagine 
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the judge's "Known limit:" line and the Close's `still-uncertain.md` line. Both student-written.
-- Belief #14 — practice beats proof — continues from M4.
+- Belief #14 — practice beats external proof — continues from M4.
 
 **Mood contract — mechanical rescue, not triumph:**
 - M5's rescue is the scoreboard moment — *"ahh, this is actually fixable."* Watching five detectors run and the scorer name a winner with measured reasoning.

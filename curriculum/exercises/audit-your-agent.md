@@ -124,7 +124,7 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the "I can't tell" column and in the residual paragraph. Student writes both; the belief is earned, not announced.
-- Belief #14 — practice beats proof — the whole exercise enacts it. Named in the lecture, lived in the exercise.
+- Belief #14 — practice beats external proof — the whole exercise enacts it. Named in the lecture, lived in the exercise.
 
 **Plug points:**
 - The student's chosen risk — participant-picked in Phase 3 from the two reports. Never prescribed.

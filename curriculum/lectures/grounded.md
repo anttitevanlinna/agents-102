@@ -86,7 +86,7 @@ Now you run the benchmark by hand. Well, not by hand. You set up five detectors,
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
-- Belief #14 — practice beats proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
+- Belief #14 — practice beats external proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
 
 **Why five, not three, and not ten:**
 - Five gives the scoreboard real spread without drowning the student. Three collapses on close races; ten is paralysis.

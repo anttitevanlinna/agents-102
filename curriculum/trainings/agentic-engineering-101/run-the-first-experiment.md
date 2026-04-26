@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Connections
 
-You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you sleep.
+You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you sleep. Three modules in, this is your practice now.
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 

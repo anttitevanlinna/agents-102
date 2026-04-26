@@ -215,6 +215,7 @@ All four areas survive the next model release, the next tool, the next pivot. Sy
 - *Half my agentic bets will miss. That's the curriculum.*
 - *The factory is a direction, not a destination.*
 - *My agent is strongest when it meets other people's agents on a real problem.*
+- *Practice beats external proof. The run is the evidence I can hold up.* (Lands at M5 from felt evidence — the student diagnoses their own un-packaged artefact and shapes the validation themselves; no benchmark, no authority. Philosophy.md §14.)
 
 ## The backbone — memory (three blocks + swarm), IC-scope
 

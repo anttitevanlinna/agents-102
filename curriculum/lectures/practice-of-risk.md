@@ -65,7 +65,7 @@ That's the whole job.
 - **Assess → mitigate → reassess → decide** — classical risk-management loop, reshaped for agent systems. Recognisable to anyone with regulated-industry exposure.
 
 **Philosophy callout (sparing):**
-- Belief #14 — practice beats proof — is the core message. Not announced as a belief; carried by the full lecture arc.
+- Belief #14 — practice beats external proof — is the core message. Not announced as a belief; carried by the full lecture arc.
 - Belief #8 — name what you don't know — lands in the "residual risk as artifact" beat.
 
 **Capability check owed:**

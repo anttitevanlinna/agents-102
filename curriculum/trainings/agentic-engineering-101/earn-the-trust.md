@@ -112,7 +112,7 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 
 **Frameworks riffed on (attributed in lecture):**
 - **STRIDE** — Loren Kohnfelder & Praerit Garg (1999 Microsoft memo), sharpened by Adam Shostack (*Threat Modeling: Designing for Security*, 2014). Curated skill ships in `content/skills/stride/`.
-- **Access control analysis** — composite practice; anchor attribution Saltzer & Schroeder's 1975 least-privilege principle + Microsoft's threat-modeling adjacency. Curated skill ships in `content/skills/access-control-analysis/`.
+- **Access control analysis** — composite move; anchor attribution Saltzer & Schroeder's 1975 least-privilege principle + Microsoft's threat-modeling adjacency. Curated skill ships in `content/skills/access-control-analysis/`.
 - **Test strategy as discipline** — Kent Beck + James Bach's exploratory-testing lineage + Google Testing Blog's test-pyramid framing. Named at lecture; the student's authored skill is theirs, not a framework import.
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).

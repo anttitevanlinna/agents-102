@@ -58,7 +58,7 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 Async runs are a face of the work you'll see more of from here on.
 
-Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is legitimate practice. Past ten and you've become the agent; call it and read what's there.
+Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you've become the agent; call it and read what's there.
 
 Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 min). It plants the question and the three failure modes you'll use to read what comes back.
 
@@ -69,7 +69,7 @@ M5 opens with what came back, or what you caught before it went further. When th
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-25 (check_writing — `practice`-as-noun line 61 to fix; check_student_facing #21 + #22 line-22 atmosphere-vs-time-anchor flag; check_pedagogy; check_prompts; check_strategy_tie_in; check_lectures)
+**Quality:** approve-with-todos 2026-04-26 (check_student_facing #22 line-22 atmosphere-vs-time-anchor flag; check_writing; check_pedagogy; check_prompts; check_strategy_tie_in; check_lectures. `practice`-as-noun line 61 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.

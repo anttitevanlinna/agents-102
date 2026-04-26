@@ -118,7 +118,7 @@ There is truth out there. Your sources carry shards of it. The agent's job is to
 
 **Central concept — grounded.**
 
-Module 5 teaches *grounded* as the core discipline. Fabrication is the failure mode; grounding is the practice. The word "grounded" works where "fabrication" doesn't:
+Module 5 teaches *grounded* as the core discipline. Fabrication is the failure mode; grounding is the move. The word "grounded" works where "fabrication" doesn't:
 - Business-audience friendly. Executives use "grounded in the data," "grounded in reality" naturally. "Fabrication" has a slightly laboratory flavour.
 - Points at the right question. Not "did the agent make something up?" but "is this output connected to truth, and does it represent that truth?" Two questions for the price of one (build-on-truth + represent-the-truth).
 - Transfers. The student leaves with a frame ("grounded / ungrounded") that applies to every agent output, every report, every memo they'll ever read — not a narrow technical concept.
@@ -133,7 +133,7 @@ Module 5 teaches *grounded* as the core discipline. Fabrication is the failure m
 This covers most observed fabrication patterns in LLM output. The five-category frame is the student's working vocabulary for the rest of the training (and the rest of their work).
 
 **Frameworks riffed on:**
-- **Grounded-ness as an epistemic stance** — borrowed from journalism (sourcing), research practice (citations), legal drafting (evidence-tied claims). The student recognises the move from their domain; the LLM application is what's new.
+- **Grounded-ness as an epistemic stance** — borrowed from journalism (sourcing), research discipline (citations), legal drafting (evidence-tied claims). The student recognises the move from their domain; the LLM application is what's new.
 - **Compound reliability math** — carried in the lecture (85% per step × 10 steps ≈ 20%). Exercise makes it experiential: the ungrounded shape compounds across stances.
 - **"Tighter rules kill good output too"** — the engineering discipline of noticing tradeoffs. Pattern recognisable to anyone who's ever added input validation and watched useful inputs get rejected.
 - **Domain-expert-as-verifier** — the student's existing expertise is the scarce resource; the agent's output is cheap. Exercise inverts the usual framing.

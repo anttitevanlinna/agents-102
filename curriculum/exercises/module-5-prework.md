@@ -57,7 +57,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 
 **Why these two specifically (and not e.g. Air Canada):**
 - **Mata v. Avianca**: court sanctions order contains the affidavit quoting Schwartz asking ChatGPT "is varghese a real case?" — this is the single most pedagogically useful quote in any LLM-failure case, because it IS citation cargo-cult in one line. The missing check is trivially identifiable (open Westlaw, ten minutes).
-- **Deloitte Australia**: the revision-repeated-the-failure detail is irreplaceable. It proves that acknowledging the issue isn't the fix; BUILDING THE VERIFICATION STEP is. Connects directly to why a practice and a loop beat a one-time acknowledgement.
+- **Deloitte Australia**: the revision-repeated-the-failure detail is irreplaceable. It proves that acknowledging the issue isn't the fix; BUILDING THE VERIFICATION STEP is. Connects directly to why a discipline and a loop beat a one-time acknowledgement.
 - **Rejected — Moffatt v. Air Canada**: outcome on record, architecture not. Tribunal didn't dig into whether the chatbot lacked grounding rules or whether Air Canada had a verification process. Speculative for teaching.
 - **Rejected — Cursor "Sam"**: practitioner-documented but informal (X threads, founder apology) rather than court/government record. Shorter half-life as a shared reference.
 - **Rejected — NYC MyCity, Klarna, DPD**: symptom-documented, root cause not settled.
@@ -66,7 +66,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - Mata sanction is **$5,000 jointly** on both attorneys and the firm — NOT $5,000 per attorney. Earlier drafts had this wrong; verified from the sanctions order itself (docket 54).
 - Deloitte case is **2025**, not 2024. Contract signed late 2024; report published July 2025; Rudge's critique and the refund both October 2025.
 - Model used by Deloitte is **Azure OpenAI GPT-4o** — disclosed in the revised report's own appendix. Named directly; don't hedge.
-- Firm AI policy at Levidow, Levidow & Oberman: **unverified**. The sanctions order doesn't document whether an AI-use policy existed or didn't. Keep the pedagogical frame on "the missing check" (verification) rather than on the absence of a policy. Policy-vs-practice is a Module 7 discussion; here we're naming the specific unperformed verification step.
+- Firm AI policy at Levidow, Levidow & Oberman: **unverified**. The sanctions order doesn't document whether an AI-use policy existed or didn't. Keep the pedagogical frame on "the missing check" (verification) rather than on the absence of a policy. Policy-vs-discipline is a Module 7 discussion; here we're naming the specific unperformed verification step.
 - Rudge's finding of "up to 20" fabricated references + fabricated judicial quote is from his own published analysis and Guardian coverage — stable.
 
 **URL verification:**
@@ -77,7 +77,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 
 **Frameworks riffed on:**
 - **Citation re-verification** — the lecture's Technique 1. Mata v. Avianca is its clearest real-world case; the prework lands the student with the frame before the lecture formalises the technique.
-- **The missing check** — implicit in ISO 31000 / NIST risk-management vocabulary and in classical audit practice. Recognisable for Nordic regulated-industry audiences.
+- **The missing check** — implicit in ISO 31000 / NIST risk-management vocabulary and in classical audit discipline. Recognisable for Nordic regulated-industry audiences.
 - **"Revision repeated the failure"** — the Deloitte detail illustrates why the DISCIPLINE beats the ONE-TIME ACKNOWLEDGEMENT, reinforcing M4's "practice beats proof" carryover.
 
 **Philosophy callout (sparing):**
@@ -94,5 +94,5 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - No Claude-Code capability dependencies in this prework — reading only.
 
 **Deferred per student-facing-first rule:**
-- Variant note: Mid-Management variant can add a closing paragraph — "if your organisation has AI policy but no verification practice, which one actually catches the failure?" — pushing the ownership question. Skipped for Bootstrap.
+- Variant note: Mid-Management variant can add a closing paragraph — "if your organisation has AI policy but no verification discipline, which one actually catches the failure?" — pushing the ownership question. Skipped for Bootstrap.
 - Facilitator briefing deferred.

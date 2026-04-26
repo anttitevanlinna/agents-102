@@ -283,7 +283,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 **Benchmark = five claims, deliberately.** Small enough that the student does it in two minutes. Large enough that precision/recall are meaningful. The scale-up ("production judges want hundreds") is M6's problem, named out loud here so the student sees the seam.
 
 **Frameworks riffed on:**
-- **Benchmarking** — from ML practice; Antti-run pattern. Empirical method selection beats authority ("this method is best").
+- **Benchmarking** — from ML community work; Antti-run pattern. Empirical method selection beats authority ("this method is best").
 - **Precision / recall / coverage** — standard eval vocabulary introduced experientially, not lectured.
 - **Benchmark** — the word is earned in Phase 0; the student writes one in two minutes and sees what it's worth.
 - **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). The agreement-across-independent-regenerations mechanic is theirs; the blinded multi-framing variant in Phase 1b (regenerators read only sources, not the briefing; different framings induce variance) is our adaptation. Not named in the body — the student earns the technique by running it.

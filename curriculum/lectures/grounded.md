@@ -81,12 +81,12 @@ Now you run the benchmark by hand. Well, not by hand. You set up five detectors,
 **Frameworks riffed on:**
 - **Compound reliability math — both directions.** Single-pass: 85%^10 = 20% (the trap). Loop-based: 10% → 1% → 0.1% → 0.01% with 90%-catch detector + fix (the escape). Naming both halves is what converts the math from despair to design. The second half is the strategic bridge to M6 — evals aren't a quality gate, they're the mechanism that collapses the error rate.
 - **Grounded-ness as epistemic stance** — journalism/research/legal drafting recognisable move.
-- **Benchmarking** — the empirical-selection pattern lifted from serious evals practice (Antti's own, among others). Lecture names WHY benchmarking beats intuition; exercise runs the benchmark.
+- **Benchmarking** — the empirical-selection pattern lifted from serious evals work (Antti's own, among others). Lecture names WHY benchmarking beats intuition; exercise runs the benchmark.
 - **Benchmark as the measuring stick** — tiny (5 claims), plain, enough to measure against. No vendor reference; your own judgment is the judge of the judges.
 
 **Philosophy callout (sparing):**
 - Belief #8 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
-- Belief #14 — practice beats proof — continues from M4. Running the benchmark is the practice; no amount of reasoning about which method *should* win substitutes for measuring.
+- Belief #14 — practice beats proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
 
 **Why five, not three, and not ten:**
 - Five gives the scoreboard real spread without drowning the student. Three collapses on close races; ten is paralysis.

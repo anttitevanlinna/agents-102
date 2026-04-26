@@ -118,7 +118,7 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 **Frameworks riffed on:**
 - **Named attack classes** (prompt injection direct/indirect, secrets-in-context, tool-confusion, plugin supply-chain) — external grounding the AGENT-SECURITY lens covers. Re-named in Phase 2 so the audit prompt cannot collapse them into generic STRIDE categories.
 - **Principle of least privilege** — operationalised in Phase 2's access-control analysis and in the Close's "doors I would rather not open" framing.
-- **Residual risk** (ISO 31000 / NIST) — central artifact; `module-4/residual.md` is the keepable output. Layered on top of classical residual-risk practice, not replacing it.
+- **Residual risk** (ISO 31000 / NIST) — central artifact; `module-4/residual.md` is the keepable output. Layered on top of classical residual-risk discipline, not replacing it.
 - **Assess → mitigate → reassess → decide** — classical risk loop, mapped to the three phases.
 - **Roger Martin's *what would have to be true*** — surfaces in the policy lens's "I can't tell" column as "what evidence would I need to decide?"
 

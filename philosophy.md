@@ -99,11 +99,11 @@ This directness is the source of trust. The people in the room know when someone
 
 ## 14. Practice beats external proof
 
-The frameworks promise certainty: this method works, that benchmark is right, here's the answer. The room nods. The work doesn't change.
+The frameworks promise certainty: this method works, this is best practice, here's the answer. The room nods. The work doesn't change.
 
 What changes the work is the run. Yours, on your task, with your system as it stands. You read what came back. You name the failure modes from what you see, not from a paper. You build the validation that would have caught it next time. The proof was external; the practice is yours.
 
-Two runs of the same task with packaging as the only changed variable beats every benchmark, because it answers the only question that matters: did packaging help on YOUR work? A practitioner stops asking which method is best and runs the experiment. The thing you can hold up afterwards is the trace, the diagnosis, the verifier — evidence built by doing, not borrowed from a slide.
+Two runs of the same task with packaging as the only changed variable beats blindly applying best practice, because it answers the only question that matters: did packaging help on YOUR work? A practitioner stops asking which method is best and runs the experiment. The thing you can hold up afterwards is the trace, the diagnosis, the verifier — evidence built by doing, not borrowed from a slide.
 
 ## 15. Everyone becomes a teacher
 

@@ -31,9 +31,9 @@ That is not an aspirational vendor story. That is a post from the person running
 
 One thing your skill can do that you did not try today: run on a schedule.
 
-Claude Code ships three scheduling primitives. A Desktop local task for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
+Claude Code ships three scheduling primitives. Desktop local tasks (invoked from the Schedule sidebar) for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
 
-Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep — the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring — a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
+Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 
 Keep the primitive in the kit. You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The scheduled-agents reference page in the content folder walks through the specifics. ([Scheduled agents](../reference/scheduled-agents.md).)
 
@@ -58,7 +58,7 @@ Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared L9/L37/L45/L55; check_student_facing, check_lectures meta-frame closer, check_strategy_tie_in. Pre-cohort: verify Intercom Curran 19.2%/14.6/75.8/86%/500-people numbers + capability recheck on `/schedule` and `/loop` per check_platform_and_boundaries.)
+**Quality:** compendium-audited 2026-04-26 (check_writing — em-dashes cleared L9/L37/L45/L55 + L36 list-introducers swapped to colons; check_student_facing, check_lectures meta-frame closer, check_strategy_tie_in. **check_research_claims:** Curran 19.2%/14.6/75.8/86%/500-people VERIFIED against `https://ideas.fin.ai/p/2x-nine-months-later` 2026-04-16 [practitioner direct] (see `curriculum/evals/instances/ae101-m5-m6-source-verification.md`). **check_platform_and_boundaries:** `/schedule` + `/loop` + Desktop local task primitives confirmed against Claude Code docs 2026-04-26; L34 phrasing tightened to *"Desktop local tasks (invoked from the Schedule sidebar)"* per claude-code-guide verdict.)
 **Lecture meta:** *15–18 min closing lecture for AE101 M6. Names evals with full weight from the skill you just authored. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room.*
 **Word count:** ~950 words body.
 

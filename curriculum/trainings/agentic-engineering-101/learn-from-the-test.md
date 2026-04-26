@@ -78,14 +78,14 @@ M6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its
 
 Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap while your un-packaged run is still going; they prime the 80/20 reframe M5 will name from your own felt evidence.
 
-**Read — Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for M5: primes the 80/20 reframe M5 will name from felt evidence rather than introduce as a slogan.
+**Read — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** Interview write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for M5: primes the 80/20 reframe M5 will name from felt evidence rather than introduce as a slogan.
 
-**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound) plus the 80/20 ratio stated verbatim. Why for M5: the ratio arrives as recognition at the M5 closer rather than a surprise.
+**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound). Why for M5: primes the planning-and-review-heavy posture M5 will name from felt evidence.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing — `substrate` in maintainer L120 swapped to `source material`; check_student_facing #21 + power-settings carve-out; check_pedagogy #9b + compound-shape; check_prompts; check_strategy_tie_in; check_lectures)
+**Quality:** compendium-audited 2026-04-26 (check_writing — `substrate` in maintainer L120 swapped to `source material`; check_student_facing #21 + power-settings carve-out; check_pedagogy #9b + compound-shape; check_prompts; check_strategy_tie_in; check_lectures. **check_research_claims:** Pre-reads attribution corrected — "You're the Bread in the AI Sandwich" reattributed to Laura Entis interview write-up of Klaassen; *"Definitive Guide"* claim that 80/20 ratio is "stated verbatim" dropped — ratio is practitioner-posture summary, not in the article. See `curriculum/evals/instances/ae101-m5-m6-source-verification.md`.)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 5 / In-room opener lecture 6 / Exercise 60 / Debrief 12 / Re-send 3 / Closing lecture 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Closing lecture sits after Debrief + Re-send (structural addition over M4 — names Ronacher's three-pattern from felt evidence). Pre-read (`reading-the-return.md`) lands at the close of M4 Debrief, separate from this module's runtime. Exercise breakdown: Phase 1 read-the-return 15 / Phase 2 align-then-reverse 10 / Phase 3 build-verifier 18 / Phase 4 assemble-reference-and-plan 17.

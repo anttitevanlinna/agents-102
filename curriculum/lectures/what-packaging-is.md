@@ -9,7 +9,7 @@ Now the names.
 
 ## Ronacher's three-pattern
 
-Armin Ronacher's posts on long-running coding agents over the last six months keep coming back to the same three pieces. Practitioners running multi-hour work converge on the same shape with different vocabulary. Ronacher's vocabulary is the one that stuck.
+Practitioners running multi-hour coding agents over the last six months converge on the same three pieces. Different posts, different vocabulary, same shape. Armin Ronacher names *reference* and *verifier* in his work; *plan.md* lands harder in Geoffrey Huntley's Ralph practice and Kieran Klaassen's plan-as-artifact. The three-pattern below is what the convergence looks like assembled.
 
 **Reference artefact.** A spec the agent reads and re-reads. Holds the success criteria, points at the relevant memory, names the constraints. The thing the agent diffs its work against. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role. In your re-send, the reference you assembled at Phase 4 plays it.
 
@@ -21,7 +21,7 @@ Each piece exists because of one of the failure modes you read at the start of M
 
 ## Three shapes the verifier takes
 
-Boris Cherny (the engineer who built Claude Code) names three shapes practitioners use, cleanly. You picked one at Phase 3 against your dominant failure. The other two are alongside the three-pattern for next time.
+Three shapes practitioners use. All three appear in Boris Cherny's stop-hook practice (Cherny built Claude Code); the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two are alongside the three-pattern for next time.
 
 **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when failures are qualitative ("does this answer the question," "does this match house style").
 
@@ -37,7 +37,7 @@ That is your verifier from Phase 3, scaled to a 500-person engineering org. Same
 
 ## The 80/20 ratio
 
-You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. Kieran Klaassen names the ratio directly: 80% planning and review, 20% execution. In his words: *"Claude writes the test. The test fails — the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The ratio itself is named in [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The packaging you just built IS the 80% side. The re-send was the 20%.
+You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution. The TDD shape carries it — Klaassen: *"Claude writes the test. The test fails — the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
 
 ## What the run cost
 
@@ -60,7 +60,7 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-25 (REVISE: pre-cohort source verification on every URL + number per maintainer; confirm Cherny three-shape framing is his vs synthesis; pin Sourcegraph Amp counter-camp to specific practitioner URL)
+**Quality:** compendium-audited 2026-04-26 (check_writing voice-quartet, check_student_facing #14 body em-dashes inside cited titles/quotes only, check_lectures meta-frame closer, check_strategy_tie_in. **check_research_claims:** all citations verified per `curriculum/evals/instances/ae101-m5-m6-source-verification.md` — Cherny three-shape framing softened to "all three appear in his stop-hook practice; the menu form is the synthesis"; Klaassen 80/20 reframed from "stated verbatim in *Definitive Guide*" to "the ratio practitioners take from his compound-engineering posture" since the verbatim claim couldn't be sourced; Ronacher attribution reframed as practitioner convergence with reference + verifier from his work and plan.md from Huntley/Klaassen; Amp counter-camp pinned to `https://ampcode.com/news/handoff` 2025-10-23 [practitioner direct from a vendor]; Curran/Intercom 19.2%/14.6/75.8/86%/500/267-skill/31% all VERIFIED.)
 **Lecture meta:** *10–15 min closing lecture for M5. Names Ronacher's three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide. Bridges to M6's evals-as-team-infrastructure move.*
 **Word count:** ~770 words body.
 
@@ -75,7 +75,7 @@ URLs to verify:
 - Boris Cherny three stop-hook shapes — currently sourced via the same OODA citing `getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually` and `newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny`. Verify: Cherny actually frames three shapes (background agent / shell hook / Ralph re-feed) in the cited interview, NOT paraphrased into existence. If the three-shape framing is our synthesis rather than Cherny's, reframe as "three shapes practitioners use" without single attribution. Verify date is within 6-month window at delivery.
 - `https://ideas.fin.ai/p/2x-nine-months-later` — Curran "2x nine months later." Confirm: 19.2% auto-approved, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D scale. *(Source: `continuous-research/observations/intercom.md`.)*
 - Geoffrey Huntley Ralph reference — verify the ticket-triage framing is accurate to his writing, not ours.
-- Sourcegraph Amp counter-philosophy — currently sourced via `2026-04-23-scaling-session-length-2-platform-mechanics.md`. Pin a specific Quinn Slack / Beyang Liu / Amp engineering post URL before lecture goes live. If no specific source surfaces, drop the named-product framing and reframe as "a counter-camp argues for short sessions plus manual handoff."
+- Sourcegraph Amp counter-philosophy — pinned to `https://ampcode.com/news/handoff` (Sourcegraph Amp official, 2025-10-23): *"What we want to encourage are focused threads, because we think that's how agents yield the best results."* [practitioner direct from a vendor — acceptable for naming a counter-camp]. Freshness OK for cohorts before April 2026.
 - Subagents-for-isolation + /compact-at-60% — convergent practitioner pattern from `2026-04-23-scaling-session-length-2-platform-mechanics.md`. "Three independent practitioners" claim must be backable when the OODA file is finalised. If the count drifts under post-fix review, reword.
 
 **Numbers to triple-check before delivery:** 10h MiniJinja, 2.2M tokens, 19.2% auto-approve, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D org.

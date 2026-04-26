@@ -399,7 +399,7 @@ All three lecture files carry a maintainer-block source-verification list — ev
 
 **Pre-reads before M5 — 80/20 frame.** Two Klaassen pieces land in the M4→M5 gap while the un-packaged run is going overnight. Engineers who do both arrive with ratio + metaphor; engineers who do the short one get the metaphor. Label each with title + one-sentence summary + reading time.
 
-1. **Read — Kieran Klaassen, *[You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich)* (~5 min).** The identity metaphor — you're the bread, the model is the filling; humans frame and taste-check. [practitioner direct]
+1. **Read — Laura Entis on Kieran Klaassen, *[You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich)* (~5 min).** Interview write-up. The identity metaphor — you're the bread, the model is the filling; humans frame and taste-check. [practitioner analysis]
 2. **Read (longer) — Kieran Klaassen, *[Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide)* (~15–20 min).** The four-step loop + the 80/20 ratio stated verbatim (80% planning+review, 20% execution). [practitioner direct]
 
 **In-class beats:**

@@ -37,9 +37,9 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 - The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with M3
 - Encoding is the third phase of test → learn → encode. Two runs tested; this module's reading learned; the skill encodes
 
-**Themes landing in this module:**
-- **Self-aware + grain of salt.** The whole module is conversation with Claude about Claude's output across two runs. The artefacts rule; self-reports don't. Phase 1 push-backs and the closing lecture's judge-built-from-diagnosis move surface it
-- **Compounding (Klaassen).** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it
+**Compounding (Theme 2):** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it.
+
+**Self-aware / grain of salt (Theme 4):** the whole module is conversation with Claude about Claude's output across two runs. The artefacts rule; self-reports don't. Phase 1 push-backs and the closing lecture's judge-built-from-diagnosis move surface it.
 
 ## Human close
 
@@ -72,7 +72,7 @@ Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and pr
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared L8/L16/L18/L23/L37/L60; check_strategy_tie_in §6 — standalone Themes section L40-43 to convert to inline Key Concept breadcrumbs; check_pedagogy; check_lectures. `practice`-as-noun lines 19+88 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
+**Quality:** compendium-audited 2026-04-26 (check_writing — em-dashes cleared L8/L16/L18/L23/L37/L60; check_strategy_tie_in §6 — Themes section restructured to inline Theme-2 + Theme-4 breadcrumbs after Key Concepts; check_pedagogy; check_lectures. `practice`-as-noun lines 19+88 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).

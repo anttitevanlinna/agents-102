@@ -51,7 +51,7 @@ Go.
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared; check_student_facing, check_lectures opener, check_strategy_tie_in. Pre-cohort: verify Intercom 267-skill / 31%-of-R&D numbers against `continuous-research/observations/intercom.md` per check_research_claims.)
+**Quality:** compendium-audited 2026-04-26 (check_writing — em-dashes cleared; check_student_facing, check_lectures opener, check_strategy_tie_in. **check_research_claims:** Intercom 267-skill / 31%-of-R&D numbers VERIFIED against `https://ideas.fin.ai/p/2x-nine-months-later` 2026-04-16 [practitioner direct] + `continuous-research/observations/intercom.md`; STRIDE attribution — Kohnfelder & Garg 1999, Shostack 2014, Saltzer & Schroeder 1975 — historical primary, no freshness window.)
 **Lecture meta:** *10–12 minutes. Lecture primes Exercises 1–3 of Module 3 (Earn the trust).*
 **Meta (trainer):**
 - **Time:** 10–12 minutes

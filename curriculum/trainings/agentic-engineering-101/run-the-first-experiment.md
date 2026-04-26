@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Connections
 
-You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, alone in the dark while you sleep. Three modules in, this is your practice now.
+You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, running without you watching. Three modules in, this is your practice now.
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
@@ -69,7 +69,7 @@ M5 opens with what came back, or what you caught before it went further. When th
 <!-- maintainer -->
 
 
-**Quality:** approve-with-todos 2026-04-26 (check_student_facing #22 line-22 atmosphere-vs-time-anchor flag; check_writing; check_pedagogy; check_prompts; check_strategy_tie_in; check_lectures. `practice`-as-noun line 61 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
+**Quality:** compendium-audited 2026-04-26 (check_writing; check_student_facing — L22 atmosphere phrase swapped from `alone in the dark while you sleep` to `running without you watching`; check_pedagogy; check_prompts; check_strategy_tie_in; check_lectures. `practice`-as-noun line 61 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.

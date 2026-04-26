@@ -121,12 +121,45 @@ function renderModuleMd(trainingKey, slug) {
 
 function postProcessIncludes(html) {
   // Wrap <!--INC:kind:slug:title--> ... <!--/INC--> in section chrome.
+  // Use singular phase modifier (phase--exercise / phase--lecture) to match SPA's CSS.
   return html
     .replace(/<!--INC:(\w+):([\w-]+):([^-]+(?:-(?!->)[^-]*)*)-->/g, (m, kind, slug, title) => {
+      const singular = kind === 'exercises' ? 'exercise' : 'lecture';
       const labelKind = kind === 'exercises' ? 'Exercise' : 'Lecture';
-      return `<section class="phase phase--${kind}" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>`;
+      return `<section class="phase phase--${singular}" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>`;
     })
     .replace(/<!--\/INC-->/g, '</section>');
+}
+
+// Port of SPA's decoratePrompts (curriculum.html runtime). Marked renders
+//   **Prompt** *(Claude Code)*
+//   ```...```
+// as a <p><strong>Prompt</strong> <em>(Claude Code)</em></p> followed by a
+// <pre><code>...</code></pre>. Wrap that pair in .prompt-block chrome so the
+// SPA's prompt-block CSS (header bar, dest label, runtime spans) attaches.
+// Skip the copy button — workbook is read-only.
+function decoratePrompts(html) {
+  return html.replace(
+    /<p><strong>Prompt<\/strong>\s*<em>\(([^)]+)\)<\/em><\/p>\s*<pre>([\s\S]*?)<\/pre>/g,
+    (m, label, preInner) => {
+      const trimmed = label.trim();
+      const parts = trimmed.split(/,\s*/);
+      const dest = parts[0] || 'Claude Code';
+      const context = parts.slice(1).join(', ');
+      const destHtml = dest === 'Claude Code'
+        ? '<span class="rt-cowork">Cowork</span>' +
+          '<span class="rt-desktop">Claude Code Desktop</span>' +
+          '<span class="rt-cli">Claude Code CLI</span>'
+        : escHtml(dest);
+      const contextHtml = context
+        ? `<span class="prompt-block__context">${escHtml(context)}</span>`
+        : '';
+      return `<div class="prompt-block">
+<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest">${destHtml}</span>${contextHtml}</div>
+<pre class="prompt-block__pre">${preInner}</pre>
+</div>`;
+    }
+  );
 }
 
 function buildToc(t) {
@@ -158,12 +191,14 @@ ${buildToc(t)}
       const md = renderModuleMd(trainingKey, m.slug);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
+      html = decoratePrompts(html);
       return `<section class="module" id="${m.slug}">\n${html}\n</section>`;
     })
     .join('\n\n');
 
-  // Wrap modules in <main> so SPA's main-scoped styles apply.
-  return cover + '\n<main>\n' + modules + '\n</main>\n';
+  // Wrap everything in <main> so SPA's main-scoped styles apply.
+  // body.workbook scopes flip layout from row (one module) to column (all of them).
+  return '<main>\n' + cover + '\n' + modules + '\n</main>\n';
 }
 
 // Read curriculum.css verbatim. Single source of truth — workbook-specific
@@ -182,7 +217,7 @@ function template(title, content) {
 <title>${escHtml(title)}</title>
 <style>${SPA_CSS}</style>
 </head>
-<body class="runtime-cli">
+<body class="runtime-cli workbook">
 ${content}
 </body>
 </html>

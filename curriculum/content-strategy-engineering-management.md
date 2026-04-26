@@ -264,7 +264,7 @@ These land in M4 (vision) and M6 (90-day plan) as directness moments — refuse 
 - **Block thesis (Jack Dorsey, CEO).** Signal-level thesis, practitioner-direct, 2026-03-31. Three-roles model, world-model architecture, historical arc from Roman Army to now. Use as pressure-test for vision (M4) and reflection (M6), not as evidence of what works. Source: `observations/block.md`.
 - **Supporting research patterns:** `absorption-bottleneck` (M1 + M6), `conditions-creator` (M3–M5), `rules-verification-scarcity` (L4 meta — M5 backbone), `coding-agent-as-general-platform` (M3 + M6), `experience-first-adoption` (M1 + M3).
 - **Intent Taktik insight** (`insights.md`) — leaders freed from the 80% that isn't leadership. Three-blocks practice operationalizes this for engineering managers at team scale.
-- **Moltke's Agent Army article** (`strategy/drafts/moltkes-agent-army.md`) — shares the spine; cite as philosophical companion.
+- **Moltke's Agent Army article** (`~/Projects/bosser/drafts/moltkes-agent-army.md` — private, bosser article system) — shares the spine; cite as philosophical companion.
 
 ## Hard exclusions
 

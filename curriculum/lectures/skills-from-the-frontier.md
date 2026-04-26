@@ -1,6 +1,5 @@
 # Skills from the frontier, skills of your own
 
-*10–12 minutes. Lecture primes Exercises 1–3 of Module 3 (Earn the trust).*
 
 ---
 
@@ -53,6 +52,7 @@ Go.
 
 
 **Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared; check_student_facing, check_lectures opener, check_strategy_tie_in. Pre-cohort: verify Intercom 267-skill / 31%-of-R&D numbers against `continuous-research/observations/intercom.md` per check_research_claims.)
+**Lecture meta:** *10–12 minutes. Lecture primes Exercises 1–3 of Module 3 (Earn the trust).*
 **Meta (trainer):**
 - **Time:** 10–12 minutes
 - **Primary Bloom's level:** Understand + Apply (primes three exercises)

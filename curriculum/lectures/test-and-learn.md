@@ -1,6 +1,5 @@
 # Test and learn
 
-*10–12 min lecture. Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the two frameworks the exercise riffs on — gap analysis and Huryn's three-block memory.*
 
 ---
 
@@ -50,6 +49,7 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 
 
 **Quality:** compendium-audited 2026-04-26 (check_writing voice-quartet, check_student_facing #14, check_lectures, check_strategy_tie_in, check_research_claims)
+**Lecture meta:** *10–12 min lecture. Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the two frameworks the exercise riffs on — gap analysis and Huryn's three-block memory.*
 **Word count:** ~620 words body.
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" section is load-bearing — it's where the experimental stance lands.

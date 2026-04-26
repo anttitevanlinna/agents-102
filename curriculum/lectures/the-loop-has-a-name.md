@@ -1,6 +1,5 @@
 # The loop has a name
 
-*15–18 min closing lecture for AE101 M6. Names evals with full weight from the skill you just authored. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room.*
 
 ---
 
@@ -60,6 +59,7 @@ Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 
 
 **Quality:** approve-with-todos 2026-04-26 (check_writing — em-dashes cleared L9/L37/L45/L55; check_student_facing, check_lectures meta-frame closer, check_strategy_tie_in. Pre-cohort: verify Intercom Curran 19.2%/14.6/75.8/86%/500-people numbers + capability recheck on `/schedule` and `/loop` per check_platform_and_boundaries.)
+**Lecture meta:** *15–18 min closing lecture for AE101 M6. Names evals with full weight from the skill you just authored. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room.*
 **Word count:** ~950 words body.
 
 **Time:** 15–18 min at presentation pace.

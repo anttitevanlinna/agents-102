@@ -1,6 +1,5 @@
 # What packaging is
 
-*10–15 min closing lecture for M5. Names Ronacher's three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide. Bridges to M6's evals-as-team-infrastructure move.*
 
 ---
 
@@ -62,6 +61,7 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 
 
 **Quality:** draft 2026-04-25 (REVISE: pre-cohort source verification on every URL + number per maintainer; confirm Cherny three-shape framing is his vs synthesis; pin Sourcegraph Amp counter-camp to specific practitioner URL)
+**Lecture meta:** *10–15 min closing lecture for M5. Names Ronacher's three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide. Bridges to M6's evals-as-team-infrastructure move.*
 **Word count:** ~770 words body.
 
 **Time:** 12–15 min at presentation pace.

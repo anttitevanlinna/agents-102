@@ -33,7 +33,7 @@ Standing objectives for every session, every agent, every cycle. Not milestones 
 
 **80/20 curation model:** 80% frontier research (continuous OODA cycles) + 20% peer premium (user signals, patterns across engagements). The knowledge base compounds. Competitive moat is not any single finding, but the live, structured, practitioner-grounded system that stays current.
 
-**Marketing funnel:** Newsletter ("Deploying Agents") ↔ Survey (Agentic Readiness Check) → DM. Both entry points cross-feed each other. See `strategy/marketing-plan.md`.
+**Marketing funnel:** Newsletter ("Deploying Agents") ↔ Survey (Agentic Readiness Check) → DM. Both entry points cross-feed each other. Full plan in the private `bosser-strategy` skill.
 
 ## Multi-User Hygiene
 

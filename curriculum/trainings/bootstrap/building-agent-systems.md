@@ -3,10 +3,11 @@
 ## Big Idea
 A system remembers, grows, and compounds. Chat doesn't. Your next big challenge is the foundation.
 
-## Meta
-- **Setup:** <span class="rt-code">End Module 1's session (scoped to `module-1/`) and start a fresh one at your training-directory root.</span><span class="rt-cowork">End Module 1's Cowork session (connected to `module-1/`) and start a fresh one connected to your training-directory root.</span> The Module 2 starter zip unzips there (three empty folders: `memory/`, `sources/`, `agents/`, and nothing else). Your Module 1 rules file at `module-1/CLAUDE.md` stays where it is, scoped to Module 1. The wider training-dir root rules file (`./CLAUDE.md`) doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
-- **Prework:** [Module 2 prework](curriculum.html?file=exercises/module-2-prework). (1) [Bring a live challenge on your mind](curriculum.html?file=exercises/module-2-prework#1-bring-a-live-challenge-on-your-mind). We'll pin it down together in the first 15 minutes of class. (2) [Verify your Confluence and OneDrive connectors](curriculum.html?file=exercises/module-2-prework#2-verify-your-connectors-2-min--worth-doing-now-not-when-class-starts). (3) <span class="rt-code">[Plan-mode primer (15 min)](curriculum.html?file=exercises/module-2-prework#3-plan-first-primer-15-min)</span><span class="rt-cowork">[Plan-first primer (15 min)](curriculum.html?file=exercises/module-2-prework#3-plan-first-primer-15-min)</span>. (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
-- **Homework:** [Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected "What is an Agent" sections (tools, memory, context).
+## Prework
+
+**Setup:** <span class="rt-code">End Module 1's session (scoped to `module-1/`) and start a fresh one at your training-directory root.</span><span class="rt-cowork">End Module 1's Cowork session (connected to `module-1/`) and start a fresh one connected to your training-directory root.</span> The Module 2 starter zip unzips there (three empty folders: `memory/`, `sources/`, `agents/`, and nothing else). Your Module 1 rules file at `module-1/CLAUDE.md` stays where it is, scoped to Module 1. The wider training-dir root rules file (`./CLAUDE.md`) doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+
+[Module 2 prework](exercises/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,7 +17,7 @@ After this module, you will be able to:
 - **Analyze** the three layers of the system (raw sources, the memory, the rules file) and explain why plain text beats a database here
 - **Evaluate** whether the memory is compounding or merely growing
 
-## Connections
+## Start here
 Module 1 was for you. The site you built, the voice you sharpened, the fabrication you caught because nobody else could. That was the rehearsal. Now we turn to work. The rest of the training builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
 You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We'll build one shortly.
@@ -31,7 +32,7 @@ And one more: if everything you've read, drafted, and half-figured-out on that c
 
 [Lecture: Compounding](lectures/compounding.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - **Three layers**: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the rules file (`CLAUDE.md`) that keeps the shape consistent
 - **Plain text beats databases here** because language models are strongest at reading and writing text. No setup, no extra tools.
 - **Persistence + automation = system.** Neither alone is enough.
@@ -79,10 +80,14 @@ One sentence. Save it to module-2/crux.md and show me before saving.
 
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
 
-## Bridge
+## Next
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?
 
 Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, competitive watching, drafting replies are all fine starters. You only learn by doing. Go build.
+
+## Homework after M2 — between-module reading
+
+[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (tools, memory, context).
 
 <!-- maintainer -->
 

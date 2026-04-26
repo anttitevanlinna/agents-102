@@ -5,9 +5,9 @@
 ## Big Idea
 With the right guardrails, you create output that's genuinely yours, not generic.
 
-## Meta
-- **Prework (training-level, done before Module 1):** ~30–60 min. Install Claude Code (desktop or web, no terminal). Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of `curriculum/supplementary/what-is-an-agent.md` ("LLM vs chat"). Full spec + prereq check in `content-strategy.md` Prework section.
-- **Homework:** Antti's LLM brain post; selected sections from "What is an Agent" reference
+## Prework
+
+About 30–60 min before Module 1. Install Claude Code. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of [What is an Agent](supplementary/what-is-an-agent.md) (LLM vs chat).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Identify** fabrication in LLM output by using your own domain knowledge as the evaluator
 - **Adjust** guardrails to fix specific failure modes
 
-## Connections
+## Start here
 
 > **In-room cohort opening (self-study readers, skip to the question below).**
 >
@@ -30,7 +30,7 @@ After this module, you will be able to:
 
 [Personal site with guardrails](exercises/personal-site-with-guardrails.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - Guardrails are structured context, not a checklist
 - You are the world's best evaluator of your own profile. Domain expertise IS the eval
 - The guardrail IS the control: average output becomes great not because you prompted better
@@ -71,7 +71,7 @@ Read site.html in this folder. Two questions:
 
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there and regenerate. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 
-## Bridge
+## Next
 You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
 
 <!-- maintainer -->

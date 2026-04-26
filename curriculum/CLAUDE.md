@@ -169,6 +169,27 @@ Requirements for the renderer to inline it:
 
 If the file is missing, the link renders as-is. This means Pass 1 module files can reference future Pass 2 exercise files without breaking.
 
+## Cross-doc links — bare paths in source
+
+Source `.md` files use **bare paths** for cross-doc inline links from any source-file depth:
+
+```markdown
+[Reading the return](lectures/reading-the-return.md)
+[MCP and connectors](reference/mcp-and-connectors.md)
+[Schedule your personal agent](exercises/personal-agent-homework.md)
+[The four CLAUDE.md layers](reference/claude-code-for-engineers.md)
+```
+
+Authors don't count `../` — write the kind/slug.md path the same way from a module file (depth 2), an exercise (depth 1), or a lecture (depth 1). The renderer's `rewriteCrossDocLinks` function (`site/curriculum.html`) accepts a regex with `(?:\.\.\/)*` (zero-or-more `../` prefixes) and rewrites the link to `curriculum.html?file=<kind>/<slug>` at render time.
+
+Forbidden in source:
+- **Hardcoded `curriculum.html?file=...` URLs.** Renderer leak — ties content to one rendering pipeline.
+- **Depth-counted `../` and `../../` prefixes.** The renderer accepts them, but they read as bookkeeping the author shouldn't have to track.
+
+The standalone-include mechanism (link is the entire paragraph) catches a different shape — the renderer fetches and inlines the file's content. Bare-path inline links inside body sentences just get URL-rewritten without inlining. Maintainer-block bare-path text references (no markdown link) are exempt from rewrite.
+
+Canonical source: `memory/compounded/2026-04-26-platform-bare-paths-renderer-rewrites.md`.
+
 ## Alignment duties
 
 **`content-strategy.md` and module files stay aligned — always.** `content-strategy.md` carries the training-level narrative (Connections, Exercise, Lecture, Reflection, Bridge per module). The module files in `trainings/bootstrap/` carry the canonical spine. **The exercise named in each module section of content-strategy.md must match the exercise in the corresponding module file** — same name, same description. When one changes, the other changes in the same edit. Drift between the two is a process bug, not a matter of taste.

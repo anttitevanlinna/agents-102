@@ -4,9 +4,9 @@
 You don't pick a quality check because someone said so. You run several on your own output, score them against a five-claim benchmark you wrote yourself, and keep the winner.
 
 
-## Meta
-- **Prework:** [Before Module 5](exercises/module-5-prework.md). Two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Student arrives with one sentence per case: "the missing organisational check was X."
-- **Homework:** Chip Huyen *AI Engineering* (O'Reilly 2025), selected sections (candidate); the student's own `module-5/still-uncertain.md` carried into Module 6 prework
+## Prework
+
+[Before Module 5](exercises/module-5-prework.md). Two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -15,14 +15,14 @@ After this module, you will be able to:
 - **Explain** why method selection for agent quality work is empirical, not authoritative, and why the scoreboard IS the explanation
 - **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
 
-## Connections
+## Start here
 In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it). Today we measure what the system actually says inside its scope. Five detectors run on the same briefing, a scorer measures them against a benchmark you wrote in two minutes, and you walk out with the first judge you can defend.
 
 [Lecture: Grounded, and five candidates to measure](lectures/grounded.md)
 
 [Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll ever automate (tone, brand, compliance, steering). Groundedness is just the first instance.
 - **Empirical method selection over authority.** You don't pick a detector because a vendor or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works every time you need a machine to make a judgment reliably.
 - **The scoreboard IS the explanation.** Magic that you can point at a row and explain. Precision, recall, coverage, introduced experientially, not lectured. A student who reads the scoreboard can defend the winner; a student who skips it is trusting the machine instead of measuring it.
@@ -48,8 +48,12 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 
 Read Claude's summary. Push back where it's wrong: *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft, say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up next; it's the seed of your first production eval.
 
-## Bridge
+## Next
 You ran the benchmark once. Five claims, five detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
+
+## Homework after M5 — between-module reading
+
+Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: Chip Huyen, *AI Engineering* (O'Reilly 2025), selected sections (candidate).
 
 <!-- maintainer -->
 

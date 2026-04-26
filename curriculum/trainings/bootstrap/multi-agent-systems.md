@@ -3,9 +3,9 @@
 ## Big Idea
 Hire three agents to search. Three more to decide. The filesystem is the meeting room.
 
-## Meta
-- **Prework:** [Before Module 3](exercises/module-3-prework.md). Five practitioners automating their life with Claude Code and OpenClaw (pick three, read one piece each). Plus a plain-language primer on how Claude Code launches helper agents (sometimes called <span class="rt-code">subagents</span><span class="rt-cowork">agents</span>): what they are, how to start one, what you'll see.
-- **Homework:** selected "What is an Agent" sections (multi-agent coordination)
+## Prework
+
+[Before Module 3](exercises/module-3-prework.md). Five practitioners automating their life with Claude Code and OpenClaw (pick three, read one piece each). Plus a plain-language primer on how Claude Code launches helper agents (sometimes called <span class="rt-code">subagents</span><span class="rt-cowork">agents</span>): what they are, how to start one, what you'll see.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -15,14 +15,14 @@ After this module, you will be able to:
 - **Create** a framework-guided answer to a real strategic question about your own challenge
 - **Evaluate** when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins
 
-## Connections
+## Start here
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. One of them is Rory. What do you expect will get lost between them?
 
 [Lecture: When to split an agent (and how)](lectures/when-to-split-an-agent.md)
 
 [Exercise: Three retrievers, three minds](exercises/three-retrievers-three-minds.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (what you feel in Phase 1: three sessions churning, artifacts landing in shared folders). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (what you build in Phase 2, the native Claude Code primitive). Same idea, different surfaces. The filesystem is the meeting room in both.
 - **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
 - **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is where the lesson lives.
@@ -46,8 +46,12 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 
 Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. The artifact lands at `module-3/wonder.md`: one line naming what feels off. Not a fix. A held question. Module 5 picks it up.
 
-## Bridge
+## Next
 You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
+
+## Homework after M3 — between-module reading
+
+Selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (multi-agent coordination).
 
 <!-- maintainer -->
 

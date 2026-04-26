@@ -3,9 +3,9 @@
 ## Big Idea
 You can't tell if your agent is safe by looking at its output. You need a way to check. The practice is running the check, not waiting for certainty.
 
-## Meta
-- **Prework:** [Before Module 4](exercises/module-4-prework.md). Two reads: (1) plugins as the package format that carries an expertise into your agent, (2) agent security layered on top of classical software security (the threat model adds non-deterministic instruction-set surfaces; classical perimeter, IAM, and audit remain the floor)
-- **Homework:** extract one rule from your company's policy and author it as a small plugin yourself; agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern)
+## Prework
+
+[Before Module 4](exercises/module-4-prework.md). Two reads: (1) plugins as the package format that carries an expertise into your agent, (2) agent security layered on top of classical software security (the threat model adds non-deterministic instruction-set surfaces; classical perimeter, IAM, and audit remain the floor).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -15,7 +15,7 @@ After this module, you will be able to:
 - **Apply** an agentic mitigation (scope, split, filter, gate, review) layered on top of classical controls, and observe the residual risk shift
 - **Evaluate** residual risk plainly. What's left after mitigation, and whether the best move is to not open the door in the first place
 
-## Connections
+## Start here
 You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
 
 [Lecture: The practice of risk](lectures/practice-of-risk.md)
@@ -24,7 +24,7 @@ You've had three agents search your company and three more decide. What doesn't 
 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - **Certainty is a fantasy; the practice is the answer.** Classical software security gives you residual-risk vocabulary, CVSS, accepted-risk registers: probabilistic reasoning under bounded inputs. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.
 - **Two lenses, one plugin you authored.** One lens carries what your company has already decided is off-limits. The other carries named attack classes and access-control analysis. You did not have to become a policy expert or a threat modeller; you had to know what mattered and dictate it.
 - **Prompt injection is a class, not a footnote.** Direct prompt injection arrives in the user's input. Indirect prompt injection arrives in a source the agent retrieves and reads. Both turn well-formed English into the attack surface. Classical perimeter does not see the attack because the attack is not malformed.
@@ -51,8 +51,12 @@ Read Claude's summary. Push back where it's wrong. *"That rule wasn't ambiguous,
 
 One thing does travel: the plugin lives on disk now, sharper than it started. Point it at the other agents you've built. You'll find different "I can't tell" rows everywhere you look. The next agent you build will have a stricter starting line because of this one.
 
-## Bridge
+## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
+
+## Homework after M4 — between-module reading
+
+Extract one rule from your company's policy and author it as a small plugin yourself. Plus agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern).
 
 <!-- maintainer -->
 

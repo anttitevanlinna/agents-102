@@ -3,9 +3,9 @@
 ## Big Idea
 The tool that builds tools compounds.
 
-## Meta
-- **Prework:** Risto on acting on the future and building hypotheses; Rumelt on crux / good strategy bad strategy
-- **Homework:** none (the strategy deliverable IS the closing artifact)
+## Prework
+
+Risto on acting on the future and building hypotheses. Rumelt on crux / *Good Strategy Bad Strategy*.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -14,7 +14,7 @@ After this module, you will be able to:
 - **Produce** a strategy kernel (diagnosis, guiding policy, experiments, ranked risks) grounded in your actual files
 - **Read** the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Bootstrap)
 
-## Connections
+## Start here
 
 You built a memory. You built agents that read it. You built skills that audit the agents. You built judges that catch the skills drifting. Every module raised a ceiling. Today the ceiling moves on its own.
 
@@ -30,7 +30,7 @@ Hold that. M8 doesn't answer it. It shows you the shape of an answer you'll keep
 
 The three thinking-disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the company question. *Crux* finds the load-bearing obstacle (Rumelt). *What would have to be true?* surfaces the assumptions (Martin). *Pre-mortem* names what breaks (Klein and Kahneman). Same disciplines, named inline in the prompts. Bigger instrument.
 
-## Key Concepts (Emergent)
+## Key Concepts
 
 - **Self-improvement**: each cycle sharpens the next. The Diamond 2 output reads sharper than Diamond 1 because the agents built on each other's work inside the same session.
 - **Org capability**: twenty people (or one student's full M1–M7 stack plus Teacher Claude's orchestration) just produced a strategy kernel no consultant could deliver, because it's grounded in your company's own files.
@@ -64,7 +64,7 @@ Read Claude's summary. Push back where it's wrong. Some of what didn't resolve s
 
 **Self-study parallel:** Teacher Claude delivers the naming as a reflective line: *"You are now an agent builder. You built agents that do real work on your own data. You can build another one on the next problem. That's what you carry out. Not the modules, not the files. The fact that you can make the next one."*
 
-## Bridge
+## Next
 
 The kernel you just produced is a set of assumptions dressed as a policy. Label them. Design experiments to test them. That's the first move after Bootstrap. Bootstrap is Step 1 of 5 (Make Your Own is next). You don't graduate. You have a flywheel.
 

@@ -3,11 +3,12 @@
 ## Big Idea
 Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.
 
-## Meta
-- **Primary Bloom's level:** Apply + Evaluate + Create (invoke, decide, author)
-- **Prework:** bring a small feature you're working on right now (see Connections for the size rule). No pre-written files; the feature lives in your repo.
-- **Homework:** none. The authored skill ships at M3's close.
-- **Materials (trainer):** content folder ships two curated skills (`access-control-analysis/SKILL.md`, `stride/SKILL.md`) under `content/skills/`. Prework installs them as personal skills at `~/.claude/skills/<name>/SKILL.md` via an agentic step (Claude does the copy). Students invoke by name, no path. Removable after training with one `rm -rf`.
+## Prework
+
+Bring a small feature you're working on right now. Not a typo-fix, not a quarter-long epic; something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. You've watched the agent work for two modules. Pick the size that fits the rhythm you've seen.
+
+Optional pre-reads in the M2-to-M3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min, deeper scan).
+
 ## What You'll Learn
 After this module, you will be able to:
 - **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context). Read what it surfaces, name what a first-read missed
@@ -18,11 +19,9 @@ After this module, you will be able to:
 - **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
 - **Ship** one authored skill personal-first, and know when it's a team PR
 
-## Connections
+## Start here
 
-**Bring a small feature you're working on right now.** Not a typo-fix, not a quarter-long epic; something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you're still waiting when the bell rings. You've watched the agent work for two modules. Pick the size that fits the rhythm you've seen.
-
-The question, to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? Write one line. The room's features will differ wildly; that's the point.
+The question, to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? The room's features will differ wildly; that's the point.
 
 [Lecture: Skills from the frontier, skills of your own](lectures/skills-from-the-frontier.md)
 
@@ -32,7 +31,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - A curated skill is upstream work packaged for you to invoke. You don't re-derive it
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; breadth is the team kit's job across many students, not yours in 20 minutes
@@ -41,11 +40,11 @@ The question, to you: what's the feature, and what's the surface you're most ner
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre
 - One skill shipped beats three skills drafted; the team kit grows by accretion
 
-**Self-aware / grain of salt (Theme 4):** Ex3's move is to ask the authored skill to disclose its own weakest part, then push back on the critique; the skill introspects, you verify against the session artifact.
+**Self-aware / grain of salt (Theme 4):** Exercise 3's move is to ask the authored skill to disclose its own weakest part, then push back on the critique; the skill introspects, you verify against the session artifact.
 
 **Mirror (Theme 3):** the access-control and STRIDE skills produce a structured read of your feature's access surface. Comparing your first read to theirs is the thing you name aloud.
 
-**90% correct (Theme 1):** curated skills from the frontier are strong, not oracular; the hardening decision in Ex2 and the weak-spot push-back in Ex3 are where the last 10% earns your judgement rather than a rubber stamp.
+**90% correct (Theme 1):** curated skills from the frontier are strong, not oracular; the hardening decision in Exercise 2 and the weak-spot push-back in Exercise 3 are where the last 10% earns your judgement rather than a rubber stamp.
 
 ## Sharpen the skill from evidence
 
@@ -59,17 +58,9 @@ Ask Claude to sharpen the one section of your authored test-strategy skill that 
 Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back. Find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
 ```
 
-## Bridge
+## Next
 
 You earned the first two signatures. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
-
-## Pre-reads before M3
-
-Optional. Skipping either piece does not break M3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
-
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for M3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
-
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for M3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 

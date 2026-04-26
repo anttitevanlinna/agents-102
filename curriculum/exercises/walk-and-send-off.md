@@ -12,7 +12,7 @@
 
 ## Phase 1: Pick the task (~10 min)
 
-Start a new Claude Code session in your repo. You've come in with one or two candidate tasks in mind (Connections). Claude screens them: it can't scan your roadmap or Jira, and we don't want it to. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
+Start a new Claude Code session in your repo. You've come in with one or two candidate tasks in mind (Connections). Claude screens them: it can't scan your roadmap or Jira, and that stays your call. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
 
 Ask Claude to screen your candidates against the three long-run criteria and help you scope the winner.
 

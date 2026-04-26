@@ -2,9 +2,9 @@
 
 **What you do:**
 
-Module 2 builds you a memory: a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before we build anything, we pin the problem.
+Module 2 builds you a memory: a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before anything gets built, the problem gets pinned.
 
-*You've read two pieces on this move in prework. Karpathy showed the pattern on himself: LLM as librarian, not answerer. Antti argued that the same move scales to company knowledge: files, not wikis; version it like code. In the next 15 minutes you name the one challenge we'll aim all of it at.*
+*You've read two pieces on this move in prework. Karpathy showed the pattern on himself: LLM as librarian, not answerer. Antti argued that the same move scales to company knowledge: files, not wikis; version it like code. In the next 15 minutes you name the one challenge it all aims at.*
 
 **What counts as a "next big challenge."**
 

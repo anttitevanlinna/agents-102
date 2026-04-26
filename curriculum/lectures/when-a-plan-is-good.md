@@ -14,7 +14,7 @@ You will notice that you are waiting while Claude thinks. Other sessions could b
 
 ### Optional: ask plan mode directly
 
-A 30-second move before we name the three things. Enter plan mode in your own session right now and ask Claude what shifted from its side.
+A 30-second move before the three things get named. Enter plan mode in your own session right now and ask Claude what shifted from its side.
 
 Ask Claude to describe what changed in its behaviour when plan mode turned on.
 

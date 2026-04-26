@@ -48,6 +48,10 @@ A rule in context is not a rule in the output. Taste closes the gap. Nothing els
 
 I ran the M6 exercise on the M6 generation. The diff found rules that lived in memory but never fired. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
 
+Then I made countless fixes later on. As one example: the prework was missing pre-reads. I caught that only on a later glance through the module.
+
+The model is good. The model is not 100% deterministic.
+
 ## What the loop is for
 
 The next hour you will diagnose gaps in the M5 packaged run. You will author a skill that encodes what the two runs taught. You will ship it.

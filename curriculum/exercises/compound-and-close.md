@@ -33,7 +33,7 @@ Read Claude's summary. Push back where it misreads. Quote the moment. That push-
 
 ## MCP: why your agent needs to reach outside the repo (~5 min)
 
-Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](../reference/mcp-and-connectors.md).
+Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](reference/mcp-and-connectors.md).
 
 One connector, two actions (read + update), is enough to close the loop you just ran on the bug in the tracker your team actually lives in.
 
@@ -42,7 +42,7 @@ One connector, two actions (read + update), is enough to close the loop you just
 Ask Claude to write the close-out note: what the root cause was, how you fixed it, a link to the PR. Then pick how the close-out lands. Three paths, pick whichever is cleanest for your tracker:
 
 1. **GitHub Issues:** in your session, check `gh auth status`. Claude runs `gh` for you via Bash, no MCP install needed.
-2. **MCP connector to your tracker** (Linear, Jira, other): follow the install line in [MCP and connectors](../reference/mcp-and-connectors.md) for your tracker. If tenant admin approval is required, it's worth asking, not today.
+2. **MCP connector to your tracker** (Linear, Jira, other): follow the install line in [MCP and connectors](reference/mcp-and-connectors.md) for your tracker. If tenant admin approval is required, it's worth asking, not today.
 3. **Manual paste:** Claude writes the close-out; you paste it into the tracker UI yourself. Five seconds, no tool setup.
 
 The teaching moment is the agent reaching across a tool boundary with a real engineering note, not the install choreography.

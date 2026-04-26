@@ -3,25 +3,23 @@
 ## Big Idea
 Walk what you've built against a real multi-hour task, fill the worst gaps, send it off un-packaged, and learn from what the agent does with your system as it stands.
 
-## Meta
-- **Primary Bloom's level:** Apply + Analyze + Create (walk, fill, launch the experiment)
-- **Prework:** none beyond the last three modules; bring a multi-hour task you've been avoiding (see Connections).
-- **Homework:** none for M4. The task runs between M4 and M5, and M5 opens with the return.
-- **Materials (trainer):** none. Everything the student needs lives in their repo or in conversation.
+## Prework
+
+Bring one or two candidate tasks from your backlog. Multi-hour work, not a typo-fix and not a quarter-long epic.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Pick** a multi-hour real task from your backlog that demands sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude, not typed into a form
+- **Pick** a multi-hour real task from your backlog that demands sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
 - **Recognize** the three-block memory pattern in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
 - **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and let it run; traces are data either way
 
-## Connections
+## Start here
 
 You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, running without you watching. Three modules in, this is your practice now.
 
-**The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. Write them on a sticky or paste them in chat when you sit down. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
+**The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
 *The agent can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Task-surfacing is still your judgement about what's been sitting. At Phase 1, come with one or two candidates and the agent screens them for fit.*
 
@@ -29,15 +27,15 @@ You've watched the agent work for three modules on short loops: a bug fix, a pla
 
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
 - Un-packaged is by design. M5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
-- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers § 1](../reference/claude-code-for-engineers.md))
+- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers — the memory hierarchy](reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
 - Every send-off is an experiment, not a production run you need to get right first time
 
-## Send it off
+## Send the task off
 
 No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at M5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
@@ -62,9 +60,17 @@ Nudging by hand is fine if you're watching. Answer a question, correct a path, p
 
 Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 min). It plants the question and the three failure modes you'll use to read what comes back.
 
-## Bridge
+## Next
 
-M5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your M4 session directly. Close this window after the run is done if you want; the trace is on disk either way. We read it together.
+M5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your M4 session directly. Close the session after the run is done if you want; the trace is on disk either way.
+
+## Pre-reads before M5
+
+Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap while your un-packaged run is still going; they prime the 80/20 reframe M5 will name from your own felt evidence.
+
+**Read — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** Interview write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for M5: primes the 80/20 reframe M5 will name from felt evidence rather than introduce as a slogan.
+
+**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound). Why for M5: primes the planning-and-review-heavy posture M5 will name from felt evidence.
 
 <!-- maintainer -->
 

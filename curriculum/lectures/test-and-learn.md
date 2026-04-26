@@ -21,9 +21,9 @@ Today's experiment is the first of two. Same task, two runs across M4 → M5.
 
 Run one. Today, un-packaged. You'll walk what you've built against the task, fill the worst gaps, and send it off with no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent will work with what you've given it.
 
-Run two. M5, packaged. We'll read what came back, find what went wrong, and you'll learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
+Run two. M5, packaged. You'll read what came back, find what went wrong, and learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
 
-The contrast is the lesson. No lecture on "best practices for long-running agents" lands the way *you just watched this fail, here's what would have caught it* lands. That's why we launch un-packaged here, to earn the M5 teaching moment.
+The contrast is the lesson. No lecture on "best practices for long-running agents" lands the way *you just watched this fail, here's what would have caught it* lands. That's why M4 launches un-packaged: to earn the M5 teaching moment.
 
 ## Two frameworks you'll use today
 
@@ -41,7 +41,7 @@ What you owe the experiment is a result you can read, not a completed artifact. 
 
 ## What happens after
 
-M5 opens with the return when the next slot lands. We read what came back together, diagnose what went wrong, and you learn packaging not from a slide but from *"here's the piece that would have caught this specific thing."*
+M5 opens with the return when the next slot lands. You read what came back, diagnose what went wrong, and learn packaging not from a slide but from *"here's the piece that would have caught this specific thing."*
 
 **Rehearse, apply, fail, try again.** That's the loop you're stepping into. The first run wasn't supposed to be the right one.
 

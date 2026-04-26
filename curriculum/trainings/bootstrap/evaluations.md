@@ -3,9 +3,9 @@
 ## Big Idea
 The eval that ran once in M5 now runs on every output, and the work tightens under it. The judge stays fixed; that's the integrity of the loop. The generator sharpens against feedback the same judge keeps applying. You walk away. You come back to a sharper generator the same yardstick can't fault.
 
-## Meta
-- **Prework:** Ethan Mollick, "Garbage Can and Bitter Lesson". Also read the still-uncertain line you wrote in M5 (the thing you flagged a grounded briefing still couldn't reach). That's M6's starting point.
-- **Homework:** Chip Huyen *AI Engineering*, evals chapter (candidate)
+## Prework
+
+Ethan Mollick, "Garbage Can and Bitter Lesson." Plus the still-uncertain line you wrote in M5 (the thing you flagged a grounded briefing still couldn't reach). That's M6's starting point.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -14,7 +14,7 @@ After this module, you will be able to:
 - **Create** eval infrastructure that holds the judge fixed and tightens the work under it: on disk, re-runnable, sharper outputs each cycle
 - **Distinguish** the one-off judge you picked in M5 from one that runs on every output as a fixed yardstick the work tightens against
 
-## Connections
+## Start here
 In Module 5 you picked a winner out of five detectors. You watched it work. You trusted it. Good. That judge sits in your judges folder. The thing you'll feed it now is the thing that changes.
 
 The question shifts at M6. What if the work kept getting sharper, not because you edited it, but because the same judge kept catching what slipped past and the system kept absorbing the catches? What if *you weren't in the room* while that happened?
@@ -23,7 +23,7 @@ The question shifts at M6. What if the work kept getting sharper, not because yo
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
 - **Two loops compounding.** One loop scores output; the other loop scores the scorer. Each round, both sides tighten.
 - **Walk-away autonomy.** The first true leave-the-chair moment. The system runs; you come back to a dashboard.
@@ -49,8 +49,12 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 
 Read Claude's summary. Push back where it's wrong. *"The meta-agent was right to soften that rule, put it back"* / *"you added a rule the strategy already had after round 2."* The artifact: the sharpened generator strategy file plus one line added to the M6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the strategy kept absorbing them; you just did another pass on the strategy, and the next run the meta-agent will keep going without you.
 
-## Bridge
+## Next
 You just built an eval that improves itself. Who else on your team would want any of this?
+
+## Homework after M6 — between-module reading
+
+Chip Huyen, *AI Engineering*, evals chapter (candidate).
 
 <!-- maintainer -->
 

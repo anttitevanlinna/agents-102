@@ -63,17 +63,24 @@ Read what Claude proposes. Push back where it is off. The four named attack clas
 
 The plugin is authored. Now install it in your runtime and confirm it loads. Plugins load at session start, not into the current session, so the verify step is a fresh session.
 
-Cowork users follow the chat-button install. Desktop and CLI users follow your runtime's block. Everyone syncs at the verify prompt below.
+Cowork users follow the chat-button install. Desktop users follow the plugin loader. CLI users take a small extraction step — same plugin, different install surface. Everyone syncs at the verify prompt below.
 
 <div class="rt-cli">
+
+The CLI does not auto-load plugin envelopes from `~/.claude/plugins/<plugin-name>/` — that directory is registry-managed by Claude Code itself. Standalone skills under `~/.claude/skills/<name>/SKILL.md` auto-load with zero install plumbing. So the CLI install is a one-step extraction: lift each lens's SKILL.md (and any reference files) out of the plugin's `skills/<lens>/` folder and copy them to `~/.claude/skills/`. The plugin manifest you authored is harmless leftover; you keep the plugin folder around as the canonical source of truth.
 
 **Prompt** *(Claude Code)*
 
 ```
-Write the plugin to ~/.claude/plugins/<plugin-name>/ - manifest at the root, SKILL.md files in skills/<lens-name>/SKILL.md, supporting reference files alongside. Use the plugin name we just agreed on. Confirm the file paths back to me so I can verify with ls.
+The plugin you just authored lives at the path you wrote. The CLI does not auto-load plugin envelopes, so install the two lenses as standalone CLI skills by copying:
+
+- skills/policy/SKILL.md (and any reference files)  ->  ~/.claude/skills/security-audit-policy/SKILL.md
+- skills/agent-security/SKILL.md (and any reference files)  ->  ~/.claude/skills/security-audit-agent-security/SKILL.md
+
+The plugin folder stays where it is as the source of truth for the next time we revise the lenses. Confirm both skill paths back so I can verify with ls.
 ```
 
-Run `ls ~/.claude/plugins/` to confirm the directory exists. Open a new session in the same training directory. Claude Code picks up plugins at session start.
+Run `ls ~/.claude/skills/security-audit-*/` to confirm both skills landed. Open a new session in your training directory. Skills load at session start.
 
 </div>
 
@@ -97,17 +104,11 @@ After Phase 2's authoring prompt, Claude renders the plugin files in the chat. L
 
 If the *Save plugin* button does not appear, scroll up to confirm Claude finished writing all the files (manifest plus both SKILL.md files plus any reference files). If a file is missing, ask Claude to write it; the button shows up after the full bundle is on screen.
 
-Once saved, open a new Cowork session connected to the same folder. Plugins load at session start, not into the current one.
-
-**Prompt** *(Cowork)*
-
-```
-Confirm the security plugin I just authored is loaded. List the plugins available in this session and tell me the name of mine.
-```
+Once saved, open a new Cowork session connected to the same folder. The plugin is stored locally on your machine and tied to your Claude Desktop install — it loads automatically in any new Cowork session on the same laptop, no per-session import. Plugins load at session start, not into the current one.
 
 </div>
 
-In the new session, run a single quick invocation to confirm the plugin loads and the lenses are reachable. Pick a known-trivial scope: one file, not the whole module-3 system. The point is to see the plugin name in the available skills list and watch one rule fire, not to do the audit.
+In the new session, type `/` in the prompt and look for the two lenses in the autocomplete list. Cowork and Desktop show them namespaced under the plugin (`/security-audit:policy`, `/security-audit:agent-security`); CLI shows them flat because the install extracted the skills out of the envelope (`/security-audit-policy`, `/security-audit-agent-security`). Either form means the lenses loaded. Then run a single quick invocation on a known-trivial scope: one file, not the whole module-3 system. The point is to see one rule fire, not to do the audit.
 
 **Prompt** *(Claude Code, fresh session)*
 
@@ -115,7 +116,15 @@ In the new session, run a single quick invocation to confirm the plugin loads an
 Apply the policy lens of the security plugin I authored to one file: module-2/challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
 ```
 
-Read the two or three rows. The plugin name should show up in the session's available skills. The rule wording should sound like the lens you authored, not a generic check. If both are true, the plugin is installed.
+Read the two or three rows. The rule wording should sound like the lens you authored, not a generic check.
+
+**The explicit slash-command form — also worth knowing.** Plain-language usually dispatches the right lens, but the slash command is the only invocation guaranteed to fire the exact one you mean:
+
+```
+/security-audit:policy run two or three rules on module-2/challenge.md and stop.
+```
+
+CLI users drop the colon — `/security-audit-policy ...` — because the extracted skills do not carry the plugin namespace.
 
 **What happens:**
 
@@ -129,10 +138,16 @@ The expert is not you reading every file by hand. The expert is the plugin, and 
 
 <!-- maintainer -->
 
-**Quality:** mechanical-tested 2026-04-26
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in)
-- sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE-WITH-TODOs — see TODOs below)
-- mechanical-tested 2026-04-26 (instances/bootstrap-m4-author-judge-report.md @ 7644347 PASS 36/36)
+**Quality:** sim-passed 2026-04-26 (curriculum-pre-ship-audit gate cleared APPROVE-WITH-TODOs; mechanical degraded on file touch — see TODOs)
+- compendium-audited 2026-04-26 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in — re-cleared via LLM-as-judge eval at audit-gate run, banned-word + link-format + voice + prompt-action-leadin all PASS)
+- sim-passed 2026-04-26 (three-persona sim: mid-competent practitioner — recommend-with-reservations; opinionated senior — would-steer; fast operator — would-recommend; APPROVE-WITH-TODOs aggregate; LLM-as-judge eval also APPROVE-WITH-TODOs)
+- ~~mechanical-tested 2026-04-26 (instances/bootstrap-m4-author-judge-report.md @ 13e3f8e PASS 32/32)~~ DEGRADED 2026-04-26 (Phase 3 install mechanism rewritten; previous mechanical run substituted skill invocation entirely, never exercised the actual install path — new CLI fork needs end-to-end mechanical coverage; runner pair `bootstrap-m4-author.verbatim.{actor,judge}.md` needs re-spec for skill-only install before re-run)
+
+**Pre-ship-audit findings 2026-04-26 (resolved + standing):**
+- ~~Phase 3 mood gate fails 8/10 under three-persona sim~~ — RESOLVED 2026-04-26 by restoring Phase 2 to its original framing (no "wrapping" pre-leak) AND reshaping CLI Phase 3 as *extraction* from the authored plugin (the manifest is kept as source of truth; SKILL.md files lifted into `~/.claude/skills/`). Plugin stays the default vocabulary across the body; CLI fork is now a small honest callout, not a bait-and-switch. Re-sim 2026-04-26 with rotated persona (solo self-study learner, fresh archetype): Phase 1 close 8, Phase 2 close 8.5, Phase 3 close 8, exercise close 8. Verdict: ship to first cohort.
+- **Phase 1 dictation forcing function under speed** — STILL OPEN as a low-priority TODO. The fast-operator persona originally flagged that the Watch-for predicts the failure but doesn't prevent it. The re-sim's solo-learner had no time pressure and rated Phase 1 at 8 — so the gap is speed-specific. Optional fix next cycle: line-count gate inside the Phase 1 prompt (Claude refuses to proceed under N specifics).
+- **Length** — STILL OPEN as polish, not blocking. ~960 words vs 400–700 target. Re-sim found Phase 3 reads tight enough to ship; trimming is polish-cycle work.
+- **Mechanical re-run owed** — STILL OPEN, highest priority before first cohort delivery. Runner pair `bootstrap-m4-author.verbatim.{actor,judge}.md` needs re-spec for the extraction install path before re-run.
 
 **Cohort-facilitator audit findings (2026-04-25, fixes 1–3 applied 2026-04-26):**
 - ~~Phase 1 freeze case~~ — DONE. `module-4-prework.md` now opens with a "Before you arrive — five lines, in your own voice" subsection plus four example shapes; prework time bumped to 30–40 min to absorb the 5-min prep.
@@ -156,10 +171,11 @@ The expert is not you reading every file by hand. The expert is the plugin, and 
 - Customer-policy reference content under `module-4/policies/` (Antti distils from customer policies; default Nordic-baseline for self-study) — input the student reads while Claude proposes the plugin in Phase 1.
 - The student's "what matters" lines in Phase 1 — participant-typed, never prescribed. Three to five lines in their voice.
 
-**Capability checks owed (before first delivery):**
-1. **Per-runtime plugin authoring + install.** Cowork: *Save plugin* button appears reliably after the file bundle renders. Desktop: plugin loader picks up the authored folder without restart. CLI: a plugin written to `~/.claude/plugins/<name>/` is invocable from the next session. Run `claude-code-guide` per runtime.
-2. **Plain-language invocation phrasing.** *"Apply the policy lens of the security plugin I authored to module-2/CLAUDE.md"* dispatches reliably across all three runtimes. Fallback to `/skill use <name>` or `use skill:<name>` per-runtime if plain-language is not reliable.
-3. **Plugin-loaded visibility in transcript.** Whether each runtime surfaces a "Plugin loaded" marker on session start. If yes, add one cue line to Phase 3's verify step. If no, skip; the verify prompt itself confirms load.
+**Capability checks (status as of 2026-04-26 — verified by live execution, not docs):**
+1. **Per-runtime authoring + install.** Cowork *Save plugin* button appears reliably after the file bundle renders ✓ (Antti-confirmed). Desktop plugin loader picks up the authored folder; new session inside the same Desktop app suffices, no app restart ✓ (Antti-confirmed). CLI: standalone skills written to `~/.claude/skills/<name>/SKILL.md` auto-load in the next session ✓ (live-tested 2026-04-26 — wrote `~/.claude/skills/cli-test-skill/SKILL.md`, invoked `/cli-test-skill` from `claude --print`, response landed). Plugin envelopes are NOT a CLI install path — the CLI's plugin loader is registry-mediated (`installed_plugins.json` + `enabledPlugins`), and `~/.claude/plugins/<name>/` direct-folder-write does NOT auto-load (live-tested and falsified 2026-04-26).
+2. **Invocation paths.** CLI: `/<skill-name>` (no namespace; e.g. `/security-audit-policy`). Desktop and Cowork: `/<plugin>:<skill>` (namespaced; e.g. `/security-audit:policy`). Plain-language usually dispatches; the slash form is the only invocation guaranteed to fire the exact lens. There is no `/skill use <name>` fallback (corrected from a prior docs-based assumption).
+3. **Loaded visibility.** Same `/` autocomplete surface across runtimes; the names that appear depend on wrapping (flat skill names on CLI; namespaced plugin:skill on Desktop/Cowork). No system message announces load — autocomplete is the cue.
+4. **Footguns to coach in delivery.** (a) Plugin re-edits do not hot-reload in Cowork — student must re-save and reopen; CLI students re-edit the SKILL.md and the next session picks it up automatically. (b) Skill name collisions across plugins resolve silently to last-loaded; relevant once the student ships a second plugin or skill.
 
 **Watch-fors:**
 - **Phase 1 dictation collapses into pre-reading.** Student opens the policy files first because skipping the read feels wrong. Coach: *"The plugin carries your judgment. Reading the files first dilutes the judgment with the file's vocabulary. Trust your three lines; Claude reads the files for you."*

@@ -12,7 +12,7 @@
 
 ## Phase 1: invoke the skill on the mapped surface (~7 min)
 
-Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Ex1.
+Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.
 
 **Prompt** *(Claude Code)*
 

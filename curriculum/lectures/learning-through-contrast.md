@@ -4,9 +4,9 @@ You sent off an un-packaged run at the close of M4 and you have something to rea
 
 Here is the move M5 asks of you. It cuts against most engineering instinct.
 
-**Read first. Fix later.**
+**Diagnose first. Fix later.**
 
-When we see something an agent did wrong, the reflex is to fix it immediately. Edit the prompt, add a constraint, reach for the next tool. M5 holds that reflex off. We diagnose first. We name the failure modes. We let the failures earn the validation that catches them.
+When you see something an agent did wrong, the reflex is to fix it immediately. Edit the prompt, add a constraint, reach for the next tool. M5 holds that reflex off. You diagnose first. You name the failure modes. The failures earn the validation that catches them.
 
 The arc is *test → learn → encode.* M4 was the test. Today is the learn. M6 will be the encode.
 
@@ -43,7 +43,7 @@ Option 2 is what the exercise builds. The whole point of packaging is that you c
 
 Phase 1: open Claude Code in your repo, ask it to read your M4 artefact through the three lenses, quote specific moments for each. Don't generalise. Quote.
 
-Phase 2 inverts the move: for each named failure, ask what validation would have caught it at hour 2.
+Phase 2 inverts the move: for each named failure, ask what validation would have caught it in minutes, not hours.
 
 Phases 3 and 4 build. Then the module re-sends.
 

@@ -3,11 +3,11 @@
 ## Big Idea
 Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see; run a second-pass read for what you can't. Paired, they give a complete read; neither alone does.
 
-## Meta
-- **Primary Bloom's level:** Apply + Analyze + Evaluate (the push-back is the Evaluate beat)
-- **Prework:** about 10 min. Surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
-- **Homework:** none. M3 opens on a fresh pair of compact exercises.
-- **Materials (trainer):** content folder already on student's machine from M1. No new scaffolds.
+## Prework
+
+About 10 min. Surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
+
+Optional reading in the M1-to-M2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (~30 min); [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,17 +16,17 @@ After this module, you will be able to:
 - **Run** a second-pass read that walks down unresolved branches you didn't think to check, one question at a time, with a recommended answer per branch
 - **Recognize** the pairing as a repeatable design pattern: human read → push-back → agent walk-down → approve
 - **Name** plan-mode approval inflation as the thing the pairing defeats, not a moralistic warning
-- **Write** one named pattern into your personal `CLAUDE.local.md` (gitignored) that captures how plans get read in this codebase. If it's team-worthy, flag it for a separate PR against team `CLAUDE.md` (see [the four CLAUDE.md layers](../reference/claude-code-for-engineers.md))
+- **Write** one named pattern into your personal `CLAUDE.local.md` (gitignored) that captures how plans get read in this codebase. If it's team-worthy, flag it for a separate PR against team `CLAUDE.md` (see [the four CLAUDE.md layers](reference/claude-code-for-engineers.md))
 
-## Connections
+## Start here
 
-**The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work? Write one line, or paste it in chat if you're remote. The room harvests everyone's before the lecture names the pattern.
+**The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work? The room harvests everyone's before the lecture names the pattern.
 
 [Lecture: When a plan is good](lectures/when-a-plan-is-good.md)
 
 [Exercise: Push back on the plan](exercises/push-back-on-the-plan.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
 - Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. **Remember: push-backs ship into memory.**
@@ -35,7 +35,7 @@ After this module, you will be able to:
 - You don't have to execute a plan to know it's good. The work of making it good is the exercise
 - Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
 
-## Save if it earned itself
+## Save the rule if it earned itself
 
 The full compound move ran at M1. M2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next. There is no quota.
 
@@ -47,9 +47,17 @@ Ask Claude to integrate the one branch that earned itself into your personal `./
 If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop.
 ```
 
-## Bridge
+## Next
 
 You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the 15 minutes. M3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; M3 reveals that and has you author your first one.
+
+## Pre-reads before M3
+
+Optional. Skipping either piece does not break M3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
+
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for M3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for M3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 

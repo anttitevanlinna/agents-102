@@ -8,7 +8,7 @@
 
 **Time:** 25–30 minutes.
 
-> **Quick timebox note.** This is the longest beat in M3 and the place where authoring conversations spiral. We keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is M6's job.
+> **Quick timebox note.** This is the longest beat in M3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is M6's job.
 
 ---
 
@@ -18,7 +18,7 @@ Skills aren't hand-crafted. They're authored through conversation.
 
 The ship destination is your personal skills folder: `~/.claude/skills/test-strategy/SKILL.md`. Auto-discovered in every session you run, across every repo.
 
-This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons we'll name in Phase 4. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
+This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons named in Phase 4. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
 
 **Prompt** *(Claude Code)*
 

@@ -1,6 +1,8 @@
 # How this training was built
 
-A year ago, this training was bulletpoints. A strategy doc. Seven headings, thirty bullets, the sort of list that makes you feel like you understand something and then realise you don't.
+**Time:** 5–7 minutes.
+
+At start, this training was bulletpoints. A strategy doc. Seven headings, thirty bullets, the sort of list that makes you feel like you understand something and then realise you don't.
 
 The bullets became module prototypes. Little drafts of what the training might be. Storylines. First lectures. All of them wrong.
 
@@ -44,11 +46,9 @@ By the end of the training, you will have a rules file shaped by how you actuall
 
 The pattern has a name. Kieran Klaassen at Every calls it *compound engineering*. The retro you just ran was step four of his loop: plan, work, review, compound.
 
-**Mental models only come from doing.** You just did.
+**Mental models only come from doing.** You just did. Compound engineering an hour ago was a name. Now it's a loop you ran on your own repo.
 
 The loop is the shape. The bug today was the excuse.
-
-**Time:** 5–7 minutes.
 
 <!-- maintainer -->
 

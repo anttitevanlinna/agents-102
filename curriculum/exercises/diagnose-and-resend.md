@@ -1,6 +1,6 @@
 # Diagnose and re-send
 
-**What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it at hour 2. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
+**What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
 
 **What happens:** You end the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. The module's Debrief takes over from there: self-compound `CLAUDE.local.md`, then re-send.
 
@@ -41,14 +41,16 @@ Push back where Claude generalises. Insist on quoted moments. The diagnosis is d
 
 ## Phase 2: Align-then-run, in reverse (~10 min)
 
-For each named failure, ask the question that earns the three-pattern: *what validation would have caught this at hour 2, not hour 6?*
+For each named failure, ask the question that earns the three-pattern: *what validation would have caught this in minutes, not hours?*
+
+Not every failure supports minute-cadence. Drift and context rot fire mid-run, on every spec re-read or window fill; minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, but is wrong. Match the verifier shape to the failure shape, not the slogan.
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
 
 **Prompt** *(Claude Code)*
 
 ```
-For each of the three failures we just named, walk it backwards: what specific validation would have caught it at hour 2?
+For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?
 
 Practitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:
 

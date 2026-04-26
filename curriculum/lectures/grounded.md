@@ -34,7 +34,7 @@ This is the shape of the rest of the training. Now you'll run the test side: a b
 
 **The word is grounded.**
 
-Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn't. "Connected to truth" is what we mean by grounded. "Approximating truth without being tied to it" is what we mean by ungrounded.
+Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn't. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.
 
 The positive discipline is grounding. The failure mode is fabrication. The failure mode is what makes headlines: the lawyer citing invented case law, the medical chatbot inventing medications, the finance memo with confident numbers nobody can source. But the discipline is what keeps you out of those headlines, and the discipline is grounded.
 
@@ -70,7 +70,7 @@ Not certainty. Certainty isn't available. What you buy is a *grounded choice abo
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
 
-Now you run the benchmark by hand. Well, not by hand. You set up five detectors, a scorer, and a five-claim benchmark. The agents do the work. You watch the scoreboard fill in. At M6 we put the winner inside a loop that runs and improves itself.
+Now you run the benchmark by hand. Well, not by hand. You set up five detectors, a scorer, and a five-claim benchmark. The agents do the work. You watch the scoreboard fill in. At M6 the winner goes inside a loop that runs and improves itself.
 
 **Time:** 10–12 minutes.
 

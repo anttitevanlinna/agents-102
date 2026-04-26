@@ -38,7 +38,7 @@ Two shapes today, each with its own territory.
 
 You cannot hire three agents and expect the output to be three times as good. You hire three agents to get *three different views of the same thing,* and you pay for the privilege with coordination cost. If you don't need three different views — if one well-prompted agent can give you what you need — please, for the sake of your sanity, write the one prompt.
 
-We just spent a module showing you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don't.
+A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don't.
 
 **Time:** 8–10 minutes.
 

@@ -3,12 +3,9 @@
 ## Big Idea
 Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn't anticipate, pick where the gap belongs (memory, verifier, new skill), and author the second skill through conversation so future you inherits the lesson.
 
-## Meta
-- **Primary Bloom's level:** Analyze + Evaluate + Create (diagnose, judge, build)
-- **Prework:** none beyond holding the M4 un-packaged artefact and the M5 packaged re-run accessible. Both live in your repo and scrollback
-- **Homework:** none. M6 closes the core. For M7/M8 cohorts the bridge carries into agents-meet-agents deliberation; for core-only cohorts the bridge is Monday-morning real work
-- **Materials (trainer):** none. Two runs in your repo, conversation, and your authored second skill carry the module
-- **Plug points:** your two artefacts (M4 un-packaged, M5 packaged); your team's shared-skills home (second-skill ship destination for team-PR candidates); your team's shared-memory home (where gaps-belong-in-memory land)
+## Prework
+
+Walk in with both M4 (un-packaged) and M5 (packaged) run artefacts. Optional pre-read in the M5-to-M6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -18,11 +15,9 @@ After this module, you will be able to:
 - **Name** (Understand) evals with full weight (verifier = judge = gate = eval), anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
 - **Articulate** (Evaluate) one key learning and one personal thought on the future in the Debrief round. Not a performance; a marker of where your practice stands after six modules.
 
-## Connections
+## Start here
 
 You walk in holding two runs of the same task. The un-packaged M4 send-off. The packaged M5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
-
-## Lectures (before the exercise)
 
 [Story of Module 6](lectures/story-of-module-6.md)
 
@@ -30,7 +25,7 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 [Arc-named retrospective](exercises/arc-retrospective.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
@@ -49,25 +44,13 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 **Self-study variant.** Close the laptop. The encode step already happened when you shipped the second skill. If you can name the move in one sentence, that's the marker; no further articulation required.
 
-## Closing
-
 [The loop has a name](lectures/the-loop-has-a-name.md)
 
-## Bridge
+## Next
 
-**Core-only cohorts:** On Monday, pick a task your team is sitting on, send it off packaged, read the return through the lens you just built. The loop is yours now.
+On Monday, pick a task your team is sitting on, send it off packaged, read the return through the lens you just built. The loop is yours now.
 
-**M7/M8 cohorts:** Your agent stack (codebase memory, two authored skills, verifier, team-kit contributions) arrives at M7 as a first-class participant. Agents meet agents on a real engineering problem.
-
-## When to reach for parallel worktrees
-
-Parallel worktrees are the natural next move once the second-skill loop is landing. Cherny calls them his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The mechanics live in [Multi-session and Git: survival guide](../reference/multi-session-git.md); the instinct earns itself in use. Find your way to do it over time.
-
-## Pre-reads before M6
-
-Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and primes two moves the module will name from your own two-run evidence.
-
-**Read — Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for M6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
+Now that you know how to steer one session, run several. Parallel worktrees pay off when two pieces are ready to move, when you want to try two approaches side by side, or when a review task can run alongside the build. The mechanics live in the [Multi-session and Git: survival guide](reference/multi-session-git.md) you read at M1; the instinct earns itself in use.
 
 <!-- maintainer -->
 

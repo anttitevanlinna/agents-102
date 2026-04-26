@@ -3,11 +3,11 @@
 ## Big Idea
 Read the un-packaged M4 run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.
 
-## Meta
-- **Primary Bloom's level:** Analyze + Evaluate + Create (diagnose, judge, build)
-- **Prework:** Reading the return (~5 min lecture, included below; lands at the close of M4's Debrief while the un-packaged run is going)
-- **Homework:** none for M5. The packaged re-run between M5 and M6 is part of the second experiment; M6 opens with that return.
-- **Materials (trainer):** none. Everything the student needs lives in their repo, the M4 artefact, and conversation.
+## Prework
+
+Walk in with the M4 send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
+
+Optional pre-reads in the M4-to-M5 gap: Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min); Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -18,11 +18,9 @@ After this module, you will be able to:
 - **Re-send** the packaged version of the same task in the same Claude Code session and let it run a second time
 - **Compound by subtraction:** cut one rule diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life
 
-## Connections
+## Start here
 
 You sent off an un-packaged run at the close of M4 and read the pre-read. You walk in with the artefact in front of you. The in-room lecture below opens the session.
-
-## Lectures (before the exercise)
 
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
@@ -30,7 +28,7 @@ You sent off an un-packaged run at the close of M4 and read the pre-read. You wa
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 - The three failure modes earn their names by reading them in your own artefact, not from a slide
 - The three-pattern (Ronacher) is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
 - The three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
@@ -66,21 +64,17 @@ I'm closing the laptop. If the verifier fails, fix and re-run; don't paper over.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from M4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more — that's a result worth reading.
 
-## Closing
-
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
-## Bridge
+## Next
 
 M6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its full name as an eval, and the team kit takes its first inherited skill.
 
-## Pre-reads before M5
+## Pre-reads before M6
 
-Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap while your un-packaged run is still going; they prime the 80/20 reframe M5 will name from your own felt evidence.
+Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and primes two moves the module will name from your own two-run evidence.
 
-**Read — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** Interview write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for M5: primes the 80/20 reframe M5 will name from felt evidence rather than introduce as a slogan.
-
-**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound). Why for M5: primes the planning-and-review-heavy posture M5 will name from felt evidence.
+**Read — Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for M6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
 
 <!-- maintainer -->
 
@@ -98,7 +92,7 @@ Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap 
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Nerd: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*
 - **Phase 1 diagnosis-as-blame** — student frames failures as their fault (*"I should have written a better prompt"*). Nerd: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."*
 - **Phase 1 over-diagnosis** — student lists 8 failures across all three modes. Nerd: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"*
-- **Phase 2 prescription-skip** — student goes straight from named failure to building the fix without the align-then-run question. Nerd: *"the question matters more than the answer. What validation would have caught this at hour 2?"*
+- **Phase 2 prescription-skip** — student goes straight from named failure to building the fix without the align-then-run question. Nerd: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"*
 - **Phase 3 verifier-shape mismatch** — student picks shell-hook for a qualitative failure (or LLM-judge for a deterministic one). Nerd surfaces the menu again: *"qualitative failure wants a judge. Deterministic wants a hook. Drift wants a re-feed. Which is yours?"*
 - **Phase 4 reference-as-rewrite** — student rewrites `CLAUDE.local.md` instead of authoring a task-scoped reference. Nerd: *"the reference is task-local. Lives next to the plan.md. Your rules file is for the codebase; the reference is for this task."*
 - **Debrief re-send anxiety** — student hesitates at the second send-off. Nerd: *"same task, packaged. Same close-the-laptop move. The point is to read the contrast at M6, not to nail it this run."*

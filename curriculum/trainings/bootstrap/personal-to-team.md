@@ -3,9 +3,9 @@
 ## Big Idea
 You can't really share an agent. You can share context, a skill, the output, or an interface. The choice is a strategy decision, not a deployment decision.
 
-## Meta
-- **Prework:** Three-walls pre-read: the three real walls a practitioner hits when trying to scale past themselves. **Absorption bottleneck** (learning rate cap; your org can't absorb capability faster than people learn to use it). **Access-Trust Gap** (most enterprises have given far more people access than they trust to run real production work; access doesn't convert to real use). **Discoverability** (F-Secure-validated; nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
-- **Homework:** Run the next-step artifact. Test one assumption. Ask for one name. Talk to one person.
+## Prework
+
+Three-walls pre-read: the three real walls a practitioner hits when trying to scale past themselves. **Absorption bottleneck** (learning rate cap; your org can't absorb capability faster than people learn to use it). **Access-Trust Gap** (most enterprises have given far more people access than they trust to run real production work; access doesn't convert to real use). **Discoverability** (F-Secure-validated; nobody finds, invokes, or trusts the shared agent without a way to encounter it in the flow of work). Rumelt on *crux / Good Strategy Bad Strategy*. Roger Martin on *strategy as assumptions / what would have to be true?*. Gary Klein on *pre-mortem*.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -15,7 +15,7 @@ After this module, you will be able to:
 - **Test** the switch the teammate would have to make, surfacing what would have to be true for them to fire their current hire and use your candidate
 - **Pre-mortem** the firing: imagine the six-month failure where they kept using the incumbent, biased toward the social failure you're not seeing
 
-## Connections
+## Start here
 By now you've built a memory, synthesis across three source zones, skills that audit your own system, a judge that got sharper by watching itself miss things. It's a stack. And somewhere in it is a thing that produced output you trust enough to check before a meeting. You caught it wrong once, corrected it, watched the correction stick.
 
 The question that shows up on its own: *could this help someone else?*
@@ -36,7 +36,7 @@ One observation to keep in your back pocket while you run the exercise: **the Ac
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
-## Key Concepts (Emergent)
+## Key Concepts
 
 - **Interview for the outcome before designing the solution.** The transferable skill. The teammate's job comes first; your candidate comes second. When work resumes you'll face a different adoption problem and the move is the same. Agent reads your context, drafts a JTBD hypothesis, asks you seven targeted questions, produces a brief with an outcome statement. Christensen, Moesta, Ulwick didn't write it for agent work. You just applied it to agent work.
 - **The agent does the heavy lifting on the interview.** Your memory already carries 80% of the teammate's job. Phase 1's move is the agent reading what's on disk, hypothesising, then asking a defined set of questions to plug the real holes. Not freeform chat. A bounded ask. That's what makes it reliable.
@@ -65,9 +65,13 @@ When you're done, tell me in 3–5 lines: which file you rewrote, what you added
 
 Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your M7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
-## Bridge
+## Next
 
 You've built a system. You've secured it, evaluated it, and designed the sharing. What if you didn't have to build each new agent by hand?
+
+## Homework after M7 — between-module reading
+
+Run the next-step artifact. Test one assumption. Ask for one name. Talk to one person.
 
 <!-- maintainer -->
 

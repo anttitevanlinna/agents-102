@@ -3,22 +3,20 @@
 ## Big Idea
 The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug's ticket via one connector. The loop every module after this one rides on.
 
-## Meta
-- **Primary Bloom's level:** Apply (run the three-phase loop end-to-end) + Analyze (read the agent's own introspection against `/context`; read the retro summary against session moments)
-- **Prework:** about 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1). Content folder unzipped, Claude Code open on the repo you'll grow, one bug surfaced in conversation with Claude.
-- **Homework:** none. Module 2's setup lives in Module 2's prework.
-- **Materials (trainer):** content folder (`agents-102-content-agentic-engineering-101.zip`) shipped before prework; no trainer scaffolds beyond that. All compounding artifacts land in the student's repo (see content strategy § Delivery architecture). Claude Code specifics (MCP install per tracker, tenant-admin fallbacks) live in [MCP and connectors](../reference/mcp-and-connectors.md), updated as Claude Code's install surface changes.
+## Prework
+
+About 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1).
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo
 - **Introspect** on the agent's read of your repo and verify the self-report against `/context`, the instrument that shows where the 10% lives
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
-- **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [reference § 1](../reference/claude-code-for-engineers.md) for the four-layer hierarchy) and close the bug's ticket via one connector. The first move outside the repo
+- **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [the four CLAUDE.md layers](reference/claude-code-for-engineers.md) for the hierarchy) and close the bug's ticket via one connector. The first move outside the repo
 
-## Connections
+## Start here
 
-**The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session. Write it on a sticky, or paste it in chat if you're remote. The room harvests everyone's before the training adds its own.
+**The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session. The room harvests everyone's before the training adds its own.
 
 [The wizard move](lectures/the-wizard-move.md)
 
@@ -28,31 +26,29 @@ After this module, you will be able to:
 
 [Compound and close](exercises/compound-and-close.md)
 
-## Key Concepts (Emergent)
-- Plan mode is overhead on a trivial bug. M2 is where it earns its keep
+## Key Concepts
+- Plan mode is overhead on a trivial bug. Module 2 (M2 from here on) is where it earns its keep
 - The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Verify against `/context`
 - The 10% the agent couldn't address lives in the slice of the repo it didn't load. Your job is to steer what lands in the window
 - A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
-- The compound step lives in Ex3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
+- The compound step lives in Exercise 3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
 - Personal rules (`./CLAUDE.local.md`, gitignored) vs. team rules (`./CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
 
 ## Debrief
-The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Ex1 + Ex2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so the student can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
-
-## Closing lecture
+The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Exercise 1 + Exercise 2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so the student can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
 
 [How this training was built](lectures/how-this-training-was-built.md)
 
-## Bridge
-You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep: multi-file work, two reads (yours + grill), approval inflation catches as the teaching moment. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
+## Next
+You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
 
 ## Homework after M1 — between-module reading
 
 Optional. Skipping either piece does not break M2. Both sit in the gap between M1 and M2; engineers who do them arrive at M2 with practitioner voice and worktree-readiness as recognition rather than novelty.
 
-**Watch — [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for M2: frames the practitioner voice the rest of AE101 earns through exercises. The moves you will live in M2 through M6 show up here first as one person's working rhythm.
+**Watch: [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for M2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in M2 through M6 show up here first as one person's working rhythm.
 
-**Read — [Multi-session and Git: survival guide](../reference/multi-session-git.md) (~10 min).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Why for M2: the Git footing you will want once you start running more than one session at a time. You will want to run multiple sessions. Find your way to do it over time. There is no rush.
+**Read: [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use. Find your way to do it over time. There is no rush.
 
 <!-- maintainer -->
 
@@ -77,7 +73,7 @@ Optional. Skipping either piece does not break M2. Both sit in the gap between M
 - **Ex3 rule rubber-stamp** — student accepts Claude's `./CLAUDE.local.md` rule without reading. Nerd push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
 - **Ex3 team vs. personal ambiguity** — Claude writes a rule that's team-worthy (*"always validate webhook signatures before dispatch — our payment flow got bitten by this"*) but lands it in `./CLAUDE.local.md` without flagging. Nerd push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so I can open a PR against team `./CLAUDE.md` separately — don't PR it automatically, but name it."*
 - **Ex3 compound-summary confabulation** — Claude's 3–5 line summary name-drops session moments without quoting. Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
-- **Ex3 MCP install gate** — corporate tenant blocks connector install. Nerd surfaces the tenant-admin fallback per tracker from [MCP and connectors](../reference/mcp-and-connectors.md). Never a blocker; always a fallback path.
+- **Ex3 MCP install gate** — corporate tenant blocks connector install. Nerd surfaces the tenant-admin fallback per tracker from [MCP and connectors](reference/mcp-and-connectors.md). Never a blocker; always a fallback path.
 - **Self-compounding at every module from M1** — the Nerd never interviews the student with Q1/Q2/Q3. Claude reviews session evidence, rewrites rules file in place, reports 3–5 lines, student pushes back. Same shape across the training.
 - **Repo change mid-training** — supported. Replay M1 → M(current) on new repo in an evening. Nerd fast-paths replay (pedagogy already landed; regenerate artifacts for the new repo).
 

@@ -24,13 +24,13 @@ Practitioners running multi-hour coding agents in the last six months name the s
 
 ## One practitioner anchor
 
-Armin Ronacher ran a port between two languages in roughly ten hours of agent time, two and a bit million tokens. The run held together because he had something specific in place that catches the failure modes above. We diagnose what at M5.
+Armin Ronacher ran a port between two languages in roughly ten hours of agent time, two and a bit million tokens. The run held together because he had something specific in place that catches the failure modes above. M5 diagnoses what.
 
 ## What to bring to M5
 
 The artefact (whatever your run produced, including a stopped run). The three failure modes above as your reading lens.
 
-We read it together at M5 open.
+M5 opens with reading it together.
 
 <!-- maintainer -->
 

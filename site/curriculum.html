@@ -220,6 +220,7 @@
                     .then(extractParent)
                     .then(stripMaintainerTail)
                     .then(expandIncludes)
+                    .then(rewriteCrossDocLinks)
                     .then(function (md) {
                         container.innerHTML = marked.parse(md);
                         decoratePrompts(container);
@@ -431,6 +432,19 @@
                 window.addEventListener('scroll', update, { passive: true });
                 window.addEventListener('resize', update);
                 update();
+            }
+
+            // Rewrite inline cross-doc markdown links from source-relative .md paths to the
+            // site router's query-string form so source files stay clean of renderer URLs.
+            // Handles:
+            //   [text](../reference/<slug>.md)      → [text](curriculum.html?file=reference/<slug>)
+            //   [text](../supplementary/<slug>.md)  → [text](curriculum.html?file=supplementary/<slug>)
+            // Source markdown can author the natural relative path; the renderer resolves it.
+            function rewriteCrossDocLinks(md) {
+                return Promise.resolve(md.replace(
+                    /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g,
+                    '](curriculum.html?file=$1/$2)'
+                ));
             }
 
             // Expand standalone include links of the form:

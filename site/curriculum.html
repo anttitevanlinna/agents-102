@@ -6,6 +6,7 @@
     <title>Curriculum — Agents 102</title>
     <link rel="stylesheet" href="layouts/curriculum.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="layouts/curriculum.js"></script>
 </head>
 <body>
     <header class="curriculum-header">
@@ -35,47 +36,10 @@
 
     <script>
         (function () {
-            // Training definitions. Bootstrap = the default training (Step 1 of 5).
-            // Modules are slug-only — sequence is array position. Reorder by moving entries.
-            var TRAININGS = {
-                bootstrap: {
-                    label: 'Bootstrap',
-                    lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
-                    prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
-                    modules: [
-                        { slug: 'getting-going',           title: 'Getting Going' },
-                        { slug: 'building-agent-systems', title: 'Building Agent Systems' },
-                        { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
-                        { slug: 'security',               title: 'Security' },
-                        { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
-                        { slug: 'evaluations',            title: 'Evaluations' },
-                        { slug: 'personal-to-team',       title: 'From Personal to Team' },
-                        { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
-                    ],
-                    supplementaries: [
-                        { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
-                        { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
-                        { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' }
-                    ],
-                    references: [
-                        { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
-                    ]
-                },
-                'agentic-engineering-101': {
-                    label: 'Agentic Engineering 101',
-                    lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation. Plus two optional modules when the cohort wants the team peak.',
-                    prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
-                    modules: [
-                        { slug: 'getting-going',             title: 'Getting going + context' },
-                        { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
-                        { slug: 'earn-the-trust',            title: 'Earn the trust' },
-                        { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
-                        { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
-                        { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
-                    ]
-                }
-            };
-            var DEFAULT_TRAINING = 'bootstrap';
+            // TRAININGS registry + helpers live in layouts/curriculum.js
+            // (shared with workbook builds via UMD).
+            var TRAININGS = CurriculumRuntime.TRAININGS;
+            var DEFAULT_TRAINING = CurriculumRuntime.DEFAULT_TRAINING;
 
             var params       = new URLSearchParams(window.location.search);
             var trainingKey  = params.get('training') || DEFAULT_TRAINING;
@@ -223,14 +187,14 @@
                     .then(rewriteCrossDocLinks)
                     .then(function (md) {
                         container.innerHTML = marked.parse(md);
-                        decoratePrompts(container);
+                        CurriculumRuntime.decoratePrompts(container);
                         var h1 = container.querySelector('h1');
                         document.title = (h1 ? h1.textContent : fallbackTitle) + ' — Agents 102';
                         if (typeof mod !== 'undefined' && mod) buildModuleHero(mod);
                         wrapStandaloneIfNeeded();
                         prependTopNav();
                         appendNav();
-                        installReadingProgress();
+                        CurriculumRuntime.installReadingProgress();
                     })
                     .catch(function (err) {
                         container.innerHTML = '<h1>Could not load</h1><p>' + esc(err.message) + '</p><p><a href="curriculum.html">Back to index</a>.</p>';
@@ -238,33 +202,14 @@
                     });
             }
 
-            // A file can declare its canonical parent module with `<!-- parent: <slug> -->`
-            // (invisible HTML comment, usually at the top of the file). When present, the
-            // "Back to …" link on the standalone page targets that module instead of the
-            // training index. Example in a prework or exercise file:
-            //   <!-- parent: building-agent-systems -->
+            // extractParent + stripMaintainerTail live in layouts/curriculum.js (shared).
+            // SPA wraps extractParent to capture directFileParent as a side effect.
             function extractParent(md) {
-                var m = md.match(/<!--\s*parent:\s*([a-zA-Z0-9_-]+)\s*-->/);
-                if (m) directFileParent = m[1];
+                var slug = CurriculumRuntime.extractParent(md);
+                if (slug) directFileParent = slug;
                 return md;
             }
-
-            // Everything below a `<!-- maintainer -->` HTML comment on its own line is
-            // maintainer metadata — editorial notes, facilitator intel, eval logs, TODO lists —
-            // and must not reach the student. Cut it off before rendering. We use an HTML
-            // comment rather than `---` as the cut marker because `---` is legitimately used
-            // in body prose as a visual horizontal rule (see prework, quick-reference,
-            // supplementary files). The HTML comment is invisible in any markdown renderer and
-            // only the cut sentinel — no collision risk.
-            function stripMaintainerTail(md) {
-                var lines = md.split('\n');
-                for (var i = 0; i < lines.length; i++) {
-                    if (/^<!--\s*maintainer\s*-->\s*$/i.test(lines[i])) {
-                        return lines.slice(0, i).join('\n').replace(/\s+$/, '');
-                    }
-                }
-                return md;
-            }
+            var stripMaintainerTail = CurriculumRuntime.stripMaintainerTail;
 
             // Standalone exercise / lecture pages get the same phase wrapper they
             // wear when embedded inside a parent module — so the same content reads
@@ -415,36 +360,17 @@
                 });
             }
 
-            // Thin oxblood hairline at the very top of the viewport that fills as
-            // the student scrolls. Cheap depth cue — signals progress without
-            // taking real-estate. Fixed-position; survives sticky-nav stacking.
-            function installReadingProgress() {
-                if (document.querySelector('.reading-progress')) return;
-                var bar = document.createElement('div');
-                bar.className = 'reading-progress';
-                document.body.appendChild(bar);
-                var update = function () {
-                    var doc = document.documentElement;
-                    var max = doc.scrollHeight - doc.clientHeight;
-                    var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-                    bar.style.width = pct + '%';
-                };
-                window.addEventListener('scroll', update, { passive: true });
-                window.addEventListener('resize', update);
-                update();
-            }
+            // (installReadingProgress lives in layouts/curriculum.js — shared with workbook builds.)
 
             // Rewrite inline cross-doc markdown links from source-relative .md paths to the
             // site router's query-string form so source files stay clean of renderer URLs.
             // Handles:
             //   [text](../reference/<slug>.md)      → [text](curriculum.html?file=reference/<slug>)
             //   [text](../supplementary/<slug>.md)  → [text](curriculum.html?file=supplementary/<slug>)
-            // Source markdown can author the natural relative path; the renderer resolves it.
+            // rewriteCrossDocLinks lives in layouts/curriculum.js (shared, pure).
+            // SPA chain expects a Promise — wrap.
             function rewriteCrossDocLinks(md) {
-                return Promise.resolve(md.replace(
-                    /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g,
-                    '](curriculum.html?file=$1/$2)'
-                ));
+                return Promise.resolve(CurriculumRuntime.rewriteCrossDocLinks(md));
             }
 
             // Expand standalone include links of the form:
@@ -567,24 +493,16 @@
                 document.title = t.label + ' Curriculum — Agents 102';
 
                 prependTopNav();
-                installReadingProgress();
+                CurriculumRuntime.installReadingProgress();
 
                 // Hydrate big ideas from each module's markdown so the card gets its
                 // one-liner without duplicating content in this file.
                 hydrateBigIdeas(t);
             }
 
-            function cardHtml(num, title, slug, href) {
-                return '<li data-slug="' + esc(slug) + '">' +
-                    '<a href="' + href + '">' +
-                    '<span class="module-n">' + esc(num) + '</span>' +
-                    '<span class="module-body">' +
-                    '<span class="module-title">' + esc(title) + '</span>' +
-                    '<span class="module-big" data-big-idea>&nbsp;</span>' +
-                    '</span>' +
-                    '<span class="module-arrow">→</span>' +
-                    '</a></li>';
-            }
+            // cardHtml lives in layouts/curriculum.js (shared). SPA omits bigIdea
+            // so the slot stays empty; hydrateBigIdeas fills it via fetch.
+            var cardHtml = CurriculumRuntime.cardHtml;
 
             function simpleRowHtml(kind, title, href) {
                 return '<li><a href="' + href + '">' +
@@ -668,103 +586,7 @@
             // need to fork prompt blocks just for the chip label — only fork the
             // prompt body or context note when those genuinely differ. Any other
             // destination (e.g. "Builder Claude") renders verbatim.
-            function decoratePrompts(root) {
-                Array.from(root.querySelectorAll('p')).forEach(function (p) {
-                    var strong = p.querySelector('strong');
-                    if (!strong || strong.textContent.trim() !== 'Prompt') return;
-                    var pre = p.nextElementSibling;
-                    if (!pre || pre.tagName !== 'PRE') return;
-
-                    var em = p.querySelector('em');
-                    var label = em ? em.textContent.trim() : '';
-                    label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
-                    var parts = label.split(/,\s*/);
-                    var dest = parts[0] || 'Claude Code';
-                    var context = parts.slice(1).join(', ');
-                    var destHtml = (dest === 'Claude Code')
-                        ? '<span class="rt-cowork">Cowork</span>' +
-                          '<span class="rt-desktop">Claude Code Desktop</span>' +
-                          '<span class="rt-cli">Claude Code CLI</span>'
-                        : esc(dest);
-
-                    var wrap = document.createElement('div');
-                    wrap.className = 'prompt-block';
-                    var header = document.createElement('div');
-                    header.className = 'prompt-block__header';
-                    header.innerHTML =
-                        '<span class="prompt-block__label">Prompt</span>' +
-                        '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
-                        '<span class="prompt-block__dest">' + destHtml + '</span>' +
-                        (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
-
-                    p.parentNode.insertBefore(wrap, p);
-                    wrap.appendChild(header);
-                    wrap.appendChild(pre);
-                    pre.classList.add('prompt-block__pre');
-                    p.remove();
-
-                    // Copy button lives in the header (right-aligned) — out of the
-                    // way of the prompt's first line of text.
-                    addCopyButton(pre, header);
-                });
-
-                // Universal copy buttons on every standalone <pre> — overlay style,
-                // since those blocks don't have a header bar to host it.
-                root.querySelectorAll('pre:not(.prompt-block__pre)').forEach(function (pre) {
-                    addCopyButton(pre);
-                });
-
-                // Back-compat: drop "*(end of prompt)*" leftovers from unmigrated files.
-                Array.from(root.querySelectorAll('p, em')).forEach(function (n) {
-                    var t = n.textContent.trim();
-                    if (t === '(end of prompt)' || t === '*(end of prompt)*') {
-                        var host = n.tagName === 'EM' ? n.parentNode : n;
-                        if (host && host.tagName === 'P') host.remove();
-                    }
-                });
-            }
-
-            // host: optional element to append the button to (e.g. the prompt-block
-            // header). Defaults to appending into the <pre> as an overlay.
-            function addCopyButton(pre, host) {
-                var mountTarget = host || pre;
-                if (mountTarget.querySelector(':scope > .copy-btn')) return;
-                var btn = document.createElement('button');
-                btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
-                btn.type = 'button';
-                btn.setAttribute('aria-label', 'Copy to clipboard');
-                btn.textContent = 'Copy';
-                btn.addEventListener('click', function (ev) {
-                    ev.preventDefault();
-                    var code = pre.querySelector('code') || pre;
-                    var text = code.innerText;
-                    var done = function () {
-                        btn.textContent = 'Copied';
-                        btn.classList.add('copy-btn--copied');
-                        setTimeout(function () {
-                            btn.textContent = 'Copy';
-                            btn.classList.remove('copy-btn--copied');
-                        }, 1400);
-                    };
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(text).then(done, fallback);
-                    } else {
-                        fallback();
-                    }
-                    function fallback() {
-                        var ta = document.createElement('textarea');
-                        ta.value = text;
-                        ta.style.position = 'fixed';
-                        ta.style.opacity = '0';
-                        document.body.appendChild(ta);
-                        ta.select();
-                        try { document.execCommand('copy'); done(); }
-                        catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
-                        document.body.removeChild(ta);
-                    }
-                });
-                mountTarget.appendChild(btn);
-            }
+            // (decoratePrompts + addCopyButton live in layouts/curriculum.js — shared with workbook builds.)
 
             function esc(s) {
                 return String(s)

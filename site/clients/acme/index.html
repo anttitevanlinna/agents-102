@@ -1666,25 +1666,26 @@ body.workbook { padding-top: 3rem; }
       <li><a href="#spot-gaps-build-the-loop" data-target="spot-gaps-build-the-loop">M6</a></li>
   </ol>
 </nav>
-<div class="reading-progress" aria-hidden="true"></div>
 <main>
 
 <header class="workbook-cover" id="top">
   <p class="eyebrow">acme workbook</p>
   <h1 class="cover-title">Agentic Engineering 101</h1>
-  <p class="lede">Six modules. Software engineers becoming Claude wizards on their own codebase.</p>
+  <p class="lede">Six modules for software engineers. Become the Claude wizard — mastery, not remediation. Plus two optional modules when the cohort wants the team peak.</p>
 </header>
 
 <nav class="workbook-toc">
   <h2>Contents</h2>
-    <ol>
-      <li><a href="#prework">Prework</a></li>
-      <li><a href="#getting-going">Module 1 — Getting going + context</a></li>
-      <li><a href="#plan-mode-done-right">Module 2 — Plan mode, done right</a></li>
-      <li><a href="#earn-the-trust">Module 3 — Earn the trust</a></li>
-      <li><a href="#run-the-first-experiment">Module 4 — Run the first experiment</a></li>
-      <li><a href="#learn-from-the-test">Module 5 — Learn from the test, re-send packaged</a></li>
-      <li><a href="#spot-gaps-build-the-loop">Module 6 — Spot gaps, build the loop</a></li>
+    <ol class="module-list index-prework">
+      <li data-slug="prework"><a href="#prework"><span class="module-n">00</span><span class="module-body"><span class="module-title">Prework — do this before Module 1</span><span class="module-big" data-big-idea>&nbsp;</span></span><span class="module-arrow">→</span></a></li>
+    </ol>
+    <ol class="module-list index-modules">
+      <li data-slug="getting-going"><a href="#getting-going"><span class="module-n">01</span><span class="module-body"><span class="module-title">Getting going + context</span><span class="module-big">The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug&#39;s ticket via one connector. The loop every module after this one rides on.</span></span><span class="module-arrow">→</span></a></li>
+      <li data-slug="plan-mode-done-right"><a href="#plan-mode-done-right"><span class="module-n">02</span><span class="module-body"><span class="module-title">Plan mode, done right</span><span class="module-big">Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see; run a second-pass read for what you can&#39;t. Paired, they give a complete read; neither alone does.</span></span><span class="module-arrow">→</span></a></li>
+      <li data-slug="earn-the-trust"><a href="#earn-the-trust"><span class="module-n">03</span><span class="module-body"><span class="module-title">Earn the trust</span><span class="module-big">Before the agent runs bigger work alone, earn your staff engineer&#39;s and CISO&#39;s trust on a small piece you&#39;re shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.</span></span><span class="module-arrow">→</span></a></li>
+      <li data-slug="run-the-first-experiment"><a href="#run-the-first-experiment"><span class="module-n">04</span><span class="module-body"><span class="module-title">Run the first experiment</span><span class="module-big">Walk what you&#39;ve built against a real multi-hour task, fill the worst gaps, send it off un-packaged, and learn from what the agent does with your system as it stands.</span></span><span class="module-arrow">→</span></a></li>
+      <li data-slug="learn-from-the-test"><a href="#learn-from-the-test"><span class="module-n">05</span><span class="module-body"><span class="module-title">Learn from the test, re-send packaged</span><span class="module-big">Read the un-packaged M4 run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.</span></span><span class="module-arrow">→</span></a></li>
+      <li data-slug="spot-gaps-build-the-loop"><a href="#spot-gaps-build-the-loop"><span class="module-n">06</span><span class="module-body"><span class="module-title">Spot gaps, build the loop</span><span class="module-big">Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn&#39;t anticipate, pick where the gap belongs (memory, verifier, new skill), and author the second skill through conversation so future you inherits the lesson.</span></span><span class="module-arrow">→</span></a></li>
     </ol>
 </nav>
 
@@ -1712,9 +1713,8 @@ body.workbook { padding-top: 3rem; }
 <p>Session-only for now. Module 1 finishes by saving this to <code>.claude/settings.local.json</code> so future sessions load it automatically. (If you unzipped somewhere else, swap the path; the canonical location is what every later prompt assumes.)</p>
 <h2>5. Hand the rest to Claude (12 min)</h2>
 <p>Ask Claude to install the curated skills from the content folder, screen three candidate bugs, and confirm the repo is ready for Module 1.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I&#39;m starting a six-module training called Agentic Engineering 101. Before anything else: check your working directories. You should see a content folder added to this session via `/add-dir`. It contains `lectures/`, `exercises/`, `content/skills/`, and `reference/`. If you don&#39;t see it, stop and tell me to run `/add-dir &lt;path&gt;` first. If you do see it, confirm the absolute path back to me, then do three things:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I&#39;m starting a six-module training called Agentic Engineering 101. Before anything else: check your working directories. You should see a content folder added to this session via `/add-dir`. It contains `lectures/`, `exercises/`, `content/skills/`, and `reference/`. If you don&#39;t see it, stop and tell me to run `/add-dir &lt;path&gt;` first. If you do see it, confirm the absolute path back to me, then do three things:
 
 1. Install the training&#39;s curated skills as personal skills. Copy every folder under content/skills/ to ~/.claude/skills/ (preserve the per-skill folder structure, keep SKILL.md capitalisation). Confirm each skill folder now exists at ~/.claude/skills/&lt;name&gt;/SKILL.md. These are personal to me, auto-discovered by Claude Code in every session.
 
@@ -1724,7 +1724,6 @@ body.workbook { padding-top: 3rem; }
 
 Ask one question at a time if you need to, no preamble.
 </code></pre>
-</div>
 <h2>Bring to Module 1</h2>
 <p>Connections question. We&#39;ll ask at the opening: <em>what&#39;s one trick you figured out with Claude Code that nobody taught you?</em> Bring one. Doesn&#39;t have to be big. No trick? Bring a frustration instead.</p>
 
@@ -1785,18 +1784,14 @@ Ask one question at a time if you need to, no preamble.
 <p><strong>The point:</strong> you can&#39;t steer what you can&#39;t see. This is the first move of every session after this one. Load deliberately, verify against the instrument, work inside a window you know the shape of.</p>
 <p><strong>Time:</strong> 15–20 minutes.</p>
 <p>Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then the instrument that shows you what Claude actually read.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Read enough of this repo to tell me what&#39;s here: the shape, the structure, what looks load-bearing, what&#39;s been touched recently, what looks stale. Don&#39;t try to be complete. Read what you judge worth reading; skip what you judge isn&#39;t.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Read enough of this repo to tell me what&#39;s here: the shape, the structure, what looks load-bearing, what&#39;s been touched recently, what looks stale. Don&#39;t try to be complete. Read what you judge worth reading; skip what you judge isn&#39;t.
 </code></pre>
-</div>
 <p>Claude reads and reports. Let it finish.</p>
 <p>Now introspect on the read:</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>What did you read, and why those files? What didn&#39;t you read, and why not? Name the specific files or directories you skipped and the call you made on each.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>What did you read, and why those files? What didn&#39;t you read, and why not? Name the specific files or directories you skipped and the call you made on each.
 </code></pre>
-</div>
 <p>Read Claude&#39;s own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Take it with a grain of salt; verify against the actual output and the instrument below.</p>
 <p>Now look at the instrument directly. In the Claude Code chat, type:</p>
 <pre><code>/context
@@ -1820,11 +1815,9 @@ Ask one question at a time if you need to, no preamble.
 <p>You know what&#39;s loaded and what isn&#39;t. Now fix the bug.</p>
 <p>No plan mode here. Plan mode earns its keep in M2 on multi-file work; on a trivial bug, it&#39;s overhead. The move is tests-first, root-cause-driven.</p>
 <p>Bring the bug back. In prework, Claude surfaced three candidates and you picked one. Paste the bug (a sentence or two) back into the conversation. If prework&#39;s scrollback is still open, tell Claude to look back.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you&#39;d expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you&#39;d expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
 </code></pre>
-</div>
 <p>Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn&#39;t what you&#39;d have written, push back. Quote the line and say why. Whoever has the better argument wins.</p>
 <p>Ask Claude to commit, push a branch, and open the PR (merge or draft, your call).</p>
 <p>The PR is shipped. The move is warm. Hand off to the compound step.</p>
@@ -1844,9 +1837,8 @@ Ask one question at a time if you need to, no preamble.
 <p><strong>Time:</strong> 30 minutes.</p>
 <p>The PR shipped. Now compound the session, then make the first move outside the repo.</p>
 <h2>Compound (~10 min)</h2>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn&#39;t exist; add it to .gitignore if it&#39;s not already; if the file already exists, integrate, don&#39;t append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn&#39;t exist; add it to .gitignore if it&#39;s not already; if the file already exists, integrate, don&#39;t append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
 
 Also, separately from ./CLAUDE.local.md: pin the AE101 content folder into `.claude/settings.local.json` under `additionalDirectories` so future sessions auto-load it. Read the current file if it exists, add (don&#39;t replace) the absolute path of the content folder I added via /add-dir in prework. Create the file with a single-key object if it doesn&#39;t exist. Ensure `.claude/settings.local.json` is gitignored — if this repo&#39;s local `.gitignore` doesn&#39;t cover it, add it. Machine-global excludesFile coverage isn&#39;t guaranteed across laptops. After this, I never need to run /add-dir for this training again.
 
@@ -1856,7 +1848,6 @@ If any rule is team-worthy (one every engineer on this codebase should know) fla
 
 Tell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn&#39;t need to open the file to know.
 </code></pre>
-</div>
 <p>Read Claude&#39;s summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.</p>
 <blockquote>
 <p><strong>Quick timebox note.</strong> Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework. If a tenant gate blocks the install, take the fallback path and move on.</p>
@@ -1873,17 +1864,13 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 </ol>
 <p>The teaching moment is the agent reaching across a tool boundary with a real engineering note, not the install choreography.</p>
 <p>If you have a live connector (1 or 2):</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Read the ticket for the bug we just fixed. Tell me what it says: the reporter, the description, any comments on it. If you can&#39;t find a matching ticket, search by the bug&#39;s keywords; if there still isn&#39;t one, say so and we&#39;ll create one.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Read the ticket for the bug we just fixed. Tell me what it says: the reporter, the description, any comments on it. If you can&#39;t find a matching ticket, search by the bug&#39;s keywords; if there still isn&#39;t one, say so and we&#39;ll create one.
 </code></pre>
-</div>
 <p>Claude reads the ticket (or confirms there isn&#39;t one). Then:</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Show me what you&#39;ll write before you post it.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Show me what you&#39;ll write before you post it.
 </code></pre>
-</div>
 <p>Read the close-out. If Claude wrote something stiff or wrong, push back. Tell it how your team actually writes ticket comments. It&#39;ll adjust.</p>
 <p>Ship the update (or paste it into the tracker yourself if you&#39;re on path 3). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.</p>
 <p>You ran the loop. You have a PR, a rules file born from session evidence, and a ticket that closed itself from inside Claude Code. Your setup is in place.</p>
@@ -1977,11 +1964,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h3>Optional: ask plan mode directly</h3>
 <p>A 30-second move before the three things get named. Enter plan mode in your own session right now and ask Claude what shifted from its side.</p>
 <p>Ask Claude to describe what changed in its behaviour when plan mode turned on.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?
 </code></pre>
-</div>
 <p>Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.</p>
 <h2>Three things a good plan has</h2>
 <ul>
@@ -2021,11 +2006,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2>Phase 2: Enter plan mode, read what arrives (15 min)</h2>
 <p>Shift+Tab until the status bar shows <strong>plan</strong>. Paste the prompt. Then send a second message with your task in 2–3 sentences: what, why, the one constraint you care about most.</p>
 <p>Ask Claude to work in plan mode and write a detailed plan file you can read and push back on.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Plan the task I&#39;m about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you&#39;d write or update before any code lands, and what you&#39;d check before declaring it done. Detail over brevity.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Plan the task I&#39;m about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you&#39;d write or update before any code lands, and what you&#39;d check before declaring it done. Detail over brevity.
 </code></pre>
-</div>
 <p>Then a second message with your task: what, why, the one constraint that matters most.</p>
 <p>Claude explores, writes a plan file with a descriptive name (e.g., <code>migrate-auth-hash-calm-otter.md</code>), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. <strong>Read the plan.</strong> Not skim. Read. Notice which steps name files and which say &quot;the relevant files.&quot; Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. <strong>Read the tests section carefully.</strong> A good plan names the tests before any code; the tests are part of what &quot;done&quot; means, not something you bolt on after. If the tests section is thin or missing, that&#39;s a push-back. When you have two push-backs forming in your head, move on. Don&#39;t wait for the clock.</p>
 <h2>Phase 3: Push back twice (15 min)</h2>
@@ -2038,11 +2021,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2>Phase 4: Second-pass read (15 min)</h2>
 <p>Now hand the plan to a second agent that reads differently than you do.</p>
 <p>Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven&#39;t named. Ask me one question at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I&#39;ll confirm or correct one at a time.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven&#39;t named. Ask me one question at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I&#39;ll confirm or correct one at a time.
 </code></pre>
-</div>
 <p>The second read asks one question at a time. Some will feel trivial (<em>&quot;which logger should step 2 use?&quot;</em>); answer and move on. Some will reach into something you hadn&#39;t considered (<em>&quot;step 4 touches the shared cache; what&#39;s the invalidation story?&quot;</em>); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.</p>
 <p>Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that&#39;s already settled, a recommendation you&#39;d accept without thinking. The agent doesn&#39;t always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it&#39;s yours. Not Claude&#39;s, not the second read&#39;s.</p>
 <blockquote>
@@ -2051,11 +2032,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2>Phase 5: Stop. See the design pattern. (10 min)</h2>
 <p><strong>Don&#39;t execute the plan.</strong> You&#39;ve done the work of making it good; that&#39;s the exercise. Execution is next module&#39;s concern.</p>
 <p>Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn&#39;t? Would any of them have mattered in execution? What&#39;s the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn&#39;t? Would any of them have mattered in execution? What&#39;s the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
 </code></pre>
-</div>
 <p>Claude answers. Read carefully. The pattern it names should be something like: <em>read the plan yourself → push back on what you can see → second-pass read for what you can&#39;t → approve.</em> Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, &quot;I&#39;d write that differently&quot;). The second read catches what an agent walking a decision tree catches: branches you didn&#39;t notice, dependencies you didn&#39;t name, side-effects you didn&#39;t price.</p>
 <p>Neither is complete. Paired, they usually are.</p>
 <p><strong>Plan-mode approval inflation</strong> is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That&#39;s the move.</p>
@@ -2077,11 +2056,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2>Save the rule if it earned itself</h2>
 <p>The full compound move ran at M1. M2&#39;s compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next. There is no quota.</p>
 <p>Ask Claude to integrate the one branch that earned itself into your personal <code>./CLAUDE.local.md</code>, or to say so and stop if nothing did.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span><span class="prompt-block__context">only if something earned itself</span></div>
-<pre class="prompt-block__pre"><code>If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop.
+<p><strong>Prompt</strong> <em>(Claude Code, only if something earned itself)</em></p>
+<pre><code>If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop.
 </code></pre>
-</div>
 <h2>Next</h2>
 <p>You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing <em>felt</em> worth the 15 minutes. M3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; M3 reveals that and has you author your first one.</p>
 <h2>Pre-reads before M3</h2>
@@ -2165,27 +2142,22 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <p>Start a new Claude Code session at your repo root. The <code>access-control-analysis</code> skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name.</p>
 <p>Before you invoke, confirm it&#39;s there. Ask Claude: <em>&quot;list my installed skills.&quot;</em> You should see <code>access-control-analysis</code> and <code>stride</code>. If not, prework&#39;s install step didn&#39;t finish; re-run it before continuing.</p>
 <p>Ask Claude to invoke the access-control-analysis skill on the feature you brought to M3 and save the surface map to a temp directory of its choosing.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Invoke the access-control-analysis skill as a subagent against the feature I brought to Module 3. First ask me to name the feature in one sentence: which file it mostly lives in, what it does, what the external or user-facing surface is. Wait for my answer.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Invoke the access-control-analysis skill as a subagent against the feature I brought to Module 3. First ask me to name the feature in one sentence: which file it mostly lives in, what it does, what the external or user-facing surface is. Wait for my answer.
 
 Then run the skill in a fresh-context subagent so its structured pass doesn&#39;t pollute this thread. When it returns, save the surface map to a session-scratch location OUTSIDE this repo. Pick a sensible temp path for my OS (something under $TMPDIR, /tmp, or equivalent), create the directory, and tell me the absolute path. This is scratch, not memory; it doesn&#39;t belong in the repo.
 </code></pre>
-</div>
 <p>Answer the one-sentence feature question. Let the skill run. It&#39;ll read the code, walk the surfaces, and produce the map. You watch.</p>
 <h2>Phase 2: walk the map in conversation (~3 min)</h2>
 <p>Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you&#39;ve seen the structured read before deciding your deltas in Phase 3.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I&#39;ll tell you in the next phase.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I&#39;ll tell you in the next phase.
 </code></pre>
-</div>
 <h2>Phase 3: write the delta (~7 min)</h2>
 <p>Now you decide.</p>
 <p>Ask Claude to interview you for the two deltas and integrate them into the map.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I read the access surface map. I&#39;m going to tell you two things, one at a time:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I read the access surface map. I&#39;m going to tell you two things, one at a time:
 
 First: which surface the skill flagged that I&#39;d underweighted, and why it matters in this codebase specifically. Ask me after I answer if the reason I gave is codebase-specific or generic; if generic, push me to sharpen it.
 
@@ -2195,7 +2167,6 @@ Ask for the first answer. Wait. Then ask for the second.
 
 When you have both, add them to the surface map file you wrote earlier (the path you told me) in a section called &quot;Codebase-tuned delta&quot;. Integrate, don&#39;t append a loose list. This is the map STRIDE will consume in the next exercise.
 </code></pre>
-</div>
 <p>Answer. Push back on the sharpening question until the reason names something specific to your codebase. <em>&quot;The billing webhook re-hits the queue on retry, so the same event gets reprocessed&quot;</em> beats <em>&quot;webhooks need auth.&quot;</em></p>
 <h2>Phase 4: handoff check (optional, up to ~3 min)</h2>
 <p>You&#39;re about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.</p>
@@ -2220,18 +2191,15 @@ When you have both, add them to the surface map file you wrote earlier (the path
 <hr>
 <h2>Phase 1: invoke the skill on the mapped surface (~7 min)</h2>
 <p>Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn&#39;t flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don&#39;t pick yet — I&#39;ll decide next.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn&#39;t flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don&#39;t pick yet — I&#39;ll decide next.
 </code></pre>
-</div>
 <p>Let it run. The output will have more entries than you want to deal with. That&#39;s expected.</p>
 <h2>Phase 2: pick the one (~8 min)</h2>
 <p>You&#39;re going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.</p>
 <p>Ask Claude to walk you through the pick, one question at a time.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I want to pick one threat from the STRIDE list to harden against in this PR. Help me narrow:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I want to pick one threat from the STRIDE list to harden against in this PR. Help me narrow:
 
 Ask me: if this feature caused a security incident next Tuesday, what&#39;s the most plausible story? Wait for my answer.
 
@@ -2241,19 +2209,16 @@ Then: is the hardening decision obvious once we&#39;ve named the threat, or do I
 
 One question at a time. Don&#39;t assemble into a plan. I want to walk through the reasoning.
 </code></pre>
-</div>
 <p>Answer each. The &quot;most plausible incident story&quot; is the move that makes STRIDE useful rather than performative.</p>
 <h2>Phase 3: write the ADR (~5 min)</h2>
 <p>Ask Claude to draft the ADR in your repo&#39;s convention and show it before saving.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Write an ADR for the hardening decision we just made. Use my repo&#39;s ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn&#39;t one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Write an ADR for the hardening decision we just made. Use my repo&#39;s ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn&#39;t one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).
 
 Ground each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn&#39;t pick and one line on why.
 
 Show me the ADR before saving.
 </code></pre>
-</div>
 <p>Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship.</p>
 <p>If STRIDE&#39;s six categories feel like the wrong lens for your feature (some features are really abuse-case or insider-threat shaped, where Elevation-of-Privilege + Repudiation carry everything and Spoofing + Tampering don&#39;t fit), say so in the Alternatives considered section. <em>&quot;STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y&#39;s terms&quot;</em> is a legitimate ADR move. The skill is a tool; the call is yours.</p>
 <hr>
@@ -2281,9 +2246,8 @@ Show me the ADR before saving.
 <p>Skills aren&#39;t hand-crafted. They&#39;re authored through conversation.</p>
 <p>The ship destination is your personal skills folder: <code>~/.claude/skills/test-strategy/SKILL.md</code>. Auto-discovered in every session you run, across every repo.</p>
 <p>This skill encodes codebase conventions, so it&#39;s team-shaped by nature. But it ships personally first, for reasons named in Phase 4. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that&#39;d make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that&#39;d make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.
 
 Cover at minimum: which testing framework, what&#39;s mocked and what isn&#39;t, where the integration boundary actually runs (real dependencies vs. stubs), what &quot;flaky&quot; means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what&#39;s NOT worth testing here (and why).
 
@@ -2291,13 +2255,11 @@ Ask ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then
 
 When you have enough, write SKILL.md at `~/.claude/skills/test-strategy/SKILL.md`. Follow Claude Code&#39;s skill file convention (frontmatter with name + description, then instructions). Show me before saving.
 </code></pre>
-</div>
 <p>Answer each question. When Claude asks something like <em>&quot;is this codebase Jest?&quot;</em> and the answer is <em>&quot;Jest for units, Playwright for e2e, nothing for integration,&quot;</em> that&#39;s the shape of answer the skill needs. When Claude offers a default you don&#39;t like, push back: <em>&quot;no, we don&#39;t mock the database; integration tests run against a real Postgres in Docker.&quot;</em></p>
 <h2>Phase 2: self-critique before shipping (~5 min)</h2>
 <p>Default-acceptance is the failure mode here. Most students will read Claude&#39;s first draft and approve it. Before you ship, ask the skill what&#39;s weakest about itself.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Before I ship the test-strategy skill, I want you to critique it. Read the SKILL.md you just wrote. Tell me:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Before I ship the test-strategy skill, I want you to critique it. Read the SKILL.md you just wrote. Tell me:
 
 - What&#39;s the weakest part of this skill? Be specific. Name the assumption most likely to be wrong for this codebase, or the section a staff engineer would push back on first.
 - Is there anything in the skill that&#39;s generic test-pyramid wisdom dressed up as codebase-specific?
@@ -2305,19 +2267,16 @@ When you have enough, write SKILL.md at `~/.claude/skills/test-strategy/SKILL.md
 
 Don&#39;t just reassure me. Name weak parts.
 </code></pre>
-</div>
 <p>Read the critique. Push back where Claude is wrong (<em>&quot;no, that section is fine because X&quot;</em>); accept where Claude is right. Claude revises SKILL.md from your push-back.</p>
 <h2>Phase 3: invoke the skill on the security-tested feature (~6 min)</h2>
 <p>Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Invoke the test-strategy skill we just wrote on the feature I&#39;m shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Invoke the test-strategy skill we just wrote on the feature I&#39;m shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.
 
 Produce the test strategy the skill asks you to produce.
 
 Then, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?
 </code></pre>
-</div>
 <p>Read the output. If the strategy doesn&#39;t cover the hardening decision, or if Claude&#39;s &quot;is it good?&quot; answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what&#39;s unresolved. Don&#39;t loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it&#39;s finished. The authoring muscle is what M3 is installing; perfection waits for M6.</p>
 <h2>Phase 4: ship (~2 min)</h2>
 <p>The skill is already at <code>~/.claude/skills/test-strategy/SKILL.md</code> (Claude wrote it there in Phase 1, sharpened in Phase 2). Auto-discovered in every session you run. That&#39;s the ship.</p>
@@ -2350,11 +2309,9 @@ Then, in the same response, read the test strategy you just produced above and a
 <h2>Sharpen the skill from evidence</h2>
 <p>M3&#39;s compound lives in the skill you authored, not in the rules-file. Skills are the surface that just got tested under push-back; that&#39;s where today&#39;s evidence wants to land. The rules-file move sits this one out.</p>
 <p>Ask Claude to sharpen the one section of your authored test-strategy skill that session evidence underdelivered.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back. Find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn&#39;t encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back. Find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn&#39;t encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
 </code></pre>
-</div>
 <h2>Next</h2>
 <p>You earned the first two signatures. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.</p>
 
@@ -2424,9 +2381,8 @@ Then, in the same response, read the test strategy you just produced above and a
 <h2>Phase 1: Pick the task (~10 min)</h2>
 <p>Start a new Claude Code session in your repo. You&#39;ve come in with one or two candidate tasks in mind (Connections). Claude screens them: it can&#39;t scan your roadmap or Jira, and that stays your call. The picking work is your judgement about what&#39;s been sitting; Claude&#39;s job is to check fit.</p>
 <p>Ask Claude to screen your candidates against the three long-run criteria and help you scope the winner.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I&#39;m about to run my first long-running experiment. I&#39;ve come with one or two candidate tasks from my backlog: multi-hour work I haven&#39;t got to, or tasks I&#39;d rather an agent took the first pass at.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I&#39;m about to run my first long-running experiment. I&#39;ve come with one or two candidate tasks from my backlog: multi-hour work I haven&#39;t got to, or tasks I&#39;d rather an agent took the first pass at.
 
 Ask me to describe each candidate in a line or two. Then screen them against three criteria:
 - Sustained coherence across multi-hour work
@@ -2435,16 +2391,14 @@ Ask me to describe each candidate in a line or two. Then screen them against thr
 
 For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what&#39;s missing; if both fit, push me to pick the one that&#39;ll teach me more.
 </code></pre>
-</div>
 <p>Push back when the read misses something about the codebase. Claude is reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you&#39;ve scoped too big; slice it down to one end-to-end thing the agent can chew on.</p>
 <p><strong>The point:</strong> pick one task well. You&#39;ll use it again next module.</p>
 <hr>
 <h2>Phase 2: Walk and fill (~35 min)</h2>
 <h3>Run the audit (~10 min)</h3>
 <p>Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including the test-strategy skill I authored at M3), and the connectors I&#39;ve wired.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including the test-strategy skill I authored at M3), and the connectors I&#39;ve wired.
 
 Run this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session&#39;s scrollback intact — we&#39;ll need it for later phases. Return a structured report.
 
@@ -2452,7 +2406,6 @@ Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwire
 
 For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.
 </code></pre>
-</div>
 <p>Read the ranked list. Name which ones you already knew about, which surprised you. <strong>Framework</strong>: this is <em>gap analysis</em>, walk the system you have against the system the task needs. You&#39;ll use it forever for every agent hand-off.</p>
 <h3>Fill the gaps (~25 min)</h3>
 <p>Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. You&#39;ll see next module what the others were for.</p>
@@ -2468,9 +2421,8 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 <hr>
 <h2>Phase 3: See the frame (~15 min)</h2>
 <p>Ask Claude to rearrange your memory, ADRs, and skill into Huryn&#39;s three blocks, quoting your own work for each block before naming the frame.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
 
 - Block 1: observations → hypotheses → rules (what I&#39;ve noticed about this codebase, what I&#39;ve started to suspect, what I&#39;ve decided to treat as true)
 - Block 2: decisions with alternatives (architectural or design choices + what else was considered; the ADRs live here)
@@ -2482,7 +2434,6 @@ Before you name the frame or propose a new structure, show me one concrete examp
 
 If you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.
 </code></pre>
-</div>
 <p>Read the examples first. If they&#39;re from your own files, the frame should click. If it doesn&#39;t, ask Claude to quote different examples until one does.</p>
 <p>Once the frame is named through your own material, let Claude propose the actual rearrangement. Cap the proposal at one or two file moves or renames; larger reorganisation is a separate session, not a mid-module sweep (the send-off fires next, and you want the tree settled before it does).</p>
 <p><strong>Framework</strong>: Huryn&#39;s three-block memory. Not a template you fill; a frame that names what you&#39;ve been building.</p>
@@ -2512,13 +2463,11 @@ If you propose file moves or renames, cap the proposal at one or two; the send-o
 <p>No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at M5, when you can see what the system actually produced. Compound on evidence, not anticipation.</p>
 <p>Before you send: the agent will commit as it works. If you&#39;d rather keep this run off your main branch, ask Claude in this same session to make a branch or a worktree for the task first. Whatever your repo&#39;s convention is.</p>
 <p>Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span><span class="prompt-block__context">final move of the module</span></div>
-<pre class="prompt-block__pre"><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills at `.claude/skills/`. That&#39;s everything you have. Go.
+<p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
+<pre><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills at `.claude/skills/`. That&#39;s everything you have. Go.
 
 I&#39;m leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn&#39;t work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn&#39;t.
 </code></pre>
-</div>
 <p>The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stopping the run is fine; the trace is the result.</p>
 <p>Async runs are a face of the work you&#39;ll see more of from here on.</p>
 <p>Nudging by hand is fine if you&#39;re watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you&#39;ve become the agent; call it and read what&#39;s there.</p>
@@ -2627,9 +2576,8 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <h2>Phase 1: Read the return (~15 min)</h2>
 <p>Open a new Claude Code session in the same repo you ran M4 in. The artefact lives in two places: the repo (commits made by the M4 agent, files modified, branch state) and the M4 session transcript under <code>~/.claude/projects/</code>. Claude Code stores every session&#39;s scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you <em>what</em> the agent did; the transcript tells you <em>how</em> it got there, including the drift and dead-ends.</p>
 <p>Ask Claude to read the M4 artefact through the three failure-mode lenses and quote specific moments for each.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I sent off a multi-hour task at the end of M4 un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I sent off a multi-hour task at the end of M4 un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
 
 Read what the M4 agent did. Start with the repo state: commits since the M4 send-off, files it modified, branch state. Then read the M4 session transcript. Claude Code stores every session&#39;s scrollback under `~/.claude/projects/` in a folder matching this repo; find the folder, then walk the most recent session. That&#39;s where the agent&#39;s reasoning trail lives. The file changes alone miss the drift and the dead-ends.
 
@@ -2643,16 +2591,14 @@ For EACH lens, quote one specific moment from the artefact (commit message, file
 
 End with: which of the three was the DOMINANT failure mode? You&#39;ll build the verifier against that one.
 </code></pre>
-</div>
 <p>Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. <strong>Framework</strong>: this is <em>diagnosis through named failure modes</em>. The vocabulary is the lens, the artefact is the substance.</p>
 <hr>
 <h2>Phase 2: Align-then-run, in reverse (~10 min)</h2>
 <p>For each named failure, ask the question that earns the three-pattern: <em>what validation would have caught this in minutes, not hours?</em></p>
 <p>Not every failure supports minute-cadence. Drift and context rot fire mid-run, on every spec re-read or window fill; minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, but is wrong. Match the verifier shape to the failure shape, not the slogan.</p>
 <p>Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?
 
 Practitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:
 
@@ -2664,7 +2610,6 @@ For each failure I diagnosed, map it to the validation category that would have 
 
 Don&#39;t name frameworks or practitioners by label (&quot;Ronacher&#39;s three-pattern,&quot; &quot;Huntley&#39;s Ralph,&quot; etc.) — walk from the specific failure to the specific validation. The naming happens later.
 </code></pre>
-</div>
 <p>Read the three answers. You should now have a working description of three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.</p>
 <hr>
 <h2>Phase 3: Build the verifier (~20 min)</h2>
@@ -2675,9 +2620,8 @@ Don&#39;t name frameworks or practitioners by label (&quot;Ronacher&#39;s three-
 <li><strong>Ralph re-feed.</strong> Loop the prompt with a check baked in; agent re-runs against its own output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.</li>
 </ul>
 <p>Ask Claude to build the verifier shape that matches your dominant failure, scoped to the M4 task.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Build the verifier for my dominant failure. I&#39;ll tell you which shape after you ask me — background-agent (qualitative judge), shell-hook (deterministic), or Ralph re-feed (drift-anchoring).
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Build the verifier for my dominant failure. I&#39;ll tell you which shape after you ask me — background-agent (qualitative judge), shell-hook (deterministic), or Ralph re-feed (drift-anchoring).
 
 Once I&#39;ve named the shape, build it scoped to the M4 task we ran. The verifier should fire on agent-produced work and decide pass/fail against a quality bar that, if it had been in place, would have caught the failure I diagnosed.
 
@@ -2689,16 +2633,14 @@ If Ralph re-feed: write the loop wrapper and the check it runs each iteration.
 
 Show me the verifier before you save anything; I&#39;ll push back, then we save.
 </code></pre>
-</div>
 <p>Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or vice versa). The fit between failure shape and verifier shape is the teaching moment.</p>
 <p><strong>Framework</strong>: the verifier IS your first eval. The closing lecture names this; for now, build it.</p>
 <hr>
 <h2>Phase 4: Assemble reference + plan.md (~20 min)</h2>
 <p>Reference artefact pins the task&#39;s success criteria and points at the relevant memory, skills, and connectors. plan.md is the durable working document the agent re-reads when its window fills.</p>
 <p>Ask Claude to assemble both, scoped to the same M4 task, in conversation.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Build me two task-scoped artefacts for re-running the M4 task packaged.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Build me two task-scoped artefacts for re-running the M4 task packaged.
 
 First, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:
 - The task scope and success criteria, in two or three sentences
@@ -2716,7 +2658,6 @@ Second, plan.md. A working document the agent owns and mutates as it runs. Shoul
 
 Propose the file paths (next to each other; same task-scoped folder). Show me both files before you save. I&#39;ll push back, then we save.
 </code></pre>
-</div>
 <p>Read both files. Push back if the reference reads like generic best practices instead of THIS task&#39;s substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.</p>
 <p><strong>The exercise ends here.</strong> The module&#39;s Debrief takes over: self-compound <code>CLAUDE.local.md</code>, then re-send the same task with reference + plan.md + verifier all in play.</p>
 </section>
@@ -2736,20 +2677,16 @@ Propose the file paths (next to each other; same task-scoped folder). Show me bo
 <h2>Cut what diagnosis killed</h2>
 <p>The un-packaged M4 send-off was the first real stress-test of <code>./CLAUDE.local.md</code>. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.</p>
 <p>Ask Claude to cut one rule diagnosis killed, or to say so and stop if all rules held.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span><span class="prompt-block__context">only if a rule earned cutting</span></div>
-<pre class="prompt-block__pre"><code>Read ./CLAUDE.local.md. Read this M5 scrollback: the three failure modes I named, the verifier I built, the reference and plan I assembled. Find the one rule diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
+<p><strong>Prompt</strong> <em>(Claude Code, only if a rule earned cutting)</em></p>
+<pre><code>Read ./CLAUDE.local.md. Read this M5 scrollback: the three failure modes I named, the verifier I built, the reference and plan I assembled. Find the one rule diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
 </code></pre>
-</div>
 <p>Now the re-send. Same task as M4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. You&#39;re not re-explaining the task; you&#39;re invoking what you assembled.</p>
 <p>Ask Claude to re-run the same M4 task using the reference, plan.md, and verifier you just built.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span><span class="prompt-block__context">final move of the module</span></div>
-<pre class="prompt-block__pre"><code>Run the task we sent un-packaged at M4. Same scope, same goal. The reference and plan.md we assembled are at the path we wrote; the verifier is ready to fire. Go.
+<p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
+<pre><code>Run the task we sent un-packaged at M4. Same scope, same goal. The reference and plan.md we assembled are at the path we wrote; the verifier is ready to fire. Go.
 
 I&#39;m closing the laptop. If the verifier fails, fix and re-run; don&#39;t paper over. Tell me what shipped, what didn&#39;t, and what the verifier surfaced.
 </code></pre>
-</div>
 <p>The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from M4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn&#39;t the agent any more — that&#39;s a result worth reading.</p>
 <section class="phase phase--lecture" id="lectures-what-packaging-is">
 <div class="phase-kicker">Lecture</div>
@@ -2867,9 +2804,8 @@ I&#39;m closing the laptop. If the verifier fails, fix and re-run; don&#39;t pap
 <h2>Phase 1: Diff and name the gaps (~15 min)</h2>
 <p>Open a new Claude Code session in the same repo. Two runs of the same task are on disk now: the M4 un-packaged run (baseline, no reference artefact, no plan.md, no verifier), and the M5 packaged re-run (same task, all three pieces in play). Both runs left commits, file changes, and session transcripts under <code>~/.claude/projects/</code> in a folder matching this repo. That&#39;s the auto-stored scrollback Claude Code keeps for every session.</p>
 <p>Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>I have two runs of the same multi-hour task on disk. The M4 run was un-packaged — no reference artefact, no plan.md, no verifier. The M5 run was packaged — all three pieces in play, verifier fired during the run.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I have two runs of the same multi-hour task on disk. The M4 run was un-packaged — no reference artefact, no plan.md, no verifier. The M5 run was packaged — all three pieces in play, verifier fired during the run.
 
 Read both. Start with repo state: commits since M4 send-off, commits since M5 re-send, what each run touched. Then read both session transcripts. Claude Code stores every session&#39;s scrollback under `~/.claude/projects/` in a folder matching this repo. Find the folder and walk the M4 session and the M5 session. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
 
@@ -2884,7 +2820,6 @@ For every claim, quote a specific moment from the artefacts. Don&#39;t generalis
 
 End with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.
 </code></pre>
-</div>
 <p>Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes <em>&quot;the agent drifted on goal&quot;</em> without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted. Expect Claude to over-credit the packaging on first pass. A fair push-back is <em>&quot;name one thing the verifier missed, concretely.&quot;</em></p>
 <p>You should close Phase 1 with a ranked gap list (three to five items) and a dominant gap that will shape Phase 2.</p>
 <hr>
@@ -2899,9 +2834,8 @@ End with: which gap matters most? Rank by damage-to-a-future-run, not by how int
 </ul>
 <p>Pick the one the diff points at. If the dominant gap is &quot;verifier missed drift at hour 4,&quot; you&#39;re building a sharpened verifier. If it&#39;s &quot;output technically passed but read off,&quot; you&#39;re building a judge. If it&#39;s &quot;the run shouldn&#39;t have started with this context,&quot; you&#39;re building a gap-finder.</p>
 <p>Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Author a second skill for my personal kit. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I&#39;ll tell you which after you ask. Same shape as my first authored skill at `~/.claude/skills/test-strategy/SKILL.md`.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Author a second skill for my personal kit. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I&#39;ll tell you which after you ask. Same shape as my first authored skill at `~/.claude/skills/test-strategy/SKILL.md`.
 
 Interview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.
 
@@ -2909,12 +2843,10 @@ Push back when my answer is generic. A judge that says &quot;check if the output
 
 When you have enough, propose a skill name. Write `~/.claude/skills/&lt;proposed-name&gt;/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving.
 </code></pre>
-</div>
 <p>Answer each question. When Claude offers a default that doesn&#39;t fit the two runs&#39; evidence, push back with a quoted moment: <em>&quot;no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically.&quot;</em></p>
 <p>Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:
 
 - What&#39;s the weakest part? Name the assumption most likely to be wrong for my codebase, or the section a teammate would push back on first.
 - Is there anything generic dressed up as codebase-specific? Advice a pyramid-shaped test book would give, or a verifier template from a blog post.
@@ -2922,18 +2854,15 @@ When you have enough, propose a skill name. Write `~/.claude/skills/&lt;proposed
 
 Don&#39;t reassure me. Name weak parts.
 </code></pre>
-</div>
 <p>Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.</p>
 <p>Now invoke the skill on the packaged run you just diffed. Authoring without invocation is theatre.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.
 
 Produce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).
 
 Then, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?
 </code></pre>
-</div>
 <p>If the output doesn&#39;t catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (<em>&quot;I check drift but not context-rot re-derivations&quot;</em>), that&#39;s a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it&#39;s finished.</p>
 <p>The skill ships personally. It lives at <code>~/.claude/skills/&lt;skill-name&gt;/SKILL.md</code> and auto-discovers in every future session you run, across every repo. That&#39;s the ship.</p>
 <p><strong>Team-kit candidate, via human conversation.</strong> If the skill encodes something your whole team would benefit from — a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team&#39;s project shape — it&#39;s a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: <em>&quot;does this match how you&#39;d check this kind of work?&quot;</em> If they say yes, PR it. If they push back, you got the real review for free. Agents don&#39;t unilaterally change shared team infrastructure. You do.</p>
@@ -2956,9 +2885,8 @@ Then, in the same response, answer: is the skill any good? Specifically: does th
 </blockquote>
 <hr>
 <p>Open a new Claude Code session in your repo. A fresh session, so there&#39;s no scrollback coloring the read. Ask the agent to walk the artefacts you&#39;ve authored and write the arc from them.</p>
-<div class="prompt-block">
-<div class="prompt-block__header"><span class="prompt-block__label">Prompt</span><span class="prompt-block__arrow" aria-hidden="true">→</span><span class="prompt-block__dest"><span class="rt-cowork">Cowork</span><span class="rt-desktop">Claude Code Desktop</span><span class="rt-cli">Claude Code CLI</span></span></div>
-<pre class="prompt-block__pre"><code>Read my work across the training. Specifically:
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Read my work across the training. Specifically:
 
 - My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.
 - Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
@@ -2973,7 +2901,6 @@ Write a one-page note on what changed across this body of work. Not a changelog.
 
 Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I&#39;ll push back, then we save.
 </code></pre>
-</div>
 <p>Read the note. Push back where the agent over-generalises, or where it praises without quoting. This isn&#39;t a retrospective report card; it&#39;s a reading. The quoted moments are the substance. If the note reads generic, ask the agent to re-draft with more quotes and less framing.</p>
 <p>If after one re-draft the note still reads thin, drop it. A thin note is data: it tells you the artefacts don&#39;t yet carry the density the arc-reading needs. Better no note than a template.</p>
 <p>If the note reads true, save it. You&#39;ll re-read it when the next long task stalls.</p>
@@ -3033,29 +2960,264 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 
 <h2>Next</h2>
 <p>On Monday, pick a task your team is sitting on, send it off packaged, read the return through the lens you just built. The loop is yours now.</p>
-<p>Now that you know how to steer one session, run several. Parallel worktrees pay off when two pieces are ready to move, when you want to try two approaches side by side, or when a review task can run alongside the build. The mechanics live in the <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a> you read at M1; the instinct earns itself in use.</p>
+<p>Keep on learning and sharing.</p>
+<p>—Antti</p>
 
 </section>
 </main>
 
+<script>// Shared curriculum runtime — single source of truth for both the SPA
+// (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
+//
+// UMD-shape: works in both browser (window.CurriculumRuntime) and Node
+// (require('./curriculum.js')). DOM-touching functions are guarded so the
+// Node side can use the pure-string utilities without crashing on missing
+// document/window.
+
+(function (global, factory) {
+    if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        global.CurriculumRuntime = factory();
+    }
+})(typeof window !== 'undefined' ? window : globalThis, function () {
+    'use strict';
+
+    // ── TRAININGS registry — single source of truth. SPA reads it for routing
+    // and index rendering; build-workbook iterates the modules array.
+    var TRAININGS = {
+        bootstrap: {
+            label: 'Bootstrap',
+            lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
+            prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
+            modules: [
+                { slug: 'getting-going',           title: 'Getting Going' },
+                { slug: 'building-agent-systems', title: 'Building Agent Systems' },
+                { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
+                { slug: 'security',               title: 'Security' },
+                { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
+                { slug: 'evaluations',            title: 'Evaluations' },
+                { slug: 'personal-to-team',       title: 'From Personal to Team' },
+                { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
+            ],
+            supplementaries: [
+                { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
+                { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
+                { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' }
+            ],
+            references: [
+                { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
+            ]
+        },
+        'agentic-engineering-101': {
+            label: 'Agentic Engineering 101',
+            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation. Plus two optional modules when the cohort wants the team peak.',
+            prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
+                { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ]
+        }
+    };
+
+    var DEFAULT_TRAINING = 'bootstrap';
+
+    // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
+    // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+
+    // Inline cross-doc link pattern: `(kind/slug.md)` anywhere in body, with
+    // optional `../` prefixes. Renderer rewrites to `?file=kind/slug` URLs.
+    var CROSS_DOC_LINK_RE = /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g;
+
+    // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
+
+    function esc(s) {
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function rewriteCrossDocLinks(md) {
+        return md.replace(CROSS_DOC_LINK_RE, '](curriculum.html?file=$1/$2)');
+    }
+
+    function stripMaintainerTail(md) {
+        var i = md.indexOf('<!-- maintainer -->');
+        return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    function extractParent(md) {
+        var m = md.match(/<!--\s*parent:\s*([a-zA-Z0-9_-]+)\s*-->/);
+        return m ? m[1] : null;
+    }
+
+    // Extract the first paragraph after `## Big Idea` from a module's markdown.
+    function extractBigIdea(md) {
+        var m = md.match(/^##\s*Big Idea\s*\n([^\n]+(?:\n(?!#)[^\n]+)*)/m);
+        return m ? m[1].trim() : '';
+    }
+
+    // ── DOM runtime (browser only) ──────────────────────────────────────────
+
+    function addCopyButton(pre, host) {
+        var mountTarget = host || pre;
+        if (mountTarget.querySelector(':scope > .copy-btn')) return;
+        var btn = document.createElement('button');
+        btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Copy to clipboard');
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            var code = pre.querySelector('code') || pre;
+            var text = code.innerText;
+            var done = function () {
+                btn.textContent = 'Copied';
+                btn.classList.add('copy-btn--copied');
+                setTimeout(function () {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copy-btn--copied');
+                }, 1400);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, fallback);
+            } else {
+                fallback();
+            }
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); done(); }
+                catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
+                document.body.removeChild(ta);
+            }
+        });
+        mountTarget.appendChild(btn);
+    }
+
+    function decoratePrompts(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Prompt') return;
+            var pre = p.nextElementSibling;
+            if (!pre || pre.tagName !== 'PRE') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var parts = label.split(/,\s*/);
+            var dest = parts[0] || 'Claude Code';
+            var context = parts.slice(1).join(', ');
+            var destHtml = (dest === 'Claude Code')
+                ? '<span class="rt-cowork">Cowork</span>' +
+                  '<span class="rt-desktop">Claude Code Desktop</span>' +
+                  '<span class="rt-cli">Claude Code CLI</span>'
+                : esc(dest);
+
+            var wrap = document.createElement('div');
+            wrap.className = 'prompt-block';
+            var header = document.createElement('div');
+            header.className = 'prompt-block__header';
+            header.innerHTML =
+                '<span class="prompt-block__label">Prompt</span>' +
+                '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
+                '<span class="prompt-block__dest">' + destHtml + '</span>' +
+                (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            wrap.appendChild(header);
+            wrap.appendChild(pre);
+            pre.classList.add('prompt-block__pre');
+            p.remove();
+
+            addCopyButton(pre, header);
+        });
+
+        // Universal copy buttons on every standalone <pre>.
+        root.querySelectorAll('pre:not(.prompt-block__pre)').forEach(function (pre) {
+            addCopyButton(pre);
+        });
+
+        // Back-compat: drop "*(end of prompt)*" leftovers from unmigrated files.
+        Array.from(root.querySelectorAll('p, em')).forEach(function (n) {
+            var t = n.textContent.trim();
+            if (t === '(end of prompt)' || t === '*(end of prompt)*') {
+                var host = n.tagName === 'EM' ? n.parentNode : n;
+                if (host && host.tagName === 'P') host.remove();
+            }
+        });
+    }
+
+    function installReadingProgress() {
+        if (document.querySelector('.reading-progress')) return;
+        var bar = document.createElement('div');
+        bar.className = 'reading-progress';
+        document.body.appendChild(bar);
+        var update = function () {
+            var doc = document.documentElement;
+            var max = doc.scrollHeight - doc.clientHeight;
+            var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+            bar.style.width = pct + '%';
+        };
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    }
+
+    // Module-list card chrome — used by both the SPA training index and the
+    // workbook TOC. `bigIdea` is optional (workbook pre-fills, SPA hydrates
+    // async via hydrateBigIdeas).
+    function cardHtml(num, title, slug, href, bigIdea) {
+        var bigHtml = bigIdea ? esc(bigIdea) : '&nbsp;';
+        return '<li data-slug="' + esc(slug) + '">' +
+            '<a href="' + href + '">' +
+            '<span class="module-n">' + esc(num) + '</span>' +
+            '<span class="module-body">' +
+            '<span class="module-title">' + esc(title) + '</span>' +
+            '<span class="module-big"' + (bigIdea ? '' : ' data-big-idea') + '>' + bigHtml + '</span>' +
+            '</span>' +
+            '<span class="module-arrow">→</span>' +
+            '</a></li>';
+    }
+
+    return {
+        // Data
+        TRAININGS: TRAININGS,
+        DEFAULT_TRAINING: DEFAULT_TRAINING,
+        INCLUDE_LINK_RE: INCLUDE_LINK_RE,
+        CROSS_DOC_LINK_RE: CROSS_DOC_LINK_RE,
+
+        // Pure (Node-safe)
+        esc: esc,
+        rewriteCrossDocLinks: rewriteCrossDocLinks,
+        stripMaintainerTail: stripMaintainerTail,
+        extractParent: extractParent,
+        extractBigIdea: extractBigIdea,
+        cardHtml: cardHtml,
+
+        // DOM (browser only)
+        decoratePrompts: decoratePrompts,
+        addCopyButton: addCopyButton,
+        installReadingProgress: installReadingProgress
+    };
+});
+</script>
 <script>
 (function () {
-  // Reading progress bar
-  var bar = document.querySelector('.reading-progress');
-  if (bar) {
-    var update = function () {
-      var doc = document.documentElement;
-      var max = doc.scrollHeight - doc.clientHeight;
-      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-      bar.style.width = pct + '%';
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
+  if (window.CurriculumRuntime) {
+    CurriculumRuntime.decoratePrompts(document.body);
+    CurriculumRuntime.installReadingProgress();
   }
 
-  // Active-module highlight in topnav. Observes each module section; the
-  // most-visible one wins the .is-active class on its corresponding chip.
   var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');
   if (!chips.length || !('IntersectionObserver' in window)) return;
   var chipBySlug = {};

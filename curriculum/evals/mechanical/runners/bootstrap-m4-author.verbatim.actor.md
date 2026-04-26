@@ -90,7 +90,7 @@ Confirm a "fresh session" by writing one line to scrollback: `[harness substitut
 
 **Prompt 4 (verify):** `/tmp/prompts/author-security-plugin/prompt-004-verify.txt`. Read verbatim, quote in blockquote, respond.
 
-Substitute: read the policy lens SKILL.md from `plugin-install/.claude/plugins/security-audit/skills/policy/SKILL.md`, then apply two or three rules to `module-2/CLAUDE.md` ONLY. Note: if `module-2/CLAUDE.md` does not exist in the inherited M3 scratch (Bootstrap M2 scratch never lands a root CLAUDE.md until the M2 Debrief, which the harness truncated), substitute the smallest-scope target available — `module-2/challenge.md`. Log the substitution.
+Substitute: read the policy lens SKILL.md from `plugin-install/.claude/plugins/security-audit/skills/policy/SKILL.md`, then apply two or three rules to `module-2/challenge.md` ONLY (the exercise prompt-004-verify now targets that file directly).
 
 Produce two or three rows of the report shape (the same `| Rule | Description | Verdict | Evidence |` table the lens specifies). Stop after three rows. Do NOT run the full audit — that is M4 Exercise 2.
 

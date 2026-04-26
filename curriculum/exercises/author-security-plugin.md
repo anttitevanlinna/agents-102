@@ -112,7 +112,7 @@ In the new session, run a single quick invocation to confirm the plugin loads an
 **Prompt** *(Claude Code, fresh session)*
 
 ```
-Apply the policy lens of the security plugin I authored to one file: module-2/CLAUDE.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
+Apply the policy lens of the security plugin I authored to one file: module-2/challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
 ```
 
 Read the two or three rows. The plugin name should show up in the session's available skills. The rule wording should sound like the lens you authored, not a generic check. If both are true, the plugin is installed.
@@ -129,15 +129,21 @@ The expert is not you reading every file by hand. The expert is the plugin, and 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-25
+**Quality:** mechanical-tested 2026-04-26
 - compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in)
 - sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE-WITH-TODOs — see TODOs below)
+- mechanical-tested 2026-04-26 (instances/bootstrap-m4-author-judge-report.md @ 7644347 PASS 36/36)
 
 **Cohort-facilitator audit findings (2026-04-25, fixes 1–3 applied 2026-04-26):**
 - ~~Phase 1 freeze case~~ — DONE. `module-4-prework.md` now opens with a "Before you arrive — five lines, in your own voice" subsection plus four example shapes; prework time bumped to 30–40 min to absorb the 5-min prep.
 - ~~Tool-confusion needs an inline gloss~~ — DONE. Phase 2 prompt's tool-confusion line now carries two example shapes inline (production-database connector when test would do; email-send tool when the user only asked for a draft). Self-explanatory at projection distance.
 - ~~Phase 3 runtime-fork sync sentence~~ — DONE. One line lands above the three `.rt-*` blocks pointing each runtime at its block and naming the verify prompt as the sync point.
 - 90-min facilitator dry-run owed before first cohort. Specifically: Phase 3 install moment with one colleague on Cowork and one on CLI, plus one colleague playing the freezing-SVP for Phase 1. Surfaces the runtime-fork hazard and the freeze case at the same time.
+
+**Mechanical-test findings 2026-04-26 (resolved + standing):**
+- ~~Verify target `module-2/CLAUDE.md` may not exist on the student's disk~~ — DONE 2026-04-26. prompt-004-verify now targets `module-2/challenge.md`, which is on disk from M2 prework.
+- **Cowork plugin install affordance** — capability check #1 still owed (Cowork *Save plugin* button reliability). Exercise text describes UI behaviour, no skill-by-name invocation, so no body fix needed; the verification is whether Cowork delivers the affordance the text describes.
+- **Self-study dictation** — covered by `module-4-prework.md` "Before you arrive — five lines" subsection (with four shape examples). No additional example needed in the exercise body.
 
 **Pairs with:** [Audit your agent](audit-your-agent.md) — Module 4's second exercise, runs the plugin authored here.
 

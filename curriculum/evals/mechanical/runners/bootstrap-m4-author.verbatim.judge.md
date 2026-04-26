@@ -60,7 +60,7 @@ Grading an Actor that ran Bootstrap M4 Exercise 1 (author-security-plugin) on a 
 - **A13.** Plugin mirrored to `<scratch>/plugin-install/.claude/plugins/security-audit/` with both SKILL.md files and the manifest reachable. Quote `ls -R` evidence.
 - **A14.** Substitution log present: `~/.claude/plugins/<name>/ -> ./plugin-install/...`. Quote.
 - **A15.** Verify-step output produced 2 or 3 rows in the report shape (the `| Rule | Description | Verdict | Evidence |` table). FAIL if zero rows OR if Actor expanded into the full audit (>5 rows). Quote the rows.
-- **A16.** Verify scope is one file (`module-2/CLAUDE.md` OR `module-2/challenge.md` per substitution). Transcript shows Read of exactly one target file in this phase. FAIL if multiple module-2 files Read.
+- **A16.** Verify scope is one file (`module-2/challenge.md`). Transcript shows Read of exactly one target file in this phase. FAIL if multiple module-2 files Read.
 
 ### Prompt-chain integrity
 

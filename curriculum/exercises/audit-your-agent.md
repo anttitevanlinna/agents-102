@@ -107,11 +107,14 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-25
+**Quality:** mechanical-tested 2026-04-26
 - compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in)
 - sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE — workhorse exercise; long agent waits ARE the designed conversation pauses)
+- mechanical-tested 2026-04-26 (instances/bootstrap-m4-audit-judge-report.md @ 7644347 PASS 35/37 + 2 soft-pass)
 
 **Cohort-facilitator audit (2026-04-25):** APPROVE without TODOs. The exercise is cohort-ready. One stylistic note for next pass: *"The uncomfortable feeling is the evidence."* (Phase 2 close) reads as a slogan when projected silently to 12 SVPs; consider moving to lecture closer or cutting on next polish.
+
+**Mechanical-test findings 2026-04-26 (PASS, no blocking gaps):** All four named-attack-classes covered with file-specific risks (no STRIDE-collapse), all five mitigation-shape names landed verbatim, classical-controls floor named, mitigate→re-check→residual chain executed cleanly, plugin files byte-unchanged. Two soft-pass notes (A7/A10): the explicit re-Read of `module-4/policy-report.md` between Phase 1 Write and Phase 1.5 analysis (and the analogous re-Read of the agent-security SKILL.md before Phase 2) is implicit under single-session execution — content stays in context. If the meta-distance between "wrote the report" and "now read it cold" is the pedagogical point, add a one-line *"close and re-open the file"* beat to the Phase 1.5 prompt; otherwise the implicit read is fine.
 
 **Pairs with:** [Author a security plugin](author-security-plugin.md) — Module 4's first exercise, produces the plugin this exercise runs.
 

@@ -26,7 +26,7 @@ embeddings, vector, vector database, RAG, retrieval-augmented generation, retrie
 HARD-BANNED WORDS (never earnable — substitute "exercise"):
 ritual, practice (as a noun for a training activity), ceremony
 
-Exempt contexts (do NOT flag): content below `<!-- maintainer -->` cut, TODO comments, eval template slots, the project CLAUDE.md / content-strategy.md / guardrails files (authoring-side, not student-facing).
+Exempt contexts (do NOT flag): content below `<!-- maintainer -->` cut, TODO comments, eval template slots, the project CLAUDE.md / `bosser-strategy:content-strategy.md` / guardrails files (authoring-side, not student-facing).
 
 For each banned word, for each file in arc order:
 

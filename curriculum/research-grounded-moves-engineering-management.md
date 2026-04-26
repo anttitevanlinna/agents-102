@@ -1,6 +1,6 @@
 # What Should a Software Engineering Team Lead Do NOW — Research-Grounded Playbook
 
-Companion reference for `content-strategy-engineering-management.md`. Not a module. A synthesis across the KB that the training's six modules draw from. Keep this file synced with the research as it evolves.
+Companion reference for `bosser-strategy:content-strategy-engineering-management.md`. Not a module. A synthesis across the KB that the training's six modules draw from. Keep this file synced with the research as it evolves.
 
 Audience: software engineering manager, 5–50 reports, leadership has declared an AI transformation, team is unevenly distributed (some shipping agents, some on ChatGPT weekly, some sceptical), manager has agent competence themselves.
 

@@ -23,8 +23,8 @@
 - [inlined exercise / lecture paths]
 
 **Mood handoff:**
-- Mn deliberate mood (from content-strategy.md): [paste]
-- Mn+1 deliberate mood (from content-strategy.md): [paste]
+- Mn deliberate mood (from `bosser-strategy:content-strategy.md`): [paste]
+- Mn+1 deliberate mood (from `bosser-strategy:content-strategy.md`): [paste]
 - The right transition: [one sentence]
 
 **Artifact handoff:**

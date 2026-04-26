@@ -107,7 +107,7 @@ The closing lecture's maintainer block must include the same TODO shape as `what
 
 ## Alignment edits (main-thread, Phase B)
 
-- `curriculum/content-strategy-agentic-engineering-101.md` § *State of play* — add M6 to the current-shape line; note Story opener, arc-retrospective beat, simple-round Debrief are live.
+- `bosser-strategy:content-strategy-agentic-engineering-101.md` § *State of play* — add M6 to the current-shape line; note Story opener, arc-retrospective beat, simple-round Debrief are live.
 - `site/curriculum.html` `MODULES` array — AE101 M6 entry: `{ slug: 'spot-gaps-build-the-loop', title: 'Spot gaps, build the loop' }` at position 6.
 
 ## "Done means"

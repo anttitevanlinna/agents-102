@@ -252,7 +252,7 @@ Everyone in the room works on the same company-relevant initiative. Not individu
 **How it works:**
 - The initiative is pre-agreed with the customer sponsor before the training. Example: "We want agents for our claims processing," "We need agent-driven competitive intelligence," "We want to automate our compliance reporting."
 - Antti and the sponsor scope it to something that (a) matters to the company, (b) is achievable as a growing prototype across 8 modules, and (c) touches enough complexity to sustain the full arc.
-- All exercises advance this initiative. The system grows across modules — not throwaway exercises but a single system getting more sophisticated. See `content-strategy.md` for the module arc.
+- All exercises advance this initiative. The system grows across modules — not throwaway exercises but a single system getting more sophisticated. See `bosser-strategy:content-strategy.md` for the module arc.
 
 **Why this works:** Relevance is not negotiable. A CTO sending 20 people to Bootstrap expects them to come back having worked on something real for the company — not a toy project they'll never touch again.
 
@@ -282,7 +282,7 @@ Modules are self-contained units. Could be 2 days intensive, 8 weeks at 2 hours 
 
 ### The deliverable
 
-Bootstrap ends with a tangible deliverable for the executive sponsor. See Module 8 in `content-strategy.md` for the current format (double diamond, Rumelt-style strategy kernel). The format may evolve after the first delivery.
+Bootstrap ends with a tangible deliverable for the executive sponsor. See Module 8 in `bosser-strategy:content-strategy.md` for the current format (double diamond, Rumelt-style strategy kernel). The format may evolve after the first delivery.
 
 ---
 

@@ -48,7 +48,7 @@ Subtly hands off to **[NEXT EXERCISE OR NEXT MODULE — one-phrase hook]**.
 
 ### Mood lands *(universal — essential)*
 
-Every Bootstrap module is engineered to produce a specific emotion at phase ends and at exercise close. The mood is the strategic contract — not garnish. (See `content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph.)
+Every Bootstrap module is engineered to produce a specific emotion at phase ends and at exercise close. The mood is the strategic contract — not garnish. (See `bosser-strategy:content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph.)
 
 Scored per exercise on a 1–10 scale for each beat:
 - **End of each phase** — what emotion does the student carry into the next phase? Does it match the module's deliberate mood (joy / compound / unease / deeper unease / rescue / leverage / generosity / awe)?

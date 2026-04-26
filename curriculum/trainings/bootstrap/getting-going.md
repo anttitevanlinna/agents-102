@@ -1,4 +1,4 @@
-<!-- TODO: consider renaming module to "Context is King" (currently "Getting Going"). Would align module name to its Big Idea. Cascade: this filename (rename getting-going.md → context-is-king.md), site/curriculum.html MODULES slug entry, content-strategy.md headings, memory references, existing lecture collision (lecture is already named "Context is King"; resolve by renaming module AND renaming lecture, e.g., lecture becomes "The two windows" or similar). -->
+<!-- TODO: consider renaming module to "Context is King" (currently "Getting Going"). Would align module name to its Big Idea. Cascade: this filename (rename getting-going.md → context-is-king.md), site/curriculum.html MODULES slug entry, `bosser-strategy:content-strategy.md` headings, memory references, existing lecture collision (lecture is already named "Context is King"; resolve by renaming module AND renaming lecture, e.g., lecture becomes "The two windows" or similar). -->
 
 # Getting Going
 

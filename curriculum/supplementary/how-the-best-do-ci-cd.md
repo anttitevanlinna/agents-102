@@ -76,7 +76,7 @@ M6 taught you the loop at IC scale: spot the gap, build the eval, close the loop
 
 <!-- maintainer -->
 
-**Status:** Pass 1 authored 2026-04-24. Source spec: `curriculum/content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5.
+**Status:** Pass 1 authored 2026-04-24. Source spec: `bosser-strategy:content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5.
 
 **Source verification — MUST DO before first cohort:**
 
@@ -106,4 +106,4 @@ M6 taught you the loop at IC scale: spot the gap, build the eval, close the loop
 
 **Iteration log:**
 
-- 2026-04-24: Pass 1 authored. Structure follows source spec in `content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5 verbatim in intent. Six forces named, three anchor cases cited, seven-question CTO checklist landed. All source claims carry URL + practitioner-direct label. No [SOURCE NEEDED] flags at write time — all anchor-case numbers trace to existing observations/ or platform-watch/ files. Open TODOs logged for ship-time verification.
+- 2026-04-24: Pass 1 authored. Structure follows source spec in `bosser-strategy:content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5 verbatim in intent. Six forces named, three anchor cases cited, seven-question CTO checklist landed. All source claims carry URL + practitioner-direct label. No [SOURCE NEEDED] flags at write time — all anchor-case numbers trace to existing observations/ or platform-watch/ files. Open TODOs logged for ship-time verification.

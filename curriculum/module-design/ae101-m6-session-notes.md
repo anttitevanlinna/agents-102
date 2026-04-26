@@ -230,7 +230,7 @@ Design constraint created by opener placement: **the Story names the CONDITION (
 ## Main-thread decisions
 
 - Aligned `site/curriculum.html` MODULES array for AE101 — added M6 entry at position 6. Trailing-comma aware, single-line entry matching the five existing AE101 entries' shape.
-- Aligned `content-strategy-agentic-engineering-101.md` State of play — added *"M6 shipped (2026-04-24)"* paragraph before the existing M4–M6 reframe paragraph. Named pre-first-cohort TODOs riding forward (Ramp/Intercom source verification, three-persona sim, eval instance population).
+- Aligned `bosser-strategy:content-strategy-agentic-engineering-101.md` State of play — added *"M6 shipped (2026-04-24)"* paragraph before the existing M4–M6 reframe paragraph. Named pre-first-cohort TODOs riding forward (Ramp/Intercom source verification, three-persona sim, eval instance population).
 - Drafted `lectures/story-of-module-6.md` main-thread from running session notes. Held the turn-8 design constraint — names the condition (non-determinism, universal struggle) without spoiling Phase 1's specific failure modes.
 - Loop iteration fixes: chose `check_writing §1` strict reading (banned-word rule applies everywhere, maintainer NOT exempt) because §4 and §7 explicitly exempt maintainer and §1 doesn't — asymmetry reads as intentional. Fixed two maintainer-block `honest`/`honestly` instances.
 - Loop em-dash policy: chose NOT to mass-rewrite em-dashes against M5 shipped practice (`what-packaging-is.md`, `diagnose-and-resend.md` both use em-dashes in body without objection). Applied-rule vs. practised-rule gap logged as a §14 compendium discrepancy for session-close `/compound`, not a this-session fix.
@@ -243,7 +243,7 @@ Subagents returned; three completion reports read. All three verdicts approve or
 
 Main-thread alignment done:
 - `site/curriculum.html` MODULES array — AE101 M6 entry added at position 6.
-- `content-strategy-agentic-engineering-101.md` § State of play — M6-shipped paragraph added with pre-first-cohort TODOs flagged.
+- `bosser-strategy:content-strategy-agentic-engineering-101.md` § State of play — M6-shipped paragraph added with pre-first-cohort TODOs flagged.
 
 Story of Module 6 drafted from notes. 5–7 min opener, first-person past, signed *— Antti*. Stats block + three fails (chat-shaped turn 1; banned-word leak across four LLM runs; credibility-framed end-state cut at turn 7) + generalisation + land. Design constraint held: names the condition, does not spoil Phase 1 specifics. Maintainer block flags the Antti-rewrite pass and three-persona sim as pre-first-cohort TODOs.
 

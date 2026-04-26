@@ -21,7 +21,7 @@ PERSONA: [describe — role, seniority, LLM fluency, business context. Example: 
 
 DELIVERY MODE: self-study. Teacher Claude is running in a side session (configured by the /self-study skill) and plays facilitator — it nudges through the 4 Cs, pushes on ambiguous artifacts, runs the Debrief, and catches rubber-stamping (*"find me one row the judge got wrong"*). Account for Teacher Claude at every phase; the student is NOT alone.
 
-MODULE MOOD CONTRACT: [state the module's deliberate mood — e.g., "Module 6 is unleashed leverage; student should leave feeling 'we can automate the loop.'" Pull from content-strategy.md per-module Mood (deliberate) paragraph.]
+MODULE MOOD CONTRACT: [state the module's deliberate mood — e.g., "Module 6 is unleashed leverage; student should leave feeling 'we can automate the loop.'" Pull from `bosser-strategy:content-strategy.md` per-module Mood (deliberate) paragraph.]
 
 ASSUME you have completed any prior module/lecture setup the exercise references.
 

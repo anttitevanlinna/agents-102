@@ -73,7 +73,7 @@ The reader arrives curious, not pre-answered. If reading the lecture answers the
 
 ### Mood lands *(universal — essential)*
 
-Every Bootstrap module is engineered to produce a specific emotion by lecture's end — joy, compound, unease, deeper unease, rescue, leverage, generosity, or awe (see `content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph). The mood is the strategic contract.
+Every Bootstrap module is engineered to produce a specific emotion by lecture's end — joy, compound, unease, deeper unease, rescue, leverage, generosity, or awe (see `bosser-strategy:content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph). The mood is the strategic contract.
 
 Score 1–10 for mood landing at close of lecture. **Pass threshold: 8+/10.** Below 8, something is stealing the mood — over-reassurance on a stewing mood (M3/M4 tidied up prematurely), tonal jolt, epistemic beat that reads as "homework" rather than the intended state, a close that resolves what the next module needs to pick up, or an opening that telegraphs the teaching moment and collapses the exercise ahead.
 

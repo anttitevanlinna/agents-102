@@ -27,7 +27,7 @@ Each subagent returns a completion report: files written, verifier verdicts, dec
 Runs after all three subagents return. Main thread, sequential:
 
 1. Read subagent completion reports. Update session notes with drift entries not yet in the file.
-2. Edit `curriculum/content-strategy-agentic-engineering-101.md` § *State of play* — add M6 to the current-shape line; confirm Story opener + arc-retrospective + simple-round Debrief are live.
+2. Edit `bosser-strategy:content-strategy-agentic-engineering-101.md` § *State of play* — add M6 to the current-shape line; confirm Story opener + arc-retrospective + simple-round Debrief are live.
 3. Edit `site/curriculum.html` `MODULES` array for AE101 — M6 entry at position 6, slug `spot-gaps-build-the-loop`, title *Spot gaps, build the loop*.
 4. Draft `curriculum/lectures/story-of-module-6.md` from session notes — first-person past tense, signed *— Antti*, 5–7 min. Stats block (live numbers from notes) + two or three real fails + generalize + land. Flag as *draft; Antti edits in final voice* in the maintainer block.
 

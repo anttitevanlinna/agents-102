@@ -228,7 +228,7 @@ Every new asset under `curriculum/`, `content/`, `strategy/`, `site/`, `memory/`
 - Your exercise file references "Module N" internally — exercises are training-agnostic
 - You used underscores or numbers in a slug
 - You copied language or structure from F-Secure materials, competitor materials, or any vendor training
-- You changed an exercise name but not its mirror in `content-strategy.md`
+- You changed an exercise name but not its mirror in `bosser-strategy:content-strategy.md`
 - You added images without a plan to add path rewriting to the renderer
 - Your module has more than one H1
 

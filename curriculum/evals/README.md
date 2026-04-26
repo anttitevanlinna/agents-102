@@ -93,7 +93,7 @@ When you want wide coverage fast — after a meaningful content pass, before a c
 >
 > **Subagent 1 — Unit lints across all Bootstrap.** Run `curriculum/evals/lints/path-consistency.md`, `time-budget.md`, `jargon-ban.md` across prework + M1-M8 + all included exercises/lectures/supplementaries. Write output to `curriculum/evals/instances/lints-full-bootstrap.md` (overwrite). Reply with a 5-line summary.
 >
-> **Subagent 2 — Seam judges 1-4.** Apply `curriculum/evals/seams/seam-judge.md` to seams prework→M1, M1→M2, M2→M3, M3→M4. Pull mood contracts from `curriculum/content-strategy.md` "Mood (deliberate)" paragraphs per module. Write to `curriculum/evals/seams/instances/seams-1-to-4.md` (overwrite). Reply with a 5-line summary.
+> **Subagent 2 — Seam judges 1-4.** Apply `curriculum/evals/seams/seam-judge.md` to seams prework→M1, M1→M2, M2→M3, M3→M4. Pull mood contracts from `bosser-strategy:content-strategy.md` "Mood (deliberate)" paragraphs per module. Write to `curriculum/evals/seams/instances/seams-1-to-4.md` (overwrite). Reply with a 5-line summary.
 >
 > **Subagent 3 — Seam judges 5-8.** Same, for seams M4→M5, M5→M6, M6→M7, M7→M8. Write to `curriculum/evals/seams/instances/seams-5-to-8.md` (overwrite). Reply with a 5-line summary.
 >

@@ -6,7 +6,7 @@ argument-hint: [scope] (memory | compendiums | skills | all)
 
 # /refresh — proactive staleness audit
 
-Memory drifts. Compendium rules drift. Skills embed instructions that may contradict the live `curriculum/content-strategy.md` or the published `ai-training/` site. Nobody notices until we act on something wrong.
+Memory drifts. Compendium rules drift. Skills embed instructions that may contradict the live `bosser-strategy:content-strategy.md` or the published `ai-training/` site. Nobody notices until we act on something wrong.
 
 This skill audits the learning store and surfaces stale candidates. It does NOT edit anything without Antti's approval — every proposed change is shown as a diff first.
 
@@ -27,7 +27,7 @@ Do NOT invoke as routine maintenance every session. The cost of running this is 
 For each `project_*.md`, `feedback_*.md`, `reference_*.md`, `storytelling-principles.md`, `copy-taste.md`, `voice-guide.md`, `curriculum_design_rules.md`:
 
 - **Referenced path check:** grep for relative and absolute paths in the file. Does each referenced file still exist? Mark broken pointers.
-- **Consistency check:** if the memory claims a fact about the curriculum architecture, compare against `curriculum/content-strategy.md`, `curriculum/CLAUDE.md`, `curriculum/lecture-guardrails.md`. Contradictions = stale.
+- **Consistency check:** if the memory claims a fact about the curriculum architecture, compare against `bosser-strategy:content-strategy.md`, `curriculum/CLAUDE.md`, `curriculum/lecture-guardrails.md`. Contradictions = stale.
 - **Supersession check:** if another memory file contradicts this one (different decision about the same topic), mark for Consolidate.
 - **Last-touched heuristic:** if the file hasn't been referenced in any session transcript or git log in 6+ months AND describes ephemeral project state, mark for possible Delete.
 

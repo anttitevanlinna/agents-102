@@ -151,7 +151,7 @@ After each full run (Loop A + Loop B + Antti's reshape):
 - **Project root:** `/Users/anttitevanlinna/Projects/agents-102/`
 - **Curriculum root:** `curriculum/`
 - **Compendiums:** `memory/check_student_facing.md`, `memory/check_writing.md`, `memory/check_pedagogy.md`, `memory/check_platform_and_boundaries.md`, `memory/check_research_claims.md`, `memory/check_sales_copy.md`
-- **Content strategy per training:** `curriculum/content-strategy.md` (Bootstrap), `curriculum/content-strategy-agentic-engineering-101.md`, `curriculum/content-strategy-engineering-management.md`
+- **Content strategy per training:** `bosser-strategy:content-strategy.md` (Bootstrap), `bosser-strategy:content-strategy-agentic-engineering-101.md`, `bosser-strategy:content-strategy-engineering-management.md`
 - **Sibling strategy (generation, not alignment):** `curriculum/module-design-long-running-strategy.md`
 - **Generation rules:** `.claude/skills/content-creation/SKILL.md` — read before editing any curriculum surface.
 

@@ -104,7 +104,7 @@ If this Compound step (especially #6) is skipped, the strategy stops learning AN
 ## Context for a fresh session picking this up
 
 - **Project root:** `/Users/anttitevanlinna/Projects/agents-102/`
-- **Governing rule** (behind this file): `curriculum/content-strategy-agentic-engineering-101.md` § "The rule that governs everything"
+- **Governing rule** (behind this file): `bosser-strategy:content-strategy-agentic-engineering-101.md` § "The rule that governs everything"
 - **M5/M6 pattern** this file ports from: same strategy doc, §§ "M5 in detail — long-running tasks, send-off" and "M6 in detail — long-running tasks, return"
 - **Eval templates:** `curriculum/evals/lecture.md`, `curriculum/evals/exercise.md`
 - Session rules — banned-word, hold-OODA-loose, never-downplay-students, sales-register — are already loaded via MEMORY.md PRE-FLIGHT; don't re-grep here

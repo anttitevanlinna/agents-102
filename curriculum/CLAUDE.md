@@ -7,7 +7,7 @@ This CLAUDE.md governs curriculum work.
 - **For pedagogy** (Bloom's taxonomy, 4 Cs, emergent knowledge/control/leadership, audience, throughlines, teaching principles): see `curriculum/lecture-guardrails.md`. Read before writing any module.
 - **For long-running generation sessions** (plan → walk away → return pattern, applied to generating lectures and exercises): see `curriculum/module-design-long-running-strategy.md`. Use when Antti wants to hand off a full lecture or exercise generation rather than iterate in small turns. The file compounds — every long-running session closes with a Compound step that rewrites its rules.
 
-Current state of what's built vs. what's next lives in `content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
+Current state of what's built vs. what's next lives in `bosser-strategy:content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
 
 ## Quality-state tagging
 
@@ -55,9 +55,9 @@ Canonical source: `memory/compounded/2026-04-25-content_creation-quality-state-t
 
 ## Scope
 
-**A portfolio of 3-4 trainings.** Bootstrap is the first (for builder leaders making the chat-to-systems leap). Engineering Management is the second (for engineering managers leading agentic change; strategy in `content-strategy-engineering-management.md`). Agentic Engineering 101 is the third (for software engineer ICs, L0 → L3 path; strategy in `content-strategy-agentic-engineering-101.md`). Executive briefing and domain-specific variants will follow. The Engineering Management + Agentic Engineering 101 pair pincer the transformation — managers create conditions, engineers run at capacity. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
+**A portfolio of 3-4 trainings.** Bootstrap is the first (for builder leaders making the chat-to-systems leap). Engineering Management is the second (for engineering managers leading agentic change; strategy in `bosser-strategy:content-strategy-engineering-management.md`). Agentic Engineering 101 is the third (for software engineer ICs, L0 → L3 path; strategy in `bosser-strategy:content-strategy-agentic-engineering-101.md`). Executive briefing and domain-specific variants will follow. The Engineering Management + Agentic Engineering 101 pair pincer the transformation — managers create conditions, engineers run at capacity. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
 
-**Source of truth:** `content-strategy.md` defines the Bootstrap arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library.
+**Source of truth:** `bosser-strategy:content-strategy.md` defines the Bootstrap arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library.
 
 See `## Copyright fence` below before importing anything from external training materials.
 
@@ -65,7 +65,7 @@ See `## Copyright fence` below before importing anything from external training 
 
 ```
 curriculum/
-  content-strategy.md          # Bootstrap arc + storyline (currently Bootstrap-specific)
+  # content-strategy.md (PRIVATE — see `bosser-strategy` skill)
   lecture-guardrails.md        # universal pedagogy rules
   CLAUDE.md                    # this file
 
@@ -75,8 +75,8 @@ curriculum/
       building-agent-systems.md
       multi-agent-systems.md
       ...
-    engineering-management/    # FUTURE — strategy in content-strategy-engineering-management.md
-    agentic-engineering-101/   # FUTURE — strategy in content-strategy-agentic-engineering-101.md
+    engineering-management/    # FUTURE — strategy in `bosser-strategy:content-strategy-engineering-management.md`
+    agentic-engineering-101/   # FUTURE — strategy in `bosser-strategy:content-strategy-agentic-engineering-101.md`
     executive-briefing/        # FUTURE
 
   exercises/                   # Shared library — one file per exercise
@@ -192,7 +192,7 @@ Canonical source: `memory/compounded/2026-04-26-platform-bare-paths-renderer-rew
 
 ## Alignment duties
 
-**`content-strategy.md` and module files stay aligned — always.** `content-strategy.md` carries the training-level narrative (Connections, Exercise, Lecture, Reflection, Bridge per module). The module files in `trainings/bootstrap/` carry the canonical spine. **The exercise named in each module section of content-strategy.md must match the exercise in the corresponding module file** — same name, same description. When one changes, the other changes in the same edit. Drift between the two is a process bug, not a matter of taste.
+**`bosser-strategy:content-strategy.md` and module files stay aligned — always.** `bosser-strategy:content-strategy.md` carries the training-level narrative (Connections, Exercise, Lecture, Reflection, Bridge per module). The module files in `trainings/bootstrap/` carry the canonical spine. **The exercise named in each module section of `bosser-strategy:content-strategy.md` must match the exercise in the corresponding module file** — same name, same description. When one changes, the other changes in the same edit. Drift between the two is a process bug, not a matter of taste.
 
 ## Copyright fence
 
@@ -237,7 +237,7 @@ The shape: each agent's spec names every file it will touch; no two specs overla
 
 How participants receive and work with training material (site + local files). Design rules for any module that ships a scaffold.
 
-**Bootstrap conventions are documented here. Agentic Engineering 101 uses a different delivery model** — content folder unzipped by student, all compounding artifacts land in the student's real repo (no training-dir state, no `module-N/` folders). See `content-strategy-agentic-engineering-101.md` § "Delivery architecture" for canonical AE101 rules. Future trainings choose one model per audience; don't mix.
+**Bootstrap conventions are documented here. Agentic Engineering 101 uses a different delivery model** — content folder unzipped by student, all compounding artifacts land in the student's real repo (no training-dir state, no `module-N/` folders). See `bosser-strategy:content-strategy-agentic-engineering-101.md` § "Delivery architecture" for canonical AE101 rules. Future trainings choose one model per audience; don't mix.
 
 **The shapes:**
 

@@ -151,7 +151,7 @@ Five-plus top-tier business frameworks, pedagogically central (each owns a move)
 ### Scaffold / worked example provided
 
 - Five copy-paste prompts (one per phase).
-- Pattern catalog (`strategy/personal-to-team-patterns.md`) as reference — WIP with `[TODO]` placeholders on many examples; framed explicitly as "prompt to invent for your situation" in the exercise body.
+- Pattern catalog (`bosser-strategy:personal-to-team-patterns.md`) as reference — WIP with `[TODO]` placeholders on many examples; framed explicitly as "prompt to invent for your situation" in the exercise body.
 - Four sharing strategies listed inline in Phase 2 as memory aid.
 - Outcome statement template given in Ulwick's canonical form.
 - Prior modules have built memory/skills/artifacts; no new artifact type is produced from thin air.

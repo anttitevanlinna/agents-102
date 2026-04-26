@@ -70,7 +70,7 @@ Open your repo. Let's go.
 
 **Frameworks attributed:**
 - **Three failure modes** — convergent practitioner vocabulary; pre-read carries the citation.
-- **test → learn → encode** — M5 strategy framing (`content-strategy-agentic-engineering-101.md` § "M5 in detail" and § "M4–M6 spirit"). Internal arc terminology, not a third-party framework.
+- **test → learn → encode** — M5 strategy framing (`bosser-strategy:content-strategy-agentic-engineering-101.md` § "M5 in detail" and § "M4–M6 spirit"). Internal arc terminology, not a third-party framework.
 - **/compact at ~60%** — convergent practitioner pattern. Subagent dispatch as the second extension primitive is ceded to the closing lecture (kit recap), not named in the opener.
 
 **Watch-fors (delivery):**

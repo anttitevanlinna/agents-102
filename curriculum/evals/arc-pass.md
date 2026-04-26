@@ -17,7 +17,7 @@ Read all 8 Bootstrap modules + the content-strategy arc **in one session** befor
 You are auditing the full Bootstrap arc for end-to-end coherence. This is a single-pass static eval across 8 modules. Read these files in order:
 
 ARC CONTRACT:
-- curriculum/content-strategy.md (focus on the mood-arc synthesis section + per-module "Mood (deliberate)" paragraphs)
+- bosser-strategy:content-strategy.md (focus on the mood-arc synthesis section + per-module "Mood (deliberate)" paragraphs)
 - philosophy.md (the 19 beliefs)
 
 MODULES IN SEQUENCE:

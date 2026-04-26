@@ -165,7 +165,7 @@ Observed: workshops that bring functions together produce excellent results, but
 
 ## Priority 4: From Practitioner Essays (Year One) — Added April 2026
 
-Six research directions surfaced from cross-referencing one year of practitioner essays (`strategy/practitioner-essays-year-one.md`) with current research findings. These represent gaps the practitioner lived through but the research system hasn't investigated externally.
+Six research directions surfaced from cross-referencing one year of practitioner essays (`bosser-strategy:practitioner-essays-year-one.md`) with current research findings. These represent gaps the practitioner lived through but the research system hasn't investigated externally.
 
 ### 4.1 Habit and Taste as Code
 
@@ -267,7 +267,7 @@ This is NOT the decision-speed bottleneck (Goldratt/TOC framing of slow approval
 
 See: [`observations/enterprise-agentic-transformation-case.md`](observations/enterprise-agentic-transformation-case.md) — detailed observations from a year-long enterprise agentic transformation, including 7 original findings.
 
-See also: [`strategy/practitioner-essays-year-one.md`](../strategy/practitioner-essays-year-one.md) — 20 essays tracking the evolution of thinking over one year, with cross-reference to research findings.
+See also: `bosser-strategy:practitioner-essays-year-one.md` (private — `bosser-strategy` skill) — 20 essays tracking the evolution of thinking over one year, with cross-reference to research findings.
 
 ---
 

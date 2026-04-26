@@ -9,6 +9,20 @@ Generation-time rules for curriculum work. For architecture (directory structure
 
 Invoke when the user asks to write or revise curriculum content: a module, exercise, lecture, new training variant, or review pass.
 
+## REQUIRED PRECONDITION — `bosser-strategy` skill must be installed
+
+**This skill cannot generate curriculum content without the private `bosser-strategy` skill present in the user's environment.** Strategic context (module Big Ideas, mood contracts, per-training arc, buyer profiles, competitive positioning) lives outside this public repo. The `bosser-strategy` skill is a personal skill at `~/.claude/skills/bosser-strategy/SKILL.md` that resolves `bosser-strategy:<filename>` references to the private location.
+
+**Preflight at the top of every invocation** — before reading PDCA Step 1:
+
+1. Check whether the `bosser-strategy` skill is in the available-skills list for this session.
+2. If not: **STOP**. Output: *"This generation system requires the `bosser-strategy` personal skill, which loads private strategic context. The skill is not installed in this environment. The public repo intentionally does not carry the strategic docs. Without them, generation cannot proceed — you'd be writing curriculum without the mood contract, Big Idea, or buyer profile that define what each piece is supposed to do. Contact the maintainer."*
+3. If yes: proceed with PDCA Step 1.
+
+This is by design. The public repo carries the curriculum-as-published-product. The strategic IPR (what makes each piece land for which buyer with which mood) is private. Anyone forking the repo gets the lectures and exercises; nobody but Antti gets the strategic spine. Any generation work that wants to extend the curriculum requires both halves.
+
+**Cross-references in this repo** to strategic docs use the form `` `bosser-strategy:<filename>` `` — read those via the bosser-strategy skill on demand (not pre-loaded). Examples: `` `bosser-strategy:content-strategy.md` ``, `` `bosser-strategy:content-strategy-agentic-engineering-101.md` ``.
+
 ## Firing-moment router — load what you need
 
 This SKILL.md is the always-loaded core (session orientation + PDCA cadence + mood arc). Load companion files when you hit their firing moment:
@@ -34,12 +48,12 @@ Default to the shape of the training's own pattern applied to the meta-task. If 
 
 **Every piece of content aligns to strategy before you touch words.** Strategy-first is the frame around every step. Before drafting a lecture, exercise, prework, or homework, you must already know:
 
-1. **Which module** this belongs to, and its *big idea* from `content-strategy.md`.
+1. **Which module** this belongs to, and its *big idea* from `bosser-strategy:content-strategy.md`.
 2. **Which mood** this module is engineered to produce — see the "Mood (deliberate)" paragraph per module + the mood arc below. Mood is the contract; resolving a mood early steals the next module's teaching moment.
 3. **Where it sits in the 8-module rhythm.** Each module's mood feeds the next.
 4. **Which canonical strategic structures** it honours when the module has them. M7 ships the **four sharing strategies** (see `writing.md`). When a module's strategy section names a canonical structure, use it verbatim; don't reinvent.
 
-If you can't answer those four questions before writing, stop and read `content-strategy.md` until you can. Strategy isn't the frame you impose on content after drafting; it's the frame that decides what to draft.
+If you can't answer those four questions before writing, stop and read `bosser-strategy:content-strategy.md` until you can. Strategy isn't the frame you impose on content after drafting; it's the frame that decides what to draft.
 
 ## Rule files to load before generating
 
@@ -55,7 +69,7 @@ These are the rules that fire at generation time. Loading them after drafting ca
 
 Before touching anything, read in this order:
 
-1. **`curriculum/content-strategy.md`** — Training-level arc + mood-arc synthesis + per-module "Big idea" and "Mood (deliberate)". The strategic contract everything else serves.
+1. **`bosser-strategy:content-strategy.md`** — Training-level arc + mood-arc synthesis + per-module "Big idea" and "Mood (deliberate)". The strategic contract everything else serves.
 2. **`curriculum/CLAUDE.md`** — architectural rules (directory structure, module file shape, include-links, F-Secure fence, material distribution, Claude Code behavior verification).
 3. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge/control/leadership, audience, throughlines).
 4. **`philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
@@ -80,7 +94,7 @@ Every piece of curriculum content goes through this loop. Skipping a step is how
 
 **Plan:**
 1. **Antti's input** — what to build, why, any constraints or principles he's adding this turn.
-2. **Strategy alignment (mandatory first)** — read the relevant module's section in `curriculum/content-strategy.md`, INCLUDING its *Big idea* and *Mood (deliberate)* paragraphs. If this piece changes the arc, update content-strategy in the same edit. **Mood check:** state in one sentence what emotional state the student should leave this piece in, and how it sets up the next piece. If you can't state it, you haven't read enough strategy yet. Sibling files (module spine, content-strategy, eval instance) update in the same edit, not later.
+2. **Strategy alignment (mandatory first)** — read the relevant module's section in `bosser-strategy:content-strategy.md`, INCLUDING its *Big idea* and *Mood (deliberate)* paragraphs. If this piece changes the arc, update content-strategy in the same edit. **Mood check:** state in one sentence what emotional state the student should leave this piece in, and how it sets up the next piece. If you can't state it, you haven't read enough strategy yet. Sibling files (module spine, content-strategy, eval instance) update in the same edit, not later.
 3. **Check / agree on evals** — propose the eval judges (contributory ones inferred from patterns; primary "leap test" steered by Antti). Update the eval template (`curriculum/evals/lecture.md` or `exercise.md`) if a missing judge is discovered. Save the filled instance to `curriculum/evals/instances/<training>--<slug>.md`. **Mood-aware eval:** if the module's mood is unease or complexity, the eval's "leap test" should reward the unease, not punish it.
 4. **Check learning goals** — pull the Bloom-tagged LOs verbatim from the module file into the eval instance. LOs are the contract; the eval is the measure; the content must satisfy both.
 

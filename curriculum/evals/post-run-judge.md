@@ -7,7 +7,7 @@ After the manual end-to-end run, a Judge Claude reads the full Teacher + Builder
 1. **Teacher transcript:** `~/.claude/projects/<teacher-slug>/<session-id>.jsonl`
 2. **Builder transcript:** `~/.claude/projects/<builder-slug>/<session-id>.jsonl`
 3. **Observation sheet:** `curriculum/evals/instances/manual-run--<scope>.md` (filled during the run)
-4. **Arc contract:** `curriculum/content-strategy.md` (mood arc + per-module Mood sections)
+4. **Arc contract:** `bosser-strategy:content-strategy.md` (mood arc + per-module Mood sections)
 
 Session IDs are captured at run start. If the run spans multiple sessions per side (compaction, break between modules), concatenate all Teacher JSONLs and all Builder JSONLs by timestamp.
 
@@ -24,7 +24,7 @@ INPUTS:
 - Teacher session transcript: [path]
 - Builder session transcript: [path]
 - Observation sheet (filled by human during run): [path]
-- Arc contract (mood per module): curriculum/content-strategy.md
+- Arc contract (mood per module): bosser-strategy:content-strategy.md
 
 You have three jobs. Do them in order.
 

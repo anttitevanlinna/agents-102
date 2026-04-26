@@ -122,7 +122,7 @@ You don't need to do anything for self-study delivery; the skill carries it. If 
 
 ### Bootstrap
 
-(Section to expand once Bootstrap cohort delivery lands. Same delivery shape applies; mood arc differs — see `curriculum/content-strategy.md`.)
+(Section to expand once Bootstrap cohort delivery lands. Same delivery shape applies; mood arc differs — see `bosser-strategy:content-strategy.md`.)
 
 ## What you don't do
 

@@ -36,9 +36,20 @@ Classical software security is a mature discipline. CVSS scores, residual-risk r
 
 *And one plain note.* Absolute certainty was never available in classical security either; what is new is that the residual moves while you watch. Classical security gave you a residual you signed off on quarterly. Agent security gives you a residual you re-assess per loop iteration. The discipline is the same; the cadence is faster. If that feels uncomfortable, it should. The practice *is* the work.
 
-**What to bring to class:** nothing on paper. Come knowing (a) what shape a plugin has, and (b) that agent security is layered on top of classical security: same residual-risk vocabulary, faster cadence, four new attack classes by name. The Module 4 lecture picks up both.
+**Before you arrive — five lines, in your own voice.**
 
-**Time:** 25–35 minutes total. 10 on plugins, 15–20 on the security shift, 5 on the "borrowed expertise" note.
+Module 4's first exercise opens with you typing three to five lines about what matters about your company's data and your agent system. Not a quiz; raw judgment. Have a few specifics warm in your head when class starts, or jot them somewhere you can paste from. Examples of the shape:
+
+- *"We process customer call recordings; voice data has to stay in-region."*
+- *"Sales never lets unredacted CRM exports leave the building."*
+- *"Our sharper rule beyond GDPR is the export-control list: these named jurisdictions cannot see model output."*
+- *"The data my Module 3 system retrieves includes one partner-NDA source I have not pre-scoped."*
+
+Three to five lines, plain language, the things you would not want a generic policy template to gloss. Five minutes of thinking now is what makes Phase 1 feel like authoring rather than answering questions.
+
+**What to bring to class:** the five lines above plus knowing (a) what shape a plugin has, and (b) that agent security is layered on top of classical security: same residual-risk vocabulary, faster cadence, four new attack classes by name. The Module 4 lecture picks up both.
+
+**Time:** 30–40 minutes total. 10 on plugins, 15–20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
 
 <!-- maintainer -->
 

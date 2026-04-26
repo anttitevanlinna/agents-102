@@ -49,7 +49,7 @@ Lens 2 - AGENT-SECURITY. Access-control analysis plus a threat-modelling pass. T
 
 - prompt injection (direct - hostile input in a user prompt; indirect - hostile content in a retrieved source the agent reads)
 - secrets in context and scrollback (API keys, customer data, partner-NDA material persisting in the transcript or the agent's working memory)
-- tool confusion (agent invokes the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes what to do)
+- tool confusion (agent invokes the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes what to do — for example, the production-database connector firing when test would do, or the email-send tool dispatching when the user only asked for a draft)
 - plugin supply-chain (the plugin itself, or any plugin the agent loads, came from somewhere - who authored it, who reviewed it, what it can do)
 
 For each class, the lens produces one or two specific risks in the target system, ranked, with one suggested agentic mitigation per risk - scope, split, filter, gate, or review. Layered on top of classical controls (network, IAM, mTLS, perimeter), not replacing them. Name that explicitly in the lens's preamble.
@@ -62,6 +62,8 @@ Read what Claude proposes. Push back where it is off. The four named attack clas
 **Phase 3. Install and verify (8 min).**
 
 The plugin is authored. Now install it in your runtime and confirm it loads. Plugins load at session start, not into the current session, so the verify step is a fresh session.
+
+Cowork users follow the chat-button install. Desktop and CLI users follow your runtime's block. Everyone syncs at the verify prompt below.
 
 <div class="rt-cli">
 
@@ -131,11 +133,11 @@ The expert is not you reading every file by hand. The expert is the plugin, and 
 - compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in)
 - sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE-WITH-TODOs — see TODOs below)
 
-**Cohort-facilitator audit findings (2026-04-25, before first cohort):**
-- **Phase 1 freeze case:** the SVP who arrives without an opinion on company policy needs a prework dictation prep step ("Before M4, type three to five lines about your company's data, somewhere you can paste from"). Add to `module-4-prework.md` — currently absent.
-- **Tool-confusion needs an inline gloss.** The other three named attack classes are self-explanatory at projection distance; *tool-confusion* projected as is reads abstract. One-sentence example needed inline in the body where the class first lands ("agent uses the production DB connector when test would do" or similar).
-- **Phase 3 runtime-fork sync sentence.** Add one line at the top of Phase 3 before the three runtime blocks: *"Cowork users follow the chat-button install. Desktop and CLI follow your runtime's block. We sync at the verify prompt."* Helps the trainer when the room is mixed-runtime.
-- **90-min facilitator dry-run owed before first cohort.** Specifically: Phase 3 install moment with one colleague on Cowork and one on CLI, plus one colleague playing the freezing-SVP for Phase 1. Surfaces the runtime-fork hazard and the freeze case at the same time.
+**Cohort-facilitator audit findings (2026-04-25, fixes 1–3 applied 2026-04-26):**
+- ~~Phase 1 freeze case~~ — DONE. `module-4-prework.md` now opens with a "Before you arrive — five lines, in your own voice" subsection plus four example shapes; prework time bumped to 30–40 min to absorb the 5-min prep.
+- ~~Tool-confusion needs an inline gloss~~ — DONE. Phase 2 prompt's tool-confusion line now carries two example shapes inline (production-database connector when test would do; email-send tool when the user only asked for a draft). Self-explanatory at projection distance.
+- ~~Phase 3 runtime-fork sync sentence~~ — DONE. One line lands above the three `.rt-*` blocks pointing each runtime at its block and naming the verify prompt as the sync point.
+- 90-min facilitator dry-run owed before first cohort. Specifically: Phase 3 install moment with one colleague on Cowork and one on CLI, plus one colleague playing the freezing-SVP for Phase 1. Surfaces the runtime-fork hazard and the freeze case at the same time.
 
 **Pairs with:** [Audit your agent](audit-your-agent.md) — Module 4's second exercise, runs the plugin authored here.
 

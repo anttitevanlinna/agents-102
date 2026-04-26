@@ -52,7 +52,7 @@ Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 
 That's the whole job.
 
-**Time:** 8–10 minutes.
+**Time:** 8 minutes. The 1h45 module budget (lecture + two exercises + Connections + Debrief + transitions) only fits when the lecture stays at 8 and the author exercise's Phase 2 lands in two turns. If a tougher cohort takes Phase 2 to three turns, the budget eats this lecture's slack first. Hold to 8.
 
 <!-- maintainer -->
 

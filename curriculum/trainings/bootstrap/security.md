@@ -26,7 +26,7 @@ You've had three agents search your company and three more decide. What doesn't 
 
 ## Key Concepts (Emergent)
 - **Certainty is a fantasy; the practice is the answer.** Classical software security gives you residual-risk vocabulary, CVSS, accepted-risk registers: probabilistic reasoning under bounded inputs. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.
-- **Two lenses, one plugin you authored.** One lens carries what your company has already decided is off-limits. The other carries named attack classes and access-control analysis. You did not have to become a policy expert or a threat modeller. The plugin carries the expertise you fed it.
+- **Two lenses, one plugin you authored.** One lens carries what your company has already decided is off-limits. The other carries named attack classes and access-control analysis. You did not have to become a policy expert or a threat modeller; you had to know what mattered and dictate it.
 - **Prompt injection is a class, not a footnote.** Direct prompt injection arrives in the user's input. Indirect prompt injection arrives in a source the agent retrieves and reads. Both turn well-formed English into the attack surface. Classical perimeter does not see the attack because the attack is not malformed.
 - **"I can't tell" is a real answer.** Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
 - **Agent mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: WAF, VPC egress, mTLS, IAM-scoped service principals, audit. Loop design is additive. A CTO who concludes "I don't need to threat-model the network because we have agentic mitigations" ships a breach. The floor stays; the loop adds new surfaces above it.
@@ -60,9 +60,10 @@ The agent is scoped, the residual risk is named. But the output *inside* the sco
 - compendium-audited 2026-04-25 (check_writing, check_student_facing, check_strategy_tie_in, check_pedagogy)
 - sim-passed 2026-04-25 (mid-competent + opinionated-senior + fast-operator + security-skeptic + cohort-facilitator personas; APPROVE-WITH-TODOs)
 
-**Cohort-facilitator audit (2026-04-25):**
-- **Time math owed verification.** Lecture 10 + author exercise 25 + audit exercise 45 + Connections 5 + Debrief 5 + transitions ≈ 98 min. Fits 1h45 only if Phase 2 of the author exercise is two turns. Realistic for prepared cohort; tight for first run. Trim lecture to 8 if needed.
-- **Repetition trim:** *"the plugin carries the expertise you fed it"* / *"the plugin you authored is the expert"* lands three times across this module file + the two exercises. Cut the Key Concepts instance on next polish since the exercises earn it.
+**Cohort-facilitator audit (2026-04-25, fixes applied 2026-04-26):**
+- ~~Time math owed verification~~ — DONE. Lecture trimmed from 8–10 to a hard 8 (`lectures/practice-of-risk.md` time field plus a one-line budget note). Module budget: lecture 8 + author 25 + audit 45 + Connections 5 + Debrief 5 + transitions ≈ 96 min. Fits 1h45 with a 9-min slack buffer.
+- ~~Repetition trim~~ — DONE. Key Concept #2 rewritten to drop the *"carries the expertise you fed it"* closer; the exercises and prework still earn the line.
+- 90-min facilitator dry-run before first cohort. Specifically: Phase 3 install moment with one Cowork colleague + one CLI colleague; one colleague playing the freezing-SVP for Phase 1.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create → Analyze → Evaluate (authoring + applying + evaluating residual)

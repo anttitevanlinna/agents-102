@@ -20,36 +20,55 @@ Pick one. Every module of this training opens Claude Code against this repo. Wor
 
 CLI or desktop, your call. Open a new session with the repo as the working directory.
 
-## 3. Unzip the content folder (2 min)
+## 3. Get the content folder onto your laptop (3 min)
 
-Unzip `agents-102-content-agentic-engineering-101.zip` to `~/Documents/ae101-content/`. Stick to that path; the next step assumes it.
+You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths, same destination — pick whichever fits your network and trust posture.
 
-## 4. Point Claude at the content folder (1 min)
+**3.a — Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`. (If your work network blocks the download, your trainer can email it or share via SharePoint or USB. Same destination.)
 
-In the Claude Code session you just opened, run this slash command. No edits needed.
-
-```
-/add-dir ~/Documents/ae101-content
-```
-
-Session-only for now. Module 1 finishes by saving this to `.claude/settings.local.json` so future sessions load it automatically. (If you unzipped somewhere else, swap the path; the canonical location is what every later prompt assumes.)
-
-## 5. Hand the rest to Claude (12 min)
-
-Ask Claude to install the curated skills from the content folder, screen three candidate bugs, and confirm the repo is ready for Module 1.
+**3.b — Or have Claude download it for you.** Paste this prompt instead:
 
 **Prompt** *(Claude Code)*
 
 ```
-I'm starting a six-module training called Agentic Engineering 101. Before anything else: check your working directories. You should see a content folder added to this session via `/add-dir`. It contains `lectures/`, `exercises/`, `content/skills/`, and `reference/`. If you don't see it, stop and tell me to run `/add-dir <path>` first. If you do see it, confirm the absolute path back to me, then do three things:
+Download the AE101 content tarball to ~/Downloads. Use Bash:
 
-1. Install the training's curated skills as personal skills. Copy every folder under content/skills/ to ~/.claude/skills/ (preserve the per-skill folder structure, keep SKILL.md capitalisation). Confirm each skill folder now exists at ~/.claude/skills/<name>/SKILL.md. These are personal to me, auto-discovered by Claude Code in every session.
+  curl -fsSL <CONTENT_URL> -o ~/Downloads/agents-102-content.tar.gz
 
-2. Ask me for three trivial-and-visible candidate bugs in this repo. Screen them against these criteria: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
+Confirm the file exists and report its size.
+```
 
-3. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
+## 4. Hand the rest to Claude (12 min)
 
-Ask one question at a time if you need to, no preamble.
+Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1.
+
+**Prompt** *(Claude Code)*
+
+```
+I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
+
+1. Extract the content folder. Use Bash:
+
+     mkdir -p ~/Documents/ae101-content
+     tar xzf ~/Downloads/agents-102-content.tar.gz -C ~/Documents/ae101-content
+
+   Confirm the absolute path of ~/Documents/ae101-content back to me. The tarball expands to lectures/, exercises/, reference/, content/skills/.
+
+2. Install the curated skills as personal skills:
+
+     cp -r ~/Documents/ae101-content/content/skills/* ~/.claude/skills/
+
+   Confirm each skill folder now exists at ~/.claude/skills/<name>/SKILL.md. These are personal to me, auto-discovered by Claude Code in every session.
+
+3. Tell me to run this slash command in the Claude Code chat:
+
+     /add-dir ~/Documents/ae101-content
+
+   Session-only for now. Module 1 finishes by saving this to `.claude/settings.local.json` so future sessions load it automatically.
+
+4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
+
+5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
 ```
 
 
@@ -59,14 +78,15 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-26 (check_writing; check_student_facing #14 + #21; check_prompts; check_pedagogy §11)
+**Quality:** draft 2026-04-26 (phase structure changed in this cycle: Steps 3+4+5 collapsed to 3+4 with manual/agentic transport fork. Auto-fire `curriculum-pre-ship-audit` owed once build pipeline ships the tarball + `<CONTENT_URL>` substitution.)
 
 **Meta:**
-- **Runtime:** 30 min target. Steps 1–4 are crisp; step 5 is where time can expand if the student's repo is messy.
+- **Runtime:** 30 min target. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
 - **Delivery architecture:** student's repo is the working directory across every module. Prework adds the content folder via `/add-dir` (session-only). M1 Ex3 compound step promotes the path to `.claude/settings.local.json` under `additionalDirectories` so every subsequent session auto-loads it. Split kept clean: rules → `CLAUDE.local.md`; config → `settings.local.json`. Skills install to `~/.claude/skills/` (user-level), auto-discover in every session regardless of cwd.
-- **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The one exception is the `/add-dir` slash command, which is a UI primitive not a file-edit.
+- **Transport — two paths to the same disk state.** Step 3 forks: 3.a manual download from `<CONTENT_URL>` to `~/Downloads/agents-102-content.tar.gz`, 3.b Claude downloads via Bash `curl`. Step 4 is identical in both paths — agent extracts the tarball from `~/Downloads/`, installs skills, screens bugs. Cross-platform via Claude Code's Bash tool: macOS/Linux native, Windows via Git Bash (which Claude Code requires). Confirmed against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs (Win10 1803+ ships native `curl.exe` and `tar.exe`). Manual path covers IT-locked environments where outbound to the customer URL is blocked — trainer ships tarball via email / SharePoint / USB.
+- **`<CONTENT_URL>` placeholder is build-time substituted** by `scripts/build-workbook.js` per-customer (e.g., `https://agents102.bosser.consulting/clients/acme/content.tar.gz`). Source markdown carries the literal placeholder so the substitution is auditable; rendered workbook never shows the placeholder. Rule-compliance note: this is the explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build-time substitution, not student fill-in.
+- **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The exceptions are the manual download (3.a) and the `/add-dir` slash command, both UI/transport primitives not file-edits.
 - **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk + added to the session via `/add-dir`, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback TBD. Don't absorb install debugging into M1 time.
-- **Delivery:** classroom cohorts get the zip link via email + Slack/Teams ahead of Day 1. Self-study students download from the site.
 
-**Packaging:** `scripts/build-ae101-content-zip.sh` builds `agents-102-content-agentic-engineering-101.zip` from repo. Run before each cohort; host per customer.
+**Packaging:** `scripts/build-ae101-content-tarball.sh` (TODO — rename of existing `.zip` script to produce `.tar.gz`) builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `content/skills/`. `scripts/build-workbook.js` copies the tarball into `site/clients/<customer>/content.tar.gz` and substitutes `<CONTENT_URL>` at workbook-render time.

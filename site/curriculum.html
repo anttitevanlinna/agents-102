@@ -23,23 +23,26 @@
         <article class="module" id="module-body">Loading…</article>
     </main>
 
-    <footer class="curriculum-footer">
-        <p>
-            <strong>© 2026 Bosser Oy.</strong> All rights reserved.
-            Agents 102 is proprietary training material. As an enrolled student you have a personal usage license —
-            you may learn from this, run the exercises, own what you build, and apply it at your own workplace.
-            You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training.
-            See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a>
-            · <a href="https://bosser.consulting">bosser.consulting</a>
-        </p>
-    </footer>
+    <footer class="curriculum-footer" id="curriculum-footer-mount"></footer>
 
     <script>
         (function () {
             // TRAININGS registry + helpers live in layouts/curriculum.js
-            // (shared with workbook builds via UMD).
+            // (shared with workbook builds via UMD). Aliased here at the top
+            // of the IIFE so var-hoisting doesn't bite call sites further down.
             var TRAININGS = CurriculumRuntime.TRAININGS;
             var DEFAULT_TRAINING = CurriculumRuntime.DEFAULT_TRAINING;
+            var cardHtml = CurriculumRuntime.cardHtml;
+            var simpleRowHtml = CurriculumRuntime.simpleRowHtml;
+            var renderAccents = CurriculumRuntime.renderAccents;
+            var extractBigIdea = CurriculumRuntime.extractBigIdea;
+            var stripMaintainerTail = CurriculumRuntime.stripMaintainerTail;
+
+            // Fill the legal footer from shared source.
+            (function () {
+                var mount = document.getElementById('curriculum-footer-mount');
+                if (mount) mount.innerHTML = CurriculumRuntime.FOOTER_INNER;
+            })();
 
             var params       = new URLSearchParams(window.location.search);
             var trainingKey  = params.get('training') || DEFAULT_TRAINING;
@@ -173,7 +176,7 @@
                 if (slug) directFileParent = slug;
                 return md;
             }
-            var stripMaintainerTail = CurriculumRuntime.stripMaintainerTail;
+            // (stripMaintainerTail aliased at top of IIFE.)
 
             // Standalone exercise / lecture pages get the same phase wrapper they
             // wear when embedded inside a parent module — so the same content reads
@@ -417,11 +420,7 @@
                 hydrateBigIdeas(t);
             }
 
-            // cardHtml lives in layouts/curriculum.js (shared). SPA omits bigIdea
-            // so the slot stays empty; hydrateBigIdeas fills it via fetch.
-            var cardHtml = CurriculumRuntime.cardHtml;
-
-            var simpleRowHtml = CurriculumRuntime.simpleRowHtml;
+            // (cardHtml + simpleRowHtml aliased at top of IIFE.)
 
             function hydrateBigIdeas(t) {
                 var items = [];
@@ -444,10 +443,7 @@
                 });
             }
 
-            // Extract the first non-empty line under "## Big Idea" (up to the next heading).
-            var extractBigIdea = CurriculumRuntime.extractBigIdea;
-
-            var renderAccents = CurriculumRuntime.renderAccents;
+            // (extractBigIdea + renderAccents aliased at top of IIFE.)
 
             // ============================================================
             // Prompt block decoration

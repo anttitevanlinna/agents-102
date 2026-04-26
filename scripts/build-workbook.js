@@ -154,7 +154,8 @@ ${buildToc(trainingKey, t)}
     .filter(Boolean)
     .join('\n\n');
 
-  return topNav + '\n<main>\n' + cover + '\n' + modulesHtml + '\n</main>\n';
+  // Footer markup lives in CR.renderFooter (shared with SPA — single source).
+  return topNav + '\n<main>\n' + cover + '\n' + modulesHtml + '\n</main>\n' + CR.renderFooter() + '\n';
 }
 
 // ── Inline assets ───────────────────────────────────────────────────────────

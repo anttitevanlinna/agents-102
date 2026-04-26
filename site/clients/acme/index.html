@@ -1704,25 +1704,44 @@ body.workbook { padding-top: 3rem; }
 <p>Pick one. Every module of this training opens Claude Code against this repo. Worktrees fine. Every rule, every memory, every skill you build over six weeks lands here.</p>
 <h2>2. Start a new Claude Code session in THAT repo (2 min)</h2>
 <p>CLI or desktop, your call. Open a new session with the repo as the working directory.</p>
-<h2>3. Unzip the content folder (2 min)</h2>
-<p>Unzip <code>agents-102-content-agentic-engineering-101.zip</code> to <code>~/Documents/ae101-content/</code>. Stick to that path; the next step assumes it.</p>
-<h2>4. Point Claude at the content folder (1 min)</h2>
-<p>In the Claude Code session you just opened, run this slash command. No edits needed.</p>
-<pre><code>/add-dir ~/Documents/ae101-content
-</code></pre>
-<p>Session-only for now. Module 1 finishes by saving this to <code>.claude/settings.local.json</code> so future sessions load it automatically. (If you unzipped somewhere else, swap the path; the canonical location is what every later prompt assumes.)</p>
-<h2>5. Hand the rest to Claude (12 min)</h2>
-<p>Ask Claude to install the curated skills from the content folder, screen three candidate bugs, and confirm the repo is ready for Module 1.</p>
+<h2>3. Get the content folder onto your laptop (3 min)</h2>
+<p>You need <code>agents-102-content.tar.gz</code> saved to <code>~/Downloads/</code>. Two paths, same destination — pick whichever fits your network and trust posture.</p>
+<p><strong>3.a — Download from the cohort URL.</strong> Open <CONTENT_URL> in your browser. Save to <code>~/Downloads/</code>. (If your work network blocks the download, your trainer can email it or share via SharePoint or USB. Same destination.)</p>
+<p><strong>3.b — Or have Claude download it for you.</strong> Paste this prompt instead:</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>I&#39;m starting a six-module training called Agentic Engineering 101. Before anything else: check your working directories. You should see a content folder added to this session via `/add-dir`. It contains `lectures/`, `exercises/`, `content/skills/`, and `reference/`. If you don&#39;t see it, stop and tell me to run `/add-dir &lt;path&gt;` first. If you do see it, confirm the absolute path back to me, then do three things:
+<pre><code>Download the AE101 content tarball to ~/Downloads. Use Bash:
 
-1. Install the training&#39;s curated skills as personal skills. Copy every folder under content/skills/ to ~/.claude/skills/ (preserve the per-skill folder structure, keep SKILL.md capitalisation). Confirm each skill folder now exists at ~/.claude/skills/&lt;name&gt;/SKILL.md. These are personal to me, auto-discovered by Claude Code in every session.
+  curl -fsSL &lt;CONTENT_URL&gt; -o ~/Downloads/agents-102-content.tar.gz
 
-2. Ask me for three trivial-and-visible candidate bugs in this repo. Screen them against these criteria: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
+Confirm the file exists and report its size.
+</code></pre>
+<h2>4. Hand the rest to Claude (12 min)</h2>
+<p>Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I&#39;m starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
 
-3. Once I&#39;ve picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
+1. Extract the content folder. Use Bash:
 
-Ask one question at a time if you need to, no preamble.
+     mkdir -p ~/Documents/ae101-content
+     tar xzf ~/Downloads/agents-102-content.tar.gz -C ~/Documents/ae101-content
+
+   Confirm the absolute path of ~/Documents/ae101-content back to me. The tarball expands to lectures/, exercises/, reference/, content/skills/.
+
+2. Install the curated skills as personal skills:
+
+     cp -r ~/Documents/ae101-content/content/skills/* ~/.claude/skills/
+
+   Confirm each skill folder now exists at ~/.claude/skills/&lt;name&gt;/SKILL.md. These are personal to me, auto-discovered by Claude Code in every session.
+
+3. Tell me to run this slash command in the Claude Code chat:
+
+     /add-dir ~/Documents/ae101-content
+
+   Session-only for now. Module 1 finishes by saving this to `.claude/settings.local.json` so future sessions load it automatically.
+
+4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
+
+5. Once I&#39;ve picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
 </code></pre>
 <h2>Bring to Module 1</h2>
 <p>Connections question. We&#39;ll ask at the opening: <em>what&#39;s one trick you figured out with Claude Code that nobody taught you?</em> Bring one. Doesn&#39;t have to be big. No trick? Bring a frustration instead.</p>
@@ -2965,6 +2984,7 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 
 </section>
 </main>
+<footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
 
 <script>// Shared curriculum runtime — single source of truth for both the SPA
 // (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
@@ -3025,6 +3045,22 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
     };
 
     var DEFAULT_TRAINING = 'bootstrap';
+
+    // Legal footer — single source for SPA + workbook. SPA fills its empty
+    // <footer class="curriculum-footer"> at boot via innerHTML; workbook
+    // emits the wrapped form via renderFooter() at build time.
+    var FOOTER_INNER = '<p>' +
+        '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
+        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
+        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
+        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
+        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> ' +
+        '&middot; <a href="https://bosser.consulting">bosser.consulting</a>' +
+        '</p>';
+
+    function renderFooter() {
+        return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
 
     // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
@@ -3338,6 +3374,8 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
         CROSS_DOC_LINK_RE: CROSS_DOC_LINK_RE,
+        FOOTER_INNER: FOOTER_INNER,
+        renderFooter: renderFooter,
 
         // Pure (Node-safe)
         esc: esc,

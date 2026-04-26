@@ -58,6 +58,22 @@
 
     var DEFAULT_TRAINING = 'bootstrap';
 
+    // Legal footer — single source for SPA + workbook. SPA fills its empty
+    // <footer class="curriculum-footer"> at boot via innerHTML; workbook
+    // emits the wrapped form via renderFooter() at build time.
+    var FOOTER_INNER = '<p>' +
+        '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
+        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
+        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
+        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
+        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> ' +
+        '&middot; <a href="https://bosser.consulting">bosser.consulting</a>' +
+        '</p>';
+
+    function renderFooter() {
+        return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
+
     // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
     var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
@@ -370,6 +386,8 @@
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
         CROSS_DOC_LINK_RE: CROSS_DOC_LINK_RE,
+        FOOTER_INNER: FOOTER_INNER,
+        renderFooter: renderFooter,
 
         // Pure (Node-safe)
         esc: esc,

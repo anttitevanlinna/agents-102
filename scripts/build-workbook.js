@@ -133,7 +133,7 @@ function buildToc(t) {
   const items = t.modules
     .map(m => `      <li><a href="#${m.slug}">${escHtml(m.title)}</a></li>`)
     .join('\n');
-  return `    <ol class="toc">\n${items}\n    </ol>`;
+  return `    <ol>\n${items}\n    </ol>`;
 }
 
 function buildBody(trainingKey, customer) {
@@ -141,13 +141,13 @@ function buildBody(trainingKey, customer) {
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
 
   const cover = `
-<header class="cover">
-  <p class="cover-eyebrow">${escHtml(customer)} workbook</p>
+<header class="workbook-cover">
+  <p class="eyebrow">${escHtml(customer)} workbook</p>
   <h1 class="cover-title">${escHtml(t.label)}</h1>
-  <p class="cover-lede">${escHtml(t.lede)}</p>
+  <p class="lede">${escHtml(t.lede)}</p>
 </header>
 
-<nav class="toc-wrap">
+<nav class="workbook-toc">
   <h2>Contents</h2>
 ${buildToc(t)}
 </nav>
@@ -162,160 +162,27 @@ ${buildToc(t)}
     })
     .join('\n\n');
 
-  return cover + '\n' + modules;
+  // Wrap modules in <main> so SPA's main-scoped styles apply.
+  return cover + '\n<main>\n' + modules + '\n</main>\n';
 }
 
-const STYLES = `
-:root {
-  --ink: #1a1a1a;
-  --ink-muted: #555;
-  --bg: #fffefb;
-  --accent: #8b1a1a;
-  --rule: #d8d4cc;
-  --kicker: #888;
-  --phase-bg: #f6f3ee;
-  --phase-rule: #c4b9a8;
-  --max: 760px;
-}
-
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--ink);
-  background: var(--bg);
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 3rem 2rem 6rem;
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.25;
-  margin-top: 1.8em;
-  margin-bottom: 0.6em;
-}
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.3em; }
-h3 { font-size: 1.2rem; }
-h4 { font-size: 1.05rem; }
-
-p, ul, ol, blockquote { margin: 0.8em 0; }
-ul, ol { padding-left: 1.5em; }
-li { margin: 0.3em 0; }
-
-a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
-a:hover { color: var(--ink); }
-
-code {
-  font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9em;
-  background: #f1ede5;
-  padding: 0.1em 0.4em;
-  border-radius: 3px;
-}
-pre {
-  background: #f1ede5;
-  padding: 1em;
-  border-radius: 6px;
-  overflow-x: auto;
-  font-size: 0.85em;
-  line-height: 1.5;
-}
-pre code { background: none; padding: 0; }
-
-blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 1em;
-  color: var(--ink-muted);
-  font-style: italic;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 2em 0;
-}
-
-.cover {
-  text-align: center;
-  padding: 4rem 0 2rem;
-  border-bottom: 1px solid var(--rule);
-}
-.cover-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
-  color: var(--ink-muted);
-  margin: 0;
-}
-.cover-title {
-  font-size: 3rem;
-  margin: 0.5rem 0;
-  letter-spacing: -0.02em;
-}
-.cover-lede {
-  font-size: 1.15rem;
-  color: var(--ink-muted);
-  font-style: italic;
-  margin: 0;
-}
-
-.toc-wrap {
-  margin: 3rem 0;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.toc-wrap h2 { margin-top: 0; border: none; padding: 0; }
-.toc { list-style: decimal; padding-left: 2em; margin: 0; }
-.toc li { margin: 0.4em 0; }
-
-.module {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 2px solid var(--rule);
-}
-
-.phase {
-  background: var(--phase-bg);
-  border-left: 4px solid var(--phase-rule);
-  padding: 1.5rem 1.5rem 1rem;
-  margin: 1.5rem 0;
-  border-radius: 0 4px 4px 0;
-}
-.phase-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  color: var(--kicker);
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-.phase h1, .phase h2 { font-size: 1.25rem; margin-top: 0.2em; border: none; padding: 0; }
-
-@media print {
-  body { max-width: none; padding: 1cm; font-size: 11pt; }
-  .module { page-break-before: always; }
-  .cover { page-break-after: always; }
-  a { color: var(--ink); border-bottom: none; }
-  pre, code { font-size: 9pt; }
-  @page { margin: 2cm 1.5cm; }
-}
-`;
+// Read curriculum.css verbatim. Single source of truth — workbook-specific
+// rules (cover, TOC, print) live in that file too, scoped via .workbook-*
+// classes that the SPA never emits.
+const SPA_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.css'), 'utf8');
 
 function template(title, content) {
+  // body.runtime-cli matches the SPA's default; CSS hides rt-cowork / rt-desktop
+  // spans for Bootstrap's dual-runtime files. Workbook can't toggle.
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escHtml(title)}</title>
-<style>${STYLES}</style>
+<style>${SPA_CSS}</style>
 </head>
-<body>
+<body class="runtime-cli">
 ${content}
 </body>
 </html>

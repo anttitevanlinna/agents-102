@@ -4,158 +4,1574 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agentic Engineering 101 — acme</title>
-<style>
+<style>/* Curriculum viewer — Editorial theme.
+   Warm-ink dark header + cream paper body.
+   Roboto Slab (display, light) + Inter (body) + EB Garamond (italic accents).
+   Scoped to curriculum.html — does not affect the rest of the site. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@200;300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
 :root {
-  --ink: #1a1a1a;
-  --ink-muted: #555;
-  --bg: #fffefb;
-  --accent: #8b1a1a;
-  --rule: #d8d4cc;
-  --kicker: #888;
-  --phase-bg: #f6f3ee;
-  --phase-rule: #c4b9a8;
-  --max: 760px;
+    --bg:          #efe6d2;   /* cream paper */
+    --bg-2:        #e6dcc4;
+    --bg-3:        #ddd2b6;
+    --fg:          #1f1a13;
+    --fg-2:        #4a4234;
+    --fg-3:        #786c56;
+    --fg-4:        #a89a7f;
+    --line:        #d6c8a3;
+    --line-2:      #c5b68d;
+    --accent:      #8a3a2a;   /* oxblood */
+    --accent-2:    #a8473a;
+    --accent-soft: rgba(138,58,42,.08);
+    --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
+    --ink:         #14110d;
+    --ink-text:    #f4ecdb;
+    --ink-text-2:  #c2b8a4;
+    --ink-muted:   #8a7e6c;
+    --ink-line:    #38301f;
+    --code-bg:     #e6dcc4;
+
+    --font-display: 'Roboto Slab', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-serif:   'EB Garamond', Georgia, serif;
+    --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    overflow-x: clip;
+}
+
 body {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--ink);
-  background: var(--bg);
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 3rem 2rem 6rem;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Flex column so the footer hugs content instead of leaving a tract of cream
+       below short pages (training picker, error states, single-screen modules). */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.25;
-  margin-top: 1.8em;
-  margin-bottom: 0.6em;
-}
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.3em; }
-h3 { font-size: 1.2rem; }
-h4 { font-size: 1.05rem; }
+main { flex: 1 0 auto; }
 
-p, ul, ol, blockquote { margin: 0.8em 0; }
-ul, ol { padding-left: 1.5em; }
-li { margin: 0.3em 0; }
+::selection { background: var(--accent); color: var(--ink-text); }
 
-a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
-a:hover { color: var(--ink); }
+/* ── Header: dark ink bar, primary contrast moment ── */
 
-code {
-  font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9em;
-  background: #f1ede5;
-  padding: 0.1em 0.4em;
-  border-radius: 3px;
-}
-pre {
-  background: #f1ede5;
-  padding: 1em;
-  border-radius: 6px;
-  overflow-x: auto;
-  font-size: 0.85em;
-  line-height: 1.5;
-}
-pre code { background: none; padding: 0; }
-
-blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 1em;
-  color: var(--ink-muted);
-  font-style: italic;
+.curriculum-header {
+    background: var(--ink);
+    border-bottom: 1px solid var(--ink-line);
+    padding: 1.1rem 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-hr {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 2em 0;
+.curriculum-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 120% at 20% 50%, rgba(201,121,66,.08), transparent 70%),
+        radial-gradient(ellipse 40% 120% at 85% 50%, rgba(201,121,66,.05), transparent 70%);
+    pointer-events: none;
 }
 
-.cover {
-  text-align: center;
-  padding: 4rem 0 2rem;
-  border-bottom: 1px solid var(--rule);
-}
-.cover-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
-  color: var(--ink-muted);
-  margin: 0;
-}
-.cover-title {
-  font-size: 3rem;
-  margin: 0.5rem 0;
-  letter-spacing: -0.02em;
-}
-.cover-lede {
-  font-size: 1.15rem;
-  color: var(--ink-muted);
-  font-style: italic;
-  margin: 0;
+.curriculum-header > * { position: relative; }
+
+.curriculum-home {
+    color: var(--ink-text);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.05rem;
+    letter-spacing: -.005em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-.toc-wrap {
-  margin: 3rem 0;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+.curriculum-home::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent-2);
+    border-radius: 50%;
+    display: inline-block;
 }
-.toc-wrap h2 { margin-top: 0; border: none; padding: 0; }
-.toc { list-style: decimal; padding-left: 2em; margin: 0; }
-.toc li { margin: 0.4em 0; }
+
+.curriculum-home:hover { color: var(--accent-2); }
+
+/* ── Runtime switcher (Bootstrap only) ──
+   Bootstrap is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+   pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
+   phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
+   the body.runtime-* class hides the inactive variant.
+
+   Verified facts driving the design — see curriculum/reference/claude-code-for-engineers.md
+   § Claude Cowork — same engine, different surface. */
+
+.runtime-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: var(--ink-text);
+}
+
+.runtime-switcher[hidden] { display: none; }
+
+.runtime-switcher-label {
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.runtime-switcher-btn {
+    background: transparent;
+    color: var(--ink-text);
+    border: 1px solid var(--ink-line);
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+    font: inherit;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.runtime-switcher-btn:hover { opacity: 1; }
+
+.runtime-switcher-btn.is-active {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    color: var(--ink);
+    opacity: 1;
+}
+
+/* Hide the inactive runtime's prose. Three modes, four classes:
+     .rt-cli      visible only when runtime is cli
+     .rt-desktop  visible only when runtime is desktop
+     .rt-cowork   visible only when runtime is cowork
+     .rt-code     visible when runtime is cli OR desktop (any Claude Code surface)
+   Authors use the broad .rt-code for the common Code-vs-Cowork fork (plan mode,
+   subagent terminology, four-session pattern). Use the narrow .rt-cli / .rt-desktop
+   only where install affordances actually differ (M4, M7).
+
+   Both inline (<span>) and block (<div>) wrappers respond to the same classes —
+   wrap whole prompt blocks in <div class="rt-…"> when the prompt body itself
+   forks (fenced-code can't carry inline spans inside, so the wrap goes around). */
+
+body.runtime-cli     .rt-desktop,
+body.runtime-cli     .rt-cowork  { display: none; }
+
+body.runtime-desktop .rt-cli,
+body.runtime-desktop .rt-cowork  { display: none; }
+
+body.runtime-cowork  .rt-cli,
+body.runtime-cowork  .rt-desktop,
+body.runtime-cowork  .rt-code    { display: none; }
+
+/* ── Footer: license notice, visible on every module page ── */
+
+.curriculum-footer {
+    background: var(--ink);
+    border-top: 1px solid var(--ink-line);
+    color: var(--ink-text);
+    padding: 1.4rem 2rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+.curriculum-footer p {
+    max-width: 62rem;
+    margin: 0 auto;
+    opacity: 0.78;
+}
+
+.curriculum-footer strong {
+    color: var(--ink-text);
+    opacity: 1;
+    font-weight: 500;
+}
+
+.curriculum-footer a {
+    color: var(--accent-2);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.curriculum-footer a:hover {
+    border-bottom-color: var(--accent-2);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 1.5rem 7rem;
+    position: relative;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 420px;
+    background:
+        radial-gradient(ellipse 60% 70% at 25% 25%, rgba(138,58,42,.045), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(201,121,66,.035), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
 
 .module {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 2px solid var(--rule);
+    width: 100%;
+    max-width: 40em;
+    position: relative;
+    z-index: 1;
 }
 
-.phase {
-  background: var(--phase-bg);
-  border-left: 4px solid var(--phase-rule);
-  padding: 1.5rem 1.5rem 1rem;
-  margin: 1.5rem 0;
-  border-radius: 0 4px 4px 0;
+/* ── Module body typography ── */
+
+.module h1 {
+    font-family: var(--font-display);
+    font-weight: 200;
+    font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+    line-height: .95;
+    letter-spacing: -.025em;
+    margin: 0 0 2rem;
+    color: var(--fg);
+    text-wrap: balance;
+    position: relative;
 }
-.phase-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  color: var(--kicker);
-  font-weight: bold;
-  margin-bottom: 0.5em;
+
+.module h1::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--accent);
+    margin-top: 1.75rem;
 }
-.phase h1, .phase h2 { font-size: 1.25rem; margin-top: 0.2em; border: none; padding: 0; }
+
+.module h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -.015em;
+    margin: 4rem 0 1.25rem;
+    padding-top: 2rem;
+    color: var(--fg);
+    position: relative;
+}
+
+/* Editorial section mark — small italic amber mark above each h2 */
+.module h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--accent);
+}
+
+.module h3 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--accent);
+    letter-spacing: .005em;
+}
+
+.module p { margin: 0 0 1.15rem; text-wrap: pretty; }
+
+/* Drop cap on the opening paragraph after the module title */
+.module h1 + p::first-letter {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 3.8rem;
+    line-height: .8;
+    float: left;
+    padding: 0.3rem 0.55rem 0 0;
+    margin-top: 0.1rem;
+}
+
+/* Opening paragraph sets a lede tone */
+.module h1 + p {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--fg-2);
+    min-height: 3.5rem;
+}
+
+/* First paragraph after an h2 gets the italic serif lede treatment —
+   creates a visible tempo shift at every section start */
+.module h2 + p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+    max-width: 36em;
+}
+
+/* A bold opener at the start of a paragraph reads as a lead-in label */
+.module p > strong:first-child {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* …except when the bolded text is the whole paragraph (list-style key:value).
+   Leave those alone — otherwise Meta-style bullet definitions go all oxblood. */
+.module li > strong:first-child {
+    color: var(--fg);
+}
+
+.module ul, .module ol {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.module li { margin: 0.4rem 0; }
+.module li > ul, .module li > ol { margin: 0.4rem 0; }
+.module ul li::marker { color: var(--accent); }
+
+.module a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.15s;
+}
+
+.module a:hover { border-bottom-color: var(--accent); }
+
+/* Headings that are links (included exercises/lectures). */
+.module h1 a, .module h2 a, .module h3 a {
+    color: inherit;
+    border-bottom: 2px solid transparent;
+}
+.module h1 a:hover, .module h2 a:hover, .module h3 a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.module strong { font-weight: 600; color: var(--fg); }
+.module em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.module code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 0.12em 0.4em;
+    border-radius: 3px;
+}
+
+.module pre {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.88em;
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+}
+
+.module pre code {
+    background: none;
+    color: var(--fg);
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+}
+
+/* ----------------------------------------------------------------
+   Prompt blocks + copy buttons
+   ----------------------------------------------------------------
+   Author markup:
+     **Prompt** *(Claude Code)*
+
+     ```
+     <prompt content>
+     ```
+   The renderer wraps the label paragraph + the following <pre> in
+   .prompt-block, surfaces destination + optional context as a header
+   chip, and adds a Copy button to the <pre>. Every other <pre> in
+   the document also gets a Copy button (universal affordance). */
+
+.module .prompt-block {
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--line-2);
+    border-radius: 5px;
+    background: var(--bg-2);
+    overflow: hidden;
+}
+
+.module .prompt-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.4rem 0.55rem 0.4rem 0.95rem;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--line-2);
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+.module .prompt-block__label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.module .prompt-block__arrow {
+    color: var(--fg-3);
+}
+
+.module .prompt-block__dest {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.module .prompt-block__context {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-2);
+    font-size: 0.92em;
+}
+
+.module .prompt-block__context::before {
+    content: "·";
+    margin-right: 0.5rem;
+    color: var(--fg-4);
+}
+
+.module .prompt-block .prompt-block__pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--bg-2);
+}
+
+/* Copy button — two flavours.
+   1. In-header (.copy-btn--in-header): mounted into the prompt-block header,
+      pushed to the right edge. Always visible, no overlay. This is the prompt
+      case (the canonical copy affordance for the training).
+   2. Overlay (.copy-btn, default): absolute-positioned in the top-right of a
+      bare <pre>. Used only for standalone code snippets that have no header
+      bar. Hover-emerges so it doesn't compete with code reading. */
+
+.module pre {
+    position: relative;
+}
+
+.module .copy-btn {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.module .copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.module .copy-btn--copied,
+.module .copy-btn--copied:hover {
+    opacity: 1;
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Overlay flavour on standalone <pre>. */
+.module pre > .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0.55;
+    z-index: 2;
+}
+
+.module pre:hover > .copy-btn,
+.module pre > .copy-btn:focus-visible {
+    opacity: 1;
+}
+
+/* In-header flavour — pushed to the right edge of the header row. */
+.module .prompt-block__header .copy-btn--in-header {
+    margin-left: auto;
+}
+
+/* Inside ink-dark exercise phases — invert chrome to read on dark bg.
+   Header sits visibly above body (~9% vs ~3% cream tint) so the destination
+   chip and copy button read as a separate row. Border lifted to ink-text
+   alpha so the widget has a real frame, not a 1px shadow. */
+.phase--exercise .prompt-block {
+    background: rgba(244,236,219,.03);
+    border-color: rgba(244,236,219,.18);
+}
+
+.phase--exercise .prompt-block__header {
+    background: rgba(244,236,219,.09);
+    border-bottom-color: rgba(244,236,219,.14);
+}
+
+/* Label drops slightly so the destination ("Claude Code", "Builder Claude")
+   wins the header. Student needs to glance and know where this paste goes. */
+.phase--exercise .prompt-block__label {
+    color: var(--warm);
+    font-size: 0.72rem;
+}
+.phase--exercise .prompt-block__arrow { color: var(--ink-muted); }
+.phase--exercise .prompt-block__dest {
+    color: var(--ink-text);
+    font-size: 0.84rem;
+}
+.phase--exercise .prompt-block__context { color: var(--ink-text-2); }
+.phase--exercise .prompt-block__context::before { color: var(--ink-muted); }
+.phase--exercise .prompt-block .prompt-block__pre {
+    background: rgba(244,236,219,.03);
+}
+
+/* Copy button reads as a button on dark — bright enough plate, real text
+   colour, real border. Was three near-blacks stacked; now it sits forward. */
+.phase--exercise .copy-btn {
+    background: rgba(244,236,219,.10);
+    border-color: rgba(244,236,219,.22);
+    color: var(--ink-text);
+}
+
+.phase--exercise .copy-btn:hover {
+    color: var(--warm);
+    border-color: var(--warm);
+    background: rgba(201,121,66,.12);
+}
+
+.phase--exercise .copy-btn--copied,
+.phase--exercise .copy-btn--copied:hover {
+    background: var(--warm);
+    border-color: var(--warm);
+    color: var(--ink);
+}
 
 @media print {
-  body { max-width: none; padding: 1cm; font-size: 11pt; }
-  .module { page-break-before: always; }
-  .cover { page-break-after: always; }
-  a { color: var(--ink); border-bottom: none; }
-  pre, code { font-size: 9pt; }
-  @page { margin: 2cm 1.5cm; }
+    .module .copy-btn { display: none; }
+}
+
+.module blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 2.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    color: var(--fg);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    position: relative;
+}
+
+.module blockquote::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 0;
+    width: 3px;
+    height: 1rem;
+    background: var(--warm);
+}
+
+.module blockquote p { margin: 0 0 0.5rem 0; }
+.module blockquote p:last-child { margin-bottom: 0; }
+
+/* Attribution (last paragraph with em dash convention) */
+.module blockquote p + p:last-child {
+    margin-top: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    color: var(--fg-3);
+}
+
+/* Markdown `---` rules become pure whitespace inside the module body —
+   the section-mark above each h2 already does the visual separation work,
+   and a hairline rule on top of that reads as ceremony. */
+.module hr {
+    border: none;
+    margin: 2.5rem 0;
+    height: 0;
+}
+
+.module table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 1.25rem;
+    font-size: 0.95em;
+}
+
+.module th, .module td {
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.module th {
+    background: var(--bg-2);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+/* ── Index page ── */
+
+.module .lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+    margin: 0 0 3.5rem;
+    text-wrap: pretty;
+    max-width: 34em;
+}
+
+.index-heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+    text-transform: none;
+    color: var(--accent);
+    margin: 3.5rem 0 1rem;
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.index-heading::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--warm);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.index-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Training hero (index page only) ── */
+
+.training-hero {
+    margin-bottom: 4rem;
+}
+
+.training-eyebrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.training-eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: var(--warm);
+}
+
+.training-hero .lede .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--warm) 50%, var(--arctic) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+}
+
+.training-hero h1 {
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    line-height: .9;
+    margin: 0 0 1.75rem;
+    letter-spacing: -.035em;
+}
+
+.training-hero h1::after { display: none; }
+
+.training-hero h1 .sep {
+    color: var(--accent);
+    font-weight: 400;
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+.training-hero .lede {
+    margin: 0;
+    max-width: 32em;
+}
+
+/* ── Module cards (index — primary modules + prework) ── */
+
+.module-list.index-modules,
+.module-list.index-prework {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+/* Single-column editorial rows — each row gets the big-idea italic line
+   as the main scan target, not a 2-up grid where titles dominate. */
+.module-list.index-modules { grid-template-columns: 1fr; }
+
+.module-list.index-modules > li,
+.module-list.index-prework > li {
+    margin: 0;
+    border: none;
+    background: var(--bg-2);
+    position: relative;
+    transition: background .2s;
+}
+
+.module-list.index-modules > li:hover,
+.module-list.index-prework > li:hover {
+    background: #e0d5b8;
+}
+
+.module-list.index-modules > li::before,
+.module-list.index-prework > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+
+.module-list.index-modules > li:hover::before,
+.module-list.index-prework > li:hover::before {
+    transform: scaleX(1);
+}
+
+.module-list.index-modules > li > a,
+.module-list.index-prework > li > a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 1.75rem;
+    align-items: start;
+    padding: 1.85rem 2rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.module-list.index-modules .module-n,
+.module-list.index-prework .module-n {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 3rem;
+    letter-spacing: -.02em;
+    line-height: .85;
+    align-self: start;
+    margin-top: 4px;
+}
+
+.module-list.index-modules .module-body,
+.module-list.index-prework .module-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
+.module-list.index-modules .module-title,
+.module-list.index-prework .module-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.45rem;
+    letter-spacing: -.015em;
+    line-height: 1.15;
+    color: var(--fg);
+    text-wrap: balance;
+}
+
+.module-list.index-modules .module-big,
+.module-list.index-prework .module-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+    text-wrap: pretty;
+    max-width: 38em;
+}
+
+.module-list.index-modules .module-big:empty,
+.module-list.index-prework .module-big:empty {
+    min-height: 1em;
+}
+
+.module-list.index-modules .module-arrow,
+.module-list.index-prework .module-arrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    align-self: start;
+    margin-top: 6px;
+    transition: color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+
+.module-list.index-modules > li:hover .module-arrow,
+.module-list.index-prework > li:hover .module-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ── Supplementary & reference rows (quieter) ── */
+
+.index-supplementaries,
+.index-references {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.index-supplementaries > li,
+.index-references > li {
+    margin: 0;
+    border: none;
+    background: var(--bg-2);
+    transition: background .2s;
+}
+
+.index-supplementaries > li:hover,
+.index-references > li:hover { background: #e0d5b8; }
+
+.index-supplementaries > li > a,
+.index-references > li > a {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.75rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.supp-kind {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    flex: 0 0 6rem;
+}
+
+.supp-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: -.005em;
+    color: var(--fg);
+    flex: 1;
+}
+
+.index-supplementaries .module-arrow,
+.index-references .module-arrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-4);
+    font-size: 1.1rem;
+    margin-left: auto;
+    transition: color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+
+.index-supplementaries > li:hover .module-arrow,
+.index-references > li:hover .module-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ============================================================================
+   Phase blocks — lecture vs. exercise get distinct backgrounds.
+   Creates scroll rhythm inside a module without touching markdown content.
+   ============================================================================ */
+
+.phase {
+    /* Full-bleed: escape the 40em reading column, extend to the viewport edges.
+       Reading width inside is preserved via padding that centers to a 40em column. */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 4.5rem max(1.5rem, calc((100vw - 40em) / 2));
+    margin-top: 4.5rem;
+    margin-bottom: 4.5rem;
+    position: relative;
+    border: none;
+    border-radius: 0;
+}
+
+.phase-kicker {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: .02em;
+    text-transform: lowercase;
+    margin: 0 0 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.phase-kicker::before {
+    content: "";
+    width: 2.75rem;
+    height: 2px;
+    background: currentColor;
+    display: inline-block;
+}
+
+/* ── Lecture: warmer paper tone, subtle shift ── */
+.phase--lecture {
+    background: var(--bg-3);
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+}
+.phase--lecture .phase-kicker { color: var(--warm); }
+
+/* Lecture h1 (the linkified title) sits tighter inside the panel */
+.phase--lecture > h1:first-of-type,
+.phase--lecture > h1 { margin-top: 0.5rem; }
+
+/* ── Exercise: black ink inset — primary rhythm break ── */
+.phase--exercise {
+    background: var(--ink);
+    color: var(--ink-text-2);
+    border-top: 1px solid var(--ink-line);
+    border-bottom: 1px solid var(--ink-line);
+}
+
+.phase--exercise .phase-kicker { color: var(--warm); }
+
+.phase--exercise h1,
+.phase--exercise h2,
+.phase--exercise h3 { color: var(--ink-text); }
+
+.phase--exercise h3 {
+    color: var(--warm);
+}
+
+.phase--exercise h2 {
+    border-top: none;
+}
+
+.phase--exercise h2::before { background: var(--warm); }
+
+.phase--exercise h2 + p { color: var(--ink-text); }
+
+/* Inside a phase block (embedded OR standalone), the H1 is a section title,
+   not a page lede. Strip the drop-cap and lede sizing that .module h1 + p
+   would otherwise apply — the phase-kicker already announces the section. */
+.phase h1 + p::first-letter { all: unset; }
+.phase h1 + p {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    min-height: 0;
+}
+.phase--exercise h1 + p { color: var(--ink-text-2); }
+
+.phase--exercise p,
+.phase--exercise li { color: var(--ink-text-2); }
+
+.phase--exercise strong { color: var(--ink-text); }
+
+/* Lead-in bold openers ("What you do:", "What happens:", "Time:") use the
+   oxblood accent on cream. On ink that reads as near-black — invisible.
+   Swap to the warm amber, the dark-mode accent equivalent. */
+.phase--exercise p > strong:first-child { color: var(--warm); }
+
+/* List-item lead-ins ("Sharpened verifier.", "Meta:") follow the cream rule
+   that keeps them as neutral text colour rather than amber — otherwise
+   key:value bullets all pop. On ink, neutral text is --ink-text. */
+.phase--exercise li > strong:first-child { color: var(--ink-text); }
+
+/* Body em on dark stays light cream — italic + serif is the emphasis cue;
+   amber-on-ink reads as link/highlight and floods paragraphs. Heading ems
+   keep their gradient via the more-specific h1/h2 em rules below. */
+.phase--exercise em { color: var(--ink-text); }
+
+/* Gradient-accented em inside the black-ink exercise headings.
+   Picks up the Bosser orange → Arctic blue shift from the ai-training hero. */
+.phase--exercise h1 em,
+.phase--exercise h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, #ff6b35 0%, #f4ecdb 50%, #18BFFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+}
+
+.phase--exercise a {
+    color: var(--warm);
+    border-bottom-color: rgba(201,121,66,.25);
+}
+.phase--exercise a:hover { border-bottom-color: var(--warm); }
+.phase--exercise h1 a,
+.phase--exercise h2 a,
+.phase--exercise h3 a { color: inherit; }
+.phase--exercise h1 a:hover,
+.phase--exercise h2 a:hover,
+.phase--exercise h3 a:hover { border-bottom-color: var(--warm); }
+
+.phase--exercise blockquote {
+    border-left-color: var(--warm);
+    color: var(--ink-text);
+}
+.phase--exercise blockquote::before { background: var(--ink-text); }
+.phase--exercise blockquote p + p:last-child { color: var(--ink-muted); }
+
+.phase--exercise code {
+    background: rgba(244,236,219,.08);
+    color: var(--warm);
+}
+
+.phase--exercise pre {
+    background: rgba(244,236,219,.04);
+    border-color: var(--ink-line);
+}
+.phase--exercise pre code { background: none; color: var(--ink-text); }
+
+.phase--exercise hr { border-top-color: var(--ink-line); }
+
+.phase--exercise ul li::marker { color: var(--warm); }
+
+.phase--exercise th {
+    background: rgba(244,236,219,.06);
+    color: var(--ink-text);
+    border-color: var(--ink-line);
+}
+.phase--exercise td { border-color: var(--ink-line); color: var(--ink-text-2); }
+
+@media (max-width: 640px) {
+    main { padding: 3rem 1.25rem 4rem; }
+
+    /* Hero compresses hard on mobile */
+    .training-hero { margin-bottom: 2.5rem; }
+    .training-hero h1 { font-size: clamp(2.5rem, 13vw, 4rem); line-height: .92; margin-bottom: 1.25rem; }
+    .training-hero .lede { font-size: 1.15rem; }
+
+    /* Module body headings */
+    .module h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.5rem; }
+    .module h1::after { margin-top: 1.25rem; }
+    .module h2 { font-size: 1.45rem; margin-top: 3rem; padding-top: 1.5rem; }
+    .module h1 + p::first-letter { font-size: 2.8rem; padding-right: 0.4rem; }
+    .module h2 + p { font-size: 1.1rem; }
+
+    /* Phase bands */
+    .phase {
+        padding-top: 2.75rem;
+        padding-bottom: 2.75rem;
+        margin-top: 2.75rem;
+        margin-bottom: 2.75rem;
+    }
+    .phase-kicker { font-size: 0.85rem; }
+
+    /* Index cards */
+    .module-list.index-modules { grid-template-columns: 1fr; }
+    .module-list.index-modules > li > a,
+    .module-list.index-prework > li > a {
+        padding: 1.5rem;
+        min-height: auto;
+    }
+    .module-list.index-modules .module-n,
+    .module-list.index-prework .module-n { font-size: 2.5rem; }
+
+    /* Supplementary / reference rows: stack kind above title on tiny screens */
+    .index-supplementaries > li > a,
+    .index-references > li > a {
+        padding: 1rem 1.25rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .supp-kind { flex: 0 0 auto; }
+    .supp-title { flex: 1 1 100%; font-size: 1rem; }
+
+    /* Header */
+    .curriculum-header { padding: 1rem 1.25rem; }
+    .curriculum-home { font-size: 1rem; }
+
+    /* Bottom page nav — stack vertically on very narrow screens */
+    .page-nav { grid-template-columns: 1fr; gap: 0.5rem; text-align: left; }
+    .page-nav .nav-prev,
+    .page-nav .nav-next,
+    .page-nav .nav-home { justify-self: start; text-align: left; }
+}
+
+/* ── Page nav (bottom of module pages) ── */
+
+.page-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+}
+
+.page-nav a {
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    padding: 0.5rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    transition: color .15s;
+}
+
+.page-nav a:hover { color: var(--accent); }
+
+.page-nav .nav-prev,
+.page-nav .nav-next {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 0.7rem;
+    max-width: 24em;
+}
+.page-nav .nav-next { grid-template-columns: 1fr auto; }
+.page-nav .nav-prev { justify-self: start; }
+.page-nav .nav-next { justify-self: end; text-align: right; }
+.page-nav .nav-arrow {
+    font-style: normal;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.page-nav .nav-prev:hover .nav-arrow { color: var(--accent); transform: translateX(-3px); }
+.page-nav .nav-next:hover .nav-arrow { color: var(--accent); transform: translateX(3px); }
+.page-nav .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+.page-nav .nav-title {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    font-size: 0.98rem;
+    line-height: 1.3;
+}
+.page-nav .nav-prev:hover .nav-title,
+.page-nav .nav-next:hover .nav-title { color: var(--accent); }
+.page-nav .nav-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-wrap: pretty;
+}
+.page-nav .nav-home {
+    justify-self: center;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: .01em;
+}
+.page-nav .nav-empty { /* keeps the grid slot */ }
+
+/* ============================================================================
+   Reading progress — thin oxblood hairline at very top of viewport, fills
+   left-to-right as the student scrolls. Cheap depth signal, sits over the
+   sticky breadcrumb without competing with it.
+   ============================================================================ */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    z-index: 100;
+    pointer-events: none;
+    transition: width .08s linear;
+}
+@media print { .reading-progress { display: none !important; } }
+
+/* ============================================================================
+   Top breadcrumb — appears on every interior page (training index, module,
+   standalone exercise/lecture). Lets the student pop up one level without
+   scrolling to the bottom-of-page nav.
+   ============================================================================ */
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    /* Breaks out of the 40em column to span the reading band edge-to-edge —
+       the cream backdrop covers content scrolling under it instead of leaving
+       a strip on either side. */
+    margin: -3rem -2rem 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    background: rgba(239,230,210,0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.top-nav-back {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+    display: inline-block;
+}
+
+.top-nav-back:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+}
+
+/* ============================================================================
+   Module hero — promotes the H1 + "## Big Idea" paragraph into a single
+   editorial unit at the top of every module page. Module number sits to the
+   left like a chapter number; title sets weight; italic big-idea line frames
+   what the student is about to do.
+   ============================================================================ */
+
+.module-hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.75rem;
+    align-items: baseline;
+    margin: 0 0 3rem;
+}
+
+.module-hero-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 2.4rem;
+    letter-spacing: -.02em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    align-self: start;
+    padding-top: 0.75rem;
+}
+
+.module .module-hero-title {
+    grid-column: 2;
+    margin: 0;
+}
+
+.module .module-hero-title::after { display: none; }
+
+.module-hero-big {
+    grid-column: 2;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--fg-2);
+    margin: 1.25rem 0 0;
+    max-width: 32em;
+    text-wrap: pretty;
+}
+
+.module-hero-big em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* When the hero owns the title, the drop-cap on the next paragraph would
+   collide with the italic big-idea line. Suppress it — the hero is the lede. */
+.module-hero + p::first-letter { all: unset; }
+.module-hero + p {
+    font-size: 1.05rem;
+    color: var(--fg-2);
+}
+
+@media (max-width: 640px) {
+    .module-hero { grid-template-columns: 1fr; column-gap: 0; row-gap: 0.5rem; margin-bottom: 2.25rem; }
+    .module-hero-num { padding-top: 0; font-size: 1.85rem; }
+    .module .module-hero-title { grid-column: 1; }
+    .module-hero-big { grid-column: 1; font-size: 1.2rem; margin-top: 0.75rem; }
+}
+
+/* ============================================================================
+   Print styles — unchanged spirit, adapted to the editorial palette.
+   ============================================================================ */
+
+@page { margin: 1in 0.75in; }
+
+@media print {
+    body {
+        font-size: 11pt;
+        line-height: 1.55;
+        background: #fff;
+        color: #000;
+    }
+
+    .curriculum-header { display: none !important; }
+    .curriculum-footer { display: none !important; }
+    .page-nav { display: none !important; }
+    .top-nav { display: none !important; }
+
+    /* Module hero collapses to a clean chapter header on paper. */
+    .module-hero { display: block; margin-bottom: 1rem; }
+    .module-hero-num {
+        font-size: 11pt; color: #555; margin-bottom: 0.25rem; padding-top: 0;
+    }
+    .module-hero-big { font-size: 12pt; color: #333; margin-top: 0.5rem; max-width: none; }
+
+    main { padding: 0; display: block; }
+    .module { max-width: none; }
+
+    p { orphans: 3; widows: 3; }
+    h1, h2, h3 { page-break-after: avoid; color: #000; }
+    .module h1 { page-break-before: always; margin-top: 0; }
+    .module h1:first-of-type { page-break-before: avoid; }
+
+    li, blockquote, pre, table, tr { page-break-inside: avoid; }
+    h2 { page-break-before: auto; }
+
+    .module em { color: #000; font-family: Georgia, serif; }
+
+    /* Reset full-bleed phase bands for print — viewport units misbehave on paper.
+       Keep phase hierarchy via a subtle rule + italic kicker instead of a tint band. */
+    html, body { overflow-x: visible; }
+    .phase {
+        width: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem 0;
+        background: #fff !important;
+        color: #000 !important;
+        border: none !important;
+        border-top: 1px solid #bbb !important;
+        border-bottom: 1px solid #bbb !important;
+    }
+    .phase--exercise *,
+    .phase--lecture * { color: #000 !important; }
+    .phase--exercise h1 em,
+    .phase--exercise h2 em {
+        background: none !important;
+        -webkit-text-fill-color: #000 !important;
+        color: #000 !important;
+        font-family: Georgia, serif;
+    }
+    .phase-kicker { color: #555 !important; border: none; }
+    .phase--exercise pre,
+    .phase--exercise code { background: #f4f1ec !important; color: #000 !important; }
+
+    a { text-decoration: none; color: #000; border-bottom: none; }
+    .module a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: #555;
+        word-break: break-all;
+    }
+
+    .module::after {
+        content: "bosser.consulting — Agents 102 Bootstrap";
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.8em;
+        color: #999;
+    }
+
+    pre { white-space: pre-wrap; word-wrap: break-word; background: #f4f1ec; border: 1px solid #ddd; }
+    a, a:visited { color: #000; }
+}
+
+/* ---------------------------------------------------------------------------
+   Workbook (single-page printable build) — used by scripts/build-workbook.js.
+   Adds cover + TOC chrome and print-specific page breaks. SPA pages don't
+   render these classes so nothing here affects the live site.
+--------------------------------------------------------------------------- */
+
+.workbook-cover {
+    text-align: center;
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 3rem;
+}
+.workbook-cover .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin: 0 0 0.5rem;
+}
+.workbook-cover h1.cover-title {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 200;
+    font-size: 3.5rem;
+    margin: 0.5rem 0 1rem;
+    letter-spacing: -0.02em;
+}
+.workbook-cover .lede {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-muted);
+    margin: 0;
+}
+
+.workbook-toc {
+    margin: 0 0 4rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+}
+.workbook-toc h2 {
+    margin: 0 0 1rem;
+    border: none;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+}
+.workbook-toc ol {
+    list-style: decimal;
+    padding-left: 2em;
+    margin: 0;
+}
+.workbook-toc li {
+    margin: 0.4em 0;
+    font-family: 'Inter', sans-serif;
+}
+
+@media print {
+    .workbook-cover { page-break-after: always; }
+    .workbook-toc { page-break-after: always; }
 }
 </style>
 </head>
-<body>
+<body class="runtime-cli">
 
-<header class="cover">
-  <p class="cover-eyebrow">acme workbook</p>
+<header class="workbook-cover">
+  <p class="eyebrow">acme workbook</p>
   <h1 class="cover-title">Agentic Engineering 101</h1>
-  <p class="cover-lede">Six modules. Software engineers becoming Claude wizards on their own codebase.</p>
+  <p class="lede">Six modules. Software engineers becoming Claude wizards on their own codebase.</p>
 </header>
 
-<nav class="toc-wrap">
+<nav class="workbook-toc">
   <h2>Contents</h2>
-    <ol class="toc">
+    <ol>
       <li><a href="#prework">Prework</a></li>
       <li><a href="#getting-going">Module 1 — Getting going + context</a></li>
       <li><a href="#plan-mode-done-right">Module 2 — Plan mode, done right</a></li>
@@ -166,6 +1582,7 @@ hr {
     </ol>
 </nav>
 
+<main>
 <section class="module" id="prework">
 <h1>Prework: before Module 1</h1>
 <p>Land at Module 1 with Claude Code open in the repo you&#39;re going to grow, the content folder visible to Claude, and one trivial bug picked. About 30 minutes. (The framing for what we&#39;re doing lands live in Module 1; you don&#39;t need to pre-read anything.)</p>
@@ -1440,5 +2857,7 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 <p>Now that you know how to steer one session, run several. Parallel worktrees pay off when two pieces are ready to move, when you want to try two approaches side by side, or when a review task can run alongside the build. The mechanics live in the <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a> you read at M1; the instinct earns itself in use.</p>
 
 </section>
+</main>
+
 </body>
 </html>

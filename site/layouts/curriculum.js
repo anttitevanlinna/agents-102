@@ -452,11 +452,9 @@
             html += '</ol>';
         }
 
-        // Trainer guide row — both surfaces show it.
-        html += '<' + heading + ' class="index-heading">For trainers</' + heading + '>';
-        html += '<ol class="module-list index-references">';
-        html += simpleRowHtml('Trainers', 'Delivery guide', opts.trainerGuideHref);
-        html += '</ol>';
+        // Trainer guide is built and reachable by direct URL (SPA route
+        // ?file=trainer-guide; workbook sibling trainer-guide.html). Not
+        // surfaced from the student-facing index — trainers know the URL.
 
         return html;
     }

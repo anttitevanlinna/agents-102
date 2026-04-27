@@ -379,6 +379,88 @@
         return md.replace(/~(\d)/g, '\\~$1');
     }
 
+    // Shared TOC sections builder — both the SPA training-index page and the
+    // workbook table-of-contents use the same five-section layout (prework,
+    // modules, optional, supplementaries, references, trainer-guide). The
+    // only differences are the URL strategy (router vs in-page anchors), the
+    // heading tier, and whether Big Ideas are pre-filled (workbook reads sync
+    // at build) or hydrated async (SPA).
+    //
+    // opts:
+    //   moduleHref(trainingKey, slug)   — URL for prework / modules / optional cards
+    //   fileHref(kind, slug)             — URL for supplementary / reference rows
+    //   trainerGuideHref                 — URL string for the trainer-guide row
+    //   bigIdeaFor(slug)                 — sync getter for Big Ideas (workbook); null for SPA (hydrates later)
+    //   trainingKey                      — passed through to moduleHref
+    //   showModuleCountHeading           — true on SPA (lede-style headings); false in workbook (cover replaces)
+    //   headingTag                       — 'h2' (SPA) or 'h3' (workbook nested under the cover's h2)
+    //   bigIdeaDataAttr                  — 'data-big-ideas' marker on module list (SPA needs this for hydration)
+    function buildTocSections(t, opts) {
+        var trainingKey = opts.trainingKey;
+        var heading = opts.headingTag || 'h2';
+        var bigIdea = opts.bigIdeaFor || function () { return null; };
+        var bigIdeasAttr = opts.bigIdeaDataAttr ? ' ' + opts.bigIdeaDataAttr : '';
+        var html = '';
+
+        if (t.prework) {
+            if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Before Module 1</' + heading + '>';
+            html += '<ol class="module-list index-prework"' + bigIdeasAttr + '>';
+            html += cardHtml('00', t.prework.title, t.prework.slug, opts.moduleHref(trainingKey, t.prework.slug), bigIdea(t.prework.slug));
+            html += '</ol>';
+        }
+
+        if (t.modules.length) {
+            if (opts.showModuleCountHeading) {
+                var words = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+                var word = words[t.modules.length] || String(t.modules.length);
+                html += '<' + heading + ' class="index-heading">The ' + word + ' modules</' + heading + '>';
+            }
+            html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
+            t.modules.forEach(function (m, i) {
+                var num = String(i + 1).padStart(2, '0');
+                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.optionalModules && t.optionalModules.length) {
+            if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Optional extensions — when the cohort wants more</' + heading + '>';
+            else html += '<' + heading + ' class="index-heading">Optional extensions</' + heading + '>';
+            html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
+            t.optionalModules.forEach(function (m, i) {
+                var num = String(t.modules.length + i + 1).padStart(2, '0');
+                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.supplementaries && t.supplementaries.length) {
+            html += '<' + heading + ' class="index-heading">' + (opts.showModuleCountHeading ? 'Supplementary — grows across the training' : 'Supplementary') + '</' + heading + '>';
+            html += '<ol class="module-list index-supplementaries">';
+            t.supplementaries.forEach(function (s) {
+                html += simpleRowHtml('Reference', s.title, opts.fileHref('supplementary', s.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.references && t.references.length) {
+            html += '<' + heading + ' class="index-heading">Quick reference</' + heading + '>';
+            html += '<ol class="module-list index-references">';
+            t.references.forEach(function (r) {
+                html += simpleRowHtml('Lookup', r.title, opts.fileHref('reference', r.slug));
+            });
+            html += '</ol>';
+        }
+
+        // Trainer guide row — both surfaces show it.
+        html += '<' + heading + ' class="index-heading">For trainers</' + heading + '>';
+        html += '<ol class="module-list index-references">';
+        html += simpleRowHtml('Trainers', 'Delivery guide', opts.trainerGuideHref);
+        html += '</ol>';
+
+        return html;
+    }
+
     function cardHtml(num, title, slug, href, bigIdea) {
         var bigHtml = bigIdea ? esc(bigIdea) : '&nbsp;';
         return '<li data-slug="' + esc(slug) + '">' +
@@ -409,6 +491,7 @@
         extractBigIdea: extractBigIdea,
         escapeTildes: escapeTildes,
         cardHtml: cardHtml,
+        buildTocSections: buildTocSections,
 
         // DOM (browser only)
         decoratePrompts: decoratePrompts,

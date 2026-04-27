@@ -78,54 +78,26 @@ function renderModuleMd(trainingKey, slug, contentUrl) {
 }
 
 function buildToc(trainingKey, t) {
-  // Both prework and modules use the SPA's cardHtml structure — same chrome
-  // (numbered card + title + Big Idea preview + arrow). Big Idea pre-filled
-  // by reading each module file (SPA hydrates the same field via fetch).
-  // Supplementaries / references / trainer-guide use simpleRowHtml — no Big
-  // Idea slot, matches SPA index. SPA → workbook parity.
-  let html = '';
-  if (t.prework) {
-    const md = readMd(path.join(ROOT, 'curriculum/trainings', trainingKey, t.prework.slug + '.md')) || '';
-    const big = CR.extractBigIdea(md);
-    html += `    <ol class="module-list index-prework">\n      ${CR.cardHtml('00', t.prework.title, t.prework.slug, '#' + t.prework.slug, big)}\n    </ol>\n`;
+  // Single source: CR.buildTocSections. Workbook URL strategy is in-page anchors;
+  // Big Ideas pre-filled sync at build time (no async hydration like the SPA).
+  // Memoize per-slug Big Idea reads since the same module file gets opened
+  // for both TOC and module body.
+  const bigIdeaCache = {};
+  function bigIdeaFor(slug) {
+    if (slug in bigIdeaCache) return bigIdeaCache[slug];
+    const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
+    const md = readMd(modPath) || '';
+    return (bigIdeaCache[slug] = CR.extractBigIdea(md));
   }
-  if (t.modules.length) {
-    const items = t.modules
-      .map((m, i) => {
-        const md = readMd(path.join(ROOT, 'curriculum/trainings', trainingKey, m.slug + '.md')) || '';
-        const big = CR.extractBigIdea(md);
-        const num = String(i + 1).padStart(2, '0');
-        return '      ' + CR.cardHtml(num, m.title, m.slug, '#' + m.slug, big);
-      })
-      .join('\n');
-    html += `    <ol class="module-list index-modules">\n${items}\n    </ol>\n`;
-  }
-  if (t.optionalModules && t.optionalModules.length) {
-    const items = t.optionalModules
-      .map((m, i) => {
-        const md = readMd(path.join(ROOT, 'curriculum/trainings', trainingKey, m.slug + '.md')) || '';
-        const big = CR.extractBigIdea(md);
-        const num = String(t.modules.length + i + 1).padStart(2, '0');
-        return '      ' + CR.cardHtml(num, m.title, m.slug, '#' + m.slug, big);
-      })
-      .join('\n');
-    html += `    <h3 class="index-heading">Optional extensions</h3>\n    <ol class="module-list index-modules">\n${items}\n    </ol>\n`;
-  }
-  if (t.supplementaries && t.supplementaries.length) {
-    const items = t.supplementaries
-      .map(s => '      ' + CR.simpleRowHtml('Reference', s.title, '#supplementary-' + s.slug))
-      .join('\n');
-    html += `    <h3 class="index-heading">Supplementary</h3>\n    <ol class="module-list index-supplementaries">\n${items}\n    </ol>\n`;
-  }
-  if (t.references && t.references.length) {
-    const items = t.references
-      .map(r => '      ' + CR.simpleRowHtml('Lookup', r.title, '#reference-' + r.slug))
-      .join('\n');
-    html += `    <h3 class="index-heading">Quick reference</h3>\n    <ol class="module-list index-references">\n${items}\n    </ol>\n`;
-  }
-  // Trainer guide ships as a sibling HTML; link out from the workbook TOC.
-  html += `    <h3 class="index-heading">For trainers</h3>\n    <ol class="module-list index-references">\n      ${CR.simpleRowHtml('Trainers', 'Delivery guide', './trainer-guide.html')}\n    </ol>\n`;
-  return html;
+  return CR.buildTocSections(t, {
+    trainingKey: trainingKey,
+    moduleHref: (k, s) => '#' + s,
+    fileHref: (kind, s) => '#' + kind + '-' + s,
+    trainerGuideHref: './trainer-guide.html',
+    bigIdeaFor: bigIdeaFor,
+    showModuleCountHeading: false,
+    headingTag: 'h3'
+  });
 }
 
 function buildTopNav(t, customer) {

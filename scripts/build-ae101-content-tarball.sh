@@ -55,7 +55,15 @@ copy_md_dir curriculum/reference  "$ROOT/reference"
 
 # Skills ship verbatim — they're the installable runtime skills, not curriculum
 # prose. Maintainer blocks aren't a thing in SKILL.md files anyway.
-cp -R content/skills/* "$ROOT/content/skills/"
+# `agentic-nerd` is the optional self-study host skill (Teacher Claude analog);
+# cohort delivery doesn't install it by default, so it's excluded here. If a
+# self-study tarball variant ever lands, ship it from a separate target.
+for skill in content/skills/*/; do
+  skill="${skill%/}"
+  name="$(basename "$skill")"
+  [ "$name" = "agentic-nerd" ] && continue
+  cp -R "$skill" "$ROOT/content/skills/$name"
+done
 
 # Build tarball. Run tar from inside ROOT so the archive has
 # lectures/, exercises/, reference/, content/ at the top level.

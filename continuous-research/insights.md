@@ -1052,6 +1052,24 @@ The counter-design principle: institutional AI must be deterministic, auditable,
 
 ---
 
+## The 0.6% Rule — What "Human in the Loop" Actually Means
+
+**Thesis:** At scale, human oversight in AI-native teams means being the circuit breaker for 0.6% of decisions — not reviewing everything.
+
+Cloudflare runs 131,000+ AI code reviews per month through a pipeline of seven specialized AI agents (security, performance, code quality, documentation, compliance). Human engineers override the AI verdict in 0.6% of merge requests — via a "break glass" mechanism. The other 99.4% flows automatically.
+
+This is the most concrete quantification of human-AI division of labor published anywhere. The human role is not general oversight. It is specifically: architectural decisions with cross-system implications, subtle concurrency bugs the AI misses, and strategic code direction that requires context the AI doesn't have. The median review now completes in 3 minutes 39 seconds — down from hours.
+
+The implication is uncomfortable: most "human review" in traditional engineering is theater. When AI handles the first pass, humans are forced to be specific about what they're actually uniquely qualified to judge. For most reviews, they're not uniquely qualified — they're just slower. The 0.6% is what's genuinely irreplaceable.
+
+**The implication for CTOs:** "Human in the loop" is not a safety framework. It's a design problem. If you can't specify what humans are uniquely qualified to judge, you'll waste them on what AI already handles well — and miss the 0.6% where their judgment actually matters. AI-native teams get this right by building systems that force human attention to the edges, not the center.
+
+**Applies to:** Bootstrap training (AI-native teams module), advisory conversations on governance, newsletter content on what AI-native actually means
+**Source:** Cloudflare engineering blog (https://blog.cloudflare.com/ai-code-review/, Apr 20, 2026) [practitioner direct] — Ryan Skidmore, Cloudflare; confirmed against iMARS post (https://blog.cloudflare.com/internal-ai-engineering-stack/, Apr 21, 2026)
+**Date:** 2026-04-27
+
+---
+
 Copy this for new insights:
 
 ```

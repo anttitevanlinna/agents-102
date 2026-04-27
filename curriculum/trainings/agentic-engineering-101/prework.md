@@ -22,11 +22,11 @@ CLI or desktop, your call. Open a new session with the repo as the working direc
 
 ## 3. Get the content folder onto your laptop (3 min)
 
-You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths, same destination — pick whichever fits your network and trust posture.
+You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths to the same destination. Pick whichever fits your network and trust posture.
 
-**3.a — Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`. (If your work network blocks the download, your trainer can email it or share via SharePoint or USB. Same destination.)
+**3.a. Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`. (If your work network blocks the download, your trainer can email it or share via SharePoint or USB. Same destination.)
 
-**3.b — Or have Claude download it for you.** Paste this prompt instead:
+**3.b. Or have Claude download it for you.** Paste this prompt instead:
 
 **Prompt** *(Claude Code)*
 
@@ -78,7 +78,12 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-26 (phase structure changed: Steps 3+4+5 collapsed to 3+4 with manual/agentic transport fork. Auto-fire `curriculum-pre-ship-audit` owed.)
+**Quality:** compendium-audited 2026-04-27
+- compendium-audited 2026-04-27 (check_writing + check_student_facing + check_prompts; three-persona sim 7/8/mixed; `claude-code-guide` capability check all confirmed; em-dash fix on line 25 + 3.a/3.b labels applied this cycle)
+
+**Approve-with-todos** (next iteration, non-blocking):
+- Fast-operator flagged: collapse Step 0+2 into one move; demote 3.a to a one-line footnote for cohort default; split Step 4 prompt at the seam between mechanical install and interactive bug-screen.
+- Mid-competent flagged: Windows path/shell assumptions (`~/Downloads/`, `tar xzf`, `mkdir -p`) unstated; acknowledge Git Bash once. Step 4's 12-min budget tight when student hasn't pre-thought a candidate bug — consider rebadging as "mechanical setup + bring-a-bug homework."
 
 **Meta:**
 - **Runtime:** 30 min target. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.

@@ -15,6 +15,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -68,13 +69,14 @@ function postProcessIncludes(html) {
     .replace(/<!--\/INC-->/g, '</section>');
 }
 
-function renderModuleMd(trainingKey, slug) {
+function renderModuleMd(trainingKey, slug, contentUrl) {
   const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
   let md = readMd(modPath);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
   md = inlineIncludes(md);
   md = rewriteCrossDocLinksToAnchors(md);
   md = escapeTildes(md);
+  if (contentUrl) md = md.replace(/<CONTENT_URL>/g, contentUrl);
   return md;
 }
 
@@ -119,7 +121,7 @@ ${chips.join('\n')}
 </nav>`;
 }
 
-function buildBody(trainingKey, customer) {
+function buildBody(trainingKey, customer, contentUrl) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) throw new Error(`Unknown training: ${trainingKey}`);
 
@@ -146,7 +148,7 @@ ${buildToc(trainingKey, t)}
   const modulesHtml = allModules
     .map(m => {
       if (TRAINER_ONLY.has(m.slug + '.md')) return '';
-      const md = renderModuleMd(trainingKey, m.slug);
+      const md = renderModuleMd(trainingKey, m.slug, contentUrl);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
       return `<section class="module" id="${m.slug}">\n${html}\n</section>`;
@@ -241,7 +243,23 @@ if (!CR.TRAININGS[trainingKey]) {
 
 const outDir = path.join(ROOT, 'site/clients', customer);
 fs.mkdirSync(outDir, { recursive: true });
-const body = buildBody(trainingKey, customer);
+
+// AE101 ships a content tarball alongside the workbook. Build it, copy it into
+// the customer dir, and substitute <CONTENT_URL> in the prework markdown so the
+// rendered prompts point at the per-customer download URL.
+let contentUrl = null;
+if (trainingKey === 'agentic-engineering-101') {
+  console.log('Building content tarball…');
+  execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
+  const tarSrc = path.join(ROOT, 'agents-102-content.tar.gz');
+  const tarDst = path.join(outDir, 'content.tar.gz');
+  fs.copyFileSync(tarSrc, tarDst);
+  contentUrl = `https://agents102.bosser.consulting/clients/${customer}/content.tar.gz`;
+  const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
+  console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
+}
+
+const body = buildBody(trainingKey, customer, contentUrl);
 const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
 const outFile = path.join(outDir, 'index.html');
 fs.writeFileSync(outFile, html);

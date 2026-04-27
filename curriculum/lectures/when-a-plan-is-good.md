@@ -59,7 +59,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 - **Time:** 10–12 min, inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5).
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces. Does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5.
 - **Mood target:** anticipation toward grounded competence. Student leaves the lecture with "I know what to look for" — the payoff of *actually feeling it* lands in the exercise.
-- **Voice check:** no banned words (`honest`, `delve`, `landscape`-verb, `importantly`, `crucial`, `ritual`, `ceremony`, `practice` as noun). "Ritual" appears once as a *bad* example — *"'Run the tests' is a ritual"* — used to name what a good plan isn't. Pedagogically earns the word; the hard-ban is on framing student activity as ritual, not on discussing it as an anti-pattern. Keep an eye on this at next Compound — if it reads as smuggling, revise to *"is cosmetic"* or *"is book-keeping"*.
+- **Voice check:** no banned words (`honest`, `delve`, `landscape`-verb, `importantly`, `crucial`, `ritual`, `ceremony`, `practice` as noun).
 - **Frameworks riffed on:**
   - Plan mode (Anthropic Claude Code) — capability reference, current as of 2026-04-22. Source: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`.
   - The three-things / three-pressures shape is exercise-scaffold, not a cited framework.

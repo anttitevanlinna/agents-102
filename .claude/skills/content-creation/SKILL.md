@@ -65,6 +65,8 @@ These are the rules that fire at generation time. Loading them after drafting ca
 
 **Compendium + SKILL.md growth rule.** When a rule-surface crosses ~15 items (compendium) or ~400 lines (SKILL.md), split by firing moment — the editing context that triggers loading it (writing a prompt block, placing a lecture, naming a Big Idea, running a PDCA cycle) — not by urgency tier or sub-topic. Firing-moment splits map to what the loader can observe; urgency tiers force a severity judgment the loader can't make. Reference: this SKILL.md itself was split from 534 lines into a 122-line core + three on-demand companions.
 
+**Pre-split rule-doc rule.** Files predating the 2026-04-24 firing-moment split (`lecture-guardrails.md`, `module-design-long-running-strategy.md`, the content-creation skill companions, eval templates, `content-style-guide.md`, etc.) are reference docs, not generation-time authority. New rule content goes to `memory/compounded/` + `memory/check_*.md`, never to these files. When opening one to edit, grep `memory/check_*.md` for the topic first; if the compendium owns it, edit there. The pre-split file shrinks or dies — never grows. Architecture-flavoured rules (training-platform definition, file shape, directory layout) stay in their architectural file (`curriculum/CLAUDE.md`) with a one-line cross-reference from compendium pointing back. Canonical source: `memory/compounded/2026-04-27-content_creation-pre-split-rule-docs-shrink-or-die.md`.
+
 ## Session start — read this first
 
 Before touching anything, read in this order:

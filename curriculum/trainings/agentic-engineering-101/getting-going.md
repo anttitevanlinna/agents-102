@@ -10,7 +10,7 @@ About 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-10
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo
-- **Introspect** on the agent's read of your repo and verify the self-report against `/context`, the instrument that shows where the 10% lives
+- **Introspect** on the agent's read of your repo. Use `/context` to see how much your context window has filled up. Assume 10% of what Claude says or does is misrepresentation and dig until you find it
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
 - **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [the four CLAUDE.md layers](reference/claude-code-for-engineers.md) for the hierarchy) and close the bug's ticket via one connector. The first move outside the repo
 
@@ -28,8 +28,8 @@ After this module, you will be able to:
 
 ## Key Concepts
 - Plan mode is overhead on a trivial bug. Module 2 (M2 from here on) is where it earns its keep
-- The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Verify against `/context`
-- The 10% the agent couldn't address lives in the slice of the repo it didn't load. Your job is to steer what lands in the window
+- The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Assume 10% of what it says or does is misrepresentation and dig
+- `/context` shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality — your job is to steer what lands in those bytes
 - A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
 - The compound step lives in Exercise 3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
 - Personal rules (`./CLAUDE.local.md`, gitignored) vs. team rules (`./CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
@@ -53,7 +53,8 @@ Optional. Skipping either piece does not break M2. Both sit in the gap between M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing voice-quartet, check_student_facing #14 em-dash flag noted + #21 agent-vocab, check_pedagogy, check_strategy_tie_in, check_lectures)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+- compendium-audited 2026-04-27 (re-stamped after 2026-04-27 cycle: prework /add-dir removed, M1 Ex2 open-hook reshape, M1 Ex3 settings-block removal — module file itself untouched, but mtime degrade triggered re-validation; audit GO)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
 - **Session runtime:** 2h (Connections 10 / Lecture 10 / Exercise 95 / Bridge 5). Trainer demos slowly, room copy-pastes concurrently — fits 2h in-class. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 40 / compound-and-close 37 (compound retro + MCP wire + ticket close). 2h is deliberate for M1 — longer than M2–M6's 1h45 because of the orient+introspect ramp and the MCP close-out.
@@ -62,7 +63,6 @@ Optional. Skipping either piece does not break M2. Both sit in the gap between M
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*

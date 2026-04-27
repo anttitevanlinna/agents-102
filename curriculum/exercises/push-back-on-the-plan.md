@@ -16,20 +16,17 @@ If nothing fits, ask Claude to surface three candidates from recent issues, PRs,
 
 ## Phase 2: Enter plan mode, read what arrives (15 min)
 
-Shift+Tab until the status bar shows **plan**. Paste the prompt. Then send a second message with your task in 2–3 sentences: what, why, the one constraint you care about most.
-
-Ask Claude to work in plan mode and write a detailed plan file you can read and push back on.
+Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'll drop after the colon — what, why, the one constraint you care about most.
 
 **Prompt** *(Claude Code)*
 
 ```
-Plan the task I'm about to describe in my next message. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you'd write or update before any code lands, and what you'd check before declaring it done. Detail over brevity.
+Plan the task I describe below. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you'd write or update before any code lands, and what you'd check before declaring it done. Detail over brevity.
+
+My task:
 ```
 
-
-Then a second message with your task: what, why, the one constraint that matters most.
-
-Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan.** Not skim. Read. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
+Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan all the way through before pushing back.** Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice (15 min)
 
@@ -62,7 +59,7 @@ The second read asks one question at a time. Some will feel trivial (*"which log
 
 Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
-> **Timebox check.** When the slot ends, we stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch tomorrow when you actually ship the work. The exercise teaches the move. You take the move home.
+> **Timebox check.** When the slot ends, we stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
 
 ## Phase 5: Stop. See the design pattern. (10 min)
 

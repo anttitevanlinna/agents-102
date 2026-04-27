@@ -1,14 +1,16 @@
 # Orient and introspect
 
-**What you do:** have Claude read your repo, then interrogate what it read. The introspection prompt and `/context` together show you what actually landed in the window and what didn't.
+**What you do:** have Claude read your repo, then interrogate what it read. The introspection prompt shows what Claude says it read; `/context` shows how full your context window has gotten.
 
-**What happens:** Claude reports what it read and why, what it skipped and why. You see the bounded window directly. The self-report is a hypothesis; `/context` is ground truth. The delta is where the unread 10% lives.
+**What happens:** Claude reports what it read and why, what it skipped and why. You see the bounded window directly. The self-report is a hypothesis. Assume 10% of what Claude says or does is misrepresentation — could be more, could be less. Start digging.
 
-**The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, verify against the instrument, work inside a window you know the shape of.
+**The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig the self-report.
 
 **Time:** 15–20 minutes.
 
-Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then the instrument that shows you what Claude actually read.
+Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then introspection on what Claude says it read, then a look at your context budget.
+
+Ask Claude to read your repo deliberately and report shape, structure, what's load-bearing, what's stale.
 
 **Prompt** *(Claude Code)*
 
@@ -19,7 +21,7 @@ Read enough of this repo to tell me what's here: the shape, the structure, what 
 
 Claude reads and reports. Let it finish.
 
-Now introspect on the read:
+Ask Claude to introspect on what it read, what it skipped, and the call it made on each.
 
 **Prompt** *(Claude Code)*
 
@@ -28,26 +30,26 @@ What did you read, and why those files? What didn't you read, and why not? Name 
 ```
 
 
-Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Take it with a grain of salt; verify against the actual output and the instrument below.
+Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Assume 10% of what Claude says or does is misrepresentation — could be more, could be less. Spot-check by quoting back a specific file or function and asking Claude to confirm it.
 
-Now look at the instrument directly. In the Claude Code chat, type:
+Now look at your context budget. In the Claude Code chat, type:
 
 ```
 /context
 ```
 
-That's the slash command for the context window: what's loaded, how much, what's been consumed reading files. Look at the number. The rest of the repo (the slice Claude *didn't* load) is where the 10% it couldn't address lives. Not a bug; the shape of working with a bounded window. Your job going forward is to steer what lands in those bytes.
+That's the slash command that shows how full your context window is — total used and breakdown by category (system prompt, messages, memory, skills). Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
 
 You've seen the window. Hand off to the fix.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §2 lead-in confirmed/added)
+- compendium-audited 2026-04-27 (this cycle: action lead-ins added above prompt blocks per check_prompts §2; M1 audit GO)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Time:** 15–20 min inside M1's 2h slot. First of three exercises on the same bug / same repo.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 3 (mirror)** — Claude's read reflects the student's prompt back at them.

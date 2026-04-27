@@ -50,12 +50,14 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 On Monday, pick a task your team is sitting on, send it off packaged, read the return through the lens you just built. The loop is yours now.
 
-Now that you know how to steer one session, run several. Parallel worktrees pay off when two pieces are ready to move, when you want to try two approaches side by side, or when a review task can run alongside the build. The mechanics live in the [Multi-session and Git: survival guide](reference/multi-session-git.md) you read at M1; the instinct earns itself in use.
+Keep on learning and sharing.
+
+—Antti
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing — em-dashes cleared L8/L16/L18/L23/L37/L60; check_strategy_tie_in §6 — Themes section restructured to inline Theme-2 + Theme-4 breadcrumbs after Key Concepts; check_pedagogy; check_lectures. `practice`-as-noun lines 19+88 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
+**Quality:** draft 2026-04-26 (touched after audit — degraded from compendium-audited 2026-04-26; subtraction-only edit removed redundant worktree paragraph from "## Next" — same content already lives at M1 prework. Re-audit on next pass.)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).

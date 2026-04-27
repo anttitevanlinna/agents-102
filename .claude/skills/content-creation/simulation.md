@@ -53,22 +53,25 @@ Be specific. Use your persona's voice. If the exercise has a flaw, you (as the s
 - **Arc flow breaks** — where Phase N doesn't feed Phase N+1 smoothly
 - **"This is me" failures** — the final artifact rating shows if the emotional payoff actually lands
 
-**Known Claude-behavior patterns to check during simulation** (living list — add as they surface):
-- **File preservation gap** — exercises that say "save this for later" don't work in Claude Code sessions; Claude keeps artifacts in memory but participants don't know that. Fix: either use Claude's memory (ask Claude to look back at its own output) or give explicit instructions for file duplication.
-- **Reading burden / manual error-catching** — don't ask the student to manually read Claude's output to verify it, spot mistakes, or diff versions. That's busywork for a business audience and it foreshadows exactly the wrong lesson. Fix: ask Claude to audit Claude's work — have the student write the audit prompt, Claude runs it, results land as a list the student acts on. Reading for *emotional payoff* (feeling the citations land, feeling the output sound like your company) is different and stays. The banned pattern is "read this to check if Claude got it right." That job belongs to Module 5 (quality) and Module 6 (evals) methods, which Module 2's verification moments should foreshadow, not pre-empt.
-- **Niceness tax** — Claude's RLHF softens edgy claims during regeneration (hate-flips become generic virtues, anti-positioning becomes collaborative leadership). Fix: prompt explicitly says "keep the edge — don't soften stances."
-- **Question dump** — when asked to "ask these questions in turn," Claude sometimes dumps all questions at once. Fix: prompt says "ask one, wait for my answer, then ask the next."
-- **Overwrite anxiety** — when regenerating an artifact, Claude may ask "overwrite or create new?" Fix: prompt specifies the default ("overwrite the existing file").
-- **Preamble before action** — Claude narrates what it's about to do before doing it; can disrupt a "clean question-by-question rhythm" assumption. Fix: assume it will happen; design around it.
-- **Append-vs-integrate default** — when told "add X to context and regenerate," Claude often appends X as a new section rather than rewriting the existing output through X's lens. Simulation tell: the output grows a "What I love" / "How I help" section instead of the whole voice shifting. Fix: prompt must explicitly say "rewrite using X as voice-shaping context" when integration is the goal.
-- **Plan-mode preamble bloat** — even in plan mode, Claude opens the plan with 2–4 sentences of *"I'll now read your sources and propose…"* scene-setting before the actual plan. Eats participant attention; they skim the plan. Fix: design around it — prime the student to scroll past preamble to the proposed list, or add "go straight to the plan, no preamble" to the prompt.
-- **Citation-gap asymmetry** — with an explicit "cite or flag" rule, Claude abides for specific company claims but skirts the rule on conventional-wisdom claims (generic competitive knocks, industry truisms). The model treats "obvious" claims as not needing citation. Simulation tell: sourced claims + one or two uncited generic lines in the same output. Fix: either add "this includes conventional-wisdom claims" to the rule, or design the exercise to notice the gap as the teaching moment.
-- **Self-report inflation** — when asked to report what changed, Claude over-claims change. Lists four pages as sharpened when two got longer. The self-report is the LEAST trustworthy part of the output. Fix: never trust Claude's own summary of its work — instruct the participant to verify directly (open the file, read the top paragraph) and give them a literal push-back prompt.
-- **Default-acceptance on offered defaults** — when a prompt offers "default rules if you don't have your own," ~90% of participants take the defaults verbatim without customization. Fix: explicitly nudge customization — "Pick at least one you'd change" — or structure so the default is a starting point, not a free pass.
-- **Plan-mode approval inflation** — multi-page plans (7+ items) get rubber-stamped because the plan *looks* structured; participants approve without reading. The plan is exactly the moment that deserves close reading, and participants treat it as a form to sign. Fix: design the prompt to force a pushback — "suggest three topic merges you'd recommend" / "mark any page likely to be soft" — before approval. The act of answering back is what creates real reading.
-- **Source-type blindness on ingestion** — Claude silently ingests dense slideware (PPTX, PDF exports of decks) and derives claims from slide titles only. The memory ends up shallow on those sources; Claude doesn't report the thinness. Fix: either tell participants to convert slide-heavy sources to text before ingestion, or add an explicit extraction-depth check to the audit prompt ("for each source file, rate how much content you actually extracted — 1-10").
-- **Citation cargo-cult** — Claude dutifully cites `memory/x.md` in outputs, but the cited file may not actually contain the specific claim. Citations become performative: the format is right, the substance isn't verified. Especially common on conventional-wisdom claims (pattern #3, citation-gap asymmetry). Fix: periodic integrity check — "for each cited claim in the output, quote the sentence in the memory file that supports it."
-- **Self-audit charity** — when Claude is asked to critique its own work, it under-flags problems. "Pick 3 generic pages" returns 2 (with reality being 4). Charitable-by-default is the RLHF legacy. Fix: prompt the audit to over-flag — "be harsher than you think necessary," "flag at least N" — or have the audit run in a fresh session with no memory of having produced the work.
+**Known Claude-behavior patterns — sim watchlist.**
+
+Each pattern below ALSO fires at generation time via its compounded entry. The catalog here is the sim watchlist; the compounded entries are the write-time forcing functions. When a sim surfaces one of these, link the offending phase to the matching entry rather than re-describing the rule inline.
+
+1. File preservation gap — see `memory/compounded/2026-04-27-student_facing-file-preservation-gap.md`.
+2. Reading burden / manual error-catching — see `memory/compounded/2026-04-27-pedagogy-reading-burden-manual-error-catching.md`.
+3. Niceness tax (RLHF softening) — see `memory/compounded/2026-04-27-prompts-niceness-tax.md`.
+4. Question dump — see `memory/compounded/2026-04-27-prompts-question-dump.md`.
+5. Overwrite anxiety — see `memory/compounded/2026-04-27-prompts-overwrite-anxiety.md`.
+6. Preamble before action — see `memory/compounded/2026-04-27-prompts-preamble-before-action.md`.
+7. Append-vs-integrate default — see `memory/compounded/2026-04-27-prompts-append-vs-integrate-default.md`.
+8. Plan-mode preamble bloat — see `memory/compounded/2026-04-27-prompts-plan-mode-preamble-bloat.md`.
+9. Citation-gap asymmetry — see `memory/compounded/2026-04-27-prompts-citation-gap-asymmetry.md`.
+10. Self-report inflation — see `memory/compounded/2026-04-27-pedagogy-self-report-inflation.md`.
+11. Default-acceptance on offered defaults — see `memory/compounded/2026-04-27-pedagogy-default-acceptance-on-offered-defaults.md`.
+12. Plan-mode approval inflation — see `memory/compounded/2026-04-27-pedagogy-plan-mode-approval-inflation.md`.
+13. Source-type blindness on ingestion — see `memory/compounded/2026-04-27-pedagogy-source-type-blindness-on-ingestion.md`.
+14. Citation cargo-cult — see `memory/compounded/2026-04-27-prompts-citation-cargo-cult.md`.
+15. Self-audit charity — see `memory/compounded/2026-04-27-pedagogy-self-audit-charity.md`.
 
 **Prework-specific patterns:**
 - **Install cliff** — "install Claude Code" is a 25-min side quest if you land on the CLI path with no Node. For non-developer audiences, specify **desktop or web** explicitly. "No terminal required" is a real affordance worth stating.

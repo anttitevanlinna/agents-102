@@ -1,18 +1,20 @@
 # Exercise Eval — Curriculum Content
 
+> **Eval template — judges + thresholds.** Detailed banned-word / voice / structure rules live in compendiums (`memory/check_*.md`). When compendiums amend, this template inherits — no template edit needed for rule changes. Update template only for new judges or new pass-thresholds.
+
 Reusable eval system for curriculum exercise files across all trainings. Exercises are evaluated on whether they reliably produce the intended teaching moment when facilitated.
 
 **This eval, like the lecture eval, is a steering eval.** Same flywheel point.
 
 ## How to use
 
-For any exercise being written or revised:
-
 1. **Read the target module file** to pull: Big Idea, learning goals, previous/next exercise, the specific teaching moment this exercise must engineer.
 2. **Fill in the eval** below — replace every `[BRACKET]`.
 3. **Run the eval** — LLM-as-judge prompt at bottom of this file.
 4. **Iterate** — fix anything flagged. Re-run.
 5. **Antti approves.** Evals catch epistemic problems; Antti catches taste.
+
+Filled instances live at `curriculum/evals/instances/`.
 
 ---
 
@@ -25,118 +27,72 @@ After completing this exercise, the participant can:
 - [SPECIFIC OUTCOME 2]
 - [SPECIFIC OUTCOME 3 — ideally tying to their own work]
 
-If a builder leader (not a dev) walks out of this exercise able to do these three things, it's good enough.
+If a builder leader (not a dev) walks out able to do these three things, it's good enough.
 
 ### Framing fidelity *(universal)*
 
-The exercise leads with the module's Big Idea: **[BIG IDEA FROM MODULE FILE]**.
-
-It avoids these anti-framings:
+Leads with the module's Big Idea: **[BIG IDEA FROM MODULE FILE]**. Avoids:
 - [ANTI-FRAMING 1 — wrong default mental model]
 - [ANTI-FRAMING 2]
 
 ### Learning goal fit *(universal)*
 
-Enables these Bloom-tagged learning goals from the module file (the exercise that covers the other LOs in the module may differ):
+Enables these Bloom-tagged learning goals from the module file:
 - [LG 1 — verbatim]
 - [LG 2]
 
 ### Module-to-module arc *(universal)*
 
-Picks up from **[PREVIOUS EXERCISE OR MODULE — one-phrase hook]**.
-Subtly hands off to **[NEXT EXERCISE OR NEXT MODULE — one-phrase hook]**.
+Picks up from **[PREVIOUS — one-phrase hook]**. Hands off to **[NEXT — one-phrase hook]**.
 
 ### Mood lands *(universal — essential)*
 
-Every Bootstrap module is engineered to produce a specific emotion at phase ends and at exercise close. The mood is the strategic contract — not garnish. (See `bosser-strategy:content-strategy.md` → "Mood arc" + the per-module "Mood (deliberate)" paragraph.)
+Mood is the strategic contract. Mood-arc table + per-module deliberate mood: see `.claude/skills/content-creation/SKILL.md` § *The mood arc — load-bearing constraint* and `bosser-strategy:content-strategy.md` → "Mood arc".
 
-Scored per exercise on a 1–10 scale for each beat:
-- **End of each phase** — what emotion does the student carry into the next phase? Does it match the module's deliberate mood (joy / compound / unease / deeper unease / rescue / leverage / generosity / awe)?
-- **Close of exercise** — does the student leave in the mood the module needs, *and* primed for the next module's mood pickup?
+Score 1–10 for each beat (end of each phase + close of exercise). **Pass threshold: 8+/10 at every beat.** 7 = facilitator-premium ceiling — frays for self-study. Below 8, something is stealing the mood (premature resolution, tonal jolt, beat reads as "more work," close that resolves what the next module needs).
 
-**Pass threshold: 8+/10 at every beat.** 7/10 is the facilitator-premium ceiling — it means the pedagogy lands with a trainer in the room but frays for self-study students. Below 8, something is stealing the mood: premature resolution of a stewing mood (M3/M4 tidied up), tonal jolt mid-exercise (leverage → audit without scaffold), epistemic beat that reads as "more work" rather than extended leverage, or a close that resolves what the next module needs to pick up.
-
-Report must include: mood score per phase + close, plus a one-line *"what's stealing the mood here"* note for any beat below 8.
+Report: mood score per phase + close, plus a one-line *what's stealing the mood* note for any beat below 8.
 
 ### The teaching moment lands *(exercise-specific — essential)*
 
-The exercise is designed to reliably produce this aha:
-- **[NAMED TEACHING MOMENT — e.g., "my criterion caught something my convergence eval couldn't"]**
-
-If reasonable variation in participant skill can skip the moment, the exercise is fragile.
+Designed to reliably produce: **[NAMED TEACHING MOMENT]**. If reasonable participant-skill variation can skip the moment, the exercise is fragile.
 
 ### Failure modes named *(exercise-specific)*
 
-What could go wrong when a participant runs the exercise, and how the facilitator diagnoses and corrects:
 - [Common failure 1 → diagnostic → fix]
 - [Common failure 2 → diagnostic → fix]
 
 ### Time-boxed *(exercise-specific)*
 
-Realistic time estimate. Target inside a Bootstrap module slot: **55–70 minutes** (the exercise is the substance of the 1h45 module — see `SKILL.md` → "Module session runtime — 1h45 target"). Banter and peer conversation are part of the design — don't compress the conversation out. Under 40 = exercise isn't carrying the module; content probably should move from lecture to exercise. Over 80 = exercise is competing for Debrief and Bridge time; split or trim.
-
-Drop-in use outside a Bootstrap module slot (warmups, micro-trainings): **20–30 minutes**, different eval posture (faster-to-insight, single artifact).
+Bootstrap module slot: **55–70 min** (1h45 module — see `SKILL.md` → "Module session runtime"). Drop-in (warmups): **20–30 min**. Under 40 = exercise isn't carrying the module. Over 80 = competing for Debrief/Bridge.
 
 ### Facilitator briefing complete *(exercise-specific — essential)*
 
-- **Watch-for** notes for participant confusion
-- **Decision points** for pacing (extend vs. skip vs. push-harder)
-- **Plug points** (what each participant brings)
-- **What to do if a participant stalls past [N] minutes**
+Watch-fors, decision points (extend/skip/push-harder), plug points, stall-past-N-minutes guidance.
 
 ### Riffs on a recognized framework *(exercise-specific — essential for business-skill exercises)*
 
-The exercise anchors the new LLM skill on a framework or concept participants likely already know (or have at least heard of) from their business context. Examples: StoryBrand's buyer-guide, strategy-as-assumptions (Roger Martin), Voice of Customer, Toyota Kata, principle of least privilege, Jobs-to-be-Done, Double Diamond, compound reliability math.
-
-Why: participants are busy professionals; LLM work is new. A recognized framework gives the new thing a familiar hook. Three benefits stack:
-- **Cognitive economy** — they don't learn two new things at once; the LLM behavior hangs on the framework they already have
-- **Transferability** — they carry BOTH the AI skill AND the framework back to work
-- **Engagement** — riffing on known best-in-class concepts beats generic toy exercises
-
-Check:
-- **Named framework / concept** — the exercise can point at one or two recognized frameworks it riffs on
-- **Integrated, not decorative** — the framework is pedagogically central, not just mentioned in passing
-- **Best-in-class** — not vendor fluff, not outdated consultancy theatre
-
-Rare exception: purely technical drills where no business framework naturally applies. Default: business-skill exercises riff on frameworks.
+Anchors the new LLM skill on a framework participants likely know (StoryBrand, strategy-as-assumptions, Toyota Kata, JTBD, principle of least privilege, etc.). Check: named, integrated (not decorative), best-in-class. Rare exception: pure technical drills.
 
 ### Scaffold / worked example provided *(exercise-specific — essential)*
 
-If the exercise asks the participant to produce an artifact type they haven't built before (LLM-as-judge prompts, skills files, eval criteria, multi-agent handoff formats, etc.), the exercise must provide ONE of:
+If the participant produces an unfamiliar artifact type, the exercise must provide ONE of: inline template/scaffold, worked example from adjacent domain, or pointer to earlier exercise that built the same artifact.
 
-- An inline **template/scaffold** (copy-pasteable prompt with no mid-prompt placeholders — see Prompt design)
-- A **worked example** from an adjacent domain they can adapt
-- An **earlier exercise** that built the same artifact type (with an explicit pointer)
+### Prompt design *(exercise-specific — essential when the exercise contains copy-paste prompts)*
 
-Participants don't create patterns from thin air. Don't assume craft. Check: is every artifact in this exercise either familiar from a prior module or scaffolded here?
-
-### Prompt design *(exercise-specific — essential when the exercise includes any prompt the participant copies into Claude Code)*
-
-- **No placeholders mid-prompt.** No `[BRACKETS]` the participant must find-and-replace inline. Editing inline in Claude Code is tedious.
-- **Handle variable content** via: (1) conversation before (Claude asks, then assembles the prompt), (2) conversation after — preferred for simple input (the prompt instructs Claude to ask questions in turn), or (3) copy-paste right after the prompt (user copies prompt, then pastes data as follow-up message).
-- **Paragraph structure** for human readability if the prompt is longer than a few lines. No wall-of-text prompts.
-- **Under ~1 page.** Long is fine if it earns its keep; wall of text is not.
+Load `memory/check_prompts.md` before scoring. Eval-template-specific concern: every artifact in this exercise either familiar from a prior module or scaffolded here.
 
 ### Plug points real *(exercise-specific — essential)*
 
-Participant brings their own initiative's data, criterion, output. Never generic. Never pre-built for them (unless that's the explicit design — e.g., trainer-provided compliance skills in Module 4).
+Participant brings their own initiative's data, criterion, output. Never generic, never pre-built (unless explicit design — e.g., trainer-provided compliance skills in M4).
 
 ### Voice *(universal)*
 
-- **Main body writes TO the student about their journey.** No facilitator instructions (*"Have the room do X"*, *"Tell participants Y"*) in the body. Those belong in facilitator notes (deferred artifact). The reader is the student. Speak to them directly: *"You'll paste…"*, *"Ask Claude…"*, *"Pair up and show your neighbor…"*
-- **Trailing sections below a `<!-- maintainer -->` HTML comment are maintainer-only.** The curriculum renderer strips everything after `<!-- maintainer -->` before rendering. That space holds editorial metadata (TODOs, iteration log, frameworks riffed on, eval-run notes) AND facilitator notes (watch-fors, timings, decision points). **`---` is NOT the cut marker** — it's a legitimate horizontal rule that can appear in body prose.
-- Second person (`you`, not `the participant`, not `the room`)
-- **Seth × Rory × Risto flavor, not dry textbook.** Builder voice ≠ dry voice. Seth-warmth, Rory-reframes, Risto-directness. Questions to the reader welcome (sprinkled). Dryness is a failure mode.
-- No consultant-speak
-- No LLM-tell words: `honest`/`honestly`, `delve`, `landscape` (as verb), `importantly`, `crucial` (padding)
+Load `memory/check_writing.md` + compounded `2026-04-25-writing-ae101-voice-quartet.md` (extended to QUINTET for AE101: Boris × Martin × Godin × Rory × Risto). Eval-template-specific concern: main body writes TO the student about their journey — facilitator instructions belong in maintainer-only sections below `<!-- maintainer -->`.
 
 ### Business-audience language *(universal — essential)*
 
-Reader is a business leader (SVP marketing, SVP ops, sales manager), not a developer. These words **cannot appear in student-facing text unless plainly earned in this or a prior lecture/exercise in the arc**:
-
-`embeddings`, `vector`/`vector database`, `RAG`/`retrieval-augmented generation`, `retrieval` (tech sense), `pipeline` (tech sense), `orchestration`/`orchestrator`, `schema` (use "rules"), `architecture` (use "layers"/"shape"), `subagent`, `frontmatter`, `prompt engineering` (use "prompting"), `framework` in tech senses. Recognized business frameworks (StoryBrand, Toyota Kata, strategy-as-assumptions) are fine.
-
-Trailing sections below `<!-- maintainer -->` are exempt — those are maintainer-facing. Read the student-facing body as an SVP marketing lead with zero technical background; any flinch = replace or earn.
+Load `memory/check_student_facing.md` for the unearned-tech-jargon ban. Read the body as an SVP marketing lead with zero technical background; any flinch = replace or earn.
 
 ### Length *(universal)*
 
@@ -144,69 +100,30 @@ Trailing sections below `<!-- maintainer -->` are exempt — those are maintaine
 
 ### Specificity *(universal)*
 
-Named mechanics (exact prompts, score scales, expected output shapes), named artifacts from earlier modules, realistic participant dimensions.
+Named mechanics, named artifacts from earlier modules, realistic participant dimensions.
 
 ### Research-backed claims *(universal — essential)*
 
-Every factual claim in the exercise — about practitioner behavior, tool capability, industry pattern, convergence, failure mode, number, or named company practice — must have support in the research KB.
-
-**What counts as support:**
-- A specific file in `continuous-research/` that captures the claim (observations, insights, platform-watch runs, user-signals)
-- A direct practitioner-direct URL (blog, GitHub, conference talk, podcast) with source-type label per project CLAUDE.md's evidence ladder
-- Convergence already documented in `continuous-research/synthesis/` or `continuous-research/findings/by-pattern/`
-
-**What doesn't count:**
-- Vendor press releases dressed up as claims
-- Round-number zombie stats without methodology trace
-- "Analysts say" / "Gartner predicts" framings
-- Claims inferred from single demos without practitioner convergence
-- Anything older than 6 months without explicit dating
-
-**The vision-detail rule.** Antti supplies the vision (framing, arc, governing rule). Research supplies the detail (practitioners, numbers, shipped practices). Detail-layer claims need KB backing; vision-layer framings are labeled as framing, not empirical finding.
-
-**The chasm-crossing filter.** Detail we cite should sit in the "just-hitting-beyond-early-adopters" zone: stuff that works, proven by solo builders 3-6 months ago, now being picked up by first enterprise teams. Bleeding-edge toys not replicated = held loose. Commodity patterns = not worth citing.
-
-When the judge fires: list every unsourced detail-layer claim, either (a) source it, (b) OODA to capture, or (c) cut.
+Load `.claude/rules/research-rules.md` + `memory/check_research_claims.md`. Vision-detail rule: Antti supplies vision (framing), research supplies detail (practitioners, numbers). Detail-layer claims need KB backing or get cut.
 
 ---
 
-## Essential vs contributory (what can TODO, what can't)
+## Essential vs contributory
 
-**Essential (must pass):**
-- Primary leap test
-- Framing fidelity
-- Learning goal fit
-- Module-to-module arc
-- Mood lands (8+/10 at every beat)
-- Teaching moment lands
-- Riffs on a recognized framework (when applicable — business-skill exercises)
-- Facilitator briefing complete
-- Scaffold / worked example provided
-- Prompt design (when applicable — exercise includes copy-paste prompts)
-- Plug points real
-- Business-audience language (no unearned tech jargon)
-- Auto-fail red flags (none triggered)
+**Essential (must pass):** leap test, framing fidelity, learning goal fit, module-to-module arc, mood lands (8+), teaching moment lands, riffs on framework (when applicable), facilitator briefing, scaffold provided, prompt design (when applicable), plug points real, business-audience language, no auto-fail red flags.
 
-**Contributory (can TODO):**
-- Failure modes fully named
-- Time estimate precision
-- Voice polish
-- Length
-- Specificity depth
+**Contributory (can TODO):** failure modes fully named, time precision, voice polish, length, specificity depth.
 
 ## Auto-fail red flags
 
+**Load `memory/check_student_facing.md`, `memory/check_writing.md`, `memory/check_prompts.md` (per surface) before scoring. Auto-fail if any rule in those compendiums fires.**
+
+Eval-template-specific auto-fails:
 - Framed as "test" or "validation check"
-- Participant's criterion / artifact pre-built for them (unless explicit design)
+- Participant's criterion / artifact pre-built (unless explicit design)
 - No time estimate
-- LLM-tell words
-- Uses toy data instead of participant's own initiative
+- Toy data instead of participant's own initiative
 - Exercise could plausibly run without producing the teaching moment
-- **Asks participant to produce an unfamiliar artifact type from thin air** — no scaffold, no template, no worked example, no prior exercise that built the same pattern
-- **Copy-paste prompt with inline `[BRACKET]` placeholders** the participant must find-and-replace — the exercise must use conversational or copy-paste-after patterns instead
-- More than one H1
-- Contains `---` YAML frontmatter
-- **Unearned tech jargon in student-facing text** — any of `embeddings`, `vector`/`vector database`, `RAG`, `retrieval` (tech sense), `pipeline` (tech sense), `orchestration`, `orchestrator`, `schema`, `architecture` (software sense), `subagent`, `frontmatter`, `RAG framework`, `prompt engineering` appears without having been plainly earned in this or a prior lecture/exercise
 
 ---
 
@@ -216,6 +133,8 @@ Copy-paste into a Claude agent. Replace the `[PASTE]` blocks.
 
 ````
 You are evaluating a curriculum exercise for Agents 102. Score it against the filled-in eval below. Be strict.
+
+Read `memory/check_student_facing.md`, `memory/check_writing.md`, and `memory/check_prompts.md` before scoring this artifact. The judges below check conformance to those compendiums plus eval-template-specific concerns. If a rule has been amended in the compendium since this template was written, the compendium wins.
 
 THE FILLED-IN EVAL:
 ---

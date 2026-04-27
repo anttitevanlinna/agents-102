@@ -37,7 +37,7 @@ After this module, you will be able to:
 
 ## Save the rule if it earned itself
 
-The full compound move ran at M1. M2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next. There is no quota.
+The full compound move ran at M1. M2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next.
 
 Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 

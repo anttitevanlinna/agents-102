@@ -1,6 +1,6 @@
 # Fix tests-first
 
-**What you do:** fix the bug you brought from prework, tests-first, no plan mode. Ship the PR.
+**What you do:** fix the bug you brought from prework, tests-first. Ship the PR.
 
 **What happens:** a real PR ships. A failing test lands in the codebase before the fix does. The diff is read line-by-line with at least one push-back.
 
@@ -12,16 +12,36 @@ You know what's loaded and what isn't. Now fix the bug.
 
 No plan mode here. Plan mode earns its keep in M2 on multi-file work; on a trivial bug, it's overhead. The move is tests-first, root-cause-driven.
 
-Bring the bug back. In prework, Claude surfaced three candidates and you picked one. Paste the bug (a sentence or two) back into the conversation. If prework's scrollback is still open, tell Claude to look back.
+Ask Claude to write the failing test, fix the root cause, and show the diff. Drop your bug after the colon.
 
 **Prompt** *(Claude Code)*
 
 ```
 Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
+
+Let's work on this bug:
 ```
 
 
 Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
+
+When Claude says done, push once on the depth. Ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
+
+Ask Claude to interrogate the fix and name what's still surface.
+
+**Prompt** *(Claude Code, optional)*
+
+```
+Was the change you just made the root cause of the bug, or a layer above it? If a layer above, name what the deeper edit would touch. Don't change anything yet. Re-read your own diff and tell me what's still surface.
+```
+
+Ask Claude to do the proper TDD fix on what self-critique surfaced.
+
+**Prompt** *(Claude Code, optional)*
+
+```
+Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit.
+```
 
 Ask Claude to commit, push a branch, and open the PR (merge or draft, your call).
 
@@ -30,11 +50,12 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) open-hook + §2 lead-in, check_pedagogy)
+- compendium-audited 2026-04-27 (this cycle: open-hook reshape on Ex2 prompt per check_prompts §1(d) just-amended; depth paragraph + 2 optional prompts added; register flipped from defense to self-critique; M1 audit GO)
+- compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts) — superseded by 2026-04-27
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Time:** 35–40 min inside M1's 2h slot. Second of three exercises on the same bug / same repo. Shorter than the earlier 40–45 min band — the rule-write move moved to Ex3 where the compound step lives.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — the tests-first, root-cause-driven fix riffs on a framework engineers already know. Named implicitly ("tests-first"); the rule seeded into `./CLAUDE.local.md` is the student's own TDD-style preference.

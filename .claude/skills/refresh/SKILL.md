@@ -24,7 +24,7 @@ Do NOT invoke as routine maintenance every session. The cost of running this is 
 
 ### `memory` — files under `memory/`
 
-For each `project_*.md`, `feedback_*.md`, `reference_*.md`, `storytelling-principles.md`, `copy-taste.md`, `voice-guide.md`, `curriculum_design_rules.md`:
+For each `project_*.md`, `feedback_*.md`, `reference_*.md`, `storytelling-principles.md`, `copy-taste.md`, `voice-guide.md`:
 
 - **Referenced path check:** grep for relative and absolute paths in the file. Does each referenced file still exist? Mark broken pointers.
 - **Consistency check:** if the memory claims a fact about the curriculum architecture, compare against `bosser-strategy:content-strategy.md`, `curriculum/CLAUDE.md`, `curriculum/lecture-guardrails.md`. Contradictions = stale.

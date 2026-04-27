@@ -4,7 +4,7 @@
 
 **What happens:** your rules file is born from how you actually worked, not from a template. The first move outside the repo happens on a real job: the ticket for the bug you just shipped.
 
-**The point:** the compound step (Klaassen's fourth, plan-work-review-compound) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread. Then the loop closes where the team actually reads it: the tracker.
+**The point:** the compound step (plan → work → review → compound, Kieran Klaassen's loop) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread. Then Claude updates the bug's status in the tracker.
 
 **Time:** 30 minutes.
 
@@ -17,10 +17,6 @@ The PR shipped. Now compound the session, then make the first move outside the r
 ```
 Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
 
-Also, separately from ./CLAUDE.local.md: pin the AE101 content folder into `.claude/settings.local.json` under `additionalDirectories` so future sessions auto-load it. Read the current file if it exists, add (don't replace) the absolute path of the content folder I added via /add-dir in prework. Create the file with a single-key object if it doesn't exist. Ensure `.claude/settings.local.json` is gitignored — if this repo's local `.gitignore` doesn't cover it, add it. Machine-global excludesFile coverage isn't guaranteed across laptops. After this, I never need to run /add-dir for this training again.
-
-Keep ./CLAUDE.local.md for session-derived rules only; config lives in settings.local.json.
-
 If any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.
 
 Tell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.
@@ -29,7 +25,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 
 Read Claude's summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
 
-> **Quick timebox note.** Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework. If a tenant gate blocks the install, take the fallback path and move on.
+> **Quick timebox note.** Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework.
 
 ## MCP: why your agent needs to reach outside the repo (~5 min)
 
@@ -49,19 +45,25 @@ The teaching moment is the agent reaching across a tool boundary with a real eng
 
 If you have a live connector (1 or 2):
 
+Ask Claude to read the ticket for your bug and report what's on it.
+
 **Prompt** *(Claude Code)*
 
 ```
-Read the ticket for the bug we just fixed. Tell me what it says: the reporter, the description, any comments on it. If you can't find a matching ticket, search by the bug's keywords; if there still isn't one, say so and we'll create one.
+Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.
+
+Ticket:
 ```
 
 
 Claude reads the ticket (or confirms there isn't one). Then:
 
+Ask Claude to draft the close-out and show it before posting.
+
 **Prompt** *(Claude Code)*
 
 ```
-Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Show me what you'll write before you post it.
+Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Tell me what you wrote.
 ```
 
 
@@ -69,16 +71,29 @@ Read the close-out. If Claude wrote something stiff or wrong, push back. Tell it
 
 Ship the update (or paste it into the tracker yourself if you're on path 3). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
 
+You're near the end of the M1 session. One more sweep on `./CLAUDE.local.md` before close: anything earned since the first compound — the ticket beat, the push-backs, the catch on the missing PR — that didn't land yet?
+
+Ask Claude to sweep the session for anything earned since the first compound and integrate.
+
+**Prompt** *(Claude Code)*
+
+```
+We're preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don't append. Tell me in 2–3 lines what you added, or "nothing new" if nothing did.
+```
+
 You ran the loop. You have a PR, a rules file born from session evidence, and a ticket that closed itself from inside Claude Code. Your setup is in place.
+
+You can now clear. What you stored may or may not help you in future sessions. Let's find out then.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+- compendium-audited 2026-04-27 (this cycle: settings.local.json/additionalDirectories block removed from Compound prompt — was tied to the deleted prework /add-dir step; audit GO; M1 chain flow intact)
+- compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy) — superseded by 2026-04-27 cleanup
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).
 - **Time:** 30 min inside M1's 2h slot. Third of three exercises on the same bug / same repo.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the retro extends `./CLAUDE.local.md` from session evidence. Klaassen attribution earned here (Claude cites the practitioner if one fits).

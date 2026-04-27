@@ -78,7 +78,7 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-26 (phase structure changed in this cycle: Steps 3+4+5 collapsed to 3+4 with manual/agentic transport fork. Auto-fire `curriculum-pre-ship-audit` owed once build pipeline ships the tarball + `<CONTENT_URL>` substitution.)
+**Quality:** draft 2026-04-26 (phase structure changed: Steps 3+4+5 collapsed to 3+4 with manual/agentic transport fork. Auto-fire `curriculum-pre-ship-audit` owed.)
 
 **Meta:**
 - **Runtime:** 30 min target. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
@@ -89,4 +89,4 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk + added to the session via `/add-dir`, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback TBD. Don't absorb install debugging into M1 time.
 
-**Packaging:** `scripts/build-ae101-content-tarball.sh` (TODO — rename of existing `.zip` script to produce `.tar.gz`) builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `content/skills/`. `scripts/build-workbook.js` copies the tarball into `site/clients/<customer>/content.tar.gz` and substitutes `<CONTENT_URL>` at workbook-render time.
+**Packaging:** `scripts/build-ae101-content-tarball.sh` builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into `site/clients/<customer>/content.tar.gz`, and substitutes `<CONTENT_URL>` at workbook-render time.

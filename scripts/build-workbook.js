@@ -211,6 +211,58 @@ const WORKBOOK_INIT_JS = `
 })();
 `;
 
+// Trainer guide: single .md → standalone HTML at site/clients/<customer>/trainer-guide.html.
+// Same chrome (CSS + decorations) as the workbook, but no module spine — one
+// document, rendered top-to-bottom. Generic content (not per-customer); we
+// emit per-customer purely so it lives behind the same gate as the workbook.
+function buildTrainerGuide(customer) {
+  const guidePath = path.join(ROOT, 'curriculum/trainer-guide.md');
+  let md = readMd(guidePath);
+  if (md === null) throw new Error(`Trainer guide not found: ${guidePath}`);
+  md = escapeTildes(md);
+  // Rewrite cross-doc links to absolute customer-workbook anchors so the trainer
+  // can click a `[reference](reference/foo.md)` ref in the guide and land in
+  // the workbook's matching section. No SPA, no router — anchor targets only.
+  md = md.replace(CR.CROSS_DOC_LINK_RE, '](./#$1-$2)');
+  const bodyHtml = marked.parse(md);
+
+  const cover = `
+<header class="workbook-cover" id="top">
+  <p class="eyebrow">${CR.esc(customer)} workbook</p>
+  <h1 class="cover-title">Trainer delivery guide</h1>
+</header>
+`;
+  const main = '<main>\n' + cover + '\n<section class="module" id="trainer-guide">\n' + bodyHtml + '\n</section>\n</main>\n';
+  return main + CR.renderFooter() + '\n';
+}
+
+const TRAINER_GUIDE_INIT_JS = `
+(function () {
+  if (window.CurriculumRuntime) {
+    CurriculumRuntime.decoratePrompts(document.body);
+    CurriculumRuntime.installReadingProgress();
+  }
+})();
+`;
+
+function trainerGuideTemplate(customer, content) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainer delivery guide — ${CR.esc(customer)}</title>
+<style>${SPA_CSS}</style>
+</head>
+<body class="runtime-cli workbook">
+${content}
+<script>${SPA_JS}</script>
+<script>${TRAINER_GUIDE_INIT_JS}</script>
+</body>
+</html>
+`;
+}
+
 function template(title, content, trainingKey) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -266,4 +318,12 @@ fs.writeFileSync(outFile, html);
 
 const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
 console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+
+// Trainer guide: same gate (per-customer dir), separate file. Generic content.
+const guideHtml = trainerGuideTemplate(customer, buildTrainerGuide(customer));
+const guideFile = path.join(outDir, 'trainer-guide.html');
+fs.writeFileSync(guideFile, guideHtml);
+const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
+console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+
 console.log(`Once deployed: https://agents102.bosser.consulting/clients/${customer}/`);

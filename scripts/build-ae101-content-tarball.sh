@@ -10,6 +10,8 @@
 #   lectures/          from curriculum/lectures/      (maintainer blocks stripped)
 #   exercises/         from curriculum/exercises/     (maintainer blocks stripped)
 #   reference/         from curriculum/reference/     (maintainer blocks stripped)
+#   supplementary/     from curriculum/supplementary/ (maintainer blocks stripped;
+#                                                       README.md skipped — authoring doc)
 #   content/skills/    from content/skills/*          (verbatim — these are the
 #                                                       student-installable skills)
 #
@@ -27,7 +29,7 @@ STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
 ROOT="$STAGE/content"
-mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/content/skills"
+mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills"
 
 # Strip maintainer blocks: everything from `<!-- maintainer -->` to end-of-file
 # is trainer-only and shouldn't ship to Claude's local context. Renderer strips
@@ -52,6 +54,13 @@ copy_md_dir() {
 copy_md_dir curriculum/lectures   "$ROOT/lectures"
 copy_md_dir curriculum/exercises  "$ROOT/exercises"
 copy_md_dir curriculum/reference  "$ROOT/reference"
+
+# Supplementary materials: ship without README.md (authoring doc, not student-facing).
+for f in curriculum/supplementary/*.md; do
+  base="$(basename "$f")"
+  [ "$base" = "README.md" ] && continue
+  strip_maintainer "$f" "$ROOT/supplementary/$base"
+done
 
 # Skills ship verbatim — they're the installable runtime skills, not curriculum
 # prose. Maintainer blocks aren't a thing in SKILL.md files anyway.

@@ -1671,7 +1671,7 @@ body.workbook { padding-top: 3rem; }
 <header class="workbook-cover" id="top">
   <p class="eyebrow">acme workbook</p>
   <h1 class="cover-title">Agentic Engineering 101</h1>
-  <p class="lede">Six modules for software engineers. Become the Claude wizard — mastery, not remediation. Plus two optional modules when the cohort wants the team peak.</p>
+  <p class="lede">Six modules for software engineers. Become the Claude wizard — mastery, not remediation.</p>
 </header>
 
 <nav class="workbook-toc">
@@ -1687,6 +1687,18 @@ body.workbook { padding-top: 3rem; }
       <li data-slug="learn-from-the-test"><a href="#learn-from-the-test"><span class="module-n">05</span><span class="module-body"><span class="module-title">Learn from the test, re-send packaged</span><span class="module-big">Read the un-packaged M4 run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.</span></span><span class="module-arrow">→</span></a></li>
       <li data-slug="spot-gaps-build-the-loop"><a href="#spot-gaps-build-the-loop"><span class="module-n">06</span><span class="module-body"><span class="module-title">Spot gaps, build the loop</span><span class="module-big">Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn&#39;t anticipate, pick where the gap belongs (memory, verifier, new skill), and author the second skill through conversation so future you inherits the lesson.</span></span><span class="module-arrow">→</span></a></li>
     </ol>
+    <h3 class="index-heading">Quick reference</h3>
+    <ol class="module-list index-references">
+      <li><a href="#reference-claude-code-for-engineers"><span class="supp-kind">Lookup</span><span class="supp-title">Claude Code for engineers</span><span class="module-arrow">→</span></a></li>
+      <li><a href="#reference-mcp-and-connectors"><span class="supp-kind">Lookup</span><span class="supp-title">MCP and connectors</span><span class="module-arrow">→</span></a></li>
+      <li><a href="#reference-multi-session-git"><span class="supp-kind">Lookup</span><span class="supp-title">Multi-session and Git: survival guide</span><span class="module-arrow">→</span></a></li>
+      <li><a href="#reference-scheduled-agents"><span class="supp-kind">Lookup</span><span class="supp-title">Scheduled agents</span><span class="module-arrow">→</span></a></li>
+    </ol>
+    <h3 class="index-heading">For trainers</h3>
+    <ol class="module-list index-references">
+      <li><a href="./trainer-guide.html"><span class="supp-kind">Trainers</span><span class="supp-title">Delivery guide</span><span class="module-arrow">→</span></a></li>
+    </ol>
+
 </nav>
 
 <section class="module" id="prework">
@@ -2983,6 +2995,573 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 <p>—Antti</p>
 
 </section>
+
+<section class="module" id="reference-claude-code-for-engineers">
+<div class="phase-kicker">Reference</div>
+<h1>Claude Code for engineers — reference</h1>
+<p>Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding. When a module says <em>&quot;see the reference for CLAUDE.md precedence&quot;</em> or <em>&quot;plan-mode options&quot;</em>, this is where.</p>
+<p>Source of truth is Anthropic&#39;s docs. Links and verbatim quotes below point at <a href="https://code.claude.com/docs/en/memory.md">code.claude.com/docs/en/memory.md</a>, <a href="https://code.claude.com/docs/en/skills">skills</a>, <a href="https://code.claude.com/docs/en/sub-agents">sub-agents</a>, <a href="https://code.claude.com/docs/en/settings">settings</a>, <a href="https://code.claude.com/docs/en/hooks">hooks</a>, <a href="https://code.claude.com/docs/en/cli-reference">cli-reference</a>. This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.</p>
+<p><strong>Last verified against docs:</strong> 2026-04-23.</p>
+<hr>
+<h2>1. The memory hierarchy — where your rules actually live</h2>
+<p>Four layers. More specific overrides broader. All loaded files <strong>concatenate</strong> — they don&#39;t replace each other.</p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Path</th>
+<th>Governance</th>
+<th>Audience</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Managed policy</strong></td>
+<td>macOS <code>/Library/Application Support/ClaudeCode/CLAUDE.md</code> · Linux/WSL <code>/etc/claude-code/CLAUDE.md</code> · Windows <code>C:\Program Files\ClaudeCode\CLAUDE.md</code></td>
+<td>IT/DevOps deploys via MDM / Group Policy / Ansible. Cannot be excluded.</td>
+<td>Everyone on the managed machine</td>
+</tr>
+<tr>
+<td><strong>Project</strong></td>
+<td><code>./CLAUDE.md</code> OR <code>./.claude/CLAUDE.md</code></td>
+<td>Checked into git → PR review</td>
+<td>Your team</td>
+</tr>
+<tr>
+<td><strong>User</strong></td>
+<td><code>~/.claude/CLAUDE.md</code></td>
+<td>You own</td>
+<td>You, across every project</td>
+</tr>
+<tr>
+<td><strong>Local</strong></td>
+<td><code>./CLAUDE.local.md</code></td>
+<td>You own; <strong>gitignore</strong> it</td>
+<td>You, this project only</td>
+</tr>
+</tbody></table>
+<p><strong>Precedence within a directory:</strong> <code>CLAUDE.local.md</code> loads after <code>CLAUDE.md</code>, so your local file wins on conflict.</p>
+<p><strong>Walk-up behavior:</strong> Claude Code walks up the directory tree from your working directory, loading <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> at every level. If you run Claude Code in <code>foo/bar/</code>, it loads from <code>foo/bar/</code>, <code>foo/</code>, and up — everything concatenates into context.</p>
+<p><strong>Subdirectory behavior:</strong> CLAUDE.md / CLAUDE.local.md in <em>sub</em>directories (below the working directory) are NOT loaded at launch. They load on demand when Claude reads a file in that subdirectory.</p>
+<p><strong><code>CLAUDE.local.md</code> is the intended gitignored pattern.</strong> Verbatim from docs:</p>
+<blockquote>
+<p>For private per-project preferences that shouldn&#39;t be checked into version control, create a <code>CLAUDE.local.md</code> at the project root. It loads alongside <code>CLAUDE.md</code> and is treated the same way. Add <code>CLAUDE.local.md</code> to your <code>.gitignore</code> so it isn&#39;t committed; running <code>/init</code> and choosing the personal option does this for you.</p>
+</blockquote>
+<p><strong>Worktree gotcha:</strong> gitignored <code>CLAUDE.local.md</code> only exists in the worktree where you created it. Cross-worktree personal instructions → import from home directory instead: <code>@~/.claude/my-project-instructions.md</code> in your <code>CLAUDE.md</code>.</p>
+<p><strong>Which layer compounds per AE101 session:</strong> <code>CLAUDE.local.md</code> by default (personal, fast loop, no PR friction). Team rules land in <code>./CLAUDE.md</code> via PR — rare, intentional, earns review. Global personal patterns that travel across codebases → <code>~/.claude/CLAUDE.md</code>.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#choose-where-to-put-claude-md-files">memory.md § Choose where to put CLAUDE.md files</a>.</p>
+<hr>
+<h2>2. CLAUDE.md vs. auto memory — two systems, not one</h2>
+<p>Two memory systems load at session start. You write one; Claude writes the other.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CLAUDE.md</th>
+<th>Auto memory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Who writes</strong></td>
+<td>You</td>
+<td>Claude</td>
+</tr>
+<tr>
+<td><strong>Contains</strong></td>
+<td>Instructions, rules, conventions</td>
+<td>Learnings, patterns, things Claude noticed</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Project / user / org (per § 1)</td>
+<td>Per working tree (per-repo)</td>
+</tr>
+<tr>
+<td><strong>Location</strong></td>
+<td>Per § 1 hierarchy</td>
+<td><code>~/.claude/projects/&lt;project&gt;/memory/</code></td>
+</tr>
+<tr>
+<td><strong>Loaded into context</strong></td>
+<td>Every session, in full</td>
+<td>Every session, first 200 lines or 25KB of <code>MEMORY.md</code></td>
+</tr>
+<tr>
+<td><strong>Use for</strong></td>
+<td><em>&quot;Always do X&quot;</em> rules</td>
+<td><em>&quot;I learned X about this codebase&quot;</em> notes</td>
+</tr>
+</tbody></table>
+<p><strong>Auto memory structure:</strong></p>
+<pre><code>~/.claude/projects/&lt;project&gt;/memory/
+├── MEMORY.md          # index; loaded at launch
+├── debugging.md       # topic file; loads on demand
+├── api-conventions.md # topic file; loads on demand
+└── ...
+</code></pre>
+<p><strong><code>MEMORY.md</code> is an index.</strong> Claude keeps it concise and moves detail into topic files. Topic files load when Claude reads them — not at launch.</p>
+<p><strong>Version requirement:</strong> auto memory needs Claude Code <strong>v2.1.59+</strong>. Check with <code>claude --version</code>.</p>
+<p><strong>Disable auto memory:</strong></p>
+<ul>
+<li>In-session toggle: <code>/memory</code> → auto memory toggle</li>
+<li>Settings: <code>&quot;autoMemoryEnabled&quot;: false</code> in project settings</li>
+<li>Env var: <code>CLAUDE_CODE_DISABLE_AUTO_MEMORY=1</code></li>
+</ul>
+<p><strong>Relocate auto memory:</strong> <code>&quot;autoMemoryDirectory&quot;: &quot;~/my-custom-memory-dir&quot;</code> in user or local settings. Not accepted from project settings (security — prevents a shared project from redirecting your memory writes).</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#auto-memory">memory.md § Auto memory</a>.</p>
+<hr>
+<h2>3. <code>.claude/rules/</code> — path-scoped rules</h2>
+<p>When rules only apply to certain files, don&#39;t put them in <code>CLAUDE.md</code>. Put them in <code>.claude/rules/</code> with a <code>paths:</code> frontmatter glob. They load only when Claude reads a matching file.</p>
+<p><strong>Layout:</strong></p>
+<pre><code>your-project/
+├── .claude/
+│   ├── CLAUDE.md
+│   └── rules/
+│       ├── code-style.md       # loaded always (no paths frontmatter)
+│       ├── testing.md          # loaded always
+│       └── api/
+│           └── handlers.md     # path-scoped (see below)
+</code></pre>
+<p><strong>Path-scoped example:</strong></p>
+<pre><code class="language-markdown">---
+paths:
+  - &quot;src/api/**/*.ts&quot;
+---
+
+# API Development Rules
+- All API endpoints must include input validation
+- Use the standard error response format
+</code></pre>
+<p>Glob patterns: <code>**/*.ts</code>, <code>src/**/*</code>, <code>*.md</code>, <code>src/components/*.tsx</code>. Brace expansion supported: <code>&quot;src/**/*.{ts,tsx}&quot;</code>.</p>
+<p><strong>User-level rules:</strong> <code>~/.claude/rules/preferences.md</code> and similar apply to every project. Project rules override user rules.</p>
+<p><strong>Symlinks supported.</strong> Link a shared rules repo into multiple projects:</p>
+<pre><code class="language-bash">ln -s ~/shared-claude-rules .claude/rules/shared
+ln -s ~/company-standards/security.md .claude/rules/security.md
+</code></pre>
+<p><strong>CLAUDE.md vs. rules vs. skills — the decision:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Home</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Always-on project conventions</td>
+<td><code>CLAUDE.md</code></td>
+</tr>
+<tr>
+<td>Rules that only apply to certain paths</td>
+<td><code>.claude/rules/</code> with <code>paths:</code></td>
+</tr>
+<tr>
+<td>Task-specific workflow Claude invokes when relevant</td>
+<td>A skill</td>
+</tr>
+</tbody></table>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#organize-rules-with-claude/rules/">memory.md § Organize rules with <code>.claude/rules/</code></a>.</p>
+<hr>
+<h2>4. Imports — <code>@path/to/file</code></h2>
+<p><code>CLAUDE.md</code> (and <code>CLAUDE.local.md</code>) can import other files via <code>@path</code> syntax. Imported files load into context at launch alongside the parent.</p>
+<pre><code class="language-markdown">See @README for project overview and @package.json for available npm commands.
+
+# Additional Instructions
+- git workflow @docs/git-instructions.md
+- personal preferences @~/.claude/my-preferences.md
+</code></pre>
+<p>Relative paths resolve relative to the importing file, not the working directory. Recursion depth: <strong>5 hops maximum.</strong></p>
+<p><strong>First-time approval:</strong> the first time a project uses external imports, Claude Code shows an approval dialog. If you decline, imports stay disabled and the dialog doesn&#39;t reappear.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#import-additional-files">memory.md § Import additional files</a>.</p>
+<hr>
+<h2>5. Plan mode at depth</h2>
+<p>Plan mode: Claude researches and proposes a plan instead of writing files. You approve the plan; Claude executes.</p>
+<p><strong>Toggle on:</strong></p>
+<ul>
+<li>Prompt: <em>&quot;Enable plan mode.&quot;</em></li>
+<li>Shift+Tab cycles permission modes (Default → Auto-accept → Plan → Auto)</li>
+<li>Desktop mode dropdown: pick <em>Plan</em></li>
+</ul>
+<p><strong>Four approval paths when the plan is ready:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Behavior</th>
+<th>Pick when</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1. Yes, and use auto mode</strong></td>
+<td>Full execution, no further approval</td>
+<td>Plan looks right, work is reversible or low-stakes</td>
+</tr>
+<tr>
+<td><strong>2. Yes, manually approve edits</strong></td>
+<td>Claude pauses per file write</td>
+<td>Plan looks right, work touches something you need to watch</td>
+</tr>
+<tr>
+<td><strong>3. No, refine with Ultraplan on Claude Code on the web</strong></td>
+<td>Cloud-based plan refinement</td>
+<td>Plan needs more thought than you want to spend in-session</td>
+</tr>
+<tr>
+<td><strong>4. Tell Claude what to change</strong></td>
+<td>Text box for targeted feedback; Claude rewrites plan</td>
+<td>Plan is 80% there; one or two named fixes</td>
+</tr>
+</tbody></table>
+<p><strong>Exit without executing:</strong> <em>&quot;Disable plan mode,&quot;</em> mode dropdown, or Shift+Tab cycle.</p>
+<p><strong>Keep-planning-with-feedback (before approval):</strong> instead of approving, push back with specific items. Claude regenerates. Use when you want to sharpen the plan without restarting the whole prompt.</p>
+<p><strong>AE101 cross-refs:</strong> M2 exercise <code>push-back-on-the-plan.md</code> teaches the two-read pattern (human push-back → Pocock <code>grill-me</code> second-pass → approve). M1 deliberately runs without plan mode (trivial bug doesn&#39;t earn it).</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/overview">plan mode overview</a>.</p>
+<hr>
+<h2>6. Subagents — Task tool, fresh context</h2>
+<p>When you need Claude to do structured work in a fresh context — breadth-first audits, long structured reports, parallel work on different concerns — spawn a subagent.</p>
+<p><strong>Invocation in practice:</strong></p>
+<ul>
+<li>Prompt explicitly: <em>&quot;Run this as a subagent via the Task tool.&quot;</em></li>
+<li>Or <code>/clear</code> if you just want a fresh context without parallelism (coarse alternative)</li>
+<li>Claude decides subagent count; you specify the shape (<em>&quot;three subagents — one for X, one for Y, one for Z — then synthesize&quot;</em>)</li>
+</ul>
+<p><strong>When subagent, when main thread:</strong></p>
+<ul>
+<li><strong>Subagent:</strong> breadth-first audits, long structured reports that would clutter scrollback, genuinely parallel work, invoking a skill on a one-shot bounded job.</li>
+<li><strong>Main thread:</strong> interactive authoring (one-question-at-a-time), iterative steering where you want to see every reply, short jobs where context-switch cost &gt; benefit.</li>
+</ul>
+<p><strong>Persistent memory for subagents:</strong> subagents can maintain their own auto memory. See <a href="https://code.claude.com/docs/en/sub-agents#enable-persistent-memory">subagent configuration</a>.</p>
+<p><strong>AE101 cross-refs:</strong> M3 Ex1/Ex2 invoke the curated access-control + STRIDE skills as subagents; Ex3 (test-strategy authoring) stays main-thread. M4 Phase 2 audit runs as a subagent. The discrimination <em>&quot;which job belongs in which thread&quot;</em> is a named LO in M3.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/sub-agents">sub-agents</a>.</p>
+<hr>
+<h2>7. Skills</h2>
+<p>Scoped, named capabilities. Markdown file with frontmatter + instructions, lives in <code>.claude/skills/&lt;name&gt;/SKILL.md</code> (or equivalent team-kit location per the pre-engagement contract).</p>
+<p><strong>Two invocation modes:</strong></p>
+<ul>
+<li>Claude invokes when it determines the skill is relevant to the current task</li>
+<li>You invoke explicitly: <em>&quot;apply the <code>stride</code> skill to this feature&quot;</em></li>
+</ul>
+<p><strong>When to reach for a skill vs. a rule:</strong></p>
+<ul>
+<li><strong>Skill:</strong> task-specific, loads on demand, reusable move (<em>&quot;review this against our security policy&quot;</em>)</li>
+<li><strong>Rule:</strong> always-on (or path-scoped), constraints Claude should honour whenever active</li>
+</ul>
+<p><strong>AE101 cross-refs:</strong> M3 ships two curated skills (<code>access-control-analysis</code>, <code>stride</code>) and the student authors one (<code>test-strategy</code>). M6 authors the second (the learning-loop skill from the two-run diff).</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/skills">skills</a>.</p>
+<hr>
+<h2>8. Connectors / MCP</h2>
+<p>Covered separately in <code>reference/mcp-and-connectors.md</code>. Per-tracker install (GitHub Issues via <code>gh</code> CLI, Jira via Atlassian Rovo MCP, Linear via Composio or Merge), tenant-admin fallbacks, freshness-dated.</p>
+<p>Short version: <code>+</code> button next to the prompt, or Settings → Connectors. OAuth flow. Tenant admin gate for M365 / Google Workspace. Screenshot fallback when IT hasn&#39;t green-lit yet.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/desktop">Claude Code desktop → Connectors</a>.</p>
+<hr>
+<h2>9. Scheduling — <code>/loop</code>, Desktop scheduled tasks, Routines</h2>
+<p>Three mechanisms. Pick by intent.</p>
+<p><strong><code>/loop</code> (in-session only.)</strong> <code>/loop 5m &lt;prompt&gt;</code> runs the prompt every 5 minutes while the session is open. Closes when you close the session. Use for: polling during a work block, watching a build, monitoring a long-running task&#39;s intermediate output.</p>
+<p><strong>Desktop scheduled tasks — local (the everyday choice).</strong> Sidebar: <strong>Schedule → New task → New local task.</strong> Name, prompt, frequency. Runs on your laptop when the task fires; inherits your connectors.</p>
+<p><strong>Missed-run behavior:</strong> if the laptop was asleep at scheduled time, Claude Code catches up <strong>once</strong> for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (<em>&quot;only run if it&#39;s before 10:00am; otherwise report skipped&quot;</em>).</p>
+<p><strong>Routines — remote (Anthropic&#39;s cloud).</strong> Same Schedule sidebar: <strong>New task → New remote task.</strong> Runs on Anthropic&#39;s infra regardless of your laptop. <strong>Requires a cloud-based Git repo</strong> as working directory — AE101&#39;s default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows.</p>
+<p><strong>M4/M5/M6 send-off implications:</strong> the un-packaged M4 send-off runs in the <strong>same Claude Code session</strong> (not <code>/loop</code>, not scheduled). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents are the generalisation M6 names as a callout, not an authoring exercise.</p>
+<p><strong>Session lifecycle — three gotchas</strong> (verified 2026-04-23):</p>
+<ol>
+<li><strong>Laptop sleep freezes the session.</strong> The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight runs, prevent sleep (<code>caffeinate -dims</code> on macOS; power-plan change on Linux/Windows). Don&#39;t close the lid.</li>
+<li><strong>Ctrl+C during a tool call can corrupt the session.</strong> Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session&#39;s <code>.jsonl</code> in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that <code>/resume</code> may not work on that session.</li>
+<li><strong>No per-session budget cap.</strong> Auto-compaction keeps context from ballooning, but there&#39;s no built-in token budget or time cap. A multi-hour agentic run can burn more than you expect. Watch the scrollback for drift; <code>stop when you&#39;ve seen enough</code> is a real discipline.</li>
+</ol>
+<p>Docs: <a href="https://code.claude.com/docs/en/desktop-scheduled-tasks">Desktop scheduled tasks</a>, <a href="https://code.claude.com/docs/en/scheduled-tasks"><code>/loop</code></a>, <a href="https://code.claude.com/docs/en/how-claude-code-works.md">How Claude Code works</a>. Ctrl+C corruption tracked in GitHub issues #3003, #17466, #18880.</p>
+<hr>
+<h2>10. Session-hygiene commands — <code>/memory</code>, <code>/init</code>, <code>/compact</code></h2>
+<p><strong><code>/memory</code></strong> — lists every <code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>, and rules file loaded in the current session. Toggle auto memory on/off. Link to open the auto memory folder in your editor. <strong>First stop when Claude seems to be ignoring a rule</strong> — check it actually loaded.</p>
+<p><strong><code>/init</code></strong> — scans your codebase and drafts a starting <code>CLAUDE.md</code>. If one exists, <code>/init</code> suggests improvements rather than overwriting. Multi-phase interactive variant: <code>CLAUDE_CODE_NEW_INIT=1 claude</code> runs an interactive flow (asks which artifacts to set up — CLAUDE.md, skills, hooks — then explores with a subagent and proposes).</p>
+<p><strong><code>/compact</code></strong> — summarises the conversation to free context. What survives:</p>
+<ul>
+<li>Project-root <code>CLAUDE.md</code> re-reads from disk and re-injects</li>
+<li>Nested subdirectory CLAUDE.md files <strong>do NOT</strong> re-inject; they reload next time Claude reads a file in that subdir</li>
+<li>Conversation-only instructions (things you said in chat but didn&#39;t write to a file) are LOST</li>
+</ul>
+<p>If an instruction disappeared after <code>/compact</code>, it was either conversation-only or lives in a subdirectory CLAUDE.md that hasn&#39;t reloaded. Persistent instructions belong in a file, not just in scrollback.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#view-and-edit-with-memory">memory.md § View and edit with <code>/memory</code></a>, <a href="https://code.claude.com/docs/en/context-window#what-survives-compaction">context-window § What survives compaction</a>.</p>
+<hr>
+<h2>11. <code>--append-system-prompt</code> — system-prompt-level instructions</h2>
+<p><strong>CLAUDE.md is loaded as a user message, not the system prompt.</strong> Claude reads it and tries to follow, but there&#39;s no strict compliance guarantee.</p>
+<p>For instructions that need system-prompt-level treatment (stronger adherence, harder to override mid-conversation), use <code>--append-system-prompt</code>:</p>
+<pre><code class="language-bash">claude --append-system-prompt &quot;Never edit production config files.&quot;
+</code></pre>
+<p>Passed at every invocation — suited for scripts, CI, and automation more than interactive use. For interactive sessions, wrap in a shell alias or launcher.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/cli-reference#system-prompt-flags">cli-reference § system-prompt flags</a>.</p>
+<hr>
+<h2>12. Hooks — <code>InstructionsLoaded</code> for debugging</h2>
+<p>When a rule isn&#39;t firing and <code>/memory</code> confirms it&#39;s loaded, next stop is the <code>InstructionsLoaded</code> hook. Logs exactly which instruction files loaded, when, and why. Useful for path-scoped rules and lazy-loaded subdirectory files.</p>
+<p>Hooks configure via <code>.claude/settings.json</code> or user settings. Not our primary teaching surface; flag when students need the introspection.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/hooks">hooks</a>.</p>
+<hr>
+<h2>13. Monorepo hygiene — <code>claudeMdExcludes</code></h2>
+<p>Ancestor CLAUDE.md files from <em>other</em> teams&#39; directories get picked up by the walk-up. In a monorepo, that&#39;s noise.</p>
+<p><code>.claude/settings.local.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;claudeMdExcludes&quot;: [
+    &quot;**/monorepo/CLAUDE.md&quot;,
+    &quot;/home/you/monorepo/other-team/.claude/rules/**&quot;
+  ]
+}
+</code></pre>
+<p>Glob patterns match absolute paths. Configurable at any settings layer (user / project / local / managed); arrays merge across layers.</p>
+<p><strong>Managed-policy CLAUDE.md cannot be excluded.</strong> Org-wide instructions always apply regardless of individual settings.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#exclude-specific-claude-md-files">memory.md § Exclude specific CLAUDE.md files</a>.</p>
+<hr>
+<h2>14. Managed-policy CLAUDE.md — IT/DevOps controlled</h2>
+<p>For orgs that centrally manage Claude Code behaviour across dev machines. A <code>CLAUDE.md</code> at the managed policy location (paths in § 1) applies to every user on that machine and cannot be excluded by individual settings.</p>
+<p>Deploy via MDM, Group Policy, Ansible, or equivalent config-management tool.</p>
+<p><strong>Managed CLAUDE.md vs. managed settings:</strong> different tools for different jobs.</p>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Configure in</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Block specific tools / commands / paths</td>
+<td>Managed settings: <code>permissions.deny</code></td>
+</tr>
+<tr>
+<td>Enforce sandbox isolation</td>
+<td>Managed settings: <code>sandbox.enabled</code></td>
+</tr>
+<tr>
+<td>Env vars / API provider routing</td>
+<td>Managed settings: <code>env</code></td>
+</tr>
+<tr>
+<td>Force login method / org UUID</td>
+<td>Managed settings: <code>forceLoginMethod</code>, <code>forceLoginOrgUUID</code></td>
+</tr>
+<tr>
+<td>Code-style and quality guidelines</td>
+<td>Managed CLAUDE.md</td>
+</tr>
+<tr>
+<td>Data-handling / compliance reminders</td>
+<td>Managed CLAUDE.md</td>
+</tr>
+<tr>
+<td>Behavioral guidance for Claude</td>
+<td>Managed CLAUDE.md</td>
+</tr>
+</tbody></table>
+<p>Settings are enforced by the client regardless of Claude&#39;s behaviour. CLAUDE.md shapes behaviour but is not a hard enforcement layer. Use settings for gates, CLAUDE.md for guidance.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#manage-claude-md-for-large-teams">memory.md § Manage CLAUDE.md for large teams</a>, <a href="https://code.claude.com/docs/en/permissions#managed-settings">permissions § managed settings</a>.</p>
+<hr>
+<h2>15. Troubleshooting</h2>
+<p><strong>&quot;Claude isn&#39;t following my CLAUDE.md.&quot;</strong> Run <code>/memory</code> first. Check the file actually loaded. If loaded and still not followed: specificity (<em>&quot;Use 2-space indentation&quot;</em> beats <em>&quot;format code nicely&quot;</em>); conflict (two files giving contradictory guidance); and the fundamental non-enforcement — CLAUDE.md is context, not a system-prompt constraint. For strict adherence use <code>--append-system-prompt</code> or a hook.</p>
+<p><strong>&quot;Auto memory saved something weird.&quot;</strong> <code>/memory</code> → open the auto memory folder. Plain markdown. Edit or delete.</p>
+<p><strong>&quot;CLAUDE.md is too large (&gt;200 lines) and adherence is dropping.&quot;</strong> Move path-scoped rules to <code>.claude/rules/</code>. Move rare-but-needed content to <code>@path</code> imports (note: imports still load into context at launch, so they don&#39;t reduce size — they only organise). Trim what isn&#39;t needed every session.</p>
+<p><strong>&quot;Instructions seem lost after <code>/compact</code>.&quot;</strong> Project-root CLAUDE.md survives; nested subdirectory CLAUDE.md and conversation-only instructions don&#39;t. Put persistent rules in a file at a level that survives.</p>
+<p><strong>&quot;Multiple CLAUDE.md files in a monorepo are polluting context.&quot;</strong> <code>claudeMdExcludes</code> in settings (§ 13).</p>
+<p><strong>&quot;I want to verify exactly which files loaded and why.&quot;</strong> <code>InstructionsLoaded</code> hook (§ 12).</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#troubleshoot-memory-issues">memory.md § Troubleshoot memory issues</a>, <a href="https://code.claude.com/docs/en/debug-your-config">debug your configuration</a>.</p>
+<hr>
+<h2>Related references</h2>
+<ul>
+<li><a href="mcp-and-connectors.md"><code>reference/mcp-and-connectors.md</code></a> — per-tracker install and tenant-admin fallbacks</li>
+<li><a href="claude-quick-reference.md"><code>reference/claude-quick-reference.md</code></a> — Bootstrap audience (SVP-level) version of some of this material</li>
+</ul>
+<h2>Related AE101 modules (where these primitives land)</h2>
+<ul>
+<li><strong>M1 Getting going</strong> — first <code>CLAUDE.md</code> seed (user-level or <code>CLAUDE.local.md</code>), one connector wire</li>
+<li><strong>M2 Plan mode, done right</strong> — § 5, plus Pocock <code>grill-me</code> skill as second-pass read</li>
+<li><strong>M3 Earn the trust</strong> — §§ 6 (subagents), 7 (skills); first skill use + first authoring</li>
+<li><strong>M4 Run the first experiment</strong> — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off)</li>
+<li><strong>M5 Learn from the test, re-send packaged</strong> — §§ 5 (plan.md authoring), 7 (verifier as eval), 9 (send-off)</li>
+<li><strong>M6 Spot gaps, build the loop</strong> — §§ 7 (second skill authoring), 9 (scheduled-agents callout)</li>
+</ul>
+<hr>
+<p><strong>This document grows.</strong> If you hit something during the training that belongs here and isn&#39;t, flag it. For feature-specific detail, the <a href="https://code.claude.com/docs/en/memory.md">official docs</a> are the source of truth. When docs disagree with anything above, trust the docs.</p>
+
+</section>
+
+<section class="module" id="reference-mcp-and-connectors">
+<div class="phase-kicker">Reference</div>
+<h1>MCP and connectors — reference</h1>
+<p>Flat lookup. How to wire your agent to a ticket tracker (and other outside-the-repo systems) in Claude Code. Updated as the install surface changes; the exercise body stays stable.</p>
+<p><strong>Last verified: 2026-04-23</strong> against Claude Code MCP docs, Atlassian Rovo MCP, <code>gh</code> CLI.</p>
+<h2>The CLI-first reality (as of 2026-Q2)</h2>
+<p>Claude Code today installs MCP servers from the command line — <code>claude mcp add ...</code>. No GUI marketplace yet; no Settings → Connectors panel. One command, one time, per connector.</p>
+<p>If that feels off for a training that&#39;s otherwise agent-first: you&#39;re right. Treat connector install as one-time setup per tracker, not a repeating step.</p>
+<p>Three words that land together:</p>
+<ul>
+<li><strong>Connector</strong> — the wire into a work app (the word Claude Code&#39;s configuration uses)</li>
+<li><strong>Action</strong> — a verb with effect in the world (<em>read ticket, comment on ticket, close ticket</em>)</li>
+<li><strong>Tool</strong> — the umbrella term for anything the model can call</li>
+</ul>
+<p>MCP is the protocol. Connectors are the things you install. Actions are what they expose.</p>
+<h2>Per-tracker install</h2>
+<h3>GitHub Issues — two clean paths</h3>
+<p><strong>Path A — <code>gh</code> CLI (simplest).</strong> <code>gh</code> is GitHub&#39;s official CLI, pre-installed on most developer machines, and Claude Code&#39;s Bash tool calls it directly. No MCP needed.</p>
+<pre><code>gh auth status     # check
+gh auth login      # if not signed in
+</code></pre>
+<p>Ask Claude to <em>read issue NNN</em> or <em>comment on issue NNN with this body</em>. Claude runs <code>gh issue view</code> / <code>gh issue comment</code> via Bash.</p>
+<p><strong>Path B — official GitHub MCP server.</strong> If you want the full MCP tooling surface in Claude Code (discoverable actions, structured arguments):</p>
+<pre><code>claude mcp add --transport http github https://api.githubcopilot.com/mcp --header &quot;Authorization: Bearer YOUR_PAT&quot;
+</code></pre>
+<p>Requires a GitHub Personal Access Token with repo scope. More capability than <code>gh</code>; more setup.</p>
+<p><strong>Default recommendation for AE101:</strong> Path A. Students get the Bash-driven loop without extra auth dance.</p>
+<h3>Jira — Atlassian Rovo MCP (official)</h3>
+<p>Atlassian&#39;s Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, JSM, and Bitbucket. OAuth 2.1 flow.</p>
+<p><strong>Install:</strong></p>
+<pre><code>claude mcp add --transport http jira https://mcp.atlassian.com/v1/mcp
+</code></pre>
+<p>Then in Claude Code:</p>
+<pre><code>/mcp
+</code></pre>
+<p>Browser opens; you sign in to your Atlassian org; scopes approve at user level. <strong>Individual engineers don&#39;t need admin approval</strong> — admins control which tools connect, not whether individuals can install.</p>
+<p><strong>Note:</strong> the older <code>/sse</code> endpoint stops working 2026-06-30. Use <code>/mcp</code> path for new setups.</p>
+<h3>Linear — first-party MCP (official)</h3>
+<p>Linear now publishes its own MCP server. No admin gate; OAuth at user level.</p>
+<p><strong>Install:</strong></p>
+<pre><code>claude mcp add --transport http linear https://mcp.linear.app/mcp
+</code></pre>
+<p>Cleanest UX of the three trackers for solo engineers.</p>
+<p><strong>Fallbacks when a tenant blocks the first-party server:</strong> Composio or Merge Agent Handler host third-party bridges; a local stdio MCP with a personal Linear API token works without any external host.</p>
+<h3>Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)</h3>
+<p>Check the <a href="https://modelcontextprotocol.io/servers">MCP server directory</a> and your tracker&#39;s own docs. Most have a third-party MCP or a CLI fallback (like <code>gh</code>).</p>
+<h2>Tenant-admin fallbacks — when IT gates install</h2>
+<p>Corporate tenants may lock MCP install via <code>managed-mcp.json</code>, allowlists, or OAuth scope pinning. Practical fallbacks:</p>
+<ol>
+<li><strong>GitHub Issues + <code>gh</code>.</strong> <code>gh</code> is not an MCP — it&#39;s a CLI most orgs already approve. Claude calls it via Bash. Works in nearly every tenant.</li>
+<li><strong>Jira where Rovo is pre-approved.</strong> Many large orgs pre-approve <code>mcp.atlassian.com</code> — check before assuming it&#39;s gated.</li>
+<li><strong>Local stdio MCP with personal API token.</strong> Runs on your machine; no external URL to block. Works for Linear and for Jira when Rovo is unavailable.</li>
+<li><strong>Service-desk ticket to IT.</strong> Legitimate path for a regulated tenant. Name the connector you need and the business reason (training, productivity); most IT orgs approve it within a few days.</li>
+</ol>
+<h2>What Claude Code doesn&#39;t do yet (as of 2026-04-23)</h2>
+<p>Flagged for honesty, not complaint:</p>
+<ul>
+<li>No GUI marketplace or Settings → Connectors panel for MCP install in Claude Code (claude.ai has one, gated to admins on Team/Enterprise)</li>
+<li>No single-click OAuth across every connector (Rovo and Linear support it; most others don&#39;t)</li>
+<li>No in-chat picker of connector actions</li>
+</ul>
+<p>When any of these land, this file updates. The training&#39;s exercises stay stable across changes.</p>
+<h2>When this reference needs an update</h2>
+<p>Run the update when any of these happen:</p>
+<ul>
+<li>A cohort reports an install command that no longer works</li>
+<li><code>claude-code-guide</code> flags a new MCP install surface (marketplace, settings panel, single-click flow)</li>
+<li>Atlassian, Linear, or GitHub ship an MCP change (new endpoint, deprecated endpoint, OAuth scope change)</li>
+<li>A new tracker becomes common enough in cohorts to warrant a section</li>
+</ul>
+<p>Bump the <strong>Last verified</strong> date at the top. Note what changed in the commit message. The exercises reading this file don&#39;t change.</p>
+
+</section>
+
+<section class="module" id="reference-multi-session-git">
+<div class="phase-kicker">Reference</div>
+<h1>Multi-session and Git: survival guide</h1>
+<p>Optional homework between M1 and M2. ~10 min read. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other&#39;s state.</p>
+<p>You do not have to start here. Find your way to this over time. There is no rush.</p>
+<h2>Why multi-session, why Git</h2>
+<p>Once you trust Claude Code on one thing, you will want to run it on more things at once. A bug in one corner of the repo, a refactor in another, a small feature in a third. Three sessions, three tasks, one hour that used to be one task.</p>
+<p>Git is what makes this safe. Every session works against a commit graph that remembers who changed what. If two sessions collide, Git tells you at merge time. Nothing silently overwrites.</p>
+<p>Worktrees are the Git feature that makes multi-session fast. Instead of one working directory per repo, you get one per branch, each in its own folder, all sharing the same underlying Git history. Open N folders, open N sessions, run N tasks.</p>
+<p>The permission beat, once: you will want to run multiple sessions. Find your way to do it over time. There&#39;s no rush.</p>
+<h2>Worktrees vs. branches vs. clones</h2>
+<p>Three ways to have &quot;another copy of this code to work on.&quot; They behave differently.</p>
+<p><strong>Branches</strong> are cheap. One command, instant. The cost is switching: when you check out a different branch, your working tree gets overwritten in place. Any editor you have open now points at different file contents than a second ago. A Claude Code session running against that directory gets confused too. Its scrollback references files that no longer look the way it remembers.</p>
+<p><strong>Clones</strong> are heavy. <code>git clone</code> gives you a full second copy of the repo on disk. Independent history, detached from the original. Fine for &quot;I want to experiment on a fork I&#39;ll throw away.&quot; Overkill for &quot;I want to work on two branches at once.&quot;</p>
+<p><strong>Worktrees</strong> are the middle path. One repo, many working directories, each checked out to its own branch. Shared Git history, independent working trees. Switching between them is <code>cd</code>, not <code>git checkout</code>.</p>
+<pre><code>git worktree add ../my-repo-feature-x feature-x
+</code></pre>
+<p>That creates a sibling directory on the branch <code>feature-x</code>. Your original working directory stays on whatever branch it was on. Two folders, two branches, zero checkout churn.</p>
+<h2>Opening N Claude Code sessions on the same codebase</h2>
+<p>Each Claude Code session opens in a working directory. A worktree gives you one working directory per session.</p>
+<p>The flow:</p>
+<ol>
+<li><code>git worktree add ../repo-bug-fix bug/issue-412</code></li>
+<li><code>git worktree add ../repo-refactor refactor/auth-module</code></li>
+<li><code>git worktree add ../repo-feature feature/export-csv</code></li>
+<li>Open three Claude Code sessions, one per folder, one task each.</li>
+</ol>
+<p>Each session has its own scrollback, its own working directory, its own branch. They do not see each other.</p>
+<p>The agent-level trap: if two sessions open the same working directory (not two worktrees, the same folder), the later write wins. The earlier session&#39;s in-progress edit gets clobbered on disk, its scrollback still references the old content, and the next turn goes sideways. The rule is one session per working directory. Worktrees enforce this for free; running two sessions in one folder breaks it.</p>
+<p>Close a session, delete the worktree when the branch is merged:</p>
+<pre><code>git worktree remove ../repo-bug-fix
+</code></pre>
+<h2>Stashing and switching between sessions</h2>
+<p>Sometimes one session&#39;s in-flight work needs to show up in another. A helper function you wrote in the bug-fix session is exactly what the feature session needs.</p>
+<p><code>git stash</code> is how work moves between sessions. Stash in one, pop in the other. The changes ride the Git graph across worktrees because the graph is shared.</p>
+<pre><code>git stash push -m &quot;helper fn for csv export&quot;
+cd ../repo-feature
+git stash pop
+</code></pre>
+<p>Claude Code sessions keep their own conversational state. Git is what moves actual changes between them. Don&#39;t try to make one session &quot;tell&quot; the other what it did; commit, stash, or push a branch, and let Git carry the bits.</p>
+<p>Agent committed to the wrong branch in one session? Don&#39;t tie your brain in knots. <code>git reset --soft HEAD\~1</code> keeps the changes staged, switch branches, re-commit on the right one. A thirty-second fix.</p>
+<h2>Conflict recovery when two sessions edited the same file</h2>
+<p>Different worktrees, different branches, both touched <code>src/auth/session.ts</code>. Fine while you work. The conflict surfaces at merge.</p>
+<p>Git tells you. Both sessions will stop and show you the conflict markers. Do not let either agent resolve the conflict automatically. This is the one place the human stays in the driver seat. Read the diff. Pick which line wins, or write the line that reconciles both. Let Git commit the resolution.</p>
+<p>The reason: agents are confident and do not always read carefully enough at a merge boundary. You know what each change was for. Git knows the lines. Put the two together yourself.</p>
+<h2>When NOT to run multi-session</h2>
+<p>Three situations where one session beats three.</p>
+<ol>
+<li><p><strong>Ordering dependencies.</strong> Schema migration, followed by data backfill, followed by the code that reads the new column. Each step has to finish before the next starts. Parallelising buys you nothing and risks running step 3 against pre-step-1 state.</p>
+</li>
+<li><p><strong>Greedy parallelism on a small task.</strong> Two 20-minute tasks spun up in parallel sounds like 20 minutes of calendar time, but if you spend 15 minutes coordinating worktrees and another 10 recovering from a conflict, you lost. One session, two tasks in sequence, done in 45 minutes.</p>
+</li>
+<li><p><strong>You are new to the loop.</strong> If you are still learning what &quot;good&quot; looks like in one session, adding a second session adds variables, not learning. Land the single-session loop first. Multi-session will still be waiting.</p>
+</li>
+</ol>
+<h2>Close</h2>
+<p>Two sessions is a milestone. Five is a habit. Ten is something you grow into. Find your way at your pace.</p>
+
+</section>
+
+<section class="module" id="reference-scheduled-agents">
+<div class="phase-kicker">Reference</div>
+<h1>Scheduled agents</h1>
+<p>Lookup page for the three ways Claude Code runs on a clock. Pick the one that matches the shape of your work. Composes with any skill you have installed.</p>
+<p><strong>Root docs:</strong> <a href="https://docs.anthropic.com">docs.anthropic.com</a> for the source of truth. This page is a shortcut.</p>
+<h2>The three primitives</h2>
+<h3>Desktop local task — the everyday choice</h3>
+<p>A prompt runs on your laptop on a cadence (daily 7:00am, weekdays 9:00am, every 30 minutes).</p>
+<p><strong>How to set one up.</strong> Open the <strong>Schedule</strong> sidebar, pick <strong>New task → New local task</strong>, name it, paste the prompt, pick a frequency. GUI-only today; no slash command.</p>
+<p><strong>Missed runs catch up on wake.</strong> If the laptop slept through 7:00am, the task fires once when the app next comes online (7-day window — older misses drop). Put a time guard in the prompt itself if a late-morning catch-up would cause trouble: <em>&quot;Only run if it&#39;s before 10:00am. Otherwise report that you skipped today&#39;s run.&quot;</em></p>
+<p><strong>Inherits your connectors automatically.</strong> No re-auth needed.</p>
+<h3><code>/loop</code> — in-session recurring</h3>
+<p>Type <code>/loop &lt;interval&gt; &lt;prompt&gt;</code> and the prompt fires every interval while the session is open. Closes when the session closes. No catch-up on wake (the session has to be live).</p>
+<p>Omit the interval (<code>/loop &lt;prompt&gt;</code>) for self-paced mode: Claude picks the cadence based on activity.</p>
+<p>Good for polling and iteration during active work. <em>&quot;Check the build every 5 minutes until it passes.&quot;</em> <em>&quot;Re-run the verifier every 2 minutes on each new commit.&quot;</em> <em>&quot;Re-read the draft every 3 minutes and tighten one section.&quot;</em> Ralph-style re-feed sits here.</p>
+<h3><code>/schedule</code> / Routines — remote, Git-dependent</h3>
+<p>Type <code>/schedule daily PR review at 9am</code> or use the sidebar: <strong>New task → New remote task.</strong> The prompt runs on Anthropic&#39;s cloud whether your laptop is on or off. The cloud runner needs somewhere to pull from, which typically means a connected GitHub repo cloned fresh on each run.</p>
+<p><strong>Not the default for AE101.</strong> Your real repo is local in these exercises; Routines assumes the working directory lives in a cloud Git repo. Good to know the primitive exists; reach for it when your team already has a Git-backed workflow for agent work. No catch-up on wake (runs in the cloud; the cloud doesn&#39;t sleep).</p>
+<h2>When each fits</h2>
+<table>
+<thead>
+<tr>
+<th>Primitive</th>
+<th>Good for</th>
+<th>Not for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Desktop local task</td>
+<td>Standing verifier runs, nightly codebase sweeps, rule-drift monitoring, scheduled research OODA loops. Catch-up on wake means weekend misses don&#39;t drop on Monday</td>
+<td>Anything that needs to react in the same session you&#39;re actively working in</td>
+</tr>
+<tr>
+<td><code>/loop</code></td>
+<td>Iterative polish on active work, continuous check-and-fix, Ralph-style re-feed patterns</td>
+<td>Morning automation when you&#39;re not at the laptop</td>
+</tr>
+<tr>
+<td><code>/schedule</code> (Routines)</td>
+<td>Cloud-Git workflows, multi-machine scenarios where any laptop might be off</td>
+<td>Local-repo training work (AE101 default)</td>
+</tr>
+</tbody></table>
+<h2>How it composes with an authored skill</h2>
+<p>The scheduled agent invokes the skill. The skill is the thing that catches the gap, judges the output, or packages the move. The scheduler just tells it when.</p>
+<p><strong>Nightly verifier run.</strong> Desktop local task at 2:00am → prompt reads <em>&quot;Invoke the <code>commit-verifier</code> skill on the last 24h of commits. Report anything the skill flags.&quot;</em> The skill is the check; the schedule is the cadence.</p>
+<p><strong>Continuous polish loop.</strong> <code>/loop 3m</code> while editing → prompt reads <em>&quot;Invoke the <code>tighten-draft</code> skill on the current file. Propose changes.&quot;</em> The skill is the move; the loop is the rhythm.</p>
+<p><strong>Rule-drift monitor.</strong> Desktop local task weekly → prompt reads <em>&quot;Invoke the <code>rule-drift</code> skill on the project root. Flag rules in <code>CLAUDE.md</code> that the last week of commits contradicted.&quot;</em> Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.</p>
+<p><em>Official docs: <a href="https://code.claude.com/docs/en/desktop-scheduled-tasks">Desktop scheduled tasks</a>, <a href="https://code.claude.com/docs/en/scheduled-tasks">/loop</a>, <a href="https://code.claude.com/docs/en/routines">Routines</a>.</em></p>
+
+</section>
 </main>
 <footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
 
@@ -3031,7 +3610,7 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation. Plus two optional modules when the cohort wants the team peak.',
+            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -3040,6 +3619,12 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
                 { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            references: [
+                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
+                { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
+                { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
             ]
         }
     };
@@ -3355,6 +3940,12 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
     // Module-list card chrome — used by both the SPA training index and the
     // workbook TOC. `bigIdea` is optional (workbook pre-fills, SPA hydrates
     // async via hydrateBigIdeas).
+    // marked single-tilde strikethrough triggers on patterns like `(~30 min)... (~10 min)`.
+    // Escape numeric-tildes before parse, on both SPA and workbook paths.
+    function escapeTildes(md) {
+        return md.replace(/~(\d)/g, '\\~$1');
+    }
+
     function cardHtml(num, title, slug, href, bigIdea) {
         var bigHtml = bigIdea ? esc(bigIdea) : '&nbsp;';
         return '<li data-slug="' + esc(slug) + '">' +
@@ -3383,6 +3974,7 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
         stripMaintainerTail: stripMaintainerTail,
         extractParent: extractParent,
         extractBigIdea: extractBigIdea,
+        escapeTildes: escapeTildes,
         cardHtml: cardHtml,
 
         // DOM (browser only)

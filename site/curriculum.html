@@ -152,6 +152,7 @@
                     .then(stripMaintainerTail)
                     .then(expandIncludes)
                     .then(rewriteCrossDocLinks)
+                    .then(CurriculumRuntime.escapeTildes)
                     .then(function (md) {
                         container.innerHTML = marked.parse(md);
                         CurriculumRuntime.decoratePrompts(container);

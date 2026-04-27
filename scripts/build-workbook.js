@@ -36,11 +36,8 @@ function rewriteCrossDocLinksToAnchors(md) {
   return md.replace(CR.CROSS_DOC_LINK_RE, '](#$1-$2)');
 }
 
-// Marked single-tilde strikethrough triggers on patterns like `(~30 min)... (~10 min)`.
-// Escape numeric-tildes before parsing.
-function escapeTildes(md) {
-  return md.replace(/~(\d)/g, '\\~$1');
-}
+// escapeTildes lives in shared CR for SPA + workbook parity.
+const escapeTildes = CR.escapeTildes;
 
 // Replace standalone-paragraph include links with the included file's body
 // wrapped in HTML comment markers; postProcessIncludes turns the markers into
@@ -84,6 +81,8 @@ function buildToc(trainingKey, t) {
   // Both prework and modules use the SPA's cardHtml structure — same chrome
   // (numbered card + title + Big Idea preview + arrow). Big Idea pre-filled
   // by reading each module file (SPA hydrates the same field via fetch).
+  // Supplementaries / references / trainer-guide use simpleRowHtml — no Big
+  // Idea slot, matches SPA index. SPA → workbook parity.
   let html = '';
   if (t.prework) {
     const md = readMd(path.join(ROOT, 'curriculum/trainings', trainingKey, t.prework.slug + '.md')) || '';
@@ -99,8 +98,33 @@ function buildToc(trainingKey, t) {
         return '      ' + CR.cardHtml(num, m.title, m.slug, '#' + m.slug, big);
       })
       .join('\n');
-    html += `    <ol class="module-list index-modules">\n${items}\n    </ol>`;
+    html += `    <ol class="module-list index-modules">\n${items}\n    </ol>\n`;
   }
+  if (t.optionalModules && t.optionalModules.length) {
+    const items = t.optionalModules
+      .map((m, i) => {
+        const md = readMd(path.join(ROOT, 'curriculum/trainings', trainingKey, m.slug + '.md')) || '';
+        const big = CR.extractBigIdea(md);
+        const num = String(t.modules.length + i + 1).padStart(2, '0');
+        return '      ' + CR.cardHtml(num, m.title, m.slug, '#' + m.slug, big);
+      })
+      .join('\n');
+    html += `    <h3 class="index-heading">Optional extensions</h3>\n    <ol class="module-list index-modules">\n${items}\n    </ol>\n`;
+  }
+  if (t.supplementaries && t.supplementaries.length) {
+    const items = t.supplementaries
+      .map(s => '      ' + CR.simpleRowHtml('Reference', s.title, '#supplementary-' + s.slug))
+      .join('\n');
+    html += `    <h3 class="index-heading">Supplementary</h3>\n    <ol class="module-list index-supplementaries">\n${items}\n    </ol>\n`;
+  }
+  if (t.references && t.references.length) {
+    const items = t.references
+      .map(r => '      ' + CR.simpleRowHtml('Lookup', r.title, '#reference-' + r.slug))
+      .join('\n');
+    html += `    <h3 class="index-heading">Quick reference</h3>\n    <ol class="module-list index-references">\n${items}\n    </ol>\n`;
+  }
+  // Trainer guide ships as a sibling HTML; link out from the workbook TOC.
+  html += `    <h3 class="index-heading">For trainers</h3>\n    <ol class="module-list index-references">\n      ${CR.simpleRowHtml('Trainers', 'Delivery guide', './trainer-guide.html')}\n    </ol>\n`;
   return html;
 }
 
@@ -140,10 +164,11 @@ ${buildToc(trainingKey, t)}
 </nav>
 `;
 
-  // All modules: prework first (if present), then ordered modules.
+  // All modules: prework first (if present), then ordered modules, then optional.
   const allModules = [];
   if (t.prework) allModules.push(t.prework);
   t.modules.forEach(m => allModules.push(m));
+  if (t.optionalModules) t.optionalModules.forEach(m => allModules.push(m));
 
   const modulesHtml = allModules
     .map(m => {
@@ -156,8 +181,29 @@ ${buildToc(trainingKey, t)}
     .filter(Boolean)
     .join('\n\n');
 
+  // Supplementary + reference docs — render bodies so the workbook TOC anchors
+  // (#supplementary-foo, #reference-bar) resolve and cross-doc links from
+  // module bodies don't die. Same chrome as modules; no Big Idea hero.
+  function renderStandalone(kind, slug) {
+    const docPath = path.join(ROOT, 'curriculum', kind, slug + '.md');
+    let md = readMd(docPath);
+    if (md === null) return '';
+    md = md.replace(CR.CROSS_DOC_LINK_RE, '](#$1-$2)');
+    md = escapeTildes(md);
+    const labelKind = kind === 'supplementary' ? 'Supplementary' : 'Reference';
+    return `<section class="module" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>\n${marked.parse(md)}\n</section>`;
+  }
+
+  const standaloneHtml = []
+    .concat((t.supplementaries || []).map(s => renderStandalone('supplementary', s.slug)))
+    .concat((t.references || []).map(r => renderStandalone('reference', r.slug)))
+    .filter(Boolean)
+    .join('\n\n');
+
+  const allBody = standaloneHtml ? modulesHtml + '\n\n' + standaloneHtml : modulesHtml;
+
   // Footer markup lives in CR.renderFooter (shared with SPA — single source).
-  return topNav + '\n<main>\n' + cover + '\n' + modulesHtml + '\n</main>\n' + CR.renderFooter() + '\n';
+  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + CR.renderFooter() + '\n';
 }
 
 // ── Inline assets ───────────────────────────────────────────────────────────

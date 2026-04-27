@@ -43,7 +43,7 @@
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation. Plus two optional modules when the cohort wants the team peak.',
+            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -52,6 +52,12 @@
                 { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            references: [
+                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
+                { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
+                { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
             ]
         }
     };
@@ -367,6 +373,12 @@
     // Module-list card chrome — used by both the SPA training index and the
     // workbook TOC. `bigIdea` is optional (workbook pre-fills, SPA hydrates
     // async via hydrateBigIdeas).
+    // marked single-tilde strikethrough triggers on patterns like `(~30 min)... (~10 min)`.
+    // Escape numeric-tildes before parse, on both SPA and workbook paths.
+    function escapeTildes(md) {
+        return md.replace(/~(\d)/g, '\\~$1');
+    }
+
     function cardHtml(num, title, slug, href, bigIdea) {
         var bigHtml = bigIdea ? esc(bigIdea) : '&nbsp;';
         return '<li data-slug="' + esc(slug) + '">' +
@@ -395,6 +407,7 @@
         stripMaintainerTail: stripMaintainerTail,
         extractParent: extractParent,
         extractBigIdea: extractBigIdea,
+        escapeTildes: escapeTildes,
         cardHtml: cardHtml,
 
         // DOM (browser only)

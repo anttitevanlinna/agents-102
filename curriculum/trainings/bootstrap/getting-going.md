@@ -5,7 +5,7 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-About 30–60 min before Module 1. Install Claude Code. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of [What is an Agent](supplementary/what-is-an-agent.md) (LLM vs chat).
+About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of [What is an Agent](supplementary/what-is-an-agent.md) (LLM vs chat).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -15,6 +15,8 @@ After this module, you will be able to:
 - **Adjust** guardrails to fix specific failure modes
 
 ## Start here
+
+<span class="rt-code">Start a new Claude Code session at `~/Documents/agents-102-bootstrap/module-1/`. This module's work lives in that folder.</span><span class="rt-cowork">Click *New task* in the Cowork tab and select `~/Documents/agents-102-bootstrap/module-1/` as the working folder. This module's work lives in that folder.</span>
 
 > **In-room cohort opening (self-study readers, skip to the question below).**
 >
@@ -58,9 +60,9 @@ After my answer to Q3, UPDATE personal-brand-generation.md. Integrate the retro 
 
 Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a markdown file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
-**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run `/clear` in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Start a new Cowork session on the same connected folder (you want a fresh Claude with no memory of building the site)</span>. Then:
+**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run `/clear` in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with `~/Documents/agents-102-bootstrap/module-1/` as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:
 
-**Prompt** *(Claude Code, fresh session)*
+**Prompt** *(Claude Code)*
 
 ```
 Read site.html in this folder. Two questions:

@@ -16,7 +16,7 @@ After this module, you will be able to:
 
 ## Start here
 
-<span class="rt-code">Start a new Claude Code session at `~/Documents/agents-102-bootstrap/module-1/`. This module's work lives in that folder.</span><span class="rt-cowork">Click *New task* in the Cowork tab and select `~/Documents/agents-102-bootstrap/module-1/` as the working folder. This module's work lives in that folder.</span>
+<span class="rt-code">Start a new Claude Code session at `~/Documents/agents-102-bootstrap/` (the training root, same as Prework). This module's outputs land in the `module-1/` subfolder.</span><span class="rt-cowork">Click *New task* in the Cowork tab and select `~/Documents/agents-102-bootstrap/` as the working folder (the training root, same as Prework). This module's outputs land in the `module-1/` subfolder.</span>
 
 > **In-room cohort opening (self-study readers, skip to the question below).**
 >
@@ -44,7 +44,7 @@ Five minutes. A retro, and **the second pass on your rules file.** You wrote the
 **Prompt** *(Claude Code)*
 
 ```
-Read personal-brand-generation.md in this folder first. You'll need it for Q3.
+Read `module-1/personal-brand-generation.md` first. You'll need it for Q3.
 
 Then walk me through three retro questions on the site we just built, one at a time, wait for each answer, no preamble. Just ask Q1 once you've read the file.
 
@@ -60,12 +60,12 @@ After my answer to Q3, UPDATE personal-brand-generation.md. Integrate the retro 
 
 Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a markdown file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
-**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run `/clear` in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with `~/Documents/agents-102-bootstrap/module-1/` as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:
+**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run `/clear` in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with `~/Documents/agents-102-bootstrap/` as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:
 
 **Prompt** *(Claude Code)*
 
 ```
-Read site.html in this folder. Two questions:
+Read `module-1/site.html`. Two questions:
 1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).
 2. Quote the most generic line that could be copy-pasted from anyone's site.
 ```

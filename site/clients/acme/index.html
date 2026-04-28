@@ -1694,7 +1694,8 @@ body.workbook { padding-top: 3rem; }
 <pre><code>Extract the starter tarball in the working folder. Use the shell:
 
   tar xzf starter.tar.gz
-  rm starter.tar.gz
+
+(Leave `starter.tar.gz` behind — Cowork&#39;s sandbox can&#39;t always delete host-dropped files. Harmless.)
 
 Then list what&#39;s in the working directory and confirm these folders exist:
 prework/, module-1/ through module-8/, memory/, sources/, agents/, .claude/.
@@ -1757,7 +1758,7 @@ If tar is not available, tell me what error you got.
 <li><strong>Adjust</strong> guardrails to fix specific failure modes</li>
 </ul>
 <h2>Start here</h2>
-<p><span class="rt-code">Start a new Claude Code session at <code>~/Documents/agents-102-bootstrap/module-1/</code>. This module&#39;s work lives in that folder.</span><span class="rt-cowork">Click <em>New task</em> in the Cowork tab and select <code>~/Documents/agents-102-bootstrap/module-1/</code> as the working folder. This module&#39;s work lives in that folder.</span></p>
+<p><span class="rt-code">Start a new Claude Code session at <code>~/Documents/agents-102-bootstrap/</code> (the training root, same as Prework). This module&#39;s outputs land in the <code>module-1/</code> subfolder.</span><span class="rt-cowork">Click <em>New task</em> in the Cowork tab and select <code>~/Documents/agents-102-bootstrap/</code> as the working folder (the training root, same as Prework). This module&#39;s outputs land in the <code>module-1/</code> subfolder.</span></p>
 <blockquote>
 <p><strong>In-room cohort opening (self-study readers, skip to the question below).</strong></p>
 <p>Let&#39;s hear from your sponsor first (the CEO / CTO / SVP who brought you here). They&#39;re in the room with you, as a participant, not as a visitor. They&#39;ve got one sentence in their own words: why they&#39;re here, and what they don&#39;t yet know. Something like <em>&quot;I want to learn this with you, not delegate it.&quot;</em> No corporate kickoff, no agenda. What matters isn&#39;t the sentence. It&#39;s that your sponsor said it, out loud, before anyone else. That&#39;s the license the next seven modules run on.</p>
@@ -1827,10 +1828,10 @@ If tar is not available, tell me what error you got.
 <li><span class="rt-code"><strong>Paste it into your Claude Code session, then send this prompt right after</strong> (in the same message, or as the next one):</span><span class="rt-cowork"><strong>Paste it into your Cowork task, then send this prompt right after</strong> (in the same message, or as the next one):</span></li>
 </ol>
 <p><strong>Prompt</strong> <em>(Claude Code, after pasting your LinkedIn)</em></p>
-<pre><code>Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as site.html in the current folder.
+<pre><code>Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as `module-1/site.html`.
 </code></pre>
 <p>The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you&#39;ll never feel how much the <em>later</em> context changes the output.</p>
-<p>Watch the result. It works. It looks okay. It&#39;s also generic. The site a competent LLM produces from a résumé when it doesn&#39;t know what matters. Every later phase overwrites <code>site.html</code>, so the latest version always lives at that path.</p>
+<p>Watch the result. It works. It looks okay. It&#39;s also generic. The site a competent LLM produces from a résumé when it doesn&#39;t know what matters. Every later phase overwrites <code>module-1/site.html</code>, so the latest version always lives at that path.</p>
 <p><strong>Phase 2. Apply a framework you know.</strong></p>
 <p>The goal of this site isn&#39;t to sell anything. It&#39;s the opposite: when a colleague (yours, or a peer outside the company you&#39;d happily work with) lands on it, they should think <em>&quot;this is the person I want to work with more, on the things they&#39;re great at.&quot;</em> Not <em>&quot;I should book a discovery call.&quot;</em> A colleague relationship, not a sales funnel.</p>
 <p>Donald Miller&#39;s <strong>StoryBrand</strong> is the obvious framework for <em>&quot;what kind of help is this person to others.&quot;</em> Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We&#39;ll invoke it explicitly AND <strong>tune</strong> it: the hero isn&#39;t you, it&#39;s the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What&#39;s left is the part that actually says <em>&quot;I&#39;m the greatest colleague ever; let&#39;s work more together.&quot;</em></p>
@@ -1845,7 +1846,7 @@ Use these StoryBrand beats for the help section: Character (the colleague — he
 
 Skip Stakes and Call-to-Action — no fear-framing, no &quot;book a chat.&quot; The site&#39;s vibe is the CTA.
 
-Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate site.html — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don&#39;t soften.
+Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don&#39;t soften.
 </code></pre>
 <p>Claude walks you through the five tuned beats. Answer each in your own words; don&#39;t polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for <em>&quot;let&#39;s work more together,&quot;</em> with you still the subject of the page.</p>
 <p><strong>Phase 3. Strengths, the way Drucker would find them.</strong></p>
@@ -1856,7 +1857,7 @@ Walk me through the five beats one at a time. Take whatever shape of answer I gi
 
 Then YOU infer the three strengths the story reveals. Not &quot;leadership&quot; or &quot;communication&quot; — specific ones, the kind only this story&#39;s shape would surface. Show me the three before you do anything else; I&#39;ll tell you which one is most true and which is least.
 
-Then regenerate site.html using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don&#39;t soften them into virtues.
+Then regenerate `module-1/site.html` using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don&#39;t soften them into virtues.
 </code></pre>
 <p>Tell Claude about the project. Let it infer the strengths. Push back on the ones that miss. Read the regenerated site. Same StoryBrand spine, sharper because the strengths are evidence-derived rather than self-reported.</p>
 <p><strong>Phase 4. Look back.</strong></p>
@@ -1877,7 +1878,7 @@ Then regenerate site.html using those strengths as voice-shaping context — let
 3. Be the opposite — but always speak in the positive. Don&#39;t lead with &quot;I don&#39;t do X&quot;; lead with what I do instead.
 4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
 
-After step 4, regenerate site.html — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the Drucker-derived strengths. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new &quot;What I&#39;m against&quot; section. The site should sound like someone with a spine wrote it. Keep the edge; don&#39;t soften.
+After step 4, regenerate `module-1/site.html` — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the Drucker-derived strengths. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new &quot;What I&#39;m against&quot; section. The site should sound like someone with a spine wrote it. Keep the edge; don&#39;t soften.
 
 My hate list:
 </code></pre>
@@ -1885,11 +1886,11 @@ My hate list:
 <p><strong>Phase 6. Free iteration.</strong></p>
 <p>Now make it yours. Color, layout, tone, a quote at the top, a section that shouldn&#39;t exist on most sites but does on yours because the rest of you doesn&#39;t fit a template either. Iterate until looking at the screen makes you say <em>&quot;yes, this is me.&quot;</em></p>
 <p>Open prompts. You drive.</p>
-<p><strong>Tip: steal a look and feel by naming the site.</strong> Claude knows the design DNA of famous sites by name. <em>&quot;Make it look like Stripe&#39;s design language&quot;</em> / <em>&quot;use Linear&#39;s typography and spacing&quot;</em> / <em>&quot;make it feel like Anthropic.com&quot;</em> / <em>&quot;go full Patagonia (earthy, no-nonsense, lots of white space)&quot;</em> / <em>&quot;channel Craigslist if Craigslist had taste&quot;</em>. All valid one-line moves. You don&#39;t need to know CSS; you need to know the site whose feel you&#39;d happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. <em>&quot;Hey Claude, restyle site.html to feel like X.&quot;</em> Try two or three, keep the one that lands.</p>
+<p><strong>Tip: steal a look and feel by naming the site.</strong> Claude knows the design DNA of famous sites by name. <em>&quot;Make it look like Stripe&#39;s design language&quot;</em> / <em>&quot;use Linear&#39;s typography and spacing&quot;</em> / <em>&quot;make it feel like Anthropic.com&quot;</em> / <em>&quot;go full Patagonia (earthy, no-nonsense, lots of white space)&quot;</em> / <em>&quot;channel Craigslist if Craigslist had taste&quot;</em>. All valid one-line moves. You don&#39;t need to know CSS; you need to know the site whose feel you&#39;d happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. <em>&quot;Hey Claude, restyle <code>module-1/site.html</code> to feel like X.&quot;</em> Try two or three, keep the one that lands.</p>
 <p><strong>Close. Package what you learned.</strong></p>
 <p>The site is done. What&#39;s left is to <em>capture the move</em> so you can do it again on someone else&#39;s bio next week, without re-explaining everything to a fresh Claude. You&#39;ll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Write a generation rules file at personal-brand-generation.md in this folder — a portable agent guideline I could invoke on the next personal-brand task (a colleague&#39;s bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker&#39;s feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
+<pre><code>Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague&#39;s bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker&#39;s feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
 
 When you&#39;re done, tell me in 4–6 lines what&#39;s in the file: the structure you used, the strongest 2–3 rules, anything you weren&#39;t sure about. I shouldn&#39;t have to open the file to know what landed.
 </code></pre>
@@ -1913,7 +1914,7 @@ When you&#39;re done, tell me in 4–6 lines what&#39;s in the file: the structu
 <h2>Debrief</h2>
 <p>Five minutes. A retro, and <strong>the second pass on your rules file.</strong> You wrote the first version of <code>personal-brand-generation.md</code> at the close of the exercise, capturing what you noticed <em>while doing the work</em>. The retro captures what you noticed <em>about the work</em> (different lens, different rules). Two passes; the second is where the file starts compounding.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read personal-brand-generation.md in this folder first. You&#39;ll need it for Q3.
+<pre><code>Read `module-1/personal-brand-generation.md` first. You&#39;ll need it for Q3.
 
 Then walk me through three retro questions on the site we just built, one at a time, wait for each answer, no preamble. Just ask Q1 once you&#39;ve read the file.
 
@@ -1926,9 +1927,9 @@ Q3: Tell me one or two rules from the current personal-brand-generation.md that 
 After my answer to Q3, UPDATE personal-brand-generation.md. Integrate the retro into the existing file (sharpen weak rules, add what&#39;s missing, remove what turned out wrong). Don&#39;t append a &quot;retro notes&quot; section; rewrite the file as the better version. When you&#39;re done, tell me in 2–3 lines what changed and why: the rules added, the rules sharpened, the rules removed. I shouldn&#39;t have to open the file to know.
 </code></pre>
 <p>Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn&#39;t match your sense of the work. That&#39;s the pattern: every time you do work like this and reflect, the rules file gets sharper. <strong>Compound interest on a markdown file.</strong> This is the move you&#39;ll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.</p>
-<p><strong>Then, Claude as cold critic.</strong> Now that you&#39;ve reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run <code>/clear</code> in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with <code>~/Documents/agents-102-bootstrap/module-1/</code> as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:</p>
+<p><strong>Then, Claude as cold critic.</strong> Now that you&#39;ve reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run <code>/clear</code> in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with <code>~/Documents/agents-102-bootstrap/</code> as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read site.html in this folder. Two questions:
+<pre><code>Read `module-1/site.html`. Two questions:
 1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).
 2. Quote the most generic line that could be copy-pasted from anyone&#39;s site.
 </code></pre>

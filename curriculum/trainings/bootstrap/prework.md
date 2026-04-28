@@ -20,7 +20,8 @@ Get the starter file set into your training directory. The starter file set ship
 Extract the starter tarball in the working folder. Use the shell:
 
   tar xzf starter.tar.gz
-  rm starter.tar.gz
+
+(Leave `starter.tar.gz` behind — Cowork's sandbox can't always delete host-dropped files. Harmless.)
 
 Then list what's in the working directory and confirm these folders exist:
 prework/, module-1/ through module-8/, memory/, sources/, agents/, .claude/.

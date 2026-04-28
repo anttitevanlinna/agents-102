@@ -15,12 +15,12 @@ Three small steps:
 **Prompt** *(Claude Code, after pasting your LinkedIn)*
 
 ```
-Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as site.html in the current folder.
+Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as `module-1/site.html`.
 ```
 
 The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
 
-Watch the result. It works. It looks okay. It's also generic. The site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `site.html`, so the latest version always lives at that path.
+Watch the result. It works. It looks okay. It's also generic. The site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `module-1/site.html`, so the latest version always lives at that path.
 
 **Phase 2. Apply a framework you know.**
 
@@ -43,7 +43,7 @@ Use these StoryBrand beats for the help section: Character (the colleague — he
 
 Skip Stakes and Call-to-Action — no fear-framing, no "book a chat." The site's vibe is the CTA.
 
-Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate site.html — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.
+Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.
 ```
 
 Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
@@ -61,7 +61,7 @@ Hey Claude — apply Peter Drucker's feedback analysis from "Managing Oneself" t
 
 Then YOU infer the three strengths the story reveals. Not "leadership" or "communication" — specific ones, the kind only this story's shape would surface. Show me the three before you do anything else; I'll tell you which one is most true and which is least.
 
-Then regenerate site.html using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don't soften them into virtues.
+Then regenerate `module-1/site.html` using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don't soften them into virtues.
 ```
 
 
@@ -99,7 +99,7 @@ Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my per
 3. Be the opposite — but always speak in the positive. Don't lead with "I don't do X"; lead with what I do instead.
 4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
 
-After step 4, regenerate site.html — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the Drucker-derived strengths. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
+After step 4, regenerate `module-1/site.html` — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the Drucker-derived strengths. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
 
 My hate list:
 ```
@@ -113,7 +113,7 @@ Now make it yours. Color, layout, tone, a quote at the top, a section that shoul
 
 Open prompts. You drive.
 
-**Tip: steal a look and feel by naming the site.** Claude knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. *"Hey Claude, restyle site.html to feel like X."* Try two or three, keep the one that lands.
+**Tip: steal a look and feel by naming the site.** Claude knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. *"Hey Claude, restyle `module-1/site.html` to feel like X."* Try two or three, keep the one that lands.
 
 **Close. Package what you learned.**
 
@@ -122,7 +122,7 @@ The site is done. What's left is to *capture the move* so you can do it again on
 **Prompt** *(Claude Code)*
 
 ```
-Write a generation rules file at personal-brand-generation.md in this folder — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
+Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
 
 When you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed.
 ```

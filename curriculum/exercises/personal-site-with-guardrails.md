@@ -52,26 +52,49 @@ Walk me through the five beats one at a time. Take whatever shape of answer I gi
 
 Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
 
-**Phase 3. Strengths, the way Drucker would find them.**
+**Phase 3. Strengths.**
 
-*"What am I great at?"* is a terrible question. Most people freeze on it, even people who are great at things. Peter Drucker's answer in **"Managing Oneself"** is to invert it: you don't introspect for strengths, you look at the **evidence**. Projects where things went unusually well, with you in them. The strengths are reverse-engineered from results. Concrete-to-abstract beats abstract-to-concrete every time.
-
-Same agentic move: **name the framework, ask Claude to run it.** *"Hey Claude, apply Drucker's feedback analysis to this story."* The model knows Drucker; you don't have to explain it.
+Your strengths shape how the help section sounds. List 3-5 in one line each — Claude takes the rest from there.
 
 **Prompt** *(Claude Code)*
 
 ```
-Hey Claude — apply Peter Drucker's feedback analysis from "Managing Oneself" to my personal site. I'll tell you about one project from the last 12 months where things went unusually well — what we were trying to do, what I actually did in it, and what shipped. Ask me one question at a time if you need more — but don't grill me; the rough first telling is what we work with.
+Use the strengths below as voice-shaping context for the help section — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.
 
-Then YOU infer the three strengths the story reveals. Not "leadership" or "communication" — specific ones, the kind only this story's shape would surface. Show me the three before you do anything else; I'll tell you which one is most true and which is least.
+Then regenerate `module-1/site.html`.
 
-Then regenerate `module-1/site.html` using those strengths as voice-shaping context — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge in the inferred strengths; don't soften them into virtues.
+My 3-5 strengths are:
 ```
 
 
-Tell Claude about the project. Let it infer the strengths. Push back on the ones that miss. Read the regenerated site. Same StoryBrand spine, sharper because the strengths are evidence-derived rather than self-reported.
+Read the regenerated site. Same StoryBrand spine, sharper because the help section now sounds like someone with your specific strengths.
 
-**Phase 4. Look back.**
+**Phase 4. Anti-branding (the mirror).**
+
+Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
+
+Same agentic pattern again: **name the framework, tune it, ask Claude to run it.** Second time you're using it in this exercise; at this point it's a move you own.
+
+Give Claude a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
+
+**Prompt** *(Claude Code)*
+
+```
+Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
+1. Take the hate.
+2. Associate it with the offerings / colleague-types it implies (what kind of work, what kind of people produce this).
+3. Be the opposite — but always speak in the positive. Don't lead with "I don't do X"; lead with what I do instead.
+4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
+
+After step 4, regenerate `module-1/site.html` — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the strengths shaping the voice. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
+
+My hate list:
+```
+
+
+Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the help section sounds. That's the move.
+
+**Phase 5. Look back.**
 
 Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison.
 
@@ -85,31 +108,6 @@ Look at the very first site you generated from just my LinkedIn profile, before 
 Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults. What most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 
 No regeneration in this phase. Just observation.
-
-**Phase 5. Anti-branding (the mirror).**
-
-Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
-
-Same agentic pattern again: **name the framework, tune it, ask Claude to run it.** This is the third time you're using it in one exercise; at this point it's a move you own.
-
-Give Claude a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
-
-**Prompt** *(Claude Code, then paste your hate list right after)*
-
-```
-Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
-1. Take the hate.
-2. Associate it with the offerings / colleague-types it implies (what kind of work, what kind of people produce this).
-3. Be the opposite — but always speak in the positive. Don't lead with "I don't do X"; lead with what I do instead.
-4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
-
-After step 4, regenerate `module-1/site.html` — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the Drucker-derived strengths. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
-
-My hate list:
-```
-
-
-Read the new version. The site gets sharper. Three frameworks now layered: StoryBrand for the help relationship, Drucker for the strengths, anti-branding for the voice. Each one applied by name. That's the move.
 
 **Phase 6. Free iteration.**
 
@@ -126,7 +124,7 @@ The site is done. What's left is to *capture the move* so you can do it again on
 **Prompt** *(Claude Code)*
 
 ```
-Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
+Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
 
 When you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed.
 ```
@@ -149,4 +147,4 @@ Generic output comes from generic context. The LLM didn't get better between Pha
 <!-- maintainer -->
 
 **Deferred per student-facing-first rule:**
-- Facilitator notes: watch-fors (generic Phase 2 answers; Phase 3 strengths that don't serve anyone specific; Phase 5 hate-list that doesn't flip cleanly), decision points, per-phase timings (Phase 6 free iteration tends to run long), Claude Code setup prerequisites.
+- Facilitator notes: watch-fors (generic Phase 2 answers; Phase 3 strengths that don't serve anyone specific; Phase 4 hate-list that doesn't flip cleanly), decision points, per-phase timings (Phase 6 free iteration tends to run long), Claude Code setup prerequisites.

@@ -34,6 +34,8 @@ Notice the move you're about to make: **name the framework, tune it, ask Claude 
 
 One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the *whole site*, the colleague becomes the protagonist of the page, and you get a service site with your name in the footer. Wrong shape. **The site stays a personal site; you stay the protagonist of the page.** StoryBrand shapes the *colleague-help section*, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page's spine.
 
+One liners and short answers usually give enough clue. Make it quick and iterate.
+
 **Prompt** *(Claude Code)*
 
 ```

@@ -10,9 +10,9 @@ You need a Claude account at claude.ai. Then create an empty folder at `~/Docume
 
 ## 1. Install the training folder (3 min)
 
-Get the starter into your training directory. The starter ships an empty skeleton (eight module folders, plus `memory/`, `sources/`, `agents/`) and a self-study companion Claude uses to pace you through the modules.
+Get the starter file set into your training directory. The starter file set ships an empty skeleton (eight module folders, plus `memory/`, `sources/`, `agents/`) and a self-study companion you can use while doing self-study of the modules.
 
-Open <CONTENT_URL> in your browser. Save the file (`starter.tar.gz`) directly into `~/Documents/agents-102-bootstrap/`. You should see it land there in Finder or File Explorer. Then ask Claude to unpack it.
+[Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-102-bootstrap/`. You should see `starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
 
 **Prompt** *(Claude Code)*
 

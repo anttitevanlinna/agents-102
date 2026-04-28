@@ -1,7 +1,7 @@
 # Security
 
 ## Big Idea
-You can't tell if your agent is safe by looking at its output. You need a way to check. The practice is running the check, not waiting for certainty.
+You can't tell if your agent is safe by looking at its output. You need a way to check. The discipline is running the check, not waiting for certainty.
 
 ## Prework
 
@@ -18,20 +18,20 @@ After this module, you will be able to:
 ## Start here
 You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
 
-[Lecture: The practice of risk](lectures/practice-of-risk.md)
+[Lecture: The discipline of risk](lectures/practice-of-risk.md)
 
 [Exercise: Author a security plugin](exercises/author-security-plugin.md)
 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
 
 ## Key Concepts
-- **Certainty is a fantasy; the practice is the answer.** Classical software security gives you residual-risk vocabulary, CVSS, accepted-risk registers: probabilistic reasoning under bounded inputs. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.
+- **Certainty is a fantasy; the discipline is the answer.** Classical software security gives you residual-risk vocabulary, CVSS, accepted-risk registers: probabilistic reasoning under bounded inputs. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.
 - **Two lenses, one plugin you authored.** One lens carries what your company has already decided is off-limits. The other carries named attack classes and access-control analysis. You did not have to become a policy expert or a threat modeller; you had to know what mattered and dictate it.
 - **Prompt injection is a class, not a footnote.** Direct prompt injection arrives in the user's input. Indirect prompt injection arrives in a source the agent retrieves and reads. Both turn well-formed English into the attack surface. Classical perimeter does not see the attack because the attack is not malformed.
 - **"I can't tell" is a real answer.** Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
 - **Agent mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: WAF, VPC egress, mTLS, IAM-scoped service principals, audit. Loop design is additive. A CTO who concludes "I don't need to threat-model the network because we have agentic mitigations" ships a breach. The floor stays; the loop adds new surfaces above it.
 - **Residual risk is a first-class artifact.** After mitigation, something remains. You name it, accept it on record, or close the door. The best mitigation is the one you didn't need. Avoidance beats reduction.
-- **Plugins as expertise injection.** A plugin is how an agent borrows capability it doesn't natively have. It scopes DOWN (what the agent can't do) and scopes UP (what expertise it brings). M4 is where you author your first one.
+- **Plugins as expertise injection.** A plugin is how an agent borrows capability it doesn't natively have. It scopes DOWN (what the agent can't do) and scopes UP (what expertise it brings). Module 4 is where you author your first one.
 
 ## Debrief
 
@@ -54,7 +54,7 @@ One thing does travel: the plugin lives on disk now, sharper than it started. Po
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
 
-## Homework after M4 — between-module reading
+## Homework after Module 4 — between-module reading
 
 Extract one rule from your company's policy and author it as a small plugin yourself. Plus agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern).
 
@@ -85,12 +85,6 @@ Extract one rule from your company's policy and author it as a small plugin your
 > PLUG POINT: The micro-skill the student writes for homework.
 > Default: one policy rule that's specific to the student's organisation — customer-data classification, retention window, the one rule legal cares most about. The student extracts it into a short skill file that sits alongside their agent rules from here onward — reused whenever the agent touches data that rule applies to.
 
-**TODO:**
-- Lecture (`practice-of-risk.md`) Pass 3 polish — currently draft from Pass 1.
-- Em-dash sweep across module file + both exercises (small open item; not blocking).
-- Facilitator notes pass after student-facing content stabilises.
-- Module 5 prework needs short template for the homework one-rule plugin so students bring the file.
-
 **Frameworks riffed on:**
 - **STRIDE** (Microsoft SDL threat model) — adapted to agent shapes; appears in the lecture as historical context, NOT as the structuring rubric of the audit prompt. The audit names attack classes directly so the lens cannot collapse into closed-loop self-grading.
 - **Principle of least privilege** — named in the lecture, operationalised in the "don't open the door" framing.
@@ -114,6 +108,3 @@ Extract one rule from your company's policy and author it as a small plugin your
 - Generic GDPR plugin. The Phase 1 dictation in *Author a security plugin* was too thin and the plugin reads like a generic policy template. Catch this before the audit runs — the audit on a generic plugin produces generic findings.
 
 **Time budget:** total ~75–85 min. *Author a security plugin* ~25, *Audit your agent* ~45, Connections + Debrief ~10–15. Fits 1h45 with classroom-pace concurrency.
-
-**Homework one-rule plugin template (owed, Module 5 prework integration):**
-- One-page template: plugin name, one rule it enforces, one example of how an agent should behave under it, one example of how it shouldn't. Format matches the policy-lens shape of the M4 plugin. Students bring this file to Module 5.

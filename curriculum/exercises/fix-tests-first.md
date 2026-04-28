@@ -53,6 +53,7 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 **Quality:** mechanical-tested 2026-04-28
 - compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) open-hook + §2 lead-in, check_pedagogy; this cycle: open-hook reshape on Ex2 prompt per check_prompts §1(d) just-amended; depth paragraph + 2 optional prompts added; register flipped from defense to self-critique; M1 audit GO)
 - compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts) — superseded by 2026-04-27
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - mechanical-tested 2026-04-28 (curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md @ 79adc5a PASS — 6/6 V via verbatim-check.sh, A1–A19 PASS incl. real fix commit + 3/3 tests green, H1–H5 PASS, prompt-source audit clean. Single advisory FLAG on `practised` verb form, accepted)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).

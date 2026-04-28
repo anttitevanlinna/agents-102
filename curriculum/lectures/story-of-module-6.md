@@ -69,7 +69,9 @@ Your turn.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing — framed-memo exception applied per 2026-04-26-writing-creator-name-banned-student-facing.md, signature L63 retained inside the framing convention; rewrite-archaeology block stripped per #3; check_student_facing #14 em-dashes not flagged in body; check_lectures opener placement; check_strategy_tie_in)
+**Quality:** compendium-audited 2026-04-26
+- compendium-audited 2026-04-26 (check_writing — framed-memo exception applied per 2026-04-26-writing-creator-name-banned-student-facing.md, signature L63 retained inside the framing convention; rewrite-archaeology block stripped per #3; check_student_facing #14 em-dashes not flagged in body; check_lectures opener placement; check_strategy_tie_in)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Time:** 7–9 min at presentation pace. ~1050 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
 Section stays open-ended (no count locked) because the thesis is that surprises keep happening.

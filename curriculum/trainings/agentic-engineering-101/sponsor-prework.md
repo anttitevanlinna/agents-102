@@ -30,7 +30,7 @@ For each, one home, one reason. Under three sentences each.
 
 ### 1. Decision records — where should an engineer log a trade-off they made during a fix?
 
-*Shows up:* Module 1 onward. Every module after M1 produces at least one.
+*Shows up:* Module 1 onward. Every module after Module 1 produces at least one.
 
 *Common shapes:* `docs/adr/NNNN-slug.md` inside the same repo. A separate decisions repo. Linear tickets with a "Decision" label plus a linkback file in the repo. Team Notion page indexed by date.
 
@@ -123,8 +123,8 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 **Maintainer notes:**
 - Ship alongside the signed contract and the cohort prework email. Sponsor fills in 15–20 minutes; ops converts the five answers into `content/pre-engagement-contract.md` in the content bundle.
 - **Asset status:** v0 — sponsor-facing, not yet sent to a real sponsor. First cohort delivery is the first test. Iterate from sponsor feedback.
-- **Tone check:** sponsor is a builder CTO (reads Willison, uses Claude Code daily). Direct, short, no consultant padding. The Rory beats ("Half the CTOs who fill this worksheet discover…") earn their keep because the sponsor wants a transformation artifact, not a training vendor's paperwork. If a real sponsor finds any line smells like vendor-speak, trim.
-- **Override handling** — the Nerd writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution. The trainer collects these for the close memo. Implementation lives in the Agentic Nerd skill (not yet built).
+- **Tone check:** sponsor is a builder CTO (reads Willison, uses Claude Code daily). Direct, short, no consultant padding. The Rory beats ("Half the CTOs who fill this worksheet discover…") earn their keep because the sponsor wants a transformation artifact, not a training-supplier intake form. If a real sponsor finds any line reads like sales boilerplate, trim.
+- **Override handling** — the Nerd writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution. The trainer collects these for the close memo. Implementation lives in the Agentic Nerd skill (DEFERRED — upstream infra not yet built).
 - **Future asset companions:**
-  - Cohort-close memo template ("what your engineers said about the four homes") — to be written after first cohort.
+  - Cohort-close memo template ("what your engineers said about the four homes") — DEFERRED (post-first-cohort).
   - Sponsor one-pager on the pre-engagement contract's purpose (belongs in the sales pack, different audience — the sponsor who hasn't signed yet, doing diligence on the program).

@@ -35,7 +35,9 @@ M5 opens with reading it together.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
+**Quality:** compendium-audited 2026-04-25
+- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~370 words body.
 
 **Time:** ~5 min read.

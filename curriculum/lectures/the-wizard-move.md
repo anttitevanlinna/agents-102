@@ -43,7 +43,9 @@ You become the Claude wizard by running the loop on real work and letting the ha
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
+**Quality:** compendium-audited 2026-04-26
+- compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
 - **Runtime:** 10 min. 5–7 min lecture prose + 3 min live two-session demo on the volunteer's codebase.

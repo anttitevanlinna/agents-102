@@ -57,6 +57,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 **Quality:** compendium-audited 2026-04-28
 - compendium-audited 2026-04-28 (M2 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_lectures + check_strategy_tie_in + check_research_claims; M2 audit GO)
 - compendium-audited 2026-04-25 — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Time:** 10–12 min, inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5).
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces. Does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5.

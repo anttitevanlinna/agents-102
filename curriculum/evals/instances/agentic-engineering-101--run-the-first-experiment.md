@@ -182,7 +182,6 @@ Named mechanics (four full prompts, none placeholder-bearing); named artifacts f
 
 **Contributory — TODO list:**
 - Simulation results (three personas) — dispatched in parallel with this eval
-- Task-size calibration reference file — `curriculum/reference/picking-a-first-long-task.md` (Pass 3)
 - Agentic Nerd skill — portfolio-level TODO; Nerd logic is in maintainer block
 - Capability check on overnight session-left-running + mid-run Ctrl+C (M5 capability check; feeds back into Pass 3)
 
@@ -199,7 +198,6 @@ Named mechanics (four full prompts, none placeholder-bearing); named artifacts f
 **Top 3 items to defer / sharpen:**
 1. Huryn source freshness re-check (Pass 3, pre-cohort) — 6-month rule.
 2. Claude Code session-persistence capability check (overnight session-left-running + mid-run Ctrl+C trace preservation) — high-risk for live cohort.
-3. Task-size calibration reference (`curriculum/reference/picking-a-first-long-task.md`) — Pass 3.
 
 **One-sentence overall read:** A tight M4 that keeps its curious-readiness mood under every register test, builds the Huryn recognition into the prompt itself so the aha doesn't depend on a skilled facilitator, and holds the un-packaged send-off firmly as M5's material — ready to ship pending two pre-cohort TODOs.
 

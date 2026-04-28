@@ -305,6 +305,24 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - **The judge file sprawls.** Student lets Claude write a 60-line judge. Coach: *"Under 20 lines. A judge that tries to do everything does nothing well."*
 - **Collator over-charitable-matches.** Phase 1b's collation does paraphrase-matching (intentionally, since regenerators legitimately rephrase). If everything in the briefing ends up STABLE, the collator was too generous. Push back: *"show me the verbatim regenerator phrase that matched this briefing claim. If you can't, downgrade to CONTESTED."* The asymmetry with Phase 2's strict substring match is deliberate; the collator's charity is what the forced-quote pushback keeps honest.
 
+**Push-back moves (host varies — trainer by default; Teacher Claude in self-study):**
+- *Phase 0 — student opens the briefing before writing the benchmark.* "Close the file. Your gut verdicts are the measuring stick. Reading the briefing first contaminates them."
+- *Phase 0 — student writes seven or eight claims to be thorough.* "Five. Precision and recall get noisy with more, not better. The benchmark's job is to be small and sharp."
+- *Phase 1a — student wants to read each detector file as it lands.* "Don't. The scorer reads them. You'll see everything in the scoreboard — that's where the contrast lives."
+- *Phase 1b — collator labels everything STABLE.* "Show me the verbatim regenerator phrase that matched this briefing claim. If you can't, downgrade to CONTESTED."
+- *Phase 2 — scorer hedges, picks 'all five are useful.'* "Re-run and force a pick. The ensemble cap is two methods, not a five-method hug."
+- *Phase 2 — student skims past the scoreboard to Phase 3.* "Stay on the scoreboard. Name the row that surprised you. The scoreboard IS the rescue beat — skipping it steals the mood."
+- *Phase 3 — judge file sprawls past 20 lines.* "Cut it back. A judge that tries to do everything does nothing well. Narrow on purpose; the Known limit line names what it doesn't reach."
+- *Close — student writes a generic still-uncertain line ('quality is hard').* "Name a specific claim-shape this judge won't catch. 'Hard' isn't a failure mode."
+
+**Decision points (trainer reads these in prep, not during):**
+- *Briefing target.* Default is the Module 3 synthesized briefing. If the student's Module 3 briefing came back unusually clean (rare but happens with cohorts that ran Module 3 conservatively), pivot to any over-reaching output the student already cares about — a board paper, a Monday memo, a customer-facing proposal. The exercise needs an output that plausibly overreaches; a too-grounded briefing collapses the contrast.
+- *Detector swap.* Domain-specific cohorts can swap one of the five for a regulatory-claim flag (compliance teams) or a pricing-claim flag (commercial teams). Keep the panel at five and the ensemble cap at two methods stacked.
+- *Benchmark size.* Five claims by default. Raise to seven only when the cohort's briefings run long; never below five — precision and recall get noisy.
+- *Self-consistency framing set.* Default A/B/C/D framings (strategic / rollout / load-bearing assumptions / verbatim quotes) are calibrated for a Module 3 briefing. For a customer-memo or pricing-deck target, swap rollout-approach for a customer-promise framing or a numerical-claim framing — variance comes from the framing differences, so they need to fit the source material.
+- *Phase 1 timing.* Authored time is ~20 min combined for Phase 1a + Phase 1b. If the spawn is slower than expected (sub-agent queueing on a busy cohort network), fill the wait with the three-paragraph self-consistency brief — already authored into the prompt for that reason.
+- *Cowork variant — agent count.* Cowork students may hit a parallel-agent limit lower than five. If only three regenerators run, downgrade the labels: STABLE = 2-3 match, CONTESTED = 1, FABRICATED = 0. Note in the collation prompt.
+
 **Mood check (before shipping):**
 - M5's mood is mechanical rescue — *"ahh, this is actually fixable."* The Close must land there. The scoreboard moment is the rescue beat — a student who scrolls past it steals their own mood.
 - Security residual (M4) and strategic uncertainty (M3) should still be present at the end of M5. The Close's "what the judge won't catch" line names the scope of the rescue.
@@ -314,4 +332,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - M5 ships a hand-run benchmark producing one judge file against a five-claim benchmark.
 - M6 picks the judge up and turns it into infrastructure — scaled benchmark, scheduled runs, corrections feeding back, the steering counterpart (encoding preference, not groundedness).
 - Don't cross-teach. M5's benchmark earns M6's automation.
+
+**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
+- compendium-audited 2026-04-28 (check_writing, check_student_facing, check_pedagogy, check_prompts)
 

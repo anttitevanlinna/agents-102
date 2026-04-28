@@ -44,6 +44,8 @@ A whole module just showed you multi-agent works. Next Monday, you will be tempt
 
 <!-- maintainer -->
 
+**Quality:** draft 2026-04-28 (Pass 2 — sim/eval not yet run)
+
 **Placement in module:** After the exercise, before the Debrief. The exercise proves both shapes work; the lecture names them and draws the boundary. Per the no-telling-precedes-doing rule, the "start with don't" default is safer delivered after the exercise — pre-exercise it sounds like a disclaimer, post-exercise it lands.
 
 **Frameworks riffed on:**

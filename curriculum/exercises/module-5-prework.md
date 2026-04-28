@@ -42,9 +42,13 @@ Read:
 
 **What to bring to class.**
 
+Two things.
+
 One sentence per case, on paper or in a note you'll open Monday: *"The organisational check that would have caught this was X."*
 
-That's it. No reading list. No ten-bullet rundown of every headline agent failure of 2024–25. Two cases, close-read, with the missing check named in your own words. Tomorrow we run the loop that builds the check into your own system.
+The one-rule plugin from the homework after Module 4. The shape and a worked example live in [One-rule plugin template](reference/one-rule-plugin-template.md). Half a page; one rule from your company's policy, packaged as a small plugin file an agent can read.
+
+That's it. No reading list. No ten-bullet rundown of every headline agent failure of 2024–25. Two cases, close-read, with the missing check named in your own words; one small plugin in hand.
 
 **Time:** 25 minutes. 10 per case, 5 for the two sentences.
 

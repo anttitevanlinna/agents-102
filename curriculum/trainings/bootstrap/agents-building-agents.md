@@ -16,11 +16,11 @@ After this module, you will be able to:
 
 ## Start here
 
-You built a memory. You built agents that read it. You built skills that audit the agents. You built judges that catch the skills drifting. Every module raised a ceiling. Today the ceiling moves on its own.
+Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.
 
 The question that shows up without being asked: *where is this all going?*
 
-Hold that. M8 doesn't answer it. It shows you the shape of an answer you'll keep sharpening.
+Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'll keep sharpening.
 
 **Agent generates agent (demo, ~5 min).** The meta-tool in action. Sets up the Extend exercise. You watch one agent build another, end-to-end, on real input. That's the whole lecture.
 
@@ -33,10 +33,10 @@ The three thinking-disciplines you applied in Module 7 on your own sharing probl
 ## Key Concepts
 
 - **Self-improvement**: each cycle sharpens the next. The Diamond 2 output reads sharper than Diamond 1 because the agents built on each other's work inside the same session.
-- **Org capability**: twenty people (or one student's full M1–M7 stack plus Teacher Claude's orchestration) just produced a strategy kernel no consultant could deliver, because it's grounded in your company's own files.
+- **Org capability**: twenty people (or one student's full Module 1 through Module 7 stack plus Teacher Claude's orchestration) just produced a strategy kernel no consultant could deliver, because it's grounded in your company's own files.
 - **The three predictable walls after Bootstrap**: data access, runtime platform, discoverability. The kernel you just wrote names which wall bites first.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed plugins. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the M2 Debrief move.
+- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed plugins. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the Module 2 Debrief move.
 - **Grounding when agents read agents.** Every agent publishes what it has and what it doesn't: a context manifest. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
 
 ## Debrief

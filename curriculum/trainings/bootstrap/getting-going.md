@@ -1,5 +1,3 @@
-<!-- TODO: consider renaming module to "Context is King" (currently "Getting Going"). Would align module name to its Big Idea. Cascade: this filename (rename getting-going.md → context-is-king.md), site/curriculum.html MODULES slug entry, `bosser-strategy:content-strategy.md` headings, memory references, existing lecture collision (lecture is already named "Context is King"; resolve by renaming module AND renaming lecture, e.g., lecture becomes "The two windows" or similar). -->
-
 # Getting Going
 
 ## Big Idea
@@ -23,6 +21,8 @@ After this module, you will be able to:
 > Let's hear from your sponsor first (the CEO / CTO / SVP who brought you here). They're in the room with you, as a participant, not as a visitor. They've got one sentence in their own words: why they're here, and what they don't yet know. Something like *"I want to learn this with you, not delegate it."* No corporate kickoff, no agenda. What matters isn't the sentence. It's that your sponsor said it, out loud, before anyone else. That's the license the next seven modules run on.
 
 **The question, to you:** when you've used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
+
+**Context is king.** You steer your agent by the context you give it. You paint by choosing the brush.
 
 [Opening: Context is King](lectures/context-is-king.md)
 

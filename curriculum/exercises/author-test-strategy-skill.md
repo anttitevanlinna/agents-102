@@ -80,6 +80,7 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy)
 - compendium-audited 2026-04-27 (this cycle: M3 audit GO; Ex3 prompts compliant, no reshape needed — P1 meta-ask is the pedagogy)
 - earlier compendium-audited entries — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Time:** 18–22 minutes (12 / 6 / 2)

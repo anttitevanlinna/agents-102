@@ -37,7 +37,6 @@ Mandatory for AE101 modules per `.claude/skills/content-creation/SKILL.md`. Disp
 - **Surface-map output snippet** (`map-the-access-surface.md`) — what Claude returns for a realistic feature. Defer to first sim; use a real cohort output if clean.
 - **First-pass SKILL.md** (`author-test-strategy-skill.md`) — a good authored test-strategy skill for a Node.js service with Jest + Playwright + Docker-Postgres. Ship inline or link to reference file.
 - **STRIDE invocation 30-sec snippet** (`skills-from-the-frontier.md`) — decide: lecture or exercise opener? First sim picks.
-- **Task shapes by engineer archetype** at `curriculum/reference/picking-a-first-long-task.md` — backend / frontend / platform / data. 3–4 shape-examples.
 
 ## 4. Register polish
 

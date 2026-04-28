@@ -24,7 +24,7 @@ In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your r
 
 ## Key Concepts
 - **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll ever automate (tone, brand, compliance, steering). Groundedness is just the first instance.
-- **Empirical method selection over authority.** You don't pick a detector because a vendor or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works every time you need a machine to make a judgment reliably.
+- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works every time you need a machine to make a judgment reliably.
 - **The scoreboard IS the explanation.** Magic that you can point at a row and explain. Precision, recall, coverage, introduced experientially, not lectured. A student who reads the scoreboard can defend the winner; a student who skips it is trusting the machine instead of measuring it.
 - **Benchmarking teaches evaluating evaluators.** The real move isn't "build a detector"; it's "build the thing that benchmarks detectors." Once you've run a benchmark once, you've seen what evaluating evaluators looks like, and the idea transfers to every future quality question.
 - **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend. A judge that tries to do everything does nothing well.
@@ -49,9 +49,9 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 Read Claude's summary. Push back where it's wrong: *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft, say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up next; it's the seed of your first production eval.
 
 ## Next
-You ran the benchmark once. Five claims, five detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
+The benchmark ran once. Five claims, five detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
 
-## Homework after M5 — between-module reading
+## Homework after Module 5: between-module reading
 
 Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: Chip Huyen, *AI Engineering* (O'Reilly 2025), selected sections (candidate).
 
@@ -111,7 +111,10 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: C
 
 **Why one exercise, not two:** the benchmark is a single bounded activity with a four-phase internal arc (target + benchmark → detectors → scorer → judge). Adding a second exercise here would steal M6's Steering-eval beat. M5 stays focused on the benchmarking pattern; evals are M6's instrument.
 
-**TODO:** Pass 3 polish on the benchmark exercise (facilitator notes pass). `grounded.md` lecture reshape to lead into the benchmark. Capability dry-run on four-subagent spawn + scorer stability.
+**DEFERRED** (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability. Four-spawn shape is confirmed in production via Module 3's parallel retrievers; Module 5's pipeline + scorer-stability check needs a real benchmark run on real briefing input.
+
+**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
+- compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)
 
 **Source-verification owed (pre-first-cohort):**
 - Mata v. Avianca (S.D.N.Y. 2023) — public court record; add URL to the court filing or a reputable secondary source.

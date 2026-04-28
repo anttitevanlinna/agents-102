@@ -91,6 +91,7 @@ You can now clear. What you stored may or may not help you in future sessions. L
 **Quality:** mechanical-tested 2026-04-28
 - compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy; this cycle: settings.local.json/additionalDirectories block removed from Compound prompt — was tied to the deleted prework /add-dir step; audit GO; M1 chain flow intact)
 - compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy) — superseded by 2026-04-27 cleanup
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - mechanical-tested 2026-04-28 (curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md @ 79adc5a PASS — 6/6 V via verbatim-check.sh, A1–A19 PASS incl. CLAUDE.local.md grounded in session moments + .gitignore self-edit + ticket close-out via path-3 substitution, H1–H5 PASS, prompt-source audit clean)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).

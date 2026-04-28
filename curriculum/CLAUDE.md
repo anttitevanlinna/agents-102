@@ -13,7 +13,9 @@ Current state of what's built vs. what's next lives in `bosser-strategy:content-
 
 Every student-facing artifact (module, exercise, lecture, prework) carries a Quality line in its maintainer block. The tag is the contract between sessions — without it, every audit re-runs from scratch and every "cleared" claim is unverifiable.
 
-**Six states, ordered cheap → expensive (each tier earns the right to spend the next):**
+**Two axes — LLM-checks (cheap → expensive ladder) and the human-check dimension (orthogonal).** The LLM ladder is the primary path to `cohort-tested`; the human-check is its own row in the dimension log, tracked separately so the last-human-read provenance never gets folded into LLM-pass provenance.
+
+**LLM-checks ladder (each tier earns the right to spend the next):**
 
 | State | What it means | Trigger | Cost |
 |---|---|---|---|
@@ -24,14 +26,23 @@ Every student-facing artifact (module, exercise, lecture, prework) carries a Qua
 | `cohort-tested` | Survived ≥1 real cohort delivery | Manual after delivery; lists cohorts + post-cohort changes | hours/days (live delivery) |
 | `battle-tested` | ≥3 cohorts in trailing 12 months | Computed from cohort log | months |
 
-**Order is cheap-before-expensive.** Burn the cheap audits first; only spend mechanical execution on prompts that already cleared compendium + sim. A prompt that fails register-sim doesn't deserve a mechanical run yet — the register fix is going to change the prompt anyway.
+**Human-check (orthogonal dimension — its own row in the dimension log):**
 
-**Mechanical and sim sample different error classes** (per `check_pedagogy.md` #21 verification layers): sim *predicts* what a competent reader would react to (cheap, broad pattern-match); mechanical *observes* what Claude actually does on a real scratch repo (expensive, falsifiable). Both are pre-cohort; neither replaces the other.
+| State | What it means | Trigger | Cost |
+|---|---|---|---|
+| `maintainer-reviewed` | Antti read the file end-to-end and ran the prompts manually; last-human-check provenance | Manual pass; tagged by maintainer | tens of minutes (real reading + manual run) |
+
+**Order is cheap-before-expensive on the LLM ladder.** Burn the cheap audits first; only spend mechanical execution on prompts that already cleared compendium + sim. A prompt that fails register-sim doesn't deserve a mechanical run yet — the register fix is going to change the prompt anyway.
+
+**`maintainer-reviewed` is orthogonal — never folded into LLM provenance.** Antti reviews Bootstrap manually before sims and evals run; the human-read knowledge stays on its own row so it can't be conflated with `sim-passed` or `mechanical-tested`. The dimension log shows both axes; the top-state line still reflects the highest LLM/cohort tier reached. Same auto-degrade rule applies — file touched after `maintainer-reviewed <date>` degrades that row independently of the LLM ladder.
+
+**Mechanical and sim sample different error classes** (per `check_pedagogy.md` #21 verification layers): sim *predicts* what a competent reader would react to (cheap, broad pattern-match); mechanical *observes* what Claude actually does on a real scratch repo (expensive, falsifiable). Both are pre-cohort; neither replaces the other. `maintainer-reviewed` samples a third class — the senior human's whole-artifact judgement, the one neither sim nor mechanical can replicate.
 
 **Format** (in maintainer block — top-state line + dimension log):
 ```
 **Quality:** <top-state> <YYYY-MM-DD>
 - compendium-audited <YYYY-MM-DD> (<compendium-versions-and-audits-applied>)
+- maintainer-reviewed <YYYY-MM-DD> (<one-line note: read end-to-end, prompts run manually, scope>)
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)
 - mechanical-tested <YYYY-MM-DD> (<judge-report-path> @ <short-sha> PASS)
 - cohorts: <none yet | list cohort-name + date + post-cohort changes>
@@ -50,6 +61,8 @@ The top-state line is the highest tier currently valid. The dimension log lists 
 Same-session edits during the audit-and-tag cycle don't trigger degrade (audit is as-of-end-of-session). Cosmetic edits below `<!-- maintainer -->` (maintainer-block-only changes that don't touch student-facing content) also don't degrade — the audit was against student-facing content.
 
 **Pre-first-cohort default** is `compendium-audited` once the audit skill clears. `cohort-tested` and `battle-tested` only apply after live delivery; lists cohort-name + date + what changed in the file as a result.
+
+**Reference files (`curriculum/reference/`) are exempt** from Quality-state tagging. Flat lookup material — commands, connector setup, troubleshooting — has no mood contract, phase structure, or sim/mechanical surface to audit. Accuracy and currency are the standards there, not register or forcing-function fidelity. Don't add Quality blocks to reference files; don't flag missing Quality blocks on reference files in autonomous sweeps.
 
 Canonical source: `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md`.
 

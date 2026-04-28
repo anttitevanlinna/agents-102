@@ -9,7 +9,7 @@ About 10 min. Surface one multi-file backlog task in conversation with Claude. C
 
 **Just a simple task that spans a few files. Not an epic.**
 
-Optional reading in the M1-to-M2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (~30 min); [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).
+Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (~30 min); [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -35,7 +35,7 @@ After this module, you will be able to:
 
 ## Save the rule if it earned itself
 
-The full compound move ran at M1. M2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next.
+The full compound move ran at Module 1. Module 2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next.
 
 Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 
@@ -56,15 +56,15 @@ If one branch from this session sharpened how plans get read in this codebase, i
 
 ## Next
 
-You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the 15 minutes. M3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; M3 reveals that and has you author your first one.
+You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the 15 minutes. Module 3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; Module 3 reveals that and has you author your first one.
 
-## Pre-reads before M3
+## Pre-reads before Module 3
 
-Optional. Skipping either piece does not break M3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
+Optional. Skipping either piece does not break Module 3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
 
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for M3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for M3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for Module 3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 
@@ -73,6 +73,7 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 - compendium-audited 2026-04-28 (check_writing v2026-04-26; check_student_facing v2026-04-27; check_pedagogy v2026-04-28 incl. #39; check_prompts v2026-04-28; check_strategy_tie_in v2026-04-25; check_lectures v2026-04-24; check_research_claims; check_platform_and_boundaries — capability-check pass on Phase 2 loading-model claims after correction `~/.claude/memory/` → `~/.claude/CLAUDE.md` / `~/.claude/rules/`)
 - sim-passed 2026-04-28 (Mid-competent 8.0 / Opinionated-senior 7.5 / Fast-operator 9.0+8.5 after runtime-gating / Nitpicker — convergence flagged loading-model error + Phase 2 body/prompt contradiction; both fixed in same cycle)
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/ae101-m2-extract-judge-report.md` @ 18affa1) PASS 8/8 — covers the new exercise's prompt chain end-to-end including handoff from lecture
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 - prior dimension-log preserved for reference: compendium-audited 2026-04-25 + sim-passed 2026-04-25 (push-back-on-the-plan + when-a-plan-is-good unchanged this cycle)
 
@@ -98,7 +99,7 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 - Lecture over-runs to 15+ min. Cut the three-pressures section to 60 seconds if tight; the exercise teaches them.
 - Connections drifts into war-stories about bad agent behavior. Cap at 10 min, let the stories be short.
 - Student reaches for the Ctrl+G plan-file edit flow (a real practitioner primitive). Fine to acknowledge at Debrief as a next-tier move; not this exercise's path.
-- Student asks *"why don't we execute?"* near P5. Answer: you've done the work of making the plan good; recognising a good plan is the skill this module installs. Execution is M3's concern.
+- Student asks *"why don't we execute?"* near P5. Answer: making the plan good IS the work; recognising a good plan is the skill this module installs. Execution is M3's concern.
 
 **Decision points:**
 - **Exercise runs to 70 min:** the second read went deep (common on real codebases). Compress Debrief to 10 min, keep the pattern-naming step.

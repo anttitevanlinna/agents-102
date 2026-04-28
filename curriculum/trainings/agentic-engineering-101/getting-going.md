@@ -27,7 +27,7 @@ After this module, you will be able to:
 [Compound and close](exercises/compound-and-close.md)
 
 ## Key Concepts
-- Plan mode is overhead on a trivial bug. Module 2 (M2 from here on) is where it earns its keep
+- Plan mode is overhead on a trivial bug. Module 2 is where it earns its keep
 - The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Assume 10% of what it says or does is misrepresentation and dig
 - `/context` shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality — your job is to steer what lands in those bytes
 - A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
@@ -40,21 +40,23 @@ The compound step runs inside the `compound-and-close` exercise. The agent revie
 [How this training was built](lectures/how-this-training-was-built.md)
 
 ## Next
-You ran the loop once, on a trivial bug, without plan mode. M2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
+Module 1 ran the loop once on a trivial bug, no plan mode. Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
 
-## Homework after M1 — between-module reading
+## Homework after Module 1 — between-module reading
 
-Optional. Skipping either piece does not break M2. Both sit in the gap between M1 and M2; engineers who do them arrive at M2 with practitioner voice and worktree-readiness as recognition rather than novelty.
+Optional. Skipping either piece does not break Module 2. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.
 
-**Watch: [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for M2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in M2 through M6 show up here first as one person's working rhythm.
+**Watch: [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for Module 2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in Module 2 through Module 6 show up here first as one person's working rhythm.
 
 **Read: [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use. Find your way to do it over time. There is no rush.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy)
-- compendium-audited 2026-04-27 (re-stamped after 2026-04-27 cycle: prework /add-dir removed, M1 Ex2 open-hook reshape, M1 Ex3 settings-block removal — module file itself untouched, but mtime degrade triggered re-validation; audit GO)
+**Quality:** compendium-audited 2026-04-27
+- compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy; re-stamped after 2026-04-27 cycle: prework /add-dir removed, M1 Ex2 open-hook reshape, M1 Ex3 settings-block removal — module file itself untouched, but mtime degrade triggered re-validation; audit GO)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
 - **Session runtime:** 2h (Connections 10 / Lecture 10 / Exercise 95 / Bridge 5). Trainer demos slowly, room copy-pastes concurrently — fits 2h in-class. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 40 / compound-and-close 37 (compound retro + MCP wire + ticket close). 2h is deliberate for M1 — longer than M2–M6's 1h45 because of the orient+introspect ramp and the MCP close-out.

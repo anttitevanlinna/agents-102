@@ -127,6 +127,7 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
 - compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Phase 1; Debrief reconciliation with module's "no Debrief" framing; Phase 1 prompt reshaped to open-hook with `Candidates:` colon)
 - compendium-audited 2026-04-26 (prior audit) — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~750 words body.
 

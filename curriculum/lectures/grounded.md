@@ -46,7 +46,7 @@ Somebody tells you *"just have the agent read your files before it answers,"* or
 
 That's intuition. The move is empirical.
 
-You have a briefing. You don't know which detection method will catch what matters on *your* output, with *your* sources, on *your* strategic question. Nobody does. Not the vendors, not the frameworks, not the blog posts. The only plain answer is to run several candidate methods in parallel and measure which one catches what your benchmark says should have been caught.
+You have a briefing. You don't know which detection method will catch what matters on *your* output, with *your* sources, on *your* strategic question. Nobody does. Not the framework authors, not the blog posts, not the deck on someone's slide. The only plain answer is to run several candidate methods in parallel and measure which one catches what your benchmark says should have been caught.
 
 Five candidates, chosen because they fail in different directions, so the scoreboard gives you real spread:
 
@@ -70,7 +70,9 @@ Not certainty. Certainty isn't available. What you buy is a *grounded choice abo
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
 
-Now you run the benchmark by hand. Well, not by hand. You set up five detectors, a scorer, and a five-claim benchmark. The agents do the work. You watch the scoreboard fill in. At M6 the winner goes inside a loop that runs and improves itself.
+Now you run the benchmark. Well, not by hand. You set up five detectors, a scorer, and a five-claim benchmark. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you'll carry into Module 6, where it goes inside a loop that runs and improves itself.
+
+Phase 0 is next: a fresh briefing, then five claims you write in two minutes. The benchmark you're about to author is the measuring stick the rest of the exercise turns on. Write it from your gut, not from the briefing.
 
 **Time:** 10–12 minutes.
 
@@ -108,3 +110,8 @@ Now you run the benchmark by hand. Well, not by hand. You set up five detectors,
 - **Compound reliability math resistance.** Some students will want to argue the 85% number. Coach: *"The number is illustrative. Whatever YOUR number is, run the math. The compounding is the real point."*
 
 **Length:** ~950 words. Prework-reading band (800-1200) — above demo-script band (350-600). Delivered in-room (10-12 min). Five candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
+
+**Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
+
+**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
+- compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)

@@ -100,6 +100,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing #14 + #24, check_prompts §1(d), check_pedagogy, check_platform_and_boundaries)
 - compendium-audited 2026-04-27 (this cycle: P1 + P3 prompts reshaped to open-hook per §1(d); "list my installed skills" platform claim softened; M3 audit GO with todos)
 - earlier compendium-audited entries — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 3 / 7 / 3)

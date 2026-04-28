@@ -63,11 +63,11 @@ Read what Claude proposes. Push back where it is off. The four named attack clas
 
 The plugin is authored. Now install it in your runtime and confirm it loads. Plugins load at session start, not into the current session, so the verify step is a fresh session.
 
-Cowork users follow the chat-button install. Desktop users follow the plugin loader. CLI users take a small extraction step — same plugin, different install surface. Everyone syncs at the verify prompt below.
+Cowork users follow the chat-button install. Desktop users follow the plugin loader. CLI users take a small extraction step. Same plugin, different install surface. Everyone syncs at the verify prompt below.
 
 <div class="rt-cli">
 
-The CLI does not auto-load plugin envelopes from `~/.claude/plugins/<plugin-name>/` — that directory is registry-managed by Claude Code itself. Standalone skills under `~/.claude/skills/<name>/SKILL.md` auto-load with zero install plumbing. So the CLI install is a one-step extraction: lift each lens's SKILL.md (and any reference files) out of the plugin's `skills/<lens>/` folder and copy them to `~/.claude/skills/`. The plugin manifest you authored is harmless leftover; you keep the plugin folder around as the canonical source of truth.
+The CLI does not auto-load plugin envelopes from `~/.claude/plugins/<plugin-name>/`. That directory is registry-managed by Claude Code itself. Standalone skills under `~/.claude/skills/<name>/SKILL.md` auto-load with zero install plumbing. So the CLI install is a one-step extraction: lift each lens's SKILL.md (and any reference files) out of the plugin's `skills/<lens>/` folder and copy them to `~/.claude/skills/`. The plugin manifest you authored is harmless leftover; you keep the plugin folder around as the canonical source of truth.
 
 **Prompt** *(Claude Code)*
 
@@ -104,7 +104,7 @@ After Phase 2's authoring prompt, Claude renders the plugin files in the chat. L
 
 If the *Save plugin* button does not appear, scroll up to confirm Claude finished writing all the files (manifest plus both SKILL.md files plus any reference files). If a file is missing, ask Claude to write it; the button shows up after the full bundle is on screen.
 
-Once saved, open a new Cowork session connected to the same folder. The plugin is stored locally on your machine and tied to your Claude Desktop install — it loads automatically in any new Cowork session on the same laptop, no per-session import. Plugins load at session start, not into the current one.
+Once saved, open a new Cowork session connected to the same folder. The plugin is stored locally on your machine and tied to your Claude Desktop install. It loads automatically in any new Cowork session on the same laptop, no per-session import. Plugins load at session start, not into the current one.
 
 </div>
 
@@ -118,13 +118,13 @@ Apply the policy lens of the security plugin I authored to one file: module-2/ch
 
 Read the two or three rows. The rule wording should sound like the lens you authored, not a generic check.
 
-**The explicit slash-command form — also worth knowing.** Plain-language usually dispatches the right lens, but the slash command is the only invocation guaranteed to fire the exact one you mean:
+**The explicit slash-command form (also worth knowing).** Plain-language usually dispatches the right lens, but the slash command is the only invocation guaranteed to fire the exact one you mean:
 
 ```
 /security-audit:policy run two or three rules on module-2/challenge.md and stop.
 ```
 
-CLI users drop the colon — `/security-audit-policy ...` — because the extracted skills do not carry the plugin namespace.
+CLI users drop the colon (`/security-audit-policy ...`) because the extracted skills do not carry the plugin namespace.
 
 **What happens:**
 

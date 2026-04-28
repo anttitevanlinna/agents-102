@@ -16,11 +16,11 @@ After this module, you will be able to:
 - **Pre-mortem** the firing: imagine the six-month failure where they kept using the incumbent, biased toward the social failure you're not seeing
 
 ## Start here
-By now you've built a memory, synthesis across three source zones, skills that audit your own system, a judge that got sharper by watching itself miss things. It's a stack. And somewhere in it is a thing that produced output you trust enough to check before a meeting. You caught it wrong once, corrected it, watched the correction stick.
+The stack on disk: a memory, synthesis across three source zones, skills that audit the system, a judge that got sharper by watching itself miss things. Somewhere in it is a thing that produced output worth trusting enough to check before a meeting. Once it was wrong; a correction landed; the correction stuck.
 
 The question that shows up on its own: *could this help someone else?*
 
-Hold that feeling. It's not a governance question yet. It's a generous one. At M7 we turn it into a plan. Plainly, against real friction, without the vendor pitch.
+Hold that feeling. It's not a governance question yet. It's a generous one. At Module 7 it becomes a plan. Plainly, against real friction, without the sales pitch.
 
 Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
 
@@ -28,11 +28,11 @@ Two questions to warm up: who's the one person who came to mind just now? And wh
 
 Start with the move that matters most: **interview for the job.** Christensen and Moesta put it plainly. People don't buy products, they hire them for jobs. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they're using now. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.
 
-Then the candidates: **four strategies that work in practice.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth strategy, "share the whole agent," is the vendor pitch. It sounds right. It doesn't hold up. You'll see why in the next hour.
+Then the candidates: **four strategies that work in practice.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth strategy, "share the whole agent," is the one that sounds right and doesn't hold up. You'll see why in the next hour.
 
 The disciplines you'll apply after (Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*) are not agent tools. They're strategy tools, named inline in the prompts you'll paste. You're using them on the switch: what would have to be true for your teammate to fire their current hire and use your candidate? Six months from now, why didn't they?
 
-One observation to keep in your back pocket while you run the exercise: **the Access-Trust Gap.** In our practice, most companies have rolled out access far ahead of trust. Large fractions of the workforce can reach the agent, a much smaller fraction is trusted to run it on real production work. The gap is wide, and it's social, not technical. Which is why strategy tools beat deployment tools at M7. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
+One observation to keep in your back pocket while you run the exercise: **the Access-Trust Gap.** In our practice, most companies have rolled out access far ahead of trust. Large fractions of the workforce can reach the agent, a much smaller fraction is trusted to run it on real production work. The gap is wide, and it's social, not technical. Which is why strategy tools beat deployment tools at Module 7. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
@@ -50,7 +50,7 @@ One observation to keep in your back pocket while you run the exercise: **the Ac
 
 ## Debrief
 
-Five minutes. Claude reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your M7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, pre-mortem. Claude reviews, rewrites the sharing artifact in place, reports what changed. You push back on anything that's off.
+Five minutes. Claude reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your Module 7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, pre-mortem. Claude reviews, rewrites the sharing artifact in place, reports what changed. You push back on anything that's off.
 
 **Prompt** *(Claude Code)*
 
@@ -63,13 +63,13 @@ When you're done, tell me in 3–5 lines: which file you rewrote, what you added
 ```
 
 
-Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your M7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
+Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
 ## Next
 
-You've built a system. You've secured it, evaluated it, and designed the sharing. What if you didn't have to build each new agent by hand?
+The system stands: secured, evaluated, with sharing designed. What if each new agent didn't need to be built by hand?
 
-## Homework after M7 — between-module reading
+## Homework after Module 7 — between-module reading
 
 Run the next-step artifact. Test one assumption. Ask for one name. Talk to one person.
 

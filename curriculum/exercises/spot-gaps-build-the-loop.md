@@ -121,7 +121,9 @@ The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md`
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-25
+- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~830 words body.
 

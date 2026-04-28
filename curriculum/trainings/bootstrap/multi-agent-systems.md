@@ -49,7 +49,7 @@ Read Claude's summary. Push back where it's wrong. *"No, the planner and the ref
 ## Next
 You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
 
-## Homework after M3 — between-module reading
+## Homework after Module 3 — between-module reading
 
 Selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (multi-agent coordination).
 
@@ -65,8 +65,6 @@ Selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (mu
 
 > PLUG POINT: The three synthesizer stances.
 > Default: backward-from-end planner, Martin's *what-would-have-to-be-true* experimentator, counterintuitive reframer (the Rory seat). Students can swap the Rory seat for another sharp stance if one fits their challenge better — e.g., a premortem voice (Kahneman/Klein) for risk-heavy challenges, a JTBD interviewer voice for customer-facing ones. Keep three; keep them genuinely different.
-
-**TODO:** Pass 2 exercise + lecture drafts. **No scaffold zip** — agent files emerge from the student's prompts during the exercise (same pattern as Module 2's custom-agent move). The four prompts (three retrievers + synthesizer with three subagent stances) are the artifacts to get right in Pass 2. Shared handoff file shape can be established inside the prompt text (e.g., "write your findings to `module-3/retrievals/<source>.md`"); doesn't need to be pre-created.
 
 **Capability check owed:** verify (via `claude-code-guide`) (a) how subagents are invoked in current Claude Code desktop — slash command, inline prompt, agent definition file; (b) whether multiple concurrent Claude Code sessions on the same working directory behave as expected (each session reads the same `CLAUDE.md`, writes land in the shared filesystem, no lock contention on small markdown files). Both are structural to the exercise; stale assumptions = broken training day.
 

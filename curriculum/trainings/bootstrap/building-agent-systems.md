@@ -18,7 +18,7 @@ After this module, you will be able to:
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here
-Module 1 was for you. The site you built, the voice you sharpened, the fabrication you caught because nobody else could. That was the rehearsal. Now we turn to work. The rest of the training builds on the challenge you actually get paid to move, because that's where the system has to stand up.
+Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
 You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We'll build one shortly.
 
@@ -39,7 +39,7 @@ And one more: if everything you've read, drafted, and half-figured-out on that c
 
 ## Debrief
 
-Five minutes. A retro, **and your first `./CLAUDE.md` at this directory.** You walked into Module 2 with an empty training-dir root: no rules file. Now you've run the whole memory flow (curate → ingest → build → update → maintain) and the rules that actually matter for YOUR agent are visible. Visible in what worked, what rubbed, what you had to repeat. Claude writes the rules file from the session. You push back on anything off.
+Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible — visible in what worked, what rubbed, what got repeated. Claude writes the rules file from the session. You push back on anything off.
 
 **Prompt** *(Claude Code)*
 
@@ -85,7 +85,7 @@ You have an agent doing real work on your challenge. But the job is getting too 
 
 Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, competitive watching, drafting replies are all fine starters. You only learn by doing. Go build.
 
-## Homework after M2 — between-module reading
+## Homework after Module 2 — between-module reading
 
 [Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (tools, memory, context).
 

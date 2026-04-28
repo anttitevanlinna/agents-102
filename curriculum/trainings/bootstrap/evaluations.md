@@ -1,23 +1,23 @@
 # Evaluations
 
 ## Big Idea
-The eval that ran once in M5 now runs on every output, and the work tightens under it. The judge stays fixed; that's the integrity of the loop. The generator sharpens against feedback the same judge keeps applying. You walk away. You come back to a sharper generator the same yardstick can't fault.
+The eval that ran once in Module 5 now runs on every output, and the work tightens under it. The judge stays fixed; that's the integrity of the loop. The generator sharpens against feedback the same judge keeps applying. You walk away. You come back to a sharper generator the same yardstick can't fault.
 
 ## Prework
 
-Ethan Mollick, "Garbage Can and Bitter Lesson." Plus the still-uncertain line you wrote in M5 (the thing you flagged a grounded briefing still couldn't reach). That's M6's starting point.
+Ethan Mollick, "Garbage Can and Bitter Lesson." Plus the still-uncertain line you wrote in Module 5 (the thing you flagged a grounded briefing still couldn't reach). That's Module 6's starting point.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Construct** a self-improving eval loop: one Claude session directs the work, generation runs in rounds, the judge from M5 scores each round unchanged, a second agent reads the per-claim feedback and rewrites the generator's strategy file between rounds
+- **Construct** a self-improving eval loop: one Claude session directs the work, generation runs in rounds, the judge from Module 5 scores each round unchanged, a second agent reads the per-claim feedback and rewrites the generator's strategy file between rounds
 - **Evaluate** how the generator's strategy sharpens across rounds by reading the strategy diffs and meta-agent reasoning
 - **Create** eval infrastructure that holds the judge fixed and tightens the work under it: on disk, re-runnable, sharper outputs each cycle
-- **Distinguish** the one-off judge you picked in M5 from one that runs on every output as a fixed yardstick the work tightens against
+- **Distinguish** the one-off judge you picked in Module 5 from one that runs on every output as a fixed yardstick the work tightens against
 
 ## Start here
-In Module 5 you picked a winner out of five detectors. You watched it work. You trusted it. Good. That judge sits in your judges folder. The thing you'll feed it now is the thing that changes.
+Module 5 ended with a winner out of five detectors — the judge that now sits in the judges folder. What gets fed to that judge is the thing that changes at Module 6.
 
-The question shifts at M6. What if the work kept getting sharper, not because you edited it, but because the same judge kept catching what slipped past and the system kept absorbing the catches? What if *you weren't in the room* while that happened?
+The question shifts at Module 6. What if the work kept getting sharper, not because you edited it, but because the same judge kept catching what slipped past and the system kept absorbing the catches? What if *you weren't in the room* while that happened?
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
@@ -47,12 +47,12 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 ```
 
 
-Read Claude's summary. Push back where it's wrong. *"The meta-agent was right to soften that rule, put it back"* / *"you added a rule the strategy already had after round 2."* The artifact: the sharpened generator strategy file plus one line added to the M6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the strategy kept absorbing them; you just did another pass on the strategy, and the next run the meta-agent will keep going without you.
+Read Claude's summary. Push back where it's wrong. *"The meta-agent was right to soften that rule, put it back"* / *"you added a rule the strategy already had after round 2."* The artifact: the sharpened generator strategy file plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the strategy kept absorbing them; you just did another pass on the strategy, and the next run the meta-agent will keep going without you.
 
 ## Next
 You just built an eval that improves itself. Who else on your team would want any of this?
 
-## Homework after M6 — between-module reading
+## Homework after Module 6 — between-module reading
 
 Chip Huyen, *AI Engineering*, evals chapter (candidate).
 

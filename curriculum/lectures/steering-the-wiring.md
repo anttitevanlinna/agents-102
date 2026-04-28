@@ -28,6 +28,7 @@ The student you started this training as would have asked someone what the right
 
 
 **Quality:** draft 2026-04-28 (new lecture; not yet sim/audited)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta:**
 - **Time:** 3–4 min, closer-shaped, lands inside M6 module after Spot-gaps exercise + before Arc-retrospective exercise.

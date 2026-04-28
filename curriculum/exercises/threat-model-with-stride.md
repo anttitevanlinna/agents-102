@@ -79,6 +79,7 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing #24, check_prompts §1(d), check_pedagogy)
 - compendium-audited 2026-04-27 (this cycle: P2 prompt reshaped to open-hook per §1(d); M3 audit GO with todos)
 - earlier compendium-audited entries — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 8 / 5)

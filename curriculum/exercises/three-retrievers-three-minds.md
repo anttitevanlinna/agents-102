@@ -158,6 +158,8 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: th
 
 <!-- maintainer -->
 
+**Quality:** draft 2026-04-28 (Pass 2 — sim/eval not yet run)
+
 **Frameworks riffed on:**
 - Rumelt's strategy kernel (synthesizer spine) — builds on the crux move Module 2's Debrief inline-named
 - Roger Martin's *what would have to be true?* — Subagent 2's spine; threaded through the curriculum's throughlines (strategy as assumptions)

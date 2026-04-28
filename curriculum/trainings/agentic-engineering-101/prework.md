@@ -74,10 +74,11 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 **Quality:** compendium-audited 2026-04-27
 - compendium-audited 2026-04-27 (check_writing + check_student_facing + check_prompts; LLM-judge approve-with-todos; three-persona sim flagged Step 0+2 redundancy as approve-with-todo non-blocking; neighbour-alignment GO across M1–M6; `claude-code-guide` capability check confirmed `/add-dir` mid-session inline-arg hang — instruction removed; this cycle: Step 3 `/add-dir` removed, Step 4 lead-in gained one-line permission warning. Step structure 0/1/2/3/4 preserved per Antti — collapse decisions made together, not from sim auto-apply.)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
-**Approve-with-todos** (next iteration, non-blocking):
-- Fast-operator + opinionated-senior flagged: collapse Step 0+2 into one move (5/6 mood scores there); demote 3.a to a one-line footnote for cohort default; split Step 4 prompt at the seam between mechanical install and interactive bug-screen. Held — not auto-applied.
-- Mid-competent: Windows path/shell assumptions (`~/Downloads/`, `tar xzf`, `mkdir -p`) unstated; acknowledge Git Bash once. Step 4's 12-min budget tight when student hasn't pre-thought a candidate bug — consider rebadging as "mechanical setup + bring-a-bug homework."
+**DEFERRED** (held — not for autonomous fix; sim-surfaced 2026-04-27, structural call, decided together):
+- Fast-operator + opinionated-senior flagged: collapse Step 0+2 into one move (5/6 mood scores there); demote 3.a to a one-line footnote for cohort default; split Step 4 prompt at the seam between mechanical install and interactive bug-screen.
+- Mid-competent: Windows path/shell assumptions (`~/Downloads/`, `tar xzf`, `mkdir -p`) unstated; acknowledge Git Bash once. Step 4's 12-min budget tight when student hasn't pre-thought a candidate bug; consider rebadging as "mechanical setup + bring-a-bug homework."
 
 **Meta:**
 - **Runtime:** 30 min target. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
@@ -86,6 +87,6 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - **`<CONTENT_URL>` placeholder is build-time substituted** by `scripts/build-workbook.js` per-customer (e.g., `https://agents102.bosser.consulting/clients/acme/content.tar.gz`). Source markdown carries the literal placeholder so the substitution is auditable; rendered workbook never shows the placeholder. Rule-compliance note: this is the explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build-time substitution, not student fill-in.
 - **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The exception is the manual download (3.a), a transport primitive, not a file-edit.
 - **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
-- **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback TBD. Don't absorb install debugging into M1 time.
+- **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback DEFERRED (needs ops decision). Don't absorb install debugging into Module 1 time.
 
 **Packaging:** `scripts/build-ae101-content-tarball.sh` builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into `site/clients/<customer>/content.tar.gz`, and substitutes `<CONTENT_URL>` at workbook-render time.

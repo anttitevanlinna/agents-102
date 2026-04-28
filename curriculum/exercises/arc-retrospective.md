@@ -43,7 +43,9 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-25
+- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~320 words body.
 
 **Primary Bloom's level:** Evaluate (student pushes back on the agent's arc-reading against their own sense of it).

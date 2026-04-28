@@ -157,7 +157,9 @@ Read both files. Push back if the reference reads like generic best practices in
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-26 (check_writing — `substrate` swapped to `source material` line 159; check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-26
+- compendium-audited 2026-04-26 (check_writing — `substrate` swapped to `source material` line 159; check_student_facing, check_prompts, check_pedagogy)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~810 words body.
 

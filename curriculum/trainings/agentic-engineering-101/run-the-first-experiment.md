@@ -12,7 +12,7 @@ Bring one or two candidate tasks from your backlog. The kind you'd send off rath
 ## What You'll Learn
 After this module, you will be able to:
 - **Pick** a real task you'd send off rather than nudge bit by bit, demanding sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude
-- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
+- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + Module 3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
 - **Recognize** the three-block memory pattern in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
 - **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and let it run; traces are data either way
@@ -32,16 +32,16 @@ Three modules of short loops sit behind today: a bug fix, a plan read, a feature
 ## Key Concepts
 - Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
-- Un-packaged is by design. M5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
+- Un-packaged is by design. Module 5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
 - The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers — the memory hierarchy](reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
 - Every send-off is an experiment, not a production run you need to get right first time
 
 ## Send the task off
 
-No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at M5, when you can see what the system actually produced. Compound on evidence, not anticipation.
+No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
-Before you send: pin a clean starting SHA. M5 will worktree from this commit to re-run the same task packaged, so the comparison starts from the same code state. Ask Claude to commit current state on a feature branch and tell you the short SHA — keep it noted.
+Before you send: pin a clean starting SHA. Module 5 will worktree from this commit to re-run the same task packaged, so the comparison starts from the same code state. Ask Claude to commit current state on a feature branch and tell you the short SHA — keep it noted.
 
 **Prompt** *(Claude Code)*
 
@@ -78,15 +78,15 @@ Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 
 
 ## Next
 
-M5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your M4 session directly. Close the session after the run is done if you want; the trace is on disk either way.
+Module 5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your Module 4 session directly. Close the session after the run is done if you want; the trace is on disk either way.
 
-## Pre-reads before M5
+## Pre-reads before Module 5
 
-Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap while your un-packaged run is still going; they prime the 80/20 reframe M5 will name from your own felt evidence.
+Optional. Skipping either piece does not break Module 5. Both sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
 
-**Read — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** Interview write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for M5: primes the 80/20 reframe M5 will name from felt evidence rather than introduce as a slogan.
+**Read — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** Interview write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes the 80/20 reframe Module 5 will name from felt evidence rather than introduce as a slogan.
 
-**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound). Why for M5: primes the planning-and-review-heavy posture M5 will name from felt evidence.
+**Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound). Why for Module 5: primes the planning-and-review-heavy posture Module 5 will name from felt evidence.
 
 <!-- maintainer -->
 
@@ -94,6 +94,7 @@ Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap 
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
 - compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Prework; M4 audit GO after blocker fixes)
 - compendium-audited 2026-04-26 (prior audit) — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.

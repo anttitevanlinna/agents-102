@@ -1,15 +1,15 @@
 # Spot gaps, build the loop
 
 ## Big Idea
-Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn't anticipate, pick where the gap belongs (memory, verifier, new skill), and author a session-shaper skill through conversation so future you inherits the lesson.
+Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn't anticipate, pick where the gap belongs (memory, verifier, new skill), and author a session-shaper skill through conversation so future you inherits the lesson.
 
 ## Prework
 
-Walk in with both M4 (un-packaged) and M5 (packaged) run artefacts. Optional pre-read in the M5-to-M6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).
+Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** (Analyze) the packaged M5 run alongside the un-packaged M4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
+- **Diagnose** (Analyze) the packaged Module 5 run alongside the un-packaged Module 4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
 - **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill, using two runs' evidence, not prescription.
 - **Compound by subtraction** (Evaluate) — cut one rule the two-run diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life.
 - **Author** (Create) a session-shaper skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
@@ -18,7 +18,7 @@ After this module, you will be able to:
 
 ## Start here
 
-You walk in holding two runs of the same task. The un-packaged M4 send-off. The packaged M5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
+You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
 [Story of Module 6](lectures/story-of-module-6.md)
 
@@ -32,7 +32,7 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
-- The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with M3
+- The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with Module 3
 - Encoding is the third phase of test → learn → encode. Two runs tested; this module's reading learned; the skill encodes
 
 **Compounding (Theme 2):** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it.
@@ -41,13 +41,15 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 ## Human close
 
-10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the M6 compound. This slot is the human round the practitioner-fluency mood warrants. The trainer reads the room and picks the form (pair exchange, whole-room round, quiet write-then-share, or skip the round when energy is spent).
+10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the Module 6 compound. This slot is the human round the practitioner-fluency mood warrants. The trainer reads the room and picks the form (pair exchange, whole-room round, quiet write-then-share, or skip the round when energy is spent).
 
-*You ran the loop on your own work three ways. The kit is yours.*
+*Three runs of the loop on your own work. The kit, yours.*
 
 **Self-study variant.** Close the laptop. The encode step already happened when you shipped the second skill. If you can name the move in one sentence, that's the marker; no further articulation required.
 
 [The loop has a name](lectures/the-loop-has-a-name.md)
+
+[Agents that build agents](lectures/agents-that-build-agents.md)
 
 ## Next
 
@@ -61,8 +63,8 @@ Keep on learning and sharing.
 
 
 **Quality:** draft 2026-04-26 (touched after audit — degraded from compendium-audited 2026-04-26; subtraction-only edit removed redundant worktree paragraph from "## Next" — same content already lives at M1 prework. Re-audit on next pass.)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
-**Maintainer TODO:** *Agents that build agents* (likely lecture-only, not run as exercise). A prompt for Claude Code to enter plan mode and figure out the loop so Claude Code itself learns the optimal rules. The meta-move M6 has been pointing at across the M3 (skill authoring) → M5 (verifier as eval) → M6 (second skill) progression — closes by showing the agent designing its own next-iteration scaffolding. Lecture format because the run is too long for the M6 slot and the teaching is the pattern, not the artefact. Surfaced 2026-04-28 from M5 live-test reflection.
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).
@@ -71,7 +73,7 @@ Keep on learning and sharing.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room. Self-study Teacher Claude reads it aloud at session open.
 - **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
-**Push-back moves** (TODO — Nerd skill not yet written; trainer covers by default in cohort):
+**Push-back moves** (trainer covers in cohort; the Nerd skill that consumes these in self-study is upstream-pending):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Nerd: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
 - **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Nerd: *"two runs, maybe three gaps each. Pick the three that cost the most. The second skill you author at Phase 2 fits one shape."*
 - **Phase 2 skill-shape mismatch** — student picks a sharpened-verifier shape when the dominant gap was a drift the verifier wouldn't have seen, or a judge shape when the gap is deterministic. Nerd surfaces the menu: *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*

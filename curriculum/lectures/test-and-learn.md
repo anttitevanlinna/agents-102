@@ -53,6 +53,7 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
 - compendium-audited 2026-04-27 (this cycle: re-stamp to clear touch-based auto-degrade; no prose changes — lecture has no fenced student-prompts)
 - compendium-audited 2026-04-26 (prior audit) — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 min lecture. Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the two frameworks the exercise riffs on — gap analysis and Huryn's three-block memory.*
 **Word count:** ~620 words body.
 

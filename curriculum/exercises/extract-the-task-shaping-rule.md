@@ -56,6 +56,7 @@ When Claude finishes, the lecture is next.
 
 **Quality:** mechanical-tested 2026-04-28
 - compendium-audited 2026-04-28 (check_writing v2026-04-26; check_student_facing v2026-04-27 #21+#1; check_pedagogy v2026-04-28 #32+#34+#39; check_prompts v2026-04-28 #1+#15; check_strategy_tie_in v2026-04-25; check_lectures v2026-04-24)
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - sim-passed 2026-04-28 (Mid-competent 8.0 / Opinionated-senior 7.5 / Fast-operator 9.0 (Phase 1) + 8.5 (Phase 2) after both gates moved into runtime / Nitpicker — flagged ~/.claude/memory/ path + body-vs-prompt contradiction; both fixed)
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/ae101-m2-extract-judge-report.md` @ 18affa1) PASS 8/8 with harness substitution flag (A4 wrote to scratch stub `<scratch>/.claude-user-stub/CLAUDE.md` instead of real `~/.claude/CLAUDE.md` per substitution table; Actor declared explicitly)
 - cohorts: none yet

@@ -7,7 +7,7 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 Bring a small feature you're working on right now. **Not a typo-fix, not a quarter-long epic.** Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Two modules of agent rhythm sit behind you. Pick the size that fits.
 
-Optional pre-reads in the M2-to-M3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min, deeper scan).
+Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min, deeper scan).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -48,7 +48,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 ## Sharpen the skill from evidence
 
-M3's compound runs in two places: the skill you authored (where session push-back evidence lands) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or skill authoring on this codebase earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
+Module 3's compound runs in two places: the skill you authored (where session push-back evidence lands) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or skill authoring on this codebase earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
 Ask Claude to sharpen the one weakest section of the authored skill, then integrate a rule into `./CLAUDE.local.md` if one earned itself. Run this in the same session you authored the skill in.
 
@@ -72,7 +72,7 @@ Before you close the session, signal the wrap-up. Claude converges: anything sti
 Ready to clear? All learnings in?
 ```
 
-If Claude names something missed, decide whether to compound it now or accept the loss. Then clear the session. M4 opens a new one.
+If Claude names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 
 **Prompt** *(Claude Code)*
 
@@ -82,9 +82,9 @@ If Claude names something missed, decide whether to compound it now or accept th
 
 ## Next
 
-Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
+Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
 
-## Bring to M4
+## Bring to Module 4
 
 One or two candidate tasks from your backlog. The kind you'd send off rather than nudge bit by bit, not a typo-fix and not a quarter-long epic.
 
@@ -96,6 +96,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 **Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
 - compendium-audited 2026-04-27 (this cycle: anti-pattern callout bolded per §34; Sharpen prompt gained "same session" cue; M3 audit GO with todos)
 - earlier compendium-audited entries — superseded
+- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create

@@ -339,7 +339,12 @@ if (trainingKey === 'agentic-engineering-101') {
   const tarSrc = path.join(ROOT, 'agents-102-bootstrap-starter.tar.gz');
   const tarDst = path.join(outDir, 'starter.tar.gz');
   fs.copyFileSync(tarSrc, tarDst);
-  contentUrl = `https://agents102.bosser.consulting/clients/${customer}/starter.tar.gz`;
+  // Bootstrap is dual-runtime; Cowork's outbound network allowlist excludes
+  // bosser.consulting but includes raw.githubusercontent.com. Source the
+  // tarball from the repo's tracked copy at site/clients/<customer>/starter.tar.gz
+  // on main so curl works in both Code and Cowork. (AE101 is Code-only and
+  // stays on the customer-host URL above.)
+  contentUrl = `https://raw.githubusercontent.com/anttitevanlinna/agents-102/main/site/clients/${customer}/starter.tar.gz`;
   const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
   console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
 }

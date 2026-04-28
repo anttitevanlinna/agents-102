@@ -56,7 +56,7 @@ Two paths. Pick the one that matches what you saw.
 **Prompt** *(Claude Code)*
 
 ```
-List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.txt`.
+List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
 ```
 
 **Path B (no connector, or you're not sure).** Default to this one if in doubt.
@@ -68,7 +68,7 @@ Take a screenshot of your calendar week view<span class="rt-cowork"> and attach 
 **Prompt** *(Claude Code)*
 
 ```
-I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.txt`.
+I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
 ```
 
 </div>
@@ -77,7 +77,7 @@ I just took a screenshot of my calendar week view. Find the most recent screensh
 **Prompt** *(Claude Code)*
 
 ```
-I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.txt`.
+I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
 ```
 
 </div>

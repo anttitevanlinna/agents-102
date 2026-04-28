@@ -39,16 +39,18 @@ After this module, you will be able to:
 
 ## Debrief
 
-Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro is Claude reading the file against the actual session — a different lens, surfacing what's weak, missing, or wrong. Two passes; the second is where the file starts compounding.
+Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro is Claude reading the file against the actual session. A different lens, surfacing what landed, what fell flat, what to keep, what to drop. Two passes; the second is where the file starts compounding.
+
+Ask Claude to walk a retro on the rules file: what landed, what didn't, what to sharpen, what to drop.
 
 **Prompt** *(Claude Code)*
 
 ```
-Read `module-1/personal-brand-generation.md`. Then re-read what we did building the site — which framework moves landed, where the output stayed generic, what context broke through. Audit the rules file against the actual work: which rules are weak, missing, or wrong? Be honest. Find what's still surface; don't defend the file as-is.
+Read `module-1/personal-brand-generation.md`. Then re-read what we did building the site. Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught? Find what's still surface; don't defend the file as-is.
 
-Then overwrite `module-1/personal-brand-generation.md` with the integrated version — sharpen weak rules, add what's missing, remove what turned out wrong. Don't append a "retro notes" section; rewrite the file in place.
+Then overwrite `module-1/personal-brand-generation.md` with the retro applied. Sharpen what's weak. Add what's missing. Drop what's wrong. Rewrite the file in place; don't append a "retro notes" section.
 
-When you're done, tell me in 2–3 lines: the rules sharpened, the rules added, the rules removed, and why. Add a couple more lines if you spotted something the rules should cover but you want me to weigh in on first.
+When you're done, tell me in 2–3 lines: what got sharpened, what got added, what got dropped, and why. Add a couple more lines if you spotted something the rules should cover but you want me to weigh in on first.
 ```
 
 

@@ -10,23 +10,24 @@ You need a Claude account at claude.ai. Then create an empty folder at `~/Docume
 
 ## 1. Install the training folder (3 min)
 
-Have Claude download and extract the starter into your training directory. The starter ships an empty skeleton (eight module folders, plus `memory/`, `sources/`, `agents/`) and a self-study companion Claude uses to pace you through the modules.
+Get the starter into your training directory. The starter ships an empty skeleton (eight module folders, plus `memory/`, `sources/`, `agents/`) and a self-study companion Claude uses to pace you through the modules.
+
+Open <CONTENT_URL> in your browser. Save the file (`starter.tar.gz`) directly into `~/Documents/agents-102-bootstrap/`. You should see it land there in Finder or File Explorer. Then ask Claude to unpack it.
 
 **Prompt** *(Claude Code)*
 
 ```
-Install the Bootstrap starter into the working directory. Use the shell:
+Extract the starter tarball in the working folder. Use the shell:
 
-  curl -fsSL <CONTENT_URL> -o starter.tar.gz
   tar xzf starter.tar.gz
   rm starter.tar.gz
 
 Then list what's in the working directory and confirm these folders exist:
 prework/, module-1/ through module-8/, memory/, sources/, agents/, .claude/.
-If curl or tar is not available, tell me what error you got.
+If tar is not available, tell me what error you got.
 ```
 
-*Proof: Claude can fetch and unpack training material directly into your folder.*
+*Proof: you placed the file; Claude unpacked it. Two visible steps, no magic.*
 
 ## 2. Build a snake game (10 min)
 

@@ -314,9 +314,15 @@ if (!CR.TRAININGS[trainingKey]) {
 const outDir = path.join(ROOT, 'site/clients', customer);
 fs.mkdirSync(outDir, { recursive: true });
 
-// AE101 ships a content tarball alongside the workbook. Build it, copy it into
-// the customer dir, and substitute <CONTENT_URL> in the prework markdown so the
-// rendered prompts point at the per-customer download URL.
+// AE101 + Bootstrap each ship a tarball alongside the workbook. Build it, copy
+// into the customer dir, and substitute <CONTENT_URL> in the prework markdown
+// so the rendered prompts point at the per-customer download URL.
+//
+// AE101    — content.tar.gz   (lectures/exercises/reference/skills; reference
+//                              folder the student extracts at ~/Documents/ae101-content/)
+// Bootstrap — starter.tar.gz  (empty working-folder skeleton; extracts in-place
+//                              into the student's connected/working folder at
+//                              ~/Documents/agents-102-bootstrap/)
 let contentUrl = null;
 if (trainingKey === 'agentic-engineering-101') {
   console.log('Building content tarball…');
@@ -325,6 +331,15 @@ if (trainingKey === 'agentic-engineering-101') {
   const tarDst = path.join(outDir, 'content.tar.gz');
   fs.copyFileSync(tarSrc, tarDst);
   contentUrl = `https://agents102.bosser.consulting/clients/${customer}/content.tar.gz`;
+  const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
+  console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
+} else if (trainingKey === 'bootstrap') {
+  console.log('Building Bootstrap starter tarball…');
+  execSync('scripts/build-bootstrap-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
+  const tarSrc = path.join(ROOT, 'agents-102-bootstrap-starter.tar.gz');
+  const tarDst = path.join(outDir, 'starter.tar.gz');
+  fs.copyFileSync(tarSrc, tarDst);
+  contentUrl = `https://agents102.bosser.consulting/clients/${customer}/starter.tar.gz`;
   const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
   console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
 }

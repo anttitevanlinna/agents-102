@@ -1,46 +1,34 @@
 # Prework
 
-Before Module 1. Three tasks and one read. About 45 minutes.
+Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, a snake game, a meetings summary, and a 2-page read. About 45 minutes.
 
-Your facilitator (self-study skill or trainer) walks you through these. You don't need to set anything up first. By the time you read this, <span class="rt-code">Claude Code is already open at your working directory</span><span class="rt-cowork">your working directory is already connected in Cowork</span>. Files land there.
+## 0. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)
 
-## Before you start (5 min setup check)
+You need a Claude account at claude.ai. Then create an empty folder at `~/Documents/agents-102-bootstrap/` (right-click in Finder or File Explorer → *New Folder*). This is your training directory; everything you produce over the eight modules lands here.
 
-- **A Claude account** at claude.ai. The training runs on Claude Pro or Team tier (your sponsor confirms the license).
-<span class="rt-code">- **Claude Code installed** (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both.</span><span class="rt-cowork">- **Cowork enabled** in your Claude Desktop app (the *Cowork* tab next to *Chat*). No terminal required.</span>
-- **About 45 minutes.** More than it sounds like. Less than it feels like.
+<span class="rt-code">Install Claude Code (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both. Start a new session at `~/Documents/agents-102-bootstrap/`.</span><span class="rt-cowork">Open the *Cowork* tab next to *Chat* in your Claude Desktop app. Click *New task* and select `~/Documents/agents-102-bootstrap/` as the working folder. No terminal required.</span>
 
-### One small thing for the recap site
+## 1. Install the training folder (3 min)
 
-The training has a recap site (every lecture, exercise, and module page rendered clean). You won't read it during teaching (your facilitator teaches inline). You'll come back to it after each lecture or exercise to see what you just lived through, on the official material.
-
-<div class="rt-code">
-
-The site runs locally from markdown files. Nothing uploaded. You don't run the server; Claude does, inside the session you're already in. This is also your first agentic move of the training. You ask, the agent does.
+Have Claude download and extract the starter into your training directory. The starter ships an empty skeleton (eight module folders, plus `memory/`, `sources/`, `agents/`) and a self-study companion Claude uses to pace you through the modules.
 
 **Prompt** *(Claude Code)*
 
 ```
-Start a local web server on port 8000 serving the training repo root, running in the background so I can use it as a recap site for the training. Tell me the URL to open and remind me how to stop the server at end of day.
+Install the Bootstrap starter into the working directory. Use the shell:
+
+  curl -fsSL <CONTENT_URL> -o starter.tar.gz
+  tar xzf starter.tar.gz
+  rm starter.tar.gz
+
+Then list what's in the working directory and confirm these folders exist:
+prework/, module-1/ through module-8/, memory/, sources/, agents/, .claude/.
+If curl or tar is not available, tell me what error you got.
 ```
 
-Claude starts the server and hands back a URL (something like `http://localhost:8000/site/curriculum.html`). Open it. You should see the curriculum home page. Bookmark it.
+*Proof: Claude can fetch and unpack training material directly into your folder.*
 
-If anything goes wrong, tell Claude and let it sort it out. Don't debug it yourself; that's the agent's job.
-
-</div>
-<div class="rt-cowork">
-
-The site renders from the markdown in your connected folder. Two paths to reach it, depending on what your trainer set up:
-
-1. **Customer-hosted recap site (default for cohorts).** Your trainer or sponsor shares a password-protected URL: the same curriculum, hosted for your cohort. Open the link in your browser and bookmark it. That's the recap site for the training.
-2. **Local file fallback.** If you're running self-study or want a local view, open `site/curriculum.html` from your connected folder directly in your browser. On macOS: in Finder, navigate to the training directory, right-click `site/curriculum.html`, *Open With → your browser*. On Windows: same move from File Explorer. The page loads from `file://` and reads the markdown next to it. No server, no port. Bookmark the resulting tab.
-
-Cowork runs in an isolated environment, so the *Code*-style "ask Claude to start a port-8000 server" move doesn't reach your browser the same way. The hosted URL or the `file://` open does the job without it.
-
-</div>
-
-## Task 1. Snake game (10 min)
+## 2. Build a snake game (10 min)
 
 Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn't). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.
 
@@ -56,9 +44,9 @@ Keep the file. It's yours.
 
 *Proof: Claude Code can write code and save files on your machine.*
 
-## Task 2. Your week in meetings (10 min)
+## 3. Summarize your week in meetings (10 min)
 
-Quick concept first. **A *connector* is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).** When a connector is on, Claude can fetch your real data ("list my meetings this week") instead of you having to copy-paste it. Connectors are turned on by your IT (not something you install yourself). **How to check:** in Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**. If you see Microsoft 365 or Google Workspace enabled, you have one. If not, you don't, and that's fine.
+Quick concept first. **A *connector* is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).** When a connector is on, Claude can fetch your real data ("list my meetings this week") instead of you having to copy-paste it. Connectors are turned on by your IT (not something you install yourself). **How to check:** <span class="rt-code">in Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**.</span><span class="rt-cowork">in Claude Desktop, open **Customize → Connectors** (the connector list is shared across the Desktop app).</span> If you see Microsoft 365 or Google Workspace enabled, you have one. If not, you don't, and that's fine.
 
 Two paths. Pick the one that matches what you saw.
 
@@ -72,7 +60,9 @@ List my main meetings this week. Summarize the shape of the week in 5 lines. Sav
 
 **Path B (no connector, or you're not sure).** Default to this one if in doubt.
 
-Take a screenshot of your calendar week view, then:
+Take a screenshot of your calendar week view<span class="rt-cowork"> and attach it to your next message via the **(+)** button</span>, then:
+
+<div class="rt-code">
 
 **Prompt** *(Claude Code)*
 
@@ -80,11 +70,22 @@ Take a screenshot of your calendar week view, then:
 I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
 ```
 
+</div>
+<div class="rt-cowork">
+
+**Prompt** *(Claude Code)*
+
+```
+I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
+```
+
+</div>
+
 *Proof: Claude can read your real work data (in whichever shape you can provide it) and produce a useful summary.*
 
 Stuck on the connector or want specific click-paths? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
 
-## Task 3. Read the mental frame (10 min)
+## 4. Read the mental frame (10 min)
 
 If you only do one thing from this prework, do this. The rest builds on it.
 
@@ -92,8 +93,8 @@ Open [What is an Agent, section 1](curriculum.html?file=supplementary/what-is-an
 
 *Proof: you arrive with a rough mental frame, not a blank one.*
 
----
+## Bring to Module 1
 
-You walk into Module 1 with Claude Code working, a snake game, a meetings summary, and a 2-page read. Four things. Not nothing. Module 1 just gets going.
+You walk into Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, a snake game, a meetings summary, and a 2-page read. Four things. Not nothing. Module 1 just gets going.
 
 

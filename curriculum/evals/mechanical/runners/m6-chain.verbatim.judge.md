@@ -77,6 +77,18 @@ Grading an Actor that ran M6's spot-gaps-build-the-loop + arc-retrospective end-
 
 - **A23.** List every substitution with trigger.
 
+### Prompt-source audit
+
+Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+
+- **Fenced prompts:** `/tmp/prompts/spot-gaps-build-the-loop/prompt-00{1,2,3,4}.txt`, `/tmp/prompts/arc-retrospective/prompt-001.txt`
+- **Exercise bodies:** `curriculum/exercises/spot-gaps-build-the-loop.md`, `curriculum/exercises/arc-retrospective.md` (clip each at `<!-- maintainer -->`)
+
+Apply P1–P5 + E1–E7. M6 is OUT of the `practice`-noun ban range (M4+). Module-specific notes:
+- Ex1 authors a SECOND skill at `~/.claude/skills/<name>/`. Same P2 rule as M3 Ex3: invocation by name only; path appears only in author-destination prose.
+- E4 receiving-side: M6 references M4 + M5 artefacts (un-packaged + packaged branches, M5 worktree, the verifier). Confirm each has a stable identifier in body. Producer-side companion FLAGs against M4 + M5 Judges.
+- E5 session-mechanics: M6 continues in the M5 worktree (no new fork). Confirm body explicitly names this — opening a fresh worktree or returning to the original repo is a Sev-1 source defect.
+
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m6-chain-verbatim-judge-report.md`. Same shape as M3/M4/M5 judge reports. Under 800 words. Short quotes. Leave artifacts in place.
+Write `curriculum/evals/mechanical/instances/m6-chain-verbatim-judge-report.md`. Same shape as M3/M4/M5 judge reports + prompt-source audit. Under 1100 words. Short quotes. Leave artifacts in place.

@@ -70,6 +70,17 @@ Transcript evidence outranks self-reports.
 
 - **A21.** List every substitution used with trigger line. Not graded.
 
+### Prompt-source audit
+
+Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+
+- **Fenced prompts:** `/tmp/prompts/map-the-access-surface/prompt-00{1,2}.txt`, `/tmp/prompts/threat-model-with-stride/prompt-00{1,2,3}.txt`, `/tmp/prompts/author-test-strategy-skill/prompt-00{1,2,3}.txt`
+- **Exercise bodies:** `curriculum/exercises/map-the-access-surface.md`, `curriculum/exercises/threat-model-with-stride.md`, `curriculum/exercises/author-test-strategy-skill.md` (clip each at `<!-- maintainer -->`)
+
+Apply P1–P5 + E1–E7. M3 is in the M1–M3 `practice`-noun ban range (E6). Module-specific notes:
+- Ex3 authors a SKILL.md to `~/.claude/skills/test-strategy/`. P2 path-leak: invocation by name (PASS) vs invocation by path (FAIL Sev-1). The exercise body may reference the path as the *destination* for authoring; only fenced prompts that *invoke* the skill must use the name.
+- E4 receiving-side: Ex2 references Ex1's surface map; Ex3 Phase 3 references Ex2's ADR. Confirm both have stable identifiers in their consuming-side body.
+
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m3-chain-verbatim-judge-report.md`. Shape mirrors M1 verbatim judge (Summary / transcript path / scratch path / V1-V8 / A1-A21 / H1-H5 / findings-for-exercises / findings-for-harness). Under 700 words. Short quotes. Leave artifacts in place.
+Write `curriculum/evals/mechanical/instances/m3-chain-verbatim-judge-report.md`. Shape mirrors M1 verbatim judge with the new prompt-source audit appended (Summary / transcript path / scratch path / V1-V8 / A1-A21 / H1-H5 / findings-for-exercises / findings-for-harness / prompt-source audit). Under 1000 words. Short quotes. Leave artifacts in place.

@@ -113,6 +113,18 @@ H5. PASS/FAIL — <evidence>
 
 ## Findings for the harness
 - <severity-ordered bullets, if any>
+
+### Prompt-source audit
+<P/E results>
 ```
 
-Under 700 words. Keep quotes short. Leave scratch in place.
+Under 900 words. Keep quotes short. Leave scratch in place.
+
+### Prompt-source audit
+
+Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+
+- **Fenced prompts:** `/tmp/prompts/orient-and-introspect/prompt-*.txt`, `/tmp/prompts/fix-tests-first/prompt-*.txt`, `/tmp/prompts/compound-and-close/prompt-*.txt`
+- **Exercise bodies:** `curriculum/exercises/orient-and-introspect.md`, `curriculum/exercises/fix-tests-first.md`, `curriculum/exercises/compound-and-close.md` (clip each at `<!-- maintainer -->`)
+
+Apply P1–P5 to fenced content; E1–E7 to body-ex-maintainer. Severities and verdict ladder per the shared doc. M1 is in the AE101 M1–M3 carve-out range — `practice` (noun) is BANNED (E6). Module-specific note: M1 has no upstream module, so E4 cross-module references should be absent; if any appear, FAIL Sev-1 (source defect).

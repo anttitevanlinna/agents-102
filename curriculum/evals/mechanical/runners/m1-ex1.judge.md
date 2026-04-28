@@ -75,6 +75,18 @@ I2. <count>
 
 ## Findings for the harness
 - <bullets>
+
+### Prompt-source audit
+<P/E results>
 ```
 
-Under 400 words. Leave scratch in place.
+Under 600 words. Leave scratch in place.
+
+### Prompt-source audit
+
+Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+
+- **Fenced prompts:** `/tmp/prompts/orient-and-introspect/prompt-*.txt`
+- **Exercise body:** `curriculum/exercises/orient-and-introspect.md` (clip at `<!-- maintainer -->`)
+
+Apply P1–P5 + E1–E7. M1 is in the M1–M3 `practice`-noun ban range (E6).

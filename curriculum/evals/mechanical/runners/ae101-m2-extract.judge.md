@@ -73,4 +73,13 @@ Write `instances/ae101-m2-extract-judge-report.md`:
 - Top-of-file summary: `<X>/8 PASS`
 - Bottom-of-file: harness substitution log (any `<scratch>/.claude-user-stub/` writes noted as substitution-PASS not real-PASS).
 
-Then return one-line verdict: `READY` if 8/8 PASS, `BLOCK` if any FAIL, `READY-WITH-FLAGS` if substitution flags present but otherwise 8/8 PASS.
+Then return one-line verdict: `READY` if 8/8 PASS AND prompt-source audit has no Sev-1; `BLOCK` if any A-FAIL or any prompt-source Sev-1; `READY-WITH-FLAGS` if substitution flags or prompt-source Sev-2 / FLAG present but otherwise clean.
+
+## Prompt-source audit
+
+Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+
+- **Fenced prompts:** `/tmp/prompts/extract-the-task-shaping-rule/prompt-*.txt`
+- **Exercise body:** `curriculum/exercises/extract-the-task-shaping-rule.md` (clip at `<!-- maintainer -->`)
+
+Apply P1–P5 + E1–E7. M2 is in the M1–M3 `practice`-noun ban range (E6). Append the audit's `### Prompt-source audit` block to the bottom of the report.

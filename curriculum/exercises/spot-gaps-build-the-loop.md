@@ -1,6 +1,6 @@
 # Spot gaps, build the loop
 
-**What you do:** Diff the packaged M5 re-run against the un-packaged M4 baseline. Name what packaging caught, what it missed, and what new gaps surfaced. Then author the second skill through conversation. Shape follows what the two runs taught. Self-critique, invoke on the packaged run, ship personally.
+**What you do:** Diff the packaged M5 re-run against the un-packaged M4 baseline. Name what packaging caught, what it missed, and what new gaps surfaced. Then author a session-shaper skill through conversation. Shape follows what the two runs taught. Self-critique, invoke on the packaged run, ship personally.
 
 **What happens:** You end with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/<skill-name>/SKILL.md`. Auto-discovered in every future session. Whichever shape the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates flagged for a human conversation, not an auto-PR.
 
@@ -12,21 +12,21 @@
 
 ## Phase 1: Diff and name the gaps (~15 min)
 
-Open a new Claude Code session in the same repo. Two runs of the same task are on disk now: the M4 un-packaged run (baseline, no reference artefact, no plan.md, no verifier), and the M5 packaged re-run (same task, all three pieces in play). Both runs left commits, file changes, and session transcripts under `~/.claude/projects/` in a folder matching this repo. That's the auto-stored scrollback Claude Code keeps for every session.
+Open a new Claude Code session in the M5 worktree (the same one you ran M5 in, at `../<repo>-m5`). Two runs of the same task are accessible from there: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>` — both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/` in folders matching the original repo path. That's the auto-stored scrollback Claude Code keeps for every session.
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
 **Prompt** *(Claude Code)*
 
 ```
-I have two runs of the same multi-hour task on disk. The M4 run was un-packaged — no reference artefact, no plan.md, no verifier. The M5 run was packaged — all three pieces in play, verifier fired during the run.
+I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep '/m4/'`); the packaged re-run is on a branch starting with `m5/`. The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.
 
-Read both. Start with repo state: commits since M4 send-off, commits since M5 re-send, what each run touched. Then read both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/` in a folder matching this repo. Find the folder and walk the M4 session and the M5 session. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
+Read both. Start with repo state: commits on the `m4/` branch after the "M4 starting point" commit, commits on the `m5/` branch after the worktree fork, what each run touched. Then read both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-folder>/<uuid>.jsonl` — the encoded-folder is the absolute path of the original repo (not this worktree) with `/` replaced by `-`. Use `git rev-parse --git-common-dir` to find the original repo path, then walk the un-packaged session's transcript and the packaged session's transcript. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
 
 Walk the diff across four dimensions:
 
-- **What packaging caught.** Specific moments in the M5 run where the reference, the plan.md, or the verifier prevented a drift the M4 run actually experienced. Quote the un-packaged moment and the packaged moment both.
-- **What packaging missed.** Places the M5 run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.
+- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.
+- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.
 - **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.
 - **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.
 
@@ -40,9 +40,19 @@ Push back where Claude generalises. Two runs means two bodies of evidence, and t
 
 You should close Phase 1 with a ranked gap list (three to five items) and a dominant gap that will shape Phase 2.
 
+Two runs of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.
+
+Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop if all rules held.
+
+**Prompt** *(Claude Code, only if a rule earned cutting)*
+
+```
+Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap. Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
+```
+
 ---
 
-## Phase 2: Author the second skill (~25–35 min)
+## Phase 2: Author the session-shaper (~25–35 min)
 
 Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
 
@@ -61,7 +71,7 @@ Author through conversation. No markdown editor, no hand-crafting SKILL.md in a 
 **Prompt** *(Claude Code)*
 
 ```
-Author a second skill for my personal kit. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same shape as my first authored skill at `~/.claude/skills/test-strategy/SKILL.md`.
+Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.
 
 Interview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.
 

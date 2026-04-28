@@ -1,32 +1,35 @@
 # Walk and send off
 
-**What you do:** Pick a multi-hour task you've been avoiding. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**What you do:** Pick a task you've been avoiding — the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What happens:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). M5 opens with whatever came back.
 
 **The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches M5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
-**Time:** 60 minutes inside a 2h module slot (Phases 1–3). The Debrief + send-off (~15–20 min) is owned by the module file, not this exercise; the two together close M4.
+**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close M4.
 
 ---
 
 ## Phase 1: Pick the task (~10 min)
 
-Start a new Claude Code session in your repo. You've come in with one or two candidate tasks in mind (Connections). Claude screens them: it can't scan your roadmap or Jira, and that stays your call. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
+Start a new Claude Code session in your repo. One or two candidate tasks come in with you (Connections). Claude screens them: it can't scan your roadmap or Jira, and that stays your call. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
 
-Ask Claude to screen your candidates against the three long-run criteria and help you scope the winner.
+**Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
+
+Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon, one per line.
 
 **Prompt** *(Claude Code)*
 
 ```
-I'm about to run my first long-running experiment. I've come with one or two candidate tasks from my backlog: multi-hour work I haven't got to, or tasks I'd rather an agent took the first pass at.
+I'm about to run my first long-running experiment. Screen the candidates below against three criteria:
 
-Ask me to describe each candidate in a line or two. Then screen them against three criteria:
-- Sustained coherence across multi-hour work
-- Requirement-weaving (multiple things need to hold at once)
-- Multi-file reasoning
+- **Send-off shape:** the task lets the agent push past 3-4 ambiguities without checking in at every step.
+- **Requirement-weaving:** the task has multiple constraints that interact — getting one right means knowing the others.
+- **Multi-file reasoning:** touches at least 3 files where touching the wrong one matters.
 
-For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, help me scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.
+For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.
+
+Candidates:
 ```
 
 
@@ -49,7 +52,7 @@ Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if
 
 Run this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.
 
-Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do to a multi-hour run.
+Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.
 
 For each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.
 ```
@@ -71,6 +74,14 @@ For each of the three, keep it conversational:
 - **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in memory naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context.
 
 Push back when Claude writes something that doesn't match the codebase. The memory is what you just admitted is thin in spots; don't let it re-seed itself with drift.
+
+Speed up the gap-fill if prose Q&A is dragging.
+
+**Prompt** *(Claude Code, optional)*
+
+```
+You propose solutions and ask questions. Use the ask-questions tool to speed up my work.
+```
 
 ---
 
@@ -109,13 +120,13 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 
 1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence — integrates, sharpens, removes — and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
-3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in (macOS: `caffeinate -dims`; Linux/Windows: power-plan → prevent sleep). Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish (mid-tool Ctrl+C can corrupt the session's `.jsonl` and break resume); clean interrupts between tool calls are fine. Traces are data either way.
-
-See the module file for the two Debrief prompts.
+3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-26 (check_writing v2026-04-25 voice-quartet, check_student_facing #14 + #21 agent-vocab, check_pedagogy progression-with-variations, check_prompts)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
+- compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Phase 1; Debrief reconciliation with module's "no Debrief" framing; Phase 1 prompt reshaped to open-hook with `Candidates:` colon)
+- compendium-audited 2026-04-26 (prior audit) — superseded
 
 **Word count:** ~750 words body.
 
@@ -135,7 +146,7 @@ See the module file for the two Debrief prompts.
 - **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: Nerd names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
 
 **Plug points:**
-- Student's own multi-hour task (Phase 1 pick)
+- Student's own task you'd send off rather than nudge bit by bit (Phase 1 pick)
 - Sponsor-stated rules-file home (Debrief rewrite target)
 - Sponsor-stated memory / business-rules home (Phase 2 fill destination for business-rules pointer)
 - Sponsor-stated ADR convention (memory already references; no new move here)

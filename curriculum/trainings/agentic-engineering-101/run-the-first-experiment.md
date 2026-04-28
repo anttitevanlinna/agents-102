@@ -1,15 +1,17 @@
 # Run the first experiment
 
 ## Big Idea
-Walk what you've built against a real multi-hour task, fill the worst gaps, send it off un-packaged, and learn from what the agent does with your system as it stands.
+Walk what you've built against a real task you'd send off rather than nudge bit by bit, fill the worst gaps, send it off un-packaged, and learn from what the agent does with your system as it stands.
 
 ## Prework
 
-Bring one or two candidate tasks from your backlog. Multi-hour work, not a typo-fix and not a quarter-long epic.
+Bring one or two candidate tasks from your backlog. The kind you'd send off rather than nudge bit by bit, not a typo-fix and not a quarter-long epic.
+
+**Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Pick** a multi-hour real task from your backlog that demands sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude
+- **Pick** a real task you'd send off rather than nudge bit by bit, demanding sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + M3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
 - **Recognize** the three-block memory pattern in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
@@ -17,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-You've watched the agent work for three modules on short loops: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, running without you watching. Three modules in, this is your practice now.
+Three modules of short loops sit behind today: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, running without you watching. Three modules in, the practice is yours now.
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
@@ -39,7 +41,13 @@ You've watched the agent work for three modules on short loops: a bug fix, a pla
 
 No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at M5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
-Before you send: the agent will commit as it works. If you'd rather keep this run off your main branch, ask Claude in this same session to make a branch or a worktree for the task first. Whatever your repo's convention is.
+Before you send: pin a clean starting SHA. M5 will worktree from this commit to re-run the same task packaged, so the comparison starts from the same code state. Ask Claude to commit current state on a feature branch and tell you the short SHA — keep it noted.
+
+**Prompt** *(Claude Code)*
+
+```
+Commit the current state of the repo on a fresh feature branch named m4/<short-task-slug>. Stage everything, commit with message "M4 starting point". Tell me the short SHA.
+```
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
@@ -58,6 +66,14 @@ Async runs are a face of the work you'll see more of from here on.
 
 Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you've become the agent; call it and read what's there.
 
+If Claude stalls and you want to see if it picks itself back up, dark-humour nudge — phrased as encouragement, lands as a taunt:
+
+**Prompt** *(Claude Code, optional)*
+
+```
+Continue --- you can do it. Can't you?
+```
+
 Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 min). It plants the question and the three failure modes you'll use to read what comes back.
 
 ## Next
@@ -75,16 +91,17 @@ Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing; check_student_facing — L22 atmosphere phrase swapped from `alone in the dark while you sleep` to `running without you watching`; check_pedagogy; check_prompts; check_strategy_tie_in; check_lectures. `practice`-as-noun line 61 retained per AE101 M4+ milestone-term carve-out — see memory/compounded/2026-04-26-writing-practice-noun-ae101-milestone.md.)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
+- compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Prework; M4 audit GO after blocker fixes)
+- compendium-audited 2026-04-26 (prior audit) — superseded
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: Nerd reframes — *"enough is a question for M5. The experiment is the point."*
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The send-off at Debrief happens IN the same Claude Code session the student used for walk + fill + frame + retro. No new session, no scheduled agent, no cloud runner — just pass the final prompt to the agent you've been talking to, then leave the laptop awake overnight and walk away.
-- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
-- **Connections blocker** — student can't name a task. Nerd runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over multi-hour).
+- **Connections blocker** — student can't name a task. Nerd runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over a long crunch window).
 - **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Nerd: *"which of these will hurt the agent most given the task? fill those."*
 - **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Nerd: *"Three is the budget. Skip the other two — you'll see next module why."*
 - **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode: skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Nerd hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
@@ -106,7 +123,7 @@ Optional. Skipping either piece does not break M5. Both sit in the M4 to M5 gap 
 - **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 Nerd push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
 
 **Plug points (trainer):**
-- Student's own multi-hour task (Connections pick)
+- Student's own task you'd send off rather than nudge bit by bit (Connections pick)
 - Sponsor-stated rules-file home (Debrief rewrite lands here)
 - Sponsor-stated memory / business-rules home (Phase 2 fill destination)
 

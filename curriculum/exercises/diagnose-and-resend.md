@@ -12,16 +12,27 @@
 
 ## Phase 1: Read the return (~15 min)
 
-Open a new Claude Code session in the same repo you ran M4 in. The artefact lives in two places: the repo (commits made by the M4 agent, files modified, branch state) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
+Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state — all visible from the worktree via git refs) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
 
-Ask Claude to read the M4 artefact through the three failure-mode lenses and quote specific moments for each.
+Ask Claude to find the previous session's transcript file.
 
 **Prompt** *(Claude Code)*
 
 ```
-I sent off a multi-hour task at the end of M4 un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
+Find the path to the previous session's transcript .jsonl. Claude Code stores every session's scrollback at `~/.claude/projects/<encoded-folder>/<uuid>.jsonl`. The `<encoded-folder>` name is the absolute path of the original repo (where the un-packaged run happened) with `/` replaced by `-` — e.g., `/Users/me/Projects/lemmings` → `-Users-me-Projects-lemmings`. Since you're in a worktree, find the original repo path via `git rev-parse --git-common-dir` (its parent is the original repo). List the .jsonl files in that folder by mtime; pick the most recent one that is NOT this current session. Tell me the absolute path.
+```
 
-Read what the M4 agent did. Start with the repo state: commits since the M4 send-off, files it modified, branch state. Then read the M4 session transcript. Claude Code stores every session's scrollback under `~/.claude/projects/` in a folder matching this repo; find the folder, then walk the most recent session. That's where the agent's reasoning trail lives. The file changes alone miss the drift and the dead-ends.
+
+Confirm the path is right. Then read it through three lenses.
+
+Ask Claude to read the repo state on the previous-run branch and the transcript at the path you just found, then walk the work through three failure-mode lenses with quoted moments.
+
+**Prompt** *(Claude Code)*
+
+```
+I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
+
+Read what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep '/m4/'` — it'll be the only branch starting with `m4/`). Start with the repo state on that branch: commits since the "M4 starting point" commit, files modified, branch state. Then read the previous session's transcript at the path you just found. The file changes alone miss the drift and the dead-ends.
 
 Then walk the work through three lenses:
 
@@ -35,7 +46,7 @@ End with: which of the three was the DOMINANT failure mode? You'll build the ver
 ```
 
 
-Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. **Framework**: this is *diagnosis through named failure modes*. The vocabulary is the lens, the artefact is the substance.
+Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. The move you just ran is *diagnosis through named failure modes* — the vocabulary is the lens, the artefact is the substance.
 
 ---
 
@@ -76,14 +87,12 @@ Three shapes the verifier takes. Pick the one matching your dominant failure. Th
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
 - **Ralph re-feed.** Loop the prompt with a check baked in; agent re-runs against its own output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.
 
-Ask Claude to build the verifier shape that matches your dominant failure, scoped to the M4 task.
+Ask Claude to build the verifier shape that matches your dominant failure, scoped to the task we ran un-packaged. Drop the shape name after the colon — one of: background-agent, shell-hook, Ralph re-feed.
 
 **Prompt** *(Claude Code)*
 
 ```
-Build the verifier for my dominant failure. I'll tell you which shape after you ask me — background-agent (qualitative judge), shell-hook (deterministic), or Ralph re-feed (drift-anchoring).
-
-Once I've named the shape, build it scoped to the M4 task we ran. The verifier should fire on agent-produced work and decide pass/fail against a quality bar that, if it had been in place, would have caught the failure I diagnosed.
+Build the verifier for my dominant failure, scoped to the task we ran un-packaged. The verifier should fire on agent-produced work and decide pass/fail against a quality bar that, if it had been in place, would have caught the failure I diagnosed.
 
 If shell-hook: write the script and tell me where it lives in this repo (CI config, `.claude/hooks/`, or pre-commit, whichever fits the repo's existing conventions).
 
@@ -92,12 +101,22 @@ If background-agent: write the prompt and tell me how to invoke it (slash-comman
 If Ralph re-feed: write the loop wrapper and the check it runs each iteration.
 
 Show me the verifier before you save anything; I'll push back, then we save.
+
+Shape:
 ```
 
 
 Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or vice versa). The fit between failure shape and verifier shape is the teaching moment.
 
-**Framework**: the verifier IS your first eval. The closing lecture names this; for now, build it.
+The verifier IS your first eval. The closing lecture names this; for now, build it.
+
+Before Phase 4, smoke-test that the verifier actually fires. A built-but-untested verifier is no verifier — the wiring (hook config, file paths, slash-command registration, loop trigger) is fragile and silent failures cost the next phase.
+
+**Prompt** *(Claude Code)*
+
+```
+Smoke-test the verifier you just built. Fire it on two synthetic inputs: one designed to PASS (matches the quality bar) and one designed to FAIL (the failure shape we diagnosed). Show me what fired, what each input returned, and what would have to change for the verifier to actually be in play during the packaged re-send. If a wiring step (hook install, slash-command registration, file path) is missing, name it and fix it before we move on.
+```
 
 ---
 
@@ -110,7 +129,7 @@ Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 **Prompt** *(Claude Code)*
 
 ```
-Build me two task-scoped artefacts for re-running the M4 task packaged.
+Build me two task-scoped artefacts for re-running the un-packaged task packaged.
 
 First, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:
 - The task scope and success criteria, in two or three sentences
@@ -127,6 +146,8 @@ Second, plan.md. A working document the agent owns and mutates as it runs. Shoul
 - A "what I tried that didn't work" section to prevent context-rot re-derivations
 
 Propose the file paths (next to each other; same task-scoped folder). Show me both files before you save. I'll push back, then we save.
+
+Before you save, grill me on missing details that can ruin the smooth run.
 ```
 
 

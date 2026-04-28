@@ -10,7 +10,7 @@ Plan mode in Claude Code is a permission state, not a feature. You press Shift+T
 
 The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes."
 
-You will notice that you are waiting while Claude thinks. Other sessions could be making progress elsewhere. Not today, but soon.
+You will notice the wait while Claude thinks. Other sessions could be making progress elsewhere. Not today, but soon.
 
 ### Optional: ask plan mode directly
 
@@ -45,7 +45,7 @@ Three things. That's the read.
 
 In the exercise, you push back twice with what you can see (one soft item, then either an assumption check or a committed change) via *keep planning with feedback* at the approval prompt. Claude regenerates. Then you ask Claude for a second-pass read that walks down every unresolved branch of the decision tree, one question at a time, suggesting answers. You confirm or correct each. The plan sharpens again. You approve.
 
-Then you stop. No execution. You've done the work; that's the exercise.
+Then you stop. No execution. The work is the exercise.
 
 The discipline isn't the mode. It's two reads, paired: yours, then the agent's walk-down. One kind of scrutiny catches one kind of miss. Paired, they usually give the complete read.
 
@@ -54,7 +54,9 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
+**Quality:** compendium-audited 2026-04-28
+- compendium-audited 2026-04-28 (M2 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_lectures + check_strategy_tie_in + check_research_claims; M2 audit GO)
+- compendium-audited 2026-04-25 — superseded
 **Meta:**
 - **Time:** 10–12 min, inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5).
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces. Does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5.

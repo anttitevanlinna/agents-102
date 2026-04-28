@@ -6,7 +6,7 @@
 
 **The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at M6.
 
-**Time:** 25–30 minutes.
+**Time:** 18–22 minutes.
 
 > **Quick timebox note.** This is the longest beat in M3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is M6's job.
 
@@ -18,7 +18,7 @@ Skills aren't hand-crafted. They're authored through conversation.
 
 The ship destination is your personal skills folder: `~/.claude/skills/test-strategy/SKILL.md`. Auto-discovered in every session you run, across every repo.
 
-This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons named in Phase 4. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
+This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons named in Phase 3. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
 
 **Prompt** *(Claude Code)*
 
@@ -29,32 +29,13 @@ Cover at minimum: which testing framework, what's mocked and what isn't, where t
 
 Ask ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says "write unit tests first" is useless. I need you to extract codebase-specific detail.
 
-When you have enough, write SKILL.md at `~/.claude/skills/test-strategy/SKILL.md`. Follow Claude Code's skill file convention (frontmatter with name + description, then instructions). Show me before saving.
+When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.
 ```
 
 
 Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
 
-## Phase 2: self-critique before shipping (~5 min)
-
-Default-acceptance is the failure mode here. Most students will read Claude's first draft and approve it. Before you ship, ask the skill what's weakest about itself.
-
-**Prompt** *(Claude Code)*
-
-```
-Before I ship the test-strategy skill, I want you to critique it. Read the SKILL.md you just wrote. Tell me:
-
-- What's the weakest part of this skill? Be specific. Name the assumption most likely to be wrong for this codebase, or the section a staff engineer would push back on first.
-- Is there anything in the skill that's generic test-pyramid wisdom dressed up as codebase-specific?
-- Is there anything I told you that didn't make it into the skill? A detail I mentioned in conversation that would sharpen the skill if it were encoded?
-
-Don't just reassure me. Name weak parts.
-```
-
-
-Read the critique. Push back where Claude is wrong (*"no, that section is fine because X"*); accept where Claude is right. Claude revises SKILL.md from your push-back.
-
-## Phase 3: invoke the skill on the security-tested feature (~6 min)
+## Phase 2: invoke the skill on the security-tested feature (~6 min)
 
 Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.
 
@@ -71,9 +52,9 @@ Then, in the same response, read the test strategy you just produced above and a
 
 Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
 
-## Phase 4: ship (~2 min)
+## Phase 3: ship (~2 min)
 
-The skill is already at `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1, sharpened in Phase 2). Auto-discovered in every session you run. That's the ship.
+The skill is already at `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique). Auto-discovered in every session you run. That's the ship.
 
 **A strong candidate for a team PR, after you talk to the team.**
 
@@ -96,22 +77,22 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+- compendium-audited 2026-04-27 (this cycle: M3 audit GO; Ex3 prompts compliant, no reshape needed — P1 meta-ask is the pedagogy)
+- earlier compendium-audited entries — superseded
+
 **Meta (trainer):**
-- **Time:** 25–30 minutes (12 / 5 / 6 / 2)
+- **Time:** 18–22 minutes (12 / 6 / 2)
 - **Primary Bloom's level:** Create + Evaluate
-- **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I pushed it through a self-critique, I invoked it and it produced something real, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: Nerd enforces the Phase 2 self-critique beat and pushes at the pyramid-dressed-as-codebase-specific question.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
+- **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I invoked it on a real feature, I sharpened it from what came back, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: Nerd pushes at the pyramid-dressed-as-codebase-specific question during Phase 1 and at the invoke-and-critique in Phase 2.
 
 **Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 question-dump.** Claude fires all questions at once instead of one at a time. Nerd: *"tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill."*
 - **P1 generic answers.** Student gives pyramid-shaped answers (*"unit first, then integration, then e2e"*). Nerd: *"is that actually how your codebase's tests run, or how you think they should? A skill encoding the first is useful; the second is a wish."*
 - **P1 missed detail.** Student mentions something in conversation that doesn't make it into SKILL.md. Nerd catches: *"you said X earlier — is that in the skill? if not, add it."*
-- **P2 critique-skip.** Student skims Phase 2 and moves on. Nerd: *"read the critique. Claude is giving you the push-back your staff engineer won't have time to give before review. It's free."*
-- **P2 critique-accept-all.** Student accepts every weakness Claude named without pushing back. Nerd: *"are any of these wrong? Claude tends to over-flag when asked to self-critique. Push back on one."*
-- **P3 invoke-skip.** Student ships without running the skill on the feature. Nerd: *"authoring without invocation is theatre. Run it on the feature we just threat-modeled and ask 'is it good?'"*
-- **P3 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Nerd: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
-- **P4 ship-confusion.** Team-kit home ambiguous. Nerd checks: *"is the home a separate repo or a path in this repo's .claude/? the pre-engagement contract should name it; if unresolved, use the training-start default the trainer spun up."*
+- **P2 invoke-skip.** Student ships without running the skill on the feature. Nerd: *"authoring without invocation is theatre. Run it on the feature we just threat-modeled and ask 'is it good?'"*
+- **P2 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Nerd: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
+- **P3 ship-confusion.** Team-kit home ambiguous. Nerd checks: *"is the home a separate repo or a path in this repo's .claude/? the pre-engagement contract should name it; if unresolved, use the training-start default the trainer spun up."*
 
 **Watch-fors:**
 - Student opens an editor to hand-craft SKILL.md. Redirect to conversation — the authoring move is prompting Claude, not keyboard-crafting markdown. This rule is load-bearing for the training; catch it every time.
@@ -120,6 +101,6 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 - Team-kit home was not resolved in the pre-engagement contract. Training-start default should be live; if not, Ops has a problem, flag at Debrief. Don't block the exercise on it — land the file in `.claude/skills/test-strategy/SKILL.md` in the student's repo and move the home question to Debrief.
 
 **Plug points:**
-- Student's feature (Ex1 + Ex2 carried forward) — Phase 3 invocation target
-- Sponsor-stated team-kit home — Phase 1 authoring path + Phase 4 ship destination
-- Hardening decision ADR (from Ex2) — read by Phase 3 invocation
+- Student's feature (Ex1 + Ex2 carried forward) — Phase 2 invocation target
+- Sponsor-stated team-kit home — Phase 1 authoring path + Phase 3 ship destination
+- Hardening decision ADR (from Ex2) — read by Phase 2 invocation

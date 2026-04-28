@@ -4,13 +4,15 @@
 
 **What happens:** Claude writes a plan. You pick *keep planning with feedback* and send two push-backs: what YOU see. Claude regenerates. Then you run a second-pass read: Claude asks one question at a time, walking down branches you didn't think to check, suggesting answers. You confirm or correct. The plan sharpens again. You approve. You don't run the code. You ask Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 
-**The point:** reading a plan is finite. A first pass by a human plus a second pass by an agent isn't belt-and-braces. It's the complete read. Two different kinds of scrutiny catch two different kinds of miss. The exercise installs the pairing as a move. No execution needed; you've already done the work of making the plan good. **Execution is next module's concern.**
+**The point:** reading a plan is finite. A first pass by a human plus a second pass by an agent isn't belt-and-braces. It's the complete read. Two different kinds of scrutiny catch two different kinds of miss. The exercise installs the pairing as a move. No execution needed; the work of making the plan good is the work. **Execution is next module's concern.**
 
 **Time:** 60 minutes.
 
 ## Phase 1: Bring a real task (5 min)
 
 Pick a task from your backlog that needs multi-file work, roughly 30–60 minutes of agent execution. Not a one-line fix (plan mode is overkill); not a refactor so big you can't hold the outcome in your head. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters.
+
+**Just a simple task that spans a few files. Not an epic.**
 
 If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
@@ -59,11 +61,11 @@ The second read asks one question at a time. Some will feel trivial (*"which log
 
 Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
-> **Timebox check.** When the slot ends, we stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
+> **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
 
 ## Phase 5: Stop. See the design pattern. (10 min)
 
-**Don't execute the plan.** You've done the work of making it good; that's the exercise. Execution is next module's concern.
+**Don't execute the plan.** The work of making it good is the exercise. Execution is next module's concern.
 
 Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
 
@@ -80,12 +82,22 @@ Neither is complete. Paired, they usually are.
 
 **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
 
+Ask Claude whether the `./CLAUDE.local.md` you carried in from M1 actually rides into every session.
+
+**Prompt** *(Claude Code)*
+
+```
+are these rules auto-loaded to each session context?
+```
+
 On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run tomorrow. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-28
+- compendium-audited 2026-04-28 (M2 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_prompts §1d-§21 + check_pedagogy §34-§38; M2 audit GO with todos)
+- compendium-audited 2026-04-25 (check_writing voice-quartet, check_student_facing agent-vocab + #21, check_pedagogy progression-with-variations, check_prompts) — superseded
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
 - **Exercise time band:** 60 min inside a 1h45 module (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Phase breakdown: P1 5 / P2 15 / P3 15 / P4 15 / P5 10. The second-pass read (P4) can stretch on real codebases; Debrief absorbs the overflow.
@@ -101,7 +113,6 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's four-step loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
   - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Watch-fors:**
 - **P3 rubber-stamp.** Student hits "approve" under 60 seconds without sending a push-back message. Diagnostic: no keep-planning-with-feedback branch in the scrollback. Push-back move: *"pick keep planning with feedback — send one soft-item message before approving."*

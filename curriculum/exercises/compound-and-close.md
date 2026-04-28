@@ -58,7 +58,7 @@ Ticket:
 
 Claude reads the ticket (or confirms there isn't one). Then:
 
-Ask Claude to draft the close-out and show it before posting.
+Ask Claude to update the ticket and report what it wrote.
 
 **Prompt** *(Claude Code)*
 
@@ -81,7 +81,7 @@ Ask Claude to sweep the session for anything earned since the first compound and
 We're preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don't append. Tell me in 2–3 lines what you added, or "nothing new" if nothing did.
 ```
 
-You ran the loop. You have a PR, a rules file born from session evidence, and a ticket that closed itself from inside Claude Code. Your setup is in place.
+The loop ran. The PR is open, the rules file was born from session evidence, the ticket is updated where your team reads it. Setup in place.
 
 You can now clear. What you stored may or may not help you in future sessions. Let's find out then.
 

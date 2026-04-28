@@ -3,7 +3,7 @@
 
 ---
 
-Three modules in, you've worked short loops. M1 closed a bug and wired a connector. M2 read one plan twice. M3 shipped a feature with security mapped and a test-strategy skill you authored in conversation. Every one finished inside the session. You watched Claude work, you steered, you stopped, you shipped.
+Three modules in, the loops have been short. M1 closed a bug and wired a connector. M2 read one plan twice. M3 shipped a feature with security mapped and a test-strategy skill authored in conversation. Every one finished inside the session. All inside one session.
 
 Today is structurally different. Today you launch a multi-hour task and close the laptop. The agent keeps going while you aren't there to steer. You'll come back to a result whenever the next M5 slot lands. That result is the point.
 
@@ -50,7 +50,9 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing voice-quartet, check_student_facing #14, check_lectures, check_strategy_tie_in, check_research_claims)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
+- compendium-audited 2026-04-27 (this cycle: re-stamp to clear touch-based auto-degrade; no prose changes — lecture has no fenced student-prompts)
+- compendium-audited 2026-04-26 (prior audit) — superseded
 **Lecture meta:** *10–12 min lecture. Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the two frameworks the exercise riffs on — gap analysis and Huryn's three-block memory.*
 **Word count:** ~620 words body.
 

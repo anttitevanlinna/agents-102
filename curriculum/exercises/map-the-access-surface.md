@@ -1,6 +1,6 @@
 # Exercise: Map the access surface
 
-**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it flagged that you'd underweighted, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
+**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
 
 **What happens:** The access-control analysis skill runs a structured pass across the feature: user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You read it against your own knowledge of the feature and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
 
@@ -14,16 +14,32 @@
 
 Start a new Claude Code session at your repo root. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name.
 
-Before you invoke, confirm it's there. Ask Claude: *"list my installed skills."* You should see `access-control-analysis` and `stride`. If not, prework's install step didn't finish; re-run it before continuing.
+First, see what skills your Claude has loaded. In the Claude Code chat, type:
 
-Ask Claude to invoke the access-control-analysis skill on the feature you brought to M3 and save the surface map to a temp directory of its choosing.
+```
+/skills
+```
+
+You should see `access-control-analysis` and `stride` listed under **User**. (If they don't, the prework install didn't land — see prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in M3 will land in User too.
+
+Then ask Claude to fill in what `/skills` doesn't show.
 
 **Prompt** *(Claude Code)*
 
 ```
-Invoke the access-control-analysis skill as a subagent against the feature I brought to Module 3. First ask me to name the feature in one sentence: which file it mostly lives in, what it does, what the external or user-facing surface is. Wait for my answer.
+List my installed skills. Tell me also their storage location and whether or not they are loaded onto context.
+```
 
-Then run the skill in a fresh-context subagent so its structured pass doesn't pollute this thread. When it returns, save the surface map to a session-scratch location OUTSIDE this repo. Pick a sensible temp path for my OS (something under $TMPDIR, /tmp, or equivalent), create the directory, and tell me the absolute path. This is scratch, not memory; it doesn't belong in the repo.
+Worth a moment of looking — these are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
+
+Ask Claude to invoke the access-control-analysis skill on the feature you'll name after the colon, and save the surface map to a temp directory.
+
+**Prompt** *(Claude Code)*
+
+```
+Invoke the access-control-analysis skill on the feature I'll name. Save the surface map to a temp directory and tell me the path. Use the skill's default output shape; don't prompt me to customize.
+
+The feature is:
 ```
 
 
@@ -43,20 +59,24 @@ Read the surface map you wrote at the path you told me. Walk me through it in ch
 
 Now you decide.
 
-Ask Claude to interview you for the two deltas and integrate them into the map.
+Ask Claude to integrate the surface the skill called out harder than you would have into the map.
 
 **Prompt** *(Claude Code)*
 
 ```
-I read the access surface map. I'm going to tell you two things, one at a time:
+Update the surface-map file in the temp directory to integrate the delta below — pull the item to the top of its category and explain in one line why this codebase's deployment model elevates it. Show me the diff.
 
-First: which surface the skill flagged that I'd underweighted, and why it matters in this codebase specifically. Ask me after I answer if the reason I gave is codebase-specific or generic; if generic, push me to sharpen it.
+The surface the skill called out harder than I would have:
+```
 
-Second: which surface the skill missed that I know matters, with the reason I know.
+Then ask Claude to add the surface the skill missed but you know matters.
 
-Ask for the first answer. Wait. Then ask for the second.
+**Prompt** *(Claude Code)*
 
-When you have both, add them to the surface map file you wrote earlier (the path you told me) in a section called "Codebase-tuned delta". Integrate, don't append a loose list. This is the map STRIDE will consume in the next exercise.
+```
+Add a new surface to the map that the skill didn't catch but matters in this codebase. One sentence on what it is, one sentence on why the skill missed it (likely codebase-specific: framework, deployment model, team convention). Show me the diff.
+
+The surface the skill missed that I know matters is:
 ```
 
 
@@ -77,12 +97,14 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing #14 + #24, check_prompts §1(d), check_pedagogy, check_platform_and_boundaries)
+- compendium-audited 2026-04-27 (this cycle: P1 + P3 prompts reshaped to open-hook per §1(d); "list my installed skills" platform claim softened; M3 audit GO with todos)
+- earlier compendium-audited entries — superseded
+
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 3 / 7 / 3)
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: Nerd pushes Phase 3 harder.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 blocker — student can't point Claude at the feature.** Nerd runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*

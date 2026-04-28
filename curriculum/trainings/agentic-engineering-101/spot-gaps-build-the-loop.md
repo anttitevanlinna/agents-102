@@ -1,7 +1,7 @@
 # Spot gaps, build the loop
 
 ## Big Idea
-Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn't anticipate, pick where the gap belongs (memory, verifier, new skill), and author the second skill through conversation so future you inherits the lesson.
+Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn't anticipate, pick where the gap belongs (memory, verifier, new skill), and author a session-shaper skill through conversation so future you inherits the lesson.
 
 ## Prework
 
@@ -11,8 +11,9 @@ Walk in with both M4 (un-packaged) and M5 (packaged) run artefacts. Optional pre
 After this module, you will be able to:
 - **Diagnose** (Analyze) the packaged M5 run alongside the un-packaged M4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
 - **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill, using two runs' evidence, not prescription.
-- **Author** (Create) the second skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
-- **Name** (Understand) evals with full weight (verifier = judge = gate = eval), anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
+- **Compound by subtraction** (Evaluate) — cut one rule the two-run diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life.
+- **Author** (Create) a session-shaper skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
+- **Name** (Understand) evals as the broader family — verifier in your repo, judge in your test, gate in your CI — same function, different surfaces. Anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
 - **Articulate** (Evaluate) one key learning and one personal thought on the future in the Debrief round. Not a performance; a marker of where your practice stands after six modules.
 
 ## Start here
@@ -22,6 +23,8 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 [Story of Module 6](lectures/story-of-module-6.md)
 
 [Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
+
+[Steering the wiring](lectures/steering-the-wiring.md)
 
 [Arc-named retrospective](exercises/arc-retrospective.md)
 
@@ -38,7 +41,7 @@ You walk in holding two runs of the same task. The un-packaged M4 send-off. The 
 
 ## Human close
 
-10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the M6 compound. This slot is the human round the practitioner-fluency mood warrants. The trainer reads the room and picks the form (pair exchange, whole-room round, quiet write-then-share, or skip the round when energy is spent). Not agent-mediated; the round stays human even if a host-skill is otherwise running.
+10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the M6 compound. This slot is the human round the practitioner-fluency mood warrants. The trainer reads the room and picks the form (pair exchange, whole-room round, quiet write-then-share, or skip the round when energy is spent).
 
 *You ran the loop on your own work three ways. The kit is yours.*
 
@@ -58,6 +61,8 @@ Keep on learning and sharing.
 
 
 **Quality:** draft 2026-04-26 (touched after audit — degraded from compendium-audited 2026-04-26; subtraction-only edit removed redundant worktree paragraph from "## Next" — same content already lives at M1 prework. Re-audit on next pass.)
+
+**Maintainer TODO:** *Agents that build agents* (likely lecture-only, not run as exercise). A prompt for Claude Code to enter plan mode and figure out the loop so Claude Code itself learns the optimal rules. The meta-move M6 has been pointing at across the M3 (skill authoring) → M5 (verifier as eval) → M6 (second skill) progression — closes by showing the agent designing its own next-iteration scaffolding. Lecture format because the run is too long for the M6 slot and the teaching is the pattern, not the artefact. Surfaced 2026-04-28 from M5 live-test reflection.
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).

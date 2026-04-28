@@ -17,7 +17,7 @@ Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map fr
 **Prompt** *(Claude Code)*
 
 ```
-Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next.
+Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next. Report whether or not the skill loaded in the subagent.
 ```
 
 
@@ -27,24 +27,16 @@ Let it run. The output will have more entries than you want to deal with. That's
 
 You're going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.
 
-Ask Claude to walk you through the pick, one question at a time.
+Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.
 
 **Prompt** *(Claude Code)*
 
 ```
-I want to pick one threat from the STRIDE list to harden against in this PR. Help me narrow:
-
-Ask me: if this feature caused a security incident next Tuesday, what's the most plausible story? Wait for my answer.
-
-Then: of the threats on the list, which one most closely matches that story? If my answer points at a threat the skill didn't surface, tell me. That's a gap in the map, not a reason to ignore the threat. Name it.
-
-Then: is the hardening decision obvious once we've named the threat, or do I need to see alternatives? If alternatives, name 2–3 and recommend one, with the reason.
-
-One question at a time. Don't assemble into a plan. I want to walk through the reasoning.
+Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story (one or two sentences, from the access surface and threat list), then map that story to the STRIDE class it best fits (S/T/R/I/D/E), name what the threat actually is in one sentence, and propose the hardening shape (scope/split/filter/gate/review). I'll steer if the story or mapping misses.
 ```
 
 
-Answer each. The "most plausible incident story" is the move that makes STRIDE useful rather than performative.
+Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative — push back if the story doesn't fit your codebase's reality.
 
 ## Phase 3: write the ADR (~5 min)
 
@@ -61,25 +53,37 @@ Show me the ADR before saving.
 ```
 
 
-Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship.
+Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship & Save.
 
 If STRIDE's six categories feel like the wrong lens for your feature (some features are really abuse-case or insider-threat shaped, where Elevation-of-Privilege + Repudiation carry everything and Spoofing + Tampering don't fit), say so in the Alternatives considered section. *"STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y's terms"* is a legitimate ADR move. The skill is a tool; the call is yours.
+
+Ask Claude whether this ADR rides into future sessions automatically.
+
+**Prompt** *(Claude Code)*
+
+```
+Will ADRs auto-load to future sessions?
+```
+
+Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file — Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; M4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
 
 ---
 
 ## What this sets up
 
-The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision you just made becomes a test case in the test strategy. The ADR is in the repo. The threats you rejected are documented. Your CISO has something to read.
+The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Rejected threats are documented. Your CISO has something to read.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing #24, check_prompts §1(d), check_pedagogy)
+- compendium-audited 2026-04-27 (this cycle: P2 prompt reshaped to open-hook per §1(d); M3 audit GO with todos)
+- earlier compendium-audited entries — superseded
+
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 8 / 5)
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: Nerd makes student name the specific future engineer they'd want this ADR to be useful for.
-- **Quality:** compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts)
 
 **Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
 - **P1 skill invocation ambiguity.** Student points the skill at the feature rather than the access-surface map. Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."*

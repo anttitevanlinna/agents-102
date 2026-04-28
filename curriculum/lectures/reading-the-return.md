@@ -4,7 +4,7 @@
 
 ---
 
-You closed the laptop at the end of M4 with the agent working. By the time you read this, your run has either finished, hit its budget, or been stopped because you saw enough. Whatever came back is the artefact you walk into M5 with.
+The laptop closed at the end of M4 with the agent working. By the time this lands, the run has either finished, hit its budget, or been stopped because enough was seen. Whatever came back is the artefact M5 starts from.
 
 Here is the question that drives M5.
 

@@ -16,7 +16,28 @@ After this module, you will be able to:
 - **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task M4 sent off
 - **Re-send** the packaged version of the same task in the same Claude Code session and let it run a second time
-- **Compound by subtraction:** cut one rule diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life
+
+## Set up the M5 worktree
+
+Before opening the M5 session, fork the M4 starting SHA into a sibling worktree. M5's work — diagnosis, verifier, reference, plan.md, and the re-send — runs in the worktree so the second run starts from the same code state as the first. Cherny's productivity unlock from the M2 pre-read lands here.
+
+A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time — your M1/M3 evidence rides forward, M5/M6 compounding diverges in the worktree, and you decide post-M6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at M6 close picks up the question.
+
+If your M4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
+
+**Prompt** *(Claude Code)*
+
+```
+Find the branch starting with `m4/` (run `git branch -a | grep '/m4/'` — there'll be one) and the commit messaged "M4 starting point" on it. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
+
+Then copy the gitignored personal files into the worktree so M5/M6 compounding has the M1/M3 evidence to build on:
+  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)
+  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if it exists)
+
+These won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.
+```
+
+Open a new Claude Code session in the worktree. The rest of M5 runs there.
 
 ## Start here
 
@@ -37,18 +58,6 @@ You sent off an un-packaged run at the close of M4 and read the pre-read. You wa
 - Your verifier is your first eval. M6 gives evals their full weight as team infrastructure
 - The kit grows: subagents for context isolation and `/compact` at ~60% extend session length without packaging. Worth knowing alongside the three-pattern
 
-## Cut what diagnosis killed
-
-The un-packaged M4 send-off was the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.
-
-Ask Claude to cut one rule diagnosis killed, or to say so and stop if all rules held.
-
-**Prompt** *(Claude Code, only if a rule earned cutting)*
-
-```
-Read ./CLAUDE.local.md. Read this M5 scrollback: the three failure modes I named, the verifier I built, the reference and plan I assembled. Find the one rule diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
-```
-
 Now the re-send. Same task as M4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. You're not re-explaining the task; you're invoking what you assembled.
 
 Ask Claude to re-run the same M4 task using the reference, plan.md, and verifier you just built.
@@ -56,9 +65,13 @@ Ask Claude to re-run the same M4 task using the reference, plan.md, and verifier
 **Prompt** *(Claude Code, final move of the module)*
 
 ```
-Run the task we sent un-packaged at M4. Same scope, same goal. The reference and plan.md we assembled are at the path we wrote; the verifier is ready to fire. Go.
+Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.
 
-I'm closing the laptop. If the verifier fails, fix and re-run; don't paper over. Tell me what shipped, what didn't, and what the verifier surfaced.
+Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.
+
+Before you start, ask for or write anything else you want for this run.
+
+Tell me what shipped, what didn't, and what the verifier surfaced.
 ```
 
 
@@ -79,14 +92,16 @@ Optional. Skipping does not break M6. The piece lands in the M5 to M6 gap and pr
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing — `substrate` in maintainer L120 swapped to `source material`; check_student_facing #21 + power-settings carve-out; check_pedagogy #9b + compound-shape; check_prompts; check_strategy_tie_in; check_lectures. **check_research_claims:** Pre-reads attribution corrected — "You're the Bread in the AI Sandwich" reattributed to Laura Entis interview write-up of Klaassen; *"Definitive Guide"* claim that 80/20 ratio is "stated verbatim" dropped — ratio is practitioner-posture summary, not in the article. See `curriculum/evals/instances/ae101-m5-m6-source-verification.md`.)
+**Quality:** compendium-audited 2026-04-28
+- compendium-audited 2026-04-28 (M5 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_prompts §1d-§21 + check_pedagogy §34-§38 + check_lectures + check_research_claims + check_platform_and_boundaries; this cycle: §36 verifier smoke-test added to Phase 3, §24 meta-ask reshaped to open-hook with `Shape:` colon, §38 worktree-fork wiring to "M4 starting point" intact)
+- compendium-audited 2026-04-26 (check_writing — `substrate` swap; check_student_facing #21; check_pedagogy #9b + compound-shape; check_prompts; check_strategy_tie_in; check_lectures; check_research_claims — pre-reads attribution corrected, see `curriculum/evals/instances/ae101-m5-m6-source-verification.md`) — superseded
+- sim-passed 2026-04-25 (three-persona) — degraded by 2026-04-28 touches; needs re-run before re-claim
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 5 / In-room opener lecture 6 / Exercise 60 / Debrief 12 / Re-send 3 / Closing lecture 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Closing lecture sits after Debrief + Re-send (structural addition over M4 — names Ronacher's three-pattern from felt evidence). Pre-read (`reading-the-return.md`) lands at the close of M4 Debrief, separate from this module's runtime. Exercise breakdown: Phase 1 read-the-return 15 / Phase 2 align-then-reverse 10 / Phase 3 build-verifier 18 / Phase 4 assemble-reference-and-plan 17.
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: Nerd reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. The re-send at Debrief happens in the same Claude Code session the student used for diagnose + build + assemble + retro. No new session, no scheduled agent, no cloud runner.
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. Self-study Teacher Claude shares the link in the M4 close-out message. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
-- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (TODO — Nerd skill not yet written; trainer covers by default in cohort):
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Nerd: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*

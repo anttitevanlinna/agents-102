@@ -7,6 +7,8 @@ Reading a plan is finite. Your own read catches some of it, a second agent walki
 
 About 10 min. Surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
 
+**Just a simple task that spans a few files. Not an epic.**
+
 Optional reading in the M1-to-M2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (~30 min); [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).
 
 ## What You'll Learn
@@ -16,7 +18,8 @@ After this module, you will be able to:
 - **Run** a second-pass read that walks down unresolved branches you didn't think to check, one question at a time, with a recommended answer per branch
 - **Recognize** the pairing as a repeatable design pattern: human read → push-back → agent walk-down → approve
 - **Name** plan-mode approval inflation as the thing the pairing defeats, not a moralistic warning
-- **Write** one named pattern into your personal `CLAUDE.local.md` (gitignored) that captures how plans get read in this codebase. If it's team-worthy, flag it for a separate PR against team `CLAUDE.md` (see [the four CLAUDE.md layers](reference/claude-code-for-engineers.md))
+- **Extract** three to five task-shaping rules from your own session into a `.md` file at a location you choose, sharpening at least one before saving
+- **Recognize** three shapes for turning a rules file into automation (Slack triage, issue webhook, scheduled read), without building one today
 
 ## Start here
 
@@ -26,14 +29,9 @@ After this module, you will be able to:
 
 [Exercise: Push back on the plan](exercises/push-back-on-the-plan.md)
 
-## Key Concepts
-- A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
-- Verification steps that could actually fail are gates; verification steps that always pass are decoration
-- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. **Remember: push-backs ship into memory.**
-- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. **Remember: assume 90% on first pass.**
-- One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is the plan-reading skill you're building
-- You don't have to execute a plan to know it's good. The work of making it good is the exercise
-- Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
+[Exercise: Extract the task-shaping rule](exercises/extract-the-task-shaping-rule.md)
+
+[Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
 
 ## Save the rule if it earned itself
 
@@ -46,6 +44,15 @@ Ask Claude to integrate the one branch that earned itself into your personal `./
 ```
 If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop.
 ```
+
+## Key Concepts
+- A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
+- Verification steps that could actually fail are gates; verification steps that always pass are decoration
+- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. **Push-backs ship into memory.**
+- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. **Assume 90% on first pass.**
+- One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
+- You don't have to execute a plan to know it's good. The work of making it good is the exercise
+- Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
 
 ## Next
 
@@ -62,7 +69,13 @@ Optional. Skipping either piece does not break M3. The point is to land STRIDE a
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25 (check_writing voice-quartet; check_student_facing #21 + #7 compound-varies; check_pedagogy; check_prompts; check_strategy_tie_in §3+§5+§6; check_lectures)
+**Quality:** mechanical-tested 2026-04-28
+- compendium-audited 2026-04-28 (check_writing v2026-04-26; check_student_facing v2026-04-27; check_pedagogy v2026-04-28 incl. #39; check_prompts v2026-04-28; check_strategy_tie_in v2026-04-25; check_lectures v2026-04-24; check_research_claims; check_platform_and_boundaries — capability-check pass on Phase 2 loading-model claims after correction `~/.claude/memory/` → `~/.claude/CLAUDE.md` / `~/.claude/rules/`)
+- sim-passed 2026-04-28 (Mid-competent 8.0 / Opinionated-senior 7.5 / Fast-operator 9.0+8.5 after runtime-gating / Nitpicker — convergence flagged loading-model error + Phase 2 body/prompt contradiction; both fixed in same cycle)
+- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/ae101-m2-extract-judge-report.md` @ 18affa1) PASS 8/8 — covers the new exercise's prompt chain end-to-end including handoff from lecture
+- cohorts: none yet
+- prior dimension-log preserved for reference: compendium-audited 2026-04-25 + sim-passed 2026-04-25 (push-back-on-the-plan + when-a-plan-is-good unchanged this cycle)
+
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.

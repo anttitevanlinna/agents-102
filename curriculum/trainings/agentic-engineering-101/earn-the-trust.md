@@ -5,7 +5,7 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 ## Prework
 
-Bring a small feature you're working on right now. Not a typo-fix, not a quarter-long epic; something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. You've watched the agent work for two modules. Pick the size that fits the rhythm you've seen.
+Bring a small feature you're working on right now. **Not a typo-fix, not a quarter-long epic.** Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Two modules of agent rhythm sit behind you. Pick the size that fits.
 
 Optional pre-reads in the M2-to-M3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min, deeper scan).
 
@@ -48,30 +48,60 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 ## Sharpen the skill from evidence
 
-M3's compound lives in the skill you authored, not in the rules-file. Skills are the surface that just got tested under push-back; that's where today's evidence wants to land. The rules-file move sits this one out.
+M3's compound runs in two places: the skill you authored (where session push-back evidence lands) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or skill authoring on this codebase earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
-Ask Claude to sharpen the one section of your authored test-strategy skill that session evidence underdelivered.
+Ask Claude to sharpen the one weakest section of the authored skill, then integrate a rule into `./CLAUDE.local.md` if one earned itself. Run this in the same session you authored the skill in.
 
 **Prompt** *(Claude Code)*
 
 ```
-Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back. Find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
+Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back.
+
+First: find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
+
+Then, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.
+```
+
+## Ready to clear
+
+Before you close the session, signal the wrap-up. Claude converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
+
+**Prompt** *(Claude Code)*
+
+```
+Ready to clear? All learnings in?
+```
+
+If Claude names something missed, decide whether to compound it now or accept the loss. Then clear the session. M4 opens a new one.
+
+**Prompt** *(Claude Code)*
+
+```
+/clear
 ```
 
 ## Next
 
-You earned the first two signatures. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
+Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. M4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
+
+## Bring to M4
+
+One or two candidate tasks from your backlog. The kind you'd send off rather than nudge bit by bit, not a typo-fix and not a quarter-long epic.
+
+**Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26 (check_writing; check_student_facing #21; check_pedagogy progression-with-variations; check_prompts; check_strategy_tie_in; check_lectures)
+**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
+- compendium-audited 2026-04-27 (this cycle: anti-pattern callout bolded per §34; Sharpen prompt gained "same session" cue; M3 audit GO with todos)
+- earlier compendium-audited entries — superseded
+
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
-- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Connections blocker** — student can't pick a feature. Nerd runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).

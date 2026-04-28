@@ -12,21 +12,21 @@
 
 ---
 
-Open a new Claude Code session in your repo. A fresh session, so there's no scrollback coloring the read. Ask the agent to walk the artefacts you've authored and write the arc from them.
+Open a new Claude Code session in the M5 worktree (the same one M6 Phase 1 + 2 ran in). A fresh session, so there's no scrollback coloring the read. The artefacts across all six modules — `CLAUDE.local.md`, `.claude/memory/`, ADRs, both authored skills, both runs' commits and transcripts — are accessible via git refs and the worktree state. Ask the agent to walk them and write the arc from them.
 
 **Prompt** *(Claude Code)*
 
 ```
-Read my work across the training. Specifically:
+Read my work across this repo. Specifically:
 
 - My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.
 - Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
 - The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).
-- Both skills I authored at `~/.claude/skills/` during the training (the test-strategy skill from earlier, and the skill I authored today).
+- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).
 - The M4 un-packaged run artefact (commits, files, the session transcript under `~/.claude/projects/` in a folder matching this repo — the earliest long-running run).
 - The M5 packaged re-run artefact (commits, files, the session transcript from the re-send of the same task).
 
-Run this audit in a fresh sub-task via the Task tool, so the read isn't colored by this conversation.
+Run this audit in a fresh sub-task via the Task tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.
 
 Write a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.
 
@@ -34,11 +34,11 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 ```
 
 
-Read the note. Push back where the agent over-generalises, or where it praises without quoting. This isn't a retrospective report card; it's a reading. The quoted moments are the substance. If the note reads generic, ask the agent to re-draft with more quotes and less framing.
+If the read runs ten minutes plus, interrupt with *"enough. just tell me now."* — you have what the agent has assembled so far, and that's the read.
 
-If after one re-draft the note still reads thin, drop it. A thin note is data: it tells you the artefacts don't yet carry the density the arc-reading needs. Better no note than a template.
+Read the note. That's the read of your six modules from outside the work.
 
-If the note reads true, save it. You'll re-read it when the next long task stalls.
+If the note reads true, save it. You'll have your agent re-read it when the next long task stalls.
 
 <!-- maintainer -->
 

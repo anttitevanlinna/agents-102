@@ -10,12 +10,14 @@ Three small steps:
 
 1. **Open your LinkedIn profile in your browser.** The page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else's.
 2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine. Claude reads through it.
-3. <span class="rt-code">**Paste it into your Claude Code session, then send this prompt right after** (in the same message, or as the next one):</span><span class="rt-cowork">**Paste it into your Cowork task, then send this prompt right after** (in the same message, or as the next one):</span>
+3. **Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**
 
-**Prompt** *(Claude Code, after pasting your LinkedIn)*
+**Prompt** *(Claude Code)*
 
 ```
-Build me a personal HTML one-pager site from the LinkedIn profile above. Save it as `module-1/site.html`.
+Build me a personal HTML one-pager site from the LinkedIn profile below. Save it as `module-1/site.html`.
+
+LinkedIn:
 ```
 
 The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.

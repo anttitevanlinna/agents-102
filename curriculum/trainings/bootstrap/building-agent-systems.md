@@ -5,7 +5,7 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Prework
 
-**Setup:** <span class="rt-code">End Module 1's session (scoped to `module-1/`) and start a fresh one at your training-directory root.</span><span class="rt-cowork">End Module 1's Cowork session (connected to `module-1/`) and start a fresh one connected to your training-directory root.</span> The Module 2 starter zip unzips there (three empty folders: `memory/`, `sources/`, `agents/`, and nothing else). Your Module 1 rules file at `module-1/CLAUDE.md` stays where it is, scoped to Module 1. The wider training-dir root rules file (`./CLAUDE.md`) doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+**Setup:** <span class="rt-code">Continue at your training-directory root. Start a new Claude Code session if you want fresh context.</span><span class="rt-cowork">Continue at your training-directory root. Start a new Cowork task with the same working folder if you want fresh context.</span> The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 rules file at `module-1/CLAUDE.md` stays scoped to Module 1. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
 [Module 2 prework](exercises/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
 
@@ -44,7 +44,7 @@ Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module
 **Prompt** *(Claude Code)*
 
 ```
-Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: module-2/challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
+Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
 
 The rules file governs how agents behave in this directory from now on — how memory gets compiled, how sources are treated, what claims require citations, what counts as "specific to my challenge" vs. generic. Don't invent — extract. Every rule you write should be traceable to a specific moment in the session where the rule either helped or would have helped.
 
@@ -68,7 +68,7 @@ Rules:
 - Not a category. "Positioning is unclear" is a category. "Buyers can't tell in 30 seconds whether we sell training or consulting" is specific enough to act on.
 - Test it: if this obstacle moved, would at least three other stuck things release? If not, keep looking — it isn't the crux.
 
-One sentence. Save it to module-2/crux.md and show me before saving.
+One sentence. Save it to ./crux.md and show me before saving.
 ```
 
 

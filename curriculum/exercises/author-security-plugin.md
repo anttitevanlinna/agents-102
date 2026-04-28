@@ -113,7 +113,7 @@ In the new session, type `/` in the prompt and look for the two lenses in the au
 **Prompt** *(Claude Code, fresh session)*
 
 ```
-Apply the policy lens of the security plugin I authored to one file: module-2/challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
+Apply the policy lens of the security plugin I authored to one file: ./challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
 ```
 
 Read the two or three rows. The rule wording should sound like the lens you authored, not a generic check.
@@ -121,7 +121,7 @@ Read the two or three rows. The rule wording should sound like the lens you auth
 **The explicit slash-command form (also worth knowing).** Plain-language usually dispatches the right lens, but the slash command is the only invocation guaranteed to fire the exact one you mean:
 
 ```
-/security-audit:policy run two or three rules on module-2/challenge.md and stop.
+/security-audit:policy run two or three rules on ./challenge.md and stop.
 ```
 
 CLI users drop the colon (`/security-audit-policy ...`) because the extracted skills do not carry the plugin namespace.
@@ -156,7 +156,7 @@ The expert is not you reading every file by hand. The expert is the plugin, and 
 - 90-min facilitator dry-run owed before first cohort. Specifically: Phase 3 install moment with one colleague on Cowork and one on CLI, plus one colleague playing the freezing-SVP for Phase 1. Surfaces the runtime-fork hazard and the freeze case at the same time.
 
 **Mechanical-test findings 2026-04-26 (resolved + standing):**
-- ~~Verify target `module-2/CLAUDE.md` may not exist on the student's disk~~ — DONE 2026-04-26. prompt-004-verify now targets `module-2/challenge.md`, which is on disk from M2 prework.
+- ~~Verify target `module-2/CLAUDE.md` may not exist on the student's disk~~ — DONE 2026-04-26. prompt-004-verify now targets `./challenge.md`, which is on disk from M2 prework.
 - **Cowork plugin install affordance** — capability check #1 still owed (Cowork *Save plugin* button reliability). Exercise text describes UI behaviour, no skill-by-name invocation, so no body fix needed; the verification is whether Cowork delivers the affordance the text describes.
 - **Self-study dictation** — covered by `module-4-prework.md` "Before you arrive — five lines" subsection (with four shape examples). No additional example needed in the exercise body.
 

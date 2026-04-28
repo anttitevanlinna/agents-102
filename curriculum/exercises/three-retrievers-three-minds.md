@@ -8,7 +8,7 @@ Two phases. Phase 1 feels like multi-agent: three sessions churning on the same 
 
 **Phase 0. One question, written down.**
 
-Open your `module-2/challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary. A decision you'd stay late to make. Something like *"what's the right next move on the thing I wrote down yesterday, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
+Open your `./challenge.md` from yesterday. What's the sharpest decision hiding in there? One sentence. Not a topic, not a summary. A decision you'd stay late to make. Something like *"what's the right next move on the thing I wrote down yesterday, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
 
 **Phase 1. Three retrievers, three sessions.**
 

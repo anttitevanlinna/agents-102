@@ -4,7 +4,7 @@
 
 A chat forgets. A memory remembers.
 
-You've just pinned your challenge in `module-2/challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
+You've just pinned your challenge in `./challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
 Before class you unzipped the Module 2 scaffold: empty `sources/`, empty `memory/`, empty `agents/`, and a root `CLAUDE.md` with the rules Claude follows when it writes pages. <span class="rt-code">Start a new session in the working directory.</span><span class="rt-cowork">Connect the working directory in Cowork.</span> Four phases: curate, put to work, compound, self-maintain.
 
@@ -25,7 +25,7 @@ A memory is only as good as what goes into it. Most people sabotage this step by
 ```
 I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats:
 
-1. First, read module-2/challenge.md so you have the challenge in mind. Then check what connectors are enabled in my Claude Code session right now — name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
+1. First, read ./challenge.md so you have the challenge in mind. Then check what connectors are enabled in my Claude Code session right now — name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
 
 2. Then ask me where my work material actually lives. Don't assume Confluence or OneDrive — ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.
 
@@ -224,7 +224,7 @@ Every module after this one uses the memory you just built.
 
 **Trainer artifacts required (must exist before training day):**
 - Scaffold project: empty `sources/`, empty `memory/`, empty `agents/`, starter `CLAUDE.md` at root (topic-page shape, citation convention, "distinctive not descriptive" rule)
-- Opener exercise (`name-your-challenge.md`) runs first in Module 2 — produces `module-2/challenge.md`, which this exercise keys off
+- Opener exercise (`name-your-challenge.md`) runs first in Module 2 — produces `./challenge.md`, which this exercise keys off
 - Prework: Confluence + OneDrive connectors configured in Claude Code before the session (separate prework item)
 
 **Plug points:**

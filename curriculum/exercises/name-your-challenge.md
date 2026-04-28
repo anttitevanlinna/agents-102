@@ -32,7 +32,7 @@ Pick the one you'll be carrying anyway over the next few weeks. If two are tied,
 
 **Write the brief.**
 
-<span class="rt-code">In your session at the training directory, the brief will land in `module-2/`, ready for the rest of the module.</span><span class="rt-cowork">In your Cowork session connected to the training directory, the brief will land in `module-2/`, ready for the rest of the module.</span>
+The brief lands at your training-directory root as `./challenge.md`, where every later module reads from.
 
 **Prompt** *(Claude Code)*
 
@@ -43,7 +43,7 @@ I'm in a training where I'll build a working memory around one live challenge I'
 2. What have you already tried, read, or decided? What's ruled out, what's still open?
 3. Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?
 
-When I've answered all three, write a one-paragraph brief to module-2/challenge.md. Show it to me before saving.
+When I've answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving.
 ```
 
 
@@ -76,7 +76,7 @@ The hardest part of a memory isn't the tool. It's the scope. A memory about "our
 
 <!-- maintainer -->
 
-**Role in Module 2:** This is the opening exercise of Module 2 — the first 15 minutes of the main session. Prework handed them the nudge ("bring a live challenge"); this exercise pins it into `module-2/challenge.md` before `build-your-challenge-memory` runs. Do not treat as prework — students skip prework, and the rest of Module 2 cannot proceed without a pinned challenge.
+**Role in Module 2:** This is the opening exercise of Module 2 — the first 15 minutes of the main session. Prework handed them the nudge ("bring a live challenge"); this exercise pins it into `./challenge.md` before `build-your-challenge-memory` runs. Do not treat as prework — students skip prework, and the rest of Module 2 cannot proceed without a pinned challenge.
 
 **Frameworks riffed on:**
 - Jobs-to-be-Done framing (*what is this memory hired to help you do?*) — narrows scope from topic to outcome.

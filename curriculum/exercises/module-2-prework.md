@@ -8,7 +8,7 @@ Three small items before Module 2. Not a workbook. Twenty minutes total, plus a 
 
 Module 2 builds you a **memory**. A folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. For that to work, you need to walk in with a real, live challenge in mind: a decision you're making, a bet you're placing, a piece of work where you don't yet see the shape.
 
-**Don't write anything yet.** Module 2 pins it down in the first 15 minutes, with Claude asking you three questions and landing a brief in `module-2/challenge.md`. If you arrive without one, the opening stalls. So think about which challenge before class. One that's on your mind often this month. Narrow enough that 5–8 topic pages could cover it.
+**Don't write anything yet.** Module 2 pins it down in the first 15 minutes, with Claude asking you three questions and landing a brief in `./challenge.md`. If you arrive without one, the opening stalls. So think about which challenge before class. One that's on your mind often this month. Narrow enough that 5–8 topic pages could cover it.
 
 If you're drawing a blank, scan your calendar for the next two weeks: the biggest open thing on it is usually the challenge.
 

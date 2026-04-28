@@ -28,9 +28,9 @@ After this module, you will be able to:
 
 [Opening: Context is King](lectures/context-is-king.md)
 
-[Closing: What just happened](lectures/what-just-happened.md)
-
 [Personal site with guardrails](exercises/personal-site-with-guardrails.md)
+
+[Closing: What just happened](lectures/what-just-happened.md)
 
 ## Key Concepts
 - Guardrails are structured context, not a checklist
@@ -39,22 +39,16 @@ After this module, you will be able to:
 
 ## Debrief
 
-Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro captures what you noticed *about the work* (different lens, different rules). Two passes; the second is where the file starts compounding.
+Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro is Claude reading the file against the actual session — a different lens, surfacing what's weak, missing, or wrong. Two passes; the second is where the file starts compounding.
 
 **Prompt** *(Claude Code)*
 
 ```
-Read `module-1/personal-brand-generation.md` first. You'll need it for Q3.
+Read `module-1/personal-brand-generation.md`. Then re-read what we did building the site — which framework moves landed, where the output stayed generic, what context broke through. Audit the rules file against the actual work: which rules are weak, missing, or wrong? Be honest. Find what's still surface; don't defend the file as-is.
 
-Then walk me through three retro questions on the site we just built, one at a time, wait for each answer, no preamble. Just ask Q1 once you've read the file.
+Then overwrite `module-1/personal-brand-generation.md` with the integrated version — sharpen weak rules, add what's missing, remove what turned out wrong. Don't append a "retro notes" section; rewrite the file in place.
 
-Q1: Which framework move landed sharpest: StoryBrand-tuned for the help section, Drucker's feedback analysis for strengths, anti-branding for voice, or the visual-steal for chrome? Which one made the site noticeably more "me"?
-
-Q2: Where did you produce the most generic version, and what specific context fixed it?
-
-Q3: Tell me one or two rules from the current personal-brand-generation.md that you (Claude) think are weak, missing, or wrong based on what we actually did today. Name them concretely. Quote the rule, say what's off, ask if I agree.
-
-After my answer to Q3, UPDATE personal-brand-generation.md. Integrate the retro into the existing file (sharpen weak rules, add what's missing, remove what turned out wrong). Don't append a "retro notes" section; rewrite the file as the better version. When you're done, tell me in 2–3 lines what changed and why: the rules added, the rules sharpened, the rules removed. I shouldn't have to open the file to know.
+When you're done, tell me in 2–3 lines: the rules sharpened, the rules added, the rules removed, and why. Add a couple more lines if you spotted something the rules should cover but you want me to weigh in on first.
 ```
 
 

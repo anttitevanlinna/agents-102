@@ -2,7 +2,7 @@
 
 **Time:** 8 minutes.
 
-Think back an hour. *Context* was a word someone might put on a slide. You had a vague sense it mattered. Now it's something you can point at — the bit you added in Phase 2 that turned a generic About page into a site your neighbour recognised as yours. You felt it move.
+Think back an hour. *Context* was a word someone might put on a slide. You had a vague sense it mattered. Now it's something you can point at — the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.
 
 That's a small thing. It's also the whole thing.
 

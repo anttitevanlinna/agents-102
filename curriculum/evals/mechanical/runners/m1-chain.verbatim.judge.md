@@ -10,7 +10,10 @@ You are grading an Actor subagent that executed AE101 Module 1 end-to-end (3 exe
 - **Actor scrollback:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-scrollback.md`.
 - **Prompt files:** `/tmp/prompts/orient-and-introspect/prompt-00{1,2}.txt`, `/tmp/prompts/fix-tests-first/prompt-001.txt`, `/tmp/prompts/compound-and-close/prompt-00{1,2,3}.txt`.
 
-## How to read the transcript
+## Tooling
+
+- Use `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt-file> <scrollback>` for V-assertions (handles blockquote normalization — strips leading `> ?` per line before substring comparison). Required for multi-line prompts; raw `grep -F` or Python `in` fails when the Actor pastes a multi-line prompt as a markdown blockquote.
+- `jq` and `grep -o '"file_path":"[^"]*"'` on the transcript for Read-call inspection:
 
 ```
 jq -c 'select(.type=="assistant") | .message.content[] | select(.type=="tool_use") | {name: .name, input: .input}' <path>
@@ -23,12 +26,14 @@ Binary PASS / FAIL with evidence. Every fail quotes the evidence.
 
 ### Verbatim round-trip (the regression test)
 
-- **V1.** `prompt-001.txt` from orient-and-introspect appears verbatim somewhere in the actor scrollback (Python: full file text `in` scrollback text). Quote the 40-char prefix as evidence.
-- **V2.** `prompt-002.txt` from orient-and-introspect appears verbatim.
-- **V3.** `prompt-001.txt` from fix-tests-first appears verbatim.
-- **V4.** `prompt-001.txt` from compound-and-close appears verbatim. This is the prompt whose gitignore instruction was tightened in 9f575c8 — confirm the tightened line ("Ensure `.claude/settings.local.json` is gitignored — if this repo's local `.gitignore` doesn't cover it, add it.") is present.
-- **V5.** `prompt-002.txt` from compound-and-close appears verbatim.
-- **V6.** `prompt-003.txt` from compound-and-close appears verbatim.
+For each V-check, run `bin/verbatim-check.sh <prompt> <scrollback>`. Exit 0 = PASS, exit 1 = FAIL. Quote the 40-char prefix the helper prints. Do NOT use raw `grep -F` or Python `in` — those fail on multi-line blockquote-wrapped prompts.
+
+- **V1.** `prompt-001.txt` from orient-and-introspect via `verbatim-check.sh`.
+- **V2.** `prompt-002.txt` from orient-and-introspect via `verbatim-check.sh`.
+- **V3.** `prompt-001.txt` from fix-tests-first via `verbatim-check.sh`.
+- **V4.** `prompt-001.txt` from compound-and-close via `verbatim-check.sh`.
+- **V5.** `prompt-002.txt` from compound-and-close via `verbatim-check.sh`.
+- **V6.** `prompt-003.txt` from compound-and-close via `verbatim-check.sh`.
 
 ### Chain state
 
@@ -43,8 +48,7 @@ Binary PASS / FAIL with evidence. Every fail quotes the evidence.
 - **A6.** Non-empty. Contains at least one rule referencing a concrete moment from Ex1 or Ex2. Quote the sentence. A generic rule that could appear anywhere without this session is NOT evidence of compounding — fail it.
 - **A7.** No `[BRACKET]` placeholders. `grep -n '\[[A-Z]' <scratch>/CLAUDE.local.md`.
 - **A8.** `<scratch>/.gitignore` contains `CLAUDE.local.md` (or equivalent pattern that matches it) **OR** `git check-ignore <scratch>/CLAUDE.local.md` succeeds via a global excludesFile. **This tests the gitignore prompt fix (9f575c8).** If only global works, FLAG — the tightened prompt should have driven a local .gitignore edit on a fresh student laptop.
-- **A9.** `<scratch>/.claude/settings.local.json` is valid JSON.
-- **A10.** JSON contains `additionalDirectories` array with `/Users/anttitevanlinna/Projects/agents-102/content`.
+- **A9.** `<scratch>/.claude/settings.local.json` is valid JSON. (The 2026-04-27 prompt edit removed the `additionalDirectories` step that earlier versions drove. The file may be untouched — `{}` is acceptable.)
 
 ### Summary quality
 

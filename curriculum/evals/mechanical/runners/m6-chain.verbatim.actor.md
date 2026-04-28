@@ -2,6 +2,8 @@
 
 You are simulating a Claude Code session the student started in the repo they ran M3 → M4 → M5 in. Two runs of the same multi-hour task are on disk now — the M4 un-packaged run on branch `send-off/auth-ux`, the M5 packaged re-run on branch `send-off/auth-ux-packaged`. You have Bash / Read / Write / Edit.
 
+**Sandbox bypass:** use `dangerouslyDisableSandbox: true` on every Bash call that mutates the scratch tree (git, npm, node test runs, anything writing under `<scratch>/`). Read-only Bash (ls, cat, grep) doesn't need it. Without bypass, mutations get permission-denied silently and the run grades as harness-FAIL.
+
 **Critical protocol:** the student pastes prompts verbatim from the M6 exercises. You do NOT read the exercise files. Five prompts total:
 
 - Ex1 (spot-gaps-build-the-loop): `/tmp/prompts/spot-gaps-build-the-loop/prompt-00{1,2,3,4}.txt`

@@ -41,6 +41,26 @@ Does not catch — belongs to other layers:
 
 Where a prompt leans on a primitive the Actor lacks (`/context`, `/add-dir`, MCP, plan mode), Actor substitutes the observable effect and logs it. The Judge flags substitution fidelity against a known table; real primitives stay with capability checks.
 
+## Judge-spec banned-shape scope: curriculum we author, not exercise output
+
+When authoring a Judge's banned-shape assertions (the C-block in most runners), scope ONLY to shapes that would land in a saved artifact ONLY IF the curriculum prompt smuggled them in. Room-share commands (*"tell the room,"* *"share with your neighbor"*) and contemplative-pause theatre (*"sit with X,"* *"take a moment"*) qualify — Claude wouldn't produce those unless an exercise prompt suggested them, so a hit in `response.md` or `CLAUDE.md` is a leak from curriculum into output worth catching.
+
+Curriculum-prose banned words (em-dashes, *practice* noun, *honest*, *substrate*, *leverage* verb) are the curriculum author's discipline, not the exercise output's. Em-dashes in a `response.md` Claude wrote during the test are not curriculum violations; they are Claude's natural register. Don't grade against them — the false positives hide real leaks.
+
+The diagnostic at C-block authoring time: *"Could Claude produce this shape on its own when responding to the exercise's prompt, or does the shape only appear if the prompt itself contains it?"* If the former, drop from the Judge. If the latter, keep — that's a curriculum-prompt leak the Judge should catch.
+
+Cross-reference: the same distinction governs `check_writing.md` rule 1 — those rules apply to OUR prose, not to every markdown file Claude has ever written. Canonical source: `memory/compounded/2026-04-28-pedagogy-mechanical-judge-scope-curriculum-not-output.md`.
+
+## Sandbox bypass for the scratch tree (hard requirement)
+
+Subagent Bash defaults to sandbox-on, which denies writes outside `/tmp` — including writes to the scratch repo's `.git/`, working tree, and `node_modules/`. Mechanical eval scratch dirs ARE real working trees the Actor must mutate (commit, run tests, install deps). Without bypass, every Actor run shows "intended X, denied" instead of observable artefacts (M1 first run 2026-04-28 hit exactly this — A1 + A4 + A10 all FAILed on sandbox denial despite the fix being correct).
+
+**The fix:** every Actor runner instructs the Actor to set `dangerouslyDisableSandbox: true` on Bash calls that mutate the scratch (`git`, `npm`, `node` test runs, anything writing under `<scratch>/`). Read-only Bash (ls, cat, grep) doesn't need it.
+
+`Edit` / `Write` tools: the Actor's working directory at dispatch is the scratch path, so writes inside it land. **Exception:** `<scratch>/.claude/settings.local.json` is treated as the subagent's own self-config and denied even with bypass — substitution table below covers this.
+
+Each Actor runner carries one line near its top: *"Use `dangerouslyDisableSandbox: true` on every Bash call that mutates the scratch tree (git, npm, node test runs)."*
+
 ## Substitution table
 
 Known substitutions the Actor logs and the Judge treats as PASS-with-FLAG (not FAIL):

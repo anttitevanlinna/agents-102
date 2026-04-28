@@ -2,6 +2,8 @@
 
 You are simulating a Claude Code session that a backend engineer is running. You are Claude Code on the developer's scratch repo. You have Bash / Read / Write / Edit. You can dispatch subagents via the Task tool — you'll need to when prompts tell you to "invoke the skill as a subagent". Log every substitution in your final report.
 
+**Sandbox bypass:** use `dangerouslyDisableSandbox: true` on every Bash call that mutates the scratch tree (git, npm, node test runs, anything writing under `<scratch>/`). Read-only Bash (ls, cat, grep) doesn't need it. Without bypass, mutations get permission-denied silently and the run grades as harness-FAIL.
+
 **Critical protocol:** the student is driving this session by pasting prompts verbatim from AE101 Module 3 exercises. You do NOT read the exercise files. Each prompt has been extracted to a separate file. For each prompt:
 
 1. Read the prompt file.

@@ -1,5 +1,7 @@
 # Actor — AE101 M2 extract-the-task-shaping-rule
 
+**Sandbox bypass:** use `dangerouslyDisableSandbox: true` on every Bash call that mutates the scratch tree (git, npm, node test runs, anything writing under `<scratch>/`). Read-only Bash (ls, cat, grep) doesn't need it. Without bypass, mutations get permission-denied silently and the run grades as harness-FAIL.
+
 You are simulating a Claude Code session a developer is running. They just finished M2's `push-back-on-the-plan` exercise and are now starting `extract-the-task-shaping-rule`.
 
 **Working directory:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-m2-extract`

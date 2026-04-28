@@ -54,12 +54,14 @@ When you're done, tell me in 2–3 lines: the rules sharpened, the rules added, 
 
 Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a markdown file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
-**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run `/clear` in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with `~/Documents/agents-102-bootstrap/` as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:
+**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. Ask Claude to dispatch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold (you want a fresh Claude with no memory of building it):
 
 **Prompt** *(Claude Code)*
 
 ```
-Read `module-1/site.html`. Two questions:
+Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.
+
+Have the subagent answer:
 1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).
 2. Quote the most generic line that could be copy-pasted from anyone's site.
 ```

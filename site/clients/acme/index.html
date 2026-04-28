@@ -1925,9 +1925,11 @@ Then overwrite `module-1/personal-brand-generation.md` with the integrated versi
 When you&#39;re done, tell me in 2–3 lines: the rules sharpened, the rules added, the rules removed, and why. Add a couple more lines if you spotted something the rules should cover but you want me to weigh in on first.
 </code></pre>
 <p>Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn&#39;t match your sense of the work. That&#39;s the pattern: every time you do work like this and reflect, the rules file gets sharper. <strong>Compound interest on a markdown file.</strong> This is the move you&#39;ll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.</p>
-<p><strong>Then, Claude as cold critic.</strong> Now that you&#39;ve reflected on your own experience, get an unbiased verdict. <span class="rt-code">Run <code>/clear</code> in your session to wipe the conversation (you want a fresh Claude with no memory of building the site)</span><span class="rt-cowork">Open a fresh Cowork task with <code>~/Documents/agents-102-bootstrap/</code> as the working folder (you want a fresh Claude with no memory of building the site)</span>. Then:</p>
+<p><strong>Then, Claude as cold critic.</strong> Now that you&#39;ve reflected on your own experience, get an unbiased verdict. Ask Claude to dispatch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold (you want a fresh Claude with no memory of building it):</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read `module-1/site.html`. Two questions:
+<pre><code>Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.
+
+Have the subagent answer:
 1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).
 2. Quote the most generic line that could be copy-pasted from anyone&#39;s site.
 </code></pre>

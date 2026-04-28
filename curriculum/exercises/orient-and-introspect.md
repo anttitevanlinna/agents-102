@@ -45,8 +45,9 @@ The window has shown itself. Hand off to the fix.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §2 lead-in confirmed/added)
-- compendium-audited 2026-04-27 (this cycle: action lead-ins added above prompt blocks per check_prompts §2; M1 audit GO)
+**Quality:** mechanical-tested 2026-04-28
+- compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §2 lead-in confirmed/added; this cycle: action lead-ins added above prompt blocks per check_prompts §2; M1 audit GO)
+- mechanical-tested 2026-04-28 (curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md @ 79adc5a PASS — 6/6 V via verbatim-check.sh, A1–A19 PASS, H1–H5 PASS, prompt-source audit P1–P5 + E1–E7 clean)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Time:** 15–20 min inside M1's 2h slot. First of three exercises on the same bug / same repo.

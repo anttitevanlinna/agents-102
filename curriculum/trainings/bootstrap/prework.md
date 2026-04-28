@@ -82,7 +82,7 @@ I just attached a screenshot of my calendar week view to this message. Read it, 
 
 </div>
 
-*Proof: Claude can read your real work data (in whichever shape you can provide it) and produce a useful summary.*
+*Proof: Claude can read your real work data and save a useful summary on your machine.*
 
 Stuck on the connector or want specific click-paths? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
 

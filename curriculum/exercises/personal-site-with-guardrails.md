@@ -54,12 +54,12 @@ Claude walks you through the five tuned beats. Answer each in your own words; do
 
 **Phase 3. Strengths.**
 
-Your strengths shape how the help section sounds. List 3-5 in one line each — Claude takes the rest from there.
+Your strengths shape how the whole site sounds. List 3-5 in one line each — Claude takes the rest from there.
 
 **Prompt** *(Claude Code)*
 
 ```
-Use the strengths below as voice-shaping context for the help section — letting them change what the help section CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.
+Use the strengths below as voice-shaping context for the site — letting them change what the page CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.
 
 Then regenerate `module-1/site.html`.
 
@@ -67,7 +67,7 @@ My 3-5 strengths are:
 ```
 
 
-Read the regenerated site. Same StoryBrand spine, sharper because the help section now sounds like someone with your specific strengths.
+Read the regenerated site. Same StoryBrand spine, sharper because the site now sounds like someone with your specific strengths.
 
 **Phase 4. Anti-branding (the mirror).**
 
@@ -86,13 +86,15 @@ Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my per
 3. Be the opposite — but always speak in the positive. Don't lead with "I don't do X"; lead with what I do instead.
 4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
 
-After step 4, regenerate `module-1/site.html` — keep me as the protagonist, keep the StoryBrand-tuned help section, keep the strengths shaping the voice. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
+After step 4, regenerate `module-1/site.html`. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
+
+Then take maximum freedom on presentation: rethink the page so a colleague lands on it and instantly wants to spend more time with you. You decide structure, ordering, sections, visual rhythm — whatever makes the page actually land. Keep the substance (StoryBrand-tuned help, strengths shaping the voice, anti-branding edge); free hand on the rest.
 
 My hate list:
 ```
 
 
-Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the help section sounds. That's the move.
+Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the whole site sounds. That's the move.
 
 **Phase 5. Look back.**
 

@@ -36,10 +36,10 @@ Why a snake game? Because you can tell if it works. No ambiguity (either the sna
 **Prompt** *(Claude Code)*
 
 ```
-Build me a snake game as a single HTML file. Save it as snake.html.
+Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
 ```
 
-Claude writes the file. Open `snake.html` in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.
+Claude writes the file. Open `prework/snake.html` in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.
 
 Keep the file. It's yours.
 
@@ -56,7 +56,7 @@ Two paths. Pick the one that matches what you saw.
 **Prompt** *(Claude Code)*
 
 ```
-List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
+List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.txt`.
 ```
 
 **Path B (no connector, or you're not sure).** Default to this one if in doubt.
@@ -68,7 +68,7 @@ Take a screenshot of your calendar week view<span class="rt-cowork"> and attach 
 **Prompt** *(Claude Code)*
 
 ```
-I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
+I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.txt`.
 ```
 
 </div>
@@ -77,7 +77,7 @@ I just took a screenshot of my calendar week view. Find the most recent screensh
 **Prompt** *(Claude Code)*
 
 ```
-I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as meetings.txt.
+I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.txt`.
 ```
 
 </div>

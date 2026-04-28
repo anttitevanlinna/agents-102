@@ -3,13 +3,13 @@
 
 ---
 
-Close the laptop for a second. Look at what you just shipped.
+Look at what you just shipped.
 
-Your second authored skill. Shape decided by what two runs of the same task actually taught. Not by a template. For most of you it came out as a sharpened verifier. For some as a fresh judge. For a few as a gap-finder that reads the next agent-produced artefact for the shape of failure you saw at M5. Different shapes, same move. The thing you built reads an agent's work and decides whether it meets a bar.
+The session-shaper you authored. Shape decided by what two runs of the same task actually taught. Not by a template. For most of you it came out as a sharpened verifier. For some as a fresh judge. For a few as a gap-finder that reads the next agent-produced artefact for the shape of failure you saw at M5. Different shapes, same move. The thing you built reads an agent's work and decides whether it meets a bar.
 
 That thing has a name.
 
-## One word
+## Eval
 
 Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 
@@ -24,8 +24,6 @@ Naming it matters because the word is what lets you compose. Once you see the ve
 Darragh Curran runs engineering at Intercom. In April he published a post called *"2x — nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The org is 500 people.
 
 Read that as your verifier from M5, scaled. Same primitive. An automated check that says *this meets the bar.* Placed in CI, fed by convention, trusted by a human team that set the thresholds. The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
-
-That is not an aspirational vendor story. That is a post from the person running the org, with numbers.
 
 ## The primitive that runs on cadence
 
@@ -47,15 +45,7 @@ That stance survives every model change. Practitioner fluency lives in the stanc
 
 ## Where this goes next
 
-Two bridges. Which one fits depends on where you're going next.
-
-**Core close.** You walk out of M6 holding the move. Monday morning, pick one multi-hour task from your real backlog. The one you have been avoiding because it is too big to hold in your head. Assemble the reference. Open a `plan.md` the agent owns. Point a verifier at the output. Run. Read the artefact. Name the gap. Encode. That is the training continuing under your own steam.
-
-**Into M7.** If the cohort continues to deliberation, the agent you built across six modules is about to meet other agents. Each engineer brings their stack: their rules, their memory, their skills, their kit. The room deliberates live on a real engineering problem the CTO is actually sitting on. What makes that deliberation work is what you raised together over six modules. The kit is already in the room.
-
 **Agents that build agents.** That is the flywheel. It starts with what you encoded today.
-
-Either way, the loop has a name. Close the laptop. Monday's task is waiting.
 
 <!-- maintainer -->
 

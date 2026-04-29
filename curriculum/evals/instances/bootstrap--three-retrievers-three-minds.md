@@ -1,8 +1,14 @@
-# Eval Instance — Bootstrap / Three retrievers, three minds exercise
+# Eval Instance — Bootstrap / Three retrievers, three minds exercise (HISTORICAL — split 2026-04-29)
 
-Filled-in instance of `curriculum/evals/exercise.md` for the Module 3 (Multi-Agent Systems) exercise in the Bootstrap training.
+> **Status:** This instance evaluated the combined `three-retrievers-three-minds.md` exercise. On 2026-04-29 that exercise was split into two:
+> - `curriculum/exercises/three-retrievers-one-curator.md` (Phase 1 — retrieval + curation)
+> - `curriculum/exercises/three-minds-one-synthesis.md` (Phase 2 + Close — three minds + synthesis)
+>
+> This file is retained as historical evidence of the prior eval runs (Apr 18–19, 2026-04-25 sim). Future sim/eval runs against the split form should produce two new instance files at the canonical paths. Findings below still inform the split files where relevant — particularly the pass-3 mood correction (unease, not quality), which holds for the *Three minds, one synthesis* Close beat.
 
-**Target exercise file:** `curriculum/exercises/three-retrievers-three-minds.md`
+Filled-in instance of `curriculum/evals/exercise.md` for the (pre-split) Module 3 exercise in the Bootstrap training.
+
+**Target exercise file (historical):** `curriculum/exercises/three-retrievers-three-minds.md` *(deleted 2026-04-29 — see split files above)*
 
 **Eval runs:**
 - 2026-04-19 (pass 3 — mood correction) — strategic reframe from Antti: Module 3's teaching moment is *unease*, not quality. The 7.5/10 synthesized-answer feeling is the *target*, not a shortfall; Module 5 picks up the doubt as its own curriculum. Edits applied: (a) Phase 1 URL spot-check instruction (added in pass 2) **reverted** — checking resolves doubt; Module 3 is about sustaining it; (b) Close rewritten from "where did it paper over?" + coordination-rule.md fix to "does this feel right?" + wonder.md note — questions whether the output is 100% right, explicitly does not resolve, names Module 5 as the return. Artifact renamed `coordination-rule.md` → `wonder.md`. This pivots the exercise's ending mood from diagnostic-and-fix to plain-uncertainty-held. Any future eval on Module 3 must evaluate against this mood; an exercise that feels "clean" is failing the new contract.

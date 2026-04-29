@@ -20,7 +20,9 @@ Last module you were the librarian. You searched Confluence, pulled from OneDriv
 
 [Exercise: Name your crux](exercises/name-your-crux.md)
 
-[Exercise: Three retrievers, three minds](exercises/three-retrievers-three-minds.md)
+[Exercise: Three retrievers, one curator](exercises/three-retrievers-one-curator.md)
+
+[Exercise: Three minds, one synthesis](exercises/three-minds-one-synthesis.md)
 
 [Lecture: When to split an agent (and how)](lectures/when-to-split-an-agent.md)
 
@@ -69,7 +71,7 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 **Quality:** draft 2026-04-29 (compendium audit run 2026-04-29 returned APPROVE-WITH-TODOS — runtime-fork pass applied; mood/LO/banned-word pass; not yet sim-passed or mechanical-tested)
 
-**Module time (trainer):** ≈ 70 min total. Setup + Crux opener ~6 min, three-retrievers main exercise 50 min, *When to split* lecture 8–10 min, Debrief ~5 min. The exercise's own "50 min" label is exercise-only; don't schedule the whole module against that number.
+**Module time (trainer):** ≈ 70 min total. Crux opener (with question) ~8 min, *Three retrievers, one curator* ~28 min, *Three minds, one synthesis* ~22 min (incl. Close), *When to split* lecture 8–10 min, Debrief ~5 min. Each exercise's own time label is exercise-only; schedule the whole module against the sum.
 
 **Plug Points (trainer):**
 
@@ -82,7 +84,7 @@ Memory is a working artefact, sharpened by what it bumps into.
 > PLUG POINT: The three synthesizer stances.
 > Default: backward-from-end planner, Martin's *what-would-have-to-be-true* experimenter, counterintuitive reframer (the Rory seat). Students can swap the Rory seat for another sharp stance if one fits their challenge better — e.g., a premortem voice (Kahneman/Klein) for risk-heavy challenges, a JTBD interviewer voice for customer-facing ones. Keep three; keep them genuinely different.
 
-**Capability check status:** confirmed (per `three-retrievers-three-minds.md` § *Capability notes (confirmed)*). Multi-window / multi-session on the same working directory works on CLI (four terminal windows) and desktop (four sessions); 3 concurrent Cowork tasks on the same connected folder confirmed running 2026-04-29 (Antti); subagent launch phrasing in Phase 2 (*"spawn three subagents in parallel"*) confirmed working in current Claude Code. Re-verify only if Claude Code's session-isolation or subagent-spawn semantics change.
+**Capability check status:** confirmed (per `three-retrievers-one-curator.md` + `three-minds-one-synthesis.md` § *Capability notes (confirmed)*). Multi-window / multi-session on the same working directory works on CLI (four terminal windows) and desktop (four sessions); 3 concurrent Cowork tasks on the same connected folder confirmed running 2026-04-29 (Antti); subagent launch phrasing (*"spawn three subagents in parallel"*) confirmed working in current Claude Code. Re-verify only if Claude Code's session-isolation or subagent-spawn semantics change.
 
 **Frameworks riffed on:**
 - Rumelt's strategy kernel (default synthesizer spine) — M3's opening *Name your crux* exercise produces the diagnosis seed; the synthesizer's Rumelt prompt builds the policy and actions on top of it

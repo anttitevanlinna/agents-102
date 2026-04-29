@@ -188,7 +188,7 @@ Curriculum content describes a real tool that ships on a real cadence. Getting t
 
 **Architectural rules — canonical home is here:**
 
-1. **Training platform = Claude Code (CLI + Desktop) + Cowork — both current as of 2026-04-25.** Not Claude.ai (chat). Bootstrap is dual-runtime: same prompts, same artifacts, same `.plugin` files install in either. Differences live in (a) install-step UI language and (b) terminology (*subagent* in Code, *agent* in Cowork). For the runtime split, see `curriculum/reference/claude-code-for-engineers.md` § *Claude Cowork — same engine, different surface*. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via the prompt (*"Enable plan mode"*), the desktop mode dropdown, or Shift+Tab cycle. For Cowork: the *Cowork* tab in Claude Desktop, *Customize → Browse plugins*, *Save plugin* button after authoring, and the connected-folder model in place of CWD.
+1. **Training platform = Claude Code (CLI + Desktop) + Cowork — both current as of 2026-04-29.** Not Claude.ai (chat). Bootstrap is dual-runtime: same prompts, same artifacts, runtime-specific skill install surfaces. Differences live in (a) install-step UI language and (b) terminology (*subagent* in Code, *agent* in Cowork). For the runtime split, see `curriculum/reference/claude-code-for-engineers.md` § *Claude Cowork — same engine, different surface*. Describe Claude Code surfaces: the **+** button next to the prompt, **Settings → Connectors**, the **Schedule** sidebar, `/loop`, plan mode via the prompt (*"Enable plan mode"*), the desktop mode dropdown, or Shift+Tab cycle. For Cowork: the *Cowork* tab in Claude Desktop, *Customize → Skills → New → Create with Claude*, and the connected-folder model in place of CWD.
 
 2. **Cloud/remote features carry a Git dependency — out of scope.** Remote tasks (Routines) run in Anthropic's cloud, but the runner needs a cloud source for the working directory — typically a cloud Git repo. Our training uses a local training directory (the default path lives in `.claude/skills/self-study/SKILL.md` — source of truth). State cloud features exist; do not present them as a realistic upgrade path inside a business-audience exercise.
 
@@ -215,7 +215,7 @@ How participants receive and work with training material (site + local files). D
 
 **The shapes:**
 
-1. **Site** (curriculum content) — password-protected static URL per customer, co-branded. The same renderer we use locally (`site/curriculum.html`) hosted for the cohort. Prework, lectures, and exercises are read here. Download links for per-module zips live here too. Never ask participants to clone Git.
+1. **Site** (curriculum content) — password-protected static URL per customer, co-branded. The same renderer we use locally (`site/curriculum.html`) hosted for the cohort. Prework, lectures, and exercises are read here. The one Bootstrap starter download lives here too. Never ask participants to clone Git.
 
 2. **Working directory on the participant's laptop** — one folder for the whole training, created during prework. The default path (`~/Documents/agents-102-bootstrap/`) is defined in `.claude/skills/self-study/SKILL.md`; everything below refers to it generically as the *training directory*.
 
@@ -225,10 +225,12 @@ How participants receive and work with training material (site + local files). D
    ├── memory/                        ← cross-module (Module 2 onward)
    ├── agents/                        ← cross-module, custom agent files
    ├── sources/                       ← cross-module, raw company material
+   ├── outputs/                       ← cross-module audit / report results; first appears at Module 4
    ├── prework/                       ← open this for prework (snake.html, meetings.txt)
-   ├── module-1/                      ← open this for Module 1 — zero context, Debrief lands a CLAUDE.md here
-   ├── module-2/                      ← Module 2 prework writes challenge.md here
+   ├── module-1/                      ← created when Module 1 writes outputs
+   ├── module-2/                      ← created when Module 2 writes outputs
    ├── ...
+   ├── module-4/policies/             ← policy reference files installed in prework
    └── module-8/
    ```
 
@@ -238,22 +240,24 @@ How participants receive and work with training material (site + local files). D
 
    **Module 2 also starts with zero context at the root.** Training-dir root is empty of rules when Module 2 begins — no `CLAUDE.md`, no READMEs in `memory/` / `sources/` / `agents/`. Rules that matter for the exercise (sources-first, citation, distinctive-not-descriptive, topic-page shape) live in the Phase 1 prompts the student pastes. The Module 2 Debrief produces the wider root `CLAUDE.md` — written by Claude from session evidence, pushed back on by the student. Same pattern as Module 1's scoped rules file, one level up. Do NOT ship a pre-written CLAUDE.md at the root; it violates the "student writes their own rules" principle Module 1 teaches, and prior versions that shipped a 60-line pre-authored file caused agents to auto-execute behavior the student never authorized.
 
-   Cross-module artifacts (`memory/`, `agents/`, `sources/`, root `CLAUDE.md`) live at the root — everything Module 2 onward reads from. Per-module working files live inside `module-N/`.
+   Cross-module artifacts (`memory/`, `agents/`, `sources/`, `outputs/`, root `CLAUDE.md`) live at the root — everything Module 2 onward reads from. Per-module working files live inside `module-N/`.
+
+   **The `outputs/` convention** (introduced at Module 4): when a prompt produces a result that describes the cross-module system rather than the current module's work product, write it to `outputs/<name>.md`. M4's audit reports are the canonical case (`outputs/policy-report.md`, `outputs/security-report.md`); M5 / M6 follow the same shape if a prompt produces a system-wide artifact. Per-module evidence and inputs (e.g. `module-4/policies/` reference files, `module-4/skills/security-audit/` skill source, `module-3/stances/` per-run output) stay in `module-N/`. Latest-only — re-runs overwrite, git tracks history. The diagnostic at prompt-write time: *does this artifact describe the cross-module system or the current module's working state?* If cross-module, `outputs/`. If module-specific, `module-N/`.
 
    **Not inside a synced folder** (OneDrive / Google Drive / Dropbox). Claude writes files faster than sync daemons reconcile — conflict copies will happen. Local only during the training.
 
-3. **Per-module zip — only where needed.** Some modules ship no scaffold (pure continuation on existing state); others ship files that drop into the tree. A zip is a patch, not a project.
+3. **One prework starter, no per-module packs.** Bootstrap installs all trainer-provided working material during prework. Do not design module-day downloads or zip patches. If a future module needs trainer-provided reference material, add it to the prework starter at the stable path the exercise will use. Empty future module folders are optional; ship only folders/files that introduce material or reduce real student friction.
 
-**Rules for zip-shipped scaffolds:**
+**Rules for the prework starter:**
 
-- **Drop-in, idempotent.** Unzipping the same zip twice produces the same tree. Files land at stable paths the exercise text names verbatim.
-- **Never clobber student work.** Don't ship a `CLAUDE.md` or agent file with the same name as one the student has been shaping. If a module needs a reference file, ship it as `CLAUDE-module-N-reference.md` or similar, and let the student decide what to integrate.
-- **Scoped to its module's artifacts.** Module 2 ships three empty folders only — `memory/`, `sources/`, `agents/` (each with a `.keep` placeholder). No `CLAUDE.md`, no READMEs. Rules arrive through Phase 1 prompts; the root `CLAUDE.md` lands at Debrief, written by Claude from session evidence. Module 4 ships `skills/<skill-name>.md` files (additive). Don't put a module's working files inside another module's folder.
-- **Named clearly.** Zip filename encodes module + purpose: `module-2-starter.zip`, `module-2-sources-batch-2.zip`, `module-4-compliance-skills.zip`. The exercise text names the zip.
+- **Installed once, idempotent.** Extracting the starter twice produces the same tree. Files land at stable paths the exercise text names verbatim.
+- **Never clobber student work.** Don't ship a `CLAUDE.md`, agent file, judge file, report, or other artifact the student is meant to create or compound.
+- **Reference material only.** Module 4 can ship `module-4/policies/*.md` because those files are source material the student runs raw. Module 4 must not ship a prebuilt security skill; the student authors it during the exercise.
+- **No empty-folder theater.** Keep the starter small. Include `prework/`, `.claude/skills/self-study/`, and cross-module homes (`memory/`, `sources/`, `agents/`) because the student uses them early. Include module folders only when they contain shipped reference material, such as `module-4/policies/`.
 
 **The root `CLAUDE.md` is a living file — written by the student, not shipped.** It's *created* in Module 2's Debrief (Claude writes the first version from session evidence, student pushes back) and then *grows* through every subsequent module's Debrief (Claude reviews the session, rewrites in place, integrates-don't-appends; student reads the 2–3 line summary of what changed). No pre-authored CLAUDE.md ever lands in the training-dir root; that violates the "student writes their own rules" principle and causes agents to auto-execute behavior the student never authorized. Module 1's Debrief produces a separate, scoped `module-1/CLAUDE.md` that stays in `module-1/` and doesn't touch the root.
 
-**Trainer side:** scaffolds are maintained in Git inside the Agents 102 repo (`curriculum/scaffolds/<module-slug>/` is the expected location — to be created as scaffolds materialize). Empty folders use `.keep` placeholders so zip/unzip preserves structure; don't ship per-folder README.md files (working-directory instructions belong at the transition points in curriculum content — prework Step 0, the Module 2 Setup line, etc. — not duplicated per folder). Export zips per cohort, host on the customer's site or SharePoint. Participants never see Git.
+**Trainer side:** the Bootstrap starter is maintained in Git at `curriculum/scaffolds/training-starter/`. Policy reference source material can also have maintainer copies under module-specific scaffold folders, but participant delivery still happens through the single prework starter. Empty folders use `.keep` placeholders only when the empty folder itself is part of the prework promise. Working-directory instructions belong at transition points in curriculum content — prework Step 0, the Module 2 Setup line, etc. — not duplicated per folder. Export the starter per cohort, host on the customer's site or SharePoint. Participants never see Git.
 
 ## Classroom delivery — default mode
 

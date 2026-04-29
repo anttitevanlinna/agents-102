@@ -36,7 +36,7 @@ The three thinking-disciplines you applied in Module 7 on your own sharing probl
 - **Org capability**: twenty people (or one student's full Module 1 through Module 7 stack plus Teacher Claude's orchestration) just produced a strategy kernel no consultant could deliver, because it's grounded in your company's own files.
 - **The three predictable walls after Bootstrap**: data access, runtime platform, discoverability. The kernel you just wrote names which wall bites first.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed plugins. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the Module 2 Debrief move.
+- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed skills. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the Module 2 Debrief move.
 - **Grounding when agents read agents.** Every agent publishes what it has and what it doesn't: a context manifest. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
 
 ## Debrief
@@ -72,7 +72,7 @@ The kernel you just produced is a set of assumptions dressed as a policy. Label 
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create
-- **Materials (trainer):** demo agent that generates another agent (for the short lecture); shared-context mechanism for the joint Diamond exercise (shared filesystem + naming convention for Code, Cowork-native for Cowork — both real now); domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-disciplines — Rumelt on *crux*, Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are named inline in M7 and re-applied inline here. **No pre-shipped plugins anywhere in Bootstrap** (per Antti 2026-04-25 — M4 is the canonical plugin-authoring module).
+- **Materials (trainer):** demo agent that generates another agent (for the short lecture); shared-context mechanism for the joint Diamond exercise (shared filesystem + naming convention for Code, Cowork-native for Cowork — both real now); domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-disciplines — Rumelt on *crux*, Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are named inline in M7 and re-applied inline here. **No pre-shipped strategy skills anywhere in Bootstrap** (M4 is the canonical personal-skill authoring module).
 - **Plug points:** CTO/sponsor present; company's own strategy question feeds into all agents
 
 **Plug Points (trainer):**
@@ -100,7 +100,7 @@ Open questions under discussion:
 - Runtime — Cowork is live; bridge design only needed if a customer's environment lags.
 - Self-study variant — solo student can't gather a room of real personal agents; solo version uses persona-stand-ins drawn from the student's own agent stack.
 - How humans intervene without breaking the deliberation flow.
-- Whether the orchestrator-agent is described inline in a prompt or generated on-the-fly (fitting the flywheel thesis). **Not** as a pre-shipped plugin — strict rule.
+- Whether the orchestrator-agent is described inline in a prompt or generated on-the-fly (fitting the flywheel thesis). **Not** as a pre-shipped skill — strict rule.
 - How F-Secure copyright fence interacts (they deliver their own M8).
 
 Detailed notes: `memory/project_m8_joint_panel.md`.

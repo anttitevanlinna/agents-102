@@ -18,10 +18,10 @@ The training is hands-on from minute one in either variant; the trainer's job is
 
 ## Dual-runtime — know which surface the cohort is on
 
-The training platform is **Claude Code (CLI + Desktop) + Cowork**, current as of 2026-04-25. Both surfaces install the same `.plugin` files; same prompts, same artifacts. They differ in install-step UI language and in vocabulary. Before each session, **confirm with the customer which surface their cohort is using** and adjust your narration vocabulary to match.
+The training platform is **Claude Code (CLI + Desktop) + Cowork**, current as of 2026-04-29. Same prompts, same artifacts; skill install surfaces differ. Before each session, **confirm with the customer which surface their cohort is using** and adjust your narration vocabulary to match.
 
 - **Claude Code surface (CLI or Desktop app).** Vocabulary: *subagent*, slash commands, plan mode (Shift+Tab cycle), `/loop`, `/schedule`, the **Schedule sidebar**, the **+** button next to the prompt, **Settings → Connectors**, the desktop **mode dropdown**.
-- **Cowork surface (Cowork tab in Claude Desktop).** Vocabulary: *agent* (not subagent), the **Cowork tab** in Claude Desktop, **Customize → Browse plugins**, **Save plugin** after authoring, and the **connected-folder model** in place of CWD.
+- **Cowork surface (Cowork tab in Claude Desktop).** Vocabulary: *agent* (not subagent), the **Cowork tab** in Claude Desktop, **Customize → Skills → New → Create with Claude**, skill save after authoring, and the **connected-folder model** in place of CWD.
 
 Mixing vocabularies live ("the subagent — uh, the agent —") signals you don't know the surface. Pick one before the session and stay in it. If a curriculum file uses the runtime-fork paired-divs pattern (`<div class="rt-code">` / `<div class="rt-cowork">`), the projected site auto-swaps based on the cohort's runtime — you don't have to read both.
 
@@ -82,7 +82,7 @@ The work that protects the live session.
 - **Dry-run every exercise on your demo repo, end to end.** Not skim, not partial — actually run each prompt, watch the agent do its thing, take the artifact through to its real conclusion. This is non-negotiable. The dry run gives you (a) timing calibration per phase, (b) a feel for what the agent tends to do this week, and (c) the war stories you'll use as agent-wait filler. If a demo behaves unexpectedly, flag it for the editors before the room sees it. (The curriculum file remains the source of truth; if your run differed, the curriculum is what students follow.)
 - **Stockpile filler material from the dry run.** Note specific moments worth telling the room about: where the agent surprised you, what it produced that wasn't in the curriculum, what you'd have done differently. These are the lines you'll deliver during agent waits — see "What to talk about during agent waits" below.
 - **Mentally place the conversation pauses.** Find them in the prose. Notice their rhythm. You'll read them aloud in the room.
-- **Verify your own setup.** Your Claude Code version, your installed skills/plugins, your network, your demo repo's clean state, the recap site URL bookmarked. Anything you'll switch to during the session is something the room sees; rehearse the switches.
+- **Verify your own setup.** Your Claude Code version, your installed skills, your network, your demo repo's clean state, the recap site URL bookmarked. Anything you'll switch to during the session is something the room sees; rehearse the switches.
 
 ### The demo repo
 
@@ -125,8 +125,8 @@ What NOT to fill agent waits with: filler-shaped filler. *"Soooo, while we wait.
 
 Trainings that run one module per weekly session (AE101 default) carry a context-decay cost: between sessions, the student's working memory is gone. What survives is what's on disk. Your job at the start of each non-first session is to re-anchor.
 
-- **First 5 minutes of the new session: lead a recap.** Name the artifact the room shipped last week. Name the mood the module landed in. Name the tools and state that should still be on disk (skills/plugins installed, content folder added, repo open). The curriculum will eventually carry per-module recap prompts at the top of each module; until then, you carry the recap.
-- **Verify state, don't assume it.** Ask the room to confirm their setup is intact — skills/plugins present, content folder reachable, repo clean. Surface broken state early, not mid-exercise.
+- **First 5 minutes of the new session: lead a recap.** Name the artifact the room shipped last week. Name the mood the module landed in. Name the tools and state that should still be on disk (skills installed, content folder added, repo open). The curriculum will eventually carry per-module recap prompts at the top of each module; until then, you carry the recap.
+- **Verify state, don't assume it.** Ask the room to confirm their setup is intact — skills present, content folder reachable, repo clean. Surface broken state early, not mid-exercise.
 - **End of session: name what's on disk.** Before the room logs off, tell them what they just produced and what file/folder/state they need to keep around for next week. The student who deletes their content folder or repo state between sessions is the student who can't follow Module 4.
 
 ## Self-study mode (when there's no trainer in the room)

@@ -6,7 +6,7 @@ You don't pick a quality check because someone said so. You run several on your 
 
 ## Prework
 
-[Before Module 5](exercises/module-5-prework.md). Two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: "the missing organisational check was X."
+[Before Module 5](lectures/module-5-prework.md). Two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,7 +16,11 @@ After this module, you will be able to:
 - **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
 
 ## Start here
-In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it). Today we measure what the system actually says inside its scope. Five detectors run on the same briefing, a scorer measures them against a benchmark you wrote in two minutes, and you walk out with the first judge you can defend.
+In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it).
+
+Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment — before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.
+
+Today we measure what the system actually says inside its scope. Five detectors run on the same briefing, a scorer measures them against a benchmark you wrote in two minutes, and you walk out with the first judge you can defend.
 
 [Lecture: Grounded, and five candidates to measure](lectures/grounded.md)
 
@@ -47,6 +51,12 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 
 
 Read Claude's summary. Push back where it's wrong: *"that's not why detector 3 lost, it was the citation-integrity rule"* / *"the known limit you wrote is too soft, say it."* The artifact: the sharpened `judges/groundedness-judge.md`, plus one line added to `module-5/still-uncertain.md` naming what the judge won't catch. Module 6 picks the judge up next; it's the seed of your first production eval.
+
+## Agent Actions
+
+Same for agent actions. When the action matters, do not let the agent jump straight from thought to tool. Have it propose the action first, quality-check the proposal against the judge or the relevant source, and only then apply it. Propose, double-check, apply. That is output quality becoming operational safety.
+
+Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
 ## Next
 The benchmark ran once. Five claims, five detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.

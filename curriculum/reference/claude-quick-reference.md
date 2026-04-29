@@ -10,9 +10,9 @@ Scan, find what you need, copy the prompt. For deep feature documentation, each 
 
 The exercises run on any of these three. Same engine underneath, three ways to reach it. Pick whichever fits your habits.
 
-- **Claude Code CLI (terminal)** — recommended if you live in the terminal. Smoothest flow for the lecture server, folder switches, and pasted prompts. Skills auto-load from `~/.claude/skills/<name>/SKILL.md`. Plugin envelopes are not how the CLI installs new capability — write skills directly.
-- **Claude Code Desktop app** — macOS or Windows GUI. Good alternative if you prefer a window over a terminal. Plugins install via the Desktop plugin loader (manifest plus skills inside, registered in `~/.claude/plugins/installed_plugins.json` and enabled in `~/.claude/settings.json`).
-- **Claude Cowork** — same Claude Desktop app, *Cowork* tab. Connect your training-directory folder once; same prompts, same artifacts. Best if you don't want to think about CLI plumbing. Plugins install via the *Save plugin* button in chat — one click hides the registry plumbing.
+- **Claude Code CLI (terminal)** — recommended if you live in the terminal. Smoothest flow for the lecture server, folder switches, and pasted prompts. Skills auto-load from `~/.claude/skills/<name>/SKILL.md`.
+- **Claude Code Desktop app** — macOS or Windows GUI. Good alternative if you prefer a window over a terminal. Personal skills use the same `~/.claude/skills/<name>/SKILL.md` shape.
+- **Claude Cowork** — same Claude Desktop app, *Cowork* tab. Connect your training-directory folder once; same prompts, same artifacts. Best if you don't want to think about CLI plumbing. Personal skills are created through *Customize* → *Skills* → *New* → *Create with Claude*.
 
 **Account tier:** Claude Pro or Team. Your sponsor confirms the license.
 
@@ -20,7 +20,7 @@ The exercises run on any of these three. Same engine underneath, three ways to r
 
 **What's different:**
 - **Plan mode** is a Claude Code feature (CLI and Desktop) — Cowork doesn't have a named plan mode. The exercises that use plan mode in Code phrase the same discipline differently in Cowork: *"Before you do anything, write a plan."* Same move, different invocation.
-- **Capability install affordance** differs by mode and so does the wrapping: CLI auto-loads standalone skills from `~/.claude/skills/<name>/SKILL.md` (slash form `/<name>`); Desktop and Cowork install plugins (manifest envelope wrapping skills; slash form `/<plugin>:<skill>`). Same lens content runs in both wrappings — only the install affordance and the slash-command shape differ.
+- **Skill install affordance** differs by mode: CLI/Desktop load standalone skills from `~/.claude/skills/<name>/SKILL.md`; Cowork creates personal skills through the Customize UI. Module 4 uses one `security-audit` skill across runtimes.
 - **Vocabulary** — Code says *subagent*, Cowork's UI says *agent*. The site swaps the word to match what you see on screen.
 
 **Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) cover direct install.
@@ -186,22 +186,17 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 | `CLAUDE.md` loads from connected folder | Probe Test 1 — planted secret phrase returned verbatim |
 | Parallel subagents dispatch | Probe Test 5 — three `subagents/agent-*.jsonl` files in transcript, `agentType: general-purpose` |
 | Cowork session transcripts ARE Claude Code `.jsonl` format | On-disk inspection of `~/Library/Application Support/Claude/local-agent-mode-sessions/<workspace>/<session>/local_<id>/.claude/projects/<project>/<sessionId>.jsonl` — same `parentUuid`/`type`/`message` shape, same `subagents/` subfolder |
-| Folder-local `.claude/skills/` NOT auto-registered in Cowork | Probe Test 3 — Cowork's `<available_skills>` shows only centralised namespaces (`anthropic-skills:*`, `cowork-plugin-management:*`, `operations:*`); folder-local `probe-skill` did not appear |
-| Plugin-authoring flow end-to-end | One sentence in Cowork → `cowork-plugin-management:create-cowork-plugin` skill builds `.claude-plugin/plugin.json` + `skills/<name>/SKILL.md` + README → zipped → presented as `[Install your plugin](computer://...)` link + *Save plugin* button |
-| The same `.plugin` artifact installs in Cowork AND Claude Code | `michael-jackson.plugin` authored in Cowork, installed in Code, invoked with same trigger phrase, identical output |
-| Plugin install needs new session to take effect | Verified: install → start new session → invoke. Skill registry reads at boot. |
-| Skill namespacing convention `<plugin-name>:<skill-name>` | Both runtimes; `michael-jackson:michael-jackson-voice`, `cowork-plugin-management:create-cowork-plugin` |
+| Folder-local `.claude/skills/` NOT auto-registered in Cowork | Probe Test 3 — Cowork's `<available_skills>` showed only centralised namespaces; folder-local `probe-skill` did not appear |
+| Personal-skill creation path | Antti correction 2026-04-29 — Cowork personal skills are created from Claude Desktop *Customize* → *Skills* → *New* → *Create with Claude* |
+| Skill install needs new session to take effect | Verified pattern: install/save → start new session → invoke. Skill registry reads at boot. |
 
 ### Known gaps
 
 - **No plan mode in Cowork.** Code's plan mode (Shift+P / Shift+Tab cycle / *"Enable plan mode"*) does not exist. Discipline (*think before doing*) is universal; the Cowork-mode prose teaches it through prompt phrasing rather than naming a feature.
-- **CLI is skill-only. Desktop and Cowork install plugin envelopes.** Re-confirmed live 2026-04-26 after a docs-based investigation got it wrong: plugins on Claude Code are registry-mediated (`~/.claude/plugins/installed_plugins.json` + `enabledPlugins` in settings), and the CLI does not have a one-shot install-from-folder shortcut; the simplest CLI path is to write standalone skills under `~/.claude/skills/<name>/SKILL.md` and let auto-discovery do the rest. Three install paths:
-  1. CLI (terminal) → write standalone skills to `~/.claude/skills/<name>/SKILL.md`
-  2. Code Desktop → plugin loader registers the authored plugin (no app restart needed; new session loads it)
-  3. Cowork → *Save plugin* button in chat (one click; hides the registry + enable plumbing)
-- **The slash form follows the wrapping.** CLI skills invoke as `/<skill-name>` (no namespace); Desktop and Cowork plugins invoke as `/<plugin-name>:<skill-name>`. M4 author-security-plugin authors the lens content once and lets each runtime save it in its native shape — two skills on CLI (`/security-audit-policy`, `/security-audit-agent-security`), one plugin envelope on Desktop and Cowork (`/security-audit:policy`, `/security-audit:agent-security`).
-- **Authoring is smooth on Desktop and Cowork; install affordance differs.** Cowork's *Save plugin* button is the smoothest registry-add. Code Desktop's plugin loader requires a manual step. CLI skips the install step entirely — writing the SKILL.md is the install.
-- **Folder-local `.claude/agents/` NOT auto-registered in Cowork either.** Subagents dispatch as the built-in `general-purpose` context. Custom agent definitions have to come through plugins, same as skills.
+- **CLI/Desktop skill path.** Write standalone skills under `~/.claude/skills/<name>/SKILL.md` and let auto-discovery do the rest in a fresh session.
+- **Cowork personal-skill path.** Use Claude Desktop *Customize* → *Skills* → *New* → *Create with Claude*, then save and open a new Cowork session.
+- **M4 slash form.** Module 4 uses one personal skill: `/security-audit`. The two lenses live inside that skill and are selected by the audit prompt.
+- **Folder-local `.claude/agents/` NOT auto-registered in Cowork either.** Subagents dispatch as the built-in `general-purpose` context.
 
 ### Probes — all clear (2026-04-25, Antti)
 
@@ -211,14 +206,14 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 
 ### Implications for Bootstrap content
 
-**Architecture rule (Antti, 2026-04-25):** No pre-shipped plugins anywhere. Plugin-authoring is taught **once, in M4**. Other modules carry context as inline prompts or `.md` references the student reads. The student authors plugins; we don't hand them any.
+**Architecture rule (Antti, 2026-04-29):** No pre-shipped security skill. Personal-skill authoring is taught **once, in M4**. Other modules carry context as inline prompts or `.md` references the student reads. The student authors the reusable security skill; we don't hand them one.
 
 **Same content, three install paths — but install matters in only one place.**
 - M2's `CLAUDE.md` move works in all three modes.
 - M2's plan-mode language wraps in `.rt-code` (CLI + Desktop); `.rt-cowork` teaches the same discipline through prompt phrasing.
 - M3 / M5 / M6 parallel subagent dispatch verified; *agent* / *subagent* terminology fork via switcher.
-- **M4 is the canonical lens-authoring teach.** Student authors two security lenses (policy + agent-security) via chat with Claude, installs them, invokes them. Per-runtime affordance: Cowork *Save plugin* (smoothest, plugin envelope), Desktop plugin loader (plugin envelope), CLI writes two standalone skills to `~/.claude/skills/`. Slash form follows the wrapping (`/<plugin>:<skill>` on Desktop and Cowork; `/<skill>` on CLI). Same lens content underneath.
-- M5 / M6 / M7 / M8 do **not** introduce new plugins. Context lives in inline prompts and `.md` files the student reads.
+- **M4 is the canonical lens-authoring teach.** Student authors one `security-audit` personal skill with two lenses (policy + agent-security), installs it, invokes it. Per-runtime affordance: Cowork personal-skill creation (`Customize → Skills → New → Create with Claude`), Desktop/CLI standalone skill under `~/.claude/skills/security-audit/`. Slash form: `/security-audit`.
+- M5 / M6 / M7 / M8 do **not** introduce new reusable skills. Context lives in inline prompts and `.md` files the student reads.
 - AE101 is unaffected. AE101 uses CLI + folder skills only.
 
 ### Why this section is in the Bootstrap reference, not AE101's

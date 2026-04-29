@@ -12,6 +12,8 @@ The crux and the decision question both live in `./crux.md` from the opening exe
 
 <span class="rt-code">Open your training directory in up to four Claude Code sessions.</span><span class="rt-cowork">Open up to four Cowork tasks on this connected folder.</span> Three retrievers fetch raw material into `sources/`; a fourth concurrent session synthesizes the retrievals into your `memory/` as they arrive. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
 
+Four sessions for one question is more than the work strictly needs — two retrievers plus you reading them would produce the same files with less choreography. The four is for the feeling. Agent heavy-lifting goes sequential by default, and sequential gets slow fast on real work; better to know the parallel option early than discover it under deadline.
+
 The retrievers go live — connectors and the open web. The synthesizer is the one curatorial act in Phase 1: it reads `sources/` as files appear and integrates findings into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time: raw retrievals in `sources/`, sharper memory in `memory/`.
 
 <div class="rt-code">

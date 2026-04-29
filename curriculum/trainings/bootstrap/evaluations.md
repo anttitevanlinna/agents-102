@@ -15,13 +15,21 @@ After this module, you will be able to:
 - **Distinguish** the one-off judge you picked in Module 5 from one that runs on every output as a fixed yardstick the work tightens against
 
 ## Start here
+Did you read Ethan Mollick's *The Bitter Lesson versus The Garbage Can*?
+
+His question is the right opener for Module 6: will the bitter lesson apply inside your company? Can agents get better if you define the outcome and let them find the path, or does the organisational mess still matter too much?
+
 Module 5 ended with a winner out of five detectors — the judge that now sits in the judges folder. What gets fed to that judge is the thing that changes at Module 6.
 
 The question shifts at Module 6. What if the work kept getting sharper, not because you edited it, but because the same judge kept catching what slipped past and the system kept absorbing the catches? What if *you weren't in the room* while that happened?
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
+> We work on text again because text is easy to inspect. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.
+
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
+
+[Closing: The new human role in the loop](lectures/new-human-role-in-the-loop.md)
 
 ## Key Concepts
 - **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
@@ -77,6 +85,8 @@ Chip Huyen, *AI Engineering*, evals chapter (candidate).
 - `curriculum/exercises/steering-eval.md` — kept as supplementary. Useful for mid-management variants, executive-briefing demos, or a second-day deep-dive. The steering dimension (encoding preference, not correctness) is still a real move; facilitators can fold a 5-minute framing into Debrief question 1 ("what should be an eval that runs every time?") when the room wants to go there without running a second full exercise.
 
 **Why one exercise, not two:** M6 is one of Bootstrap's three magic beats (M3, M6, M8). Splitting focus across two exercises dilutes the magic. The eval loop exercise carries both disciplines — convergence happens in the scoring, steering happens in what the generator's strategy file comes to encode across rounds against a fixed judge. The student ends with infrastructure that pairs the M5 judge (fixed, groundedness-aware, reusable) with a generator-strategy file shaped to their own material's failure modes.
+
+**Strategic close if M6 is the last module:** Keep the grounded eval loop snappy as the main event. `new-human-role-in-the-loop.md` adds steering eval as a closing prompt, not a second full exercise: Claude asks questions, offers example dimensions to choose from, keeps asking until the dimension is judgeable, then saves `goal-nudger-eval.md`. The distinction is floor/ceiling: grounded/fidelity evals keep work attached to evidence, brief, or policy; steering/excellence evals create positive pressure to overperform on a chosen dimension.
 
 **Capability checks owed (before first delivery):** see `exercises/eval-loop.md` maintainer section — long-running single session, parallel subagent dispatch, file-write reliability, meta-agent actually applying edits, walk-away duration realism.
 

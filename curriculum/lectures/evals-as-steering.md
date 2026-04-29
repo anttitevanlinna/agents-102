@@ -1,76 +1,113 @@
 # Evals as Steering
 
-**Time:** 10–12 minutes.
+**Time:** 10-12 minutes.
 
-Module 5 was you as the eval.
+Ethan Mollick asks a useful question in *The Bitter Lesson versus The Garbage Can*.
 
-You read your system's output. A name appeared that shouldn't have. A number was plausible but unsupported. A claim sounded right but had no source. Your domain knowledge did the work — you knew where the truth lived, and where the LLM was guessing. You tightened the guardrails. You regenerated. Most of the improvements held. Some tightened too much — you lost good output along with the bad.
+Maybe the bitter lesson applies to companies too. Maybe we should stop trying to map every messy process and define the outcome instead. Give the agent enough examples of good work, enough feedback, enough compute, and let it find its own path through the mess.
 
-That's a loop. With you as the judge.
+Or maybe the garbage can wins. Maybe companies are too tangled: politics, half-written rules, old systems, local exceptions, informal trust, workarounds nobody remembers choosing. Maybe the path matters because the path carries the organisation.
 
-Evals are that judgment written down so a machine can apply it. Or a colleague. Or future-you on Tuesday when you don't remember today's instinct.
+We are about to find out.
 
-So far, so familiar: *evals = tests for LLM output.* It's the framing you'll hear from most engineering blogs.
+But one thing is already clear: humans will not cope with all the detail for very long.
 
-It's also a trap. If that's all evals are, they're quality control at best. A gate that catches broken things. Useful. Unambitious. And, for anyone trying to build something that stands out — *completely insufficient.*
+Not at the current pace. Not with every briefing, every source, every claim, every update, every generated mail, every agent action. You can stay inside one loop. You cannot stay inside all of them.
 
-## Two kinds of eval, one loop
+That is why evals matter.
 
-The simple use: automate the Module 5 catch. Build a criterion that flags the fabrication patterns you found by hand. Maybe it's: every named person or company must appear in your source materials. Every number must trace to a file you loaded. Every claim must point to a citation. The criteria are whatever your eye caught. The eval just runs them for you.
+Not because evals are tests for AI output. That is too small.
 
-Run: generate → eval → adjust → regenerate → ... until the output passes. The system converges on "correct enough."
+Evals are how you write down what good means so the system can keep applying it when you are not in the chair.
 
-This is a **convergence eval**. It gets you reliability. It doesn't get you differentiation.
+## Module 5 was you as the eval
 
-The more interesting use: your agent produces content. Most of it is fine. Some of it is forgettable. A small fraction is actually worth sharing. What distinguishes the three?
+You read your system's output. A name appeared that should not have. A number was plausible but unsupported. A claim sounded right but had no source.
 
-Not correctness — all three might be correct. It's some other dimension. Brand voice. Strategic differentiation. Depth of insight. That dimension lives in your head as tacit preference.
+Your domain knowledge did the work. You knew where the truth lived and where Claude was guessing.
+
+Then you built the first version of a machine-readable version of that judgment. The benchmark produced a groundedness judge. It was not magic. It was your standard, made runnable.
+
+That is the first kind of eval.
+
+A groundedness eval protects the floor. Every named person or company must appear in the source material. Every number must trace to a file. Every claim must point to evidence or admit the gap.
+
+It answers: is this attached to the ground?
+
+Useful. Necessary. Not enough.
+
+## The second kind
+
+Imagine two internal mails.
+
+Both are true. Both cite the right sources. Both avoid overclaiming.
+
+One is forgettable. The other makes the reader act.
+
+What changed?
+
+Not groundedness. Something else.
+
+Maybe the second mail is more executive-readable. Maybe it names the tradeoff. Maybe it is commercially sharper. Maybe it gives the decision-maker a clean next move. Maybe it sounds like your team instead of like a generic assistant trying to be helpful.
+
+That dimension lives in your head right now. Or in the head of the best operator on your team. Or in the taste of the leader who keeps rewriting everyone else's drafts.
 
 Write it down.
 
-An example: your brand voice is direct, not consultant-speak. The criterion is a judge that rates each paragraph against three reference sentences — one direct, one hedged, one McKinsey. Score 1-5. Regenerate anything below 3. Over a few iterations the system stops producing hedged middle-of-the-road copy. Not because the LLM changed. Because the system now has a criterion for the opposite.
+That is a steering eval.
 
-That's a **steering eval**. It doesn't fix mistakes. It pushes output toward what matters.
+It does not ask only whether the output avoided failure. It asks whether the output overperformed on the dimension that matters.
 
-Both kinds are loops. Both are criteria written down. The difference is what they steer TOWARD — correctness or preference.
+Groundedness protects the floor. Steering raises the ceiling.
 
-Most first-time encounters assume evals are only the first kind. Module 6 is where you meet the second.
+Do not collapse them. A grounded mail can still be useless. A useful mail can still be ungrounded. You need both kinds of judgment if the system is going to earn more autonomy.
 
-## The reliability floor, the differentiation ceiling
+## What you build now
 
-One number from Module 5 makes the case: 85% accuracy per step, ten steps, 20% end-to-end. Multi-step agents decay fast. Convergence evals earn their keep — they keep each step above the threshold.
+One exercise.
 
-But no amount of convergence work produces differentiation. A competitor running the same LLM with the same convergence criteria gets the same kind of correct-and-forgettable output. The differentiation comes from steering evals — the criteria that are specifically YOURS. Your brand. Your standard. Your taste.
+You take the judge from Module 5 and put it into a loop. The judge stays fixed. The generator changes.
 
-Convergence = the floor. Steering = the ceiling.
+Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The orchestrator reads the feedback and rewrites the generator's strategy file. Round 2 runs under the same judge, with the sharper strategy. Then Round 3.
 
-## What you'll do in class
+You walk away.
 
-One exercise. You turn the judge you picked yesterday into live machinery.
+When you come back, the dashboard tells you what changed: which claims were flagged, which strategy rules were added, whether the score improved, and whether the judge file stayed byte-identical.
 
-An orchestrator runs three rounds on two briefings in parallel. Your Module 5 judge scores both. A meta-agent watches what the judge missed — and rewrites the judge's own rules between rounds. You start it. You close the laptop. You walk.
+That last line matters. If the judge moved, the score means nothing. A yardstick you rewrite is not a yardstick.
 
-When you come back, the dashboard shows what the judge caught in round 1, what it caught in round 2 after patching itself, what it caught in round 3. The judge on disk is a different file than the one you left — sharper, because it watched itself fail.
+If the generator improved under the same judge, the loop worked.
 
-That's both kinds of eval at once. Convergence lives in the scoring. Steering lives in what the judge's rules come to encode across rounds — the failure classes you cared enough to flag, the shapes of claim you don't want slipping past.
+That is the bitter lesson made practical for one small slice of work: define the outcome, hold the yardstick still, let the system search for a better path.
 
-Hold the steering question while the loop runs. What SHOULD this judge come to encode by round three that it doesn't encode today?
+And the garbage can is still there. Your sources may be thin. Your memory may be wrong. Your policy may block a file. Your organisation may care about dimensions your judge does not see yet.
 
-## One question to hold
+Good. That is not a reason to avoid the loop. That is what the loop is for.
 
-As you work through the exercises, hold this question:
+## The question to hold
 
-**What would have to be true for these evals to be the right ones?**
+As the loop runs, hold one question:
 
-Your criterion encodes a theory of what "good" means. The theory is a bet. Nobody (not us, not the AI labs, not your competitors) has the finished answer to what "good" looks like in your domain — the answer is being invented by whoever sits down and tries. Module 6 is the discipline of not just building the system, but thinking hard about whether the steering instrument is pointed the right way.
+**What would have to be true for this eval to be the right one?**
 
----
+The answer is never "the eval passed."
 
-*Module 7 takes this further: your eval works for you. When your eval becomes your team's eval, what changes? That's trust at scale.*
+The answer is: the eval checks the thing that matters, at the moment where the mistake would hurt, against a standard you would defend.
+
+Module 6 is not about making a better checker.
+
+It is about the human role changing.
+
+You stop being the person who catches every detail.
+
+You become the person who decides which details the system must never miss.
 
 <!-- maintainer -->
 
-**TODO (from eval pass 2026-04-17 — APPROVE WITH TODOs, length judge failed):**
-- Length undercooked (~520 vs 800–1200 target). Expansion candidates: (1) a worked micro-example of a convergence eval running once — what the judge output actually looks like; (2) a second steering-eval example from a different dimension (depth of insight or strategic differentiation, not just brand voice); (3) a paragraph on the LLM-as-judge mechanic — evals are usually run by other LLMs, and the lecture currently doesn't name this.
-- "Reliability floor, differentiation ceiling" section is the best line in the piece and gets only six sentences — expand; tie more explicitly to Module 5's compound-reliability math so the math does double duty.
-- Shared customer-case exercise setup: "one criterion, many outputs" divergence is the punchline but currently too weak — sharpen without spoiling the discovery.
+**Quality:** draft 2026-04-29
+
+**Placement:** Opening lecture for Bootstrap Module 6, after the Bitter Lesson / Garbage Can Connections question and before `eval-loop.md`.
+
+**Strategic role:** Leads with the exact M6 frame: humans will not cope with all the detail very soon, so evals become the way human judgment stays in the loop without the human inspecting every output.
+
+**Mood target:** Module 6's lift. The student should feel the loop as relief plus expanded responsibility: the machine can crunch, but the human must choose the yardstick.

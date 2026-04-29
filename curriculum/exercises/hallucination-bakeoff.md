@@ -2,11 +2,11 @@
 
 **What you do:**
 
-Five detectors, same briefing, one scoreboard. You don't hunt for ungrounded claims by hand. You set up a benchmark (five different methods for catching ungroundedness run on the same output) and something scores them against a small five-claim benchmark you wrote yourself. The winner (or the ensemble) becomes a judge file you carry into Module 6.
+Four detectors, same briefing, one scoreboard. You don't hunt for ungrounded claims by hand. You set up a benchmark: a 30-claim pool, four different detection methods, and a scorer that adjudicates the claims against the evidence. The winner (or the ensemble) becomes a judge file you carry into Module 6.
 
 The move is empirical. You don't pick a detection method because somebody said so. You run the candidates, measure, and keep the one that caught what mattered on *your* output.
 
-Four phases. 55–70 minutes. The work is mostly done by the five detectors and the scorer. Your job is to set the benchmark up, write five claims yourself, start the run, and watch the scoreboard fill in.
+Four phases. 45–60 minutes. The work is mostly done by the claim extractor, the four detectors, and the scorer. Your job is to set the benchmark up, start the run, and watch the scoreboard fill in.
 
 **Phase 0: The target and the benchmark.**
 
@@ -14,7 +14,9 @@ Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 
 
 First, produce a fresh briefing so every detector sees the same output. The target is roughly 10% fabrication or misrepresentation. Claude cannot actually dial that number in, of course. The 10% is a slight joke: enough wrongness for the detectors to have a job, not so much that the briefing becomes nonsense. Open your training directory in Claude Code.
 
-Ask Claude to generate the overreaching briefing in a separate worker and save it without previewing it.
+Ask Claude to choose a bounded evidence roster, generate the overreaching briefing in a separate worker, and save both without previewing the briefing.
+
+Why the evidence roster first? Because `memory/` is the curated layer. `sources/` is raw material behind it. The roster keeps this run bounded and teaches the quiet discipline underneath quality work: before you judge an output, decide what evidence surface the judgment is allowed to stand on.
 
 **Prompt** *(Claude Code)*
 
@@ -26,10 +28,12 @@ The briefing is the test corpus. Aim for roughly 10% fabrication or misrepresent
 Instructions for the subagent:
 - Use the strategic question in `./crux.md` under `## Question`.
 - Use the material in `module-3/stances/`.
-- Use source material in `sources/`.
+- Choose a bounded evidence roster before writing the briefing. Start from curated topic pages in `memory/`. Add raw files from `sources/` only when a memory page points to them or the challenge clearly needs the underlying source. Use at least 5 and at most 20 files total.
+- Save the roster to `module-5/evidence-roster.md` with each selected file path, whether it is curated memory or raw source, and a one-line reason it belongs.
+- Use only the rostered evidence files as the evidence surface for the briefing.
 - Produce a one-page briefing on the challenge.
 - Include three specific named entities relevant to the challenge (companies, teams, systems, customers, products, policies, or people).
-- Include at least two verbatim quotes from `sources/`.
+- Include at least two verbatim quotes from rostered evidence files.
 - Include at least one number or measurable claim.
 - Include two claims that use outside/common knowledge beyond the files.
 - Include a next action with a measurable outcome.
@@ -37,13 +41,13 @@ Instructions for the subagent:
 - Do not browse the web.
 - Save the briefing to `module-5/briefing.md`.
 
-When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing.md` exists.
+When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/evidence-roster.md` and `module-5/briefing.md` exist.
 ```
 
 Why the separate worker? So this session is not tainted by knowing what was fabricated. The main session stays blind for the benchmark setup.
 
 
-Save it. **Don't open it yet.** Your gut verdicts are the measuring stick. Blind verdicts first, then the run.
+Save it. **Don't open it yet.** The claim pool is the measuring surface. Keep the main session blind until the extractor has turned the briefing into claims.
 
 Now extract the claims. Claude scans the briefing and pulls out a varied claim pool for the detectors. Thirty claims is not statistical. It is enough to start seeing the pattern without creating much processing work.
 
@@ -68,9 +72,9 @@ Do not judge whether the claims are grounded yet. Do not ask me questions. Save 
 
 The claim pool is input material. You have not judged anything yet.
 
-**Phase 1a: The first batch: four detectors.**
+**Phase 1: Run the four detectors.**
 
-Four detectors, four different methods, run in parallel on the same briefing. Each is a <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 2.
+Four detectors, four different methods, run in parallel on the same claim pool. Each is a <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 2.
 
 In your main session:
 
@@ -79,19 +83,19 @@ In your main session:
 **Prompt** *(Claude Code)*
 
 ```
-Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in sources/ and module-3/stances/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
+Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a subagent with a different method. Each reads `module-5/claim-pool.md`, `module-5/briefing.md`, `module-5/evidence-roster.md`, and the rostered evidence files named there. Each writes its findings as a list of claim-pool claims flagged, with one line of reasoning per claim.
 
-Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
+Detector 1 — Source triangulation. For every claim in the claim pool, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED. Write to `module-5/detectors/source-triangulation.md`.
 
-Detector 2 — Entailment. For every claim, ask: does the briefing say more than the sources actually support? A source that says "one customer complained" doesn't support "the market is unhappy." Flag OVERREACH when the briefing stretches what the source said.
+Detector 2 — Entailment. For every claim in the claim pool, ask: does the briefing say more than the sources actually support? A source that says "one customer complained" doesn't support "the market is unhappy." Flag OVERREACH when the briefing stretches what the source said. Write to `module-5/detectors/entailment.md`.
 
-Detector 3 — Citation integrity. Some claims in the briefing will cite a source (either inline or implicitly). For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim.
+Detector 3 — Citation integrity. Some claims in the claim pool will cite a source, either inline or implicitly. For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim. Write to `module-5/detectors/citation-integrity.md`.
 
-Detector 4 — Counter-evidence search. For every claim, actively look for sources that contradict it, not just ones that support it. Flag CRUMBLES when disconfirming material exists in the source files that the briefing ignored.
+Detector 4 — Counter-evidence search. For every claim in the claim pool, actively look for evidence that contradicts it, not just evidence that supports it. Flag CRUMBLES when disconfirming material exists in the rostered evidence that the briefing ignored. Write to `module-5/detectors/counter-evidence.md`.
 
-One rule across all four detectors: quote each flagged claim verbatim from the briefing (the exact sentence or phrase). The scorer uses strict substring match to score you against the benchmark; paraphrased findings count as misses.
+One rule across all four detectors: quote each flagged claim exactly as it appears in `module-5/claim-pool.md`. The scorer uses strict substring match; paraphrased findings count as misses.
 
-Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
+Spawn all four in parallel. When they finish, confirm that these four files exist: `module-5/detectors/source-triangulation.md`, `module-5/detectors/entailment.md`, `module-5/detectors/citation-integrity.md`, and `module-5/detectors/counter-evidence.md`.
 ```
 
 </div>
@@ -100,110 +104,58 @@ Spawn all four in parallel. When they finish, confirm: four files written under 
 **Prompt** *(Claude Code)*
 
 ```
-Run four detectors on module-5/briefing.md in parallel. Each detector is an agent with a different method. Each reads the briefing and the sources in sources/ and module-3/stances/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
+Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an agent with a different method. Each reads `module-5/claim-pool.md`, `module-5/briefing.md`, `module-5/evidence-roster.md`, and the rostered evidence files named there. Each writes its findings as a list of claim-pool claims flagged, with one line of reasoning per claim.
 
-Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
+Detector 1 — Source triangulation. For every claim in the claim pool, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED. Write to `module-5/detectors/source-triangulation.md`.
 
-Detector 2 — Entailment. For every claim, ask: does the briefing say more than the sources actually support? A source that says "one customer complained" doesn't support "the market is unhappy." Flag OVERREACH when the briefing stretches what the source said.
+Detector 2 — Entailment. For every claim in the claim pool, ask: does the briefing say more than the sources actually support? A source that says "one customer complained" doesn't support "the market is unhappy." Flag OVERREACH when the briefing stretches what the source said. Write to `module-5/detectors/entailment.md`.
 
-Detector 3 — Citation integrity. Some claims in the briefing will cite a source (either inline or implicitly). For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim.
+Detector 3 — Citation integrity. Some claims in the claim pool will cite a source, either inline or implicitly. For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim. Write to `module-5/detectors/citation-integrity.md`.
 
-Detector 4 — Counter-evidence search. For every claim, actively look for sources that contradict it, not just ones that support it. Flag CRUMBLES when disconfirming material exists in the source files that the briefing ignored.
+Detector 4 — Counter-evidence search. For every claim in the claim pool, actively look for evidence that contradicts it, not just evidence that supports it. Flag CRUMBLES when disconfirming material exists in the rostered evidence that the briefing ignored. Write to `module-5/detectors/counter-evidence.md`.
 
-One rule across all four detectors: quote each flagged claim verbatim from the briefing (the exact sentence or phrase). The scorer uses strict substring match to score you against the benchmark; paraphrased findings count as misses.
+One rule across all four detectors: quote each flagged claim exactly as it appears in `module-5/claim-pool.md`. The scorer uses strict substring match; paraphrased findings count as misses.
 
-Spawn all four in parallel. When they finish, confirm: four files written under module-5/detectors/.
+Spawn all four in parallel. When they finish, confirm that these four files exist: `module-5/detectors/source-triangulation.md`, `module-5/detectors/entailment.md`, `module-5/detectors/citation-integrity.md`, and `module-5/detectors/counter-evidence.md`.
 ```
 
 </div>
 
 
-Watch the four <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> lines scroll past. Same briefing, four lenses. Four files in a minute or two. The fifth detector is different enough to want its own phase.
-
-**Phase 1b: The second batch: self-consistency, done right.**
-
-Self-consistency is the fifth detector. One <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> can't do it alone. The method needs independent re-derivations and then a comparison. You'll spawn four regenerators, each blind to the briefing, each with a different framing on the same source material. A claim in the briefing that three or four of them independently produce is stable. One or two is contested. Zero is fabricated.
-
-The blinding matters more than the count. If the regenerators saw the briefing, they'd anchor on its framing and mostly agree with it. Without the briefing, they produce their own versions. The briefing becomes the thing being audited, not the source of truth.
-
-The framings matter too. Same sources, different angles. Regenerator A asks for strategic claims, Regenerator B for rollout-approach claims, Regenerator C for load-bearing assumptions, Regenerator D for verbatim source quotes. Different framings surface different claim sets. Where three or four framings converge, the claim is stable. Where they diverge, the briefing's version of it needs scrutiny.
-
-Spawn the second batch. Between dispatching the regenerators and returning their collated output, Claude briefs you in three paragraphs on what self-consistency measures. The brief fills the turn; the collated `self-consistency.md` lands at the end.
-
-<div class="rt-code">
-
-**Prompt** *(Claude Code)*
-
-```
-Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
-
-Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question (in ./crux.md, ## Question section). Numbered list, one claim per line, quote source files.
-
-Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
-
-Regenerator C — Load-bearing assumptions framing. List the load-bearing assumptions the sources make about skeptic conversion, timing, and forcing functions. Numbered list, one assumption per line, quote the source file that grounds each.
-
-Regenerator D — Verbatim source quote framing. List the verbatim quotes from the source files that would most plausibly appear in a one-page briefing on this question. Numbered list of quotes with their source files.
-
-Spawn all four in parallel.
-
-After dispatching, brief me in three short paragraphs, in the chat, no file: what self-consistency measures, why blinding the regenerators matters, what self-consistency still won't catch. Then collate.
-
-When the four return, collate: read module-5/briefing.md and the four regenerator files. For each specific claim in the briefing, check whether it appears (paraphrase match is fine) in the regenerators' outputs. Label each briefing claim STABLE (3-4 regenerators match), CONTESTED (1-2), or FABRICATED (0). Write the collated output to module-5/detectors/self-consistency.md as a list with the briefing claim, which regenerators matched, the label, and one line of reasoning.
-```
-
-</div>
-<div class="rt-cowork">
-
-**Prompt** *(Claude Code)*
-
-```
-Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
-
-Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question (in ./crux.md, ## Question section). Numbered list, one claim per line, quote source files.
-
-Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
-
-Regenerator C — Load-bearing assumptions framing. List the load-bearing assumptions the sources make about skeptic conversion, timing, and forcing functions. Numbered list, one assumption per line, quote the source file that grounds each.
-
-Regenerator D — Verbatim source quote framing. List the verbatim quotes from the source files that would most plausibly appear in a one-page briefing on this question. Numbered list of quotes with their source files.
-
-Spawn all four in parallel.
-
-After dispatching, brief me in three short paragraphs, in the chat, no file: what self-consistency measures, why blinding the regenerators matters, what self-consistency still won't catch. Then collate.
-
-When the four return, collate: read module-5/briefing.md and the four regenerator files. For each specific claim in the briefing, check whether it appears (paraphrase match is fine) in the regenerators' outputs. Label each briefing claim STABLE (3-4 regenerators match), CONTESTED (1-2), or FABRICATED (0). Write the collated output to module-5/detectors/self-consistency.md as a list with the briefing claim, which regenerators matched, the label, and one line of reasoning.
-```
-
-</div>
-
-Read the three-paragraph brief. It lands before the collated output, so the method frames what you're about to see. When collation finishes, `self-consistency.md` is there alongside the four detector files from Phase 1a. Five files. Now the scorer runs.
+Watch the four <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> lines scroll past. Same claim pool, four lenses. Four files in a minute or two. Now the scorer runs.
 
 **Phase 2: Scorer runs the benchmark.**
 
-A sixth agent (the scorer) reads all five detector files, compares them to the benchmark you wrote in Phase 0, and produces a scoreboard. You don't compare them by hand. The scorer measures precision (of what the detector flagged, how much was actually ungrounded by your benchmark?), recall (of what your benchmark said was ungrounded, how much did the detector catch?), and coverage (did the detector look at claims your benchmark cared about?).
+A fifth agent (the scorer) reads the claim pool and all four detector files, adjudicates the 30 claims against the evidence, and produces a scoreboard. You don't compare them by hand. The scorer measures precision (of what the detector flagged, how much was actually ungrounded?), recall (of what the scorer adjudicated as ungrounded, how much did the detector catch?), and coverage (did the detector look at the claim pool?).
 
 **Prompt** *(Claude Code)*
 
 ```
-You are the scorer for a five-way detector benchmark. Your inputs:
+You are the scorer for a four-way detector benchmark. Your inputs:
 
-- Benchmark: module-5/benchmark.md (five claims, my verdicts)
-- Five detector outputs: module-5/detectors/*.md
+- Claim pool: `module-5/claim-pool.md`
+- Briefing: `module-5/briefing.md`
+- Evidence roster: `module-5/evidence-roster.md` and the rostered evidence files named there
+- Detector output 1: `module-5/detectors/source-triangulation.md`
+- Detector output 2: `module-5/detectors/entailment.md`
+- Detector output 3: `module-5/detectors/citation-integrity.md`
+- Detector output 4: `module-5/detectors/counter-evidence.md`
 
-Your job: score each detector against my benchmark, produce a scoreboard, name a winner.
+Your job: adjudicate the 30 claims, score each detector against that adjudication, produce a scoreboard, name a winner.
+
+First, create the reference adjudication. For every claim in `module-5/claim-pool.md`, label it GROUNDED, UNGROUNDED, or PARTLY GROUNDED. Quote the evidence line or file that supports the label. If you cannot find support in the rostered evidence, say so plainly. Save this reference set to `module-5/adjudicated-claims.md`.
 
 For each detector:
-1. Match detector findings to benchmark claims by strict substring match. Each of my five claims was quoted verbatim from the briefing. If you can't find the verbatim phrase from the benchmark claim in the detector's output, count as MISS — do not reason about semantic similarity, do not paraphrase-match, do not accept "close enough."
-2. For each benchmark claim, check whether the detector flagged it. If I said "not grounded," the detector should have flagged it; count as a hit. If I said "grounded," the detector should NOT have flagged it; a flag is a false positive.
-3. Compute precision (hits / total flagged) and recall (hits / total I said were not grounded). Coverage = how many of my five claims the detector even looked at.
+1. Match detector findings to claim-pool claims by strict substring match. If you can't find the exact claim-pool phrase in the detector's output, count as MISS. Do not reason about semantic similarity, do not paraphrase-match, do not accept "close enough."
+2. For each claim, check whether the detector flagged it. If the adjudication says UNGROUNDED or PARTLY GROUNDED, the detector should have flagged it. Count that as a hit. If the adjudication says GROUNDED, the detector should not have flagged it. Count that as a false positive.
+3. Compute precision (hits / total flagged) and recall (hits / total claims adjudicated UNGROUNDED or PARTLY GROUNDED). Coverage = how many of the 30 claim-pool claims the detector looked at.
 4. One line of qualitative notes — what this detector caught that others missed, what it missed, where its method is strong, where it's weak.
 
 Save the scoreboard to module-5/scoreboard.md as a table:
 
 | Detector | Precision | Recall | Coverage | Hits | False positives | Misses | Notes |
 
-After the table, name ONE winner. Do not return "all five are useful" — force the pick. If top two are within 10% precision and 10% recall of each other, name the single winner first, THEN propose a two-method ensemble and say what each catches that the other doesn't. Maximum ensemble cap: two methods. Never three.
+After the table, name ONE winner. Do not return "all four are useful" — force the pick. If top two are within 10% precision and 10% recall of each other, name the single winner first, THEN propose a two-method ensemble and say what each catches that the other doesn't. Maximum ensemble cap: two methods. Never three.
 
 At the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.
 ```
@@ -211,7 +163,7 @@ At the bottom, add a one-line recommendation naming the detector or ensemble and
 
 Watch the scoreboard land. Read it. You can now see which method actually worked on your output. Not intuition. Measurement.
 
-Five detectors read the same briefing. One method caught more of what your expert verdict said was ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
+Four detectors read the same claim pool. One method caught more of what the scorer adjudicated as ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
 
 Before Phase 3, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard, so the rescue lands as a felt beat, not a checkpoint.
 
@@ -240,7 +192,7 @@ The winner (or the two-method ensemble) is worth keeping. You'll save it as a ju
 ```
 Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:
 
-1. Take any output file and the relevant source files as inputs.
+1. Take any output file and the relevant evidence files as inputs.
 2. Flag ungrounded claims using the method(s) that won the benchmark.
 3. Return a short structured list — claim flagged, category, one-line reasoning.
 4. Not classify claims I didn't ask about. Stay narrow. A judge that tries to do everything does nothing well.
@@ -253,36 +205,11 @@ At the end of the file, add a one-line "Known limit:" — the failure mode this 
 
 Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Named after what it does. Narrow on purpose. The "known limit" line matters. It names the thing you measured and decided not to chase. Plain about what it is and what it isn't.
 
-**Close: what you just did, named.**
+**Close: name the rescue.**
 
-Five methods ran on the same input. A scorer measured them against a five-claim benchmark you wrote in two minutes. The winner got promoted to a reusable judge file. No intuition. No "I heard this method is good." Measurement.
+Four methods ran on the same input. A scorer adjudicated 30 claims, measured the detectors against that reference set, and promoted the winner to a reusable judge file. No intuition. No "I heard this method is good." Measurement.
 
-This pattern (run several candidates in parallel, score them empirically, keep the winner or stack an ensemble) is the serious way to build any quality check. Not just groundedness. Tone, brand voice, compliance, steering toward a product attribute. Any judgment call you want a machine to make reliably starts with a benchmark you wrote yourself.
-
-**Take-home: quality-control any output.**
-
-The five techniques are portable. Point the same pattern at a customer email, a pricing memo, a positioning draft, anything about to ship.
-
-Ask Claude to set up the system on a new output.
-
-**Prompt** *(Claude Code)*
-
-```
-I have output I want to quality-control against fabrication. Set up a benchmarking system for me using these five techniques:
-
-- Source triangulation: does every specific claim appear in at least one source file?
-- Entailment: does the output say more than the sources support?
-- Citation integrity: when a citation is made, does the source actually contain the claim?
-- Self-consistency: regenerate the output and diff; claims that vary across regenerations are fabrications.
-- Counter-evidence search: actively look for sources that contradict each claim, not just ones that support.
-
-Keep the techniques that fit my output; swap any that don't for methods that catch my output's specific failure modes.
-
-Ask me what output I want to check and where my sources live. Then build me five detectors, a five-claim benchmark I'll annotate, and a scorer that picks a winner. Save under judges/.
-```
-
-
-One thing the benchmark can't reach: yours was five claims. A real production judge wants hundreds. The method is the same; the scale is the difference. That's next module.
+One thing the benchmark can't reach: yours was 30 claims. A real production judge wants hundreds. The method is the same; the scale is the difference. That's next module.
 
 Write one sentence to `module-5/still-uncertain.md` naming the one thing this judge caught in this benchmark that you'd want running on every briefing you write from here on.
 
@@ -290,13 +217,13 @@ Module 6 comes back for this file. You'll turn this judge into infrastructure: s
 
 **What happens:**
 
-You produce a fresh briefing, write a five-claim benchmark in your own voice, spawn five detectors in parallel on the same briefing, let a scorer measure them against your benchmark, read a scoreboard that names the winner with measured reasoning, and save the winner as a named judge file. Twenty minutes of that is watching agents work while you think about what you're measuring. The file `judges/groundedness-judge.md` is the artifact Module 6 picks up.
+You produce a fresh briefing, extract a 30-claim pool, spawn four detectors in parallel on the same claims, let a scorer adjudicate the claims and measure the detectors, read a scoreboard that names the winner with measured reasoning, and save the winner as a named judge file. Twenty minutes of that is watching agents work while you think about what you're measuring. The file `judges/groundedness-judge.md` is the artifact Module 6 picks up.
 
 **The point:**
 
 Method selection in agent quality work is empirical, not intuitive. You don't trust a detector because you read about it. You trust it because you ran a benchmark on your own output with your own reference and it won. The scoreboard is the explanation. The winner becomes a judge you can defend. The pattern (candidates → benchmark → scorer → winner) is portable to every quality judgment you'll ever automate.
 
-**Time:** 55–70 minutes. Phase 0 ~12, Phase 1a ~8 (set up + watch four detectors), Phase 1b ~12 (set up second batch + read three-paragraph brief + receive collation), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
+**Time:** 45–60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
 
 <!-- maintainer -->
 
@@ -304,17 +231,17 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 **Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The Close's still-uncertain line keeps the broader uncertainty alive.
 
-**Understandable magic bar.** After the exercise the student must be able to say, unprompted: *"five detectors ran in parallel on the same briefing, a scorer measured them against a five-claim benchmark I wrote myself, detector X won because it caught Y, now I have a judge file I trust for this shape of output."* No black-box move anywhere. If any phase leaves the student unable to describe what just happened, the phase is broken.
+**Understandable magic bar.** After the exercise the student must be able to say, unprompted: *"four detectors ran in parallel on the same claim pool, a scorer adjudicated 30 claims, detector X won because it caught Y, now I have a judge file I trust for this shape of output."* No black-box move anywhere. If any phase leaves the student unable to describe what just happened, the phase is broken.
 
 **Walk-away calibration.** M5 is "bounded benchmark run" on the ramp — NOT walk-away. The student sets up the benchmark, starts the run, watches it execute (~20 min across Phases 1 and 2 combined). They don't leave the chair; they also don't classify by hand. Watching the scoreboard fill is the visceral moment.
 
-**Benchmark = five claims, deliberately.** Small enough that the student does it in two minutes. Large enough that precision/recall are meaningful. The scale-up ("production judges want hundreds") is M6's problem, named out loud here so the student sees the seam.
+**Benchmark = 30 claims, deliberately.** Not statistical. Enough to start seeing the pattern without creating much processing work. The scale-up ("production judges want hundreds") is M6's problem, named out loud here so the student sees the seam.
 
 **Frameworks riffed on:**
 - **Benchmarking** — from ML community work; Antti-run pattern. Empirical method selection beats authority ("this method is best").
 - **Precision / recall / coverage** — standard eval vocabulary introduced experientially, not lectured.
-- **Benchmark** — the word is earned in Phase 0; the student writes one in two minutes and sees what it's worth.
-- **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). The agreement-across-independent-regenerations mechanic is theirs; the blinded multi-framing variant in Phase 1b (regenerators read only sources, not the briefing; different framings induce variance) is our adaptation. Not named in the body — the student earns the technique by running it.
+- **Benchmark** — the word is earned in Phase 0; the claim pool becomes the reference set the scorer adjudicates.
+- **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). In this module it is a lecture/demo after the benchmark, not a detector in the scoring panel. It asks a different question: what stays stable when the briefing is regenerated from the same evidence?
 
 **Philosophy callout (sparing):**
 - Belief #21 — name what you don't know — lands in the Close's still-uncertain line, and in the judge's "Known limit:" line. Both student-written.
@@ -322,42 +249,40 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 **Plug points:**
 - The briefing target — Module 3 briefing by default; any over-reaching output the student already cares about also works.
-- The five detector methods — these five are calibrated to produce a tight race on a Module 3 shaped briefing. Domain-specific cohorts may swap one in (regulatory-claim flag for compliance teams, pricing-claim flag for commercial teams); keep the ensemble cap at two methods stacked.
-- The benchmark size — five by default. Raise to seven for cohorts whose briefings produce long outputs; never below five (precision/recall get noisy).
+- The four detector methods — these four are calibrated to produce a tight race on a Module 3 shaped briefing. Domain-specific cohorts may swap one in (regulatory-claim flag for compliance teams, pricing-claim flag for commercial teams); keep the ensemble cap at two methods stacked.
+- The benchmark size — 30 by default. Lower only if the briefing is genuinely short; raise only if the cohort has time and the claim pool stays readable.
 
 **Watch-fors:**
-- **Reading the briefing before writing the benchmark.** Biases everything. Coach: *"Don't open it. Your Phase 0 verdicts are more useful when they're gut verdicts."*
-- **Benchmark of seven or eight claims.** Student over-delivers. Coach: *"Five. The measurement gets noisier, not better, with more."*
-- **Scorer hedges.** It picks "all five are useful" rather than naming a winner. Coach: *"Re-run and force a pick — the ensemble is a two-method stack, not a five-method hug."*
+- **Reading the briefing before claim extraction.** Biases the main session. Coach: *"Don't open it. Let the extractor turn it into claims first."*
+- **Claim pool bloats past 30.** Student over-delivers. Coach: *"Thirty is enough to see the pattern. More is processing, not learning."*
+- **Scorer hedges.** It picks "all four are useful" rather than naming a winner. Coach: *"Re-run and force a pick — the ensemble is a two-method stack, not a four-method hug."*
 - **The scoreboard looks clean and the student doesn't read it.** The scoreboard IS the explanation. If the student skips to Phase 3, the mood beat is stolen. Phase 2's "which row surprised you?" gate forces the read; if the student's one-sentence answer is generic ("the scoreboard was interesting"), push back: *"name the row, name the number, name why."*
 - **The judge file sprawls.** Student lets Claude write a 60-line judge. Coach: *"Under 20 lines. A judge that tries to do everything does nothing well."*
-- **Collator over-charitable-matches.** Phase 1b's collation does paraphrase-matching (intentionally, since regenerators legitimately rephrase). If everything in the briefing ends up STABLE, the collator was too generous. Push back: *"show me the verbatim regenerator phrase that matched this briefing claim. If you can't, downgrade to CONTESTED."* The asymmetry with Phase 2's strict substring match is deliberate; the collator's charity is what the forced-quote pushback keeps honest.
+- **Self-consistency demo treated as the judge.** The demo can show drift, but it does not decide the winning groundedness judge. Coach: *"Self-consistency is a warning light, not the yardstick."*
 
 **Push-back moves (host varies — trainer by default; Teacher Claude in self-study):**
 - *Phase 0 — student opens the briefing before writing the benchmark.* "Close the file. Your gut verdicts are the measuring stick. Reading the briefing first contaminates them."
-- *Phase 0 — student writes seven or eight claims to be thorough.* "Five. Precision and recall get noisy with more, not better. The benchmark's job is to be small and sharp."
-- *Phase 1a — student wants to read each detector file as it lands.* "Don't. The scorer reads them. You'll see everything in the scoreboard — that's where the contrast lives."
-- *Phase 1b — collator labels everything STABLE.* "Show me the verbatim regenerator phrase that matched this briefing claim. If you can't, downgrade to CONTESTED."
-- *Phase 2 — scorer hedges, picks 'all five are useful.'* "Re-run and force a pick. The ensemble cap is two methods, not a five-method hug."
+- *Phase 0 — claim pool bloats past 30.* "Thirty. Enough to see the pattern, not so many that the run becomes processing work."
+- *Phase 1 — student wants to read each detector file as it lands.* "Don't. The scorer reads them. You'll see everything in the scoreboard — that's where the contrast lives."
+- *Lecture/demo — student treats self-consistency as proof.* "It isn't proof. Drift is a warning signal. Stability is not truth."
+- *Phase 2 — scorer hedges, picks 'all four are useful.'* "Re-run and force a pick. The ensemble cap is two methods, not a four-method hug."
 - *Phase 2 — student skims past the scoreboard to Phase 3.* "Stay on the scoreboard. Name the row that surprised you. The scoreboard IS the rescue beat — skipping it steals the mood."
 - *Phase 3 — judge file sprawls past 20 lines.* "Cut it back. A judge that tries to do everything does nothing well. Narrow on purpose; the Known limit line names what it doesn't reach."
 - *Close — student writes a generic still-uncertain line ('quality is hard').* "Name a specific claim-shape this judge won't catch. 'Hard' isn't a failure mode."
 
 **Decision points (trainer reads these in prep, not during):**
 - *Briefing target.* Default is the Module 3 synthesized briefing. If the student's Module 3 briefing came back unusually clean (rare but happens with cohorts that ran Module 3 conservatively), pivot to any over-reaching output the student already cares about — a board paper, a Monday memo, a customer-facing proposal. The exercise needs an output that plausibly overreaches; a too-grounded briefing collapses the contrast.
-- *Detector swap.* Domain-specific cohorts can swap one of the five for a regulatory-claim flag (compliance teams) or a pricing-claim flag (commercial teams). Keep the panel at five and the ensemble cap at two methods stacked.
-- *Benchmark size.* Five claims by default. Raise to seven only when the cohort's briefings run long; never below five — precision and recall get noisy.
-- *Self-consistency framing set.* Default A/B/C/D framings (strategic / rollout / load-bearing assumptions / verbatim quotes) are calibrated for a Module 3 briefing. For a customer-memo or pricing-deck target, swap rollout-approach for a customer-promise framing or a numerical-claim framing — variance comes from the framing differences, so they need to fit the source material.
-- *Phase 1 timing.* Authored time is ~20 min combined for Phase 1a + Phase 1b. If the spawn is slower than expected (sub-agent queueing on a busy cohort network), fill the wait with the three-paragraph self-consistency brief — already authored into the prompt for that reason.
-- *Cowork variant — agent count.* Cowork students may hit a parallel-agent limit lower than five. If only three regenerators run, downgrade the labels: STABLE = 2-3 match, CONTESTED = 1, FABRICATED = 0. Note in the collation prompt.
+- *Detector swap.* Domain-specific cohorts can swap one of the four for a regulatory-claim flag (compliance teams) or a pricing-claim flag (commercial teams). Keep the panel at four and the ensemble cap at two methods stacked.
+- *Benchmark size.* Thirty claims by default. Lower only if the briefing is genuinely short; raise only if the cohort has time and the claim pool stays readable.
+- *Self-consistency demo.* The trainer can run it live after the judge is saved. Treat it as a contrast lecture, not as part of the benchmark score.
 
 **Mood check (before shipping):**
 - M5's mood is mechanical rescue — *"ahh, this is actually fixable."* The Close must land there. The scoreboard moment is the rescue beat — a student who scrolls past it steals their own mood.
 - Security residual (M4) and strategic uncertainty (M3) should still be present at the end of M5. The Close's "what the judge won't catch" line names the scope of the rescue.
-- Hand-off to M6 is hunger, not closure — *"five claims by hand; imagine hundreds running on every build"* is the seam.
+- Hand-off to M6 is hunger, not closure — *"30 claims here; imagine hundreds running on every build"* is the seam.
 
 **Delineation with M6:**
-- M5 ships a hand-run benchmark producing one judge file against a five-claim benchmark.
+- M5 ships a hand-run benchmark producing one judge file against a 30-claim reference set.
 - M6 picks the judge up and turns it into infrastructure — scaled benchmark, scheduled runs, corrections feeding back, the steering counterpart (encoding preference, not groundedness).
 - Don't cross-teach. M5's benchmark earns M6's automation.
 

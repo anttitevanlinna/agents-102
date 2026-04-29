@@ -2,7 +2,7 @@
 
 **What you do:**
 
-In Module 5 you ran a benchmark on five detectors and picked the one that caught the most fabrication. The winner got saved as `judges/groundedness-judge.md`. That judge is now yours. It works. You watched it work.
+In Module 5 you ran a benchmark on four detectors and picked the one that caught the most fabrication. The winner got saved as `judges/groundedness-judge.md`. That judge is now yours. It works. You watched it work.
 
 Now you stop running it.
 

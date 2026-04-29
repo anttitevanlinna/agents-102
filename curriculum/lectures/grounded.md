@@ -1,4 +1,4 @@
-# Lecture: Grounded, and five candidates to measure
+# Lecture: Grounded, and four candidates to measure
 
 There is truth out there. Your sources carry shards of it. Your agent, left to itself, has no model of truth, only a model of what usually comes next in language that looks like yours.
 
@@ -48,7 +48,7 @@ That's intuition. The move is empirical.
 
 You have a briefing. You don't know which detection method will catch what matters on *your* output, with *your* sources, on *your* strategic question. Nobody does. Not the framework authors, not the blog posts, not the deck on someone's slide. The only plain answer is to run several candidate methods in parallel and measure which one catches what your benchmark says should have been caught.
 
-Five candidates, chosen because they fail in different directions, so the scoreboard gives you real spread:
+Four candidates, chosen because they fail in different directions, so the scoreboard gives you real spread:
 
 **1. Source triangulation.** For every specific claim, does it appear in at least one file on disk? Catches *invention*: claims with no source behind them at all.
 
@@ -56,11 +56,9 @@ Five candidates, chosen because they fail in different directions, so the scoreb
 
 **3. Citation integrity.** When the briefing cites a source, does the source actually contain the claim? A citation that doesn't hold is worse than no citation; it manufactures false authority. Catches *citation cargo-cult*: citations that look load-bearing but aren't.
 
-**4. Self-consistency.** Regenerate the briefing and diff the versions. Claims that hold steady across regenerations are defended by the sources; claims that drift or disappear are fabrications the model couldn't stand behind twice. Catches *unstable invention*: output the model couldn't defend on a second try.
+**4. Counter-evidence search.** Instead of looking for sources that support each claim, look for sources that contradict it. One contradiction kills the claim; a hundred supporting files don't prove it. Catches claims that *look* grounded under confirmation but crumble under disconfirmation.
 
-**5. Counter-evidence search.** Instead of looking for sources that support each claim, look for sources that contradict it. One contradiction kills the claim; a hundred supporting files don't prove it. Catches claims that *look* grounded under confirmation but crumble under disconfirmation.
-
-Five candidates, five different failure modes. In the exercise, they run as five parallel agents on your briefing, each writing findings to its own file. A scorer measures them against a five-claim benchmark you write yourself: precision, recall, coverage. The scoreboard is the mechanism. You don't argue with it; you read it.
+Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. The scoreboard is the mechanism. You don't argue with it; you read it.
 
 The winner (or an ensemble of the top two) becomes a judge file you carry into Module 6, where the judge stops being something you run and becomes something that runs itself.
 
@@ -70,46 +68,46 @@ Not certainty. Certainty isn't available. What you buy is a *grounded choice abo
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
 
-Now you run the benchmark. Well, not by hand. You set up five detectors, a scorer, and a five-claim benchmark. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you'll carry into Module 6, where it goes inside a loop that runs and improves itself.
+Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you'll carry into Module 6, where it goes inside a loop that runs and improves itself.
 
-Phase 0 is next: a fresh briefing, then five claims you write in two minutes. The benchmark you're about to author is the measuring stick the rest of the exercise turns on. Write it from your gut, not from the briefing.
+Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The claim pool is the measuring surface the rest of the exercise turns on. Keep the main session blind until the claims exist.
 
 **Time:** 10–12 minutes.
 
 <!-- maintainer -->
 
-**Placement in module:** After Connections, before the exercise. Primes the empirical-method-selection frame; the exercise runs the benchmark on the student's own M3 material. All five detectors are practised in the exercise (unlike the earlier three-technique version where only citation re-verification was practised hands-on). Lecture and exercise are tightly coupled now.
+**Placement in module:** After Connections, before the exercise. Primes the empirical-method-selection frame; the exercise runs the benchmark on the student's own M3 material. All four detectors are practised in the exercise. Lecture and exercise are tightly coupled now.
 
 **Frameworks riffed on:**
 - **Compound reliability math — both directions.** Single-pass: 85%^10 = 20% (the trap). Loop-based: 10% → 1% → 0.1% → 0.01% with 90%-catch detector + fix (the escape). Naming both halves is what converts the math from despair to design. The second half is the strategic bridge to M6 — evals aren't a quality gate, they're the mechanism that collapses the error rate.
 - **Grounded-ness as epistemic stance** — journalism/research/legal drafting recognisable move.
 - **Benchmarking** — the empirical-selection pattern lifted from serious evals work (Antti's own, among others). Lecture names WHY benchmarking beats intuition; exercise runs the benchmark.
-- **Benchmark as the measuring stick** — tiny (5 claims), plain, enough to measure against. No vendor reference; your own judgment is the judge of the judges.
+- **Benchmark as the measuring stick** — 30 claims, plain, enough to see the pattern without making the run mostly processing. No vendor reference; adjudication against the student's evidence is the judge of the judges.
 
 **Philosophy callout (sparing):**
 - Belief #21 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
 - Belief #14 — practice beats external proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
 
-**Why five, not three, and not ten:**
-- Five gives the scoreboard real spread without drowning the student. Three collapses on close races; ten is paralysis.
-- Each of the five maps to a distinct failure mode (invention, overreach, citation cargo-cult, unstable invention, confirmation-only grounding). The methods aren't redundant; they're complementary.
+**Why four, not three, and not ten:**
+- Four gives the scoreboard real spread without drowning the student. Three collapses on close races; ten is paralysis.
+- Each of the four maps to a distinct failure mode (invention, overreach, citation cargo-cult, confirmation-only grounding). The methods aren't redundant; they're complementary.
 - Ensemble of top two is the plain ship — the lecture primes the student to expect that outcome rather than a clean single winner.
 
 **Rejected framings:**
 - *"Three techniques you'll use"* (previous version) — taught methods-to-know when the point is methods-to-measure. Empirical selection is the transferable skill; memorising three techniques is not.
 - *Named after the vendors who coined them* (RAG-check, self-consistency, etc.) — ties the teaching to current vendor fashion. The methods survive the fashion when they're named by what they catch.
-- *Ranking the five by importance* — the exercise measures importance empirically on the student's own material. Pre-ranking would steal the teaching.
+- *Ranking the methods by importance* — the exercise measures importance empirically on the student's own material. Pre-ranking would steal the teaching.
 
 **Capability check owed:**
 - None specific to this lecture. Delivery is trainer + screen; no Claude Code interaction during the lecture itself.
 
 **Watch-fors (deferred to facilitator notes pass):**
 - **"Just use a better model."** Student hears "fabrication is permanent" and asks whether the next model fixes it. Coach: *"Less, but not zero. The shape of the technology makes some level permanent. Design around it."*
-- **"What about RAG / vector databases / fine-tuning?"** Technical student asks. Coach: *"Those help with grounding by giving the agent better raw material. They don't change the detection job. All five candidates still apply — they're measuring the output, not the retrieval."*
+- **"What about RAG / vector databases / fine-tuning?"** Technical student asks. Coach: *"Those help with grounding by giving the agent better raw material. They don't change the detection job. The candidates still apply — they're measuring the output, not the retrieval."*
 - **"Can't I just pick the best one and skip the benchmark?"** Impatient student. Coach: *"On what basis? You don't know what your briefing's failure modes are until you measure. The benchmark IS the method selection — skipping it means picking by vibe."*
 - **Compound reliability math resistance.** Some students will want to argue the 85% number. Coach: *"The number is illustrative. Whatever YOUR number is, run the math. The compounding is the real point."*
 
-**Length:** ~950 words. Prework-reading band (800-1200) — above demo-script band (350-600). Delivered in-room (10-12 min). Five candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
+**Length:** ~950 words. Prework-reading band (800-1200) — above demo-script band (350-600). Delivered in-room (10-12 min). Four candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 

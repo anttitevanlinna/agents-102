@@ -1,7 +1,7 @@
 # Multi-Agent Systems
 
 ## Big Idea
-Hire three agents to search. Three more to decide, a fourth to combine them. The filesystem is the meeting room.
+Hire three agents to search. Three more to decide. The filesystem is the meeting room.
 
 ## Prework
 
@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Evaluate** when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins
 
 ## Start here
-Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means — plus a fourth that combines them. One of the three deciders is the contrarian seat — questions the obvious take, reframes the problem. What do you expect will get lost between them?
+Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. One of those three is the contrarian seat — questions the obvious take, reframes the problem. What do you expect will get lost between them?
 
 [Exercise: Name your crux](exercises/name-your-crux.md)
 

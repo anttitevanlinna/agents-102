@@ -19,7 +19,7 @@ First, produce a fresh briefing so every detector sees the same output. Open you
 ```
 This briefing is the test corpus — we WANT it to overreach in places so the detectors have something to catch. Blend general knowledge where sources don't cover; don't hedge.
 
-Produce a one-page executive briefing on the strategic question in module-3/question.md, using the material in module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
+Produce a one-page executive briefing on the strategic question (in ./crux.md, ## Question section), using the material in module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
 ```
 
 
@@ -109,7 +109,7 @@ Spawn the second batch. Between dispatching the regenerators and returning their
 ```
 Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
 
-Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
+Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question (in ./crux.md, ## Question section). Numbered list, one claim per line, quote source files.
 
 Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
 
@@ -132,7 +132,7 @@ When the four return, collate: read module-5/briefing.md and the four regenerato
 ```
 Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
 
-Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
+Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question (in ./crux.md, ## Question section). Numbered list, one claim per line, quote source files.
 
 Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
 

@@ -6,35 +6,33 @@ One mind won't do. Today you hire three agents to do the searching and three mor
 
 Two phases. Phase 1 feels like multi-agent: three sessions churning on the same folder, files materialising side by side. Phase 2 *is* multi-agent the way Claude Code ships it natively: one session, three minds spawned inside it, working in parallel.
 
-**Phase 0. One question, written down.**
+The crux and the decision question both live in `./crux.md` from the opening exercise. Retrievers, stances, and synthesizer all read it.
 
-Open your `./crux.md` (just produced in the opening exercise). What's the sharpest decision the crux blocks? One sentence. Not a topic, not a summary. A decision you'd stay late to make. Something like *"what's the right next move to unblock the crux, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are. Save it to `module-3/question.md`.
+**Phase 1. Three retrievers fetch sources, one synthesizer curates memory.**
 
-**Phase 1. Three retrievers, three sessions.**
+<span class="rt-code">Open your training directory in up to four Claude Code sessions.</span><span class="rt-cowork">Open up to four Cowork tasks on this connected folder.</span> Three retrievers fetch raw material into `sources/`; a fourth concurrent session synthesizes the retrievals into your `memory/` as they arrive. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
 
-<span class="rt-code">Open your training directory in up to four Claude Code sessions.</span><span class="rt-cowork">Open up to four Cowork tasks on this connected folder.</span> One per retriever you can run, plus one main session for Phase 2. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
-
-*A note on your M2 memory:* the retrievers search **live**. They don't re-read your M2 `sources/` or `memory/`. That's deliberate. Your memory becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.
+The retrievers go live — connectors and the open web. The synthesizer is the one curatorial act in Phase 1: it reads `sources/` as files appear and integrates findings into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time: raw retrievals in `sources/`, sharper memory in `memory/`.
 
 <div class="rt-code">
 
-*Start four Claude Code sessions in the training directory. Desktop users: open four app sessions side by side. CLI users: four terminal sessions, each running `claude` from the training directory. Name them in your head: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
+*Start four Claude Code sessions in the training directory. Desktop users: open four app sessions side by side. CLI users: four terminal sessions, each running `claude` from the training directory. Name them in your head: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (synthesizer — also your main session for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
 
 </div>
 <div class="rt-cowork">
 
-*Open four Cowork tasks on this connected folder. The path: in Claude Desktop, open the *Cowork* tab and start a new task pointed at your training directory. Repeat three more times; each new task connects to the same folder. You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. Name them in your head: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever), Task 4 (main, for Phase 2). They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
+*Open four Cowork tasks on this connected folder. The path: in Claude Desktop, open the *Cowork* tab and start a new task pointed at your training directory. Repeat three more times; each new task connects to the same folder. You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. Name them in your head: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever), Task 4 (synthesizer — also your main task for Phase 2). They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you get stuck; it's the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.*
 
 </div>
 
-**The rhythm:** paste the retriever prompts you can run, into Sessions 1, 2, and 3 as needed. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript. Confirm inline, quickly, don't polish. Then the retrievers run in parallel. *Now* switch between sessions and watch files land in `sources/`. The paperwork step is yours; the search is theirs.
+**The rhythm:** paste the retriever prompts you can run, into Sessions 1, 2, and 3 as needed. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript. Confirm inline, quickly, don't polish. Then the retrievers run in parallel. Paste the synthesizer prompt into Session 4 — it'll wait for the first retrieval to land, then start curating. *Now* switch between sessions and watch files appear in `sources/` and `memory/` sharpen at the same time. The paperwork step is yours; the search and the curation are theirs.
 
 In Session 1:
 
 **Prompt** *(Claude Code)*
 
 ```
-You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to the strategic question in module-3/question.md. Read the question first.
+You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to the strategic question (in ./crux.md, ## Question section). Read the question first.
 
 Then:
 1. Propose 6–8 search terms for my team's wiki. Confluence, Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it's ambiguous.
@@ -51,7 +49,7 @@ In Session 2:
 **Prompt** *(Claude Code)*
 
 ```
-You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for the strategic question in module-3/question.md.
+You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for the strategic question (in ./crux.md, ## Question section).
 
 Then:
 1. Ask me for three clues: names of documents I remember, people I've been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.
@@ -68,7 +66,7 @@ In Session 3:
 **Prompt** *(Claude Code)*
 
 ```
-You are the internet retriever for my challenge. Your job: find practitioner-grade external material on the strategic question in module-3/question.md. No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 12 months.
+You are the internet retriever for my challenge. Your job: find practitioner-grade external material on the strategic question (in ./crux.md, ## Question section). No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 12 months.
 
 Then:
 1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.
@@ -80,11 +78,32 @@ Sources first. Every finding cites the URL you actually fetched and the author. 
 ```
 
 
-Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Three agents are now working for you at once. Watch the files appear in `sources/`. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
+In Session 4:
+
+**Prompt** *(Claude Code)*
+
+```
+You are the synthesizer for my challenge. Three retrievers are running concurrently in Sessions 1, 2, and 3 — they'll write findings to sources/wiki-retrieval.md, sources/docs-retrieval.md, and sources/internet-retrieval.md as they finish. Your job is curation: integrate those findings into my memory/ topic pages, scoped to the strategic question (in ./crux.md, ## Question section).
+
+Memory is curated, not a raw dump. Existing topic pages cover the challenge — extend them where the new sources sharpen what's already there; create a new topic page where the retrievals reveal a topic memory was missing. Cite sources by filename + paragraph.
+
+The loop:
+1. Wait for any new content in sources/. When a file appears (or grows), read it.
+2. Diff against existing memory/ pages. Decide: extend an existing page, or write a new one?
+3. Make the update. Cite the source file by name. Integrate, don't append. Keep claims tight.
+4. Repeat until all three retrievals are integrated.
+
+When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md naming what changed, what's now sharper, where retrievals contradicted what was already in memory. That contradiction line is load-bearing — flag it, don't smooth it.
+
+Don't fabricate. Every memory update cites a source-file finding. If a retrieval is empty or thin, say so in your synthesis note rather than papering over the gap.
+```
+
+
+Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once — three fetching, one curating. Watch the files appear in `sources/` and `memory/` sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
 
 **Phase 2. Three minds, plus a synthesizer.**
 
-Switch to your main session. The three retrievals are on disk. Now you'll spawn four minds inside *this* session. <span class="rt-code">Claude Code calls them **subagents**.</span><span class="rt-cowork">Cowork calls them **agents**.</span> Claude decides to spawn one out when the work splits cleanly. Each one runs with its own context window (it doesn't see your scrollback), works in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.
+Switch to Session 4 — the synthesizer's done its Phase 1 job; memory is sharper than it was an hour ago. Now you'll spawn four minds inside *this* session. <span class="rt-code">Claude Code calls them **subagents**.</span><span class="rt-cowork">Cowork calls them **agents**.</span> Claude decides to spawn one out when the work splits cleanly. Each one runs with its own context window (it doesn't see your scrollback), works in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.
 
 Three minds first, in parallel. Each reads the retrievals and writes a short note. Then a synthesizer combines them against Rumelt's strategy kernel.
 
@@ -133,7 +152,7 @@ When the stances are sharp, ask the synthesizer to combine them.
 **Prompt** *(Claude Code)*
 
 ```
-Now spawn a fourth subagent: the synthesizer. It reads the three stance notes in module-3/stances/, the question in module-3/question.md, and the fresh retrievals in sources/ (wiki-retrieval, docs-retrieval, internet-retrieval, whichever exist).
+Now spawn a fourth subagent: the synthesizer. It reads the three stance notes in module-3/stances/, the question (in ./crux.md, ## Question section), and the fresh retrievals in sources/ (wiki-retrieval, docs-retrieval, internet-retrieval, whichever exist).
 
 Apply Rumelt's strategy kernel as the spine: diagnosis (what's really going on), guiding policy (one coherent approach), coherent actions (what we do Monday). Combine the three stances into a single answer to the question. Name where the three stances disagreed and which one you sided with and why.
 
@@ -146,7 +165,7 @@ Write the answer to module-3/answer.md.
 **Prompt** *(Claude Code)*
 
 ```
-Now spawn a fourth agent: the synthesizer. It reads the three stance notes in module-3/stances/, the question in module-3/question.md, and the fresh retrievals in sources/ (wiki-retrieval, docs-retrieval, internet-retrieval, whichever exist).
+Now spawn a fourth agent: the synthesizer. It reads the three stance notes in module-3/stances/, the question (in ./crux.md, ## Question section), and the fresh retrievals in sources/ (wiki-retrieval, docs-retrieval, internet-retrieval, whichever exist).
 
 Apply Rumelt's strategy kernel as the spine: diagnosis (what's really going on), guiding policy (one coherent approach), coherent actions (what we do Monday). Combine the three stances into a single answer to the question. Name where the three stances disagreed and which one you sided with and why.
 
@@ -192,7 +211,7 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: th
 - "The filesystem is the meeting room" — file-based agentic coordination (Boris Cherny / Anthropic observation), emerges experientially, named in the bridging lecture
 
 **Plug points:**
-- The strategic question — participant-written, one sentence, lives in `module-3/question.md`
+- The strategic question — participant-written, one sentence, lives in `./crux.md`
 - The three source zones — wiki / docs / internet. Prompt language is permissive (student names their wiki and doc store inline — Confluence / Notion / SharePoint wiki / Guru; OneDrive / SharePoint / Google Drive). No swap needed; the retrievers ask.
 - The Rumelt kernel default — can be swapped by challenge type (StoryBrand for positioning challenges, JTBD for product/feature calls, principle of least privilege for access decisions). Swap happens in one line of Phase 2's synthesizer prompt.
 - The Rory seat — optional swap for a premortem voice (Kahneman/Klein) on risk-heavy challenges, or a JTBD interviewer on customer-facing ones. Keep three stances. Keep them genuinely different.

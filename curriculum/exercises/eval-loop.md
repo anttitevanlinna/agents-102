@@ -25,7 +25,7 @@ Paste this into Claude Code to run the judge once by hand:
 ```
 Three things, in sequence:
 
-1. Produce a fresh one-page briefing on the question in module-3/question.md, using sources/ and module-3/stances/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don't cover. Save to module-6/fresh-briefing.md.
+1. Produce a fresh one-page briefing on the question (in ./crux.md, ## Question section), using sources/ and module-3/stances/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don't cover. Save to module-6/fresh-briefing.md.
 
 2. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md. For every claim, write the claim + the judge's verdict (GROUNDED / NOT GROUNDED / OVERREACH / etc.) + one sentence of per-claim feedback that names what would make it groundable (which source to cite, what precision the claim lacks, what caveat is missing). Save to module-6/first-run-judgment.md.
 
@@ -54,7 +54,7 @@ The judge at judges/groundedness-judge.md is fixed. It does not change across ro
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Dispatch a generator subagent. Input: ./grounding-style.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
+1. Dispatch a generator subagent. Input: ./grounding-style.md (current strategy), ./crux.md, and sources/. Output: module-6/runs/round-N/briefing.md.
 
 2. Dispatch a judge subagent. Input: judges/groundedness-judge.md and module-6/runs/round-N/briefing.md. Output: module-6/runs/round-N/judgment.md with each claim + verdict + one-sentence per-claim feedback naming what would make it groundable. Plus a top-line score: count of flagged claims.
 
@@ -83,7 +83,7 @@ The judge at judges/groundedness-judge.md is fixed. It does not change across ro
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Dispatch a generator agent. Input: ./grounding-style.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
+1. Dispatch a generator agent. Input: ./grounding-style.md (current strategy), ./crux.md, and sources/. Output: module-6/runs/round-N/briefing.md.
 
 2. Dispatch a judge agent. Input: judges/groundedness-judge.md and module-6/runs/round-N/briefing.md. Output: module-6/runs/round-N/judgment.md with each claim + verdict + one-sentence per-claim feedback naming what would make it groundable. Plus a top-line score: count of flagged claims.
 

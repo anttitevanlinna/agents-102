@@ -24,13 +24,28 @@ One sentence. Save it to ./crux.md and show me before saving.
 
 **Push back on the first crux.** Claude's first answer is usually too abstract: a tidy restatement of the problem, not the mechanism underneath. Read what it writes. If the sentence reads like something you'd put on a slide titled *"The Challenge,"* it's a problem statement, not a crux. Push: *"that's a restatement. What's the specific obstacle that, if it moved, would release pressure on the rest? Name the mechanism, not the goal."* Second try is usually sharper. Third try is usually right. The crux is worth the three rounds.
 
-**Time:** 5 minutes.
+The crux is the obstacle. Now name the decision the crux blocks — the call you'd stay late to make. Cruxes describe; decisions act.
+
+Ask Claude to name the sharpest decision the crux blocks and append it to the same file.
+
+**Prompt** *(Claude Code)*
+
+```
+Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you'd stay late to make. Something like *"what's the right next move to unblock the crux, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are.
+
+Append a `## Question` section to ./crux.md with the decision question. Don't overwrite the crux above. Show me before saving.
+```
+
+
+Read what Claude proposes. If the question is a topic restatement (*"how do we improve positioning?"*) rather than a real decision, push back: *"that's a topic, not a call. What would you actually choose between?"* Decision questions name a fork.
+
+**Time:** 8 minutes.
 
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29
 
-**Role in Module 3:** Opening exercise. Produces `./crux.md`, the seed the next exercise's strategic question derives from. Also the seed Module 8 cashes in.
+**Role in Module 3:** Opening exercise. Produces `./crux.md` with two sections — the crux (load-bearing obstacle) and the question (sharpest decision the crux blocks). Both are read by the retrievers, stances, and synthesizer in `three-retrievers-three-minds.md`.
 
 **Frameworks:**
 - Rumelt's *Good Strategy / Bad Strategy* — the crux concept. The strategy kernel (diagnosis → guiding policy → coherent actions) shows up later in M3's synthesizer prompt and uses the crux as the diagnosis spine.

@@ -1684,8 +1684,8 @@ body.workbook { padding-top: 3rem; }
 <li><strong>Primary Bloom&#39;s level:</strong> Apply</li>
 <li><strong>Prework:</strong> <a href="../../../site/clients/%3Cslug%3E/prework.md">Cowork tour, the morning planner, your personal CLAUDE.md</a>. About 30–60 minutes, async, optional but rewarded</li>
 <li><strong>Homework:</strong> none</li>
-<li><strong>Materials (organisers):</strong> <code>shared/m1-task.md</code>, prepared by the organisers before the cohort. No slides</li>
-<li><strong>Plug points:</strong> the buyer-chosen task in <code>shared/m1-task.md</code>; the participant&#39;s own organisation context; the OneDrive runtime line that opens every working CLAUDE.md</li>
+<li><strong>Materials (organisers):</strong> <code>m1-task.md</code> in the <code>shared</code> working folder, prepared by the organisers before the cohort. No slides</li>
+<li><strong>Plug points:</strong> the buyer-chosen task in the <code>shared</code> working folder; the participant&#39;s own organisation context; the OneDrive runtime line that opens every working CLAUDE.md</li>
 </ul>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -1738,24 +1738,24 @@ body.workbook { padding-top: 3rem; }
 <h1>Exercise: Build your system</h1>
 <p><strong>Time:</strong> 28 minutes. Five phases.</p>
 <p>Chat level in. Out: a working system on a task that matters to the team, rules written for that team&#39;s voice, in a folder that lives on after the cohort. The shape: build it boring, then build it yours.</p>
-<p>Open Cowork on the cohort SharePoint workspace. You will save your own files in your named folder under <code>participants/</code>, for example <code>participants/maija-koskinen/</code>. The task itself lives in <code>shared/m1-task.md</code>, prepared by your organisers before the workshop.</p>
+<p>Open Cowork with two working folders: your own participant folder and the <code>shared/</code> folder. You will save your own files in your participant folder. The task itself lives in the <code>shared</code> working folder as <code>m1-task.md</code>, prepared by your organisers before the workshop.</p>
 <p><strong>The task</strong> is the one your organisers picked before the cohort. A one-page IT-team response to a common Claude question internal users ask. Defaults: <em>is it safe to paste customer email content into Claude?</em> / <em>what&#39;s the difference between Claude and ChatGPT for our work?</em> / <em>which connectors should I enable?</em></p>
 <h2>Phase 1. The boring baseline (5 minutes)</h2>
 <p>Pose the task to Claude with no rules, no context, no setup. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
 <p>Ask Claude to read the shared task, draft the response, and save it in your personal folder.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `shared/m1-task.md`. Draft a one-page IT-team response we can send to an internal user.
+<pre><code>Read `m1-task.md` from the `shared` working folder. Draft a one-page IT-team response we can send to an internal user.
 
-Ask me for my participant folder under `participants/` if you do not already know it. Then save the draft as `response.md` in that folder.
+Save the draft as `response.md` in my participant working folder. If you cannot see both my participant working folder and the `shared` working folder, stop and ask me to add them.
 </code></pre>
 <p>Read what Claude wrote. Note three things. What&#39;s generic. What&#39;s off. What&#39;s plain wrong about how your team actually works.</p>
 <h2>Phase 2. Write your CLAUDE.md (7 minutes)</h2>
 <p>CLAUDE.md is a plain markdown file that carries the rules for your participant folder. In this workshop, each prompt explicitly reads it. When you later open that folder directly, it becomes the folder rules file. You and Claude write it together in chat. You don&#39;t open the file yourself.</p>
 <p>Ask Claude to propose 3 to 5 rules in chat first, push back on whatever&#39;s too generic, then have Claude save the final list.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read the `response.md` you saved in my participant folder. Propose 3 to 5 rules for a folder CLAUDE.md that would catch the most generic and the most off claims you made. Show me the rules in chat first, one sentence each. Don&#39;t save yet.
+<pre><code>Read `response.md` from my participant working folder. Propose 3 to 5 rules for a folder CLAUDE.md that would catch the most generic and the most off claims you made. Show me the rules in chat first, one sentence each. Don&#39;t save yet.
 
-After I push back, save the final list as `CLAUDE.md` in the same participant folder. Open the file with this line as rule 1, exactly:
+After I push back, save the final list as `CLAUDE.md` in my participant working folder. Open the file with this line as rule 1, exactly:
 &quot;You are working in a OneDrive-synced folder. Assume eventual consistency on cross-folder reads.&quot;
 </code></pre>
 <p>Push back in chat. <em>&quot;That rule is too generic. Give me one specific to my team&#39;s tone.&quot;</em> <em>&quot;Strike rule 3, it would fire on every output.&quot;</em> Claude rewrites. When the list reads as yours, ask Claude to save. A rule that catches everything catches nothing.</p>
@@ -1763,21 +1763,21 @@ After I push back, save the final list as `CLAUDE.md` in the same participant fo
 <p>Same question. New rules. Watch the diff.</p>
 <p>Ask Claude to redraft from scratch using the rules you just wrote.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Re-read the `response.md` and `CLAUDE.md` in my participant folder. Now redraft `response.md` from scratch in that same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you&#39;re changing and why.
+<pre><code>Re-read `response.md` and `CLAUDE.md` from my participant working folder. Now redraft `response.md` from scratch in that same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you&#39;re changing and why.
 </code></pre>
 <p>Claude&#39;s three-line diff summary at the top of this phase tells you what changed. The new version saved over the old one in <code>response.md</code>. Trust the summary and move on.</p>
 <h2>Phase 4. Catch the thing you knew was wrong (7 minutes)</h2>
 <p>Phase 1 produced at least one claim you knew was wrong. A tool your team doesn&#39;t use, a policy your org doesn&#39;t have, a vendor-pitch tone where your team writes plain. Add a rule that catches that specific shape.</p>
 <p>Ask Claude to add a guardrail for the specific wrong claim. Type the wrong claim after the colon.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Add ONE rule to the `CLAUDE.md` in my participant folder that would have caught a specific wrong claim from the Phase 1 response.md. The rule should fire on similar future claims, not on everything. After adding the rule, re-read `response.md` in the same folder, regenerate it, and tell me whether the new version still contains the wrong shape. The wrong claim from Phase 1:
+<pre><code>Add ONE rule to `CLAUDE.md` in my participant working folder that would have caught a specific wrong claim from the Phase 1 response.md. The rule should fire on similar future claims, not on everything. After adding the rule, re-read `response.md` in the same folder, regenerate it, and tell me whether the new version still contains the wrong shape. The wrong claim from Phase 1:
 </code></pre>
 <p>Read what changed. The rule&#39;s job is one specific shape of wrongness. Specific is the point.</p>
 <h2>Phase 5. Iterate until it&#39;s yours (5 minutes)</h2>
 <p>Last pass. The bar isn&#39;t <em>&quot;does Claude think this is good.&quot;</em> That bar is too low. Use a concrete one: name three things in the output that are unmistakably yours, not generic. A tool name your team actually uses. A phrase the team writes by default. A tone choice that isn&#39;t LLM-default.</p>
 <p>Ask Claude to iterate response.md and then name three specifics.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Final pass. Re-read `response.md` and `CLAUDE.md` in my participant folder. Iterate the response until three specific things in it are unmistakably about MY team and not generic. After you regenerate, name those three things in chat. I will confirm or push back on each one.
+<pre><code>Final pass. Re-read `response.md` and `CLAUDE.md` from my participant working folder. Iterate the response until three specific things in it are unmistakably about MY team and not generic. After you regenerate, name those three things in chat. I will confirm or push back on each one.
 </code></pre>
 <p>Confirm or push back on each of the three. If Claude can&#39;t name three things that are specifically yours, your CLAUDE.md doesn&#39;t yet hold enough of your team&#39;s voice. Add one more rule and run Phase 5 again.</p>
 <p>When three specifics survive push-back, the response is yours. Save it. The folder carries the system forward.</p>
@@ -1794,7 +1794,7 @@ After I push back, save the final list as `CLAUDE.md` in the same participant fo
 </ul>
 <h2>Plug Points</h2>
 <ul>
-<li><strong>The Phase 1 task.</strong> The organisers prepare one task that matters to the team&#39;s daily work and where the team knows the ground truth. It lives at <code>shared/m1-task.md</code> before the session starts. Defaults provided in the exercise file</li>
+<li><strong>The Phase 1 task.</strong> The organisers prepare one task that matters to the team&#39;s daily work and where the team knows the ground truth. It lives as <code>m1-task.md</code> in the <code>shared</code> working folder before the session starts. Defaults provided in the exercise file</li>
 <li><strong>Organisation context.</strong> The CLAUDE.md the participant writes in Phase 2 reflects the team&#39;s tone, terminology, and procedures. None of that is shipped pre-baked</li>
 <li><strong>OneDrive runtime line.</strong> Pre-shipped as the first rule in every CLAUDE.md template; the organisers mention it once, don&#39;t lecture it</li>
 </ul>
@@ -1820,10 +1820,10 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 <p><strong>Time:</strong> 2 hours before the workshop. Organisers only.</p>
 <p>This is the setup exercise for the whole 3-hour workshop. It keeps customer material inside the customer&#39;s SharePoint and Cowork environment. The public curriculum names the folder contract; organisers create and test the actual files.</p>
 <h2>What organisers need to understand</h2>
-<p>SharePoint is not just file storage for this workshop. It is the shared runtime. Participants work in their own folders so their drafts, CLAUDE.md files, and experiments stay personal. The <code>shared/</code> folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.</p>
+<p>SharePoint is not just file storage for this workshop. It is the shared runtime. Participants add two Cowork working folders: their own participant folder and the <code>shared/</code> folder. Personal drafts, CLAUDE.md files, and experiments stay in the participant folder. The <code>shared/</code> folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.</p>
 <p>This design protects customer material. The public workbook gives prompts and file names. The actual task, verification document, group findings, answer key, and synthesis files stay in the customer&#39;s SharePoint/Cowork environment. Bosser tooling does not need to see them.</p>
-<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork exactly which file to read and where to save the result. If someone loses their place, bring them back to three questions: which folder am I in, which file am I reading, and which file am I saving?</p>
-<p>The synthesis magic comes from sync plus constraint. Most participants write only inside <code>participants/&lt;name&gt;/</code>. Group drivers write the small number of shared group files. Once those files have synced, organisers can run the synthesis prompts against <code>shared/</code> and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone&#39;s machine.</p>
+<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork which working folder to read from and which working folder to save to. If someone loses their place, bring them back to three questions: are both folders added, which file am I reading, and which folder am I saving into?</p>
+<p>The synthesis magic comes from sync plus constraint. Most participants write only inside their participant working folder. Group drivers write the small number of shared group files into the <code>shared/</code> working folder. Once those files have synced, organisers can run the synthesis prompts against <code>shared/</code> and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone&#39;s machine.</p>
 <p>Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm it is in <code>shared/</code>, wait briefly, and retry. Do not turn that moment into a content discussion.</p>
 <p>The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the checking and rollout judgment. The private answer key exists to support reveal and synthesis, not to rescue the group from doing the work.</p>
 <h2>Phase 1. Create the workspace</h2>
@@ -1834,13 +1834,19 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 <li>one participant folder under <code>participants/</code> for each attendee</li>
 </ul>
 <p>Do not put customer material in the public curriculum repo. Customer-owned files live only in the customer workspace.</p>
+<p>In Cowork, participants do not rely on the cohort root. Each participant adds two working folders:</p>
+<ul>
+<li>their own participant folder</li>
+<li>the <code>shared/</code> folder</li>
+</ul>
 <h2>Phase 2. Prove access</h2>
 <p>Before the workshop, prove every participant can do all of this:</p>
 <ul>
 <li>sync or open the cohort SharePoint workspace</li>
-<li>start Cowork on the workspace</li>
-<li>read a file from <code>shared/</code></li>
-<li>save a test markdown file in their own participant folder</li>
+<li>add their own participant folder as a Cowork working folder</li>
+<li>add <code>shared/</code> as a second Cowork working folder</li>
+<li>read a file from the <code>shared</code> working folder</li>
+<li>save a test markdown file in their participant working folder</li>
 <li>find their participant folder name again without help</li>
 </ul>
 <p>If this fails, the workshop does not start as designed. Fix access before content.</p>
@@ -1852,7 +1858,7 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 <li>a one-page response comparing Claude and ChatGPT for the team&#39;s work</li>
 <li>a one-page response on which connectors internal users should enable</li>
 </ul>
-<p>Dry-run Module 1 Phase 1 against <code>shared/m1-task.md</code> in a fresh Cowork session. The bare output should contain at least three catchable generic, off, or wrong items. If the output is simply fine, sharpen the task.</p>
+<p>Dry-run Module 1 Phase 1 in a fresh Cowork session with both the test participant folder and <code>shared/</code> added as working folders. The bare output should contain at least three catchable generic, off, or wrong items. If the output is simply fine, sharpen the task.</p>
 <h2>Phase 4. Prepare <code>shared/m2-verification-output.md</code></h2>
 <p>Create a two-page plausible output with about fifty factual claims. The claims should cover a mix of security, data handling, licensing, connectors, rollout advice, user instructions, numbers, dates, and product capabilities.</p>
 <p>Seed or preserve several kinds of wrongness:</p>
@@ -1871,7 +1877,7 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 <li>9 to 12 participants: 3 groups</li>
 <li>13 to 16 participants: 4 groups</li>
 </ul>
-<p>Confirm that nominated group drivers can write to <code>shared/</code>. M3 does not need a prewritten rollout-context file. It starts fresh from participant interviews.</p>
+<p>Confirm that nominated group drivers can write to the <code>shared</code> working folder in Cowork. M3 does not need a prewritten rollout-context file. It starts fresh from participant interviews.</p>
 <h2>Phase 6. Dry-run the organiser prompts</h2>
 <p>Run a quick rehearsal of the organiser-only synthesis prompts using dummy files:</p>
 <ul>
@@ -1880,14 +1886,14 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 </ul>
 <p>Use fake group files or non-sensitive sample content. The point is to test file paths, save behavior, timing, and the organisers&#39; push-back rhythm.</p>
 <h2>Phase 7. Dry-run as one participant</h2>
-<p>Create or use one test participant folder, for example <code>participants/test-participant/</code>. Run the workshop path from a participant point of view, not from an organiser/admin view.</p>
+<p>Create or use one test participant folder, for example <code>participants/test-participant/</code>. In Cowork, add that test participant folder and <code>shared/</code> as the two working folders. Run the workshop path from a participant point of view, not from an organiser/admin view.</p>
 <p>Do a thin pass through each module:</p>
 <ul>
-<li>M1: read <code>shared/m1-task.md</code>, save <code>response.md</code>, and save a minimal <code>CLAUDE.md</code> in the test participant folder</li>
-<li>M2: read <code>shared/m2-verification-output.md</code>, create <code>claim-pool.md</code>, <code>evidence-map.md</code>, and <code>verification-table.md</code> in the test participant folder</li>
-<li>M2 group driver: save a dummy <code>shared/group-1-verification.md</code></li>
+<li>M1: read <code>m1-task.md</code> from the <code>shared</code> working folder, save <code>response.md</code>, and save a minimal <code>CLAUDE.md</code> in the test participant working folder</li>
+<li>M2: read <code>m2-verification-output.md</code> from the <code>shared</code> working folder, create <code>claim-pool.md</code>, <code>evidence-map.md</code>, and <code>verification-table.md</code> in the test participant working folder</li>
+<li>M2 group driver: save a dummy <code>group-1-verification.md</code> in the <code>shared</code> working folder</li>
 <li>M3: save <code>m3-rollout-notes.md</code> in the test participant folder</li>
-<li>M3 group driver: save a dummy <code>shared/group-1-rollout-synthesis.md</code></li>
+<li>M3 group driver: save a dummy <code>group-1-rollout-synthesis.md</code> in the <code>shared</code> working folder</li>
 </ul>
 <p>Delete or clearly mark test files before the workshop. Keep any real customer content inside the customer environment.</p>
 <p>The dry-run succeeds only if the participant path works without organiser-only permissions.</p>
@@ -1899,10 +1905,11 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 <li>organisers know where the public workbook is and can point participants to the current module prompts</li>
 <li>private M2 answer key is available only to organisers</li>
 <li>participant folders exist</li>
+<li>participants can add both their participant folder and <code>shared/</code> as Cowork working folders</li>
 <li>organisers know group count and group numbers</li>
-<li>group drivers know they are the only participant writers to <code>shared/</code></li>
-<li>organisers can save <code>shared/m2-verification-synthesis.md</code></li>
-<li>organisers can save <code>shared/m3-organisers-rollout-readout.md</code> if the optional readout runs</li>
+<li>group drivers know they are the only participant writers to the <code>shared</code> working folder</li>
+<li>organisers can save <code>m2-verification-synthesis.md</code> in the <code>shared</code> working folder</li>
+<li>organisers can save <code>m3-organisers-rollout-readout.md</code> in the <code>shared</code> working folder if the optional readout runs</li>
 <li>the test participant dry-run has passed</li>
 </ul>
 <p>The workshop is ready when access, shared inputs, and organiser synthesis saves all work.</p>
@@ -1919,10 +1926,10 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 <h2>Meta</h2>
 <ul>
 <li><strong>Primary Bloom&#39;s level:</strong> Apply → Evaluate</li>
-<li><strong>Prework:</strong> none in Module 2 (Module 1 already had everyone in Cowork on the cohort SharePoint workspace; personal CLAUDE.md exists)</li>
+<li><strong>Prework:</strong> none in Module 2 (Module 1 already had everyone in Cowork with their participant folder and <code>shared</code> folder added; personal CLAUDE.md exists)</li>
 <li><strong>Homework:</strong> none</li>
-<li><strong>Materials (organisers):</strong> <code>shared/m2-verification-output.md</code>, prepared and pre-screened by the organisers before the cohort, plus the organisers&#39; private answer key</li>
-<li><strong>Plug points:</strong> the pre-staged two-page output; evidence surfaces available to the team; group verification files in <code>shared/</code>; the team rule in <code>shared/m2-verification-synthesis.md</code></li>
+<li><strong>Materials (organisers):</strong> <code>m2-verification-output.md</code> in the <code>shared</code> working folder, prepared and pre-screened by the organisers before the cohort, plus the organisers&#39; private answer key</li>
+<li><strong>Plug points:</strong> the pre-staged two-page output; evidence surfaces available to the team; group verification files in the <code>shared</code> working folder; the team rule in <code>m2-verification-synthesis.md</code></li>
 </ul>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -1979,12 +1986,12 @@ Keep it concrete. One rule. Two sentences. Tell me what it would catch.
 
 <h1>Exercise: Find the wrong claims</h1>
 <p><strong>Time:</strong> 27 minutes of participant work. Five phases. Phase 5 runs after the organisers complete their separate synthesis exercise.</p>
-<p>The organisers prepared a two-page output before the workshop. It lives at <code>shared/m2-verification-output.md</code>. It looks useful. It contains about fifty factual claims. Some are wrong. Some are unsupported. Some cannot be checked from the room.</p>
+<p>The organisers prepared a two-page output before the workshop. It lives in the <code>shared</code> working folder as <code>m2-verification-output.md</code>. It looks useful. It contains about fifty factual claims. Some are wrong. Some are unsupported. Some cannot be checked from the room.</p>
 <p>Your job is not to read harder. Your job is to turn plausible output into a checking system.</p>
 <h2>Phase 1. Extract the claim pool (5 minutes)</h2>
 <p>Ask Claude to read the shared output and extract the claims worth checking.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `shared/m2-verification-output.md`.
+<pre><code>Read `m2-verification-output.md` from the `shared` working folder.
 
 Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our IT team repeated them to internal users: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
 
@@ -1994,14 +2001,14 @@ Create a markdown table with these columns:
 
 For &quot;Where I would check&quot;, name the most useful evidence surface: public docs, internal policy, SharePoint file, admin panel, or named owner. If the right place is not obvious, write &quot;not obvious&quot;.
 
-Show me the table in chat first. After I push back, ask me for my participant folder under `participants/` if you do not already know it. Then save the table as `claim-pool.md` in that folder.
+Show me the table in chat first. After I push back, save the table as `claim-pool.md` in my participant working folder. If you cannot see both my participant working folder and the `shared` working folder, stop and ask me to add them.
 </code></pre>
 <p>Read the proposed table. Push back where the evidence surface is wrong or too vague. The table is the measuring surface for the rest of the exercise.</p>
 <h2>Phase 2. Find the evidence (6 minutes)</h2>
-<p>Now build the evidence map. Use the tools and sources available in your environment: public docs, intranet, SharePoint, policy files in <code>shared/</code>, admin panels, or people who own the answer.</p>
+<p>Now build the evidence map. Use the tools and sources available in your environment: public docs, intranet, SharePoint, policy files in the <code>shared</code> working folder, admin panels, or people who own the answer.</p>
 <p>Ask Claude to turn the claim pool into a concrete evidence plan.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `claim-pool.md` in my participant folder.
+<pre><code>Read `claim-pool.md` from my participant working folder.
 
 Build an evidence map for the claims. For each claim, name:
 - the first source I should check
@@ -2014,7 +2021,7 @@ Use this table:
 
 Do not verify the claims yet. This phase is only about finding the right ground to check against.
 
-Save the evidence map as `evidence-map.md` in my participant folder.
+Save the evidence map as `evidence-map.md` in my participant working folder.
 </code></pre>
 <p>The point is not to have all answers yet. The point is to know where the ground is.</p>
 <h2>Phase 3. Run two checks (8 minutes)</h2>
@@ -2023,7 +2030,7 @@ Save the evidence map as `evidence-map.md` in my participant folder.
 <p><strong>Counter-evidence</strong> asks whether another source contradicts or weakens the claim. This catches plausible but outdated, one-sided, or overconfident claims.</p>
 <p>Ask Claude to run both checks on the claim pool.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `claim-pool.md` and `evidence-map.md` in my participant folder.
+<pre><code>Read `claim-pool.md` and `evidence-map.md` from my participant working folder.
 
 For each claim, run two checks:
 
@@ -2033,7 +2040,7 @@ For each claim, run two checks:
 
 Use any available source I can access in this environment: public docs, internal policy, SharePoint files, admin panels, or named owners. Do not invent a source. If a source is unavailable, say so.
 
-Save the result as `verification-table.md` in my participant folder with this shape:
+Save the result as `verification-table.md` in my participant working folder with this shape:
 
 | Claim | Source support | Counter-evidence | Verdict | Notes |
 
@@ -2048,7 +2055,7 @@ After saving, tell me which of the two checks caught more useful problems.
 </code></pre>
 <p>If a row feels uncertain, keep it uncertain. <em>I-can&#39;t-tell</em> is an answer the team can act on.</p>
 <h2>Phase 4. Save the group result (4 minutes)</h2>
-<p>Each group produces one short file for the organisers to read. Pick one driver in the group. The driver asks Claude to combine the group&#39;s findings and writes the group output to <code>shared/</code>.</p>
+<p>Each group produces one short file for the organisers to read. Pick one driver in the group. The driver asks Claude to combine the group&#39;s findings and writes the group output to the <code>shared</code> working folder.</p>
 <p>Ask Claude to write the group result.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
 <pre><code>Create our group&#39;s verification result for the organisers.
@@ -2062,14 +2069,14 @@ Write a short markdown file with:
 - which method caught more useful problems: source support or counter-evidence
 - one proposed rule for future Claude answers
 
-Ask me for our group number if you do not already know it. If I say group 2, save the file as `shared/group-2-verification.md`. Use the same pattern for the group number I give you.
+Ask me for our group number if you do not already know it. If I say group 2, save the file as `group-2-verification.md` in the `shared` working folder. Use the same pattern for the group number I give you.
 </code></pre>
-<p>The filename should look like <code>shared/group-1-verification.md</code>, <code>shared/group-2-verification.md</code>, or <code>shared/group-3-verification.md</code>.</p>
+<p>The filename should look like <code>group-1-verification.md</code>, <code>group-2-verification.md</code>, or <code>group-3-verification.md</code> in the <code>shared</code> working folder.</p>
 <h2>Phase 5. Personal rule from synthesis (4 minutes)</h2>
-<p>After the organisers&#39; synthesis is visible in <code>shared/m2-verification-synthesis.md</code>, update your personal <code>CLAUDE.md</code> with one to three rules.</p>
+<p>After the organisers&#39; synthesis is visible as <code>m2-verification-synthesis.md</code> in the <code>shared</code> working folder, update your personal <code>CLAUDE.md</code> with one to three rules.</p>
 <p>Ask Claude to turn the synthesis into personal operating rules.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `shared/m2-verification-synthesis.md`, then read the `CLAUDE.md` in my participant folder.
+<pre><code>Read `m2-verification-synthesis.md` from the `shared` working folder, then read `CLAUDE.md` from my participant working folder.
 
 Add or sharpen 1 to 3 verification rules for future Claude answers. Focus on the claim shapes this team just saw fail: security, data handling, licensing, connectors, rollout advice, user instructions, numbers, dates, or product capabilities.
 
@@ -2092,16 +2099,16 @@ Do not paste a summary of the exercise. Integrate the rules into CLAUDE.md. Then
 </ul>
 <h2>Plug Points</h2>
 <ul>
-<li><strong>The pre-staged output.</strong> The organisers prepare <code>shared/m2-verification-output.md</code>: two pages, roughly fifty factual claims, with plausible wrongness seeded or preserved</li>
+<li><strong>The pre-staged output.</strong> The organisers prepare <code>m2-verification-output.md</code> in the <code>shared</code> working folder: two pages, roughly fifty factual claims, with plausible wrongness seeded or preserved</li>
 <li><strong>The evidence surfaces.</strong> Public docs, internal policy, intranet, SharePoint files, admin panels, or named owners. The organisers help with access mechanics; the team owns the judgment</li>
 <li><strong>The private answer key.</strong> The organisers pre-screen enough claims to reveal 5-8 examples after the groups report</li>
-<li><strong>Group outputs.</strong> Nominated group drivers write <code>shared/group-*-verification.md</code>; organisers run the separate synthesis exercise to write <code>shared/m2-verification-synthesis.md</code></li>
+<li><strong>Group outputs.</strong> Nominated group drivers write <code>group-*-verification.md</code> in the <code>shared</code> working folder; organisers run the separate synthesis exercise to write <code>m2-verification-synthesis.md</code></li>
 </ul>
 <h2>Debrief</h2>
 <p>Five minutes. The personal rule-write already happened in Phase 5 of the exercise. This Debrief addresses what stayed open.</p>
 <p>Ask Claude to list every row from your <code>verification-table.md</code> that stayed unsupported, overreaching, or <em>&quot;I-can&#39;t-tell.&quot;</em></p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `verification-table.md` in my participant folder. List the rows with verdict unsupported, overreaches, or I-can&#39;t-tell.
+<pre><code>Read `verification-table.md` from my participant working folder. List the rows with verdict unsupported, overreaches, or I-can&#39;t-tell.
 
 For each row, show:
 - the claim
@@ -2120,11 +2127,11 @@ Don&#39;t suggest fixes. I want to see what stayed open.
 
 <h1>Exercise: Organisers synthesize verification</h1>
 <p><strong>Time:</strong> 4 minutes. Organisers only.</p>
-<p>This exercise happens while the participant groups have saved their verification files to <code>shared/</code>. It is not a participant prompt. The job is to turn group findings and the private answer key into one team synthesis.</p>
+<p>This exercise happens while the participant groups have saved their verification files to the <code>shared</code> working folder. It is not a participant prompt. The job is to turn group findings and the private answer key into one team synthesis.</p>
 <h2>Phase 1. Read across the group files</h2>
 <p>Ask Claude to synthesize the group outputs.</p>
 <p><strong>Prompt</strong> <em>(Cowork, organisers only)</em></p>
-<pre><code>Read the group verification files in `shared/`.
+<pre><code>Read the group verification files from the `shared` working folder.
 
 Use the group files plus the private answer key I provide in chat. Do not invent answer-key details. If I do not provide the answer key, synthesize only what the group files support.
 
@@ -2137,7 +2144,7 @@ Create a concise team synthesis with:
 
 Show me the synthesis in chat first. Don&#39;t save yet. I will correct anything that conflicts with the private answer key.
 
-After I approve it, save it as `shared/m2-verification-synthesis.md`.
+After I approve it, save it as `m2-verification-synthesis.md` in the `shared` working folder.
 </code></pre>
 <p>Use the private answer key only inside the customer&#39;s environment. Do not paste customer material into Bosser tooling.</p>
 <h2>Phase 2. Name the carry-forward rule</h2>
@@ -2154,10 +2161,10 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 <p><strong>Time:</strong> 2 hours before the workshop. Organisers only.</p>
 <p>This is the setup exercise for the whole 3-hour workshop. It keeps customer material inside the customer&#39;s SharePoint and Cowork environment. The public curriculum names the folder contract; organisers create and test the actual files.</p>
 <h2>What organisers need to understand</h2>
-<p>SharePoint is not just file storage for this workshop. It is the shared runtime. Participants work in their own folders so their drafts, CLAUDE.md files, and experiments stay personal. The <code>shared/</code> folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.</p>
+<p>SharePoint is not just file storage for this workshop. It is the shared runtime. Participants add two Cowork working folders: their own participant folder and the <code>shared/</code> folder. Personal drafts, CLAUDE.md files, and experiments stay in the participant folder. The <code>shared/</code> folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.</p>
 <p>This design protects customer material. The public workbook gives prompts and file names. The actual task, verification document, group findings, answer key, and synthesis files stay in the customer&#39;s SharePoint/Cowork environment. Bosser tooling does not need to see them.</p>
-<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork exactly which file to read and where to save the result. If someone loses their place, bring them back to three questions: which folder am I in, which file am I reading, and which file am I saving?</p>
-<p>The synthesis magic comes from sync plus constraint. Most participants write only inside <code>participants/&lt;name&gt;/</code>. Group drivers write the small number of shared group files. Once those files have synced, organisers can run the synthesis prompts against <code>shared/</code> and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone&#39;s machine.</p>
+<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork which working folder to read from and which working folder to save to. If someone loses their place, bring them back to three questions: are both folders added, which file am I reading, and which folder am I saving into?</p>
+<p>The synthesis magic comes from sync plus constraint. Most participants write only inside their participant working folder. Group drivers write the small number of shared group files into the <code>shared/</code> working folder. Once those files have synced, organisers can run the synthesis prompts against <code>shared/</code> and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone&#39;s machine.</p>
 <p>Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm it is in <code>shared/</code>, wait briefly, and retry. Do not turn that moment into a content discussion.</p>
 <p>The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the checking and rollout judgment. The private answer key exists to support reveal and synthesis, not to rescue the group from doing the work.</p>
 <h2>Phase 1. Create the workspace</h2>
@@ -2168,13 +2175,19 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 <li>one participant folder under <code>participants/</code> for each attendee</li>
 </ul>
 <p>Do not put customer material in the public curriculum repo. Customer-owned files live only in the customer workspace.</p>
+<p>In Cowork, participants do not rely on the cohort root. Each participant adds two working folders:</p>
+<ul>
+<li>their own participant folder</li>
+<li>the <code>shared/</code> folder</li>
+</ul>
 <h2>Phase 2. Prove access</h2>
 <p>Before the workshop, prove every participant can do all of this:</p>
 <ul>
 <li>sync or open the cohort SharePoint workspace</li>
-<li>start Cowork on the workspace</li>
-<li>read a file from <code>shared/</code></li>
-<li>save a test markdown file in their own participant folder</li>
+<li>add their own participant folder as a Cowork working folder</li>
+<li>add <code>shared/</code> as a second Cowork working folder</li>
+<li>read a file from the <code>shared</code> working folder</li>
+<li>save a test markdown file in their participant working folder</li>
 <li>find their participant folder name again without help</li>
 </ul>
 <p>If this fails, the workshop does not start as designed. Fix access before content.</p>
@@ -2186,7 +2199,7 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 <li>a one-page response comparing Claude and ChatGPT for the team&#39;s work</li>
 <li>a one-page response on which connectors internal users should enable</li>
 </ul>
-<p>Dry-run Module 1 Phase 1 against <code>shared/m1-task.md</code> in a fresh Cowork session. The bare output should contain at least three catchable generic, off, or wrong items. If the output is simply fine, sharpen the task.</p>
+<p>Dry-run Module 1 Phase 1 in a fresh Cowork session with both the test participant folder and <code>shared/</code> added as working folders. The bare output should contain at least three catchable generic, off, or wrong items. If the output is simply fine, sharpen the task.</p>
 <h2>Phase 4. Prepare <code>shared/m2-verification-output.md</code></h2>
 <p>Create a two-page plausible output with about fifty factual claims. The claims should cover a mix of security, data handling, licensing, connectors, rollout advice, user instructions, numbers, dates, and product capabilities.</p>
 <p>Seed or preserve several kinds of wrongness:</p>
@@ -2205,7 +2218,7 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 <li>9 to 12 participants: 3 groups</li>
 <li>13 to 16 participants: 4 groups</li>
 </ul>
-<p>Confirm that nominated group drivers can write to <code>shared/</code>. M3 does not need a prewritten rollout-context file. It starts fresh from participant interviews.</p>
+<p>Confirm that nominated group drivers can write to the <code>shared</code> working folder in Cowork. M3 does not need a prewritten rollout-context file. It starts fresh from participant interviews.</p>
 <h2>Phase 6. Dry-run the organiser prompts</h2>
 <p>Run a quick rehearsal of the organiser-only synthesis prompts using dummy files:</p>
 <ul>
@@ -2214,14 +2227,14 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 </ul>
 <p>Use fake group files or non-sensitive sample content. The point is to test file paths, save behavior, timing, and the organisers&#39; push-back rhythm.</p>
 <h2>Phase 7. Dry-run as one participant</h2>
-<p>Create or use one test participant folder, for example <code>participants/test-participant/</code>. Run the workshop path from a participant point of view, not from an organiser/admin view.</p>
+<p>Create or use one test participant folder, for example <code>participants/test-participant/</code>. In Cowork, add that test participant folder and <code>shared/</code> as the two working folders. Run the workshop path from a participant point of view, not from an organiser/admin view.</p>
 <p>Do a thin pass through each module:</p>
 <ul>
-<li>M1: read <code>shared/m1-task.md</code>, save <code>response.md</code>, and save a minimal <code>CLAUDE.md</code> in the test participant folder</li>
-<li>M2: read <code>shared/m2-verification-output.md</code>, create <code>claim-pool.md</code>, <code>evidence-map.md</code>, and <code>verification-table.md</code> in the test participant folder</li>
-<li>M2 group driver: save a dummy <code>shared/group-1-verification.md</code></li>
+<li>M1: read <code>m1-task.md</code> from the <code>shared</code> working folder, save <code>response.md</code>, and save a minimal <code>CLAUDE.md</code> in the test participant working folder</li>
+<li>M2: read <code>m2-verification-output.md</code> from the <code>shared</code> working folder, create <code>claim-pool.md</code>, <code>evidence-map.md</code>, and <code>verification-table.md</code> in the test participant working folder</li>
+<li>M2 group driver: save a dummy <code>group-1-verification.md</code> in the <code>shared</code> working folder</li>
 <li>M3: save <code>m3-rollout-notes.md</code> in the test participant folder</li>
-<li>M3 group driver: save a dummy <code>shared/group-1-rollout-synthesis.md</code></li>
+<li>M3 group driver: save a dummy <code>group-1-rollout-synthesis.md</code> in the <code>shared</code> working folder</li>
 </ul>
 <p>Delete or clearly mark test files before the workshop. Keep any real customer content inside the customer environment.</p>
 <p>The dry-run succeeds only if the participant path works without organiser-only permissions.</p>
@@ -2233,10 +2246,11 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 <li>organisers know where the public workbook is and can point participants to the current module prompts</li>
 <li>private M2 answer key is available only to organisers</li>
 <li>participant folders exist</li>
+<li>participants can add both their participant folder and <code>shared/</code> as Cowork working folders</li>
 <li>organisers know group count and group numbers</li>
-<li>group drivers know they are the only participant writers to <code>shared/</code></li>
-<li>organisers can save <code>shared/m2-verification-synthesis.md</code></li>
-<li>organisers can save <code>shared/m3-organisers-rollout-readout.md</code> if the optional readout runs</li>
+<li>group drivers know they are the only participant writers to the <code>shared</code> working folder</li>
+<li>organisers can save <code>m2-verification-synthesis.md</code> in the <code>shared</code> working folder</li>
+<li>organisers can save <code>m3-organisers-rollout-readout.md</code> in the <code>shared</code> working folder if the optional readout runs</li>
 <li>the test participant dry-run has passed</li>
 </ul>
 <p>The workshop is ready when access, shared inputs, and organiser synthesis saves all work.</p>
@@ -2255,7 +2269,7 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 <li><strong>Primary Bloom&#39;s level:</strong> Evaluate</li>
 <li><strong>Prework:</strong> none</li>
 <li><strong>Homework:</strong> none</li>
-<li><strong>Materials (organisers):</strong> group numbers, <code>shared/</code> write access for nominated group drivers, and a dry-run of the group-synthesis prompt one day pre-cohort</li>
+<li><strong>Materials (organisers):</strong> group numbers, <code>shared</code> working-folder write access for nominated group drivers, and a dry-run of the group-synthesis prompt one day pre-cohort</li>
 <li><strong>Plug points:</strong> the team&#39;s actual rollout difficulties; the group synthesis files; optional cross-pollination once group synthesis has succeeded; optional organisers-only readout</li>
 </ul>
 <h2>What You&#39;ll Learn</h2>
@@ -2277,23 +2291,23 @@ After I approve it, save it as `shared/m2-verification-synthesis.md`.
 
 <h1>Exercise: Find the crux</h1>
 <p><strong>Time:</strong> 32 minutes. Three phases.</p>
-<p>Module 3 is collaborative, but it should not become shared-folder debugging. Each participant starts in their own Cowork session. Each group nominates one driver. The driver writes one clean group synthesis to <code>shared/</code>.</p>
+<p>Module 3 is collaborative, but it should not become shared-folder debugging. Each participant starts in Cowork with their participant folder and the <code>shared</code> folder both added as working folders. Each group nominates one driver. The driver writes one clean group synthesis to the <code>shared</code> working folder.</p>
 <p>Before Phase 1: confirm your group number. You will need it in Phase 2.</p>
 <h2>Phase 1. Divergence (10 minutes)</h2>
 <p>Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn&#39;t to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.</p>
-<p>Ask Claude to interview you about your team&#39;s top three Claude-rollout difficulties and save the notes in your participant folder.</p>
+<p>Ask Claude to interview you about your team&#39;s top three Claude-rollout difficulties and save the notes in your participant working folder.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Interview me about the top three difficulties I see in our team&#39;s Claude rollout. Ask one question at a time. Don&#39;t show me the next question until I&#39;ve answered the current one.
 
 Start with: &quot;What&#39;s the first difficulty you see?&quot; After my answer, push back once: ask for a specific example, or ask whether that&#39;s the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I&#39;ve answered all three with push-back, ask me for my participant folder under `participants/` if you do not already know it. Then save the conversation as `m3-rollout-notes.md` in that folder.
+When I&#39;ve answered all three with push-back, save the conversation as `m3-rollout-notes.md` in my participant working folder. If you cannot see both my participant working folder and the `shared` working folder, stop and ask me to add them.
 
 Include the three difficulties and the push-back answers, in my voice. Don&#39;t summarize them into your own register.
 </code></pre>
 <p>Answer Claude&#39;s questions in plain language. When the file saves, you&#39;re done with Phase 1.</p>
 <h2>Phase 2. Group synthesis (17 minutes)</h2>
-<p>Each group picks ONE participant to be the driver. The driver is the only person writing to <code>shared/</code> in this phase.</p>
+<p>Each group picks ONE participant to be the driver. The driver is the only person writing to the <code>shared</code> working folder in this phase.</p>
 <p>The group talks through the personal notes. Do not start by reading other groups. Your job is to find your group&#39;s crux first.</p>
 <p>Ask Claude, in the driver&#39;s Cowork session, to help synthesize the group&#39;s views.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
@@ -2305,7 +2319,7 @@ Then interview the group in chat. Ask for each person&#39;s top rollout difficul
 
 Show the crux candidate in chat first, in two sentences. Don&#39;t save yet. I will ask the group what is wrong or missing.
 
-After I give you the group&#39;s push-back, rewrite the synthesis and save it in `shared/` using the group number. If I say group 2, save the file as `shared/group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
+After I give you the group&#39;s push-back, rewrite the synthesis and save it in the `shared` working folder using the group number. If I say group 2, save the file as `group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
 
 The file must include:
 - named crux
@@ -2320,7 +2334,7 @@ The file must include:
 <p>Run this only after every group has saved its synthesis. If any group is still synthesizing, skip this phase and protect the core artifact.</p>
 <p>Ask Claude to read one other group&#39;s synthesis and borrow one useful idea without blurring your group&#39;s crux.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
-<pre><code>Read our group&#39;s rollout synthesis in `shared/`. Then read one other group&#39;s rollout synthesis from `shared/`.
+<pre><code>Read our group&#39;s rollout synthesis from the `shared` working folder. Then read one other group&#39;s rollout synthesis from the `shared` working folder.
 
 Compare them briefly:
 - one idea the other group saw that we missed
@@ -2346,7 +2360,7 @@ Show me the proposed addition in chat first. Don&#39;t save until the group appr
 <ul>
 <li><strong>Group composition.</strong> Organisers scale group count to participant count: 2-3 groups for 8 or fewer; 3 groups for 9-12; 4 groups for 13-16</li>
 <li><strong>The cohort&#39;s real rollout difficulties.</strong> Each participant&#39;s divergence interview is on their own org&#39;s rollout, not a generic case</li>
-<li><strong>The group synthesis files.</strong> Each nominated driver writes one file: <code>shared/group-N-rollout-synthesis.md</code></li>
+<li><strong>The group synthesis files.</strong> Each nominated driver writes one file in the <code>shared</code> working folder, named like <code>group-N-rollout-synthesis.md</code></li>
 <li><strong>Optional cross-pollination.</strong> If every group synthesis exists with time left, groups read one other group&#39;s synthesis and borrow one useful idea</li>
 <li><strong>Organisers&#39; readout.</strong> Organisers may run their separate synthesis exercise after the group files exist</li>
 </ul>
@@ -2354,7 +2368,7 @@ Show me the proposed addition in chat first. Don&#39;t save until the group appr
 <p>Two minutes. The reveal already happened in the exercise close; the Debrief sits with what changed.</p>
 <p>Ask Claude to read your group&#39;s synthesis and name the one move you would personally prioritise this week.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read our group&#39;s rollout synthesis file from `shared/`.
+<pre><code>Read our group&#39;s rollout synthesis file from the `shared` working folder.
 
 Look at it from MY position on the team. Of the moves named in the synthesis, which ONE would I personally do first this week, and why? One sentence. No hedging.
 </code></pre>
@@ -2368,11 +2382,11 @@ Look at it from MY position on the team. Of the moves named in the synthesis, wh
 
 <h1>Exercise: Organisers synthesize rollout</h1>
 <p><strong>Time:</strong> 6 minutes. Organisers only.</p>
-<p>This exercise happens after groups have saved <code>shared/group-N-rollout-synthesis.md</code>. It is not required for the participant exercise to succeed. The job is to read across group syntheses and create one organisers&#39; readout that can travel after the workshop.</p>
+<p>This exercise happens after groups have saved <code>group-N-rollout-synthesis.md</code> in the <code>shared</code> working folder. It is not required for the participant exercise to succeed. The job is to read across group syntheses and create one organisers&#39; readout that can travel after the workshop.</p>
 <h2>Phase 1. Read across the group syntheses</h2>
 <p>Ask Claude to synthesize the saved group files.</p>
 <p><strong>Prompt</strong> <em>(Cowork, organisers only)</em></p>
-<pre><code>Read the group rollout synthesis files in `shared/`.
+<pre><code>Read the group rollout synthesis files from the `shared` working folder.
 
 Create an organisers&#39; rollout readout with:
 - the cruxes that appear across multiple groups
@@ -2384,7 +2398,7 @@ Create an organisers&#39; rollout readout with:
 
 Show me the readout in chat first. Don&#39;t save yet. I will correct priorities, deferrals, and ownership.
 
-After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
+After I approve it, save it as `m3-organisers-rollout-readout.md` in the `shared` working folder.
 </code></pre>
 <p>Keep the readout grounded in the group syntheses. If the organisers add context that was not in the files, name it as organisers&#39; judgment rather than group evidence.</p>
 <h2>Phase 2. Decide what to share back</h2>
@@ -2401,10 +2415,10 @@ After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
 <p><strong>Time:</strong> 2 hours before the workshop. Organisers only.</p>
 <p>This is the setup exercise for the whole 3-hour workshop. It keeps customer material inside the customer&#39;s SharePoint and Cowork environment. The public curriculum names the folder contract; organisers create and test the actual files.</p>
 <h2>What organisers need to understand</h2>
-<p>SharePoint is not just file storage for this workshop. It is the shared runtime. Participants work in their own folders so their drafts, CLAUDE.md files, and experiments stay personal. The <code>shared/</code> folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.</p>
+<p>SharePoint is not just file storage for this workshop. It is the shared runtime. Participants add two Cowork working folders: their own participant folder and the <code>shared/</code> folder. Personal drafts, CLAUDE.md files, and experiments stay in the participant folder. The <code>shared/</code> folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.</p>
 <p>This design protects customer material. The public workbook gives prompts and file names. The actual task, verification document, group findings, answer key, and synthesis files stay in the customer&#39;s SharePoint/Cowork environment. Bosser tooling does not need to see them.</p>
-<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork exactly which file to read and where to save the result. If someone loses their place, bring them back to three questions: which folder am I in, which file am I reading, and which file am I saving?</p>
-<p>The synthesis magic comes from sync plus constraint. Most participants write only inside <code>participants/&lt;name&gt;/</code>. Group drivers write the small number of shared group files. Once those files have synced, organisers can run the synthesis prompts against <code>shared/</code> and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone&#39;s machine.</p>
+<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork which working folder to read from and which working folder to save to. If someone loses their place, bring them back to three questions: are both folders added, which file am I reading, and which folder am I saving into?</p>
+<p>The synthesis magic comes from sync plus constraint. Most participants write only inside their participant working folder. Group drivers write the small number of shared group files into the <code>shared/</code> working folder. Once those files have synced, organisers can run the synthesis prompts against <code>shared/</code> and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone&#39;s machine.</p>
 <p>Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm it is in <code>shared/</code>, wait briefly, and retry. Do not turn that moment into a content discussion.</p>
 <p>The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the checking and rollout judgment. The private answer key exists to support reveal and synthesis, not to rescue the group from doing the work.</p>
 <h2>Phase 1. Create the workspace</h2>
@@ -2415,13 +2429,19 @@ After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
 <li>one participant folder under <code>participants/</code> for each attendee</li>
 </ul>
 <p>Do not put customer material in the public curriculum repo. Customer-owned files live only in the customer workspace.</p>
+<p>In Cowork, participants do not rely on the cohort root. Each participant adds two working folders:</p>
+<ul>
+<li>their own participant folder</li>
+<li>the <code>shared/</code> folder</li>
+</ul>
 <h2>Phase 2. Prove access</h2>
 <p>Before the workshop, prove every participant can do all of this:</p>
 <ul>
 <li>sync or open the cohort SharePoint workspace</li>
-<li>start Cowork on the workspace</li>
-<li>read a file from <code>shared/</code></li>
-<li>save a test markdown file in their own participant folder</li>
+<li>add their own participant folder as a Cowork working folder</li>
+<li>add <code>shared/</code> as a second Cowork working folder</li>
+<li>read a file from the <code>shared</code> working folder</li>
+<li>save a test markdown file in their participant working folder</li>
 <li>find their participant folder name again without help</li>
 </ul>
 <p>If this fails, the workshop does not start as designed. Fix access before content.</p>
@@ -2433,7 +2453,7 @@ After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
 <li>a one-page response comparing Claude and ChatGPT for the team&#39;s work</li>
 <li>a one-page response on which connectors internal users should enable</li>
 </ul>
-<p>Dry-run Module 1 Phase 1 against <code>shared/m1-task.md</code> in a fresh Cowork session. The bare output should contain at least three catchable generic, off, or wrong items. If the output is simply fine, sharpen the task.</p>
+<p>Dry-run Module 1 Phase 1 in a fresh Cowork session with both the test participant folder and <code>shared/</code> added as working folders. The bare output should contain at least three catchable generic, off, or wrong items. If the output is simply fine, sharpen the task.</p>
 <h2>Phase 4. Prepare <code>shared/m2-verification-output.md</code></h2>
 <p>Create a two-page plausible output with about fifty factual claims. The claims should cover a mix of security, data handling, licensing, connectors, rollout advice, user instructions, numbers, dates, and product capabilities.</p>
 <p>Seed or preserve several kinds of wrongness:</p>
@@ -2452,7 +2472,7 @@ After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
 <li>9 to 12 participants: 3 groups</li>
 <li>13 to 16 participants: 4 groups</li>
 </ul>
-<p>Confirm that nominated group drivers can write to <code>shared/</code>. M3 does not need a prewritten rollout-context file. It starts fresh from participant interviews.</p>
+<p>Confirm that nominated group drivers can write to the <code>shared</code> working folder in Cowork. M3 does not need a prewritten rollout-context file. It starts fresh from participant interviews.</p>
 <h2>Phase 6. Dry-run the organiser prompts</h2>
 <p>Run a quick rehearsal of the organiser-only synthesis prompts using dummy files:</p>
 <ul>
@@ -2461,14 +2481,14 @@ After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
 </ul>
 <p>Use fake group files or non-sensitive sample content. The point is to test file paths, save behavior, timing, and the organisers&#39; push-back rhythm.</p>
 <h2>Phase 7. Dry-run as one participant</h2>
-<p>Create or use one test participant folder, for example <code>participants/test-participant/</code>. Run the workshop path from a participant point of view, not from an organiser/admin view.</p>
+<p>Create or use one test participant folder, for example <code>participants/test-participant/</code>. In Cowork, add that test participant folder and <code>shared/</code> as the two working folders. Run the workshop path from a participant point of view, not from an organiser/admin view.</p>
 <p>Do a thin pass through each module:</p>
 <ul>
-<li>M1: read <code>shared/m1-task.md</code>, save <code>response.md</code>, and save a minimal <code>CLAUDE.md</code> in the test participant folder</li>
-<li>M2: read <code>shared/m2-verification-output.md</code>, create <code>claim-pool.md</code>, <code>evidence-map.md</code>, and <code>verification-table.md</code> in the test participant folder</li>
-<li>M2 group driver: save a dummy <code>shared/group-1-verification.md</code></li>
+<li>M1: read <code>m1-task.md</code> from the <code>shared</code> working folder, save <code>response.md</code>, and save a minimal <code>CLAUDE.md</code> in the test participant working folder</li>
+<li>M2: read <code>m2-verification-output.md</code> from the <code>shared</code> working folder, create <code>claim-pool.md</code>, <code>evidence-map.md</code>, and <code>verification-table.md</code> in the test participant working folder</li>
+<li>M2 group driver: save a dummy <code>group-1-verification.md</code> in the <code>shared</code> working folder</li>
 <li>M3: save <code>m3-rollout-notes.md</code> in the test participant folder</li>
-<li>M3 group driver: save a dummy <code>shared/group-1-rollout-synthesis.md</code></li>
+<li>M3 group driver: save a dummy <code>group-1-rollout-synthesis.md</code> in the <code>shared</code> working folder</li>
 </ul>
 <p>Delete or clearly mark test files before the workshop. Keep any real customer content inside the customer environment.</p>
 <p>The dry-run succeeds only if the participant path works without organiser-only permissions.</p>
@@ -2480,10 +2500,11 @@ After I approve it, save it as `shared/m3-organisers-rollout-readout.md`.
 <li>organisers know where the public workbook is and can point participants to the current module prompts</li>
 <li>private M2 answer key is available only to organisers</li>
 <li>participant folders exist</li>
+<li>participants can add both their participant folder and <code>shared/</code> as Cowork working folders</li>
 <li>organisers know group count and group numbers</li>
-<li>group drivers know they are the only participant writers to <code>shared/</code></li>
-<li>organisers can save <code>shared/m2-verification-synthesis.md</code></li>
-<li>organisers can save <code>shared/m3-organisers-rollout-readout.md</code> if the optional readout runs</li>
+<li>group drivers know they are the only participant writers to the <code>shared</code> working folder</li>
+<li>organisers can save <code>m2-verification-synthesis.md</code> in the <code>shared</code> working folder</li>
+<li>organisers can save <code>m3-organisers-rollout-readout.md</code> in the <code>shared</code> working folder if the optional readout runs</li>
 <li>the test participant dry-run has passed</li>
 </ul>
 <p>The workshop is ready when access, shared inputs, and organiser synthesis saves all work.</p>

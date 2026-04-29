@@ -2,7 +2,7 @@
 
 **Time:** 27 minutes of participant work. Five phases. Phase 5 runs after the organisers complete their separate synthesis exercise.
 
-The organisers prepared a two-page output before the workshop. It lives at `shared/m2-verification-output.md`. It looks useful. It contains about fifty factual claims. Some are wrong. Some are unsupported. Some cannot be checked from the room.
+The organisers prepared a two-page output before the workshop. It lives in the `shared` working folder as `m2-verification-output.md`. It looks useful. It contains about fifty factual claims. Some are wrong. Some are unsupported. Some cannot be checked from the room.
 
 Your job is not to read harder. Your job is to turn plausible output into a checking system.
 
@@ -13,7 +13,7 @@ Ask Claude to read the shared output and extract the claims worth checking.
 **Prompt** *(Cowork)*
 
 ```
-Read `shared/m2-verification-output.md`.
+Read `m2-verification-output.md` from the `shared` working folder.
 
 Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our IT team repeated them to internal users: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
 
@@ -23,21 +23,21 @@ Create a markdown table with these columns:
 
 For "Where I would check", name the most useful evidence surface: public docs, internal policy, SharePoint file, admin panel, or named owner. If the right place is not obvious, write "not obvious".
 
-Show me the table in chat first. After I push back, ask me for my participant folder under `participants/` if you do not already know it. Then save the table as `claim-pool.md` in that folder.
+Show me the table in chat first. After I push back, save the table as `claim-pool.md` in my participant working folder. If you cannot see both my participant working folder and the `shared` working folder, stop and ask me to add them.
 ```
 
 Read the proposed table. Push back where the evidence surface is wrong or too vague. The table is the measuring surface for the rest of the exercise.
 
 ## Phase 2. Find the evidence (6 minutes)
 
-Now build the evidence map. Use the tools and sources available in your environment: public docs, intranet, SharePoint, policy files in `shared/`, admin panels, or people who own the answer.
+Now build the evidence map. Use the tools and sources available in your environment: public docs, intranet, SharePoint, policy files in the `shared` working folder, admin panels, or people who own the answer.
 
 Ask Claude to turn the claim pool into a concrete evidence plan.
 
 **Prompt** *(Cowork)*
 
 ```
-Read `claim-pool.md` in my participant folder.
+Read `claim-pool.md` from my participant working folder.
 
 Build an evidence map for the claims. For each claim, name:
 - the first source I should check
@@ -50,7 +50,7 @@ Use this table:
 
 Do not verify the claims yet. This phase is only about finding the right ground to check against.
 
-Save the evidence map as `evidence-map.md` in my participant folder.
+Save the evidence map as `evidence-map.md` in my participant working folder.
 ```
 
 The point is not to have all answers yet. The point is to know where the ground is.
@@ -68,7 +68,7 @@ Ask Claude to run both checks on the claim pool.
 **Prompt** *(Cowork)*
 
 ```
-Read `claim-pool.md` and `evidence-map.md` in my participant folder.
+Read `claim-pool.md` and `evidence-map.md` from my participant working folder.
 
 For each claim, run two checks:
 
@@ -78,7 +78,7 @@ For each claim, run two checks:
 
 Use any available source I can access in this environment: public docs, internal policy, SharePoint files, admin panels, or named owners. Do not invent a source. If a source is unavailable, say so.
 
-Save the result as `verification-table.md` in my participant folder with this shape:
+Save the result as `verification-table.md` in my participant working folder with this shape:
 
 | Claim | Source support | Counter-evidence | Verdict | Notes |
 
@@ -96,7 +96,7 @@ If a row feels uncertain, keep it uncertain. *I-can't-tell* is an answer the tea
 
 ## Phase 4. Save the group result (4 minutes)
 
-Each group produces one short file for the organisers to read. Pick one driver in the group. The driver asks Claude to combine the group's findings and writes the group output to `shared/`.
+Each group produces one short file for the organisers to read. Pick one driver in the group. The driver asks Claude to combine the group's findings and writes the group output to the `shared` working folder.
 
 Ask Claude to write the group result.
 
@@ -114,21 +114,21 @@ Write a short markdown file with:
 - which method caught more useful problems: source support or counter-evidence
 - one proposed rule for future Claude answers
 
-Ask me for our group number if you do not already know it. If I say group 2, save the file as `shared/group-2-verification.md`. Use the same pattern for the group number I give you.
+Ask me for our group number if you do not already know it. If I say group 2, save the file as `group-2-verification.md` in the `shared` working folder. Use the same pattern for the group number I give you.
 ```
 
-The filename should look like `shared/group-1-verification.md`, `shared/group-2-verification.md`, or `shared/group-3-verification.md`.
+The filename should look like `group-1-verification.md`, `group-2-verification.md`, or `group-3-verification.md` in the `shared` working folder.
 
 ## Phase 5. Personal rule from synthesis (4 minutes)
 
-After the organisers' synthesis is visible in `shared/m2-verification-synthesis.md`, update your personal `CLAUDE.md` with one to three rules.
+After the organisers' synthesis is visible as `m2-verification-synthesis.md` in the `shared` working folder, update your personal `CLAUDE.md` with one to three rules.
 
 Ask Claude to turn the synthesis into personal operating rules.
 
 **Prompt** *(Cowork)*
 
 ```
-Read `shared/m2-verification-synthesis.md`, then read the `CLAUDE.md` in my participant folder.
+Read `m2-verification-synthesis.md` from the `shared` working folder, then read `CLAUDE.md` from my participant working folder.
 
 Add or sharpen 1 to 3 verification rules for future Claude answers. Focus on the claim shapes this team just saw fail: security, data handling, licensing, connectors, rollout advice, user instructions, numbers, dates, or product capabilities.
 

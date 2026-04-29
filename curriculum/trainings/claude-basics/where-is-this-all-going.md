@@ -9,7 +9,7 @@ In 45 minutes each group produces a clean synthesis of what would make the Claud
 - **Primary Bloom's level:** Evaluate
 - **Prework:** none
 - **Homework:** none
-- **Materials (organisers):** group numbers, `shared/` write access for nominated group drivers, and a dry-run of the group-synthesis prompt one day pre-cohort
+- **Materials (organisers):** group numbers, `shared` working-folder write access for nominated group drivers, and a dry-run of the group-synthesis prompt one day pre-cohort
 - **Plug points:** the team's actual rollout difficulties; the group synthesis files; optional cross-pollination once group synthesis has succeeded; optional organisers-only readout
 
 ## What You'll Learn
@@ -46,7 +46,7 @@ None in Module 3. The reveal at the close is the whole concept beat.
 
 - **Group composition.** Organisers scale group count to participant count: 2-3 groups for 8 or fewer; 3 groups for 9-12; 4 groups for 13-16
 - **The cohort's real rollout difficulties.** Each participant's divergence interview is on their own org's rollout, not a generic case
-- **The group synthesis files.** Each nominated driver writes one file: `shared/group-N-rollout-synthesis.md`
+- **The group synthesis files.** Each nominated driver writes one file in the `shared` working folder, named like `group-N-rollout-synthesis.md`
 - **Optional cross-pollination.** If every group synthesis exists with time left, groups read one other group's synthesis and borrow one useful idea
 - **Organisers' readout.** Organisers may run their separate synthesis exercise after the group files exist
 
@@ -59,7 +59,7 @@ Ask Claude to read your group's synthesis and name the one move you would person
 **Prompt** *(Cowork)*
 
 ```
-Read our group's rollout synthesis file from `shared/`.
+Read our group's rollout synthesis file from the `shared` working folder.
 
 Look at it from MY position on the team. Of the moves named in the synthesis, which ONE would I personally do first this week, and why? One sentence. No hedging.
 ```

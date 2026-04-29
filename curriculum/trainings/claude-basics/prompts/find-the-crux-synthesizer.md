@@ -19,7 +19,7 @@ Then interview the group in chat. Ask for each person's top rollout difficulty a
 
 Show the crux candidate in chat first, in two sentences. Don't save yet. I will ask the group what is wrong or missing.
 
-After I give you the group's push-back, rewrite the synthesis and save it in `shared/` using the group number. If I say group 2, save the file as `shared/group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
+After I give you the group's push-back, rewrite the synthesis and save it in the `shared` working folder using the group number. If I say group 2, save the file as `group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
 
 The file must include:
 - named crux
@@ -32,7 +32,7 @@ The file must include:
 ## Phase 3 — cross-pollination bonus prompt
 
 ```
-Read our group's rollout synthesis in `shared/`. Then read one other group's rollout synthesis from `shared/`.
+Read our group's rollout synthesis from the `shared` working folder. Then read one other group's rollout synthesis from the `shared` working folder.
 
 Compare them briefly:
 - one idea the other group saw that we missed
@@ -46,4 +46,4 @@ Show me the proposed addition in chat first. Don't save until the group approves
 
 - **Core success is group synthesis.** Cross-pollination is a bonus, not a dependency
 - **Group count adapts.** The prompt uses the group number the driver gives instead of assuming four groups
-- **Protect synthesis quality.** If any group has not saved `shared/group-N-rollout-synthesis.md`, skip cross-pollination and close with the group syntheses that exist
+- **Protect synthesis quality.** If any group has not saved `group-N-rollout-synthesis.md` in the `shared` working folder, skip cross-pollination and close with the group syntheses that exist

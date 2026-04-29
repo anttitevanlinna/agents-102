@@ -2,7 +2,7 @@
 
 **Time:** 32 minutes. Three phases.
 
-Module 3 is collaborative, but it should not become shared-folder debugging. Each participant starts in their own Cowork session. Each group nominates one driver. The driver writes one clean group synthesis to `shared/`.
+Module 3 is collaborative, but it should not become shared-folder debugging. Each participant starts in Cowork with their participant folder and the `shared` folder both added as working folders. Each group nominates one driver. The driver writes one clean group synthesis to the `shared` working folder.
 
 Before Phase 1: confirm your group number. You will need it in Phase 2.
 
@@ -10,7 +10,7 @@ Before Phase 1: confirm your group number. You will need it in Phase 2.
 
 Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn't to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.
 
-Ask Claude to interview you about your team's top three Claude-rollout difficulties and save the notes in your participant folder.
+Ask Claude to interview you about your team's top three Claude-rollout difficulties and save the notes in your participant working folder.
 
 **Prompt** *(Cowork)*
 
@@ -19,7 +19,7 @@ Interview me about the top three difficulties I see in our team's Claude rollout
 
 Start with: "What's the first difficulty you see?" After my answer, push back once: ask for a specific example, or ask whether that's the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I've answered all three with push-back, ask me for my participant folder under `participants/` if you do not already know it. Then save the conversation as `m3-rollout-notes.md` in that folder.
+When I've answered all three with push-back, save the conversation as `m3-rollout-notes.md` in my participant working folder. If you cannot see both my participant working folder and the `shared` working folder, stop and ask me to add them.
 
 Include the three difficulties and the push-back answers, in my voice. Don't summarize them into your own register.
 ```
@@ -28,7 +28,7 @@ Answer Claude's questions in plain language. When the file saves, you're done wi
 
 ## Phase 2. Group synthesis (17 minutes)
 
-Each group picks ONE participant to be the driver. The driver is the only person writing to `shared/` in this phase.
+Each group picks ONE participant to be the driver. The driver is the only person writing to the `shared` working folder in this phase.
 
 The group talks through the personal notes. Do not start by reading other groups. Your job is to find your group's crux first.
 
@@ -45,7 +45,7 @@ Then interview the group in chat. Ask for each person's top rollout difficulty a
 
 Show the crux candidate in chat first, in two sentences. Don't save yet. I will ask the group what is wrong or missing.
 
-After I give you the group's push-back, rewrite the synthesis and save it in `shared/` using the group number. If I say group 2, save the file as `shared/group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
+After I give you the group's push-back, rewrite the synthesis and save it in the `shared` working folder using the group number. If I say group 2, save the file as `group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
 
 The file must include:
 - named crux
@@ -68,7 +68,7 @@ Ask Claude to read one other group's synthesis and borrow one useful idea withou
 **Prompt** *(Cowork, group driver)*
 
 ```
-Read our group's rollout synthesis in `shared/`. Then read one other group's rollout synthesis from `shared/`.
+Read our group's rollout synthesis from the `shared` working folder. Then read one other group's rollout synthesis from the `shared` working folder.
 
 Compare them briefly:
 - one idea the other group saw that we missed
@@ -86,7 +86,7 @@ The organisers may run their own synthesis after the group files exist. That is 
 
 **Meta:**
 - **Length:** 32 minutes. 10 + 17 + 5 = 32 phase budget. Module budget 45 min: 4 Connections + 3 concept + 32 exercise + 4 reveal/reflection + 2 Debrief
-- **Core artifact:** one file per group in `shared/`, named `shared/group-N-rollout-synthesis.md`
+- **Core artifact:** one file per group in the `shared` working folder, named `group-N-rollout-synthesis.md`
 - **Remote-resilient simplification:** no cross-group read is required for success. Phase 3 is optional and can be skipped without harming the module
 - **The reveal at Phase 3 close:** *"You just ran the smallest useful rollout system: individuals diverged, groups synthesized, and only after that did ideas cross-pollinate. That ordering matters."* Land it once
 

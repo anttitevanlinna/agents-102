@@ -7,10 +7,10 @@ Trust isn't a feeling. It's a checking system you can run on plausible output.
 ## Meta
 
 - **Primary Bloom's level:** Apply → Evaluate
-- **Prework:** none in Module 2 (Module 1 already had everyone in Cowork on the cohort SharePoint workspace; personal CLAUDE.md exists)
+- **Prework:** none in Module 2 (Module 1 already had everyone in Cowork with their participant folder and `shared` folder added; personal CLAUDE.md exists)
 - **Homework:** none
-- **Materials (organisers):** `shared/m2-verification-output.md`, prepared and pre-screened by the organisers before the cohort, plus the organisers' private answer key
-- **Plug points:** the pre-staged two-page output; evidence surfaces available to the team; group verification files in `shared/`; the team rule in `shared/m2-verification-synthesis.md`
+- **Materials (organisers):** `m2-verification-output.md` in the `shared` working folder, prepared and pre-screened by the organisers before the cohort, plus the organisers' private answer key
+- **Plug points:** the pre-staged two-page output; evidence surfaces available to the team; group verification files in the `shared` working folder; the team rule in `m2-verification-synthesis.md`
 
 ## What You'll Learn
 
@@ -47,10 +47,10 @@ Now point that same instinct at a two-page answer with about fifty claims. Some 
 
 ## Plug Points
 
-- **The pre-staged output.** The organisers prepare `shared/m2-verification-output.md`: two pages, roughly fifty factual claims, with plausible wrongness seeded or preserved
+- **The pre-staged output.** The organisers prepare `m2-verification-output.md` in the `shared` working folder: two pages, roughly fifty factual claims, with plausible wrongness seeded or preserved
 - **The evidence surfaces.** Public docs, internal policy, intranet, SharePoint files, admin panels, or named owners. The organisers help with access mechanics; the team owns the judgment
 - **The private answer key.** The organisers pre-screen enough claims to reveal 5-8 examples after the groups report
-- **Group outputs.** Nominated group drivers write `shared/group-*-verification.md`; organisers run the separate synthesis exercise to write `shared/m2-verification-synthesis.md`
+- **Group outputs.** Nominated group drivers write `group-*-verification.md` in the `shared` working folder; organisers run the separate synthesis exercise to write `m2-verification-synthesis.md`
 
 ## Debrief
 
@@ -61,7 +61,7 @@ Ask Claude to list every row from your `verification-table.md` that stayed unsup
 **Prompt** *(Cowork)*
 
 ```
-Read `verification-table.md` in my participant folder. List the rows with verdict unsupported, overreaches, or I-can't-tell.
+Read `verification-table.md` from my participant working folder. List the rows with verdict unsupported, overreaches, or I-can't-tell.
 
 For each row, show:
 - the claim
@@ -98,7 +98,7 @@ One plausible document, checked by groups, turned into operating rules. The roll
 - compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule #3 + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rule 35 audience-tier)
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-judge-report.md` @ c25d7c4) PASS 12/12 — STALE after the 2026-04-29 exercise redesign
 - sim-passed 2026-04-27 — STALE since rule-#3 sweep touched Connections + Bridge prose; re-sim recommended before next cohort
-- draft 2026-04-29 (remote-resilient architecture edit: verification source is pre-staged in `shared/m2-verification-output.md`; sim/mechanical not rerun)
+- draft 2026-04-29 (remote-resilient architecture edit: verification source is pre-staged in the `shared` working folder; sim/mechanical not rerun)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Can you be trusted to run this?*
 
@@ -110,4 +110,4 @@ One plausible document, checked by groups, turned into operating rules. The roll
 - *"Trust isn't a feeling — it's a verification you run."*
 - *"sober alert custodial — competence in the presence of fallibility, not panic and not false comfort."*
 - From the offer (FI): *"Miten Claudesta saa hallittavan? IT-johtaja kirjoittaa ohjeet livenä, tiimi varmistaa että säännöt näkyvät tulosteessa ja tuntuvat toimivilta."*
-- 2026-04-29 remote-resilient update: no live generation dependency. Verification starts from a pre-staged `shared/m2-verification-output.md`; group files feed a team rule.
+- 2026-04-29 remote-resilient update: no live generation dependency. Verification starts from a pre-staged file in the `shared` working folder; group files feed a team rule.

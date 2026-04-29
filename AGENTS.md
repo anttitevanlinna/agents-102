@@ -7,7 +7,7 @@ This repository is primarily a Claude Code project. For Codex sessions, treat th
 At session start, read:
 
 1. `CLAUDE.md` at the repository root.
-2. `memory/self-review-protocol.md` section `Core heuristics`.
+2. `memory/self-review-protocol.md` section `Core heuristics`, if present. If the repo-local file is absent, look for the same file in the private per-project Claude memory directory named by `.claude/rules/content-rules.md` (for this repo: `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/self-review-protocol.md`). If neither exists, note the missing file and continue with the other loaded rules.
 3. The nearest work-area `CLAUDE.md` for the files you will touch:
    - `continuous-research/CLAUDE.md` for research, OODA cycles, findings, synthesis, observations, source rosters, and user-signal capture.
    - `curriculum/CLAUDE.md` for curriculum, exercises, lectures, training modules, scaffolds, evals, and site curriculum rendering.
@@ -24,9 +24,11 @@ Before writing, revising, or reviewing curriculum content, read the full `.claud
 - Prompt blocks students copy: also read `.claude/skills/content-creation/prompts.md`.
 - Student-facing prose, structure, voice, or body copy: also read `.claude/skills/content-creation/writing.md`.
 - Simulation, testing, or PDCA Test/Check work: also read `.claude/skills/content-creation/simulation.md`.
-- Any student-, buyer-, or external-facing prose: read `.claude/rules/content-rules.md` and the matching `memory/check_*.md` compendiums before drafting.
+- Any student-, buyer-, or external-facing prose: read `.claude/rules/content-rules.md` and the matching `check_*.md` compendiums before drafting. Use the exact compendium directory named inside `.claude/rules/content-rules.md`; in current Codex checkouts this may be a private per-project Claude memory path rather than repo-local `memory/`.
 
 The `content-creation` skill requires the private `bosser-strategy` skill for generation work. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
+
+For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Bootstrap strategy doc for Claude Basics work.
 
 ## Working Rule
 

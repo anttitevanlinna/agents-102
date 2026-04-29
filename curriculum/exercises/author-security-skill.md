@@ -120,6 +120,10 @@ The policy files are source material. The reusable check is the expert in the ro
 - sim-passed 2026-04-26 (three-persona sim: mid-competent practitioner — recommend-with-reservations; opinionated senior — would-steer; fast operator — would-recommend; APPROVE-WITH-TODOs aggregate; LLM-as-judge eval also APPROVE-WITH-TODOs)
 - ~~mechanical-tested 2026-04-26 (instances/bootstrap-m4-author-judge-report.md @ 13e3f8e PASS 32/32)~~ DEGRADED 2026-04-29 (exercise now stops at authored skill; Cowork personal-skill creation is part of packaging, runtime load moved to `audit-your-agent.md`; runner pair `bootstrap-m4-author.verbatim.{actor,judge}.md` is stale)
 
+**TODO (Cowork edition review 2026-04-29):**
+- Phase 3 prompt includes CLI/Desktop standalone-install wording in the Cowork prompt progression. This is noisy at the moment Cowork students are learning the Customize → Skills path. Prompt-block change is gated: propose before/after before editing.
+- The Cowork personal-skill creation block is copyable but not labelled `**Prompt**`, so `scripts/extract-training-prompts.js --training bootstrap --flavor cowork` omits it from the prompt progression. Decide whether to label it as a prompt or teach the extractor to capture "Use this shape..." blocks.
+
 **Pre-ship-audit findings 2026-04-26 (resolved + standing):**
 - ~~Phase 3 mood gate fails 8/10 under three-persona sim~~ — SUPERSEDED 2026-04-29 by the personal-skill shape. Re-sim owed after the skill-only refactor; prior run approved the two-lens security-check concept but assumed an older packaging shape.
 - **Phase 2 dictation forcing function under speed** — STILL OPEN as a low-priority TODO. The fast-operator persona originally flagged that the Watch-for predicts the failure but doesn't prevent it. The re-sim's solo-learner had no time pressure and rated the dictation beat at 8 — so the gap is speed-specific. Optional fix next cycle: line-count gate inside the Phase 2 prompt (Claude refuses to proceed under N specifics).

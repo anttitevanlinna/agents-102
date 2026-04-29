@@ -227,6 +227,9 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 <!-- maintainer -->
 
+**TODO (Cowork edition review 2026-04-29):**
+- Phase 0 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.
+
 **Pattern: benchmarking.** One of the three designated magic beats in M3–M8 (alongside M3 multi-retriever + multi-stance and M8 agents-building-agents). The student operates as the scorer setup-and-observer, not as the classifier. Claude audits Claude; the student reads the scoreboard and saves the winner.
 
 **Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The Close's still-uncertain line keeps the broader uncertainty alive.

@@ -18,6 +18,8 @@ Capability is emergent. The agent does what its instructions, its context, and t
 
 Put the three together. You don't get *secure / not secure.* You get *safe enough, under these conditions, within these limits, for now.* If that sounds less like engineering and more like medicine, it is.
 
+In the full agent picture, this is the boundary piece. What may the agent read? What may it change? What must come back to a human? More capability without boundaries is not progress. It is just more blast radius.
+
 **The work is the loop.**
 
 You don't get certainty. You get a loop. Four steps, plain, repeatable.

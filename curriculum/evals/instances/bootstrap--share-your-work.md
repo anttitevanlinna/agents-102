@@ -6,7 +6,7 @@
 
 **Eval runs:**
 - 2026-04-19 — initial PDCA test+check pass (pre-JTBD frame).
-- 2026-04-20 — **JTBD reframe.** Exercise rewritten against Jobs-to-be-Done opening frame (Christensen/Moesta/Ulwick). Starting question shifts from *"what should I share?"* to *"what job is my teammate trying to get done, and which sharing shape does it?"* Phase 1 is now the agentic interview (agent reads memory + uses ask-questions tool + writes `jtbd.md` with outcome statement). Phase 2 selection test shifts from *fits my infra* to *moves the outcome metric*. Phase 4 assumption-test aimed at the SWITCH (firing the incumbent), not at generic sharing. Phase 5 pre-mortem is of the firing-that-didn't-happen, not of the rollout-that-broke. Closing is a Monday conversation, not a Monday deployment. Primary leap test, two new judges (JTBD frame lands; Outcome-vector discovery works) added below. **Verdict: APPROVE WITH TODOs** (essential judges pass; contributory TODOs noted at the bottom). See report for simulation outcomes.
+- 2026-04-20 — **JTBD reframe.** Exercise rewritten against Jobs-to-be-Done opening frame. Starting question shifts from *"what should I share?"* to *"what job is my teammate trying to get done, and which sharing shape does it?"* Phase 1 is now the agentic interview (agent reads memory + uses ask-questions tool + writes `jtbd.md` with outcome statement). Phase 2 selection test shifts from *fits my infra* to *moves the outcome metric*. Phase 4 tests switch assumptions (firing the incumbent), not generic sharing. Phase 5 names failure stories for the firing-that-didn't-happen, not the rollout-that-broke. Closing is a Monday conversation, not a Monday deployment. Primary leap test, two new judges (JTBD frame lands; Outcome-vector discovery works) added below. **Verdict: APPROVE WITH TODOs** (essential judges pass; contributory TODOs noted at the bottom). See report for simulation outcomes.
 
 ---
 
@@ -15,10 +15,10 @@
 ### Primary — the leap test *(JTBD-aware, 2026-04-20)*
 
 After completing this exercise, the participant can:
-- Leave with a **JTBD brief anchored in the teammate's language**, including an **outcome statement in Ulwick's canonical form** ("minimize/increase [metric] when [doing the job]") — anchored to specific memory files and the 2-3 confirmations the ask-questions tool plugged.
+- Leave with a **JTBD brief anchored in the teammate's language**, including an **outcome statement** ("minimize/increase [metric] when [doing the job]") — anchored to specific memory files and the 2-3 confirmations the ask-questions tool plugged.
 - Select a **sharing candidate because it moves the outcome metric** — not because it matches the infrastructure they happen to have. Branch B is first-class; Branch A adds on top.
 - Produce **both technical and people plans**, with UNASSIGNED lines named explicitly as Monday's questions.
-- Run **assumption-test and pre-mortem against the SWITCH** (would the teammate fire their current hire?), not against a generic sharing problem.
+- Test **switch assumptions and likely failure stories** (would the teammate fire their current hire?), not generic sharing.
 - Walk out with **a Monday conversation** — not a deployment task — as the first move: one teammate, one question about their job, one assumption to test.
 - Name the transferable skill: **interview for outcomes before designing a solution.** Applicable to any future adoption problem in their org.
 
@@ -31,7 +31,7 @@ Does the exercise force **teammate-perspective FIRST**, before any builder-side 
 Checks:
 - Phase 1 produces a job statement in the teammate's language, including functional + emotional/social components, before any candidate is considered.
 - The current hire (Excel / colleague / gut / vendor tool / nothing) is named explicitly — not glossed.
-- The outcome statement is written in Ulwick's canonical form and anchors downstream phases.
+- The outcome statement follows the "minimize/increase [metric] when [doing the job]" form and anchors downstream phases.
 - Phase 2 selection test is *does this candidate move the outcome metric?* — not *does this fit my infrastructure?*
 
 **Red flag:** student drafts the outcome from their own assumptions about what the teammate needs without the interview step producing any surprise. If nothing in the JTBD brief was new information to the student, the interview was shallow and the frame didn't land.
@@ -85,13 +85,13 @@ Enables these Bloom-tagged learning goals from the module file (verbatim, post-2
 ### Module-to-module arc
 
 Picks up from **M6's unleashed leverage (eval loop that runs itself) — the student now has something that works well enough to want to share it.**
-Subtly hands off to **M8's awe (agents building agents) — assumption-test and pre-mortem are used here as JTBD-applied disciplines and returned to in M8 as named skills in the joint Double Diamond.**
+Keeps the adoption methods practical and student-facing: absorption bottleneck, switch assumptions, failure stories. Framework lineage stays in facilitator notes.
 
 ### Mood lands
 
 Module's deliberate mood: **generous impulse** — *"This is starting to work. I wonder if others could benefit?"* Generosity as natural consequence, not obligation. Axis shifts from personal-mastery to team-ownership.
 
-**Pass threshold: 8+/10 at every beat.** Failure modes to watch: governance-chore tone, Branch B as pity path, resolving the people-plan gap (it should remain open as Monday's work), technical-plan relief overriding the social-crux unease before it lands, JTBD reframe reading as academic theory-drop rather than practical interview move.
+**Pass threshold: 8+/10 at every beat.** Failure modes to watch: governance-chore tone, Branch B as pity path, resolving the people-plan gap (it should remain open as Monday's work), technical-plan relief overriding the social absorption bottleneck before it lands, JTBD reframe reading as academic theory-drop rather than practical interview move.
 
 ### Teaching moment lands
 
@@ -99,7 +99,7 @@ The exercise is designed to reliably produce this aha:
 - **"The agent already had 80% of the teammate's job on disk. Seven questions plugged the holes. The outcome I picked wasn't speed or quality — it was the third vector the interview surfaced. I can run this pattern on any adoption problem Monday."**
 
 Supporting teaching moments:
-- *"The crux is usually social — what would have to be true for them to fire their current hire?"*
+- *"The absorption bottleneck is usually social — what would have to be true for them to fire their current hire?"*
 - *"My candidate selection changed when I picked against the outcome instead of against the infra."*
 - *"The people plan has UNASSIGNED lines because the Access-Trust Gap is real in my own work."*
 
@@ -108,12 +108,12 @@ If reasonable variation in participant skill can skip the primary aha (e.g., stu
 ### Red-flag triggers (additional checks for this exercise)
 
 - (a) Does Phase 1 produce a JTBD brief that **surprised** the student, or does it just restate their assumptions?
-- (b) Is the outcome statement in **Ulwick's canonical form** and does it anchor Phase 2's candidate selection?
+- (b) Is the outcome statement in the module's stated form and does it anchor Phase 2's candidate selection?
 - (c) Does the third outcome vector **surface** (non-obvious axis) or does the exercise only return speed+quality?
 - (d) Is the people plan treated as equal throughout, or does it drift into afterthought?
 - (e) Are both branches first-class, or is Branch B a consolation prize in the writing?
 - (f) Is pattern selection driven by **outcome movement**, or by infrastructure fit (shopping, not design)?
-- (g) Is assumption-test aimed at the SWITCH (firing the incumbent) or at generic sharing?
+- (g) Are the switch assumptions aimed at firing the incumbent or at generic sharing?
 - (h) Is the closing a Monday **conversation** or a Monday deployment?
 - (i) Is hardness honored (student MAY not finish) or does the exercise try to guarantee completion?
 
@@ -134,7 +134,7 @@ If reasonable variation in participant skill can skip the primary aha (e.g., stu
 
 ### Facilitator briefing complete
 
-Watch-fors, decision points, plug points, capability check (ask-questions tool), framework attributions (Christensen, Moesta, Ulwick, Martin, Klein, Rumelt) all present in maintainer section. Branch-selection timing flagged. Phase 3 stall on people-plan names flagged. Ask-questions tool fallback named.
+Watch-fors, decision points, plug points, capability check (ask-questions tool), and framework attributions all present in maintainer section. Branch-selection timing flagged. Phase 3 stall on people-plan names flagged. Ask-questions tool fallback named.
 
 ### Riffs on a recognized framework
 
@@ -142,8 +142,8 @@ Watch-fors, decision points, plug points, capability check (ask-questions tool),
 - **Bob Moesta — switch interview.** Practitioner-style JTBD for small-team adoption decisions.
 - **Anthony Ulwick — Outcome-Driven Innovation.** Outcome statement form and three-vector structure.
 - **Roger Martin — strategy as assumptions** (*Playing to Win*). Phase 4, aimed at the switch.
-- **Gary Klein / Kahneman — pre-mortem.** Phase 5, of the firing-that-didn't-happen.
-- **Richard Rumelt — crux** (*Good Strategy Bad Strategy*). Folded into Phase 4's assumption-test as the social-obstacle diagnosis.
+- **Gary Klein / Kahneman — pre-mortem.** Phase 5 lineage; student-facing framing is failure stories.
+- **Richard Rumelt — crux** (*Good Strategy Bad Strategy*). Phase 2.5 lineage; student-facing framing is absorption bottleneck.
 - Supporting research: Access-Trust Gap (Pattern 47), absorption bottleneck (L4), discoverability (F-Secure).
 
 Five-plus top-tier business frameworks, pedagogically central (each owns a move), best-in-class. JTBD is the recognizable hook that carries the rest.
@@ -153,7 +153,7 @@ Five-plus top-tier business frameworks, pedagogically central (each owns a move)
 - Five copy-paste prompts (one per phase).
 - Pattern catalog (`bosser-strategy:personal-to-team-patterns.md`) as reference — WIP with `[TODO]` placeholders on many examples; framed explicitly as "prompt to invent for your situation" in the exercise body.
 - Four sharing strategies listed inline in Phase 2 as memory aid.
-- Outcome statement template given in Ulwick's canonical form.
+- Outcome statement template given in plain form.
 - Prior modules have built memory/skills/artifacts; no new artifact type is produced from thin air.
 - Ask-questions tool: the prompt names the student-facing behavior explicitly (bounded multiple-choice, no freeform typing). Fallback named in maintainer notes.
 
@@ -172,7 +172,7 @@ Five-plus top-tier business frameworks, pedagogically central (each owns a move)
 ### Voice / Business-audience language
 
 - Second person throughout. No facilitator instructions in body (all in maintainer).
-- No banned jargon. "Runtime" and "connector" appear — earned via M4/M6 and prework three-walls reading. JTBD / outcome statement earned inline with Christensen/Moesta/Ulwick attribution and plain explanation.
+- No banned jargon. "Runtime" and "connector" appear — earned via M4/M6. JTBD / outcome statement earned inline with plain explanation.
 - Seth/Rory/Risto flavor present: *"A candidate picked because it fits the infrastructure is shopping. A candidate picked because it moves the outcome is design."* / *"The third story is the one to read twice."*
 - No LLM-tell words (honest, delve, landscape, importantly, crucial) — checked.
 
@@ -182,14 +182,14 @@ Five-plus top-tier business frameworks, pedagogically central (each owns a move)
 
 ### Specificity
 
-Named files (`module-7/jtbd.md`, `module-7/branch.md`, `module-7/technical-plan.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, `module-7/premortem.md`, `module-7/monday.md`), named disciplines with attribution, named patterns, realistic examples of outcome statements, concrete third-vector categories.
+Named files (`module-7/jtbd.md`, `module-7/branch.md`, `module-7/absorption-bottleneck.md`, `module-7/technical-plan.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, `module-7/failure-stories.md`, `module-7/monday.md`), named patterns, realistic examples of outcome statements, concrete third-vector categories. Strategy lineage is mostly maintainer-facing; student-facing body uses the methods without foregrounding the names.
 
 ---
 
 ## Notes for PDCA Act step
 
 **TODOs (from 2026-04-20 eval pass, JTBD reframe):**
-- (Contributory) Length sits at ~1500 words vs. 400–700 target. JTBD opening frame + five phases earn the space, but a tightening pass could compress Phase 2's strategy reminder and the closing payoff paragraph.
+- (Contributory) Length sits above the 400–700 target. JTBD opening frame + five phases earn the space, but a tightening pass could compress Phase 2's sharing-shape reminder and the closing payoff paragraph.
 - (Contributory) Consider an inline mini-example of a filled outcome statement (current example *"minimize the time it takes to draft a customer-facing briefing that I'd stake my reputation on"* is good — could add one more in the non-speed/quality bucket to prime the third vector explicitly).
 - (Watch) Ask-questions tool availability varies by Claude Code build; maintainer fallback is named but the student-facing prompt assumes the tool exists. If cohorts land on builds without it, fold the fallback into the student-facing text.
 

@@ -86,7 +86,7 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: Nerd makes student name the specific future engineer they'd want this ADR to be useful for.
 
-**Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
+**Push-back moves** (trainer delivers in cohort; Nerd delivers only in self-study):
 - **P1 skill invocation ambiguity.** Student points the skill at the feature rather than the access-surface map. Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."*
 - **P2 menu-shopping.** Student picks the easiest-to-harden threat rather than the real one. Nerd: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."*
 - **P2 everything-is-high.** Student wants to harden against three. Nerd: *"which one keeps you awake — or keeps your staff engineer awake on your behalf? That's the one. The others get rejected explicitly in the ADR, which is better than hardening against all of them half-heartedly."*

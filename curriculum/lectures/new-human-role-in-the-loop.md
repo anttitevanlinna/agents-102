@@ -14,6 +14,8 @@ Files are the handles. Connectors bring material in. Agents read and write. Judg
 
 Small pieces. Big shift.
 
+At this point the full picture is visible: model, context, tools, goal, loop, checks, boundary, interface. None of those pieces is mysterious on its own. The power comes from arranging them so the system can do real work without losing contact with your intent.
+
 At the start, you were inside every loop. You read the output. You noticed what was wrong. You fixed the prompt. You tried again.
 
 That was necessary. It is not the destination.
@@ -87,7 +89,7 @@ Help me create a steering eval for internal mail I might let an agent draft or s
 
 The eval is not a groundedness check. Assume groundedness is handled by `judges/groundedness-judge.md`. This eval should create positive pressure to overperform on one dimension that matters for my work.
 
-Ask me questions one at a time until the dimension is judgeable. Start by offering examples I can choose from or adapt:
+Ask me one question at a time, wait for my answer, and do not show the list. Keep asking until the dimension is judgeable. Start by offering examples I can choose from or adapt:
 
 - executive crispness
 - commercial sharpness
@@ -108,7 +110,7 @@ Once the dimension is clear, show me:
 4. The scoring rubric from 1 to 5.
 5. What the eval should ask the agent to improve when the score is 3 or lower.
 
-Then save the eval as `goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.
+Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving.
 ```
 
 You now have two kinds of judgment on disk.
@@ -133,6 +135,6 @@ Designing the conditions under which the system earns more autonomy, one loop at
 
 **Mood target:** empowered builder, not tidy graduation. Lands Module 6's power as a human-role shift: the participant now designs loops, standards, and autonomy boundaries.
 
-**Strategic role:** Turns the grounded eval loop into an operational decision: would you let the agent send an internal mail? Introduces steering eval as a closing artifact (`goal-nudger-eval.md`) without turning it into a second full exercise.
+**Strategic role:** Turns the grounded eval loop into an operational decision: would you let the agent send an internal mail? Introduces steering eval as a closing artifact (`./goal-nudger-eval.md`) without turning it into a second full exercise.
 
 **Arc recap:** M1 human as evaluator of self; M2 system owner; M3 division architect; M4 boundary-setter; M5 judge-builder; M6 loop designer.

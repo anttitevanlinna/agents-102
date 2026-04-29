@@ -143,6 +143,10 @@ Absolute certainty is not on offer. The discipline is. Raw policy files first, p
 - sim-passed 2026-04-25 (cohort-facilitator persona, APPROVE — workhorse exercise; long agent waits ARE the designed conversation pauses)
 - mechanical-tested 2026-04-26 (instances/bootstrap-m4-audit-judge-report.md @ 7644347 PASS 35/37 + 2 soft-pass)
 
+**TODO (Claude Code Desktop edition review 2026-04-29):**
+- Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training bootstrap --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.
+- Desktop install to `~/.claude/skills/security-audit/` is probably the highest-friction moment for chat-oriented business people on Desktop. Before first delivery, dry-run this with a non-terminal user and decide whether the body needs more Desktop-native scaffolding. Prompt edits remain gated.
+
 **Cohort-facilitator audit (2026-04-25):** APPROVE without TODOs. The exercise is cohort-ready. One stylistic note for next pass: *"The uncomfortable feeling is the evidence."* (Phase 2 close) reads as a slogan when projected silently to 12 SVPs; consider moving to lecture closer or cutting on next polish.
 
 **Mechanical-test findings 2026-04-26 (stale after 2026-04-29 reshape):** Previous run covered all four named-attack-classes with file-specific risks (no STRIDE-collapse), all five mitigation-shape names, the classical-controls floor, and the mitigate→re-check→residual chain. The exercise now includes the load step, depends on `outputs/policy-report-raw.md` from the prior exercise, and needs a fresh mechanical run against the new order.

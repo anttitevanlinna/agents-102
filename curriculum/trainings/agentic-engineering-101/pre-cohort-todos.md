@@ -52,7 +52,7 @@ Mandatory for AE101 modules per `.claude/skills/content-creation/SKILL.md`. Disp
 
 ## 7. Cross-cutting ops
 
-- **Team-kit home runbook** — if sponsor answered "we don't have one" on the pre-engagement contract, who creates the default shared repo, when, how students get access. Ops-side, before Day 1. Cross-cutting; not M3-specific even though Ex3 is where it first lands.
+- **Team-kit home runbook** — if sponsor answered "we don't have one" on the pre-engagement contract, who creates the default shared repo, when, how students get access. Ops-side, before Day 1. Cross-cutting; not M3-specific even though Ex3 is where it first lands. Assumption: unresolved team-kit debate does not block Modules 4–6; students can continue in personal clones/worktrees, flag team-worthy candidates, and promote later once the home is decided.
 
 ## 8. M5 freshness dependency
 

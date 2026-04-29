@@ -5,7 +5,9 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## Prework
 
-[Before Module 3](exercises/module-3-prework.md). Five practitioners automating their life with Claude Code and OpenClaw (pick three, read one piece each). Plus a plain-language primer on how Claude Code launches helper agents (sometimes called <span class="rt-code">subagents</span><span class="rt-cowork">agents</span>): what they are, how to start one, what you'll see.
+**Setup:** Start this module at the training-directory root, the same root where Module 2 created `./CLAUDE.md`, `memory/`, `sources/`, and `agents/`. Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief.
+
+[Schedule your personal agent](exercises/personal-agent-homework.md). The scheduled agent has been reading your challenge memory for one week of observation. Selected sections from [What is an Agent](supplementary/what-is-an-agent.md) covered tools, memory, and context. [Before Module 3](exercises/module-3-prework.md) added three practitioner pieces and a plain-language primer on helper agents: what they are, how to start one, what you'll see.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -25,6 +27,8 @@ Last module you were the librarian. You searched Confluence, pulled from OneDriv
 [Exercise: Three minds, one synthesis](exercises/three-minds-one-synthesis.md)
 
 [Lecture: When to split an agent (and how)](lectures/when-to-split-an-agent.md)
+
+[Lecture: Debugging stuck agents](lectures/debugging-stuck-agents.md)
 
 ## Key Concepts
 - **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (Phase 1: long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (Phase 2: quick parallel thinking, bounded return). Different shapes, different territories — the lecture draws the line.
@@ -57,7 +61,7 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 
 ## Homework after Module 3
 
-**Reading.** Selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (multi-agent coordination).
+**Reading.** Read [Agent Trigger List — After Module 3](supplementary/agent-trigger-list.md#after-module-3--notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](supplementary/what-is-an-agent.md) on multi-agent coordination. Then read [Before Module 4](lectures/module-4-prework.md): personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.
 
 **Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
 
@@ -73,7 +77,10 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 **Quality:** draft 2026-04-29 (compendium audit run 2026-04-29 returned APPROVE-WITH-TODOS — runtime-fork pass applied; mood/LO/banned-word pass; not yet sim-passed or mechanical-tested)
 
-**Module time (trainer):** ≈ 70 min total. Crux opener (with question) ~8 min, *Three retrievers, one curator* ~28 min, *Three minds, one synthesis* ~22 min (incl. Close), *When to split* lecture 8–10 min, Debrief ~5 min. Each exercise's own time label is exercise-only; schedule the whole module against the sum.
+**TODO (Cowork edition review 2026-04-29):**
+- Learning goals and Key Concepts still leak Code-only terminology in Cowork rendering: "subagents inside one session", "when separate sessions beat subagents", and "Two multi-agent shapes in Claude Code." Runtime-fork or neutralize those lines so Cowork students see agents/tasks language while preserving the same learning goals.
+
+**Module time (trainer):** ≈ 75 min total. Crux opener (with question) ~8 min, *Three retrievers, one curator* ~28 min, *Three minds, one synthesis* ~22 min (incl. Close), *When to split* lecture 8–10 min, *Debugging stuck agents* callout ~4 min, Debrief ~5 min. Each exercise's own time label is exercise-only; schedule the whole module against the sum.
 
 **Plug Points (trainer):**
 

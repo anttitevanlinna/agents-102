@@ -6,7 +6,9 @@ You don't pick a quality check because someone said so. You run several on your 
 
 ## Prework
 
-[Before Module 5](lectures/module-5-prework.md). Two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: "the missing organisational check was X."
+**Setup:** Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under `module-5/`, saves the winning judge at `judges/groundedness-judge.md`, and compounds groundedness rules into `./CLAUDE.md`.
+
+Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. [Before Module 5](lectures/module-5-prework.md) added two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -56,9 +58,13 @@ When you're done, tell me in 1-5 lines: what changed in `./CLAUDE.md`, which sco
 
 Read Claude's summary. Push back where it's wrong: *"run the check only for external-facing claims, not every note"* / *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."* Two things now travel: the reusable judge file exists, and `./CLAUDE.md` tells future sessions when groundedness checking is required.
 
+> Consider automating some of these checks. Not everything. Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into `./CLAUDE.md` now. Module 6 turns that trigger into a loop.
+
 ## Agent Actions
 
 Same for agent actions. When the action matters, do not let the agent jump straight from thought to tool. Have it propose the action first, quality-check the proposal against the judge or the relevant source, and only then apply it. Propose, double-check, apply. That is output quality becoming operational safety.
+
+Read [What is an Agent — The autonomy ladder](supplementary/what-is-an-agent.md#the-autonomy-ladder-what-may-the-agent-do) before you decide what the agent may do next. The question is not "do I trust the agent?" The question is which rung this action has earned.
 
 Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
@@ -67,7 +73,7 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 
 ## Homework after Module 5: between-module reading
 
-Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: Chip Huyen, *AI Engineering* (O'Reilly 2025), selected sections (candidate).
+Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Read Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 <!-- maintainer -->
 
@@ -87,7 +93,7 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: C
 > PLUG POINT: The benchmark size.
 > Default: 30 claims. Lower only if the briefing is genuinely short; raise only if the cohort has time and the claim pool stays readable.
 
-**Canonical shape:** M5 is the **hallucination benchmark** — one of the three designated magic beats in M3–M8. The student operates as benchmark-setup + scoreboard-watcher + winner-saver, not as the classifier. Scorer picks the winner; student watches. Supersedes `ground-your-output.md`; the grounded/ungrounded/misrepresents/overreaches/ungrounded-shape vocabulary is no longer required material.
+**Canonical shape:** M5 is the **hallucination benchmark** — the core arc's measured-quality beat. The student operates as benchmark-setup + scoreboard-watcher + winner-saver, not as the classifier. Scorer picks the winner; student watches. Supersedes `ground-your-output.md`; the grounded/ungrounded/misrepresents/overreaches/ungrounded-shape vocabulary is no longer required material.
 
 **Superseded exercise:** `ground-your-output.md` kept alive as supplementary reading for cohorts that want the five-category taxonomy. Delete at the next sweep if unused by delivery date. The benchmark teaches grounded-ness as a discipline empirically without needing the five-category frame up front.
 
@@ -98,8 +104,8 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: C
 - **Compound reliability math** (85% × 10 steps ≈ 20% end-to-end) — carried in the lecture, makes the "why measure, not guess" case.
 
 **Philosophy callout (sparing):**
-- Belief #21 — name what you don't know — lands in the judge's "Known limit:" line and the Close's `still-uncertain.md` line. Both student-written.
-- Belief #14 — practice beats external proof — continues from M4.
+- Belief — name what you don't know — lands in the judge's "Known limit:" line and the Close's `still-uncertain.md` line. Both student-written.
+- Belief — practice beats external proof — continues from M4.
 
 **Mood contract — mechanical rescue, not triumph:**
 - M5's rescue is the scoreboard moment — *"ahh, this is actually fixable."* Watching four detectors run and the scorer name a winner with measured reasoning.
@@ -133,4 +139,3 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Plus: C
 **Source-verification owed (pre-first-cohort):**
 - Mata v. Avianca (S.D.N.Y. 2023) — public court record; add URL to the court filing or a reputable secondary source.
 - Deloitte Australia / DEWR welfare-compliance report (2025) — add URL (widely reported but no anchor in file).
-- Chip Huyen *AI Engineering* (O'Reilly 2025) — add publisher URL once the chapter selection is finalised.

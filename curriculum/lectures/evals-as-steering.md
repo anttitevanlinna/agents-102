@@ -20,13 +20,19 @@ Not because evals are tests for AI output. That is too small.
 
 Evals are how you write down what good means so the system can keep applying it when you are not in the chair.
 
-## Module 5 was you as the eval
+In the full agent picture, evals turn checks into a loop. The model generates, the judge checks, the tactic changes, and the next run starts from a sharper place.
 
-You read your system's output. A name appeared that should not have. A number was plausible but unsupported. A claim sounded right but had no source.
+## Module 5 turned judgment into a judge
 
-Your domain knowledge did the work. You knew where the truth lived and where Claude was guessing.
+You did not hunt for every bad claim by hand.
 
-Then you built the first version of a machine-readable version of that judgment. The benchmark produced a groundedness judge. It was not magic. It was your standard, made runnable.
+You set up a benchmark. One briefing. Thirty claims. Four detectors. One scorer.
+
+The point was not that any detector sounded clever. The point was that the same claim pool went through the same evidence surface, and the scoreboard named which method actually caught the misses.
+
+Then you saved the winner as `judges/groundedness-judge.md`.
+
+That judge was not magic. It was measured judgment, made runnable.
 
 That is the first kind of eval.
 
@@ -68,11 +74,11 @@ One exercise.
 
 You take the judge from Module 5 and put it into a loop. The judge stays fixed. The generator changes.
 
-Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The orchestrator reads the feedback and rewrites the generator's strategy file. Round 2 runs under the same judge, with the sharper strategy. Then Round 3.
+Round 1 produces a briefing. The judge scores it and writes per-claim feedback. The main session reads the feedback and rewrites `./generation-tactic.md`. Round 2 runs under the same judge, with the sharper tactic. Then Round 3.
 
 You walk away.
 
-When you come back, the dashboard tells you what changed: which claims were flagged, which strategy rules were added, whether the score improved, and whether the judge file stayed byte-identical.
+When you come back, the notes tell you what changed: which claims were flagged, which tactic rules were added, whether the score improved, and whether the judge file stayed byte-identical.
 
 That last line matters. If the judge moved, the score means nothing. A yardstick you rewrite is not a yardstick.
 

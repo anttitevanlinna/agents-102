@@ -40,6 +40,8 @@ The positive discipline is grounding. The failure mode is fabrication. The failu
 
 Grounded isn't "accurate." A grounded claim can still be wrong, if the source it's tied to is wrong. Grounded means *traceable to a real piece of evidence*. Accuracy is a harder question, and an agent alone can't answer it. Traceability is a mechanical discipline, and an agent CAN be forced into it. Start with grounded.
 
+In the full agent picture, this is the check. The agent can have context, tools, goals, and boundaries, and still produce something fluent but unsupported. A check is what makes the standard repeatable.
+
 **Don't pick a method. Run the candidates.**
 
 Somebody tells you *"just have the agent read your files before it answers,"* or *"do a consistency check,"* or *"prompt it to cite sources."* A single method, presented as the answer. You try it, catch some things, miss others, never know what you missed, and move on feeling vaguely better.

@@ -114,7 +114,7 @@ You can now clear. What you stored may or may not help you in future sessions. L
 
 **Plug points:**
 - Sponsor-stated tracker (Linear / Jira / GitHub Issues / other).
-- Push-back moves at retro and MCP gate (trainer covers by default; Nerd covers when enabled).
+- Push-back moves at retro and MCP gate (trainer covers in cohort; Nerd covers only in self-study).
 
 **Arc:**
 - Picks up from: `fix-tests-first` — the rule seeded at that exercise is the file the retro rewrites.

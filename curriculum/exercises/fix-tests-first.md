@@ -58,6 +58,7 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Time:** 35–40 min inside M1's 2h slot. Second of three exercises on the same bug / same repo. Shorter than the earlier 40–45 min band — the rule-write move moved to Ex3 where the compound step lives.
+- **Prompt progression note:** the commit / push / PR move is intentionally prose-led, not a fenced prompt block. At this point the Builder is already in the repo with the fixed diff in context; the student can ask in their own words. Do not add a paste-ready commit prompt unless the exercise design changes.
 
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — the tests-first, root-cause-driven fix riffs on a framework engineers already know. Named implicitly ("tests-first"); the rule seeded into `./CLAUDE.local.md` is the student's own TDD-style preference.

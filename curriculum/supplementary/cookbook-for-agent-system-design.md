@@ -88,7 +88,7 @@ Add a recipe when the practice is reliable enough that a working practitioner wo
 
 **Frameworks riffed on:**
 - Cookbook-as-genre (Chez Panisse Menu Cookbook energy; Mastering the Art of French Cooking for accessibility). The right vibe is *a practitioner's book, not a theory book.*
-- Chip Huyen's AI Engineering as the quality bar for practitioner-writing in this space.
+- Practitioner cookbook writing as the quality bar: concrete recipes, live constraints, and enough judgment to help the reader choose.
 
 **Why this supersedes the earlier "lifecycle doc" idea:**
 - Lifecycle implies one canonical path; cookbook implies many recipes the practitioner composes. The agentic build space is too varied for a single lifecycle to hold plainly.

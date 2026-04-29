@@ -5,7 +5,7 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read section 1 of [What is an Agent](supplementary/what-is-an-agent.md) (LLM vs chat).
+About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent — LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -76,14 +76,21 @@ Compare Claude's picks to what you expected. Where cold-Claude sees generic, you
 ## Next
 You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
 
+## Homework after Module 1 — before Module 2
+
+[Module 2 prework](exercises/module-2-prework.md). Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy's LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.
+
 <!-- maintainer -->
 
-**Quality:** maintainer-reviewed 2026-04-29
+**Quality:** draft 2026-04-29 (body touched after maintainer review; re-review needed)
 - maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
+
+**TODO (Cowork edition review 2026-04-29):**
+- The cold-critic prompt still says "Spawn a subagent" in the Cowork edition. Prompt-block change is gated: propose a before/after and get maintainer approval before editing. Likely fix is a runtime fork or neutral prompt wording that uses "agent" for Cowork.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply
-- **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief produces the student's first `CLAUDE.md` as an artifact they carry forward.
+- **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief sharpens `module-1/personal-brand-generation.md`; Module 1 deliberately creates no `CLAUDE.md`.
 - **Plug points:** participant's own LinkedIn profile — no org data needed yet
 
 **Plug Points (trainer):**

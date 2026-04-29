@@ -34,7 +34,9 @@ Two shapes today, each with its own territory.
 
 **Separate sessions (the Phase 1 move).** Pick this when each agent needs its own persistent context, its own tools, its own clock. The three retrievers had their own connectors, their own search history, their own conversation threads. Long-running, independent, visible. Separate windows let you *see* each one working; you can intervene in one without confusing the others. Good for retrieval across systems, parallel deep dives, anything where you want to watch each agent as it runs.
 
-**Subagents in one session (the Phase 2 move).** Pick this when the orchestrator wants quick parallel thinking and a bounded return. The three stances had a single job each, a clean instruction, no long-lived state, and they reported back as files and disappeared. Good for parallel framing of the same material, multi-perspective analysis, bursts of bounded work. The main session stays in charge; the subagents are temps.
+**Subagents in one session (the Phase 2 move).** Pick this when the main session wants quick parallel thinking and a bounded return. The three stances had a single job each, a clean instruction, no long-lived state, and they reported back as files and disappeared. Good for parallel framing of the same material, multi-perspective analysis, bursts of bounded work. The main session stays in charge; the subagents are temps.
+
+In the full agent picture, other agents are part of the tool surface. They let one agent call a different stance, a different source zone, or a different working style without stuffing every job into one prompt.
 
 **The shape test.** Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out. Sessions when you want concurrency visible; subagents when you want it invisible. Sessions when they have different tools; subagents when they share.
 

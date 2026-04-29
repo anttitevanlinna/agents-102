@@ -107,7 +107,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: Nerd pushes Phase 3 harder.
 
-**Push-back moves** (trainer delivers by default in cohort; Nerd delivers in self-study and opt-in cohort):
+**Push-back moves** (trainer delivers in cohort; Nerd delivers only in self-study):
 - **P1 blocker — student can't point Claude at the feature.** Nerd runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*
 - **P1 skill-invocation confusion.** Nerd: *"the skill was installed as a personal skill at prework; Claude Code auto-discovers it by name. You don't need a path. Just name the feature in one sentence and let the skill run as a subagent."*
 - **P2 skip (student starts typing immediately after skill finishes).** Nerd interrupts: *"three minutes, read the map first. The delta is the teaching moment, not the skill output."*

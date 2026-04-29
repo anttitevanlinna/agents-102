@@ -5,6 +5,8 @@ You can't tell if your agent is safe by looking at its output. You need a way to
 
 ## Prework
 
+**Setup:** Start this module at the training-directory root. Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
+
 [Before Module 4](lectures/module-4-prework.md). Two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work (company controls stay in place; agents add new ways for access, context, and instructions to go wrong).
 
 ## What You'll Learn
@@ -31,7 +33,7 @@ You've had three agents search your company and three more decide. What doesn't 
 - **Two lenses, one check you authored.** One lens carries what your company has already decided is off-limits. The other carries named risk patterns and a plain access review. You did not have to become a policy expert or a security specialist; you had to know what mattered and dictate it.
 - **Prompt injection is a class, not a footnote.** Direct prompt injection arrives in the user's input. Indirect prompt injection arrives in a source the agent retrieves and reads. Both turn well-formed English into the attack surface. Classical perimeter does not see the attack because the attack is not malformed.
 - **"I can't tell" is a real answer.** Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
-- **Agent mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: network controls, identity and access management, logging, vendor/security review. Loop design is additive. A leader who concludes "the agent check replaces security" ships a breach. The floor stays; the loop adds new surfaces above it.
+- **Agent mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: network controls, identity and access management, logging, supplier review, and security review. Loop design is additive. A leader who concludes "the agent check replaces security" ships a breach. The floor stays; the loop adds new surfaces above it.
 - **Residual risk is a first-class artifact.** After mitigation, something remains. You name it and accept it on record. The report should not pretend that a narrower instruction erased the risk; it should show what changed and what stayed true.
 - **Skills as expertise injection.** A skill is how an agent borrows capability it doesn't natively have. It scopes DOWN (what the agent can't do) and scopes UP (what expertise it brings). Module 4 is where you author your first reusable security check.
 
@@ -66,7 +68,7 @@ Remember also: agent actions start as text. A tool call, an email draft, a CRM u
 
 ## Homework after Module 4: between-module reading
 
-Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern.
+Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read [Before Module 5](lectures/module-5-prework.md): Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: "the missing organisational check was X."
 
 <!-- maintainer -->
 
@@ -100,8 +102,8 @@ Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visi
 - **Assumption-test** (Roger Martin) — the "what would have to be true for this to be safe?" move is carried from Module 3's synthesizer into the policy lens of the reusable check the student authors (the "I can't tell" column).
 
 **Philosophy callout (sparing):**
-- Belief #21 — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
-- Belief #14 — practice beats external proof — anchors the lecture's core message. Named in maintainer-space, experienced in body.
+- Belief — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
+- Belief — practice beats external proof — anchors the lecture's core message. Named in maintainer-space, experienced in body.
 
 **Capability check owed (per-runtime package + load):** see *Run and package a security skill* exercise maintainer block — Cowork personal-skill creation through *Customize → Skills → New → Create with Claude*, Desktop/CLI standalone-skill install into `~/.claude/skills/security-audit/`, plain-language invocation reliability across all three runtimes, loaded-skill visibility on session start. Run `claude-code-guide` before first delivery.
 

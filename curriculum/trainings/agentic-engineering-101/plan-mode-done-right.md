@@ -110,10 +110,9 @@ Optional. Skipping either piece does not break Module 3. The point is to land ST
 - Student's own repo (carried from M1)
 - Student's own backlog task (surfaced in M2 prework)
 - Sponsor-stated rules home for the Compound step
-- Push-back moves at P3 (trainer covers by default; Nerd covers when enabled)
+- Push-back moves at P3 (trainer covers in cohort; Nerd covers only in self-study)
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
 - **Plan mode** (Anthropic Claude Code). Activation Shift+Tab; push-back via *keep planning with feedback* at the approval prompt (chat-based, the exercise's path). In-place plan-file editing via Ctrl+G / Ctrl+X Ctrl+E is a practitioner primitive mentioned at Debrief, not the exercise's move — chat-based push-back keeps the student in conversation with the agent. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
 - **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
 - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). Vision-layer attribution, optional at Debrief; most engineers have seen this in strategy readings.
-

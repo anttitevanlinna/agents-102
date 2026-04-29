@@ -15,8 +15,11 @@ After completing this exercise, the participant can:
 - **Extract** three to five task-shaping rules from their own M2 plan-mode session, anchored to specific moments (the task picked, what the second-pass read surfaced, what their push-backs caught) — not generic rubric phrases
 - **Save** the rules to a `.md` file at a location they chose deliberately (auto-load tier vs. repo-personal tier vs. somewhere else) — not a path the curriculum prescribed
 - **Recognize** three real-world shapes (Slack triage / issue webhook / scheduled read) for turning a rules file into automation, and **defer** building one today as the discipline
+- **Optionally reverse-engineer** one real task-manager ticket into basic field-use rules for a future backlog-refinement agent, while separating strong signals from guesses and "cannot tell" items
 
 If an engineer walks out with the file written, at least one rule rewritten in their own voice, and a clear sense of "I'm not building the bot today and that's the move" — the exercise lands.
+
+If the optional task-manager step runs, it lands only if the engineer treats one ticket as a first read, not policy. The artifact is a basic inference set: fields that seem to matter, guesses to test on more tickets, and the first five rules a backlog-refinement agent could use later.
 
 ## Framing fidelity *(universal)*
 
@@ -27,6 +30,7 @@ It avoids these anti-framings:
 - **Curriculum-prescribed location.** Phase 2 must offer plausible homes without picking one for the student. Free-choice is the *capture-your-world* beat made concrete.
 - **Skill-by-name authoring.** Phase 2 names a `.md` file, never a SKILL.md. M3 Ex3 owns first skill-by-name authoring.
 - **Generic rules accepted as-is.** Phase 1's force-engagement (rewrite or reject at least one) defeats the default-acceptance pattern.
+- **One-ticket policy inflation.** Optional task-manager reverse-engineering must keep strong signals separate from guesses; one ticket can produce basic rules, not a finished backlog policy.
 
 ## Learning goal fit *(universal)*
 
@@ -38,6 +42,7 @@ Phase mapping:
 - P1 (surface, sharpen, reject) → *Extract* + force-engagement
 - P2 (save to chosen location) → *Extract* second clause + free-choice agency
 - P3 (ask Claude where this could go) → setup for *Recognize*; the lecture grounds the recognition
+- Optional task-manager step → transfer the same reverse-engineering move from plan-mode scrollback to a single backlog ticket
 
 ## Mood contract
 
@@ -53,3 +58,4 @@ Extension of grounded competence into capture-and-name. Mini-lecture closes forw
 - Source-verification of the three lecture shapes (Klaassen / issue-webhook `[SOURCE NEEDED]` / Ronacher)
 - Capability-check on the loading-model claim in P2 (`~/.claude/memory/` auto-load behavior, `CLAUDE.local.md` gitignore default)
 - Cross-module-artefact-contract check: does any later AE101 module assume this `.md` exists at a stable path? If yes, the location-free-choice is a contract violation; if no, free-choice is correct.
+- Optional task-manager step sim: check that the prompt produces basic field-use rules and does not overfit one ticket into policy.

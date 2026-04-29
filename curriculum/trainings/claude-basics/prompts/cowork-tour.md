@@ -5,7 +5,7 @@ A plain prompt file for use during pre-work. The participant pastes this into a 
 ## When to use
 
 - Pre-work before the cohort, ~15 minutes, mandatory
-- Pre-cohort dry-run by the IT Director against the actual SharePoint workspace
+- Pre-cohort dry-run by the organisers against the actual SharePoint workspace
 
 ## The prompt
 
@@ -30,6 +30,6 @@ After all five stops, summarize in 3 lines: where my files go, what survives bet
 ## Notes
 
 - The five stops are deliberately short. The point is exposure, not training. The participant arrives at Module 1 having seen the surface area once
-- The connector list (stop 5) is informational. The cohort's actual connector setup is the IT Director's pre-cohort coordination, not the participant's pre-work
+- The connector list (stop 5) is informational. The cohort's actual connector setup is the organisers' pre-cohort coordination, not the participant's pre-work
 - The summary saved to `cowork-tour-notes.md` is a reference the participant can re-read in Module 1 if anything feels unfamiliar
-- If the participant has used Cowork extensively before, this pre-work step is redundant. The customer's IT Director decides whether to mark it as required or optional per cohort
+- If the participant has used Cowork extensively before, this pre-work step is redundant. The customer's organisers decides whether to mark it as required or optional per cohort

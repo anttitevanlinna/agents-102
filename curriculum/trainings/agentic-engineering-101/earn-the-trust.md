@@ -130,7 +130,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 - Student's own feature (surfaced in Connections)
 - Sponsor-stated ADR home (Ex2)
 - Sponsor-stated team-kit home (Ex3 ship step)
-- Push-back moves at each rubber-stamp risk (trainer covers by default; Nerd covers when enabled)
+- Push-back moves at each rubber-stamp risk (trainer covers in cohort; Nerd covers only in self-study)
 
 **Frameworks riffed on (attributed in lecture):**
 - **STRIDE** — Loren Kohnfelder & Praerit Garg (1999 Microsoft memo), sharpened by Adam Shostack (*Threat Modeling: Designing for Security*, 2014). Curated skill ships in `content/skills/stride/`.

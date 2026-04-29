@@ -3,7 +3,7 @@
 **Audience:** the sponsor CTO (or equivalent buyer) who signed the cohort for their team.
 **Purpose:** the one question the training needs answered *before* Day 1 — *where does durable engineering knowledge live in this company so an agent can read it next time?*
 **Runtime:** 15–20 minutes, once. Five answers, one reason each.
-**Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. The Agentic Nerd reads it at the right blocker in each module and substitutes your answer into the student's workflow. No student asks *"where should this go?"* — your answer is already in the prompt.
+**Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes your answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file. No student asks *"where should this go?"* — your answer is already in the prompt.
 
 This is the asset we send to the sponsor after contract signature, weeks before Day 1. It's a pre-engagement deliverable, not a training artifact.
 
@@ -73,9 +73,9 @@ Reason:
 
 ---
 
-### 4. Team kit — where do shared judges, gate specs, and constraints live so every engineer's agent reads the same ones?
+### 4. Team kit — where do shared skills, judges, gate specs, and constraints live so every engineer's agent reads the same ones?
 
-*Shows up:* Module 4 onward. This is the team's collective agentic infrastructure — the thing that makes one engineer's eval help another engineer's PR.
+*Shows up:* Module 3 onward, first as an optional promotion path for authored skills; Module 4 onward as shared judges, gates, and constraints. This is the team's collective agentic infrastructure — the thing that makes one engineer's eval help another engineer's PR.
 
 *Common shapes:* a shared plugin repo (Klaassen's pattern — every engineer's Claude reads from it). Monorepo `.claude/` directory. Private GitHub org-level repo cloned into each engineer's setup.
 
@@ -113,8 +113,8 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 
 1. You send this back.
 2. We populate `content/pre-engagement-contract.md` in the cohort's content bundle.
-3. Every module's Agentic Nerd reads the contract and surfaces your answer at the right moment. Your engineers see your default, not a placeholder.
-4. Overrides (where an engineer proposed a better home) are collected by the Nerd and handed back to you in the cohort-close memo.
+3. In classroom delivery, the trainer surfaces your answer at the right moment. In optional self-study, the Agentic Nerd may read the same contract. Your engineers see your default, not a placeholder.
+4. Overrides (where an engineer proposed a better home) are collected by the trainer and handed back to you in the cohort-close memo.
 
 ---
 
@@ -124,7 +124,8 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 - Ship alongside the signed contract and the cohort prework email. Sponsor fills in 15–20 minutes; ops converts the five answers into `content/pre-engagement-contract.md` in the content bundle.
 - **Asset status:** v0 — sponsor-facing, not yet sent to a real sponsor. First cohort delivery is the first test. Iterate from sponsor feedback.
 - **Tone check:** sponsor is a builder CTO (reads Willison, uses Claude Code daily). Direct, short, no consultant padding. The Rory beats ("Half the CTOs who fill this worksheet discover…") earn their keep because the sponsor wants a transformation artifact, not a training-supplier intake form. If a real sponsor finds any line reads like sales boilerplate, trim.
-- **Override handling** — the Nerd writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution. The trainer collects these for the close memo. Implementation lives in the Agentic Nerd skill (DEFERRED — upstream infra not yet built).
+- **Override handling** — classroom delivery keeps this trainer-owned: the trainer writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution, then collects these for the close memo. Optional self-study may automate the same move later, but Agentic Nerd stays invisible to classroom cohorts.
+- **Team-kit assumption** — if the team-kit home is still being debated, Modules 4–6 can continue in personal clones/worktrees. Students do not need to push shared kit changes during the cohort; they can flag candidates and promote later once the home is decided.
 - **Future asset companions:**
   - Cohort-close memo template ("what your engineers said about the four homes") — DEFERRED (post-first-cohort).
   - Sponsor one-pager on the pre-engagement contract's purpose (belongs in the sales pack, different audience — the sponsor who hasn't signed yet, doing diligence on the program).

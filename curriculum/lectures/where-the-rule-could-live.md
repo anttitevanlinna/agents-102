@@ -6,15 +6,15 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 ## Slack-triage shape
 
-A new request lands in Slack. An agent reads it, consults your `.md` file, and replies in the thread: *this is a one-liner, ship it from main; this is a feature slice, here's how it splits; this is an epic, here are the three shippable pieces.* The agent triages against the file and posts its read back into the conversation that produced the request.
+A request lands in a Slack thread. Typically, either `@Claude` routes it into Claude Code on the web, or a Slack app listens for the message and passes it to an agent runtime. The agent reads the thread plus your `.md` file, then replies with the suggested slice or next question: *this is a one-liner, ship it from main; this is a feature slice, here's how it splits; this is an epic, here are the three shippable pieces.*
 
 The `.md` file is the steady part. The agent is the moving part. The triage gets sharper because the file gets sharper, not because the agent gets bigger.
 
 ## Issue-webhook shape
 
-A teammate opens a GitHub issue. A webhook fires. A scheduled agent reads the issue against your `.md` file, splits the work into shippable sub-issues, and links them back. Your `.md` file decides what counts as shippable.
+A teammate opens, edits, or labels a GitHub issue. Typically, a GitHub Actions workflow or GitHub App picks it up. The usual go-to agents in GitHub are Claude Code through its GitHub app and GitHub Copilot. The agent reads the issue against your `.md` file, proposes labels, asks for missing info, or splits it into shippable sub-issues. Your `.md` file decides what counts as shippable.
 
-The `.md` file is the policy. The webhook is the trigger. You change the policy by editing the file; nothing else moves.
+The `.md` file is the policy. The issue event is the trigger. You change the policy by editing the file; nothing else moves.
 
 ## Scheduled-read shape
 
@@ -22,9 +22,13 @@ Once a sprint, an agent reads your backlog top-to-bottom against the `.md` file 
 
 The `.md` file is the spec. The schedule is the cadence. A fixed spec the agent re-reads at run start so it can't drift mid-task.
 
+Claude Code scheduled tasks are one natural runtime for this shape. You give the scheduled task the backlog source, the `.md` file, and the cadence. It returns a proposal you read before anything changes.
+
 ## What this means today
 
-Three different shapes; one common piece. The `.md` file. Once you have it, you have a guardrail. From there, you run an agent with the guardrail on whatever material fits — a Slack channel, an issue queue, a sprint backlog — in whatever runtime fits — a webhook, a schedule, a triage bot.
+Three different shapes; one common piece. The `.md` file. Once you have it, you have a guardrail. From there, you choose the trigger and runtime that fit your team: Slack thread, issue event, sprint cadence; Claude Code on the web, GitHub Actions, a Slack app, a scheduled agent, or something else. The file travels.
+
+If you reverse-engineered one ticket after the exercise, those field-use rules sit beside the same `.md` file. A backlog-refinement agent reads both: task-shaping rules for what counts as a good slice, field-use rules for how your team expresses work in the tracker.
 
 Agents build agents. The agent that reads the `.md` file and splits a backlog can be built by another agent that reads a different `.md` file: yours about how *you* author skills, how *you* test them, how *you* ship them. M3 starts there. Today the file exists.
 
@@ -33,7 +37,8 @@ M3 starts with a feature you're shipping.
 <!-- maintainer -->
 
 
-**Quality:** sim-passed 2026-04-28
+**Quality:** draft 2026-04-29
+- draft 2026-04-29 (aligned with optional task-manager reverse-engineering add-on in `extract-the-task-shaping-rule.md`; needs compendium re-audit + sim before restoring higher tier)
 - compendium-audited 2026-04-28 (check_writing v2026-04-26 voice-quintet + #11 attribution-cap; check_lectures v2026-04-24 #1 meta-frame-closer; check_student_facing v2026-04-27; check_strategy_tie_in v2026-04-25; check_research_claims — body ships un-attributed by deliberate strategic choice, named landings deferred to M5–M6)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - sim-passed 2026-04-28 (Mid-competent 8.0 / Opinionated-senior 7.0 — gripes "agents build agents" as bumper-sticker but Antti's verbatim-frame-cite holds per check_writing #10; Nitpicker — "guardrail" metaphor flagged but kept; "memory" framing stripped + practitioner names stripped per Antti corrections, all same cycle)
@@ -52,6 +57,9 @@ M3 starts with a feature you're shipping.
 - **Frameworks riffed on (deferred from body):**
   - Slack-triage shape — Klaassen / Every compound-engineering pattern. Reference: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. Earned-landing at M5–M6 as compound-engineering anchor.
   - Scheduled-read shape — fixed-spec reference-artifact pattern (Ronacher). Earned-landing at M5's verifier build.
+- **Capability/source notes (2026-04-29):**
+  - Slack trigger wording grounded in Slack Events API / workflow trigger model: Slack app or workflow receives message/event/webhook, then external code or custom step calls the agent runtime. Do not imply Claude Code runs inside Slack.
+  - GitHub issue wording grounded in GitHub Actions `issues` events and webhooks. In-repo default is usually a workflow on issue events; external integrations use webhooks or GitHub Apps.
 - **Attribution cap (`check_writing.md` #11):** main exercise body cites Pocock + Klaassen + Martin; this lecture adds zero new student-side names. Within budget; M2's named-practitioner load stays where it earned its keep.
 - **Philosophy callout budget:** zero. The closer carries the forward gesture without naming a belief.
 

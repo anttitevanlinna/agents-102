@@ -5,7 +5,7 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Prework
 
-**Setup:** <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 rules file at `module-1/CLAUDE.md` stays scoped to Module 1. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+**Setup:** <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
 [Module 2 prework](exercises/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
 
@@ -25,6 +25,8 @@ You saw Karpathy's LLM Wiki post in the prework. What's the difference between a
 Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. We're going to build a memory around it.
 
 And one more: if everything you've read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?
+
+Connectors let the agent combine clues that normally live apart: a wiki page, a document, a meeting note, an email thread, and a useful source from the open web. The useful answer is often between systems.
 
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
@@ -59,8 +61,6 @@ When you're done, tell me in 3–5 lines: the rules you wrote, which session mom
 Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
 
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
->
-> Antti
 
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
 
@@ -71,16 +71,18 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 ## Homework after Module 2 — between-module reading
 
-[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (tools, memory, context).
+[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory for one week of observation. Read [Agent Trigger List — After Module 2](supplementary/agent-trigger-list.md#after-module-2--start-noticing-trigger-moments) and start noticing when real work should call the agent. Read selected sections from [What is an Agent](supplementary/what-is-an-agent.md) on tools, memory, and context. Then do [Before Module 3](exercises/module-3-prework.md): pick three practitioner pieces, and read the plain-language primer on helper agents.
 
 <!-- maintainer -->
 
-**Quality:** maintainer-reviewed 2026-04-29
+**Quality:** draft 2026-04-29 (body touched after maintainer review; re-review needed)
 - maintainer-reviewed 2026-04-29 (Antti, M2 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
+
+**Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply → Analyze
-- **Materials (trainer):** Module 2 zip that unpacks into the student's working directory — empty `sources/` (participant fills via curation on class day — no pre-load), empty `memory/`, empty `agents/`, and a root `CLAUDE.md` with starter rules. Phase 3's second batch comes from the participant themselves — they find another piece of material mid-exercise. No trainer injection; the three-minute "go find more" loop is part of the lesson.
+- **Materials (trainer):** Module 2 zip that unpacks into the student's working directory — empty `sources/` (participant fills via curation on class day — no pre-load), empty `memory/`, and empty `agents/`. No root `CLAUDE.md` ships; the student creates it in the Debrief. Five-minute connector demo uses non-sensitive trainer material across two connected systems plus one outside source. Phase 3's second batch comes from the participant themselves — they find another piece of material mid-exercise. No trainer injection; the three-minute "go find more" loop is part of the lesson.
 - **Plug points:** Each participant's own live challenge + curated sources from their Confluence / Office365 / internet. Sponsor pre-agreement: Confluence & Office365 connector access for the cohort; acceptance that the shape (not the substance) of challenges may be shared in the room.
 
 **Plug Points (trainer):**

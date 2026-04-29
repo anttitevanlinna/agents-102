@@ -16,7 +16,8 @@ The agent-ness progression. Starts at "LLM isn't a chatbot," ends at "agents bui
 - **Module 2:** Chat → agent — persistence + automation = system *(section to add)*
 - **Module 3:** Multi-agent — specialization, handoffs, the assembly line *(section to add)*
 - **Module 4:** Tools, skills, permissions *(section to add)*
-- **Module 5-6:** Agents as judges *(section to add)*
+- **Module 5:** The autonomy ladder: what the agent may propose, check, or do *(written 2026-04-29)*
+- **Module 6:** Agents as judges: generate, score, adjust, repeat *(written 2026-04-29)*
 - **Module 8:** Agents building agents (the flywheel) *(section to add)*
 
 ### building-guardrails.md
@@ -47,7 +48,13 @@ How leading companies make data and systems available to agents — a progressio
 - **Module 2:** Files as the default — `sources/` + `memory/`
 - **Module 4:** MCP (agent's standard plug) + CLIs (handles agents already grip) — with scoped permissions
 - **Module 7:** Headless SaaS + semantic skills — sharing at the data layer, not the agent layer
-- **Module 8:** Semantic models — the company's shared meaning, made agent-readable; the substrate that makes agents compound
+- **Module 8:** Semantic models — the company's shared meaning, made agent-readable; the shared ground that makes agents compound
+
+### agent-trigger-list.md
+Daily invocation habits after the core arc. Helps students notice when to bring an agent into real work instead of waiting for a special "AI task."
+- **After Module 2:** Start noticing trigger moments once the agent has reusable memory.
+- **After Module 3:** Add the "one agent or several?" question.
+- **After Module 6:** Five Monday trigger moments and a prompt that writes `./agent-trigger-list.md` from the student's own training folder.
 
 ### cookbook-for-agent-system-design.md
 *"This is how you do it."* Practitioner recipes — the moves, in sequence, that take someone from chat to an agent system they'd stake their reputation on. Supersedes the earlier "lifecycle doc" idea (recipes compose; lifecycles gatekeep).
@@ -91,7 +98,7 @@ Modules reference supplementaries as **prework** or **homework**, by title + sec
 
 ```markdown
 ## Meta
-- **Prework:** [What is an agent — § LLM vs chat](../../supplementary/what-is-an-agent.md#llm-vs-chat)
+- **Prework:** [What is an Agent — LLM vs chat](../../supplementary/what-is-an-agent.md#llm-vs-chat)
 ```
 
 Participants click through to read the section. The supplementary page shows the full document in context; the participant sees what's been covered and what's coming.

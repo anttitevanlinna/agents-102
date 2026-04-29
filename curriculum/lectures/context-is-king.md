@@ -22,6 +22,8 @@ Claude isn't looking your question up in a database. It reads the whole conversa
 
 That's context. Unglamorous, isn't it? And yet every useful thing in this training is built on this one idea.
 
+In the full agent picture, this is the first piece: context. Later you add tools, goals, checks, boundaries, and loops. None of them work unless the agent reads the right world first.
+
 ## Context isn't only about countries
 
 One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."*

@@ -4,11 +4,11 @@ Your memory has been working for you for days now. It catches things you'd have 
 
 Hold the impulse. Then do the opposite of what vendors want you to do.
 
-You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job your teammate is trying to get done.** Christensen and Moesta showed it in consumer research, Ulwick turned it into a method: people don't buy products, they hire them for jobs. Applied to a sharing decision: your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
+You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job your teammate is trying to get done.** Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
 
 So the starting question is theirs, not yours: **what job is my teammate trying to get done, and which sharing shape does it?**
 
-You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome, not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll test the switch. You'll pre-mortem the firing. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
+You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome, not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll find the absorption bottleneck, test the switch, and name the likely failure before it happens. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
 
 **What you do:**
 
@@ -137,22 +137,22 @@ The four strategies, as a reminder:
 
 "Share the whole agent" is not on the list. It sounds right in a deck. It doesn't work in the field.
 
-**Phase 2.5. Crux the sharing problem (5 min).**
+**Phase 2.5. Find the absorption bottleneck (5 min).**
 
-Before you draft plans, find the load-bearing obstacle. The sharing problem always has one, and it's almost never the technical one your builder brain surfaced first. Rumelt's *crux* is the move: of all the obstacles in the way, name the one that, if removed, collapses several others.
+Before you draft plans, find the load-bearing obstacle. The sharing problem always has one, and it's almost never the technical one your builder brain surfaced first. Name the one obstacle that, if removed, would make several others easier.
 
 **Prompt** *(Builder Claude)*
 
 ```
-Find the crux of my sharing problem (Rumelt — the load-bearing obstacle that, if removed, collapses several others). Read module-7/jtbd.md and module-7/branch.md, plus anything else in module-7/ so far. The question is not "how do I share?" — it's "what's the single load-bearing obstacle between my teammate and firing their current hire?"
+Find the absorption bottleneck in my sharing problem. Read module-7/jtbd.md and module-7/branch.md, plus anything else in module-7/ so far. The question is not "how do I share?" — it's "what's the single load-bearing obstacle between my teammate and firing their current hire?"
 
-List the obstacles you see — technical, social, political, habitual, governance, trust. Cluster them. Name the crux: the one that, if removed, collapses several others. State it in one sentence.
+List the obstacles you see — technical, social, political, habitual, governance, trust. Cluster them. Name the bottleneck: the one that, if removed, makes several others easier. State it in one sentence.
 
-Save to module-7/crux.md. Show me before saving.
+Save to module-7/absorption-bottleneck.md. Show me before saving.
 ```
 
 
-Read what lands. If the crux is technical ("we don't have a Slack bot"), push back. Technical obstacles are almost never the crux at Week 1. If the crux is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
+Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), push back. Technical obstacles are rarely the bottleneck at Week 1. If the bottleneck is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
 
 **Phase 3. Draft both plans (18 min).**
 
@@ -161,7 +161,7 @@ You're drafting two documents side by side. Neither is optional.
 **Prompt** *(Builder Claude)*
 
 ```
-Read module-7/jtbd.md and module-7/branch.md. Help me draft two files in
+Read module-7/jtbd.md, module-7/branch.md, and module-7/absorption-bottleneck.md. Help me draft two files in
 parallel — a technical plan and a people plan. Both are about whether this
 teammate can actually fire their current hire and start using my candidate.
 
@@ -189,17 +189,16 @@ Show me both before saving.
 
 Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise. They are the questions you walk into your manager's office with on Monday.
 
-**Phase 4. Assumption-test the switch (10 min).**
+**Phase 4. Test the switch assumptions (10 min).**
 
-Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. The question is Roger Martin's: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
+Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. The question is: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
 
 **Prompt** *(Builder Claude)*
 
 ```
-Read module-7/jtbd.md, module-7/technical-plan.md, and module-7/people-plan.md.
+Read module-7/jtbd.md, module-7/absorption-bottleneck.md, module-7/technical-plan.md, and module-7/people-plan.md.
 
-Run Roger Martin's assumption-test on these plans — *what would have to be true
-for this to work?* Aim it at the SWITCH, not at generic sharing:
+Test the assumptions in these plans. Aim it at the SWITCH, not at generic sharing:
 
 What would have to be true for this specific teammate, doing this specific
 job, to fire their current hire and use my candidate?
@@ -218,14 +217,14 @@ a new section. Show me before saving.
 
 Mark the two or three you'd actually test this week. Those are what you ship first, not the full rollout.
 
-**Phase 5. Pre-mortem the firing (7 min).**
+**Phase 5. Name the likely failure (7 min).**
 
 The plan is on paper. Six months from now, they went back to Excel. Why?
 
 **Prompt** *(Builder Claude)*
 
 ```
-Run a pre-mortem (Klein and Kahneman). It is six months from now. My teammate
+It is six months from now. My teammate
 kept using their current hire. My candidate sat unused, or they tried it twice
 and fired it.
 
@@ -243,7 +242,7 @@ Write three failure stories, each a short paragraph:
 For each story, one sentence: the early warning sign I'd see in week two if
 this were starting to happen.
 
-Save to module-7/premortem.md.
+Save to module-7/failure-stories.md.
 ```
 
 
@@ -264,15 +263,13 @@ The interview will surprise you. Your memory already knew 80% of this teammate's
 
 Your pattern selection will look different under the outcome test than under the infrastructure test. Patterns you'd have picked because they're easy don't move the metric. Patterns you'd have ruled out because they seem hard turn out to be the only ones that do the job. That's the reframe.
 
-Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the Access-Trust Gap in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the thing industry papers over.
+Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the absorption bottleneck in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the thing industry papers over.
 
-The pre-mortem will tell you things you half-knew. The third story (the failure you're not seeing) is usually some version of *"they never fired their current hire in the first place."*
+The failure stories will tell you things you half-knew. The third story (the failure you're not seeing) is usually some version of *"they never fired their current hire in the first place."*
 
 **The point:**
 
 Before you design a solution, **interview for the outcome.** That's the transferable skill. The sharing decision is one instance. Monday you'll face a different adoption problem (rolling out a new process, proposing a tool, onboarding a hire) and the move is the same. Agent reads your context. Drafts a hypothesis about the job someone is trying to get done. Asks you seven targeted questions. Produces a brief with an outcome statement. You pick the candidate that moves the outcome. You draft both plans. You test the switch, not the solution.
-
-Christensen and Moesta gave us the switch interview. Ulwick gave us the outcome statement. Rumelt, Martin, and Klein gave us the three strategy disciplines. You just applied all of them to an agent-sharing decision. They'll travel.
 
 A candidate picked because it fits the infrastructure is shopping. A candidate picked because it moves the outcome is design.
 
@@ -290,18 +287,18 @@ A candidate picked because it fits the infrastructure is shopping. A candidate p
 - **Phase 3 stall on people-plan names.** Their technical plan fills quickly; the people plan stalls on *who owns it?* That stall IS the teaching moment. Protect it. UNASSIGNED lines are the Monday artifact.
 - **Phases 4 and 5 are where students run out of time.** Designed. Before Phase 4 starts, say aloud: *"If you don't finish these, you have Monday's work. That's the intended outcome for at least half of you."* Removes the shame. Hardness is a feature.
 - **Monday's first move is a conversation, not a deployment.** If a student writes *"I'll deploy the Slack bot on Monday"* as their first move, push: *"Before deploying anything — what conversation are you having first? With whom? About what?"* The reframe — sharing starts with an interview, not a push — is the take-home.
-- **Closing beat:** in-room, pick three students to read their pre-mortem third story aloud. The third-story format forces useful disclosure. Self-study: Teacher Claude plays the pushback role on the outcome statement.
+- **Closing beat:** in-room, pick three students to read their third failure story aloud. The third-story format forces useful disclosure. Self-study: Teacher Claude plays the pushback role on the outcome statement.
 
 **Framework attributions:**
 
 - Clayton Christensen — Jobs-to-be-Done, *Competing Against Luck*. The framing: people hire products for jobs.
 - Bob Moesta — the switch interview. The practitioner variant of JTBD used for small-team adoption decisions (*"tell me about the moment you decided to switch"*). Closer to what works here than the academic form.
 - Anthony Ulwick — Outcome-Driven Innovation. The outcome statement form: *"minimize/increase [metric] when [doing the job]."* The three-vector structure (speed, quality, other) is in the ODI lineage.
-- Richard Rumelt — *Good Strategy Bad Strategy*. Crux / load-bearing obstacle. Not explicitly run as a standalone phase in this exercise — the social-obstacle diagnosis is folded into Phase 4's assumption-test against the switch. Students who took M6's prework on crux will recognise the move.
+- Richard Rumelt — *Good Strategy Bad Strategy*. Crux / load-bearing obstacle. Student-facing framing uses absorption bottleneck rather than named crux.
 - Roger Martin — *Playing to Win*. Strategy as assumptions / *what would have to be true?* Phase 4.
-- Gary Klein, Daniel Kahneman — pre-mortem. Phase 5.
+- Gary Klein, Daniel Kahneman — pre-mortem. Student-facing framing uses failure stories.
 
-Supporting research inline via prework three-walls reading: Access-Trust Gap (Pattern 47), absorption bottleneck (L4), discoverability (F-Secure).
+Supporting research inline via prework: absorption bottleneck. Access-trust and discoverability are useful facilitator lenses if the room needs them.
 
 **Pacing:** Phase 1: 12 / Phase 2: 13 / Phase 3: 18 / Phase 4: 10 / Phase 5: 7 / close: 5 = ~65 min. Fits the 55–70 window. Students running slow will compress Phase 2's pattern-catalog read and spend the time on Phase 3's people plan — fine.
 

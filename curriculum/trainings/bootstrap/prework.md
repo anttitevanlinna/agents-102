@@ -94,13 +94,13 @@ I just attached a screenshot of my calendar week view to this message. Read it, 
 
 *Proof: Claude can read your real work data and save a useful summary on your machine.*
 
-Stuck on the connector or want specific click-paths? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
+Stuck on the connector or want specific click-paths? See [Claude quick reference](reference/claude-quick-reference.md).
 
 ## 4. Read the mental frame (10 min)
 
 If you only do one thing from this prework, do this. The rest builds on it.
 
-Open [What is an Agent, section 1](curriculum.html?file=supplementary/what-is-an-agent). Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You'll meet the rest of that document section by section as the training goes.
+Open [What is an Agent — LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat). Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You'll meet the rest of that document section by section as the training goes.
 
 *Proof: you arrive with a rough mental frame, not a blank one.*
 
@@ -113,3 +113,5 @@ You walk into Module 1 with <span class="rt-code">Claude Code</span><span class=
 **Quality:** maintainer-reviewed 2026-04-29
 - maintainer-reviewed 2026-04-29 (Antti, Bootstrap prework manual cohort-prep run; install path tested end-to-end under Cowork lens, snake + meetings + read all verified)
 
+**TODO (Claude Code Desktop edition review 2026-04-29):**
+- Prompt 1 includes Cowork-specific wording: "Leave `starter.tar.gz` behind — Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.

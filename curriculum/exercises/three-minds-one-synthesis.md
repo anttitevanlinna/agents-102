@@ -64,7 +64,16 @@ Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really goi
 </div>
 
 
-Read your `./crux.md` — `## Answer` section appended. The three stances are the reasoning; the named-disagreements line in the answer is where the work actually happened.
+Heads-up: the answer often comes back with a longer issue list than feels comfortable — disagreements named, gaps flagged. That's the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to Claude.
+
+Optional: paste this back to focus the work.
+
+**Prompt** *(Claude Code, optional)*
+
+```
+You choose fixes. Aim for optimal function in the next session that runs on this.
+```
+
 
 **Close. Does this feel right?**
 

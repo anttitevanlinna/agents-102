@@ -48,10 +48,12 @@ When you're done, tell me in 3–5 lines: what you added, what you sharpened, wh
 ```
 
 
-Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. The artifact lands at `module-3/wonder.md`: one line naming what feels off. Not a fix. A held question.
+Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
 ## Next
 You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
+
+Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a crucial dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 ## Homework after Module 3
 

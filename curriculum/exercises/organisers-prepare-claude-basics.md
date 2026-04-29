@@ -4,6 +4,20 @@
 
 This is the setup exercise for the whole 3-hour workshop. It keeps customer material inside the customer's SharePoint and Cowork environment. The public curriculum names the folder contract; organisers create and test the actual files.
 
+## What organisers need to understand
+
+SharePoint is not just file storage for this workshop. It is the shared runtime. Participants work in their own folders so their drafts, CLAUDE.md files, and experiments stay personal. The `shared/` folder is the cohort bus: organisers drop prepared inputs there, nominated group drivers write group outputs there, and synthesis becomes possible because everyone is working against the same synced folder contract.
+
+This design protects customer material. The public workbook gives prompts and file names. The actual task, verification document, group findings, answer key, and synthesis files stay in the customer's SharePoint/Cowork environment. Bosser tooling does not need to see them.
+
+Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. The prompt blocks tell Cowork exactly which file to read and where to save the result. If someone loses their place, bring them back to three questions: which folder am I in, which file am I reading, and which file am I saving?
+
+The synthesis magic comes from sync plus constraint. Most participants write only inside `participants/<name>/`. Group drivers write the small number of shared group files. Once those files have synced, organisers can run the synthesis prompts against `shared/` and produce a room-level artifact without collecting documents manually, opening private participant folders, or debugging everyone's machine.
+
+Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm it is in `shared/`, wait briefly, and retry. Do not turn that moment into a content discussion.
+
+The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the checking and rollout judgment. The private answer key exists to support reveal and synthesis, not to rescue the group from doing the work.
+
 ## Phase 1. Create the workspace
 
 Create one cohort SharePoint workspace with this shape:
@@ -93,6 +107,7 @@ Before the room arrives, confirm:
 
 - `shared/m1-task.md` exists
 - `shared/m2-verification-output.md` exists
+- organisers know where the public workbook is and can point participants to the current module prompts
 - private M2 answer key is available only to organisers
 - participant folders exist
 - organisers know group count and group numbers

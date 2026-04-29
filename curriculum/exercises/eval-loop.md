@@ -10,7 +10,7 @@ Now you stop running it.
 
 First, you run the judge once by hand on a fresh briefing. See what it catches. Name one fix. Then you automate.
 
-You set up an **orchestrator**, one Claude session whose whole job is to direct other work. Each round it dispatches a **generator** <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (produces a briefing using the current strategy) and a **judge** <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (applies `judges/groundedness-judge.md`, writes a score and per-claim feedback). Between rounds, the orchestrator reads the judgment and rewrites `module-6/generator.md`, the strategy the next round's generator will use. The judge file is never touched.
+You set up an **orchestrator**, one Claude session whose whole job is to direct other work. Each round it dispatches a **generator** <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (produces a briefing using the current strategy) and a **judge** <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (applies `judges/groundedness-judge.md`, writes a score and per-claim feedback). Between rounds, the orchestrator reads the judgment and rewrites `./grounding-style.md`, the strategy the next round's generator will use. The judge file is never touched.
 
 You will come back to a dashboard: *round 1 flagged 11 claims, round 2 flagged 6 after the strategy tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.* The generator you left with is sharper than the one you started with, under the exact same judge you started with. The improvement is real because the yardstick didn't move. A trajectory that stalls or ticks up is a finding too; it says the strategy absorbed the wrong lesson and Round N+1 is where you read the feedback yourself.
 
@@ -25,7 +25,7 @@ Paste this into Claude Code to run the judge once by hand:
 ```
 Three things, in sequence:
 
-1. Produce a fresh one-page briefing on the question in module-3/question.md, using module-3/retrievals/, module-3/stances/, and sources/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don't cover. Save to module-6/fresh-briefing.md.
+1. Produce a fresh one-page briefing on the question in module-3/question.md, using sources/ and module-3/stances/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don't cover. Save to module-6/fresh-briefing.md.
 
 2. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md. For every claim, write the claim + the judge's verdict (GROUNDED / NOT GROUNDED / OVERREACH / etc.) + one sentence of per-claim feedback that names what would make it groundable (which source to cite, what precision the claim lacks, what caveat is missing). Save to module-6/first-run-judgment.md.
 
@@ -48,21 +48,21 @@ Paste this to design and save the orchestrator:
 **Prompt** *(Claude Code)*
 
 ```
-Build me an orchestrator for a self-improving generation loop. Save it as module-6/orchestrator.md.
+Build me an orchestrator for a self-improving generation loop. Save it as agents/orchestrator.md.
 
-The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator's strategy, stored at module-6/generator.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
+The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator's strategy, stored at ./grounding-style.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Dispatch a generator subagent. Input: module-6/generator.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
+1. Dispatch a generator subagent. Input: ./grounding-style.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
 
 2. Dispatch a judge subagent. Input: judges/groundedness-judge.md and module-6/runs/round-N/briefing.md. Output: module-6/runs/round-N/judgment.md with each claim + verdict + one-sentence per-claim feedback naming what would make it groundable. Plus a top-line score: count of flagged claims.
 
-3. After the judge returns, the orchestrator (not a subagent) reads judgment.md and rewrites module-6/generator.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, "numbers must appear verbatim in at least one source file or be marked as estimate," or "probability-plus-timeline claims require a cited source that names a timeline"). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated generator.md to disk so round N+1 reads it.
+3. After the judge returns, the orchestrator (not a subagent) reads judgment.md and rewrites ./grounding-style.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, "numbers must appear verbatim in at least one source file or be marked as estimate," or "probability-plus-timeline claims require a cited source that names a timeline"). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated grounding-style.md to disk so round N+1 reads it.
 
 4. After each round (including round 1), append one line to module-6/heartbeat.md with timestamp, round number, and phase just completed ("round-1 generation done", "round-1 judging done", "round-1 strategy updated"). This is the signal I peek at during walk-away to confirm the loop is alive.
 
-5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting generator.md. If it doesn't exist, proceed immediately. Do not block on a timer.
+5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting grounding-style.md. If it doesn't exist, proceed immediately. Do not block on a timer.
 
 6. The judge file judges/groundedness-judge.md must NEVER be written to by this orchestrator or by any subagent it dispatches. This is a prose-only invariant (Claude Code has no per-file ACL). At end of run, confirm it by comparing the judge file's SHA against the starting SHA in the dashboard. Assert the no-write rule up front and refuse any step that proposes an edit.
 
@@ -77,21 +77,21 @@ Before you write the orchestrator file, show me the 3-round pseudo-code outline 
 **Prompt** *(Claude Code)*
 
 ```
-Build me an orchestrator for a self-improving generation loop. Save it as module-6/orchestrator.md.
+Build me an orchestrator for a self-improving generation loop. Save it as agents/orchestrator.md.
 
-The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator's strategy, stored at module-6/generator.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
+The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator's strategy, stored at ./grounding-style.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Dispatch a generator agent. Input: module-6/generator.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
+1. Dispatch a generator agent. Input: ./grounding-style.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
 
 2. Dispatch a judge agent. Input: judges/groundedness-judge.md and module-6/runs/round-N/briefing.md. Output: module-6/runs/round-N/judgment.md with each claim + verdict + one-sentence per-claim feedback naming what would make it groundable. Plus a top-line score: count of flagged claims.
 
-3. After the judge returns, the orchestrator (not an agent) reads judgment.md and rewrites module-6/generator.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, "numbers must appear verbatim in at least one source file or be marked as estimate," or "probability-plus-timeline claims require a cited source that names a timeline"). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated generator.md to disk so round N+1 reads it.
+3. After the judge returns, the orchestrator (not an agent) reads judgment.md and rewrites ./grounding-style.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, "numbers must appear verbatim in at least one source file or be marked as estimate," or "probability-plus-timeline claims require a cited source that names a timeline"). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated grounding-style.md to disk so round N+1 reads it.
 
 4. After each round (including round 1), append one line to module-6/heartbeat.md with timestamp, round number, and phase just completed ("round-1 generation done", "round-1 judging done", "round-1 strategy updated"). This is the signal I peek at during walk-away to confirm the loop is alive.
 
-5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting generator.md. If it doesn't exist, proceed immediately. Do not block on a timer.
+5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting grounding-style.md. If it doesn't exist, proceed immediately. Do not block on a timer.
 
 6. The judge file judges/groundedness-judge.md must NEVER be written to by this orchestrator or by any agent it dispatches. This is a prose-only invariant (Cowork has no per-file ACL). At end of run, confirm it by comparing the judge file's SHA against the starting SHA in the dashboard. Assert the no-write rule up front and refuse any step that proposes an edit.
 
@@ -114,7 +114,7 @@ Create the empty run folders and the starting strategy:
 **Prompt** *(Claude Code)*
 
 ```
-Create module-6/runs/round-1/, round-2/, round-3/ and module-6/dashboard.md. Also write module-6/generator.md with a minimal starting strategy: "Produce a one-page briefing on the module-3 question. Use sources/, module-3/retrievals/, and module-3/stances/. No special rules yet." That's round 1's input.
+Create module-6/runs/round-1/, round-2/, round-3/ and module-6/dashboard.md. Also write ./grounding-style.md with a minimal starting strategy: "Produce a one-page briefing on the module-3 question. Use sources/ and module-3/stances/. No special rules yet." That's round 1's input.
 ```
 
 
@@ -123,7 +123,7 @@ Start the loop:
 **Prompt** *(Claude Code)*
 
 ```
-Read module-6/orchestrator.md and run it end to end. Do all three rounds. Do not stop for confirmation between rounds. Write outputs to the paths specified. Never modify judges/groundedness-judge.md. When round 3 finishes, write module-6/dashboard.md.
+Read agents/orchestrator.md and run it end to end. Do all three rounds. Do not stop for confirmation between rounds. Write outputs to the paths specified. Never modify judges/groundedness-judge.md. When round 3 finishes, write module-6/dashboard.md.
 ```
 
 
@@ -171,7 +171,7 @@ Two diffs:
 
 1. Diff judges/groundedness-judge.md against its state at the end of Module 5. There must be zero changes. If any line differs, the yardstick moved and the score trajectory in dashboard.md is invalid.
 
-2. Diff module-6/generator.md against the minimal starting strategy. Show me every line that changed across the three rounds. At least one strategy rule must be present that wasn't in the starting file. If the generator didn't change, the loop was writing to a dead file. Say so.
+2. Diff ./grounding-style.md against the minimal starting strategy. Show me every line that changed across the three rounds. At least one strategy rule must be present that wasn't in the starting file. If the generator didn't change, the loop was writing to a dead file. Say so.
 ```
 
 
@@ -285,7 +285,7 @@ This exercise is one of the three Bootstrap magic beats (M3, M6, M8). M5 picks t
 **Capability checks owed (before first delivery):**
 - **Long-running single session.** AMBIGUOUS as of 2026-04-24 per capability check. Docs do not confirm session survives 25-30 min with auto-compaction. Dry-run once on a representative training-dir; if compaction triggers mid-run and loses early orchestrator instructions, either shorten rounds or add a re-read instruction at start of each round. The "do not pause for confirmation" instruction is already in the orchestrator prompt; confirm it holds.
 - **Subagent dispatch isolation.** Orchestrator dispatches a generator subagent and a judge subagent per round. Claude Code has no per-file ACL or deny-write primitive; the read-only-judge invariant is prose-only and verified post-hoc via SHA diff. This is documented risk, not a blocker, because the dashboard integrity line catches any violation deterministically. Dry-run should confirm neither subagent attempts a Write/Edit call with `judges/groundedness-judge.md` as target.
-- **File-write reliability under load.** Seven artifacts per round (briefing, judgment, strategy-diff, meta-log, heartbeat appends × 2, generator.md overwrite) plus dashboard. Verify Claude doesn't skip writes under cognitive load.
+- **File-write reliability under load.** Seven artifacts per round (briefing, judgment, strategy-diff, meta-log, heartbeat appends × 2, grounding-style.md overwrite) plus dashboard. Verify Claude doesn't skip writes under cognitive load.
 - **Judge-file immutability.** This is the load-bearing capability. Verify on a dry run that at end of 3 rounds, `diff judges/groundedness-judge.md` against its pre-run state returns zero. If any line changed, the exercise failed its own premise.
 - **Generator.md actually gets rewritten.** Verify round N+1's generator subagent reads the round-N-updated strategy file, not the round-0 default. Test: seed round 1 with a clearly wrong rule (e.g., "cite no sources"), watch it get corrected by round 2.
 - **Walk-away realism.** Time an actual end-to-end run on a representative training directory. If it completes in 12 minutes, the walk-away is too short to feel real; pad with a fourth round or deeper source reading per round. If it takes 45 minutes, trim source set.
@@ -297,7 +297,7 @@ This exercise is one of the three Bootstrap magic beats (M3, M6, M8). M5 picks t
 - **Dashboard skim.** Student glances at dashboard and declares it "worked" without reading the strategy-diff files or checking the judge-immutability line. Push: *"Open round-2/strategy-diff.md. Read the specific rule that got added. What feedback produced it?"*
 - **Judge-drift suspicion.** Student doesn't believe the score trajectory is real, suspects the judge silently softened. This is healthy — lean into it. *"Run the diff yourself. If one line of the judge changed, the exercise failed."*
 - **Deltas.md skipped.** Student doesn't annotate Phase 2b, so the strategy updates are driven only by the judge's own feedback. The loop still works but the human-signal demonstration is thinner. Not a failure — note for next cohort whether Phase 2b should be mandatory.
-- **Run stalls mid-round.** Rare but possible. If round N hangs, facilitator kills the session and opens a fresh Claude Code session with `claude --continue` (resumes the transcript), then re-prompts `Continue the orchestrator from round N. Read module-6/generator.md, module-6/heartbeat.md, and module-6/runs/round-{1..N-1}/ to rehydrate state, then resume.` Claude Code has no mid-orchestrator `--resume from round N` flag; the restart move is prompt-driven, not CLI-driven.
+- **Run stalls mid-round.** Rare but possible. If round N hangs, facilitator kills the session and opens a fresh Claude Code session with `claude --continue` (resumes the transcript), then re-prompts `Continue the orchestrator from round N. Read ./grounding-style.md, module-6/heartbeat.md, and module-6/runs/round-{1..N-1}/ to rehydrate state, then resume.` Claude Code has no mid-orchestrator `--resume from round N` flag; the restart move is prompt-driven, not CLI-driven.
 
 *Decision points:*
 - At 15 min elapsed, Phase 1 still being debated → cut the orchestrator review short, push Phase 2. The orchestrator is a means, not a deliverable.

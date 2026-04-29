@@ -19,7 +19,7 @@ First, produce a fresh briefing so every detector sees the same output. Open you
 ```
 This briefing is the test corpus — we WANT it to overreach in places so the detectors have something to catch. Blend general knowledge where sources don't cover; don't hedge.
 
-Produce a one-page executive briefing on the strategic question in module-3/question.md, using the material in module-3/retrievals/ and module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
+Produce a one-page executive briefing on the strategic question in module-3/question.md, using the material in module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
 ```
 
 
@@ -51,7 +51,7 @@ In your main session:
 **Prompt** *(Claude Code)*
 
 ```
-Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
+Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in sources/ and module-3/stances/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
 
 Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
 
@@ -72,7 +72,7 @@ Spawn all four in parallel. When they finish, confirm: four files written under 
 **Prompt** *(Claude Code)*
 
 ```
-Run four detectors on module-5/briefing.md in parallel. Each detector is an agent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
+Run four detectors on module-5/briefing.md in parallel. Each detector is an agent with a different method. Each reads the briefing and the sources in sources/ and module-3/stances/. Each writes its findings to module-5/detectors/<name>.md as a list of claims flagged, with one line of reasoning per claim.
 
 Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
 
@@ -107,7 +107,7 @@ Spawn the second batch. Between dispatching the regenerators and returning their
 **Prompt** *(Claude Code)*
 
 ```
-Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
+Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
 
 Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
 
@@ -130,7 +130,7 @@ When the four return, collate: read module-5/briefing.md and the four regenerato
 **Prompt** *(Claude Code)*
 
 ```
-Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
+Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/<framing>.md.
 
 Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
 

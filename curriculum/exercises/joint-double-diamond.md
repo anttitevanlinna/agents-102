@@ -121,7 +121,7 @@ Save the assumption-test to module-8/<my-name>/assumptions.md and the pre-mortem
 
 **Synthesis and read-out (10 min).**
 
-Close the session with a single file: `module-8/strategy-kernel.md`. Four sections:
+Close the session with a single file: `./strategy-kernel.md`. Four sections:
 
 - **Diagnosis.** The three cruxes, ranked, one sentence each, each citing the file it came from.
 - **Guiding policy.** The one-sentence policy move in Rumelt form.
@@ -131,7 +131,7 @@ Close the session with a single file: `module-8/strategy-kernel.md`. Four sectio
 **Prompt** *(Builder Claude, for the student compiling their own kernel, or for the orchestrator-agent compiling the room's)*
 
 ```
-Read every module-8/*/ file. Write module-8/strategy-kernel.md with the four sections — diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where two agents conflicted, name the conflict in one line under the relevant section.
+Read every module-8/*/ file. Write ./strategy-kernel.md with the four sections — diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where two agents conflicted, name the conflict in one line under the relevant section.
 ```
 
 

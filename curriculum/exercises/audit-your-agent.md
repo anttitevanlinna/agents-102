@@ -15,7 +15,7 @@ Ask Claude to apply the policy lens to your full module-3 system and produce one
 **Prompt** *(Claude Code)*
 
 ```
-Apply the policy lens of the security plugin I authored to the agent system I built in module-2 and module-3. The system is: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/retrievals/ and module-3/stances/.
+Apply the policy lens of the security plugin I authored to the agent system I built in module-2 and module-3. The system is: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 
 For each rule the plugin carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
 
@@ -80,7 +80,7 @@ DO NOT make any changes yet. Describe the diff in plain English first and stop. 
 
 After I confirm and the change lands, re-run the check the plugin performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
 
-Then write one paragraph to module-4/residual.md naming what's still true after the mitigation. Not what we fixed. What's left. Be specific.
+Then write one paragraph to ./guardrails.md at the training-directory root naming what's still true after the mitigation. Not what we fixed. What's left. Be specific.
 ```
 
 Claude describes the diff. You steer if the shape does not fit. Confirm. Watch the change land. Re-run the check. Read the residual.
@@ -91,7 +91,7 @@ The risk did not go away. That is expected. A mitigation reduces, it does not el
 
 Look at the two reports one more time. Somewhere in them is a door you would rather close than mitigate. An access your agent has but does not need. A category of output your system produces that really should not leave the building. A tool connection that is convenient but risky.
 
-Add one more line to `module-4/residual.md`, under a heading `## Doors I would rather not open`: *"I am scoping out [X]. The agent will not [Y]."* Write it as a rule. You will not implement it now. Module 5 revisits output trust, Module 7 covers sharing. The rule goes on record. You decided.
+Add one more line to `./guardrails.md`, under a heading `## Doors I would rather not open`: *"I am scoping out [X]. The agent will not [Y]."* Write it as a rule. You will not implement it now. Module 5 revisits output trust, Module 7 covers sharing. The rule goes on record. You decided.
 
 The best mitigation is the one you did not need. You just named one.
 
@@ -121,7 +121,7 @@ Absolute certainty is not on offer. The practice is. Two lenses, two reports, on
 **Frameworks riffed on:**
 - **Named attack classes** (prompt injection direct/indirect, secrets-in-context, tool-confusion, plugin supply-chain) — external grounding the AGENT-SECURITY lens covers. Re-named in Phase 2 so the audit prompt cannot collapse them into generic STRIDE categories.
 - **Principle of least privilege** — operationalised in Phase 2's access-control analysis and in the Close's "doors I would rather not open" framing.
-- **Residual risk** (ISO 31000 / NIST) — central artifact; `module-4/residual.md` is the keepable output. Layered on top of classical residual-risk discipline, not replacing it.
+- **Residual risk** (ISO 31000 / NIST) — central artifact; `./guardrails.md` (root, cross-module thinking-asset) is the keepable output. Layered on top of classical residual-risk discipline, not replacing it.
 - **Assess → mitigate → reassess → decide** — classical risk loop, mapped to the three phases.
 - **Roger Martin's *what would have to be true*** — surfaces in the policy lens's "I can't tell" column as "what evidence would I need to decide?"
 

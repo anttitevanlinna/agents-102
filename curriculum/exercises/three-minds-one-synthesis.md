@@ -14,7 +14,9 @@ Multi-agent's second shape: subagents inside one session. Each runs in its own c
 
 **Time:** ~22 minutes (15 min synthesis + 7 min Close).
 
-The previous exercise left you with a curated `memory/` (the synthesizer's output) and the same `./crux.md` you've been building since the opening. Stay in Session 4 — it's now your main session.
+The previous exercise left you with a curated `memory/` (the synthesizer's output) and the same `./crux.md` you've been building since the opening.
+
+Stay in the session that wrote `./crux.md` — the same one you've used since *Name your crux*. In the previous exercise this session was relabelled Session 4 (the synthesizer) while three retriever sessions ran alongside it. The retriever sessions can close now; this one stays open as your main session for the synthesis below.
 
 Wait for the synthesizer's loop to finish — its last move was writing `memory/_synthesis-m3.md` naming what changed. Memory is sharper than it was an hour ago.
 

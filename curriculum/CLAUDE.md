@@ -11,60 +11,29 @@ Current state of what's built vs. what's next lives in `bosser-strategy:content-
 
 ## Quality-state tagging
 
-Every student-facing artifact (module, exercise, lecture, prework) carries a Quality line in its maintainer block. The tag is the contract between sessions — without it, every audit re-runs from scratch and every "cleared" claim is unverifiable.
+Every student-facing artifact (module, exercise, lecture, prework) carries a Quality line in its maintainer block. The tag is the contract between sessions.
 
-**Two axes — LLM-checks (cheap → expensive ladder) and the human-check dimension (orthogonal).** The LLM ladder is the primary path to `cohort-tested`; the human-check is its own row in the dimension log, tracked separately so the last-human-read provenance never gets folded into LLM-pass provenance.
+**LLM-checks ladder (cheap → expensive; each tier earns the right to spend the next):**
+`draft` → `compendium-audited` → `sim-passed` → `mechanical-tested` → `cohort-tested` → `battle-tested`.
 
-**LLM-checks ladder (each tier earns the right to spend the next):**
+**Orthogonal axis:** `maintainer-reviewed` — Antti read end-to-end + ran prompts manually. Its own dimension-log row, never folded into LLM provenance.
 
-| State | What it means | Trigger | Cost |
-|---|---|---|---|
-| `draft` | Fresh from generation; no audit | Default on creation | — |
-| `compendium-audited` | Static rules cleared at ship time | `curriculum-pre-ship-audit` skill clears | minutes (grep) |
-| `sim-passed` | Three-persona register/smell sim cleared 8+/10 each | Three-persona sim returns ≥8 across all three | minutes (one subagent) |
-| `mechanical-tested` | Prompt chain executes on a real scratch repo and passes assertions | `curriculum/evals/mechanical/` Actor + Judge run clears (judge report on disk) | tens of minutes (real execution + grading) |
-| `cohort-tested` | Survived ≥1 real cohort delivery | Manual after delivery; lists cohorts + post-cohort changes | hours/days (live delivery) |
-| `battle-tested` | ≥3 cohorts in trailing 12 months | Computed from cohort log | months |
-
-**Human-check (orthogonal dimension — its own row in the dimension log):**
-
-| State | What it means | Trigger | Cost |
-|---|---|---|---|
-| `maintainer-reviewed` | Antti read the file end-to-end and ran the prompts manually; last-human-check provenance | Manual pass; tagged by maintainer | tens of minutes (real reading + manual run) |
-
-**Order is cheap-before-expensive on the LLM ladder.** Burn the cheap audits first; only spend mechanical execution on prompts that already cleared compendium + sim. A prompt that fails register-sim doesn't deserve a mechanical run yet — the register fix is going to change the prompt anyway.
-
-**`maintainer-reviewed` is orthogonal — never folded into LLM provenance.** Antti reviews Bootstrap manually before sims and evals run; the human-read knowledge stays on its own row so it can't be conflated with `sim-passed` or `mechanical-tested`. The dimension log shows both axes; the top-state line still reflects the highest LLM/cohort tier reached. Same auto-degrade rule applies — file touched after `maintainer-reviewed <date>` degrades that row independently of the LLM ladder.
-
-**Mechanical and sim sample different error classes** (per `check_pedagogy.md` #21 verification layers): sim *predicts* what a competent reader would react to (cheap, broad pattern-match); mechanical *observes* what Claude actually does on a real scratch repo (expensive, falsifiable). Both are pre-cohort; neither replaces the other. `maintainer-reviewed` samples a third class — the senior human's whole-artifact judgement, the one neither sim nor mechanical can replicate.
-
-**Format** (in maintainer block — top-state line + dimension log):
+**Format** (top-state line + dimension log in maintainer block):
 ```
 **Quality:** <top-state> <YYYY-MM-DD>
-- compendium-audited <YYYY-MM-DD> (<compendium-versions-and-audits-applied>)
-- maintainer-reviewed <YYYY-MM-DD> (<one-line note: read end-to-end, prompts run manually, scope>)
+- compendium-audited <YYYY-MM-DD> (<compendium-versions-and-audits>)
+- maintainer-reviewed <YYYY-MM-DD> (<one-line note>)
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)
 - mechanical-tested <YYYY-MM-DD> (<judge-report-path> @ <short-sha> PASS)
-- cohorts: <none yet | list cohort-name + date + post-cohort changes>
+- cohorts: <none yet | cohort-name + date + post-cohort changes>
 ```
 
-The top-state line is the highest tier currently valid. The dimension log lists each tier's last audit date and provenance. A reader checks both — top-state at a glance, dimensions for staleness reasoning.
+**Key rules:**
+- **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
+- **SHA pin on `mechanical-tested`** is mandatory — instance reports overwrite on rerun, SHA is the only drift detector.
+- **Reference files (`curriculum/reference/`) are exempt** — flat lookup material, no mood contract or sim surface.
 
-**Why the SHA pin on `mechanical-tested`.** Mechanical instance reports are latest-only and overwrite on rerun (per `curriculum/evals/README.md` § *Naming rule*). Without a SHA, the tag's date and the linked file's content can drift — a Quality line dated 2026-04-24 could point to a 2026-05 rerun's report. Pin the short-sha at audit time (`git rev-parse --short HEAD` after writing the report) so a stale tag is detectable. The other tiers don't need SHAs: `compendium-audited` and `sim-passed` cite versions/personas inline; `cohort-tested` and `battle-tested` are computed from cohort logs.
-
-**Auto-degrade — touch-based only, not time-based:**
-
-- **File touched after audit date** → that tier and all higher tiers degrade to the highest tier still valid. The audit-against-old-content tag becomes meaningless when the content moves.
-- **Compendium amended in a way that changes a rule the file was audited against** → `compendium-audited` tier degrades; if that was the floor for higher tiers, they degrade too.
-- **No time clock.** A file untouched for two years against a stable compendium is still valid. A file edited yesterday against an audit from this morning is stale.
-
-Same-session edits during the audit-and-tag cycle don't trigger degrade (audit is as-of-end-of-session). Cosmetic edits below `<!-- maintainer -->` (maintainer-block-only changes that don't touch student-facing content) also don't degrade — the audit was against student-facing content.
-
-**Pre-first-cohort default** is `compendium-audited` once the audit skill clears. `cohort-tested` and `battle-tested` only apply after live delivery; lists cohort-name + date + what changed in the file as a result.
-
-**Reference files (`curriculum/reference/`) are exempt** from Quality-state tagging. Flat lookup material — commands, connector setup, troubleshooting — has no mood contract, phase structure, or sim/mechanical surface to audit. Accuracy and currency are the standards there, not register or forcing-function fidelity. Don't add Quality blocks to reference files; don't flag missing Quality blocks on reference files in autonomous sweeps.
-
-Canonical source: `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md`.
+Full ladder definitions, error-class rationale, audit-cost reasoning: `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md` and the `maintainer-reviewed` orthogonality entry at `memory/compounded/2026-04-28-content_creation-maintainer-reviewed-orthogonal-dimension.md`.
 
 ## Scope
 

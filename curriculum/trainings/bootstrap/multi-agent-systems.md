@@ -82,13 +82,13 @@ Memory is a working artefact, sharpened by what it bumps into.
 > PLUG POINT: The three synthesizer stances.
 > Default: backward-from-end planner, Martin's *what-would-have-to-be-true* experimenter, counterintuitive reframer (the Rory seat). Students can swap the Rory seat for another sharp stance if one fits their challenge better — e.g., a premortem voice (Kahneman/Klein) for risk-heavy challenges, a JTBD interviewer voice for customer-facing ones. Keep three; keep them genuinely different.
 
-**Capability check status:** confirmed (per `three-retrievers-three-minds.md` § *Capability notes (confirmed)*). Multi-window / multi-session on the same working directory works on CLI (four terminal windows) and desktop (four sessions); subagent launch phrasing in Phase 2 (*"spawn three subagents in parallel"*) confirmed working in current Claude Code. Re-verify only if Claude Code's session-isolation or subagent-spawn semantics change.
+**Capability check status:** confirmed (per `three-retrievers-three-minds.md` § *Capability notes (confirmed)*). Multi-window / multi-session on the same working directory works on CLI (four terminal windows) and desktop (four sessions); 3 concurrent Cowork tasks on the same connected folder confirmed running 2026-04-29 (Antti); subagent launch phrasing in Phase 2 (*"spawn three subagents in parallel"*) confirmed working in current Claude Code. Re-verify only if Claude Code's session-isolation or subagent-spawn semantics change.
 
 **Frameworks riffed on:**
 - Rumelt's strategy kernel (default synthesizer spine) — M3's opening *Name your crux* exercise produces the diagnosis seed; the synthesizer's Rumelt prompt builds the policy and actions on top of it
 - Roger Martin's *what-would-have-to-be-true* assumption test (the experimenter stance) — also threaded through the curriculum's throughlines (see lecture-guardrails → Strategy as assumptions)
 - Rory Sutherland's behavioural-economics counterintuitive reframe (the reframer stance) — named explicitly; the Rory seat
-- Anthropic's multi-agent warning — only a few situations where splitting wins; this exercise is engineered to be one of them
+- One-agent-per-recurring-workflow (Bosser stance) — many agents across workflows, usually one within. M3 deliberately puts the student inside the rare within-workflow case where access + dialect + stance force splitting; the lecture closes with the across-workflow rule
 
 **Watch-fors (deferred to facilitator notes pass):**
 - Phase 1: starting 3+1 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room before turning them loose; name which session is which

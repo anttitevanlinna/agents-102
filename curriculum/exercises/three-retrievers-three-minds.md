@@ -27,7 +27,11 @@ The retrievers go live — connectors and the open web. The synthesizer is the o
 
 </div>
 
-**The rhythm:** paste the retriever prompts you can run, into Sessions 1, 2, and 3 as needed. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript. Confirm inline, quickly, don't polish. Then the retrievers run in parallel. Paste the synthesizer prompt into Session 4 — it'll wait for the first retrieval to land, then start curating. *Now* switch between sessions and watch files appear in `sources/` and `memory/` sharpen at the same time. The paperwork step is yours; the search and the curation are theirs.
+**The rhythm:**
+
+1. **Sessions 1, 2, 3 — retrievers.** Paste each retriever prompt into its session. Each one returns a short list (6–8 search terms for wiki, 2–3 clues for docs, 4–6 authors for internet) and asks you to keep, swap, or sharpen. Confirm inline, quickly, don't polish. Then the retrievers run.
+2. **Session 4 — synthesizer.** Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into `memory/`.
+3. **All four running.** Switch between sessions. Watch files appear in `sources/` and `memory/` sharpen at the same time.
 
 In Session 1:
 
@@ -41,6 +45,10 @@ Then:
 2. Run the searches through Claude's connector to my wiki. Open the pages. Read them properly.
 3. Write your findings to sources/wiki-retrieval.md, one paragraph per finding, naming the page/space and one line on why this matters for the question. Keep only what speaks to the question; don't summarise the wiki.
 4. End the file with a "Conflicts and gaps" section: where internal pages disagree, where the wiki is thin, what's conspicuously missing.
+
+Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+
+No need to update `memory/` — another session is handling curation. Just write to `sources/`.
 
 Sources first. Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
 ```
@@ -59,6 +67,10 @@ Then:
 3. Write your findings to sources/docs-retrieval.md, what documents and threads show, who said what, what's recent, what's decided, what's still open. Name where sources disagree; don't smooth over contradictions.
 4. End the file with "Conflicts and gaps": disagreements between sources, things that should exist but don't, names conspicuously missing.
 
+Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+
+No need to update `memory/` — another session is handling curation. Just write to `sources/`.
+
 Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
 ```
 
@@ -76,7 +88,22 @@ Then:
 3. Write your findings to sources/internet-retrieval.md, what each practitioner says that's specific, with the URL, and one line on how their situation maps (or doesn't) to mine.
 4. End the file with "Conflicts and gaps": where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can't tell me.
 
+Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+
+No need to update `memory/` — another session is handling curation. Just write to `sources/`.
+
 Sources first. Every finding cites the URL you actually fetched and the author. If a fetch fails or returns nothing useful, write "[NOT FOUND]", do not fabricate article titles, quotes, or author positions from prior knowledge.
+```
+
+
+Heads-up: retrievers tend to wrap up early. A clean-looking *Conflicts and gaps* section reads like the work is done; usually it isn't. If the file feels thinner than the question deserves, the prompt below is your nudge to keep them chugging.
+
+Once a retriever returns its first pass — wiki, docs, or internet — paste this back into that session to push another round.
+
+**Prompt** *(Claude Code, reusable across all three retriever sessions)*
+
+```
+Push another round. What did the first pass miss? Different angles, related sources, the citations inside what you already opened — keep going until the file feels complete or you genuinely don't find new material. Append; don't rewrite.
 ```
 
 
@@ -103,18 +130,18 @@ Don't fabricate. Every memory update cites a source-file finding. If a retrieval
 
 Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once — three fetching, one curating. Watch the files appear in `sources/` and `memory/` sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
 
-**Phase 2. Three minds, plus a synthesizer.**
+**Phase 2. Three minds, one synthesis.**
 
-Wait for the synthesizer's Phase 1 loop to finish — its last move is writing `memory/_synthesis-m3.md` naming what changed. Then switch to Session 4. Memory is sharper than it was an hour ago. Now you'll spawn four minds inside *this* session. <span class="rt-code">Claude Code calls them **subagents**.</span><span class="rt-cowork">Cowork calls them **agents**.</span> Claude decides to spawn one out when the work splits cleanly. Each one runs with its own context window (it doesn't see your scrollback), works in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.
+Wait for the synthesizer's Phase 1 loop to finish — its last move is writing `memory/_synthesis-m3.md` naming what changed. Then switch to Session 4. Memory is sharper than it was an hour ago. Now you'll spawn three minds inside *this* session and synthesize their stances inline. <span class="rt-code">Claude Code calls them **subagents**.</span><span class="rt-cowork">Cowork calls them **agents**.</span> Each runs with its own context window, works in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.
 
-Three minds first, in parallel. Each reads the retrievals and writes a short note. Then a synthesizer combines them against Rumelt's strategy kernel.
+Three stances in parallel; the main session reads them, applies a framework, and writes the answer back into `./crux.md` as a third section. One prompt does the whole job.
 
 <div class="rt-code">
 
 **Prompt** *(Claude Code)*
 
 ```
-Read whichever retrieval files are in sources/: sources/wiki-retrieval.md, sources/docs-retrieval.md, sources/internet-retrieval.md (one to three). Spawn three subagents in parallel, each with a different stance. Each reads all available retrieval files and writes a short note (under 200 words) to module-3/stances/.
+Spawn three subagents in parallel, each with a different stance. Each reads my curated memory/ (the layer Phase 1 integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.
 
 Subagent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?
 
@@ -122,7 +149,9 @@ Subagent 2: Assumption experimenter. Roger Martin's test: for the most attractiv
 
 Subagent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
 
-Return the three stances to me first, unsummarised, so I read them side by side. Tell me where the retrievals had conflicts or gaps that weakened any stance.
+When the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.
+
+Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append an `## Answer` section to ./crux.md with the three legs. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving.
 ```
 
 </div>
@@ -131,7 +160,7 @@ Return the three stances to me first, unsummarised, so I read them side by side.
 **Prompt** *(Claude Code)*
 
 ```
-Read whichever retrieval files are in sources/: sources/wiki-retrieval.md, sources/docs-retrieval.md, sources/internet-retrieval.md (one to three). Spawn three agents in parallel, each with a different stance. Each reads all available retrieval files and writes a short note (under 200 words) to module-3/stances/.
+Spawn three agents in parallel, each with a different stance. Each reads my curated memory/ (the layer Phase 1 integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.
 
 Agent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?
 
@@ -139,49 +168,19 @@ Agent 2: Assumption experimenter. Roger Martin's test: for the most attractive o
 
 Agent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
 
-Return the three stances to me first, unsummarised, so I read them side by side. Tell me where the retrievals had conflicts or gaps that weakened any stance.
+When the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.
+
+Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append an `## Answer` section to ./crux.md with the three legs. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving.
 ```
 
 </div>
 
 
-Read the three stances side by side. That's where the thinking is. Push back on any stance that wandered or papered over a real disagreement.
-
-When the stances are sharp, ask the synthesizer to combine them.
-
-<div class="rt-code">
-
-**Prompt** *(Claude Code)*
-
-```
-Now spawn a fourth subagent: the synthesizer. It reads the three stance notes in module-3/stances/, ./crux.md (crux + ## Question section), and the fresh retrievals in sources/ (wiki-retrieval, docs-retrieval, internet-retrieval, whichever exist).
-
-Apply Rumelt's strategy kernel as the spine: diagnosis (what's really going on), guiding policy (one coherent approach), coherent actions (what we do Monday). Combine the three stances into a single answer to the question. Name where the three stances disagreed and which one you sided with and why.
-
-Write the answer to module-3/answer.md.
-```
-
-</div>
-<div class="rt-cowork">
-
-**Prompt** *(Claude Code)*
-
-```
-Now spawn a fourth agent: the synthesizer. It reads the three stance notes in module-3/stances/, ./crux.md (crux + ## Question section), and the fresh retrievals in sources/ (wiki-retrieval, docs-retrieval, internet-retrieval, whichever exist).
-
-Apply Rumelt's strategy kernel as the spine: diagnosis (what's really going on), guiding policy (one coherent approach), coherent actions (what we do Monday). Combine the three stances into a single answer to the question. Name where the three stances disagreed and which one you sided with and why.
-
-Write the answer to module-3/answer.md.
-```
-
-</div>
-
-
-Read `module-3/answer.md`. The synthesizer's combined answer is the artifact. The three stances are the reasoning, and the synthesizer's named-disagreements line is where the work actually happened.
+Read your `./crux.md` — `## Answer` section appended. The three stances are the reasoning; the named-disagreements line in the answer is where the work actually happened.
 
 **Close. Does this feel right?**
 
-Ask Claude to recap the three retrievals' core claims next to its synthesized answer. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
+Ask Claude to recap the three retrievals' core claims next to your `## Answer`. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
 
 You can't tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct.
 
@@ -191,7 +190,7 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 
 **What happens:**
 
-Three sessions run searches in parallel on your challenge, and you *see* the work being done in the shared folder. One session runs three stances on the retrievals; a fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them against Rumelt's kernel. You get a strategic answer to your real question, and you catch where it glossed.
+Four sessions run on your challenge in parallel — three retrievers fetching, one synthesizer curating into memory. Then one main session spawns three stance subagents and synthesizes their work against Rumelt's kernel inline. The answer lands as a `## Answer` section in your `./crux.md`, alongside the crux and the question. One file carries the whole strategic frame.
 
 **The point:**
 
@@ -207,13 +206,13 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: th
 - Rumelt's strategy kernel (synthesizer spine) — builds on the crux move Module 2's Debrief inline-named
 - Roger Martin's *what would have to be true?* — Subagent 2's spine; threaded through the curriculum's throughlines (strategy as assumptions)
 - Rory Sutherland's counterintuitive reframe — Subagent 3's spine, named out loud
-- Anthropic's multi-agent warning — only a few situations where splitting wins; Phase 1 and Phase 2 are engineered to be two of them. **TODO:** add URL [SOURCE NEEDED — likely Anthropic's *Building effective agents* engineering post; verify and pin].
+- One-agent-per-recurring-workflow (Bosser stance) — across workflows you build many; within a single workflow, splitting earns its keep only when access, dialect, or stance forces it. Phase 1 and Phase 2 are engineered to be two of those rare within-workflow cases.
 - "The filesystem is the meeting room" — file-based agentic coordination (Boris Cherny / Anthropic observation), emerges experientially, named in the bridging lecture. **TODO:** add URL [SOURCE NEEDED — likely Cherny's *Claude Code* engineering talk or the Anthropic engineering blog; verify and pin].
 
 **Plug points:**
 - The strategic question — participant-written, one sentence, lives in `./crux.md`
 - The three source zones — wiki / docs / internet. Prompt language is permissive (student names their wiki and doc store inline — Confluence / Notion / SharePoint wiki / Guru; OneDrive / SharePoint / Google Drive). No swap needed; the retrievers ask.
-- The Rumelt kernel default — can be swapped by challenge type (StoryBrand for positioning challenges, JTBD for product/feature calls, principle of least privilege for access decisions). Swap happens in one line of Phase 2's synthesizer prompt.
+- The Rumelt kernel default — can be swapped by challenge type (StoryBrand for positioning challenges, JTBD for product/feature calls, principle of least privilege for access decisions). Swap happens in one line of the consolidated Phase 2 prompt (where the kernel-application instruction lives).
 - The Rory seat — optional swap for a premortem voice (Kahneman/Klein) on risk-heavy challenges, or a JTBD interviewer on customer-facing ones. Keep three stances. Keep them genuinely different.
 
 **Philosophy callout (sparing):**
@@ -221,7 +220,8 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: th
 - Belief #22 — share, don't hoard — lands implicitly in the coordination rule the student writes back into `CLAUDE.md`: their learning compounds into the next handoff, not just their own memory.
 
 **Capability notes (confirmed):**
-- Multi-window / multi-session on the same working directory: CLI = four terminal windows, desktop = four sessions. Trainer demos both live in Phase 1. Confirmed by Antti as working. (Self-study variant will need a dedicated recipe file — see variant TODO below.)
+- Multi-window / multi-session on the same working directory: CLI = four terminal windows, desktop = four sessions. Trainer demos both live in Phase 1. Confirmed by Antti as working. **Cowork: 3 concurrent tasks confirmed running just fine on the same connected folder (Antti, 2026-04-29). 4-task case not yet live-tested but plausible by extension.** (Self-study variant will need a dedicated recipe file — see variant TODO below.)
+- **Phase 1 synthesizer-to-memory loop confirmed working live (Antti, 2026-04-29).** The 4th-session synthesizer reads `sources/` as retrievers stream findings and integrates into `memory/` concurrently — pushes back against the "theatre not architecture" critique by demonstrating the cross-session loop runs end-to-end on real material.
 - Subagent launch phrasing in Phase 2 ("spawn three subagents in parallel") confirmed as working in current Claude Code. No check owed.
 - `+` button attachment flow for OneDrive/SharePoint inherited from Module 2; per-cohort connector state already verified there.
 
@@ -229,6 +229,6 @@ Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: th
 - When Module 3 ships in self-study (no trainer to demo the four-session open), the exercise body needs a short recipe replacing the "Your trainer demos both live" line. Hold for the self-study pass; the live-trainer version ships as-is.
 
 **Deferred facilitator notes:**
-- Watch-fors: (a) starting 4 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room, name which session is Session 1 / 2 / 3 / Main; (b) retrievers return non-comparable outputs by design, student may try to normalise them — that's exactly what the synthesizer is for, let them feel the asymmetry; (c) the synthesizer left under-prompted will average three stances into beige — the prompt forces conflict-naming before the answer, but coach any room that slips past it; (d) Rory seat produces dad jokes if the student writes "be witty" — coach toward Sutherland's actual move (reframe the problem, steal an analogy, question the anchor); (e) Phase 2 subagent invocation is new for most participants — demo once, then let them drive.
+- Watch-fors: (a) starting 4 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room, name which session is Session 1 / 2 / 3 / 4; (b) retrievers return non-comparable outputs by design, student may try to normalise them — that's exactly what the Phase 1 synthesizer is for, let them feel the asymmetry; (c) the Phase 2 synthesis (main-session inline, no separate subagent since 2026-04-29 consolidation) left under-prompted will average three stances into beige — the prompt forces conflict-naming before writing the `## Answer`, but coach any room that slips past it; (d) Rory seat produces dad jokes if the student writes "be witty" — coach toward Sutherland's actual move (reframe the problem, steal an analogy, question the anchor); (e) Phase 2 subagent invocation is new for most participants — demo once, then let them drive.
 - Decision points: if a cohort is uniformly short on internal wiki access, collapse Session 1 and Session 2 into one retriever that reads whatever they have, and spend the time saved on Phase 2; the multi-agent lesson survives with two retrievers.
 - Time budget: Phase 1 ~28 min (four sessions started, prompts paste, retrievers + synthesizer run concurrently, student watches & answers), Phase 2 ~15 min, Close ~7 min. Over 60 = retrievers sprawled; under 40 = Phase 1 didn't actually produce the felt moment of concurrency.

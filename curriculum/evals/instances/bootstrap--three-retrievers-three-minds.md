@@ -76,7 +76,7 @@ Plan mode protection for these moments: Phase 0 makes the question real and pers
 - **Rumelt's strategy kernel** (diagnosis / guiding policy / coherent actions) — named explicitly as the synthesizer's spine. The crux skill in Module 2's Debrief deposited this; now the student runs it inside an agent.
 - **Roger Martin's *what would have to be true?*** — named explicitly as Subagent 2's stance. Also a running throughline in the curriculum (strategy as assumptions).
 - **Rory Sutherland's counterintuitive reframe** — named explicitly as Subagent 3's stance. Behavioural economics / advertising-theory flavour. The Rory seat.
-- **Anthropic's multi-agent warning** — referenced in the maintainer notes; explicitly addressed by engineering the exercise to be one of the few situations where splitting wins.
+- **One-agent-per-recurring-workflow (Bosser stance)** — referenced in the companion lecture; addressed by engineering the exercise to be one of the rare within-workflow cases where access + dialect + stance force splitting. Cross-workflow framing (build many, one each, no mega-agent, no proliferation) lands at lecture close.
 - **Anthropic / Boris Cherny: file-based agentic coordination** — "the filesystem is the meeting room" — emerges experientially from Phase 1, named in the companion lecture.
 
 Integrated, not decorative. Three frameworks named in the student-facing body; all three do real work.

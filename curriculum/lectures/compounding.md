@@ -37,7 +37,11 @@ Every module after this leans on the memory you just built. Multi-agent systems 
 
 ## One more compounding turn
 
-Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding. One more turn of the loop, paste this:
+Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
+
+Ask Claude to spot the still-generic pages and propose what would sharpen each.
+
+**Prompt** *(Claude Code)*
 
 ```
 Look at the memory I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what's the one question you'd ask me right now to pull the missing insight out of my head?
@@ -48,6 +52,9 @@ Claude comes back with three pointed requests. Answer one. Let it update the pag
 **Time:** 10 minutes.
 
 <!-- maintainer -->
+
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M2 closing lecture manual read)
 
 **Philosophy callouts used (per the sparing rule):**
 - **#3 Mental models only come from doing** — named implicitly in the opening ("you can't picture it from a description — you had to see it"). The whole Phase 3 debrief is this belief landed.

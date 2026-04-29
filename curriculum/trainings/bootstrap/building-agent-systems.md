@@ -28,6 +28,8 @@ And one more: if everything you've read, drafted, and half-figured-out on that c
 
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
+Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running for the next exercise. Claude already has your challenge in scrollback; no need to re-read.
+
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
 
 [Lecture: Compounding](lectures/compounding.md)
@@ -56,24 +58,6 @@ When you're done, tell me in 3–5 lines: the rules you wrote, which session mom
 
 Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
 
-One more move before you close.
-
-**Prompt** *(Claude Code)*
-
-```
-Look at my challenge memory. Find the load-bearing obstacle — the one thing that, if solved, unlocks the others. Richard Rumelt calls this the "crux."
-
-Rules:
-- Not a problem restatement. "We need to build credibility" is a goal, not a crux. "Prospects won't meet us until someone they trust vouches" IS a crux — it names the mechanism that blocks everything else.
-- Not a category. "Positioning is unclear" is a category. "Buyers can't tell in 30 seconds whether we sell training or consulting" is specific enough to act on.
-- Test it: if this obstacle moved, would at least three other stuck things release? If not, keep looking — it isn't the crux.
-
-One sentence. Save it to ./crux.md and show me before saving.
-```
-
-
-**Push back on the first crux.** Claude's first answer is usually too abstract: a tidy restatement of the problem, not the mechanism underneath. Read what it writes. If the sentence reads like something you'd put on a slide titled *"The Challenge,"* it's a problem statement, not a crux. Push: *"that's a restatement. What's the specific obstacle that, if it moved, would release pressure on the rest? Name the mechanism, not the goal."* Second try is usually sharper. Third try is usually right. The crux is worth the three rounds. It's the seed Module 8 cashes in.
-
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
 >
 > Antti
@@ -90,6 +74,9 @@ Before the next module, try making a few more agents you actually need. Pick by 
 [Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory (one week of observation). Plus selected sections from [What is an Agent](supplementary/what-is-an-agent.md) (tools, memory, context).
 
 <!-- maintainer -->
+
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M2 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply → Analyze

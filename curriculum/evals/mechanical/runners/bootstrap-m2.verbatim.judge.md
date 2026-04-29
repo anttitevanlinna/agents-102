@@ -28,12 +28,12 @@ Each via `verbatim-check.sh`.
 ### Ex1 — name-your-challenge
 
 - **A1.** Claude asked Q1-Q3 one at a time. Scrollback shows Q1 → A1 → Q2 → A2 → Q3 → A3, not a question-dump. FAIL if batched.
-- **A2.** `module-2/challenge.md` exists in scratch. Content grounded in Maija's three answers — quote one sentence.
+- **A2.** `./challenge.md` exists in scratch. Content grounded in Maija's three answers — quote one sentence.
 - **A3.** Prompt-002 response (source scouting) named Confluence terms + OneDrive folder patterns + 2-3 named practitioners (Karpathy + Alasaarela + a third). Quote the list.
 
 ### Ex2 Phase 1 Beat 1 — curate
 
-- **A4.** Actor read `module-2/challenge.md` before curating. Transcript Read-call evidence.
+- **A4.** Actor read `./challenge.md` before curating. Transcript Read-call evidence.
 - **A5.** Connector check substituted: Actor logged "[harness substitution — mock connector library]" (or equivalent language) rather than claiming real MCP access. FAIL if Actor fabricated a real connector list.
 - **A6.** Curation plan covered all three categories (internal knowledge / recent work / outside-in practitioners). Quote one item per category.
 - **A7.** Sensitivity-triage applied — at least one source was flagged as "include if comfortable" or "skip for now" rather than auto-included (Maija's personal skeptics-strategy note, or the exec email thread, or similar).
@@ -51,7 +51,7 @@ Each via `verbatim-check.sh`.
 - **A13.** `memory/` has 5-8 topic pages + `memory/index.md`. FAIL if < 4 or > 10.
 - **A14.** Every memory page has claims ending in `[sources/<filename>]` citations. Sample one page; quote two claims with citations.
 - **A15.** Distinctive-not-descriptive rule held — at least one claim references Maija's specific situation (Kaleva, Paavo's safety bar, the vendor-session retro, the classification policy, specific OKR KRs). Quote.
-- **A16.** `module-2/soft-pages.md` exists if the audit found generic pages, OR the audit explicitly said no generic pages found. Scrollback evidence.
+- **A16.** `memory/soft-pages.md` exists if the audit found generic pages, OR the audit explicitly said no generic pages found. Scrollback evidence.
 
 ### Ex2 Phase 2 — custom agent
 
@@ -66,7 +66,7 @@ Each via `verbatim-check.sh`.
 - **A22.** New source landed in `sources/` as an additional file (count grew by 1 since Beat 2). Quote new filename.
 - **A23.** Memory update was integrate-not-rebuild. Sample one of the three "sharpened" pages: compare before/after (can use transcript diff of Write calls or re-read memory file). FAIL if the page is entirely replaced rather than revised.
 - **A24.** Pushback prompt (P9) triggered actual top rewrites where old framing remained. At least one page's top paragraph changed between prompt-008 and prompt-009. FAIL if Actor claimed rewrite but the file is byte-identical.
-- **A25.** `module-2/soft-pages.md` entries sharpened per prompt-009. Quote before/after for one entry (or quote the sharpened version if soft-pages.md was first written at Phase 3).
+- **A25.** `memory/soft-pages.md` entries sharpened per prompt-009. Quote before/after for one entry (or quote the sharpened version if soft-pages.md was first written at Phase 3).
 
 ### Ex2 Phase 4 — self-maintain
 
@@ -81,7 +81,7 @@ Each via `verbatim-check.sh`.
 ### Prompt-chain integrity
 
 - **A30.** No batched-question failures (Ex1 Q1-Q3; Ex2 Phase 2 Q1-Q2).
-- **A31.** Debrief was NOT executed — no root `./CLAUDE.md` at scratch root, no `module-2/crux.md`. Runner truncation held.
+- **A31.** Debrief was NOT executed — no root `./CLAUDE.md` at scratch root, no `./crux.md`. Runner truncation held.
 
 ### Harness leakage
 

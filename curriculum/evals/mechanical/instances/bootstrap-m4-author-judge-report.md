@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Verdict: PASS (32/32 assertions)** — V1–V4, A1–A24, H1–H4 all clear. The Actor authored a two-lens `security-audit` plugin from prompt-001 dictation through prompt-004 verify, named all four attack classes verbatim, kept the verify scope to one file (`module-2/challenge.md`), and produced exactly three rows in the policy-lens report shape. Three substitutions were logged inline; no harness leakage.
+**Verdict: PASS (32/32 assertions)** — V1–V4, A1–A24, H1–H4 all clear. The Actor authored a two-lens `security-audit` plugin from prompt-001 dictation through prompt-004 verify, named all four attack classes verbatim, kept the verify scope to one file (`./challenge.md`), and produced exactly three rows in the policy-lens report shape. Three substitutions were logged inline; no harness leakage.
 
 ## V1–V4 — verbatim round-trip
 
@@ -48,7 +48,7 @@
 - **A13.** PASS. Mirror present at `plugin-install/.claude/plugins/security-audit/` with manifest + both SKILL.md files reachable. `find` confirms three files at the expected nested paths.
 - **A14.** PASS. Substitution logged: *"install location ~/.claude/plugins/&lt;name&gt;/ -> ./plugin-install/.claude/plugins/&lt;name&gt;/ to avoid touching the host's Claude config"*.
 - **A15.** PASS. Verify produced exactly three rows in the `| Rule | Description | Verdict | Evidence |` shape. Rows: GDPR-2 violating (org name not minimised), CLASS-1 violating (no tier label), AI-3 I can't tell (no downstream destination evidence). Within the 2–3 row band; not the full audit.
-- **A16.** PASS. Verify scope is one file: `module-2/challenge.md`. The .jsonl shows exactly one Read with a `module-2/*` path, and that path is `module-2/challenge.md`.
+- **A16.** PASS. Verify scope is one file: `./challenge.md`. The .jsonl shows exactly one Read with a `module-2/*` path, and that path is `./challenge.md`.
 
 ### Prompt-chain integrity
 - **A17.** PASS. Phases executed in spec order: P1 dictation → P1 read policies → P1 propose → P2 author → P3 install → P3 verify. No collapse.

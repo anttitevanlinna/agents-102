@@ -59,6 +59,16 @@
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'scheduled-agents',          title: 'Scheduled agents' }
             ]
+        },
+        'claude-basics': {
+            label: 'Claude Basics',
+            lede: 'Three modules for the IT team rolling out Claude. License-holder to custodian in 3 × 45 minutes.',
+            runtime: 'cowork',
+            modules: [
+                { slug: 'stop-chatting-build-a-system', title: 'Stop chatting — build a system' },
+                { slug: 'can-you-be-trusted-to-run-this', title: 'Can you be trusted to run this?' },
+                { slug: 'where-is-this-all-going',      title: 'Where is this all going?' }
+            ]
         }
     };
 
@@ -90,6 +100,8 @@
     }
 
     function getRuntime(trainingKey) {
+        var t = TRAININGS[trainingKey];
+        if (t && t.runtime && VALID_RUNTIMES[t.runtime]) return t.runtime;
         if (!trainingSupportsRuntimeSwitch(trainingKey)) return 'cli';
         var stored = null;
         try { stored = window.localStorage.getItem(RUNTIME_KEY); } catch (e) {}

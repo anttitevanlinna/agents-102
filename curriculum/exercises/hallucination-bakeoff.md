@@ -12,33 +12,61 @@ Four phases. 55–70 minutes. The work is mostly done by the five detectors and 
 
 Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 synthesized answer as the test corpus: your sources, your retrievals, your stances, your real question. The briefing already lives somewhere on the edge of ungroundedness; that's why it's the right test.
 
-First, produce a fresh briefing so every detector sees the same output. Open your training directory in Claude Code.
+First, produce a fresh briefing so every detector sees the same output. The target is roughly 10% fabrication or misrepresentation. Claude cannot actually dial that number in, of course. The 10% is a slight joke: enough wrongness for the detectors to have a job, not so much that the briefing becomes nonsense. Open your training directory in Claude Code.
+
+Ask Claude to generate the overreaching briefing in a separate worker and save it without previewing it.
 
 **Prompt** *(Claude Code)*
 
 ```
-This briefing is the test corpus — we WANT it to overreach in places so the detectors have something to catch. Blend general knowledge where sources don't cover; don't hedge.
+Spawn one subagent to create the benchmark target.
 
-Produce a one-page executive briefing on the strategic question (in ./crux.md, ## Question section), using the material in module-3/stances/. Include three named competitors' 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don't cover something. Save to module-5/briefing.md.
+The briefing is the test corpus. Aim for roughly 10% fabrication or misrepresentation so the detectors have something to catch. You cannot make that number precise. Treat it as a direction, not a target metric.
+
+Instructions for the subagent:
+- Use the strategic question in `./crux.md` under `## Question`.
+- Use the material in `module-3/stances/`.
+- Use source material in `sources/`.
+- Produce a one-page briefing on the challenge.
+- Include three specific named entities relevant to the challenge (companies, teams, systems, customers, products, policies, or people).
+- Include at least two verbatim quotes from `sources/`.
+- Include at least one number or measurable claim.
+- Include two claims that use outside/common knowledge beyond the files.
+- Include a next action with a measurable outcome.
+- Where the sources do not cover something, blend in general knowledge. Do not hedge.
+- Do not browse the web.
+- Save the briefing to `module-5/briefing.md`.
+
+When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing.md` exists.
 ```
+
+Why the separate worker? So this session is not tainted by knowing what was fabricated. The main session stays blind for the benchmark setup.
 
 
 Save it. **Don't open it yet.** Your gut verdicts are the measuring stick. Blind verdicts first, then the run.
 
-Now the benchmark. Claude scans the briefing, proposes five specific claims spanning the grounded–ungrounded spectrum, and you verdict each one in one line. Five is the ceiling; more is busywork, fewer is noise.
+Now extract the claims. Claude scans the briefing and pulls out a varied claim pool for the detectors. Thirty claims is not statistical. It is enough to start seeing the pattern without creating much processing work.
 
 **Prompt** *(Claude Code)*
 
 ```
-Open module-5/briefing.md. Scan it and propose exactly five specific claims — one number, one named competitor behaviour, one quote, one market-sizing statement, one Monday outcome. Pick claims that sit across the spectrum from clearly-grounded to clearly-ungrounded — mix deliberately, don't cherry-pick. Quote each claim verbatim from the briefing — the exact sentence or phrase, so the scorer can match detector findings back to it.
+Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.
 
-Then ask me, for each claim in turn: the verbatim claim, and whether it's grounded in the sources (yes / no / partly — and one line why).
+Use short verbatim excerpts from the briefing wherever possible, so later detector findings can be matched back to the briefing. Include a mix of claim shapes:
+- numbers or measurable outcomes
+- named-entity claims
+- quotes or paraphrases attributed to sources
+- causal claims
+- comparison claims
+- recommendation or next-action claims
+- claims that seem obviously grounded
+- claims that smell like overreach
 
-Ask one claim at a time, wait for my answer, then the next. After five answers, write module-5/benchmark.md with the five verbatim claims, my verdicts, and my one-line reasoning per claim.
+Do not judge whether the claims are grounded yet. Do not ask me questions. Save the claim pool to `module-5/claim-pool.md`.
 ```
 
 
-Answer five questions. Keep it fast: your gut verdict plus one sentence. You're not grading the briefing; you're giving the scorer something to measure against.
+The claim pool is input material. You have not judged anything yet.
 
 **Phase 1a: The first batch: four detectors.**
 
@@ -335,4 +363,3 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 **Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
 - compendium-audited 2026-04-28 (check_writing, check_student_facing, check_pedagogy, check_prompts)
-

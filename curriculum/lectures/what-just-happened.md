@@ -17,3 +17,8 @@ Two beats worth naming, because the mechanism you just used is older than AI.
 Everything in the next seven modules is more of this. More reaching, more watching, more adjusting. Don't expect a lecture to replace the doing. There isn't one.
 
 Now: five minutes with Claude. The debrief.
+
+<!-- maintainer -->
+
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M1 closing lecture manual read)

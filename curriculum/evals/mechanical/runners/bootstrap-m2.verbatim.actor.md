@@ -46,12 +46,12 @@ Persona carry-over: Maija's challenge is "rolling out agentic ways of working to
 
 ### Ex1 — name-your-challenge
 
-1. **Prompt 1:** `/tmp/prompts/name-your-challenge/prompt-001.txt` — Claude asks Q1-Q3 in turn. Substitute Maija's three answers from challenge-inputs.md verbatim, one per turn (NOT batched — Claude asks Q1, you paste A1, Claude asks Q2, you paste A2, etc.). After A3, Claude writes `module-2/challenge.md`.
+1. **Prompt 1:** `/tmp/prompts/name-your-challenge/prompt-001.txt` — Claude asks Q1-Q3 in turn. Substitute Maija's three answers from challenge-inputs.md verbatim, one per turn (NOT batched — Claude asks Q1, you paste A1, Claude asks Q2, you paste A2, etc.). After A3, Claude writes `./challenge.md`.
 2. **Prompt 2:** `/tmp/prompts/name-your-challenge/prompt-002.txt` — Claude suggests Confluence search terms + OneDrive folder names + 2-3 practitioners. Use the mock-library structure to shape the suggestions: Confluence terms like "AI enablement," "platform OKRs 2026," "classification policy"; OneDrive folders like "Platform Leads," "Maija/personal," "exec threads"; practitioners Karpathy + Alasaarela + Klaassen.
 
 ### Ex2 — build-your-challenge-memory
 
-3. **Prompt 3** (Beat 1 — curate): `/tmp/prompts/build-your-challenge-memory/prompt-001.txt`. Read `module-2/challenge.md`. Check connectors: substitute "no live MCP — harness substitution from /tmp/bootstrap-mocks/." Ask Maija where her material lives; substitute Maija's answer:
+3. **Prompt 3** (Beat 1 — curate): `/tmp/prompts/build-your-challenge-memory/prompt-001.txt`. Read `./challenge.md`. Check connectors: substitute "no live MCP — harness substitution from /tmp/bootstrap-mocks/." Ask Maija where her material lives; substitute Maija's answer:
    > Kaleva Confluence ENG + SEC spaces; OneDrive under /Kaleva/Platform/; Platform Leads weekly sync notes; my personal prep notes; exec thread with Tuomas (CTO). Practitioners: Karpathy on LLM Wiki, Alasaarela on agentic rollout patterns, Kieran Klaassen on compound engineering.
    Propose the curation plan from those sources. Respect the sensitivity-triage rule (exec thread with CTO is borderline — flag it as "include if Maija's comfortable, otherwise skip-for-now").
 4. **Prompt 4** (Beat 2 — ingest): `/tmp/prompts/build-your-challenge-memory/prompt-002.txt`. For each source in the plan:
@@ -61,7 +61,7 @@ Persona carry-over: Maija's challenge is "rolling out agentic ways of working to
    - Final list breakdown: 4 fetched + 3 fetched (OneDrive) + 2 fetched (practitioners) = 9 sources. Zero in "linked local path" bucket. Zero in "NOT REACHABLE."
 5. Enable plan mode (substitute — log "[harness substitution — plan mode primitive not available]"). Proceed as if plan mode were active.
 6. **Prompt 5** (Beat 3 — build memory): `/tmp/prompts/build-your-challenge-memory/prompt-003.txt`. Read every `sources/` file. Create 5-8 `memory/<topic>.md` pages with 3-5 claims each + open-questions section. Every claim cites `[sources/<filename>]`. Write `memory/index.md` linking all topic pages. Distinctive-not-descriptive rule applies.
-7. **Prompt 6** (audit self): `/tmp/prompts/build-your-challenge-memory/prompt-004.txt`. Pick 3 memory pages at random. Identify any with generic top claims. Write to `module-2/soft-pages.md` if any exist.
+7. **Prompt 6** (audit self): `/tmp/prompts/build-your-challenge-memory/prompt-004.txt`. Pick 3 memory pages at random. Identify any with generic top claims. Write to `memory/soft-pages.md` if any exist.
 
 ### Ex2 Phase 2 — custom agent
 
@@ -77,7 +77,7 @@ Persona carry-over: Maija's challenge is "rolling out agentic ways of working to
 
 10. **Prompt 9** (find thinnest page + new source): `/tmp/prompts/build-your-challenge-memory/prompt-007.txt`. Name thinnest page. Pick a new source. Go get it: for this harness run, substitute by pulling one additional Confluence page that wasn't in Beat 2's fetched set (from the mocks library, any remaining unused one). Save to `sources/` as a new file.
 11. **Prompt 10** (integrate new source): `/tmp/prompts/build-your-challenge-memory/prompt-008.txt`. Update the affected memory pages (integrate, sharpen, drop contradictions — don't rebuild). Update `memory/index.md`. Report three sharper pages + one page with a dropped/replaced claim.
-12. **Prompt 11** (pushback — rewrite tops): `/tmp/prompts/build-your-challenge-memory/prompt-009.txt`. Verify the claimed sharpened pages actually got their top rewritten (not old framing above a new section). Rewrite tops where needed. Revisit `module-2/soft-pages.md` and sharpen each.
+12. **Prompt 11** (pushback — rewrite tops): `/tmp/prompts/build-your-challenge-memory/prompt-009.txt`. Verify the claimed sharpened pages actually got their top rewritten (not old framing above a new section). Rewrite tops where needed. Revisit `memory/soft-pages.md` and sharpen each.
 
 ### Ex2 Phase 4 — self-maintain
 
@@ -95,13 +95,13 @@ Persona carry-over: Maija's challenge is "rolling out agentic ways of working to
 
 End of run should contain:
 - `module-1/CLAUDE.md` (untouched from Arrange)
-- `module-2/challenge.md` (Phase 1 opener)
-- `module-2/soft-pages.md` (Phase 1 audit list)
+- `./challenge.md` (Phase 1 opener)
+- `memory/soft-pages.md` (Phase 1 audit list)
 - `memory/index.md` + 5-8 topic pages (Phase 1 build + Phase 3 compound + Phase 4 maintain)
 - `sources/` — 10 files total (9 from Beat 2 + 1 from Phase 3)
 - `agents/monday-risks.md` (Phase 2)
 
-Still absent (produced by Debrief, which this runner does NOT execute): the training-dir root `./CLAUDE.md`, and `module-2/crux.md`. The Debrief is owned by the module file, not this exercise file, and is truncated for the harness.
+Still absent (produced by Debrief, which this runner does NOT execute): the training-dir root `./CLAUDE.md`, and `./crux.md`. The Debrief is owned by the module file, not this exercise file, and is truncated for the harness.
 
 ## Report
 
@@ -124,8 +124,8 @@ Short report at `.../bootstrap-m2-verbatim-actor-report.md`:
 3-13. build-your-challenge-memory prompt-001 through prompt-011
 
 ## Artifacts written
-- module-2/challenge.md
-- module-2/soft-pages.md
+- ./challenge.md
+- memory/soft-pages.md
 - memory/: <count> files
 - sources/: <count> files
 - agents/monday-risks.md
@@ -146,4 +146,4 @@ Under 300 words. Do not grade yourself.
 - Read `curriculum/exercises/*`, judge runners, other actor runners, maintainer docs.
 - Paraphrase prompts.
 - Fetch anything from the real internet. Mock connectors only.
-- Execute Debrief or write root `./CLAUDE.md` / `module-2/crux.md` — those belong to the module's Debrief, not this exercise.
+- Execute Debrief or write root `./CLAUDE.md` / `./crux.md` — those belong to the module's Debrief, not this exercise.

@@ -13,7 +13,7 @@ done
 1. Phase 1 prompt-001 (dictate what matters) + Maija's 5 substituted lines + plugin proposal (`security-audit`, lenses `policy` + `agent-security`)
 2. Phase 2 prompt-002 (author both lenses; all 4 attack classes named verbatim with `direct`/`indirect`/`scrollback`)
 3. Phase 3 prompt-003-cli (install mirrored to sandbox `plugin-install/.claude/plugins/security-audit/`)
-4. Phase 3 prompt-004-verify (3 rows on `module-2/challenge.md`: GDPR-2 violating, CLASS-1 violating, AI-3 I can't tell)
+4. Phase 3 prompt-004-verify (3 rows on `./challenge.md`: GDPR-2 violating, CLASS-1 violating, AI-3 I can't tell)
 
 ## Artifacts written
 - `security-audit-plugin/.claude-plugin/plugin.json`

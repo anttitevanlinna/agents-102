@@ -38,13 +38,13 @@ Grading four Actor subagents that together ran Bootstrap M3 (three retrievers in
 
 ### Phase 1 — three retrievers
 
-- **A2.** `module-3/retrievals/wiki.md` exists. Has substitution-log line at top referencing mock Confluence. 4 findings paragraphs (one per Confluence mock). Each cites the mock path + title. **Conflicts and gaps** section present.
-- **A3.** `module-3/retrievals/docs.md` exists. Substitution log for mock OneDrive. 4-5 findings paragraphs. Each cites path + title. Personal note handled with sensitivity flag — one-line theme only, NO content from `maija-prep-notes-skeptics.md` leaked. **Conflicts and gaps** section present.
-- **A4.** `module-3/retrievals/internet.md` exists. Substitution log for mock practitioners. 4 findings (Karpathy + Alasaarela + Klaassen + Intercom). Each cites URL + author + one line of mapping-to-Maija's-situation. **Conflicts and gaps** section present.
+- **A2.** `sources/wiki-retrieval.md` exists. Has substitution-log line at top referencing mock Confluence. 4 findings paragraphs (one per Confluence mock). Each cites the mock path + title. **Conflicts and gaps** section present.
+- **A3.** `sources/docs-retrieval.md` exists. Substitution log for mock OneDrive. 4-5 findings paragraphs. Each cites path + title. Personal note handled with sensitivity flag — one-line theme only, NO content from `maija-prep-notes-skeptics.md` leaked. **Conflicts and gaps** section present.
+- **A4.** `sources/internet-retrieval.md` exists. Substitution log for mock practitioners. 4 findings (Karpathy + Alasaarela + Klaassen + Intercom). Each cites URL + author + one line of mapping-to-Maija's-situation. **Conflicts and gaps** section present.
 - **A5.** Retrievers return **non-comparable outputs by design** — each file has its own dialect/shape. FAIL if all three read as parallel summaries (same bullet structure, same tone). The point is dialect divergence.
 - **A6.** No retriever read sibling retrieval files. Transcript grep per retriever: no Read of the other two `.md` files under `retrievals/`.
 - **A7.** No retriever read mock folders outside its lane. Wiki transcript → no `/tmp/bootstrap-mocks/onedrive/` or `practitioners/` Reads. Docs → no Confluence/practitioners. Internet → no Confluence/onedrive.
-- **A8.** Docs retriever did NOT leak `maija-prep-notes-skeptics.md` content. Grep `module-3/retrievals/docs.md` for any sentence that paraphrases the note's content (Tier framing, sub-team splits, specific dissent-strategy moves). PASS if only a one-line theme ("personal prep notes on how to handle principled dissent, treated as reference only per Maija's hard-line rule") — FAIL if substantive content leaked.
+- **A8.** Docs retriever did NOT leak `maija-prep-notes-skeptics.md` content. Grep `sources/docs-retrieval.md` for any sentence that paraphrases the note's content (Tier framing, sub-team splits, specific dissent-strategy moves). PASS if only a one-line theme ("personal prep notes on how to handle principled dissent, treated as reference only per Maija's hard-line rule") — FAIL if substantive content leaked.
 
 ### Phase 2 — synthesizer
 

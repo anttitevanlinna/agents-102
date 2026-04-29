@@ -4,11 +4,11 @@
 #
 # Output: agents-102-bootstrap-starter.tar.gz at repo root.
 #
-# Contents (the empty working-folder skeleton from
+# Contents (the prework-installed working material from
 # curriculum/scaffolds/training-starter/, maintainer blocks stripped):
 #
 #   prework/.keep
-#   module-1/.keep ... module-8/.keep
+#   module-4/policies/*.md
 #   memory/.keep
 #   sources/.keep
 #   agents/.keep
@@ -60,7 +60,7 @@ done
   esac
 done
 
-# Build tarball from inside ROOT so the archive has prework/, module-N/,
+# Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).
 rm -f "$OUT"
 (cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)
@@ -70,7 +70,7 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-for path in prework module-1 module-2 module-3 module-4 module-5 module-6 module-7 module-8 memory sources agents .claude/skills/self-study/SKILL.md; do
+for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md memory sources agents .claude/skills/self-study/SKILL.md; do
   if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
     echo "WARNING — expected path missing: $path" >&2
     exit 1

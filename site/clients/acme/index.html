@@ -1718,11 +1718,17 @@ If tar is not available, tell me what error you got.
 <pre><code>List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
 </code></pre>
 <p><strong>Path B (no connector, or you&#39;re not sure).</strong> Default to this one if in doubt.</p>
-<p>Take a screenshot of your calendar week view<span class="rt-cowork"> and attach it to your next message via the <strong>(+)</strong> button</span>, then:</p>
-<div class="rt-code">
+<p>Take a screenshot of your calendar week view, then:</p>
+<div class="rt-cli">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can&#39;t locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+</code></pre>
+</div>
+<div class="rt-desktop">
+
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
 </code></pre>
 </div>
 <div class="rt-cowork">
@@ -1925,7 +1931,8 @@ Then overwrite `module-1/personal-brand-generation.md` with the retro applied. S
 
 When you&#39;re done, tell me in 2–3 lines: what got sharpened, what got added, what got dropped, and why. Add a couple more lines if you spotted something the rules should cover but you want me to weigh in on first.
 </code></pre>
-<p>Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn&#39;t match your sense of the work. That&#39;s the pattern: every time you do work like this and reflect, the rules file gets sharper. <strong>Compound interest on a markdown file.</strong> This is the move you&#39;ll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.</p>
+<p>Claude runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.</p>
+<p>Push back on anything that doesn&#39;t match your sense of the work. That&#39;s the pattern: every time you do work like this and reflect, the rules file gets sharper. <strong>Compound interest on a rule file.</strong> This is the move you&#39;ll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.</p>
 <p><strong>Then, Claude as cold critic.</strong> Now that you&#39;ve reflected on your own experience, get an unbiased verdict. Ask Claude to dispatch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold (you want a fresh Claude with no memory of building it):</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.
@@ -2022,8 +2029,7 @@ Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 
 
 
-
-
+<p>Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running for the next exercise. Claude already has your challenge in scrollback; no need to re-read.</p>
 <section class="phase phase--exercise" id="exercises-build-your-challenge-memory">
 <div class="phase-kicker">Exercise</div>
 
@@ -2031,7 +2037,7 @@ Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 <p><strong>What you do:</strong></p>
 <p>A chat forgets. A memory remembers.</p>
 <p>You&#39;ve just pinned your challenge in <code>./challenge.md</code> (the opener). Now you build a memory around it, scoped to the <strong>next big challenge</strong> you&#39;re wrestling with at work. The board paper due in three weeks. The re-org you&#39;re shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.</p>
-<p>Before class you unzipped the Module 2 scaffold: empty <code>sources/</code>, empty <code>memory/</code>, empty <code>agents/</code>, and a root <code>CLAUDE.md</code> with the rules Claude follows when it writes pages. <span class="rt-code">Start a new session in the working directory.</span><span class="rt-cowork">Connect the working directory in Cowork.</span> Four phases: curate, put to work, compound, self-maintain.</p>
+<p>The empty <code>sources/</code>, <code>memory/</code>, and <code>agents/</code> folders are already in place from prework. <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Four phases: curate, put to work, compound, self-maintain.</p>
 <p><strong>Phase 1. Curate, ingest, build.</strong></p>
 <p>A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever&#39;s nearest. Don&#39;t. Three beats: Claude helps you curate a plan, then Claude pulls the actual content into <code>sources/</code>, then Claude builds <code>memory/</code> from what&#39;s on disk.</p>
 <p><strong>Always comply with your company&#39;s AI policy.</strong> Whatever rules your org has about what can and can&#39;t go through an LLM (enterprise agreement, data classification, regulated-data carve-outs) those hold here. If in doubt, check before uploading.</p>
@@ -2041,7 +2047,7 @@ Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>I&#39;m building a knowledge memory for one specific challenge I&#39;m working on. Do this in three beats:
 
-1. First, read ./challenge.md so you have the challenge in mind. Then check what connectors are enabled in my Claude Code session right now — name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren&#39;t connected.
+1. Check what connectors are enabled right now. Name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren&#39;t connected.
 
 2. Then ask me where my work material actually lives. Don&#39;t assume Confluence or OneDrive — ask what&#39;s in my world: my team&#39;s wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I&#39;ve been exchanging on this challenge.
 
@@ -2051,17 +2057,18 @@ One rule for the plan: only recommend sources I would feel comfortable sharing w
 </code></pre>
 <p>Push back, sharpen, add what&#39;s missing. The plan is the list. Nothing&#39;s in <code>sources/</code> yet.</p>
 <p><strong>Beat 2. Ingest.</strong> Now Claude pulls the content into <code>sources/</code>. Agent does the heavy lifting; you don&#39;t copy-paste.</p>
+<p><strong>A note on what Claude reads.</strong> <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the <strong>+</strong> button at the prompt. For sources outside the training folder, attach them with <strong>+</strong> before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you&#39;ve selected for this task. Add another folder (your downloads, a notes directory) via the <strong>+</strong> button. To attach a single file for one message, also <strong>+</strong>.</span></p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:
 
 - Publicly fetchable URL (practitioner blog, public article)? Fetch the page, save the text as sources/&lt;slug&gt;.md with a header naming URL + title + why-it&#39;s-relevant.
 - Reachable via a connector you have (wiki, docs, drive)? Pull the content through and save the same way.
 - Local file on my laptop at a path I named? Save sources/&lt;slug&gt;.md as a reference — absolute path + title + why-it&#39;s-relevant, no copied content. You&#39;ll read the actual file directly when Beat 3 needs it.
-- Behind a connector you can&#39;t reach, or in a tool you don&#39;t have? Save sources/&lt;slug&gt;.md as a reference too — URL or path + title + why-it&#39;s-relevant + &quot;NOT REACHABLE — attach via + button when you want this included.&quot; Don&#39;t ask me to paste anything; if I want it included, I&#39;ll attach the file.
+- Behind a connector you can&#39;t reach, or in a tool you don&#39;t have? Save sources/&lt;slug&gt;.md as a reference too — URL or path + title + why-it&#39;s-relevant + &quot;NOT REACHABLE — share with me when you want this included.&quot; Don&#39;t ask me to paste anything; if I want it included, I&#39;ll share the file.
 
 When done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I&#39;ll attach whatever I want to include before we build the memory.
 </code></pre>
-<p>Look at Claude&#39;s three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case use the <strong>+</strong> button to attach the file; Claude will save the content into <code>sources/</code> when attached. Never type or paste content yourself; that&#39;s the agent&#39;s job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.</p>
+<p>Look at Claude&#39;s three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case share the file with Claude (your runtime knows how); Claude will save the content into <code>sources/</code>. Never type or paste content yourself; that&#39;s the agent&#39;s job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.</p>
 <p><strong>Beat 3. Build memory.</strong> Now the memory gets built from what&#39;s actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it&#39;s about to do before touching files, you approve, nothing commits until you say go. Tell Claude <em>&quot;Enable plan mode.&quot;</em> (Alternatives: pick <em>Plan</em> from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read <em>plan mode</em>.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it&#39;s about to do before touching files, so you can review and steer before files commit.</span></p>
 <div class="rt-code">
 
@@ -2087,7 +2094,7 @@ Rules — non-negotiable:
 <p>Approve. Claude writes the files.</p>
 <p>Now ask Claude to audit itself:</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? List the generic ones in module-2/soft-pages.md.
+<pre><code>Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? List the generic ones in memory/soft-pages.md.
 </code></pre>
 <p>That list is your first quality check. You&#39;ll sharpen those pages in Phase 3.</p>
 <p><span class="rt-code"><strong>What plan mode just did for you.</strong> The memory build wrote 5–8 files in one shot. That&#39;s the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That&#39;s plan mode&#39;s job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to <em>default</em>. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span><span class="rt-cowork"><strong>What asking for a plan just did for you.</strong> The memory build wrote 5–8 files in one shot. That&#39;s the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That&#39;s the job of asking Claude to plan first: make Claude think before it makes extensive output, give you one review point instead of many. Rule of thumb going forward: ask for a plan first on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span></p>
@@ -2109,29 +2116,19 @@ Pick a filename from the job. Show me the file before saving.
 </code></pre>
 <p>Answer with a real task from your challenge. Claude reads the agent file, reads the memory, cites sources, stays inside its rules. The citations tell you whether the memory earned its keep or whether Claude filled in from training data. Quietly, you just made a reusable capability. Same agent, next week&#39;s task.</p>
 <p><strong>Phase 3. Compound.</strong></p>
-<p>A dumb knowledge base grows. A compounding one <em>sharpens</em>. Phase 3 proves it: find the thinnest memory page, get one more source in, let the new source make the old pages better. Claude does the legwork. You only step in if there&#39;s a file only you can attach.</p>
+<p>A dumb knowledge base grows. A compounding one <em>sharpens</em>. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.</p>
+<p>Pick a source that fills a gap: a practitioner article you&#39;ve been meaning to read, a doc you skipped in Beat 2, an email thread, a local file you can share with Claude. Drop the link, path, or attachment after the colon at the end of the prompt.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Look at memory/ and identify the thinnest page — the one where Phase 1&#39;s audit flagged &quot;generic&quot; in module-2/soft-pages.md, or where a topic has only two claims, or where the stress-test in Phase 2 revealed light content. Name it in one sentence.
+<pre><code>Take the source below and integrate it into the memory. Steps:
 
-Then look at the curation plan we agreed in Beat 1 and at sources/ itself: what&#39;s a single new source that would sharpen this specific page? Pick it from what&#39;s missing — something on the plan we didn&#39;t fetch, or a practitioner article, or a local file I named but you haven&#39;t read. Name it in one sentence: what&#39;s the source and why does it help.
+1. Read the source. Integrate its claims into existing pages (sharpen, don&#39;t append). Drop any claim the source contradicts. For new topics, add pages in the existing shape. Update memory/index.md.
+2. Rewrite tops in place. Replace old framing; don&#39;t preserve it above a new section.
 
-Then go get it using the same methods as Beat 2 (fetch public URL, pull via connector, link to a local path, or tell me if it needs my attach). Land it in sources/ as a new file. Stop there — don&#39;t update memory yet; I want to see the new source first.
+When you&#39;re done, tell me three pages that got sharper (not longer) and one claim that got dropped or replaced.
+
+New source:
 </code></pre>
-<p>Look at what Claude named and at the new <code>sources/</code> file. If it&#39;s wrong (the page isn&#39;t actually the thinnest, or the source won&#39;t help) push back in one sentence. If Claude asked for an attachment, decide whether you want to include it; use <strong>+</strong> if yes.</p>
-<p>When the new source is in place:</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Update the memory from the new source — don&#39;t rebuild it. For topics you already have: integrate new claims, sharpen existing pages, drop any claim the new source contradicts. For new topics: add pages in the existing shape. Update memory/index.md.
-
-When you&#39;re done, tell me three topic pages that got sharper (not longer) from this update — and one page where a claim got dropped or replaced.
-</code></pre>
-<p>Second batch made the first batch better. Chat literally cannot do this.</p>
-<p>Now don&#39;t take Claude&#39;s report at face value. Push back:</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Go through every page you just claimed got sharper. Check whether the top of each page actually got rewritten, or whether the old framing is still sitting above a new section. For any where the old is still there, rewrite the top — let the new direction replace the old, don&#39;t preserve both.
-
-Also revisit module-2/soft-pages.md. For each, sharpen the top paragraph so it names what&#39;s specific to my challenge, not generic.
-</code></pre>
-<p>That last line picks up the soft pages you parked in Phase 1. They finally get real here.</p>
+<p>Read Claude&#39;s report. Push back if a claim &quot;got sharper&quot; but the top didn&#39;t actually change. Second batch made the first batch better. Chat literally cannot do this.</p>
 <p><strong>Phase 4. Let it maintain itself.</strong></p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don&#39;t have one; two places where older pages likely went stale given what&#39;s in the newer sources. For each, propose a specific fix. Don&#39;t apply them yet — ask me to approve or reject each one.
@@ -2182,7 +2179,9 @@ Also revisit module-2/soft-pages.md. For each, sharpen the top paragraph so it n
 <p>Your memory is specific to your challenge. The question you just ran through it came back with claims cited to your files, reasoning shaped by your context, a voice that isn&#39;t a generic industry take. The answer belongs to the memory you built, not to the LLM behind it. That&#39;s the point the whole training turns on: <em>generic AI becomes your AI when you shape the context that surrounds it.</em> Guardrails did this at the prompt level in Module 1. A memory does it at the knowledge level now. The mechanism is the same; only the shelf life changed.</p>
 <p>Every module after this leans on the memory you just built. Multi-agent systems (tomorrow) reads from it. Security reviews it. Quality evals run against it. The flywheel in Module 8 feeds it. You didn&#39;t build a training exercise — you built the substrate the rest of the training runs on.</p>
 <h2>One more compounding turn</h2>
-<p>Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That&#39;s the discipline: if the answer to <em>&quot;could a competitor claim this?&quot;</em> is ever yes, the memory is growing but not compounding. One more turn of the loop, paste this:</p>
+<p>Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That&#39;s the discipline: if the answer to <em>&quot;could a competitor claim this?&quot;</em> is ever yes, the memory is growing but not compounding.</p>
+<p>Ask Claude to spot the still-generic pages and propose what would sharpen each.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Look at the memory I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what&#39;s the one question you&#39;d ask me right now to pull the missing insight out of my head?
 </code></pre>
 <p>Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.</p>
@@ -2209,18 +2208,6 @@ Structure however makes sense for how we actually worked today — section heade
 When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. I shouldn&#39;t have to open the file to know what&#39;s in it.
 </code></pre>
 <p>Read Claude&#39;s summary. Push back on anything that doesn&#39;t match your sense of the work. <em>&quot;No, that rule&#39;s too strict.&quot;</em> <em>&quot;You missed the bit where we had to regenerate three times because of X.&quot;</em> Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (<code>./CLAUDE.md</code>), the one every subsequent module extends.</p>
-<p>One more move before you close.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Look at my challenge memory. Find the load-bearing obstacle — the one thing that, if solved, unlocks the others. Richard Rumelt calls this the &quot;crux.&quot;
-
-Rules:
-- Not a problem restatement. &quot;We need to build credibility&quot; is a goal, not a crux. &quot;Prospects won&#39;t meet us until someone they trust vouches&quot; IS a crux — it names the mechanism that blocks everything else.
-- Not a category. &quot;Positioning is unclear&quot; is a category. &quot;Buyers can&#39;t tell in 30 seconds whether we sell training or consulting&quot; is specific enough to act on.
-- Test it: if this obstacle moved, would at least three other stuck things release? If not, keep looking — it isn&#39;t the crux.
-
-One sentence. Save it to ./crux.md and show me before saving.
-</code></pre>
-<p><strong>Push back on the first crux.</strong> Claude&#39;s first answer is usually too abstract: a tidy restatement of the problem, not the mechanism underneath. Read what it writes. If the sentence reads like something you&#39;d put on a slide titled <em>&quot;The Challenge,&quot;</em> it&#39;s a problem statement, not a crux. Push: <em>&quot;that&#39;s a restatement. What&#39;s the specific obstacle that, if it moved, would release pressure on the rest? Name the mechanism, not the goal.&quot;</em> Second try is usually sharper. Third try is usually right. The crux is worth the three rounds. It&#39;s the seed Module 8 cashes in.</p>
 <blockquote>
 <p>Your agent is &quot;right&quot; when it works. Every miss is context you haven&#39;t written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won&#39;t spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.</p>
 <p>Antti</p>
@@ -2250,179 +2237,276 @@ One sentence. Save it to ./crux.md and show me before saving.
 <li><strong>Evaluate</strong> when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins</li>
 </ul>
 <h2>Start here</h2>
-<p>Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. One of them is Rory. What do you expect will get lost between them?</p>
+<p>Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?</p>
+<section class="phase phase--exercise" id="exercises-name-your-crux">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Name your crux</h1>
+<p><strong>What you do:</strong></p>
+<p>Module 2 produced a memory full of what you&#39;ve gathered about your challenge. Module 3 turns it into an answer you can act on — starting with the question worth answering. Richard Rumelt calls it the <strong>crux</strong>: the one thing that, if solved, releases pressure on everything else.</p>
+<p><strong>Setup:</strong> <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 3 opens cold. Module 2&#39;s <code>memory/</code> is on disk; this exercise reads from it. The retrievers in the next exercise go to connectors and the open web — Module 2&#39;s curation becomes the thing you&#39;ll compare their fresh findings against during synthesis.</p>
+<p>Ask Claude to read the memory and name the crux. Push back hard when the first answer is a problem restatement.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Look at my challenge memory. Find the load-bearing obstacle: the one thing that, if solved, unlocks the others. Richard Rumelt calls this the &quot;crux.&quot;
+
+Rules:
+- Not a problem restatement. &quot;We need to build credibility&quot; is a goal, not a crux. &quot;Prospects won&#39;t meet us until someone they trust vouches&quot; IS a crux: it names the mechanism that blocks everything else.
+- Not a category. &quot;Positioning is unclear&quot; is a category. &quot;Buyers can&#39;t tell in 30 seconds whether we sell training or consulting&quot; is specific enough to act on.
+- Test it: if this obstacle moved, would at least three other stuck things release? If not, keep looking. It isn&#39;t the crux.
+
+One sentence. Save it to ./crux.md under a `## Crux` heading; show me before saving.
+</code></pre>
+<p>Revise by iterating; save when good enough.</p>
+<p>The crux is the obstacle. Now name the decision the crux blocks — the call you&#39;d stay late to make. Cruxes describe; decisions act.</p>
+<p>Ask Claude to name the sharpest decision the crux blocks and append it to the same file.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Open ./crux.md and read the crux you just saved. What&#39;s the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you&#39;d stay late to make. Something like *&quot;what&#39;s the right next move to unblock the crux, over the next 90 days?&quot;* is a decent default. *&quot;Should we kill option A?&quot;* is better if that&#39;s where you are.
+
+Append a `## Question` section to ./crux.md with the decision question. Don&#39;t overwrite the crux above. Show me before saving.
+</code></pre>
+<p>Same move: iterate if it&#39;s a topic restatement instead of a real call; save when good enough.</p>
+<p><strong>Time:</strong> 8 minutes.</p>
+</section>
+
+
+
+
+
+<section class="phase phase--exercise" id="exercises-three-retrievers-one-curator">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Three retrievers, one curator</h1>
+<p><strong>What you do:</strong></p>
+<p>Hire three agents to fetch raw material on your challenge — wiki, docs, the open web. Hire a fourth to curate the findings into your memory in real time, while the retrievers are still running.</p>
+<p><strong>What happens:</strong></p>
+<p>Four sessions running on the same shared folder at once. Three retrievers stream findings into <code>sources/</code>; the fourth (the synthesizer) reads <code>sources/</code> as it grows and integrates into <code>memory/</code> — the curated layer that&#39;s been compounding since Module 2. Two layers fill at the same time.</p>
+<p><strong>The point:</strong></p>
+<p>Multi-agent&#39;s first shape: separate sessions on shared files. Each agent runs in its own context, sees the others&#39; work via the filesystem, has its own connectors and history. The feeling — files materialising in two folders at once, four windows churning on one question — is the lesson.</p>
+<p><strong>Time:</strong> ~28 minutes.</p>
+<p>The crux and the decision question both live in <code>./crux.md</code> from the opening exercise. Retrievers and the synthesizer all read it.</p>
+<p><span class="rt-code">Open your training directory in up to four Claude Code sessions.</span><span class="rt-cowork">Open up to four Cowork tasks on this connected folder.</span> Three retrievers fetch raw material into <code>sources/</code>; a fourth concurrent session synthesizes the retrievals into your <code>memory/</code> as they arrive. Three retrievers is the default; if you can&#39;t get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same rules (your root <code>CLAUDE.md</code>) and writes into the same folder tree. They don&#39;t talk to each other. They work side by side.</p>
+<p>Four sessions for one question is more than the work strictly needs — two retrievers plus you reading them would produce the same files with less choreography. The four is for the feeling. Agent heavy-lifting goes sequential by default, and sequential gets slow fast on real work; better to know the parallel option early than discover it under deadline.</p>
+<p>The retrievers go live — connectors and the open web. The synthesizer is the one curatorial act here: it reads <code>sources/</code> as files appear and integrates findings into <code>memory/</code>, the curated layer that&#39;s been compounding since Module 2. Two layers fill at the same time: raw retrievals in <code>sources/</code>, sharper memory in <code>memory/</code>.</p>
+<div class="rt-code">
+
+<p><em>Keep your existing crux session open — that becomes Session 4 (synthesizer; also your main session through the next exercise). Open three more Claude Code sessions in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users: open three app sessions alongside the existing one. CLI users: three more terminal sessions, each running <code>claude</code> from the training directory. Self-study: Teacher Claude walks you through this if you stall.</em></p>
+</div>
+<div class="rt-cowork">
+
+<p><em>Keep your existing crux task open — that becomes Task 4 (synthesizer; also your main task through the next exercise). In Claude Desktop&#39;s <em>Cowork</em> tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You&#39;ll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don&#39;t share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you stall.</em></p>
+</div>
+
+<p><strong>The rhythm:</strong></p>
+<ol>
+<li><strong>Sessions 1, 2, 3 — retrievers.</strong> Paste each retriever prompt into its session. Each one returns a short list (6–8 search terms for wiki, 2–3 clues for docs, 4–6 authors for internet) and asks you to keep, swap, or sharpen. Confirm inline, quickly, don&#39;t polish. Then the retrievers run.</li>
+<li><strong>Session 4 — synthesizer.</strong> Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into <code>memory/</code>.</li>
+<li><strong>All four running.</strong> Switch between sessions. Watch files appear in <code>sources/</code> and <code>memory/</code> sharpen at the same time.</li>
+</ol>
+<p>In Session 1:</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to ./crux.md (the crux you named in the opening, plus the ## Question section). Read the question first.
+
+Then:
+1. Propose 6–8 search terms for my team&#39;s wiki. Confluence, Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it&#39;s ambiguous.
+2. Run the searches through Claude&#39;s connector to my wiki. Open the pages. Read them properly.
+3. Write your findings to sources/wiki-retrieval.md, one paragraph per finding, naming the page/space and one line on why this matters for the question. Keep only what speaks to the question; don&#39;t summarise the wiki.
+4. End the file with a &quot;Conflicts and gaps&quot; section: where internal pages disagree, where the wiki is thin, what&#39;s conspicuously missing.
+
+Write each finding as soon as you have it; don&#39;t batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+
+No need to update `memory/` — another session is handling curation. Just write to `sources/`.
+
+Sources first. Every finding cites the specific page title and URL you actually opened. If you can&#39;t find a source for a claim, write &quot;[NOT FOUND]&quot;, do not fill from prior knowledge. If a search returns nothing, say so; don&#39;t invent page titles.
+</code></pre>
+<p>In Session 2:</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for ./crux.md (the crux you named in the opening, plus the ## Question section).
+
+Then:
+1. Ask me for three clues: names of documents I remember, people I&#39;ve been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.
+2. Pull the content via the doc-store connector (OneDrive, SharePoint, Google Drive, whichever I use), or via files I&#39;ve shared with you directly.
+3. Write your findings to sources/docs-retrieval.md, what documents and threads show, who said what, what&#39;s recent, what&#39;s decided, what&#39;s still open. Name where sources disagree; don&#39;t smooth over contradictions.
+4. End the file with &quot;Conflicts and gaps&quot;: disagreements between sources, things that should exist but don&#39;t, names conspicuously missing.
+
+Write each finding as soon as you have it; don&#39;t batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+
+No need to update `memory/` — another session is handling curation. Just write to `sources/`.
+
+Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can&#39;t find a source for a claim, write &quot;[NOT FOUND]&quot;, do not fill from prior knowledge. If a connector returns empty, say so; don&#39;t invent document titles.
+</code></pre>
+<p>In Session 3:</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>You are the internet retriever for my challenge. Your job: find practitioner-grade external material on ./crux.md (the crux you named in the opening, plus the ## Question section). No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 6 months.
+
+Then:
+1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.
+2. Fetch them. Read them.
+3. Write your findings to sources/internet-retrieval.md, what each practitioner says that&#39;s specific, with the URL, and one line on how their situation maps (or doesn&#39;t) to mine.
+4. End the file with &quot;Conflicts and gaps&quot;: where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can&#39;t tell me.
+
+Write each finding as soon as you have it; don&#39;t batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
+
+No need to update `memory/` — another session is handling curation. Just write to `sources/`.
+
+Sources first. Every finding cites the URL you actually fetched and the author. If a fetch fails or returns nothing useful, write &quot;[NOT FOUND]&quot;, do not fabricate article titles, quotes, or author positions from prior knowledge.
+</code></pre>
+<p>Heads-up: retrievers tend to wrap up early. A clean-looking <em>Conflicts and gaps</em> section reads like the work is done; usually it isn&#39;t. If the file feels thinner than the question deserves, the prompt below is your nudge to keep them chugging.</p>
+<p>Once a retriever returns its first pass — wiki, docs, or internet — paste this back into that session to push another round.</p>
+<p><strong>Prompt</strong> <em>(Claude Code, reusable across all three retriever sessions)</em></p>
+<pre><code>Push another round. What did the first pass miss? Different angles, related sources, the citations inside what you already opened — keep going until the file feels complete or you genuinely don&#39;t find new material. Append; don&#39;t rewrite.
+</code></pre>
+<p>In Session 4:</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>You are the synthesizer for my challenge. Three retrievers are running concurrently in Sessions 1, 2, and 3 — they&#39;ll write findings to sources/wiki-retrieval.md, sources/docs-retrieval.md, and sources/internet-retrieval.md as they finish. Your job is curation: integrate those findings into my memory/ topic pages, scoped to ./crux.md (the crux you named in the opening, plus the ## Question section).
+
+Memory is curated, not a raw dump. Existing topic pages cover the challenge — extend them where the new sources sharpen what&#39;s already there; create a new topic page where the retrievals reveal a topic memory was missing. Cite sources by filename + paragraph.
+
+The loop:
+1. Wait for any new content in sources/. When a file appears (or grows), read it.
+2. Diff against existing memory/ pages. Decide: extend an existing page, or write a new one?
+3. Make the update. Cite the source file by name. Integrate, don&#39;t append. Keep claims tight.
+4. Repeat until all three retrievals are integrated.
+
+When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md naming what changed, what&#39;s now sharper, where retrievals contradicted what was already in memory. That contradiction line is load-bearing — flag it, don&#39;t smooth it.
+
+Don&#39;t fabricate. Every memory update cites a source-file finding. If a retrieval is empty or thin, say so in your synthesis note rather than papering over the gap.
+</code></pre>
+<p>Answer each retriever&#39;s questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once — three fetching, one curating. Watch the files appear in <code>sources/</code> and <code>memory/</code> sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. <strong>The feeling is the lesson.</strong></p>
+<p>When the synthesizer&#39;s last move lands — <code>memory/_synthesis-m3.md</code> naming what changed — Phase 1 is done. Hand off to <em>Three minds, one synthesis</em> (next exercise), which keeps Session 4 open as the main session.</p>
+</section>
+
+
+
+
+
+<section class="phase phase--exercise" id="exercises-three-minds-one-synthesis">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Three minds, one synthesis</h1>
+<p><strong>What you do:</strong></p>
+<p>Spawn three subagents inside one session. Each holds a different stance against your curated memory. The main session reads them back, applies a strategy framework, and writes the answer back into your <code>./crux.md</code> as a third section.</p>
+<p><strong>What happens:</strong></p>
+<p>Three voices, three short notes. The main session reads them side by side, applies Rumelt&#39;s strategy kernel inline, writes the synthesis. Single artifact carries the full strategic frame: crux + question + answer.</p>
+<p><strong>The point:</strong></p>
+<p>Multi-agent&#39;s second shape: subagents inside one session. Each runs in its own context, returns and disappears. Quick parallel thinking, bounded return — without juggling four windows.</p>
+<p><strong>Time:</strong> ~22 minutes (15 min synthesis + 7 min Close).</p>
+<p>The previous exercise left you with a curated <code>memory/</code> (the synthesizer&#39;s output) and the same <code>./crux.md</code> you&#39;ve been building since the opening.</p>
+<p>Stay in the session that wrote <code>./crux.md</code> — the same one you&#39;ve used since <em>Name your crux</em>. In the previous exercise this session was relabelled Session 4 (the synthesizer) while three retriever sessions ran alongside it. The retriever sessions can close now; this one stays open as your main session for the synthesis below.</p>
+<p>Wait for the synthesizer&#39;s loop to finish — its last move was writing <code>memory/_synthesis-m3.md</code> naming what changed. Memory is sharper than it was an hour ago.</p>
+<p>Now spawn three minds inside <em>this</em> session and synthesize their stances inline. <span class="rt-code">Claude Code calls them <strong>subagents</strong>.</span><span class="rt-cowork">Cowork calls them <strong>agents</strong>.</span> Each runs with its own context window, works in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.</p>
+<p>Three stances in parallel; the main session reads them, applies a framework, and writes the answer back into <code>./crux.md</code> as a third section. One prompt does the whole job.</p>
+<div class="rt-code">
+
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Spawn three subagents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.
+
+Subagent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What&#39;s the first move on Monday?
+
+Subagent 2: Assumption experimenter. Roger Martin&#39;s test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.
+
+Subagent 3: Counterintuitive reframer. What&#39;s the obvious answer here? Now, what&#39;s the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
+
+When the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.
+
+Then synthesize. Apply Rumelt&#39;s strategy kernel — diagnosis (what&#39;s really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append an `## Answer` section to ./crux.md with the three legs. Name where the three stances disagreed and which one you sided with and why; don&#39;t smooth the disagreement. Show me before saving.
+</code></pre>
+</div>
+<div class="rt-cowork">
+
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Spawn three agents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.
+
+Agent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What&#39;s the first move on Monday?
+
+Agent 2: Assumption experimenter. Roger Martin&#39;s test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.
+
+Agent 3: Counterintuitive reframer. What&#39;s the obvious answer here? Now, what&#39;s the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
+
+When the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.
+
+Then synthesize. Apply Rumelt&#39;s strategy kernel — diagnosis (what&#39;s really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append an `## Answer` section to ./crux.md with the three legs. Name where the three stances disagreed and which one you sided with and why; don&#39;t smooth the disagreement. Show me before saving.
+</code></pre>
+</div>
+
+
+<p>Heads-up: the answer often comes back with a longer issue list than feels comfortable — disagreements named, gaps flagged. That&#39;s the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to Claude.</p>
+<p>Optional: paste this back to focus the work.</p>
+<p><strong>Prompt</strong> <em>(Claude Code, optional)</em></p>
+<pre><code>You choose fixes. Aim for optimal function in the next session that runs on this.
+</code></pre>
+<p><strong>Close. Does this feel right?</strong></p>
+<p>Ask Claude to recap the three retrievals&#39; core claims next to your <code>## Answer</code>. Then ask yourself a question you won&#39;t be able to avoid asking anyway: <em>is this actually right?</em></p>
+<p>You can&#39;t tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you&#39;d stake your reputation on some of it and not all of it, and you can&#39;t yet say which is which. That feeling is correct.</p>
+<p>Hold the doubt. Name it to yourself. Don&#39;t fix it here.</p>
+<p><strong>Module 5 builds the tools to name what&#39;s off systematically.</strong> For now, let it stew.</p>
+</section>
+
+
+
+
+
 <section class="phase phase--lecture" id="lectures-when-to-split-an-agent">
 <div class="phase-kicker">Lecture</div>
 
 <h1>Lecture: When to split an agent (and how)</h1>
-<p>You just split an agent two ways. Three retrievers in separate windows. Three stances inside one session. Both worked; both felt different. The next question — the one your team will ask you the first Monday you try this on real work — is <em>when do I split, and how?</em></p>
-<p><strong>Start with don&#39;t.</strong></p>
-<p>Default: one agent with a good prompt is enough. Splitting adds coordination cost — handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.</p>
-<p>Anthropic&#39;s own guidance is blunt: multi-agent is worth it in only a few situations. The rest is ceremony.</p>
+<p>You just split an agent two ways. Three retrievers in separate windows. Three stances inside one session. Both worked; both felt different. The next question (the one your team will ask you the first Monday you try this on real work) is <em>when do I split, and how?</em></p>
+<p><strong>The unit is the recurring workflow.</strong></p>
+<p>Build one agent per recurring workflow — a single <code>.md</code> file, guardrailed for the job that workflow does. Don&#39;t try to make a mega-agent that does everything (<em>the company brain</em>); it ages badly, drifts in scope, nobody can tell what it&#39;s responsible for. Don&#39;t go the other way and proliferate a hundred tiny agents either; coordination cost eats the win. The right number is <em>one per piece of work that recurs in your week.</em></p>
+<p>That&#39;s the across-workflow answer. The question this lecture answers is the within-workflow one: when, inside a single workflow, does splitting into multiple agents pay?</p>
+<p><strong>Inside a workflow, start with don&#39;t.</strong></p>
+<p>Default to one agent with a good prompt. Splitting adds coordination cost: handoffs to manage, mis-framing to watch for, prompts to tune per agent, a synthesis step that lies if you let it. If a single well-shaped agent with a single well-shaped prompt can produce what you need, do that. Most of the time, it can.</p>
 <p><strong>When splitting earns its keep.</strong></p>
 <p>Three tests. If any hold, splitting pays. If none do, a single prompt probably beats you.</p>
 <ul>
 <li><strong>Different access.</strong> Each agent needs different data, different tools, different credentials. A Confluence retriever can&#39;t pretend to be a web search. A legal-policy agent shouldn&#39;t also have customer-data access. Access boundaries force separation.</li>
-<li><strong>Different dialect.</strong> The material in each source speaks a different language — internal jargon vs. public tone vs. email shorthand. One agent bending between them loses nuance. Three agents each native to their source keep the signal.</li>
+<li><strong>Different dialect.</strong> The material in each source speaks a different language: internal jargon vs. public tone vs. email shorthand. One agent bending between them loses nuance. Three agents each native to their source keep the signal.</li>
 <li><strong>Different stance.</strong> The agents should actively disagree with each other. A backward planner and a reframer thinking <em>in the same voice</em> is one agent pretending to be three. If your three are paraphrases, collapse them.</li>
 </ul>
 <p>Note what&#39;s not on the list: <em>&quot;because three is more thorough.&quot;</em> More agents is not more rigour. More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.</p>
 <p><strong>The test that catches the bluff.</strong></p>
 <p>Ask yourself: <em>can I write one prompt that produces the same quality of output?</em> If yes, you didn&#39;t need to split. Write the one prompt. Keep your life small.</p>
 <p>The test is unkind on purpose. Business people who have just seen multi-agent work want to split everything. Resist it. Single-agent is the plain default.</p>
-<p><strong>And once you&#39;ve decided to split — which shape?</strong></p>
+<p><strong>And once you&#39;ve decided to split: which shape?</strong></p>
 <p>Two shapes today, each with its own territory.</p>
 <p><strong>Separate sessions (the Phase 1 move).</strong> Pick this when each agent needs its own persistent context, its own tools, its own clock. The three retrievers had their own connectors, their own search history, their own conversation threads. Long-running, independent, visible. Separate windows let you <em>see</em> each one working; you can intervene in one without confusing the others. Good for retrieval across systems, parallel deep dives, anything where you want to watch each agent as it runs.</p>
 <p><strong>Subagents in one session (the Phase 2 move).</strong> Pick this when the orchestrator wants quick parallel thinking and a bounded return. The three stances had a single job each, a clean instruction, no long-lived state, and they reported back as files and disappeared. Good for parallel framing of the same material, multi-perspective analysis, bursts of bounded work. The main session stays in charge; the subagents are temps.</p>
 <p><strong>The shape test.</strong> Sessions when you want each agent to stay alive for a while. Subagents when you want them in and out. Sessions when you want concurrency visible; subagents when you want it invisible. Sessions when they have different tools; subagents when they share.</p>
 <p><strong>One warning before you leave the room.</strong></p>
-<p>You cannot hire three agents and expect the output to be three times as good. You hire three agents to get <em>three different views of the same thing,</em> and you pay for the privilege with coordination cost. If you don&#39;t need three different views — if one well-prompted agent can give you what you need — please, for the sake of your sanity, write the one prompt.</p>
+<p>You cannot hire three agents and expect the output to be three times as good. You hire three agents to get <em>three different views of the same thing,</em> and you pay for the privilege with coordination cost. If you don&#39;t need three different views (if one well-prompted agent can give you what you need), please, for the sake of your sanity, write the one prompt.</p>
 <p>A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don&#39;t.</p>
 <p><strong>Time:</strong> 8–10 minutes.</p>
 </section>
 
 
 
-
-
-<section class="phase phase--exercise" id="exercises-three-retrievers-three-minds">
-<div class="phase-kicker">Exercise</div>
-
-<h1>Exercise: Three retrievers, three <em>minds</em></h1>
-<p><strong>What you do:</strong></p>
-<p>One mind won&#39;t do. Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased practitioner articles by hand. Today you hire three agents to do the searching, and three more to do the deciding. The filesystem is the meeting room.</p>
-<p>Two phases. Phase 1 feels like multi-agent: three sessions churning on the same folder, files materialising side by side. Phase 2 <em>is</em> multi-agent the way Claude Code ships it natively: one session, three minds spawned inside it, working in parallel.</p>
-<p><strong>Phase 0. One question, written down.</strong></p>
-<p>Open your <code>./challenge.md</code> from yesterday. What&#39;s the sharpest decision hiding in there? One sentence. Not a topic, not a summary. A decision you&#39;d stay late to make. Something like <em>&quot;what&#39;s the right next move on the thing I wrote down yesterday, over the next 90 days?&quot;</em> is a decent default. <em>&quot;Should we kill option A?&quot;</em> is better if that&#39;s where you are. Save it to <code>module-3/question.md</code>.</p>
-<p><strong>Phase 1. Three retrievers, three sessions.</strong></p>
-<p><span class="rt-code">Open your training directory in four Claude Code sessions.</span><span class="rt-cowork">Open four Cowork sessions on this connected folder.</span> One per retriever, plus one main session where you&#39;ll work in Phase 2. Each session reads the same rules (your root <code>CLAUDE.md</code>) and writes into the same folder tree. They don&#39;t talk to each other. They work side by side.</p>
-<p><em>A note on your M2 memory:</em> the retrievers search <strong>live</strong>. They don&#39;t re-read your M2 <code>sources/</code> or <code>memory/</code>. That&#39;s deliberate. Your memory becomes the thing you can compare their fresh findings against, after. Today the point is watching three agents hit the world in parallel; curation comes back into play later.</p>
-<div class="rt-code">
-
-<p><em>Start four Claude Code sessions in the training directory. Desktop users: open four app sessions side by side. CLI users: four terminal sessions, each running <code>claude</code> from the training directory. Name them in your head: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). Self-study: Teacher Claude walks you through this if you get stuck; it&#39;s the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.</em></p>
-</div>
-<div class="rt-cowork">
-
-<p><em>Open four Cowork sessions on this connected folder. The path: in Claude Desktop, open the <em>Cowork</em> tab and start a new session pointed at your training directory. Repeat three more times; each new session connects to the same folder. You&#39;ll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. Name them in your head: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever), Session 4 (main, for Phase 2). They share the filesystem; they don&#39;t share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you get stuck; it&#39;s the highest-friction step in the module, so take the thirty seconds to get it right before you paste anything.</em></p>
-<p><em>If your Cowork build doesn&#39;t yet support four concurrent sessions on one connected folder, fall back to running the three retrievers as agents inside one main session: same shape as Phase 2&#39;s three-minds pattern below, just one phase earlier. You lose the visceral feel of three sessions writing files side by side, but you keep the parallel-retrieval mechanic intact. Ask Claude to dispatch three retriever agents in parallel, one per source zone, each writing to <code>module-3/retrievals/</code>. Read the rest of Phase 1, then if needed adapt the three retriever prompts below into agent dispatches inside Session 4.</em></p>
-</div>
-
-<p><strong>The rhythm:</strong> paste all three retriever prompts first, into Sessions 1, 2, and 3. Each retriever will come back with a short list of 6–8 proposed search terms (or 2–3 clues for the docs retriever, 4–6 authors for the internet one) and ask you to keep, swap, or sharpen them. A numbered list in the transcript. Confirm inline, quickly, don&#39;t polish. Then the three retrievers run in parallel. <em>Now</em> switch between sessions and watch files land in <code>module-3/retrievals/</code>. The paperwork step is yours; the search is theirs.</p>
-<p>In Session 1:</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to the strategic question in module-3/question.md. Read the question first.
-
-Then:
-1. Propose 6–8 search terms for my team&#39;s wiki — Confluence, Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it&#39;s ambiguous.
-2. Run the searches through the + button connector. Open the pages. Read them properly.
-3. Write your findings to module-3/retrievals/wiki.md — one paragraph per finding, naming the page/space and one line on why this matters for the question. Keep only what speaks to the question; don&#39;t summarise the wiki.
-4. End the file with a &quot;Conflicts and gaps&quot; section — where internal pages disagree, where the wiki is thin, what&#39;s conspicuously missing.
-
-Sources first. Every finding cites the specific page title and URL you actually opened. If you can&#39;t find a source for a claim, write &quot;[NOT FOUND]&quot; — do not fill from prior knowledge. If a search returns nothing, say so; don&#39;t invent page titles.
-</code></pre>
-<p>In Session 2:</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for the strategic question in module-3/question.md.
-
-Then:
-1. Ask me for three clues — names of documents I remember, people I&#39;ve been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.
-2. Pull the content through the + button — attach documents directly, or use whichever connector matches my doc store (OneDrive, SharePoint, Google Drive).
-3. Write your findings to module-3/retrievals/docs.md — what documents and threads show, who said what, what&#39;s recent, what&#39;s decided, what&#39;s still open. Name where sources disagree; don&#39;t smooth over contradictions.
-4. End the file with &quot;Conflicts and gaps&quot; — disagreements between sources, things that should exist but don&#39;t, names conspicuously missing.
-
-Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can&#39;t find a source for a claim, write &quot;[NOT FOUND]&quot; — do not fill from prior knowledge. If a connector returns empty, say so; don&#39;t invent document titles.
-</code></pre>
-<p>In Session 3:</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>You are the internet retriever for my challenge. Your job: find practitioner-grade external material on the strategic question in module-3/question.md. No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 12 months.
-
-Then:
-1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.
-2. Fetch them. Read them.
-3. Write your findings to module-3/retrievals/internet.md — what each practitioner says that&#39;s specific, with the URL, and one line on how their situation maps (or doesn&#39;t) to mine.
-4. End the file with &quot;Conflicts and gaps&quot; — where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can&#39;t tell me.
-
-Sources first. Every finding cites the URL you actually fetched and the author. If a fetch fails or returns nothing useful, write &quot;[NOT FOUND]&quot; — do not fabricate article titles, quotes, or author positions from prior knowledge.
-</code></pre>
-<p>Answer each retriever&#39;s questions as they come in. Let them run. Switch between sessions if you want. Three agents are now working for you at once. Watch the files appear in <code>module-3/retrievals/</code>. Something you do at work alone is being done in parallel in front of you. <strong>The feeling is the lesson.</strong></p>
-<p><strong>Phase 2. Three minds, one session.</strong></p>
-<p>Switch to your main session. The three retrievals are on disk. Now you&#39;ll spawn three minds inside <em>this</em> session. <span class="rt-code">Claude Code calls them <strong>subagents</strong>.</span><span class="rt-cowork">Cowork calls them <strong>agents</strong>.</span> Claude decides to spawn one out when the work splits cleanly. Fresh context, no memory of your main conversation, runs like a black box in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files. You prompt once; Claude dispatches three; they each return.</p>
-<div class="rt-code">
-
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read the three files in module-3/retrievals/. You&#39;ll answer the question in module-3/question.md, but not by summarising. You&#39;ll spawn three subagents in parallel, each with a different stance. Each reads all three retrieval files and writes a short note (under 200 words) to module-3/stances/ with its take.
-
-Subagent 1 — Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What&#39;s the first move on Monday?
-
-Subagent 2 — Assumption experimentator. Roger Martin&#39;s test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.
-
-Subagent 3 — Counterintuitive reframer. What&#39;s the obvious answer here? Now: what&#39;s the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
-
-Return the three stances to me first, unsummarised, so I read them side by side.
-
-Then, using Rumelt&#39;s strategy kernel as the spine — diagnosis (what&#39;s really going on), guiding policy (one coherent approach), coherent actions (what we do Monday) — combine the three stances into a single answer to the question. Name where the three stances disagreed and which one you sided with and why.
-
-Before you answer: tell me where the retrievals had conflicts or gaps that weakened any stance.
-</code></pre>
-</div>
-<div class="rt-cowork">
-
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read the three files in module-3/retrievals/. You&#39;ll answer the question in module-3/question.md, but not by summarising. You&#39;ll spawn three agents in parallel, each with a different stance. Each reads all three retrieval files and writes a short note (under 200 words) to module-3/stances/ with its take.
-
-Agent 1 — Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What&#39;s the first move on Monday?
-
-Agent 2 — Assumption experimentator. Roger Martin&#39;s test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.
-
-Agent 3 — Counterintuitive reframer. What&#39;s the obvious answer here? Now: what&#39;s the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
-
-Return the three stances to me first, unsummarised, so I read them side by side.
-
-Then, using Rumelt&#39;s strategy kernel as the spine — diagnosis (what&#39;s really going on), guiding policy (one coherent approach), coherent actions (what we do Monday) — combine the three stances into a single answer to the question. Name where the three stances disagreed and which one you sided with and why.
-
-Before you answer: tell me where the retrievals had conflicts or gaps that weakened any stance.
-</code></pre>
-</div>
-
-
-<p>Read the three stances side by side before Claude combines them. That&#39;s where the thinking actually is. The combined answer is the artifact; the three stances are the reasoning.</p>
-<p><strong>Close. Does this feel right?</strong></p>
-<p>Ask Claude to recap the three retrievals&#39; core claims next to its synthesized answer. Then ask yourself a question you won&#39;t be able to avoid asking anyway: <em>is this actually right?</em></p>
-<p>You can&#39;t tell yet. Three retrievers read plainly, three stances pushed sharply, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you&#39;d stake your reputation on some of it and not all of it, and you can&#39;t yet say which is which. That feeling is correct. Anyone who ships agent output to a real stakeholder meets it. Pretending you don&#39;t is the real failure.</p>
-<p>For once, you edit the <code>.md</code> file by hand. The line you write here is what M5 picks up. The doubt has to be in your voice, not Claude&#39;s.</p>
-<p>Don&#39;t fix it here. Write one line to <code>module-3/wonder.md</code>: the single thing about this answer you&#39;re not sure about. Loose, not tidy. You&#39;re noting, not resolving.</p>
-<p><strong>Module 5 comes back for this.</strong> That&#39;s where we build the tools to name what&#39;s off and decide what to do. For now, let it stew.</p>
-<p><strong>What happens:</strong></p>
-<p>Three sessions run searches in parallel on your challenge, and you <em>see</em> the work being done in the shared folder. One session runs three stances on the retrievals and combines them against Rumelt&#39;s kernel. You get a strategic answer to your real question, and you catch where it glossed. Module 5 comes back for the gloss.</p>
-<p><strong>The point:</strong></p>
-<p>Multi-agent has two shapes in Claude Code. Parallel sessions on shared files: the visceral one. <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> in one session: the native one. The filesystem is the meeting room in both. The seams are where the work fails, not where the work lands.</p>
-<p><strong>Time:</strong> 50 minutes.</p>
-</section>
-
-
-
 <h2>Key Concepts</h2>
 <ul>
-<li><strong>Two multi-agent shapes in Claude Code.</strong> Separate sessions on shared files (what you feel in Phase 1: three sessions churning, artifacts landing in shared folders). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (what you build in Phase 2, the native Claude Code primitive). Same idea, different surfaces. The filesystem is the meeting room in both.</li>
+<li><strong>Two multi-agent shapes in Claude Code.</strong> Separate sessions on shared files (Phase 1: long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (Phase 2: quick parallel thinking, bounded return). Different shapes, different territories — the lecture draws the line.</li>
 <li><strong>Splitting earns its keep when the agents genuinely can&#39;t be one.</strong> Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn&#39;t need to split.</li>
 <li><strong>Seams are where it fails.</strong> Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is where the lesson lives.</li>
-<li><strong>Three stances beat one summarizer.</strong> The synthesizer&#39;s three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a <em>what-would-have-to-be-true</em> experimentator, and a counterintuitive reframer (the Rory seat) each interrogate the retrieved material from a stance one agent won&#39;t hold at once. The main session makes the call.</li>
-<li><strong>Frameworks are the synthesizer&#39;s spine.</strong> Without one it summarises. With a framework (a strategy kernel by default), it decides.</li>
+<li><strong>Three stances beat one summarizer.</strong> Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a <em>what-would-have-to-be-true</em> experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle — harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.</li>
+<li><strong>Frameworks are the synthesizer&#39;s spine.</strong> Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.</li>
 </ul>
 <h2>Debrief</h2>
 <p>Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is what you just produced: the four agent prompts, the retrieval files, the synthesizer&#39;s briefing, the conversation. Claude reviews, rewrites the training-dir root rules file (<code>./CLAUDE.md</code>) in place, reports what changed. You push back on anything that&#39;s off.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Review this session and update the rules. Read CLAUDE.md at the root, then scan agents/ (every file), module-3/retrievals/ (every file), and the synthesized briefing. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever&#39;s dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
+<pre><code>Review this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever&#39;s dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
 
-Then rewrite CLAUDE.md. Integrate, don&#39;t append. Sharpen the rules that govern division of work and handoff shape — what each agent is for, what it writes to, what it does NOT do. Add what&#39;s missing, remove what turned out wrong. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version.
+Then rewrite CLAUDE.md. Integrate, don&#39;t append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what&#39;s missing, remove what turned out wrong. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version.
 
-When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why — grounded in specific moments from the session. Name at least one handoff seam where the rules wobbled.
+When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific moments from the session. Name at least one handoff seam where the rules wobbled.
 </code></pre>
-<p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;No, the planner and the reframer really did need to be separate.&quot;</em> <em>&quot;You missed where the Confluence retriever kept normalising before writing.&quot;</em> The unease you feel about the synthesized briefing is not something to close today. It stays. The artifact lands at <code>module-3/wonder.md</code>: one line naming what feels off. Not a fix. A held question. Module 5 picks it up.</p>
+<p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;No, the planner and the reframer really did need to be separate.&quot;</em> <em>&quot;You missed where the Confluence retriever kept normalising before writing.&quot;</em> The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.</p>
 <h2>Next</h2>
 <p>You just built something that works across three systems. Which means it just gained access to three systems. What&#39;s the worst thing it could do with that?</p>
-<h2>Homework after Module 3 — between-module reading</h2>
-<p>Selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> (multi-agent coordination).</p>
+<p>Between now and Module 4, keep working on your real problem. You&#39;re close to an agent system that can actually crack your crux. Add an agent to solve a crucial dependency? Add a visualisation of the plan? Prompt for what you need. Build.</p>
+<h2>Homework after Module 3</h2>
+<p><strong>Reading.</strong> Selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> (multi-agent coordination).</p>
+<p><strong>Optional move: pressure-test the memory.</strong> If you&#39;ve added much to <code>sources/</code> this module, run this between modules to let the new evidence pressure-test the memory&#39;s shape. Skip if memory&#39;s still serving you.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Look at memory/ and sources/ against this module&#39;s fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Restructure if deemed needed (rename, merge, split, drop). Show me what you&#39;d do before changing files.
+</code></pre>
+<p>Memory is a working artefact, sharpened by what it bumps into.</p>
 
 </section>
 
@@ -2431,15 +2515,16 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <h2>Big Idea</h2>
 <p>You can&#39;t tell if your agent is safe by looking at its output. You need a way to check. The discipline is running the check, not waiting for certainty.</p>
 <h2>Prework</h2>
-<p><a href="#exercises-module-4-prework">Before Module 4</a>. Two reads: (1) plugins as the package format that carries an expertise into your agent, (2) agent security layered on top of classical software security (the threat model adds non-deterministic instruction-set surfaces; classical perimeter, IAM, and audit remain the floor).</p>
+<p><a href="#lectures-module-4-prework">Before Module 4</a>. Two reads: (1) skills and plugins as the package formats that carry expertise into your agent, (2) agent risk layered on top of normal security work (company controls stay in place; agents add new ways for access, context, and instructions to go wrong).</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
-<li><strong>Author</strong> a small security plugin with two lenses (a policy lens drawn from your company&#39;s rules, and an agent-security lens covering named attack classes) and install it in your runtime</li>
-<li><strong>Apply</strong> named agent attack classes (prompt injection direct and indirect, secrets-in-context, tool-confusion, plugin supply-chain) to a working agent system, alongside classical access-control analysis</li>
+<li><strong>Run</strong> distilled policy files directly, then package the useful check as reusable expertise in your runtime</li>
+<li><strong>Author</strong> a small security check with two lenses (a policy lens drawn from your company&#39;s rules, and an agent-risk lens covering named risk patterns), then load it in your runtime</li>
+<li><strong>Apply</strong> named agent risk patterns (prompt injection direct and indirect, secrets-in-context, tool-confusion, plugin supply-chain) to a working agent system, alongside a plain access review</li>
 <li><strong>Distinguish</strong> compliant / violating / &quot;I can&#39;t tell&quot; for each rule (and recognise that &quot;I can&#39;t tell&quot; is a real answer, not a failure)</li>
-<li><strong>Apply</strong> an agentic mitigation (scope, split, filter, gate, review) layered on top of classical controls, and observe the residual risk shift</li>
-<li><strong>Evaluate</strong> residual risk plainly. What&#39;s left after mitigation, and whether the best move is to not open the door in the first place</li>
+<li><strong>Apply</strong> an agent mitigation (scope, split, filter, gate, review) layered on top of normal company controls, and observe the residual risk shift</li>
+<li><strong>Evaluate</strong> residual risk plainly. What&#39;s left after mitigation, and whether the best move is to keep a boundary closed in the first place</li>
 </ul>
 <h2>Start here</h2>
 <p>You&#39;ve had three agents search your company and three more decide. What doesn&#39;t sit right about that, from a risk angle? Name the thing you&#39;d want to check before letting this near a real stakeholder.</p>
@@ -2458,19 +2543,19 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <p>Put the three together. You don&#39;t get <em>secure / not secure.</em> You get <em>safe enough, under these conditions, within these limits, for now.</em> If that sounds less like engineering and more like medicine, it is.</p>
 <p><strong>The work is the loop.</strong></p>
 <p>You don&#39;t get certainty. You get a loop. Four steps, plain, repeatable.</p>
-<p><strong>Assess.</strong> Point a lens at the system and see what it reveals. Today you&#39;ll use two. The <code>company-ai-policy</code> skill runs your company&#39;s actual rules against your actual agent. The <code>agent-security</code> skill runs access-control analysis and an agent-shaped version of STRIDE. Neither skill makes you an expert. Each skill IS the expert. The job is reading the reports with judgment.</p>
-<p><strong>Mitigate.</strong> Pick one risk. Apply the smallest change that reduces it. Agentic mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first&#39;s output). None of these are perimeter. All of them are loop design.</p>
+<p><strong>Assess.</strong> Point a lens at the system and see what it reveals. Today starts with your company&#39;s actual rules, raw, against your actual agent. Then you package that policy check so it can run again. The agent-risk lens asks what the agent can reach, what it might leak, and how ordinary text could mislead it. Neither lens makes you an expert. The reusable check is the expert. The job is reading the reports with judgment.</p>
+<p><strong>Mitigate.</strong> Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first&#39;s output). None of these are perimeter. All of them are loop design.</p>
 <p><strong>Reassess residual.</strong> After the mitigation, the risk isn&#39;t gone. Something remains. Name it. Write it down. <em>The residual risk here is X. If Y happens, we haven&#39;t prevented it, we&#39;ve made it less likely.</em> Residual risk as an artifact, not a shame.</p>
 <p><strong>Decide.</strong> Accept the residual on record, or close the door. Those are the two options. <em>&quot;Hope it doesn&#39;t happen&quot;</em> is not one.</p>
 <p>Run the loop. You never finish. You iterate. The discipline isn&#39;t arriving at certainty. It&#39;s running the loop again.</p>
 <p><strong>The best mitigation is the one you don&#39;t need.</strong></p>
 <p>Here&#39;s the move nobody puts in a security training, because it sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.</p>
 <p>Should the agent have write access to that system? If not, scope down before you scope up. Should the agent read from that mailbox? If not, don&#39;t connect it. Should the agent be the one that drafts customer-facing language? If that&#39;s where the biggest risk lives, maybe a human drafts and the agent reviews, not the other way around.</p>
-<p>The <code>company-ai-policy</code> skill exists partly to tell you which doors not to open. Your company has already decided. The job is to notice.</p>
+<p>The policy lens exists partly to tell you which doors not to open. Your company has already decided. The job is to notice.</p>
 <p>Avoidance beats reduction. Scope beats patch. Don&#39;t-open beats mitigate. This isn&#39;t timid design. It&#39;s plain design. Every door you don&#39;t open is a residual risk you don&#39;t have to name, mitigate, monitor, re-test, or apologise for.</p>
 <p><strong>The uncomfortable part, said plainly.</strong></p>
 <p>Some of your agents are going to be wrong, in ways you won&#39;t catch, and ship output you won&#39;t love. That&#39;s true for every agent in production anywhere in the world right now. The organisations that handle this well aren&#39;t the ones with the best technology. They&#39;re the ones that run the loop openly, name residual risks plainly, and close doors they don&#39;t need to open.</p>
-<p>You can&#39;t buy certainty. You can run a loop. Today the loop runs once, on your own system, with two skills doing the expert work. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.</p>
+<p>You can&#39;t buy certainty. You can run a loop. Today the loop runs once, on your own system, first with the policy files raw and then with two reusable lenses doing the expert work. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.</p>
 <p>Read the reports. Pick a risk. Apply a mitigation. Name what&#39;s left. Decide.</p>
 <p>That&#39;s the work.</p>
 </section>
@@ -2482,93 +2567,67 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <section class="phase phase--exercise" id="exercises-author-security-plugin">
 <div class="phase-kicker">Exercise</div>
 
-<h1>Exercise: <em>Author</em> a security plugin</h1>
+<h1>Exercise: <em>Run and package</em> a security check</h1>
 <p><strong>What you do:</strong></p>
-<p>Author one security plugin with two lenses. Install it. Invoke it once on a small target to confirm it loads. The artifact is yours; you carry it to every agent you build from here. Module 4&#39;s audit exercise picks the plugin up and runs it against the system you built in modules 2–3.</p>
-<p>Three phases. Twenty-five minutes. The plugin is the artifact; the audit comes next.</p>
-<p>A <strong>plugin</strong> packages an expertise (rules, checklists, the moves an agent runs) into something the agent can plug in and use. Until now you have shaped agents with prompts, files, and rules. The plugin is the next layer up: a small bundle the agent loads when the work matches. M4 is the canonical place plugin-authoring lands. Taught once, here.</p>
-<p><strong>Phase 1. Dictate what matters (5 min).</strong></p>
-<p>Reference material lives in <code>module-4/policies/</code> (your company&#39;s distilled policies, or the Nordic-baseline reference for self-study). You will not pre-read it. The plugin is supposed to carry your judgment, not generic GDPR. The way to make that true is to lead with what is in your head, then let Claude read the files.</p>
+<p>Run the policy files raw against the system you built in modules 2-3. Then package the useful move into reusable expertise. In Cowork and Desktop, that expertise is a plugin with two lenses. In CLI, it is two standalone skills. Stop when the package exists.</p>
+<p>Three phases. Thirty-five minutes. The raw run proves the policy files are runnable. The package makes the check reusable. The loading and audit come next.</p>
+<p>A <strong>skill</strong> packages an expertise (rules, checklists, the moves an agent runs) into something the agent can load and use. A <strong>plugin</strong> ships one or more skills together. Until now you have shaped agents with prompts, files, and rules. This is the next layer up: a small reusable bundle the agent loads when the work matches. Module 4 is the canonical place this authoring lands. Taught once, here.</p>
+<p><strong>Phase 1. Run the policies raw (10 min).</strong></p>
+<p>Reference material lives in <code>module-4/policies/</code> (your company&#39;s distilled policies, or the Nordic-baseline reference for self-study). Start by proving those files are runnable. No plugin yet. No skill yet. Just the policy files, pointed at the system.</p>
 <p>Open a fresh session in your training directory.</p>
-<p>Tell Claude what matters about your company&#39;s policies and the agent system you built in modules 2–3. Three to five lines, your own voice.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>I am about to author a security plugin for the agent system I built in modules 2-3. Before you read anything, I will tell you what matters from my own head. Then you read the four reference files in module-4/policies/. Then you propose the plugin and I steer.
+<pre><code>Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 
-Here is what matters about my company and my system, in my own words:
+For each rule you can derive from the policy files, produce one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), and one line of evidence from my actual files for that verdict. If you can&#39;t tell, say what evidence you&#39;d need to decide.
 
-(I will type 3-5 lines now.)
+Write the raw report to outputs/policy-report-raw.md. Be specific. Be plain. An &quot;I can&#39;t tell&quot; is a better answer than a confident guess.
 
-Wait for my lines before you read the policy files.
+Do not create a plugin or skill yet. This is the raw run.
 </code></pre>
-<p>Type three to five lines. Specific. The kind of data your agent touches that would be a problem if it leaked. The rule your legal team cares about most. The customer your CEO would not want named in a transcript. The class of input you would not paste into a public model. Plain language; nothing rehearsed.</p>
-<p>When you have typed your lines, Claude reads <code>module-4/policies/</code> and proposes the plugin shape. You read the proposal and push back on anything that sounds like a generic GDPR brochure rather than the agent system you actually built.</p>
-<p><strong>Phase 2. Author both lenses (12 min).</strong></p>
-<p>The plugin carries two lenses. One does policy. One does agent security. Each lens is a <code>SKILL.md</code> plus any reference files it needs; the manifest names them both.</p>
-<p>Ask Claude to author the plugin with both lenses, and to enumerate the named attack classes the agent-security lens covers.</p>
+<p>Read the first few rows. The raw run shows which rules can be checked from files and which ones need judgment, context, or a standing evidence check. That is what you package next: not the policy files themselves, but the repeatable way of applying them to this agent system.</p>
+<p><strong>Phase 2. Dictate what matters (8 min).</strong></p>
+<p>Now add judgment. Do not go study the policy files before this step. The reusable check is supposed to carry what matters in your system, not generic GDPR. The way to make that true is to lead with what is in your head, then let Claude read the files and the raw report.</p>
+<p>Tell Claude what matters about your company&#39;s policies and the agent system you built in modules 2-3. Three to five lines, your own voice.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Author the plugin now. Two lenses, one plugin.
+<pre><code>I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 
-Lens 1 - POLICY. Rules drawn from the four files in module-4/policies/ plus the lines I just typed. For each rule, the lens produces one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), one line of evidence from the target system. The verdict column stays plain - &quot;I can&#39;t tell&quot; is a real answer.
+Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
 
-Lens 2 - AGENT-SECURITY. Access-control analysis plus a threat-modelling pass. The lens MUST cover these named attack classes by name, not as generic STRIDE categories:
+After I answer, read outputs/policy-report-raw.md and everything in module-4/policies/. Then propose the reusable package shape for my runtime and wait for me to steer.
+</code></pre>
+<p>Claude asks. Type three to five lines. Specific. The kind of data your agent touches that would be a problem if it leaked. The rule your legal team cares about most. The customer your CEO would not want named in a transcript. The class of input you would not paste into a public model. Plain language; nothing rehearsed.</p>
+<p>When you have typed your lines, Claude reads the raw report and <code>module-4/policies/</code>, then proposes the package shape. Read the proposal and push back on anything that sounds like a generic GDPR brochure rather than the agent system you actually built.</p>
+<p><strong>Phase 3. Author both lenses (17 min).</strong></p>
+<p>The reusable check carries two lenses. One checks company policy. One checks agent risk: what the agent can reach, what it might leak, what it might do because a prompt or source misled it. Each lens is a <code>SKILL.md</code> plus any reference files it needs. Cowork and Desktop carry both inside one plugin manifest. CLI carries them as two standalone skills.</p>
+<p>Ask Claude to author both lenses, and to name the risk patterns the agent-security lens covers.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Author the reusable security check now. Two lenses.
+
+For Cowork and Desktop, build one plugin under module-4/plugins/security-audit/ with a manifest at the folder root, one SKILL.md per lens at skills/policy/SKILL.md and skills/agent-security/SKILL.md, and supporting reference files where useful.
+
+For CLI, also make the standalone-skill install shape clear: the policy lens becomes ~/.claude/skills/security-audit-policy/SKILL.md and the agent-security lens becomes ~/.claude/skills/security-audit-agent-security/SKILL.md during install. Do not write into ~/.claude yet; keep the authored source under module-4/plugins/security-audit/ for now.
+
+Lens 1 - POLICY. Rules drawn from everything in module-4/policies/ plus the lines I just typed. For each rule, the lens produces one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), one line of evidence from the target system. The verdict column stays plain - &quot;I can&#39;t tell&quot; is a real answer.
+
+Lens 2 - AGENT-SECURITY. Check what the agent can reach, what sensitive material might stay in its context, and what could go wrong because ordinary text can act like an instruction. The lens MUST cover these named risk patterns by name:
 
 - prompt injection (direct - hostile input in a user prompt; indirect - hostile content in a retrieved source the agent reads)
 - secrets in context and scrollback (API keys, customer data, partner-NDA material persisting in the transcript or the agent&#39;s working memory)
-- tool confusion (agent invokes the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes what to do — for example, the production-database connector firing when test would do, or the email-send tool dispatching when the user only asked for a draft)
+- tool confusion (agent invokes the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes what to do: for example, the production-database connector firing when test would do, or the email-send tool dispatching when the user only asked for a draft)
 - plugin supply-chain (the plugin itself, or any plugin the agent loads, came from somewhere - who authored it, who reviewed it, what it can do)
 
-For each class, the lens produces one or two specific risks in the target system, ranked, with one suggested agentic mitigation per risk - scope, split, filter, gate, or review. Layered on top of classical controls (network, IAM, mTLS, perimeter), not replacing them. Name that explicitly in the lens&#39;s preamble.
+For each pattern, the lens produces one or two specific risks in the target system, ranked, with one suggested agent mitigation per risk - scope, split, filter, gate, or review. These sit on top of normal company controls (network controls, identity and access management, logging, vendor/security review), not in place of them. Name that explicitly in the lens&#39;s preamble.
 
-Build the plugin: a manifest, one SKILL.md per lens, supporting reference files where useful. Keep each SKILL.md tight - invocation criteria, the rules or attack classes it applies, the report shape it produces. Show me the files before saving so I can push back on rule wording, missing attack classes, or report shape.
+Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run. Cover both lenses, especially the policy lens, where there is no named-class rail to fall back on. Don&#39;t stop at one question. I&#39;ll tell you when enough is enough.
+
+After I answer, save the files. Keep each SKILL.md tight: when to use it, the rules or risk patterns it applies, the report shape it produces. Show me what you saved.
 </code></pre>
-<p>Read what Claude proposes. Push back where it is off. The four named attack classes are the forcing function. If any one is missing, ask for it. Sharpen the rule wording so it sounds like your company&#39;s policy, not a generic GDPR template. Tell Claude to make the report shape narrow enough that you will actually read it on Monday.</p>
-<p><strong>Phase 3. Install and verify (8 min).</strong></p>
-<p>The plugin is authored. Now install it in your runtime and confirm it loads. Plugins load at session start, not into the current session, so the verify step is a fresh session.</p>
-<p>Cowork users follow the chat-button install. Desktop users follow the plugin loader. CLI users take a small extraction step. Same plugin, different install surface. Everyone syncs at the verify prompt below.</p>
-<div class="rt-cli">
-
-<p>The CLI does not auto-load plugin envelopes from <code>~/.claude/plugins/&lt;plugin-name&gt;/</code>. That directory is registry-managed by Claude Code itself. Standalone skills under <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> auto-load with zero install plumbing. So the CLI install is a one-step extraction: lift each lens&#39;s SKILL.md (and any reference files) out of the plugin&#39;s <code>skills/&lt;lens&gt;/</code> folder and copy them to <code>~/.claude/skills/</code>. The plugin manifest you authored is harmless leftover; you keep the plugin folder around as the canonical source of truth.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>The plugin you just authored lives at the path you wrote. The CLI does not auto-load plugin envelopes, so install the two lenses as standalone CLI skills by copying:
-
-- skills/policy/SKILL.md (and any reference files)  -&gt;  ~/.claude/skills/security-audit-policy/SKILL.md
-- skills/agent-security/SKILL.md (and any reference files)  -&gt;  ~/.claude/skills/security-audit-agent-security/SKILL.md
-
-The plugin folder stays where it is as the source of truth for the next time we revise the lenses. Confirm both skill paths back so I can verify with ls.
-</code></pre>
-<p>Run <code>ls ~/.claude/skills/security-audit-*/</code> to confirm both skills landed. Open a new session in your training directory. Skills load at session start.</p>
-</div>
-
-<div class="rt-desktop">
-
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Write the plugin files into a folder I can hand to the Claude Code Desktop plugin loader. Put the manifest at the folder root and the SKILL.md files under skills/&lt;lens-name&gt;/SKILL.md. Tell me the folder path when done.
-</code></pre>
-<p>Open the Claude Code Desktop plugin loader and point it at the folder Claude wrote. The loader picks the plugin up. Open a new session in the same training directory.</p>
-</div>
-
-<div class="rt-cowork">
-
-<p>The Cowork install is the smoothest path. A <em>Save plugin</em> button appears in the chat after the plugin files render. Cowork users picked Cowork because terminal plumbing is friction; the install affordance is built into the chat surface.</p>
-<p>After Phase 2&#39;s authoring prompt, Claude renders the plugin files in the chat. Look for the <em>Save plugin</em> button below the rendered files. It appears once Claude has finished writing all the files in one block. Click it. Cowork registers the plugin in your library.</p>
-<p>If the <em>Save plugin</em> button does not appear, scroll up to confirm Claude finished writing all the files (manifest plus both SKILL.md files plus any reference files). If a file is missing, ask Claude to write it; the button shows up after the full bundle is on screen.</p>
-<p>Once saved, open a new Cowork session connected to the same folder. The plugin is stored locally on your machine and tied to your Claude Desktop install. It loads automatically in any new Cowork session on the same laptop, no per-session import. Plugins load at session start, not into the current one.</p>
-</div>
-
-<p>In the new session, type <code>/</code> in the prompt and look for the two lenses in the autocomplete list. Cowork and Desktop show them namespaced under the plugin (<code>/security-audit:policy</code>, <code>/security-audit:agent-security</code>); CLI shows them flat because the install extracted the skills out of the envelope (<code>/security-audit-policy</code>, <code>/security-audit-agent-security</code>). Either form means the lenses loaded. Then run a single quick invocation on a known-trivial scope: one file, not the whole module-3 system. The point is to see one rule fire, not to do the audit.</p>
-<p><strong>Prompt</strong> <em>(Claude Code, fresh session)</em></p>
-<pre><code>Apply the policy lens of the security plugin I authored to one file: ./challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
-</code></pre>
-<p>Read the two or three rows. The rule wording should sound like the lens you authored, not a generic check.</p>
-<p><strong>The explicit slash-command form (also worth knowing).</strong> Plain-language usually dispatches the right lens, but the slash command is the only invocation guaranteed to fire the exact one you mean:</p>
-<pre><code>/security-audit:policy run two or three rules on ./challenge.md and stop.
-</code></pre>
-<p>CLI users drop the colon (<code>/security-audit-policy ...</code>) because the extracted skills do not carry the plugin namespace.</p>
+<p>Claude grills you first. Answer until Claude has what it needs, or tell it you&#39;ve covered enough. Then it saves the files. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company&#39;s policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.</p>
 <p><strong>What happens:</strong></p>
-<p>You authored a plugin with two lenses, named four attack classes the agent-security lens covers, installed it in your runtime, and watched it fire on one file. The plugin lives on disk now. Module 4&#39;s audit exercise picks it up and runs it against your full module-3 system.</p>
+<p>The reusable check exists now, with two lenses and four named risk patterns covered. It is authored on disk, not loaded yet. Module 4&#39;s audit exercise loads it and runs it against the same system.</p>
 <p><strong>The point:</strong></p>
-<p>The expert is not you reading every file by hand. The expert is the plugin, and you authored it. You fed it your judgment about what matters. You named the attack classes that an agent threat model in 2026 has to name. You layered agent mitigations on top of classical controls, not as a replacement for them. The plugin will travel.</p>
-<p><strong>Time:</strong> 25 minutes. Phase 1 ~5, Phase 2 ~12, Phase 3 ~8.</p>
+<p>The policy files are source material. The reusable check is the expert in the room. Eyeballing every file by hand is not. The check carries judgment about what matters in this system, with the four named risk patterns as the forcing function. Agent mitigations sit on top of normal company controls, not in place of them. The package is ready; the first loaded use should be the real audit.</p>
+<p><strong>Time:</strong> 35 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~17.</p>
 </section>
 
 
@@ -2580,99 +2639,127 @@ The plugin folder stays where it is as the source of truth for the next time we 
 
 <h1>Exercise: <em>Audit</em> your agent</h1>
 <p><strong>What you do:</strong></p>
-<p>Run the security plugin you authored in the previous exercise against the system you built in modules 2–3. Two reports. One mitigation. One named door. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.</p>
-<p>Three phases plus a close. Forty-five minutes. Bring the plugin you just authored; that is the expert. Bring your Module 3 system; that is the target.</p>
-<p><strong>Phase 1. Policy audit.</strong></p>
-<p>Start a new session in your training directory. The plugin loads at session start.</p>
-<p>Ask Claude to apply the policy lens to your full module-3 system and produce one report.</p>
+<p>Load the reusable security check you authored in the previous exercise, then run it against the system you built in modules 2-3. Two packaged-lens reports. One mitigation. One residual decision added to the report. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.</p>
+<p>Four phases plus a close. Forty-five minutes. Bring the policy raw report from the previous exercise; that is the baseline. Bring the reusable check you just authored; that is the expert. Bring your Module 3 system; that is the target.</p>
+<p><strong>Phase 1. Load the reusable check.</strong></p>
+<p>The reusable check is authored, but it is not useful until your runtime loads it. Skills and plugins load at session start, not into the current session.</p>
+<p>Cowork users follow the chat-button install. Desktop users follow the plugin loader. CLI users take a small extraction step. Same lens content, different install surface. Everyone syncs at a fresh session in the same training directory.</p>
+<div class="rt-cli">
+
+<p>The CLI does not auto-load plugin envelopes from <code>~/.claude/plugins/&lt;plugin-name&gt;/</code>. That directory is registry-managed by Claude Code itself. Standalone skills under <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> auto-load with zero install plumbing. So the CLI install is a one-step extraction: lift each lens&#39;s SKILL.md (and any reference files) out of the plugin&#39;s <code>skills/&lt;lens&gt;/</code> folder and copy them to <code>~/.claude/skills/</code>. The plugin folder stays in <code>module-4/plugins/security-audit/</code> as the canonical source of truth.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Apply the policy lens of the security plugin I authored to the agent system I built in module-2 and module-3. The system is: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/retrievals/ and module-3/stances/.
+<pre><code>The reusable security check I authored lives at module-4/plugins/security-audit/. The CLI does not auto-load plugin envelopes, so install the two lenses as standalone CLI skills by copying:
 
-For each rule the plugin carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), and one line of evidence from my actual files for that verdict. If you can&#39;t tell, say what evidence you&#39;d need to decide.
+- skills/policy/SKILL.md (and any reference files)  -&gt;  ~/.claude/skills/security-audit-policy/SKILL.md
+- skills/agent-security/SKILL.md (and any reference files)  -&gt;  ~/.claude/skills/security-audit-agent-security/SKILL.md
 
-Write the report to module-4/policy-report.md. Be specific. Be plain. An &quot;I can&#39;t tell&quot; is a better answer than a confident guess.
+The plugin folder stays where it is as the source of truth for the next time we revise the lenses. Confirm both skill paths back so I can verify with ls.
+</code></pre>
+<p>Run <code>ls ~/.claude/skills/security-audit-*/</code> to confirm both skills landed. Open a new session in your training directory.</p>
+</div>
+
+<div class="rt-desktop">
+
+<p>Open the Claude Code Desktop plugin loader and point it at <code>module-4/plugins/security-audit/</code>. The loader picks up the manifest at the folder root and the two lens skills under <code>skills/&lt;lens-name&gt;/SKILL.md</code>. Open a new session in the same training directory.</p>
+</div>
+
+<div class="rt-cowork">
+
+<p>After the previous exercise&#39;s authoring prompt, Claude rendered the plugin files in the chat. Look for the <em>Save plugin</em> button below the rendered files. It appears once Claude has finished writing all the files in one block. Click it. Cowork registers the plugin in your library.</p>
+<p>If the <em>Save plugin</em> button does not appear, scroll up to confirm Claude finished writing all the files: manifest plus both SKILL.md files plus any reference files. If a file is missing, ask Claude to write it; the button shows up after the full bundle is on screen.</p>
+<p>Once saved, open a new Cowork session connected to the same folder. The plugin is stored locally on your machine and tied to your Claude Desktop install. It loads automatically in any new Cowork session on the same laptop.</p>
+</div>
+
+<p>In the new session, type <code>/</code> in the prompt and look for the two lenses in the autocomplete list. Cowork and Desktop show them namespaced under the plugin (<code>/security-audit:policy</code>, <code>/security-audit:agent-security</code>); CLI shows them flat because the install extracted the skills out of the envelope (<code>/security-audit-policy</code>, <code>/security-audit-agent-security</code>). Either form means the lenses loaded.</p>
+<p>Do not run a toy verification on one file. The first loaded use is the real audit.</p>
+<p><strong>Phase 2. Policy audit.</strong></p>
+<p>Ask Claude to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from <code>module-4/policies/</code>; this report comes through the reusable lens you shaped.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Apply the policy lens of the reusable security check I authored to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
+
+For each rule the reusable check carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), and one line of evidence from my actual files for that verdict. If you can&#39;t tell, say what evidence you&#39;d need to decide.
+
+Write the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. Be specific. Be plain. An &quot;I can&#39;t tell&quot; is a better answer than a confident guess.
 
 Read the memory and agent files properly - don&#39;t skim. Quote the specific lines or files that support each verdict.
-</code></pre>
-<p>While the report runs, stay with it. The report is more useful when you read it cold. Expect the plugin to find things you did not think about, and to leave things &quot;I can&#39;t tell&quot; you thought were settled.</p>
-<p><strong>Phase 1.5. Ask Claude what is in the report.</strong></p>
-<p>Two full reports read row-by-row by eye is Module 2&#39;s trap all over again. Let the agent do the first pass. When the policy report lands, stay in the same session.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read module-4/policy-report.md. Tell me:
-1. The top three surprises - rows where the verdict is not what a careful reader would have predicted from my files alone.
-2. The three rows where &quot;I can&#39;t tell&quot; is most likely hiding a real compliance gap - rows where the missing evidence would probably come back as violating, not compliant, if it surfaced.
+
+After writing the report, read outputs/policy-report.md back to yourself and tell me:
+1. The top three surprises - rows where the verdict is not what a careful reader would have predicted.
+2. The three rows where &quot;I can&#39;t tell&quot; is most likely hiding a real compliance gap.
 3. One row that looks compliant on the surface but where you would still push back.
 
 Keep each point to one or two sentences. Quote the specific rule name so I can find the row.
 </code></pre>
-<p>Read Claude&#39;s three lists. Then open <code>module-4/policy-report.md</code> and find the rows Claude flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of Claude&#39;s surprises match yours and which do not. That mismatch is data.</p>
-<p><strong>Phase 2. Agent-security audit.</strong></p>
+<p>While the report runs, stay with it. The report is more useful when you read it cold. Expect the reusable check to find things you did not think about, and to leave things &quot;I can&#39;t tell&quot; you thought were settled.</p>
+<p>Read Claude&#39;s three lists. Then open <code>outputs/policy-report.md</code> and find the rows Claude flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of Claude&#39;s surprises match yours and which do not. That mismatch is data.</p>
+<p><strong>Phase 3. Agent-risk audit.</strong></p>
 <p>In the same session.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Apply the agent-security lens of the plugin to the same system. Run both the access-control analysis and the named-attack-class pass.
+<pre><code>Apply the agent-security lens of the reusable security check to the same system. Run both checks: what the agent can reach, and the named risk patterns the lens carries.
 
-For access control: list every external system the agent can reach (connectors, retrievals, file writes beyond the training directory, anything in tools/). For each: is the access necessary for what the system actually does? Flag anything the system has access to but doesn&#39;t need.
+For access control: list every outside system or sensitive place the agent can reach (connectors, retrievals, file writes beyond the training directory, anything in tools/). For each: is the access necessary for what the system actually does? Flag anything the system has access to but doesn&#39;t need.
 
-For the named attack classes (prompt injection direct and indirect, secrets-in-context-and-scrollback, tool-confusion, plugin supply-chain): for each class, name the top one or two specific risks in my system, not generic class descriptions. Quote the file or behaviour that creates the risk.
+For the named risk patterns (prompt injection direct and indirect, secrets-in-context-and-scrollback, tool-confusion, plugin supply-chain): for each pattern, name the top one or two specific risks in my system, not generic definitions. Quote the file or behaviour that creates the risk.
 
-For each risk flagged (access or named-class), suggest one agentic mitigation - scope, split, filter, gate, or review - matched to the specific risk. Layered on top of the classical controls already in place (network, IAM, mTLS, perimeter), not replacing them. Rank the risks by severity x likelihood, three-tier (high / medium / low).
+For each risk flagged, suggest one mitigation for how the agent works - scope, split, filter, gate, or review - matched to the specific risk. These sit on top of the normal company controls already in place (network controls, identity and access management, logging, vendor/security review), not replacing them. Rank the risks by severity x likelihood, three-tier (high / medium / low).
 
-Write the report to module-4/security-report.md. Include the ranked mitigation suggestions.
+Write the report to outputs/security-report.md. Include the ranked mitigation suggestions.
 </code></pre>
-<p>Read <code>module-4/security-report.md</code> alongside the policy report. Two different lenses; some risks will overlap, some will not. That is correct.</p>
+<p>Read <code>outputs/security-report.md</code> alongside the policy report. Two different lenses; some risks will overlap, some will not. That is correct.</p>
 <p>You now have the assessment half of the loop. The uncomfortable feeling is the evidence.</p>
-<p><strong>Phase 3. Mitigate one risk. Reassess the residual.</strong></p>
+<p><strong>Phase 4. Mitigate one risk. Reassess the residual.</strong></p>
 <p>Look at the two reports. Pick one risk to mitigate. Not the easiest, not the scariest. The one that bugs you on the second skim. Your gut is data here. This is about running the loop once, not solving the worst problem on your list.</p>
-<p>Tell Claude the risk in one sentence, then paste the prompt. You are steering, not answering questions about technical detail. Claude picks the mitigation shape and walks the diff.</p>
+<p>Tell Claude the risk in one sentence, then paste the prompt. You are steering by judgment, not by technical detail. Claude picks the mitigation shape, applies the change, and walks you through what landed and why.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>I named the risk I want to mitigate in my last message. Walk me through applying a mitigation to my system for that risk: what file changes, what agent instructions change, what new skill or rule might need to land. You pick the mitigation shape from the five (scope, split, filter, gate, review); I&#39;ll steer if a different one fits.
+<pre><code>Apply a mitigation to my system for the risk I&#39;m about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn&#39;t fit, I&#39;ll tell you and we&#39;ll iterate.
 
-DO NOT make any changes yet. Describe the diff in plain English first and stop. Wait for me to type &quot;apply&quot; before you touch a file. If I want something different, I&#39;ll tell you.
+Then re-run the check the reusable lens performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
 
-After I confirm and the change lands, re-run the check the plugin performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
+Then append a short section to outputs/security-report.md named &quot;Mitigation applied and residual&quot;. Name what changed, what the new verdict is, and what&#39;s still true after the mitigation. Do not rewrite the earlier report. Not what we fixed. What&#39;s left. Be specific.
 
-Then write one paragraph to module-4/residual.md naming what&#39;s still true after the mitigation. Not what we fixed. What&#39;s left. Be specific.
+The risk:
 </code></pre>
-<p>Claude describes the diff. You steer if the shape does not fit. Confirm. Watch the change land. Re-run the check. Read the residual.</p>
-<p>The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. The residual paragraph is the artifact. Name it, accept it on record, keep going.</p>
-<p><strong>Close. One door you would rather not open.</strong></p>
-<p>Look at the two reports one more time. Somewhere in them is a door you would rather close than mitigate. An access your agent has but does not need. A category of output your system produces that really should not leave the building. A tool connection that is convenient but risky.</p>
-<p>Add one more line to <code>module-4/residual.md</code>, under a heading <code>## Doors I would rather not open</code>: <em>&quot;I am scoping out [X]. The agent will not [Y].&quot;</em> Write it as a rule. You will not implement it now. Module 5 revisits output trust, Module 7 covers sharing. The rule goes on record. You decided.</p>
-<p>The best mitigation is the one you did not need. You just named one.</p>
+<p>Claude applies the mitigation and walks you through what changed. If the shape does not fit, tell Claude and iterate. Re-run the check. Read the residual section in <code>outputs/security-report.md</code>.</p>
+<p>The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. The residual section is part of the report. Name it, accept it on record, keep going.</p>
+<p><strong>Close. One boundary you would keep closed.</strong></p>
+<p>Look at the two reports one more time. Somewhere in them is a boundary you would rather set than mitigate around. An access your agent has but does not need. A category of output your system produces that really should not leave the building. A tool connection that is convenient but risky.</p>
+<p>Append one more line to <code>outputs/security-report.md</code>, under a heading <code>## Boundary to keep closed</code>: <em>&quot;I am scoping out [X]. The agent will not [Y].&quot;</em> Write it as a decision. You will not implement it now. Module 5 revisits output trust, Module 7 covers sharing. The decision goes on record.</p>
+<p>The best mitigation is the one you did not need. You just put one boundary in the report.</p>
 <p><strong>What happens:</strong></p>
-<p>You ran the plugin you authored against your Module 3 system and produced two reports you could not have produced by hand: one in policy language, one in agent-security language with named attack classes. You picked one risk, applied one agentic mitigation, observed the residual, and named one door you will not open. You ran the loop once. The plugin and the loop are portable to every agent you build from here.</p>
+<p>The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One policy lens. One agent-risk lens with four named patterns. One mitigation applied; one residual decision recorded in the security report; one boundary named for keeping closed. The loop ran once. The reusable check and the loop carry to the next agent.</p>
 <p><strong>The point:</strong></p>
-<p>Absolute certainty is not on offer. The practice is. Two lenses, two reports, one mitigation, one named residual, one closed door. That is what risk management looks like on agent systems. The plugin you wrote, not you eyeballing it, is the expert. You brought the judgment.</p>
-<p><strong>Time:</strong> 45 minutes. Phase 1 ~12, Phase 1.5 ~5, Phase 2 ~12, Phase 3 ~12, Close ~4.</p>
+<p>Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual, one boundary you will keep closed. The reusable check is the expert in the room. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.</p>
+<p><strong>Time:</strong> 45 minutes. Phase 1 ~8, Phase 2 ~12, Phase 3 ~10, Phase 4 ~11, Close ~4.</p>
 </section>
 
 
 
 <h2>Key Concepts</h2>
 <ul>
-<li><strong>Certainty is a fantasy; the discipline is the answer.</strong> Classical software security gives you residual-risk vocabulary, CVSS, accepted-risk registers: probabilistic reasoning under bounded inputs. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.</li>
-<li><strong>Two lenses, one plugin you authored.</strong> One lens carries what your company has already decided is off-limits. The other carries named attack classes and access-control analysis. You did not have to become a policy expert or a threat modeller; you had to know what mattered and dictate it.</li>
+<li><strong>Certainty is a fantasy; the discipline is the answer.</strong> Normal security work already has residual-risk vocabulary, accepted-risk registers, and named owners. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.</li>
+<li><strong>Policy files first, reusable expertise second.</strong> The files in <code>module-4/policies/</code> are source material. You run them raw once, then package the useful check so it travels. In Cowork and Desktop that package is a plugin; in CLI it is standalone skills.</li>
+<li><strong>Two lenses, one check you authored.</strong> One lens carries what your company has already decided is off-limits. The other carries named risk patterns and a plain access review. You did not have to become a policy expert or a security specialist; you had to know what mattered and dictate it.</li>
 <li><strong>Prompt injection is a class, not a footnote.</strong> Direct prompt injection arrives in the user&#39;s input. Indirect prompt injection arrives in a source the agent retrieves and reads. Both turn well-formed English into the attack surface. Classical perimeter does not see the attack because the attack is not malformed.</li>
 <li><strong>&quot;I can&#39;t tell&quot; is a real answer.</strong> Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an &quot;I can&#39;t tell&quot; requires evidence, not confidence.</li>
-<li><strong>Agent mitigations are layered, not replacements.</strong> Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: WAF, VPC egress, mTLS, IAM-scoped service principals, audit. Loop design is additive. A CTO who concludes &quot;I don&#39;t need to threat-model the network because we have agentic mitigations&quot; ships a breach. The floor stays; the loop adds new surfaces above it.</li>
-<li><strong>Residual risk is a first-class artifact.</strong> After mitigation, something remains. You name it, accept it on record, or close the door. The best mitigation is the one you didn&#39;t need. Avoidance beats reduction.</li>
-<li><strong>Plugins as expertise injection.</strong> A plugin is how an agent borrows capability it doesn&#39;t natively have. It scopes DOWN (what the agent can&#39;t do) and scopes UP (what expertise it brings). Module 4 is where you author your first one.</li>
+<li><strong>Agent mitigations are layered, not replacements.</strong> Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: network controls, identity and access management, logging, vendor/security review. Loop design is additive. A leader who concludes &quot;the agent check replaces security&quot; ships a breach. The floor stays; the loop adds new surfaces above it.</li>
+<li><strong>Residual risk is a first-class artifact.</strong> After mitigation, something remains. You name it, accept it on record, or keep the boundary closed. The best mitigation is the one you didn&#39;t need. Avoidance beats reduction.</li>
+<li><strong>Skills and plugins as expertise injection.</strong> A skill is how an agent borrows capability it doesn&#39;t natively have. A plugin ships skills together. Both scope DOWN (what the agent can&#39;t do) and scope UP (what expertise it brings). Module 4 is where you author your first reusable security check.</li>
 </ul>
 <h2>Debrief</h2>
-<p>Five minutes. Claude reviews the audit session and sharpens the plugin you authored. The evidence is what the audit produced: the two reports, the &quot;I can&#39;t tell&quot; rows, the mitigation you applied, the residual that&#39;s still true. Claude reviews, rewrites the plugin in place, reports what changed. You push back on anything that&#39;s off.</p>
+<p>Five minutes. Claude reviews the audit session and compounds one rule into the root <code>CLAUDE.md</code> for future sessions. The evidence is what the audit produced: the raw policy report, the packaged policy report, the security report with its residual decision, the &quot;I can&#39;t tell&quot; rows, and the mitigation you applied. Claude updates <code>CLAUDE.md</code> and reports what changed. You push back on anything that&#39;s off.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Review this session and sharpen the security plugin I authored. Read every file in the plugin I built this module. Scan the audit output in module-4/ (both reports, the mitigation, the residual). Look back over the session: which rows did the plugin mark &quot;I can&#39;t tell&quot; because the rule itself was ambiguous, where did it flag a non-issue, which named attack class did it under-cover, what specific failure did I only catch by eye, where did the mitigation reduce one risk but shift another?
+<pre><code>Review this session and compound one security operating rule into the agent system. Read the root ./CLAUDE.md if it exists. Read outputs/policy-report-raw.md if it exists, outputs/policy-report.md, and outputs/security-report.md. Look back over the session: which row should future sessions remember, which &quot;I can&#39;t tell&quot; row needs a standing evidence check, which boundary from the security report should stay closed, where did the mitigation reduce one risk but shift another?
 
-Then rewrite whichever plugin file needs it most. Integrate, don&#39;t append. Sharpen rules that wobbled, strengthen coverage of the attack class that under-fired, tighten the &quot;I can&#39;t tell&quot; criteria so the column stays plain rather than avoidant. Do NOT add verification steps that pretend to resolve residual risk. The plain &quot;can&#39;t tell&quot; is the discipline. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version.
+Then update ./CLAUDE.md as the durable operating memory for this agent system. Add or sharpen one short security rule that future sessions should load before working with this system: what to check, what not to touch, when to run the reusable security check, or which boundary from outputs/security-report.md stays closed. Integrate it into the right section if one exists; otherwise create a short section named &quot;Security operating rules&quot;. Do not edit the skill/plugin files. Do not paste an audit summary. Do not add a retro section. The rule should be usable by a future agent that never saw this session.
 
-When you&#39;re done, tell me in 3-5 lines: which file you edited, what you added, what you sharpened, what you removed, and why, grounded in specific rows from the audit. Name at least one door the rules now say to keep closed.
+When you&#39;re done, tell me in 3-5 lines: what changed in ./CLAUDE.md, which report row or residual drove it, what future agents must do differently, and which boundary now stays closed.
 </code></pre>
-<p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;That rule wasn&#39;t ambiguous, I just didn&#39;t have the evidence&quot;</em> / <em>&quot;you loosened &#39;I can&#39;t tell&#39;, put it back.&quot;</em> The artifact is the plugin (now sharpened) and the residual file in <code>module-4/</code>: your named residuals and one scoping rule that avoids opening a door you&#39;d rather leave closed. The unease stays. Nothing today resolves it. That&#39;s the curriculum.</p>
-<p>One thing does travel: the plugin lives on disk now, sharper than it started. Point it at the other agents you&#39;ve built. You&#39;ll find different &quot;I can&#39;t tell&quot; rows everywhere you look. The next agent you build will have a stricter starting line because of this one.</p>
+<p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;That rule wasn&#39;t ambiguous, I just didn&#39;t have the evidence&quot;</em> / <em>&quot;that boundary is too broad, make it narrower.&quot;</em> The artifacts are the security report and the operating rule in <code>./CLAUDE.md</code>: evidence plus future behaviour. The unease stays. Nothing today resolves it. That&#39;s the curriculum.</p>
+<p>Two things travel: the reusable check exists, and <code>./CLAUDE.md</code> now tells future sessions how to behave around the risk you found. Point the check at the other agents you&#39;ve built. You&#39;ll find different &quot;I can&#39;t tell&quot; rows everywhere you look. The next agent you build will have a stricter starting line because of this one.</p>
 <h2>Next</h2>
 <p>The agent is scoped, the residual risk is named. But the output <em>inside</em> the scope. Can you trust what it actually says?</p>
-<h2>Homework after Module 4 — between-module reading</h2>
-<p>Extract one rule from your company&#39;s policy and author it as a small plugin yourself. Plus agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern).</p>
+<h2>Homework after Module 4: between-module reading</h2>
+<p>Extract one rule from your company&#39;s policy and author it as a small skill or plugin yourself. Plus agent-sprawl reading (shadow agents, the 82%-think-protected / 24%-have-visibility pattern).</p>
 
 </section>
 
@@ -2755,7 +2842,7 @@ Round 3: 0.1% → 0.01%.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>This briefing is the test corpus — we WANT it to overreach in places so the detectors have something to catch. Blend general knowledge where sources don&#39;t cover; don&#39;t hedge.
 
-Produce a one-page executive briefing on the strategic question in module-3/question.md, using the material in module-3/retrievals/ and module-3/stances/. Include three named competitors&#39; 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don&#39;t cover something. Save to module-5/briefing.md.
+Produce a one-page executive briefing on the strategic question (in ./crux.md, ## Question section), using the material in module-3/stances/. Include three named competitors&#39; 2026 priorities, at least two verbatim quotes from sources/, a market-sizing number, two analyst takes, and a Monday action with a measurable outcome. Blend general knowledge where the sources don&#39;t cover something. Save to module-5/briefing.md.
 </code></pre>
 <p>Save it. <strong>Don&#39;t open it yet.</strong> Your gut verdicts are the measuring stick. Blind verdicts first, then the run.</p>
 <p>Now the benchmark. Claude scans the briefing, proposes five specific claims spanning the grounded–ungrounded spectrum, and you verdict each one in one line. Five is the ceiling; more is busywork, fewer is noise.</p>
@@ -2773,7 +2860,7 @@ Ask one claim at a time, wait for my answer, then the next. After five answers, 
 <div class="rt-code">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/&lt;name&gt;.md as a list of claims flagged, with one line of reasoning per claim.
+<pre><code>Run four detectors on module-5/briefing.md in parallel. Each detector is a subagent with a different method. Each reads the briefing and the sources in sources/ and module-3/stances/. Each writes its findings to module-5/detectors/&lt;name&gt;.md as a list of claims flagged, with one line of reasoning per claim.
 
 Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
 
@@ -2791,7 +2878,7 @@ Spawn all four in parallel. When they finish, confirm: four files written under 
 <div class="rt-cowork">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Run four detectors on module-5/briefing.md in parallel. Each detector is an agent with a different method. Each reads the briefing and the sources in module-3/retrievals/, module-3/stances/, and sources/. Each writes its findings to module-5/detectors/&lt;name&gt;.md as a list of claims flagged, with one line of reasoning per claim.
+<pre><code>Run four detectors on module-5/briefing.md in parallel. Each detector is an agent with a different method. Each reads the briefing and the sources in sources/ and module-3/stances/. Each writes its findings to module-5/detectors/&lt;name&gt;.md as a list of claims flagged, with one line of reasoning per claim.
 
 Detector 1 — Source triangulation. For every specific claim in the briefing, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED.
 
@@ -2817,9 +2904,9 @@ Spawn all four in parallel. When they finish, confirm: four files written under 
 <div class="rt-code">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/&lt;framing&gt;.md.
+<pre><code>Run four self-consistency regenerators on the source material in parallel. Each is a subagent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/&lt;framing&gt;.md.
 
-Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
+Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question (in ./crux.md, ## Question section). Numbered list, one claim per line, quote source files.
 
 Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
 
@@ -2837,9 +2924,9 @@ When the four return, collate: read module-5/briefing.md and the four regenerato
 <div class="rt-cowork">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/, module-3/retrievals/, module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/&lt;framing&gt;.md.
+<pre><code>Run four self-consistency regenerators on the source material in parallel. Each is an agent that reads ONLY the source files (sources/ and module-3/stances/). None of them reads module-5/briefing.md. Each uses a specific framing (assigned below) and writes a numbered list of specific claims the sources support under that framing, quoting the source file by name. Each writes to module-5/detectors/self-consistency/&lt;framing&gt;.md.
 
-Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question in module-3/question.md. Numbered list, one claim per line, quote source files.
+Regenerator A — Strategic claims framing. List the specific strategic claims the sources support about the question (in ./crux.md, ## Question section). Numbered list, one claim per line, quote source files.
 
 Regenerator B — Rollout-approach framing. List the specific claims about how sub-teams should sequence adoption, what each lead is blocked on, and what unblocks them. Numbered list.
 
@@ -3037,7 +3124,7 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <p>Now you stop running it.</p>
 <p><strong>Eval as infrastructure:</strong> the judge is a fixed yardstick. It doesn&#39;t move. What moves is the thing being measured. You set up a loop where your generator produces a briefing, the judge scores it AND writes per-claim feedback, and the generator reads that feedback and writes a better strategy for the next round. Three rounds under the same judge. The score goes up because the generator learns. The measuring stick never shifts. A yardstick you can rewrite is not a yardstick.</p>
 <p>First, you run the judge once by hand on a fresh briefing. See what it catches. Name one fix. Then you automate.</p>
-<p>You set up an <strong>orchestrator</strong>, one Claude session whose whole job is to direct other work. Each round it dispatches a <strong>generator</strong> <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (produces a briefing using the current strategy) and a <strong>judge</strong> <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (applies <code>judges/groundedness-judge.md</code>, writes a score and per-claim feedback). Between rounds, the orchestrator reads the judgment and rewrites <code>module-6/generator.md</code>, the strategy the next round&#39;s generator will use. The judge file is never touched.</p>
+<p>You set up an <strong>orchestrator</strong>, one Claude session whose whole job is to direct other work. Each round it dispatches a <strong>generator</strong> <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (produces a briefing using the current strategy) and a <strong>judge</strong> <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> (applies <code>judges/groundedness-judge.md</code>, writes a score and per-claim feedback). Between rounds, the orchestrator reads the judgment and rewrites <code>./grounding-style.md</code>, the strategy the next round&#39;s generator will use. The judge file is never touched.</p>
 <p>You will come back to a dashboard: <em>round 1 flagged 11 claims, round 2 flagged 6 after the strategy tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.</em> The generator you left with is sharper than the one you started with, under the exact same judge you started with. The improvement is real because the yardstick didn&#39;t move. A trajectory that stalls or ticks up is a finding too; it says the strategy absorbed the wrong lesson and Round N+1 is where you read the feedback yourself.</p>
 <p><strong>Phase 0: Run the judge by hand (~3 min).</strong></p>
 <p>One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle. Open your training directory in Claude Code.</p>
@@ -3045,7 +3132,7 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Three things, in sequence:
 
-1. Produce a fresh one-page briefing on the question in module-3/question.md, using module-3/retrievals/, module-3/stances/, and sources/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don&#39;t cover. Save to module-6/fresh-briefing.md.
+1. Produce a fresh one-page briefing on the question (in ./crux.md, ## Question section), using sources/ and module-3/stances/ for grounding. Same shape as the M5 test corpus: a market-sizing number, two analyst takes, a competitor claim, one quote, one action. Blend general knowledge where sources don&#39;t cover. Save to module-6/fresh-briefing.md.
 
 2. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md. For every claim, write the claim + the judge&#39;s verdict (GROUNDED / NOT GROUNDED / OVERREACH / etc.) + one sentence of per-claim feedback that names what would make it groundable (which source to cite, what precision the claim lacks, what caveat is missing). Save to module-6/first-run-judgment.md.
 
@@ -3059,21 +3146,21 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <div class="rt-code">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Build me an orchestrator for a self-improving generation loop. Save it as module-6/orchestrator.md.
+<pre><code>Build me an orchestrator for a self-improving generation loop. Save it as agents/orchestrator.md.
 
-The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator&#39;s strategy, stored at module-6/generator.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
+The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator&#39;s strategy, stored at ./grounding-style.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Dispatch a generator subagent. Input: module-6/generator.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
+1. Dispatch a generator subagent. Input: ./grounding-style.md (current strategy), ./crux.md, and sources/. Output: module-6/runs/round-N/briefing.md.
 
 2. Dispatch a judge subagent. Input: judges/groundedness-judge.md and module-6/runs/round-N/briefing.md. Output: module-6/runs/round-N/judgment.md with each claim + verdict + one-sentence per-claim feedback naming what would make it groundable. Plus a top-line score: count of flagged claims.
 
-3. After the judge returns, the orchestrator (not a subagent) reads judgment.md and rewrites module-6/generator.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, &quot;numbers must appear verbatim in at least one source file or be marked as estimate,&quot; or &quot;probability-plus-timeline claims require a cited source that names a timeline&quot;). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated generator.md to disk so round N+1 reads it.
+3. After the judge returns, the orchestrator (not a subagent) reads judgment.md and rewrites ./grounding-style.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, &quot;numbers must appear verbatim in at least one source file or be marked as estimate,&quot; or &quot;probability-plus-timeline claims require a cited source that names a timeline&quot;). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated grounding-style.md to disk so round N+1 reads it.
 
 4. After each round (including round 1), append one line to module-6/heartbeat.md with timestamp, round number, and phase just completed (&quot;round-1 generation done&quot;, &quot;round-1 judging done&quot;, &quot;round-1 strategy updated&quot;). This is the signal I peek at during walk-away to confirm the loop is alive.
 
-5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting generator.md. If it doesn&#39;t exist, proceed immediately. Do not block on a timer.
+5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting grounding-style.md. If it doesn&#39;t exist, proceed immediately. Do not block on a timer.
 
 6. The judge file judges/groundedness-judge.md must NEVER be written to by this orchestrator or by any subagent it dispatches. This is a prose-only invariant (Claude Code has no per-file ACL). At end of run, confirm it by comparing the judge file&#39;s SHA against the starting SHA in the dashboard. Assert the no-write rule up front and refuse any step that proposes an edit.
 
@@ -3085,21 +3172,21 @@ Before you write the orchestrator file, show me the 3-round pseudo-code outline 
 <div class="rt-cowork">
 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Build me an orchestrator for a self-improving generation loop. Save it as module-6/orchestrator.md.
+<pre><code>Build me an orchestrator for a self-improving generation loop. Save it as agents/orchestrator.md.
 
-The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator&#39;s strategy, stored at module-6/generator.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
+The judge at judges/groundedness-judge.md is fixed. It does not change across rounds. The thing that changes is the generator&#39;s strategy, stored at ./grounding-style.md, a file that names what sources to prefer, how to handle numbers, how to handle probability-plus-timeline claims, what to cite, and what to avoid asserting without a source. Round 1 starts with a minimal default strategy (plain-prose briefing, no special rules). The loop writes the rest.
 
 The orchestrator runs 3 rounds. In each round it does this, in order:
 
-1. Dispatch a generator agent. Input: module-6/generator.md (current strategy), module-3/question.md, and sources/. Output: module-6/runs/round-N/briefing.md.
+1. Dispatch a generator agent. Input: ./grounding-style.md (current strategy), ./crux.md, and sources/. Output: module-6/runs/round-N/briefing.md.
 
 2. Dispatch a judge agent. Input: judges/groundedness-judge.md and module-6/runs/round-N/briefing.md. Output: module-6/runs/round-N/judgment.md with each claim + verdict + one-sentence per-claim feedback naming what would make it groundable. Plus a top-line score: count of flagged claims.
 
-3. After the judge returns, the orchestrator (not an agent) reads judgment.md and rewrites module-6/generator.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, &quot;numbers must appear verbatim in at least one source file or be marked as estimate,&quot; or &quot;probability-plus-timeline claims require a cited source that names a timeline&quot;). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated generator.md to disk so round N+1 reads it.
+3. After the judge returns, the orchestrator (not an agent) reads judgment.md and rewrites ./grounding-style.md for the next round. The new strategy must absorb at least one specific lesson from the feedback (for example, &quot;numbers must appear verbatim in at least one source file or be marked as estimate,&quot; or &quot;probability-plus-timeline claims require a cited source that names a timeline&quot;). Save the edit as module-6/runs/round-N/strategy-diff.md (old rule, new rule, one-line reasoning) AND write the updated grounding-style.md to disk so round N+1 reads it.
 
 4. After each round (including round 1), append one line to module-6/heartbeat.md with timestamp, round number, and phase just completed (&quot;round-1 generation done&quot;, &quot;round-1 judging done&quot;, &quot;round-1 strategy updated&quot;). This is the signal I peek at during walk-away to confirm the loop is alive.
 
-5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting generator.md. If it doesn&#39;t exist, proceed immediately. Do not block on a timer.
+5. Between rounds, check for module-6/runs/round-N/deltas.md. If it exists, read it alongside the judgment when rewriting grounding-style.md. If it doesn&#39;t exist, proceed immediately. Do not block on a timer.
 
 6. The judge file judges/groundedness-judge.md must NEVER be written to by this orchestrator or by any agent it dispatches. This is a prose-only invariant (Cowork has no per-file ACL). At end of run, confirm it by comparing the judge file&#39;s SHA against the starting SHA in the dashboard. Assert the no-write rule up front and refuse any step that proposes an edit.
 
@@ -3115,11 +3202,11 @@ Before you write the orchestrator file, show me the 3-round pseudo-code outline 
 <p><strong>Phase 2: Kick it off and walk away (25-30 min).</strong></p>
 <p>Create the empty run folders and the starting strategy:</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Create module-6/runs/round-1/, round-2/, round-3/ and module-6/dashboard.md. Also write module-6/generator.md with a minimal starting strategy: &quot;Produce a one-page briefing on the module-3 question. Use sources/, module-3/retrievals/, and module-3/stances/. No special rules yet.&quot; That&#39;s round 1&#39;s input.
+<pre><code>Create module-6/runs/round-1/, round-2/, round-3/ and module-6/dashboard.md. Also write ./grounding-style.md with a minimal starting strategy: &quot;Produce a one-page briefing on the module-3 question. Use sources/ and module-3/stances/. No special rules yet.&quot; That&#39;s round 1&#39;s input.
 </code></pre>
 <p>Start the loop:</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read module-6/orchestrator.md and run it end to end. Do all three rounds. Do not stop for confirmation between rounds. Write outputs to the paths specified. Never modify judges/groundedness-judge.md. When round 3 finishes, write module-6/dashboard.md.
+<pre><code>Read agents/orchestrator.md and run it end to end. Do all three rounds. Do not stop for confirmation between rounds. Write outputs to the paths specified. Never modify judges/groundedness-judge.md. When round 3 finishes, write module-6/dashboard.md.
 </code></pre>
 <p>Claude starts. Round 1 begins. The generator produces a briefing using the minimal starting strategy. The judge scores it. The orchestrator reads the feedback and rewrites the strategy.</p>
 <p>Step away from the session. The facilitator uses this window for a parallel activity (the debrief prep below). You can also use it to add one thing you want fed to the generator that the judge didn&#39;t catch. That&#39;s Phase 2b.</p>
@@ -3149,7 +3236,7 @@ The judge marked &quot;Regulators are likely to act within six months&quot; as G
 
 1. Diff judges/groundedness-judge.md against its state at the end of Module 5. There must be zero changes. If any line differs, the yardstick moved and the score trajectory in dashboard.md is invalid.
 
-2. Diff module-6/generator.md against the minimal starting strategy. Show me every line that changed across the three rounds. At least one strategy rule must be present that wasn&#39;t in the starting file. If the generator didn&#39;t change, the loop was writing to a dead file. Say so.
+2. Diff ./grounding-style.md against the minimal starting strategy. Show me every line that changed across the three rounds. At least one strategy rule must be present that wasn&#39;t in the starting file. If the generator didn&#39;t change, the loop was writing to a dead file. Say so.
 </code></pre>
 <p>Read both diffs. Judge file: zero changes. Generator file: at least one rule added per round. If the judge moved, the exercise failed. You were measuring with a shifting ruler. Flag it. If only the generator moved, the loop worked.</p>
 <p>Ask Claude to surface <code>module-6/runs/round-2/strategy-diff.md</code> and <code>round-3/strategy-diff.md</code> in chat. Each one names a specific rule that got added and the feedback it absorbed. That&#39;s the proof: the generator didn&#39;t drift, it learned.</p>
@@ -3212,9 +3299,9 @@ Ask me where the judge lives, where to save round artifacts, and what topic to g
 <p>Five minutes. Claude reviews the eval loop&#39;s run and sharpens the generator&#39;s strategy file (the one the meta-agent has been editing all module). The evidence is the round-by-round diff trail: what the meta-agent added to the strategy, what the judge kept catching, what the strategy never absorbed. Claude reviews, rewrites the generator&#39;s strategy file in place, reports what changed. The judge file stays untouched. That&#39;s the integrity of the loop. You push back on anything that&#39;s off.</p>
 <p>Ask Claude to read the round trail and sharpen the generator&#39;s strategy beyond what the meta-agent reached.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Review this session and sharpen the generator&#39;s strategy beyond what the meta-agent reached. Read module-6/generator.md in its current state, then scan module-6/rounds/ (every round&#39;s generation + judge output + strategy diff) and the meta-agent&#39;s reasoning trail. The judge file at judges/groundedness-judge.md did not move — that is the integrity of the loop. Look back over the session: which strategy change did the meta-agent get right, which one didn&#39;t help and got reverted (or should have), what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds (a stuck pattern the meta-agent kept softening around), what did the judge flag that the strategy never absorbed?
+<pre><code>Review this session and sharpen the generator&#39;s strategy beyond what the meta-agent reached. Read ./grounding-style.md in its current state, then scan module-6/rounds/ (every round&#39;s generation + judge output + strategy diff) and the meta-agent&#39;s reasoning trail. The judge file at judges/groundedness-judge.md did not move — that is the integrity of the loop. Look back over the session: which strategy change did the meta-agent get right, which one didn&#39;t help and got reverted (or should have), what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds (a stuck pattern the meta-agent kept softening around), what did the judge flag that the strategy never absorbed?
 
-Then rewrite module-6/generator.md. Integrate, don&#39;t append. Add the strategy rule the loop never reached, sharpen a rule the meta-agent softened, remove a rule that turned out to fire on the wrong thing. The strategy file is infrastructure now. Every rule should name the failure class it pre-empts. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version.
+Then rewrite ./grounding-style.md. Integrate, don&#39;t append. Add the strategy rule the loop never reached, sharpen a rule the meta-agent softened, remove a rule that turned out to fire on the wrong thing. The strategy file is infrastructure now. Every rule should name the failure class it pre-empts. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version.
 
 When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.
 </code></pre>
@@ -3668,7 +3755,7 @@ Final decision: the CTO (or sponsor), in the room, picks which two or three assu
 </blockquote>
 <p><strong>Self-study parallel (Phase 3 decision):</strong> The student picks the two or three assumptions themselves. Teacher Claude plays one more round of devil&#39;s advocate: <em>&quot;You picked assumption three. Your pre-mortem said the social-failure story was the one not seen. That assumption touches the political wall you&#39;ve been avoiding. Do you still pick it, or are you dodging?&quot;</em> The student decides. The decision is the deliverable.</p>
 <p><strong>Synthesis and read-out (10 min).</strong></p>
-<p>Close the session with a single file: <code>module-8/strategy-kernel.md</code>. Four sections:</p>
+<p>Close the session with a single file: <code>./strategy-kernel.md</code>. Four sections:</p>
 <ul>
 <li><strong>Diagnosis.</strong> The three cruxes, ranked, one sentence each, each citing the file it came from.</li>
 <li><strong>Guiding policy.</strong> The one-sentence policy move in Rumelt form.</li>
@@ -3676,7 +3763,7 @@ Final decision: the CTO (or sponsor), in the room, picks which two or three assu
 <li><strong>Risks.</strong> The one pre-mortem failure story the room (or the student) agreed was most likely unseen. One early warning sign.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Builder Claude, for the student compiling their own kernel, or for the orchestrator-agent compiling the room&#39;s)</em></p>
-<pre><code>Read every module-8/*/ file. Write module-8/strategy-kernel.md with the four sections — diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don&#39;t smooth the disagreements; where two agents conflicted, name the conflict in one line under the relevant section.
+<pre><code>Read every module-8/*/ file. Write ./strategy-kernel.md with the four sections — diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don&#39;t smooth the disagreements; where two agents conflicted, name the conflict in one line under the relevant section.
 </code></pre>
 <p><strong>In-room:</strong> one participant reads the kernel aloud. Not the sponsor. A participant who wasn&#39;t the loudest voice in the diamonds. The read-out is three minutes.</p>
 <blockquote>

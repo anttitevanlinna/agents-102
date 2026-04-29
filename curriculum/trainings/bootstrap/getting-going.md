@@ -54,7 +54,9 @@ When you're done, tell me in 2–3 lines: what got sharpened, what got added, wh
 ```
 
 
-Claude runs the retro and updates the file, then summarises what changed in chat. Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a markdown file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
+Claude runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.
+
+Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a rule file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
 **Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. Ask Claude to dispatch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold (you want a fresh Claude with no memory of building it):
 
@@ -75,6 +77,9 @@ Compare Claude's picks to what you expected. Where cold-Claude sees generic, you
 You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
 
 <!-- maintainer -->
+
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply

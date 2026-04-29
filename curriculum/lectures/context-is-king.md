@@ -39,3 +39,8 @@ So far the context has been one message you typed. Ephemeral. Gone when you clos
 What if the context was a file the agent reads at the start of every conversation? A file you wrote once, tuned carefully, that shaped every answer without you ever retyping it? Same mechanism. Different shelf life.
 
 That's a guardrail. That's your turn.
+
+<!-- maintainer -->
+
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M1 opening lecture manual read)

@@ -10,7 +10,7 @@ You need a Claude account at claude.ai. Then create an empty folder at `~/Docume
 
 ## 1. Install the training folder (3 min)
 
-Get the starter file set into your training directory. The starter file set ships an empty skeleton (eight module folders, plus `memory/`, `sources/`, `agents/`) and a self-study companion you can use while doing self-study of the modules.
+Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, Module 4 policy files, and a self-study companion you can use while doing self-study of the modules.
 
 [Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-102-bootstrap/`. You should see `starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
 
@@ -24,7 +24,7 @@ Extract the starter tarball in the working folder. Use the shell:
 (Leave `starter.tar.gz` behind — Cowork's sandbox can't always delete host-dropped files. Harmless.)
 
 Then list what's in the working directory and confirm these folders exist:
-prework/, module-1/ through module-8/, memory/, sources/, agents/, .claude/.
+prework/, memory/, sources/, agents/, .claude/, and module-4/policies/.
 If tar is not available, tell me what error you got.
 ```
 
@@ -62,14 +62,23 @@ List my main meetings this week. Summarize the shape of the week in 5 lines. Sav
 
 **Path B (no connector, or you're not sure).** Default to this one if in doubt.
 
-Take a screenshot of your calendar week view<span class="rt-cowork"> and attach it to your next message via the **(+)** button</span>, then:
+Take a screenshot of your calendar week view, then:
 
-<div class="rt-code">
+<div class="rt-cli">
 
 **Prompt** *(Claude Code)*
 
 ```
 I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
+```
+
+</div>
+<div class="rt-desktop">
+
+**Prompt** *(Claude Code)*
+
+```
+I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
 ```
 
 </div>
@@ -99,4 +108,8 @@ Open [What is an Agent, section 1](curriculum.html?file=supplementary/what-is-an
 
 You walk into Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, a snake game, a meetings summary, and a 2-page read. Four things. Not nothing. Module 1 just gets going.
 
+<!-- maintainer -->
+
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, Bootstrap prework manual cohort-prep run; install path tested end-to-end under Cowork lens, snake + meetings + read all verified)
 

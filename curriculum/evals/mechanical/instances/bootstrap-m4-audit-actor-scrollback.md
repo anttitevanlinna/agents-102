@@ -20,7 +20,7 @@ State verified: `memory/` (6 pages + index), `sources/` (10 files including `mai
 
 I read the policy lens (`plugin-install/.claude/plugins/security-audit/skills/policy/SKILL.md`) — 22 rules across four families (AI-use AI-1..AI-7, GDPR GDPR-1..GDPR-6, classification CLASS-1..CLASS-5, operator-dictated OP-1..OP-5; sector rules listed but not scored). Then read every memory page (six), every source file present in `sources/`, the single agent file in `agents/`, and the module-3 retrievals + stances. Confirmed root `CLAUDE.md` absent — flagged that as the evidence-gap it is.
 
-Wrote `module-4/policy-report.md` — 22 rule rows in the table, plus a counts/top-three/sector summary. Headline shape: 6 compliant, 5 violating (AI-6, GDPR-2, CLASS-1, CLASS-5, OP-3), 11 "I can't tell." Top three concerns: zero classification discipline (CLASS-1 + downstream); the OP-3 personal-note paraphrase guard is prose-only AND cites the wrong path (`onedrive/...` vs the real `sources/...`); cross-tier synthesis without a label (CLASS-5) — `module-3/retrievals/docs.md` is the canonical bad-shape artifact.
+Wrote `module-4/policy-report.md` — 22 rule rows in the table, plus a counts/top-three/sector summary. Headline shape: 6 compliant, 5 violating (AI-6, GDPR-2, CLASS-1, CLASS-5, OP-3), 11 "I can't tell." Top three concerns: zero classification discipline (CLASS-1 + downstream); the OP-3 personal-note paraphrase guard is prose-only AND cites the wrong path (`onedrive/...` vs the real `sources/...`); cross-tier synthesis without a label (CLASS-5) — `sources/docs-retrieval.md` is the canonical bad-shape artifact.
 
 ---
 

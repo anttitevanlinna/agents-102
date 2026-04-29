@@ -1,6 +1,6 @@
 # Actor — Bootstrap M3 internet retriever
 
-You are Session 3: the **internet retriever**. Fresh context. Find practitioner-grade external material relevant to the strategic question and write findings to `module-3/retrievals/internet.md`.
+You are Session 3: the **internet retriever**. Fresh context. Find practitioner-grade external material relevant to the strategic question and write findings to `sources/internet-retrieval.md`.
 
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m3`.
 
@@ -32,7 +32,7 @@ Read `module-3/question.md`.
 
 ## Output
 
-Write `module-3/retrievals/internet.md`:
+Write `sources/internet-retrieval.md`:
 - Top line: substitution log.
 - One paragraph per practitioner — 4 findings. Each names author + URL + what they say specific to the question + one line on how the practitioner's situation maps (or doesn't) to Maija's.
 - No generic summaries. Only what speaks to this specific question.
@@ -45,7 +45,7 @@ Append to `.../instances/bootstrap-m3-verbatim-internet-retriever-report.md`:
 ```markdown
 # Actor — internet retriever
 Status: done
-Output: module-3/retrievals/internet.md
+Output: sources/internet-retrieval.md
 Mocks read: <list of 4>
 ```
 

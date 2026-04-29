@@ -148,5 +148,8 @@ Generic output comes from generic context. The LLM didn't get better between Pha
 
 <!-- maintainer -->
 
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M1 exercise manual run; all six phases tested under Cowork lens)
+
 **Deferred per student-facing-first rule:**
 - Facilitator notes: watch-fors (generic Phase 2 answers; Phase 3 strengths that don't serve anyone specific; Phase 4 hate-list that doesn't flip cleanly), decision points, per-phase timings (Phase 6 free iteration tends to run long), Claude Code setup prerequisites.

@@ -6,7 +6,7 @@ A chat forgets. A memory remembers.
 
 You've just pinned your challenge in `./challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
-Before class you unzipped the Module 2 scaffold: empty `sources/`, empty `memory/`, empty `agents/`, and a root `CLAUDE.md` with the rules Claude follows when it writes pages. <span class="rt-code">Start a new session in the working directory.</span><span class="rt-cowork">Connect the working directory in Cowork.</span> Four phases: curate, put to work, compound, self-maintain.
+The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Four phases: curate, put to work, compound, self-maintain.
 
 **Phase 1. Curate, ingest, build.**
 
@@ -25,7 +25,7 @@ A memory is only as good as what goes into it. Most people sabotage this step by
 ```
 I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats:
 
-1. First, read ./challenge.md so you have the challenge in mind. Then check what connectors are enabled in my Claude Code session right now — name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
+1. Check what connectors are enabled right now. Name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
 
 2. Then ask me where my work material actually lives. Don't assume Confluence or OneDrive — ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.
 
@@ -39,6 +39,8 @@ Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sour
 
 **Beat 2. Ingest.** Now Claude pulls the content into `sources/`. Agent does the heavy lifting; you don't copy-paste.
 
+**A note on what Claude reads.** <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
+
 **Prompt** *(Claude Code)*
 
 ```
@@ -47,13 +49,13 @@ For every source in the curation plan we just agreed, create one file in sources
 - Publicly fetchable URL (practitioner blog, public article)? Fetch the page, save the text as sources/<slug>.md with a header naming URL + title + why-it's-relevant.
 - Reachable via a connector you have (wiki, docs, drive)? Pull the content through and save the same way.
 - Local file on my laptop at a path I named? Save sources/<slug>.md as a reference — absolute path + title + why-it's-relevant, no copied content. You'll read the actual file directly when Beat 3 needs it.
-- Behind a connector you can't reach, or in a tool you don't have? Save sources/<slug>.md as a reference too — URL or path + title + why-it's-relevant + "NOT REACHABLE — attach via + button when you want this included." Don't ask me to paste anything; if I want it included, I'll attach the file.
+- Behind a connector you can't reach, or in a tool you don't have? Save sources/<slug>.md as a reference too — URL or path + title + why-it's-relevant + "NOT REACHABLE — share with me when you want this included." Don't ask me to paste anything; if I want it included, I'll share the file.
 
 When done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I'll attach whatever I want to include before we build the memory.
 ```
 
 
-Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case use the **+** button to attach the file; Claude will save the content into `sources/` when attached. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
+Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case share the file with Claude (your runtime knows how); Claude will save the content into `sources/`. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
 
 **Beat 3. Build memory.** Now the memory gets built from what's actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it's about to do before touching files, so you can review and steer before files commit.</span>
 
@@ -92,7 +94,7 @@ Now ask Claude to audit itself:
 **Prompt** *(Claude Code)*
 
 ```
-Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? List the generic ones in module-2/soft-pages.md.
+Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? List the generic ones in memory/soft-pages.md.
 ```
 
 
@@ -133,46 +135,25 @@ Answer with a real task from your challenge. Claude reads the agent file, reads 
 
 **Phase 3. Compound.**
 
-A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: find the thinnest memory page, get one more source in, let the new source make the old pages better. Claude does the legwork. You only step in if there's a file only you can attach.
+A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.
+
+Pick a source that fills a gap: a practitioner article you've been meaning to read, a doc you skipped in Beat 2, an email thread, a local file you can share with Claude. Drop the link, path, or attachment after the colon at the end of the prompt.
 
 **Prompt** *(Claude Code)*
 
 ```
-Look at memory/ and identify the thinnest page — the one where Phase 1's audit flagged "generic" in module-2/soft-pages.md, or where a topic has only two claims, or where the stress-test in Phase 2 revealed light content. Name it in one sentence.
+Take the source below and integrate it into the memory. Steps:
 
-Then look at the curation plan we agreed in Beat 1 and at sources/ itself: what's a single new source that would sharpen this specific page? Pick it from what's missing — something on the plan we didn't fetch, or a practitioner article, or a local file I named but you haven't read. Name it in one sentence: what's the source and why does it help.
+1. Read the source. Integrate its claims into existing pages (sharpen, don't append). Drop any claim the source contradicts. For new topics, add pages in the existing shape. Update memory/index.md.
+2. Rewrite tops in place. Replace old framing; don't preserve it above a new section.
 
-Then go get it using the same methods as Beat 2 (fetch public URL, pull via connector, link to a local path, or tell me if it needs my attach). Land it in sources/ as a new file. Stop there — don't update memory yet; I want to see the new source first.
+When you're done, tell me three pages that got sharper (not longer) and one claim that got dropped or replaced.
+
+New source:
 ```
 
 
-Look at what Claude named and at the new `sources/` file. If it's wrong (the page isn't actually the thinnest, or the source won't help) push back in one sentence. If Claude asked for an attachment, decide whether you want to include it; use **+** if yes.
-
-When the new source is in place:
-
-**Prompt** *(Claude Code)*
-
-```
-Update the memory from the new source — don't rebuild it. For topics you already have: integrate new claims, sharpen existing pages, drop any claim the new source contradicts. For new topics: add pages in the existing shape. Update memory/index.md.
-
-When you're done, tell me three topic pages that got sharper (not longer) from this update — and one page where a claim got dropped or replaced.
-```
-
-
-Second batch made the first batch better. Chat literally cannot do this.
-
-Now don't take Claude's report at face value. Push back:
-
-**Prompt** *(Claude Code)*
-
-```
-Go through every page you just claimed got sharper. Check whether the top of each page actually got rewritten, or whether the old framing is still sitting above a new section. For any where the old is still there, rewrite the top — let the new direction replace the old, don't preserve both.
-
-Also revisit module-2/soft-pages.md. For each, sharpen the top paragraph so it names what's specific to my challenge, not generic.
-```
-
-
-That last line picks up the soft pages you parked in Phase 1. They finally get real here.
+Read Claude's report. Push back if a claim "got sharper" but the top didn't actually change. Second batch made the first batch better. Chat literally cannot do this.
 
 **Phase 4. Let it maintain itself.**
 
@@ -216,6 +197,9 @@ Every module after this one uses the memory you just built.
 
 <!-- maintainer -->
 
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M2 main exercise manual run; all four phases tested under Cowork lens)
+
 **Frameworks riffed on:**
 - Karpathy's LLM Wiki pattern (prework) — the named idea the exercise operationalizes
 - Second Brain / personal knowledge management (Tiago Forte lineage) — the vibe transfers for those who've heard of it. *("Second Brain" is the external named concept; we call our own artifact the "memory" to avoid colliding vocabulary.)*
@@ -223,7 +207,7 @@ Every module after this one uses the memory you just built.
 - Curation-before-ingestion as a craft move — "garbage in, garbage out" reframed as a teaching moment rather than a warning sticker
 
 **Trainer artifacts required (must exist before training day):**
-- Scaffold project: empty `sources/`, empty `memory/`, empty `agents/`, starter `CLAUDE.md` at root (topic-page shape, citation convention, "distinctive not descriptive" rule)
+- Working directory: `sources/`, `memory/`, `agents/` already in place from prework (empty). No starter `CLAUDE.md` at root — student writes it in the Module 2 Debrief from session evidence (per `curriculum/CLAUDE.md` Material Distribution rule).
 - Opener exercise (`name-your-challenge.md`) runs first in Module 2 — produces `./challenge.md`, which this exercise keys off
 - Prework: Confluence + OneDrive connectors configured in Claude Code before the session (separate prework item)
 

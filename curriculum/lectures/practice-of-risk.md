@@ -22,9 +22,9 @@ Put the three together. You don't get *secure / not secure.* You get *safe enoug
 
 You don't get certainty. You get a loop. Four steps, plain, repeatable.
 
-**Assess.** Point a lens at the system and see what it reveals. Today you'll use two. The `company-ai-policy` skill runs your company's actual rules against your actual agent. The `agent-security` skill runs access-control analysis and an agent-shaped version of STRIDE. Neither skill makes you an expert. Each skill IS the expert. The job is reading the reports with judgment.
+**Assess.** Point a lens at the system and see what it reveals. Today starts with your company's actual rules, raw, against your actual agent. Then you package that policy check so it can run again. The agent-risk lens asks what the agent can reach, what it might leak, and how ordinary text could mislead it. Neither lens makes you an expert. The reusable check is the expert. The job is reading the reports with judgment.
 
-**Mitigate.** Pick one risk. Apply the smallest change that reduces it. Agentic mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first's output). None of these are perimeter. All of them are loop design.
+**Mitigate.** Pick one risk. Apply the smallest change that reduces it. Agent mitigations are shaped differently than firewalls. Scope (give the agent less). Split (break it into two agents with different trust levels). Filter (post-process the output before it leaves). Gate (a human approves before a sensitive action). Review (a second agent judges the first's output). None of these are perimeter. All of them are loop design.
 
 **Reassess residual.** After the mitigation, the risk isn't gone. Something remains. Name it. Write it down. *The residual risk here is X. If Y happens, we haven't prevented it, we've made it less likely.* Residual risk as an artifact, not a shame.
 
@@ -38,7 +38,7 @@ Here's the move nobody puts in a security training, because it sounds too much l
 
 Should the agent have write access to that system? If not, scope down before you scope up. Should the agent read from that mailbox? If not, don't connect it. Should the agent be the one that drafts customer-facing language? If that's where the biggest risk lives, maybe a human drafts and the agent reviews, not the other way around.
 
-The `company-ai-policy` skill exists partly to tell you which doors not to open. Your company has already decided. The job is to notice.
+The policy lens exists partly to tell you which doors not to open. Your company has already decided. The job is to notice.
 
 Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This isn't timid design. It's plain design. Every door you don't open is a residual risk you don't have to name, mitigate, monitor, re-test, or apologise for.
 
@@ -46,7 +46,7 @@ Avoidance beats reduction. Scope beats patch. Don't-open beats mitigate. This is
 
 Some of your agents are going to be wrong, in ways you won't catch, and ship output you won't love. That's true for every agent in production anywhere in the world right now. The organisations that handle this well aren't the ones with the best technology. They're the ones that run the loop openly, name residual risks plainly, and close doors they don't need to open.
 
-You can't buy certainty. You can run a loop. Today the loop runs once, on your own system, with two skills doing the expert work. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.
+You can't buy certainty. You can run a loop. Today the loop runs once, on your own system, first with the policy files raw and then with two reusable lenses doing the expert work. Damn, this is complex stuff. It will still be complex when the next agent gets built. The discipline is what carries.
 
 Read the reports. Pick a risk. Apply a mitigation. Name what's left. Decide.
 
@@ -54,7 +54,7 @@ That's the work.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
+**Quality:** draft 2026-04-29 (body touched after Pass 3 compendium audit; re-audit needed)
 - compendium-audited 2026-04-28 (Pass 3 cycle: check_writing, check_student_facing, check_lectures, check_strategy_tie_in — banned `practice` (noun) ban, em-dash ban, time-of-day anchors, mood-contract honour, full-form module names; all PASS)
 - compendium-audited 2026-04-25 (Pass 1 — initial draft) — superseded
 

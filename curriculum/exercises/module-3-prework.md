@@ -20,31 +20,33 @@ For each one you pick, note one thing in plain language: *what is this person au
 
 This isn't about copying their setups. It's about calibrating the ceiling: how much one agent, well-shaped, can already do. So that when Module 3 adds three more, you know what the added coordination is buying you.
 
-**Reading 2. Claude Code's subagents, in plain language.**
+**Reading 2. <span class="rt-code">Claude Code's subagents</span><span class="rt-cowork">Cowork's agents</span>, in plain language.**
 
-Module 3 Phase 2 spawns three subagents in one session. Ten minutes of orientation saves you from learning the mechanic cold in the room.
+Module 3 Phase 2 spawns three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> in one <span class="rt-code">session</span><span class="rt-cowork">task</span>. Ten minutes of orientation saves you from learning the mechanic cold in the room.
 
-*What it is.* A subagent in Claude Code is a helper the main agent dispatches to do one focused job. It gets:
+*What it is.* <span class="rt-code">A subagent in Claude Code</span><span class="rt-cowork">An agent in Cowork</span> is a helper the main agent dispatches to do one focused job. It gets:
 
 - its own **instructions** (what it's for, what rules it follows);
 - its own **context window** (a clean slate, so its work doesn't clutter yours);
-- access to the same **filesystem** (it reads and writes in your working directory, same as the main session).
+- access to the same **filesystem** (it reads and writes in your working directory, same as the main <span class="rt-code">session</span><span class="rt-cowork">task</span>).
 
 When the job is done, it returns a single result to the main agent and disappears. You can dispatch several in parallel.
 
-*How to launch one.* You don't type a special command. You ask Claude, in plain language, to use one. *"Launch a subagent to review the three retrieval files and write its take to `module-3/stances/planner.md`."* Claude picks it up and dispatches. To run several at once: *"Launch these three subagents in parallel,"* and list them. Claude fires them together, waits for all three to return, then continues.
+*How to launch one.* You don't type a special command. You ask Claude, in plain language, to use one. *"Launch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to review the three retrieval files and write its take to `module-3/stances/planner.md`."* Claude picks it up and dispatches. To run several at once: *"Launch these three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> in parallel,"* and list them. Claude fires them together, waits for all three to return, then continues.
 
-*What you'll see.* While a subagent is working, it appears in your transcript as a running **Task** or **Agent** block (usually collapsed, with a short description of what it's doing). You can't chat with it; it's running its own conversation separately. When it finishes, the block closes with a short result, and Claude's main session picks up from there. In the Phase 2 exercise, three Task blocks will run side by side, each one writing a stance file to `module-3/stances/` as it completes.
+*What you'll see.* While <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> is working, it appears in your transcript as a running **Task** or **Agent** block (usually collapsed, with a short description of what it's doing). You can't chat with it; it's running its own conversation separately. When it finishes, the block closes with a short result, and Claude's main <span class="rt-code">session</span><span class="rt-cowork">task</span> picks up from there. In the Phase 2 exercise, three Task blocks will run side by side, each one writing a stance file to `module-3/stances/` as it completes.
 
-*What you don't need.* You don't need to write an agent definition file for Module 3. You don't need to use the `/agents` slash command. Defining your own reusable subagents is a later move; launching ones that the main session describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
+*What you don't need.* You don't need to write an agent definition file for Module 3. You don't need to use the `/agents` slash command. Defining your own reusable <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> is a later move; launching ones that the main <span class="rt-code">session</span><span class="rt-cowork">task</span> describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
 
-For the full reference, search *"Claude Code subagents"* in Anthropic's docs or open Claude Code's in-app help. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
+For the full reference, search *"<span class="rt-code">Claude Code subagents</span><span class="rt-cowork">Cowork agents</span>"* in Anthropic's docs or open Claude's in-app help. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
 **What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
 
-**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the subagent primer.
+**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
 
 <!-- maintainer -->
+
+**Quality:** draft 2026-04-29 (Reading 2 forked Code/Cowork 2026-04-29 from REVISE; not yet sim-passed or mechanical-tested)
 
 **Frameworks riffed on:**
 - Practitioner-before-pattern — read five people doing the thing before hearing the name for the thing. Same move as Module 2's Karpathy-first sequencing.

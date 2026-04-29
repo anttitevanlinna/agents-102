@@ -15,7 +15,7 @@ Read each prompt file verbatim. Quote in blockquote. Respond.
 ## Starting state
 
 Inherited through M1 → M2 → M3 → M4:
-- `module-2/challenge.md`, `module-3/question.md`, `module-3/retrievals/{wiki,docs,internet}.md`, `module-3/stances/{1-planner,2-experimentator,3-reframer}.md`, `module-3/answer.md`
+- `./challenge.md`, `module-3/question.md`, `module-3/retrievals/{wiki,docs,internet}.md`, `module-3/stances/{1-planner,2-experimentator,3-reframer}.md`, `module-3/answer.md`
 - `sources/` — 10 source files
 - `memory/` — 7 topic pages + index
 - `module-5/` folder exists, empty; `module-5/detectors/` subfolder exists.

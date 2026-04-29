@@ -58,6 +58,9 @@ Either way: know what a plan-first prompt looks like, and why you'd reach for it
 
 <!-- maintainer -->
 
+**Quality:** maintainer-reviewed 2026-04-29
+- maintainer-reviewed 2026-04-29 (Antti, M2 prework manual read)
+
 **Role in Module 2:** Lightweight prework designed to survive being skipped. The challenge-naming moved from prework into the main session (`name-your-challenge.md`, first 15 min of Module 2) because students skip prework and Module 2 Phase 1 stalls for anyone who arrives without a pinned challenge. Connector verification and plan-mode primer stay in prework — they're *useful* before class but not load-bearing if missed (fallback: facilitator triages connector issues live, plan mode gets a 60-second primer in Phase 1).
 
 **Dependencies:**

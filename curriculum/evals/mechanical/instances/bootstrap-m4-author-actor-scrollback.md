@@ -160,15 +160,15 @@ File paths installed:
 
 **[Maija pastes prompt-004-verify verbatim:]**
 
-> Apply the policy lens of the security plugin I authored to one file: module-2/challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
+> Apply the policy lens of the security plugin I authored to one file: ./challenge.md. Just that one file. Run two or three rules from the lens, produce two or three rows of the report shape, and stop. I am verifying the plugin loads and the report shape is right - this is not the real audit.
 
-**Claude:** Read `plugin-install/.claude/plugins/security-audit/skills/policy/SKILL.md` (loaded). Read `module-2/challenge.md` (one paragraph: Maija's challenge brief naming Kaleva Retail Group, ~300 engineers, the rolled-out platforms and decisions, and the skeptics-conversion question). Three rules sampled.
+**Claude:** Read `plugin-install/.claude/plugins/security-audit/skills/policy/SKILL.md` (loaded). Read `./challenge.md` (one paragraph: Maija's challenge brief naming Kaleva Retail Group, ~300 engineers, the rolled-out platforms and decisions, and the skeptics-conversion question). Three rules sampled.
 
 | Rule | Description | Verdict | Evidence |
 |---|---|---|---|
-| GDPR-2 | Personal data in agent context is the minimum needed; role references replace names where possible. | violating | `module-2/challenge.md` names "Kaleva Retail Group" as an identifiable organisation tied to internal sub-team dynamics ("the sub-team leads are split roughly half-and-half"); the brief works equally well at "a Nordic retail platform org" — the org name is not minimised. |
-| CLASS-1 | Every file in `sources/` and `memory/` (and by extension working artifacts in `module-*/`) carries a tier label. | violating | `module-2/challenge.md` carries no tier label inline, no sibling README, no naming-convention marker. Content is at least Internal (sub-team leadership tensions, vendor-session-landed-flat retro framing). |
-| AI-3 | Anything heading to customers, prospects, regulators, public is reviewed by an accountable human before it leaves. | I can't tell | `module-2/challenge.md` is a personal challenge brief; no evidence in the file of where it goes next. Would need: a downstream destination annotation or a workflow rule in root `CLAUDE.md`. |
+| GDPR-2 | Personal data in agent context is the minimum needed; role references replace names where possible. | violating | `./challenge.md` names "Kaleva Retail Group" as an identifiable organisation tied to internal sub-team dynamics ("the sub-team leads are split roughly half-and-half"); the brief works equally well at "a Nordic retail platform org" — the org name is not minimised. |
+| CLASS-1 | Every file in `sources/` and `memory/` (and by extension working artifacts in `module-*/`) carries a tier label. | violating | `./challenge.md` carries no tier label inline, no sibling README, no naming-convention marker. Content is at least Internal (sub-team leadership tensions, vendor-session-landed-flat retro framing). |
+| AI-3 | Anything heading to customers, prospects, regulators, public is reviewed by an accountable human before it leaves. | I can't tell | `./challenge.md` is a personal challenge brief; no evidence in the file of where it goes next. Would need: a downstream destination annotation or a workflow rule in root `CLAUDE.md`. |
 
 Stopping at three rows per the prompt — not the full audit.
 

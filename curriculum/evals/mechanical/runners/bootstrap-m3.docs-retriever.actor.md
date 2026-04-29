@@ -1,6 +1,6 @@
 # Actor — Bootstrap M3 docs retriever
 
-You are Session 2: the **docs retriever**. Fresh context; no knowledge of the other retrievers or the main session. Your job is to find document + email material relevant to the strategic question and write findings to `module-3/retrievals/docs.md`.
+You are Session 2: the **docs retriever**. Fresh context; no knowledge of the other retrievers or the main session. Your job is to find document + email material relevant to the strategic question and write findings to `sources/docs-retrieval.md`.
 
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m3`.
 
@@ -33,7 +33,7 @@ Read `module-3/question.md`.
 
 ## Output
 
-Write `module-3/retrievals/docs.md`:
+Write `sources/docs-retrieval.md`:
 - Top line: substitution log.
 - One paragraph per finding — 4-5 findings expected. Name sources that disagree; don't smooth over.
 - Each paragraph names the doc path + title + what it says about the question.
@@ -47,7 +47,7 @@ Append to `.../instances/bootstrap-m3-verbatim-docs-retriever-report.md`:
 ```markdown
 # Actor — docs retriever
 Status: done
-Output: module-3/retrievals/docs.md
+Output: sources/docs-retrieval.md
 Mocks read: <list>
 Personal-note handling: <one line>
 ```

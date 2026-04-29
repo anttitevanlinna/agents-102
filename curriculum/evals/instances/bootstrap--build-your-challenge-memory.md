@@ -63,7 +63,7 @@ Enables these LOs from `trainings/bootstrap/building-agent-systems.md`:
 
 ### Module-to-module arc
 
-Picks up from **Name your next big challenge** (Module 2 opener, first 15 min) — the one-paragraph brief in `module-2/challenge.md` is the seed Phase 1 curation grows from. Also picks up from **Module 1 (Getting Going)** — "same move, different shelf" references the Module 1 guardrail/context mechanism at memory-page and agent-file level.
+Picks up from **Name your next big challenge** (Module 2 opener, first 15 min) — the one-paragraph brief in `./challenge.md` is the seed Phase 1 curation grows from. Also picks up from **Module 1 (Getting Going)** — "same move, different shelf" references the Module 1 guardrail/context mechanism at memory-page and agent-file level.
 
 Hands off to **Schedule your personal agent** (homework) — the memory built here is what the scheduled agent reads every morning. Also hands off to **Module 3 (Multi-Agent Systems)** via the Bridge ("the job is getting too big for one agent — what do you split?") and to Module 7/8 where personal memories get promoted to team and synthesized across people.
 
@@ -113,14 +113,14 @@ Participants haven't built a curated source list, a memory, or a custom agent be
 - **Plan mode** in Phase 1 ingestion — Claude proposes the topic list, student approves. The scaffold is Claude's draft.
 - **Default rules** in Phase 2's prompt — "cite the memory file for every claim, never invent, ask when a source is thin, keep my voice." Student accepts or overrides. No blank-page moment.
 - **Root `CLAUDE.md` (in the Module 2 starter scaffold)** — gives Claude the topic-page shape, citation convention, and index format.
-- **Explicit file-path references** throughout — `sources/`, `memory/`, `agents/`, `module-2/soft-pages.md` — so students see exactly where things land.
+- **Explicit file-path references** throughout — `sources/`, `memory/`, `agents/`, `memory/soft-pages.md` — so students see exactly where things land.
 
 ### Prompt design
 
 Every prompt is a complete copy-paste block with no mid-prompt `[BRACKETS]` for the student to edit. Patterns used:
 - **Phase 1 curation** — conversation-after (Claude asks about the challenge first, then proposes the plan under three buckets).
 - **Phase 1 ingestion** — direct prompt; plan mode makes it interactive.
-- **Phase 1 audit** — direct prompt; produces `module-2/soft-pages.md` for Phase 3 pickup.
+- **Phase 1 audit** — direct prompt; produces `memory/soft-pages.md` for Phase 3 pickup.
 - **Phase 2 first prompt** — conversation-after (Claude asks three questions in turn).
 - **Phase 2 second prompt** — references session memory ("the agent file you just created") rather than taking a filename parameter.
 - **Phase 3** — direct prompt; new sources are in the folder already.
@@ -132,7 +132,7 @@ Close ("put it to work") uses a copy-paste prompt the participant wraps their ow
 ### Plug points real
 
 Participant uses:
-- **Their own challenge** (named in prework, written to `module-2/challenge.md`)
+- **Their own challenge** (named in prework, written to `./challenge.md`)
 - **Their own sources** — curated live in Phase 1 from Confluence / Office365 / internet, per the guided plan
 - **A task they choose** in Phase 2 (drawn from the challenge, not a generic demo)
 - **Their judgment** on Phase 3's "sharpened vs. longer" and Phase 4's proposed fixes
@@ -154,7 +154,7 @@ Second person, builder, Seth/Rory/Risto flavor. Opening "A chat forgets. A memor
 
 ### Specificity
 
-Named phases, concrete prompts, real file paths (`sources/`, `memory/`, `agents/`, `module-2/soft-pages.md`, `module-2/challenge.md`), realistic challenge examples (pricing redesign, EU market entry, replatforming decision), named mechanics (plan mode, Shift+Tab, **+** button, Settings → Connectors).
+Named phases, concrete prompts, real file paths (`sources/`, `memory/`, `agents/`, `memory/soft-pages.md`, `./challenge.md`), realistic challenge examples (pricing redesign, EU market entry, replatforming decision), named mechanics (plan mode, Shift+Tab, **+** button, Settings → Connectors).
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Big Idea
 
-In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux.
+In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux on our journey.
 
 ## What You'll Learn
 
@@ -17,13 +17,13 @@ After this module, you will be able to:
 
 You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output. Now run a smaller system in the room.
 
-When the team rolls Claude out across the org, what's the **crux**?
+When the team rolls Claude out across the org, what's the **crux on our journey**?
 
 Not the long list of worries. The single thing that, if you got it right, would make the rest follow.
 
 ## Live Work
 
-[Exercise: Find the crux](exercises/find-the-crux.md)
+[Exercise: Find the crux on our journey](exercises/find-the-crux.md)
 
 ## What to Notice
 
@@ -70,6 +70,6 @@ The next section is separate homework. It is not part of the 3-hour live room.
 **Mood contract:** expanded horizon. Forward awe with a deliverable in hand. Edits that resolve into graduation-ceremony register steal the forward hunger. Edits that resolve into *"now you know what to do"* are correct; edits into *"we're done here"* are wrong.
 
 **Frame to land:**
-- *"The hard part isn't picking a tool. It's finding the crux."*
+- *"The hard part isn't picking a tool. It's finding the crux on our journey."*
 - *"Synthesize first. Cross-pollinate second."*
 - *"The rollout is the work."*

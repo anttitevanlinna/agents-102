@@ -1,4 +1,4 @@
-# Exercise: Find the crux
+# Exercise: Find the crux on our journey
 
 **Time:** 32 minutes. Three phases.
 

@@ -18,7 +18,7 @@ Third architecture model after Bootstrap (local training-dir + zips) and AE101 (
 
 - **Live session starts with repo demo.** The trainer shows the agents-102 repo and deployed workbook as the concrete system. This is not a participant runtime requirement.
 - **Live crux work needs only narrow shared writes.** Participants can save personal interview notes in any safe folder. Each group nominates one driver to write one rollout synthesis file into `shared/`. Organisers may optionally write `organisers-rollout-readout.md` after group files exist.
-- **Homework happens in personal folders.** Build-your-system and verification homework run after the live session in any safe folder the participant chooses: Documents, OneDrive, Desktop, or a work folder. No cohort `shared/`, no `participants/`, no group-driver dependency.
+- **Homework happens in personal folders.** Build-your-system and verification homework run after the live session in an empty personal folder the participant chooses. No cohort `shared/`, no `participants/`, no group-driver dependency.
 - **CLAUDE.md names the runtime when needed.** If a homework folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, the folder CLAUDE.md should say so near the top and tell Claude to assume eventual consistency on file reads.
 - **Post-training legacy** — the group rollout syntheses, optional organisers' readout, and personal homework systems are reusable inputs for daily work. Do not promise a fixed post-training cadence unless that cadence has been contracted for the cohort.
 

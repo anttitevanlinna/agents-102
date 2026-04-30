@@ -2,38 +2,39 @@
 
 **Time:** 2 hours before the workshop. Organisers only.
 
-This is the setup exercise for the 3-hour live workshop. The live room now has two moving parts: the repo demo and the rollout-crux synthesis. The build-and-verify exercises are homework in each participant's own safe folder, not shared-folder work during the session.
+This is the setup exercise for the 3-hour live workshop. The live room has two moving parts: the repo demo and the rollout-crux synthesis. The build-and-verify exercises are homework in each participant's own safe folder.
 
 ## What organisers need to understand
 
-SharePoint is useful for the live synthesis, but it is no longer the whole workshop runtime. Participants do their build-and-verify homework later in any safe personal folder. During the live session, shared storage only needs to support the group rollout syntheses.
+Use one shared SharePoint folder for the live synthesis. Everyone who may drive a group syncs that same folder before the workshop. Inside it, create one directory named `shared/`; group synthesis files and the optional organisers' readout go there.
 
-This design protects customer material and reduces live debugging. The public workbook gives prompts and file names. The actual group syntheses and any customer context stay in the customer's environment. Bosser tooling does not need to see them.
+Participants do their build-and-verify homework later in an empty personal folder they choose. That homework does not use the shared SharePoint folder.
 
-Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. In the live crux exercise, the important mechanics are: each person can save personal notes somewhere safe, one group driver can write the group synthesis to the agreed shared location, and organisers can read the group files after they sync.
+The public workbook gives prompts and file names. The actual group syntheses and any customer context stay in the customer's environment.
 
-The synthesis magic comes from sync plus constraint. Most participants do not write shared files. Group drivers write the small number of group synthesis files. Once those files have synced, organisers can run the synthesis prompt and produce a room-level artifact without collecting documents manually or opening private participant folders.
+Participants copy the workbook prompts into Cowork. In the live crux exercise, the important mechanics are: each person can save personal notes somewhere safe, one group driver can write the group synthesis to the agreed shared location, and organisers can read the group files after they sync.
+
+The synthesis comes from sync plus constraint. Most participants do not write shared files. Group drivers write the small number of group synthesis files. Once those files have synced, organisers can run the synthesis prompt without collecting documents manually or opening private participant folders.
 
 Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm the `shared/` directory, wait briefly, and retry. Do not turn that moment into a content discussion.
 
-The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the rollout judgment. The homework does not need organiser answer keys.
+The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the rollout judgment.
 
 ## Phase 1. Prepare the live demo
 
-Confirm the trainer can show the live system without hunting:
+Confirm the trainer can open the live demo without hunting:
 
-- deployed Acme workbook
-- source module files
-- exercise and prompt files
-- `AGENTS.md`, root `CLAUDE.md`, and Claude Basics rules
-- build script and generated client output
-- recent commit history
+- public workbook URL
+- repo or screen-share setup for the trainer's system demo
+- two or three prepared stops that show rules, prompts, checks, output, and a recent change
 
 The demo should show structure, not become a code walkthrough.
 
 ## Phase 2. Prepare the live synthesis workspace
 
-Create or confirm one `shared/` directory for group synthesis files. It can be in SharePoint, Teams files, a shared OneDrive folder, or another customer-approved location.
+Create or confirm the shared SharePoint folder. Make sure likely group drivers and organisers have synced it locally and can add it as a Cowork working folder.
+
+Inside the synced SharePoint folder, create one directory named `shared/`.
 
 Recommended file names:
 
@@ -48,11 +49,11 @@ Do not put customer material in the public curriculum repo. Customer-owned files
 Before the workshop, prove at least one likely group driver can do all of this:
 
 - open Cowork on a safe personal folder
-- add or access the `shared/` directory if Cowork needs it
+- add the synced SharePoint folder as a second Cowork working folder
 - save a test markdown file in `shared/`
 - see the saved file from another organiser's machine
 
-If this fails, fix the `shared/` directory before the room arrives. Do not debug shared writes live.
+If this fails, fix SharePoint sync or folder permissions before the room arrives. Do not debug shared writes live.
 
 ## Phase 4. Prepare group mechanics
 
@@ -86,7 +87,7 @@ The dry-run succeeds only if the participant path works without organiser-only p
 
 Make sure organisers can say the homework path plainly:
 
-- open Cowork on any safe personal folder
+- open Cowork on an empty personal folder
 - run the build-your-system homework there
 - run the verification homework there
 - keep the resulting `CLAUDE.md`, `response.md`, `verification-table.md`, and `homework-summary.md`

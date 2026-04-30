@@ -6,13 +6,13 @@ The live session gives you the shape. Homework turns it into personal muscle mem
 
 ## Do This After the Live Workshop
 
-This is not another live module. Do it after the 3-hour session, in your own time, in a folder that is safe for your work.
+This is not another live module. Do it after the 3-hour session, in your own time, in an empty personal folder you choose.
 
 ## What You'll Build
 
 After this homework, you will be able to:
 
-- **Build** a small Claude system in a normal personal folder
+- **Build** a small Claude system in an empty personal folder
 - **Write** a CLAUDE.md that changes how future answers behave
 - **Check** a plausible Claude answer by extracting claims and finding evidence
 - **Carry** the method back to your daily work without a cohort SharePoint setup
@@ -21,7 +21,7 @@ After this homework, you will be able to:
 
 The live session showed the shape of a system and used that shape on the rollout question. This homework is smaller and more personal: one folder, one task, one checking method.
 
-Pick a folder you can safely use. It can be Documents, OneDrive, Desktop, or a work folder. Open Cowork on that folder. Everything you save in these exercises stays there.
+Choose an empty personal folder. Open Cowork on that folder. Everything you save in these exercises stays there.
 
 ## Exercises
 
@@ -64,7 +64,7 @@ The live session is over. The rollout is not. Keep the folder summary, the group
 **Meta:**
 - **Primary Bloom's level:** Apply → Evaluate
 - **Length:** 60-90 minutes async self-study
-- **Runtime:** Cowork in any safe personal folder. No cohort working tree or group-driver dependency
+- **Runtime:** Cowork in an empty personal folder chosen by the participant. No cohort working tree or group-driver dependency
 
 **Quality:** draft 2026-04-30
 - draft 2026-04-30 (new homework-launch module after strategy restructure; sim/mechanical/eval not rerun)

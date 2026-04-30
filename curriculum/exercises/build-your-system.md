@@ -2,9 +2,9 @@
 
 **Time:** 28 minutes. Five phases.
 
-Chat level in. Out: a working system on a task that matters to your work, rules written in your voice, in a folder that lives on after the homework. The shape: build it boring, then build it yours.
+Chat level in. Out: a working system on a task that matters to your work, rules written in your voice, in an empty personal folder that lives on after the homework. The shape: build it boring, then build it yours.
 
-Open Cowork on a folder you can safely use. Documents is fine. OneDrive is fine. A work folder is fine if the task and files are safe to use there. Everything in this exercise saves in that folder.
+Choose an empty personal folder and open Cowork on it. Everything in this exercise saves in that folder.
 
 **The task** is one small thing you could actually use. Good defaults: a one-page response to a common Claude question internal users ask; a short explanation of the difference between Claude and ChatGPT for your work; a short guide to which connectors your team should enable.
 

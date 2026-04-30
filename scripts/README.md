@@ -17,7 +17,7 @@ Outputs:
 site/clients/<customer>/index.html
 site/clients/<customer>/<training>/index.html
 site/clients/<customer>/<training>/trainer-guide.html
-site/clients/<customer>/<training>/content.tar.gz   # AE101 only
+site/clients/<customer>/<training>/agents-102-content.tar.gz   # AE101 only
 site/clients/<customer>/<training>/starter.tar.gz   # Bootstrap only
 ```
 
@@ -43,7 +43,7 @@ Training URLs are:
 https://agents102.bosser.consulting/clients/<customer>/<training>/
 ```
 
-Payload URLs are training-scoped on purpose. For example, Bootstrap and AE101 can both be deployed for `acme` without `starter.tar.gz` and `content.tar.gz` colliding at the customer root.
+Payload URLs are training-scoped on purpose. For example, Bootstrap and AE101 can both be deployed for `acme` without `starter.tar.gz` and `agents-102-content.tar.gz` colliding at the customer root.
 
 ## Sibling Repo Note
 

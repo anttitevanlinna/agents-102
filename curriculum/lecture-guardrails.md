@@ -182,19 +182,21 @@ For non-technical people, "system" clicks when two things combine:
 
 Persistence without automation is just a saved document. Automation without persistence is a one-shot script. Together, they make "system" tangible.
 
-### Progressive reveal: don't define the whole agent
+### Progressive reveal: teach the real agent structure
 
-An agent is a 5-10-aspect thing (goal-oriented, multi-turn, autonomously-deciding, with LLM + harness + tools + context + guardrails + …). **Do not give the whole picture at the start — it overwhelms.** Each module turns on one aspect:
+An agent is a 5-10-aspect thing: model, context, tools, goal, loop, checks, boundary, runtime, interface. **Do not give the whole picture at the start — it overwhelms.** But do teach the real structure as it becomes useful. Progressive reveal is not vagueness; it is sequencing.
 
 - Module 1 — context shapes output
 - Module 2 — persistence + automation = system; text file as the thing you author
-- Module 3 — coordination across agents (assembly line)
-- Module 4 — tool boundaries (skills)
+- Module 3 — coordination across agents; text as the source of action
+- Module 4 — tool surface + runtime boundary; skills and security checks
 - Module 5-6 — reliability and steering
 - Module 7 — shared ownership
 - Module 8 — self-reference / compounding
 
-Apparent contradictions between module-level definitions (*"agent = LLM + tools"* in prework vs. *"agent = markdown file"* in Module 2) resolve experientially, not in text — don't bridge them with a paragraph.
+The spine is: the LLM reads text and produces text; tools appear to the model as names, descriptions, and input shapes; the runtime turns the model's structured text into actions in other systems; boundaries decide which crossings are allowed. Teach that with live mechanisms, not diagrams alone. The Module 4 raw agent-loop demo is the canonical move: ask what tools are available, how the LLM knows which to use, and how written text becomes action.
+
+Apparent contradictions between module-level definitions (*"agent = LLM + tools"* in prework vs. *"agent = markdown file"* in Module 2) resolve experientially through this structure. Do not bridge them with a defensive paragraph early. Do make sure the full structure is visible by the time tools and actions matter.
 
 ### Evals framing: strategic steering, not testing
 

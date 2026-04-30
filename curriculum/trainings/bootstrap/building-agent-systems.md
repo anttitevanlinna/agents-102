@@ -5,9 +5,7 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Prework
 
-**Setup:** <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
-
-[Module 2 prework](exercises/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
+[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -18,6 +16,8 @@ After this module, you will be able to:
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
 You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We'll build one shortly.
@@ -27,6 +27,8 @@ Then the real one: what's the challenge you're carrying right now that isn't sol
 And one more: if everything you've read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?
 
 Connectors let the agent combine clues that normally live apart: a wiki page, a document, a meeting note, an email thread, and a useful source from the open web. The useful answer is often between systems.
+
+[Demo: 1st scheduled agent](lectures/first-scheduled-agent.md)
 
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
@@ -67,7 +69,7 @@ Watching where it bends is continuous improvement, done by hand. Every miss turn
 ## Next
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?
 
-Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, competitive watching, drafting replies are all fine starters. You only learn by doing. Go build.
+Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.
 
 ## Homework after Module 2 — between-module reading
 
@@ -75,7 +77,7 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (body touched after maintainer review; re-review needed)
+**Quality:** draft 2026-04-30 (body touched after maintainer review; re-review needed)
 - maintainer-reviewed 2026-04-29 (Antti, M2 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.

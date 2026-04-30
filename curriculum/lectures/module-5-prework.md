@@ -1,4 +1,4 @@
-# Reading: Before Module 5
+# The Missing Check
 
 **What you do:**
 
@@ -10,15 +10,15 @@ Read them with one question in mind: *what was the organisation's missing check?
 
 **Case 1 — Mata v. Avianca (S.D.N.Y., 2023).**
 
-A passenger sued Avianca for a personal-injury claim. His attorneys — Peter LoDuca and Steven Schwartz of the small New York firm Levidow, Levidow & Oberman — filed an opposition brief that cited six cases to support their legal position.
+A passenger sued Avianca for a personal-injury claim. His attorneys were Peter LoDuca and Steven Schwartz of the New York firm Levidow, Levidow & Oberman. LoDuca filed an affirmation in opposition that Schwartz had researched and written. It cited six cases to support their legal position.
 
 None of them existed.
 
-Schwartz had used ChatGPT to find supporting precedent. It produced cases with specific names, docket numbers, and paragraphs of plausible reasoning: *Varghese v. China Southern Airlines*, *Martinez v. Delta Airlines*, *Shaboon v. EgyptAir*, and three others. Schwartz — his own affidavit records this — asked ChatGPT directly, *"is varghese a real case?"* ChatGPT said yes, and that it could be found on Westlaw and LexisNexis. He believed it. He didn't check Westlaw. He didn't check Lexis. The brief went to court.
+Schwartz had used ChatGPT to find supporting precedent. It produced cases with specific names, docket numbers, and paragraphs of plausible reasoning: *Varghese v. China Southern Airlines*, *Martinez v. Delta Airlines*, *Shaboon v. EgyptAir*, and three others. Schwartz later asked ChatGPT directly, *"is varghese a real case?"* ChatGPT said yes, and that it could be found on Westlaw and LexisNexis. He did not verify the cited cases in a real legal research database before relying on them.
 
-Opposing counsel couldn't find the cases because they weren't there. Judge P. Kevin Castel issued a sanctions order on **June 22, 2023**: a $5,000 sanction imposed jointly on both attorneys and the firm. The order is blunt about what went wrong — not the existence of ChatGPT, but the absence of verification. *"The Court would not have been led astray,"* Castel wrote, *"had counsel simply consulted Westlaw or any other legal research platform."*
+Opposing counsel couldn't find the cases because they weren't there. Judge P. Kevin Castel issued a sanctions order on **June 22, 2023**: a $5,000 sanction imposed jointly on both attorneys and the firm. The order is blunt about what went wrong - not the existence of ChatGPT, but the absence of verification. It says technological assistance is not inherently improper, but lawyers still have a gatekeeping duty to check filings for accuracy.
 
-The missing check: **one human spending ten minutes opening the cited cases on a real legal database before the brief was filed.**
+The missing check: **one human opening the cited cases on a real legal database before the brief was filed.**
 
 Read:
 - The sanctions opinion itself (short, readable, quotes Schwartz's affidavit directly): [law.justia.com — Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
@@ -40,6 +40,40 @@ Read:
 - The Guardian's account, including Rudge's findings and the refund: [Guardian — Deloitte to pay money back to Albanese government after using AI in A$440,000 report](https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report)
 - The Register's technical summary, including the GPT-4o disclosure and the "new fake refs in the revision" detail: [The Register — Deloitte to refund part of A$440k Australian report after AI snafu](https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/)
 
+## Why the LLM fabricates
+
+### It completes the shape
+An LLM is trained to continue text in a pattern that looks right. If the pattern is "legal brief with supporting cases" or "consulting report with academic references," the next likely thing is a case name, a citation, a quoted authority, a careful paragraph. The model can produce the form even when the world does not contain the fact. Fluency is cheap. Existence is separate.
+
+### It fills gaps instead of stopping
+When the sources do not contain the missing piece, the model often supplies what would make the answer feel complete. A user asks for precedent, so the answer supplies precedent. A report needs literature support, so the answer supplies literature. The dangerous moment is not only ignorance; it is the system smoothing over ignorance so the document does not show a hole.
+
+### It treats nearby truth as permission
+A real airline, a real court, a real department, a real policy area, a real academic style: all of that gives the output enough scaffolding to sound grounded. The invented part can sit next to true parts and borrow their credibility. That is why partial grounding is treacherous. The sentence before the false citation may be true, and the sentence after it may be true, which makes the false middle harder to feel.
+
+### It obeys pressure for specificity
+Specific names, dates, numbers, and citations make writing useful. They also make fabrication more convincing. If you ask for a concrete answer and do not give the model a way to say "not enough evidence," it may produce concrete detail anyway. Specificity is not proof. A docket number can be made up just as confidently as an adjective.
+
+### It can verify inside the same fiction
+Asking the same model "are you sure?" is not the same as checking the world. The model may continue the same invented pattern with a second layer of reassurance. In Mata v. Avianca, asking ChatGPT whether Varghese was real did not create an external check. It created another fluent answer. Verification has to leave the generation loop and touch the source.
+
+### It inherits organisational shortcuts
+The model did not file the brief or deliver the client report by itself. People wrapped it in a workflow. If the workflow rewards speed, accepts polished prose, and has no step where someone opens the cited source, the fabrication survives. The missing check is organisational, not only technical.
+
+## Why grounding fails even when the facts are in context
+
+### The fact is present but not load-bearing
+Putting a source in the context window does not force the model to use it. The model may read a paragraph, absorb its topic, and then answer from the broader pattern the topic evokes. The fact is nearby, but it is not carrying the sentence. This is why a citation can sit beside a claim without supporting it.
+
+### The context is crowded
+Long context is not the same as equal attention. A source can be present but buried under meeting notes, prior drafts, instructions, summaries, and user pressure. The model may anchor on the most recent, most repeated, or most rhetorically obvious material rather than the quiet sentence that actually settles the claim.
+
+### The source says less than the answer wants
+Ground facts often support a narrower statement than the output makes. A file says one customer complained; the answer says customers are unhappy. A policy says one workflow needs approval; the answer says the company forbids the whole category. The model did use the source, but stretched it past what the source can bear.
+
+### The model resolves conflict by smoothing
+When two sources disagree, or when a source partly supports and partly weakens a claim, the model often produces a clean synthesis instead of preserving the tension. That synthesis may sound more useful than the messy evidence, but it hides the thing a human needed to see: this is not settled. Grounded work keeps the conflict visible.
+
 **What to bring to class.**
 
 One thing.
@@ -48,7 +82,7 @@ One sentence per case, on paper or in a note you'll open Monday: *"The organisat
 
 That's it. No reading list. No ten-bullet rundown of every headline agent failure of 2024–25. Two cases, close-read, with the missing check named in your own words.
 
-**Time:** 25 minutes. 10 per case, 5 for the two sentences.
+**Time:** 35-40 minutes. 10 per case, 10-15 for the mechanisms, 5 for the two sentences.
 
 <!-- maintainer -->
 
@@ -58,7 +92,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - Asking the student to name the missing check in their own words (both cases converge on *verification before submission*) seeds Module 5's Phase 2 (classification) and Phase 3 (grounding rules), and connects to the lecture's Technique 1 (citation re-verification).
 
 **Why these two specifically (and not e.g. Air Canada):**
-- **Mata v. Avianca**: court sanctions order contains the affidavit quoting Schwartz asking ChatGPT "is varghese a real case?" — this is the single most pedagogically useful quote in any LLM-failure case, because it IS citation cargo-cult in one line. The missing check is trivially identifiable (open Westlaw, ten minutes).
+- **Mata v. Avianca**: court sanctions order contains the affidavit quoting Schwartz asking ChatGPT "is varghese a real case?" — this is the single most pedagogically useful quote in any LLM-failure case, because it IS citation cargo-cult in one line. The missing check is trivially identifiable: open the cited cases in a real legal database before relying on them.
 - **Deloitte Australia**: the revision-repeated-the-failure detail is irreplaceable. It proves that acknowledging the issue isn't the fix; BUILDING THE VERIFICATION STEP is. Connects directly to why a discipline and a loop beat a one-time acknowledgement.
 - **Rejected — Moffatt v. Air Canada**: outcome on record, architecture not. Tribunal didn't dig into whether the chatbot lacked grounding rules or whether Air Canada had a verification process. Speculative for teaching.
 - **Rejected — Cursor "Sam"**: practitioner-documented but informal (X threads, founder apology) rather than court/government record. Shorter half-life as a shared reference.
@@ -66,6 +100,8 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 
 **Factual precision owed:**
 - Mata sanction is **$5,000 jointly** on both attorneys and the firm — NOT $5,000 per attorney. Earlier drafts had this wrong; verified from the sanctions order itself (docket 54).
+- Detector pass 2026-04-30 removed three unsupported/over-clean details from the student-facing Mata story: "small" firm, the "ten minutes" estimate, and a direct Castel quote that did not appear in the linked Justia order.
+- Detector pass 2026-04-30 softened the Schwartz timeline: the order records conflicting accounts about when he asked ChatGPT whether Varghese was real, so the story now says "later asked" and keeps the pedagogical point on verification.
 - Deloitte case is **2025**, not 2024. Contract signed late 2024; report published July 2025; Rudge's critique and the refund both October 2025.
 - Model used by Deloitte is **Azure OpenAI GPT-4o** — disclosed in the revised report's own appendix. Named directly; don't hedge.
 - Firm AI policy at Levidow, Levidow & Oberman: **unverified**. The sanctions order doesn't document whether an AI-use policy existed or didn't. Keep the pedagogical frame on "the missing check" (verification) rather than on the absence of a policy. Policy-vs-discipline is a Module 7 discussion; here we're naming the specific unperformed verification step.

@@ -9,10 +9,10 @@ About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake g
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Generate** a real personal artifact (an HTML one-pager) using an LLM without guardrails
-- **Apply** a structured guardrail and observe the effect on output quality
+- **Generate** a visible personal artifact (an HTML one-pager) so you can inspect what the agent produced
+- **Apply** structured guardrails and observe how the agent's output changes
 - **Identify** fabrication in LLM output by using your own domain knowledge as the evaluator
-- **Adjust** guardrails to fix specific failure modes
+- **Package** what you learned into reusable generation rules for the next similar task
 
 ## Start here
 
@@ -28,9 +28,9 @@ After this module, you will be able to:
 
 [Opening: Context is King](lectures/context-is-king.md)
 
-[Personal site with guardrails](exercises/personal-site-with-guardrails.md)
+[Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails.md)
 
-[Closing: What just happened](lectures/what-just-happened.md)
+[Closing: Iterate and learn](lectures/what-just-happened.md)
 
 ## Key Concepts
 - Guardrails are structured context, not a checklist
@@ -78,15 +78,13 @@ You just made great output AND packaged what you learned into a file the agent c
 
 ## Homework after Module 1 — before Module 2
 
-[Module 2 prework](exercises/module-2-prework.md). Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy's LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.
+[Module 2 prework](lectures/module-2-prework.md). Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy's LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.
 
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29 (body touched after maintainer review; re-review needed)
+- draft 2026-04-30 (M1 frame shifted from site-making to iterate-and-learn agent behavior; needs re-review)
 - maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
-
-**TODO (Cowork edition review 2026-04-29):**
-- The cold-critic prompt still says "Spawn a subagent" in the Cowork edition. Prompt-block change is gated: propose a before/after and get maintainer approval before editing. Likely fix is a runtime fork or neutral prompt wording that uses "agent" for Cowork.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply

@@ -5,8 +5,6 @@ The eval that ran once in Module 5 now runs on every output, and the work tighte
 
 ## Prework
 
-**Setup:** Start this module at the training-directory root. Module 6 consumes `judges/groundedness-judge.md` from Module 5, writes run artifacts under `module-6/`, keeps the judge fixed, and sharpens `./generation-tactic.md`.
-
 Ethan Mollick, "Garbage Can and Bitter Lesson." Plus the still-uncertain line you wrote in Module 5 (the thing you flagged a grounded briefing still couldn't reach). That's Module 6's starting point.
 
 ## What You'll Learn
@@ -17,6 +15,8 @@ After this module, you will be able to:
 - **Distinguish** the one-off judge you picked in Module 5 from one that runs on every output as a fixed yardstick the work tightens against
 
 ## Start here
+Start this module at the training-directory root. Module 6 consumes `judges/groundedness-judge.md` from Module 5, writes run artifacts under `module-6/`, keeps the judge fixed, and sharpens `./generation-tactic.md`.
+
 Did you read Ethan Mollick's *The Bitter Lesson versus The Garbage Can*?
 
 His question is the right opener for Module 6: will the bitter lesson apply inside your company? Can agents get better if you define the outcome and let them find the path, or does the organisational mess still matter too much?

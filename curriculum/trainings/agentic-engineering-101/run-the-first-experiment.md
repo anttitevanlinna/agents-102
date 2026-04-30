@@ -78,20 +78,24 @@ Before you close: read [Reading the return](lectures/reading-the-return.md) (~5 
 
 ## Next
 
-Module 5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your Module 4 session directly. Close the session after the run is done if you want; the trace is on disk either way.
+Module 5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your Module 4 session directly. See [Claude Code for engineers — session transcripts](reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened). Close the session after the run is done if you want; the trace is on disk either way.
 
 ## Pre-reads before Module 5
 
-Optional. Skipping either piece does not break Module 5. Both sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
+Optional. Skipping any of these does not break Module 5. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
 
-**Read — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min).** Interview write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes the 80/20 reframe Module 5 will name from felt evidence rather than introduce as a slogan.
+**Read — [Clean Code Is Steering: Insights from Uncle Bob](supplementary/clean-code-is-steering.md) (~7 min).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
+
+**Watch — Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~30 min).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes the 80/20 reframe Module 5 will name from felt evidence rather than introduce as a slogan.
 
 **Read (longer) — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).** The four-step loop (plan, work, review, compound). Why for Module 5: primes the planning-and-review-heavy posture Module 5 will name from felt evidence.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
+**Quality:** draft 2026-04-30 (student-facing pre-read link added; prior compendium audit degraded by touch)
+- draft 2026-04-30 (corrected "You're the Bread" from read/~5 min to watch/~30 min)
+- draft 2026-04-30 (added Uncle Bob supplementary pre-read for Module 5 priming; needs compendium re-audit before reclaiming compendium-audited)
 - compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Prework; M4 audit GO after blocker fixes)
 - compendium-audited 2026-04-26 (prior audit) — superseded
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)

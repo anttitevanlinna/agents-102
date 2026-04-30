@@ -38,7 +38,7 @@ An agent is not one thing. It is a few pieces arranged around the LLM.
 
 **The context** is what the model reads before and during the task: your prompt, files, rules, memory, sources, prior outputs, and connected work material. Context is how the agent knows what world it is working in.
 
-**The tools** are what the agent can use: connectors, file reads and writes, code execution, search, APIs, calendars, tickets, mail, or other agents. Tools give the agent hands.
+**The tools** are what the agent can use: connectors, file reads and writes, code execution, search, APIs, calendars, tickets, mail, or other agents. Tools give the agent hands. The model chooses among them by reading tool names, descriptions, input shapes, and the current context. The description is part of the mechanism, not documentation off to the side.
 
 **The goal** is the job. A chatbot answers the next message. An agent works toward an outcome: build the memory, prepare the briefing, check the claims, update the ticket, run the loop.
 

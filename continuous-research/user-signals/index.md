@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-04-30](questions/2026-04-30-clean-code-agentic-development.md) — How should Uncle Bob / Clean Code principles map to agentic software development training? Gap: which classic engineering disciplines become more important when AI writes more code.
 - [2026-04-19](comments/2026-04-19-training-is-forcing-function.md) — M2+ exercises can't run without buyer infra (Claude Code access, sanctioned sources, runtime, skill-sharing permissions). Two outcome arcs on same curriculum: prepared companies accelerate through M7/M8; unprepared get forced to put in basics. Design property, not an accident.
 - [2026-04-19](comments/2026-04-19-post-training-walls-are-a-better-problem.md) — F-Secure validation (2 cohorts): the three post-training walls are real, but they're symptoms of success. Moving from "nobody building" to "builders stuck on data access" IS the transformation. Reframe walls as proof of life, not limitation.
 - [2026-04-19](comments/2026-04-19-claude-code-choice-defensible-by-absence.md) — Claude Code choice for training is defensible by absence: no business-side builder has ever shipped proper agents on LangChain (2022+) or Copilot Studio (2023+). Convergence-by-absence is still convergence.

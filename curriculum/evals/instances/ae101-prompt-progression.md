@@ -34,7 +34,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
      mkdir -p ~/Documents/ae101-content
      tar xzf ~/Downloads/agents-102-content.tar.gz -C ~/Documents/ae101-content
 
-   Confirm the absolute path of ~/Documents/ae101-content back to me. The tarball expands to lectures/, exercises/, reference/, content/skills/.
+   Confirm the absolute path of ~/Documents/ae101-content back to me. The tarball expands to lectures/, exercises/, reference/, supplementary/, content/skills/.
 
 2. Install the curated skills as personal skills:
 

@@ -4,6 +4,10 @@ There is truth out there. Your sources carry shards of it. Your agent, left to i
 
 When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don't support, it still produces something. The difference between those two states is invisible in the tone of the output. That's the whole problem.
 
+PS: we ran today's four detection techniques on the Mata v. Avianca pre-read before class. The story mostly held. And still: source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. That is the point. Even a careful teaching case benefits from the check.
+
+PPS: then we fixed the story and ran the four detectors again. Source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.
+
 **Why this happens, in one sentence.**
 
 Large language models generate the next likely word. Not the next true word; the next likely one. They're trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.
@@ -113,5 +117,5 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 
-**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
+**Quality:** draft 2026-04-30 (opening PS/PPS added from four-detector pass + rerun on Mata pre-read — re-audit needed)
 - compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)

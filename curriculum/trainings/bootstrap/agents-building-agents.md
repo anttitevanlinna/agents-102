@@ -5,8 +5,6 @@ The tool that builds tools compounds.
 
 ## Prework
 
-**Setup:** Start this module at the training-directory root, then connect the separate shared deliberation folder the trainer posts in chat. Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
-
 Run the Module 7 next-step artifact, test one assumption, ask for one name, and talk to one person. Then read Risto on acting on the future and building hypotheses, and Rumelt on crux / *Good Strategy Bad Strategy*.
 
 ## What You'll Learn
@@ -17,6 +15,7 @@ After this module, you will be able to:
 - **Read** the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Bootstrap)
 
 ## Start here
+Start this module at the training-directory root, then connect the separate shared deliberation folder the trainer posts in chat. Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
 Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.
 

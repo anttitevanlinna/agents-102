@@ -1,6 +1,8 @@
-# Exercise: Personal site with *guardrails*
+# Exercise: Paint by agent with guardrails
 
 **What you do:**
+
+The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next run starts smarter.
 
 **Phase 1. The boring baseline.**
 
@@ -121,7 +123,7 @@ Open prompts. You drive.
 
 **Close. Package what you learned.**
 
-The site is done. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
+The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
 
 **Prompt** *(Claude Code)*
 
@@ -132,11 +134,11 @@ When you're done, tell me in 4–6 lines what's in the file: the structure you u
 ```
 
 
-Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
+Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
 
 **What happens:**
 
-Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. Claude's output is shaped entirely by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely "you" the output.
+Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. The agent's output is shaped by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely "you" the output.
 
 That's the whole of Module 1's big idea, proven with your own name on it.
 
@@ -148,7 +150,8 @@ Generic output comes from generic context. The LLM didn't get better between Pha
 
 <!-- maintainer -->
 
-**Quality:** maintainer-reviewed 2026-04-29
+**Quality:** draft 2026-04-30
+- draft 2026-04-30 (renamed and reframed exercise around visible artifact → iterate → package agent behavior; prompts untouched; needs re-review)
 - maintainer-reviewed 2026-04-29 (Antti, M1 exercise manual run; all six phases tested under Cowork lens)
 
 **Deferred per student-facing-first rule:**

@@ -7,7 +7,7 @@ Read the un-packaged Module 4 run through three failure-mode lenses, build the v
 
 Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional pre-reads in the Module 4 to Module 5 gap: Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~5 min); Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).
+Optional prep in the Module 4 to Module 5 gap: watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich) (~30 min); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (~15–20 min).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -92,7 +92,8 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-28
+**Quality:** draft 2026-04-30 (student-facing prework timing corrected; prior compendium audit degraded by touch)
+- draft 2026-04-30 (corrected "You're the Bread" from read/~5 min to watch/~30 min)
 - compendium-audited 2026-04-28 (M5 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_prompts §1d-§21 + check_pedagogy §34-§38 + check_lectures + check_research_claims + check_platform_and_boundaries; this cycle: §36 verifier smoke-test added to Phase 3, §24 meta-ask reshaped to open-hook with `Shape:` colon, §38 worktree-fork wiring to "M4 starting point" intact)
 - compendium-audited 2026-04-26 (check_writing — `substrate` swap; check_student_facing #21; check_pedagogy #9b + compound-shape; check_prompts; check_strategy_tie_in; check_lectures; check_research_claims — pre-reads attribution corrected, see `curriculum/evals/instances/ae101-m5-m6-source-verification.md`) — superseded
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
@@ -105,7 +106,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. Self-study Teacher Claude shares the link in the M4 close-out message. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
 
 **Push-back moves** (trainer covers in cohort; the Nerd skill that consumes these in self-study is upstream-pending):
-- **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Nerd: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."*
+- **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Nerd: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* See [Claude Code for engineers — session transcripts](reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened).
 - **Phase 1 diagnosis-as-blame** — student frames failures as their fault (*"I should have written a better prompt"*). Nerd: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."*
 - **Phase 1 over-diagnosis** — student lists 8 failures across all three modes. Nerd: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"*
 - **Phase 2 prescription-skip** — student goes straight from named failure to building the fix without the align-then-run question. Nerd: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"*

@@ -17,7 +17,7 @@ First ask me for the first names of the people in this group. Wait for my answer
 
 For each first name I give you, find that person's folder among the working folders and read `rollout-notes.md` from it. If a folder or file is missing, tell me which one is missing and continue with the files you can read. Do not interview the group for raw material.
 
-After reading the files, propose the ONE difficulty that, if our team got it right, would make the others follow. That's the crux.
+After reading the files, propose the ONE difficulty that, if our team got it right, would make the others follow. That's the crux (Rumelt).
 
 Show the crux candidate in chat first, about one page long. Don't save yet. Write enough for the group to check and debate: name the crux, explain why you chose it over the other difficulties, quote or paraphrase the evidence from the rollout notes, and name what would change if we got this crux right. I will ask the group what is wrong or missing.
 

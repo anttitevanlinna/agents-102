@@ -6,9 +6,9 @@ You don't pick a quality check because someone said so. You run several on your 
 
 ## Prework
 
-**Setup:** Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under `module-5/`, saves the winning judge at `judges/groundedness-judge.md`, and compounds groundedness rules into `./CLAUDE.md`.
+Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. Now read [The Missing Check](lectures/module-5-prework.md): two public-record cases with documented organisational root causes.
 
-Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. [Before Module 5](lectures/module-5-prework.md) added two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: "the missing organisational check was X."
+Walk in with one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -18,6 +18,8 @@ After this module, you will be able to:
 - **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
 
 ## Start here
+Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under `module-5/`, saves the winning judge at `judges/groundedness-judge.md`, and compounds groundedness rules into `./CLAUDE.md`.
+
 In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it).
 
 Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment — before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.

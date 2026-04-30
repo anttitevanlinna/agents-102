@@ -16,7 +16,7 @@ Outputs:
 ```text
 site/clients/<customer>/index.html
 site/clients/<customer>/<training>/index.html
-site/clients/<customer>/<training>/trainer-guide.html
+site/clients/<customer>/<training>/trainer-guide.html   # if curriculum/trainings/<training>/trainer-guide.md exists
 site/clients/<customer>/<training>/agents-102-content.tar.gz   # AE101 only
 site/clients/<customer>/<training>/starter.tar.gz   # Bootstrap only
 ```

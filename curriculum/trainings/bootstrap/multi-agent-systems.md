@@ -5,8 +5,6 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## Prework
 
-**Setup:** Start this module at the training-directory root, the same root where Module 2 created `./CLAUDE.md`, `memory/`, `sources/`, and `agents/`. Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief.
-
 [Schedule your personal agent](exercises/personal-agent-homework.md). The scheduled agent has been reading your challenge memory for one week of observation. Selected sections from [What is an Agent](supplementary/what-is-an-agent.md) covered tools, memory, and context. [Before Module 3](exercises/module-3-prework.md) added three practitioner pieces and a plain-language primer on helper agents: what they are, how to start one, what you'll see.
 
 ## What You'll Learn
@@ -18,7 +16,13 @@ After this module, you will be able to:
 - **Evaluate** when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins
 
 ## Start here
+Start this module at the training-directory root, the same root where Module 2 created `./CLAUDE.md`, `memory/`, `sources/`, and `agents/`. Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief.
+
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
+
+First, a small boundary shift. We work mostly with text in this training: prompts, notes, memory files, source briefs, rules. But text is also where action starts. A Slack post, a ticket update, a calendar note, a command: before another system obeys it, the agent has produced words.
+
+[Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 
 [Exercise: Name your crux](exercises/name-your-crux.md)
 

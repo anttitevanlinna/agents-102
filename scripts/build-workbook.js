@@ -11,7 +11,7 @@
 // Output:
 //   site/clients/<customer-slug>/index.html                    customer index
 //   site/clients/<customer-slug>/<training-key>/index.html     workbook
-//   site/clients/<customer-slug>/<training-key>/trainer-guide.html
+//   site/clients/<customer-slug>/<training-key>/trainer-guide.html (when that training has trainer-guide.md)
 //   site/clients/<customer-slug>/<training-key>/*.tar.gz       training payloads
 //
 // Thin wrapper around shared logic in site/layouts/curriculum.js (UMD —
@@ -241,14 +241,14 @@ const WORKBOOK_INIT_JS = `
 })();
 `;
 
-// Trainer guide: single .md → standalone HTML at site/clients/<customer>/trainer-guide.html.
-// Same chrome (CSS + decorations) as the workbook, but no module spine — one
-// document, rendered top-to-bottom. Generic content (not per-customer); we
-// emit per-customer purely so it lives behind the same gate as the workbook.
-function buildTrainerGuide(customer) {
-  const guidePath = path.join(ROOT, 'curriculum/trainer-guide.md');
+// Trainer guide: training-specific .md → standalone HTML
+// at site/clients/<customer>/<training>/trainer-guide.html. Same chrome (CSS +
+// decorations) as the workbook, but no module spine — one document, rendered
+// top-to-bottom.
+function buildTrainerGuide(customer, trainingKey) {
+  const guidePath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'trainer-guide.md');
   let md = readMd(guidePath);
-  if (md === null) throw new Error(`Trainer guide not found: ${guidePath}`);
+  if (md === null) return null;
   md = escapeTildes(md);
   // Rewrite cross-doc links to absolute customer-workbook anchors so the trainer
   // can click a `[reference](reference/foo.md)` ref in the guide and land in
@@ -359,7 +359,7 @@ function buildPayload(trainingKey, customer, outDir) {
   // The payload URL is training-scoped so one customer can host multiple
   // trainings without agents-102-content.tar.gz / starter.tar.gz overwriting each other.
   //
-  // AE101    — agents-102-content.tar.gz (lectures/exercises/reference/skills;
+  // AE101    — agents-102-content.tar.gz (lectures/exercises/reference/supplementary/skills;
   //                                       extracted at ~/Documents/ae101-content/)
   // Bootstrap — starter.tar.gz  (empty working-folder skeleton; extracts in-place
   //                              into the student's connected/working folder at
@@ -410,13 +410,16 @@ function buildTraining(customer, trainingKey) {
   console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
 
   // Trainer guide: same gate (per-training customer dir), separate file.
-  // Generic content, rendered beside each workbook so its cross-doc links
-  // resolve into that training's single-page workbook.
-  const guideHtml = trainerGuideTemplate(customer, buildTrainerGuide(customer));
-  const guideFile = path.join(outDir, 'trainer-guide.html');
-  fs.writeFileSync(guideFile, guideHtml);
-  const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
-  console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+  // Training-specific source rendered beside each workbook so cross-doc links
+  // resolve into that workbook.
+  const guideBody = buildTrainerGuide(customer, trainingKey);
+  if (guideBody !== null) {
+    const guideHtml = trainerGuideTemplate(customer, guideBody);
+    const guideFile = path.join(outDir, 'trainer-guide.html');
+    fs.writeFileSync(guideFile, guideHtml);
+    const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
+    console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+  }
 }
 
 function deployedTrainingKeys(customer) {
@@ -467,7 +470,7 @@ function customerIndexTemplate(customer, trainingKeys) {
 <main>
   <p class="eyebrow">${CR.esc(customer)} training hub</p>
   <h1>Agents 102</h1>
-  <p class="lede">Training workbooks deployed for this customer. Each program has its own workbook, trainer guide, and downloadable payloads where needed.</p>
+  <p class="lede">Training workbooks deployed for this customer. Each program has its own workbook, plus trainer guides and downloadable payloads where needed.</p>
   <ul class="training-list">
 ${cards}
   </ul>

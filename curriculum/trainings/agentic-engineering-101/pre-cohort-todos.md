@@ -25,6 +25,7 @@ Mandatory for AE101 modules per `.claude/skills/content-creation/SKILL.md`. Disp
 - **Plan-mode UX on cohort Claude Code version.** Verify *keep planning with feedback* flow; verify whether softening-on-regeneration (Claude acknowledges push-back but re-softens the step) is a reliable pattern. If yes → named failure mode in M2's watch-fors. If not → drop from watch-fors.
 - **Skill invocation UX.** Where skills live in the content folder; how students invoke from there; any changes to personal-skill discovery at `~/.claude/skills/`.
 - **Skill file format.** Confirm current frontmatter schema (required fields, valid values) before first cohort reads authored SKILL.md.
+- **Hook mechanics depth.** Decide whether AE101 should own the advanced hook treatment that Bootstrap may not carry: practical hook examples, stop-hook boundaries, and the simpler command-loop alternative where the agent runs verification and loops back without a hook.
 - **M5 prior-session scrollback read.** Claude Code reading `~/.claude/projects/<project>/` reliably enough for a fresh M5 session to ground Phase 1 diagnosis in the M4 transcript. If unreliable, route through repo-state only (commits + file changes + branch).
 - **M5 Phase 1b double four-subagent batch.** Two sequential four-subagent spawns in one session (detectors then regenerators); confirm the second batch fires cleanly after the first returns. If throttled, run Phase 1b sequentially and note in body.
 - **M5 in-turn text alongside Agent dispatches.** Confirm Claude streams the three-paragraph self-consistency brief between regenerator dispatch and collation return.
@@ -53,6 +54,8 @@ Mandatory for AE101 modules per `.claude/skills/content-creation/SKILL.md`. Disp
 ## 7. Cross-cutting ops
 
 - **Team-kit home runbook** — if sponsor answered "we don't have one" on the pre-engagement contract, who creates the default shared repo, when, how students get access. Ops-side, before Day 1. Cross-cutting; not M3-specific even though Ex3 is where it first lands. Assumption: unresolved team-kit debate does not block Modules 4–6; students can continue in personal clones/worktrees, flag team-worthy candidates, and promote later once the home is decided.
+- **Team-practices storage depth** — decide where AE101 teaches shared engineering practices to live: repo `CLAUDE.md`, `CLAUDE.local.md`, personal or team skills, plugins, ADRs, contribution docs, review checklists, or a team-kit repo. Tie the answer to ownership and PR review, not convenience.
+- **Architecture integrity reference** — add the engineering-depth version of the ADR note: ADRs are one effective pattern, but the load-bearing question is how the team preserves architectural intent while agents make local changes quickly.
 
 ## 8. M5 freshness dependency
 

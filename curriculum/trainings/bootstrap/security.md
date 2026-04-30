@@ -5,8 +5,6 @@ You can't tell if your agent is safe by looking at its output. You need a way to
 
 ## Prework
 
-**Setup:** Start this module at the training-directory root. Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
-
 [Before Module 4](lectures/module-4-prework.md). Two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work (company controls stay in place; agents add new ways for access, context, and instructions to go wrong).
 
 ## What You'll Learn
@@ -19,7 +17,11 @@ After this module, you will be able to:
 - **Evaluate** residual risk plainly: what's left after mitigation, and what future sessions should remember before they touch the system again
 
 ## Start here
+Start this module at the training-directory root. Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
+
 You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
+
+[Demo: Agent loop, raw](lectures/agent-loop-raw.md)
 
 [Lecture: The discipline of risk](lectures/practice-of-risk.md)
 
@@ -68,7 +70,7 @@ Remember also: agent actions start as text. A tool call, an email draft, a CRM u
 
 ## Homework after Module 4: between-module reading
 
-Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read [Before Module 5](lectures/module-5-prework.md): Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: "the missing organisational check was X."
+Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read [The Missing Check](lectures/module-5-prework.md): Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: "the missing organisational check was X."
 
 <!-- maintainer -->
 

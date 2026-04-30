@@ -5,8 +5,6 @@ You can't really share an agent. You can share context, a skill, the output, or 
 
 ## Prework
 
-**Setup:** Start this module at the training-directory root. Module 7 is the first half of the extension package. It reads the agent system you built across Modules 2-6, writes sharing work under `module-7/`, and saves a next-step file that Module 8 uses.
-
 Absorption bottleneck pre-read: your organisation cannot absorb capability faster than people can understand it, trust it, and fit it into existing work. Walk in with one example where access existed but real use did not follow.
 
 ## What You'll Learn
@@ -18,6 +16,8 @@ After this module, you will be able to:
 - **Name** the likely adoption failure before it happens, especially the social failure you're not seeing
 
 ## Start here
+Start this module at the training-directory root. Module 7 is the first half of the extension package. It reads the agent system you built across Modules 2-6, writes sharing work under `module-7/`, and saves a next-step file that Module 8 uses.
+
 The stack on disk: a memory, synthesis across three source zones, skills that audit the system, a judge that got sharper by watching itself miss things. Somewhere in it is a thing that produced output worth trusting enough to check before a meeting. Once it was wrong; a correction landed; the correction stuck.
 
 The question that shows up on its own: *could this help someone else?*

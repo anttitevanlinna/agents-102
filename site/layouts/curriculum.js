@@ -53,6 +53,9 @@
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
+            supplementaries: [
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
+            ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
@@ -447,7 +450,7 @@
         }
 
         if (t.supplementaries && t.supplementaries.length) {
-            html += '<' + heading + ' class="index-heading">' + (opts.showModuleCountHeading ? 'Supplementary — grows across the training' : 'Supplementary') + '</' + heading + '>';
+            html += '<' + heading + ' class="index-heading">Supplementary</' + heading + '>';
             html += '<ol class="module-list index-supplementaries">';
             t.supplementaries.forEach(function (s) {
                 html += simpleRowHtml('Reference', s.title, opts.fileHref('supplementary', s.slug));

@@ -14,7 +14,7 @@ The exercises run on any of these three. Same engine underneath, three ways to r
 - **Claude Code Desktop app** — macOS or Windows GUI. Good alternative if you prefer a window over a terminal. Personal skills use the same `~/.claude/skills/<name>/SKILL.md` shape.
 - **Claude Cowork** — same Claude Desktop app, *Cowork* tab. Connect your training-directory folder once; same prompts, same artifacts. Best if you don't want to think about CLI plumbing. Personal skills are created through *Customize* → *Skills* → *New* → *Create with Claude*.
 
-**Account tier:** Claude Pro or Team. Your sponsor confirms the license.
+**Account tier:** Claude Pro, Max, Team, or Enterprise. Your sponsor confirms the license. On Team and Enterprise, your organization owner can disable Cowork; if the Cowork tab is missing, use Claude Code Desktop or CLI with the same training directory.
 
 **What's the same across all three:** the agent engine, `CLAUDE.md` files (loaded the same way from your training folder), parallel subagents (Cowork's UI calls them *agents*), the prompts in this curriculum.
 
@@ -22,6 +22,8 @@ The exercises run on any of these three. Same engine underneath, three ways to r
 - **Plan mode** is a Claude Code feature (CLI and Desktop) — Cowork doesn't have a named plan mode. The exercises that use plan mode in Code phrase the same discipline differently in Cowork: *"Before you do anything, write a plan."* Same move, different invocation.
 - **Skill install affordance** differs by mode: CLI/Desktop load standalone skills from `~/.claude/skills/<name>/SKILL.md`; Cowork creates personal skills through the Customize UI. Module 4 uses one `security-audit` skill across runtimes.
 - **Vocabulary** — Code says *subagent*, Cowork's UI says *agent*. The site swaps the word to match what you see on screen.
+
+**Fallback if Cowork is unavailable.** Use Claude Code Desktop or Claude Code CLI. The Bootstrap prompts and artifacts are written to work across all three surfaces. Do not use an API-key-only route as the default backup for this training: it would skip the local working folder, personal skills, connector UI, and participant-visible agent workflow the curriculum teaches.
 
 **Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) cover direct install.
 
@@ -189,6 +191,7 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 | Folder-local `.claude/skills/` NOT auto-registered in Cowork | Probe Test 3 — Cowork's `<available_skills>` showed only centralised namespaces; folder-local `probe-skill` did not appear |
 | Personal-skill creation path | Antti correction 2026-04-29 — Cowork personal skills are created from Claude Desktop *Customize* → *Skills* → *New* → *Create with Claude* |
 | Skill install needs new session to take effect | Verified pattern: install/save → start new session → invoke. Skill registry reads at boot. |
+| Cowork availability / licensing | Official docs checked 2026-04-30: Cowork is available on paid plans (Pro, Max, Team, Enterprise) in Claude Desktop for macOS/Windows; Team/Enterprise owners can disable Cowork in Organization settings > Capabilities ([getting started](https://support.claude.com/en/articles/13345190-getting-started-with-cowork), [Team/Enterprise considerations](https://support.claude.com/en/articles/13455879-use-claude-cowork-on-team-and-enterprise-plans), [product page](https://claude.com/product/cowork)) |
 
 ### Known gaps
 
@@ -197,6 +200,7 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 - **Cowork personal-skill path.** Use Claude Desktop *Customize* → *Skills* → *New* → *Create with Claude*, then save and open a new Cowork session.
 - **M4 slash form.** Module 4 uses one personal skill: `/security-audit`. The two lenses live inside that skill and are selected by the audit prompt.
 - **Folder-local `.claude/agents/` NOT auto-registered in Cowork either.** Subagents dispatch as the built-in `general-purpose` context.
+- **Cowork unavailable / disabled fallback.** If a participant cannot use Cowork because their tenant disables it, desktop readiness fails, or the Cowork tab is missing, switch them to Claude Code Desktop or CLI against the same training directory. Avoid API-key-only fallback for Bootstrap delivery unless redesigning the exercise: it does not preserve the participant-facing runtime, connector, personal-skill, and local-folder mechanics.
 
 ### Probes — all clear (2026-04-25, Antti)
 

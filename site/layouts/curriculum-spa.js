@@ -22,6 +22,7 @@
     var directFile   = params.get('file'); // for standalone exercise/lecture viewing
     var container    = document.getElementById('module-body');
     var directFileParent = null; // set by extractParent() if the file declares <!-- parent: <slug> -->
+    var training = TRAININGS[trainingKey];
 
     // ============================================================
     // Runtime switcher — Bootstrap only.
@@ -79,7 +80,6 @@
         return;
     }
 
-    var training = TRAININGS[trainingKey];
     if (!training) {
         container.innerHTML = '<h1>Training not found</h1><p>No training named <code>' + esc(trainingKey) + '</code>. <a href="curriculum.html">Back to index</a>.</p>';
         document.title = 'Training not found — Agents 102';

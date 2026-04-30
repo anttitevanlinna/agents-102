@@ -8,7 +8,11 @@ Lookup material for the hands-on parts of the training. Flat, not progressive �
 
 ## Current reference documents
 
-- **claude-quick-reference.md** — Claude Code basics: install, files, connectors, skills, subagents, new conversations, troubleshooting. Living document — grows as training material uncovers gaps.
+- **claude-quick-reference.md** — Claude Code basics: install, files, connectors, skills, subagents, new conversations, troubleshooting. Bootstrap lookup.
+- **claude-code-for-engineers.md** — AE101 lookup for memory hierarchy, rules, skills, subagents, plan mode, transcripts, hooks, and scheduling primitives.
+- **mcp-and-connectors.md** — AE101 lookup for ticket-tracker connectors, MCP install paths, and tenant-admin fallbacks.
+- **multi-session-git.md** — AE101 optional homework on worktrees, branches, clones, and safe multi-session Git workflow.
+- **scheduled-agents.md** — AE101 lookup for local scheduled tasks, `/loop`, and remote routines.
 
 More may be added (a glossary, a model-card reference, an evals cheat-sheet) if specific needs emerge.
 
@@ -17,7 +21,7 @@ More may be added (a glossary, a model-card reference, an evals cheat-sheet) if 
 Curriculum (lectures, exercises, supplementaries, module files) stays **concept-focused**. When a student might need a specific "how do I..." answer, the content links here:
 
 ```markdown
-Stuck on the connector? See [Claude quick reference](curriculum.html?file=reference/claude-quick-reference).
+Stuck on the connector? See [MCP and connectors](reference/mcp-and-connectors.md).
 ```
 
 Don't inline operational detail in the curriculum. If you find yourself writing more than two sentences of "here's how to configure X" in a lecture or exercise, move it here and link.

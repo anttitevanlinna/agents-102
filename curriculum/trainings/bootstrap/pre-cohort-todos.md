@@ -19,6 +19,7 @@ Run the Bootstrap sim set after the current polish pass settles. Use the same sh
 
 ## 2. Capability dry-runs
 
+- **Cowork security permissions.** Bind Module 4 security guidance to Cowork as well as Claude Code: permission choices, folder access, skill creation, connector reach, and what a business participant can actually approve or deny in the UI.
 - **Module 4 security skill package + load.** Verify Cowork personal-skill creation through *Customize → Skills → New → Create with Claude*, Desktop/CLI standalone skill install into `~/.claude/skills/security-audit/`, plain-language invocation, and loaded-skill visibility.
 - **Module 4 facilitator dry-run.** Run the 90-minute dry-run named in the module: Cowork personal-skill creation, one Cowork participant, one CLI participant, and one freezing-SVP persona.
 - **Module 5 four-detector benchmark.** Dry-run four parallel detector agents, scorer stability, precision/recall table, and `judges/groundedness-judge.md` handoff.
@@ -38,6 +39,7 @@ Run the Bootstrap sim set after the current polish pass settles. Use the same sh
 Bring Bootstrap module maintainer blocks closer to the AE101 shape:
 
 - **All modules:** add or verify `Mood target`, `Push-back moves`, `Watch-fors`, `Decision points`, `Plug points`, framework credits, delivery/runtime notes, and explicit Quality-state dimension log.
+- **Early-module language audit:** use agent language from the start where Claude acts, while keeping `Claude` for product, UI, and prompt addressee. Module 1 should make the leap from chat to agent feel explicit without adding technical heaviness.
 - **Modules 1 and 2:** body touched after maintainer review; re-review needed.
 - **Modules 6, 7, 8:** maintainer contracts are visibly thinner than AE101. Normalize before running expensive sims.
 - **Module 5:** move the `Quality:` line to the top of the maintainer block on next edit so it matches the project shape.
@@ -59,6 +61,7 @@ These are not easy to choose from text alone. Decide before polishing body furth
 
 - **Module 4 policy references.** Confirm Nordic-baseline reference files exist in the starter package and customer-distilled files have a prep checklist.
 - **Module 5 superseded `ground-your-output.md`.** Decide whether to keep as supplementary or add a redirect to `hallucination-bakeoff.md` / `eval-loop.md`.
+- **Claude quick reference Cowork mode.** `curriculum/reference/claude-quick-reference.md` has Bootstrap Cowork facts, but no Cowork-mode student-facing section for plan-mode simulation, connector paths, personal-skill creation, scheduling, and file/folder attachment. Add before relying on it from Cowork-facing prework.
 - **Module 7 pattern catalog.** Pattern catalog contains intentional `[TODO]` fields. Confirm this is still desired before first cohort; otherwise fill examples.
 
 ## 8. Eval instances to fill

@@ -49,7 +49,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
 
 1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.
 
-2. Extract ~/Downloads/agents-102-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, and content/skills/.
+2. Extract ~/Downloads/agents-102-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.
 
 3. Install these as personal Claude Code skills:
    - access-control-analysis
@@ -88,4 +88,4 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback DEFERRED (needs ops decision). Don't absorb install debugging into Module 1 time.
 
-**Packaging:** `scripts/build-ae101-content-tarball.sh` builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into `site/clients/<customer>/agentic-engineering-101/agents-102-content.tar.gz`, and substitutes `<CONTENT_URL>` at workbook-render time.
+**Packaging:** `scripts/build-ae101-content-tarball.sh` builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `curriculum/supplementary/`, `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into `site/clients/<customer>/agentic-engineering-101/agents-102-content.tar.gz`, and substitutes `<CONTENT_URL>` at workbook-render time.

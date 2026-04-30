@@ -36,7 +36,7 @@ The default training directory is defined in `.claude/skills/self-study/SKILL.md
 ├── agents/                        # cross-module, custom agent files
 ├── sources/                       # cross-module, raw company material
 ├── outputs/                       # cross-module audit / report results; first appears at Module 4
-├── prework/                       # opened for prework
+├── prework/                       # prework outputs live here
 ├── module-1/                      # created when Module 1 writes outputs
 ├── module-2/
 ├── ...
@@ -45,7 +45,7 @@ The default training directory is defined in `.claude/skills/self-study/SKILL.md
 
 Session scope changes at two seams: prework -> Module 1 -> Module 2 onward.
 
-- Prework: open `prework/`.
+- Prework: open the training-directory root; write prework outputs under `prework/`.
 - Module 1: open the training-directory root; write only inside `module-1/`.
 - Module 2 onward: keep the training-directory root open; write cross-module artifacts at the root plus per-module working files.
 

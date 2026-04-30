@@ -248,7 +248,51 @@ Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-schedule
 
 ---
 
-## 10. Session-hygiene commands — `/memory`, `/init`, `/compact`
+## 10. Session transcripts — read what actually happened
+
+Claude Code stores session transcripts on disk. They are not the same thing as memory. Memory is the compacted knowledge Claude writes for future sessions. A transcript is the run itself: prompts, tool calls, decisions, dead ends, corrections, and final output.
+
+Default location:
+
+```text
+~/.claude/projects/<encoded-project-path>/<session-id>.jsonl
+```
+
+The encoded project path is the absolute working-directory path with `/` replaced by `-`. A repo at `/Users/me/Projects/checkout` maps to:
+
+```text
+~/.claude/projects/-Users-me-Projects-checkout/
+```
+
+In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the M5 worktree may have different encoded folders.
+
+Ask Claude to find and read the right transcript.
+
+**Prompt** *(Claude Code)*
+
+```text
+Find the transcript for the previous Claude Code session in this repo. Start from the current working directory. Look under `~/.claude/projects/` for the encoded project path, list the `.jsonl` files by modified time, and pick the most recent session that is not this current one.
+
+Read it enough to tell me:
+1. What task the session was trying to do.
+2. What files it changed or tried to change.
+3. Where it drifted, stalled, restarted, or corrected itself.
+4. Which decisions were made in chat but not encoded into files.
+
+Then compare that read against `git log`, `git diff`, and branch state. Tell me where the transcript and git agree, and where one sees something the other misses.
+```
+
+Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-run read uses both.
+
+**Subagents:** subagent transcripts may sit in a `subagents/` folder beside the parent session transcript. If a run used subagents, ask Claude to read the parent transcript first, then any subagent files it references.
+
+**Security note:** transcripts can contain secrets, customer data, tickets, pasted logs, and failed attempts. Treat them as sensitive local artifacts. Do not commit them. Do not paste a whole transcript into another system. Point Claude at the file and ask for the narrow read you need.
+
+**AE101 cross-refs:** M4 leaves an un-packaged run behind. M5 reads the transcript plus git state to diagnose what packaging changes. M6 compares two runs, so the transcript becomes evidence, not trivia.
+
+---
+
+## 11. Session-hygiene commands — `/memory`, `/init`, `/compact`
 
 **`/memory`** — lists every `CLAUDE.md`, `CLAUDE.local.md`, and rules file loaded in the current session. Toggle auto memory on/off. Link to open the auto memory folder in your editor. **First stop when Claude seems to be ignoring a rule** — check it actually loaded.
 
@@ -265,7 +309,7 @@ Docs: [memory.md § View and edit with `/memory`](https://code.claude.com/docs/e
 
 ---
 
-## 11. `--append-system-prompt` — system-prompt-level instructions
+## 12. `--append-system-prompt` — system-prompt-level instructions
 
 **CLAUDE.md is loaded as a user message, not the system prompt.** Claude reads it and tries to follow, but there's no strict compliance guarantee.
 
@@ -281,7 +325,7 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 ---
 
-## 12. Hooks — `InstructionsLoaded` for debugging
+## 13. Hooks — `InstructionsLoaded` for debugging
 
 When a rule isn't firing and `/memory` confirms it's loaded, next stop is the `InstructionsLoaded` hook. Logs exactly which instruction files loaded, when, and why. Useful for path-scoped rules and lazy-loaded subdirectory files.
 
@@ -291,7 +335,7 @@ Docs: [hooks](https://code.claude.com/docs/en/hooks).
 
 ---
 
-## 13. Monorepo hygiene — `claudeMdExcludes`
+## 14. Monorepo hygiene — `claudeMdExcludes`
 
 Ancestor CLAUDE.md files from *other* teams' directories get picked up by the walk-up. In a monorepo, that's noise.
 
@@ -314,7 +358,7 @@ Docs: [memory.md § Exclude specific CLAUDE.md files](https://code.claude.com/do
 
 ---
 
-## 14. Managed-policy CLAUDE.md — IT/DevOps controlled
+## 15. Managed-policy CLAUDE.md — IT/DevOps controlled
 
 For orgs that centrally manage Claude Code behaviour across dev machines. A `CLAUDE.md` at the managed policy location (paths in § 1) applies to every user on that machine and cannot be excluded by individual settings.
 
@@ -338,7 +382,7 @@ Docs: [memory.md § Manage CLAUDE.md for large teams](https://code.claude.com/do
 
 ---
 
-## 15. Troubleshooting
+## 16. Troubleshooting
 
 **"Claude isn't following my CLAUDE.md."** Run `/memory` first. Check the file actually loaded. If loaded and still not followed: specificity (*"Use 2-space indentation"* beats *"format code nicely"*); conflict (two files giving contradictory guidance); and the fundamental non-enforcement — CLAUDE.md is context, not a system-prompt constraint. For strict adherence use `--append-system-prompt` or a hook.
 
@@ -348,9 +392,9 @@ Docs: [memory.md § Manage CLAUDE.md for large teams](https://code.claude.com/do
 
 **"Instructions seem lost after `/compact`."** Project-root CLAUDE.md survives; nested subdirectory CLAUDE.md and conversation-only instructions don't. Put persistent rules in a file at a level that survives.
 
-**"Multiple CLAUDE.md files in a monorepo are polluting context."** `claudeMdExcludes` in settings (§ 13).
+**"Multiple CLAUDE.md files in a monorepo are polluting context."** `claudeMdExcludes` in settings (§ 14).
 
-**"I want to verify exactly which files loaded and why."** `InstructionsLoaded` hook (§ 12).
+**"I want to verify exactly which files loaded and why."** `InstructionsLoaded` hook (§ 13).
 
 Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/memory.md#troubleshoot-memory-issues), [debug your configuration](https://code.claude.com/docs/en/debug-your-config).
 
@@ -366,9 +410,9 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 - **M1 Getting going** — first `CLAUDE.md` seed (user-level or `CLAUDE.local.md`), one connector wire
 - **M2 Plan mode, done right** — § 5, plus Pocock `grill-me` skill as second-pass read
 - **M3 Earn the trust** — §§ 6 (subagents), 7 (skills); first skill use + first authoring
-- **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off)
-- **M5 Learn from the test, re-send packaged** — §§ 5 (plan.md authoring), 7 (verifier as eval), 9 (send-off)
-- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (scheduled-agents callout)
+- **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off), 10 (transcript as trace)
+- **M5 Learn from the test, re-send packaged** — §§ 5 (plan.md authoring), 7 (verifier as eval), 9 (send-off), 10 (read transcript plus git)
+- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (scheduled-agents callout), 10 (compare two run transcripts)
 
 ---
 

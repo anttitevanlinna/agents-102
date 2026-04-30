@@ -1755,11 +1755,16 @@ body.workbook { padding-top: 3rem; }
 
 <section class="module" id="prework">
 <h1>Prework</h1>
-<p>Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, a snake game, a meetings summary, and a 2-page read. About 45 minutes.</p>
+<p>Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, your work calendar connected or ready as a screenshot, a snake game, a meetings summary, and a 2-page read. About 50 minutes.</p>
 <h2>0. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)</h2>
 <p>You need a Claude account at claude.ai. Then create an empty folder at <code>~/Documents/agents-102-bootstrap/</code> (right-click in Finder or File Explorer → <em>New Folder</em>). This is your training directory; everything you produce over the eight modules lands here.</p>
 <p><span class="rt-code">Install Claude Code (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both. Start a new session at <code>~/Documents/agents-102-bootstrap/</code>.</span><span class="rt-cowork">Open the <em>Cowork</em> tab next to <em>Chat</em> in your Claude Desktop app. Click <em>New task</em> and select <code>~/Documents/agents-102-bootstrap/</code> as the working folder. No terminal required.</span></p>
-<h2>1. Install the training folder (3 min)</h2>
+<h2>1. Connect your work apps (5 min)</h2>
+<p>Connect either Microsoft 365 or Google Workspace before the first module if your company allows it. Calendar access is enough for the prework. Email, Google Drive, and OneDrive access are useful too, but not required.</p>
+<p>Other connectors are optional. If your company uses a wiki, Confluence, Jira, Linear, SharePoint, Google Drive, or a similar shared knowledge base, connect it if you already have access. Those sources become useful later when your agent starts reading company material instead of only the files in the training directory.</p>
+<p><span class="rt-code">In Claude Code, click the <strong>+</strong> button next to the prompt, then <strong>Settings → Connectors</strong>.</span><span class="rt-cowork">In Claude Desktop, open <strong>Customize → Connectors</strong>. The connector list is shared across Claude Desktop and Cowork.</span> Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.</p>
+<p>If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see <a href="#reference-claude-quick-reference">Claude quick reference</a>.</p>
+<h2>2. Install the training folder (3 min)</h2>
 <p>Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: <code>memory/</code>, <code>sources/</code>, <code>agents/</code>, Module 4 policy files, and a self-study companion you can use while doing self-study of the modules.</p>
 <p><a href="https://agents102.bosser.consulting/clients/acme/bootstrap/starter.tar.gz">Download the starter file set</a> and save it directly into <code>~/Documents/agents-102-bootstrap/</code>. You should see <code>starter.tar.gz</code> land there in Finder or File Explorer. Then ask Claude to unpack it.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -1774,16 +1779,16 @@ prework/, memory/, sources/, agents/, .claude/, and module-4/policies/.
 If tar is not available, tell me what error you got.
 </code></pre>
 <p><em>Proof: you placed the file; Claude unpacked it. Two visible steps, no magic.</em></p>
-<h2>2. Build a snake game (10 min)</h2>
+<h2>3. Build a snake game (10 min)</h2>
 <p>Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn&#39;t). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
 </code></pre>
 <p>Claude writes the file. Open <code>prework/snake.html</code> in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.</p>
 <p>Keep the file. It&#39;s yours.</p>
-<p><em>Proof: Claude Code can write code and save files on your machine.</em></p>
-<h2>3. Summarize your week in meetings (10 min)</h2>
-<p>Quick concept first. <strong>A <em>connector</em> is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).</strong> When a connector is on, Claude can fetch your real data (&quot;list my meetings this week&quot;) instead of you having to copy-paste it. Connectors are turned on by your IT (not something you install yourself). <strong>How to check:</strong> <span class="rt-code">in Claude Code, click the <strong>+</strong> button next to the prompt, then <strong>Settings → Connectors</strong>.</span><span class="rt-cowork">in Claude Desktop, open <strong>Customize → Connectors</strong> (the connector list is shared across the Desktop app).</span> If you see Microsoft 365 or Google Workspace enabled, you have one. If not, you don&#39;t, and that&#39;s fine.</p>
+<p><em>Proof: Claude can create a working file and save it on your machine.</em></p>
+<h2>4. Summarize your week in meetings (10 min)</h2>
+<p>Quick concept first. <strong>A <em>connector</em> is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).</strong> When a connector is on, Claude can fetch your real data (&quot;list my meetings this week&quot;) instead of you having to copy-paste it.</p>
 <p>Two paths. Pick the one that matches what you saw.</p>
 <p><strong>Path A. You have a calendar connector enabled</strong> (Microsoft 365 or Google Workspace).</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -1812,12 +1817,12 @@ If tar is not available, tell me what error you got.
 
 <p><em>Proof: Claude can read your real work data and save a useful summary on your machine.</em></p>
 <p>Stuck on the connector or want specific click-paths? See <a href="#reference-claude-quick-reference">Claude quick reference</a>.</p>
-<h2>4. Read the mental frame (10 min)</h2>
+<h2>5. Read the mental frame (10 min)</h2>
 <p>If you only do one thing from this prework, do this. The rest builds on it.</p>
 <p>Open <a href="supplementary/what-is-an-agent.md#llm-vs-chat">What is an Agent — LLM vs chat</a>. Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You&#39;ll meet the rest of that document section by section as the training goes.</p>
 <p><em>Proof: you arrive with a rough mental frame, not a blank one.</em></p>
 <h2>Bring to Module 1</h2>
-<p>You walk into Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, a snake game, a meetings summary, and a 2-page read. Four things. Not nothing. Module 1 just gets going.</p>
+<p>You walk into Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, calendar access checked, a snake game, a meetings summary, and a 2-page read. Five things. Not nothing. Module 1 just gets going.</p>
 
 </section>
 
@@ -1830,10 +1835,10 @@ If tar is not available, tell me what error you got.
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
-<li><strong>Generate</strong> a real personal artifact (an HTML one-pager) using an LLM without guardrails</li>
-<li><strong>Apply</strong> a structured guardrail and observe the effect on output quality</li>
+<li><strong>Generate</strong> a visible personal artifact (an HTML one-pager) so you can inspect what the agent produced</li>
+<li><strong>Apply</strong> structured guardrails and observe how the agent&#39;s output changes</li>
 <li><strong>Identify</strong> fabrication in LLM output by using your own domain knowledge as the evaluator</li>
-<li><strong>Adjust</strong> guardrails to fix specific failure modes</li>
+<li><strong>Package</strong> what you learned into reusable generation rules for the next similar task</li>
 </ul>
 <h2>Start here</h2>
 <p><span class="rt-code">Start a new Claude Code session at <code>~/Documents/agents-102-bootstrap/</code> (the training root, same as Prework). This module&#39;s outputs land in the <code>module-1/</code> subfolder.</span><span class="rt-cowork">Click <em>New task</em> in the Cowork tab and select <code>~/Documents/agents-102-bootstrap/</code> as the working folder (the training root, same as Prework). This module&#39;s outputs land in the <code>module-1/</code> subfolder.</span></p>
@@ -1877,8 +1882,9 @@ If tar is not available, tell me what error you got.
 <section class="phase phase--exercise" id="exercises-personal-site-with-guardrails">
 <div class="phase-kicker">Exercise</div>
 
-<h1>Exercise: Personal site with <em>guardrails</em></h1>
+<h1>Exercise: Paint by agent with guardrails</h1>
 <p><strong>What you do:</strong></p>
+<p>The site is the canvas. The real move is iterate and learn: change the context, watch the agent&#39;s output shift, then package what you learned so the next run starts smarter.</p>
 <p><strong>Phase 1. The boring baseline.</strong></p>
 <p>The baseline is boring on purpose. You need it boring so you can feel how much the later phases change. Don&#39;t skip it, even if your instinct is &quot;I know what&#39;s coming.&quot;</p>
 <p>Three small steps:</p>
@@ -1952,15 +1958,15 @@ My hate list:
 <p>Open prompts. You drive.</p>
 <p><strong>Tip: steal a look and feel by naming the site.</strong> Claude knows the design DNA of famous sites by name. <em>&quot;Make it look like Stripe&#39;s design language&quot;</em> / <em>&quot;use Linear&#39;s typography and spacing&quot;</em> / <em>&quot;make it feel like Anthropic.com&quot;</em> / <em>&quot;go full Patagonia (earthy, no-nonsense, lots of white space)&quot;</em> / <em>&quot;channel Craigslist if Craigslist had taste&quot;</em>. All valid one-line moves. You don&#39;t need to know CSS; you need to know the site whose feel you&#39;d happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. <em>&quot;Hey Claude, restyle <code>module-1/site.html</code> to feel like X.&quot;</em> Try two or three, keep the one that lands.</p>
 <p><strong>Close. Package what you learned.</strong></p>
-<p>The site is done. What&#39;s left is to <em>capture the move</em> so you can do it again on someone else&#39;s bio next week, without re-explaining everything to a fresh Claude. You&#39;ll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.</p>
+<p>The site is done. The agent behavior is not. What&#39;s left is to <em>capture the move</em> so you can do it again on someone else&#39;s bio next week, without re-explaining everything to a fresh Claude. You&#39;ll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague&#39;s bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
 
 When you&#39;re done, tell me in 4–6 lines what&#39;s in the file: the structure you used, the strongest 2–3 rules, anything you weren&#39;t sure about. I shouldn&#39;t have to open the file to know what landed.
 </code></pre>
-<p>Claude writes the file and summarises in chat. Push back on anything that doesn&#39;t match what we actually did. That&#39;s your first packaged agent: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you&#39;ll meet that in Module 2), same fundamental mechanism: instructions in a file.</p>
+<p>Claude writes the file and summarises in chat. Push back on anything that doesn&#39;t match what we actually did. That&#39;s your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you&#39;ll meet that in Module 2), same fundamental mechanism: instructions in a file.</p>
 <p><strong>What happens:</strong></p>
-<p>Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. Claude&#39;s output is shaped entirely by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely &quot;you&quot; the output.</p>
+<p>Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. The agent&#39;s output is shaped by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely &quot;you&quot; the output.</p>
 <p>That&#39;s the whole of Module 1&#39;s big idea, proven with your own name on it.</p>
 <p><strong>The point:</strong></p>
 <p>Generic output comes from generic context. The LLM didn&#39;t get better between Phase 1 and Phase 6. You did. You became better at feeding it what it needs to produce YOUR output instead of everyone-else&#39;s. The same mechanism scales: business proposals, competitor analysis, compliance reviews, product strategy. Anything where output quality depends on &quot;is this genuinely ours or just fine?&quot;</p>
@@ -1974,15 +1980,16 @@ When you&#39;re done, tell me in 4–6 lines what&#39;s in the file: the structu
 <section class="phase phase--lecture" id="lectures-what-just-happened">
 <div class="phase-kicker">Lecture</div>
 
-<h1>What just happened</h1>
+<h1>Iterate and Learn</h1>
 <p><strong>Time:</strong> 8 minutes.</p>
 <p>Think back an hour. <em>Context</em> was a word someone might put on a slide. You had a vague sense it mattered. Now it&#39;s something you can point at — the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.</p>
 <p>That&#39;s a small thing. It&#39;s also the whole thing.</p>
-<p>The rest of the training is seven more instances of the same move. Sit down, build, notice what shifted, adjust, build again. You just did a round of it; you&#39;ll do a lot more.</p>
+<p>The rest of the training is seven more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again. You just did a round of it; you&#39;ll do a lot more.</p>
+<p>The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next run.</p>
 <p>Two beats worth naming, because the mechanism you just used is older than AI.</p>
 <p><strong>You act on the future to know what&#39;s real.</strong> Nobody knows where agents are going. Not Anthropic, not your board, not the people running this training. What&#39;s known: the people who&#39;ll figure it out first are the ones sitting down and running the experiment. Reading a McKinsey report on the agentic enterprise is not the same category of activity as what you just did. One produces opinions about a future. The other produces scar tissue from it. Guess which one transfers.</p>
 <p><strong>Mental models only come from doing.</strong> Before today, you had a vocabulary. Now you have a little piece of felt experience. Those are different goods. A vocabulary is cheap; a felt model is the thing a leader uses to make a decision at 4pm on a Tuesday when the next reorganisation is being argued about. Nobody can give you a felt model. You can only catch one by reaching for it.</p>
-<p>Everything in the next seven modules is more of this. More reaching, more watching, more adjusting. Don&#39;t expect a lecture to replace the doing. There isn&#39;t one.</p>
+<p>Everything in the next seven modules is more of this. More reaching, more watching, more adjusting, more rules that make the next run start smarter. Don&#39;t expect a lecture to replace the doing. There isn&#39;t one.</p>
 <p>Now: five minutes with Claude. The debrief.</p>
 </section>
 
@@ -2018,7 +2025,7 @@ Have the subagent answer:
 <h2>Next</h2>
 <p>You just made great output AND packaged what you learned into a file the agent can re-read next time. That&#39;s the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module&#39;s work builds on every previous one.</p>
 <h2>Homework after Module 1 — before Module 2</h2>
-<p><a href="#exercises-module-2-prework">Module 2 prework</a>. Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy&#39;s LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.</p>
+<p><a href="#lectures-module-2-prework">Module 2 prework</a>. Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy&#39;s LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.</p>
 
 </section>
 
@@ -2027,8 +2034,7 @@ Have the subagent answer:
 <h2>Big Idea</h2>
 <p>A system remembers, grows, and compounds. Chat doesn&#39;t. Your next big challenge is the foundation.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1&#39;s personal-site scrollback out of the way. The empty <code>memory/</code>, <code>sources/</code>, and <code>agents/</code> folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to <code>module-1/</code>. The wider root <code>CLAUDE.md</code> doesn&#39;t exist yet. You&#39;ll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.</p>
-<p><a href="#exercises-module-2-prework">Module 2 prework</a>. (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy&#39;s LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.</p>
+<p><a href="#lectures-module-2-prework">Module 2 prework</a>. (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy&#39;s LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
@@ -2039,11 +2045,26 @@ Have the subagent answer:
 <li><strong>Evaluate</strong> whether the memory is compounding or merely growing</li>
 </ul>
 <h2>Start here</h2>
+<p><span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1&#39;s personal-site scrollback out of the way. The empty <code>memory/</code>, <code>sources/</code>, and <code>agents/</code> folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to <code>module-1/</code>. The wider root <code>CLAUDE.md</code> doesn&#39;t exist yet. You&#39;ll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.</p>
 <p>Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that&#39;s where the system has to stand up.</p>
 <p>You saw Karpathy&#39;s LLM Wiki post in the prework. What&#39;s the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We&#39;ll build one shortly.</p>
 <p>Then the real one: what&#39;s the challenge you&#39;re carrying right now that isn&#39;t solved yet? The thing that&#39;s been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. We&#39;re going to build a memory around it.</p>
 <p>And one more: if everything you&#39;ve read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?</p>
 <p>Connectors let the agent combine clues that normally live apart: a wiki page, a document, a meeting note, an email thread, and a useful source from the open web. The useful answer is often between systems.</p>
+<section class="phase phase--lecture" id="lectures-first-scheduled-agent">
+<div class="phase-kicker">Lecture</div>
+
+<h1>Demo: 1st scheduled agent</h1>
+<p>The demo is small on purpose. One scheduled agent reads a bit of work context, follows one hard guardrail, and takes one safe action: it writes an output you can inspect.</p>
+<p>The context might be a calendar, a short note, or a file in the training folder. The guardrail is simple: propose or draft only, do not send, edit, book, or change anything. The schedule gives the agent a pulse: it runs again without a fresh prompt and writes the next result in the same place.</p>
+<p>That is the first system boundary. Context tells the agent what world it is in. The guardrail tells it what not to do. The schedule makes it come back. Module 2 uses the same three ingredients for your challenge memory.</p>
+<p><strong>Time:</strong> 3-5 minutes.</p>
+</section>
+
+
+
+
+
 <section class="phase phase--exercise" id="exercises-name-your-challenge">
 <div class="phase-kicker">Exercise</div>
 
@@ -2148,7 +2169,7 @@ When done, tell me the three lists: (1) fetched and saved as content, (2) linked
 <p><strong>Beat 3. Build memory.</strong> Now the memory gets built from what&#39;s actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it&#39;s about to do before touching files, you approve, nothing commits until you say go. Tell Claude <em>&quot;Enable plan mode.&quot;</em> (Alternatives: pick <em>Plan</em> from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read <em>plan mode</em>.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it&#39;s about to do before touching files, so you can review and steer before files commit.</span></p>
 <div class="rt-code">
 
-<p>Heads up on what happens at the end of the plan: Claude will pause and ask <em>&quot;Claude has written up a plan and is ready to execute. Would you like to proceed?&quot;</em> with four options. For this exercise: <strong>option 1 (Yes, and use auto mode)</strong> is the friendly default if the plan&#39;s topic split looks right. If two topics should merge, or something&#39;s missing, pick <strong>option 4 (Tell Claude what to change)</strong> and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren&#39;t needed here. Full rundown in the <a href="curriculum.html?file=reference/claude-quick-reference">quick reference</a>.</p>
+<p>Heads up on what happens at the end of the plan: Claude will pause and ask <em>&quot;Claude has written up a plan and is ready to execute. Would you like to proceed?&quot;</em> with four options. For this exercise: <strong>option 1 (Yes, and use auto mode)</strong> is the friendly default if the plan&#39;s topic split looks right. If two topics should merge, or something&#39;s missing, pick <strong>option 4 (Tell Claude what to change)</strong> and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren&#39;t needed here. Full rundown in the <a href="#reference-claude-quick-reference">quick reference</a>.</p>
 </div>
 <div class="rt-cowork">
 
@@ -2291,7 +2312,7 @@ When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session
 <p>Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you&#39;ll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.</p>
 <h2>Next</h2>
 <p>You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?</p>
-<p>Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, competitive watching, drafting replies are all fine starters. You only learn by doing. Go build.</p>
+<p>Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.</p>
 <h2>Homework after Module 2 — between-module reading</h2>
 <p><a href="#exercises-personal-agent-homework">Schedule your personal agent</a>. Schedule a daily agent that reads your challenge memory for one week of observation. Read <a href="supplementary/agent-trigger-list.md#after-module-2--start-noticing-trigger-moments">Agent Trigger List — After Module 2</a> and start noticing when real work should call the agent. Read selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> on tools, memory, and context. Then do <a href="#exercises-module-3-prework">Before Module 3</a>: pick three practitioner pieces, and read the plain-language primer on helper agents.</p>
 
@@ -2302,7 +2323,6 @@ When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session
 <h2>Big Idea</h2>
 <p>Hire three agents to search. Three more to decide. The filesystem is the meeting room.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> Start this module at the training-directory root, the same root where Module 2 created <code>./CLAUDE.md</code>, <code>memory/</code>, <code>sources/</code>, and <code>agents/</code>. Module 3 writes its working outputs under <code>module-3/</code> and sharpens the root <code>./CLAUDE.md</code> in the Debrief.</p>
 <p><a href="#exercises-personal-agent-homework">Schedule your personal agent</a>. The scheduled agent has been reading your challenge memory for one week of observation. Selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> covered tools, memory, and context. <a href="#exercises-module-3-prework">Before Module 3</a> added three practitioner pieces and a plain-language primer on helper agents: what they are, how to start one, what you&#39;ll see.</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -2314,7 +2334,26 @@ When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session
 <li><strong>Evaluate</strong> when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins</li>
 </ul>
 <h2>Start here</h2>
+<p>Start this module at the training-directory root, the same root where Module 2 created <code>./CLAUDE.md</code>, <code>memory/</code>, <code>sources/</code>, and <code>agents/</code>. Module 3 writes its working outputs under <code>module-3/</code> and sharpens the root <code>./CLAUDE.md</code> in the Debrief.</p>
 <p>Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?</p>
+<p>First, a small boundary shift. We work mostly with text in this training: prompts, notes, memory files, source briefs, rules. But text is also where action starts. A Slack post, a ticket update, a calendar note, a command: before another system obeys it, the agent has produced words.</p>
+<section class="phase phase--lecture" id="lectures-agent-that-takes-action">
+<div class="phase-kicker">Lecture</div>
+
+<h1>Demo: Agent that takes action</h1>
+<p>Same agent, second boundary.</p>
+<p>In Module 2, the scheduled agent read context and wrote an output inside the training folder. Now it runs again with one new permission: post one message to a demo Slack channel.</p>
+<p>This is still text work. The prompt is text. The guardrail is text. The proposed Slack message is text. The difference is that this text can now leave the folder and make another system do something.</p>
+<p>The action is deliberately small. The channel is a trainer-owned demo channel. The message contains no customer data, no private names, no commitments, and no decision. The agent writes the exact message first, the trainer says go, and the agent sends that message. If the channel is missing or the message needs judgment, the agent stops.</p>
+<p>That is the difference between an output and an action. Writing a file changes your folder. Sending to Slack changes another system. Same agent, same context, same schedule, one new boundary.</p>
+<p>Module 3 now asks the next question: if one agent can act, what changes when several agents split the work?</p>
+<p><strong>Time:</strong> 3-5 minutes.</p>
+</section>
+
+
+
+
+
 <section class="phase phase--exercise" id="exercises-name-your-crux">
 <div class="phase-kicker">Exercise</div>
 
@@ -2632,7 +2671,6 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <h2>Big Idea</h2>
 <p>You can&#39;t tell if your agent is safe by looking at its output. You need a way to check. The discipline is running the check, not waiting for certainty.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> Start this module at the training-directory root. Module 4 reads the Module 3 system, the root <code>./CLAUDE.md</code>, and the policy reference files under <code>module-4/policies/</code>. It writes reports under <code>outputs/</code> and compounds security operating rules back into <code>./CLAUDE.md</code>.</p>
 <p><a href="#lectures-module-4-prework">Before Module 4</a>. Two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work (company controls stay in place; agents add new ways for access, context, and instructions to go wrong).</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -2645,7 +2683,34 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <li><strong>Evaluate</strong> residual risk plainly: what&#39;s left after mitigation, and what future sessions should remember before they touch the system again</li>
 </ul>
 <h2>Start here</h2>
+<p>Start this module at the training-directory root. Module 4 reads the Module 3 system, the root <code>./CLAUDE.md</code>, and the policy reference files under <code>module-4/policies/</code>. It writes reports under <code>outputs/</code> and compounds security operating rules back into <code>./CLAUDE.md</code>.</p>
 <p>You&#39;ve had three agents search your company and three more decide. What doesn&#39;t sit right about that, from a risk angle? Name the thing you&#39;d want to check before letting this near a real stakeholder.</p>
+<section class="phase phase--lecture" id="lectures-agent-loop-raw">
+<div class="phase-kicker">Lecture</div>
+
+<h1>Demo: Agent loop, raw</h1>
+<p>Before the security loop, look at the agent loop without polish.</p>
+<p>The trainer opens Claude Code and asks three plain questions. No special setup. No hidden vocabulary. Just the model explaining how it sees its own working surface.</p>
+<p>Ask these one at a time:</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>What tools do you have available?
+</code></pre>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>How do you, as an LLM, know what tools to use?
+</code></pre>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>You write text. How does that text become actions in other systems?
+</code></pre>
+<p>Read the answers as mechanism, not magic. The model has a tool list. Each tool comes with a name, description, and input shape. The prompt and context make one description look relevant. The model writes a structured request. The runtime turns that text into a real tool call. Another system reads the call and does the work.</p>
+<p>That is why Module 4 cares about boundaries. A tool call is not a new species of work. It is text crossing a boundary into action. If the tool description is vague, the context is misleading, or the request is pointed at the wrong system, the action inherits the problem.</p>
+<p>Students can try the same three prompts in their own session. The goal is not to memorize the exact answer. The goal is to see the loop in the open: context, tool choice, textual command, runtime action, result back to the agent.</p>
+<p><strong>Time:</strong> 4-6 minutes.</p>
+</section>
+
+
+
+
+
 <section class="phase phase--lecture" id="lectures-practice-of-risk">
 <div class="phase-kicker">Lecture</div>
 
@@ -2897,7 +2962,7 @@ When you&#39;re done, tell me in 1-5 lines: what changed in ./CLAUDE.md, which r
 <p>The agent is scoped, the residual risk is named. But the output <em>inside</em> the scope. Can you trust what it actually says?</p>
 <p>Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment — before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.</p>
 <h2>Homework after Module 4: between-module reading</h2>
-<p>Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read <a href="#lectures-module-5-prework">Before Module 5</a>: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: &quot;the missing organisational check was X.&quot;</p>
+<p>Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read <a href="#lectures-module-5-prework">The Missing Check</a>: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: &quot;the missing organisational check was X.&quot;</p>
 
 </section>
 
@@ -2906,8 +2971,8 @@ When you&#39;re done, tell me in 1-5 lines: what changed in ./CLAUDE.md, which r
 <h2>Big Idea</h2>
 <p>You don&#39;t pick a quality check because someone said so. You run several on your own output, score them against a 30-claim benchmark, and keep the winner.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under <code>module-5/</code>, saves the winning judge at <code>judges/groundedness-judge.md</code>, and compounds groundedness rules into <code>./CLAUDE.md</code>.</p>
-<p>Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. <a href="#lectures-module-5-prework">Before Module 5</a> added two public-record cases with documented organisational root causes: Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Walk in with one sentence per case: &quot;the missing organisational check was X.&quot;</p>
+<p>Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. Now read <a href="#lectures-module-5-prework">The Missing Check</a>: two public-record cases with documented organisational root causes.</p>
+<p>Walk in with one sentence per case: &quot;the missing organisational check was X.&quot;</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
@@ -2917,6 +2982,7 @@ When you&#39;re done, tell me in 1-5 lines: what changed in ./CLAUDE.md, which r
 <li><strong>Identify</strong> what a judge can and can&#39;t reach: the difference between a narrow tool that works and a broad tool that pretends</li>
 </ul>
 <h2>Start here</h2>
+<p>Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under <code>module-5/</code>, saves the winning judge at <code>judges/groundedness-judge.md</code>, and compounds groundedness rules into <code>./CLAUDE.md</code>.</p>
 <p>In Module 3 the synthesized answer sat at an uneasy distance. You&#39;d stake your reputation on some of it and not all of it, and you couldn&#39;t yet say which. Your Module 4 residuals stay named, not solved (that&#39;s a different axis, and it stays where you put it).</p>
 <p>Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment — before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.</p>
 <p>Today we measure what the system actually says inside its scope. Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources, and you walk out with the first judge you can defend.</p>
@@ -2926,6 +2992,8 @@ When you&#39;re done, tell me in 1-5 lines: what changed in ./CLAUDE.md, which r
 <h1>Lecture: Grounded, and four candidates to measure</h1>
 <p>There is truth out there. Your sources carry shards of it. Your agent, left to itself, has no model of truth, only a model of what usually comes next in language that looks like yours.</p>
 <p>When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don&#39;t support, it still produces something. The difference between those two states is invisible in the tone of the output. That&#39;s the whole problem.</p>
+<p>PS: we ran today&#39;s four detection techniques on the Mata v. Avianca pre-read before class. The story mostly held. And still: source triangulation caught an unsourced &quot;small firm&quot; descriptor and an unsupported &quot;ten minutes&quot; estimate. Entailment caught the story making Schwartz&#39;s timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. That is the point. Even a careful teaching case benefits from the check.</p>
+<p>PPS: then we fixed the story and ran the four detectors again. Source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.</p>
 <p><strong>Why this happens, in one sentence.</strong></p>
 <p>Large language models generate the next likely word. Not the next true word; the next likely one. They&#39;re trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.</p>
 <p>This isn&#39;t a bug that gets patched in the next release. It&#39;s the shape of the technology. Later models will fabricate less; they won&#39;t stop.</p>
@@ -3251,7 +3319,6 @@ When you&#39;re done, tell me in 1-5 lines: what changed in `./CLAUDE.md`, which
 <h2>Big Idea</h2>
 <p>The eval that ran once in Module 5 now runs on every output, and the work tightens under it. The judge stays fixed; that&#39;s the integrity of the loop. The generator sharpens against feedback the same judge keeps applying. You walk away. You come back to a sharper generator the same yardstick can&#39;t fault.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> Start this module at the training-directory root. Module 6 consumes <code>judges/groundedness-judge.md</code> from Module 5, writes run artifacts under <code>module-6/</code>, keeps the judge fixed, and sharpens <code>./generation-tactic.md</code>.</p>
 <p>Ethan Mollick, &quot;Garbage Can and Bitter Lesson.&quot; Plus the still-uncertain line you wrote in Module 5 (the thing you flagged a grounded briefing still couldn&#39;t reach). That&#39;s Module 6&#39;s starting point.</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -3262,6 +3329,7 @@ When you&#39;re done, tell me in 1-5 lines: what changed in `./CLAUDE.md`, which
 <li><strong>Distinguish</strong> the one-off judge you picked in Module 5 from one that runs on every output as a fixed yardstick the work tightens against</li>
 </ul>
 <h2>Start here</h2>
+<p>Start this module at the training-directory root. Module 6 consumes <code>judges/groundedness-judge.md</code> from Module 5, writes run artifacts under <code>module-6/</code>, keeps the judge fixed, and sharpens <code>./generation-tactic.md</code>.</p>
 <p>Did you read Ethan Mollick&#39;s <em>The Bitter Lesson versus The Garbage Can</em>?</p>
 <p>His question is the right opener for Module 6: will the bitter lesson apply inside your company? Can agents get better if you define the outcome and let them find the path, or does the organisational mess still matter too much?</p>
 <p>Module 5 ended with a winner out of four detectors: the judge that now sits in the judges folder. What gets fed to that judge is the thing that changes at Module 6.</p>
@@ -3620,7 +3688,6 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <h2>Big Idea</h2>
 <p>You can&#39;t really share an agent. You can share context, a skill, the output, or an interface. The hard part is not access; it is absorption.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> Start this module at the training-directory root. Module 7 is the first half of the extension package. It reads the agent system you built across Modules 2-6, writes sharing work under <code>module-7/</code>, and saves a next-step file that Module 8 uses.</p>
 <p>Absorption bottleneck pre-read: your organisation cannot absorb capability faster than people can understand it, trust it, and fit it into existing work. Walk in with one example where access existed but real use did not follow.</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -3632,6 +3699,7 @@ When you&#39;re done, tell me in 3–5 lines: what you added, what you sharpened
 <li><strong>Name</strong> the likely adoption failure before it happens, especially the social failure you&#39;re not seeing</li>
 </ul>
 <h2>Start here</h2>
+<p>Start this module at the training-directory root. Module 7 is the first half of the extension package. It reads the agent system you built across Modules 2-6, writes sharing work under <code>module-7/</code>, and saves a next-step file that Module 8 uses.</p>
 <p>The stack on disk: a memory, synthesis across three source zones, skills that audit the system, a judge that got sharper by watching itself miss things. Somewhere in it is a thing that produced output worth trusting enough to check before a meeting. Once it was wrong; a correction landed; the correction stuck.</p>
 <p>The question that shows up on its own: <em>could this help someone else?</em></p>
 <p>Hold that feeling. It&#39;s not a governance question yet. It&#39;s a generous one. At Module 7 it becomes a plan. Plainly, against real friction, without the sales pitch.</p>
@@ -3895,7 +3963,6 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
 <h2>Big Idea</h2>
 <p>The tool that builds tools compounds.</p>
 <h2>Prework</h2>
-<p><strong>Setup:</strong> Start this module at the training-directory root, then connect the separate shared deliberation folder the trainer posts in chat. Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds <code>challenge.md</code>, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.</p>
 <p>Run the Module 7 next-step artifact, test one assumption, ask for one name, and talk to one person. Then read Risto on acting on the future and building hypotheses, and Rumelt on crux / <em>Good Strategy Bad Strategy</em>.</p>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -3906,6 +3973,7 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
 <li><strong>Read</strong> the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Bootstrap)</li>
 </ul>
 <h2>Start here</h2>
+<p>Start this module at the training-directory root, then connect the separate shared deliberation folder the trainer posts in chat. Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds <code>challenge.md</code>, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.</p>
 <p>Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.</p>
 <p>The question that shows up without being asked: <em>where is this all going?</em></p>
 <p>Hold that. Module 8 doesn&#39;t answer it. It shows you the shape of an answer you&#39;ll keep sharpening.</p>
@@ -4203,7 +4271,7 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
 <p>An agent is not one thing. It is a few pieces arranged around the LLM.</p>
 <p><strong>The model</strong> is the LLM. It reads text and produces text. It is powerful, but it does not know your situation unless the situation is in the context it reads.</p>
 <p><strong>The context</strong> is what the model reads before and during the task: your prompt, files, rules, memory, sources, prior outputs, and connected work material. Context is how the agent knows what world it is working in.</p>
-<p><strong>The tools</strong> are what the agent can use: connectors, file reads and writes, code execution, search, APIs, calendars, tickets, mail, or other agents. Tools give the agent hands.</p>
+<p><strong>The tools</strong> are what the agent can use: connectors, file reads and writes, code execution, search, APIs, calendars, tickets, mail, or other agents. Tools give the agent hands. The model chooses among them by reading tool names, descriptions, input shapes, and the current context. The description is part of the mechanism, not documentation off to the side.</p>
 <p><strong>The goal</strong> is the job. A chatbot answers the next message. An agent works toward an outcome: build the memory, prepare the briefing, check the claims, update the ticket, run the loop.</p>
 <p><strong>The loop</strong> is how the agent keeps going: plan, act, observe what happened, revise, continue. A weak loop drifts. A strong loop leaves artifacts you can inspect.</p>
 <p><strong>The checks</strong> decide whether the work is good enough to trust or continue. They can be simple source checks, rules in <code>./CLAUDE.md</code>, tests, judges, evals, or human review.</p>
@@ -4320,7 +4388,7 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
 <li><strong>Claude Code Desktop app</strong> — macOS or Windows GUI. Good alternative if you prefer a window over a terminal. Personal skills use the same <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> shape.</li>
 <li><strong>Claude Cowork</strong> — same Claude Desktop app, <em>Cowork</em> tab. Connect your training-directory folder once; same prompts, same artifacts. Best if you don&#39;t want to think about CLI plumbing. Personal skills are created through <em>Customize</em> → <em>Skills</em> → <em>New</em> → <em>Create with Claude</em>.</li>
 </ul>
-<p><strong>Account tier:</strong> Claude Pro or Team. Your sponsor confirms the license.</p>
+<p><strong>Account tier:</strong> Claude Pro, Max, Team, or Enterprise. Your sponsor confirms the license. On Team and Enterprise, your organization owner can disable Cowork; if the Cowork tab is missing, use Claude Code Desktop or CLI with the same training directory.</p>
 <p><strong>What&#39;s the same across all three:</strong> the agent engine, <code>CLAUDE.md</code> files (loaded the same way from your training folder), parallel subagents (Cowork&#39;s UI calls them <em>agents</em>), the prompts in this curriculum.</p>
 <p><strong>What&#39;s different:</strong></p>
 <ul>
@@ -4328,6 +4396,7 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
 <li><strong>Skill install affordance</strong> differs by mode: CLI/Desktop load standalone skills from <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>; Cowork creates personal skills through the Customize UI. Module 4 uses one <code>security-audit</code> skill across runtimes.</li>
 <li><strong>Vocabulary</strong> — Code says <em>subagent</em>, Cowork&#39;s UI says <em>agent</em>. The site swaps the word to match what you see on screen.</li>
 </ul>
+<p><strong>Fallback if Cowork is unavailable.</strong> Use Claude Code Desktop or Claude Code CLI. The Bootstrap prompts and artifacts are written to work across all three surfaces. Do not use an API-key-only route as the default backup for this training: it would skip the local working folder, personal skills, connector UI, and participant-visible agent workflow the curriculum teaches.</p>
 <p><strong>Install through your company&#39;s approved channel.</strong> Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you&#39;re on a personal laptop or your company doesn&#39;t have a policy, the official docs at <a href="https://docs.anthropic.com/en/docs/claude-code/overview">docs.anthropic.com → Claude Code</a> cover direct install.</p>
 <h2>First time in a terminal? (CLI path)</h2>
 <p>Skip this section if you already use a terminal.</p>
@@ -4482,6 +4551,9 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
                 { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            supplementaries: [
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -4877,7 +4949,7 @@ When you&#39;re done, tell me in 3–5 lines: which file you rewrote, what you a
         }
 
         if (t.supplementaries && t.supplementaries.length) {
-            html += '<' + heading + ' class="index-heading">' + (opts.showModuleCountHeading ? 'Supplementary — grows across the training' : 'Supplementary') + '</' + heading + '>';
+            html += '<' + heading + ' class="index-heading">Supplementary</' + heading + '>';
             html += '<ol class="module-list index-supplementaries">';
             t.supplementaries.forEach(function (s) {
                 html += simpleRowHtml('Reference', s.title, opts.fileHref('supplementary', s.slug));

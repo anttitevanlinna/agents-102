@@ -46,7 +46,7 @@ First ask me for the first names of the people in this group. Wait for my answer
 
 For each first name I give you, find that person's folder among the working folders and read `rollout-notes.md` from it. If a folder or file is missing, tell me which one is missing and continue with the files you can read. Do not interview the group for raw material.
 
-After reading the files, propose the ONE difficulty that, if our team got it right, would make the others follow. That's the crux.
+After reading the files, propose the ONE difficulty that, if our team got it right, would make the others follow. That's the crux (Rumelt).
 
 Show the crux candidate in chat first, about one page long. Don't save yet. Write enough for the group to check and debate: name the crux, explain why you chose it over the other difficulties, quote or paraphrase the evidence from the rollout notes, and name what would change if we got this crux right. I will ask the group what is wrong or missing.
 
@@ -61,6 +61,8 @@ The file must include:
 - what we should defer for now
 - one open question the organisers need to answer
 ```
+
+FYI: *crux* here is borrowed from strategy thinker Richard Rumelt. It means the one difficult part of the challenge where focused action would make the biggest difference.
 
 Before the driver asks Claude to save: the group looks at the candidate crux and gives push-back. What is wrong, missing, too soft, or too broad? The driver types that push-back to Claude. Then Claude rewrites and saves.
 

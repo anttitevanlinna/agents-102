@@ -64,6 +64,10 @@ Daily invocation habits after the core arc. Helps students notice when to bring 
 - **Modules 4–8:** Recipes 4–8 (scoped trust, quality loop, steering evals, team promotion, agents building agents) — placeholders; filled as each module stabilises.
 - **Beyond the training:** cloud deployment, team sharing, cross-org reuse, enterprise integration, observability, handoffs to non-agent systems — added when each practice is reliable enough that a working practitioner would recommend it without caveats.
 
+### clean-code-is-steering.md
+Short Module 5 primer on Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, and Clean Code techniques as steering infrastructure.
+- **Module 5:** Read in the Module 4 to Module 5 gap, after the un-packaged send-off and before diagnosis/packaging.
+
 More supplementaries may be added as patterns emerge.
 
 ## Filename convention
@@ -98,7 +102,7 @@ Modules reference supplementaries as **prework** or **homework**, by title + sec
 
 ```markdown
 ## Meta
-- **Prework:** [What is an Agent — LLM vs chat](../../supplementary/what-is-an-agent.md#llm-vs-chat)
+- **Prework:** [What is an Agent — LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat)
 ```
 
 Participants click through to read the section. The supplementary page shows the full document in context; the participant sees what's been covered and what's coming.

@@ -19,6 +19,7 @@ Start a rough trigger list. Do not polish it yet. Just notice the moments where 
 - I am about to search the same material again.
 - I am about to explain the same challenge again.
 - I am about to write from scattered notes.
+- I am scanning calendar or inbox items to decide what deserves attention.
 - I am about to ask for a summary, but what I really need is a point of view.
 - I am about to make a decision with context spread across memory, sources, and my head.
 
@@ -53,6 +54,7 @@ Use your agent when one of these shows up:
 
 - You are about to write the same kind of thing for the third time.
 - You need to turn scattered material into a decision, briefing, mail, ticket, or plan.
+- You are sorting calendar or inbox items and the useful output is a proposed order, draft reply, or preparation note.
 - You do not trust the first answer because it depends on sources, numbers, names, policy, or context.
 - You need more than one stance on the same question before choosing.
 - You are about to take an action that should be proposed, checked, and only then applied.
@@ -117,12 +119,14 @@ A weak trigger list says:
 A useful trigger list says:
 
 - "Before Monday's customer-risk meeting, ask the agent to read the account notes, source files, and last week's memory update, then draft a one-page risk brief with every claim grounded."
+- "When my calendar is crowded, ask the agent to group meetings by challenge, prepare the two that matter most, and name anything I can decline or delegate."
+- "When my inbox contains follow-ups on this challenge, ask the agent to draft replies with the source note beside each claim. I edit and send manually."
 - "When I need to send an internal update about this project, ask the agent to draft the mail, run the groundedness judge, then run the goal-nudger eval for executive crispness before I edit."
 - "When a ticket update would change customer-facing status, ask the agent to propose the update and cite the source. I apply it manually until the check has passed five times."
 
 That is the habit: not "use AI more."
 
-Use the agent at the moment where context, judgment, repetition, or safe action turns into leverage.
+Use the agent at the moment where context, judgment, repetition, or safe action starts to produce useful force.
 
 <!-- maintainer -->
 

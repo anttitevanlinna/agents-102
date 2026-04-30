@@ -59,7 +59,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
 
 4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
 
-5. Once I've picked, confirm the repo is ready for Module 1's loop: orient the repo, run the repo's checks, fix the bug tests-first, make a branch/PR, write a personal ./CLAUDE.local.md, and close or update the bug's ticket (manual paste is fine if no tracker connector is available). Flag anything that would get in my way.
+5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
 
 Report success on each step and tell me what you did.
 ```

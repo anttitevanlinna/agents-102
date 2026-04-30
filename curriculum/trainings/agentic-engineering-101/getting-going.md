@@ -5,7 +5,7 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 
 ## Prework
 
-About 30 min. [Module 1 prework](curriculum.html?training=agentic-engineering-101&prework=1).
+About 30 min. Complete the prework at the top of this workbook.
 
 ## What You'll Learn
 After this module, you will be able to:

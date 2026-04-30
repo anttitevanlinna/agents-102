@@ -1,10 +1,18 @@
 #!/usr/bin/env node
-// Build a single-page workbook HTML for a training.
+// Build single-page workbook HTML for one customer and one or more trainings.
 //
 // Usage:
+//   node scripts/build-workbook.js <customer-slug> <training-key|training-key,...|all>
+//   node scripts/build-workbook.js <customer-slug> <training-key> <training-key> ...
+//
+// Legacy usage still works for a single training:
 //   node scripts/build-workbook.js <training-key> <customer-slug>
 //
-// Output: site/clients/<customer-slug>/index.html
+// Output:
+//   site/clients/<customer-slug>/index.html                    customer index
+//   site/clients/<customer-slug>/<training-key>/index.html     workbook
+//   site/clients/<customer-slug>/<training-key>/trainer-guide.html
+//   site/clients/<customer-slug>/<training-key>/*.tar.gz       training payloads
 //
 // Thin wrapper around shared logic in site/layouts/curriculum.js (UMD —
 // loads in browser AND Node). The build script does only what the SPA
@@ -38,6 +46,10 @@ function rewriteCrossDocLinksToAnchors(md) {
 
 // escapeTildes lives in shared CR for SPA + workbook parity.
 const escapeTildes = CR.escapeTildes;
+
+function plainDisplayText(value) {
+  return value.replace(/[*_`]/g, '');
+}
 
 // Replace standalone-paragraph include links with the included file's body
 // wrapped in HTML comment markers; postProcessIncludes turns the markers into
@@ -127,7 +139,7 @@ function buildBody(trainingKey, customer, contentUrl) {
 <header class="workbook-cover" id="top">
   <p class="eyebrow">${CR.esc(customer)} workbook</p>
   <h1 class="cover-title">${CR.esc(t.label)}</h1>
-  <p class="lede">${CR.esc(t.lede)}</p>
+  <p class="lede">${CR.esc(plainDisplayText(t.lede))}</p>
 </header>
 
 <nav class="workbook-toc">
@@ -299,71 +311,192 @@ ${content}
 `;
 }
 
-// ── CLI ─────────────────────────────────────────────────────────────────────
-const [, , trainingKey, customer] = process.argv;
-if (!trainingKey || !customer) {
-  console.error('Usage: node scripts/build-workbook.js <training-key> <customer-slug>');
+function usage() {
+  console.error('Usage: node scripts/build-workbook.js <customer-slug> <training-key|training-key,...|all>');
+  console.error('   or: node scripts/build-workbook.js <customer-slug> <training-key> <training-key> ...');
+  console.error('Legacy single-training form still works: node scripts/build-workbook.js <training-key> <customer-slug>');
   console.error('  training-key: ' + Object.keys(CR.TRAININGS).join(' | '));
-  process.exit(1);
-}
-if (!CR.TRAININGS[trainingKey]) {
-  console.error(`Unknown training: ${trainingKey}`);
-  process.exit(1);
 }
 
-const outDir = path.join(ROOT, 'site/clients', customer);
-fs.mkdirSync(outDir, { recursive: true });
-
-// AE101 + Bootstrap each ship a tarball alongside the workbook. Build it, copy
-// into the customer dir, and substitute <CONTENT_URL> in the prework markdown
-// so the rendered prompts point at the per-customer download URL.
-//
-// AE101    — content.tar.gz   (lectures/exercises/reference/skills; reference
-//                              folder the student extracts at ~/Documents/ae101-content/)
-// Bootstrap — starter.tar.gz  (empty working-folder skeleton; extracts in-place
-//                              into the student's connected/working folder at
-//                              ~/Documents/agents-102-bootstrap/)
-let contentUrl = null;
-if (trainingKey === 'agentic-engineering-101') {
-  console.log('Building content tarball…');
-  execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
-  const tarSrc = path.join(ROOT, 'agents-102-content.tar.gz');
-  const tarDst = path.join(outDir, 'content.tar.gz');
-  fs.copyFileSync(tarSrc, tarDst);
-  contentUrl = `https://agents102.bosser.consulting/clients/${customer}/content.tar.gz`;
-  const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
-  console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-} else if (trainingKey === 'bootstrap') {
-  console.log('Building Bootstrap starter tarball…');
-  execSync('scripts/build-bootstrap-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
-  const tarSrc = path.join(ROOT, 'agents-102-bootstrap-starter.tar.gz');
-  const tarDst = path.join(outDir, 'starter.tar.gz');
-  fs.copyFileSync(tarSrc, tarDst);
-  // Bootstrap is dual-runtime; Cowork's outbound network allowlist blocks
-  // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
-  // S3 + a few others reachable). The fallback for Cowork is browser-download
-  // into the working folder — the student's browser is unconstrained by
-  // Cowork's proxy, so any HTTPS URL the workbook itself loads from works.
-  // Step 1 is forked: Code uses `curl + tar`; Cowork uses browser-download +
-  // extract-only prompt. Same URL, different transport.
-  contentUrl = `https://agents102.bosser.consulting/clients/${customer}/starter.tar.gz`;
-  const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
-  console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
+function unique(items) {
+  return Array.from(new Set(items));
 }
 
-const body = buildBody(trainingKey, customer, contentUrl);
-const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
-const outFile = path.join(outDir, 'index.html');
-fs.writeFileSync(outFile, html);
+function parseCli(argv) {
+  if (argv.length < 2) {
+    usage();
+    process.exit(1);
+  }
 
-const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
-console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+  var keys = Object.keys(CR.TRAININGS);
+  var first = argv[0];
+  var second = argv[1];
 
-// Trainer guide: same gate (per-customer dir), separate file. Generic content.
-const guideHtml = trainerGuideTemplate(customer, buildTrainerGuide(customer));
-const guideFile = path.join(outDir, 'trainer-guide.html');
-fs.writeFileSync(guideFile, guideHtml);
-const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
-console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+  // Backwards compatibility for existing muscle memory:
+  //   node scripts/build-workbook.js claude-basics acme
+  if (argv.length === 2 && CR.TRAININGS[first] && !CR.TRAININGS[second] && second !== 'all') {
+    return { customer: second, trainings: [first], legacy: true };
+  }
 
-console.log(`Once deployed: https://agents102.bosser.consulting/clients/${customer}/`);
+  var customer = first;
+  var selector = argv.slice(1).join(',');
+  var trainings = selector === 'all'
+    ? keys
+    : unique(selector.split(',').map(s => s.trim()).filter(Boolean));
+
+  var unknown = trainings.filter(k => !CR.TRAININGS[k]);
+  if (unknown.length) {
+    console.error('Unknown training: ' + unknown.join(', '));
+    usage();
+    process.exit(1);
+  }
+
+  return { customer: customer, trainings: trainings, legacy: false };
+}
+
+function buildPayload(trainingKey, customer, outDir) {
+  // AE101 + Bootstrap each ship a tarball alongside that training's workbook.
+  // The payload URL is training-scoped so one customer can host multiple
+  // trainings without content.tar.gz / starter.tar.gz overwriting each other.
+  //
+  // AE101    — content.tar.gz   (lectures/exercises/reference/skills; reference
+  //                              folder the student extracts at ~/Documents/ae101-content/)
+  // Bootstrap — starter.tar.gz  (empty working-folder skeleton; extracts in-place
+  //                              into the student's connected/working folder at
+  //                              ~/Documents/agents-102-bootstrap/)
+  if (trainingKey === 'agentic-engineering-101') {
+    console.log('Building content tarball...');
+    execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
+    const tarSrc = path.join(ROOT, 'agents-102-content.tar.gz');
+    const tarDst = path.join(outDir, 'content.tar.gz');
+    fs.copyFileSync(tarSrc, tarDst);
+    const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
+    console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
+    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/content.tar.gz`;
+  }
+
+  if (trainingKey === 'bootstrap') {
+    console.log('Building Bootstrap starter tarball...');
+    execSync('scripts/build-bootstrap-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
+    const tarSrc = path.join(ROOT, 'agents-102-bootstrap-starter.tar.gz');
+    const tarDst = path.join(outDir, 'starter.tar.gz');
+    fs.copyFileSync(tarSrc, tarDst);
+    // Bootstrap is dual-runtime; Cowork's outbound network allowlist blocks
+    // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
+    // S3 + a few others reachable). The fallback for Cowork is browser-download
+    // into the working folder — the student's browser is unconstrained by
+    // Cowork's proxy, so any HTTPS URL the workbook itself loads from works.
+    // Step 1 is forked: Code uses `curl + tar`; Cowork uses browser-download +
+    // extract-only prompt. Same URL, different transport.
+    const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
+    console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
+    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/starter.tar.gz`;
+  }
+
+  return null;
+}
+
+function buildTraining(customer, trainingKey) {
+  const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const contentUrl = buildPayload(trainingKey, customer, outDir);
+  const body = buildBody(trainingKey, customer, contentUrl);
+  const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
+  const outFile = path.join(outDir, 'index.html');
+  fs.writeFileSync(outFile, html);
+
+  const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
+  console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+
+  // Trainer guide: same gate (per-training customer dir), separate file.
+  // Generic content, rendered beside each workbook so its cross-doc links
+  // resolve into that training's single-page workbook.
+  const guideHtml = trainerGuideTemplate(customer, buildTrainerGuide(customer));
+  const guideFile = path.join(outDir, 'trainer-guide.html');
+  fs.writeFileSync(guideFile, guideHtml);
+  const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
+  console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+}
+
+function deployedTrainingKeys(customer) {
+  const customerDir = path.join(ROOT, 'site/clients', customer);
+  if (!fs.existsSync(customerDir)) return [];
+  return Object.keys(CR.TRAININGS)
+    .filter(k => fs.existsSync(path.join(customerDir, k, 'index.html')));
+}
+
+function customerIndexTemplate(customer, trainingKeys) {
+  const cards = trainingKeys.map(k => {
+    const t = CR.TRAININGS[k];
+    return `<li class="training-card">
+  <a href="./${k}/">
+    <span class="training-card__label">${CR.esc(t.label)}</span>
+    <span class="training-card__lede">${CR.esc(plainDisplayText(t.lede))}</span>
+  </a>
+</li>`;
+  }).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agents 102 — ${CR.esc(customer)}</title>
+<style>
+  :root { color-scheme: light; --ink: #1c1917; --muted: #6b625b; --line: #ded8d0; --paper: #fbfaf7; --accent: #c2410c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { width: min(920px, calc(100% - 40px)); margin: 0 auto; padding: 72px 0; }
+  .eyebrow { margin: 0 0 14px; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { margin: 0; font-size: 72px; line-height: .95; letter-spacing: 0; }
+  .lede { max-width: 680px; margin: 22px 0 42px; color: var(--muted); font-size: 20px; line-height: 1.5; }
+  .training-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+  .training-card a { display: block; min-height: 156px; padding: 22px; border: 1px solid var(--line); border-radius: 8px; color: inherit; text-decoration: none; background: rgba(255,255,255,.62); }
+  .training-card a:hover { border-color: var(--accent); }
+  .training-card__label { display: block; font-size: 21px; font-weight: 800; }
+  .training-card__lede { display: block; margin-top: 12px; color: var(--muted); line-height: 1.45; }
+  @media (max-width: 640px) {
+    main { width: min(100% - 28px, 920px); padding: 48px 0; }
+    h1 { font-size: 44px; }
+    .lede { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">${CR.esc(customer)} training hub</p>
+  <h1>Agents 102</h1>
+  <p class="lede">Training workbooks deployed for this customer. Each program has its own workbook, trainer guide, and downloadable payloads where needed.</p>
+  <ul class="training-list">
+${cards}
+  </ul>
+</main>
+</body>
+</html>
+`;
+}
+
+function buildCustomerIndex(customer) {
+  const customerDir = path.join(ROOT, 'site/clients', customer);
+  fs.mkdirSync(customerDir, { recursive: true });
+  const keys = deployedTrainingKeys(customer);
+  const indexFile = path.join(customerDir, 'index.html');
+  fs.writeFileSync(indexFile, customerIndexTemplate(customer, keys));
+  const sizeKB = (fs.statSync(indexFile).size / 1024).toFixed(0);
+  console.log(`Built ${path.relative(ROOT, indexFile)} (${sizeKB} KB)`);
+}
+
+const { customer, trainings, legacy } = parseCli(process.argv.slice(2));
+if (legacy) {
+  console.log('Legacy argument order detected; prefer: node scripts/build-workbook.js ' + customer + ' ' + trainings[0]);
+}
+
+trainings.forEach(trainingKey => buildTraining(customer, trainingKey));
+buildCustomerIndex(customer);
+
+console.log('Once deployed:');
+console.log(`  https://agents102.bosser.consulting/clients/${customer}/`);
+trainings.forEach(trainingKey => {
+  console.log(`  https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/`);
+});

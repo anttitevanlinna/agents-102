@@ -49,7 +49,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
 
 1. Extract the content folder. Use Bash:
 
-     mkdir -p ~/Documents/ae101-content
+     mkdir -p ~/Documents/ae101-content ~/.claude/skills
      tar xzf ~/Downloads/agents-102-content.tar.gz -C ~/Documents/ae101-content
 
    Confirm the absolute path of ~/Documents/ae101-content back to me. The tarball expands to lectures/, exercises/, reference/, content/skills/.

@@ -30,7 +30,7 @@ Keep the readout grounded in the group syntheses. If the organisers add context 
 
 ## Phase 2. Decide what to share back
 
-If time remains, share only the highest-signal point with the room: the crux or disagreement that changes what the team should do Monday. Do not turn this into a second lecture.
+If time remains, share only the highest-signal point with the room: the crux or disagreement that changes what the team should do next. Do not turn this into a second lecture.
 
 <!-- maintainer -->
 

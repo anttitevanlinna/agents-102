@@ -20,7 +20,7 @@ Third architecture model after Bootstrap (local training-dir + zips) and AE101 (
 - **Live crux work needs only narrow shared writes.** Participants can save personal interview notes in any safe folder. Each group nominates one driver to write one rollout synthesis file into `shared/`. Organisers may optionally write `organisers-rollout-readout.md` after group files exist.
 - **Homework happens in personal folders.** Build-your-system and verification homework run after the live session in any safe folder the participant chooses: Documents, OneDrive, Desktop, or a work folder. No cohort `shared/`, no `participants/`, no group-driver dependency.
 - **CLAUDE.md names the runtime when needed.** If a homework folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, the folder CLAUDE.md should say so near the top and tell Claude to assume eventual consistency on file reads.
-- **Post-training legacy** — the team takes the group rollout syntheses, optional organisers' readout, and personal homework systems back to daily work.
+- **Post-training legacy** — the group rollout syntheses, optional organisers' readout, and personal homework systems are reusable inputs for daily work. Do not promise a fixed post-training cadence unless that cadence has been contracted for the cohort.
 
 The classic *"don't put your training-dir in OneDrive"* warning from Bootstrap does not apply here: Claude Basics homework can live in normal synced work folders because the folder CLAUDE.md names the runtime.
 

@@ -57,7 +57,7 @@ Save the answer as `homework-summary.md`.
 
 ## Follow-up
 
-The live session is over. The rollout is not. Bring the folder summary, the group synthesis, and the open verification rows into the week 1, week 4, and week 12 check-backs.
+The live session is over. The rollout is not. Keep the folder summary, the group synthesis, and the open verification rows close to the work. They are useful inputs whenever your team revisits the rollout: what this folder can now do, what the group thought the crux was, and which claims still need evidence.
 
 <!-- maintainer -->
 

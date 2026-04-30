@@ -1,4 +1,4 @@
-# Eval Instance — Claude Basics M3: Find the crux
+# Eval Instance — Claude Basics M2: Find the crux
 
 **Target file:** `curriculum/trainings/claude-basics/exercises/find-the-crux.md`
 **Module file:** `curriculum/trainings/claude-basics/where-is-this-all-going.md`
@@ -7,7 +7,7 @@
 - `curriculum/trainings/claude-basics/prompts/find-the-crux-synthesizer.md`
 **Strategy:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 **Eval template:** `curriculum/evals/exercise.md`
-**Audience persona (primary):** IT admin / info-management specialist with medium-to-light chat experience. Just finished M1 + M2 + the 15-min break. Opening of M3 is the IT Director's break-time verdict.
+**Audience persona (primary):** rollout custodian with medium-to-light chat experience. Just finished the repo demo. Module 2 now opens directly into live rollout synthesis.
 
 ---
 
@@ -20,11 +20,11 @@ After completing this exercise, the participant can:
 - **Synthesize** (when assigned as group synthesizer) a group's divergent rollout difficulties into a single named crux that quotes evidence from each group member's divergence file
 - **Recognise** that the room produced a multi-agent shape (individual agents → group synthesizers → cross-group synthesizer) without it having been taught as architecture
 
-If a chat-level IT admin walks out of M3 able to (a) name their team's actual rollout crux in one sentence, and (b) explain in their own words *"we built a multi-agent system without being taught one,"* the exercise has worked.
+If a chat-level rollout custodian walks out of Module 2 able to (a) name their team's actual rollout crux in one sentence, and (b) explain in their own words *"we built a multi-agent system without being taught one,"* the exercise has worked.
 
 ### Framing fidelity
 
-Leads with the module's Big Idea: **"The IT team IS the multi-agent system that ships the rollout. The hard part isn't picking a tool. It's finding the crux."**
+Leads with the module's Big Idea: **"The rollout team is part of the system that ships the rollout. The hard part isn't picking a tool. It's finding the crux."**
 
 Avoids:
 - **Graduation-ceremony register.** No applause beats, no certificates, no *"now you know everything"* close. The mood is forward awe with a deliverable in hand
@@ -40,7 +40,7 @@ Enables these Bloom-tagged learning goals (verbatim from module file):
 
 ### Module-to-module arc
 
-Picks up from **M2 + the 15-minute break** (IT Director's break-time verdict opens M3). Hands off to **the rollout itself** — there is no M4. The post-cohort cadence is week 1 / 4 / 12 self-assessment, IT-Director-led.
+Picks up from **the repo demo**. Hands off to **separate homework and the rollout itself**. Any post-training check-back cadence is cohort-specific and should not be promised by the core workbook.
 
 ### Mood lands
 
@@ -48,10 +48,10 @@ Per-phase + close, score 1 to 10. Threshold: 8+/10.
 
 | Beat | Expected mood signal |
 |---|---|
-| Connections (4 min) | Sober alert continues from M2. The break verdict feeds the room real evidence the IT Director couldn't verify everything. Mood honest, not theatrical |
+| Connections (4 min) | The repo demo feeds the room real evidence that systems are made of files, rules, prompts, checks, and outputs. Mood concrete, not theatrical |
 | Phase 1 close (~14 min into module) | Slight intensity. The push-back questions in the divergence interview made the participant articulate something they hadn't yet said cleanly. Not catharsis — earned articulation |
 | Phase 2 close (~26 min) | Group focus. The synthesizer participant's session names a crux; the group reviews. Mood is collaborative-decisive. If the synthesizer feels alone (other group members disengaged), the design failed — chime-in-over-the-shoulder is named in body |
-| Phase 3 close (~36 min) | Watchful respect. The IT Director thinks live, edits live, narrates live. The room sees the strategy emerge from the IT Director's push-back, not from Claude's first draft |
+| Phase 3 close (~36 min) | Watchful respect. Groups compare only after they have their own synthesis. The room sees the strategy emerge from constrained synthesis, not from Claude's first draft |
 | Reveal (~38 min) | The magic beat. *"Oh — we just did the thing we're worried about doing."* If the trainer hinted earlier, the magic dies; if reveal-script lands clean, the mood spikes |
 | Reflection (~40 min) | Forward awe. *"What did the synthesizer get right that no one person had said?"* Two or three responses; trainer holds the question open |
 | Bridge / send-off (~45 min) | Forward hunger. The team has the strategy in hand and knows their own next move. Not *"we're done"* — *"the rollout is the work."* |
@@ -61,14 +61,14 @@ Per-phase + close, score 1 to 10. Threshold: 8+/10.
 Designed to reliably produce: **the multi-agent reveal at Phase 3 close** — the participant recognises the shape they just produced. This is the one magic beat the whole 3-module training carries.
 
 Fragility points:
-- IT Director freezing during live Phase 3 (mitigated by pre-cohort rehearsal)
+- Organisers over-owning the synthesis instead of letting groups do the rollout judgment
 - Trainer hinting at multi-agent architecture earlier than reveal (mitigated by silent-presence stance documented in maintainer)
 - Group synthesizer participant feeling alone (mitigated by *"other group members chime in over the shoulder"* in body)
 
 ### Failure modes named
 
-- **IT Director stage fright on Phase 3.** Pre-cohort rehearsal one day before. They run the prompt against four sample group-crux files; trainer reviews
-- **Group folder access topology not set up.** Pre-cohort, two days before. IT Director or customer's IT admin creates four folders + grants permissions
+- **Organisers over-own the readout.** Pre-cohort rehearsal should keep organisers in the mechanical/custodial role: folders, filenames, timing, and optional readout. Participants do the rollout judgment
+- **Shared folder access topology not set up.** Pre-cohort, organisers prove that one likely group driver can save to `shared/` and organisers can read it
 - **Reveal lands too early.** Trainer's silent-presence stance through Phases 1 + 2; reveal scripted only at Phase 3 close
 - **Group too small.** Trainer scales group count to participant count: 8 or fewer = 2-3 groups; 9-12 = 3 groups; 13-16 = 4 groups
 - **Synthesizer participant works alone in Phase 2.** Body explicitly says *"other group members chime in over the shoulder"*
@@ -109,10 +109,10 @@ Three prompts in the exercise + two in supporting prompt files. Audit:
 
 ### Plug points real
 
-- Break verdict — IT Director's own real finding from M2's break
+- Repo demo — the trainer's real working system, not slides
 - Rollout difficulties — each participant's own org and team
 - Group composition — trainer's call by participant count
-- Cross-group strategy — IT Director's own work on the IT Director's actual challenges; output is a real strategy file the org uses
+- Cross-group synthesis — organisers' optional readout over the group's actual challenges
 
 No pre-built artifacts. No toy data.
 
@@ -122,7 +122,7 @@ Bootstrap voice trio (Godin × Sutherland × Siilasmaa). Forward-awe mood = Siil
 
 Body writes TO the participant ("you"); facilitator instructions live below `<!-- maintainer -->`. No author-"we." No creator's name. No em-dashes in body (verified post-write). No `practice` (noun) — Bootstrap absolute-ban inheritance verified.
 
-In-chat-not-mechanic principle (rule 12) honored: every student move stays in conversation with Claude. The synthesizer participant's session reads files via prompt; the IT Director's session reads files via prompt. No *"open the file"* / *"edit the column"* primitives in body.
+In-chat-not-mechanic principle (rule 12) honored: every student move stays in conversation with Claude. The group driver's session reads files via prompt; the organisers' optional readout reads files via prompt. No *"open the file"* / *"edit the column"* primitives in body.
 
 ### Business-audience language
 
@@ -182,14 +182,14 @@ One detail-layer claim: Richard Rumelt and the crux pattern. Vision-layer (the m
 | Learning goal fit | PASS | Each LO maps to a phase or beat. Articulate=P1, Synthesize=P2, Evaluate=P3 reading, Recognise=Reveal |
 | Module-to-module arc | PASS | Connections carries M2 break verdict forward; Bridge sends off without phantom M4 |
 | Mood lands | TBD by sim | Per-phase signals enumerated; reveal magic-beat is the highest-fragility check |
-| Teaching moment lands | TBD by sim | Depends on trainer's silent-presence stance and IT Director's live Phase 3 |
+| Teaching moment lands | TBD by sim | Depends on trainer's silent-presence stance and groups completing synthesis before cross-pollination |
 | Riffs on a recognized framework | PASS | Rumelt's crux, named once, plain-English distilled, properly attributed |
 | Failure modes named | PASS | Five named with diagnostic + fix |
 | Time-boxed | PASS | 32 min within 45-min budget |
 | Facilitator briefing complete | PASS | Maintainer carries reveal script, rehearsal step, silent-presence stance, group scaling |
 | Scaffold / worked example provided | PASS | Three prompts, file-name patterns, group topology, push-back step structures |
 | Prompt design | PASS | All five prompts compendium-clean. Phase 1 open-hook, deterministic chain paths, push-back named, batch-dump prevented |
-| Plug points real | PASS | Break verdict, rollout difficulties, group composition, IT Director's strategy — all real |
+| Plug points real | PASS | Repo demo, rollout difficulties, group composition, organisers' readout — all real |
 | Business-audience language | PASS | Crux earned, multi-agent reserved for reveal, no flinch words |
 | Voice | PASS | Bootstrap trio applied; in-chat-not-mechanic verified; no creator's name, no author-we |
 | Length | PASS | All four files within 400-700 prose target |

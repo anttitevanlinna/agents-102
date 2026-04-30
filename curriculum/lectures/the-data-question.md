@@ -8,7 +8,7 @@ A teammate who wasn't in this room will eventually ask: *"Is it safe to use Clau
 
 ## What Claude actually saw
 
-When the IT Director's prompt ran, Claude read three things and only those three things. The prompt itself. Whatever connectors had been set up to bring in calendar, mail, files. Anything pasted into the conversation. That's the input set.
+When Claude runs inside your organisation's environment, it reads the things that environment gives it. Usually that means the prompt itself, whatever connectors have been approved, and anything pasted into the conversation. That's the input set.
 
 It did NOT read your full mailbox. Did not query a database. Did not browse the web unless a tool was attached. The fence around what Claude can see is the connector configuration plus the conversation. Outside that fence, Claude does not know.
 
@@ -20,7 +20,7 @@ Three layers, worth naming once.
 
 The conversation with Claude lives on Anthropic's infrastructure. Encrypted in transit, encrypted at rest. Retention policy depends on the licensing tier the organisation bought.
 
-Whether your conversations are used to train future Claude models is set by the contract your organisation signed. For business tiers the default is no. The IT Director confirmed the team's specific contract with the trainer before this cohort, so the answer for your organisation is the one the IT Director will name now. If the licensing changes later, the contract is what binds, not the answer that held last quarter.
+Whether your conversations are used to train future Claude models is set by the contract your organisation signed. For business tiers the default is no. The organisers confirm the specific contract for the cohort. If the licensing changes later, the contract is what binds, not the answer that held last quarter.
 
 The output Claude wrote into your folder (`verification.md`, your CLAUDE.md, the verification table) sits on your machine and on SharePoint, governed by your organisation's existing policies on those two surfaces. Anthropic doesn't reach back into the file once Claude saved it.
 
@@ -30,7 +30,7 @@ Two things, briefly. First, processing personal data through a model is processi
 
 The compliance team will know the contract specifics. The team's job isn't to be the lawyer. The team's job is to know enough to direct the question to the right answer-holder.
 
-## What the team tells users on Monday
+## What the team tells users
 
 Three sentences the team can say without hedging:
 
@@ -40,7 +40,7 @@ Three sentences the team can say without hedging:
 
 *"If the data is sensitive enough that you'd hesitate to email it, ask the data team before pasting it. The fence is there; we just want you using it deliberately."*
 
-These are not slogans. They are the verification from the IT Director's prompt, scaled to a question a colleague will ask.
+These are not slogans. They are the contract and connector facts, scaled to a question a colleague will ask.
 
 ## Bridge
 

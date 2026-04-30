@@ -18,7 +18,7 @@ Ask Claude Code what rules govern Claude Basics work in this repo. Let it name `
 
 ## 4. Show how rules steer behavior
 
-Ask why the workbook now says "people helping their organisation roll out Claude" instead of "IT team." This makes the rules visible as judgment, not decoration: the lead customer is IT-heavy, but the student-facing asset must travel.
+Ask why the workbook says "people helping their organisation roll out Claude." This makes the rules visible as judgment, not decoration: the workbook is written for everyone who may need to help the rollout succeed.
 
 ## 5. Inspect the system
 

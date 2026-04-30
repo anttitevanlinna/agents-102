@@ -51,4 +51,4 @@ That's where the next module lives. Verification is what the team does when the 
 
 **Lecture meta:** *7-minute closing lecture for M1. Trainer leads. Optional 2-output-merge demo from real cohort participants for the compounding metaphor.*
 
-**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Stop chatting — build a system*
+**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

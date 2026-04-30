@@ -62,12 +62,12 @@
         },
         'claude-basics': {
             label: 'Claude Basics',
-            lede: 'A 3-hour live workshop for the IT team rolling out Claude. See the system, find the crux, then build and verify in your own folder.',
+            lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
             runtime: 'cowork',
             modules: [
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
-                { slug: 'homework-build-and-verify', title: 'Homework: build and verify' }
+                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' }
             ]
         }
     };

@@ -2,9 +2,12 @@
 
 **Time:** 32 minutes. Three phases.
 
-This live exercise is collaborative, but it should not become shared-folder debugging. Each participant starts in Cowork on a safe personal folder. Each group nominates one driver. The driver writes one clean group synthesis to the agreed shared synthesis location.
+This exercise has two modes, in this order:
 
-Before Phase 1: confirm your group number. You will need it in Phase 2.
+1. **Individual first.** Each participant opens Cowork on a safe personal folder and saves their own rollout notes there.
+2. **Group second.** One nominated driver opens Cowork with the group members' personal folders plus the `shared` directory added as working folders. The personal folders are named with first names. Claude reads the notes from the first-name folders and writes the group's synthesis to `shared/`.
+
+The point is the sequence: individual signal first, group synthesis second. Only the group synthesis is shared.
 
 ## Phase 1. Divergence (10 minutes)
 
@@ -19,7 +22,7 @@ Interview me about the top three difficulties I see in our team's Claude rollout
 
 Start with: "What's the first difficulty you see?" After my answer, push back once: ask for a specific example, or ask whether that's the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I've answered all three with push-back, save the conversation as `m3-rollout-notes.md` in this folder.
+When I've answered all three with push-back, save the conversation as `rollout-notes.md` in this folder.
 
 Include the three difficulties and the push-back answers, in my voice. Don't summarize them into your own register.
 ```
@@ -28,9 +31,9 @@ Answer Claude's questions in plain language. When the file saves, you're done wi
 
 ## Phase 2. Group synthesis (17 minutes)
 
-Each group picks ONE participant to be the driver. The driver is the only person writing to the agreed shared synthesis location in this phase.
+Each group picks ONE participant to be the driver. The driver adds the group members' personal folders and the `shared` directory to Cowork. The personal folders should be named with first names, such as `aino`, `petra`, or `juhani`. The driver knows the first names and gives them to Claude.
 
-The group talks through the personal notes. Do not start by reading other groups. Your job is to find your group's crux first.
+The driver is the only person writing to `shared/` in this phase. Claude reads the personal notes from the first-name folders. Do not start by reading other groups. Your job is to find your group's crux first.
 
 Ask Claude, in the driver's Cowork session, to help synthesize the group's views.
 
@@ -39,13 +42,17 @@ Ask Claude, in the driver's Cowork session, to help synthesize the group's views
 ```
 Create our group's rollout synthesis.
 
-First ask me for our group number if you do not already know it.
+First ask me for the first names of the people in this group. Wait for my answer.
 
-Then interview the group in chat. Ask for each person's top rollout difficulty and one concrete example. Keep the answers short. After everyone has answered, propose the ONE difficulty that, if our team got it right, would make the others follow. That's the crux.
+For each first name I give you, find that person's folder among the working folders and read `rollout-notes.md` from it. If a folder or file is missing, tell me which one is missing and continue with the files you can read. Do not interview the group for raw material.
 
-Show the crux candidate in chat first, in two sentences. Don't save yet. I will ask the group what is wrong or missing.
+After reading the files, propose the ONE difficulty that, if our team got it right, would make the others follow. That's the crux.
 
-After I give you the group's push-back, rewrite the synthesis and save it in the agreed shared synthesis location using the group number. If I say group 2, save the file as `group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
+Show the crux candidate in chat first, about one page long. Don't save yet. Write enough for the group to check and debate: name the crux, explain why you chose it over the other difficulties, quote or paraphrase the evidence from the rollout notes, and name what would change if we got this crux right. I will ask the group what is wrong or missing.
+
+After I give you the group's push-back, ask me for the group's name for the filename. If we have not named the group, invent a short, vivid label from the selected crux.
+
+Then rewrite the synthesis and save it in `shared/`. If I say Atlas, save it as `shared/rollout-synthesis-atlas.md`. If you invent the label from a crux about unclear escalation, save something like `shared/rollout-synthesis-escalation-fog.md`. Use lowercase kebab-case in the filename.
 
 The file must include:
 - named crux
@@ -55,9 +62,25 @@ The file must include:
 - one open question the organisers need to answer
 ```
 
-Before the driver asks Claude to save: each non-driver in the group names ONE thing in the candidate crux that's wrong or missing. One sentence each. The driver types those points back to Claude as the push-back. Then Claude rewrites and saves.
+Before the driver asks Claude to save: the group looks at the candidate crux and gives push-back. What is wrong, missing, too soft, or too broad? The driver types that push-back to Claude. Then Claude rewrites and saves.
 
-This forcing function is the design. Without it, the driver synthesizes alone and the group disengages. The crux belongs to the group, not to whoever held the keyboard.
+This forcing function is the design. Claude reads the raw material from files; the group steers the synthesis. The crux belongs to the group, not to whoever held the keyboard.
+
+If solution ideas are already in the room, store them after the crux is saved. Keep them separate from the crux so the file preserves both: the diagnosis and the first solution instincts.
+
+Ask Claude to append the ideas and give a quick read on them.
+
+**Prompt** *(Cowork, group driver)*
+
+```
+Read the rollout synthesis file you just saved in `shared/`.
+
+Append a section called "Solution ideas from the group". Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which idea might be premature, and what question would sharpen the next discussion.
+
+After saving, tell us what you added and what you think in 5 to 7 bullets.
+
+Our ideas:
+```
 
 ## Phase 3. Cross-pollination bonus (5 minutes, only if synthesis succeeded)
 
@@ -68,7 +91,7 @@ Ask Claude to read one other group's synthesis and borrow one useful idea withou
 **Prompt** *(Cowork, group driver)*
 
 ```
-Read our group's rollout synthesis from the shared synthesis location. Then read one other group's rollout synthesis from the same location.
+Read our group's rollout synthesis from `shared/`. Then read one other group's rollout synthesis from `shared/`.
 
 Compare them briefly:
 - one idea the other group saw that we missed
@@ -85,16 +108,16 @@ The organisers may run their own synthesis after the group files exist. That is 
 <!-- maintainer -->
 
 **Meta:**
-- **Length:** 32 minutes. 10 + 17 + 5 = 32 phase budget. Module budget 45 min: 4 Connections + 3 concept + 32 exercise + 4 reveal/reflection + 2 Debrief
-- **Core artifact:** one file per group in the agreed shared synthesis location, named `group-N-rollout-synthesis.md`
+- **Length:** 32 minutes. 10 + 17 + 5 = 32 phase budget. Module budget 45 min: opening + live work + close
+- **Core artifact:** one file per group in `shared/`, named with the pattern `rollout-synthesis-atlas.md` or an invented crux-based label like `rollout-synthesis-escalation-fog.md`
 - **Remote-resilient simplification:** no cross-group read is required for success. Phase 3 is optional and can be skipped without harming the module
 - **The reveal at Phase 3 close:** *"You just ran the smallest useful rollout system: individuals diverged, groups synthesized, and only after that did ideas cross-pollinate. That ordering matters."* Land it once
 
 **Quality:** draft 2026-04-29
 - compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule 12 + rule #3 + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rules 12, 26, 35)
-- sim-passed 2026-04-28 — STALE after the 2026-04-29 M3 simplification
-- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the 2026-04-29 M3 simplification
-- draft 2026-04-30 (agenda restructure: live crux exercise no longer assumes a cohort `shared/` folder; sim/mechanical/eval not rerun)
+- sim-passed 2026-04-28 — STALE after the live-crux simplification
+- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the live-crux simplification
+- draft 2026-04-30 (agenda restructure: live crux exercise uses one agreed shared synthesis location, not a fixed cohort folder; sim/mechanical/eval not rerun)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

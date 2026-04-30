@@ -14,13 +14,13 @@ First make sure there is a plausible answer in this folder.
 
 ```
 If `verification-output.md` does not exist in this folder, draft a two-page answer to a practical Claude-at-work question I can check. Use this question unless I give you a better one:
-"What should our IT team tell internal users about safe and effective Claude use?"
+"What should our team tell colleagues about safe and effective Claude use?"
 
 Save the answer as `verification-output.md`.
 
 Then read `verification-output.md`.
 
-Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our IT team repeated them to internal users: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
+Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our team repeated them to colleagues: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
 
 Create a markdown table with these columns:
 
@@ -149,6 +149,4 @@ The artifact is not the table. The artifact is the method now written into your 
 **Quality:** draft 2026-04-29
 - draft 2026-04-30 (self-study redesign: personal-folder input, two detection methods, personal CLAUDE.md rule write; sim/mechanical/eval not rerun)
 
-**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Can you be trusted to run this?*
-
-**Eval instance:** `curriculum/evals/instances/claude-basics--the-it-directors-prompt.md`
+**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

@@ -5,7 +5,7 @@ A plain prompt file for use during pre-work. The participant pastes this into a 
 ## When to use
 
 - Pre-work before the cohort, ~15 minutes, mandatory
-- Pre-cohort dry-run by the organisers against the actual SharePoint workspace
+- Pre-cohort dry-run by the organisers against a safe personal folder and the agreed shared synthesis location
 
 ## The prompt
 

@@ -58,4 +58,4 @@ The rollout is bigger than three modules. What's the actual hard part: the thing
 
 **Lecture meta:** *7-minute closing lecture for M2. Trainer leads. Two factual claims about Anthropic licensing/encryption verified at write-time against `privacy.claude.com/en/articles/7996868`.*
 
-**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Can you be trusted to run this?*
+**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

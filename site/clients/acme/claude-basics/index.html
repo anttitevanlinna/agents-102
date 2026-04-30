@@ -1506,7 +1506,7 @@ main::before {
 body.workbook main {
     flex-direction: column;
     align-items: center;
-    gap: 5rem;
+    gap: 0;
     padding: 4rem 1.5rem 6rem;
 }
 body.workbook .workbook-cover,
@@ -1574,11 +1574,83 @@ body.workbook .workbook-toc {
     font-family: 'Inter', sans-serif;
 }
 
+body.workbook main > section.module {
+    margin-top: 9.25rem;
+    padding-top: 0;
+}
+
+body.workbook main > section.module + section.module::before {
+    content: "";
+    display: block;
+    width: 100vw;
+    height: 8rem;
+    margin: 0 calc(50% - 50vw) 5rem;
+    background:
+        linear-gradient(90deg, rgba(148,63,47,.2), transparent 38%, rgba(201,121,66,.16)),
+        var(--ink);
+    border-top: 1px solid var(--ink-line);
+    border-bottom: 1px solid var(--ink-line);
+}
+
+body.workbook main > section.module > .module-hero {
+    width: min(100%, 52rem);
+    margin: 0 auto 4.75rem;
+    padding: 5.25rem 1.5rem 4.25rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18)),
+        var(--paper);
+}
+
+body.workbook main > section.module > .module-hero .module-hero-num {
+    padding-top: 0.5rem;
+}
+
+body.workbook main > section.module > .module-hero .module-hero-big {
+    max-width: 34em;
+}
+
+body.workbook .phase {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+}
+
 @media print {
     .workbook-cover { page-break-after: always; }
     .workbook-toc { page-break-after: always; }
     .workbook-topnav { display: none !important; }
     .reading-progress { display: none !important; }
+    body.workbook main { gap: 0; padding: 0; }
+    body.workbook main > section.module {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    body.workbook main > section.module + section.module {
+        break-before: page;
+        page-break-before: always;
+    }
+    body.workbook main > section.module + section.module::before {
+        display: none;
+    }
+    body.workbook main > section.module > .module-hero {
+        width: auto;
+        margin: 0 0 1rem;
+        padding: 0 0 0.5rem;
+        border-top: 0;
+        border-bottom: 1px solid #ddd;
+        background: transparent;
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+    body.workbook .phase {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 }
 
 /* Sticky top nav: training name on the left, module chips scrollable on the right.
@@ -1667,42 +1739,63 @@ body.workbook { padding-top: 3rem; }
 <header class="workbook-cover" id="top">
   <p class="eyebrow">acme workbook</p>
   <h1 class="cover-title">Claude Basics</h1>
-  <p class="lede">A 3-hour live workshop for the IT team rolling out Claude. See the system, find the crux, then build and verify in your own folder.</p>
+  <p class="lede">A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.</p>
 </header>
 
 <nav class="workbook-toc">
   <h2>Contents</h2>
-<ol class="module-list index-modules"><li data-slug="agentic-systems-repo-demo"><a href="#agentic-systems-repo-demo"><span class="module-n">01</span><span class="module-body"><span class="module-title">Agentic systems, shown in the repo</span><span class="module-big">Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</span></span><span class="module-arrow">→</span></a></li><li data-slug="where-is-this-all-going"><a href="#where-is-this-all-going"><span class="module-n">02</span><span class="module-body"><span class="module-title">Where is this all going?</span><span class="module-big">In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the crux.</span></span><span class="module-arrow">→</span></a></li><li data-slug="homework-build-and-verify"><a href="#homework-build-and-verify"><span class="module-n">03</span><span class="module-body"><span class="module-title">Homework: build and verify</span><span class="module-big">The live session gives you the shape. Homework turns it into personal muscle memory.</span></span><span class="module-arrow">→</span></a></li></ol>
+<ol class="module-list index-modules"><li data-slug="agentic-systems-repo-demo"><a href="#agentic-systems-repo-demo"><span class="module-n">01</span><span class="module-body"><span class="module-title">Agentic systems, shown in the repo</span><span class="module-big">Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</span></span><span class="module-arrow">→</span></a></li><li data-slug="where-is-this-all-going"><a href="#where-is-this-all-going"><span class="module-n">02</span><span class="module-body"><span class="module-title">Where is this all going?</span><span class="module-big">In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the crux.</span></span><span class="module-arrow">→</span></a></li><li data-slug="homework-build-and-verify"><a href="#homework-build-and-verify"><span class="module-n">03</span><span class="module-body"><span class="module-title">Separate homework: build and verify</span><span class="module-big">The live session gives you the shape. Homework turns it into personal muscle memory.</span></span><span class="module-arrow">→</span></a></li></ol>
 </nav>
 
 <section class="module" id="agentic-systems-repo-demo">
 <h1>Agentic systems, shown in the repo</h1>
 <h2>Big Idea</h2>
 <p>Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</p>
-<h2>Meta</h2>
-<ul>
-<li><strong>Primary Bloom&#39;s level:</strong> Understand</li>
-<li><strong>Prework:</strong> Cowork tour optional; bring one question about the Claude rollout</li>
-<li><strong>Homework:</strong> <a href="#homework-build-and-verify">Homework: build and verify</a></li>
-<li><strong>Materials (organisers):</strong> projected agents-102 repo, deployed Acme workbook, and a clean path through the files named below</li>
-<li><strong>Plug points:</strong> the customer&#39;s rollout question, the customer&#39;s licensing and connector reality, the workbook URL they will use after the session</li>
-</ul>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Recognise</strong> the parts of an agentic system in a real repo</li>
 <li><strong>Explain</strong> why rules, prompts, checks, and build outputs matter more than a single chat transcript</li>
 <li><strong>Connect</strong> the live workbook to the source files and build system that produce it</li>
-<li><strong>Name</strong> what you would need before trusting a Claude workflow to repeat</li>
+<li><strong>Notice</strong> the loop that makes the system improve: rules, inspect, plan, edit, check, build, compound</li>
 </ul>
-<h2>Connections</h2>
+<h2>Opening Question</h2>
 <p>When you hear <em>agentic system</em>, what do you imagine exists behind the scenes?</p>
 <p>Hold two answers in the room. Then look at the actual system behind this workbook.</p>
-<h2>Lectures</h2>
-<p>None as a separate reading. This module is a live repo demo.</p>
-<h2>Exercises</h2>
-<p>None. The exercise is the inspection.</p>
-<h2>Key Concepts (Emergent)</h2>
+<h2>Live Demo</h2>
+<section class="phase phase--lecture" id="lectures-agentic-systems-demo-script">
+<div class="phase-kicker">Lecture</div>
+
+<h1>Agentic systems demo script</h1>
+<p><strong>Time:</strong> 30 minutes.</p>
+<p>This is a live demo script for the agents-102 repo and the Claude Basics workbook. The point is not to tour files. The point is to show how an agentic system behaves when rules, prompts, checks, build output, and compounding sit in one working system.</p>
+<h2>1. Start with the question</h2>
+<p>Ask what makes this different from a good chat answer. The answer to look for is repeatability: a chat gives a response, while a system leaves behind structure that can run again.</p>
+<h2>2. Show the workbook first</h2>
+<p>Open the deployed Claude Basics workbook. Start from the thing the cohort will actually use, then work backward to show that the page is built output, not a hand-written slide deck.</p>
+<h2>3. Show the rules</h2>
+<p>Ask Claude Code what rules govern Claude Basics work in this repo. Let it name <code>AGENTS.md</code>, root <code>CLAUDE.md</code>, <code>curriculum/CLAUDE.md</code>, and the Claude Basics rules before opening anything manually.</p>
+<h2>4. Show how rules steer behavior</h2>
+<p>Ask why the workbook now says &quot;people helping their organisation roll out Claude&quot; instead of &quot;IT team.&quot; This makes the rules visible as judgment, not decoration: the lead customer is IT-heavy, but the student-facing asset must travel.</p>
+<h2>5. Inspect the system</h2>
+<p>Ask Claude Code to find the module order, source module files, shared exercises, and build command. The point is the map: source content, rendering code, generated customer output, and deployment path all live in the same system.</p>
+<h2>6. Make one small strategic change</h2>
+<p>Use a tiny wording or structure change, not a rewrite. Ask Claude Code to explain the plan before editing so the room sees the discipline: inspect, propose, edit, verify.</p>
+<h2>7. Rebuild the customer workbook</h2>
+<p>Run the customer build command for <code>acme claude-basics</code>. Show that one source change becomes a customer workbook change through the build system.</p>
+<h2>8. Run checks</h2>
+<p>Ask Claude Code to grep for the old wording and run the cheap checks that fit the change. The teaching point is reliability math in miniature: the system does not trust a clean-looking answer; it checks the artifact.</p>
+<h2>9. Show the diff</h2>
+<p>Ask Claude Code to summarize the diff. The diff is the system&#39;s receipt: what changed in source, what changed in generated output, and what stayed untouched.</p>
+<h2>10. Show compounding</h2>
+<p>Ask what rule or memory should change so the same mistake is less likely next time. This is the compounding move: the output is not only the workbook, but the improved system that will shape the next edit.</p>
+<h2>11. Name the pattern</h2>
+<p>Close by naming the loop: rules, inspect, plan, edit, check, build, compound. That loop is the difference between asking Claude for help and working inside an agentic system.</p>
+</section>
+
+
+
+<h2>What to Notice</h2>
 <ul>
 <li>A chat is a conversation. A system is the conversation plus the rules, files, checks, and outputs that make the work repeatable</li>
 <li><code>CLAUDE.md</code> and <code>AGENTS.md</code> are working agreements: what the agent reads before it acts</li>
@@ -1710,24 +1803,7 @@ body.workbook { padding-top: 3rem; }
 <li>Evals and checks are how a system earns trust over time</li>
 <li>The customer workbook is built output. The source lives in curriculum files; the deployment is a product of the build system</li>
 </ul>
-<h2>Plug Points</h2>
-<ul>
-<li><strong>The deployed workbook.</strong> Start with the Acme workbook so the room sees the artifact they will use.</li>
-<li><strong>The source path.</strong> Show the matching module, exercise, and prompt files in <code>curriculum/</code>.</li>
-<li><strong>The rule path.</strong> Show <code>AGENTS.md</code>, <code>CLAUDE.md</code>, and the Claude Basics training rules so the room sees how an agent gets steered.</li>
-<li><strong>The build path.</strong> Show the customer build command and the generated <code>site/clients/acme/</code> output.</li>
-<li><strong>The change path.</strong> Show one recent commit so the room sees that the system evolves through small versioned changes.</li>
-</ul>
-<h2>Debrief</h2>
-<p>Two minutes. Ask yourself: which part made this feel less like a chat and more like a system?</p>
-<p>Ask Claude to capture that in one sentence.</p>
-<p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Based on the repo demo I just watched, explain in one sentence what makes an agentic system different from a chat.
-
-Then list the three system parts I should look for next time someone shows me an AI workflow.
-</code></pre>
-<p>Keep the answer. You will use it when the live exercise turns the room itself into a small system.</p>
-<h2>Bridge</h2>
+<h2>Handoff</h2>
 <p>Now that you have seen the shape of a system, run one together: individual signal first, group synthesis second, cross-pollination only after synthesis.</p>
 
 </section>
@@ -1736,36 +1812,30 @@ Then list the three system parts I should look for next time someone shows me an
 <h1>Where is this all going?</h1>
 <h2>Big Idea</h2>
 <p>In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the crux.</p>
-<h2>Meta</h2>
-<ul>
-<li><strong>Primary Bloom&#39;s level:</strong> Evaluate</li>
-<li><strong>Prework:</strong> live repo-demo module</li>
-<li><strong>Homework:</strong> <a href="#homework-build-and-verify">Homework: build and verify</a></li>
-<li><strong>Materials (organisers):</strong> group numbers, shared synthesis save path for nominated group drivers, and a dry-run of the group-synthesis prompt before the cohort</li>
-<li><strong>Plug points:</strong> the team&#39;s actual rollout difficulties; the group synthesis files; optional cross-pollination once group synthesis has succeeded; optional organisers-only readout</li>
-</ul>
 <h2>What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Articulate</strong> the top difficulties facing your team&#39;s Claude rollout, surfaced through a Claude-led interview</li>
 <li><strong>Synthesize</strong> a group&#39;s divergent rollout concerns into one named crux</li>
 <li><strong>Evaluate</strong> what another group saw that your group missed, only after your own synthesis is stable</li>
-<li><strong>Recognise</strong> the structure the room produced together: individual divergence, group convergence, then optional cross-pollination</li>
+<li><strong>Recognise</strong> the structure the room produced together: individual divergence, group convergence, then cross-pollination only if it helps</li>
 </ul>
-<h2>Connections</h2>
+<h2>Opening</h2>
 <p>You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output. Now run a smaller system in the room.</p>
 <p>When the team rolls Claude out across the org, what&#39;s the <strong>crux</strong>?</p>
 <p>Not the long list of worries. The single thing that, if you got it right, would make the rest follow.</p>
-<h2>Lectures</h2>
-<p>None in this module. The reveal at the close is the whole concept beat.</p>
-<h2>Exercises</h2>
+<h2>Live Work</h2>
 <section class="phase phase--exercise" id="exercises-find-the-crux">
 <div class="phase-kicker">Exercise</div>
 
 <h1>Exercise: Find the crux</h1>
 <p><strong>Time:</strong> 32 minutes. Three phases.</p>
-<p>This live exercise is collaborative, but it should not become shared-folder debugging. Each participant starts in Cowork on a safe personal folder. Each group nominates one driver. The driver writes one clean group synthesis to the agreed shared synthesis location.</p>
-<p>Before Phase 1: confirm your group number. You will need it in Phase 2.</p>
+<p>This exercise has two modes, in this order:</p>
+<ol>
+<li><strong>Individual first.</strong> Each participant opens Cowork on a safe personal folder and saves their own rollout notes there.</li>
+<li><strong>Group second.</strong> One nominated driver opens Cowork with the group members&#39; personal folders plus the <code>shared</code> directory added as working folders. The personal folders are named with first names. Claude reads the notes from the first-name folders and writes the group&#39;s synthesis to <code>shared/</code>.</li>
+</ol>
+<p>The point is the sequence: individual signal first, group synthesis second. Only the group synthesis is shared.</p>
 <h2>Phase 1. Divergence (10 minutes)</h2>
 <p>Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn&#39;t to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.</p>
 <p>Ask Claude to interview you about your team&#39;s top three Claude-rollout difficulties and save the notes in this folder.</p>
@@ -1774,25 +1844,29 @@ Then list the three system parts I should look for next time someone shows me an
 
 Start with: &quot;What&#39;s the first difficulty you see?&quot; After my answer, push back once: ask for a specific example, or ask whether that&#39;s the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I&#39;ve answered all three with push-back, save the conversation as `m3-rollout-notes.md` in this folder.
+When I&#39;ve answered all three with push-back, save the conversation as `rollout-notes.md` in this folder.
 
 Include the three difficulties and the push-back answers, in my voice. Don&#39;t summarize them into your own register.
 </code></pre>
 <p>Answer Claude&#39;s questions in plain language. When the file saves, you&#39;re done with Phase 1.</p>
 <h2>Phase 2. Group synthesis (17 minutes)</h2>
-<p>Each group picks ONE participant to be the driver. The driver is the only person writing to the agreed shared synthesis location in this phase.</p>
-<p>The group talks through the personal notes. Do not start by reading other groups. Your job is to find your group&#39;s crux first.</p>
+<p>Each group picks ONE participant to be the driver. The driver adds the group members&#39; personal folders and the <code>shared</code> directory to Cowork. The personal folders should be named with first names, such as <code>aino</code>, <code>petra</code>, or <code>juhani</code>. The driver knows the first names and gives them to Claude.</p>
+<p>The driver is the only person writing to <code>shared/</code> in this phase. Claude reads the personal notes from the first-name folders. Do not start by reading other groups. Your job is to find your group&#39;s crux first.</p>
 <p>Ask Claude, in the driver&#39;s Cowork session, to help synthesize the group&#39;s views.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
 <pre><code>Create our group&#39;s rollout synthesis.
 
-First ask me for our group number if you do not already know it.
+First ask me for the first names of the people in this group. Wait for my answer.
 
-Then interview the group in chat. Ask for each person&#39;s top rollout difficulty and one concrete example. Keep the answers short. After everyone has answered, propose the ONE difficulty that, if our team got it right, would make the others follow. That&#39;s the crux.
+For each first name I give you, find that person&#39;s folder among the working folders and read `rollout-notes.md` from it. If a folder or file is missing, tell me which one is missing and continue with the files you can read. Do not interview the group for raw material.
 
-Show the crux candidate in chat first, in two sentences. Don&#39;t save yet. I will ask the group what is wrong or missing.
+After reading the files, propose the ONE difficulty that, if our team got it right, would make the others follow. That&#39;s the crux.
 
-After I give you the group&#39;s push-back, rewrite the synthesis and save it in the agreed shared synthesis location using the group number. If I say group 2, save the file as `group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
+Show the crux candidate in chat first, about one page long. Don&#39;t save yet. Write enough for the group to check and debate: name the crux, explain why you chose it over the other difficulties, quote or paraphrase the evidence from the rollout notes, and name what would change if we got this crux right. I will ask the group what is wrong or missing.
+
+After I give you the group&#39;s push-back, ask me for the group&#39;s name for the filename. If we have not named the group, invent a short, vivid label from the selected crux.
+
+Then rewrite the synthesis and save it in `shared/`. If I say Atlas, save it as `shared/rollout-synthesis-atlas.md`. If you invent the label from a crux about unclear escalation, save something like `shared/rollout-synthesis-escalation-fog.md`. Use lowercase kebab-case in the filename.
 
 The file must include:
 - named crux
@@ -1801,13 +1875,24 @@ The file must include:
 - what we should defer for now
 - one open question the organisers need to answer
 </code></pre>
-<p>Before the driver asks Claude to save: each non-driver in the group names ONE thing in the candidate crux that&#39;s wrong or missing. One sentence each. The driver types those points back to Claude as the push-back. Then Claude rewrites and saves.</p>
-<p>This forcing function is the design. Without it, the driver synthesizes alone and the group disengages. The crux belongs to the group, not to whoever held the keyboard.</p>
+<p>Before the driver asks Claude to save: the group looks at the candidate crux and gives push-back. What is wrong, missing, too soft, or too broad? The driver types that push-back to Claude. Then Claude rewrites and saves.</p>
+<p>This forcing function is the design. Claude reads the raw material from files; the group steers the synthesis. The crux belongs to the group, not to whoever held the keyboard.</p>
+<p>If solution ideas are already in the room, store them after the crux is saved. Keep them separate from the crux so the file preserves both: the diagnosis and the first solution instincts.</p>
+<p>Ask Claude to append the ideas and give a quick read on them.</p>
+<p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
+<pre><code>Read the rollout synthesis file you just saved in `shared/`.
+
+Append a section called &quot;Solution ideas from the group&quot;. Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which idea might be premature, and what question would sharpen the next discussion.
+
+After saving, tell us what you added and what you think in 5 to 7 bullets.
+
+Our ideas:
+</code></pre>
 <h2>Phase 3. Cross-pollination bonus (5 minutes, only if synthesis succeeded)</h2>
 <p>Run this only after every group has saved its synthesis. If any group is still synthesizing, skip this phase and protect the core artifact.</p>
 <p>Ask Claude to read one other group&#39;s synthesis and borrow one useful idea without blurring your group&#39;s crux.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
-<pre><code>Read our group&#39;s rollout synthesis from the shared synthesis location. Then read one other group&#39;s rollout synthesis from the same location.
+<pre><code>Read our group&#39;s rollout synthesis from `shared/`. Then read one other group&#39;s rollout synthesis from `shared/`.
 
 Compare them briefly:
 - one idea the other group saw that we missed
@@ -1822,44 +1907,28 @@ Show me the proposed addition in chat first. Don&#39;t save until the group appr
 
 
 
-<h2>Key Concepts (Emergent)</h2>
+<h2>What to Notice</h2>
 <ul>
 <li>The crux is what Richard Rumelt calls it. The one thing that, if got right, makes the rest follow. Most rollout strategies fail because they treat all difficulties as equal weight</li>
 <li>A divergent interview surfaces what each participant actually thinks; a group synthesis finds the pattern that no one person had named</li>
 <li>Cross-pollination is useful only after synthesis. If groups compare too early, they average each other out</li>
 <li>The structure that produced the answer is the structure the room was already inside of. The work routes through people; the architecture follows the work, not the other way round</li>
 </ul>
-<h2>Plug Points</h2>
-<ul>
-<li><strong>Group composition.</strong> Organisers scale group count to participant count: 2-3 groups for 8 or fewer; 3 groups for 9-12; 4 groups for 13-16</li>
-<li><strong>The cohort&#39;s real rollout difficulties.</strong> Each participant&#39;s divergence interview is on their own org&#39;s rollout, not a generic case</li>
-<li><strong>The group synthesis files.</strong> Each nominated driver writes one file in the <code>shared</code> working folder, named like <code>group-N-rollout-synthesis.md</code></li>
-<li><strong>Optional cross-pollination.</strong> If every group synthesis exists with time left, groups read one other group&#39;s synthesis and borrow one useful idea</li>
-<li><strong>Organisers&#39; readout.</strong> Organisers may run their separate synthesis exercise after the group files exist</li>
-</ul>
-<h2>Debrief</h2>
-<p>Two minutes. The reveal already happened in the exercise close; the Debrief sits with what changed.</p>
-<p>Ask Claude to read your group&#39;s synthesis and name the one move you would personally prioritise this week.</p>
-<p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read our group&#39;s rollout synthesis file from the `shared` working folder.
-
-Look at it from MY position on the team. Of the moves named in the synthesis, which ONE would I personally do first this week, and why? One sentence. No hedging.
-</code></pre>
-<p>Read the answer in chat. The point isn&#39;t to act on it today. The point is that you can already see your own piece of the rollout, named concretely, in the synthesis you helped produce.</p>
-<h2>Bridge</h2>
+<h2>Close</h2>
 <p>The live system work is done. The homework turns it into personal muscle memory.</p>
-<p>Chat level in. Out: clean group syntheses for the rollout, an optional organisers&#39; readout, and the named identity of <em>Claude custodian</em> for the org. Next: build and verify in your own folder.</p>
+<p>Chat level in. Out: clean group syntheses for the rollout and the named identity of <em>Claude custodian</em> for the org.</p>
+<p>The next section is separate homework. It is not part of the 3-hour live room.</p>
 <h2>Organisers&#39; Activities</h2>
 <section class="phase phase--exercise" id="exercises-organisers-synthesize-rollout">
 <div class="phase-kicker">Exercise</div>
 
 <h1>Exercise: Organisers synthesize rollout</h1>
 <p><strong>Time:</strong> 6 minutes. Organisers only.</p>
-<p>This exercise happens after groups have saved <code>group-N-rollout-synthesis.md</code> in the agreed shared synthesis location. It is not required for the participant exercise to succeed. The job is to read across group syntheses and create one organisers&#39; readout that can travel after the workshop.</p>
+<p>This exercise happens after groups have saved their rollout synthesis files in <code>shared/</code>. It is not required for the participant exercise to succeed. The job is to read across group syntheses and create one organisers&#39; readout that can travel after the workshop.</p>
 <h2>Phase 1. Read across the group syntheses</h2>
 <p>Ask Claude to synthesize the saved group files.</p>
 <p><strong>Prompt</strong> <em>(Cowork, organisers only)</em></p>
-<pre><code>Read the group rollout synthesis files from the shared synthesis location.
+<pre><code>Read the group rollout synthesis files from `shared/`.
 
 Create an organisers&#39; rollout readout with:
 - the cruxes that appear across multiple groups
@@ -1871,7 +1940,7 @@ Create an organisers&#39; rollout readout with:
 
 Show me the readout in chat first. Don&#39;t save yet. I will correct priorities, deferrals, and ownership.
 
-After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared synthesis location.
+After I approve it, save it as `shared/organisers-rollout-readout.md`.
 </code></pre>
 <p>Keep the readout grounded in the group syntheses. If the organisers add context that was not in the files, name it as organisers&#39; judgment rather than group evidence.</p>
 <h2>Phase 2. Decide what to share back</h2>
@@ -1892,7 +1961,7 @@ After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared 
 <p>This design protects customer material and reduces live debugging. The public workbook gives prompts and file names. The actual group syntheses and any customer context stay in the customer&#39;s environment. Bosser tooling does not need to see them.</p>
 <p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. In the live crux exercise, the important mechanics are: each person can save personal notes somewhere safe, one group driver can write the group synthesis to the agreed shared location, and organisers can read the group files after they sync.</p>
 <p>The synthesis magic comes from sync plus constraint. Most participants do not write shared files. Group drivers write the small number of group synthesis files. Once those files have synced, organisers can run the synthesis prompt and produce a room-level artifact without collecting documents manually or opening private participant folders.</p>
-<p>Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm it is in <code>shared/</code>, wait briefly, and retry. Do not turn that moment into a content discussion.</p>
+<p>Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm the <code>shared/</code> directory, wait briefly, and retry. Do not turn that moment into a content discussion.</p>
 <p>The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the rollout judgment. The homework does not need organiser answer keys.</p>
 <h2>Phase 1. Prepare the live demo</h2>
 <p>Confirm the trainer can show the live system without hunting:</p>
@@ -1906,31 +1975,25 @@ After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared 
 </ul>
 <p>The demo should show structure, not become a code walkthrough.</p>
 <h2>Phase 2. Prepare the live synthesis workspace</h2>
-<p>Create or confirm one agreed shared location for group synthesis files. It can be SharePoint, Teams files, a shared OneDrive folder, or another customer-approved location.</p>
+<p>Create or confirm one <code>shared/</code> directory for group synthesis files. It can be in SharePoint, Teams files, a shared OneDrive folder, or another customer-approved location.</p>
 <p>Recommended file names:</p>
 <ul>
-<li><code>group-1-rollout-synthesis.md</code></li>
-<li><code>group-2-rollout-synthesis.md</code></li>
-<li><code>group-3-rollout-synthesis.md</code></li>
-<li><code>m3-organisers-rollout-readout.md</code> if the optional organisers&#39; readout runs</li>
+<li><code>rollout-synthesis-atlas.md</code> if a group chooses Atlas</li>
+<li><code>rollout-synthesis-escalation-fog.md</code> if Claude invents a label from the selected crux</li>
+<li><code>organisers-rollout-readout.md</code> if the optional organisers&#39; readout runs</li>
 </ul>
 <p>Do not put customer material in the public curriculum repo. Customer-owned files live only in the customer workspace.</p>
 <h2>Phase 3. Prove group-driver access</h2>
 <p>Before the workshop, prove at least one likely group driver can do all of this:</p>
 <ul>
 <li>open Cowork on a safe personal folder</li>
-<li>add or access the agreed shared synthesis location if Cowork needs it</li>
-<li>save a test markdown file in the shared synthesis location</li>
+<li>add or access the <code>shared/</code> directory if Cowork needs it</li>
+<li>save a test markdown file in <code>shared/</code></li>
 <li>see the saved file from another organiser&#39;s machine</li>
 </ul>
-<p>If this fails, the live crux exercise can still run by pasting group syntheses into a shared document, but decide that before the room arrives.</p>
+<p>If this fails, fix the <code>shared/</code> directory before the room arrives. Do not debug shared writes live.</p>
 <h2>Phase 4. Prepare group mechanics</h2>
-<p>Decide group count and group numbers:</p>
-<ul>
-<li>8 or fewer participants: 2 to 3 groups</li>
-<li>9 to 12 participants: 3 groups</li>
-<li>13 to 16 participants: 4 groups</li>
-</ul>
+<p>Decide the grouping in the room. Each group can name itself on the fly. If a group does not care, Claude invents a short label from the selected crux.</p>
 <p>Do not pre-assign group drivers unless access constraints require it. Each group should choose the person most comfortable operating Cowork.</p>
 <h2>Phase 5. Dry-run the organiser prompt</h2>
 <p>Run a quick rehearsal of the organiser-only rollout synthesis prompt using dummy files:</p>
@@ -1942,9 +2005,9 @@ After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared 
 <p>Create or use one safe test folder. Run the live crux path from a participant point of view, not from an organiser/admin view.</p>
 <p>Do a thin pass:</p>
 <ul>
-<li>save <code>m3-rollout-notes.md</code> in the test folder</li>
-<li>as group driver, save a dummy <code>group-1-rollout-synthesis.md</code> in the shared synthesis location</li>
-<li>as organiser, read that dummy group file and save a dummy <code>m3-organisers-rollout-readout.md</code></li>
+<li>save <code>rollout-notes.md</code> in the test folder</li>
+<li>as group driver, save a dummy <code>rollout-synthesis-atlas.md</code> in <code>shared/</code></li>
+<li>as organiser, read that dummy group file and save a dummy <code>organisers-rollout-readout.md</code> in <code>shared/</code></li>
 </ul>
 <p>Delete or clearly mark test files before the workshop. Keep any real customer content inside the customer environment.</p>
 <p>The dry-run succeeds only if the participant path works without organiser-only permissions.</p>
@@ -1962,13 +2025,13 @@ After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared 
 <ul>
 <li>organisers know where the public workbook is and can point participants to the live module prompts</li>
 <li>trainer can run the repo demo without searching</li>
-<li>organisers know group count and group numbers</li>
-<li>group drivers can save to the agreed shared synthesis location, or the backup shared document is ready</li>
-<li>organisers can save <code>m3-organisers-rollout-readout.md</code> if the optional readout runs</li>
+<li>organisers know how groups will be formed in the room</li>
+<li>at least one likely group driver has already saved a test file to <code>shared/</code></li>
+<li>organisers can save <code>organisers-rollout-readout.md</code> if the optional readout runs</li>
 <li>the test participant dry-run has passed</li>
 <li>organisers can explain the homework folder model in one sentence</li>
 </ul>
-<p>The workshop is ready when the demo path, group synthesis save path, and homework framing all work.</p>
+<p>The workshop is ready when the demo path, <code>shared/</code> save path, and homework framing all work.</p>
 </section>
 
 
@@ -1976,30 +2039,22 @@ After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared 
 </section>
 
 <section class="module" id="homework-build-and-verify">
-<h1>Homework: build and verify</h1>
+<h1>Separate homework: build and verify</h1>
 <h2>Big Idea</h2>
 <p>The live session gives you the shape. Homework turns it into personal muscle memory.</p>
-<h2>Meta</h2>
-<ul>
-<li><strong>Primary Bloom&#39;s level:</strong> Apply → Evaluate</li>
-<li><strong>Prework:</strong> live session completed</li>
-<li><strong>Homework:</strong> both exercises below</li>
-<li><strong>Materials:</strong> Cowork and any folder you can safely use, such as Documents, OneDrive, Desktop, or a work folder</li>
-<li><strong>Plug points:</strong> your own safe task, your own evidence surfaces, your own CLAUDE.md</li>
-</ul>
-<h2>What You&#39;ll Learn</h2>
-<p>After this module, you will be able to:</p>
+<h2>Do This After the Live Workshop</h2>
+<p>This is not another live module. Do it after the 3-hour session, in your own time, in a folder that is safe for your work.</p>
+<h2>What You&#39;ll Build</h2>
+<p>After this homework, you will be able to:</p>
 <ul>
 <li><strong>Build</strong> a small Claude system in a normal personal folder</li>
 <li><strong>Write</strong> a CLAUDE.md that changes how future answers behave</li>
 <li><strong>Check</strong> a plausible Claude answer by extracting claims and finding evidence</li>
 <li><strong>Carry</strong> the method back to your daily work without a cohort SharePoint setup</li>
 </ul>
-<h2>Connections</h2>
+<h2>Start Here</h2>
 <p>The live session showed the shape of a system and used that shape on the rollout question. This homework is smaller and more personal: one folder, one task, one checking method.</p>
 <p>Pick a folder you can safely use. It can be Documents, OneDrive, Desktop, or a work folder. Open Cowork on that folder. Everything you save in these exercises stays there.</p>
-<h2>Lectures</h2>
-<p>None. The homework is in the doing.</p>
 <h2>Exercises</h2>
 <section class="phase phase--exercise" id="exercises-build-your-system">
 <div class="phase-kicker">Exercise</div>
@@ -2013,7 +2068,7 @@ After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared 
 <p>Pose the task to Claude with no rules, no context, no setup. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
 <p>Tell Claude the task, ask for a draft, and save it in this folder.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Draft a one-page IT-team response we can send to an internal user.
+<pre><code>Draft a one-page response we can send to an internal user.
 
 The task is: I need a useful answer to a common Claude question internal users ask. Pick one of these if I have not already given you a better task:
 - is it safe to paste customer email content into Claude?
@@ -2071,13 +2126,13 @@ After I push back, save the final list as `CLAUDE.md` in this folder. If this fo
 <p>First make sure there is a plausible answer in this folder.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>If `verification-output.md` does not exist in this folder, draft a two-page answer to a practical Claude-at-work question I can check. Use this question unless I give you a better one:
-&quot;What should our IT team tell internal users about safe and effective Claude use?&quot;
+&quot;What should our team tell colleagues about safe and effective Claude use?&quot;
 
 Save the answer as `verification-output.md`.
 
 Then read `verification-output.md`.
 
-Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our IT team repeated them to internal users: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
+Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our team repeated them to colleagues: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
 
 Create a markdown table with these columns:
 
@@ -2169,20 +2224,14 @@ Don&#39;t suggest fixes. I want to see what stayed open.
 
 
 
-<h2>Key Concepts (Emergent)</h2>
+<h2>What to Notice</h2>
 <ul>
 <li>Your folder is the system boundary</li>
 <li>CLAUDE.md turns one good answer into a reusable working agreement</li>
 <li>Trust comes from a method you can rerun, not from a feeling that an answer sounded right</li>
 <li>The live rollout-crux pattern and the homework build-and-verify pattern are the same family: preserve signal, synthesize carefully, then carry the rule forward</li>
 </ul>
-<h2>Plug Points</h2>
-<ul>
-<li><strong>The folder.</strong> Use a folder where it is safe to create a few markdown files.</li>
-<li><strong>The task.</strong> Pick a real but low-risk task from your own work.</li>
-<li><strong>The evidence.</strong> Use public docs, internal policy, SharePoint files, admin panels, or named owners you are allowed to consult.</li>
-</ul>
-<h2>Debrief</h2>
+<h2>Save the Summary</h2>
 <p>When both exercises are done, ask Claude to summarize what your folder can now do.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Read the files in this folder from the build-and-verify homework.
@@ -2195,8 +2244,8 @@ Tell me:
 Keep it to five bullets.
 </code></pre>
 <p>Save the answer as <code>homework-summary.md</code>.</p>
-<h2>Bridge</h2>
-<p>There is no next module. There is the rollout. The check-back happens at week 1, week 4, and week 12.</p>
+<h2>Follow-up</h2>
+<p>The live session is over. The rollout is not. Bring the folder summary, the group synthesis, and the open verification rows into the week 1, week 4, and week 12 check-backs.</p>
 
 </section>
 </main>
@@ -2266,12 +2315,12 @@ Keep it to five bullets.
         },
         'claude-basics': {
             label: 'Claude Basics',
-            lede: 'A 3-hour live workshop for the IT team rolling out Claude. See the system, find the crux, then build and verify in your own folder.',
+            lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
             runtime: 'cowork',
             modules: [
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
-                { slug: 'homework-build-and-verify', title: 'Homework: build and verify' }
+                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' }
             ]
         }
     };

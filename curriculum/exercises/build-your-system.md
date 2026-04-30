@@ -17,7 +17,7 @@ Tell Claude the task, ask for a draft, and save it in this folder.
 **Prompt** *(Cowork)*
 
 ```
-Draft a one-page IT-team response we can send to an internal user.
+Draft a one-page response we can send to an internal user.
 
 The task is: I need a useful answer to a common Claude question internal users ask. Pick one of these if I have not already given you a better task:
 - is it safe to paste customer email content into Claude?
@@ -100,6 +100,4 @@ When three specifics survive push-back, the response is yours. Save it. The fold
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m1-verbatim-judge-report.md` @ 18affa1) PASS 13/13 — STALE after the 2026-04-29 prompt/path redesign
 - draft 2026-04-30 (self-study architecture edit: exercise now runs in any safe personal folder; prompt-chain tests not rerun)
 
-**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Stop chatting — build a system*
-
-**Eval instance:** `curriculum/evals/instances/claude-basics--build-your-system.md`
+**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

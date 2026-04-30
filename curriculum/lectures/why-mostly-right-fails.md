@@ -57,4 +57,4 @@ The team is not trying to prove Claude is safe or unsafe. The team is learning w
 
 **Lecture meta:** *Short concept beat before the M2 exercise. Borrowed from Bootstrap M5's groundedness lecture, compressed for IT-team Claude Basics. Do not expand into the full four-detector benchmark frame.*
 
-**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Can you be trusted to run this?*
+**Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

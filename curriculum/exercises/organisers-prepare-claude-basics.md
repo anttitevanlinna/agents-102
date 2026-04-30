@@ -6,13 +6,13 @@ This is the setup exercise for the 3-hour live workshop. The live room has two m
 
 ## What organisers need to understand
 
-Use one shared SharePoint folder for the live synthesis. Everyone who may drive a group syncs that same folder before the workshop. Inside it, create one directory named `shared/`; group synthesis files and the optional organisers' readout go there.
+Use one shared SharePoint workshop folder for the live synthesis. Everyone syncs that same folder before the workshop. Inside it, create one first-name folder for each participant and one directory named `shared/`; individual notes go in the first-name folders, group synthesis files and the optional organisers' readout go in `shared/`.
 
 Participants do their build-and-verify homework later in an empty personal folder they choose. That homework does not use the shared SharePoint folder.
 
 The public workbook gives prompts and file names. The actual group syntheses and any customer context stay in the customer's environment.
 
-Participants copy the workbook prompts into Cowork. In the live crux exercise, the important mechanics are: each person can save personal notes somewhere safe, one group driver can write the group synthesis to the agreed shared location, and organisers can read the group files after they sync.
+Participants copy the workbook prompts into Cowork. In the live crux exercise, the important mechanics are: each person can save personal notes in their own first-name folder, one group driver can read the group's first-name folders and write the group synthesis to `shared/`, and organisers can read the group files after they sync.
 
 The synthesis comes from sync plus constraint. Most participants do not write shared files. Group drivers write the small number of group synthesis files. Once those files have synced, organisers can run the synthesis prompt without collecting documents manually or opening private participant folders.
 
@@ -32,24 +32,26 @@ The demo should show structure, not become a code walkthrough.
 
 ## Phase 2. Prepare the live synthesis workspace
 
-Create or confirm the shared SharePoint folder. Make sure likely group drivers and organisers have synced it locally and can add it as a Cowork working folder.
+Create or confirm the shared SharePoint workshop folder. Make sure every participant and organiser has synced it locally before the workshop.
 
-Inside the synced SharePoint folder, create one directory named `shared/`.
+Inside the synced SharePoint workshop folder, create:
 
-Recommended file names:
+- one first-name folder per participant, such as `aino/`, `petra/`, or `juhani/`
+- one directory named `shared/`
 
-- `rollout-synthesis-atlas.md` if a group chooses Atlas
-- `rollout-synthesis-escalation-fog.md` if Claude invents a label from the selected crux
+Expected file names:
+
+- `rollout-synthesis-<label>.md` for each group synthesis. The label comes from the group driver prompt: a group name if the group gives one, or a crux-based label if the group does not
 - `organisers-rollout-readout.md` if the optional organisers' readout runs
 
-Do not put customer material in the public curriculum repo. Customer-owned files live only in the customer workspace.
+Keep workshop materials in the shared SharePoint workshop folder.
 
 ## Phase 3. Prove group-driver access
 
 Before the workshop, prove at least one likely group driver can do all of this:
 
-- open Cowork on a safe personal folder
-- add the synced SharePoint folder as a second Cowork working folder
+- open Cowork on the synced SharePoint workshop folder
+- read test `rollout-notes.md` files from two first-name folders
 - save a test markdown file in `shared/`
 - see the saved file from another organiser's machine
 
@@ -75,8 +77,8 @@ Create or use one safe test folder. Run the live crux path from a participant po
 
 Do a thin pass:
 
-- save `rollout-notes.md` in the test folder
-- as group driver, save a dummy `rollout-synthesis-atlas.md` in `shared/`
+- save `rollout-notes.md` in a first-name test folder
+- as group driver, save a dummy `rollout-synthesis-test.md` in `shared/`
 - as organiser, read that dummy group file and save a dummy `organisers-rollout-readout.md` in `shared/`
 
 Delete or clearly mark test files before the workshop. Keep any real customer content inside the customer environment.
@@ -114,7 +116,8 @@ The workshop is ready when the demo path, `shared/` save path, and homework fram
 - **Audience:** organisers only
 - **Timing:** reserve a 2-hour organiser prework block, ideally completed one or two days before the workshop
 - **Privacy:** customer materials stay in the customer SharePoint/Cowork environment. Bosser tooling must not ingest customer files
-- **Core readiness test:** trainer can run the repo demo; one group driver can save a synthesis file; organisers can read it and save the readout; one participant-path dry-run has passed
+- **Folder topology assumption:** one shared SharePoint workshop folder is synced by everyone before the workshop. It contains one first-name folder per participant and one `shared/` directory. Participants write `rollout-notes.md` into their own first-name folder. Group drivers read first-name folders and write group syntheses to `shared/`; they do not add folders live
+- **Core readiness test:** trainer can run the repo demo; everyone can sync the workshop folder; one group driver can read first-name folders and save a synthesis file to `shared/`; organisers can read it and save the readout; one participant-path dry-run has passed
 
 **Quality:** draft 2026-04-30
 - draft 2026-04-30 (restructured for live repo demo + live crux + homework path; sim/mechanical/eval not rerun)

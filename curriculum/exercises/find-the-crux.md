@@ -4,8 +4,8 @@
 
 This exercise has two modes, in this order:
 
-1. **Individual first.** Each participant opens Cowork on a safe personal folder and saves their own rollout notes there.
-2. **Group second.** One nominated driver opens Cowork with the group members' personal folders plus the `shared` directory added as working folders. The personal folders are named with first names. Claude reads the notes from the first-name folders and writes the group's synthesis to `shared/`.
+1. **Individual first.** Each participant opens Cowork on the shared SharePoint workshop folder and saves their own rollout notes in their first-name folder.
+2. **Group second.** One nominated driver opens Cowork on the same workshop folder. Claude reads the notes from the group members' first-name folders and writes the group's synthesis to `shared/`.
 
 The point is the sequence: individual signal first, group synthesis second. Only the group synthesis is shared.
 
@@ -13,7 +13,7 @@ The point is the sequence: individual signal first, group synthesis second. Only
 
 Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn't to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.
 
-Ask Claude to interview you about your team's top three Claude-rollout difficulties and save the notes in this folder.
+Ask Claude to interview you about your team's top three Claude-rollout difficulties and save the notes in your first-name folder.
 
 **Prompt** *(Cowork)*
 
@@ -22,7 +22,7 @@ Interview me about the top three difficulties I see in our team's Claude rollout
 
 Start with: "What's the first difficulty you see?" After my answer, push back once: ask for a specific example, or ask whether that's the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I've answered all three with push-back, save the conversation as `rollout-notes.md` in this folder.
+When I've answered all three with push-back, ask me for my first name. Then save the conversation as `rollout-notes.md` in the folder named with my first name.
 
 Include the three difficulties and the push-back answers, in my voice. Don't summarize them into your own register.
 ```
@@ -31,7 +31,7 @@ Answer Claude's questions in plain language. When the file saves, you're done wi
 
 ## Phase 2. Group synthesis (17 minutes)
 
-Each group picks ONE participant to be the driver. The driver adds the group members' personal folders and the `shared` directory to Cowork. The personal folders should be named with first names, such as `aino`, `petra`, or `juhani`. The driver knows the first names and gives them to Claude.
+Each group picks ONE participant to be the driver. The driver uses the same synced SharePoint workshop folder. The participant folders are named with first names, such as `aino`, `petra`, or `juhani`. The driver knows the first names and gives them to Claude.
 
 The driver is the only person writing to `shared/` in this phase. Claude reads the personal notes from the first-name folders. Do not start by reading other groups. Your job is to find your group's crux first.
 
@@ -110,6 +110,7 @@ The organisers may run their own synthesis after the group files exist. That is 
 **Meta:**
 - **Length:** 32 minutes. 10 + 17 + 5 = 32 phase budget. Module budget 45 min: opening + live work + close
 - **Core artifact:** one file per group in `shared/`, named with the pattern `rollout-synthesis-atlas.md` or an invented crux-based label like `rollout-synthesis-escalation-fog.md`
+- **Folder topology assumption:** one synced SharePoint workshop folder contains one first-name folder per participant plus `shared/`. Everyone syncs the same workshop folder before the session. The group driver does not add folders live; they open Cowork on the workshop folder, read group members' first-name folders, and write only the group synthesis to `shared/`
 - **Remote-resilient simplification:** no cross-group read is required for success. Phase 3 is optional and can be skipped without harming the module
 - **The reveal at Phase 3 close:** *"You just ran the smallest useful rollout system: individuals diverged, groups synthesized, and only after that did ideas cross-pollinate. That ordering matters."* Land it once
 

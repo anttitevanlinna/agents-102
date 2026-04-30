@@ -1,6 +1,6 @@
 # Claude Basics — Training-specific rules
 
-This CLAUDE.md governs the **Claude Basics** training surface: a 3 × 45-minute IT-team Claude rollout training. Strategic spine lives in `bosser-strategy:content-strategy-claude-basics.md`. Universal pedagogy in `curriculum/lecture-guardrails.md`. Universal architecture in `curriculum/CLAUDE.md`. This file names the deliberate exceptions.
+This CLAUDE.md governs the **Claude Basics** training surface: a 3-hour IT-team Claude rollout training. Strategic spine lives in `bosser-strategy:content-strategy-claude-basics.md`. Universal pedagogy in `curriculum/lecture-guardrails.md`. Universal architecture in `curriculum/CLAUDE.md`. This file names the deliberate exceptions.
 
 ## Audience
 
@@ -8,32 +8,31 @@ IT team — 10 to 14 admins, info-management, architects — going from chat-lev
 
 ## Runtime — Cowork only
 
-Single runtime. Cowork (the Cowork tab in Claude Desktop, connected to a SharePoint-synced folder). Claude Code is named in passing as the next move; the room never opens it.
+Single participant runtime. Cowork is where participants run the live crux exercise and the homework. Claude Code appears only in the trainer's repo demo as the next-level system surface; participants do not open it.
 
 **Consequence:** no dual-runtime forks (`<div class="rt-code">` / `<div class="rt-cowork">`) anywhere in claude-basics surfaces. Bootstrap's runtime-fork rules from `memory/check_prompts.md` rule 10 do not fire here. All prompt blocks render in their plain canonical shape.
 
-## Delivery architecture — SharePoint shared folder + personal folders
+## Delivery architecture — live synthesis + personal homework
 
 Third architecture model after Bootstrap (local training-dir + zips) and AE101 (student's real repo). Different from both.
 
-- **One `shared/` folder for cohort materials**, prepared by the organisers before the workshop. This folder holds customer-owned inputs and outputs such as `shared/m1-task.md`, `shared/m2-verification-output.md`, `shared/group-*-verification.md`, `shared/m2-verification-synthesis.md`, `shared/group-N-rollout-synthesis.md`, and `shared/m3-organisers-rollout-readout.md`. Bosser/Codex/Claude never needs to see these customer materials; the public repo only carries the file contract and prompts.
-- **One personal folder per participant**, hosted in the same shared SharePoint site, synced to each participant's machine via OneDrive. Personal work is saved in that folder. It is one of the Cowork working folders for the session.
-- **Cowork must mount both needed folders.** Cowork cannot read outside its working folders. Participants add their own participant folder and the `shared/` folder as separate working folders. They do not open the cohort root and rely on path traversal. Prompts name which working folder to read from or save to.
-- **The participant CLAUDE.md tells Cowork it is on OneDrive.** Every working CLAUDE.md a participant writes opens with a runtime-naming line: *"You are working in a OneDrive-synced folder. File writes propagate across the team via OneDrive sync; assume eventual consistency on cross-folder reads."* During the workshop, prompts explicitly read the participant's CLAUDE.md from their folder. After the workshop, opening that folder directly makes it the folder rules file. Cowork handles sync semantics natively when it knows; the failures happen when an agent assumes a local POSIX filesystem and is surprised by sync.
-- **Module 3 uses nominated drivers, not everyone switching folders.** Most participants keep working in their personal folder plus `shared/`. Each group nominates one driver to write the group's rollout synthesis into the `shared/` working folder; organisers may optionally write a readout after group files exist.
-- **Post-training legacy** — the SharePoint structure survives the day. The team takes their working systems, hardened CLAUDE.md files, group syntheses, and optional organisers' readout back to their daily work.
+- **Live session starts with repo demo.** The trainer shows the agents-102 repo and deployed workbook as the concrete system. This is not a participant runtime requirement.
+- **Live crux work needs only narrow shared writes.** Participants can save personal interview notes in any safe folder. Each group nominates one driver to write `group-N-rollout-synthesis.md` into the agreed shared synthesis location. Organisers may optionally write `m3-organisers-rollout-readout.md` after group files exist.
+- **Homework happens in personal folders.** Build-your-system and verification homework run after the live session in any safe folder the participant chooses: Documents, OneDrive, Desktop, or a work folder. No cohort `shared/`, no `participants/`, no group-driver dependency.
+- **CLAUDE.md names the runtime when needed.** If a homework folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, the folder CLAUDE.md should say so near the top and tell Claude to assume eventual consistency on file reads.
+- **Post-training legacy** — the team takes the group rollout syntheses, optional organisers' readout, and personal homework systems back to daily work.
 
-The classic *"don't put your training-dir in OneDrive"* warning from Bootstrap does not apply here: in Claude Basics, the OneDrive substrate IS the architecture, and the folder CLAUDE.md is what makes it work.
+The classic *"don't put your training-dir in OneDrive"* warning from Bootstrap does not apply here: Claude Basics homework can live in normal synced work folders because the folder CLAUDE.md names the runtime.
 
 ## Remote-resilient delivery contract
 
-Claude Basics may run with organisers remote. The customer-side runtime must therefore be proven before the workshop, not debugged live.
+Claude Basics may run with organisers remote. The live synthesis path must therefore be proven before the workshop, not debugged live.
 
 - **Local ownership:** the organisers own content and room mechanics. Organisers help participants find folders, confirm sync, and keep the session moving while facilitation happens remotely.
-- **Hard preflight:** before the workshop, the organisers prove that every participant can sync/open their personal folder, add both their personal folder and `shared/` as Cowork working folders, read a file from `shared/`, and save a test `.md` file in their own folder. If this fails, the workshop does not start as designed.
+- **Hard preflight:** before the workshop, the organisers prove that the trainer can run the repo demo, at least one likely group driver can save to the agreed shared synthesis location, and organisers can read that file for the optional readout. If this fails, the workshop does not start as designed.
 - **Customer privacy by design:** all real customer material lives only in the customer's SharePoint/Cowork environment. The public curriculum names paths and artifact shapes, never customer content. Bosser tooling must not ingest customer files for this workshop.
-- **Pre-staged shared materials:** `shared/m1-task.md` and `shared/m2-verification-output.md` are prepared and tested by the organisers before the session. M3 starts fresh from participant interviews. Live improvisation is allowed as narration, not as a dependency.
-- **Shared writes are limited:** participants write to personal working folders. Group and cohort-level files in the `shared/` working folder are written only by nominated group drivers or the organisers.
+- **No live M1/M2 shared materials:** `m1-task.md`, `m2-verification-output.md`, group verification files, and answer keys are no longer live-session dependencies. The build-and-verify path is homework.
+- **Shared writes are limited:** group-level files are written only by nominated group drivers or the organisers.
 
 ## File location — shared library (renderer-mandated)
 
@@ -52,17 +51,17 @@ English is the canonical curriculum language for claude-basics, matching Bootstr
 
 ## Module list
 
-1. `stop-chatting-build-a-system.md` — Big idea: with a CLAUDE.md and a real task, you build a system in 45 minutes. Mood: confident creation.
-2. `can-you-be-trusted-to-run-this.md` — Big idea: trust is a checking system you can run on plausible output. Mood: sober alert.
-3. `where-is-this-all-going.md` — Big idea: the hard part is finding the rollout crux. Mood: expanded horizon.
+1. `agentic-systems-repo-demo.md` — Big idea: agentic systems are visible when you know where to look. Mood: concrete awe.
+2. `where-is-this-all-going.md` — Big idea: the hard part is finding the rollout crux. Mood: expanded horizon.
+3. `homework-build-and-verify.md` — Big idea: live shape becomes personal muscle memory through homework. Mood: capable next step.
 
 Slug filenames only, no `module-N-` prefix (per `curriculum/CLAUDE.md`).
 
 ## Content boundaries — claude-basics specific
 
-- **No magic-beat menu** like Bootstrap. Claude Basics promises one well-placed *"oh, that's what this is"* moment, in Module 3, when the room realises after the fact that they built a multi-agent system.
-- **No agentic walk-away exercises** in Module 1 or Module 2. The training builds agentic awareness; the participant doesn't yet author multi-step autonomous workflows. Walk-away is named in Module 3, lived sketchily by the organisers during the break, and pointed at as the next move.
-- **Practitioner weaving stays light.** None in Module 1. Modules 2 and 3 may name one practitioner each, max — the audience is chat-level, not builder-leader; performative authority lands wrong.
+- **No magic-beat menu** like Bootstrap. Claude Basics promises one well-placed *"oh, that's what this is"* moment, in the live crux exercise, when the room realises after the fact that it ran a useful divergence-to-synthesis system.
+- **No agentic walk-away exercises** in the live room. The training builds agentic awareness; the participant doesn't yet author multi-step autonomous workflows. Personal build-and-verify happens as homework.
+- **Practitioner weaving stays light.** Module 2 may name one practitioner max — the audience is chat-level, not builder-leader; performative authority lands wrong.
 - **Plain prompt files, not installed skills.** Claude Basics ships authored moves as plain `.md` files at `curriculum/trainings/claude-basics/prompts/` — the participant pastes them or asks Claude to read them. No installed skills (Claude Code's `~/.claude/skills/`, Cowork's plugin loader). The IT-team audience is chat-level; install-affordance machinery is overkill on Day 1 and adds the wrong kind of friction. The four moves the original skeleton named as skills (`prework-tour`, `morning-planner`, `module3-divergence`, `module3-synthesizer`) become plain prompt files. Skills-as-concept lands in Bootstrap Module 4, not here.
 
 ## Eval template

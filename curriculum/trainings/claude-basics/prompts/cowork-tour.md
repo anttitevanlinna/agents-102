@@ -1,6 +1,6 @@
 # Cowork tour — pre-work for Claude Basics
 
-A plain prompt file for use during pre-work. The participant pastes this into a fresh Cowork session connected to their personal SharePoint folder. In the workshop itself, Cowork will also have the `shared` folder added as a second working folder. Claude walks them through the surface area they will use across Module 1, Module 2, and Module 3.
+A plain prompt file for use during pre-work. The participant pastes this into a fresh Cowork session connected to a safe personal folder. Claude walks them through the surface area they will use in the live crux exercise and homework.
 
 ## When to use
 

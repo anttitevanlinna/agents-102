@@ -1,0 +1,2773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Basics — acme</title>
+<style>/* Curriculum viewer — Editorial theme.
+   Warm-ink dark header + cream paper body.
+   Roboto Slab (display, light) + Inter (body) + EB Garamond (italic accents).
+   Scoped to curriculum.html — does not affect the rest of the site. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@200;300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+    --bg:          #efe6d2;   /* cream paper */
+    --bg-2:        #e6dcc4;
+    --bg-3:        #ddd2b6;
+    --fg:          #1f1a13;
+    --fg-2:        #4a4234;
+    --fg-3:        #786c56;
+    --fg-4:        #a89a7f;
+    --line:        #d6c8a3;
+    --line-2:      #c5b68d;
+    --accent:      #8a3a2a;   /* oxblood */
+    --accent-2:    #a8473a;
+    --accent-soft: rgba(138,58,42,.08);
+    --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
+    --ink:         #14110d;
+    --ink-text:    #f4ecdb;
+    --ink-text-2:  #c2b8a4;
+    --ink-muted:   #8a7e6c;
+    --ink-line:    #38301f;
+    --code-bg:     #e6dcc4;
+
+    --font-display: 'Roboto Slab', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-serif:   'EB Garamond', Georgia, serif;
+    --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    overflow-x: clip;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Flex column so the footer hugs content instead of leaving a tract of cream
+       below short pages (training picker, error states, single-screen modules). */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1 0 auto; }
+
+::selection { background: var(--accent); color: var(--ink-text); }
+
+/* ── Header: dark ink bar, primary contrast moment ── */
+
+.curriculum-header {
+    background: var(--ink);
+    border-bottom: 1px solid var(--ink-line);
+    padding: 1.1rem 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.curriculum-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 120% at 20% 50%, rgba(201,121,66,.08), transparent 70%),
+        radial-gradient(ellipse 40% 120% at 85% 50%, rgba(201,121,66,.05), transparent 70%);
+    pointer-events: none;
+}
+
+.curriculum-header > * { position: relative; }
+
+.curriculum-home {
+    color: var(--ink-text);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.05rem;
+    letter-spacing: -.005em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.curriculum-home::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent-2);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.curriculum-home:hover { color: var(--accent-2); }
+
+/* ── Runtime switcher (Bootstrap only) ──
+   Bootstrap is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+   pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
+   phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
+   the body.runtime-* class hides the inactive variant.
+
+   Verified facts driving the design — see curriculum/reference/claude-code-for-engineers.md
+   § Claude Cowork — same engine, different surface. */
+
+.runtime-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: var(--ink-text);
+}
+
+.runtime-switcher[hidden] { display: none; }
+
+.runtime-switcher-label {
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.runtime-switcher-btn {
+    background: transparent;
+    color: var(--ink-text);
+    border: 1px solid var(--ink-line);
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+    font: inherit;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.runtime-switcher-btn:hover { opacity: 1; }
+
+.runtime-switcher-btn.is-active {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    color: var(--ink);
+    opacity: 1;
+}
+
+/* Hide the inactive runtime's prose. Three modes, four classes:
+     .rt-cli      visible only when runtime is cli
+     .rt-desktop  visible only when runtime is desktop
+     .rt-cowork   visible only when runtime is cowork
+     .rt-code     visible when runtime is cli OR desktop (any Claude Code surface)
+   Authors use the broad .rt-code for the common Code-vs-Cowork fork (plan mode,
+   subagent terminology, four-session pattern). Use the narrow .rt-cli / .rt-desktop
+   only where install affordances actually differ (M4, M7).
+
+   Both inline (<span>) and block (<div>) wrappers respond to the same classes —
+   wrap whole prompt blocks in <div class="rt-…"> when the prompt body itself
+   forks (fenced-code can't carry inline spans inside, so the wrap goes around). */
+
+body.runtime-cli     .rt-desktop,
+body.runtime-cli     .rt-cowork  { display: none; }
+
+body.runtime-desktop .rt-cli,
+body.runtime-desktop .rt-cowork  { display: none; }
+
+body.runtime-cowork  .rt-cli,
+body.runtime-cowork  .rt-desktop,
+body.runtime-cowork  .rt-code    { display: none; }
+
+/* ── Footer: license notice, visible on every module page ── */
+
+.curriculum-footer {
+    background: var(--ink);
+    border-top: 1px solid var(--ink-line);
+    color: var(--ink-text);
+    padding: 1.4rem 2rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+.curriculum-footer p {
+    max-width: 62rem;
+    margin: 0 auto;
+    opacity: 0.78;
+}
+
+.curriculum-footer strong {
+    color: var(--ink-text);
+    opacity: 1;
+    font-weight: 500;
+}
+
+.curriculum-footer a {
+    color: var(--accent-2);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.curriculum-footer a:hover {
+    border-bottom-color: var(--accent-2);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 1.5rem 7rem;
+    position: relative;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 420px;
+    background:
+        radial-gradient(ellipse 60% 70% at 25% 25%, rgba(138,58,42,.045), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(201,121,66,.035), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.module {
+    width: 100%;
+    max-width: 40em;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Module body typography ── */
+
+.module h1 {
+    font-family: var(--font-display);
+    font-weight: 200;
+    font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+    line-height: .95;
+    letter-spacing: -.025em;
+    margin: 0 0 2rem;
+    color: var(--fg);
+    text-wrap: balance;
+    position: relative;
+}
+
+.module h1::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--accent);
+    margin-top: 1.75rem;
+}
+
+.module h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -.015em;
+    margin: 4rem 0 1.25rem;
+    padding-top: 2rem;
+    color: var(--fg);
+    position: relative;
+}
+
+/* Editorial section mark — small italic amber mark above each h2 */
+.module h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--accent);
+}
+
+.module h3 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--accent);
+    letter-spacing: .005em;
+}
+
+.module p { margin: 0 0 1.15rem; text-wrap: pretty; }
+
+/* Drop cap on the opening paragraph after the module title */
+.module h1 + p::first-letter {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 3.8rem;
+    line-height: .8;
+    float: left;
+    padding: 0.3rem 0.55rem 0 0;
+    margin-top: 0.1rem;
+}
+
+/* Opening paragraph sets a lede tone */
+.module h1 + p {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--fg-2);
+    min-height: 3.5rem;
+}
+
+/* First paragraph after an h2 gets the italic serif lede treatment —
+   creates a visible tempo shift at every section start */
+.module h2 + p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+    max-width: 36em;
+}
+
+/* A bold opener at the start of a paragraph reads as a lead-in label */
+.module p > strong:first-child {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* …except when the bolded text is the whole paragraph (list-style key:value).
+   Leave those alone — otherwise Meta-style bullet definitions go all oxblood. */
+.module li > strong:first-child {
+    color: var(--fg);
+}
+
+.module ul, .module ol {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.module li { margin: 0.4rem 0; }
+.module li > ul, .module li > ol { margin: 0.4rem 0; }
+.module ul li::marker { color: var(--accent); }
+
+.module a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.15s;
+}
+
+.module a:hover { border-bottom-color: var(--accent); }
+
+/* Headings that are links (included exercises/lectures). */
+.module h1 a, .module h2 a, .module h3 a {
+    color: inherit;
+    border-bottom: 2px solid transparent;
+}
+.module h1 a:hover, .module h2 a:hover, .module h3 a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.module strong { font-weight: 600; color: var(--fg); }
+.module em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.module code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 0.12em 0.4em;
+    border-radius: 3px;
+}
+
+.module pre {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.88em;
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+}
+
+.module pre code {
+    background: none;
+    color: var(--fg);
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+}
+
+/* ----------------------------------------------------------------
+   Prompt blocks + copy buttons
+   ----------------------------------------------------------------
+   Author markup:
+     **Prompt** *(Claude Code)*
+
+     ```
+     <prompt content>
+     ```
+   The renderer wraps the label paragraph + the following <pre> in
+   .prompt-block, surfaces destination + optional context as a header
+   chip, and adds a Copy button to the <pre>. Every other <pre> in
+   the document also gets a Copy button (universal affordance). */
+
+.module .prompt-block {
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--line-2);
+    border-radius: 5px;
+    background: var(--bg-2);
+    overflow: hidden;
+}
+
+.module .prompt-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.4rem 0.55rem 0.4rem 0.95rem;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--line-2);
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+.module .prompt-block__label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.module .prompt-block__arrow {
+    color: var(--fg-3);
+}
+
+.module .prompt-block__dest {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.module .prompt-block__context {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-2);
+    font-size: 0.92em;
+}
+
+.module .prompt-block__context::before {
+    content: "·";
+    margin-right: 0.5rem;
+    color: var(--fg-4);
+}
+
+.module .prompt-block .prompt-block__pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--bg-2);
+}
+
+/* Copy button — two flavours.
+   1. In-header (.copy-btn--in-header): mounted into the prompt-block header,
+      pushed to the right edge. Always visible, no overlay. This is the prompt
+      case (the canonical copy affordance for the training).
+   2. Overlay (.copy-btn, default): absolute-positioned in the top-right of a
+      bare <pre>. Used only for standalone code snippets that have no header
+      bar. Hover-emerges so it doesn't compete with code reading. */
+
+.module pre {
+    position: relative;
+}
+
+.module .copy-btn {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.module .copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.module .copy-btn--copied,
+.module .copy-btn--copied:hover {
+    opacity: 1;
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Overlay flavour on standalone <pre>. */
+.module pre > .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0.55;
+    z-index: 2;
+}
+
+.module pre:hover > .copy-btn,
+.module pre > .copy-btn:focus-visible {
+    opacity: 1;
+}
+
+/* In-header flavour — pushed to the right edge of the header row. */
+.module .prompt-block__header .copy-btn--in-header {
+    margin-left: auto;
+}
+
+/* Inside ink-dark exercise phases — invert chrome to read on dark bg.
+   Header sits visibly above body (~9% vs ~3% cream tint) so the destination
+   chip and copy button read as a separate row. Border lifted to ink-text
+   alpha so the widget has a real frame, not a 1px shadow. */
+.phase--exercise .prompt-block {
+    background: rgba(244,236,219,.03);
+    border-color: rgba(244,236,219,.18);
+}
+
+.phase--exercise .prompt-block__header {
+    background: rgba(244,236,219,.09);
+    border-bottom-color: rgba(244,236,219,.14);
+}
+
+/* Label drops slightly so the destination ("Claude Code", "Builder Claude")
+   wins the header. Student needs to glance and know where this paste goes. */
+.phase--exercise .prompt-block__label {
+    color: var(--warm);
+    font-size: 0.72rem;
+}
+.phase--exercise .prompt-block__arrow { color: var(--ink-muted); }
+.phase--exercise .prompt-block__dest {
+    color: var(--ink-text);
+    font-size: 0.84rem;
+}
+.phase--exercise .prompt-block__context { color: var(--ink-text-2); }
+.phase--exercise .prompt-block__context::before { color: var(--ink-muted); }
+.phase--exercise .prompt-block .prompt-block__pre {
+    background: rgba(244,236,219,.03);
+}
+
+/* Copy button reads as a button on dark — bright enough plate, real text
+   colour, real border. Was three near-blacks stacked; now it sits forward. */
+.phase--exercise .copy-btn {
+    background: rgba(244,236,219,.10);
+    border-color: rgba(244,236,219,.22);
+    color: var(--ink-text);
+}
+
+.phase--exercise .copy-btn:hover {
+    color: var(--warm);
+    border-color: var(--warm);
+    background: rgba(201,121,66,.12);
+}
+
+.phase--exercise .copy-btn--copied,
+.phase--exercise .copy-btn--copied:hover {
+    background: var(--warm);
+    border-color: var(--warm);
+    color: var(--ink);
+}
+
+@media print {
+    .module .copy-btn { display: none; }
+}
+
+.module blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 2.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    color: var(--fg);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.55;
+    position: relative;
+}
+
+.module blockquote::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 0;
+    width: 3px;
+    height: 1rem;
+    background: var(--warm);
+}
+
+.module blockquote p { margin: 0 0 0.5rem 0; }
+.module blockquote p:last-child { margin-bottom: 0; }
+
+/* Attribution (last paragraph with em dash convention) */
+.module blockquote p + p:last-child {
+    margin-top: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    color: var(--fg-3);
+}
+
+/* Markdown `---` rules become pure whitespace inside the module body —
+   the section-mark above each h2 already does the visual separation work,
+   and a hairline rule on top of that reads as ceremony. */
+.module hr {
+    border: none;
+    margin: 2.5rem 0;
+    height: 0;
+}
+
+.module table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 1.25rem;
+    font-size: 0.95em;
+}
+
+.module th, .module td {
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.module th {
+    background: var(--bg-2);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+/* ── Index page ── */
+
+.module .lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+    margin: 0 0 3.5rem;
+    text-wrap: pretty;
+    max-width: 34em;
+}
+
+.index-heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+    text-transform: none;
+    color: var(--accent);
+    margin: 3.5rem 0 1rem;
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.index-heading::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--warm);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.index-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Training hero (index page only) ── */
+
+.training-hero {
+    margin-bottom: 4rem;
+}
+
+.training-eyebrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.training-eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: var(--warm);
+}
+
+.training-hero .lede .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--warm) 50%, var(--arctic) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+}
+
+.training-hero h1 {
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    line-height: .9;
+    margin: 0 0 1.75rem;
+    letter-spacing: -.035em;
+}
+
+.training-hero h1::after { display: none; }
+
+.training-hero h1 .sep {
+    color: var(--accent);
+    font-weight: 400;
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+.training-hero .lede {
+    margin: 0;
+    max-width: 32em;
+}
+
+/* ── Module cards (index — primary modules + prework) ── */
+
+.module-list.index-modules,
+.module-list.index-prework {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+/* Single-column editorial rows — each row gets the big-idea italic line
+   as the main scan target, not a 2-up grid where titles dominate. */
+.module-list.index-modules { grid-template-columns: 1fr; }
+
+.module-list.index-modules > li,
+.module-list.index-prework > li {
+    margin: 0;
+    border: none;
+    background: var(--bg-2);
+    position: relative;
+    transition: background .2s;
+}
+
+.module-list.index-modules > li:hover,
+.module-list.index-prework > li:hover {
+    background: #e0d5b8;
+}
+
+.module-list.index-modules > li::before,
+.module-list.index-prework > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+
+.module-list.index-modules > li:hover::before,
+.module-list.index-prework > li:hover::before {
+    transform: scaleX(1);
+}
+
+.module-list.index-modules > li > a,
+.module-list.index-prework > li > a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 1.75rem;
+    align-items: start;
+    padding: 1.85rem 2rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.module-list.index-modules .module-n,
+.module-list.index-prework .module-n {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 3rem;
+    letter-spacing: -.02em;
+    line-height: .85;
+    align-self: start;
+    margin-top: 4px;
+}
+
+.module-list.index-modules .module-body,
+.module-list.index-prework .module-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
+.module-list.index-modules .module-title,
+.module-list.index-prework .module-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.45rem;
+    letter-spacing: -.015em;
+    line-height: 1.15;
+    color: var(--fg);
+    text-wrap: balance;
+}
+
+.module-list.index-modules .module-big,
+.module-list.index-prework .module-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+    text-wrap: pretty;
+    max-width: 38em;
+}
+
+.module-list.index-modules .module-big:empty,
+.module-list.index-prework .module-big:empty {
+    min-height: 1em;
+}
+
+.module-list.index-modules .module-arrow,
+.module-list.index-prework .module-arrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    align-self: start;
+    margin-top: 6px;
+    transition: color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+
+.module-list.index-modules > li:hover .module-arrow,
+.module-list.index-prework > li:hover .module-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ── Supplementary & reference rows (quieter) ── */
+
+.index-supplementaries,
+.index-references {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.index-supplementaries > li,
+.index-references > li {
+    margin: 0;
+    border: none;
+    background: var(--bg-2);
+    transition: background .2s;
+}
+
+.index-supplementaries > li:hover,
+.index-references > li:hover { background: #e0d5b8; }
+
+.index-supplementaries > li > a,
+.index-references > li > a {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.75rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.supp-kind {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    flex: 0 0 6rem;
+}
+
+.supp-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: -.005em;
+    color: var(--fg);
+    flex: 1;
+}
+
+.index-supplementaries .module-arrow,
+.index-references .module-arrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-4);
+    font-size: 1.1rem;
+    margin-left: auto;
+    transition: color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+
+.index-supplementaries > li:hover .module-arrow,
+.index-references > li:hover .module-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ============================================================================
+   Phase blocks — lecture vs. exercise get distinct backgrounds.
+   Creates scroll rhythm inside a module without touching markdown content.
+   ============================================================================ */
+
+.phase {
+    /* Full-bleed: escape the 40em reading column, extend to the viewport edges.
+       Reading width inside is preserved via padding that centers to a 40em column. */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 4.5rem max(1.5rem, calc((100vw - 40em) / 2));
+    margin-top: 4.5rem;
+    margin-bottom: 4.5rem;
+    position: relative;
+    border: none;
+    border-radius: 0;
+}
+
+.phase-kicker {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: .02em;
+    text-transform: lowercase;
+    margin: 0 0 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.phase-kicker::before {
+    content: "";
+    width: 2.75rem;
+    height: 2px;
+    background: currentColor;
+    display: inline-block;
+}
+
+/* ── Lecture: warmer paper tone, subtle shift ── */
+.phase--lecture {
+    background: var(--bg-3);
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+}
+.phase--lecture .phase-kicker { color: var(--warm); }
+
+/* Lecture h1 (the linkified title) sits tighter inside the panel */
+.phase--lecture > h1:first-of-type,
+.phase--lecture > h1 { margin-top: 0.5rem; }
+
+/* ── Exercise: black ink inset — primary rhythm break ── */
+.phase--exercise {
+    background: var(--ink);
+    color: var(--ink-text-2);
+    border-top: 1px solid var(--ink-line);
+    border-bottom: 1px solid var(--ink-line);
+}
+
+.phase--exercise .phase-kicker { color: var(--warm); }
+
+.phase--exercise h1,
+.phase--exercise h2,
+.phase--exercise h3 { color: var(--ink-text); }
+
+.phase--exercise h3 {
+    color: var(--warm);
+}
+
+.phase--exercise h2 {
+    border-top: none;
+}
+
+.phase--exercise h2::before { background: var(--warm); }
+
+.phase--exercise h2 + p { color: var(--ink-text); }
+
+/* Inside a phase block (embedded OR standalone), the H1 is a section title,
+   not a page lede. Strip the drop-cap and lede sizing that .module h1 + p
+   would otherwise apply — the phase-kicker already announces the section. */
+.phase h1 + p::first-letter { all: unset; }
+.phase h1 + p {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    min-height: 0;
+}
+.phase--exercise h1 + p { color: var(--ink-text-2); }
+
+.phase--exercise p,
+.phase--exercise li { color: var(--ink-text-2); }
+
+.phase--exercise strong { color: var(--ink-text); }
+
+/* Lead-in bold openers ("What you do:", "What happens:", "Time:") use the
+   oxblood accent on cream. On ink that reads as near-black — invisible.
+   Swap to the warm amber, the dark-mode accent equivalent. */
+.phase--exercise p > strong:first-child { color: var(--warm); }
+
+/* List-item lead-ins ("Sharpened verifier.", "Meta:") follow the cream rule
+   that keeps them as neutral text colour rather than amber — otherwise
+   key:value bullets all pop. On ink, neutral text is --ink-text. */
+.phase--exercise li > strong:first-child { color: var(--ink-text); }
+
+/* Body em on dark stays light cream — italic + serif is the emphasis cue;
+   amber-on-ink reads as link/highlight and floods paragraphs. Heading ems
+   keep their gradient via the more-specific h1/h2 em rules below. */
+.phase--exercise em { color: var(--ink-text); }
+
+/* Gradient-accented em inside the black-ink exercise headings.
+   Picks up the Bosser orange → Arctic blue shift from the ai-training hero. */
+.phase--exercise h1 em,
+.phase--exercise h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, #ff6b35 0%, #f4ecdb 50%, #18BFFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+}
+
+.phase--exercise a {
+    color: var(--warm);
+    border-bottom-color: rgba(201,121,66,.25);
+}
+.phase--exercise a:hover { border-bottom-color: var(--warm); }
+.phase--exercise h1 a,
+.phase--exercise h2 a,
+.phase--exercise h3 a { color: inherit; }
+.phase--exercise h1 a:hover,
+.phase--exercise h2 a:hover,
+.phase--exercise h3 a:hover { border-bottom-color: var(--warm); }
+
+.phase--exercise blockquote {
+    border-left-color: var(--warm);
+    color: var(--ink-text);
+}
+.phase--exercise blockquote::before { background: var(--ink-text); }
+.phase--exercise blockquote p + p:last-child { color: var(--ink-muted); }
+
+.phase--exercise code {
+    background: rgba(244,236,219,.08);
+    color: var(--warm);
+}
+
+.phase--exercise pre {
+    background: rgba(244,236,219,.04);
+    border-color: var(--ink-line);
+}
+.phase--exercise pre code { background: none; color: var(--ink-text); }
+
+.phase--exercise hr { border-top-color: var(--ink-line); }
+
+.phase--exercise ul li::marker { color: var(--warm); }
+
+.phase--exercise th {
+    background: rgba(244,236,219,.06);
+    color: var(--ink-text);
+    border-color: var(--ink-line);
+}
+.phase--exercise td { border-color: var(--ink-line); color: var(--ink-text-2); }
+
+@media (max-width: 640px) {
+    main { padding: 3rem 1.25rem 4rem; }
+
+    /* Hero compresses hard on mobile */
+    .training-hero { margin-bottom: 2.5rem; }
+    .training-hero h1 { font-size: clamp(2.5rem, 13vw, 4rem); line-height: .92; margin-bottom: 1.25rem; }
+    .training-hero .lede { font-size: 1.15rem; }
+
+    /* Module body headings */
+    .module h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.5rem; }
+    .module h1::after { margin-top: 1.25rem; }
+    .module h2 { font-size: 1.45rem; margin-top: 3rem; padding-top: 1.5rem; }
+    .module h1 + p::first-letter { font-size: 2.8rem; padding-right: 0.4rem; }
+    .module h2 + p { font-size: 1.1rem; }
+
+    /* Phase bands */
+    .phase {
+        padding-top: 2.75rem;
+        padding-bottom: 2.75rem;
+        margin-top: 2.75rem;
+        margin-bottom: 2.75rem;
+    }
+    .phase-kicker { font-size: 0.85rem; }
+
+    /* Index cards */
+    .module-list.index-modules { grid-template-columns: 1fr; }
+    .module-list.index-modules > li > a,
+    .module-list.index-prework > li > a {
+        padding: 1.5rem;
+        min-height: auto;
+    }
+    .module-list.index-modules .module-n,
+    .module-list.index-prework .module-n { font-size: 2.5rem; }
+
+    /* Supplementary / reference rows: stack kind above title on tiny screens */
+    .index-supplementaries > li > a,
+    .index-references > li > a {
+        padding: 1rem 1.25rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .supp-kind { flex: 0 0 auto; }
+    .supp-title { flex: 1 1 100%; font-size: 1rem; }
+
+    /* Header */
+    .curriculum-header { padding: 1rem 1.25rem; }
+    .curriculum-home { font-size: 1rem; }
+
+    /* Bottom page nav — stack vertically on very narrow screens */
+    .page-nav { grid-template-columns: 1fr; gap: 0.5rem; text-align: left; }
+    .page-nav .nav-prev,
+    .page-nav .nav-next,
+    .page-nav .nav-home { justify-self: start; text-align: left; }
+}
+
+/* ── Page nav (bottom of module pages) ── */
+
+.page-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+}
+
+.page-nav a {
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    padding: 0.5rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    transition: color .15s;
+}
+
+.page-nav a:hover { color: var(--accent); }
+
+.page-nav .nav-prev,
+.page-nav .nav-next {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 0.7rem;
+    max-width: 24em;
+}
+.page-nav .nav-next { grid-template-columns: 1fr auto; }
+.page-nav .nav-prev { justify-self: start; }
+.page-nav .nav-next { justify-self: end; text-align: right; }
+.page-nav .nav-arrow {
+    font-style: normal;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.page-nav .nav-prev:hover .nav-arrow { color: var(--accent); transform: translateX(-3px); }
+.page-nav .nav-next:hover .nav-arrow { color: var(--accent); transform: translateX(3px); }
+.page-nav .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+.page-nav .nav-title {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    font-size: 0.98rem;
+    line-height: 1.3;
+}
+.page-nav .nav-prev:hover .nav-title,
+.page-nav .nav-next:hover .nav-title { color: var(--accent); }
+.page-nav .nav-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-wrap: pretty;
+}
+.page-nav .nav-home {
+    justify-self: center;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: .01em;
+}
+.page-nav .nav-empty { /* keeps the grid slot */ }
+
+/* ============================================================================
+   Reading progress — thin oxblood hairline at very top of viewport, fills
+   left-to-right as the student scrolls. Cheap depth signal, sits over the
+   sticky breadcrumb without competing with it.
+   ============================================================================ */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    z-index: 100;
+    pointer-events: none;
+    transition: width .08s linear;
+}
+@media print { .reading-progress { display: none !important; } }
+
+/* ============================================================================
+   Top breadcrumb — appears on every interior page (training index, module,
+   standalone exercise/lecture). Lets the student pop up one level without
+   scrolling to the bottom-of-page nav.
+   ============================================================================ */
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    /* Breaks out of the 40em column to span the reading band edge-to-edge —
+       the cream backdrop covers content scrolling under it instead of leaving
+       a strip on either side. */
+    margin: -3rem -2rem 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    background: rgba(239,230,210,0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.top-nav-back {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+    display: inline-block;
+}
+
+.top-nav-back:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+}
+
+/* ============================================================================
+   Module hero — promotes the H1 + "## Big Idea" paragraph into a single
+   editorial unit at the top of every module page. Module number sits to the
+   left like a chapter number; title sets weight; italic big-idea line frames
+   what the student is about to do.
+   ============================================================================ */
+
+.module-hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.75rem;
+    align-items: baseline;
+    margin: 0 0 3rem;
+}
+
+.module-hero-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 2.4rem;
+    letter-spacing: -.02em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    align-self: start;
+    padding-top: 0.75rem;
+}
+
+.module .module-hero-title {
+    grid-column: 2;
+    margin: 0;
+}
+
+.module .module-hero-title::after { display: none; }
+
+.module-hero-big {
+    grid-column: 2;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--fg-2);
+    margin: 1.25rem 0 0;
+    max-width: 32em;
+    text-wrap: pretty;
+}
+
+.module-hero-big em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* When the hero owns the title, the drop-cap on the next paragraph would
+   collide with the italic big-idea line. Suppress it — the hero is the lede. */
+.module-hero + p::first-letter { all: unset; }
+.module-hero + p {
+    font-size: 1.05rem;
+    color: var(--fg-2);
+}
+
+@media (max-width: 640px) {
+    .module-hero { grid-template-columns: 1fr; column-gap: 0; row-gap: 0.5rem; margin-bottom: 2.25rem; }
+    .module-hero-num { padding-top: 0; font-size: 1.85rem; }
+    .module .module-hero-title { grid-column: 1; }
+    .module-hero-big { grid-column: 1; font-size: 1.2rem; margin-top: 0.75rem; }
+}
+
+/* ============================================================================
+   Print styles — unchanged spirit, adapted to the editorial palette.
+   ============================================================================ */
+
+@page { margin: 1in 0.75in; }
+
+@media print {
+    body {
+        font-size: 11pt;
+        line-height: 1.55;
+        background: #fff;
+        color: #000;
+    }
+
+    .curriculum-header { display: none !important; }
+    .curriculum-footer { display: none !important; }
+    .page-nav { display: none !important; }
+    .top-nav { display: none !important; }
+
+    /* Module hero collapses to a clean chapter header on paper. */
+    .module-hero { display: block; margin-bottom: 1rem; }
+    .module-hero-num {
+        font-size: 11pt; color: #555; margin-bottom: 0.25rem; padding-top: 0;
+    }
+    .module-hero-big { font-size: 12pt; color: #333; margin-top: 0.5rem; max-width: none; }
+
+    main { padding: 0; display: block; }
+    .module { max-width: none; }
+
+    p { orphans: 3; widows: 3; }
+    h1, h2, h3 { page-break-after: avoid; color: #000; }
+    .module h1 { page-break-before: always; margin-top: 0; }
+    .module h1:first-of-type { page-break-before: avoid; }
+
+    li, blockquote, pre, table, tr { page-break-inside: avoid; }
+    h2 { page-break-before: auto; }
+
+    .module em { color: #000; font-family: Georgia, serif; }
+
+    /* Reset full-bleed phase bands for print — viewport units misbehave on paper.
+       Keep phase hierarchy via a subtle rule + italic kicker instead of a tint band. */
+    html, body { overflow-x: visible; }
+    .phase {
+        width: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem 0;
+        background: #fff !important;
+        color: #000 !important;
+        border: none !important;
+        border-top: 1px solid #bbb !important;
+        border-bottom: 1px solid #bbb !important;
+    }
+    .phase--exercise *,
+    .phase--lecture * { color: #000 !important; }
+    .phase--exercise h1 em,
+    .phase--exercise h2 em {
+        background: none !important;
+        -webkit-text-fill-color: #000 !important;
+        color: #000 !important;
+        font-family: Georgia, serif;
+    }
+    .phase-kicker { color: #555 !important; border: none; }
+    .phase--exercise pre,
+    .phase--exercise code { background: #f4f1ec !important; color: #000 !important; }
+
+    a { text-decoration: none; color: #000; border-bottom: none; }
+    .module a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: #555;
+        word-break: break-all;
+    }
+
+    .module::after {
+        content: "bosser.consulting — Agents 102 Bootstrap";
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.8em;
+        color: #999;
+    }
+
+    pre { white-space: pre-wrap; word-wrap: break-word; background: #f4f1ec; border: 1px solid #ddd; }
+    a, a:visited { color: #000; }
+}
+
+/* ---------------------------------------------------------------------------
+   Workbook (single-page printable build) — used by scripts/build-workbook.js.
+   Adds cover + TOC chrome and print-specific page breaks. SPA pages don't
+   render these classes so nothing here affects the live site.
+--------------------------------------------------------------------------- */
+
+/* SPA's main is flex-row with justify-center (one .module per page).
+   Workbook stacks N modules vertically; flip the layout. */
+body.workbook main {
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+    padding: 4rem 1.5rem 6rem;
+}
+body.workbook .workbook-cover,
+body.workbook .workbook-toc {
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.workbook-cover {
+    text-align: center;
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 3rem;
+}
+.workbook-cover .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin: 0 0 0.5rem;
+}
+.workbook-cover h1.cover-title {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 200;
+    font-size: 3.5rem;
+    margin: 0.5rem 0 1rem;
+    letter-spacing: -0.02em;
+}
+.workbook-cover .lede {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-muted);
+    margin: 0;
+}
+
+.workbook-toc {
+    margin: 0 0 4rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+}
+.workbook-toc h2 {
+    margin: 0 0 1rem;
+    border: none;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+}
+.workbook-toc ol {
+    list-style: decimal;
+    padding-left: 2em;
+    margin: 0;
+}
+.workbook-toc li {
+    margin: 0.4em 0;
+    font-family: 'Inter', sans-serif;
+}
+
+@media print {
+    .workbook-cover { page-break-after: always; }
+    .workbook-toc { page-break-after: always; }
+    .workbook-topnav { display: none !important; }
+    .reading-progress { display: none !important; }
+}
+
+/* Sticky top nav: training name on the left, module chips scrollable on the right.
+   Active module gets accent fill via JS-set .is-active. */
+.workbook-topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(31, 26, 19, 0.96); /* matches --fg ink, slight opacity */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--ink-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.workbook-topnav__home {
+    color: var(--ink-text);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    border: none;
+}
+.workbook-topnav__home:hover { color: var(--warm); }
+.workbook-topnav__modules {
+    display: flex;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex: 1 1 auto;
+}
+.workbook-topnav__modules::-webkit-scrollbar { display: none; }
+.workbook-topnav__modules li { margin: 0; }
+.workbook-topnav__modules a {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    color: rgba(244, 236, 219, 0.7);
+    text-decoration: none;
+    border: none;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    transition: background 0.15s, color 0.15s;
+}
+.workbook-topnav__modules a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--ink-text);
+}
+.workbook-topnav__modules a.is-active {
+    background: var(--accent);
+    color: var(--ink-text);
+}
+
+/* Body padding-top to clear the fixed nav */
+body.workbook { padding-top: 3rem; }
+
+/* Mobile: stack the nav modules below the home, smaller chips */
+@media (max-width: 720px) {
+    .workbook-topnav { padding: 0.5rem 1rem; gap: 0.8rem; flex-wrap: wrap; }
+    .workbook-topnav__home { font-size: 0.8rem; }
+    .workbook-topnav__modules a { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+}
+</style>
+</head>
+<body class="runtime-cli workbook" data-training="claude-basics">
+<nav class="workbook-topnav" aria-label="Workbook navigation">
+  <a class="workbook-topnav__home" href="#top">Claude Basics — acme</a>
+  <ol class="workbook-topnav__modules">
+      <li><a href="#agentic-systems-repo-demo" data-target="agentic-systems-repo-demo">M1</a></li>
+      <li><a href="#where-is-this-all-going" data-target="where-is-this-all-going">M2</a></li>
+      <li><a href="#homework-build-and-verify" data-target="homework-build-and-verify">M3</a></li>
+  </ol>
+</nav>
+<main>
+
+<header class="workbook-cover" id="top">
+  <p class="eyebrow">acme workbook</p>
+  <h1 class="cover-title">Claude Basics</h1>
+  <p class="lede">A 3-hour live workshop for the IT team rolling out Claude. See the system, find the crux, then build and verify in your own folder.</p>
+</header>
+
+<nav class="workbook-toc">
+  <h2>Contents</h2>
+<ol class="module-list index-modules"><li data-slug="agentic-systems-repo-demo"><a href="#agentic-systems-repo-demo"><span class="module-n">01</span><span class="module-body"><span class="module-title">Agentic systems, shown in the repo</span><span class="module-big">Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</span></span><span class="module-arrow">→</span></a></li><li data-slug="where-is-this-all-going"><a href="#where-is-this-all-going"><span class="module-n">02</span><span class="module-body"><span class="module-title">Where is this all going?</span><span class="module-big">In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the crux.</span></span><span class="module-arrow">→</span></a></li><li data-slug="homework-build-and-verify"><a href="#homework-build-and-verify"><span class="module-n">03</span><span class="module-body"><span class="module-title">Homework: build and verify</span><span class="module-big">The live session gives you the shape. Homework turns it into personal muscle memory.</span></span><span class="module-arrow">→</span></a></li></ol>
+</nav>
+
+<section class="module" id="agentic-systems-repo-demo">
+<h1>Agentic systems, shown in the repo</h1>
+<h2>Big Idea</h2>
+<p>Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</p>
+<h2>Meta</h2>
+<ul>
+<li><strong>Primary Bloom&#39;s level:</strong> Understand</li>
+<li><strong>Prework:</strong> Cowork tour optional; bring one question about the Claude rollout</li>
+<li><strong>Homework:</strong> <a href="#homework-build-and-verify">Homework: build and verify</a></li>
+<li><strong>Materials (organisers):</strong> projected agents-102 repo, deployed Acme workbook, and a clean path through the files named below</li>
+<li><strong>Plug points:</strong> the customer&#39;s rollout question, the customer&#39;s licensing and connector reality, the workbook URL they will use after the session</li>
+</ul>
+<h2>What You&#39;ll Learn</h2>
+<p>After this module, you will be able to:</p>
+<ul>
+<li><strong>Recognise</strong> the parts of an agentic system in a real repo</li>
+<li><strong>Explain</strong> why rules, prompts, checks, and build outputs matter more than a single chat transcript</li>
+<li><strong>Connect</strong> the live workbook to the source files and build system that produce it</li>
+<li><strong>Name</strong> what you would need before trusting a Claude workflow to repeat</li>
+</ul>
+<h2>Connections</h2>
+<p>When you hear <em>agentic system</em>, what do you imagine exists behind the scenes?</p>
+<p>Hold two answers in the room. Then look at the actual system behind this workbook.</p>
+<h2>Lectures</h2>
+<p>None as a separate reading. This module is a live repo demo.</p>
+<h2>Exercises</h2>
+<p>None. The exercise is the inspection.</p>
+<h2>Key Concepts (Emergent)</h2>
+<ul>
+<li>A chat is a conversation. A system is the conversation plus the rules, files, checks, and outputs that make the work repeatable</li>
+<li><code>CLAUDE.md</code> and <code>AGENTS.md</code> are working agreements: what the agent reads before it acts</li>
+<li>Prompts are reusable moves, not magic sentences</li>
+<li>Evals and checks are how a system earns trust over time</li>
+<li>The customer workbook is built output. The source lives in curriculum files; the deployment is a product of the build system</li>
+</ul>
+<h2>Plug Points</h2>
+<ul>
+<li><strong>The deployed workbook.</strong> Start with the Acme workbook so the room sees the artifact they will use.</li>
+<li><strong>The source path.</strong> Show the matching module, exercise, and prompt files in <code>curriculum/</code>.</li>
+<li><strong>The rule path.</strong> Show <code>AGENTS.md</code>, <code>CLAUDE.md</code>, and the Claude Basics training rules so the room sees how an agent gets steered.</li>
+<li><strong>The build path.</strong> Show the customer build command and the generated <code>site/clients/acme/</code> output.</li>
+<li><strong>The change path.</strong> Show one recent commit so the room sees that the system evolves through small versioned changes.</li>
+</ul>
+<h2>Debrief</h2>
+<p>Two minutes. Ask yourself: which part made this feel less like a chat and more like a system?</p>
+<p>Ask Claude to capture that in one sentence.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Based on the repo demo I just watched, explain in one sentence what makes an agentic system different from a chat.
+
+Then list the three system parts I should look for next time someone shows me an AI workflow.
+</code></pre>
+<p>Keep the answer. You will use it when the live exercise turns the room itself into a small system.</p>
+<h2>Bridge</h2>
+<p>Now that you have seen the shape of a system, run one together: individual signal first, group synthesis second, cross-pollination only after synthesis.</p>
+
+</section>
+
+<section class="module" id="where-is-this-all-going">
+<h1>Where is this all going?</h1>
+<h2>Big Idea</h2>
+<p>In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the crux.</p>
+<h2>Meta</h2>
+<ul>
+<li><strong>Primary Bloom&#39;s level:</strong> Evaluate</li>
+<li><strong>Prework:</strong> live repo-demo module</li>
+<li><strong>Homework:</strong> <a href="#homework-build-and-verify">Homework: build and verify</a></li>
+<li><strong>Materials (organisers):</strong> group numbers, shared synthesis save path for nominated group drivers, and a dry-run of the group-synthesis prompt before the cohort</li>
+<li><strong>Plug points:</strong> the team&#39;s actual rollout difficulties; the group synthesis files; optional cross-pollination once group synthesis has succeeded; optional organisers-only readout</li>
+</ul>
+<h2>What You&#39;ll Learn</h2>
+<p>After this module, you will be able to:</p>
+<ul>
+<li><strong>Articulate</strong> the top difficulties facing your team&#39;s Claude rollout, surfaced through a Claude-led interview</li>
+<li><strong>Synthesize</strong> a group&#39;s divergent rollout concerns into one named crux</li>
+<li><strong>Evaluate</strong> what another group saw that your group missed, only after your own synthesis is stable</li>
+<li><strong>Recognise</strong> the structure the room produced together: individual divergence, group convergence, then optional cross-pollination</li>
+</ul>
+<h2>Connections</h2>
+<p>You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output. Now run a smaller system in the room.</p>
+<p>When the team rolls Claude out across the org, what&#39;s the <strong>crux</strong>?</p>
+<p>Not the long list of worries. The single thing that, if you got it right, would make the rest follow.</p>
+<h2>Lectures</h2>
+<p>None in this module. The reveal at the close is the whole concept beat.</p>
+<h2>Exercises</h2>
+<section class="phase phase--exercise" id="exercises-find-the-crux">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Find the crux</h1>
+<p><strong>Time:</strong> 32 minutes. Three phases.</p>
+<p>This live exercise is collaborative, but it should not become shared-folder debugging. Each participant starts in Cowork on a safe personal folder. Each group nominates one driver. The driver writes one clean group synthesis to the agreed shared synthesis location.</p>
+<p>Before Phase 1: confirm your group number. You will need it in Phase 2.</p>
+<h2>Phase 1. Divergence (10 minutes)</h2>
+<p>Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn&#39;t to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.</p>
+<p>Ask Claude to interview you about your team&#39;s top three Claude-rollout difficulties and save the notes in this folder.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Interview me about the top three difficulties I see in our team&#39;s Claude rollout. Ask one question at a time. Don&#39;t show me the next question until I&#39;ve answered the current one.
+
+Start with: &quot;What&#39;s the first difficulty you see?&quot; After my answer, push back once: ask for a specific example, or ask whether that&#39;s the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
+
+When I&#39;ve answered all three with push-back, save the conversation as `m3-rollout-notes.md` in this folder.
+
+Include the three difficulties and the push-back answers, in my voice. Don&#39;t summarize them into your own register.
+</code></pre>
+<p>Answer Claude&#39;s questions in plain language. When the file saves, you&#39;re done with Phase 1.</p>
+<h2>Phase 2. Group synthesis (17 minutes)</h2>
+<p>Each group picks ONE participant to be the driver. The driver is the only person writing to the agreed shared synthesis location in this phase.</p>
+<p>The group talks through the personal notes. Do not start by reading other groups. Your job is to find your group&#39;s crux first.</p>
+<p>Ask Claude, in the driver&#39;s Cowork session, to help synthesize the group&#39;s views.</p>
+<p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
+<pre><code>Create our group&#39;s rollout synthesis.
+
+First ask me for our group number if you do not already know it.
+
+Then interview the group in chat. Ask for each person&#39;s top rollout difficulty and one concrete example. Keep the answers short. After everyone has answered, propose the ONE difficulty that, if our team got it right, would make the others follow. That&#39;s the crux.
+
+Show the crux candidate in chat first, in two sentences. Don&#39;t save yet. I will ask the group what is wrong or missing.
+
+After I give you the group&#39;s push-back, rewrite the synthesis and save it in the agreed shared synthesis location using the group number. If I say group 2, save the file as `group-2-rollout-synthesis.md`. Use the same pattern for the group number I give you.
+
+The file must include:
+- named crux
+- supporting evidence from the group
+- what we should prioritise in the next 30 days
+- what we should defer for now
+- one open question the organisers need to answer
+</code></pre>
+<p>Before the driver asks Claude to save: each non-driver in the group names ONE thing in the candidate crux that&#39;s wrong or missing. One sentence each. The driver types those points back to Claude as the push-back. Then Claude rewrites and saves.</p>
+<p>This forcing function is the design. Without it, the driver synthesizes alone and the group disengages. The crux belongs to the group, not to whoever held the keyboard.</p>
+<h2>Phase 3. Cross-pollination bonus (5 minutes, only if synthesis succeeded)</h2>
+<p>Run this only after every group has saved its synthesis. If any group is still synthesizing, skip this phase and protect the core artifact.</p>
+<p>Ask Claude to read one other group&#39;s synthesis and borrow one useful idea without blurring your group&#39;s crux.</p>
+<p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
+<pre><code>Read our group&#39;s rollout synthesis from the shared synthesis location. Then read one other group&#39;s rollout synthesis from the same location.
+
+Compare them briefly:
+- one idea the other group saw that we missed
+- one thing our group should keep distinct
+- one sentence we should add to our synthesis, if any
+
+Show me the proposed addition in chat first. Don&#39;t save until the group approves it.
+</code></pre>
+<p>If the addition helps, ask Claude to append a short <strong>Cross-pollination note</strong> to your group&#39;s synthesis file. If it muddies the crux, leave the file alone.</p>
+<p>The organisers may run their own synthesis after the group files exist. That is a separate organisers-only exercise, not part of the group driver&#39;s work.</p>
+</section>
+
+
+
+<h2>Key Concepts (Emergent)</h2>
+<ul>
+<li>The crux is what Richard Rumelt calls it. The one thing that, if got right, makes the rest follow. Most rollout strategies fail because they treat all difficulties as equal weight</li>
+<li>A divergent interview surfaces what each participant actually thinks; a group synthesis finds the pattern that no one person had named</li>
+<li>Cross-pollination is useful only after synthesis. If groups compare too early, they average each other out</li>
+<li>The structure that produced the answer is the structure the room was already inside of. The work routes through people; the architecture follows the work, not the other way round</li>
+</ul>
+<h2>Plug Points</h2>
+<ul>
+<li><strong>Group composition.</strong> Organisers scale group count to participant count: 2-3 groups for 8 or fewer; 3 groups for 9-12; 4 groups for 13-16</li>
+<li><strong>The cohort&#39;s real rollout difficulties.</strong> Each participant&#39;s divergence interview is on their own org&#39;s rollout, not a generic case</li>
+<li><strong>The group synthesis files.</strong> Each nominated driver writes one file in the <code>shared</code> working folder, named like <code>group-N-rollout-synthesis.md</code></li>
+<li><strong>Optional cross-pollination.</strong> If every group synthesis exists with time left, groups read one other group&#39;s synthesis and borrow one useful idea</li>
+<li><strong>Organisers&#39; readout.</strong> Organisers may run their separate synthesis exercise after the group files exist</li>
+</ul>
+<h2>Debrief</h2>
+<p>Two minutes. The reveal already happened in the exercise close; the Debrief sits with what changed.</p>
+<p>Ask Claude to read your group&#39;s synthesis and name the one move you would personally prioritise this week.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read our group&#39;s rollout synthesis file from the `shared` working folder.
+
+Look at it from MY position on the team. Of the moves named in the synthesis, which ONE would I personally do first this week, and why? One sentence. No hedging.
+</code></pre>
+<p>Read the answer in chat. The point isn&#39;t to act on it today. The point is that you can already see your own piece of the rollout, named concretely, in the synthesis you helped produce.</p>
+<h2>Bridge</h2>
+<p>The live system work is done. The homework turns it into personal muscle memory.</p>
+<p>Chat level in. Out: clean group syntheses for the rollout, an optional organisers&#39; readout, and the named identity of <em>Claude custodian</em> for the org. Next: build and verify in your own folder.</p>
+<h2>Organisers&#39; Activities</h2>
+<section class="phase phase--exercise" id="exercises-organisers-synthesize-rollout">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Organisers synthesize rollout</h1>
+<p><strong>Time:</strong> 6 minutes. Organisers only.</p>
+<p>This exercise happens after groups have saved <code>group-N-rollout-synthesis.md</code> in the agreed shared synthesis location. It is not required for the participant exercise to succeed. The job is to read across group syntheses and create one organisers&#39; readout that can travel after the workshop.</p>
+<h2>Phase 1. Read across the group syntheses</h2>
+<p>Ask Claude to synthesize the saved group files.</p>
+<p><strong>Prompt</strong> <em>(Cowork, organisers only)</em></p>
+<pre><code>Read the group rollout synthesis files from the shared synthesis location.
+
+Create an organisers&#39; rollout readout with:
+- the cruxes that appear across multiple groups
+- one useful disagreement between groups
+- the top three priorities for the next 30 days
+- what should be deferred for now
+- open questions the organisers need to answer
+- one next action for the organisers this week
+
+Show me the readout in chat first. Don&#39;t save yet. I will correct priorities, deferrals, and ownership.
+
+After I approve it, save it as `m3-organisers-rollout-readout.md` in the shared synthesis location.
+</code></pre>
+<p>Keep the readout grounded in the group syntheses. If the organisers add context that was not in the files, name it as organisers&#39; judgment rather than group evidence.</p>
+<h2>Phase 2. Decide what to share back</h2>
+<p>If time remains, share only the highest-signal point with the room: the crux or disagreement that changes what the team should do Monday. Do not turn this into a second lecture.</p>
+</section>
+
+
+
+<h2>Prework for organisers</h2>
+<section class="phase phase--exercise" id="exercises-organisers-prepare-claude-basics">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Organisers prepare Claude Basics</h1>
+<p><strong>Time:</strong> 2 hours before the workshop. Organisers only.</p>
+<p>This is the setup exercise for the 3-hour live workshop. The live room now has two moving parts: the repo demo and the rollout-crux synthesis. The build-and-verify exercises are homework in each participant&#39;s own safe folder, not shared-folder work during the session.</p>
+<h2>What organisers need to understand</h2>
+<p>SharePoint is useful for the live synthesis, but it is no longer the whole workshop runtime. Participants do their build-and-verify homework later in any safe personal folder. During the live session, shared storage only needs to support the group rollout syntheses.</p>
+<p>This design protects customer material and reduces live debugging. The public workbook gives prompts and file names. The actual group syntheses and any customer context stay in the customer&#39;s environment. Bosser tooling does not need to see them.</p>
+<p>Prompts are delivered through the workbook, not through installed skills or a private automation layer. Participants copy the prompt blocks into Cowork. In the live crux exercise, the important mechanics are: each person can save personal notes somewhere safe, one group driver can write the group synthesis to the agreed shared location, and organisers can read the group files after they sync.</p>
+<p>The synthesis magic comes from sync plus constraint. Most participants do not write shared files. Group drivers write the small number of group synthesis files. Once those files have synced, organisers can run the synthesis prompt and produce a room-level artifact without collecting documents manually or opening private participant folders.</p>
+<p>Assume eventual consistency. A file that was just saved may need a moment before another Cowork session can read it. If synthesis cannot see a group file immediately, confirm the filename, confirm it is in <code>shared/</code>, wait briefly, and retry. Do not turn that moment into a content discussion.</p>
+<p>The organiser role is mechanical and custodial, not epistemic. Organisers keep access, folders, filenames, timing, and synthesis moving. Participants do the rollout judgment. The homework does not need organiser answer keys.</p>
+<h2>Phase 1. Prepare the live demo</h2>
+<p>Confirm the trainer can show the live system without hunting:</p>
+<ul>
+<li>deployed Acme workbook</li>
+<li>source module files</li>
+<li>exercise and prompt files</li>
+<li><code>AGENTS.md</code>, root <code>CLAUDE.md</code>, and Claude Basics rules</li>
+<li>build script and generated client output</li>
+<li>recent commit history</li>
+</ul>
+<p>The demo should show structure, not become a code walkthrough.</p>
+<h2>Phase 2. Prepare the live synthesis workspace</h2>
+<p>Create or confirm one agreed shared location for group synthesis files. It can be SharePoint, Teams files, a shared OneDrive folder, or another customer-approved location.</p>
+<p>Recommended file names:</p>
+<ul>
+<li><code>group-1-rollout-synthesis.md</code></li>
+<li><code>group-2-rollout-synthesis.md</code></li>
+<li><code>group-3-rollout-synthesis.md</code></li>
+<li><code>m3-organisers-rollout-readout.md</code> if the optional organisers&#39; readout runs</li>
+</ul>
+<p>Do not put customer material in the public curriculum repo. Customer-owned files live only in the customer workspace.</p>
+<h2>Phase 3. Prove group-driver access</h2>
+<p>Before the workshop, prove at least one likely group driver can do all of this:</p>
+<ul>
+<li>open Cowork on a safe personal folder</li>
+<li>add or access the agreed shared synthesis location if Cowork needs it</li>
+<li>save a test markdown file in the shared synthesis location</li>
+<li>see the saved file from another organiser&#39;s machine</li>
+</ul>
+<p>If this fails, the live crux exercise can still run by pasting group syntheses into a shared document, but decide that before the room arrives.</p>
+<h2>Phase 4. Prepare group mechanics</h2>
+<p>Decide group count and group numbers:</p>
+<ul>
+<li>8 or fewer participants: 2 to 3 groups</li>
+<li>9 to 12 participants: 3 groups</li>
+<li>13 to 16 participants: 4 groups</li>
+</ul>
+<p>Do not pre-assign group drivers unless access constraints require it. Each group should choose the person most comfortable operating Cowork.</p>
+<h2>Phase 5. Dry-run the organiser prompt</h2>
+<p>Run a quick rehearsal of the organiser-only rollout synthesis prompt using dummy files:</p>
+<ul>
+<li><code>[Exercise: Organisers synthesize rollout](#exercises-organisers-synthesize-rollout)</code></li>
+</ul>
+<p>Use fake group files or non-sensitive sample content. The point is to test file paths, save behavior, timing, and the organisers&#39; push-back rhythm.</p>
+<h2>Phase 6. Dry-run as one participant</h2>
+<p>Create or use one safe test folder. Run the live crux path from a participant point of view, not from an organiser/admin view.</p>
+<p>Do a thin pass:</p>
+<ul>
+<li>save <code>m3-rollout-notes.md</code> in the test folder</li>
+<li>as group driver, save a dummy <code>group-1-rollout-synthesis.md</code> in the shared synthesis location</li>
+<li>as organiser, read that dummy group file and save a dummy <code>m3-organisers-rollout-readout.md</code></li>
+</ul>
+<p>Delete or clearly mark test files before the workshop. Keep any real customer content inside the customer environment.</p>
+<p>The dry-run succeeds only if the participant path works without organiser-only permissions.</p>
+<h2>Phase 7. Frame the homework</h2>
+<p>Make sure organisers can say the homework path plainly:</p>
+<ul>
+<li>open Cowork on any safe personal folder</li>
+<li>run the build-your-system homework there</li>
+<li>run the verification homework there</li>
+<li>keep the resulting <code>CLAUDE.md</code>, <code>response.md</code>, <code>verification-table.md</code>, and <code>homework-summary.md</code></li>
+</ul>
+<p>No organiser material is required for the homework.</p>
+<h2>Phase 8. Confirm the day-of contract</h2>
+<p>Before the room arrives, confirm:</p>
+<ul>
+<li>organisers know where the public workbook is and can point participants to the live module prompts</li>
+<li>trainer can run the repo demo without searching</li>
+<li>organisers know group count and group numbers</li>
+<li>group drivers can save to the agreed shared synthesis location, or the backup shared document is ready</li>
+<li>organisers can save <code>m3-organisers-rollout-readout.md</code> if the optional readout runs</li>
+<li>the test participant dry-run has passed</li>
+<li>organisers can explain the homework folder model in one sentence</li>
+</ul>
+<p>The workshop is ready when the demo path, group synthesis save path, and homework framing all work.</p>
+</section>
+
+
+
+</section>
+
+<section class="module" id="homework-build-and-verify">
+<h1>Homework: build and verify</h1>
+<h2>Big Idea</h2>
+<p>The live session gives you the shape. Homework turns it into personal muscle memory.</p>
+<h2>Meta</h2>
+<ul>
+<li><strong>Primary Bloom&#39;s level:</strong> Apply → Evaluate</li>
+<li><strong>Prework:</strong> live session completed</li>
+<li><strong>Homework:</strong> both exercises below</li>
+<li><strong>Materials:</strong> Cowork and any folder you can safely use, such as Documents, OneDrive, Desktop, or a work folder</li>
+<li><strong>Plug points:</strong> your own safe task, your own evidence surfaces, your own CLAUDE.md</li>
+</ul>
+<h2>What You&#39;ll Learn</h2>
+<p>After this module, you will be able to:</p>
+<ul>
+<li><strong>Build</strong> a small Claude system in a normal personal folder</li>
+<li><strong>Write</strong> a CLAUDE.md that changes how future answers behave</li>
+<li><strong>Check</strong> a plausible Claude answer by extracting claims and finding evidence</li>
+<li><strong>Carry</strong> the method back to your daily work without a cohort SharePoint setup</li>
+</ul>
+<h2>Connections</h2>
+<p>The live session showed the shape of a system and used that shape on the rollout question. This homework is smaller and more personal: one folder, one task, one checking method.</p>
+<p>Pick a folder you can safely use. It can be Documents, OneDrive, Desktop, or a work folder. Open Cowork on that folder. Everything you save in these exercises stays there.</p>
+<h2>Lectures</h2>
+<p>None. The homework is in the doing.</p>
+<h2>Exercises</h2>
+<section class="phase phase--exercise" id="exercises-build-your-system">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Build your system</h1>
+<p><strong>Time:</strong> 28 minutes. Five phases.</p>
+<p>Chat level in. Out: a working system on a task that matters to your work, rules written in your voice, in a folder that lives on after the homework. The shape: build it boring, then build it yours.</p>
+<p>Open Cowork on a folder you can safely use. Documents is fine. OneDrive is fine. A work folder is fine if the task and files are safe to use there. Everything in this exercise saves in that folder.</p>
+<p><strong>The task</strong> is one small thing you could actually use. Good defaults: a one-page response to a common Claude question internal users ask; a short explanation of the difference between Claude and ChatGPT for your work; a short guide to which connectors your team should enable.</p>
+<h2>Phase 1. The boring baseline (5 minutes)</h2>
+<p>Pose the task to Claude with no rules, no context, no setup. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
+<p>Tell Claude the task, ask for a draft, and save it in this folder.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Draft a one-page IT-team response we can send to an internal user.
+
+The task is: I need a useful answer to a common Claude question internal users ask. Pick one of these if I have not already given you a better task:
+- is it safe to paste customer email content into Claude?
+- what&#39;s the difference between Claude and ChatGPT for our work?
+- which connectors should I enable?
+
+Save the draft as `response.md` in this folder.
+</code></pre>
+<p>Read what Claude wrote. Note three things. What&#39;s generic. What&#39;s off. What&#39;s plain wrong about how your team actually works.</p>
+<h2>Phase 2. Write your CLAUDE.md (7 minutes)</h2>
+<p>CLAUDE.md is a plain markdown file that carries the rules for this folder. You and Claude write it together in chat. You don&#39;t open the file yourself.</p>
+<p>Ask Claude to propose 3 to 5 rules in chat first, push back on whatever&#39;s too generic, then have Claude save the final list.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read `response.md` from this folder. Propose 3 to 5 rules for a folder CLAUDE.md that would catch the most generic and the most off claims you made. Show me the rules in chat first, one sentence each. Don&#39;t save yet.
+
+After I push back, save the final list as `CLAUDE.md` in this folder. If this folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, open the file with a first rule that names that runtime and says to assume eventual consistency on file reads.
+</code></pre>
+<p>Push back in chat. <em>&quot;That rule is too generic. Give me one specific to my team&#39;s tone.&quot;</em> <em>&quot;Strike rule 3, it would fire on every output.&quot;</em> Claude rewrites. When the list reads as yours, ask Claude to save. A rule that catches everything catches nothing.</p>
+<h2>Phase 3. Re-run on the same task (4 minutes)</h2>
+<p>Same question. New rules. Watch the diff.</p>
+<p>Ask Claude to redraft from scratch using the rules you just wrote.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Re-read `response.md` and `CLAUDE.md` from this folder. Now redraft `response.md` from scratch in this same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you&#39;re changing and why.
+</code></pre>
+<p>Claude&#39;s three-line diff summary at the top of this phase tells you what changed. The new version saved over the old one in <code>response.md</code>. Trust the summary and move on.</p>
+<h2>Phase 4. Catch the thing you knew was wrong (7 minutes)</h2>
+<p>Phase 1 produced at least one claim you knew was wrong. A tool your team doesn&#39;t use, a policy your org doesn&#39;t have, a salesy tone where your team writes plain. Add a rule that catches that specific shape.</p>
+<p>Ask Claude to add a guardrail for the specific wrong claim. Type the wrong claim after the colon.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Add ONE rule to `CLAUDE.md` in this folder that would have caught a specific wrong claim from the Phase 1 response.md. The rule should fire on similar future claims, not on everything. After adding the rule, re-read `response.md` in the same folder, regenerate it, and tell me whether the new version still contains the wrong shape. The wrong claim from Phase 1:
+</code></pre>
+<p>Read what changed. The rule&#39;s job is one specific shape of wrongness. Specific is the point.</p>
+<h2>Phase 5. Iterate until it&#39;s yours (5 minutes)</h2>
+<p>Last pass. The bar isn&#39;t <em>&quot;does Claude think this is good.&quot;</em> That bar is too low. Use a concrete one: name three things in the output that are unmistakably yours, not generic. A tool name your team actually uses. A phrase the team writes by default. A tone choice that isn&#39;t LLM-default.</p>
+<p>Ask Claude to iterate response.md and then name three specifics.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Final pass. Re-read `response.md` and `CLAUDE.md` from this folder. Iterate the response until three specific things in it are unmistakably about MY team and not generic. After you regenerate, name those three things in chat. I will confirm or push back on each one.
+</code></pre>
+<p>Confirm or push back on each of the three. If Claude can&#39;t name three things that are specifically yours, your CLAUDE.md doesn&#39;t yet hold enough of your team&#39;s voice. Add one more rule and run Phase 5 again.</p>
+<p>When three specifics survive push-back, the response is yours. Save it. The folder carries the system forward.</p>
+</section>
+
+
+
+
+
+<section class="phase phase--exercise" id="exercises-the-it-directors-prompt">
+<div class="phase-kicker">Exercise</div>
+
+<h1>Exercise: Find the wrong claims</h1>
+<p><strong>Time:</strong> 35-45 minutes. Five phases. Self-study.</p>
+<p>Start in the same safe folder you used for the build-your-system homework, or open Cowork on another safe folder. This exercise works on one plausible Claude answer saved as <code>verification-output.md</code>. You can use an answer Claude already gave you, or ask Claude to draft one on a topic you understand well enough to check.</p>
+<p>Your job is not to read harder. Your job is to turn plausible output into a checking system.</p>
+<h2>Phase 1. Extract the claim pool (5 minutes)</h2>
+<p>First make sure there is a plausible answer in this folder.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>If `verification-output.md` does not exist in this folder, draft a two-page answer to a practical Claude-at-work question I can check. Use this question unless I give you a better one:
+&quot;What should our IT team tell internal users about safe and effective Claude use?&quot;
+
+Save the answer as `verification-output.md`.
+
+Then read `verification-output.md`.
+
+Extract 12 to 15 factual claims worth checking. Pick claims that would matter if our IT team repeated them to internal users: security, data handling, licensing, connectors, rollout advice, user instructions, or anything with a number, policy, source, date, or product capability.
+
+Create a markdown table with these columns:
+
+| Claim | Why it matters | Where I would check |
+
+For &quot;Where I would check&quot;, name the most useful evidence surface: public docs, internal policy, SharePoint file, admin panel, or named owner. If the right place is not obvious, write &quot;not obvious&quot;.
+
+Show me the table in chat first. After I push back, save the table as `claim-pool.md` in this folder.
+</code></pre>
+<p>Read the proposed table. Push back where the evidence surface is wrong or too vague. The table is the measuring surface for the rest of the exercise.</p>
+<h2>Phase 2. Find the evidence (6 minutes)</h2>
+<p>Now build the evidence map. Use the tools and sources available in your environment: public docs, intranet, SharePoint, policy files you are allowed to use, admin panels, or people who own the answer.</p>
+<p>Ask Claude to turn the claim pool into a concrete evidence plan.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read `claim-pool.md` from this folder.
+
+Build an evidence map for the claims. For each claim, name:
+- the first source I should check
+- the backup source if the first one is thin
+- whether this claim is high-risk if repeated to users
+
+Use this table:
+
+| Claim | First source | Backup source | High-risk? |
+
+Do not verify the claims yet. This phase is only about finding the right ground to check against.
+
+Save the evidence map as `evidence-map.md` in this folder.
+</code></pre>
+<p>The point is not to have all answers yet. The point is to know where the ground is.</p>
+<h2>Phase 3. Run two checks (8 minutes)</h2>
+<p>Two methods, same claim pool.</p>
+<p><strong>Source support</strong> asks whether a source actually supports the claim. This catches invented or unsupported claims.</p>
+<p><strong>Counter-evidence</strong> asks whether another source contradicts or weakens the claim. This catches plausible but outdated, one-sided, or overconfident claims.</p>
+<p>Ask Claude to run both checks on the claim pool.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read `claim-pool.md` and `evidence-map.md` from this folder.
+
+For each claim, run two checks:
+
+1. Source support. Does the best available source actually support this claim? Quote or name the evidence. If no source supports it, write UNSUPPORTED.
+
+2. Counter-evidence. Is there evidence that contradicts, weakens, dates, or narrows this claim? If yes, name it. If you cannot tell, write I-CAN&#39;T-TELL.
+
+Use any available source I can access in this environment: public docs, internal policy, SharePoint files I am allowed to use, admin panels, or named owners. Do not invent a source. If a source is unavailable, say so.
+
+Save the result as `verification-table.md` in this folder with this shape:
+
+| Claim | Source support | Counter-evidence | Verdict | Notes |
+
+Verdict values:
+- supported
+- wrong
+- unsupported
+- overreaches
+- I-can&#39;t-tell
+
+After saving, tell me which of the two checks caught more useful problems.
+</code></pre>
+<p>If a row feels uncertain, keep it uncertain. <em>I-can&#39;t-tell</em> is an answer the team can act on.</p>
+<h2>Phase 4. Write your verification rule (6 minutes)</h2>
+<p>The table is useful once. The rule is useful next time.</p>
+<p>Ask Claude to turn the pattern into a CLAUDE.md rule.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read `verification-table.md` and `CLAUDE.md` in this folder. If `CLAUDE.md` does not exist yet, create it first as a short rule file for this folder.
+
+Add or sharpen 1 to 3 verification rules for future Claude answers. Focus on the claim shapes this answer exposed: security, data handling, licensing, connectors, rollout advice, user instructions, numbers, dates, or product capabilities.
+
+Rules should tell future sessions when to extract claims, when to require source support, when to run counter-evidence, and when to say I-can&#39;t-tell instead of smoothing over the gap.
+
+Do not paste a summary of the exercise. Integrate the rules into CLAUDE.md. Then tell me what changed and which checked claim drove it.
+</code></pre>
+<p>If you did not do the build-your-system homework first, this phase creates the first <code>CLAUDE.md</code> for the folder.</p>
+<h2>Phase 5. Name what stayed open (5 minutes)</h2>
+<p>The useful habit is knowing what you still cannot tell.</p>
+<p>Ask Claude to list the open rows.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read `verification-table.md` from this folder. List the rows with verdict unsupported, overreaches, or I-can&#39;t-tell.
+
+For each row, show:
+- the claim
+- which check caught it, if any
+- what evidence would close it
+
+Don&#39;t suggest fixes. I want to see what stayed open.
+</code></pre>
+<p>The artifact is not the table. The artifact is the method now written into your system.</p>
+</section>
+
+
+
+<h2>Key Concepts (Emergent)</h2>
+<ul>
+<li>Your folder is the system boundary</li>
+<li>CLAUDE.md turns one good answer into a reusable working agreement</li>
+<li>Trust comes from a method you can rerun, not from a feeling that an answer sounded right</li>
+<li>The live rollout-crux pattern and the homework build-and-verify pattern are the same family: preserve signal, synthesize carefully, then carry the rule forward</li>
+</ul>
+<h2>Plug Points</h2>
+<ul>
+<li><strong>The folder.</strong> Use a folder where it is safe to create a few markdown files.</li>
+<li><strong>The task.</strong> Pick a real but low-risk task from your own work.</li>
+<li><strong>The evidence.</strong> Use public docs, internal policy, SharePoint files, admin panels, or named owners you are allowed to consult.</li>
+</ul>
+<h2>Debrief</h2>
+<p>When both exercises are done, ask Claude to summarize what your folder can now do.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read the files in this folder from the build-and-verify homework.
+
+Tell me:
+- what this folder is now set up to do
+- what rule in CLAUDE.md matters most
+- what kind of future Claude answer I should verify before trusting
+
+Keep it to five bullets.
+</code></pre>
+<p>Save the answer as <code>homework-summary.md</code>.</p>
+<h2>Bridge</h2>
+<p>There is no next module. There is the rollout. The check-back happens at week 1, week 4, and week 12.</p>
+
+</section>
+</main>
+<footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
+
+<script>// Shared curriculum runtime — single source of truth for both the SPA
+// (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
+//
+// UMD-shape: works in both browser (window.CurriculumRuntime) and Node
+// (require('./curriculum.js')). DOM-touching functions are guarded so the
+// Node side can use the pure-string utilities without crashing on missing
+// document/window.
+
+(function (global, factory) {
+    if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        global.CurriculumRuntime = factory();
+    }
+})(typeof window !== 'undefined' ? window : globalThis, function () {
+    'use strict';
+
+    // ── TRAININGS registry — single source of truth. SPA reads it for routing
+    // and index rendering; build-workbook iterates the modules array.
+    var TRAININGS = {
+        bootstrap: {
+            label: 'Bootstrap',
+            lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
+            prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
+            modules: [
+                { slug: 'getting-going',           title: 'Getting Going' },
+                { slug: 'building-agent-systems', title: 'Building Agent Systems' },
+                { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
+                { slug: 'security',               title: 'Security' },
+                { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
+                { slug: 'evaluations',            title: 'Evaluations' },
+                { slug: 'personal-to-team',       title: 'From Personal to Team' },
+                { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
+            ],
+            supplementaries: [
+                { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
+                { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
+                { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' }
+            ],
+            references: [
+                { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
+            ]
+        },
+        'agentic-engineering-101': {
+            label: 'Agentic Engineering 101',
+            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
+            prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
+                { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            references: [
+                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
+                { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
+                { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
+            ]
+        },
+        'claude-basics': {
+            label: 'Claude Basics',
+            lede: 'A 3-hour live workshop for the IT team rolling out Claude. See the system, find the crux, then build and verify in your own folder.',
+            runtime: 'cowork',
+            modules: [
+                { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
+                { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
+                { slug: 'homework-build-and-verify', title: 'Homework: build and verify' }
+            ]
+        }
+    };
+
+    var DEFAULT_TRAINING = 'bootstrap';
+
+    // Legal footer — single source for SPA + workbook. SPA fills its empty
+    // <footer class="curriculum-footer"> at boot via innerHTML; workbook
+    // emits the wrapped form via renderFooter() at build time.
+    var FOOTER_INNER = '<p>' +
+        '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
+        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
+        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
+        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
+        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> ' +
+        '&middot; <a href="https://bosser.consulting">bosser.consulting</a>' +
+        '</p>';
+
+    function renderFooter() {
+        return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
+
+    // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
+    var RUNTIME_KEY = 'agents102-runtime';
+    var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
+    var DEFAULT_RUNTIME = 'cowork';
+
+    function trainingSupportsRuntimeSwitch(trainingKey) {
+        return trainingKey === 'bootstrap';
+    }
+
+    function getRuntime(trainingKey) {
+        var t = TRAININGS[trainingKey];
+        if (t && t.runtime && VALID_RUNTIMES[t.runtime]) return t.runtime;
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) return 'cli';
+        var stored = null;
+        try { stored = window.localStorage.getItem(RUNTIME_KEY); } catch (e) {}
+        return VALID_RUNTIMES[stored] ? stored : DEFAULT_RUNTIME;
+    }
+
+    function applyRuntime(trainingKey, runtime) {
+        document.body.classList.remove('runtime-cli', 'runtime-desktop', 'runtime-cowork');
+        document.body.classList.add('runtime-' + runtime);
+        var sw = document.getElementById('runtime-switcher');
+        if (!sw) return;
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) { sw.hidden = true; return; }
+        sw.hidden = false;
+        var btns = sw.querySelectorAll('.runtime-switcher-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.toggle('is-active', btns[i].getAttribute('data-runtime') === runtime);
+        }
+    }
+
+    function setRuntime(trainingKey, runtime) {
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) return;
+        if (!VALID_RUNTIMES[runtime]) return;
+        try { window.localStorage.setItem(RUNTIME_KEY, runtime); } catch (e) {}
+        applyRuntime(trainingKey, runtime);
+    }
+
+    function wireRuntimeSwitcher(trainingKey) {
+        var sw = document.getElementById('runtime-switcher');
+        if (!sw) return;
+        sw.addEventListener('click', function (ev) {
+            var t = ev.target;
+            if (t && t.classList.contains('runtime-switcher-btn')) {
+                var rt = t.getAttribute('data-runtime');
+                if (rt) setRuntime(trainingKey, rt);
+            }
+        });
+    }
+
+    // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
+    // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+
+    // Inline cross-doc link pattern: `(kind/slug.md)` anywhere in body, with
+    // optional `../` prefixes. Renderer rewrites to `?file=kind/slug` URLs.
+    var CROSS_DOC_LINK_RE = /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g;
+
+    // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
+
+    function esc(s) {
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function rewriteCrossDocLinks(md) {
+        return md.replace(CROSS_DOC_LINK_RE, '](curriculum.html?file=$1/$2)');
+    }
+
+    function stripMaintainerTail(md) {
+        var i = md.indexOf('<!-- maintainer -->');
+        return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    function extractParent(md) {
+        var m = md.match(/<!--\s*parent:\s*([a-zA-Z0-9_-]+)\s*-->/);
+        return m ? m[1] : null;
+    }
+
+    // Extract the first paragraph after `## Big Idea` from a module's markdown.
+    // Returns null when the section is missing (matches SPA's hydrate semantics).
+    function extractBigIdea(md) {
+        var m = md.match(/^##\s+Big Idea\s*\n+([\s\S]*?)(?=\n##\s|$)/m);
+        if (!m) return null;
+        var body = m[1].trim();
+        // Take the first paragraph only.
+        var firstPara = body.split(/\n\s*\n/)[0].trim();
+        // Collapse internal newlines so card chrome lays out cleanly.
+        return firstPara.replace(/\s*\n\s*/g, ' ');
+    }
+
+    // Turn *word* into a `.accent` span; escape everything else.
+    // Used by the SPA training-index lede.
+    function renderAccents(s) {
+        return esc(s).replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
+    }
+
+    // ── DOM runtime (browser only) ──────────────────────────────────────────
+
+    function addCopyButton(pre, host) {
+        var mountTarget = host || pre;
+        if (mountTarget.querySelector(':scope > .copy-btn')) return;
+        var btn = document.createElement('button');
+        btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Copy to clipboard');
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            var code = pre.querySelector('code') || pre;
+            var text = code.innerText;
+            var done = function () {
+                btn.textContent = 'Copied';
+                btn.classList.add('copy-btn--copied');
+                setTimeout(function () {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copy-btn--copied');
+                }, 1400);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, fallback);
+            } else {
+                fallback();
+            }
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); done(); }
+                catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
+                document.body.removeChild(ta);
+            }
+        });
+        mountTarget.appendChild(btn);
+    }
+
+    function decoratePrompts(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Prompt') return;
+            var pre = p.nextElementSibling;
+            if (!pre || pre.tagName !== 'PRE') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var parts = label.split(/,\s*/);
+            var dest = parts[0] || 'Claude Code';
+            var context = parts.slice(1).join(', ');
+            var destHtml = (dest === 'Claude Code')
+                ? '<span class="rt-cowork">Cowork</span>' +
+                  '<span class="rt-desktop">Claude Code Desktop</span>' +
+                  '<span class="rt-cli">Claude Code CLI</span>'
+                : esc(dest);
+
+            var wrap = document.createElement('div');
+            wrap.className = 'prompt-block';
+            var header = document.createElement('div');
+            header.className = 'prompt-block__header';
+            header.innerHTML =
+                '<span class="prompt-block__label">Prompt</span>' +
+                '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
+                '<span class="prompt-block__dest">' + destHtml + '</span>' +
+                (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            wrap.appendChild(header);
+            wrap.appendChild(pre);
+            pre.classList.add('prompt-block__pre');
+            p.remove();
+
+            addCopyButton(pre, header);
+        });
+
+        // Universal copy buttons on every standalone <pre>.
+        root.querySelectorAll('pre:not(.prompt-block__pre)').forEach(function (pre) {
+            addCopyButton(pre);
+        });
+
+        // Back-compat: drop "*(end of prompt)*" leftovers from unmigrated files.
+        Array.from(root.querySelectorAll('p, em')).forEach(function (n) {
+            var t = n.textContent.trim();
+            if (t === '(end of prompt)' || t === '*(end of prompt)*') {
+                var host = n.tagName === 'EM' ? n.parentNode : n;
+                if (host && host.tagName === 'P') host.remove();
+            }
+        });
+    }
+
+    // Compute the 2-digit number for a module slug within a training.
+    // Prework = "00", modules = "01"..., optionalModules continue from there.
+    function moduleNumber(trainingKey, slug) {
+        var t = TRAININGS[trainingKey];
+        if (!t) return null;
+        if (t.prework && t.prework.slug === slug) return '00';
+        var i = t.modules.findIndex(function (m) { return m.slug === slug; });
+        if (i >= 0) return String(i + 1).padStart(2, '0');
+        if (t.optionalModules) {
+            var j = t.optionalModules.findIndex(function (m) { return m.slug === slug; });
+            if (j >= 0) return String(t.modules.length + j + 1).padStart(2, '0');
+        }
+        return null;
+    }
+
+    // Pull the H1 + Big Idea out of a rendered module element and replace
+    // them with a numbered hero block. Used by both SPA (one module per page)
+    // and workbook (every module section, on init).
+    function buildModuleHero(moduleEl, num) {
+        var h1 = moduleEl.querySelector('h1');
+        if (!h1 || h1.closest('.module-hero')) return;
+
+        var bigIdeaHtml = null;
+        var h2s = moduleEl.querySelectorAll(':scope > h2');
+        for (var i = 0; i < h2s.length; i++) {
+            if (h2s[i].textContent.trim().toLowerCase() === 'big idea') {
+                var sib = h2s[i].nextElementSibling;
+                if (sib && sib.tagName === 'P') {
+                    bigIdeaHtml = sib.innerHTML;
+                    sib.remove();
+                }
+                h2s[i].remove();
+                break;
+            }
+        }
+
+        var hero = document.createElement('header');
+        hero.className = 'module-hero';
+        if (num) {
+            var n = document.createElement('div');
+            n.className = 'module-hero-num';
+            n.textContent = num;
+            hero.appendChild(n);
+        }
+        var titleClone = h1.cloneNode(true);
+        titleClone.classList.add('module-hero-title');
+        hero.appendChild(titleClone);
+        if (bigIdeaHtml) {
+            var big = document.createElement('p');
+            big.className = 'module-hero-big';
+            big.innerHTML = bigIdeaHtml;
+            hero.appendChild(big);
+        }
+        h1.parentNode.insertBefore(hero, h1);
+        h1.remove();
+    }
+
+    // Standalone exercise / lecture pages get the same phase wrapper they
+    // wear when embedded inside a parent module. Pass the container element
+    // and the kind ('exercise' | 'lecture').
+    function wrapStandaloneInPhase(container, kind) {
+        if (!kind || (kind !== 'exercise' && kind !== 'lecture')) return;
+        if (container.querySelector(':scope > .phase')) return; // already wrapped
+        var section = document.createElement('section');
+        section.className = 'phase phase--' + kind;
+        var kicker = document.createElement('div');
+        kicker.className = 'phase-kicker';
+        kicker.textContent = kind;
+        section.appendChild(kicker);
+        while (container.firstChild) section.appendChild(container.firstChild);
+        container.appendChild(section);
+    }
+
+    // Supplementary / reference rows on the training index. Different shape
+    // from cardHtml — flat row with kind label + title.
+    function simpleRowHtml(kind, title, href) {
+        return '<li><a href="' + href + '">' +
+               '<span class="supp-kind">' + esc(kind) + '</span>' +
+               '<span class="supp-title">' + esc(title) + '</span>' +
+               '<span class="module-arrow">→</span>' +
+               '</a></li>';
+    }
+
+    function installReadingProgress() {
+        if (document.querySelector('.reading-progress')) return;
+        var bar = document.createElement('div');
+        bar.className = 'reading-progress';
+        document.body.appendChild(bar);
+        var update = function () {
+            var doc = document.documentElement;
+            var max = doc.scrollHeight - doc.clientHeight;
+            var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+            bar.style.width = pct + '%';
+        };
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    }
+
+    // Module-list card chrome — used by both the SPA training index and the
+    // workbook TOC. `bigIdea` is optional (workbook pre-fills, SPA hydrates
+    // async via hydrateBigIdeas).
+    // marked single-tilde strikethrough triggers on patterns like `(~30 min)... (~10 min)`.
+    // Escape numeric-tildes before parse, on both SPA and workbook paths.
+    function escapeTildes(md) {
+        return md.replace(/~(\d)/g, '\\~$1');
+    }
+
+    // Shared TOC sections builder — both the SPA training-index page and the
+    // workbook table-of-contents use the same five-section layout (prework,
+    // modules, optional, supplementaries, references, trainer-guide). The
+    // only differences are the URL strategy (router vs in-page anchors), the
+    // heading tier, and whether Big Ideas are pre-filled (workbook reads sync
+    // at build) or hydrated async (SPA).
+    //
+    // opts:
+    //   moduleHref(trainingKey, slug)   — URL for prework / modules / optional cards
+    //   fileHref(kind, slug)             — URL for supplementary / reference rows
+    //   trainerGuideHref                 — URL string for the trainer-guide row
+    //   bigIdeaFor(slug)                 — sync getter for Big Ideas (workbook); null for SPA (hydrates later)
+    //   trainingKey                      — passed through to moduleHref
+    //   showModuleCountHeading           — true on SPA (lede-style headings); false in workbook (cover replaces)
+    //   headingTag                       — 'h2' (SPA) or 'h3' (workbook nested under the cover's h2)
+    //   bigIdeaDataAttr                  — 'data-big-ideas' marker on module list (SPA needs this for hydration)
+    function buildTocSections(t, opts) {
+        var trainingKey = opts.trainingKey;
+        var heading = opts.headingTag || 'h2';
+        var bigIdea = opts.bigIdeaFor || function () { return null; };
+        var bigIdeasAttr = opts.bigIdeaDataAttr ? ' ' + opts.bigIdeaDataAttr : '';
+        var html = '';
+
+        if (t.prework) {
+            if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Before Module 1</' + heading + '>';
+            html += '<ol class="module-list index-prework"' + bigIdeasAttr + '>';
+            html += cardHtml('00', t.prework.title, t.prework.slug, opts.moduleHref(trainingKey, t.prework.slug), bigIdea(t.prework.slug));
+            html += '</ol>';
+        }
+
+        if (t.modules.length) {
+            if (opts.showModuleCountHeading) {
+                var words = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+                var word = words[t.modules.length] || String(t.modules.length);
+                html += '<' + heading + ' class="index-heading">The ' + word + ' modules</' + heading + '>';
+            }
+            html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
+            t.modules.forEach(function (m, i) {
+                var num = String(i + 1).padStart(2, '0');
+                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.optionalModules && t.optionalModules.length) {
+            if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Optional extensions — when the cohort wants more</' + heading + '>';
+            else html += '<' + heading + ' class="index-heading">Optional extensions</' + heading + '>';
+            html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
+            t.optionalModules.forEach(function (m, i) {
+                var num = String(t.modules.length + i + 1).padStart(2, '0');
+                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.supplementaries && t.supplementaries.length) {
+            html += '<' + heading + ' class="index-heading">' + (opts.showModuleCountHeading ? 'Supplementary — grows across the training' : 'Supplementary') + '</' + heading + '>';
+            html += '<ol class="module-list index-supplementaries">';
+            t.supplementaries.forEach(function (s) {
+                html += simpleRowHtml('Reference', s.title, opts.fileHref('supplementary', s.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.references && t.references.length) {
+            html += '<' + heading + ' class="index-heading">Quick reference</' + heading + '>';
+            html += '<ol class="module-list index-references">';
+            t.references.forEach(function (r) {
+                html += simpleRowHtml('Lookup', r.title, opts.fileHref('reference', r.slug));
+            });
+            html += '</ol>';
+        }
+
+        // Trainer guide is built and reachable by direct URL (SPA route
+        // ?file=trainer-guide; workbook sibling trainer-guide.html). Not
+        // surfaced from the student-facing index — trainers know the URL.
+
+        return html;
+    }
+
+    function cardHtml(num, title, slug, href, bigIdea) {
+        var bigHtml = bigIdea ? esc(bigIdea) : '&nbsp;';
+        return '<li data-slug="' + esc(slug) + '">' +
+            '<a href="' + href + '">' +
+            '<span class="module-n">' + esc(num) + '</span>' +
+            '<span class="module-body">' +
+            '<span class="module-title">' + esc(title) + '</span>' +
+            '<span class="module-big"' + (bigIdea ? '' : ' data-big-idea') + '>' + bigHtml + '</span>' +
+            '</span>' +
+            '<span class="module-arrow">→</span>' +
+            '</a></li>';
+    }
+
+    return {
+        // Data
+        TRAININGS: TRAININGS,
+        DEFAULT_TRAINING: DEFAULT_TRAINING,
+        INCLUDE_LINK_RE: INCLUDE_LINK_RE,
+        CROSS_DOC_LINK_RE: CROSS_DOC_LINK_RE,
+        FOOTER_INNER: FOOTER_INNER,
+        renderFooter: renderFooter,
+
+        // Pure (Node-safe)
+        esc: esc,
+        rewriteCrossDocLinks: rewriteCrossDocLinks,
+        stripMaintainerTail: stripMaintainerTail,
+        extractParent: extractParent,
+        extractBigIdea: extractBigIdea,
+        escapeTildes: escapeTildes,
+        cardHtml: cardHtml,
+        buildTocSections: buildTocSections,
+
+        // DOM (browser only)
+        decoratePrompts: decoratePrompts,
+        addCopyButton: addCopyButton,
+        installReadingProgress: installReadingProgress,
+        buildModuleHero: buildModuleHero,
+        moduleNumber: moduleNumber,
+        wrapStandaloneInPhase: wrapStandaloneInPhase,
+        simpleRowHtml: simpleRowHtml,
+        renderAccents: renderAccents,
+
+        // Runtime switcher
+        getRuntime: getRuntime,
+        applyRuntime: applyRuntime,
+        setRuntime: setRuntime,
+        wireRuntimeSwitcher: wireRuntimeSwitcher,
+        trainingSupportsRuntimeSwitch: trainingSupportsRuntimeSwitch
+    };
+});
+</script>
+<script>
+(function () {
+  if (window.CurriculumRuntime) {
+    // Numbered hero per module (lifts H1 + Big Idea into module-hero block).
+    var trainingKey = document.body.getAttribute('data-training');
+    document.querySelectorAll('main > section.module').forEach(function (mod) {
+      var num = CurriculumRuntime.moduleNumber(trainingKey, mod.id);
+      CurriculumRuntime.buildModuleHero(mod, num);
+    });
+    CurriculumRuntime.decoratePrompts(document.body);
+    CurriculumRuntime.installReadingProgress();
+  }
+
+  var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');
+  if (!chips.length || !('IntersectionObserver' in window)) return;
+  var chipBySlug = {};
+  chips.forEach(function (a) { chipBySlug[a.getAttribute('data-target')] = a; });
+
+  var visible = {};
+  var setActive = function () {
+    var bestSlug = null;
+    var bestRatio = 0;
+    Object.keys(visible).forEach(function (slug) {
+      if (visible[slug] > bestRatio) { bestRatio = visible[slug]; bestSlug = slug; }
+    });
+    chips.forEach(function (a) { a.classList.remove('is-active'); });
+    if (bestSlug && chipBySlug[bestSlug]) chipBySlug[bestSlug].classList.add('is-active');
+  };
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var slug = e.target.id;
+      visible[slug] = e.isIntersecting ? e.intersectionRatio : 0;
+    });
+    setActive();
+  }, { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-80px 0px -40% 0px' });
+
+  Object.keys(chipBySlug).forEach(function (slug) {
+    var sec = document.getElementById(slug);
+    if (sec) io.observe(sec);
+  });
+})();
+</script>
+</body>
+</html>

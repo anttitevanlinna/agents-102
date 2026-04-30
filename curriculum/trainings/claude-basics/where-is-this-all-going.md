@@ -7,9 +7,9 @@ In 45 minutes each group produces a clean synthesis of what would make the Claud
 ## Meta
 
 - **Primary Bloom's level:** Evaluate
-- **Prework:** none
-- **Homework:** none
-- **Materials (organisers):** group numbers, `shared` working-folder write access for nominated group drivers, and a dry-run of the group-synthesis prompt one day pre-cohort
+- **Prework:** live repo-demo module
+- **Homework:** [Homework: build and verify](#homework-build-and-verify)
+- **Materials (organisers):** group numbers, shared synthesis save path for nominated group drivers, and a dry-run of the group-synthesis prompt before the cohort
 - **Plug points:** the team's actual rollout difficulties; the group synthesis files; optional cross-pollination once group synthesis has succeeded; optional organisers-only readout
 
 ## What You'll Learn
@@ -23,13 +23,15 @@ After this module, you will be able to:
 
 ## Connections
 
-Start fresh. The question for this module is not what happened in the previous module. The question is: when the team rolls Claude out across the org, what's the **crux**?
+You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output. Now run a smaller system in the room.
+
+When the team rolls Claude out across the org, what's the **crux**?
 
 Not the long list of worries. The single thing that, if you got it right, would make the rest follow.
 
 ## Lectures
 
-None in Module 3. The reveal at the close is the whole concept beat.
+None in this module. The reveal at the close is the whole concept beat.
 
 ## Exercises
 
@@ -68,9 +70,9 @@ Read the answer in chat. The point isn't to act on it today. The point is that y
 
 ## Bridge
 
-There is no Module 4. The rollout is the work.
+The live system work is done. The homework turns it into personal muscle memory.
 
-Chat level in. Out: a working system, a verification method, clean group syntheses for the rollout, an optional organisers' readout, and the named identity of *Claude custodian* for the org. The check-back happens at week 1, week 4, week 12.
+Chat level in. Out: clean group syntheses for the rollout, an optional organisers' readout, and the named identity of *Claude custodian* for the org. Next: build and verify in your own folder.
 
 ## Organisers' Activities
 
@@ -85,15 +87,15 @@ Chat level in. Out: a working system, a verification method, clean group synthes
 **Meta:**
 - **Primary Bloom's level:** Evaluate
 - **Length:** 45 minutes. 4 Connections + 3 concept + 32 exercise + 4 reveal/reflection + 2 Debrief/Bridge
-- **Core simplification.** M3 no longer depends on M2 outputs or a break verdict. It starts fresh on rollout difficulty and ends when each group has a clean synthesis file
+- **Core simplification.** Live crux work follows the repo demo and does not depend on homework outputs. It starts fresh on rollout difficulty and ends when each group has a clean synthesis file
 - **The reveal at exercise close:** *"You just ran the smallest useful version of the rollout system: individual views diverged, groups synthesized, and only then did ideas cross-pollinate. That ordering matters."* Land it once. Don't elaborate
-- **No M4.** The training ends at M3. Resist the urge to bridge into a phantom next-module. The send-off is *"the rollout is the work"*
+- **Homework bridge.** The next module is a short launch into self-study, not another live exercise
 
 **Quality:** draft 2026-04-29
 - compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule 12 in-chat + rule #3 no-narrate-student-state + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rule 35 audience-tier, check_lectures v2026-04-27)
 - sim-passed 2026-04-28 — STALE after the 2026-04-29 M3 simplification
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the 2026-04-29 M3 simplification
-- draft 2026-04-29 (M3 redesign: independent group synthesis; optional cross-pollination; no M2 dependency; sim/mechanical not rerun)
+- draft 2026-04-30 (agenda restructure: live crux follows repo demo and bridges to homework; sim/mechanical not rerun)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

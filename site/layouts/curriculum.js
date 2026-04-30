@@ -62,12 +62,12 @@
         },
         'claude-basics': {
             label: 'Claude Basics',
-            lede: 'Three modules for the IT team rolling out Claude. License-holder to custodian in 3 × 45 minutes.',
+            lede: 'A 3-hour live workshop for the IT team rolling out Claude. See the system, find the crux, then build and verify in your own folder.',
             runtime: 'cowork',
             modules: [
-                { slug: 'stop-chatting-build-a-system', title: 'Stop chatting — build a system' },
-                { slug: 'can-you-be-trusted-to-run-this', title: 'Can you be trusted to run this?' },
-                { slug: 'where-is-this-all-going',      title: 'Where is this all going?' }
+                { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
+                { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
+                { slug: 'homework-build-and-verify', title: 'Homework: build and verify' }
             ]
         }
     };

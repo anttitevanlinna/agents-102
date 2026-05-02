@@ -54,10 +54,15 @@ else
     [[ -f "$prompt" ]] || continue
     name=$(basename "$prompt")
 
-    # P1: bracketed placeholders. Carve out [text](url) markdown links.
-    # Strip markdown links first, then look for [Word...] patterns.
+    # P1: bracketed placeholders — UPPERCASE-only (e.g., [BRACKET], [YOUR_NAME], [STUDENT_INPUT]).
+    # Carve-outs:
+    #   - [text](url) markdown links — stripped first.
+    #   - [sources/...], [memory/...], [agents/...] citation templates — start lowercase, untouched.
+    #   - [SECTION] inside a list of section names with surrounding context is still caught.
+    # Match: '[' + uppercase letter + 2+ uppercase-or-underscore + ']'. Avoids three-letter
+    # acronyms like [FAQ] in passing references — those need a 4-char-min token to fire.
     p1_hits=$(sed -E 's/\[[^]]+\]\([^)]+\)//g' "$prompt" \
-              | grep -nE '\[[A-Za-z][^]]{2,}\]' || true)
+              | grep -nE '\[[A-Z][A-Z_]{2,}\]' || true)
     if [[ -n "$p1_hits" ]]; then
       note_sev1 "P1 placeholder in $name: $(echo "$p1_hits" | head -1)"
     fi

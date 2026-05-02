@@ -32,6 +32,32 @@ The aspiration: every Judge run should leave behind one more script that the nex
 
 The aspirational endpoint: `bin/judge.sh <runner-slug>` runs the full assertion battery and writes the markdown report — no LLM Judge at all. We're not there yet; treat the LLM Judge as a transitional orchestrator that calls scripts and synthesizes their output, not as an assertion-grader. When a Judge writes the same script-replaceable assertion twice, lift it to `bin/`.
 
+## Runner shape — chain runners
+
+A runner that walks a chain of source-exercise prompts (`bootstrap-m2` is the canonical example) uses one `### Phase N — slug` heading per prompt, plus per-phase tags so `runner-mapping-check.sh` knows which exercise's prompt set the phase belongs to:
+
+```
+### Phase 5 — distinctive-claims
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-003.txt
+
+<phase body>
+```
+
+Two rules learned the hard way:
+
+1. **Slug uniqueness.** The phase slug must contain words that appear in the *referenced* prompt and *not* in any other prompt in that exercise. Pre-flight scores keyword overlap; a slug like `name-questions` whose words happen to appear in another prompt (e.g. "folder *names*") will fire a phase-swap FAIL. Pick words you can grep in `/tmp/prompts/<exercise>/prompt-NNN.txt`.
+2. **Coverage.** Pre-flight FAILs if any extracted prompt has no phase reading it (the runner is missing a phase). Multi-actor patterns (M3 retrievers, M5 setup/detector/scorer) split coverage across multiple actor runners and will show partial coverage per-actor — that's by design; the family covers it together.
+
+For unnumbered closing sections, `### Close — slug` and `### Setup — slug` are also recognised. Heading without a `prompt-NNN.txt` reference in the body is ignored (organising headers like `### Pre-staging notes` are fine).
+
+## V-checks — transcript, not scrollback
+
+`bin/prompt-read-check.sh <prompt> <transcript.jsonl>` is the canonical V-check. The transcript records every `Read` tool-use; a `Read` of `prompt-NNN.txt` is unforgeable evidence the model received the prompt content unmodified.
+
+The older `bin/verbatim-check.sh` greps a scrollback file the Actor wrote, looking for the prompt text under blockquote normalization. Haiku skipped the blockquote-paste on short prompts mid-chain (M2 run 1 lost V6/V8/V9/V10 this way). Keep `verbatim-check.sh` for substitute-paste assertions (e.g. M1 A1 confirms the LinkedIn paste appears in scrollback before Prompt 1 — that one *is* about scrollback content); migrate every prompt V-check to the transcript-based form.
+
 ## Run on Haiku
 
 Both Actor and Judge dispatch with `model: "haiku"`. The contract — mechanics + light shape sampling, no taste — is exactly what Haiku is good at. The constraint also forces simplicity: if an assertion can't be reduced to a script call or a `jq`/`grep` one-liner that Haiku can run, it doesn't belong in this layer.
@@ -65,8 +91,14 @@ Parallelism: runners for different modules are disjoint — dispatch multiple Ac
 mechanical/
 ├── README.md                             this file
 ├── bin/                                  scripted assertions (the ratchet)
-│   ├── verbatim-check.sh                 prompt round-trip with blockquote normalization
-│   └── prompt-source-audit.sh            P/E checks (curriculum source lint)
+│   ├── prompt-read-check.sh              V-checks — transcript jq for Read of prompt-NNN.txt
+│   ├── verbatim-check.sh                 substitute-paste check (linkedin, hate-list etc.)
+│   ├── prompt-source-audit.sh            P/E checks (curriculum source lint)
+│   ├── runner-mapping-check.sh           pre-flight: phase ↔ prompt mapping + coverage
+│   ├── stage-bootstrap-mocks.sh          copy tracked mocks → /tmp/bootstrap-mocks/
+│   ├── run-mechanical.sh                 one-shot orchestrator: pre-flight + parse + stage
+│   ├── preflight-all.sh                  survey every actor runner's pre-flight verdict
+│   └── continuation-diff.sh              HTML-aware diff for v-N → v-N+1 continuity
 ├── parse-prompts.sh                      one-shot prompt extraction from exercise .md
 ├── playgrounds/
 │   ├── lemmings-seed/                    clean seed, committed — NO maintainer docs

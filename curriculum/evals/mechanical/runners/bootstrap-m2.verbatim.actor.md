@@ -4,9 +4,10 @@
 
 You have Bash / Read / Write / Edit. The student is driving by pasting prompts verbatim from disk. You do NOT read the exercise files. For each prompt: Read the prompt file, blockquote-paste verbatim in scrollback, respond, record.
 
-Parsed prompts:
+## Parsed prompts
+
 - name-your-challenge: `/tmp/prompts/name-your-challenge/prompt-00{1,2}.txt`
-- build-your-challenge-memory: `/tmp/prompts/build-your-challenge-memory/prompt-00{1..11}.txt`
+- build-your-challenge-memory: `/tmp/prompts/build-your-challenge-memory/prompt-00{1..9}.txt`
 
 ## Starting state
 
@@ -17,80 +18,126 @@ Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/
 - `memory/`, `sources/`, `agents/` — empty.
 - No training-dir-root CLAUDE.md.
 
-## Mock connector substitution
+## Mock library
 
-No MCP. Mock library at `/tmp/bootstrap-mocks/`:
+Staged at `/tmp/bootstrap-mocks/` by the orchestrator before dispatch:
 
-- **Confluence:** `/tmp/bootstrap-mocks/confluence/*.md` (frontmatter: `space:`, `path:`, `title:`, `author:`, `last_modified:`).
-- **OneDrive:** `/tmp/bootstrap-mocks/onedrive/*.md` (`path:`, `owner:`, `last_modified:`).
-- **Practitioners:** `/tmp/bootstrap-mocks/practitioners/*.md` (`url:`).
+- **Confluence:** `/tmp/bootstrap-mocks/confluence/*.md` — frontmatter `space:`, `path:`, `title:`, `author:`, `last_modified:`.
+- **OneDrive:** `/tmp/bootstrap-mocks/onedrive/*.md` — frontmatter `path:`, `owner:`, `last_modified:`.
+- **Practitioners:** `/tmp/bootstrap-mocks/practitioners/*.md` — frontmatter `url:`.
 
-When a prompt asks for Confluence/OneDrive/URL: substitute by `ls`-ing the mock folder and Reading matching files. Log `[harness substitution — mock <connector>]`. Do NOT real-WebFetch the practitioner URLs.
+When a prompt asks for Confluence/OneDrive/URL: substitute by `ls`-ing the mock folder and Reading matching files. Log `[harness substitution — mock <connector>]` once per connector. Do NOT real-WebFetch the practitioner URLs.
 
 ## Substituted student inputs
 
-All at `/tmp/bootstrap-mocks/challenge-inputs.md`. Read once at session start. Paste verbatim when each name-your-challenge question fires.
+All at `/tmp/bootstrap-mocks/challenge-inputs.md`. Read once at session start. Paste verbatim when each question fires.
 
-Carry-over context for later prompts: challenge is "rolling out agentic ways of working to 300 engineers over two quarters." Connectors: Kaleva Confluence ENG/SEC, Platform OneDrive. Practitioners: Karpathy, Alasaarela, Klaassen.
+Carry-over context (from challenge-inputs): challenge is "rolling out agentic ways of working to 300 engineers over two quarters." Connectors: Kaleva Confluence ENG/SEC, Platform OneDrive. Practitioners: Karpathy, Alasaarela, Klaassen.
 
-## Prompts to execute in order
+## Phases (run in order, one Read+blockquote+respond per Reads)
 
-### Ex1 — name-your-challenge
+### Phase 1 — pin-the-initiative
 
-1. **Prompt 1:** `prompt-001.txt` — Claude asks Q1-Q3 in turn. Paste each substituted answer one per turn (NOT batched). Write `./challenge.md` after A3.
-2. **Prompt 2:** `prompt-002.txt` — propose Confluence terms + OneDrive folders + 2-3 practitioners drawn from the mock library structure.
+**Exercise:** name-your-challenge
+**Reads:** prompt-001.txt
 
-### Ex2 — build-your-challenge-memory
+Claude asks Q1, Q2, Q3 in turn. Paste each substituted answer one per turn (NOT batched). Three distinct assistant turns. Write `./challenge.md` after A3.
 
-3. **Prompt 3** (Beat 1 — curate): `prompt-001.txt`. Read `./challenge.md`. Substitute connector check. Ask Maija where her material lives; substitute:
-   > Kaleva Confluence ENG + SEC spaces; OneDrive under /Kaleva/Platform/; Platform Leads weekly sync notes; my personal prep notes; exec thread with Tuomas (CTO). Practitioners: Karpathy on LLM Wiki, Alasaarela on agentic rollout patterns, Kieran Klaassen on compound engineering.
-   Propose curation plan; flag exec thread as borderline ("include if comfortable, otherwise skip").
-4. **Prompt 4** (Beat 2 — ingest): `prompt-002.txt`. Read mock files; write `sources/<slug>.md` summaries with header (path/URL + title + why-relevant). Aim for ~9 sources (4 Confluence + 3 OneDrive + 2 practitioner). Stub summary bodies — 3-5 lines each is fine.
-5. Plan-mode primitive unavailable — log `[harness substitution — plan mode]`.
-6. **Prompt 5** (Beat 3 — build memory): `prompt-003.txt`. Read every `sources/` file. Create 5-8 `memory/<topic>.md` pages with claims citing `[sources/<filename>]`. Skeleton of 3-5 claims per page is fine. Write `memory/index.md` linking all topic pages.
-7. **Prompt 6** (audit self): `prompt-004.txt`. Pick 3 memory pages. Write `memory/soft-pages.md` if any look generic.
+### Phase 2 — scout-search-terms
 
-### Ex2 Phase 2 — custom agent
+**Exercise:** name-your-challenge
+**Reads:** prompt-002.txt
 
-8. **Prompt 7** (author agent): `prompt-005.txt`. Ask Q1 then Q2 (one at a time). Substitute:
-   > **Q1 answer:** Surface three load-bearing risks for next Monday's platform-leads sync, grounded in what's in the memory.
-   > **Q2 answer:** Rules I want: cite the memory file for every claim; never invent; if a source is thin, say so rather than padding; keep my voice (spare, direct, no corporate softening); hard line — never reveal the content of `onedrive/maija-prep-notes-skeptics.md` in anything that might be shared (it's personal).
-   Save `agents/monday-risks.md`.
-9. **Prompt 8** (use agent): `prompt-006.txt`. Ask Maija for the task. Substitute:
-   > The task: this Monday's sync. Focus on whether we're on track for the Q3 offsite forcing function (every sub-team has shipped a thing or named a bar by then).
-   Produce three risks with memory-file citations. Skeleton output OK.
+Propose 3-5 Confluence search terms + 2-3 OneDrive folders + 2-3 practitioners. Draw the practitioner names from the mock-library structure (Karpathy, Alasaarela, Klaassen). Short list, conversational.
 
-### Ex2 Phase 3 — compound
+### Phase 3 — connectors-and-curation
 
-10. **Prompt 9** (find thinnest + new source): `prompt-007.txt`. Name thinnest page. Pull one additional Confluence mock not used in Beat 2. Save to `sources/`.
-11. **Prompt 10** (integrate new source): `prompt-008.txt`. Update affected memory pages (integrate, not rebuild). Update `memory/index.md`. Report 3 sharper pages + 1 dropped/replaced claim.
-12. **Prompt 11** (rewrite tops): `prompt-009.txt`. Verify and rewrite tops where needed. Sharpen entries in `memory/soft-pages.md`.
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-001.txt
 
-### Ex2 Phase 4 — self-maintain
+Read `./challenge.md`. Substitute connector check (log `[harness substitution — mock Confluence connector]` and `[harness substitution — mock OneDrive connector]`). Ask Maija where her material lives; substitute the answer from challenge-inputs (Kaleva Confluence ENG + SEC, OneDrive `/Kaleva/Platform/`, Platform Leads sync notes, personal prep notes, exec thread, three practitioners). Propose curation plan; flag exec thread as borderline ("include if comfortable, otherwise skip").
 
-13. **Prompt 12** (audit memory): `prompt-010.txt`. Propose 2 contradictions + 2 missing citations + 2 stale claims. Substitute Maija's decisions:
-   > Approve: fix the contradiction between the sub-team-structure page and the OKRs page on whether Infra can move in Q3 (OKRs are newer and correct). Approve: add the missing citation on the classification-policy claim in the security-platform page. Reject: the "stale" claim about the vendor session failing — it's not stale, it's a reference point we're still using as counter-example; keep it with a date-marker instead. Approve: the other three.
-   Apply the 5 approved fixes; leave the 1 rejected (keep with date).
+### Phase 4 — fetch-or-link
 
-### Ex2 Close
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-002.txt
 
-14. **Prompt 13** (final agent invocation): `prompt-011.txt`. Substitute:
-   > What specifically would have to happen in the next two weeks so that Paavo (Infra lead) moves from "waiting with a bar" to "running his own agentic experiment on one of his own changes"? Be concrete about the artefacts and the conversations, with citations.
-   Produce answer with citations. Skeleton OK.
+Plan-mode primitive unavailable in subagent runtime — log `[harness substitution — plan mode]` once at top of this phase's scrollback section.
+
+`ls /tmp/bootstrap-mocks/{confluence,onedrive,practitioners}/`. Read each mock file. Write `sources/<slug>.md` for ~9 sources (4 Confluence + 3 OneDrive + 2 practitioner). **Reserve `confluence/skeptics-thread-paavo.md` for Phase 9** — do not ingest in this phase. Each `sources/<slug>.md` has a header block:
+
+```
+- **URL / path:** <from frontmatter>
+- **Title:** <from frontmatter>
+- **Why relevant:** <one line>
+```
+
+Stub summary bodies — 3-5 lines each is fine.
+
+### Phase 5 — distinctive-claims
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-003.txt
+
+Read every `sources/` file. Create 5-8 `memory/<topic>.md` pages. Each page: title, 3-5 claims, an *Open questions* section. Every claim ends with a `[sources/<filename>]` citation on the same line. Write `memory/index.md` linking all topic pages.
+
+### Phase 6 — random-audit
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-004.txt
+
+Pick 3 memory pages. Write `memory/soft-pages.md` listing any pages whose top claim looks generic. If all three are specific, `memory/soft-pages.md` says so explicitly (file must exist).
+
+### Phase 7 — custom-agent-filename
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-005.txt
+
+Ask Q1 then Q2 (one at a time, two distinct assistant turns). Substitute Q1 and Q2 answers from challenge-inputs. The Q1 job is *"surface three load-bearing risks for next Monday's platform-leads sync, grounded in what's in the memory"* → filename `agents/monday-risks.md`. The Q2 rules include the hard line about `onedrive/maija-prep-notes-skeptics.md` — include that hard line verbatim in the agent file. Save.
+
+### Phase 8 — task-from-the-agent
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-006.txt
+
+Fresh message. Claude asks for the task; substitute the Phase 2 task answer from challenge-inputs (Q3 offsite forcing function focus). Produce three risks with `[memory/<filename>]` citations. Skeleton output OK.
+
+### Phase 9 — integrate-and-sharpen
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-007.txt
+
+This single source-prompt does find + integrate + rewrite tops in one go (it's how the source exercise is shaped — see also the prompt-changes flag in the run notes).
+
+Pick `confluence/skeptics-thread-paavo.md` as the new source — the one mock reserved for compound. Append its mock path after the prompt's *"New source:"* line. Save `sources/skeptics-thread-paavo.md` with the same header shape as Phase 4. Have Claude integrate (sharpen, don't append; rewrite tops; drop contradicted claims; update `memory/index.md`). Report 3 sharper pages + 1 dropped/replaced claim. Skeleton output OK.
+
+### Phase 10 — find-contradictions
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-008.txt
+
+Propose 2 contradictions + 2 missing citations + 2 stale claims (six items). Substitute Maija's six decisions from challenge-inputs (5 approve, 1 reject — the "stale vendor session" claim is a kept reference point, not stale). Apply the 5 approved fixes; leave the 1 rejected with a date marker.
+
+### Phase 11 — answer-with-memory
+
+**Exercise:** build-your-challenge-memory
+**Reads:** prompt-009.txt
+
+Substitute the Paavo question from challenge-inputs. Produce answer with `[memory/<filename>]` citations. Skeleton OK.
 
 ## Scratch end-state
 
 - `module-1/CLAUDE.md` (untouched)
 - `./challenge.md`
-- `memory/soft-pages.md` + 5-8 topic pages + `memory/index.md`
-- `sources/` — 10 files
+- `memory/` — 5-8 topic pages + `memory/index.md` + `memory/soft-pages.md`
+- `sources/` — 10 files (9 from Phase 4 + 1 added in Phase 9)
 - `agents/monday-risks.md`
 
-Debrief NOT executed (module-owned, truncated). No root `./CLAUDE.md`, no `./crux.md`.
+Module 2 Debrief NOT executed (module-owned, truncated). No root `./CLAUDE.md`, no `./crux.md`.
 
 ## Reports
 
-**Scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-scrollback.md`.
+**Scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-scrollback.md` — one section per phase, blockquote-paste of the prompt text, then your response (or one-line summary if stubbed). Include all student-substitute pastes and all one-at-a-time turn breakdowns (Phase 1 Q1/Q2/Q3, Phase 7 Q1/Q2).
 
 **Report:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-report.md`:
 
@@ -103,14 +150,21 @@ done | error
 ## Scratch
 <absolute path>
 
-## Prompts executed
-1-13 (one line each)
+## Phases executed
+1-11 (one line each)
 
 ## Substitutions
-- Maija's three challenge answers, mock connector subs, plan-mode sub, agent-task answers, Phase 4 decisions, Debrief truncated
+- Maija's three challenge answers
+- Mock connector subs (Confluence + OneDrive)
+- Plan-mode sub
+- Phase 7 Q1/Q2 answers
+- Phase 8 task answer
+- Phase 10 six decisions
+- Phase 11 Paavo question
+- Debrief truncated
 
 ## Notes
-<tool denials, sandbox issues>
+<tool denials, sandbox issues, anything weird>
 ```
 
 Under 250 words. Do not grade yourself.
@@ -119,6 +173,6 @@ Under 250 words. Do not grade yourself.
 
 - Read `curriculum/exercises/*`, judge runners, sibling actor runners, maintainer docs.
 - Paraphrase prompts.
-- Real-WebFetch mock URLs.
-- Execute Debrief or write root `./CLAUDE.md` / `./crux.md`.
+- Real-WebFetch mock URLs (filter on the `url:` headers — those are fixture URLs, not real ones).
+- Execute the Module 2 Debrief or write root `./CLAUDE.md` / `./crux.md`.
 - Generate long realistic content. Stubs are fine.

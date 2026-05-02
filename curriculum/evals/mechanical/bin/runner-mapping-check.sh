@@ -40,12 +40,17 @@ trap 'rm -rf "$TMP_DIR"' EXIT
 
 bash "$SCRIPT_DIR/../parse-prompts.sh" "$EXERCISE" "$TMP_DIR/prompts" >/dev/null
 
-# Walk the runner. For each `### Phase N — <slug>` section, find an Exercise
-# tag (optional) and the first `prompt-NNN.txt` reference in the body.
-# Emit "N<TAB>slug<TAB>NNN<TAB>exercise_or_-".
+# Walk the runner. For each section heading of the form `### <prefix> — <slug>`
+# that contains a `prompt-NNN.txt` reference in its body, emit a row.
+# Recognised prefix shapes (in order tried):
+#   `Phase 5`, `Phase 5a`     → numbered phase
+#   `Close`, `Setup`, `Open`,
+#   `Setup phase 1`, `Bridge` → unnumbered or implicit-position section
+# Heading without `prompt-NNN.txt` in body is ignored (e.g. organising headers
+# like `### Pre-staging notes`). Emit "N<TAB>slug<TAB>NNN<TAB>exercise_or_-".
 runner_map=$(
   awk '
-    /^### Phase [0-9]+ — / {
+    /^### .+ — / {
       flush()
       heading = $0
       in_phase = 1
@@ -64,9 +69,18 @@ runner_map=$(
     function flush(   line, slug, num, ex, n2, lines, i, ref) {
       if (!in_phase || heading == "") return
       line = heading
-      sub(/^### Phase /, "", line)
-      num = line + 0
-      sub(/^[0-9]+ — /, "", line)
+      sub(/^### /, "", line)
+      # Extract phase number: prefer "Phase N", else 0 (sentinel for unnumbered).
+      if (match(line, /^Phase [0-9]+[a-z]?/) > 0) {
+        ptag = substr(line, 1, RLENGTH)
+        sub(/^Phase /, "", ptag)
+        # Strip trailing letter (Phase 5a → 5)
+        gsub(/[a-z]$/, "", ptag)
+        num = ptag + 0
+      } else {
+        num = 0
+      }
+      sub(/^[A-Za-z]+([ ]?[0-9]+[a-z]?)? — /, "", line)
       slug = tolower(line)
       gsub(/[^a-z0-9 ]+/, " ", slug)
       gsub(/  +/, " ", slug)
@@ -175,13 +189,32 @@ if (( checked == 0 )); then
   exit 1
 fi
 
+# Coverage check (catches phantom-phase / uncovered-prompt class of runner-rot).
+# Every prompt parse-prompts.sh produced for this exercise should be referenced
+# by exactly one phase tagged for this exercise (or untagged, M1-style).
+referenced=$(echo "$runner_map" \
+  | awk -F'\t' -v ex="$EXERCISE_SLUG" '$4 == ex || $4 == "-" { print $3 }' \
+  | sort -un)
+existing=$(ls "$TMP_DIR/prompts/" 2>/dev/null \
+  | sed -E 's/^prompt-0*//; s/\.txt$//' \
+  | sort -un)
+
+uncovered=$(comm -23 <(echo "$existing") <(echo "$referenced") 2>/dev/null || true)
+if [[ -n "$uncovered" ]]; then
+  while IFS= read -r n; do
+    [[ -z "$n" ]] && continue
+    echo "FAIL — prompt-$n exists in $EXERCISE_SLUG but no runner phase reads it. Coverage gap (the runner is missing a phase for this prompt)."
+    status=1
+  done <<< "$uncovered"
+fi
+
 if [[ $status -eq 0 ]]; then
   if (( warns > 0 )); then
     echo "Verdict: READY-WITH-FLAGS — $checked phase(s) checked against $EXERCISE_SLUG, $warns slug(s) use framing not present in prompt content. Spot-check."
   else
-    echo "Verdict: READY — $checked phase(s) checked against $EXERCISE_SLUG, mapping agrees."
+    echo "Verdict: READY — $checked phase(s) checked against $EXERCISE_SLUG, mapping agrees, all prompts covered."
   fi
 else
-  echo "Verdict: BLOCK — at least one phase appears swapped vs. its referenced prompt. Fix runner before dispatching Actor."
+  echo "Verdict: BLOCK — runner-source mapping disagrees. Fix runner before dispatching Actor."
 fi
 exit $status

@@ -4,11 +4,11 @@
 
 Two cases. Both in public court/government records. Together they take about 25 minutes and do more than a list of ten fail-tweets ever could.
 
-Everyone knows agents are failing left and right. What's harder to find is failures where the **organisational decisions that led to the failure** are on the record too — not just the symptom. These two are that rare thing: a judge and a government auditor have both documented what the LLM produced AND what the people around it did and didn't do.
+Everyone knows agents are failing left and right. What's harder to find is failures where the **organisational decisions that led to the failure** are on the record too, not just the symptom. These two are that rare thing: a judge and a government auditor have both documented what the LLM produced AND what the people around it did and didn't do.
 
 Read them with one question in mind: *what was the organisation's missing check?*
 
-**Case 1 — Mata v. Avianca (S.D.N.Y., 2023).**
+**Case 1, Mata v. Avianca (S.D.N.Y., 2023).**
 
 A passenger sued Avianca for a personal-injury claim. His attorneys were Peter LoDuca and Steven Schwartz of the New York firm Levidow, Levidow & Oberman. LoDuca filed an affirmation in opposition that Schwartz had researched and written. It cited six cases to support their legal position.
 
@@ -21,24 +21,24 @@ Opposing counsel couldn't find the cases because they weren't there. Judge P. Ke
 The missing check: **one human opening the cited cases on a real legal database before the brief was filed.**
 
 Read:
-- The sanctions opinion itself (short, readable, quotes Schwartz's affidavit directly): [law.justia.com — Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
-- CNBC's contemporaneous coverage for the shape of it: [CNBC — Judge sanctions lawyers whose AI-written filing contained fake citations](https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html)
+- The sanctions opinion itself (short, readable, quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
+- CNBC's contemporaneous coverage for the shape of it: [CNBC, Judge sanctions lawyers whose AI-written filing contained fake citations](https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html)
 
-**Case 2 — Deloitte Australia / DEWR welfare-compliance report (2025).**
+**Case 2, Deloitte Australia / DEWR welfare-compliance report (2025).**
 
-The Australian government's Department of Employment and Workplace Relations commissioned Deloitte for A$439,000 to review the department's welfare-compliance automation system — an independent assurance review of systems that already use automated decision-making on real Australian citizens.
+The Australian government's Department of Employment and Workplace Relations commissioned Deloitte for A$439,000 to review the department's welfare-compliance automation system, an independent assurance review of systems that already use automated decision-making on real Australian citizens.
 
-The report was published in July 2025. In early October, Dr. Christopher Rudge — a health-and-welfare-law academic at the University of Sydney — read it carefully and found something odd. The report cited academic sources that didn't exist. It attributed a quote to a federal court judge that the judge had never said. All told, up to 20 fabricated references.
+The report was published in July 2025. In early October, Dr. Christopher Rudge, a health-and-welfare-law academic at the University of Sydney, read it carefully and found something odd. The report cited academic sources that didn't exist. It attributed a quote to a federal court judge that the judge had never said. All told, up to 20 fabricated references.
 
-On **3 October 2025**, Deloitte published a revised version. An appendix disclosed — for the first time — that the report had been produced with assistance from **Azure OpenAI's GPT-4o**, hosted inside the department's own Azure tenancy. Three days later, the government announced Deloitte would refund the final contract installment.
+On **3 October 2025**, Deloitte published a revised version. An appendix disclosed, for the first time, that the report had been produced with assistance from **Azure OpenAI's GPT-4o**, hosted inside the department's own Azure tenancy. Three days later, the government announced Deloitte would refund the final contract installment.
 
-The second-order detail is the one that lands hardest: Rudge reviewed the revised version too. Some of the fabricated citations had been replaced — with new fabricated citations. Deloitte's fix didn't include a "now actually open every source and check it says what we claim" step. The same failure mode recurred inside the corrective response.
+The second-order detail is the one that lands hardest: Rudge reviewed the revised version too. Some of the fabricated citations had been replaced, with new fabricated citations. Deloitte's fix didn't include a "now actually open every source and check it says what we claim" step. The same failure mode recurred inside the corrective response.
 
 The missing check at Deloitte was not exotic: **a reviewer opening each cited source before the report went to a client.** The fact that the revision repeated the failure tells you the verification step still wasn't built in.
 
 Read:
-- The Guardian's account, including Rudge's findings and the refund: [Guardian — Deloitte to pay money back to Albanese government after using AI in A$440,000 report](https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report)
-- The Register's technical summary, including the GPT-4o disclosure and the "new fake refs in the revision" detail: [The Register — Deloitte to refund part of A$440k Australian report after AI snafu](https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/)
+- The Guardian's account, including Rudge's findings and the refund: [Guardian, Deloitte to pay money back to Albanese government after using AI in A$440,000 report](https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report)
+- The Register's technical summary, including the GPT-4o disclosure and the "new fake refs in the revision" detail: [The Register, Deloitte to refund part of A$440k Australian report after AI snafu](https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/)
 
 ## Why the LLM fabricates
 

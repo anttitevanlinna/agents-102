@@ -33,7 +33,7 @@ Then use the answer.
 
 5. **Write down the lesson.** If the same failure could happen again, add a rule to `./CLAUDE.md`: what to read first, what not to smooth over, what file shape the next agent must produce, or when to stop and ask.
 
-The habit is simple: prompt for diagnosis before repair.
+Start with diagnosis before repair. That's the habit.
 
 The agent is part of the debugging loop too.
 

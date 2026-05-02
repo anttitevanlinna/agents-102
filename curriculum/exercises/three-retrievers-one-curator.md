@@ -2,15 +2,15 @@
 
 **What you do:**
 
-Hire three agents to fetch raw material on your challenge — wiki, docs, the open web. Hire a fourth to curate the findings into your memory in real time, while the retrievers are still running.
+Hire three agents to fetch raw material on your challenge, wiki, docs, the open web. Hire a fourth to curate the findings into your memory in real time, while the retrievers are still running.
 
 **What happens:**
 
-Four sessions running on the same shared folder at once. Three retrievers stream findings into `sources/`; the fourth (the synthesizer) reads `sources/` as it grows and integrates into `memory/` — the curated layer that's been compounding since Module 2. Two layers fill at the same time.
+Four sessions running on the same shared folder at once. Three retrievers stream findings into `sources/`; the fourth (the synthesizer) reads `sources/` as it grows and integrates into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time.
 
 **The point:**
 
-Multi-agent's first shape: separate sessions on shared files. Each agent runs in its own context, sees the others' work via the filesystem, has its own connectors and history. The feeling — files materialising in two folders at once, four windows churning on one question — is the lesson.
+Multi-agent's first shape: separate sessions on shared files. Each agent runs in its own context, sees the others' work via the filesystem, has its own connectors and history. The feeling, files materialising in two folders at once, four windows churning on one question, is the lesson.
 
 **Time:** ~28 minutes.
 
@@ -18,25 +18,25 @@ The crux and the decision question both live in `./crux.md` from the opening exe
 
 <span class="rt-code">Open your training directory in up to four Claude Code sessions.</span><span class="rt-cowork">Open up to four Cowork tasks on this connected folder.</span> Three retrievers fetch raw material into `sources/`; a fourth concurrent session synthesizes the retrievals into your `memory/` as they arrive. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
 
-Four sessions for one question is more than the work strictly needs — two retrievers plus you reading them would produce the same files with less choreography. The four is for the feeling. Agent heavy-lifting goes sequential by default, and sequential gets slow fast on real work; better to know the parallel option early than discover it under deadline.
+Four sessions for one question is more than the work strictly needs, two retrievers plus you reading them would produce the same files with less choreography. The four is for the feeling. Agent heavy-lifting goes sequential by default, and sequential gets slow fast on real work; better to know the parallel option early than discover it under deadline.
 
-The retrievers go live — connectors and the open web. The synthesizer is the one curatorial act here: it reads `sources/` as files appear and integrates findings into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time: raw retrievals in `sources/`, sharper memory in `memory/`.
+The retrievers go live, connectors and the open web. The synthesizer is the one curatorial act here: it reads `sources/` as files appear and integrates findings into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time: raw retrievals in `sources/`, sharper memory in `memory/`.
 
 <div class="rt-code">
 
-*Keep your existing crux session open — that becomes Session 4 (synthesizer; also your main session through the next exercise). Open three more Claude Code sessions in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users: open three app sessions alongside the existing one. CLI users: three more terminal sessions, each running `claude` from the training directory. Self-study: Teacher Claude walks you through this if you stall.*
+*Keep your existing crux session open, that becomes Session 4 (synthesizer; also your main session through the next exercise). Open three more Claude Code sessions in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users: open three app sessions alongside the existing one. CLI users: three more terminal sessions, each running `claude` from the training directory. Self-study: Teacher Claude walks you through this if you stall.*
 
 </div>
 <div class="rt-cowork">
 
-*Keep your existing crux task open — that becomes Task 4 (synthesizer; also your main task through the next exercise). In Claude Desktop's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you stall.*
+*Keep your existing crux task open, that becomes Task 4 (synthesizer; also your main task through the next exercise). In Claude Desktop's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you stall.*
 
 </div>
 
 **The rhythm:**
 
-1. **Sessions 1, 2, 3 — retrievers.** Paste each retriever prompt into its session. Each one returns a short list (6–8 search terms for wiki, 2–3 clues for docs, 4–6 authors for internet) and asks you to keep, swap, or sharpen. Confirm inline, quickly, don't polish. Then the retrievers run.
-2. **Session 4 — synthesizer.** Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into `memory/`.
+1. **Sessions 1, 2, 3, retrievers.** Paste each retriever prompt into its session. Each one returns a short list (6–8 search terms for wiki, 2–3 clues for docs, 4–6 authors for internet) and asks you to keep, swap, or sharpen. Confirm inline, quickly, don't polish. Then the retrievers run.
+2. **Session 4, synthesizer.** Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into `memory/`.
 3. **All four running.** Switch between sessions. Watch files appear in `sources/` and `memory/` sharpen at the same time.
 
 In Session 1:
@@ -104,7 +104,7 @@ Sources first. Every finding cites the URL you actually fetched and the author. 
 
 Heads-up: retrievers tend to wrap up early. A clean-looking *Conflicts and gaps* section reads like the work is done; usually it isn't. If the file feels thinner than the question deserves, the prompt below is your nudge to keep them chugging.
 
-Once a retriever returns its first pass — wiki, docs, or internet — paste this back into that session to push another round.
+Once a retriever returns its first pass, wiki, docs, or internet, paste this back into that session to push another round.
 
 **Prompt** *(Claude Code, reusable across all three retriever sessions)*
 
@@ -134,9 +134,9 @@ Don't fabricate. Every memory update cites a source-file finding. If a retrieval
 ```
 
 
-Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once — three fetching, one curating. Watch the files appear in `sources/` and `memory/` sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
+Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once, three fetching, one curating. Watch the files appear in `sources/` and `memory/` sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**
 
-When the synthesizer's last move lands — `memory/_synthesis-m3.md` naming what changed — Phase 1 is done. Hand off to *Three minds, one synthesis* (next exercise), which keeps Session 4 open as the main session.
+When the synthesizer's last move lands, `memory/_synthesis-m3.md` naming what changed, Phase 1 is done. Hand off to *Three minds, one synthesis* (next exercise), which keeps Session 4 open as the main session.
 
 <!-- maintainer -->
 

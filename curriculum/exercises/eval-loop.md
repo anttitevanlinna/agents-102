@@ -8,6 +8,8 @@ Now you stop running it by hand.
 
 **Eval as infrastructure:** the judge is a fixed yardstick. It doesn't move. What moves is the thing being measured. You set up a loop where a generator produces a briefing, the judge scores it and writes per-claim feedback, and the main session turns that feedback into a better generation tactic for the next round. Three rounds under the same judge. The score goes up because the generator learns what the yardstick punishes. The measuring stick never shifts. A yardstick you rewrite is not a yardstick.
 
+**Subagents** are isolated Claude sessions that run inside the same project, each gets fresh context for its own job, no cross-contamination.
+
 First, run the judge once by hand on a fresh briefing. See what it catches. Then ask Claude to run the loop: generation and judging happen in separate <span class="rt-code">subagents</span><span class="rt-cowork">agents</span>; the main session owns the tactic update between rounds.
 
 You will come back to a short run note: *round 1 flagged 11 claims, round 2 flagged 6 after the tactic tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.* The generator you left with is sharper than the one you started with, under the exact same judge you started with.

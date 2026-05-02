@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge — a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge, a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
@@ -45,7 +45,7 @@ Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</
 
 ## Debrief
 
-Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible — visible in what worked, what rubbed, what got repeated. Claude writes the rules file from the session. You push back on anything off.
+Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible, visible in what worked, what rubbed, what got repeated. Claude writes the rules file from the session. You push back on anything off.
 
 **Prompt** *(Claude Code)*
 
@@ -71,9 +71,9 @@ You have an agent doing real work on your challenge. But the job is getting too 
 
 Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.
 
-## Homework after Module 2 — between-module reading
+## Homework after Module 2, between-module reading
 
-[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory for one week of observation. Read [Agent Trigger List — After Module 2](supplementary/agent-trigger-list.md#after-module-2--start-noticing-trigger-moments) and start noticing when real work should call the agent. Read selected sections from [What is an Agent](supplementary/what-is-an-agent.md) on tools, memory, and context. Then do [Before Module 3](exercises/module-3-prework.md): pick three practitioner pieces, and read the plain-language primer on helper agents.
+[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory for one week of observation. Read [Agent Trigger List, After Module 2](supplementary/agent-trigger-list.md#after-module-2--start-noticing-trigger-moments) and start noticing when real work should call the agent. Read selected sections from [What is an Agent](supplementary/what-is-an-agent.md) on tools, memory, and context. Then do [Before Module 3](exercises/module-3-prework.md): pick three practitioner pieces, and read the plain-language primer on helper agents.
 
 <!-- maintainer -->
 

@@ -1,8 +1,8 @@
 # Judge — Bootstrap M4 audit-your-agent verbatim
 
-**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+**Dispatch with `model: "haiku"`.** Acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
 
-Grading whether the M4 audit chain ran end-to-end on inherited scratch and whether the file artefacts have the expected SHAPE. You are NOT grading whether findings are insightful, evidence is well-quoted, or mitigations are sound. You ARE checking that the verbatim attack-class names appear (forcing-function grep), and that the reusable check files were not modified.
+Grading whether the M4 audit chain ran end-to-end on inherited scratch and whether the file artefacts have the expected SHAPE. The forcing-function grep on the four attack-class names is load-bearing. The reusable check files must NOT be modified.
 
 ## Inputs
 
@@ -11,76 +11,87 @@ Grading whether the M4 audit chain ran end-to-end on inherited scratch and wheth
 - **Actor report:** `.../instances/bootstrap-m4-audit-actor-report.md`
 - **Actor scrollback:** `.../instances/bootstrap-m4-audit-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/audit-your-agent/prompt-00{1,2,3,4}.txt`
-- **Source plugin:** `<scratch>/module-4/plugins/security-audit/`
-- **Installed CLI skills:** `<scratch>/skill-install/.claude/skills/security-audit-{policy,agent-security}/`
-- **Outputs:** `<scratch>/outputs/{policy-report-raw,policy-report,security-report}.md`, `<scratch>/agents/monday-risks.md`, `<scratch>/guardrails.md`
+- **Authored source:** `<scratch>/module-4/skills/security-audit/SKILL.md`
+- **Installed skill:** `<scratch>/skill-install/.claude/skills/security-audit/SKILL.md`
+- **Outputs:** `<scratch>/outputs/{policy-report-raw,policy-report,security-report}.md`, `<scratch>/agents/monday-risks.md`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh`
+- `curriculum/evals/mechanical/bin/prompt-read-check.sh <prompt> <transcript>`
 - `curriculum/evals/mechanical/bin/prompt-source-audit.sh audit-your-agent`
-- `grep -i` / `grep -F` / `diff` / `test -f`
+- `grep -i` / `grep -iE` / `diff` / `test -f` / `jq`
 
 ## Method
 
-For every assertion: run the named script, capture exit code + first line. No quoting, no narration, no taste calls.
+For every assertion: run the named script, capture exit code + first line. **Per rule #20: PASS on exit 0; FAIL on any non-zero. Do not re-derive from scrollback when a script returns non-zero.**
+
+Generic Judge fixes (M3-style):
+- Heading-depth regex: `^#{2,3} ` (Actor may use `##` or `###`).
+- English-heading greps: `grep -i*`.
+- Word-count caps at 1.5× spec.
 
 ## Assertions
 
 ### Verbatim round-trip
 
-- **V1-V4.** prompt-001..004 via `verbatim-check.sh`.
+- **V1.** prompt-001 read → `bin/prompt-read-check.sh /tmp/prompts/audit-your-agent/prompt-001.txt <transcript>`.
+- **V2.** prompt-002 read.
+- **V3.** prompt-003 read.
+- **V4.** prompt-004 read.
 
 ### Inherited state
 
-- **A1.** Inherited paths exist: `test -f` on `memory/index.md` (or any memory page), `agents/monday-risks.md`, `module-3/answer.md`, `outputs/policy-report-raw.md`, source plugin SKILL.md files, both installed CLI skills.
+- **A1.** Inherited paths exist: `test -f memory/index.md` (or any memory page), `agents/monday-risks.md`, `module-3/answer.md`, `outputs/policy-report-raw.md`, `module-4/skills/security-audit/SKILL.md`.
 - **A2.** `outputs/policy-report-raw.md` byte-unchanged: capture shasum at start; compare at end. FAIL if differs.
+- **A3.** Authored source byte-unchanged: shasum on `module-4/skills/security-audit/SKILL.md` start vs end.
 
-### Phase 1 — packaged policy audit
+### Phase 1 — install-skill
 
-- **A3.** Actor Read `skill-install/.claude/skills/security-audit-policy/SKILL.md`. `jq` transcript.
-- **A4.** `outputs/policy-report.md` exists with table header `| Rule | Description | Verdict | Evidence |`. `grep -F`.
-- **A5.** ≥12 data rows: `grep -c '^|' outputs/policy-report.md` minus header/separator ≥ 12.
-- **A6.** All three verdict values present: `grep -ic 'compliant' && grep -ic 'violating' && grep -ic "I can't tell"`.
-- **A7.** Substitution log: `grep -F '[harness substitution - reusable lens policy' <scrollback>`.
+- **A4.** Install destination created: `test -f skill-install/.claude/skills/security-audit/SKILL.md`.
+- **A5.** Installed SKILL.md byte-identical to authored source: `diff module-4/skills/security-audit/SKILL.md skill-install/.claude/skills/security-audit/SKILL.md` empty.
+- **A6.** Substitution log present in scrollback: `grep -F 'install location ~/.claude/skills/security-audit/' <scrollback>`.
+- **A7.** No Write to `~/.claude/` on host: `jq` transcript filter for any path matching `$HOME/.claude/`.
 
-### Phase 1.5 — meta read
+### Phase 2 — policy audit + meta-read
 
-- **A8.** Actor Read `outputs/policy-report.md` after writing it. `jq` transcript ordering.
+- **A8.** Actor Read `skill-install/.claude/skills/security-audit/SKILL.md`. `jq` transcript.
+- **A9.** `outputs/policy-report.md` exists with table header `| Rule | Description | Verdict | Evidence |`. `grep -F`.
+- **A10.** ≥12 data rows: `awk '/^\|/{n++}END{print n}' outputs/policy-report.md` minus 2 ≥ 12.
+- **A11.** All three verdict values present: `grep -ic 'compliant'`, `grep -ic 'violating'`, `grep -ic "I can't tell"` each ≥1.
+- **A12.** Substitution log: `grep -F '[harness substitution - reusable lens' <scrollback>` ≥1 hit.
+- **A13.** Meta-read in scrollback: at least three rule-name quotes appear in scrollback after the policy-report Write but before prompt-003 paste. Heuristic: count `\`Rule:` or quoted rule names; or `grep -cE '(surprises|I can.t tell|push back)' <scrollback>` ≥3.
 
-### Phase 2 — agent-security audit
+### Phase 3 — agent-security audit
 
-- **A9.** Actor Read agent-security SKILL.md. `jq` transcript.
-- **A10.** `outputs/security-report.md` exists.
-- **A11. Forcing-function: all four attack classes named verbatim** (case-insensitive):
-  - `grep -iF 'prompt injection' outputs/security-report.md` AND `grep -iF 'direct'` AND `grep -iF 'indirect'`
+- **A14.** `outputs/security-report.md` exists.
+- **A15. Forcing-function: all four attack classes named verbatim** in `outputs/security-report.md` (case-insensitive):
+  - `grep -iF 'prompt injection'` AND `grep -iF 'direct'` AND `grep -iF 'indirect'`
   - `grep -iF 'secrets in context'` AND `grep -iF 'scrollback'`
   - `grep -iF 'tool confusion'`
-  - `grep -iF 'plugin supply-chain'`
-  Any miss → FAIL (this is the load-bearing check).
-- **A12.** All five mitigation shape names present: `for s in scope split filter gate review; do grep -iwF "$s" outputs/security-report.md; done`. All five must hit.
-- **A13.** Classical-controls floor named: `grep -iE 'perimeter|IAM|mTLS|network|WAF' outputs/security-report.md` ≥ 2 distinct.
-- **A14.** Tier markers present: `grep -iE '\b(high|medium|low)\b' outputs/security-report.md`.
+  - `grep -iF 'skill supply-chain'`
+  Any miss → FAIL (headline).
+- **A16.** All five mitigation shape names present (case-insensitive whole-word): `for s in scope split filter gate review; do grep -iwF "$s" outputs/security-report.md; done`. All five must hit.
+- **A17.** Classical-controls floor named: `grep -iE 'perimeter|IAM|identity|mTLS|network|WAF|logging|vendor' outputs/security-report.md` ≥ 2 distinct.
+- **A18.** Tier markers present: `grep -iE '(high|medium|low)' outputs/security-report.md` ≥3 distinct hits OR a 3-tier list block.
+- **A19.** Access-control section enumerates ≥2 reaches: `grep -ciE '^\s*[-*0-9]' outputs/security-report.md` in the access-control section ≥2.
 
-### Phase 3 — mitigate
+### Phase 4 — mitigate
 
-- **A15.** Actor edited `agents/monday-risks.md`. `diff` against pre-Phase-3 state shows changes (capture pre-state from author runner end-state). FAIL if byte-identical.
-- **A16.** Edited file names the excluded path: `grep -F 'maija-prep-notes-skeptics' agents/monday-risks.md`.
-- **A17.** `guardrails.md` exists at scratch root: `test -f`.
-
-### Close
-
-- **A18.** `## Doors I would rather not open` (or `Doors I'd rather not open`) section in `guardrails.md`: `grep -iF 'Doors I'`.
+- **A20.** Actor edited `agents/monday-risks.md`. Pre-state shasum captured pre-Phase-4; post-state differs.
+- **A21.** Edited file names the excluded path: `grep -F 'maija-prep-notes-skeptics' agents/monday-risks.md`.
+- **A22.** `## Mitigation applied and residual` section appended to `outputs/security-report.md`: `grep -iE '^#{1,3} *Mitigation applied and residual' outputs/security-report.md`.
+- **A23.** Residual section names what changed AND what's left: word count of section between heading and EOF or next `^#` ≥30 words AND ≤300 words (1.5× cap).
 
 ### Truncations
 
-- **A19.** Debrief NOT executed.
-- **A20.** No Write to any path under `module-4/plugins/security-audit/` or `skill-install/.claude/skills/security-audit-*`. `jq` transcript filter.
-- **A21.** No Write to `module-3/` paths. `jq`.
+- **A24.** No Write to any path under `module-4/skills/security-audit/` or `skill-install/.claude/skills/security-audit/`. `jq` transcript filter.
+- **A25.** No Write to `module-3/` paths. `jq`.
+- **A26.** No Debrief executed: scrollback does not contain a `## Debrief` heading.
 
 ### State protection
 
-- **A22.** Reusable-check files byte-unchanged. `diff -r module-4/plugins/security-audit/` against pre-state. `diff -r skill-install/.claude/skills/security-audit-policy/` and `security-audit-agent-security/` against pre-state.
+- **A27.** Authored skill files byte-unchanged: `diff -r` against pre-state. (A3 + diff of full directory.)
+- **A28.** Installed skill file byte-unchanged after Phase 1: shasum at end of Phase 1 vs end of run.
 
 ### Harness leakage
 
@@ -107,16 +118,16 @@ Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audit: K.
 ...
 
 ## A-series
-...
+A1 ... A28
 
 ## H-series
-...
+H1 ... H4
 
 ## Prompt-source audit
 <paste stdout>
 ```
 
-Under 500 words. If A11 fails (any attack class missing), call that the headline finding. If A22 fails (reusable check modified), call that critical.
+Under 500 words. If A15 fails (any attack class missing), headline. If A27 fails (reusable check modified), critical.
 
 ## What you must NOT do
 

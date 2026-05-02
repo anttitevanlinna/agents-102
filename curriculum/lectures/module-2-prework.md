@@ -20,6 +20,8 @@ If nothing comes to mind, scan the next two weeks of your calendar. The biggest 
 
 Module 2 works best when Claude can read at least one source connected to your challenge: a calendar, a document store, a wiki, or a shared drive. You already checked Microsoft 365 or Google Workspace in the main prework. Now check whether your company wiki or document system is available too.
 
+**Connectors** are connections to places where your work lives, Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or whatever your company actually uses.
+
 In Claude Code Desktop, click the **+** next to the prompt, then **Settings → Connectors**. In Cowork, open **Customize → Connectors**. Look for Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or the system your company actually uses.
 
 If a connector asks for admin approval, tell the training coordinator. Keep going even if it is not ready. A connector makes Module 2 richer, but the memory can still start from files, pasted excerpts, and the sources you bring into the training directory.

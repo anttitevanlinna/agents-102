@@ -1,8 +1,8 @@
-# Judge — Bootstrap M4 run-and-package-security-check verbatim
+# Judge — Bootstrap M4 author-security-skill verbatim
 
-**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+**Dispatch with `model: "haiku"`.** Acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
 
-Grading whether the M4 author chain ran end-to-end on inherited M3 + planted policies, and whether the source plugin + installed CLI skills exist with expected shape. The forcing-function grep on the four attack-class names is load-bearing — those phrases must appear verbatim in the agent-security SKILL.md.
+Grading whether the M4 author chain ran end-to-end on inherited M3 + planted policies, and whether the personal skill source `module-4/skills/security-audit/SKILL.md` exists with the expected forcing-function content. The grep on the four attack-class names is load-bearing — those phrases must appear verbatim.
 
 ## Inputs
 
@@ -10,79 +10,76 @@ Grading whether the M4 author chain ran end-to-end on inherited M3 + planted pol
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
 - **Actor report:** `.../instances/bootstrap-m4-author-actor-report.md`
 - **Actor scrollback:** `.../instances/bootstrap-m4-author-actor-scrollback.md`
-- **Prompt files:** `/tmp/prompts/author-security-plugin/prompt-{001,002,003,004-cli,005-verify}.txt`
+- **Prompt files:** `/tmp/prompts/author-security-skill/prompt-{001,002,003}.txt`
 - **Raw report:** `<scratch>/outputs/policy-report-raw.md`
-- **Authored source plugin:** `<scratch>/module-4/plugins/security-audit/`
-- **Installed CLI skills:** `<scratch>/skill-install/.claude/skills/security-audit-{policy,agent-security}/`
+- **Authored skill:** `<scratch>/module-4/skills/security-audit/SKILL.md`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh`
-- `curriculum/evals/mechanical/bin/prompt-source-audit.sh author-security-plugin`
-- `grep -i` / `grep -F` / `test -f` / `jq`
+- `curriculum/evals/mechanical/bin/prompt-read-check.sh <prompt> <transcript>`
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh author-security-skill`
+- `grep -i` / `grep -iE` / `grep -F` / `test -f` / `jq`
 
 ## Method
 
-For every assertion: run the named script, capture exit code + first line. No quoting, no taste calls.
+For every assertion: run the named script, capture exit code + first line. No quoting, no taste calls. **Per rule #20: PASS on exit 0; FAIL on any non-zero. Do not re-derive from scrollback when a script returns non-zero.**
+
+Generic Judge fixes (M3-style, applied preemptively):
+- Heading-depth regex on Actor headings: `^#{2,3} Phase` (Actor may use `##` or `###`).
+- English-heading greps are `grep -i*` (Actor title-cases freely).
+- Word-count caps at 1.5× spec (Haiku stub overshoot is OK).
 
 ## Assertions
 
 ### Verbatim round-trip
 
-- **V1-V5.** prompt-001..005 via `verbatim-check.sh`.
+- **V1.** prompt-001 read → `bin/prompt-read-check.sh /tmp/prompts/author-security-skill/prompt-001.txt <transcript>`
+- **V2.** prompt-002 read → same shape.
+- **V3.** prompt-003 read → same shape.
 
 ### Arrange — inherited state
 
 - **A1.** Inherited M3 paths exist: `test -f memory/index.md`, `agents/monday-risks.md`, `module-3/answer.md`. `ls sources/ | wc -l` ≥ 3.
 - **A2.** `module-4/policies/` exists with `.md` files: `ls module-4/policies/*.md | wc -l` ≥ 1.
-- **A3.** `skill-install/.claude/skills/` exists: `test -d`.
 
 ### Phase 1 — raw policy run
 
-- **A4.** Order: prompt-001 paste → policy-file Reads → `outputs/policy-report-raw.md` Write. `jq` transcript ordering.
-- **A5.** Raw report header: `grep -F '| Rule | Description | Verdict | Evidence |' outputs/policy-report-raw.md`.
-- **A6.** ≥12 data rows: `grep -c '^|' outputs/policy-report-raw.md` minus header/separator ≥ 12.
-- **A7.** Verdict `I can't tell` present at least once: `grep -F "I can't tell"`.
-- **A8.** No `module-4/plugins/security-audit/` or `skill-install/.claude/skills/security-audit-*` Writes before raw report. `jq` transcript order.
+- **A3.** Order: prompt-001 read → policy-file Reads → `outputs/policy-report-raw.md` Write. `jq` transcript ordering on tool_use timestamps.
+- **A4.** Raw report header: `grep -F '| Rule | Description | Verdict | Evidence |' outputs/policy-report-raw.md`.
+- **A5.** ≥12 data rows: `awk '/^\|/{n++}END{print n}' outputs/policy-report-raw.md` minus 2 (header + separator) ≥ 12.
+- **A6.** Verdict `I can't tell` present at least once: `grep -F "I can't tell" outputs/policy-report-raw.md`.
+- **A7.** No `module-4/skills/security-audit/` Writes before raw report. `jq` transcript order: every `Write` whose path matches `module-4/skills/security-audit/` has timestamp > the `outputs/policy-report-raw.md` Write.
 
 ### Phase 2 — dictation + proposal
 
-- **A9.** Maija's 5-line dictation appears as blockquote in scrollback AFTER raw report and BEFORE package proposal. Position grep on scrollback.
-- **A10.** Actor waited (asked for lines before reading/writing package files for Phase 2). `jq` transcript: no plugin-file Read between prompt-002 paste and Maija's lines paste.
+- **A8.** Maija's 5-line dictation appears as blockquote in scrollback AFTER raw report and BEFORE Phase 3 paste of prompt-003. Position grep for `> 1. We process partner-NDA` in scrollback.
+- **A9.** Actor waited for lines (no skill-file Read between prompt-002 paste and Maija's lines paste). `jq` transcript: between the prompt-002 read and the Maija-blockquote in scrollback, there is no Read or Write under `module-4/skills/security-audit/`.
 
 ### Phase 3 — reusable check authored
 
-- **A11.** Plugin manifest exists: `test -f module-4/plugins/security-audit/.claude-plugin/plugin.json`. Valid JSON: `jq . <file>`.
-- **A12.** Both source SKILL.md files exist: `test -f` on both.
-- **A13. Forcing-function: AGENT-SECURITY SKILL.md names all four attack classes verbatim** (case-insensitive, against `module-4/plugins/security-audit/skills/agent-security/SKILL.md`):
+- **A10.** Authored skill exists: `test -f module-4/skills/security-audit/SKILL.md`.
+- **A11. Forcing-function: SKILL.md names all four attack classes verbatim** (case-insensitive against `module-4/skills/security-audit/SKILL.md`):
   - `grep -iF 'prompt injection'` AND `grep -iF 'direct'` AND `grep -iF 'indirect'`
   - `grep -iF 'secrets in context'` AND `grep -iF 'scrollback'`
   - `grep -iF 'tool confusion'`
-  - `grep -iF 'plugin supply-chain'`
+  - `grep -iF 'skill supply-chain'`
   Any miss → FAIL (headline).
-- **A14.** AGENT-SECURITY preamble: `grep -iwF 'layered' <file>`.
-- **A15.** ≥2 classical controls in agent-security SKILL.md from {network, IAM, mTLS, perimeter, WAF}: count distinct hits ≥ 2.
-- **A16.** POLICY SKILL.md has rule rows: `grep -c '^|' module-4/plugins/security-audit/skills/policy/SKILL.md` ≥ 12, OR enumerated rule list count ≥ 12.
-- **A17.** Each lens SKILL.md names report shape (table header or "sections:" enumeration). `grep -E '\| Rule|sections:|Report shape:'` per lens.
-- **A18.** Substitution log: `grep -F '[harness substitution - cowork/desktop' <scrollback>`.
-
-### Phase 4 — install + verify
-
-- **A19.** CLI skills installed: `test -f skill-install/.claude/skills/security-audit-policy/SKILL.md` and `security-audit-agent-security/SKILL.md`.
-- **A20.** Source plugin still exists: `test -d module-4/plugins/security-audit/`.
-- **A21.** Sandbox substitution log: `grep -F 'install location ~/.claude/skills/' <scrollback>`.
-- **A22.** Verify output: 2-3 table rows in scrollback under prompt-005 section. Count `^|` lines minus header/separator. FAIL if 0 or > 5.
-- **A23.** Verify scope = one file: `jq` transcript for Read calls in Phase 5; expect exactly one target Read of `./challenge.md`.
+- **A12.** Layering preamble: at least one of `grep -iE 'layered|on top of|in place of' SKILL.md` returns hit.
+- **A13.** ≥2 classical controls in SKILL.md from {network, IAM, identity, mTLS, perimeter, WAF, logging, vendor}: count distinct case-insensitive hits ≥ 2.
+- **A14.** All five mitigation shape names appear verbatim, case-insensitive: `scope`, `split`, `filter`, `gate`, `review`.
+- **A15.** POLICY lens names the report shape: `grep -E '\| Rule|Report shape:|sections:'` returns hit in the POLICY section (treat first half of file as POLICY lens).
+- **A16.** POLICY rule enumeration ≥12: `grep -c '^|' SKILL.md` minus header/separator ≥12 OR `grep -cE '^[[:space:]]*[0-9]+\.' SKILL.md` ≥12 OR `grep -cE '^[[:space:]]*-' SKILL.md` ≥12.
+- **A17.** Grill-before-save: scrollback shows Claude asking ≥1 question after prompt-003 paste and before any Write to `module-4/skills/security-audit/`. `jq` ordering + grep for `?` in scrollback between markers.
 
 ### Truncations
 
-- **A24.** No Debrief. No homework prompt executed.
-- **A25.** No Write to `~/.claude/` outside scratch. `jq` transcript filter for any path matching `$HOME/.claude/` not under `<scratch>/skill-install/`.
+- **A18.** No Write to `~/.claude/` or `skill-install/` outside scratch. `jq` transcript filter for any path matching `$HOME/.claude/` or `<scratch>/skill-install/`.
+- **A19.** No Phase 4/5 executed: no Write to `outputs/security-report.md`, no edit of `agents/monday-risks.md`. `jq` transcript filter.
 
 ### State protection
 
-- **A26.** `module-3/` byte-unchanged. `diff -r` against `scratch/bootstrap-m3/module-3/`.
-- **A27.** `module-4/policies/` byte-unchanged from scaffold. `diff -r` against scaffold source.
+- **A20.** `module-3/` byte-unchanged. `diff -r scratch/bootstrap-m3/module-3/ scratch/bootstrap-m4/module-3/` empty.
+- **A21.** `module-4/policies/` byte-unchanged from scaffold. `diff -r curriculum/scaffolds/module-4-starter/policies/ scratch/bootstrap-m4/module-4/policies/` empty.
 
 ### Harness leakage
 
@@ -90,7 +87,7 @@ For every assertion: run the named script, capture exit code + first line. No qu
 
 ### Prompt-source audit
 
-Run `bin/prompt-source-audit.sh author-security-plugin`. Capture exit + verdict.
+Run `bin/prompt-source-audit.sh author-security-skill`. Capture exit + verdict.
 
 ## Report
 
@@ -102,24 +99,24 @@ Write `.../instances/bootstrap-m4-author-judge-report.md`:
 ## Summary
 Verdict: PASS | FAIL (N/M). Sev-1 from prompt-source-audit: K.
 
-## V1–V5
+## V1–V3
 ...
 
 ## A-series
-...
+A1 ... A21
 
 ## H-series
-...
+H1 ... H4
 
 ## Prompt-source audit
 <paste stdout>
 ```
 
-Under 500 words. If A13 fails (any attack class missing), headline finding. If A4-A8 fail (raw-run ordering), headline alternative.
+Under 500 words. If A11 fails (any attack class missing), headline finding. If A3-A6 fail (raw-run ordering), headline alternative.
 
 ## What you must NOT do
 
-- Quote a sentence from a SKILL.md and judge if it's "well-scoped."
+- Quote a sentence from SKILL.md and judge if it's "well-scoped."
 - Decide whether the package shape is "appropriate."
 - Read the raw report to evaluate evidence quality.
 - Compare lenses qualitatively.

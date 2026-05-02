@@ -6,19 +6,19 @@ Spawn three subagents inside one session. Each holds a different stance against 
 
 **What happens:**
 
-Three voices, three short notes. The main session reads them side by side, applies Rumelt's strategy kernel inline, writes the synthesis. Single artifact carries the full strategic frame: crux + question + answer.
+Three voices, three short notes. The main session reads them side by side, applies Rumelt's strategy kernel, diagnosis, guiding policy, coherent actions, inline, writes the synthesis. Single artifact carries the full strategic frame: crux + question + answer.
 
 **The point:**
 
-Multi-agent's second shape: subagents inside one session. Each runs in its own context, returns and disappears. Quick parallel thinking, bounded return — without juggling four windows.
+Multi-agent's second shape: subagents inside one session. Each runs in its own context, returns and disappears. Quick parallel thinking, bounded return, without juggling four windows.
 
 **Time:** ~22 minutes (15 min synthesis + 7 min Close).
 
 The previous exercise left you with a curated `memory/` (the synthesizer's output) and the same `./crux.md` you've been building since the opening.
 
-Stay in the session that wrote `./crux.md` — the same one you've used since *Name your crux*. In the previous exercise this session was relabelled Session 4 (the synthesizer) while three retriever sessions ran alongside it. The retriever sessions can close now; this one stays open as your main session for the synthesis below.
+Stay in the session that wrote `./crux.md`, the same one you've used since *Name your crux*. In the previous exercise this session was relabelled Session 4 (the synthesizer) while three retriever sessions ran alongside it. The retriever sessions can close now; this one stays open as your main session for the synthesis below.
 
-Wait for the synthesizer's loop to finish — its last move was writing `memory/_synthesis-m3.md` naming what changed. Memory is sharper than it was an hour ago.
+Wait for the synthesizer's loop to finish, its last move was writing `memory/_synthesis-m3.md` naming what changed. Memory is sharper than it was an hour ago.
 
 Now spawn three minds inside *this* session and synthesize their stances inline. <span class="rt-code">Claude Code calls them **subagents**.</span><span class="rt-cowork">Cowork calls them **agents**.</span> Each runs with its own context window, works in parallel, hands back what it produced. Same shape as the agent files you built in Module 2, but spawned inside this session instead of saved as files.
 
@@ -64,7 +64,7 @@ Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really goi
 </div>
 
 
-Heads-up: the answer often comes back with a longer issue list than feels comfortable — disagreements named, gaps flagged. That's the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to Claude.
+Heads-up: the answer often comes back with a longer issue list than feels comfortable, disagreements named, gaps flagged. That's the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to Claude.
 
 Optional: paste this back to focus the work.
 

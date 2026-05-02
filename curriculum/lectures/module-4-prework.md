@@ -12,7 +12,7 @@ You have spent three modules shaping agents with prompts, files, and rules. Pers
 
 *What a personal skill is.* Your own reusable skill, saved in your Claude environment. In Cowork, you create one by going to *Customize* → *Skills* → *New* → *Create with Claude*. In Claude Code, the same shape is a `SKILL.md` under `~/.claude/skills/<name>/`. Different surface, same idea: reusable expertise the agent can load again.
 
-*What it is not.* Not a separate model. Not magic. Not something you install per-seat. A personal skill you author lives in your runtime and can be reused when the same kind of work appears again.
+*What it is not.* You author one in your runtime, and it loads when the same kind of work appears again.
 
 *Why skills matter for Module 4.* Until now, you have added expertise by writing prompts or dropping material into `sources/` or `memory/`. That works, but everything lives in one pile. Skills scope expertise. In Module 4 you will first run your company's policy files raw, then package the useful check with two lenses: a policy lens (your company's rules) and an agent-risk lens (what the agent can reach, what it might leak, and how ordinary text can mislead it). You will not need to be a policy expert or a security specialist; the reusable check will be. **The check carries the expertise you fed it, and you author it.**
 

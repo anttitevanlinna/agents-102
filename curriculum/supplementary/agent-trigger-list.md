@@ -4,7 +4,7 @@ The hard part after training is not knowing whether agents can help. You know th
 
 This page is a small operating habit: a list of moments that should trigger agent use on a normal workday.
 
-## After Module 2 — Start noticing trigger moments
+## After Module 2, Start noticing trigger moments
 
 *Referenced from: Module 2 (building-agent-systems).*
 
@@ -29,7 +29,7 @@ The first version can be ugly. A good line looks like:
 
 That is enough. The habit starts before the system is mature.
 
-## After Module 3 — Notice when one agent is not enough
+## After Module 3, Notice when one agent is not enough
 
 *Referenced from: Module 3 (multi-agent-systems).*
 
@@ -46,7 +46,7 @@ Most triggers need one good agent with good context. Some earn a split:
 
 Do not split because it feels advanced. Split when the work would get worse if one agent tried to hold every source, stance, and job in one head.
 
-## After Module 6 — When to call the agent
+## After Module 6, When to call the agent
 
 *Referenced from: Module 6 (evaluations).*
 

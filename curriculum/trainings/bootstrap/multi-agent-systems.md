@@ -35,10 +35,10 @@ First, a small boundary shift. We work mostly with text in this training: prompt
 [Lecture: Debugging stuck agents](lectures/debugging-stuck-agents.md)
 
 ## Key Concepts
-- **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (Phase 1: long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (Phase 2: quick parallel thinking, bounded return). Different shapes, different territories — the lecture draws the line.
+- **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (Phase 1: long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (Phase 2: quick parallel thinking, bounded return). Different shapes, different territories, the lecture draws the line.
 - **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
 - **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is where the lesson lives.
-- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle — harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
+- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
 - **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
 
 ## Debrief
@@ -61,11 +61,11 @@ Read Claude's summary. Push back where it's wrong. *"No, the planner and the ref
 ## Next
 You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
 
-Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a crucial dependency? Add a visualisation of the plan? Prompt for what you need. Build.
+Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 ## Homework after Module 3
 
-**Reading.** Read [Agent Trigger List — After Module 3](supplementary/agent-trigger-list.md#after-module-3--notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](supplementary/what-is-an-agent.md) on multi-agent coordination. Then read [Before Module 4](lectures/module-4-prework.md): personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.
+**Reading.** Read [Agent Trigger List, After Module 3](supplementary/agent-trigger-list.md#after-module-3--notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](supplementary/what-is-an-agent.md) on multi-agent coordination. Then read [Before Module 4](lectures/module-4-prework.md): personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.
 
 **Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
 

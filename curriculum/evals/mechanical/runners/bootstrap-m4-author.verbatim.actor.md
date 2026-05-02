@@ -1,8 +1,8 @@
-# Actor — Bootstrap M4 run-and-package-security-check verbatim
+# Actor — Bootstrap M4 author-security-skill verbatim
 
-**Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to run the author-security-plugin prompt chain and leave file artefacts (raw report, source plugin, installed CLI skills, verify rows) on disk for the Judge's scripts to inspect. You are NOT trying to author a great security skill. Stub long generated content; the Judge does not grade quality. The forcing-function grep on attack-class names IS load-bearing — those four phrases must appear verbatim.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to run the author-security-skill prompt chain and leave file artefacts (raw report, authored personal skill source) on disk for the Judge's scripts to inspect. You are NOT trying to author a great security skill. Stub long generated content; the Judge does not grade quality. The forcing-function grep on attack-class names IS load-bearing — those four phrases must appear verbatim.
 
-You have Bash / Read / Write / Edit. Five prompts pasted verbatim from `/tmp/prompts/author-security-plugin/prompt-{001,002,003,004-cli,005-verify}.txt`.
+You have Bash / Read / Write / Edit. Three prompts pasted verbatim from `/tmp/prompts/author-security-skill/prompt-{001,002,003}.txt`.
 
 ## Arrange
 
@@ -18,22 +18,16 @@ Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/
    mkdir -p module-4/policies
    cp /Users/anttitevanlinna/Projects/agents-102/curriculum/scaffolds/module-4-starter/policies/*.md module-4/policies/
    ```
-4. Plant sandboxed install location:
-   ```
-   mkdir -p skill-install/.claude/skills
-   ```
-5. `git init`, `git add -A`, commit `wip - m4 starting state`.
-6. `ls module-4/policies/`, `ls agents/ memory/ sources/ module-3/`.
+4. `git init` if not present, `git add -A`, commit `wip - m4 starting state`. Use `dangerouslyDisableSandbox: true` on Bash that mutates `<scratch>/`.
+5. `ls module-4/policies/`, `ls agents/ memory/ sources/ module-3/`.
 
-## Reusable-check authoring substitution
+## Authoring substitution
 
-Cowork/Desktop install paths unavailable. Substitute the **CLI path**: build `.claude-plugin/plugin.json` plus `skills/<lens>/SKILL.md` files inline, write under `module-4/plugins/security-audit/`, then copy SKILL.md files into sandboxed `skill-install/.claude/skills/`.
+Stay on disk under `module-4/skills/security-audit/`. Do NOT write to `~/.claude/skills/` or `skill-install/`. Install + verify lives in the audit runner.
 
-Log at top of Phase 3: `[harness substitution - cowork/desktop plugin install unavailable; source plugin authored inline; CLI standalone skills installed into sandbox]`.
+### Phase 1 — raw-policy
 
-## Phase 1 — Run policies raw
-
-**Prompt 1:** `prompt-001.txt`. Quote, respond.
+**Prompt 1:** `prompt-001.txt`. Quote (blockquote-paste verbatim), respond.
 
 Read every file in `module-4/policies/`. Walk: `memory/`, `sources/`, `agents/`, root `CLAUDE.md` if present, `module-3/stances/`. Produce `outputs/policy-report-raw.md`:
 
@@ -41,71 +35,63 @@ Read every file in `module-4/policies/`. Walk: `memory/`, `sources/`, `agents/`,
 | Rule | Description | Verdict | Evidence |
 ```
 
-One row per rule. Verdicts: `compliant`, `violating`, `"I can't tell"`. Evidence stub OK. Target ≥12 rows. Do not create plugin/skill files yet.
+One row per rule. Verdicts: `compliant`, `violating`, `"I can't tell"`. Evidence stub OK. Target ≥12 rows. Do NOT create skill files yet.
 
-## Phase 2 — Dictate what matters
+### Phase 2 — dictate-lines
 
-**Prompt 2:** `prompt-002.txt`. Quote, respond as Claude: acknowledge, ask for the lines, wait. Do not read or write package files yet.
+**Prompt 2:** `prompt-002.txt`. Quote, respond as Claude: acknowledge, ask for the lines, wait. Do not read or write skill files yet.
 
-Substitute Maija's lines (paste verbatim in blockquote):
+Substitute Maija's lines (paste verbatim in blockquote BEFORE Claude proceeds):
 
 > 1. We process partner-NDA material and customer prep notes that must never leave my laptop in any form, including paraphrased into an output.
 > 2. Finnish data-protection authority has been clear on automated decisions about individuals: anything that touches employment, performance review, or candidate screening is out of scope for the agent system, full stop.
 > 3. The Module 3 multi-agent run reads from `sources/` directly; if a source contains a personal note (`maija-prep-notes-skeptics.md` does), the synthesizer can paraphrase it into a customer-facing brief without me noticing.
-> 4. We have no marketplace plugins today. The first plugin we ship has to set the bar for who is allowed to author and review one: supply-chain hygiene from day one, not after the first incident.
+> 4. We have no marketplace skills today. The first reusable check we ship has to set the bar for who is allowed to author and review one: supply-chain hygiene from day one, not after the first incident.
 > 5. The agent has shell access in the training directory and can write outside `module-N/` if a prompt asks. I want a structural rule that names which paths the agent will not write to without explicit confirmation.
 
-After lines, Read `outputs/policy-report-raw.md` and policy files; propose package shape (runtime split, name `security-audit`, two lenses `policy` + `agent-security`, report shapes). 1-3 short paragraphs. No pushback needed.
+After lines, Read `outputs/policy-report-raw.md` and policy files; propose package shape (one personal skill `security-audit`, two lenses `POLICY` + `AGENT-SECURITY`, single `SKILL.md`, report shapes). 1-3 short paragraphs. No pushback needed.
 
-## Phase 3 — Author both lenses
+### Phase 3 — author-lenses
 
 **Prompt 3:** `prompt-003.txt`. Quote, respond.
 
-Show files in scrollback BEFORE writing. Required structure:
+The prompt asks Claude to **grill** the student before saving. Grill turn: ask 2-3 short questions covering both lenses (e.g., a missing policy specific, an access path to scope). Do NOT save yet.
+
+Substitute the student's answers (paste verbatim in blockquote):
+
+> Enough. Cover scope-of-write paths and supply-chain provenance for the policy lens. Use Maija's five lines as the policy specifics. Save now.
+
+Then show files in scrollback BEFORE writing. Required structure (single SKILL.md, both lenses):
 
 ```
-module-4/plugins/security-audit/
-├── .claude-plugin/plugin.json
-└── skills/
-    ├── policy/SKILL.md
-    └── agent-security/SKILL.md
+module-4/skills/security-audit/
+└── SKILL.md
 ```
 
-**Forcing-function assertions (the Judge greps for these — must appear verbatim):**
+**Forcing-function assertions (the Judge greps these — must appear verbatim, case-insensitive, in `module-4/skills/security-audit/SKILL.md`):**
 
-- The AGENT-SECURITY `SKILL.md` names ALL FOUR attack classes:
-  - `prompt injection` (with both `direct` and `indirect`)
-  - `secrets in context` (the phrase `scrollback` must also appear)
-  - `tool confusion`
-  - `plugin supply-chain`
-- AGENT-SECURITY preamble: word `layered` ≥1, ≥2 classical controls from {network, IAM, mTLS, perimeter, WAF}.
-- Each lens's `SKILL.md` names the report shape it produces (table columns or section headers).
-- POLICY lens carries ~12-25 rule rows derived from `module-4/policies/` and Maija's lines.
+- `prompt injection` — with both `direct` AND `indirect`
+- `secrets in context` — and the word `scrollback` must also appear
+- `tool confusion`
+- `skill supply-chain`
+- AGENT-SECURITY preamble names the layering relationship: at least one of `layered`, `on top of`, or `in place of`. ≥2 classical controls from {network, IAM, identity, perimeter, mTLS, WAF, logging, vendor}.
+- All five mitigation shapes appear verbatim somewhere in the SKILL.md: `scope`, `split`, `filter`, `gate`, `review`.
+- POLICY lens names the report shape (table header `| Rule | Description | Verdict | Evidence |` OR an enumerated `Report shape:` block).
+- POLICY lens carries ≥12 rule rows OR a numbered/listed rule enumeration ≥12 derived from `module-4/policies/` and Maija's lines.
 
 Stub bodies are fine — the Judge greps for verbatim phrases, not prose quality.
 
-After showing files, write to disk under `module-4/plugins/security-audit/`.
-
-## Phase 4 — Install and verify (CLI substitution)
-
-**Prompt 4:** `prompt-004-cli.txt`. Quote, respond.
-
-Copy lenses to `skill-install/.claude/skills/security-audit-policy/` and `skill-install/.claude/skills/security-audit-agent-security/`. NOT real `~/.claude/skills/`. Log: `[harness substitution - install location ~/.claude/skills/<name>/ -> ./skill-install/.claude/skills/<name>/ to avoid touching the host Claude config]`.
-
-`ls -la` both install dirs.
-
-Log conceptual fresh session: `[harness substitution - fresh session opened conceptually; same scratch directory; skills loaded from skill-install/.claude/skills/]`.
-
-**Prompt 5:** `prompt-005-verify.txt`. Quote, respond.
-
-Read `skill-install/.claude/skills/security-audit-policy/SKILL.md`. Apply 2-3 rules to `./challenge.md` ONLY. Produce 2-3 rows of the report shape. Stop after three rows.
+After showing files, write `module-4/skills/security-audit/SKILL.md` to disk.
 
 ## Truncations
 
-- No Debrief.
-- No homework prompt.
+- No Phase 4 (install) — that lives in the audit runner.
+- No Phase 5 (verify) — same reason.
+- No Cowork personal-skill creation block (Desktop/Cowork-only path; out of subagent scope).
+- No Debrief, no homework prompt.
 - Do NOT touch `module-3/`.
-- Do NOT write to `~/.claude/` on host.
+- Do NOT write to `~/.claude/`.
+- Do NOT create `skill-install/`.
 
 ## Report
 
@@ -126,16 +112,15 @@ done | error
 <absolute path; best-effort>
 
 ## Prompts executed
-1-5 (one line each)
+1-3 (one line each)
 
 ## Artifacts written
 - outputs/policy-report-raw.md
-- module-4/plugins/security-audit/* (plugin.json + 2 SKILL.md)
-- skill-install/.claude/skills/security-audit-{policy,agent-security}/SKILL.md
-- verify-output rows in scrollback
+- module-4/skills/security-audit/SKILL.md
 
 ## Substitutions
-- cowork/desktop -> CLI path; ~/.claude/ -> sandbox; fresh session -> conceptual; Maija's 5 lines
+- Maija's 5 lines (Phase 2)
+- Student "enough" answer to Phase 3 grill
 ```
 
 Under 250 words.
@@ -145,7 +130,7 @@ Under 250 words.
 - Read `curriculum/exercises/*`, judge runners, sibling actor runners, maintainer docs.
 - Read `/tmp/bootstrap-mocks/`.
 - Paraphrase prompts.
-- Write to `~/.claude/` outside scratch.
+- Write to `~/.claude/` or `skill-install/`.
 - Overwrite `module-3/` artifacts.
 - Skip the four-attack-class verbatim naming — that is the forcing-function assertion.
-- Run the full audit in verify (2-3 rows then stop).
+- Skip the grill-before-save beat (Claude must ask at least one question before the student says "enough").

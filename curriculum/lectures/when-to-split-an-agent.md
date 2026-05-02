@@ -4,7 +4,7 @@ You just split an agent two ways. Three retrievers in separate windows. Three st
 
 **The unit is the recurring workflow.**
 
-Build one agent per recurring workflow — a single `.md` file, guardrailed for the job that workflow does. Don't try to make a mega-agent that does everything (*the company brain*); it ages badly, drifts in scope, nobody can tell what it's responsible for. Don't go the other way and proliferate a hundred tiny agents either; coordination cost eats the win. The right number is *one per piece of work that recurs in your week.*
+Build one agent per recurring workflow, a single `.md` file, guardrailed for the job that workflow does. Don't try to make a mega-agent that does everything (*the company brain*); it ages badly, drifts in scope, nobody can tell what it's responsible for. Don't go the other way and proliferate a hundred tiny agents either; coordination cost eats the win. The right number is *one per piece of work that recurs in your week.*
 
 That's the across-workflow answer. The question this lecture answers is the within-workflow one: when, inside a single workflow, does splitting into multiple agents pay?
 
@@ -16,9 +16,9 @@ Default to one agent with a good prompt. Splitting adds coordination cost: hando
 
 Three tests. If any hold, splitting pays. If none do, a single prompt probably beats you.
 
-- **Different access.** Each agent needs different data, different tools, different credentials. A Confluence retriever can't pretend to be a web search. A legal-policy agent shouldn't also have customer-data access. Access boundaries force separation.
+- **Different access.** Each agent needs different data, different tools, different credentials. A Confluence retriever (an agent that searches and returns matches from Confluence) can't pretend to be a web search. A legal-policy agent shouldn't also have customer-data access. Access boundaries force separation.
 - **Different dialect.** The material in each source speaks a different language: internal jargon vs. public tone vs. email shorthand. One agent bending between them loses nuance. Three agents each native to their source keep the signal.
-- **Different stance.** The agents should actively disagree with each other. A backward planner and a reframer thinking *in the same voice* is one agent pretending to be three. If your three are paraphrases, collapse them.
+- **Different stance.** The agents should actively disagree with each other. A backward planner and a reframer (an agent that reframes the material from a different stance) thinking *in the same voice* is one agent pretending to be three. If your three are paraphrases, collapse them.
 
 Note what's not on the list: *"because three is more thorough."* More agents is not more rigour. More agents is more prompts to tune, more noise in the synthesis, more coordination tax. Split for a reason.
 

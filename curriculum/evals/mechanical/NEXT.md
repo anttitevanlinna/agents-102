@@ -1,99 +1,98 @@
 # Mechanical-test framework — next-session state
 
-**Last updated:** 2026-05-02 (Bootstrap M1-M6 all PASS)
+**Last updated:** 2026-05-02 (Bootstrap M1-M6 all PASS; script-only judges across the battery)
 
 ## Bootstrap battery — current verdict
 
-| Module | Verdict | Judge | Notes |
+| Module | Verdict | Judge script | Notes |
 |---|---|---|---|
-| M1 | **PASS (all)** | inline | scratch/bootstrap-m1 fresh |
-| M2 | **PASS 24/24** | inline | scratch/bootstrap-m2 |
-| M3 | **PASS 18/18** | inline | 4 actors (wiki/docs/internet/synthesizer) |
+| M1 | **PASS 23/23** | `bin/judge-m1.sh` | personal-site-with-guardrails; 5 substitutes; A14/A16 INHERITED |
+| M2 | **PASS 34/34** | `bin/judge-m2.sh` | name-your-challenge + build-your-challenge-memory chain (11 prompts); V1-V11 + H1-H4 INHERITED |
+| M3 | **PASS 24/24** | `bin/judge-m3.sh` | 4 actors (wiki/docs/internet/synthesizer); V1-V4 + A5-A8 + A11 + H1-H4 INHERITED |
 | M4 author | **PASS 28/28** | `bin/judge-m4-author.sh` | new runner: author-security-skill (3 prompts, single SKILL.md) |
 | M4 audit | **PASS 36/36** | `bin/judge-m4-audit.sh` | 4-prompt chain: install → policy → agent-security → mitigate-residual |
 | M5 | **PASS 30/30** | `bin/judge-m5.sh` | setup + 5 detectors (parallel) + scorer |
-| M6 | **PASS 35/35** | `bin/judge-m6.sh` | setup + run; judge file byte-identical (J1 PASS) |
+| M6 | **PASS 35/35** | `bin/judge-m6.sh` | setup + run; J1 shasum confirms judges/groundedness-judge.md byte-identical |
 
-## What this session shipped
+**Total: 210 assertions pass across all 7 runner-pairs. No LLM Judge dispatch in the pipeline.**
 
-### Runner rewrites (M4)
-- `bootstrap-m4-author.verbatim.{actor,judge}.md` — rewrote for live exercise. Single `module-4/skills/security-audit/SKILL.md` (no plugin manifest, no two-lens-files split). Three prompts, no install/verify (those moved to audit). Attack class is `skill supply-chain`, not `plugin supply-chain`.
-- `bootstrap-m4-audit.verbatim.{actor,judge}.md` — re-mapped to 4 prompts (install → policy + meta-read → agent-security → mitigate-residual). Install destination substituted to `<scratch>/skill-install/.claude/skills/security-audit/`.
+## How prompt-rot is detected (four layers)
 
-### Read-tool forcing-function on every actor runner (M4-M6)
-Haiku silently inlined prompt-003 in the M4 author dry-run, failing V3. Patched all M4-M6 actor runners with: *"invoke the **Read tool** on each prompt-NNN.txt BEFORE blockquote-pasting; the Judge greps the transcript for Read tool_use of every prompt file."* Subsequent runs all V-PASS.
+A judge can return PASS only if all four layers green-light:
 
-### Script-only Judges (rule #17 ratchet)
-Replaced LLM Judge dispatches for M4-M6 with bash scripts that run every assertion as a `grep`/`jq`/`diff`/`shasum` one-liner:
+1. **Pre-flight `runner-mapping-check.sh`** — for each `### Phase N — slug`, scores keyword overlap of slug vs. referenced `prompt-NNN.txt` content vs. every other extracted prompt. If the slug matches a different prompt better → `BLOCK / phase-swap`. Catches rename, reorder, or coverage-gap drift.
+2. **`prompt-source-audit.sh`** — static lint of curriculum source. `[BRACKET]` placeholder leak in fenced code, missing `**Prompt**` label, fenced block with no action lead-in.
+3. **`prompt-read-check.sh`** (V-checks) — greps Actor transcript for `Read` tool_use of every `prompt-NNN.txt`. Inlining a prompt without Read = no PASS. M4-M6 enforce this via the runner's "Hard rule (forcing-function): invoke the Read tool BEFORE blockquote-pasting" prelude.
+4. **Per-phase shape assertions** — file-existence, scrollback content, structure markers (≥3 Q-markers, ≥4 StoryBrand beats, 4 named attack classes, 5 mitigation shapes verbatim, etc.). If a prompt's spec changed (e.g., 5 beats → 4), the assertion fails against fresh scratch.
 
-- `bin/judge-m4-author.sh` (28 assertions)
-- `bin/judge-m4-audit.sh` (36 assertions)
-- `bin/judge-m5.sh` (30 assertions, 7 transcripts: setup + 5 detectors + scorer)
-- `bin/judge-m6.sh` (35 assertions, 2 transcripts; J1 = `shasum` baseline check)
+**Plus cross-exercise contracts** in chained runners: M4 audit ERRORs out at Arrange if `module-4/skills/security-audit/SKILL.md` doesn't exist; M5/M6 inherit the same shape.
 
-All four are deterministic, run on Bash, take `<scratch_dir>` + transcript path(s), write `instances/<runner>-judge-report.md`, exit 0 on PASS / 1 on FAIL. **No LLM Judge dispatch in the new pipeline.** M1-M3 still use inline Judge but their assertion lists are simpler.
+**Gap to know about:** rows marked `INHERITED` in M1-M3 reports reference the prior LLM-Judge PASS verdict — those are transcript-only assertions (e.g., `jq` checking the actor Read sibling-runner files). They do *not* re-fire against current prompts. The non-inherited assertions (file shape, scrollback content) still validate the live state. To re-validate transcript-level claims after a prompt edit, dispatch the actor fresh.
 
-The aspirational endpoint per memory rule #17 — `bin/judge.sh <runner-slug>` with no LLM at all — is now ~80% there. Remaining: M1-M3 inline Judges to retire, plus a registry mapping slug → script.
+## Top-level dispatcher
 
-### Universal Judge fixes (carried preemptively into M4-M6)
-- Heading-depth regex `^#{2,3} ` (Actor may use `##` or `###`).
-- English heading greps use `grep -i*`.
-- Word caps at 1.5× spec (Haiku stub overshoot).
-- Verdict per rule #20: PASS on exit 0; FAIL on any non-zero. No LLM re-derivation.
-- `H2` (sibling-runner Read forbid) tightened to `runners/.*(judge|author|audit)\.` so the actor can read its own runner without false-positive.
+```
+bin/judge.sh <runner-slug> [extra-args]
+bin/judge.sh all              # fires M1-M3 in sequence (M4-M6 need transcript paths)
+```
 
-## Subagent-dispatch lessons from this session
+Slugs: `bootstrap-m1` | `bootstrap-m2` | `bootstrap-m3` | `bootstrap-m4-author <tr>` | `bootstrap-m4-audit <tr>` | `bootstrap-m5 <setup_tr> <det1..5_tr> <scorer_tr>` | `bootstrap-m6 <setup_tr> <run_tr> [<judge-baseline-sha>]`.
 
-- **Author/audit are NOT truly parallel.** Audit reads SKILL.md authored by author; sequence them. Memory: `feedback_subagent_dependencies_serialize.md`. Haiku will not poll for missing prereqs; it returns "I'm waiting" and exits.
-- **Re-staging from prior module is destructive.** `rm -rf scratch/bootstrap-m4 && cp -R scratch/bootstrap-m3 scratch/bootstrap-m4` is the only safe shape. Re-using a half-mutated scratch leaks state.
-- **Stale Actor reports lie.** Two M4 author runs produced a "report" copy-pasted from a prior runner's template (mentioning `plugin-install/`). The disk state was correct; the *narrative* in the report was hallucinated. Trust file artefacts + transcripts; treat report prose as suggestive.
-- **No git stash in trunk-based work.** `feedback_no_git_stash_trunk_based.md`. Either commit a slice or `fetch --merge --ff-only`.
+## Universal discipline (codified across this session)
+
+- Slugs in chain-runner `### Phase N — slug` headings must contain words that uniquely appear in the referenced prompt's content (pre-flight catches collisions). All M4-M6 PASS pre-flight; M1-M2 PASS, M3's actor pattern is not phase-keyed (single-prompt actors).
+- V-checks via `bin/prompt-read-check.sh <prompt> <transcript>` — transcript Reads are unforgeable. Forcing-function instruction in the runner prelude makes Haiku reliably Read.
+- Tracked mock fixtures under `playgrounds/bootstrap-mocks/`; staged via `bin/stage-bootstrap-mocks.sh`.
+- Word caps in Judge: 1.5× the spec to allow Haiku stub overshoot.
+- Heading-depth regex: `^#{2,3} Phase` (Actor may use `##` or `###`).
+- Per memory rule #20: `PASS on exit 0; FAIL on any non-zero` — Judge does NOT re-derive from scrollback when a script returns non-zero.
+- Per memory rule #17: every Judge run leaves a script behind; the LLM Judge is a transitional orchestrator, not an assertion-grader. **The Bootstrap battery has reached this endpoint.**
+
+## Subagent-dispatch lessons (newly compounded this session)
+
+- **Producer/consumer subagents serialize, not parallel.** Audit reads SKILL.md authored by author. Memory: `feedback_subagent_dependencies_serialize.md`. Haiku will not poll; it returns "I'm waiting" and exits.
+- **Re-staging a module's scratch is destructive.** `rm -rf scratch/bootstrap-m<N>/ && cp -R scratch/bootstrap-m<N-1>/ scratch/bootstrap-m<N>/`.
+- **No git stash in trunk-based work.** Memory: `feedback_no_git_stash_trunk_based.md`. Either commit a slice or `fetch --merge --ff-only`.
+- **Trust artefacts, not Actor narrative.** Reports occasionally hallucinate via stale templates (saw this twice on M4 author). The on-disk state and transcript are authoritative.
+- **Subagent dispatcher needs explicit forcing-functions for Haiku.** "Three Reads, three pastes" stated in the prompt makes the difference between V-PASS and silent inlining.
 
 ## Pre-staged state at end of session
 
 - `/tmp/bootstrap-mocks/` — re-stageable via `bin/stage-bootstrap-mocks.sh` (12 files).
-- `/tmp/prompts/{audit-your-agent,author-security-skill,hallucination-bakeoff,eval-loop}/` — extracted via `parse-prompts.sh`.
-- `scratch/bootstrap-m{1..6}/` — all final-state, all PASSed in this session. Each one inherits from the prior.
+- `/tmp/prompts/{personal-site-with-guardrails,name-your-challenge,build-your-challenge-memory,three-retrievers-one-curator,audit-your-agent,author-security-skill,hallucination-bakeoff,eval-loop}/` — all extracted via `parse-prompts.sh`.
+- `scratch/bootstrap-m{1..6}/` — all PASSed in this session. Each one inherits from the prior.
 
-## What's next
+## What's next (post-session)
 
-The next big move is **retire the inline LLM Judges from M1-M3** so the entire battery runs without any LLM Judge dispatch:
+The script ratchet has reached the aspirational endpoint for Bootstrap. Next moves, in priority order:
 
-1. Write `bin/judge-m1.sh`, `bin/judge-m2.sh`, `bin/judge-m3.sh` — same shape as M4-M6.
-2. Add `bin/judge.sh <runner-slug>` that dispatches to the right per-module script.
-3. Update `README.md` to reflect that the script ratchet has reached its endpoint.
+1. **AE101 mechanical battery.** AE101 has `m2-extract` runner already; rest of the modules are open. Same shape: per-module judge script, top-level dispatcher.
+2. **Retire M1-M3 INHERITED rows.** Re-run M1-M3 actors fresh in a single session; replace INHERITED with live transcript-jq checks. Cost ~25 min Haiku.
+3. **Generalize `bin/extract-tool-uses.sh`.** Every judge script duplicates the same `jq` shape that extracts tool_use stream from a transcript. One helper would isolate that.
+4. **Add `bin/runner-mapping-check.sh` to single-prompt runners.** M3's retrievers don't use phase-keyed slugs; the check skips them. A single-actor variant would catch slug-prompt drift on those too.
 
-Cross-cutting brittleness to watch:
-- The `jq` extraction of tool_use timestamps assumes a `.message.content[].type == "tool_use"` shape. If the transcript schema changes, every script breaks. A single `bin/extract-tool-uses.sh` helper would isolate that.
-- The `prompt-source-audit.sh <slug>` PSA call is duplicated across all six judge scripts. Could move to a shared verdict-collection helper.
-
-## Universal discipline (codified this session)
-
-- Slugs in chain-runner `### Phase N — slug` headings must contain words that uniquely appear in the referenced prompt's content (pre-flight catches collisions). M4-M6 all PASS pre-flight.
-- V-checks via `bin/prompt-read-check.sh <prompt> <transcript>` — transcript Reads are unforgeable.
-- Tracked mock fixtures under `playgrounds/bootstrap-mocks/`; staged via `bin/stage-bootstrap-mocks.sh`.
-- Word caps in Judge: 1.5× the spec to allow Haiku stub overshoot.
-- Heading-depth regex: `^#{2,3} Phase`.
-- Per rule #20: `PASS on exit 0; FAIL on any non-zero` — Judge does NOT re-derive from scrollback when a script returns non-zero.
-
-## Script ratchet — what `bin/` now contains
+## Script ratchet — what `bin/` contains
 
 ```
 bin/
 ├── continuation-diff.sh           HTML-aware v-N → v-N+1 continuity
-├── judge-m4-author.sh             [NEW] script-only Judge (28 assertions)
-├── judge-m4-audit.sh              [NEW] script-only Judge (36 assertions)
-├── judge-m5.sh                    [NEW] script-only Judge (30 assertions, 7 transcripts)
-├── judge-m6.sh                    [NEW] script-only Judge (35 assertions, J1 shasum)
-├── migrate-judges-to-prompt-read.sh  bulk migration scaffold (M2 only)
-├── no-write-between-reads.sh      A16-style assertion
-├── preflight-all.sh               survey every actor runner's verdict at once
+├── judge.sh                       [NEW] top-level dispatcher (slug → per-module script)
+├── judge-m1.sh                    [NEW] script-only Judge (23 assertions)
+├── judge-m2.sh                    [NEW] script-only Judge (34 assertions)
+├── judge-m3.sh                    [NEW] script-only Judge (24 assertions)
+├── judge-m4-author.sh             [SESSION] script-only Judge (28 assertions)
+├── judge-m4-audit.sh              [SESSION] script-only Judge (36 assertions)
+├── judge-m5.sh                    [SESSION] script-only Judge (30 assertions, 7 transcripts)
+├── judge-m6.sh                    [SESSION] script-only Judge (35 assertions, J1 shasum)
+├── migrate-judges-to-prompt-read.sh
+├── no-write-between-reads.sh
+├── preflight-all.sh
 ├── prompt-read-check.sh           V-checks via transcript jq
 ├── prompt-source-audit.sh         P/E lint on curriculum source
-├── run-mechanical.sh              one-shot orchestrator
-├── runner-mapping-check.sh        chain-runner aware pre-flight
-├── stage-bootstrap-mocks.sh       playground → /tmp fixture stage
+├── run-mechanical.sh
+├── runner-mapping-check.sh        chain-runner-aware pre-flight (prompt-rot sentinel)
+├── stage-bootstrap-mocks.sh
 └── verbatim-check.sh              substitute-paste check (scrollback-based)
 ```
 
-Aspirational endpoint: `bin/judge.sh <runner-slug>` with no LLM Judge dispatch at all. M4-M6 done; M1-M3 next session.
+**Aspirational endpoint reached for Bootstrap.** AE101 is the next surface.

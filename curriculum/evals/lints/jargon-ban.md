@@ -21,7 +21,7 @@ READ IN SEQUENCE (arc order):
 - agents-building-agents.md (M8) + inlined
 
 BANNED WORDS (from SKILL.md § Business-audience jargon ban):
-embeddings, vector, vector database, RAG, retrieval-augmented generation, retrieval (technical sense), pipeline (technical sense), orchestration, orchestrator, schema, architecture, subagent, frontmatter, prompt engineering, inference (technical sense), fine-tuning
+embeddings, vector, vector database, RAG, retrieval-augmented generation, retrieval (technical sense), pipeline (technical sense), orchestration, orchestrator, schema, architecture, subagent, frontmatter, prompt engineering, inference (technical sense), fine-tuning, statistical default(s), token (technical sense), context window
 
 HARD-BANNED WORDS (never earnable — substitute "exercise"):
 ritual, practice (as a noun for a training activity), ceremony

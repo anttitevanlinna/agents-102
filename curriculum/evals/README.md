@@ -30,19 +30,26 @@ What can break because of the student's laptop, OS, network, or default apps —
 
 Cheapest catches. **Run before every cohort.** New incidents always land here same day.
 
-### Unit (per-artifact)
+### Unit (per-artifact) — three-class architecture (2026-05-02 refactor)
 
-Static checks on single files or small groups. Run on every content edit.
+Per-artifact checks partition by **evidence source**, not by criterion count. Three classes, dispatched in parallel by `/eval-fire <class> <file>` (single class) or `/curriculum-pre-ship-audit <file>` (all three + Quality-state + neighbour-alignment).
 
-- `lecture.md` — reusable lecture judge (exists, per-lecture instance in `instances/`)
-- `exercise.md` — reusable exercise judge (exists, per-exercise instance in `instances/`)
+- `judges/writing.md` — writing-class judge prompt template. Haiku 4.5. Reads `memory/check_*.md` compendiums tagged `eval_classes: writing` (writing / sales_copy / prompts / student_facing surfaces). Catches what the auto-fix in `eval-class-router.sh` can't (register, atmospheric phrasing, value-prop leak, over-hedge).
+- `judges/story.md` — storytelling-class judge prompt template. Sonnet 4.6. Reads compendiums tagged `eval_classes: storytelling` (pedagogy / strategy_tie_in / lectures). Reads structured sim trace from `sim-cache/<slug>.json`; regenerates if SHA stale.
+- `judges/technical.md` — technical-class judge prompt template. Sonnet 4.6. Reads compendiums tagged `eval_classes: technical` (platform / research_claims). Static checks: capability claims, citation evidence ladder, skill availability, URL liveness.
+- `exercise.md` / `lecture.md` — manifests. Name which classes + scopes run per artefact type. Not megajudge templates.
+- `sim-cache/` — content-SHA-keyed JSON traces (gitignored, user-local).
+
+Hook-side auto-fix runs synchronously on every Edit/Write to curriculum body prose: em-dash → comma, ritual/ceremony → exercise, importantly/crucially drop, synergize → combine, paradigm shift → real shift, honest(ly) → candid(ly), delve forms → look-at forms, crucial-on-noun drop. Implementation: `~/Projects/agents-102/.claude/hooks/eval-class-router.sh`.
+
+Lints (deterministic, read-only):
 - `lints/path-consistency.md` — every file path an exercise names must exist in the scaffold
 - `lints/time-budget.md` — phase times sum ≤ 1h45
-- `lints/jargon-ban.md` — banned-word lint, cumulative across arc order
+- `lints/jargon-ban.md` — banned-word lint, cumulative across arc order (now mostly subsumed by hook auto-fix)
 - `lints/callout-collisions.md` *(stub)* — philosophy callouts repeated across adjacent lectures
 - `lints/capability-freshness.md` *(stub)* — Claude Code UI claims dated, not older than 3 months
 
-**Simulation evals** also live at this layer — running `/content-creation`'s simulation protocol on a single exercise with a persona. That's a deeper unit check, costs more per run, catches what static lints can't.
+Legacy megajudge instances (29 .md files from before 2026-05-02): archived at `instances/legacy/`. New audits write per-class JSON to `instances/<slug>.<class>.json`.
 
 ### Integration (seam judges)
 

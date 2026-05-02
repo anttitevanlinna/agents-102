@@ -17,7 +17,7 @@ All at `/tmp/bootstrap-m1-substitutes/`:
 - `linkedin-paste.txt` — paste before Prompt 1
 - `project-story.txt` — paste in Phase 3 when asked for the project
 - `strengths-pushback.txt` — paste after Claude proposes three strengths
-- `hate-list.txt` — paste after Prompt 5
+- `hate-list.txt` — paste after Prompt 4
 
 ## Prompts to execute in order
 
@@ -49,16 +49,16 @@ Parsed prompts at `/tmp/prompts/personal-site-with-guardrails/prompt-00{1..6}.tx
 8. Read `strengths-pushback.txt`, paste contents. Reshape strengths.
 9. Regenerate `site.html` (different from v2 — small voice tweak is enough). `cp site.html site.html.v3-drucker`.
 
-### Phase 4 — look back
+### Phase 4 — anti-brand
 
-10. Read `prompt-004.txt`, paste verbatim. **Read `site.html.v1-baseline`** — this Read is a graded assertion.
-11. In your response, name three quoted claims from v1. Use backticks or blockquotes around each quote. **Do not Write or Edit `site.html` in this phase.**
+10. Read `prompt-004.txt`, paste verbatim. Read `hate-list.txt`, paste contents.
+11. Walk four anti-brand steps as four distinct assistant turns (hate → offerings/types → positive opposite → blockers-to-outcomes). One step per turn.
+12. Regenerate `site.html` (different from v3). `cp site.html site.html.v4-antibrand`.
 
-### Phase 5 — anti-brand
+### Phase 5 — look back
 
-12. Read `prompt-005.txt`, paste verbatim. Read `hate-list.txt`, paste contents.
-13. Walk four anti-brand steps as four distinct assistant turns (hate → offerings/types → positive opposite → blockers-to-outcomes). One step per turn.
-14. Regenerate `site.html` (different from v3). `cp site.html site.html.v4-antibrand`.
+13. Read `prompt-005.txt`, paste verbatim. **Read `site.html.v1-baseline`** — this Read is a graded assertion.
+14. In your response, name three quoted claims from v1. Use backticks or blockquotes around each quote. **Do not Write or Edit `site.html` in this phase.**
 
 ### Phase 6 — free iteration
 
@@ -76,7 +76,7 @@ Parsed prompts at `/tmp/prompts/personal-site-with-guardrails/prompt-00{1..6}.tx
 
 ## Reports
 
-**Scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-scrollback.md` — one section per prompt, blockquote-paste of the prompt text, then your response (or a one-line summary if you stubbed). Include all student-substitute pastes and all Phase 2/5 step-by-step turns.
+**Scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-scrollback.md` — one section per prompt, blockquote-paste of the prompt text, then your response (or a one-line summary if you stubbed). Include all student-substitute pastes and all Phase 2/4 step-by-step turns.
 
 **Report:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-report.md`:
 
@@ -107,5 +107,5 @@ Under 200 words. Do not grade yourself.
 - Read any judge or sibling actor runner.
 - Read any maintainer doc.
 - Paraphrase prompts. Paste verbatim, blockquote-prefixed.
-- Skip the v1 baseline copy — Phase 4's Read assertion needs it on disk.
+- Skip the v1 baseline copy — Phase 5's Read assertion needs it on disk.
 - Generate long realistic content. Stubs are fine.

@@ -5,7 +5,7 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent — LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat).
+About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -36,12 +36,13 @@ After this module, you will be able to:
 - Guardrails are structured context, not a checklist
 - You are the world's best evaluator of your own profile. Domain expertise IS the eval
 - The guardrail IS the control: average output becomes great not because you prompted better
+- **You made this. Module 2 compounds it.**
 
 ## Debrief
 
 Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro is Claude reading the file against the actual session. A different lens, surfacing what landed, what fell flat, what to keep, what to drop. Two passes; the second is where the file starts compounding.
 
-Ask Claude to walk a retro on the rules file: what landed, what didn't, what to sharpen, what to drop.
+Ask Claude to retro your rules file.
 
 **Prompt** *(Claude Code)*
 
@@ -58,7 +59,9 @@ Claude runs the retro and updates the file, then summarises what changed in chat
 
 Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a rule file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
-**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict. Ask Claude to dispatch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold (you want a fresh Claude with no memory of building it):
+**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
+
+Ask Claude to spawn <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold.
 
 **Prompt** *(Claude Code)*
 
@@ -76,7 +79,7 @@ Compare Claude's picks to what you expected. Where cold-Claude sees generic, you
 ## Next
 You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
 
-## Homework after Module 1 — before Module 2
+## Homework after Module 1, before Module 2
 
 [Module 2 prework](lectures/module-2-prework.md). Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy's LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.
 

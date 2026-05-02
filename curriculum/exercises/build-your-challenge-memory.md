@@ -6,7 +6,7 @@ A chat forgets. A memory remembers.
 
 You've just pinned your challenge in `./challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
-The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Four phases: curate, put to work, compound, self-maintain.
+The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running from the opener. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
 
 **Phase 1. Curate, ingest, build.**
 

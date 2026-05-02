@@ -14,7 +14,7 @@ You will come back to a short run note: *round 1 flagged 11 claims, round 2 flag
 
 **Phase 0: Run the judge once (~5 min).**
 
-One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle. Open your training directory in Claude Code.
+One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle. You should already be in this module's fresh session at the training-directory root.
 
 Ask Claude to generate one briefing and score it with the judge from Module 5.
 

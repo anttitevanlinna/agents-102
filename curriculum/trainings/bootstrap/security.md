@@ -66,7 +66,7 @@ That is why skills travel. A good skill is not tied to one chat, one project, or
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
 
-Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment — before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.
+Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.
 
 ## Homework after Module 4: between-module reading
 
@@ -82,6 +82,8 @@ Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visi
 - **Time math owed re-verification.** The first exercise now includes a raw policy run before packaging and the Cowork personal-skill creation step; the second exercise now carries load/apply/mitigate. Current rough budget: lecture 8 + run/package 40 + audit 35 + Connections 5 + Debrief 5 + transitions ~= 98-103 min. Fits 1h45 with tight transitions; needs facilitator pass.
 - ~~Repetition trim~~ — DONE. Key Concept #2 rewritten to drop the *"carries the expertise you fed it"* closer; the exercises and prework still earn the line.
 - 90-min facilitator dry-run before first cohort. Specifically: Exercise 1 Cowork personal-skill creation moment, Exercise 2 load moment with one Cowork colleague + one CLI colleague, and one colleague playing the freezing-SVP for Exercise 1 Phase 1.
+
+**TODO — skills-as-sharing-preview callout (M4 → M7 bridge):** add a short callout or mini-lecture (likely inside *Build More Skills For Recurring How*, or as a sibling section right after) framing *"Skills is the simplest way to share agents."* The student has just authored a personal skill in Exercise 1, so the line lands experientially: a skill is a portable file, not a deployed service — drop it in a teammate's `~/.claude/skills/` and they have the same expertise. Foreshadows M7's four sharing strategies (context / skill / output / interface) from inside M4 without resolving them — names *one* of the four so M7's catalogue still earns its keep. Close-condition: callout exists in body; M7 *From Personal to Team* still introduces the full four-way frame and references back to the M4 skill the student already shipped.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create → Analyze → Evaluate (authoring + applying + evaluating residual)

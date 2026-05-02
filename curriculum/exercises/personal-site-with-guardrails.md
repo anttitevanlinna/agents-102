@@ -38,6 +38,8 @@ One trap to name first. StoryBrand puts the customer in the hero slot. If you le
 
 One liners and short answers usually give enough clue. Make it quick and iterate.
 
+Ask Claude to apply tuned StoryBrand to the help section, one beat at a time.
+
 **Prompt** *(Claude Code)*
 
 ```
@@ -56,7 +58,9 @@ Claude walks you through the five tuned beats. Answer each in your own words; do
 
 **Phase 3. Strengths.**
 
-Your strengths shape how the whole site sounds. List 3-5 in one line each — Claude takes the rest from there.
+Your strengths shape how the whole site sounds. List 3-5 in one line each, Claude takes the rest from there.
+
+Tell Claude your strengths and have it regenerate the site.
 
 **Prompt** *(Claude Code)*
 
@@ -79,6 +83,8 @@ Same agentic pattern again: **name the framework, tune it, ask Claude to run it.
 
 Give Claude a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
 
+Ask Claude to apply anti-branding using your hate list.
+
 **Prompt** *(Claude Code)*
 
 ```
@@ -100,7 +106,9 @@ Read the new version. The site gets sharper. Two frameworks now layered: StoryBr
 
 **Phase 5. Look back.**
 
-Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing. Better plan: ask Claude to do the comparison.
+Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing.
+
+Ask Claude to compare versions and name three generic claims.
 
 **Prompt** *(Claude Code)*
 
@@ -124,6 +132,8 @@ Open prompts. You drive.
 **Close. Package what you learned.**
 
 The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
+
+Ask Claude to write your first generation rules file.
 
 **Prompt** *(Claude Code)*
 

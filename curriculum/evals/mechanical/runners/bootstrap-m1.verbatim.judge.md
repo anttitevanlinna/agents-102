@@ -17,6 +17,9 @@ You are grading whether the M1 prompt chain ran end-to-end on a clean scratch an
 
 - `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
 - `curriculum/evals/mechanical/bin/prompt-source-audit.sh personal-site-with-guardrails` — P/E checks (static lint)
+- `curriculum/evals/mechanical/bin/runner-mapping-check.sh <runner> <exercise>` — pre-flight: phase ↔ prompt-NNN.txt agreement
+- `curriculum/evals/mechanical/bin/no-write-between-reads.sh <jsonl> <start-anchor> <end-anchor> <forbidden-pattern>` — A16 enforcement
+- `curriculum/evals/mechanical/bin/continuation-diff.sh <old> <new> [max_ratio]` — A13/A21 enforcement (HTML-aware: strips `<style>` blocks)
 
 ## Method
 
@@ -35,23 +38,23 @@ For each `prompt-00N.txt`: `verbatim-check.sh <prompt> <scrollback>`. Report exi
 - **A5.** `site.html.v2-storybrand` exists.
 - **A8.** Actor read or pasted the project story: either `grep -F` first 40 chars of `project-story.txt` in scrollback, OR transcript has a Read of that path (`jq` on `.jsonl`).
 - **A9.** Actor produced three strengths: scrollback contains a numbered or bulleted list of 3 items in the strengths phase. Heuristic: between the strengths-pushback substitute paste and v3 generation, count `^[1-9]\.` or `^- ` lines — expect ≥ 3.
-- **A14.** Actor read v1 baseline before Phase 4: transcript Read of `site.html.v1-baseline` (`jq -c 'select(.message.content[]?.input.file_path? | test("v1-baseline"))' <jsonl>`).
-- **A15.** Phase 4 named ≥ 3 quoted claims from v1: scrollback Phase-4 section contains ≥ 3 backtick or blockquote spans.
-- **A16.** No regeneration in Phase 4: between Phase-4 prompt-paste and Phase-5 prompt-paste, no Write tool call on `site.html`. `jq` filter on `.jsonl`.
-- **A17.** Hate-list appears verbatim in scrollback after Prompt 5: `verbatim-check.sh hate-list.txt scrollback`.
+- **A14.** Actor read v1 baseline during look-back (Phase 5): transcript Read of `site.html.v1-baseline` (`jq -c 'select(.message.content[]?.input.file_path? | test("v1-baseline"))' <jsonl>`).
+- **A15.** Look-back named ≥ 3 quoted claims from v1: scrollback Phase-5 / look-back section contains ≥ 3 backtick or blockquote spans.
+- **A16.** No regeneration in look-back: `no-write-between-reads.sh <jsonl> "prompt-005.txt" "prompt-006.txt" "site.html"`. PASS on exit 0.
+- **A17.** Hate-list appears verbatim in scrollback after Prompt 4: `verbatim-check.sh hate-list.txt scrollback`.
 - **A22.** `personal-brand-generation.md` exists: `test -f <scratch>/personal-brand-generation.md`.
 - **A25.** No `[BRACKET]` placeholders in `personal-brand-generation.md`: `grep -nE '\[[A-Z][A-Z_]+\]' file && FAIL`.
 
 ### One-at-a-time (anti-question-dump)
 
 - **A4.** Phase 2 walked five beats one at a time. Mechanical heuristic: between prompt-002 paste and v2 generation, count distinct assistant turns that ask a single beat question. Expect ≥ 4 (Character / Problem / Guide / Plan / Success — Success is sometimes batched). FAIL if a single assistant turn fires ≥ 3 questions.
-- **A18.** Phase 5 walked four anti-brand steps: ≥ 3 distinct assistant turns between prompt-005 paste and v4 generation.
+- **A18.** Anti-brand walked four steps (Phase 4): ≥ 3 distinct assistant turns between prompt-004 paste and v4 generation.
 - **A27.** Cross-phase: no question-dump anywhere a prompt says *"one at a time."* Already covered by A4 + A18.
 
 ### Continuation between phases
 
-- **A13.** v3 file is a continuation of v2 (not wholesale rewrite): `diff site.html.v2-storybrand site.html.v3-drucker | wc -l` should be > 0 AND < 80% of `wc -l site.html.v2-storybrand`. Flags both no-change-at-all and wholesale-rewrite.
-- **A21.** v4 is a continuation of v3: same diff bound.
+- **A13.** v3 is a continuation of v2: `continuation-diff.sh <scratch>/site.html.v2-storybrand <scratch>/site.html.v3-drucker`. PASS on exit 0.
+- **A21.** v4 is a continuation of v3: `continuation-diff.sh <scratch>/site.html.v3-drucker <scratch>/site.html.v4-antibrand`. PASS on exit 0. (Script strips `<style>` blocks before diffing — added inline CSS no longer false-fails the bound.)
 
 ### Substitution log
 
@@ -69,6 +72,10 @@ Run `jq` on transcript for any Read of:
 ### Prompt-source audit
 
 Run: `bin/prompt-source-audit.sh personal-site-with-guardrails`. Capture exit code + verdict. PASS if `Verdict: READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
+
+### Runner-mapping pre-flight
+
+Run: `bin/runner-mapping-check.sh curriculum/evals/mechanical/runners/bootstrap-m1.verbatim.actor.md curriculum/exercises/personal-site-with-guardrails.md`. PASS on exit 0 (`READY` or `READY-WITH-FLAGS`); FAIL on `BLOCK`. This catches phase-mapping rot before the Actor runs and is an additional Judge spot-check after the run.
 
 ## Report
 

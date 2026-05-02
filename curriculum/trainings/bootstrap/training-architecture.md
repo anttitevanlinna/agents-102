@@ -43,13 +43,23 @@ The default training directory is defined in `.claude/skills/self-study/SKILL.md
 └── module-4/policies/             # policy reference files installed in prework
 ```
 
-Session scope changes at two seams: prework -> Module 1 -> Module 2 onward.
+The folder stays the same. What changes is what the agent is allowed to make durable at the root.
+
+Session scope changes at two seams: prework -> Module 1 -> Module 2 onward. Scope is controlled by output paths and rule-file loading, not by opening deeper subfolders.
 
 - Prework: open the training-directory root; write prework outputs under `prework/`.
 - Module 1: open the training-directory root; write only inside `module-1/`.
 - Module 2 onward: keep the training-directory root open; write cross-module artifacts at the root plus per-module working files.
 
 The Module 1 -> Module 2 transition is conceptual: from building one scoped thing to building a system.
+
+## Session Boundaries
+
+Bootstrap assumes a fresh session or task at the start of each module. Participants arrive after a gap, usually without last week's scrollback. That is the point: cross-module continuity must live on disk, not in chat history. The module opener owns the fresh-session instruction and names the training-directory root as the working folder.
+
+Inside a module, keep the same session or task running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise, plus files written on disk. If an exercise intentionally needs a fresh session, say why in the exercise body.
+
+The durable handoff between modules is always file-based: `./CLAUDE.md`, `./challenge.md`, `memory/`, `sources/`, `agents/`, `judges/`, `outputs/`, and the relevant `module-N/` evidence. The session is disposable; the training directory compounds.
 
 ## Bootstrap Rule Files
 
@@ -63,7 +73,11 @@ The root `CLAUDE.md` grows through each later module's Debrief. Claude reviews t
 
 ## Artifact Conventions
 
-Cross-module artifacts live at the root:
+Module directories are side pockets. Root is the compounding system.
+
+Use `module-N/` when an artifact belongs to that module's local episode, example, benchmark, or evidence trail. It matters, but it should not become ambient system memory. Module 1's personal site is the canonical case: `module-1/site.html` is visible proof and emotional payoff, but later sessions should not live with it automatically.
+
+Use root-level homes when an artifact should travel forward and shape later agent behavior. Cross-module artifacts live at the root:
 - `memory/`
 - `agents/`
 - `sources/`
@@ -71,7 +85,7 @@ Cross-module artifacts live at the root:
 - root `CLAUDE.md`
 - `judges/` when introduced by Module 5
 
-Per-module working files live inside `module-N/`.
+Per-module working files live inside `module-N/`. The diagnostic is: should future sessions automatically live with this artifact, or deliberately reach back to it as evidence? If automatically, use the root or a root-level home. If deliberately, use `module-N/`.
 
 Module 8 uses a separate shared deliberation folder, not a synced subfolder inside the local training directory. The folder starts almost empty and contains one subfolder per participant. At the start of the module, the trainer posts the actual folder path or name in chat. Prompts refer to "the shared folder the trainer posted in chat" rather than a fixed alias. Every participant's agent writes only to its own named subfolder and can read the others. The buyer or sponsor seeds `challenge.md` at the shared root. The central synthesizer agents own the selection and synthesis files at the shared root: `selection-board.md`, `midway-instructions.md`, `strategy-kernel.md`, `agent-set.md`, and `plan.md`.
 

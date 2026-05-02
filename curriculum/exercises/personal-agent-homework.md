@@ -22,7 +22,7 @@ For the risk-scan and next-move jobs, no connector needed — the agent reads yo
 
 Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website (colours, typography, headers, the voice) and store it as a pattern the agent reuses forever. Same lesson as the memory: text on disk, referenced by name.
 
-Remember Module 1's snake.html? Claude writes HTML files. You're about to give those files a house style.
+Remember Module 1's `module-1/site.html`, and the prework `prework/snake.html` before it? Claude writes HTML files. You're about to give those files a house style.
 
 Paste:
 
@@ -34,7 +34,7 @@ Then append one line to my root CLAUDE.md under a new "Styling" heading: "When p
 Show me both files before saving.
 ```
 
-Give Claude the URL or paste a key page. It extracts, writes `style.md` at the root, appends the `CLAUDE.md` rule. Read both. Edit `style.md` where Claude missed something — if your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added to `CLAUDE.md` means every agent you build from here on will use this style when it produces HTML.
+Give Claude the URL or paste a key page. It extracts, writes `./style.md`, appends the `./CLAUDE.md` rule. Read both. Edit `./style.md` where Claude missed something — if your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added to `./CLAUDE.md` means every agent you build from here on will use this style when it produces HTML.
 
 **Step 3 — write the agent's instructions.**
 
@@ -64,25 +64,25 @@ In the desktop app, open the **Schedule** sidebar. Click **New task → New loca
 Read module-2/morning-agent/morning.md and run the job. Read the current state of memory/ as context. Follow the rules in that file and in the root CLAUDE.md. Write the output to module-2/morning-agent/latest.html.
 ```
 
-Save. Click **Run now** once. Double-click `latest.html` in your file browser — it opens in your browser and should look like it came off your company site. Fix anything off by editing `morning.md` or `style.md` — the scheduled task reads both every run, so tomorrow picks up the change.
+Save. Click **Run now** once. Double-click `module-2/morning-agent/latest.html` in your file browser — it opens in your browser and should look like it came off your company site. Fix anything off by editing `module-2/morning-agent/morning.md` or `./style.md` — the scheduled task reads both every run, so tomorrow picks up the change.
 
 **Step 5 — let it run for a week.**
 
-Don't retune for the first three days. Watch what it produces as-is. Every morning, open `latest.html`. Watch for:
+Don't retune for the first three days. Watch what it produces as-is. Every morning, open `module-2/morning-agent/latest.html`. Watch for:
 - Days when the output is genuinely useful — what made it work?
 - Days when the output is comical or wrong — what was missing from the memory that would have saved it?
 - Claims the agent made that you, the domain expert, know are off — those are your next memory edits.
-- Styling drift — is `latest.html` still looking like your company site, or has it slowly gone generic? That's a signal to sharpen `style.md`.
+- Styling drift — is `module-2/morning-agent/latest.html` still looking like your company site, or has it slowly gone generic? That's a signal to sharpen `./style.md`.
 
 The memory is alive now. What the agent misses today is a prompt to sharpen the memory tomorrow — and the HTML you open with your coffee is a system, not a document.
 
 **What happens:**
 
-Your memory stops being a snapshot and starts being a system. Every morning the agent reads it, pushes something back at you — in your own house style, not Claude's — and gives you one more piece of evidence about what's sharp and what's soft. A week of this and the memory looks different from the one you left class with, because you kept noticing. The HTML looks different too, because you kept tightening `style.md`.
+Your memory stops being a snapshot and starts being a system. Every morning the agent reads it, pushes something back at you — in your own house style, not Claude's — and gives you one more piece of evidence about what's sharp and what's soft. A week of this and the memory looks different from the one you left class with, because you kept noticing. The HTML looks different too, because you kept tightening `./style.md`.
 
 **The point:**
 
-A memory that sits there is a document. A memory that gets read by an agent on a schedule, producing output that looks like it belongs to your company and that you actually respond to, is the start of a loop. Module 2 built the memory; this homework builds the loop. Every subsequent module compounds on it — and `style.md` travels with you. Every agent you build from here on that produces HTML will look native to the organisation, because the rule is in the file every agent reads.
+A memory that sits there is a document. A memory that gets read by an agent on a schedule, producing output that looks like it belongs to your company and that you actually respond to, is the start of a loop. Module 2 built the memory; this homework builds the loop. Every subsequent module compounds on it — and `./style.md` travels with you. Every agent you build from here on that produces HTML will look native to the organisation, because the rule is in the file every agent reads.
 
 **Time:** 35 minutes to set up. One glance each morning for a week.
 

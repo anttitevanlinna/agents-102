@@ -31,11 +31,17 @@ TRANSCRIPT="$2"
 
 # Count tool_use entries of name "Read" with input.file_path matching $PROMPT
 # exactly. The transcript is JSONL; each line is a message envelope whose
-# .message.content is a list that may contain tool_use blocks.
+# .message.content is EITHER a string (system message) or an array of
+# content blocks (assistant turns with tool_use). Skip the string case
+# explicitly so jq doesn't error on iteration.
 hits=$(jq -r --arg p "$PROMPT" '
-  .message.content // []
-  | map(select(.type? == "tool_use" and .name? == "Read" and .input.file_path? == $p))
-  | length
+  if (.message.content | type) == "array" then
+    .message.content
+    | map(select(.type? == "tool_use" and .name? == "Read" and .input.file_path? == $p))
+    | length
+  else
+    0
+  end
 ' "$TRANSCRIPT" 2>/dev/null | awk '{s+=$1} END{print s+0}')
 
 if [[ "$hits" -ge 1 ]]; then

@@ -1,134 +1,108 @@
 # Judge — M1 chain verbatim
 
-You are grading an Actor subagent that executed AE101 Module 1 end-to-end (3 exercises on the same bug / same repo) by pasting each exercise prompt verbatim from disk. You did not run the exercise; the Actor did. Inputs: final scratch state, the Actor's full `.jsonl` transcript, the Actor's scrollback file, and the six extracted prompt files on disk.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+
+You are grading whether the M1 chain (3 exercises, same repo) ran end-to-end and whether file artefacts have the expected SHAPE. You are NOT grading whether the fix is elegant, the rules read well, or summaries are insightful.
 
 ## Inputs
 
-- **Scratch path:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain-verbatim`
-- **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>` (the dispatcher fills it in; if blank, find the newest under `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*/subagents/agent-*.jsonl`).
-- **Actor report:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-report.md`.
-- **Actor scrollback:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-scrollback.md`.
-- **Prompt files:** `/tmp/prompts/orient-and-introspect/prompt-00{1,2}.txt`, `/tmp/prompts/fix-tests-first/prompt-001.txt`, `/tmp/prompts/compound-and-close/prompt-00{1,2,3}.txt`.
+- **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m1-chain-verbatim`
+- **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>` (if blank, find newest under `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*/subagents/agent-*.jsonl`).
+- **Actor report:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-report.md`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/m1-chain-verbatim-actor-scrollback.md`
+- **Prompt files:** `/tmp/prompts/orient-and-introspect/prompt-00{1,2}.txt`, `/tmp/prompts/fix-tests-first/prompt-001.txt`, `/tmp/prompts/compound-and-close/prompt-00{1,2,3}.txt`
 
 ## Tooling
 
-- Use `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt-file> <scrollback>` for V-assertions (handles blockquote normalization — strips leading `> ?` per line before substring comparison). Required for multi-line prompts; raw `grep -F` or Python `in` fails when the Actor pastes a multi-line prompt as a markdown blockquote.
-- `jq` and `grep -o '"file_path":"[^"]*"'` on the transcript for Read-call inspection:
+- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh <slug>` — P/E checks
+- `jq -c 'select(.type=="assistant") | .message.content[] | select(.type=="tool_use") | {name: .name, input: .input}' <jsonl>` — transcript inspection
 
-```
-jq -c 'select(.type=="assistant") | .message.content[] | select(.type=="tool_use") | {name: .name, input: .input}' <path>
-grep -o '"file_path":"[^"]*"' <path> | sort -u
-```
+## Method
+
+For every assertion: run the named script, capture exit code + first line of output. No quoting, no narration, no taste calls. If you find yourself reading scrollback to judge whether content is "good," stop — that's not your job.
 
 ## Assertions
 
-Binary PASS / FAIL with evidence. Every fail quotes the evidence.
+### Verbatim round-trip (V1–V6)
 
-### Verbatim round-trip (the regression test)
-
-For each V-check, run `bin/verbatim-check.sh <prompt> <scrollback>`. Exit 0 = PASS, exit 1 = FAIL. Quote the 40-char prefix the helper prints. Do NOT use raw `grep -F` or Python `in` — those fail on multi-line blockquote-wrapped prompts.
-
-- **V1.** `prompt-001.txt` from orient-and-introspect via `verbatim-check.sh`.
-- **V2.** `prompt-002.txt` from orient-and-introspect via `verbatim-check.sh`.
-- **V3.** `prompt-001.txt` from fix-tests-first via `verbatim-check.sh`.
-- **V4.** `prompt-001.txt` from compound-and-close via `verbatim-check.sh`.
-- **V5.** `prompt-002.txt` from compound-and-close via `verbatim-check.sh`.
-- **V6.** `prompt-003.txt` from compound-and-close via `verbatim-check.sh`.
+For each `prompt-00N.txt`: `verbatim-check.sh <prompt> <scrollback>`. Report exit code + prefix.
 
 ### Chain state
 
 - **A1.** `<scratch>/.git/` exists; `git log --oneline | wc -l` ≥ 3.
-- **A2.** A test file exists for the fixed module (likely `src/terrain.test.js`).
-- **A3.** Fix is minimal. Quote the `isSolid` hunks from both bug commit and fix commit. Flag if the "fix" is larger than 5 lines on the production code path.
-- **A4.** After fix: `npm test` exits 0 OR equivalent test runner passes. Run: `cd <scratch> && npm test` (may need `npm install` first; note if so).
+- **A2.** A test file exists for the fixed module: `find <scratch> -name '*terrain*test*' -o -name '*test*terrain*'`.
+- **A3.** After fix: `cd <scratch> && npm test` exits 0 (may need `npm install` first; note if so).
 
 ### Ex3 file-system outputs
 
-- **A5.** `<scratch>/CLAUDE.local.md` exists.
-- **A6.** Non-empty. Contains at least one rule referencing a concrete moment from Ex1 or Ex2. Quote the sentence. A generic rule that could appear anywhere without this session is NOT evidence of compounding — fail it.
-- **A7.** No `[BRACKET]` placeholders. `grep -n '\[[A-Z]' <scratch>/CLAUDE.local.md`.
-- **A8.** `<scratch>/.gitignore` contains `CLAUDE.local.md` (or equivalent pattern that matches it) **OR** `git check-ignore <scratch>/CLAUDE.local.md` succeeds via a global excludesFile. **This tests the gitignore prompt fix (9f575c8).** If only global works, FLAG — the tightened prompt should have driven a local .gitignore edit on a fresh student laptop.
-- **A9.** `<scratch>/.claude/settings.local.json` is valid JSON. (The 2026-04-27 prompt edit removed the `additionalDirectories` step that earlier versions drove. The file may be untouched — `{}` is acceptable.)
+- **A5.** `<scratch>/CLAUDE.local.md` exists: `test -f`.
+- **A7.** No `[BRACKET]` placeholders: `grep -nE '\[[A-Z][A-Z_]+\]' <scratch>/CLAUDE.local.md` && FAIL.
+- **A8.** `<scratch>/.gitignore` covers `CLAUDE.local.md` (or equivalent that matches it) OR `git check-ignore <scratch>/CLAUDE.local.md` succeeds via global excludesFile. If only global, FLAG.
+- **A9.** `<scratch>/.claude/settings.local.json` is valid JSON: `jq . <path>`.
 
-### Summary quality
+### One-at-a-time (anti-question-dump)
 
-- **A11.** Ex3 compound summary (in the transcript, after the first Ex3 prompt paste) is 3–5 paragraphs, each under 60 words.
-- **A12.** Summary cites specific session moments (quoted phrase, file path, or exercise move). Quote two.
-- **A13.** No generic filler — no unanchored *"always verify output,"* *"follow best practices,"* or motivational sentences. FAIL and quote if any appear.
+- **A15.** No prompt that says "one at a time" was followed by a question-dump. Mechanical: between each prompt paste and the next, count assistant turns that fire ≥ 3 questions in one turn. FAIL if any. (Currently: chain prompts don't have explicit one-at-a-time directives — covered if any future prompt adds it.)
 
-### Prompt-chain integrity
+### Continuation between exercises
 
-- **A14.** No prompt stalled on a value the Actor was not prompted to supply mid-chain. Every prompt paste was followed by an assistant response that acted, not a stuck question.
-- **A15.** No question-dump where the prompt implies "one at a time."
-- **A16.** Ex3's `CLAUDE.local.md` is integrated, not appended. Check for "retro notes," "session X log" heading, or boilerplate tacked on.
+- **A17.** Ex2 references Ex1 work: transcript has a Read of any file Ex1 Read (e.g., a source file from orient phase). `jq` filter on `.jsonl` for Read tool calls between Ex1 and Ex2 boundaries.
+- **A18.** Ex3 compound prompt response references Ex1 OR Ex2 file paths: `grep` Ex3 section in scrollback for any path mentioned earlier in scrollback.
 
-### Cross-exercise state
+### Harness leakage (H1–H5)
 
-- **A17.** Ex2 execution referenced Ex1's orientation/introspection. Transcript: Ex2 response should mention what was read in Ex1 OR reason about the window mapped in Ex1.
-- **A18.** Ex3's compound summary references BOTH Ex1 and Ex2 moments. Quote one of each.
+`jq` on transcript for any Read of:
+- `curriculum/exercises/orient-and-introspect.md`, `fix-tests-first.md`, `compound-and-close.md` → H3 FAIL.
+- Any judge runner or sibling actor runner (own actor file allowed) → H2 FAIL.
+- `lemmings-seed.maintainer.md` or any `*.maintainer.md` → H1 FAIL.
+- Any harness-internal file inside `<scratch>` that the Actor then Read again → H5 FAIL.
+- Commit messages: `git -C <scratch> log --oneline | grep -iE 'planted|harness|drift'` → H4 FAIL.
 
-### Harness leakage
+### Prompt-source audit
 
-- **H1.** Actor did NOT read the seed maintainer doc (`lemmings-seed.maintainer.md`) or any file documenting planted state. Transcript grep: no Read call with that path.
-- **H2.** Actor did NOT read any judge runner or other actor runner. Transcript grep: no Read on `runners/*.judge.md` or `runners/m[^1]*.actor.md`. Reading its own `m1-chain.verbatim.actor.md` is allowed.
-- **H3.** Actor did NOT read any exercise file under `curriculum/exercises/`. Transcript grep. The verbatim protocol requires all prompt content came from `/tmp/prompts/`.
-- **H4.** Arrange commit messages are neutral. Quote each from `git log`. FAIL if any names the planted state.
-- **H5.** No harness-internal files written inside `<scratch>` that the Actor then read.
+Run once per exercise slug:
+- `bin/prompt-source-audit.sh orient-and-introspect`
+- `bin/prompt-source-audit.sh fix-tests-first`
+- `bin/prompt-source-audit.sh compound-and-close`
 
-### Harness substitutions (informational)
-
-- **A19.** List every harness substitution the Actor used with the transcript line that triggered it. Not pass/fail — informs where harness fidelity is thin.
+Capture exit code + verdict for each. PASS if `Verdict: READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md`.
-
-Shape:
+Write `curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md`:
 
 ```markdown
 # Judge report — M1 chain verbatim
 
 ## Summary
-<2–3 lines: pass count, most interesting failure, one surprise from the transcript.>
+Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audit: K.
 
-## Actor transcript
-<absolute path>
-
-## Scratch
-<absolute path>
-
-## Assertions
-
-V1. PASS/FAIL — <evidence>
+## V1–V6
+V1: PASS — <prefix>
 ...
-V6. PASS/FAIL — <evidence>
 
-A1. PASS/FAIL — <evidence>
+## A-series
+A1: PASS — <evidence>
 ...
-A19. <list of substitutions>
 
-## Harness leakage
-H1. PASS/FAIL — <evidence>
+## H-series
+H1: PASS — <evidence>
 ...
-H5. PASS/FAIL — <evidence>
 
-## Findings for the exercises
-- <severity-ordered bullets>
-
-## Findings for the harness
-- <severity-ordered bullets, if any>
-
-### Prompt-source audit
-<P/E results>
+## Prompt-source audit
+- orient-and-introspect: <verdict>
+- fix-tests-first: <verdict>
+- compound-and-close: <verdict>
 ```
 
-Under 900 words. Keep quotes short. Leave scratch in place.
+Under 500 words. No quoting beyond what scripts emit. Leave artifacts in place.
 
-### Prompt-source audit
+## What you must NOT do
 
-Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+- Quote a sentence from `CLAUDE.local.md` and judge if the rule is "grounded."
+- Decide whether the fix is "minimal" or the summary is "specific."
+- Read source files to evaluate the diff quality.
+- Judge whether commit messages are "well-written" beyond the H4 leak grep.
 
-- **Fenced prompts:** `/tmp/prompts/orient-and-introspect/prompt-*.txt`, `/tmp/prompts/fix-tests-first/prompt-*.txt`, `/tmp/prompts/compound-and-close/prompt-*.txt`
-- **Exercise bodies:** `curriculum/exercises/orient-and-introspect.md`, `curriculum/exercises/fix-tests-first.md`, `curriculum/exercises/compound-and-close.md` (clip each at `<!-- maintainer -->`)
-
-Apply P1–P5 to fenced content; E1–E7 to body-ex-maintainer. Severities and verdict ladder per the shared doc. M1 is in the AE101 M1–M3 carve-out range — `practice` (noun) is BANNED (E6). Module-specific note: M1 has no upstream module, so E4 cross-module references should be absent; if any appear, FAIL Sev-1 (source defect).
+If an assertion can't be reduced to a script call or a `jq`/`grep` one-liner, drop it from this judge and flag the gap in the report — that's a script-ratchet TODO, not a Judge job.

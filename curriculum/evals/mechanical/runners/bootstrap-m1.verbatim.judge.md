@@ -1,93 +1,109 @@
 # Judge — Bootstrap M1 personal-site-with-guardrails verbatim
 
-Grading an Actor that ran Bootstrap M1's personal-site-with-guardrails exercise on an empty scratch folder simulating a business-user (Maija) in Claude Code. Inputs: final scratch state (HTML snapshots + `personal-brand-generation.md`), Actor's `.jsonl` transcript, scrollback, 6 extracted prompt files (5 parsed + 1 manual for Phase 4), 4 substituted student inputs.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
 
-Bootstrap differs from AE101 structurally — no codebase, no git, no tests. Assertions target document-artifact fidelity (HTML evolution, rules-file grounding) rather than commits/tests/skills.
+You are grading whether the M1 prompt chain ran end-to-end on a clean scratch and whether the file artefacts have the expected SHAPE. You are NOT grading whether the HTML is good, whether the strengths are specific enough, whether the rules-file reads well. Those are eval-system concerns.
 
 ## Inputs
 
-- **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m1`
+- **Scratch:** `curriculum/evals/mechanical/scratch/bootstrap-m1`
 - **Actor transcript:** `<ACTOR_TRANSCRIPT_PATH>`
 - **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-report.md`
 - **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-actor-scrollback.md`
-- **Prompt files:** `/tmp/prompts/personal-site-with-guardrails/prompt-00{1,2,3,4,5,6}.txt`
-- **Student input substitutes:** `/tmp/bootstrap-m1-substitutes/{linkedin-paste,project-story,strengths-pushback,hate-list}.txt`
+- **Prompt files:** `/tmp/prompts/personal-site-with-guardrails/prompt-00{1..6}.txt`
+- **Substitutes:** `/tmp/bootstrap-m1-substitutes/{linkedin-paste,project-story,strengths-pushback,hate-list}.txt`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` for V-assertions.
+- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh personal-site-with-guardrails` — P/E checks (static lint)
+
+## Method
+
+For every assertion below: run the named script, capture its exit code + first line of output, paste into the report. No quoting, no narration, no taste calls. If you find yourself reading scrollback to judge whether content is "good," stop — that's not your job.
 
 ## Assertions
 
-### Verbatim round-trip
+### Verbatim round-trip (V1–V6)
 
-- **V1.** prompt-001 verbatim in scrollback (Phase 1 baseline).
-- **V2.** prompt-002 verbatim (Phase 2 StoryBrand).
-- **V3.** prompt-003 verbatim (Phase 3 Drucker).
-- **V4.** prompt-004 verbatim (Phase 4 look-back).
-- **V5.** prompt-005 verbatim (Phase 5 anti-brand).
-- **V6.** prompt-006 verbatim (Close rules file).
+For each `prompt-00N.txt`: `verbatim-check.sh <prompt> <scrollback>`. Report exit code + prefix.
 
-### Phase 1 — baseline
+### File-existence (mechanics)
 
-- **A1.** LinkedIn paste appears verbatim in scrollback before Prompt 1. Strip `> ` and compare.
-- **A2.** `site.html.v1-baseline` exists in scratch. Valid HTML (`<html`, `<body` present).
-- **A3.** v1 baseline reads generic / résumé-shaped — has headline, about, experience, education sections in order. FAIL if the baseline already includes StoryBrand help-section beats (Actor pre-enriched, defeating the exercise).
+- **A1.** LinkedIn paste appears in scrollback before Prompt 1: `verbatim-check.sh /tmp/bootstrap-m1-substitutes/linkedin-paste.txt <scrollback>`.
+- **A2.** `site.html.v1-baseline` exists. `test -f <scratch>/site.html.v1-baseline`. Has `<html` and `<body`: `grep -q '<html' && grep -q '<body'`.
+- **A5.** `site.html.v2-storybrand` exists.
+- **A8.** Actor read or pasted the project story: either `grep -F` first 40 chars of `project-story.txt` in scrollback, OR transcript has a Read of that path (`jq` on `.jsonl`).
+- **A9.** Actor produced three strengths: scrollback contains a numbered or bulleted list of 3 items in the strengths phase. Heuristic: between the strengths-pushback substitute paste and v3 generation, count `^[1-9]\.` or `^- ` lines — expect ≥ 3.
+- **A14.** Actor read v1 baseline before Phase 4: transcript Read of `site.html.v1-baseline` (`jq -c 'select(.message.content[]?.input.file_path? | test("v1-baseline"))' <jsonl>`).
+- **A15.** Phase 4 named ≥ 3 quoted claims from v1: scrollback Phase-4 section contains ≥ 3 backtick or blockquote spans.
+- **A16.** No regeneration in Phase 4: between Phase-4 prompt-paste and Phase-5 prompt-paste, no Write tool call on `site.html`. `jq` filter on `.jsonl`.
+- **A17.** Hate-list appears verbatim in scrollback after Prompt 5: `verbatim-check.sh hate-list.txt scrollback`.
+- **A22.** `personal-brand-generation.md` exists: `test -f <scratch>/personal-brand-generation.md`.
+- **A25.** No `[BRACKET]` placeholders in `personal-brand-generation.md`: `grep -nE '\[[A-Z][A-Z_]+\]' file && FAIL`.
 
-### Phase 2 — StoryBrand
+### One-at-a-time (anti-question-dump)
 
-- **A4.** Actor walked the five beats one at a time (Character → Problem → Guide → Plan → Success). Scrollback shows five distinct beat-asks, each followed by the substituted answer, NOT one batched ask. FAIL if question-dump.
-- **A5.** `site.html.v2-storybrand` exists. Contains Maija's name as headline protagonist (not a service-pitch question to the visitor).
-- **A6.** v2 has a colleague-help section whose shape matches the tuned StoryBrand beats (the colleague is hero-of-the-help, not hero-of-the-site). Quote one sentence from the section.
-- **A7.** v2 did NOT import Stakes / CTA beats (no "book a call," no fear-framing). Grep HTML for "book a call", "discovery call", "risk of" — FAIL if present.
+- **A4.** Phase 2 walked five beats one at a time. Mechanical heuristic: between prompt-002 paste and v2 generation, count distinct assistant turns that ask a single beat question. Expect ≥ 4 (Character / Problem / Guide / Plan / Success — Success is sometimes batched). FAIL if a single assistant turn fires ≥ 3 questions.
+- **A18.** Phase 5 walked four anti-brand steps: ≥ 3 distinct assistant turns between prompt-005 paste and v4 generation.
+- **A27.** Cross-phase: no question-dump anywhere a prompt says *"one at a time."* Already covered by A4 + A18.
 
-### Phase 3 — Drucker
+### Continuation between phases
 
-- **A8.** Actor received the project story from the substitute. Transcript Read-call on `/tmp/bootstrap-m1-substitutes/project-story.txt` OR the story appears verbatim in scrollback.
-- **A9.** Actor inferred three strengths (named before any regeneration). Quote them.
-- **A10.** Strengths are specific, not "leadership" / "communication" (the exercise explicitly bans those). FAIL if either string appears as a strength label.
-- **A11.** Actor received the strengths-pushback and reshaped the three per the pushback (drops #2 "translation" as statistical default, keeps #3 "holding strategic positions," sharpens #1 to problem-not-team).
-- **A12.** `site.html.v3-drucker` exists. Contains voice-shaping from the reshaped strengths (e.g., references to "smaller thing that fits," "holding the line," or "expertise outside the engineering team"). Quote.
-- **A13.** v3 keeps the StoryBrand-tuned help section from v2 — not a wholesale rewrite. Diff hint: `diff site.html.v2-storybrand site.html.v3-drucker` should show voice shifts, not section deletions.
+- **A13.** v3 file is a continuation of v2 (not wholesale rewrite): `diff site.html.v2-storybrand site.html.v3-drucker | wc -l` should be > 0 AND < 80% of `wc -l site.html.v2-storybrand`. Flags both no-change-at-all and wholesale-rewrite.
+- **A21.** v4 is a continuation of v3: same diff bound.
 
-### Phase 4 — look back
+### Substitution log
 
-- **A14.** Actor read `site.html.v1-baseline` before answering Prompt 4a. Transcript Read-call evidence.
-- **A15.** Actor named three specific claims from v1 that were generic. Each claim is quoted from v1 + reason it was a statistical default. FAIL if claims are abstract ("the About section was generic") without quoting v1.
-- **A16.** No regeneration in Phase 4. v3 file unchanged on disk after Phase 4; v4 doesn't exist yet at this point. (Checked against scratch mtimes or against scrollback — Phase 4 response does not contain a Write tool call on `site.html`.)
+- **A28.** Actor report lists substitutions for: LinkedIn paste, project story, strengths pushback, hate list, Phase 6 truncation. `grep -c` for each on the report — expect ≥ 5 entries.
 
-### Phase 5 — anti-brand
+### Harness leakage (H1–H5)
 
-- **A17.** Hate-list appears verbatim in scrollback after Prompt 4.
-- **A18.** Actor walked the four anti-brand steps (hate → offerings/types → positive opposite → blockers-to-outcomes). Scrollback evidence per step.
-- **A19.** `site.html.v4-antibrand` exists. Voice sharpened — quote a line from headline / hero / section framing that reflects anti-brand inversion (e.g., positive opposites of hate-list items).
-- **A20.** v4 did NOT add a "What I'm against" section. Grep for such heading — FAIL if present.
-- **A21.** v4 kept Maija as protagonist, StoryBrand-tuned help, Drucker-derived strengths. No wholesale rewrite.
+Run `jq` on transcript for any Read of:
+- `curriculum/exercises/personal-site-with-guardrails.md` → H1 FAIL.
+- Any judge runner or sibling actor runner (own actor file allowed) → H2 FAIL.
+- Any `*.maintainer.md` → H3 FAIL.
+- Any harness-internal file inside `<scratch>` that the Actor then Read again → H4 FAIL.
+- `ls <scratch>` should match expected set (site.html + 4 snapshots + personal-brand-generation.md + .keep). Anything else → H5 FAIL.
 
-### Close — rules file
+### Prompt-source audit
 
-- **A22.** `personal-brand-generation.md` exists in scratch root.
-- **A23.** Contains the structure the prompt asks for: what-this-is-for, core rule (distinctive not descriptive), what-never-to-generate, what-always-to-do, framework moves, voice rules. Quote the distinctive-not-descriptive rule.
-- **A24.** Grounded in session decisions — cites at least one actual moment from the run (e.g., a specific strength, a specific anti-brand inversion, a specific StoryBrand beat answer). Quote. FAIL if the file reads like generic personal-brand advice.
-- **A25.** No `[BRACKET]` placeholders. `grep -n '\[[A-Z]' <path>`.
-- **A26.** Framework moves section names all four: StoryBrand-tuned (help), Drucker (strengths), anti-branding (voice), visual-steal (chrome). Quote the list.
-
-### Prompt-chain integrity
-
-- **A27.** No question-dump where prompts say "one at a time" (Phase 2's beats; Phase 5's four steps).
-
-### Harness leakage
-
-- **H1.** Actor did NOT read `curriculum/exercises/personal-site-with-guardrails.md`. All prompt content via `/tmp/prompts/`.
-- **H2.** Actor did NOT read any judge or sibling runner. Own actor file allowed.
-- **H3.** Actor did NOT read any maintainer doc (`lemmings-seed.maintainer.md` — irrelevant here but check for any `maintainer.md` Reads).
-- **H4.** No harness-internal files inside `<scratch>` that Actor re-read.
-- **H5.** Scratch contains only the expected artifacts (site.html + snapshots + personal-brand-generation.md + .keep). Grep `ls <scratch>` — FAIL on unexpected file (e.g., a `.harness/` dir or judge notes).
-
-### Substitutions (informational)
-
-- **A28.** List substitutions with trigger.
+Run: `bin/prompt-source-audit.sh personal-site-with-guardrails`. Capture exit code + verdict. PASS if `Verdict: READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-judge-report.md`. Same shape as AE101 verbatim judge reports: Summary / transcript / scratch / V1–V6 / A1–A28 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what carried from AE101 harness; what needed extending). Under 800 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m1-verbatim-judge-report.md`. Shape:
+
+```markdown
+# Judge report — bootstrap-m1 verbatim
+
+## Summary
+Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audit: K.
+
+## V1–V6 (verbatim-check.sh)
+V1: PASS — <prefix>
+...
+
+## A-series (mechanics + continuation)
+A1: PASS — verbatim-check exit 0
+A2: PASS — file present, valid HTML
+...
+
+## H-series (harness leakage)
+H1: PASS — no Read of curriculum/exercises/
+...
+
+## Prompt-source audit
+<paste the script's stdout>
+```
+
+Under 400 words. No quoting beyond what scripts emit. Leave artifacts in place.
+
+## What you must NOT do
+
+- Quote a sentence from `personal-brand-generation.md` and judge if it's "grounded."
+- Decide whether the strengths are "specific" or "generic."
+- Read the HTML snapshots to evaluate voice or framing.
+- Compare phases qualitatively beyond the diff-bound continuity check.
+
+If an assertion can't be reduced to a script call or a `jq`/`grep` one-liner, drop it from this judge and flag the gap in the report — that's a script-ratchet TODO, not a Judge job.

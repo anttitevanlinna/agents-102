@@ -1,6 +1,6 @@
 # Actor — Bootstrap M5 setup (Phase 0)
 
-You are the setup-phase Actor for Bootstrap M5 hallucination benchmark. You produce the briefing (Phase 0a) and write the benchmark (Phase 0b) with Maija's substituted verdicts. Phases 1-3 are handled by separate Actor dispatches.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to produce the briefing (Phase 0a) and benchmark (Phase 0b) with substituted verdicts so files land on disk for the Judge's scripts to inspect. You are NOT trying to write a great briefing or a sophisticated benchmark. The briefing should contain a mix of grounded and ungrounded claims (test corpus); content quality is not graded.
 
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m5`.
 
@@ -14,46 +14,40 @@ Read each prompt file verbatim. Quote in blockquote. Respond.
 
 ## Starting state
 
-Inherited through M1 → M2 → M3 → M4:
-- `./challenge.md`, `module-3/question.md`, `module-3/retrievals/{wiki,docs,internet}.md`, `module-3/stances/{1-planner,2-experimentator,3-reframer}.md`, `module-3/answer.md`
-- `sources/` — 10 source files
-- `memory/` — 7 topic pages + index
-- `module-5/` folder exists, empty; `module-5/detectors/` subfolder exists.
+Inherited through M1 → M4: `./challenge.md`, `module-3/{question,retrievals,stances,answer,wonder}`, `sources/`, `memory/`, `module-5/` empty with `module-5/detectors/` subfolder.
 
-## Phase 0a — produce briefing
+## Phase 0a — briefing
 
-Paste prompt-001 verbatim. The prompt asks for deliberate overreach — competitors' 2026 priorities, two verbatim quotes from sources, a market-sizing number, two analyst takes, a Monday action. **Some of these are in the sources (Monday actions, quotes); some are not (competitors' 2026 priorities, market-sizing numbers, analyst takes). Produce the briefing with the requested asks — fabricate the missing ones plausibly.** The briefing is supposed to be test corpus with groundedness problems for the detectors to catch.
+Paste prompt-001 verbatim. Produce briefing with deliberate overreach — competitors' 2026 priorities, two verbatim quotes from sources, a market-sizing number, two analyst takes, a Monday action. **Some grounded (Monday actions, quotes); some not (competitors' priorities, market-sizing, analyst takes) — fabricate the missing ones plausibly.** This is test corpus.
 
-Save to `module-5/briefing.md`. One page.
+Save to `module-5/briefing.md`. One page (skeleton 20-60 lines OK).
 
 ## Phase 0b — benchmark, five claims, one at a time
 
-Paste prompt-002 verbatim. Propose exactly five specific claims, each quoted verbatim from `module-5/briefing.md`. Spread them across the grounded-ungrounded spectrum:
-- One number (likely fabricated — the market-sizing)
-- One named competitor behaviour (fabricated — sources don't cover competitors)
-- One quote (grounded — sources contain verbatim quotes)
+Paste prompt-002 verbatim. Propose exactly five specific claims, each quoted verbatim from `module-5/briefing.md`. Spread across grounded-ungrounded:
+- One number (likely fabricated)
+- One named competitor behaviour (fabricated)
+- One quote (grounded)
 - One market-sizing statement (fabricated)
-- One Monday outcome (grounded — Maija's Q3 rollout plan has these)
+- One Monday outcome (grounded)
 
-Ask Maija one claim at a time. For each, substitute Maija's verdict using the following rubric (paste verbatim as her response, one at a time):
+Ask Maija one claim at a time. Substitute her verdict per rubric (paste verbatim, one at a time):
 
-| Claim shape | Maija's verdict | One-line reasoning |
+| Claim shape | Verdict | Reasoning |
 |---|---|---|
-| Number / market-sizing | not grounded | sources don't carry this number; looks fabricated |
+| Number / market-sizing | not grounded | sources don't carry this number |
 | Named competitor 2026 priority | not grounded | no source covers competitors at this specificity |
-| Verbatim source quote | grounded | quote is present verbatim in sources/<filename> |
+| Verbatim source quote | grounded | quote present verbatim in sources/<filename> |
 | Analyst take | not grounded | no analyst source in the corpus |
-| Monday outcome | grounded | matches the Q3 forcing-function in my OneDrive notes |
+| Monday outcome | grounded | matches Q3 forcing-function in OneDrive notes |
 
-(Shape the verdicts to whatever Claude actually proposes — match the intent of the rubric.)
-
-After five answers, write `module-5/benchmark.md` with the five verbatim claims, Maija's verdicts (yes / no / partly), and one-line reasoning.
+After five answers, write `module-5/benchmark.md` with the five verbatim claims, verdicts, one-line reasoning.
 
 ## Report
 
-Write scrollback to `.../instances/bootstrap-m5-verbatim-setup-scrollback.md`.
+Scrollback: `.../instances/bootstrap-m5-verbatim-setup-scrollback.md`.
 
-Short report at `.../instances/bootstrap-m5-verbatim-setup-report.md`:
+Report: `.../instances/bootstrap-m5-verbatim-setup-report.md`:
 
 ```markdown
 # Actor — Bootstrap M5 setup
@@ -61,13 +55,13 @@ Status: done
 Briefing: module-5/briefing.md (<line count>)
 Benchmark: module-5/benchmark.md (5 claims)
 Verdict mix: <N grounded, N not grounded, N partly>
-Substitutions: Maija's 5 one-line verdicts
+Substitutions: Maija's 5 verdicts
 ```
 
 ## What you must NOT do
 
 - Read `curriculum/exercises/*`, judge runners, other actor runners, maintainer docs.
-- Read sibling detector/scorer runners or their outputs (they don't exist yet).
-- Read `/tmp/bootstrap-mocks/` — your source corpus is the inherited scratch state.
-- Overwrite `module-3/*` or `module-4/*` artifacts.
+- Read sibling detector/scorer runners.
+- Read `/tmp/bootstrap-mocks/`.
+- Overwrite `module-3/*` or `module-4/*`.
 - Paraphrase prompts.

@@ -1,101 +1,121 @@
 # Judge — Bootstrap M5 hallucination-benchmark verbatim
 
-Grading seven Actor dispatches that together ran Bootstrap M5 (setup + five parallel detectors + scorer/judge save). The student-facing exercise spawns five subagents in parallel inside one session; the harness substitutes with five parallel Actor dispatches (nested Task unavailable).
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+
+Grading seven Actor dispatches (setup + five detectors + scorer). You are NOT grading whether the briefing reads well, whether the detectors caught the "right" things, whether the judge prompt is well-crafted. You ARE checking that files exist, contain the expected shape, and the prompt-chain ran.
 
 ## Inputs
 
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m5`
-- **Actor transcripts (7):**
-  - Setup: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/e0dddd13-9477-4dd6-9370-972610cc4c15/subagents/agent-ad7189dc613ea3a56.jsonl`
-  - Detector 1 source-triangulation: `.../subagents/agent-a2e0ea1494dd17737.jsonl`
-  - Detector 2 entailment: `.../subagents/agent-a80ca908170021c1b.jsonl`
-  - Detector 3 citation-integrity: `.../subagents/agent-ae5a75bd527fadfca.jsonl`
-  - Detector 4 self-consistency: `.../subagents/agent-a5726c28dd4bcb6fa.jsonl`
-  - Detector 5 counter-evidence: `.../subagents/agent-a3a1414e9b26ebffb.jsonl`
-  - Scorer: `.../subagents/agent-a3ce1e1ca34e358ff.jsonl`
+- **Actor transcripts (7):** orchestrator passes paths for setup, 5 detectors, scorer.
 - **Prompt files:** `/tmp/prompts/hallucination-bakeoff/prompt-00{1..7}.txt`
-- **Briefing + benchmark + detectors + scoreboard + judge:** in `module-5/` and `judges/`.
+- **Artefacts:** `module-5/{briefing,benchmark,scoreboard,still-uncertain}.md`, `module-5/detectors/*.md`, `judges/groundedness-judge.md`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` for V-assertions (strips blockquote `> ?` prefix).
-- When comparing against transcript JSON directly, pre-extract text via `jq` / `python -c 'import json; ...'` to avoid the escaped-newline false-negative observed in M3.
+- `curriculum/evals/mechanical/bin/verbatim-check.sh`
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh hallucination-bakeoff`
+- `jq`, `grep`, `wc -l`, `test -f`
+
+## Method
+
+For every assertion: run the named script, capture exit code + first line. No taste calls. If you find yourself reading scrollback to judge whether content is "good," stop.
 
 ## Assertions
 
-### Verbatim round-trip (prompts 1–6; prompt-007 deliberately skipped)
+### Verbatim round-trip
 
 - **V1.** prompt-001 verbatim in setup scrollback.
 - **V2.** prompt-002 verbatim in setup scrollback.
-- **V3.** Detector prompt text (prompt-003) is NOT required to appear verbatim in any detector scrollback — the detectors are parameterized per dispatch from the orchestrator, not paste-the-prompt-verbatim. Substitution logged. PASS-with-note.
-- **V4.** prompt-004 verbatim in scorer scrollback.
-- **V5.** prompt-005 verbatim in scorer scrollback.
-- **V6.** prompt-006 verbatim in scorer scrollback.
-- **V7.** prompt-007 TRUNCATED — scorer logs the truncation explicitly. Quote the log line.
+- **V3.** prompt-003 NOT required verbatim (parameterized per dispatch). Substitution log expected.
+- **V4-V6.** prompt-004, 005, 006 verbatim in scorer scrollback.
+- **V7.** prompt-007 truncation log: `grep -F 'take-home prompt-007 truncated' <scorer-scrollback>`.
 
 ### Phase 0a — briefing
 
-- **A1.** `module-5/briefing.md` exists. Line count 20–80 (one-page).
-- **A2.** Contains the requested asks: at least one specific number, at least one named competitor behaviour, at least one verbatim quote from sources/, at least one market-sizing statement, at least one Monday action. FAIL if Claude refused to overreach (the test corpus needs fabrications).
-- **A3.** At least one claim in the briefing is plausibly NOT groundable from the source corpus (the market-sizing number or a competitor 2026 priority). Evidence: grep `sources/`, `module-3/retrievals/`, `module-3/stances/` for the claim's key tokens; FAIL if every claim is plainly sourceable.
+- **A1.** `module-5/briefing.md` exists. `wc -l` between 15 and 100.
 
 ### Phase 0b — benchmark
 
-- **A4.** Setup Actor asked Maija one claim at a time (5 question → answer cycles in scrollback). FAIL if batched.
-- **A5.** `module-5/benchmark.md` exists. Exactly five claims. Each quoted verbatim from `module-5/briefing.md`.
-- **A6.** Each claim has a verdict (grounded / not grounded / partly) plus one-line reasoning.
-- **A7.** Verdict mix is not monotone — at least one "grounded" AND at least one "not grounded." FAIL if 5/5 one verdict (trivial benchmark).
+- **A2.** Setup Actor walked 5 claim-verdict cycles one at a time. `jq` setup transcript: count distinct assistant turns between prompt-002 paste and `benchmark.md` Write — expect ≥ 5.
+- **A3.** `module-5/benchmark.md` exists. Five claim entries: `grep -c '^- ' module-5/benchmark.md` ≥ 5 OR table-row count ≥ 5.
+- **A4.** Verdict mix not monotone: both `grep -i 'grounded'` (excluding `not grounded`) AND `grep -iF 'not grounded'` should hit at least once each.
 
 ### Phase 1 — five parallel detectors
 
-- **A8.** Five detector files exist at `module-5/detectors/{source-triangulation,entailment,citation-integrity,self-consistency,counter-evidence}.md`.
-- **A9.** Each detector file names its method in one sentence at the top.
-- **A10.** Each detector produced 2–7 findings with verbatim claim quotes from `module-5/briefing.md`.
-- **A11.** Each detector applied ONLY its assigned method — a triangulation detector flagging OVERREACH is out-of-spec. Spot-check each detector; quote one finding per detector and confirm the FLAG label matches the method's vocabulary (UNGROUNDED / OVERREACH / CITATION-BROKEN / UNSTABLE / CRUMBLES).
-- **A12.** Detectors did NOT read sibling detector files. Transcript grep per detector: no Read of other `module-5/detectors/*.md`.
-- **A13.** Detectors did NOT read `module-5/benchmark.md`. Transcript grep.
+- **A5.** Five detector files exist: `test -f` on `module-5/detectors/{source-triangulation,entailment,citation-integrity,self-consistency,counter-evidence}.md`. (Allow case/slug variants — `ls module-5/detectors/*.md | wc -l` = 5 sufficient.)
+- **A6.** Each detector file has a Method line: `grep -F 'Method:' <file>` per file.
+- **A7.** Each detector has 2-7 findings: `grep -c '^- CLAIM:' <file>` per file in [2,7].
+- **A8.** Detectors did NOT read sibling detector files. `jq` per detector transcript for Reads of other `module-5/detectors/*.md`.
+- **A9.** Detectors did NOT read `module-5/benchmark.md`. `jq` per detector transcript.
 
 ### Phase 2 — scorer
 
-- **A14.** `module-5/scoreboard.md` exists. Contains a table with columns: Detector, Precision, Recall, Coverage, Hits, False positives, Misses, Notes. Quote the header row.
-- **A15.** Table has five data rows (one per detector).
-- **A16.** Scorer named ONE winner (or a two-method ensemble). FAIL if the output is "all five are useful" without a forced pick.
-- **A17.** If an ensemble, cap is at 2 methods. FAIL if three-method stack.
-- **A18.** Winner reasoning is measured (references precision/recall numbers from the table), not intuitive.
+- **A10.** `module-5/scoreboard.md` exists with table header containing columns Detector, Precision, Recall, Coverage. `grep -F '| Detector | Precision | Recall | Coverage'`.
+- **A11.** Five data rows: `grep -c '^|' module-5/scoreboard.md` minus header/separator ≥ 5.
+- **A12.** Winner named below table: `grep -iE 'winner|ensemble' module-5/scoreboard.md`.
 
 ### Phase 2b — classic-way contrast
 
-- **A19.** Three-line classic-way contrast produced in scrollback (not a new file). Quote the three lines.
+- **A13.** Three-line classic-way contrast in scorer scrollback: `grep -iE 'classic|faster|slower' <scrollback>` ≥ 3 distinct lines.
 
 ### Phase 3 — save judge
 
-- **A20.** `judges/groundedness-judge.md` exists. Under 25 lines (target 20, allow small slack).
-- **A21.** Contains: short heading + one-paragraph description + the judge prompt itself + one-line `Known limit:` at end. Quote the Known-limit line.
-- **A22.** Judge prompt is scoped to what the winner caught, NOT a five-method aggregate. FAIL if the judge re-implements all five detectors.
-- **A23.** Judge does not contain `[BRACKET]` placeholders. `grep -n '\[[A-Z]' judges/groundedness-judge.md`.
+- **A14.** `judges/groundedness-judge.md` exists. `wc -l` ≤ 30.
+- **A15.** Has `Known limit:` line: `grep -F 'Known limit:' judges/groundedness-judge.md`.
+- **A16.** No `[BRACKET]` placeholders: `grep -nE '\[[A-Z][A-Z_]+\]' judges/groundedness-judge.md` returns nothing.
 
-### Close — still-uncertain
+### Close
 
-- **A24.** `module-5/still-uncertain.md` exists. One sentence (or short paragraph). Names what the judge caught in the benchmark that Maija would want running on every briefing. Quote.
+- **A17.** `module-5/still-uncertain.md` exists. ≤ 6 lines.
 
 ### Truncations
 
-- **A25.** prompt-007 (take-home portable kit) NOT executed. No new file under `judges/` besides `groundedness-judge.md`. No setup of a "pricing memo / positioning draft" benchmark kit in scrollback.
-- **A26.** Debrief not executed. No rewrite of `judges/groundedness-judge.md` after its first save. No "still-uncertain.md" update beyond the first write.
+- **A18.** prompt-007 NOT executed: `jq` scorer transcript for any new file under `judges/` other than `groundedness-judge.md`. FAIL if any.
+- **A19.** Debrief NOT executed.
 
 ### Harness leakage
 
-- **H1.** No Actor read any `curriculum/exercises/` file.
-- **H2.** No Actor read any judge / sibling actor runner. Own runner allowed.
+- **H1.** No Actor read `curriculum/exercises/`. `jq` per transcript.
+- **H2.** No Actor read judge / sibling actor runner.
 - **H3.** No Actor read maintainer docs.
-- **H4.** No harness-internal files in scratch that Actors re-read.
-- **H5.** No Actor attempted real WebFetch (only the inherited-scratch sources are available; no external fetching).
-- **H6.** `module-3/` and `module-4/` artifacts READ but NOT overwritten. Any Write to `module-3/*` or `module-4/*` FAILs.
+- **H4.** No real WebFetch attempts. `jq` for WebFetch tool calls.
+- **H5.** No Write to `module-3/*` or `module-4/*` paths. `jq` per transcript.
 
-### Substitutions (informational)
+### Prompt-source audit
 
-- **A27.** List every substitution with trigger across the seven dispatches.
+Run `bin/prompt-source-audit.sh hallucination-bakeoff`. Capture exit + verdict.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m5-verbatim-judge-report.md`. Shape: Summary / seven transcript paths / scratch / V1–V7 / A1–A27 / H1–H6 / Findings for exercise / Findings for harness / Portability notes (how this substitution pattern handled the "five subagents in parallel" primitive at orchestrator level; what reused from M3's three-retriever-plus-synthesizer precedent). Under 1100 words.
+Write `.../instances/bootstrap-m5-verbatim-judge-report.md`:
+
+```markdown
+# Judge report — Bootstrap M5 verbatim
+
+## Summary
+Verdict: PASS | FAIL (N/M). Sev-1 from prompt-source-audit: K.
+
+## V1–V7
+...
+
+## A-series
+...
+
+## H-series
+...
+
+## Prompt-source audit
+<paste stdout>
+```
+
+Under 500 words.
+
+## What you must NOT do
+
+- Quote a claim from the briefing and judge if it's "well-fabricated."
+- Decide whether the winning detector was the "right" one.
+- Read judges/groundedness-judge.md to evaluate prose quality.
+- Compare detectors qualitatively beyond the assigned-method check.
+
+If an assertion can't be a script call or grep one-liner, drop it and flag as a script-ratchet TODO.

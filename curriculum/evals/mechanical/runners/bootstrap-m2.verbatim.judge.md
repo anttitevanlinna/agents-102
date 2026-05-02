@@ -1,6 +1,8 @@
 # Judge — Bootstrap M2 chain verbatim
 
-Grading an Actor that ran Bootstrap M2's two chained exercises (name-your-challenge + build-your-challenge-memory) on a scratch simulating Maija's training-dir root. Mock Confluence + OneDrive + practitioner content lives at `/tmp/bootstrap-mocks/`. Inputs: final scratch state, Actor's `.jsonl` transcript, scrollback, 13 extracted prompt files, the mock library.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+
+You are grading whether the M2 prompt chain ran end-to-end on the staged scratch and whether the file artefacts have the expected SHAPE. You are NOT grading whether memory pages are sharp, whether risks are well-grounded, whether the Paavo answer is good.
 
 ## Inputs
 
@@ -9,93 +11,96 @@ Grading an Actor that ran Bootstrap M2's two chained exercises (name-your-challe
 - **Actor report:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-report.md`
 - **Actor scrollback:** `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/name-your-challenge/prompt-00{1,2}.txt` + `/tmp/prompts/build-your-challenge-memory/prompt-00{1..11}.txt`
-- **Mock connector library:** `/tmp/bootstrap-mocks/{confluence,onedrive,practitioners}/*.md`
+- **Mock library:** `/tmp/bootstrap-mocks/{confluence,onedrive,practitioners}/`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` for V-assertions.
-- `jq` / `grep -o` on the transcript.
+- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh build-your-challenge-memory` and `name-your-challenge` — P/E checks
+- `jq` / `grep` / `test -f` / `wc -l` for shape sampling
+
+## Method
+
+For every assertion: run the named script, capture exit code + first line. No quoting, no narration, no taste calls. If you find yourself reading scrollback to judge whether content is "good," stop — that's not your job.
 
 ## Assertions
 
 ### Verbatim round-trip (V1–V13)
 
-- **V1–V2.** name-your-challenge prompt-001, prompt-002 verbatim.
-- **V3–V13.** build-your-challenge-memory prompt-001 through prompt-011 verbatim.
+- **V1–V2.** name-your-challenge prompt-001, prompt-002 via `verbatim-check.sh`.
+- **V3–V13.** build-your-challenge-memory prompt-001 through prompt-011.
 
-Each via `verbatim-check.sh`.
+### File-existence + shape
 
-### Ex1 — name-your-challenge
+- **A1.** `./challenge.md` exists. `test -f`.
+- **A2.** `sources/` has ≥ 8 files. `ls sources/ | wc -l` ≥ 8.
+- **A3.** Each `sources/` file has a header naming path/URL + title. Sample 2 files; `grep -E '^(path|url|title):'` should hit.
+- **A4.** `memory/index.md` exists. `memory/` has 5-8 topic pages (excluding index + soft-pages). `find memory -name '*.md' -not -name 'index.md' -not -name 'soft-pages.md' | wc -l` between 4 and 10.
+- **A5.** Memory pages cite `[sources/...]`. Sample one page; `grep -c '\[sources/'` ≥ 1.
+- **A6.** `agents/monday-risks.md` exists. No `[BRACKET]` placeholders: `grep -nE '\[[A-Z][A-Z_]+\]'` returns nothing.
+- **A7.** Hard-line rule about `maija-prep-notes-skeptics.md` present in `agents/monday-risks.md`: `grep -F 'maija-prep-notes-skeptics'`.
+- **A8.** Phase 3 added one source: `ls sources/ | wc -l` increased to ~10.
 
-- **A1.** Claude asked Q1-Q3 one at a time. Scrollback shows Q1 → A1 → Q2 → A2 → Q3 → A3, not a question-dump. FAIL if batched.
-- **A2.** `./challenge.md` exists in scratch. Content grounded in Maija's three answers — quote one sentence.
-- **A3.** Prompt-002 response (source scouting) named Confluence terms + OneDrive folder patterns + 2-3 named practitioners (Karpathy + Alasaarela + a third). Quote the list.
+### One-at-a-time (anti-question-dump)
 
-### Ex2 Phase 1 Beat 1 — curate
+- **A9.** Ex1 walked Q1-Q3 separately. Between prompt-001 paste and `challenge.md` Write, count distinct assistant turns. Expect ≥ 3. FAIL if a single turn fires ≥ 3 questions.
+- **A10.** Ex2 Phase 2 walked Q1 then Q2 separately. Between prompt-005 paste and `agents/monday-risks.md` Write, ≥ 2 distinct assistant turns.
 
-- **A4.** Actor read `./challenge.md` before curating. Transcript Read-call evidence.
-- **A5.** Connector check substituted: Actor logged "[harness substitution — mock connector library]" (or equivalent language) rather than claiming real MCP access. FAIL if Actor fabricated a real connector list.
-- **A6.** Curation plan covered all three categories (internal knowledge / recent work / outside-in practitioners). Quote one item per category.
-- **A7.** Sensitivity-triage applied — at least one source was flagged as "include if comfortable" or "skip for now" rather than auto-included (Maija's personal skeptics-strategy note, or the exec email thread, or similar).
+### Substitutions logged
 
-### Ex2 Phase 1 Beat 2 — ingest
+- **A11.** Mock-connector substitution log present in scrollback. `grep -c 'harness substitution' <scrollback>` ≥ 1.
+- **A12.** Plan-mode substitution logged. `grep -c 'plan mode' <scrollback>` ≥ 1.
 
-- **A8.** Actor Read files from `/tmp/bootstrap-mocks/confluence/`, `/tmp/bootstrap-mocks/onedrive/`, `/tmp/bootstrap-mocks/practitioners/`. Transcript Read-call evidence for at least one file from each folder.
-- **A9.** `sources/` in scratch has at least 8 files. FAIL if under 6 (curation plan under-delivered).
-- **A10.** Each `sources/` file has a header naming URL-or-path + title + why-relevant. Spot-check two files; quote the header shape.
-- **A11.** Three-list report shape present in scrollback: fetched-as-content / linked-by-path / not-reachable (even if some buckets are empty). Quote the headers.
+### Continuation between phases
 
-### Ex2 Phase 1 Beat 3 — build memory
+- **A13.** Memory pages updated in Phase 3 (not rebuilt): for one page identified by Actor as "sharpened," `diff` against pre-Phase-3 state should be > 0 lines AND < 80% of original. Reconstruct pre-state from transcript Write calls; if not feasible, note as `SCRIPT-RATCHET TODO`.
 
-- **A12.** Plan-mode substitution logged. "[harness substitution — plan mode primitive]" or equivalent.
-- **A13.** `memory/` has 5-8 topic pages + `memory/index.md`. FAIL if < 4 or > 10.
-- **A14.** Every memory page has claims ending in `[sources/<filename>]` citations. Sample one page; quote two claims with citations.
-- **A15.** Distinctive-not-descriptive rule held — at least one claim references Maija's specific situation (Kaleva, Paavo's safety bar, the vendor-session retro, the classification policy, specific OKR KRs). Quote.
-- **A16.** `memory/soft-pages.md` exists if the audit found generic pages, OR the audit explicitly said no generic pages found. Scrollback evidence.
+### Harness leakage (H1–H6)
 
-### Ex2 Phase 2 — custom agent
+- **H1.** `jq` transcript for Read of `curriculum/exercises/`. FAIL if hit.
+- **H2.** No Read of judge or sibling actor runner (own actor allowed).
+- **H3.** No Read of `*.maintainer.md`.
+- **H4.** No real WebFetch on mock URLs. Filter transcript for `WebFetch` tool calls; FAIL if any URL matches a mock-library `url:` header.
+- **H5.** Debrief truncation held: `test ! -f <scratch>/CLAUDE.md` AND `test ! -f <scratch>/crux.md`.
+- **H6.** `ls <scratch>` matches expected: `module-1/`, `module-2/`, `memory/`, `sources/`, `agents/`, `challenge.md`. Anything else → FAIL.
 
-- **A17.** Actor asked Q1 (job) then Q2 (rules) one at a time. Scrollback evidence.
-- **A18.** `agents/monday-risks.md` (or equivalent filename) exists. Has role + rules content, not `[BRACKET]` placeholders.
-- **A19.** Agent rules include the hard-line constraint from Maija's A2 (never reveal the personal skeptics-strategy note). Quote.
-- **A20.** Second prompt (use-the-agent) produced output with `[memory/<filename>]` citations on each claim. Scrollback evidence.
+### Prompt-source audits
 
-### Ex2 Phase 3 — compound
-
-- **A21.** Actor named thinnest page + one new source. Quote both.
-- **A22.** New source landed in `sources/` as an additional file (count grew by 1 since Beat 2). Quote new filename.
-- **A23.** Memory update was integrate-not-rebuild. Sample one of the three "sharpened" pages: compare before/after (can use transcript diff of Write calls or re-read memory file). FAIL if the page is entirely replaced rather than revised.
-- **A24.** Pushback prompt (P9) triggered actual top rewrites where old framing remained. At least one page's top paragraph changed between prompt-008 and prompt-009. FAIL if Actor claimed rewrite but the file is byte-identical.
-- **A25.** `memory/soft-pages.md` entries sharpened per prompt-009. Quote before/after for one entry (or quote the sharpened version if soft-pages.md was first written at Phase 3).
-
-### Ex2 Phase 4 — self-maintain
-
-- **A26.** Prompt-010 produced 6 proposals (2 contradictions + 2 missing citations + 2 stale claims). Quote the 6 headings.
-- **A27.** 5 approved, 1 rejected per Maija's substituted response. Applied fixes visible in memory/ files post-run. Quote one applied fix.
-- **A28.** Rejected stale-claim entry got kept with date marker (vendor-session retro reference). Quote the date marker.
-
-### Ex2 Close
-
-- **A29.** Final agent invocation produced an answer with memory-file citations to Maija's Paavo-conversion question. Quote one citation from the answer.
-
-### Prompt-chain integrity
-
-- **A30.** No batched-question failures (Ex1 Q1-Q3; Ex2 Phase 2 Q1-Q2).
-- **A31.** Debrief was NOT executed — no root `./CLAUDE.md` at scratch root, no `./crux.md`. Runner truncation held.
-
-### Harness leakage
-
-- **H1.** Actor did NOT read any `curriculum/exercises/` file.
-- **H2.** Actor did NOT read any judge / sibling actor runner (own `bootstrap-m2.verbatim.actor.md` allowed).
-- **H3.** Actor did NOT read `lemmings-seed.maintainer.md` or any planted-state doc.
-- **H4.** No harness-internal files in `<scratch>` that Actor re-read.
-- **H5.** Scratch contains only expected artifacts (module-1/ module-2/ memory/ sources/ agents/) — no unexpected directories or files.
-- **H6.** Actor did NOT attempt real WebFetch on mock URLs. Transcript evidence: any WebFetch calls either hit real practitioner URLs the runner explicitly permits, or zero WebFetch calls (pure mock-library reads).
-
-### Substitutions (informational)
-
-- **A32.** List every substitution with trigger.
+Run `bin/prompt-source-audit.sh name-your-challenge` and `bin/prompt-source-audit.sh build-your-challenge-memory`. Capture exit code + verdict. PASS if `READY` or `READY-WITH-FLAGS`; FAIL on `BLOCK`.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-judge-report.md`. Shape: Summary / transcript / scratch / V1–V13 / A1–A32 / H1–H6 / Findings for exercise / Findings for harness / Portability notes (what reused from Bootstrap M1; what new for M2). Under 900 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m2-verbatim-judge-report.md`:
+
+```markdown
+# Judge report — Bootstrap M2 verbatim
+
+## Summary
+Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audits: K.
+
+## V1–V13 (verbatim-check.sh)
+V1: PASS — <prefix>
+...
+
+## A-series (mechanics + continuation)
+A1: PASS — file present
+...
+
+## H-series (harness leakage)
+H1: PASS — no Read of curriculum/exercises/
+...
+
+## Prompt-source audits
+<paste both scripts' stdout>
+```
+
+Under 500 words. No quoting beyond what scripts emit.
+
+## What you must NOT do
+
+- Quote a sentence from a memory page and judge if it's "distinctive."
+- Decide whether the Paavo answer reads as "well-grounded."
+- Read `agents/monday-risks.md` to evaluate voice.
+- Compare phases qualitatively beyond the diff-bound continuity check.
+
+If an assertion can't be reduced to a script call or a `jq`/`grep` one-liner, drop it and flag the gap as a script-ratchet TODO.

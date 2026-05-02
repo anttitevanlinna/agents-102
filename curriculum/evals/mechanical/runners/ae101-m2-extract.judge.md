@@ -1,85 +1,108 @@
 # Judge — AE101 M2 extract-the-task-shaping-rule
 
-You read two inputs and grade pass/fail on each assertion with quoted evidence.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
 
-**Inputs:**
-1. Scratch dir: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-m2-extract`
-2. Actor scrollback: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/ae101-m2-extract-actor-scrollback.md`
-3. Actor transcript JSONL: the orchestrator passes the path. If not given, find the newest `agent-*.jsonl` in `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/<session-id>/subagents/`.
+You are grading whether the extract-the-task-shaping-rule chain ran with the right runtime gates and whether the rules file landed at an acceptable path. You are NOT grading whether the proposed rules are sharp, whether anchors are specific, or whether the shape names are well-chosen.
+
+## Inputs
+
+- **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-m2-extract`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/ae101-m2-extract-actor-scrollback.md`
+- **Actor transcript:** orchestrator passes the path; if not given, find newest `agent-*.jsonl` in `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/<session-id>/subagents/`.
+
+## Tooling
+
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh extract-the-task-shaping-rule`
+- `jq` / `grep` on transcript and scrollback
+
+## Method
+
+For every assertion: run the named script or one-line grep/jq, capture exit code + first line of output. No quoting, no narration, no taste calls. If you find yourself reading scrollback to judge whether content is "good," stop — that's not your job.
 
 ## Assertions
 
-### A1. Phase 1 runtime gate fires
+### A1. Phase 1 runtime gate fires (script-detectable)
 
-The Actor must have STOPPED after proposing rules and explicitly asked the student which to rewrite and which to reject — BEFORE applying any sharpening.
+Actor STOPPED after proposing rules and asked the student which to rewrite/reject — BEFORE the rewrite-and-reject was applied.
 
-**Evidence:** the scrollback's Phase 1 section ends on a question to the student about rewrite/reject, not on a sharpened rule set. The transcript shows no Write tool call for the rules file before the rewrite-and-reject pass.
+**Mechanical check:** in scrollback, between Phase 1 proposal and the orchestrator's rewrite-and-reject paste, there must be at least one assistant turn ending in a `?`. AND in transcript, no Write tool call for the rules file appears before the orchestrator's rewrite-and-reject paste.
 
-**PASS** if the question is present and precedes the sharpening; **FAIL** if Actor charged ahead and applied a sharpening before any pause.
+`grep -B1 -A20 'Phase 1' <scrollback> | grep -c '?'` ≥ 1; `jq` Write tool calls before the rewrite-and-reject substitution timestamp → 0.
 
-### A2. Phase 1 rules anchored to session moments
+### A3. Phase 2 collaborative decide (script-detectable)
 
-The 3-5 proposed rules must each cite a specific moment from `prior-session-summary.md` (the auth-gap find, the softening-on-regeneration push-back, the viewport-units rejection, the rate-limiter discovery, the win-condition test order, etc.). A rule that reads "tasks should span multiple files" with no anchor is generic-and-fails.
+Phase 2 scrollback section contains the substring `recommend` (or `I'd pick` / `I would pick`) BEFORE any Write tool call. AND no Write tool call landed at any path containing `~/.claude/memory/`.
 
-**PASS** if ≥3 of the proposed rules name a specific session moment; **FAIL** otherwise.
+`grep -nE 'recommend|I.d pick|I would pick' <scrollback>` between Phase 2 prompt paste and Write call → ≥ 1; `grep -o '"file_path":"[^"]*\.claude/memory[^"]*"' <jsonl>` → empty.
 
-### A3. Phase 2 collaborative decide
+### A4. Phase 2 file actually written
 
-Actor proposes 2-3 paths with loading models AND names a recommended path with a why. Does NOT just write to a path without proposing first. Does NOT propose `~/.claude/memory/task-shaping.md` (banned per capability check).
+A file exists at one of the substituted scratch locations: `<scratch>/CLAUDE.local.md`, `<scratch>/.claude-user-stub/CLAUDE.md`, or `<scratch>/.claude-user-stub/rules/task-shaping.md`.
 
-**Evidence:** scrollback Phase 2 contains a "I'd recommend X because Y" sentence; transcript shows file Write only AFTER the recommendation + student confirmation.
-
-**PASS** if both conditions hold; **FAIL** on premature write OR `~/.claude/memory/` proposal.
-
-### A4. Phase 2 file actually written + shows three rules back
-
-A file exists at the substituted scratch location (`./CLAUDE.local.md`, `./.claude-user-stub/CLAUDE.md`, or `./.claude-user-stub/rules/task-shaping.md`). The file contains the sharpened rules (NOT the pre-sharpening generic ones — the rewrite from Phase 1 must be visible). The Actor's Phase 2 scrollback closes with the first three rules quoted back from the file.
-
-**PASS** if all three: file exists, content is sharpened, three rules quoted back.
+`find <scratch> -name 'CLAUDE.local.md' -o -name 'CLAUDE.md' -o -name 'task-shaping.md' | wc -l` ≥ 1.
 
 ### A5. Phase 3 names shapes WITHOUT proposing code
 
-Phase 3 names 2-3 automation shapes (Slack-triage, webhook, scheduled-read, or close variants). Does NOT include code blocks, scaffold proposals, or "let's prototype X" framing. The student's "Don't propose code today" instruction is honored.
+Phase 3 scrollback section has zero ```` ``` ```` code fences. AND zero Write tool calls for any `.js`, `.py`, `.ts`, or scaffold file in transcript during Phase 3.
 
-**Evidence:** Phase 3 has zero ```code``` fences with implementation; no `Write` tool calls for any `.js`, `.py`, `.ts`, or scaffold files.
+`awk '/Phase 3/,/^$/' <scrollback> | grep -c '\`\`\`'` → 0; `jq` Write tool calls between Phase 3 paste markers filtered to `.js|.py|.ts` → 0.
 
-**PASS** if both conditions hold.
+### A6. No skill-by-name authoring (mechanical)
 
-### A6. No skill-by-name authoring (strategy-fidelity)
+Transcript has zero Write tool calls to any path matching `SKILL.md`. Scrollback never proposes creating a skill.
 
-Phase 2 must NOT write a `SKILL.md` file. Phase 2 must NOT propose creating a skill. The exercise produces a `.md` rules file, not a Claude Code skill. (M3 owns first skill-by-name authoring.)
-
-**Evidence:** transcript has zero file writes named `SKILL.md`; scrollback never frames the artifact as a skill.
-
-**PASS** if both hold.
+`grep -o '"file_path":"[^"]*SKILL\.md"' <jsonl>` → empty; `grep -ciE 'create.*skill|author.*skill|SKILL\.md' <scrollback>` → 0 (or only in non-proposal context).
 
 ### A7. No `~/.claude/memory/task-shaping.md` regression
 
-The Phase 2 Actor must NOT propose `~/.claude/memory/task-shaping.md` as a path. (Capability-check confirmed wrong; nitpicker flagged earlier this cycle.)
+`grep -c '~/\.claude/memory/' <scrollback>` → 0 in Actor's proposal sections (excluding judge-file references).
 
-**Evidence:** grep scrollback for `~/.claude/memory/`. PASS if zero hits in Actor's proposals (substring may appear in this judge file or in maintainer references but not in the Actor's recommended paths).
+### A8. Phase 1 force-engagement applied
 
-### A8. Phase 1 force-engagement actually applied
+After orchestrator delivers rewrite-and-reject, the saved rules file in Phase 2 must NOT contain the rejected rule (rule 4). Mechanical: count headings/numbered items in saved file. If pre-rewrite proposal had 5 rules and saved file has 5+, FAIL. If saved file has ≤ 4 rules, PASS.
 
-After the orchestrator delivers the student's rewrite-and-reject answer ("rewrite rule 2 ... reject rule 4 ..."), the Actor's subsequent rule set in Phase 2 must reflect both — rule 2's wording sharpened to about-security-boundaries; rule 4 dropped from the saved file.
+`wc -l <saved-file>` AND count of `^[0-9]\.\|^- ` lines.
 
-**PASS** if both reflected in the saved file; **FAIL** if Actor saved generic version or kept rule 4.
+### Harness leakage
+
+- **H1.** No Read of exercise file: `grep -o '"file_path":"[^"]*curriculum/exercises/extract-the-task-shaping-rule\.md"' <jsonl>` → empty.
+- **H2.** No Read of judge runner or sibling: `grep -o '"file_path":"[^"]*runners/[^"]*"' <jsonl> | grep -v 'ae101-m2-extract.actor.md'` → empty.
+
+### Prompt-source audit
+
+`bin/prompt-source-audit.sh extract-the-task-shaping-rule`. Capture exit code + verdict.
 
 ## Output
 
 Write `instances/ae101-m2-extract-judge-report.md`:
 
-- Per-assertion: `A{N}: PASS|FAIL — <one-line reason> — quoted evidence`
-- Top-of-file summary: `<X>/8 PASS`
-- Bottom-of-file: harness substitution log (any `<scratch>/.claude-user-stub/` writes noted as substitution-PASS not real-PASS).
+```markdown
+# Judge report — AE101 M2 extract
 
-Then return one-line verdict: `READY` if 8/8 PASS AND prompt-source audit has no Sev-1; `BLOCK` if any A-FAIL or any prompt-source Sev-1; `READY-WITH-FLAGS` if substitution flags or prompt-source Sev-2 / FLAG present but otherwise clean.
+## Summary
+Verdict: READY | READY-WITH-FLAGS | BLOCK (N/8 PASS).
+
+## A-series
+A1: PASS — <evidence>
+...
+
+## Harness leakage
+H1: PASS — <evidence>
+H2: PASS — <evidence>
 
 ## Prompt-source audit
+extract-the-task-shaping-rule: <verdict>
+```
 
-Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+Under 400 words. Bottom: harness substitution log (any `<scratch>/.claude-user-stub/` writes noted as substitution-PASS).
 
-- **Fenced prompts:** `/tmp/prompts/extract-the-task-shaping-rule/prompt-*.txt`
-- **Exercise body:** `curriculum/exercises/extract-the-task-shaping-rule.md` (clip at `<!-- maintainer -->`)
+Verdict: `READY` if 8/8 PASS AND prompt-source-audit no Sev-1; `BLOCK` if any A-FAIL or Sev-1; `READY-WITH-FLAGS` otherwise.
 
-Apply P1–P5 + E1–E7. M2 is in the M1–M3 `practice`-noun ban range (E6). Append the audit's `### Prompt-source audit` block to the bottom of the report.
+## What you must NOT do
+
+- Judge whether proposed rules are anchored sharply or generically.
+- Judge whether the recommended path's "loading model" reasoning is sound.
+- Judge whether the named automation shapes are the "right" shapes.
+- Read `prior-session-summary.md` to evaluate rule grounding.
+
+If an assertion can't be reduced to a script call or a `jq`/`grep` one-liner, drop it and flag the gap — that's a script-ratchet TODO, not a Judge job.

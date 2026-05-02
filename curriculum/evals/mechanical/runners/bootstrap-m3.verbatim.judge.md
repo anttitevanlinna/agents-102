@@ -1,17 +1,15 @@
 # Judge — Bootstrap M3 three-retrievers-three-minds verbatim
 
-Grading four Actor subagents that together ran Bootstrap M3 (three retrievers in parallel + one synthesizer). The student-facing exercise runs in four concurrent Claude Code sessions on a shared filesystem; the harness substitutes three parallel Actor dispatches (wiki / docs / internet) + one synthesizer dispatch. Phase 2's "spawn three subagents in parallel" is substituted by the synthesizer producing stances inline (nested Task unavailable).
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+
+Grading four Actor subagents (three retrievers + synthesizer). You are NOT grading whether the retrievals are insightful, whether the stances are genuinely distinct in spirit, whether the answer is decisive in voice.
 
 ## Inputs
 
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m3`
-- **Actor transcripts (4):**
-  - Wiki: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/e0dddd13-9477-4dd6-9370-972610cc4c15/subagents/agent-a059e168bc1ab5c36.jsonl`
-  - Docs: `.../subagents/agent-ade6dc2f8bec83c60.jsonl`
-  - Internet: `.../subagents/agent-a94effc08176f9ff5.jsonl`
-  - Synthesizer: `.../subagents/agent-a06d08601228495f9.jsonl`
-- **Retrievals on disk:** `module-3/retrievals/{wiki,docs,internet}.md`
-- **Stances on disk:** `module-3/stances/{1-planner,2-experimentator,3-reframer}.md`
+- **Actor transcripts (4):** orchestrator passes paths for wiki, docs, internet, synthesizer subagent `.jsonl` files.
+- **Retrievals on disk:** `sources/{wiki,docs,internet}-retrieval.md`
+- **Stances:** `module-3/stances/{1-planner,2-experimentator,3-reframer}.md`
 - **Combined answer:** `module-3/answer.md`
 - **Wonder:** `module-3/wonder.md`
 - **Question:** `module-3/question.md`
@@ -20,68 +18,94 @@ Grading four Actor subagents that together ran Bootstrap M3 (three retrievers in
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback-or-transcript>` for V-assertions.
-- `jq` + `grep -o '"file_path":"[^"]*"'` on transcripts.
+- `curriculum/evals/mechanical/bin/verbatim-check.sh` for V-assertions.
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh three-retrievers-three-minds`
+- `jq`, `grep`, `test -f`, `wc -l`.
+
+## Method
+
+For every assertion: run the named script, capture exit code + first line. No quoting, no narration, no taste calls. If you find yourself reading scrollback to judge whether content is "good," stop — that's not your job.
 
 ## Assertions
 
 ### Verbatim round-trip
 
-- **V1.** prompt-001 appears verbatim in the wiki retriever's transcript/scrollback.
-- **V2.** prompt-002 appears verbatim in the docs retriever's.
-- **V3.** prompt-003 appears verbatim in the internet retriever's.
-- **V4.** prompt-004 appears verbatim in the synthesizer's.
+- **V1.** prompt-001 verbatim in wiki retriever scrollback.
+- **V2.** prompt-002 in docs scrollback.
+- **V3.** prompt-003 in internet scrollback.
+- **V4.** prompt-004 in synthesizer scrollback.
 
 ### Phase 0 — question
 
-- **A1.** `module-3/question.md` exists and names the Q3 rollout shape question. One sentence.
+- **A1.** `module-3/question.md` exists. `test -f`.
 
 ### Phase 1 — three retrievers
 
-- **A2.** `sources/wiki-retrieval.md` exists. Has substitution-log line at top referencing mock Confluence. 4 findings paragraphs (one per Confluence mock). Each cites the mock path + title. **Conflicts and gaps** section present.
-- **A3.** `sources/docs-retrieval.md` exists. Substitution log for mock OneDrive. 4-5 findings paragraphs. Each cites path + title. Personal note handled with sensitivity flag — one-line theme only, NO content from `maija-prep-notes-skeptics.md` leaked. **Conflicts and gaps** section present.
-- **A4.** `sources/internet-retrieval.md` exists. Substitution log for mock practitioners. 4 findings (Karpathy + Alasaarela + Klaassen + Intercom). Each cites URL + author + one line of mapping-to-Maija's-situation. **Conflicts and gaps** section present.
-- **A5.** Retrievers return **non-comparable outputs by design** — each file has its own dialect/shape. FAIL if all three read as parallel summaries (same bullet structure, same tone). The point is dialect divergence.
-- **A6.** No retriever read sibling retrieval files. Transcript grep per retriever: no Read of the other two `.md` files under `retrievals/`.
-- **A7.** No retriever read mock folders outside its lane. Wiki transcript → no `/tmp/bootstrap-mocks/onedrive/` or `practitioners/` Reads. Docs → no Confluence/practitioners. Internet → no Confluence/onedrive.
-- **A8.** Docs retriever did NOT leak `maija-prep-notes-skeptics.md` content. Grep `sources/docs-retrieval.md` for any sentence that paraphrases the note's content (Tier framing, sub-team splits, specific dissent-strategy moves). PASS if only a one-line theme ("personal prep notes on how to handle principled dissent, treated as reference only per Maija's hard-line rule") — FAIL if substantive content leaked.
+- **A2.** `sources/wiki-retrieval.md` exists. Has substitution-log line at top: `grep -F '[harness substitution' <file> | head -1`. Has **Conflicts and gaps** section: `grep -F 'Conflicts and gaps'`.
+- **A3.** `sources/docs-retrieval.md` exists. Same shape checks. Personal-note containment: `grep -F` for substantive content of `maija-prep-notes-skeptics.md` (e.g., specific Tier-framing tokens) — FAIL if hit.
+- **A4.** `sources/internet-retrieval.md` exists. Same shape checks.
+- **A5.** No retriever read sibling retrieval files. `jq` per transcript for Reads of other `*-retrieval.md` paths.
+- **A6.** No retriever read mock folders outside its lane. `jq` per transcript for cross-lane mock paths.
 
 ### Phase 2 — synthesizer
 
-- **A9.** Synthesizer Read all three retrieval files. Transcript evidence.
-- **A10.** Synthesizer did NOT read mock-library files directly (retrievers' territory). Transcript grep on `/tmp/bootstrap-mocks/`.
-- **A11.** Substitution for nested subagents logged at top of synthesizer scrollback. Quote.
-- **A12.** Three stance files exist at `module-3/stances/1-planner.md`, `2-experimentator.md`, `3-reframer.md`. Each under 250 words (allow slack over the 200-word target).
-- **A13.** Stance 1 (planner) structure: 12-month outcome → month 9 → month 6 → month 3 → next week → Monday. Quote the sequence.
-- **A14.** Stance 2 (experimentator) lists load-bearing assumptions and a kill-in-a-week test for each. Quote two assumptions with their tests.
-- **A15.** Stance 3 (reframer) names an analogy from an unrelated field, names a bias, names the invert-it move. Quote one of each. Not dad-joke glib — the Rory seat's actual move.
-- **A16.** Three stances are **genuinely distinct** — different stance on the same material. FAIL if two stances converge to the same recommendation with different wording.
-- **A17.** Conflict-naming step happened BEFORE the combined answer. Transcript or scrollback evidence — an explicit "where the retrievals had conflicts or gaps" paragraph prior to the Rumelt sections. FAIL if the combined answer led.
-- **A18.** `module-3/answer.md` exists. Three labeled sections: Diagnosis, Guiding policy, Coherent actions. Quote one sentence from each.
-- **A19.** Answer names which stance the synthesizer sided with where the three diverged. Quote.
-- **A20.** Answer cites retrieval files and stance files for load-bearing claims. At least 3 citations total across `answer.md`. Quote two.
-- **A21.** Answer is a decision, not a summary. Name the picked Q3 shape (A / B / C / hybrid) and Monday's first move. Quote the Monday move.
+- **A7.** Synthesizer Read all three retrieval files. `jq` transcript for Reads of `sources/wiki-retrieval.md`, `sources/docs-retrieval.md`, `sources/internet-retrieval.md`.
+- **A8.** Synthesizer did NOT Read mock-library files. `jq` for any `/tmp/bootstrap-mocks/` Read.
+- **A9.** Substitution log in synthesizer scrollback: `grep -F 'subagents spawned inline'`.
+- **A10.** Three stance files exist: `test -f module-3/stances/1-planner.md`, `2-experimentator.md`, `3-reframer.md`. Each ≤ 250 words: `wc -w`.
+- **A11.** Conflict-naming step before combined answer. In synthesizer scrollback, position of `grep -n 'conflict'` should precede position of `grep -n 'Diagnosis'`.
+- **A12.** `module-3/answer.md` exists. Three section headers present: `grep -E '^##? (Diagnosis|Guiding policy|Coherent actions)'` ≥ 3.
+- **A13.** Answer cites retrieval/stance files: `grep -cE '(retrievals/|stances/)'` ≥ 3.
 
-### Close — wonder
+### Close
 
-- **A22.** `module-3/wonder.md` exists. One line (may be one short paragraph). Names what feels off about the answer. NOT a fix. Quote.
+- **A14.** `module-3/wonder.md` exists. ≤ 100 words.
 
 ### Truncations
 
-- **A23.** Debrief NOT executed. Root `./CLAUDE.md` in scratch unchanged from M2 end-state (or absent if M2 Debrief was also truncated). No rewrite evidence in synthesizer transcript.
+- **A15.** Debrief NOT executed. No Write to root `./CLAUDE.md` in any transcript.
 
 ### Harness leakage (per Actor)
 
-- **H1.** No Actor read any `curriculum/exercises/` file. All prompt content via `/tmp/prompts/`.
-- **H2.** No Actor read any judge runner or sibling actor runner. Own runner allowed.
-- **H3.** No Actor read maintainer docs (`lemmings-seed.maintainer.md` or similar).
-- **H4.** No harness-internal files inside `<scratch>` that Actors re-read.
-- **H5.** No Actor attempted real WebFetch on mock URLs. All practitioner reads via `/tmp/bootstrap-mocks/practitioners/`.
+- **H1.** No Actor read `curriculum/exercises/`. `jq` transcript filter.
+- **H2.** No Actor read judge runner or sibling actor runner.
+- **H3.** No Actor read `*.maintainer.md`.
+- **H4.** No Actor attempted real WebFetch on mock URLs. `jq` filter for WebFetch tool calls matching mock-library URL patterns.
 
-### Substitutions (informational)
+### Prompt-source audit
 
-- **A24.** List every substitution with trigger across the four dispatches.
+Run `bin/prompt-source-audit.sh three-retrievers-three-minds`. Capture exit code + verdict.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/bootstrap-m3-verbatim-judge-report.md`. Shape: Summary / 4 transcript paths / scratch / V1–V4 / A1–A24 / H1–H5 / Findings for exercise / Findings for harness / Portability notes (what this M3 design confirms about multi-session pedagogy: the three-role separation plus per-source dispatch substitutes for four-parallel-sessions cleanly; stance-inline substitutes for nested Task at content-fidelity but not isolation). Under 1000 words.
+Write `curriculum/evals/mechanical/instances/bootstrap-m3-verbatim-judge-report.md`:
+
+```markdown
+# Judge report — Bootstrap M3 verbatim
+
+## Summary
+Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audit: K.
+
+## V1–V4
+...
+
+## A-series
+...
+
+## H-series
+...
+
+## Prompt-source audit
+<paste stdout>
+```
+
+Under 500 words.
+
+## What you must NOT do
+
+- Quote a sentence from a retrieval file and judge if it's "specific enough."
+- Decide whether the three stances are "genuinely distinct" in spirit.
+- Compare the answer to source material to judge groundedness.
+- Read scrollback to assess strategy quality.
+
+If an assertion can't be reduced to a script call or `jq`/`grep` one-liner, drop it and flag as a script-ratchet TODO.

@@ -1,6 +1,8 @@
 # Judge — M6 chain verbatim
 
-Grading an Actor that ran M6's spot-gaps-build-the-loop + arc-retrospective end-to-end on a scratch inherited from M3 → M4 → M5, with two branches representing the un-packaged (M4) and packaged (M5) runs. Inputs: final scratch state, Actor's `.jsonl` transcript, scrollback, 5 prompt files, 2 substitute transcripts, and the authored second skill at `~/.claude/skills/<name>/SKILL.md`.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+
+You are grading whether M6's chain (spot-gaps-build-the-loop + arc-retrospective) ran end-to-end on a scratch inherited from M3 → M4 → M5 and whether file artefacts have the expected SHAPE. You are NOT grading whether the gap diff is sharp, the second skill is well-shaped, the invocation findings are insightful, or the arc note captures real patterns.
 
 ## Inputs
 
@@ -10,85 +12,107 @@ Grading an Actor that ran M6's spot-gaps-build-the-loop + arc-retrospective end-
 - **Actor scrollback:** `curriculum/evals/mechanical/instances/m6-chain-verbatim-actor-scrollback.md`
 - **Prompt files:** `/tmp/prompts/spot-gaps-build-the-loop/prompt-00{1,2,3,4}.txt`, `/tmp/prompts/arc-retrospective/prompt-001.txt`
 - **Substitute transcripts:** `/tmp/m5-substitute-transcript.md`, `/tmp/m6-m5-rerun-transcript.md`
-- **Authored skill:** newly-created `~/.claude/skills/<name>/SKILL.md` (Actor reports the name + path)
+- **Authored skill path:** Actor reports it (under `~/.claude/skills/<name>/SKILL.md`).
 - **Arc note:** `<scratch>/.claude/memory/arc-note.md`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` for V-assertions.
-- `jq` / `grep -o` on the transcript.
+- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh <slug>` — P/E checks
+- `jq` on `.jsonl` for transcript inspection
+
+## Method
+
+For every assertion: run the named script, capture exit code + first line of output. No quoting, no narration, no taste calls. If you find yourself reading scrollback to judge whether content is "good," stop — that's not your job.
 
 ## Assertions
 
-### Verbatim round-trip
+### Verbatim round-trip (V1–V5)
 
-- **V1–V5.** Each of 5 prompt files passes `verbatim-check.sh` against the scrollback.
+For each of 5 prompt files: `verbatim-check.sh <prompt> <scrollback>`. Report exit code + prefix.
 
 ### Ex1 Phase 1 — diff
 
-- **A1.** Actor diffed across all four dimensions (caught / missed / introduced / where-fix-belongs). Quote one claim from each dimension.
-- **A2.** Each claim includes quoted evidence from BOTH runs where applicable (the un-packaged M4 state + the packaged M5 state). Quote the pair for one "caught" item.
-- **A3.** Actor read both substitute transcripts. Transcript Read-calls for `/tmp/m5-substitute-transcript.md` and `/tmp/m6-m5-rerun-transcript.md`.
-- **A4.** Ranked gap list at end of Phase 1 (3–5 items). Quote the ranking.
-- **A5.** Dominant gap named with justification. Quote.
+- **A3.** Actor read both substitute transcripts: `jq` Reads of `/tmp/m5-substitute-transcript.md` AND `/tmp/m6-m5-rerun-transcript.md` between Prompt 1 and Prompt 2 paste markers.
 
 ### Ex1 Phase 2 — author
 
-- **A6.** Actor asked shape-first (not author-first). Scrollback evidence.
-- **A7.** Shape chosen matches the dominant gap's nature (LLM-judge if qualitative-fit drift; sharpened-verifier if presence/absence drift; gap-finder if pre-run context issue).
-- **A8.** One question at a time — Q1 → A1 → Q2 → A2 pattern, not a question-dump.
-- **A9.** SKILL.md exists at `~/.claude/skills/<name>/SKILL.md`. Quote the path.
-- **A10.** Frontmatter valid (name + description fields).
-- **A11.** Body cites specific moments from the two runs' diff (quote one), not generic judge/verifier advice.
-- **A12.** No `[BRACKET]` placeholders.
+- **A8.** One question at a time: between Prompt 2 paste and Prompt 3 paste, count assistant turns containing `?`. Expect ≥ 5. FAIL if any single turn contains ≥ 4 questions.
+- **A9.** SKILL.md exists at `~/.claude/skills/<name>/SKILL.md` (Actor reports the path): `test -f <reported-path>`.
+- **A10.** Frontmatter has `name` + `description`: `head -20 <SKILL.md> | grep -E '^name:|^description:'` ≥ 2.
+- **A12.** No `[BRACKET]` placeholders: `grep -nE '\[[A-Z][A-Z_]+\]' <SKILL.md>` && FAIL.
 
-### Ex1 Phase 3 — self-critique
+### Ex1 Phase 4 — invoke
 
-- **A13.** Self-critique names at least one real weakness of the skill. Quote. FAIL if critique reassures without naming a concrete weak point.
-
-### Ex1 Phase 4 — invoke + self-grade
-
-- **A14.** Actor invoked the skill on the M5 packaged re-run (reads the `send-off/auth-ux-packaged` branch state and the reference/plan). Transcript Read-call evidence.
-- **A15.** Invocation produced ranked findings in the shape the skill declared (quote the top finding).
-- **A16.** Self-grade answers the three prompt questions: catches the dominant gap? misses things a staff engineer would catch? would the M4 un-packaged run have been better with this skill? Quote the answer on "catches dominant gap."
+- **A14.** Actor Read `<scratch>/docs/tasks/auth-ux-wiring/reference.md` AND files on `send-off/auth-ux-packaged` branch between Prompt 4 paste and Prompt 5 paste: `jq` Read tool calls.
 
 ### Ex2 — arc-retrospective
 
-- **A17.** Actor read across the full arc — at minimum: CLAUDE.local.md, `.claude/memory/observations.md`, the ADR, both authored skills (test-strategy + done-means-judge), both run branches.
-- **A18.** Arc note quotes from the student's OWN files — not generic reflection. Quote two quotes from the note.
-- **A19.** Note names a recurring pattern across modules (or explicitly says arc was uneven). Quote.
-- **A20.** Note was saved to `.claude/memory/arc-note.md` per the substituted student approval.
-- **A21.** Arc note is one page (roughly — not three pages). Word count + quote the closing line.
+- **A17.** Actor Read across the arc — at minimum: 3+ of {`CLAUDE.local.md`, `.claude/memory/observations.md`, ADR, both skills, both run branches}. `jq` Read tool calls between Prompt 5 paste and end of scrollback.
+- **A20.** Arc note saved at `<scratch>/.claude/memory/arc-note.md`: `test -f`.
+- **A21.** Arc note is roughly one page: `wc -w <arc-note>` between 200 and 1500 words.
 
 ### Prompt-chain integrity
 
-- **A22.** Ex1 → Ex2 flowed: Actor didn't collapse the two exercises into one response. Separate headers, separate responses.
+- **A22.** Ex1 → Ex2 separation: scrollback has distinct headers for Ex1 and Ex2 (grep for `Ex2` or `arc-retrospective` heading after Prompt 4 response).
 
-### Harness leakage
+### Cross-module artefact contract
 
-- **H1.** No Read of maintainer docs or planted-state docs.
-- **H2.** No Read of judge or sibling actor runners (own `m6-chain.verbatim.actor.md` allowed).
-- **H3.** No Read of `curriculum/exercises/` files.
-- **H4.** Commit messages neutral; no "planted" / "harness" leaks.
-- **H5.** No harness-internal files inside `<scratch>` that Actor re-read.
-- **H6.** Actor did NOT attempt to walk `~/.claude/projects/` — used the two substitutes.
+- **A18.** Inherited artefacts present at start: `test -f <scratch>/docs/adr/0001-strip-email-from-leaderboard.md` AND `test -f <scratch>/docs/tasks/auth-ux-wiring/reference.md` AND `test -f <scratch>/docs/tasks/auth-ux-wiring/plan.md`.
+- **A19.** Both branches exist: `git -C <scratch> branch | grep -E 'send-off/auth-ux($|-packaged)'` shows two.
 
-### Substitutions (informational)
+### Harness leakage (H1–H6)
 
-- **A23.** List every substitution with trigger.
+- **H1.** No Read of `*.maintainer.md`.
+- **H2.** No Read of judge or sibling actor runner (own `m6-chain.verbatim.actor.md` allowed).
+- **H3.** No Read under `curriculum/exercises/`.
+- **H4.** Commit messages neutral.
+- **H5.** No harness-internal files inside `<scratch>` re-Read.
+- **H6.** Actor did NOT walk `~/.claude/projects/`: `grep -o '"file_path":"[^"]*\.claude/projects/[^"]*"' <jsonl>` → empty.
 
 ### Prompt-source audit
 
-Run the dimension defined in `curriculum/evals/mechanical/runners/_prompt-source-audit.md` against:
+Run once per slug:
+- `bin/prompt-source-audit.sh spot-gaps-build-the-loop`
+- `bin/prompt-source-audit.sh arc-retrospective`
 
-- **Fenced prompts:** `/tmp/prompts/spot-gaps-build-the-loop/prompt-00{1,2,3,4}.txt`, `/tmp/prompts/arc-retrospective/prompt-001.txt`
-- **Exercise bodies:** `curriculum/exercises/spot-gaps-build-the-loop.md`, `curriculum/exercises/arc-retrospective.md` (clip each at `<!-- maintainer -->`)
-
-Apply P1–P5 + E1–E7. M6 is OUT of the `practice`-noun ban range (M4+). Module-specific notes:
-- Ex1 authors a SECOND skill at `~/.claude/skills/<name>/`. Same P2 rule as M3 Ex3: invocation by name only; path appears only in author-destination prose.
-- E4 receiving-side: M6 references M4 + M5 artefacts (un-packaged + packaged branches, M5 worktree, the verifier). Confirm each has a stable identifier in body. Producer-side companion FLAGs against M4 + M5 Judges.
-- E5 session-mechanics: M6 continues in the M5 worktree (no new fork). Confirm body explicitly names this — opening a fresh worktree or returning to the original repo is a Sev-1 source defect.
+Capture exit code + verdict. PASS if `READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
 
 ## Report
 
-Write `curriculum/evals/mechanical/instances/m6-chain-verbatim-judge-report.md`. Same shape as M3/M4/M5 judge reports + prompt-source audit. Under 1100 words. Short quotes. Leave artifacts in place.
+Write `curriculum/evals/mechanical/instances/m6-chain-verbatim-judge-report.md`:
+
+```markdown
+# Judge report — M6 chain verbatim
+
+## Summary
+Verdict: PASS | FAIL (N/M). Sev-1 from prompt-source-audit: K.
+
+## V1–V5
+V1: PASS — <prefix>
+...
+
+## A-series
+A3: PASS — <evidence>
+...
+
+## H-series
+H1: PASS — <evidence>
+...
+
+## Prompt-source audit
+- spot-gaps-build-the-loop: <verdict>
+- arc-retrospective: <verdict>
+```
+
+Under 600 words. Leave artifacts in place.
+
+## What you must NOT do
+
+- Quote a diff dimension and judge if it's "specific."
+- Decide whether the SKILL.md body is "codebase-tuned" or "generic."
+- Decide whether self-critique is "substantive."
+- Decide whether the arc note "names a real pattern."
+- Read source files to evaluate gap analysis or arc reflection content.
+
+If an assertion can't be reduced to a script call or a `jq`/`grep` one-liner, drop it and flag the gap — that's a script-ratchet TODO, not a Judge job.

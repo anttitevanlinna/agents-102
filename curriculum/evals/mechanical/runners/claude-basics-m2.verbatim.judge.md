@@ -1,86 +1,110 @@
 # Judge — Claude Basics M2 the-it-directors-prompt verbatim
 
-You are evaluating an Actor run of the Module 2 exercise. The Actor executed Phases 2-5 (Phase 1's live IT-Director composition is substituted by a synthetic prompt). Your job: assert against (a) the scratch file state and (b) the Actor's transcript scrollback.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
 
-You do NOT read the exercise file, the module file, or any other curriculum artifact.
+You are grading whether the M2 prompt chain ran end-to-end (Phases 2–5) and whether the file artefacts have the expected SHAPE. Not grading whether the verification claims are accurate or the new CLAUDE.md rule is well-phrased.
 
 ## Inputs
 
-- **Actor scrollback:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-scrollback.md`
-- **Actor report:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-report.md`
-- **Scratch state:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/claude-basics-m2/`
-- **Parsed prompts:** `/tmp/prompts/the-it-directors-prompt/prompt-00{1,2,3,4}.txt`
-- **Substitutes:** `/tmp/claude-basics-m2-substitutes/`
+- **Scratch:** `curriculum/evals/mechanical/scratch/claude-basics-m2`
+- **Actor scrollback:** `curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-scrollback.md`
+- **Actor report:** `curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-report.md`
+- **Prompt files:** `/tmp/prompts/the-it-directors-prompt/prompt-00{1,2,3,4}.txt`
+- **Substitutes:** `/tmp/claude-basics-m2-substitutes/{it-director-prompt,phase-4-verdicts,phase-5-wrong-row}.txt`
+
+## Tooling
+
+- `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh the-it-directors-prompt` — P/E checks (static lint)
+
+## Method
+
+For every assertion below: run the named script, capture exit code + first line of output, paste into the report. No quoting, no narration, no taste calls.
 
 ## Assertions
 
-### A. File-state
+### Verbatim round-trip (V1–V4)
 
-**A1. Final artifacts exist.** `CLAUDE.md`, `CLAUDE.md.v6-rule-added`, `verification.md`, `verification.md.v1`, `verification-table.md` all present.
+For each `prompt-00N.txt` (N = 1..4): `verbatim-check.sh <prompt> <scrollback>`. Report exit code + prefix.
 
-**A2. CLAUDE.md grew by exactly 1 rule.** Final `CLAUDE.md` line count strictly greater than scratch's starting `CLAUDE.md` (5 rules). Final has 6 distinct rules (count by sentences ending with periods or numbered/bulleted items). The OneDrive runtime line is still rule 1, verbatim.
+### File-existence (mechanics)
 
-**A3. Phase 5 added rule about Teams recording storage.** Final `CLAUDE.md` contains a rule mentioning *"Teams meeting recordings"* OR *"recording-storage"* OR *"Stream"* — reflecting the Phase 5 wrong-claim about Stream-by-default. Quote the rule.
+- **A1.** Final artifacts exist: `test -f` for `CLAUDE.md`, `CLAUDE.md.v6-rule-added`, `verification.md`, `verification.md.v1`, `verification-table.md`.
+- **A2a.** Final `CLAUDE.md` line count strictly greater than starting (5 rules): compare against `CLAUDE.md.v6-rule-added` baseline if no separate v0 snapshot exists. Final has ≥ 6 distinct rule lines (`grep -cE '^[0-9]+\.|^- '`).
+- **A2b.** OneDrive runtime line still rule 1 verbatim: `grep -n 'You are working in a OneDrive-synced folder. Assume eventual consistency on cross-folder reads.' CLAUDE.md` lands within first 5 non-empty lines.
+- **A3.** Phase 5 added a Teams-recording rule: `grep -qE 'Teams meeting recordings|recording-storage|Stream' CLAUDE.md`.
+- **A4.** `verification-table.md` has 6 rows with all Verdict cells filled. Heuristic: count table rows (`grep -cE '^\|' verification-table.md` minus header/separator) ≥ 6. Verdict-distribution check: `grep -c 'checked-true'` ≥ 2; `grep -c 'checked-wrong'` ≥ 2; `grep -cE "I can't tell|I-can't-tell"` ≥ 2.
+- **A5.** Stream wrong-claim seeded: `grep -q 'Stream' verification.md || grep -q 'Stream' verification.md.v1`.
+- **A6.** No placeholder leaks: `grep -rE '\[[A-Z][A-Z_]+\]|<my-|<group-|<your-|\[paste here\]|\[your task\]'` across scratch. Zero hits.
 
-**A4. verification-table.md has 6 rows with all Verdict cells filled.** Three columns (`Claim`, `Where I'd check`, `Verdict`). Final table has 6 distinct claim rows. Verdict column distribution: 2 `checked-true`, 2 `checked-wrong`, 2 `I can't tell` (or `I-can't-tell`). Quote the Verdict column.
+### Cross-phase Reads (transcript)
 
-**A5. verification.md contained the Stream-by-default claim.** Either `verification.md` or `verification.md.v1` contains the phrase *"Stream"* in a context that asserts Teams meeting recordings are stored there by default. Quote the line. (This is the seeded wrong claim Phase 5 catches.)
+- **A7.** Session-start Read of pre-staged `CLAUDE.md`: `jq -c 'select(.message.content[]?.input.file_path? | test("CLAUDE\\.md$"))' <jsonl>` shows ≥ 1 Read before prompt-001 paste.
 
-**A6. No placeholder leaks.** Grep saved files for `[BRACKETS]`, `<my-`, `<group-`, `[your task]`. Zero hits.
+### One-at-a-time / order assertions
 
-### B. Transcript
+- **A8.** Phase 3 propose-then-save: between prompt-002 paste and the *"Row 4's source"* push-back substring, no `Write` tool call on `verification-table.md` in transcript. After the push-back, ≥ 1 Write of `verification-table.md`. `jq` filter.
+- **A9.** Phase 4 row-by-row dialog: between prompt-003 paste and prompt-004 paste, count distinct assistant turns that print a single row. Expect ≥ 5 (six rows; one batched is tolerated). FAIL if a single assistant turn fires ≥ 3 row prints.
+- **A10.** Phase 4 verdict order matches `phase-4-verdicts.txt`: `verbatim-check.sh /tmp/claude-basics-m2-substitutes/phase-4-verdicts.txt scrollback`.
 
-**B1. All four prompts pasted verbatim.** Use `bash bin/verbatim-check.sh` for each:
+### Substitution log (open-hook landings)
 
-```
-for n in 001 002 003 004; do
-  bash /Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/bin/verbatim-check.sh \
-    /tmp/prompts/the-it-directors-prompt/prompt-${n}.txt \
-    /Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-scrollback.md
-  echo "  prompt-${n}: exit $?"
-done
-```
+- **A11.** IT-Director-composed prompt landed: `verbatim-check.sh /tmp/claude-basics-m2-substitutes/it-director-prompt.txt scrollback`.
+- **A12.** Phase 5 wrong-row landed: `verbatim-check.sh /tmp/claude-basics-m2-substitutes/phase-5-wrong-row.txt scrollback`.
 
-Each must return exit 0.
+### Banned-shape leak detector (C-block)
 
-**B2. Phase 2 IT-Director-composed prompt landed.** The text from `/tmp/claude-basics-m2-substitutes/it-director-prompt.txt` appears in the scrollback within ~10 lines after `prompt-001.txt`'s open-hook colon ends.
+- **C1.** Grep saved scratch files for: `tell the person`, `sitting next to you`, `share with your neighbor`, `tell the room`, `sit with`, `take a moment`, `let it land`. Zero hits. (Leak detector — not a writing-register check.)
 
-**B3. Phase 3 propose-then-save order.** In the Phase 3 segment, Claude shows the table in chat (NOT yet saved) BEFORE the participant push-back. Then the push-back appears (the *"Row 4's source..."* substitution). Then Claude saves. Quote the three turns in order.
+### Harness leakage (H1–H5)
 
-**B4. Phase 4 chat-walk row-by-row.** In Phase 4 segment, the scrollback shows row-by-row dialog: Claude prints a row → participant verdict → Claude updates table. This pattern repeats 6 times. Verdict pattern matches `phase-4-verdicts.txt` order (true, can't-tell, wrong, true, can't-tell, wrong). Quote any 2 row turns as evidence.
+Run `jq` on transcript for any Read of:
+- `curriculum/trainings/claude-basics/exercises/the-it-directors-prompt.md` → H1 FAIL.
+- Any judge runner or sibling actor runner (own actor allowed) → H2 FAIL.
+- Any `*.maintainer.md` → H3 FAIL.
+- Any harness-internal file inside `<scratch>` Read unexpectedly → H4 FAIL.
+- `ls <scratch>` matches expected set. Anything else → H5 FAIL.
 
-**B5. Phase 5 open-hook substitution lands.** The text from `/tmp/claude-basics-m2-substitutes/phase-5-wrong-row.txt` appears in scrollback within ~10 lines after `prompt-004.txt`'s open-hook colon ends.
+### Prompt-source audit
 
-### C. Banned-shape (curriculum-prompt-leak detector only — NOT general writing register)
+Run: `bin/prompt-source-audit.sh the-it-directors-prompt`. Capture exit code + verdict. PASS if `Verdict: READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
 
-**C1. No room-share / contemplative-pause shapes in saved artifacts.** Grep saved scratch files for: `tell the person`, `sitting next to you`, `share with your neighbor`, `tell the room`, `sit with`, `take a moment`, `let it land`. Zero hits.
+## Report
 
-(Per `curriculum/evals/mechanical/README.md` § *Judge-spec banned-shape scope*: do NOT grade against em-dashes, *practice* noun, *honest*, etc. in saved artifacts — those are Claude's natural register, not curriculum violations.)
-
-## Verdict format
-
-Write to `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-judge-report.md`.
+Write `curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-judge-report.md`:
 
 ```markdown
 # Judge report — Claude Basics M2 verbatim
 
-## Verdict
-<PASS / FAIL / PASS-WITH-FLAGS>
+## Summary
+Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audit: K.
 
-## Per-assertion results
-### A. File-state
-- A1: ... A6: ...
+## V1–V4 (verbatim-check.sh)
+V1: PASS — <prefix>
+...
 
-### B. Transcript
-- B1: ... B5: ...
+## A-series (mechanics + cross-phase Reads + order)
+A1: PASS — files present
+...
 
-### C. Banned-shape
-- C1: ...
+## C-series (banned-shape leaks)
+C1: PASS — zero hits
 
-## Top issues to fix
-1. ... 2. ... 3. ...
+## H-series (harness leakage)
+H1: PASS — no Read of curriculum/trainings/claude-basics/exercises/
+...
 
-## One-sentence overall
+## Prompt-source audit
+<paste the script's stdout>
 ```
 
-Under 600 words. Quote evidence.
+Under 400 words. No quoting beyond what scripts emit. Leave artifacts in place.
+
+## What you must NOT do
+
+- Quote a verification.md claim and judge whether it's actually true about M365.
+- Decide whether the new CLAUDE.md rule "really would" catch future Stream confusions.
+- Read scratch files to evaluate voice, framing, or content quality.
+- Compare phases qualitatively beyond the named-string presence and verdict-distribution counts.
+
+If an assertion can't be reduced to a script call or a `jq`/`grep` one-liner, drop it from this judge and flag the gap in the report — that's a script-ratchet TODO, not a Judge job.

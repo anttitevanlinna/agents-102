@@ -1,6 +1,8 @@
 # Judge — Bootstrap M4 audit-your-agent verbatim
 
-Grading an Actor that ran Bootstrap M4 Exercise 2 (audit-your-agent) on a scratch where the reusable security check authored in Exercise 1 is on disk, installed as sandboxed CLI skills, and the raw policy report exists. Inputs: final scratch state, Actor transcript + scrollback, four extracted prompt files, the skill files, the two packaged reports, and `guardrails.md`.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
+
+Grading whether the M4 audit chain ran end-to-end on inherited scratch and whether the file artefacts have the expected SHAPE. You are NOT grading whether findings are insightful, evidence is well-quoted, or mitigations are sound. You ARE checking that the verbatim attack-class names appear (forcing-function grep), and that the reusable check files were not modified.
 
 ## Inputs
 
@@ -11,96 +13,116 @@ Grading an Actor that ran Bootstrap M4 Exercise 2 (audit-your-agent) on a scratc
 - **Prompt files:** `/tmp/prompts/audit-your-agent/prompt-00{1,2,3,4}.txt`
 - **Source plugin:** `<scratch>/module-4/plugins/security-audit/`
 - **Installed CLI skills:** `<scratch>/skill-install/.claude/skills/security-audit-{policy,agent-security}/`
-- **Outputs:** `<scratch>/outputs/{policy-report-raw,policy-report,security-report}.md`, edited `<scratch>/agents/monday-risks.md`, `<scratch>/guardrails.md`
+- **Outputs:** `<scratch>/outputs/{policy-report-raw,policy-report,security-report}.md`, `<scratch>/agents/monday-risks.md`, `<scratch>/guardrails.md`
 
 ## Tooling
 
-- `curriculum/evals/mechanical/bin/verbatim-check.sh` for V-assertions.
-- `grep -i` / `grep -F` against the reports for forcing-function checks.
+- `curriculum/evals/mechanical/bin/verbatim-check.sh`
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh audit-your-agent`
+- `grep -i` / `grep -F` / `diff` / `test -f`
+
+## Method
+
+For every assertion: run the named script, capture exit code + first line. No quoting, no narration, no taste calls.
 
 ## Assertions
 
 ### Verbatim round-trip
 
-- **V1-V4.** Each of `prompt-001..004.txt` passes `verbatim-check.sh` against actor scrollback.
+- **V1-V4.** prompt-001..004 via `verbatim-check.sh`.
 
 ### Inherited state
 
-- **A1.** Actor confirmed inherited M3 paths and reusable-check paths exist: `memory/`, `sources/`, `agents/monday-risks.md`, `module-3/answer.md`, `outputs/policy-report-raw.md`, source plugin, and both installed CLI skills. Quote.
-- **A2.** `outputs/policy-report-raw.md` exists before Phase 1 starts and is not overwritten during the audit. Diff timestamp or scrollback evidence.
+- **A1.** Inherited paths exist: `test -f` on `memory/index.md` (or any memory page), `agents/monday-risks.md`, `module-3/answer.md`, `outputs/policy-report-raw.md`, source plugin SKILL.md files, both installed CLI skills.
+- **A2.** `outputs/policy-report-raw.md` byte-unchanged: capture shasum at start; compare at end. FAIL if differs.
 
 ### Phase 1 — packaged policy audit
 
-- **A3.** Actor Read `skill-install/.claude/skills/security-audit-policy/SKILL.md` before writing the report. Transcript evidence.
-- **A4.** `outputs/policy-report.md` exists. Table shape: `| Rule | Description | Verdict | Evidence |`. Quote header row.
-- **A5.** >=12 rule rows. FAIL if under 8.
-- **A6.** Verdicts include all three values (`compliant`, `violating`, and the plain phrase `"I can't tell"` or `I can't tell`). FAIL if zero `I can't tell` rows.
-- **A7.** Evidence column is non-generic: sample 5 rows; >=4 must quote a specific file path or name what evidence would decide.
-- **A8.** Report or scrollback briefly compares packaged report to `outputs/policy-report-raw.md` (sharper, narrower, or more specific). Quote.
-- **A9.** Substitution log present at top of phase: `[harness substitution - reusable lens policy invoked by reading skill-install/.claude/skills/security-audit-policy/SKILL.md directly]`. Quote.
+- **A3.** Actor Read `skill-install/.claude/skills/security-audit-policy/SKILL.md`. `jq` transcript.
+- **A4.** `outputs/policy-report.md` exists with table header `| Rule | Description | Verdict | Evidence |`. `grep -F`.
+- **A5.** ≥12 data rows: `grep -c '^|' outputs/policy-report.md` minus header/separator ≥ 12.
+- **A6.** All three verdict values present: `grep -ic 'compliant' && grep -ic 'violating' && grep -ic "I can't tell"`.
+- **A7.** Substitution log: `grep -F '[harness substitution - reusable lens policy' <scrollback>`.
 
-### Phase 1.5 — meta-analysis
+### Phase 1.5 — meta read
 
-- **A10.** Actor Read `outputs/policy-report.md` between writing it and producing the meta-analysis.
-- **A11.** Three lists delivered: 3 surprises / 3 likely-violations-hiding-as-"I can't tell" / 1 surface-compliant-deserves-pushback. Quote one item per list.
-- **A12.** Each item quotes a specific rule name from the report.
+- **A8.** Actor Read `outputs/policy-report.md` after writing it. `jq` transcript ordering.
 
 ### Phase 2 — agent-security audit
 
-- **A13.** Actor Read `skill-install/.claude/skills/security-audit-agent-security/SKILL.md` before writing the security report.
-- **A14.** `outputs/security-report.md` exists. Sections present: access-control findings, named-attack-class findings (one subsection per class), ranked mitigations.
-- **A15.** Access-control findings: >=2 enumerated reaches, each with necessary?+severity. Quote one.
-- **A16.** **Named-attack-class subsections — all four classes covered by name:**
-  - `prompt injection` with both `direct` and `indirect` (one or two subsections, both modifiers must appear)
-  - `secrets in context` (and `scrollback` somewhere in this subsection)
-  - `tool confusion`
-  - `plugin supply-chain`
-
-  For each: at least one specific risk naming a file or behaviour (not generic class description). Quote one risk per class. FAIL if any class is missing OR if any subsection reads as a definition rather than a targeted finding.
-- **A17.** Ranked mitigations list uses three-tier (`high`/`medium`/`low`). Quote.
-- **A18.** Mitigation shapes — all five names {`scope`, `split`, `filter`, `gate`, `review`} appear verbatim somewhere in the mitigation list. (Not all per risk; all in the list across risks.)
-- **A19.** Classical-controls floor named at least once in the security report from {perimeter, IAM, mTLS, network, WAF}. Quote. The floor is named as a layer-on, not a replacement.
+- **A9.** Actor Read agent-security SKILL.md. `jq` transcript.
+- **A10.** `outputs/security-report.md` exists.
+- **A11. Forcing-function: all four attack classes named verbatim** (case-insensitive):
+  - `grep -iF 'prompt injection' outputs/security-report.md` AND `grep -iF 'direct'` AND `grep -iF 'indirect'`
+  - `grep -iF 'secrets in context'` AND `grep -iF 'scrollback'`
+  - `grep -iF 'tool confusion'`
+  - `grep -iF 'plugin supply-chain'`
+  Any miss → FAIL (this is the load-bearing check).
+- **A12.** All five mitigation shape names present: `for s in scope split filter gate review; do grep -iwF "$s" outputs/security-report.md; done`. All five must hit.
+- **A13.** Classical-controls floor named: `grep -iE 'perimeter|IAM|mTLS|network|WAF' outputs/security-report.md` ≥ 2 distinct.
+- **A14.** Tier markers present: `grep -iE '\b(high|medium|low)\b' outputs/security-report.md`.
 
 ### Phase 3 — mitigate
 
-- **A20.** Maija stated the risk in plain chat BEFORE pasting prompt-004. Scrollback shows the substituted risk message preceding the prompt-004 blockquote.
-- **A21.** Picked risk matches the runner substitution (Monday-risks agent paraphrasing personal-note content); Claude's mitigation shape is `filter`. Quote.
-- **A22.** Actor edited `agents/monday-risks.md`. Diff against `scratch/bootstrap-m3/agents/monday-risks.md` shows new content (structural exclusion rule, filter step, self-check). FAIL if byte-identical.
-- **A23.** Re-run of the specific check happened (named-attack-class re-pass on the modified file, not the whole audit). Transcript evidence; new verdict reported in scrollback.
-- **A24.** `guardrails.md` exists at scratch root. A residual paragraph names the residual SPECIFICALLY, not "the risk is reduced" boilerplate. Quote.
+- **A15.** Actor edited `agents/monday-risks.md`. `diff` against pre-Phase-3 state shows changes (capture pre-state from author runner end-state). FAIL if byte-identical.
+- **A16.** Edited file names the excluded path: `grep -F 'maija-prep-notes-skeptics' agents/monday-risks.md`.
+- **A17.** `guardrails.md` exists at scratch root: `test -f`.
 
 ### Close
 
-- **A25.** `guardrails.md` has a `## Doors I would rather not open` section (or `## Doors I'd rather not open`; both accepted). One line in the form `I am scoping out: X. The agent will not Y.` Quote.
-
-### Prompt-chain integrity
-
-- **A26.** Phases executed in order. No collapse.
-- **A27.** No question-dump where prompts imply one-at-a-time interactions.
+- **A18.** `## Doors I would rather not open` (or `Doors I'd rather not open`) section in `guardrails.md`: `grep -iF 'Doors I'`.
 
 ### Truncations
 
-- **A28.** Debrief NOT executed.
-- **A29.** No Write to any path under `module-4/plugins/security-audit/` or `skill-install/.claude/skills/security-audit-*` mid-audit. Reads allowed.
-- **A30.** No Write to `module-3/` paths.
+- **A19.** Debrief NOT executed.
+- **A20.** No Write to any path under `module-4/plugins/security-audit/` or `skill-install/.claude/skills/security-audit-*`. `jq` transcript filter.
+- **A21.** No Write to `module-3/` paths. `jq`.
 
 ### State protection
 
-- **A31.** Reusable-check files (`module-4/plugins/security-audit/` and `skill-install/.claude/skills/security-audit-*`) byte-unchanged from end of author runner. Diff. FAIL if any byte differs.
+- **A22.** Reusable-check files byte-unchanged. `diff -r module-4/plugins/security-audit/` against pre-state. `diff -r skill-install/.claude/skills/security-audit-policy/` and `security-audit-agent-security/` against pre-state.
 
 ### Harness leakage
 
-- **H1.** Actor did NOT read any `curriculum/exercises/` file.
-- **H2.** Actor did NOT read any judge / sibling runner.
-- **H3.** Actor did NOT read maintainer docs / planted-state docs.
-- **H4.** Actor did NOT read `/tmp/bootstrap-mocks/`.
+- **H1.** No Read of `curriculum/exercises/`. `jq`.
+- **H2.** No Read of judge / sibling runner.
+- **H3.** No Read of maintainer / planted-state docs.
+- **H4.** No Read of `/tmp/bootstrap-mocks/`.
 
-### Substitutions (informational)
+### Prompt-source audit
 
-- **A32.** List every substitution with trigger.
+Run `bin/prompt-source-audit.sh audit-your-agent`. Capture exit + verdict.
 
 ## Report
 
-Write `.../instances/bootstrap-m4-audit-judge-report.md`. Shape: Summary verdict (PASS/FAIL with assertion count) / V1-V4 / A1-A32 / H1-H4 / Findings for exercise (gaps in audit-your-agent.md the run surfaced) / Findings for harness / Portability notes. Under 1300 words.
+Write `.../instances/bootstrap-m4-audit-judge-report.md`:
 
-If A16 fails (any attack class missing or collapsed into generic STRIDE), call that the headline finding. If A8 fails, call out the raw-vs-packaged comparison gap.
+```markdown
+# Judge report — Bootstrap M4 audit verbatim
+
+## Summary
+Verdict: PASS | FAIL (N/M assertions). Sev-1 from prompt-source-audit: K.
+
+## V1–V4
+...
+
+## A-series
+...
+
+## H-series
+...
+
+## Prompt-source audit
+<paste stdout>
+```
+
+Under 500 words. If A11 fails (any attack class missing), call that the headline finding. If A22 fails (reusable check modified), call that critical.
+
+## What you must NOT do
+
+- Quote a sentence from the security report and judge if it's "specific."
+- Decide whether the mitigation is "the right shape."
+- Read `agents/monday-risks.md` to evaluate prose quality of the new rule.
+- Compare phases qualitatively.
+
+If an assertion can't be a script call or grep one-liner, drop it and flag as a script-ratchet TODO.

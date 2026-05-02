@@ -1,42 +1,41 @@
 # Actor — Bootstrap M3 wiki retriever
 
-You are Session 1 in Maija's four-session Module 3 setup: the **wiki retriever**. Your job is to find internal wiki material relevant to the strategic question and write findings to `sources/wiki-retrieval.md`. Fresh context; you do not see the other retrievers or the main session.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to run the wiki-retriever prompt and leave a file artefact (`sources/wiki-retrieval.md`) on disk for the Judge's scripts to inspect. You are NOT trying to produce a great retrieval. Stub the findings; the Judge does not grade quality.
+
+Fresh context.
 
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m3`.
 
 ## Protocol
 
-Read the prompt file verbatim. Quote it in a blockquote in your scrollback. Respond as Claude Code would.
+Read the prompt file verbatim. Quote it in a blockquote. Respond.
 
-**Prompt:** `/tmp/prompts/three-retrievers-three-minds/prompt-001.txt` (the wiki-retriever prompt).
+**Prompt:** `/tmp/prompts/three-retrievers-three-minds/prompt-001.txt`.
 
 ## Connector substitution
 
-You don't have MCP. Maija's Confluence is mocked at `/tmp/bootstrap-mocks/confluence/`. When the prompt says "Run the searches through Claude's connector to my wiki," substitute:
+Confluence mocked at `/tmp/bootstrap-mocks/confluence/`. When the prompt asks to run searches:
 
-- Propose 6-8 search terms first, ask for confirmation. Substitute Maija's confirmation:
+- Propose 6-8 search terms; substitute Maija's confirmation:
   > Keep: "agentic rollout," "platform OKRs 2026," "AI enablement retro," "classification policy," "sub-team structure." Add: "skeptics." Swap "Copilot" for "Claude Code" (we moved off Copilot).
-- Treat the mock files as if they were Confluence search hits. The relevant ones for the question: `ai-enablement-vendor-session-retro.md`, `platform-subteam-structure.md`, `2026-platform-okrs.md`, `classification-policy-draft.md`.
-- Each finding must cite the mock file's `path:` header (use it as if it were the Confluence page URL) AND the `title:` field.
-- Log `[harness substitution — mock Confluence connector; /tmp/bootstrap-mocks/confluence/ stands in]` once at the top of wiki.md.
+- Treat mock files as Confluence hits. Relevant files: `ai-enablement-vendor-session-retro.md`, `platform-subteam-structure.md`, `2026-platform-okrs.md`, `classification-policy-draft.md`.
+- Each finding cites the mock's `path:` header + `title:` field.
+- Log `[harness substitution — mock Confluence connector]` once at top of `sources/wiki-retrieval.md`.
 
 ## Question to read first
 
-Read `module-3/question.md`. That's the strategic question this retrieval serves.
+Read `module-3/question.md`.
 
 ## Output
 
 Write `sources/wiki-retrieval.md`:
-- Top line: the substitution log.
-- One paragraph per finding — 4 findings expected (one per Confluence mock file).
-- Each paragraph names the page title + path + one line on why this matters for the question.
-- **Conflicts and gaps** section at end: where internal pages disagree, where the wiki is thin.
-
-Read the question + each mock Confluence file before writing. If a mock file's content has nothing to say about the specific question, write "[NOT FOUND for this dimension]" rather than stretching.
+- Top line: substitution log.
+- 4 finding paragraphs (skeleton 2-3 sentences each is fine). Each names title + path + brief relevance line.
+- **Conflicts and gaps** section at end.
 
 ## Report
 
-Append a 3-line report to `.../instances/bootstrap-m3-verbatim-wiki-retriever-report.md`:
+Write `.../instances/bootstrap-m3-verbatim-wiki-retriever-report.md`:
 
 ```markdown
 # Actor — wiki retriever
@@ -48,8 +47,8 @@ Mocks read: <list>
 ## What you must NOT do
 
 - Read `curriculum/exercises/*`, judge or sibling runner files, maintainer docs.
-- Read the other two retrievers' output files (`sources/docs-retrieval.md`, `.../internet.md`) — they may not exist yet; if they do, ignore them. You work alone.
-- Read the main session's files beyond `module-3/question.md`.
-- Read `/tmp/bootstrap-mocks/onedrive/` or `/tmp/bootstrap-mocks/practitioners/` — those are other retrievers' territory.
-- Attempt real WebFetch.
+- Read other retrievers' output files (ignore if they exist).
+- Read main session's files beyond `module-3/question.md`.
+- Read `/tmp/bootstrap-mocks/onedrive/` or `/tmp/bootstrap-mocks/practitioners/`.
+- Real-WebFetch.
 - Paraphrase the prompt.

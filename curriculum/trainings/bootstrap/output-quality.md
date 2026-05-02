@@ -13,7 +13,7 @@ Walk in with one sentence per case: "the missing organisational check was X."
 ## What You'll Learn
 After this module, you will be able to:
 - **Evaluate** detection methods empirically: set up a 30-claim benchmark, compare methods against it, pick the winner with measured reasoning rather than intuition
-- **Synthesize** the winning method into a reusable judge file that names what it catches and what it can't reach (a judge you can defend in production)
+- **Synthesize** the winning method into a reusable judge file that names what it catches and where it stops
 - **Explain** why method selection for agent quality work is empirical, not authoritative, and why the scoreboard is the readable evidence behind the winner
 - **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
 
@@ -22,7 +22,7 @@ Start this module at the training-directory root. Module 5 reads the Module 3 sy
 
 In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it).
 
-This module is the rescue. Not full closure. One shape of output, measured, with the limits the judge can't reach named on its face.
+This module is the rescue. Not full closure: your Module 3 doubt and your Module 4 residuals stay where they are. One shape of output, measured, with the limits the judge can't reach named on its face. Module 6 turns the benchmark you build here into a check that runs on every build.
 
 Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.
 
@@ -141,11 +141,9 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Read Et
 
 **DEFERRED** (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability. Four-spawn shape is confirmed in production via Module 3's parallel retrievers; Module 5's pipeline + scorer-stability check needs a real benchmark run on real briefing input.
 
-**Quality:** draft 2026-05-02 (pattern-label promoted from body prose into prompt close as forcing function; story re-fire pending)
-- draft 2026-05-02 (Debrief prompt close extended: prompt now requires Claude to name the two patterns it enforced (one about which boundary to touch, one about checking what landed). Promotes the take-home transfer abstraction from body prose into prompt mechanics so speed-runners cannot miss it. Body callout retained for engaged readers. Source: /eval-fire story 2026-05-02 (forcing function in prompts not body, pedagogy rule 16); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-05-02 (Debrief prompt hardened: preserve-boundary on Groundedness checks section, verify-at-artifact read-back, least-confident-shape exclusion ask. Body callout names the two patterns: name the boundary, then check the work — distinct angle from M3's harsh-audit framing. Source: /eval-fire behavior 2026-05-02 convergent risks (self-report-inflation high, file-preservation-gap med, self-audit-charity med, preamble-before-action med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
-- compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)
+**Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
+- judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior grandfathered
+- mechanical @3d7e76c: PASS — bootstrap-m5 30/30 via bin/judge-m5.sh
 
 **Source-verification owed (pre-first-cohort):**
 - Mata v. Avianca (S.D.N.Y. 2023) — public court record; add URL to the court filing or a reputable secondary source.

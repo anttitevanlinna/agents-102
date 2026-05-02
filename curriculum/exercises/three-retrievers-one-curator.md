@@ -56,7 +56,7 @@ Write each finding as soon as you have it; don't batch until the end. The synthe
 
 No need to update `memory/` — another session is handling curation. Just write to `sources/`.
 
-Sources first. Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
+Sources first. Every finding cites the specific page title and URL you actually opened, plus one quoted sentence from the page that grounds the finding; if you cannot quote, write "[CITATION UNSUPPORTED]" instead. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
 ```
 
 
@@ -77,7 +77,7 @@ Write each finding as soon as you have it; don't batch until the end. The synthe
 
 No need to update `memory/` — another session is handling curation. Just write to `sources/`.
 
-Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
+Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened, plus one quoted sentence from the source that grounds the finding; if you cannot quote, write "[CITATION UNSUPPORTED]" instead. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
 ```
 
 

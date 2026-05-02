@@ -1,0 +1,96 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/three-minds-one-synthesis.md",
+  "verdict": "REVISE",
+  "training": "bootstrap",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Spawn three subagents in parallel, each with a different stance. Each reads my curated",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Multi-step orchestration prompt ('Spawn... Then synthesize... Append... Show me before saving') invites planning narration before any subagent is dispatched.",
+          "fix_hint": "Prefix 'No preamble — start dispatching immediately' to suppress orchestration narration from eating the student's highest-attention slot."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "Append an `## Answer` section to ./crux.md — no explicit 'don't touch existing sections' boundary.",
+          "fix_hint": "Add 'Append only — do not modify any existing sections of ./crux.md' immediately after the append instruction."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "'Show me before saving' provides the pre-confirm; risk is largely neutralised but residual on a file with existing content.",
+          "fix_hint": "Existing 'Show me before saving' is the right mitigation; no change needed for this pattern."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "'don't smooth the disagreement' explicitly guards; low residual risk on the synthesis step.",
+          "fix_hint": "Existing guard is adequate; no change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Spawn three agents in parallel, each with a different stance. Each reads my curated mem",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Same multi-step orchestration shape as prompt 1; identical narration-before-dispatch risk.",
+          "fix_hint": "Same fix as prompt 1: prefix 'No preamble — start dispatching immediately'."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "Append an `## Answer` section to ./crux.md with no preservation boundary — same gap as prompt 1.",
+          "fix_hint": "Same fix as prompt 1: 'Append only — do not modify any existing sections of ./crux.md'."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "'Show me before saving' mitigates; residual low risk.",
+          "fix_hint": "No change needed; existing pre-confirm is the correct mitigation."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "'don't smooth the disagreement' guards against softening.",
+          "fix_hint": "No change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "You choose fixes. Aim for optimal function in the next session that runs on this.",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "'You choose fixes' delegates curation to Claude on work it produced; Claude will prefer cosmetic fixes and under-flag structural issues.",
+          "fix_hint": "Optional residual prompt by design; if hardened, add 'over-flag — assume worse than it looks; name structural issues before cosmetic ones'."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Open-ended 'you choose' may elicit a short planning narration; risk is low given the prompt's brevity.",
+          "fix_hint": "No change needed for an intentional optional residual prompt."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 2,
+  "todos_count": 1
+}

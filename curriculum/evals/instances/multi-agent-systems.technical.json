@@ -1,0 +1,222 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/multi-agent-systems.md",
+  "verdict": "PASS",
+  "training": "bootstrap",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer block line 104 carries an explicit capability-check record confirmed 2026-04-29 by Antti (multi-session on shared dir, Cowork concurrent tasks, subagent spawn phrasing). Claims in student-facing body align with that record.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (subagent dispatch, session semantics).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Subagent invocation pattern ('spawn three subagents in parallel') confirmed in maintainer block. Runtime-fork divs correctly applied for subagent/agent vocabulary split.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work — write 'start a new session in X,' not 'open Claude Code in X.'",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 10,
+      "rule_lead": "External org content — no import, reconciliation, or paraphrase.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "REVISE",
+      "evidence": "line:48 — Debrief prompt preceded by a multi-sentence setup paragraph ('Five minutes. Claude reviews the session...') rather than a canonical one-sentence command-verb action lead-in. line:74 — Homework optional prompt preceded by bold label ('**Optional move: pressure-test the memory.**') rather than a command-verb one-sentence lead-in under 20 words.",
+      "fix_hint": "Add a one-sentence command-verb action lead-in immediately before each **Prompt** label — e.g. 'Ask Claude to audit the session end-to-end and rewrite the rules file with specific seam evidence.' The existing setup paragraphs can stay but the canonical single-sentence lead-in should sit between them and the **Prompt** label.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Both prompts use '**Prompt** *(Claude Code)*' with blank line then fenced block. Shape is correct except for the action lead-in gap caught by rule 2.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path, never by invented alias.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Debrief prompt references deterministic paths (agents/, sources/, module-3/). Homework prompt references memory/ and sources/. Both well-anchored.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (**bold**, *italic*) inside fenced prompt blocks is dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Runtime forks for subagent/agent vocabulary are applied correctly in LOs (line 13) and Key Concepts (lines 38, 41) via rt-code/rt-cowork spans. Open TODO in maintainer block (line 89) acknowledges remaining Cowork terminology gaps in unforked lines — below the <!-- maintainer --> boundary, not a student-facing violation.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Bootstrap-specific).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Debrief prompt references module-3/ as directory, not naked filenames. ./CLAUDE.md uses the explicit ./ prefix per rule. Homework prompt references memory/ and sources/ as relative paths.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No practitioner citations or factual claims requiring source-type labels appear in student-facing body. Named frameworks (Rumelt, Martin, Sutherland) appear only in maintainer block plug-point notes, which are not student-facing.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go — and forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Debrief forcing function ('Audit harshly', 'Name at least TWO handoff seams with specific evidence') is inside the fenced prompt block. Post-prompt body (lines 59-61) explains the why — this is a post-prompt explanation carve-out, not a pre-prompt forcing function leak.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "This module does not ask the student to build verification machinery.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Context-loading tier teaching is not in scope for this module.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check — named tools, skills, files must exist at this point.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All referenced exercise files (personal-agent-homework.md, name-your-crux.md, three-retrievers-one-curator.md, three-minds-one-synthesis.md, module-3-prework.md), lecture files (agent-that-takes-action.md, when-to-split-an-agent.md, debugging-stuck-agents.md, module-4-prework.md), and supplementary files (what-is-an-agent.md, agent-trigger-list.md) verified present on disk.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "parallel sessions on shared files (retrieval) and subagents inside one session (synthesis)",
+      "line": 12,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Two multi-agent shapes in Claude Code. Separate sessions on shared files (Phase 1: long-running, independent, visible). Subagents inside one session (Phase 2: quick parallel thinking, bounded return).",
+      "line": 38,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Multi-window / multi-session on the same working directory works on CLI (four terminal windows) and desktop (four sessions); 3 concurrent Cowork tasks on the same connected folder confirmed running 2026-04-29 (Antti); subagent launch phrasing ('spawn three subagents in parallel') confirmed working in current Claude Code.",
+      "line": 104,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": null,
+      "claim": "No factual claims with required citations appear in student-facing body. Named frameworks (Rumelt, Martin, Sutherland) appear only in maintainer block.",
+      "label_present": null,
+      "url_present": null,
+      "url_alive": null,
+      "evidence_level_honest": null
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

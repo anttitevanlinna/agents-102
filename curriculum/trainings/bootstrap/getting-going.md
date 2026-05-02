@@ -89,9 +89,9 @@ You just made great output AND packaged what you learned into a file the agent c
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (Debrief body added two pattern-watch beats from /eval-fire behavior convergent risks; prompts unchanged; re-review needed)
-- draft 2026-05-02 (Debrief gained two pattern-naming paragraphs after retro and cold-critic prompts: LLM-generous-to-self-authored-rules, niceness-tax warmup softens generic-line call. Body teaching, prompts untouched. Source: /eval-fire behavior Run 1 + Run 2 convergent risks; routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-04-30 (M1 frame shifted from site-making to iterate-and-learn agent behavior; needs re-review)
+**Quality:** compendium-audited 2026-05-02
+- judges: not yet judge-audited
+- mechanical @3d7e76c: PASS — bootstrap-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Meta (trainer):**

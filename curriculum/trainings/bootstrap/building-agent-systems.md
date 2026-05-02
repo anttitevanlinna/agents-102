@@ -56,13 +56,13 @@ The rules file governs how agents behave in this directory from now on — how m
 
 Structure however makes sense for how we actually worked today — section headers, short paragraphs, bullets where a list is clearest. No retro-notes framing; write the rules as if they'd always been the rules. Cover at minimum: the memory (when and how pages get written, what grounds them), the sources (what they are, whether they're editable), the agents (how they relate to the memory), and whatever else earned its place.
 
-When you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. I shouldn't have to open the file to know what's in it.
+When you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason. I shouldn't have to open the file to know what's in it.
 ```
 
 
 Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
 
-What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy. Ask once: *"what did you choose NOT to write, and why?"* and watch the answer get specific. The omission is where your real rule lives, not in the three you got.
+What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.
 
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
 
@@ -79,9 +79,8 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (Debrief gained pattern-watch teaching beat; prompt unchanged; re-review needed)
-- draft 2026-05-02 (Debrief body added one paragraph: "what Claude leaves out is the signal" — observational tell aligned to M2's compounding mood, distinct framing from M1's pattern-watch beats. Prompts untouched. Source: /eval-fire behavior 2026-05-02 convergent risks; routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-04-30 (body touched after maintainer review; re-review needed)
+**Quality:** compendium-audited 2026-05-02 (story@3d7e76c)
+- judges @3d7e76c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-29 (Antti, M2 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.

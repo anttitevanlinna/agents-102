@@ -95,9 +95,23 @@ N files, K total blocking, J total TODOs.
 
 Do NOT inline the entire JSON — extract REVISE rules and quote evidence. The full JSON is logged to `curriculum/evals/instances/<file-slug>.<class>.json` (overwrite per-class per-file per the no-dated-reports rule in `check_writing.md`).
 
-### Step 7 — Hard boundary: eval is read-only
+### Step 6.5 — Record verdict to Quality block (PASS only)
 
-This skill NEVER modifies curriculum files. Verdicts are evidence, not edits. The judge's `fix_hint` field is a one-line suggestion from a single narrow lens; it is not a recipe and frequently collides with what other lenses see (mood, Key Concepts, maintainer-review provenance) — none of which the running judge has loaded.
+After Step 6 (Present), if the verdict is PASS, the orchestrator MUST shell out to:
+
+```
+curriculum/evals/scripts/update-quality.sh <file_path> --<class> PASS
+```
+
+…for each PASSing file. The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the four-class judges — same shape as `bin/judge.sh` calling it on mechanical PASS.
+
+If the verdict is REVISE, do NOT record. REVISE handling routes through `/content-creation` per Step 7. The cycle-close re-fire of `/eval-fire` will record the verdict on its second pass.
+
+### Step 7 — Hard boundary: eval is read-only for content; metadata only via update-quality.sh
+
+This skill NEVER modifies curriculum body or maintainer-content. Verdicts are evidence, not edits. The judge's `fix_hint` field is a one-line suggestion from a single narrow lens; it is not a recipe and frequently collides with what other lenses see (mood, Key Concepts, maintainer-review provenance) — none of which the running judge has loaded.
+
+The single exception: Step 6.5's call to `update-quality.sh` to stamp a PASS verdict. That script is bounded — it touches only the **Quality:** block, never content.
 
 If any file has a REVISE verdict and the author wants fixes:
 

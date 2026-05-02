@@ -49,7 +49,6 @@ Inputs:
 
 ## E-checks (exercise body)
 
-  (skipped — curriculum/exercises/personal-site-with-guardrails.md not found)
 
 ## Summary
 

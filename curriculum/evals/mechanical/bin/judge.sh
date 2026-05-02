@@ -24,6 +24,33 @@
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
+UPDATE_QUALITY="$REPO_ROOT/curriculum/evals/scripts/update-quality.sh"
+
+# Slug → module-file map for Quality-block updates on PASS
+slug_to_file() {
+  case "$1" in
+    bootstrap-m1)        echo "curriculum/trainings/bootstrap/getting-going.md" ;;
+    bootstrap-m2)        echo "curriculum/trainings/bootstrap/building-agent-systems.md" ;;
+    bootstrap-m3)        echo "curriculum/trainings/bootstrap/multi-agent-systems.md" ;;
+    bootstrap-m4-author) echo "curriculum/trainings/bootstrap/security.md" ;;
+    bootstrap-m4-audit)  echo "curriculum/trainings/bootstrap/security.md" ;;
+    bootstrap-m5)        echo "curriculum/trainings/bootstrap/output-quality.md" ;;
+    bootstrap-m6)        echo "curriculum/trainings/bootstrap/evaluations.md" ;;
+    *) echo "" ;;
+  esac
+}
+
+# Call update-quality on PASS
+post_pass() {
+  local slug="$1" rc="$2"
+  [[ "$rc" -eq 0 ]] || return 0
+  local file
+  file=$(slug_to_file "$slug")
+  [[ -n "$file" && -f "$REPO_ROOT/$file" ]] || return 0
+  bash "$UPDATE_QUALITY" "$REPO_ROOT/$file" \
+    --mechanical "PASS:$slug via bin/judge.sh" || true
+}
 
 if [[ $# -lt 1 ]]; then
   echo "usage: $0 <slug> [extra args]" >&2
@@ -52,20 +79,20 @@ run_inspector() {
 
 case "$SLUG" in
   bootstrap-m1)
-    bash "$SCRIPT_DIR/judge-m1.sh"
+    bash "$SCRIPT_DIR/judge-m1.sh"; post_pass "$SLUG" $?
     ;;
   bootstrap-m2)
-    bash "$SCRIPT_DIR/judge-m2.sh"
+    bash "$SCRIPT_DIR/judge-m2.sh"; post_pass "$SLUG" $?
     ;;
   bootstrap-m3)
-    bash "$SCRIPT_DIR/judge-m3.sh"
+    bash "$SCRIPT_DIR/judge-m3.sh"; post_pass "$SLUG" $?
     ;;
   bootstrap-m4-author)
     if [[ $# -lt 1 ]]; then
       echo "usage: $0 bootstrap-m4-author <transcript> [--inspect]" >&2
       exit 2
     fi
-    bash "$SCRIPT_DIR/judge-m4-author.sh" "$SCRIPT_DIR/../scratch/bootstrap-m4" "$1"
+    bash "$SCRIPT_DIR/judge-m4-author.sh" "$SCRIPT_DIR/../scratch/bootstrap-m4" "$1"; post_pass "$SLUG" $?
     run_inspector "bootstrap-m4-author" "$1"
     ;;
   bootstrap-m4-audit)
@@ -73,7 +100,7 @@ case "$SLUG" in
       echo "usage: $0 bootstrap-m4-audit <transcript> [--inspect]" >&2
       exit 2
     fi
-    bash "$SCRIPT_DIR/judge-m4-audit.sh" "$SCRIPT_DIR/../scratch/bootstrap-m4" "$1"
+    bash "$SCRIPT_DIR/judge-m4-audit.sh" "$SCRIPT_DIR/../scratch/bootstrap-m4" "$1"; post_pass "$SLUG" $?
     run_inspector "bootstrap-m4-audit" "$1"
     ;;
   bootstrap-m5)
@@ -81,8 +108,7 @@ case "$SLUG" in
       echo "usage: $0 bootstrap-m5 <setup_tr> <det1..5_tr> <scorer_tr> [--inspect]" >&2
       exit 2
     fi
-    bash "$SCRIPT_DIR/judge-m5.sh" "$SCRIPT_DIR/../scratch/bootstrap-m5" "$@"
-    # M5 has 7 actors; inspect setup + scorer (longest chains), skip detectors (single-prompt each)
+    bash "$SCRIPT_DIR/judge-m5.sh" "$SCRIPT_DIR/../scratch/bootstrap-m5" "$@"; post_pass "$SLUG" $?
     run_inspector "bootstrap-m5-setup" "$1"
     run_inspector "bootstrap-m5-scorer" "$7"
     ;;
@@ -91,7 +117,7 @@ case "$SLUG" in
       echo "usage: $0 bootstrap-m6 <setup_tr> <run_tr> [<judge-baseline-shasum>] [--inspect]" >&2
       exit 2
     fi
-    bash "$SCRIPT_DIR/judge-m6.sh" "$SCRIPT_DIR/../scratch/bootstrap-m6" "$@"
+    bash "$SCRIPT_DIR/judge-m6.sh" "$SCRIPT_DIR/../scratch/bootstrap-m6" "$@"; post_pass "$SLUG" $?
     run_inspector "bootstrap-m6-setup" "$1"
     run_inspector "bootstrap-m6-run" "$2"
     ;;

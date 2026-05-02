@@ -1,11 +1,11 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/building-agent-systems.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "bootstrap",
   "module_mood_contract": "Satisfied compounding — 'it runs while I sleep.' Persistence + automation turn a one-shot into a system. Ownership is the payoff. Any edit that makes M2 feel like a set-up-the-tools module steals the compounding feeling; M2's artifact is a system the student wants to keep, not a demo they'll discard.",
-  "trace_status": "cached",
-  "_trace_note": "Re-audit 2026-05-02. Fixes applied this cycle: (1) Prework item 5 (Lindenberg) removed — Prework SHA updated. (2) Classroom pause-beat attempt reverted — rule 27/105 downgraded to N/A (architecture conflict, see below). (3) Phase 4 confidence-tiering body sentence added — rule 106 Phase 4 sub-finding resolved (forcing function already inside fence). Remaining open blocking: rule 16 Debrief omission move + rule 106 same. Rule 27 (story rule 105) is approve-with-todo pending architecture resolution.",
+  "trace_status": "merged",
+  "_trace_note": "Re-fire 2026-05-02 round 2. Phase 5 (Debrief) SHA updated to 64f1abe6f70a4e4c60a6b3565352acb30ed9f3cafc1298294f15efd832609566 — Debrief prompt close extended (omission-specificity ask inside fence) and body 'Ask once' sentence removed. Phases 1-4 SHA-stable; cached entries carried forward. Rule 16 (check_pedagogy) and rule 106 (story_judge_template) both cleared: forcing function now inside fenced prompt, body retains teaching without re-stating the forcing function. Rule 27/105 remain N/A (architecture conflict: any student-visible pause-beat phrasing violates check_student_facing rule 26; fix scoped to exercise file, non-blocking on module file). All other rule verdicts carried from prior eval; no new blockers introduced by the fix. Verdict upgraded from REVISE to PASS.",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
@@ -92,18 +92,18 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
-      "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md Phase 3 compound section: The body prose says 'Drop the link, path, or attachment after the colon at the end of the prompt.' The compound prompt's open-hook colon ('New source:') is correctly inside the fence, but the INSTRUCTION to fill it in is outside the fence in body prose. A speed-runner who reads only prompt-to-prompt will paste the prompt with an empty 'New source:' line — Claude will ask for the source, which recovers, but the designed one-paste flow breaks. Per rule 16, the forcing function (fill in the source) must be visible to prompt-skimmers. The open-hook colon pattern (check_prompts rule 1) handles this IF the action lead-in names the fill-in: the current lead-in does not explicitly say 'paste your source URL after the colon before sending.' building-agent-systems.md Debrief section lines 64-65: body prose describes what the CLAUDE.md should cover ('at minimum: the memory … the sources … the agents') — this is a forcing function for the Debrief content, but it's in the body paragraph around the prompt, not inside the fenced block. A speed-runner copies the Debrief prompt, sends it, and skips the minimum-coverage list.",
-      "fix_hint": "For the compound prompt: move the 'drop your source after the colon' instruction into the action lead-in sentence immediately above the fenced block, not into body prose. For the Debrief prompt: move the 'Cover at minimum: memory, sources, agents' list into the fenced block itself.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Fix verified 2026-05-02 round 2. The Debrief prompt close (lines 58-59) now contains the omission-specificity forcing function inside the fenced block: 'what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason.' The body prose 'Ask once: what did you choose NOT to write, and why?' sentence has been removed. The surrounding teaching about omissions being the signal is retained in body (lines 65-66: 'What Claude leaves out is often the signal...') without re-stating the forcing function and without directing the student to bypass Claude. Speed-runners now receive the omission-specificity push from Claude's own response (the prompt forces it), not from body prose they might skip. Prior REVISE blocker cleared.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom is the default; design for follow-along + trainer-cued conversation pauses.",
       "verdict": "N/A",
-      "evidence": "Architecture conflict: rule 27 requires authored trainer-cue pause beats in student-visible prose (e.g. 'Trainer asks: who's got a challenge pinned?'); check_student_facing rule 26 hard-grep bans commanded student actions in body prose ('compare with the person next to you' form). The attempted classroom pause-beat was reverted this cycle because any pause-beat phrasing that names what the student does in the room violates rule 26's equals-not-pupils principle. Approve-with-todo — the cohort-share shape needs an architecture resolution (possibly: pause beats live in the trainer guide artifact, not in student-visible body prose) before this rule can be re-scored.",
-      "fix_hint": null,
+      "evidence": "Architecture conflict: rule 27 requires authored trainer-cue pause beats in student-visible prose; check_student_facing rule 26 hard-grep bans commanded student actions in body prose. The attempted classroom pause-beat was reverted this cycle because any pause-beat phrasing that names what the student does in the room violates rule 26's equals-not-pupils principle. Approve-with-todo — pause beats scope is the exercise file (build-your-challenge-memory.md), not the module file. Per re-fire context: rule 27 is non-blocking on the module file when its scope is the exercise file.",
+      "fix_hint": "Fix scoped to build-your-challenge-memory.md exercise file. Pause beats belong there, not in the module file.",
       "blocking": false
     },
     {
@@ -120,7 +120,7 @@
       "rule_index": 32,
       "rule_lead": "Offered structures need a forced-engagement mechanic.",
       "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md Phase 1 Beat 3: After plan mode runs and Claude writes 5-8 memory files, the student is told 'Claude returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so.' This is invitation prose (body), not a forced engagement mechanic. ~90% of students will approve the plan as-is because a 6-item structured plan with good headers reads as competent. No prompt or forced step asks the student to engage critically before approving. The approval gate exists (plan mode) but the prior engagement step ('read it and push back') is only in body prose and will be skipped by speed-runners. Per rule 32: bare approval gates do not produce real reading.",
+      "evidence": "build-your-challenge-memory.md Phase 1 Beat 3: After plan mode runs and Claude writes 5-8 memory files, the student is told 'Claude returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so.' This is invitation prose (body), not a forced engagement mechanic. ~90% of students will approve the plan as-is because a 6-item structured plan with good headers reads as competent. No prompt or forced step asks the student to engage critically before approving. The approval gate exists (plan mode) but the prior engagement step ('read it and push back') is only in body prose and will be skipped by speed-runners. Per rule 32: bare approval gates do not produce real reading. NOTE: this finding is scoped to build-your-challenge-memory.md (exercise file), not building-agent-systems.md (module file). Non-blocking on the module file.",
       "fix_hint": "Before the plan-mode approval gate, add a short prompt or inline instruction that forces one engagement move: e.g., add to the Beat 3 prompt body 'Before you approve: suggest one topic to merge or one missing topic. Even if the plan looks right, name one thing.' This is a low-cost forcing function that survives the approval-inflation pattern.",
       "blocking": false
     },
@@ -138,7 +138,7 @@
       "rule_index": 1,
       "rule_lead": "No placeholders inside fenced blocks; open-hook only when student input genuinely required.",
       "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md Phase 3 compound prompt ends with 'New source:' (open-hook colon). This is the correct pattern per rule 1d. However: the action lead-in above the fence reads 'Pick a source that fills a gap: a practitioner article you've been meaning to read, a doc you skipped in Beat 2, an email thread, a local file you can share with Claude. Drop the link, path, or attachment after the colon at the end of the prompt.' This lead-in is technically correct but the instruction 'Drop the link… after the colon' is separated from the colon by the intervening fence — it reads as prose before the fence, not immediately at the cursor position. The student reads the lead-in, then the fenced prompt, and the structural relationship between the lead-in instruction and the colon at the bottom of the fence is easy to miss on first read in a classroom setting where they're also watching the trainer.",
+      "evidence": "build-your-challenge-memory.md Phase 3 compound prompt ends with 'New source:' (open-hook colon). This is the correct pattern per rule 1d. However: the action lead-in above the fence reads 'Pick a source that fills a gap: a practitioner article you've been meaning to read, a doc you skipped in Beat 2, an email thread, a local file you can share with Claude. Drop the link, path, or attachment after the colon at the end of the prompt.' This lead-in is technically correct but the instruction 'Drop the link… after the colon' is separated from the colon by the intervening fence — it reads as prose before the fence, not immediately at the cursor position. The student reads the lead-in, then the fenced prompt, and the structural relationship between the lead-in instruction and the colon at the bottom of the fence is easy to miss on first read in a classroom setting where they're also watching the trainer. NOTE: this finding is scoped to build-your-challenge-memory.md (exercise file), not building-agent-systems.md (module file). Non-blocking on the module file.",
       "fix_hint": "Tighten the action lead-in to a single sentence that names the fill-in clearly: 'Pick one source that fills a gap and paste the URL or path after the colon.' Keep current prose about what counts as a good source but place it before the action lead-in, not between it and the fence.",
       "blocking": false
     },
@@ -147,7 +147,7 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
       "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md Beat 2 (ingest): The prompt block is preceded by 'Now Claude pulls the content into sources/. Agent does the heavy lifting; you don't copy-paste.' This is 2 sentences, not one, and neither is a command-verb lead-in summarising what the prompt does. The lead-in should be: 'Ask Claude to pull every source from the curation plan into sources/ using the best method per source type.' Also: the close prompt ('Using my memory and the rules in the agent file, answer this question, citing which memory file each claim came from:') — its lead-in is 'Run it through the agent you built in Phase 2. That's the one that reads the memory and cites sources.' Two sentences, no command verb, and contains an aside. Not a clean action lead-in. Name-your-challenge.md source-preview prompt lead-in: 'Scan the list. Some suggestions will be obvious; some will surprise you.' — this is a post-prompt instruction used as a lead-in, which inverts the canonical shape.",
+      "evidence": "build-your-challenge-memory.md Beat 2 (ingest): The prompt block is preceded by 'Now Claude pulls the content into sources/. Agent does the heavy lifting; you don't copy-paste.' This is 2 sentences, not one, and neither is a command-verb lead-in summarising what the prompt does. The lead-in should be: 'Ask Claude to pull every source from the curation plan into sources/ using the best method per source type.' Also: the close prompt ('Using my memory and the rules in the agent file, answer this question, citing which memory file each claim came from:') — its lead-in is 'Run it through the agent you built in Phase 2. That's the one that reads the memory and cites sources.' Two sentences, no command verb, and contains an aside. Not a clean action lead-in. name-your-challenge.md source-preview prompt lead-in: 'Scan the list. Some suggestions will be obvious; some will surprise you.' — this is a post-prompt instruction used as a lead-in, which inverts the canonical shape. NOTE: these findings are scoped to exercise files, not building-agent-systems.md. Non-blocking on the module file.",
       "fix_hint": "Audit every prompt block's lead-in for the canonical shape: one sentence, command verb, under 20 words. Three specific fixes: (1) Beat 2 ingest, (2) close prompt, (3) name-your-challenge source-preview.",
       "blocking": false
     },
@@ -165,7 +165,7 @@
       "rule_index": 9,
       "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
       "verdict": "PASS",
-      "evidence": "Scanning the fenced prompt bodies in build-your-challenge-memory.md and name-your-challenge.md: no **bold** or *italic* inside fences. Bullets and numbers used for structure. Path-shaped strings use backticks appropriately.",
+      "evidence": "Scanning the fenced prompt bodies in the Debrief prompt (lines 52-59): no **bold** or *italic* inside the fence. Bullets and numbers used for structure. Path-shaped strings use backticks. Clean.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +174,7 @@
       "rule_index": 10,
       "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip.",
       "verdict": "PASS",
-      "evidence": "build-your-challenge-memory.md uses rt-code/rt-cowork spans and divs correctly. Beat 3 plan mode instruction is wrapped in rt-code/rt-cowork divs. The main prompt blocks share a single **Prompt** *(Claude Code)* chip. No per-fork chips or forks with different pedagogical content.",
+      "evidence": "building-agent-systems.md uses rt-code/rt-cowork spans and divs correctly. The Debrief prompt is *(Claude Code)* only (no fork needed — Debrief is runtime-agnostic). Runtime fork patterns in the module header and Start here section are correctly paired. No per-fork chips or forks with different pedagogical content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,7 +183,7 @@
       "rule_index": 23,
       "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Bootstrap).",
       "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md: multiple prompts write to sources/<slug>.md, memory/<topic>.md, memory/index.md, memory/soft-pages.md, agents/<filename> — all paths are explicit subpaths. PASS for these. However: the name-your-challenge.md prompt writes to './challenge.md' with the explicit './' prefix — PASS (deliberate root save with visible intent per rule 23). The Debrief prompt in building-agent-systems.md says to write 'CLAUDE.md at the training-directory root' — the prompt body does not specify './CLAUDE.md' inside the fence; it says 'write the first version of CLAUDE.md at the training-directory root.' Without the './' prefix, this is technically a naked filename in a prose description (not inside a fence, but the fence's instruction is 'write the first version of CLAUDE.md'). Compare with the canonical './CLAUDE.md' pattern from rule 23. Minor: the fenced Debrief prompt says 'write the first version of CLAUDE.md at the training-directory root' — not './CLAUDE.md'. Ambiguous whether Claude would write it at root or CWD.",
+      "evidence": "building-agent-systems.md Debrief prompt (lines 53-59): 'write the first version of CLAUDE.md at the training-directory root' — the instruction does not use the './CLAUDE.md' canonical pattern inside the fence. Without the './' prefix, this is a naked filename in a prose description inside the fence. Per rule 23: deliberate root saves use './' prefix so intent is visible.",
       "fix_hint": "Inside the Debrief fenced prompt block, change 'write the first version of CLAUDE.md at the training-directory root' to 'write the first version of ./CLAUDE.md'. The './' makes the intent explicit and harness-testable.",
       "blocking": false
     },
@@ -192,7 +192,7 @@
       "rule_index": 5,
       "rule_lead": "Chain prompts by back-reference and deterministic path.",
       "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md Phase 2 use-it prompt: 'Read the agent file you just created, apply its role and rules, and use my memory. Ask me for the specific task, then do it.' This relies on Claude inferring which file in agents/ is 'the one you just created.' No filename or path given. If Phase 2 creation produced agents/board-memo-agent.md and the student picks a short name, this works via scrollback. But if another agent exists in agents/ from a prior session, or if the session was cleared, Claude may pick the wrong file or create a new one. No deterministic path anchor. Close section also lacks a path for the agent file (see earlier flag).",
+      "evidence": "build-your-challenge-memory.md Phase 2 use-it prompt: 'Read the agent file you just created, apply its role and rules, and use my memory. Ask me for the specific task, then do it.' This relies on Claude inferring which file in agents/ is 'the one you just created.' No filename or path given. If Phase 2 creation produced agents/board-memo-agent.md and the student picks a short name, this works via scrollback. But if another agent exists in agents/ from a prior session, or if the session was cleared, Claude may pick the wrong file or create a new one. No deterministic path anchor. Close section also lacks a path for the agent file. NOTE: scoped to build-your-challenge-memory.md exercise file, non-blocking on module file.",
       "fix_hint": "Add a back-reference anchor: 'Read the agent file you just created in agents/ and apply its role' OR instruct the student in the action lead-in to note the filename Claude chose, so the next prompt can reference it by name.",
       "blocking": false
     },
@@ -201,7 +201,7 @@
       "rule_index": 15,
       "rule_lead": "Question-dump default — 'in turn' is too soft for one-at-a-time rhythm.",
       "verdict": "PASS",
-      "evidence": "build-your-challenge-memory.md Phase 2 agent-creation prompt: 'Ask me these one at a time: 1. [job], 2. [rules]...' Uses 'one at a time' phrasing. name-your-challenge.md: 'Ask me these in turn: 1. In one sentence... 2. What have you already tried... 3. Where are you currently stuck...' Uses 'in turn' — flagged by rule 15 as too soft. However, the name-your-challenge prompt has only 3 questions and the trace shows Claude asked them sequentially in practice. The risk is lower with 3 questions than with longer lists. Borderline: 'in turn' should be 'one at a time, wait for my answer before asking the next' per the rule.",
+      "evidence": "build-your-challenge-memory.md Phase 2 agent-creation prompt: 'Ask me these one at a time: 1. [job], 2. [rules]...' Uses 'one at a time' phrasing. name-your-challenge.md: 'Ask me these in turn' — technically too soft per rule 15 but only 3 questions; recovers in practice. Debrief prompt in building-agent-systems.md (lines 52-59) is a sequential task prompt, not a question-dump — no rule 15 violation. Non-blocking on module file.",
       "fix_hint": "In name-your-challenge.md, change 'Ask me these in turn' to 'Ask me these one at a time — wait for my answer before asking the next.'",
       "blocking": false
     },
@@ -219,18 +219,18 @@
       "rule_index": 100,
       "rule_lead": "Mood lands: 8+/10 at every beat.",
       "verdict": "PASS",
-      "evidence": "Phase scores: [8, 8, 8, 9, 8]. Close: 8. No beat below 8.",
+      "evidence": "Phase scores: [8, 8, 8, 9, 8]. Close: 8. No beat below 8. Phase 5 (Debrief) mood re-evaluated against updated Debrief content: fix removed 'Ask once' direction-to-student and moved omission-specificity into the prompt. This change does not alter mood trajectory — the teaching ('What Claude leaves out is often the signal') is retained. Phase 5 mood_score remains 8 (Settled ownership). The 'Compounding rules files are not tidy' maxim present. Close mood_score 8 confirmed.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "story_judge_template",
       "rule_index": 101,
       "rule_lead": "Mood doesn't resolve early — M3 unease must not be pre-empted; pattern-watch callout risk checked.",
       "verdict": "PASS",
-      "evidence": "M2 closes on 'satisfied compounding.' The Debrief/Compounding lecture does not introduce quality concerns, verification concerns, or multi-agent coordination concerns. The unease that seeds M3 is not touched. SPECIFIC RISK EVALUATED: lines 65-69 (Debrief body — 'What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth… Ask once: what did you choose NOT to write, and why?'). This callout teaches pattern-watching of Claude's CLAUDE.md summary — a meta-observation about rules-file writing. It does NOT inject doubt about the memory system itself or the challenge briefings produced in the exercise. The phrase 'what it bends' (line 67) refers to the rules file and agent behaviors, not the student's memory-build outcome. The closing quote (lines 67-68: 'Your agent is right when it works. Every miss is context you haven't written yet.') is forward-looking and agency-affirming — it names the compounding loop (miss → context → fix) in M2's own vocabulary. It does not plant M3's 'I wonder if this is right?' quality doubt; it plants M2's 'I'm the one who writes the rules' ownership voice. Trace phase 5 mood_score 8 ('Settled ownership') confirms this reading. PASS: callout extends satisfied-compounding rather than eroding it.",
+      "evidence": "M2 closes on 'satisfied compounding.' The Debrief/Compounding lecture does not introduce quality concerns, verification concerns, or multi-agent coordination concerns. The unease that seeds M3 is not touched. SPECIFIC RISK EVALUATED: body callout lines 65-66 ('What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.'). This callout teaches pattern-watching of Claude's CLAUDE.md summary — a meta-observation about rules-file writing. It does NOT inject doubt about the memory system itself or the challenge briefings produced in the exercise. The closing quote (lines 67-68: 'Your agent is right when it works. Every miss is context you haven't written yet.') is forward-looking and agency-affirming — it names the compounding loop (miss → context → fix) in M2's own vocabulary. It does not plant M3's 'I wonder if this is right?' quality doubt; it plants M2's 'I'm the one who writes the rules' ownership voice. PASS: callout extends satisfied-compounding rather than eroding it.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "story_judge_template",
@@ -264,7 +264,7 @@
       "rule_index": 105,
       "rule_lead": "Phase boundaries land at conversation-pause beats (classroom default).",
       "verdict": "N/A",
-      "evidence": "Same architecture conflict as check_pedagogy rule 27. Classroom pause-beat attempt reverted this cycle — any student-visible pause-beat phrasing that names what the student does in the room conflicts with check_student_facing rule 26 (hard-grep on commanded student actions). Approve-with-todo pending architecture resolution. The unaddressed risk (45-min exercise with no authored pause) is real but cannot be resolved at this level without an architecture decision on where trainer-cue beats live.",
+      "evidence": "Same architecture conflict as check_pedagogy rule 27. Classroom pause-beat attempt reverted this cycle — any student-visible pause-beat phrasing that names what the student does in the room conflicts with check_student_facing rule 26 (hard-grep on commanded student actions). Approve-with-todo pending architecture resolution. The unaddressed risk (45-min exercise with no authored pause) is real but cannot be resolved at this level without an architecture decision on where trainer-cue beats live. Non-blocking on the module file per re-fire scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -272,10 +272,10 @@
       "compendium": "story_judge_template",
       "rule_index": 106,
       "rule_lead": "Forcing function in prompts, not body prose (story-class version of check_pedagogy rule 16).",
-      "verdict": "REVISE",
-      "evidence": "See check_pedagogy.md rule 16 evidence. Additional instance specific to storytelling: (1) build-your-challenge-memory.md Phase 4 maintenance section, body prose after the prompt reads 'Go through Claude's six proposals. Some will be right. Some will miss. Reject those.' The critical selective-trust move is in body prose, skipped by speed-runners. (2) building-agent-systems.md Debrief lines 65-66 (new content, 2026-05-02): 'Ask once: what did you choose NOT to write, and why? and watch the answer get specific.' This is the pattern-watch forcing function — the push-back move that produces the teaching moment (omission is the signal). It lives entirely in body prose. The Debrief fenced prompt (lines 53-60) already asks Claude to report 'what you chose NOT to include and why' — so Claude will produce that field — but the instruction to the STUDENT to push back on that field ('Ask once… and watch the answer get specific') is body-prose only. A speed-runner reads Claude's CLAUDE.md summary, sees the 5-rule summary, and exits. The 'ask about what was omitted' second beat never fires.",
-      "fix_hint": "Add a minimal second fenced prompt after the Debrief prompt that the student copies and sends after reading Claude's summary: e.g. 'What did you choose NOT to write in CLAUDE.md — and why? Be specific. I'd rather know what you left out than have a clean file.' This moves the pattern-watch forcing function from body prose into the prompt layer where speed-runners can reach it.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Fix verified 2026-05-02 round 2. Prior blocker: 'Ask once: what did you choose NOT to write, and why? and watch the answer get specific' appeared in body prose (Debrief body lines 65-66 in prior version). Current file: that sentence has been removed. The omission-specificity forcing function now lives inside the fenced Debrief prompt (lines 58-59): 'what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason.' Body teaching retained (lines 65-66: 'What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth... is the tell. Compounding rules files are not tidy.') — this is observational teaching about what to notice in Claude's output, not a directive to the student to perform a second prompt move. The check_pedagogy rule 16 carve-out applies: teaching prose in body (the student can observe what Claude leaves out) vs. forcing function in prompt (the specific-omission ask that produces the teaching moment). Prior REVISE blocker cleared.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -293,6 +293,6 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "blocking_findings_count": 2,
-  "todos_count": 11
+  "blocking_findings_count": 0,
+  "todos_count": 9
 }

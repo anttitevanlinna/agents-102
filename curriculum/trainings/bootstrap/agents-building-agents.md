@@ -10,7 +10,7 @@ Run the Module 7 next-step artifact, test one assumption, ask for one name, and 
 ## What You'll Learn
 After this module, you will be able to:
 - **Use** Claude Code to generate a new agent that extends your system
-- **Orchestrate** the three thinking-disciplines (Rumelt on *crux*, Roger Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem*) at room scale against a real company question
+- **Orchestrate** three thinking-disciplines from Rumelt, Roger Martin, and Klein and Kahneman at room scale against a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
 - **Read** the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Bootstrap)
 
@@ -71,10 +71,8 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (Key Concepts cluster reframed to awe register; jargon-before-earned removed; story re-fire pending)
-- draft 2026-05-02 (Three story-class fixes at the awe close: (1) "three predictable walls" bullet shifted from pragmatic-planning to capability-emphasis ("that you can see them is the sign the kernel works"); (2) "context manifest" jargon-before-earned replaced with behavioral description ("what it read, what it couldn't find, and what it inferred without a source"); (3) Debrief callout reframed from hygiene register to compounding register ("the flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur."). Source: /eval-fire story 2026-05-02 (Phase 4 mood dip to 7 from cluster of three; awe close needs forward hunger, not vigilance); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-05-02 (Debrief prompt hardened: path-confirm-before-rewriting, overwrite-in-place, two-stalls minimum + one underspecified-role + one converged-too-fast proposal with the agent that could have pushed back, before-and-after quote requirement, preserve-other-rules. Body callout: vague summaries are how next round inherits this round's blur. Source: /eval-fire behavior 2026-05-02 round 2 (overwrite-anxiety high, self-report-inflation high, self-audit-charity med, niceness-tax med, preamble med, file-preservation-gap med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
+**Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
+- judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior REVISE (accepted residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md)
 
 **TODO (Cowork edition review 2026-04-29):**
 - First learning goal says "Use Claude Code to generate a new agent." Runtime-fork or neutralize for Cowork so the goal remains "use the runtime to generate a new agent" without making Cowork feel like a secondary path.

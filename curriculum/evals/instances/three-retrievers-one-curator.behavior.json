@@ -1,0 +1,142 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/three-retrievers-one-curator.md",
+  "verdict": "REVISE",
+  "training": "bootstrap",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 5,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "You are the wiki retriever for my challenge. Your job: find every piece of inter",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Write your findings to sources/wiki-retrieval.md, one paragraph per finding",
+          "fix_hint": "Add 'Append; never overwrite.' to the write instruction so re-runs don't halt the real-time synthesizer feed."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "1. Propose 6-8 search terms ... Ask me to confirm or sharpen them before running anything",
+          "fix_hint": "Preamble is navigable here; a body note priming the student to skim to the search-term list is lower-cost than structural change."
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Every finding cites the specific page title and URL you actually opened",
+          "fix_hint": "Require a quoted sentence from the page alongside the URL: 'quote one sentence from the page; if you cannot quote, write [CITATION UNSUPPORTED].'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "You are the docs retriever for my challenge. Your job: find the relevant recent ",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Write your findings to sources/docs-retrieval.md, what documents and threads show",
+          "fix_hint": "Add 'Append; never overwrite.' to the write instruction."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "1. Ask me for three clues: names of documents I remember, people I've been mailing about this",
+          "fix_hint": "Same body-note approach as wiki retriever — minimal structural intervention needed."
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Every finding cites the specific document name (and path or URL) or email thread you actually opened",
+          "fix_hint": "Require a direct quote from the document alongside the citation to force real retrieval over inference."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "You are the internet retriever for my challenge. Your job: find practitioner-gra",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Write your findings to sources/internet-retrieval.md, what each practitioner says",
+          "fix_hint": "Add 'Append; never overwrite.' to prevent synthesizer feed breakage on follow-up nudges."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "1. Propose 4-6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.",
+          "fix_hint": "Same body-note mitigation as other retrievers."
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Every finding cites the URL you actually fetched and the author",
+          "fix_hint": "Add quote-the-sentence enforcement; aggregator or news-site URLs pass the [NOT FOUND] gate while violating practitioner-direct intent."
+        },
+        {
+          "pattern_id": "source-type-blindness",
+          "confidence": "med",
+          "evidence": "No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 6 months.",
+          "fix_hint": "Add explicit source-type labeling per finding — [practitioner direct] / [practitioner analysis] / [general press] / [excluded] — so the synthesizer inherits clean source provenance rather than the student having to adjudicate in memory."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Push another round. What did the first pass miss? Different angles, related sour",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "keep going until the file feels complete or you genuinely don't find new material",
+          "fix_hint": "Add a stop-condition that requires naming three specific uncovered topics rather than a felt-sense declaration of completeness."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "You are the synthesizer for my challenge. Three retrievers are running concurren",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Decide: extend an existing page, or write a new one?",
+          "fix_hint": "Resolve the decision in the prompt rather than deferring to Claude: 'extend in place without asking; note what you changed at the bottom of the file.'"
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "The loop: 1. Wait for any new content in sources/. When a file appears (or grows), read it.",
+          "fix_hint": "A body note priming the student to watch for the first sources/ write rather than waiting for the plan narration to resolve is lower-cost than structural change."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "write a one-paragraph note at memory/_synthesis-m3.md naming what changed, what's now sharper",
+          "fix_hint": "Anchor the synthesis note to file evidence: 'list each memory file you actually changed by name; if fewer changed than the retrieval count, say so.'"
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "That contradiction line is load-bearing — flag it, don't smooth it.",
+          "fix_hint": "Require verbatim quotes for the contradiction rather than paraphrase: 'name the exact conflicting claims from each source verbatim; do not paraphrase into resolution.'"
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 4,
+  "todos_count": 1
+}

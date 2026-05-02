@@ -34,7 +34,7 @@ Then the candidates: **four sharing shapes that work in practice.** Share the co
 
 The pressure tests after that stay practical: what's the absorption bottleneck, what must be true for the teammate to switch, and why might they go back to the incumbent six months from now?
 
-One observation to keep in your back pocket while you run the exercise: **access is not absorption.** In our practice, many companies have rolled out access far ahead of trust. People can reach the agent; that does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
+One observation to keep in your back pocket while you run the exercise: **access is not absorption.** Many companies have rolled out access far ahead of trust. People can reach the agent; that does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
@@ -79,10 +79,8 @@ Run the next-step artifact. Test one assumption. Ask for one name. Talk to one p
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (story callout reframed away from cost-accounting toward verify-at-artifact intent; story re-fire pending)
-- draft 2026-05-02 (Debrief callout closing sentence reframed: replaced "the teammate pays the cost of the smoothing, not you" with "the before-and-after quote is how you know the sharpening reached the file, not just the summary." Removes liability/cost-accounting register from a generosity module. Source: /eval-fire story 2026-05-02 (mood drop 8→7 at Debrief, governance-flavor framing in M7); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-05-02 (Debrief prompt hardened: path-confirm-before-rewriting, overwrite-in-place, before-and-after quote requirement, "be harsher than feels polite" with named example "if the people plan had no names, say so plainly". Body callout names the teammate-pays-the-cost frame. Source: /eval-fire behavior 2026-05-02 round 2 (self-report-inflation high, overwrite-anxiety med, self-audit-charity med, preamble med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
+**Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
+- judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior grandfathered
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze → Evaluate

@@ -30,15 +30,18 @@ What can break because of the student's laptop, OS, network, or default apps —
 
 Cheapest catches. **Run before every cohort.** New incidents always land here same day.
 
-### Unit (per-artifact) — three-class architecture (2026-05-02 refactor)
+### Unit (per-artifact) — four-class architecture (2026-05-02 refactor; behavior class added second pass)
 
-Per-artifact checks partition by **evidence source**, not by criterion count. Three classes, dispatched in parallel by `/eval-fire <class> <file>` (single class) or `/curriculum-pre-ship-audit <file>` (all three + Quality-state + neighbour-alignment).
+Per-artifact checks partition by **evidence source**, not by criterion count. Four classes, dispatched in parallel by `/eval-fire <class> <file>` (single class) or `/curriculum-pre-ship-audit <file>` (all four + Quality-state + neighbour-alignment).
 
 - `judges/writing.md` — writing-class judge prompt template. Haiku 4.5. Reads `memory/check_*.md` compendiums tagged `eval_classes: writing` (writing / sales_copy / prompts / student_facing surfaces). Catches what the auto-fix in `eval-class-router.sh` can't (register, atmospheric phrasing, value-prop leak, over-hedge).
-- `judges/story.md` — storytelling-class judge prompt template. Sonnet 4.6. Reads compendiums tagged `eval_classes: storytelling` (pedagogy / strategy_tie_in / lectures). Reads structured sim trace from `sim-cache/<slug>.json`; regenerates if SHA stale.
+- `judges/story.md` — storytelling-class judge prompt template. Sonnet 4.6. Reads compendiums tagged `eval_classes: storytelling` (pedagogy / strategy_tie_in / lectures). Reads **Class A persona-reader** sim trace from `sim-cache/<slug>.persona.json`; regenerates per-phase slices if per-phase SHA stale.
 - `judges/technical.md` — technical-class judge prompt template. Sonnet 4.6. Reads compendiums tagged `eval_classes: technical` (platform / research_claims). Static checks: capability claims, citation evidence ladder, skill availability, URL liveness.
+- `judges/prompt-behavior.md` — behavior-class judge prompt template. Sonnet 4.6. Per-prompt risk against the 15-pattern catalog at `.claude/skills/content-creation/simulation-behavior.md`. Reads **Class B prompt-behavior** sim trace from `sim-cache/<slug>.behavior.json`; regenerates per-prompt slices if per-prompt SHA stale. Reasons over the *distribution* of Claude responses for files mechanical doesn't cover.
 - `exercise.md` / `lecture.md` — manifests. Name which classes + scopes run per artefact type. Not megajudge templates.
-- `sim-cache/` — content-SHA-keyed JSON traces (gitignored, user-local).
+- `sim-cache/` — content-SHA-keyed JSON traces (gitignored, user-local). One file per slug per class: `<slug>.persona.json` (Class A) + `<slug>.behavior.json` (Class B).
+
+**Why two sim classes?** Class A (persona-reader) walks the file as a human in the seat — measures mood, confusion, "this is me", arc landing. Class B (prompt-behavior) reasons per-prompt over the distribution of Claude responses against the 15 known behavioral patterns (niceness tax, question dump, etc.). They don't overlap. Mechanical (`mechanical/`) samples one path through real Claude on a real scratch repo; Class B reasons over distributions on files mechanical doesn't have runners for. Together they cover the gap between "well-formed prompt" (technical) and "succeeds once on Haiku" (mechanical).
 
 Hook-side auto-fix runs synchronously on every Edit/Write to curriculum body prose: em-dash → comma, ritual/ceremony → exercise, importantly/crucially drop, synergize → combine, paradigm shift → real shift, honest(ly) → candid(ly), delve forms → look-at forms, crucial-on-noun drop. Implementation: `~/Projects/agents-102/.claude/hooks/eval-class-router.sh`.
 

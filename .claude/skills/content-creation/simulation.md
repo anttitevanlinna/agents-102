@@ -1,10 +1,12 @@
-# Simulation protocol
+# Simulation protocol — Class A (persona-reader)
 
-Loaded when running step 6 (simulate/test) of the PDCA loop in `SKILL.md`.
+Loaded when running step 6 (simulate/test) of the PDCA loop in `SKILL.md`. **Persona-reader sim** — the reader's lens. For the agent's lens (per-prompt behavior + risk catalog), see `simulation-behavior.md` (Class B). The two classes run in parallel, each with its own trace cache and judge consumer.
 
-**When to use:** After a first draft of any exercise (required) or lecture (optional — less useful for demo-script lectures; more useful for prework-reading). Before the formal eval. Can be repeated with different personas.
+**Scope of this file (Class A):** persona walks the artefact phase by phase and records what they'd paste, what confused them, and how the mood lands. **Out of scope here:** predicting Claude's responses or flagging behavioral risks the prompt invites — that's Class B. Class A used to do both; the prediction surface moved to Class B in 2026-05-02 because mechanical execution is the ground truth on what Claude actually does, while Class B reasons over the *distribution* of Claude responses for files that have no mechanical runner.
 
-**How to run:** Launch a general-purpose agent with the prompt template below. Give it the target file path(s) and a persona. It role-plays through the exercise, makes up realistic content, and reports.
+**When to use:** After a first draft of any exercise (required) or lecture (optional — less useful for demo-script lectures; more useful for prework-reading). Before the formal eval. Can be repeated with different personas via `/eval-fire story --personas N`.
+
+**How to run:** the storytelling judge invokes Class A automatically when its cached trace is missing or per-phase SHA stale. Manual invocation is rare; if needed, launch a general-purpose agent with the prompt template below.
 
 **The persona is never alone.** Bootstrap exercises are facilitated in two modes — *in-room* (human trainer) and *self-study* (Teacher Claude running in a side session, configured by the `/self-study` skill to nudge the student through the 4 Cs). **Default simulations to self-study mode** unless the prompt explicitly names in-room. Teacher Claude covers the facilitator role: it asks *"find me one row the judge got wrong"* when the student rubber-stamps Phase 3, pushes on ambiguous artifacts, runs the Debrief. A simulation that penalises an exercise because *"the solo SVP has no facilitator nudge"* is simulating the wrong setup — the SVP has Teacher Claude. Name Teacher Claude explicitly in the persona block so the simulator accounts for it, and tell the simulator to surface nudges Teacher Claude would make at each phase.
 
@@ -26,52 +28,31 @@ MODULE MOOD CONTRACT: [state the module's deliberate mood — e.g., "Module 6 is
 ASSUME you have completed any prior module/lecture setup the exercise references.
 
 FOR EACH PHASE:
-1. Describe what you would paste or do — make up realistic content in your persona's voice
-2. Predict what Claude would likely return — use your knowledge of how Claude behaves
-3. Note what Teacher Claude would nudge on in the side session for this phase
-4. Flag any moment you're confused, stuck, or unsure what the exercise wants
-5. Flag any moment Claude's likely output wouldn't match what the exercise assumes
-6. Record the state after the phase — what artifact you now have
-7. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (match against the module mood contract; flag drift)
+1. Describe what you would paste or do — make up realistic content in your persona's voice (`persona_action`)
+2. Flag any moment you're confused, stuck, or unsure what the exercise wants (`confusion_flags`)
+3. Record the state after the phase — what artifact you now have (`artifact_state`)
+4. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (match against the module mood contract; flag drift) (`mood_score`, `mood_note`)
+
+DO NOT predict what Claude would return. DO NOT flag Claude-behavior mismatches. Both moved to Class B (`simulation-behavior.md`) and are owned by the prompt-behavior judge. If a mechanical-tested transcript exists for this file (named in the file's Quality line as `mechanical-tested @ <sha>`), read it for ground-truth `artifact_state` instead of guessing.
 
 AT THE END, report:
-- **Top 3 places the exercise could break** (specific, with phase)
-- **Top 3 ambiguous instructions** (quote them)
-- **Any under-scaffolded phase** where even Teacher Claude can't recover (distinguish from phases that only need facilitator nudging — those aren't breakage)
+- **Top 3 ambiguous instructions** (quote them) — confusion the prompt creates by being unclear, not Claude misbehaving
+- **Any under-scaffolded phase** where even Teacher Claude can't recover
 - **Overall "this is me" / artifact quality rating** 1–10
 - **Mood summary**: score per phase + close, and a one-line *"what's stealing the mood"* note for any beat below 8. 8+/10 at every beat is the bar. 7 = facilitator-premium signature; say what would take it from 7 to 8.
 - **Arc flow** — does one phase feed the next?
-- **Claude-behavior mismatches** — specific places where Claude's style clashes with exercise assumption
 
-Be specific. Use your persona's voice. If the exercise has a flaw, you (as the student) will notice it. Under 800 words.
+Be specific. Use your persona's voice. If the exercise has a flaw a *reader* would feel, you'll notice it. Behavioral failures of the *prompt* belong to Class B. Under 600 words.
 ```
 
-**What simulation catches that eval doesn't:**
+**What Class A persona-sim catches that nothing else does:**
 - **Ambiguous instructions** that seem clear on paper but trip a real participant
-- **Claude-behavior mismatches** — e.g., you tell Claude to "ask these questions in turn" but Claude often dumps all five at once unless nudged
 - **Under-scaffolded phases** — where the participant has to infer too much
 - **Arc flow breaks** — where Phase N doesn't feed Phase N+1 smoothly
 - **"This is me" failures** — the final artifact rating shows if the emotional payoff actually lands
+- **Mood landings per beat** — the only place this is measured
 
-**Known Claude-behavior patterns — sim watchlist.**
-
-Each pattern below ALSO fires at generation time via its compounded entry. The catalog here is the sim watchlist; the compounded entries are the write-time forcing functions. When a sim surfaces one of these, link the offending phase to the matching entry rather than re-describing the rule inline.
-
-1. File preservation gap — see `memory/compounded/2026-04-27-student_facing-file-preservation-gap.md`.
-2. Reading burden / manual error-catching — see `memory/compounded/2026-04-27-pedagogy-reading-burden-manual-error-catching.md`.
-3. Niceness tax (RLHF softening) — see `memory/compounded/2026-04-27-prompts-niceness-tax.md`.
-4. Question dump — see `memory/compounded/2026-04-27-prompts-question-dump.md`.
-5. Overwrite anxiety — see `memory/compounded/2026-04-27-prompts-overwrite-anxiety.md`.
-6. Preamble before action — see `memory/compounded/2026-04-27-prompts-preamble-before-action.md`.
-7. Append-vs-integrate default — see `memory/compounded/2026-04-27-prompts-append-vs-integrate-default.md`.
-8. Plan-mode preamble bloat — see `memory/compounded/2026-04-27-prompts-plan-mode-preamble-bloat.md`.
-9. Citation-gap asymmetry — see `memory/compounded/2026-04-27-prompts-citation-gap-asymmetry.md`.
-10. Self-report inflation — see `memory/compounded/2026-04-27-pedagogy-self-report-inflation.md`.
-11. Default-acceptance on offered defaults — see `memory/compounded/2026-04-27-pedagogy-default-acceptance-on-offered-defaults.md`.
-12. Plan-mode approval inflation — see `memory/compounded/2026-04-27-pedagogy-plan-mode-approval-inflation.md`.
-13. Source-type blindness on ingestion — see `memory/compounded/2026-04-27-pedagogy-source-type-blindness-on-ingestion.md`.
-14. Citation cargo-cult — see `memory/compounded/2026-04-27-prompts-citation-cargo-cult.md`.
-15. Self-audit charity — see `memory/compounded/2026-04-27-pedagogy-self-audit-charity.md`.
+**Claude-behavior risks now live in Class B** (`simulation-behavior.md`). The 15-pattern catalog (niceness tax, question dump, overwrite anxiety, etc.) is consumed by the prompt-behavior judge, which reasons over the *distribution* of Claude responses per prompt. Class A doesn't predict Claude — that prediction surface was the largest token cost and the most hallucination-prone field, and it's now owned by Class B with a structured per-prompt schema.
 
 **Prework-specific patterns:**
 - **Install cliff** — "install Claude Code" is a 25-min side quest if you land on the CLI path with no Node. For non-developer audiences, specify **desktop or web** explicitly. "No terminal required" is a real affordance worth stating.

@@ -20,9 +20,19 @@ WRITING-CLASS COMPENDIUMS (read on demand):
 
 Body prose is the student-facing surface above any `<!-- maintainer -->` cut, with fenced code blocks excluded. Maintainer blocks and code blocks are EXEMPT from writing-class lints — they have different audiences (trainers + Claude itself, respectively).
 
-**Hard rule before any flag:** if the line you're about to flag is below `<!-- maintainer -->` OR inside a ``` ``` ``` fenced block, STOP. The rule does not apply to that line. Do not include it in `rules_evaluated`, do not count it toward findings. The most common false positive on early runs was flagging dated lines inside maintainer blocks despite the explicit exemption — verify each flag's location before emitting.
+**Procedural enforcement — do this BEFORE evaluating any rule:**
+
+1. Read the target file. Scan for the `<!-- maintainer -->` line; record its line number as MAINTAINER_CUT (or "none" if absent). Scan for ``` markers; record each fence as `(start_line, end_line)` in FENCE_RANGES.
+2. State both up front in your reasoning before any rule check, e.g.: *"MAINTAINER_CUT = line 80; FENCE_RANGES = [(50, 58), (122, 130)]; body region = lines 1–49, 59–79, 80 is out (cut), …"*
+3. For each candidate flag, do this two-step check before emitting:
+   - **Verify the cited content actually appears at the cited line.** Open that line in the source. If the quoted substring is not on that line, the line number is wrong; either correct it or drop the flag entirely. Do NOT emit a flag whose evidence cites a line that doesn't contain the quoted text.
+   - **Verify the corrected line is in the body region.** If line ≥ MAINTAINER_CUT or line is inside any FENCE_RANGE, STOP. Drop the flag. Do not include it in `rules_evaluated`.
+
+The most common Pass 1a false positives were (a) dated lines inside maintainer blocks despite the explicit exemption, (b) Prompt-block content inside ``` fences flagged for memory-vs-context conflation despite the exemption, and (c) line-number hallucinations that happen to land in body when the actual content is in a fence. The procedural enforcement above kills all three deterministically.
 
 If the file has no `<!-- maintainer -->` cut, the whole file is body. If the file is entirely below the cut (rare), there is no body and you return PASS with empty findings.
+
+**Structural section names are exempt from rule 2 (earn every technical term).** The canonical module file shape uses stable signposting section names — `## Big Idea`, `## Meta`, `## What You'll Learn`, `## Connections`, `## Lectures`, `## Exercises`, `## Key Concepts`, `## Plug Points`, `## Debrief`, `## Bridge`, `## Next`, `## Homework`. These are architecture-mandated; their names are NOT body prose subject to "earn every term." Do NOT flag a section heading itself as an unearned term. Additionally, content INSIDE these signposting sections (Big Idea, Key Concepts, What You'll Learn, Connections, Bridge / Next) MAY name a Claude Code primitive or curriculum term-of-art (skill, subagent, plan mode, prompt injection, attack class) without a one-breath primer above them, IF that term lands operationally inside the same module's exercises or lectures. Diagnostic before flagging an unearned term in those sections: scan the rest of the module body. If exercises or lectures land the term operationally, the signposting use is fine. Only flag if the term never actually lands inside the module — then the signposting itself is the bug. See `check_student_facing.md` rule 2 carve-out (added 2026-05-02).
 
 ## What you evaluate
 
@@ -65,7 +75,7 @@ Return ONE JSON object, exactly this shape:
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS" | "REVISE" | "N/A",
       "evidence": "<line-number:quoted-substring> if REVISE; null otherwise",
-      "fix": "<one-line suggestion> if REVISE; null otherwise",
+      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation, not here. null if PASS.>",
       "blocking": true | false
     }
   ],

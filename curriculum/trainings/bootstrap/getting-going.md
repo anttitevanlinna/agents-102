@@ -57,6 +57,8 @@ When you're done, tell me in 2–3 lines: what got sharpened, what got added, wh
 
 Claude runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.
 
+Two patterns to watch. The LLM is generous to a rules file it just helped write. *"Mostly worked, small sharpens"* is the agent grading its own work charitably. The prose summary rounds corners.
+
 Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a rule file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
 
 **Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
@@ -74,6 +76,8 @@ Have the subagent answer:
 ```
 
 
+One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into appreciation. The praise carries forward into the generic-line call. Both picks come back softer than they probably should. Your own gut on what's uniquely you and what's generic carries more weight than Claude's.
+
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there and regenerate. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 
 ## Next
@@ -85,7 +89,8 @@ You just made great output AND packaged what you learned into a file the agent c
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (body touched after maintainer review; re-review needed)
+**Quality:** draft 2026-05-02 (Debrief body added two pattern-watch beats from /eval-fire behavior convergent risks; prompts unchanged; re-review needed)
+- draft 2026-05-02 (Debrief gained two pattern-naming paragraphs after retro and cold-critic prompts: LLM-generous-to-self-authored-rules, niceness-tax warmup softens generic-line call. Body teaching, prompts untouched. Source: /eval-fire behavior Run 1 + Run 2 convergent risks; routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-04-30 (M1 frame shifted from site-making to iterate-and-learn agent behavior; needs re-review)
 - maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 

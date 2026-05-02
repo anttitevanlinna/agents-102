@@ -23,25 +23,32 @@ STRATEGY DOC (load only the per-module section relevant to this file via the bos
 
 SIM TRACE CACHE: {{trace_path}}
 
-## Sim trace — the key input
+## Sim trace — the key input (Class A persona-reader)
 
-The sim trace is structured JSON describing how a typical persona walked through this artefact phase by phase. You evaluate against the trace, not against your own re-simulation, unless the trace is missing or stale.
+The sim trace is structured JSON describing how a typical persona walked through this artefact phase by phase. You evaluate against the trace, not against your own re-simulation, unless the trace is missing or per-phase SHA is stale.
 
-### Cache lookup
+**This is Class A only.** Claude-behavior prediction and behavioral-risk flags moved to Class B (`prompt-behavior` judge, `simulation-behavior.md`). Class A's trace is now narrower: persona action, confusion, artifact state, mood. No `predicted_claude_output`, no `teacher_claude_nudge`. If a `mechanical-tested @ <sha>` line is present in the file's Quality block AND the SHA matches HEAD, prefer reading the mechanical Actor scrollback (`curriculum/evals/mechanical/instances/<runner>-actor-scrollback.md`) for ground-truth `artifact_state` instead of guessing.
 
-1. Compute SHA-256 of the target file's content.
-2. Read `{{trace_path}}` if it exists. The trace's frontmatter contains a `content_sha` field.
-3. If file SHA matches trace's `content_sha`, use the cached trace. Skip to "Evaluate".
-4. If trace is missing or stale, generate a new trace per the protocol below. Save to `{{trace_path}}`. Then evaluate.
+### Per-phase cache lookup
+
+1. Read `{{trace_path}}` if it exists. The trace contains a top-level `content_sha` and per-phase `phase_sha` fields.
+2. Parse the file's phase boundaries (`## Phase` headers, or for non-phased files, treat the whole body as a single phase).
+3. For each phase, compute its content SHA.
+4. Reuse cached entries whose `phase_sha` matches. Regenerate only the entries whose SHA mismatches (or whose `phase_index` is new).
+5. Write the merged trace back to `{{trace_path}}`.
+
+If the file has no `## Phase` headers (lecture, supplementary, prework), the whole body is phase 1 and SHA-keyed at file level — equivalent to per-file caching with one phase.
 
 ### Trace generation protocol
 
-Follow the simulation protocol at `.claude/skills/content-creation/simulation.md`. Use the default `self-study` delivery mode. For Bootstrap exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
+Follow the persona-reader protocol at `.claude/skills/content-creation/simulation.md` (Class A). Use the default `self-study` delivery mode. For Bootstrap exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
+
+If the orchestrator passes `personas: N` (N > 1) via `/eval-fire story --personas N`, run the audience triangle: (a) mid-layer competent, (b) opinionated senior, (c) fast operator. Each persona produces its own trace stored at `{{trace_path}}` with persona-keyed records.
 
 Output the trace as JSON to `{{trace_path}}`:
 
 {
-  "content_sha": "<sha256 of target file>",
+  "content_sha": "<sha256 of full file>",
   "generated_at": "<ISO timestamp>",
   "training": "bootstrap" | "ae101" | "shared",
   "persona": "<one-line persona descriptor>",
@@ -51,11 +58,10 @@ Output the trace as JSON to `{{trace_path}}`:
     {
       "phase_index": 1,
       "phase_name": "<from file>",
+      "phase_sha": "<sha256 of this phase's body>",
       "persona_action": "<what they would paste / do, in persona voice>",
-      "predicted_claude_output": "<best guess of how Claude responds — multi-step autonomous, not chatbot>",
-      "teacher_claude_nudge": "<what the side-session Teacher Claude would push on>",
       "confusion_flags": ["<line they'd be unsure about, with reason>"],
-      "artifact_state": "<what file/folder/string they have at end of phase>",
+      "artifact_state": "<what file/folder/string they have at end of phase — read mechanical scrollback if available>",
       "mood_score": <int 1-10>,
       "mood_note": "<one line: what they're feeling vs. the contract>"
     }
@@ -66,7 +72,6 @@ Output the trace as JSON to `{{trace_path}}`:
     "mood_score": <int 1-10>,
     "mood_note": "<one line>"
   },
-  "claude_behavior_mismatches": ["<places where Claude's actual style would clash with what this file assumes>"],
   "ambiguous_instructions": ["<lines quoted verbatim that confused the persona>"],
   "under_scaffolded_phases": ["<phase indexes where even Teacher Claude can't recover>"]
 }
@@ -106,7 +111,7 @@ Return ONE JSON object, exactly this shape:
       "rule_lead": "Forcing functions live in prompts, not body.",
       "verdict": "PASS" | "REVISE" | "N/A",
       "evidence": "<line:quote or trace.phases[N].field if REVISE; null otherwise>",
-      "fix": "<one-line suggestion if REVISE; null otherwise>",
+      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation, not here. null if PASS.>",
       "blocking": true | false
     }
   ],
@@ -133,7 +138,9 @@ OUTPUT ONLY THE JSON. No markdown fence, no commentary, no preamble.
 
 This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class is `story`. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}`, `{{strategy_doc_paths}}` before dispatch.
 
-`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<file-slug>.json`. The cache directory is gitignored — traces are user-local because they're keyed by content hash and regenerate on edit.
+`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<file-slug>.persona.json` (Class A; one file per slug, per-phase SHA-keyed inside). For multi-persona runs, persona-keyed records live in the same file. The cache directory is gitignored — traces are user-local because they're keyed by content hash and regenerate on edit.
+
+The behavior class (Class B) writes its own trace at `curriculum/evals/sim-cache/<file-slug>.behavior.json` per `judges/prompt-behavior.md`. The two caches don't overlap.
 
 `{{strategy_doc_paths}}` is determined by the file's training: `bosser-strategy:content-strategy.md` for Bootstrap and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101. The skill orchestrator passes both for shared files (the judge picks the right one).
 

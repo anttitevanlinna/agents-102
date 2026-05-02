@@ -29,7 +29,9 @@ This SKILL.md is the always-loaded core (session orientation + PDCA cadence + mo
 
 - Writing a prompt block the student copies → **`prompts.md`** (mirrored at ship time by `memory/check_prompts.md`)
 - Writing body prose / voice / structure for any student-facing file → **`writing.md`** (voice, jargon, debrief, sharing strategies, three-pass build, structural + pedagogical rules, variants, verification, red flags)
-- Running the simulate/test step of the PDCA loop → **`simulation.md`** (sim protocol + Claude-behavior patterns + prework-specific patterns)
+- Running the simulate/test step of the PDCA loop → two sim classes, run in parallel:
+  - **`simulation.md`** (Class A — persona-reader): mood per phase, confusion flags, "this is me" close, arc flow. Story judge consumer.
+  - **`simulation-behavior.md`** (Class B — prompt-behavior / risk): per-prompt distribution of Claude responses, 15-pattern catalog (niceness tax, question dump, etc.), failure modes + recovery paths. Prompt-behavior judge consumer.
 
 Plus the matching `memory/check_*.md` compendium per `.claude/rules/content-rules.md` (surface-detector hook preloads these).
 
@@ -111,6 +113,10 @@ Every piece of curriculum content goes through this loop. Skipping a step is how
 
 **Act:**
 8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template, simulation protocol, this SKILL.md, `curriculum/CLAUDE.md`, `memory/self-review-protocol.md`, `memory/MEMORY.md`. **Then invoke `/compound`** for any correction that applies beyond this cycle. `/compound` writes a schema-validated entry in `memory/compounded/` and (for content/pedagogy/sales/prompts/lectures/strategy_tie_in surfaces) proposes a one-line amendment to the matching `check_*.md` compendium. Without step 8's `/compound`, corrections stay trapped in this cycle's artifact.
+
+   **If this cycle was triggered by a sim/eval verdict** (e.g., the author exited `/eval-fire` or `/curriculum-pre-ship-audit` with REVISE and entered this skill to act on the findings), CLOSE the cycle by re-firing the same skill against the same file list. The judge runs again with the new content; the verdict either lands at PASS (fixes resolved the flagged risks) or surfaces remaining issues. Only then is the cycle complete. Do NOT mark the work done based on the author's own assessment that the fixes look right — the eval is the only source of truth that the boundary held both ways.
+
+   **The boundary direction:** sim/eval → /content-creation is the only legal path to edits flagged by the eval. The reverse (eval-skill writes the edit) is forbidden by the eval-skill's own hard boundary. Canonical source: `memory/compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`.
 
    **Also update the Quality line** in each touched file's maintainer block per `curriculum/CLAUDE.md` § *Quality-state tagging*. If the cycle cleared the audit, write `**Quality:** compendium-audited <today>` with a dimension-log row naming the compendium versions and audits applied. If the cycle introduced a sim or mechanical pass, add the corresponding dimension-log row and update the top-state line to the highest valid tier. Mechanical-tested provenance MUST include a git short-SHA pin: `mechanical-tested <date> (<judge-report-path> @ <short-sha>) PASS`. The `curriculum-pre-ship-audit` skill blocks GO without these.
 

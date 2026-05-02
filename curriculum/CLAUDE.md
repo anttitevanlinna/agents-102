@@ -20,20 +20,20 @@ Every student-facing artifact (module, exercise, lecture, prework) carries a Qua
 
 **Format** (top-state line + dimension log in maintainer block):
 ```
-**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha>)
-- compendium-audited <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha>) — three-class judges PASS
+**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha>)
+- compendium-audited <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha>) — four-class judges PASS
 - maintainer-reviewed <YYYY-MM-DD> (<one-line note>)
-- sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling judge regen + PASS
+- sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling or behavior judge regen + PASS
 - mechanical-tested <YYYY-MM-DD> (<judge-report-path> @ <short-sha> PASS)
 - cohorts: <none yet | cohort-name + date + post-cohort changes>
 ```
 
-The `compendium-audited` row carries **three per-class git short-SHA pins** (refactored 2026-05-02 from a single SHA) — one per class judge that ran. The three classes mirror the compendium split: `writing` (banned words / register / surface lints), `story` (mood / teaching moment / arc), `technical` (platform claims / citations / prompt mechanics). Each class's SHA is the file's git short-SHA at the moment that class judge passed.
+The `compendium-audited` row carries **four per-class git short-SHA pins** (refactored 2026-05-02 from a single SHA; behavior class added second pass when sim split into Class A persona-reader + Class B prompt-behavior). The four classes mirror the compendium split: `writing` (banned words / register / surface lints), `story` (mood / teaching moment / arc — Class A sim trace), `technical` (platform claims / citations / static prompt mechanics), `behavior` (per-prompt distribution-of-Claude-responses against the 15-pattern catalog — Class B sim trace). Each class's SHA is the file's git short-SHA at the moment that class judge passed.
 
 **Key rules:**
 - **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
-- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; the other two carry forward. The `eval-class-router.sh` PostToolUse hook classifies each edit (writing-only / structure-change / prompt-change) and writes to `/tmp/claude-eval-queue-<sid>` so the next `/wind-down` knows which class to re-audit per file.
-- **Grandfather rule for files audited before 2026-05-02.** A pre-refactor `compendium-audited <date> @ <sha>` row satisfies all three classes IF the file's mtime is unchanged since that audit. As soon as the file is touched, the three classes auto-degrade per the per-class rule above.
+- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; the other three carry forward. Touching a prompt block invalidates `behavior@<sha>` (and usually `technical@<sha>`). The `eval-class-router.sh` PostToolUse hook classifies each edit (writing-only / structure-change / prompt-change / behavior-change) and writes to `/tmp/claude-eval-queue-<sid>` so the next `/wind-down` knows which class to re-audit per file.
+- **Grandfather rule for files audited before 2026-05-02.** A pre-refactor `compendium-audited <date> @ <sha>` row satisfies all four classes IF the file's mtime is unchanged since that audit. As soon as the file is touched, the four classes auto-degrade per the per-class rule above.
 - **SHA pin on `mechanical-tested`** is mandatory — instance reports overwrite on rerun, SHA is the only drift detector.
 - **Reference files (`curriculum/reference/`) are exempt** — flat lookup material, no mood contract or sim surface.
 

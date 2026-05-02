@@ -6,7 +6,7 @@ Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/
 
 ## Protocol
 
-Read each prompt file verbatim. Quote in blockquote. Respond.
+**Hard rule (forcing-function):** invoke the **Read tool** on each prompt file BEFORE blockquote-pasting. The Judge greps the transcript for Read tool_use of every prompt-NNN.txt; pasting from memory fails the verbatim check.
 
 **Prompts:**
 - `/tmp/prompts/hallucination-bakeoff/prompt-004.txt` — scorer

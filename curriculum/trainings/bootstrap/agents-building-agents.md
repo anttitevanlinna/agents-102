@@ -47,13 +47,17 @@ Five minutes. Claude reviews the session and sharpens whichever file carried the
 **Prompt** *(Builder Claude)*
 
 ```
-Review this session and sharpen the file that carried the most weight — most likely the strategy kernel, agent set, plan, or central synthesizer's rules, whichever governed how the agents argued and selected. Read that file, then scan the shared deliberation folder — challenge, context manifests, stances, cross-checks, proposals, selection-board, midway-instructions, critiques, pushback, kernel, agent-set, plan. Identify which synthesizer-injected midpoint instructions actually changed later agent behavior. Look back over the session: where did the flywheel stall (an agent waiting on another that never finished), which role in the round was under-specified so two agents played it or none did, where did the room converge too fast on a plausible proposal, where did a critique land and change a selection, where did the plan invent a dependency that could actually run concurrently (capture that as a rule), what did the session fail to decide and why?
+Review this session and sharpen the file that carried the most weight — most likely the strategy kernel, agent set, plan, or central synthesizer's rules, whichever governed how the agents argued and selected. Identify the file path and confirm in one line before rewriting; overwrite in place, do not create a parallel version. Then scan the shared deliberation folder: challenge, context manifests, stances, cross-checks, proposals, selection-board, midway-instructions, critiques, pushback, kernel, agent-set, plan. Identify which synthesizer-injected midpoint instructions actually changed later agent behavior.
 
-Then rewrite the file. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Don't add a "retro notes" section; rewrite the file as the better version. Do not close every loop — some of what didn't resolve should stay open, named.
+Look back over the session: surface at least two flywheel stalls (an agent waiting on another that never finished), at least one under-specified role (so two agents played it or none did), and at least one proposal the room converged on too fast — name which proposal and which agent could have pushed back but didn't. Where did a critique land and change a selection? Where did the plan invent a dependency that could actually run concurrently (capture that as a rule)? What did the session fail to decide, and why?
 
-When you're done, tell me in 3–5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why — grounded in specific moments. Name one thing the session genuinely didn't resolve.
+Then rewrite the file. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Preserve any rule not directly contradicted by session evidence. Don't add a "retro notes" section; rewrite the file as the better version. Do not close every loop — some of what didn't resolve should stay open, named.
+
+When you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. Name one thing the session genuinely didn't resolve.
 ```
 
+
+Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel keeps compounding only if the rewrite is specific enough that next round can build on it. Vague summaries are how next round inherits this round's blur.
 
 Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Bootstrap, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
 
@@ -67,7 +71,9 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
+**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
+- draft 2026-05-02 (Debrief prompt hardened: path-confirm-before-rewriting, overwrite-in-place, two-stalls minimum + one underspecified-role + one converged-too-fast proposal with the agent that could have pushed back, before-and-after quote requirement, preserve-other-rules. Body callout: vague summaries are how next round inherits this round's blur. Source: /eval-fire behavior 2026-05-02 round 2 (overwrite-anxiety high, self-report-inflation high, self-audit-charity med, niceness-tax med, preamble med, file-preservation-gap med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
+- draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
 
 **TODO (Cowork edition review 2026-04-29):**
 - First learning goal says "Use Claude Code to generate a new agent." Runtime-fork or neutralize for Cowork so the goal remains "use the runtime to generate a new agent" without making Cowork feel like a secondary path.

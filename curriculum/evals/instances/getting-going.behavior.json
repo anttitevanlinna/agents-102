@@ -16,25 +16,25 @@
           "pattern_id": "self-report-inflation",
           "confidence": "high",
           "evidence": "Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic.",
-          "fix_hint": "Add an adversarial forcing floor: 'Assume the rules file is 30% wrong. Find which 30%.' — raises what Claude will classify as drop."
+          "fix_hint": "Inject an adversarial floor: 'Assume the rules file is 30% wrong. Find which 30%.' — forces a non-charitable distribution across keep/sharpen/drop."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "med",
           "evidence": "Find what's still surface; don't defend the file as-is.",
-          "fix_hint": "Add a minimum-drop constraint: 'If you surface fewer than 2 drops, you are being charitable — look harder.' — forces real failures into the output."
+          "fix_hint": "Add an explicit calibration: 'If the retro produces fewer than 2 drops, that is a signal you are being charitable. Find more.' — raises the floor on classified failures."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
           "evidence": "Then re-read what we did building the site. Run a retro: which moves landed...",
-          "fix_hint": "Prepend 'Immediately read the file. No plan, no preamble.' to suppress plan-explanation before first action."
+          "fix_hint": "Open with an action-first directive: 'Immediately read the file. No plan, no preamble.' to suppress the narrate-before-act default."
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
           "evidence": "tell me in 2–3 lines: what got sharpened, what got added, what got dropped, and why.",
-          "fix_hint": "Replace open summary with a structured list: 'dropped (rule text + reason) / sharpened (before → after) / added (text + why missing)' — removes softening room."
+          "fix_hint": "Replace open summary with a structured output format: 'List: dropped (rule text + reason), sharpened (before → after), added (rule text + why missing).' to remove softening room."
         }
       ]
     },
@@ -48,13 +48,13 @@
           "pattern_id": "self-report-inflation",
           "confidence": "med",
           "evidence": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.",
-          "fix_hint": "Instruct the subagent explicitly: 'Treat every line as written by a stranger. Flag the line that could appear on any professional's site unchanged.' — sharpens cold-read isolation."
+          "fix_hint": "Add explicit cold-read framing to the subagent instruction: 'You have no context on this person. Treat every line as if written by a stranger. Flag the line that could appear on any professional's site unchanged.'"
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
           "evidence": "Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).",
-          "fix_hint": "Add to the generic-line task: 'Do not qualify your pick. Quote it plain; no context about why it might be valid.' — removes hedging room."
+          "fix_hint": "Add: 'Do not qualify your generic pick. Quote it plain; do not add context about why it might be valid.' to suppress hedged critique."
         }
       ]
     }

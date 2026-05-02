@@ -1,0 +1,236 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/building-agent-systems.md",
+  "verdict": "REVISE",
+  "training": "bootstrap",
+  "trace_status": "cached",
+  "prompts_evaluated": 10,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Review this session and write the first version of CLAUDE.md at the training-directory root.",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "high",
+          "evidence": "Every rule you write should be traceable to a specific moment in the session where the rule either helped or would have helped.",
+          "fix_hint": "Add self-critique pressure: require Claude to flag rules it's uncertain about and name one it chose NOT to write — forcing an honest exclusion report."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why.",
+          "fix_hint": "Extend the exclusion ask: 'Include at least one thing you considered writing but rejected — and the honest reason why.' Removes the tidy-omission default."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Review this session and write the first version of CLAUDE.md... Cover at minimum: the memory... the sources... the agents...",
+          "fix_hint": "Prime the student: 'Claude will narrate the structure before writing — skim that and look for the rules file itself.' Or flip order: file first, summary second."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "high",
+          "evidence": "Then ask me where my work material actually lives. Don't assume Confluence or OneDrive — ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.",
+          "fix_hint": "Enforce one-at-a-time structurally in the prompt body: 'Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.'"
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "med",
+          "evidence": "Then propose a curation plan covering three kinds of material: (a) internal knowledge... (b) recent work... (c) outside-in — 2–3 working practitioners or specific articles... I'll push back where the plan is off.",
+          "fix_hint": "Add a challenge step after the plan: 'Name the two sources you're LEAST confident will contain real signal for my challenge. If you can't name any, the plan is probably too generic.'"
+        },
+        {
+          "pattern_id": "plan-mode-preamble-bloat",
+          "confidence": "med",
+          "evidence": "Do this in three beats: 1. Check what connectors are enabled... 2. Then ask me... 3. Then propose a curation plan...",
+          "fix_hint": "Prime the student: 'Claude will narrate all three beats first — that narration is the plan, not the output. Look for the connector list in Beat 1.' Or collapse beat structure into a single action sequence."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "For every source in the curation plan we just agreed, create one file in sources/.",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "source-type-blindness",
+          "confidence": "med",
+          "evidence": "Publicly fetchable URL (practitioner blog, public article)? Fetch the page, save the text as sources/<slug>.md with a header naming URL + title + why-it's-relevant.",
+          "fix_hint": "Add a classification line to each sources/ header: 'practitioner-direct / practitioner-analysis / vendor / news. Vendor or news sources are flagged as lower-signal when building memory.'"
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "save the text as sources/<slug>.md with a header naming URL + title + why-it's-relevant.",
+          "fix_hint": "Reframe the why-it's-relevant field: 'Quote one specific sentence from the source that earns its place. If you can't quote one, write NOT RELEVANT and skip this source.'"
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source: [four cases listed].",
+          "fix_hint": "Prime the student: 'Claude will narrate all four source-handling cases before starting — watch for the three-lists report at the end, not the opening narration.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Read every real-content file in sources/. For each major topic you find, create a markdown file i",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "plan-mode-approval-inflation",
+          "confidence": "high",
+          "evidence": "For each major topic you find, create a markdown file in memory/ with a clear title, 3–5 key claims, and an 'open questions' section [plan mode activated before this prompt]",
+          "fix_hint": "Add a topic-sourcing check in the plan approval beat: 'Before approving, ask Claude which specific source file drove each proposed topic title. A topic with no named source is a Claude prior, not a real topic from the sources.'"
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Every claim ends with a citation in the form [sources/<filename>] pointing to the file it came from. One claim, one source file, on the same line. If a claim has no source, don't write it.",
+          "fix_hint": "Add sentence-level verification: 'For each citation, quote the exact sentence from the source file the claim derives from, immediately after the tag: [sources/X.md: \"quoted sentence\"]'. Quote-first forces real retrieval."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "For each major topic you find, create a markdown file in memory/... Then write memory/index.md that links to every topic page.",
+          "fix_hint": "Name the overwrite intent explicitly: 'If any memory/ files already exist, overwrite them — this run rebuilds from current sources/. Do not merge with old content.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Pick 3 memory pages at random. For each, is the top claim something specific to my challenge",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "high",
+          "evidence": "Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem?",
+          "fix_hint": "Add self-critique framing: 'For each of the 3 pages, find at least one claim that COULD be more specific. The specificity bar: a competitor's agent on the same kind of challenge would not write this exact sentence.'"
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "high",
+          "evidence": "List the generic ones in memory/soft-pages.md. [Claude reports result of its own quality audit]",
+          "fix_hint": "Add counter-pressure: 'Assume at least 1 of the 3 pages has a generic top claim — name it and propose one specific rewrite. If after genuine re-reading all three are specific, explain why and name the most at-risk sentence you considered.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time:",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "med",
+          "evidence": "Ask me these one at a time: 1. What recurring job should this agent do for my challenge?... 2. What rules matter?...",
+          "fix_hint": "Enforce structurally: 'Ask one question, wait for my answer, then ask the next. Do NOT show me the question list.' The visible numbered list inside the prompt block invites Claude to present both together."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "med",
+          "evidence": "Starter rules: cite the memory file for every claim, never invent, ask when a source is thin, keep my voice. Change at least one so it's actually mine.",
+          "fix_hint": "Add a challenge after the student gives rules: 'Push back on any that sound like defaults — ask: is this rule actually mine or just what any agent should do? The strongest rules name a specific failure mode I've already hit.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 7,
+      "prompt_lead": "Read the agent file you just created, apply its role and rules, and use my memory. Ask me for",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Cite which memory file each claim came from.",
+          "fix_hint": "Extend to sentence-level: 'For each citation, quote the specific line in the memory file the claim derives from. If you cannot quote one, mark [CITATION UNSUPPORTED].'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 8,
+      "prompt_lead": "Take the source below and integrate it into the memory. Steps: 1. Read the source. Integrate its",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "Rewrite tops in place. Replace old framing; don't preserve it above a new section.",
+          "fix_hint": "Clarify scope: 'Rewrite the opening paragraph and first listed claim of each affected page. Preserve section headers and the open-questions shape. If you are deleting more than the top framing, tell me before writing.'"
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "When you're done, tell me three pages that got sharper (not longer) and one claim that got dropped or replaced.",
+          "fix_hint": "Force before-and-after evidence: 'For each of the three pages: quote the old top claim and the new top claim side by side. I'll judge whether it got sharper.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 9,
+      "prompt_lead": "Review the memory. Find: two contradictions between topic pages; two claims that need a source poi",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "high",
+          "evidence": "Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don't have one; two places where older pages likely went stale given what's in the newer sources.",
+          "fix_hint": "Add severity signal: 'For each of the 6 findings, rate severity: HIGH (would mislead a decision), MED (missing signal), LOW (cosmetic). If your most severe contradiction is LOW, flag that — you may have missed the real ones.'"
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "high",
+          "evidence": "For each, propose a specific fix. Don't apply them yet — ask me to approve or reject each one.",
+          "fix_hint": "Add a counter-anchor: 'After listing your 6 proposals, name the one you are LEAST confident about and say why you included it rather than a more serious gap.' Prevents proposals clustering around easy/safe findings."
+        },
+        {
+          "pattern_id": "reading-burden",
+          "confidence": "med",
+          "evidence": "Go through Claude's six proposals. Some will be right. Some will miss. Reject those. [student instruction in body prose after prompt]",
+          "fix_hint": "Give a rejection criterion inside the prompt, not just permission: 'For each proposal, ask: if I approved this and nothing else, would the memory actually work better for a real decision?'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 10,
+      "prompt_lead": "Using my memory and the rules in the agent file, answer this question, citing which memory file e",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "citing which memory file each claim came from:",
+          "fix_hint": "Extend to sentence-level: 'For each claim, quote the sentence from the memory file that supports it. If you can't quote one, mark [MEMORY GAP] rather than citing the file.'"
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "[open-hook — student pastes a decision question like 'strongest argument for option A over option B'] Using my memory and the rules in the agent file, answer this question",
+          "fix_hint": "Add edge-preservation: 'If the evidence in my memory strongly favors one option, say so plainly. Do not hedge toward balance if the memory does not support balance.'"
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 9,
+  "todos_count": 0
+}

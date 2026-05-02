@@ -62,6 +62,8 @@ When you're done, tell me in 3–5 lines: the rules you wrote, which session mom
 
 Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
 
+What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy. Ask once: *"what did you choose NOT to write, and why?"* and watch the answer get specific. The omission is where your real rule lives, not in the three you got.
+
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
 
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
@@ -77,7 +79,9 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-30 (body touched after maintainer review; re-review needed)
+**Quality:** draft 2026-05-02 (Debrief gained pattern-watch teaching beat; prompt unchanged; re-review needed)
+- draft 2026-05-02 (Debrief body added one paragraph: "what Claude leaves out is the signal" — observational tell aligned to M2's compounding mood, distinct framing from M1's pattern-watch beats. Prompts untouched. Source: /eval-fire behavior 2026-05-02 convergent risks; routed through /content-creation per sim-eval-verdicts-are-read-only rule)
+- draft 2026-04-30 (body touched after maintainer review; re-review needed)
 - maintainer-reviewed 2026-04-29 (Antti, M2 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.

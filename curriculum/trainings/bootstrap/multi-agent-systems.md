@@ -48,13 +48,15 @@ Five minutes. Claude reviews the session and sharpens the rules that govern how 
 **Prompt** *(Claude Code)*
 
 ```
-Review this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
+Review this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Audit harshly. Diplomatic summaries are a failing grade here. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
 
 Then rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a "retro notes" section; rewrite the file as the better version.
 
-When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific moments from the session. Name at least one handoff seam where the rules wobbled.
+When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. A seam without evidence doesn't count.
 ```
 
+
+Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
 
 Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
@@ -72,14 +74,16 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 **Prompt** *(Claude Code)*
 
 ```
-Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files.
+Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn't look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files.
 ```
 
 Memory is a working artefact, sharpened by what it bumps into.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (compendium audit run 2026-04-29 returned APPROVE-WITH-TODOS — runtime-fork pass applied; mood/LO/banned-word pass; not yet sim-passed or mechanical-tested)
+**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
+- draft 2026-05-02 (Debrief prompt hardened: "audit harshly", two-seams-with-evidence requirement; homework prompt: drop-candidate required. Body callout after the prompt explains why the harder ask forces a real audit. Source: /eval-fire behavior 2026-05-02 convergent risks (self-report-inflation high, self-audit-charity high, file-preservation-gap med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
+- draft 2026-04-29 (compendium audit run 2026-04-29 returned APPROVE-WITH-TODOS — runtime-fork pass applied; mood/LO/banned-word pass; not yet sim-passed or mechanical-tested)
 
 **TODO (Cowork edition review 2026-04-29):**
 - Learning goals and Key Concepts still leak Code-only terminology in Cowork rendering: "subagents inside one session", "when separate sessions beat subagents", and "Two multi-agent shapes in Claude Code." Runtime-fork or neutralize those lines so Cowork students see agents/tasks language while preserving the same learning goals.

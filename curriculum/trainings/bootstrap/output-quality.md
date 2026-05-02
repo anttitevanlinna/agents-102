@@ -13,14 +13,16 @@ Walk in with one sentence per case: "the missing organisational check was X."
 ## What You'll Learn
 After this module, you will be able to:
 - **Evaluate** detection methods empirically: set up a 30-claim benchmark, compare methods against it, pick the winner with measured reasoning rather than intuition
-- **Synthesize** the winning method into a reusable judge file with a stated scope and a named "known limit" (a judge you can defend in production)
-- **Explain** why method selection for agent quality work is empirical, not authoritative, and why the scoreboard IS the explanation
+- **Synthesize** the winning method into a reusable judge file that names what it catches and what it can't reach (a judge you can defend in production)
+- **Explain** why method selection for agent quality work is empirical, not authoritative, and why the scoreboard is the readable evidence behind the winner
 - **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
 
 ## Start here
 Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under `module-5/`, saves the winning judge at `judges/groundedness-judge.md`, and compounds groundedness rules into `./CLAUDE.md`.
 
 In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it).
+
+This module is the rescue. Not full closure. One shape of output, measured, with the limits the judge can't reach named on its face.
 
 Remember also that agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the words are wrong, the action will be wrong too.
 
@@ -35,7 +37,7 @@ This module measures what the system actually says inside its scope. Four detect
 ## Key Concepts
 - **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll ever automate (tone, brand, compliance, steering). Groundedness is just the first instance.
 - **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works every time you need a machine to make a judgment reliably.
-- **The scoreboard IS the explanation.** Magic that you can point at a row and explain. Precision, recall, coverage, introduced experientially, not lectured. A student who reads the scoreboard can defend the winner; a student who skips it is trusting the machine instead of measuring it.
+- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one detector won and where another lost.
 - **Benchmarking teaches evaluating evaluators.** The real move isn't "build a detector"; it's "build the thing that benchmarks detectors." Once you've run a benchmark once, you've seen what evaluating evaluators looks like, and the idea transfers to every future quality question.
 - **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend. A judge that tries to do everything does nothing well.
 - **Grounded is the discipline; the benchmark is how you build the check.** There IS truth out there. Sources carry shards of it. A judge that's been measured against a benchmark is the machine that keeps the output connected to the ground when you're not in the room.
@@ -45,6 +47,8 @@ This module measures what the system actually says inside its scope. Four detect
 
 Five minutes. Claude reviews the benchmark and compounds the useful part into the training-root `CLAUDE.md`: when future sessions should run a groundedness check before trusting or using an output. The evidence is what the scoreboard produced: the evidence roster, claim pool, adjudicated claims, detector outputs, scoreboard, and the judge you saved. Claude updates the operating rules, reports what changed, and you push back on anything that's off.
 
+Ask Claude to review the session and update `./CLAUDE.md` with groundedness operating rules.
+
 **Prompt** *(Claude Code)*
 
 ```
@@ -52,11 +56,13 @@ Review this session and update the root `./CLAUDE.md` with groundedness operatin
 
 Look back over the session: when did ungroundedness matter, which claim-shapes needed checking, where did citations look present but not load-bearing, and what should future agents know before they turn a briefing, memo, recommendation, or proposed action into something people rely on?
 
-Then update `./CLAUDE.md` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that tell future sessions when and how to run groundedness checks: what kinds of output need checking, which evidence surface to use, when to run `judges/groundedness-judge.md`, and when to say "not enough evidence" instead of smoothing over the gap. Integrate the rules into the right section if one exists; otherwise create a short section named "Groundedness checks". Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.
+Then update `./CLAUDE.md` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that tell future sessions when and how to run groundedness checks: what kinds of output need checking, which evidence surface to use, when to run `judges/groundedness-judge.md`, and when to say "not enough evidence" instead of smoothing over the gap. Integrate the rules into the right section if one exists; otherwise create a short section named "Groundedness checks". Touch ONLY that section; preserve every other section verbatim. Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.
 
-When you're done, tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and what uncertainty remains.
+When you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Then tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly.
 ```
 
+
+Notice what this prompt insists on: touch only the Groundedness checks section, preserve every other section verbatim, then read back what you wrote and confirm each rule landed. Both moves do work the model wouldn't volunteer. Left to itself, Claude treats `./CLAUDE.md` as a clean canvas. A small edit becomes a full rewrite, your earlier rules quietly drift, the diff is uglier than it needed to be. Reading back the section against the file is a separate problem: the report Claude writes describes what it intended, not what landed. The verify-at-artifact step closes the gap. Two different patterns from the same family. Name the boundary, then check the work. Once you have them, you'll start seeing where to apply them in every prompt that asks Claude to edit a file you care about.
 
 Read Claude's summary. Push back where it's wrong: *"run the check only for external-facing claims, not every note"* / *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."* Two things now travel: the reusable judge file exists, and `./CLAUDE.md` tells future sessions when groundedness checking is required.
 
@@ -135,7 +141,9 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Read Et
 
 **DEFERRED** (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability. Four-spawn shape is confirmed in production via Module 3's parallel retrievers; Module 5's pipeline + scorer-stability check needs a real benchmark run on real briefing input.
 
-**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
+**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
+- draft 2026-05-02 (Debrief prompt hardened: preserve-boundary on Groundedness checks section, verify-at-artifact read-back, least-confident-shape exclusion ask. Body callout names the two patterns: name the boundary, then check the work — distinct angle from M3's harsh-audit framing. Source: /eval-fire behavior 2026-05-02 convergent risks (self-report-inflation high, file-preservation-gap med, self-audit-charity med, preamble-before-action med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
+- draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
 - compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)
 
 **Source-verification owed (pre-first-cohort):**

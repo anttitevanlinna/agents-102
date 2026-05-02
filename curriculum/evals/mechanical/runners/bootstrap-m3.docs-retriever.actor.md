@@ -10,7 +10,7 @@ Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/
 
 Read the prompt file verbatim. Quote it in a blockquote. Respond.
 
-**Prompt:** `/tmp/prompts/three-retrievers-three-minds/prompt-002.txt`.
+**Prompt:** `/tmp/prompts/three-retrievers-one-curator/prompt-002.txt`.
 
 ## Connector substitution
 

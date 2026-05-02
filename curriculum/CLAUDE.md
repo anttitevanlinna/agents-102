@@ -212,26 +212,23 @@ Classroom (cohort + trainer) is the primary delivery mode. Self-study is bonus /
 
 1. **Trainer projects the recap site.** No slides — the curriculum site IS the slide. Modules, exercises, lectures, prompts, all rendered as the student will later see them in their own browser. Prompt-block chrome (header chip + Copy button) is part of the projected surface; legibility at projection distance is a design constraint, not a polish step.
 2. **Every exercise is follow-along by default.** Trainer demos slowly on the projected screen — types or pastes the prompt, sends, narrates as the response streams. The room copy-pastes the same prompt into their own laptop session concurrently and watches their own agent execute. Per `check_pedagogy.md` #24, the time budget is the slower of the two paces (usually the trainer's), not their sum.
-3. **Frequent designed conversation pauses.** Every exercise is broken by short stop-and-talk beats so stragglers catch up and the room digests what they just saw. Conversation pauses are a structural feature of the exercise, not improvisation between phases — author them in. A 25-minute exercise without a single designed pause is a draft, not a finished exercise.
+
+**The body teaches the work; the trainer manages the room.** Curriculum body does NOT author conversations or trainer cues. Rule lives in `check_pedagogy.md` rule 27 (and `check_student_facing.md` rule 26 hard-grep enforces the phrase list).
 
 **What trainers actually do (and don't):**
 
 - **Trainer's screen is shared most of the session.** Whatever is on the trainer's screen is visible to the room. There is no private trainer-only pane during delivery. Anything the trainer needs to read in private has to happen before screen-share starts, or live on a separate physical surface (printed sheet, phone, second device) — never in a window the trainer would have to toggle.
-- **Trainers do NOT read maintainer blocks during the session.** Cognitive load of running the room + projecting + operating their own Claude Code is already maxed; there is no spare attention to context-switch to a maintainer-only document mid-flow. Pretending maintainer blocks are runtime scripts is a design mistake. Two consequences:
-  - **Run-time cues live in student-visible prose.** A pause beat written as *"Take 90 seconds and compare what your session printed with the person next to you"* reads as instruction to the room AND as cue to the trainer — the same sentence does both jobs. This is the only run-time surface that doesn't require a context switch.
-  - **Pre-rehearsal trainer material is its own artifact.** Failure modes, why each phase teaches what it teaches, what to listen for in the room, when to compress vs. linger — these belong in a per-module trainer guide read once before delivery, not in a maintainer block pretending to be a script. Maintainer blocks stay narrow: source citations, eval logs, design history, customisation notes. (Format of the per-module trainer guide is TBD; the principle is "read in prep, not during.")
+- **Trainers do NOT read maintainer blocks during the session.** Cognitive load of running the room + projecting + operating their own Claude Code is already maxed; there is no spare attention to context-switch to a maintainer-only document mid-flow. Pretending maintainer blocks are runtime scripts is a design mistake. **Pre-rehearsal trainer material is its own artifact.** Failure modes, why each phase teaches what it teaches, what to listen for in the room, when to compress vs. linger — these belong in a per-module trainer guide read once before delivery, not in a maintainer block pretending to be a script. Maintainer blocks stay narrow: source citations, eval logs, design history, customisation notes. (Format of the per-module trainer guide is TBD; the principle is "read in prep, not during.")
 
 **What this means for authors:**
 
-- **No megaprompts in classroom-target exercises.** A 30-line prompt the trainer types live is dead air for the room. Split into smaller prompts at natural pause points; if the prompt genuinely needs to be long, the trainer pastes it from the recap site (Copy button) and uses the wait for one of the designed conversation pauses.
-- **Phase boundaries should land at conversation-pause beats.** Not "here's a transition sentence to Phase 2" but "here's where the trainer asks the room what they noticed and then everyone moves on together."
-- **Long agent waits (multi-minute send-offs, multi-file audits) are the natural pause anchors.** While the agent runs, the trainer talks. Design those waits in deliberately rather than apologising for them.
-- **Trainer-only material lives in maintainer blocks** below `<!-- maintainer -->`. Per-phase: what to demo, what to skip, where the room usually gets stuck, what conversation prompt fills a 90-second agent wait. The block is a script, not a footnote — write it that way.
+- **No megaprompts in classroom-target exercises.** A 30-line prompt the trainer types live is dead air for the room. Split into smaller prompts at natural pause points; if the prompt genuinely needs to be long, the trainer pastes it from the recap site (Copy button) and uses the wait their way.
+- **Long agent waits (multi-minute send-offs, multi-file audits) are the natural pause anchors.** While the agent runs, the trainer talks. Design those waits in deliberately rather than apologising for them — but no authored text cue around them.
+- **Trainer-only material lives in maintainer blocks** below `<!-- maintainer -->`. Per-phase: what to demo, what to skip, where the room usually gets stuck. The block is design context, not a runtime script.
 
 **What this DOESN'T mean:**
 
-- Self-study isn't second-class — it just inherits the same structure with the host-skill (Teacher Claude / Agentic Nerd, per `check_pedagogy.md` #25) playing the trainer's role. Designing for classroom-first usually produces self-study material that works without modification.
-- Conversation pauses aren't "stop and reflect on your feelings" beats. They're "the room compares notes on what their session just produced" beats — concrete, exercise-anchored, short.
+- Self-study isn't second-class — it just inherits the same structure. The engaged student paces themselves; the host-skill (Teacher Claude / Agentic Nerd, per `check_pedagogy.md` #25) is available for clarifying the work, not for substituting cohort dynamics. Designing for classroom-first usually produces self-study material that works without modification.
 
 ## Content Boundaries
 

@@ -58,7 +58,7 @@ Look back over the session: when did ungroundedness matter, which claim-shapes n
 
 Then update `./CLAUDE.md` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that tell future sessions when and how to run groundedness checks: what kinds of output need checking, which evidence surface to use, when to run `judges/groundedness-judge.md`, and when to say "not enough evidence" instead of smoothing over the gap. Integrate the rules into the right section if one exists; otherwise create a short section named "Groundedness checks". Touch ONLY that section; preserve every other section verbatim. Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.
 
-When you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Then tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly.
+When you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Then tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly. Then name the two patterns this prompt enforced: one about which boundary you were allowed to touch, one about checking what landed after you wrote it.
 ```
 
 
@@ -141,7 +141,8 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Read Et
 
 **DEFERRED** (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability. Four-spawn shape is confirmed in production via Module 3's parallel retrievers; Module 5's pipeline + scorer-stability check needs a real benchmark run on real briefing input.
 
-**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
+**Quality:** draft 2026-05-02 (pattern-label promoted from body prose into prompt close as forcing function; story re-fire pending)
+- draft 2026-05-02 (Debrief prompt close extended: prompt now requires Claude to name the two patterns it enforced (one about which boundary to touch, one about checking what landed). Promotes the take-home transfer abstraction from body prose into prompt mechanics so speed-runners cannot miss it. Body callout retained for engaged readers. Source: /eval-fire story 2026-05-02 (forcing function in prompts not body, pedagogy rule 16); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-05-02 (Debrief prompt hardened: preserve-boundary on Groundedness checks section, verify-at-artifact read-back, least-confident-shape exclusion ask. Body callout names the two patterns: name the boundary, then check the work — distinct angle from M3's harsh-audit framing. Source: /eval-fire behavior 2026-05-02 convergent risks (self-report-inflation high, file-preservation-gap med, self-audit-charity med, preamble-before-action med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
 - compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)

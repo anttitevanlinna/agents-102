@@ -39,7 +39,7 @@ The retrievers go live, connectors and the open web. The synthesizer is the one 
 2. **Session 4, synthesizer.** Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into `memory/`.
 3. **All four running.** Switch between sessions. Watch files appear in `sources/` and `memory/` sharpen at the same time.
 
-In Session 1:
+In Session 1, tell this session to act as your wiki retriever and stream findings into `sources/wiki-retrieval.md`.
 
 **Prompt** *(Claude Code)*
 
@@ -60,7 +60,7 @@ Sources first. Every finding cites the specific page title and URL you actually 
 ```
 
 
-In Session 2:
+In Session 2, tell this session to act as your docs retriever and stream findings into `sources/docs-retrieval.md`.
 
 **Prompt** *(Claude Code)*
 
@@ -81,7 +81,7 @@ Sources first. Every finding cites the specific document name (and path or URL) 
 ```
 
 
-In Session 3:
+In Session 3, tell this session to act as your internet retriever and stream practitioner findings into `sources/internet-retrieval.md`.
 
 **Prompt** *(Claude Code)*
 
@@ -113,7 +113,7 @@ Push another round. What did the first pass miss? Different angles, related sour
 ```
 
 
-In Session 4:
+In Session 4, tell this session to act as the synthesizer and integrate the streaming retrievals into `memory/`.
 
 **Prompt** *(Claude Code)*
 

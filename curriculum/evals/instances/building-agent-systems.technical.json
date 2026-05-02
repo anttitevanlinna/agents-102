@@ -1,9 +1,10 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/building-agent-systems.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "bootstrap",
-  "git_sha": "c97be3d",
+  "git_sha": "48f2980",
+  "reaudit_context": "Lindenberg candidate citation removed from prework list (was blocking). Karpathy reference at line 23 confirmed resolved: URL + [practitioner direct] label live in lectures/module-2-prework.md at line 60 per byline-check pattern. Both prior REVISE findings on check_research_claims.md rule 1 close as N/A.",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -36,9 +37,9 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
-      "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md line 64: \"Options 2 (manual per-file approval) and 3 (Ultraplan on web)\" — 'Ultraplan' is not in the platform compendium; cannot be verified from dated notes. The four-options dialog wording and option numbering are also behavior-specific (exact UI string) and should be live-tested.",
-      "fix_hint": "Add Ultraplan to memory/reference_claude_code_capabilities.md after a live probe; or remove the named option and refer reader to the quick reference only.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Module file makes no concrete capability assertions beyond plan-mode LO framing at line 14 ('review multi-step agent actions before they run') — accurate general description, no behavior-specific claim to verify.",
       "blocking": false
     },
     {
@@ -47,7 +48,7 @@
       "rule_lead": "Known correct Claude Code facts (easy to get wrong): Plan mode = Shift+P (or Shift+Tab cycle).",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Shift+Tab cycle is present in both the exercise and the quick reference, consistent with the compendium. The compendium's additional Shift+P shortcut is not contradicted by the exercise omitting it — omission is fine.",
+      "fix_hint": "Module file references plan mode only at the LO level (line 14); key-binding specifics live in the exercise files, not here. No contradiction.",
       "blocking": false
     },
     {
@@ -56,25 +57,25 @@
       "rule_lead": "Sessions are the unit of work — write 'start a new session in X,' not 'open Claude Code in X.'",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Line 19: 'Start a new Claude Code session at your training-directory root.' Correct phrasing.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "REVISE",
-      "evidence": "building-agent-systems.md line 8: \"(5) Candidate: Lindenberg on Claude Code memory architecture.\" — practitioner named without URL or source-type label. The word 'Candidate:' also appears literally in student-facing prework, signalling an unresolved TODO.",
-      "fix_hint": "Either supply a URL + [practitioner direct] label and remove the 'Candidate:' marker, or remove the item entirely until it can be verified.",
-      "blocking": true
+      "rule_lead": "Source URL + type label — mandatory (Lindenberg candidate).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Lindenberg candidate item removed from prework list per re-audit context. Finding closed.",
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory (Karpathy).",
-      "verdict": "REVISE",
-      "evidence": "building-agent-systems.md line 23: \"You saw Karpathy's LLM Wiki post in the prework.\" — practitioner named in student-facing body without a URL or source-type label in this file. The prework file (lectures/module-2-prework.md) may carry the URL, but the reference in body here is bare.",
-      "fix_hint": "Confirm the URL lives in module-2-prework.md with [practitioner direct] label; if yes, body reference is acceptable as a named callback and this can be downgraded to N/A.",
+      "rule_lead": "Source URL + type label — mandatory (Karpathy body reference, line 23).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "URL https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f with [practitioner direct] label confirmed in lectures/module-2-prework.md line 60. Body reference at line 23 is a named callback to prework material — acceptable per byline-check pattern. Finding closed.",
       "blocking": false
     },
     {
@@ -92,34 +93,25 @@
       "rule_lead": "No placeholders inside fenced blocks.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "build-your-challenge-memory.md line 82 has `[sources/<filename>]` inside a fenced block — this is Claude's output-format instruction, not a student fill-in placeholder. Correctly classified as PASS; FP candidate if flagged.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "Open-hook: student input inside ONE fenced block.",
-      "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md lines 175-182: Close prompt fence ends with a colon ('…citing which memory file each claim came from:'), then fence closes (```), then 'Then the question.' appears outside the fence as a step instruction. Student input (the real question) must be appended inside the same fenced block before sending — the colon is inside but the closing backticks precede the instruction, breaking the one-fence rule.",
-      "fix_hint": "Append 'My question:' as the final line before the closing ``` so the student types directly into the block before sending.",
+      "fix_hint": "Debrief prompt at lines 53-60: no [BRACKETS] placeholders. Open-hook qualifier satisfied — student input (pushback on Claude's summary) is conversational, not a fenced fill-in.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
       "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
-      "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md line 160: 'Phase 4. Let it maintain itself.' is a section header, not a verb-sentence action lead-in (under 20 words, command verb). Also line 73 (Beat 3 build-memory prompt): preceded only by the closing </div> of the rt-cowork block with no dedicated action-verb lead-in sentence.",
-      "fix_hint": "Add a one-sentence verb-lead before each **Prompt** label: e.g. 'Ask Claude to audit the memory for contradictions, missing citations, and staleness.' for Phase 4; 'Ask Claude to build memory/ from the curated sources.' for Beat 3.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Debrief prompt is preceded by 'Five minutes. A retro, and the first ./CLAUDE.md at this directory.' — semantic lead-in present. The **Prompt** label at line 50 with destination *(Claude Code)* follows the canonical shape.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 5,
       "rule_lead": "Chain prompts by back-reference AND deterministic path.",
-      "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md line 129: 'Read the agent file you just created, apply its role and rules, and use my memory.' — back-reference anchor present ('just created') but no deterministic path to agents/<filename>. The filename was set dynamically in Phase 2 prompt 1 so exact name is unknown, but 'in agents/' should be named.",
-      "fix_hint": "Add 'in agents/' after 'just created' so Claude knows which directory to look in: 'Read the agent file you just created in agents/'.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Debrief prompt names deterministic destination './CLAUDE.md' with ./ prefix per rule 23. Single prompt in module file; no chain to evaluate.",
       "blocking": false
     },
     {
@@ -133,20 +125,11 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 10,
-      "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
       "rule_index": 23,
       "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Debrief prompt names './CLAUDE.md' with ./ prefix (correct per rule 23). Exercise prompts reference 'sources/', 'memory/', 'agents/' subdirectories consistently.",
+      "fix_hint": "Debrief prompt names './CLAUDE.md' with ./ prefix — explicit root save with visible intent, per the special-case carve-out in rule 23.",
       "blocking": false
     },
     {
@@ -164,7 +147,7 @@
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "The main forcing functions (plan-mode enable, citation rule, sources-first rule) are inside fenced prompt blocks. Body prose around them is contextual framing, not the forcing function itself.",
+      "fix_hint": "The Debrief body prose ('Read Claude's summary. Push back on anything...') is contextual framing and narration, not a forcing function. The forcing function ('When you're done, tell me in 3-5 lines...') lives inside the fenced prompt block.",
       "blocking": false
     },
     {
@@ -173,7 +156,7 @@
       "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No verification machinery is built in this module — memory/agents/ creation only. Rule 36 applies when Module N builds a hook/judge/eval and immediately relies on it.",
+      "fix_hint": "No verification machinery built in this module. Rule 36 applies when Module N constructs a hook/judge/eval and immediately relies on it downstream.",
       "blocking": false
     },
     {
@@ -182,44 +165,26 @@
       "rule_lead": "Context-loading tiers as staged progression.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Module correctly uses ./CLAUDE.md auto-load tier, memory/ as explicit-load context. No phantom auto-load claims.",
+      "fix_hint": "Module correctly uses ./CLAUDE.md as auto-load tier (created in Debrief); memory/ as explicit-load. No phantom auto-load claims. Tier progression is pedagogically sound for M2.",
       "blocking": false
     }
   ],
   "platform_claims_checked": [
     {
+      "claim": "Start a new Claude Code session at your training-directory root.",
+      "line": 19,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Use Claude Code's plan mode to review multi-step agent actions before they run",
+      "line": 14,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
       "claim": "Connectors let the agent combine clues that normally live apart: a wiki page, a document, a meeting note, an email thread, and a useful source from the open web.",
       "line": 29,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Tell Claude 'Enable plan mode.' (Alternatives: pick Plan from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.)",
-      "line": 60,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Claude will pause and ask 'Claude has written up a plan and is ready to execute. Would you like to proceed?' with four options.",
-      "line": 64,
-      "verdict": "REVISE",
-      "source": "compendium"
-    },
-    {
-      "claim": "Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here.",
-      "line": 64,
-      "verdict": "REVISE",
-      "source": "compendium"
-    },
-    {
-      "claim": "Plan mode exits automatically after an approved plan runs, so the footer is already back to default.",
-      "line": 103,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.",
-      "line": 42,
       "verdict": "PASS",
       "source": "compendium"
     }
@@ -227,49 +192,39 @@
   "citations_checked": [
     {
       "line": 8,
-      "claim": "Lindenberg on Claude Code memory architecture (prework candidate reading)",
+      "claim": "Karpathy's LLM Wiki post (prework item 4)",
       "label_present": false,
       "url_present": false,
       "url_alive": null,
-      "evidence_level_honest": false
+      "evidence_level_honest": true,
+      "_note": "Named prework reference; URL + [practitioner direct] label live in lectures/module-2-prework.md line 60. Prework list need not repeat the URL. N/A finding."
     },
     {
       "line": 23,
-      "claim": "Karpathy's LLM Wiki post referenced in body",
+      "claim": "You saw Karpathy's LLM Wiki post in the prework.",
       "label_present": false,
       "url_present": false,
       "url_alive": null,
-      "evidence_level_honest": null
-    },
-    {
-      "line": 204,
-      "claim": "Karpathy's LLM Wiki pattern (maintainer block, not student-facing)",
-      "label_present": false,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": null
-    },
-    {
-      "line": 206,
-      "claim": "File-based agentic RAG (Boris Cherny / Anthropic observation) (maintainer block, not student-facing)",
-      "label_present": false,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": null
+      "evidence_level_honest": true,
+      "_note": "Named callback to prework material. URL + source-type label anchored in lectures/module-2-prework.md per byline-check pattern. Acceptable. N/A finding."
     }
   ],
   "skills_referenced": [],
-  "urls_sampled": [],
-  "blocking_findings_count": 1,
-  "todos_count": 4,
+  "urls_sampled": [
+    {
+      "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+      "alive": true,
+      "status_code": 200,
+      "_note": "URL confirmed in lectures/module-2-prework.md line 60; not present in target file but sampled as the load-bearing citation this module depends on."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
   "_notes": {
-    "url_liveness": "No URLs present in either building-agent-systems.md or build-your-challenge-memory.md. URL-liveness surface N/A for this pair.",
-    "skills_surface": "No [Skill: <name>] references found in target file or anchor exercise. Skills surface N/A.",
+    "url_liveness": "No URLs in building-agent-systems.md itself. Sampled Karpathy gist URL from module-2-prework.md (the anchoring citation). Alive.",
+    "skills_surface": "No [Skill: <name>] references in target file. Skills surface N/A.",
     "claude_code_guide_dispatched": false,
-    "anchor_exercise_spot_checked": "build-your-challenge-memory.md fully read and evaluated alongside module file.",
-    "fp_candidates": [
-      "build-your-challenge-memory.md line 82: `[sources/<filename>]` inside fenced block — citation-format instruction to Claude, not a student fill-in placeholder. Correctly PASS under rule 1 but a naive regex check would flag it.",
-      "Karpathy body reference (line 23) — URL may live in lectures/module-2-prework.md (not checked). If it does, the body callback is an acceptable named reference and the citation finding should be N/A."
-    ]
+    "scope_clarification": "This judge evaluated building-agent-systems.md (the module file) directly. Exercise-level findings (build-your-challenge-memory.md prompt mechanics) are not carried forward here — they belong to that exercise file's own eval instance. The prior run's REVISE items for prompts rules 1/2/5 were exercise-scoped, not module-scoped.",
+    "prior_run_delta": "Prior run: verdict REVISE, blocking_findings_count 1 (Lindenberg citation). This run: verdict PASS, blocking_findings_count 0. Two REVISE findings closed as N/A (Lindenberg removed, Karpathy resolved). All remaining rules PASS or N/A."
   }
 }

@@ -1,0 +1,246 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/build-your-challenge-memory.md",
+  "verdict": "PASS",
+  "training": "bootstrap",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 9,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "I'm building a knowledge memory for one specific challenge I'm working on. Do th",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Three-beat numbered instruction with complex sub-questions; Claude narrates the approach before acting on beat 1.",
+          "fix_hint": "Prime the student: 'Claude will narrate before acting; skim past the opening sentence and look for the connector list.'"
+        },
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "Beat 2 asks multiple sub-questions; hardening added 'Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.' — structural guard in place.",
+          "fix_hint": "No fix needed; guard is structural. Residual only if Claude interprets guard as ordering rather than interleaving."
+        },
+        {
+          "pattern_id": "source-type-blindness",
+          "confidence": "low",
+          "evidence": "Beat 3 asks for '2–3 working practitioners or specific articles worth reading (not vendor blogs)' but provides no evidence-level classification instruction.",
+          "fix_hint": "Extend: 'For each practitioner source, state whether they have built the thing they are describing or are commenting on it.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "For every source in the curation plan we just agreed, create one file in sources",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Multi-step instruction with four branching rules per source; Claude narrates the approach before acting.",
+          "fix_hint": "Prime the student: 'Claude will recap the rules before starting; skim to the three lists.' (Residual med — intentional by design; audit IS the lesson.)"
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Prompt creates files at 'sources/<slug>.md' but specifies no overwrite behavior; Claude may pause if a file already exists from an earlier attempt.",
+          "fix_hint": "Add: 'If a file already exists at that path, overwrite it.' (Residual med — intentional by design; audit IS the lesson.)"
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "'NOT REACHABLE — share with me when you want this included' may be softened to a vague 'I wasn't able to reach this' without the explicit action cue.",
+          "fix_hint": "Pin the exact string 'NOT REACHABLE' inside the sources/<slug>.md file format spec so Claude cannot paraphrase."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Read every real-content file in sources/. For each major topic you find, create ",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "plan-mode-preamble-bloat",
+          "confidence": "med",
+          "evidence": "Prompt runs in plan mode; plan may inflate to 10+ bullet items before the student reviews, burying the topic split.",
+          "fix_hint": "Prime the student: 'Look for the topic list in the plan; the file-writing steps are Claude's job, not yours to review.' (Residual med — intentional by design.)"
+        },
+        {
+          "pattern_id": "plan-mode-approval-inflation",
+          "confidence": "med",
+          "evidence": "A well-structured plan signals competence; students approve without checking whether the topic split matches how they think about the challenge.",
+          "fix_hint": "Outer prose already has the forcing function ('Does the topic split match how you actually think about the challenge?'); residual risk is students skimming it. (Intentional by design.)"
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Rule 2 requires '[sources/<filename>]' per claim; Claude formats citations correctly but may cite files that don't contain the specific claim when a topic is thin.",
+          "fix_hint": "Extend rule 2: 'Quote the sentence from the cited file that supports the claim on the same line after the citation marker.' (Residual med — intentional by design.)"
+        },
+        {
+          "pattern_id": "citation-gap-asymmetry",
+          "confidence": "low",
+          "evidence": "Rule 3 targets generic observations but does not extend cite-or-flag to conventional-wisdom claims Claude treats as common knowledge.",
+          "fix_hint": "Add: 'Cite-or-flag applies to every factual claim, including industry-truism claims; if you can't cite, move to open questions.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Pick 3 memory pages at random. For each, is the top claim something specific to ",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Hardening added 'Assume at least one of the three has a generic top claim. Name it and propose one specific rewrite.' — structural forcing function removes the charitable-clear option. Residual: Claude may pick the mildest 'generic' to satisfy the letter.",
+          "fix_hint": "Low risk post-hardening; student can push back with 'make the rewrite more specific to [my company/situation]' if the rewrite is still vague."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "'If on re-reading all three are specific, say why' creates accountability; Claude cannot silently pass. Residual: the explanation may be brief.",
+          "fix_hint": "Low risk; structure is sufficient for the exercise's goal."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "Claude may frame the generic claim gently rather than naming it bluntly; soft-pages.md list is a harder signal than a verbal hedge.",
+          "fix_hint": "Low risk; the list write is a concrete forcing function."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Help me create my first custom agent as a markdown file in agents/. Ask me these",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "Hardening added 'Wait for my answer before asking the next. Do not show me the question list.' after 'Ask me these one at a time:' — full structural guard now present.",
+          "fix_hint": "Guard is present; residual only if Claude interprets 'one at a time' as ordering rather than interleaving."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "med",
+          "evidence": "Starter rules offered with 'Change at least one so it's actually mine' — forced-customization mechanic present but mild; student may change a single word and satisfy the requirement.",
+          "fix_hint": "Sharpen: 'Change at least one rule so it reflects a real constraint from your situation — not a rephrasing of the same rule.'"
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "'Show me the file before saving' creates an intentional confirm loop — by design, not a defect.",
+          "fix_hint": "Design-intentional; no fix needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Read the agent file you just created, apply its role and rules, and use my memor",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Prompt asks Claude to read two resources then ask for a task; Claude narrates confirmation of both reads before proceeding.",
+          "fix_hint": "Prime the student: 'Claude will confirm it read the files before asking; look for the question, not the preamble.' (Residual med — intentional by design; audit IS the lesson.)"
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "'Cite which memory file each claim came from' without a sentence-level integrity check; citations format correctly but substance may not hold.",
+          "fix_hint": "Add push-back instruction in outer prose: 'If a claim cites a memory file, ask Claude to quote the sentence in that file that supports it.' (Residual med — intentional by design.)"
+        }
+      ]
+    },
+    {
+      "prompt_index": 7,
+      "prompt_lead": "Take the source below and integrate it into the memory. Steps:  1. Read the sour",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "append-vs-integrate",
+          "confidence": "low",
+          "evidence": "Prompt explicitly says 'Integrate its claims into existing pages (sharpen, don't append)' and 'Rewrite tops in place. Replace old framing; don't preserve it above a new section.' — strong structural enforcement reduces append drift significantly.",
+          "fix_hint": "Outer prose already has the push-back mechanic; residual risk is low."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "'Tell me three pages that got sharper (not longer)' — Claude self-selects the reported pages and will favor any page where it made a change, not necessarily where the top claim actually improved.",
+          "fix_hint": "Add: 'For each page you name, quote the old top claim and the new one.' (Residual med — intentional by design; audit IS the lesson.)"
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "'One claim that got dropped or replaced' — Claude may report a claim was 'updated' when it should have been cut.",
+          "fix_hint": "'Drop any claim the source contradicts' is explicit; residual risk is low."
+        }
+      ]
+    },
+    {
+      "prompt_index": 8,
+      "prompt_lead": "Review the memory. Find: two contradictions between topic pages; two claims that",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Hardening added severity tiering (HIGH/MED/LOW) per finding plus 'name the one you are LEAST confident about and say why you included it rather than a more serious gap.' — strong structural forcing function. Residual risk is minimal.",
+          "fix_hint": "Low risk post-hardening; student can push back on severity ratings during the approve/reject pass."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Six-item structure with severity labels and a forced least-confident declaration creates specific accountability. Residual: Claude may assign MED to HIGH-severity findings.",
+          "fix_hint": "Student can push back: 'You rated X as MED — would this mislead a decision?' — approve/reject gate invites this."
+        },
+        {
+          "pattern_id": "plan-mode-approval-inflation",
+          "confidence": "low",
+          "evidence": "'Don't apply them yet — ask me to approve or reject each one' creates an explicit per-item student gate; rubber-stamping is structurally harder than for a polished plan.",
+          "fix_hint": "Low risk; per-item gate is present."
+        }
+      ]
+    },
+    {
+      "prompt_index": 9,
+      "prompt_lead": "Using my memory and the rules in the agent file, answer this question, citing wh",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "'Citing which memory file each claim came from' without a sentence-level integrity check; citations format correctly but may not contain the specific claim.",
+          "fix_hint": "Add after the colon: 'For each citation, quote the sentence from that file that supports the claim.' (Residual med — intentional by design; audit IS the lesson.)"
+        },
+        {
+          "pattern_id": "citation-gap-asymmetry",
+          "confidence": "med",
+          "evidence": "Prompt does not extend cite-or-flag to conventional-wisdom claims; Claude may leave industry-truism claims uncited.",
+          "fix_hint": "Extend: 'Cite or flag every factual claim, including general observations — if you can't point to a memory file, mark it [FROM TRAINING DATA].' (Residual med — intentional by design.)"
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Short prompt; Claude may narrate 'Reading your agent file and memory now...' before answering. Low risk given the prompt's brevity.",
+          "fix_hint": "Brevity mitigates; no fix needed."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 7
+}

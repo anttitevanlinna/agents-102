@@ -28,6 +28,7 @@ I'm building a knowledge memory for one specific challenge I'm working on. Do th
 1. Check what connectors are enabled right now. Name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
 
 2. Then ask me where my work material actually lives. Don't assume Confluence or OneDrive — ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.
+   Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 3. Then propose a curation plan covering three kinds of material: (a) internal knowledge — which searches in which tools, (b) recent work — which threads, folders, decks, (c) outside-in — 2–3 working practitioners or specific articles worth reading (not vendor blogs).
 
@@ -94,7 +95,7 @@ Now ask Claude to audit itself:
 **Prompt** *(Claude Code)*
 
 ```
-Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? List the generic ones in memory/soft-pages.md.
+Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? Assume at least one of the three has a generic top claim. Name it and propose one specific rewrite. If on re-reading all three are specific, say why, and name the sentence most at risk of slipping generic. List the generic ones in memory/soft-pages.md.
 ```
 
 
@@ -111,7 +112,7 @@ An agent, at its simplest, is a markdown file: instructions the model reads at t
 **Prompt** *(Claude Code)*
 
 ```
-Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time:
+Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 
 1. What recurring job should this agent do for my challenge? One sentence — e.g., "draft a next-step memo for my CEO," "surface three risks for next week's stakeholder meeting," "synthesize three talking points on progress so far."
 2. What rules matter? Starter rules: cite the memory file for every claim, never invent, ask when a source is thin, keep my voice. Change at least one so it's actually mine. Include any hard lines — things the agent must not do even if asked.
@@ -137,7 +138,7 @@ Answer with a real task from your challenge. Claude reads the agent file, reads 
 
 A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.
 
-Pick a source that fills a gap: a practitioner article you've been meaning to read, a doc you skipped in Beat 2, an email thread, a local file you can share with Claude. Drop the link, path, or attachment after the colon at the end of the prompt.
+Pick one source that fills a gap (a practitioner article, a skipped doc, an email thread, a local file you can share). Tell Claude to integrate it into the memory, then paste the link or path after the `New source:` line in the prompt.
 
 **Prompt** *(Claude Code)*
 
@@ -160,11 +161,11 @@ Read Claude's report. Push back if a claim "got sharper" but the top didn't actu
 **Prompt** *(Claude Code)*
 
 ```
-Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don't have one; two places where older pages likely went stale given what's in the newer sources. For each, propose a specific fix. Don't apply them yet — ask me to approve or reject each one.
+Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don't have one; two places where older pages likely went stale given what's in the newer sources. For each, propose a specific fix and rate severity: HIGH (would mislead a decision), MED (missing signal), LOW (cosmetic). After listing your six proposals, name the one you are LEAST confident about and say why you included it rather than a more serious gap. Don't apply them yet — ask me to approve or reject each one.
 ```
 
 
-Go through Claude's six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory you're leaving with is one you trusted enough to sign off on line by line.
+Go through Claude's six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory's now the version you steered, not the version Claude landed alone.
 
 **Close. Put it to work.**
 

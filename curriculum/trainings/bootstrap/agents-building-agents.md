@@ -35,10 +35,10 @@ The three thinking-disciplines you applied in Module 7 on your own sharing probl
 
 - **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
 - **Org capability**: twenty people just produced a strategy kernel, agent set, and plan no consultant could deliver, because it's grounded in your company's own files and the room's live proposal market.
-- **The three predictable walls after Bootstrap**: data access, runtime platform, discoverability. The plan you just wrote names which wall bites first.
+- **The three predictable walls after Bootstrap**: data access, runtime platform, discoverability. The plan you produced already names which wall bites first for your company. That you can see them is the sign the kernel works.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
 - **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed skills. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the Module 2 Debrief move.
-- **Grounding when agents read agents.** Every agent publishes what it has and what it doesn't: a context manifest. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
+- **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, twenty agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
 
 ## Debrief
 
@@ -57,7 +57,7 @@ When you're done, tell me in 3-5 lines: which file you rewrote, what you added, 
 ```
 
 
-Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel keeps compounding only if the rewrite is specific enough that next round can build on it. Vague summaries are how next round inherits this round's blur.
+Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur.
 
 Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Bootstrap, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
 
@@ -71,7 +71,8 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
+**Quality:** draft 2026-05-02 (Key Concepts cluster reframed to awe register; jargon-before-earned removed; story re-fire pending)
+- draft 2026-05-02 (Three story-class fixes at the awe close: (1) "three predictable walls" bullet shifted from pragmatic-planning to capability-emphasis ("that you can see them is the sign the kernel works"); (2) "context manifest" jargon-before-earned replaced with behavioral description ("what it read, what it couldn't find, and what it inferred without a source"); (3) Debrief callout reframed from hygiene register to compounding register ("the flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur."). Source: /eval-fire story 2026-05-02 (Phase 4 mood dip to 7 from cluster of three; awe close needs forward hunger, not vigilance); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-05-02 (Debrief prompt hardened: path-confirm-before-rewriting, overwrite-in-place, two-stalls minimum + one underspecified-role + one converged-too-fast proposal with the agent that could have pushed back, before-and-after quote requirement, preserve-other-rules. Body callout: vague summaries are how next round inherits this round's blur. Source: /eval-fire behavior 2026-05-02 round 2 (overwrite-anxiety high, self-report-inflation high, self-audit-charity med, niceness-tax med, preamble med, file-preservation-gap med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
 

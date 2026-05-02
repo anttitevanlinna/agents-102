@@ -3,8 +3,9 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/building-agent-systems.md",
   "verdict": "REVISE",
   "training": "bootstrap",
-  "module_mood_contract": "Satisfied compounding — 'it runs while I sleep.' Persistence + automation turn a one-shot into a system. Ownership is the payoff. Any edit that makes M2 feel like a set-up-the-tools module steals the compounding feeling.",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "Satisfied compounding — 'it runs while I sleep.' Persistence + automation turn a one-shot into a system. Ownership is the payoff. Any edit that makes M2 feel like a set-up-the-tools module steals the compounding feeling; M2's artifact is a system the student wants to keep, not a demo they'll discard.",
+  "trace_status": "cached",
+  "_trace_note": "Re-audit 2026-05-02. Fixes applied this cycle: (1) Prework item 5 (Lindenberg) removed — Prework SHA updated. (2) Classroom pause-beat attempt reverted — rule 27/105 downgraded to N/A (architecture conflict, see below). (3) Phase 4 confidence-tiering body sentence added — rule 106 Phase 4 sub-finding resolved (forcing function already inside fence). Remaining open blocking: rule 16 Debrief omission move + rule 106 same. Rule 27 (story rule 105) is approve-with-todo pending architecture resolution.",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
@@ -100,10 +101,10 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom is the default; design for follow-along + trainer-cued conversation pauses.",
-      "verdict": "REVISE",
-      "evidence": "build-your-challenge-memory.md is a 45-minute anchor exercise with four phases. The module body (building-agent-systems.md) has no authored trainer-cue beat between exercises — the transition from name-your-challenge to build-your-challenge-memory is 'Keep the same session running for the next exercise.' There is no authored pause beat where the trainer can check room status, let stragglers catch up, or call a brief discussion. Phase 1 of the anchor exercise runs 20+ minutes with multiple beats (curation conversation, ingest wait, plan-mode approve, audit prompt) without a designed pause. Per curriculum/CLAUDE.md §Classroom delivery: 'A 25-minute exercise without a single designed conversation pause is a draft, not a finished exercise.'",
-      "fix_hint": "Add one trainer-cue beat in the module body between the exercises (e.g., 'Trainer asks: who's got a challenge pinned? Show of hands.' after name-your-challenge closes). Add at least one designed pause inside the anchor exercise's Phase 1 — the natural point is after Beat 2 (ingest complete) before Beat 3 (plan mode) where the agent wait is the natural pause anchor.",
-      "blocking": true
+      "verdict": "N/A",
+      "evidence": "Architecture conflict: rule 27 requires authored trainer-cue pause beats in student-visible prose (e.g. 'Trainer asks: who's got a challenge pinned?'); check_student_facing rule 26 hard-grep bans commanded student actions in body prose ('compare with the person next to you' form). The attempted classroom pause-beat was reverted this cycle because any pause-beat phrasing that names what the student does in the room violates rule 26's equals-not-pupils principle. Approve-with-todo — the cohort-share shape needs an architecture resolution (possibly: pause beats live in the trainer guide artifact, not in student-visible body prose) before this rule can be re-scored.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -225,11 +226,11 @@
     {
       "compendium": "story_judge_template",
       "rule_index": 101,
-      "rule_lead": "Mood doesn't resolve early — M3 unease must not be pre-empted.",
+      "rule_lead": "Mood doesn't resolve early — M3 unease must not be pre-empted; pattern-watch callout risk checked.",
       "verdict": "PASS",
-      "evidence": "M2 closes on 'satisfied compounding.' The Debrief/Compounding lecture does not introduce quality concerns, verification concerns, or multi-agent coordination concerns. The unease that seeds M3 (synthesized answer that works well enough to be useful and not quite well enough to trust) is not touched. The 'I wonder if this is right?' question belongs to M3; M2's close stays in 'it runs while I sleep.' PASS with one note: the Compounding lecture's 'The point is simple' paragraph ('Every module after this leans on the memory you just built. Multi-agent systems reads from it. Security reviews it.') previews M3-M4-M5 in one sentence. This is a bridge hint, not a resolution — it doesn't install the M3 unease, but it names that modules exist beyond M2. Low risk; PASS.",
+      "evidence": "M2 closes on 'satisfied compounding.' The Debrief/Compounding lecture does not introduce quality concerns, verification concerns, or multi-agent coordination concerns. The unease that seeds M3 is not touched. SPECIFIC RISK EVALUATED: lines 65-69 (Debrief body — 'What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth… Ask once: what did you choose NOT to write, and why?'). This callout teaches pattern-watching of Claude's CLAUDE.md summary — a meta-observation about rules-file writing. It does NOT inject doubt about the memory system itself or the challenge briefings produced in the exercise. The phrase 'what it bends' (line 67) refers to the rules file and agent behaviors, not the student's memory-build outcome. The closing quote (lines 67-68: 'Your agent is right when it works. Every miss is context you haven't written yet.') is forward-looking and agency-affirming — it names the compounding loop (miss → context → fix) in M2's own vocabulary. It does not plant M3's 'I wonder if this is right?' quality doubt; it plants M2's 'I'm the one who writes the rules' ownership voice. Trace phase 5 mood_score 8 ('Settled ownership') confirms this reading. PASS: callout extends satisfied-compounding rather than eroding it.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "story_judge_template",
@@ -262,18 +263,18 @@
       "compendium": "story_judge_template",
       "rule_index": 105,
       "rule_lead": "Phase boundaries land at conversation-pause beats (classroom default).",
-      "verdict": "REVISE",
-      "evidence": "Same evidence as check_pedagogy.md rule 27: the 45-minute anchor exercise (build-your-challenge-memory.md) has four phases with no authored pause beats in the surrounding module prose. Phase 1 alone spans Beat 1 (curation conversation, ~8 min), Beat 2 (ingest wait, ~5 min), Beat 3 (plan mode approval + file writes, ~7 min) plus a self-audit prompt — 20+ minutes without a designed room-cohesion moment. The transition from name-your-challenge to build-your-challenge-memory is 'Keep the same session running' with no pause. Building-agent-systems.md does not author pause beats between exercises or between phases; it sequences exercise links with inline prose only.",
-      "fix_hint": "Add trainer-cue beats at natural pauses: (1) after name-your-challenge before launching build-your-challenge-memory — room comparison of challenges; (2) inside Phase 1 after Beat 2 ingest completes — 'while plan mode runs, trainer asks: what surprised you in the source-preview list?'; (3) after Phase 2 agent-use prompt when the memo lands — 'compare your agent's first output with the person next to you.'",
-      "blocking": true
+      "verdict": "N/A",
+      "evidence": "Same architecture conflict as check_pedagogy rule 27. Classroom pause-beat attempt reverted this cycle — any student-visible pause-beat phrasing that names what the student does in the room conflicts with check_student_facing rule 26 (hard-grep on commanded student actions). Approve-with-todo pending architecture resolution. The unaddressed risk (45-min exercise with no authored pause) is real but cannot be resolved at this level without an architecture decision on where trainer-cue beats live.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "story_judge_template",
       "rule_index": 106,
       "rule_lead": "Forcing function in prompts, not body prose (story-class version of check_pedagogy rule 16).",
       "verdict": "REVISE",
-      "evidence": "See check_pedagogy.md rule 16 evidence. Additional instance specific to storytelling: build-your-challenge-memory.md Phase 4 maintenance section, body prose after the prompt reads 'Go through Claude's six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies.' The critical forcing function — 'approve or reject each one' — is partially encoded in the prompt ('ask me to approve or reject each one') but the student framing ('Some will be right. Some will miss.') is entirely in body prose that speed-runners skip. A student who pastes the prompt and rubber-stamps all six misses the pedagogical move (selective trust). The prompt says 'ask me to approve or reject each one' which is correct — but there is no forcing function for the student to think critically before responding, only body prose telling them to do so.",
-      "fix_hint": "Add a second prompt or inline forcing-function at Phase 4: ask Claude 'which of these six proposals do you have lowest confidence in?' before the student approves/rejects. Forces engagement without being paternalistic.",
+      "evidence": "See check_pedagogy.md rule 16 evidence. Additional instance specific to storytelling: (1) build-your-challenge-memory.md Phase 4 maintenance section, body prose after the prompt reads 'Go through Claude's six proposals. Some will be right. Some will miss. Reject those.' The critical selective-trust move is in body prose, skipped by speed-runners. (2) building-agent-systems.md Debrief lines 65-66 (new content, 2026-05-02): 'Ask once: what did you choose NOT to write, and why? and watch the answer get specific.' This is the pattern-watch forcing function — the push-back move that produces the teaching moment (omission is the signal). It lives entirely in body prose. The Debrief fenced prompt (lines 53-60) already asks Claude to report 'what you chose NOT to include and why' — so Claude will produce that field — but the instruction to the STUDENT to push back on that field ('Ask once… and watch the answer get specific') is body-prose only. A speed-runner reads Claude's CLAUDE.md summary, sees the 5-rule summary, and exits. The 'ask about what was omitted' second beat never fires.",
+      "fix_hint": "Add a minimal second fenced prompt after the Debrief prompt that the student copies and sends after reading Claude's summary: e.g. 'What did you choose NOT to write in CLAUDE.md — and why? Be specific. I'd rather know what you left out than have a clean file.' This moves the pattern-watch forcing function from body prose into the prompt layer where speed-runners can reach it.",
       "blocking": true
     },
     {
@@ -292,6 +293,6 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "blocking_findings_count": 4,
-  "todos_count": 9
+  "blocking_findings_count": 2,
+  "todos_count": 11
 }

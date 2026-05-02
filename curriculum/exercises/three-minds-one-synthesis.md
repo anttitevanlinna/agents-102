@@ -26,6 +26,8 @@ Three stances in parallel; the main session reads them, applies a framework, and
 
 <div class="rt-code">
 
+Ask Claude to spawn three subagents with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.
+
 **Prompt** *(Claude Code)*
 
 ```
@@ -44,6 +46,8 @@ Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really goi
 
 </div>
 <div class="rt-cowork">
+
+Ask Claude to spawn three agents with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.
 
 **Prompt** *(Claude Code)*
 

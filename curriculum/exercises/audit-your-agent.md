@@ -16,6 +16,8 @@ Cowork users should already have saved the personal skill at the end of Exercise
 
 The CLI auto-loads standalone skills under `~/.claude/skills/<name>/SKILL.md`. So the CLI install is a one-step copy from the authored source into the personal skills directory. The source folder stays in `module-4/skills/security-audit/` as the canonical source of truth.
 
+Ask Claude to install the security skill by copying it from your authored source into the personal skills directory.
+
 **Prompt** *(Claude Code)*
 
 ```

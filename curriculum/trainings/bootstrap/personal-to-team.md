@@ -65,7 +65,7 @@ When you're done, tell me in 3-5 lines: which file you rewrote, what you added, 
 ```
 
 
-Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you're sharpening something for another person to use, "what got sharpened" without the actual lines is a draft pretending to be a finished thing. The teammate pays the cost of the smoothing, not you.
+Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you're sharpening something for another person to use, "what got sharpened" without the actual lines is a draft pretending to be a finished thing. The before-and-after quote is how you know the sharpening reached the file, not just the summary.
 
 Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
@@ -79,7 +79,8 @@ Run the next-step artifact. Test one assumption. Ask for one name. Talk to one p
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
+**Quality:** draft 2026-05-02 (story callout reframed away from cost-accounting toward verify-at-artifact intent; story re-fire pending)
+- draft 2026-05-02 (Debrief callout closing sentence reframed: replaced "the teammate pays the cost of the smoothing, not you" with "the before-and-after quote is how you know the sharpening reached the file, not just the summary." Removes liability/cost-accounting register from a generosity module. Source: /eval-fire story 2026-05-02 (mood drop 8→7 at Debrief, governance-flavor framing in M7); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-05-02 (Debrief prompt hardened: path-confirm-before-rewriting, overwrite-in-place, before-and-after quote requirement, "be harsher than feels polite" with named example "if the people plan had no names, say so plainly". Body callout names the teammate-pays-the-cost frame. Source: /eval-fire behavior 2026-05-02 round 2 (self-report-inflation high, overwrite-anxiety med, self-audit-charity med, preamble med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
 - draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
 

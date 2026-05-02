@@ -3,224 +3,156 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/output-quality.md",
   "verdict": "REVISE",
   "training": "bootstrap",
-  "maintainer_cut": 80,
-  "fence_ranges": [
-    [
-      50,
-      58
-    ]
-  ],
+  "procedural": {
+    "maintainer_cut": 85,
+    "fence_ranges": ["51-60"],
+    "body_region": "1-84",
+    "maintenance_note": "One fenced prompt block (Debrief). Body above maintainer cut, excluding fences."
+  },
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance",
+      "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": true
+      "evidence": "No hits for: \\bhonest, \\bdelve, \\blandscape (verb), \\bimportantly, \\bcrucial, \\bsubstrate, \\bleverage, \\bsynergize, \\bparadigm shift in body.",
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 2,
-      "rule_lead": "Ritual / practice (as noun) / ceremony — hard ban",
+      "rule_lead": "Ritual / practice (as noun) / ceremony — hard ban.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": true
+      "evidence": "No noun 'practice' found in body prose. Bootstrap retains absolute ban.",
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
-      "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography",
-      "verdict": "N/A",
-      "evidence": "Lines 138-139 contain dated session history, but they fall below maintainer-cut (line 80); dropped per procedural rule",
-      "fix": null,
-      "blocking": true
+      "rule_lead": "No stale markers, no 'fixed' retrospectives, no session biography.",
+      "verdict": "PASS",
+      "evidence": "No dated markers, no 'MOVED', no 'caught live', no session-biography lines in body.",
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 4,
-      "rule_lead": "Register match",
+      "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
+      "evidence": "Bootstrap voice trio (Godin/Sutherland/Siilasmaa) audible throughout: peer warmth ('you walk out with'), counterintuitive reframe ('agent actions start as text' at line 25), forward-optimism ('the first judge you can defend').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "REVISE",
+      "evidence": "Line 16 (LOs section, operational copy): 'a judge you can defend in production' — does not earn 'known limit' as a standalone term. Students read LOs before body; at that point, 'known limit' is unearned. Term is operationally earned later (line 40, Key Concepts) but that does NOT earn its prior use in LOs. The LOs are skimmed entry prose; planting unfamiliar jargon there pre-spoils the clean teach later.",
+      "fix_hint": "Either (a) earn 'known limit' in one breath at line 16 LO text (e.g., 'a judge that states what it catches and names where it stops'), or (b) replace the phrase in line 16 with the plain operational word the student would use at this reading point ('a judge you can defend in production').",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Credit the original when paraphrasing a named technique.",
+      "verdict": "PASS",
+      "evidence": "No named practitioner moves paraphrased without credit in body.",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 8,
-      "rule_lead": "Don't smuggle terms of art from maintainer into body",
-      "verdict": "N/A",
-      "evidence": "Lines 87: 'Plug Points (trainer):' is in body but is a maintainer-labeled section. However, the term appears in a section heading (canonical module-shape element, exempt per check_student_facing rule 2 carve-out)",
-      "fix": null,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "Terms appearing in body (judge, benchmark, scoreboard) are all operationally earned in body prose before they mature into Key Concepts. No maintainer-vocab leaks.",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 9,
-      "rule_lead": "Over-hedge detector",
+      "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project-level strategy docs, NOT in student-facing curriculum body",
-      "verdict": "REVISE",
-      "evidence": "38: 'The scoreboard IS the explanation.' — positions scoreboard as defense against vendor narrative; reads defensive. 41: 'Magic that you can point at' — defensive against 'black-box' vendor critique. These import positioning into teaching moments.",
-      "fix": "Reframe Key Concepts as emergent learning, not defensive positioning. Lead with what the student understands: 'Benchmarking teaches you how to evaluate evaluators—a move you'll use for every future quality question.' Drop the scoreboard-as-proof framing; keep the discipline and method.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 33,
-      "rule_lead": "Author-\"we\" ban — first-person-plural extension",
-      "verdict": "REVISE",
-      "evidence": "45: 'Today we measure what the system actually says inside its scope.'",
-      "fix": "Recast as second-person or module-as-subject: 'In this module, measure what the system actually says inside its scope.' Or: 'The module measures what the system actually says.' Removes author-we.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 14,
-      "rule_lead": "Watch out for planting jargon too early",
-      "verdict": "REVISE",
-      "evidence": "9: 'Agent-sprawl reading from Module 4 covered shadow agents' — terms appear without earning. 28: 'four detectors' appear before explaining what detection is. 36: 'Benchmarking as a pattern' — jargon before operational context.",
-      "fix": "Earn jargon on first use: 'Module 4 reading covered how multiple uncoordinated agents (agent-sprawl) create visibility gaps. Now you measure which detection method works for your output.' Or move jargon-heavy summary to after Key Concepts when the student has done the work.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
+      "evidence": "No reassurance-shaped sentences ('no penalty', 'it's OK if', 'not a downgrade'). Body is direct.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use",
+      "rule_lead": "Earn every technical term on first use.",
       "verdict": "REVISE",
-      "evidence": "16: 'synthesized judge file' appears without one-breath primer. 21: 'judge' appears 2x before earning. 40: 'judge file' at Key Concepts line 40 — still unearned. Line 40 is in body above fence.",
-      "fix": "On line 15 or 16, add primer before first use of 'judge': 'and save the winning detector method as a reusable file — a judge that names what it catches and what it can't reach.' Then the term is earned for Key Concepts and Prompt.",
+      "evidence": "Line 16 (LOs, student-facing operational copy, read first at module entry): 'a judge you can defend in production' introduces 'known limit' as a term without one-breath primer. The rule states: earn on FIRST use, not retroactively. Key Concepts earning at line 40 does not cure the early plant in LOs. Same violation as check_writing rule 14; bodies of water flow together.",
+      "fix_hint": "Earn 'known limit' at line 16 or avoid using the term in LOs until body earned it. If the term is essential to the LO, add one operational sentence (e.g., 'where it stops catching'). The LO then reads: 'a judge that states what it catches and names where it stops (its known limit)' or simply drop the term from LOs and let Key Concepts introduce it fresh.",
       "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": 3,
-      "rule_lead": "Business-audience word ban (Bootstrap default)",
+      "rule_index": 7,
+      "rule_lead": "Always 'you', never 'the student'; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 3,
-      "rule_lead": "No narrating the student's past or present state",
-      "verdict": "REVISE",
-      "evidence": "23: 'Your Module 4 residuals stay named, not solved' — presumes the student has Module 4 residuals and is aware of them. Patronizing narration of assumed student state. 22: 'You'd stake your reputation on some of it' — presumes psychological state.",
-      "fix": "Recast as module-state or artifact-state, not student-state: 'Module 3's claims vary in strength. Module 4's residuals stay named, not solved — that's orthogonal to groundedness.' Removes presumption about student's awareness or psychology.",
+      "evidence": "Body uses second-person throughout ('you walk out', 'you'd stake your reputation'). No 'the student' or trainer-mechanics leakage in body prose.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences",
+      "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 18,
-      "rule_lead": "Inline links use the target's title, never its filename",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
+      "evidence": "No em-dashes in body. Line 21 uses commas for compound thought, not em-dashes.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
-      "rule_lead": "No placeholders inside fenced blocks",
+      "rule_lead": "No placeholders inside fenced blocks.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": true
+      "evidence": "Prompt block (lines 51–60) contains no `[BRACKETS]` placeholders. All references are concrete paths and file names.",
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in",
-      "verdict": "REVISE",
-      "evidence": "Line 48 ('Prompt' label) precedes the fenced block at line 50, but the semantic lead-in (lines 47-49) is buried in narrative prose. Should be: one short sentence with command verb BEFORE the **Prompt** label.",
-      "fix": "Add explicit one-sentence lead-in before line 48: 'Ask Claude to review the session and update `./CLAUDE.md` with groundedness operating rules.' Then blank line, then **Prompt** label. Current structure buries the semantic intent.",
-      "blocking": true
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "Line 50: 'Ask Claude to review the session and update `./CLAUDE.md` with groundedness operating rules.' One sentence, command verb, ~15 words.",
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": "Line 50 (lead-in) → Line 51 (**Prompt** label) → blank line → lines 52–60 (fence). Destination chip `*(Claude Code)*` present.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "REVISE",
+      "evidence": "Mood contract is documented in maintainer block (lines 116–120): 'M5's rescue is the scoreboard moment — ahh, this is actually fixable. Do NOT resolve M3's strategic uncertainty; only groundedness-for-this-shape-of-output gets rescued.' But this strategic framing does NOT appear in student-facing body. Rule 1 requires the mood to be named in or anchored to student-facing prose so the student knows what they are aiming for emotionally. Body reads as mechanical/operational (benchmarking pattern, empirical method selection) but lacks the emotional anchor.",
+      "fix_hint": "Add one sentence to body prose (suggest after line 24) that names the mood contract: 'This module pulls you from M3's unease into measured confidence — not full closure, but a rescue on this one shape of output.' Or anchor the mood in the 'Key Concepts' closing bullet. The student must read the mood in body, not infer it from maintainer.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Installed Claude Code Skills invoke by name, never by path",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 5,
-      "rule_lead": "Chain prompts by back-reference and deterministic path, never by invented alias",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named",
-      "verdict": "REVISE",
-      "evidence": "3-42: Big Idea and body do not explicitly name the emotional endpoint. Mood ('mechanical rescue, not triumph') lives only in maintainer block (lines 112-116), not visible to student.",
-      "fix": "Body must name what state the student leaves in. Add to Big Idea or opening: 'You walk out with the first judge you can defend — not magic, just measured' or similar. Mood lives in student-visible prose.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with the discipline, not the failure mode",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
+      "evidence": "File respects sequencing: Module 3 answer as input (line 21), Module 4 residuals remain open (line 23), Module 6 hand-off as hunger, not closure (line 78). No front-running of downstream teaching moments detected.",
       "blocking": false
     }
   ],
-  "blocking_findings_count": 5,
-  "todos_count": 2,
-  "fp_filtered": {
-    "maintainer_cut_line": 80,
-    "fence_ranges": [
-      [
-        50,
-        58
-      ]
-    ],
-    "dropped_count": 0,
-    "dropped": []
-  }
+  "counts": {
+    "rules_fired": 16,
+    "pass": 12,
+    "revise": 3,
+    "blocking_violations": 3
+  },
+  "top_verdict": "REVISE",
+  "blocking_rules": [
+    "check_writing.md § 14 (Planting jargon too early — 'known limit' in LOs before body earning)",
+    "check_student_facing.md § 2 (Earn every technical term on first use — same violation)",
+    "check_strategy_tie_in.md § 1 (Mood contract named — must anchor to student-facing prose, not maintainer-only)"
+  ],
+  "summary": "File passes register, prompt mechanics, and sequencing. Three blocking violations: (1) 'known limit' planted in LOs without earning (check_writing #14, check_student_facing #2 — same root); (2) mood contract documented in maintainer but not anchored to student-facing body (check_strategy_tie_in #1). Both violations are low-friction fixes: earn the term in LOs or replace with plain words; add one sentence naming the mood contract to body prose. After fixes, refire check_writing / check_student_facing / check_strategy_tie_in on the revised body."
 }

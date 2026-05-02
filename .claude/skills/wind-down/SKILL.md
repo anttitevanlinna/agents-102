@@ -99,6 +99,15 @@ Pushed: yes / no.
 Session wrap complete.
 ```
 
+### Step 5 — Hand off to next session (always)
+
+Always produce ONE of two outputs at the end of wind-down:
+
+- **Starting prompt** for the next session — a paste-ready block Antti can drop into a fresh session to pick up where this one left off. Include: working dir, what shipped this session, what's outstanding (TODOs, deferred items, decisions pending), the next concrete move, and any rules / compounded entries the next agent should be aware of upfront. Save to `~/.claude/plans/<topic>-session-handoff.md` for durability AND output inline so Antti can copy. Format mirrors `~/.claude/plans/evals-session-handoff.md` from 2026-05-02 (a worked example).
+- **"Done-done"** declaration — when the topic is genuinely closed (no outstanding work, no pending decisions, nothing to pick up). State it explicitly: *"Done-done. No follow-up. Next session starts fresh."*
+
+Pick one. Never end wind-down without one of these two outputs. The starting prompt is the default; only emit done-done when the topic is fully resolved.
+
 ## Scope variants
 
 - **`/wind-down`** — full protocol.

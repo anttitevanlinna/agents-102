@@ -5,7 +5,7 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Prework
 
-[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post. (5) Candidate: Lindenberg on Claude Code memory architecture.
+[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in the first 15 minutes of class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer (15 min).</span><span class="rt-cowork">Plan-first primer (15 min).</span> (4) Karpathy's LLM Wiki post.
 
 ## What You'll Learn
 After this module, you will be able to:

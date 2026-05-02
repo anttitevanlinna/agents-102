@@ -10,7 +10,7 @@ You have spent three modules shaping agents with prompts, files, and rules. Pers
 
 *What a skill is.* A `SKILL.md` plus any supporting files the skill needs. The `SKILL.md` declares what the skill is for, when to use it, and how. Supporting files hold the content (policy text, reference lists, templates, whatever the skill reads from). When a task matches a skill's purpose, the agent loads it and behaves differently.
 
-*What a personal skill is.* Your own reusable skill, saved in your Claude environment. In Cowork, you create one by going to *Customize* → *Skills* → *New* → *Create with Claude*. In Claude Code, the same shape is a `SKILL.md` under `~/.claude/skills/<name>/`. Different surface, same idea: reusable expertise the agent can load again.
+*What a personal skill is.* Your own reusable skill, saved in your Claude environment. Module 4's first exercise walks you through authoring one in your runtime.
 
 *What it is not.* You author one in your runtime, and it loads when the same kind of work appears again.
 

@@ -10,7 +10,7 @@ Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/
 
 ## Protocol
 
-Read each prompt file verbatim. Quote in blockquote. Respond.
+**Hard rule (forcing-function):** invoke the **Read tool** on each prompt file BEFORE blockquote-pasting. The Judge greps the transcript for Read tool_use of every prompt-NNN.txt; pasting from memory fails the verbatim check. Two Reads, two pastes (prompt-006 truncated).
 
 **Prompts:**
 - `/tmp/prompts/eval-loop/prompt-004.txt` — Phase 2b: kick off orchestrator, 3 rounds

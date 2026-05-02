@@ -1,75 +1,79 @@
 # Mechanical-test framework — next-session state
 
-**Last updated:** 2026-05-02 (end-of-session checkpoint)
+**Last updated:** 2026-05-02 (Bootstrap M1-M6 all PASS)
 
 ## Bootstrap battery — current verdict
 
-| Module | Verdict | Notes |
-|---|---|---|
-| M1 | **PASS (all)** | scratch/bootstrap-m1 fresh, transcript at agent-a5eee81b697b442e7 |
-| M2 | **PASS 24/24** | scratch/bootstrap-m2, agent-ae3e86db4a3188df6 (Actor) + adcfa123bf9618922 (Judge re-run) |
-| M3 | **PASS 18/18** | 4 actors (wiki/docs/internet/synthesizer) + inline Judge battery |
-| M4 audit | not yet | scratch pre-staged from M3 |
-| M4 author | **runner broken** | stale `author-security-plugin` slug + nonstandard prompt suffixes (see below) |
-| M5 setup/detector/scorer | not yet | scratch pre-staged provisionally |
-| M6 setup/run | not yet | scratch pre-staged provisionally |
+| Module | Verdict | Judge | Notes |
+|---|---|---|---|
+| M1 | **PASS (all)** | inline | scratch/bootstrap-m1 fresh |
+| M2 | **PASS 24/24** | inline | scratch/bootstrap-m2 |
+| M3 | **PASS 18/18** | inline | 4 actors (wiki/docs/internet/synthesizer) |
+| M4 author | **PASS 28/28** | `bin/judge-m4-author.sh` | new runner: author-security-skill (3 prompts, single SKILL.md) |
+| M4 audit | **PASS 36/36** | `bin/judge-m4-audit.sh` | 4-prompt chain: install → policy → agent-security → mitigate-residual |
+| M5 | **PASS 30/30** | `bin/judge-m5.sh` | setup + 5 detectors (parallel) + scorer |
+| M6 | **PASS 35/35** | `bin/judge-m6.sh` | setup + run; judge file byte-identical (J1 PASS) |
 
-## Known bugs to fix before dispatching
+## What this session shipped
 
-### M4 author runner — stale exercise reference (BLOCKER)
+### Runner rewrites (M4)
+- `bootstrap-m4-author.verbatim.{actor,judge}.md` — rewrote for live exercise. Single `module-4/skills/security-audit/SKILL.md` (no plugin manifest, no two-lens-files split). Three prompts, no install/verify (those moved to audit). Attack class is `skill supply-chain`, not `plugin supply-chain`.
+- `bootstrap-m4-audit.verbatim.{actor,judge}.md` — re-mapped to 4 prompts (install → policy + meta-read → agent-security → mitigate-residual). Install destination substituted to `<scratch>/skill-install/.claude/skills/security-audit/`.
 
-`bootstrap-m4-author.verbatim.actor.md` references `/tmp/prompts/author-security-plugin/prompt-{001,002,003,004-cli,005-verify}.txt`. Two problems:
+### Read-tool forcing-function on every actor runner (M4-M6)
+Haiku silently inlined prompt-003 in the M4 author dry-run, failing V3. Patched all M4-M6 actor runners with: *"invoke the **Read tool** on each prompt-NNN.txt BEFORE blockquote-pasting; the Judge greps the transcript for Read tool_use of every prompt file."* Subsequent runs all V-PASS.
 
-1. **Exercise was renamed.** No `curriculum/exercises/author-security-plugin.md` — the live file is `author-security-skill.md`. Same fix as M3 needed: bulk substitute `author-security-plugin` → `author-security-skill` in actor + judge.
+### Script-only Judges (rule #17 ratchet)
+Replaced LLM Judge dispatches for M4-M6 with bash scripts that run every assertion as a `grep`/`jq`/`diff`/`shasum` one-liner:
 
-2. **Nonstandard prompt suffixes.** `parse-prompts.sh` produces sequential `prompt-NNN.txt` files. The runner's `prompt-004-cli.txt` and `prompt-005-verify.txt` don't exist — `parse-prompts.sh` will produce `prompt-001/002/003.txt` only (3 prompts in the new file). Either:
-   - The new exercise was simplified from 5 prompts to 3 — revise the runner to match.
-   - Or the suffixed naming was a custom convention that needs `parse-prompts.sh` extending.
-   
-   Recommendation: revise runner to walk the 3 actual prompts. Drop the "-cli" and "-verify" phases (likely consolidated into the main prompts on the rename).
+- `bin/judge-m4-author.sh` (28 assertions)
+- `bin/judge-m4-audit.sh` (36 assertions)
+- `bin/judge-m5.sh` (30 assertions, 7 transcripts: setup + 5 detectors + scorer)
+- `bin/judge-m6.sh` (35 assertions, 2 transcripts; J1 = `shasum` baseline check)
 
-### Likely Judge-runner brittleness in M4-M6 (preventive)
+All four are deterministic, run on Bash, take `<scratch_dir>` + transcript path(s), write `instances/<runner>-judge-report.md`, exit 0 on PASS / 1 on FAIL. **No LLM Judge dispatch in the new pipeline.** M1-M3 still use inline Judge but their assertion lists are simpler.
 
-Same pattern hit M2 + M3:
-- `### Phase` regex when Actor writes `## Phase` — generalise to `^#{2,3} Phase`.
-- Case-sensitive grep on title-case English headings — switch to `grep -i*`.
-- Word caps tighter than Haiku stub realism — bump to 1.5× spec.
+The aspirational endpoint per memory rule #17 — `bin/judge.sh <runner-slug>` with no LLM at all — is now ~80% there. Remaining: M1-M3 inline Judges to retire, plus a registry mapping slug → script.
 
-These all go in the Judge runners' assertion language. Easiest pattern: dispatch + diagnose, patch as the failures surface.
+### Universal Judge fixes (carried preemptively into M4-M6)
+- Heading-depth regex `^#{2,3} ` (Actor may use `##` or `###`).
+- English heading greps use `grep -i*`.
+- Word caps at 1.5× spec (Haiku stub overshoot).
+- Verdict per rule #20: PASS on exit 0; FAIL on any non-zero. No LLM re-derivation.
+- `H2` (sibling-runner Read forbid) tightened to `runners/.*(judge|author|audit)\.` so the actor can read its own runner without false-positive.
 
-### Substitute-paste assertions in M1 still use `verbatim-check.sh` (low priority)
+## Subagent-dispatch lessons from this session
 
-M1 PASSES with `verbatim-check.sh` because all 6 prompts are long enough that Haiku didn't optimization-shortcut. The migration from `verbatim-check.sh` → `prompt-read-check.sh` is a code-cleanup move; not blocking M4-M6.
+- **Author/audit are NOT truly parallel.** Audit reads SKILL.md authored by author; sequence them. Memory: `feedback_subagent_dependencies_serialize.md`. Haiku will not poll for missing prereqs; it returns "I'm waiting" and exits.
+- **Re-staging from prior module is destructive.** `rm -rf scratch/bootstrap-m4 && cp -R scratch/bootstrap-m3 scratch/bootstrap-m4` is the only safe shape. Re-using a half-mutated scratch leaks state.
+- **Stale Actor reports lie.** Two M4 author runs produced a "report" copy-pasted from a prior runner's template (mentioning `plugin-install/`). The disk state was correct; the *narrative* in the report was hallucinated. Trust file artefacts + transcripts; treat report prose as suggestive.
+- **No git stash in trunk-based work.** `feedback_no_git_stash_trunk_based.md`. Either commit a slice or `fetch --merge --ff-only`.
 
-## Pre-staged state (deterministic)
+## Pre-staged state at end of session
 
-- `/tmp/bootstrap-mocks/` — 12-file fixture re-staged via `bin/stage-bootstrap-mocks.sh`.
-- `/tmp/prompts/audit-your-agent/` (4), `/author-security-skill/` (3), `/hallucination-bakeoff/` (7), `/eval-loop/` (8). Plus M2-M3 chain.
-- `scratch/bootstrap-m4/` — copied from M3 final state + empty `module-4/` (30 files).
-- `scratch/bootstrap-m5/` — copied from M4 placeholder + `module-5/detectors/` (30 files; will be re-staged from real M4 output once M4 runs).
-- `scratch/bootstrap-m6/` — copied from M5 placeholder + `module-6/judges/` (30 files; same pattern).
+- `/tmp/bootstrap-mocks/` — re-stageable via `bin/stage-bootstrap-mocks.sh` (12 files).
+- `/tmp/prompts/{audit-your-agent,author-security-skill,hallucination-bakeoff,eval-loop}/` — extracted via `parse-prompts.sh`.
+- `scratch/bootstrap-m{1..6}/` — all final-state, all PASSed in this session. Each one inherits from the prior.
 
-## Dispatch order for next session
+## What's next
 
-1. Patch M4 author runner (rename + drop suffixed prompts).
-2. Re-stage M4 scratch from M3 (any time prior to dispatch).
-3. Dispatch M4 audit + M4 author (parallel; disjoint output files in `module-4/`).
-4. Run inline Judge battery against both transcripts.
-5. Re-stage M5 scratch from M4 final state.
-6. Dispatch M5 setup. Then in parallel: M5 detector + M5 scorer.
-7. Inline Judge.
-8. Re-stage M6 scratch from M5 final state.
-9. Dispatch M6 setup, then M6 run.
-10. Inline Judge.
+The next big move is **retire the inline LLM Judges from M1-M3** so the entire battery runs without any LLM Judge dispatch:
+
+1. Write `bin/judge-m1.sh`, `bin/judge-m2.sh`, `bin/judge-m3.sh` — same shape as M4-M6.
+2. Add `bin/judge.sh <runner-slug>` that dispatches to the right per-module script.
+3. Update `README.md` to reflect that the script ratchet has reached its endpoint.
+
+Cross-cutting brittleness to watch:
+- The `jq` extraction of tool_use timestamps assumes a `.message.content[].type == "tool_use"` shape. If the transcript schema changes, every script breaks. A single `bin/extract-tool-uses.sh` helper would isolate that.
+- The `prompt-source-audit.sh <slug>` PSA call is duplicated across all six judge scripts. Could move to a shared verdict-collection helper.
 
 ## Universal discipline (codified this session)
 
-- Slugs in chain-runner `### Phase N — slug` headings must contain words that uniquely appear in the referenced prompt's content (pre-flight catches collisions).
-- V-checks via `bin/prompt-read-check.sh <prompt> <transcript>` — transcript Reads are unforgeable; scrollback grep is theatre that Haiku skips on short mid-chain prompts.
-- Tracked mock fixtures under `playgrounds/bootstrap-mocks/`; staged via `bin/stage-bootstrap-mocks.sh`. Never trust `/tmp` to persist.
-- Judge regex: `grep -i*` for English headings (Actors title-case).
+- Slugs in chain-runner `### Phase N — slug` headings must contain words that uniquely appear in the referenced prompt's content (pre-flight catches collisions). M4-M6 all PASS pre-flight.
+- V-checks via `bin/prompt-read-check.sh <prompt> <transcript>` — transcript Reads are unforgeable.
+- Tracked mock fixtures under `playgrounds/bootstrap-mocks/`; staged via `bin/stage-bootstrap-mocks.sh`.
 - Word caps in Judge: 1.5× the spec to allow Haiku stub overshoot.
-- Heading-depth regex: `^#{2,3} Phase` (Actors choose between `##` and `###`).
+- Heading-depth regex: `^#{2,3} Phase`.
 - Per rule #20: `PASS on exit 0; FAIL on any non-zero` — Judge does NOT re-derive from scrollback when a script returns non-zero.
 
 ## Script ratchet — what `bin/` now contains
@@ -77,15 +81,19 @@ M1 PASSES with `verbatim-check.sh` because all 6 prompts are long enough that Ha
 ```
 bin/
 ├── continuation-diff.sh           HTML-aware v-N → v-N+1 continuity
-├── migrate-judges-to-prompt-read.sh  bulk migration scaffold (M2 only — needs different match strategy for abstract V-check refs)
+├── judge-m4-author.sh             [NEW] script-only Judge (28 assertions)
+├── judge-m4-audit.sh              [NEW] script-only Judge (36 assertions)
+├── judge-m5.sh                    [NEW] script-only Judge (30 assertions, 7 transcripts)
+├── judge-m6.sh                    [NEW] script-only Judge (35 assertions, J1 shasum)
+├── migrate-judges-to-prompt-read.sh  bulk migration scaffold (M2 only)
 ├── no-write-between-reads.sh      A16-style assertion
 ├── preflight-all.sh               survey every actor runner's verdict at once
-├── prompt-read-check.sh           V-checks via transcript jq for Read of prompt-NNN.txt
+├── prompt-read-check.sh           V-checks via transcript jq
 ├── prompt-source-audit.sh         P/E lint on curriculum source
-├── run-mechanical.sh              one-shot orchestrator: pre-flight + parse + stage + audit
-├── runner-mapping-check.sh        chain-runner aware pre-flight + coverage check
+├── run-mechanical.sh              one-shot orchestrator
+├── runner-mapping-check.sh        chain-runner aware pre-flight
 ├── stage-bootstrap-mocks.sh       playground → /tmp fixture stage
-└── verbatim-check.sh              substitute-paste check (linkedin / hate-list etc.) — kept; not for prompts
+└── verbatim-check.sh              substitute-paste check (scrollback-based)
 ```
 
-Aspirational endpoint: `bin/judge.sh <runner-slug>` runs the full per-module assertion battery with no LLM Judge dispatch. Inline-Judge pattern for M1+M3 demonstrated this is achievable for verifiable assertions; remaining LLM use is for content-quality grades that belong in the eval system, not here.
+Aspirational endpoint: `bin/judge.sh <runner-slug>` with no LLM Judge dispatch at all. M4-M6 done; M1-M3 next session.

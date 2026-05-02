@@ -10,7 +10,7 @@ The judge at `judges/groundedness-judge.md` is FIXED. The thing that learns is `
 
 ## Protocol
 
-Read each prompt file verbatim. Quote in blockquote. Respond.
+**Hard rule (forcing-function):** invoke the **Read tool** on each prompt file BEFORE blockquote-pasting. The Judge greps the transcript for Read tool_use of every prompt-NNN.txt; pasting from memory fails the verbatim check. Three Reads, three pastes.
 
 **Prompts:**
 - `/tmp/prompts/eval-loop/prompt-001.txt` — Phase 0: manual judge run

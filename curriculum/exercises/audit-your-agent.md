@@ -51,7 +51,7 @@ In the new session, type `/` in the prompt and look for `/security-audit` in the
 
 Do not run a toy verification on one file. The first loaded use is the real audit.
 
-**Phase 2. Policy audit.**
+**Phase 2. Run the policy audit.**
 
 Ask Claude to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from `module-4/policies/`; this report comes through the reusable lens you shaped.
 
@@ -78,7 +78,7 @@ While the report runs, stay with it. The report is more useful when you read it 
 
 Read Claude's three lists. Then open `outputs/policy-report.md` and find the rows Claude flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of Claude's surprises match yours and which do not. That mismatch is data.
 
-**Phase 3. Agent-risk audit.**
+**Phase 3. Run the agent-risk audit.**
 
 In the same session.
 
@@ -126,7 +126,7 @@ The risk did not go away. That is expected. A mitigation reduces, it does not el
 
 Sometimes the correct next step is not another prompt. If the policy report still has a serious "I can't tell", or the security report names a risk you do not know how to accept, show the evidence to someone who owns that area: legal, security, IT, compliance, or the business owner. Bring the report, the files it quotes, the mitigation you applied, and the residual that remains.
 
-Better safe than sorry is a professional answer. The useful move is not pretending the agent resolved the judgment call. The useful move is arriving with the work already done, so the expert can answer a narrower question.
+The instinct here is to skip the expert and resolve it yourself, or to escalate the whole tangle and hand them the problem cold. Both miss what you just produced. You ran the lens, you have the rows, you applied a mitigation, you have the residual on record. The narrow question the expert can actually answer is sitting in the report. Walk in with that.
 
 **What happens:**
 

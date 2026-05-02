@@ -1,58 +1,49 @@
 {
   "class": "writing",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/personal-agent-homework.md",
+  "file": "curriculum/exercises/personal-agent-homework.md",
   "verdict": "REVISE",
   "training": "bootstrap",
-  "maintainer_cut": 89,
-  "fence_ranges": [
-    {
-      "start": 28,
-      "end": 35
-    },
-    {
-      "start": 43,
-      "end": 50
-    },
-    {
-      "start": 63,
-      "end": 65
-    }
-  ],
   "rules_evaluated": [
     {
       "compendium": "check_writing",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing",
+      "rule_index": 2,
+      "rule_lead": "Ritual / practice / ceremony — hard ban",
+      "verdict": "PASS",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing",
+      "rule_index": 3,
+      "rule_lead": "No stale markers, no session biography",
+      "verdict": "PASS",
+      "blocking": false
     },
     {
       "compendium": "check_writing",
       "rule_index": 4,
       "rule_lead": "Register match",
       "verdict": "PASS",
-      "evidence": "5:You built a memory today. One live challenge, curated sources... — warm peer-to-peer Sutherland/Godin register throughout",
-      "fix": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing",
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy, NOT in curriculum body",
       "verdict": "PASS",
-      "evidence": "81:A memory that sits there is a document. A memory that gets read by an agent... — metaphorical reframe, not defensive positioning",
-      "fix": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_student_facing",
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap",
       "verdict": "PASS",
-      "evidence": "5:Now give it a pulse",
-      "fix": null,
       "blocking": false
     },
     {
@@ -60,17 +51,31 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use",
       "verdict": "PASS",
-      "evidence": "17:Enable Google Calendar or Microsoft Outlook Calendar — context-earned",
-      "fix": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_student_facing",
+      "rule_index": 3,
+      "rule_lead": "No narrating student behavior / no pat-on-back closers",
+      "verdict": "REVISE",
+      "evidence": "line 87-88: 'because you kept noticing. The HTML looks different too, because you kept tightening' — narrates student actions instead of artifact agency",
+      "fix": "Apply Sutherland-flip: move agency from student to artifact. Replace 'because you kept noticing' and 'because you kept tightening' with artifact-focused phrasing: 'The memory and HTML both tighten as misses surface and edits land.'",
+      "blocking": true
+    },
+    {
+      "compendium": "check_student_facing",
+      "rule_index": 4,
+      "rule_lead": "No overclaim of student verification or coverage",
+      "verdict": "REVISE",
+      "evidence": "lines 85-92: claims 'the memory looks different from the one you left class with' as if the week of observation produces full transformation verification, but a week produces observation + sampling of edits, not full verification",
+      "fix": "Scope claim to sample: 'The memory evolves as patterns surface. By end of week, sample three misses and trace what the memory lacked.' Or defer full-system claim to end of subsequent module.",
+      "blocking": true
     },
     {
       "compendium": "check_student_facing",
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
       "blocking": false
     },
     {
@@ -78,8 +83,8 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose",
       "verdict": "REVISE",
-      "evidence": "87:One glance each morning for a week — 'morning' is time-of-day anchor",
-      "fix": "Replace 'One glance each morning for a week' with 'One observation per run, over a week' or 'Watch the output for one week, one check per run'",
+      "evidence": "line 93: 'One glance per session for a week' — implied time-of-day anchor in 'glance' (morning observation habit)",
+      "fix": "Replace 'One glance per session' with 'One observation per run' to make it time-neutral. Change line 93 to: 'Time: 35 minutes to set up. One observation run per day for a week.'",
       "blocking": true
     },
     {
@@ -87,57 +92,36 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block gets a one-sentence action lead-in",
       "verdict": "PASS",
-      "evidence": "27:Paste: — (semantic lead-in above fence); 41:Give Claude the URL... — (lead-in present); 61:Save. Click... — (procedural but covered)",
-      "fix": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts",
       "rule_index": 3,
-      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block",
+      "rule_lead": "Canonical presentation shape",
       "verdict": "REVISE",
-      "evidence": "28:Prompt label missing destination chip: **Prompt** ← should be **Prompt** *(Claude Code)*; same at lines 43 and 63",
-      "fix": "Add *(Claude Code)* parenthetical after each **Prompt** label (lines 29, 44, 64)",
+      "evidence": "lines 29, 45, 67: three **Prompt** labels missing destination chip *(Claude Code)* parenthetical",
+      "fix": "Add *(Claude Code)* after each **Prompt** label: line 29 → '**Prompt** *(Claude Code)*'; line 45 → '**Prompt** *(Claude Code)*'; line 67 → '**Prompt** *(Claude Code, scheduled task)*' (note: line 67 correctly specifies the context already)",
       "blocking": true
     },
     {
       "compendium": "check_prompts",
       "rule_index": 9,
-      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight",
+      "rule_lead": "Markdown shout inside fenced blocks is dead weight",
       "verdict": "REVISE",
-      "evidence": "30:**+** (bold asterisks in fence — renders literal); 31:**Settings → Connectors** (bold in fence); 45:**Schedule** (bold in fence); 49:**- Morning plan** / **- Daily risk** / **- Draft today's** (bold bullets inside fence at lines 46-48)",
-      "fix": "Remove **bold** markup inside all three fenced blocks — use plain text or bullets only. Lines 30-31, 44-48: unmark everything from ``` to ```.",
+      "evidence": "line 32: '**+**' (bold in fence); lines 33-34: '**Settings → Connectors**' (bold in fence); lines 46-48: '**- Morning plan**' / '**- Daily risk scan**' / '**- Draft today's**' (bold bullet prefixes in fence)",
+      "fix": "Remove all markdown bold/italic markup from inside the three fenced blocks. Lines 32-37 (fence 1), lines 47-55 (fence 2) — use plain text, bullets, or backticks for paths only. In fence 2, bullets become plain: '- Morning plan' not '**- Morning plan**'.",
       "blocking": true
     },
     {
       "compendium": "check_prompts",
       "rule_index": 15,
-      "rule_lead": "Question-dump default — in turn is too soft for one-at-a-time rhythm",
+      "rule_lead": "Question-dump default — one-at-a-time rhythm required",
       "verdict": "REVISE",
-      "evidence": "46-48:Three questions listed sequentially ('1. Which job', '2. What should', '3. What must'); prompt reads 'ask one at a time' nowhere, allowing Claude to batch-dump all three",
-      "fix": "Inside the prompt at lines 46-51, add explicit one-at-a-time phrasing: 'Ask me one question, wait for my answer, then ask the next. Do not show me the question list.' Also remove the leading numbered list at lines 46-48 or keep it but add the one-at-a-time structural rule inside the fence.",
+      "evidence": "lines 50-52 (inside fence 2): three numbered questions [1. 2. 3.] listed in sequence. Prompt says 'ask one at a time' but format allows Claude to batch-post all three.",
+      "fix": "Add explicit one-at-a-time structural enforcement inside the prompt. Replace lines 50-52 list with single-question phrasing: 'Ask me one question and wait for my answer before asking the next. Do not show me all three questions — ask, wait, then ask the next one.' Remove the numbered list or restructure as conditional: 'First: Which job — morning plan, daily risk scan, or next-move draft? Wait for my answer, then ask the second question.' (Alternative: keep list but prepend with 'Ask ONLY the first question now:' to enforce sequencing.)",
       "blocking": true
     }
   ],
-  "blocking_findings_count": 4,
-  "todos_count": 0,
-  "fp_filtered": {
-    "maintainer_cut_line": 89,
-    "fence_ranges": [
-      [
-        29,
-        35
-      ],
-      [
-        43,
-        51
-      ],
-      [
-        63,
-        65
-      ]
-    ],
-    "dropped_count": 0,
-    "dropped": []
-  }
+  "blocking_findings_count": 5,
+  "todos_count": 0
 }

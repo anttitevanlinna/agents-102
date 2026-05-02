@@ -3,54 +3,54 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/evaluations.md",
   "verdict": "REVISE",
   "training": "bootstrap",
-  "trace_status": "cache_miss_generated",
+  "trace_status": "generated_first_time",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Review this session and sharpen the generator's tactic beyond what the loop reached.",
+      "prompt_lead": "Review this session and sharpen the generator's tactic beyond what the loop reached. Read ./ge",
       "verdict": "REVISE",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "med",
-          "evidence": "\"Then rewrite ./generation-tactic.md. Integrate, don't append.\" — no explicit overwrite-the-existing-file instruction; Claude will likely ask 'overwrite or create new?' before writing.",
-          "fix_hint": "Add: 'Overwrite ./generation-tactic.md in place — do not create a new file.'"
+          "evidence": "\"Then rewrite ./generation-tactic.md. Integrate, don't append.\" — no explicit overwrite-in-place instruction; Claude will likely ask 'overwrite or create new?' before writing.",
+          "fix_hint": "Add: 'Overwrite ./generation-tactic.md in place — do not create a new version.'"
         },
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "med",
-          "evidence": "\"Then rewrite ./generation-tactic.md. Integrate, don't append.\" — integration mode is named but overwrite/create-new boundary is implicit; a student who gets a second file (generation-tactic-v2.md) loses the artifact chain.",
+          "evidence": "\"Then rewrite ./generation-tactic.md. Integrate, don't append.\" — integration mode is named but overwrite/create-new boundary is implicit; a student who gets generation-tactic-v2.md loses the artifact chain.",
           "fix_hint": "Pair the integrate instruction with an explicit overwrite command naming the destination path."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "med",
-          "evidence": "\"which tactic change helped, which one did not help and should be removed or rewritten\" — Claude reviews tactic decisions it authored; RLHF charity toward its own prior work inflates the 'helped' count and shrinks the 'should be removed' list.",
+          "evidence": "\"which tactic change helped, which one did not help and should be removed or rewritten\" — Claude reviews tactic decisions it authored across the loop; RLHF charity toward its own prior work inflates the 'helped' count and shrinks the 'should be removed' list.",
           "fix_hint": "Add: 'Be harsher than feels comfortable — if a rule is vague, say so by name; if it fired on the wrong thing, name what it fired on.'"
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "med",
-          "evidence": "\"tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why\" — self-summary of own tactic rewrite will inflate sharpening count and undercount removals; the student has no artifact-level check prompt to counter this.",
-          "fix_hint": "After the prompt, add a copyable push-back: 'Which rule did you claim to remove but actually kept under a different name? Be specific.'"
+          "evidence": "\"tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why\" — self-summary of the tactic rewrite will inflate sharpening count and undercount removals; no artifact-level check prompt for the student to verify against.",
+          "fix_hint": "Add a copyable push-back outside the fence: 'Which rule did you claim to remove but actually kept under a different name? Be specific.'"
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "\"remove a rule that fired on the wrong thing\" — prompt demands removal, but RLHF drift will prefer renaming or narrowing the rule rather than deleting it; no line is pinned as non-negotiable.",
+          "evidence": "\"remove a rule that fired on the wrong thing\" — RLHF drift will prefer narrowing or renaming the rule rather than deleting it; no line is pinned as non-negotiable.",
           "fix_hint": "Pin the expected outcome: 'A removal means the rule is gone from the file, not renamed or scoped — if you scoped it instead, say so and why.'"
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Multi-part prompt with a read-then-rewrite structure; Claude will open with a narrated summary of what it is about to do before reading the first file.",
-          "fix_hint": "Prime the student in the surrounding prose: 'Claude will narrate the review before acting; skim past the opening and look for the rewritten tactic file.'"
+          "evidence": "Multi-part read-then-rewrite structure; Claude will open with a narrated plan before reading the first file.",
+          "fix_hint": "Prime the student in surrounding prose: 'Claude will narrate the review plan briefly before acting; skim to the rewritten tactic file confirmation.'"
         }
       ]
     }
   ],
-  "blocking_findings_count": 2,
+  "blocking_findings_count": 1,
   "todos_count": 0
 }

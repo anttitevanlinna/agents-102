@@ -34,13 +34,13 @@ Then the candidates: **four sharing shapes that work in practice.** Share the co
 
 The pressure tests after that stay practical: what's the absorption bottleneck, what must be true for the teammate to switch, and why might they go back to the incumbent six months from now?
 
-One observation to keep in your back pocket while you run the exercise: **access is not absorption.** Many companies have rolled out access far ahead of trust. People can reach the agent; that does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
+One observation to keep in your back pocket while you run the exercise: **access is not absorption.** Many companies have rolled out access far ahead of trust. People can reach the agent. That does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
 ## Key Concepts
 
-- **Interview for the outcome before designing the solution.** The transferable skill. The teammate's job comes first; your candidate comes second. When work resumes you'll face a different adoption problem and the move is the same. Agent reads your context, drafts a JTBD hypothesis, asks you seven targeted questions, produces a brief with an outcome statement.
+- **Interview for the outcome before designing the solution.** The transferable skill. The teammate's job comes first; your candidate comes second. When work resumes you'll face a different adoption problem and the move is the same. Agent reads your context, drafts a JTBD hypothesis (Clayton Christensen's Jobs-to-be-Done pattern), asks you seven targeted questions, produces a brief with an outcome statement.
 - **The agent does the heavy lifting on the interview.** Your memory already carries 80% of the teammate's job. Phase 1's move is the agent reading what's on disk, hypothesising, then asking a defined set of questions to plug the real holes. Not freeform chat. A bounded ask. That's what makes it reliable.
 - **The outcome statement is the design contract.** In the form *"minimize/increase [metric] when [doing the job],"* everything downstream runs against that statement: the candidate, the patterns, the plans, the assumptions, and the failure stories. A candidate that doesn't move the metric isn't a candidate.
 - **The third outcome vector is where the interview earns its keep.** Speed and quality are the obvious axes. The non-obvious one (dependency removed, anxiety reduced, scope expanded, workload shifted) is what chatting surfaces. If an interview returns only speed and quality, it went shallow.
@@ -79,8 +79,8 @@ Run the next-step artifact. Test one assumption. Ask for one name. Talk to one p
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
-- judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-02 (writing@9ddfac3)
+- judges @9ddfac3: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze → Evaluate

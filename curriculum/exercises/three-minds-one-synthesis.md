@@ -81,7 +81,7 @@ You choose fixes. Aim for optimal function in the next session that runs on this
 
 **Close. Does this feel right?**
 
-Ask Claude to recap the three retrievals' core claims next to your `## Answer`. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
+Optional: ask Claude to recap the three retrievals' core claims next to your `## Answer`. Then ask yourself a question you won't be able to avoid asking anyway: *is this actually right?*
 
 You can't tell yet. Three retrievers read plainly, three stances pushed, a framework held the synthesis together, and still, the answer sits at that uneasy distance where you'd stake your reputation on some of it and not all of it, and you can't yet say which is which. That feeling is correct.
 

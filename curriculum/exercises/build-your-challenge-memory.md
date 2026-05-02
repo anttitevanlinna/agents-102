@@ -6,7 +6,7 @@ A chat forgets. A memory remembers.
 
 You've just pinned your challenge in `./challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
-The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running from the opener. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
+The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session (the chat window you opened in the opener)</span><span class="rt-cowork">task (the workspace you opened in the opener)</span> running. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
 
 **Phase 1. Curate, ingest, build.**
 
@@ -136,7 +136,7 @@ Answer with a real task from your challenge. Claude reads the agent file, reads 
 
 **Phase 3. Compound.**
 
-A dumb knowledge base grows. A compounding one *sharpens*. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.
+A dumb knowledge base grows. A good one *sharpens*, pages get tighter as new sources land, not longer. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.
 
 Pick one source that fills a gap (a practitioner article, a skipped doc, an email thread, a local file you can share). Tell Claude to integrate it into the memory, then paste the link or path after the `New source:` line in the prompt.
 
@@ -198,7 +198,8 @@ Every module after this one uses the memory you just built.
 
 <!-- maintainer -->
 
-**Quality:** maintainer-reviewed 2026-04-29
+**Quality:** compendium-audited 2026-05-02 (story@9ddfac3)
+- judges @9ddfac3: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-29 (Antti, M2 main exercise manual run; all four phases tested under Cowork lens)
 
 **Frameworks riffed on:**

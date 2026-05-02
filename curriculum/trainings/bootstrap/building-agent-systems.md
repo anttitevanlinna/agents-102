@@ -79,8 +79,8 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-02 (story@3d7e76c)
-- judges @3d7e76c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-02 (behavior@9ddfac3)
+- judges @9ddfac3: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-29 (Antti, M2 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.

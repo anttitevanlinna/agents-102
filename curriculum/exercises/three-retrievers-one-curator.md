@@ -56,7 +56,7 @@ Write each finding as soon as you have it; don't batch until the end. The synthe
 
 No need to update `memory/` — another session is handling curation. Just write to `sources/`.
 
-Sources first. Every finding cites the specific page title and URL you actually opened, plus one quoted sentence from the page that grounds the finding; if you cannot quote, write "[CITATION UNSUPPORTED]" instead. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
+Sources first. Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
 ```
 
 
@@ -77,7 +77,7 @@ Write each finding as soon as you have it; don't batch until the end. The synthe
 
 No need to update `memory/` — another session is handling curation. Just write to `sources/`.
 
-Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened, plus one quoted sentence from the source that grounds the finding; if you cannot quote, write "[CITATION UNSUPPORTED]" instead. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
+Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
 ```
 
 
@@ -124,11 +124,11 @@ Memory is curated, not a raw dump. Existing topic pages cover the challenge — 
 
 The loop:
 1. Wait for any new content in sources/. When a file appears (or grows), read it.
-2. Diff against existing memory/ pages. Decide: extend an existing page, or write a new one?
+2. Diff against existing memory/ pages. Extend in place if the topic exists; create a new page if it doesn't. Don't ask permission for either path.
 3. Make the update. Cite the source file by name. Integrate, don't append. Keep claims tight.
 4. Repeat until all three retrievals are integrated.
 
-When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md naming what changed, what's now sharper, where retrievals contradicted what was already in memory. That contradiction line is load-bearing — flag it, don't smooth it.
+When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md. List each memory file you actually changed by name; if fewer changed than the retrieval count, say so explicitly. Name where retrievals contradicted what was already in memory by quoting the conflicting claims verbatim from each source. That contradiction line is load-bearing — flag it, don't smooth it.
 
 Don't fabricate. Every memory update cites a source-file finding. If a retrieval is empty or thin, say so in your synthesis note rather than papering over the gap.
 ```
@@ -163,6 +163,6 @@ When the synthesizer's last move lands, `memory/_synthesis-m3.md` naming what ch
 - When Module 3 ships in self-study (no trainer to demo the four-session open), the exercise body needs a short recipe replacing the "trainer demos both live" line. Hold for the self-study pass; the live-trainer version ships as-is.
 
 **Deferred facilitator notes:**
-- Watch-fors: (a) starting 4 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room, name which session is Session 1 / 2 / 3 / 4; (b) retrievers return non-comparable outputs by design, student may try to normalise them — that's exactly what the synthesizer is for, let them feel the asymmetry; (c) the synthesizer left under-prompted will batch-write at the end instead of streaming — the prompt forces "write each finding as soon as you have it" but coach any room that slips past it.
+- Watch-fors: (a) starting 4 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room, name which session is Session 1 / 2 / 3 / 4; (b) retrievers return non-comparable outputs by design, student may try to normalise them — that's exactly what the synthesizer is for, let them feel the asymmetry; (c) the synthesizer left under-prompted will batch-write at the end instead of streaming — the prompt forces "write each finding as soon as you have it" but coach any room that slips past it; (d) **citation-cargo-cult watch:** retrievers fetch and dump as-is, the synthesizer is the discriminator. Risk: Claude can produce findings consistent with a page's general topic without having actually read the cited paragraph. Spot-check 2–3 source-file findings against their cited URLs during the synthesizer phase — if the cited page doesn't carry the claim, the retriever was confabulating. The fix is downstream (synthesizer surfaces it, student decides), not upstream prompt machinery.
 - Decision points: if a cohort is uniformly short on internal wiki access, collapse Session 1 and Session 2 into one retriever that reads whatever they have, and spend the time saved on the next exercise; the multi-agent-shape lesson survives with two retrievers.
 - Time budget: ~28 min total. Four sessions started, prompts pasted, retrievers + synthesizer run concurrently, student watches & answers + nudges. Over 35 = retrievers sprawled; under 20 = the felt moment of concurrency didn't actually land.

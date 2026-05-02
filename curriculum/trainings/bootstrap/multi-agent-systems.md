@@ -43,7 +43,7 @@ First, a small boundary shift. We work mostly with text in this training: prompt
 
 ## Debrief
 
-Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is what you just produced: the four agent prompts, the retrieval files, the synthesizer's briefing, the conversation. Claude reviews, rewrites the training-dir root rules file (`./CLAUDE.md`) in place, reports what changed. You push back on anything that's off.
+Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. Claude reviews them, rewrites the training-dir root rules file (`./CLAUDE.md`) in place, reports what changed. You push back on anything that's off.
 
 **Prompt** *(Claude Code)*
 

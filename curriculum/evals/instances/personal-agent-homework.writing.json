@@ -21,7 +21,7 @@
     {
       "compendium": "check_writing",
       "rule_index": 3,
-      "rule_lead": "No stale markers, no session biography",
+      "rule_lead": "No stale markers",
       "verdict": "PASS",
       "blocking": false
     },
@@ -29,13 +29,6 @@
       "compendium": "check_writing",
       "rule_index": 4,
       "rule_lead": "Register match",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy, NOT in curriculum body",
       "verdict": "PASS",
       "blocking": false
     },
@@ -55,21 +48,10 @@
     },
     {
       "compendium": "check_student_facing",
-      "rule_index": 3,
-      "rule_lead": "No narrating student behavior / no pat-on-back closers",
-      "verdict": "REVISE",
-      "evidence": "line 87-88: 'because you kept noticing. The HTML looks different too, because you kept tightening' — narrates student actions instead of artifact agency",
-      "fix": "Apply Sutherland-flip: move agency from student to artifact. Replace 'because you kept noticing' and 'because you kept tightening' with artifact-focused phrasing: 'The memory and HTML both tighten as misses surface and edits land.'",
-      "blocking": true
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 4,
-      "rule_lead": "No overclaim of student verification or coverage",
-      "verdict": "REVISE",
-      "evidence": "lines 85-92: claims 'the memory looks different from the one you left class with' as if the week of observation produces full transformation verification, but a week produces observation + sampling of edits, not full verification",
-      "fix": "Scope claim to sample: 'The memory evolves as patterns surface. By end of week, sample three misses and trace what the memory lacked.' Or defer full-system claim to end of subsequent module.",
-      "blocking": true
+      "rule_index": 7,
+      "rule_lead": "Always 'you', never 'the student'",
+      "verdict": "PASS",
+      "blocking": false
     },
     {
       "compendium": "check_student_facing",
@@ -80,48 +62,30 @@
     },
     {
       "compendium": "check_student_facing",
-      "rule_index": 22,
-      "rule_lead": "No time-of-day anchors in body prose",
-      "verdict": "REVISE",
-      "evidence": "line 93: 'One glance per session for a week' — implied time-of-day anchor in 'glance' (morning observation habit)",
-      "fix": "Replace 'One glance per session' with 'One observation per run' to make it time-neutral. Change line 93 to: 'Time: 35 minutes to set up. One observation run per day for a week.'",
-      "blocking": true
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in",
+      "rule_index": 23,
+      "rule_lead": "Reflection beats stay invisible",
       "verdict": "PASS",
       "blocking": false
     },
     {
       "compendium": "check_prompts",
-      "rule_index": 3,
-      "rule_lead": "Canonical presentation shape",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in",
       "verdict": "REVISE",
-      "evidence": "lines 29, 45, 67: three **Prompt** labels missing destination chip *(Claude Code)* parenthetical",
-      "fix": "Add *(Claude Code)* after each **Prompt** label: line 29 → '**Prompt** *(Claude Code)*'; line 45 → '**Prompt** *(Claude Code)*'; line 67 → '**Prompt** *(Claude Code, scheduled task)*' (note: line 67 correctly specifies the context already)",
+      "evidence": "Lines 64-67: Step 4's prompt block lacks semantic action lead-in. Line 65 says '**Prompt:** the single line below' which is a pointer, not an action summary with a command verb.",
+      "fix": "Add before line 67: One sentence like 'Ask Claude to read your agent instructions and memory, then execute today's job and generate HTML output.' or similar describing what the prompt does.",
       "blocking": true
     },
     {
       "compendium": "check_prompts",
-      "rule_index": 9,
-      "rule_lead": "Markdown shout inside fenced blocks is dead weight",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths (Bootstrap-specific)",
       "verdict": "REVISE",
-      "evidence": "line 32: '**+**' (bold in fence); lines 33-34: '**Settings → Connectors**' (bold in fence); lines 46-48: '**- Morning plan**' / '**- Daily risk scan**' / '**- Draft today's**' (bold bullet prefixes in fence)",
-      "fix": "Remove all markdown bold/italic markup from inside the three fenced blocks. Lines 32-37 (fence 1), lines 47-55 (fence 2) — use plain text, bullets, or backticks for paths only. In fence 2, bullets become plain: '- Morning plan' not '**- Morning plan**'.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 15,
-      "rule_lead": "Question-dump default — one-at-a-time rhythm required",
-      "verdict": "REVISE",
-      "evidence": "lines 50-52 (inside fence 2): three numbered questions [1. 2. 3.] listed in sequence. Prompt says 'ask one at a time' but format allows Claude to batch-post all three.",
-      "fix": "Add explicit one-at-a-time structural enforcement inside the prompt. Replace lines 50-52 list with single-question phrasing: 'Ask me one question and wait for my answer before asking the next. Do not show me all three questions — ask, wait, then ask the next one.' Remove the numbered list or restructure as conditional: 'First: Which job — morning plan, daily risk scan, or next-move draft? Wait for my answer, then ask the second question.' (Alternative: keep list but prepend with 'Ask ONLY the first question now:' to enforce sequencing.)",
+      "evidence": "Line 34 (inside fence): 'Write it to style.md at the training-directory root' uses naked filename. Bootstrap rule requires explicit path like './style.md'.",
+      "fix": "Change 'Write it to style.md' to 'Write it to ./style.md' to make the root-level destination explicit.",
       "blocking": true
     }
   ],
-  "blocking_findings_count": 5,
+  "blocking_findings_count": 2,
   "todos_count": 0
 }

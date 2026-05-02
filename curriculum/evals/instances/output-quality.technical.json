@@ -1,0 +1,212 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/bootstrap/output-quality.md",
+  "verdict": "PASS",
+  "training": "bootstrap",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 2,
+      "rule_lead": "Cloud/remote features carry a Git dependency — out of scope.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (plan mode, scheduling, subagents, turn streaming).",
+      "verdict": "PASS",
+      "evidence": "line 29: 'Four detectors run on the same claim pool, a scorer adjudicates 30 claims' — parallel subagent dispatch is consistent with how Claude Code works; no 'while the subagents run, Claude briefs you' language found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit — write 'start a new session in X,' not 'open Claude Code in X.'",
+      "verdict": "PASS",
+      "evidence": "line 21: 'Start this module at the training-directory root' — gives working directory context without conflating app-launch with session-start; no 'open Claude Code' phrasing found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory for every factual claim.",
+      "verdict": "REVISE",
+      "evidence": "line 84: 'Read Ethan Mollick, \"Garbage Can and Bitter Lesson.\"' — named source referenced as homework reading with no URL. pre-cohort-todos.md explicitly flags this as owed ('Add URL for Ethan Mollick, \"Garbage Can and Bitter Lesson\"'). The maintainer block of evaluations.md (M6) also flags it (line 99 of that file). Not blocking because it is a homework reading reference, not an inline factual claim — but the URL is owed before first cohort.",
+      "fix_hint": "Add URL to the One Useful Thing Substack post for Mollick's 'The Bitter Lesson versus The Garbage Can' alongside the homework reading reference.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL for the 82%-think-protected / 24%-have-visibility stat.",
+      "verdict": "REVISE",
+      "evidence": "line 9: '82%-think-protected / 24%-have-visibility pattern' — referenced as 'covered in Module 4' (pass-through, not an original claim in this file). The stat exists in continuous-research/insights.md with 'Source: Platform watch cycles 23-25, Microsoft 500K agents, Agents of Chaos study, Gravitee data' but no clickable URL. pre-cohort-todos.md flags source verification for 'shadow-agent and 82%-think-protected / 24%-visibility' as owed. Non-blocking since M5 merely references M4 coverage, but the stat needs a verified URL before M4 prework ships.",
+      "fix_hint": "Source lives in research insights (cycles 23-25, Gravitee data). Find and add the primary Gravitee report URL or Agents of Chaos study URL. Fix belongs in M4's prework or security.md, not in this file.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard — round-number AI failure/success rates.",
+      "verdict": "PASS",
+      "evidence": "line 112 (maintainer block): '85% × 10 steps ≈ 20% end-to-end' — in maintainer block only, not student-facing. Student-facing body mentions '30-claim benchmark' and '82%-think-protected / 24%-have-visibility' (see rule_index 1 finding above). No 95%/85%/80% zombie stats appear in student-facing body as unsourced assertions.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": "Debrief prompt (lines 54-62): scanned for [BRACKETS] pattern — none found. Claude is instructed to read specific named paths from scrollback context.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "line 50: 'Ask Claude to review the session and update `./CLAUDE.md` with groundedness operating rules.' — action lead-in present, command verb, under 20 words.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape: lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": "lines 50-54: lead-in (50) → blank (51) → **Prompt** *(Claude Code)* (52) → blank (53) → ``` (54). Shape is compliant.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "PASS",
+      "evidence": "No skill invocations in the debrief prompt. 'judges/groundedness-judge.md' is a file artifact path, not a skill path — correctly referenced as a filesystem path, not as a skill name.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths (Bootstrap-specific).",
+      "verdict": "PASS",
+      "evidence": "line 55 (inside fenced block): paths named as 'module-5/evidence-roster.md', 'module-5/claim-pool.md', 'module-5/detectors/', 'module-5/scoreboard.md', 'judges/groundedness-judge.md', './CLAUDE.md'. All subpath-explicit; no naked filenames.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside the prompt body.",
+      "verdict": "PASS",
+      "evidence": "Prompt uses relative subpaths ('module-5/', 'judges/', './CLAUDE.md') — no absolute path restatement inside the fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check — every named tool, skill, file, path must exist at this point.",
+      "verdict": "PASS",
+      "evidence": "Referenced files: lectures/module-5-prework.md (EXISTS), lectures/grounded.md (EXISTS), exercises/hallucination-bakeoff.md (EXISTS), lectures/self-consistency-after-scoreboard.md (EXISTS), supplementary/what-is-an-agent.md (EXISTS). All linked curriculum files verified on disk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "REVISE",
+      "evidence": "M5 has the student build judges/groundedness-judge.md. The module file (output-quality.md) and the exercise (hallucination-bakeoff.md) contain no explicit smoke-test step between saving the judge and handing it off to M6. The maintainer block (line 136) flags 'DEFERRED (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability' — indicating the capability check is deferred, not that a smoke-test prompt exists for the student to run. Rule 36 requires a smoke-test before the machinery is trusted.",
+      "fix_hint": "Add a smoke-test beat after the judge is saved: student runs the judge on one known-ungrounded claim from the benchmark and confirms it flags as expected before M6 picks it up.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 38,
+      "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+      "verdict": "PASS",
+      "evidence": "Producing side (output-quality.md line 21): 'saves the winning judge at `judges/groundedness-judge.md`'. Consuming side (evaluations.md line 18): 'Module 6 consumes `judges/groundedness-judge.md` from Module 5'. Both ends name the artefact explicitly by path.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The debrief's forcing functions ('Touch ONLY that section; preserve every other section verbatim', 'read back the Groundedness checks section') are inside the fenced prompt block, not in surrounding body prose.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Four detectors run on the same claim pool, a scorer adjudicates 30 claims against the sources",
+      "line": 29,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Four subagents spawned in parallel, each reading the claim pool + evidence roster and writing to module-5/detectors/<name>.md",
+      "line": 136,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Start this module at the training-directory root",
+      "line": 21,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 9,
+      "claim": "82%-think-protected / 24%-have-visibility pattern (referenced as M4 coverage)",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": false
+    },
+    {
+      "line": 84,
+      "claim": "Ethan Mollick, 'Garbage Can and Bitter Lesson' (homework reading)",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": false
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 3
+}

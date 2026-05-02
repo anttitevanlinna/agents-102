@@ -116,7 +116,12 @@ The single exception: Step 6.5's call to `update-quality.sh` to stamp a PASS ver
 If any file has a REVISE verdict and the author wants fixes:
 
 1. **Exit this skill.** Do not edit inside the eval cycle.
-2. **Invoke `/content-creation` with the file list.** That skill loads the matching compendiums, respects mood arc + Key Concepts + maintainer-review state, runs PDCA, and at cycle close re-fires the relevant `/eval-fire` to verify the fixes landed.
+2. **Pick a dispatch shape, then route.** Two legal shapes:
+
+   **(a) Single-file `/content-creation` invocation** (default for one or two files). The skill loads bosser-strategy preflight, mood contract, Big Idea, compendiums, runs PDCA, and re-fires `/eval-fire` at cycle close. Slower but inside the canonical boundary.
+
+   **(b) Parallel fan-out via subagents** (when 3+ files have disjoint surgical fixes — see `curriculum/CLAUDE.md` § Orchestrator pattern). Subagents cannot invoke skills, so each subagent's brief MUST include the output of `curriculum/evals/scripts/content-creation-brief.sh <file>` (training, voice contract, Big Idea, mood contract, compendiums, hard rules) — that script extracts what `/content-creation`'s preflight would have loaded. The brief output is appended verbatim into each subagent's prompt alongside the per-finding fix-hint. Strategy-loaded subagents make mood-honest edits; strategy-unloaded subagents pass compendium rules but can drift mood. **Default to including the brief; omit only when fix is purely mechanical (em-dash, banned word, single-line credit add).**
+
 3. **Override decisions** (deliberately accepting a flagged risk) get logged to `memory/compounded/` as `type: decision`. Overrides are content-creation-skill output, not eval-fire output.
 
 Diagnostic for the orchestrator: if you (the running agent) are about to call `Edit` or `Write` on a curriculum file inside this skill's invocation, STOP. The boundary collapsed. Surface the verdict, return control to the user, let them invoke `/content-creation` if they want fixes.

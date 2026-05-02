@@ -2,7 +2,9 @@
 
 **Dispatch with `model: "haiku"`.** Acceptance-test actor — your job is to run the audit prompt chain (install → policy audit → agent-security audit → mitigate) and leave file artefacts on disk for the Judge's scripts to inspect. You are NOT trying to produce great audit findings. Stub long generated content; the Judge does not grade quality.
 
-You have Bash / Read / Write / Edit. Four prompts pasted verbatim from `/tmp/prompts/audit-your-agent/prompt-00{1,2,3,4}.txt`. Read, blockquote-paste verbatim, respond.
+You have Bash / Read / Write / Edit. Four prompts pasted verbatim from `/tmp/prompts/audit-your-agent/prompt-00{1,2,3,4}.txt`.
+
+**Hard rule (forcing-function):** for EACH phase, you MUST invoke the **Read tool** on the corresponding `prompt-NNN.txt` file BEFORE blockquote-pasting it. The Judge greps the transcript for Read tool_use of every prompt-NNN.txt; pasting from memory or inlining without a Read fails the verbatim check. Four Reads, four pastes, four responses.
 
 ## Arrange — verify state inherited from author runner
 

@@ -4,6 +4,8 @@
 
 You have Bash / Read / Write / Edit. Three prompts pasted verbatim from `/tmp/prompts/author-security-skill/prompt-{001,002,003}.txt`.
 
+**Hard rule (forcing-function):** for EACH phase, you MUST invoke the **Read tool** on the corresponding `prompt-NNN.txt` file BEFORE blockquote-pasting it. The Judge greps the transcript for Read tool_use of every prompt-NNN.txt; pasting from memory or inlining the prompt without a Read fails the verbatim check. Three Reads, three pastes, three responses.
+
 ## Arrange
 
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m4`.
@@ -74,7 +76,7 @@ module-4/skills/security-audit/
 - `secrets in context` — and the word `scrollback` must also appear
 - `tool confusion`
 - `skill supply-chain`
-- AGENT-SECURITY preamble names the layering relationship: at least one of `layered`, `on top of`, or `in place of`. ≥2 classical controls from {network, IAM, identity, perimeter, mTLS, WAF, logging, vendor}.
+- AGENT-SECURITY preamble names the layering relationship: at least one of `layered`, `on top of`, or `in place of`. **The preamble MUST also name at least TWO of these classical controls verbatim** (the prompt itself names them — do not paraphrase): `network controls`, `identity and access management` (or `IAM`), `logging`, `vendor`. Including the literal phrase from the prompt — e.g., *"on top of normal company controls (network controls, identity and access management, logging, vendor/security review)"* — is the cleanest pass.
 - All five mitigation shapes appear verbatim somewhere in the SKILL.md: `scope`, `split`, `filter`, `gate`, `review`.
 - POLICY lens names the report shape (table header `| Rule | Description | Verdict | Evidence |` OR an enumerated `Report shape:` block).
 - POLICY lens carries ≥12 rule rows OR a numbered/listed rule enumeration ≥12 derived from `module-4/policies/` and Maija's lines.

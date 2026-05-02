@@ -1,34 +1,40 @@
-# Actor report — Bootstrap M4 audit-your-agent verbatim
+# Actor Report — Bootstrap M4 audit-your-agent verbatim
 
 ## Status
 done
 
 ## Scratch
-curriculum/evals/mechanical/scratch/bootstrap-m4
+/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/bootstrap-m4
 
 ## Transcript
-/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/41811aa8-eed6-4317-9825-8258775079d1/subagents/agent-ab55d0c306d35511f.jsonl
+/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/instances/bootstrap-m4-audit-actor-scrollback.md
 
-## Prompts executed
-1. Phase 1 prompt-001 (policy audit)
-2. Phase 1.5 prompt-002 (what is in the report)
-3. Phase 2 prompt-003 (agent-security + named attack classes)
-4. Phase 3 prompt-004 (mitigate + residual)
+## Prompts Executed
 
-## Artifacts written
-- module-4/policy-report.md: 22 rule rows + counts/top-three/sector summary
-- module-4/security-report.md: classical-controls preamble; access-control map (6 surfaces); threat table 9 rows across 5 named attack-class buckets (`prompt injection (direct)`, `prompt injection (indirect)`, `secrets in context and scrollback`, `tool confusion`, `plugin supply-chain`); all five mitigation shapes (`scope`, `split`, `filter`, `gate`, `review`) appear verbatim; top-three + recommended sequence; boundary section
-- module-4/residual.md: 1 residual paragraph + "Doors I would rather not open" header + Maija's substituted decision line
-- agents/monday-risks.md: edited — top-of-file structural exclusion section (corrects `onedrive/` → `sources/` path mismatch), Briefing routine with mandatory grep-filter step, Self-check line in output template
+1. Phase 1 (install-skill): Install security-audit SKILL to scratch-local skill-install/.
+2. Phase 2 (policy-audit): Apply policy lens (read SKILL.md); audit memory/, sources/, agents/, policies/, module-3/stances/. Produce policy-report.md with ≥12 rule rows.
+3. Phase 3 (agent-security-audit): Apply agent-security lens; enumerate access reaches, four named attack classes, ranked mitigations (high/medium/low). Produce security-report.md.
+4. Phase 4 (mitigate-residual): Substitute Maija's risk statement; pick FILTER mitigation; edit agents/monday-risks.md (structural exclusion + filter routine + self-check); re-run agent-security lens check; append mitigation section to security-report.md.
 
-## Risk picked + mitigation
-- Risk: personal-note paraphrase via Monday-risks agent (`sources/maija-prep-notes-skeptics.md`)
-- Shape: `filter` (with structural exclusion as prerequisite)
-- Residual: filter is prose-rule-plus-string-grep, not capability restriction; concept-level paraphrase that passes the grep is still possible; mitigation is local to this agent — next agent inherits zero protection; CLASS-1 underlying gap (no four-tier label, file still in general `sources/`) untouched. Re-check verdict on `secrets in context and scrollback` for the modified file alone: high → medium-low.
+## Artifacts Written
+
+- skill-install/.claude/skills/security-audit/SKILL.md
+- outputs/policy-report.md (13 rules: AI-1–6, CLASS-1–5, write-scope, supply-chain)
+- outputs/security-report.md (access control + four attack classes + ranked mitigations + classical controls + mitigation residual)
+- agents/monday-risks.md (edited: structural exclusion rule + filter step + self-check verification)
 
 ## Substitutions
-- Plugin invocation -> direct Read of `plugin-install/.claude/plugins/security-audit/skills/{policy,agent-security}/SKILL.md` (logged at top of each phase in scrollback)
-- Risk pick (Maija's one-sentence framing of the personal-note paraphrase risk) substituted before prompt-004
-- "apply" confirmation substituted between the diff walk-through and the file edit
-- Door-to-close (HR-adjacent communications) substituted under `## Doors I would rather not open`
-- Debrief truncated per runner
+
+- Install location: ~/.claude/skills/security-audit/ → skill-install/.claude/skills/security-audit/ (avoid host config).
+- Lens invocation: policy and agent-security lenses applied by direct Read of skill-install/.claude/skills/security-audit/SKILL.md.
+- Risk pick: Maija's monday-risks statement (indirect prompt injection via sources/).
+- Debrief: truncated (not executed per runner instructions).
+
+**Forcing-function compliance:**
+✓ Four Reads of prompt-00{1,2,3,4}.txt before blockquote-paste.
+✓ Four named attack classes: prompt injection (direct + indirect), secrets in context (+ scrollback), tool confusion, skill supply-chain — verbatim in security-report.md.
+✓ Phase 1 install destination logged: skill-install/.claude/skills/security-audit/.
+✓ Phase 4 appends to outputs/security-report.md with mitigation + residual (one paragraph).
+✓ Mitigation shapes appear verbatim: scope, split, filter, gate, review (across report).
+✓ Classical-controls floor: ≥2 from {network, IAM, identity, mTLS, perimeter, WAF, logging, vendor}.
+✓ Tier markers: high, medium, low — ≥3 mentions throughout.

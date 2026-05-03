@@ -1734,47 +1734,83 @@ body.workbook { padding-top: 3rem; }
 </header>
 
 <section class="module" id="trainer-guide">
-<h1>Trainer delivery guide</h1>
-<p><strong>What this file is.</strong> Trainer delivery operations — read once before your first cohort, re-skim by section before each session. Authoring rules and content-generation rules live in <code>memory/check_*.md</code> compendiums and <code>.claude/skills/content-creation/SKILL.md</code>. Curriculum architecture lives in <code>curriculum/CLAUDE.md</code>. This guide is for what happens in the room, not what happens before the file ships.</p>
-<p>Read this once before you deliver your first cohort. Re-skim the section that matches what you&#39;re about to do (prepare, run a session, handle a thing going wrong). Not secret — students can read this too. They mostly won&#39;t. The rules are the same either way; this just names them.</p>
-<p>Written for: anyone leading an Agents 102 cohort. The portfolio currently runs <strong>two trainings</strong> with different audiences and different delivery architectures:</p>
+<h1>AE101 Trainer Guide</h1>
+<p><strong>What this file is.</strong> Delivery prep for Agentic Engineering 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in <code>memory/check_*.md</code> and <code>.claude/skills/content-creation/SKILL.md</code>.</p>
+<p>AE101 is for software engineer ICs who already use or have seen Claude Code. Do not teach Claude Code from zero. The job is to turn uneven self-taught usage into an engineering loop that compounds: run the work, read what happened, encode the lesson into repo memory, skills, verifiers, and team kit.</p>
+<h2>Operating Contract</h2>
+<p>You project the workbook page. There are no slides. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
+<p>Your screen is shared most of the session. There is no private trainer pane. Read maintainer blocks during prep only, never while screen-sharing. If a cue is missing from student-visible prose, flag it after the session rather than toggling to a hidden source file.</p>
+<p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
+<p>In cohort delivery, you carry the push-backs by default. The Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.</p>
+<h2>Delivery Architecture</h2>
+<p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Bootstrap habits.</p>
+<p>AE101 is a Claude Code training. The live surface is Claude Code CLI unless the cohort has deliberately chosen another Claude Code surface. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code.</p>
+<p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
+<h2>Prep Before Each Session</h2>
 <ul>
-<li><strong>Bootstrap</strong> — for builder leaders making the chat-to-systems leap. Business audience. Eight-module mood arc (joy → compound → unease → deeper unease → rescue → leverage → generosity → awe). Shipped artifacts land in a training directory with <code>module-N/</code> folders.</li>
-<li><strong>Agentic Engineering 101 (AE101)</strong> — for software engineer ICs (L0 → L3 path). Different delivery architecture: content folder unzipped by the student, all compounding artifacts land in the student&#39;s real repo. <strong>No <code>module-N/</code> training-dir state.</strong> AE101 currently runs M4–M6 in the long-running pattern in production. Its mood arc differs (wonder → discipline → unease → patience → diagnosis → leverage). For canonical AE101 architecture, see <code>bosser-strategy:content-strategy-agentic-engineering-101.md</code>.</li>
+<li>Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.</li>
+<li>Check Quality tags in maintainer blocks during prep. <code>draft</code> means rehearse harder; <code>mechanical-tested</code> means the prompt chain has actually run.</li>
+<li>Dry-run every exercise end to end on your demo repo. Not skim. Run it.</li>
+<li>Rehearse the prompt progression, not just individual prompts. Know what each prompt depends on and what evidence it should leave for the next one.</li>
+<li>Know the lecture material well enough to deliver the point without reading it verbatim.</li>
+<li>Note two or three dry-run moments you can talk through during agent waits.</li>
+<li>Confirm sponsor-stated homes: ADRs, rules file, ticket tracker, team kit, memory.</li>
+<li>Keep your demo repo clean, on the right branch, with the expected starting state.</li>
 </ul>
-<p>The training is hands-on from minute one in either variant; the trainer&#39;s job is to keep the room moving together while every student does the work themselves on their own laptop.</p>
-<p><strong>Two baseline assumptions</strong> this guide rests on:</p>
+<h2>Patterns To Call Out</h2>
+<p><strong>Quote before summary.</strong> This is the strongest AE101 trainer move. Many exercises fail the same way when Claude summarizes smoothly without evidence. Ask for the quoted file line, diff line, commit, transcript moment, or skill sentence. If it cannot quote, the claim does not carry.</p>
+<p><strong>Self-report is a hypothesis.</strong> Claude can tell you what it read, why it skipped files, what changed, and what is weakest. Useful, not authoritative. The student verifies against <code>/context</code>, the diff, the file, the ADR, the skill output, or the run trace.</p>
+<p><strong>Author through conversation, then invoke.</strong> Catch the editor drift every time: the student should not hand-craft skill files in a file tab. Claude interviews, drafts, self-critiques, revises, then invokes the skill on the real feature or real run. Authoring without invocation is theatre.</p>
+<p><strong>Personal first, team later.</strong> <code>CLAUDE.local.md</code> is personal. Authored skills ship personal first. Team-worthy findings get flagged, not auto-PRed. You can give examples for how a team might adopt a rule, skill, or verifier, but AE101 is not a training about team process. The team figures out its own sharing path.</p>
+<p><strong>Fresh context for breadth, main thread for steering.</strong> Use subagents or fresh sessions for audits, broad reads, and cold critiques. Keep one-question-at-a-time authoring, decisions, and push-back in the main session. If the room confuses the two, name the split.</p>
+<p><strong>Task size is pedagogy.</strong> Too small gives no signal. Too large gives mush. Protect the task size at Connections, because downstream prompts cannot rescue the wrong task.</p>
+<p><strong>Do not front-run the next move.</strong> The move may be correct in real life and still be wrong before the curriculum earns it. If a student wants to jump ahead, name the move and park it.</p>
+<p><strong>Absence is data.</strong> No tests on the bug path, no ADR convention, no team-kit home, no business-rules layer, missing transcript, thin memory: these are not side quests to solve live. Name the gap, write the smallest durable note, keep the room moving.</p>
+<h2>Prompt Rules To Notice Live</h2>
+<p><strong>Prompt blocks serve intent.</strong> Teach the shipped prompt by default so the room has a shared reference. If there is a better way to reach the same teaching point, show it and use it. Name what changed, why it better serves the exercise, and compare the result against the intended teaching point.</p>
+<p><strong>Read the lead-in.</strong> The sentence before the fenced prompt is part of the instruction. It tells the student what the prompt is about to do and gives you the clean narration beat before everyone pastes.</p>
+<p><strong>Open hooks mean student input.</strong> When a prompt ends with a colon, the student supplies the bug, task, feature, or concern. Do not turn every prompt into a fill-in-the-blank form; when Claude can infer the referent from scrollback, let the back-reference do the work.</p>
+<p><strong>Back-references beat aliases.</strong> Good AE101 prompts say &quot;the task we just scoped,&quot; &quot;the file you just created,&quot; or give a deterministic path. If Claude loses the chain, recover with the path and the relevant scrollback moment rather than inventing a new nickname.</p>
+<p><strong>Invoke skills by name.</strong> Students should use the installed skill name, not paste paths to the skill source. The path is authoring evidence; the skill name is the runtime interface.</p>
+<p><strong>Preserve scrollback inside a phase.</strong> Do not clear the session in the middle of a chain that depends on what just happened. Use a subagent or fresh context for breadth and critique, then bring the finding back to the parent thread.</p>
+<p><strong>Ask for critique, not defense.</strong> Wording matters. &quot;What is weakest?&quot; or &quot;what is still surface-level?&quot; usually produces usable evidence. &quot;Justify this&quot; often produces confident prose.</p>
+<p><strong>Minimal send-off is intentional.</strong> Some send-off prompts rely on the surrounding artifact trail. Do not over-engineer them live with every possible instruction; the contrast between un-packaged and packaged work is the point.</p>
+<p><strong>Push back on question dumps.</strong> If Claude asks five discovery questions after a one-question-at-a-time prompt, stop and correct it. That moment teaches steering better than explaining steering abstractly.</p>
+<p><strong>After a side effect, ask what changed.</strong> Prefer &quot;tell me what you wrote&quot; after saves, edits, or generated files. Add show-before-save only when the operation is hard to reverse or the exercise explicitly needs pre-approval.</p>
+<h2>Live Triage</h2>
+<p>Protect the core live run. Each session has one main exercise, sometimes two medium ones before the midpoint. If time slips, compress framing, run the prompt, and move polish or extended comparison to homework. Do not try to &quot;cover&quot; the module at the cost of the exercise. AE101 teaches through artifacts and traces, not explanation.</p>
+<p>Do not script the cut order too tightly. The trainer is also an adult professional reading the room. The default bias is to preserve the live run and the trace it produces; after that, framing, debrief, comparison, and polish can flex.</p>
+<p>Vary the teaching move. Sometimes name the concept before the prompt, sometimes run first and name it afterward, sometimes explain from a student&#39;s output. Use whichever route suits the room and the moment. A forced pattern makes sessions dull.</p>
+<p>Bring your own examples, stories, and tooling tips. They give you credibility and make the room feel live. Keep them short, concrete, and tied to what students are about to run or just produced. A story earns its time when it helps students read the artifact in front of them.</p>
+<p>When students ask for an example, show one from your demo repo or prompt for a starting snippet live. It does not need to be a perfect sample artifact. One can prompt for anything; use the generated snippet to unblock the room and point back to the exercise.</p>
+<p>When a student asks for the &quot;right&quot; way, answer in context. Right means the move that gives the best result for this repo, team, risk, task, and review path. Teachers know the word is tricky; do not dodge it. Give your judgment, name the conditions behind it, and let the student map it to their situation.</p>
+<p>You are a practitioner, not an oracle. If a student has a plausible alternative, there is little value in arguing from authority. Compare the approaches against the module intent, and when it matters, test both.</p>
+<p>If a student shows a better workflow, steal with pride and celebrate it. The workbook is not threatened by useful practitioner knowledge in the room. Compare the move against the exercise intent, let others learn from it, and keep the session moving.</p>
+<p>You have authority to steer the room. If a question helps the room, answer briefly. If it would pull the cohort away from the protected exercise, park it with respect, name where it fits later, and keep moving.</p>
+<p>If one laptop breaks, triage for 30 seconds. Fix quick auth or network issues; defer corporate laptop problems to a buddy or the customer&#39;s escalation path. Do not stop the room for one machine.</p>
+<p>Assume the exercises are done. That is the mutual respect contract of AE101: the trainer prepares a real live run, and students spend the session actually running it. Still, students are adult professionals working in their own repos and choosing what to do with their time. Do not become the grader. Help them see what the artifact is based on: quoted evidence, run trace, diff, plan risk, or skill behavior. You can name risks and tradeoffs, then the student decides whether the artifact is good enough for their real team, repo, or review process.</p>
+<p>With ten-plus students working concurrently, you cannot inspect every run. Intervene to protect agency at room scale: when the agent is hiding evidence, flattening a decision, or pushing students into accidental approval, name the pattern to the room and hand the decision back to each student. Spot-assist one or two people only when the fix unblocks the protected exercise.</p>
+<p>If a student&#39;s output differs from yours, use it. Variation is expected. Ask what their version surfaced and compare the evidence, not the polish: which run quoted a file, found a real risk, preserved the student&#39;s decision, or exposed the teaching point. Do not normalize everyone toward your demo output.</p>
+<p>If an exercise produces a weak or failed result, use it. A weak run is useful when it produces evidence: what failed, what the agent assumed, and what artifact would change next time. Do not rescue too early when imperfect traces are part of the learning. Help students separate one-off bad luck from a system gap such as missing context, weak task shape, or an absent verifier.</p>
+<p>If a real repo is locked down, unsuitable, or too strange for the exercise, simulate the key behavior outside the repo. Any writable local folder is enough if it lets the student run the move, create evidence, and understand what would change in the real environment. Give tips for rewiring the lesson at the level of scope and loading behavior, then let the student figure out the right adaptation.</p>
+<p>Expect speed spread. Fast students will have time for side chat or deeper inspection; slow students will struggle; the middle will usually be fine. Keep the main discussion going so fast students stay engaged and slow students get catch-up time without stopping the cohort.</p>
+<p>In a Nordic room, do not mistake a quiet first beat for no signal. Use low-friction checks, quick hands, and your demo output as the comparison surface. In experience, people often do want to comment once the opening is easy and the question is concrete.</p>
+<p>Most AE101 runs are not long. In the few places where the agent may run for five minutes, use the wait to re-explain the concept and narrate what is actually happening: tool use, files touched, assumptions forming, or why the prompt is shaping the behavior you expect.</p>
+<p>If the room is slow, compress optional asides rather than sprinting. If the room is fast, do not pad. Spend the time on a deeper comparison or leave the room to its own rhythm.</p>
+<p>The most common AE101 failure is oversized task selection. Push early. &quot;Not a typo-fix, not an epic&quot; is the condition that lets the long-running loop produce evidence the next module can read.</p>
+<h2>What Not To Do</h2>
 <ul>
-<li><strong>You&#39;re an expert-level Claude Code user.</strong> This guide doesn&#39;t teach the tool — that&#39;s not its job. Skills, slash commands, plan mode, sub-agents, settings layers, hooks, MCP — you use these fluently. If a curriculum file references a Claude Code primitive you haven&#39;t met, that&#39;s a curriculum bug to flag, not a gap in your skill set.</li>
-<li><strong>You&#39;ve dry-run every exercise on your own setup before the session.</strong> Not &quot;read it&quot; — actually run it, end to end, on the demo repo. The dry run is what gives you the live cadence (timing per phase, what the agent tends to do, where the room will get stuck) AND a stockpile of war stories to fill agent waits with. A trainer who hasn&#39;t dry-run is improvising on stage.</li>
+<li>Do not read maintainer blocks during the session.</li>
+<li>Do not lecture from slides.</li>
+<li>Do not fix every install issue from the front of the room.</li>
+<li>Do not pre-summarize a lecture before its slot lands.</li>
+<li>Do not apologize for agent waits.</li>
+<li>Do not auto-promote personal learnings to team PRs.</li>
+<li>Do not let a contrast exercise collapse because the trainer rescued the first run too early.</li>
 </ul>
-<h2>Dual-runtime — know which surface the cohort is on</h2>
-<p>The training platform is <strong>Claude Code (CLI + Desktop) + Cowork</strong>, current as of 2026-04-29. Same prompts, same artifacts; skill install surfaces differ. Before each session, <strong>confirm with the customer which surface their cohort is using</strong> and adjust your narration vocabulary to match.</p>
-<ul>
-<li><strong>Claude Code surface (CLI or Desktop app).</strong> Vocabulary: <em>subagent</em>, slash commands, plan mode (Shift+Tab cycle), <code>/loop</code>, <code>/schedule</code>, the <strong>Schedule sidebar</strong>, the <strong>+</strong> button next to the prompt, <strong>Settings → Connectors</strong>, the desktop <strong>mode dropdown</strong>.</li>
-<li><strong>Cowork surface (Cowork tab in Claude Desktop).</strong> Vocabulary: <em>agent</em> (not subagent), the <strong>Cowork tab</strong> in Claude Desktop, <strong>Customize → Skills → New → Create with Claude</strong>, skill save after authoring, and the <strong>connected-folder model</strong> in place of CWD.</li>
-</ul>
-<p>Mixing vocabularies live (&quot;the subagent — uh, the agent —&quot;) signals you don&#39;t know the surface. Pick one before the session and stay in it. If a curriculum file uses the runtime-fork paired-divs pattern (<code>&lt;div class=&quot;rt-code&quot;&gt;</code> / <code>&lt;div class=&quot;rt-cowork&quot;&gt;</code>), the projected site auto-swaps based on the cohort&#39;s runtime — you don&#39;t have to read both.</p>
-<h2>What you do, in one paragraph</h2>
-<p>You project the recap site for the module the room is doing. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses written into the exercise (say them out loud; they&#39;re as much for you as for the room). When the agent runs, you fill the air — usually with what happened on your dry run, or with a Claude Code tip the room will use later. You watch your own session and the room&#39;s faces; you don&#39;t switch to a hidden trainer-only document mid-flow. When a student is stuck, you triage in seconds — recover or defer. The curriculum carries the teaching; you carry the cadence.</p>
-<h2>How a session looks</h2>
-<p>The shape is the same every session, every module:</p>
-<ol>
-<li><strong>Open the recap site to the module page</strong>, project to the room. The recap site is at the URL the customer&#39;s L&amp;D contact gave you; bookmark it. Check the projection legibility from the back row before students arrive — font size, contrast, header chip readability on prompt blocks.</li>
-<li><strong>Open your own Claude Code session</strong> in your demo repo (more on the demo repo below). Make sure you&#39;re on the network and license you&#39;ll use throughout — switching mid-session is friction. Confirm you&#39;re on the same surface (Code or Cowork) the cohort is using.</li>
-<li><strong>Walk through the module page top to bottom.</strong> Read the Big Idea aloud. Read the Connections question, take answers from the room. Move into the exercises in order.</li>
-<li><strong>At each prompt block:</strong> click the Copy button on the projected site, paste into your Claude Code, send. Narrate as the response streams. The room copy-pastes the same prompt into their own session concurrently — this is follow-along, not watch-along. Per the cadence rule below, your time budget is the slower of the two paces, not their sum.</li>
-<li><strong>At each conversation pause:</strong> stop. Read the pause prompt aloud. Take 60–90 seconds of room conversation. Then move on. Pauses are how the room stays together; skipping them is how stragglers fall off.</li>
-<li><strong>Close the module&#39;s Debrief and Bridge.</strong> Name the artifact the room just produced. Name what&#39;s coming next.</li>
-</ol>
-<p>There are no slides. The curriculum site is the slide. There is no separate trainer pane on your screen; if it&#39;s on your screen, the room sees it (more on this below).</p>
-<h2>The classroom rules — what&#39;s load-bearing</h2>
-<p>These are documented in <code>curriculum/CLAUDE.md</code> § Classroom delivery — default mode, but they&#39;re load-bearing enough to repeat here.</p>
-<p><strong>1. The recap site is the projection surface.</strong> Open it to the module page. Don&#39;t toggle to a deck, a doc, a Slack window, an editor. The room&#39;s eyes track yours; if you&#39;re somewhere they can&#39;t follow, you&#39;ve lost them.</p>
-<p><strong>2. Every exercise is follow-along; the time budget is <code>max(trainer, student)</code>, not the sum.</strong> You demo, the room copy-pastes the same prompt at the same time. The Copy button on every prompt block exists for this — students click it, paste into their own Claude Code, watch their session run alongside yours. Two paces happen concurrently; the budget is the slower of the two (usually yours, the demonstrator), <strong>not the sum of trainer-time plus student-time</strong>. A 25-min exercise stays in 25 min when the trainer paces deliberately. (Per <code>2026-04-24-pedagogy-in-class-concurrent-pace.md</code> — the most-violated cadence rule in first-time delivery.)</p>
-<p><strong>3. Conversation pauses are written into the exercise.</strong> They look like <em>&quot;Take 90 seconds and compare what your session printed with the person next to you&quot;</em> in the body prose. When you reach one, stop and read it aloud. Don&#39;t skip them; they&#39;re not optional polish, they&#39;re the structural beat that lets stragglers catch up. If you find yourself ahead of the room, you skipped a pause — back up.</p>
-<p><strong>4. Your screen is shared most of the session.</strong> Whatever is on your screen is visible to the room. There is no private trainer pane during delivery. Anything you need to read in private has to happen before you start sharing — read this guide before the session, not during. If you really need a private surface during delivery (timer, pacing notes, a secondary cheat sheet), use a phone or a second device, not a window on your laptop.</p>
-<p><strong>5. Hard rule — don&#39;t read maintainer blocks during the session.</strong> Maintainer blocks (the section below `</p>
+<h2>Feedback Loop</h2>
+<p>After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.</p>
+<p>If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture mechanism is being designed, see <code>pre-cohort-todos.md</code>. Until it lands, don&#39;t rely on memory.</p>
 
 </section>
 </main>
@@ -1834,6 +1870,9 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            supplementaries: [
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -2229,7 +2268,7 @@ body.workbook { padding-top: 3rem; }
         }
 
         if (t.supplementaries && t.supplementaries.length) {
-            html += '<' + heading + ' class="index-heading">' + (opts.showModuleCountHeading ? 'Supplementary — grows across the training' : 'Supplementary') + '</' + heading + '>';
+            html += '<' + heading + ' class="index-heading">Supplementary</' + heading + '>';
             html += '<ol class="module-list index-supplementaries">';
             t.supplementaries.forEach(function (s) {
                 html += simpleRowHtml('Reference', s.title, opts.fileHref('supplementary', s.slug));

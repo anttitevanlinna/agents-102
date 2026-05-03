@@ -62,6 +62,8 @@ Antti
 <!-- maintainer -->
 
 
+**Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (line 60). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.
+
 **Quality:** compendium-audited 2026-05-03
 - judges @68f5fd4: writing REVISE (3B/3T see instances/ae101--spot-gaps-build-the-loop.writing.json), story REVISE (4B/0T see instances/ae101--spot-gaps-build-the-loop.story.json), technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)

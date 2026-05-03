@@ -93,8 +93,8 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03
-- judges @68f5fd4: writing grandfathered, story PASS (0B/0T see instances/ae101--earn-the-trust.story.json), technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-03 (story@d26c059)
+- judges @d26c059: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

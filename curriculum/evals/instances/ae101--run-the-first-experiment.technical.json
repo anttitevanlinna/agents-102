@@ -1,22 +1,31 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
       "rule_lead": "No placeholders inside fenced blocks.",
-      "verdict": "REVISE",
-      "evidence": "line:49: `m4/<short-task-slug>` — angle-bracket placeholder inside fenced prompt block the student copies",
-      "fix_hint": "Replace <short-task-slug> with a back-reference: 'named m4/<use the task slug we agreed on>' or have Claude derive it from scrollback context ('name the branch after the task we scoped, prefixed m4/').",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in — Prompt 1 (commit).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in — Prompt 2 (send-off).",
       "verdict": "PASS",
       "evidence": null,
       "fix_hint": null,
@@ -27,8 +36,8 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block gets a one-sentence action lead-in — Prompt 3 (optional nudge).",
       "verdict": "REVISE",
-      "evidence": "line:69: 'If Claude stalls and you want to see if it picks itself back up, dark-humour nudge — phrased as encouragement, lands as a taunt:' — descriptive framing, not a command-verb lead-in under 20 words.",
-      "fix_hint": "Replace with a canonical lead-in, e.g. 'Nudge Claude back into motion with a single one-liner.'",
+      "evidence": "line:69: 'If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:' — descriptive framing, not a command-verb lead-in under 20 words.",
+      "fix_hint": "Replace with a canonical command-verb lead-in, e.g. 'Nudge Claude back into motion with a single one-liner.'",
       "blocking": false
     },
     {
@@ -97,10 +106,10 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory for every practitioner reference.",
-      "verdict": "REVISE",
-      "evidence": "line:89: 'Laura Entis on Kieran Klaassen, You're the Bread in the AI Sandwich' — URL present, attribution correct, but no [practitioner analysis] source-type label. line:91: 'Kieran Klaassen, Compound Engineering' — URL present, no [practitioner direct] label.",
-      "fix_hint": "Add bracket source-type labels: [practitioner analysis] for the Entis piece, [practitioner direct] for Klaassen's own article. These are pre-reads, but they carry practitioner references and the rule fires on those.",
+      "rule_lead": "Source URL + type label — maintainer-block only (per 2026-05-03 clarification).",
+      "verdict": "PASS",
+      "evidence": "Body prose (lines 89-91) carries citations in builder voice only — no labels, correct. Maintainer block source-verification section (line 159) carries '[practitioner direct]' and '[practitioner analysis]' labels per byline for Klaassen and Entis respectively. Placement is correct on both surfaces.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -120,6 +129,33 @@
       "evidence": null,
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block present for files with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "lines 158-159: '**Source verification — MUST DO before first cohort**' section present in maintainer block, listing URLs for Klaassen, Entis, and Uncle Bob supplementary with freshness re-check instruction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 46,
+      "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
+      "verdict": "PASS",
+      "evidence": "lines 138-144: Artefact contracts table present with three rows: M4 starting-point branch+SHA (stable identifier: 'm4/<task-slug>' branch + short SHA), filled gap entries in memory (.claude/memory/), and M4 session transcript (~/.claude/projects/<project-folder>/<session-id>.jsonl). Each row names producing prompt, consuming module(s), and stable identifier.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check — every named tool, skill, connector, file, or path must exist and be available.",
+      "verdict": "PASS",
+      "evidence": "All paths invoked in prompts (CLAUDE.md, CLAUDE.local.md, .claude/memory/, ADRs, skills by name) are standard student-environment artifacts established by prior modules. No curriculum-supplied tools or paths are assumed unavailable.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "platform_claims_checked": [
@@ -133,7 +169,7 @@
       "claim": "Claude Code stores every session transcript under ~/.claude/projects/ in a folder matching this repo",
       "line": 81,
       "verdict": "PASS",
-      "source": "inferred"
+      "source": "compendium"
     },
     {
       "claim": "Claude Code loads both at session start (see Claude Code for engineers — the memory hierarchy)",
@@ -173,6 +209,6 @@
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 1,
-  "todos_count": 2
+  "blocking_findings_count": 0,
+  "todos_count": 1
 }

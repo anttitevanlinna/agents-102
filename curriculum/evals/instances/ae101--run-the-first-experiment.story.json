@@ -1,10 +1,10 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "curious readiness — I've built enough to try; let's see what the agent does",
-  "trace_status": "generated_first_time",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_pedagogy.md",
@@ -92,7 +92,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not a standalone section.",
       "verdict": "REVISE",
-      "evidence": "Key Concepts bullets carry theme-instances but no **Remember:** breadcrumbs on any bullet. E.g. 'Every send-off is an experiment, not a production run you need to get right first time' is the right thought but sits as plain prose — no bolded hook that makes it memorable across modules.",
+      "evidence": "Key Concepts bullets carry theme-instances but no **Remember:** breadcrumbs on any bullet. 'Every send-off is an experiment, not a production run you need to get right first time' is the right thought but sits as plain prose — no bolded hook that makes it memorable across modules.",
       "fix_hint": "Add **Remember:** breadcrumbs to 1–3 theme-instance bullets (e.g., 'Traces are data. **Remember: compound on evidence, not anticipation.**'). Keep engineer register; no strategy-doc vocabulary.",
       "blocking": false
     },
@@ -101,35 +101,35 @@
       "rule_index": 44,
       "rule_lead": "Plug points + UX — file must be both plug-able and operable.",
       "verdict": "REVISE",
-      "evidence": "Module body contains no sentence where org context structurally changes the next agent move. The business-rules pointer plug point ('wired at the sponsor-stated home') is present in the exercise body and maintainer block but not as a body integration point in the module file itself. A buyer customising the module cannot point to a specific sentence where their tracker URL, business-rules home, or ADR convention changes what the agent does next.",
-      "fix_hint": "Add one sentence in 'Start here' or the Connections framing that makes the sponsor-stated business-rules home structurally present — e.g., 'The agent will look for business-rules context at [sponsor-stated home]; if that\\'s not wired yet, the gap is the Phase 2 finding.' Plug points become integration commitments only when downstream agent behavior differs with vs. without them.",
+      "evidence": "Maintainer block now carries four sponsor-stated Plug points entries. Module body still has no structural sentence where org context changes the next agent move. A buyer customising the module cannot point to a sentence in the student-facing body where their tracker URL, business-rules home, or ADR convention changes what the agent does next.",
+      "fix_hint": "Add one sentence in 'Start here' or the Phase 2 fill framing that makes the sponsor-stated business-rules home structurally present in the student-facing body — e.g., 'The agent will look for business-rules context at [sponsor-stated home]; if that's not wired yet, the gap is the Phase 2 finding.'",
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — name three observable Monday-morning outcomes.",
-      "verdict": "REVISE",
-      "evidence": "Module maintainer block contains mood target, delivery architecture, push-back moves, watch-fors, decision points, plug points, and frameworks — but no leap-test section naming three observable outcomes the student exhibits on their own codebase by the next working day. The closest proxy is the What You'll Learn LOs, but LOs are competency claims, not observable Monday-morning behaviors.",
-      "fix_hint": "Add a **Leap test** row to the maintainer block with three named, falsifiable Monday behaviors, e.g.: (1) 'pins a SHA before dispatching any long-running agent task'; (2) 'opens .claude/memory/ after a session and names a gap the run surfaced'; (3) 'stops a stalled agent run at ≤20 min and names the failure mode rather than waiting for completion.' The story judge re-fires on next audit.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block now has a **Leap test** section (lines 133–136) with three named, falsifiable Monday behaviors: (1) pins a SHA on a `<prefix>/<slug>` branch before dispatching any long-running task — falsifiable via git log; (2) stops a stalled run at ≤20 min and names the failure mode in writing — falsifiable via scrollback; (3) walks `.claude/memory/` + ADRs + skills against a real task, picks the worst three gaps, and writes them — falsifiable via pre-task memory diff showing 2–3 new observations tied to the task. All three are observable engineer behaviors on their own codebase, not abstract competencies.",
+      "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 46,
       "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
-      "verdict": "REVISE",
-      "evidence": "The SHA-pin prompt in 'Send the task off' produces a cross-module artefact: branch named `m4/<short-task-slug>` at a short SHA that Module 5 reads via worktree. The maintainer block has no artefact-contracts section naming (a) stable identifier (`m4/<slug>` branch + short SHA), (b) producing prompt ('Commit the current state…'), (c) consuming module (M5 — worktrees from this commit). The 'Next' section prose describes M5 reading scrollback, but the code-state artefact (branch + SHA) has no contract row.",
-      "fix_hint": "Add an **Artefact contracts** section to the maintainer block: row for `m4/<slug>` branch — stable identifier: `m4/<short-task-slug>` branch at SHA noted in scrollback; producing prompt: SHA-pin prompt in 'Send the task off'; consuming: M5 worktree (`../<repo>-m5` from this commit). Also note the session-transcript artefact at `~/.claude/projects/<project>/`. Technical judge will also flag this — fix once, both classes re-fire.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block now has an **Artefact contracts** table (lines 138–144) with three rows: (a) `m4/<task-slug>` branch + SHA produced by the SHA-pin prompt, consumed by M5 worktree; (b) filled gap entries in `.claude/memory/` produced by Phase 2 fill prompts, consumed by M5 packaged re-send and M6; (c) M4 session transcript at `~/.claude/projects/<project-folder>/<session-id>.jsonl` produced by the runtime, consumed by M5 opening. All rows carry stable identifier, producing prompt, and consuming module.",
+      "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch — every forcing function names its dominant failure and one move that recovers.",
-      "verdict": "REVISE",
-      "evidence": "The SHA-pin prompt in 'Send the task off' is a forcing function (student must pin before sending off; M5's worktree depends on it). The maintainer block documents send-off anxiety and debrief pre-empt but does NOT document the dominant failure for the SHA-pin: student forgets to pin or notes the SHA without naming the branch pattern, leaving M5's worktree instruction with an ambiguous starting point. No escape hatch documented (e.g., trainer prompt: 'Before the final send-off — read Claude the SHA it told you; confirm you have it noted somewhere you\\'ll find it at M5 start').",
-      "fix_hint": "Add a failure-mode row to the maintainer block for the SHA-pin forcing function: dominant failure = student notes the SHA but not the branch name, or closes the session before the commit completes; escape hatch = trainer asks 'read me back the branch name and SHA Claude confirmed' before the send-off prompt is pasted.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block now has a **Per-phase failure mode + escape hatch** table (lines 146–156) with 7 rows covering: Connections blocker, Phase 2 over-fill, Phase 2 gap-deferred-as-architectural, Phase 3 Huryn-as-lecture, SHA-pin (student notes SHA but not branch name, or session closes before commit completes), Debrief pre-empt, and send-off anxiety. Each row names the dominant failure mode and a specific escape hatch for trainer/Nerd. The SHA-pin row specifically addresses the gap flagged in the previous REVISE (student notes SHA not branch; escape hatch: 'read me back the branch name and SHA Claude confirmed').",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -137,8 +137,8 @@
       "rule_index": 38,
       "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
       "verdict": "REVISE",
-      "evidence": "The M5 module (consuming end) should name the `m4/<slug>` branch and SHA as a prework artefact to verify. This judge can only see M4's producing end; the gap is flagged here for the M5 author to close. The producing side (M4) partially names it in prose ('pin a clean starting SHA') but not as a contract row.",
-      "fix_hint": "Same fix as rule 46 — once the M4 maintainer block has a contract row, check that M5's prework or Phase 1 instruction explicitly names consuming this artefact by stable identifier. Flag for M5 author.",
+      "evidence": "M4's producing end now has full contract rows (satisfying rule 46). The M5-consuming end (worktree fork, M5 opening reading the M4 transcript) is not within this file's scope. Gap remains for the M5 author to close — M5's prework or Phase 1 must explicitly name consuming `m4/<slug>` branch + SHA by stable identifier.",
+      "fix_hint": "When M5 is authored: M5's prework or Phase 1 instruction must explicitly name the `m4/<task-slug>` branch and SHA as the worktree starting point. Flag for M5 author.",
       "blocking": false
     },
     {
@@ -164,7 +164,7 @@
       "rule_index": 19,
       "rule_lead": "Measure silent failure, not just friction.",
       "verdict": "PASS",
-      "evidence": "Task-design requirement names the silent-failure risk explicitly: 'If the task is simple enough to succeed un-packaged, it's the wrong task.' Maintainer block names 'Voice smuggling' (student mistakes M4 as leverage moment) as cross-phase watch-for. The mood-below-7 diagnostic traces back to task pick.",
+      "evidence": "Task-design requirement names the silent-failure risk explicitly: 'If the task is simple enough to succeed un-packaged, it's the wrong task.' Maintainer block names 'Voice smuggling' (student mistakes M4 as leverage moment) as cross-phase watch-for.",
       "fix_hint": null,
       "blocking": false
     },
@@ -173,7 +173,7 @@
       "rule_index": 32,
       "rule_lead": "Offered structures need a forced-engagement mechanic.",
       "verdict": "PASS",
-      "evidence": "The Huryn three-block Phase 3 prompt has a forced-engagement mechanic: 'Before you name the frame or propose a new structure, show me one concrete example from each block.' The Phase 2 fill is conversational with explicit push-back cue. No rubber-stamp risk on the compound rules-file rewrite: student is told to push back on the 3-5 line summary.",
+      "evidence": "The Huryn three-block Phase 3 prompt has a forced-engagement mechanic: 'Before you name the frame or propose a new structure, show me one concrete example from each block.' Phase 2 fill is conversational with explicit push-back cue. No rubber-stamp risk on the compound rules-file rewrite: student is told to push back on the 3-5 line summary.",
       "fix_hint": null,
       "blocking": false
     },
@@ -200,7 +200,7 @@
       "rule_index": "mood-doesnt-resolve-early",
       "rule_lead": "Mood doesn't resolve early.",
       "verdict": "PASS",
-      "evidence": "M4 withholds resolution: 'No Debrief. The send-off is the close.' Key Concepts explicitly names 'Un-packaged is by design. Module 5 teaches packaging by diagnosing what the un-packaged run gets wrong.' The student finishes in-flight, not satisfied. The compound-rules-file step that does exist is minimal (rules-file rewrite, not a named teaching moment of its own) — does not deliver leverage mood.",
+      "evidence": "M4 withholds resolution: 'No Debrief. The send-off is the close.' Key Concepts explicitly names 'Un-packaged is by design. Module 5 teaches packaging by diagnosing what the un-packaged run gets wrong.' The student finishes in-flight, not satisfied.",
       "fix_hint": null,
       "blocking": false
     },
@@ -209,7 +209,7 @@
       "rule_index": "teaching-moment-lands",
       "rule_lead": "Teaching moment lands.",
       "verdict": "PASS",
-      "evidence": "Teaching moment is 'un-packaged is by design; M5 teaches packaging by diagnosing what breaks here.' This is structurally enforced: the Debrief pre-empt push-back in the exercise and maintainer block catches students who try to package early. The teaching moment cannot be easily skipped — the final prompt literally dispatches un-packaged.",
+      "evidence": "Teaching moment is 'un-packaged is by design; M5 teaches packaging by diagnosing what breaks here.' Structurally enforced: the Debrief pre-empt push-back in maintainer block catches students who try to package early. The final prompt dispatches un-packaged — the teaching moment cannot be skipped.",
       "fix_hint": null,
       "blocking": false
     },
@@ -227,7 +227,7 @@
       "rule_index": "module-to-module-arc",
       "rule_lead": "Module-to-module arc.",
       "verdict": "PASS",
-      "evidence": "M4→M5 handoff: SHA-pin creates the worktree anchor; reading-the-return plants the M5 question; Next section names 'Module 5 opens with what came back.' Pre-reads list primes the 80/20 reframe M5 names from felt evidence. M5 strategy doc confirms 'return to the un-packaged run' as M5's opening move.",
+      "evidence": "M4→M5 handoff: SHA-pin creates the worktree anchor (now contracted in maintainer block artefact-contracts table); reading-the-return plants the M5 question; Next section names 'Module 5 opens with what came back.' Pre-reads list primes the 80/20 reframe M5 names from felt evidence.",
       "fix_hint": null,
       "blocking": false
     }
@@ -238,6 +238,6 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "blocking_findings_count": 3,
+  "blocking_findings_count": 0,
   "todos_count": 2
 }

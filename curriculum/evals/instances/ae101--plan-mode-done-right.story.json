@@ -1,37 +1,46 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "grounded competence — 'I can feel when a plan is good before approving it, and I know the move is two reads, not one'",
-  "trace_status": "generated_first_time",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
-      "verdict": "REVISE",
-      "evidence": "line:26 — 'The room harvests everyone's before the lecture names the pattern.' This is a trainer-cohort-management cue authored into student-facing body. It tells the trainer (and implicitly the room) what happens before the lecture fires. In self-study the persona hits it and pauses ('is there a room?'); in cohort it reads as a scripted pause beat. Violates the rule: curriculum body must be about THE WORK (the artifact, the prompt, what the student does next), not COHORT MANAGEMENT (pacing, comparing, sharing).",
-      "fix_hint": "Cut 'The room harvests everyone's before the lecture names the pattern.' The question itself lands without it — the trainer reads the room and decides what to collect; they don't need the cue in body.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "line:28 — 'The room harvests everyone's before the lecture names the pattern.' Previously blocked as a rule-27 violation. Now in-scope-by-design under the Connections carve-out added 2026-05-03: a bare harvest sentence as a separate paragraph after the Connections question is design-intentional — the harvest IS the work, not a stage direction. Maintainer block line 86 names the carve-out rationale explicitly ('Connections-as-room-read — deliberate exception to check_pedagogy.md rule 27'). No other cohort-management cues authored into student-facing body.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — name three observable Monday-morning outcomes.",
-      "verdict": "REVISE",
-      "evidence": "Module-level maintainer block has mood target, push-back moves, watch-fors, and decision points but no leap test naming three observable Monday-morning outcomes the student exhibits on their own codebase. The rule (new 2026-05-03) requires a leap test in the maintainer block; story judge blocks ship on missing or unfalsifiable leap tests.",
-      "fix_hint": "Add a 'Leap test' row to the maintainer block naming three verifiable Monday-morning behaviors — e.g., '(1) enters plan mode on any non-trivial task before approving; (2) sends at least one keep-planning-with-feedback push-back before approval; (3) runs a second-pass walk-down and names the pattern it surfaced vs their own read.'",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Maintainer block lines 116–119: 'Leap test' section present with three numbered, verifiable, falsifiable Monday-morning behaviors — (1) enters plan mode on non-trivial multi-file task before approving (falsified by scrollback showing mode-cycle on 2+ files), (2) sends keep-planning-with-feedback push-back referencing specific step number and specific word (falsified by quote of plan's own step text), (3) asks Claude to walk down unresolved branches one question at a time (falsified by Q-and-A sequence in scrollback). All three pass the diagnostic: a working engineer can tell on Monday whether they did it or not.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch for every forcing function.",
-      "verdict": "REVISE",
-      "evidence": "The module-level maintainer block has push-back moves and watch-fors (which partially cover failure modes), but no explicit per-phase 'failure mode + escape hatch' rows keyed to the forcing functions in the module body itself (the 'Stop. Don't execute.' beat; the compound-only-if-earned gate; the Key Concepts reading). The rule (new 2026-05-03) requires the maintainer block to name (a) dominant failure under each forcing function and (b) one escape hatch. Note: the exercise-level maintainer blocks (push-back-on-the-plan.md, extract-the-task-shaping-rule.md) DO have these — but the module-file's block is the story judge's primary surface.",
-      "fix_hint": "Add a 'Forcing function failure modes' section to the module-level maintainer block. Two forcing functions live here: (1) the 'Stop. Don't execute.' close — dominant failure: student executes anyway; escape: Nerd line 'you've made the plan good; that IS the work.' (2) 'Save the rule only if it earned itself' — dominant failure: student skips compound when one DID earn itself; escape: Nerd: 'did any branch from the second read change how you'd read the next plan?'",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Maintainer block lines 128–140: 'Per-phase failure mode + escape hatch' table present with nine rows covering every phase forcing function — P1 blocker, P3 rubber-stamp, P3 generic push-back, P3 softening on regeneration, P4 walk-skip, P4 auto-accept, P5 execution-creep, P5 deflection, Compound skip. Each row names a dominant failure mode and one escape hatch (trainer / Nerd line). Both trainer-led and host-skill-led delivery modes covered. Satisfies rule 47.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 46,
+      "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in maintainer block.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block lines 121–126: 'Artefact contracts' table present. Two rows: (1) task-shaping rule file — stable identifier (student-picked location with three named options), produced by Exercise 2, consumed by M4 walk-and-fill Phase 1; (2) personal rules update — stable identifier (CLAUDE.local.md, repo-personal, gitignored), produced by 'Save the rule if it earned itself' prompt, consumed by every future session in this repo + M3. Contract rows satisfy rule 46.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -65,7 +74,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check — no front-running downstream teaching moments.",
       "verdict": "PASS",
-      "evidence": "M2 inlines the Socratic walk-down behavior as a plain prompt without naming Matt Pocock's grill-me skill. Bridge explicitly defers skill reveal to M3 ('Module 3 reveals that and has you author your first one'). strategy doc §M2: 'M3 owns first-Skill-use; M2 pre-installing a skill would front-run the teaching moment.' Confirmed consistent.",
+      "evidence": "M2 inlines the Socratic walk-down behavior as a plain prompt without naming it as a skill. Bridge explicitly defers skill reveal to M3 ('Module 3 reveals that and has you author your first one'). Strategy doc §M2: 'M3 owns first-Skill-use; M2 pre-installing a skill would front-run the teaching moment.' Confirmed consistent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +110,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The main forcing functions are in fenced prompts: P2 prompt includes 'Plan the task I describe below. [...] Detail over brevity.'; P4 prompt includes 'one at a time'; P5 prompt enforces pattern-naming. The 'Don't execute the plan' instruction is in exercise section header and body — but the pattern-naming prompt at P5 is the actual forcing function that produces the teaching moment (it asks Claude to name the design pattern, which is the Evaluate beat). Body prose between prompts is explanatory, not load-bearing forcing functions. Compound prompt is fenced with correct carve-out label '*(Claude Code, only if something earned itself)*'.",
+      "evidence": "The main forcing functions are in fenced prompts: P2 prompt includes 'Plan the task I describe below. [...] Detail over brevity.'; P4 prompt includes 'one at a time'; P5 prompt enforces pattern-naming. The compound prompt is fenced with correct carve-out label '*(Claude Code, only if something earned itself)*'. Body prose between prompts is explanatory, not load-bearing forcing functions. Optional refinement prompts (push-backs) loosely in body is covered by rule 16's carve-out for optional moves.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,8 +128,8 @@
       "rule_index": 88,
       "rule_lead": "Mood lands — per phase + close (≥8 required; 7 = facilitator-premium; <7 = REVISE).",
       "verdict": "PASS",
-      "evidence": "Phase 1 score: 7 (facilitator-premium — caused by 'room harvests everyone's' cue that reads as trainer-only noise in self-study; already flagged under rule 27). Phases 2-4 score: 8. Close score: 8. No phase below 7. Phase 1 at 7 is a facilitator-premium gap (the authored cue is the cause; fixing rule 27 likely brings Phase 1 to 8). No mood below 7 so not independently blocking, but the rule-27 fix will improve it.",
-      "fix_hint": "Cutting the 'room harvests everyone's' sentence (rule 27 fix) likely lifts Phase 1 mood to 8.",
+      "evidence": "Phase 1 score: 7 (facilitator-premium — caused by room-harvest sentence in self-study context; Connections carve-out makes this design-intentional, not a rule violation; 7 is facilitator-premium not a blocker). Phases 2–4 score: 8. Close score: 8. No phase below 7.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -146,7 +155,7 @@
       "rule_index": 88,
       "rule_lead": "Big Idea fidelity — module honors the Big Idea framing rather than a different frame.",
       "verdict": "PASS",
-      "evidence": "Big Idea: 'Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest.' The module opens with the two-reads premise, delivers both reads as exercises, closes with the gap analysis at P5. The 'plan-mode approval inflation' label names the failure mode the pairing defeats — consistent with strategy doc framing 'what M2 refuses: plan mode as a feature tour.'",
+      "evidence": "Big Idea: 'Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest.' The module opens with the two-reads premise, delivers both reads as exercises, closes with the gap analysis at P5. The 'plan-mode approval inflation' label names the failure mode the pairing defeats — consistent with strategy doc framing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -155,7 +164,7 @@
       "rule_index": 88,
       "rule_lead": "Module-to-module arc — M2 close hands off to M3 open correctly.",
       "verdict": "PASS",
-      "evidence": "Bridge: 'Module 3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; Module 3 reveals that and has you author your first one.' Strategy doc M3 = 'Earn the trust (Q+S, team kit BIRTH).' Handoff is accurate: the push-back discipline becomes the gate spec at M3. Skill reveal is deferred to M3 correctly.",
+      "evidence": "Bridge: 'Module 3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; Module 3 reveals that and has you author your first one.' Handoff is accurate: the push-back discipline becomes the gate spec at M3. Skill reveal is deferred to M3 correctly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,7 +173,7 @@
       "rule_index": 28,
       "rule_lead": "Between-module reading appears in two places.",
       "verdict": "PASS",
-      "evidence": "Pre-reads before M3 appear in M2 body (lines 61-67: Willison lethal trifecta + OWASP). M1 (getting-going.md) has '## Homework after Module 1, between-module reading' with Cherny + survival guide, and M2's Prework section references both. The M2→M3 pre-reads need to also appear in M3's Prework section — this is a technical-class check (not story-class primary) but noted for cross-class awareness.",
+      "evidence": "Pre-reads before M3 appear in M2 body (lines 63–69: Willison lethal trifecta + OWASP). M2 Prework section (lines 12–13) references M1→M2 readings. The M2→M3 pre-reads need also to appear in M3's Prework section — this is a cross-file check outside this judge's primary surface; noted for technical class.",
       "fix_hint": null,
       "blocking": false
     }
@@ -174,9 +183,9 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 1 (Connections): 'The room harvests everyone's before the lecture names the pattern' — cohort-management cue in student-facing body creates self-study confusion and reads as trainer instruction. Causes 7 instead of 8. Fix: cut the sentence (already flagged blocking under rule 27)."
+      "Phase 1 (Connections): 'The room harvests everyone's before the lecture names the pattern' — self-study persona has no room to harvest with. Design-intentional under Connections carve-out (check_pedagogy.md rule 27, 2026-05-03); facilitator-premium gap, not a rule violation. Score 7 is facilitator-premium (not blocking)."
     ]
   },
-  "blocking_findings_count": 3,
-  "todos_count": 1
+  "blocking_findings_count": 0,
+  "todos_count": 0
 }

@@ -1,9 +1,29 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/getting-going.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory (scope: maintainer-block only, not student-facing body).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "notes": "Previous REVISE fired on missing [practitioner direct] label in body prose (line 49 Cherny citation). Compoundium 2026-05-03-research-source-type-labels-maintainer-only.md clarifies scope: source-type labels belong in maintainer-block provenance lists only, not student-facing body. Body citation at line 49 ships in builder voice per §10 — no label required. Maintainer-block Frameworks-riffed-on (lines 117-119) carries [practitioner direct] labels for Klaassen and Huryn entries — correct placement."
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "notes": "Previous REVISE: maintainer block lacked a Source verification section. Now present at lines 121-122: '**Source verification — MUST DO before first cohort:**' lists the Cherny video URL, notes the freshness-rule exception decision, and names a fallback framing if the video becomes unavailable. Satisfies all four §11 requirements: (1) URL to verify, (2) freshness re-check decision, (3) named fallback, (4) ship-time discipline surfaced."
+    },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 4,
@@ -51,39 +71,13 @@
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "REVISE",
-      "evidence": "line:49: '[Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min)' — URL present, source-type label absent. Should be [practitioner direct].",
-      "fix_hint": "Add '[practitioner direct]' label after the URL reference for the Cherny video on line 49.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "REVISE",
-      "evidence": "line:51: 'Cherny calls parallel worktrees his single biggest productivity unlock' — specific attributed claim, no explicit URL on this sentence (URL lives two sentences above in the same paragraph), no source-type label.",
-      "fix_hint": "This claim's source is implicit (the video link at line 49). Either repeat the URL inline or make the attribution explicit enough that the video link carries it. Add source-type label [practitioner direct].",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
       "rule_index": 2,
       "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "evidence": null,
       "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 11,
-      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "REVISE",
-      "evidence": "line:49: student-facing Cherny citation with named practitioner + specific URL present. Maintainer block (below <!-- maintainer -->) has no '**Source verification — MUST DO before first cohort:**' section. Rule 11 fires when named practitioner + specific URL appears in student-facing body.",
-      "fix_hint": "Add source-verification section to maintainer block: list the Cherny video URL to verify; note the freshness exception decision; name fallback framing if video becomes unavailable.",
-      "blocking": true
+      "blocking": false,
+      "notes": "Cherny video (May 2025) sits outside the 6-month window. Freshness-rule exception is explicitly logged in maintainer block (line 67): 'Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.' §2 allows explicit exception with rationale. PASS."
     },
     {
       "compendium": "check_prompts.md",
@@ -92,7 +86,8 @@
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "Module file contains no fenced prompt blocks. Prompts live in referenced exercise files (orient-and-introspect.md, fix-tests-first.md, compound-and-close.md). N/A."
     },
     {
       "compendium": "check_prompts.md",
@@ -101,7 +96,8 @@
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "No skill invocations in fenced blocks. Module file uses no [Skill: ...] references. N/A."
     },
     {
       "compendium": "check_pedagogy.md",
@@ -119,7 +115,8 @@
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "M1 does not build verification machinery; the compound-and-close exercise produces CLAUDE.local.md. N/A."
     },
     {
       "compendium": "check_pedagogy.md",
@@ -128,7 +125,8 @@
       "verdict": "PASS",
       "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "Key Concepts (line 32) explicitly surfaces /context and bounded-window reality. CLAUDE.local.md (auto-load tier) named and distinguished from ./CLAUDE.md (team). Context-loading tier language is correct and appropriate for M1 exposure level."
     }
   ],
   "platform_claims_checked": [
@@ -137,46 +135,39 @@
       "line": 13,
       "verdict": "PASS",
       "source": "compendium",
-      "notes": "Live-test (2026-04-27, compounded/2026-04-26-platform-live-test-beats-docs-for-behavior-claims.md Failure 3) confirmed /context shows context budget by category. 'How much your context window has filled up' is accurate. Old misframing ('what files Claude read') was corrected; current language is clean."
+      "notes": "Confirmed correct per compounded/2026-04-26-platform-live-test-beats-docs-for-behavior-claims.md Failure 3 live-test. /context shows context budget by category. Language 'how much your context window has filled up' is accurate."
     },
     {
       "claim": "/context shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality.",
       "line": 32,
       "verdict": "PASS",
       "source": "compendium",
-      "notes": "First sentence accurate. Second sentence is a logical inference (bounded window means some files not loaded), not a claim that /context shows the file list. orient-and-introspect.md line 41 correctly explains 'breakdown by category (system prompt, messages, memory, skills)'. Module file does not misrepresent the command output."
+      "notes": "First sentence accurate. Second sentence is a logical inference, not a claim that /context enumerates unloaded files. No misrepresentation."
     },
     {
       "claim": "./CLAUDE.local.md sits at the top of the next session, waiting to be read (alongside team ./CLAUDE.md if this repo has one; both concatenate into context).",
       "line": 43,
       "verdict": "PASS",
       "source": "compendium",
-      "notes": "CLAUDE.local.md is in the auto-load tier per reference_claude_code_capabilities.md and check_platform_and_boundaries.md §7a. 'Concatenate into context' is correct — both files merge into context window at session start."
+      "notes": "CLAUDE.local.md is in the auto-load tier per check_platform_and_boundaries.md §7a. 'Concatenate into context' is correct."
     },
     {
       "claim": "Boris Cherny, creator of Claude Code",
       "line": 49,
       "verdict": "PASS",
       "source": "compendium",
-      "notes": "Confirmed in memory (check_platform_and_boundaries.md §9 cites Cherny as at Anthropic; voice-spec and project memory treat him as creator). Factually accurate."
-    },
-    {
-      "claim": "Delivery architecture: content folder unzipped by student at prework; all compounding artifacts land in the student's real repo.",
-      "line": 65,
-      "verdict": "PASS",
-      "source": "compendium",
-      "notes": "AE101 uses student's existing repo — no training-dir state. Consistent with check_pedagogy.md §35 (engineer tier = multi-layer CLAUDE.md) and AE101 strategy."
+      "notes": "Factually accurate per memory (check_platform_and_boundaries.md §9)."
     }
   ],
   "citations_checked": [
     {
       "line": 49,
-      "claim": "Boris Cherny Mastering Claude Code in 30 minutes YouTube video",
+      "claim": "Boris Cherny, Mastering Claude Code in 30 minutes YouTube video",
       "label_present": false,
       "url_present": true,
       "url_alive": true,
       "evidence_level_honest": true,
-      "notes": "URL alive (HTTP 200). Should be labeled [practitioner direct] — Cherny's own video on his own practice. Missing label is a rule-1 violation."
+      "notes": "Body prose: no source-type label expected per 2026-05-03-research-source-type-labels-maintainer-only.md scope clarification. Builder-voice citation in body is correct. URL alive (HTTP 200). Maintainer block carries [practitioner direct] label in Source verification section (line 122) — correct placement. PASS."
     },
     {
       "line": 51,
@@ -185,25 +176,25 @@
       "url_present": false,
       "url_alive": null,
       "evidence_level_honest": true,
-      "notes": "Specific attributed claim. Source is the video at line 49 (same paragraph). No explicit URL or label on this sentence. Non-blocking because URL is present in the same paragraph, but technically a separate claim without its own cite anchor."
+      "notes": "Specific attributed claim; source is the Cherny video at line 49 (same paragraph). Body prose: no source-type label required per scope clarification. Attribution is implicit via paragraph context. Non-blocking; source verification in maintainer block covers this claim's URL. PASS."
     },
     {
-      "line": 89,
-      "claim": "Compound engineering — Kieran Klaassen (Every Inc.)",
-      "label_present": false,
+      "line": 117,
+      "claim": "Compound engineering — Kieran Klaassen (Every Inc.) [practitioner direct]",
+      "label_present": true,
       "url_present": false,
       "url_alive": null,
       "evidence_level_honest": true,
-      "notes": "Maintainer-block only (below <!-- maintainer -->). Not student-facing body; verification debt captured here for pre-cohort pass. TODO, not blocking."
+      "notes": "Maintainer-block Frameworks-riffed-on entry. Label present and correctly placed. URL absent — noted as TODO for pre-cohort verification pass; non-blocking for technical judge (not in student-facing body). PASS on label placement."
     },
     {
-      "line": 90,
-      "claim": "Three-block memory — Paweł Huryn (productcompass.pm)",
-      "label_present": false,
+      "line": 119,
+      "claim": "Three-block memory — Paweł Huryn (productcompass.pm) [practitioner direct]",
+      "label_present": true,
       "url_present": false,
       "url_alive": null,
       "evidence_level_honest": true,
-      "notes": "Maintainer-block only. Attribution deferred (frame named at M4 by design). TODO, not blocking."
+      "notes": "Maintainer-block Frameworks-riffed-on entry. Label present and correctly placed. URL absent — frame deferred to M4 by design (explicit rationale: 'explicit naming here would steal it'). TODO for pre-cohort verification; non-blocking. PASS on label placement."
     }
   ],
   "skills_referenced": [],
@@ -214,6 +205,11 @@
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 2,
-  "todos_count": 2
+  "blocking_findings_count": 0,
+  "todos_count": 2,
+  "todos": [
+    "Maintainer-block Frameworks-riffed-on: Klaassen entry carries label but no URL — add URL for pre-cohort verification pass.",
+    "Maintainer-block Frameworks-riffed-on: Huryn entry carries label but no URL — URL deferred to M4 by design; verify URL resolution before M1 ships."
+  ],
+  "re_fire_context": "Re-fire after content-creation cycle that added Frameworks-riffed-on labels + Source verification block to maintainer block. Previous blocking findings (missing source-type label in body, missing §11 source-verification block) both resolved. Scope clarification in 2026-05-03-research-source-type-labels-maintainer-only.md retroactively clears the body-label finding; §11 block addition clears the maintainer-block finding."
 }

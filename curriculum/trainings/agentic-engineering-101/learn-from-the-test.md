@@ -19,9 +19,9 @@ After this module, you will be able to:
 
 ## Set up the Module 5 worktree
 
-Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work — diagnosis, verifier, reference, plan.md, and the re-send — runs in the worktree so the second run starts from the same code state as the first. Cherny's productivity unlock from the Module 2 pre-read lands here.
+Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny's productivity unlock from the Module 2 pre-read lands here.
 
-A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time — your Module 1 and Module 3 evidence rides forward, Module 5 and Module 6 compounding diverges in the worktree, and you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.
+A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 and Module 3 evidence rides forward; Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.
 
 If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
 
@@ -75,7 +75,7 @@ Tell me what shipped, what didn't, and what the verifier surfaced.
 ```
 
 
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more — that's a result worth reading.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
@@ -87,13 +87,13 @@ Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier ge
 
 Optional. Skipping does not break Module 6. The piece lands in the Module 5 to Module 6 gap and primes two moves the module will name from your own two-run evidence.
 
-**Read — Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for Module 6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
+**Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for Module 6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03
-- judges @68f5fd4: writing REVISE (1B/3T see instances/ae101--learn-from-the-test.writing.json), story grandfathered, technical REVISE (3B/0T see instances/ae101--learn-from-the-test.technical.json), behavior grandfathered
+**Quality:** compendium-audited 2026-05-03 (writing@0833429)
+- judges @0833429: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
@@ -126,9 +126,46 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 - **Whole-room mood below 7:** learning through contrast isn't landing. Check Phase 1: did the diagnosis name SPECIFIC failures with quoted moments, or did it stay generic? Specificity is where this mood lives.
 
 **Plug points (trainer):**
-- The student's M4 artefact (Phase 1 source material)
-- Sponsor-stated rules-file home (Debrief rewrite target — same as M4)
-- Sponsor-stated test/CI conventions (Phase 3 shell-hook verifier shape integrates here)
+- The student's M4 artefact (Phase 1 source material) — un-packaged-run trace from M4's send-off; sponsor-stated artefact-storage location if the cohort uses one
+- Sponsor-stated rules-file home (Debrief rewrite target, same as M4) — `./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides
+- Sponsor-stated test/CI conventions (Phase 3 shell-hook verifier shape integrates here) — sponsor names the test framework + CI gate convention so the verifier shape matches what teammates already run
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
+1. **Reads an agent's multi-hour artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and quotes specific moments per lens. Falsifiable: a real artefact-read produces a written diagnosis with at least one quoted moment per failure mode, not a generic summary.
+2. **Builds a verifier shaped against the dominant failure mode** of a real long-running agent task, picking from the three-shape menu (background-agent, shell-hook, Ralph re-feed). Falsifiable: a verifier file exists at a stable path; its first 10 lines name the failure mode it targets and the check-shape that catches it.
+3. **Sends the same task twice with packaging as the changed variable**, reads the contrast. Falsifiable: two distinct agent runs of the same scoped task exist (un-packaged baseline + packaged re-run); the diff is the artefact M6 reads.
+
+**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
+
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| M5 worktree branch + SHA (packaged-run starting state) | `m5/<task-slug>` branch in worktree at `../<repo>-m5`, forked from M4's `m4/<task-slug>` SHA | Set up the Module 5 worktree prompt | M5 packaged re-send (runs in worktree); M6 diff (compares M5 packaged-run output to M4 un-packaged-run output) |
+| Reference artefact | `reference.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 (assemble-reference-and-plan) | M5 re-send prompt — Claude reads the reference at the start of the packaged run; M6 diff (does the reference scope still match what shipped?) |
+| Plan.md | `plan.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 | M5 re-send (Claude re-reads plan.md when it drifts); M6 diff |
+| Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config) | Phase 3 (build-verifier) | M5 re-send (verifier fires per plan.md cadence during the packaged run); M6 second-skill authoring reads the verifier as a precedent for the encode loop |
+| Run notes from packaged re-send | `RUN-NOTES.md` at worktree root | Re-send prompt — Claude writes in-flight when stuck | M6 diff (subtler-misses pattern); M6 second-skill authoring (gap-finder shape often emerges from notes) |
+| Sharpened personal rules | `./CLAUDE.local.md` in worktree (independent from original after fork) | Debrief self-compound prompt | M6 in worktree; eventual decision post-M6 about merging back to original repo |
+| M5 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` | Claude Code runtime, persisted automatically | M6 opening session reads M5 transcript directly to ground the read of the packaged run |
+
+**Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
+
+| Phase forcing function | Dominant failure mode | Escape hatch |
+|---|---|---|
+| Worktree setup — *"fork from the M4 SHA"* | Connections blocker — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear) | Trainer / Nerd: *"the artefact is whatever's there — repo commits since M4, files modified, scrollback at `~/.claude/projects/<project>/`. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* |
+| Phase 1 — *"quote specific moments per failure-mode lens"* | Phase 1 diagnosis-as-blame — student frames failures as their fault | Trainer / Nerd: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."* |
+| Phase 1 — *"pick the dominant failure"* | Phase 1 over-diagnosis — student lists 8 failures across all three modes | Trainer / Nerd: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"* |
+| Phase 2 — *"align then reverse: what would have caught this in minutes, not hours?"* | Phase 2 prescription-skip — student goes straight from named failure to building the fix | Trainer / Nerd: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"* |
+| Phase 3 — *"verifier shape matches the failure shape"* | Phase 3 verifier-shape mismatch — student picks shell-hook for a qualitative failure (or LLM-judge for a deterministic one) | Trainer / Nerd surfaces the menu again: *"qualitative failure wants a judge. Deterministic wants a hook. Drift wants a re-feed. Which is yours?"* |
+| Phase 4 — *"reference is task-local, not a rules-file rewrite"* | Phase 4 reference-as-rewrite — student rewrites `CLAUDE.local.md` instead of authoring a task-scoped reference | Trainer / Nerd: *"the reference is task-local. Lives next to the plan.md. Your rules file is for the codebase; the reference is for this task."* |
+| Debrief — *"send the packaged version, close the laptop"* | Debrief re-send anxiety — student hesitates at the second send-off | Trainer / Nerd: *"same task, packaged. Same close-the-laptop move. The point is to read the contrast at M6, not to nail it this run."* |
+| Closing lecture — *"name Ronacher's three-pattern only AFTER the felt evidence lands"* | Closing lecture pre-empt — Nerd or trainer accidentally names the three-pattern before the closing lecture | Trainer / Nerd: don't. The closing lecture earns the name from felt evidence. If the term gets used in Phases 1–4, the closing has nothing to add. |
+
+**Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):
+- Armin Ronacher (M5 closing lecture, three-pattern) — verify URL on `lectures/what-packaging-is.md` source list resolves; freshness re-check before first cohort. [practitioner direct]
+- Boris Cherny (Phase 3 three stop-hook shapes; M5 closing lecture attribution) — verify URLs on `lectures/what-packaging-is.md`. [practitioner direct]
+- Darragh Curran / Intercom Tier 1/2/3 (M5 closing lecture, org-scale anchor) — verify the 19.2% auto-approved + Tier 1/2/3 numbers against the original Curran post; freshness re-check. [practitioner analysis] (Curran writing about Intercom's deployment).
+- Kieran Klaassen (Debrief Compound step + pre-reads at lines 10, 90) — three URLs on `every.to`: *Bread in the AI Sandwich* (Entis [practitioner analysis] on Klaassen), *Compound Engineering: The Definitive Guide* [practitioner direct], *My AI Had Already Fixed the Code Before I Saw It* [practitioner direct]. Verify all three resolve; freshness re-check before first cohort.
+- Pre-read verification log lives in `lectures/reading-the-return.md`, `lectures/learning-through-contrast.md`, and `lectures/what-packaging-is.md` maintainer blocks per the M5 strategy doc — confirm each lecture's source-verification list stays in sync with this module's references.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.

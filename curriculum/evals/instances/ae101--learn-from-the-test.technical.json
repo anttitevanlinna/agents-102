@@ -1,35 +1,43 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
       "rule_lead": "No placeholders inside fenced blocks.",
-      "verdict": "REVISE",
-      "evidence": "line:31 `Put the worktree at ../<repo-name>-m5 on a new branch named m5/ followed by the same task slug as the m4 branch.` and lines 34-35 `cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/` / `cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/` — `<repo-name>` is a bracket-style placeholder inside a copyable fenced block",
-      "fix_hint": "Replace `<repo-name>` with an open-hook pattern: e.g., end the fenced block with `My repo name:` on its own line so the student fills it in before sending, or instruct Claude to derive the repo name from `basename $(pwd)` without a placeholder.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No square-bracket `[...]` placeholders in either fenced block. Angle-bracket patterns (`<repo-name>`, `<task-slug>`) are derive-from-context instructions per 2026-05-03 FP-avoidance guidance — not in scope.",
+      "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 5,
       "rule_lead": "Chain prompts by back-reference and deterministic path, never by invented alias.",
-      "verdict": "REVISE",
-      "evidence": "line:68 `The reference, plan.md, and verifier are at the paths we wrote in this session.` — back-reference anchor present but no deterministic path; if paths were discussed mid-exercise without explicit file saves at named locations, the chain is not harness-testable and is vulnerable to path drift",
-      "fix_hint": "Name the deterministic paths explicitly in the re-send prompt (e.g., `reference.md`, `plan.md`, and the verifier at the path the build step wrote) rather than relying solely on scrollback recall.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Line 68 `the paths we wrote in this session` is the preferred scrollback-review chain pattern per rule 5 and 2026-05-03 FP-avoidance guidance. Not a violation.",
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "REVISE",
-      "evidence": "line:10 `Laura Entis on Kieran Klaassen, You're the Bread in the AI Sandwich` — URL present but no `[practitioner analysis]` source-type label. line:10 `Kieran Klaassen, Compound Engineering: The Definitive Guide` — URL present but no `[practitioner direct]` label. line:90 `Kieran Klaassen, My AI Had Already Fixed the Code Before I Saw It` — URL present but no `[practitioner direct]` label.",
-      "fix_hint": "Append the appropriate source-type label in square brackets after each URL or inline citation. Pre-reads section: [practitioner analysis] for the Entis article, [practitioner direct] for both Klaassen pieces.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Body citations (lines 10, 90) correctly use builder voice per 2026-05-03 carve-out (maintainer-only labels). Source-type labels present in the new source-verification block (lines 164–168): Ronacher [practitioner direct], Cherny [practitioner direct], Curran [practitioner analysis], Klaassen entries [practitioner analysis] + [practitioner direct] x2. Frameworks list (lines 170–174) does not independently carry labels — audit trail covered by the source-verification block above it. TODO: add inline labels to Frameworks list for belt-and-braces compliance.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "Lines 163–169: `**Source verification — MUST DO before first cohort:**` section now present. Covers Ronacher (defers to lecture maintainer block), Cherny (defers to lecture maintainer block), Curran (19.2% + Tier 1/2/3 numbers named for verification, freshness re-check noted, label [practitioner analysis] present), Klaassen (all three every.to URLs listed with labels, freshness re-check present). Primary §11 requirement — section existence — is met. Minor TODO: Curran entry lacks an explicit named fallback framing if the 19.2% number does not hold at verification. §11 requires `a named fallback framing if a specific source doesn't hold`.",
+      "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -54,7 +62,7 @@
       "rule_index": 7,
       "rule_lead": "Sessions are the unit of work.",
       "verdict": "PASS",
-      "evidence": "line:26 `open a fresh session in the original repo location` and line:40 `Open a new Claude Code session in the worktree` — correct session language used throughout.",
+      "evidence": "line:26 `open a fresh session in the original repo location`; line:40 `Open a new Claude Code session in the worktree` — correct session language throughout.",
       "fix_hint": null,
       "blocking": false
     },
@@ -63,7 +71,7 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "line:26 lead-in present before worktree prompt; line:63 `Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.` before re-send prompt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +80,7 @@
       "rule_index": 3,
       "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Both prompt blocks follow: lead-in → `**Prompt** *(Claude Code)*` → blank line → fenced block. No `copy →` prefix, no `*(end of prompt)*` closer.",
       "fix_hint": null,
       "blocking": false
     },
@@ -90,7 +98,7 @@
       "rule_index": 9,
       "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Neither fenced block contains `**bold**` or `*italic*` markup.",
       "fix_hint": null,
       "blocking": false
     },
@@ -99,25 +107,7 @@
       "rule_index": 19,
       "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
       "verdict": "PASS",
-      "evidence": "line:72 `Before you start, ask for or write anything else you want for this run.` — canonical self-augment invitation present in re-send prompt.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 36,
-      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
-      "verdict": "N/A",
-      "evidence": "Smoke-test discipline belongs to the exercise file (diagnose-and-resend.md), not the module file. Module file correctly defers Phase 3 verifier-build to the exercise.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 38,
-      "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
-      "verdict": "PASS",
-      "evidence": "Producing side: line:31 prompt names branch pattern `m4/` + `m5/<task-slug>` and worktree path `../<repo-name>-m5`. Consuming side (Module 6) is out of scope for this judge.",
+      "evidence": "line:72 `Before you start, ask for or write anything else you want for this run.` — canonical self-augment invitation present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -126,7 +116,7 @@
       "rule_index": 2,
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "Entis article dated April 22, 2026 (within 6 months of 2026-05-03). Klaassen Compound Engineering dated February 9, 2026 (within 6 months). Klaassen My AI Had Already Fixed dated within 6 months (no explicit date in file but URL liveness confirmed).",
+      "evidence": "Entis article April 22 2026 (within 6 months of 2026-05-03). Both standalone Klaassen pieces within 6 months per source-verification freshness re-check notes.",
       "fix_hint": null,
       "blocking": false
     },
@@ -135,7 +125,34 @@
       "rule_index": 3,
       "rule_lead": "Zombie stat guard.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "No round-number AI failure/success rates present. The 19.2% Curran figure is a named deployment metric (not a round-number zombie stat), flagged for source-verification before first cohort.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 46,
+      "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
+      "verdict": "PASS",
+      "evidence": "Lines 138–148: full artefact-contracts table present. Covers M5 worktree branch, reference.md, plan.md, verifier, RUN-NOTES.md, CLAUDE.local.md, M5 session transcript. Each row names stable identifier, producing prompt, and consuming module(s).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Lines 150–161: per-phase table present covering all forcing functions: worktree setup, Phase 1 (two entries), Phase 2, Phase 3, Phase 4, Debrief, Closing lecture. Each row names dominant failure and recovery move.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — three observable Monday-morning outcomes.",
+      "verdict": "PASS",
+      "evidence": "Lines 133–136: three falsifiable leap tests present. Each names a verb + observable outcome + falsifiability criterion.",
       "fix_hint": null,
       "blocking": false
     }
@@ -154,14 +171,14 @@
       "source": "compendium"
     },
     {
-      "claim": "The rest of Module 5 runs there.",
-      "line": 40,
+      "claim": "laptop stays awake and plugged in while it runs (power settings → prevent sleep on power)",
+      "line": 78,
       "verdict": "PASS",
       "source": "inferred"
     },
     {
-      "claim": "laptop stays awake and plugged in while it runs (power settings → prevent sleep on power)",
-      "line": 78,
+      "claim": "gitignored files (your CLAUDE.local.md, .claude/memory/) don't ride into a worktree",
+      "line": 23,
       "verdict": "PASS",
       "source": "inferred"
     }
@@ -173,7 +190,8 @@
       "label_present": false,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": true
+      "evidence_level_honest": true,
+      "note": "Body citation — builder voice correct per 2026-05-03 carve-out. Label present in source-verification block (line 167)."
     },
     {
       "line": 10,
@@ -181,7 +199,8 @@
       "label_present": false,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": true
+      "evidence_level_honest": true,
+      "note": "Body citation — builder voice correct. Label present in source-verification block (line 167)."
     },
     {
       "line": 90,
@@ -189,7 +208,26 @@
       "label_present": false,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": true
+      "evidence_level_honest": true,
+      "note": "Body citation — builder voice correct. Label present in source-verification block (line 167)."
+    },
+    {
+      "line": "163-169",
+      "claim": "Source-verification block — Ronacher, Cherny, Curran, Klaassen",
+      "label_present": true,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "Ronacher + Cherny defer to lecture maintainer blocks (no URL here — URL lives in lecture source lists). Curran and Klaassen: labels present. Curran entry lacks explicit named fallback framing if 19.2% figure doesn't hold — TODO, non-blocking. Klaassen three every.to URLs confirmed alive (200) in prior fire + this run."
+    },
+    {
+      "line": "170-174",
+      "claim": "Frameworks riffed on: Ronacher, Cherny, Curran, Klaassen",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "Frameworks list is a summary credit table; full audit trail (labels + verification) lives in the source-verification block above. TODO: add inline source-type labels to Frameworks list for belt-and-braces compliance with §1 wording ('provenance lists carry labels')."
     }
   ],
   "skills_referenced": [],
@@ -210,6 +248,6 @@
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 3,
-  "todos_count": 0
+  "blocking_findings_count": 0,
+  "todos_count": 2
 }

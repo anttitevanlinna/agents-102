@@ -1,13 +1,13 @@
 ---
 type: index
 domain: cross-domain
-updated: 2026-04-19
+updated: 2026-05-03
 answers: ["where to find research", "knowledge base map"]
 ---
 
 # Synthesis Knowledge Base -- Index
 
-Seven topic files, each self-contained. Read this first, then go to the file that answers your question.
+Topic files, each self-contained. Read this first, then go to the file that answers your question.
 
 | File | What it answers | Evidence level |
 |------|----------------|----------------|
@@ -17,6 +17,8 @@ Seven topic files, each self-contained. Read this first, then go to the file tha
 | [enterprise-reality.md](enterprise-reality.md) | Can any platform pass the enterprise integration test? | Cross-platform |
 | [patterns.md](patterns.md) | What cross-platform patterns has the research established? | Level 2-4 |
 | [nordic-landscape.md](nordic-landscape.md) | What's happening with agents in the Nordics? | Nordic-specific |
+| [curriculum-convergence.md](curriculum-convergence.md) | What do agentic engineering curriculums teach? Convergence and absences across 14 inventoried syllabi. | Level 3 (convergence) + Level 2 (absences) |
+| [training-competitive-landscape.md](training-competitive-landscape.md) | Who competes for engineering-IC agent training budget? Prices, formats, Nordic density. | Inventory + per-claim split (syllabus = fact, price = inference / vendor) |
 
 ## User signals (Tier 0 priority)
 

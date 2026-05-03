@@ -71,7 +71,7 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-27
+**Quality:** draft 2026-05-03 (auto-degraded from compendium-audited 2026-04-27 — file touched 2026-04-30; re-audit pending)
 - compendium-audited 2026-04-27 (check_writing + check_student_facing + check_prompts; LLM-judge approve-with-todos; three-persona sim flagged Step 0+2 redundancy as approve-with-todo non-blocking; neighbour-alignment GO across M1–M6; `claude-code-guide` capability check confirmed `/add-dir` mid-session inline-arg hang — instruction removed; this cycle: Step 3 `/add-dir` removed, Step 4 lead-in gained one-line permission warning. Step structure 0/1/2/3/4 preserved per Antti — collapse decisions made together, not from sim auto-apply.)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

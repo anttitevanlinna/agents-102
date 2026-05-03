@@ -2561,7 +2561,7 @@ Then synthesize. Apply Rumelt&#39;s strategy kernel — diagnosis (what&#39;s re
 
 
 <p>Heads-up: the answer often comes back with a longer issue list than feels comfortable, disagreements named, gaps flagged. That&#39;s the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to Claude.</p>
-<p>Optional: paste this back to focus the work.</p>
+<p>If the volume is in the way, ask Claude to choose the fixes that aim for optimal function in the next session.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, optional)</em></p>
 <pre><code>You choose fixes. Aim for optimal function in the next session that runs on this.
 </code></pre>
@@ -2800,6 +2800,7 @@ After I answer, read outputs/policy-report-raw.md and everything in module-4/pol
 <p><strong>Phase 3. Author both lenses (22 min).</strong></p>
 <p>The reusable check carries two lenses inside one personal skill. One lens checks company policy. One checks agent risk: what the agent can reach, what it might leak, what it might do because a prompt or source misled it. The authored source lives as a <code>SKILL.md</code> plus any reference files it needs.</p>
 <p>Ask Claude to author both lenses, and to name the risk patterns the agent-security lens covers.</p>
+<p>You&#39;ll get a lot of questions. The grill is wide on purpose, Claude probes both lenses and won&#39;t stop at one round.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Author the reusable security check now. Two lenses.
 
@@ -2824,24 +2825,39 @@ After I answer, save the files. Keep the SKILL.md tight: when to use it, the two
 - module-4/skills/security-audit/SKILL.md
 - any supporting reference files the SKILL.md requires
 </code></pre>
-<p>Claude grills you first. Answer until Claude has what it needs, or tell it you&#39;ve covered enough. Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company&#39;s policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.</p>
-<div class="rt-cowork">
+<p>Claude grills you first. Skim the questions. Answer what you can in one or two lines. When you&#39;ve answered everything you have a view on, hand the rest back: <em>&quot;You choose. Optimise for what I can&#39;t steer.&quot;</em> Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company&#39;s policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.</p>
+<p>Before you leave this exercise, save the authored source as a personal skill. The save mechanic differs by runtime.</p>
+<div class="rt-cli">
 
-<p>Before Cowork users leave this exercise, create the personal skill in Claude Desktop. Go to <em>Customize</em> → <em>Skills</em> → <em>New</em> → <em>Create with Claude</em>. Tell that skill-creation chat to create a personal skill named <code>security-audit</code> from the authored source at <code>module-4/skills/security-audit/</code>.</p>
-<p>Use this shape if you need to paste a prompt:</p>
-<pre><code>Create a personal skill named security-audit.
-
-It should include two security lenses I authored:
-- a policy lens that checks the agent system against my company&#39;s policy references and produces compliant / violating / &quot;I can&#39;t tell&quot; rows with evidence
-- an agent-security lens that checks access, prompt injection direct and indirect, secrets in context and scrollback, tool confusion, and skill supply-chain risk
-
-Use the authored source in my training folder at module-4/skills/security-audit/. When the skill is ready, tell me how to save it and what slash command should appear in a new Cowork session.
+<p>Ask Claude to install the authored source.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls.
 </code></pre>
-<p>Save the skill from that skill-creation chat. Exercise 2 starts in a new Cowork session and checks that the saved skill loads.</p>
+<p>Run <code>ls ~/.claude/skills/security-audit/</code> to confirm. The skill autoloads in your next session in this training directory.</p>
 </div>
 
+<div class="rt-desktop">
+
+<p>Ask Claude to install the authored source.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls.
+</code></pre>
+<p>The skill autoloads in your next session in this training directory.</p>
+</div>
+
+<div class="rt-cowork">
+
+<p>One place skill-creation lives in Claude Desktop is <em>Customize</em> → <em>Skills</em> → <em>New</em> → <em>Create with Claude</em>, useful to know exists. You don&#39;t need it here. The work session you&#39;ve been in already has the authored source on disk; the skill-creator skill can draft the personal skill from this session.</p>
+<p>Cowork can&#39;t write into your personal Claude directories. When skill-creator finishes drafting, it surfaces a Save button. You press Save, that&#39;s the moment the personal skill lands.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Use your skill-creator skill to turn the authored source at module-4/skills/security-audit/ into a personal skill named security-audit. Draft it, then surface the save action so I can save it.
+</code></pre>
+<p>Press Save when skill-creator surfaces it.</p>
+</div>
+
+<p>Close this session before Exercise 2. The personal skill autoloads when the next session opens, so Exercise 2 needs a fresh session at your training-directory root.</p>
 <p><strong>What happens:</strong></p>
-<p>The reusable check exists now, with two lenses and four named risk patterns covered. It is authored on disk; Cowork users have also saved it as a personal skill. Module 4&#39;s audit exercise loads it and runs it against the same system.</p>
+<p>The reusable check exists now, with two lenses and four named risk patterns covered. It is authored on disk and saved as a personal skill. Module 4&#39;s audit exercise loads it and runs it against the same system.</p>
 <p><strong>The point:</strong></p>
 <p>The policy files are source material. The reusable check is the expert in the room. Eyeballing every file by hand is not. The check carries judgment about what matters in this system, with the four named risk patterns as the forcing function. Agent mitigations sit on top of normal company controls, not in place of them. The package is ready; the first loaded use should be the real audit.</p>
 <p><strong>Time:</strong> 40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.</p>
@@ -2859,42 +2875,27 @@ Use the authored source in my training folder at module-4/skills/security-audit/
 <p>Load the reusable security check you authored in the previous exercise, then run it against the system you built in modules 2-3. Two packaged-lens reports. One mitigation. One residual decision added to the report. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.</p>
 <p>Four phases. Thirty-five minutes. Bring the policy raw report from the previous exercise; that is the baseline. Bring the reusable check you just authored; that is the expert. Bring your Module 3 system; that is the target.</p>
 <p><strong>Phase 1. Load the reusable check.</strong></p>
-<p>The reusable check is authored, but it is not useful until your runtime loads it. Skills load at session start, not into the current session.</p>
-<p>Cowork users should already have saved the personal skill at the end of Exercise 1. Desktop and CLI users take a small install step. Same lens content, different load surface. Everyone syncs at a fresh session in the same training directory.</p>
-<div class="rt-cli">
-
-<p>The CLI auto-loads standalone skills under <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>. So the CLI install is a one-step copy from the authored source into the personal skills directory. The source folder stays in <code>module-4/skills/security-audit/</code> as the canonical source of truth.</p>
-<p>Ask Claude to install the security skill by copying it from your authored source into the personal skills directory.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>The reusable security check I authored lives at module-4/skills/security-audit/. Install it as a standalone CLI skill by copying:
-
-- module-4/skills/security-audit/SKILL.md  -&gt;  ~/.claude/skills/security-audit/SKILL.md
-- any supporting reference files it requires  -&gt;  ~/.claude/skills/security-audit/
-
-The module-4 source folder stays where it is as the source of truth for the next time we revise the skill. Confirm the installed skill path back so I can verify with ls.
-</code></pre>
-<p>Run <code>ls ~/.claude/skills/security-audit/</code> to confirm the skill landed. Open a new session in your training directory.</p>
-</div>
-
-<div class="rt-desktop">
-
-<p>Install the authored source as a personal skill by copying <code>module-4/skills/security-audit/SKILL.md</code> and any supporting reference files to <code>~/.claude/skills/security-audit/</code>. Open a new session in the same training directory.</p>
-</div>
-
+<p>Open this exercise in a fresh session at your training-directory root. The personal skill saved at the end of Exercise 1 autoloads at session start, so a session opened after the save is required.</p>
+<p>Type <code>/</code> in the prompt and look for <code>/security-audit</code> in the autocomplete list. That means the skill loaded. The two lenses live inside the same skill; the audit prompts below tell the skill which lens to apply.</p>
 <div class="rt-cowork">
 
-<p>The personal skill was created and saved at the end of Exercise 1. Open a new Cowork session connected to the same training folder. The skill is stored locally on your machine and tied to your Claude Desktop install. It loads automatically in any new Cowork session on the same laptop.</p>
-<p>If the skill does not appear, go back to Exercise 1&#39;s Cowork personal-skill creation step. Do not create it mid-audit.</p>
+<p>If <code>/security-audit</code> doesn&#39;t appear, you may have skipped pressing the Save button in Exercise 1. Go back, save the skill, then open a new session.</p>
 </div>
 
-<p>In the new session, type <code>/</code> in the prompt and look for <code>/security-audit</code> in the autocomplete list. That means the skill loaded. The two lenses live inside the same skill; the audit prompts below tell the skill which lens to apply.</p>
 <p>Do not run a toy verification on one file. The first loaded use is the real audit.</p>
 <p><strong>Phase 2. Run the policy audit.</strong></p>
 <p>Ask Claude to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from <code>module-4/policies/</code>; this report comes through the reusable lens you shaped.</p>
-<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Apply the policy lens of the reusable security check I authored to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
+<div class="rt-cowork">
 
-For each rule the reusable check carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), and one line of evidence from my actual files for that verdict. If you can&#39;t tell, say what evidence you&#39;d need to decide.
+<p>Cowork doesn&#39;t always engage <code>/security-audit</code> from pasted prompt text alone. If the audit doesn&#39;t fire after sending, click into the prompt dialog and expand <code>/security-audit</code> from the autocomplete to engage the skill.</p>
+</div>
+
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>/security-audit — load the skill
+
+Apply the policy lens to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
+
+For each rule the policy lens carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / &quot;I can&#39;t tell&quot;), and one line of evidence from my actual files for that verdict. If you can&#39;t tell, say what evidence you&#39;d need to decide.
 
 Write the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. Be specific. Be plain. An &quot;I can&#39;t tell&quot; is a better answer than a confident guess.
 
@@ -2912,17 +2913,18 @@ Keep each point to one or two sentences. Quote the specific rule name so I can f
 <p><strong>Phase 3. Run the agent-risk audit.</strong></p>
 <p>In the same session.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Apply the agent-security lens of the reusable security check to the same system. Run both checks: what the agent can reach, and the named risk patterns the lens carries.
+<pre><code>Apply the agent-security lens to every agent in agents/. Run both checks: what each agent can reach, and the named risk patterns the lens carries.
 
-For access control: list every outside system or sensitive place the agent can reach (connectors, retrievals, file writes beyond the training directory, anything in tools/). For each: is the access necessary for what the system actually does? Flag anything the system has access to but doesn&#39;t need.
+For access control: for each agent in agents/, list every outside system or sensitive place the agent can reach (connectors, retrievals, file writes beyond the training directory). Is each access necessary for what the agent actually does? Flag anything the agent has access to but doesn&#39;t need.
 
-For the named risk patterns (prompt injection direct and indirect, secrets-in-context-and-scrollback, tool-confusion, skill supply-chain): for each pattern, name the top one or two specific risks in my system, not generic definitions. Quote the file or behaviour that creates the risk.
+For the named risk patterns (prompt injection direct and indirect, secrets-in-context-and-scrollback, tool-confusion, skill supply-chain): for each pattern, name the top one or two specific risks across the agents, not generic definitions. Quote the agent file or behaviour that creates the risk.
 
 For each risk flagged, suggest one mitigation for how the agent works - scope, split, filter, gate, or review - matched to the specific risk. These sit on top of the normal company controls already in place (network controls, identity and access management, logging, vendor/security review), not replacing them. Rank the risks by severity x likelihood, three-tier (high / medium / low).
 
 Write the report to outputs/security-report.md. Include the ranked mitigation suggestions.
 </code></pre>
-<p>Read <code>outputs/security-report.md</code> alongside the policy report. Two different lenses; some risks will overlap, some will not. That is correct.</p>
+<p>Now work the risks. List them, have Claude explain each, what it means in this system, why the rank landed where it did, what the failure would actually look like, and prepare to pick one. No prompt for this; you drive the conversation.</p>
+<p>Feel free to glance at the reports and compare. Two different lenses; some risks will overlap, some will not. That is correct.</p>
 <p>You now have the assessment half of the loop. The uncomfortable feeling is the evidence.</p>
 <p><strong>Phase 4. Mitigate one risk. Reassess the residual.</strong></p>
 <p>Look at the two reports. Pick one risk to mitigate. Not the easiest, not the scariest. The one that bugs you on the second skim. Your gut is data here. This is about running the loop once, not solving the worst problem on your list.</p>
@@ -2941,6 +2943,8 @@ The risk:
 <p><strong>Still not sure? Ask a person.</strong></p>
 <p>Sometimes the correct next step is not another prompt. If the policy report still has a serious &quot;I can&#39;t tell&quot;, or the security report names a risk you do not know how to accept, show the evidence to someone who owns that area: legal, security, IT, compliance, or the business owner. Bring the report, the files it quotes, the mitigation you applied, and the residual that remains.</p>
 <p>The instinct here is to skip the expert and resolve it yourself, or to escalate the whole tangle and hand them the problem cold. Both miss what you just produced. You ran the lens, you have the rows, you applied a mitigation, you have the residual on record. The narrow question the expert can actually answer is sitting in the report. Walk in with that.</p>
+<p><strong>Prototype vs production.</strong></p>
+<p>We did this for a single mitigation. Risk control is one of the things that separates a prototype from a real production agent. You must do the work.</p>
 <p><strong>What happens:</strong></p>
 <p>The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One policy lens. One agent-risk lens with four named patterns. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert. The loop ran once. The reusable check and the loop carry to the next agent.</p>
 <p><strong>The point:</strong></p>

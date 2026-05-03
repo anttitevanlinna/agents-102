@@ -1,55 +1,48 @@
 {
   "class": "behavior",
-  "file": "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "verdict": "TODO",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
+  "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "generated",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_sha": "d4b9e235f3e89fe5611901b4e489b9fb5b2e213553097f94697f6d7352769852",
-      "prompt_lead": "If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.lo",
+      "prompt_lead": "If one branch from this session sharpened how plans get read in this codebase, i",
       "verdict": "TODO",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": [
         {
-          "pattern_id": "self-report-inflation",
-          "confidence": "high",
-          "evidence": "Prompt delegates the 'did one branch earn itself?' judgment entirely to Claude, which participated in producing the session. RLHF strongly biases Claude toward finding something to integrate rather than answering 'nothing earned itself' — even when the honest answer is no or when the branch is soft. The 'say so and stop' escape is present but routinely overridden by RLHF's helpfulness drive."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "high",
-          "evidence": "Claude is asked to audit the quality of plan-reading branches from a session it co-produced. Self-audit charity fires when Claude evaluates work it created; it under-flags mediocre branches as 'earned' because the work is framed as 'the session we ran together.' The student has no external verification prompt and no over-flag instruction."
-        },
-        {
           "pattern_id": "file-preservation-gap",
-          "confidence": "med",
-          "evidence": "Prompt says 'integrate it into ./CLAUDE.local.md' without naming the write mode. Claude may silently replace existing rules, append a labeled block at the end, or pause to ask. The word 'integrate' signals intent but does not specify behavior on a non-empty file."
+          "confidence": "low",
+          "evidence": "integrate it into ./CLAUDE.local.md",
+          "fix_hint": "Carve-out applied (integrate-verb + personal-scope): 'personal file, not team ./CLAUDE.md' and 'create + gitignore if missing' are both present — full reshape is design intent; preserve-vs-replace constraint does not apply."
         },
         {
           "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "integrate it into ./CLAUDE.local.md (create + gitignore if missing",
+          "fix_hint": "Carve-out applied (personal-scope): file is explicitly gitignored personal scope — overwrite is the intended default; Claude hesitation not expected."
+        },
+        {
+          "pattern_id": "self-report-inflation",
           "confidence": "med",
-          "evidence": "'Integrate it into ./CLAUDE.local.md (create + gitignore if missing)' handles the empty-file case but not the non-empty case. When CLAUDE.local.md already exists with earlier compounds, Claude may pause to ask 'overwrite or append?' No explicit overwrite/append instruction present."
+          "evidence": "If nothing earned itself, say so and stop.",
+          "fix_hint": "TODO (residual by design — Debrief prompt per 2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md): Claude may affirm something earned itself when nothing did; non-blocking on Debrief."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "If one branch from this session sharpened how plans get read in this codebase",
+          "fix_hint": "TODO (residual by design — Debrief prompt per 2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md): Claude may treat a loose observation as a sharpened branch; non-blocking on Debrief."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "The conditional structure ('If one branch... then integrate; if nothing, say so and stop') naturally invites Claude to reason aloud before acting."
+          "evidence": "If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md",
+          "fix_hint": "TODO (residual by design — Debrief prompt per 2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md): Claude will likely narrate before writing the rule; non-blocking on Debrief."
         }
-      ],
-      "failure_modes": [
-        "Claude always finds 'one branch that earned itself' regardless of session quality — self-report inflation means the 'say so and stop' path fires rarely.",
-        "Claude appends a new labeled section rather than integrating the insight into existing structure.",
-        "Claude overwrites an earlier M1 compound in CLAUDE.local.md, losing prior session work.",
-        "Claude produces a generic plan-reading principle rather than naming a specific branch from this session's scrollback.",
-        "Claude opens with reasoning preamble before writing — eating top-of-response slot."
-      ],
-      "recovery_paths": [
-        "Add an over-flag instruction: 'Be honest — if the branch is not specific to THIS codebase from THIS session, say so and stop.'",
-        "Name the write mode explicitly: 'Append one new entry to the existing rules without changing existing entries.'",
-        "Add a specificity gate: 'The quoted moment must be a specific line from the session scrollback — if you cannot quote the line, say so and stop.'"
       ]
     }
   ],

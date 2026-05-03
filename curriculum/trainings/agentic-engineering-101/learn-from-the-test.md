@@ -74,6 +74,7 @@ Before you start, ask for or write anything else you want for this run.
 Tell me what shipped, what didn't, and what the verifier surfaced.
 ```
 
+The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. Your call on whether to push.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 

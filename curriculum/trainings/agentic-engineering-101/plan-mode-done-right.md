@@ -71,8 +71,8 @@ Optional. Skipping either piece does not break Module 3. The point is to land ST
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
-- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-05-03 (behavior@4cacfba)
+- judges @4cacfba: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

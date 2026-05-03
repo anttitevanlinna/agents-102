@@ -62,6 +62,8 @@ First: find the one section of the skill where session evidence shows it underde
 Then, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.
 ```
 
+This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
+
 ## Clear the session
 
 Before you close the session, signal the wrap-up. The agent converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
@@ -93,8 +95,8 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03
-- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior REVISE (1/1-see-instances/ae101--earn-the-trust.behavior.json)
+**Quality:** compendium-audited 2026-05-03 (behavior@4cacfba)
+- judges @4cacfba: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

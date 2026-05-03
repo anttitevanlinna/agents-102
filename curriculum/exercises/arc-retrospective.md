@@ -33,6 +33,7 @@ Write a one-page note on what changed across this body of work. Not a changelog.
 Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.
 ```
 
+Claude will likely open with a plan-summary paragraph (*"I'll dispatch the sub-task, then combine findings..."*) before any read happens. Skim past the opening; the note is what you're reading for.
 
 If the read runs ten minutes plus, interrupt with *"enough. just tell me now."*, you have what the agent has assembled so far, and that's the read.
 

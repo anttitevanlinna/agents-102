@@ -50,6 +50,8 @@ Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop i
 Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap. Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
 ```
 
+Claude may pause before editing `./CLAUDE.local.md`, a named config file looks risky to modify, or it may rewrite more than the one stale rule (*"in place"* is loose wording). If it asks, just say go. If the diff touches more than the one rule you flagged, push back.
+
 ---
 
 ## Phase 2: Author the session-shaper (~25–35 min)
@@ -113,6 +115,7 @@ Produce whatever output the skill asks you to produce (pass/fail, ranked finding
 Then, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?
 ```
 
+This prompt asks Claude to invoke a skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity is well-documented. We picked it for convenience: one paste, one wait, one read. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. What did the skill miss?"* Your call.
 
 If the output doesn't catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
 

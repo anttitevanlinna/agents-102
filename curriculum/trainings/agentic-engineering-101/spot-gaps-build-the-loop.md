@@ -64,8 +64,8 @@ Antti
 
 **Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (line 60). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-03 (story@60b1b6c)
-- judges @60b1b6c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-03 (behavior@fd0bb8e)
+- judges @fd0bb8e: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (all-6-prompts-mitigated-see-pre-cohort-todos)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):

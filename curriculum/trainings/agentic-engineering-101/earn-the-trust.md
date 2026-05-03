@@ -96,7 +96,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 
 
 **Quality:** compendium-audited 2026-05-03 (behavior@4cacfba)
-- judges @4cacfba: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+- judges @4cacfba: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (accepted-mitigated-see-pre-cohort-todos)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

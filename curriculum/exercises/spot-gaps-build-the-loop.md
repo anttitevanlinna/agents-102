@@ -35,6 +35,7 @@ For every claim, quote a specific moment from the artefacts. Don't generalise.
 End with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.
 ```
 
+Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. Skim past the opening; the contrast moments are what you're reading for.
 
 Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted. Expect Claude to over-credit the packaging on first pass. A fair push-back is *"name one thing the verifier missed, concretely."*
 
@@ -100,6 +101,7 @@ Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me
 Don't reassure me. Name weak parts.
 ```
 
+This critique runs in the same session that authored the SKILL.md, convenient (the authoring context is right there) but charitable (same-context-window self-audit under-flags by design). You can make the critique sharper: ask Claude to over-flag (*"flag at least three things, be harsher than necessary, assume worse than it looks"*), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
 Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.
 

@@ -24,6 +24,8 @@ Now spawn three minds inside *this* session and synthesize their stances inline.
 
 Three stances in parallel; the main session reads them, applies a framework, and writes the answer back into `./crux.md` as a third section. One prompt does the whole job.
 
+Three subagents fanning out at once. Lighter than the four-session retriever run, but if one starts reading the world, stop it, steer narrower, then say *"continue"*.
+
 <div class="rt-code">
 
 Ask Claude to spawn three subagents with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.

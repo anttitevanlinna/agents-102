@@ -16,6 +16,8 @@ A memory is only as good as what goes into it. Most people sabotage this step by
 
 **Ease yourself in.** Even inside what policy allows, bring only what you feel comfortable sharing with an LLM today. If an email thread, a deck, or a doc feels sensitive, skip it. Module 4 is the proper conversation about classification, data boundaries, and what an agent should never see. Right now, curate with the material you'd share with a smart assistant without a second thought.
 
+Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rewrite multiple files at once. Plan mode (named in Beat 3) is your primary control. If a non-plan-mode prompt starts reading the world, stop it, steer narrower (what to skip, where to focus), then say *"continue"*. If you want something simple, give a hard cap: *"10 sources max, or even fewer"*.
+
 ---
 
 **Beat 1. Curate.** Claude surveys what's available and asks about your world.

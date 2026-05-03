@@ -4,14 +4,15 @@ Open decisions before the first paying cohort. Module files carry zero TODOs; th
 
 Sim sweeps and platform-capability checks are not tracked here. The `curriculum-pre-ship-audit` skill auto-fires on touched files; `check_platform_and_boundaries.md` fires on platform claims at content-time. **Per-class verdicts (PASS / REVISE / grandfathered) live in each module's own `**Quality:**` block**, `update-quality.sh` stamps both PASS and REVISE with the instance-JSON path so a successor can grep Quality blocks for state without consulting this file.
 
-## Technical-class judge calibration, FP patterns to track (NOT prompt edits)
+## Class-judge calibration, FP patterns to track (NOT prompt edits)
 
-Three findings flagged by the 2026-05-03 technical-class judge against M4 + M5 prompt fences are **false positives** confirmed against the actual rule wording. See `memory/compounded/2026-05-03-platform-technical-judge-fp-square-vs-angle-and-scrollback-chain.md`.
+Findings flagged by the 2026-05-03 technical-class AND behavior-class judges against M4 + M5 prompt fences are **false positives** confirmed against the actual rule wording. See `memory/compounded/2026-05-03-platform-technical-judge-fp-square-vs-angle-and-scrollback-chain.md`.
 
-- **`run-the-first-experiment.md` line 49 (`m4/<short-task-slug>`)** and **`learn-from-the-test.md` lines 31, 34, 35 (`<repo-name>` 5x)**, flagged as `check_prompts.md` rule 1 placeholder violations. **FP.** Rule 1's literal example list is `[BRACKETS]`, `[path from step 1]`, `[your task]`, `[feature area]`, every example is square brackets. Angle brackets `<...>` are NOT in the rule's scope; Claude reads them as derive-from-context instructions (live-tested).
+- **`run-the-first-experiment.md` line 49 (`m4/<short-task-slug>`)** and **`learn-from-the-test.md` lines 31, 34, 35 (`<repo-name>` 5x)**, flagged by technical class as `check_prompts.md` rule 1 placeholder violations. **FP.** Rule 1's literal example list is `[BRACKETS]`, `[path from step 1]`, `[your task]`, `[feature area]`, every example is square brackets. Angle brackets `<...>` are NOT in the rule's scope; Claude reads them as derive-from-context instructions (live-tested).
+- **`learn-from-the-test.md` Prompt 1 (the `m4/` worktree prompt with `<repo-name>` placeholders)**, flagged 2026-05-03 by behavior class as `file-preservation-gap` HIGH citing the same rule 1 violation. **FP, same root cause.** Behavior class inherited the technical class's calibration miss. Until calibration ships, this prompt will keep flagging behavior REVISE. Treat as accepted.
 - **`learn-from-the-test.md` line 68 ("the paths we wrote in this session")**, flagged as `check_prompts.md` rule 5 chain-by-deterministic-path violation. **FP.** Rule 5 explicitly states *"Prefer scrollback-review chains... transcript is always the authoritative memory."* This phrasing IS the preferred pattern.
 
-Calibration fix candidates (judge-side, not curriculum-side): (a) tighten `curriculum/evals/judges/technical.md` to quote the rule's literal example list before flagging, square brackets in scope, angle brackets out. (b) extend `check_prompts.md` rule 1 wording to explicitly carve out angle brackets. (c) extend rule 5 to explicitly distinguish "scrollback-review chain (preferred)" from "invented alias without back-reference (banned)". Maintainer's call which (or which combination).
+Calibration fix candidates (judge-side, not curriculum-side): (a) tighten `curriculum/evals/judges/technical.md` AND `curriculum/evals/judges/prompt-behavior.md` to quote the rule's literal example list before flagging, square brackets in scope, angle brackets out. (b) extend `check_prompts.md` rule 1 wording to explicitly carve out angle brackets. (c) extend rule 5 to explicitly distinguish "scrollback-review chain (preferred)" from "invented alias without back-reference (banned)". Maintainer's call which (or which combination).
 
 ## Hook mechanics depth
 

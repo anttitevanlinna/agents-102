@@ -39,6 +39,8 @@ The retrievers go live, connectors and the open web. The synthesizer is the one 
 2. **Session 4, synthesizer.** Paste the synthesizer prompt. It waits for the first retrieval to land, then starts curating into `memory/`.
 3. **All four running.** Switch between sessions. Watch files appear in `sources/` and `memory/` sharpen at the same time.
 
+Heavy run ahead. Each retriever fans out across your wiki, docs, or the web; the synthesizer keeps going as findings stream in. If an agent starts reading the world, stop it, steer narrower (what to skip, where to focus), then say *"continue"*. If you want something simple, give a hard cap: *"10 sources max, or even fewer"*.
+
 In Session 1, tell this session to act as your wiki retriever and stream findings into `sources/wiki-retrieval.md`.
 
 **Prompt** *(Claude Code)*

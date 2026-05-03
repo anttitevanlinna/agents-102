@@ -41,7 +41,7 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 
 ## Human close
 
-10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the Module 6 compound. This slot is the human round the practitioner-fluency mood warrants. The trainer reads the room and picks the form (pair exchange, whole-room round, quiet write-then-share, or skip the round when energy is spent).
+10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the Module 6 compound. This slot is the human round the practitioner-fluency mood warrants.
 
 *Three runs of the loop on your own work. The kit, yours.*
 
@@ -64,9 +64,23 @@ Antti
 
 **Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (line 60). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-03
-- judges @68f5fd4: writing REVISE (3B/3T see instances/ae101--spot-gaps-build-the-loop.writing.json), story REVISE (4B/0T see instances/ae101--spot-gaps-build-the-loop.story.json), technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-03 (story@60b1b6c)
+- judges @60b1b6c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+
+**Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
+- The student now owns a second packaged skill in `~/.claude/skills/` shaped to one of three forms (sharpened-verifier / judge / gap-finder), built from the gap-diagnosis across two runs, and invokes it the next time a similar task ships.
+- The student's `./CLAUDE.local.md` shows at least one rule deleted (compound-by-subtraction), the deletion commit visible in git history, born from the two-run diagnosis.
+- The student now has a one-page arc retrospective written from M1–M6 artefacts (root rules, memory, ADRs, both authored skills, both run artefacts), not from training memory or marketing copy.
+
+**Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
+- **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer / Nerd asks for quoted moments from each run separately before any synthesis.
+- **Phase 1 — Compound move (cut stale rule).** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to Phase 1's quoted-moments check.
+- **Phase 2 — Author the skill (interview).** Failure: skill-shape mismatch — student picks sharpened-verifier when the dominant gap was qualitative drift, or judge shape when the gap is deterministic. Escape: Nerd surfaces the menu — *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
+- **Phase 2 — Author the skill (interview).** Failure: author-in-editor-not-conversation — student tries to open a markdown file and type the skill directly. Escape: Nerd holds the line — *"M3 authored the first skill in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
+- **Phase 2 — Self-critique before ship.** Failure: rubber-stamp self-audit — student or Claude marks the skill complete without finding the section where session evidence shows it underdelivered. Escape: prompt forces enumeration of one named convention from the session that the skill failed to encode; hedged language like *"minor polish"* is rejected.
+- **Phase 2 — Invoke on actual run.** Failure: skill-as-documentation — student writes a SKILL.md that describes the gap instead of moving to catch it. Escape: diagnostic — the skill's `description` ends with an outcome, not a topic; if it reads like a topic page, re-scope in conversation.
+- **Arc retrospective — single-move exercise.** Failure: arc-as-trainer-monologue — Claude writes the arc note in a voice that sounds like a training testimonial. Escape: push-back prompt — *"write from my artefacts, quote me where you can, skip the summary of what the training taught."*
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

@@ -8,13 +8,13 @@ Fire up Claude Code on the laptop you'll use during the training.
 
 ## 1. Pick THE repo (10 min)
 
-One decision: which repo are you going to grow rules and memory on over the next six weeks?
+One decision, and you probably have a strong candidate already: which repo are you going to grow rules and memory on across the training?
 
 - One you ship to regularly and will still work in six months
-- Dense enough that rules and memory have somewhere to build up over six weeks (the Hello World you cloned to try Claude Code isn't it)
+- Real code, real tests, real history, somewhere with enough surface area for rules and memory to land on
 - Real work ahead at two sizes. Module 1 ships a one-line fix. Module 4 onward runs experiments on bigger things: an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
 
-Pick one. Every module of this training opens Claude Code against this repo. Worktrees fine. Every rule, every memory, every skill you build over six weeks lands here.
+Pick one. Every module of this training opens Claude Code against this repo. Every rule, every memory, every skill you build during the training lands here.
 
 ## 2. Start a new Claude Code session in THAT repo (2 min)
 
@@ -26,7 +26,7 @@ You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths to the s
 
 **3.a. Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`. (If your work network blocks the download, your trainer can email it or share via SharePoint. Same destination.)
 
-**3.b. Or have Claude download it for you.** Paste this prompt instead:
+**3.b. Or have Claude download it for you.** Ask Claude to fetch the content tarball to `~/Downloads/`.
 
 **Prompt** *(Claude Code)*
 
@@ -64,6 +64,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
 Report success on each step and tell me what you did.
 ```
 
+If Step 4's screening feels like Claude is asking everything at once, ask it to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.
 
 ## Bring to Module 1
 
@@ -71,8 +72,8 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-03 (auto-degraded from compendium-audited 2026-04-27 — file touched 2026-04-30; re-audit pending)
-- compendium-audited 2026-04-27 (check_writing + check_student_facing + check_prompts; LLM-judge approve-with-todos; three-persona sim flagged Step 0+2 redundancy as approve-with-todo non-blocking; neighbour-alignment GO across M1–M6; `claude-code-guide` capability check confirmed `/add-dir` mid-session inline-arg hang — instruction removed; this cycle: Step 3 `/add-dir` removed, Step 4 lead-in gained one-line permission warning. Step structure 0/1/2/3/4 preserved per Antti — collapse decisions made together, not from sim auto-apply.)
+**Quality:** compendium-audited 2026-05-03 (story@60b1b6c)
+- judges @60b1b6c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **DEFERRED** (held — not for autonomous fix; sim-surfaced 2026-04-27, structural call, decided together):

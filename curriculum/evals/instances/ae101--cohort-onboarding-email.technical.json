@@ -1,0 +1,104 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/cohort-onboarding-email.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "rule": "check_platform_and_boundaries §1 — training platform = Claude Code (CLI + Desktop)",
+      "verdict": "PASS",
+      "evidence": "Email names CLI as the default ('AE101 runs on the CLI by default') and explicitly allows Desktop ('The desktop app is fine too'). Consistent with §1."
+    },
+    {
+      "rule": "check_platform_and_boundaries §4 — verify capabilities before asserting",
+      "verdict": "PASS",
+      "evidence": "No speculative capability claims. All claims are observable install/auth behaviors students can verify directly."
+    },
+    {
+      "rule": "check_platform_and_boundaries §7 — sessions are the unit of work",
+      "verdict": "PASS",
+      "evidence": "Email does not use the install-level verb 'open Claude Code' in a session-work context. The one occurrence ('Open Claude Code, send it a prompt') is correctly framed as an install-verification UI-access step, not a work-session instruction."
+    },
+    {
+      "rule": "check_platform_and_boundaries §6 — known correct Claude Code facts (license tiers)",
+      "verdict": "PASS",
+      "evidence": "Claims 'Pro tier or Team tier' as required paid plans. Both tiers are valid for Claude Code access."
+    },
+    {
+      "rule": "check_platform_and_boundaries §13 — IP/infra: no F-Secure content",
+      "verdict": "PASS",
+      "evidence": "No external curriculum content referenced."
+    },
+    {
+      "rule": "check_prompts — no fenced prompt blocks present",
+      "verdict": "PASS",
+      "evidence": "File contains no fenced prompt blocks. One inline italic example ('hello, what version are you?') is a verify instruction, not a student-copy prompt block. No prompt design rules apply."
+    },
+    {
+      "rule": "check_research_claims — no citations or statistics present",
+      "verdict": "PASS",
+      "evidence": "File makes no practitioner citations, statistics, or research claims. Research compendium rules do not apply."
+    },
+    {
+      "rule": "Skill availability — no [Skill: <name>] references present",
+      "verdict": "PASS",
+      "evidence": "No skill invocations in the file."
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Pro tier or Team tier required",
+      "verdict": "PASS",
+      "note": "Both Claude Pro and Team plans are real paid tiers that unlock Claude Code access."
+    },
+    {
+      "claim": "Sign in at claude.ai to confirm plan",
+      "verdict": "PASS",
+      "note": "claude.ai is the correct sign-in URL for the standard consumer/team path. Page returned 403 (auth-gated), consistent with a sign-in wall — not a dead URL."
+    },
+    {
+      "claim": "Install from claude.com/code",
+      "verdict": "PASS",
+      "note": "claude.com/code issues a 302 redirect to claude.ai/code. User lands at the correct install page. Non-blocking: the URL in the email is functionally correct. Minor: claude.ai/code is the canonical URL; claude.com/code is an alias. Either form is acceptable in a trainer email."
+    },
+    {
+      "claim": "AE101 runs on the CLI by default; Desktop app also fine",
+      "verdict": "PASS",
+      "note": "Consistent with platform compendium §1 (CLI + Desktop both valid for AE101). No incorrect runtime claims."
+    },
+    {
+      "claim": "Claude Code is the tool used every session",
+      "verdict": "PASS",
+      "note": "Architectural rule in platform compendium §1 confirmed — Claude Code (CLI + Desktop) is the training platform for AE101."
+    },
+    {
+      "claim": "Confirm ~/Documents write access",
+      "verdict": "PASS",
+      "note": "Valid network/filesystem pre-check; no false capability claim."
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://claude.ai",
+      "status": "403 (auth-gated)",
+      "verdict": "PASS",
+      "note": "Expected behavior — sign-in wall. Not a dead URL."
+    },
+    {
+      "url": "https://claude.com/code",
+      "status": "302 → https://claude.ai/code",
+      "verdict": "PASS",
+      "note": "Redirects correctly to install page. Functional; not a dead URL."
+    },
+    {
+      "url": "https://claude.ai/code",
+      "status": "403 (auth-gated after redirect)",
+      "verdict": "PASS",
+      "note": "Auth-gated install page. Destination is correct and reachable after login."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

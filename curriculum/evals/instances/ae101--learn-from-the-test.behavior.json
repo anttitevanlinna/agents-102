@@ -1,0 +1,74 @@
+{
+  "class": "behavior",
+  "file": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "trace_status": "generated",
+  "content_sha": "c15511975cfedcdc14ace39284dd4963784885165e1e75596a4fb5f9c92b78fe",
+  "generated_at": "2026-05-03T08:16:01Z",
+  "prompts_evaluated": 2,
+  "blocking_findings_count": 2,
+  "todos_count": 0,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_sha": "dddddb9df8d03e2f29afffd4b41b90e3dca580f49106fbc6ab1b6c333ea785f1",
+      "prompt_lead": "Find the branch starting with `m4/` (run `git branch -a | grep '/m4/'` — there'll be one)",
+      "verdict": "REVISE",
+      "expected_response_shape": "Claude runs the git branch grep, finds the m4/ branch, creates the worktree, then attempts the cp commands substituting literal `<repo-name>` strings — which fails or produces wrong paths.",
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "high",
+          "evidence": "Prompt contains `<repo-name>` placeholders inside the fenced block on lines: `../<repo-name>-m5`, `cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/`, `cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/`. These are bracket-style placeholders (`check_prompts.md` rule 1) — Claude will either substitute the literal string `<repo-name>` (producing wrong paths) or pause and ask. Either path breaks the worktree setup silently or creates unexpected friction at the module's entry gate."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "The prompt opens with a two-sentence compound task (find branch → spin up worktree → copy files → report). Claude will likely produce a 2-3 sentence plan narration before issuing the first shell command, consuming the student's top-of-response slot. The prompt has no 'no preamble' or 'just do it' instruction."
+        }
+      ],
+      "failure_modes": [
+        "Claude substitutes literal `<repo-name>` string and runs `git worktree add ../<repo-name>-m5` — the worktree path lands with an angle-bracket name, which may succeed on the filesystem but won't match the student's mental model and will confuse M5/M6 cross-references.",
+        "Claude pauses to ask 'What is the repo name?' — unexpected friction at module entry where setup is supposed to be fast.",
+        "If Claude infers the repo name from CWD correctly (likely for Claude Code), the worktree lands correctly but the cp commands still reference the literal placeholder — copy fails silently (the `(if it exists)` suffix means no error fires) and gitignored personal files do NOT copy across, silently breaking M5/M6 compounding."
+      ],
+      "recovery_paths": [
+        "Replace `<repo-name>` with a back-reference instruction: 'Determine the repo name from `basename $(pwd)` and substitute it in all paths below' — keeps the prompt self-contained and removes the placeholder.",
+        "Use the open-hook pattern (check_prompts.md rule 1d): end the prompt with a colon and let the student type or paste the repo name.",
+        "Reference the CWD-derived name inline: 'Put the worktree at `../<current-repo-name>-m5` where `<current-repo-name>` is the name of THIS directory — run `basename $(pwd)` to confirm it.'"
+      ],
+      "load_bearing": true
+    },
+    {
+      "prompt_index": 2,
+      "prompt_sha": "9bab148fe8a2ea24086bc2ca341c6ffc2027cf71bde2312b5732d28e6e7feae9",
+      "prompt_lead": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.",
+      "verdict": "REVISE",
+      "expected_response_shape": "Claude reads back through session scrollback to locate reference, plan.md, and verifier paths, then begins the packaged run per the stated rules. At completion, produces a report naming shipped artifacts, failures, and verifier findings.",
+      "risks_fired": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "'Tell me what shipped, what didn't, and what the verifier surfaced' — Claude's RLHF softening will lead it to frame partial failures as partial successes, soften 'what didn't ship' with qualifications, and describe verifier failures as 'areas for improvement'. The contrast between un-packaged (M4) and packaged (M5) run is the entire lesson; if the report softens failures, the diagnostic evidence M6 reads is degraded. The prompt has no anti-softening instruction ('don't paper over failures' applies to the run, not the final report)."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "'Tell me what shipped, what didn't, and what the verifier surfaced' — this is a self-summary of a long-running autonomous run. Claude's summary will inflate: it will report more shipped than actually verified, omit partial completions as quiet 'didn't ship', and undercount verifier firings. The student walks away with the run summary rather than direct artefact evidence. The report is the primary input M6 reads to ground the 'subtler misses' module — an inflated summary corrupts M6's diagnostic surface."
+        }
+      ],
+      "failure_modes": [
+        "Claude's final report frames partial failures with 'successfully addressed most of X' language — the niceness-tax obscures which parts of the re-run actually fell short vs. the M4 run, undermining the contrast lesson.",
+        "Claude self-reports four artifacts shipped when only two were fully complete — the student walks into M6 believing the packaging worked cleanly, M6 opens on a false baseline.",
+        "Verifier firings are reported as 'the verifier flagged a few items which were resolved' without naming them — the student loses the verifier's diagnostic signal for M6's second-skill authoring phase."
+      ],
+      "recovery_paths": [
+        "Extend the report-back instruction to include anti-softening: 'Tell me what shipped, what didn't, and what the verifier surfaced. Be specific about failures — don't soften them. The contrast with the M4 run is what M6 reads.'",
+        "Add a pushback-primer in the body (loose, not fenced — it's optional): 'If the summary feels polished, push back: ask Claude which artifact the verifier actually fired on, and whether the failure was resolved or logged in RUN-NOTES.md.'",
+        "Name the M6 consumption: 'The summary you give me here is what M6 opens on — make it honest evidence, not a polished close.'"
+      ],
+      "load_bearing": true
+    }
+  ]
+}

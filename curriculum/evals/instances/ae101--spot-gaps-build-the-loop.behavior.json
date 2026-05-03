@@ -1,0 +1,165 @@
+{
+  "class": "behavior",
+  "file": "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "trace_status": "generated",
+  "prompts_evaluated": 6,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_sha": "e3a887f8a4a031c9",
+      "prompt_lead": "I have two runs of the same long-running task on disk. Find them: the un-packaged run is on",
+      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
+      "phase": "Phase 1 — Diff and name the gaps",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "blocking_risks": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "high",
+          "evidence": "120-word multi-dimensional instruction; Claude will narrate its read plan across both runs before any quoted evidence appears."
+        }
+      ],
+      "contributing_risks": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "No explicit 'don't soften' on ranking; Claude will hedge damage assessments and under-rank packaging failures."
+        }
+      ],
+      "fix_hint": "Add 'No preamble. Start with the first quoted moment.' and anchor ranking language: 'Name the damage to a future run concretely. Don't soften.'"
+    },
+    {
+      "prompt_index": 2,
+      "prompt_sha": "a9893c6cedc6fe64",
+      "prompt_lead": "Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just ranked",
+      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
+      "phase": "Phase 1 — Compound move (cut stale rule)",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "blocking_risks": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "'Cut it from ./CLAUDE.local.md in place' — no preserve-vs-replace boundary; Claude may overwrite entire file rather than surgical line removal."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Modifying a named config file without explicit 'no confirmation' instruction; Claude will pause and ask before cutting."
+        }
+      ],
+      "contributing_risks": [],
+      "fix_hint": "Add 'Edit the file directly. No confirmation step. Remove only that line; leave every other line unchanged.'"
+    },
+    {
+      "prompt_index": 3,
+      "prompt_sha": "47ba547c5e71dec9",
+      "prompt_lead": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions",
+      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
+      "phase": "Phase 2 — Author the skill (interview)",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "blocking_risks": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "high",
+          "evidence": "Multi-topic enumeration ('Cover: what the skill fires on… the quality bar… what to flag…') after 'one question at a time' strongly invites Claude to show all topics upfront or batch two questions per message. 'In turn' is too soft per catalog rule."
+        }
+      ],
+      "contributing_risks": [
+        {
+          "pattern_id": "plan-mode-preamble-bloat",
+          "confidence": "med",
+          "evidence": "Multi-step end state ('Show me before saving') signals plan mode; Claude will narrate the 5-topic interview plan before asking the first question."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "'Push back when my answer is generic' — Claude will praise before pushing back, softening the pedagogical friction."
+        }
+      ],
+      "fix_hint": "Replace 'Interview me one question at a time' with 'Ask me ONE question. Wait for my answer. Then ask the next. DO NOT show me the question list.' Move topic enumeration out of the fenced block into body prose."
+    },
+    {
+      "prompt_index": 4,
+      "prompt_sha": "c206a1e2030b40d7",
+      "prompt_lead": "Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:",
+      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
+      "phase": "Phase 2 — Self-critique before ship",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "blocking_risks": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "high",
+          "evidence": "Self-critique of just-produced SKILL.md in the same conversation. 'Don't reassure me' partially suppresses framing but cannot override RLHF self-charity on critique magnitude. >70% of runs produce under-critique."
+        }
+      ],
+      "contributing_risks": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "Claude names weak parts at reduced magnitude ('worth watching' vs 'assumption is likely wrong') — categorical softening not addressed by 'Don't reassure me'."
+        }
+      ],
+      "fix_hint": "Add 'Be harsher than necessary. Flag at least two things you'd rewrite if this were a colleague's skill, not yours.' Alternatively, dispatch the critique as a fresh sub-task with the SKILL.md pasted cold (no authoring context)."
+    },
+    {
+      "prompt_index": 5,
+      "prompt_sha": "107a02952235deea",
+      "prompt_lead": "Invoke the skill we just authored — by its name — on the M5 packaged re-run.",
+      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
+      "phase": "Phase 2 — Invoke on actual run",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "blocking_risks": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "high",
+          "evidence": "'Then, in the same response, answer: is the skill any good?' — skill output AND skill self-grading in a single turn. Claude will report the skill 'catches the core pattern' when an independent reader would find substantive gaps."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "high",
+          "evidence": "'Does it miss things a staff engineer would catch?' — asked immediately after producing the output in the same session. Claude names 1 partial miss and concludes 'mostly solid' vs. the 2-3 misses a fresh reader would identify."
+        }
+      ],
+      "contributing_risks": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Multi-part prompt (invoke + produce + self-assess); Claude will narrate the two-step plan before any invocation begins."
+        }
+      ],
+      "fix_hint": "Split into two prompts: (a) invoke and produce output; (b) in a new prompt 'Now read that output as if you'd never written the skill. What did it miss?' Or dispatch the self-assessment as a sub-task via Task tool with only the skill output and dominant gap pasted cold."
+    },
+    {
+      "prompt_index": 6,
+      "prompt_sha": "51d5f8a82b59f46a",
+      "prompt_lead": "Read my work across this repo. Specifically:",
+      "source_file": "curriculum/exercises/arc-retrospective.md",
+      "phase": "Arc retrospective — single-move exercise",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "blocking_risks": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "high",
+          "evidence": "Multi-step orchestration ('Run this audit in a fresh sub-task… then combine with scrollback… I want both viewpoints') guarantees Claude explains the two-viewpoint plan in 4-6 sentences before dispatching the sub-task. This is the exercise's sole teaching moment."
+        }
+      ],
+      "contributing_risks": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "'Name the pattern that you see recurring across modules if you see one' — despite 'Don't invent a pattern', prompt structure expects a pattern; arc note may over-smooth the student's actual messier experience."
+        }
+      ],
+      "fix_hint": "Add 'No plan narration. Dispatch the sub-task immediately.' Add 'If the artefacts show no clean pattern, say so explicitly and name the messiest moment instead.'"
+    }
+  ],
+  "blocking_findings_count": 6,
+  "todos_count": 0
+}

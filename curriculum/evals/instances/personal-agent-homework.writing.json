@@ -1,91 +1,66 @@
 {
-  "class": "writing",
-  "file": "curriculum/exercises/personal-agent-homework.md",
-  "verdict": "REVISE",
-  "training": "bootstrap",
-  "rules_evaluated": [
+  "target_file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/personal-agent-homework.md",
+  "eval_class": "writing",
+  "eval_date": "2026-05-03",
+  "compendiums_loaded": [
+    "check_writing.md",
+    "check_student_facing.md",
+    "check_prompts.md"
+  ],
+  "maintainer_cut_line": 97,
+  "fence_ranges": [
     {
-      "compendium": "check_writing",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance",
-      "verdict": "PASS",
-      "blocking": false
+      "step": "Step 2",
+      "lines": "31-37",
+      "label": "Style extraction prompt"
     },
     {
-      "compendium": "check_writing",
-      "rule_index": 2,
-      "rule_lead": "Ritual / practice / ceremony — hard ban",
-      "verdict": "PASS",
-      "blocking": false
+      "step": "Step 3",
+      "lines": "45-55",
+      "label": "Agent instructions prompt"
     },
     {
-      "compendium": "check_writing",
-      "rule_index": 3,
-      "rule_lead": "No stale markers",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 4,
-      "rule_lead": "Register match",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 7,
-      "rule_lead": "Always 'you', never 'the student'",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences.",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 23,
-      "rule_lead": "Reflection beats stay invisible",
-      "verdict": "PASS",
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in",
-      "verdict": "REVISE",
-      "evidence": "Lines 64-67: Step 4's prompt block lacks semantic action lead-in. Line 65 says '**Prompt:** the single line below' which is a pointer, not an action summary with a command verb.",
-      "fix": "Add before line 67: One sentence like 'Ask Claude to read your agent instructions and memory, then execute today's job and generate HTML output.' or similar describing what the prompt does.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 23,
-      "rule_lead": "Artifact destinations are explicit subpaths (Bootstrap-specific)",
-      "verdict": "REVISE",
-      "evidence": "Line 34 (inside fence): 'Write it to style.md at the training-directory root' uses naked filename. Bootstrap rule requires explicit path like './style.md'.",
-      "fix": "Change 'Write it to style.md' to 'Write it to ./style.md' to make the root-level destination explicit.",
-      "blocking": true
+      "step": "Step 4",
+      "lines": "71-73",
+      "label": "Scheduled task prompt"
     }
   ],
-  "blocking_findings_count": 2,
-  "todos_count": 0
+  "blocking_findings": [
+    {
+      "rule": "check_prompts.md §23",
+      "severity": "blocking",
+      "location": "line 32 (inside Step 2 fence)",
+      "finding": "Naked filename destination violates Bootstrap explicit-subpath rule",
+      "current_text": "Write it to style.md at the training-directory root, in plain language (not a CSS file).",
+      "issue": "Naked `style.md` without `./` prefix. Bootstrap rule §23 requires deliberate root saves to use `./` prefix for visibility.",
+      "fix_hint": "Change to `Write it to ./style.md at the training-directory root, in plain language (not a CSS file).`",
+      "risk": "low"
+    }
+  ],
+  "non_blocking_findings": [],
+  "writing_class_notes": {
+    "banned_words": "PASS — no hits on {honest, delve, landscape-verb, importantly, crucial, substrate, leverage-verb, synergize, paradigm shift}",
+    "register": "PASS — Bootstrap voice trio (Godin/Sutherland/Siilasmaa) deployed appropriately",
+    "stale_markers": "PASS — no session dates, 'caught live', 'MOVED', or historical annotations",
+    "em_dashes": "PASS — no em-dashes in body prose"
+  },
+  "student_facing_class_notes": {
+    "aspirational_not_corrective": "PASS — jobs presented as choices, not corrections",
+    "equals_not_pupils": "PASS — second-person throughout, no condescending narration",
+    "contemplative_pause_theater": "PASS — no 'sit with', 'pause', 'breathe', 'let it land'",
+    "earned_technical_terms": "PASS — 'connector', 'scheduled agent', 'style pattern' all contextually grounded",
+    "overclaim_verification": "PASS — asks for observation ('watch for'), not full verification",
+    "no_narration_past_behavior": "PASS — invites, describes, directs; doesn't narrate student state"
+  },
+  "prompts_class_notes": {
+    "no_placeholders": "PASS — all three fences are complete, no [brackets]",
+    "action_lead_ins": "PASS — lines 27, 45, 65-67 all present semantic summaries",
+    "canonical_shape": "PASS — lead-in → label → blank → fence → close",
+    "skills_by_name": "PASS — no path leaks",
+    "chain_by_back_reference": "PASS — line 39 restates 'the file you just created'",
+    "prompt_maintenance_note": "Flag: Step 2 fence line 34 (append to CLAUDE.md) — verify whether this instruction uses naked path or explicit destination. Current text 'Then append one line to my root CLAUDE.md' doesn't specify save location in the fenced prose, though line 39 (body) assumes the instruction fired. Mark as TODO if the fence prose should strengthen the destination clarity."
+  },
+  "verdict": "REVISE",
+  "blocking_findings_count": 1,
+  "summary": "One blocking finding: line 32 naked filename `style.md` must use `./style.md` prefix per Bootstrap §23 rule. All writing, student-facing, and prompt-design rules otherwise PASS."
 }

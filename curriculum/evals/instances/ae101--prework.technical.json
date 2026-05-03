@@ -1,0 +1,199 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": "line:21: 'CLI or desktop, your call.' — platform correctly scoped to CLI/Desktop; no claude.ai-only features invoked.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": "line:85 (maintainer): 'Confirmed against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs' — capability claims are footnoted in maintainer block with verification sourcing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work — write 'start a new session in X,' not 'open Claude Code in X.'",
+      "verdict": "REVISE",
+      "evidence": "line:7: 'Fire up Claude Code on the laptop you'll use during the training.' uses launch framing. line:21: 'CLI or desktop, your call. Open a new session with the repo as the working directory.' is correct. Section 0 launch framing does not conflate session/app in a way that breaks pedagogy — but rule 7 flags the phrasing.",
+      "fix_hint": "Change line 7 to 'Start Claude Code on the laptop you'll use during the training.' — preserves launch meaning while honoring rule 7; §2 already correct.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
+      "verdict": "N/A",
+      "evidence": "No cross-repo private-link in student-facing body. <CONTENT_URL> is a build-time substitution, not a pseudo-URI reference to private content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": "line:36: '<CONTENT_URL>' appears inside the fenced block at step 3.b — maintainer block line:86 documents explicit build-time substitution exception ('covered by build-time substitution, not student fill-in'). Carve-out is correctly scoped and documented.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "line:29: '**3.b. Or have Claude download it for you.** Ask Claude to fetch the content tarball to ~/Downloads/.' — action lead-in with command verb 'Ask Claude to fetch' immediately precedes the **Prompt** label at line:31. Prior REVISE finding (mechanical narration 'Paste this prompt instead:') is resolved by this edit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": "line:31-33 and line:45-47: Both prompt blocks use '**Prompt** *(Claude Code)*' label with blank line before fence. Action lead-in present before each label.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "PASS",
+      "evidence": "lines:55-56 inside fenced block: '- access-control-analysis' and '- stride' — skill names only, no path. No 'content/skills/' or '~/.claude/skills/' path appears inside any fenced block.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "No **bold** or *italic* markdown inside either fenced block. Uses plain bullets and numbered lists inside fences.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check — every named tool, skill, connector, file, or path a prompt invokes must exist.",
+      "verdict": "PASS",
+      "evidence": "Skills 'access-control-analysis' and 'stride' verified installed at ~/.claude/skills/ with SKILL.md present. Content tarball ~/Downloads/agents-102-content.tar.gz is the student-produced artifact from step 3. ~/Documents/ae101-content/ is created by the prompt itself (step 1). All invocations trace to installable or self-created artifacts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go — and forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Core pedagogical move — bug screening with criteria (lines 60-61) — lives inside the fenced prompt block, not in surrounding body prose. Body prose describes the transport mechanic (step 3), not a scripted reaction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": "Prework does not build verification machinery.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": "line:85 (maintainer): 'Skills install to ~/.claude/skills/ (user-level), auto-discover in every session regardless of cwd.' — prework installs skills at the correct lazy-load tier; auto-load tier not claimed for skills.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": "No practitioner citations or statistics in student-facing body. Maintainer block references 'Anthropic Claude Code setup docs + Microsoft devblogs' for platform claims — in maintainer block only, consistent with §1 scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": "No statistics cited.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Fire up Claude Code on the laptop you'll use during the training.",
+      "line": 7,
+      "verdict": "REVISE",
+      "source": "compendium rule 7"
+    },
+    {
+      "claim": "CLI or desktop, your call. Open a new session with the repo as the working directory.",
+      "line": 21,
+      "verdict": "PASS",
+      "source": "compendium rule 7"
+    },
+    {
+      "claim": "Claude will need to write outside the repo (~Documents/ae101-content/ and ~/.claude/skills/); approve the permission prompts when they fire.",
+      "line": 43,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Skills install to ~/.claude/skills/ (user-level), auto-discover in every session regardless of cwd.",
+      "line": 85,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Cross-platform via Claude Code's Bash tool: macOS/Linux native, Windows via Git Bash (which Claude Code requires).",
+      "line": 85,
+      "verdict": "PASS",
+      "source": "inferred"
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [
+    {
+      "name": "access-control-analysis",
+      "line": 55,
+      "installed_path": "~/.claude/skills/access-control-analysis/SKILL.md",
+      "exists": true
+    },
+    {
+      "name": "stride",
+      "line": 56,
+      "installed_path": "~/.claude/skills/stride/SKILL.md",
+      "exists": true
+    }
+  ],
+  "urls_sampled": [
+    {
+      "url": "<CONTENT_URL>",
+      "note": "Build-time placeholder — not a live URL in source; substituted by scripts/build-workbook.js at render time. Exempt from liveness check.",
+      "verdict": "EXEMPT"
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

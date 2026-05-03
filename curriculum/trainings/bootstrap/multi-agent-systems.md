@@ -81,9 +81,9 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-02 (Debrief prompt hardened + body callout added; behavior + prompts classes auto-degraded; re-fire pending)
-- draft 2026-05-02 (Debrief prompt hardened: "audit harshly", two-seams-with-evidence requirement; homework prompt: drop-candidate required. Body callout after the prompt explains why the harder ask forces a real audit. Source: /eval-fire behavior 2026-05-02 convergent risks (self-report-inflation high, self-audit-charity high, file-preservation-gap med); routed through /content-creation per sim-eval-verdicts-are-read-only rule)
-- draft 2026-04-29 (compendium audit run 2026-04-29 returned APPROVE-WITH-TODOS — runtime-fork pass applied; mood/LO/banned-word pass; not yet sim-passed or mechanical-tested)
+**Quality:** compendium-audited 2026-05-03
+- judges: not yet judge-audited
+- maintainer-reviewed @60b1b6c: PASS — M3 manual walkthrough
 
 **TODO (Cowork edition review 2026-04-29):**
 - Learning goals and Key Concepts still leak Code-only terminology in Cowork rendering: "subagents inside one session", "when separate sessions beat subagents", and "Two multi-agent shapes in Claude Code." Runtime-fork or neutralize those lines so Cowork students see agents/tasks language while preserving the same learning goals.

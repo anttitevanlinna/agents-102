@@ -93,8 +93,8 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (technical@f65e3e4)
-- judges @f65e3e4: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered
+**Quality:** compendium-audited 2026-05-03
+- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior REVISE (1/2-see-instances/ae101--run-the-first-experiment.behavior.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

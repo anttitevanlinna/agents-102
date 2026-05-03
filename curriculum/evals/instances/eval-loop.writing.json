@@ -1,247 +1,64 @@
 {
-  "class": "writing",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/eval-loop.md",
+  "file": "curriculum/exercises/eval-loop.md",
+  "eval_class": "writing",
+  "model": "claude-haiku-4-5-20251001",
+  "timestamp": "2026-05-03T00:00:00Z",
   "verdict": "REVISE",
-  "training": "bootstrap",
-  "maintainer_cut": 222,
-  "fence_ranges": [
-    [
-      23,
-      31
-    ],
-    [
-      41,
-      81
-    ],
-    [
-      82,
-      122
-    ],
-    [
-      130,
-      142
-    ],
-    [
-      148,
-      159
-    ],
-    [
-      185,
-      216
-    ]
-  ],
-  "rules_evaluated": [
+  "blocking_findings_count": 1,
+  "blocking_findings": [
     {
-      "compendium": "check_writing",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 2,
-      "rule_lead": "Ritual / practice (as noun) / ceremony — hard ban",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 3,
-      "rule_lead": "No stale markers, no 'fixed' retrospectives",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 4,
-      "rule_lead": "Register match",
-      "verdict": "PASS",
-      "evidence": "line 9: Godin-warm + Sutherland-reframe voice appropriate for Bootstrap trio",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 8,
-      "rule_lead": "Don't smuggle terms of art from maintainer into body",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + strategy, NOT in student-facing curriculum body",
-      "verdict": "PASS",
-      "evidence": "line 9 'A yardstick you rewrite is not a yardstick' is pedagogical, not positioning defense",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing",
-      "rule_index": 14,
-      "rule_lead": "Watch out for planting jargon too early",
-      "verdict": "REVISE",
-      "evidence": "line 11: 'generation and judging happen in separate subagents' introduces term without one-breath primer. Same at line 39. Subagent is a Claude Code primitive not yet earned in module body.",
-      "fix": "Either (a) add one-breath primer on first use at line 11 — 'subagents are isolated Claude sessions that let multiple processes run in parallel' — then use the real term, or (b) use plain language 'separate sessions' at first use (lines 11, 39) and earn 'subagent' in a later module where it lands operationally in the exercise body.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap",
-      "verdict": "PASS",
-      "evidence": "Exercise frames the student as becoming someone who sets up eval infrastructure, not as fixing a deficit",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use",
-      "verdict": "REVISE",
-      "evidence": "line 11: 'subagents' appears in body prose without a one-breath primer tied to what the student just did or is about to do",
-      "fix": "Provide a single-sentence earn before line 11: 'Subagents are isolated execution contexts within Claude Code — each one gets fresh context for a specific task.' Then introduce the term.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 7,
-      "rule_lead": "Always 'you', never 'the student'; teacher framing stays out of body",
-      "verdict": "PASS",
-      "evidence": "Lines 4–39 consistently use second person 'you' for student actions; no teacher-behavior narration in body",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 14,
-      "rule_lead": "No em-dashes. Simple sentences",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing",
-      "rule_index": 17,
-      "rule_lead": "Section headers use command verbs when the section is about doing something",
-      "verdict": "PASS",
-      "evidence": "'Phase 0: Run the judge once', 'Phase 1: Start the loop', 'Phase 2: Come back to the notes' — all verb-lead",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in",
-      "verdict": "PASS",
-      "evidence": "line 19 provides action lead-in for Phase 0 prompt; Phase 1 and 2 prompts similarly preceded",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 3,
-      "rule_lead": "Canonical presentation shape — lead-in, label, blank line, fenced block",
-      "verdict": "PASS",
-      "evidence": "Phase 0 (lines 19–31): lead-in at 19, blank 20, **Prompt** 21, fence 23–31. Correct.",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 10,
-      "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip",
-      "verdict": "PASS",
-      "evidence": "lines 41–122: .rt-code and .rt-cowork divs both use *(Claude Code)* label; renderer auto-swaps per runtime",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 23,
-      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Bootstrap-specific)",
-      "verdict": "PASS",
-      "evidence": "lines 26, 28, 49, etc. all use 'module-6/...' subpaths; no naked filenames",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts",
-      "rule_index": 25,
-      "rule_lead": "Subagent use — explain why after the prompt",
-      "verdict": "REVISE",
-      "evidence": "lines 41–81 (.rt-code) and 82–122 (.rt-cowork) prompt blocks use 'subagent'/'agent' but no explanation follows (at line 124+) of why the separation matters pedagogically or mechanically",
-      "fix": "After line 122 (before line 124), add one sentence: 'Subagents keep the generator and judge isolated — each gets fresh context and neither can see the other working, so the judge can't be biased by the generator's intermediate thinking.' This explains the design without adding noise to the prompt itself.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named",
-      "verdict": "PASS",
-      "evidence": "Exercise does not have Big Idea / Key Concepts sections; mood tie-in checks do not apply to exercise files",
-      "fix": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy",
-      "rule_index": 1,
-      "rule_lead": "CTO-repeatable test",
-      "verdict": "PASS",
-      "evidence": "Exercise is not buyer-facing copy; sales-copy rules do not apply",
-      "fix": null,
-      "blocking": false
+      "rule": "check_prompts.md rule 9",
+      "severity": "high",
+      "category": "markdown shout in fenced prompt blocks",
+      "locations": [
+        {
+          "line_range": "26-32",
+          "snippet": "**1. Produce a fresh one-page briefing...** / **2. Run the judge...** / **3. In the chat, summarize...**",
+          "issue": "Markdown bold (**...**) inside fenced code block. When student pastes into Claude Code, asterisks render literally, not as bold."
+        },
+        {
+          "line_range": "48-70",
+          "snippet": "**1. Dispatch a generator subagent.** ... **2. Dispatch a separate judge subagent.** ... **3. The main session...**",
+          "issue": "Markdown bold throughout prompt fence. Asterisks become visible noise in Claude Code input/scrollback."
+        },
+        {
+          "line_range": "102-111",
+          "snippet": "**1. Dispatch a generator agent.** ... **2. Dispatch a separate judge agent.** ... **3. The main session...**",
+          "issue": "Same markdown shout pattern in Cowork fork (rt-cowork div)."
+        },
+        {
+          "line_range": "150-161",
+          "snippet": "Show me module-6/eval-notes.md and ./generation-tactic.md. / Then answer in five bullets: **- Did the judge...** etc.",
+          "issue": "Markdown bold on bullet list inside fence."
+        }
+      ],
+      "fix_hint": "Replace markdown bold with plain bullets (- item) and numbers (1. 2. 3.) inside fences. Use backticks for paths. Bullets and numbers render as themselves when pasted; asterisks do not."
     }
   ],
-  "blocking_findings_count": 2,
-  "todos_count": 1,
-  "fp_filtered": {
-    "maintainer_cut_line": 222,
-    "fence_ranges": [
-      [
-        23,
-        31
-      ],
-      [
-        45,
-        79
-      ],
-      [
-        86,
-        120
-      ],
-      [
-        132,
-        134
-      ],
-      [
-        140,
-        142
-      ],
-      [
-        150,
-        159
-      ],
-      [
-        189,
-        198
-      ],
-      [
-        205,
-        214
-      ]
-    ],
-    "dropped_count": 0,
-    "dropped": []
+  "comments": [
+    {
+      "carve_out": "Mechanism-narration lines 163-171 (What happens) are legitimate student-facing body prose, not trainer framing. They address the student in second person and narrate what the student's generator does. Per specified carve-out, PASS.",
+      "source": "check_student_facing.md rule 7 carve-out"
+    },
+    {
+      "carve_out": "Subagents term is earned at line 11 ('isolated Claude sessions that run inside the same project'). First use links the term to a concrete definition. PASS.",
+      "source": "check_student_facing.md rule 2"
+    },
+    {
+      "note": "Bootstrap voice trio register (Godin/Sutherland/Siilasmaa) lands consistently. Tone is peer-warm, concrete, aspirational. PASS."
+    },
+    {
+      "note": "Phase lead-in sentences (lines 23, 45, 150) all present and semantic. No mechanical 'paste this' instructions. PASS."
+    }
+  ],
+  "recommended_next_action": "Fix markdown shout in all four prompt blocks. Strip ** on list items and replace with plain bullets/numbers. Keep backticks for paths. Re-run writing-class judge after fix.",
+  "context": {
+    "file_type": "exercise",
+    "surface_type": "student-facing",
+    "compendiums_loaded": [
+      "check_writing.md",
+      "check_student_facing.md",
+      "check_prompts.md"
+    ]
   }
 }

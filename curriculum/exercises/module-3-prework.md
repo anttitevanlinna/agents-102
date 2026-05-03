@@ -46,7 +46,8 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (Reading 2 forked Code/Cowork 2026-04-29 from REVISE; not yet sim-passed or mechanical-tested)
+**Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
+- judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 
 **Frameworks riffed on:**
 - Practitioner-before-pattern — read five people doing the thing before hearing the name for the thing. Same move as Module 2's Karpathy-first sequencing.

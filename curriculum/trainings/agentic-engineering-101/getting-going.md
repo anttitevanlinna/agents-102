@@ -55,8 +55,8 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (writing@f65e3e4)
-- judges @f65e3e4: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
+- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

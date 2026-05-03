@@ -1,0 +1,76 @@
+{
+  "class": "behavior",
+  "file": "curriculum/trainings/agentic-engineering-101/prework.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "trace_status": "cache_hit",
+  "prompts_evaluated": 2,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_sha": "1b8a6785cf8365562e6202f9c46cae93078cc47fcb94b4113f65abf603e214e5",
+      "prompt_lead": "Download the AE101 content tarball to ~/Downloads. Use Bash:",
+      "load_bearing": false,
+      "verdict_contribution": "PASS",
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "No plan-mode trigger; Bash-tool invocation is direct. Claude may open with a one-line 'Running the download now…' but the explicit mechanical action suppresses most preamble variants.",
+          "verdict_weight": "TODO"
+        }
+      ],
+      "failure_modes": [
+        "Claude narrates the curl command before running it rather than executing directly — adds one sentence of dead air but does not block the task."
+      ],
+      "recovery_paths": [
+        "No recovery needed at low confidence; the task is short enough that preamble is negligible."
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_sha": "5ee016323303b8cb84fc3ae051907d6e5315451d6d9ffbc1a597ed5278c177b7",
+      "prompt_lead": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order,",
+      "load_bearing": true,
+      "verdict_contribution": "REVISE",
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "'no preamble' is in the prompt but a numbered multi-step task reliably triggers a confirmatory opening ('I'll work through these in order…') in ~40% of runs before step 1 execution begins. Explicit suppression reduces but does not eliminate the pattern.",
+          "verdict_weight": "BLOCKING"
+        },
+        {
+          "pattern_id": "question-dump",
+          "confidence": "med",
+          "evidence": "Step 4 reads 'Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible…, mine or co-owned, shippable.' The 'ask one question at a time if you need to' applies to clarifying questions during steps 1-3; step 4 is a structured elicitation with 4 named screening criteria. Claude may present all criteria as a form or dump all questions in one message rather than running a conversational one-at-a-time screen.",
+          "verdict_weight": "BLOCKING"
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "Step 3 installs skills to '~/.claude/skills/' with no explicit overwrite instruction. If a same-named skill already exists from a prior run or other source, Claude will pause and ask 'should I overwrite?' rather than proceeding. Most first-time students won't have a collision, keeping this low.",
+          "verdict_weight": "TODO"
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "'Report success on each step and tell me what you did' invites a self-summary after skill install. Claude may claim skill installation was confirmed when the SKILL.md path check was approximate. Non-load-bearing for prework's teaching goal; the install is mechanical, not a teaching moment about self-report.",
+          "verdict_weight": "TODO"
+        }
+      ],
+      "failure_modes": [
+        "Claude opens with a plan-summary paragraph ('Great — I'll work through these in order: first create the directory, then extract…') that eats the student's attention before step 1 runs.",
+        "At step 4, Claude presents the full screening criteria as a structured form or asks three questions in one message rather than running a conversational exchange — student batch-answers and the 'Help me pick the most trivial-and-visible one' collaborative screen collapses to form-submission.",
+        "If a pre-existing skill directory exists at ~/.claude/skills/access-control-analysis/ or ~/.claude/skills/stride/, Claude halts the sequence to ask for permission before overwriting — unexpected pause mid-sequence for a prework task."
+      ],
+      "recovery_paths": [
+        "For preamble-before-action: prime the student in the body above the prompt ('Claude will narrate before acting; skim past any opening summary and look for the numbered step output') — already partially addressed by 'no preamble' but student priming covers the residual.",
+        "For question-dump at step 4: restructure step 4 to say 'Ask me ONE candidate bug at a time. For each one I give you, screen it against these criteria: …. Keep asking until you have three screened candidates, then help me pick.' This enforces one-at-a-time structurally rather than relying on 'ask one question at a time if you need to'.",
+        "For overwrite-anxiety at step 3: add 'If a skill with that name already exists at ~/.claude/skills/, overwrite it.' to the install instruction — explicit overwrite removes the ambiguity that triggers the pause."
+      ]
+    }
+  ],
+  "blocking_findings_count": 2,
+  "todos_count": 3
+}

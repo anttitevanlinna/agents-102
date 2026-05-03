@@ -92,8 +92,8 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (writing@0833429)
-- judges @0833429: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-03
+- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior REVISE (2/0-see-instances/ae101--learn-from-the-test.behavior.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

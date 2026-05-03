@@ -62,7 +62,9 @@ In the desktop app, open the **Schedule** sidebar. Click **New task → New loca
 
 - **Name:** `Morning memory` (or whatever you want to see)
 - **Frequency:** Daily at the time you actually want it to fire, 7:00 AM for most people
-- **Prompt:** the single line below.
+- **Prompt:** the line below.
+
+Ask Claude to read the morning brief, follow the rules, and write the daily output to `latest.html`.
 
 **Prompt** *(Claude Desktop)*
 
@@ -119,3 +121,6 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 
 **Capability check owed:**
 - Verify via `claude-code-guide` that a scheduled local task can reliably write HTML files to an arbitrary path inside the working directory (nothing sandboxed about `module-2/morning-agent/latest.html`). Also verify that `Run now` opens a session with full working-directory context including the root `CLAUDE.md`. Both assumed throughout Step 4; neither should be left to training-day discovery.
+
+**Quality:** compendium-audited 2026-05-03
+- judges @60b1b6c: writing REVISE (1/0-see-instances/personal-agent-homework.writing.json), story grandfathered, technical grandfathered, behavior grandfathered

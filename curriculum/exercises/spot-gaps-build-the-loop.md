@@ -80,6 +80,7 @@ Push back when my answer is generic. A judge that says "check if the output is g
 When you have enough, propose a skill name. Write `~/.claude/skills/<proposed-name>/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving.
 ```
 
+If Claude shows you the full question list up front instead of asking one at a time, ask it to use the AskUserQuestion tool, or to ask one and wait. Your call.
 
 Answer each question. When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment: *"no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically."*
 

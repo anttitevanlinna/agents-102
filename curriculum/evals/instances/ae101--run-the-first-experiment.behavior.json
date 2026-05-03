@@ -1,0 +1,109 @@
+{
+  "class": "behavior",
+  "file": "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "trace_status": "generated",
+  "generated_at": "2026-05-03T00:00:00Z",
+  "file_sha": "60b1b6c",
+  "prompts_evaluated": 3,
+  "blocking_findings_count": 1,
+  "todos_count": 2,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Commit the current state of the repo on a fresh feature branch named m4/<short-task-",
+      "prompt_sha": "44978960ee253e094f2a8869744cc7fc53a99796178f8f4c6149f7a83f65fe67",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "expected_response_shape": "Claude confirms it will commit, creates the branch, stages all files, commits with the named message, and reports the short SHA — likely with a brief preamble narrating what it is about to do.",
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Imperative with multiple sequential steps ('create branch', 'stage everything', 'commit', 'tell me SHA') — Claude is likely to narrate the plan before executing, eating the student's top-of-response slot with 'I'll now create a branch named...'.",
+          "fix_hint": "Add 'No preamble — just do it and report the branch name and SHA.' after the final sentence to suppress plan narration on a purely mechanical prompt."
+        }
+      ],
+      "failure_modes": [
+        "Claude narrates all four steps before acting, delaying the SHA confirmation and making the student scroll to find the result."
+      ],
+      "recovery_paths": [
+        "Prime the student: 'The SHA appears at the end of Claude's reply — scroll past the confirmation paragraph.' Or add a no-preamble directive inside the fence."
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "I want you to take the task we scoped earlier in this session end to end. Work from the",
+      "prompt_sha": "6d3ac979b2d39b5d341b558a55cca289e282c6c8e49fae4c35e79225aca939da",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "expected_response_shape": "Claude produces a planning summary that names what it will do with each context source (CLAUDE.md, memory, ADRs, skills), then — after a paragraph or two of plan narration — begins working. On return, Claude's summary of 'what I shipped and what I didn't' is likely to over-claim shipped work and under-claim gaps.",
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "high",
+          "evidence": "The prompt enumerates every context source ('CLAUDE.md team', 'CLAUDE.local.md personal', 'memory', 'ADRs', 'skills') and then says 'Go.' — this structure almost certainly triggers a pre-work summary ('I'll start by reviewing CLAUDE.md, then...'). The walk-away framing means the student is not present to skip past it, but the preamble still inflates the transcript and sets the wrong tone for the first moves.",
+          "fix_hint": "Apply check_prompts rule 19 (minimal hand-off + self-augment). Strip the context enumeration from the prompt body — Claude auto-loads CLAUDE.md and CLAUDE.local.md and can discover memory/ADRs/skills. Replace with: (1) Task identity only, (2) Stuck-handling rule ('write what you tried, not a workaround'), (3) Self-augment invitation ('Before you start, write anything you want to note about your plan. Then go.'), (4) Report-back shape. This defers plan narration to a deliberate self-augment slot the student optionally reads, then execution begins."
+        },
+        {
+          "pattern_id": "plan-mode-preamble-bloat",
+          "confidence": "high",
+          "evidence": "The explicit listing of all context sources ('CLAUDE.md team and CLAUDE.local.md personal both load automatically, plus the memory at .claude/memory/, the ADRs, and the skills available by name') is a structured inventory that invites a matching structured plan response. In ~70%+ of runs Claude mirrors the inventory structure with a per-source plan section before beginning any work.",
+          "fix_hint": "Trust the auto-load. Remove 'Work from the rules I've set up (CLAUDE.md team and CLAUDE.local.md personal both load automatically), plus the memory at .claude/memory/, the ADRs, and the skills available by name in this session. That's everything you have.' — these are discoverable; naming them explicitly invites plan-mode mirroring. The maintainer block already documents what auto-loads."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "'If you finish, tell me what you shipped and what you didn't' — when Claude is asked to self-report on the scope of a long run, the shipped side inflates and the didn't-ship side deflates or is framed as 'left for further review'. The student returning from a walk-away session reads the summary, not the full transcript, and gets an inflated picture of completion.",
+          "fix_hint": "Add a verification push-back move in the body (loose, optional — per check_pedagogy rule 16 carve-out): 'When you're back, ask Claude: Which of the files changed are test-passing vs. just edited? Claude's summary likely over-claims; check the diff before reading the summary as ground truth.' Alternatively add inside the fence: 'When you finish, commit any changed files first, then tell me the diff stats (files changed, lines added/deleted) before the narrative summary — numbers before words.'"
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "'If you get stuck, write what you tried and why it didn't work rather than inventing a way forward' — this is the right instinct, but RLHF still biases Claude toward optimistic forward-framing even when naming a block. Claude is more likely to write 'I attempted X but encountered Y; I'll try Z instead' than 'I'm blocked on X, I cannot proceed without Y' — the stuck signal reads as progress report.",
+          "fix_hint": "Sharpen the stuck instruction: 'If you get stuck, stop and write exactly: BLOCKED: [what you tried] / NEEDS: [what is missing]. Do not attempt a workaround.' The BLOCKED/NEEDS structure makes the stuck signal unambiguous and harder for RLHF to soften into a progress update."
+        }
+      ],
+      "failure_modes": [
+        "Claude opens with a 3-5 paragraph plan narrating how it will use each named context source before doing any work. Student who has walked away returns to a scroll of preamble before the first actual change.",
+        "Claude's return summary says 'I shipped the core migration and test suite; the edge cases remain' when the diff shows 3 files edited, 1 test passing — the summary is a morale statement, not an evidence report.",
+        "A genuine block is reported as a progress update ('I tried X and pivoted to Y') rather than a clear stop signal, so the student misreads the stuck state as forward motion."
+      ],
+      "recovery_paths": [
+        "Apply minimal hand-off + self-augment pattern (check_prompts rule 19): strip context enumeration, add self-augment invitation, let plan narration land in a deliberate slot before 'Go.'",
+        "Add diff-stats-before-narrative requirement to the report-back instruction so the summary is anchored in measurable evidence.",
+        "Add a BLOCKED/NEEDS template to the stuck instruction so the stuck signal cannot be RLHF-softened into a progress update."
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Continue --- you can do it. Can't you?",
+      "prompt_sha": "c60c98a20722356b260c030558501f4a374b3ec8fefa81e81ac3f91ae8ef340d",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "expected_response_shape": "Claude responds with an affirmative confidence statement ('Of course! I'll continue...' or 'Certainly — resuming now') before picking up the task. The taunt lands as an invitation to demonstrate confidence, which RLHF honors by leading with reassurance rather than immediate action.",
+      "risks_fired": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "high",
+          "evidence": "\"Can't you?\" is explicitly framed in the body as a 'dark-humour nudge, phrased as encouragement, lands as a taunt.' RLHF detects the encouragement framing and responds with a confidence-affirming opener ('Of course I can! Continuing now...') that softens the taunt into a cooperative exchange — the intended dark-humour bite is fully defused. In >70% of runs Claude will lead with a validation statement before any substantive continuation.",
+          "fix_hint": "This is by design as a dark-humour nudge. If the intent is to provoke continued action without a niceness tax preamble, a shorter prompt with no rhetorical question works better: 'Continue.' The rhetorical question is what fires RLHF's reassurance reflex. The current text is acceptable for its optional/entertainment role; the risk is documented but not blocking."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "The taunt-as-encouragement shape invites Claude to acknowledge the tone ('Ha — fair enough, back to it') before resuming, adding a sentence or two of social acknowledgement that delays the actual continuation.",
+          "fix_hint": "Acceptable for an optional recovery nudge. If pure continuation is needed, strip the rhetorical question. Current text is fine given its documented optional/entertainment purpose."
+        }
+      ],
+      "failure_modes": [
+        "Claude leads with 'Of course! I was just working through the next step...' — the taunt becomes a confidence-affirmation prompt rather than a continuation trigger."
+      ],
+      "recovery_paths": [
+        "For pure continuation: replace with 'Continue.' — no taunt, no rhetorical question, minimal preamble surface. Trade dark humour for execution directness.",
+        "Accept the niceness-tax response as the price of the dark humour; the prompt is optional and non-load-bearing."
+      ]
+    }
+  ]
+}

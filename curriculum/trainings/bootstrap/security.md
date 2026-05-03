@@ -74,9 +74,9 @@ Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visi
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (body touched after prior audit; re-audit needed)
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_strategy_tie_in, check_pedagogy)
-- sim-passed 2026-04-25 (mid-competent + opinionated-senior + fast-operator + security-skeptic + cohort-facilitator personas; APPROVE-WITH-TODOs)
+**Quality:** compendium-audited 2026-05-03
+- judges: not yet judge-audited
+- maintainer-reviewed @60b1b6c: PASS — M4 manual walkthrough
 
 **Cohort-facilitator audit (2026-04-25, fixes applied 2026-04-26):**
 - **Time math owed re-verification.** The first exercise now includes a raw policy run before packaging and the Cowork personal-skill creation step; the second exercise now carries load/apply/mitigate. Current rough budget: lecture 8 + run/package 40 + audit 35 + Connections 5 + Debrief 5 + transitions ~= 98-103 min. Fits 1h45 with tight transitions; needs facilitator pass.

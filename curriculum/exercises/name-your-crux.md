@@ -43,7 +43,9 @@ Same move: iterate if it's a topic restatement instead of a real call; save when
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29
+**Quality:** compendium-audited 2026-05-03
+- judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+- maintainer-reviewed @60b1b6c: PASS — M3 manual walkthrough
 
 **Role in Module 3:** Opening exercise. Produces `./crux.md` with two sections — the crux (load-bearing obstacle) and the question (sharpest decision the crux blocks). Both are read by the retrievers, stances, and synthesizer in `three-retrievers-three-minds.md`.
 

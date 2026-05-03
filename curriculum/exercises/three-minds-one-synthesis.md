@@ -70,7 +70,7 @@ Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really goi
 
 Heads-up: the answer often comes back with a longer issue list than feels comfortable, disagreements named, gaps flagged. That's the prompt working as designed; it looks scarier than it is. If the volume is in the way, delegate triage back to Claude.
 
-Optional: paste this back to focus the work.
+If the volume is in the way, ask Claude to choose the fixes that aim for optimal function in the next session.
 
 **Prompt** *(Claude Code, optional)*
 
@@ -91,7 +91,9 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (Pass 1 — split from `three-retrievers-three-minds.md` 2026-04-29; sim/eval not yet run on the split form)
+**Quality:** compendium-audited 2026-05-03
+- judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+- maintainer-reviewed @60b1b6c: PASS — M3 manual walkthrough
 
 **Role in Module 3:** Third exercise (after `name-your-crux` + `three-retrievers-one-curator`). Reads the curated `memory/` from the previous exercise; produces the `## Answer` section in `./crux.md`. Closes Module 3 with the doubt-naming beat that hands off to Module 5.
 

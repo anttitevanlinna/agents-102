@@ -274,3 +274,6 @@ This exercise is one of the three Bootstrap magic beats (M3, M6, M8). M5 picks t
 **Why this is the only M6 exercise:**
 - The older manual groundedness loop fed judge output back to the generator by hand. This exercise automates that loop while keeping the judge fixed.
 - The older steering exercise was a useful second dimension, but a second full exercise steals focus from the magic beat. Steering now appears in the closing lecture as a compact goal-nudger eval.
+
+**Quality:** compendium-audited 2026-05-03
+- judges @60b1b6c: writing REVISE (1/0-see-instances/eval-loop.writing.json), story grandfathered, technical grandfathered, behavior grandfathered

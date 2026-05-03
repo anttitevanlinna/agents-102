@@ -1,9 +1,9 @@
-# Agentic Engineering 101 — sponsor prework
+# Agentic Engineering 101, sponsor prework
 
 **Audience:** the sponsor CTO (or equivalent buyer) who signed the cohort for their team.
-**Purpose:** the one question the training needs answered *before* Day 1 — *where does durable engineering knowledge live in this company so an agent can read it next time?*
+**Purpose:** the one question the training needs answered *before* Day 1, *where does durable engineering knowledge live in this company so an agent can read it next time?*
 **Runtime:** 15–20 minutes, once. Five answers, one reason each.
-**Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes your answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file. No student asks *"where should this go?"* — your answer is already in the prompt.
+**Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes your answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file. No student asks *"where should this go?"*, your answer is already in the prompt.
 
 This is the asset we send to the sponsor after contract signature, weeks before Day 1. It's a pre-engagement deliverable, not a training artifact.
 
@@ -11,14 +11,14 @@ This is the asset we send to the sponsor after contract signature, weeks before 
 
 ## Why this question, and why you
 
-Every module produces a durable artifact — a decision record, a rules file, a memory page, a shared team kit contribution. Each of those needs a home the agent can read next time. Without a stated home, the trainer has to adjudicate "where does this go" mid-Module-1, and the company ships the cohort with six engineers each making a different call. That's not a convention; that's drift.
+Every module produces a durable artifact, a decision record, a rules file, a memory page, a shared team kit contribution. Each of those needs a home the agent can read next time. Without a stated home, the trainer has to adjudicate "where does this go" mid-Module-1, and the company ships the cohort with six engineers each making a different call. That's not a convention; that's drift.
 
 You're the right person to answer because:
 
 - **You have the authority** to say *"in this company, engineering knowledge lives here"* in a way the trainer doesn't.
-- **You've already formed a view** — even if it's *"we don't have a convention and I've been meaning to pick one."* That's a legitimate answer: *"pick one now, use it for this cohort, revisit in Q3."*
-- **Your answer is overridable, not final.** Your engineers are often right about their own repo. If one proposes a better home with a reason, we go there — and we feed the reasoning back to you at close. Your answer is the default, not a decree.
-- **Opting out isn't available** — the compounding loop requires a durable home. A cohort where nobody picks one produces six engineers with disposable memory. Every week. For six weeks.
+- **You've already formed a view**, even if it's *"we don't have a convention and I've been meaning to pick one."* That's a legitimate answer: *"pick one now, use it for this cohort, revisit in Q3."*
+- **Your answer is overridable, not final.** Your engineers are often right about their own repo. If one proposes a better home with a reason, we go there, and we feed the reasoning back to you at close. Your answer is the default, not a decree.
+- **Opting out isn't available.** The compounding loop requires a durable home. A cohort where nobody picks one produces six engineers with disposable memory. Every module. For all six.
 
 Half the CTOs who fill this worksheet discover their company doesn't have an answer to one of these questions. That discovery is the most valuable thing the training does, and it happens before Day 1.
 
@@ -28,7 +28,7 @@ Half the CTOs who fill this worksheet discover their company doesn't have an ans
 
 For each, one home, one reason. Under three sentences each.
 
-### 1. Decision records — where should an engineer log a trade-off they made during a fix?
+### 1. Decision records, where should an engineer log a trade-off they made during a fix?
 
 *Shows up:* Module 1 onward. Every module after Module 1 produces at least one.
 
@@ -43,7 +43,7 @@ Reason:
 
 ---
 
-### 2. Rules for the next session — where does the agent read "here's how we work in this repo" before it starts?
+### 2. Rules for the next session, where does the agent read "here's how we work in this repo" before it starts?
 
 *Shows up:* Module 1 Debrief onward. The file the agent reads *first* in any session on this repo.
 
@@ -58,7 +58,7 @@ Reason:
 
 ---
 
-### 3. Memory / knowledge architecture — where does the agent's learned context about this codebase and this team live?
+### 3. Memory / knowledge architecture, where does the agent's learned context about this codebase and this team live?
 
 *Shows up:* Module 2 onward. Grows across the arc. This is the thing that compounds visibly over weeks.
 
@@ -73,11 +73,11 @@ Reason:
 
 ---
 
-### 4. Team kit — where do shared skills, judges, gate specs, and constraints live so every engineer's agent reads the same ones?
+### 4. Team kit, where do shared skills, judges, gate specs, and constraints live so every engineer's agent reads the same ones?
 
-*Shows up:* Module 3 onward, first as an optional promotion path for authored skills; Module 4 onward as shared judges, gates, and constraints. This is the team's collective agentic infrastructure — the thing that makes one engineer's eval help another engineer's PR.
+*Shows up:* Module 3 onward, first as an optional promotion path for authored skills; Module 4 onward as shared judges, gates, and constraints. This is the team's collective agentic infrastructure, the thing that makes one engineer's eval help another engineer's PR.
 
-*Common shapes:* a shared plugin repo (Klaassen's pattern — every engineer's Claude reads from it). Monorepo `.claude/` directory. Private GitHub org-level repo cloned into each engineer's setup.
+*Common shapes:* a shared plugin repo (Klaassen's pattern, every engineer's Claude reads from it). Monorepo `.claude/` directory. Private GitHub org-level repo cloned into each engineer's setup.
 
 **Your answer:**
 
@@ -88,7 +88,7 @@ Reason:
 
 ---
 
-### 5. Ticket tracker — which system tracks bugs, epics, and tasks for this team?
+### 5. Ticket tracker, which system tracks bugs, epics, and tasks for this team?
 
 *Shows up:* Module 1. The first loop closes by closing a real ticket through an MCP connection. We need to know the target.
 
@@ -129,3 +129,6 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 - **Future asset companions:**
   - Cohort-close memo template ("what your engineers said about the four homes") — DEFERRED (post-first-cohort).
   - Sponsor one-pager on the pre-engagement contract's purpose (belongs in the sales pack, different audience — the sponsor who hasn't signed yet, doing diligence on the program).
+
+**Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
+- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS

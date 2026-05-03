@@ -48,8 +48,8 @@ Looking forward to it.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-03 (auto-degraded from compendium-audited 2026-04-25 — file touched 2026-04-28; re-audit pending)
-- compendium-audited 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 #21 agent-vocab, check_pedagogy v2026-04-25)
+**Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
+- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Customisation per cohort:**

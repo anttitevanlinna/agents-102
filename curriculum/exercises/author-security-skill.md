@@ -54,6 +54,8 @@ The reusable check carries two lenses inside one personal skill. One lens checks
 
 Ask Claude to author both lenses, and to name the risk patterns the agent-security lens covers.
 
+You'll get a lot of questions. The grill is wide on purpose, Claude probes both lenses and won't stop at one round.
+
 **Prompt** *(Claude Code)*
 
 ```
@@ -81,31 +83,59 @@ After I answer, save the files. Keep the SKILL.md tight: when to use it, the two
 - any supporting reference files the SKILL.md requires
 ```
 
-Claude grills you first. Answer until Claude has what it needs, or tell it you've covered enough. Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company's policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.
+Claude grills you first. Skim the questions. Answer what you can in one or two lines. When you've answered everything you have a view on, hand the rest back: *"You choose. Optimise for what I can't steer."* Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company's policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.
 
-<div class="rt-cowork">
+Before you leave this exercise, save the authored source as a personal skill. The save mechanic differs by runtime.
 
-Before Cowork users leave this exercise, create the personal skill in Claude Desktop. Go to *Customize* → *Skills* → *New* → *Create with Claude*. Tell that skill-creation chat to create a personal skill named `security-audit` from the authored source at `module-4/skills/security-audit/`.
+<div class="rt-cli">
 
-Use this shape if you need to paste a prompt:
+Ask Claude to install the authored source.
+
+**Prompt** *(Claude Code)*
 
 ```
-Create a personal skill named security-audit.
-
-It should include two security lenses I authored:
-- a policy lens that checks the agent system against my company's policy references and produces compliant / violating / "I can't tell" rows with evidence
-- an agent-security lens that checks access, prompt injection direct and indirect, secrets in context and scrollback, tool confusion, and skill supply-chain risk
-
-Use the authored source in my training folder at module-4/skills/security-audit/. When the skill is ready, tell me how to save it and what slash command should appear in a new Cowork session.
+Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls.
 ```
 
-Save the skill from that skill-creation chat. Exercise 2 starts in a new Cowork session and checks that the saved skill loads.
+Run `ls ~/.claude/skills/security-audit/` to confirm. The skill autoloads in your next session in this training directory.
 
 </div>
 
+<div class="rt-desktop">
+
+Ask Claude to install the authored source.
+
+**Prompt** *(Claude Code)*
+
+```
+Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls.
+```
+
+The skill autoloads in your next session in this training directory.
+
+</div>
+
+<div class="rt-cowork">
+
+One place skill-creation lives in Claude Desktop is *Customize* → *Skills* → *New* → *Create with Claude*, useful to know exists. You don't need it here. The work session you've been in already has the authored source on disk; the skill-creator skill can draft the personal skill from this session.
+
+Cowork can't write into your personal Claude directories. When skill-creator finishes drafting, it surfaces a Save button. You press Save, that's the moment the personal skill lands.
+
+**Prompt** *(Claude Code)*
+
+```
+Use your skill-creator skill to turn the authored source at module-4/skills/security-audit/ into a personal skill named security-audit. Draft it, then surface the save action so I can save it.
+```
+
+Press Save when skill-creator surfaces it.
+
+</div>
+
+Close this session before Exercise 2. The personal skill autoloads when the next session opens, so Exercise 2 needs a fresh session at your training-directory root.
+
 **What happens:**
 
-The reusable check exists now, with two lenses and four named risk patterns covered. It is authored on disk; Cowork users have also saved it as a personal skill. Module 4's audit exercise loads it and runs it against the same system.
+The reusable check exists now, with two lenses and four named risk patterns covered. It is authored on disk and saved as a personal skill. Module 4's audit exercise loads it and runs it against the same system.
 
 **The point:**
 
@@ -115,14 +145,9 @@ The policy files are source material. The reusable check is the expert in the ro
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (body touched after prior sim; re-audit needed)
-- compendium-audited 2026-04-26 (check_writing, check_student_facing, check_prompts rules 1–11, check_pedagogy, check_strategy_tie_in — re-cleared via LLM-as-judge eval at audit-gate run, banned-word + link-format + voice + prompt-action-leadin all PASS)
-- sim-passed 2026-04-26 (three-persona sim: mid-competent practitioner — recommend-with-reservations; opinionated senior — would-steer; fast operator — would-recommend; APPROVE-WITH-TODOs aggregate; LLM-as-judge eval also APPROVE-WITH-TODOs)
-- ~~mechanical-tested 2026-04-26 (instances/bootstrap-m4-author-judge-report.md @ 13e3f8e PASS 32/32)~~ DEGRADED 2026-04-29 (exercise now stops at authored skill; Cowork personal-skill creation is part of packaging, runtime load moved to `audit-your-agent.md`; runner pair `bootstrap-m4-author.verbatim.{actor,judge}.md` is stale)
-
-**TODO (Cowork edition review 2026-04-29):**
-- Phase 3 prompt includes CLI/Desktop standalone-install wording in the Cowork prompt progression. This is noisy at the moment Cowork students are learning the Customize → Skills path. Prompt-block change is gated: propose before/after before editing.
-- The Cowork personal-skill creation block is copyable but not labelled `**Prompt**`, so `scripts/extract-training-prompts.js --training bootstrap --flavor cowork` omits it from the prompt progression. Decide whether to label it as a prompt or teach the extractor to capture "Use this shape..." blocks.
+**Quality:** compendium-audited 2026-05-03
+- judges: not yet judge-audited
+- maintainer-reviewed @60b1b6c: PASS — M4 manual walkthrough — save-flow restructured + tested
 
 **Pre-ship-audit findings 2026-04-26 (resolved + standing):**
 - ~~Phase 3 mood gate fails 8/10 under three-persona sim~~ — SUPERSEDED 2026-04-29 by the personal-skill shape. Re-sim owed after the skill-only refactor; prior run approved the two-lens security-check concept but assumed an older packaging shape.
@@ -152,16 +177,16 @@ The policy files are source material. The reusable check is the expert in the ro
 - Customer-policy reference content under `module-4/policies/` (Antti distils from customer policies; default Nordic-baseline for self-study) — input the student runs raw in Phase 1 and reads while Claude proposes the reusable package in Phase 2.
 - The student's "what matters" lines in Phase 2 — participant-typed, never prescribed. Three to five lines in their voice.
 
-**Capability checks (status as of 2026-04-26 — verified by live execution, not docs):**
-1. **Per-runtime authoring + install.** Authoring remains here. Cowork personal-skill creation/save also lives here through Claude Desktop Customize → Skills → New → Create with Claude (Antti-corrected 2026-04-29). Desktop and CLI install happen in `audit-your-agent.md` by placing `SKILL.md` under `~/.claude/skills/security-audit/`. CLI standalone skills written to `~/.claude/skills/<name>/SKILL.md` auto-load in the next session ✓ (live-tested 2026-04-26 — wrote `~/.claude/skills/cli-test-skill/SKILL.md`, invoked `/cli-test-skill` from `claude --print`, response landed).
+**Capability checks (status as of 2026-05-03 — verified by live execution, not docs):**
+1. **Per-runtime authoring + install.** Authoring remains here. CLI and Claude Code Desktop write `~/.claude/skills/<name>/SKILL.md` directly via prompt; install happens in `audit-your-agent.md` Phase 1 ✓ (CLI live-tested 2026-04-26 via cli-test-skill; Desktop live-tested 2026-05-03 via test-skill2 — Claude Code Desktop wrote `~/.claude/skills/test-skill2/SKILL.md` and reported "needs a session restart before Claude Code lists it"). Cowork is sandboxed and cannot write to personal directories: skill-creator drafts the personal skill from the work session and surfaces a Save button the student presses ✓ (live-tested 2026-05-03). The Customize → Skills → New → Create with Claude path is signposted but unused.
 2. **Invocation paths.** Personal skill: `/security-audit` across runtimes once loaded. Plain-language usually dispatches; the slash form is the only invocation guaranteed to fire the exact lens. There is no `/skill use <name>` fallback (corrected from a prior docs-based assumption).
 3. **Loaded visibility.** Same `/` autocomplete surface across runtimes. No system message announces load — autocomplete is the cue.
-4. **Footguns to coach in delivery.** (a) Personal-skill re-edits may not hot-reload in Cowork — student must re-save and reopen; CLI students re-edit the SKILL.md and the next session picks it up automatically. (b) Skill name collisions resolve silently to last-loaded; relevant once the student ships a second skill.
+4. **Footguns to coach in delivery.** (a) Personal-skill re-edits may not hot-reload in Cowork — student must re-save and reopen; CLI and Desktop students re-edit the SKILL.md and the next session picks it up automatically. (b) Skill name collisions resolve silently to last-loaded; relevant once the student ships a second skill. (c) Cowork students who don't press the Save button after skill-creator drafts: skill is not saved as personal; `/security-audit` won't appear in a new session. (d) Cowork doesn't always engage a slash command from pasted prompt text alone; student may need to click the prompt dialog and expand the skill from autocomplete to fire it.
 
 **Watch-fors:**
 - **Phase 2 dictation collapses into pre-reading.** Student opens the policy files before typing their lines because skipping the read feels wrong. Coach: *"The check carries your judgment. Reading the files first dilutes the judgment with the file's vocabulary. Trust your three lines; Claude has already run the files for you."*
 - **One attack class missing from Phase 3's reusable check.** Most likely: indirect prompt injection (the lens covers direct prompt injection only) or skill supply-chain (omitted because the student is authoring the only package so far). Coach: *"Ask Claude to add the missing class by name. The four are the forcing function."*
-- **Cowork skill-creation chat cannot see the authored files.** Most common cause: the skill chat is not connected to the same training folder context. Coach: *"Tell it the skill source is in `module-4/skills/security-audit/`; if it still cannot see the files, paste the package-complete checklist and ask what it needs."*
+- **Cowork student forgets to press Save.** skill-creator drafts the personal skill from the work session but stops short of saving; the student must press the Save button it surfaces. Coach: *"If `/security-audit` doesn't appear in a fresh Cowork session, you didn't press Save. Go back to Exercise 1 and look for the Save button skill-creator surfaced."*
 - **Student wants to verify on a toy file.** Coach: *"Skip the toy run. The first loaded use is the real audit. If the lens fails to load, fix loading; don't invent a second mini-audit."*
 - **Policy lens sounds like a generic GDPR brochure.** Phase 2 dictation lines were too thin — *"we have customer data, follow GDPR"*. Coach: *"Three to five lines, specific. The customer your CEO would not want named. The class of input you would not paste into a public model. Plain."*
 

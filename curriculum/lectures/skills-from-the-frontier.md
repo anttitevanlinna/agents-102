@@ -68,9 +68,9 @@ Go.
 - "Is the test-strategy skill just a better unit-test policy?" — good question, wrong framing. It's a skill that tells Claude how to think about testing THIS codebase when asked. The output isn't a policy document; it's an agentic capability. Clarify with the Ex3 invocation beat ("is the test strategy good?") as the proof.
 
 **Frameworks attributed:**
-- STRIDE — Kohnfelder & Garg (Microsoft, 1999). Sharpened by Shostack (*Threat Modeling: Designing for Security*, 2014).
-- Least-privilege principle — Saltzer & Schroeder (*The Protection of Information in Computer Systems*, 1975).
-- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) + Intercom's 267-skill plugin repo (observations/intercom.md).
-- Test strategy as discipline — Kent Beck + Google Testing Blog's test-pyramid framing. Named but not leaned on — the student's authored skill is theirs.
+- STRIDE — Kohnfelder & Garg (Microsoft, 1999) `[academic/research]`. Sharpened by Shostack (*Threat Modeling: Designing for Security*, 2014) `[academic/research]`.
+- Least-privilege principle — Saltzer & Schroeder (*The Protection of Information in Computer Systems*, 1975) `[academic/research]`.
+- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) `[practitioner direct]` + Intercom's 267-skill plugin repo `[practitioner direct]` (observations/intercom.md).
+- Test strategy as discipline — Kent Beck `[practitioner direct]` + Google Testing Blog's test-pyramid framing `[practitioner analysis]`. Named but not leaned on — the student's authored skill is theirs.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

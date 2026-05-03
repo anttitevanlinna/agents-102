@@ -18,7 +18,7 @@ If nothing fits, ask Claude to surface three candidates from recent issues, PRs,
 
 ## Phase 2: Enter plan mode, read what arrives (15 min)
 
-Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'll drop after the colon — what, why, the one constraint you care about most.
+Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'll drop after the colon, what, why, the one constraint you care about most.
 
 **Prompt** *(Claude Code)*
 
@@ -97,7 +97,6 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 
 **Quality:** compendium-audited 2026-04-28
 - compendium-audited 2026-04-28 (M2 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_prompts §1d-§21 + check_pedagogy §34-§38; M2 audit GO with todos)
-- compendium-audited 2026-04-25 (check_writing voice-quartet, check_student_facing agent-vocab + #21, check_pedagogy progression-with-variations, check_prompts) — superseded
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)

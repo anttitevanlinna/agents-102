@@ -92,12 +92,9 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-30 (student-facing prework timing corrected; prior compendium audit degraded by touch)
-- draft 2026-04-30 (corrected "You're the Bread" from read/~5 min to watch/~30 min)
-- compendium-audited 2026-04-28 (M5 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_prompts §1d-§21 + check_pedagogy §34-§38 + check_lectures + check_research_claims + check_platform_and_boundaries; this cycle: §36 verifier smoke-test added to Phase 3, §24 meta-ask reshaped to open-hook with `Shape:` colon, §38 worktree-fork wiring to "M4 starting point" intact)
-- compendium-audited 2026-04-26 (check_writing — `substrate` swap; check_student_facing #21; check_pedagogy #9b + compound-shape; check_prompts; check_strategy_tie_in; check_lectures; check_research_claims — pre-reads attribution corrected, see `curriculum/evals/instances/ae101-m5-m6-source-verification.md`) — superseded
+**Quality:** compendium-audited 2026-05-03
+- judges @68f5fd4: writing REVISE (1B/3T see instances/ae101--learn-from-the-test.writing.json), story grandfathered, technical REVISE (3B/0T see instances/ae101--learn-from-the-test.technical.json), behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-- sim-passed 2026-04-25 (three-persona) — degraded by 2026-04-28 touches; needs re-run before re-claim
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 5 / In-room opener lecture 6 / Exercise 60 / Debrief 12 / Re-send 3 / Closing lecture 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Closing lecture sits after Debrief + Re-send (structural addition over M4 — names Ronacher's three-pattern from felt evidence). Pre-read (`reading-the-return.md`) lands at the close of M4 Debrief, separate from this module's runtime. Exercise breakdown: Phase 1 read-the-return 15 / Phase 2 align-then-reverse 10 / Phase 3 build-verifier 18 / Phase 4 assemble-reference-and-plan 17.

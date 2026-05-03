@@ -93,11 +93,6 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into. Fi
 
 **Canonical home:** `curriculum/reference/multi-session-git.md`. Referenced from AE101 M1 homework.
 
-**Source-verification TODOs (before first cohort):**
-- Confirm current `git worktree add` / `git worktree remove` syntax against `git-scm.com/docs/git-worktree` — stable since 2.5 but double-check for any deprecated flags.
-- Confirm `git reset --soft HEAD~1` behaviour against current Git docs — load-bearing for the "wrong-branch commit" recovery.
-- Confirm Claude Code does not yet ship a native multi-worktree session switcher — if it does by first cohort, add a one-line pointer and demote the manual flow to the fallback.
-
 **Open question for first-cohort feedback:** does AE101 want `git worktree` as the default mental model for multi-session, or as an advanced move taught only after students have landed the single-session loop? Current stance: optional homework (this file), not a prerequisite. Reassess after Cohort 1 reports.
 
 **Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) and in the [Pragmatic Engineer interview](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [both practitioner direct / practitioner analysis].

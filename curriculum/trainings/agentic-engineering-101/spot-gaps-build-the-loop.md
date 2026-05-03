@@ -11,9 +11,9 @@ Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. 
 After this module, you will be able to:
 - **Diagnose** (Analyze) the packaged Module 5 run alongside the un-packaged Module 4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
 - **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill, using two runs' evidence, not prescription.
-- **Compound by subtraction** (Evaluate) — cut one rule the two-run diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life.
+- **Compound by subtraction** (Evaluate), cut one rule the two-run diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life.
 - **Author** (Create) a session-shaper skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
-- **Name** (Understand) evals as the broader family — verifier in your repo, judge in your test, gate in your CI — same function, different surfaces. Anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
+- **Name** (Understand) evals as the broader family, verifier in your repo, judge in your test, gate in your CI, same function, different surfaces. Anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
 - **Articulate** (Evaluate) one key learning and one personal thought on the future in the Debrief round. Not a performance; a marker of where your practice stands after six modules.
 
 ## Start here
@@ -57,12 +57,13 @@ On Monday, pick a task your team is sitting on, send it off packaged, read the r
 
 Keep on learning and sharing.
 
-—Antti
+Antti
 
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-26 (touched after audit — degraded from compendium-audited 2026-04-26; subtraction-only edit removed redundant worktree paragraph from "## Next" — same content already lives at M1 prework. Re-audit on next pass.)
+**Quality:** compendium-audited 2026-05-03
+- judges @68f5fd4: writing REVISE (3B/3T see instances/ae101--spot-gaps-build-the-loop.writing.json), story REVISE (4B/0T see instances/ae101--spot-gaps-build-the-loop.story.json), technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -71,7 +72,6 @@ Keep on learning and sharing.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. Both runs already live in the repo; M6 reads + authors + ships in-place. No training-dir state, no `module-N/` folders. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room. Self-study Teacher Claude reads it aloud at session open.
-- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
 
 **Push-back moves** (trainer covers in cohort; the Nerd skill that consumes these in self-study is upstream-pending):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Nerd: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
@@ -104,11 +104,11 @@ Keep on learning and sharing.
 - Sponsor-stated team-rule review cadence (named so the team-PR flag at ship doesn't become the compound-loop bottleneck)
 
 **Frameworks riffed on (attributed in closer):**
-- **Ronacher's three-pattern** — Armin Ronacher. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
-- **Cherny's three verifier shapes** — Boris Cherny. The second-skill authoring picks a shape from this menu.
-- **Ramp Dojo** — 350-skill marketplace as the team kit's destination shape. Closing lecture attribution.
-- **Intercom Tier 1/2/3** — Darragh Curran. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D. Closing lecture org-scale anchor.
-- **Compound engineering** — Kieran Klaassen. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
+- **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
+- **Cherny's three verifier shapes** — Boris Cherny `[practitioner direct]`. The second-skill authoring picks a shape from this menu.
+- **Ramp Dojo** — 350-skill marketplace `[practitioner direct]`, as the team kit's destination shape. Closing lecture attribution.
+- **Intercom Tier 1/2/3** — Darragh Curran `[practitioner direct]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D. Closing lecture org-scale anchor.
+- **Compound engineering** — Kieran Klaassen `[practitioner direct]`. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
 
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?

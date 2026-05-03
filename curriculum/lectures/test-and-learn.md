@@ -61,9 +61,9 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 
 **Frameworks attributed:**
 - **Gap analysis** — generic business-analysis framework; no single attribution. Named as *walk the system you have against the system the task needs.*
-- **Huryn's three-block memory** — Paweł Huryn. Practitioner-direct. Freshness re-check required before first cohort delivery.
-- **Ronacher's three-pattern** — Armin Ronacher. Named here only as forward reference to M5 (reference artifact + plan.md + external verifier). M5 owns the teaching; this lecture just puts the word on the table so the student knows what's coming.
-- **Compound engineering** — Kieran Klaassen. Implicit in the *test → learn → encode* framing; not name-attributed in this lecture (Klaassen attribution lives at Debrief in M1 and here-onwards is experienced, not recited).
+- **Huryn's three-block memory** — Paweł Huryn `[practitioner direct]`. Freshness re-check required before first cohort delivery.
+- **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Named here only as forward reference to M5 (reference artifact + plan.md + external verifier). M5 owns the teaching; this lecture just puts the word on the table so the student knows what's coming.
+- **Compound engineering** — Kieran Klaassen `[practitioner direct]`. Implicit in the *test → learn → encode* framing; not name-attributed in this lecture (Klaassen attribution lives at Debrief in M1 and here-onwards is experienced, not recited).
 
 **Philosophy callouts:** none this lecture. The spirit itself is the beat; a further philosophy tag would dilute.
 

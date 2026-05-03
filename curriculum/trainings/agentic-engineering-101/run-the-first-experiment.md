@@ -93,11 +93,8 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-30 (student-facing pre-read link added; prior compendium audit degraded by touch)
-- draft 2026-04-30 (corrected "You're the Bread" from read/~5 min to watch/~30 min)
-- draft 2026-04-30 (added Uncle Bob supplementary pre-read for Module 5 priming; needs compendium re-audit before reclaiming compendium-audited)
-- compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Prework; M4 audit GO after blocker fixes)
-- compendium-audited 2026-04-26 (prior audit) — superseded
+**Quality:** compendium-audited 2026-05-03
+- judges @68f5fd4: writing REVISE (1B/3T see instances/ae101--run-the-first-experiment.writing.json), story REVISE (3B/2T see instances/ae101--run-the-first-experiment.story.json), technical REVISE (1B/2T see instances/ae101--run-the-first-experiment.technical.json), behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

@@ -5,7 +5,7 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 ## Prework
 
-Bring a small feature you're working on right now. **Not a typo-fix, not a quarter-long epic.** Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Two modules of agent rhythm sit behind you. Pick the size that fits.
+Bring a small feature you're working on right now. **Not a typo-fix, not a quarter-long epic.** Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min, deeper scan).
 
@@ -42,7 +42,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 **Self-aware / grain of salt (Theme 4):** Exercise 3's move is to ask the authored skill to disclose its own weakest part, then push back on the critique; the skill introspects, you verify against the session artifact.
 
-**Mirror (Theme 3):** the access-control and STRIDE skills produce a structured read of your feature's access surface. Comparing your first read to theirs is the thing you name aloud.
+**Mirror (Theme 3):** the access-control and STRIDE skills produce a structured read of your feature's access surface. Comparing your first read to theirs is where the gap becomes legible.
 
 **90% correct (Theme 1):** curated skills from the frontier are strong, not oracular; the hardening decision in Exercise 2 and the weak-spot push-back in Exercise 3 are where the last 10% earns your judgement rather than a rubber stamp.
 
@@ -62,9 +62,9 @@ First: find the one section of the skill where session evidence shows it underde
 Then, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.
 ```
 
-## Ready to clear
+## Clear the session
 
-Before you close the session, signal the wrap-up. Claude converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
+Before you close the session, signal the wrap-up. The agent converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
 
 **Prompt** *(Claude Code)*
 
@@ -72,7 +72,7 @@ Before you close the session, signal the wrap-up. Claude converges: anything sti
 Ready to clear? All learnings in?
 ```
 
-If Claude names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
+If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 
 **Prompt** *(Claude Code)*
 
@@ -93,9 +93,8 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
-- compendium-audited 2026-04-27 (this cycle: anti-pattern callout bolded per §34; Sharpen prompt gained "same session" cue; M3 audit GO with todos)
-- earlier compendium-audited entries — superseded
+**Quality:** compendium-audited 2026-05-03
+- judges @68f5fd4: writing grandfathered, story PASS (0B/0T see instances/ae101--earn-the-trust.story.json), technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -119,6 +118,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 - Curated-skill reverence — student treats the STRIDE skill as oracle. Remind: the skill is good; the decision is yours.
 - Team-kit home unresolved — if the sponsor answered "we don't have one" on the pre-engagement contract, the training-start default (shared Git repo) should already be live by M3. Verify before Ex3's ship step.
 - Skill-authoring-by-typing — student opens an editor to hand-write SKILL.md. Redirect to conversation: the authoring move is prompting Claude, pushing back, not keyboard-crafting markdown.
+- Team-worthy flag drifts to generic — student frames the team-worthy decision as "yes, every team should know about STRIDE." Push: name a codebase-specific call (an auth pattern, an ADR convention, a verifier) — not a universal claim.
 
 **Decision points:**
 - **Ex1 runs long (>25 min):** access-control skill is finding a lot — let it, compress Ex2's decision beat to 15 min by making the Nerd name the worst case more aggressively.
@@ -127,10 +127,35 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 - **Whole room mood below 7:** earned-trust isn't landing. Check: did the hardening decision in Ex2 feel real (a call the student would defend) or theatrical (a menu pick)? Did the test-strategy skill's invocation surface codebase-specific things (real) or generic pyramid wisdom (theatrical)? If theatrical, the feature was probably too small.
 
 **Plug points (trainer):**
-- Student's own feature (surfaced in Connections)
-- Sponsor-stated ADR home (Ex2)
-- Sponsor-stated team-kit home (Ex3 ship step)
+- Student's own feature (surfaced in Connections) — small, ship-this-week scope; sponsor-stated examples by team type (web / back / data / ML) help calibration when student stalls
+- Sponsor-stated ADR home (Ex2) — `docs/adr/NNNN-slug.md` is the default; sponsor's actual convention overrides if different
+- Sponsor-stated team-kit home (Ex3 ship step) — pre-engagement contract surfaces this; default fallback (shared Git repo) live by M3 if unresolved
+- Sponsor-named test framework / mocking policy (Ex3 authoring conversation) — what Claude asks the student to encode; student answers from the codebase, not generic
 - Push-back moves at each rubber-stamp risk (trainer covers in cohort; Nerd covers only in self-study)
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day):
+1. **Invokes a curated security skill (access-control-analysis or STRIDE) as a subagent on a real PR before review.** Falsifiable: the PR review shows a comment quoting the skill's structured output, or the student's commit message references the surface delta the skill flagged.
+2. **Writes an ADR for one architectural decision under named pressure**, with alternatives + the constraint that picked the winner, in the repo's ADR convention. Falsifiable: a new file at the sponsor-stated ADR path with the four standard sections (context, decision, alternatives, constraint).
+3. **Invokes the authored test-strategy skill on a feature without being prompted to.** Falsifiable: scrollback of a normal working session shows *"invoke the test-strategy skill on this"* (or equivalent) without a teacher / Nerd cue earlier in the session.
+
+**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact is a contract row with stable identifier + producing prompt + consuming module):
+
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Architecture Decision Record | sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*); M4 Phase 4 three-block frame (ADRs become Block 2 examples) |
+| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M4 Phase 4 three-block frame (skill contributes Block 3 quality criteria); M5 verifier-build (test-strategy informs the eval shape); M6 second-skill authoring (the encode loop reads the M3 skill as a precedent) |
+| Personal rules update | `./CLAUDE.local.md` (repo-personal, gitignored) | "Sharpen the skill from evidence" prompt at module close (Claude rewrites from session evidence; user pushes back) | Every future session in this repo (auto-loads at session-cold start); specifically M4 onward sees M3's rule additions as part of personal context |
+
+**Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
+
+| Phase forcing function | Dominant failure mode | Escape hatch |
+|---|---|---|
+| Ex1 *"name the surface delta"* | Ex1 passivity — student reads access-control output and moves on without naming a delta | Trainer / Nerd push: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."* |
+| Ex2 *"pick THE threat worth hardening, write the ADR"* | Ex2 menu-shopping — student picks a threat because it's easy, not because it's real | Trainer / Nerd push: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."* |
+| Ex3 *"one question at a time"* (Claude asks; student answers from codebase) | Ex3 question-dump — Claude dumps all five authoring questions at once | Trainer / Nerd reminds student to push back: *"one at a time — answer this one, ask the next."* |
+| Ex3 *"ask the skill to disclose its weakest part before shipping"* | Ex3 default-acceptance on first SKILL.md — student ships Claude's first draft | Trainer / Nerd runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."* |
+| Ex3 *"invoke on the feature you just security-tested"* | Ex3 invocation skip — student ships without invoking on the feature | Trainer / Nerd: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"* |
+| Debrief *"name a branch, not a rule"* | Debrief generic rule — Claude writes "always use curated skills" or boilerplate | Trainer / Nerd: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"* (escape hatch IS the forcing function — restated as recovery) |
 
 **Frameworks riffed on (attributed in lecture):**
 - **STRIDE** — Loren Kohnfelder & Praerit Garg (1999 Microsoft memo), sharpened by Adam Shostack (*Threat Modeling: Designing for Security*, 2014). Curated skill ships in `content/skills/stride/`.
@@ -139,13 +164,3 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
 
-**Open questions for later passes:**
-- ADR convention if the sponsor repo has none — training default `docs/adr/0001-slug.md` (context / decision / consequences)?
-- Team-kit home spin-up if the sponsor answered "we don't have one" — Ops-side, before Day 1.
-
-**Open items from pre-ship audit:**
-
-- **First-cohort watch-for: relocated team-worthy flag stays codebase-grounded.** Live runtime check during first cohort; trainer watches that the team-worthy decision stays codebase-specific (not "yes, every team should know about STRIDE" generic).
-- **Self-study Nerd nudge: team-worthy flagging anxiety at end-of-session** (Maija sim, mid-competent persona). Belongs in the self-study Nerd skill, out of cohort scope. Carried to the self-study workstream.
-
-Audit artifacts at `analytics/ae101-readiness-audit/preship-m3-debrief/`.

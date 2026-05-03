@@ -12,7 +12,7 @@
 
 ---
 
-Open a new Claude Code session in the M5 worktree (the same one M6 Phase 1 + 2 ran in). A fresh session, so there's no scrollback coloring the read. The artefacts across all six modules — `CLAUDE.local.md`, `.claude/memory/`, ADRs, both authored skills, both runs' commits and transcripts — are accessible via git refs and the worktree state. Ask the agent to walk them and write the arc from them.
+Open a new Claude Code session in the M5 worktree (the same one M6 Phase 1 + 2 ran in). A fresh session, so there's no scrollback coloring the read. The artefacts across all six modules, `CLAUDE.local.md`, `.claude/memory/`, ADRs, both authored skills, both runs' commits and transcripts, are accessible via git refs and the worktree state. Ask the agent to walk them and write the arc from them.
 
 **Prompt** *(Claude Code)*
 
@@ -34,7 +34,7 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 ```
 
 
-If the read runs ten minutes plus, interrupt with *"enough. just tell me now."* — you have what the agent has assembled so far, and that's the read.
+If the read runs ten minutes plus, interrupt with *"enough. just tell me now."*, you have what the agent has assembled so far, and that's the read.
 
 Read the note. That's the read of your six modules from outside the work.
 
@@ -88,7 +88,3 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 - For shorter formats: the artefact list can trim; the quote rule and the push-back beat are load-bearing and don't compress.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
-
-**TODO (from pre-ship verifier pass):**
-- Three-persona sim against the exercise (Maija / Greg / Jin); Greg especially will want to argue with the arc-reading, which is fine. Jin will want to skip the push-back beat. Nerd's job is to keep both in the exercise long enough for the note to earn the save.
-- Confirm Task-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route the read through the main conversation with the same quote rule.

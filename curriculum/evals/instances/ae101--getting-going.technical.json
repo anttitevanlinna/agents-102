@@ -1,0 +1,219 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/getting-going.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work — 'start a new session in X,' not 'open Claude Code in X.'",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "REVISE",
+      "evidence": "line:49: '[Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min)' — URL present, source-type label absent. Should be [practitioner direct].",
+      "fix_hint": "Add '[practitioner direct]' label after the URL reference for the Cherny video on line 49.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "REVISE",
+      "evidence": "line:51: 'Cherny calls parallel worktrees his single biggest productivity unlock' — specific attributed claim, no explicit URL on this sentence (URL lives two sentences above in the same paragraph), no source-type label.",
+      "fix_hint": "This claim's source is implicit (the video link at line 49). Either repeat the URL inline or make the attribution explicit enough that the video link carries it. Add source-type label [practitioner direct].",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "REVISE",
+      "evidence": "line:49: student-facing Cherny citation with named practitioner + specific URL present. Maintainer block (below <!-- maintainer -->) has no '**Source verification — MUST DO before first cohort:**' section. Rule 11 fires when named practitioner + specific URL appears in student-facing body.",
+      "fix_hint": "Add source-verification section to maintainer block: list the Cherny video URL to verify; note the freshness exception decision; name fallback framing if video becomes unavailable.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check — every named tool, skill, connector, file, or path must exist and be available.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Use /context to see how much your context window has filled up.",
+      "line": 13,
+      "verdict": "PASS",
+      "source": "compendium",
+      "notes": "Live-test (2026-04-27, compounded/2026-04-26-platform-live-test-beats-docs-for-behavior-claims.md Failure 3) confirmed /context shows context budget by category. 'How much your context window has filled up' is accurate. Old misframing ('what files Claude read') was corrected; current language is clean."
+    },
+    {
+      "claim": "/context shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality.",
+      "line": 32,
+      "verdict": "PASS",
+      "source": "compendium",
+      "notes": "First sentence accurate. Second sentence is a logical inference (bounded window means some files not loaded), not a claim that /context shows the file list. orient-and-introspect.md line 41 correctly explains 'breakdown by category (system prompt, messages, memory, skills)'. Module file does not misrepresent the command output."
+    },
+    {
+      "claim": "./CLAUDE.local.md sits at the top of the next session, waiting to be read (alongside team ./CLAUDE.md if this repo has one; both concatenate into context).",
+      "line": 43,
+      "verdict": "PASS",
+      "source": "compendium",
+      "notes": "CLAUDE.local.md is in the auto-load tier per reference_claude_code_capabilities.md and check_platform_and_boundaries.md §7a. 'Concatenate into context' is correct — both files merge into context window at session start."
+    },
+    {
+      "claim": "Boris Cherny, creator of Claude Code",
+      "line": 49,
+      "verdict": "PASS",
+      "source": "compendium",
+      "notes": "Confirmed in memory (check_platform_and_boundaries.md §9 cites Cherny as at Anthropic; voice-spec and project memory treat him as creator). Factually accurate."
+    },
+    {
+      "claim": "Delivery architecture: content folder unzipped by student at prework; all compounding artifacts land in the student's real repo.",
+      "line": 65,
+      "verdict": "PASS",
+      "source": "compendium",
+      "notes": "AE101 uses student's existing repo — no training-dir state. Consistent with check_pedagogy.md §35 (engineer tier = multi-layer CLAUDE.md) and AE101 strategy."
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 49,
+      "claim": "Boris Cherny Mastering Claude Code in 30 minutes YouTube video",
+      "label_present": false,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true,
+      "notes": "URL alive (HTTP 200). Should be labeled [practitioner direct] — Cherny's own video on his own practice. Missing label is a rule-1 violation."
+    },
+    {
+      "line": 51,
+      "claim": "Cherny calls parallel worktrees his single biggest productivity unlock",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "notes": "Specific attributed claim. Source is the video at line 49 (same paragraph). No explicit URL or label on this sentence. Non-blocking because URL is present in the same paragraph, but technically a separate claim without its own cite anchor."
+    },
+    {
+      "line": 89,
+      "claim": "Compound engineering — Kieran Klaassen (Every Inc.)",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "notes": "Maintainer-block only (below <!-- maintainer -->). Not student-facing body; verification debt captured here for pre-cohort pass. TODO, not blocking."
+    },
+    {
+      "line": 90,
+      "claim": "Three-block memory — Paweł Huryn (productcompass.pm)",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "notes": "Maintainer-block only. Attribution deferred (frame named at M4 by design). TODO, not blocking."
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://www.youtube.com/watch?v=6eBSHbLKuN0",
+      "alive": true,
+      "status_code": 200
+    }
+  ],
+  "blocking_findings_count": 2,
+  "todos_count": 2
+}

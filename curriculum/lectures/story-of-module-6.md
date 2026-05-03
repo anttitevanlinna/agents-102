@@ -64,7 +64,7 @@ I made this module live, running the move I am asking you to run. I drifted in t
 
 Your turn.
 
-— Antti
+Antti
 
 <!-- maintainer -->
 
@@ -86,9 +86,6 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 
 **Known TODOs:**
 - Antti's rewrite pass in final voice (~15 min).
-- Three-persona sim to confirm permission-giving lands as intended for the opinionated-senior persona — does the stats block read as direct or as preening?
-- Freshness check on the session numbers when M6 next runs in a cohort. If the stats here are from an old generation, the lecture feels dated; regenerate rather than reuse.
-- After `/loop` runs post-dispatch, consider adding one line to the stats block if the loop catches something worth naming.
 
 **Frameworks attributed:**
 - Non-determinism framing — Antti's working position, reshaped from earlier *"we live what we teach"* credibility framing after the Claude-generated recommendation was cut at turn 7.

@@ -63,7 +63,3 @@ M5 opens with reading it together.
 **Vision vs. detail:**
 - Vision layer: the M5 diagnostic question, the curiosity-not-defensiveness frame.
 - Detail layer: the three failure-mode names + Ronacher anchor + URL.
-
-**TODO (pre-first-cohort):**
-- Source verification per above.
-- Three-persona sim covering this both as pre-read AND as in-room handout (does it land both ways for Greg / Maija / Jin?).

@@ -31,13 +31,13 @@ Three shapes practitioners use. All three appear in Boris Cherny's stop-hook pra
 
 ## At org scale: Intercom's Tier 1/2/3
 
-Darragh Curran (CTO, Intercom) published a post in April 2026 called "2x — nine months later." His R&D org runs a tiered review structure with auto-approval at the lowest tier. The numbers are concrete. 19.2% of pull requests are auto-approved (no human reviewer). Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of auto-approved PRs are 20 lines or fewer.
+Darragh Curran (CTO, Intercom) published a post in April 2026 called "2x, nine months later." His R&D org runs a tiered review structure with auto-approval at the lowest tier. The numbers are concrete. 19.2% of pull requests are auto-approved (no human reviewer). Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of auto-approved PRs are 20 lines or fewer.
 
 That is your verifier from Phase 3, scaled to a 500-person engineering org. Same shape, scaled.
 
 ## The 80/20 ratio
 
-You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution. The TDD shape carries it — Klaassen: *"Claude writes the test. The test fails — the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
+You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution. The TDD shape carries it, Klaassen: *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
 
 ## What the run cost
 
@@ -102,9 +102,3 @@ URLs to verify:
 **Vision vs. detail:**
 - Vision layer: three-pattern as Ronacher's frame, two-camp framing, kit-grows-by-accretion bridge.
 - Detail layer: every URL above, every number, the Cherny three-shape claim, the Amp counter-philosophy.
-
-**TODO (pre-first-cohort):**
-- Full source verification per the URL list above.
-- Three-persona sim including the Greg-persona check: does *"the verifier you built today is the seed of this"* read as condescending or earned?
-- Re-check freshness on Cherny interview at delivery time.
-- If Sourcegraph Amp counter-philosophy doesn't pin to a specific practitioner post, reframe without the named-product attribution.

@@ -55,13 +55,10 @@ M3 starts with a feature you're shipping.
 - **Mood target:** forward-looking optimism; the *unleashed leverage* mood that lands fully at M6 gets a one-paragraph preview here. Honors M2's grounded-competence contract by closing on capture-not-application.
 - **Voice check:** AE101 voice quintet — Risto leads the closer, Boris on the shape paragraphs (factual, terse). No banned words. No em-dashes. No `practice` (noun); no `ritual`/`ceremony`; no `substrate`; no `leverage` (verb).
 - **Frameworks riffed on (deferred from body):**
-  - Slack-triage shape — Klaassen / Every compound-engineering pattern. Reference: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. Earned-landing at M5–M6 as compound-engineering anchor.
-  - Scheduled-read shape — fixed-spec reference-artifact pattern (Ronacher). Earned-landing at M5's verifier build.
+  - Slack-triage shape — Klaassen / Every compound-engineering pattern `[practitioner direct]`. Reference: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. Earned-landing at M5–M6 as compound-engineering anchor.
+  - Scheduled-read shape — fixed-spec reference-artifact pattern (Ronacher) `[practitioner direct]`. Earned-landing at M5's verifier build.
 - **Capability/source notes (2026-04-29):**
   - Slack trigger wording grounded in Slack Events API / workflow trigger model: Slack app or workflow receives message/event/webhook, then external code or custom step calls the agent runtime. Do not imply Claude Code runs inside Slack.
   - GitHub issue wording grounded in GitHub Actions `issues` events and webhooks. In-repo default is usually a workflow on issue events; external integrations use webhooks or GitHub Apps.
 - **Attribution cap (`check_writing.md` #11):** main exercise body cites Pocock + Klaassen + Martin; this lecture adds zero new student-side names. Within budget; M2's named-practitioner load stays where it earned its keep.
 - **Philosophy callout budget:** zero. The closer carries the forward gesture without naming a belief.
-
-**Maintainer TODO (genuinely pre-cohort):**
-- mechanical-test on first real cohort delivery

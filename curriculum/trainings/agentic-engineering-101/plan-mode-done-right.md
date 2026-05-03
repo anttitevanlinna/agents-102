@@ -62,27 +62,24 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 
 Optional. Skipping either piece does not break Module 3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
 
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min, foundational framing from June 2025, canonical naming of the threat class, used as reference not as fresh evidence). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
 
 **Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for Module 3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 
 
-**Quality:** mechanical-tested 2026-04-28
-- compendium-audited 2026-04-28 (check_writing v2026-04-26; check_student_facing v2026-04-27; check_pedagogy v2026-04-28 incl. #39; check_prompts v2026-04-28; check_strategy_tie_in v2026-04-25; check_lectures v2026-04-24; check_research_claims; check_platform_and_boundaries — capability-check pass on Phase 2 loading-model claims after correction `~/.claude/memory/` → `~/.claude/CLAUDE.md` / `~/.claude/rules/`)
-- sim-passed 2026-04-28 (Mid-competent 8.0 / Opinionated-senior 7.5 / Fast-operator 9.0+8.5 after runtime-gating / Nitpicker — convergence flagged loading-model error + Phase 2 body/prompt contradiction; both fixed in same cycle)
-- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/ae101-m2-extract-judge-report.md` @ 18affa1) PASS 8/8 — covers the new exercise's prompt chain end-to-end including handoff from lecture
+**Quality:** compendium-audited 2026-05-03
+- judges @68f5fd4: writing REVISE (1B/3T see instances/ae101--plan-mode-done-right.writing.json), story REVISE (3B/1T see instances/ae101--plan-mode-done-right.story.json), technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
-- prior dimension-log preserved for reference: compendium-audited 2026-04-25 + sim-passed 2026-04-25 (push-back-on-the-plan + when-a-plan-is-good unchanged this cycle)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
-- **Quality:** sim-passed 2026-04-25 (check_writing v2026-04-25 voice-quartet, check_student_facing v2026-04-25 agent-vocab + #21 sharpened, check_pedagogy v2026-04-25 progression-with-variations, check_prompts; three-persona sim 2026-04-25 — Debrief redesign)
+- **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1 blocker** — student can't surface a fitting task. Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
@@ -113,6 +110,6 @@ Optional. Skipping either piece does not break Module 3. The point is to land ST
 - Push-back moves at P3 (trainer covers in cohort; Nerd covers only in self-study)
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
-- **Plan mode** (Anthropic Claude Code). Activation Shift+Tab; push-back via *keep planning with feedback* at the approval prompt (chat-based, the exercise's path). In-place plan-file editing via Ctrl+G / Ctrl+X Ctrl+E is a practitioner primitive mentioned at Debrief, not the exercise's move — chat-based push-back keeps the student in conversation with the agent. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
-- **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
+- **Plan mode** (Anthropic Claude Code). Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop). Push-back via *keep planning with feedback* at the approval prompt — chat-based, the exercise's path. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`.
+- **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `https://every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
 - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). Vision-layer attribution, optional at Debrief; most engineers have seen this in strategy readings.

@@ -21,7 +21,7 @@ Naming it matters because the word is what lets you compose. Once you see the ve
 
 ## The shape it grows into
 
-Darragh Curran runs engineering at Intercom. In April he published a post called *"2x — nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The org is 500 people.
+Darragh Curran runs engineering at Intercom. In April he published a post called *"2x, nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The org is 500 people.
 
 Read that as your verifier from M5, scaled. Same primitive. An automated check that says *this meets the bar.* Placed in CI, fed by convention, trusted by a human team that set the thresholds. The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
 
@@ -86,9 +86,3 @@ URLs and numbers to verify:
 **Vision vs. detail:**
 - Vision layer: the one-word naming, the stance-survives-the-model argument, the two-bridge close.
 - Detail layer: every URL above, every number, the `/schedule` and `/loop` primitive names, the reference-page pointer.
-
-**TODO (pre-first-cohort):**
-- Full source verification per the URL list above.
-- Three-persona sim: CTO (does the Ramp/Intercom anchoring read as earned or as vendor-plug?), senior engineer who has used Claude Code for six months (does the "one word" beat land as recognition or as remedial?), engineer who has not used Claude Code beyond M1–M6 of this training (does the scheduled-agents callout stay callout-sized, or grow a need-to-try-now itch that steals the close?).
-- Freshness recheck: Intercom post date must be within six months of cohort delivery date; if it ages past the window, promote a newer practitioner-direct source or reframe the org-scale anchor.
-- Capability recheck on `/schedule` and `/loop` via `claude-code-guide` within two weeks of any cohort date. Features land mid-year; do not ship the lecture on stale assumptions.

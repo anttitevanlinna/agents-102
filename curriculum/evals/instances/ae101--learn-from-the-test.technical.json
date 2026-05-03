@@ -1,0 +1,215 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "REVISE",
+      "evidence": "line:31 `Put the worktree at ../<repo-name>-m5 on a new branch named m5/ followed by the same task slug as the m4 branch.` and lines 34-35 `cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/` / `cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/` — `<repo-name>` is a bracket-style placeholder inside a copyable fenced block",
+      "fix_hint": "Replace `<repo-name>` with an open-hook pattern: e.g., end the fenced block with `My repo name:` on its own line so the student fills it in before sending, or instruct Claude to derive the repo name from `basename $(pwd)` without a placeholder.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path, never by invented alias.",
+      "verdict": "REVISE",
+      "evidence": "line:68 `The reference, plan.md, and verifier are at the paths we wrote in this session.` — back-reference anchor present but no deterministic path; if paths were discussed mid-exercise without explicit file saves at named locations, the chain is not harness-testable and is vulnerable to path drift",
+      "fix_hint": "Name the deterministic paths explicitly in the re-send prompt (e.g., `reference.md`, `plan.md`, and the verifier at the path the build step wrote) rather than relying solely on scrollback recall.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "REVISE",
+      "evidence": "line:10 `Laura Entis on Kieran Klaassen, You're the Bread in the AI Sandwich` — URL present but no `[practitioner analysis]` source-type label. line:10 `Kieran Klaassen, Compound Engineering: The Definitive Guide` — URL present but no `[practitioner direct]` label. line:90 `Kieran Klaassen, My AI Had Already Fixed the Code Before I Saw It` — URL present but no `[practitioner direct]` label.",
+      "fix_hint": "Append the appropriate source-type label in square brackets after each URL or inline citation. Pre-reads section: [practitioner analysis] for the Entis article, [practitioner direct] for both Klaassen pieces.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work.",
+      "verdict": "PASS",
+      "evidence": "line:26 `open a fresh session in the original repo location` and line:40 `Open a new Claude Code session in the worktree` — correct session language used throughout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "PASS",
+      "evidence": "line:72 `Before you start, ask for or write anything else you want for this run.` — canonical self-augment invitation present in re-send prompt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": "Smoke-test discipline belongs to the exercise file (diagnose-and-resend.md), not the module file. Module file correctly defers Phase 3 verifier-build to the exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 38,
+      "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+      "verdict": "PASS",
+      "evidence": "Producing side: line:31 prompt names branch pattern `m4/` + `m5/<task-slug>` and worktree path `../<repo-name>-m5`. Consuming side (Module 6) is out of scope for this judge.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": "Entis article dated April 22, 2026 (within 6 months of 2026-05-03). Klaassen Compound Engineering dated February 9, 2026 (within 6 months). Klaassen My AI Had Already Fixed dated within 6 months (no explicit date in file but URL liveness confirmed).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "git branch -a | grep '/m4/' — there'll be one",
+      "line": 31,
+      "verdict": "PASS",
+      "source": "inferred"
+    },
+    {
+      "claim": "Open a new Claude Code session in the worktree",
+      "line": 40,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "The rest of Module 5 runs there.",
+      "line": 40,
+      "verdict": "PASS",
+      "source": "inferred"
+    },
+    {
+      "claim": "laptop stays awake and plugged in while it runs (power settings → prevent sleep on power)",
+      "line": 78,
+      "verdict": "PASS",
+      "source": "inferred"
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 10,
+      "claim": "Laura Entis on Kieran Klaassen, You're the Bread in the AI Sandwich",
+      "label_present": false,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 10,
+      "claim": "Kieran Klaassen, Compound Engineering: The Definitive Guide",
+      "label_present": false,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 90,
+      "claim": "Kieran Klaassen, My AI Had Already Fixed the Code Before I Saw It",
+      "label_present": false,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
+      "alive": true,
+      "status_code": 200
+    }
+  ],
+  "blocking_findings_count": 3,
+  "todos_count": 0
+}

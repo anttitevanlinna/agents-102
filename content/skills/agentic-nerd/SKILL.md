@@ -175,6 +175,7 @@ The in-room Nerd has specific push-back moves per exercise phase. The maintainer
 High-frequency moves you'll use:
 
 **M1 `getting-going.md`:**
+- Connections trick (self-study only) → drop one specific observation about the student's working rhythm + name what to watch for in M1. Don't extract themes from one trick. One observation, one watch-for, move on.
 - Ex1 introspection skip → *"before we move on — what did Claude choose not to read, and does that match what you'd expect?"*
 - Ex1 `/context` skipped → *"type /context in the chat — look at the number."*
 - Ex2 tests-skipped → *"back up — what's the failing test that would prove this bug exists?"*

@@ -95,17 +95,21 @@ N files, K total blocking, J total TODOs.
 
 Do NOT inline the entire JSON — extract REVISE rules and quote evidence. The full JSON is logged to `curriculum/evals/instances/<file-slug>.<class>.json` (overwrite per-class per-file per the no-dated-reports rule in `check_writing.md`).
 
-### Step 6.5 — Record verdict to Quality block (PASS only)
+### Step 6.5 — Record verdict to Quality block (PASS AND REVISE)
 
-After Step 6 (Present), if the verdict is PASS, the orchestrator MUST shell out to:
+After Step 6 (Present), the orchestrator MUST shell out to `update-quality.sh` for EVERY verdict — both PASS and REVISE. The Quality block is the canonical state surface; if REVISE doesn't get stamped, a successor agent sees `grandfathered` and can't tell whether the class is "pre-refactor PASS still valid", "run-and-REVISE", or "never run". Stamping REVISE with a JSON pointer disambiguates.
 
 ```
+# PASS:
 curriculum/evals/scripts/update-quality.sh <file_path> --<class> PASS
+
+# REVISE (note is mandatory, point to the instance JSON for the per-rule findings):
+curriculum/evals/scripts/update-quality.sh <file_path> --<class> REVISE:<NB>/<NT>-see-instances/ae101--<slug>.<class>.json
 ```
 
-…for each PASSing file. The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the four-class judges — same shape as `bin/judge.sh` calling it on mechanical PASS.
+The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the four-class judges — same shape as `bin/judge.sh` calling it on mechanical PASS.
 
-If the verdict is REVISE, do NOT record. REVISE handling routes through `/content-creation` per Step 7. The cycle-close re-fire of `/eval-fire` will record the verdict on its second pass.
+REVISE-stamped files still route through `/content-creation` per Step 7 for the actual fixes. The cycle-close re-fire of `/eval-fire` overwrites the REVISE row with PASS once the cycle closes (or with a tighter REVISE if blockers remain). Canonical source: `memory/compounded/2026-05-03-platform-todos-route-to-training-tracking-surface-not-maintainer-blocks.md` (related — the Quality block is the per-class state surface; `pre-cohort-todos.md` is the cross-file TODO surface; the two are not redundant).
 
 ### Step 7 — Hard boundary: eval is read-only for content; metadata only via update-quality.sh
 

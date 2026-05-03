@@ -62,7 +62,7 @@ The loop is the shape. The bug today was the excuse.
 - **Arc position:** closes M1, after `compound-and-close` (Ex3) and before the Bridge to M2. Pairs with `the-wizard-move` lecture (demo-style opener): wizard-move shows the ceiling before the student runs the loop; this one names the pattern after they have lived through it. The meta-frame only lands once the student has the muscle memory.
 
 **Frameworks riffed on:**
-- **Compound engineering** — Kieran Klaassen (Every Inc.). Plan → Work → Review → Compound. Named at this lecture's close as the deterministic seam to Ex3's retro citation. The lecture tells the story experientially first; the practitioner lands at the end so the four-step term arrives after the student has run all four steps. Removes the prior gamble where Klaassen's name lived only in the retro prompt and depended on Claude reliably citing him.
+- **Compound engineering** — Kieran Klaassen (Every Inc.) `[practitioner direct]`. Plan → Work → Review → Compound. Named at this lecture's close as the deterministic seam to Ex3's retro citation. The lecture tells the story experientially first; the practitioner lands at the end so the four-step term arrives after the student has run all four steps. Removes the prior gamble where Klaassen's name lived only in the retro prompt and depended on Claude reliably citing him.
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the lecture IS the theme, told as a first-person story about the training itself.

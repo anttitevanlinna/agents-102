@@ -87,8 +87,3 @@ Open your repo. Let's go.
 **Vision vs. detail:**
 - Vision layer: the diagnostic stance ("read first, fix later"), the test→learn→encode framing.
 - Detail layer: the three failure-mode names (sourced via pre-read), the `~60%` threshold, `/compact` invocation.
-
-**TODO (pre-first-cohort):**
-- Three-persona sim: does the in-room opener carry the room AND the student who didn't pre-read? Is the one-sentence-per-mode sufficient, or does a non-reader still feel underprepared at Phase 1?
-- Confirm framing alignment with pre-read (no contradictions, no different vocabulary).
-- Test the "Open your repo. Let's go." closer in self-study mode — does the Nerd need to add a transition prompt, or does the line work as-is?

@@ -111,7 +111,7 @@ In a Nordic room, do not mistake a quiet first beat for no signal. Use low-frict
 
 Most AE101 runs are not long. In the few places where the agent may run for five minutes, use the wait to re-explain the concept and narrate what is actually happening: tool use, files touched, assumptions forming, or why the prompt is shaping the behavior you expect.
 
-If the room is slow, compress optional asides rather than sprinting. If the room is fast, do not pad. Spend the time on a deeper comparison or let people breathe.
+If the room is slow, compress optional asides rather than sprinting. If the room is fast, do not pad. Spend the time on a deeper comparison or leave the room to its own rhythm.
 
 The most common AE101 failure is oversized task selection. Push early. "Not a typo-fix, not an epic" is the condition that lets the long-running loop produce evidence the next module can read.
 
@@ -129,7 +129,7 @@ The most common AE101 failure is oversized task selection. Push early. "Not a ty
 
 After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.
 
-If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. The exact capture mechanism is still TBD; do not rely on memory.
+If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture mechanism is being designed, see `pre-cohort-todos.md`. Until it lands, don't rely on memory.
 
 <!-- maintainer -->
 

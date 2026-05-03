@@ -29,32 +29,32 @@ After this module, you will be able to:
 ## Key Concepts
 - Plan mode is overhead on a trivial bug. Module 2 is where it earns its keep
 - The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Assume 10% of what it says or does is misrepresentation and dig
-- `/context` shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality — your job is to steer what lands in those bytes
+- `/context` shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality, your job is to steer what lands in those bytes
 - A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
 - The compound step lives in Exercise 3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
 - Personal rules (`./CLAUDE.local.md`, gitignored) vs. team rules (`./CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
 
 ## Debrief
-The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Exercise 1 + Exercise 2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, student pushes back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so the student can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
+The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Exercise 1 + Exercise 2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, you push back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so you can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
 
 [How this training was built](lectures/how-this-training-was-built.md)
 
 ## Next
 Module 1 ran the loop once on a trivial bug, no plan mode. Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
 
-## Homework after Module 1 — between-module reading
+## Homework after Module 1, between-module reading
 
 Optional. Skipping either piece does not break Module 2. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.
 
-**Watch: [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (Boris Cherny, creator of Claude Code, ~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for Module 2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in Module 2 through Module 6 show up here first as one person's working rhythm.
+**Watch: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (~30 min).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for Module 2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in Module 2 through Module 6 show up here first as one person's working rhythm.
 
-**Read: [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use. Find your way to do it over time. There is no rush.
+**Read: [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27
-- compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy; re-stamped after 2026-04-27 cycle: prework /add-dir removed, M1 Ex2 open-hook reshape, M1 Ex3 settings-block removal — module file itself untouched, but mtime degrade triggered re-validation; audit GO)
+**Quality:** compendium-audited 2026-05-03
+- judges @68f5fd4: writing REVISE (1B/1T see instances/ae101--getting-going.writing.json), story REVISE (1B/1T see instances/ae101--getting-going.story.json), technical REVISE (2B/2T see instances/ae101--getting-going.technical.json), behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -67,6 +67,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
+- **Connections trick** (Nerd only; cohort skips) — student shares one trick; Nerd drops one observation about working rhythm + one watch-for in M1. Don't extract themes from one trick. Nerd push: *"You reach for `/clear` between tasks — watch whether you let `/context` surprise you at Ex1, or just confirm what you already think."*
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **Ex1 `/context` skipped** — slash command read as prose, not as a command. Nerd push: *"type /context in the chat — look at the number."*
 - **Ex1 drifted bug** — student has drifted from prework choice. Nerd runs fresh bug-surfacing conversation. Criteria unchanged.

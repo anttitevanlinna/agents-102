@@ -31,7 +31,7 @@ Extract the starter tarball in the working folder. Use the shell:
 
   tar xzf starter.tar.gz
 
-(Leave `starter.tar.gz` behind — Cowork's sandbox can't always delete host-dropped files. Harmless.)
+(Leave `starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)
 
 Then list what's in the working directory and confirm these folders exist:
 prework/, memory/, sources/, agents/, .claude/, and module-4/policies/.
@@ -120,9 +120,12 @@ You walk into Module 1 with <span class="rt-code">Claude Code</span><span class=
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-30
-- draft 2026-04-30 (connector setup step added after maintainer review; needs re-review)
+**Quality:** compendium-audited 2026-05-04
+- judges: writing PASS, story PASS, technical PASS, behavior PASS (see instances/prework.*.json)
 - maintainer-reviewed 2026-04-29 (Antti, Agents 101 prework manual cohort-prep run; install path tested end-to-end under Cowork lens, snake + meetings + read all verified)
 
+**Packaging:**
+- `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.
+
 **TODO (Claude Code Desktop edition review 2026-04-29):**
-- Prompt 1 includes Cowork-specific wording: "Leave `starter.tar.gz` behind — Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.
+- Prompt 1 includes Cowork-specific wording: "Leave `starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.

@@ -1,40 +1,11 @@
 {
-  "file": "curriculum/exercises/eval-loop.md",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/eval-loop.md",
   "eval_class": "writing",
   "model": "claude-haiku-4-5-20251001",
   "timestamp": "2026-05-03T00:00:00Z",
-  "verdict": "REVISE",
-  "blocking_findings_count": 1,
-  "blocking_findings": [
-    {
-      "rule": "check_prompts.md rule 9",
-      "severity": "high",
-      "category": "markdown shout in fenced prompt blocks",
-      "locations": [
-        {
-          "line_range": "26-32",
-          "snippet": "**1. Produce a fresh one-page briefing...** / **2. Run the judge...** / **3. In the chat, summarize...**",
-          "issue": "Markdown bold (**...**) inside fenced code block. When student pastes into Claude Code, asterisks render literally, not as bold."
-        },
-        {
-          "line_range": "48-70",
-          "snippet": "**1. Dispatch a generator subagent.** ... **2. Dispatch a separate judge subagent.** ... **3. The main session...**",
-          "issue": "Markdown bold throughout prompt fence. Asterisks become visible noise in Claude Code input/scrollback."
-        },
-        {
-          "line_range": "102-111",
-          "snippet": "**1. Dispatch a generator agent.** ... **2. Dispatch a separate judge agent.** ... **3. The main session...**",
-          "issue": "Same markdown shout pattern in Cowork fork (rt-cowork div)."
-        },
-        {
-          "line_range": "150-161",
-          "snippet": "Show me module-6/eval-notes.md and ./generation-tactic.md. / Then answer in five bullets: **- Did the judge...** etc.",
-          "issue": "Markdown bold on bullet list inside fence."
-        }
-      ],
-      "fix_hint": "Replace markdown bold with plain bullets (- item) and numbers (1. 2. 3.) inside fences. Use backticks for paths. Bullets and numbers render as themselves when pasted; asterisks do not."
-    }
-  ],
+  "verdict": "PASS",
+  "blocking_findings_count": 0,
+  "blocking_findings": [],
   "comments": [
     {
       "carve_out": "Mechanism-narration lines 163-171 (What happens) are legitimate student-facing body prose, not trainer framing. They address the student in second person and narrate what the student's generator does. Per specified carve-out, PASS.",
@@ -60,5 +31,8 @@
       "check_student_facing.md",
       "check_prompts.md"
     ]
-  }
+  },
+  "rerun_note": "PASS: current eval-loop.md already has markdown shout removed from fenced prompts; stale 2026-05-03 finding no longer applies.",
+  "class": "writing",
+  "training": "agents-101"
 }

@@ -5,7 +5,7 @@ The eval that ran once in Module 5 now runs on every output, and the work tighte
 
 ## Prework
 
-Ethan Mollick, "Garbage Can and Bitter Lesson." Plus the still-uncertain line you wrote in Module 5 (the thing you flagged a grounded briefing still couldn't reach). That's Module 6's starting point.
+[Ethan Mollick, *The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage). Plus the still-uncertain line you wrote in Module 5 (the thing you flagged a grounded briefing still couldn't reach). That's Module 6's starting point.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -17,7 +17,7 @@ After this module, you will be able to:
 ## Start here
 Start this module at the training-directory root. Module 6 consumes `judges/groundedness-judge.md` from Module 5, writes run artifacts under `module-6/`, keeps the judge fixed, and sharpens `./generation-tactic.md`.
 
-Did you read Ethan Mollick's *The Bitter Lesson versus The Garbage Can*?
+Did you read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage)?
 
 His question is the right opener for Module 6: will the bitter lesson apply inside your company? Can agents get better if you define the outcome and let them find the path, or does the organisational mess still matter too much?
 
@@ -51,15 +51,21 @@ Ask Claude to read the round trail and sharpen the generator's tactic beyond wha
 **Prompt** *(Claude Code)*
 
 ```
+Start by reading the files. No plan or preamble.
+
 Review this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?
 
-Then rewrite ./generation-tactic.md. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a "retro notes" section; rewrite the file as the better version.
+Be harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.
 
-When you're done, tell me in 3–5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.
+Then overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a "retro notes" section; rewrite the file as the better version.
+
+When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.
 ```
 
 
 Read Claude's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.
+
+This is Claude auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
 
 ## Next
 You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
@@ -72,7 +78,8 @@ Use [Agent Trigger List](supplementary/agent-trigger-list.md) to make Monday's f
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (maintainer contract incomplete; needs compendium audit, sim, and mechanical test)
+**Quality:** compendium-audited 2026-05-04
+- judges: writing PASS, story PASS, technical PASS, behavior PASS (see instances/evaluations.*.json)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create
@@ -96,7 +103,7 @@ Use [Agent Trigger List](supplementary/agent-trigger-list.md) to make Monday's f
 **Capability checks owed (before first delivery):** see `exercises/eval-loop.md` maintainer section: generation/judging agent separation, file-write reliability, judge immutability, and tactic rewrite reliability.
 
 **Source-verification owed (pre-first-cohort):**
-- Ethan Mollick, "Garbage Can and Bitter Lesson" — add URL to the One Useful Thing post.
+- Ethan Mollick, *The Bitter Lesson versus The Garbage Can* — https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage [practitioner direct]. Re-verify URL at delivery; if the post is no longer public, reframe the opener as Mollick's practitioner question about bitter-lesson scaling vs. organisational mess and cite the replacement source.
 - LLM-as-judge canonical reference (Zheng et al., MT-Bench 2023) — maintainer-only cite for facilitator prep if asked in-room where the term comes from.
 
 **Dependency on M5:** hard. `judges/groundedness-judge.md` must exist on disk as the benchmark winner before this module runs. M5's facilitator closing must name the handoff: *"That judge you just picked — tomorrow it becomes infrastructure."*

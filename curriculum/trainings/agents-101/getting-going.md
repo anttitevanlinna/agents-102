@@ -18,10 +18,6 @@ After this module, you will be able to:
 
 <span class="rt-code">Start a new Claude Code session at `~/Documents/agents-101/` (the training root, same as Prework). This module's outputs land in the `module-1/` subfolder.</span><span class="rt-cowork">Click *New task* in the Cowork tab and select `~/Documents/agents-101/` as the working folder (the training root, same as Prework). This module's outputs land in the `module-1/` subfolder.</span>
 
-> **In-room cohort opening (self-study readers, skip to the question below).**
->
-> Let's hear from your sponsor first (the CEO / CTO / SVP who brought you here). They're in the room with you, as a participant, not as a visitor. They've got one sentence in their own words: why they're here, and what they don't yet know. Something like *"I want to learn this with you, not delegate it."* No corporate kickoff, no agenda. What matters isn't the sentence. It's that your sponsor said it, out loud, before anyone else. That's the license the next seven modules run on.
-
 **The question, to you:** when you've used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 
 **Context is king.** You steer your agent by the context you give it. You paint by choosing the brush.
@@ -47,11 +43,19 @@ Ask Claude to retro your rules file.
 **Prompt** *(Claude Code)*
 
 ```
+Start by reading the file. No plan or preamble.
+
 Read `module-1/personal-brand-generation.md`. Then re-read what we did building the site. Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught? Find what's still surface; don't defend the file as-is.
+
+Assume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.
 
 Then overwrite `module-1/personal-brand-generation.md` with the retro applied. Sharpen what's weak. Add what's missing. Drop what's wrong. Rewrite the file in place; don't append a "retro notes" section.
 
-When you're done, tell me in 2–3 lines: what got sharpened, what got added, what got dropped, and why. Add a couple more lines if you spotted something the rules should cover but you want me to weigh in on first.
+When you're done, list:
+- dropped: rule text + reason
+- sharpened: before -> after
+- added: rule text + why the session needed it
+- still uncertain: anything the rules should cover but you want me to weigh in on first
 ```
 
 
@@ -89,8 +93,8 @@ You just made great output AND packaged what you learned into a file the agent c
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-02
-- judges: not yet judge-audited
+**Quality:** compendium-audited 2026-05-04
+- judges: writing PASS, story PASS, behavior PASS (see instances/getting-going.*.json); technical grandfathered
 - mechanical @3d7e76c: PASS — agents-101-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
@@ -101,3 +105,6 @@ You just made great output AND packaged what you learned into a file the agent c
 
 **Plug Points (trainer):**
 - **The trainer's CLAUDE.md** has a default (differentiation / storytelling / framing). Variant: orgs with a brand guide can substitute. Default works on its own.
+
+**Sponsor opening note (trainer):**
+- In-room only. If the sponsor is present as a participant, they may open with one sentence in their own words: why they are learning alongside the cohort and what they do not yet know. No corporate kickoff, no agenda. Keep it before screen-share or as a spoken room move, not student-facing curriculum text.

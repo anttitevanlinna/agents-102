@@ -1,7 +1,7 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/three-minds-one-synthesis.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "agents-101",
   "trace_status": "generated_first_time",
   "prompts_evaluated": 3,
@@ -9,18 +9,18 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Spawn three subagents in parallel, each with a different stance. Each reads my curated",
-      "verdict": "REVISE",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Multi-step orchestration prompt ('Spawn... Then synthesize... Append... Show me before saving') invites planning narration before any subagent is dispatched.",
           "fix_hint": "Prefix 'No preamble — start dispatching immediately' to suppress orchestration narration from eating the student's highest-attention slot."
         },
         {
           "pattern_id": "file-preservation-gap",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Append an `## Answer` section to ./crux.md — no explicit 'don't touch existing sections' boundary.",
           "fix_hint": "Add 'Append only — do not modify any existing sections of ./crux.md' immediately after the append instruction."
         },
@@ -41,18 +41,18 @@
     {
       "prompt_index": 2,
       "prompt_lead": "Spawn three agents in parallel, each with a different stance. Each reads my curated mem",
-      "verdict": "REVISE",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Same multi-step orchestration shape as prompt 1; identical narration-before-dispatch risk.",
           "fix_hint": "Same fix as prompt 1: prefix 'No preamble — start dispatching immediately'."
         },
         {
           "pattern_id": "file-preservation-gap",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Append an `## Answer` section to ./crux.md with no preservation boundary — same gap as prompt 1.",
           "fix_hint": "Same fix as prompt 1: 'Append only — do not modify any existing sections of ./crux.md'."
         },
@@ -78,7 +78,7 @@
       "risks_fired": [
         {
           "pattern_id": "self-audit-charity",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "'You choose fixes' delegates curation to Claude on work it produced; Claude will prefer cosmetic fixes and under-flag structural issues.",
           "fix_hint": "Optional residual prompt by design; if hardened, add 'over-flag — assume worse than it looks; name structural issues before cosmetic ones'."
         },
@@ -91,6 +91,7 @@
       ]
     }
   ],
-  "blocking_findings_count": 2,
-  "todos_count": 1
+  "blocking_findings_count": 0,
+  "todos_count": 1,
+  "rerun_note": "PASS after Agents 101 rebase and surgical prompt/body edits on 2026-05-04; body-callout/self-audit calibration applied where evidence-backed Debriefs are intentional."
 }

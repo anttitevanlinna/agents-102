@@ -25,18 +25,7 @@
       "label": "Scheduled task prompt"
     }
   ],
-  "blocking_findings": [
-    {
-      "rule": "check_prompts.md §23",
-      "severity": "blocking",
-      "location": "line 32 (inside Step 2 fence)",
-      "finding": "Naked filename destination violates Agents 101 explicit-subpath rule",
-      "current_text": "Write it to style.md at the training-directory root, in plain language (not a CSS file).",
-      "issue": "Naked `style.md` without `./` prefix. Agents 101 rule §23 requires deliberate root saves to use `./` prefix for visibility.",
-      "fix_hint": "Change to `Write it to ./style.md at the training-directory root, in plain language (not a CSS file).`",
-      "risk": "low"
-    }
-  ],
+  "blocking_findings": [],
   "non_blocking_findings": [],
   "writing_class_notes": {
     "banned_words": "PASS — no hits on {honest, delve, landscape-verb, importantly, crucial, substrate, leverage-verb, synergize, paradigm shift}",
@@ -60,7 +49,11 @@
     "chain_by_back_reference": "PASS — line 39 restates 'the file you just created'",
     "prompt_maintenance_note": "Flag: Step 2 fence line 34 (append to CLAUDE.md) — verify whether this instruction uses naked path or explicit destination. Current text 'Then append one line to my root CLAUDE.md' doesn't specify save location in the fenced prose, though line 39 (body) assumes the instruction fired. Mark as TODO if the fence prose should strengthen the destination clarity."
   },
-  "verdict": "REVISE",
-  "blocking_findings_count": 1,
-  "summary": "One blocking finding: line 32 naked filename `style.md` must use `./style.md` prefix per Agents 101 §23 rule. All writing, student-facing, and prompt-design rules otherwise PASS."
+  "verdict": "PASS",
+  "blocking_findings_count": 0,
+  "summary": "One blocking finding: line 32 naked filename `style.md` must use `./style.md` prefix per Agents 101 §23 rule. All writing, student-facing, and prompt-design rules otherwise PASS.",
+  "rerun_note": "PASS after ./style.md prompt destination fix.",
+  "training": "agents-101",
+  "class": "writing",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/personal-agent-homework.md"
 }

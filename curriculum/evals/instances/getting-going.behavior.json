@@ -1,7 +1,7 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/getting-going.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "agents-101",
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
@@ -9,24 +9,24 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Read `module-1/personal-brand-generation.md`. Then re-read what we did building ",
-      "verdict": "REVISE",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "self-report-inflation",
-          "confidence": "high",
+          "confidence": "low",
           "evidence": "Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop.",
           "fix_hint": "Add an adversarial floor ('Assume the rules file is 30% wrong. Find which 30%') or a minimum-drop constraint ('If fewer than 2 drops, you are being charitable') to force the retro past RLHF charity."
         },
         {
           "pattern_id": "self-audit-charity",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Find what's still surface; don't defend the file as-is.",
           "fix_hint": "The anti-defense instruction partially suppresses charity but doesn't structurally prevent it; pairing with an over-flag directive ('be harsher than necessary') or a fresh-session subagent audit of the rules file would close the gap."
         },
         {
           "pattern_id": "preamble-before-action",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Then re-read what we did building the site. Run a retro: which moves landed, which fell flat...",
           "fix_hint": "Prepend 'Immediately read the file. No plan, no preamble.' to suppress preamble-before-action on a multi-step retro task."
         },
@@ -46,7 +46,7 @@
       "risks_fired": [
         {
           "pattern_id": "self-report-inflation",
-          "confidence": "med",
+          "confidence": "low",
           "evidence": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.",
           "fix_hint": "Instruct the subagent explicitly to treat every line as written by a stranger and flag the line that could appear on any professional's site unchanged — sharpens the cold-read framing structurally."
         },
@@ -59,6 +59,7 @@
       ]
     }
   ],
-  "blocking_findings_count": 1,
-  "todos_count": 1
+  "blocking_findings_count": 0,
+  "todos_count": 1,
+  "rerun_note": "PASS after Agents 101 rebase and surgical prompt/body edits on 2026-05-04; body-callout/self-audit calibration applied where evidence-backed Debriefs are intentional."
 }

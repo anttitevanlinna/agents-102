@@ -2,7 +2,7 @@
 
 **What you do:**
 
-Load the reusable security check you authored in the previous exercise, then run it against the system you built in modules 2-3. Two packaged-lens reports. One mitigation. One residual decision added to the report. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.
+Load the reusable security check you authored in the previous exercise, then run it against the system you built in modules 2-3. Two reusable-lens reports: the same skill, two different checks. One mitigation. One residual-risk decision added to the report; residual risk means what remains after mitigation. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.
 
 Four phases. Thirty-five minutes. Bring the policy raw report from the previous exercise; that is the baseline. Bring the reusable check you just authored; that is the expert. Bring your Module 3 system; that is the target.
 
@@ -57,7 +57,7 @@ Read Claude's three lists. Then open `outputs/policy-report.md` and find the row
 
 **Phase 3. Run the agent-risk audit.**
 
-In the same session.
+In the same session, ask Claude to apply the agent-security lens and write the ranked risk report.
 
 **Prompt** *(Claude Code)*
 

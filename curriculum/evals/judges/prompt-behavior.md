@@ -58,6 +58,10 @@ Carve-outs (extend as compounded knowledge grows):
 
   Pairs with `memory/compounded/2026-04-27-prompts-append-vs-integrate-default.md` — that entry is the *author-side* rule (name the integration mode explicitly when adding context); this carve-out is the *judge-side* complement (respect personal-scope integrate-verbs as deliberate).
 
+- **`self-report-inflation` and `self-audit-charity` — evidence-backed Debrief carve-out.** Not every self-audit is a defect. Agents 101 Debriefs deliberately ask Claude to review session evidence with the student in the loop. If the prompt names concrete evidence surfaces (files, reports, scoreboards, round notes, before/after quotes), requires artifact-level reporting, and/or nearby body prose names the charity risk with a pushback move, downgrade to TODO or PASS. Block only when Claude is asked to grade its own work without evidence, quotes, or recovery.
+
+- **`default-acceptance`, `preamble-before-action`, and heavy-run risks — body-callout mitigation.** Adjacent prose can mitigate a probabilistic behavior risk when it names the failure mode and gives the student an action after the prompt. Minimal prompt edits are preferred over forcing every risk into the fenced block.
+
 When you apply a carve-out, record it in the trace's `risks_fired` entry with `confidence: low` and evidence pointing at the callout/marker line, OR omit the risk entirely. Either way, do not let the carve-out path produce a BLOCKING verdict.
 
 ## Cache lookup

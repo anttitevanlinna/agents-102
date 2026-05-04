@@ -190,7 +190,7 @@
 
 **What changed:** On February 17, 2026, NIST launched the AI Agent Standards Initiative through its Center for AI Standards and Innovation (CAISI). Three pillars: (1) industry-led agent standards, (2) open-source protocol development, (3) research on agent security and identity.
 
-**Why this matters for our training:** What NIST publishes in 2026 will appear in compliance frameworks, vendor questionnaires, and litigation by 2027. Organizations attending our Bootstrap training need to know this is coming.
+**Why this matters for our training:** What NIST publishes in 2026 will appear in compliance frameworks, vendor questionnaires, and litigation by 2027. Organizations attending our Agents 101 training need to know this is coming.
 
 **Key deliverables coming:**
 - Draft concept paper on agent identity and authorization (NCCOE project)

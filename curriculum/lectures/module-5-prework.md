@@ -87,7 +87,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 <!-- maintainer -->
 
 **Two, not ten — editorial reasoning:**
-- The prework's job is to calibrate the eye, not stoke anxiety. Everybody in a Bootstrap room has seen the headline "another AI lawyer fiasco." What they haven't seen is a case where BOTH the LLM output AND the organisational root cause are on the public record.
+- The prework's job is to calibrate the eye, not stoke anxiety. Everybody in a Agents 101 room has seen the headline "another AI lawyer fiasco." What they haven't seen is a case where BOTH the LLM output AND the organisational root cause are on the public record.
 - Mata v. Avianca and the Deloitte/DEWR case are the rare pair with real public-record root-cause visibility. Other famous cases (Air Canada/Moffatt, Cursor "Sam", NYC MyCity, Klarna reversal) have public SYMPTOMS but not public architectural / organisational gaps — we'd be inferring, not reading.
 - Asking the student to name the missing check in their own words (both cases converge on *verification before submission*) seeds Module 5's Phase 2 (classification) and Phase 3 (grounding rules), and connects to the lecture's Technique 1 (citation re-verification).
 
@@ -132,5 +132,5 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - No Claude-Code capability dependencies in this prework — reading only.
 
 **Deferred per student-facing-first rule:**
-- Variant note: Mid-Management variant can add a closing paragraph — "if your organisation has AI policy but no verification discipline, which one actually catches the failure?" — pushing the ownership question. Skipped for Bootstrap.
+- Variant note: Mid-Management variant can add a closing paragraph — "if your organisation has AI policy but no verification discipline, which one actually catches the failure?" — pushing the ownership question. Skipped for Agents 101.
 - Facilitator briefing deferred.

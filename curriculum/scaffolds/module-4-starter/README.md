@@ -1,6 +1,6 @@
 # Module 4 policy reference material
 
-Reference material the student runs raw, then packages into reusable security expertise during Module 4. This material is installed by the Bootstrap prework starter at `module-4/policies/`; students do not download a separate Module 4 pack. **No pre-shipped security skill ships** (per Antti 2026-04-29: Module 4 authors a personal skill during the exercise).
+Reference material the student runs raw, then packages into reusable security expertise during Module 4. This material is installed by the Agents 101 prework starter at `module-4/policies/`; students do not download a separate Module 4 pack. **No pre-shipped security skill ships** (per Antti 2026-04-29: Module 4 authors a personal skill during the exercise).
 
 ## What ships
 

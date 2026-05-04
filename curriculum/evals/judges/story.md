@@ -41,7 +41,7 @@ If the file has no `## Phase` headers (lecture, supplementary, prework), the who
 
 ### Trace generation protocol
 
-Follow the persona-reader protocol at `.claude/skills/content-creation/simulation.md` (Class A). Use the default `self-study` delivery mode. For Bootstrap exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
+Follow the persona-reader protocol at `.claude/skills/content-creation/simulation.md` (Class A). Use the default `self-study` delivery mode. For Agents 101 exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
 
 If the orchestrator passes `personas: N` (N > 1) via `/eval-fire story --personas N`, run the audience triangle: (a) mid-layer competent, (b) opinionated senior, (c) fast operator. Each persona produces its own trace stored at `{{trace_path}}` with persona-keyed records.
 
@@ -50,7 +50,7 @@ Output the trace as JSON to `{{trace_path}}`:
 {
   "content_sha": "<sha256 of full file>",
   "generated_at": "<ISO timestamp>",
-  "training": "bootstrap" | "ae101" | "shared",
+  "training": "agents-101" | "ae101" | "shared",
   "persona": "<one-line persona descriptor>",
   "delivery_mode": "self-study" | "in-room",
   "module_mood_contract": "<deliberate mood from strategy doc, e.g. 'unsettled competence — student wonders if this is right'>",
@@ -101,7 +101,7 @@ Return ONE JSON object, exactly this shape:
   "class": "storytelling",
   "file": "<absolute path>",
   "verdict": "PASS" | "REVISE",
-  "training": "bootstrap" | "ae101" | "shared",
+  "training": "agents-101" | "ae101" | "shared",
   "module_mood_contract": "<from trace>",
   "trace_status": "cached" | "regenerated" | "generated_first_time",
   "rules_evaluated": [
@@ -142,7 +142,7 @@ This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class
 
 The behavior class (Class B) writes its own trace at `curriculum/evals/sim-cache/<file-slug>.behavior.json` per `judges/prompt-behavior.md`. The two caches don't overlap.
 
-`{{strategy_doc_paths}}` is determined by the file's training: `bosser-strategy:content-strategy.md` for Bootstrap and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101. The skill orchestrator passes both for shared files (the judge picks the right one).
+`{{strategy_doc_paths}}` is determined by the file's training: `bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101. The skill orchestrator passes both for shared files (the judge picks the right one).
 
 When a new storytelling-class rule lands in any compendium, this template doesn't change. Update only when:
 

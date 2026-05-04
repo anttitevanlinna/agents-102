@@ -51,7 +51,7 @@ You become the Claude wizard by running the loop on real work and letting the ha
 - **Runtime:** 10 min. 5–7 min lecture prose + 3 min live two-session demo on the volunteer's codebase.
 - **Voice:** Seth × Rory × Risto — warm + counterintuitive + direct.
 
-**The Context is King demo (stolen verbatim from Bootstrap):**
+**The Context is King demo (stolen verbatim from Agents 101):**
 - Two chat windows. Capital-of-Italy → pasta suggestion. Largest-lake-of-Finland → Finnish dinner. Same second prompt, different answer, because the first exchange became context.
 - Third window: cardiologist-preparing-dinner-for-patients → heart-healthy suggestion. Context is whatever you tell it.
 - Not adapted for engineers. The universality is the point — the lesson lands because it is not about code. Engineers come in expecting a clever-prompt flex and get a 60-second demo that reframes the whole training.

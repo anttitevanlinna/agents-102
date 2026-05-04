@@ -102,7 +102,7 @@ Our existing research finding holds: "Every framework says 'upskill your workfor
 
 ### The Leadership-Lab-Crowd sequence maps to our customer journey
 
-- **Bootstrap** = Lab (intensive hands-on, small group, discover what's possible)
+- **Agents 101** = Lab (intensive hands-on, small group, discover what's possible)
 - **Champions** = Lab → Crowd bridge (train-the-trainer, scaling mechanism)
 - **Scale** = Crowd (champions run internally)
 - **Leadership** = what we need to add — the CTO/CEO must personally experience agents, not just approve the budget

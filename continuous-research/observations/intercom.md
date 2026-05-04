@@ -72,7 +72,7 @@ Curran doesn't hide the gap. Top 5% = 6x median. "Ironic that the sentiment amon
 
 ## For Curriculum (Engineering Management training)
 
-This is likely the **anchor case** for the engineering-management training, the way F-Secure anchors Bootstrap. Every module finds backing:
+This is likely the **anchor case** for the engineering-management training, the way F-Secure anchors Agents 101. Every module finds backing:
 
 - **M1 (diagnose):** Intercom's 5-dimension per-person tiering = exactly the ADKAR-style diagnostic artifact.
 - **M2 (first move):** "Be at peace with potentially imperfect measures" = the M2 operating stance. PR throughput = the "one imperfect metric that creates pressure" example.

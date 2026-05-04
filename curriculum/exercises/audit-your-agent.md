@@ -128,7 +128,7 @@ Absolute certainty is not on offer. The discipline is. Raw policy files first, p
 - maintainer-reviewed @60b1b6c: PASS — M4 manual walkthrough — phases 1-4 run + tested
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
-- Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training bootstrap --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.
+- Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training agents-101 --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.
 - Desktop install to `~/.claude/skills/security-audit/` is probably the highest-friction moment for chat-oriented business people on Desktop. Before first delivery, dry-run this with a non-terminal user and decide whether the body needs more Desktop-native scaffolding. Prompt edits remain gated.
 
 **Cohort-facilitator audit (2026-04-25):** APPROVE without TODOs. The exercise is cohort-ready. One stylistic note for next pass: *"The uncomfortable feeling is the evidence."* (Phase 2 close) reads as a slogan when projected silently to 12 SVPs; consider moving to lecture closer or cutting on next polish.

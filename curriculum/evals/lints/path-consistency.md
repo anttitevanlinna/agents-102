@@ -11,8 +11,8 @@ Fresh Claude session at repo root. Paste:
 ```
 You are running the path-consistency lint on Agents 102 curriculum files.
 
-TARGET (default: all Bootstrap modules + their inlined exercises/lectures; narrow if user specifies):
-- curriculum/trainings/bootstrap/*.md
+TARGET (default: all Agents 101 modules + their inlined exercises/lectures; narrow if user specifies):
+- curriculum/trainings/agents-101/*.md
 - Every exercise and lecture inlined via include-link
 
 For each target file, do all four checks below and report ONLY violations. No summary for files that pass.

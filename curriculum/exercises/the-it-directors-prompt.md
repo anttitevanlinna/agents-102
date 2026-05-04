@@ -144,7 +144,7 @@ The artifact is not the table. The artifact is the method now written into your 
 
 **Meta:**
 - **Length:** 35-45 minutes self-study. The old group and organiser synthesis path has been removed from this exercise.
-- **Two methods only.** Source support and counter-evidence. Citation integrity and entailment from Bootstrap M5 are deliberately omitted for Claude Basics. Two methods make the system memorable.
+- **Two methods only.** Source support and counter-evidence. Citation integrity and entailment from Agents 101 M5 are deliberately omitted for Claude Basics. Two methods make the system memorable.
 
 **Quality:** draft 2026-04-29
 - draft 2026-04-30 (self-study redesign: personal-folder input, two detection methods, personal CLAUDE.md rule write; sim/mechanical/eval not rerun)

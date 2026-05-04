@@ -132,7 +132,7 @@ Two genuinely new signals found: (1) Telenor's sovereign AI Factory with agentic
 - Source: https://web-assets.bcg.com/71/4b/625c24704f19ae0e716a3036c280/nordic-ai-digital.pdf [analyst prediction — Level 0]
 - Evidence level: Level 0 (consultancy report). **Use only as market context, never as a finding.**
 
-**Significance for our positioning:** The "off-the-shelf vs. transformative" gap is EXACTLY our thesis. Our Bootstrap training teaches people to build, not just configure. If BCG is telling Nordic CxOs that their current approach (buying tools) isn't working, that creates demand for our approach (building competence). This report is a sales enabler, not evidence.
+**Significance for our positioning:** The "off-the-shelf vs. transformative" gap is EXACTLY our thesis. Our Agents 101 training teaches people to build, not just configure. If BCG is telling Nordic CxOs that their current approach (buying tools) isn't working, that creates demand for our approach (building competence). This report is a sales enabler, not evidence.
 
 ---
 

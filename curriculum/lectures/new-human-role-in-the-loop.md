@@ -131,7 +131,7 @@ Designing the conditions under which the system earns more autonomy, one loop at
 
 **Quality:** draft 2026-04-29
 
-**Placement:** Closing lecture for Bootstrap Module 6, after `eval-loop.md` and before Debrief / Next. Designed to close the six-module arc when M7/M8 are not held.
+**Placement:** Closing lecture for Agents 101 Module 6, after `eval-loop.md` and before Debrief / Next. Designed to close the six-module arc when M7/M8 are not held.
 
 **Mood target:** empowered builder, not tidy graduation. Lands Module 6's power as a human-role shift: the participant now designs loops, standards, and autonomy boundaries.
 

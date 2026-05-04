@@ -193,4 +193,4 @@
 - **Module 4 (Security) should reference the "Agents of Chaos" study** — it's practitioner-credible, recent, and demonstrates exactly the failure modes participants need to understand.
 - **Agent Platform Advisory offering:** The MCP governance layer is where the action is. The lack of independent adoption evidence means organizations need help evaluating these tools — which is exactly what the Advisory offering provides.
 - **The "agent harness" framing** (agent sprawl : agent harness :: microservice sprawl : service mesh) is a useful mental model for the training. It connects to something enterprise architects already understand.
-- **EU AI Act August 2026 deadline** is a forcing function for Nordic buyers. Bootstrap training positioned as "get governance-ready before enforcement" has urgency built in.
+- **EU AI Act August 2026 deadline** is a forcing function for Nordic buyers. Agents 101 training positioned as "get governance-ready before enforcement" has urgency built in.

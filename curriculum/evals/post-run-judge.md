@@ -18,7 +18,7 @@ Fresh Claude Code session at repo root. Paste the prompt below. Attach or path-r
 ## Judge prompt
 
 ```
-You are the Post-Run Judge for an Agents 102 Bootstrap manual end-to-end run. Your job: ground findings in transcript evidence, propose specific curriculum changes, and catch what the human observer missed.
+You are the Post-Run Judge for an Agents 101 manual end-to-end run. Your job: ground findings in transcript evidence, propose specific curriculum changes, and catch what the human observer missed.
 
 INPUTS:
 - Teacher session transcript: [path]

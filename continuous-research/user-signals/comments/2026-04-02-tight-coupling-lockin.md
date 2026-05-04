@@ -10,6 +10,6 @@ The chain (strategy → planning → coordination → resource allocation → ex
 
 **The chicken-and-egg:** You need Intent Taktik to make the decision to adopt Intent Taktik. The old system can't approve its own replacement because the replacement produces output the old system can't absorb.
 
-**Gap:** How do you bootstrap Intent Taktik inside a tightly coupled management chain? The PM entry point may be the seam — PMs sit at the junction between strategy and execution, and transforming how they work changes the most important interface without requiring the whole chain to change simultaneously.
+**Gap:** How do you agents-101 Intent Taktik inside a tightly coupled management chain? The PM entry point may be the seam — PMs sit at the junction between strategy and execution, and transforming how they work changes the most important interface without requiring the whole chain to change simultaneously.
 
 **Connects to:** Intent Taktik, absorption bottleneck (L4), PM entry point strategy, tight coupling as adoption barrier.

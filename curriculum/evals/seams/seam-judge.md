@@ -38,7 +38,7 @@
 ## Judge prompt (fill targets, then run)
 
 ```
-You are running the seam judge for Agents 102 Bootstrap M<n> → M<n+1>.
+You are running the seam judge for Agents 101 M<n> → M<n+1>.
 
 READ:
 LEFT (Mn close state):

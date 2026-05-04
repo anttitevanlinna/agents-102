@@ -8,7 +8,7 @@ Lookup material for the hands-on parts of the training. Flat, not progressive �
 
 ## Current reference documents
 
-- **claude-quick-reference.md** — Claude Code basics: install, files, connectors, skills, subagents, new conversations, troubleshooting. Bootstrap lookup.
+- **claude-quick-reference.md** — Claude Code basics: install, files, connectors, skills, subagents, new conversations, troubleshooting. Agents 101 lookup.
 - **claude-code-for-engineers.md** — AE101 lookup for memory hierarchy, rules, skills, subagents, plan mode, transcripts, hooks, and scheduling primitives.
 - **mcp-and-connectors.md** — AE101 lookup for ticket-tracker connectors, MCP install paths, and tenant-admin fallbacks.
 - **multi-session-git.md** — AE101 optional homework on worktrees, branches, clones, and safe multi-session Git workflow.

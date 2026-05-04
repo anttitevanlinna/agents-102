@@ -4,7 +4,7 @@ Generation-time companion to `SKILL.md` for prompt-block work. Firing-moment aut
 
 For canonical shape (action lead-in, label with destination, fenced block, no `copy →`, no `*(end of prompt)*`), placeholder ban, back-reference chaining, multi-sample structural enforcement, markdown-shout ban inside fences, runtime-fork paired-divs, runtime-mechanical asymmetry, skill-by-name-not-path: see `memory/check_prompts.md`.
 
-## Bootstrap-specific: prompt paths match Builder scope
+## Agents 101-specific: prompt paths match Builder scope
 
 Every path inside a prompt block must be written relative to wherever the Builder is currently open. The training has two scopes (per `curriculum/CLAUDE.md` § *Material Distribution*):
 

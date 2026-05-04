@@ -53,8 +53,8 @@ The team is not trying to prove Claude is safe or unsafe. The team is learning w
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29
-- draft 2026-04-29 (new mini-lecture borrowing Bootstrap M5 reliability math for Claude Basics M2; sim/eval not run)
+- draft 2026-04-29 (new mini-lecture borrowing Agents 101 M5 reliability math for Claude Basics M2; sim/eval not run)
 
-**Lecture meta:** *Short concept beat before the M2 exercise. Borrowed from Bootstrap M5's groundedness lecture, compressed for IT-team Claude Basics. Do not expand into the full four-detector benchmark frame.*
+**Lecture meta:** *Short concept beat before the M2 exercise. Borrowed from Agents 101 M5's groundedness lecture, compressed for IT-team Claude Basics. Do not expand into the full four-detector benchmark frame.*
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

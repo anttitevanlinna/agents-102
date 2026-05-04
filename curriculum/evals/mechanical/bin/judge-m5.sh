@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Script judge for bootstrap-m5 (setup + 5 detectors + scorer; 7 actors).
+# Script judge for agents-101-m5 (setup + 5 detectors + scorer; 7 actors).
 #
 # Usage:
 #   judge-m5.sh <scratch_dir> <setup_tr> <det1_tr> <det2_tr> <det3_tr> <det4_tr> <det5_tr> <scorer_tr>
 #
-# Writes report to: instances/bootstrap-m5-verbatim-judge-report.md
+# Writes report to: instances/agents-101-m5-verbatim-judge-report.md
 # Exit 0 PASS, 1 FAIL.
 
 set -uo pipefail
@@ -26,9 +26,9 @@ BENCH="$SCRATCH/module-5/benchmark.md"
 SCORE="$SCRATCH/module-5/scoreboard.md"
 JUDGE_FILE="$SCRATCH/judges/groundedness-judge.md"
 UNCERT="$SCRATCH/module-5/still-uncertain.md"
-SETUP_SCROLL="$MECH_DIR/instances/bootstrap-m5-verbatim-setup-scrollback.md"
-SCORER_SCROLL="$MECH_DIR/instances/bootstrap-m5-verbatim-scorer-scrollback.md"
-REPORT="$MECH_DIR/instances/bootstrap-m5-verbatim-judge-report.md"
+SETUP_SCROLL="$MECH_DIR/instances/agents-101-m5-verbatim-setup-scrollback.md"
+SCORER_SCROLL="$MECH_DIR/instances/agents-101-m5-verbatim-scorer-scrollback.md"
+REPORT="$MECH_DIR/instances/agents-101-m5-verbatim-judge-report.md"
 
 declare -a names verdicts evidence
 pass_count=0
@@ -287,7 +287,7 @@ verdict_line="PASS"
 [[ "$fail_count" -gt 0 ]] && verdict_line="FAIL"
 
 {
-  echo "# Judge report — Bootstrap M5 verbatim"
+  echo "# Judge report — Agents 101 M5 verbatim"
   echo
   echo "## Summary"
   echo

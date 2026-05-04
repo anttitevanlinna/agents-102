@@ -405,7 +405,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 ## Related references
 
 - [`reference/mcp-and-connectors.md`](mcp-and-connectors.md) — per-tracker install and tenant-admin fallbacks
-- [`reference/claude-quick-reference.md`](claude-quick-reference.md) — Bootstrap audience (SVP-level) version of some of this material
+- [`reference/claude-quick-reference.md`](claude-quick-reference.md) — Agents 101 audience (SVP-level) version of some of this material
 
 ## Related AE101 modules (where these primitives land)
 

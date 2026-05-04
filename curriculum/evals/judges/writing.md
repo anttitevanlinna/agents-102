@@ -42,12 +42,12 @@ For each rule in scope (i.e., its compendium has `eval_classes:` containing `wri
 
 - **PASS** — the body honors the rule.
 - **REVISE** — the body violates the rule. Quote the offending line + line number.
-- **N/A** — the rule does not apply to this surface (e.g., a sales-copy-only rule on a curriculum exercise file, or an AE101-specific rule on a Bootstrap file). Brief reason.
+- **N/A** — the rule does not apply to this surface (e.g., a sales-copy-only rule on a curriculum exercise file, or an AE101-specific rule on a Agents 101 file). Brief reason.
 
 Some rules are already enforced by the `eval-class-router.sh` hook's auto-fix pass (em-dash, ritual/ceremony, importantly/crucially, synergize, paradigm shift, honest/honestly, delve forms). If the body has none of those, mark those rules PASS — the hook caught them. If any survive (the hook can fail in edge cases), still flag them REVISE.
 
 Some rules require LLM judgment that regex cannot do:
-- **Register match** (Bootstrap voice trio: Godin × Sutherland × Siilasmaa; AE101 voice quintet: Boris × Martin × Godin × Sutherland × Siilasmaa). Identify the training the file belongs to (path: `curriculum/trainings/bootstrap/...` → Bootstrap; `curriculum/trainings/agentic-engineering-101/...` → AE101; shared `curriculum/exercises/...` and `curriculum/lectures/...` → infer from context or treat as Bootstrap default). Score whether body voice matches the named voice contract.
+- **Register match** (Agents 101 voice trio: Godin × Sutherland × Siilasmaa; AE101 voice quintet: Boris × Martin × Godin × Sutherland × Siilasmaa). Identify the training the file belongs to (path: `curriculum/trainings/agents-101/...` → Agents 101; `curriculum/trainings/agentic-engineering-101/...` → AE101; shared `curriculum/exercises/...` and `curriculum/lectures/...` → infer from context or treat as Agents 101 default). Score whether body voice matches the named voice contract.
 - **Maintainer-vocabulary leak** (rule 8): terms-of-art that only appear in maintainer blocks / strategy docs leaking into body without earned-landing.
 - **Over-hedge detector** (rule 9): reassurance-shaped sentences signalling defensiveness.
 - **Negation-callout self-contradiction** (rule 4 sub-rule): a *we don't X* line contradicted by the same paragraph saying *we do X*.
@@ -67,7 +67,7 @@ Return ONE JSON object, exactly this shape:
   "class": "writing",
   "file": "<absolute path>",
   "verdict": "PASS" | "REVISE",
-  "training": "bootstrap" | "ae101" | "shared" | "unknown",
+  "training": "agents-101" | "ae101" | "shared" | "unknown",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",

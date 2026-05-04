@@ -90,11 +90,11 @@ The final module. The insight that changes how participants think about scaling.
 
 ## What Comes After
 
-Bootstrap is Step 1 of five. After two days, participants have built working agents and understand the landscape. The next steps:
+Agents 101 is Step 1 of five. After two days, participants have built working agents and understand the landscape. The next steps:
 
 **Make Your Own** — A cohort of your change leaders designs the rollout. 4-6 weeks. Change strategy lab with mentoring.
 
-**Champions** — The strongest people from Bootstrap learn to facilitate and carry it forward. Train-the-trainer.
+**Champions** — The strongest people from Agents 101 learn to facilitate and carry it forward. Train-the-trainer.
 
 **Scale** — Champions run it inside your organization. Your priorities, your pace. No external dependency.
 

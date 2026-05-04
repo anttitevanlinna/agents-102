@@ -153,7 +153,7 @@ The policy files are source material. The reusable check is the expert in the ro
 - ~~Phase 3 mood gate fails 8/10 under three-persona sim~~ — SUPERSEDED 2026-04-29 by the personal-skill shape. Re-sim owed after the skill-only refactor; prior run approved the two-lens security-check concept but assumed an older packaging shape.
 - **Phase 2 dictation forcing function under speed** — STILL OPEN as a low-priority TODO. The fast-operator persona originally flagged that the Watch-for predicts the failure but doesn't prevent it. The re-sim's solo-learner had no time pressure and rated the dictation beat at 8 — so the gap is speed-specific. Optional fix next cycle: line-count gate inside the Phase 2 prompt (Claude refuses to proceed under N specifics).
 - **Length** — STILL OPEN as polish, not blocking. ~960 words vs 400–700 target. Re-sim found Phase 3 reads tight enough to ship; trimming is polish-cycle work.
-- **Mechanical re-run owed** — STILL OPEN before first cohort delivery. Runner pair `bootstrap-m4-author.verbatim.{actor,judge}.md` needs re-spec for the package-only exercise before re-run.
+- **Mechanical re-run owed** — STILL OPEN before first cohort delivery. Runner pair `agents-101-m4-author.verbatim.{actor,judge}.md` needs re-spec for the package-only exercise before re-run.
 
 **Cohort-facilitator audit findings (2026-04-25, fixes 1–3 applied 2026-04-26):**
 - ~~Phase 1 freeze case~~ — DONE. `lectures/module-4-prework.md` now opens with a "Before you arrive — five lines, in your own voice" subsection plus four example shapes; prework time bumped to 30–40 min to absorb the 5-min prep.

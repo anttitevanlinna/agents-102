@@ -99,9 +99,9 @@ When you want wide coverage fast — after a meaningful content pass, before a c
 
 **Orchestrator plan** (paste into a fresh session):
 
-> I want to run the full curriculum testing battery (unit + integration + static arc) on Bootstrap. Use the orchestrator pattern: launch 4 parallel subagents with `run_in_background: true`, each owning disjoint output files. Then synthesize.
+> I want to run the full curriculum testing battery (unit + integration + static arc) on Agents 101. Use the orchestrator pattern: launch 4 parallel subagents with `run_in_background: true`, each owning disjoint output files. Then synthesize.
 >
-> **Subagent 1 — Unit lints across all Bootstrap.** Run `curriculum/evals/lints/path-consistency.md`, `time-budget.md`, `jargon-ban.md` across prework + M1-M8 + all included exercises/lectures/supplementaries. Write output to `curriculum/evals/instances/lints-full-bootstrap.md` (overwrite). Reply with a 5-line summary.
+> **Subagent 1 — Unit lints across all Agents 101.** Run `curriculum/evals/lints/path-consistency.md`, `time-budget.md`, `jargon-ban.md` across prework + M1-M8 + all included exercises/lectures/supplementaries. Write output to `curriculum/evals/instances/lints-full-agents-101.md` (overwrite). Reply with a 5-line summary.
 >
 > **Subagent 2 — Seam judges 1-4.** Apply `curriculum/evals/seams/seam-judge.md` to seams prework→M1, M1→M2, M2→M3, M3→M4. Pull mood contracts from `bosser-strategy:content-strategy.md` "Mood (deliberate)" paragraphs per module. Write to `curriculum/evals/seams/instances/seams-1-to-4.md` (overwrite). Reply with a 5-line summary.
 >

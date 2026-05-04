@@ -109,7 +109,7 @@ Return ONE JSON object, exactly this shape:
   "class": "behavior",
   "file": "<absolute path>",
   "verdict": "PASS" | "REVISE",
-  "training": "bootstrap" | "ae101" | "shared" | "unknown",
+  "training": "agents-101" | "ae101" | "shared" | "unknown",
   "trace_status": "cached" | "partial_regen" | "full_regen" | "generated_first_time",
   "prompts_evaluated": <int>,
   "prompts_findings": [

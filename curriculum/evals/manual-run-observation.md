@@ -6,7 +6,7 @@ Keep this open in a side pane. Write one line per observation as it happens — 
 
 ## Setup
 
-- **Training dir:** `~/Documents/agents-102-bootstrap-sim/` (not your real one; throwaway so you can rerun)
+- **Training dir:** `~/Documents/agents-101-sim/` (not your real one; throwaway so you can rerun)
 - **Two Claudes:** Teacher (`/self-study` at repo root) + Builder (at training dir). Standard self-study shape.
 - **Persona:** play one consistent character — suggestion: SVP Marketing at a 400-person Nordic software co, used ChatGPT weekly, never built an agent. Stay in character; don't break frame to evaluate.
 - **Recording:** session transcripts are auto-captured at `~/.claude/projects/<slug>/<session-id>.jsonl`. Grab both session IDs at start (Teacher + Builder) — you'll feed them to the Post-Run Judge after.

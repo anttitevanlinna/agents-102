@@ -4,7 +4,7 @@
 # Subagents can't invoke the /content-creation skill (skills don't load in
 # subagents). When the orchestrator dispatches fan-out edits, this script
 # extracts what /content-creation's preflight would have loaded:
-#   - training (bootstrap | ae101 | shared) → voice contract
+#   - training (agents-101 | ae101 | shared) → voice contract
 #   - Big Idea (from ## Big Idea section)
 #   - Mood contract (from maintainer block, when present)
 #   - Surface compendiums (writing / student_facing / strategy_tie_in / prompts / ...)
@@ -33,7 +33,7 @@ RAW=0
 
 # ---- Detect training -----------------------------------------------------
 case "$FILE" in
-  *curriculum/trainings/bootstrap/*)              TRAINING="bootstrap" ;;
+  *curriculum/trainings/agents-101/*)              TRAINING="agents-101" ;;
   *curriculum/trainings/agentic-engineering-101/*) TRAINING="ae101" ;;
   *curriculum/trainings/*)                         TRAINING="other-training" ;;
   *curriculum/exercises/*|*curriculum/lectures/*|*curriculum/supplementary/*)
@@ -43,14 +43,14 @@ esac
 
 # ---- Voice contract per training ----------------------------------------
 case "$TRAINING" in
-  bootstrap)
-    VOICE="Bootstrap voice trio: Godin (peer warmth) × Sutherland (counterintuitive reframe) × Siilasmaa (optimistic action). Audience: builder leader (CTO/CEO/SVP), not engineers. NOT Boris-flat, NOT Martin-deck."
+  agents-101)
+    VOICE="Agents 101 voice trio: Godin (peer warmth) × Sutherland (counterintuitive reframe) × Siilasmaa (optimistic action). Audience: builder leader (CTO/CEO/SVP), not engineers. NOT Boris-flat, NOT Martin-deck."
     ;;
   ae101)
     VOICE="AE101 voice quintet: Boris (platform truth) × Roger Martin (frame-and-alternative) × Godin (peer warmth) × Sutherland (counterintuitive reframe) × Siilasmaa (optimistic action). Audience: software engineer IC."
     ;;
   shared)
-    VOICE="Shared library — voice depends on consuming training. Default to Bootstrap voice trio unless training context indicates otherwise."
+    VOICE="Shared library — voice depends on consuming training. Default to Agents 101 voice trio unless training context indicates otherwise."
     ;;
   *)
     VOICE="(unrecognized training path; check $FILE location)"

@@ -28,22 +28,22 @@ Before writing, revising, or reviewing curriculum content, read the full `.claud
 
 The `content-creation` skill requires the private `bosser-strategy` skill for generation work. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
 
-For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Bootstrap strategy doc for Claude Basics work.
+For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Agents 101 strategy doc for Claude Basics work.
 
 ## Working Rule
 
 Mimic Claude Code's project-loading behavior: before editing a path, check whether that path has a closer `CLAUDE.md` and read it. Keep the root `CLAUDE.md` in force for strategy, copyright, multi-user hygiene, subagent rule injection, orchestration, and self-review.
 
-## Bootstrap Orientation
+## Agents 101 Orientation
 
-Bootstrap lives at `curriculum/trainings/bootstrap/`. Its governing rules are in `curriculum/CLAUDE.md`; the module sequence is defined in `site/layouts/curriculum.js`; shared exercises and lectures live under `curriculum/exercises/` and `curriculum/lectures/`.
+Agents 101 lives at `curriculum/trainings/agents-101/`. Its governing rules are in `curriculum/CLAUDE.md`; the module sequence is defined in `site/layouts/curriculum.js`; shared exercises and lectures live under `curriculum/exercises/` and `curriculum/lectures/`.
 
-Important Bootstrap invariants:
+Important Agents 101 invariants:
 
-- Bootstrap is a compounding working-directory training, not a collection of standalone readings.
+- Agents 101 is a compounding working-directory training, not a collection of standalone readings.
 - Module 1 begins deliberately empty and creates scoped rules inside `module-1/`.
 - Module 2 creates the training-root `CLAUDE.md` from session evidence; do not ship a prewritten root `CLAUDE.md` in scaffolds.
 - Module 2 onward compounds through `memory/`, `sources/`, `agents/`, `outputs/`, `guardrails.md`, `judges/`, and per-module folders.
 - Exercises and lectures are canonical shared files; module files include them by standalone links such as `[Exercise: ...](exercises/<slug>.md)`.
 
-When asked to work on Bootstrap, read `curriculum/CLAUDE.md` first, then the relevant module, exercise, lecture, scaffold, or eval file.
+When asked to work on Agents 101, read `curriculum/CLAUDE.md` first, then the relevant module, exercise, lecture, scaffold, or eval file.

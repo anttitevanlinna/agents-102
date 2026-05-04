@@ -75,7 +75,7 @@ You can't skip levels. Level 2 generates the data that trains Level 3.
 
 **What to investigate:**
 - What do Level 2 verification systems look like in non-engineering domains? Brand compliance checkers? Legal accuracy validators?
-- Can agents bootstrap verification infrastructure?
+- Can agents agents-101 verification infrastructure?
 - What's the minimum rule set for Level 2 to be useful?
 - Industries with existing compliance frameworks (finance GAAP, healthcare FDA) — are they naturally closer to Level 2?
 

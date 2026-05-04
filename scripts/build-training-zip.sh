@@ -13,7 +13,7 @@
 # the chosen training.
 #
 # Usage: scripts/build-training-zip.sh <training-key>
-# Where <training-key> is either: bootstrap | agentic-engineering-101
+# Where <training-key> is either: agents-101 | agentic-engineering-101
 #
 # Output: agents-102-<training-key>-hosting-kit.zip at repo root.
 
@@ -21,9 +21,9 @@ set -euo pipefail
 
 TRAINING="${1:-}"
 case "$TRAINING" in
-  bootstrap|agentic-engineering-101) ;;
+  agents-101|agentic-engineering-101) ;;
   *)
-    echo "Usage: $0 <bootstrap|agentic-engineering-101>" >&2
+    echo "Usage: $0 <agents-101|agentic-engineering-101>" >&2
     exit 1
     ;;
 esac

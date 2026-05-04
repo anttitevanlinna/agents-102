@@ -2,7 +2,7 @@
 **Signal:** In-class delivery has a trainer live-coaching the student through UI surprises. Self-study has no trainer — so Teacher must pre-load any interactive Builder UI the student is about to hit. Plan-mode approval is one instance; others likely coming at: AskUserQuestion prompts, connector auth flows, permission prompts, any "pick one of N" interactive moment.
 **Gap:** The exercise file said *"turn on plan mode — you approve, nothing commits"* but didn't describe the actual approval UI, the four options, or what to pick for this exercise. Quick reference was also thin — described the concept but not the approval prompt wording or choice semantics.
 **Fix:**
-- Expanded `curriculum/reference/claude-quick-reference.md` "Plan mode" section with the actual approval UI string, all four options, and what each does / when to pick it / Bootstrap rule-of-thumb.
+- Expanded `curriculum/reference/claude-quick-reference.md` "Plan mode" section with the actual approval UI string, all four options, and what each does / when to pick it / Agents 101 rule-of-thumb.
 - Added a "heads up" paragraph to `build-your-challenge-memory.md` Beat 3 naming the four options and pointing at option 1 (auto) as the friendly default for this exercise, option 4 if the plan needs a tweak.
 - Added rule #9 to `self-study/SKILL.md` § "Who you're talking to": Teacher pre-loads live-delivery friction points (UI surprises) before they happen, because there's no trainer to coach in-the-moment. Names the whole class — plan mode, AskUserQuestion, connector auth, permission prompts.
 **Principle (recurring):** Anything a classroom trainer would walk a student through in-the-moment is a gap for self-study unless it's pre-loaded in the exercise OR Teacher Claude flags it proactively.

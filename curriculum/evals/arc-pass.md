@@ -1,6 +1,6 @@
 # Arc Pass — Static end-to-end eval
 
-Read all 8 Bootstrap modules + the content-strategy arc **in one session** before any manual run. Catches arc-level drift that per-exercise evals miss by design: stolen moods, premature rescues, seam breaks, vocabulary leaks across modules. Cheap (~10 min, one Judge prompt); runs without spinning up Teacher/Builder/student.
+Read all 8 Agents 101 modules + the content-strategy arc **in one session** before any manual run. Catches arc-level drift that per-exercise evals miss by design: stolen moods, premature rescues, seam breaks, vocabulary leaks across modules. Cheap (~10 min, one Judge prompt); runs without spinning up Teacher/Builder/student.
 
 **Run this BEFORE the manual end-to-end run.** The manual run is scarce; spend it on what only a live session reveals (Teacher Claude facilitation quality, felt-mood timing, persona drift). Don't burn it on arc problems a Judge can flag statically.
 
@@ -14,22 +14,22 @@ Read all 8 Bootstrap modules + the content-strategy arc **in one session** befor
 ## Judge prompt
 
 ```
-You are auditing the full Bootstrap arc for end-to-end coherence. This is a single-pass static eval across 8 modules. Read these files in order:
+You are auditing the full Agents 101 arc for end-to-end coherence. This is a single-pass static eval across 8 modules. Read these files in order:
 
 ARC CONTRACT:
 - bosser-strategy:content-strategy.md (focus on the mood-arc synthesis section + per-module "Mood (deliberate)" paragraphs)
 - `bosser-strategy:philosophy.md` (the 19 beliefs)
 
 MODULES IN SEQUENCE:
-- curriculum/trainings/bootstrap/prework.md
-- curriculum/trainings/bootstrap/getting-going.md (M1)
-- curriculum/trainings/bootstrap/building-agent-systems.md (M2)
-- curriculum/trainings/bootstrap/evaluations.md (M3) [check ordering vs current state-of-play]
-- curriculum/trainings/bootstrap/security.md (M4)
-- curriculum/trainings/bootstrap/output-quality.md (M5)
-- curriculum/trainings/bootstrap/multi-agent-systems.md (M6) [check ordering]
-- curriculum/trainings/bootstrap/personal-to-team.md (M7)
-- curriculum/trainings/bootstrap/agents-building-agents.md (M8)
+- curriculum/trainings/agents-101/prework.md
+- curriculum/trainings/agents-101/getting-going.md (M1)
+- curriculum/trainings/agents-101/building-agent-systems.md (M2)
+- curriculum/trainings/agents-101/evaluations.md (M3) [check ordering vs current state-of-play]
+- curriculum/trainings/agents-101/security.md (M4)
+- curriculum/trainings/agents-101/output-quality.md (M5)
+- curriculum/trainings/agents-101/multi-agent-systems.md (M6) [check ordering]
+- curriculum/trainings/agents-101/personal-to-team.md (M7)
+- curriculum/trainings/agents-101/agents-building-agents.md (M8)
 
 For each module also read the exercises and lectures it inlines (follow include-links).
 

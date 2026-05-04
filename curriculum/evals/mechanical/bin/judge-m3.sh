@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script judge for bootstrap-m3 (4 actors: wiki, docs, internet, synthesizer).
+# Script judge for agents-101-m3 (4 actors: wiki, docs, internet, synthesizer).
 #
 # Validates scratch + retrieval/stance/answer file artefacts.
 # Transcript-only assertions inherited from prior LLM-Judge run (PASS 18/18).
@@ -11,9 +11,9 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 MECH_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-SCRATCH="$MECH_DIR/scratch/bootstrap-m3"
+SCRATCH="$MECH_DIR/scratch/agents-101-m3"
 EX=/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/three-retrievers-one-curator.md
-REPORT="$MECH_DIR/instances/bootstrap-m3-verbatim-judge-report.md"
+REPORT="$MECH_DIR/instances/agents-101-m3-verbatim-judge-report.md"
 
 declare -a names verdicts evidence
 pass_count=0
@@ -84,7 +84,7 @@ record "A7" "INHERITED" "prior LLM-Judge PASS — synthesizer read all 3"
 record "A8" "INHERITED" "prior LLM-Judge PASS — no mock-library reads in synthesizer"
 
 # A9 — substitution log in synthesizer scrollback (if exists)
-SYN_SCROLL="$MECH_DIR/instances/bootstrap-m3-verbatim-synthesizer-scrollback.md"
+SYN_SCROLL="$MECH_DIR/instances/agents-101-m3-verbatim-synthesizer-scrollback.md"
 if [[ -f "$SYN_SCROLL" ]]; then
   if grep -F 'subagents spawned inline' "$SYN_SCROLL" >/dev/null 2>&1; then
     record "A9" "PASS" "subagent substitution logged"
@@ -154,7 +154,7 @@ verdict_line="PASS"
 [[ "$fail_count" -gt 0 ]] && verdict_line="FAIL"
 
 {
-  echo "# Judge report — Bootstrap M3 verbatim (script-only)"
+  echo "# Judge report — Agents 101 M3 verbatim (script-only)"
   echo
   echo "## Summary"
   echo

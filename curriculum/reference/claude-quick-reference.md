@@ -23,7 +23,7 @@ The exercises run on any of these three. Same engine underneath, three ways to r
 - **Skill install affordance** differs by mode: CLI/Desktop load standalone skills from `~/.claude/skills/<name>/SKILL.md`; Cowork creates personal skills through the Customize UI. Module 4 uses one `security-audit` skill across runtimes.
 - **Vocabulary** — Code says *subagent*, Cowork's UI says *agent*. The site swaps the word to match what you see on screen.
 
-**Fallback if Cowork is unavailable.** Use Claude Code Desktop or Claude Code CLI. The Bootstrap prompts and artifacts are written to work across all three surfaces. Do not use an API-key-only route as the default backup for this training: it would skip the local working folder, personal skills, connector UI, and participant-visible agent workflow the curriculum teaches.
+**Fallback if Cowork is unavailable.** Use Claude Code Desktop or Claude Code CLI. The Agents 101 prompts and artifacts are written to work across all three surfaces. Do not use an API-key-only route as the default backup for this training: it would skip the local working folder, personal skills, connector UI, and participant-visible agent workflow the curriculum teaches.
 
 **Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) cover direct install.
 
@@ -42,7 +42,7 @@ Skip this section if you already use a terminal.
 - `python3 --version` → should print a version (Windows may be `python --version`)
 - `claude --version` → should print a version. If "command not found," the CLI isn't on your PATH — restart the terminal or check the install options.
 
-**Tilde (`~`) means your home folder.** `~/Documents/agents-102-bootstrap/` is `/Users/yourname/Documents/agents-102-bootstrap/` on macOS, `C:\Users\yourname\Documents\agents-102-bootstrap\` on Windows. The shell expands it automatically. You don't type `~` into Finder or Explorer — only into the terminal.
+**Tilde (`~`) means your home folder.** `~/Documents/agents-101/` is `/Users/yourname/Documents/agents-101/` on macOS, `C:\Users\yourname\Documents\agents-101\` on Windows. The shell expands it automatically. You don't type `~` into Finder or Explorer — only into the terminal.
 
 **Exit Claude Code CLI:** type `/exit` at the prompt. (Ctrl+C cancels the current prompt; two Ctrl+Cs in a row exits. `/exit` is cleaner.)
 
@@ -66,12 +66,12 @@ Claude Code has **plan mode**: Claude researches and proposes a plan instead of 
 
 **What each option does, and when to pick it:**
 
-- **1. Yes, and use auto mode** — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). **This is the friendly default for most Bootstrap exercises.**
+- **1. Yes, and use auto mode** — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). **This is the friendly default for most Agents 101 exercises.**
 - **2. Yes, manually approve edits** — Claude pauses for each file write. You OK each one. Slower, safer. Pick this when the plan touches something you care deeply about (editing a live policy file, modifying production-adjacent work).
-- **3. No, refine with Ultraplan on Claude Code on the web** — Sends the plan to a cloud-based refinement tool. Not used in Bootstrap; ignore.
+- **3. No, refine with Ultraplan on Claude Code on the web** — Sends the plan to a cloud-based refinement tool. Not used in Agents 101; ignore.
 - **4. Tell Claude what to change** — Opens a text box. You type specific feedback (*"merge buyer-tone and buyer-segments into one page,"* *"add a topic for competitive response"*). Claude rewrites the plan. Pick this when the plan is mostly right but something is off. Cheaper than re-running the whole prompt from scratch.
 
-**Rule of thumb for Bootstrap:** plan looks solid → option 1. Plan is close but needs a tweak → option 4 with one sentence of feedback. Plan is fundamentally wrong → option 4 describing the change, or exit plan mode and re-paste the prompt with sharper instructions.
+**Rule of thumb for Agents 101:** plan looks solid → option 1. Plan is close but needs a tweak → option 4 with one sentence of feedback. Plan is fundamentally wrong → option 4 describing the change, or exit plan mode and re-paste the prompt with sharper instructions.
 
 **Turning it off — usually no action needed.** Plan mode exits automatically after you approve a plan and Claude runs it; the footer goes back to *default* on its own. You only need to toggle off manually if you want out *before* executing a plan (e.g., you changed your mind and want to exit without running) — tell Claude *"Disable plan mode"*, pick *Default* from the mode dropdown, or cycle with Shift+Tab.
 
@@ -200,7 +200,7 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 - **Cowork personal-skill path.** Use Claude Desktop *Customize* → *Skills* → *New* → *Create with Claude*, then save and open a new Cowork session.
 - **M4 slash form.** Module 4 uses one personal skill: `/security-audit`. The two lenses live inside that skill and are selected by the audit prompt.
 - **Folder-local `.claude/agents/` NOT auto-registered in Cowork either.** Subagents dispatch as the built-in `general-purpose` context.
-- **Cowork unavailable / disabled fallback.** If a participant cannot use Cowork because their tenant disables it, desktop readiness fails, or the Cowork tab is missing, switch them to Claude Code Desktop or CLI against the same training directory. Avoid API-key-only fallback for Bootstrap delivery unless redesigning the exercise: it does not preserve the participant-facing runtime, connector, personal-skill, and local-folder mechanics.
+- **Cowork unavailable / disabled fallback.** If a participant cannot use Cowork because their tenant disables it, desktop readiness fails, or the Cowork tab is missing, switch them to Claude Code Desktop or CLI against the same training directory. Avoid API-key-only fallback for Agents 101 delivery unless redesigning the exercise: it does not preserve the participant-facing runtime, connector, personal-skill, and local-folder mechanics.
 
 ### Probes — all clear (2026-04-25, Antti)
 
@@ -208,7 +208,7 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 - **Long-running file-write across rounds — PASS.** Three sequential rounds with 30-second waits + 90-second walk-away — all three files landed; round-2 referenced round-1; round-3 synthesised both. M6's walk-away orchestrator is unblocked.
 - **Footnote:** a trailing 45-second sleep at the end of the last walk-away tripped a Cowork workspace timeout — the files were already on disk by then. Implication: **M6's orchestrator should be doing work, not sleeping**, when scheduled to walk away. Real work (subagent dispatch, file writes, judging) doesn't trip the timeout; explicit sleeps do. The M6 design naturally has Claude working through rounds, so this is not a blocker — just don't write *"sleep for N seconds"* into the orchestrator prompt.
 
-### Implications for Bootstrap content
+### Implications for Agents 101 content
 
 **Architecture rule (Antti, 2026-04-29):** No pre-shipped security skill. Personal-skill authoring is taught **once, in M4**. Other modules carry context as inline prompts or `.md` references the student reads. The student authors the reusable security skill; we don't hand them one.
 
@@ -220,9 +220,9 @@ End-to-end practitioner test. Cut for students by the renderer; here for trainer
 - M5 / M6 / M7 / M8 do **not** introduce new reusable skills. Context lives in inline prompts and `.md` files the student reads.
 - AE101 is unaffected. AE101 uses CLI + folder skills only.
 
-### Why this section is in the Bootstrap reference, not AE101's
+### Why this section is in the Agents 101 reference, not AE101's
 
-AE101 and Bootstrap are separate trainings with separate audiences and separate reference docs. AE101 students don't use Cowork and don't need its details. Cowork architecture lives here, in the Bootstrap reference, full stop.
+AE101 and Agents 101 are separate trainings with separate audiences and separate reference docs. AE101 students don't use Cowork and don't need its details. Cowork architecture lives here, in the Agents 101 reference, full stop.
 
 ### Capability-check trust note
 

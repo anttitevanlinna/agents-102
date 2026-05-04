@@ -18,8 +18,8 @@
     // ── TRAININGS registry — single source of truth. SPA reads it for routing
     // and index rendering; build-workbook iterates the modules array.
     var TRAININGS = {
-        bootstrap: {
-            label: 'Bootstrap',
+        'agents-101': {
+            label: 'Agents 101',
             lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -75,7 +75,7 @@
         }
     };
 
-    var DEFAULT_TRAINING = 'bootstrap';
+    var DEFAULT_TRAINING = 'agents-101';
 
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
@@ -93,13 +93,13 @@
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
+    // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
     var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
     var DEFAULT_RUNTIME = 'cowork';
 
     function trainingSupportsRuntimeSwitch(trainingKey) {
-        return trainingKey === 'bootstrap';
+        return trainingKey === 'agents-101';
     }
 
     function getRuntime(trainingKey) {

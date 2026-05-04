@@ -11,7 +11,7 @@
 # of progress is making the deterministic prep one command instead of five.
 #
 # Usage: run-mechanical.sh <runner-slug>
-#   <runner-slug> example: bootstrap-m2.verbatim
+#   <runner-slug> example: agents-101-m2.verbatim
 #   resolves to runners/<slug>.actor.md
 #
 # Exits:
@@ -22,7 +22,7 @@
 set -uo pipefail
 
 if [[ $# -ne 1 ]]; then
-  echo "usage: $0 <runner-slug>  (e.g., bootstrap-m2.verbatim)" >&2
+  echo "usage: $0 <runner-slug>  (e.g., agents-101-m2.verbatim)" >&2
   exit 2
 fi
 
@@ -43,7 +43,7 @@ exercises=$(grep -E '^\*\*Exercise:\*\*' "$RUNNER" 2>/dev/null \
 if [[ -z "$exercises" ]]; then
   # Single-exercise runner with no Exercise tags (M1 shape) — derive from slug.
   case "$SLUG" in
-    bootstrap-m1.verbatim) exercises="personal-site-with-guardrails" ;;
+    agents-101-m1.verbatim) exercises="personal-site-with-guardrails" ;;
     *) echo "FAIL — no **Exercise:** tags in $RUNNER and no fallback for slug '$SLUG'." >&2
        exit 1 ;;
   esac
@@ -83,11 +83,11 @@ while IFS= read -r ex; do
     | grep -E '^Extracted|^prompt-'
 done <<< "$exercises"
 
-# 4. Stage bootstrap mocks if the runner references them.
-if grep -q '/tmp/bootstrap-mocks' "$RUNNER"; then
+# 4. Stage agents-101 mocks if the runner references them.
+if grep -q '/tmp/agents-101-mocks' "$RUNNER"; then
   echo
-  echo "## Stage bootstrap mocks"
-  bash "$SCRIPT_DIR/stage-bootstrap-mocks.sh"
+  echo "## Stage agents-101 mocks"
+  bash "$SCRIPT_DIR/stage-agents-101-mocks.sh"
 fi
 
 # 5. Static lints (informational — these have their own exit codes that the Judge enforces).

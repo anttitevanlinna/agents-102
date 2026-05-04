@@ -39,7 +39,7 @@ The agent is part of the debugging loop too.
 
 <!-- maintainer -->
 
-**Placement:** Bootstrap Module 3 outro callout/mini-lecture, after `when-to-split-an-agent.md` and before Debrief.
+**Placement:** Agents 101 Module 3 outro callout/mini-lecture, after `when-to-split-an-agent.md` and before Debrief.
 
 **Strategic role:** Gives students a recovery move after first multi-agent coordination. The module's lesson is not "multi-agent works"; it is "multi-agent systems fail at seams you can inspect and improve."
 

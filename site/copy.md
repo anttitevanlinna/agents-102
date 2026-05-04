@@ -8,7 +8,7 @@
 
 **Headline:** Progress with what you have never built before.
 
-**Body:** AI strategy bootstraps with competence. Not slides. Not governance frameworks. Your people, building real agents, with your real policies. The vision follows.
+**Body:** AI strategy agents-101s with competence. Not slides. Not governance frameworks. Your people, building real agents, with your real policies. The vision follows.
 
 **CTA:** Start a conversation
 
@@ -62,14 +62,14 @@ The advisory system is co-owned: deployed on your side, you keep it. The medium 
 
 **Headline:** Five steps from first agent to organizational capability.
 
-**1. Bootstrap**
+**1. Agents 101**
 Hands-on intensive — eight modules, your schedule. EUR 500 per person. You build a real agent. The skeptics in the room become believers. This is the door -- anyone can walk in.
 
 **2. Make Your Own**
 A cohort of your change leaders designs the rollout. Four to six weeks. Not just "we learned agents" but "we have a plan to transform." Change strategy lab with mentoring.
 
 **3. Champions**
-The strongest people from Bootstrap learn to facilitate, adapt, and carry it forward. Train-the-trainer. The multiplier.
+The strongest people from Agents 101 learn to facilitate, adapt, and carry it forward. Train-the-trainer. The multiplier.
 
 **4. Scale**
 Champions run it inside your organization. With your structure, your pace, your priorities. Zero external dependency. Zero cost to us.

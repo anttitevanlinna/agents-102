@@ -65,7 +65,7 @@ For an environment with SF + Snowflake + Redshift + Slack + O365 + SharePoint + 
 - **MCP ecosystem** (Anthropic) has servers for most, but requires developer setup and has no business-user surface.
 - **Custom build** (Agent SDK + MCP + custom state management) is likely the only path that works.
 
-**This is why the training journey matters:** Bootstrap builds understanding, then platform advisory helps navigate this reality.
+**This is why the training journey matters:** Agents 101 builds understanding, then platform advisory helps navigate this reality.
 
 ## Compound Reliability Math (Pattern 30)
 

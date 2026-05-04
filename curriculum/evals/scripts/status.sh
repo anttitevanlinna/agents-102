@@ -4,7 +4,7 @@
 # Reads every curriculum/evals/instances/*.json and prints a (file × class) grid.
 # Mechanical row pulls from curriculum/evals/mechanical/NEXT.md.
 #
-# Usage: curriculum/evals/scripts/status.sh [--training bootstrap|ae101|all]
+# Usage: curriculum/evals/scripts/status.sh [--training agents-101|ae101|all]
 #                                           [--md > analytics/status.md]
 
 set -euo pipefail
@@ -134,7 +134,7 @@ print_grid() {
     $1 == "I" {
       tr=$2; file=$3; cls=$4; v=$5; b=$6; m=$7
       if (want != "all" && tr != want && tr != "shared" && !is_shared_path(file)) next
-      # Dedup by file alone — shared and bootstrap classes for same file collapse
+      # Dedup by file alone — shared and agents-101 classes for same file collapse
       key = file
       verdict[key, cls] = v
       blocks[key, cls] = b
@@ -227,7 +227,7 @@ print_grid() {
 }
 
 # ---- Output ------------------------------------------------------------------
-echo "=== MECHANICAL BATTERY (Bootstrap M1-M6) ==="
+echo "=== MECHANICAL BATTERY (Agents 101 M1-M6) ==="
 mech_summary
 
 echo

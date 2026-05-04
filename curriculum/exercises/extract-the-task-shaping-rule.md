@@ -104,7 +104,7 @@ When Claude finishes, the lecture is next.
 
 **Watch-fors:**
 - **P1 too long** — student over-reads, won't accept any rule as good enough. Decision: send the timer; the rule that ships imperfect rides into M3 and sharpens there.
-- **P2 student saves to a Bootstrap-style training-dir path** — they may have prework muscle memory. Nerd: *"AE101 has no training-dir; the rule lives in your tooling, not the training's."*
+- **P2 student saves to a Agents 101-style training-dir path** — they may have prework muscle memory. Nerd: *"AE101 has no training-dir; the rule lives in your tooling, not the training's."*
 - **P3 Claude proposes one shape only** — push for two more; the lecture grounds three.
 - **Optional step consumes lecture time** — skip it. The required artifact is the task-shaping `.md`; task-manager reverse-engineering is a time-left demo or homework move.
 

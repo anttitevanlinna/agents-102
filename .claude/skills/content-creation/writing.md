@@ -2,12 +2,12 @@
 
 Generation-time companion to `SKILL.md` for writing-specific work. **The compendiums in `memory/check_*.md` are the firing-moment authority** — load them at the moment they apply, not after.
 
-This file holds only writing.md-unique content: Bootstrap module runtime, the three-pass build operational mechanics, the four sharing strategies, the M2+ Debrief shape, the scaffold-vs-prompt rule, and pointers to compendium homes for everything else.
+This file holds only writing.md-unique content: Agents 101 module runtime, the three-pass build operational mechanics, the four sharing strategies, the M2+ Debrief shape, the scaffold-vs-prompt rule, and pointers to compendium homes for everything else.
 
 ## Pointers — where the rules live
 
 - **Voice (AE101):** `check_writing.md` #4 + `compounded/2026-04-25-writing-ae101-voice-quartet.md` (Boris × Martin × Godin × Rory × Risto quintet).
-- **Voice (Bootstrap):** `check_writing.md` #4 + `compounded/2026-04-26-writing-bootstrap-voice-trio.md` (Godin × Sutherland × Siilasmaa).
+- **Voice (Agents 101):** `check_writing.md` #4 + `compounded/2026-04-26-writing-agents-101-voice-trio.md` (Godin × Sutherland × Siilasmaa).
 - **Banned words, ritual / practice / ceremony ban, register, em-dash on site:** `check_writing.md`.
 - **Business-audience jargon ban, earn-every-term, second-person, memory vs context, Q1/Q2/Q3 retro ban, equals-not-pupils, no-time-of-day-anchors, reflection-beats-stay-invisible, LLM-vs-agent-vs-Claude vocabulary:** `check_student_facing.md`.
 - **Prompt-block design (placeholders, lead-in, presentation shape, skill-by-name, chain hygiene, multi-sample enforcement, runtime-fork divs):** `check_prompts.md`.
@@ -21,9 +21,9 @@ This file holds only writing.md-unique content: Bootstrap module runtime, the th
 
 When multiple surfaces apply (most student-facing files trip several), load all matching compendiums. The split is by firing moment, not by exclusion.
 
-## Bootstrap module runtime — 1h45 target
+## Agents 101 module runtime — 1h45 target
 
-Every Bootstrap module session targets **1h45 of facilitated content** (Connections → Lecture → Exercise → Debrief → Bridge). Fits a 2-hour calendar invite with ~15 minutes of buffer.
+Every Agents 101 module session targets **1h45 of facilitated content** (Connections → Lecture → Exercise → Debrief → Bridge). Fits a 2-hour calendar invite with ~15 minutes of buffer.
 
 | Phase | Target | Role |
 |---|---|---|
@@ -33,15 +33,15 @@ Every Bootstrap module session targets **1h45 of facilitated content** (Connecti
 | Debrief | 12–18 min | Retro-with-Claude + show-and-tell across the room; named artifact saved |
 | Bridge | 3–5 min | One-sentence handoff to next module, question lingers |
 
-**Do not compress to fit a shorter slot.** A 45-minute variant is a different exercise design (single-loop, less banter, no Debrief), not the Bootstrap module trimmed. Mid-Management and Executive-Briefing variants have their own runtime contracts.
+**Do not compress to fit a shorter slot.** A 45-minute variant is a different exercise design (single-loop, less banter, no Debrief), not the Agents 101 module trimmed. Mid-Management and Executive-Briefing variants have their own runtime contracts.
 
-**Exercises in the shared library carry a 55–70 min target inside a full Bootstrap module slot.** Shorter exercises (20–30 min) are drop-in / warmup with different eval criteria.
+**Exercises in the shared library carry a 55–70 min target inside a full Agents 101 module slot.** Shorter exercises (20–30 min) are drop-in / warmup with different eval criteria.
 
 **Lectures stay compact (10–15 min).** A longer lecture usually means the exercise isn't carrying its own weight — move concepts into the exercise's teaching moments.
 
 AE101 and other trainings pin their own runtime contracts in their content-strategy doc.
 
-## The four sharing strategies (Bootstrap M7 canonical)
+## The four sharing strategies (Agents 101 M7 canonical)
 
 1. **Share the context.** Teammates get your `memory/`, `sources/`, `CLAUDE.md`, `style.md` and build their own agents on top.
 2. **Share a skill.** Extract one scoped capability as a skill file; teammates plug it into their agents.
@@ -52,13 +52,13 @@ AE101 and other trainings pin their own runtime contracts in their content-strat
 
 ## Trust the prompt over the scaffold
 
-For exercises where the student is already working in Claude Code with a populated working directory, **prefer a well-crafted prompt over a pre-built scaffold file**. Students should *produce* agent files, rules files, and structure through the exercise — not unzip them. Scaffolds earn their keep when a module needs a trainer-authored artifact the student wouldn't produce themselves (Bootstrap M4 compliance skills, M2 initial empty `sources/memory/agents/` folders). Outside those cases, a one-page prompt does the job better.
+For exercises where the student is already working in Claude Code with a populated working directory, **prefer a well-crafted prompt over a pre-built scaffold file**. Students should *produce* agent files, rules files, and structure through the exercise — not unzip them. Scaffolds earn their keep when a module needs a trainer-authored artifact the student wouldn't produce themselves (Agents 101 M4 compliance skills, M2 initial empty `sources/memory/agents/` folders). Outside those cases, a one-page prompt does the job better.
 
 **Rule of thumb:** if the scaffold contains text the student should have written in their own voice, it's wrong. Convert to a prompt that produces it.
 
-## Bootstrap M2+ Debrief — canonical shape
+## Agents 101 M2+ Debrief — canonical shape
 
-Debriefs ALWAYS self-compound. The Q1/Q2/Q3 retro-interview is forbidden across all new content (rule lives in `check_student_facing.md` #7). Bootstrap M1 ships the Q1/Q2/Q3 shape — live content, named exception, NOT ported.
+Debriefs ALWAYS self-compound. The Q1/Q2/Q3 retro-interview is forbidden across all new content (rule lives in `check_student_facing.md` #7). Agents 101 M1 ships the Q1/Q2/Q3 shape — live content, named exception, NOT ported.
 
 Canonical M2+ Debrief prompt shape:
 
@@ -80,7 +80,7 @@ Work in passes. Finishing Pass 1 for all modules before Pass 2 catches arc-level
 - **Big Idea:** one sentence, one idea per module.
 - **What You'll Learn:** LO verbs lead; phrased at the right Bloom's level.
 - **Lectures / Exercises (Pass 1 form):** bullet list with one-line description for lectures, one-paragraph prose description for exercises. Include-links arrive in Pass 2.
-- **Debrief:** three retro questions shift to the module's discipline (Bootstrap M4 "what should be a skill," M6 "what should be an eval").
+- **Debrief:** three retro questions shift to the module's discipline (Agents 101 M4 "what should be a skill," M6 "what should be an eval").
 
 **Pass 2 — Exercise + lecture skeletons.** One file per entry in the shared library. Canonical files.
 
@@ -92,14 +92,14 @@ Exercise file shape:
 **What happens:** [expected behavior, with a realistic example]
 **The point:** [one or two sentences]
 **Facilitator note:** [timing estimate, common questions, watch-for behaviors, decision points]
-**Time:** [e.g., "55-70 minutes" for Bootstrap module slot]
+**Time:** [e.g., "55-70 minutes" for Agents 101 module slot]
 ```
 
 Lecture file shape:
 ```markdown
 # Lecture: [Name]
 
-[Content — 10-15 minutes of facilitator talking, inside a 1h45 Bootstrap module.]
+[Content — 10-15 minutes of facilitator talking, inside a 1h45 Agents 101 module.]
 
 **Time:** [e.g., "10-15 minutes"]
 ```

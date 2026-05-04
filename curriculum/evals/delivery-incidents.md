@@ -50,7 +50,7 @@ Every training-day failure that wasn't about curriculum content. These are the e
 
 ### — Imagined but likely — Spaces / non-ASCII in username break paths
 **Environment:** macOS "Firstname Lastname" usernames; Finnish ä/ö in paths
-**Where:** any time a prompt uses `~/Documents/agents-102-bootstrap/` as a literal
+**Where:** any time a prompt uses `~/Documents/agents-101/` as a literal
 **What happened (predicted):** File-write commands fail; Claude sometimes quotes paths, sometimes doesn't; error messages look like permissions bugs.
 **Root cause:** Shell-quoting inconsistency.
 **Fix (pre-flight):** Test with a username containing a space on the fresh laptop pre-flight.

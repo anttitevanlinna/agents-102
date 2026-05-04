@@ -1,13 +1,13 @@
 # Lint — Time Budget
 
-**Catches:** module bloat past the 1h45 Bootstrap target. Per SKILL.md "Module session runtime": Connections 8–12 / Lecture 10–15 / Exercise 55–70 / Debrief 12–18 / Bridge 3–5.
+**Catches:** module bloat past the 1h45 Agents 101 target. Per SKILL.md "Module session runtime": Connections 8–12 / Lecture 10–15 / Exercise 55–70 / Debrief 12–18 / Bridge 3–5.
 
 ## Run
 
 ```
-You are running the time-budget lint on Agents 102 Bootstrap modules.
+You are running the time-budget lint on Agents 101 modules.
 
-TARGETS: all files in curriculum/trainings/bootstrap/ whose name doesn't start with 'prework' (prework has a separate time target — 45 min total).
+TARGETS: all files in curriculum/trainings/agents-101/ whose name doesn't start with 'prework' (prework has a separate time target — 45 min total).
 
 For each module file:
 

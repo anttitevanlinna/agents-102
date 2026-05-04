@@ -355,15 +355,15 @@ function parseCli(argv) {
 }
 
 function buildPayload(trainingKey, customer, outDir) {
-  // AE101 + Bootstrap each ship a tarball alongside that training's workbook.
+  // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
   // The payload URL is training-scoped so one customer can host multiple
   // trainings without agents-102-content.tar.gz / starter.tar.gz overwriting each other.
   //
-  // AE101    — agents-102-content.tar.gz (lectures/exercises/reference/supplementary/skills;
-  //                                       extracted at ~/Documents/ae101-content/)
-  // Bootstrap — starter.tar.gz  (empty working-folder skeleton; extracts in-place
-  //                              into the student's connected/working folder at
-  //                              ~/Documents/agents-102-bootstrap/)
+  // AE101      — agents-102-content.tar.gz (lectures/exercises/reference/supplementary/skills;
+  //                                         extracted at ~/Documents/ae101-content/)
+  // Agents 101 — starter.tar.gz  (empty working-folder skeleton; extracts in-place
+  //                               into the student's connected/working folder at
+  //                               ~/Documents/agents-101/)
   if (trainingKey === 'agentic-engineering-101') {
     console.log('Building content tarball...');
     execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
@@ -375,13 +375,13 @@ function buildPayload(trainingKey, customer, outDir) {
     return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/agents-102-content.tar.gz`;
   }
 
-  if (trainingKey === 'bootstrap') {
-    console.log('Building Bootstrap starter tarball...');
-    execSync('scripts/build-bootstrap-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
-    const tarSrc = path.join(ROOT, 'agents-102-bootstrap-starter.tar.gz');
+  if (trainingKey === 'agents-101') {
+    console.log('Building Agents 101 starter tarball...');
+    execSync('scripts/build-agents-101-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
+    const tarSrc = path.join(ROOT, 'agents-101-starter.tar.gz');
     const tarDst = path.join(outDir, 'starter.tar.gz');
     fs.copyFileSync(tarSrc, tarDst);
-    // Bootstrap is dual-runtime; Cowork's outbound network allowlist blocks
+    // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
     // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
     // S3 + a few others reachable). The fallback for Cowork is browser-download
     // into the working folder — the student's browser is unconstrained by

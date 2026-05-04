@@ -42,7 +42,7 @@ Default to the shape of the training's own pattern applied to the meta-task. If 
 - Generating M5 content → run M5's *diagnose / package / re-send* on the session. The initial proposal is the un-packaged run; the reference-artefact + plan + verifier are the packaging; the subagent dispatch + loop is the re-send.
 - Generating M6 content → run M6's exercise prompts (diff two runs + name gaps + author encoding skill) on the session's own artefacts.
 - Updating this SKILL.md → run the SKILL.md's own PDCA loop on the SKILL.md update.
-- Generating a Bootstrap exercise → run the exercise's own forcing function on the design of the exercise.
+- Generating a Agents 101 exercise → run the exercise's own forcing function on the design of the exercise.
 
 **The Rory test:** the filter for whether we understand a pattern is whether we can run it on ourselves. If the session can't apply the pattern to its own generation, we don't yet understand the pattern well enough to ship it. Apply the default at session-open so the first 3–5 turns aren't spent re-discovering the meta-move every cycle.
 
@@ -130,7 +130,7 @@ Every piece of curriculum content goes through this loop. Skipping a step is how
 
 ## The mood arc — load-bearing constraint
 
-The 8-module Bootstrap arc has an engineered emotional progression. Authors MUST honour it; resolving a mood early steals the next module's teaching moment.
+The 8-module Agents 101 arc has an engineered emotional progression. Authors MUST honour it; resolving a mood early steals the next module's teaching moment.
 
 | Module | Mood | Quote | Failure mode (wrong edit) |
 |---|---|---|---|

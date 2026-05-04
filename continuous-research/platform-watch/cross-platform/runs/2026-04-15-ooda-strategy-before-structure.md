@@ -254,7 +254,7 @@ It also connects to **The Spec Is the Moat** (insights.md, Mar 2026): Karpathy's
 ### For Advisory
 This pattern is directly relevant to the "which platform?" question. A CTO who asks "which AI platform should we use?" before asking "what strategic problems are we solving with AI?" is doing the equivalent of cascading OKRs without strategy. Our advisory sequence should be: **Strategic intent → process discovery → platform selection** — not the reverse.
 
-### For Training (Bootstrap)
+### For Training (Agents 101)
 Module 1 should address this: before building agents, clarify what business problem you're solving and why. The tendency to jump to tools is the organizational version of OKR-before-strategy.
 
 ### For Newsletter

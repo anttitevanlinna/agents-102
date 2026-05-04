@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script judge for bootstrap-m4-audit runner.
+# Script judge for agents-101-m4-audit runner.
 #
 # Replaces the LLM Judge dispatch — runs every assertion as a script call.
 # Per the script ratchet (memory rule #17), this is one more increment toward
@@ -8,7 +8,7 @@
 # Usage:
 #   judge-m4-audit.sh <scratch_dir> <transcript.jsonl>
 #
-# Writes report to: instances/bootstrap-m4-audit-judge-report.md
+# Writes report to: instances/agents-101-m4-audit-judge-report.md
 # Exit 0 on PASS, 1 on FAIL.
 
 set -uo pipefail
@@ -29,8 +29,8 @@ RAW="$SCRATCH/outputs/policy-report-raw.md"
 PR_REPORT="$SCRATCH/outputs/policy-report.md"
 SR_REPORT="$SCRATCH/outputs/security-report.md"
 MR_AGENT="$SCRATCH/agents/monday-risks.md"
-SCROLLBACK="$MECH_DIR/instances/bootstrap-m4-audit-actor-scrollback.md"
-REPORT="$MECH_DIR/instances/bootstrap-m4-audit-judge-report.md"
+SCROLLBACK="$MECH_DIR/instances/agents-101-m4-audit-actor-scrollback.md"
+REPORT="$MECH_DIR/instances/agents-101-m4-audit-judge-report.md"
 
 [[ -f "$TRANSCRIPT" ]] || { echo "transcript not found: $TRANSCRIPT" >&2; exit 2; }
 [[ -d "$SCRATCH"   ]]  || { echo "scratch not found: $SCRATCH" >&2; exit 2; }
@@ -177,7 +177,7 @@ ac_hits=$(grep -ciE '^[[:space:]]*[-*0-9]' "$SR_REPORT" 2>/dev/null || echo 0)
 [[ "$ac_hits" -ge 2 ]] && record "A19" "PASS" "$ac_hits enumerated" || record "A19" "FAIL" "$ac_hits"
 
 # A20 — agents/monday-risks.md edited (differs from M3 baseline)
-if diff -q "$MECH_DIR/scratch/bootstrap-m3/agents/monday-risks.md" "$MR_AGENT" >/dev/null 2>&1; then
+if diff -q "$MECH_DIR/scratch/agents-101-m3/agents/monday-risks.md" "$MR_AGENT" >/dev/null 2>&1; then
   record "A20" "FAIL" "monday-risks unchanged"
 else
   record "A20" "PASS" "monday-risks edited"
@@ -251,7 +251,7 @@ forbidden_check "H1" 'curriculum/exercises/'
 # H2 forbids Reads of *other* runners (judge or sibling actor) — not the actor's own runner file.
 forbidden_check "H2" 'curriculum/evals/mechanical/runners/.*(judge|author)\.'
 forbidden_check "H3" 'maintainer\.md|planted-state'
-forbidden_check "H4" '/tmp/bootstrap-mocks/'
+forbidden_check "H4" '/tmp/agents-101-mocks/'
 
 # Prompt-source audit
 psa_out=$(bash "$SCRIPT_DIR/prompt-source-audit.sh" audit-your-agent 2>&1) || true
@@ -263,7 +263,7 @@ verdict_line="PASS"
 [[ "$fail_count" -gt 0 ]] && verdict_line="FAIL"
 
 {
-  echo "# Judge report — Bootstrap M4 audit verbatim"
+  echo "# Judge report — Agents 101 M4 audit verbatim"
   echo
   echo "## Summary"
   echo

@@ -9,7 +9,7 @@ These 29 files are audit reports from the megajudge-shaped eval system that ran 
 
 ## What replaces them
 
-For each curriculum file an instance here referenced (e.g., `bootstrap--context-is-king.md` referenced `curriculum/exercises/context-is-king.md`):
+For each curriculum file an instance here referenced (e.g., `agents-101--context-is-king.md` referenced `curriculum/exercises/context-is-king.md`):
 
 1. Run `/eval-fire writing curriculum/exercises/context-is-king.md` (cheap, Haiku).
 2. Run `/eval-fire story curriculum/exercises/context-is-king.md` (Sonnet, generates sim trace on first call).

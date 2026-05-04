@@ -55,7 +55,7 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 
 **Mood target:** practitioner fluency (the module's mood). The arc-naming is forward-looking, not nostalgic. For core-only cohorts (no M7/M8), this is the visible compounding moment the deliberation module would otherwise carry. Watch-for: trainer-monologue drift (agent produces a generic "here's what you learned" essay). The corrective is the quote rule.
 
-**Shape reference:** bounded-activity shared-library shape (single-move exercise, one prompt, no phases). Mirrors `curriculum/exercises/orient-and-introspect.md` in structure. Designed reusable: can run at the end of any multi-module training variant (Engineering Management, future Bootstrap variants) with the artefact list adjusted to that training's outputs. Primary use is AE101 M6.
+**Shape reference:** bounded-activity shared-library shape (single-move exercise, one prompt, no phases). Mirrors `curriculum/exercises/orient-and-introspect.md` in structure. Designed reusable: can run at the end of any multi-module training variant (Engineering Management, future Agents 101 variants) with the artefact list adjusted to that training's outputs. Primary use is AE101 M6.
 
 **Frameworks riffed on:**
 - **Scaling of learning** (content-strategy throughline) — the arc IS the same loop at successively wider scopes. The agent names it from the evidence; the student reads it back.
@@ -85,7 +85,7 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 
 **Reusable across training variants:**
 - For Engineering Management variant: adjust the artefact list to EM outputs (team-2x infra files, review-policy ADRs, onboarding memo, team-kit contributions).
-- For Bootstrap variants (if adapted): adjust to the training-dir artefacts (memory, sources, agents, CLAUDE.md evolution).
+- For Agents 101 variants (if adapted): adjust to the training-dir artefacts (memory, sources, agents, CLAUDE.md evolution).
 - For shorter formats: the artefact list can trim; the quote rule and the push-back beat are load-bearing and don't compress.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

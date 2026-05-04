@@ -1,8 +1,8 @@
 # Mechanical-test framework — next-session state
 
-**Last updated:** 2026-05-02 (Bootstrap M1-M6 all PASS; script-only judges across the battery)
+**Last updated:** 2026-05-02 (Agents 101 M1-M6 all PASS; script-only judges across the battery)
 
-## Bootstrap battery — current verdict
+## Agents 101 battery — current verdict
 
 | Module | Verdict | Judge script | Notes |
 |---|---|---|---|
@@ -36,35 +36,35 @@ bin/judge.sh <runner-slug> [extra-args]
 bin/judge.sh all              # fires M1-M3 in sequence (M4-M6 need transcript paths)
 ```
 
-Slugs: `bootstrap-m1` | `bootstrap-m2` | `bootstrap-m3` | `bootstrap-m4-author <tr>` | `bootstrap-m4-audit <tr>` | `bootstrap-m5 <setup_tr> <det1..5_tr> <scorer_tr>` | `bootstrap-m6 <setup_tr> <run_tr> [<judge-baseline-sha>]`.
+Slugs: `agents-101-m1` | `agents-101-m2` | `agents-101-m3` | `agents-101-m4-author <tr>` | `agents-101-m4-audit <tr>` | `agents-101-m5 <setup_tr> <det1..5_tr> <scorer_tr>` | `agents-101-m6 <setup_tr> <run_tr> [<judge-baseline-sha>]`.
 
 ## Universal discipline (codified across this session)
 
 - Slugs in chain-runner `### Phase N — slug` headings must contain words that uniquely appear in the referenced prompt's content (pre-flight catches collisions). All M4-M6 PASS pre-flight; M1-M2 PASS, M3's actor pattern is not phase-keyed (single-prompt actors).
 - V-checks via `bin/prompt-read-check.sh <prompt> <transcript>` — transcript Reads are unforgeable. Forcing-function instruction in the runner prelude makes Haiku reliably Read.
-- Tracked mock fixtures under `playgrounds/bootstrap-mocks/`; staged via `bin/stage-bootstrap-mocks.sh`.
+- Tracked mock fixtures under `playgrounds/agents-101-mocks/`; staged via `bin/stage-agents-101-mocks.sh`.
 - Word caps in Judge: 1.5× the spec to allow Haiku stub overshoot.
 - Heading-depth regex: `^#{2,3} Phase` (Actor may use `##` or `###`).
 - Per memory rule #20: `PASS on exit 0; FAIL on any non-zero` — Judge does NOT re-derive from scrollback when a script returns non-zero.
-- Per memory rule #17: every Judge run leaves a script behind; the LLM Judge is a transitional orchestrator, not an assertion-grader. **The Bootstrap battery has reached this endpoint.**
+- Per memory rule #17: every Judge run leaves a script behind; the LLM Judge is a transitional orchestrator, not an assertion-grader. **The Agents 101 battery has reached this endpoint.**
 
 ## Subagent-dispatch lessons (newly compounded this session)
 
 - **Producer/consumer subagents serialize, not parallel.** Audit reads SKILL.md authored by author. Memory: `feedback_subagent_dependencies_serialize.md`. Haiku will not poll; it returns "I'm waiting" and exits.
-- **Re-staging a module's scratch is destructive.** `rm -rf scratch/bootstrap-m<N>/ && cp -R scratch/bootstrap-m<N-1>/ scratch/bootstrap-m<N>/`.
+- **Re-staging a module's scratch is destructive.** `rm -rf scratch/agents-101-m<N>/ && cp -R scratch/agents-101-m<N-1>/ scratch/agents-101-m<N>/`.
 - **No git stash in trunk-based work.** Memory: `feedback_no_git_stash_trunk_based.md`. Either commit a slice or `fetch --merge --ff-only`.
 - **Trust artefacts, not Actor narrative.** Reports occasionally hallucinate via stale templates (saw this twice on M4 author). The on-disk state and transcript are authoritative.
 - **Subagent dispatcher needs explicit forcing-functions for Haiku.** "Three Reads, three pastes" stated in the prompt makes the difference between V-PASS and silent inlining.
 
 ## Pre-staged state at end of session
 
-- `/tmp/bootstrap-mocks/` — re-stageable via `bin/stage-bootstrap-mocks.sh` (12 files).
+- `/tmp/agents-101-mocks/` — re-stageable via `bin/stage-agents-101-mocks.sh` (12 files).
 - `/tmp/prompts/{personal-site-with-guardrails,name-your-challenge,build-your-challenge-memory,three-retrievers-one-curator,audit-your-agent,author-security-skill,hallucination-bakeoff,eval-loop}/` — all extracted via `parse-prompts.sh`.
-- `scratch/bootstrap-m{1..6}/` — all PASSed in this session. Each one inherits from the prior.
+- `scratch/agents-101-m{1..6}/` — all PASSed in this session. Each one inherits from the prior.
 
 ## What's next (post-session)
 
-The script ratchet has reached the aspirational endpoint for Bootstrap. Next moves, in priority order:
+The script ratchet has reached the aspirational endpoint for Agents 101. Next moves, in priority order:
 
 1. **AE101 mechanical battery.** AE101 has `m2-extract` runner already; rest of the modules are open. Same shape: per-module judge script, top-level dispatcher.
 2. **Retire M1-M3 INHERITED rows.** Re-run M1-M3 actors fresh in a single session; replace INHERITED with live transcript-jq checks. Cost ~25 min Haiku.
@@ -91,8 +91,8 @@ bin/
 ├── prompt-source-audit.sh         P/E lint on curriculum source
 ├── run-mechanical.sh
 ├── runner-mapping-check.sh        chain-runner-aware pre-flight (prompt-rot sentinel)
-├── stage-bootstrap-mocks.sh
+├── stage-agents-101-mocks.sh
 └── verbatim-check.sh              substitute-paste check (scrollback-based)
 ```
 
-**Aspirational endpoint reached for Bootstrap.** AE101 is the next surface.
+**Aspirational endpoint reached for Agents 101.** AE101 is the next surface.

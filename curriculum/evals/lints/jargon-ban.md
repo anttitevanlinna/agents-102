@@ -7,10 +7,10 @@
 ## Run
 
 ```
-You are running the cumulative jargon-ban lint on Agents 102 Bootstrap curriculum.
+You are running the cumulative jargon-ban lint on Agents 101 curriculum.
 
 READ IN SEQUENCE (arc order):
-- curriculum/trainings/bootstrap/prework.md
+- curriculum/trainings/agents-101/prework.md
 - getting-going.md (M1) + inlined exercises + lectures
 - building-agent-systems.md (M2) + inlined
 - evaluations.md (M3) + inlined

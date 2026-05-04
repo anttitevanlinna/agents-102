@@ -15,7 +15,7 @@ Run each environment through at minimum prework + Module 1. One environment is f
 
 ### Setup
 - [ ] Claude Code installs without admin rights (or with documented steps for blocked installs)
-- [ ] Claude Code can write to `~/Documents/agents-102-bootstrap/` (path with space in username if applicable)
+- [ ] Claude Code can write to `~/Documents/agents-101/` (path with space in username if applicable)
 - [ ] Self-study setup does NOT place training dir inside OneDrive / iCloud / Dropbox — warning appears if it would
 - [ ] Website opens from the cohort URL; bookmarked in browser
 

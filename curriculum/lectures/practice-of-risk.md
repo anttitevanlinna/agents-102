@@ -86,7 +86,7 @@ That's the work.
 - Variant note: Mid-Management variant can extend the "decide" beat to discuss signing off residual risks as a leadership discipline — who owns the residual, how it gets logged, how the organisation absorbs a residual as operational reality.
 
 **Pass 3 reshape notes (2026-04-28):**
-- Title and spine rewritten off `practice` (noun) — Bootstrap retains the absolute ban per `check_writing.md` #2. Now *The discipline of risk* / *The work is the loop* / *the discipline carries*. Meaning preserved; vocabulary swap only.
+- Title and spine rewritten off `practice` (noun) — Agents 101 retains the absolute ban per `check_writing.md` #2. Now *The discipline of risk* / *The work is the loop* / *the discipline carries*. Meaning preserved; vocabulary swap only.
 - Em-dashes cut throughout (rule #14, full em-dash ban for student-facing curriculum). Split into short sentences or used parentheses where the aside was true-parenthetical.
 - Time-of-day anchor *"Tomorrow you'll recognise the shape..."* removed (rule #22). Replaced with module-relative phrasing — *"It will still be complex when the next agent gets built. The discipline is what carries."*
 - Mood-contract honoured: closing now folds the *"damn, this is complex stuff"* line directly from `bosser-strategy:content-strategy.md` § Module 4 mood. The unease is named as the permanent condition; nothing in the body resolves it. Module 5 owns the rescue.

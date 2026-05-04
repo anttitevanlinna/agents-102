@@ -48,7 +48,7 @@ After 2 modules of Claude Code 101, pretty much everyone started building — da
 2. **A platform to run AI-generated apps.** "Where does this live? How do I share it?" — the promotion path problem.
 3. **Agent skills / user guidance.** Others need to find, understand, and use what builders create.
 
-**The implication:** Competence creates builders. Builders discover infrastructure gaps faster and more accurately than any consultancy assessment. The three enablers are predictable and plannable. This is the natural handoff from Bootstrap to Advisory.
+**The implication:** Competence creates builders. Builders discover infrastructure gaps faster and more accurately than any consultancy assessment. The three enablers are predictable and plannable. This is the natural handoff from Agents 101 to Advisory.
 
 Source: F-Secure deployment experience, Antti direct [practitioner direct — first party]
 

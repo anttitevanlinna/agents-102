@@ -112,7 +112,7 @@ You become the person who decides which details the system must never miss.
 
 **Quality:** draft 2026-04-29
 
-**Placement:** Opening lecture for Bootstrap Module 6, after the Bitter Lesson / Garbage Can Connections question and before `eval-loop.md`.
+**Placement:** Opening lecture for Agents 101 Module 6, after the Bitter Lesson / Garbage Can Connections question and before `eval-loop.md`.
 
 **Strategic role:** Leads with the exact M6 frame: humans will not cope with all the detail very soon, so evals become the way human judgment stays in the loop without the human inspecting every output.
 

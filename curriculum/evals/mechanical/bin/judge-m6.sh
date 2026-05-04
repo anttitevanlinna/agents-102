@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script judge for bootstrap-m6 (setup + run; 2 actors).
+# Script judge for agents-101-m6 (setup + run; 2 actors).
 # Load-bearing invariant: judges/groundedness-judge.md must be byte-identical at end vs start.
 #
 # Usage:
@@ -8,7 +8,7 @@
 # <judge_baseline_shasum> is the shasum of judges/groundedness-judge.md captured before run actor started
 # (or empty string to skip — script will recompute against M5 scratch as best-effort baseline).
 #
-# Writes report to: instances/bootstrap-m6-verbatim-judge-report.md
+# Writes report to: instances/agents-101-m6-verbatim-judge-report.md
 # Exit 0 PASS, 1 FAIL.
 
 set -uo pipefail
@@ -27,22 +27,22 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 MECH_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROMPTS=/tmp/prompts/eval-loop
 JUDGE_FILE="$SCRATCH/judges/groundedness-judge.md"
-M5_JUDGE="$MECH_DIR/scratch/bootstrap-m5/judges/groundedness-judge.md"
+M5_JUDGE="$MECH_DIR/scratch/agents-101-m5/judges/groundedness-judge.md"
 ORCH="$SCRATCH/module-6/orchestrator.md"
 GEN="$SCRATCH/module-6/generator.md"
 DASH="$SCRATCH/module-6/dashboard.md"
 HEART="$SCRATCH/module-6/heartbeat.md"
 EVNOTES="$SCRATCH/module-6/eval-notes.md"
-SETUP_SCROLL="$MECH_DIR/instances/bootstrap-m6-verbatim-setup-scrollback.md"
-RUN_SCROLL="$MECH_DIR/instances/bootstrap-m6-verbatim-run-scrollback.md"
-RUN_REPORT="$MECH_DIR/instances/bootstrap-m6-verbatim-run-report.md"
+SETUP_SCROLL="$MECH_DIR/instances/agents-101-m6-verbatim-setup-scrollback.md"
+RUN_SCROLL="$MECH_DIR/instances/agents-101-m6-verbatim-run-scrollback.md"
+RUN_REPORT="$MECH_DIR/instances/agents-101-m6-verbatim-run-report.md"
 # Compose run text: scrollback if it exists, else run report (Actor may collapse both into one file).
 if [[ -f "$RUN_SCROLL" ]]; then
   RUN_TEXT="$RUN_SCROLL"
 else
   RUN_TEXT="$RUN_REPORT"
 fi
-REPORT="$MECH_DIR/instances/bootstrap-m6-verbatim-judge-report.md"
+REPORT="$MECH_DIR/instances/agents-101-m6-verbatim-judge-report.md"
 
 declare -a names verdicts evidence
 pass_count=0
@@ -310,7 +310,7 @@ verdict_line="PASS"
 [[ "$fail_count" -gt 0 ]] && verdict_line="FAIL"
 
 {
-  echo "# Judge report — Bootstrap M6 verbatim"
+  echo "# Judge report — Agents 101 M6 verbatim"
   echo
   echo "## Summary"
   echo

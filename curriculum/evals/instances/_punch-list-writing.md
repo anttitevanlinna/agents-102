@@ -56,7 +56,7 @@
 
 
 ### module-4-prework — 4 blocking, 1 TODOs
-- [BLOCK] **check_writing.md#4** — Register match — Bootstrap voice trio (Godin × Sutherland × Siilasmaa)
+- [BLOCK] **check_writing.md#4** — Register match — Agents 101 voice trio (Godin × Sutherland × Siilasmaa)
   - line 13: "In Cowork, you create one by going to *Customize* → *Skills* → *New* → *Create with Claude*. In Claude Code, the same shape is a `SKILL.md` under `~/.claude/skills/<name>/`."
   - **fix:** Move runtime-specific UI details to maintainer block; teaching stays to the concept (personal skills are author-able in both runtimes). Remove the "same shape" equivalence framing that defensively com
 
@@ -106,9 +106,9 @@
 
 
 ### name-your-crux — 1 blocking, 0 TODOs
-- [BLOCK] **check_prompts#23** — Artifact destinations are explicit subpaths, never naked filenames (Bootstrap-sp
+- [BLOCK] **check_prompts#23** — Artifact destinations are explicit subpaths, never naked filenames (Agents 101-sp
   - 21:Save it to ./crux.md / 36:Append a `## Question` section to ./crux.md
-  - **fix:** Line 21 and 36 should use module-3/crux.md (or equivalent module-N/ per Bootstrap directory structure). Naked filenames let Claude infer root location; structured tree requires explicit path prefix.
+  - **fix:** Line 21 and 36 should use module-3/crux.md (or equivalent module-N/ per Agents 101 directory structure). Naked filenames let Claude infer root location; structured tree requires explicit path prefix.
 
 
 ### output-quality — 5 blocking, 2 TODOs

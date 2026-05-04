@@ -4,7 +4,7 @@
 # Ranks files by (cross-class recurrence × blocking count × surface weight)
 # and prints the top blocking finding per file with a fix-hint.
 #
-# Usage: curriculum/evals/scripts/next-fixes.sh [--training bootstrap|all] [--limit N]
+# Usage: curriculum/evals/scripts/next-fixes.sh [--training agents-101|all] [--limit N]
 
 set -eu
 

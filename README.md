@@ -30,9 +30,9 @@ Or go straight to a question: *"Which platform should we build on?"* — and the
 
 ## Do the Training (Self-Study)
 
-Agents 102 Bootstrap is an eight-module intensive — normally with a trainer, scheduled anywhere from a tight couple of days to a module-a-week over two months. You can also do it alone, at your own pace — Claude Code becomes your facilitator.
+Agents 101 is an eight-module intensive — normally with a trainer, scheduled anywhere from a tight couple of days to a module-a-week over two months. You can also do it alone, at your own pace — Claude Code becomes your facilitator.
 
-In Claude Code, type `/self-study`. The facilitator sets up your working directory (`~/Documents/agents-102-bootstrap/` by default), starts the lecture server itself (no second terminal), leads you through prework, tracks progress across sessions, and holds the rhythm of each module.
+In Claude Code, type `/self-study`. The facilitator sets up your working directory (`~/Documents/agents-101/` by default), starts the lecture server itself (no second terminal), leads you through prework, tracks progress across sessions, and holds the rhythm of each module.
 
 Expect ~14 hours total. Split it however fits — 30-minute sessions, a full weekend, a module a week. If you close Claude Code and come back later, type `/self-study` again and it picks up where you left off.
 

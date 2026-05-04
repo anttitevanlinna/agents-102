@@ -5,7 +5,7 @@
 #
 # Usage:
 #   preflight-all.sh                       # all *.actor.md
-#   preflight-all.sh 'bootstrap-*'         # glob
+#   preflight-all.sh 'agents-101-*'         # glob
 #
 # For each runner, derive exercise(s) from `**Exercise:**` tags (or the slug
 # fallback table in run-mechanical.sh). Run runner-mapping-check.sh per
@@ -24,7 +24,7 @@ REPO_ROOT="$(cd "$MECH_ROOT/../../.." && pwd)"
 # (bash 3.2 on macOS lacks associative arrays — use a function.)
 fallback_for() {
   case "$1" in
-    bootstrap-m1.verbatim)        echo "personal-site-with-guardrails" ;;
+    agents-101-m1.verbatim)        echo "personal-site-with-guardrails" ;;
     claude-basics-m1.verbatim)    echo "claude-basics-getting-started" ;;
     claude-basics-m2.verbatim)    echo "claude-basics-first-task" ;;
     claude-basics-m3.verbatim)    echo "claude-basics-multi-file" ;;

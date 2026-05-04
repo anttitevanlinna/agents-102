@@ -14,7 +14,7 @@ He also made the case that **HR — not IT** — is the function best positioned
 **Source:** https://www.teamraderie.com/experiences/ai-experience-with-ethan-mollick/ [practitioner direct — Mollick's own framework published via Teamraderie]
 **Date:** March 18-19, 2026
 **Evidence level:** Level 2 (single practitioner framework, albeit highly influential)
-**Relevance to Agents 102:** Directly validates our model. "Leadership, Lab, Crowd" maps almost exactly to our five-step journey: Bootstrap = seeding the Crowd, Champions = building the Lab, the buyer persona = Leadership. Mollick's framework gives us academic legitimacy for what we designed from practitioner experience.
+**Relevance to Agents 102:** Directly validates our model. "Leadership, Lab, Crowd" maps almost exactly to our five-step journey: Agents 101 = seeding the Crowd, Champions = building the Lab, the buyer persona = Leadership. Mollick's framework gives us academic legitimacy for what we designed from practitioner experience.
 
 ---
 
@@ -191,7 +191,7 @@ The McKinsey framing: "This is 80% business transformation and 20% tech transfor
 ### NEW Pattern 45: "The Innovation Locus Is Inside" (Level 2)
 **What:** The most advanced AI users are already inside organizations — "they're just doing it secretly" (Mollick). Shadow AI data confirms: 93% of enterprise ChatGPT use is on non-corporate accounts. The innovation is happening bottom-up, not top-down via platform purchases.
 **Signal count:** 5-6 (Mollick, shadow AI surveys, Moderna case)
-**Relevance:** This reframes our Bootstrap offering. We're not introducing AI to organizations — we're making visible what's already happening and giving it structure.
+**Relevance:** This reframes our Agents 101 offering. We're not introducing AI to organizations — we're making visible what's already happening and giving it structure.
 
 ---
 
@@ -201,7 +201,7 @@ The McKinsey framing: "This is 80% business transformation and 20% tech transfor
 
 2. **Mollick's framework validates ours.** His "Leadership, Lab, Crowd" maps to our journey. Citation opportunity: reference Mollick in positioning materials (with appropriate credit).
 
-3. **Nordic gap = our market.** 31% have a strategy, most at maturity 1-2, leadership is the bottleneck. This is exactly the problem Bootstrap solves.
+3. **Nordic gap = our market.** 31% have a strategy, most at maturity 1-2, leadership is the bottleneck. This is exactly the problem Agents 101 solves.
 
 4. **Pilot purgatory is the disease; we're the cure.** Organizations running 30-900 pilots with no strategy need exactly what Make Your Own provides: strategic clarity on which transformations to pursue.
 

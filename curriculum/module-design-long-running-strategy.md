@@ -25,7 +25,7 @@ Must be populated BEFORE the session starts. If thin, the session isn't long-run
 Required:
 - The module's Pass 1 row in the relevant content-strategy doc (`curriculum/content-strategy-*.md`)
 - The module's "in detail" section if written
-- The peer Bootstrap lecture or exercise, if porting (`curriculum/lectures/` or `curriculum/exercises/`)
+- The peer Agents 101 lecture or exercise, if porting (`curriculum/lectures/` or `curriculum/exercises/`)
 - The eval template that will be used as the verifier (`curriculum/evals/lecture.md` or `curriculum/evals/exercise.md`)
 - **Frame to land** section — verbatim user-provided framings (3–7 word blunt sentences, named thesis, quoted lines from Antti's planning messages) captured as direct quotes. NOT paraphrased. Cite-and-compare source at ship time. Paraphrasing drifts.
 - **Done-means criterion** — explicit list of what "done" includes. **MUST name the `curriculum-pre-ship-audit` skill invocation as a blocking gate**, not deferred as *"pre-first-cohort TODO."* Per-cohort freshness re-checks are legitimate pre-cohort TODOs. First-pass sim + eval + source-verify + capability-check are not.
@@ -40,7 +40,7 @@ A short plan, approved in 2 minutes of plan-mode-style review before generation 
 - **Strategic beat** — the specific teaching moment that must land. *If I can't state it in one sentence, I'm not ready to generate.*
 - **Module mood** the content must honour (from the strategy doc's mood contract)
 - **Arc** — phases / beats / subsections
-- **Length band** (per Bootstrap 1h45 target, or relevant variant)
+- **Length band** (per Agents 101 1h45 target, or relevant variant)
 - **Practitioners to weave in** — specific named sources
 - **Vision-detail split explicit.** Name which claims are vision-layer (Antti's framing, no KB backing needed) vs. detail-layer (practitioner claims, must have KB backing). See `memory/project_vision_times_detail.md`.
 - **Research-backing check.** Every detail-layer claim points at a specific file in `continuous-research/` or a practitioner-direct URL. If unsourced: run an OODA, drop it, or move to vision-layer.
@@ -95,7 +95,7 @@ Any REVISE blocks "done." Approve-with-todos acceptable when TODOs land in maint
 
 Long-running-mode-specific only. Cross-surface rules live in `memory/compounded/` and the `check_*.md` compendiums.
 
-- **Pin the delivery architecture BEFORE generating any student-facing file.** Where do artifacts live? What ships as files vs. gets generated in conversation? Bootstrap's separate-training-dir assumption does NOT apply to AE101 (compounding in the student's real repo). Every prompt leaks the assumption — it cannot be retrofitted cleanly.
+- **Pin the delivery architecture BEFORE generating any student-facing file.** Where do artifacts live? What ships as files vs. gets generated in conversation? Agents 101's separate-training-dir assumption does NOT apply to AE101 (compounding in the student's real repo). Every prompt leaks the assumption — it cannot be retrofitted cleanly.
 - **Plan-locked applies to execution, not strategic shape.** Antti may reshape the strategic frame post-approval without violating "plan-approved means plan-locked" — that rule is about not-re-opening during execution, not about not-redirecting strategy. Distinguish strategic items (Antti may redirect) from executional items (I carry through) in the plan template.
 - **LLM-judge is procedural compliance; persona sim is the authoritative mood signal.** When verdicts disagree, trust the personas. LLM-judge catches rule violations; personas catch felt-experience smells. Both needed; neither substitutes.
 
@@ -103,7 +103,7 @@ Long-running-mode-specific only. Cross-surface rules live in `memory/compounded/
 
 *(One entry per long-running generation session. Append.)*
 
-- **2026-04-21 — AE101 M1 dependencies (ship-with-agents + prework + exercise Pass 3 + wizard-move lecture + eval instance + site registration + strategy-doc updates).** First long-running-gen cycle. Single biggest lesson: **pin the delivery architecture before generating any student-facing file.** Initial draft assumed Bootstrap-shape training-dir; Antti's reshape replaced that with "compounding artifacts in the student's real repo." Every prompt referencing a location had to be rewritten. Architectural; cannot be retrofitted cleanly.
+- **2026-04-21 — AE101 M1 dependencies (ship-with-agents + prework + exercise Pass 3 + wizard-move lecture + eval instance + site registration + strategy-doc updates).** First long-running-gen cycle. Single biggest lesson: **pin the delivery architecture before generating any student-facing file.** Initial draft assumed Agents 101-shape training-dir; Antti's reshape replaced that with "compounding artifacts in the student's real repo." Every prompt referencing a location had to be rewritten. Architectural; cannot be retrofitted cleanly.
 
 - **2026-04-22 → 2026-04-23 — AE101 M2 dependencies (plan-mode-done-right module + push-back-on-the-plan exercise + when-a-plan-is-good lecture + eval instance + Pocock grill-me fork + AE101 site registration + content-strategy updates).** Second long-running-gen cycle; structurally re-shaped twice under Antti redirection. Single biggest lesson: **pattern-recognition LOs need n≥2 instances with contrast.** v1/v2 had the student push back on one plan and execute — n=1, reading-the-plan LO un-met by design. v3 paired a human read with an agent second-pass read (Pocock's `grill-me`) and dropped execution. Three compounded entries produced via `/compound`; three `check_*.md` amendments applied with Antti approval.
 

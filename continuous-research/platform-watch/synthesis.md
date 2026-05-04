@@ -174,7 +174,7 @@ For an environment with SF + Snowflake + Redshift + Slack + O365 + SharePoint + 
 - **MCP ecosystem** (via Claude/Anthropic) has servers for most of these, but requires developer setup and has no business-user surface.
 - **Custom build** (Agent SDK + MCP + custom state management) is likely the only path that actually works. Which means: you need engineering capability first, then the agent capability follows.
 
-This is why the training journey matters: Bootstrap builds understanding, then platform advisory helps navigate this reality.
+This is why the training journey matters: Agents 101 builds understanding, then platform advisory helps navigate this reality.
 
 ## Cross-Platform Patterns
 
@@ -224,7 +224,7 @@ This is why the training journey matters: Bootstrap builds understanding, then p
 
 **Pattern 22: Computer use has first production evidence — legacy system integration is the use case (NEW — cycle 17).** Mainstay (95% on 30K property tax portals) and Pace (insurance portals, Prudential deal) show computer use works on legacy systems without APIs. GPT-5.4 leads (75% OSWorld, above 72.4% human avg) vs Claude (72.7%). But both production cases are OpenAI launch partners (curated evidence). Consumer reliability convergence (Level 3): "impressive but unreliable" for autonomous use. TinyFish shows hybrid architecture (81% Mind2Web) outperforms vanilla computer use (43%). ([OpenAI blog](https://openai.com/index/introducing-gpt-5-4/); [Understanding AI](https://www.understandingai.org/p/chatgpt-agent-a-big-improvement-but); [TinyFish](https://www.tinyfish.ai/blog/mind2web), Mar 2026)
 
-**Pattern 23: EEA regulatory friction creates platform gaps for Nordic users (cycle 17).** OpenAI connectors (Google Drive, SharePoint, Outlook, etc.) explicitly excluded from EEA/Switzerland/UK for Plus and Pro users. Only Team/Enterprise/Edu get access. Individual Nordic business users on personal plans cannot use any write actions or connectors. This creates a structural disadvantage vs. Microsoft (no EEA restrictions on Copilot) and is a curriculum design consideration for our Bootstrap training. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167), Mar 2026)
+**Pattern 23: EEA regulatory friction creates platform gaps for Nordic users (cycle 17).** OpenAI connectors (Google Drive, SharePoint, Outlook, etc.) explicitly excluded from EEA/Switzerland/UK for Plus and Pro users. Only Team/Enterprise/Edu get access. Individual Nordic business users on personal plans cannot use any write actions or connectors. This creates a structural disadvantage vs. Microsoft (no EEA restrictions on Copilot) and is a curriculum design consideration for our Agents 101 training. ([OpenAI on X.com](https://x.com/OpenAI/status/1937681383448539167), Mar 2026)
 
 **Pattern 24: Bedrock AgentCore emerging as the most complete managed agent runtime (NEW — cycle 22).** Five features shipped in March 2026: Policy GA (Cedar-based agent governance), stateful MCP (session persistence), AG-UI protocol, memory streaming, shell command API. First platform supporting all three interaction protocols (MCP + A2A + AG-UI). Policy GA addresses the external governance gap — security teams can govern agent-tool access without modifying agent code. But: zero independent deployment evidence or practitioner reviews. ([AWS announcements](https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/), Mar 2026)
 

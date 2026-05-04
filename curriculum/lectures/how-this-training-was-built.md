@@ -76,4 +76,4 @@ The loop is the shape. The bug today was the excuse.
 **Register check:**
 - No em-dashes (check_student_facing § 14).
 - No banned words (check_writing): `honest` / `delve` / `landscape` verb / `importantly` / `crucial` / `substrate` / `ritual` / `practice` noun / `ceremony` — zero matches.
-- Engineer-audience: technical terms (`subagent`, `compendium`, `plan mode`) acceptable per AE101 register; Bootstrap business-audience ban does not apply.
+- Engineer-audience: technical terms (`subagent`, `compendium`, `plan mode`) acceptable per AE101 register; Agents 101 business-audience ban does not apply.

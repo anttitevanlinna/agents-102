@@ -11,7 +11,7 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 | **writing** | piece | Haiku 4.5 | `check_writing.md`, `check_sales_copy.md`, `check_student_facing.md` |
 | **story** | piece | Sonnet 4.6 | `check_pedagogy.md`, `check_strategy_tie_in.md`, `check_lectures.md` (Class A persona-reader sim trace) |
 | **story** | seam | Sonnet 4.6 | (when this lecture sits at a module seam) — `curriculum/evals/seams/seam-judge.md` |
-| **story** | arc | Sonnet 4.6 | (when this lecture is part of a Bootstrap or AE101 module sequence) — `curriculum/evals/arc-pass.md` |
+| **story** | arc | Sonnet 4.6 | (when this lecture is part of a Agents 101 or AE101 module sequence) — `curriculum/evals/arc-pass.md` |
 | **technical** | piece | Sonnet 4.6 | `check_platform_and_boundaries.md`, `check_research_claims.md` + technical sub-rules in `check_pedagogy.md` and `check_prompts.md` |
 | **behavior** | piece | Sonnet 4.6 | (only when the lecture body contains `**Prompt**` blocks a student would copy — most lectures don't) `check_prompts.md` + 15-pattern catalog at `.claude/skills/content-creation/simulation-behavior.md` |
 

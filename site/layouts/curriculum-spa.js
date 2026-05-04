@@ -25,9 +25,9 @@
     var training = TRAININGS[trainingKey];
 
     // ============================================================
-    // Runtime switcher — Bootstrap only.
+    // Runtime switcher — Agents 101 only.
     //
-    // Bootstrap supports three modes. The header toggle reveals them in
+    // Agents 101 supports three modes. The header toggle reveals them in
     // audience-friendliness order:
     //  - cowork   Cowork (Desktop tab). Skills as .plugin files. No plan mode.
     //  - desktop  Claude Code Desktop. Skills as .plugin files.
@@ -55,10 +55,10 @@
     //                 don't differ. Use the narrower .rt-cli / .rt-desktop only
     //                 where the install affordance actually differs (M4, M7).
     //
-    // Choice persists in localStorage. Default is 'cowork' — Bootstrap's
+    // Choice persists in localStorage. Default is 'cowork' — Agents 101's
     // most-friendly mode; matches the leftmost button position.
     //
-    // Verified facts driving this design (see Bootstrap-side reference
+    // Verified facts driving this design (see Agents 101-side reference
     // curriculum/reference/claude-quick-reference.md, maintainer audit):
     //  - same agent engine across all three; CLAUDE.md + subagents identical
     //  - .plugin install path: Desktop + Cowork; CLI uses folder skills
@@ -91,7 +91,7 @@
         return;
     }
 
-    // Prework page: ?training=bootstrap&prework=1 (or ?module=prework for convenience)
+    // Prework page: ?training=agents-101&prework=1 (or ?module=prework for convenience)
     if (params.get('prework') === '1' || moduleSlug === 'prework') {
         if (training.prework) {
             loadAndRender('../curriculum/trainings/' + trainingKey + '/' + training.prework.slug + '.md', training.prework.title);

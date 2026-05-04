@@ -1,6 +1,6 @@
 # Exercises Library
 
-Canonical exercise files. One file per exercise. Shared across all trainings (Bootstrap, Mid-Management, future variants).
+Canonical exercise files. One file per exercise. Shared across all trainings (Agents 101, Mid-Management, future variants).
 
 ## Filename convention
 

@@ -237,7 +237,7 @@ REVISE: cut em-dashes on L9, L37, L55; rewrite L45 (4 em-dashes in one sentence)
 
 **Voice quartet:** Seth × Rory × Risto per maintainer voice note. Lands well — warm + counterintuitive + direct-about-refusals. *"There's no certificate at the end. The builder CTO who funded this training doesn't buy certification theater"* is good Rory + Boris. *"You become the Claude wizard by running the loop on real work and letting the habit sharpen"* — clean closer.
 
-**Practitioner attributions:** None in body (Context-is-King demo is universal/not-attributed; correctly stolen-verbatim-from-Bootstrap per maintainer note). Acceptable.
+**Practitioner attributions:** None in body (Context-is-King demo is universal/not-attributed; correctly stolen-verbatim-from-Agents 101 per maintainer note). Acceptable.
 
 **Lecture placement:** M1 opener (after Connections, before exercise). Demo-style lecture showing the ceiling. Per `check_lectures.md § 1`, demo-openers are correctly placed at the beginning. Pairs with the closer `how-this-training-was-built` (per that file's maintainer block) — opener shows ceiling, closer names the pattern. Correct.
 

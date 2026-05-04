@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script judge for bootstrap-m2 (chain: name-your-challenge + build-your-challenge-memory).
+# Script judge for agents-101-m2 (chain: name-your-challenge + build-your-challenge-memory).
 #
 # Validates scratch state + scrollback + runner-mapping pre-flight (prompt-rot sentinel).
 # Transcript-only assertions inherited from prior LLM-Judge run (PASS 24/24).
@@ -11,11 +11,11 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 MECH_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-SCRATCH="$MECH_DIR/scratch/bootstrap-m2"
-SCROLL="$MECH_DIR/instances/bootstrap-m2-verbatim-actor-scrollback.md"
-ACTOR_REPORT="$MECH_DIR/instances/bootstrap-m2-verbatim-actor-report.md"
+SCRATCH="$MECH_DIR/scratch/agents-101-m2"
+SCROLL="$MECH_DIR/instances/agents-101-m2-verbatim-actor-scrollback.md"
+ACTOR_REPORT="$MECH_DIR/instances/agents-101-m2-verbatim-actor-report.md"
 EX_DIR=/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises
-REPORT="$MECH_DIR/instances/bootstrap-m2-verbatim-judge-report.md"
+REPORT="$MECH_DIR/instances/agents-101-m2-verbatim-judge-report.md"
 
 declare -a names verdicts evidence
 pass_count=0
@@ -28,7 +28,7 @@ record() {
 
 # Prompt-rot sentinel — runner-mapping-check against current curriculum
 for ex in name-your-challenge build-your-challenge-memory; do
-  rm_out=$(bash "$SCRIPT_DIR/runner-mapping-check.sh" "$MECH_DIR/runners/bootstrap-m2.verbatim.actor.md" "$EX_DIR/$ex.md" 2>&1) || true
+  rm_out=$(bash "$SCRIPT_DIR/runner-mapping-check.sh" "$MECH_DIR/runners/agents-101-m2.verbatim.actor.md" "$EX_DIR/$ex.md" 2>&1) || true
   rm_verdict=$(echo "$rm_out" | tail -1)
   if echo "$rm_verdict" | grep -qE 'READY'; then
     record "PRE-$ex" "PASS" "$rm_verdict"
@@ -164,7 +164,7 @@ verdict_line="PASS"
 [[ "$fail_count" -gt 0 ]] && verdict_line="FAIL"
 
 {
-  echo "# Judge report — Bootstrap M2 verbatim (script-only)"
+  echo "# Judge report — Agents 101 M2 verbatim (script-only)"
   echo
   echo "## Summary"
   echo

@@ -301,7 +301,7 @@ The article thesis ("When will agentic ways in coding spill to other functions?"
 22. Klarna AI workforce (Fortune) — https://fortune.com/2025/10/10/klarna-ceo-sebastian-siemiatkowski-halved-workforce-says-tech-ceos-sugarcoating-ai-impact-on-jobs-mass-unemployment-warning/
 23. Klarna AI agent 853 employees — https://gpa.net/blogs/emea-1/sweden-klarna-claims-ai-agent-can-do-the-work-of-853-employees
 24. Peter Sarlin interview (The Recursive) — https://therecursive.com/silo-ai-peter-sarlin-interview-amd-aquisition-eu-europe-competitivness/
-25. Silo AI AMD acquisition (Sifted) — https://sifted.eu/articles/silo-ai-bootstrapped-cash-acquisition
+25. Silo AI AMD acquisition (Sifted) — https://sifted.eu/articles/silo-ai-agents-101ped-cash-acquisition
 26. AgentCon Stockholm — https://globalai.community/chapters/stockholm/events/agentcon-stockholm/
 27. Helsinki AI Meetup — https://www.meetup.com/helsinki-artificial-intelligence/
 28. Monthly AI Meetup Helsinki XR Center — https://helsinkixrcenter.com/news/join-our-monthly-ai-meetup-on-february-11-2026-at-helsinki-xr-center/

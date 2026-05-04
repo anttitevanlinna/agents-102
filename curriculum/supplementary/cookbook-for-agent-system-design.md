@@ -2,7 +2,7 @@
 
 *This is how you do it.* A practitioner's cookbook, the moves, in sequence, that take someone from a chat conversation to a real agent system they can stake their reputation on. Recipes you can run on Monday.
 
-The first three recipes are the Bootstrap training's spine, written out as standalone how-to. After Bootstrap, you own them. New recipes get added as they mature, cloud deployment, team sharing, cross-org promotion, the rest.
+The first three recipes are the Agents 101 training's spine, written out as standalone how-to. After Agents 101, you own them. New recipes get added as they mature, cloud deployment, team sharing, cross-org promotion, the rest.
 
 Read any recipe in order or any recipe standalone. They stand alone; together they compose. Several recipes show their *what you end with*, *the test*, and *why* now; the move-by-move write-ups land as each module's content stabilises, recipe shape first, full detail as it earns the ink.
 

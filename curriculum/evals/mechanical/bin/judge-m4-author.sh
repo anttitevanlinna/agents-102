@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script judge for bootstrap-m4-author runner.
+# Script judge for agents-101-m4-author runner.
 #
 # Replaces the LLM Judge dispatch — runs every assertion as a script call
 # and emits the markdown report. Per the script ratchet (memory rule #17),
@@ -9,7 +9,7 @@
 # Usage:
 #   judge-m4-author.sh <scratch_dir> <transcript.jsonl>
 #
-# Writes report to: instances/bootstrap-m4-author-judge-report.md (relative to mechanical/)
+# Writes report to: instances/agents-101-m4-author-judge-report.md (relative to mechanical/)
 # Exit 0 on PASS, 1 on FAIL. PASS == every assertion exit 0.
 
 set -uo pipefail
@@ -27,8 +27,8 @@ PROMPTS=/tmp/prompts/author-security-skill
 SCAFFOLD=/Users/anttitevanlinna/Projects/agents-102/curriculum/scaffolds/module-4-starter/policies
 SKILL="$SCRATCH/module-4/skills/security-audit/SKILL.md"
 RAW="$SCRATCH/outputs/policy-report-raw.md"
-SCROLLBACK="$MECH_DIR/instances/bootstrap-m4-author-actor-scrollback.md"
-REPORT="$MECH_DIR/instances/bootstrap-m4-author-judge-report.md"
+SCROLLBACK="$MECH_DIR/instances/agents-101-m4-author-actor-scrollback.md"
+REPORT="$MECH_DIR/instances/agents-101-m4-author-judge-report.md"
 
 [[ -f "$TRANSCRIPT" ]] || { echo "transcript not found: $TRANSCRIPT" >&2; exit 2; }
 [[ -d "$SCRATCH"   ]]  || { echo "scratch not found: $SCRATCH" >&2; exit 2; }
@@ -235,7 +235,7 @@ else
 fi
 
 # A20 — module-3/ byte-unchanged vs M3 scratch
-if diff -rq "$MECH_DIR/scratch/bootstrap-m3/module-3/" "$SCRATCH/module-3/" >/dev/null 2>&1; then
+if diff -rq "$MECH_DIR/scratch/agents-101-m3/module-3/" "$SCRATCH/module-3/" >/dev/null 2>&1; then
   record "A20" "PASS" "module-3 unchanged"
 else
   record "A20" "FAIL" "module-3 differs from M3 scratch"
@@ -261,7 +261,7 @@ forbidden_check "H1" 'curriculum/exercises/'
 # H2 forbids Reads of *other* runners (judge or sibling actor) — not the actor's own runner file.
 forbidden_check "H2" 'curriculum/evals/mechanical/runners/.*(judge|audit)\.'
 forbidden_check "H3" 'maintainer\.md|planted-state'
-forbidden_check "H4" '/tmp/bootstrap-mocks/'
+forbidden_check "H4" '/tmp/agents-101-mocks/'
 
 # Prompt-source audit
 psa_out=$(bash "$SCRIPT_DIR/prompt-source-audit.sh" author-security-skill 2>&1) || true
@@ -273,7 +273,7 @@ verdict_line="PASS"
 [[ "$fail_count" -gt 0 ]] && verdict_line="FAIL"
 
 {
-  echo "# Judge report — Bootstrap M4 author verbatim"
+  echo "# Judge report — Agents 101 M4 author verbatim"
   echo
   echo "## Summary"
   echo

@@ -13,7 +13,7 @@
 
 **What changed in repo:**
 - `.claude/skills/self-study/SKILL.md`: C2/C3 section rewritten — Teacher reads inline, gives recap link after each lecture/exercise/module. Setup step 7 reframed as "recap server." "Don't lecture" do-not rule rewritten as "Don't paraphrase the lecture; read it verbatim."
-- `curriculum/trainings/bootstrap/prework.md`: server-start step reframed as "recap site" with new "Prompt" presentation shape.
+- `curriculum/trainings/agents-101/prework.md`: server-start step reframed as "recap site" with new "Prompt" presentation shape.
 - New canonical Prompt presentation rule added to both SKILL files (label + action hint + fenced block).
 
 **Open contradiction worth noting:** Self-study now has Teacher auto-start the server in setup step 7, but prework.md still has the student "ask Claude to start the server" as their first agentic move. In trainer-led mode the student does it; in self-study, Teacher already did. Either rewrite prework to handle both paths cleanly or have Teacher in self-study walk the student through running the prompt themselves (preserving the teaching moment) instead of pre-starting. Decide later.

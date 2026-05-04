@@ -87,7 +87,7 @@ Two angles are most valuable:
 
 **What is still unclear:**
 
-- How do you bootstrap the network? All five examples are decades old and established. How did they get the first 20-50 members? This is the cold-start problem and may be the hardest operational challenge.
+- How do you agents-101 the network? All five examples are decades old and established. How did they get the first 20-50 members? This is the cold-start problem and may be the hardest operational challenge.
 - What is the right price point for Agents 102's membership tier? APQC charges USD 15-100K (enterprise). Vistage charges USD 15-25K (individual CEO). CNCF charges USD 5-370K (by tier). The range is enormous.
 - Should the practice curation be open (published freely, revenue from membership/training) or closed (members-only access)? CNCF is open. APQC is closed. Both work. The choice shapes the growth model.
 - How does Agents 102 handle competitive dynamics? If Company A and Company B are both members, will they share their agentic practices openly? APQC solves this through anonymization. Vistage solves it by putting non-competing companies in the same group. What is Agents 102's approach?
@@ -185,7 +185,7 @@ Not immediately for the practice collaborative model — the operational bluepri
 
 **What is still unclear — but does not require more research rounds to resolve:**
 
-1. **Bootstrapping.** How to recruit the first 10-20 organizations for the first collaborative. IHI had the advantage of a healthcare quality crisis and a charismatic founder (Don Berwick). Agents 102 has the AI urgency but needs a specific, compelling topic for its first collaborative. This is a strategy decision, not a research question.
+1. **Agents 101ping.** How to recruit the first 10-20 organizations for the first collaborative. IHI had the advantage of a healthcare quality crisis and a charismatic founder (Don Berwick). Agents 102 has the AI urgency but needs a specific, compelling topic for its first collaborative. This is a strategy decision, not a research question.
 
 2. **Pricing the collaborative.** IHI charges participation fees but also receives grants and philanthropy. Agents 102 needs a commercial model. The training program generates initial revenue; the collaborative could be a premium offering for training alumni. Pricing needs to be tested, not researched.
 
@@ -193,6 +193,6 @@ Not immediately for the practice collaborative model — the operational bluepri
 
 4. **Competitive sensitivity.** Will companies share agentic practices with peers who might be competitors? The BTS model works in healthcare where "competitors" share because the mission (patient safety) overrides competitive instincts. AI agents are more commercially sensitive. Agents 102 may need Vistage-style non-competing cohorts or APQC-style anonymization — or both.
 
-**Recommendation**: The practice curator research track has yielded a clear operational blueprint. The next step is not more research — it is to design the first Agents 102 collaborative using the IHI BTS structure, informed by Carnegie's context variation approach and Toyota Kata's meta-practice layer. The open questions (bootstrapping, pricing, facilitation, competitive sensitivity) are best resolved through design and piloting, not through further desk research.
+**Recommendation**: The practice curator research track has yielded a clear operational blueprint. The next step is not more research — it is to design the first Agents 102 collaborative using the IHI BTS structure, informed by Carnegie's context variation approach and Toyota Kata's meta-practice layer. The open questions (agents-101ping, pricing, facilitation, competitive sensitivity) are best resolved through design and piloting, not through further desk research.
 
 ---

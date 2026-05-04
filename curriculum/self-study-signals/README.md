@@ -1,6 +1,6 @@
 # Self-Study Signals
 
-Where self-study learnings land so the Bootstrap gets smarter every time a student runs it. Mirrors the research system's `user-signals/` pattern — silent capture during the session, student pushes to main, next cohort benefits.
+Where self-study learnings land so the Agents 101 gets smarter every time a student runs it. Mirrors the research system's `user-signals/` pattern — silent capture during the session, student pushes to main, next cohort benefits.
 
 ## What gets captured
 

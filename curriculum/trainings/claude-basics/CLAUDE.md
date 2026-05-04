@@ -10,11 +10,11 @@ People asked to help their organisation make Claude useful, safe, and repeatable
 
 Single participant runtime. Cowork is where participants run the live crux exercise and the homework. Claude Code appears only in the trainer's repo demo as the next-level system surface; participants do not open it.
 
-**Consequence:** no dual-runtime forks (`<div class="rt-code">` / `<div class="rt-cowork">`) anywhere in claude-basics surfaces. Bootstrap's runtime-fork rules from `memory/check_prompts.md` rule 10 do not fire here. All prompt blocks render in their plain canonical shape.
+**Consequence:** no dual-runtime forks (`<div class="rt-code">` / `<div class="rt-cowork">`) anywhere in claude-basics surfaces. Agents 101's runtime-fork rules from `memory/check_prompts.md` rule 10 do not fire here. All prompt blocks render in their plain canonical shape.
 
 ## Delivery architecture — live synthesis + personal homework
 
-Third architecture model after Bootstrap (local training-dir + zips) and AE101 (student's real repo). Different from both.
+Third architecture model after Agents 101 (local training-dir + zips) and AE101 (student's real repo). Different from both.
 
 - **Live session starts with repo demo.** The trainer shows the agents-102 repo and deployed workbook as the concrete system. This is not a participant runtime requirement.
 - **Live crux work needs only narrow shared writes.** Participants can save personal interview notes in any safe folder. Each group nominates one driver to write one rollout synthesis file into `shared/`. Organisers may optionally write `organisers-rollout-readout.md` after group files exist.
@@ -22,7 +22,7 @@ Third architecture model after Bootstrap (local training-dir + zips) and AE101 (
 - **CLAUDE.md names the runtime when needed.** If a homework folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, the folder CLAUDE.md should say so near the top and tell Claude to assume eventual consistency on file reads.
 - **Post-training legacy** — the group rollout syntheses, optional organisers' readout, and personal homework systems are reusable inputs for daily work. Do not promise a fixed post-training cadence unless that cadence has been contracted for the cohort.
 
-The classic *"don't put your training-dir in OneDrive"* warning from Bootstrap does not apply here: Claude Basics homework can live in normal synced work folders because the folder CLAUDE.md names the runtime.
+The classic *"don't put your training-dir in OneDrive"* warning from Agents 101 does not apply here: Claude Basics homework can live in normal synced work folders because the folder CLAUDE.md names the runtime.
 
 ## Remote-resilient delivery contract
 
@@ -47,7 +47,7 @@ Slug-naming discipline prevents accidental cross-training reuse: claude-basics e
 
 ## Language — English
 
-English is the canonical curriculum language for claude-basics, matching Bootstrap and AE101. The first cohort (`ium`) ships with a Finnish-delivery overlay — notes for organisers, in-room language, and email comms in Finnish. The English module files stay the source of truth; the FI overlay lives in the cohort-private surface (`site/clients/<slug>/`), not in `curriculum/`.
+English is the canonical curriculum language for claude-basics, matching Agents 101 and AE101. The first cohort (`ium`) ships with a Finnish-delivery overlay — notes for organisers, in-room language, and email comms in Finnish. The English module files stay the source of truth; the FI overlay lives in the cohort-private surface (`site/clients/<slug>/`), not in `curriculum/`.
 
 ## Module list
 
@@ -59,10 +59,10 @@ Slug filenames only, no `module-N-` prefix (per `curriculum/CLAUDE.md`).
 
 ## Content boundaries — claude-basics specific
 
-- **No magic-beat menu** like Bootstrap. Claude Basics promises one well-placed *"oh, that's what this is"* moment, in the live crux exercise, when the room realises after the fact that it ran a useful divergence-to-synthesis system.
+- **No magic-beat menu** like Agents 101. Claude Basics promises one well-placed *"oh, that's what this is"* moment, in the live crux exercise, when the room realises after the fact that it ran a useful divergence-to-synthesis system.
 - **No agentic walk-away exercises** in the live room. The training builds agentic awareness; the participant doesn't yet author multi-step autonomous workflows. Personal build-and-verify happens as homework.
 - **Practitioner weaving stays light.** Module 2 may name one practitioner max — the audience is chat-level, not builder-leader; performative authority lands wrong.
-- **Plain prompt files, not installed skills.** Claude Basics ships authored moves as plain `.md` files at `curriculum/trainings/claude-basics/prompts/` — the participant pastes them or asks Claude to read them. No installed skills (Claude Code's `~/.claude/skills/`, Cowork's plugin loader). This rollout-custodian audience is chat-level; install-affordance machinery is overkill on Day 1 and adds the wrong kind of friction. The four moves the original skeleton named as skills (`prework-tour`, `morning-planner`, `module3-divergence`, `module3-synthesizer`) become plain prompt files. Skills-as-concept lands in Bootstrap Module 4, not here.
+- **Plain prompt files, not installed skills.** Claude Basics ships authored moves as plain `.md` files at `curriculum/trainings/claude-basics/prompts/` — the participant pastes them or asks Claude to read them. No installed skills (Claude Code's `~/.claude/skills/`, Cowork's plugin loader). This rollout-custodian audience is chat-level; install-affordance machinery is overkill on Day 1 and adds the wrong kind of friction. The four moves the original skeleton named as skills (`prework-tour`, `morning-planner`, `module3-divergence`, `module3-synthesizer`) become plain prompt files. Skills-as-concept lands in Agents 101 Module 4, not here.
 
 ## Eval template
 
@@ -71,7 +71,7 @@ Reuses `curriculum/evals/exercise.md`. The leap test gets steered for the rollou
 ## Reference
 
 - `bosser-strategy:content-strategy-claude-basics.md` — strategic spine, mood arc, per-module Big Idea + Mood (deliberate)
-- `bosser-strategy:content-strategy.md` (Bootstrap) — sibling for format reference
+- `bosser-strategy:content-strategy.md` (Agents 101) — sibling for format reference
 - `curriculum/CLAUDE.md` — universal architecture
 - `curriculum/lecture-guardrails.md` — universal pedagogy
 - `~/Projects/claude-basics/` — original skeleton, retained until migration completes

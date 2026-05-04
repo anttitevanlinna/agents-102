@@ -57,7 +57,7 @@ Return ONE JSON object, exactly this shape:
   "class": "technical",
   "file": "<absolute path>",
   "verdict": "PASS" | "REVISE",
-  "training": "bootstrap" | "ae101" | "shared",
+  "training": "agents-101" | "ae101" | "shared",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",

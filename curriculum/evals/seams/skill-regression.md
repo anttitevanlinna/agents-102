@@ -8,7 +8,7 @@ STUB — build when the first self-study pilot surfaces a facilitation gap, OR p
 
 ## Rough shape
 
-For each Bootstrap module file:
+For each Agents 101 module file:
 - Extract the expected phase sequence (Connections → Lecture(s) → Exercise(s) → Debrief → Bridge)
 - Check SKILL.md's per-module guidance matches:
   - Number of lectures

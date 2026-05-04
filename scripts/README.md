@@ -6,8 +6,8 @@ Use `build-workbook.js` to deploy one customer with one or more trainings. The c
 
 ```sh
 node scripts/build-workbook.js acme claude-basics
-node scripts/build-workbook.js acme bootstrap,claude-basics
-node scripts/build-workbook.js acme bootstrap agentic-engineering-101 claude-basics
+node scripts/build-workbook.js acme agents-101,claude-basics
+node scripts/build-workbook.js acme agents-101 agentic-engineering-101 claude-basics
 node scripts/build-workbook.js acme all
 ```
 
@@ -18,7 +18,7 @@ site/clients/<customer>/index.html
 site/clients/<customer>/<training>/index.html
 site/clients/<customer>/<training>/trainer-guide.html   # if curriculum/trainings/<training>/trainer-guide.md exists
 site/clients/<customer>/<training>/agents-102-content.tar.gz   # AE101 only
-site/clients/<customer>/<training>/starter.tar.gz   # Bootstrap only
+site/clients/<customer>/<training>/starter.tar.gz   # Agents 101 only
 ```
 
 The legacy order still works for a single training:
@@ -43,7 +43,7 @@ Training URLs are:
 https://agents102.bosser.consulting/clients/<customer>/<training>/
 ```
 
-Payload URLs are training-scoped on purpose. For example, Bootstrap and AE101 can both be deployed for `acme` without `starter.tar.gz` and `agents-102-content.tar.gz` colliding at the customer root.
+Payload URLs are training-scoped on purpose. For example, Agents 101 and AE101 can both be deployed for `acme` without `starter.tar.gz` and `agents-102-content.tar.gz` colliding at the customer root.
 
 ## Sibling Repo Note
 

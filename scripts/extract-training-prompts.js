@@ -4,9 +4,9 @@
  *
  * Usage:
  *   node scripts/extract-training-prompts.js --training agentic-engineering-101 --out /tmp/ae101-prompts.md
- *   node scripts/extract-training-prompts.js --training bootstrap --flavor all --out /tmp/bootstrap-prompts.md
+ *   node scripts/extract-training-prompts.js --training agents-101 --flavor all --out /tmp/agents-101-prompts.md
  *   node scripts/extract-ae101-prompts.js --out curriculum/evals/instances/ae101-prompt-progression.md
- *   node scripts/extract-bootstrap-prompts.js --out curriculum/evals/instances/bootstrap-prompt-progression.md
+ *   node scripts/extract-agents-101-prompts.js --out curriculum/evals/instances/agents-101-prompt-progression.md
  */
 
 const fs = require('fs');

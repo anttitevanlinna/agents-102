@@ -118,9 +118,9 @@ No pre-built artifacts. No toy data.
 
 ### Voice
 
-Bootstrap voice trio (Godin × Sutherland × Siilasmaa). Forward-awe mood = Siilasmaa-leading at Phase 3 close + reveal + Bridge. Sutherland counterintuitive in the Big Idea (the team IS the multi-agent system — the work routes through the people, not the architecture around them). Godin peer warmth in *"You worked alone in M1 and M2. M3 is collaborative."*
+Agents 101 voice trio (Godin × Sutherland × Siilasmaa). Forward-awe mood = Siilasmaa-leading at Phase 3 close + reveal + Bridge. Sutherland counterintuitive in the Big Idea (the team IS the multi-agent system — the work routes through the people, not the architecture around them). Godin peer warmth in *"You worked alone in M1 and M2. M3 is collaborative."*
 
-Body writes TO the participant ("you"); facilitator instructions live below `<!-- maintainer -->`. No author-"we." No creator's name. No em-dashes in body (verified post-write). No `practice` (noun) — Bootstrap absolute-ban inheritance verified.
+Body writes TO the participant ("you"); facilitator instructions live below `<!-- maintainer -->`. No author-"we." No creator's name. No em-dashes in body (verified post-write). No `practice` (noun) — Agents 101 absolute-ban inheritance verified.
 
 In-chat-not-mechanic principle (rule 12) honored: every student move stays in conversation with Claude. The group driver's session reads files via prompt; the organisers' optional readout reads files via prompt. No *"open the file"* / *"edit the column"* primitives in body.
 
@@ -191,7 +191,7 @@ One detail-layer claim: Richard Rumelt and the crux pattern. Vision-layer (the m
 | Prompt design | PASS | All five prompts compendium-clean. Phase 1 open-hook, deterministic chain paths, push-back named, batch-dump prevented |
 | Plug points real | PASS | Repo demo, rollout difficulties, group composition, organisers' readout — all real |
 | Business-audience language | PASS | Crux earned, multi-agent reserved for reveal, no flinch words |
-| Voice | PASS | Bootstrap trio applied; in-chat-not-mechanic verified; no creator's name, no author-we |
+| Voice | PASS | Agents 101 trio applied; in-chat-not-mechanic verified; no creator's name, no author-we |
 | Length | PASS | All four files within 400-700 prose target |
 | Specificity | PASS | Named mechanics, file-name patterns, group topology, trainer scripts |
 | Research-backed claims | PASS | Rumelt named, plain-English distilled, no statistical claims |

@@ -34,7 +34,7 @@ The aspirational endpoint: `bin/judge.sh <runner-slug>` runs the full assertion 
 
 ## Runner shape — chain runners
 
-A runner that walks a chain of source-exercise prompts (`bootstrap-m2` is the canonical example) uses one `### Phase N — slug` heading per prompt, plus per-phase tags so `runner-mapping-check.sh` knows which exercise's prompt set the phase belongs to:
+A runner that walks a chain of source-exercise prompts (`agents-101-m2` is the canonical example) uses one `### Phase N — slug` heading per prompt, plus per-phase tags so `runner-mapping-check.sh` knows which exercise's prompt set the phase belongs to:
 
 ```
 ### Phase 5 — distinctive-claims
@@ -95,7 +95,7 @@ mechanical/
 │   ├── verbatim-check.sh                 substitute-paste check (linkedin, hate-list etc.)
 │   ├── prompt-source-audit.sh            P/E checks (curriculum source lint)
 │   ├── runner-mapping-check.sh           pre-flight: phase ↔ prompt mapping + coverage
-│   ├── stage-bootstrap-mocks.sh          copy tracked mocks → /tmp/bootstrap-mocks/
+│   ├── stage-agents-101-mocks.sh          copy tracked mocks → /tmp/agents-101-mocks/
 │   ├── run-mechanical.sh                 one-shot orchestrator: pre-flight + parse + stage
 │   ├── preflight-all.sh                  survey every actor runner's pre-flight verdict
 │   └── continuation-diff.sh              HTML-aware diff for v-N → v-N+1 continuity

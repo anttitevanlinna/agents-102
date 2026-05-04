@@ -40,7 +40,7 @@ After this module, you will be able to:
 
 **At the end — "What this unlocks":** connect achieved goals to real capability. Concrete, not aspirational.
 
-### Bloom's level expectations per module (Bootstrap)
+### Bloom's level expectations per module (Agents 101)
 
 | Module | Primary Bloom's level | Why |
 |--------|----------------------|-----|
@@ -104,7 +104,7 @@ Discipline modules (4, 5, 6) start by letting the thing go wrong. Rules arrive a
 
 The final act of every module is articulating what was learned. The first act of leadership.
 
-(Bootstrap framing: *"creates teachers, not graduates"* — the measure is *"can they make someone else get it?"* AE101 has a different end-state — *practitioner*, not teacher. Portfolio-wide, the principle is that participants reshape the curriculum through plug points, examples, and questions.)
+(Agents 101 framing: *"creates teachers, not graduates"* — the measure is *"can they make someone else get it?"* AE101 has a different end-state — *practitioner*, not teacher. Portfolio-wide, the principle is that participants reshape the curriculum through plug points, examples, and questions.)
 
 ### The builder's contract
 
@@ -112,9 +112,9 @@ The final act of every module is articulating what was learned. The first act of
 
 ---
 
-## Audience: The Chat-to-Systems Leap (Bootstrap)
+## Audience: The Chat-to-Systems Leap (Agents 101)
 
-This section describes the **Bootstrap** audience. Other portfolio trainings target different audiences (AE101: software engineer ICs; Engineering Management: engineering managers) — see their content-strategy files. The "chat-to-systems leap" framing below is Bootstrap-specific.
+This section describes the **Agents 101** audience. Other portfolio trainings target different audiences (AE101: software engineer ICs; Engineering Management: engineering managers) — see their content-strategy files. The "chat-to-systems leap" framing below is Agents 101-specific.
 
 **Entry requirement:** **you can have a lengthy conversation with an LLM.** That's it. No coding experience, no prompt engineering course, no AI background.
 
@@ -123,7 +123,7 @@ This section describes the **Bootstrap** audience. Other portfolio trainings tar
 - **Advanced chat users** — heavy daily users, good at prompting, custom GPTs or Claude Projects.
 - **Deep prompters** — studied prompt engineering, chain-of-thought, system prompts.
 
-**What unites them: nobody is building systems.** Even the most advanced users are having conversations. They are not creating agents that run autonomously, coordinate, use tools, or operate without a human in the loop. The Bootstrap leap: **from chatting with AI to building systems with AI.**
+**What unites them: nobody is building systems.** Even the most advanced users are having conversations. They are not creating agents that run autonomously, coordinate, use tools, or operate without a human in the loop. The Agents 101 leap: **from chatting with AI to building systems with AI.**
 
 **What this means for module design:**
 
@@ -142,7 +142,7 @@ This section describes the **Bootstrap** audience. Other portfolio trainings tar
 
 Everyone works on the same company-relevant initiative. Not individual projects. Pre-agreed with the customer sponsor; scoped to something that (a) matters to the company, (b) is achievable as a growing prototype across the module arc, (c) touches enough complexity to sustain the full arc. All exercises advance this initiative — a single system getting more sophisticated.
 
-A CTO sending 20 people to Bootstrap expects them back having worked on something real for the company.
+A CTO sending 20 people to Agents 101 expects them back having worked on something real for the company.
 
 **Curriculum implication:** Module files describe exercises in terms of structure (what kind of agent, what kind of growth, what kind of coordination), not domain. The domain comes from the initiative. Exercises use placeholders like *"your initiative's data source"* — filled in during prep.
 

@@ -13,7 +13,7 @@ answers:
 
 # Research Insights
 
-Nuggets that emerge from research, analysis, and discussion. Each is a compressed argument — usable in training, advisory conversations, newsletter content, and the Bootstrap curriculum.
+Nuggets that emerge from research, analysis, and discussion. Each is a compressed argument — usable in training, advisory conversations, newsletter content, and the Agents 101 curriculum.
 
 ## How to use this file
 
@@ -34,7 +34,7 @@ Every vertical SaaS agent hits the same wall: Zendesk sees tickets. SAP sees ERP
 
 **The implication for CTOs:** The vendor will sell you automation for the one process they own. The other 199 are yours to figure out.
 
-**Applies to:** Platform advisory, Bootstrap Module 7, newsletter content
+**Applies to:** Platform advisory, Agents 101 Module 7, newsletter content
 **Source:** Agentforce analysis (March 2026) + Antti's Finnair observation
 **Date:** 2026-03-21
 
@@ -80,7 +80,7 @@ MIT NANDA GenAI Divide: 95% of custom/task-specific GenAI tools report no measur
 
 **The implication for CTOs:** Stop evaluating platforms. Start with $20/month personal agents. Discover which processes benefit. Then evaluate platforms against YOUR discovered use cases, not vendor demos.
 
-**Applies to:** Bootstrap opening, advisory positioning, newsletter
+**Applies to:** Agents 101 opening, advisory positioning, newsletter
 **Source:** OpenAI COO (TechCrunch Feb 24, 2026), MIT GenAI Divide study
 **Date:** 2026-03-21
 
@@ -98,7 +98,7 @@ Counter-evidence doesn't negate convergence — it characterizes the deployment 
 
 **The implication for CTOs:** Don't ask "when will agents work in my domain?" Ask: "Are our processes rules-based, verifiable, and talent-constrained?" If yes, the convergence is already happening. If no, you're in the second wave.
 
-**Applies to:** Bootstrap content, domain research prioritization, advisory, newsletter
+**Applies to:** Agents 101 content, domain research prioritization, advisory, newsletter
 **Source:** Finance/accounting convergence validation cycle 55 + cross-domain analysis (March 2026)
 **Date:** 2026-03-23
 
@@ -128,13 +128,13 @@ A CTO looks at the agent landscape in March 2026 and sees: 4 horizontal platform
 
 The CTO doesn't need a platform comparison matrix. They need structured context that makes the question askable. Before you can evaluate "which platform for invoice reconciliation," you need to know: Is invoice reconciliation even a good candidate? What does "agentic" mean for that process vs. a chatbot? Which of my 200 processes have the right characteristics (bounded scope, clear success criteria, escalation tolerance, data in one system)?
 
-This is why Bootstrap precedes advisory. The hands-on experience gives the organization enough understanding to formulate real questions instead of vendor-shaped ones. Without it, the CTO is choosing between marketing stories, not between real capabilities.
+This is why Agents 101 precedes advisory. The hands-on experience gives the organization enough understanding to formulate real questions instead of vendor-shaped ones. Without it, the CTO is choosing between marketing stories, not between real capabilities.
 
 **The implication for CTOs:** Don't start with "which platform." Start with "which of our processes should we even try." That requires building agent competence first — understanding what agents can and can't do, what makes a process a good candidate, and what the failure modes look like. Then the platform question answers itself.
 
 **The implication for Bosser:** The advisory service isn't "we help you choose a platform." It's "we help you see the landscape clearly enough to know what to evaluate." The structured context IS the deliverable. The platform recommendation falls out of it.
 
-**Applies to:** Advisory positioning, Bootstrap→advisory handoff, sales conversations, newsletter
+**Applies to:** Advisory positioning, Agents 101→advisory handoff, sales conversations, newsletter
 **Source:** Antti's observation + cumulative platform research (March 2026)
 **Date:** 2026-03-21
 
@@ -152,13 +152,13 @@ F-Secure evidence (March 2026): after 2 modules of Claude Code 101, pretty much 
 
 3. **Agent skills / user guidance.** Once builders create agents, other people in the org need to find them, understand what they do, and know how to use them. This is the discoverability and governance layer — what OpenAI is calling "Skills" and what Microsoft is building with Agent 365. Nobody has shipped it yet. F-Secure needs it now.
 
-**The implication for CTOs:** Bootstrap builds competence. Competence creates builders. Builders discover your real infrastructure gaps — and they discover them faster and more accurately than any consultancy assessment. The three enablers (data access, runtime platform, discoverability) are predictable and plannable. Budget for them.
+**The implication for CTOs:** Agents 101 builds competence. Competence creates builders. Builders discover your real infrastructure gaps — and they discover them faster and more accurately than any consultancy assessment. The three enablers (data access, runtime platform, discoverability) are predictable and plannable. Budget for them.
 
-**The implication for Bosser:** This is the natural handoff from Bootstrap to Advisory. "Your people are building. Here's what they need next." The advisory engagement scopes these three enablers against the org's specific landscape.
+**The implication for Bosser:** This is the natural handoff from Agents 101 to Advisory. "Your people are building. Here's what they need next." The advisory engagement scopes these three enablers against the org's specific landscape.
 
-**Evidence level:** Level 2 (single deployment, strong signal). Watch for convergence as more orgs go through Bootstrap.
+**Evidence level:** Level 2 (single deployment, strong signal). Watch for convergence as more orgs go through Agents 101.
 
-**Applies to:** Advisory positioning, Bootstrap→advisory handoff, platform watch, value proposition canvas
+**Applies to:** Advisory positioning, Agents 101→advisory handoff, platform watch, value proposition canvas
 **Source:** F-Secure deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21
 
@@ -194,7 +194,7 @@ This inverts the traditional transformation sequence. Consultancies do: assess p
 
 **The implication for CTOs:** Stop commissioning process assessments. Build competence. Your people will tell you where agents create value — and they'll be right more often than the consultancy, because they know the work.
 
-**Applies to:** Core value proposition, sales conversations, Bootstrap design
+**Applies to:** Core value proposition, sales conversations, Agents 101 design
 **Source:** F-Secure deployment experience (March 2026, Antti direct)
 **Date:** 2026-03-21
 
@@ -212,7 +212,7 @@ The four-layer enterprise agent stack is crystallizing: Models → Protocols (MC
 
 **The implication for CTOs:** You probably have shadow agents already. Before deploying more, audit what exists. The governance layer is just starting to ship — but waiting for it means falling behind. Start with visibility (what agents exist?) before adding capability (what should agents do?).
 
-**Applies to:** Bootstrap Module 4 (Security), advisory, platform watch
+**Applies to:** Agents 101 Module 4 (Security), advisory, platform watch
 **Source:** Platform watch cycles 23-25, Microsoft 500K agents (Agent 365 announcement), Agents of Chaos study, Gravitee data
 **Date:** 2026-03-22
 
@@ -230,7 +230,7 @@ The math predicts domain boundaries precisely. Processes with 2-3 bounded steps 
 
 **The implication for CTOs:** Design for 2-3 step action chains, not 20-step autonomy. The processes that work look like customer service: bounded scope, clear success criteria, escalation tolerance, data in one system. Find those characteristics in your 200 processes.
 
-**Applies to:** Bootstrap Module 5 (Output Quality), Module 6 (Evals), advisory, newsletter
+**Applies to:** Agents 101 Module 5 (Output Quality), Module 6 (Evals), advisory, newsletter
 **Source:** Vertical SaaS research cycle 25 — Salesforce Ben, CIO.com, Greyhound Research CEO, Reddit deployment data, compound math analysis
 **Date:** 2026-03-22
 
@@ -252,7 +252,7 @@ And here's the kicker: coding agents are also the best context-creation engines 
 
 **The implication for CTOs:** "Which platform" becomes "which coding agent does my team adopt" — because the coding agent IS the platform that builds everything else. Tools commoditize. Context-creation capability doesn't. Training raises the ceiling. Everything else raises the floor.
 
-**Applies to:** Core value proposition, Bootstrap Module 8 (Agents Building Agents), advisory, newsletter, CLAUDE.md positioning
+**Applies to:** Core value proposition, Agents 101 Module 8 (Agents Building Agents), advisory, newsletter, CLAUDE.md positioning
 **Source:** Platform watch synthesis Pattern 41 (strategic analysis, March 2026); compound engineering evidence (Every Inc, [practitioner direct](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents), Dec 2025/Mar 2026; Will Larson, [practitioner analysis](https://lethain.com/everyinc-compound-engineering/), Jan 2026)
 **Date:** 2026-03-22 (updated with compound engineering evidence)
 
@@ -270,9 +270,9 @@ This is our market. The gap between tool availability and organizational readine
 
 **The implication for CTOs:** The technology works. Your organization doesn't know how to use it yet. That's not a technology problem — it's a competence problem. Fix it before buying platforms.
 
-**The implication for Bosser:** This data makes the Bootstrap pitch concrete: "78% of executives say AI outpaces their training. 82% have no talent strategy. We close that gap in 2 days."
+**The implication for Bosser:** This data makes the Agents 101 pitch concrete: "78% of executives say AI outpaces their training. 82% have no talent strategy. We close that gap in 2 days."
 
-**Applies to:** Sales conversations, newsletter, advisory positioning, Bootstrap value proposition
+**Applies to:** Sales conversations, newsletter, advisory positioning, Agents 101 value proposition
 **Source:** HBR ([Nov 2025](https://hbr.org/2025/11/overcoming-the-organizational-barriers-to-ai-adoption)), enterprise survey (120K+ respondents, [Joget/analyst compilation](https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/)), InformationWeek ([Q1 2026](https://www.informationweek.com/machine-learning-ai/2026-enterprise-ai-predictions-fragmentation-commodification-and-the-agent-push-facing-cios))
 **Date:** 2026-03-22
 
@@ -302,7 +302,7 @@ What differs is the metric. Karpathy has val_bpb — a single scalar that enable
 
 **The implication for Bosser:** This is Level 3 convergence for our core thesis. Four independent practitioners, four domains, same month, same pattern. The ceiling is context-creation rate. Training raises the ceiling. The convergence makes the argument irrefutable — it's not one person's opinion, it's a pattern.
 
-**Applies to:** Core value proposition (strongest evidence yet), Bootstrap Module 8, advisory positioning, newsletter anchor piece
+**Applies to:** Core value proposition (strongest evidence yet), Agents 101 Module 8, advisory positioning, newsletter anchor piece
 **Source:** Karpathy AutoResearch ([Mar 2026](https://github.com/karpathy/autoresearch)), Dan Shipper compound engineering, Corey Haines Marketing Skills, Agents 102 platform watch system
 **Date:** 2026-03-22
 
@@ -326,11 +326,11 @@ The sequence is now evidence-backed: **No mental models → no shared vision →
 
 The inverse is the consulting failure mode: Strategy → Roadmap → Execution assumes the vision can be handed down. For agents, this produces governance of an abstraction — maturity models where nobody can picture what "Level 3" actually looks like, initiative lists with no felt vision behind them, change programs that reproduce the consultancy's slides instead of the organization's future.
 
-**The implication for CTOs:** If you can't describe what an agent does for your top 5 processes — not from a vendor demo, but from building one — you don't have a vision yet. You have a slide deck. Bootstrap isn't "training before strategy." It's "building the mental models that make strategy possible."
+**The implication for CTOs:** If you can't describe what an agent does for your top 5 processes — not from a vendor demo, but from building one — you don't have a vision yet. You have a slide deck. Agents 101 isn't "training before strategy." It's "building the mental models that make strategy possible."
 
 **The implication for Bosser:** This is the sharpest formulation of our core positioning. Not "competence precedes vision" (too abstract). **"How can you have a vision when you don't have the mental models?"** — this is the question that makes CTOs pause. It names the mechanism. Every CTO knows they lack something but frames it as "we need a strategy." The reframe is: you don't need a strategy, you need mental models. Strategy follows.
 
-**Applies to:** Core value proposition (opening line for sales), Bootstrap opening, advisory positioning, newsletter, CLAUDE.md
+**Applies to:** Core value proposition (opening line for sales), Agents 101 opening, advisory positioning, newsletter, CLAUDE.md
 **Source:** Antti's observation + transformation methods research synthesis (MIT/BCG, Wharton/Mollick, HBR experimentation trap, HBR behavioral science — all March 2026)
 **Date:** 2026-03-22
 
@@ -358,7 +358,7 @@ F-Secure evidence: after 2 modules of hands-on training, people started building
 
 **The implication for CTOs:** Don't commission a use case assessment. Give 20 people $20/month coding agents and 2 days of training. The use cases will find themselves — and they'll be better than anything a workshop produces, because the domain experts and the builders are the same people.
 
-**Applies to:** Core value proposition, Bootstrap design, advisory positioning, sales conversations
+**Applies to:** Core value proposition, Agents 101 design, advisory positioning, sales conversations
 **Source:** Antti's direct observation across multiple engagements + F-Secure field evidence (March 2026)
 **Date:** 2026-03-22
 
@@ -388,9 +388,9 @@ Living this at F-Secure (March 2026): when leadership engages personally with ag
 
 **The implication for CTOs:** Before you mandate anything, spend a week building with a coding agent yourself. Not a demo. Not a briefing. Actually build something you need for your own work. Then mandate — and your mandate will be different, more specific, more credible, and more effective than anything a strategy deck produces.
 
-**The implication for Bosser:** The Bootstrap should include a leadership track — not a separate executive briefing (that's the old model) but the same hands-on exercises. The CTO should sit in the same room, building the same things. That shared experience IS the scaling unlock. Consider a half-day "CTO builds" session as part of Bootstrap or as a standalone pre-engagement.
+**The implication for Bosser:** The Agents 101 should include a leadership track — not a separate executive briefing (that's the old model) but the same hands-on exercises. The CTO should sit in the same room, building the same things. That shared experience IS the scaling unlock. Consider a half-day "CTO builds" session as part of Agents 101 or as a standalone pre-engagement.
 
-**Applies to:** Bootstrap design (leadership inclusion), advisory positioning, sales conversations (sell to the CTO who wants to understand, not delegate), customer journey design
+**Applies to:** Agents 101 design (leadership inclusion), advisory positioning, sales conversations (sell to the CTO who wants to understand, not delegate), customer journey design
 **Source:** Antti's direct observation at F-Secure (March 2026) + Mollick Leadership-Lab-Crowd framework
 **Date:** 2026-03-22
 
@@ -411,15 +411,15 @@ The fix: co-use. A small network (5-10) of advanced CTOs who each steer the rese
 
 This is the anti-Gartner: Gartner sells access to analysts' opinions. This sells access to a shared research engine where the CTOs ARE the analysts, with AI doing the legwork no individual could sustain. Gartner's moat is analyst headcount. Ours is network effects — each new CTO makes the system more valuable for all others.
 
-**Practical shape:** Invite-only. Post-Bootstrap CTOs who demonstrated genuine engagement (they built something, they got the mental models). Quarterly synthesis sessions (virtual or in Helsinki). Async steering via the research system. Co-owned findings — each CTO can use them internally. Bosser retains the right to synthesize cross-network patterns (the meta-premium).
+**Practical shape:** Invite-only. Post-Agents 101 CTOs who demonstrated genuine engagement (they built something, they got the mental models). Quarterly synthesis sessions (virtual or in Helsinki). Async steering via the research system. Co-owned findings — each CTO can use them internally. Bosser retains the right to synthesize cross-network patterns (the meta-premium).
 
-**Economics: generosity, not subscription.** The network is free. Not freemium, not loss-leader — free because generosity is the principle. Charging would select for budget, not for quality of thinking. The CTOs who make the network valuable are the ones with the best questions, not the biggest discretionary spend. Reciprocity beats subscription: "you contribute your steering and findings, you get everyone else's" — that's a gift economy, not a transaction. Gift economies build loyalty that subscriptions never can. Revenue comes from what the network enables: better Bootstrap training (richer, more grounded), sharper advisory (real CTO questions, not hypothetical ones), content that's co-validated by practitioners. The network makes the paid offerings worth more. Charging for the network itself would shrink it.
+**Economics: generosity, not subscription.** The network is free. Not freemium, not loss-leader — free because generosity is the principle. Charging would select for budget, not for quality of thinking. The CTOs who make the network valuable are the ones with the best questions, not the biggest discretionary spend. Reciprocity beats subscription: "you contribute your steering and findings, you get everyone else's" — that's a gift economy, not a transaction. Gift economies build loyalty that subscriptions never can. Revenue comes from what the network enables: better Agents 101 training (richer, more grounded), sharper advisory (real CTO questions, not hypothetical ones), content that's co-validated by practitioners. The network makes the paid offerings worth more. Charging for the network itself would shrink it.
 
 **The implication for CTOs:** We're not selling you research. We're inviting you to co-create it. The system gets better because you use it — and because other CTOs in different industries use it too. The convergence across your independent findings is more trustworthy than any single expert's opinion.
 
 **The implication for Bosser:** This could be the durable competitive moat. Training can be copied. Research systems can be replicated. But a live network of advanced CTOs co-creating insight through a shared research engine — that's a network effect. First mover advantage is real: the first network to reach 10 CTOs becomes the one others want to join. And because it's free, there's no barrier to the best people joining.
 
-**Applies to:** Business model (new revenue stream / retention mechanism), customer journey (post-Bootstrap retention), advisory positioning, value proposition canvas
+**Applies to:** Business model (new revenue stream / retention mechanism), customer journey (post-Agents 101 retention), advisory positioning, value proposition canvas
 **Source:** Antti's strategic observation — solving the credibility gap between AI research and CTO trust (March 2026)
 **Date:** 2026-03-22
 
@@ -435,7 +435,7 @@ Every company has the technology. Nobody has the clarity. Platform comparisons a
 
 **The implication for CTOs:** Stop evaluating platforms. Start building competence. The platform question becomes trivially answerable once your people have built something and hit their own three walls (data access, runtime, discoverability). Those are scoped, practical, two-way-door decisions — not the heavyweight vendor evaluation you're currently running.
 
-**Applies to:** Bootstrap positioning, advisory conversations, newsletter ("Deploying Agents"), business model validation (P1 assumption), content strategy
+**Applies to:** Agents 101 positioning, advisory conversations, newsletter ("Deploying Agents"), business model validation (P1 assumption), content strategy
 **Source:** Pattern 44 — convergence of Mollick, MIT, Quintero/Every, shadow AI data, F-Secure field evidence (cycle 41, March 2026)
 **Date:** 2026-03-22
 
@@ -453,7 +453,7 @@ Salesforce's own Help portal is a microcosm: they replaced search with Agentforc
 
 **The implication for CTOs:** If you're evaluating AI SDR tools, budget for a human-in-the-loop operating model from day one. "Replace 10 SDRs with AI" is the wrong framing. "Give 3 SDRs AI agents that triple their output" is the pattern that works. The AI ops role (daily tuning, prompt iteration, quality monitoring) is a new job category, not an optional extra.
 
-**Applies to:** Bootstrap Module 7 (agent platforms), advisory conversations, newsletter, sales/GTM domain research
+**Applies to:** Agents 101 Module 7 (agent platforms), advisory conversations, newsletter, sales/GTM domain research
 **Source:** Cycle 43 convergence analysis — SaaStr, Owner.com, Demandbase, 11x, Artisan, Broadn, GTM AI Podcast (March 2026)
 **Date:** 2026-03-22
 
@@ -469,7 +469,7 @@ This isn't because nothing is happening. ConductorOne's survey shows 95% of ente
 
 **The implication for CTOs:** The absence of public case studies in your domain doesn't mean nobody is doing it — it means the knowledge is trapped inside organizations. This is the gap our advisory fills: practitioners who have trained 200+ people across F-Secure, Neste, and Posti see the cross-organizational patterns that no single company's internal team can see.
 
-**Applies to:** Content strategy, newsletter positioning, advisory value proposition, Bootstrap Module 1 (setting expectations)
+**Applies to:** Content strategy, newsletter positioning, advisory value proposition, Agents 101 Module 1 (setting expectations)
 **Source:** Cycle 43 meta-pattern — 43 cycles of practitioner discovery across 7 business domains
 **Date:** 2026-03-22
 
@@ -487,7 +487,7 @@ This is why competence comes first. Without it, AI amplifies the wrong things: u
 
 **The implication for CTOs:** Don't measure AI impact by counting tools deployed. Measure it by whether your best teams are getting 3x better. If your median is flat, the problem isn't the AI — it's that your teams don't have the context-creation capability to leverage it. Training fixes that. More tools don't.
 
-**Applies to:** Bootstrap positioning, advisory conversations, content strategy, newsletter
+**Applies to:** Agents 101 positioning, advisory conversations, content strategy, newsletter
 **Source:** DORA 2025 Report ([dora.dev](https://dora.dev/research/2025/dora-report/), Sep 2025) [academic/research]; Mollick/P&G Cybernetic Teammate ([One Useful Thing](https://www.oneusefulthing.org/p/the-cybernetic-teammate), 2026) [practitioner direct / academic]; S&P Global ([Derosiaux/Medium](https://sderosiaux.medium.com/what-changed-in-q4-2025-and-why-enterprises-are-afraid-of-2026-2027-ccd4e632baae), Dec 2025) [practitioner analysis]
 **Date:** 2026-03-23
 
@@ -508,7 +508,7 @@ The structural pattern connecting all three: **(1) rules are codified** (GAAP, r
 
 **The implication for CTOs:** If your process has codified rules, verifiable correctness, and talent constraints — it's a candidate for agentic deployment now. If it's judgment-heavy with no verification metric (strategy, creative, management) — wait. The domain characteristics predict readiness better than any vendor demo.
 
-**Applies to:** Advisory (which processes to pilot), Bootstrap Module 7, newsletter, content strategy
+**Applies to:** Advisory (which processes to pilot), Agents 101 Module 7, newsletter, content strategy
 **Source:** Platform watch cycles 40-57 synthesis; finance/accounting Level 3 upgrade (cycle 55); operations signals (cycle 57)
 **Date:** 2026-03-23
 
@@ -530,9 +530,9 @@ The profile connects them: CS minor (not CS major, not engineer), domain experti
 
 This is why it's invisible to public research. It's happening inside enterprises, done by domain experts who don't blog or tweet. The practitioner-publishing gap. We see it because Antti is inside F-Secure training people. There could be thousands of these people. Nobody's counting because they don't identify as developers and don't show up in developer surveys.
 
-**The implication for CTOs:** Your AI-native pioneers are already in your organization. They're not in engineering. They're the finance person who's been quietly building tools for 9 months. The director who stopped making slides and started building dashboards. Look for the profile: domain expertise + technical curiosity + structured thinking. The CS minor is a predictor, but the real variable is "can this person describe work in terms an agent can execute?" After Bootstrap training, you'll have more of them — because training is what gives the rest of the organization the vocabulary the CS minors already have.
+**The implication for CTOs:** Your AI-native pioneers are already in your organization. They're not in engineering. They're the finance person who's been quietly building tools for 9 months. The director who stopped making slides and started building dashboards. Look for the profile: domain expertise + technical curiosity + structured thinking. The CS minor is a predictor, but the real variable is "can this person describe work in terms an agent can execute?" After Agents 101 training, you'll have more of them — because training is what gives the rest of the organization the vocabulary the CS minors already have.
 
-**Applies to:** Advisory ("find your internal pioneers"), Bootstrap positioning (we create more of these people), Module 1 & 8, newsletter, AI-native teams research
+**Applies to:** Advisory ("find your internal pioneers"), Agents 101 positioning (we create more of these people), Module 1 & 8, newsletter, AI-native teams research
 **Source:** F-Secure direct observation — 2 practitioners, emerging pattern (March 2026); domain-crossing pattern (cycles 55-57)
 **Date:** 2026-03-23
 
@@ -554,7 +554,7 @@ Zero counter-evidence found across 53+ research cycles. No company has been foun
 
 **The implication for CTOs:** This is no longer opinion. Five independent sources, including one Fortune 500 company, converge on the same pattern. Build competence first. The platform question answers itself afterward.
 
-**Applies to:** Core value proposition (strongest evidence), Bootstrap positioning, advisory, sales conversations
+**Applies to:** Core value proposition (strongest evidence), Agents 101 positioning, advisory, sales conversations
 **Source:** Cycle 53 convergence analysis; Moderna/HBS case study; F-Secure evidence; Mollick, MIT, Quintero
 **Date:** 2026-03-23
 
@@ -568,11 +568,11 @@ The signal count crossed 10+ independent sources in cycle 58: PwC (38% cite skil
 
 Zero platform-first success stories found across 58 cycles. The closest (PwC's 230K Copilot users) is actually competence-first — PwC's core business IS change management.
 
-Mollick's new "Leadership, Lab, Crowd" framework maps directly to our five-step journey: Bootstrap = seeding the Crowd, Champions = building the Lab, the buyer = Leadership. His separate observation that Fortune 50 CTOs "won't sign another five-year contract" reinforces: train people (durable) before betting platforms (shifting).
+Mollick's new "Leadership, Lab, Crowd" framework maps directly to our five-step journey: Agents 101 = seeding the Crowd, Champions = building the Lab, the buyer = Leadership. His separate observation that Fortune 50 CTOs "won't sign another five-year contract" reinforces: train people (durable) before betting platforms (shifting).
 
 **The implication for CTOs:** Stop evaluating platforms. Start building competence. The platform question becomes answerable once your people know what they need.
 
-**Applies to:** Core value proposition, marketing messaging, Bootstrap positioning, advisory conversations, newsletter content
+**Applies to:** Core value proposition, marketing messaging, Agents 101 positioning, advisory conversations, newsletter content
 **Source:** Cycle 58 synthesis — PwC, Deloitte, BCG, Meta, Mollick/UNLEASH, shadow AI, Moderna/HBS, MIT, Quintero, F-Secure
 **Date:** 2026-03-23
 
@@ -584,11 +584,11 @@ Mollick's new "Leadership, Lab, Crowd" framework maps directly to our five-step 
 
 Mollick (UNLEASH, March 2026): "The locus of innovation is not with vendors but inside the organization already — the AI users." Shadow AI data confirms: 93% of enterprise ChatGPT use is on non-corporate accounts. 69% of organizations suspect employees use prohibited AI tools. Moderna case: once the workforce was trained, 1,000s of custom GPTs appeared organically — nobody assigned this work.
 
-This reframes the bootstrap offering fundamentally. We're not introducing AI to organizations. We're making visible what's already happening underground and giving it structure, governance, and strategic direction. The urgency isn't "you need to start" — it's "this is already happening whether you know it or not."
+This reframes the agents-101 offering fundamentally. We're not introducing AI to organizations. We're making visible what's already happening underground and giving it structure, governance, and strategic direction. The urgency isn't "you need to start" — it's "this is already happening whether you know it or not."
 
 **The implication for CTOs:** Your people are already using AI. The question isn't whether to adopt — it's whether to lead the adoption that's already underway, or let it happen chaotically.
 
-**Applies to:** Marketing messaging (urgency framing), Bootstrap positioning, advisory conversations
+**Applies to:** Marketing messaging (urgency framing), Agents 101 positioning, advisory conversations
 **Source:** Mollick UNLEASH March 2026, shadow AI surveys, Moderna/HBS
 **Date:** 2026-03-23
 
@@ -604,7 +604,7 @@ Domains that lack ANY of these three properties lag behind. Marketing has no cod
 
 **The implication for CTOs:** Don't spread agent investment across all departments equally. Start where the meta-pattern predicts success: codified rules, verifiable output, talent bottleneck. Those departments will self-fund the transformation for the rest.
 
-**Applies to:** Platform advisory, Bootstrap Module 7, newsletter content, strategy discussions
+**Applies to:** Platform advisory, Agents 101 Module 7, newsletter content, strategy discussions
 **Source:** Cross-platform synthesis cycles 55-60 (finance/accounting Level 3, legal approaching Level 3)
 **Date:** 2026-03-23
 
@@ -622,7 +622,7 @@ The "December 2025 threshold" claim from Karpathy — the moment coding agents b
 
 **The implication for CTOs:** "Agentic engineering" is becoming a real job discipline, not a buzzword. Your engineers are already experiencing it. The question is whether your non-engineers (the other 90%) can learn it too. That's what our training delivers.
 
-**Applies to:** Core positioning (we teach agentic engineering), Bootstrap curriculum framing, newsletter, Module 1/8
+**Applies to:** Core positioning (we teach agentic engineering), Agents 101 curriculum framing, newsletter, Module 1/8
 **Source:** Karpathy No Priors podcast (March 20), Willison Pragmatic Summit (March 14), Chase Deep Agents launch — cycle update March 23
 **Date:** 2026-03-23
 
@@ -674,7 +674,7 @@ The counter-signal: no regulator has formally endorsed autonomous AML decisionin
 
 **The implication for CTOs:** If you run a compliance function, AML/KYC alert triage is the highest-conviction agent use case outside customer service. The evidence base is approaching convergence. Start with false positive reduction (bounded, verifiable, audit-trailable) — not with SAR generation (judgment-heavy, regulator-facing).
 
-**Applies to:** Platform advisory, Bootstrap Module 7, newsletter content, compliance plug point in training
+**Applies to:** Platform advisory, Agents 101 Module 7, newsletter content, compliance plug point in training
 **Source:** Cycle 66 convergence analysis — RegTech Analyst, PaymentsJournal, tech.eu, FinTech Magazine
 **Date:** 2026-03-24
 
@@ -690,7 +690,7 @@ The pattern is recursive: enterprises won't deploy agents without governance →
 
 **The implication for CTOs:** Don't select governance tools separately from agent platforms. The platform that bundles governance wins — because it removes one of the three blockers (the other two being integration and skills).
 
-**Applies to:** Platform advisory, Bootstrap Module 4 (Security), Module 7 (Agent Platforms), newsletter
+**Applies to:** Platform advisory, Agents 101 Module 4 (Security), Module 7 (Agent Platforms), newsletter
 **Source:** Cycle 68 governance convergence analysis — ServiceNow AI Gateway, A2A v1.0, NIST NCCoE, Stacklok, Lunar.dev, AWS Cedar
 **Date:** 2026-03-24
 
@@ -702,9 +702,9 @@ The pattern is recursive: enterprises won't deploy agents without governance →
 
 Berner (Finland) replaced 400 ChatGPT licenses with Workday Sana — 90% adoption in 40 days. The speed of adoption reveals that employees were already doing the work with consumer tools. The enterprise deployment didn't create new AI usage; it brought existing usage under governance. CatalyStone's Nordic HR survey (500 professionals, Sweden/Denmark/Finland) shows 46% piloting, only 14% operational, 40% not started.
 
-**The implication for buyer leaders:** Your employees are already using AI. The question isn't "should we adopt?" — it's "should we govern what's already happening?" The Bootstrap training's first insight ("useful AND unreliable") hits differently when participants realize their teams are already relying on unreliable tools without guardrails.
+**The implication for buyer leaders:** Your employees are already using AI. The question isn't "should we adopt?" — it's "should we govern what's already happening?" The Agents 101 training's first insight ("useful AND unreliable") hits differently when participants realize their teams are already relying on unreliable tools without guardrails.
 
-**Applies to:** Bootstrap Module 1 (Getting Going), marketing/sales conversations, Nordic positioning
+**Applies to:** Agents 101 Module 1 (Getting Going), marketing/sales conversations, Nordic positioning
 **Source:** Cycle 68 — Berner/Joona Honka via HR Brew, CatalyStone Nordic HR Trends & Tech Report 2026
 **Date:** 2026-03-24
 
@@ -720,7 +720,7 @@ This matters because it means the infrastructure layer is now betting that the f
 
 **The implication for CTOs:** Your current AI infrastructure (likely Azure + Copilot) may be optimized for chatbots. Agents need a different runtime. The cloud providers are now explicitly separating these architectures. This doesn't mean migrate now — but it means plan for a potential split between where your chatbots live (Azure) and where your agents will live (AWS/Bedrock or other stateful runtimes).
 
-**Applies to:** Platform advisory, Bootstrap Module 7, infrastructure assessment
+**Applies to:** Platform advisory, Agents 101 Module 7, infrastructure assessment
 **Source:** OpenAI-AWS Frontier deal (March 2026), InfoQ analysis
 **Date:** 2026-03-24
 
@@ -740,7 +740,7 @@ The biggest unsolved problem: nobody has published a framework for evaluating sp
 
 **The implication for CTOs:** Your best future leaders are your best current spec-writers — the people who communicate intent clearly enough that others (now agents) can execute without constant clarification. That's not your most technical person. It's your clearest thinker. Find them by looking at who writes the best PRDs, the best design docs, the best project briefs today. Those people are already practicing the leadership skill that matters most. The manager who leads through hallway conversations and Slack DMs — that person's medium doesn't transfer.
 
-**Applies to:** Advisory (leadership assessment), Bootstrap Module 8, newsletter, AI-native team design
+**Applies to:** Advisory (leadership assessment), Agents 101 Module 8, newsletter, AI-native team design
 **Source:** Cycle 74 — Mollick/Wharton, Karpathy/AutoResearch, Ben Kuhn/Anthropic, Ivory/Intercom, Osmani/Google, StrongDM, Spotify/Honk, Fortune/Wong
 **Date:** 2026-03-30
 
@@ -890,7 +890,7 @@ The counter-evidence is real: compound error math (95% per step × 20 steps = 36
 
 **The implication for CTOs:** The platform you're looking for — the one that can connect to any system, build its own tools, run autonomously, and handle multi-step business work — already exists. It's called Claude Code. It entered through engineering, but the architecture serves any domain. Building competence NOW means your team moves first when enterprise infrastructure matures (Antspace BYOC, Codex cloud, governance APIs). Waiting for a "business agent platform" to appear is waiting for something that's already here wearing a different label.
 
-**Applies to:** CTO advisory (platform selection), training (Module 1 reframe), newsletter ("The Platform You're Looking For Already Exists"), Bootstrap curriculum
+**Applies to:** CTO advisory (platform selection), training (Module 1 reframe), newsletter ("The Platform You're Looking For Already Exists"), Agents 101 curriculum
 **Source:** Pattern 48 research (April 2, 2026) — 10+ practitioner signals, Anthropic/OpenAI product analysis, Lenny Rachitsky, Alex Lieberman, Fortune/OpenAI, Bloomberg/Anthropic
 **Date:** 2026-04-02
 
@@ -1042,7 +1042,7 @@ The equation: **organisation foundations + PM development = results. Both matter
 
 **The implication for CTOs:** This is the universal pattern, not just a PM finding. Before deploying AI in any function, audit the organizational foundations. Role clarity. Strategic time protection. Clear success metrics. Leadership recognition of the function. Customer/external signal. If these aren't in place, AI accelerates confusion, not value. The sequencing is: steer (fix the foundations) first, then accelerate (deploy AI).
 
-**Applies to:** advisory (pre-engagement org assessment), training (why Bootstrap Module 1 covers organizational readiness, not just tools), newsletter (the amplifier framing is publishable), strategy
+**Applies to:** advisory (pre-engagement org assessment), training (why Agents 101 Module 1 covers organizational readiness, not just tools), newsletter (the amplifier framing is publishable), strategy
 **Source:** Product Focus "Product Management, Amplified" Parts 1-3 (2026 Survey, N=677, https://www.productfocus.com/product-management-amplified-part-3-steer-first-then-accelerate/)
 **Date:** 2026-04-15
 
@@ -1054,13 +1054,13 @@ The equation: **organisation foundations + PM development = results. Both matter
 
 The failure mode is the correction log: CLAUDE.md grows, Claude reads it, nothing in the mechanism tests whether a rule still holds or whether scattered observations form a pattern. "Memory without reflection is just storage." The fix is structural — force retrieval before the task, extract after the task, and make the store tiered so observations can climb or fall. A maintenance schedule prevents decay.
 
-This is a concrete mechanism for the `rules-verification-scarcity` L4 meta-pattern: rules need verification to stay load-bearing; the Quality Gate block IS the verification loop, and the Knowledge Architecture block is the place where verified rules get promoted into default behavior. It's also a concrete Bootstrap M2 scaffold — the "living CLAUDE.md" the curriculum promises, with teeth.
+This is a concrete mechanism for the `rules-verification-scarcity` L4 meta-pattern: rules need verification to stay load-bearing; the Quality Gate block IS the verification loop, and the Knowledge Architecture block is the place where verified rules get promoted into default behavior. It's also a concrete Agents 101 M2 scaffold — the "living CLAUDE.md" the curriculum promises, with teeth.
 
 Counter-points to hold: (1) single-practitioner source, one month of use — Level 2 evidence. (2) The 80% hit rate claim on decisions-with-journaled-alternatives is from the author's own practice; would want convergence before citing as a pattern. (3) Promotion-cycle overhead could itself decay if the maintenance schedule isn't run — the system is self-aware about this, but so are many systems that still rot.
 
 **The implication for CTOs:** Team CLAUDE.md conventions — especially engineering-team standards — should specify *structure* (tiered store + promotion rules + decision journal + quality gate + maintenance schedule), not just content. A flat, append-only CLAUDE.md is the agent equivalent of a wiki that nobody reads: mass without leverage. This is small enough to deploy in a week and load-bearing enough to compound.
 
-**Applies to:** Bootstrap M2 (living CLAUDE.md), Bootstrap M5/M6 (quality-gate pattern), Engineering Management training M5 (team rules of engagement), article pipeline (concrete pattern to cite when discussing agent memory systems)
+**Applies to:** Agents 101 M2 (living CLAUDE.md), Agents 101 M5/M6 (quality-gate pattern), Engineering Management training M5 (team rules of engagement), article pipeline (concrete pattern to cite when discussing agent memory systems)
 **Source:** Paweł Huryn (AI PM, productcompass.pm), *"Three Blocks That Make Claude Get Smarter Every Session"* — [productcompass.pm/p/claude-md-snippets](https://www.productcompass.pm/p/claude-md-snippets), x.com/PawelHuryn/status/2039095189843706022, 99.1K views [practitioner direct, single experiment, Level 2]
 **Date:** 2026-04-01
 

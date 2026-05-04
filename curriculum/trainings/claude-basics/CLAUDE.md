@@ -24,13 +24,24 @@ Third architecture model after Agents 101 (local training-dir + zips) and AE101 
 
 The classic *"don't put your training-dir in OneDrive"* warning from Agents 101 does not apply here: Claude Basics homework can live in normal synced work folders because the folder CLAUDE.md names the runtime.
 
+## Default room format — 10-person IT cohort
+
+For an IT-heavy cohort of about 10 people who already know chat and are now taking on Cowork, the live session needs a stronger operating model than the module list alone.
+
+- **Three groups by default:** 3 / 3 / 4. Each group needs one Cowork-confident driver. If Cowork confidence is uneven, organisers pre-identify drivers during preflight instead of letting the room discover access gaps live.
+- **Three-hour live shape:** repo demo, 10-minute break, short Cowork threshold check, 60-minute rollout-crux work, 15-minute break, group readout, homework launch, organiser close. The build-and-verify exercises remain homework; the live launch only makes the personal-folder path concrete.
+- **Cowork threshold check:** before the crux exercise, every participant confirms they can open the shared workshop folder and see their first-name folder. If someone cannot, organisers pair them or move them into observer/contributor mode. Do not debug sync live.
+- **Repo demo translation rule:** every repo-demo stop must translate back to the participant's Cowork world: rules file, prompt file, saved output, check, repeatable folder. No code-tour digressions.
+- **Customer-side operation:** customer organisers operate SharePoint/Cowork. The trainer operates the Bosser repo demo and public workbook only.
+
 ## Remote-resilient delivery contract
 
 Claude Basics may run with organisers remote. The live synthesis path must therefore be proven before the workshop, not debugged live.
 
 - **Local ownership:** the organisers own content and room mechanics. Organisers help participants find folders, confirm sync, and keep the session moving while facilitation happens remotely.
-- **Hard preflight:** before the workshop, the organisers prove that the trainer can run the repo demo, at least one likely group driver can save to `shared/`, and organisers can read that file for the optional readout. If this fails, the workshop does not start as designed.
+- **Hard preflight:** before the workshop, the organisers prove that the trainer can run the repo demo, each likely group driver can save to `shared/`, and organisers can read those files for the optional readout. If this fails, the workshop does not start as designed.
 - **Customer privacy by design:** all real customer material lives only in the customer's SharePoint/Cowork environment. The public curriculum names paths and artifact shapes, never customer content. Bosser tooling must not ingest customer files for this workshop.
+- **Bosser machine boundary:** the trainer's computer may show the Bosser repo, public workbook, and demo build output. It must not connect to the customer's SharePoint workspace, Cowork folders, or real workshop files. Customer organisers prove and operate the customer-side workspace.
 - **No live M1/M2 shared materials:** `m1-task.md`, `m2-verification-output.md`, group verification files, and answer keys are no longer live-session dependencies. The build-and-verify path is homework.
 - **Shared writes are limited:** group-level files are written only by nominated group drivers or the organisers.
 

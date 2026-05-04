@@ -2,7 +2,7 @@
 
 ## Big Idea
 
-In 45 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux on our journey.
+In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux on our journey.
 
 ## What You'll Learn
 
@@ -52,7 +52,7 @@ The next section is separate homework. It is not part of the 3-hour live room.
 
 **Meta:**
 - **Primary Bloom's level:** Evaluate
-- **Length:** 45 minutes. Opening + 32 live exercise + close
+- **Length:** 60-minute rollout-crux block in the live agenda. Opening + exercise + close
 - **Core simplification.** Live crux work follows the repo demo and does not depend on homework outputs. It starts fresh on rollout difficulty and ends when each group has a clean synthesis file
 - **The reveal at exercise close:** *"You just ran the smallest useful version of the rollout system: individual views diverged, groups synthesized, and only then did ideas cross-pollinate. That ordering matters."* Land it once. Don't elaborate
 - **Homework bridge.** The next module is a short launch into self-study, not another live exercise
@@ -67,7 +67,7 @@ The next section is separate homework. It is not part of the 3-hour live room.
 
 **Eval instance:** `curriculum/evals/instances/claude-basics--find-the-crux.md`
 
-**Mood contract:** expanded horizon. Forward awe with a deliverable in hand. Edits that resolve into graduation-ceremony register steal the forward hunger. Edits that resolve into *"now you know what to do"* are correct; edits into *"we're done here"* are wrong.
+**Mood contract:** expanded horizon. Forward awe with a deliverable in hand. Edits that resolve into tidy completion register steal the forward hunger. Edits that resolve into *"now you know what to do"* are correct; edits into *"we're done here"* are wrong.
 
 **Frame to land:**
 - *"The hard part isn't picking a tool. It's finding the crux on our journey."*

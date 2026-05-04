@@ -156,6 +156,8 @@ That's the whole of Module 1's big idea, proven with your own name on it.
 
 Generic output comes from generic context. The LLM didn't get better between Phase 1 and Phase 6. You did. You became better at feeding it what it needs to produce YOUR output instead of everyone-else's. The same mechanism scales: business proposals, competitor analysis, compliance reviews, product strategy. Anything where output quality depends on "is this genuinely ours or just fine?"
 
+You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buyer frame, anti-branding mirror, free iteration loop, portable guardrails file at the close. After Agents 101, when the next personal-shaped output asks for the same move, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+
 **Time:** 45 minutes. Banter expected.
 
 <!-- maintainer -->

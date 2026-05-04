@@ -62,6 +62,8 @@ You described. The tool built. You judged. The cycle took 25 minutes. The second
 
 The seven modules taught you to be a builder. Module 8's first move is watching the builder disappear. You become the describer; the agent becomes the builder. Monday's new gap gets a new agent in 25 minutes, not a new sprint. The ceiling you raised just climbed again.
 
+You just ran the meta-tool move at the heart of **Recipe 8**: agent generates agent, in 25 minutes, on a real gap. After Agents 101, when the next gap wants the same shape, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves live, plus the rest of Recipe 8 (three thinking disciplines, strategy kernel, domain-readiness 3-test) for when the next move is bigger than one agent.
+
 **Time:** 25 minutes.
 
 <!-- maintainer -->

@@ -196,6 +196,8 @@ Two things combined make a system: *persistence* (it remembers) and *automation*
 
 Every module after this one uses the memory you just built.
 
+You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-mode review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+
 **Time:** 45 minutes.
 
 <!-- maintainer -->

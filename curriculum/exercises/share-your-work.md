@@ -273,6 +273,8 @@ Before you design a solution, **interview for the outcome.** That's the transfer
 
 A candidate picked because it fits the infrastructure is shopping. A candidate picked because it moves the outcome is design.
 
+You just ran **Recipe 7** end-to-end: the Jobs-to-be-Done interview for agents, the four sharing strategies (context, skill, output, interface), the technical plan paired with the people plan, the switch-test. After Agents 101, when the next teammate wants a slice of your system, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+
 **Time:** 55–70 minutes. Some phases will run long. That's where the learning lives.
 
 <!-- maintainer -->

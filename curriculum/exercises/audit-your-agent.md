@@ -119,6 +119,8 @@ The Module 3 system has two packaged-lens reports against it now, plus the raw p
 
 Absolute certainty is not on offer. The discipline is. Raw policy files first, packaged lenses second, one mitigation, one named residual. The reusable check is the expert in the room. The report carries the evidence and the decisions. The unease that remains is what the loop is supposed to produce, not what it failed to remove.
 
+You just ran **Recipe 4** end-to-end on your real system: the two-lens audit, the five named agent-risk patterns, the five mitigations (scope, split, filter, gate, review), the "I can't tell" verdict earning a row of its own. After Agents 101, when the next agent needs the same audit, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) names the moves and components without the training scaffolding.
+
 **Time:** 35 minutes. Phase 1 ~3, Phase 2 ~12, Phase 3 ~10, Phase 4 ~10.
 
 <!-- maintainer -->

@@ -70,7 +70,7 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md memory sources agents .claude/skills/self-study/SKILL.md; do
+for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents .claude/skills/self-study/SKILL.md; do
   if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
     echo "WARNING — expected path missing: $path" >&2
     exit 1

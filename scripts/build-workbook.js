@@ -294,6 +294,8 @@ ${content}
 }
 
 function template(title, content, trainingKey) {
+  const training = CR.TRAININGS[trainingKey] || {};
+  const runtime = training.runtime || 'cli';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -302,7 +304,7 @@ function template(title, content, trainingKey) {
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
 </head>
-<body class="runtime-cli workbook" data-training="${trainingKey}">
+<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
 <script>${SPA_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
@@ -498,8 +500,13 @@ if (legacy) {
 trainings.forEach(trainingKey => buildTraining(customer, trainingKey));
 buildCustomerIndex(customer);
 
-console.log('Once deployed:');
-console.log(`  https://agents102.bosser.consulting/clients/${customer}/`);
+// Build emits to site/clients/<cust>/. Customer deploy lives in the sibling
+// ai-training-internal repo (private, materials.arcticrex.com); run
+// `scripts/deploy-customer.sh <cust>` there to ship.
+console.log(`Built to site/clients/${customer}/.`);
+console.log('Deploy via: ai-training-internal/scripts/deploy-customer.sh ' + customer);
+console.log('Live URLs after Pages publishes:');
+console.log(`  https://materials.arcticrex.com/content/${customer}/`);
 trainings.forEach(trainingKey => {
-  console.log(`  https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/`);
+  console.log(`  https://materials.arcticrex.com/content/${customer}/${trainingKey}/`);
 });

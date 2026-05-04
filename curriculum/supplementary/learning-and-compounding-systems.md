@@ -16,3 +16,6 @@ A reference document that grows across the training. Each module that adds a lay
 ---
 
 **TODO:** Sections above to be written as each module's exercise stabilizes. See `curriculum/supplementary/README.md` for the pattern.
+
+**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5)
+- judges @bb9c1d5: writing PASS, story N/A (stub-no-content), technical N/A (stub-no-content), behavior N/A (no-student-prompt-blocks)

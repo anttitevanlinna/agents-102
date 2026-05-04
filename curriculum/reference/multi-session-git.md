@@ -96,3 +96,6 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into. Fi
 **Open question for first-cohort feedback:** does AE101 want `git worktree` as the default mental model for multi-session, or as an advanced move taught only after students have landed the single-session loop? Current stance: optional homework (this file), not a prerequisite. Reassess after Cohort 1 reports.
 
 **Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) and in the [Pragmatic Engineer interview](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [both practitioner direct / practitioner analysis].
+
+**Quality:** compendium-audited 2026-05-03 (story@bb9c1d5 behavior@bb9c1d5)
+- judges @bb9c1d5: writing grandfathered, story PASS, technical grandfathered, behavior PASS

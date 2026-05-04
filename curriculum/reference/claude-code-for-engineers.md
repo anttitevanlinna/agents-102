@@ -266,7 +266,7 @@ The encoded project path is the absolute working-directory path with `/` replace
 
 In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the M5 worktree may have different encoded folders.
 
-Ask Claude to find and read the right transcript.
+Ask Claude to find and read the right transcript. Expect a narration before the findings; skim past the opening to the numbered list.
 
 **Prompt** *(Claude Code)*
 
@@ -280,6 +280,8 @@ Read it enough to tell me:
 4. Which decisions were made in chat but not encoded into files.
 
 Then compare that read against `git log`, `git diff`, and branch state. Tell me where the transcript and git agree, and where one sees something the other misses.
+
+Report literal counts and quoted text: actual restart numbers, exact correction messages. No softened summary.
 ```
 
 Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-run read uses both.
@@ -417,3 +419,6 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 ---
 
 **This document grows.** If you hit something during the training that belongs here and isn't, flag it. For feature-specific detail, the [official docs](https://code.claude.com/docs/en/memory.md) are the source of truth. When docs disagree with anything above, trust the docs.
+
+**Quality:** compendium-audited 2026-05-03 (story@bb9c1d5 behavior@bb9c1d5)
+- judges @bb9c1d5: writing grandfathered, story PASS, technical grandfathered, behavior PASS

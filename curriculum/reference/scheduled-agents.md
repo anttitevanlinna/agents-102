@@ -57,3 +57,6 @@ The scheduled agent invokes the skill. The skill is the thing that catches the g
 - Desktop local tasks are GUI-only (Schedule sidebar → New task → New local task). Catch-up on wake: Desktop fires one catch-up run for the most recently missed time within a 7-day window.
 - `/loop` supports fixed interval (`/loop 5m <prompt>`) and self-paced mode (omit interval); no catch-up (session-bound).
 - Skills auto-discover at `~/.claude/skills/<name>/SKILL.md` within the same session; no restart, no registration.
+
+**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5)
+- judges @bb9c1d5: writing PASS, story N/A (no-mood-or-sim-surface), technical grandfathered, behavior N/A (no-student-prompt-blocks)

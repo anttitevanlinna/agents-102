@@ -227,3 +227,6 @@ AE101 and Bootstrap are separate trainings with separate audiences and separate 
 ### Capability-check trust note
 
 A capability-check agent told us early in the audit that Cowork was a separate codebase from Claude Code. The agent was wrong; the official docs say same architecture. Practitioner observation + direct WebFetch sided against the agent. Pattern matches platform compendium § 4: *"Trust-but-verify the capability-check agent too — WebFetch the URL yourself when the assertion is load-bearing; agents can hallucinate credible-sounding official answers."*
+
+**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5)
+- judges @bb9c1d5: writing PASS, story N/A (no-mood-or-sim-surface), technical grandfathered, behavior N/A (no-student-prompt-blocks)

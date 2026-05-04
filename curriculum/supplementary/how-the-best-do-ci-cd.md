@@ -6,7 +6,7 @@
 
 Most CTOs walking into the agent era treat CI/CD as a tooling question. Which pipeline runner, which deployment tool, which test framework. That is the 2019 conversation. The 2026 conversation is a systems-throughput question: can your review + merge + deploy + observe loop keep up with engineers who ship 20 to 30 agent-drafted PRs per day?
 
-For most orgs, the straight answer is no. Not because the pipes are wrong. Because the humans-in-the-loop assumptions baked into every pre-merge gate were written for a world where a senior engineer read every diff. That world is gone. An engineer at Intercom's pace cannot read 93.6% of their own output line-by-line ([Darragh Curran / practitioner direct](https://ideas.fin.ai/p/2x-nine-months-later)). A reviewer cannot, either. Something has to give.
+For most orgs, the straight answer is no. Not because the pipes are wrong. Because the humans-in-the-loop assumptions baked into every pre-merge gate were written for a world where a senior engineer read every diff. That world is gone. An engineer at Intercom's pace cannot read 93.6% of their own output line-by-line ([Darragh Curran](https://ideas.fin.ai/p/2x-nine-months-later)). A reviewer cannot, either. Something has to give.
 
 The gap between agent throughput and review/merge/deploy capacity is where this piece lives. The answer is not *faster CI*. The answer is *rethinking what humans are for, what gates are for, and what post-merge infrastructure now has to catch*. You will pay for this somewhere. Better to pay on purpose than by accident.
 
@@ -14,7 +14,7 @@ The gap between agent throughput and review/merge/deploy capacity is where this 
 
 Six forces bend an agent-scale CI/CD loop in ways a pre-agent loop never had to handle. Get any one of these wrong and the others start compensating badly.
 
-**Throughput decouples from merge rate.** Agents ship code fast. Your review queue grows at the same rate. If merge capacity is flat, the queue is where agent productivity gets destroyed and morale follows. Intercom's 19.2% auto-approval rate on the smallest, lowest-risk PRs is a direct response to this: the smallest slice of the queue, automated, pulls the median down for everyone ([Curran / practitioner direct](https://ideas.fin.ai/p/2x-nine-months-later)).
+**Throughput decouples from merge rate.** Agents ship code fast. Your review queue grows at the same rate. If merge capacity is flat, the queue is where agent productivity gets destroyed and morale follows. Intercom's 19.2% auto-approval rate on the smallest, lowest-risk PRs is a direct response to this: the smallest slice of the queue, automated, pulls the median down for everyone ([Curran](https://ideas.fin.ai/p/2x-nine-months-later)).
 
 **Blast-radius stratification.** A CSS tweak and an auth change do not deserve the same gate. One gate for both means either the tweak takes too long or the auth change ships too loose. Tiered gating sorts PRs by what could go wrong, not by who wrote them.
 
@@ -30,7 +30,7 @@ Six forces bend an agent-scale CI/CD loop in ways a pre-agent loop never had to 
 
 The reflex response is *"add more reviewers, add more rigor."* Wrong instinct. You cannot out-review agent throughput with more humans. You can only out-design it with tiered gates.
 
-Intercom's shape is the clearest public version. PRs are stratified by blast radius. The lowest-risk tier (feature-flag cleanups, small bug fixes, narrow changes) goes through agent-drafted, agent-reviewed, tests-passed, verifier-green, and auto-merges with no human. 19.2% of merges now go this path. The cycle time is 14.6 minutes, against a 75.8-minute org median. 86% of these PRs are 20 lines or fewer ([Curran / practitioner direct](https://ideas.fin.ai/p/2x-nine-months-later)).
+Intercom's shape is the clearest public version. PRs are stratified by blast radius. The lowest-risk tier (feature-flag cleanups, small bug fixes, narrow changes) goes through agent-drafted, agent-reviewed, tests-passed, verifier-green, and auto-merges with no human. 19.2% of merges now go this path. The cycle time is 14.6 minutes, against a 75.8-minute org median. 86% of these PRs are 20 lines or fewer ([Curran](https://ideas.fin.ai/p/2x-nine-months-later)).
 
 The higher tiers still involve humans. But the human role changes. You are not reading 30 diffs a day line-by-line. You are reading *patterns*. You approve architectural deltas, override when instinct fires, reject when something smells wrong. This is design review, not line review. A different skill than what most senior engineers trained for, and a different skill than most review checklists assume.
 
@@ -50,13 +50,13 @@ There is also a social pace gap the CTO should watch. An engineer running hot fo
 
 Three named operations to study. Each answers a different question.
 
-**Intercom: Tier 1/2/3 review as auto-merge gate.** 93.6% of PRs are agent-drafted; 19.2% auto-approve at the lowest tier; auto-approved PRs merge in 14.6 min against a 75.8-min org median; 86% of auto-approved PRs are 20 lines or fewer ([Curran, *2x nine months later* / practitioner direct](https://ideas.fin.ai/p/2x-nine-months-later)). The move to study: how the criteria for each tier get defined and evolved, and how auto-approval scope expanded methodically from the safest slice outward.
+**Intercom: Tier 1/2/3 review as auto-merge gate.** 93.6% of PRs are agent-drafted; 19.2% auto-approve at the lowest tier; auto-approved PRs merge in 14.6 min against a 75.8-min org median; 86% of auto-approved PRs are 20 lines or fewer ([Curran, *2x nine months later*](https://ideas.fin.ai/p/2x-nine-months-later)). The move to study: how the criteria for each tier get defined and evolved, and how auto-approval scope expanded methodically from the safest slice outward.
 
-**Ramp: Dojo as skill marketplace.** 350+ skills shared across 99.5% AI-active team, 84% using coding agents weekly, 12% of production PRs opened by non-engineers ([Geoff Charles / practitioner direct](https://x.com/geoffintech/status/2042002590758572377)). Dojo matters for CI/CD because the skills that earn their way into the marketplace are the skills that then show up in PRs. The merge gate becomes a filter on which skills can ride into production, not just which lines of code. If your CI cannot reason about skills-as-artifacts, your agents are shipping without traceable authorship.
+**Ramp: Dojo as skill marketplace.** 350+ skills shared across 99.5% AI-active team, 84% using coding agents weekly, 12% of production PRs opened by non-engineers ([Geoff Charles](https://x.com/geoffintech/status/2042002590758572377)). Dojo matters for CI/CD because the skills that earn their way into the marketplace are the skills that then show up in PRs. The merge gate becomes a filter on which skills can ride into production, not just which lines of code. If your CI cannot reason about skills-as-artifacts, your agents are shipping without traceable authorship.
 
-**Every Inc / Kieran Klaassen: 14-agent parallel review.** Klaassen runs 14 specialised reviewer agents in parallel over each PR (security, performance, architecture, style, and so on). Each finding spawns a dedicated per-comment agent that resolves it. Learnings back-feed into `CLAUDE.md` / `AGENTS.md` and skill files so the next PR starts smarter ([*Compound Engineering: The Definitive Guide* / practitioner direct](https://every.to/source-code/compound-engineering-the-definitive-guide)). This is the clearest public version of the fan-out reviewer pattern and the compounding memory loop on top of it. The company is small (10 people, 5 products), which means the operating model transfers as a pattern, not as a turnkey system. The pattern is the point.
+**Every Inc / Kieran Klaassen: 14-agent parallel review.** Klaassen runs 14 specialised reviewer agents in parallel over each PR (security, performance, architecture, style, and so on). Each finding spawns a dedicated per-comment agent that resolves it. Learnings back-feed into `CLAUDE.md` / `AGENTS.md` and skill files so the next PR starts smarter ([*Compound Engineering: The Definitive Guide*](https://every.to/source-code/compound-engineering-the-definitive-guide)). This is the clearest public version of the fan-out reviewer pattern and the compounding memory loop on top of it. The company is small (10 people, 5 products), which means the operating model transfers as a pattern, not as a turnkey system. The pattern is the point.
 
-A fourth candidate worth tracking: Cursor's own internal engineering CI story, if a citable practitioner-direct account surfaces. Flagged in the maintainer block.
+A fourth candidate worth tracking: Cursor's own internal engineering CI story, if a citable account from someone inside the team surfaces. Flagged in the maintainer block.
 
 ## What a CTO should ask on Monday
 
@@ -107,3 +107,6 @@ M6 taught you the loop at IC scale: spot the gap, build the eval, close the loop
 **Iteration log:**
 
 - 2026-04-24: Pass 1 authored. Structure follows source spec in `bosser-strategy:content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5 verbatim in intent. Six forces named, three anchor cases cited, seven-question CTO checklist landed. All source claims carry URL + practitioner-direct label. No [SOURCE NEEDED] flags at write time — all anchor-case numbers trace to existing observations/ or platform-watch/ files. Open TODOs logged for ship-time verification.
+
+**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5)
+- judges @bb9c1d5: writing PASS, story PASS, technical PASS, behavior N/A (no-student-prompt-blocks)

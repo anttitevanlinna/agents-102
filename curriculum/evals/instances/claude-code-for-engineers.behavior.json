@@ -1,0 +1,38 @@
+{
+  "content_sha": "481149387dac1bd0c5d56917aa6a1a3737689f9d8de89bf49c5c1da2dd255d99",
+  "generated_at": "2026-05-03T00:00:00Z",
+  "prompts": [
+    {
+      "prompt_index": 1,
+      "prompt_sha": "c5913e7848c46e2157b3928fc0860e66d386305dc3ccd3ec92126718f3f17a99",
+      "prompt_lead": "Find the transcript for the previous Claude Code session in this repo. Start from the",
+      "expected_response_shape": "Claude locates the most recent non-current .jsonl, reads key portions, produces a 4-point structured summary, then diffs against git log/diff output and reports agreements and gaps — with literal counts and quoted correction messages.",
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Multi-step autonomous research prompt still invites narration before tool calls. Mitigated: body callout immediately before the fence names the failure mode ('Expect a narration before the findings') and gives a recovery ('skim past the opening to the numbered list'). Body-callout carve-out applies — downgraded from med."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Prompt asks Claude to characterise where a previous Claude session drifted and corrected itself — RLHF charity may soften severity. Mitigated: trailing in-fence line ('Report literal counts and quoted text: actual restart numbers, exact correction messages. No softened summary.') is an explicit over-flag instruction. Downgraded from med."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Asking Claude to critique another Claude session's quality (drift, stalls, corrections) invites the sibling-charity variant of self-audit-charity. The same in-fence over-flag line ('No softened summary') provides partial mitigation; specificity demand (literal counts, quoted messages) reduces charitable summary risk."
+        }
+      ],
+      "failure_modes": [
+        "Claude opens with brief narration of its lookup plan — body callout gives the student the skim-past recovery, so this is expected and handled.",
+        "Claude characterises a session's drift as milder than the transcript shows — the 'literal counts' line substantially reduces but does not eliminate this risk."
+      ],
+      "recovery_paths": [
+        "Body callout already in place. No further prompt-level changes needed for preamble-before-action.",
+        "In-fence over-flag already in place. Self-audit-charity residual is low; accept."
+      ],
+      "load_bearing": false
+    }
+  ]
+}

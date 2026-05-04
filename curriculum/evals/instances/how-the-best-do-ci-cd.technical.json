@@ -1,0 +1,142 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/supplementary/how-the-best-do-ci-cd.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory. Scope: maintainer-block only, not student-facing body.",
+      "verdict": "REVISE",
+      "evidence": "line:9 — '[Darragh Curran / practitioner direct](https://ideas.fin.ai/p/2x-nine-months-later)'; line:17 — '[Curran / practitioner direct](https://ideas.fin.ai/p/2x-nine-months-later)'; line:33 — '[Curran / practitioner direct](...)'; line:53 — '[Curran, *2x nine months later* / practitioner direct](...)'; line:55 — '[Geoff Charles / practitioner direct](...)'; line:57 — '[*Compound Engineering: The Definitive Guide* / practitioner direct](...)'. Source-type labels appear embedded in link text throughout student-facing body. Per 2026-05-03 compounded rule, labels belong in maintainer-block provenance only; body ships citations in builder voice (hyperlinked name/title, no taxonomy label).",
+      "fix_hint": "Strip '/ practitioner direct' from body link text; keep bare hyperlinked practitioner name or title. Labels already present in maintainer-block source-verification section — no new information lost.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Practitioner-interview write-ups: attribute writer + subject distinctly.",
+      "verdict": "REVISE",
+      "evidence": "line:57 — '[*Compound Engineering: The Definitive Guide* / practitioner direct](https://every.to/source-code/compound-engineering-the-definitive-guide)'. Every Inc is a publication; if this is a journalist's write-up of Klaassen's work, the correct label is [practitioner analysis] not [practitioner direct], and attribution format should be 'WRITER on SUBJECT, *Title*'. Maintainer block itself flags uncertainty (line:91: 'Open the guide and confirm the count is 14'; line:105 TODOs: byline question open).",
+      "fix_hint": "Open every.to URL before first cohort — if Klaassen is the byline author, [practitioner direct] holds; if an Every journalist wrote it, flip to [practitioner analysis] with 'WRITER on Klaassen, *Compound Engineering...*' format. Already logged as a TODO in the maintainer block.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 4,
+      "rule_lead": "Hold short OODA loose. Single-source numbers get labeled single-source.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All three anchor-case figures (Intercom, Ramp, Every/Klaassen) are single-source and the maintainer block explicitly flags them as such (lines 89–91). Body does not assert convergence. PASS with note that single-source disclosure lives correctly in maintainer block, not body.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "No platform-capability claims present. File contains only practitioner CI/CD pattern descriptions.",
+      "line": 0,
+      "verdict": "PASS",
+      "source": "inferred"
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 9,
+      "claim": "An engineer at Intercom's pace cannot read 93.6% of their own output line-by-line",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 17,
+      "claim": "Intercom's 19.2% auto-approval rate on the smallest, lowest-risk PRs",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 55,
+      "claim": "Ramp: 350+ skills, 99.5% AI-active team, 84% using coding agents weekly, 12% non-engineer PRs",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 57,
+      "claim": "Klaassen runs 14 specialised reviewer agents in parallel over each PR",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": null
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://ideas.fin.ai/p/2x-nine-months-later",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://x.com/geoffintech/status/2042002590758572377",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
+      "alive": true,
+      "status_code": 200
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

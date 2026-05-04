@@ -66,12 +66,12 @@ These are not easy to choose from text alone. Decide before polishing body furth
 
 ## 8. Eval instances to fill
 
-- Agents 101 module eval instances for Modules 3–8 are missing or stale after the recent reshapes. Fill after the module spines settle and before three-persona sim.
+- Agents 101 module eval instances for Modules 3, 4, 6, 7, 8 are still missing or stale after the recent reshapes. Fill after the module spines settle and before three-persona sim. (M5 cluster filled 2026-05-04 via curriculum-pre-ship-audit, `agents-101--{hallucination-bakeoff,self-consistency-after-scoreboard,output-quality}.{writing,story,technical,behavior}.json`.)
 
-## 9. Site / renderer bugs
+## 9. Site / renderer bugs, verification pending
 
-- **Newlines disappear on copy from prompt blocks.** Multi-line prompts pasted from the curriculum site Copy button collapse to a single line. Affects every `**Prompt**` fenced block on the cohort site. Likely cause is `code.innerText` reading or clipboard write path in `addCopyButton` (`site/layouts/curriculum.js`). Reproduce on M5 hallucination-bakeoff Phase 0 prompts; fix and verify across CLI/Desktop paste targets.
-- **Paths inside copied prompts get auto-converted to markdown links on paste.** Copying a prompt that contains `module-5/claim-pool.md` and pasting into the destination app produces `module-5/[claim-pool.md](http://claim-pool.md)`. Render side is clean, `marked` does not autolink inside fenced blocks (verified). The destination app's data-detection treats `*.md` strings as domain-shaped and auto-linkifies. Affects every prompt that names a path with a dot extension (most M5 + M6 prompts). Mitigation candidates: insert a zero-width-joiner around the dot in copied paths, swap clipboard write for a hint that suppresses HTML, or surface as a known issue in the trainer guide. Investigate and pick after the newline bug above is fixed (same module, touch once).
+- **Newlines on copy from prompt blocks.** Fix shipped 2026-05-04: `code.innerText` → `code.textContent` in `addCopyButton` (`site/layouts/curriculum.js`). Verify newlines preserve across CLI / Cowork / Desktop / terminal paste targets before first cohort.
+- **Paths inside copied prompts auto-converted to markdown links on paste.** Fix shipped 2026-05-04: multi-format clipboard write via `ClipboardItem` (text/plain + text/html). HTML uses `<div>` + `<br>` + `&nbsp;` + `<wbr>` shape, destinations don't recognize as code (no dark-theme styling triggered) and `<wbr>` defeats URL pattern matching on `*.md` strings. Verify across Cowork / Desktop / Slack / terminal that paths land plain and newlines preserve.
 
 ---
 

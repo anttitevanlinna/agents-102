@@ -15,7 +15,6 @@ After this module, you will be able to:
 - **Distinguish** the one-off judge you picked in Module 5 from one that runs on every output as a fixed yardstick the work tightens against
 
 ## Start here
-Start this module at the training-directory root. Module 6 consumes `judges/groundedness-judge.md` from Module 5, writes run artifacts under `module-6/`, keeps the judge fixed, and sharpens `./generation-tactic.md`.
 
 Did you read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage)?
 

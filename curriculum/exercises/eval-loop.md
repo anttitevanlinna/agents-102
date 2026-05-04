@@ -1,5 +1,13 @@
 # Exercise: The eval loop runs itself
 
+**Session** *(new, "Module 6 - Evaluations")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m6-evaluations
+```
+
 **What you do:**
 
 In Module 5 you ran a benchmark on four detectors and picked the one that caught the most fabrication. The winner got saved as `judges/groundedness-judge.md`. That judge is now yours. It works. You watched it work.
@@ -16,7 +24,7 @@ You will come back to a short run note: *round 1 flagged 11 claims, round 2 flag
 
 **Phase 0: Run the judge once (~5 min).**
 
-One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle. You should already be in this module's fresh session at the training-directory root.
+One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle.
 
 Ask Claude to generate one briefing and score it with the judge from Module 5.
 

@@ -4,9 +4,9 @@
 
 Spawn three subagents inside one session. Each holds a different stance against your curated memory. The main session reads them back, applies a strategy framework, and writes the answer back into your `./crux.md` as a third section.
 
-**What happens:**
+**What happened:**
 
-Three voices, three short notes. The main session reads them side by side, applies Rumelt's strategy kernel, diagnosis, guiding policy, coherent actions, inline, writes the synthesis. Single artifact carries the full strategic frame: crux + question + answer.
+Three voices, three short notes. The main session read them side by side, applied Rumelt's strategy kernel, diagnosis, guiding policy, coherent actions, inline, wrote the synthesis. Single artifact carries the full strategic frame: crux + question + answer.
 
 **The point:**
 

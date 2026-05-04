@@ -1,4 +1,4 @@
-# Pre-cohort punchlist — Agents 101
+# Pre-cohort punchlist, Agents 101
 
 Everything that needs to land before the first paying Agents 101 cohort. Grouped by kind of work, not by module.
 
@@ -8,14 +8,14 @@ Delete items when done. Git is the history; this file is current state.
 
 Run the Agents 101 sim set after the current polish pass settles. Use the same shape as AE101: mid-competent business practitioner, opinionated senior leader, fast operator, plus targeted facilitator persona where module timing is the risk.
 
-- **Module 1 — Getting Going.** Re-run after the Module 1 → Module 2 prework handoff edit. Focus: joyful creation, guardrail ownership, no premature "systems" heaviness.
-- **Module 2 — Building Agent Systems.** Re-run after body touch. Focus: root `CLAUDE.md` creation, memory curation, plan-mode / plan-first runtime split, and the handoff to Module 3.
-- **Module 3 — Multi-Agent Systems.** Already compendium-audited with approve-with-todos. Re-sim after runtime-fork pass and prework mirroring. Focus: concurrent session friction, subagent terminology, and whether the synthesis beat preserves unsettled competence.
-- **Module 4 — Security.** Re-sim after the personal-skill shape. Focus: "I can't tell" rows, shame spiral, and whether unease stays epistemic rather than punitive.
-- **Module 5 — Output Quality.** Sim the hallucination benchmark as one bounded activity. Focus: whether scoreboard rescue lands without implying quality is solved.
-- **Module 6 — Evaluations.** Sim the eval loop and the core-arc close. Focus: walk-away window, fixed judge integrity, and whether M6 closes the six-module core cleanly.
-- **Module 7 — From Personal to Team.** Sim the sharing exercise. Focus: outcome interview magic, branch selection, Access-Trust Gap wording, and whether sharing feels like generosity rather than governance.
-- **Module 8 — Agents Building Agents.** Sim the SharePoint/OneDrive live-deliberation shape. Focus: sync timing, per-participant folder discipline, initial stances, cross-checks, proposal critique, one/two central synthesizers, synthesizer-injected midpoint instructions, and whether the room can push back without losing the thread.
+- **Module 1, Getting Going.** Re-run after the Module 1 → Module 2 prework handoff edit. Focus: joyful creation, guardrail ownership, no premature "systems" heaviness.
+- **Module 2, Building Agent Systems.** Re-run after body touch. Focus: root `CLAUDE.md` creation, memory curation, plan-mode / plan-first runtime split, and the handoff to Module 3.
+- **Module 3, Multi-Agent Systems.** Already compendium-audited with approve-with-todos. Re-sim after runtime-fork pass and prework mirroring. Focus: concurrent session friction, subagent terminology, and whether the synthesis beat preserves unsettled competence.
+- **Module 4, Security.** Re-sim after the personal-skill shape. Focus: "I can't tell" rows, shame spiral, and whether unease stays epistemic rather than punitive.
+- **Module 5, Output Quality.** Sim the hallucination benchmark as one bounded activity. Focus: whether scoreboard rescue lands without implying quality is solved.
+- **Module 6, Evaluations.** Sim the eval loop and the core-arc close. Focus: walk-away window, fixed judge integrity, and whether M6 closes the six-module core cleanly.
+- **Module 7, From Personal to Team.** Sim the sharing exercise. Focus: outcome interview magic, branch selection, Access-Trust Gap wording, and whether sharing feels like generosity rather than governance.
+- **Module 8, Agents Building Agents.** Sim the SharePoint/OneDrive live-deliberation shape. Focus: sync timing, per-participant folder discipline, initial stances, cross-checks, proposal critique, one/two central synthesizers, synthesizer-injected midpoint instructions, and whether the room can push back without losing the thread.
 
 ## 2. Capability dry-runs
 
@@ -67,6 +67,11 @@ These are not easy to choose from text alone. Decide before polishing body furth
 ## 8. Eval instances to fill
 
 - Agents 101 module eval instances for Modules 3–8 are missing or stale after the recent reshapes. Fill after the module spines settle and before three-persona sim.
+
+## 9. Site / renderer bugs
+
+- **Newlines disappear on copy from prompt blocks.** Multi-line prompts pasted from the curriculum site Copy button collapse to a single line. Affects every `**Prompt**` fenced block on the cohort site. Likely cause is `code.innerText` reading or clipboard write path in `addCopyButton` (`site/layouts/curriculum.js`). Reproduce on M5 hallucination-bakeoff Phase 0 prompts; fix and verify across CLI/Desktop paste targets.
+- **Paths inside copied prompts get auto-converted to markdown links on paste.** Copying a prompt that contains `module-5/claim-pool.md` and pasting into the destination app produces `module-5/[claim-pool.md](http://claim-pool.md)`. Render side is clean, `marked` does not autolink inside fenced blocks (verified). The destination app's data-detection treats `*.md` strings as domain-shaped and auto-linkifies. Affects every prompt that names a path with a dot extension (most M5 + M6 prompts). Mitigation candidates: insert a zero-width-joiner around the dot in copied paths, swap clipboard write for a hint that suppresses HTML, or surface as a known issue in the trainer guide. Investigate and pick after the newline bug above is fixed (same module, touch once).
 
 ---
 

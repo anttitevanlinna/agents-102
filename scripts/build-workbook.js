@@ -206,6 +206,7 @@ const WORKBOOK_INIT_JS = `
       var num = CurriculumRuntime.moduleNumber(trainingKey, mod.id);
       CurriculumRuntime.buildModuleHero(mod, num);
     });
+    CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.installReadingProgress();
   }
@@ -269,6 +270,7 @@ function buildTrainerGuide(customer, trainingKey) {
 const TRAINER_GUIDE_INIT_JS = `
 (function () {
   if (window.CurriculumRuntime) {
+    CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.installReadingProgress();
   }

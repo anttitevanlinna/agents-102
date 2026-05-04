@@ -25,7 +25,6 @@ BRIEF="$SCRATCH/module-5/briefing.md"
 BENCH="$SCRATCH/module-5/benchmark.md"
 SCORE="$SCRATCH/module-5/scoreboard.md"
 JUDGE_FILE="$SCRATCH/judges/groundedness-judge.md"
-UNCERT="$SCRATCH/module-5/still-uncertain.md"
 SETUP_SCROLL="$MECH_DIR/instances/agents-101-m5-verbatim-setup-scrollback.md"
 SCORER_SCROLL="$MECH_DIR/instances/agents-101-m5-verbatim-scorer-scrollback.md"
 REPORT="$MECH_DIR/instances/agents-101-m5-verbatim-judge-report.md"
@@ -227,14 +226,6 @@ if grep -nE '\[[A-Z][A-Z_]+\]' "$JUDGE_FILE" >/dev/null 2>&1; then
   record "A16" "FAIL" "[BRACKET] placeholders present"
 else
   record "A16" "PASS" "no placeholders"
-fi
-
-# A17 — still-uncertain.md exists ≤6 lines
-if [[ -f "$UNCERT" ]]; then
-  ul=$(wc -l < "$UNCERT" | tr -d ' ')
-  [[ "$ul" -le 6 ]] && record "A17" "PASS" "$ul lines" || record "A17" "FAIL" "$ul lines"
-else
-  record "A17" "FAIL" "still-uncertain missing"
 fi
 
 # A18 — no other judge files

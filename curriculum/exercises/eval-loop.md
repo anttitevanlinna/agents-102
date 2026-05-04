@@ -164,7 +164,7 @@ Read the answer. Push back where it is too neat. If round 3 still failed on numb
 
 **Integrity check.** The score trajectory only means something if the yardstick stayed still. A SHA match in `module-6/eval-notes.md` is the run's proof claim. If the judge file moved, the exercise failed. If only `./generation-tactic.md` moved, the loop worked.
 
-**What happens:**
+**What happened:**
 
 Round 1 is the floor. Your generator runs with a minimal tactic and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1's per-claim feedback, absorbed it into `./generation-tactic.md`, and the next generator read the tighter tactic. Round 3 runs on the even tighter tactic.
 

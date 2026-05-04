@@ -2,7 +2,7 @@
 
 **What you do:** have Claude read your repo, then interrogate what it read. The introspection prompt shows what Claude says it read; `/context` shows how full your context window has gotten.
 
-**What happens:** Claude reports what it read and why, what it skipped and why. You see the bounded window directly. The self-report is a hypothesis. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Start digging.
+**What happened:** Claude reports what it read and why, what it skipped and why. You see the bounded window directly. The self-report is a hypothesis. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Start digging.
 
 **The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig the self-report.
 

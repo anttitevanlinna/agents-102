@@ -2,7 +2,7 @@
 
 **What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent that walks down every unresolved branch and surfaces what you missed. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**What happens:** Claude writes a plan. You pick *keep planning with feedback* and send two push-backs: what YOU see. Claude regenerates. Then you run a second-pass read: Claude asks one question at a time, walking down branches you didn't think to check, suggesting answers. You confirm or correct. The plan sharpens again. You approve. You don't run the code. You ask Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
+**What happened:** Claude writes a plan. You pick *keep planning with feedback* and send two push-backs: what YOU see. Claude regenerates. Then you run a second-pass read: Claude asks one question at a time, walking down branches you didn't think to check, suggesting answers. You confirm or correct. The plan sharpens again. You approve. You don't run the code. You ask Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 
 **The point:** reading a plan is finite. A first pass by a human plus a second pass by an agent isn't belt-and-braces. It's the complete read. Two different kinds of scrutiny catch two different kinds of miss. The exercise installs the pairing as a move. No execution needed; the work of making the plan good is the work. **Execution is next module's concern.**
 

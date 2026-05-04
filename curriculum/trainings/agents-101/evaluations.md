@@ -5,7 +5,7 @@ The eval that ran once in Module 5 now runs on every output, and the work tighte
 
 ## Prework
 
-[Ethan Mollick, *The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage). Plus the still-uncertain line you wrote in Module 5 (the thing you flagged a grounded briefing still couldn't reach). That's Module 6's starting point.
+[Ethan Mollick, *The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage). Walk in with the judge you saved at the close of Module 5. That's Module 6's starting point.
 
 ## What You'll Learn
 After this module, you will be able to:

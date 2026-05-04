@@ -89,7 +89,7 @@ Ask Claude to turn the habit into your own trigger list:
 ```
 Help me create my personal agent trigger list.
 
-Read my current training folder: ./crux.md, memory/, module-3/stances/, module-5/still-uncertain.md if it exists, judges/groundedness-judge.md if it exists, ./generation-tactic.md if it exists, and module-6/eval-notes.md if it exists.
+Read my current training folder: ./crux.md, memory/, module-3/stances/, judges/groundedness-judge.md if it exists, ./generation-tactic.md if it exists, and module-6/eval-notes.md if it exists.
 
 Then ask me one question at a time, wait for my answer, and do not show the list. Ask about:
 - recurring outputs I write

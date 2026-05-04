@@ -2,7 +2,7 @@
 
 **What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able — what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
 
-**What happens:** Claude reads the scrollback and proposes the rules. You rewrite or reject at least one. You name the file and the path. Claude writes it. You ask one open question about where the file could go next. Claude proposes shapes. You read. Optional: you paste one real ticket, and Claude infers how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
+**What happened:** Claude reads the scrollback and proposes the rules. You rewrite or reject at least one. You name the file and the path. Claude writes it. You ask one open question about where the file could go next. Claude proposes shapes. You read. Optional: you paste one real ticket, and Claude infers how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
 
 **The point:** the file is the artifact. You captured how *you* factored *this* task on *this* codebase. Templates stay generic; this file carries your rules. The mini-lecture that follows names three places this kind of file ends up.
 

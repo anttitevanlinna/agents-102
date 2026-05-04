@@ -19,7 +19,7 @@ The judge at `judges/groundedness-judge.md` is FIXED. The thing that learns is `
 
 ## Starting state
 
-Inherited through M1 → M5: `sources/`, `memory/`, `module-3/{question,retrievals,stances,answer}.md`, `module-5/{briefing,benchmark,detectors,scoreboard,still-uncertain}.md`, `judges/groundedness-judge.md` (FIXED), `module-6/` empty.
+Inherited through M1 → M5: `sources/`, `memory/`, `module-3/{question,retrievals,stances,answer}.md`, `module-5/{briefing,benchmark,detectors,scoreboard}.md`, `judges/groundedness-judge.md` (FIXED), `module-6/` empty.
 
 ## Phase 0 — manual judge run (prompt-001)
 

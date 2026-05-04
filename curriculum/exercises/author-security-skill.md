@@ -133,9 +133,9 @@ Press Save when skill-creator surfaces it.
 
 Close this session before Exercise 2. The personal skill autoloads when the next session opens, so Exercise 2 needs a fresh session at your training-directory root.
 
-**What happens:**
+**What happened:**
 
-The reusable check exists now, with two lenses and four named risk patterns covered. It is authored on disk and saved as a personal skill. Module 4's audit exercise loads it and runs it against the same system.
+The reusable check exists now, with two lenses and four named risk patterns covered. You authored it on disk and saved it as a personal skill. Module 4's audit exercise loads it and runs it against the same system.
 
 **The point:**
 

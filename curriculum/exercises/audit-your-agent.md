@@ -111,7 +111,7 @@ The instinct here is to skip the expert and resolve it yourself, or to escalate 
 
 We did this for a single mitigation. Risk control is one of the things that separates a prototype from a real production agent. You must do the work.
 
-**What happens:**
+**What happened:**
 
 The Module 3 system has two packaged-lens reports against it now, plus the raw policy report that came before packaging. One policy lens. One agent-risk lens with four named patterns. One mitigation applied; one residual decision recorded in the security report. If judgment is still unclear, you know what to show a human expert. The loop ran once. The reusable check and the loop carry to the next agent.
 

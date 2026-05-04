@@ -1,218 +1,258 @@
 # Cookbook for Agent System Design
 
-*This is how you do it.* A practitioner's cookbook, the moves, in sequence, that take someone from a chat conversation to a real agent system they can stake their reputation on. Not theory. Recipes you can run on Monday.
+*This is how you do it.* A practitioner's cookbook for turning chat into agent systems you can stake work on. It gives you recipes you can run on Monday, components you can recombine, and two built-out systems that show the stack in the wild.
 
-All eight recipes map to the modules, written out here as standalone how-to. After the training, you own them. New recipes get added as they mature: cloud deployment, team sharing, cross-org promotion, the rest.
+A real cookbook has three layers: recipes, base preparations, and an index of dishes. *Le Guide Culinaire* is mostly the index; Escoffier's genius was the named preparations, not the dishes. Same shape here.
 
-A real cookbook has three layers: recipes, base preparations (the small named bits that recombine), and an index of dishes. *Le Guide Culinaire* is mostly the index, Escoffier's genius was the named preparations, not the dishes. Same shape here.
+The eight recipes are deliberately short. They are the base preparations: small, named, reusable. The two canonical dishes are where the detail lives. That is the point: you do not read eight lessons here. You watch the recipes compose into working systems.
 
-Eight recipes. Twelve named components the recipes lean on. Eighteen data sources you'll actually reach for. Twenty named dishes in the index. Mix and match.
+Eight recipes. Two canonical dishes. Twelve named components. Eighteen data sources. Twenty named dishes in the index. Mix and match.
 
-Read any recipe in order or any recipe standalone. They stand alone; together they compose.
+## Recipe catalogue
 
-## Recipe 1, A piece of output that is genuinely yours
+### R1, Make the output genuinely yours
 
-*Referenced from: Module 1 (getting-going).*
+**Use when:** the agent is producing generic prose, pages, pitches, profiles, or memos that need to sound like a real person or company.
 
-**What you end with:** one artifact, a site, a memo, a profile page, a pitch, that sounds like you, not like Claude. Specific to your situation, written in your voice, correct on the facts only you know.
+**Build:** a first artifact plus the guardrails that make the next one sharper.
 
-**The moves, in order:**
+**Core moves:** generate the thin baseline; name the real audience; add facts only you know; compare versions; catch fabrication where you are the expert; save the useful rules.
 
-1. Generate the plain version first. Ask for the artifact with almost no context and save the output. This is the baseline you will beat.
-2. Name who it is for. A profile, site, pitch, or memo is never for "everyone." Pick the colleague, buyer, manager, or team member whose reaction matters.
-3. Give the agent the facts only you know. What you have done, what you care about, where you are different, what the first version got wrong.
-4. Ask for the second version against that frame. The goal is not more polish. The goal is more you.
-5. Read the two versions side by side. The baseline shows the statistical default. The second version shows what context changed.
-6. Hunt the fabrication where you are the expert. A wrong title, inflated claim, generic strength, or invented detail is the cheapest possible eval: you know the answer cold.
-7. Turn the useful discoveries into a guardrails file. Save the rules that made the artifact sharper: what to include, what to avoid, what voice means here, what facts must never be guessed.
-8. Iterate until the output crosses the mirror test: not "impressive", not "professional", but recognisably yours.
+**Test:** someone who knows the subject says "yes, that's it", not merely "that's polished."
 
-**The test:** a colleague who knows you reads it and says "yeah, that's you." Not "that's impressive", "that's you."
+**Why:** you are the one evaluator you cannot fool on your own content. Spotting fabrication on something you know cold is the foundation skill for everything that follows.
 
-**Why this is recipe 1:** you are the one evaluator you can't fool on your own content. Learning to spot fabrication on something you know cold is the foundation skill for everything that follows.
+### R2, Build a compounding system around one live challenge
 
----
+**Use when:** the work should persist, sharpen, and run again without you rebuilding context every time.
 
-## Recipe 2, A compounding system around one live challenge
+**Build:** `sources/`, `memory/`, `agents/`, a house-style file, a scheduled touch, and the first root rules.
 
-*Referenced from: Module 2 (building-agent-systems).*
+**Core moves:** pick the live challenge; keep sources raw; compile memory with cite-back; create one custom agent; add fresh evidence; let the memory audit itself; schedule the recurring output.
 
-**What you end with:** a text-on-disk memory for one real decision you're making, curated from three source zones (internal wiki, internal collab suite, curated internet), served by a custom agent that cites back to sources, and a daily scheduled touch that renders in your company's house style.
+**Test:** the system is still worth reading after a week, and the memory is sharper than the day it started.
 
-**The moves, in order:**
+**Why:** persistence plus automation equals system. A chat cannot compound; a folder of markdown can.
 
-1. Pick the live challenge. Not a task. The thing you actually need to move at work, and where better synthesis would change what you do next.
-2. Write the challenge in one file. The agent needs a centre of gravity: what you are trying to decide, what matters, what would count as progress.
-3. Curate three source zones. Use your wiki or long-form docs, your active work surface, and one outside practitioner source. The point is not volume; it is triangulation.
-4. Keep raw sources raw. Put originals under `sources/`. Do not rewrite them into memory yet. Originals stay citeable.
-5. Ask the agent to compile the first memory. The memory is maintained prose: what is known, what is uncertain, what source supports each claim.
-6. Review the plan before the agent rewrites files. A memory that compounds is allowed to change, but not silently.
-7. Create the custom agent as a markdown file. Give it a job, the memory it reads, the sources it may cite, and the rules it follows before giving advice.
-8. Add a second batch of evidence. Watch whether the memory sharpens or merely grows. If it only grows, the structure is wrong.
-9. Let the memory audit itself. Ask what pages are stale, duplicated, thin, or missing. The audit is how the system starts maintaining itself.
-10. Schedule a daily touch. The system becomes real when it runs while you are elsewhere and returns something you still want to read.
-11. Extract house style into `style.md`. Stop re-specifying the same tone, format, and visual conventions in every prompt.
-12. Compound the directory rules into `./CLAUDE.md`. Every future session should inherit what this run learned about sources, memory, agents, and citations.
+### R3, Split the work across agents
 
-**The test:** a week after training, you're still reading the morning output, and the memory is noticeably sharper than the day you built it.
+**Use when:** one agent cannot sensibly cover the access, dialect, or stance the work needs.
 
-**Why this is recipe 2:** persistence + automation = system. A chat can't compound. A folder of markdown can.
+**Build:** parallel retrieval plus framework-shaped synthesis.
 
-***Worked example, a program manager agent.*** A program manager at a multi-team Nordic software org built one of these over a fortnight in 2026 (Claude Code Desktop, macOS). Three source zones: weekly leadership-and-team meeting transcripts dropped into `sources/transcripts/`, the team's Jira read through the connector, and the active plan files in Confluence. The memory at `memory/program-state.md` got rewritten daily, *what's moving, what's stuck, what's promised, what's slipping*, citing back to the source each claim came from. A custom agent at `agents/program-manager.md` ran every morning on a schedule: scan for TODOs that had drifted past the owner's committed date, draft a one-line Slack nudge, and queue it for human approval before sending. (The gate is Recipe 4 layered on Recipe 2, an outbound action never leaves the agent unreviewed.) The surprise wasn't that the agent caught the slipping TODOs, the PM already did that by hand. The surprise was the drafts came back *better than her own*: softer, more specific, and harder to ignore, because the memory had read the meeting where the commitment was actually made.
+**Core moves:** split by source zone; write retriever outputs to files; curate returns into memory; run distinct synthesis stances; force disagreement through a framework.
 
----
+**Test:** the answer is specific enough to bring forward, and the uncertainty is plain enough to inspect.
 
-## Recipe 3, A multi-agent system that answers a strategic question
+**Why:** some work needs more than one agent only when access, dialect, or stance differ. Most work doesn't. Learn the move; respect the default.
 
-*Referenced from: Module 3 (multi-agent-systems).*
+### R4, Scope an agent your organisation can trust
 
-**What you end with:** a fan-in pipeline that retrieves from three source zones in parallel (three Claude Code sessions on shared files), then synthesises through three subagent stances in one session (backward-from-end planner, Martin's *what would have to be true?*, Sutherland-style reframer), guardrailed by a strategic framework (Rumelt's kernel by default). Output is a framework-shaped answer to your real strategic question, and a plain note of what about the answer you're not sure about.
+**Use when:** the agent touches real systems, real data, or a decision somebody else will rely on.
 
-**The moves, in order:**
+**Build:** a reusable security check, a report with residuals, and operating rules future sessions load before touching the system.
 
-1. Write the strategic question where the system can see it. A vague question produces a beige synthesis. Name the crux sharply enough that an answer could disagree with you.
-2. Split retrieval by source zone, not by random topic. One agent reads the wiki, one reads the active work surface, one reads curated external material. Different access and dialect earn the split.
-3. Give each retriever a file to write. The filesystem is the meeting room. Agents that only talk back in chat cannot be composed cleanly.
-4. Let the retrievers run in parallel. Answer only the confirmations they need. Do not normalise their voices by hand; the differences are useful input.
-5. Have the main session curate the returns into memory. Retrieval produces raw material. Curation decides what belongs in the working picture.
-6. Spawn three stances for synthesis. Use a backward-from-end planner, a *what would have to be true?* experimenter, and a counterintuitive reframer.
-7. Give the synthesizer a framework. Rumelt's strategy kernel is the default: diagnosis, guiding policy, coherent actions. Without a spine, the agent summarises instead of deciding.
-8. Force disagreement into the answer. Ask what the sources conflict on, what each stance sees that the others miss, and which claim should stay uncertain.
-9. Save the synthesis as the working answer. It should be specific enough to bring to a senior stakeholder as a starting draft.
-10. Write the doubt down. Save the sentence you would not stake your reputation on yet. That unease is not a defect; it is the raw material for Recipe 5.
+**Core moves:** run policy files raw; package the check as a skill; add named agent-risk patterns; require compliant / violating / "I can't tell"; mitigate one risk; name what remains.
 
-**The test:** the answer is specific enough that you'd bring it to your CEO as a starting draft, and plain enough that you know which sentence you wouldn't stake your reputation on yet.
+**Test:** the report contains at least one residual you cannot flatten, and the next session knows what to check.
 
-**Why this is recipe 3:** some work genuinely needs more than one agent, when access, dialect, or stance differ, coordination earns its keep. Most work doesn't. Learn the move; respect the default.
+**Why:** certainty about agent safety is a fantasy. The discipline is running the check, not waiting for the check to come back clean. A scoped agent isn't one with no risk; it's one whose residual risk is named, owned, and visible to the next session.
 
-***Worked example, the continuous research system in this repo.*** `continuous-research/` is a Recipe 3 in production. The standing strategic question: *what are practitioners actually doing in the agentic space, and which patterns have converged enough to bet on?* Three source zones run in parallel, practitioner-direct (own blogs, X.com, GitHub, conference talks), practitioner-analysis (technical teardowns, specialist-journalist interviews), academic (university research, benchmarks). A synthesis stance combines the retrievals against an explicit evidence ladder (Level 0 commercial → Level 4 cross-domain meta-pattern). Findings live as dated markdown; a synthesis index threads convergence. The framework guardrail is the ladder itself plus three gates per finding (truly agentic? independent evidence? specific outcome?). Every claim carries a source-type label and a URL; freshness window is six months. (The four review personas, source-type-auditor, zombie-stat-detector, freshness-checker, evidence-ladder-classifier, are Recipe 6 layered on Recipe 3: fixed judges that re-fire on every modified file.) The surprise wasn't the convergence patterns the system surfaced. The surprise was how often the gates *rejected* sources that look credible at first scan: round-number failure stats with no methodology behind them, customer-success pages on supplier sites, journalist write-ups attributed as if the practitioner authored them.
+### R5, Earn a judge by benchmarking
 
----
+**Use when:** quality matters enough that "looks good" is not a decision method.
 
-## Recipe 4, A scoped agent your organisation can trust
+**Build:** a 30-claim benchmark, a detector scoreboard, and one judge file with a known limit.
 
-*Referenced from: Module 4 (security).*
+**Core moves:** pull claims from a real output; adjudicate against sources; run candidate detectors separately; score precision, recall, and coverage; package the winner.
 
-**What you end with:** a working agent audited against two lenses (your company's policy + named agent-risk patterns), a reusable security check authored as a personal skill, a security report with residuals named, not solved, and 1–5 short security operating rules compounded into your root `./CLAUDE.md` so future sessions remember the boundaries.
+**Test:** a colleague can read the scoreboard and understand why this judge won and where it stops.
 
-**The moves, in order:**
+**Why:** quality-method selection in agent work is empirical, not authoritative. A judge picked from a scoreboard you ran is one you'd defend; a judge picked because someone authoritative said so isn't.
 
-1. Start with the policies as source material. Run the relevant company, customer, or baseline policy files raw against the agent system once. Let the rough report show what expertise is missing.
-2. Package the useful check as a personal skill. Two lenses travel together: the policy lens, and the agent-risk lens.
-3. Name the agent-risk patterns inside the check. Prompt injection direct, prompt injection indirect, secrets-in-context, tool-confusion, skill supply-chain. If the lens does not name the classes, it drifts into generic caution.
-4. Install and load the skill in the runtime you actually use. A check that only lives in the training transcript is not reusable expertise.
-5. Run the skill against the full agent system. It reads the rules file, memory, sources, agents, and outputs. The system is the thing being checked, not one reply.
-6. Require three verdicts per rule: compliant, violating, and "I can't tell." The third verdict is where the useful ambiguity lives.
-7. Pick one risk to mitigate. Do not clear the backlog. Run the full loop once on a real risk.
-8. Choose one mitigation shape: scope, split, filter, gate, or review. Narrow the agent, separate duties, filter input, require approval, or add a human read.
-9. Name the residual plainly. The goal is not a clean report. The goal is a system whose remaining risk is visible to the next session.
-10. Compound one to five security operating rules into `./CLAUDE.md`. Future agents should know what to check before they touch this system again.
+### R6, Tighten a generator under a fixed judge
 
-**The test:** the security report names a residual risk you can't yet remove, and the operating rules in `./CLAUDE.md` would tell a future session exactly what to check before touching this system again. "I can't tell" appears at least once, plainly, and you don't try to flatten it.
+**Use when:** the check should run repeatedly, and the work should improve under the same standard.
 
-**Why this is recipe 4:** certainty about agent safety is a fantasy. The discipline is running the check, not waiting for the check to come back clean. A scoped agent isn't one with no risk; it's one whose residual risk is named, owned, and visible to the next session.
+**Build:** a re-runnable eval loop with a fixed judge, separate generator, and evolving tactic file.
 
-***Worked example, incoming email triage.*** A customer-support team at a B2B SaaS company built one of these in early 2026 (Claude Code, scheduled execution on macOS). The agent reads incoming email from a shared inbox every 15 minutes. Two lenses run on each message: a policy lens (what counts as P1, outage signal, security report, named-customer escalation, churn-risk language), and an agent-risk lens (prompt injection in the email body, sender spoofing, attachment-only context, urgent-sounding marketing dressed as a real escalation). Critical ones get routed to one Slack channel with a one-line summary, original sender, and a link back to the thread. Non-critical ones stay in the inbox untouched. The scope is read-only on email and write-only-to-one-Slack-channel; nothing else. The surprise wasn't that the agent caught the obvious P1s. The surprise was the *"I can't tell"* column, the agent flagged five emails per week as ambiguous, and three of them turned out to be the most important threads to escalate, *exactly because* they didn't fit the established policy patterns yet. Residual owned plainly: the policy lens drifts as the business changes; without quarterly re-scoping, the false-negative rate climbs.
+**Core moves:** freeze the judge; separate generation from judging; run rounds; rewrite the tactic from feedback; keep the score trajectory inspectable.
+
+**Test:** the later output is better by the same yardstick, and the tactic diffs explain what the system learned.
+
+**Why:** this is where the human moves up a level. You stop reviewing every output and start designing the loop. The fixed judge is your delegated taste; the self-improving generator is the work you no longer have to do by hand.
+
+### R7, Share a slice that absorbs
+
+**Use when:** the system works for you and might help someone else.
+
+**Build:** one shareable surface: context, skill, output, or interface. Plus the people plan it needs to survive handoff.
+
+**Core moves:** name the teammate; interview for the job; identify the incumbent; choose the smallest surface; write the technical plan and people plan; test what must be true for them to switch.
+
+**Test:** the teammate can use the slice next week without you sitting beside them.
+
+**Why:** access is the easy half of sharing; absorption is the hard half. Picking the smallest surface that moves the outcome, not the largest one your infrastructure allows, is how you cross that gap.
+
+### R8, Let the system build the next system
+
+**Use when:** you need to decide what agent to build next, and the current system already contains useful evidence.
+
+**Build:** a strategy kernel, suggested agent set, two-week plan, and one new agent generated from the existing stack.
+
+**Core moves:** make the current agent propose the next one; run crux, *what would have to be true?*, and pre-mortem; cross-check proposals; synthesize into coherent actions; sharpen the rule that carried the round.
+
+**Test:** the plan disagrees with at least one obvious option, names the first assumption that could break, and is small enough to run next.
+
+**Why:** the cycle that just sharpened the kernel is the same cycle that sharpens it again next month. Code-generating agents are the meta-tool: the only category where building one tool genuinely makes the next one faster to build.
 
 ---
 
-## Recipe 5, A judge you've earned by benchmarking
+## Canonical Dish 1, The Program Manager Agent
 
-*Referenced from: Module 5 (output-quality).*
+A program manager at a multi-team Nordic software organisation built this over a fortnight in 2026 using Claude Code Desktop on macOS. The problem was not that she lacked visibility. She had meetings, Jira, Confluence, Slack, and a good memory. The problem was that commitments lived in different rooms. A promise made in a leadership meeting became a Jira ticket two days later, got softened in a team sync, then disappeared into a plan page nobody re-read until the date had passed.
 
-**What you end with:** a 30-claim benchmark you wrote yourself against your own output, four candidate detection methods scored against it, a winning method synthesised into a reusable judge file at `judges/groundedness-judge.md` with stated scope and one named "known limit", a judge you can defend in production because you measured it, not because someone authoritative recommended it.
+The agent's job was simple: keep the live programme state accurate, then draft the smallest useful nudge before a commitment slipped too far.
 
-**The moves, in order:**
+### The Stack
 
-1. Bring back the answer from Recipe 3. Use the synthesis that felt useful and not fully trustworthy. A synthetic benchmark on throwaway text teaches less.
-2. Build a 30-claim pool. Pull claims from the answer: facts, comparisons, implications, numbers, named entities, and recommendations that depend on evidence.
-3. Adjudicate the claims against the sources. Each row needs a verdict and the evidence behind it. This is the benchmark, not the detector.
-4. Run several detection methods on the same claim pool. Source triangulation, entailment, citation integrity, and counter-evidence search are the default panel.
-5. Keep the methods separate. Parallel agents write their own detector outputs. If they share a scratchpad, they contaminate the comparison.
-6. Score the methods against the benchmark. Precision, recall, coverage, and useful failure notes matter more than elegance.
-7. Pick the winner from the scoreboard. The point is not which method sounds clever. The point is which method matched your benchmark on this output.
-8. Package the winner as `judges/groundedness-judge.md`. State what it catches, what evidence it needs, and one known limit.
-9. Keep the scoreboard. A judge without the scoreboard is a rule someone wrote. A judge with the scoreboard is a measured choice.
-10. Add a trigger to `./CLAUDE.md`. Future sessions should know which outputs need this judge before anyone relies on them.
+Three source zones fed the system. Meeting transcripts landed as text files in `sources/transcripts/`. Jira came in through the connector. Active plan files came from Confluence. The raw material stayed raw. The memory at `memory/program-state.md` held the maintained picture: what's moving, what's stuck, what's promised, what's slipping. Every claim pointed back to the meeting, ticket, or plan file it came from.
 
-**The test:** you can hand a colleague the scoreboard and the judge file, and they understand both why this method won AND what it can't reach, without you in the room to explain.
+The custom agent lived at `agents/program-manager.md`. Its rules were narrow:
 
-**Why this is recipe 5:** quality-method selection in agent work is empirical, not authoritative. A judge picked from a scoreboard you ran is one you'd defend; a judge picked because someone authoritative said so isn't.
+- Read `memory/program-state.md` first.
+- Cite the source for every commitment.
+- Treat meeting transcripts as stronger evidence for "who promised what" than later summaries.
+- Never send a message directly.
+- Draft nudges for approval when a commitment has drifted past the owner's stated date.
 
----
+The house-style file mattered more than expected. The first nudges were correct and slightly awful: too stern, too ticket-shaped, too easy to ignore. The PM extracted the tone she actually used when a teammate was late but not negligent. The style file said: short, specific, warm, one ask, no moralising. The next drafts sounded like something she would really send.
 
-## Recipe 6, A self-improving generator under a fixed judge
+### The Loop
 
-*Referenced from: Module 6 (evaluations).*
+Each morning, the scheduled agent ran the same sequence.
 
-**What you end with:** a re-runnable eval loop on disk where the judge from Recipe 5 stays unchanged across rounds, a generation tactic file (`./generation-tactic.md`) rewritten between rounds from per-claim judge feedback, and a score trajectory you can read off the artefacts, same yardstick, sharper output each cycle.
+1. Read yesterday's `memory/program-state.md`.
+2. Scan new transcripts, Jira changes, and plan updates.
+3. Propose a memory rewrite with cite-back.
+4. Identify commitments that moved, slipped, or became ambiguous.
+5. Draft one-line nudges for anything past the promised date.
+6. Queue the nudges for human approval.
+7. Save a short run note: changed, stuck, ambiguous.
 
-**The moves, in order:**
+That is R2 as the base: sources, memory, custom agent, scheduled touch. R4 sits on top: no outbound message leaves without plan-mode review. R5 appears in miniature: the PM judged nudge quality against her own edits and folded the winning patterns into `style.md`.
 
-1. Freeze the judge from Recipe 5. Copy its path into the run notes. The judge is the yardstick; it does not move during the loop.
-2. Write the starting generator tactic. Keep it minimal. The tactic is what the loop is allowed to improve.
-3. Make the main session the orchestrator. It dispatches generation, dispatches judging, reads feedback, rewrites the tactic, and repeats.
-4. Separate generation from judging. The generator does the work. The judge reads the output against the fixed yardstick. The generator does not grade itself.
-5. Run round one. Save the output, judge report, and tactic version under `module-6/`.
-6. Rewrite `./generation-tactic.md` from the judge feedback. Name the failure class each new rule prevents. Vague wisdom does not count.
-7. Run round two under the same judge. The generator changes. The judge stays fixed. That is why the score trajectory means anything.
-8. Repeat for the agreed number of rounds. Three is enough to feel the slope without turning the exercise into machinery-watching.
-9. Read the diffs, not just the final score. The tactic changes are the record of what the system learned.
-10. Leave the loop inspectable. A future session should be able to open `module-6/` and see what changed, when, and why.
+### The Edge
 
-**The test:** you can walk away during the loop and come back to a sharper generator the same yardstick still can't fault, and the per-round tactic diffs read like a record of what the system actually learned.
+The surprise was not that the agent found overdue TODOs. The PM already knew how to do that by hand. The surprise was that some drafts came back better than hers: softer, more specific, and harder to ignore, because the memory had read the meeting where the commitment was made.
 
-**Why this is recipe 6:** this is where the human moves up a level. You stop reviewing every output and start designing the loop, the standards, and what "better" means. The fixed judge is your delegated taste; the self-improving generator is the work you no longer have to do by hand.
+The system also exposed a stranger class of work: commitments that were not late because nobody owned them. The agent learned to flag "owner drift" separately from "date drift." That became a rule. If a commitment appeared in a meeting transcript without a named owner, the nudge did not go to the nearest manager. It went back to the PM as an ambiguity.
 
----
+### What Made It Work
 
-## Recipe 7, Sharing a slice of your system that absorbs
+The system had a small job and a hard boundary. It did not "manage the programme." It maintained the state, found drift, and drafted nudges. The PM stayed accountable for judgment. The agent took the tedious part: reading across systems and remembering who said what.
 
-*Referenced from: Module 7 (personal-to-team).*
+The durable artifact was not the morning output. It was the memory plus rules that made the next morning better. After two weeks, the PM was no longer prompting from scratch. She was steering a small operating system.
 
-**What you end with:** an outcome statement for the job your teammate is trying to get done (interviewed agentic-JTBD style, not guessed), a chosen sharing surface from the four that work, share *context*, share a *skill*, share the *output*, or share an *interface*, a technical plan AND a people plan covering ownership, governance, operating, accountability, propagation, and a named likely adoption failure with the social part visible.
+**Recipes composed:** R2 as the base, R4 for outbound gates, R5 for nudge-quality scoring, R6 once the daily run started improving the same files repeatedly.
 
-**The moves, in order:**
-
-1. Name the teammate before the solution. If you cannot name who this helps, you are designing for applause.
-2. Interview for the job. Have the agent read your memory, draft a Jobs-to-be-Done hypothesis, then ask targeted questions to fill the gaps.
-3. Write the outcome statement. Use the job as the contract: what should increase, decrease, speed up, become easier, or stop depending on you.
-4. Identify the incumbent. Every job already has something hired for it: a spreadsheet, a meeting, a colleague, a dashboard, gut feel, or nothing.
-5. Choose the smallest sharing surface that moves the outcome. Context, skill, output, or interface. Whole-agent sharing is not on the list.
-6. Write the technical plan. What travels, where it lives, what it can read, what it can write, who can change it, and how it gets updated.
-7. Write the people plan with equal weight. Owner, receiver, operating cadence, accountability, support path, propagation. Missing names are findings.
-8. Run the switch test. What would have to be true for the teammate to fire the incumbent and use your candidate instead?
-9. Name the likely adoption failure before it happens. The technical failure is usually visible. The social failure hides until someone quietly goes back to the old way.
-10. Sharpen the artifact the teammate actually touches. Not the plan, not the explanation. The skill file, interface spec, output schedule, or context export.
-
-**The test:** the teammate could read your sharing artefact, take the smallest surface you offered, and use it next week, without you sitting next to them, without a training session, and without rebuilding their workflow.
-
-**Why this is recipe 7:** access is the easy half of sharing; absorption is the hard half. The bottleneck isn't *can they reach it?* but *can they fit it into their existing work fast enough that they keep using it?* Picking the smallest surface that moves the outcome, not the largest one your infrastructure allows, is how you cross that gap.
+**Reusable pattern:** when commitments are scattered across meetings, tickets, and plans, build a state memory first. Do not start with automation. Start with a maintained picture of the work.
 
 ---
 
-## Recipe 8, A flywheel that builds the next agent
+## Canonical Dish 2, The Shared-Inbox Triage Agent
 
-*Referenced from: Module 8 (agents-building-agents).*
+A customer-support team at a B2B SaaS company built this in early 2026 with Claude Code and scheduled execution on macOS. The team had a shared inbox that mixed outage reports, billing questions, named-customer escalations, vague procurement threads, security reports, and marketing messages dressed up as urgency.
 
-**What you end with:** a strategy kernel (Rumelt-shape: diagnosis, guiding policy, coherent actions) grounded in your real agent system and your real company question, a suggested agent set to add over the next two weeks, and a two-week plan that names what you'll test, what you'll learn, and which assumption breaks first, produced through three thinking disciplines run at room scale: Rumelt on *crux*, Martin on *what would have to be true?*, Klein-and-Kahneman on *pre-mortem*.
+The old process was human scanning. It worked because experienced people could read between lines. It failed because the inbox never stopped, the cues were uneven, and the most important messages were not always the cleanest ones.
 
-**The moves, in order:**
+The agent's job was not to answer customers. It read incoming email every 15 minutes, classified the thread, routed critical ones to one Slack channel, and left everything else untouched.
 
-1. Extend your own system first. Ask the agent to propose one new agent that would make the existing system stronger, using the memory, judges, skills, and sharing plan already on disk.
-2. Make the agent build the next agent. The meta-tool becomes visible when the system writes a useful addition to itself.
-3. Connect the shared deliberation folder. Each participant writes to their own folder. One or two central synthesizers write to the shared root.
-4. Seed the room with one real sponsor challenge. The question should matter enough that a weak answer would be obvious.
-5. Publish context manifests. Every participant's agent names what it read, what it could not find, and what it inferred without a source.
-6. Run the three thinking disciplines at room scale. Crux names the central obstacle. *What would have to be true?* turns the proposal into assumptions. Pre-mortem finds the failure before the plan flatters itself.
-7. Cross-check before proposing. Agents read neighbouring stances and publish what changed in their own view.
-8. Let the central synthesizer select, then invite pushback. Selection without critique converges too fast.
-9. Produce the strategy kernel, suggested agent set, and two-week plan. Diagnosis, guiding policy, coherent actions. Agents to build next. First tests to run.
-10. Audit the round and sharpen the rule that carried the most weight. The flywheel is not the final answer. It is the way the next answer gets sharper.
+### The Stack
 
-**The test:** the kernel passes the *no-puff* test, it actually disagrees with at least one obvious option, names a real obstacle, picks a coherent set of moves. The agent set is sized to be built in two weeks. The plan names which assumption would break the strategy if false.
+The agent had read-only access to the shared inbox and write-only access to one Slack channel. Nothing else. That boundary was the design.
 
-**Why this is recipe 8:** the cycle that just sharpened the kernel is the same cycle that sharpens it again next month. Code-generating agents are the meta-tool, the only category where building one tool genuinely makes the next one faster to build. The flywheel is not metaphor; it is what the artefacts actually do.
+Two lenses ran on each message.
+
+The policy lens named the business categories: P1 outage signal, security report, named-customer escalation, churn-risk language, billing blocker, procurement blocker, product defect, low-priority support request.
+
+The agent-risk lens named the ways email can poison an agent: prompt injection in the email body, sender spoofing, attachment-only context, urgent-sounding copy with no account match, and instructions that tried to override the agent's routing rules.
+
+Each triage row had three possible verdicts: route, do not route, "I can't tell." The third row was the useful one. A binary classifier would have forced ambiguous messages into false confidence. The team wanted ambiguity surfaced, not hidden.
+
+### The Run
+
+Every 15 minutes the agent did the same work.
+
+1. Fetch new inbox threads.
+2. Read the policy lens and agent-risk lens.
+3. Produce one row per thread: category, evidence, risk flags, verdict.
+4. Route critical messages to Slack with sender, thread link, one-line reason, and source quote.
+5. Leave non-critical messages untouched.
+6. Put "I can't tell" rows into a review section for a human read.
+7. Save the run log for later scoring.
+
+The Slack message was intentionally small. No essay. No auto-reply. No customer-facing action. Just enough for the right human to open the thread fast.
+
+### The Check
+
+The first week produced false positives. The agent routed several marketing messages because they used outage-shaped language. The fix was not "be less alarmed." The team added a source requirement: a P1 route needed either a known customer domain, account identifier, product area, or repeated customer-impact language across the thread. Urgency alone stopped counting.
+
+The more interesting finding came from "I can't tell." The agent flagged about five ambiguous emails per week. Three of them turned out to be the most important threads to escalate, exactly because they did not fit established policy patterns yet. One was an early signal of a new enterprise customer's integration failure. One was a security concern written in non-security language by a non-technical buyer. One was a procurement blocker that looked like routine billing until the account name was matched.
+
+That changed the team's trust in the system. The value was not only faster routing. It was better ambiguity capture.
+
+### What Made It Work
+
+The boundary stayed narrow. Read email. Write one Slack channel. Do not reply. Do not mutate the inbox. Do not create tickets. Every action started as text a human could inspect.
+
+The lenses stayed separate. The policy lens answered "does the business care?" The risk lens answered "is this message trying to steer the agent or distort the route?" Blending those would have made the report feel cleaner and less useful.
+
+The residual risk stayed visible: the policy lens drifts as the business changes. A new customer segment, product line, or escalation path changes what "critical" means. Without periodic re-scoping, the false-negative rate climbs.
+
+**Recipes composed:** R4 as the base, R2 for logs and maintained routing memory, R5 for scoring route quality, R6 once the team started tightening the classifier against the same review set.
+
+**Reusable pattern:** when the cost of a missed message is high, do not ask the agent to be certain. Ask it to route the clear cases and preserve ambiguity for humans.
+
+---
+
+## Canonical Dish 3, The Continuous Research System
+
+This system runs inside the very repository the cookbook lives in. The strategic question is standing rather than seasonal: *what are practitioners actually doing in the agentic space, and which patterns have converged enough to bet on?* The market answer to that question is loud: press releases, analyst predictions, journalist write-ups. The practitioner answer is quieter, more accurate, and harder to find. The system exists to harvest the second answer continuously.
+
+The temptation is to read fewer sources, faster. The discipline is to read more sources, slower, with a sharper rule about what counts as evidence.
+
+### The Stack
+
+Three source zones run in parallel. *Practitioner-direct* covers own blogs, X.com, GitHub repositories, conference talks. *Practitioner-analysis* covers technical teardowns and specialist-journalist interviews. *Academic* covers university research and published benchmarks. The zones are kept separate so the synthesizer can tell where any claim came from. Mixing them blurs provenance and breaks the cite-back rule before it has a chance to fire.
+
+Each finding lives as a dated markdown file. A synthesis index threads convergence across findings. The memory accumulates; old findings stay readable, but old claims stop earning citations after six months.
+
+The hard rule sits one level above the sources: an evidence ladder. Level 0 is commercial content (press releases, analyst predictions, paid frameworks). Level 1 is single-practitioner opinion. Level 2 is single-experiment evidence. Level 3 is convergence (10–20 independent practitioners reporting the same pattern). Level 4 is cross-domain meta-pattern. The system reports at Level 3 by design. Levels 0 and 1 never enter the published memory.
+
+### The Loop
+
+Three gates fire per candidate finding. Is the work *truly agentic*, multi-step autonomous and tool-using, or chatbot-shaped dressed up in agent vocabulary? Is there *independent evidence*, at least one source that does not stand to gain from the claim being true? Is the *outcome specific*, named company plus practice plus measurable result plus URL?
+
+Every claim carries a source-type label and a URL. Freshness window is six months; older sources serve as historical context only, explicitly dated. *"I can't tell"* is a permitted finding state when the evidence is real but not yet at convergence.
+
+### The Check
+
+Four review personas re-fire on every modified file: source-type-auditor (is this commercial content masquerading as practitioner work?), zombie-stat-detector (is this round-number failure rate a small qualitative study stripped of caveats?), freshness-checker (is the source inside the six-month window?), evidence-ladder-classifier (is the claim reported at the level its evidence supports?).
+
+The personas catch what the harvester misses. The harvester wants to publish; the personas want to reject. That asymmetry is the design.
+
+The genuine surprise is not the convergence patterns the system surfaces. It is how often the gates *reject* sources that look credible at first scan: round-number failure stats with no methodology behind them, customer-success pages on supplier sites, journalist write-ups attributed as if the practitioner authored them, and a steady stream of analyst predictions repeated until they sound like data.
+
+### What Made It Work
+
+The hard rule was the ladder, not the harvester. Without the ladder, more reading produces more noise. With the ladder, more reading produces sharper convergence, because Level 3 raises its own bar as the corpus grows.
+
+The four review personas are the rule with teeth. A rule everybody agrees with but nobody enforces is a slogan; a rule that fires automatically on every modified file is infrastructure. The system's value is not the findings it publishes. It is the findings it refuses to publish.
+
+**Recipes composed:** R3 as the base (parallel retrieval, framework-shaped synthesis), R6 for the four review personas as fixed judges that re-fire on every modified file, R2 for the dated-markdown memory and synthesis index, R4 in spirit for the gate discipline and named residuals.
+
+**Reusable pattern:** when the question is "what is true in a noisy field?", the harvester is not the hard part. The rejection rule is. Build the ladder before you build the search.
 
 ---
 
@@ -220,7 +260,7 @@ Read any recipe in order or any recipe standalone. They stand alone; together th
 
 Twelve named items the recipes lean on: eight pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes below. Many of the smaller bits live inside the recipes, `style.md`, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
 
-**The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the rules file (`./CLAUDE.md` that keeps the shape consistent). The architectural stack of every compounding system. From R2.
+**The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the rules file (`./CLAUDE.md` that keeps the shape consistent). The architectural stack of every compounding system. Most agent failures look like bugs and are layer confusion: a rule written into memory, a source written into rules, the system stops behaving like a system. From R2.
 
 **The cite-back rule.** Every claim in agent output points to the source file or URL it came from. Without it, agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at. Used everywhere from R2 onward.
 
@@ -306,7 +346,7 @@ Eighteen sources in five families. Names, access mode, what each is good for. Re
 
 ## Index of agent shapes
 
-Twenty named compositions a practitioner would recognise on sight. Each entry: the dish in italics (what it does), then the named components, then the recipes it composes from. The three preceding long-form examples (R2 program manager agent, R3 the continuous research system, R4 incoming email triage) are the dishes plated and served; this is the index a working practitioner opens to recall a name. Specifics vary by company; the shape is what travels.
+Twenty named compositions a practitioner would recognise on sight. Each entry: the dish in italics (what it does), then the named components, then the recipes it composes from. The two canonical dishes above are plated and served; this is the index a working practitioner opens to recall a name. Specifics vary by company; the shape is what travels.
 
 **Sales prospect outreach drafter.** *One personalised first-touch per account, hook drawn from the file, not the boilerplate.* Public-footprint scan + cite-back rule + plan-mode review. R2 + R6.
 
@@ -350,26 +390,26 @@ Twenty named compositions a practitioner would recognise on sight. Each entry: t
 
 ---
 
-### Recipes beyond the training
+### More dishes to cook
 
 Written as they stabilise:
 
-- **Cloud deployment.** Moving a working local system to a hosted runtime (Cowork / Routines / equivalent). What changes, what breaks, what becomes easier.
-- **Team sharing.** Promoting memories and agents from personal scope to shared scope, without the usual collaboration-software rot.
-- **Cross-org reuse.** Pattern libraries, agent marketplaces, the sensible portions of each.
-- **Integration with existing enterprise systems.** ERP, CRM, data warehouse, iPaaS.
-- **Observability and cost control.** Watching what the agent actually does and what it costs when it does.
-- **Handoffs to non-agent systems.** The seams where automation ends and human work begins, by design, not by accident.
+- **Cloud deployment.** Start with R2, add R4 before anything writes outward, then R6 once the run repeats. The question is what changes when the folder becomes a runtime.
+- **Team sharing.** Use R7 as the dish, with the four sharing strategies as the mirepoix. Context, skill, output, interface; never start by sharing the whole pot.
+- **Cross-org reuse.** Combine R1's voice discipline, R4's trust boundary, and R5's measured judge. Reuse fails when taste, policy, or evidence stops travelling.
+- **Enterprise integration.** Start with the data source, then choose the narrowest action. CRM, ERP, warehouse, iPaaS: each one needs cite-back, plan-mode review, and residual risk named.
+- **Observability and cost control.** Treat logs as sources, not plumbing. R2 keeps the run memory; R5 tells you what to measure; R6 tightens the system under the same yardstick.
+- **Handoffs to non-agent systems.** Cook the seam. The agent produces text; another system obeys. Plan-mode review, gate, and "I can't tell" are the base preparation.
 
 Add a recipe when the move is reliable enough that a working practitioner would recommend it to another without caveats. Not before.
 
 <!-- maintainer -->
 
-**Status:** Pass 3 draft — full "moves, in order" write-outs for R1–R8, Rory/Roger revisitation shape preserved. Eight recipes, 12 named components, 18 data sources, 20 indexed dishes each carrying a *what-it-does* gloss before the components-formula. Three real-life worked examples seeded under recipes (R2 program manager agent, R3 the continuous research system in this repo, R4 incoming email triage). Recipe moves are now standalone enough for take-home reading; final polish still owes cross-reference tightening and missing worked examples for R1/R5/R6/R7/R8.
+**Status:** Pass 3.3 — Why-lines restored to recipes, third canonical dish added (continuous research system), Sutherland sting on the three-layers component. Eight short recipes each carrying a Why, three full dishes (program manager agent, shared-inbox triage agent, continuous research system), 12 named components, 18 data sources, 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). R5 / R7 / R8 still owe a worked example each. Final polish still owes cross-reference tightening and case-consent/source verification before external ship.
 
 **Drift prevention:** when a module's Big Idea or named artefacts change, the matching recipe updates in the same edit. The cookbook is the take-home catalogue; if it lags the module, the buyer-side reading goes stale. Sweep cookbook against module Big Ideas at every cycle close. **Same rule for components and data sources** — when a module renames a component or adds a data source, the relevant Components / Data sources entry updates in the same edit. The Index entries are downstream of both: a renamed component ripples to every Index dish that composes it.
 
-**Worked-example discipline (Chez Panisse):** every long-form worked example is a real agent built by Antti or a consenting customer. Pseudonymise to CRM standard (no real prospect names — use *"a program manager at a multi-team Nordic software org"* etc.). Date-stamp and runtime-tag every example. Frame as *one* shape, not THE shape — students adapt, not copy. Examples that explicitly demonstrate recipe-composition (Recipe N core + Recipe M layer) reinforce the "they stand alone; together they compose" claim and should be preferred where the underlying agent really does compose. Ceiling: one canonical example per recipe.
+**Canonical-dish discipline (Chez Panisse):** long-form dishes must be real agents built by Antti or a consenting customer. Pseudonymise to CRM standard (no real prospect names — use *"a program manager at a multi-team Nordic software org"* etc.). Date-stamp and runtime-tag every dish. Frame as *one* shape, not THE shape — readers adapt, not copy. Dishes must demonstrate recipe composition across at least three recipes; otherwise the dish is too thin for this chapter.
 
 **Index discipline (Escoffier + gloss):** the *Index of agent shapes* is indicative archetypes, not a portfolio of customer builds. **Each entry is two reads, not one** (Pass 1.10): an italicised one-line of what the dish does, then the components-formula and recipe pin. Cold-recall test: a graduate one month out should grok an entry without flipping back to Components. Index entries don't claim a specific build; they claim *this is a recognisable agent shape*. The line between Chez Panisse worked examples (real, dated, runtime-tagged) and Escoffier index entries (archetype, no build claim) must stay visible to the reader.
 
@@ -383,7 +423,10 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 - Pass 1.9 (2026-05-04): Three-chapter Escoffier reorganisation. (a) Opening introduces *Le Guide Culinaire* as the load-bearing analogy and names the three chapters that follow the recipes. (b) **Components** chapter — 28 named techniques in 9 families. (c) **Data sources** chapter — 18 named raw-material sources in 5 families. (d) Index of agent shapes refit to terse format (*name. components. recipes.*) and expanded from 10 to 20 entries. Combined recipe distribution across all 20 dishes: R2 ×12, R3 ×3, R4 ×4, R5 ×9, R6 ×8, R7 ×2, R8 ×1.
 - Pass 1.10 (2026-05-04, late): Rory & Roger pass — cookbook tightened for revisitation. (a) Components cut from 28 → 12 (eight named pieces + four closed-set lists). The dropped 16 fold into recipe bodies where they earn at moment of use; the cookbook no longer doubles as a glossary. (b) Index of agent shapes — each of the 20 entries gets a one-line *what it does* gloss before the components-formula; cold-recall now works without a Components lookup. (c) Escoffier opening tightened from ~150 words to ~70. Same load-bearing analogy, less lecture. (d) Data sources lead-in stripped of fonds-chapter framing; the section is reference, not metaphor. Net: shorter, denser, easier to land on a Tuesday morning. Highest-impact change is the Index gloss; biggest cut is the Components shrink.
 - Pass 2 (as each module reaches Pass 3): promote the module's exercise body into a standalone recipe in this cookbook, decoupled from training-specific framing (no "Phase 1 / Phase 2" internal numbering; just the moves).
-- Pass 3 (2026-05-04): full standalone "moves, in order" write-outs added for all eight recipes, sourced from current module spines and exercise shapes. Training-name reference simplified to "modules"; memory typo fixed. Remaining polish: cross-references, consistent voice sweep after module drift, examples-in-line for Recipes 1/5/6/7/8.
+- Pass 3 (2026-05-04): full standalone "moves, in order" write-outs added for all eight recipes, sourced from current module spines and exercise shapes. Training-name reference simplified to "modules"; memory typo fixed.
+- Pass 3.1 (2026-05-04): structure flipped after Antti review. Eight long recipes compressed into a short catalogue. Two canonical full worked examples promoted so the cookbook shows recipe composition in real work instead of repeating the module sequence.
+- Pass 3.2 (2026-05-04): provenance framing removed from reader-facing prose. Cookbook frame now treats future areas as dishes to cook with the same base preparations, mirepoix, and patterns.
+- Pass 3.3 (2026-05-04, late evening): Why-lines restored to each of the eight recipe stubs (the counterintuitive one-liner that gives each recipe its conviction; was lost in the Pass 3.1 compression). Canonical Dish 3 (the continuous research system, which lives in this very repo) added between Dish 2 and Components, restoring R3 + R6 worked-example demonstration that had been cut in Pass 3.1. Sutherland-flavoured sting added to the three-layers component (most agent failures look like bugs and are layer confusion). Net: the cookbook is now spicier without being heavier; recipe coverage in worked dishes climbs from 2 of 8 to 3 of 8.
 
 **Frameworks riffed on:**
 - Cookbook-as-genre, two registers held in tension: **Chez Panisse Menu Cookbook** energy for the long-form worked examples (one well-told dinner per recipe), **Escoffier *Le Guide Culinaire / Le Répertoire de la Cuisine*** for the Components and Index chapters (terse catalogue density, named base preparations, mix-and-match composition). Mastering the Art of French Cooking for accessibility across both. The right vibe is *a practitioner's book, not a theory book.*
@@ -393,7 +436,7 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 **Why this supersedes the earlier "lifecycle doc" idea:**
 - Lifecycle implies one canonical path; cookbook implies many recipes the practitioner composes. The agentic build space is too varied for a single lifecycle to hold plainly.
-- Recipes compose; lifecycles gatekeep. The training is anti-gatekeeping.
+- Recipes compose; lifecycles gatekeep. The recipe form is anti-gatekeeping.
 - Cookbook extends naturally (new recipes, new components, new data sources) without the earlier entries going stale. A lifecycle doc goes stale the moment the world shifts — which it does every quarter.
 
 **Em-dash carve-out for this file (per Antti's 2026-05-04 sign-off):** the cookbook supplement is a take-home reference, not delivered material; em-dashes are allowed in body, sparingly, where the comma reads weak. The PostToolUse rule-14 hook currently strips body em-dashes on every write — to honour the carve-out, the hook needs an explicit exception for `curriculum/supplementary/cookbook-for-agent-system-design.md`. Until that lands, em-dashes survive only in the maintainer block. If the file is ever folded into a module body or split into a delivered surface, audit and refit per rule 14.
@@ -403,6 +446,6 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 *(Quote drafted for Antti's voice; edit freely or swap.)*
 
-**Quality:** draft 2026-05-04 — Pass 3 recipe write-out; re-audit needed.
-- compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5) — INVALIDATED by Pass 1.9 + Pass 1.10 restructure and Pass 3 recipe write-out. Re-fire writing / story / technical class judges before next ship.
+**Quality:** draft 2026-05-04 — Pass 3.2 cooking-frame revision; re-audit needed.
+- compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5) — INVALIDATED by Pass 1.9 + Pass 1.10 restructure, Pass 3 recipe write-out, Pass 3.1 case-led restructure, and Pass 3.2 cooking-frame revision. Re-fire writing / story / technical class judges before next ship.
 - judges @bb9c1d5: writing PASS, story PASS, technical PASS, behavior N/A (pre-Pass-1.9 state)

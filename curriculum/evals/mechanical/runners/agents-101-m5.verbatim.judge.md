@@ -9,7 +9,7 @@ Grading seven Actor dispatches (setup + five detectors + scorer). You are NOT gr
 - **Scratch:** `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/agents-101-m5`
 - **Actor transcripts (7):** orchestrator passes paths for setup, 5 detectors, scorer.
 - **Prompt files:** `/tmp/prompts/hallucination-bakeoff/prompt-00{1..7}.txt`
-- **Artefacts:** `module-5/{briefing,benchmark,scoreboard,still-uncertain}.md`, `module-5/detectors/*.md`, `judges/groundedness-judge.md`
+- **Artefacts:** `module-5/{briefing,benchmark,scoreboard}.md`, `module-5/detectors/*.md`, `judges/groundedness-judge.md`
 
 ## Tooling
 
@@ -64,10 +64,6 @@ For every assertion: run the named script, capture exit code + first line. No ta
 - **A14.** `judges/groundedness-judge.md` exists. `wc -l` ≤ 30.
 - **A15.** Has `Known limit:` line: `grep -F 'Known limit:' judges/groundedness-judge.md`.
 - **A16.** No `[BRACKET]` placeholders: `grep -nE '\[[A-Z][A-Z_]+\]' judges/groundedness-judge.md` returns nothing.
-
-### Close
-
-- **A17.** `module-5/still-uncertain.md` exists. ≤ 6 lines.
 
 ### Truncations
 

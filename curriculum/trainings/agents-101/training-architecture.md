@@ -55,9 +55,16 @@ The Module 1 -> Module 2 transition is conceptual: from building one scoped thin
 
 ## Session Boundaries
 
-Agents 101 assumes a fresh session or task at the start of each module. Participants arrive after a gap, usually without last week's scrollback. That is the point: cross-module continuity must live on disk, not in chat history. The module opener owns the fresh-session instruction and names the training-directory root as the working folder.
+Agents 101 assumes a fresh session or task at the start of each module. Participants arrive after a gap, usually without last week's scrollback. That is the point: cross-module continuity must live on disk, not in chat history.
 
-Inside a module, keep the same session or task running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise, plus files written on disk. If an exercise intentionally needs a fresh session, say why in the exercise body.
+The session widget (source shape `**Session** *(verb, "name")*`) lands where the work begins, not where the module file opens. Place it by learning flow. Few canonical patterns:
+
+- **Exercise-top (default).** The first exercise in a module carries the widget. Lectures before the exercise are trainer-projected or pre-reading and don't require a live agent.
+- **Module-opener prose only.** `## Start here` carries framing prose (recapping the previous module's residuals, naming the mood). No widget at the module file. The exercise opens the session.
+- **Lecture-top.** When a lecture is interactive (student runs prompts inside the lecture), it carries its own widget. Rare in Agents 101.
+- **Mid-exercise re-fork.** When an exercise intentionally needs a fresh session partway through (worktree fork, isolation read, deliberate context drop), the exercise body carries a second widget and names the reason.
+
+Inside a module, keep the same session running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise, plus files written on disk.
 
 The durable handoff between modules is always file-based: `./CLAUDE.md`, `./challenge.md`, `memory/`, `sources/`, `agents/`, `judges/`, `outputs/`, and the relevant `module-N/` evidence. The session is disposable; the training directory compounds.
 

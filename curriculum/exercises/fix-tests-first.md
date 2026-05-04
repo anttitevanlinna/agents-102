@@ -2,7 +2,7 @@
 
 **What you do:** fix the bug you brought from prework, tests-first. Ship the PR.
 
-**What happens:** a real PR ships. A failing test lands in the codebase before the fix does. The diff is read line-by-line with at least one push-back.
+**What happened:** a real PR ships. A failing test lands in the codebase before the fix does. The diff is read line-by-line with at least one push-back.
 
 **The point:** tests-first and root-cause-driven is one discipline. Running it with an agent is a second discipline: reading the diff, pushing back when a line is not what you would have written. Both get practised here. The compound move (writing down what you learned) lives in the next exercise.
 

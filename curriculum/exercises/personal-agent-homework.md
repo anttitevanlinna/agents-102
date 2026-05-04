@@ -84,7 +84,7 @@ Don't retune for the first three days. Watch what it produces as-is. Every morni
 
 The memory is alive now. What the agent misses today is a prompt to sharpen the memory tomorrow, and the HTML you open with your coffee is a system, not a document.
 
-**What happens:**
+**What happened:**
 
 Your memory stops being a snapshot and starts being a system. Every morning the agent reads it, pushes something back at you, in your own house style, not Claude's, and gives you one more piece of evidence about what's sharp and what's soft. A week of this and the memory has more edge. The HTML belongs to the company, not Claude.
 

@@ -257,7 +257,7 @@ Write `module-7/monday.md` with three lines:
 
 In self-study, ask Teacher Claude to read all your module-7 files and push back on one thing: *"Is the outcome statement really the teammate's outcome, or is it the builder's wish dressed in their language?"* One sharp pushback beats a compliant summary.
 
-**What happens:**
+**What happened:**
 
 The interview will surprise you. Your memory already knew 80% of this teammate's job. The agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
 

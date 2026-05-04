@@ -540,6 +540,25 @@ main::before {
     margin-left: auto;
 }
 
+/* Inside warm-paper lecture phases — the lecture bg is var(--bg-3),
+   identical to the default prompt-block header bg. Without an override
+   the header melts into the lecture paper and the top row reads broken.
+   Re-tone three steps: body lightest (--bg), header mid (--bg-2), lecture
+   warmest (--bg-3). Header stays distinct as the darker chip on a lighter
+   prompt card, which itself reads as a card on the lecture warmth. */
+.phase--lecture .prompt-block {
+    background: var(--bg);
+    border-color: var(--line-2);
+}
+
+.phase--lecture .prompt-block__header {
+    background: var(--bg-2);
+}
+
+.phase--lecture .prompt-block .prompt-block__pre {
+    background: var(--bg);
+}
+
 /* Inside ink-dark exercise phases — invert chrome to read on dark bg.
    Header sits visibly above body (~9% vs ~3% cream tint) so the destination
    chip and copy button read as a separate row. Border lifted to ink-text
@@ -594,6 +613,146 @@ main::before {
 
 @media print {
     .module .copy-btn { display: none; }
+}
+
+/* ----------------------------------------------------------------
+   Session-boundary widget — the cousin of prompt-block, but louder.
+   ----------------------------------------------------------------
+   Author markup:
+     **Session** *(new, "Module 5 - Hallucination benchmark")*
+
+     Prose body (optionally runtime-forked).
+
+     ```
+     /rename m5-hallucination-benchmark
+     ```
+
+   Renderer (decorateSessions) wraps these three elements into one
+   .session-block. Orange chrome separates it from prompt-block
+   (oxblood) so the visual difference matches the semantic one:
+   prompt = "paste this into Claude," session = "you are now changing
+   which Claude you're talking to." Stand-out colour, full panel,
+   non-skippable. */
+
+.module .session-block {
+    margin: 1.75rem 0 2rem;
+    border: 1px solid var(--warm);
+    border-radius: 5px;
+    background: #faf1e3;
+    overflow: hidden;
+}
+
+.module .session-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding: 0.5rem 0.95rem;
+    background: var(--warm);
+    color: #fff;
+    font-size: 0.82rem;
+    line-height: 1.3;
+}
+
+.module .session-block__label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+}
+
+.module .session-block__verb {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: lowercase;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+}
+
+.module .session-block__name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.module .session-block__name::before {
+    content: "·";
+    margin-right: 0.55rem;
+    opacity: 0.65;
+}
+
+.module .session-block__body {
+    padding: 1.1rem 1.25rem 0.4rem;
+    color: var(--fg);
+}
+
+.module .session-block__body > p:first-child {
+    margin-top: 0;
+}
+
+.module .session-block__body > pre {
+    background: #fff;
+    border-color: #e8d2b1;
+    margin-bottom: 1rem;
+}
+
+.module .session-block__body > pre code {
+    color: var(--fg);
+}
+
+/* Inside the ink-dark exercise phase, invert the session widget too —
+   the amber head still leads, but the panel adapts to the dark band. */
+.phase--exercise .session-block {
+    background: rgba(201, 121, 66, 0.08);
+    border-color: var(--warm);
+    box-shadow: none;
+}
+
+.phase--exercise .session-block__header {
+    background: var(--warm);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__verb {
+    background: rgba(20, 17, 13, 0.18);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__name {
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__body {
+    color: var(--ink-text);
+}
+
+.phase--exercise .session-block__body > pre {
+    background: rgba(244, 236, 219, 0.06);
+    border-color: rgba(255, 125, 73, 0.35);
+}
+
+.phase--exercise .session-block__body > pre code {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .session-block {
+        border-color: #999 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+    .module .session-block__header {
+        background: #eee !important;
+        color: #000 !important;
+    }
+    .module .session-block__verb { background: #ddd !important; color: #000 !important; }
+    .module .session-block__name { color: #000 !important; }
 }
 
 .module blockquote {

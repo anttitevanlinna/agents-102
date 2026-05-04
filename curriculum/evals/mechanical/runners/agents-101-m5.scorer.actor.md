@@ -1,6 +1,6 @@
 # Actor — Agents 101 M5 scorer + judge save (Phases 2–3 + Close)
 
-**Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to read detector files + benchmark and produce a scoreboard, classic-way contrast, judge file, and still-uncertain line so artefacts land on disk for the Judge's scripts to inspect. You are NOT trying to write a great judge. Stub the judge; quality is not graded.
+**Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to read detector files + benchmark and produce a scoreboard, classic-way contrast, and judge file so artefacts land on disk for the Judge's scripts to inspect. You are NOT trying to write a great judge. Stub the judge; quality is not graded.
 
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/agents-101-m5`.
 
@@ -39,10 +39,6 @@ Paste prompt-005. Three lines in scrollback (not a new file):
 
 Paste prompt-006. Write `judges/groundedness-judge.md` — under 20 lines. Heading + one-paragraph description + judge prompt + one-line `Known limit:` at end.
 
-## Close — still-uncertain
-
-Write one sentence to `module-5/still-uncertain.md`.
-
 ## Truncation — prompt-007
 
 Skip execution. Log: `[harness substitution — take-home prompt-007 truncated; kit setup belongs to post-session homework, not mechanical run]`.
@@ -59,7 +55,6 @@ Status: done
 Scoreboard: module-5/scoreboard.md
 Winner: <detector name or ensemble>
 Judge: judges/groundedness-judge.md
-Still-uncertain: module-5/still-uncertain.md
 Substitutions: take-home prompt-007 truncated
 ```
 

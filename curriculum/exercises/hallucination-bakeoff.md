@@ -1,5 +1,13 @@
 # Exercise: Hallucination benchmark
 
+**Session** *(new, "Module 5 - Hallucination benchmark")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m5-hallucination-benchmark
+```
+
 **What you do:**
 
 Four detectors, same briefing, one scoreboard. You don't hunt for ungrounded claims by hand. You set up a benchmark: a 30-claim pool, four different detection methods, and a scorer that adjudicates the claims against the evidence. The winner (or the ensemble) becomes a judge file you carry into Module 6.
@@ -12,7 +20,7 @@ Four phases. 45–60 minutes. The work is mostly done by the claim extractor, th
 
 Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 synthesized answer as the test corpus: your sources, your retrievals, your stances, your real question. The briefing already lives somewhere on the edge of ungroundedness; that's why it's the right test.
 
-First, produce a fresh briefing so every detector sees the same output. The target is roughly 10% fabrication or misrepresentation. Claude cannot actually dial that number in, of course. The 10% is a slight joke: enough wrongness for the detectors to have a job, not so much that the briefing becomes nonsense. You should already be in this module's fresh session at the training-directory root.
+First, produce a fresh briefing so every detector sees the same output. The target is roughly 10% fabrication or misrepresentation. Claude cannot actually dial that number in, of course. The 10% is a slight joke: enough wrongness for the detectors to have a job, not so much that the briefing becomes nonsense.
 
 Ask Claude to choose a bounded evidence roster, generate the overreaching briefing in a separate worker, and save both without previewing the briefing.
 
@@ -45,6 +53,12 @@ When the subagent finishes, do not summarize the briefing in chat. Only confirm 
 ```
 
 Why the separate worker? So this session is not tainted by knowing what was fabricated. The main session stays blind for the benchmark setup.
+
+<div class="rt-cowork">
+
+Heads up for Cowork: every file the agent reads shows up in your UI as if your main session did it. That can look like the main session doing the work. It isn't. The dispatched agents are doing the heavy lifting; the main session is just orchestrating and watching the reads stream by.
+
+</div>
 
 
 Save it. **Don't open it yet.** The claim pool is the measuring surface. Keep the main session blind until the extractor has turned the briefing into claims.
@@ -158,10 +172,23 @@ Save the scoreboard to module-5/scoreboard.md as a table:
 After the table, name ONE winner. Do not return "all four are useful" — force the pick. If top two are within 10% precision and 10% recall of each other, name the single winner first, THEN propose a two-method ensemble and say what each catches that the other doesn't. Maximum ensemble cap: two methods. Never three.
 
 At the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.
+
+Show me the full scoreboard table in chat after saving the file.
 ```
 
 
-Watch the scoreboard land. Read it. You can now see which method actually worked on your output. Not intuition. Measurement.
+Watch the scoreboard land. You can now see which method actually worked on your output. Not intuition. Measurement.
+
+The columns are labelled `Precision` and `Recall`. They're standard eval vocabulary, and now you have a concrete example in front of you. Ask Claude to explain them using your own rows.
+
+**Prompt** *(Claude Code)*
+
+```
+Tell me about precision and recall.
+
+Use the scoreboard at `module-5/scoreboard.md` for the examples — point at specific rows from my run. End with one line on which one matters more for catching fabrication, and why.
+```
+
 
 Four detectors read the same claim pool. One method caught more of what the scorer adjudicated as ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
 
@@ -211,13 +238,9 @@ Four methods ran on the same input. A scorer adjudicated 30 claims, measured the
 
 One thing the benchmark can't reach: yours was 30 claims. A real production judge wants hundreds. The method is the same; the scale is the difference. That's next module.
 
-Write one sentence to `module-5/still-uncertain.md` naming the one thing this judge caught in this benchmark that you'd want running on every briefing you write from here on.
+**What happened:**
 
-Module 6 comes back for this file. You'll turn this judge into infrastructure: scaled benchmark, running on every build, feeding corrections back into itself.
-
-**What happens:**
-
-You produce a fresh briefing, extract a 30-claim pool, spawn four detectors in parallel on the same claims, let a scorer adjudicate the claims and measure the detectors, read a scoreboard that names the winner with measured reasoning, and save the winner as a named judge file. Twenty minutes of that is watching agents work while you think about what you're measuring. The file `judges/groundedness-judge.md` is the artifact Module 6 picks up.
+You produced a fresh briefing, extracted a 30-claim pool, spawned four detectors in parallel on the same claims, let a scorer adjudicate the claims and measure the detectors, read a scoreboard that named the winner with measured reasoning, and saved the winner as a named judge file. Twenty minutes of that was watching agents work while you thought about what you were measuring. The file `judges/groundedness-judge.md` is the artifact Module 6 picks up.
 
 **The point:**
 
@@ -232,7 +255,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 
 **Pattern: benchmarking.** One of the three designated magic beats in M3–M8 (alongside M3 multi-retriever + multi-stance and M8 agents-building-agents). The student operates as the scorer setup-and-observer, not as the classifier. Claude audits Claude; the student reads the scoreboard and saves the winner.
 
-**Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The Close's still-uncertain line keeps the broader uncertainty alive.
+**Mood contract — mechanical rescue.** The student leaves M3/M4 uneasy. M5's rescue is watching the benchmark name the winner measurably — *"ahh, this is actually fixable."* Key: do NOT resolve M3's strategic uncertainty or M4's security residual. Only the groundedness sub-problem gets rescued, and only for the shape of output the benchmark tested. The body line about 30 claims vs production's hundreds and the judge's "Known limit:" line keep the broader uncertainty alive.
 
 **Understandable magic bar.** After the exercise the student must be able to say, unprompted: *"four detectors ran in parallel on the same claim pool, a scorer adjudicated 30 claims, detector X won because it caught Y, now I have a judge file I trust for this shape of output."* No black-box move anywhere. If any phase leaves the student unable to describe what just happened, the phase is broken.
 
@@ -247,7 +270,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). In this module it is a lecture/demo after the benchmark, not a detector in the scoring panel. It asks a different question: what stays stable when the briefing is regenerated from the same evidence?
 
 **Philosophy callout (sparing):**
-- Belief #21 — name what you don't know — lands in the Close's still-uncertain line, and in the judge's "Known limit:" line. Both student-written.
+- Belief #21 — name what you don't know — lands in the judge's "Known limit:" line. Student-written.
 - Belief #14 — practice beats external proof — continues from M4. Named in maintainer-space, experienced in body.
 
 **Plug points:**
@@ -271,7 +294,7 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - *Phase 2 — scorer hedges, picks 'all four are useful.'* "Re-run and force a pick. The ensemble cap is two methods, not a four-method hug."
 - *Phase 2 — student skims past the scoreboard to Phase 3.* "Stay on the scoreboard. Name the row that surprised you. The scoreboard IS the rescue beat — skipping it steals the mood."
 - *Phase 3 — judge file sprawls past 20 lines.* "Cut it back. A judge that tries to do everything does nothing well. Narrow on purpose; the Known limit line names what it doesn't reach."
-- *Close — student writes a generic still-uncertain line ('quality is hard').* "Name a specific claim-shape this judge won't catch. 'Hard' isn't a failure mode."
+- *Judge "Known limit:" line is generic ('quality is hard').* "Name a specific claim-shape this judge won't catch. 'Hard' isn't a failure mode."
 
 **Decision points (trainer reads these in prep, not during):**
 - *Briefing target.* Default is the Module 3 synthesized briefing. If the student's Module 3 briefing came back unusually clean (rare but happens with cohorts that ran Module 3 conservatively), pivot to any over-reaching output the student already cares about — a board paper, a Monday memo, a customer-facing proposal. The exercise needs an output that plausibly overreaches; a too-grounded briefing collapses the contrast.

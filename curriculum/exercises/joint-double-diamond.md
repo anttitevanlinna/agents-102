@@ -224,7 +224,7 @@ Write the plan for the next two weeks. Include sequence, owners, agent dependenc
 
 **In-room:** the sponsor (the one who sat alongside for all eight modules) names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No ceremony. A name the graduate can say on Tuesday morning to colleagues who weren't there.
 
-**What happens:**
+**What happened:**
 
 One agent working alone can't produce a company-grade strategy kernel grounded in your actual data. Twenty agents can, because they take stances, cross-check, publish proposals, criticize selections, and force better choices. Crux finds the load-bearing obstacle. Cross-checks expose blind spots. Critiques keep the synthesizer honest. Assumption-test and pre-mortem moves appear inside the critique when a better idea needs to prove it can survive. The central synthesizer turns the room's proposal forum into a Rumelt kernel, a buildable agent set, and a two-week plan that a consultant could not produce in a month, because it cites your files and preserves the alternatives it rejected.
 

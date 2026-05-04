@@ -4,9 +4,9 @@
 
 Hire three agents to fetch raw material on your challenge, wiki, docs, the open web. Hire a fourth to curate the findings into your memory in real time, while the retrievers are still running.
 
-**What happens:**
+**What happened:**
 
-Four sessions running on the same shared folder at once. Three retrievers stream findings into `sources/`; the fourth (the synthesizer) reads `sources/` as it grows and integrates into `memory/`, the curated layer that's been compounding since Module 2. Two layers fill at the same time.
+Four sessions ran on the same shared folder at once. Three retrievers streamed findings into `sources/`; the fourth (the synthesizer) read `sources/` as it grew and integrated into `memory/`, the curated layer that's been compounding since Module 2. Two layers filled at the same time.
 
 **The point:**
 

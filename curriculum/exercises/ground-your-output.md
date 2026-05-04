@@ -104,7 +104,7 @@ Grounding is the discipline of not *inventing*. It isn't the discipline of *bein
 
 Write one line to `module-5/still-uncertain.md`: *"Even with grounded output, the thing I still can't trust about this briefing is X."* That line is what Module 6 comes back for. Evals automate the grounding check at scale — and then start to reach toward the next layer.
 
-**What happens:**
+**What happened:**
 
 You produce an ungrounded briefing, classify where the ground is and isn't with your domain expertise, add three rules that force the agent to cite or stop, regenerate a grounded version, and judge what you gained and lost. You walk out with the grounding loop as a practice you can run on any output, any Monday — and a clear-eyed sense of what grounding reaches and what it doesn't.
 

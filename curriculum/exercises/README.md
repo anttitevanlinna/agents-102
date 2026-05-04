@@ -12,7 +12,7 @@ Canonical exercise files. One file per exercise. Shared across all trainings (Ag
 # Exercise: [Name]
 
 **What you do:** [clear instruction]
-**What happens:** [expected behavior]
+**What happened:** [expected behavior]
 **The point:** [why this matters]
 **Facilitator note:** [timing, common questions]
 ```

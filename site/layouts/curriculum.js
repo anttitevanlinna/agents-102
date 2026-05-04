@@ -205,7 +205,10 @@
         btn.addEventListener('click', function (ev) {
             ev.preventDefault();
             var code = pre.querySelector('code') || pre;
-            var text = code.innerText;
+            // textContent (not innerText) — innerText respects CSS rendering
+            // and can collapse newlines inside <pre><code>; textContent is the
+            // DOM text and preserves whitespace deterministically.
+            var text = code.textContent;
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');
@@ -214,11 +217,43 @@
                     btn.classList.remove('copy-btn--copied');
                 }, 1400);
             };
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(done, fallback);
-            } else {
-                fallback();
+            // Write BOTH text/plain and text/html to the clipboard. Destinations
+            // that prefer HTML (Cowork input, Claude Code Desktop input, Slack,
+            // browser-based markdown editors) read the <pre> wrapper and paste
+            // it as a fenced code block, which suppresses the destination's URL
+            // auto-detection that converts paths like `module-5/claim-pool.md`
+            // into `[claim-pool.md](http://claim-pool.md)` markdown links.
+            // Plain-text-only destinations (terminals, plain inputs) get the
+            // text/plain fallback unchanged.
+            function writeBoth() {
+                if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+                    // <div> + <br> instead of <pre> — destinations treat <pre>
+                    // as a code block and apply their own dark theme even with
+                    // inline-style overrides. <div> doesn't trigger code-block
+                    // styling. Whitespace preserved via <br> for newlines and
+                    // &nbsp; for leading indentation. <wbr> before file-extension
+                    // dots is the backup defence against URL auto-detection
+                    // (parsers see broken pattern, don't linkify).
+                    var lines = text.split('\n').map(function (line) {
+                        var indent = line.match(/^[ \t]*/)[0];
+                        var rest = line.slice(indent.length);
+                        var indentHtml = indent.replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                        var escRest = esc(rest).replace(/(\.)([a-z]{1,5})\b/gi, '<wbr>$1$2');
+                        return indentHtml + escRest;
+                    });
+                    var html = '<div>' + lines.join('<br>') + '</div>';
+                    var item = new ClipboardItem({
+                        'text/plain': new Blob([text], { type: 'text/plain' }),
+                        'text/html':  new Blob([html], { type: 'text/html' })
+                    });
+                    return navigator.clipboard.write([item]);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                }
+                return Promise.reject(new Error('no clipboard api'));
             }
+            writeBoth().then(done, fallback);
             function fallback() {
                 var ta = document.createElement('textarea');
                 ta.value = text;
@@ -232,6 +267,80 @@
             }
         });
         mountTarget.appendChild(btn);
+    }
+
+    // Session-boundary widget. Source shape:
+    //   **Session** *(verb, "name")*
+    //   <runtime-fork prose>
+    //   ```
+    //   /rename slug
+    //   ```
+    // Wraps the label paragraph + next paragraph (body prose) + next <pre>
+    // (rename block) into a single .session-block. Stops at the next h*,
+    // **Session**, or **Prompt** so widgets never run past their seam.
+    // Run BEFORE decoratePrompts so the **Prompt** stop-condition fires before
+    // prompt blocks are unwrapped.
+    function decorateSessions(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Session') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var firstComma = label.indexOf(',');
+            var verb = firstComma >= 0 ? label.slice(0, firstComma).trim() : label.trim();
+            var name = firstComma >= 0 ? label.slice(firstComma + 1).trim().replace(/^"|"$/g, '') : '';
+
+            var wrap = document.createElement('div');
+            wrap.className = 'session-block';
+
+            var header = document.createElement('div');
+            header.className = 'session-block__header';
+            header.innerHTML =
+                '<span class="session-block__label">Session</span>' +
+                (verb ? '<span class="session-block__verb">' + esc(verb) + '</span>' : '') +
+                (name ? '<span class="session-block__name">' + esc(name) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            wrap.appendChild(header);
+
+            var body = document.createElement('div');
+            body.className = 'session-block__body';
+            wrap.appendChild(body);
+            p.remove();
+
+            // Pull subsequent siblings into the body until a stop boundary.
+            var next = wrap.nextSibling;
+            while (next) {
+                if (next.nodeType === 1) {
+                    var tag = next.tagName;
+                    if (/^H[1-6]$/.test(tag)) break;
+                    if (tag === 'P') {
+                        var s = next.querySelector(':scope > strong');
+                        if (s) {
+                            var t = s.textContent.trim();
+                            if (t === 'Session' || t === 'Prompt') break;
+                        }
+                    }
+                }
+                var sib = next;
+                next = next.nextSibling;
+                // The inner <pre> in a session widget is the rename command —
+                // CLI-only (Cowork can't rename; Desktop has no /rename either).
+                // Wrap in .rt-cli so existing runtime CSS hides it for the other
+                // two runtimes. Author writes plain markdown; visibility lives
+                // at the renderer.
+                if (sib.nodeType === 1 && sib.tagName === 'PRE') {
+                    var cliWrap = document.createElement('div');
+                    cliWrap.className = 'rt-cli';
+                    body.appendChild(cliWrap);
+                    cliWrap.appendChild(sib);
+                    break;
+                }
+                body.appendChild(sib);
+            }
+        });
     }
 
     function decoratePrompts(root) {
@@ -508,6 +617,7 @@
         buildTocSections: buildTocSections,
 
         // DOM (browser only)
+        decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,

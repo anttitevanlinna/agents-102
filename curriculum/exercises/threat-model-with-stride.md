@@ -2,7 +2,7 @@
 
 **What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. The skill will walk the six STRIDE categories against every surface on your map and produce a threat list. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
 
-**What happens:** STRIDE does the breadth: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in 20 minutes and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
+**What happened:** STRIDE does the breadth: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in 20 minutes and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
 
 **The point:** Threat modeling is only useful if it produces a decision. STRIDE's value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.
 

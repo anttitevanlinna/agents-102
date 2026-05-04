@@ -127,6 +127,7 @@
             .then(CurriculumRuntime.escapeTildes)
             .then(function (md) {
                 container.innerHTML = marked.parse(md);
+                CurriculumRuntime.decorateSessions(container);
                 CurriculumRuntime.decoratePrompts(container);
                 var h1 = container.querySelector('h1');
                 document.title = (h1 ? h1.textContent : fallbackTitle) + ' — Agents 102';

@@ -18,7 +18,6 @@ After this module, you will be able to:
 - **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
 
 ## Start here
-Start this module at the training-directory root. Module 5 reads the Module 3 synthesized briefing and retrieval evidence, writes the benchmark under `module-5/`, saves the winning judge at `judges/groundedness-judge.md`, and compounds groundedness rules into `./CLAUDE.md`.
 
 In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it).
 
@@ -83,7 +82,7 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 
 ## Homework after Module 5: between-module reading
 
-Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Read Ethan Mollick, "Garbage Can and Bitter Lesson."
+Read Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 <!-- maintainer -->
 
@@ -114,13 +113,13 @@ Carry your own `module-5/still-uncertain.md` line into Module 6 prework. Read Et
 - **Compound reliability math** (85% × 10 steps ≈ 20% end-to-end) — carried in the lecture, makes the "why measure, not guess" case.
 
 **Philosophy callout (sparing):**
-- Belief — name what you don't know — lands in the judge's "Known limit:" line and the Close's `still-uncertain.md` line. Both student-written.
+- Belief — name what you don't know — lands in the judge's "Known limit:" line. Student-written.
 - Belief — practice beats external proof — continues from M4.
 
 **Mood contract — mechanical rescue, not triumph:**
 - M5's rescue is the scoreboard moment — *"ahh, this is actually fixable."* Watching four detectors run and the scorer name a winner with measured reasoning.
 - Do NOT resolve M3's strategic uncertainty or M4's security residual. Only groundedness-for-this-shape-of-output gets rescued.
-- Close must land with "what the judge won't catch" (the still-uncertain line). A student leaving with "quality is solved" is the failure state.
+- Close must land with "what the judge won't catch" (the body line about 30 claims vs production's hundreds, plus the judge's "Known limit:" line). A student leaving with "quality is solved" is the failure state.
 - Hand-off to M6 is hunger, not closure — 30 claims here, hundreds on every build is the seam.
 
 **Understandable magic bar:** after the exercise the student must be able to say, unprompted: *"four detectors ran in parallel on the same claim pool, a scorer adjudicated 30 claims, detector X won because Y, now I have a judge file I trust for this shape of output."* No black-box move anywhere.

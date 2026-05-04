@@ -16,7 +16,8 @@ After this module, you will be able to:
 - **Evaluate** when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins
 
 ## Start here
-Start this module at the training-directory root, the same root where Module 2 created `./CLAUDE.md`, `memory/`, `sources/`, and `agents/`. Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief.
+
+Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief, building on what Module 2 created at the training-directory root (`./CLAUDE.md`, `memory/`, `sources/`, `agents/`).
 
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
 

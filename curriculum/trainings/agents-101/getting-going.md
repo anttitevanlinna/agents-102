@@ -16,7 +16,7 @@ After this module, you will be able to:
 
 ## Start here
 
-<span class="rt-code">Start a new Claude Code session at `~/Documents/agents-101/` (the training root, same as Prework). This module's outputs land in the `module-1/` subfolder.</span><span class="rt-cowork">Click *New task* in the Cowork tab and select `~/Documents/agents-101/` as the working folder (the training root, same as Prework). This module's outputs land in the `module-1/` subfolder.</span>
+This module's outputs land in `module-1/`.
 
 **The question, to you:** when you've used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 

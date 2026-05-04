@@ -17,7 +17,8 @@ After this module, you will be able to:
 - **Evaluate** residual risk plainly: what's left after mitigation, and what future sessions should remember before they touch the system again
 
 ## Start here
-Start this module at the training-directory root. Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
+
+Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
 
 You've had three agents search your company and three more decide. What doesn't sit right about that, from a risk angle? Name the thing you'd want to check before letting this near a real stakeholder.
 

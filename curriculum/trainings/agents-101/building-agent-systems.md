@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span> Module 2 turns to your real challenge, a fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+Module 2 turns to your real challenge. A fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 

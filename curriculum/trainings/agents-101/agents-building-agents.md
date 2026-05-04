@@ -15,7 +15,8 @@ After this module, you will be able to:
 - **Read** the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Agents 101)
 
 ## Start here
-Start this module at the training-directory root, then connect the separate shared deliberation folder the trainer posts in chat. Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
+
+Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. The trainer posts a separate shared deliberation folder in chat for the room-scale work. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
 Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.
 

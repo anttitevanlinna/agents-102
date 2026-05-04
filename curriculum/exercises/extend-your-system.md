@@ -1,5 +1,13 @@
 # Exercise: Extend your system
 
+**Session** *(new, "Module 8 - Agents building agents")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m8-agents-building-agents
+```
+
 **What you do:**
 
 You've been building agents for seven modules. Today you don't build one. You describe one, and the coding agent builds it. The tool that builds tools. The move stops being linear the moment you see it land.

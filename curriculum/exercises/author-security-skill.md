@@ -1,5 +1,13 @@
 # Exercise: *Run and package* a security skill
 
+**Session** *(new, "Module 4 - Security skill")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m4-security-skill
+```
+
 **What you do:**
 
 Run the policy files raw against the system you built in modules 2-3. Then package the useful move into reusable expertise: one personal skill with two lenses. Stop when the skill exists.
@@ -11,8 +19,6 @@ A **skill** packages an expertise (rules, checklists, the moves an agent runs) i
 **Phase 1. Run the policies raw (10 min).**
 
 Reference material lives in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference for self-study). Start by proving those files are runnable. No skill yet. Just the policy files, pointed at the system.
-
-Open a fresh session in your training directory.
 
 **Prompt** *(Claude Code)*
 
@@ -131,7 +137,7 @@ Press Save when skill-creator surfaces it.
 
 </div>
 
-Close this session before Exercise 2. The personal skill autoloads when the next session opens, so Exercise 2 needs a fresh session at your training-directory root.
+The personal skill autoloads when you start the next session for Exercise 2.
 
 **What happened:**
 

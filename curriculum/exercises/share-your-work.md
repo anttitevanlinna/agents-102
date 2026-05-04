@@ -1,5 +1,13 @@
 # Exercise: Share your work
 
+**Session** *(new, "Module 7 - Personal to team")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m7-personal-to-team
+```
+
 Your memory has been working for you for days now. It catches things you'd have missed, keeps a tone you taught it, and produces something you check before meetings. The question arrives on its own: *could this help someone else?*
 
 Hold the impulse. Then do the opposite of what vendors want you to do.

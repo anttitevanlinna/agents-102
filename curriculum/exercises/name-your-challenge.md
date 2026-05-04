@@ -1,5 +1,13 @@
 # Exercise: Name your next big *challenge*
 
+**Session** *(new, "Module 2 - Building agent systems")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m2-building-agent-systems
+```
+
 **What you do:**
 
 Module 2 builds you a memory: a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before anything gets built, the problem gets pinned.

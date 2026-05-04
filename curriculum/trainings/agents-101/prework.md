@@ -6,7 +6,13 @@ Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-co
 
 You need a Claude account at claude.ai. Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → *New Folder*). This is your training directory; everything you produce over the eight modules lands here.
 
+**Session** *(new, "Prework")*
+
 <span class="rt-code">Install Claude Code (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both. Start a new session at `~/Documents/agents-101/`.</span><span class="rt-cowork">Open the *Cowork* tab next to *Chat* in your Claude Desktop app. Click *New task* and select `~/Documents/agents-101/` as the working folder. No terminal required.</span>
+
+```
+/rename agents-101-prework
+```
 
 ## 1. Connect your work apps (5 min)
 
@@ -110,7 +116,7 @@ Stuck on the connector or want specific click-paths? See [Claude quick reference
 
 If you only do one thing from this prework, do this. The rest builds on it.
 
-Open [What is an Agent — LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat). Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You'll meet the rest of that document section by section as the training goes.
+Open [What is an Agent, LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat). Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You'll meet the rest of that document section by section as the training goes.
 
 *Proof: you arrive with a rough mental frame, not a blank one.*
 

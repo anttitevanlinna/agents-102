@@ -1,5 +1,13 @@
 # Exercise: Paint by agent with guardrails
 
+**Session** *(new, "Module 1 - Getting going")*
+
+<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+
+```
+/rename m1-getting-going
+```
+
 **What you do:**
 
 The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next run starts smarter.

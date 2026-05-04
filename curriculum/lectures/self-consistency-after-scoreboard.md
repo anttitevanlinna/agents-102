@@ -92,4 +92,5 @@ Ask me what output I'm checking, where my evidence lives, and what short filenam
 
 **Student action:** Optional. If time is tight, trainer runs the demo on screen and students keep the concept. If self-study, students may run both prompts and read the comparison in chat scrollback (or ask Claude to save it to a file if they want to keep it).
 
-**Quality:** draft 2026-04-29
+**Quality:** compendium-audited 2026-05-04 (writing@92b7e79 story@92b7e79 technical@92b7e79 behavior@92b7e79)
+- judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS

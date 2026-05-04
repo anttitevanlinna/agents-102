@@ -142,8 +142,8 @@ Read Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 **DEFERRED** (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability. Four-spawn shape is confirmed in production via Module 3's parallel retrievers; Module 5's pipeline + scorer-stability check needs a real benchmark run on real briefing input.
 
-**Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
-- judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-04 (writing@92b7e79 story@92b7e79 technical@92b7e79 behavior@92b7e79)
+- judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @3d7e76c: PASS — agents-101-m5 30/30 via bin/judge-m5.sh
 
 **Source-verification owed (pre-first-cohort):**

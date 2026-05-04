@@ -312,5 +312,5 @@ Method selection in agent quality work is empirical, not intuitive. You don't tr
 - M6 picks the judge up and turns it into infrastructure — scaled benchmark, scheduled runs, corrections feeding back, the steering counterpart (encoding preference, not groundedness).
 - Don't cross-teach. M5's benchmark earns M6's automation.
 
-**Quality:** draft 2026-04-28 (Pass 3 polish — sim/eval not yet run)
-- compendium-audited 2026-04-28 (check_writing, check_student_facing, check_pedagogy, check_prompts)
+**Quality:** compendium-audited 2026-05-04 (writing@92b7e79 story@92b7e79 technical@92b7e79 behavior@92b7e79)
+- judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS

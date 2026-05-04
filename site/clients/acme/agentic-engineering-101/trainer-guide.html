@@ -115,8 +115,8 @@ main { flex: 1 0 auto; }
 
 .curriculum-home:hover { color: var(--accent-2); }
 
-/* ── Runtime switcher (Bootstrap only) ──
-   Bootstrap is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+/* ── Runtime switcher (Agents 101 only) ──
+   Agents 101 is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
    pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
    phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
    the body.runtime-* class hides the inactive variant.
@@ -1483,7 +1483,7 @@ main::before {
     }
 
     .module::after {
-        content: "bosser.consulting — Agents 102 Bootstrap";
+        content: "bosser.consulting — Agents 101";
         display: block;
         text-align: center;
         margin-top: 3rem;
@@ -1743,7 +1743,7 @@ body.workbook { padding-top: 3rem; }
 <p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
 <p>In cohort delivery, you carry the push-backs by default. The Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.</p>
 <h2>Delivery Architecture</h2>
-<p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Bootstrap habits.</p>
+<p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
 <p>AE101 is a Claude Code training. The live surface is Claude Code CLI unless the cohort has deliberately chosen another Claude Code surface. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code.</p>
 <p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
 <h2>Prep Before Each Session</h2>
@@ -1836,8 +1836,8 @@ body.workbook { padding-top: 3rem; }
     // ── TRAININGS registry — single source of truth. SPA reads it for routing
     // and index rendering; build-workbook iterates the modules array.
     var TRAININGS = {
-        bootstrap: {
-            label: 'Bootstrap',
+        'agents-101': {
+            label: 'Agents 101',
             lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -1893,7 +1893,7 @@ body.workbook { padding-top: 3rem; }
         }
     };
 
-    var DEFAULT_TRAINING = 'bootstrap';
+    var DEFAULT_TRAINING = 'agents-101';
 
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
@@ -1911,13 +1911,13 @@ body.workbook { padding-top: 3rem; }
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
+    // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
     var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
     var DEFAULT_RUNTIME = 'cowork';
 
     function trainingSupportsRuntimeSwitch(trainingKey) {
-        return trainingKey === 'bootstrap';
+        return trainingKey === 'agents-101';
     }
 
     function getRuntime(trainingKey) {

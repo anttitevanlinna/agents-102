@@ -115,8 +115,8 @@ main { flex: 1 0 auto; }
 
 .curriculum-home:hover { color: var(--accent-2); }
 
-/* ── Runtime switcher (Bootstrap only) ──
-   Bootstrap is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+/* ── Runtime switcher (Agents 101 only) ──
+   Agents 101 is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
    pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
    phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
    the body.runtime-* class hides the inactive variant.
@@ -1483,7 +1483,7 @@ main::before {
     }
 
     .module::after {
-        content: "bosser.consulting — Agents 102 Bootstrap";
+        content: "bosser.consulting — Agents 101";
         display: block;
         text-align: center;
         margin-top: 3rem;
@@ -2274,8 +2274,8 @@ Keep it to five bullets.
     // ── TRAININGS registry — single source of truth. SPA reads it for routing
     // and index rendering; build-workbook iterates the modules array.
     var TRAININGS = {
-        bootstrap: {
-            label: 'Bootstrap',
+        'agents-101': {
+            label: 'Agents 101',
             lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -2331,7 +2331,7 @@ Keep it to five bullets.
         }
     };
 
-    var DEFAULT_TRAINING = 'bootstrap';
+    var DEFAULT_TRAINING = 'agents-101';
 
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
@@ -2349,13 +2349,13 @@ Keep it to five bullets.
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
+    // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
     var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
     var DEFAULT_RUNTIME = 'cowork';
 
     function trainingSupportsRuntimeSwitch(trainingKey) {
-        return trainingKey === 'bootstrap';
+        return trainingKey === 'agents-101';
     }
 
     function getRuntime(trainingKey) {

@@ -115,8 +115,8 @@ main { flex: 1 0 auto; }
 
 .curriculum-home:hover { color: var(--accent-2); }
 
-/* ── Runtime switcher (Bootstrap only) ──
-   Bootstrap is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+/* ── Runtime switcher (Agents 101 only) ──
+   Agents 101 is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
    pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
    phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
    the body.runtime-* class hides the inactive variant.
@@ -1483,7 +1483,7 @@ main::before {
     }
 
     .module::after {
-        content: "bosser.consulting — Agents 102 Bootstrap";
+        content: "bosser.consulting — Agents 101";
         display: block;
         text-align: center;
         margin-top: 3rem;
@@ -1779,6 +1779,7 @@ Confirm the file exists and report its size.
 </code></pre>
 <h2>4. Hand the rest to Claude (12 min)</h2>
 <p>Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1. Claude will need to write outside the repo (<code>~/Documents/ae101-content/</code> and <code>~/.claude/skills/</code>); approve the permission prompts when they fire.</p>
+<p>When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>I&#39;m starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
 
@@ -2486,6 +2487,7 @@ First: find the one section of the skill where session evidence shows it underde
 
 Then, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don&#39;t append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.
 </code></pre>
+<p>This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). You can make the grill hotter: ask Claude to over-flag (<em>&quot;be harsher than necessary, find at least two sections that underdelivered, assume it&#39;s worse than it looks&quot;</em>), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.</p>
 <h2>Clear the session</h2>
 <p>Before you close the session, signal the wrap-up. The agent converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn&#39;t yet in the summary, anything the session noticed that nobody compounded yet.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2909,6 +2911,7 @@ Before you start, ask for or write anything else you want for this run.
 
 Tell me what shipped, what didn&#39;t, and what the verifier surfaced.
 </code></pre>
+<p>The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, <em>&quot;shipped most of it, hit a snag on X.&quot;</em> The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn&#39;t ship and quote the verifier output verbatim where it fired. Your call on whether to push.</p>
 <p>The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn&#39;t the agent any more, that&#39;s a result worth reading.</p>
 <section class="phase phase--lecture" id="lectures-what-packaging-is">
 <div class="phase-kicker">Lecture</div>
@@ -3043,6 +3046,7 @@ For every claim, quote a specific moment from the artefacts. Don&#39;t generalis
 
 End with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.
 </code></pre>
+<p>Claude will likely open with a four-dimension plan summary (<em>&quot;I&#39;ll start with repo state across the m4/ branch, then...&quot;</em>) before any quoted evidence lands. Skim past the opening; the contrast moments are what you&#39;re reading for.</p>
 <p>Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes <em>&quot;the agent drifted on goal&quot;</em> without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted. Expect Claude to over-credit the packaging on first pass. A fair push-back is <em>&quot;name one thing the verifier missed, concretely.&quot;</em></p>
 <p>You should close Phase 1 with a ranked gap list (three to five items) and a dominant gap that will shape Phase 2.</p>
 <p>Two runs of the same task were the first real stress-test of <code>./CLAUDE.local.md</code>. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.</p>
@@ -3050,6 +3054,7 @@ End with: which gap matters most? Rank by damage-to-a-future-run, not by how int
 <p><strong>Prompt</strong> <em>(Claude Code, only if a rule earned cutting)</em></p>
 <pre><code>Read ./CLAUDE.local.md. Read this session&#39;s scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap. Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
 </code></pre>
+<p>Claude may pause before editing <code>./CLAUDE.local.md</code>, a named config file looks risky to modify, or it may rewrite more than the one stale rule (<em>&quot;in place&quot;</em> is loose wording). If it asks, just say go. If the diff touches more than the one rule you flagged, push back.</p>
 <hr>
 <h2>Phase 2: Author the session-shaper (~25–35 min)</h2>
 <p>Skills aren&#39;t hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.</p>
@@ -3083,6 +3088,7 @@ When you have enough, propose a skill name. Write `~/.claude/skills/&lt;proposed
 
 Don&#39;t reassure me. Name weak parts.
 </code></pre>
+<p>This critique runs in the same session that authored the SKILL.md, convenient (the authoring context is right there) but charitable (same-context-window self-audit under-flags by design). You can make the critique sharper: ask Claude to over-flag (<em>&quot;flag at least three things, be harsher than necessary, assume worse than it looks&quot;</em>), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.</p>
 <p>Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.</p>
 <p>Now invoke the skill on the packaged run you just diffed. Authoring without invocation is theatre.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3092,6 +3098,7 @@ Produce whatever output the skill asks you to produce (pass/fail, ranked finding
 
 Then, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?
 </code></pre>
+<p>This prompt asks Claude to invoke a skill it just helped author AND grade the result in the same turn. That&#39;s biased by design, the same context window self-charity is well-documented. We picked it for convenience: one paste, one wait, one read. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. What did the skill miss?&quot;</em> Your call.</p>
 <p>If the output doesn&#39;t catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (<em>&quot;I check drift but not context-rot re-derivations&quot;</em>), that&#39;s a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it&#39;s finished.</p>
 <p>The skill ships personally. It lives at <code>~/.claude/skills/&lt;skill-name&gt;/SKILL.md</code> and auto-discovers in every future session you run, across every repo. That&#39;s the ship.</p>
 <p><strong>Team-kit candidate, via human conversation.</strong> If the skill encodes something your whole team would benefit from, a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team&#39;s project shape, it&#39;s a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: <em>&quot;does this match how you&#39;d check this kind of work?&quot;</em> If they say yes, PR it. If they push back, you got the real review for free. Agents don&#39;t unilaterally change shared team infrastructure. You do.</p>
@@ -3152,6 +3159,7 @@ Write a one-page note on what changed across this body of work. Not a changelog.
 
 Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I&#39;ll push back, then we save.
 </code></pre>
+<p>Claude will likely open with a plan-summary paragraph (<em>&quot;I&#39;ll dispatch the sub-task, then combine findings...&quot;</em>) before any read happens. Skim past the opening; the note is what you&#39;re reading for.</p>
 <p>If the read runs ten minutes plus, interrupt with <em>&quot;enough. just tell me now.&quot;</em>, you have what the agent has assembled so far, and that&#39;s the read.</p>
 <p>Read the note. That&#39;s the read of your six modules from outside the work.</p>
 <p>If the note reads true, save it. You&#39;ll have your agent re-read it when the next long task stalls.</p>
@@ -3270,7 +3278,7 @@ Return a plan with the three answers. No preamble.
 <p>His learning journey starts with obvious excitement. AI can write code. A lot of code. Fast. He experiments with running separate Claude sessions: one for planning, one for implementation.</p>
 <blockquote>
 <p>&quot;I&#39;m keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes. This uses my time better since I spend a lot less time waiting for Claude to finish.</p>
-<p>The two Claudes are in two different directories, both have git repos of the project. The planning directory has rules that prevent source code changes. Only planning is allowed. I manually pull and push changes between the two.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2016166910698696916">X</a></p>
+<p>The two Claudes are in two different directories, both have git repos of the project. The planning directory has rules that prevent source code changes. Only planning is allowed. I manually pull and push changes between the two.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2016166910698696916">X</a></p>
 </blockquote>
 <p>That alone is a shift in role. The programmer is no longer only the person typing syntax. The programmer becomes the person arranging contexts, separating planning from doing, and managing the flow of intent into code.</p>
 <p>Then the story gets more interesting.</p>
@@ -3279,7 +3287,7 @@ Return a plan with the three answers. No preamble.
 <p>That is the core agentic failure mode: local success, global drift.</p>
 <p>And this is where Clean Code changes meaning. In the older frame, Clean Code meant code another human could read, reason about, and safely change. That still matters. But in agentic development, the audience has expanded. Now the code must also be shaped so an AI can change it without quietly destroying what already worked.</p>
 <blockquote>
-<p>&quot;Juniors entering the field will still need to understand what code is. But they won&#39;t need most of the philosophy that we&#39;ve been used to. The emphasis will all be on pragmatics and engineering. So they won&#39;t need to know OOP, but they will definitely need to know dependency inversion. They won&#39;t need to know functional programming, but they&#39;ll definitely need to understand purity and the costs of mutability. They won&#39;t need to know about structured programming, but they will need to understand modularity.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2032072361436983517">X</a></p>
+<p>&quot;Juniors entering the field will still need to understand what code is. But they won&#39;t need most of the philosophy that we&#39;ve been used to. The emphasis will all be on pragmatics and engineering. So they won&#39;t need to know OOP, but they will definitely need to know dependency inversion. They won&#39;t need to know functional programming, but they&#39;ll definitely need to understand purity and the costs of mutability. They won&#39;t need to know about structured programming, but they will need to understand modularity.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2032072361436983517">X</a></p>
 </blockquote>
 <p>So Clean Code becomes steering.</p>
 <p>Not steering as vibes. Not steering as &quot;write a better prompt.&quot; Steering as executable constraint. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.</p>
@@ -3288,35 +3296,35 @@ Return a plan with the three answers. No preamble.
 <p>Extremely high coverage is achievable and beneficial and there is no excuse for not pursuing it.</p>
 <p>Code quality is measurable and can be enforced by metrics.</p>
 <p>Modularity is critical.</p>
-<p>Architectural discipline is critical.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2032089795766129021">X</a></p>
+<p>Architectural discipline is critical.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2032089795766129021">X</a></p>
 </blockquote>
 <p><strong>Acceptance Tests.</strong> Acceptance tests define the externally visible behavior the system must preserve. They matter more with agents because the agent is often good at satisfying the current request while accidentally altering older intent. A good acceptance test says: this is what the world must still look like from the outside when the change is done. It turns product memory into a runnable check.</p>
 <p><strong>Unit Tests.</strong> Unit tests make small behaviors hard to casually break. They also make the agent&#39;s search space smaller. Instead of asking the model to infer every invariant from the whole codebase, the engineer gives it many small, local tripwires. When a unit test fails, the agent has a concrete signal. When the tests are absent, vague, or too broad, the agent has more room to improvise.</p>
-<p><strong>TDD.</strong> Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not nostalgia for a ritual. It is a way to keep intent ahead of code generation.</p>
+<p><strong>TDD.</strong> Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not nostalgia for an exercise. It is a way to keep intent ahead of code generation.</p>
 <p><strong>Mutation Testing.</strong> Mutation testing asks whether the tests actually defend the behavior they claim to defend. That becomes important when agents can generate large test suites that look reassuring but do not catch meaningful changes. A mutation tester breaks the code in small ways and checks whether the tests notice. In an agentic workflow, that makes it harder for a model to satisfy the appearance of testing while leaving the system weak.</p>
 <p><strong>CRAP And Complexity Metrics.</strong> CRAP scores, cyclomatic complexity, and related metrics expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob&#39;s frame, this is part of the instrument panel: not the steering wheel itself, but the gauge that tells you when steering is becoming harder.</p>
 <p><strong>Small Decoupled Units.</strong> Small units with clear boundaries reduce collateral damage. This is classic Clean Code, but the agentic reason is sharper. A model operating in a large, tangled unit has many more ways to &quot;fix&quot; one behavior by disturbing another. A model operating in a small, decoupled unit has fewer escape routes. Modularity turns the codebase into terrain the agent can navigate without constantly falling through hidden dependencies.</p>
 <p><strong>Architecture Visibility.</strong> Architecture remains human-owned, but it needs instruments. Dependency direction, cycles, layers, and boundaries should be visible, not merely hoped for.</p>
 <blockquote>
 <p>&quot;I had the AI write a visualization tool for me. I found it quite useful.</p>
-<p>If there&#39;s some projection of the code or the system you want, get an agent to build it for you.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049225231273767154">X</a></p>
+<p>If there&#39;s some projection of the code or the system you want, get an agent to build it for you.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049225231273767154">X</a></p>
 </blockquote>
 <p>Uncle Bob&#39;s architecture-viewer work is a clue: when agents generate code quickly, engineers need better ways to see the shape of the system. You cannot steer what you cannot perceive.</p>
 <p><strong>Human Mental Model.</strong> The agent may be excellent at tactical implementation, but the human still owns the mental model. What is the system? Where are the boundaries? Which behaviors are invariant? Which dependencies are allowed? What tradeoff is acceptable? The engineer&#39;s job moves upward, but it does not vanish. It becomes more like active management of intent, evidence, and structure.</p>
 <blockquote>
 <p>&quot;A good mental model of the system you are building. A mental model of the AI is also important.</p>
-<p>The word &quot;manager&quot; may be getting lost in translation. You need to manage the structure, design, architecture, and process of building the software.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049124461127864613">X</a></p>
+<p>The word &quot;manager&quot; may be getting lost in translation. You need to manage the structure, design, architecture, and process of building the software.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049124461127864613">X</a></p>
 </blockquote>
 <p>That is also the abstraction shift. The code generator gets faster; the human job does not vanish. It moves toward the work of deciding what must remain true.</p>
 <blockquote>
 <p>&quot;Assemblers were faster at writing binary than humans were.</p>
 <p>Compilers were faster at writing assembly than humans were.</p>
 <p>AIs are faster at writing compiled languages then humans are.</p>
-<p>Deal with it. There&#39;s still plenty left for you to do.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2046222100164153548">X</a></p>
+<p>Deal with it. There&#39;s still plenty left for you to do.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2046222100164153548">X</a></p>
 </blockquote>
 <p>That is the deeper pattern in Bob&#39;s journey. Natural language is not enough. A prompt can bias the agent, but it does not bind the agent. Human language needs formal support: tests, tools, structure, metrics, and feedback loops.</p>
 <blockquote>
-<p>&quot;I completely agree with Dykstra. Human language is the worst possible language to program a computer in. Some kind of formalism is absolutely necessary. But the formalism does not have to be in the syntax of a particular computer language.&quot; — Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049453605237715058">X</a></p>
+<p>&quot;I completely agree with Dijkstra. Human language is the worst possible language to program a computer in. Some kind of formalism is absolutely necessary. But the formalism does not have to be in the syntax of a particular computer language.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049453605237715058">X</a></p>
 </blockquote>
 <p>The lesson is not &quot;Clean Code was right all along&quot; in some tired culture-war sense. The better lesson is more practical, and more useful:</p>
 <p>Clean Code used to be about maintainability under human change.</p>
@@ -3605,7 +3613,7 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 <pre><code class="language-text">~/.claude/projects/-Users-me-Projects-checkout/
 </code></pre>
 <p>In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the M5 worktree may have different encoded folders.</p>
-<p>Ask Claude to find and read the right transcript.</p>
+<p>Ask Claude to find and read the right transcript. Expect a narration before the findings; skim past the opening to the numbered list.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code class="language-text">Find the transcript for the previous Claude Code session in this repo. Start from the current working directory. Look under `~/.claude/projects/` for the encoded project path, list the `.jsonl` files by modified time, and pick the most recent session that is not this current one.
 
@@ -3616,6 +3624,8 @@ Read it enough to tell me:
 4. Which decisions were made in chat but not encoded into files.
 
 Then compare that read against `git log`, `git diff`, and branch state. Tell me where the transcript and git agree, and where one sees something the other misses.
+
+Report literal counts and quoted text: actual restart numbers, exact correction messages. No softened summary.
 </code></pre>
 <p>Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-run read uses both.</p>
 <p><strong>Subagents:</strong> subagent transcripts may sit in a <code>subagents/</code> folder beside the parent session transcript. If a run used subagents, ask Claude to read the parent transcript first, then any subagent files it references.</p>
@@ -3716,7 +3726,7 @@ Then compare that read against `git log`, `git diff`, and branch state. Tell me 
 <h2>Related references</h2>
 <ul>
 <li><a href="mcp-and-connectors.md"><code>reference/mcp-and-connectors.md</code></a> — per-tracker install and tenant-admin fallbacks</li>
-<li><a href="claude-quick-reference.md"><code>reference/claude-quick-reference.md</code></a> — Bootstrap audience (SVP-level) version of some of this material</li>
+<li><a href="claude-quick-reference.md"><code>reference/claude-quick-reference.md</code></a> — Agents 101 audience (SVP-level) version of some of this material</li>
 </ul>
 <h2>Related AE101 modules (where these primitives land)</h2>
 <ul>
@@ -3729,6 +3739,10 @@ Then compare that read against `git log`, `git diff`, and branch state. Tell me 
 </ul>
 <hr>
 <p><strong>This document grows.</strong> If you hit something during the training that belongs here and isn&#39;t, flag it. For feature-specific detail, the <a href="https://code.claude.com/docs/en/memory.md">official docs</a> are the source of truth. When docs disagree with anything above, trust the docs.</p>
+<p><strong>Quality:</strong> compendium-audited 2026-05-03 (story@bb9c1d5 behavior@bb9c1d5)</p>
+<ul>
+<li>judges @bb9c1d5: writing grandfathered, story PASS, technical grandfathered, behavior PASS</li>
+</ul>
 
 </section>
 
@@ -3940,8 +3954,8 @@ git stash pop
     // ── TRAININGS registry — single source of truth. SPA reads it for routing
     // and index rendering; build-workbook iterates the modules array.
     var TRAININGS = {
-        bootstrap: {
-            label: 'Bootstrap',
+        'agents-101': {
+            label: 'Agents 101',
             lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
@@ -3997,7 +4011,7 @@ git stash pop
         }
     };
 
-    var DEFAULT_TRAINING = 'bootstrap';
+    var DEFAULT_TRAINING = 'agents-101';
 
     // Legal footer — single source for SPA + workbook. SPA fills its empty
     // <footer class="curriculum-footer"> at boot via innerHTML; workbook
@@ -4015,13 +4029,13 @@ git stash pop
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
-    // ── Runtime switcher (Bootstrap dual-runtime: CLI / Desktop / Cowork) ──
+    // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
     var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
     var DEFAULT_RUNTIME = 'cowork';
 
     function trainingSupportsRuntimeSwitch(trainingKey) {
-        return trainingKey === 'bootstrap';
+        return trainingKey === 'agents-101';
     }
 
     function getRuntime(trainingKey) {

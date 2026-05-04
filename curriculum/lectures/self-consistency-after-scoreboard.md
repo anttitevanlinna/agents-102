@@ -8,7 +8,7 @@ That is useful, but it is not the yardstick. A claim can be stable and still uns
 
 This is why self-consistency sits after the scoring, not inside the scoring panel. The scoreboard tells you which groundedness detector earned the judge file. Self-consistency is a teacher demo that shows another shape of uncertainty: the model's answer may not be reproducible even when the evidence surface stays fixed.
 
-The trainer can demo this live. Students can run the prompts too, but they do not need the artifact to complete Module 5.
+This is optional. If you run it, you don't need the output to complete Module 5.
 
 Two runs is a demo, not a measurement. With N=2, a claim that appears in both could still be the model's bias toward a popular framing. A claim that drifts could be an edge case in the next sample. The signal starts to firm up around N=5 to 10. Patterns emerge from the noise. For a production check (the kind Module 6's eval loop wires up), you'd want N=20 to 30, where stability across runs starts to mean something. Today's two-run is an illustration of a different kind of uncertainty, not yet the full technique you'd ship.
 

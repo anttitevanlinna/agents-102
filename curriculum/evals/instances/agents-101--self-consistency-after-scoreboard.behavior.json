@@ -1,0 +1,84 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/self-consistency-after-scoreboard.md",
+  "verdict": "REVISE",
+  "training": "agents-101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Spawn one subagent to generate a second briefing from the same evidence surface.",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Spawn one subagent to generate a second briefing",
+          "fix_hint": "Acceptable as-is; subagent dispatch absorbs the parent's narration cost."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "evidence": "Write a one-page briefing on the same challenge to `module-5/briefing-second-run.md`.",
+          "fix_hint": "New-file destination + explicit no-read list neutralise the risk; no edit recommended."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Compare the first and second briefing.\n\nRead:\n- `module-5/briefing.md`\n- `module",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Default answer should be no unless the demo shows a concrete failure class the judge can actually detect.",
+          "fix_hint": "Default-no anchor + adjudicated-claims as fixed yardstick mitigate; no edit recommended."
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "med",
+          "evidence": "Stable claims: claims or recommendations that appear in both briefings and are supported by the adjudicated claims.",
+          "fix_hint": "Optional tightening: 'for each stable claim, quote the supporting line in adjudicated-claims.md.' Not blocking — N=2 demo framing is explicit in the lecture body."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Show me the comparison in chat with these sections:",
+          "fix_hint": "Comparison output absorbs preamble; no edit needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "I have output I want to quality-control against fabrication. Build me a judge pr",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "high",
+          "evidence": "Ask me what output I'm checking, where my evidence lives, and what short filename to use under `judges/`.",
+          "fix_hint": "Two legal shapes per check_prompts §15: (a) inside the fence — 'ask one question, wait for my answer, then ask the next; do not show me the question list'; or (b) body callout right after the fence — 'If Claude dumps all three setup questions at once, push back and ask for one at a time. Your call.' Carve-out scan: no question-dump body callout present near this prompt."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "med",
+          "evidence": "Keep the techniques that fit my output; swap any that don't for methods that catch my output's specific failure modes.",
+          "fix_hint": "Forced-customization mechanic — 'pick at least one of the four failure modes to drop or rewrite for your specific output' — produces the engagement that swap-as-needed assumes."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Build me a judge prompt that checks for these failure modes:",
+          "fix_hint": "Add 'No preamble. First message is your first question.' to neutralise narration before the elicitation."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 1,
+  "todos_count": 0
+}

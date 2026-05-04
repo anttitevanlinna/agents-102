@@ -1,0 +1,89 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/hallucination-bakeoff.md",
+  "verdict": "PASS",
+  "training": "agents-101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 8,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Spawn one subagent to create the benchmark target.  The briefing is the test cor",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "source-type-blindness", "confidence": "low", "evidence": "Choose a bounded evidence roster before writing the briefing. Start from curated topic pages in `memory/`. Add raw files from `sources/` only when a memory page points to them", "fix_hint": "Per-file one-line reason in the roster already forces classification; no change needed."},
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/evidence-roster.md` and `module-5/briefing.md` exist.", "fix_hint": "Closing instruction explicitly forbids summarization; no change needed."}
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "question-dump", "confidence": "low", "evidence": "Do not ask me questions.", "fix_hint": "Already explicitly bans asking; no change needed."}
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a s",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Spawn all four in parallel. When they finish, confirm that these four files exist", "fix_hint": "Confirmation deliverable bounds preamble drift; no change needed."}
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an ",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Spawn all four in parallel. When they finish, confirm that these four files exist", "fix_hint": "Identical to Prompt 3 in shape; runtime-fork only adjusts vocabulary."}
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "You are the scorer for a four-way detector benchmark. Your inputs:  - Claim pool",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Do not return \"all four are useful\" — force the pick.", "fix_hint": "Force-pick clause and 10%/10% ensemble rule are explicit; no change needed."},
+        {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "adjudicate the 30 claims, score each detector against that adjudication", "fix_hint": "Scorer is a fresh agent independent of detectors; quote-the-evidence requirement forces retrieval over charity."},
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Show me the full scoreboard table in chat after saving the file.", "fix_hint": "New chat-deliverable line pins a concrete terminal artefact even if Claude preambles in the body."}
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Tell me about precision and recall.  Use the scoreboard at `module-5/scoreboard.",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Tell me about precision and recall.", "fix_hint": "Open-ended 'tell me about X' invites a textbook intro; the row-grounded examples + closing one-line deliverable hold the rhythm. Single med on load-bearing — not REVISE-worthy. Optional sharpening: 'Use rows from module-5/scoreboard.md as the entry point' as the lead clause if the maintainer wants to ground the framing earlier."},
+        {"pattern_id": "citation-gap-asymmetry", "confidence": "low", "evidence": "point at specific rows from my run", "fix_hint": "Direct 'point at specific rows' clause already grounds the explanation; no change needed."}
+      ]
+    },
+    {
+      "prompt_index": 7,
+      "prompt_lead": "Two things, in the chat.  First, three lines on the classic way: 1. What the cla",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "question-dump", "confidence": "low", "evidence": "Wait for my one-sentence answer before we move to saving the judge.", "fix_hint": "Hard one-at-a-time wait clause holds rhythm; the question is single-shot."}
+      ]
+    },
+    {
+      "prompt_index": 8,
+      "prompt_lead": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Rewrite it as a portable judge prompt.", "fix_hint": "Structured 4-point spec + 20-line cap bound the output; no change needed."},
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "the failure mode this judge doesn't catch, based on what lost the benchmark", "fix_hint": "Known-limit line is scoped to 'what lost the benchmark' — concrete, not aspirational; body callout backs this with 'quality is hard isn't a failure mode'."}
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

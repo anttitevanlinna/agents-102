@@ -446,6 +446,5 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 *(Quote drafted for Antti's voice; edit freely or swap.)*
 
-**Quality:** draft 2026-05-04 — Pass 3.2 cooking-frame revision; re-audit needed.
-- compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5) — INVALIDATED by Pass 1.9 + Pass 1.10 restructure, Pass 3 recipe write-out, Pass 3.1 case-led restructure, and Pass 3.2 cooking-frame revision. Re-fire writing / story / technical class judges before next ship.
-- judges @bb9c1d5: writing PASS, story PASS, technical PASS, behavior N/A (pre-Pass-1.9 state)
+**Quality:** compendium-audited 2026-05-04 (story@11644c6)
+- judges @11644c6: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered

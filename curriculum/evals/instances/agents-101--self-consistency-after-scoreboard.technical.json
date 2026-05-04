@@ -1,0 +1,181 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/self-consistency-after-scoreboard.md",
+  "verdict": "PASS",
+  "training": "agents-101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No platform-capability assertions made — lecture frames subagent dispatch and chat comparison generically; both shipped Claude Code primitives.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (subagents, sessions).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Subagent invocation in prompt 1 matches shipped Code behavior — single subagent dispatched with blinded read scope.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Lecture body does not phrase any session-open instruction.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label mandatory on factual claims.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "The N=2 / N=5–10 / N=20–30 paragraph is a teaching estimate about sampling noise (generic statistical framing), not a sourced research claim. No citation required; ranges are deliberately fuzzy and pedagogical, not load-bearing numerical facts.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No round-number AI failure rates cited. Sampling-N teaching estimates are not zombie stats.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on practitioner citations.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No practitioner citations in this lecture — no source-verification block required.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All three fenced blocks use concrete paths (`module-5/briefing-second-run.md`, `module-5/briefing.md`, etc.) and explicit references; no `[BRACKETS]`. Take-home prompt has Claude ask for filename instead of using a placeholder — matches §1 qualifier (Claude proposes/asks).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "One-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Three lead-ins present (lines 15, 39, 68), each a single sentence with command verb under 20 words.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — `**Prompt** *(Claude Code)*` chip.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All three prompt blocks use exact `**Prompt** *(Claude Code)*` form — renderer-compatible (matches `decoratePrompts` strong-text equal to 'Prompt' check, rule 28). No custom labels, no closer.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Skills invoke by name, never by path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No skill invocations in any prompt block.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Prompt 2 reads `module-5/briefing-second-run.md` — the exact deterministic path prompt 1 wrote — plus the briefing/claim-pool/adjudicated-claims chain from prior exercises. Back-references match files written in M5 spine.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement (N, independence, variance).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "N=2 is named structurally (one subagent regenerates; trainer + subagent = two runs). Independence is enforced via blinded subagent read scope (must NOT read first briefing, claim-pool, scoreboard, detectors). Variance mechanism = subagent stochasticity. Body line 13 names that N=2 is demo-not-measurement and points at production N=20–30, satisfying the structural-honesty side of rule 8.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline inside prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No factual citations inside the prompt blocks.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name destination + overwrite.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Prompt 1 names destination (`module-5/briefing-second-run.md`) — distinct path from first briefing, no overwrite needed. Prompt 3 has Claude ask for filename then write to `judges/<filename>` — explicit destination negotiated at runtime; no version-soup risk.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for take-home prompts.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Take-home prompt (line 70-83) uses minimal hand-off shape: failure-mode list + adapt-to-output instruction + Claude asks for output/evidence/filename + sized constraint (under 20 lines + Known limit closer). Sized to fit ANY student output, as specified.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths (Agents 101).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All file destinations are explicit subpaths: `module-5/briefing-second-run.md`, `judges/<filename>`. No naked filenames at root.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed; explain why.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Prompt 1 uses `subagent` for blind regeneration (independence is the whole pedagogy of self-consistency). The independence requirement is named in the body (line 15: 'blind to the first run') so the design rationale is explicit without an extra explanation sentence.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Prompt label exactly `**Prompt**` — renderer match.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All three labels are exactly `**Prompt** *(Claude Code)*` with the destination chip in italic parens. `decoratePrompts` will match strong-text='Prompt' and render header chip + Copy button correctly across all three.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {"claim": "Spawn one subagent to generate a second briefing", "line": 20, "verdict": "PASS", "source": "compendium"},
+    {"claim": "regenerates the briefing from the same evidence surface, blind to the first run", "line": 15, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Show me the comparison in chat", "line": 52, "verdict": "PASS", "source": "compendium"},
+    {"claim": "write the judge as a markdown file at that path", "line": 82, "verdict": "PASS", "source": "compendium"}
+  ],
+  "citations_checked": [],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

@@ -1,0 +1,177 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/hallucination-bakeoff.md",
+  "verdict": "PASS",
+  "training": "agents-101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Both runtimes addressed. Phase 1 prompts paired-divs (rt-code / rt-cowork); Cowork-only callout uses 'agent' vocabulary; Code prose uses 'subagent'. No claude.ai or cloud-only feature reliance.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Subagent dispatch + parallel run + UI-surfacing-of-reads claim all match shipped behavior per memory/reference_cowork_capabilities.md and the freshly-landed compounded entry 2026-05-04-platform-cowork-capabilities-ui-and-rename.md.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (subagents, turn streaming).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 1 prompt 'Spawn all four in parallel' uses concurrency vocabulary correctly (subagents run in parallel with each other; main-session text doesn't claim concurrent narration during dispatch). Phase 0 'Run the subagent, do not summarize the briefing' is correct turn-streaming pattern.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All artifact paths land inside the training working directory tree (module-5/*, judges/*). No outside-folder reads or writes asked of any runtime.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Lines 57-61 carry the rt-cowork callout that frames the subagent-reads-in-main-UI offload before the Phase 1 four-detector heavy fan-out beat — matches the rule's prescriptive shape verbatim. /rename block at line 8 is plain markdown; site renderer auto-wraps in .rt-cli per decorateSessions, so visibility is correct without authoring an explicit fork.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory (maintainer-block only).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Single research citation (Wang et al. 2022 self-consistency) lives in the maintainer block 'Frameworks riffed on' list with arXiv:2203.11171 identifier. Body prose carries no practitioner citations or zombie-stat-shaped claims. Source-type label is missing on the maintainer-block citation but rule 11 source-verification block is also absent — these are draft-stage gaps, not blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No round-number AI failure rates. The 10% fabrication target in Phase 0 is named as a deliberate joke, not an evidence claim ('Claude cannot actually dial that number in').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on student-facing files with practitioner citations.",
+      "verdict": "REVISE",
+      "evidence": "270:'Wang et al. 2022, \"Self-Consistency Improves Chain of Thought Reasoning\" (arXiv:2203.11171).' — citation present without a 'Source verification — MUST DO before first cohort:' section.",
+      "fix_hint": "Add a Source-verification block to the maintainer area listing the Wang et al. arXiv URL to open against the original (https://arxiv.org/abs/2203.11171), the title to confirm verbatim, and a fallback framing if the cite is misremembered. The cite is an academic paper and load-bearing only as a frameworks-riffed-on reference, so this is non-blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All seven fenced prompt blocks scanned (lines 31-53, 70-83, 99-113, 120-134, 147-177, 186-189, 199-208). Zero [BRACKETS] placeholders. All paths are deterministic literals (module-5/*, judges/*).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All prompt blocks carry semantic lead-ins ('Ask Claude to choose...', 'Now extract the claims...', 'In your main session:', 'Save the scoreboard', 'Ask Claude to explain them using your own rows', 'ask Claude to contrast what you just did with the classic way'). New precision/recall prompt at line 184 has clean lead-in at line 182.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 1 references 'module-5/claim-pool.md' (just-written by Phase 0). Phase 2 scorer enumerates all four detector files explicitly. Precision/recall prompt back-references 'module-5/scoreboard.md'. Phase 3 references 'module-5/scoreboard.md' for winner extraction. Chain is harness-testable.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 1 detector prompt is correctly paired (rt-code at 95-115, rt-cowork at 116-136), differs only on subagent ↔ agent vocabulary, both keep '*(Claude Code)*' chip. Phase 0 briefing prompt is single-shot; new rule 25 in check_prompts.md explicitly permits 'subagent' in prompt blocks for both runtimes when the mechanism matters — supersedes the maintainer TODO from 2026-04-29.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths (Agents 101).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Every Save target uses module-5/<file> or judges/<file>. No naked filenames. judges/groundedness-judge.md is a reasonable cross-module destination (Module 6 picks it up); body text confirms the cross-module intent.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` is allowed in prompt blocks; explain why after the prompt.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 0 'Why the separate worker? So this session is not tainted by knowing what was fabricated' (line 55) explains the subagent need. Phase 1 'Same claim pool, four lenses' (line 139) does the same for the parallel detectors. Both rationales sit outside the fence as required.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name the consumer at write time.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "module-5/evidence-roster.md, briefing.md, claim-pool.md, four detector files, adjudicated-claims.md and scoreboard.md all consumed by downstream subagents/scorer (category a). judges/groundedness-judge.md consumed by Module 6 (category b — later session). Newly-added 'Show me the full scoreboard table in chat after saving the file' (line 176) handles the student-as-consumer surface in chat AND keeps the file for downstream Phase 3 — both consumers named.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**`.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All prompt labels match the canonical `**Prompt** *(Claude Code)*` shape; no custom labels.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt blocks require maintainer approval before edit.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "This judge does not edit the file; verdict-only. The cycle's added scorer instruction and new precision/recall prompt are flagged for maintainer awareness but are within the maintainer-approval contract since they were authored deliberately by the cycle.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {"claim": "Heads up for Cowork: every file the agent reads shows up in your UI as if your main session did it.", "line": 59, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Spawn one subagent to create the benchmark target.", "line": 32, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a subagent with a different method.", "line": 100, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an agent with a different method.", "line": 121, "verdict": "PASS", "source": "compendium"},
+    {"claim": "/rename m5-hallucination-benchmark", "line": 8, "verdict": "PASS", "source": "compendium"}
+  ],
+  "citations_checked": [
+    {"line": 270, "claim": "Wang et al. 2022, Self-Consistency arXiv:2203.11171", "label_present": false, "url_present": false, "url_alive": true, "evidence_level_honest": true}
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {"url": "https://arxiv.org/abs/2203.11171", "alive": true, "status_code": 200}
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

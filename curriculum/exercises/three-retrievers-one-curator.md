@@ -150,6 +150,8 @@ Answer each retriever's questions as they come in. Let them run. Switch between 
 
 When the synthesizer's last move lands, `memory/_synthesis-m3.md` naming what changed, Phase 1 is done. Hand off to *Three minds, one synthesis* (next exercise), which keeps Session 4 open as the main session.
 
+You just ran **Recipe 3**'s parallel-retrieval shape: three retrievers fanning out into `sources/` while a synthesizer integrates into `memory/`. After Agents 101, when the next strategic question needs three reads at once, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) names the fan-in move and what composes with it.
+
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-05-03

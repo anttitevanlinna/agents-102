@@ -47,6 +47,7 @@ Surfaced 2026-05-03 by `curriculum/evals/scripts/status.sh --training ae101`. Th
 
 ## Cross-cutting ops
 
+- **Pre-engagement contract artifact mismatch:** `sponsor-prework.md` says sponsor answers are populated into `content/pre-engagement-contract.md`, but the AE101 content tarball currently does not create or include that file. Decide the artifact home and build path: either add the generated contract to the cohort bundle or change the sponsor-prework fate line to the real delivery surface.
 - **Architecture integrity reference**, write `reference/architecture-under-agentic-velocity.md`: how teams preserve architectural intent while agents make local changes quickly. Survey practitioner patterns (Klaassen / Curran on review structure, Cherny on stop-hooks as architectural enforcement, Ramp's skill marketplace as crystallized convention). Candid about being a survey, not a settled answer. Source: Uncle Bob (Robert C. Martin) on architecture + agentic coding. Separate session.
 - **Trainer post-cohort feedback capture mechanism**, design how trainer's classroom observations route into module-file edits. Today the trainer-guide line says TBD. Options to weigh: per-cohort `customer/<cohort>/notes.md` + scheduled maintainer review; GitHub issues with `[cohort-feedback]` label; informal trainer judgment + customer-surface notes. Pick before first cohort.
 

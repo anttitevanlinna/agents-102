@@ -28,16 +28,16 @@ If your IT admin has not approved the connector yet, keep going. The calendar sc
 
 Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, Module 4 policy files, and a self-study companion you can use while doing self-study of the modules.
 
-[Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
+[Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `agents-101-starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
 
 **Prompt** *(Claude Code)*
 
 ```
 Extract the starter tarball in the working folder. Use the shell:
 
-  tar xzf starter.tar.gz
+  tar xzf agents-101-starter.tar.gz
 
-(Leave `starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)
+(Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)
 
 Then list what's in the working directory and confirm these folders exist:
 prework/, memory/, sources/, agents/, .claude/, and module-4/policies/.
@@ -131,7 +131,7 @@ You walk into Module 1 with <span class="rt-code">Claude Code</span><span class=
 - maintainer-reviewed 2026-04-29 (Antti, Agents 101 prework manual cohort-prep run; install path tested end-to-end under Cowork lens, snake + meetings + read all verified)
 
 **Packaging:**
-- `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.
+- `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
-- Prompt 1 includes Cowork-specific wording: "Leave `starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.
+- Prompt 1 includes Cowork-specific wording: "Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.

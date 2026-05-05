@@ -73,7 +73,7 @@ Every pattern follows the same shape:
 - **Solution:** Package the workflow as a skill file — instructions, scoring criteria, format contract. Ship it. Teammates install it, run it against their own inputs. Skill carries the judgment; data stays theirs.
 - **Traps:** Skills too tied to the author's examples don't generalize. Versioning — when you update, how do teammates get the update?
 - **People plan:** Skill author is maintainer. Pull requests on the skill file. Teammates pin version if stability matters more than freshness.
-- **Example:** The `crux`, `assumption-test`, `pre-mortem` skills you installed with this module.
+- **Example:** A teammate packages a recurring crux-diagnosis workflow as a skill after proving it on their own work.
 - **Related:** 2.2 (Verification Method Skill).
 
 ### Pattern 2.2: Verification Method Skill (judge-as-skill)

@@ -5,7 +5,8 @@
 # Output: agents-101-starter.tar.gz at repo root.
 #
 # Contents (the prework-installed working material from
-# curriculum/scaffolds/agents-101-starter/, maintainer blocks stripped):
+# curriculum/scaffolds/agents-101-starter/, maintainer blocks stripped, plus
+# the canonical self-study skill from .claude/skills/self-study/SKILL.md):
 #
 #   prework/.keep
 #   module-4/policies/*.md
@@ -17,9 +18,9 @@
 # No top-level wrapper directory — the tarball extracts in-place into the
 # student's connected/working folder. Both runtimes use the same prompt:
 #
-#   curl -fsSL <CONTENT_URL> -o starter.tar.gz
-#   tar xzf starter.tar.gz
-#   rm starter.tar.gz
+#   curl -fsSL <CONTENT_URL> -o agents-101-starter.tar.gz
+#   tar xzf agents-101-starter.tar.gz
+#   rm agents-101-starter.tar.gz
 #
 # Code:   the shell runs in the open Claude Code session's working directory.
 # Cowork: the shell runs in the connected folder. Verified 2026-04-28 that
@@ -32,6 +33,7 @@ cd "$(dirname "$0")/.."
 
 OUT="agents-101-starter.tar.gz"
 SRC="curriculum/scaffolds/agents-101-starter"
+SELF_STUDY_SKILL=".claude/skills/self-study/SKILL.md"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
@@ -46,12 +48,19 @@ strip_maintainer() {
 }
 
 # Mirror the scaffold tree into ROOT, stripping maintainer blocks from .md.
-# Preserves directory structure and dotfile entries (.keep, .claude/).
+# The self-study skill is injected from the repo-root .claude copy below, so
+# scaffold-local .claude content is intentionally ignored to avoid drift.
 (cd "$SRC" && find . -type d) | while read -r d; do
+  case "$d" in
+    ./.claude|./.claude/*) continue ;;
+  esac
   mkdir -p "$ROOT/$d"
 done
 
 (cd "$SRC" && find . -type f) | while read -r f; do
+  case "$f" in
+    ./.claude/*) continue ;;
+  esac
   src_file="$SRC/$f"
   dst_file="$ROOT/$f"
   case "$f" in
@@ -59,6 +68,9 @@ done
     *)    cp "$src_file" "$dst_file" ;;
   esac
 done
+
+mkdir -p "$ROOT/.claude/skills/self-study"
+cp "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).

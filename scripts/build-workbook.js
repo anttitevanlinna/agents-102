@@ -361,11 +361,11 @@ function parseCli(argv) {
 function buildPayload(trainingKey, customer, outDir) {
   // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
   // The payload URL is training-scoped so one customer can host multiple
-  // trainings without agents-102-content.tar.gz / starter.tar.gz overwriting each other.
+  // trainings without agents-102-content.tar.gz / agents-101-starter.tar.gz overwriting each other.
   //
   // AE101      — agents-102-content.tar.gz (lectures/exercises/reference/supplementary/skills;
   //                                         extracted at ~/Documents/ae101-content/)
-  // Agents 101 — starter.tar.gz  (empty working-folder skeleton; extracts in-place
+  // Agents 101 — agents-101-starter.tar.gz  (empty working-folder skeleton; extracts in-place
   //                               into the student's connected/working folder at
   //                               ~/Documents/agents-101/)
   if (trainingKey === 'agentic-engineering-101') {
@@ -383,7 +383,7 @@ function buildPayload(trainingKey, customer, outDir) {
     console.log('Building Agents 101 starter tarball...');
     execSync('scripts/build-agents-101-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
     const tarSrc = path.join(ROOT, 'agents-101-starter.tar.gz');
-    const tarDst = path.join(outDir, 'starter.tar.gz');
+    const tarDst = path.join(outDir, 'agents-101-starter.tar.gz');
     fs.copyFileSync(tarSrc, tarDst);
     // Agents 101 is dual-runtime; Cowork's outbound network allowlist blocks
     // both bosser.consulting and raw.githubusercontent.com (only objects.gh +
@@ -394,7 +394,7 @@ function buildPayload(trainingKey, customer, outDir) {
     // extract-only prompt. Same URL, different transport.
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/starter.tar.gz`;
+    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/agents-101-starter.tar.gz`;
   }
 
   return null;

@@ -1,14 +1,14 @@
 # Find the crux — group synthesizer
 
-Two plain prompts for the live crux exercise in Claude Basics. The first is the core group-synthesis prompt. The second is optional cross-pollination, used only after every group has saved a synthesis file.
+Three plain prompts for the live crux exercise in Claude Basics. Phase 2 has two prompts in sequence (synthesis, then ideas). Phase 3 has one cross-pollination prompt that the driver runs as a continuous cycle.
 
 ## When to use
 
-- **Phase 2 group synthesis (17 minutes):** the nominated driver in each group pastes the group prompt
-- **Phase 3 cross-pollination bonus (5 minutes):** group drivers use the bonus prompt only if all group synthesis files exist
-- **Pre-cohort rehearsal:** the organisers run the group prompt once against a sample group discussion one day before the cohort
+- **Phase 2 group synthesis (25 minutes):** the nominated driver in each group pastes the synthesis prompt, then the ideas prompt
+- **Phase 3 cross-pollination (20 minutes):** every group's driver pastes the cross-pollination prompt and lets it cycle. Run only after every group has saved its Phase 2 file
+- **Pre-cohort rehearsal:** the organisers run the synthesis prompt once against a sample group discussion one day before the cohort
 
-## Phase 2 — group synthesizer prompt
+## Phase 2 — synthesis prompt (diagnosis)
 
 ```
 Create our group's rollout synthesis.
@@ -28,38 +28,54 @@ Then rewrite the synthesis and save it in `shared/`. If I say Atlas, save it as 
 The file must include:
 - named crux
 - supporting evidence from the group
-- what we should prioritise in the next 30 days
-- what we should defer for now
-- one open question the organisers need to answer
+- what would change if we got this crux right
 ```
 
-## Optional solution-ideas prompt
+## Phase 2 — ideas prompt (group surfaces what to try)
 
 ```
 Read the rollout synthesis file you just saved in `shared/`.
 
-Append a section called "Solution ideas from the group". Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which idea might be premature, and what question would sharpen the next discussion.
+Append a section called "Ideas". Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which might be premature.
 
 After saving, tell us what you added and what you think in 5 to 7 bullets.
 
 Our ideas:
 ```
 
-## Phase 3 — cross-pollination bonus prompt
+## Phase 3 — cross-pollination prompt (cycles between others' files and ours)
 
 ```
-Read our group's rollout synthesis from `shared/`. Then read one other group's rollout synthesis from `shared/`.
+First ask me for our group's name. Wait for my answer.
 
-Compare them briefly:
-- one idea the other group saw that we missed
-- one thing our group should keep distinct
-- one sentence we should add to our synthesis, if any
+Then run cycles. In each cycle:
 
-Show me the proposed addition in chat first. Don't save until the group approves it.
+1. Visit two other groups' rollout synthesis files in `shared/` (skip ours, skip any you've already fully covered).
+   For each:
+   - read the file
+   - append a section called "Comments from <our group name>" with two or three bullets: one idea worth borrowing or extending, one comment or sharper question from our group, plus a flag if you see overlap with our crux
+   - save the file
+
+2. Read our own file in `shared/`. If a new "Comments from <Group>" section arrived since the last check, narrate it: which group commented, what they noticed, whether it fits our crux.
+
+3. Refresh the running Plan view IN CHAT (don't save to file). Based on our crux, evidence, ideas, and any incoming comments, show three short bullets each for:
+   - prioritise in the next 30 days
+   - defer for now
+   - one open question only the organisers can answer
+   Replace the previous Plan view each cycle. This is a running surface, not a log.
+
+4. Continue to the next cycle unless I tell you to stop.
+
+Narrate each move shortly: "Visiting Atlas, appended. Checking ours, no change. Plan now: priorities read..." Keep narration tight, one or two sentences per move.
+
+If you've already commented on every other group's file, stop the writing-out half and keep watching ours, narrating new comments as they arrive and refreshing the Plan with the new context.
+
+Stop when I say stop.
 ```
 
 ## Notes
 
-- **Core success is group synthesis.** Cross-pollination is a bonus, not a dependency
-- **Labels adapt.** The prompt uses the group name the driver gives. If the group has no name, Claude invents a short label from the selected crux
-- **Protect synthesis quality.** If not all rollout synthesis files exist in `shared/`, skip cross-pollination and close with the group syntheses that exist
+- **Core artifact is the saved file.** Crux + evidence + ideas live there; cross-pollination comments accumulate there. The Plan is a running chat callout, not a saved section
+- **Labels adapt.** The synthesis prompt uses the group name the driver gives. If the group has no name, Claude invents a short label from the selected crux
+- **Skip Phase 3 if any group has not saved.** Active cross-pollination needs every group's synthesis to exist. If the room runs short on time, end with the saved syntheses
+- **Stop whenever during Phase 3.** Quality per comment beats coverage. Few cross-pollinations is fine

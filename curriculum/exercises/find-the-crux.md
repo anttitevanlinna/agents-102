@@ -13,7 +13,7 @@ The point is the sequence: individual signal first, group synthesis second. Only
 
 Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn't to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.
 
-Ask Claude to interview you about your team's top three Claude-rollout difficulties and save the notes in your own workshop folder. Use the folder name exactly as organisers show it.
+Ask Claude to interview you about your team's top three Claude-rollout difficulties and save the notes in your first-name folder under the workshop folder organisers had you sync.
 
 **Prompt** *(Cowork)*
 
@@ -22,14 +22,14 @@ Interview me about the top three difficulties I see in our team's Claude rollout
 
 Start with: "What's the first difficulty you see?" After my answer, push back once: ask for a specific example, or ask whether that's the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I've answered all three with push-back, ask me for my workshop folder name exactly as organisers show it. Then save the conversation as `rollout-notes.md` in that folder.
+When I've answered all three with push-back, ask me for my first name. Then save the conversation as `rollout-notes.md` in the folder named with my first name.
 
 Include the three difficulties and the push-back answers, in my voice. Don't summarize them into your own register.
 ```
 
 Answer Claude's questions in plain language. When the file saves, you're done with Phase 1.
 
-## Phase 2. Group synthesis (35 minutes)
+## Phase 2. Group synthesis (25 minutes)
 
 Each group picks ONE participant to be the driver. The driver uses the same synced SharePoint workshop folder. The participant folders are named with first names, such as `aino`, `petra`, or `juhani`; if there are duplicates, organisers may add a short suffix. The driver gives Claude the folder names exactly as they appear.
 
@@ -57,9 +57,7 @@ Then rewrite the synthesis and save it in `shared/`. If I say Atlas, save it as 
 The file must include:
 - named crux
 - supporting evidence from the group
-- what we should prioritise in the next 30 days
-- what we should defer for now
-- one open question the organisers need to answer
+- what would change if we got this crux right
 ```
 
 FYI: *crux* here is borrowed from strategy thinker Richard Rumelt. It means the one difficult part of the challenge where focused action would make the biggest difference.
@@ -68,59 +66,81 @@ Before the driver asks Claude to save: the group looks at the candidate crux and
 
 This forcing function is the design. Claude reads the raw material from files; the group steers the synthesis. The crux belongs to the group, not to whoever held the keyboard.
 
-If solution ideas are already in the room, store them after the crux is saved. Keep them separate from the crux so the file preserves both: the diagnosis and the first solution instincts.
+The synthesis file holds the diagnosis. Now the group surfaces the ideas already in the room, what we'd try first if the crux were on us next Monday.
 
-Ask Claude to append the ideas and give a quick read on them.
+Ask Claude to append the group's ideas and give a quick read on them.
 
 **Prompt** *(Cowork, group driver)*
 
 ```
 Read the rollout synthesis file you just saved in `shared/`.
 
-Append a section called "Solution ideas from the group". Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which idea might be premature, and what question would sharpen the next discussion.
+Append a section called "Ideas". Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which might be premature.
 
 After saving, tell us what you added and what you think in 5 to 7 bullets.
 
 Our ideas:
 ```
 
-## Phase 3. Cross-pollination bonus (10 minutes, only if synthesis succeeded)
+## Phase 3. Cross-pollination (20 minutes, only after every group has saved)
 
-Run this only after every group has saved its synthesis. If any group is still synthesizing, skip this phase and protect the core artifact.
+Run this only after every group has saved its synthesis with the Ideas section. If any group is still working, skip Phase 3 and protect the core artifacts.
 
-Ask Claude to read one other group's synthesis and borrow one useful idea without blurring your group's crux.
+Each driver now pastes one prompt that cycles between other groups' files and our own. Visit two other groups, leave a comment and an idea on each. Check our file. If a new comment arrived, Claude narrates it. Refresh a running Plan view in chat. Loop. Stop whenever, quality per comment beats coverage.
+
+Ask Claude to cycle between other groups' files and ours, leaving comments out and narrating what comes in.
 
 **Prompt** *(Cowork, group driver)*
 
 ```
-Read our group's rollout synthesis from `shared/`. Then read one other group's rollout synthesis from `shared/`. If there is more than one other group file, list the options and ask me which one to use.
+First ask me for our group's name. Wait for my answer.
 
-Compare them briefly:
-- one idea the other group saw that we missed
-- one thing our group should keep distinct
-- one sentence we should add to our synthesis, if any
+Then run cycles. In each cycle:
 
-Show me the proposed addition in chat first. Don't save until the group approves it.
+1. Visit two other groups' rollout synthesis files in `shared/` (skip ours, skip any you've already fully covered).
+   For each:
+   - read the file
+   - append a section called "Comments from <our group name>" with two or three bullets: one idea worth borrowing or extending, one comment or sharper question from our group, plus a flag if you see overlap with our crux
+   - save the file
+
+2. Read our own file in `shared/`. If a new "Comments from <Group>" section arrived since the last check, narrate it: which group commented, what they noticed, whether it fits our crux.
+
+3. Refresh the running Plan view IN CHAT (don't save to file). Based on our crux, evidence, ideas, and any incoming comments, show three short bullets each for:
+   - prioritise in the next 30 days
+   - defer for now
+   - one open question only the organisers can answer
+   Replace the previous Plan view each cycle. This is a running surface, not a log.
+
+4. Continue to the next cycle unless I tell you to stop.
+
+Narrate each move shortly: "Visiting Atlas, appended. Checking ours, no change. Plan now: priorities read..." Keep narration tight, one or two sentences per move.
+
+If you've already commented on every other group's file, stop the writing-out half and keep watching ours, narrating new comments as they arrive and refreshing the Plan with the new context.
+
+Stop when I say stop.
 ```
 
-If the addition helps, ask Claude to append a short **Cross-pollination note** to your group's synthesis file. If it muddies the crux, leave the file alone.
+Whenever the group says stop, stop. The artifact is the synthesis file plus whatever comments accumulated. The Plan view in chat is a live read off that file; anyone can re-deduce it later by reading the file.
 
 The organisers may run their own synthesis after the group files exist. That is a separate organisers-only exercise, not part of the group driver's work.
 
 <!-- maintainer -->
 
 **Meta:**
-- **Length:** 60 minutes. 15 + 35 + 10 = 60 phase budget. The core artifact is Phase 2; Phase 3 is optional and can be skipped without harming the module
-- **Core artifact:** one file per group in `shared/`, named with the pattern `rollout-synthesis-atlas.md` or an invented crux-based label like `rollout-synthesis-escalation-fog.md`
+- **Length:** 60 minutes. 15 + 25 + 20 = 60 phase budget. Phase 2's saved file is the core artifact; Phase 3 enriches it with cross-group comments and is the live system surface
+- **Core artifact:** one file per group in `shared/`, named with the pattern `rollout-synthesis-atlas.md` or an invented crux-based label like `rollout-synthesis-escalation-fog.md`. The file accumulates: crux + evidence (Phase 2 prompt 1), Ideas (Phase 2 prompt 2), Comments from other groups (Phase 3)
 - **Folder topology assumption:** one synced SharePoint workshop folder contains one first-name folder per participant plus `shared/`. Everyone syncs the same workshop folder before the session. The group driver does not add folders live; they open Cowork on the workshop folder, read group members' first-name folders, and write only the group synthesis to `shared/`
-- **Remote-resilient simplification:** no cross-group read is required for success. Phase 3 is optional and can be skipped without harming the module
-- **The reveal at Phase 3 close:** *"You just ran the smallest useful rollout system: individuals diverged, groups synthesized, and only after that did ideas cross-pollinate. That ordering matters."* Land it once
+- **Phase 3 skip rule:** if any group has not saved by the end of Phase 2, skip Phase 3 entirely. The core artifacts still hold. Active cross-pollination needs every group's synthesis to exist
+- **Plan as running callout:** the priorities / defers / open organiser question are not a saved file section. They live in the driver's Cowork chat, refreshed each cycle as comments arrive. The artifact is the rich file; the Plan is a live read off it
+- **The reveal at Phase 3 close:** *"You just watched agents coordinate on shared files: individuals diverged, groups synthesized, then comments and ideas cross-pollinated live across files in the room. That ordering matters, and so does the structure that produced it."* Land it once
 
-**Quality:** draft 2026-04-29
+**Quality:** draft 2026-05-05
 - compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule 12 + rule #3 + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rules 12, 26, 35)
 - persona-simulated 2026-05-04 — participant and group-driver pass; folder-name and pacing fixes applied
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the live-crux simplification
 - draft 2026-04-30 (agenda restructure: live crux exercise uses one agreed shared synthesis location, not a fixed cohort folder; sim/mechanical/eval not rerun)
+- draft 2026-05-04 (Phase 2 split into three beats: synthesis trimmed to diagnosis only; "Solution ideas" renamed to "Ideas"; new "Plan" prompt added; Phase 1 body fix to first-name folder framing; sim/mechanical/eval not rerun)
+- draft 2026-05-05 (Plan beat removed from Phase 2 — Phase 2 now ends at Ideas, 25 min. Phase 3 reshaped from passive bonus into active cross-pollination, 20 min: interleaved write-2/check-own cycles, Plan as running chat callout, continuous narration, stoppable; reveal updated to name agents-on-shared-state demo; sim/mechanical/eval not rerun)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

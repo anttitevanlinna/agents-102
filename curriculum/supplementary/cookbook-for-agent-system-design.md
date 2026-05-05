@@ -1,14 +1,16 @@
 # Cookbook for Agent System Design
 
-*This is how you do it.* A practitioner's cookbook for turning chat into agent systems you can stake work on. It gives you recipes you can run on Monday, components you can recombine, and two built-out systems that show the stack in the wild.
+A practitioner's cookbook for turning chat into agent systems you can stake work on. It gives you recipes you can run on Monday, components you can recombine, and three built-out systems that show the stack in the wild.
 
 A real cookbook has three layers: recipes, base preparations, and an index of dishes. *Le Guide Culinaire* is mostly the index; Escoffier's genius was the named preparations, not the dishes. Same shape here.
 
-The eight recipes are deliberately short. They are the base preparations: small, named, reusable. The two canonical dishes are where the detail lives. That is the point: you do not read eight lessons here. You watch the recipes compose into working systems.
+The eight recipes are deliberately short. They are the base preparations: small, named, reusable. The three canonical dishes are where the detail lives. That is the point: you do not read eight lessons here. You watch the recipes compose into working systems.
 
-Eight recipes. Two canonical dishes. Twelve named components. Eighteen data sources. Twenty named dishes in the index. Mix and match.
+Eight recipes. Three canonical dishes. Eleven named components. Eighteen data sources. Twenty named dishes in the index. Mix and match.
 
 ## Recipe catalogue
+
+Eight moves to compose, not eight steps to follow. Reach for the one the dish needs.
 
 ### R1, Make the output genuinely yours
 
@@ -198,7 +200,9 @@ The Slack message was intentionally small. No essay. No auto-reply. No customer-
 
 The first week produced false positives. The agent routed several marketing messages because they used outage-shaped language. The fix was not "be less alarmed." The team added a source requirement: a P1 route needed either a known customer domain, account identifier, product area, or repeated customer-impact language across the thread. Urgency alone stopped counting.
 
-The more interesting finding came from "I can't tell." The agent flagged about five ambiguous emails per week. Three of them turned out to be the most important threads to escalate, exactly because they did not fit established policy patterns yet. One was an early signal of a new enterprise customer's integration failure. One was a security concern written in non-security language by a non-technical buyer. One was a procurement blocker that looked like routine billing until the account name was matched.
+The more interesting finding came from "I can't tell." The agent flagged about five ambiguous emails per week. Three of them turned out to be the most important threads to escalate, exactly because they did not fit established policy patterns yet.
+
+The clearest example was a procurement blocker. It read like routine billing all the way through: generic subject line, no urgency markers, no escalation language, a finance contact nobody on the team recognised. The only signal was the account name on a buried CC, and that match was what the policy lens caught while the risk lens was still shrugging. A binary classifier would have routed it low-priority. The third row caught it and handed it to the CSM the same hour. The other two ambiguous threads carried the same shape: an enterprise integration failure announced in support-ticket language, and a security concern written by a non-technical buyer in vocabulary that did not sound like security.
 
 That changed the team's trust in the system. The value was not only faster routing. It was better ambiguity capture.
 
@@ -250,15 +254,29 @@ The hard rule was the ladder, not the harvester. Without the ladder, more readin
 
 The four review personas are the rule with teeth. A rule everybody agrees with but nobody enforces is a slogan; a rule that fires automatically on every modified file is infrastructure. The system's value is not the findings it publishes. It is the findings it refuses to publish.
 
+The standing residual is freshness without visibility. The six-month window keeps Level 0 noise from accumulating, and it also discards real practitioner findings that lapse out of evidence before convergence has formed around them. Some of those findings would have held up. The system runs the trade deliberately rather than pretending the trade is free.
+
 **Recipes composed:** R3 as the base (parallel retrieval, framework-shaped synthesis), R6 for the four review personas as fixed judges that re-fire on every modified file, R2 for the dated-markdown memory and synthesis index, R4 in spirit for the gate discipline and named residuals.
 
 **Reusable pattern:** when the question is "what is true in a noisy field?", the harvester is not the hard part. The rejection rule is. Build the ladder before you build the search.
 
 ---
 
+## The third row
+
+Most checks have two outcomes: pass, fail. The dishes above use three: pass, fail, *I can't tell.*
+
+The third row looks like a cop-out and is the load-bearing piece. A binary classifier forces ambiguous cases into false confidence; the third row catches them and hands them back with the ambiguity intact, named, addressable.
+
+The shared-inbox agent's most valuable output was its five "I can't tell" emails per week, not the routes it got right. The research system's most valuable rejections were the ones it could not resolve. The PM agent's flag-it-back-to-me move on commitments without owners is the same shape, one zoom level in. When a check could plausibly go either way, the agent says so.
+
+Build agents that name their own ambiguity. They are more useful than agents that are confidently wrong.
+
+---
+
 ## Components
 
-Twelve named items the recipes lean on: eight pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes below. Many of the smaller bits live inside the recipes, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
+Eleven named items the recipes lean on: seven pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes below. Many of the smaller bits live inside the recipes, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
 
 **The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the rules file (`./CLAUDE.md` that keeps the shape consistent). The architectural stack of every compounding system. Most agent failures look like bugs and are layer confusion: a rule written into memory, a source written into rules, the system stops behaving like a system. From R2.
 
@@ -273,8 +291,6 @@ Twelve named items the recipes lean on: eight pieces and four closed-set lists. 
 **Public-footprint scan.** LinkedIn, news, hires, fundraises, GitHub, X, conference talks, pulled in parallel for a named entity. The first move for any prospect-shaped, supplier-shaped, or candidate-shaped dish. The agent treats public web differently from the company's wiki; this names that move.
 
 **Two-register output.** Same content, two audiences: engineer-changelog plus customer-announce, board-narrative plus ops-dashboard. Held under a fixed editorial judge so the registers don't drift apart. From R6.
-
-**The "I can't tell" verdict.** Three rows per check, not two: pass, fail, *"I can't tell."* The third row is where ambiguity gets named instead of forced. Counter-intuitively, the most useful column for the human reviewer. From R4.
 
 ---
 
@@ -405,7 +421,7 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 <!-- maintainer -->
 
-**Status:** Pass 3.4 — composition-prompt register signal added to *More dishes to cook* (story-class non-blocking REVISE resolved); cross-reference audit clean. Eight short recipes each carrying a Why, three full dishes (program manager agent, shared-inbox triage agent, continuous research system), 12 named components, 18 data sources, 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). External-ship blockers remaining: R5 / R7 / R8 worked dishes still owed (one each), and case-consent / source verification on Dishes 1 and 2.
+**Status:** Pass 3.5 — fresh-eyes editorial pass. *I can't tell* promoted from Components bullet (count 12 → 11) to its own section *The third row* between Dish 3 and Components; the cookbook's design philosophy gets dedicated framing. Recipe catalogue gains a *moves, not steps* lead-in. Dish 2 procurement-blocker vignette lifted forward (one fleshed scene replaces three sentence-each anecdotes). Dish 3 closes with a standing-residual paragraph on the freshness-window trade. Eight short recipes each carrying a Why, three full dishes (program manager agent, shared-inbox triage agent, continuous research system), 11 named components, 18 data sources, 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). External-ship blockers remaining: R5 / R7 / R8 worked dishes still owed (one each), and case-consent / source verification on Dishes 1 and 2.
 
 **Drift prevention:** when a module's Big Idea or named artefacts change, the matching recipe updates in the same edit. The cookbook is the take-home catalogue; if it lags the module, the buyer-side reading goes stale. Sweep cookbook against module Big Ideas at every cycle close. **Same rule for components and data sources** — when a module renames a component or adds a data source, the relevant Components / Data sources entry updates in the same edit. The Index entries are downstream of both: a renamed component ripples to every Index dish that composes it.
 
@@ -413,7 +429,7 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 **Index discipline (Escoffier + gloss):** the *Index of agent shapes* is indicative archetypes, not a portfolio of customer builds. **Each entry is two reads, not one** (Pass 1.10): an italicised one-line of what the dish does, then the components-formula and recipe pin. Cold-recall test: a graduate one month out should grok an entry without flipping back to Components. Index entries don't claim a specific build; they claim *this is a recognisable agent shape*. The line between Chez Panisse worked examples (real, dated, runtime-tagged) and Escoffier index entries (archetype, no build claim) must stay visible to the reader.
 
-**Components discipline (12, not 28):** components are named techniques the recipes already lean on; the chapter makes them addressable from the Index. Naming bar: a candidate component must (a) have a name a practitioner could recall, (b) recur across more than one recipe or be a closed set the audience would name on sight, (c) be small enough to be a building block, not a whole recipe, AND (d) appear by name in at least two Index entries OR be a closed-set named list (5 risk patterns, 5 mitigations, 3 thinking disciplines, 4 sharing strategies). Failing (d), the bit lives inline in the recipe that introduces it. Pass 1.10 cut 16 entries that were either single-use or already named in recipe bodies; the cookbook stopped doubling as a glossary.
+**Components discipline (11, not 28):** components are named techniques the recipes already lean on; the chapter makes them addressable from the Index. Naming bar: a candidate component must (a) have a name a practitioner could recall, (b) recur across more than one recipe or be a closed set the audience would name on sight, (c) be small enough to be a building block, not a whole recipe, AND (d) appear by name in at least two Index entries OR be a closed-set named list (5 risk patterns, 5 mitigations, 3 thinking disciplines, 4 sharing strategies). Failing (d), the bit lives inline in the recipe that introduces it. Pass 1.10 cut 16 entries that were either single-use or already named in recipe bodies; the cookbook stopped doubling as a glossary. Pass 3.5 promoted *I can't tell* out of Components into its own *The third row* section — the verdict is the cookbook's load-bearing design philosophy, not a generic named technique.
 
 **Build order:**
 - Pass 1 (2026-04-19): structural placeholder, Recipes 1–3 seeded.
@@ -428,6 +444,7 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 - Pass 3.2 (2026-05-04): provenance framing removed from reader-facing prose. Cookbook frame now treats future areas as dishes to cook with the same base preparations, mirepoix, and patterns.
 - Pass 3.3 (2026-05-04, late evening): Why-lines restored to each of the eight recipe stubs (the counterintuitive one-liner that gives each recipe its conviction; was lost in the Pass 3.1 compression). Canonical Dish 3 (the continuous research system, which lives in this very repo) added between Dish 2 and Components, restoring R3 + R6 worked-example demonstration that had been cut in Pass 3.1. Sutherland-flavoured sting added to the three-layers component (most agent failures look like bugs and are layer confusion). Net: the cookbook is now spicier without being heavier; recipe coverage in worked dishes climbs from 2 of 8 to 3 of 8.
 - Pass 3.4 (2026-05-05): final polish on Pass 3.3 TODO list. (a) Story-class non-blocking REVISE resolved — *More dishes to cook* now opens with an explicit register-signal paragraph naming the section as composition prompts, not full recipes. (b) Cross-reference audit clean — line 261's inline-only list incorrectly included `style.md` (which has its own Component entry as *The house-style file*); corrected. Status line tightened to surface only the genuine external-ship blockers. Candidate sources for the missing R5 / R7 / R8 worked dishes, drawn from this very project: R5 = four-class eval-fire judges with scoreboards (writing / story / technical / behavior); R7 = the public `continuous-research/` directory as a sharing surface (R7 + R3 in production); R8 = the cookbook itself as the flywheel artefact (the Bootstrap arc compounding through M1–M8 and producing this take-home reference). Each owes Antti's sign-off + ~600 words; out of scope for Pass 3.4.
+- Pass 3.5 (2026-05-05): fresh-eyes editorial pass after a second-Claude reread. (a) *I can't tell* promoted from Components bullet to dedicated section *The third row* between Dish 3 and Components — the verdict is the cookbook's design philosophy and was hidden as bullet 7 of 12; named ambiguity-beats-forced-confidence framing now sits where the reader has just felt it across all three dishes. Components count 12 → 11 (seven pieces + four closed-set lists). (b) Recipe catalogue lead-in *Eight moves to compose, not eight steps to follow* added to forestall the implied-sequence read between R1 and R2. (c) Dish 2 procurement-blocker vignette lifted forward — one fleshed scene replaces three sentence-each anecdotes; reads inductive instead of analytic. (d) Dish 3 close gains a standing-residual paragraph naming the freshness-window trade as a deliberate cost (real practitioner findings lapse out before convergence forms; system runs the trade rather than pretending it is free). Owns the meta without preening. (e) Em-dash carve-out (introduced 2026-05-04, never exercised in body) reverted; cookbook supplement now follows rule 14 in full like every other student-facing surface. Net: design philosophy gets its own home; vignettes carry more weight than lists; one residual is named where Dish 3 was risking self-congratulation.
 
 **Frameworks riffed on:**
 - Cookbook-as-genre, two registers held in tension: **Chez Panisse Menu Cookbook** energy for the long-form worked examples (one well-told dinner per recipe), **Escoffier *Le Guide Culinaire / Le Répertoire de la Cuisine*** for the Components and Index chapters (terse catalogue density, named base preparations, mix-and-match composition). Mastering the Art of French Cooking for accessibility across both. The right vibe is *a practitioner's book, not a theory book.*
@@ -439,8 +456,6 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 - Lifecycle implies one canonical path; cookbook implies many recipes the practitioner composes. The agentic build space is too varied for a single lifecycle to hold plainly.
 - Recipes compose; lifecycles gatekeep. The recipe form is anti-gatekeeping.
 - Cookbook extends naturally (new recipes, new components, new data sources) without the earlier entries going stale. A lifecycle doc goes stale the moment the world shifts — which it does every quarter.
-
-**Em-dash carve-out for this file (per Antti's 2026-05-04 sign-off):** the cookbook supplement is a take-home reference, not delivered material; em-dashes are allowed in body, sparingly, where the comma reads weak. The PostToolUse rule-14 hook currently strips body em-dashes on every write — to honour the carve-out, the hook needs an explicit exception for `curriculum/supplementary/cookbook-for-agent-system-design.md`. Until that lands, em-dashes survive only in the maintainer block. If the file is ever folded into a module body or split into a delivered surface, audit and refit per rule 14.
 
 **Reference quote (Antti — capture for the opening once polished):**
 > "The first thing you build is for you, because you're the only evaluator you can't fool. Then we turn to work — because that's where the system has to stand up."

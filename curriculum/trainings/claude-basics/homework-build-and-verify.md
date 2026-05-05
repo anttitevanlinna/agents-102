@@ -47,13 +47,11 @@ Read the files in this folder from the build-and-verify homework.
 
 Tell me:
 - what this folder is now set up to do
-- what rule in CLAUDE.md matters most
+- which rule in CLAUDE.md changed the most answers (be specific, not complimentary)
 - what kind of future Claude answer I should verify before trusting
 
-Keep it to five bullets.
+Keep it to five bullets. Save the answer as `homework-summary.md` in this folder, overwriting if it exists.
 ```
-
-Save the answer as `homework-summary.md`.
 
 ## Follow-up
 

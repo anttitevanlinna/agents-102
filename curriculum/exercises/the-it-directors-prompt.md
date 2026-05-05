@@ -28,10 +28,10 @@ Create a markdown table with these columns:
 
 For "Where I would check", name the most useful evidence surface: public docs, internal policy, SharePoint file, admin panel, or named owner. If the right place is not obvious, write "not obvious".
 
-Show me the table in chat first. After I push back, save the table as `claim-pool.md` in this folder.
+Show me the table in chat first. Don't save yet. After you show it, ask me which evidence surfaces I would push back on and which "not obvious" rows I think are actually obvious. After my push-back, save the table as `claim-pool.md` in this folder.
 ```
 
-Read the proposed table. Push back where the evidence surface is wrong or too vague. The table is the measuring surface for the rest of the exercise.
+The table is the measuring surface for the rest of the exercise. The push-back step is where it earns that.
 
 ## Phase 2. Find the evidence (6 minutes)
 

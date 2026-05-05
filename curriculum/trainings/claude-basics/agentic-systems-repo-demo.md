@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 When you hear *agentic system*, what do you imagine exists behind the scenes?
 
-Hold two answers in the room. Then look at the actual system behind this workbook.
+The actual system behind this workbook makes a useful contrast.
 
 ## Live Demo
 
@@ -26,7 +26,7 @@ Hold two answers in the room. Then look at the actual system behind this workboo
 ## What to Notice
 
 - A chat is a conversation. A system is the conversation plus the rules, files, checks, and outputs that make the work repeatable
-- `CLAUDE.md` and `AGENTS.md` are working agreements: what the agent reads before it acts
+- `CLAUDE.md` files are working agreements: what the agent reads before it acts
 - Prompts are reusable moves, not magic sentences
 - Evals and checks are how a system earns trust over time
 - The customer workbook is built output. The source lives in curriculum files; the deployment is a product of the build system

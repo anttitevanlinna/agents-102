@@ -34,9 +34,7 @@ Not the long list of worries. The single thing that, if you got it right, would 
 
 ## Close
 
-The live system work is done. The homework turns it into personal muscle memory.
-
-Chat level in. Out: clean group syntheses for the rollout and the named identity of *Claude custodian* for the org.
+You came in chat-level and leave as the rollout's custodians, with clean group syntheses to carry forward. Now the rollout has a shape. The homework turns the live shape into personal muscle memory.
 
 The next section is separate homework. It is not part of the 3-hour live room.
 
@@ -57,11 +55,11 @@ The next section is separate homework. It is not part of the 3-hour live room.
 - **The reveal at exercise close:** *"You just ran the smallest useful version of the rollout system: individual views diverged, groups synthesized, and only then did ideas cross-pollinate. That ordering matters."* Land it once. Don't elaborate
 - **Homework bridge.** The next module is a short launch into self-study, not another live exercise
 
-**Quality:** draft 2026-04-29
-- compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule 12 in-chat + rule #3 no-narrate-student-state + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rule 35 audience-tier, check_lectures v2026-04-27)
-- sim-passed 2026-04-28 — STALE after the live-crux simplification
-- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the live-crux simplification
+**Quality:** draft 2026-04-30
 - draft 2026-04-30 (agenda restructure: live crux follows repo demo and bridges to homework; sim/mechanical not rerun)
+- compendium-audited 2026-04-28 — STALE after the 2026-04-30 agenda restructure
+- sim-passed 2026-04-28 — STALE after the 2026-04-30 agenda restructure
+- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the 2026-04-30 agenda restructure
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

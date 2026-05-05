@@ -27,11 +27,17 @@ The task is: I need a useful answer to a common Claude question internal users a
 Save the draft as `response.md` in this folder.
 ```
 
-Read what Claude wrote. Note three things. What's generic. What's off. What's plain wrong about how your team actually works.
+Now ask Claude to audit its own draft. The gap between generic and yours is the point of Phase 1; let Claude name it.
+
+**Prompt** *(Cowork)*
+
+```
+Read `response.md` from this folder. Be harsher than usual on it. Name three specific things: one line that reads as generic LLM-default, one claim that is off about how a real team like ours actually works, one detail that is plain wrong if a colleague asked us. Quote the lines you mean. Do not soften.
+```
 
 ## Phase 2. Write your CLAUDE.md (7 minutes)
 
-CLAUDE.md is a plain markdown file that carries the rules for this folder. You and Claude write it together in chat. You don't open the file yourself.
+`./CLAUDE.md` is a plain markdown file that carries the rules for this folder. Claude reads it automatically next time you open Cowork on the folder. You and Claude write it together in chat. You don't open the file yourself.
 
 Ask Claude to propose 3 to 5 rules in chat first, push back on whatever's too generic, then have Claude save the final list.
 
@@ -40,7 +46,7 @@ Ask Claude to propose 3 to 5 rules in chat first, push back on whatever's too ge
 ```
 Read `response.md` from this folder. Propose 3 to 5 rules for a folder CLAUDE.md that would catch the most generic and the most off claims you made. Show me the rules in chat first, one sentence each. Don't save yet.
 
-After I push back, save the final list as `CLAUDE.md` in this folder. If this folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, open the file with a first rule that names that runtime and says to assume eventual consistency on file reads.
+After I push back, save the final list as `./CLAUDE.md` in this folder. If this folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, open the file with a first rule that names that runtime and says to assume eventual consistency on file reads.
 ```
 
 Push back in chat. *"That rule is too generic. Give me one specific to my team's tone."* *"Strike rule 3, it would fire on every output."* Claude rewrites. When the list reads as yours, ask Claude to save. A rule that catches everything catches nothing.
@@ -54,10 +60,10 @@ Ask Claude to redraft from scratch using the rules you just wrote.
 **Prompt** *(Cowork)*
 
 ```
-Re-read `response.md` and `CLAUDE.md` from this folder. Now redraft `response.md` from scratch in this same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you're changing and why.
+Re-read `response.md` and `CLAUDE.md` from this folder. Now redraft `response.md` from scratch in this same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you're changing and why. Overwrite the existing `response.md`.
 ```
 
-Claude's three-line diff summary at the top of this phase tells you what changed. The new version saved over the old one in `response.md`. Trust the summary and move on.
+Claude's three-line diff summary tells you what claims to read. Read the new `response.md` against the old shape, does the rule actually fire, or did the diff sound bigger than it was? If it sounds bigger than it is, push back: *"which exact line in the new draft was changed by which rule?"*
 
 ## Phase 4. Catch the thing you knew was wrong (7 minutes)
 

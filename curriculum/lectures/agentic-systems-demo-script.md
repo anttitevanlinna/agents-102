@@ -1,6 +1,6 @@
 # Agentic systems demo script
 
-**Time:** 30 minutes.
+**Time:** 35 minutes.
 
 This is a live demo script for the agents-102 repo and the Claude Basics workbook. The point is not to tour files. The point is to show how an agentic system behaves when rules, prompts, checks, build output, and compounding sit in one working system.
 
@@ -10,11 +10,11 @@ Ask what makes this different from a good chat answer. The answer to look for is
 
 ## 2. Show the workbook first
 
-Open the deployed Claude Basics workbook. Start from the thing the cohort will actually use, then work backward to show that the page is built output, not a hand-written slide deck.
+Open the deployed Claude Basics workbook. Start from the page the room will actually use, then work backward to show that the page is built output, not a hand-written slide deck.
 
 ## 3. Show the rules
 
-Ask Claude Code what rules govern Claude Basics work in this repo. Let it name `AGENTS.md`, root `CLAUDE.md`, `curriculum/CLAUDE.md`, and the Claude Basics rules before opening anything manually.
+Ask Claude Code what rules govern Claude Basics work in this repo. Let it name the root `CLAUDE.md`, `curriculum/CLAUDE.md`, and the Claude Basics rules before opening anything manually.
 
 ## 4. Show how rules steer behavior
 

@@ -15,8 +15,8 @@ Read the group rollout synthesis files from `shared/`.
 
 Create an organisers' rollout readout with:
 - the cruxes that appear across multiple groups
-- one useful disagreement between groups
-- the top three priorities for the next 30 days
+- the sharpest disagreement between groups, even if uncomfortable: where would two groups make a different call? Quote both sides. Don't smooth into a shared theme
+- the top three priorities for the next 30 days, named as the problem they solve, not the virtue they embody
 - what should be deferred for now
 - open questions the organisers need to answer
 - one next action for the organisers this week

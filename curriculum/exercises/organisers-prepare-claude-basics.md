@@ -58,6 +58,7 @@ Inside the synced SharePoint workshop folder, create:
 
 - one first-name folder per participant, such as `aino/`, `petra/`, or `juhani/`; if two people have the same first name, add a short suffix and tell them the exact folder name
 - one directory named `shared/`
+- one `CLAUDE.md` at the workshop folder root with two short lines: *"You are working in a SharePoint-synced folder. Assume eventual consistency on file reads, a file just saved by another session may need a moment before another Cowork session can read it."* This is what tells Claude the runtime; the prose advice in Phase 1 is for humans
 
 Expected file names:
 
@@ -133,7 +134,7 @@ Compare them briefly:
 - one thing the access group should keep distinct
 - one sentence we could add to `shared/rollout-synthesis-access.md`, if any
 
-Show me the proposed addition in chat first. Do not save yet.
+Show me the proposed addition in chat first. Do not save yet. Before I approve, confirm in one sentence that the addition sharpens the access group's crux rather than blurring it. If the addition muddies the crux, say so and stop.
 
 After I approve it, append a short section called "Cross-pollination note" to `shared/rollout-synthesis-access.md`.
 ```
@@ -152,8 +153,8 @@ Read these rehearsal group rollout synthesis files from `shared/`:
 
 Create an organisers' rollout readout with:
 - the cruxes that appear across multiple groups
-- one useful disagreement between groups
-- the top three priorities for the next 30 days
+- the sharpest disagreement between groups, even if uncomfortable: where would two groups make a different call? Quote both sides. Don't smooth into a shared theme
+- the top three priorities for the next 30 days, named as the problem they solve, not the virtue they embody
 - what should be deferred for now
 - open questions the organisers need to answer
 - one next action for the organisers this week

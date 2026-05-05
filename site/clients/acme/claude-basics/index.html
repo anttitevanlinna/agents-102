@@ -546,6 +546,25 @@ main::before {
     margin-left: auto;
 }
 
+/* Inside warm-paper lecture phases — the lecture bg is var(--bg-3),
+   identical to the default prompt-block header bg. Without an override
+   the header melts into the lecture paper and the top row reads broken.
+   Re-tone three steps: body lightest (--bg), header mid (--bg-2), lecture
+   warmest (--bg-3). Header stays distinct as the darker chip on a lighter
+   prompt card, which itself reads as a card on the lecture warmth. */
+.phase--lecture .prompt-block {
+    background: var(--bg);
+    border-color: var(--line-2);
+}
+
+.phase--lecture .prompt-block__header {
+    background: var(--bg-2);
+}
+
+.phase--lecture .prompt-block .prompt-block__pre {
+    background: var(--bg);
+}
+
 /* Inside ink-dark exercise phases — invert chrome to read on dark bg.
    Header sits visibly above body (~9% vs ~3% cream tint) so the destination
    chip and copy button read as a separate row. Border lifted to ink-text
@@ -600,6 +619,146 @@ main::before {
 
 @media print {
     .module .copy-btn { display: none; }
+}
+
+/* ----------------------------------------------------------------
+   Session-boundary widget — the cousin of prompt-block, but louder.
+   ----------------------------------------------------------------
+   Author markup:
+     **Session** *(new, "Module 5 - Hallucination benchmark")*
+
+     Prose body (optionally runtime-forked).
+
+     ```
+     /rename m5-hallucination-benchmark
+     ```
+
+   Renderer (decorateSessions) wraps these three elements into one
+   .session-block. Orange chrome separates it from prompt-block
+   (oxblood) so the visual difference matches the semantic one:
+   prompt = "paste this into Claude," session = "you are now changing
+   which Claude you're talking to." Stand-out colour, full panel,
+   non-skippable. */
+
+.module .session-block {
+    margin: 1.75rem 0 2rem;
+    border: 1px solid var(--warm);
+    border-radius: 5px;
+    background: #faf1e3;
+    overflow: hidden;
+}
+
+.module .session-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding: 0.5rem 0.95rem;
+    background: var(--warm);
+    color: #fff;
+    font-size: 0.82rem;
+    line-height: 1.3;
+}
+
+.module .session-block__label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+}
+
+.module .session-block__verb {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: lowercase;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+}
+
+.module .session-block__name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.module .session-block__name::before {
+    content: "·";
+    margin-right: 0.55rem;
+    opacity: 0.65;
+}
+
+.module .session-block__body {
+    padding: 1.1rem 1.25rem 0.4rem;
+    color: var(--fg);
+}
+
+.module .session-block__body > p:first-child {
+    margin-top: 0;
+}
+
+.module .session-block__body > pre {
+    background: #fff;
+    border-color: #e8d2b1;
+    margin-bottom: 1rem;
+}
+
+.module .session-block__body > pre code {
+    color: var(--fg);
+}
+
+/* Inside the ink-dark exercise phase, invert the session widget too —
+   the amber head still leads, but the panel adapts to the dark band. */
+.phase--exercise .session-block {
+    background: rgba(201, 121, 66, 0.08);
+    border-color: var(--warm);
+    box-shadow: none;
+}
+
+.phase--exercise .session-block__header {
+    background: var(--warm);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__verb {
+    background: rgba(20, 17, 13, 0.18);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__name {
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__body {
+    color: var(--ink-text);
+}
+
+.phase--exercise .session-block__body > pre {
+    background: rgba(244, 236, 219, 0.06);
+    border-color: rgba(255, 125, 73, 0.35);
+}
+
+.phase--exercise .session-block__body > pre code {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .session-block {
+        border-color: #999 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+    .module .session-block__header {
+        background: #eee !important;
+        color: #000 !important;
+    }
+    .module .session-block__verb { background: #ddd !important; color: #000 !important; }
+    .module .session-block__name { color: #000 !important; }
 }
 
 .module blockquote {
@@ -1761,20 +1920,20 @@ body.workbook { padding-top: 3rem; }
 </ul>
 <h2>Opening Question</h2>
 <p>When you hear <em>agentic system</em>, what do you imagine exists behind the scenes?</p>
-<p>Hold two answers in the room. Then look at the actual system behind this workbook.</p>
+<p>The actual system behind this workbook makes a useful contrast.</p>
 <h2>Live Demo</h2>
 <section class="phase phase--lecture" id="lectures-agentic-systems-demo-script">
 <div class="phase-kicker">Lecture</div>
 
 <h1>Agentic systems demo script</h1>
-<p><strong>Time:</strong> 30 minutes.</p>
+<p><strong>Time:</strong> 35 minutes.</p>
 <p>This is a live demo script for the agents-102 repo and the Claude Basics workbook. The point is not to tour files. The point is to show how an agentic system behaves when rules, prompts, checks, build output, and compounding sit in one working system.</p>
 <h2>1. Start with the question</h2>
 <p>Ask what makes this different from a good chat answer. The answer to look for is repeatability: a chat gives a response, while a system leaves behind structure that can run again.</p>
 <h2>2. Show the workbook first</h2>
-<p>Open the deployed Claude Basics workbook. Start from the thing the cohort will actually use, then work backward to show that the page is built output, not a hand-written slide deck.</p>
+<p>Open the deployed Claude Basics workbook. Start from the page the room will actually use, then work backward to show that the page is built output, not a hand-written slide deck.</p>
 <h2>3. Show the rules</h2>
-<p>Ask Claude Code what rules govern Claude Basics work in this repo. Let it name <code>AGENTS.md</code>, root <code>CLAUDE.md</code>, <code>curriculum/CLAUDE.md</code>, and the Claude Basics rules before opening anything manually.</p>
+<p>Ask Claude Code what rules govern Claude Basics work in this repo. Let it name the root <code>CLAUDE.md</code>, <code>curriculum/CLAUDE.md</code>, and the Claude Basics rules before opening anything manually.</p>
 <h2>4. Show how rules steer behavior</h2>
 <p>Ask why the workbook says &quot;people helping their organisation roll out Claude.&quot; This makes the rules visible as judgment, not decoration: the workbook is written for everyone who may need to help the rollout succeed.</p>
 <h2>5. Inspect the system</h2>
@@ -1798,7 +1957,7 @@ body.workbook { padding-top: 3rem; }
 <h2>What to Notice</h2>
 <ul>
 <li>A chat is a conversation. A system is the conversation plus the rules, files, checks, and outputs that make the work repeatable</li>
-<li><code>CLAUDE.md</code> and <code>AGENTS.md</code> are working agreements: what the agent reads before it acts</li>
+<li><code>CLAUDE.md</code> files are working agreements: what the agent reads before it acts</li>
 <li>Prompts are reusable moves, not magic sentences</li>
 <li>Evals and checks are how a system earns trust over time</li>
 <li>The customer workbook is built output. The source lives in curriculum files; the deployment is a product of the build system</li>
@@ -1838,21 +1997,21 @@ body.workbook { padding-top: 3rem; }
 <p>The point is the sequence: individual signal first, group synthesis second. Only the group synthesis is shared.</p>
 <h2>Phase 1. Divergence (15 minutes)</h2>
 <p>Each participant runs an interview with Claude, alone. Claude asks; you answer. The point isn&#39;t to write a polished list. The point is to surface the rollout difficulties YOU actually see, in the words YOU actually use, with Claude pushing back when your first answer is too tidy.</p>
-<p>Ask Claude to interview you about your team&#39;s top three Claude-rollout difficulties and save the notes in your own workshop folder. Use the folder name exactly as organisers show it.</p>
+<p>Ask Claude to interview you about your team&#39;s top three Claude-rollout difficulties and save the notes in your first-name folder under the workshop folder organisers had you sync.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Interview me about the top three difficulties I see in our team&#39;s Claude rollout. Ask one question at a time. Don&#39;t show me the next question until I&#39;ve answered the current one.
 
 Start with: &quot;What&#39;s the first difficulty you see?&quot; After my answer, push back once: ask for a specific example, or ask whether that&#39;s the actual difficulty or a symptom of something deeper. Then ask the second question, same shape. Then the third.
 
-When I&#39;ve answered all three with push-back, ask me for my workshop folder name exactly as organisers show it. Then save the conversation as `rollout-notes.md` in that folder.
+When I&#39;ve answered all three with push-back, ask me for my first name. Then save the conversation as `rollout-notes.md` in the folder named with my first name.
 
 Include the three difficulties and the push-back answers, in my voice. Don&#39;t summarize them into your own register.
 </code></pre>
 <p>Answer Claude&#39;s questions in plain language. When the file saves, you&#39;re done with Phase 1.</p>
-<h2>Phase 2. Group synthesis (35 minutes)</h2>
-<p>Each group picks ONE participant to be the driver. The driver uses the same synced SharePoint workshop folder. The participant folders are named with first names, such as <code>aino</code>, <code>petra</code>, or <code>juhani</code>; if there are duplicates, organisers may add a short suffix. The driver gives Claude the folder names exactly as they appear.</p>
-<p>The group does not need its own folder. The driver is the only person writing to <code>shared/</code> in this phase. Claude reads the personal notes from the first-name folders and saves the group synthesis to <code>shared/</code>, not to the driver&#39;s personal folder. Do not start by reading other groups. Your job is to find your group&#39;s crux first.</p>
-<p>Ask Claude, in the driver&#39;s Cowork session, to help synthesize the group&#39;s views.</p>
+<h2>Phase 2. Group synthesis (25 minutes)</h2>
+<p>Each group picks one driver. If you&#39;re the driver, open Cowork on the same synced SharePoint workshop folder. The participant folders are named with first names like <code>aino</code>, <code>petra</code>, <code>juhani</code>, and if there are duplicates, organisers add a short suffix. Give Claude the folder names exactly as they appear.</p>
+<p>Your group doesn&#39;t need its own folder. You&#39;re the only person writing to <code>shared/</code> in this phase. Claude reads the personal notes from the first-name folders and saves the group synthesis to <code>shared/</code>, not to your personal folder. Do not start by reading other groups. Your job is to find your group&#39;s crux first.</p>
+<p>Ask Claude in your Cowork session to help synthesize the group&#39;s views.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
 <pre><code>Create our group&#39;s rollout synthesis.
 
@@ -1871,38 +2030,54 @@ Then rewrite the synthesis and save it in `shared/`. If I say Atlas, save it as 
 The file must include:
 - named crux
 - supporting evidence from the group
-- what we should prioritise in the next 30 days
-- what we should defer for now
-- one open question the organisers need to answer
+- what would change if we got this crux right
 </code></pre>
 <p>FYI: <em>crux</em> here is borrowed from strategy thinker Richard Rumelt. It means the one difficult part of the challenge where focused action would make the biggest difference.</p>
-<p>Before the driver asks Claude to save: the group looks at the candidate crux and gives push-back. What is wrong, missing, too soft, or too broad? The driver types that push-back to Claude. Then Claude rewrites and saves.</p>
-<p>This forcing function is the design. Claude reads the raw material from files; the group steers the synthesis. The crux belongs to the group, not to whoever held the keyboard.</p>
-<p>If solution ideas are already in the room, store them after the crux is saved. Keep them separate from the crux so the file preserves both: the diagnosis and the first solution instincts.</p>
-<p>Ask Claude to append the ideas and give a quick read on them.</p>
+<p>The crux belongs to the group, not to whoever held the keyboard.</p>
+<p>The synthesis file holds the diagnosis. Now add what you&#39;d try first.</p>
+<p>Ask Claude to append your group&#39;s ideas and give a quick read on them.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
 <pre><code>Read the rollout synthesis file you just saved in `shared/`.
 
-Append a section called &quot;Solution ideas from the group&quot;. Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which idea might be premature, and what question would sharpen the next discussion.
+Append a section called &quot;Ideas&quot;. Store the ideas I give you there. Then add your brief read below them: which idea best fits the crux, which might be premature.
 
 After saving, tell us what you added and what you think in 5 to 7 bullets.
 
 Our ideas:
 </code></pre>
-<h2>Phase 3. Cross-pollination bonus (10 minutes, only if synthesis succeeded)</h2>
-<p>Run this only after every group has saved its synthesis. If any group is still synthesizing, skip this phase and protect the core artifact.</p>
-<p>Ask Claude to read one other group&#39;s synthesis and borrow one useful idea without blurring your group&#39;s crux.</p>
+<h2>Phase 3. Cross-pollination (20 minutes, only after every group has saved)</h2>
+<p>Run this only after every group has saved its synthesis with the Ideas section. If any group is still working, skip Phase 3 and protect the core artifacts.</p>
+<p>If you&#39;re the driver, paste one prompt that cycles between other groups&#39; files and ours. Visit two other groups, leave a comment and an idea on each. Check our file. If a new comment arrived, Claude narrates it. Refresh a running Plan view in chat. Loop. Stop whenever, quality per comment beats coverage.</p>
+<p>Heavy run is expected here: the prompt runs continuously until you say stop. If narration gets long, drifts off, or the cycles feel too fast for the group to follow, interrupt and steer. Paste-ready: <em>&quot;narrower, only flag overlaps with our crux&quot;</em>, or <em>&quot;slow down, one cycle then wait for me&quot;</em>, or just <em>&quot;stop&quot;</em>.</p>
+<p>Ask Claude to cycle between other groups&#39; files and ours, leaving comments out and narrating what comes in.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver)</em></p>
-<pre><code>Read our group&#39;s rollout synthesis from `shared/`. Then read one other group&#39;s rollout synthesis from `shared/`. If there is more than one other group file, list the options and ask me which one to use.
+<pre><code>First ask me for our group&#39;s name. Wait for my answer.
 
-Compare them briefly:
-- one idea the other group saw that we missed
-- one thing our group should keep distinct
-- one sentence we should add to our synthesis, if any
+Then run cycles. In each cycle:
 
-Show me the proposed addition in chat first. Don&#39;t save until the group approves it.
+1. Visit two other groups&#39; rollout synthesis files in `shared/` (skip ours, skip any you&#39;ve already fully covered).
+   For each:
+   - read the file
+   - append a section called &quot;Comments from &lt;our group name&gt;&quot; with two or three bullets: one idea worth borrowing or extending, one comment or sharper question from our group, plus a flag if you see overlap with our crux
+   - save the file
+
+2. Read our own file in `shared/`. If a new &quot;Comments from &lt;Group&gt;&quot; section arrived since the last check, narrate it: which group commented, what they noticed, whether it fits our crux.
+
+3. Refresh the running Plan view IN CHAT (don&#39;t save to file). Based on our crux, evidence, ideas, and any incoming comments, show three short bullets each for:
+   - prioritise in the next 30 days
+   - defer for now
+   - one open question only the organisers can answer
+   Replace the previous Plan view each cycle. This is a running surface, not a log.
+
+4. Continue to the next cycle unless I tell you to stop.
+
+Narrate each move shortly: &quot;Visiting Atlas, appended. Checking ours, no change. Plan now: priorities read...&quot; Keep narration tight, one or two sentences per move.
+
+If you&#39;ve already commented on every other group&#39;s file, stop the writing-out half and keep watching ours, narrating new comments as they arrive and refreshing the Plan with the new context.
+
+Stop when I say stop.
 </code></pre>
-<p>If the addition helps, ask Claude to append a short <strong>Cross-pollination note</strong> to your group&#39;s synthesis file. If it muddies the crux, leave the file alone.</p>
+<p>Whenever the group says stop, stop. The artifact is the synthesis file plus whatever comments accumulated. The Plan view in chat is a live read off that file; anyone can re-deduce it later by reading the file.</p>
 <p>The organisers may run their own synthesis after the group files exist. That is a separate organisers-only exercise, not part of the group driver&#39;s work.</p>
 </section>
 
@@ -1916,8 +2091,7 @@ Show me the proposed addition in chat first. Don&#39;t save until the group appr
 <li>The structure that produced the answer is the structure the room was already inside of. The work routes through people; the architecture follows the work, not the other way round</li>
 </ul>
 <h2>Close</h2>
-<p>The live system work is done. The homework turns it into personal muscle memory.</p>
-<p>Chat level in. Out: clean group syntheses for the rollout and the named identity of <em>Claude custodian</em> for the org.</p>
+<p>You came in chat-level and leave as the rollout&#39;s custodians, with clean group syntheses to carry forward. Now the rollout has a shape. The homework turns the live shape into personal muscle memory.</p>
 <p>The next section is separate homework. It is not part of the 3-hour live room.</p>
 <h2>Organisers&#39; Activities</h2>
 <section class="phase phase--exercise" id="exercises-organisers-synthesize-rollout">
@@ -1933,8 +2107,8 @@ Show me the proposed addition in chat first. Don&#39;t save until the group appr
 
 Create an organisers&#39; rollout readout with:
 - the cruxes that appear across multiple groups
-- one useful disagreement between groups
-- the top three priorities for the next 30 days
+- the sharpest disagreement between groups, even if uncomfortable: where would two groups make a different call? Quote both sides. Don&#39;t smooth into a shared theme
+- the top three priorities for the next 30 days, named as the problem they solve, not the virtue they embody
 - what should be deferred for now
 - open questions the organisers need to answer
 - one next action for the organisers this week
@@ -2047,6 +2221,7 @@ After I approve it, save it as `shared/organisers-rollout-readout.md`.
 <ul>
 <li>one first-name folder per participant, such as <code>aino/</code>, <code>petra/</code>, or <code>juhani/</code>; if two people have the same first name, add a short suffix and tell them the exact folder name</li>
 <li>one directory named <code>shared/</code></li>
+<li>one <code>CLAUDE.md</code> at the workshop folder root with two short lines: <em>&quot;You are working in a SharePoint-synced folder. Assume eventual consistency on file reads, a file just saved by another session may need a moment before another Cowork session can read it.&quot;</em> This is what tells Claude the runtime; the prose advice in Phase 1 is for humans</li>
 </ul>
 <p>Expected file names:</p>
 <ul>
@@ -2104,7 +2279,7 @@ Compare them briefly:
 - one thing the access group should keep distinct
 - one sentence we could add to `shared/rollout-synthesis-access.md`, if any
 
-Show me the proposed addition in chat first. Do not save yet.
+Show me the proposed addition in chat first. Do not save yet. Before I approve, confirm in one sentence that the addition sharpens the access group&#39;s crux rather than blurring it. If the addition muddies the crux, say so and stop.
 
 After I approve it, append a short section called &quot;Cross-pollination note&quot; to `shared/rollout-synthesis-access.md`.
 </code></pre>
@@ -2118,8 +2293,8 @@ After I approve it, append a short section called &quot;Cross-pollination note&q
 
 Create an organisers&#39; rollout readout with:
 - the cruxes that appear across multiple groups
-- one useful disagreement between groups
-- the top three priorities for the next 30 days
+- the sharpest disagreement between groups, even if uncomfortable: where would two groups make a different call? Quote both sides. Don&#39;t smooth into a shared theme
+- the top three priorities for the next 30 days, named as the problem they solve, not the virtue they embody
 - what should be deferred for now
 - open questions the organisers need to answer
 - one next action for the organisers this week
@@ -2247,23 +2422,26 @@ The task is: I need a useful answer to a common Claude question internal users a
 
 Save the draft as `response.md` in this folder.
 </code></pre>
-<p>Read what Claude wrote. Note three things. What&#39;s generic. What&#39;s off. What&#39;s plain wrong about how your team actually works.</p>
+<p>Now ask Claude to audit its own draft. The gap between generic and yours is the point of Phase 1; let Claude name it.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Read `response.md` from this folder. Be harsher than usual on it. Name three specific things: one line that reads as generic LLM-default, one claim that is off about how a real team like ours actually works, one detail that is plain wrong if a colleague asked us. Quote the lines you mean. Do not soften.
+</code></pre>
 <h2>Phase 2. Write your CLAUDE.md (7 minutes)</h2>
-<p>CLAUDE.md is a plain markdown file that carries the rules for this folder. You and Claude write it together in chat. You don&#39;t open the file yourself.</p>
+<p><code>./CLAUDE.md</code> is a plain markdown file that carries the rules for this folder. Claude reads it automatically next time you open Cowork on the folder. You and Claude write it together in chat. You don&#39;t open the file yourself.</p>
 <p>Ask Claude to propose 3 to 5 rules in chat first, push back on whatever&#39;s too generic, then have Claude save the final list.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Read `response.md` from this folder. Propose 3 to 5 rules for a folder CLAUDE.md that would catch the most generic and the most off claims you made. Show me the rules in chat first, one sentence each. Don&#39;t save yet.
 
-After I push back, save the final list as `CLAUDE.md` in this folder. If this folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, open the file with a first rule that names that runtime and says to assume eventual consistency on file reads.
+After I push back, save the final list as `./CLAUDE.md` in this folder. If this folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, open the file with a first rule that names that runtime and says to assume eventual consistency on file reads.
 </code></pre>
 <p>Push back in chat. <em>&quot;That rule is too generic. Give me one specific to my team&#39;s tone.&quot;</em> <em>&quot;Strike rule 3, it would fire on every output.&quot;</em> Claude rewrites. When the list reads as yours, ask Claude to save. A rule that catches everything catches nothing.</p>
 <h2>Phase 3. Re-run on the same task (4 minutes)</h2>
 <p>Same question. New rules. Watch the diff.</p>
 <p>Ask Claude to redraft from scratch using the rules you just wrote.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Re-read `response.md` and `CLAUDE.md` from this folder. Now redraft `response.md` from scratch in this same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you&#39;re changing and why.
+<pre><code>Re-read `response.md` and `CLAUDE.md` from this folder. Now redraft `response.md` from scratch in this same folder, applying the rules in CLAUDE.md to the same user question. Before you save, show me in 3 lines what you&#39;re changing and why. Overwrite the existing `response.md`.
 </code></pre>
-<p>Claude&#39;s three-line diff summary at the top of this phase tells you what changed. The new version saved over the old one in <code>response.md</code>. Trust the summary and move on.</p>
+<p>Claude&#39;s three-line diff summary tells you what claims to read. Read the new <code>response.md</code> against the old shape, does the rule actually fire, or did the diff sound bigger than it was? If it sounds bigger than it is, push back: <em>&quot;which exact line in the new draft was changed by which rule?&quot;</em></p>
 <h2>Phase 4. Catch the thing you knew was wrong (7 minutes)</h2>
 <p>Phase 1 produced at least one claim you knew was wrong. A tool your team doesn&#39;t use, a policy your org doesn&#39;t have, a salesy tone where your team writes plain. Add a rule that catches that specific shape.</p>
 <p>Ask Claude to add a guardrail for the specific wrong claim. Type the wrong claim after the colon.</p>
@@ -2310,9 +2488,9 @@ Create a markdown table with these columns:
 
 For &quot;Where I would check&quot;, name the most useful evidence surface: public docs, internal policy, SharePoint file, admin panel, or named owner. If the right place is not obvious, write &quot;not obvious&quot;.
 
-Show me the table in chat first. After I push back, save the table as `claim-pool.md` in this folder.
+Show me the table in chat first. Don&#39;t save yet. After you show it, ask me which evidence surfaces I would push back on and which &quot;not obvious&quot; rows I think are actually obvious. After my push-back, save the table as `claim-pool.md` in this folder.
 </code></pre>
-<p>Read the proposed table. Push back where the evidence surface is wrong or too vague. The table is the measuring surface for the rest of the exercise.</p>
+<p>The table is the measuring surface for the rest of the exercise. The push-back step is where it earns that.</p>
 <h2>Phase 2. Find the evidence (6 minutes)</h2>
 <p>Now build the evidence map. Use the tools and sources available in your environment: public docs, intranet, SharePoint, policy files you are allowed to use, admin panels, or people who own the answer.</p>
 <p>Ask Claude to turn the claim pool into a concrete evidence plan.</p>
@@ -2408,12 +2586,11 @@ Don&#39;t suggest fixes. I want to see what stayed open.
 
 Tell me:
 - what this folder is now set up to do
-- what rule in CLAUDE.md matters most
+- which rule in CLAUDE.md changed the most answers (be specific, not complimentary)
 - what kind of future Claude answer I should verify before trusting
 
-Keep it to five bullets.
+Keep it to five bullets. Save the answer as `homework-summary.md` in this folder, overwriting if it exists.
 </code></pre>
-<p>Save the answer as <code>homework-summary.md</code>.</p>
 <h2>Follow-up</h2>
 <p>The live session is over. The rollout is not. Keep the folder summary, the group synthesis, and the open verification rows close to the work. They are useful inputs whenever your team revisits the rollout: what this folder can now do, what the group thought the crux was, and which claims still need evidence.</p>
 
@@ -2628,7 +2805,10 @@ Keep it to five bullets.
         btn.addEventListener('click', function (ev) {
             ev.preventDefault();
             var code = pre.querySelector('code') || pre;
-            var text = code.innerText;
+            // textContent (not innerText) — innerText respects CSS rendering
+            // and can collapse newlines inside <pre><code>; textContent is the
+            // DOM text and preserves whitespace deterministically.
+            var text = code.textContent;
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');
@@ -2637,11 +2817,43 @@ Keep it to five bullets.
                     btn.classList.remove('copy-btn--copied');
                 }, 1400);
             };
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(done, fallback);
-            } else {
-                fallback();
+            // Write BOTH text/plain and text/html to the clipboard. Destinations
+            // that prefer HTML (Cowork input, Claude Code Desktop input, Slack,
+            // browser-based markdown editors) read the <pre> wrapper and paste
+            // it as a fenced code block, which suppresses the destination's URL
+            // auto-detection that converts paths like `module-5/claim-pool.md`
+            // into `[claim-pool.md](http://claim-pool.md)` markdown links.
+            // Plain-text-only destinations (terminals, plain inputs) get the
+            // text/plain fallback unchanged.
+            function writeBoth() {
+                if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+                    // <div> + <br> instead of <pre> — destinations treat <pre>
+                    // as a code block and apply their own dark theme even with
+                    // inline-style overrides. <div> doesn't trigger code-block
+                    // styling. Whitespace preserved via <br> for newlines and
+                    // &nbsp; for leading indentation. <wbr> before file-extension
+                    // dots is the backup defence against URL auto-detection
+                    // (parsers see broken pattern, don't linkify).
+                    var lines = text.split('\n').map(function (line) {
+                        var indent = line.match(/^[ \t]*/)[0];
+                        var rest = line.slice(indent.length);
+                        var indentHtml = indent.replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                        var escRest = esc(rest).replace(/(\.)([a-z]{1,5})\b/gi, '<wbr>$1$2');
+                        return indentHtml + escRest;
+                    });
+                    var html = '<div>' + lines.join('<br>') + '</div>';
+                    var item = new ClipboardItem({
+                        'text/plain': new Blob([text], { type: 'text/plain' }),
+                        'text/html':  new Blob([html], { type: 'text/html' })
+                    });
+                    return navigator.clipboard.write([item]);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                }
+                return Promise.reject(new Error('no clipboard api'));
             }
+            writeBoth().then(done, fallback);
             function fallback() {
                 var ta = document.createElement('textarea');
                 ta.value = text;
@@ -2655,6 +2867,87 @@ Keep it to five bullets.
             }
         });
         mountTarget.appendChild(btn);
+    }
+
+    // Session-boundary widget. Source shape:
+    //   **Session** *(verb, "name")*
+    //   <runtime-fork prose>
+    //   ```
+    //   /rename slug
+    //   ```
+    // Wraps the label paragraph + next paragraph (body prose) + next <pre>
+    // (rename block) into a single .session-block. Stops at the next h*,
+    // **Session**, or **Prompt** so widgets never run past their seam.
+    // Run BEFORE decoratePrompts so the **Prompt** stop-condition fires before
+    // prompt blocks are unwrapped.
+    function decorateSessions(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Session') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var firstComma = label.indexOf(',');
+            var verb = firstComma >= 0 ? label.slice(0, firstComma).trim() : label.trim();
+            var name = firstComma >= 0 ? label.slice(firstComma + 1).trim().replace(/^"|"$/g, '') : '';
+
+            var wrap = document.createElement('div');
+            wrap.className = 'session-block';
+
+            var header = document.createElement('div');
+            header.className = 'session-block__header';
+            header.innerHTML =
+                '<span class="session-block__label">Session</span>' +
+                (verb ? '<span class="session-block__verb">' + esc(verb) + '</span>' : '') +
+                (name ? '<span class="session-block__name">' + esc(name) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            wrap.appendChild(header);
+
+            var body = document.createElement('div');
+            body.className = 'session-block__body';
+            wrap.appendChild(body);
+            p.remove();
+
+            // Pull subsequent siblings into the body until a stop boundary.
+            // Widget body shape is: at most one body paragraph, at most one
+            // <pre> (the rename command). Any other strong-led paragraph
+            // (What you do:, Phase 1:, etc.) ends the widget — without that
+            // stop, a return-verb widget with no <pre> swallows the page.
+            var next = wrap.nextSibling;
+            while (next) {
+                if (next.nodeType !== 1) {
+                    next = next.nextSibling;
+                    continue;
+                }
+                var tag = next.tagName;
+                if (/^H[1-6]$/.test(tag) || tag === 'HR') break;
+                if (tag === 'P') {
+                    var s = next.querySelector(':scope > strong');
+                    if (s) break;
+                    var sib = next;
+                    next = next.nextSibling;
+                    body.appendChild(sib);
+                    continue;
+                }
+                // The inner <pre> in a session widget is the rename command —
+                // CLI-only (Cowork can't rename; Desktop has no /rename either).
+                // Wrap in .rt-cli so existing runtime CSS hides it for the other
+                // two runtimes. Author writes plain markdown; visibility lives
+                // at the renderer.
+                if (tag === 'PRE') {
+                    var preSib = next;
+                    next = next.nextSibling;
+                    var cliWrap = document.createElement('div');
+                    cliWrap.className = 'rt-cli';
+                    body.appendChild(cliWrap);
+                    cliWrap.appendChild(preSib);
+                    break;
+                }
+                break;
+            }
+        });
     }
 
     function decoratePrompts(root) {
@@ -2931,6 +3224,7 @@ Keep it to five bullets.
         buildTocSections: buildTocSections,
 
         // DOM (browser only)
+        decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,
@@ -2958,6 +3252,7 @@ Keep it to five bullets.
       var num = CurriculumRuntime.moduleNumber(trainingKey, mod.id);
       CurriculumRuntime.buildModuleHero(mod, num);
     });
+    CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.installReadingProgress();
   }

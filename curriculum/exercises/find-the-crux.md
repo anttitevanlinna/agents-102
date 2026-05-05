@@ -86,6 +86,8 @@ Run this only after every group has saved its synthesis with the Ideas section. 
 
 If you're the driver, paste one prompt that cycles between other groups' files and ours. Visit two other groups, leave a comment and an idea on each. Check our file. If a new comment arrived, Claude narrates it. Refresh a running Plan view in chat. Loop. Stop whenever, quality per comment beats coverage.
 
+Heavy run is expected here: the prompt runs continuously until you say stop. If narration gets long, drifts off, or the cycles feel too fast for the group to follow, interrupt and steer. Paste-ready: *"narrower, only flag overlaps with our crux"*, or *"slow down, one cycle then wait for me"*, or just *"stop"*.
+
 Ask Claude to cycle between other groups' files and ours, leaving comments out and narrating what comes in.
 
 **Prompt** *(Cowork, group driver)*

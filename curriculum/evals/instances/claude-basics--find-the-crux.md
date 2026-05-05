@@ -2,9 +2,6 @@
 
 **Target file:** `curriculum/exercises/find-the-crux.md`
 **Module file:** `curriculum/trainings/claude-basics/where-is-this-all-going.md`
-**Supporting prompts:**
-- `curriculum/trainings/claude-basics/prompts/find-the-crux-divergence.md`
-- `curriculum/trainings/claude-basics/prompts/find-the-crux-synthesizer.md`
 **Strategy:** `bosser-strategy:content-strategy-claude-basics.md` section *Where is this all going?*
 **Eval template:** `curriculum/evals/exercise.md`
 **Audience persona:** rollout custodian with medium-to-light chat experience. Just finished the repo demo. Module 2 opens directly into live rollout-crux synthesis.

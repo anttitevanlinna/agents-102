@@ -258,7 +258,7 @@ The four review personas are the rule with teeth. A rule everybody agrees with b
 
 ## Components
 
-Twelve named items the recipes lean on: eight pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes below. Many of the smaller bits live inside the recipes, `style.md`, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
+Twelve named items the recipes lean on: eight pieces and four closed-set lists. Each is small enough to hold in head; each is referenced by name from the Index of agent shapes below. Many of the smaller bits live inside the recipes, `wonder.md`, the personal skill, `challenge.md`, and earn their names there rather than here.
 
 **The three layers.** Raw sources (the originals, untouched), the memory (maintained by the agent, sharpens over time), and the rules file (`./CLAUDE.md` that keeps the shape consistent). The architectural stack of every compounding system. Most agent failures look like bugs and are layer confusion: a rule written into memory, a source written into rules, the system stops behaving like a system. From R2.
 
@@ -392,7 +392,7 @@ Twenty named compositions a practitioner would recognise on sight. Each entry: t
 
 ### More dishes to cook
 
-Written as they stabilise:
+These are composition prompts, not full recipes. Each names which recipes carry the move and what new wrinkle the area introduces. The Use when / Build / Test / Why shape arrives only when the move is reliable enough that a practitioner would recommend it without caveats.
 
 - **Cloud deployment.** Start with R2, add R4 before anything writes outward, then R6 once the run repeats. The question is what changes when the folder becomes a runtime.
 - **Team sharing.** Use R7 as the dish, with the four sharing strategies as the mirepoix. Context, skill, output, interface; never start by sharing the whole pot.
@@ -405,7 +405,7 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 <!-- maintainer -->
 
-**Status:** Pass 3.3 — Why-lines restored to recipes, third canonical dish added (continuous research system), Sutherland sting on the three-layers component. Eight short recipes each carrying a Why, three full dishes (program manager agent, shared-inbox triage agent, continuous research system), 12 named components, 18 data sources, 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). R5 / R7 / R8 still owe a worked example each. Final polish still owes cross-reference tightening and case-consent/source verification before external ship.
+**Status:** Pass 3.4 — composition-prompt register signal added to *More dishes to cook* (story-class non-blocking REVISE resolved); cross-reference audit clean. Eight short recipes each carrying a Why, three full dishes (program manager agent, shared-inbox triage agent, continuous research system), 12 named components, 18 data sources, 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). External-ship blockers remaining: R5 / R7 / R8 worked dishes still owed (one each), and case-consent / source verification on Dishes 1 and 2.
 
 **Drift prevention:** when a module's Big Idea or named artefacts change, the matching recipe updates in the same edit. The cookbook is the take-home catalogue; if it lags the module, the buyer-side reading goes stale. Sweep cookbook against module Big Ideas at every cycle close. **Same rule for components and data sources** — when a module renames a component or adds a data source, the relevant Components / Data sources entry updates in the same edit. The Index entries are downstream of both: a renamed component ripples to every Index dish that composes it.
 
@@ -427,6 +427,7 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 - Pass 3.1 (2026-05-04): structure flipped after Antti review. Eight long recipes compressed into a short catalogue. Two canonical full worked examples promoted so the cookbook shows recipe composition in real work instead of repeating the module sequence.
 - Pass 3.2 (2026-05-04): provenance framing removed from reader-facing prose. Cookbook frame now treats future areas as dishes to cook with the same base preparations, mirepoix, and patterns.
 - Pass 3.3 (2026-05-04, late evening): Why-lines restored to each of the eight recipe stubs (the counterintuitive one-liner that gives each recipe its conviction; was lost in the Pass 3.1 compression). Canonical Dish 3 (the continuous research system, which lives in this very repo) added between Dish 2 and Components, restoring R3 + R6 worked-example demonstration that had been cut in Pass 3.1. Sutherland-flavoured sting added to the three-layers component (most agent failures look like bugs and are layer confusion). Net: the cookbook is now spicier without being heavier; recipe coverage in worked dishes climbs from 2 of 8 to 3 of 8.
+- Pass 3.4 (2026-05-05): final polish on Pass 3.3 TODO list. (a) Story-class non-blocking REVISE resolved — *More dishes to cook* now opens with an explicit register-signal paragraph naming the section as composition prompts, not full recipes. (b) Cross-reference audit clean — line 261's inline-only list incorrectly included `style.md` (which has its own Component entry as *The house-style file*); corrected. Status line tightened to surface only the genuine external-ship blockers. Candidate sources for the missing R5 / R7 / R8 worked dishes, drawn from this very project: R5 = four-class eval-fire judges with scoreboards (writing / story / technical / behavior); R7 = the public `continuous-research/` directory as a sharing surface (R7 + R3 in production); R8 = the cookbook itself as the flywheel artefact (the Bootstrap arc compounding through M1–M8 and producing this take-home reference). Each owes Antti's sign-off + ~600 words; out of scope for Pass 3.4.
 
 **Frameworks riffed on:**
 - Cookbook-as-genre, two registers held in tension: **Chez Panisse Menu Cookbook** energy for the long-form worked examples (one well-told dinner per recipe), **Escoffier *Le Guide Culinaire / Le Répertoire de la Cuisine*** for the Components and Index chapters (terse catalogue density, named base preparations, mix-and-match composition). Mastering the Art of French Cooking for accessibility across both. The right vibe is *a practitioner's book, not a theory book.*

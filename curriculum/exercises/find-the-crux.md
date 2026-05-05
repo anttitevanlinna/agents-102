@@ -31,11 +31,11 @@ Answer Claude's questions in plain language. When the file saves, you're done wi
 
 ## Phase 2. Group synthesis (25 minutes)
 
-Each group picks ONE participant to be the driver. The driver uses the same synced SharePoint workshop folder. The participant folders are named with first names, such as `aino`, `petra`, or `juhani`; if there are duplicates, organisers may add a short suffix. The driver gives Claude the folder names exactly as they appear.
+Each group picks one driver. If you're the driver, open Cowork on the same synced SharePoint workshop folder. The participant folders are named with first names like `aino`, `petra`, `juhani`, and if there are duplicates, organisers add a short suffix. Give Claude the folder names exactly as they appear.
 
-The group does not need its own folder. The driver is the only person writing to `shared/` in this phase. Claude reads the personal notes from the first-name folders and saves the group synthesis to `shared/`, not to the driver's personal folder. Do not start by reading other groups. Your job is to find your group's crux first.
+Your group doesn't need its own folder. You're the only person writing to `shared/` in this phase. Claude reads the personal notes from the first-name folders and saves the group synthesis to `shared/`, not to your personal folder. Do not start by reading other groups. Your job is to find your group's crux first.
 
-Ask Claude, in the driver's Cowork session, to help synthesize the group's views.
+Ask Claude in your Cowork session to help synthesize the group's views.
 
 **Prompt** *(Cowork, group driver)*
 
@@ -62,13 +62,11 @@ The file must include:
 
 FYI: *crux* here is borrowed from strategy thinker Richard Rumelt. It means the one difficult part of the challenge where focused action would make the biggest difference.
 
-Before the driver asks Claude to save: the group looks at the candidate crux and gives push-back. What is wrong, missing, too soft, or too broad? The driver types that push-back to Claude. Then Claude rewrites and saves.
+The crux belongs to the group, not to whoever held the keyboard.
 
-This forcing function is the design. Claude reads the raw material from files; the group steers the synthesis. The crux belongs to the group, not to whoever held the keyboard.
+The synthesis file holds the diagnosis. Now add what you'd try first.
 
-The synthesis file holds the diagnosis. Now the group surfaces the ideas already in the room, what we'd try first if the crux were on us next Monday.
-
-Ask Claude to append the group's ideas and give a quick read on them.
+Ask Claude to append your group's ideas and give a quick read on them.
 
 **Prompt** *(Cowork, group driver)*
 
@@ -86,7 +84,7 @@ Our ideas:
 
 Run this only after every group has saved its synthesis with the Ideas section. If any group is still working, skip Phase 3 and protect the core artifacts.
 
-Each driver now pastes one prompt that cycles between other groups' files and our own. Visit two other groups, leave a comment and an idea on each. Check our file. If a new comment arrived, Claude narrates it. Refresh a running Plan view in chat. Loop. Stop whenever, quality per comment beats coverage.
+If you're the driver, paste one prompt that cycles between other groups' files and ours. Visit two other groups, leave a comment and an idea on each. Check our file. If a new comment arrived, Claude narrates it. Refresh a running Plan view in chat. Loop. Stop whenever, quality per comment beats coverage.
 
 Ask Claude to cycle between other groups' files and ours, leaving comments out and narrating what comes in.
 
@@ -133,14 +131,17 @@ The organisers may run their own synthesis after the group files exist. That is 
 - **Phase 3 skip rule:** if any group has not saved by the end of Phase 2, skip Phase 3 entirely. The core artifacts still hold. Active cross-pollination needs every group's synthesis to exist
 - **Plan as running callout:** the priorities / defers / open organiser question are not a saved file section. They live in the driver's Cowork chat, refreshed each cycle as comments arrive. The artifact is the rich file; the Plan is a live read off it
 - **The reveal at Phase 3 close:** *"You just watched agents coordinate on shared files: individuals diverged, groups synthesized, then comments and ideas cross-pollinated live across files in the room. That ordering matters, and so does the structure that produced it."* Land it once
+- **Maintainer-acceptance — Cowork loop capability (technical class):** the Phase 3 prompt asks Claude to run cycles continuously without re-prompt, and to detect "new sections since last check" across cycles. Pre-ship audit on 2026-05-05 flagged both as UNVERIFIED platform-capability claims. Maintainer accepts — Cowork supports this loop shape per Antti's direct knowledge. Reference: `memory/compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md` (Cowork capability surface). Mechanical re-run still queued pre-cohort against the new Phase 3 prompt
+- **Pre-cohort TODO:** re-run mechanical harness against the reshaped Phase 3 cross-pollination prompt before the first Claude Basics cohort. Existing mechanical-tested row (2026-04-28 @ c25d7c4) is STALE. Capability is maintainer-accepted; mechanical confirms the prompt mechanics (detection, narration cap, stop behavior) actually fire as designed
 
 **Quality:** draft 2026-05-05
 - compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule 12 + rule #3 + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rules 12, 26, 35)
 - persona-simulated 2026-05-04 — participant and group-driver pass; folder-name and pacing fixes applied
-- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the live-crux simplification
+- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the live-crux simplification; pre-cohort TODO logged above
 - draft 2026-04-30 (agenda restructure: live crux exercise uses one agreed shared synthesis location, not a fixed cohort folder; sim/mechanical/eval not rerun)
 - draft 2026-05-04 (Phase 2 split into three beats: synthesis trimmed to diagnosis only; "Solution ideas" renamed to "Ideas"; new "Plan" prompt added; Phase 1 body fix to first-name folder framing; sim/mechanical/eval not rerun)
 - draft 2026-05-05 (Plan beat removed from Phase 2 — Phase 2 now ends at Ideas, 25 min. Phase 3 reshaped from passive bonus into active cross-pollination, 20 min: interleaved write-2/check-own cycles, Plan as running chat callout, continuous narration, stoppable; reveal updated to name agents-on-shared-state demo; sim/mechanical/eval not rerun)
+- draft 2026-05-05 (fix-cycle from /curriculum-pre-ship-audit BLOCK: cut L65–67 forcing-function-mechanism re-explanation that the synthesis prompt already enacts; cut "forcing function is the design" maintainer-vocab leak; recast L34/L36/L38/L89 third-person classroom-management framing to "if you're the driver" + second-person; tightened L69 to "Now add what you'd try first" — drops "next Monday" time-anchor and group-state narration; Cowork-loop technical findings logged as maintainer-accepted; mechanical re-run queued pre-cohort)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

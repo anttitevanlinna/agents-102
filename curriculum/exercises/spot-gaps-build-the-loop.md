@@ -1,5 +1,9 @@
 # Spot gaps, build the loop
 
+**Session** *(return, "Module 5 worktree session")*
+
+Continue in your M5 worktree session at `../<repo>-m5`. If that session isn't still open, start a new Claude Code session at the same worktree path.
+
 **What you do:** Diff the packaged M5 re-run against the un-packaged M4 baseline. Name what packaging caught, what it missed, and what new gaps surfaced. Then author a session-shaper skill through conversation. Shape follows what the two runs taught. Self-critique, invoke on the packaged run, ship personally.
 
 **What happened:** You end with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/<skill-name>/SKILL.md`. Auto-discovered in every future session. Whichever shape the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates flagged for a human conversation, not an auto-PR.

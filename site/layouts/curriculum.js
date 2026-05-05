@@ -311,34 +311,41 @@
             p.remove();
 
             // Pull subsequent siblings into the body until a stop boundary.
+            // Widget body shape is: at most one body paragraph, at most one
+            // <pre> (the rename command). Any other strong-led paragraph
+            // (What you do:, Phase 1:, etc.) ends the widget — without that
+            // stop, a return-verb widget with no <pre> swallows the page.
             var next = wrap.nextSibling;
             while (next) {
-                if (next.nodeType === 1) {
-                    var tag = next.tagName;
-                    if (/^H[1-6]$/.test(tag)) break;
-                    if (tag === 'P') {
-                        var s = next.querySelector(':scope > strong');
-                        if (s) {
-                            var t = s.textContent.trim();
-                            if (t === 'Session' || t === 'Prompt') break;
-                        }
-                    }
+                if (next.nodeType !== 1) {
+                    next = next.nextSibling;
+                    continue;
                 }
-                var sib = next;
-                next = next.nextSibling;
+                var tag = next.tagName;
+                if (/^H[1-6]$/.test(tag) || tag === 'HR') break;
+                if (tag === 'P') {
+                    var s = next.querySelector(':scope > strong');
+                    if (s) break;
+                    var sib = next;
+                    next = next.nextSibling;
+                    body.appendChild(sib);
+                    continue;
+                }
                 // The inner <pre> in a session widget is the rename command —
                 // CLI-only (Cowork can't rename; Desktop has no /rename either).
                 // Wrap in .rt-cli so existing runtime CSS hides it for the other
                 // two runtimes. Author writes plain markdown; visibility lives
                 // at the renderer.
-                if (sib.nodeType === 1 && sib.tagName === 'PRE') {
+                if (tag === 'PRE') {
+                    var preSib = next;
+                    next = next.nextSibling;
                     var cliWrap = document.createElement('div');
                     cliWrap.className = 'rt-cli';
                     body.appendChild(cliWrap);
-                    cliWrap.appendChild(sib);
+                    cliWrap.appendChild(preSib);
                     break;
                 }
-                body.appendChild(sib);
+                break;
             }
         });
     }

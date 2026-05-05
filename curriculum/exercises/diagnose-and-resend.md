@@ -1,5 +1,13 @@
 # Diagnose and re-send
 
+**Session** *(new, "Module 5 worktree session")*
+
+Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at module open).
+
+```
+/rename m5-diagnose-resend
+```
+
 **What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
 
 **What happened:** You end the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. The module's Debrief takes over from there: self-compound `CLAUDE.local.md`, then re-send.
@@ -12,7 +20,7 @@
 
 ## Phase 1: Read the return (~15 min)
 
-Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state — all visible from the worktree via git refs) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
+Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree via git refs) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
 
 Ask Claude to find the previous session's transcript file.
 
@@ -46,7 +54,7 @@ End with: which of the three was the DOMINANT failure mode? You'll build the ver
 ```
 
 
-Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. The move you just ran is *diagnosis through named failure modes* — the vocabulary is the lens, the artefact is the substance.
+Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. The move you just ran is *diagnosis through named failure modes*, the vocabulary is the lens, the artefact is the substance.
 
 ---
 
@@ -87,7 +95,7 @@ Three shapes the verifier takes. Pick the one matching your dominant failure. Th
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
 - **Ralph re-feed.** Loop the prompt with a check baked in; agent re-runs against its own output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.
 
-Ask Claude to build the verifier shape that matches your dominant failure, scoped to the task we ran un-packaged. Drop the shape name after the colon — one of: background-agent, shell-hook, Ralph re-feed.
+Ask Claude to build the verifier shape that matches your dominant failure, scoped to the task we ran un-packaged. Drop the shape name after the colon, one of: background-agent, shell-hook, Ralph re-feed.
 
 **Prompt** *(Claude Code)*
 
@@ -110,7 +118,7 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 The verifier IS your first eval. The closing lecture names this; for now, build it.
 
-Before Phase 4, smoke-test that the verifier actually fires. A built-but-untested verifier is no verifier — the wiring (hook config, file paths, slash-command registration, loop trigger) is fragile and silent failures cost the next phase.
+Before Phase 4, smoke-test that the verifier actually fires. A built-but-untested verifier is no verifier, the wiring (hook config, file paths, slash-command registration, loop trigger) is fragile and silent failures cost the next phase.
 
 **Prompt** *(Claude Code)*
 

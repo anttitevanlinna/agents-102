@@ -1,5 +1,13 @@
 # Orient and introspect
 
+**Session** *(new, "Module 1 - Orient and introspect")*
+
+Start a new Claude Code session at your repo root.
+
+```
+/rename m1-orient
+```
+
 **What you do:** have Claude read your repo, then interrogate what it read. The introspection prompt shows what Claude says it read; `/context` shows how full your context window has gotten.
 
 **What happened:** Claude reports what it read and why, what it skipped and why. You see the bounded window directly. The self-report is a hypothesis. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Start digging.
@@ -38,7 +46,7 @@ Now look at your context budget. In the Claude Code chat, type:
 /context
 ```
 
-That's the slash command that shows how full your context window is — total used and breakdown by category (system prompt, messages, memory, skills). Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
+That's the slash command that shows how full your context window is, total used and breakdown by category (system prompt, messages, memory, skills). Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
 
 The window has shown itself. Hand off to the fix.
 

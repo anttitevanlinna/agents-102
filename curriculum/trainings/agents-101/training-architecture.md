@@ -64,6 +64,13 @@ The session widget (source shape `**Session** *(verb, "name")*`) lands where the
 - **Lecture-top.** When a lecture is interactive (student runs prompts inside the lecture), it carries its own widget. Rare in Agents 101.
 - **Mid-exercise re-fork.** When an exercise intentionally needs a fresh session partway through (worktree fork, isolation read, deliberate context drop), the exercise body carries a second widget and names the reason.
 
+Verbs in the chip:
+
+- `new`, fresh session at the working directory. Carries a `/rename` block for CLI users.
+- `return`, pick up a prior session by name; if it isn't still open, start a fresh one at the same working directory. Name persists from the original `new`. No `/rename` block.
+
+Use `return` at boundaries where the prior session is the load-bearing context (worktree continuity across modules, long-running async waits resumed later). Use `new` everywhere else. Body line under a `return` widget names the working directory and the fallback if the session isn't still open.
+
 Inside a module, keep the same session running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise, plus files written on disk.
 
 The durable handoff between modules is always file-based: `./CLAUDE.md`, `./challenge.md`, `memory/`, `sources/`, `agents/`, `judges/`, `outputs/`, and the relevant `module-N/` evidence. The session is disposable; the training directory compounds.
@@ -112,7 +119,7 @@ The prework starter must be:
 - Reference material only. Module 4 can ship `module-4/policies/*.md` because those files are source material the student runs raw. Module 4 must not ship a prebuilt security skill.
 - Small. Include `prework/`, `.claude/skills/self-study/`, and cross-module homes (`memory/`, `sources/`, `agents/`) because the student uses them early. Include module folders only when they contain shipped reference material, such as `module-4/policies/`.
 
-The Agents 101 starter is maintained in Git at `curriculum/scaffolds/training-starter/`. Participants never see Git. Export the starter per cohort and host it on the customer's site or SharePoint.
+The Agents 101 starter is maintained in Git at `curriculum/scaffolds/agents-101-starter/`. Participants never see Git. Export the starter per cohort and host it on the customer's site or SharePoint.
 
 ## Skill Invocation
 

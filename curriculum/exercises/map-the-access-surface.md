@@ -1,5 +1,13 @@
 # Exercise: Map the access surface
 
+**Session** *(new, "Module 3 - Earn the trust")*
+
+Start a new Claude Code session at your repo root.
+
+```
+/rename m3-access-surface
+```
+
 **What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
 
 **What happened:** The access-control analysis skill runs a structured pass across the feature: user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You read it against your own knowledge of the feature and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
@@ -20,7 +28,7 @@ First, see what skills your Claude has loaded. In the Claude Code chat, type:
 /skills
 ```
 
-You should see `access-control-analysis` and `stride` listed under **User**. (If they don't, the prework install didn't land — see prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in M3 will land in User too.
+You should see `access-control-analysis` and `stride` listed under **User**. (If they don't, the prework install didn't land, see prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in M3 will land in User too.
 
 Then ask Claude to fill in what `/skills` doesn't show.
 
@@ -30,7 +38,7 @@ Then ask Claude to fill in what `/skills` doesn't show.
 List my installed skills. Tell me also their storage location and whether or not they are loaded onto context.
 ```
 
-Worth a moment of looking — these are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
+Worth a moment of looking, these are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
 
 Ask Claude to invoke the access-control-analysis skill on the feature you'll name after the colon, and save the surface map to a temp directory.
 

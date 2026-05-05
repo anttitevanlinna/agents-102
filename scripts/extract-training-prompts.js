@@ -84,6 +84,14 @@ function promptLabelAt(lines, lineIndex) {
   return null;
 }
 
+const SESSION_RE = /^\*\*Session\*\*\s*\*\(([^,]+),\s*"([^"]*)"\)\*\s*$/;
+
+function parseSession(line) {
+  const m = line.match(SESSION_RE);
+  if (!m) return null;
+  return { verb: m[1].trim(), name: m[2].trim() };
+}
+
 function commandLabelAt(lines, lineIndex, body) {
   if (!/^\/[a-z][a-z-]*/m.test(body.trim())) return null;
   for (let i = lineIndex; i >= Math.max(0, lineIndex - 4); i -= 1) {
@@ -92,13 +100,27 @@ function commandLabelAt(lines, lineIndex, body) {
   return null;
 }
 
-function extractPrompts(file, md, startLineOffset = 0) {
+function extractItems(file, md, startLineOffset = 0) {
   const lines = md.split(/\r?\n/);
-  const prompts = [];
+  const items = [];
   let fenceStart = -1;
   let fenceLang = '';
 
   for (let i = 0; i < lines.length; i += 1) {
+    if (fenceStart === -1) {
+      const session = parseSession(lines[i]);
+      if (session) {
+        items.push({
+          kind: 'session',
+          file,
+          line: startLineOffset + i + 1,
+          heading: headingAt(lines, i),
+          verb: session.verb,
+          name: session.name,
+        });
+      }
+    }
+
     const fence = lines[i].match(/^```(.*)$/);
     if (!fence) continue;
 
@@ -111,7 +133,8 @@ function extractPrompts(file, md, startLineOffset = 0) {
     const body = lines.slice(fenceStart + 1, i).join('\n').trimEnd();
     const label = promptLabelAt(lines, fenceStart - 1) || commandLabelAt(lines, fenceStart - 1, body);
     if (label) {
-      prompts.push({
+      items.push({
+        kind: 'prompt',
         file,
         line: startLineOffset + fenceStart + 1,
         heading: headingAt(lines, fenceStart),
@@ -125,7 +148,7 @@ function extractPrompts(file, md, startLineOffset = 0) {
     fenceLang = '';
   }
 
-  return prompts;
+  return items;
 }
 
 function includeEvents(md) {
@@ -152,16 +175,16 @@ function processFile(file, title, depth = 0, flavor = null) {
   const records = [];
   let cursor = 0;
 
-  function addSegmentPrompts(segment, lineOffset) {
-    for (const prompt of extractPrompts(file, segment, lineOffset)) {
-      records.push({ type: 'prompt', depth, ...prompt });
+  function addSegmentItems(segment, lineOffset) {
+    for (const item of extractItems(file, segment, lineOffset)) {
+      records.push({ type: item.kind, depth, ...item });
     }
   }
 
   for (const event of events) {
     const before = md.slice(cursor, event.index);
     const lineOffset = md.slice(0, cursor).split(/\r?\n/).length - 1;
-    addSegmentPrompts(before, lineOffset);
+    addSegmentItems(before, lineOffset);
 
     const includePath = resolveInclude(event.href);
     records.push({
@@ -179,7 +202,7 @@ function processFile(file, title, depth = 0, flavor = null) {
 
   const tail = md.slice(cursor);
   const tailLineOffset = md.slice(0, cursor).split(/\r?\n/).length - 1;
-  addSegmentPrompts(tail, tailLineOffset);
+  addSegmentItems(tail, tailLineOffset);
 
   return records;
 }
@@ -190,11 +213,12 @@ function rel(file) {
 
 function render(records, trainingKey, trainingLabel, flavor = null) {
   let count = 0;
+  let sessionCount = 0;
   const out = [];
   const suffix = flavor ? ` (${flavor.label})` : '';
   out.push(`# ${trainingLabel || trainingKey} Prompt Progression${suffix}`);
   out.push('');
-  out.push('Student-facing prompt blocks, in prework/module/include order. Maintainer sections are excluded.');
+  out.push('Student-facing prompt blocks and session boundaries, in prework/module/include order. Maintainer sections are excluded.');
   if (flavor) out.push(`Runtime flavor: ${flavor.label}.`);
   out.push('');
 
@@ -216,6 +240,15 @@ function render(records, trainingKey, trainingLabel, flavor = null) {
       continue;
     }
 
+    if (record.type === 'session') {
+      sessionCount += 1;
+      out.push(`> **Session ${sessionCount}** — *${record.verb}*, "${record.name}"`);
+      out.push('>');
+      out.push(`> Source: \`${rel(record.file)}:${record.line}\` (under ${record.heading})`);
+      out.push('');
+      continue;
+    }
+
     if (record.type === 'prompt') {
       count += 1;
       out.push(`**Prompt ${count}: ${record.heading}**`);
@@ -231,7 +264,7 @@ function render(records, trainingKey, trainingLabel, flavor = null) {
     }
   }
 
-  out.push(`_Total prompts: ${count}_`);
+  out.push(`_Total prompts: ${count}. Total session boundaries: ${sessionCount}._`);
   out.push('');
   return out.join('\n');
 }

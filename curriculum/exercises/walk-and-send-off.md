@@ -1,6 +1,14 @@
 # Walk and send off
 
-**What you do:** Pick a task you've been avoiding — the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**Session** *(new, "Module 4 - Run the first experiment")*
+
+Start a new Claude Code session at your repo root.
+
+```
+/rename m4-walk-send
+```
+
+**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What happened:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). M5 opens with whatever came back.
 
@@ -118,7 +126,7 @@ Once the frame is named through your own material, let Claude propose the actual
 
 Phase 3 is where the exercise ends. The module's Debrief takes over:
 
-1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence — integrates, sharpens, removes — and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
+1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
 3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 

@@ -134,14 +134,8 @@ The organisers may run their own synthesis after the group files exist. That is 
 - **Maintainer-acceptance — Cowork loop capability (technical class):** the Phase 3 prompt asks Claude to run cycles continuously without re-prompt, and to detect "new sections since last check" across cycles. Pre-ship audit on 2026-05-05 flagged both as UNVERIFIED platform-capability claims. Maintainer accepts — Cowork supports this loop shape per Antti's direct knowledge. Reference: `memory/compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md` (Cowork capability surface). Mechanical re-run still queued pre-cohort against the new Phase 3 prompt
 - **Pre-cohort TODO:** re-run mechanical harness against the reshaped Phase 3 cross-pollination prompt before the first Claude Basics cohort. Existing mechanical-tested row (2026-04-28 @ c25d7c4) is STALE. Capability is maintainer-accepted; mechanical confirms the prompt mechanics (detection, narration cap, stop behavior) actually fire as designed
 
-**Quality:** draft 2026-05-05
-- compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. hard-grep phrase list + rule 12 + rule #3 + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27, check_pedagogy v2026-04-27 incl. rules 12, 26, 35)
-- persona-simulated 2026-05-04 — participant and group-driver pass; folder-name and pacing fixes applied
-- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the live-crux simplification; pre-cohort TODO logged above
-- draft 2026-04-30 (agenda restructure: live crux exercise uses one agreed shared synthesis location, not a fixed cohort folder; sim/mechanical/eval not rerun)
-- draft 2026-05-04 (Phase 2 split into three beats: synthesis trimmed to diagnosis only; "Solution ideas" renamed to "Ideas"; new "Plan" prompt added; Phase 1 body fix to first-name folder framing; sim/mechanical/eval not rerun)
-- draft 2026-05-05 (Plan beat removed from Phase 2 — Phase 2 now ends at Ideas, 25 min. Phase 3 reshaped from passive bonus into active cross-pollination, 20 min: interleaved write-2/check-own cycles, Plan as running chat callout, continuous narration, stoppable; reveal updated to name agents-on-shared-state demo; sim/mechanical/eval not rerun)
-- draft 2026-05-05 (fix-cycle from /curriculum-pre-ship-audit BLOCK: cut L65–67 forcing-function-mechanism re-explanation that the synthesis prompt already enacts; cut "forcing function is the design" maintainer-vocab leak; recast L34/L36/L38/L89 third-person classroom-management framing to "if you're the driver" + second-person; tightened L69 to "Now add what you'd try first" — drops "next Monday" time-anchor and group-state narration; Cowork-loop technical findings logged as maintainer-accepted; mechanical re-run queued pre-cohort)
+**Quality:** compendium-audited 2026-05-05 (writing@edf18d5 story@edf18d5 technical@edf18d5 behavior@edf18d5)
+- judges @edf18d5: writing PASS, story PASS, technical PASS, behavior PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

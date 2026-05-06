@@ -40,22 +40,27 @@ Choose an empty local folder on your computer. Open Cowork on that folder. Every
 
 When both exercises are done, ask Claude to summarize what your folder can now do.
 
+**Session** *(new, "Build and verify - summary")*
+
+Open a new Cowork session on the same folder.
+
 **Prompt** *(Cowork)*
 
 ```
-Read the files in this folder from the build-and-verify homework.
+Read the files in this folder.
 
 Tell me:
-- what this folder is now set up to do
-- which rule or styling detail changed the answer most (be specific, not complimentary)
+- what I can do with this folder in the future
+- what reusable patterns you can see in the rules, prompts, and saved outputs
+- which rule or checking habit is most worth carrying into my next Claude task
 - what kind of future Claude answer I should run through a separate checker before trusting
 
-Keep it to five bullets. Save the answer as `homework-summary.md` in this folder, overwriting if it exists.
+Keep it to five bullets.
 ```
 
 ## Follow-up
 
-The live session is over. The rollout is not. Keep the folder summary and the open verification rows close to your work. The group synthesis belongs to the live session; this homework belongs to your own folder.
+The live session is over. The rollout is not. Keep the folder summary and the open verification rows close to your work.
 
 <!-- maintainer -->
 

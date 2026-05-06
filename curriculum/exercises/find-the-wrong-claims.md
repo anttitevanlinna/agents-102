@@ -4,9 +4,15 @@
 
 Start in the same local folder you used for the build-your-system homework, or choose another empty local folder on your computer.
 
+Same folder is OK. If your build-your-system folder already has `CLAUDE.md`, keep using it. This exercise adds a source-checking habit to the same small system.
+
 Add 1 or 2 source files you know well. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.
 
 You choose the briefing topic. The first prompt should feel like a normal work request.
+
+**Session** *(new, "Find wrong claims - first run")*
+
+Open Cowork on this folder for the first run.
 
 ## Phase 1. Generate from sources (6 minutes)
 
@@ -144,6 +150,8 @@ After saving, tell me:
 ```
 
 > Even after this, the answer might still contain errors. Today's LLM will not arrive at complete truth on its own. The loop makes the work better, but human oversight is what keeps the operation truthful.
+>
+> Your source files may not be 100% accurate either. Some problems live in the evidence, the policy, the notes, or the team's current understanding. Not everything can be fixed by fixing the generation.
 
 <!-- maintainer -->
 

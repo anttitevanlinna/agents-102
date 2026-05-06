@@ -2405,45 +2405,48 @@ After saving, list the two files you created.
 <div class="phase-kicker">Exercise</div>
 
 <h1>Exercise: Build your system</h1>
-<p><strong>Time:</strong> 23 minutes. Four phases.</p>
+<p><strong>Time:</strong> 26 minutes. Five phases.</p>
 <p>You start with a plain Claude HTML answer. You leave with a small working system on a task that matters to your work: <code>styling-rules.md</code> for a reusable look and <code>CLAUDE.md</code> that tells Cowork to use those rules.</p>
 <p>Choose an empty local folder on your computer and open Cowork on it. Everything in this exercise saves there.</p>
-<p><strong>The task</strong> is one small thing you could actually use. Good default: a simple HTML explainer you could send internally, styled from your company website or another page your team already uses. Other options: a one-page answer to a Claude question you keep getting, a short explanation of the difference between Claude and ChatGPT for your own work, or a short guide to which connectors you should enable for a personal workflow.</p>
+<p><strong>The task</strong> is one small thing you could actually use. Good default: a simple HTML explainer you could send internally. Other options: a one-page answer to a Claude question you keep getting, a short explanation of the difference between Claude and ChatGPT for your own work, or a short guide to which connectors you should enable for a personal workflow.</p>
+<p><strong>Session</strong> <em>(new, &quot;Build your system - baseline&quot;)</em></p>
+<h2>Phase 0. Add base material (3 minutes)</h2>
+<p>Add one or two base materials to the folder. Use content that helps Claude answer the task, not style references yet.</p>
+<p>Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the folder.</p>
+<p>Good base materials:</p>
+<ul>
+<li>a policy, FAQ, internal note, or pasted text file that the answer should draw from</li>
+<li>a short note you write yourself, such as <code>source-notes.md</code>, with the facts, audience, and purpose of the answer</li>
+</ul>
 <h2>Phase 1. The boring baseline (5 minutes)</h2>
-<p>Pose the task to Claude with no saved rules, no folder context, no setup. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
-<p>Tell Claude the task and style source, ask for an HTML draft, and save it in this folder. Type your task and source after the labels.</p>
+<p>Pose the task to Claude with base material, but no saved rules, no style source, and no folder instructions. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
+<p>Tell Claude the task, ask for an HTML draft, and save it in this folder. Type your task after the label.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Draft a one-page HTML answer I can use in my own work.
 
-Use no saved rules or folder context yet. Create simple, self-contained HTML and CSS in one file.
+First read the base materials in this folder. Use them as the source material for the answer.
 
-Use the website or style source I give you as a loose reference. If you cannot access it, ask me to paste or describe the visible style before drafting.
+Use no saved rules or style source yet. Create simple, self-contained HTML and CSS in one file.
 
 Save the draft as `response.html` in this folder.
 
 The task is:
-
-The style source is:
 </code></pre>
 <p>Now ask Claude to audit why it used the styles it used. The gap between generic and yours is the point of Phase 1; let Claude name it.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `response.html` from this folder.
-
-Audit the styling choices you made. For five choices, tell me:
-- what style signal you copied or inferred from the source
+<pre><code>Audit the styling choices you made. For five choices, tell me:
+- what default or assumption shaped the choice
 - where that choice appears in the HTML or CSS
-- whether the choice is specific to the source or generic web-default
-
-Then name two choices that probably do not fit my work or the source. Quote the selectors, CSS lines, or HTML snippets you mean. Do not rewrite yet.
+- whether the choice is specific to my task or generic web-default
 </code></pre>
 <h2>Phase 2. Create the style system (7 minutes)</h2>
 <p><code>styling-rules.md</code> is the reusable reference. It names the visible choices Claude should copy: layout, headings, colors, spacing, buttons, and links.</p>
 <p><code>CLAUDE.md</code> is the folder instruction. It tells future Cowork sessions to read <code>styling-rules.md</code> when the task calls for a styled answer.</p>
-<p>Ask Claude to propose both files in chat first. Change anything too vague before saving.</p>
+<p>Ask Claude to create both files.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read `response.html` from this folder and use the style audit from this chat.
+<pre><code>Use the style audit from this chat.
 
-Use the same website or style source I gave you in Phase 1. If you cannot tell what source I gave you, ask me.
+Use the website or style source I give you below. If you cannot access it, ask me to paste or describe the visible style before drafting the rules.
 
 From the source and the first HTML draft, propose `styling-rules.md` in chat first. Capture practical rules Claude can reuse:
 - page shape and layout
@@ -2451,13 +2454,13 @@ From the source and the first HTML draft, propose `styling-rules.md` in chat fir
 - colors and visual accents
 - buttons and links
 
-Do not save yet.
-
-When the rules look usable, save them as `styling-rules.md`.
+Save the rules as `styling-rules.md`.
 
 Then propose a short `CLAUDE.md` for this folder. It should tell future Cowork sessions to read `styling-rules.md` before drafting a styled answer, HTML page, guide, or shareable formatted deliverable.
 
-Show `CLAUDE.md` in chat first. When it looks usable, save it as `CLAUDE.md`.
+Save it as `CLAUDE.md`.
+
+The style source is:
 </code></pre>
 <p>A useful style rule names visible choices, not vibes. <em>&quot;Use the company&#39;s style&quot;</em> is too weak. <em>&quot;Use short section headings, compact white panels, blue action buttons, and plain labels&quot;</em> gives Claude something to reuse.</p>
 <p><strong>Session</strong> <em>(new, &quot;Build your system - styled answer&quot;)</em></p>
@@ -2468,15 +2471,11 @@ Show `CLAUDE.md` in chat first. When it looks usable, save it as `CLAUDE.md`.
 <p>Same HTML answer. New system. Make the thing better.</p>
 <p>Ask Claude to restyle the file using the folder setup you just created.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Open `response.html`.
+<pre><code>Regenerate the HTML in `response.html`.
 
-Use the folder instructions to improve it. If the original task is ambiguous, ask me.
+Read the base materials again and use the folder instructions.
 
-Regenerate `response.html` for that same task.
-
-Keep it as simple, self-contained HTML and CSS in one file.
-
-Save the updated file.
+Keep it as simple, self-contained HTML and CSS in one file. Save the updated file.
 
 After saving, tell me:
 - one style choice that came from the saved style rules
@@ -2493,7 +2492,7 @@ After saving, tell me:
 
 The rule should help with the next similar output, not everything.
 
-After adding the rule, use the updated folder instructions to regenerate `response.html`.
+After adding the rule, read the base materials again and use the updated folder instructions to regenerate `response.html`.
 
 Then tell me what changed in the file.
 
@@ -2501,6 +2500,10 @@ What I want the next version to do better:
 </code></pre>
 <p>Look at the file again. The point is not a perfect page. The point is that the folder now knows one more thing.</p>
 <p>When the page is visibly closer and the folder carries the rule forward, stop. The system is small, but it now has something reusable.</p>
+<h2>Style Is Just One Aspect</h2>
+<p>This exercise used style because visual differences are easy to see. The same pattern works for any output quality you need to steer.</p>
+<p>You can create rules for audience, tone, evidence, source use, decision criteria, formatting, review steps, or what Claude should never assume. The move is the same: notice what is off, write the rule where future sessions can read it, then run the task again.</p>
+<p>Steer what you need to steer.</p>
 </section>
 
 
@@ -2513,8 +2516,11 @@ What I want the next version to do better:
 <h1>Exercise: Find the wrong claims</h1>
 <p><strong>Time:</strong> 35-40 minutes. Six phases. Self-study.</p>
 <p>Start in the same local folder you used for the build-your-system homework, or choose another empty local folder on your computer.</p>
+<p>Same folder is OK. If your build-your-system folder already has <code>CLAUDE.md</code>, keep using it. This exercise adds a source-checking habit to the same small system.</p>
 <p>Add 1 or 2 source files you know well. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.</p>
 <p>You choose the briefing topic. The first prompt should feel like a normal work request.</p>
+<p><strong>Session</strong> <em>(new, &quot;Find wrong claims - first run&quot;)</em></p>
+<p>Open Cowork on this folder for the first run.</p>
 <h2>Phase 1. Generate from sources (6 minutes)</h2>
 <p>Ask Cowork to draft from the source files.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2611,6 +2617,7 @@ After saving, tell me:
 </code></pre>
 <blockquote>
 <p>Even after this, the answer might still contain errors. Today&#39;s LLM will not arrive at complete truth on its own. The loop makes the work better, but human oversight is what keeps the operation truthful.</p>
+<p>Your source files may not be 100% accurate either. Some problems live in the evidence, the policy, the notes, or the team&#39;s current understanding. Not everything can be fixed by fixing the generation.</p>
 </blockquote>
 </section>
 
@@ -2625,18 +2632,21 @@ After saving, tell me:
 </ul>
 <h2>Save the Summary</h2>
 <p>When both exercises are done, ask Claude to summarize what your folder can now do.</p>
+<p><strong>Session</strong> <em>(new, &quot;Build and verify - summary&quot;)</em></p>
+<p>Open a new Cowork session on the same folder.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Read the files in this folder from the build-and-verify homework.
+<pre><code>Read the files in this folder.
 
 Tell me:
-- what this folder is now set up to do
-- which rule or styling detail changed the answer most (be specific, not complimentary)
+- what I can do with this folder in the future
+- what reusable patterns you can see in the rules, prompts, and saved outputs
+- which rule or checking habit is most worth carrying into my next Claude task
 - what kind of future Claude answer I should run through a separate checker before trusting
 
-Keep it to five bullets. Save the answer as `homework-summary.md` in this folder, overwriting if it exists.
+Keep it to five bullets.
 </code></pre>
 <h2>Follow-up</h2>
-<p>The live session is over. The rollout is not. Keep the folder summary and the open verification rows close to your work. The group synthesis belongs to the live session; this homework belongs to your own folder.</p>
+<p>The live session is over. The rollout is not. Keep the folder summary and the open verification rows close to your work.</p>
 
 </section>
 </main>

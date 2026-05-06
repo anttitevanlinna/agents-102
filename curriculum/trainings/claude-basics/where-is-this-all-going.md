@@ -2,7 +2,7 @@
 
 ## Big Idea
 
-In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux on our journey.
+In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux.
 
 ## What You'll Learn
 
@@ -17,26 +17,26 @@ After this module, you will be able to:
 
 You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output. Now run a smaller system in the room.
 
-When the team rolls Claude out across the org, what's the **crux on our journey**?
+When the team rolls Claude out across the org, what's the **crux**?
 
 Not the long list of worries. The single thing that, if you got it right, would make the rest follow.
 
 ## Live Work
 
-[Exercise: Find the crux on our journey](exercises/find-the-crux.md)
+[Exercise: Find the crux](exercises/find-the-crux.md)
 
 ## What to Notice
 
-- The crux is what Richard Rumelt calls it. The one thing that, if got right, makes the rest follow. Most rollout strategies fail because they treat all difficulties as equal weight
+- Richard Rumelt calls this the crux: the one thing that, if you get it right, makes the rest follow. Most rollout strategies fail because they treat all difficulties as equal weight
 - A divergent interview surfaces what each participant actually thinks; a group synthesis finds the pattern that no one person had named
-- Cross-pollination is useful only after synthesis. If groups compare too early, they average each other out
-- The structure that produced the answer is the structure the room was already inside of. The work routes through people; the architecture follows the work, not the other way round
+- Cross-pollination starts from a saved synthesis. A group can begin once its own crux is stable; Claude can wait for other group files and re-read as new comments arrive
+- The room just used the same system shape: people add judgment; the folder structure keeps that judgment moving
 
 ## Close
 
-You came in chat-level and leave as the rollout's custodians, with clean group syntheses to carry forward. Now the rollout has a shape. The homework turns the live shape into personal muscle memory.
+The group syntheses give the rollout a shape you can carry forward. The homework lets you build the same reflex in your own folder.
 
-The next section is separate homework. It is not part of the 3-hour live room.
+The next section turns that live pattern into a small system you run on your own.
 
 ## Organisers' Activities
 
@@ -51,12 +51,12 @@ The next section is separate homework. It is not part of the 3-hour live room.
 **Meta:**
 - **Primary Bloom's level:** Evaluate
 - **Length:** 60-minute rollout-crux block in the live agenda. Opening + exercise + close
-- **Core simplification.** Live crux work follows the repo demo and does not depend on homework outputs. It starts fresh on rollout difficulty and ends when each group has a clean synthesis file
+- **Core simplification.** Live crux work follows the agentic system demo and does not depend on homework outputs. It starts fresh on rollout difficulty and ends when each group has a clean synthesis file
 - **The reveal at exercise close:** *"You just ran the smallest useful version of the rollout system: individual views diverged, groups synthesized, and only then did ideas cross-pollinate. That ordering matters."* Land it once. Don't elaborate
 - **Homework bridge.** The next module is a short launch into self-study, not another live exercise
 
 **Quality:** draft 2026-04-30
-- draft 2026-04-30 (agenda restructure: live crux follows repo demo and bridges to homework; sim/mechanical not rerun)
+- draft 2026-04-30 (agenda restructure: live crux follows agentic system demo and bridges to homework; sim/mechanical not rerun)
 - compendium-audited 2026-04-28 — STALE after the 2026-04-30 agenda restructure
 - sim-passed 2026-04-28 — STALE after the 2026-04-30 agenda restructure
 - mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m3-verbatim-judge-report.md` @ c25d7c4) PASS 13/13 — STALE after the 2026-04-30 agenda restructure
@@ -68,6 +68,6 @@ The next section is separate homework. It is not part of the 3-hour live room.
 **Mood contract:** expanded horizon. Forward awe with a deliverable in hand. Edits that resolve into tidy completion register steal the forward hunger. Edits that resolve into *"now you know what to do"* are correct; edits into *"we're done here"* are wrong.
 
 **Frame to land:**
-- *"The hard part isn't picking a tool. It's finding the crux on our journey."*
+- *"The hard part isn't picking a tool. It's finding the crux."*
 - *"Synthesize first. Cross-pollinate second."*
 - *"The rollout is the work."*

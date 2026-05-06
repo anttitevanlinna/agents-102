@@ -1,4 +1,4 @@
-# Actor — Claude Basics M2 the-it-directors-prompt verbatim
+# Actor — Claude Basics M2 find-the-wrong-claims verbatim
 
 **Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to run the prompt chain end-to-end and leave file artefacts on disk for the Judge's scripts to inspect. You are NOT trying to produce great verification content. Stub freely; quality is not graded here.
 
@@ -20,7 +20,7 @@ All at `/tmp/claude-basics-m2-substitutes/`:
 
 ## Prompts to execute in order
 
-Parsed prompts at `/tmp/prompts/the-it-directors-prompt/prompt-00{1,2,3,4}.txt`.
+Parsed prompts at `/tmp/prompts/find-the-wrong-claims/prompt-00{1,2,3,4}.txt`.
 
 ### Phase 2 — Send
 

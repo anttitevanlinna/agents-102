@@ -4,7 +4,7 @@
 
 **Scratch path:** `curriculum/evals/mechanical/scratch/claude-basics-m2/`
 
-## Prompts executed (verbatim from /tmp/prompts/the-it-directors-prompt/)
+## Prompts executed (verbatim from /tmp/prompts/find-the-wrong-claims/)
 
 1. `prompt-001.txt` — Phase 2 send (open-hook); IT-Director-composed prompt pasted from substitute.
 2. `prompt-002.txt` — Phase 3 build verification table; participant push-back substituted; row corrected before save.

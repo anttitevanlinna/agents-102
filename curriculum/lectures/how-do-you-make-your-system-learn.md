@@ -2,15 +2,15 @@
 
 **Time:** 7 minutes. Closing lecture for Module 1.
 
-A system, just built. It runs on a task that matters, with rules written here, in a folder that will be there next week. The next move is what makes it a system worth keeping.
+A system, just built. It runs on a task that matters, with rules written here, in a folder that will still be there after this session. The next move is what makes it worth keeping.
 
 ## A snapshot, not a forever-file
 
-The Phase 2 CLAUDE.md is today's snapshot. It catches what you saw today. Tomorrow the team will use the same response.md template for a different question, and Claude will produce a different generic claim that today's rules don't catch yet. The CLAUDE.md is not a forever-file. It's a Tuesday file.
+The Phase 2 CLAUDE.md is the current snapshot. It catches what you saw in this run. Later, the team will use the same response.md template for a different question, and Claude will produce a different generic claim that the current rules don't catch yet. The CLAUDE.md is not a forever-file. It is a working file.
 
 The wrong move (what most people do): when the next generic claim shows up, they paste a longer prompt to fix it. *"Don't say X this time."* The fix lives in the next message and dies when the conversation ends.
 
-The right move: the rules file gets updated. Same task, same agent, same folder. The new rule joins the list. Tuesday's CLAUDE.md becomes Wednesday's CLAUDE.md, slightly sharper.
+The right move: the rules file gets updated. Same task, same agent, same folder. The new rule joins the list. The CLAUDE.md gets a little sharper.
 
 ## A demo
 
@@ -26,13 +26,13 @@ The agent reads. Proposes. The new rule looks something like *"Don't name a tool
 
 ## Compounding
 
-Your finance team has a word for this. **Compounding** is what they call returns that build on previous returns. Small adjustments, repeated, dwarf big one-time interventions. The CLAUDE.md compounds the same way. One sharper rule on Tuesday plus one sharper rule on Wednesday plus one on Thursday is a Friday system that works on the next person's question without your help.
+Finance has a word for this. **Compounding** is what they call returns that build on previous returns. Small adjustments, repeated, dwarf big one-time interventions. The CLAUDE.md compounds the same way: one sharper rule, then another, then another. Eventually the system handles the next person's question without your help.
 
 The system does not get better by being clever. It gets better by being edited.
 
 ## A note on where rules live
 
-Your CLAUDE.md sits in the folder you opened this session in. It belongs to that folder. Open a different folder on Monday for a different task, and that other folder needs its own CLAUDE.md. Two options when the new task is similar enough that the old rules apply: copy the file across, or write a tighter one from scratch. Most teams settle on a starter CLAUDE.md they keep in a shared spot and copy as the seed for new folders. Today the file is task-scoped; later you'll see how a personal one travels with you regardless of folder.
+Your CLAUDE.md sits in the folder you opened this session in. It belongs to that folder. Open a different folder for a different task, and that other folder needs its own CLAUDE.md. Two options when the new task is similar enough that the old rules apply: copy the file across, or write a tighter one from scratch. Most teams settle on a starter CLAUDE.md they keep in a shared spot and copy as the seed for new folders. Today the file is task-scoped; later you'll see how a personal one travels with you regardless of folder.
 
 ## What you don't yet trust
 

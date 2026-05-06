@@ -1,4 +1,4 @@
-# Judge — Claude Basics M2 the-it-directors-prompt verbatim
+# Judge — Claude Basics M2 find-the-wrong-claims verbatim
 
 **Dispatch with `model: "haiku"`.** This is an acceptance-test judge — script-first, no taste judgements. Content quality belongs to the eval system, not here.
 
@@ -9,13 +9,13 @@ You are grading whether the M2 prompt chain ran end-to-end (Phases 2–5) and wh
 - **Scratch:** `curriculum/evals/mechanical/scratch/claude-basics-m2`
 - **Actor scrollback:** `curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-scrollback.md`
 - **Actor report:** `curriculum/evals/mechanical/instances/claude-basics-m2-verbatim-actor-report.md`
-- **Prompt files:** `/tmp/prompts/the-it-directors-prompt/prompt-00{1,2,3,4}.txt`
+- **Prompt files:** `/tmp/prompts/find-the-wrong-claims/prompt-00{1,2,3,4}.txt`
 - **Substitutes:** `/tmp/claude-basics-m2-substitutes/{it-director-prompt,phase-4-verdicts,phase-5-wrong-row}.txt`
 
 ## Tooling
 
 - `curriculum/evals/mechanical/bin/verbatim-check.sh <prompt> <scrollback>` — V-checks
-- `curriculum/evals/mechanical/bin/prompt-source-audit.sh the-it-directors-prompt` — P/E checks (static lint)
+- `curriculum/evals/mechanical/bin/prompt-source-audit.sh find-the-wrong-claims` — P/E checks (static lint)
 
 ## Method
 
@@ -59,7 +59,7 @@ For each `prompt-00N.txt` (N = 1..4): `verbatim-check.sh <prompt> <scrollback>`.
 ### Harness leakage (H1–H5)
 
 Run `jq` on transcript for any Read of:
-- `curriculum/trainings/claude-basics/exercises/the-it-directors-prompt.md` → H1 FAIL.
+- `curriculum/trainings/claude-basics/exercises/find-the-wrong-claims.md` → H1 FAIL.
 - Any judge runner or sibling actor runner (own actor allowed) → H2 FAIL.
 - Any `*.maintainer.md` → H3 FAIL.
 - Any harness-internal file inside `<scratch>` Read unexpectedly → H4 FAIL.
@@ -67,7 +67,7 @@ Run `jq` on transcript for any Read of:
 
 ### Prompt-source audit
 
-Run: `bin/prompt-source-audit.sh the-it-directors-prompt`. Capture exit code + verdict. PASS if `Verdict: READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
+Run: `bin/prompt-source-audit.sh find-the-wrong-claims`. Capture exit code + verdict. PASS if `Verdict: READY` or `READY-WITH-FLAGS`; FAIL if `BLOCK`.
 
 ## Report
 

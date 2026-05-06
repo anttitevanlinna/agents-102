@@ -53,4 +53,4 @@ Close by naming the loop: rules, inspect, plan, edit, check, build, compound. Th
 **Lecture meta:** *Live demo script for Claude Basics Module 1. Keep this as a demo spine, not a reading. Do not expand into a file-by-file repo tour.*
 
 **Quality:** draft 2026-04-30
-- draft 2026-04-30 (created from rough repo-demo script; sim/eval not run)
+- draft 2026-04-30 (created from rough agentic system demo script; sim/eval not run)

@@ -46,7 +46,7 @@ You will use two methods.
 
 One finds claims floating with no ground. The other finds claims that look grounded until a second source pushes back.
 
-The team is not trying to prove Claude is safe or unsafe. The team is learning which checks catch useful wrongness, and then writing that method into the system so future sessions use it again.
+The team is not trying to prove Claude safe or unsafe. The team is learning which checks catch useful wrongness, then writing that method into the system so future sessions use it again.
 
 **Time:** 6 minutes.
 
@@ -55,6 +55,6 @@ The team is not trying to prove Claude is safe or unsafe. The team is learning w
 **Quality:** draft 2026-04-29
 - draft 2026-04-29 (new mini-lecture borrowing Agents 101 M5 reliability math for Claude Basics M2; sim/eval not run)
 
-**Lecture meta:** *Short concept beat before the M2 exercise. Borrowed from Agents 101 M5's groundedness lecture, compressed for IT-team Claude Basics. Do not expand into the full four-detector benchmark frame.*
+**Lecture meta:** *Short concept beat before the M2 exercise. Borrowed from Agents 101 M5's groundedness lecture, compressed for Claude Basics. Do not expand into the full four-detector benchmark frame.*
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

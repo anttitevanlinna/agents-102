@@ -8,7 +8,7 @@ People asked to help their organisation make Claude useful, safe, and repeatable
 
 ## Runtime, Cowork only
 
-Single participant runtime. Cowork is where participants run the live crux exercise and the homework. Claude Code appears only in the trainer's repo demo as the next-level system surface; participants do not open it.
+Single participant runtime. Cowork is where participants run the live crux exercise and the homework. Claude Code appears only in the trainer's agentic system demo as the next-level system surface; participants do not open it.
 
 **Consequence:** no dual-runtime forks (`<div class="rt-code">` / `<div class="rt-cowork">`) anywhere in claude-basics surfaces. Agents 101's runtime-fork rules from `memory/check_prompts.md` rule 10 do not fire here. All prompt blocks render in their plain canonical shape.
 
@@ -16,34 +16,34 @@ Single participant runtime. Cowork is where participants run the live crux exerc
 
 Third architecture model after Agents 101 (local training-dir + zips) and AE101 (student's real repo). Different from both.
 
-- **Live session starts with repo demo.** The trainer shows the agents-102 repo and deployed workbook as the concrete system. This is not a participant runtime requirement.
-- **Live crux work needs only narrow shared writes.** Participants can save personal interview notes in any safe folder. Each group nominates one driver to write one rollout synthesis file into `shared/`. Organisers may optionally write `organisers-rollout-readout.md` after group files exist.
-- **Homework happens in personal folders.** Build-your-system and verification homework run after the live session in an empty personal folder the participant chooses. No cohort `shared/`, no `participants/`, no group-driver dependency.
-- **CLAUDE.md names the runtime when needed.** If a homework folder is synced through OneDrive, SharePoint, Google Drive, Dropbox, or another sync service, the folder CLAUDE.md should say so near the top and tell Claude to assume eventual consistency on file reads.
+- **Live session starts with the agentic system demo.** The trainer shows the agents-102 repo and deployed workbook as the concrete system. This is not a participant runtime requirement.
+- **Live crux work needs only narrow shared writes.** Participants save rollout notes in their own first-name folders in the live workshop SharePoint folder. Each group has one driver who writes one rollout synthesis file into `shared/`. Organisers may optionally write `shared/organisers-rollout-readout.md` after group files exist.
+- **Homework happens in local folders.** Build-your-system and verification homework run after the live session in an empty local folder on the participant's computer. No cohort `shared/`, no `participants/`, no group-driver dependency.
+- **CLAUDE.md stays focused on the work.** Homework folders do not need runtime or sync rules.
 - **Post-training legacy**, the group rollout syntheses, optional organisers' readout, and personal homework systems are reusable inputs for daily work. Do not promise a fixed post-training cadence unless that cadence has been contracted for the cohort.
 
-The classic *"don't put your training-dir in OneDrive"* warning from Agents 101 does not apply here: Claude Basics homework can live in normal synced work folders because the folder CLAUDE.md names the runtime.
+Claude Basics homework uses a normal local folder.
 
 ## Default room format, 10-person IT cohort
 
 For an IT-heavy cohort of about 10 people who already know chat and are now taking on Cowork, the live session needs a stronger operating model than the module list alone.
 
-- **Three groups by default:** 3 / 3 / 4. Each group needs one Cowork-confident driver. If Cowork confidence is uneven, organisers pre-identify drivers during preflight instead of letting the room discover access gaps live.
-- **Three-hour live shape:** repo demo, 10-minute break, short Cowork threshold check, 60-minute rollout-crux work, 15-minute break, group readout, homework launch, organiser close. The build-and-verify exercises remain homework; the live launch only makes the personal-folder path concrete.
-- **Cowork threshold check:** before the crux exercise, every participant confirms they can open the shared workshop folder and see their first-name folder. If someone cannot, organisers pair them or move them into observer/contributor mode. Do not debug sync live.
-- **Repo demo translation rule:** every repo-demo stop must translate back to the participant's Cowork world: rules file, prompt file, saved output, check, repeatable folder. No code-tour digressions.
-- **Customer-side operation:** customer organisers operate SharePoint/Cowork. The trainer operates the Bosser repo demo and public workbook only.
+- **Three groups by default:** 3 / 3 / 4. Each group needs one Cowork-confident driver. For a room new to Cowork, organisers identify drivers before the workshop instead of letting the room discover access gaps live.
+- **Three-hour live shape:** agentic system demo, 10-minute break, short Cowork threshold check, 60-minute rollout-crux work, 15-minute break, group readout, trainer homework launch, organiser close. The build-and-verify exercises remain homework.
+- **Cowork threshold check:** before the crux exercise, every participant confirms they can open the SharePoint workshop folder root that was synced with OneDrive before the workshop and see their first-name folder. If one or two people cannot, pair them with someone who can for Phase 1 so their notes still enter the exercise. Keep the room moving; access can be fixed at the break or after the workshop.
+- **Agentic system demo translation rule:** every demo stop must translate back to the participant's Cowork world: rules file, prompt file, saved output, check, repeatable folder. No code-tour digressions.
+- **Customer-side operation:** customer organisers operate SharePoint/Cowork. The trainer operates the Bosser agentic system demo and public workbook only.
 
 ## Remote-resilient delivery contract
 
 Claude Basics may run with organisers remote. The live synthesis path must therefore be proven before the workshop, not debugged live.
 
-- **Local ownership:** the organisers own content and room mechanics. Organisers help participants find folders, confirm sync, and keep the session moving while facilitation happens remotely.
-- **Hard preflight:** before the workshop, the organisers prove that the trainer can run the repo demo, each likely group driver can save to `shared/`, and organisers can read those files for the optional readout. If this fails, the workshop does not start as designed.
+- **Local ownership:** the organisers own content and room mechanics. Organisers make sure the workshop folder has synced with OneDrive before the workshop, help participants find folders, and keep the session moving while facilitation happens remotely.
+- **Required test before the workshop:** organisers prove that the workshop folder is synced with OneDrive, the group-driver path can save to `shared/`, and organisers can read those files for the optional readout. If this fails, the workshop does not start as designed.
 - **Customer privacy by design:** all real customer material lives only in the customer's SharePoint/Cowork environment. The public curriculum names paths and artifact shapes, never customer content. Bosser tooling must not ingest customer files for this workshop.
 - **Bosser machine boundary:** the trainer's computer may show the Bosser repo, public workbook, and demo build output. It must not connect to the customer's SharePoint workspace, Cowork folders, or real workshop files. Customer organisers prove and operate the customer-side workspace.
 - **No live M1/M2 shared materials:** `m1-task.md`, `m2-verification-output.md`, group verification files, and answer keys are no longer live-session dependencies. The build-and-verify path is homework.
-- **Shared writes are limited:** group-level files are written only by nominated group drivers or the organisers.
+- **Shared writes are limited:** group-level files are written only by group drivers or the organisers.
 
 ## File location, shared library (renderer-mandated)
 
@@ -54,7 +54,7 @@ Per `curriculum/CLAUDE.md` § *Directory Structure*: one canonical file per exer
 
 The renderer's `rewriteCrossDocLinks` regex normalizes bare paths like `[Exercise: title](exercises/<slug>.md)` to the shared library at render time. Training-scoped paths (e.g., `curriculum/trainings/claude-basics/exercises/`) don't render, the SPA looks for files at the shared location only. The original 2026-04-27 plan tried to keep claude-basics exercises training-scoped to prevent cross-training reuse; the renderer's path normalization made that infeasible without renderer changes. Reverted 2026-04-28.
 
-Slug-naming discipline prevents accidental cross-training reuse: claude-basics exercise slugs (`build-your-system`, `the-it-directors-prompt`, `find-the-crux`) are deliberately specific enough that another training authoring an exercise wouldn't pick the same slug. If a future training wants the same exercise, the design conversation happens explicitly, not by accidental file-reuse.
+Slug-naming discipline prevents accidental cross-training reuse: claude-basics exercise slugs (`build-your-system`, `find-the-wrong-claims`, `find-the-crux`) are deliberately specific enough that another training authoring an exercise wouldn't pick the same slug. If a future training wants the same exercise, the design conversation happens explicitly, not by accidental file-reuse.
 
 ## Language, English
 

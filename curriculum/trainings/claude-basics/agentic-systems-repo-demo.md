@@ -39,11 +39,11 @@ Now that you have seen the shape of a system, run one together: individual signa
 
 **Meta:**
 - **Primary Bloom's level:** Understand
-- **Length:** 45 minutes. Opening question + 35 live repo demo + handoff
+- **Length:** 45 minutes. Opening question + 35-minute agentic system demo + handoff
 - **Demo spine:** deployed workbook → rules → source module → exercise/prompt → build script → client output → checks → compounding
 
 **Quality:** draft 2026-04-30
-- draft 2026-04-30 (new live repo-demo module after strategy restructure; sim/mechanical/eval not rerun)
+- draft 2026-04-30 (new live agentic system demo module after strategy restructure; sim/mechanical/eval not rerun)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Agentic systems, shown in the repo*
 

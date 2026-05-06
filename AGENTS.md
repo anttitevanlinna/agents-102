@@ -26,6 +26,8 @@ Before writing, revising, or reviewing curriculum content, read the full `.claud
 - Simulation, testing, or PDCA Test/Check work: also read `.claude/skills/content-creation/simulation.md`.
 - Any student-, buyer-, or external-facing prose: read `.claude/rules/content-rules.md` and the matching `check_*.md` compendiums before drafting. Use the exact compendium directory named inside `.claude/rules/content-rules.md`; in current Codex checkouts this may be a private per-project Claude memory path rather than repo-local `memory/`.
 
+When editing any fenced prompt block that students copy, run a final prompt-shape pass before answering. Check at minimum: no placeholders inside the fence; any student-supplied input uses the open-hook pattern with the colon line last; file paths match the student's working folder; save/read artifacts are coherent for downstream phases; the prompt starts from the normal LLM work request before adding orchestration. Do this even if the relevant rule was just loaded into context.
+
 The `content-creation` skill requires the private `bosser-strategy` skill for generation work. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
 
 For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Agents 101 strategy doc for Claude Basics work.

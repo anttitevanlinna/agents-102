@@ -2,16 +2,20 @@
 
 **Time:** 6 minutes. Organisers only.
 
-This exercise happens after groups have saved their rollout synthesis files in `shared/`. It is not required for the participant exercise to succeed. The job is to read across group syntheses and create one organisers' readout that can travel after the workshop.
+This exercise can start once group rollout synthesis files begin appearing in `shared/`. It reads across the files as they land and creates one organisers' readout to use after the workshop.
 
 ## Phase 1. Read across the group syntheses
 
-Ask Claude to synthesize the saved group files.
+Ask Claude to watch the group files and synthesize the latest read.
 
 **Prompt** *(Cowork, organisers only)*
 
 ```
-Read the group rollout synthesis files from `shared/`.
+Read the group rollout synthesis files currently in `shared/`.
+
+If fewer than two group files are ready, say which files you can see, wait briefly, and check `shared/` again.
+
+As new group files appear or existing group files change, re-read them before updating the readout.
 
 Create an organisers' rollout readout with:
 - the cruxes that appear across multiple groups
@@ -21,22 +25,51 @@ Create an organisers' rollout readout with:
 - open questions the organisers need to answer
 - one next action for the organisers this week
 
-Show me the readout in chat first. Don't save yet. I will correct priorities, deferrals, and ownership.
+Show me the current readout in chat first. Don't save yet. I will correct priorities, deferrals, and ownership.
 
-After I approve it, save it as `shared/organisers-rollout-readout.md`.
+After I approve the current version, save it as `shared/organisers-rollout-readout.md`.
 ```
 
 Keep the readout grounded in the group syntheses. If the organisers add context that was not in the files, name it as organisers' judgment rather than group evidence.
 
 ## Phase 2. Decide what to share back
 
-If time remains, share only the highest-signal point with the room: the crux or disagreement that changes what the team should do next. Do not turn this into a second lecture.
+If time remains, share one point with the room: the crux or disagreement that changes what the team should do next.
+
+Use these prompts as starting points. Keep prompting freely until the final share-back sounds right for this room.
+
+Ask Claude for a few possible share-back angles.
+
+**Prompt** *(Cowork, organisers only)*
+
+```
+Based on the current organisers' readout, suggest two or three possible points we could share back with the room.
+
+For each, tell me:
+- why it matters
+- what it would help the team do next
+- what could be misunderstood if we say it badly
+
+Do not save anything.
+```
+
+Ask Claude to draft the point you choose in plain organiser language.
+
+**Prompt** *(Cowork, organisers only)*
+
+```
+Draft a short organiser share-back for the point we choose.
+
+Keep it plain and useful for the room. Make it sound like something an organiser can say naturally, not like a report.
+
+Show the draft in chat only. Do not save it.
+```
 
 <!-- maintainer -->
 
 **Meta (organisers):**
 - **Length:** 6 minutes
-- **Audience:** organisers only. This file is a runbook for synthesis after group synthesis has succeeded
+- **Audience:** organisers only. This file is a runbook for synthesis while group outputs are landing
 - **Inputs:** rollout synthesis files in `shared/`
 - **Output:** `shared/organisers-rollout-readout.md`
 - **Dependency:** optional for participant success. The group synthesis files are the core artifact

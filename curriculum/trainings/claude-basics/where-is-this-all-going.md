@@ -2,14 +2,14 @@
 
 ## Big Idea
 
-In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the crux.
+In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn't picking a tool. It's finding the challenge that matters.
 
-## What You'll Learn
+## What This Workshop Builds
 
-After this module, you will be able to:
+In this workshop, you will be able to:
 
 - **Articulate** the top difficulties facing your team's Claude rollout, surfaced through a Claude-led interview
-- **Synthesize** a group's divergent rollout concerns into one named crux
+- **Synthesize** a group's divergent rollout concerns into one named challenge
 - **Evaluate** what another group saw that your group missed, only after your own synthesis is stable
 - **Recognise** the structure the room produced together: individual divergence, group convergence, then cross-pollination only if it helps
 
@@ -17,13 +17,13 @@ After this module, you will be able to:
 
 You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output. Now run a smaller system in the room.
 
-When the team rolls Claude out across the org, what's the **crux**?
+When your team starts using Claude for real work, what's the real **challenge**?
 
 Not the long list of worries. The single thing that, if you got it right, would make the rest follow.
 
 ## Live Work
 
-[Exercise: Find the crux](exercises/find-the-crux.md)
+[Exercise: Find the rollout challenge](exercises/find-the-crux.md)
 
 ## What to Notice
 

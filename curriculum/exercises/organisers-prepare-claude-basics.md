@@ -95,14 +95,16 @@ For a 10-person cohort that is new to Cowork, identify one Cowork-confident driv
 
 In this phase, one organiser creates one fake `rollout-notes.md`, asks Claude to create three more, and then runs the group synthesis prompt against those four files.
 
-First, one organiser opens Cowork on the SharePoint workshop folder root and runs the Phase 1 prompt from [Exercise: Find the crux](exercises/find-the-crux.md) as a fake participant. Use `bjorn-test` as the first name. Answer with fake rollout difficulties.
+**Session** *(new, "Dry run - participant notes")*
 
-When `bjorn-test/rollout-notes.md` exists, ask Claude to use that file as the pattern and create three more fake `rollout-notes.md` files.
+First, one organiser opens Cowork on the SharePoint workshop folder root and runs the Phase 1 prompt from [Exercise: Find the rollout challenge](exercises/find-the-crux.md) as a fake participant. Use your own first name, or a clearly marked test name. Answer with fake rollout difficulties.
+
+When that first `rollout-notes.md` exists, ask Claude to use it as the pattern and create three more fake `rollout-notes.md` files.
 
 **Prompt** *(Cowork, organisers only)*
 
 ```
-Read `bjorn-test/rollout-notes.md`.
+Use the `rollout-notes.md` file you just created in the first-name folder from the participant rehearsal.
 
 Use it as the pattern for three more fake `rollout-notes.md` files.
 
@@ -111,34 +113,40 @@ Create:
 - `petra-test/rollout-notes.md`
 - `samir-test/rollout-notes.md`
 
-Keep the same shape as `bjorn-test/rollout-notes.md`: three rollout difficulties, one push-back answer for each, and enough detail for a group driver to synthesize a crux.
+Keep the same shape as the source `rollout-notes.md`: three rollout difficulties, one push-back answer for each, and enough detail for a group driver to synthesize a crux.
 
 Make the three fake participants meaningfully different from each other.
 
 After saving, list the three files you created.
 ```
 
-Next, run the real group-driver prompt from [Exercise: Find the crux](exercises/find-the-crux.md) Phase 2 against the four fake first-name folders. Give Claude these exact folder names when it asks:
+**Session** *(new, "Dry run - group driver")*
 
-- `bjorn-test`
+Next, start a new Cowork session on the same workshop folder root and run the real group-driver prompt from [Exercise: Find the rollout challenge](exercises/find-the-crux.md) Phase 2 against the source first-name folder and the three generated fake first-name folders. Give Claude those exact folder names when it asks. For example:
+
+- the source folder you used in the participant rehearsal
 - `aino-test`
 - `petra-test`
 - `samir-test`
 
-When Claude asks for the group name, use `rehearsal`. The saved file should be `shared/rollout-synthesis-rehearsal.md`.
+When Claude asks for the group name, use `rehearsal` or another clearly marked test group name. The saved file should land in `shared/` with the `rollout-synthesis-...md` filename pattern.
 
 **Watch out for:** Claude should show the crux candidate in chat before saving. That gives the driver a chance to correct the choice before the file is written.
 
-At the end of this phase, the workshop folder should contain four fake `rollout-notes.md` files and `shared/rollout-synthesis-rehearsal.md`.
+At the end of this phase, the workshop folder should contain four fake `rollout-notes.md` files and one group synthesis file in `shared/`.
 
 ## Phase 4. Rehearse organiser readout
 
-After Phase 3 creates `shared/rollout-synthesis-rehearsal.md`, ask Claude to create two more fake group syntheses. This gives the organiser readout exercise three different group outputs to compare.
+**Session** *(new, "Dry run - organiser readout")*
+
+After Phase 3 creates one group synthesis file in `shared/`, start a new Cowork session on the same workshop folder root and ask Claude to create two more fake group syntheses. This gives the organiser readout exercise three different group outputs to compare.
 
 **Prompt** *(Cowork, organisers only)*
 
 ```
-Read `shared/rollout-synthesis-rehearsal.md`.
+Scan `shared/` for the group rollout synthesis file created by the group-driver dry run. If no group synthesis file exists, stop and tell me to finish the group-driver dry run before continuing.
+
+Read the group synthesis file you found in `shared/`.
 
 Use it as the pattern for two additional fake group rollout synthesis files:
 - `shared/rollout-synthesis-confidence.md`
@@ -149,11 +157,7 @@ Make the two new files plausible outputs from different groups in the same live 
 After saving, list the two files you created.
 ```
 
-Then run [Exercise: Organisers synthesize rollout](exercises/organisers-synthesize-rollout.md) against these three files:
-
-- `shared/rollout-synthesis-rehearsal.md`
-- `shared/rollout-synthesis-confidence.md`
-- `shared/rollout-synthesis-support-model.md`
+Then run [Exercise: Organisers synthesize rollout](exercises/organisers-synthesize-rollout.md) against the rollout synthesis files in `shared/`.
 
 **Watch out for:** The first readout may flatten the three cruxes into one bland theme. Correct it in chat until it preserves useful disagreement and names what organisers need to decide next.
 
@@ -167,7 +171,7 @@ Before the workshop, confirm:
 - OneDrive sync is complete on the participant and organiser machines that will use the SharePoint workshop folder
 - every participant has an exact first-name folder name
 - each group has one Cowork-confident driver, or each group can choose a driver live
-- the rehearsal created `shared/rollout-synthesis-rehearsal.md` from fake first-name folders
+- the rehearsal created one `shared/rollout-synthesis-...md` file from fake first-name folders
 - the organiser readout exercise created `shared/organisers-rollout-readout.md`
 - the test folders and fake files are deleted
 
@@ -181,7 +185,7 @@ If those checks pass, you are ready to run the customer-side workspace.
 - **First cohort note:** the initial room is IT-heavy, but the reusable organiser instructions stay framed for any rollout team
 - **Privacy:** customer materials stay in the customer SharePoint/Cowork environment. Bosser tooling and the trainer's computer must not ingest or connect to customer workshop files
 - **Folder topology assumption:** one SharePoint workshop folder root is synced by OneDrive for everyone before the workshop. It contains one first-name folder per participant and one `shared/` directory. Participants write `rollout-notes.md` into their own first-name folder. Group drivers read first-name folders and write group syntheses to `shared/`; they do not add folders live
-- **Core readiness test:** OneDrive sync is complete before the workshop; one organiser has rehearsed the participant prompt with fake first-name folders, the group-driver prompt into `shared/rollout-synthesis-rehearsal.md`, and the organiser synthesis exercise into `shared/organisers-rollout-readout.md`; test files are deleted afterwards
+- **Core readiness test:** OneDrive sync is complete before the workshop; one organiser has rehearsed the participant prompt with fake first-name folders, the group-driver prompt into one `shared/rollout-synthesis-...md` file, and the organiser synthesis exercise into `shared/organisers-rollout-readout.md`; test files are deleted afterwards
 
 **Quality:** draft 2026-04-30
 - draft 2026-04-30 (restructured for live agentic system demo + live crux + homework path; sim/mechanical/eval not rerun)

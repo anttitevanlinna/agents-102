@@ -1,4 +1,4 @@
-# Exercise: Find the crux
+# Exercise: Find the rollout challenge
 
 **Time:** 60 minutes. Three phases.
 
@@ -42,6 +42,8 @@ Keep the ideas in my voice. Don't turn them into final recommendations yet.
 
 Show me the proposed addition in chat before saving it.
 ```
+
+Claude should save after each idea. If it keeps ideas in chat without updating `rollout-notes.md`, nudge it to save before continuing.
 
 ## Phase 2. Group synthesis (25 minutes)
 
@@ -88,6 +90,12 @@ The saved file must include:
 - what would change if we got this crux right
 ```
 
+Do not assume Claude got this right. It may have ill-thought and made weird assumptions.
+
+In the dry run, Claude dismissed "no time to experiment" as something that could not be addressed. Clearly it can.
+
+Think that you are steering by correcting weak assumptions by the model. The details should follow.
+
 Before saving, push back until the crux sounds like the group's real trouble, not Claude's neat version of it.
 
 If the group wants to compare alternatives before approving the synthesis, ask Claude to list the other possible cruxes.
@@ -100,13 +108,17 @@ Based on what you have read, list the other possible cruxes.
 
 The crux belongs to the group, not to whoever held the keyboard.
 
-The synthesis file holds the diagnosis. Now add the ideas already in the notes, plus anything the group wants to add.
+Before moving on, make sure the synthesis file exists in `shared/`. Push-back can easily turn into a good conversation without saving the corrected diagnosis.
+
+Once the saved file exists, ask Claude to start adding the ideas already in the notes, plus anything the group wants to add.
 
 Ask Claude to collect ideas from the rollout notes and invite final additions.
 
 **Prompt** *(Cowork, group driver)*
 
 ```
+Confirm the rollout synthesis file exists in `shared/`. If it does not exist, save the corrected synthesis there before continuing.
+
 Read the rollout synthesis file you just saved in `shared/`.
 
 Use the rollout notes you already read for this group. Find any rollout ideas, suggested next steps, or "what we should do" notes in those files.

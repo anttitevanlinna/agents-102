@@ -4,9 +4,9 @@
 
 Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.
 
-## What You'll Learn
+## What This Workshop Builds
 
-After this module, you will be able to:
+In this workshop, you will be able to:
 
 - **Recognise** the parts of an agentic system in a real repo
 - **Explain** why rules, prompts, checks, and build outputs matter more than a single chat transcript

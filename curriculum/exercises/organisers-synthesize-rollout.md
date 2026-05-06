@@ -4,6 +4,8 @@
 
 This exercise can start once group rollout synthesis files begin appearing in `shared/`. It reads across the files as they land and creates one organisers' readout to use after the workshop.
 
+**Session** *(new, "Organisers rollout synthesis")*
+
 ## Phase 1. Read across the group syntheses
 
 Ask Claude to watch the group files and synthesize the latest read.
@@ -11,13 +13,13 @@ Ask Claude to watch the group files and synthesize the latest read.
 **Prompt** *(Cowork, organisers only)*
 
 ```
-Read the group rollout synthesis files currently in `shared/`.
+Continuously read the group rollout synthesis files in `shared/`.
 
-If fewer than two group files are ready, say which files you can see, wait briefly, and check `shared/` again.
+If no group files are ready, say so briefly, wait, and check `shared/` again.
 
-As new group files appear or existing group files change, re-read them before updating the readout.
+As new group files appear or existing group files change, re-read them and update the readout.
 
-Create an organisers' rollout readout with:
+Keep the current organisers' rollout readout updated in chat with:
 - the cruxes that appear across multiple groups
 - the sharpest disagreement between groups, even if uncomfortable: where would two groups make a different call? Quote both sides. Don't smooth into a shared theme
 - the top three priorities for the next 30 days, named as the problem they solve, not the virtue they embody
@@ -25,10 +27,14 @@ Create an organisers' rollout readout with:
 - open questions the organisers need to answer
 - one next action for the organisers this week
 
-Show me the current readout in chat first. Don't save yet. I will correct priorities, deferrals, and ownership.
+After each update, wait briefly, check `shared/` again, and refresh the readout if anything changed.
 
-After I approve the current version, save it as `shared/organisers-rollout-readout.md`.
+Do not save until I say the readout is final.
+
+When I say it is final, save the latest version as `shared/organisers-rollout-readout.md`.
 ```
+
+If the synthesis stops, nudge Claude with: *"check again"*. If the current readout is no longer clear after a few synthesis rounds, ask: *"Show me the readout again"*.
 
 Keep the readout grounded in the group syntheses. If the organisers add context that was not in the files, name it as organisers' judgment rather than group evidence.
 
@@ -53,16 +59,18 @@ For each, tell me:
 Do not save anything.
 ```
 
-Ask Claude to draft the point you choose in plain organiser language.
+If the first answer gives you the right angle but not the words yet, ask Claude to draft the point in plain organiser language.
 
 **Prompt** *(Cowork, organisers only)*
 
 ```
-Draft a short organiser share-back for the point we choose.
+Draft a short organiser share-back for the point below.
 
 Keep it plain and useful for the room. Make it sound like something an organiser can say naturally, not like a report.
 
 Show the draft in chat only. Do not save it.
+
+Let's focus on:
 ```
 
 <!-- maintainer -->

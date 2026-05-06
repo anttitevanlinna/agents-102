@@ -146,6 +146,13 @@ Read Ethan Mollick, "Garbage Can and Bitter Lesson."
 - judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @3d7e76c: PASS — agents-101-m5 30/30 via bin/judge-m5.sh
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Module 5 benchmark artifacts | `module-5/evidence-roster.md`, `module-5/briefing.md`, `module-5/claim-pool.md`, `module-5/detectors/`, `module-5/adjudicated-claims.md`, `module-5/scoreboard.md` | M5 hallucination benchmark | M5 Debrief; M6 eval-loop setup; M7 sharing diagnosis |
+| Groundedness judge | `judges/groundedness-judge.md` | M5 benchmark winner packaging | M6 eval loop as fixed yardstick; M7-M8 quality infrastructure |
+| Root groundedness rules | `./CLAUDE.md` groundedness checks | M5 Debrief | M6-M8 fresh sessions before trusted outputs or actions |
+
 **Source-verification owed (pre-first-cohort):**
 - Mata v. Avianca (S.D.N.Y. 2023) — public court record; add URL to the court filing or a reputable secondary source.
 - Deloitte Australia / DEWR welfare-compliance report (2025) — add URL (widely reported but no anchor in file).

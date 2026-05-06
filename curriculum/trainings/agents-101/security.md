@@ -96,6 +96,14 @@ Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visi
 - **Materials (trainer):** policy reference `.md` files are installed by the Agents 101 prework starter at `module-4/policies/` (Nordic-baseline for self-study; customer-distilled for in-company deliveries). The student runs those files raw, then authors reusable security expertise carrying two lenses (policy + agent-security with named attack classes). Per Antti 2026-04-29: no pre-shipped security skill; students author their own personal skill in Module 4.
 - **Plug points:** the customer's data-usage policy, security policy, AI-use policy, and sector-specific compliance rules (pre-distilled into `module-4/policies/` reference `.md` by Antti — separately billable); the student's chosen risk to mitigate
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Module 4 policy references | `module-4/policies/*.md` | Prework starter; customer prep | M4 raw policy run and reusable security check |
+| Reusable security check | personal security skill in the active runtime | M4 author-security-skill exercise | M4 audit; M7 skill-sharing preview; post-training reuse |
+| Module 4 security outputs | `outputs/policy-report-raw.md`, `outputs/policy-report.md`, `outputs/security-report.md` | M4 policy run and agent audit | M4 Debrief; M5-M8 operating-rule context |
+| Root security rules | `./CLAUDE.md` security operating rules | M4 Debrief | M5-M8 fresh sessions as risk memory |
+
 **Plug Points (trainer):**
 
 > PLUG POINT: The customer-policy reference content under `module-4/policies/`.

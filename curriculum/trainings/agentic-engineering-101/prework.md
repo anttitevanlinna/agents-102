@@ -91,4 +91,13 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback DEFERRED (needs ops decision). Don't absorb install debugging into Module 1 time.
 
+**Artefact contracts** (M0 setup artefacts consumed by later modules; maintainer-only metadata for handoff audits):
+
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| AE101 content bundle | `~/Downloads/agents-102-content.tar.gz` extracted to `~/Documents/ae101-content/` (or student-confirmed equivalent) | Prework Step 3/4 download + extract prompt | Every module as local reference material; M3 skill install source; scheduled-agents/reference links remain browsable from the content folder |
+| Curated security skills | `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md` | Prework Step 4 install prompt | M3 Exercise 1 invokes `access-control-analysis`; M3 Exercise 2 invokes `stride` |
+| Chosen trivial bug | Prework session scrollback in the chosen repo, plus tracker/repo context if one exists | Prework Step 4 bug-screen conversation | M1 `fix-tests-first` prompt consumes the selected bug |
+| Repo readiness read | Prework session summary: test command or named check path, git status, PR readiness blockers | Prework Step 4 readiness check | M1 trainer/student triage; M1 `fix-tests-first` and `compound-and-close` assume the repo can test, branch, commit, and open or draft a PR |
+
 **Packaging:** `scripts/build-ae101-content-tarball.sh` builds `agents-102-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/reference/`, `curriculum/supplementary/`, `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into `site/clients/<customer>/agentic-engineering-101/agents-102-content.tar.gz`, and substitutes `<CONTENT_URL>` at workbook-render time.

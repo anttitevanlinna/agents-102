@@ -133,5 +133,14 @@ You walk into Module 1 with <span class="rt-code">Claude Code</span><span class=
 **Packaging:**
 - `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Agents 101 training directory | `~/Documents/agents-101/` | Prework setup | M1-M8 session starts and all durable file writes |
+| Agents 101 starter file set | `agents-101-starter.tar.gz` | Prework install task | Prework extraction; M2-M8 folder homes and M4 policy references |
+| Cross-module folder homes | `memory/`, `sources/`, `agents/` | Prework starter extraction | M2-M8 compounding system work |
+| Module 4 policy references | `module-4/policies/*.md` | Prework starter extraction | M4 raw policy run and reusable security check |
+| Prework proof files | `prework/snake.html`, `prework/meetings.md` | Prework tasks 3-4 | M1 readiness check and trainer support if setup failed |
+
 **TODO (Claude Code Desktop edition review 2026-04-29):**
 - Prompt 1 includes Cowork-specific wording: "Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files." Harmless, but odd in the Desktop edition. Prompt-block change is gated: propose before/after before editing. Likely fix is a runtime fork or neutral sentence.

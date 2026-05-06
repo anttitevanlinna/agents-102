@@ -46,10 +46,7 @@ Bring Agents 101 module maintainer blocks closer to the AE101 shape:
 
 ## 5. Cross-module artifact contracts
 
-- **Module 2 → Module 3.** Confirm which artifacts Module 3 consumes from Module 2: scheduled-agent output, memory shape, agents folder, source roster, root `CLAUDE.md`.
-- **Module 3 → Module 4.** Confirm Module 4 names exactly which Module 3 system/audit target is being checked.
-- **Module 5 → Module 6.** Confirm `judges/groundedness-judge.md` is created in Module 5 and consumed verbatim in Module 6.
-- **Module 7 → Module 8.** Confirm the next-step artifact from Module 7 has a stable file path or named shape before Module 8 asks the student to run it.
+- **Automated contract audit before cohort.** Re-run `node scripts/audit-training-artifact-contracts.js --training agents-101` after the next module-body touch. Keep missing sections, uncontracted produced mentions, consumer-without-producer, weak consumers, and order problems at zero. Review identifier-drift groups manually; they are naming prompts, not automatic failures.
 
 ## 6. Unclear / design-choice flags
 

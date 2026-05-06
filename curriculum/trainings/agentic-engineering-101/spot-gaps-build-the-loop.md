@@ -73,6 +73,15 @@ Antti
 - The student's `./CLAUDE.local.md` shows at least one rule deleted (compound-by-subtraction), the deletion commit visible in git history, born from the two-run diagnosis.
 - The student now has a one-page arc retrospective written from M1–M6 artefacts (root rules, memory, ADRs, both authored skills, both run artefacts), not from training memory or marketing copy.
 
+**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
+
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `.claude/memory/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Phase 2 session-shaper authoring; arc-retrospective fresh read; future post-cohort team-kit conversation |
+| Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise Phase 1 compound-by-subtraction prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
+| Session-shaper / second skill | `~/.claude/skills/<skill-name>/SKILL.md` (personal, auto-discovered) | Exercise Phase 2 authoring conversation + self-critique + invocation on packaged run | Future long-running tasks of the same shape; `the-loop-has-a-name` lecture names it as verifier/judge/gate/eval; `agents-that-build-agents` prompt reads it as evidence |
+| Arc retrospective note | Student-picked repo location (ADR, `.claude/memory/` memo, or standalone file) | `arc-retrospective` exercise fresh sub-task read + one push-back | Future stalled sessions; post-cohort personal/team reflection; next-loop kit design in `agents-that-build-agents` |
+
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
 - **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer / Nerd asks for quoted moments from each run separately before any synthesis.
 - **Phase 1 — Compound move (cut stale rule).** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to Phase 1's quoted-moments check.

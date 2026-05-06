@@ -91,6 +91,13 @@ Run the next-step artifact. Test one assumption. Ask for one name. Talk to one p
 - **Materials (trainer):** Pattern catalog ships in the Agents 101 starter at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. Absorption bottleneck framing in the module. **No pre-shipped strategy skills** (M4 is the canonical personal-skill authoring module). The three thinking-disciplines — Rumelt on *crux*, Roger Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are used as exercise mechanics but mostly kept out of student-facing exposition.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Module 7 sharing package | `module-7/jtbd.md`, `module-7/branch.md`, `module-7/absorption-bottleneck.md`, `module-7/technical-plan.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, `module-7/failure-stories.md` | M7 sharing exercise | M7 Debrief; M8 prework and sponsor-question grounding |
+| Module 7 sharing artifact | chosen file under `module-7/` | M7 Debrief rewrite | M8 run-next-step prework and post-training adoption test |
+| Module 7 next-step file | `module-7/monday.md` | M7 sharing exercise | M8 prework and capstone input |
+
 **Plug Points (trainer):**
 
 > PLUG POINT: Branch selection — does your company have cloud agent infrastructure (N8N / Cowork / Power Automate / Make / an internal runtime), or only personal Claudes?

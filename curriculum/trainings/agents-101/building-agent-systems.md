@@ -90,6 +90,15 @@ Before the next module, try making a few more agents you actually need. Pick by 
 - **Materials (trainer):** Module 2 zip that unpacks into the student's working directory — empty `sources/` (participant fills via curation on class day — no pre-load), empty `memory/`, and empty `agents/`. No root `CLAUDE.md` ships; the student creates it in the Debrief. Five-minute connector demo uses non-sensitive trainer material across two connected systems plus one outside source. Phase 3's second batch comes from the participant themselves — they find another piece of material mid-exercise. No trainer injection; the three-minute "go find more" loop is part of the lesson.
 - **Plug points:** Each participant's own live challenge + curated sources from their Confluence / Office365 / internet. Sponsor pre-agreement: Confluence & Office365 connector access for the cohort; acceptance that the shape (not the substance) of challenges may be shared in the room.
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Challenge file | `./challenge.md` | M2 challenge-naming exercise | M3 crux work; M5-M6 briefing/eval targets; M8 sponsor-challenge contrast |
+| Sources folder | `sources/` | M2 source curation | M3 retrieval/synthesis; M5 benchmark evidence; M6 eval loop; M7-M8 extension work |
+| Challenge memory | `memory/` | M2 memory build and updates | M3-M8 as the curated context layer |
+| Custom agent files | `agents/` | M2 agent-system build | M3-M8 as reusable workers and extension targets |
+| Root rules file | `./CLAUDE.md` | M2 Debrief | M3-M8 fresh sessions as durable operating memory |
+
 **Plug Points (trainer):**
 - **Each participant's own live challenge.** The exercises are structurally the same across people. What changes is what's inside the memory.
 - **Sources must be readable by agents** (text, markdown, PDF, structured data) — Confluence and Office365 connector access arranged with the sponsor before training day.

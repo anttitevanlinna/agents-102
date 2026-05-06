@@ -86,6 +86,16 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 - **Materials (trainer):** demo agent that generates another agent (for the short lecture); separate SharePoint/OneDrive shared deliberation folder posted in chat at the start of the module; one subfolder per participant; buyer/sponsor challenge prompt; one or two central synthesizer prompts; midpoint instruction injection by the synthesizer through `midway-instructions.md`; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-disciplines — Rumelt on *crux*, Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are used in M7 as plain exercise moves and can be named explicitly here at room scale. **No pre-shipped strategy skills anywhere in Agents 101** (M4 is the canonical personal-skill authoring module).
 - **Plug points:** CTO/sponsor present; company's own strategy question feeds into all agents
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Module 8 extension brief | `module-8/extension-brief.md` | M8 extend-your-system exercise | M8 new-agent build and demo |
+| New extension agent | `agents/<slug>.md` | M8 extend-your-system exercise | M8 demo; post-training system extension |
+| Shared deliberation folder | trainer-posted SharePoint/OneDrive folder | M8 room setup | All M8 room-scale agents and central synthesizers |
+| Sponsor challenge | shared-root `challenge.md` | Buyer/sponsor seed in shared deliberation folder | M8 stances, proposals, selection, kernel, agent set, and plan |
+| Participant deliberation files | participant subfolders with context manifests, stances, cross-checks, proposals, critiques, pushback | M8 room-scale agent runs | Central synthesizer selection and final plan |
+| Central synthesis files | `selection-board.md`, `midway-instructions.md`, `strategy-kernel.md`, `agent-set.md`, `plan.md` | M8 central synthesizer agents | M8 Debrief; sponsor/CTO post-training next steps |
+
 **Plug Points (trainer):**
 - **CTO/sponsor in the room.** Their agent seeds the challenge and is one natural central synthesizer: selects the strongest proposals, preserves the best critiques, forces pushback. In larger or more political rooms, run two synthesizers: one for selection, one for disagreements and missing evidence. If sponsor isn't present, the role rotates and the final decision (which assumptions to commit to) is provisional.
 - **Company strategy question.** Default is "our strategy for agents over the next six months." If the cohort has a live portfolio, re-org, or supplier question, swap it in — the disciplines don't change, the material does.

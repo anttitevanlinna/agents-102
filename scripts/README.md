@@ -29,6 +29,24 @@ node scripts/build-workbook.js claude-basics acme
 
 Prefer the customer-first form for new automation. The `all` selector uses the `TRAININGS` registry in `site/layouts/curriculum.js`.
 
+## Curriculum Audits
+
+Training artifact handoffs and session breaks can be checked with:
+
+```sh
+node scripts/audit-training-artifact-contracts.js --training agentic-engineering-101
+node scripts/audit-training-artifact-contracts.js --training agents-101
+node scripts/audit-training-artifact-contracts.js --training agents-101 --out curriculum/evals/instances/agents101-artifact-contract-audit.md
+```
+
+The audit is a static smoke test: it reads maintainer `Artefact contracts` tables, expands module exercise/lecture includes, includes prework stages, surfaces session starts/returns/clears, and flags likely broken handoffs. Treat findings as review prompts, not judge verdicts.
+
+The older AE101-specific entrypoint still works:
+
+```sh
+node scripts/audit-ae101-artifact-contracts.js
+```
+
 ## Deployment Shape
 
 GitHub Pages publishes `site/`. A customer URL is:

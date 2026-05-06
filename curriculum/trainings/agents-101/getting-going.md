@@ -103,6 +103,13 @@ You just made great output AND packaged what you learned into a file the agent c
 - **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief sharpens `module-1/personal-brand-generation.md`; Module 1 deliberately creates no `CLAUDE.md`.
 - **Plug points:** participant's own LinkedIn profile — no org data needed yet
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Module 1 working folder | `module-1/` | M1 exercise writes visible outputs | M1 debrief and M2 boundary framing |
+| Module 1 personal site | `module-1/site.html` | M1 guardrailed generation exercise | M1 cold-critic read; M2 contrast with system work |
+| Module 1 generation rules | `module-1/personal-brand-generation.md` | M1 exercise close and Debrief rewrite | M1 retro; M2 scoped-rule contrast; later module demonstrations of rule compounding |
+
 **Plug Points (trainer):**
 - **The trainer's CLAUDE.md** has a default (differentiation / storytelling / framing). Variant: orgs with a brand guide can substitute. Default works on its own.
 

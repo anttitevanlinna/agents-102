@@ -93,6 +93,14 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 **Module time (trainer):** ≈ 75 min total. Crux opener (with question) ~8 min, *Three retrievers, one curator* ~28 min, *Three minds, one synthesis* ~22 min (incl. Close), *When to split* lecture 8–10 min, *Debugging stuck agents* callout ~4 min, Debrief ~5 min. Each exercise's own time label is exercise-only; schedule the whole module against the sum.
 
+**Artefact contracts**
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Crux file | `./crux.md` | M3 name-your-crux exercise | M3 synthesis; M5 benchmark target; M6 eval-loop generation target |
+| Module 3 synthesis artifacts | `module-3/` | M3 retriever, curator, and synthesis exercises | M3 Debrief; M5 benchmark; M6 eval loop; M7 sharing diagnosis |
+| Curated memory update | `memory/` (including `memory/_synthesis-m3.md` when present) | M3 curator/synthesizer update | M4 security audit; M5-M8 downstream system work |
+| Root rules file update | `./CLAUDE.md` | M3 Debrief | M4-M8 fresh sessions as handoff and division-of-work rules |
+
 **Plug Points (trainer):**
 
 > PLUG POINT: The three source zones the retrievers cover.

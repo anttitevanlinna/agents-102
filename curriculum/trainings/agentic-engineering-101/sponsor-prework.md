@@ -130,5 +130,12 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
   - Cohort-close memo template ("what your engineers said about the four homes") — DEFERRED (post-first-cohort).
   - Sponsor one-pager on the pre-engagement contract's purpose (belongs in the sales pack, different audience — the sponsor who hasn't signed yet, doing diligence on the program).
 
+**Artefact contracts** (sponsor-stage setup artefact consumed by the cohort bundle and trainer):
+
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Pre-engagement contract | `content/pre-engagement-contract.md` in the cohort content bundle (or generated customer-surface equivalent) | Sponsor completes the five-answer worksheet; ops converts answers into the cohort bundle | M1-M6 trainer decisions at blocker points; M3 team-kit path; M4/M5 memory, ADR, tracker, and team-kit homes; optional self-study Nerd if enabled |
+| Student override log | Per-cohort `content/overrides.md` or appended contract section, trainer-owned | Classroom delivery when a student proposes a better home than the sponsor default | Cohort-close memo to sponsor; post-cohort update to company conventions |
+
 **Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
 - judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS

@@ -28,6 +28,8 @@ Before writing, revising, or reviewing curriculum content, read the full `.claud
 
 When editing any fenced prompt block that students copy, run a final prompt-shape pass before answering. Check at minimum: no placeholders inside the fence; any student-supplied input uses the open-hook pattern with the colon line last; file paths match the student's working folder; save/read artifacts are coherent for downstream phases; the prompt starts from the normal LLM work request before adding orchestration. Do this even if the relevant rule was just loaded into context.
 
+When asked for a session retro, do not leave it as chat-only reflection. Select the one improvement that should change future behavior, persist it in the appropriate rule or memory surface, and report the path where it was saved.
+
 The `content-creation` skill requires the private `bosser-strategy` skill for generation work. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
 
 For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Agents 101 strategy doc for Claude Basics work.

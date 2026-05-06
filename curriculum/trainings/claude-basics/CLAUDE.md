@@ -65,6 +65,7 @@ English is the canonical curriculum language for claude-basics, matching Agents 
 1. `agentic-systems-repo-demo.md`, Big idea: agentic systems are visible when you know where to look. Mood: concrete awe.
 2. `where-is-this-all-going.md`, Big idea: the hard part is finding the rollout crux. Mood: expanded horizon.
 3. `homework-build-and-verify.md`, Big idea: live shape becomes personal muscle memory through homework. Mood: capable next step.
+4. `organisers-run-the-workshop.md`, Big idea: organiser setup and synthesis stay in the customer workbook but outside the participant flow. Mood: operational clarity.
 
 Slug filenames only, no `module-N-` prefix (per `curriculum/CLAUDE.md`).
 

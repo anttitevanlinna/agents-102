@@ -157,7 +157,7 @@ Make the two new files plausible outputs from different groups in the same live 
 After saving, list the two files you created.
 ```
 
-Then run [Exercise: Organisers synthesize rollout](exercises/organisers-synthesize-rollout.md) against the rollout synthesis files in `shared/`.
+Next, run the organiser synthesis exercise below on the rollout synthesis files in `shared/`.
 
 **Watch out for:** The first readout may flatten the three cruxes into one bland theme. Correct it in chat until it preserves useful disagreement and names what organisers need to decide next.
 
@@ -187,7 +187,8 @@ If those checks pass, you are ready to run the customer-side workspace.
 - **Folder topology assumption:** one SharePoint workshop folder root is synced by OneDrive for everyone before the workshop. It contains one first-name folder per participant and one `shared/` directory. Participants write `rollout-notes.md` into their own first-name folder. Group drivers read first-name folders and write group syntheses to `shared/`; they do not add folders live
 - **Core readiness test:** OneDrive sync is complete before the workshop; one organiser has rehearsed the participant prompt with fake first-name folders, the group-driver prompt into one `shared/rollout-synthesis-...md` file, and the organiser synthesis exercise into `shared/organisers-rollout-readout.md`; test files are deleted afterwards
 
-**Quality:** draft 2026-04-30
+**Quality:** draft 2026-05-06
+- draft 2026-05-06 (removed inline self-link to the next included organiser exercise; eval not rerun)
 - draft 2026-04-30 (restructured for live agentic system demo + live crux + homework path; sim/mechanical/eval not rerun)
 - persona-simulated 2026-05-04 — organiser pass; group-driver folder rule, access-test order, and exact folder-name fixes applied
 

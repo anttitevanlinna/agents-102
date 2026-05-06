@@ -38,14 +38,6 @@ The group syntheses give the rollout a shape you can carry forward. The homework
 
 The next section turns that live pattern into a small system you run on your own.
 
-## Organisers' Activities
-
-[Exercise: Organisers synthesize rollout](exercises/organisers-synthesize-rollout.md)
-
-## Prework for organisers
-
-[Exercise: Organisers prepare Claude Basics](exercises/organisers-prepare-claude-basics.md)
-
 <!-- maintainer -->
 
 **Meta:**
@@ -54,8 +46,10 @@ The next section turns that live pattern into a small system you run on your own
 - **Core simplification.** Live crux work follows the agentic system demo and does not depend on homework outputs. It starts fresh on rollout difficulty and ends when each group has a clean synthesis file
 - **The reveal at exercise close:** *"You just ran the smallest useful version of the rollout system: individual views diverged, groups synthesized, and only then did ideas cross-pollinate. That ordering matters."* Land it once. Don't elaborate
 - **Homework bridge.** The next module is a short launch into self-study, not another live exercise
+- **Organiser material moved:** organiser setup and readout remain in the same workbook, but live in the final organiser module so the participant flow stays clean
 
-**Quality:** draft 2026-04-30
+**Quality:** draft 2026-05-06
+- draft 2026-05-06 (organiser-only links moved to final organiser module; eval not rerun)
 - draft 2026-04-30 (agenda restructure: live crux follows agentic system demo and bridges to homework; sim/mechanical not rerun)
 - compendium-audited 2026-04-28 — STALE after the 2026-04-30 agenda restructure
 - sim-passed 2026-04-28 — STALE after the 2026-04-30 agenda restructure

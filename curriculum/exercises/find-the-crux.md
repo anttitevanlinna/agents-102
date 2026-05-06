@@ -90,11 +90,11 @@ The saved file must include:
 - what would change if we got this crux right
 ```
 
-Do not assume Claude got this right. It may have ill-thought and made weird assumptions.
+Do not assume Claude got this right. It may choose a tidy crux that misses the group's real constraint.
 
 In the dry run, Claude dismissed "no time to experiment" as something that could not be addressed. Clearly it can.
 
-Think that you are steering by correcting weak assumptions by the model. The details should follow.
+Your job is to correct weak assumptions before they harden into the saved synthesis.
 
 Before saving, push back until the crux sounds like the group's real trouble, not Claude's neat version of it.
 
@@ -132,7 +132,7 @@ Then add your brief read below them: which idea best fits the crux, which might 
 After saving, tell us what you added and what you think in 5 to 7 bullets.
 ```
 
-You are done with Phase 2 when your group synthesis is saved in `shared/` and includes the Ideas section. Nice work.
+You are done with Phase 2 when your group synthesis is saved in `shared/` and includes the Ideas section.
 
 ## Phase 3. Cross-pollination (20 minutes)
 
@@ -190,7 +190,8 @@ Whenever the group says stop, stop. The artifact is the synthesis file plus what
 - **Maintainer-acceptance — Cowork loop capability (technical class):** the Phase 3 prompt asks Claude to run cycles continuously without re-prompt, and to detect "new sections since last check" across cycles. Pre-ship audit on 2026-05-05 flagged both as UNVERIFIED platform-capability claims. Maintainer accepts — Cowork supports this loop shape per Antti's direct knowledge. Reference: `memory/compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md` (Cowork capability surface). Mechanical re-run still queued pre-cohort against the new Phase 3 prompt
 - **Pre-cohort TODO:** re-run mechanical harness against the reshaped Phase 3 cross-pollination prompt before the first Claude Basics cohort. Existing mechanical-tested row (2026-04-28 @ c25d7c4) is STALE. Capability is maintainer-accepted; mechanical confirms the prompt mechanics (detection, narration cap, stop behavior) actually fire as designed
 
-**Quality:** compendium-audited 2026-05-05 (writing@edf18d5 story@edf18d5 technical@edf18d5 behavior@edf18d5)
+**Quality:** draft 2026-05-06
+- draft 2026-05-06 (sentence-level cleanup in group-driver guidance; eval not rerun)
 - judges @edf18d5: writing PASS, story PASS, technical PASS, behavior PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*

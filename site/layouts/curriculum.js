@@ -71,7 +71,8 @@
             modules: [
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
-                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' }
+                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         }
     };

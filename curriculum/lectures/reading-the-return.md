@@ -1,9 +1,5 @@
 # Reading the return
 
-*~5 min pre-read for M5. Lands at the close of M4's Debrief, while your run is going. Names the M5 question and the three failure modes you'll use to read the return. Doesn't name the fixes. Those earn their names in the exercise.*
-
----
-
 The laptop closed at the end of M4 with the agent working. By the time this lands, the run has either finished, hit its budget, or been stopped because enough was seen. Whatever came back is the artefact M5 starts from.
 
 Here is the question that drives M5.

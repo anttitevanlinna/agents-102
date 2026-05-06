@@ -209,7 +209,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, lives
 - **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*)
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
 
-**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and the student authors one (`test-strategy`). M6 authors the second (the learning-loop skill from the two-run diff).
+**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`). M6 authors the second (the learning-loop skill from the two-run diff).
 
 Docs: [skills](https://code.claude.com/docs/en/skills).
 
@@ -331,7 +331,7 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 When a rule isn't firing and `/memory` confirms it's loaded, next stop is the `InstructionsLoaded` hook. Logs exactly which instruction files loaded, when, and why. Useful for path-scoped rules and lazy-loaded subdirectory files.
 
-Hooks configure via `.claude/settings.json` or user settings. Not our primary teaching surface; flag when students need the introspection.
+Hooks configure via `.claude/settings.json` or user settings. Not our primary teaching surface; reach for it when you need the introspection.
 
 Docs: [hooks](https://code.claude.com/docs/en/hooks).
 

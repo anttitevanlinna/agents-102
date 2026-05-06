@@ -5,7 +5,7 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 ## Prework
 
-Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (~10 min).
+Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -41,7 +41,7 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 
 ## Human close
 
-10–15 minutes. No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the Module 6 compound. This slot is the human round the practitioner-fluency mood warrants.
+No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the Module 6 compound. This slot is the human round the practitioner-fluency mood warrants.
 
 *Three runs of the loop on your own work. The kit, yours.*
 
@@ -94,6 +94,7 @@ Antti
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).
+- **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture** (strategy doc § "Delivery architecture"): AE101 content folder + student's real repo. Both runs already live in the repo; M6 reads + authors + ships in-place. No training-dir state, no `module-N/` folders. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room. Self-study Teacher Claude reads it aloud at session open.

@@ -2,7 +2,7 @@
 
 **What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. The skill will walk the six STRIDE categories against every surface on your map and produce a threat list. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
 
-**What happened:** STRIDE does the breadth: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in 20 minutes and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
+**What happened:** STRIDE does the breadth: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in one exercise window and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
 
 **The point:** Threat modeling is only useful if it produces a decision. STRIDE's value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.
 
@@ -10,7 +10,7 @@
 
 ---
 
-## Phase 1: invoke the skill on the mapped surface (~7 min)
+## Phase 1: invoke the skill on the mapped surface
 
 Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.
 
@@ -23,7 +23,7 @@ Invoke the stride skill on the access-surface map from the previous exercise (pa
 
 Let it run. The output will have more entries than you want to deal with. That's expected.
 
-## Phase 2: pick the one (~8 min)
+## Phase 2: pick the one
 
 You're going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.
 
@@ -38,7 +38,7 @@ Walk me through picking the load-bearing STRIDE category for this feature. Start
 
 Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative — push back if the story doesn't fit your codebase's reality.
 
-## Phase 3: write the ADR (~5 min)
+## Phase 3: write the ADR
 
 Ask Claude to draft the ADR in your repo's convention and show it before saving.
 

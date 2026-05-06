@@ -7,7 +7,7 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 Bring a small feature you're working on right now. **Not a typo-fix, not a quarter-long epic.** Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
 
-Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min, deeper scan).
+Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -34,7 +34,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 ## Key Concepts
 - A curated skill is upstream work packaged for you to invoke. You don't re-derive it
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
-- One hardening decision is enough; breadth is the team kit's job across many students, not yours in 20 minutes
+- One hardening decision is enough; breadth is the team kit's job across many engineers, not yours in the exercise window
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's
 - Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre
@@ -102,6 +102,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.
+- **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; optional OWASP deeper scan 20 min.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 
@@ -165,4 +166,3 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 - **Test strategy as discipline** — Kent Beck + James Bach's exploratory-testing lineage + Google Testing Blog's test-pyramid framing. Named at lecture; the student's authored skill is theirs, not a framework import.
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
-

@@ -1,7 +1,5 @@
 # Steering the wiring
 
-**Time:** 3–4 minutes.
-
 At M5 you forked the M4 starting SHA into a worktree. A real engineering call lived in that fork: gitignored files (`CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default chose `cp` at fork time — your M1/M3 evidence rode forward, M5/M6 compounding diverged in the worktree, and post-M6 you decide what to merge back.
 
 That's one wiring. It's not the only one.
@@ -14,7 +12,7 @@ That's one wiring. It's not the only one.
 
 **Armin Ronacher (three-pattern).** Probably says the rules ARE part of the reference artefact. M5 builds reference + plan.md + verifier — if a rule from M1/M3 matters for THIS task, it lands in the reference where Claude reads it explicitly. Selective inclusion, not blanket auto-load. The three-pattern's whole point is making context economy explicit per task; "auto-load everything" is what M5 is teaching against.
 
-**Kieran Klaassen (compound engineering).** Probably treats it as rules-as-session-evidence. M5 worktree starts fresh; M5/M6 compound from THIS run's evidence. Original repo's rules are the M1+M3 baseline kept for reference but not gospel. Each loop produces its own rules; the next loop reviews and integrates. Post-M6, the student manually integrates worktree-rules back into original — the integration IS a compound move.
+**Kieran Klaassen (compound engineering).** Probably treats it as rules-as-session-evidence. M5 worktree starts fresh; M5/M6 compound from THIS run's evidence. Original repo's rules are the M1+M3 baseline kept for reference but not gospel. Each loop produces its own rules; the next loop reviews and integrates. Post-M6, you manually integrate worktree-rules back into original. The integration IS a compound move.
 
 **Paweł Huryn (three-block memory).** Probably says memory is wherever the agent reads it from. Don't conflate file path with discipline. The three blocks (observations, decisions, quality criteria) are a frame — they live in `.claude/memory/`, in CLAUDE.md, in skills, wherever the engineer puts them. The worktree-fork forces the question: which blocks transfer to the new context? That's a real engineering conversation, not infrastructure to hide.
 
@@ -22,7 +20,7 @@ That's one wiring. It's not the only one.
 
 Four practitioners, four reads. You've now run an arc that touched all four moves — Cherny's worktrees, Ronacher's reference + plan + verifier, Klaassen's compound loop, Huryn's three blocks. Their guessed answers above aren't the lesson. The lesson is that you can read the question for yourself now and pick the wiring that fits how YOU work.
 
-The student you started this training as would have asked someone what the right wiring is. The engineer you are at the close of M6 picks.
+At the start of this training, you might have asked someone what the right wiring is. The engineer you are at the close of M6 picks.
 
 <!-- maintainer -->
 

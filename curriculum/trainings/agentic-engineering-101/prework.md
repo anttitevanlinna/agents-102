@@ -1,12 +1,12 @@
 # Prework: before Module 1
 
-Land at Module 1 with Claude Code open in the repo you're going to grow, the curated skills installed, and one trivial bug picked. About 30 minutes. (The framing for what we're doing lands live in Module 1; you don't need to pre-read anything.)
+Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked. (The framing for what we're doing lands live in Module 1; you don't need to pre-read anything.)
 
-## 0. Get Claude Code started (1 min)
+## 0. Get Claude Code started
 
 Fire up Claude Code on the laptop you'll use during the training.
 
-## 1. Pick THE repo (10 min)
+## 1. Pick THE repo
 
 One decision, and you probably have a strong candidate already: which repo are you going to grow rules and memory on across the training?
 
@@ -14,13 +14,13 @@ One decision, and you probably have a strong candidate already: which repo are y
 - Real code, real tests, real history, somewhere with enough surface area for rules and memory to land on
 - Real work ahead at two sizes. Module 1 ships a one-line fix. Module 4 onward runs experiments on bigger things: an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
 
-Pick one. Every module of this training opens Claude Code against this repo. Every rule, every memory, every skill you build during the training lands here.
+Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule, every memory, every skill you build during the training lands here.
 
-## 2. Start a new Claude Code session in THAT repo (2 min)
+## 2. Start a new Claude Code session in THAT repo
 
 CLI or desktop, your call. Open a new session with the repo as the working directory.
 
-## 3. Get the content folder onto your laptop (3 min)
+## 3. Get the content folder onto your laptop
 
 You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths to the same destination. Pick whichever fits your network and trust posture.
 
@@ -38,7 +38,7 @@ Download the AE101 content tarball to ~/Downloads. Use Bash:
 Confirm the file exists and report its size.
 ```
 
-## 4. Hand the rest to Claude (12 min)
+## 4. Hand the rest to Claude
 
 Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1. Claude will need to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
 
@@ -83,12 +83,12 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 - Mid-competent: Windows path/shell assumptions (`~/Downloads/`, `tar xzf`, `mkdir -p`) unstated; acknowledge Git Bash once. Step 4's 12-min budget tight when student hasn't pre-thought a candidate bug; consider rebadging as "mechanical setup + bring-a-bug homework."
 
 **Meta:**
-- **Runtime:** 30 min target. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
+- **Runtime:** 30 min target. Step breakdown: get Claude Code started 1 / pick repo 10 / start session 2 / content folder 3 / hand rest to Claude 12. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
 - **Delivery architecture:** student's repo is the working directory across every module. The content folder sits on disk for the student's own browsing reference (lectures + exercises + reference also render on the workbook site); Claude never reads from it. Skills install to `~/.claude/skills/` (user-level), auto-discover in every session regardless of cwd. Compounding artifacts split clean: rules → `CLAUDE.local.md` (personal, gitignored); team rules → `CLAUDE.md` via PR.
 - **Transport — two paths to the same disk state.** Step 3 forks: 3.a manual download from `<CONTENT_URL>` to `~/Downloads/agents-102-content.tar.gz`, 3.b Claude downloads via Bash `curl`. Step 4 is identical in both paths — agent extracts the tarball from `~/Downloads/`, installs skills, screens bugs. Cross-platform via Claude Code's Bash tool: macOS/Linux native, Windows via Git Bash (which Claude Code requires). Confirmed against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs (Win10 1803+ ships native `curl.exe` and `tar.exe`). Manual path covers IT-locked environments where outbound to the customer URL is blocked — trainer ships tarball via email or SharePoint.
 - **`<CONTENT_URL>` placeholder is build-time substituted** by `scripts/build-workbook.js` per-customer (e.g., `https://agents102.bosser.consulting/clients/acme/agentic-engineering-101/agents-102-content.tar.gz`). Source markdown carries the literal placeholder so the substitution is auditable; rendered workbook never shows the placeholder. Rule-compliance note: this is the explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build-time substitution, not student fill-in.
 - **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The exception is the manual download (3.a), a transport primitive, not a file-edit.
-- **Artifacts at end of prework:** chosen repo (Claude Code open in it), content folder on disk, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
+- **Artifacts at end of prework:** chosen repo (Claude Code session started in it), content folder on disk, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
 - **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback DEFERRED (needs ops decision). Don't absorb install debugging into Module 1 time.
 
 **Artefact contracts** (M0 setup artefacts consumed by later modules; maintainer-only metadata for handoff audits):

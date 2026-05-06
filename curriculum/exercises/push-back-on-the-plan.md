@@ -16,15 +16,15 @@ Start a new Claude Code session at your repo root.
 
 **Time:** 60 minutes.
 
-## Phase 1: Bring a real task (5 min)
+## Phase 1: Bring a real task
 
-Pick a task from your backlog that needs multi-file work, roughly 30–60 minutes of agent execution. Not a one-line fix (plan mode is overkill); not a refactor so big you can't hold the outcome in your head. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters.
+Pick a task from your backlog that needs multi-file work and enough execution depth to make plan mode worth using. Not a one-line fix (plan mode is overkill); not a refactor so big you can't hold the outcome in your head. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters.
 
 **Just a simple task that spans a few files. Not an epic.**
 
 If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
-## Phase 2: Enter plan mode, read what arrives (15 min)
+## Phase 2: Enter plan mode, read what arrives
 
 Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'll drop after the colon, what, why, the one constraint you care about most.
 
@@ -38,7 +38,7 @@ My task:
 
 Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan all the way through before pushing back.** Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
-## Phase 3: Push back twice (15 min)
+## Phase 3: Push back twice
 
 **Don't approve yet.** At the approval prompt, pick **keep planning with feedback**. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.
 
@@ -52,7 +52,7 @@ Two messages, your phrasing, specific to what you saw. Claude acknowledges each,
 
 Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. Find is easier than judge.
 
-## Phase 4: Second-pass read (15 min)
+## Phase 4: Second-pass read
 
 Now hand the plan to a second agent that reads differently than you do.
 
@@ -71,7 +71,7 @@ Typical session: 5–12 questions. Stop when the second read starts reaching: a 
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
 
-## Phase 5: Stop. See the design pattern. (10 min)
+## Phase 5: Stop. See the design pattern
 
 **Don't execute the plan.** The work of making it good is the exercise. Execution is next module's concern.
 

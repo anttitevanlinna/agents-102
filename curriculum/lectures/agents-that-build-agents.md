@@ -18,7 +18,7 @@ That is the flywheel. The agent reads the evidence the loop produced, proposes t
 
 ## What this is not
 
-This is not the agent writing its own skills without you in the room. The student you started this training as might have hoped that was the destination. The engineer you are at the close of Module 6 knows it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.
+This is not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of Module 6, you know it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.
 
 The reason is plain. Claude can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk. The decision about which proposals to act on is grounded in evidence the agent does not have.
 

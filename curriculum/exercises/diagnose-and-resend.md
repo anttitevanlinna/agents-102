@@ -18,7 +18,7 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 
 ---
 
-## Phase 1: Read the return (~15 min)
+## Phase 1: Read the return
 
 Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree via git refs) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
 
@@ -58,7 +58,7 @@ Push back where Claude generalises. Insist on quoted moments. The diagnosis is d
 
 ---
 
-## Phase 2: Align-then-run, in reverse (~10 min)
+## Phase 2: Align-then-run, in reverse
 
 For each named failure, ask the question that earns the three-pattern: *what validation would have caught this in minutes, not hours?*
 
@@ -87,7 +87,7 @@ Read the three answers. You should now have a working description of three piece
 
 ---
 
-## Phase 3: Build the verifier (~20 min)
+## Phase 3: Build the verifier
 
 Three shapes the verifier takes. Pick the one matching your dominant failure. The comfortable shape is rarely the right one; match the failure, not your familiarity.
 
@@ -128,7 +128,7 @@ Smoke-test the verifier you just built. Fire it on two synthetic inputs: one des
 
 ---
 
-## Phase 4: Assemble reference + plan.md (~20 min)
+## Phase 4: Assemble reference + plan.md
 
 Reference artefact pins the task's success criteria and points at the relevant memory, skills, and connectors. plan.md is the durable working document the agent re-reads when its window fills.
 
@@ -159,7 +159,7 @@ Before you save, grill me on missing details that can ruin the smooth run.
 ```
 
 
-Read both files. Push back if the reference reads like generic best practices instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
+Read both files. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
 
 **The exercise ends here.** The module's Debrief takes over: self-compound `CLAUDE.local.md`, then re-send the same task with reference + plan.md + verifier all in play.
 
@@ -171,7 +171,7 @@ Read both files. Push back if the reference reads like generic best practices in
 
 **Word count:** ~810 words body.
 
-**Time budget total:** 65 min exercise body. Module Debrief + re-send adds 15–20 min. Closing lecture adds 12–15 min after Debrief.
+**Time budget total:** 65 min exercise body. Phase breakdown: P1 15 / P2 10 / P3 20 / P4 20. Module Debrief + re-send adds 15–20 min. Closing lecture adds 12–15 min after Debrief.
 
 **Frameworks riffed on:**
 - **Diagnosis through named failure modes** (Phase 1) — convergent practitioner vocabulary (goal drift / context rot / plausible-but-wrong); pre-read carries the colour, this exercise applies them.

@@ -1,11 +1,8 @@
 # Agentic Engineering 101, sponsor prework
 
-**Audience:** the sponsor CTO (or equivalent buyer) who signed the cohort for their team.
-**Purpose:** the one question the training needs answered *before* Day 1, *where does durable engineering knowledge live in this company so an agent can read it next time?*
-**Runtime:** 15–20 minutes, once. Five answers, one reason each.
-**Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes your answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file. No student asks *"where should this go?"*, your answer is already in the prompt.
+Five answers, one reason each.
 
-This is the asset we send to the sponsor after contract signature, weeks before Day 1. It's a pre-engagement deliverable, not a training artifact.
+Your answers become the cohort's pre-engagement contract. In the room, the trainer surfaces your default at the moment an engineer needs it. No one asks *"where should this go?"* Your answer is already in the prompt.
 
 ---
 
@@ -121,6 +118,11 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 <!-- maintainer -->
 
 **Maintainer notes:**
+- **Audience:** the sponsor CTO (or equivalent buyer) who signed the cohort for their team.
+- **Runtime:** 15–20 minutes.
+- **Purpose:** answer the one question the training needs settled before Day 1: where does durable engineering knowledge live in this company so an agent can read it next time?
+- **Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes the sponsor's answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file.
+- This is the asset sent to the sponsor after contract signature, weeks before Day 1. It's a pre-engagement deliverable, not a training artifact.
 - Ship alongside the signed contract and the cohort prework email. Sponsor fills in 15–20 minutes; ops converts the five answers into `content/pre-engagement-contract.md` in the content bundle.
 - **Asset status:** v0 — sponsor-facing, not yet sent to a real sponsor. First cohort delivery is the first test. Iterate from sponsor feedback.
 - **Tone check:** sponsor is a builder CTO (reads Willison, uses Claude Code daily). Direct, short, no consultant padding. The Rory beats ("Half the CTOs who fill this worksheet discover…") earn their keep because the sponsor wants a transformation artifact, not a training-supplier intake form. If a real sponsor finds any line reads like sales boilerplate, trim.

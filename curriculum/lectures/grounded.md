@@ -91,8 +91,8 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 - **Benchmark as the measuring stick** — 30 claims, plain, enough to see the pattern without making the run mostly processing. No vendor reference; adjudication against the student's evidence is the judge of the judges.
 
 **Philosophy callout (sparing):**
-- Belief #21 — name what you don't know — lands in the closing. The judge's "Known limit:" line IS #8 made operational.
-- Belief #14 — practice beats external proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
+- Belief — Name what you don't know — lands in the closing. The judge's "Known limit:" line makes the belief operational.
+- Belief — Practice beats external proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.
 
 **Why four, not three, and not ten:**
 - Four gives the scoreboard real spread without drowning the student. Three collapses on close races; ten is paralysis.

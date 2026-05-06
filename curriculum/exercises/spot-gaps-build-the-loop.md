@@ -14,7 +14,7 @@ Continue in your M5 worktree session at `../<repo>-m5`. If that session isn't st
 
 ---
 
-## Phase 1: Diff and name the gaps (~15 min)
+## Phase 1: Diff and name the gaps
 
 Open a new Claude Code session in the M5 worktree (the same one you ran M5 in, at `../<repo>-m5`). Two runs of the same task are accessible from there: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/` in folders matching the original repo path. That's the auto-stored scrollback Claude Code keeps for every session.
 
@@ -59,7 +59,7 @@ Claude may pause before editing `./CLAUDE.local.md`, a named config file looks r
 
 ---
 
-## Phase 2: Author the session-shaper (~25–35 min)
+## Phase 2: Author the session-shaper
 
 Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
 

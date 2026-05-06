@@ -1,7 +1,5 @@
 # The wizard move
 
-**Time:** 10 minutes.
-
 You've already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it. That's who this training is for. Nobody here needs the "agents can write code" setup.
 
 So this training won't.

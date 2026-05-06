@@ -10,7 +10,7 @@
 
 The PR shipped. Now compound the session, then make the first move outside the repo.
 
-## Compound (~10 min)
+## Compound
 
 **Prompt** *(Claude Code)*
 
@@ -27,13 +27,13 @@ Read Claude's summary. Push back where it misreads. Quote the moment. That push-
 
 > **Quick timebox note.** Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework.
 
-## MCP: why your agent needs to reach outside the repo (~5 min)
+## MCP: why your agent needs to reach outside the repo
 
 Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](reference/mcp-and-connectors.md).
 
 One connector, two actions (read + update), is enough to close the loop you just ran on the bug in the tracker your team actually lives in.
 
-## Close the ticket (~15 min)
+## Close the ticket
 
 Ask Claude to write the close-out note: what the root cause was, how you fixed it, a link to the PR. Then pick how the close-out lands. Three paths, pick whichever is cleanest for your tracker:
 

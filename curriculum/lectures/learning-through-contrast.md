@@ -30,7 +30,7 @@ This is session-management, not packaging. Packaging is what the exercise builds
 
 ## "What if I'm not there to compact?"
 
-Fair question. The diagnosis session you're about to run is ~65 minutes at the keyboard, so manual `/compact` works. But the re-send at the end of M5 will run for hours while you're away. You won't be there.
+Fair question. The diagnosis session you're about to run is bounded keyboard work, so manual `/compact` works. But the re-send at the end of M5 will run for hours while you're away. You won't be there.
 
 Two real options for hands-off runs.
 
@@ -41,7 +41,7 @@ Option 2 is what the exercise builds. The whole point of packaging is that you c
 
 ## What is about to happen
 
-Phase 1: open Claude Code in your repo, ask it to read your M4 artefact through the three lenses, quote specific moments for each. Don't generalise. Quote.
+Phase 1: start a Claude Code session in your repo, ask it to read your M4 artefact through the three lenses, quote specific moments for each. Don't generalise. Quote.
 
 Phase 2 inverts the move: for each named failure, ask what validation would have caught it in minutes, not hours.
 

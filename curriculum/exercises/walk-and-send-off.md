@@ -18,7 +18,7 @@ Start a new Claude Code session at your repo root.
 
 ---
 
-## Phase 1: Pick the task (~10 min)
+## Phase 1: Pick the task
 
 Start a new Claude Code session in your repo. One or two candidate tasks come in with you (Connections). Claude screens them: it can't scan your roadmap or Jira, and that stays your call. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
 
@@ -47,9 +47,9 @@ Push back when the read misses something about the codebase. Claude is reading t
 
 ---
 
-## Phase 2: Walk and fill (~35 min)
+## Phase 2: Walk and fill
 
-### Run the audit (~10 min)
+### Run the audit
 
 Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.
 
@@ -68,7 +68,7 @@ For each item, say: (a) what's thin, (b) what a properly-prepared agent would ne
 
 Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
 
-### Fill the gaps (~25 min)
+### Fill the gaps
 
 Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. You'll see next module what the others were for.
 
@@ -93,7 +93,7 @@ You propose solutions and ask questions. Use the ask-questions tool to speed up 
 
 ---
 
-## Phase 3: See the frame (~15 min)
+## Phase 3: See the frame
 
 Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
 

@@ -1,7 +1,5 @@
 # How this training was built
 
-**Time:** 5–7 minutes.
-
 At start, this training was bulletpoints. A strategy doc. Seven headings, thirty bullets, the sort of list that makes you feel like you understand something and then realise you don't.
 
 The bullets became module prototypes. Little drafts of what the training might be. Storylines. First lectures. All of them wrong.
@@ -12,11 +10,11 @@ That gap turned out to be the valuable part.
 
 ## Wrong is how steering gets in
 
-If the first draft had been right, there would have been nothing to push on. The drafts were wrong in specific, namable ways. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked the student to do something a real engineer would find insulting. A module that wanted to feel tidy where the feeling should have been unease.
+If the first draft had been right, there would have been nothing to push on. The drafts were wrong in specific, namable ways. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease.
 
 Each wrongness was a thing to point at. And each thing pointed at turned into a rule.
 
-"Don't ask the student three scripted questions at the end of a module."
+"Don't end a module with three scripted questions."
 "Every prompt block gets a one-sentence lead-in with a command verb."
 "Every claim about Claude Code must have been verified within the last month."
 

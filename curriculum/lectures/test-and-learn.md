@@ -23,7 +23,7 @@ Run one. Today, un-packaged. You'll walk what you've built against the task, fil
 
 Run two. M5, packaged. You'll read what came back, find what went wrong, and learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
 
-The contrast is the lesson. No lecture on "best practices for long-running agents" lands the way *you just watched this fail, here's what would have caught it* lands. That's why M4 launches un-packaged: to earn the M5 teaching moment.
+The contrast is the lesson. No lecture on generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands. That's why M4 launches un-packaged: to earn the M5 teaching moment.
 
 ## Two frameworks you'll use today
 

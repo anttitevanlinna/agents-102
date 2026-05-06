@@ -39,7 +39,7 @@ claude mcp add --transport http github https://api.githubcopilot.com/mcp --heade
 
 Requires a GitHub Personal Access Token with repo scope. More capability than `gh`; more setup.
 
-**Default recommendation for AE101:** Path A. Students get the Bash-driven loop without extra auth dance.
+**Default recommendation for AE101:** Path A. You get the Bash-driven loop without extra auth dance.
 
 ### Jira — Atlassian Rovo MCP (official)
 

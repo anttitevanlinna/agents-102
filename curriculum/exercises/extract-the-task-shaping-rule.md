@@ -8,7 +8,7 @@
 
 **Time:** 12 minutes.
 
-## Phase 1: Surface the rules from this session (4 min)
+## Phase 1: Surface the rules from this session
 
 You just ran a plan, two push-backs, a second-pass walk-down, and an approval. The decisions you made along the way carried task-shaping rules. Time to name them.
 
@@ -23,7 +23,7 @@ Read this session end-to-end. Propose three to five rules about what makes a mul
 
 When Claude pauses for the rewrite-and-reject pass, that is the engagement step. The rule that arrives generic is the one that needs your hand on it.
 
-## Phase 2: Save it where you'll find it again (2 min)
+## Phase 2: Save it where you'll find it again
 
 Decide the location with Claude. The dimension that matters is when the rules fire — anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.
 
@@ -36,7 +36,7 @@ Let's decide together where we store this for optimal use in future. Propose two
 
 Read the three rules Claude shows back. If any drifted from your wording, push back and have Claude rewrite.
 
-## Phase 3: Where could this go next? (6 min)
+## Phase 3: Where could this go next?
 
 Now the open question. The prompt asks for shapes, not code.
 
@@ -51,7 +51,7 @@ Suppose I wanted this rules file to drive automated task-splitting in the future
 
 Read the answer. The shapes Claude names are the same ones the mini-lecture grounds in real practitioner work.
 
-## Optional: Reverse-engineer your task manager (5 min)
+## Optional: Reverse-engineer your task manager
 
 If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields, title, description, comments, and links. One ticket is enough for a first read.
 

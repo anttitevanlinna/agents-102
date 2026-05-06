@@ -12,7 +12,7 @@
 
 ---
 
-## Phase 1: ask Claude to author the skill (~12 min)
+## Phase 1: ask Claude to author the skill
 
 Skills aren't hand-crafted. They're authored through conversation.
 
@@ -35,7 +35,7 @@ When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a perso
 
 Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
 
-## Phase 2: invoke the skill on the security-tested feature (~6 min)
+## Phase 2: invoke the skill on the security-tested feature
 
 Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.
 
@@ -52,7 +52,7 @@ Then, in the same response, read the test strategy you just produced above and a
 
 Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
 
-## Phase 3: ship (~2 min)
+## Phase 3: ship
 
 The skill is already at `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique). Auto-discovered in every session you run. That's the ship.
 

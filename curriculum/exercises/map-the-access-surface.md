@@ -18,7 +18,7 @@ Start a new Claude Code session at your repo root.
 
 ---
 
-## Phase 1: invoke the skill (~7 min)
+## Phase 1: invoke the skill
 
 Start a new Claude Code session at your repo root. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name.
 
@@ -53,7 +53,7 @@ The feature is:
 
 Answer the one-sentence feature question. Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
 
-## Phase 2: walk the map in conversation (~3 min)
+## Phase 2: walk the map in conversation
 
 Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you've seen the structured read before deciding your deltas in Phase 3.
 
@@ -63,7 +63,7 @@ Ask Claude to walk you through the surface map in chat (categories, key findings
 Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I'll tell you in the next phase.
 ```
 
-## Phase 3: write the delta (~7 min)
+## Phase 3: write the delta
 
 Now you decide.
 
@@ -90,11 +90,11 @@ The surface the skill missed that I know matters is:
 
 Answer. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
-## Phase 4: handoff check (optional, up to ~3 min)
+## Phase 4: handoff check
 
 You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
 
-Most students skip this. Some want the pause. Your call.
+Most people skip this. Some want the pause. Your call.
 
 ---
 

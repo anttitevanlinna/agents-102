@@ -1,7 +1,5 @@
 # Where the rule could live
 
-**Time:** 4–5 minutes.
-
 You have a `.md` file with three to five rules about how multi-file tasks want to be factored on your codebase. Three shapes for what happens to a file like this in practice. Each is real; each is downstream of where you are today.
 
 ## Slack-triage shape

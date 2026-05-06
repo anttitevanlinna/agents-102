@@ -1,7 +1,5 @@
 # When a plan is good
 
-**Time:** 10–12 minutes.
-
 Three things a good plan has. Three pressures that quietly make bad plans look good. That's the lecture. Then you go and push back on one.
 
 ## What plan mode actually is

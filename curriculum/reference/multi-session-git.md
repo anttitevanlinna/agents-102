@@ -1,6 +1,6 @@
 # Multi-session and Git: survival guide
 
-Optional homework between M1 and M2. ~10 min read. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other's state.
+Optional homework between M1 and M2. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other's state.
 
 You do not have to start here. Find your way to this over time. There is no rush.
 
@@ -92,6 +92,8 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into. Fi
 <!-- maintainer -->
 
 **Canonical home:** `curriculum/reference/multi-session-git.md`. Referenced from AE101 M1 homework.
+
+**Read time:** ~10 min.
 
 **Open question for first-cohort feedback:** does AE101 want `git worktree` as the default mental model for multi-session, or as an advanced move taught only after students have landed the single-session loop? Current stance: optional homework (this file), not a prerequisite. Reassess after Cohort 1 reports.
 

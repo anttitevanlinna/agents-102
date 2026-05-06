@@ -5,11 +5,11 @@ Reading a plan is finite. Your own read catches some of it, a second agent walki
 
 ## Prework
 
-About 10 min. Surface one multi-file backlog task in conversation with Claude. Criteria: ~30–60 min agent work, touching wrong file matters, you'd ship it today if you had the hour.
+Surface one multi-file backlog task in conversation with Claude. Criteria: non-trivial agent work, touching wrong file matters, you'd ship it today if you had the hour.
 
 **Just a simple task that spans a few files. Not an epic.**
 
-Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) (~30 min); [Multi-session and Git: survival guide](reference/multi-session-git.md) (~10 min).
+Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](reference/multi-session-git.md).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -58,15 +58,15 @@ If one branch from this session sharpened how plans get read in this codebase, i
 
 ## Next
 
-You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the 15 minutes. Module 3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; Module 3 reveals that and has you author your first one.
+You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the extra read. Module 3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; Module 3 reveals that and has you author your first one.
 
 ## Pre-reads before Module 3
 
 Optional. Skipping either piece does not break Module 3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
 
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (~10–15 min, foundational framing from June 2025, canonical naming of the threat class, used as reference not as fresh evidence). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (foundational framing from June 2025, canonical naming of the threat class, used as reference not as fresh evidence). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) (~20 min). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for Module 3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for Module 3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 
@@ -79,6 +79,7 @@ Optional. Skipping either piece does not break Module 3. The point is to land ST
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
+- **Prep timing:** backlog-task surfacing 10 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.

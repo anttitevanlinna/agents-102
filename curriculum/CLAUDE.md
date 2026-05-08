@@ -43,7 +43,7 @@ Full ladder definitions, error-class rationale, audit-cost reasoning: `memory/co
 
 **A portfolio of 3-4 trainings.** Agents 101 is the first (for builder leaders making the chat-to-systems leap). Engineering Management is the second (for engineering managers leading agentic change; strategy in `bosser-strategy:content-strategy-engineering-management.md`). Agentic Engineering 101 is the third (for software engineer ICs, L0 → L3 path; strategy in `bosser-strategy:content-strategy-agentic-engineering-101.md`). Executive briefing and domain-specific variants will follow. The Engineering Management + Agentic Engineering 101 pair pincer the transformation — managers create conditions, engineers run at capacity. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
 
-**Source of truth:** strategy files define each training's arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library. Agents 101 delivery architecture lives in `curriculum/trainings/agents-101/training-architecture.md`.
+**Source of truth:** strategy files define each training's arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library. Per-training delivery architecture: Agents 101 at `curriculum/trainings/agents-101/training-architecture.md`; Agentic Engineering 101 at `curriculum/trainings/agentic-engineering-101/training-architecture.md` (Claude Code today; Gemini CLI as planned alternate runtime under §Future TODO).
 
 See `## Copyright fence` below before importing anything from external training materials.
 
@@ -192,7 +192,7 @@ Curriculum content describes a real tool that ships on a real cadence. Getting t
 
 **General architectural rules:**
 
-1. **Platform claims must be current.** If writing about Claude Code, Claude Desktop, Cowork, connectors, skills, scheduled work, or cloud/remote work, verify the behavior before asserting it. For Agents 101's current runtime contract, see `curriculum/trainings/agents-101/training-architecture.md`.
+1. **Platform claims must be current.** If writing about Claude Code, Claude Desktop, Cowork, Gemini CLI, connectors, skills, scheduled work, or cloud/remote work, verify the behavior before asserting it. Per-training runtime contracts: `curriculum/trainings/agents-101/training-architecture.md` (CLI + Desktop + Cowork), `curriculum/trainings/agentic-engineering-101/training-architecture.md` (CLI + Desktop today; no Cowork; Gemini CLI planned, see §Future TODO).
 
 2. **Skill invocation must be backed by shipped capability.** A curriculum artifact that invokes a skill by name requires that the skill be installed or shipped in the relevant training scaffold. Otherwise inline the method as a prompt move. Training-specific decisions about which skills ship belong in the training architecture or strategy file.
 

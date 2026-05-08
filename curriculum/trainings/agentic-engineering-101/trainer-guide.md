@@ -16,9 +16,11 @@ In cohort delivery, you carry the push-backs by default. The Agentic Nerd can su
 
 ## Delivery Architecture
 
+Canonical contract lives in [training-architecture.md](training-architecture.md), read it once before your first cohort. Summary for delivery prep:
+
 AE101 uses a content folder plus the student's real repo. The content folder is reference material. Durable work lands in the repo or in the student's runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.
 
-AE101 is a Claude Code training. The live surface is Claude Code CLI unless the cohort has deliberately chosen another Claude Code surface. Keep the vocabulary clean: `subagent`, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code.
+AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: `subagent`, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see [training-architecture.md §Future TODO](training-architecture.md); not yet active for delivery.
 
 AE101 usually runs weekly. At the start of every non-first session, name last week's state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.
 

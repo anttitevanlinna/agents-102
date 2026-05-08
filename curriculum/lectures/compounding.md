@@ -51,12 +51,12 @@ Look at the memory I just built. Pick the three topic pages that are still the m
 
 Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
-**Time:** 10 minutes.
-
 <!-- maintainer -->
 
 **Quality:** maintainer-reviewed 2026-04-29
 - maintainer-reviewed 2026-04-29 (Antti, M2 closing lecture manual read)
+
+**Time:** 10 minutes.
 
 **Philosophy callouts used (per the sparing rule):**
 - **#3 Mental models only come from doing** — named implicitly in the opening ("you can't picture it from a description — you had to see it"). The whole Phase 3 debrief is this belief landed.

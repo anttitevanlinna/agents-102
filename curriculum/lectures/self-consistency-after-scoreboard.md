@@ -6,7 +6,7 @@ Self-consistency asks a different question: *if the agent writes the briefing ag
 
 That is useful, but it is not the yardstick. A claim can be stable and still unsupported if both runs repeat the same bad assumption. A claim can be grounded and still be phrased differently. Drift is a warning signal, not proof of fabrication.
 
-This is why self-consistency sits after the scoring, not inside the scoring panel. The scoreboard tells you which groundedness detector earned the judge file. Self-consistency is a teacher demo that shows another shape of uncertainty: the model's answer may not be reproducible even when the evidence surface stays fixed.
+This is why self-consistency sits after the scoring, not inside the scoring panel. The scoreboard tells you which groundedness detector earned the judge file. Self-consistency shows another shape of uncertainty: the model's answer may not be reproducible even when the evidence surface stays fixed.
 
 This is optional. If you run it, you don't need the output to complete Module 5.
 
@@ -82,9 +82,9 @@ Keep the techniques that fit my output; swap any that don't for methods that cat
 Ask me what output I'm checking, where my evidence lives, and what short filename to use under `judges/`. Then write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep it under 20 lines. End with a one-line "Known limit:" naming what the judge can't catch.
 ```
 
-**Time:** 8-10 minutes if demoed live; 3 minutes if taught as contrast only.
-
 <!-- maintainer -->
+
+**Time:** 8-10 minutes if demoed live; 3 minutes if taught as contrast only.
 
 **Placement in module:** Immediately after the Hallucination benchmark exercise. The judge is already saved. This lecture/demo contrasts groundedness scoring with reproducibility drift without reopening the detector panel.
 

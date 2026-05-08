@@ -16,7 +16,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. The trainer posts a separate shared deliberation folder in chat for the room-scale work. In-room, the shared folder is nearly empty at the start: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
+Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. The room-scale work uses a separate shared deliberation folder. At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
 Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.
 
@@ -24,7 +24,7 @@ The question that shows up without being asked: *where is this all going?*
 
 Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'll keep sharpening.
 
-**Agent generates agent (demo, ~5 min).** The meta-tool in action. Sets up the Extend exercise. You watch one agent build another, end-to-end, on real input. That's the whole lecture.
+**Agent generates agent.** The meta-tool in action. Sets up the Extend exercise. You watch one agent build another, end-to-end, on real input. That's the whole lecture.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
 
@@ -83,6 +83,7 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create
+- **Demo time:** ~5 minutes.
 - **Materials (trainer):** demo agent that generates another agent (for the short lecture); separate SharePoint/OneDrive shared deliberation folder posted in chat at the start of the module; one subfolder per participant; buyer/sponsor challenge prompt; one or two central synthesizer prompts; midpoint instruction injection by the synthesizer through `midway-instructions.md`; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-disciplines — Rumelt on *crux*, Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are used in M7 as plain exercise moves and can be named explicitly here at room scale. **No pre-shipped strategy skills anywhere in Agents 101** (M4 is the canonical personal-skill authoring module).
 - **Plug points:** CTO/sponsor present; company's own strategy question feeds into all agents
 

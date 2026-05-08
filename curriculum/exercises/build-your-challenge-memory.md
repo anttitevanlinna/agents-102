@@ -8,6 +8,8 @@ You've just pinned your challenge in `./challenge.md` (the opener). Now you buil
 
 The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session (the chat window you opened in the opener)</span><span class="rt-cowork">task (the workspace you opened in the opener)</span> running. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
 
+**Time:** 45 minutes.
+
 **Phase 1. Curate, ingest, build.**
 
 A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: Claude helps you curate a plan, then Claude pulls the actual content into `sources/`, then Claude builds `memory/` from what's on disk.
@@ -197,8 +199,6 @@ Two things combined make a system: *persistence* (it remembers) and *automation*
 Every module after this one uses the memory you just built.
 
 You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-mode review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
-
-**Time:** 45 minutes.
 
 <!-- maintainer -->
 

@@ -4,6 +4,8 @@
 
 You built a memory today. One live challenge, curated sources, a compiled set of claims. Now give it a pulse. This homework puts a scheduled agent in front of your memory so it reads the thing every morning and tells you something useful before you've had coffee.
 
+**Time:** 35 minutes to set up. One glance a day for a week.
+
 **Pick one of three jobs.** Choose whichever fits your week:
 
 - **Morning plan informed by the challenge**, reads the memory and your calendar, produces a 5-line plan that names which of today's meetings actually move the challenge forward and which are noise
@@ -91,8 +93,6 @@ Your memory stops being a snapshot and starts being a system. Every morning the 
 **The point:**
 
 A memory that sits there is a document. A memory that gets read by an agent on a schedule, producing output that looks like it belongs to your company and that you actually respond to, is the start of a loop. Module 2 built the memory; this homework builds the loop. Every subsequent module compounds on it, and `./style.md` travels with you. Every agent you build from here on that produces HTML will look native to the organisation, because the rule is in the file every agent reads.
-
-**Time:** 35 minutes to set up. One glance a day for a week.
 
 <!-- maintainer -->
 

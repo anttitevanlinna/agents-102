@@ -234,8 +234,6 @@ The forum didn't converge on the first try. Pushback rounds were the work. The f
 
 You do not graduate. You have a flywheel.
 
-**Time:** 60 minutes.
-
 <!-- maintainer -->
 
 **Frameworks riffed on:**

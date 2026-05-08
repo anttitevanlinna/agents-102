@@ -1,7 +1,5 @@
 # The New Human Role in the Loop
 
-**Time:** 8-10 minutes.
-
 Think back to the first thing you made in this training.
 
 Claude wrote a snake game. Then it wrote a page that sounded more like you after you gave it better context. In Module 2, it read sources and wrote memory files. In Module 3, four sessions worked through the same folder, and three agents wrote different stances into files. In Module 5, a benchmark produced a judge. In Module 6, that judge started running inside a loop.
@@ -130,6 +128,8 @@ Designing the conditions under which the system earns more autonomy, one loop at
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29
+
+**Time:** 8-10 minutes.
 
 **Placement:** Closing lecture for Agents 101 Module 6, after `eval-loop.md` and before Debrief / Next. Designed to close the six-module arc when M7/M8 are not held.
 

@@ -5,7 +5,7 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-About 30–60 min before Module 1. Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat).
+Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -100,6 +100,7 @@ You just made great output AND packaged what you learned into a file the agent c
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply
+- **Prework time:** about 30–60 minutes before Module 1.
 - **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief sharpens `module-1/personal-brand-generation.md`; Module 1 deliberately creates no `CLAUDE.md`.
 - **Plug points:** participant's own LinkedIn profile — no org data needed yet
 

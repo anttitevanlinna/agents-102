@@ -2,7 +2,7 @@
 
 **What you do:**
 
-Two cases. Both in public court/government records. Together they take about 25 minutes and do more than a list of ten fail-tweets ever could.
+Two cases. Both in public court/government records. They do more than a list of ten fail-tweets ever could.
 
 Everyone knows agents are failing left and right. What's harder to find is failures where the **organisational decisions that led to the failure** are on the record too, not just the symptom. These two are that rare thing: a judge and a government auditor have both documented what the LLM produced AND what the people around it did and didn't do.
 
@@ -82,9 +82,9 @@ One sentence per case, on paper or in a note you'll open Monday: *"The organisat
 
 That's it. No reading list. No ten-bullet rundown of every headline agent failure of 2024–25. Two cases, close-read, with the missing check named in your own words.
 
-**Time:** 35-40 minutes. 10 per case, 10-15 for the mechanisms, 5 for the two sentences.
-
 <!-- maintainer -->
+
+**Time:** 35-40 minutes. 10 per case, 10-15 for the mechanisms, 5 for the two sentences.
 
 **Two, not ten — editorial reasoning:**
 - The prework's job is to calibrate the eye, not stoke anxiety. Everybody in a Agents 101 room has seen the headline "another AI lawyer fiasco." What they haven't seen is a case where BOTH the LLM output AND the organisational root cause are on the public record.

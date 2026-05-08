@@ -2,7 +2,7 @@
 
 **What you do:**
 
-Two reads. Together, 25-35 minutes. Neither asks you to build anything. Module 4 has you run policy files directly, package the useful check as reusable expertise, then run it against the system you built in Modules 2-3. These reads calibrate your eyes for what personal skills are and why agent risk is layered on top of the company controls you already rely on.
+Two reads. Neither asks you to build anything. Module 4 has you run policy files directly, package the useful check as reusable expertise, then run it against the system you built in Modules 2-3. These reads calibrate your eyes for what personal skills are and why agent risk is layered on top of the company controls you already rely on.
 
 **Reading 1. Personal skills, in plain language.**
 
@@ -16,7 +16,7 @@ You have spent three modules shaping agents with prompts, files, and rules. Pers
 
 *Why skills matter for Module 4.* Until now, you have added expertise by writing prompts or dropping material into `sources/` or `memory/`. That works, but everything lives in one pile. Skills scope expertise. In Module 4 you will first run your company's policy files raw, then package the useful check with two lenses: a policy lens (your company's rules) and an agent-risk lens (what the agent can reach, what it might leak, and how ordinary text can mislead it). You will not need to be a policy expert or a security specialist; the reusable check will be. **The check carries the expertise you fed it, and you author it.**
 
-*The Module 4 shape.* Two exercises. The first runs the policy files raw and packages the useful check. The second loads the package in your runtime, runs the packaged lenses against the agent system you built in Modules 2-3, and mitigates one risk. Splitting the move into two exercises means authoring gets real time. First-time packaging is not a three-minute warmup.
+*The Module 4 shape.* Two exercises. The first runs the policy files raw and packages the useful check. The second loads the package in your runtime, runs the packaged lenses against the agent system you built in Modules 2-3, and mitigates one risk. Splitting the move into two exercises means authoring gets real time. First-time packaging is not a throwaway warmup.
 
 One thing to think about before class: *what is one expertise you would want your agent to borrow, if you could point at a skill and say "use that way of working"?* Not a lecture topic. A concrete move. Retention rules. Brand voice. Your CFO's favourite metric framing. Three words in a note.
 
@@ -45,16 +45,16 @@ Module 4's first exercise asks you to type three to five lines about what matter
 - *"Our sharper rule beyond GDPR is the export-control list: these named jurisdictions cannot see model output."*
 - *"The data my Module 3 system retrieves includes one partner-NDA source I have not pre-scoped."*
 
-Three to five lines, plain language, the things you would not want a generic policy template to gloss. Five minutes of thinking now is what makes packaging feel like authoring rather than answering questions.
+Three to five lines, plain language, the things you would not want a generic policy template to gloss. Thinking now is what makes packaging feel like authoring rather than answering questions.
 
 **What to bring to class:** the five lines above plus knowing (a) what shape a personal skill has, and (b) that agent security is layered on top of normal company controls: same residual-risk vocabulary, faster cadence, four new risk patterns by name. The Module 4 lecture picks up both.
-
-**Time:** 30-40 minutes total. 10 on personal skills, 15-20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
 
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29
 - compendium-audited 2026-04-25 (check_writing, check_student_facing)
+
+**Time:** 30-40 minutes total. 10 on personal skills, 15-20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
 
 **Frameworks riffed on:**
 - **STRIDE** (Microsoft SDL) — historical reference; the M4 audit uses named attack classes directly rather than STRIDE categories so the lens cannot collapse into closed-loop self-grading.

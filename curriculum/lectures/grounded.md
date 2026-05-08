@@ -78,9 +78,9 @@ Now you run the benchmark. Well, not by hand. You set up four detectors, a claim
 
 Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The claim pool is the measuring surface the rest of the exercise turns on. Keep the main session blind until the claims exist.
 
-**Time:** 10–12 minutes.
-
 <!-- maintainer -->
+
+**Time:** 10–12 minutes.
 
 **Placement in module:** After Connections, before the exercise. Primes the empirical-method-selection frame; the exercise runs the benchmark on the student's own M3 material. All four detectors are practised in the exercise. Lecture and exercise are tightly coupled now.
 

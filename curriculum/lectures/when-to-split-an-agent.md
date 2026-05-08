@@ -46,12 +46,12 @@ You cannot hire three agents and expect the output to be three times as good. Yo
 
 A whole module just showed you multi-agent works. Next Monday, you will be tempted to apply it to everything. Don't.
 
-**Time:** 8–10 minutes.
-
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
 - judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+
+**Time:** 8–10 minutes.
 
 **Placement in module:** After the exercise, before the Debrief. The exercise proves both shapes work; the lecture names them and draws the boundary. Per the no-telling-precedes-doing rule, the "start with don't" default is safer delivered after the exercise — pre-exercise it sounds like a disclaimer, post-exercise it lands.
 

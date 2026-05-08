@@ -2,7 +2,9 @@
 
 **What you do:**
 
-Two reads. Together, 30–40 minutes. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything. Just to arrive with your eyes calibrated.
+Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything. Just to arrive with your eyes calibrated.
+
+**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
 
 **Reading 1. Five practitioners, automating their life.**
 
@@ -41,8 +43,6 @@ When the job is done, it returns a single result to the main agent and disappear
 For the full reference, search *"<span class="rt-code">Claude Code subagents</span><span class="rt-cowork">Cowork agents</span>"* in Anthropic's docs or open Claude's in-app help. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
 **What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
-
-**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
 
 <!-- maintainer -->
 

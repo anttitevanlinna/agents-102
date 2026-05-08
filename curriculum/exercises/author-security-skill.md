@@ -12,7 +12,9 @@
 
 Run the policy files raw against the system you built in modules 2-3. Then package the useful move into reusable expertise: one personal skill with two lenses. Stop when the skill exists.
 
-Three phases. Forty minutes. The raw run proves the policy files are runnable. The package makes the check reusable. The loading and audit come next.
+**Time:** 40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.
+
+Three phases. The raw run proves the policy files are runnable. The package makes the check reusable. The loading and audit come next.
 
 A **skill** packages an expertise (rules, checklists, the moves an agent runs) into something the agent can load and use. Until now you have shaped agents with prompts, files, and rules. This is the next layer up: a reusable "how" the agent loads when the work matches. Module 4 is the canonical place this authoring lands. Taught once, here.
 
@@ -146,8 +148,6 @@ The reusable check exists now, with two lenses and four named risk patterns cove
 **The point:**
 
 The policy files are source material. The reusable check is the expert in the room. Eyeballing every file by hand is not. The check carries judgment about what matters in this system, with the four named risk patterns as the forcing function. Agent mitigations sit on top of normal company controls, not in place of them. The package is ready; the first loaded use should be the real audit.
-
-**Time:** 40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.
 
 <!-- maintainer -->
 

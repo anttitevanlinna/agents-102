@@ -1,7 +1,5 @@
 # Iterate and Learn
 
-**Time:** 8 minutes.
-
 Think back an hour. *Context* was a word someone might put on a slide. You had a vague sense it mattered. Now it's something you can point at, the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.
 
 That's a small thing. It's also the whole thing.
@@ -25,3 +23,5 @@ Now: five minutes with Claude. The debrief.
 **Quality:** draft 2026-04-30
 - draft 2026-04-30 (renamed and reframed close around iterate-and-learn loop; needs re-review)
 - maintainer-reviewed 2026-04-29 (Antti, M1 closing lecture manual read)
+
+**Time:** 8 minutes.

@@ -6,10 +6,10 @@ The context might be a calendar, a short note, or a file in the training folder.
 
 That is the first system boundary. Context tells the agent what world it is in. The guardrail tells it what not to do. The schedule makes it come back. Module 2 uses the same three ingredients for your challenge memory.
 
-**Time:** 3-5 minutes.
-
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-30
+
+**Time:** 3-5 minutes.
 
 **Role in Module 2:** Short trainer demo before the main memory exercise. Shows context + guardrail + schedule as the smallest visible agent system. Keep proposal-only unless runtime support and cohort permissions are verified.

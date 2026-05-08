@@ -1,7 +1,5 @@
 # Context is King
 
-**Time:** 10 minutes.
-
 The same question. Two answers. What makes the difference?
 
 ## The demo you're about to see
@@ -46,3 +44,5 @@ That's a guardrail. That's your turn.
 
 **Quality:** maintainer-reviewed 2026-04-29
 - maintainer-reviewed 2026-04-29 (Antti, M1 opening lecture manual read)
+
+**Time:** 10 minutes.

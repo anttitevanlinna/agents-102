@@ -14,7 +14,9 @@ Four detectors, same briefing, one scoreboard. You don't hunt for ungrounded cla
 
 The move is empirical. You don't pick a detection method because somebody said so. You run the candidates, measure, and keep the one that caught what mattered on *your* output.
 
-Four phases. 45–60 minutes. The work is mostly done by the claim extractor, the four detectors, and the scorer. Your job is to set the benchmark up, start the run, and watch the scoreboard fill in.
+**Time:** 45–60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
+
+Four phases. The work is mostly done by the claim extractor, the four detectors, and the scorer. Your job is to set the benchmark up, start the run, and watch the scoreboard fill in.
 
 **Phase 0: The target and the benchmark.**
 
@@ -247,8 +249,6 @@ You produced a fresh briefing, extracted a 30-claim pool, spawned four detectors
 Method selection in agent quality work is empirical, not intuitive. You don't trust a detector because you read about it. You trust it because you ran a benchmark on your own output with your own reference and it won. The scoreboard is the explanation. The winner becomes a judge you can defend. The pattern (candidates → benchmark → scorer → winner) is portable to every quality judgment you'll ever automate.
 
 You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, four candidate detectors scored against it, a winning method packaged as a reusable judge file. After Agents 101, when the next quality judgment needs an empirical winner instead of an authoritative pick, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
-
-**Time:** 45–60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
 
 <!-- maintainer -->
 

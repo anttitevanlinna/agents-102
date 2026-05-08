@@ -12,7 +12,9 @@
 
 Module 2 builds you a memory: a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before anything gets built, the problem gets pinned.
 
-*You've read two pieces on this move in prework. One showed the pattern on a personal scale: LLM as librarian, not answerer. The other argued that the same move scales to company knowledge: files, not wikis; version it like code. In the next 15 minutes you name the one challenge it all aims at.*
+**Time:** 15 minutes.
+
+*You've read two pieces on this move in prework. One showed the pattern on a personal scale: LLM as librarian, not answerer. The other argued that the same move scales to company knowledge: files, not wikis; version it like code. In this opener you name the one challenge it all aims at.*
 
 **What counts as a "next big challenge."**
 
@@ -83,8 +85,6 @@ Scan the list. Some suggestions will be obvious; some will surprise you. Circle 
 **The point:**
 
 The hardest part of a memory isn't the tool. It's the scope. A memory about "our company" is a landfill. A memory about *this decision, this month* is a weapon. Picking the challenge well is half the work; the rest of the module does the other half.
-
-**Time:** 15 minutes.
 
 <!-- maintainer -->
 

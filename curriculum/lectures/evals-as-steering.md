@@ -1,7 +1,5 @@
 # Evals as Steering
 
-**Time:** 10-12 minutes.
-
 Ethan Mollick asks a useful question in *The Bitter Lesson versus The Garbage Can*.
 
 Maybe the bitter lesson applies to companies too. Maybe we should stop trying to map every messy process and define the outcome instead. Give the agent enough examples of good work, enough feedback, enough compute, and let it find its own path through the mess.
@@ -111,6 +109,8 @@ You become the person who decides which details the system must never miss.
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29
+
+**Time:** 10-12 minutes.
 
 **Placement:** Opening lecture for Agents 101 Module 6, after the Bitter Lesson / Garbage Can Connections question and before `eval-loop.md`.
 

@@ -12,7 +12,7 @@ Module 1 was a contained creation. Module 2 turns toward work that already has h
 
 Module 2 builds a **memory**: a folder of notes and source material the agent reads before answering. For that to work, the challenge has to be real. Bring a decision you're making, a bet you're placing, or a piece of work where the shape is still unclear.
 
-Do not write the brief yet. Module 2 pins it down in the first 15 minutes, with Claude asking three questions and turning your rough challenge into a short brief. For now, just know the challenge you want to use. Good candidates are open enough to need thought, narrow enough that 5-8 topic pages could cover them, and present enough that your calendar or recent files already contain clues.
+Do not write the brief yet. Module 2 pins it down in class, with Claude asking three questions and turning your rough challenge into a short brief. For now, just know the challenge you want to use. Good candidates are open enough to need thought, narrow enough that 5-8 topic pages could cover them, and present enough that your calendar or recent files already contain clues.
 
 If nothing comes to mind, scan the next two weeks of your calendar. The biggest unresolved thing on it is usually the challenge.
 
@@ -34,7 +34,7 @@ Module 2 asks the agent to create and update multiple files. Before it does that
 
 Reach for this when the next step may write several files, edit anything you care about, or compound its output over multiple steps. Skip it for quick one-turn work where you would simply re-run the prompt.
 
-Take 15 minutes. Pick one:
+Pick one route through the primer:
 
 <div class="rt-code">
 
@@ -63,13 +63,13 @@ Module 2 takes that idea and applies it to your challenge. The memory will be sm
 
 **Bring to Module 2:** one live challenge, connector status checked, plan mode understood <span class="rt-cowork">(or the Cowork simulation understood)</span>, and Karpathy's memory frame in your head.
 
-**Time:** 30-35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 5-10 for Karpathy.
-
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
 - judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-29 (Antti, M2 prework manual read)
+
+**Time:** 30-35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 5-10 for Karpathy.
 
 **Role in Module 2:** Lightweight prework designed to survive being skipped. The challenge-naming moved from prework into the main session (`name-your-challenge.md`, first 15 min of Module 2) because students skip prework and Module 2 Phase 1 stalls for anyone who arrives without a pinned challenge. Connector verification and plan-mode primer stay in prework — they're *useful* before class but not load-bearing if missed (fallback: facilitator triages connector issues live, Code gets a 60-second plan-mode primer and Cowork gets the prompt-level simulation in Phase 1).
 

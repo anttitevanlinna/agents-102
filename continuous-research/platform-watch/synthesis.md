@@ -36,7 +36,7 @@ Not coding agents. Business agents — sales, finance, HR, compliance, operation
 Personal agent works → "my team should have this" → Team agent → "this should be standard" → Company agent
 ```
 
-**The gap nobody has filled — except maybe Anthropic.** No platform has designed the promotion path. You can't take a personal ChatGPT workflow and turn it into a governed team agent. You can't promote a Copilot Studio prototype into a Foundry-hosted production agent. Every transition means rebuilding. **Antspace + BYOC could be the exception:** same deploy protocol, same artifact — personal (Antspace hosted) → company (BYOC on your K8s). If it ships, it's the first designed promotion path. Still staging.
+**Anthropic filled the gap — cycle 101 update (April 22, 2026).** No platform had designed the promotion path until now. Microsoft has three different products on three different runtimes. Google has disconnected layers. OpenAI's Frontier is still zero deployments. **Anthropic shipped the designed promotion path:** Claude Cowork (GA, enterprise RBAC + spend limits + analytics) → Managed Agents (hosted runtime, $0.08/session-hour) → BYOC within Managed Agents (enterprise data-residency). The Antspace thread is resolved — it was internal infrastructure that became Cowork + Managed Agents. Evidence level: Level 0-1 (too new for independent practitioner confirmation at enterprise scale), but the architecture is live and the path is designed. First independent practitioner reports on Managed Agents are Level 2 — two reports, mixed signals (fast deployment vs. lock-in/privacy concerns).
 
 ## Platform Comparison: Business Agent Capabilities (March 2026)
 
@@ -49,7 +49,7 @@ Per-platform details in each platform's `state.md`. This is the cross-platform v
 | **Microsoft** | Copilot in M365 | Copilot Studio (PVA heritage) | Foundry (PaaS, Cosmos DB) | Three different products, different runtimes, no designed path |
 | **Google** | Gemini in Workspace | Workspace Studio (GA Mar 19) | Vertex Agent Builder | Disconnected layers. Studio is new and limited (50 exec/day) |
 | **OpenAI** | ChatGPT + Custom GPTs | ChatGPT Team/Enterprise | Frontier + AgentKit + Agents SDK | Most ambitious full-stack play. Frontier manages ALL vendor agents. |
-| **Anthropic** | Claude Cowork + plugins | Private plugin marketplaces | Antspace BYOC (K8s) | **Antspace could be the first designed promotion path:** same artifact, Antspace-hosted → BYOC on enterprise K8s. Still staging. |
+| **Anthropic** | Claude Cowork (GA Apr 2026) + plugins | Team/Enterprise Cowork with RBAC | Managed Agents BYOC + Cowork Enterprise | **The promotion path shipped (cycle 101, Apr 22):** Cowork GA + Managed Agents public beta + BYOC within Managed Agents. Antspace was internal infrastructure — now public as Cowork + Managed Agents. First designed promotion path is live. |
 
 ### Platform Trajectories (What They're Building Toward)
 

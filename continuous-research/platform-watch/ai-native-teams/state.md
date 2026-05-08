@@ -2,10 +2,10 @@
 type: state
 domain: cross-domain
 evidence_level: 3
-platforms: [claude-code, cursor, codex, honk, intercom-fin]
+platforms: [claude-code, cursor, codex, honk, intercom-fin, cloudflare-workers-ai]
 nordic: true
-updated: 2026-04-04
-cycle: 89
+updated: 2026-04-27
+cycle: 112
 answers:
   - "what does an AI-native team actually look like?"
   - "how do teams divide work between humans and agents?"
@@ -15,7 +15,7 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-04-04 (cycle 89)
+**Last updated:** 2026-04-27 (cycle 112)
 **OODA cycles:** 6
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
@@ -122,6 +122,17 @@ AI dramatically boosts individual productivity but organizational metrics stay f
 - S&P Global: 42% of companies abandon majority of AI initiatives pre-production, up from 17% one year prior. ([Derosiaux/Medium](https://sderosiaux.medium.com/what-changed-in-q4-2025-and-why-enterprises-are-afraid-of-2026-2027-ccd4e632baae), Dec 2025) — [practitioner analysis]
 - Mollick/P&G: Individual + AI ≈ team without AI for average work, but teams + AI produce significantly more top-10% exceptional solutions. ([One Useful Thing](https://www.oneusefulthing.org/p/the-cybernetic-teammate), 2026) — [practitioner direct / academic]
 
+**Cycle 112 update — Three human archetypes emerging (Pragmatic Engineer, N=900, April 14, 2026):**
+
+The Amplification Paradox now has a human-level taxonomy. Engineers split into three types in AI-augmented teams:
+1. **Builders** (quality-focused): Benefit most from AI for refactoring/migrations. Struggle reviewing "AI slop" from colleagues. Report identity loss as hands-on coding loses status. Risk: become bottlenecks when their review queue fills faster than their output.
+2. **Shippers** (outcome-focused): Most enthusiastic. Significantly accelerate delivery. But accumulate technical debt fastest — AI amplifies velocity AND risk simultaneously.
+3. **Coasters** (less experienced): Skill up rapidly. But generate low-quality code requiring builder cleanup. AI enables them to contribute before they've built judgment.
+
+**The paradox mechanism:** Shippers ship more and faster. Coasters fill the queue with more PRs. Builders can't review fast enough. The review bottleneck is a direct consequence of the archetype mix. Teams with mostly Shippers + Coasters produce high velocity + high technical debt. Teams with mostly Builders produce slower velocity + higher quality. Neither profile is "wrong" — the team needs all three, but the ratio determines outcomes.
+
+**Platform tool insight:** ~30% of teams are hitting usage limits, ~15% cite cost as a concern. European companies show more budget resistance than US — consistent with the conservative enterprise adoption pattern we've observed in Nordic platform research. [Source: https://newsletter.pragmaticengineer.com/p/the-impact-of-ai-on-software-engineers-2026 — practitioner analysis, N=900]
+
 **Cycle 89 update — Absorption Bottleneck sub-pattern (approaching Level 3):**
 
 The Amplification Paradox has a specific operational mechanism: Little's Law. AI increases task/PR arrival rate while human review capacity (service rate) stays fixed. Queue grows. This is why org metrics stay flat even when individual output 98% more PRs.
@@ -160,6 +171,7 @@ The Amplification Paradox has a specific operational mechanism: Little's Law. AI
 | **Klarna CS (Siemiatkowski)** | Was ~700 CS agents replaced | **Customer support** | AI replaced 75% of CS volume, then REVERSED — quality dropped, now rehiring with hybrid "Uber-style" model | Level 3 (counter-signal) | [FinTech Weekly](https://www.fintechweekly.com/magazine/articles/klarna-hires-customer-service-after-ai-pivot) |
 | **Goldman Sachs (Argenti)** | Unknown | **Finance/Compliance** | Claude agents for trade accounting, KYC, reconciliation — tool deployment, not yet team restructuring | Level 2 | [American Banker](https://www.americanbanker.com/news/goldman-equips-ai-agents-do-trade-accounting-onboarding) |
 | **OpenAI Codex team (Rasmussen)** | Core <3, full team ~40 | **AI product development** | Full ownership per engineer, no standups/retros, weekly work-practice reinvention, mission-led not coordination-led | Level 2 | [Eng Leadership Newsletter](https://newsletter.eng-leadership.com/p/how-to-build-ai-native-engineering) (paywalled, Feb 2026) |
+| **Cloudflare (iMARS team → Dev Productivity)** | ~6,100 company, 93% R&D | **Infrastructure/networking** | iMARS tiger team: 13 production MCP servers, 182 tools (GitLab, Jira, Sentry), governance baked into platform (default-deny write, audit logging), merge velocity ~doubled. AI code review: 7 specialized agents, median review 3m39s (was hours), human override 0.6% of MRs. | Level 2 | [Cloudflare blog Apr 21](https://blog.cloudflare.com/internal-ai-engineering-stack/) + [Cloudflare blog Apr 20](https://blog.cloudflare.com/ai-code-review/) — [practitioner direct] |
 | **Nordic software co. (finance, anonymized)** | 1 person | **Finance** | Non-coder with consulting background + just enough technical education. 9 months coding with Claude: bookkeeping automation → in-house tooling → AI features. Trajectory: automation → AI features → production tooling. | Level 2 | [direct observation, Mar 2026] — Nordic, first non-engineering coding-agent practitioner |
 | **Nordic software co. (tech director, anonymized)** | 1 person | **Technology/Management** | Non-coder with technical background. Was: slides and docs. Now: dashboards → hosting platform for AI apps. Trajectory: consumption → creation → infrastructure. | Level 2 | [direct observation, Mar 2026] — Nordic, second non-engineering coding-agent practitioner |
 | **Scania/TRATON AI-Enablement** | 4 | **Developer enablement** | MobAI: daily mob 09:00-12:00, rotating Driver/Navigator/Advisor, LLM as participant. Built DevEx Interview Agent deployed across TRATON Group. Inspired by Joe Justice workshop at Crisp. | Level 2 | [Crisp blog](https://blog.crisp.se/2025/06/02/michaelgothe/mob-programming-with-ai-inside-a-high-performing-teams-journey) + [Scania blog](https://www.scania.com/group/en/home/career/life-at-scania/software-developers-at-scania/blog-posts/blog-how-we-use-ai-to-build-a-developer-first-culture.html) — Nordic (Swedish) |
@@ -210,6 +222,27 @@ This extends Pattern G (spec = leadership act) with operational detail. When own
 
 Source: Rasmussen, Eng Leadership Newsletter, Feb 2026 — [practitioner direct, paywalled]. https://newsletter.eng-leadership.com/p/how-to-build-ai-native-engineering
 
+### Emerging Pattern J: Governance-by-Default — AI-Native Scale Requires Baked-In Controls
+**Level 2 (Cloudflare iMARS — single named company, April 2026)**
+
+At organizational scale (hundreds to thousands of engineers), AI-native teams cannot rely on policy documents, training programs, or individual discipline to govern AI use. The governance must be architectural — baked into the platform itself, not layered on top.
+
+**Cloudflare's model:**
+- When an engineer wants to expose an internal resource via MCP, they get approval from the AI governance team, copy a template, write tool definitions, and deploy — inheriting default-deny write controls and audit logging automatically
+- "Standing up a new governed MCP server is minutes of scaffolding, and the governance is baked into the platform itself — what allowed adoption to spread so quickly"
+- Result: 93% R&D adoption in under a year without individual training per tool
+
+**The principle:** Trust by default creates ungovernable sprawl (Google's Studio governance gap, Microsoft's Agent 365 discovery of 500K unsanctioned agents). Default-deny with easy exception workflow creates governed adoption. The governance is a consequence of the architecture, not of the policy.
+
+**The leadership act at scale:** Define the governance defaults, build the scaffolding, then get out of the way. The team onboards themselves because the self-service path IS the governed path.
+
+**Connection to agent-infrastructure research:** This is exactly what the 25+ agent governance tools (Okta, ConductorOne, Stacklok) are trying to productize — but Cloudflare built it themselves on their own infrastructure. The pattern is emerging bottom-up (companies building internally) before the governance vendors ship production-ready products.
+
+**WATCH:** Does this pattern replicate at other organizations? Does it require owning the infrastructure (Cloudflare's position) or can it be replicated on vendor platforms?
+Source: [blog.cloudflare.com/internal-ai-engineering-stack/](https://blog.cloudflare.com/internal-ai-engineering-stack/) — [practitioner direct, Apr 21, 2026]
+
+---
+
 ### Emerging Pattern G: "The Spec Is the Leadership Act" — How AI-Native Teams Are Led
 **Level 3 (convergence — 7+ independent signals, cycle 88 update)**
 
@@ -241,6 +274,8 @@ The leader of an AI-native team writes specifications that direct agents, then r
 **What disappears:** Management-as-information-brokering (all three models eliminate it through transparency and tooling). Status meetings. Cascade briefings. The manager who exists to relay information up and down.
 
 **What remains human:** People development/coaching. Hiring judgment. Quality taste ("knowing what good looks like" — Mollick). Architectural decomposition decisions.
+
+**The 0.6% finding (Cloudflare, April 2026):** Cloudflare's AI code review system handles 131K+ reviews/month with a human "break glass" override rate of 0.6%. This is the first quantification of what "human in the loop" actually means at scale: not reviewing everything, but being the circuit breaker for the exceptional case. The "human role" in an AI-native team is the 0.6% where architectural judgment, cross-system impact, or subtle concurrency issues require irreplaceable human context. The denominator is 100x bigger; the human contribution is concentrated on what actually matters. [Source: https://blog.cloudflare.com/ai-code-review/ — practitioner direct, Apr 20, 2026]
 
 **What transforms:** Direction-setting becomes spec-writing. Performance evaluation becomes output review. Coordination becomes context management (CLAUDE.md, shared specs, information symmetry).
 

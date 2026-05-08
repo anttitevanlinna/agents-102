@@ -1,3 +1,5 @@
 Across the current chasm-crossing cases, successful companies appear to bypass existing org structure rather than redesigning it first: spokes around functions, add-on team-2x mechanics, thesis-stage removal of middle layers, or very small AI-native orgs. The corpus lacks a case where an enterprise redesigned roles, reporting lines, and capacity allocation first, then absorbed AI and measured outcomes.
 
 **Gap:** Has any named enterprise executed a redesign-then-AI sequence with 6+ months of measured business outcomes? Exclude redesign-for-speed cases not aimed at AI and vendor-led transformations. Look for practitioner-direct evidence of the structural change itself: what was removed, what was created, what reporting lines collapsed, what capacity moved, and what measurable outcomes followed.
+
+**OODA 2026-05-08 update:** No named practitioner-direct redesign-then-AI case found. BCG's April 2026 anonymized European energy and global bank cases have the right redesign-first shape and measured/projected outcomes, but fail the named-company/practitioner-direct gate. C.H. Robinson is process-first/Lean-first rather than explicit org-structure redesign.

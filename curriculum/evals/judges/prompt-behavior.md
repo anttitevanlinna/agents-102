@@ -23,6 +23,18 @@ COMPENDIUMS (read on demand for adjacent rules):
 
 TRACE CACHE: {{trace_path}}
 
+## How to read the target file
+
+Source `.md` files use `{{prompt:<key>}}` markers in place of inline `**Prompt**` fenced blocks (the curriculum-prompts registry refactor). Before scanning, run:
+
+```
+node /Users/anttitevanlinna/Projects/agents-102/scripts/expand-md.js {{file_path}}
+```
+
+and use the EXPANDED output as the file under audit. The expander resolves each marker into the canonical `**Prompt** *(<dest>[, <context>])*` paragraph + fenced block — exactly what students and the build pipeline see post-render. Files that still author inline blocks pass through unchanged. SHA-256 of the fenced content is computed against the EXPANDED form, which keeps the cache stable across migrations of inline → marker (and matches what the build emits).
+
+`{{file_path}}` is still the canonical identity for instance JSON and Quality stamping — only the file CONTENT view shifts to expanded.
+
 ## What you evaluate
 
 For each `**Prompt**` fenced code block in the body (above any `<!-- maintainer -->` cut, excluding maintainer-block prompts), reason about:

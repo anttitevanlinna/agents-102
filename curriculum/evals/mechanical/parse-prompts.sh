@@ -26,6 +26,15 @@ OUT_DIR="${2:-/tmp/prompts/$SLUG}"
 mkdir -p "$OUT_DIR"
 rm -f "$OUT_DIR"/prompt-*.txt
 
+# Expand `{{prompt:<key>}}` markers from curriculum/prompts/<key>.md before
+# parsing. Source files use markers post-migration; awk still needs to see the
+# canonical `**Prompt**` + fenced shape. The helper lives at scripts/expand-md.js
+# and reuses curriculum.js's expandPrompts so logic stays in one place.
+REPO_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+EXPANDED=$(mktemp)
+trap 'rm -f "$EXPANDED"' EXIT
+node "$REPO_ROOT/scripts/expand-md.js" "$SRC" > "$EXPANDED"
+
 awk -v out_dir="$OUT_DIR" '
   BEGIN { state = "idle"; n = 0; body = "" }
 
@@ -60,7 +69,7 @@ awk -v out_dir="$OUT_DIR" '
   END {
     printf "Extracted %d prompt(s) to %s\n", n, out_dir
   }
-' "$SRC"
+' "$EXPANDED"
 
 echo
 echo "Files:"

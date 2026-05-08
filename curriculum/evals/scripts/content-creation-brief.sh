@@ -85,9 +85,10 @@ MOOD=$(awk '
 
 # ---- Surface compendiums (which check_*.md fire for this file) ----------
 # Heuristic: every student-facing file loads writing + student_facing + strategy_tie_in.
-# Files with **Prompt** blocks also load prompts. Lectures also load lectures.
+# Files with **Prompt** blocks (inline) OR {{prompt:<key>}} markers (post-
+# migration registry references) also load prompts. Lectures also load lectures.
 COMPENDIUMS="check_writing.md, check_student_facing.md, check_strategy_tie_in.md"
-if grep -q '^\*\*Prompt\*\*' "$FILE" 2>/dev/null; then
+if grep -qE '^\*\*Prompt\*\*|\{\{prompt:[a-z0-9-]+\}\}' "$FILE" 2>/dev/null; then
   COMPENDIUMS+=", check_prompts.md"
 fi
 case "$FILE" in

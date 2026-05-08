@@ -18,6 +18,18 @@ TARGET FILE: {{file_path}}
 TECHNICAL-CLASS COMPENDIUMS (read on demand):
 {{compendium_paths}}
 
+## How to read the target file
+
+Source `.md` files use `{{prompt:<key>}}` markers in place of inline `**Prompt**` fenced blocks (the curriculum-prompts registry refactor). Surface 4 (prompt design mechanics) requires the canonical fenced shape to evaluate. Before scanning, run:
+
+```
+node /Users/anttitevanlinna/Projects/agents-102/scripts/expand-md.js {{file_path}}
+```
+
+and use the EXPANDED output as the file under audit. The expander resolves each marker into the canonical `**Prompt** *(<dest>[, <context>])*` paragraph + fenced block — exactly what students and the build pipeline see post-render. Files that still author inline blocks pass through unchanged.
+
+`{{file_path}}` is still the canonical identity for instance JSON and Quality stamping — only the file CONTENT view shifts to expanded.
+
 ## What technical class evaluates
 
 Five surfaces, all static (no real Claude execution — that's the mechanical harness's job):

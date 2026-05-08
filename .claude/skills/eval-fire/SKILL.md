@@ -55,6 +55,8 @@ For the behavior class, the compendium set is fixed: `check_prompts.md` + `check
 
 `curriculum/evals/judges/<class>.md` is the prompt template (for `behavior`, the file is `prompt-behavior.md`). Read it once. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}` (for `story` and `behavior`), and `{{catalog_path}}` (for `behavior` only) into the template.
 
+**Marker-aware reading (post-prompts-registry refactor).** The judge templates now instruct subagents to run `node scripts/expand-md.js {{file_path}}` before scanning, so `{{prompt:<key>}}` markers resolve into the canonical `**Prompt** + fenced block` shape the judges' regex / line-count logic was written for. `{{file_path}}` stays the raw source path — only the read view shifts. If a judge template predates this refactor and still reads the raw file directly, expand-md.js is the helper to wire in (see `prompt-behavior.md` for the canonical shape).
+
 Trace path resolution:
 - `story`: `curriculum/evals/sim-cache/<file-slug>.persona.json`
 - `behavior`: `curriculum/evals/sim-cache/<file-slug>.behavior.json`

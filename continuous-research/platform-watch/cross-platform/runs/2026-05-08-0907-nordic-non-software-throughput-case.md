@@ -10,7 +10,7 @@ cycle: 115
 
 # Nordic Non-Software Throughput Case OODA Cycle — 2026-05-08
 
-**Focus area:** Find a Nordic non-software enterprise over 1,000 people with practitioner-direct evidence of converting individual AI ability into team-level throughput.
+**Focus area:** Find a Nordic non-software enterprise over 300 people with practitioner-direct evidence of converting individual AI ability into team-level throughput.
 **Research mode:** Nordic subset / practitioner discovery.
 **Why this focus:** Tier 0 user signal. Pattern P33 says Nordic enterprise agentic deployments are absent in convergence-grade evidence; this scan tests whether a non-software scale case has emerged.
 
@@ -27,19 +27,19 @@ cycle: 115
 
 ## Findings
 
-### Berner is practitioner-led and quantified, but below the >1,000-person threshold
+### Berner is practitioner-led, quantified, and clears the revised >300-person threshold
 
 **Source:** https://rss.com/podcasts/ai-experience-podcast/2511150/ — [practitioner analysis / podcast with practitioner guest]
 **Date:** 2026 (episode page crawled Apr/May 2026; page itself does not expose exact publish date in fetched text)
 **Agent level:** company / knowledge-worker layer
 **What:** Joona Honka, Head of AI & Analytics at Berner, is the strongest Nordic practitioner-direct signal found. The episode description says Berner trained 89% of knowledge workers and saves 6,300+ hours per month. This is closer to the requested "individual ability into institutional throughput" pattern than the vendor PR snippets because it centers the operator and the transformation narrative.
-**Evidence level:** Level 2-adjacent single case, but below scale threshold and not fully source-verifiable from the episode page alone.
+**Evidence level:** Level 2-adjacent single case that clears the revised scale threshold, but not fully source-verifiable from the episode page alone.
 **Key claims:** Named Nordic practitioner; training coverage; monthly hours saved; organizational AI transformation framing.
 
 **Source:** https://www.berner.fi/wp-content/uploads/2026/04/berner-group_annual-report_2025-2.pdf — [practitioner direct / company annual report]
 **Date:** 2026-04
 **Agent level:** company
-**What:** Berner's annual report confirms the company has 865 employees, uses nearly 20 AI tools, has organized 20+ training sessions, and has 400 employees using AI across seven operating countries. The scale criterion fails: 865 employees, not >1,000.
+**What:** Berner's annual report confirms the company has 865 employees, uses nearly 20 AI tools, has organized 20+ training sessions, and has 400 employees using AI across seven operating countries. Under the revised >300 threshold, Berner clears the scale bar.
 **Evidence level:** Level 2 single-company company-direct evidence for adoption, not agentic throughput.
 **Key claims:** 865 employees; 400 AI users; 20 tools; 20+ trainings; Sana AI foundation for business-specific agents/workflows.
 
@@ -50,7 +50,7 @@ cycle: 115
 **Agent level:** company / frontline operations
 **What:** Strawberry is a Nordic hospitality group with roughly 18,000 employees. The Devoteam/Google case says Scout AI saved 36,000 hours: 25,000 employee hours and 11,000 guest-facing hours, with 98% positive guest sentiment. Named leaders include Kari Anna Fiskvik, Chief Digital & Technology Officer, and Evelyn Piros-Read, AI Product Manager.
 **Evidence level:** Level 0 as vendor/consulting case study, Level 2 potential if Strawberry publishes or presents the same metrics directly.
-**Key claims:** >1,000-person Nordic non-software company; named digital/AI practitioners; measured hours saved; broad employee/guest operations impact.
+**Key claims:** Large Nordic non-software company; named digital/AI practitioners; measured hours saved; broad employee/guest operations impact.
 
 **Source:** https://www.devoteam.com/success-story/strawberrys-knowledge-revolution-with-the-scout-ai-chatbot/ — [vendor case study]
 **Date:** Current page crawled Apr/May 2026; exact publication date not exposed in fetched text.
@@ -86,7 +86,7 @@ cycle: 115
 
 ## What I Looked For But Did Not Find
 
-- A Nordic non-software company over 1,000 people with practitioner-direct publishing of metrics, structural changes, and playbook.
+- A Nordic non-software company over 300 people with practitioner-direct publishing of metrics, structural changes, and a full playbook beyond Berner's podcast/event evidence.
 - A Nordic case tying AI adoption to team-level throughput beyond knowledge retrieval, order-intake automation, or platform adoption.
 - A Nordic practitioner explaining how labour-model, works-council, or collective-agreement constraints shaped AI adoption.
 - Direct practitioner posts from Kari Anna Fiskvik, Evelyn Piros-Read, Carlos Garcia, Anton Nytorp, Alexander Bergstrom, or Joona Honka with the full playbook and metrics outside vendor/consulting contexts.
@@ -95,8 +95,8 @@ cycle: 115
 
 The gap remains open. The best near-misses are:
 
-- **Berner/Joona Honka:** best practitioner-led transformation narrative; fails >1,000-person threshold.
-- **Strawberry/Evelyn Piros-Read + Kari Anna Fiskvik:** best >1,000 Nordic non-software measured case; fails practitioner-direct/source-independence and is closer to RAG assistant than agentic throughput.
+- **Berner/Joona Honka:** first qualifying Level 2 Nordic non-software practitioner-led case at the revised >300 threshold.
+- **Strawberry/Evelyn Piros-Read + Kari Anna Fiskvik:** best large Nordic non-software measured case; fails practitioner-direct/source-independence and is closer to RAG assistant than agentic throughput.
 - **Danfoss/Carlos Garcia:** best Nordic manufacturing operations workflow; fails source independence and freshness for the original case.
 
-The answer is still **no qualifying Nordic non-software practitioner-direct case at scale found**. The watch list should prioritize Strawberry and Berner conference/podcast appearances, plus direct posts from Danfoss/Go Autonomous customer speakers after the 2026 Autonomous Commerce Summit.
+The answer changes under the revised threshold: **Berner is the first qualifying Level 2 Nordic non-software practitioner-led case at scale**. It still needs direct transcript/source verification and a fuller playbook. The watch list should prioritize Honka's conference/podcast appearances, Strawberry direct material, and direct posts from Danfoss/Go Autonomous customer speakers after the 2026 Autonomous Commerce Summit.

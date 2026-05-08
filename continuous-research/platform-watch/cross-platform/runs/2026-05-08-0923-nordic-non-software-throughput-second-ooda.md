@@ -10,7 +10,7 @@ cycle: 118
 
 # Nordic Non-Software Throughput Second OODA — 2026-05-08
 
-**Focus area:** Stress-test Berner, Strawberry, Danfoss, Cheffelo, Telavox, and Norwegian AI-practice podcast leads for a qualifying Nordic non-software >1,000-person practitioner-direct case.
+**Focus area:** Stress-test Berner, Strawberry, Danfoss, Cheffelo, Telavox, and Norwegian AI-practice podcast leads for a qualifying Nordic non-software >300-person practitioner-direct case.
 **Research mode:** Nordic practitioner discovery / source verification.
 **Why this focus:** Cycle 115 found near-misses but no qualifying case. The second pass looked for direct practitioner sources, company-owned annual-report evidence, and scale thresholds.
 
@@ -30,13 +30,13 @@ cycle: 118
 
 ## Findings
 
-### Berner got stronger, but still fails the scale gate
+### Berner got stronger and clears the revised scale gate
 
 **Source:** https://podcasts.apple.com/us/podcast/6-300-hours-saved-monthly-how-berner-is-becoming-ai-native/id1785765250?i=1000747583588 — [practitioner analysis / podcast with practitioner guest]
 **Date:** 2026-02-01
 **Agent level:** company / knowledge-worker layer
 **What:** Apple Podcast metadata confirms the date and framing: Joona Honka explains how Berner became AI-native, trained 89% of knowledge workers, saved 6,300+ hours monthly, built a cross-functional AI team, launched company-wide training, ran weekly AI Morning Coffees, embedded ethical guidelines, and moved from ML pilots to custom projects such as sales forecasting and LLM-powered customer-service automation.
-**Evidence level:** Level 2 single case, but the page is still host-written metadata rather than a transcript. Scale gate fails because Berner's annual report says 865 employees.
+**Evidence level:** Level 2 single case, but the page is still host-written metadata rather than a transcript. Under the revised >300-person threshold, Berner qualifies.
 **Key claims:** 89% knowledge-worker training; 6,300+ monthly hours; cross-functional AI team; AI Morning Coffees; custom projects; people-first strategy.
 
 **Source:** https://www.logy.fi/en/logy-conference-2026/speakers — [domain event page / practitioner speaking bio]
@@ -84,7 +84,7 @@ cycle: 118
 **Date:** 2026-04
 **Agent level:** company / knowledge-work layer
 **What:** Cheffelo's annual report says the company has just over 400 employees, introduced Sana for all colleagues in spring 2025, launched an HR agent for all colleagues, and gives Anton Nytorp's direct explanation of employee-driven AI adoption. He says people without automation backgrounds are building AI assistants and automated workflows, and gives a recipe-proofreading/checking workflow as an example.
-**Evidence level:** Level 2 single-company direct evidence, but fails the >1,000-person threshold.
+**Evidence level:** Level 2 single-company direct evidence that clears the revised >300-person threshold, but lacks a quantified throughput metric.
 **Key claims:** 400+ employees; Sana for all colleagues; HR agent; employee-driven AI adoption; non-automation workers building assistants/workflows.
 
 ### Telavox remains a quote, not a case
@@ -98,7 +98,7 @@ cycle: 118
 
 ## What I Looked For But Did Not Find
 
-- A Nordic manufacturer, retailer, energy company, telco, or services group over 1,000 people publishing a practitioner-owned AI throughput playbook.
+- A Nordic manufacturer, retailer, energy company, telco, or services group over 300 people publishing a practitioner-owned full AI throughput playbook beyond Berner's podcast/event evidence.
 - Fresh direct Strawberry material with the 36,000-hour claim outside Devoteam/Google.
 - Direct Danfoss-owned case material for the Go Autonomous deployment.
 - Any Nordic practitioner discussing collective agreements, labour-model constraints, or works-council dynamics around AI throughput.
@@ -107,9 +107,9 @@ cycle: 118
 
 The second pass makes the absence more precise:
 
-- **Best practitioner-led Nordic transformation:** Berner/Honka, but 865 employees.
+- **First qualifying practitioner-led Nordic transformation at revised scale:** Berner/Honka, 865 employees.
 - **Best Nordic manufacturing scale workflow:** Danfoss/Garcia, but vendor ecosystem evidence.
-- **Best Nordic >1,000 services/hospitality measured case:** Strawberry/Piros-Read/Fiskvik, but consultant-led and partly historical.
-- **Best company-owned AI-agent adoption below scale:** Cheffelo/Nytorp, about 400 employees.
+- **Best large services/hospitality measured case:** Strawberry/Piros-Read/Fiskvik, but consultant-led and partly historical.
+- **Best company-owned AI-agent adoption supporting case:** Cheffelo/Nytorp, about 400 employees, but no quantified throughput metric.
 
-The qualifying answer remains **not found**. The next highest-value move is not another broad search; it is targeted follow-up on three people/events: Honka's LOGY talk, Piros-Read's AI Agent Lab talk, and any Danfoss-owned presentation by Carlos Garcia.
+With the threshold revised to >300 people, the qualifying answer is **Berner/Joona Honka at Level 2**. The next highest-value move is not another broad search; it is targeted follow-up on three people/events: Honka's LOGY talk, Piros-Read's AI Agent Lab talk, and any Danfoss-owned presentation by Carlos Garcia.

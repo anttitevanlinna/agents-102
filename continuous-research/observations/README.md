@@ -15,6 +15,7 @@ Practitioner-level observations of organisations operating AI-natively. Not vend
 |---|---|---|---|---|---|
 | Anthropic | AI research | ~1,100 | Born AI-native | Deep case | [anthropic.md](anthropic.md) |
 | StrongDM | Security/infra | Small (AI team: 3) | Born AI-native (AI team) | Deep case | [strongdm.md](strongdm.md) |
+| Cloudflare | Internet infrastructure / developer platform | ~6,100 | Transform-in-place | Deep case | [cloudflare.md](cloudflare.md) |
 | Spotify | Music/streaming | ~7,000 | Transitioning | Moderate case | [spotify.md](spotify.md) |
 | Tesla | Manufacturing + SW | ~70,000 | Designed AI-native | Deep case (Joe Justice) | [tesla.md](tesla.md) |
 | OpenAI Codex | AI products | ~40 (Codex team) | Born AI-native | Moderate case | [openai-codex.md](openai-codex.md) |

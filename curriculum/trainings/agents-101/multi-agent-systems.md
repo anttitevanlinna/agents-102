@@ -46,17 +46,7 @@ First, a small boundary shift. We work mostly with text in this training: prompt
 
 Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. Claude reviews them, rewrites the training-dir root rules file (`./CLAUDE.md`) in place, reports what changed. You push back on anything that's off.
 
-**Prompt** *(Claude Code)*
-
-```
-Start by reading the files. No plan or preamble.
-
-Review this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Audit harshly. Diplomatic summaries are a failing grade here. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?
-
-Then rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a "retro notes" section; rewrite the file as the better version.
-
-When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. Name one thing you would have missed without the "audit harshly" instruction. A seam without evidence doesn't count.
-```
+{{prompt:a101-m3-debrief-handoff-rules}}
 
 
 Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
@@ -74,11 +64,7 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 
 **Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
 
-**Prompt** *(Claude Code)*
-
-```
-Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn't look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files.
-```
+{{prompt:a101-m3-homework-memory-health}}
 
 Memory is a working artefact, sharpened by what it bumps into.
 

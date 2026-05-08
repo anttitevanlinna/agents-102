@@ -28,88 +28,12 @@ You've built six modules of context. Your memory knows who your teammate is, wha
 
 <div class="rt-code">
 
-**Prompt** *(Builder Claude)*
-
-```
-Read my memory/, sources/, module-3/, module-5/, and module-6/.
-
-Based only on what you find there, draft a Jobs-to-be-Done hypothesis for a
-sharing decision I'm working on. Cover four things:
-
-1. The one teammate (named if my memory names them) most likely to benefit from
-   what I've built.
-2. The job they're trying to get done — in their language, not mine. Functional
-   part, and at least one emotional or social part (anxiety, reputation,
-   dependency on someone else).
-3. Their current hire for this job — what they use today. Excel, a colleague,
-   their gut, a vendor tool, nothing. Every job already has an incumbent.
-4. Three candidate outcome vectors — what "better" would mean for them:
-   - Speed (same job, faster)
-   - Quality (same job, less variance, better output)
-   - Other — inferred from my context, not assumed. Something specific:
-     dependency removed, anxiety reduced, scope they could take on, workload
-     shifted, loyalty to an incumbent preserved, reputation protected, a
-     recurring meeting they could stop attending.
-
-Then use your ask-questions tool to confirm or correct each piece. Five to eight
-questions, each with three or four options you drew from my memory. I'll pick.
-Don't ask me to type freeform answers — the point is that you already have most
-of this on disk.
-
-When I'm done picking, write module-7/jtbd.md with:
-- The teammate (named).
-- The job, in their language, with functional + emotional/social components.
-- The current hire and what's broken about it.
-- The outcome statement in this form: "minimize/increase [metric] when [doing
-  the job]." Pick the vector that cuts deepest — not all three.
-
-Anchor every claim to a specific file and line in my memory, plus the questions
-I answered. Show me the file before saving.
-```
+{{prompt:share-your-work-1}}
 
 </div>
 <div class="rt-cowork">
 
-**Prompt** *(Builder Claude)*
-
-```
-Read my memory/, sources/, module-3/, module-5/, and module-6/.
-
-Based only on what you find there, draft a Jobs-to-be-Done hypothesis for a
-sharing decision I'm working on. Cover four things:
-
-1. The one teammate (named if my memory names them) most likely to benefit from
-   what I've built.
-2. The job they're trying to get done — in their language, not mine. Functional
-   part, and at least one emotional or social part (anxiety, reputation,
-   dependency on someone else).
-3. Their current hire for this job — what they use today. Excel, a colleague,
-   their gut, a vendor tool, nothing. Every job already has an incumbent.
-4. Three candidate outcome vectors — what "better" would mean for them:
-   - Speed (same job, faster)
-   - Quality (same job, less variance, better output)
-   - Other — inferred from my context, not assumed. Something specific:
-     dependency removed, anxiety reduced, scope they could take on, workload
-     shifted, loyalty to an incumbent preserved, reputation protected, a
-     recurring meeting they could stop attending.
-
-Then confirm or correct each piece with me using a numbered-options format.
-Present five to eight questions, one at a time or as a single numbered list.
-Each question gets three or four lettered options (a / b / c / d) drawn from
-my memory. I reply with the letter (or letters). Don't ask me to type
-freeform answers — the point is that you already have most of this on disk,
-and the bounded options are what keep me from drifting back into chat.
-
-When I'm done picking, write module-7/jtbd.md with:
-- The teammate (named).
-- The job, in their language, with functional + emotional/social components.
-- The current hire and what's broken about it.
-- The outcome statement in this form: "minimize/increase [metric] when [doing
-  the job]." Pick the vector that cuts deepest — not all three.
-
-Anchor every claim to a specific file and line in my memory, plus the answers
-I gave. Show me the file before saving.
-```
+{{prompt:share-your-work-2}}
 
 </div>
 
@@ -151,15 +75,7 @@ The four strategies, as a reminder:
 
 Before you draft plans, find the load-bearing obstacle. The sharing problem always has one, and it's almost never the technical one your builder brain surfaced first. Name the one obstacle that, if removed, would make several others easier.
 
-**Prompt** *(Builder Claude)*
-
-```
-Find the absorption bottleneck in my sharing problem. Read module-7/jtbd.md and module-7/branch.md, plus anything else in module-7/ so far. The question is not "how do I share?" — it's "what's the single load-bearing obstacle between my teammate and firing their current hire?"
-
-List the obstacles you see — technical, social, political, habitual, governance, trust. Cluster them. Name the bottleneck: the one that, if removed, makes several others easier. State it in one sentence.
-
-Save to module-7/absorption-bottleneck.md. Show me before saving.
-```
+{{prompt:share-your-work-3}}
 
 
 Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), push back. Technical obstacles are rarely the bottleneck at Week 1. If the bottleneck is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
@@ -168,33 +84,7 @@ Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), p
 
 You're drafting two documents side by side. Neither is optional.
 
-**Prompt** *(Builder Claude)*
-
-```
-Read module-7/jtbd.md, module-7/branch.md, and module-7/absorption-bottleneck.md. Help me draft two files in
-parallel — a technical plan and a people plan. Both are about whether this
-teammate can actually fire their current hire and start using my candidate.
-
-File 1: module-7/technical-plan.md — how the candidate delivers the outcome.
-- What exactly I ship (files, skills, config, runtime).
-- How the teammate receives it (zip, repo, connector, invite).
-- What "it moves the outcome metric for them" looks like — concrete, measurable.
-- The first real test case they'd run, against the job from the JTBD brief.
-
-File 2: module-7/people-plan.md — equally load-bearing. Cover all five:
-- Ownership: named person accountable. Not a role.
-- Governance: who can add to the memory, change the rules, see the output.
-- Operating: who notices when the outcome metric slips. What they do about it. If the obvious name is also the person who benefits most, name a second person who'd notice independently — otherwise the only alarm is the person with a reason to silence it.
-- Accountability: who decides the candidate is no longer doing the job — who
-  fires the hire.
-- Propagation: who teaches the next person, when.
-
-Ask me anything you need. Don't invent names. If I don't know, write
-"UNASSIGNED — Monday's question" and keep moving. Missing names are findings,
-not failures.
-
-Show me both before saving.
-```
+{{prompt:share-your-work-4}}
 
 
 Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise. They are the questions you walk into your manager's office with on Monday.
@@ -203,26 +93,7 @@ Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercis
 
 Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. The question is: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
 
-**Prompt** *(Builder Claude)*
-
-```
-Read module-7/jtbd.md, module-7/absorption-bottleneck.md, module-7/technical-plan.md, and module-7/people-plan.md.
-
-Test the assumptions in these plans. Aim it at the SWITCH, not at generic sharing:
-
-What would have to be true for this specific teammate, doing this specific
-job, to fire their current hire and use my candidate?
-
-List the top five assumptions the switch depends on. For each:
-- State it as a declarative sentence.
-- Rate confidence (high / medium / low) based on what I've told you.
-- Name one concrete way I could test it this week — one conversation, one
-  small experiment, one quick check.
-
-Order from most load-bearing to least. Save to module-7/assumptions.md.
-Let the assumption-test change the confidence in the plans — don't just append
-a new section. Show me before saving.
-```
+{{prompt:share-your-work-5}}
 
 
 Mark the two or three you'd actually test this week. Those are what you ship first, not the full rollout.
@@ -231,29 +102,7 @@ Mark the two or three you'd actually test this week. Those are what you ship fir
 
 The plan is on paper. Six months from now, they went back to Excel. Why?
 
-**Prompt** *(Builder Claude)*
-
-```
-It is six months from now. My teammate
-kept using their current hire. My candidate sat unused, or they tried it twice
-and fired it.
-
-Read module-7/jtbd.md, module-7/technical-plan.md, module-7/people-plan.md, and
-module-7/assumptions.md.
-
-Write three failure stories, each a short paragraph:
-- Most likely social failure — about the incumbent, the teammate, the
-  workflow. "They trust their own spreadsheet more than any agent output" is
-  usually closer than "it broke technically."
-- Most likely technical failure — what broke, how it broke.
-- The failure I'm not seeing — bias your thinking toward what I seem to be
-  assuming will go fine.
-
-For each story, one sentence: the early warning sign I'd see in week two if
-this were starting to happen.
-
-Save to module-7/failure-stories.md.
-```
+{{prompt:share-your-work-6}}
 
 
 The third story is the one to read twice.

@@ -24,13 +24,7 @@ Three small steps:
 2. **Select all and copy.** Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That's fine. Claude reads through it.
 3. **Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**
 
-**Prompt** *(Claude Code)*
-
-```
-Build me a personal HTML one-pager site from the LinkedIn profile below. Save it as `module-1/site.html`.
-
-LinkedIn:
-```
+{{prompt:personal-site-with-guardrails-1}}
 
 The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you'll never feel how much the *later* context changes the output.
 
@@ -50,19 +44,7 @@ One liners and short answers usually give enough clue. Make it quick and iterate
 
 Ask Claude to apply tuned StoryBrand to the help section, one beat at a time.
 
-**Prompt** *(Claude Code)*
-
-```
-Hey Claude — apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think "this is the person I want to work with more, on the things they're great at." Not buying a service. Not booking a call. A colleague relationship.
-
-Important: this is a PERSONAL site. The protagonist of the SITE is me — my name, my identity, my actual work. The headline is about me, not a question to the visitor. The StoryBrand tune shapes how I describe the help relationship; it does NOT restructure the whole site to make the colleague the hero of the page.
-
-Use these StoryBrand beats for the help section: Character (the colleague — hero of the help relationship, not of the site), Problem (what work they're stuck on or want more of, that I see clearly), Guide (what makes me their natural ally), Plan (what working with me actually feels like — low-friction, informal is fine), Success (what it looks like a year later when we've worked together more — what we shipped, what changed for them).
-
-Skip Stakes and Call-to-Action — no fear-framing, no "book a chat." The site's vibe is the CTA.
-
-Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.
-```
+{{prompt:personal-site-with-guardrails-2}}
 
 Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
 
@@ -72,15 +54,7 @@ Your strengths shape how the whole site sounds. List 3-5 in one line each, Claud
 
 Tell Claude your strengths and have it regenerate the site.
 
-**Prompt** *(Claude Code)*
-
-```
-Use the strengths below as voice-shaping context for the site — letting them change what the page CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.
-
-Then regenerate `module-1/site.html`.
-
-My 3-5 strengths are:
-```
+{{prompt:personal-site-with-guardrails-3}}
 
 
 Read the regenerated site. Same StoryBrand spine, sharper because the site now sounds like someone with your specific strengths.
@@ -95,21 +69,7 @@ Give Claude a few specific things you hate about work. Not categories ("bureaucr
 
 Ask Claude to apply anti-branding using your hate list.
 
-**Prompt** *(Claude Code)*
-
-```
-Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
-1. Take the hate.
-2. Associate it with the offerings / colleague-types it implies (what kind of work, what kind of people produce this).
-3. Be the opposite — but always speak in the positive. Don't lead with "I don't do X"; lead with what I do instead.
-4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
-
-After step 4, regenerate `module-1/site.html`. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new "What I'm against" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.
-
-Then take maximum freedom on presentation: rethink the page so a colleague lands on it and instantly wants to spend more time with you. You decide structure, ordering, sections, visual rhythm — whatever makes the page actually land. Keep the substance (StoryBrand-tuned help, strengths shaping the voice, anti-branding edge); free hand on the rest.
-
-My hate list:
-```
+{{prompt:personal-site-with-guardrails-4}}
 
 
 Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the whole site sounds. That's the move.
@@ -120,11 +80,7 @@ Reading the old version yourself would take ten minutes and probably reveal noth
 
 Ask Claude to compare versions and name three generic claims.
 
-**Prompt** *(Claude Code)*
-
-```
-Look at the very first site you generated from just my LinkedIn profile, before I added any differentiation context. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was a statistical default rather than something true of me.
-```
+{{prompt:personal-site-with-guardrails-5}}
 
 
 Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults. What most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
@@ -145,13 +101,7 @@ The site is done. The agent behavior is not. What's left is to *capture the move
 
 Ask Claude to write your first generation rules file.
 
-**Prompt** *(Claude Code)*
-
-```
-Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
-
-When you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed.
-```
+{{prompt:personal-site-with-guardrails-6}}
 
 
 Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.

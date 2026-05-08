@@ -44,19 +44,7 @@ When both exercises are done, ask Claude to summarize what your folder can now d
 
 Open a new Cowork session on the same folder.
 
-**Prompt** *(Cowork)*
-
-```
-Read the files in this folder.
-
-Tell me:
-- what I can do with this folder in the future
-- what reusable patterns you can see in the rules, prompts, and saved outputs
-- which rule or checking habit is most worth carrying into my next Claude task
-- what kind of future Claude answer I should run through a separate checker before trusting
-
-Keep it to five bullets.
-```
+{{prompt:cb-homework-folder-summary}}
 
 ## Follow-up
 

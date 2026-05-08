@@ -40,26 +40,7 @@ Cowork doesn't always engage `/security-audit` from pasted prompt text alone. If
 
 </div>
 
-**Prompt** *(Claude Code)*
-
-```
-/security-audit — load the skill
-
-Apply the policy lens to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
-
-For each rule the policy lens carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
-
-Write the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. Be specific. Be plain. An "I can't tell" is a better answer than a confident guess.
-
-Read the memory and agent files properly - don't skim. Quote the specific lines or files that support each verdict.
-
-After writing the report, read outputs/policy-report.md back to yourself and tell me:
-1. The top three surprises - rows where the verdict is not what a careful reader would have predicted.
-2. The three rows where "I can't tell" is most likely hiding a real compliance gap.
-3. One row that looks compliant on the surface but where you would still push back.
-
-Keep each point to one or two sentences. Quote the specific rule name so I can find the row.
-```
+{{prompt:audit-your-agent-1}}
 
 While the report runs, stay with it. The report is more useful when you read it cold. Expect the reusable check to find things you did not think about, and to leave things "I can't tell" you thought were settled.
 
@@ -69,19 +50,7 @@ Read Claude's three lists. Then open `outputs/policy-report.md` and find the row
 
 In the same session, ask Claude to apply the agent-security lens and write the ranked risk report.
 
-**Prompt** *(Claude Code)*
-
-```
-Apply the agent-security lens to every agent in agents/. Run both checks: what each agent can reach, and the named risk patterns the lens carries.
-
-For access control: for each agent in agents/, list every outside system or sensitive place the agent can reach (connectors, retrievals, file writes beyond the training directory). Is each access necessary for what the agent actually does? Flag anything the agent has access to but doesn't need.
-
-For the named risk patterns (prompt injection direct and indirect, secrets-in-context-and-scrollback, tool-confusion, skill supply-chain): for each pattern, name the top one or two specific risks across the agents, not generic definitions. Quote the agent file or behaviour that creates the risk.
-
-For each risk flagged, suggest one mitigation for how the agent works - scope, split, filter, gate, or review - matched to the specific risk. These sit on top of the normal company controls already in place (network controls, identity and access management, logging, vendor/security review), not replacing them. Rank the risks by severity x likelihood, three-tier (high / medium / low).
-
-Write the report to outputs/security-report.md. Include the ranked mitigation suggestions.
-```
+{{prompt:audit-your-agent-2}}
 
 Now work the risks. List them, have Claude explain each, what it means in this system, why the rank landed where it did, what the failure would actually look like, and prepare to pick one. No prompt for this; you drive the conversation.
 
@@ -95,17 +64,7 @@ Look at the two reports. Pick one risk to mitigate. Not the easiest, not the sca
 
 Tell Claude the risk in one sentence, then paste the prompt. You are steering by judgment, not by technical detail. Claude picks the mitigation shape, applies the change, and walks you through what landed and why.
 
-**Prompt** *(Claude Code)*
-
-```
-Apply a mitigation to my system for the risk I'm about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn't fit, I'll tell you and we'll iterate.
-
-Then re-run the check the reusable lens performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?
-
-Then append a short section to outputs/security-report.md named "Mitigation applied and residual". Name what changed, what the new verdict is, and what's still true after the mitigation. Do not rewrite the earlier report. Not what we fixed. What's left. Be specific.
-
-The risk:
-```
+{{prompt:audit-your-agent-3}}
 
 Claude applies the mitigation and walks you through what changed. If the shape does not fit, tell Claude and iterate. Re-run the check. Read the residual section in `outputs/security-report.md`.
 

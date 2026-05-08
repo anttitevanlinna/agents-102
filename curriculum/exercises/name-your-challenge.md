@@ -46,17 +46,7 @@ The brief lands at your training-directory root as `./challenge.md`, where every
 
 Ask Claude to interview you with three focusing questions and write the brief to `./challenge.md`.
 
-**Prompt** *(Claude Code)*
-
-```
-I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:
-
-1. In one sentence, what's the initiative? A real, midsized-to-large piece of work you're carrying over the next few weeks — scope, stakes, still open.
-2. What have you already tried, read, or decided? What's ruled out, what's still open?
-3. Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?
-
-When I've answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving.
-```
+{{prompt:name-your-challenge-1}}
 
 
 Claude asks, you answer, the brief lands. Read it. If it doesn't sound like the thing actually keeping you up, edit it. You're the domain expert.
@@ -67,17 +57,7 @@ The memory will be built from three kinds of raw material: pages from your compa
 
 Ask Claude to suggest where you'd go scouting for raw material on this challenge.
 
-**Prompt** *(Claude Code)*
-
-```
-Based on the challenge brief you just wrote, suggest where I'd go looking for raw material. Specifically:
-
-- 3 to 5 search terms I'd type into our company Confluence or wiki
-- 2 to 3 OneDrive / SharePoint folder names likely to hold relevant docs, emails, or decks
-- 2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge, with one link each if you know them
-
-Keep it short. I'll use this as a scavenger-hunt list in the next phase.
-```
+{{prompt:name-your-challenge-2}}
 
 
 Scan the list. Some suggestions will be obvious; some will surprise you. Circle the two or three from each bucket you'd actually go pull first.

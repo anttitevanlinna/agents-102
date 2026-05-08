@@ -10,6 +10,16 @@
     var extractBigIdea = CurriculumRuntime.extractBigIdea;
     var stripMaintainerTail = CurriculumRuntime.stripMaintainerTail;
 
+    // Prompt registry — fetched once at startup, used by expandPrompts() in
+    // the markdown pipeline. Compiled into site/prompts.json by
+    // scripts/compile-prompts.js during build. Empty registry is a safe
+    // no-op: expandPrompts leaves `{{prompt:key}}` markers unchanged.
+    var PROMPT_REGISTRY = {};
+    var promptRegistryReady = fetch('prompts.json')
+        .then(function (res) { return res.ok ? res.json() : {}; })
+        .then(function (json) { PROMPT_REGISTRY = json; })
+        .catch(function () { PROMPT_REGISTRY = {}; });
+
     // Fill the legal footer from shared source.
     (function () {
         var mount = document.getElementById('curriculum-footer-mount');
@@ -115,14 +125,16 @@
     // Core rendering: fetch markdown, expand includes, parse, inject
     // ============================================================
     function loadAndRender(path, fallbackTitle) {
-        fetch(path)
-            .then(function (res) {
+        Promise.all([fetch(path), promptRegistryReady])
+            .then(function (results) {
+                var res = results[0];
                 if (!res.ok) throw new Error('Not found: ' + path);
                 return res.text();
             })
             .then(extractParent)
             .then(stripMaintainerTail)
             .then(expandIncludes)
+            .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
             .then(rewriteCrossDocLinks)
             .then(CurriculumRuntime.escapeTildes)
             .then(function (md) {

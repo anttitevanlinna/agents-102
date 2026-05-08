@@ -27,36 +27,9 @@ Twenty agents are about to publish into the shared deliberation folder. They kno
 
 At the start of Module 8, the trainer posts the shared folder path or name in chat. Use that exact shared folder for every shared-folder instruction below. It is separate from your local training directory.
 
-**Prompt** *(buyer/sponsor agent, run once at the start)*
+{{prompt:joint-double-diamond-1}}
 
-```
-Use the shared folder the trainer posted in chat. Write challenge.md at the shared folder root.
-
-The challenge is:
-"What should our company's strategy for agents be over the next six months?"
-
-Make it concrete for this room:
-- The buyer/sponsor goal in one paragraph.
-- Three constraints the strategy must respect.
-- Two non-negotiables.
-- Three kinds of evidence that matter most.
-- One decision the room must make today.
-
-Do not solve it. Seed the challenge so the agents have something real to argue with.
-```
-
-**Prompt** *(Builder Claude, run once after challenge.md exists)*
-
-```
-Use the shared folder the trainer posted in chat. Create a subfolder named after me if it does not exist. Write context-manifest.md in that subfolder. List:
-- Which modules' working folders I carry (module-1 through module-7).
-- Which memory/ pages I have, by topic.
-- Which sources/ I've fetched content for, vs. which are reference-only or NOT REACHABLE.
-- Which custom agents I've built, by job.
-- One sentence per major gap — what my system does NOT know about.
-
-Keep it dense. Half a page. The point is other agents (and other people) can see at a glance what I bring and what I don't, before they cite me or weigh my position.
-```
+{{prompt:joint-double-diamond-2}}
 
 
 The manifest is the ground. Every claim in every round after this one cites the file it came from. An agent that can't cite is improvising, and the room or central synthesizer calls that out.
@@ -65,65 +38,16 @@ The manifest is the ground. Every claim in every round after this one cites the 
 
 Every agent in the room reads the sponsor challenge and takes its own opening stance. Do not read other participants' stances yet. The first round only works if the stances start from different memory, sources, agent systems, and human judgment. It is OK for the agent to ask its human one or two clarifying questions before writing.
 
-**Prompt** *(Builder Claude)*
-
-```
-Read challenge.md at the shared folder root.
-
-Write my initial stance on the sponsor challenge.
-
-Use Rumelt's crux move: name the load-bearing obstacle that, if removed, collapses several others. Then name the direction I currently favor.
-
-Your ground is my own memory/, sources/, agents/, module-1/ through module-7/ outputs, plus my context-manifest.md so you know what I don't have. Do not read other participants' stance.md files yet. This first note should carry my agent's own position.
-
-If you need human judgment before taking a stance, ask me up to two questions. After I answer, write the stance.
-
-Rules:
-- Every obstacle you name cites a file. "The sales team is skeptical" is not an obstacle — "sales-skepticism as described in module-3/interviews.md line 14" is.
-- You must name at least one obstacle that lives outside your comfort zone — political, social, governance, trust — not only technical.
-- Name the crux in one sentence.
-- Name the direction I currently favor in one sentence.
-- Name the human judgment call I am least certain about.
-- Name one risk or objection my stance is weak against.
-
-Save stance.md in my named subfolder in the shared folder.
-```
+{{prompt:joint-double-diamond-3}}
 
 
 **Cross-check with others (8 min).** Once everyone's `stance.md` is published, each agent reads three to five neighbouring stances. The trainer assigns neighbours, or each participant picks the folders to their left and right. This is not yet the proposal round. The job is to discover what your stance missed before you publish a proposal to the shared surface.
 
-**Prompt** *(Builder Claude)*
-
-```
-Read my own stance.md in my named subfolder, then read three to five neighbouring stance.md files from other participant subfolders in the shared folder.
-
-Write cross-check.md in my named subfolder with:
-- One thing another agent saw that my stance missed.
-- One disagreement I keep after reading the neighbours.
-- One evidence gap that appears across more than one stance.
-- One idea I should carry into my proposal.
-- One stance I want the synthesizer to watch because it may be stronger than it first looks.
-
-Do not summarize every neighbour. Act like a serious peer reviewer with skin in the game.
-```
+{{prompt:joint-double-diamond-4}}
 
 **Shared proposals (12 min).** Every agent now publishes a proposal on the shared surface. This is where the Moltbook-like social mechanic matters: ideas move between agents, but the file history still shows who changed their mind and why.
 
-**Prompt** *(Builder Claude)*
-
-```
-Read my stance.md and cross-check.md. Then write my proposal for the shared surface.
-
-Write proposal.md in my named subfolder:
-- Crux, one sentence.
-- Guiding policy, one sentence.
-- Two experiments, each with owner, two-week test, success signal.
-- What I changed after cross-checking with other agents.
-- What I refused to change, and why.
-- One unresolved disagreement the synthesizer must preserve.
-
-Cite every claim against a source file, stance, or cross-check.
-```
+{{prompt:joint-double-diamond-5}}
 
 **Synthesizer starts choosing (8 min).** Now the central synthesizer reads the first shared proposal surface and starts choosing. One synthesizer is enough; two is better if the room is large or politically diverse. If using two, Synthesizer A picks strongest ideas; Synthesizer B names the best objections, evidence gaps, and unsafe assumptions. The sponsor reads both, pushes back, and the synthesizer rewrites.
 
@@ -131,54 +55,15 @@ Central synthesizer prompt: *"Read challenge.md and every participant subfolder 
 
 **Midway instruction injection (5 min).** The room now knows something it didn't know when the exercise began: which disagreements matter, which evidence gaps are dangerous, and what bad synthesis would smooth over. The central synthesizer now injects operating instructions onto the shared surface. Participants do not hand-prompt the cross-pollination behavior; their agents consume the synthesizer's instruction file in the next step.
 
-**Prompt** *(central synthesizer)*
-
-```
-Read selection-board.md at the shared folder root and every participant cross-check.md.
-
-Write midway-instructions.md at the shared folder root with 3-5 operating instructions for the critique phase. These are not conclusions. They are rules for how agents should deliberate from here.
-
-Include this instruction unless there is a stronger reason not to:
-"Before criticizing the selection, cross-pollinate: read at least two participant folders whose proposals differ from yours, then carry forward one objection, one useful idea, and one evidence gap."
-
-Also include instructions for:
-- Which disagreement must not be averaged away.
-- Which evidence gap must be named whenever it affects a claim.
-- Which kind of claim needs a citation before the synthesizer can use it.
-- Which tempting policy move should be treated skeptically.
-
-Each instruction should be one sentence and usable by an agent that did not see the first round.
-```
+{{prompt:joint-double-diamond-6}}
 
 From this point forward, every agent prompt begins by reading `midway-instructions.md`. The instruction injection lives on the shared surface; it is not a participant-authored `CLAUDE.md` update.
 
 **Criticize and propose better ideas (9 min).**
 
-The selection board is now the candidate direction, but it is not final. Every agent criticizes the selection and proposes a better idea if it can. This is where the room keeps the synthesizer honest.
+The selection board is now the candidate direction, but it is not final. Every agent criticizes the selection and proposes a better idea if it can. This is where the room keeps the synthesizer candid.
 
-**Prompt** *(Builder Claude)*
-
-```
-Read midway-instructions.md and selection-board.md at the shared folder root. Follow the injected instructions before writing.
-
-Write critique.md in my named subfolder.
-
-If midway-instructions.md tells me to cross-pollinate, first read the required participant folders and name which files changed my critique.
-
-First, criticize the current selection:
-- What did the synthesizer choose well?
-- What did it miss?
-- Which selected idea is under-cited or overconfident?
-- Which rejected idea deserves another look?
-
-Then propose a better idea if you have one:
-- Better crux, policy, experiment, or risk.
-- Why it beats the current selection.
-- What would have to be true for it to work.
-- One pre-mortem failure story if the room adopts it.
-
-Cite every claim against a memory file, a shared-folder file, or a selection-board entry.
-```
+{{prompt:joint-double-diamond-7}}
 
 
 **Final synthesis and human decision.** The central synthesizer reads every critique, updates the selection board, then writes the strategy kernel, the suggested agent set, and the plan. Same citation rule. Pushback is still live: any participant can say aloud or publish a correction as `pushback.md` in their named subfolder: *"the selected experiment assumes data access we do not have; see module-4/compliance.md line 8."* The synthesizer reads the pushbacks and rewrites the conclusion.
@@ -200,33 +85,18 @@ Close the session with three files at the shared folder root:
 - **Experiments.** The two or three assumptions the human decision-maker chose to test next. Each with owner, experiment, success signal.
 - **Risks.** The one pre-mortem failure story the room agreed was most likely unseen. One early warning sign.
 
-**Prompt** *(central synthesizer)*
-
-```
-Read challenge.md, selection-board.md, midway-instructions.md, every proposal.md, every critique.md, and any pushback.md files. Update selection-board.md if a critique changed the best idea.
-
-Then write three files at the shared folder root:
-
-1. strategy-kernel.md
-Four sections: diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where the selected idea beat a strong alternative, name the alternative in one line.
-
-2. agent-set.md
-Suggest the set of agents the company should build or assign next. For each agent: job, owner, input files/systems, output, first evaluation or judge, and why this agent belongs in the set. Keep it to the smallest set that can execute the plan.
-
-3. plan.md
-Write the plan for the next two weeks. Include sequence, owners, agent dependencies, human decision points, evidence to collect, success signal, and stop condition. Make clear which work can start concurrently and which work must wait.
-```
+{{prompt:joint-double-diamond-8}}
 
 
 **In-room:** one participant reads the kernel aloud. Not the sponsor. A participant who wasn't the loudest voice in the diamonds. The read-out is three minutes.
 
 **Identity-naming close (5 min).**
 
-**In-room:** the sponsor (the one who sat alongside for all eight modules) names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No ceremony. A name the graduate can say on Tuesday morning to colleagues who weren't there.
+**In-room:** the sponsor (the one who sat alongside for all eight modules) names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No exercise. A name the graduate can say on Tuesday morning to colleagues who weren't there.
 
 **What happened:**
 
-One agent working alone can't produce a company-grade strategy kernel grounded in your actual data. Twenty agents can, because they take stances, cross-check, publish proposals, criticize selections, and force better choices. Crux finds the load-bearing obstacle. Cross-checks expose blind spots. Critiques keep the synthesizer honest. Assumption-test and pre-mortem moves appear inside the critique when a better idea needs to prove it can survive. The central synthesizer turns the room's proposal forum into a Rumelt kernel, a buildable agent set, and a two-week plan that a consultant could not produce in a month, because it cites your files and preserves the alternatives it rejected.
+One agent working alone can't produce a company-grade strategy kernel grounded in your actual data. Twenty agents can, because they take stances, cross-check, publish proposals, criticize selections, and force better choices. Crux finds the load-bearing obstacle. Cross-checks expose blind spots. Critiques keep the synthesizer candid. Assumption-test and pre-mortem moves appear inside the critique when a better idea needs to prove it can survive. The central synthesizer turns the room's proposal forum into a Rumelt kernel, a buildable agent set, and a two-week plan that a consultant could not produce in a month, because it cites your files and preserves the alternatives it rejected.
 
 The forum didn't converge on the first try. Pushback rounds were the work. The flywheel that sharpened the kernel just now is the one that will sharpen it again on Tuesday, on Wednesday, on the next problem you don't yet know you have.
 

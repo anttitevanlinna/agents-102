@@ -28,13 +28,70 @@ const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
+
+// Load the prompt registry once at script start. readMd() expands
+// `{{prompt:key}}` markers using this registry before any markdown processing.
+// The same registry is also written to site/prompts.json for the SPA path.
+//
+// loadRegistry throws on duplicate keys, missing required fields, or filename
+// ↔ key mismatches — caught here so the build aborts before any HTML lands.
+let PROMPT_REGISTRY;
+try {
+  PROMPT_REGISTRY = loadRegistry();
+} catch (e) {
+  console.error('Build aborted: prompt registry failed to load.');
+  console.error('  ' + e.message);
+  process.exit(1);
+}
+writeRegistry(PROMPT_REGISTRY, PROMPTS_JSON);
+console.log(`Loaded ${Object.keys(PROMPT_REGISTRY).length} prompts from curriculum/prompts/`);
+
+// Soft sanity check on registry frontmatter values. Strict expansion already
+// fails on unresolved keys; these checks catch typos in dest/runtime that
+// would still expand but render with the wrong chip label or runtime fork.
+// Domain-specific dest values (e.g. "central synthesizer", "buyer/sponsor
+// agent") are intentional role labels in multi-agent exercises. The renderer
+// just displays the string verbatim as the destination chip; new entries
+// here are an opt-in to silence the typo warning.
+const KNOWN_DESTS = new Set([
+  'Claude Code',
+  'Cowork',
+  'Builder Claude',
+  'central synthesizer',
+  'buyer/sponsor agent'
+]);
+const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
+(function auditRegistryValues() {
+  const odd = { dest: [], runtime: [] };
+  for (const [key, entry] of Object.entries(PROMPT_REGISTRY)) {
+    if (entry.dest && !KNOWN_DESTS.has(entry.dest)) odd.dest.push(`${key}: dest="${entry.dest}"`);
+    if (entry.runtime && !KNOWN_RUNTIMES.has(entry.runtime)) odd.runtime.push(`${key}: runtime="${entry.runtime}"`);
+  }
+  if (odd.dest.length) {
+    console.warn('  [warn] uncommon dest values (typo? add to KNOWN_DESTS if intentional):');
+    odd.dest.forEach(s => console.warn('    ' + s));
+  }
+  if (odd.runtime.length) {
+    console.warn('  [warn] unknown runtime values (expected: any|cli|desktop|cowork):');
+    odd.runtime.forEach(s => console.warn('    ' + s));
+  }
+})();
 
 // Files in curriculum/trainings/<key>/ that don't ship in workbook output.
 const TRAINER_ONLY = new Set(['cohort-onboarding-email.md', 'pre-cohort-todos.md']);
 
 function readMd(absPath) {
   if (!fs.existsSync(absPath)) return null;
-  return CR.stripMaintainerTail(fs.readFileSync(absPath, 'utf8'));
+  const raw = fs.readFileSync(absPath, 'utf8');
+  const stripped = CR.stripMaintainerTail(raw);
+  // Strict mode: any unresolved {{prompt:<key>}} marker fails the build,
+  // pointing at the offending file via the path included in the error.
+  try {
+    return CR.expandPrompts(stripped, PROMPT_REGISTRY, { strict: true });
+  } catch (e) {
+    throw new Error(`${path.relative(ROOT, absPath)}: ${e.message}`);
+  }
 }
 
 // Workbook target for cross-doc links: in-page anchors `#kind-slug` (single
@@ -501,6 +558,44 @@ if (legacy) {
 
 trainings.forEach(trainingKey => buildTraining(customer, trainingKey));
 buildCustomerIndex(customer);
+
+// Post-render audit: scan every emitted .html for leftover `{{prompt:` markers.
+// Strict expandPrompts already throws at expand time; this is the second-line
+// defence catching any code path that wrote markdown straight to HTML without
+// passing through the expander (future renderer tweaks, new template helpers,
+// inline post-processing). Fail loud so the regression surfaces in the build,
+// not in front of a student.
+(function auditRenderedHtml() {
+  const customerDir = path.join(ROOT, 'site/clients', customer);
+  const offenders = [];
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const abs = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(abs);
+      else if (entry.isFile() && entry.name.endsWith('.html')) {
+        const raw = fs.readFileSync(abs, 'utf8');
+        // Strip inline <script> and <style> blocks before scanning — the
+        // workbook bundles curriculum.js (which mentions {{prompt:<key>}} in
+        // its own docstrings) and CSS into every page. Audit cares about
+        // content the student sees, not code that documents the pattern.
+        const body = raw
+          .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+          .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
+        const matches = body.match(/\{\{prompt:[a-z0-9-]+\}\}/g);
+        if (matches) offenders.push({ file: path.relative(ROOT, abs), markers: matches });
+      }
+    }
+  }
+  walk(customerDir);
+  if (offenders.length) {
+    console.error('\nBuild aborted: rendered HTML still contains {{prompt:<key>}} markers.');
+    for (const o of offenders) {
+      console.error('  ' + o.file + ':');
+      for (const m of o.markers) console.error('    ' + m);
+    }
+    process.exit(1);
+  }
+})();
 
 // Build emits to site/clients/<cust>/. Customer deploy lives in the sibling
 // ai-training-internal repo (private, materials.arcticrex.com); run

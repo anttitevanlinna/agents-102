@@ -30,19 +30,7 @@ Get the starter file set into your training directory. The starter file set ship
 
 [Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `agents-101-starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
 
-**Prompt** *(Claude Code)*
-
-```
-Extract the starter tarball in the working folder. Use the shell:
-
-  tar xzf agents-101-starter.tar.gz
-
-(Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)
-
-Then list what's in the working directory and confirm these folders exist:
-prework/, memory/, sources/, agents/, .claude/, and module-4/policies/.
-If tar is not available, tell me what error you got.
-```
+{{prompt:a101-prework-extract-tarball}}
 
 *Proof: you placed the file; Claude unpacked it. Two visible steps, no magic.*
 
@@ -50,11 +38,7 @@ If tar is not available, tell me what error you got.
 
 Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn't). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.
 
-**Prompt** *(Claude Code)*
-
-```
-Build me a snake game as a single HTML file. Save it as `prework/snake.html`.
-```
+{{prompt:a101-prework-snake-game}}
 
 Claude writes the file. Open `prework/snake.html` in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.
 
@@ -70,11 +54,7 @@ Two paths. Pick the one that matches what you saw.
 
 **Path A. You have a calendar connector enabled** (Microsoft 365 or Google Workspace).
 
-**Prompt** *(Claude Code)*
-
-```
-List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-```
+{{prompt:a101-prework-meetings-connector}}
 
 **Path B (no connector, or you're not sure).** Default to this one if in doubt.
 
@@ -82,29 +62,17 @@ Take a screenshot of your calendar week view, then:
 
 <div class="rt-cli">
 
-**Prompt** *(Claude Code)*
-
-```
-I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-```
+{{prompt:a101-prework-meetings-screenshot-cli}}
 
 </div>
 <div class="rt-desktop">
 
-**Prompt** *(Claude Code)*
-
-```
-I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-```
+{{prompt:a101-prework-meetings-screenshot-desktop}}
 
 </div>
 <div class="rt-cowork">
 
-**Prompt** *(Claude Code)*
-
-```
-I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.
-```
+{{prompt:a101-prework-meetings-screenshot-cowork}}
 
 </div>
 

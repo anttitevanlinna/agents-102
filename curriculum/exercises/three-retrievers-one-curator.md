@@ -43,71 +43,21 @@ Heavy run ahead. Each retriever fans out across your wiki, docs, or the web; the
 
 In Session 1, tell this session to act as your wiki retriever and stream findings into `sources/wiki-retrieval.md`.
 
-**Prompt** *(Claude Code)*
-
-```
-You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to ./crux.md (the crux you named in the opening, plus the ## Question section). Read the question first.
-
-Then:
-1. Propose 6–8 search terms for my team's wiki. Confluence, Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it's ambiguous.
-2. Run the searches through Claude's connector to my wiki. Open the pages. Read them properly.
-3. Append each finding to sources/wiki-retrieval.md as soon as you have it, one paragraph per finding, naming the page/space and one line on why this matters for the question. Never overwrite earlier findings. Keep only what speaks to the question; don't summarise the wiki.
-4. End the file with a "Conflicts and gaps" section: where internal pages disagree, where the wiki is thin, what's conspicuously missing.
-
-Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
-
-No need to update `memory/` — another session is handling curation. Just write to `sources/`.
-
-Sources first. Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles.
-```
+{{prompt:three-retrievers-one-curator-1}}
 
 If Claude asks for ten search terms or a broad wiki tour, narrow it: *"Use the 6-8 terms you proposed, search only the wiki I named, and append findings as you go."*
 
 
 In Session 2, tell this session to act as your docs retriever and stream findings into `sources/docs-retrieval.md`.
 
-**Prompt** *(Claude Code)*
-
-```
-You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for ./crux.md (the crux you named in the opening, plus the ## Question section).
-
-Then:
-1. Ask me for three clues: names of documents I remember, people I've been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.
-2. Pull the content via the doc-store connector (OneDrive, SharePoint, Google Drive, whichever I use), or via files I've shared with you directly.
-3. Append each finding to sources/docs-retrieval.md as soon as you have it, what documents and threads show, who said what, what's recent, what's decided, what's still open. Never overwrite earlier findings. Name where sources disagree; don't smooth over contradictions.
-4. End the file with "Conflicts and gaps": disagreements between sources, things that should exist but don't, names conspicuously missing.
-
-Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
-
-No need to update `memory/` — another session is handling curation. Just write to `sources/`.
-
-Sources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write "[NOT FOUND]", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles.
-```
+{{prompt:three-retrievers-one-curator-2}}
 
 If Claude asks for vague clues, give one person, one document title, and one drive/site. If it starts smoothing disagreement, push back: *"Quote the contradiction raw before you interpret it."*
 
 
 In Session 3, tell this session to act as your internet retriever and stream practitioner findings into `sources/internet-retrieval.md`.
 
-**Prompt** *(Claude Code)*
-
-```
-No preamble — propose your author list now.
-
-You are the internet retriever for my challenge. Your job: find practitioner-grade external material on ./crux.md (the crux you named in the opening, plus the ## Question section). No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 6 months.
-
-Then:
-1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.
-2. Fetch them. Read them.
-3. Append each finding to sources/internet-retrieval.md as soon as you have it, what each practitioner says that's specific, with the URL, and one line on how their situation maps (or doesn't) to mine. Never overwrite earlier findings.
-4. End the file with "Conflicts and gaps": where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can't tell me.
-
-Write each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.
-
-No need to update `memory/` — another session is handling curation. Just write to `sources/`.
-
-Sources first. Every finding cites the URL you actually fetched and the author. If a fetch fails or returns nothing useful, write "[NOT FOUND]", do not fabricate article titles, quotes, or author positions from prior knowledge.
-```
+{{prompt:three-retrievers-one-curator-3}}
 
 If Claude rubber-stamps a weak author list, push back before fetching: *"Replace vendor/analyst sources with practitioners writing from their own operating experience in the last 6 months."*
 
@@ -116,34 +66,12 @@ Heads-up: retrievers tend to wrap up early. A clean-looking *Conflicts and gaps*
 
 Once a retriever returns its first pass, wiki, docs, or internet, paste this back into that session to push another round.
 
-**Prompt** *(Claude Code, reusable across all three retriever sessions)*
-
-```
-Push another round. What did the first pass miss? Different angles, related sources, the citations inside what you already opened — keep going until the file feels complete or you genuinely don't find new material. Append; don't rewrite.
-```
+{{prompt:three-retrievers-one-curator-4}}
 
 
 In Session 4, tell this session to act as the synthesizer and integrate the streaming retrievals into `memory/`.
 
-**Prompt** *(Claude Code)*
-
-```
-No plan or preamble — enter the loop now.
-
-You are the synthesizer for my challenge. Three retrievers are running concurrently in Sessions 1, 2, and 3 — they'll write findings to sources/wiki-retrieval.md, sources/docs-retrieval.md, and sources/internet-retrieval.md as they finish. Your job is curation: integrate those findings into my memory/ topic pages, scoped to ./crux.md (the crux you named in the opening, plus the ## Question section).
-
-Memory is curated, not a raw dump. Existing topic pages cover the challenge — extend them where the new sources sharpen what's already there; create a new topic page where the retrievals reveal a topic memory was missing. Cite sources by filename + paragraph.
-
-The loop:
-1. Wait for any new content in sources/. When a file appears (or grows), read it.
-2. Diff against existing memory/ pages. Extend in place if the topic exists; create a new page if it doesn't. Don't ask permission for either path.
-3. Make the update. Cite the source file by name. Integrate, don't append. Keep claims tight.
-4. Repeat until all three retrievals are integrated.
-
-When all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md. List each memory file you actually changed by name and the exact filenames git diff would show; if fewer changed than the retrieval count, say so explicitly. Name where retrievals contradicted what was already in memory by quoting the conflicting claims verbatim from each source. That contradiction line is load-bearing — flag it, don't smooth it.
-
-Don't fabricate. Every memory update cites a source-file finding. If a retrieval is empty or thin, say so in your synthesis note rather than papering over the gap.
-```
+{{prompt:three-retrievers-one-curator-5}}
 
 
 Answer each retriever's questions as they come in. Let them run. Switch between sessions if you want. Four agents are now working for you at once, three fetching, one curating. Watch the files appear in `sources/` and `memory/` sharpen as the synthesizer integrates. Something you do at work alone is being done in parallel in front of you. **The feeling is the lesson.**

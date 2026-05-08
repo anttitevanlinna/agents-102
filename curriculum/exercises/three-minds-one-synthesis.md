@@ -30,46 +30,14 @@ Three subagents fanning out at once. Lighter than the four-session retriever run
 
 Ask Claude to spawn three subagents with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.
 
-**Prompt** *(Claude Code)*
-
-```
-Start dispatching immediately. No plan or preamble.
-
-Spawn three subagents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.
-
-Subagent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?
-
-Subagent 2: Assumption experimenter. Roger Martin's test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.
-
-Subagent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
-
-When the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.
-
-Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append only a new `## Answer` section to ./crux.md with the three legs; do not modify existing sections. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving.
-```
+{{prompt:three-minds-one-synthesis-1}}
 
 </div>
 <div class="rt-cowork">
 
 Ask Claude to spawn three agents with different stances, then apply Rumelt's kernel to synthesize their notes back into `./crux.md`.
 
-**Prompt** *(Claude Code)*
-
-```
-Start dispatching immediately. No plan or preamble.
-
-Spawn three agents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.
-
-Agent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?
-
-Agent 2: Assumption experimenter. Roger Martin's test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.
-
-Agent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)
-
-When the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.
-
-Then synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append only a new `## Answer` section to ./crux.md with the three legs; do not modify existing sections. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving.
-```
+{{prompt:three-minds-one-synthesis-2}}
 
 </div>
 
@@ -78,11 +46,7 @@ Heads-up: the answer often comes back with a longer issue list than feels comfor
 
 If the volume is in the way, ask Claude to choose the fixes that aim for optimal function in the next session.
 
-**Prompt** *(Claude Code, optional)*
-
-```
-You choose fixes. Aim for optimal function in the next session that runs on this.
-```
+{{prompt:three-minds-one-synthesis-3}}
 
 
 **Close. Does this feel right?**

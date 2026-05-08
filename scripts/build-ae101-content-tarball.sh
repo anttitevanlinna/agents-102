@@ -32,8 +32,10 @@ ROOT="$STAGE/content"
 mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills"
 
 # Strip maintainer blocks: everything from `<!-- maintainer -->` to end-of-file
-# is trainer-only and shouldn't ship to Claude's local context. Renderer strips
-# at render time too; this strip protects raw .md fetches.
+# is trainer-only and shouldn't ship to the agent's local context. Tarball-
+# shipped .md files keep `{{prompt:<key>}}` markers verbatim — the prompt
+# registry ships alongside (see prompts/ block below) and consuming skills /
+# agents resolve markers against it.
 strip_maintainer() {
   local src="$1"
   local dst="$2"
@@ -73,6 +75,18 @@ for skill in content/skills/*/; do
   [ "$name" = "agentic-nerd" ] && continue
   cp -R "$skill" "$ROOT/content/skills/$name"
 done
+
+# Ship the prompt registry alongside curriculum. Tarball-shipped exercise /
+# lecture / reference / supplementary files keep `{{prompt:<key>}}` markers;
+# consuming skills and agents resolve them against this directory.
+PROMPTS_SRC="curriculum/prompts"
+if [ -d "$PROMPTS_SRC" ]; then
+  mkdir -p "$ROOT/prompts"
+  for f in "$PROMPTS_SRC"/*.md; do
+    [ -f "$f" ] || continue
+    cp "$f" "$ROOT/prompts/$(basename "$f")"
+  done
+fi
 
 # Build tarball. Run tar from inside ROOT so the archive has
 # lectures/, exercises/, reference/, content/ at the top level.

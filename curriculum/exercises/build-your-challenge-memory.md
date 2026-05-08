@@ -24,20 +24,7 @@ Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rew
 
 **Beat 1. Curate.** Claude surveys what's available and asks about your world.
 
-**Prompt** *(Claude Code)*
-
-```
-I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats:
-
-1. Check what connectors are enabled right now. Name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.
-
-2. Then ask me where my work material actually lives. Don't assume Confluence or OneDrive — ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.
-   Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.
-
-3. Then propose a curation plan covering three kinds of material: (a) internal knowledge — which searches in which tools, (b) recent work — which threads, folders, decks, (c) outside-in — 2–3 working practitioners or specific articles worth reading (not vendor blogs).
-
-One rule for the plan: only recommend sources I would feel comfortable sharing with an LLM today. If something is likely to be sensitive — board material, personal emails, customer data, HR records — flag it as "skip for now, revisit after Module 4" rather than putting it in the plan. I'll push back where the plan is off.
-```
+{{prompt:build-your-challenge-memory-1}}
 
 
 Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sources/` yet.
@@ -46,18 +33,7 @@ Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sour
 
 **A note on what Claude reads.** <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
 
-**Prompt** *(Claude Code)*
-
-```
-For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:
-
-- Publicly fetchable URL (practitioner blog, public article)? Fetch the page, save the text as sources/<slug>.md with a header naming URL + title + why-it's-relevant.
-- Reachable via a connector you have (wiki, docs, drive)? Pull the content through and save the same way.
-- Local file on my laptop at a path I named? Save sources/<slug>.md as a reference — absolute path + title + why-it's-relevant, no copied content. You'll read the actual file directly when Beat 3 needs it.
-- Behind a connector you can't reach, or in a tool you don't have? Save sources/<slug>.md as a reference too — URL or path + title + why-it's-relevant + "NOT REACHABLE — share with me when you want this included." Don't ask me to paste anything; if I want it included, I'll share the file.
-
-When done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I'll attach whatever I want to include before we build the memory.
-```
+{{prompt:build-your-challenge-memory-2}}
 
 
 Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case share the file with Claude (your runtime knows how); Claude will save the content into `sources/`. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
@@ -75,19 +51,7 @@ Heads up: when Claude finishes the plan, read it before saying go. If the topic 
 
 </div>
 
-**Prompt** *(Claude Code)*
-
-```
-Read every real-content file in sources/. For each major topic you find, create a markdown file in memory/ with a clear title, 3–5 key claims, and an "open questions" section for things the sources disagree on or leave unclear. Then write memory/index.md that links to every topic page with a one-line description.
-
-Rules — non-negotiable:
-
-1. Sources first, always. Every memory page derives from real content — either a sources/ file with content inline, or a sources/ reference file that links to a local path (read the linked file directly when you need it). Skip sources/ files marked "NOT REACHABLE" and any empty placeholder files. If no real content is reachable yet, stop and tell me before writing anything in memory/.
-
-2. Every claim ends with a citation in the form `[sources/<filename>]` pointing to the file it came from. One claim, one source file, on the same line. If a claim has no source, don't write it — put the gap in "open questions" instead. I'll spot-check citations against the files.
-
-3. Distinctive, not descriptive. Extract what's specific to my situation — my company, my sources, my challenge. If a claim could appear in a competitor's memory on the same kind of problem, it's too generic; rewrite or cut.
-```
+{{prompt:build-your-challenge-memory-3}}
 
 
 Claude returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so. If something's missing, add it.
@@ -96,11 +60,7 @@ Approve. Claude writes the files.
 
 Now ask Claude to audit itself:
 
-**Prompt** *(Claude Code)*
-
-```
-Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? Assume at least one of the three has a generic top claim. Name it and propose one specific rewrite. If on re-reading all three are specific, say why, and name the sentence most at risk of slipping generic. List the generic ones in memory/soft-pages.md.
-```
+{{prompt:build-your-challenge-memory-4}}
 
 
 That list is your first quality check. You'll sharpen those pages in Phase 3.
@@ -113,27 +73,14 @@ A library without a librarian is a cost. Give it one.
 
 An agent, at its simplest, is a markdown file: instructions the model reads at the start of every run. What this agent is for, and the rules it follows. Same stuff as the memory. Same stuff as the Module 1 guardrail. Text on disk, re-used.
 
-**Prompt** *(Claude Code)*
-
-```
-Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
-
-1. What recurring job should this agent do for my challenge? One sentence — e.g., "draft a next-step memo for my CEO," "surface three risks for next week's stakeholder meeting," "synthesize three talking points on progress so far."
-2. What rules matter? Starter rules: cite the memory file for every claim, never invent, ask when a source is thin, keep my voice. Change at least one so it's actually mine. Include any hard lines — things the agent must not do even if asked.
-
-Pick a filename from the job. Show me the file before saving.
-```
+{{prompt:build-your-challenge-memory-5}}
 
 
 Claude asks. You answer. The agent file lands in `agents/`.
 
 Now use it. Fresh message.
 
-**Prompt** *(Claude Code)*
-
-```
-Read the agent file you just created, apply its role and rules, and use my memory. Ask me for the specific task, then do it. Cite which memory file each claim came from.
-```
+{{prompt:build-your-challenge-memory-6}}
 
 
 Answer with a real task from your challenge. Claude reads the agent file, reads the memory, cites sources, stays inside its rules. The citations tell you whether the memory earned its keep or whether Claude filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
@@ -144,29 +91,14 @@ A dumb knowledge base grows. A good one *sharpens*, pages get tighter as new sou
 
 Pick one source that fills a gap (a practitioner article, a skipped doc, an email thread, a local file you can share). Tell Claude to integrate it into the memory, then paste the link or path after the `New source:` line in the prompt.
 
-**Prompt** *(Claude Code)*
-
-```
-Take the source below and integrate it into the memory. Steps:
-
-1. Read the source. Integrate its claims into existing pages (sharpen, don't append). Drop any claim the source contradicts. For new topics, add pages in the existing shape. Update memory/index.md.
-2. Rewrite tops in place. Replace old framing; don't preserve it above a new section.
-
-When you're done, tell me three pages that got sharper (not longer) and one claim that got dropped or replaced.
-
-New source:
-```
+{{prompt:build-your-challenge-memory-7}}
 
 
 Read Claude's report. Push back if a claim "got sharper" but the top didn't actually change. Second batch made the first batch better. Chat literally cannot do this.
 
 **Phase 4. Let it maintain itself.**
 
-**Prompt** *(Claude Code)*
-
-```
-Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don't have one; two places where older pages likely went stale given what's in the newer sources. For each, propose a specific fix and rate severity: HIGH (would mislead a decision), MED (missing signal), LOW (cosmetic). After listing your six proposals, name the one you are LEAST confident about and say why you included it rather than a more serious gap. Don't apply them yet — ask me to approve or reject each one.
-```
+{{prompt:build-your-challenge-memory-8}}
 
 
 Go through Claude's six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory's now the version you steered, not the version Claude landed alone.
@@ -177,11 +109,7 @@ Ask your memory the hardest open question on your challenge right now. Not *"sum
 
 Run it through the agent you built in Phase 2. That's the one that reads the memory and cites sources.
 
-**Prompt** *(Claude Code)*
-
-```
-Using my memory and the rules in the agent file, answer this question, citing which memory file each claim came from:
-```
+{{prompt:build-your-challenge-memory-9}}
 
 
 Then the question.

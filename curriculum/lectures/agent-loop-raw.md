@@ -6,23 +6,11 @@ The raw loop takes three plain questions. No special setup. No hidden vocabulary
 
 Ask these one at a time:
 
-**Prompt** *(Claude Code)*
+{{prompt:agent-loop-raw-1}}
 
-```
-What tools do you have available?
-```
+{{prompt:agent-loop-raw-2}}
 
-**Prompt** *(Claude Code)*
-
-```
-How do you, as an LLM, know what tools to use?
-```
-
-**Prompt** *(Claude Code)*
-
-```
-You write text. How does that text become actions in other systems?
-```
+{{prompt:agent-loop-raw-3}}
 
 Read the answers as mechanism, not magic. The model has a tool list. Each tool comes with a name, description, and input shape. The prompt and context make one description look relevant. The model writes a structured request. The runtime turns that text into a real tool call. Another system reads the call and does the work.
 

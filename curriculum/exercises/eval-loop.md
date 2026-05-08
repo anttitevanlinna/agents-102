@@ -30,25 +30,7 @@ One move before you automate. See what your judge does on a fresh output, end to
 
 Ask Claude to generate one briefing and score it with the judge from Module 5.
 
-**Prompt**
-
-```
-Three things, in sequence:
-
-1. Write ./generation-prompt.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.
-
-2. Run ./generation-prompt.md once and save the briefing to module-6/fresh-briefing.md.
-
-3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:
-- the claim
-- the judge's verdict
-- one sentence naming the grounding problem, if any
-- one generation-prompt rule that would prevent this kind of miss in the next briefing
-
-Then summarize in three lines: what the judge caught, the one generation-prompt rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.
-
-Do not update ./generation-prompt.md from this feedback yet. Phase 0 is calibration; the loop rewrites the prompt later.
-```
+{{prompt:eval-loop-1}}
 
 That's the manual version. Your judge ran once. You saw what it catches and what the generation prompt will need to learn.
 
@@ -58,37 +40,7 @@ Now make that happen three times without you feeding the output back by hand.
 
 Ask Claude to run the loop. Generation and judging should happen in separate subagents; the main session reads the judgment and rewrites `./generation-prompt.md` between rounds.
 
-**Prompt**
-
-```
-Run an eval loop using my fixed judge.
-
-Fixed judge:
-- Never edit judges/groundedness-judge.md.
-- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.
-- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.
-
-Starting generation prompt:
-- Read ./generation-prompt.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.
-- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.
-
-Run at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.
-
-For each round:
-1. Dispatch a generator subagent. It must read ./generation-prompt.md, ./crux.md, and memory/. It writes the briefing for that round:
-   - briefing.md in that round's folder
-2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round. It writes the judgment for that round:
-   - judgment.md in that round's folder
-   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-prompt rule for each flagged failure class, plus a top-line count of flagged claims.
-3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-prompt.md for the next round. Integrate the lesson; do not append retro notes.
-4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation prompt. When there is no longer significant improvement, stop the loop.
-
-When the loop stops:
-- Write module-6/eval-notes.md with the score trajectory, the generation-prompt change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.
-- In chat, show me the same summary in under 12 lines.
-
-Do not stop for confirmation between rounds.
-```
+{{prompt:eval-loop-2}}
 
 Now step away. The point is not to watch Claude type. The point is to come back to a generator that has been tightened by a judge you did not move.
 
@@ -96,36 +48,17 @@ Now step away. The point is not to watch Claude type. The point is to come back 
 
 If the loop is underway and you want to understand the shape of the leverage, ask about parallel search:
 
-**Prompt**
-
-```
-Claude: can we scale this by adding more generation tracks to try more options faster?
-```
+{{prompt:eval-loop-3}}
 
 Then ask for the model-training analogy in small pieces:
 
-**Prompt**
-
-```
-Claude: what is the similarity to model training here? Tell me in 5 snippets, one at a time. After each snippet, wait for me to say "next."
-```
+{{prompt:eval-loop-4}}
 
 **Phase 2: Come back to the notes (~10 min).**
 
 Ask Claude to show the loop result and the final generation prompt.
 
-**Prompt**
-
-```
-Show me module-6/eval-notes.md and ./generation-prompt.md.
-
-Then answer in five bullets:
-- Did the judge file stay byte-identical?
-- What was the score trajectory?
-- Which generation-prompt change most clearly improved the next round?
-- Which failure did the generation prompt still not absorb?
-- What would you test in the next run?
-```
+{{prompt:eval-loop-5}}
 
 Read the answer. Push back where it is too neat. If round 3 still failed on numbers, the generation prompt does not yet know how to handle numbers. If the judge marked weak claims as grounded, the judge has a blind spot. If the score got worse, that is data: the prompt absorbed the wrong lesson or the generator ignored it.
 
@@ -151,23 +84,7 @@ Any judge you own becomes infrastructure the moment you stop editing it and star
 
 Ask Claude to set up the loop around a different judge:
 
-**Prompt** *(Builder Claude)*
-
-```
-Set up a fixed-judge loop for one of my outputs.
-
-Run the loop end to end:
-1. Write a generation prompt file that a generator subagent can read.
-2. Dispatch a generator subagent to produce the output from that prompt.
-3. Dispatch a separate judge subagent to run the fixed judge and write per-claim or per-item feedback alongside the score.
-4. The main session reads the judgment and rewrites the generation prompt file before the next round.
-
-Run at least three rounds. After round 3, keep going until improvement is no longer significant.
-
-Never edit the judge file. At the end, write notes with the score trajectory, the generation-prompt changes, the judge-integrity check, why the loop stopped, and the next boundary case to test.
-
-Use these inputs:
-```
+{{prompt:eval-loop-6}}
 
 Convergence was the floor in Module 5. Eval-as-yardstick is the ceiling here. The next natural question (*who else on my team would want this?*) is Module 7's problem.
 

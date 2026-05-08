@@ -18,18 +18,7 @@ Module 3 opens cold. Module 2's `memory/` is on disk; this exercise reads from i
 
 Ask Claude to read the memory and name the crux. Push back hard when the first answer is a problem restatement.
 
-**Prompt** *(Claude Code)*
-
-```
-Look at my challenge memory. Find the load-bearing obstacle: the one thing that, if solved, unlocks the others. Richard Rumelt calls this the "crux."
-
-Rules:
-- Not a problem restatement. "We need to build credibility" is a goal, not a crux. "Prospects won't meet us until someone they trust vouches" IS a crux: it names the mechanism that blocks everything else.
-- Not a category. "Positioning is unclear" is a category. "Buyers can't tell in 30 seconds whether we sell training or consulting" is specific enough to act on.
-- Test it: if this obstacle moved, would at least three other stuck things release? If not, keep looking. It isn't the crux.
-
-One sentence. Save it to ./crux.md under a `## Crux` heading; show me before saving.
-```
+{{prompt:name-your-crux-1}}
 
 
 Revise by iterating; save when good enough.
@@ -38,13 +27,7 @@ The crux is the obstacle. Now name the decision the crux blocks, the call you'd 
 
 Ask Claude to name the sharpest decision the crux blocks and append it to the same file.
 
-**Prompt** *(Claude Code)*
-
-```
-Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you'd stay late to make. Something like *"what's the right next move to unblock the crux, over the next 90 days?"* is a decent default. *"Should we kill option A?"* is better if that's where you are.
-
-Append a `## Question` section to ./crux.md with the decision question. Don't overwrite the crux above. Show me before saving.
-```
+{{prompt:name-your-crux-2}}
 
 
 Same move: iterate if it's a topic restatement instead of a real call; save when good enough.

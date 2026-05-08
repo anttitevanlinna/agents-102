@@ -43,11 +43,7 @@ Back in Phase 1 you asked Claude to flag pages a competitor could write about th
 
 Ask Claude to spot the still-generic pages and propose what would sharpen each.
 
-**Prompt** *(Claude Code)*
-
-```
-Look at the memory I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what's the one question you'd ask me right now to pull the missing insight out of my head?
-```
+{{prompt:compounding-1}}
 
 Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 

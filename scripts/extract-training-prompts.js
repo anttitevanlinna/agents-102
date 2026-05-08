@@ -11,10 +11,17 @@
 
 const fs = require('fs');
 const path = require('path');
-const { TRAININGS } = require('../site/layouts/curriculum.js');
+const CR = require('../site/layouts/curriculum.js');
+const { TRAININGS, expandPrompts } = CR;
+const { loadRegistry } = require('./compile-prompts.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const INCLUDE_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+// Load the prompt registry once. After the prompts-registry refactor, source
+// .md files use `{{prompt:<key>}}` markers instead of inline fenced blocks;
+// readText below expands markers before parsing so the extractor sees the
+// canonical post-expansion shape and produces a complete prompt sequence.
+const PROMPT_REGISTRY = loadRegistry();
 const FLAVORS = [
   { key: 'cli', label: 'Claude Code CLI', include: ['rt-cli', 'rt-code'], exclude: ['rt-desktop', 'rt-cowork'] },
   { key: 'desktop', label: 'Claude Code Desktop', include: ['rt-desktop', 'rt-code'], exclude: ['rt-cli', 'rt-cowork'] },
@@ -27,7 +34,7 @@ function argValue(name, fallback) {
 }
 
 function readText(file) {
-  return fs.readFileSync(file, 'utf8');
+  return expandPrompts(fs.readFileSync(file, 'utf8'), PROMPT_REGISTRY);
 }
 
 function stripMaintainer(md) {

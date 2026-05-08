@@ -2825,6 +2825,14 @@ Let&#39;s focus on:
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
     var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
 
+    // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
+    // expandPrompts() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/prompts/<key>.md; the SPA reads the
+    // compiled site/prompts.json registry, the build script reads source files
+    // directly. Marker MUST be alone on a line so expansion produces block-level
+    // markdown (label paragraph + fenced code), not inline text.
+    var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
     // Inline cross-doc link pattern: `(kind/slug.md)` anywhere in body, with
     // optional `../` prefixes. Renderer rewrites to `?file=kind/slug` URLs.
     var CROSS_DOC_LINK_RE = /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g;
@@ -2844,6 +2852,54 @@ Let&#39;s focus on:
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Reconstruct the canonical inline prompt-block shape the renderer expects:
+    //   **Prompt** *(<dest>[, <context>])*
+    //
+    //   ```
+    //   <text>
+    //   ```
+    // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
+    // following <pre>; this output is byte-equivalent to a hand-authored block.
+    function renderPromptBlock(entry) {
+        var dest = (entry && entry.dest) || 'Claude Code';
+        var ctx = entry && entry.context ? ', ' + entry.context : '';
+        var label = '**Prompt** *(' + dest + ctx + ')*';
+        var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        var fence = '```\n' + text + '\n```';
+        return label + '\n\n' + fence;
+    }
+
+    // Replace every `{{prompt:<key>}}` line in `md` with the canonical block
+    // shape, looking each key up in `registry` (object: key -> entry).
+    //
+    // Default mode (permissive): unknown keys pass through unchanged so a
+    // missing entry renders as literal `{{prompt:foo}}` text — visible at
+    // a glance and catchable by the lint / post-render audit. The SPA path
+    // uses this mode to avoid hard-crashing the page on a stale registry.
+    //
+    // Strict mode (`opts.strict === true`): build path uses this. Any unknown
+    // key throws with a list of all unresolved markers, so a typo in a module
+    // file or a stale registry fails the build instead of silently shipping.
+    function expandPrompts(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(PROMPT_INCLUDE_RE, function (match, key) {
+            var entry = registry[key];
+            if (!entry) {
+                unresolved.push(key);
+                return match;
+            }
+            return renderPromptBlock(entry);
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandPrompts: unresolved {{prompt:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{prompt:' + k + '}}'; }).join(', ')
+            );
+        }
+        return out;
     }
 
     function extractParent(md) {
@@ -3294,6 +3350,9 @@ Let&#39;s focus on:
         esc: esc,
         rewriteCrossDocLinks: rewriteCrossDocLinks,
         stripMaintainerTail: stripMaintainerTail,
+        renderPromptBlock: renderPromptBlock,
+        expandPrompts: expandPrompts,
+        PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
         extractParent: extractParent,
         extractBigIdea: extractBigIdea,
         escapeTildes: escapeTildes,

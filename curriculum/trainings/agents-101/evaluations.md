@@ -47,19 +47,7 @@ Five minutes. Claude reviews the eval loop's run and sharpens the generator's ta
 
 Ask Claude to read the round trail and sharpen the generator's tactic beyond what the loop reached.
 
-**Prompt** *(Claude Code)*
-
-```
-Start by reading the files. No plan or preamble.
-
-Review this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?
-
-Be harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.
-
-Then overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a "retro notes" section; rewrite the file as the better version.
-
-When you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.
-```
+{{prompt:a101-m6-debrief-tactic-sharpen}}
 
 
 Read Claude's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.

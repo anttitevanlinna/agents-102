@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Tool-agnostic git pre-commit hook.
+#
+# Fires on every `git commit` regardless of which agent or tool initiated it
+# (Claude Code, Codex, manual git, IDE integrations). When staged changes
+# include any file under curriculum/prompts/**, prints the diff summary and
+# requires explicit y/N confirmation from the human committer.
+#
+# Why: prompt-registry files are the canonical source of student-facing prompts.
+# Edits to them must be deliberate. The Claude-Code-specific PreToolUse gate
+# (.claude/hooks/prompt-edit-gate.sh) catches at write time within Claude
+# Code; this hook is the second-line defence catching commits from any tool.
+#
+# Setup (run once per clone):
+#   git config core.hooksPath .githooks
+#
+# Bypass for legitimate bulk operations:
+#   SKIP_PROMPT_GATE=1 git commit ...
+
+set -e
+
+# Bypass
+if [ "${SKIP_PROMPT_GATE:-0}" = "1" ]; then
+    exit 0
+fi
+
+# Find staged changes under curriculum/prompts/ — registry only.
+# Inline **Prompt** fenced blocks elsewhere (modules, exercises, lectures
+# pre-migration) are NOT in scope; those remain protected by review.
+staged=$(git diff --cached --name-only -- 'curriculum/prompts/**' 2>/dev/null || true)
+if [ -z "$staged" ]; then
+    exit 0
+fi
+
+# Inform the human and require confirmation. Commit hooks run in a non-tty
+# context inside many GUIs / IDE clients — fall back to /dev/tty for the read.
+echo "──────────────────────────────────────────────────────────────────────"
+echo "Prompt registry change detected. Staged files under curriculum/prompts/:"
+echo
+git diff --cached --stat -- 'curriculum/prompts/**'
+echo
+echo "Diff summary:"
+git diff --cached --shortstat -- 'curriculum/prompts/**'
+echo
+echo "Prompt edits ship to every student. Confirm before committing."
+echo "(Bypass entire gate for batch ops: SKIP_PROMPT_GATE=1 git commit ...)"
+echo "──────────────────────────────────────────────────────────────────────"
+
+# Read confirmation from the controlling terminal so this works under VS Code
+# / IntelliJ / etc. that disconnect stdin from /dev/tty by default.
+if [ ! -t 0 ] && [ -e /dev/tty ]; then
+    exec < /dev/tty
+fi
+printf "Proceed with commit? [y/N] "
+read -r reply
+case "$reply" in
+    y|Y|yes|YES) exit 0 ;;
+    *) echo "Commit aborted." >&2; exit 1 ;;
+esac

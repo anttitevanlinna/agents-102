@@ -41,6 +41,9 @@ ROOT="$STAGE/starter"
 mkdir -p "$ROOT"
 
 # Strip maintainer blocks: everything from `<!-- maintainer -->` to end-of-file.
+# Tarball-shipped .md files keep `{{prompt:<key>}}` markers verbatim — the
+# tarball ships curriculum/prompts/ alongside, and the self-study skill teaches
+# the agent how to resolve markers against that directory.
 strip_maintainer() {
   local src="$1"
   local dst="$2"
@@ -70,7 +73,20 @@ done
 done
 
 mkdir -p "$ROOT/.claude/skills/self-study"
-cp "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
+strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
+
+# Ship the prompt registry alongside curriculum. Self-study and any other agent
+# reading tarball-shipped .md files resolves `{{prompt:<key>}}` markers by
+# reading prompts/<key>.md from this directory — the same registry the build
+# script and SPA expand from at render time.
+PROMPTS_SRC="curriculum/prompts"
+if [ -d "$PROMPTS_SRC" ]; then
+  mkdir -p "$ROOT/prompts"
+  for f in "$PROMPTS_SRC"/*.md; do
+    [ -f "$f" ] || continue
+    cp "$f" "$ROOT/prompts/$(basename "$f")"
+  done
+fi
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
 # memory/, sources/, agents/, .claude/ at the top level (no wrapper).

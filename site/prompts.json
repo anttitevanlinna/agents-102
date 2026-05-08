@@ -1,0 +1,730 @@
+{
+  "a101-m1-debrief-cold-critic": {
+    "key": "a101-m1-debrief-cold-critic",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/getting-going",
+    "text": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.\n\nHave the subagent answer:\n1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).\n2. Quote the most generic line that could be copy-pasted from anyone's site."
+  },
+  "a101-m1-debrief-rules-retro": {
+    "key": "a101-m1-debrief-rules-retro",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/getting-going",
+    "text": "Start by reading the file. No plan or preamble.\n\nRead `module-1/personal-brand-generation.md`. Then re-read what we did building the site. Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught? Find what's still surface; don't defend the file as-is.\n\nAssume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.\n\nThen overwrite `module-1/personal-brand-generation.md` with the retro applied. Sharpen what's weak. Add what's missing. Drop what's wrong. Rewrite the file in place; don't append a \"retro notes\" section.\n\nWhen you're done, list:\n- dropped: rule text + reason\n- sharpened: before -> after\n- added: rule text + why the session needed it\n- still uncertain: anything the rules should cover but you want me to weigh in on first"
+  },
+  "a101-m2-debrief-claude-md": {
+    "key": "a101-m2-debrief-claude-md",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/building-agent-systems",
+    "text": "Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.\n\nThe rules file governs how agents behave in this directory from now on — how memory gets compiled, how sources are treated, what claims require citations, what counts as \"specific to my challenge\" vs. generic. Don't invent — extract. Every rule you write should be traceable to a specific moment in the session where the rule either helped or would have helped.\n\nStructure however makes sense for how we actually worked today — section headers, short paragraphs, bullets where a list is clearest. No retro-notes framing; write the rules as if they'd always been the rules. Cover at minimum: the memory (when and how pages get written, what grounds them), the sources (what they are, whether they're editable), the agents (how they relate to the memory), and whatever else earned its place.\n\nWhen you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason. I shouldn't have to open the file to know what's in it."
+  },
+  "a101-m3-debrief-handoff-rules": {
+    "key": "a101-m3-debrief-handoff-rules",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/multi-agent-systems",
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Audit harshly. Diplomatic summaries are a failing grade here. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?\n\nThen rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. Name one thing you would have missed without the \"audit harshly\" instruction. A seam without evidence doesn't count."
+  },
+  "a101-m3-homework-memory-health": {
+    "key": "a101-m3-homework-memory-health",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/multi-agent-systems",
+    "text": "Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn't look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files."
+  },
+  "a101-m4-debrief-security-rules": {
+    "key": "a101-m4-debrief-security-rules",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/security",
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and compound 1-5 security operating rules into the agent system. Read the root ./CLAUDE.md if it exists. Read outputs/policy-report-raw.md if it exists, outputs/policy-report.md, and outputs/security-report.md. Look back over the session: which rows should future sessions remember, which \"I can't tell\" rows need standing evidence checks, where did the mitigation reduce one risk but shift another, and what residuals should future sessions not forget?\n\nBe harsher than feels right. Security rules that sound generally wise but do not name a concrete trigger, file, report row, or residual do not count.\n\nThen update ./CLAUDE.md as the durable operating memory for this agent system. Add or sharpen 1-5 short security rules that future sessions should load before working with this system: what to check, what not to touch, when to run the reusable security check, or which residuals from outputs/security-report.md must stay visible. Integrate them into the right section if one exists; otherwise create a short section named \"Security operating rules\". Do not edit the skill files. Do not paste an audit summary. Do not add a retro section. Do not remove or restructure any existing sections outside Security operating rules. Each rule should be usable by a future agent that never saw this session.\n\nWhen you're done, read back the Security operating rules section and copy the exact rule text you changed or added. Then tell me in 1-5 lines: which report row or residual drove each rule, what future agents must do differently, and what risk remains even after the mitigation."
+  },
+  "a101-m5-debrief-groundedness-rules": {
+    "key": "a101-m5-debrief-groundedness-rules",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/output-quality",
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and update the root `./CLAUDE.md` with groundedness operating rules. Read `./CLAUDE.md` if it exists, then scan `module-5/evidence-roster.md`, `module-5/claim-pool.md`, `module-5/adjudicated-claims.md`, `module-5/detectors/` (the four detector outputs), `module-5/scoreboard.md`, and `judges/groundedness-judge.md`.\n\nLook back over the session: when did ungroundedness matter, which claim-shapes needed checking, where did citations look present but not load-bearing, and what should future agents know before they turn a briefing, memo, recommendation, or proposed action into something people rely on?\n\nThen update `./CLAUDE.md` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that tell future sessions when and how to run groundedness checks: what kinds of output need checking, which evidence surface to use, when to run `judges/groundedness-judge.md`, and when to say \"not enough evidence\" instead of smoothing over the gap. If a Groundedness checks section already exists, edit the rules in that section in place; do not add a new subheading or parallel list. Otherwise create a short section named \"Groundedness checks\". Touch ONLY that section; preserve every other section verbatim. Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.\n\nWhen you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Copy the exact rule text, one line per rule. Then tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly. Then name the two patterns this prompt enforced: one about which boundary you were allowed to touch, one about checking what landed after you wrote it."
+  },
+  "a101-m6-debrief-tactic-sharpen": {
+    "key": "a101-m6-debrief-tactic-sharpen",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/evaluations",
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?\n\nBe harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.\n\nThen overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test."
+  },
+  "a101-m7-debrief-sharing-artifact": {
+    "key": "a101-m7-debrief-sharing-artifact",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/personal-to-team",
+    "text": "Start by identifying the file path. No plan or preamble.\n\nReview this session and sharpen the sharing artifact. Read everything in module-7/ (jtbd, branch, absorption-bottleneck, technical-plan, people-plan, assumptions, failure-stories, monday) and identify which single file is the sharing artifact itself (the skill file, the interface spec, the output schedule, the context export, whichever pattern I picked produces the thing the teammate actually touches). Confirm the file path in one line before rewriting. Then look back over the session: where did the teammate's job-to-be-done stay unnamed or too abstract, where does the artifact leak more than the teammate needs (over-shared) or less than they can use (under-shared), where is the people plan thin (no name, no owner, no handoff), which assumption would have to be true for this to land and isn't? Be harsher than feels polite. If the people plan had no names, say so plainly.\n\nThen rewrite the sharing artifact. Overwrite the file in place at its current path in module-7/; do not create a separate version. Integrate, don't append. Name the teammate's job explicitly at the top, tighten the surface area so it fits the job (not your whole system), add the one line the people plan needed. Keep the edge in the critique; the gap between people plan and real ownership is the message, not something to soften. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. If you cannot quote the before-line, do not claim the change. Name the one assumption the artifact still depends on."
+  },
+  "a101-m8-debrief-flywheel-sharpen": {
+    "key": "a101-m8-debrief-flywheel-sharpen",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/agents-building-agents",
+    "text": "Start by identifying the file path. No plan or preamble.\n\nReview this session and sharpen the file that carried the most weight — most likely the strategy kernel, agent set, plan, or central synthesizer's rules, whichever governed how the agents argued and selected. Identify the file path and confirm in one line before rewriting; overwrite in place, do not create a parallel version. Then scan the shared deliberation folder: challenge, context manifests, stances, cross-checks, proposals, selection-board, midway-instructions, critiques, pushback, kernel, agent-set, plan. Identify which synthesizer-injected midpoint instructions actually changed later agent behavior.\n\nLook back over the session: surface at least two flywheel stalls (an agent waiting on another that never finished), at least one under-specified role (so two agents played it or none did), and at least one proposal the room converged on too fast — name which proposal and which agent could have pushed back but didn't. Where did a critique land and change a selection? Where did the plan invent a dependency that could actually run concurrently (capture that as a rule)? What did the session fail to decide, and why?\n\nThen rewrite the file. If you are uncertain which file carried the most weight, default to the central synthesizer rules file; do not pause. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Preserve any rule not directly contradicted by session evidence. Don't add a \"retro notes\" section; rewrite the file as the better version. Do not close every loop — some of what didn't resolve should stay open, named.\n\nWhen you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. Name which critique was raised but not acted on, and which file's rules directly contradicted what happened. If you think every critique was acted on, quote the evidence. Name one thing the session genuinely didn't resolve."
+  },
+  "a101-prework-extract-tarball": {
+    "key": "a101-prework-extract-tarball",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/prework",
+    "text": "Extract the starter tarball in the working folder. Use the shell:\n\n  tar xzf agents-101-starter.tar.gz\n\n(Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)\n\nThen list what's in the working directory and confirm these folders exist:\nprework/, memory/, sources/, agents/, .claude/, and module-4/policies/.\nIf tar is not available, tell me what error you got."
+  },
+  "a101-prework-meetings-connector": {
+    "key": "a101-prework-meetings-connector",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/prework",
+    "text": "List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+  },
+  "a101-prework-meetings-screenshot-cli": {
+    "key": "a101-prework-meetings-screenshot-cli",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cli",
+    "origin": "agents-101/prework",
+    "text": "I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+  },
+  "a101-prework-meetings-screenshot-cowork": {
+    "key": "a101-prework-meetings-screenshot-cowork",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "cowork",
+    "origin": "agents-101/prework",
+    "text": "I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+  },
+  "a101-prework-meetings-screenshot-desktop": {
+    "key": "a101-prework-meetings-screenshot-desktop",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "desktop",
+    "origin": "agents-101/prework",
+    "text": "I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+  },
+  "a101-prework-snake-game": {
+    "key": "a101-prework-snake-game",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agents-101/prework",
+    "text": "Build me a snake game as a single HTML file. Save it as `prework/snake.html`."
+  },
+  "agent-loop-raw-1": {
+    "key": "agent-loop-raw-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/agent-loop-raw",
+    "text": "What tools do you have available?"
+  },
+  "agent-loop-raw-2": {
+    "key": "agent-loop-raw-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/agent-loop-raw",
+    "text": "How do you, as an LLM, know what tools to use?"
+  },
+  "agent-loop-raw-3": {
+    "key": "agent-loop-raw-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/agent-loop-raw",
+    "text": "You write text. How does that text become actions in other systems?"
+  },
+  "audit-your-agent-1": {
+    "key": "audit-your-agent-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/audit-your-agent",
+    "text": "/security-audit — load the skill\n\nApply the policy lens to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.\n\nFor each rule the policy lens carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / \"I can't tell\"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.\n\nWrite the packaged-lens report to outputs/policy-report.md. If outputs/policy-report-raw.md exists, briefly note one way the packaged report is sharper, narrower, or more specific than the raw run. Be specific. Be plain. An \"I can't tell\" is a better answer than a confident guess.\n\nRead the memory and agent files properly - don't skim. Quote the specific lines or files that support each verdict.\n\nAfter writing the report, read outputs/policy-report.md back to yourself and tell me:\n1. The top three surprises - rows where the verdict is not what a careful reader would have predicted.\n2. The three rows where \"I can't tell\" is most likely hiding a real compliance gap.\n3. One row that looks compliant on the surface but where you would still push back.\n\nKeep each point to one or two sentences. Quote the specific rule name so I can find the row."
+  },
+  "audit-your-agent-2": {
+    "key": "audit-your-agent-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/audit-your-agent",
+    "text": "Apply the agent-security lens to every agent in agents/. Run both checks: what each agent can reach, and the named risk patterns the lens carries.\n\nFor access control: for each agent in agents/, list every outside system or sensitive place the agent can reach (connectors, retrievals, file writes beyond the training directory). Is each access necessary for what the agent actually does? Flag anything the agent has access to but doesn't need.\n\nFor the named risk patterns (prompt injection direct and indirect, secrets-in-context-and-scrollback, tool-confusion, skill supply-chain): for each pattern, name the top one or two specific risks across the agents, not generic definitions. Quote the agent file or behaviour that creates the risk.\n\nFor each risk flagged, suggest one mitigation for how the agent works - scope, split, filter, gate, or review - matched to the specific risk. These sit on top of the normal company controls already in place (network controls, identity and access management, logging, vendor/security review), not replacing them. Rank the risks by severity x likelihood, three-tier (high / medium / low).\n\nWrite the report to outputs/security-report.md. Include the ranked mitigation suggestions."
+  },
+  "audit-your-agent-3": {
+    "key": "audit-your-agent-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/audit-your-agent",
+    "text": "Apply a mitigation to my system for the risk I'm about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn't fit, I'll tell you and we'll iterate.\n\nThen re-run the check the reusable lens performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?\n\nThen append a short section to outputs/security-report.md named \"Mitigation applied and residual\". Name what changed, what the new verdict is, and what's still true after the mitigation. Do not rewrite the earlier report. Not what we fixed. What's left. Be specific.\n\nThe risk:"
+  },
+  "author-security-skill-1": {
+    "key": "author-security-skill-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/author-security-skill",
+    "text": "Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.\n\nFor each rule you can derive from the policy files, produce one row in a report: rule name, one-line description, verdict (compliant / violating / \"I can't tell\"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.\n\nWrite the raw report to outputs/policy-report-raw.md. Be specific. Be plain. An \"I can't tell\" is a better answer than a confident guess.\n\nDo not create a skill yet. This is the raw run."
+  },
+  "author-security-skill-2": {
+    "key": "author-security-skill-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/author-security-skill",
+    "text": "I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.\n\nBefore you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.\n\nAfter I answer, read outputs/policy-report-raw.md and everything in module-4/policies/. Then propose the reusable package shape for my runtime and wait for me to steer."
+  },
+  "author-security-skill-3": {
+    "key": "author-security-skill-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/author-security-skill",
+    "text": "Author the reusable security check now. Two lenses.\n\nBuild one personal skill source under module-4/skills/security-audit/. The main file is SKILL.md. It contains both lenses: POLICY and AGENT-SECURITY. Add supporting reference files only where useful.\n\nFor CLI and Claude Code Desktop, also make the standalone-skill install shape clear: module-4/skills/security-audit/SKILL.md becomes ~/.claude/skills/security-audit/SKILL.md during install. Do not write into ~/.claude yet; keep the authored source under module-4/skills/security-audit/ for now.\n\nLens 1 - POLICY. Rules drawn from everything in module-4/policies/ plus the lines I just typed. For each rule, the lens produces one row in a report: rule name, one-line description, verdict (compliant / violating / \"I can't tell\"), one line of evidence from the target system. The verdict column stays plain - \"I can't tell\" is a real answer.\n\nLens 2 - AGENT-SECURITY. Check what the agent can reach, what sensitive material might stay in its context, and what could go wrong because ordinary text can act like an instruction. The lens MUST cover these named risk patterns by name:\n\n- prompt injection (direct - hostile input in a user prompt; indirect - hostile content in a retrieved source the agent reads)\n- secrets in context and scrollback (API keys, customer data, partner-NDA material persisting in the transcript or the agent's working memory)\n- tool confusion (agent invokes the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes what to do: for example, the production-database connector firing when test would do, or the email-send tool dispatching when the user only asked for a draft)\n- skill supply-chain (the skill itself, or any skill the agent loads, came from somewhere - who authored it, who reviewed it, what it can do)\n\nFor each pattern, the lens produces one or two specific risks in the target system, ranked, with one suggested agent mitigation per risk - scope, split, filter, gate, or review. These sit on top of normal company controls (network controls, identity and access management, logging, vendor/security review), not in place of them. Name that explicitly in the lens's preamble.\n\nBefore you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run. Cover both lenses, especially the policy lens, where there is no named-class rail to fall back on. Don't stop at one question. I'll tell you when enough is enough.\n\nAfter I answer, save the files. Keep the SKILL.md tight: when to use it, the two lenses it applies, the report shape each lens produces. Show me what you saved and confirm this package-complete checklist:\n- module-4/skills/security-audit/SKILL.md\n- any supporting reference files the SKILL.md requires"
+  },
+  "author-security-skill-4": {
+    "key": "author-security-skill-4",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/author-security-skill",
+    "text": "Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls."
+  },
+  "author-security-skill-5": {
+    "key": "author-security-skill-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/author-security-skill",
+    "text": "Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls."
+  },
+  "author-security-skill-6": {
+    "key": "author-security-skill-6",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/author-security-skill",
+    "text": "Use your skill-creator skill to turn the authored source at module-4/skills/security-audit/ into a personal skill named security-audit. Draft it, then surface the save action so I can save it."
+  },
+  "build-your-challenge-memory-1": {
+    "key": "build-your-challenge-memory-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats:\n\n1. Check what connectors are enabled right now. Name the ones you can reach (wiki, docs, storage, chat, email) and the ones that would be useful but aren't connected.\n\n2. Then ask me where my work material actually lives. Don't assume Confluence or OneDrive — ask what's in my world: my team's wiki (whatever the tool), my shared drives and docs, email threads, chat channels, personal notes, favourite practitioner blogs. Get specific: tool names, the 2–3 most relevant spaces/folders, the people I've been exchanging on this challenge.\n   Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.\n\n3. Then propose a curation plan covering three kinds of material: (a) internal knowledge — which searches in which tools, (b) recent work — which threads, folders, decks, (c) outside-in — 2–3 working practitioners or specific articles worth reading (not vendor blogs).\n\nOne rule for the plan: only recommend sources I would feel comfortable sharing with an LLM today. If something is likely to be sensitive — board material, personal emails, customer data, HR records — flag it as \"skip for now, revisit after Module 4\" rather than putting it in the plan. I'll push back where the plan is off."
+  },
+  "build-your-challenge-memory-2": {
+    "key": "build-your-challenge-memory-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:\n\n- Publicly fetchable URL (practitioner blog, public article)? Fetch the page, save the text as sources/<slug>.md with a header naming URL + title + why-it's-relevant.\n- Reachable via a connector you have (wiki, docs, drive)? Pull the content through and save the same way.\n- Local file on my laptop at a path I named? Save sources/<slug>.md as a reference — absolute path + title + why-it's-relevant, no copied content. You'll read the actual file directly when Beat 3 needs it.\n- Behind a connector you can't reach, or in a tool you don't have? Save sources/<slug>.md as a reference too — URL or path + title + why-it's-relevant + \"NOT REACHABLE — share with me when you want this included.\" Don't ask me to paste anything; if I want it included, I'll share the file.\n\nWhen done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I'll attach whatever I want to include before we build the memory."
+  },
+  "build-your-challenge-memory-3": {
+    "key": "build-your-challenge-memory-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Read every real-content file in sources/. For each major topic you find, create a markdown file in memory/ with a clear title, 3–5 key claims, and an \"open questions\" section for things the sources disagree on or leave unclear. Then write memory/index.md that links to every topic page with a one-line description.\n\nRules — non-negotiable:\n\n1. Sources first, always. Every memory page derives from real content — either a sources/ file with content inline, or a sources/ reference file that links to a local path (read the linked file directly when you need it). Skip sources/ files marked \"NOT REACHABLE\" and any empty placeholder files. If no real content is reachable yet, stop and tell me before writing anything in memory/.\n\n2. Every claim ends with a citation in the form `[sources/<filename>]` pointing to the file it came from. One claim, one source file, on the same line. If a claim has no source, don't write it — put the gap in \"open questions\" instead. I'll spot-check citations against the files.\n\n3. Distinctive, not descriptive. Extract what's specific to my situation — my company, my sources, my challenge. If a claim could appear in a competitor's memory on the same kind of problem, it's too generic; rewrite or cut."
+  },
+  "build-your-challenge-memory-4": {
+    "key": "build-your-challenge-memory-4",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Pick 3 memory pages at random. For each, is the top claim something specific to my challenge — or a generic observation that could apply to anyone facing this kind of problem? Assume at least one of the three has a generic top claim. Name it and propose one specific rewrite. If on re-reading all three are specific, say why, and name the sentence most at risk of slipping generic. List the generic ones in memory/soft-pages.md."
+  },
+  "build-your-challenge-memory-5": {
+    "key": "build-your-challenge-memory-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.\n\n1. What recurring job should this agent do for my challenge? One sentence — e.g., \"draft a next-step memo for my CEO,\" \"surface three risks for next week's stakeholder meeting,\" \"synthesize three talking points on progress so far.\"\n2. What rules matter? Starter rules: cite the memory file for every claim, never invent, ask when a source is thin, keep my voice. Change at least one so it's actually mine. Include any hard lines — things the agent must not do even if asked.\n\nPick a filename from the job. Show me the file before saving."
+  },
+  "build-your-challenge-memory-6": {
+    "key": "build-your-challenge-memory-6",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Read the agent file you just created, apply its role and rules, and use my memory. Ask me for the specific task, then do it. Cite which memory file each claim came from."
+  },
+  "build-your-challenge-memory-7": {
+    "key": "build-your-challenge-memory-7",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Take the source below and integrate it into the memory. Steps:\n\n1. Read the source. Integrate its claims into existing pages (sharpen, don't append). Drop any claim the source contradicts. For new topics, add pages in the existing shape. Update memory/index.md.\n2. Rewrite tops in place. Replace old framing; don't preserve it above a new section.\n\nWhen you're done, tell me three pages that got sharper (not longer) and one claim that got dropped or replaced.\n\nNew source:"
+  },
+  "build-your-challenge-memory-8": {
+    "key": "build-your-challenge-memory-8",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don't have one; two places where older pages likely went stale given what's in the newer sources. For each, propose a specific fix and rate severity: HIGH (would mislead a decision), MED (missing signal), LOW (cosmetic). After listing your six proposals, name the one you are LEAST confident about and say why you included it rather than a more serious gap. Don't apply them yet — ask me to approve or reject each one."
+  },
+  "build-your-challenge-memory-9": {
+    "key": "build-your-challenge-memory-9",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/build-your-challenge-memory",
+    "text": "Using my memory and the rules in the agent file, answer this question, citing which memory file each claim came from:"
+  },
+  "cb-homework-folder-summary": {
+    "key": "cb-homework-folder-summary",
+    "dest": "Cowork",
+    "context": "",
+    "runtime": "cowork",
+    "origin": "claude-basics/homework-build-and-verify",
+    "text": "Read the files in this folder.\n\nTell me:\n- what I can do with this folder in the future\n- what reusable patterns you can see in the rules, prompts, and saved outputs\n- which rule or checking habit is most worth carrying into my next Claude task\n- what kind of future Claude answer I should run through a separate checker before trusting\n\nKeep it to five bullets."
+  },
+  "compounding-1": {
+    "key": "compounding-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/compounding",
+    "text": "Look at the memory I just built. Pick the three topic pages that are still the most generic — any competitor in this industry could write them. For each, tell me: what specific source would sharpen it most, and what's the one question you'd ask me right now to pull the missing insight out of my head?"
+  },
+  "debugging-stuck-agents-1": {
+    "key": "debugging-stuck-agents-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/debugging-stuck-agents",
+    "text": "Find the root cause of this bug.\n\nRead the relevant files and the recent session context. Tell me whether the failure is mainly:\n1. a source problem: missing, stale, contradictory, or unread evidence\n2. a processing problem: wrong prompt, wrong role, bad handoff, vague output shape, or synthesis that averaged away disagreement\n3. a boundary problem: the agent tried to use data, tools, or authority it should not have had\n\nDo not fix anything yet. Show me the failure chain in 5 bullets: what happened, where it started, where it became visible, what file or prompt caused it, and the smallest fix that would prevent the next run."
+  },
+  "eval-loop-1": {
+    "key": "eval-loop-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/eval-loop",
+    "text": "Three things, in sequence:\n\n1. Write ./generation-prompt.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.\n\n2. Run ./generation-prompt.md once and save the briefing to module-6/fresh-briefing.md.\n\n3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:\n- the claim\n- the judge's verdict\n- one sentence naming the grounding problem, if any\n- one generation-prompt rule that would prevent this kind of miss in the next briefing\n\nThen summarize in three lines: what the judge caught, the one generation-prompt rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.\n\nDo not update ./generation-prompt.md from this feedback yet. Phase 0 is calibration; the loop rewrites the prompt later."
+  },
+  "eval-loop-2": {
+    "key": "eval-loop-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/eval-loop",
+    "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation prompt:\n- Read ./generation-prompt.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-prompt.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-prompt rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-prompt.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation prompt. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-prompt change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds."
+  },
+  "eval-loop-3": {
+    "key": "eval-loop-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/eval-loop",
+    "text": "Claude: can we scale this by adding more generation tracks to try more options faster?"
+  },
+  "eval-loop-4": {
+    "key": "eval-loop-4",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/eval-loop",
+    "text": "Claude: what is the similarity to model training here? Tell me in 5 snippets, one at a time. After each snippet, wait for me to say \"next.\""
+  },
+  "eval-loop-5": {
+    "key": "eval-loop-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/eval-loop",
+    "text": "Show me module-6/eval-notes.md and ./generation-prompt.md.\n\nThen answer in five bullets:\n- Did the judge file stay byte-identical?\n- What was the score trajectory?\n- Which generation-prompt change most clearly improved the next round?\n- Which failure did the generation prompt still not absorb?\n- What would you test in the next run?"
+  },
+  "eval-loop-6": {
+    "key": "eval-loop-6",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/eval-loop",
+    "text": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. Write a generation prompt file that a generator subagent can read.\n2. Dispatch a generator subagent to produce the output from that prompt.\n3. Dispatch a separate judge subagent to run the fixed judge and write per-claim or per-item feedback alongside the score.\n4. The main session reads the judgment and rewrites the generation prompt file before the next round.\n\nRun at least three rounds. After round 3, keep going until improvement is no longer significant.\n\nNever edit the judge file. At the end, write notes with the score trajectory, the generation-prompt changes, the judge-integrity check, why the loop stopped, and the next boundary case to test.\n\nUse these inputs:"
+  },
+  "extend-your-system-1": {
+    "key": "extend-your-system-1",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/extend-your-system",
+    "text": "Read module-8/extension-brief.md. Build the agent described in it. Write the agent file to agents/<slug>.md — the slug comes from the job, not the technology.\n\nThe agent file must include:\n- Role (one sentence) — what job this agent is hired for\n- Rules — carry forward the rules my existing agents follow (cite the memory file for every claim, never invent, ask when a source is thin). Add rules specific to this agent's job.\n- Inputs — the exact files or folders this agent reads. Paths, not descriptions.\n- Output — the exact file or shape this agent writes. If it's a report, name the filename. If it's a response, describe the shape.\n- Hard lines — things this agent must not do even if asked.\n\nShow me the file before saving. After I approve, save it to agents/<slug>.md, then run it once end-to-end on real input from my system. Report what it produced, where it hesitated, and where a source was thin."
+  },
+  "hallucination-bakeoff-1": {
+    "key": "hallucination-bakeoff-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Spawn one subagent to create the benchmark target.\n\nThe briefing is the test corpus. Aim for roughly 10% fabrication or misrepresentation so the detectors have something to catch. You cannot make that number precise. Treat it as a direction, not a target metric.\n\nInstructions for the subagent:\n- Use the strategic question in `./crux.md` under `## Question`.\n- Use the material in `module-3/stances/`.\n- Choose a bounded evidence roster before writing the briefing. Start from curated topic pages in `memory/`. Add raw files from `sources/` only when a memory page points to them or the challenge clearly needs the underlying source. Use at least 5 and at most 20 files total.\n- Save the roster to `module-5/evidence-roster.md` with each selected file path, whether it is curated memory or raw source, and a one-line reason it belongs.\n- Use only the rostered evidence files as the evidence surface for the briefing.\n- Produce a one-page briefing on the challenge.\n- Include three specific named entities relevant to the challenge (companies, teams, systems, customers, products, policies, or people).\n- Include at least two verbatim quotes from rostered evidence files.\n- Include at least one number or measurable claim.\n- Include two claims that use outside/common knowledge beyond the files.\n- Include a next action with a measurable outcome.\n- Where the sources do not cover something, blend in general knowledge. Do not hedge.\n- Do not browse the web.\n- Save the briefing to `module-5/briefing.md`.\n\nWhen the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/evidence-roster.md` and `module-5/briefing.md` exist."
+  },
+  "hallucination-bakeoff-2": {
+    "key": "hallucination-bakeoff-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.\n\nUse short verbatim excerpts from the briefing wherever possible, so later detector findings can be matched back to the briefing. Include a mix of claim shapes:\n- numbers or measurable outcomes\n- named-entity claims\n- quotes or paraphrases attributed to sources\n- causal claims\n- comparison claims\n- recommendation or next-action claims\n- claims that seem obviously grounded\n- claims that smell like overreach\n\nDo not judge whether the claims are grounded yet. Do not ask me questions. Save the claim pool to `module-5/claim-pool.md`."
+  },
+  "hallucination-bakeoff-3": {
+    "key": "hallucination-bakeoff-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is a subagent with a different method. Each reads `module-5/claim-pool.md`, `module-5/briefing.md`, `module-5/evidence-roster.md`, and the rostered evidence files named there. Each writes its findings as a list of claim-pool claims flagged, with one line of reasoning per claim.\n\nDetector 1 — Source triangulation. For every claim in the claim pool, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED. Write to `module-5/detectors/source-triangulation.md`.\n\nDetector 2 — Entailment. For every claim in the claim pool, ask: does the briefing say more than the sources actually support? A source that says \"one customer complained\" doesn't support \"the market is unhappy.\" Flag OVERREACH when the briefing stretches what the source said. Write to `module-5/detectors/entailment.md`.\n\nDetector 3 — Citation integrity. Some claims in the claim pool will cite a source, either inline or implicitly. For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim. Write to `module-5/detectors/citation-integrity.md`.\n\nDetector 4 — Counter-evidence search. For every claim in the claim pool, actively look for evidence that contradicts it, not just evidence that supports it. Flag CRUMBLES when disconfirming material exists in the rostered evidence that the briefing ignored. Write to `module-5/detectors/counter-evidence.md`.\n\nOne rule across all four detectors: quote each flagged claim exactly as it appears in `module-5/claim-pool.md`. The scorer uses strict substring match; paraphrased findings count as misses.\n\nSpawn all four in parallel. When they finish, confirm that these four files exist: `module-5/detectors/source-triangulation.md`, `module-5/detectors/entailment.md`, `module-5/detectors/citation-integrity.md`, and `module-5/detectors/counter-evidence.md`."
+  },
+  "hallucination-bakeoff-4": {
+    "key": "hallucination-bakeoff-4",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an agent with a different method. Each reads `module-5/claim-pool.md`, `module-5/briefing.md`, `module-5/evidence-roster.md`, and the rostered evidence files named there. Each writes its findings as a list of claim-pool claims flagged, with one line of reasoning per claim.\n\nDetector 1 — Source triangulation. For every claim in the claim pool, check whether that claim appears in at least one file on disk. If no file supports it, flag it UNGROUNDED. Write to `module-5/detectors/source-triangulation.md`.\n\nDetector 2 — Entailment. For every claim in the claim pool, ask: does the briefing say more than the sources actually support? A source that says \"one customer complained\" doesn't support \"the market is unhappy.\" Flag OVERREACH when the briefing stretches what the source said. Write to `module-5/detectors/entailment.md`.\n\nDetector 3 — Citation integrity. Some claims in the claim pool will cite a source, either inline or implicitly. For each citation, open the cited file and check whether the file actually contains the specific claim attributed to it. Flag CITATION-BROKEN when the citation doesn't back the claim. Write to `module-5/detectors/citation-integrity.md`.\n\nDetector 4 — Counter-evidence search. For every claim in the claim pool, actively look for evidence that contradicts it, not just evidence that supports it. Flag CRUMBLES when disconfirming material exists in the rostered evidence that the briefing ignored. Write to `module-5/detectors/counter-evidence.md`.\n\nOne rule across all four detectors: quote each flagged claim exactly as it appears in `module-5/claim-pool.md`. The scorer uses strict substring match; paraphrased findings count as misses.\n\nSpawn all four in parallel. When they finish, confirm that these four files exist: `module-5/detectors/source-triangulation.md`, `module-5/detectors/entailment.md`, `module-5/detectors/citation-integrity.md`, and `module-5/detectors/counter-evidence.md`."
+  },
+  "hallucination-bakeoff-5": {
+    "key": "hallucination-bakeoff-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "You are the scorer for a four-way detector benchmark. Your inputs:\n\n- Claim pool: `module-5/claim-pool.md`\n- Briefing: `module-5/briefing.md`\n- Evidence roster: `module-5/evidence-roster.md` and the rostered evidence files named there\n- Detector output 1: `module-5/detectors/source-triangulation.md`\n- Detector output 2: `module-5/detectors/entailment.md`\n- Detector output 3: `module-5/detectors/citation-integrity.md`\n- Detector output 4: `module-5/detectors/counter-evidence.md`\n\nYour job: adjudicate the 30 claims, score each detector against that adjudication, produce a scoreboard, name a winner.\n\nFirst, create the reference adjudication. For every claim in `module-5/claim-pool.md`, label it GROUNDED, UNGROUNDED, or PARTLY GROUNDED. Quote the evidence line or file that supports the label. If you cannot find support in the rostered evidence, say so plainly. Save this reference set to `module-5/adjudicated-claims.md`.\n\nFor each detector:\n1. Match detector findings to claim-pool claims by strict substring match. If you can't find the exact claim-pool phrase in the detector's output, count as MISS. Do not reason about semantic similarity, do not paraphrase-match, do not accept \"close enough.\"\n2. For each claim, check whether the detector flagged it. If the adjudication says UNGROUNDED or PARTLY GROUNDED, the detector should have flagged it. Count that as a hit. If the adjudication says GROUNDED, the detector should not have flagged it. Count that as a false positive.\n3. Compute precision (hits / total flagged) and recall (hits / total claims adjudicated UNGROUNDED or PARTLY GROUNDED). Coverage = how many of the 30 claim-pool claims the detector looked at.\n4. One line of qualitative notes — what this detector caught that others missed, what it missed, where its method is strong, where it's weak.\n\nSave the scoreboard to module-5/scoreboard.md as a table:\n\n| Detector | Precision | Recall | Coverage | Hits | False positives | Misses | Notes |\n\nAfter the table, name ONE winner. Do not return \"all four are useful\" — force the pick. If top two are within 10% precision and 10% recall of each other, name the single winner first, THEN propose a two-method ensemble and say what each catches that the other doesn't. Maximum ensemble cap: two methods. Never three.\n\nAt the bottom, add a one-line recommendation naming the detector or ensemble and the reason it won for output of this shape.\n\nShow me the full scoreboard table in chat after saving the file."
+  },
+  "hallucination-bakeoff-6": {
+    "key": "hallucination-bakeoff-6",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Tell me about precision and recall.\n\nUse the scoreboard at `module-5/scoreboard.md` for the examples — point at specific rows from my run. End with one line on which one matters more for catching fabrication, and why."
+  },
+  "hallucination-bakeoff-7": {
+    "key": "hallucination-bakeoff-7",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Two things, in the chat.\n\nFirst, three lines on the classic way:\n1. What the classic way to quality-check this briefing would have been.\n2. Whether it would have been faster or slower than this benchmark.\n3. Why.\n\nSecond, ask me which row of the scoreboard surprised me most — the detector that did better or worse than I'd have guessed, or the claim that turned out to be harder to flag than it looked. Wait for my one-sentence answer before we move to saving the judge."
+  },
+  "hallucination-bakeoff-8": {
+    "key": "hallucination-bakeoff-8",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/hallucination-bakeoff",
+    "text": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:\n\n1. Take any output file and the relevant evidence files as inputs.\n2. Flag ungrounded claims using the method(s) that won the benchmark.\n3. Return a short structured list — claim flagged, category, one-line reasoning.\n4. Not classify claims I didn't ask about. Stay narrow. A judge that tries to do everything does nothing well.\n\nWrite the judge as a markdown file to judges/groundedness-judge.md — a short heading, one paragraph describing what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep the judge prompt under 20 lines. Prompts that sprawl get ignored.\n\nAt the end of the file, add a one-line \"Known limit:\" — the failure mode this judge doesn't catch, based on what lost the benchmark."
+  },
+  "joint-double-diamond-1": {
+    "key": "joint-double-diamond-1",
+    "dest": "buyer/sponsor agent",
+    "context": "run once at the start",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Use the shared folder the trainer posted in chat. Write challenge.md at the shared folder root.\n\nThe challenge is:\n\"What should our company's strategy for agents be over the next six months?\"\n\nMake it concrete for this room:\n- The buyer/sponsor goal in one paragraph.\n- Three constraints the strategy must respect.\n- Two non-negotiables.\n- Three kinds of evidence that matter most.\n- One decision the room must make today.\n\nDo not solve it. Seed the challenge so the agents have something real to argue with."
+  },
+  "joint-double-diamond-2": {
+    "key": "joint-double-diamond-2",
+    "dest": "Builder Claude",
+    "context": "run once after challenge.md exists",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Use the shared folder the trainer posted in chat. Create a subfolder named after me if it does not exist. Write context-manifest.md in that subfolder. List:\n- Which modules' working folders I carry (module-1 through module-7).\n- Which memory/ pages I have, by topic.\n- Which sources/ I've fetched content for, vs. which are reference-only or NOT REACHABLE.\n- Which custom agents I've built, by job.\n- One sentence per major gap — what my system does NOT know about.\n\nKeep it dense. Half a page. The point is other agents (and other people) can see at a glance what I bring and what I don't, before they cite me or weigh my position."
+  },
+  "joint-double-diamond-3": {
+    "key": "joint-double-diamond-3",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Read challenge.md at the shared folder root.\n\nWrite my initial stance on the sponsor challenge.\n\nUse Rumelt's crux move: name the load-bearing obstacle that, if removed, collapses several others. Then name the direction I currently favor.\n\nYour ground is my own memory/, sources/, agents/, module-1/ through module-7/ outputs, plus my context-manifest.md so you know what I don't have. Do not read other participants' stance.md files yet. This first note should carry my agent's own position.\n\nIf you need human judgment before taking a stance, ask me up to two questions. After I answer, write the stance.\n\nRules:\n- Every obstacle you name cites a file. \"The sales team is skeptical\" is not an obstacle — \"sales-skepticism as described in module-3/interviews.md line 14\" is.\n- You must name at least one obstacle that lives outside your comfort zone — political, social, governance, trust — not only technical.\n- Name the crux in one sentence.\n- Name the direction I currently favor in one sentence.\n- Name the human judgment call I am least certain about.\n- Name one risk or objection my stance is weak against.\n\nSave stance.md in my named subfolder in the shared folder."
+  },
+  "joint-double-diamond-4": {
+    "key": "joint-double-diamond-4",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Read my own stance.md in my named subfolder, then read three to five neighbouring stance.md files from other participant subfolders in the shared folder.\n\nWrite cross-check.md in my named subfolder with:\n- One thing another agent saw that my stance missed.\n- One disagreement I keep after reading the neighbours.\n- One evidence gap that appears across more than one stance.\n- One idea I should carry into my proposal.\n- One stance I want the synthesizer to watch because it may be stronger than it first looks.\n\nDo not summarize every neighbour. Act like a serious peer reviewer with skin in the game."
+  },
+  "joint-double-diamond-5": {
+    "key": "joint-double-diamond-5",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Read my stance.md and cross-check.md. Then write my proposal for the shared surface.\n\nWrite proposal.md in my named subfolder:\n- Crux, one sentence.\n- Guiding policy, one sentence.\n- Two experiments, each with owner, two-week test, success signal.\n- What I changed after cross-checking with other agents.\n- What I refused to change, and why.\n- One unresolved disagreement the synthesizer must preserve.\n\nCite every claim against a source file, stance, or cross-check."
+  },
+  "joint-double-diamond-6": {
+    "key": "joint-double-diamond-6",
+    "dest": "central synthesizer",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Read selection-board.md at the shared folder root and every participant cross-check.md.\n\nWrite midway-instructions.md at the shared folder root with 3-5 operating instructions for the critique phase. These are not conclusions. They are rules for how agents should deliberate from here.\n\nInclude this instruction unless there is a stronger reason not to:\n\"Before criticizing the selection, cross-pollinate: read at least two participant folders whose proposals differ from yours, then carry forward one objection, one useful idea, and one evidence gap.\"\n\nAlso include instructions for:\n- Which disagreement must not be averaged away.\n- Which evidence gap must be named whenever it affects a claim.\n- Which kind of claim needs a citation before the synthesizer can use it.\n- Which tempting policy move should be treated skeptically.\n\nEach instruction should be one sentence and usable by an agent that did not see the first round."
+  },
+  "joint-double-diamond-7": {
+    "key": "joint-double-diamond-7",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Read midway-instructions.md and selection-board.md at the shared folder root. Follow the injected instructions before writing.\n\nWrite critique.md in my named subfolder.\n\nIf midway-instructions.md tells me to cross-pollinate, first read the required participant folders and name which files changed my critique.\n\nFirst, criticize the current selection:\n- What did the synthesizer choose well?\n- What did it miss?\n- Which selected idea is under-cited or overconfident?\n- Which rejected idea deserves another look?\n\nThen propose a better idea if you have one:\n- Better crux, policy, experiment, or risk.\n- Why it beats the current selection.\n- What would have to be true for it to work.\n- One pre-mortem failure story if the room adopts it.\n\nCite every claim against a memory file, a shared-folder file, or a selection-board entry."
+  },
+  "joint-double-diamond-8": {
+    "key": "joint-double-diamond-8",
+    "dest": "central synthesizer",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/joint-double-diamond",
+    "text": "Read challenge.md, selection-board.md, midway-instructions.md, every proposal.md, every critique.md, and any pushback.md files. Update selection-board.md if a critique changed the best idea.\n\nThen write three files at the shared folder root:\n\n1. strategy-kernel.md\nFour sections: diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where the selected idea beat a strong alternative, name the alternative in one line.\n\n2. agent-set.md\nSuggest the set of agents the company should build or assign next. For each agent: job, owner, input files/systems, output, first evaluation or judge, and why this agent belongs in the set. Keep it to the smallest set that can execute the plan.\n\n3. plan.md\nWrite the plan for the next two weeks. Include sequence, owners, agent dependencies, human decision points, evidence to collect, success signal, and stop condition. Make clear which work can start concurrently and which work must wait."
+  },
+  "name-your-challenge-1": {
+    "key": "name-your-challenge-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/name-your-challenge",
+    "text": "I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:\n\n1. In one sentence, what's the initiative? A real, midsized-to-large piece of work you're carrying over the next few weeks — scope, stakes, still open.\n2. What have you already tried, read, or decided? What's ruled out, what's still open?\n3. Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?\n\nWhen I've answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving."
+  },
+  "name-your-challenge-2": {
+    "key": "name-your-challenge-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/name-your-challenge",
+    "text": "Based on the challenge brief you just wrote, suggest where I'd go looking for raw material. Specifically:\n\n- 3 to 5 search terms I'd type into our company Confluence or wiki\n- 2 to 3 OneDrive / SharePoint folder names likely to hold relevant docs, emails, or decks\n- 2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge, with one link each if you know them\n\nKeep it short. I'll use this as a scavenger-hunt list in the next phase."
+  },
+  "name-your-crux-1": {
+    "key": "name-your-crux-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/name-your-crux",
+    "text": "Look at my challenge memory. Find the load-bearing obstacle: the one thing that, if solved, unlocks the others. Richard Rumelt calls this the \"crux.\"\n\nRules:\n- Not a problem restatement. \"We need to build credibility\" is a goal, not a crux. \"Prospects won't meet us until someone they trust vouches\" IS a crux: it names the mechanism that blocks everything else.\n- Not a category. \"Positioning is unclear\" is a category. \"Buyers can't tell in 30 seconds whether we sell training or consulting\" is specific enough to act on.\n- Test it: if this obstacle moved, would at least three other stuck things release? If not, keep looking. It isn't the crux.\n\nOne sentence. Save it to ./crux.md under a `## Crux` heading; show me before saving."
+  },
+  "name-your-crux-2": {
+    "key": "name-your-crux-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/name-your-crux",
+    "text": "Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you'd stay late to make. Something like *\"what's the right next move to unblock the crux, over the next 90 days?\"* is a decent default. *\"Should we kill option A?\"* is better if that's where you are.\n\nAppend a `## Question` section to ./crux.md with the decision question. Don't overwrite the crux above. Show me before saving."
+  },
+  "new-human-role-in-the-loop-1": {
+    "key": "new-human-role-in-the-loop-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/new-human-role-in-the-loop",
+    "text": "Help me create a steering eval for internal mail I might let an agent draft or send.\n\nThe eval is not a groundedness check. Assume groundedness is handled by `judges/groundedness-judge.md`. This eval should create positive pressure to overperform on one dimension that matters for my work.\n\nAsk me one question at a time, wait for my answer, and do not show the list. Keep asking until the dimension is judgeable. Start by offering examples I can choose from or adapt:\n\n- executive crispness\n- commercial sharpness\n- specificity\n- risk awareness\n- actionability\n- reader empathy\n- strategic usefulness\n- sounds like our team\n\nIf I choose a vague word, keep asking until it becomes observable. For example, \"strategic usefulness\" might become: names the tradeoff, states a point of view, and gives the decision-maker a next move.\n\nOnce the dimension is clear, show me:\n\n1. The dimension name.\n2. A one-sentence definition.\n3. Three examples: a 5/5 mail excerpt, a 3/5 mail excerpt, and a 1/5 mail excerpt.\n4. The scoring rubric from 1 to 5.\n5. What the eval should ask the agent to improve when the score is 3 or lower.\n\nThen save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask for one final correction before saving."
+  },
+  "personal-site-with-guardrails-1": {
+    "key": "personal-site-with-guardrails-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-site-with-guardrails",
+    "text": "Build me a personal HTML one-pager site from the LinkedIn profile below. Save it as `module-1/site.html`.\n\nLinkedIn:"
+  },
+  "personal-site-with-guardrails-2": {
+    "key": "personal-site-with-guardrails-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-site-with-guardrails",
+    "text": "Hey Claude — apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think \"this is the person I want to work with more, on the things they're great at.\" Not buying a service. Not booking a call. A colleague relationship.\n\nImportant: this is a PERSONAL site. The protagonist of the SITE is me — my name, my identity, my actual work. The headline is about me, not a question to the visitor. The StoryBrand tune shapes how I describe the help relationship; it does NOT restructure the whole site to make the colleague the hero of the page.\n\nUse these StoryBrand beats for the help section: Character (the colleague — hero of the help relationship, not of the site), Problem (what work they're stuck on or want more of, that I see clearly), Guide (what makes me their natural ally), Plan (what working with me actually feels like — low-friction, informal is fine), Success (what it looks like a year later when we've worked together more — what we shipped, what changed for them).\n\nSkip Stakes and Call-to-Action — no fear-framing, no \"book a chat.\" The site's vibe is the CTA.\n\nWalk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften."
+  },
+  "personal-site-with-guardrails-3": {
+    "key": "personal-site-with-guardrails-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-site-with-guardrails",
+    "text": "Use the strengths below as voice-shaping context for the site — letting them change what the page CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don't soften the strengths into virtues.\n\nThen regenerate `module-1/site.html`.\n\nMy 3-5 strengths are:"
+  },
+  "personal-site-with-guardrails-4": {
+    "key": "personal-site-with-guardrails-4",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-site-with-guardrails",
+    "text": "Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:\n1. Take the hate.\n2. Associate it with the offerings / colleague-types it implies (what kind of work, what kind of people produce this).\n3. Be the opposite — but always speak in the positive. Don't lead with \"I don't do X\"; lead with what I do instead.\n4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.\n\nAfter step 4, regenerate `module-1/site.html`. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new \"What I'm against\" section. The site should sound like someone with a spine wrote it. Keep the edge; don't soften.\n\nThen take maximum freedom on presentation: rethink the page so a colleague lands on it and instantly wants to spend more time with you. You decide structure, ordering, sections, visual rhythm — whatever makes the page actually land. Keep the substance (StoryBrand-tuned help, strengths shaping the voice, anti-branding edge); free hand on the rest.\n\nMy hate list:"
+  },
+  "personal-site-with-guardrails-5": {
+    "key": "personal-site-with-guardrails-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-site-with-guardrails",
+    "text": "Look at the very first site you generated from just my LinkedIn profile, before I added any differentiation context. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was a statistical default rather than something true of me."
+  },
+  "personal-site-with-guardrails-6": {
+    "key": "personal-site-with-guardrails-6",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-site-with-guardrails",
+    "text": "Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.\n\nWhen you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed."
+  },
+  "self-consistency-after-scoreboard-1": {
+    "key": "self-consistency-after-scoreboard-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/self-consistency-after-scoreboard",
+    "text": "Spawn one subagent to generate a second briefing from the same evidence surface.\n\nThe subagent reads:\n- `./crux.md`\n- `module-5/evidence-roster.md`\n- the rostered evidence files named in `module-5/evidence-roster.md`\n\nThe subagent must NOT read:\n- `module-5/briefing.md`\n- `module-5/claim-pool.md`\n- `module-5/adjudicated-claims.md`\n- `module-5/scoreboard.md`\n- anything in `module-5/detectors/`\n\nWrite a one-page briefing on the same challenge to `module-5/briefing-second-run.md`.\n\nWhen the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing-second-run.md` exists."
+  },
+  "self-consistency-after-scoreboard-2": {
+    "key": "self-consistency-after-scoreboard-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/self-consistency-after-scoreboard",
+    "text": "Compare the first and second briefing.\n\nRead:\n- `module-5/briefing.md`\n- `module-5/briefing-second-run.md`\n- `module-5/claim-pool.md`\n- `module-5/adjudicated-claims.md`\n\nShow me the comparison in chat with these sections:\n\n1. Stable claims: claims or recommendations that appear in both briefings and are supported by the adjudicated claims.\n2. Drifted claims: same topic, but different number, named entity, recommendation, causal explanation, or framing.\n3. First-run-only claims: claims from the first briefing that disappeared in the second.\n4. Second-run-only claims: claims from the second briefing that did not appear in the first.\n5. Self-consistency issues: claims that are both unsupported or partly grounded AND unstable across runs.\n\nEnd with three lines:\n- What self-consistency caught that the groundedness detectors did not.\n- What self-consistency cannot prove.\n- Whether the winning groundedness judge should change. Default answer should be no unless the demo shows a concrete failure class the judge can actually detect."
+  },
+  "self-consistency-after-scoreboard-3": {
+    "key": "self-consistency-after-scoreboard-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "lectures/self-consistency-after-scoreboard",
+    "text": "I have output I want to quality-control against fabrication. Build me a judge prompt that checks for these failure modes:\n\n- Source triangulation: does every specific claim appear in at least one evidence file?\n- Entailment: does the output say more than the evidence supports?\n- Citation integrity: when a citation is made, does the evidence file actually contain the claim?\n- Counter-evidence search: actively look for sources that contradict each claim, not just ones that support.\n\nKeep the techniques that fit my output; swap any that don't for methods that catch my output's specific failure modes.\n\nAsk me what output I'm checking, where my evidence lives, and what short filename to use under `judges/`. Then write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep it under 20 lines. End with a one-line \"Known limit:\" naming what the judge can't catch."
+  },
+  "share-your-work-1": {
+    "key": "share-your-work-1",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/share-your-work",
+    "text": "Read my memory/, sources/, module-3/, module-5/, and module-6/.\n\nBased only on what you find there, draft a Jobs-to-be-Done hypothesis for a\nsharing decision I'm working on. Cover four things:\n\n1. The one teammate (named if my memory names them) most likely to benefit from\n   what I've built.\n2. The job they're trying to get done — in their language, not mine. Functional\n   part, and at least one emotional or social part (anxiety, reputation,\n   dependency on someone else).\n3. Their current hire for this job — what they use today. Excel, a colleague,\n   their gut, a vendor tool, nothing. Every job already has an incumbent.\n4. Three candidate outcome vectors — what \"better\" would mean for them:\n   - Speed (same job, faster)\n   - Quality (same job, less variance, better output)\n   - Other — inferred from my context, not assumed. Something specific:\n     dependency removed, anxiety reduced, scope they could take on, workload\n     shifted, loyalty to an incumbent preserved, reputation protected, a\n     recurring meeting they could stop attending.\n\nThen use your ask-questions tool to confirm or correct each piece. Five to eight\nquestions, each with three or four options you drew from my memory. I'll pick.\nDon't ask me to type freeform answers — the point is that you already have most\nof this on disk.\n\nWhen I'm done picking, write module-7/jtbd.md with:\n- The teammate (named).\n- The job, in their language, with functional + emotional/social components.\n- The current hire and what's broken about it.\n- The outcome statement in this form: \"minimize/increase [metric] when [doing\n  the job].\" Pick the vector that cuts deepest — not all three.\n\nAnchor every claim to a specific file and line in my memory, plus the questions\nI answered. Show me the file before saving."
+  },
+  "share-your-work-2": {
+    "key": "share-your-work-2",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/share-your-work",
+    "text": "Read my memory/, sources/, module-3/, module-5/, and module-6/.\n\nBased only on what you find there, draft a Jobs-to-be-Done hypothesis for a\nsharing decision I'm working on. Cover four things:\n\n1. The one teammate (named if my memory names them) most likely to benefit from\n   what I've built.\n2. The job they're trying to get done — in their language, not mine. Functional\n   part, and at least one emotional or social part (anxiety, reputation,\n   dependency on someone else).\n3. Their current hire for this job — what they use today. Excel, a colleague,\n   their gut, a vendor tool, nothing. Every job already has an incumbent.\n4. Three candidate outcome vectors — what \"better\" would mean for them:\n   - Speed (same job, faster)\n   - Quality (same job, less variance, better output)\n   - Other — inferred from my context, not assumed. Something specific:\n     dependency removed, anxiety reduced, scope they could take on, workload\n     shifted, loyalty to an incumbent preserved, reputation protected, a\n     recurring meeting they could stop attending.\n\nThen confirm or correct each piece with me using a numbered-options format.\nPresent five to eight questions, one at a time or as a single numbered list.\nEach question gets three or four lettered options (a / b / c / d) drawn from\nmy memory. I reply with the letter (or letters). Don't ask me to type\nfreeform answers — the point is that you already have most of this on disk,\nand the bounded options are what keep me from drifting back into chat.\n\nWhen I'm done picking, write module-7/jtbd.md with:\n- The teammate (named).\n- The job, in their language, with functional + emotional/social components.\n- The current hire and what's broken about it.\n- The outcome statement in this form: \"minimize/increase [metric] when [doing\n  the job].\" Pick the vector that cuts deepest — not all three.\n\nAnchor every claim to a specific file and line in my memory, plus the answers\nI gave. Show me the file before saving."
+  },
+  "share-your-work-3": {
+    "key": "share-your-work-3",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/share-your-work",
+    "text": "Find the absorption bottleneck in my sharing problem. Read module-7/jtbd.md and module-7/branch.md, plus anything else in module-7/ so far. The question is not \"how do I share?\" — it's \"what's the single load-bearing obstacle between my teammate and firing their current hire?\"\n\nList the obstacles you see — technical, social, political, habitual, governance, trust. Cluster them. Name the bottleneck: the one that, if removed, makes several others easier. State it in one sentence.\n\nSave to module-7/absorption-bottleneck.md. Show me before saving."
+  },
+  "share-your-work-4": {
+    "key": "share-your-work-4",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/share-your-work",
+    "text": "Read module-7/jtbd.md, module-7/branch.md, and module-7/absorption-bottleneck.md. Help me draft two files in\nparallel — a technical plan and a people plan. Both are about whether this\nteammate can actually fire their current hire and start using my candidate.\n\nFile 1: module-7/technical-plan.md — how the candidate delivers the outcome.\n- What exactly I ship (files, skills, config, runtime).\n- How the teammate receives it (zip, repo, connector, invite).\n- What \"it moves the outcome metric for them\" looks like — concrete, measurable.\n- The first real test case they'd run, against the job from the JTBD brief.\n\nFile 2: module-7/people-plan.md — equally load-bearing. Cover all five:\n- Ownership: named person accountable. Not a role.\n- Governance: who can add to the memory, change the rules, see the output.\n- Operating: who notices when the outcome metric slips. What they do about it. If the obvious name is also the person who benefits most, name a second person who'd notice independently — otherwise the only alarm is the person with a reason to silence it.\n- Accountability: who decides the candidate is no longer doing the job — who\n  fires the hire.\n- Propagation: who teaches the next person, when.\n\nAsk me anything you need. Don't invent names. If I don't know, write\n\"UNASSIGNED — Monday's question\" and keep moving. Missing names are findings,\nnot failures.\n\nShow me both before saving."
+  },
+  "share-your-work-5": {
+    "key": "share-your-work-5",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/share-your-work",
+    "text": "Read module-7/jtbd.md, module-7/absorption-bottleneck.md, module-7/technical-plan.md, and module-7/people-plan.md.\n\nTest the assumptions in these plans. Aim it at the SWITCH, not at generic sharing:\n\nWhat would have to be true for this specific teammate, doing this specific\njob, to fire their current hire and use my candidate?\n\nList the top five assumptions the switch depends on. For each:\n- State it as a declarative sentence.\n- Rate confidence (high / medium / low) based on what I've told you.\n- Name one concrete way I could test it this week — one conversation, one\n  small experiment, one quick check.\n\nOrder from most load-bearing to least. Save to module-7/assumptions.md.\nLet the assumption-test change the confidence in the plans — don't just append\na new section. Show me before saving."
+  },
+  "share-your-work-6": {
+    "key": "share-your-work-6",
+    "dest": "Builder Claude",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/share-your-work",
+    "text": "It is six months from now. My teammate\nkept using their current hire. My candidate sat unused, or they tried it twice\nand fired it.\n\nRead module-7/jtbd.md, module-7/technical-plan.md, module-7/people-plan.md, and\nmodule-7/assumptions.md.\n\nWrite three failure stories, each a short paragraph:\n- Most likely social failure — about the incumbent, the teammate, the\n  workflow. \"They trust their own spreadsheet more than any agent output\" is\n  usually closer than \"it broke technically.\"\n- Most likely technical failure — what broke, how it broke.\n- The failure I'm not seeing — bias your thinking toward what I seem to be\n  assuming will go fine.\n\nFor each story, one sentence: the early warning sign I'd see in week two if\nthis were starting to happen.\n\nSave to module-7/failure-stories.md."
+  },
+  "three-minds-one-synthesis-1": {
+    "key": "three-minds-one-synthesis-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/three-minds-one-synthesis",
+    "text": "Start dispatching immediately. No plan or preamble.\n\nSpawn three subagents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.\n\nSubagent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?\n\nSubagent 2: Assumption experimenter. Roger Martin's test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.\n\nSubagent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)\n\nWhen the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.\n\nThen synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append only a new `## Answer` section to ./crux.md with the three legs; do not modify existing sections. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving."
+  },
+  "three-minds-one-synthesis-2": {
+    "key": "three-minds-one-synthesis-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/three-minds-one-synthesis",
+    "text": "Start dispatching immediately. No plan or preamble.\n\nSpawn three agents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.\n\nAgent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?\n\nAgent 2: Assumption experimenter. Roger Martin's test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.\n\nAgent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)\n\nWhen the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.\n\nThen synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append only a new `## Answer` section to ./crux.md with the three legs; do not modify existing sections. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving."
+  },
+  "three-minds-one-synthesis-3": {
+    "key": "three-minds-one-synthesis-3",
+    "dest": "Claude Code",
+    "context": "optional",
+    "runtime": "any",
+    "origin": "exercises/three-minds-one-synthesis",
+    "text": "You choose fixes. Aim for optimal function in the next session that runs on this."
+  },
+  "three-retrievers-one-curator-1": {
+    "key": "three-retrievers-one-curator-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/three-retrievers-one-curator",
+    "text": "You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to ./crux.md (the crux you named in the opening, plus the ## Question section). Read the question first.\n\nThen:\n1. Propose 6–8 search terms for my team's wiki. Confluence, Notion, SharePoint wiki, Guru, whichever I use. Ask me to confirm or sharpen them before running anything, and ask which wiki to target if it's ambiguous.\n2. Run the searches through Claude's connector to my wiki. Open the pages. Read them properly.\n3. Append each finding to sources/wiki-retrieval.md as soon as you have it, one paragraph per finding, naming the page/space and one line on why this matters for the question. Never overwrite earlier findings. Keep only what speaks to the question; don't summarise the wiki.\n4. End the file with a \"Conflicts and gaps\" section: where internal pages disagree, where the wiki is thin, what's conspicuously missing.\n\nWrite each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.\n\nNo need to update `memory/` — another session is handling curation. Just write to `sources/`.\n\nSources first. Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write \"[NOT FOUND]\", do not fill from prior knowledge. If a search returns nothing, say so; don't invent page titles."
+  },
+  "three-retrievers-one-curator-2": {
+    "key": "three-retrievers-one-curator-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/three-retrievers-one-curator",
+    "text": "You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for ./crux.md (the crux you named in the opening, plus the ## Question section).\n\nThen:\n1. Ask me for three clues: names of documents I remember, people I've been mailing about this, or drives/sites to check. My doc store is OneDrive / SharePoint / Google Drive / whatever my org runs; ask which. Use the clues.\n2. Pull the content via the doc-store connector (OneDrive, SharePoint, Google Drive, whichever I use), or via files I've shared with you directly.\n3. Append each finding to sources/docs-retrieval.md as soon as you have it, what documents and threads show, who said what, what's recent, what's decided, what's still open. Never overwrite earlier findings. Name where sources disagree; don't smooth over contradictions.\n4. End the file with \"Conflicts and gaps\": disagreements between sources, things that should exist but don't, names conspicuously missing.\n\nWrite each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.\n\nNo need to update `memory/` — another session is handling curation. Just write to `sources/`.\n\nSources first. Every finding cites the specific document name (and path or URL) or email thread you actually opened. If you can't find a source for a claim, write \"[NOT FOUND]\", do not fill from prior knowledge. If a connector returns empty, say so; don't invent document titles."
+  },
+  "three-retrievers-one-curator-3": {
+    "key": "three-retrievers-one-curator-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/three-retrievers-one-curator",
+    "text": "No preamble — propose your author list now.\n\nYou are the internet retriever for my challenge. Your job: find practitioner-grade external material on ./crux.md (the crux you named in the opening, plus the ## Question section). No vendor blogs. No analyst predictions. Practitioners writing about their own work, last 6 months.\n\nThen:\n1. Propose 4–6 specific authors or recent articles worth reading. Ask me to confirm or replace any before fetching.\n2. Fetch them. Read them.\n3. Append each finding to sources/internet-retrieval.md as soon as you have it, what each practitioner says that's specific, with the URL, and one line on how their situation maps (or doesn't) to mine. Never overwrite earlier findings.\n4. End the file with \"Conflicts and gaps\": where practitioners disagree, where my challenge is weirder than any of their cases, what the internet can't tell me.\n\nWrite each finding as soon as you have it; don't batch until the end. The synthesizer in another session reads `sources/` continuously — streaming writes keep it busy.\n\nNo need to update `memory/` — another session is handling curation. Just write to `sources/`.\n\nSources first. Every finding cites the URL you actually fetched and the author. If a fetch fails or returns nothing useful, write \"[NOT FOUND]\", do not fabricate article titles, quotes, or author positions from prior knowledge."
+  },
+  "three-retrievers-one-curator-4": {
+    "key": "three-retrievers-one-curator-4",
+    "dest": "Claude Code",
+    "context": "reusable across all three retriever sessions",
+    "runtime": "any",
+    "origin": "exercises/three-retrievers-one-curator",
+    "text": "Push another round. What did the first pass miss? Different angles, related sources, the citations inside what you already opened — keep going until the file feels complete or you genuinely don't find new material. Append; don't rewrite."
+  },
+  "three-retrievers-one-curator-5": {
+    "key": "three-retrievers-one-curator-5",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/three-retrievers-one-curator",
+    "text": "No plan or preamble — enter the loop now.\n\nYou are the synthesizer for my challenge. Three retrievers are running concurrently in Sessions 1, 2, and 3 — they'll write findings to sources/wiki-retrieval.md, sources/docs-retrieval.md, and sources/internet-retrieval.md as they finish. Your job is curation: integrate those findings into my memory/ topic pages, scoped to ./crux.md (the crux you named in the opening, plus the ## Question section).\n\nMemory is curated, not a raw dump. Existing topic pages cover the challenge — extend them where the new sources sharpen what's already there; create a new topic page where the retrievals reveal a topic memory was missing. Cite sources by filename + paragraph.\n\nThe loop:\n1. Wait for any new content in sources/. When a file appears (or grows), read it.\n2. Diff against existing memory/ pages. Extend in place if the topic exists; create a new page if it doesn't. Don't ask permission for either path.\n3. Make the update. Cite the source file by name. Integrate, don't append. Keep claims tight.\n4. Repeat until all three retrievals are integrated.\n\nWhen all three retrievals are in: write a one-paragraph note at memory/_synthesis-m3.md. List each memory file you actually changed by name and the exact filenames git diff would show; if fewer changed than the retrieval count, say so explicitly. Name where retrievals contradicted what was already in memory by quoting the conflicting claims verbatim from each source. That contradiction line is load-bearing — flag it, don't smooth it.\n\nDon't fabricate. Every memory update cites a source-file finding. If a retrieval is empty or thin, say so in your synthesis note rather than papering over the gap."
+  }
+}

@@ -14,73 +14,17 @@ Two runs is a demo, not a measurement. With N=2, a claim that appears in both co
 
 Ask Claude to spawn a subagent that regenerates the briefing from the same evidence surface, blind to the first run.
 
-**Prompt** *(Claude Code)*
-
-```
-Spawn one subagent to generate a second briefing from the same evidence surface.
-
-The subagent reads:
-- `./crux.md`
-- `module-5/evidence-roster.md`
-- the rostered evidence files named in `module-5/evidence-roster.md`
-
-The subagent must NOT read:
-- `module-5/briefing.md`
-- `module-5/claim-pool.md`
-- `module-5/adjudicated-claims.md`
-- `module-5/scoreboard.md`
-- anything in `module-5/detectors/`
-
-Write a one-page briefing on the same challenge to `module-5/briefing-second-run.md`.
-
-When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing-second-run.md` exists.
-```
+{{prompt:self-consistency-after-scoreboard-1}}
 
 Ask Claude to compare the two briefings in chat, naming what stayed, what drifted, and what the groundedness detectors didn't catch.
 
-**Prompt** *(Claude Code)*
-
-```
-Compare the first and second briefing.
-
-Read:
-- `module-5/briefing.md`
-- `module-5/briefing-second-run.md`
-- `module-5/claim-pool.md`
-- `module-5/adjudicated-claims.md`
-
-Show me the comparison in chat with these sections:
-
-1. Stable claims: claims or recommendations that appear in both briefings and are supported by the adjudicated claims.
-2. Drifted claims: same topic, but different number, named entity, recommendation, causal explanation, or framing.
-3. First-run-only claims: claims from the first briefing that disappeared in the second.
-4. Second-run-only claims: claims from the second briefing that did not appear in the first.
-5. Self-consistency issues: claims that are both unsupported or partly grounded AND unstable across runs.
-
-End with three lines:
-- What self-consistency caught that the groundedness detectors did not.
-- What self-consistency cannot prove.
-- Whether the winning groundedness judge should change. Default answer should be no unless the demo shows a concrete failure class the judge can actually detect.
-```
+{{prompt:self-consistency-after-scoreboard-2}}
 
 The take-home move is not "always run self-consistency." The take-home move is: have a multi-method judge ready for outputs you ship. Point the same shape at a customer email, a pricing memo, a positioning draft, anything you'd want a check on before it goes out.
 
 Ask Claude to build a multi-method judge against any other output you want to quality-control.
 
-**Prompt** *(Claude Code)*
-
-```
-I have output I want to quality-control against fabrication. Build me a judge prompt that checks for these failure modes:
-
-- Source triangulation: does every specific claim appear in at least one evidence file?
-- Entailment: does the output say more than the evidence supports?
-- Citation integrity: when a citation is made, does the evidence file actually contain the claim?
-- Counter-evidence search: actively look for sources that contradict each claim, not just ones that support.
-
-Keep the techniques that fit my output; swap any that don't for methods that catch my output's specific failure modes.
-
-Ask me what output I'm checking, where my evidence lives, and what short filename to use under `judges/`. Then write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep it under 20 lines. End with a one-line "Known limit:" naming what the judge can't catch.
-```
+{{prompt:self-consistency-after-scoreboard-3}}
 
 <!-- maintainer -->
 

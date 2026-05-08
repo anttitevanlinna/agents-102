@@ -22,17 +22,7 @@ A **skill** packages an expertise (rules, checklists, the moves an agent runs) i
 
 Reference material lives in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference for self-study). Start by proving those files are runnable. No skill yet. Just the policy files, pointed at the system.
 
-**Prompt** *(Claude Code)*
-
-```
-Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
-
-For each rule you can derive from the policy files, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
-
-Write the raw report to outputs/policy-report-raw.md. Be specific. Be plain. An "I can't tell" is a better answer than a confident guess.
-
-Do not create a skill yet. This is the raw run.
-```
+{{prompt:author-security-skill-1}}
 
 Read the first few rows. The raw run shows which rules can be checked from files and which ones need judgment, context, or a standing evidence check. That is what you package next: not the policy files themselves, but the repeatable way of applying them to this agent system.
 
@@ -42,15 +32,7 @@ Now add judgment. Do not go study the policy files before this step. The reusabl
 
 Tell Claude what matters about your company's policies and the agent system you built in modules 2-3. Three to five lines, your own voice.
 
-**Prompt** *(Claude Code)*
-
-```
-I want to turn the useful parts of outputs/policy-report-raw.md into reusable security expertise for the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
-
-Before you read or write any package files, ask me for 3-5 lines about what matters from my own head: the data, policy rule, customer, source, workflow, or failure mode I most want this reusable check to catch. Wait for my answer.
-
-After I answer, read outputs/policy-report-raw.md and everything in module-4/policies/. Then propose the reusable package shape for my runtime and wait for me to steer.
-```
+{{prompt:author-security-skill-2}}
 
 Claude asks. Type three to five lines. Specific. The kind of data your agent touches that would be a problem if it leaked. The rule your legal team cares about most. The customer your CEO would not want named in a transcript. The class of input you would not paste into a public model. Plain language; nothing rehearsed.
 
@@ -64,32 +46,7 @@ Ask Claude to author both lenses, and to name the risk patterns the agent-securi
 
 You'll get a lot of questions. The grill is wide on purpose, Claude probes both lenses and won't stop at one round.
 
-**Prompt** *(Claude Code)*
-
-```
-Author the reusable security check now. Two lenses.
-
-Build one personal skill source under module-4/skills/security-audit/. The main file is SKILL.md. It contains both lenses: POLICY and AGENT-SECURITY. Add supporting reference files only where useful.
-
-For CLI and Claude Code Desktop, also make the standalone-skill install shape clear: module-4/skills/security-audit/SKILL.md becomes ~/.claude/skills/security-audit/SKILL.md during install. Do not write into ~/.claude yet; keep the authored source under module-4/skills/security-audit/ for now.
-
-Lens 1 - POLICY. Rules drawn from everything in module-4/policies/ plus the lines I just typed. For each rule, the lens produces one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), one line of evidence from the target system. The verdict column stays plain - "I can't tell" is a real answer.
-
-Lens 2 - AGENT-SECURITY. Check what the agent can reach, what sensitive material might stay in its context, and what could go wrong because ordinary text can act like an instruction. The lens MUST cover these named risk patterns by name:
-
-- prompt injection (direct - hostile input in a user prompt; indirect - hostile content in a retrieved source the agent reads)
-- secrets in context and scrollback (API keys, customer data, partner-NDA material persisting in the transcript or the agent's working memory)
-- tool confusion (agent invokes the wrong tool, or the right tool with the wrong scope, because the prompt or context misframes what to do: for example, the production-database connector firing when test would do, or the email-send tool dispatching when the user only asked for a draft)
-- skill supply-chain (the skill itself, or any skill the agent loads, came from somewhere - who authored it, who reviewed it, what it can do)
-
-For each pattern, the lens produces one or two specific risks in the target system, ranked, with one suggested agent mitigation per risk - scope, split, filter, gate, or review. These sit on top of normal company controls (network controls, identity and access management, logging, vendor/security review), not in place of them. Name that explicitly in the lens's preamble.
-
-Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run. Cover both lenses, especially the policy lens, where there is no named-class rail to fall back on. Don't stop at one question. I'll tell you when enough is enough.
-
-After I answer, save the files. Keep the SKILL.md tight: when to use it, the two lenses it applies, the report shape each lens produces. Show me what you saved and confirm this package-complete checklist:
-- module-4/skills/security-audit/SKILL.md
-- any supporting reference files the SKILL.md requires
-```
+{{prompt:author-security-skill-3}}
 
 Claude grills you first. Skim the questions. Answer what you can in one or two lines. When you've answered everything you have a view on, hand the rest back: *"You choose. Optimise for what I can't steer."* Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company's policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.
 
@@ -99,11 +56,7 @@ Before you leave this exercise, save the authored source as a personal skill. Th
 
 Ask Claude to install the authored source.
 
-**Prompt** *(Claude Code)*
-
-```
-Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls.
-```
+{{prompt:author-security-skill-4}}
 
 Run `ls ~/.claude/skills/security-audit/` to confirm. The skill autoloads in your next session in this training directory.
 
@@ -113,11 +66,7 @@ Run `ls ~/.claude/skills/security-audit/` to confirm. The skill autoloads in you
 
 Ask Claude to install the authored source.
 
-**Prompt** *(Claude Code)*
-
-```
-Install the authored skill at module-4/skills/security-audit/ as a personal Claude skill. Confirm the installed path so I can verify with ls.
-```
+{{prompt:author-security-skill-5}}
 
 The skill autoloads in your next session in this training directory.
 
@@ -129,11 +78,7 @@ One place skill-creation lives in Claude Desktop is *Customize* → *Skills* →
 
 Cowork can't write into your personal Claude directories. When skill-creator finishes drafting, it surfaces a Save button. You press Save, that's the moment the personal skill lands.
 
-**Prompt** *(Claude Code)*
-
-```
-Use your skill-creator skill to turn the authored source at module-4/skills/security-audit/ into a personal skill named security-audit. Draft it, then surface the save action so I can save it.
-```
+{{prompt:author-security-skill-6}}
 
 Press Save when skill-creator surfaces it.
 

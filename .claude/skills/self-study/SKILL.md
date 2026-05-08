@@ -275,6 +275,23 @@ Rules:
 
 Read prompts from the canonical exercise file on disk and paste them into chat in this shape. Don't retype from memory.
 
+### Resolving `{{prompt:<key>}}` markers
+
+The exercise / module file may contain a marker on its own line in place of a fenced prompt block:
+
+```
+{{prompt:a101-prework-snake-game}}
+```
+
+When you see one, the prompt body lives in a separate registry file. Resolve it like this:
+
+1. Read `./prompts/<key>.md` from the working folder root (the tarball ships the registry there).
+2. Parse the YAML frontmatter — `dest` (e.g. `Claude Code`, `Builder Claude`) and optional `context` (e.g. `optional`, `Module 3`) feed the chip.
+3. Use the body (everything after the closing `---`) as the prompt content.
+4. Present the result in the canonical shape above: lead-in (the surrounding prose tells you what the prompt does), `**Prompt** *(<dest>[, <context>])*` label, fenced code block with the body.
+
+The marker form keeps the registry as the single source of truth — students who edit a module file can't accidentally damage the prompt; edits go through `prompts/<key>.md`.
+
 ## Progress file shape (enforced)
 
 ```markdown

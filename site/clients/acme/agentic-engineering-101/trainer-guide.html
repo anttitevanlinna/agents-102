@@ -546,6 +546,25 @@ main::before {
     margin-left: auto;
 }
 
+/* Inside warm-paper lecture phases — the lecture bg is var(--bg-3),
+   identical to the default prompt-block header bg. Without an override
+   the header melts into the lecture paper and the top row reads broken.
+   Re-tone three steps: body lightest (--bg), header mid (--bg-2), lecture
+   warmest (--bg-3). Header stays distinct as the darker chip on a lighter
+   prompt card, which itself reads as a card on the lecture warmth. */
+.phase--lecture .prompt-block {
+    background: var(--bg);
+    border-color: var(--line-2);
+}
+
+.phase--lecture .prompt-block__header {
+    background: var(--bg-2);
+}
+
+.phase--lecture .prompt-block .prompt-block__pre {
+    background: var(--bg);
+}
+
 /* Inside ink-dark exercise phases — invert chrome to read on dark bg.
    Header sits visibly above body (~9% vs ~3% cream tint) so the destination
    chip and copy button read as a separate row. Border lifted to ink-text
@@ -600,6 +619,146 @@ main::before {
 
 @media print {
     .module .copy-btn { display: none; }
+}
+
+/* ----------------------------------------------------------------
+   Session-boundary widget — the cousin of prompt-block, but louder.
+   ----------------------------------------------------------------
+   Author markup:
+     **Session** *(new, "Module 5 - Hallucination benchmark")*
+
+     Prose body (optionally runtime-forked).
+
+     ```
+     /rename m5-hallucination-benchmark
+     ```
+
+   Renderer (decorateSessions) wraps these three elements into one
+   .session-block. Orange chrome separates it from prompt-block
+   (oxblood) so the visual difference matches the semantic one:
+   prompt = "paste this into Claude," session = "you are now changing
+   which Claude you're talking to." Stand-out colour, full panel,
+   non-skippable. */
+
+.module .session-block {
+    margin: 1.75rem 0 2rem;
+    border: 1px solid var(--warm);
+    border-radius: 5px;
+    background: #faf1e3;
+    overflow: hidden;
+}
+
+.module .session-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding: 0.5rem 0.95rem;
+    background: var(--warm);
+    color: #fff;
+    font-size: 0.82rem;
+    line-height: 1.3;
+}
+
+.module .session-block__label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+}
+
+.module .session-block__verb {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: lowercase;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+}
+
+.module .session-block__name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.module .session-block__name::before {
+    content: "·";
+    margin-right: 0.55rem;
+    opacity: 0.65;
+}
+
+.module .session-block__body {
+    padding: 1.1rem 1.25rem 0.4rem;
+    color: var(--fg);
+}
+
+.module .session-block__body > p:first-child {
+    margin-top: 0;
+}
+
+.module .session-block__body > pre {
+    background: #fff;
+    border-color: #e8d2b1;
+    margin-bottom: 1rem;
+}
+
+.module .session-block__body > pre code {
+    color: var(--fg);
+}
+
+/* Inside the ink-dark exercise phase, invert the session widget too —
+   the amber head still leads, but the panel adapts to the dark band. */
+.phase--exercise .session-block {
+    background: rgba(201, 121, 66, 0.08);
+    border-color: var(--warm);
+    box-shadow: none;
+}
+
+.phase--exercise .session-block__header {
+    background: var(--warm);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__verb {
+    background: rgba(20, 17, 13, 0.18);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__name {
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__body {
+    color: var(--ink-text);
+}
+
+.phase--exercise .session-block__body > pre {
+    background: rgba(244, 236, 219, 0.06);
+    border-color: rgba(255, 125, 73, 0.35);
+}
+
+.phase--exercise .session-block__body > pre code {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .session-block {
+        border-color: #999 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+    .module .session-block__header {
+        background: #eee !important;
+        color: #000 !important;
+    }
+    .module .session-block__verb { background: #ddd !important; color: #000 !important; }
+    .module .session-block__name { color: #000 !important; }
 }
 
 .module blockquote {
@@ -1743,8 +1902,9 @@ body.workbook { padding-top: 3rem; }
 <p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
 <p>In cohort delivery, you carry the push-backs by default. The Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.</p>
 <h2>Delivery Architecture</h2>
+<p>Canonical contract lives in <a href="training-architecture.md">training-architecture.md</a>, read it once before your first cohort. Summary for delivery prep:</p>
 <p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
-<p>AE101 is a Claude Code training. The live surface is Claude Code CLI unless the cohort has deliberately chosen another Claude Code surface. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code.</p>
+<p>AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see <a href="training-architecture.md">training-architecture.md §Future TODO</a>; not yet active for delivery.</p>
 <p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
 <h2>Prep Before Each Session</h2>
 <ul>
@@ -1889,7 +2049,8 @@ body.workbook { padding-top: 3rem; }
             modules: [
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
-                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' }
+                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         }
     };
@@ -1966,6 +2127,14 @@ body.workbook { padding-top: 3rem; }
     // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
     var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
 
+    // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
+    // expandPrompts() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/prompts/<key>.md; the SPA reads the
+    // compiled site/prompts.json registry, the build script reads source files
+    // directly. Marker MUST be alone on a line so expansion produces block-level
+    // markdown (label paragraph + fenced code), not inline text.
+    var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
     // Inline cross-doc link pattern: `(kind/slug.md)` anywhere in body, with
     // optional `../` prefixes. Renderer rewrites to `?file=kind/slug` URLs.
     var CROSS_DOC_LINK_RE = /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g;
@@ -1985,6 +2154,54 @@ body.workbook { padding-top: 3rem; }
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Reconstruct the canonical inline prompt-block shape the renderer expects:
+    //   **Prompt** *(<dest>[, <context>])*
+    //
+    //   ```
+    //   <text>
+    //   ```
+    // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
+    // following <pre>; this output is byte-equivalent to a hand-authored block.
+    function renderPromptBlock(entry) {
+        var dest = (entry && entry.dest) || 'Claude Code';
+        var ctx = entry && entry.context ? ', ' + entry.context : '';
+        var label = '**Prompt** *(' + dest + ctx + ')*';
+        var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        var fence = '```\n' + text + '\n```';
+        return label + '\n\n' + fence;
+    }
+
+    // Replace every `{{prompt:<key>}}` line in `md` with the canonical block
+    // shape, looking each key up in `registry` (object: key -> entry).
+    //
+    // Default mode (permissive): unknown keys pass through unchanged so a
+    // missing entry renders as literal `{{prompt:foo}}` text — visible at
+    // a glance and catchable by the lint / post-render audit. The SPA path
+    // uses this mode to avoid hard-crashing the page on a stale registry.
+    //
+    // Strict mode (`opts.strict === true`): build path uses this. Any unknown
+    // key throws with a list of all unresolved markers, so a typo in a module
+    // file or a stale registry fails the build instead of silently shipping.
+    function expandPrompts(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(PROMPT_INCLUDE_RE, function (match, key) {
+            var entry = registry[key];
+            if (!entry) {
+                unresolved.push(key);
+                return match;
+            }
+            return renderPromptBlock(entry);
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandPrompts: unresolved {{prompt:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{prompt:' + k + '}}'; }).join(', ')
+            );
+        }
+        return out;
     }
 
     function extractParent(md) {
@@ -2023,7 +2240,10 @@ body.workbook { padding-top: 3rem; }
         btn.addEventListener('click', function (ev) {
             ev.preventDefault();
             var code = pre.querySelector('code') || pre;
-            var text = code.innerText;
+            // textContent (not innerText) — innerText respects CSS rendering
+            // and can collapse newlines inside <pre><code>; textContent is the
+            // DOM text and preserves whitespace deterministically.
+            var text = code.textContent;
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');
@@ -2032,11 +2252,43 @@ body.workbook { padding-top: 3rem; }
                     btn.classList.remove('copy-btn--copied');
                 }, 1400);
             };
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(done, fallback);
-            } else {
-                fallback();
+            // Write BOTH text/plain and text/html to the clipboard. Destinations
+            // that prefer HTML (Cowork input, Claude Code Desktop input, Slack,
+            // browser-based markdown editors) read the <pre> wrapper and paste
+            // it as a fenced code block, which suppresses the destination's URL
+            // auto-detection that converts paths like `module-5/claim-pool.md`
+            // into `[claim-pool.md](http://claim-pool.md)` markdown links.
+            // Plain-text-only destinations (terminals, plain inputs) get the
+            // text/plain fallback unchanged.
+            function writeBoth() {
+                if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+                    // <div> + <br> instead of <pre> — destinations treat <pre>
+                    // as a code block and apply their own dark theme even with
+                    // inline-style overrides. <div> doesn't trigger code-block
+                    // styling. Whitespace preserved via <br> for newlines and
+                    // &nbsp; for leading indentation. <wbr> before file-extension
+                    // dots is the backup defence against URL auto-detection
+                    // (parsers see broken pattern, don't linkify).
+                    var lines = text.split('\n').map(function (line) {
+                        var indent = line.match(/^[ \t]*/)[0];
+                        var rest = line.slice(indent.length);
+                        var indentHtml = indent.replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                        var escRest = esc(rest).replace(/(\.)([a-z]{1,5})\b/gi, '<wbr>$1$2');
+                        return indentHtml + escRest;
+                    });
+                    var html = '<div>' + lines.join('<br>') + '</div>';
+                    var item = new ClipboardItem({
+                        'text/plain': new Blob([text], { type: 'text/plain' }),
+                        'text/html':  new Blob([html], { type: 'text/html' })
+                    });
+                    return navigator.clipboard.write([item]);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                }
+                return Promise.reject(new Error('no clipboard api'));
             }
+            writeBoth().then(done, fallback);
             function fallback() {
                 var ta = document.createElement('textarea');
                 ta.value = text;
@@ -2050,6 +2302,87 @@ body.workbook { padding-top: 3rem; }
             }
         });
         mountTarget.appendChild(btn);
+    }
+
+    // Session-boundary widget. Source shape:
+    //   **Session** *(verb, "name")*
+    //   <runtime-fork prose>
+    //   ```
+    //   /rename slug
+    //   ```
+    // Wraps the label paragraph + next paragraph (body prose) + next <pre>
+    // (rename block) into a single .session-block. Stops at the next h*,
+    // **Session**, or **Prompt** so widgets never run past their seam.
+    // Run BEFORE decoratePrompts so the **Prompt** stop-condition fires before
+    // prompt blocks are unwrapped.
+    function decorateSessions(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Session') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var firstComma = label.indexOf(',');
+            var verb = firstComma >= 0 ? label.slice(0, firstComma).trim() : label.trim();
+            var name = firstComma >= 0 ? label.slice(firstComma + 1).trim().replace(/^"|"$/g, '') : '';
+
+            var wrap = document.createElement('div');
+            wrap.className = 'session-block';
+
+            var header = document.createElement('div');
+            header.className = 'session-block__header';
+            header.innerHTML =
+                '<span class="session-block__label">Session</span>' +
+                (verb ? '<span class="session-block__verb">' + esc(verb) + '</span>' : '') +
+                (name ? '<span class="session-block__name">' + esc(name) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            wrap.appendChild(header);
+
+            var body = document.createElement('div');
+            body.className = 'session-block__body';
+            wrap.appendChild(body);
+            p.remove();
+
+            // Pull subsequent siblings into the body until a stop boundary.
+            // Widget body shape is: at most one body paragraph, at most one
+            // <pre> (the rename command). Any other strong-led paragraph
+            // (What you do:, Phase 1:, etc.) ends the widget — without that
+            // stop, a return-verb widget with no <pre> swallows the page.
+            var next = wrap.nextSibling;
+            while (next) {
+                if (next.nodeType !== 1) {
+                    next = next.nextSibling;
+                    continue;
+                }
+                var tag = next.tagName;
+                if (/^H[1-6]$/.test(tag) || tag === 'HR') break;
+                if (tag === 'P') {
+                    var s = next.querySelector(':scope > strong');
+                    if (s) break;
+                    var sib = next;
+                    next = next.nextSibling;
+                    body.appendChild(sib);
+                    continue;
+                }
+                // The inner <pre> in a session widget is the rename command —
+                // CLI-only (Cowork can't rename; Desktop has no /rename either).
+                // Wrap in .rt-cli so existing runtime CSS hides it for the other
+                // two runtimes. Author writes plain markdown; visibility lives
+                // at the renderer.
+                if (tag === 'PRE') {
+                    var preSib = next;
+                    next = next.nextSibling;
+                    var cliWrap = document.createElement('div');
+                    cliWrap.className = 'rt-cli';
+                    body.appendChild(cliWrap);
+                    cliWrap.appendChild(preSib);
+                    break;
+                }
+                break;
+            }
+        });
     }
 
     function decoratePrompts(root) {
@@ -2319,6 +2652,9 @@ body.workbook { padding-top: 3rem; }
         esc: esc,
         rewriteCrossDocLinks: rewriteCrossDocLinks,
         stripMaintainerTail: stripMaintainerTail,
+        renderPromptBlock: renderPromptBlock,
+        expandPrompts: expandPrompts,
+        PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
         extractParent: extractParent,
         extractBigIdea: extractBigIdea,
         escapeTildes: escapeTildes,
@@ -2326,6 +2662,7 @@ body.workbook { padding-top: 3rem; }
         buildTocSections: buildTocSections,
 
         // DOM (browser only)
+        decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,
@@ -2347,6 +2684,7 @@ body.workbook { padding-top: 3rem; }
 <script>
 (function () {
   if (window.CurriculumRuntime) {
+    CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.installReadingProgress();
   }

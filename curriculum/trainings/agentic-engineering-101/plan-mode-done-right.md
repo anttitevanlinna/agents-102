@@ -41,11 +41,7 @@ The full compound move ran at Module 1. Module 2's compound is opportunistic. If
 
 Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 
-**Prompt** *(Claude Code, only if something earned itself)*
-
-```
-If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop.
-```
+{{prompt:ae101-m1-integrate-branch}}
 
 ## Key Concepts
 - A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't

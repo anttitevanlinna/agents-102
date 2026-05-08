@@ -14,13 +14,7 @@ No plan mode here. Plan mode earns its keep in M2 on multi-file work; on a trivi
 
 Ask Claude to write the failing test, fix the root cause, and show the diff. Drop your bug after the colon.
 
-**Prompt** *(Claude Code)*
-
-```
-Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
-
-Let's work on this bug:
-```
+{{prompt:fix-tests-first-1}}
 
 
 Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
@@ -29,19 +23,11 @@ When Claude says done, push once on the depth. Ask whether the change is the roo
 
 Ask Claude to interrogate the fix and name what's still surface.
 
-**Prompt** *(Claude Code, optional)*
-
-```
-Was the change you just made the root cause of the bug, or a layer above it? If a layer above, name what the deeper edit would touch. Don't change anything yet. Re-read your own diff and tell me what's still surface.
-```
+{{prompt:fix-tests-first-2}}
 
 Ask Claude to do the proper TDD fix on what self-critique surfaced.
 
-**Prompt** *(Claude Code, optional)*
-
-```
-Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit.
-```
+{{prompt:fix-tests-first-3}}
 
 Ask Claude to commit, push a branch, and open the PR (merge or draft, your call).
 

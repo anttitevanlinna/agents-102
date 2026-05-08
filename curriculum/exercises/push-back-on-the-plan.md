@@ -28,13 +28,7 @@ If nothing fits, ask Claude to surface three candidates from recent issues, PRs,
 
 Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'll drop after the colon, what, why, the one constraint you care about most.
 
-**Prompt** *(Claude Code)*
-
-```
-Plan the task I describe below. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you'd write or update before any code lands, and what you'd check before declaring it done. Detail over brevity.
-
-My task:
-```
+{{prompt:push-back-on-the-plan-1}}
 
 Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan all the way through before pushing back.** Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
@@ -58,11 +52,7 @@ Now hand the plan to a second agent that reads differently than you do.
 
 Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.
 
-**Prompt** *(Claude Code)*
-
-```
-Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree one at a time: dependencies, decisions, side-effects I haven't named. Ask me one question at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct one at a time.
-```
+{{prompt:push-back-on-the-plan-2}}
 
 
 The second read asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
@@ -77,11 +67,7 @@ Typical session: 5–12 questions. Stop when the second read starts reaching: a 
 
 Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
 
-**Prompt** *(Claude Code)*
-
-```
-Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?
-```
+{{prompt:push-back-on-the-plan-3}}
 
 
 Claude answers. Read carefully. The pattern it names should be something like: *read the plan yourself → push back on what you can see → second-pass read for what you can't → approve.* Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
@@ -92,11 +78,7 @@ Neither is complete. Paired, they usually are.
 
 Ask Claude whether the `./CLAUDE.local.md` you carried in from M1 actually rides into every session.
 
-**Prompt** *(Claude Code)*
-
-```
-are these rules auto-loaded to each session context?
-```
+{{prompt:push-back-on-the-plan-4}}
 
 On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run tomorrow. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 

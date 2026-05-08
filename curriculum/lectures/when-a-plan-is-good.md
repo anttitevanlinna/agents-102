@@ -16,11 +16,7 @@ A 30-second move before the three things get named. Enter plan mode in your own 
 
 Ask Claude to describe what changed in its behaviour when plan mode turned on.
 
-**Prompt** *(Claude Code)*
-
-```
-How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?
-```
+{{prompt:when-a-plan-is-good-1}}
 
 
 Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.

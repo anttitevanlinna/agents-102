@@ -26,19 +26,7 @@ Start a new Claude Code session in your repo. One or two candidate tasks come in
 
 Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon, one per line.
 
-**Prompt** *(Claude Code)*
-
-```
-I'm about to run my first long-running experiment. Screen the candidates below against three criteria:
-
-- **Send-off shape:** the task lets the agent push past 3-4 ambiguities without checking in at every step.
-- **Requirement-weaving:** the task has multiple constraints that interact — getting one right means knowing the others.
-- **Multi-file reasoning:** touches at least 3 files where touching the wrong one matters.
-
-For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.
-
-Candidates:
-```
+{{prompt:walk-and-send-off-1}}
 
 
 Push back when the read misses something about the codebase. Claude is reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
@@ -53,17 +41,7 @@ Push back when the read misses something about the codebase. Claude is reading t
 
 Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.
 
-**Prompt** *(Claude Code)*
-
-```
-Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including the test-strategy skill I authored at M3), and the connectors I've wired.
-
-Run this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.
-
-Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.
-
-For each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.
-```
+{{prompt:walk-and-send-off-2}}
 
 
 Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
@@ -85,11 +63,7 @@ Push back when Claude writes something that doesn't match the codebase. The memo
 
 Speed up the gap-fill if prose Q&A is dragging.
 
-**Prompt** *(Claude Code, optional)*
-
-```
-You propose solutions and ask questions. Use the ask-questions tool to speed up my work.
-```
+{{prompt:walk-and-send-off-3}}
 
 ---
 
@@ -97,21 +71,7 @@ You propose solutions and ask questions. Use the ask-questions tool to speed up 
 
 Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
 
-**Prompt** *(Claude Code)*
-
-```
-Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange what's there into Paweł Huryn's three-block memory frame:
-
-- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)
-- Block 2: decisions with alternatives (architectural or design choices + what else was considered; the ADRs live here)
-- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; the test-strategy skill contributes)
-
-Don't invent new material. Rearrange what's there.
-
-Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR I've already written (Block 2), a specific check from my test-strategy skill (Block 3).
-
-If you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.
-```
+{{prompt:walk-and-send-off-4}}
 
 
 Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.

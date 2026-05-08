@@ -1,6 +1,6 @@
 # Extract the task-shaping rule
 
-**What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able — what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
+**What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
 
 **What happened:** Claude reads the scrollback and proposes the rules. You rewrite or reject at least one. You name the file and the path. Claude writes it. You ask one open question about where the file could go next. Claude proposes shapes. You read. Optional: you paste one real ticket, and Claude infers how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
 
@@ -14,24 +14,16 @@ You just ran a plan, two push-backs, a second-pass walk-down, and an approval. T
 
 Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.
 
-**Prompt** *(Claude Code)*
-
-```
-Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn't. Rules about task shape, not about plan-reading craft. After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.
-```
+{{prompt:extract-the-task-shaping-rule-1}}
 
 
 When Claude pauses for the rewrite-and-reject pass, that is the engagement step. The rule that arrives generic is the one that needs your hand on it.
 
 ## Phase 2: Save it where you'll find it again
 
-Decide the location with Claude. The dimension that matters is when the rules fire — anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.
+Decide the location with Claude. The dimension that matters is when the rules fire, anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.
 
-**Prompt** *(Claude Code)*
-
-```
-Let's decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you'd pick for these rules and why. I'll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.
-```
+{{prompt:extract-the-task-shaping-rule-2}}
 
 
 Read the three rules Claude shows back. If any drifted from your wording, push back and have Claude rewrite.
@@ -42,11 +34,7 @@ Now the open question. The prompt asks for shapes, not code.
 
 "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt starts by pointing an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
-**Prompt** *(Claude Code)*
-
-```
-Suppose I wanted this rules file to drive automated task-splitting in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting epics into shippable slices using these rules as the guardrail. What two or three shapes does that automation typically take? Name each shape, what would invoke it, and where the rules file would sit in the loop. Don't propose code today.
-```
+{{prompt:extract-the-task-shaping-rule-3}}
 
 
 Read the answer. The shapes Claude names are the same ones the mini-lecture grounds in real practitioner work.
@@ -57,17 +45,7 @@ If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Az
 
 Then ask Claude to infer how the fields are being used.
 
-**Prompt** *(Claude Code)*
-
-```
-Reverse-engineer how this team uses its task manager from one ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, links, and custom fields.
-
-Separate strong signals, guesses that need more tickets, and things you cannot tell.
-
-Then propose five basic rules a backlog-refinement agent could use on future tickets.
-
-Ticket:
-```
+{{prompt:extract-the-task-shaping-rule-4}}
 
 Read the output as a first pass, not a policy. One ticket can reverse-engineer basic rules: which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it. Iterate for depth. Three to five tickets from different work types will surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
 

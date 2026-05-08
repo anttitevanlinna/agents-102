@@ -52,15 +52,7 @@ Module 3's compound runs in two places: the skill you authored (where session pu
 
 Ask Claude to sharpen the one weakest section of the authored skill, then integrate a rule into `./CLAUDE.local.md` if one earned itself. Run this in the same session you authored the skill in.
 
-**Prompt** *(Claude Code)*
-
-```
-Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back.
-
-First: find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.
-
-Then, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.
-```
+{{prompt:ae101-m2-sharpen-skill}}
 
 This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
@@ -68,19 +60,11 @@ This grill happens in the same session that authored the skill, Claude is critiq
 
 Before you close the session, signal the wrap-up. The agent converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
 
-**Prompt** *(Claude Code)*
-
-```
-Ready to clear? All learnings in?
-```
+{{prompt:ae101-m2-ready-to-clear}}
 
 If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 
-**Prompt** *(Claude Code)*
-
-```
-/clear
-```
+{{prompt:ae101-m2-clear-session}}
 
 ## Next
 

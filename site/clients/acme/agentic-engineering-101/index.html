@@ -2124,7 +2124,7 @@ Ticket:
 </code></pre>
 <p>Read the close-out. If Claude wrote something stiff or wrong, push back. Tell it how your team actually writes ticket comments. It&#39;ll adjust.</p>
 <p>Ship the update (or paste it into the tracker yourself if you&#39;re on path 3). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.</p>
-<p>You&#39;re near the end of the M1 session. One more sweep on <code>./CLAUDE.local.md</code> before close: anything earned since the first compound — the ticket beat, the push-backs, the catch on the missing PR — that didn&#39;t land yet?</p>
+<p>You&#39;re near the end of the M1 session. One more sweep on <code>./CLAUDE.local.md</code> before close: anything earned since the first compound, the ticket beat, the push-backs, the catch on the missing PR, that didn&#39;t land yet?</p>
 <p>Ask Claude to sweep the session for anything earned since the first compound and integrate.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>We&#39;re preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don&#39;t append. Tell me in 2–3 lines what you added, or &quot;nothing new&quot; if nothing did.
@@ -2316,7 +2316,7 @@ My task:
 <div class="phase-kicker">Exercise</div>
 
 <h1>Extract the task-shaping rule</h1>
-<p><strong>What you do:</strong> read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made <em>this</em> task plan-mode-able — what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a <code>.md</code> file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.</p>
+<p><strong>What you do:</strong> read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made <em>this</em> task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a <code>.md</code> file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.</p>
 <p><strong>What happened:</strong> Claude reads the scrollback and proposes the rules. You rewrite or reject at least one. You name the file and the path. Claude writes it. You ask one open question about where the file could go next. Claude proposes shapes. You read. Optional: you paste one real ticket, and Claude infers how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.</p>
 <p><strong>The point:</strong> the file is the artifact. You captured how <em>you</em> factored <em>this</em> task on <em>this</em> codebase. Templates stay generic; this file carries your rules. The mini-lecture that follows names three places this kind of file ends up.</p>
 <p><strong>Time:</strong> 12 minutes.</p>
@@ -2328,7 +2328,7 @@ My task:
 </code></pre>
 <p>When Claude pauses for the rewrite-and-reject pass, that is the engagement step. The rule that arrives generic is the one that needs your hand on it.</p>
 <h2>Phase 2: Save it where you&#39;ll find it again</h2>
-<p>Decide the location with Claude. The dimension that matters is when the rules fire — anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.</p>
+<p>Decide the location with Claude. The dimension that matters is when the rules fire, anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Let&#39;s decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you&#39;d pick for these rules and why. I&#39;ll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.
 </code></pre>
@@ -2554,7 +2554,7 @@ The surface the skill missed that I know matters is:
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story (one or two sentences, from the access surface and threat list), then map that story to the STRIDE class it best fits (S/T/R/I/D/E), name what the threat actually is in one sentence, and propose the hardening shape (scope/split/filter/gate/review). I&#39;ll steer if the story or mapping misses.
 </code></pre>
-<p>Read what Claude proposes. The &quot;most plausible incident story&quot; is the move that makes STRIDE useful rather than performative — push back if the story doesn&#39;t fit your codebase&#39;s reality.</p>
+<p>Read what Claude proposes. The &quot;most plausible incident story&quot; is the move that makes STRIDE useful rather than performative, push back if the story doesn&#39;t fit your codebase&#39;s reality.</p>
 <h2>Phase 3: write the ADR</h2>
 <p>Ask Claude to draft the ADR in your repo&#39;s convention and show it before saving.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2570,7 +2570,7 @@ Show me the ADR before saving.
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Will ADRs auto-load to future sessions?
 </code></pre>
-<p>Claude&#39;s answer: no, ADRs don&#39;t auto-load like <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> do. They&#39;re on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team <code>CLAUDE.md</code> (one <code>@docs/adr/&lt;file&gt;.md</code> line per file — Claude Code&#39;s <code>@</code>-include is single-file, no glob), but most teams don&#39;t: ADRs accumulate, the window is finite, and rejected alternatives shouldn&#39;t sit in live context. Selective load is the practitioner default; M4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.</p>
+<p>Claude&#39;s answer: no, ADRs don&#39;t auto-load like <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> do. They&#39;re on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team <code>CLAUDE.md</code> (one <code>@docs/adr/&lt;file&gt;.md</code> line per file, Claude Code&#39;s <code>@</code>-include is single-file, no glob), but most teams don&#39;t: ADRs accumulate, the window is finite, and rejected alternatives shouldn&#39;t sit in live context. Selective load is the practitioner default; M4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.</p>
 <hr>
 <h2>What this sets up</h2>
 <p>The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Rejected threats are documented. Your CISO has something to read.</p>

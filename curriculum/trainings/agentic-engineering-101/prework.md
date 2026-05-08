@@ -28,15 +28,7 @@ You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths to the s
 
 **3.b. Or have Claude download it for you.** Ask Claude to fetch the content tarball to `~/Downloads/`.
 
-**Prompt** *(Claude Code)*
-
-```
-Download the AE101 content tarball to ~/Downloads. Use Bash:
-
-  curl -fsSL <CONTENT_URL> -o ~/Downloads/agents-102-content.tar.gz
-
-Confirm the file exists and report its size.
-```
+{{prompt:ae101-prework-download-tarball}}
 
 ## 4. Hand the rest to Claude
 
@@ -44,27 +36,7 @@ Ask Claude to extract the tarball, install the curated skills, screen three cand
 
 When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.
 
-**Prompt** *(Claude Code)*
-
-```
-I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
-
-1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.
-
-2. Extract ~/Downloads/agents-102-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.
-
-3. Install these as personal Claude Code skills:
-   - access-control-analysis
-   - stride
-
-   Use the extracted content/skills/ folder as the source. Install them wherever personal Claude Code skills belong on this machine. Confirm each installed skill has a SKILL.md file and tell me the absolute path.
-
-4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.
-
-5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.
-
-Report success on each step and tell me what you did.
-```
+{{prompt:ae101-prework-extract-and-install}}
 
 If Step 4's screening feels like Claude is asking everything at once, ask it to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.
 
@@ -84,7 +56,7 @@ Connections question. We'll ask at the opening: *what's one trick you figured ou
 
 **Meta:**
 - **Runtime:** 30 min target. Step breakdown: get Claude Code started 1 / pick repo 10 / start session 2 / content folder 3 / hand rest to Claude 12. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
-- **Delivery architecture:** student's repo is the working directory across every module. The content folder sits on disk for the student's own browsing reference (lectures + exercises + reference also render on the workbook site); Claude never reads from it. Skills install to `~/.claude/skills/` (user-level), auto-discover in every session regardless of cwd. Compounding artifacts split clean: rules → `CLAUDE.local.md` (personal, gitignored); team rules → `CLAUDE.md` via PR.
+- **Delivery architecture:** student's repo is the working directory across every module. The content folder sits on disk for the student's own browsing reference (lectures + exercises + reference also render on the workbook site). Claude doesn't read exercise/lecture bodies by default; the canonical reading surface is the rendered workbook. Exception: when the student invokes the `agentic-nerd` self-study skill, it resolves `{{prompt:<key>}}` markers in exercise bodies against the prompt registry shipped alongside at `~/Documents/ae101-content/prompts/`. Skills install to `~/.claude/skills/` (user-level), auto-discover in every session regardless of cwd. Compounding artifacts split clean: rules → `CLAUDE.local.md` (personal, gitignored); team rules → `CLAUDE.md` via PR.
 - **Transport — two paths to the same disk state.** Step 3 forks: 3.a manual download from `<CONTENT_URL>` to `~/Downloads/agents-102-content.tar.gz`, 3.b Claude downloads via Bash `curl`. Step 4 is identical in both paths — agent extracts the tarball from `~/Downloads/`, installs skills, screens bugs. Cross-platform via Claude Code's Bash tool: macOS/Linux native, Windows via Git Bash (which Claude Code requires). Confirmed against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs (Win10 1803+ ships native `curl.exe` and `tar.exe`). Manual path covers IT-locked environments where outbound to the customer URL is blocked — trainer ships tarball via email or SharePoint.
 - **`<CONTENT_URL>` placeholder is build-time substituted** by `scripts/build-workbook.js` per-customer (e.g., `https://agents102.bosser.consulting/clients/acme/agentic-engineering-101/agents-102-content.tar.gz`). Source markdown carries the literal placeholder so the substitution is auditable; rendered workbook never shows the placeholder. Rule-compliance note: this is the explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build-time substitution, not student fill-in.
 - **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The exception is the manual download (3.a), a transport primitive, not a file-edit.

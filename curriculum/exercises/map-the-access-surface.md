@@ -32,23 +32,13 @@ You should see `access-control-analysis` and `stride` listed under **User**. (If
 
 Then ask Claude to fill in what `/skills` doesn't show.
 
-**Prompt** *(Claude Code)*
-
-```
-List my installed skills. Tell me also their storage location and whether or not they are loaded onto context.
-```
+{{prompt:map-the-access-surface-1}}
 
 Worth a moment of looking, these are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
 
 Ask Claude to invoke the access-control-analysis skill on the feature you'll name after the colon, and save the surface map to a temp directory.
 
-**Prompt** *(Claude Code)*
-
-```
-Invoke the access-control-analysis skill on the feature I'll name. Save the surface map to a temp directory and tell me the path. Use the skill's default output shape; don't prompt me to customize.
-
-The feature is:
-```
+{{prompt:map-the-access-surface-2}}
 
 
 Answer the one-sentence feature question. Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
@@ -57,11 +47,7 @@ Answer the one-sentence feature question. Let the skill run. It'll read the code
 
 Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you've seen the structured read before deciding your deltas in Phase 3.
 
-**Prompt** *(Claude Code)*
-
-```
-Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I'll tell you in the next phase.
-```
+{{prompt:map-the-access-surface-3}}
 
 ## Phase 3: write the delta
 
@@ -69,23 +55,11 @@ Now you decide.
 
 Ask Claude to integrate the surface the skill called out harder than you would have into the map.
 
-**Prompt** *(Claude Code)*
-
-```
-Update the surface-map file in the temp directory to integrate the delta below — pull the item to the top of its category and explain in one line why this codebase's deployment model elevates it. Show me the diff.
-
-The surface the skill called out harder than I would have:
-```
+{{prompt:map-the-access-surface-4}}
 
 Then ask Claude to add the surface the skill missed but you know matters.
 
-**Prompt** *(Claude Code)*
-
-```
-Add a new surface to the map that the skill didn't catch but matters in this codebase. One sentence on what it is, one sentence on why the skill missed it (likely codebase-specific: framework, deployment model, team convention). Show me the diff.
-
-The surface the skill missed that I know matters is:
-```
+{{prompt:map-the-access-surface-5}}
 
 
 Answer. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*

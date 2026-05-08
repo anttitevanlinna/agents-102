@@ -20,22 +20,14 @@ Claude Code is open on your repo. You have a trivial bug picked from prework. No
 
 Ask Claude to read your repo deliberately and report shape, structure, what's load-bearing, what's stale.
 
-**Prompt** *(Claude Code)*
-
-```
-Read enough of this repo to tell me what's here: the shape, the structure, what looks load-bearing, what's been touched recently, what looks stale. Don't try to be complete. Read what you judge worth reading; skip what you judge isn't.
-```
+{{prompt:orient-and-introspect-1}}
 
 
 Claude reads and reports. Let it finish.
 
 Ask Claude to introspect on what it read, what it skipped, and the call it made on each.
 
-**Prompt** *(Claude Code)*
-
-```
-What did you read, and why those files? What didn't you read, and why not? Name the specific files or directories you skipped and the call you made on each.
-```
+{{prompt:orient-and-introspect-2}}
 
 
 Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Spot-check by quoting back a specific file or function and asking Claude to confirm it.

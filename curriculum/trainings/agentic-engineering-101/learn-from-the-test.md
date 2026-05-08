@@ -25,17 +25,7 @@ A real engineering call lives in this fork: gitignored files (your `CLAUDE.local
 
 If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
 
-**Prompt** *(Claude Code)*
-
-```
-Find the branch starting with `m4/` (run `git branch -a | grep '/m4/'` — there'll be one) and the commit messaged "M4 starting point" on it. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
-
-Then copy the gitignored personal files into the worktree so M5/M6 compounding has the M1/M3 evidence to build on:
-  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)
-  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if it exists)
-
-These won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.
-```
+{{prompt:ae101-m4-worktree-setup}}
 
 Open a new Claude Code session in the worktree. The rest of Module 5 runs there.
 
@@ -62,17 +52,7 @@ Now the re-send. Same task as Module 4, packaged this time. The prompt can be sh
 
 Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.
 
-**Prompt** *(Claude Code, final move of the module)*
-
-```
-Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.
-
-Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.
-
-Before you start, ask for or write anything else you want for this run.
-
-Tell me what shipped, what didn't, and what the verifier surfaced.
-```
+{{prompt:ae101-m4-rerun-packaged}}
 
 The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. Your call on whether to push.
 

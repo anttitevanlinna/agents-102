@@ -24,34 +24,14 @@ Open a new Claude Code session in the M5 worktree (set up at module open). The M
 
 Ask Claude to find the previous session's transcript file.
 
-**Prompt** *(Claude Code)*
-
-```
-Find the path to the previous session's transcript .jsonl. Claude Code stores every session's scrollback at `~/.claude/projects/<encoded-folder>/<uuid>.jsonl`. The `<encoded-folder>` name is the absolute path of the original repo (where the un-packaged run happened) with `/` replaced by `-` — e.g., `/Users/me/Projects/lemmings` → `-Users-me-Projects-lemmings`. Since you're in a worktree, find the original repo path via `git rev-parse --git-common-dir` (its parent is the original repo). List the .jsonl files in that folder by mtime; pick the most recent one that is NOT this current session. Tell me the absolute path.
-```
+{{prompt:diagnose-and-resend-1}}
 
 
 Confirm the path is right. Then read it through three lenses.
 
 Ask Claude to read the repo state on the previous-run branch and the transcript at the path you just found, then walk the work through three failure-mode lenses with quoted moments.
 
-**Prompt** *(Claude Code)*
-
-```
-I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
-
-Read what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep '/m4/'` — it'll be the only branch starting with `m4/`). Start with the repo state on that branch: commits since the "M4 starting point" commit, files modified, branch state. Then read the previous session's transcript at the path you just found. The file changes alone miss the drift and the dead-ends.
-
-Then walk the work through three lenses:
-
-- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.
-- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.
-- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.
-
-For EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.
-
-End with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.
-```
+{{prompt:diagnose-and-resend-2}}
 
 
 Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. The move you just ran is *diagnosis through named failure modes*, the vocabulary is the lens, the artefact is the substance.
@@ -66,21 +46,7 @@ Not every failure supports minute-cadence. Drift and context rot fire mid-run, o
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
 
-**Prompt** *(Claude Code)*
-
-```
-For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?
-
-Practitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:
-
-- **A re-readable spec.** Scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.
-- **A working document the agent owns and updates.** Durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.
-- **An automated check on produced work.** Tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.
-
-For each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not "a re-readable spec" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).
-
-Don't name frameworks or practitioners by label ("Ronacher's three-pattern," "Huntley's Ralph," etc.) — walk from the specific failure to the specific validation. The naming happens later.
-```
+{{prompt:diagnose-and-resend-3}}
 
 
 Read the three answers. You should now have a working description of three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.
@@ -97,21 +63,7 @@ Three shapes the verifier takes. Pick the one matching your dominant failure. Th
 
 Ask Claude to build the verifier shape that matches your dominant failure, scoped to the task we ran un-packaged. Drop the shape name after the colon, one of: background-agent, shell-hook, Ralph re-feed.
 
-**Prompt** *(Claude Code)*
-
-```
-Build the verifier for my dominant failure, scoped to the task we ran un-packaged. The verifier should fire on agent-produced work and decide pass/fail against a quality bar that, if it had been in place, would have caught the failure I diagnosed.
-
-If shell-hook: write the script and tell me where it lives in this repo (CI config, `.claude/hooks/`, or pre-commit, whichever fits the repo's existing conventions).
-
-If background-agent: write the prompt and tell me how to invoke it (slash-command, sub-task dispatch, or scheduled run).
-
-If Ralph re-feed: write the loop wrapper and the check it runs each iteration.
-
-Show me the verifier before you save anything; I'll push back, then we save.
-
-Shape:
-```
+{{prompt:diagnose-and-resend-4}}
 
 
 Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or vice versa). The fit between failure shape and verifier shape is the teaching moment.
@@ -120,11 +72,7 @@ The verifier IS your first eval. The closing lecture names this; for now, build 
 
 Before Phase 4, smoke-test that the verifier actually fires. A built-but-untested verifier is no verifier, the wiring (hook config, file paths, slash-command registration, loop trigger) is fragile and silent failures cost the next phase.
 
-**Prompt** *(Claude Code)*
-
-```
-Smoke-test the verifier you just built. Fire it on two synthetic inputs: one designed to PASS (matches the quality bar) and one designed to FAIL (the failure shape we diagnosed). Show me what fired, what each input returned, and what would have to change for the verifier to actually be in play during the packaged re-send. If a wiring step (hook install, slash-command registration, file path) is missing, name it and fix it before we move on.
-```
+{{prompt:diagnose-and-resend-5}}
 
 ---
 
@@ -134,29 +82,7 @@ Reference artefact pins the task's success criteria and points at the relevant m
 
 Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
-**Prompt** *(Claude Code)*
-
-```
-Build me two task-scoped artefacts for re-running the un-packaged task packaged.
-
-First, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:
-- The task scope and success criteria, in two or three sentences
-- Pointers to the memory pages, ADRs, skills, and connectors most relevant to THIS task
-- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)
-- **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
-- A "done means" line — what the agent should produce that signals task completion (tests green + requirements met)
-
-Second, plan.md. A working document the agent owns and mutates as it runs. Should start with:
-- The task broken into 3–7 phases the agent can re-anchor against
-- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
-- A "current phase" line the agent updates as it progresses
-- A "decisions log" section the agent appends to when it makes a load-bearing choice
-- A "what I tried that didn't work" section to prevent context-rot re-derivations
-
-Propose the file paths (next to each other; same task-scoped folder). Show me both files before you save. I'll push back, then we save.
-
-Before you save, grill me on missing details that can ruin the smooth run.
-```
+{{prompt:diagnose-and-resend-6}}
 
 
 Read both files. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.

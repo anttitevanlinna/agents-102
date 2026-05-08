@@ -14,11 +14,7 @@
 
 Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.
 
-**Prompt** *(Claude Code)*
-
-```
-Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next. Report whether or not the skill loaded in the subagent.
-```
+{{prompt:threat-model-with-stride-1}}
 
 
 Let it run. The output will have more entries than you want to deal with. That's expected.
@@ -29,28 +25,16 @@ You're going to pick one threat worth hardening against. Not five. One. The move
 
 Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.
 
-**Prompt** *(Claude Code)*
-
-```
-Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story (one or two sentences, from the access surface and threat list), then map that story to the STRIDE class it best fits (S/T/R/I/D/E), name what the threat actually is in one sentence, and propose the hardening shape (scope/split/filter/gate/review). I'll steer if the story or mapping misses.
-```
+{{prompt:threat-model-with-stride-2}}
 
 
-Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative — push back if the story doesn't fit your codebase's reality.
+Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative, push back if the story doesn't fit your codebase's reality.
 
 ## Phase 3: write the ADR
 
 Ask Claude to draft the ADR in your repo's convention and show it before saving.
 
-**Prompt** *(Claude Code)*
-
-```
-Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).
-
-Ground each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.
-
-Show me the ADR before saving.
-```
+{{prompt:threat-model-with-stride-3}}
 
 
 Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship & Save.
@@ -59,13 +43,9 @@ If STRIDE's six categories feel like the wrong lens for your feature (some featu
 
 Ask Claude whether this ADR rides into future sessions automatically.
 
-**Prompt** *(Claude Code)*
+{{prompt:threat-model-with-stride-4}}
 
-```
-Will ADRs auto-load to future sessions?
-```
-
-Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file — Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; M4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
+Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file, Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; M4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
 
 ---
 

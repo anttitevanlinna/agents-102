@@ -43,21 +43,11 @@ No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skill
 
 Before you send: pin a clean starting SHA. Module 5 will worktree from this commit to re-run the same task packaged, so the comparison starts from the same code state. Ask Claude to commit current state on a feature branch and tell you the short SHA. Keep it noted.
 
-**Prompt** *(Claude Code)*
-
-```
-Commit the current state of the repo on a fresh feature branch named m4/<short-task-slug>. Stage everything, commit with message "M4 starting point". Tell me the short SHA.
-```
+{{prompt:ae101-m3-commit-starting-point}}
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
-**Prompt** *(Claude Code, final move of the module)*
-
-```
-I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.
-
-I'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.
-```
+{{prompt:ae101-m3-take-task-end-to-end}}
 
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stopping the run is fine; the trace is the result.
@@ -68,11 +58,7 @@ Nudging by hand is fine if you're watching. Answer a question, correct a path, p
 
 If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:
 
-**Prompt** *(Claude Code, optional)*
-
-```
-Continue --- you can do it. Can't you?
-```
+{{prompt:ae101-m3-nudge-continue}}
 
 Before you close: read [Reading the return](lectures/reading-the-return.md). It plants the question and the three failure modes you'll use to read what comes back.
 

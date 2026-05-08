@@ -20,17 +20,7 @@ The ship destination is your personal skills folder: `~/.claude/skills/test-stra
 
 This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons named in Phase 3. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
 
-**Prompt** *(Claude Code)*
-
-```
-I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.
-
-Cover at minimum: which testing framework, what's mocked and what isn't, where the integration boundary actually runs (real dependencies vs. stubs), what "flaky" means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what's NOT worth testing here (and why).
-
-Ask ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says "write unit tests first" is useless. I need you to extract codebase-specific detail.
-
-When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.
-```
+{{prompt:author-test-strategy-skill-1}}
 
 
 Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
@@ -39,15 +29,7 @@ Answer each question. When Claude asks something like *"is this codebase Jest?"*
 
 Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.
 
-**Prompt** *(Claude Code)*
-
-```
-Invoke the test-strategy skill we just wrote on the feature I'm shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.
-
-Produce the test strategy the skill asks you to produce.
-
-Then, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?
-```
+{{prompt:author-test-strategy-skill-2}}
 
 
 Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.

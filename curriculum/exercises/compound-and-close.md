@@ -12,15 +12,7 @@ The PR shipped. Now compound the session, then make the first move outside the r
 
 ## Compound
 
-**Prompt** *(Claude Code)*
-
-```
-Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.
-
-If any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.
-
-Tell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.
-```
+{{prompt:compound-and-close-1}}
 
 
 Read Claude's summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
@@ -47,39 +39,25 @@ If you have a live connector (1 or 2):
 
 Ask Claude to read the ticket for your bug and report what's on it.
 
-**Prompt** *(Claude Code)*
-
-```
-Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.
-
-Ticket:
-```
+{{prompt:compound-and-close-2}}
 
 
 Claude reads the ticket (or confirms there isn't one). Then:
 
 Ask Claude to update the ticket and report what it wrote.
 
-**Prompt** *(Claude Code)*
-
-```
-Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Tell me what you wrote.
-```
+{{prompt:compound-and-close-3}}
 
 
 Read the close-out. If Claude wrote something stiff or wrong, push back. Tell it how your team actually writes ticket comments. It'll adjust.
 
 Ship the update (or paste it into the tracker yourself if you're on path 3). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
 
-You're near the end of the M1 session. One more sweep on `./CLAUDE.local.md` before close: anything earned since the first compound — the ticket beat, the push-backs, the catch on the missing PR — that didn't land yet?
+You're near the end of the M1 session. One more sweep on `./CLAUDE.local.md` before close: anything earned since the first compound, the ticket beat, the push-backs, the catch on the missing PR, that didn't land yet?
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
 
-**Prompt** *(Claude Code)*
-
-```
-We're preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don't append. Tell me in 2–3 lines what you added, or "nothing new" if nothing did.
-```
+{{prompt:compound-and-close-4}}
 
 The loop ran. The PR is open, the rules file was born from session evidence, the ticket is updated where your team reads it. Setup in place.
 

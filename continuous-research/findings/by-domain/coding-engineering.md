@@ -5,7 +5,7 @@ evidence_level: 3
 platforms: [claude-code, cursor, lovable, github-copilot]
 practitioners: [Spotify, Karpathy, Simon Willison, Dan Shipper, Raine Virta, Armin Ronacher, Anton Osika]
 nordic: true
-updated: 2026-03-28
+updated: 2026-05-08
 answers:
   - "why do coding agents work when business agents don't?"
   - "which Nordic companies use coding agents in production?"
@@ -16,7 +16,7 @@ answers:
 
 # Coding & Engineering — Agentic Deployment Findings
 
-**Evidence level:** Level 3 (convergence, 12+ independent signals) | **Last updated:** 2026-03-28
+**Evidence level:** Level 3 (convergence, 12+ independent signals) | **Last updated:** 2026-05-08
 
 Coding is the domain where agents work best, and this is structural, not accidental. Five ingredients explain why: (1) executable verification (run the code, see if it works), (2) existing test suites, (3) tool access and iteration safety (git, CI/CD, sandboxes), (4) task decomposability (functions, modules, PRs), (5) rich context in code itself. These took decades to build. Other business domains lack most of them — which is why coding agents are 2-3 years ahead.
 
@@ -37,8 +37,16 @@ Four independent practitioners in four domains converged on the same pattern in 
 
 ## Level 2 Findings
 
+### Context infrastructure / AI engineering substrate — moving toward convergence
+
+Successful software organizations are converging on the same substrate around coding agents: repo/project instructions, executable playbooks or skills, MCP/tool access, service or knowledge catalogs, sandbox/runtime constraints, deterministic verifiers, AI/human review gates, telemetry, and internal platform ownership. Cloudflare calls this its internal AI engineering stack; Spotify calls it context engineering; LinkedIn calls it CAPT / organizational context layer; OpenAI calls it harness engineering. The full packaged substrate is still Level 2 as a measured operating model, but the components are converging across multiple independent sources and should be watched for Level 3 upgrade. Sources: [Cloudflare](https://blog.cloudflare.com/internal-ai-engineering-stack/) [practitioner direct], [Spotify](https://engineering.atspotify.com/2025/11/context-engineering-background-coding-agents-part-2) [practitioner direct], [LinkedIn CAPT](https://www.linkedin.com/blog/engineering/ai/contextual-agent-playbooks-and-tools-how-linkedin-gave-ai-coding-agents-organizational-context) [practitioner direct], [OpenAI harness engineering](https://openai.com/index/harness-engineering/) [practitioner direct], [AAIF AGENTS.md/MCP/goose](https://aaif.io/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation-aaif-anchored-by-new-project-contributions-including-model-context-protocol-mcp-goose-and-agents-md/) [standards body].
+
 ### Spotify (Stockholm) — Enterprise-scale production
 Internal "Honk" system built on Claude Agent SDK. 1,500+ PRs merged, 650+/month. Applied to ~50 migrations: Java AutoValue to Records, framework upgrades, gRPC context propagation. Infrastructure prerequisite: years of investment in component ownership, standardized build systems, comprehensive test suites. Source: [Spotify Engineering](https://engineering.atspotify.com/2025/12/feedback-loops-background-coding-agents-part-3) [practitioner direct]
+
+### LinkedIn CAPT — Organizational context layer
+
+Contextual Agent Playbooks & Tools (CAPT) gives off-the-shelf coding agents organizational context through MCP-connected internal tools plus executable playbooks. More than 1,000 engineers use it; 500+ playbooks have been authored; issue triage is down about 70% in many areas; common data-analysis workflows are roughly 3x faster. This is the cleanest named case for "turn tribal knowledge into executable agent context." Source: [LinkedIn Engineering](https://www.linkedin.com/blog/engineering/ai/contextual-agent-playbooks-and-tools-how-linkedin-gave-ai-coding-agents-organizational-context) [practitioner direct]
 
 ### Lovable / Anton Osika (Stockholm) — Vibe coding platform
 Swedish-origin. GPT Engineer (55K+ GitHub stars, 2023) evolved into Lovable. $300M+ ARR, ~8M users, $6.6B valuation. 100K new products built daily. HBS case study: "Vibe Coding For The Other 99%." Designed for non-coders — fundamentally different use case from Spotify's Honk. Source: [TechCrunch](https://techcrunch.com/2025/11/10/lovable-says-its-nearing-8-million-users-as-the-year-old-ai-coding-startup-eyes-more-corporate-employees/) [general press], [HBS](https://store.hbr.org/product/lovable-vibe-coding-for-the-other-99/826220) [academic]

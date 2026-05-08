@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-05-08](questions/2026-05-08-context-infrastructure-for-agentic-throughput.md) — What concrete context-infrastructure artifacts make agentic throughput possible inside software organizations? **Cycles 123/124 update:** Cloudflare, Spotify, LinkedIn, OpenAI, Every, Ramp, and AGENTS.md standardization converge on context/playbook/tool/verification substrate.
 - [2026-05-08](comments/2026-05-08-remove-non-software-filter.md) — Do not let the original non-software filter silently govern follow-up OODAs. Software organizations are valid comparators; state sector scope explicitly.
 - [2026-05-08](questions/2026-05-08-traditional-enterprise-chasm-crossing-case.md) — Who is the named practitioner publishing a playbook for converting individual AI ability into institutional throughput? **Third-pass update:** Cloudflare/Spotify/Apollo strengthen the software-org corpus; C.H. Robinson remains strongest traditional-enterprise throughput case.
 - [2026-05-08](questions/2026-05-08-nordic-non-software-ai-throughput-case.md) — Which Nordic enterprise over 300 people has practitioner-direct evidence of converting individual AI ability into team-level throughput? **Third-pass update:** Spotify is the software answer; Berner remains the non-software answer.

@@ -23,7 +23,7 @@ You invoke both on a feature you're shipping today. The judgement these skills c
 
 You can. Because you'll author it the way the training authors everything: through conversation with Claude, not by hand-crafting markdown. Claude asks you what it needs to encode the skill. You push back where your codebase doesn't fit the default. The skill comes out tuned to your system because YOU fed it your system.
 
-**Voice three: the team kit, starting today.** The skill you author at the end of this module ships to the team kit. The home your sponsor named in the pre-engagement contract: shared Git repo, monorepo `.claude/` directory, whatever your team landed on. The first file lands there today. Intercom's 267-skill plugin repo (31% of R&D contributing) was born the same way: one engineer's contribution, then another, then accretion. Not a platform-team design document.
+**Voice three: your skills folder, starting today.** The skill you author at the end of this module ships to your personal `~/.claude/skills/test-strategy/`. Auto-discovered in every session you run. That's the ship. Personal-first is the through-line: M1 was `CLAUDE.local.md` (personal, gitignored), M3 is your first authored skill in your personal kit. Promotion to a team home is the next move, not this one: a conversation with teammates, then a PR (to your repo's `.claude/skills/`, to a shared Git repo, to whichever home your team picks now or later). Intercom's 267-skill plugin repo (31% of R&D contributing) was born that way: one engineer's personal skill, then a teammate's, then accretion. Not a platform-team design document.
 
 ## Why this proportion matters
 

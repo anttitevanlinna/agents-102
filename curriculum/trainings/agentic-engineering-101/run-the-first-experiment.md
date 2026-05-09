@@ -79,8 +79,8 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (behavior@4cacfba)
-- judges @4cacfba: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (accepted-by-design-M4-baseline-see-pre-cohort-todos)
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

@@ -4,250 +4,36 @@
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "No placeholders inside fenced blocks.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "No square-bracket `[...]` placeholders in either fenced block. Angle-bracket patterns (`<repo-name>`, `<task-slug>`) are derive-from-context instructions per 2026-05-03 FP-avoidance guidance — not in scope.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 5,
-      "rule_lead": "Chain prompts by back-reference and deterministic path, never by invented alias.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "Line 68 `the paths we wrote in this session` is the preferred scrollback-review chain pattern per rule 5 and 2026-05-03 FP-avoidance guidance. Not a violation.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "Body citations (lines 10, 90) correctly use builder voice per 2026-05-03 carve-out (maintainer-only labels). Source-type labels present in the new source-verification block (lines 164–168): Ronacher [practitioner direct], Cherny [practitioner direct], Curran [practitioner analysis], Klaassen entries [practitioner analysis] + [practitioner direct] x2. Frameworks list (lines 170–174) does not independently carry labels — audit trail covered by the source-verification block above it. TODO: add inline labels to Frameworks list for belt-and-braces compliance.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 11,
-      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "PASS",
-      "evidence": "Lines 163–169: `**Source verification — MUST DO before first cohort:**` section now present. Covers Ronacher (defers to lecture maintainer block), Cherny (defers to lecture maintainer block), Curran (19.2% + Tier 1/2/3 numbers named for verification, freshness re-check noted, label [practitioner analysis] present), Klaassen (all three every.to URLs listed with labels, freshness re-check present). Primary §11 requirement — section existence — is met. Minor TODO: Curran entry lacks an explicit named fallback framing if the 19.2% number does not hold at verification. §11 requires `a named fallback framing if a specific source doesn't hold`.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 1,
-      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 6,
-      "rule_lead": "Known correct Claude Code facts.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 7,
-      "rule_lead": "Sessions are the unit of work.",
-      "verdict": "PASS",
-      "evidence": "line:26 `open a fresh session in the original repo location`; line:40 `Open a new Claude Code session in the worktree` — correct session language throughout.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
-      "verdict": "PASS",
-      "evidence": "line:26 lead-in present before worktree prompt; line:63 `Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.` before re-send prompt.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 3,
-      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
-      "verdict": "PASS",
-      "evidence": "Both prompt blocks follow: lead-in → `**Prompt** *(Claude Code)*` → blank line → fenced block. No `copy →` prefix, no `*(end of prompt)*` closer.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 4,
-      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 9,
-      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
-      "verdict": "PASS",
-      "evidence": "Neither fenced block contains `**bold**` or `*italic*` markup.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 19,
-      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
-      "verdict": "PASS",
-      "evidence": "line:72 `Before you start, ask for or write anything else you want for this run.` — canonical self-augment invitation present.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 2,
-      "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "PASS",
-      "evidence": "Entis article April 22 2026 (within 6 months of 2026-05-03). Both standalone Klaassen pieces within 6 months per source-verification freshness re-check notes.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 3,
-      "rule_lead": "Zombie stat guard.",
-      "verdict": "PASS",
-      "evidence": "No round-number AI failure/success rates present. The 19.2% Curran figure is a named deployment metric (not a round-number zombie stat), flagged for source-verification before first cohort.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 46,
-      "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
-      "verdict": "PASS",
-      "evidence": "Lines 138–148: full artefact-contracts table present. Covers M5 worktree branch, reference.md, plan.md, verifier, RUN-NOTES.md, CLAUDE.local.md, M5 session transcript. Each row names stable identifier, producing prompt, and consuming module(s).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "PASS",
-      "evidence": "Lines 150–161: per-phase table present covering all forcing functions: worktree setup, Phase 1 (two entries), Phase 2, Phase 3, Phase 4, Debrief, Closing lecture. Each row names dominant failure and recovery move.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 45,
-      "rule_lead": "Per-exercise leap test — three observable Monday-morning outcomes.",
-      "verdict": "PASS",
-      "evidence": "Lines 133–136: three falsifiable leap tests present. Each names a verb + observable outcome + falsifiability criterion.",
-      "fix_hint": null,
-      "blocking": false
-    }
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities before assert", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions are the unit of work", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label mandatory; maintainer-block scope", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness 6 months", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fenced blocks", "verdict": "REVISE", "evidence": "registry prompt ae101-m4-worktree-setup (consumed via marker line 28) contains `<repo-name>` placeholder five times in fenced shell commands (cp paths + worktree path)", "fix_hint": "reshape registry prompt so Claude derives the repo name from CWD (e.g., basename $(git rev-parse --show-toplevel)) and substitutes internally before running cp/worktree commands; OR mark as maintainer-accepted if Claude is reliably substituting at runtime", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "One-sentence action lead-in", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Skills by name, never by path", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Marker resolves to registry file", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 13, "rule_lead": "Artifact-realism (skills installed)", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false}
   ],
   "platform_claims_checked": [
-    {
-      "claim": "git branch -a | grep '/m4/' — there'll be one",
-      "line": 31,
-      "verdict": "PASS",
-      "source": "inferred"
-    },
-    {
-      "claim": "Open a new Claude Code session in the worktree",
-      "line": 40,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "laptop stays awake and plugged in while it runs (power settings → prevent sleep on power)",
-      "line": 78,
-      "verdict": "PASS",
-      "source": "inferred"
-    },
-    {
-      "claim": "gitignored files (your CLAUDE.local.md, .claude/memory/) don't ride into a worktree",
-      "line": 23,
-      "verdict": "PASS",
-      "source": "inferred"
-    }
+    {"claim": "Claude Code (CLI + Desktop) only; no Cowork; no async cloud agents", "line": 0, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Skills installed at ~/.claude/skills/<name>/SKILL.md auto-discover", "line": 0, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Plan mode via Shift+Tab cycle", "line": 0, "verdict": "PASS", "source": "claude-code-guide"}
   ],
-  "citations_checked": [
-    {
-      "line": 10,
-      "claim": "Laura Entis on Kieran Klaassen, You're the Bread in the AI Sandwich",
-      "label_present": false,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true,
-      "note": "Body citation — builder voice correct per 2026-05-03 carve-out. Label present in source-verification block (line 167)."
-    },
-    {
-      "line": 10,
-      "claim": "Kieran Klaassen, Compound Engineering: The Definitive Guide",
-      "label_present": false,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true,
-      "note": "Body citation — builder voice correct. Label present in source-verification block (line 167)."
-    },
-    {
-      "line": 90,
-      "claim": "Kieran Klaassen, My AI Had Already Fixed the Code Before I Saw It",
-      "label_present": false,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true,
-      "note": "Body citation — builder voice correct. Label present in source-verification block (line 167)."
-    },
-    {
-      "line": "163-169",
-      "claim": "Source-verification block — Ronacher, Cherny, Curran, Klaassen",
-      "label_present": true,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true,
-      "note": "Ronacher + Cherny defer to lecture maintainer blocks (no URL here — URL lives in lecture source lists). Curran and Klaassen: labels present. Curran entry lacks explicit named fallback framing if 19.2% figure doesn't hold — TODO, non-blocking. Klaassen three every.to URLs confirmed alive (200) in prior fire + this run."
-    },
-    {
-      "line": "170-174",
-      "claim": "Frameworks riffed on: Ronacher, Cherny, Curran, Klaassen",
-      "label_present": false,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true,
-      "note": "Frameworks list is a summary credit table; full audit trail (labels + verification) lives in the source-verification block above. TODO: add inline source-type labels to Frameworks list for belt-and-braces compliance with §1 wording ('provenance lists carry labels')."
-    }
+  "citations_checked": [],
+  "skills_referenced": [
+    {"name": "access-control-analysis", "line": 0, "exists": true},
+    {"name": "stride", "line": 0, "exists": true}
   ],
-  "skills_referenced": [],
   "urls_sampled": [
-    {
-      "url": "https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
-      "alive": true,
-      "status_code": 200
-    }
+    {"url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/", "alive": true, "status_code": 200},
+    {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200},
+    {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200}
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 1
 }

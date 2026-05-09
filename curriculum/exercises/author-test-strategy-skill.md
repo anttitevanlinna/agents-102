@@ -4,11 +4,11 @@
 
 **What happened:** You end with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in your personal skills folder. A strong candidate for a team PR. But that PR starts with a human conversation, not an agent commit.
 
-**The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at M6.
+**The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at Module 6 (M6).
 
 **Time:** 18–22 minutes.
 
-> **Quick timebox note.** This is the longest beat in M3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is M6's job.
+> **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is Module 6 (M6)'s job.
 
 ---
 
@@ -31,8 +31,9 @@ Authoring without invocation is theatre. Run the skill on the feature you just a
 
 {{prompt:author-test-strategy-skill-2}}
 
+This prompt asks Claude to invoke the skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. Does the strategy cover the hardening decision? Or does it read generic?"* Your call.
 
-Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what M3 is installing; perfection waits for M6.
+Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what Module 3 is installing; perfection waits for M6.
 
 ## Phase 3: ship
 
@@ -46,7 +47,7 @@ So: show it to your staff engineer over coffee. Send it to the channel. Ask two 
 
 Agents don't unilaterally change shared team infrastructure. You do. The conversation is the move; the PR is the artifact of the conversation.
 
-If your team-kit home isn't live yet, keep the skill personal for now. When the home arrives, same rule: talk first, PR second.
+Personal stays a fine final home. Not every skill needs to graduate to a shared kit; the test you'll apply is whether teammates would use it as-written, and whether the skill carries enough codebase truth to survive their review.
 
 Shipped. Debrief will integrate the session.
 
@@ -54,14 +55,13 @@ Shipped. Debrief will integrate the session.
 
 ## What this sets up
 
-M4 (memory that reads your system) consumes the test-strategy skill as a Block 3 quality-criterion anchor. M6 (long-running return) will author a verifier skill the same way you authored this one; the move repeats, gets faster. The team kit now has one file; next cohort member's ship adds the second.
+Module 4 (memory that reads your system) consumes the test-strategy skill as a Block 3 quality-criterion anchor. M6 (long-running return) will author a verifier skill the same way you authored this one; the move repeats, gets faster. Your personal skills folder now has one file you authored from session evidence. Promotion to a team home is the conversation you'll start over coffee, not the move you make today.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy)
-- compendium-audited 2026-04-27 (this cycle: M3 audit GO; Ex3 prompts compliant, no reshape needed — P1 meta-ask is the pedagogy)
-- earlier compendium-audited entries — superseded
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -75,15 +75,15 @@ M4 (memory that reads your system) consumes the test-strategy skill as a Block 3
 - **P1 missed detail.** Student mentions something in conversation that doesn't make it into SKILL.md. Nerd catches: *"you said X earlier — is that in the skill? if not, add it."*
 - **P2 invoke-skip.** Student ships without running the skill on the feature. Nerd: *"authoring without invocation is theatre. Run it on the feature we just threat-modeled and ask 'is it good?'"*
 - **P2 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Nerd: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
-- **P3 ship-confusion.** Team-kit home ambiguous. Nerd checks: *"is the home a separate repo or a path in this repo's .claude/? the pre-engagement contract should name it; if unresolved, use the training-start default the trainer spun up."*
+- **P3 ship-confusion.** Team-kit home ambiguous. Nerd checks: *"the skill ships to your personal `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1). That's the ship for today. The team-PR move is a separate human conversation later, after teammates have weighed in. The pre-engagement contract's team-kit slot names where a skill goes if it graduates, not whether this one ships now."*
 
 **Watch-fors:**
 - Student opens an editor to hand-craft SKILL.md. Redirect to conversation — the authoring move is prompting Claude, not keyboard-crafting markdown. This rule is load-bearing for the training; catch it every time.
 - Student's codebase has genuinely no integration tests. Good signal — the skill encodes that (*"integration coverage is aspirational; unit + e2e are load-bearing today"*) rather than pretending.
 - Student over-specifies the skill's output shape in Phase 1. Trust Claude's default SKILL.md shape (frontmatter + instructions). Don't ship a template.
-- Team-kit home was not resolved in the pre-engagement contract. Training-start default should be live; if not, Ops has a problem, flag at Debrief. Don't block the exercise on it — land the file in `.claude/skills/test-strategy/SKILL.md` in the student's repo and move the home question to Debrief.
+- Team-kit home was not resolved in the pre-engagement contract. That's fine; the skill ships to personal `~/.claude/skills/test-strategy/SKILL.md` regardless. Personal-first is the through-line (matches M1's `CLAUDE.local.md`). Promotion to a team home is a later human conversation; sponsor non-answer does not block this exercise. If the cohort spontaneously decides on an org-level home, trainer logs the decision in the cohort overrides log.
 
 **Plug points:**
 - Student's feature (Ex1 + Ex2 carried forward) — Phase 2 invocation target
-- Sponsor-stated team-kit home — Phase 1 authoring path + Phase 3 ship destination
+- Sponsor-named test framework / mocking policy / CI gate convention — Phase 1 authoring conversation surfaces these as the codebase-specific encoding the skill ships
 - Hardening decision ADR (from Ex2) — read by Phase 2 invocation

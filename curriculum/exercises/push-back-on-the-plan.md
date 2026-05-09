@@ -80,13 +80,13 @@ Ask Claude whether the `./CLAUDE.local.md` you carried in from M1 actually rides
 
 {{prompt:push-back-on-the-plan-4}}
 
-On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run tomorrow. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
+On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-28
-- compendium-audited 2026-04-28 (M2 re-audit cycle: 4-persona sim incl. nitpicker; check_writing + check_student_facing + check_prompts §1d-§21 + check_pedagogy §34-§38; M2 audit GO with todos)
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)

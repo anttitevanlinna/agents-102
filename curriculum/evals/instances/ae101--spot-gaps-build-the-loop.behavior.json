@@ -1,191 +1,76 @@
 {
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/spot-gaps-build-the-loop.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "partial_regen",
+  "trace_status": "full_regen",
   "prompts_evaluated": 5,
-  "content_sha": "28a93a76cb2f10aa516dba0197931a878482aea7b8fb68a109dbd192c6c3fccb",
-  "generated_at": "2026-05-03T10:48:49Z",
+  "content_sha": "32506a6b97278a097cf4631aa01374663258da410039dbd940e50ca2427d441b",
+  "generated_at": "2026-05-09T04:50:00Z",
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_sha": "ef3c9cc2adfd6453e706f7df3ce750d57ae43994f928be2a5abe18b556e2c17f",
-      "prompt_lead": "I have two runs of the same long-running task on disk. Find them: the un-packaged",
-      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
-      "phase": "Phase 1 — Diff and name the gaps",
-      "expected_response_shape": "Claude will narrate a reading plan across both runs (2-4 sentences) then surface a structured diff across the four named dimensions with evidence quoted from artefacts.",
-      "verdict": "REVISE",
+      "prompt_sha": "e3a887f8a4a031c9e59fe0b4232fc88b5753dd48ec273166857348f11fa876a7",
+      "prompt_lead": "I have two runs of the same long-running task on disk. Find them: the un-package",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "high",
-          "evidence": "Multi-step orchestration instruction (read repo state, read transcripts, walk four dimensions, rank) guarantees Claude narrates its reading plan before producing any quoted evidence. >70% of runs open with 2-4 planning sentences.",
-          "fix_hint": "Add 'No preamble. Start with the first quoted moment.' before the four-dimension list."
-        },
-        {
-          "pattern_id": "niceness-tax",
-          "confidence": "med",
-          "evidence": "No explicit 'don't soften' anchor on damage rankings. Claude will hedge assessments of the packaged run's failures and under-rank their severity.",
-          "fix_hint": "Add 'Name the damage to a future run concretely. Don't hedge severity.' to the ranking instruction."
-        }
-      ],
-      "failure_modes": [
-        "Student reads a 4-sentence narration of what Claude will do before evidence appears, setting a passive-consumption rhythm",
-        "Ranked gap list understates damage: 'minor drift' replaces 'verifier missed the core quality bar'"
-      ],
-      "recovery_paths": [
-        "Add 'No preamble. First output is a quoted moment.' to suppress planning narration",
-        "Pin ranking language: 'Rate by damage to a future run. If it's major, say so.'"
+        {"pattern_id": "preamble-before-action", "confidence": "high", "evidence": "Multi-step orchestration. Body primer post-prompt acknowledges the failure mode and primes student to skim past — body-primer mitigation per default-acceptance/preamble carve-out (check_prompts §17 + body-callout rule).", "fix_hint": "Body-primer mitigation present; no edit required. Could optionally add 'No preamble. First quoted moment first.' inside fence to suppress further."},
+        {"pattern_id": "niceness-tax", "confidence": "med", "evidence": "Body callout 'Expect Claude to over-credit the packaging' is recovery move.", "fix_hint": "Body-callout mitigation present; no edit."}
       ]
     },
     {
       "prompt_index": 2,
       "prompt_sha": "a9893c6cedc6fe64ff028166e25fbcf3e391facb9e037ca374cb531ab0364b2f",
       "prompt_lead": "Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just rank",
-      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
-      "phase": "Phase 1 — Compound move (cut stale rule)",
-      "expected_response_shape": "Claude reads CLAUDE.local.md and scrollback, identifies the one rule the diagnosis killed, edits the file in place, and shows the removed line with a two-sentence rationale.",
-      "verdict": "REVISE",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "file-preservation-gap",
-          "confidence": "med",
-          "evidence": "'Cut it from ./CLAUDE.local.md in place' — no explicit preserve-vs-replace boundary for the rest of the file; Claude may rewrite the entire file rather than performing a surgical line removal.",
-          "fix_hint": "Add 'Remove only that line. Leave every other line unchanged.'"
-        },
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "med",
-          "evidence": "Modifying a named config file without 'no confirmation' instruction; Claude will pause and ask 'Should I overwrite?' before cutting.",
-          "fix_hint": "Add 'Edit the file directly. No confirmation step.'"
-        }
-      ],
-      "failure_modes": [
-        "Claude rewrites CLAUDE.local.md structurally rather than removing a single line, corrupting other rules",
-        "Claude asks for overwrite confirmation, breaking the exercise flow mid-session"
-      ],
-      "recovery_paths": [
-        "Add 'Remove only that line; every other line stays exactly as written'",
-        "Add 'Edit in place. No confirmation needed.'"
+        {"pattern_id": "file-preservation-gap", "confidence": "med", "evidence": "Personal-scope subtraction variant. Body callout addresses over-edit risk explicitly. Carve-out partial (subtraction is destructive variant of integrate-verb pattern; body callout completes recovery).", "fix_hint": "Body-callout mitigation present; could sharpen 'in place' to 'cut only the line, leave others untouched' for stronger guarantee."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "med", "evidence": "Body callout names pause-and-ask risk + provides 'just say go' recovery.", "fix_hint": "Body-callout mitigation present."}
       ]
     },
     {
       "prompt_index": 3,
-      "prompt_sha": "615c0b55a729bd5d11988aaef11a8ba8a73469c05a5b1e0d1df236de807af8a8",
-      "prompt_lead": "Author a session-shaper as a personal skill. The skill's job is to shape future s",
-      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
-      "phase": "Phase 2 — Author the skill (interview)",
-      "expected_response_shape": "Claude acknowledges the three shapes, asks which shape the student wants, then begins a one-question-at-a-time interview covering the named dimensions before drafting SKILL.md.",
+      "prompt_sha": "47ba547c5e71dec9a843802f1990716afbcdf157b17de69f5ea046f8548cb51a",
+      "prompt_lead": "Author a session-shaper as a personal skill. The skill's job is to shape future ",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "question-dump",
-          "confidence": "low",
-          "evidence": "Body callout at exercise line 83 applies the carve-out: 'If Claude shows you the full question list up front instead of asking one at a time, ask it to use the AskUserQuestion tool, or to ask one and wait. Your call.' Callout is within 2 lines of the prompt close. Downgraded to low per body-callout carve-out.",
-          "fix_hint": "No action needed — body callout is the legal alternative shape per catalog rule."
-        },
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "med",
-          "evidence": "'When you have enough, propose a skill name. Write ~/.claude/skills/<proposed-name>/SKILL.md… Show me before saving.' — Claude's proposed structure is typically accepted without substantive push-back; 30-70% of students approve the first draft.",
-          "fix_hint": "After 'Show me before saving' add: 'Name the one thing you'd change if this were a colleague's skill, not ours.' Forces engagement before student can approve."
-        }
-      ],
-      "failure_modes": [
-        "Student approves Claude's first SKILL.md draft without reading the weakest assumption; skill ships generic"
-      ],
-      "recovery_paths": [
-        "Add a forced-engagement step before approval: ask Claude to name one assumption likely to be wrong"
+        {"pattern_id": "question-dump", "confidence": "low", "evidence": "Both legal shapes present (structural in-prompt + body callout). Carve-out fully satisfied per check_prompts §15.", "fix_hint": "No edit; carve-out satisfied both ways."},
+        {"pattern_id": "default-acceptance", "confidence": "med", "evidence": "Body callout 'push back with a quoted moment' addresses default-acceptance on Claude's offered defaults.", "fix_hint": "Body-callout mitigation present; no edit."}
       ]
     },
     {
       "prompt_index": 4,
       "prompt_sha": "c206a1e2030b40d7c38ae1e5e4058a48158e525b3dbf206e47e2ceacc26555b5",
       "prompt_lead": "Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me",
-      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
-      "phase": "Phase 2 — Self-critique before ship",
-      "expected_response_shape": "Claude names 2-3 weaknesses in the just-authored SKILL.md with specific line references, flagging the most generic assumption and one Phase 1 failure moment that didn't make it in.",
-      "verdict": "REVISE",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "high",
-          "evidence": "Self-critique of just-produced SKILL.md in the same conversation. 'Don't reassure me. Name weak parts.' partially suppresses framing but cannot override RLHF self-charity on critique magnitude. >70% of runs produce under-critique ('worth watching' vs 'assumption is likely wrong'). Residual-by-design per compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md — verdict stays REVISE.",
-          "fix_hint": "Add 'Be harsher than necessary. Flag at least two things you'd rewrite if this were a colleague's skill.' Alternatively dispatch critique as fresh sub-task with SKILL.md pasted cold."
-        },
-        {
-          "pattern_id": "niceness-tax",
-          "confidence": "med",
-          "evidence": "Claude names weak parts at reduced magnitude — categorical softening not fully addressed by 'Don't reassure me'. The opening of the critique response will soften before flagging.",
-          "fix_hint": "Add 'Start with the weakest part. Don't open with what's strong.' to reorder the response."
-        }
-      ],
-      "failure_modes": [
-        "Critique output names 1 weak part at 'worth watching' severity when 2-3 assumptions are genuinely wrong; student treats the skill as polished",
-        "Opening sentence reassures before critiquing, framing the critique as fine-tuning rather than substantive gaps"
-      ],
-      "recovery_paths": [
-        "Add 'Be harsher than necessary; flag at least two things you'd rewrite if this were someone else's work'",
-        "Dispatch as fresh sub-task via Task tool with only SKILL.md content, no authoring context"
+        {"pattern_id": "self-audit-charity", "confidence": "high", "evidence": "Body callout names bias explicitly + offers two opt-up paths (over-flag + fresh-session). Body-callout carve-out per check_prompts §73 (self-report-inflation/self-audit-charity Debrief carve-out) satisfied.", "fix_hint": "Carve-out satisfied; residual-by-design per compounded/2026-05-02. No edit."},
+        {"pattern_id": "niceness-tax", "confidence": "med", "evidence": "Body callout's hotter-grill option addresses categorical softening.", "fix_hint": "No edit; mitigation present."}
       ]
     },
     {
       "prompt_index": 5,
-      "prompt_sha": "abf40b5b9a6be94262c49c9e2553a88984aadfaa9b97cbdd0c1f3e7f3b767cf7",
-      "prompt_lead": "Invoke the skill we just authored -- by its name -- on the M5 packaged re-run. No",
-      "source_file": "curriculum/exercises/spot-gaps-build-the-loop.md",
-      "phase": "Phase 2 — Invoke on actual run",
-      "expected_response_shape": "Claude invokes the skill on M5 artefacts, produces skill output (pass/fail + ranked findings), then in the same response self-grades whether the skill caught the dominant gap.",
-      "verdict": "REVISE",
+      "prompt_sha": "107a02952235deea71e0ff8ace65c731ea840197b15d6f33f9af2fd860857f17",
+      "prompt_lead": "Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "high",
-          "evidence": "'Then, in the same response, answer: is the skill any good?' — skill invocation AND self-grading in a single turn. Claude will report the skill 'catches the core pattern' when an independent reader would find substantive gaps. Body callout at lines 116-117 acknowledges this as deliberate convenience tradeoff; per check_pedagogy.md rule 50 and residual-by-design note, verdict stays REVISE.",
-          "fix_hint": "Split into two prompts: (a) invoke and produce output; (b) 'Now read that output as if you'd never written the skill. What did it miss?' Body already offers this as opt-in — no change needed if the residual is accepted."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "high",
-          "evidence": "'Does it miss things a staff engineer reviewing this run would catch?' — asked immediately after producing output in the same session. Claude names 1 partial miss and concludes 'mostly solid' vs the 2-3 misses a fresh reader would identify.",
-          "fix_hint": "Dispatch the self-assessment as a sub-task via Task tool with only the skill output and dominant gap pasted cold — no authoring context."
-        },
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "med",
-          "evidence": "Multi-part prompt (invoke + produce + self-assess in one turn); Claude will narrate the two-step plan before invoking.",
-          "fix_hint": "Add 'No narration. Invoke and show output immediately.' before the produce instruction."
-        }
-      ],
-      "failure_modes": [
-        "Skill self-grade concludes 'catches the dominant gap' when an independent reviewer would find 2 substantive misses",
-        "Opening narration ('I'll now invoke the skill and then assess...') eats the student's highest-attention slot before the invocation begins"
-      ],
-      "recovery_paths": [
-        "Run as two prompts — invoke first, then fresh-read the output for gaps",
-        "Task-tool dispatch for the assessment step, blinded to authoring context"
+        {"pattern_id": "self-report-inflation", "confidence": "high", "evidence": "Convenience-bias-callout pattern (compounded/2026-05-03): body callout acknowledges biased-by-design + offers two-prompt split as harsher alternative. Carve-out satisfied.", "fix_hint": "Carve-out satisfied; no edit."},
+        {"pattern_id": "self-audit-charity", "confidence": "high", "evidence": "Body callout offers fresh-read split.", "fix_hint": "Carve-out satisfied; no edit."},
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Multi-part prompt; narrative opener likely.", "fix_hint": "TODO; could prepend 'No narration. Invoke and show output immediately.' Optional."}
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
+  "todos_count": 5,
   "maintainer_acceptance": {
     "original_verdict": "REVISE",
     "original_blocking_findings_count": 4,
     "accepted_at": "2026-05-03",
-    "mitigated_prompts": [
-      "Phase 1 compound (Card #9)",
-      "Phase 2 interview (Card #2)",
-      "Phase 2 invoke + self-grade (Card #4)",
-      "Arc retrospective (Card #8)"
-    ],
-    "remaining_open": [],
-    "note": "All 6 prompts mitigated via body callouts: Phase 1 diff (Card #10), Phase 1 compound (Card #9), Phase 2 interview (Card #2), Phase 2 self-critique (Card #11), Phase 2 invoke + self-grade (Card #4), Arc retrospective (Card #8)"
+    "note": "All prompts mitigated via body callouts (carve-out shapes per check_prompts §15, §73, and compounded/2026-05-03 convenience-bias-callout pattern). Refreshed 2026-05-09 against new content_sha; prompt SHAs P1 + P3 + P5 updated post-migration; prior maintainer-acceptance carries via per-prompt-SHA cache logic for unchanged P2 + P4."
   }
 }

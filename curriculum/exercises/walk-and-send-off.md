@@ -10,11 +10,11 @@ Start a new Claude Code session at your repo root.
 
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
-**What happened:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). M5 opens with whatever came back.
+**What happened:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). Module 5 opens with whatever came back.
 
-**The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches M5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
+**The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
-**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close M4.
+**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close Module 4.
 
 ---
 
@@ -92,9 +92,8 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts §1(d) + §2, check_pedagogy §34, check_platform_and_boundaries)
-- compendium-audited 2026-04-27 (this cycle: §34 anti-pattern callout added to Phase 1; Debrief reconciliation with module's "no Debrief" framing; Phase 1 prompt reshaped to open-hook with `Candidates:` colon)
-- compendium-audited 2026-04-26 (prior audit) — superseded
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~750 words body.

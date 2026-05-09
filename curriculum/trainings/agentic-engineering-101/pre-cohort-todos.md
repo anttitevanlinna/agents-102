@@ -28,15 +28,6 @@ Write `reference/hooks-and-loops.md` (1–2 page reference doc): stop-hook vs. c
 - **`arc-retrospective.md`**, confirm Task-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route through main conversation with the same quote rule.
 - **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for Nerd's M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
 
-## Cross-cutting maintainer-block additions (every AE101 module)
-
-The 2026-05-03 compendium-amendment batch added rules 44–47 to `check_pedagogy.md`. Every AE101 module is currently missing the rows these rules require in maintainer blocks. Applies to `getting-going.md`, `earn-the-trust.md`, `plan-mode-done-right.md`, `run-the-first-experiment.md`, `spot-gaps-build-the-loop.md`, `learn-from-the-test.md`. One bulk pass closes all four:
-
-- **Rule 44, Plug points + UX**: every `## Plug Points` entry names the *kind* of org context that fits (`sponsor-stated ticket tracker`, `team's CI gate`), not vague slot labels.
-- **Rule 45, Per-exercise leap test**: maintainer block adds a section naming three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day, in falsifiable verbs (`opens a worktree from the previous run's branch` beats `practices worktree workflow`).
-- **Rule 46, Cross-module artefact contracts**: maintainer block adds a contract row for each artefact a phase produces that a later phase or module reads by stable path (`CLAUDE.local.md`, ADRs, authored skills, `plan.md`, worktree branches, eval reports, packaged subagents), naming the stable identifier, the producing prompt, and the consuming module.
-- **Rule 47, Per-phase failure mode + escape hatch**: for each phase shipping a forcing function, the maintainer block names the dominant student failure mode and one escape hatch (trainer move, Nerd line, fallback prompt, maintainer-block diagnostic).
-
 ## Eval-coverage gaps (no JSON instances yet)
 
 Surfaced 2026-05-03 by `curriculum/evals/scripts/status.sh --training ae101`. These files have never been audited by the three-class judge, auto-fire on next touch will close the gap, but explicit fire-now is the cleaner pre-cohort posture.
@@ -45,9 +36,27 @@ Surfaced 2026-05-03 by `curriculum/evals/scripts/status.sh --training ae101`. Th
 - **Supplementary library (7):** `agent-ready-data`, `building-guardrails`, `clean-code-is-steering`, `cookbook-for-agent-system-design`, `how-the-best-do-ci-cd`, `learning-and-compounding-systems`, `personal-to-company-gap`. The two already covered (`agent-trigger-list`, `what-is-an-agent`) confirm the format works; just hasn't been run on the rest.
 - **Reference docs (5):** `claude-code-for-engineers`, `claude-quick-reference`, `mcp-and-connectors`, `multi-session-git`, `scheduled-agents`. Per `curriculum/CLAUDE.md` reference files are exempt from the sim/story ladder; writing-class lint (banned words, register match) still applies and isn't running.
 
+## Audit 2026-05-09, post prompt-registry migration (commit 88a1dd4)
+
+Four-class judges fired on 19 AE101-walked files (5 training-folder + 12 exercises + 2 lectures, the touched-by-migration set). Verdicts stamped per file's Quality block. Render parity confirmed; the migration was structurally invisible to story + technical + behavior. Writing class found pre-existing rule violations the migration didn't cause.
+
+**Story:** 19/19 PASS. **Technical:** 19/19 PASS. **Behavior:** 18 PASS / 1 REVISE. **Writing:** 7 PASS / 12 REVISE.
+
+### Writing-class REVISE, resolved by rule re-amendment
+
+Rule 2(b) re-amended 2026-05-09 (second pass) to curriculum-wide convention: bare `MN` is fine in body at any file at Module 2 or later in the training's arc. Prework + M1 files use full form. Under the new rule, all bare `MN` occurrences in M2+ files PASS without per-file fixes. The diagnose-and-resend file (M5 exercise) needs no changes; bare M4/M5 are fine. Cards 5–12 over-corrected to full form before the rule landed; those files now use full form unnecessarily but remain grammatically valid. Re-fire of writing class confirms PASS post-rule-update.
+
+### Non-blocking TODOs
+
+- **`<repo-name>` placeholder in `ae101-m4-worktree-setup` registry prompt** flagged by technical class as a `check_prompts.md` rule 1 candidate. Square-vs-angle-bracket calibration FP cluster (already tracked above) covers the broader pattern; document this specific prompt as either accepted-as-Claude-substitutes-itself or reshape so Claude derives the name from `git rev-parse --show-toplevel`. Maintainer's call.
+- **`arc-retrospective.md` line 5 trainer-framing** flagged by writing class as `check_student_facing.md` rule 7 ("trainer monologue" framing in body). Non-blocking; consider reframing to student-side voice.
+
+### Compendium-amendment candidate (behavior class observation)
+
+Behavior class noted `preamble-before-action` fires on **15 of 19 files** (~26 prompts), reliably mitigated by body primers ("Skim past the opening; the X is what you're reading for"). Pattern stable enough to codify. Candidate amendment for `check_prompts.md`: when a prompt has 4+ named sub-steps OR a plan-mode invocation, require either an in-fence `No preamble` suppressor OR a body primer naming the failure mode + the skim-past recovery. Maintainer to consider; not auto-applied.
+
 ## Cross-cutting ops
 
-- **Pre-engagement contract artifact mismatch:** `sponsor-prework.md` says sponsor answers are populated into `content/pre-engagement-contract.md`, but the AE101 content tarball currently does not create or include that file. Decide the artifact home and build path: either add the generated contract to the cohort bundle or change the sponsor-prework fate line to the real delivery surface.
 - **Architecture integrity reference**, write `reference/architecture-under-agentic-velocity.md`: how teams preserve architectural intent while agents make local changes quickly. Survey practitioner patterns (Klaassen / Curran on review structure, Cherny on stop-hooks as architectural enforcement, Ramp's skill marketplace as crystallized convention). Candid about being a survey, not a settled answer. Source: Uncle Bob (Robert C. Martin) on architecture + agentic coding. Separate session.
 - **Trainer post-cohort feedback capture mechanism**, design how trainer's classroom observations route into module-file edits. Today the trainer-guide line says TBD. Options to weigh: per-cohort `customer/<cohort>/notes.md` + scheduled maintainer review; GitHub issues with `[cohort-feedback]` label; informal trainer judgment + customer-surface notes. Pick before first cohort.
 

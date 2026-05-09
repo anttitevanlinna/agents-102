@@ -72,7 +72,7 @@ Now invoke the skill on the packaged run you just diffed. Authoring without invo
 
 {{prompt:spot-gaps-build-the-loop-5}}
 
-This prompt asks Claude to invoke a skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity is well-documented. We picked it for convenience: one paste, one wait, one read. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. What did the skill miss?"* Your call.
+This prompt asks Claude to invoke a skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity is well-documented. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. What did the skill miss?"* Your call.
 
 If the output doesn't catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
 
@@ -82,8 +82,8 @@ The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md`
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-04-25
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~830 words body.

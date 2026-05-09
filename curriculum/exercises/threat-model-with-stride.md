@@ -45,7 +45,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 {{prompt:threat-model-with-stride-4}}
 
-Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file, Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; M4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
+Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file, Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
 
 ---
 
@@ -56,9 +56,8 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing #24, check_prompts §1(d), check_pedagogy)
-- compendium-audited 2026-04-27 (this cycle: P2 prompt reshaped to open-hook per §1(d); M3 audit GO with todos)
-- earlier compendium-audited entries — superseded
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

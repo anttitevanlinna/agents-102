@@ -8,11 +8,11 @@
 
 **Time:** 15–20 minutes.
 
-> **Quick timebox note.** The read across M1–M6 artefacts is wide; the beat stays short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. No perfect note to chase. The arc is yours; the note is just the agent helping you see it.
+> **Quick timebox note.** The read across Modules 1–6 artefacts is wide; the beat stays short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. No perfect note to chase. The arc is yours; the note is just the agent helping you see it.
 
 ---
 
-Open a new Claude Code session in the M5 worktree (the same one M6 Phase 1 + 2 ran in). A fresh session, so there's no scrollback coloring the read. The artefacts across all six modules, `CLAUDE.local.md`, `.claude/memory/`, ADRs, both authored skills, both runs' commits and transcripts, are accessible via git refs and the worktree state. Ask the agent to walk them and write the arc from them.
+Open a new Claude Code session in the Module 5 worktree (the same one Module 6 Phase 1 + 2 ran in). A fresh session, so there's no scrollback coloring the read. The artefacts across all six modules, `CLAUDE.local.md`, `.claude/memory/`, ADRs, both authored skills, both runs' commits and transcripts, are accessible via git refs and the worktree state. Ask the agent to walk them and write the arc from them.
 
 {{prompt:arc-retrospective-1}}
 
@@ -27,8 +27,8 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_prompts, check_pedagogy)
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~320 words body.
 

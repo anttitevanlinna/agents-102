@@ -76,6 +76,20 @@ for skill in content/skills/*/; do
   cp -R "$skill" "$ROOT/content/skills/$name"
 done
 
+# Pre-engagement contract ships at content/pre-engagement-contract.md. This
+# repo carries the template-with-defaults — every tarball built from here
+# ships the defaults version. Real-customer overlays (sponsor's filled
+# answers) live in the private ai-training-internal repo per customer; the
+# overlay onto this template happens at deploy time in
+# ai-training-internal/scripts/deploy-customer.sh (mechanism TBD; not in
+# scope for this repo's build). Demo customers (acme, it-bits) have no
+# sponsor and ship defaults; the cohort still has a working contract because
+# every slot's standard default is filled.
+CONTRACT_SRC="content/pre-engagement-contract.md"
+if [ -f "$CONTRACT_SRC" ]; then
+  cp "$CONTRACT_SRC" "$ROOT/content/pre-engagement-contract.md"
+fi
+
 # Ship the prompt registry alongside curriculum. Tarball-shipped exercise /
 # lecture / reference / supplementary files keep `{{prompt:<key>}}` markers;
 # consuming skills and agents resolve them against this directory.
@@ -99,7 +113,7 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-tar tzf "$OUT" | grep -E "(lectures/the-wizard-move|reference/claude-code-for-engineers|reference/mcp-and-connectors|content/skills/.*SKILL\.md)" > /dev/null || {
+tar tzf "$OUT" | grep -E "(lectures/the-wizard-move|reference/claude-code-for-engineers|reference/mcp-and-connectors|content/skills/.*SKILL\.md|content/pre-engagement-contract\.md)" > /dev/null || {
   echo "WARNING — expected paths not found in archive." >&2
   exit 1
 }

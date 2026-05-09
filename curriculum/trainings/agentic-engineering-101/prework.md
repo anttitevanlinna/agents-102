@@ -1,6 +1,6 @@
 # Prework: before Module 1
 
-Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked. (The framing for what we're doing lands live in Module 1; you don't need to pre-read anything.)
+Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked. (The framing lands live in Module 1; no pre-read.)
 
 ## 0. Get Claude Code started
 
@@ -42,12 +42,12 @@ If Step 4's screening feels like Claude is asking everything at once, ask it to 
 
 ## Bring to Module 1
 
-Connections question. We'll ask at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a frustration instead.
+Connections question at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a frustration instead.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03 (story@60b1b6c)
-- judges @60b1b6c: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **DEFERRED** (held — not for autonomous fix; sim-surfaced 2026-04-27, structural call, decided together):

@@ -53,7 +53,7 @@ Read the close-out. If Claude wrote something stiff or wrong, push back. Tell it
 
 Ship the update (or paste it into the tracker yourself if you're on path 3). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
 
-You're near the end of the M1 session. One more sweep on `./CLAUDE.local.md` before close: anything earned since the first compound, the ticket beat, the push-backs, the catch on the missing PR, that didn't land yet?
+You're near the end of the Module 1 session. One more sweep on `./CLAUDE.local.md` before close: anything earned since the first compound, the ticket beat, the push-backs, the catch on the missing PR, that didn't land yet?
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
 
@@ -66,11 +66,9 @@ You can now clear. What you stored may or may not help you in future sessions. L
 <!-- maintainer -->
 
 
-**Quality:** mechanical-tested 2026-04-28
-- compendium-audited 2026-04-27 (check_writing, check_student_facing, check_prompts, check_pedagogy; this cycle: settings.local.json/additionalDirectories block removed from Compound prompt — was tied to the deleted prework /add-dir step; audit GO; M1 chain flow intact)
-- compendium-audited 2026-04-26 (check_writing, check_student_facing #14, check_prompts, check_pedagogy) — superseded by 2026-04-27 cleanup
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-- mechanical-tested 2026-04-28 (curriculum/evals/mechanical/instances/m1-chain-verbatim-judge-report.md @ 79adc5a PASS — 6/6 V via verbatim-check.sh, A1–A19 PASS incl. CLAUDE.local.md grounded in session moments + .gitignore self-edit + ticket close-out via path-3 substitution, H1–H5 PASS, prompt-source audit clean)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).
 - **Time:** 30 min inside M1's 2h slot. Third of three exercises on the same bug / same repo.

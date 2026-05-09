@@ -57,7 +57,7 @@ Reason:
 
 ### 3. Memory / knowledge architecture, where does the agent's learned context about this codebase and this team live?
 
-*Shows up:* Module 2 onward. Grows across the arc. This is the thing that compounds visibly over weeks.
+*Shows up:* Module 4 onward. Grows across the arc. This is the thing that compounds visibly over weeks.
 
 *Common shapes:* `.claude/memory/` in the repo with a three-block structure (knowledge / decisions / quality gates). External wiki (Confluence / Notion) with a pointer file in the repo. Shared team-memory repo that every engineer's Claude references.
 

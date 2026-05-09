@@ -1,0 +1,34 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "full_regen",
+  "prompts_evaluated": 6,
+  "prompts_findings": [
+    {"prompt_index": 1, "prompt_lead": "Find the path to the previous session's transcript .jsonl. Claude Code stores ev", "verdict": "PASS", "load_bearing": false, "risks_fired": [{"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Mechanical path-resolution; tool-call shape compresses preamble.", "fix_hint": "No edit at low confidence."}]},
+    {"prompt_index": 2, "prompt_lead": "I sent off a long-running task un-packaged — no plan.md, no verifier, no referen", "verdict": "TODO", "load_bearing": true, "risks_fired": [
+      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Multi-source read + triple-lens output. Body callout 'Push back where Claude generalises' is student-recovery, not preamble suppression.", "fix_hint": "Optional: prepend 'No preamble — first quoted moment first.' Body primer would also work."},
+      {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Quote-requirement gates against charity; body callout names recovery move.", "fix_hint": "No edit; carve-out (body-callout) satisfied."},
+      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Three-lens menu; module-file Nerd push-back move on dominant failure pick.", "fix_hint": "No edit at low confidence."}
+    ]},
+    {"prompt_index": 3, "prompt_lead": "For each of the three failures we just named, walk it backwards: what specific v", "verdict": "PASS", "load_bearing": true, "risks_fired": [
+      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "In-prompt 'Be specific: not generically...' anti-generic gate.", "fix_hint": "No edit; mitigation in-prompt."},
+      {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Schema-driven 3x3 mapping compresses preamble.", "fix_hint": "No edit."}
+    ]},
+    {"prompt_index": 4, "prompt_lead": "Build the verifier for my dominant failure, scoped to the task we ran un-package", "verdict": "PASS", "load_bearing": true, "risks_fired": [
+      {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Explicit 'Show me before you save' delays write.", "fix_hint": "No edit; mitigation explicit."},
+      {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook 'Shape:' compresses preamble.", "fix_hint": "No edit."}
+    ]},
+    {"prompt_index": 5, "prompt_lead": "Smoke-test the verifier you just built. Fire it on two synthetic inputs: one des", "verdict": "PASS", "load_bearing": true, "risks_fired": [
+      {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "PASS+FAIL pair requirement + wiring-gap instruction.", "fix_hint": "No edit."}
+    ]},
+    {"prompt_index": 6, "prompt_lead": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.", "verdict": "TODO", "load_bearing": true, "risks_fired": [
+      {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Explicit 'Show me both files before you save' + §20 grill-before-save.", "fix_hint": "No edit."},
+      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout post-prompt addresses generic-substance risk.", "fix_hint": "No edit; carve-out satisfied."},
+      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Long structured 'First/Second' prompt; likely opens with summary plan.", "fix_hint": "Optional: prepend 'Start with the reference draft — no preamble.'"}
+    ]}
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

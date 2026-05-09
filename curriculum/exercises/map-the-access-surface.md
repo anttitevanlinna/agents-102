@@ -28,7 +28,7 @@ First, see what skills your Claude has loaded. In the Claude Code chat, type:
 /skills
 ```
 
-You should see `access-control-analysis` and `stride` listed under **User**. (If they don't, the prework install didn't land, see prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in M3 will land in User too.
+You should see `access-control-analysis` and `stride` listed under **User**. (If they don't, the prework install didn't land, see prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 will land in User too.
 
 Then ask Claude to fill in what `/skills` doesn't show.
 
@@ -79,9 +79,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing #14 + #24, check_prompts §1(d), check_pedagogy, check_platform_and_boundaries)
-- compendium-audited 2026-04-27 (this cycle: P1 + P3 prompts reshaped to open-hook per §1(d); "list my installed skills" platform claim softened; M3 audit GO with todos)
-- earlier compendium-audited entries — superseded
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

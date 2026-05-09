@@ -79,8 +79,8 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (behavior@4cacfba)
-- judges @4cacfba: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (accepted-mitigated-see-pre-cohort-todos)
+**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -103,7 +103,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 **Watch-fors (cross-phase):**
 - Feature sprawl — student brings the whole epic. Cap at Connections; redirect to a sliceable sub-part.
 - Curated-skill reverence — student treats the STRIDE skill as oracle. Remind: the skill is good; the decision is yours.
-- Team-kit home unresolved — if the sponsor answered "we don't have one" on the pre-engagement contract, the training-start default (shared Git repo) should already be live by M3. Verify before Ex3's ship step.
+- Team-kit home unresolved — sponsor non-answer is fine. The test-strategy skill ships to personal `~/.claude/skills/test-strategy/` (personal-first, matching M1's `CLAUDE.local.md` pattern). Promotion to a team home (repo's `.claude/skills/`, shared Git repo, monorepo `.claude/`) is a later human conversation, not an M3 forcing function. If the cohort spontaneously decides on a team-kit home at any module (a student proposes it, the room agrees), capture the decision in the cohort overrides log.
 - Skill-authoring-by-typing — student opens an editor to hand-write SKILL.md. Redirect to conversation: the authoring move is prompting Claude, pushing back, not keyboard-crafting markdown.
 - Team-worthy flag drifts to generic — student frames the team-worthy decision as "yes, every team should know about STRIDE." Push: name a codebase-specific call (an auth pattern, an ADR convention, a verifier) — not a universal claim.
 
@@ -116,7 +116,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 **Plug points (trainer):**
 - Student's own feature (surfaced in Connections) — small, ship-this-week scope; sponsor-stated examples by team type (web / back / data / ML) help calibration when student stalls
 - Sponsor-stated ADR home (Ex2) — `docs/adr/NNNN-slug.md` is the default; sponsor's actual convention overrides if different
-- Sponsor-stated team-kit home (Ex3 ship step) — pre-engagement contract surfaces this; default fallback (shared Git repo) live by M3 if unresolved
+- Sponsor-stated team-kit home (for skill promotion when teams choose it) — pre-engagement contract surfaces this if the team has one. M3's authored skill ships personal at `~/.claude/skills/test-strategy/` regardless. Sponsor non-answer needs no spin-up; cohort may emerge a team-kit home spontaneously at any module and log it as override.
 - Sponsor-named test framework / mocking policy (Ex3 authoring conversation) — what Claude asks the student to encode; student answers from the codebase, not generic
 - Push-back moves at each rubber-stamp risk (trainer covers in cohort; Nerd covers only in self-study)
 

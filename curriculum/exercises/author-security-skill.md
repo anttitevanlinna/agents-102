@@ -96,8 +96,8 @@ The policy files are source material. The reusable check is the expert in the ro
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03
-- judges: not yet judge-audited
+**Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
+- judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (accepted-by-design-multi-round-grill)
 - maintainer-reviewed @60b1b6c: PASS — M4 manual walkthrough — save-flow restructured + tested
 
 **Pre-ship-audit findings 2026-04-26 (resolved + standing):**

@@ -1,0 +1,66 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/audit-your-agent.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "partial_regen",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "/security-audit — load the skill\n\nApply the policy lens to the agent system: the memory",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "After writing the report, read outputs/policy-report.md back to yourself and tell me: 1. The top three surprises - rows where the verdict is not what a careful reader would have predicted.",
+          "fix_hint": "Evidence-backed Debrief carve-out applied: concrete evidence surfaces present + artifact-level reporting required; downgraded to TODO. Body callout naming charity risk + pushback move would eliminate this TODO."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "2. The three rows where 'I can't tell' is most likely hiding a real compliance gap. 3. One row that looks compliant on the surface but where you would still push back.",
+          "fix_hint": "'Where you would still push back' partially counter-acts charity. To eliminate TODO: add body callout naming self-charity risk and offering a harsher alternative (e.g. 'run this in a fresh session for unbiased audit')."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Apply the agent-security lens to every agent in agents/. Run both checks: what each agent",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "Rank the risks by severity x likelihood, three-tier (high / medium / low).",
+          "fix_hint": "Specificity requirement ('not generic definitions, quote the file') largely mitigates comfortable middle-ranking drift."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Apply a mitigation to my system for the risk I'm about to name. Pick the shape f",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "re-run the check the reusable lens performed for this specific risk. Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?",
+          "fix_hint": "Evidence-backed Debrief carve-out applied; 'Not what we fixed. What's left. Be specific.' is explicit counter-framing. TODO remains; body prose reinforces honest residual framing."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?",
+          "fix_hint": "Downgraded to TODO via same carve-out. Body 'The risk did not go away. That is expected.' pre-frames residual honestly. Fresh-session subagent re-check would eliminate this TODO."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

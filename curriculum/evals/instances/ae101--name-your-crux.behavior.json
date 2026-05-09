@@ -1,0 +1,46 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/name-your-crux.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 2,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Look at my challenge memory. Find the load-bearing obstacle: the one thing that, if sol",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "The prompt asks Claude to analyze memory and reason to a one-sentence crux; Claude will narrate its analysis before surfacing the sentence, occupying the top-of-response slot the student is most likely to scan for the answer.",
+          "fix_hint": "Add a body primer: 'Claude will walk through its reasoning before naming the crux; skim to the final sentence for the output.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Claude reads the crux and reasons about what decision it blocks before producing the one-sentence output; analytical narration will precede the answer without a body callout warning the student.",
+          "fix_hint": "Prime the student in body: 'Claude will reason aloud before naming the question; skip the opening analysis and look for the final sentence.'"
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "'Something like \"what's the right next move to unblock the crux, over the next 90 days?\" is a decent default' — the explicit offered default invites Claude to land on that shape rather than push for the sharper specific-option form; downgraded to low because adjacent body callout ('iterate if it's a topic restatement instead of a real call') names the failure mode and gives the student the recovery move, satisfying the body-callout carve-out for default-acceptance.",
+          "fix_hint": "Low-confidence risk already mitigated by adjacent body callout; no prompt edit needed."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

@@ -2,7 +2,7 @@
 
 **What you do:** Ask an agent to read everything you've authored across the training and write a one-page note on what changed. The agent names the arc from your own evidence, not a template.
 
-**What happened:** You end with a short written note in your repo (ADR-shaped or a loose memo, your call) that names how your practice changed across the modules. Not a self-congratulation round, not a trainer monologue. A reading of your own artefacts by a fresh agent who has the patience to look at all of them at once.
+**What happened:** You end with a short written note in your repo (ADR-shaped or a loose memo, your call) that names how your practice changed across the modules. Not a self-congratulation round. A reading of your own artefacts by a fresh agent who has the patience to look at all of them at once.
 
 **The point:** The throughline of the training is that everything is scaling of learning. Each module's loop is the same loop at a wider scope. That's only visible retrospectively, and only from your own artefacts. The agent's job here is to name the arc so you see it too.
 
@@ -27,8 +27,8 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-09 (writing@56f9332)
+- judges @56f9332: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~320 words body.
 

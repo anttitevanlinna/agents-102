@@ -1,0 +1,52 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/name-your-challenge.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "partial_regen",
+  "prompts_evaluated": 2,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "I'm in a training where I'll build a working memory around one live challenge I'",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "\"Ask me these in turn\" is too soft per check_prompts.md rule 15, but body prose immediately after the fence names the failure mode and gives a recovery move: \"If it shows all three questions at once, push back and ask for one at a time.\" Body-callout carve-out applies — downgraded from high to low.",
+          "fix_hint": "Body callout is present and qualifies under the carve-out; optionally strengthen by adding structural enforcement inside the fence: \"Ask one question at a time. Wait for my answer before asking the next. Do not show me the full list.\""
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Conversational opening (\"Help me pin the challenge down\") invites a brief narration before Q1 lands.",
+          "fix_hint": "Low risk; acceptable as-is. Optional: add a body note \"Claude will usually acknowledge before asking — the first question comes right after.\""
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Based on the challenge brief you just wrote, suggest where I'd go looking for ra",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "low",
+          "evidence": "Prompt asks for named practitioners with no link request (prior version had \"with one link each if you know them\" — that text removed; risk dropped from high to low). Residual: practitioner names may be generic or poorly matched to the student's specific challenge rather than actually relevant practitioners.",
+          "fix_hint": "Optional body callout: \"Claude's practitioner suggestions may be generic — treat as a starting point; search on your own for who's actually working on this problem now.\" Or add an anchor inside the fence: \"Avoid generic domain names that would fit any challenge in this space.\""
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "\"Keep it short\" may be satisfied by broadly-recognisable, safe suggestions rather than genuinely challenge-specific names.",
+          "fix_hint": "Low risk; acceptable as-is."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 1
+}

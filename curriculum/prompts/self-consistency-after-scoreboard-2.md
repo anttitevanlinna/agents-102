@@ -23,4 +23,4 @@ Show me the comparison in chat with these sections:
 End with three lines:
 - What self-consistency caught that the groundedness detectors did not.
 - What self-consistency cannot prove.
-- Whether the winning groundedness judge should change. Default answer should be no unless the demo shows a concrete failure class the judge can actually detect.
+- Whether the winning groundedness judge should change. Two runs is too few to chase noise; only call for a change if you can name a specific failure class the current judge missed.

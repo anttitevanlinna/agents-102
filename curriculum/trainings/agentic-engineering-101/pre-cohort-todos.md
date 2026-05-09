@@ -28,13 +28,9 @@ Write `reference/hooks-and-loops.md` (1–2 page reference doc): stop-hook vs. c
 - **`arc-retrospective.md`**, confirm Task-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route through main conversation with the same quote rule.
 - **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for Nerd's M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
 
-## Eval-coverage gaps (no JSON instances yet)
+## Eval-coverage gaps (story / technical / behavior on shared library)
 
-Surfaced 2026-05-03 by `curriculum/evals/scripts/status.sh --training ae101`. These files have never been audited by the three-class judge, auto-fire on next touch will close the gap, but explicit fire-now is the cleaner pre-cohort posture.
-
-- **AE101 onboarding files (3):** `prework.md` (top-state degraded to draft 2026-05-03, re-audit needed), `sponsor-prework.md`, `cohort-onboarding-email.md` (top-state degraded to draft 2026-05-03, re-audit needed). Run `/eval-fire` writing + technical at minimum; story class likely n/a for non-narrative files.
-- **Supplementary library (7):** `agent-ready-data`, `building-guardrails`, `clean-code-is-steering`, `cookbook-for-agent-system-design`, `how-the-best-do-ci-cd`, `learning-and-compounding-systems`, `personal-to-company-gap`. The two already covered (`agent-trigger-list`, `what-is-an-agent`) confirm the format works; just hasn't been run on the rest.
-- **Reference docs (5):** `claude-code-for-engineers`, `claude-quick-reference`, `mcp-and-connectors`, `multi-session-git`, `scheduled-agents`. Per `curriculum/CLAUDE.md` reference files are exempt from the sim/story ladder; writing-class lint (banned words, register match) still applies and isn't running.
+Lectures + supplementaries written before the four-class refactor have writing-class PASS only; story / technical / behavior haven't fired. Auto-fire closes them on next touch; explicit fire-now is the cleaner pre-cohort posture but not blocking, verdicts default-grandfather under the per-class auto-degrade rule (curriculum/CLAUDE.md § Quality-state tagging) until the file is touched. Reference docs are exempt from sim/story; writing class already running. Onboarding files (`prework`, `sponsor-prework`, `cohort-onboarding-email`) closed by 2026-05-03 + 2026-05-09 audits.
 
 ## Audit 2026-05-09, post prompt-registry migration (commit 88a1dd4)
 
@@ -45,15 +41,6 @@ Four-class judges fired on 19 AE101-walked files (5 training-folder + 12 exercis
 ### Writing-class REVISE, resolved by rule re-amendment
 
 Rule 2(b) re-amended 2026-05-09 (second pass) to curriculum-wide convention: bare `MN` is fine in body at any file at Module 2 or later in the training's arc. Prework + M1 files use full form. Under the new rule, all bare `MN` occurrences in M2+ files PASS without per-file fixes. The diagnose-and-resend file (M5 exercise) needs no changes; bare M4/M5 are fine. Cards 5–12 over-corrected to full form before the rule landed; those files now use full form unnecessarily but remain grammatically valid. Re-fire of writing class confirms PASS post-rule-update.
-
-### Non-blocking TODOs
-
-- **`<repo-name>` placeholder in `ae101-m4-worktree-setup` registry prompt** flagged by technical class as a `check_prompts.md` rule 1 candidate. Square-vs-angle-bracket calibration FP cluster (already tracked above) covers the broader pattern; document this specific prompt as either accepted-as-Claude-substitutes-itself or reshape so Claude derives the name from `git rev-parse --show-toplevel`. Maintainer's call.
-- **`arc-retrospective.md` line 5 trainer-framing** flagged by writing class as `check_student_facing.md` rule 7 ("trainer monologue" framing in body). Non-blocking; consider reframing to student-side voice.
-
-### Compendium-amendment candidate (behavior class observation)
-
-Behavior class noted `preamble-before-action` fires on **15 of 19 files** (~26 prompts), reliably mitigated by body primers ("Skim past the opening; the X is what you're reading for"). Pattern stable enough to codify. Candidate amendment for `check_prompts.md`: when a prompt has 4+ named sub-steps OR a plan-mode invocation, require either an in-fence `No preamble` suppressor OR a body primer naming the failure mode + the skim-past recovery. Maintainer to consider; not auto-applied.
 
 ## Cross-cutting ops
 

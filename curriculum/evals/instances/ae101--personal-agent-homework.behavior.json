@@ -1,0 +1,78 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/personal-agent-homework.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Look at my company's website. I'll give you a URL or paste a key page when yo",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Multi-step imperative sequence (Look / Extract / Write / append / Show me) invites Claude to narrate the plan before executing any step.",
+          "fix_hint": "Body callout: prime the student that Claude may open with a plan narration \u2014 skim past it and look for the URL question."
+        },
+        {
+          "pattern_id": "reading-burden",
+          "confidence": "med",
+          "evidence": "Show me both files before saving \u2014 two files, one of which (CLAUDE.md) is a global config; body asks student to edit style.md where Claude missed something, confirming non-trivial review.",
+          "fix_hint": "Scope the verification callout: 'Check one thing \u2014 did style.md name specific hex codes or vague adjectives? Generic = push back.' Reduces the cognitive load of reviewing two files."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "evidence": "append one line to my root CLAUDE.md \u2014 append verb is present but if CLAUDE.md has no existing Styling heading Claude may rewrite surrounding content when creating it.",
+          "fix_hint": "Low confidence; no action required unless a TODO is desired."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "I'm setting up a daily agent that reads my challenge memory every morning and r",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "med",
+          "evidence": "Ask me, one at a time: 1. \u2026 2. \u2026 3. \u2026 \u2014 numbered list is visible in the fence; catalog rule requires hiding the list for the structural fix to hold; body has no question-dump callout.",
+          "fix_hint": "Add 'DO NOT show me the question list. Ask question 1 only, wait for my answer, then proceed.' inside the fence \u2014 OR add a body callout: 'If Claude posts all three at once, answer in order or push back and ask it to go one at a time. Your call.'"
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "I'm setting up a daily agent\u2026 \u2014 scene-setting opening sentence may prompt Claude to acknowledge the setup before asking question 1.",
+          "fix_hint": "Low confidence; body says 'Claude asks, you answer' which primes expected behavior implicitly."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Read module-2/morning-agent/morning.md and run the job. Read the current state",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Write the output to module-2/morning-agent/latest.html \u2014 no explicit overwrite instruction in the scheduled-task fenced block; on runs 2\u20137 Claude may pause and ask before overwriting the existing file.",
+          "fix_hint": "Add 'Overwrite module-2/morning-agent/latest.html if it exists.' to the fenced block, or verify that morning.md generated in step 3 reliably contains this instruction and Claude reads it before deciding."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "evidence": "Daily-overwrite intent is delegated to morning.md; whether Claude reads that delegation faithfully across cold scheduled sessions varies.",
+          "fix_hint": "Low confidence given the delegation chain; the overwrite-anxiety fix above covers this simultaneously."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 3
+}

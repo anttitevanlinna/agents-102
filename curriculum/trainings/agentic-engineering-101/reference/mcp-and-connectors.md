@@ -108,7 +108,7 @@ Bump the **Last verified** date at the top. Note what changed in the commit mess
 
 <!-- maintainer -->
 
-**Canonical home:** `curriculum/reference/mcp-and-connectors.md`. Ships in content folder's `reference/` directory to students.
+**Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Ships in content folder's `reference/` directory to students.
 
 **Update cadence:** re-verify on each cohort delivery; full audit via `claude-code-guide` monthly or at any Claude Code release known to touch MCP.
 

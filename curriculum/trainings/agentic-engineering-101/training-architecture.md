@@ -158,7 +158,7 @@ The cheap, durable shape: write body prose abstractly, push runtime-specific pat
 
 3. **Prework runtime pick + install branch.** Add one line at the top of `prework.md`: *"You're on Claude Code or Gemini CLI?"* Branches to a short install paragraph per runtime (~6 lines each), then reconverges. The Gemini install paragraph carries the `./GEMINI.local.md` convention setup (gitignore line + `@import` from `./GEMINI.md`).
 
-4. **One new reference page.** `curriculum/reference/gemini-cli-for-engineers.md` as peer of the existing `claude-code-for-engineers.md`. Four-layer hierarchy mapped to `GEMINI.md` + global + subdir + `@import`, common command translations, MCP install per tracker, the `/loop` runtime-difference callout. The renderer's existing per-runtime include picks the right page based on the student's runtime.
+4. **One new reference page.** `curriculum/trainings/agentic-engineering-101/reference/gemini-cli-for-engineers.md` as peer of the existing `claude-code-for-engineers.md`. Four-layer hierarchy mapped to `GEMINI.md` + global + subdir + `@import`, common command translations, MCP install per tracker, the `/loop` runtime-difference callout. The renderer's existing per-runtime include picks the right page based on the student's runtime.
 
 5. **Content tarball, dual-format skills.** `scripts/build-ae101-content-tarball.sh` extends to ship skill copies in both formats: Claude Code skill format under `content/skills/claude-code/<name>/SKILL.md`, Gemini Agent Skill format under `content/skills/gemini/<name>/`. The tarball builder picks based on runtime variable. Re-author each curated skill (`access-control-analysis`, `stride`) once in Gemini format. ~one afternoon.
 

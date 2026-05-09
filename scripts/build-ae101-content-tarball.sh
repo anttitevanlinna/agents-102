@@ -1,28 +1,44 @@
 #!/usr/bin/env bash
 # Build the AE101 content tarball that the student lands at ~/Documents/ae101-content/.
-# Replaces the older build-ae101-content-zip.sh — same contents, tar.gz format,
-# stripped maintainer blocks, no top-level wrapper directory so `tar xzf -C <dir>`
-# extracts cleanly.
 #
 # Output: agents-102-content.tar.gz at repo root.
 #
-# Contents (paths preserved as prework Step 4 references them):
-#   lectures/          from curriculum/lectures/      (maintainer blocks stripped)
-#   exercises/         from curriculum/exercises/     (maintainer blocks stripped)
-#   reference/         from curriculum/reference/     (maintainer blocks stripped)
-#   supplementary/     from curriculum/supplementary/ (maintainer blocks stripped;
-#                                                       README.md skipped — authoring doc)
-#   content/skills/    from content/skills/*          (verbatim — these are the
-#                                                       student-installable skills)
+# Ships only AE101-relevant material:
+#   - reference/, supplementary/ from curriculum/trainings/agentic-engineering-101/{reference,supplementary}/
+#   - lectures/, exercises/ filtered to the link-reachable set from AE101 module files
+#       (training files in curriculum/trainings/agentic-engineering-101/, excluding
+#        trainer-only artifacts; 2-hop walk catches lectures/exercises that
+#        reference each other.)
+#   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride
+#       (agentic-nerd is the optional self-study host, ships only from a self-study target)
+#   - content/pre-engagement-contract.md (template-with-defaults; per-customer overlay at deploy time)
+#   - prompts/ (full registry; consuming files resolve {{prompt:<key>}} markers against this)
 #
-# Module files (curriculum/trainings/agentic-engineering-101/*.md) are NOT
-# included — those live on the customer workbook URL, read in browser.
-# Trainer-only files (pre-cohort-todos.md, cohort-onboarding-email.md) are
-# never in scope.
+# Maintainer blocks stripped from .md content; SKILL.md files ship verbatim.
+#
+# Module files (curriculum/trainings/agentic-engineering-101/*.md at the dir root)
+# are NOT included — those render via the customer workbook URL in browser.
+# Trainer-only files (pre-cohort-todos.md, sponsor-prework.md, trainer-guide.md,
+# training-architecture.md, cohort-onboarding-email.md) are never in scope.
 
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
+
+TRAINING="agentic-engineering-101"
+TRAINING_DIR="curriculum/trainings/$TRAINING"
+
+# Per-training skill whitelist. Sourced from training-architecture.md §Skills.
+SKILLS=(access-control-analysis stride)
+
+# Trainer-only files in the training dir — excluded from reachability walk.
+TRAINER_ONLY=(
+  pre-cohort-todos.md
+  sponsor-prework.md
+  trainer-guide.md
+  training-architecture.md
+  cohort-onboarding-email.md
+)
 
 OUT="agents-102-content.tar.gz"
 STAGE="$(mktemp -d)"
@@ -49,50 +65,100 @@ copy_md_dir() {
   for f in "$src_dir"/*.md; do
     [ -f "$f" ] || continue
     base="$(basename "$f")"
+    [ "$base" = "README.md" ] && continue
     strip_maintainer "$f" "$dst_dir/$base"
   done
 }
 
-copy_md_dir curriculum/lectures   "$ROOT/lectures"
-copy_md_dir curriculum/exercises  "$ROOT/exercises"
-copy_md_dir curriculum/reference  "$ROOT/reference"
+# ---- Reachability walk ---------------------------------------------------
+# Build the set of training source files (modules + prework, no trainer-only).
+TRAINING_FIND_ARGS=(-maxdepth 1 -name '*.md')
+for tof in "${TRAINER_ONLY[@]}"; do
+  TRAINING_FIND_ARGS+=(! -name "$tof")
+done
+TRAINING_SOURCES=()
+while IFS= read -r f; do
+  TRAINING_SOURCES+=("$f")
+done < <(find "$TRAINING_DIR" "${TRAINING_FIND_ARGS[@]}")
 
-# Supplementary materials: ship without README.md (authoring doc, not student-facing).
-for f in curriculum/supplementary/*.md; do
-  base="$(basename "$f")"
-  [ "$base" = "README.md" ] && continue
-  strip_maintainer "$f" "$ROOT/supplementary/$base"
+[ "${#TRAINING_SOURCES[@]}" -gt 0 ] || {
+  echo "ERROR: no AE101 training source files found in $TRAINING_DIR" >&2
+  exit 1
+}
+
+# 1-hop: links from training files into shared exercises/lectures.
+extract_slugs() {
+  local kind="$1"; shift
+  grep -hoE "${kind}/[a-z0-9-]+\.md" "$@" 2>/dev/null \
+    | sed -E "s|${kind}/||;s|\.md$||" | sort -u
+}
+
+LECTURES=$(extract_slugs lectures "${TRAINING_SOURCES[@]}")
+EXERCISES=$(extract_slugs exercises "${TRAINING_SOURCES[@]}")
+
+# 2-hop: those exercises and lectures may reference further exercises/lectures.
+# Compose paths for the second walk.
+SECOND_HOP=()
+for s in $LECTURES;  do [ -f "curriculum/lectures/$s.md" ]  && SECOND_HOP+=("curriculum/lectures/$s.md");  done
+for s in $EXERCISES; do [ -f "curriculum/exercises/$s.md" ] && SECOND_HOP+=("curriculum/exercises/$s.md"); done
+
+if [ "${#SECOND_HOP[@]}" -gt 0 ]; then
+  LECTURES_2=$(extract_slugs lectures  "${SECOND_HOP[@]}")
+  EXERCISES_2=$(extract_slugs exercises "${SECOND_HOP[@]}")
+  LECTURES=$(printf '%s\n%s\n' "$LECTURES" "$LECTURES_2"   | sort -u | sed '/^$/d')
+  EXERCISES=$(printf '%s\n%s\n' "$EXERCISES" "$EXERCISES_2" | sort -u | sed '/^$/d')
+fi
+
+# Ship only the reachable set.
+LECTURE_COUNT=0
+for slug in $LECTURES; do
+  src="curriculum/lectures/$slug.md"
+  if [ -f "$src" ]; then
+    strip_maintainer "$src" "$ROOT/lectures/$slug.md"
+    LECTURE_COUNT=$((LECTURE_COUNT + 1))
+  else
+    echo "WARN: AE101 references lectures/$slug.md but file missing" >&2
+  fi
 done
 
-# Skills ship verbatim — they're the installable runtime skills, not curriculum
-# prose. Maintainer blocks aren't a thing in SKILL.md files anyway.
-# `agentic-nerd` is the optional self-study host skill (Teacher Claude analog);
-# cohort delivery doesn't install it by default, so it's excluded here. If a
-# self-study tarball variant ever lands, ship it from a separate target.
-for skill in content/skills/*/; do
-  skill="${skill%/}"
-  name="$(basename "$skill")"
-  [ "$name" = "agentic-nerd" ] && continue
-  cp -R "$skill" "$ROOT/content/skills/$name"
+EXERCISE_COUNT=0
+for slug in $EXERCISES; do
+  src="curriculum/exercises/$slug.md"
+  if [ -f "$src" ]; then
+    strip_maintainer "$src" "$ROOT/exercises/$slug.md"
+    EXERCISE_COUNT=$((EXERCISE_COUNT + 1))
+  else
+    echo "WARN: AE101 references exercises/$slug.md but file missing" >&2
+  fi
 done
 
-# Pre-engagement contract ships at content/pre-engagement-contract.md. This
-# repo carries the template-with-defaults — every tarball built from here
-# ships the defaults version. Real-customer overlays (sponsor's filled
-# answers) live in the private ai-training-internal repo per customer; the
-# overlay onto this template happens at deploy time in
-# ai-training-internal/scripts/deploy-customer.sh (mechanism TBD; not in
-# scope for this repo's build). Demo customers (acme, it-bits) have no
-# sponsor and ship defaults; the cohort still has a working contract because
-# every slot's standard default is filled.
+# ---- Reference + supplementary (already training-specific on disk) -------
+copy_md_dir "$TRAINING_DIR/reference"     "$ROOT/reference"
+copy_md_dir "$TRAINING_DIR/supplementary" "$ROOT/supplementary"
+
+# ---- Skills (whitelist, not blacklist) -----------------------------------
+# Skills ship verbatim; SKILL.md files don't carry maintainer blocks.
+for name in "${SKILLS[@]}"; do
+  src="content/skills/$name"
+  if [ -d "$src" ]; then
+    cp -R "$src" "$ROOT/content/skills/$name"
+  else
+    echo "ERROR: declared skill content/skills/$name/ not found" >&2
+    exit 1
+  fi
+done
+
+# ---- Pre-engagement contract --------------------------------------------
+# Template-with-defaults; per-customer overlay happens at deploy time in the
+# private ai-training-internal repo.
 CONTRACT_SRC="content/pre-engagement-contract.md"
 if [ -f "$CONTRACT_SRC" ]; then
   cp "$CONTRACT_SRC" "$ROOT/content/pre-engagement-contract.md"
 fi
 
-# Ship the prompt registry alongside curriculum. Tarball-shipped exercise /
-# lecture / reference / supplementary files keep `{{prompt:<key>}}` markers;
-# consuming skills and agents resolve them against this directory.
+# ---- Prompt registry -----------------------------------------------------
+# Consuming exercise / lecture / reference / supplementary files keep
+# `{{prompt:<key>}}` markers; resolve against this directory at runtime.
 PROMPTS_SRC="curriculum/prompts"
 if [ -d "$PROMPTS_SRC" ]; then
   mkdir -p "$ROOT/prompts"
@@ -102,19 +168,62 @@ if [ -d "$PROMPTS_SRC" ]; then
   done
 fi
 
-# Build tarball. Run tar from inside ROOT so the archive has
-# lectures/, exercises/, reference/, content/ at the top level.
+# ---- Pack ----------------------------------------------------------------
+# Run tar from inside ROOT so the archive has lectures/, exercises/, reference/,
+# supplementary/, content/, prompts/ at the top level.
 # Extraction: `tar xzf agents-102-content.tar.gz -C ~/Documents/ae101-content`
 rm -f "$OUT"
 (cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)
 
-# Sanity-check expected paths.
+# ---- Sanity checks -------------------------------------------------------
 echo "Built $OUT"
+echo "  lectures shipped:      $LECTURE_COUNT (reachability-filtered from AE101 modules)"
+echo "  exercises shipped:     $EXERCISE_COUNT"
+echo "  reference shipped:     $(find "$ROOT/reference"     -name '*.md' | wc -l | tr -d ' ')"
+echo "  supplementary shipped: $(find "$ROOT/supplementary" -name '*.md' | wc -l | tr -d ' ')"
+echo "  skills shipped:        $(find "$ROOT/content/skills" -name 'SKILL.md' | wc -l | tr -d ' ')"
+echo
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-tar tzf "$OUT" | grep -E "(lectures/the-wizard-move|reference/claude-code-for-engineers|reference/mcp-and-connectors|content/skills/.*SKILL\.md|content/pre-engagement-contract\.md)" > /dev/null || {
-  echo "WARNING — expected paths not found in archive." >&2
+
+# Spot-check that key load-bearing files made it.
+EXPECTED=(
+  "lectures/the-wizard-move.md"
+  "exercises/compound-and-close.md"
+  "reference/claude-code-for-engineers.md"
+  "supplementary/clean-code-is-steering.md"
+  "content/skills/access-control-analysis/SKILL.md"
+  "content/skills/stride/SKILL.md"
+  "content/pre-engagement-contract.md"
+)
+MISSING=()
+for path in "${EXPECTED[@]}"; do
+  tar tzf "$OUT" | grep -q "^\./${path}\$" || MISSING+=("$path")
+done
+if [ "${#MISSING[@]}" -gt 0 ]; then
+  echo "ERROR — expected paths missing from archive:" >&2
+  for p in "${MISSING[@]}"; do echo "  $p" >&2; done
   exit 1
-}
-echo "Expected paths present."
+fi
+
+# Spot-check that foreign material (Agents-101 ports) did NOT slip in.
+FORBIDDEN=(
+  "lectures/agent-loop-raw.md"            # Agents-101 introductory lecture
+  "exercises/raw-llm.md"                  # Agents-101 introductory exercise
+  "supplementary/what-is-an-agent.md"     # moved to Agents-101 supplementary/
+  "supplementary/agent-trigger-list.md"   # Agents-101
+  "reference/claude-quick-reference.md"   # Agents-101
+  "content/skills/agentic-nerd/SKILL.md"  # self-study only
+)
+LEAKS=()
+for path in "${FORBIDDEN[@]}"; do
+  tar tzf "$OUT" | grep -q "^\./${path}\$" && LEAKS+=("$path")
+done
+if [ "${#LEAKS[@]}" -gt 0 ]; then
+  echo "ERROR — foreign Agents-101 / self-study material leaked into AE101 tarball:" >&2
+  for p in "${LEAKS[@]}"; do echo "  $p" >&2; done
+  exit 1
+fi
+
+echo "Sanity checks passed."

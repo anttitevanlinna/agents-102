@@ -42,7 +42,7 @@ Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stay
 
 <div class="rt-code">
 
-Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with four options. For this exercise: **option 1 (Yes, and use auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **option 4 (Tell Claude what to change)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here. Full rundown in the [quick reference](reference/claude-quick-reference.md).
+Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with four options. For this exercise: **option 1 (Yes, and use auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **option 4 (Tell Claude what to change)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here. Full rundown in the [quick reference](../trainings/agents-101/reference/claude-quick-reference.md).
 
 </div>
 <div class="rt-cowork">
@@ -126,7 +126,7 @@ Two things combined make a system: *persistence* (it remembers) and *automation*
 
 Every module after this one uses the memory you just built.
 
-You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-mode review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-mode review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
 
 <!-- maintainer -->
 

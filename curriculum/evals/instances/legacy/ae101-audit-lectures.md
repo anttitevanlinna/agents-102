@@ -338,4 +338,4 @@ REVISE: pre-cohort source verification on every URL + number per maintainer bloc
 
 9. **No time-of-day anchors detected** in body across all 10 files. `check_student_facing.md § 22` holds. (One reference in `learning-through-contrast.md` to *"Today is the learn"* uses "today" as session-relative phrasing per the rule's allowed substitutes — acceptable.)
 
-10. **Path-leak / filename-link discipline.** Inline links in body use titles or sentence-case phrases. `the-loop-has-a-name.md` has *([Scheduled agents](../reference/scheduled-agents.md))* — title-style, correct. `what-packaging-is.md` cites Klaassen URLs by article title — correct. No filename-paths in student-facing prose detected.
+10. **Path-leak / filename-link discipline.** Inline links in body use titles or sentence-case phrases. `the-loop-has-a-name.md` has *([Scheduled agents](../../../trainings/agentic-engineering-101/reference/scheduled-agents.md))* — title-style, correct. `what-packaging-is.md` cites Klaassen URLs by article title — correct. No filename-paths in student-facing prose detected.

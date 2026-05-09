@@ -35,7 +35,7 @@ The `compendium-audited` row carries **four per-class git short-SHA pins** (refa
 - **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; the other three carry forward. Touching a prompt block invalidates `behavior@<sha>` (and usually `technical@<sha>`). The `eval-class-router.sh` PostToolUse hook classifies each edit (writing-only / structure-change / prompt-change / behavior-change) and writes to `/tmp/claude-eval-queue-<sid>` so the next `/wind-down` knows which class to re-audit per file.
 - **Grandfather rule for files audited before 2026-05-02.** A pre-refactor `compendium-audited <date> @ <sha>` row satisfies all four classes IF the file's mtime is unchanged since that audit. As soon as the file is touched, the four classes auto-degrade per the per-class rule above.
 - **SHA pin on `mechanical-tested`** is mandatory — instance reports overwrite on rerun, SHA is the only drift detector.
-- **Reference files (`curriculum/reference/`) are exempt** — flat lookup material, no mood contract or sim surface.
+- **Reference files (`curriculum/trainings/<training>/reference/`) are exempt** — flat lookup material, no mood contract or sim surface.
 
 Full ladder definitions, error-class rationale, audit-cost reasoning: `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md` and the `maintainer-reviewed` orthogonality entry at `memory/compounded/2026-04-28-content_creation-maintainer-reviewed-orthogonal-dimension.md`.
 
@@ -56,40 +56,39 @@ curriculum/
   CLAUDE.md                    # this file
 
   trainings/
-    agents-101/                 # Training variant #1 (this is the first)
+    agents-101/                 # Builder-leader audience
       getting-going.md         # slug-only filenames — sequence comes from the renderer, not the filename
       building-agent-systems.md
-      multi-agent-systems.md
       ...
-    engineering-management/    # FUTURE — strategy in `bosser-strategy:content-strategy-engineering-management.md`
-    agentic-engineering-101/   # FUTURE — strategy in `bosser-strategy:content-strategy-agentic-engineering-101.md`
+      reference/                # training-specific lookup material
+      supplementary/            # training-specific progressive readings
+    agentic-engineering-101/   # Software-engineer IC audience
+      getting-going.md
+      ...
+      reference/
+      supplementary/
+    engineering-management/    # FUTURE
     executive-briefing/        # FUTURE
 
   exercises/                   # Shared library — one file per exercise
     raw-llm.md
     add-guardrail.md
-    build-llm-memory.md
     ...
 
   lectures/                    # Shared library — one file per lecture
     context-is-king.md
     compounding.md
-    why-llms-fabricate.md
-    ...
-
-  supplementary/               # Reference documents that build up progressively across modules
-    what-is-an-agent.md
-    building-guardrails.md
-    learning-and-compounding-systems.md
     ...
 ```
+
+**Reference and supplementary live under each training**, not in a shared library. Audit and tarball builders read from `curriculum/trainings/<training>/{reference,supplementary}/`. Exercises and lectures stay shared — they're authored once and composed into modules by slug.
 
 **Four student-facing content types** — lectures, exercises, supplementaries, and quick reference:
 
 - **Lectures:** one-sitting events (15-min demo OR one prework reading). Included inline in module pages.
 - **Exercises:** one bounded activity per file. Included inline in module pages.
-- **Supplementaries:** multi-section documents that build up progressively across modules. Pedagogical. Too complex to absorb in one sitting. NOT inlined — referenced by modules as prework or homework, stand as reference after training. See `supplementary/README.md`.
-- **Quick reference:** flat lookup material (commands, connector setup, skill basics, troubleshooting). No progression. Curriculum content stays concept-focused; links here when a student needs an operational "how do I..." answer. See `reference/README.md`.
+- **Supplementaries:** multi-section documents that build up progressively across modules. Pedagogical. Too complex to absorb in one sitting. NOT inlined — referenced by modules as prework or homework, stand as reference after training. Live at `curriculum/trainings/<training>/supplementary/`.
+- **Quick reference:** flat lookup material (commands, connector setup, skill basics, troubleshooting). No progression. Curriculum content stays concept-focused; links here when a student needs an operational "how do I..." answer. Live at `curriculum/trainings/<training>/reference/`.
 
 **One file per module.** Flat — no per-module subdirectories. **Filenames are slugs only** (no `module-N-` prefix). Sequence comes from the renderer's MODULES array, not from filenames — so modules can be reordered by moving one array entry. A module file is thin: metadata + Bloom-tagged LOs + ordered references to exercises and lectures + training-specific framing (Connections, Conclusions, Bridge).
 
@@ -161,12 +160,14 @@ Source `.md` files use **bare paths** for cross-doc inline links from any source
 
 ```markdown
 [Reading the return](lectures/reading-the-return.md)
-[MCP and connectors](reference/mcp-and-connectors.md)
+[MCP and connectors](trainings/agentic-engineering-101/reference/mcp-and-connectors.md)
 [Schedule your personal agent](exercises/personal-agent-homework.md)
-[The four CLAUDE.md layers](reference/claude-code-for-engineers.md)
+[The four CLAUDE.md layers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md)
 ```
 
-Authors don't count `../` — write the kind/slug.md path the same way from a module file (depth 2), an exercise (depth 1), or a lecture (depth 1). The renderer's `rewriteCrossDocLinks` function (`site/curriculum.html`) accepts a regex with `(?:\.\.\/)*` (zero-or-more `../` prefixes) and rewrites the link to `curriculum.html?file=<kind>/<slug>` at render time.
+Authors don't count `../` — write the slug-bearing path the same way from a module file (depth 2), an exercise (depth 1), or a lecture (depth 1). The renderer's `rewriteCrossDocLinks` (in `site/layouts/curriculum.js`) accepts both shapes with `(?:\.\.\/)*` (zero-or-more `../` prefixes) and rewrites:
+- `(exercises|lectures)/<slug>.md` → `curriculum.html?file=<kind>/<slug>` (shared library)
+- `trainings/<training>/(reference|supplementary)/<slug>.md` → `curriculum.html?file=trainings/<training>/<kind>/<slug>` (training-specific)
 
 Forbidden in source:
 - **Hardcoded `curriculum.html?file=...` URLs.** Renderer leak — ties content to one rendering pipeline.

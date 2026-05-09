@@ -69,7 +69,7 @@
     // most-friendly mode; matches the leftmost button position.
     //
     // Verified facts driving this design (see Agents 101-side reference
-    // curriculum/reference/claude-quick-reference.md, maintainer audit):
+    // curriculum/trainings/agents-101/reference/claude-quick-reference.md, maintainer audit):
     //  - same agent engine across all three; CLAUDE.md + subagents identical
     //  - .plugin install path: Desktop + Cowork; CLI uses folder skills
     //  - no plan mode in Cowork (use prompt-level discipline instead)

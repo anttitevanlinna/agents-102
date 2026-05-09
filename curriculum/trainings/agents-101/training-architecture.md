@@ -10,7 +10,7 @@ The two runtimes use the same prompts and artifacts. Differences live in install
 - Claude Code: subagent, local working directory, `+` button next to the prompt, Settings -> Connectors, Schedule sidebar, `/loop`, plan mode, desktop mode dropdown, Shift+Tab cycle.
 - Cowork: agent, Cowork tab in Claude Desktop, Customize -> Skills -> New -> Create with Claude, connected-folder model in place of CWD.
 
-For the runtime split, see `curriculum/reference/claude-code-for-engineers.md` section "Claude Cowork -- same engine, different surface".
+For the runtime split, see `curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` section "Claude Cowork -- same engine, different surface".
 
 Cloud/remote features are out of scope for Agents 101 exercises. Remote tasks need a cloud source for the working directory, typically a cloud Git repo. Agents 101 uses a local training directory.
 

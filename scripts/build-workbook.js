@@ -95,10 +95,19 @@ function readMd(absPath) {
 }
 
 // Workbook target for cross-doc links: in-page anchors `#kind-slug` (single
-// page, no router). SPA uses `?file=kind/slug` URLs. Same regex (CR.CROSS_DOC_LINK_RE),
-// different replacement template — that's the only delta.
+// page, no router). SPA uses `?file=kind/slug` URLs.
+//
+// Two patterns to handle:
+//   - Shared exercises/lectures:  (exercises|lectures)/<slug>.md  →  #<kind>-<slug>
+//   - Training-specific ref/sup:  trainings/<t>/(reference|supplementary)/<slug>.md
+//                                  →  #<kind>-<slug>  (collapsed to slug; ref/sup
+//                                  pages aren't rendered in the workbook so the
+//                                  anchor is non-resolving by design — students
+//                                  read those files locally from the tarball).
 function rewriteCrossDocLinksToAnchors(md) {
-  return md.replace(CR.CROSS_DOC_LINK_RE, '](#$1-$2)');
+  return md
+    .replace(CR.CROSS_DOC_SHARED_RE,      '](#$1-$2)')
+    .replace(CR.CROSS_DOC_TRAINING_KS_RE, '](#$1-$2)');
 }
 
 // escapeTildes lives in shared CR for SPA + workbook parity.
@@ -225,11 +234,14 @@ ${buildToc(trainingKey, t)}
   // Supplementary + reference docs — render bodies so the workbook TOC anchors
   // (#supplementary-foo, #reference-bar) resolve and cross-doc links from
   // module bodies don't die. Same chrome as modules; no Big Idea hero.
+  // Files live under curriculum/trainings/<training>/<kind>/<slug>.md.
   function renderStandalone(kind, slug) {
-    const docPath = path.join(ROOT, 'curriculum', kind, slug + '.md');
+    const docPath = path.join(ROOT, 'curriculum/trainings', trainingKey, kind, slug + '.md');
     let md = readMd(docPath);
     if (md === null) return '';
-    md = md.replace(CR.CROSS_DOC_LINK_RE, '](#$1-$2)');
+    md = md
+      .replace(CR.CROSS_DOC_SHARED_RE,      '](#$1-$2)')
+      .replace(CR.CROSS_DOC_TRAINING_KS_RE, '](#$1-$2)');
     md = escapeTildes(md);
     const labelKind = kind === 'supplementary' ? 'Supplementary' : 'Reference';
     return `<section class="module" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>\n${marked.parse(md)}\n</section>`;
@@ -309,9 +321,12 @@ function buildTrainerGuide(customer, trainingKey) {
   if (md === null) return null;
   md = escapeTildes(md);
   // Rewrite cross-doc links to absolute customer-workbook anchors so the trainer
-  // can click a `[reference](reference/foo.md)` ref in the guide and land in
-  // the workbook's matching section. No SPA, no router — anchor targets only.
-  md = md.replace(CR.CROSS_DOC_LINK_RE, '](./#$1-$2)');
+  // can click a `[reference](trainings/<t>/reference/foo.md)` ref in the guide
+  // and land in the workbook's matching section. No SPA, no router — anchor
+  // targets only.
+  md = md
+    .replace(CR.CROSS_DOC_SHARED_RE,      '](./#$1-$2)')
+    .replace(CR.CROSS_DOC_TRAINING_KS_RE, '](./#$1-$2)');
   const bodyHtml = marked.parse(md);
 
   const cover = `

@@ -36,8 +36,7 @@ case "$FILE" in
   *curriculum/trainings/agents-101/*)              TRAINING="agents-101" ;;
   *curriculum/trainings/agentic-engineering-101/*) TRAINING="ae101" ;;
   *curriculum/trainings/*)                         TRAINING="other-training" ;;
-  *curriculum/exercises/*|*curriculum/lectures/*|*curriculum/supplementary/*)
-                                                   TRAINING="shared" ;;
+  *curriculum/exercises/*|*curriculum/lectures/*)  TRAINING="shared" ;;
   *) TRAINING="unknown" ;;
 esac
 

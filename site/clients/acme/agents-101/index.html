@@ -2289,7 +2289,7 @@ Have the subagent answer:
 
 When I&#39;ve answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving.
 </code></pre>
-<p>Claude asks, you answer, the brief lands. Read it. If it doesn&#39;t sound like the thing actually keeping you up, edit it. You&#39;re the domain expert.</p>
+<p>Claude asks, you answer, the brief lands. If it shows all three questions at once, push back and ask for one at a time. Read the brief. If it doesn&#39;t sound like the thing actually keeping you up, edit it. You&#39;re the domain expert.</p>
 <p><strong>Preview your sources.</strong></p>
 <p>The memory will be built from three kinds of raw material: pages from your company&#39;s Confluence (or wiki), docs and emails from Office365, and a few practitioner articles from the open web. Next phase you&#39;ll actually pull them. Right now you&#39;re scouting.</p>
 <p>Ask Claude to suggest where you&#39;d go scouting for raw material on this challenge.</p>
@@ -2298,7 +2298,7 @@ When I&#39;ve answered all three, write a one-paragraph brief to ./challenge.md.
 
 - 3 to 5 search terms I&#39;d type into our company Confluence or wiki
 - 2 to 3 OneDrive / SharePoint folder names likely to hold relevant docs, emails, or decks
-- 2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge, with one link each if you know them
+- 2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge
 
 Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 </code></pre>
@@ -3500,7 +3500,7 @@ Show me the comparison in chat with these sections:
 End with three lines:
 - What self-consistency caught that the groundedness detectors did not.
 - What self-consistency cannot prove.
-- Whether the winning groundedness judge should change. Default answer should be no unless the demo shows a concrete failure class the judge can actually detect.
+- Whether the winning groundedness judge should change. Two runs is too few to chase noise; only call for a change if you can name a specific failure class the current judge missed.
 </code></pre>
 <p>The take-home move is not &quot;always run self-consistency.&quot; The take-home move is: have a multi-method judge ready for outputs you ship. Point the same shape at a customer email, a pricing memo, a positioning draft, anything you&#39;d want a check on before it goes out.</p>
 <p>Ask Claude to build a multi-method judge against any other output you want to quality-control.</p>
@@ -3512,9 +3512,11 @@ End with three lines:
 - Citation integrity: when a citation is made, does the evidence file actually contain the claim?
 - Counter-evidence search: actively look for sources that contradict each claim, not just ones that support.
 
-Keep the techniques that fit my output; swap any that don&#39;t for methods that catch my output&#39;s specific failure modes.
+Pick at least one of the four to drop or rewrite for the failure modes specific to my output — don&#39;t keep the list as-is.
 
-Ask me what output I&#39;m checking, where my evidence lives, and what short filename to use under `judges/`. Then write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I&#39;d paste at Claude to run the judge). Keep it under 20 lines. End with a one-line &quot;Known limit:&quot; naming what the judge can&#39;t catch.
+Ask me what output I&#39;m checking, where my evidence lives, and what short filename to use under `judges/`. Ask one question at a time, wait for my answer, then ask the next; do not show me the question list. Once I&#39;ve answered all three, write the judge as a markdown file at that path. Short heading, one paragraph naming what it checks and why, then the prompt itself (the thing I&#39;d paste at Claude to run the judge). Keep it under 20 lines. End with a one-line &quot;Known limit:&quot; naming what the judge can&#39;t catch.
+
+No preamble. First message is your first question.
 </code></pre>
 </section>
 
@@ -4569,7 +4571,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <li><strong>Module 5, Generation rules as guardrails.</strong> Citations, claim restrictions, fabrication-tightening rules. <em>Section to write.</em></li>
 </ul>
 <hr>
-<p><strong>TODO:</strong> Sections above to be written as each module&#39;s exercise stabilizes. See <code>curriculum/supplementary/README.md</code> for the pattern.</p>
+<p><strong>TODO:</strong> Sections above to be written as each module&#39;s exercise stabilizes.</p>
 <p><strong>Quality:</strong> compendium-audited 2026-05-03 (writing@bb9c1d5)</p>
 <ul>
 <li>judges @bb9c1d5: writing PASS, story N/A (stub-no-content), technical N/A (stub-no-content), behavior N/A (no-student-prompt-blocks)</li>
@@ -4591,7 +4593,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <li><strong>Module 8 — Agents building agents.</strong> Self-improvement as a design choice. Meta-compounding — systems that make systems that make more systems. <em>Section to write.</em></li>
 </ul>
 <hr>
-<p><strong>TODO:</strong> Sections above to be written as each module&#39;s exercise stabilizes. See <code>curriculum/supplementary/README.md</code> for the pattern.</p>
+<p><strong>TODO:</strong> Sections above to be written as each module&#39;s exercise stabilizes.</p>
 <p><strong>Quality:</strong> compendium-audited 2026-05-03 (writing@bb9c1d5)</p>
 <ul>
 <li>judges @bb9c1d5: writing PASS, story N/A (stub-no-content), technical N/A (stub-no-content), behavior N/A (no-student-prompt-blocks)</li>
@@ -5114,9 +5116,19 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     // markdown (label paragraph + fenced code), not inline text.
     var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
 
-    // Inline cross-doc link pattern: `(kind/slug.md)` anywhere in body, with
-    // optional `../` prefixes. Renderer rewrites to `?file=kind/slug` URLs.
-    var CROSS_DOC_LINK_RE = /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g;
+    // Inline cross-doc link patterns. Renderer rewrites to `?file=...` URLs.
+    //   - Exercises and lectures live in shared dirs:
+    //       (exercises|lectures)/<slug>.md  →  ?file=<kind>/<slug>
+    //   - Reference and supplementary live under each training:
+    //       trainings/<training>/(reference|supplementary)/<slug>.md
+    //         →  ?file=trainings/<training>/<kind>/<slug>
+    // Both patterns tolerate any number of `../` prefixes.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Workbook-side helper: same training-specific match as above but with kind+slug
+    // exposed as separate capture groups, for callers that need to construct in-page
+    // anchors of the form `#<kind>-<slug>`.
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -5127,7 +5139,9 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     }
 
     function rewriteCrossDocLinks(md) {
-        return md.replace(CROSS_DOC_LINK_RE, '](curriculum.html?file=$1/$2)');
+        return md
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
     }
 
     function stripMaintainerTail(md) {
@@ -5623,7 +5637,9 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         TRAININGS: TRAININGS,
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
-        CROSS_DOC_LINK_RE: CROSS_DOC_LINK_RE,
+        CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
+        CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
+        CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
 

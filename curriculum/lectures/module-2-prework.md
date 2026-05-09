@@ -38,7 +38,7 @@ Pick one route through the primer:
 
 <div class="rt-code">
 
-- **Read** the [Claude quick reference](reference/claude-quick-reference.md). Start with *"Plan mode, look before you leap,"* then try the toggle in Claude Code and notice how the footer changes.
+- **Read** the [Claude quick reference](../trainings/agents-101/reference/claude-quick-reference.md). Start with *"Plan mode, look before you leap,"* then try the toggle in Claude Code and notice how the footer changes.
 - **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. A working practitioner showing how it feels in the hands, not a doc page.
 
 Either way: know where the toggle is, what the footer says when it's on, and why you'd reach for it.
@@ -46,7 +46,7 @@ Either way: know where the toggle is, what the footer says when it's on, and why
 </div>
 <div class="rt-cowork">
 
-- **Read** the [Claude quick reference](reference/claude-quick-reference.md). Skim the planning section. Cowork has no plan-mode toggle, so Module 2 uses a prompt-level simulation. A line like *"Before you write any files, lay out a plan as a numbered list and ask me to approve it"* creates the review point.
+- **Read** the [Claude quick reference](../trainings/agents-101/reference/claude-quick-reference.md). Skim the planning section. Cowork has no plan-mode toggle, so Module 2 uses a prompt-level simulation. A line like *"Before you write any files, lay out a plan as a numbered list and ask me to approve it"* creates the review point.
 - **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. The demo is in Code, but the move is the same one you'll ask for in Cowork.
 
 Either way: know what the plan-mode simulation looks like, and why you'd reach for it before anything that writes more than one file.

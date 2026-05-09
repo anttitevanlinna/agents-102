@@ -12,13 +12,15 @@ After this module, you will be able to:
 - **Run** an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo
 - **Introspect** on the agent's read of your repo. Use `/context` to see how much your context window has filled up. Assume 10% of what Claude says or does is misrepresentation and dig until you find it
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
-- **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [the four CLAUDE.md layers](reference/claude-code-for-engineers.md) for the hierarchy) and close the bug's ticket via one connector. The first move outside the repo
+- **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [the four CLAUDE.md layers](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) for the hierarchy) and close the bug's ticket via one connector. The first move outside the repo
 
 ## Start here
 
 **The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
 
 The room harvests everyone's before the training adds its own.
+
+[Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)
 
 [The wizard move](lectures/the-wizard-move.md)
 
@@ -50,7 +52,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 
 **Watch: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for Module 2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in Module 2 through Module 6 show up here first as one person's working rhythm.
 
-**Read: [Multi-session and Git: survival guide](reference/multi-session-git.md).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
+**Read: [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
 
 <!-- maintainer -->
 
@@ -66,7 +68,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: Nerd surfaces the agentic specificity — *"the loop you just ran was orient → fix → compound → close on YOUR repo, with a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** trainer demos a wizard-level move on a volunteer's codebase → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (compound-and-close) compound `./CLAUDE.local.md` from session evidence + ticket close-out via connector. No separate module-level Debrief.
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
-- **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
+- **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
 **Connections-as-room-read — deliberate exception to `check_pedagogy.md` rule 27.** The Connections paragraph names the room-harvest move explicitly. Rule 27 (no cohort-management cues in body) carves out Connections, where the harvest IS the work — not a stage direction, not a pause beat. Body prose names the move; trainer / Nerd executes it. Same exception applies in M2 (the lecture-names-the-pattern variant). Future judges should treat the Connections room-read paragraph as in-scope-by-design, not a rule-27 violation.
@@ -81,7 +83,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 - **Ex3 rule rubber-stamp** — student accepts Claude's `./CLAUDE.local.md` rule without reading. Nerd push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
 - **Ex3 team vs. personal ambiguity** — Claude writes a rule that's team-worthy (*"always validate webhook signatures before dispatch — our payment flow got bitten by this"*) but lands it in `./CLAUDE.local.md` without flagging. Nerd push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so I can open a PR against team `./CLAUDE.md` separately — don't PR it automatically, but name it."*
 - **Ex3 compound-summary confabulation** — Claude's 3–5 line summary name-drops session moments without quoting. Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
-- **Ex3 MCP install gate** — corporate tenant blocks connector install. Nerd surfaces the tenant-admin fallback per tracker from [MCP and connectors](reference/mcp-and-connectors.md). Never a blocker; always a fallback path.
+- **Ex3 MCP install gate** — corporate tenant blocks connector install. Nerd surfaces the tenant-admin fallback per tracker from [MCP and connectors](../../trainings/agentic-engineering-101/reference/mcp-and-connectors.md). Never a blocker; always a fallback path.
 - **Self-compounding at every module from M1** — the Nerd never interviews the student with Q1/Q2/Q3. Claude reviews session evidence, rewrites rules file in place, reports 3–5 lines, student pushes back. Same shape across the training.
 - **Repo change mid-training** — supported. Replay M1 → M(current) on new repo in an evening. Nerd fast-paths replay (pedagogy already landed; regenerate artifacts for the new repo).
 

@@ -58,8 +58,9 @@ These are not easy to choose from text alone. Decide before polishing body furth
 
 - **Module 4 policy references.** Confirm Nordic-baseline reference files exist in the starter package and customer-distilled files have a prep checklist.
 - **Module 5 superseded `ground-your-output.md`.** Decide whether to keep as supplementary or add a redirect to `hallucination-bakeoff.md` / `eval-loop.md`.
-- **Claude quick reference Cowork mode.** `curriculum/reference/claude-quick-reference.md` has Agents 101 Cowork facts, but no Cowork-mode student-facing section for plan-mode simulation, connector paths, personal-skill creation, scheduling, and file/folder attachment. Add before relying on it from Cowork-facing prework.
+- **Claude quick reference Cowork mode.** `curriculum/trainings/agents-101/reference/claude-quick-reference.md` has Agents 101 Cowork facts, but no Cowork-mode student-facing section for plan-mode simulation, connector paths, personal-skill creation, scheduling, and file/folder attachment. Add before relying on it from Cowork-facing prework.
 - **Module 7 pattern catalog.** Pattern catalog contains intentional `[TODO]` fields. Confirm this is still desired before first cohort; otherwise fill examples.
+- **Wire `agent-ready-data.md` and `personal-to-company-gap.md` into Agents 101.** Both ship in `curriculum/trainings/agents-101/supplementary/` but aren't declared in the TRAININGS registry (`site/layouts/curriculum.js` → `agents-101.supplementaries`) and no module body links them. Pick which module(s) each serves, add body link, register. Until then the workbook surfaces nothing for them; the files ride along in any tarball that reads the dir directly.
 
 ## 8. Eval instances to fill
 

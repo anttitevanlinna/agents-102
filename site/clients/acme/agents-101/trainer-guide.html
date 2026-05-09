@@ -2134,9 +2134,19 @@ body.workbook { padding-top: 3rem; }
     // markdown (label paragraph + fenced code), not inline text.
     var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
 
-    // Inline cross-doc link pattern: `(kind/slug.md)` anywhere in body, with
-    // optional `../` prefixes. Renderer rewrites to `?file=kind/slug` URLs.
-    var CROSS_DOC_LINK_RE = /\]\((?:\.\.\/)*(reference|supplementary|lectures|exercises)\/([a-z0-9-]+)\.md\)/g;
+    // Inline cross-doc link patterns. Renderer rewrites to `?file=...` URLs.
+    //   - Exercises and lectures live in shared dirs:
+    //       (exercises|lectures)/<slug>.md  →  ?file=<kind>/<slug>
+    //   - Reference and supplementary live under each training:
+    //       trainings/<training>/(reference|supplementary)/<slug>.md
+    //         →  ?file=trainings/<training>/<kind>/<slug>
+    // Both patterns tolerate any number of `../` prefixes.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Workbook-side helper: same training-specific match as above but with kind+slug
+    // exposed as separate capture groups, for callers that need to construct in-page
+    // anchors of the form `#<kind>-<slug>`.
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -2147,7 +2157,9 @@ body.workbook { padding-top: 3rem; }
     }
 
     function rewriteCrossDocLinks(md) {
-        return md.replace(CROSS_DOC_LINK_RE, '](curriculum.html?file=$1/$2)');
+        return md
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
     }
 
     function stripMaintainerTail(md) {
@@ -2643,7 +2655,9 @@ body.workbook { padding-top: 3rem; }
         TRAININGS: TRAININGS,
         DEFAULT_TRAINING: DEFAULT_TRAINING,
         INCLUDE_LINK_RE: INCLUDE_LINK_RE,
-        CROSS_DOC_LINK_RE: CROSS_DOC_LINK_RE,
+        CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
+        CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
+        CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
 

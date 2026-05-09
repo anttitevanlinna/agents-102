@@ -9,7 +9,7 @@ Surface one multi-file backlog task in conversation with Claude. Criteria: non-t
 
 **Just a simple task that spans a few files. Not an epic.**
 
-Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](reference/multi-session-git.md).
+Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md).
 
 ## What You'll Learn
 After this module, you will be able to:

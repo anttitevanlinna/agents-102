@@ -33,7 +33,7 @@ Three modules of short loops sit behind today: a bug fix, a plan read, a feature
 - Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
 - Un-packaged is by design. Module 5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
-- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers, the memory hierarchy](reference/claude-code-for-engineers.md))
+- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers, the memory hierarchy](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md))
 - Traces are data. Stop the run when you've seen what you needed to see
 - Every send-off is an experiment, not a production run you need to get right first time
 
@@ -70,7 +70,7 @@ Module 5 opens with what came back, or what you caught before it went further. W
 
 Optional. Skipping any of these does not break Module 5. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
 
-**Read, [Clean Code Is Steering: Insights from Uncle Bob](supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
+**Read, [Clean Code Is Steering: Insights from Uncle Bob](../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
 
 **Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes the 80/20 reframe Module 5 will name from felt evidence rather than introduce as a slogan.
 

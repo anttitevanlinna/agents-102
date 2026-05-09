@@ -22,7 +22,7 @@ Other connectors are optional. If your company uses a wiki, Confluence, Jira, Li
 
 <span class="rt-code">In Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**.</span><span class="rt-cowork">In Claude Desktop, open **Customize → Connectors**. The connector list is shared across Claude Desktop and Cowork.</span> Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.
 
-If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Claude quick reference](reference/claude-quick-reference.md).
+If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
 ## 2. Install the training folder (3 min)
 
@@ -78,7 +78,7 @@ Take a screenshot of your calendar week view, then:
 
 *Proof: Claude can read your real work data and save a useful summary on your machine.*
 
-Stuck on the connector or want specific click-paths? See [Claude quick reference](reference/claude-quick-reference.md).
+Stuck on the connector or want specific click-paths? See [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
 ## 5. Read the mental frame (10 min)
 

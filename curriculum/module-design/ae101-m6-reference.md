@@ -93,7 +93,7 @@ Default to the specific word. Blurring is how students end up conflating chatbot
 | `exercises/arc-retrospective.md` | 80–120 | bounded-activity shared-library shape |
 | `lectures/the-loop-has-a-name.md` | 250–350 | `what-packaging-is.md` |
 | `lectures/story-of-module-6.md` | 120–180 | (novel; first-person past memo, no precedent) |
-| `reference/scheduled-agents.md` | 60–100 | `curriculum/reference/README.md` conventions |
+| `reference/scheduled-agents.md` | 60–100 | AE101 reference conventions |
 | `evals/instances/agentic-engineering-101--spot-gaps-build-the-loop.md` | 80–120 | `curriculum/evals/exercise.md` template |
 
 ## Source verification TODO (riding forward from M5)

@@ -15,6 +15,10 @@ Findings flagged by the 2026-05-03 technical-class AND behavior-class judges aga
 
 Calibration fix candidates (judge-side, not curriculum-side): (a) tighten `curriculum/evals/judges/technical.md` AND `curriculum/evals/judges/prompt-behavior.md` to quote the rule's literal example list before flagging, square brackets in scope, angle brackets out. (b) extend `check_prompts.md` rule 1 wording to explicitly carve out angle brackets. (c) extend rule 5 to explicitly distinguish "scrollback-review chain (preferred)" from "invented alias without back-reference (banned)". Maintainer's call which (or which combination).
 
+## Wire `how-the-best-do-ci-cd.md` into AE101
+
+`curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md` ships in the AE101 content tarball but isn't declared in the TRAININGS registry (`site/layouts/curriculum.js`) and no module body links to it. Pick the module(s) it serves (M3 earn-the-trust? M5 learn-from-the-test?), add a body link, register it under `agentic-engineering-101.supplementaries`. Until then the workbook surfaces nothing for it; the file rides along in the tarball as content the agent can find but the human can't.
+
 ## Hook mechanics depth
 
 Write `reference/hooks-and-loops.md` (1–2 page reference doc): stop-hook vs. command-loop tradeoff, two minimal examples, when to reach for which. Link from M3 + M5 maintainer blocks. Separate session.

@@ -23,6 +23,33 @@ Calibration fix candidates (judge-side, not curriculum-side): (a) tighten `curri
 
 Write `reference/hooks-and-loops.md` (1–2 page reference doc): stop-hook vs. command-loop tradeoff, two minimal examples, when to reach for which. Link from M3 + M5 maintainer blocks. Separate session.
 
+## AE101 reference + supplementary audit findings (2026-05-09)
+
+Captured by `/research-review`-shaped audit subagents against the 4 AE101 references + 2 AE101 supplementaries that survived the per-training split. Original report: `/tmp/ae101-audit/{reference,supplementary}-findings.md` (lost on tmp wipe; load-bearing items copied here).
+
+**HIGH (verify-before-cohort):**
+
+- **`reference/claude-code-for-engineers.md` link integrity.** Several doc URLs are unverified and aging on a sub-monthly-release platform:
+ - Line 5: `code.claude.com/docs/en/memory.md`, official rendered path may drop `.md`; pick one shape across the file.
+ - Line 65: `"auto memory needs Claude Code v2.1.59+"`, specific version with no changelog link or audit date. Pin or downgrade to "recent versions; check `claude --version`."
+ - Line 70: `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`, verify exact env var name; convention mixes `CLAUDE_CODE_*` / `ANTHROPIC_*` / `CLAUDE_*`.
+ - Lines 62–65, 192: subagent auto memory `#enable-persistent-memory` anchor, verify it exists at the cited URL.
+ - Line 175: plan-mode docs URL points at `/overview` (product overview), not the dedicated plan-mode page.
+ - Line 247: GitHub-issue numbers cited as Ctrl+C corruption evidence, soften ("community-reported") or upgrade to changelog/docs note.
+
+**MED (fix or live-test):**
+
+- **`reference/multi-session-git.md` line 28 + lines 41–43, `git worktree` syntax bug.** `git worktree add <path> <branch>` requires the branch to already exist. New-branch shape is `git worktree add -b <branch> <path>`. M1 homework engineers paste verbatim and hit `fatal: invalid reference` in 30 seconds. Fix to the `-b` form (or note "branch must exist") in both spots.
+- **`reference/claude-code-for-engineers.md` §13 hooks coverage is a one-paragraph stub.** M3 + M5 lean on hooks. Closes when `reference/hooks-and-loops.md` ships (see *Hook mechanics depth* above).
+- **`/context` and `/clear` missing from claude-code-for-engineers §11.** M1 introspection beat (*"type /context, look at the unread-slice number"*) needs `/context` documented. M5/M6 may need to teach the Claude Code `/clear` (compacts) vs `/compact` distinction; engineer-ref §11 lists `/compact` only.
+- **Cross-file: `/loop` described differently** in `scheduled-agents.md` (interval + self-paced) vs `claude-code-for-engineers.md` (interval only). Reconcile to scheduled-agents (the available `/loop` skill confirms both forms).
+- **Cross-file: `/schedule` slash command** present in `scheduled-agents.md`, absent from `claude-code-for-engineers.md`. Live-test which is current; add or remove.
+- **Cross-file: doc-host root inconsistency.** `code.claude.com` (engineer-ref, mcp) vs `docs.anthropic.com` (scheduled-agents). Pick one canonical root.
+- **`reference/mcp-and-connectors.md` line 7, `Last verified: 2026-04-23`** is now ~3 weeks stale. Re-verify Atlassian endpoints (line 60: `/sse` deprecates 2026-06-30 per Atlassian) and `claude mcp add` flag shape (line 37) before next cohort.
+- **`reference/claude-code-for-engineers.md` lines 17, 156, 159–167, 301, 332, 348**, verify managed-policy macOS path (`Claude Code` with space vs `ClaudeCode` no-space), Shift+Tab cycle order, Ultraplan-on-web option, `CLAUDE_CODE_NEW_INIT=1` flag, `InstructionsLoaded` hook event name, `claudeMdExcludes` settings key.
+- **`reference/claude-code-for-engineers.md` line 422**, file dated 2026-04-23, audited 2026-05-09, sub-monthly-release platform. Add a "stale if older than" line that triggers re-verification.
+- **`supplementary/how-the-best-do-ci-cd.md` Quality block check.** Audit subagent surfaced concerns about a 54–95% / 5–22% percentage spread elsewhere in the supp library (zombie-stat shape), re-verify any statistics in this file before wiring it into a module per the wire-it-in TODO above.
+
 ## Per-file specific concerns (not caught by auto-fire)
 
 - **`reading-the-return.md` + `learning-through-contrast.md`**, custom-persona sim: dual-mode reader (pre-read + in-room handout) at the M5 openers. Standard Maija/Greg/Jin trio doesn't simulate the dual-mode use.

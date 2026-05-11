@@ -61,6 +61,26 @@ These are not easy to choose from text alone. Decide before polishing body furth
 - **Claude quick reference Cowork mode.** `curriculum/trainings/agents-101/reference/claude-quick-reference.md` has Agents 101 Cowork facts, but no Cowork-mode student-facing section for plan-mode simulation, connector paths, personal-skill creation, scheduling, and file/folder attachment. Add before relying on it from Cowork-facing prework.
 - **Module 7 pattern catalog.** Pattern catalog contains intentional `[TODO]` fields. Confirm this is still desired before first cohort; otherwise fill examples.
 - **Wire `agent-ready-data.md` and `personal-to-company-gap.md` into Agents 101.** Both ship in `curriculum/trainings/agents-101/supplementary/` but aren't declared in the TRAININGS registry (`site/layouts/curriculum.js` → `agents-101.supplementaries`) and no module body links them. Pick which module(s) each serves, add body link, register. Until then the workbook surfaces nothing for them; the files ride along in any tarball that reads the dir directly.
+- **Wire `agent-trigger-list.md` into Agents 101, or remove.** Same orphan shape: ships in `curriculum/trainings/agents-101/supplementary/` but no registry entry and no module link. The 2026-05-09 audit also flagged that its line-92 prompt pastes Agents-101-style paths (`./crux.md`, `module-3/stances/`, `judges/groundedness-judge.md`), confirm these resolve in the current Agents-101 starter scaffold before wiring; if any path has drifted, fix before students paste.
+
+### `claude-quick-reference.md` audit findings (2026-05-09)
+
+Captured by audit subagent against the Agents-101 reference file. Original report `/tmp/ae101-audit/reference-findings.md` (lost on tmp wipe).
+
+**HIGH (own-audience):**
+
+- **Doc-host root inconsistency.** Line 7 root link points at `docs.anthropic.com`; individual sections (line 121 etc.) point at `code.claude.com/docs/en/...`. Pick one canonical root for the SVP audience and link the rest as sub-paths.
+
+**MED (verify or fill):**
+
+- **Lines 53–56 plan-mode entry paths + Shift+Tab cycle order**, cross-check matches `curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` §5; live-test current CLI before next cohort (modes have been renamed before).
+- **Line 71, option 3 "Ultraplan on Claude Code on the web"**, cross-check still exists at Anthropic; AE101 engineer-ref also names it (lines 159–167). If renamed/removed since 2026-04-23, both files trip.
+- **Lines 102, 145, 153, "*Official docs:..."* references with no clickable URL.** SVP audience needs the link, not a generic pointer. Three instances.
+
+**LOW:**
+
+- **Lines 159, 169, em-dashes on customer-facing content.** Per `check_sales_copy.md` "no em dashes on site." Convert to comma or sentence break.
+- **Line 119 hedge-stack borderline** ("Less automation, same teaching value..."); quick clean-up.
 
 ## 8. Eval instances to fill
 

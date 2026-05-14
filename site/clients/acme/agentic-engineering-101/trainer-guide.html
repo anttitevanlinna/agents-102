@@ -1893,20 +1893,20 @@ body.workbook { padding-top: 3rem; }
 </header>
 
 <section class="module" id="trainer-guide">
-<h1>AE101 Trainer Guide</h1>
+<h1 id="ae101-trainer-guide">AE101 Trainer Guide</h1>
 <p><strong>What this file is.</strong> Delivery prep for Agentic Engineering 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in <code>memory/check_*.md</code> and <code>.claude/skills/content-creation/SKILL.md</code>.</p>
 <p>AE101 is for software engineer ICs who already use or have seen Claude Code. Do not teach Claude Code from zero. The job is to turn uneven self-taught usage into an engineering loop that compounds: run the work, read what happened, encode the lesson into repo memory, skills, verifiers, and team kit.</p>
-<h2>Operating Contract</h2>
+<h2 id="operating-contract">Operating Contract</h2>
 <p>You project the workbook page. There are no slides. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
 <p>Your screen is shared most of the session. There is no private trainer pane. Read maintainer blocks during prep only, never while screen-sharing. If a cue is missing from student-visible prose, flag it after the session rather than toggling to a hidden source file.</p>
 <p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
 <p>In cohort delivery, you carry the push-backs by default. The Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.</p>
-<h2>Delivery Architecture</h2>
+<h2 id="delivery-architecture">Delivery Architecture</h2>
 <p>Canonical contract lives in <a href="training-architecture.md">training-architecture.md</a>, read it once before your first cohort. Summary for delivery prep:</p>
 <p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
 <p>AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see <a href="training-architecture.md">training-architecture.md §Future TODO</a>; not yet active for delivery.</p>
 <p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
-<h2>Prep Before Each Session</h2>
+<h2 id="prep-before-each-session">Prep Before Each Session</h2>
 <ul>
 <li>Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.</li>
 <li>Check Quality tags in maintainer blocks during prep. <code>draft</code> means rehearse harder; <code>mechanical-tested</code> means the prompt chain has actually run.</li>
@@ -1917,7 +1917,7 @@ body.workbook { padding-top: 3rem; }
 <li>Confirm sponsor-stated homes: ADRs, rules file, ticket tracker, team kit, memory.</li>
 <li>Keep your demo repo clean, on the right branch, with the expected starting state.</li>
 </ul>
-<h2>Patterns To Call Out</h2>
+<h2 id="patterns-to-call-out">Patterns To Call Out</h2>
 <p><strong>Quote before summary.</strong> This is the strongest AE101 trainer move. Many exercises fail the same way when Claude summarizes smoothly without evidence. Ask for the quoted file line, diff line, commit, transcript moment, or skill sentence. If it cannot quote, the claim does not carry.</p>
 <p><strong>Self-report is a hypothesis.</strong> Claude can tell you what it read, why it skipped files, what changed, and what is weakest. Useful, not authoritative. The student verifies against <code>/context</code>, the diff, the file, the ADR, the skill output, or the run trace.</p>
 <p><strong>Author through conversation, then invoke.</strong> Catch the editor drift every time: the student should not hand-craft skill files in a file tab. Claude interviews, drafts, self-critiques, revises, then invokes the skill on the real feature or real run. Authoring without invocation is theatre.</p>
@@ -1926,7 +1926,7 @@ body.workbook { padding-top: 3rem; }
 <p><strong>Task size is pedagogy.</strong> Too small gives no signal. Too large gives mush. Protect the task size at Connections, because downstream prompts cannot rescue the wrong task.</p>
 <p><strong>Do not front-run the next move.</strong> The move may be correct in real life and still be wrong before the curriculum earns it. If a student wants to jump ahead, name the move and park it.</p>
 <p><strong>Absence is data.</strong> No tests on the bug path, no ADR convention, no team-kit home, no business-rules layer, missing transcript, thin memory: these are not side quests to solve live. Name the gap, write the smallest durable note, keep the room moving.</p>
-<h2>Prompt Rules To Notice Live</h2>
+<h2 id="prompt-rules-to-notice-live">Prompt Rules To Notice Live</h2>
 <p><strong>Prompt blocks serve intent.</strong> Teach the shipped prompt by default so the room has a shared reference. If there is a better way to reach the same teaching point, show it and use it. Name what changed, why it better serves the exercise, and compare the result against the intended teaching point.</p>
 <p><strong>Read the lead-in.</strong> The sentence before the fenced prompt is part of the instruction. It tells the student what the prompt is about to do and gives you the clean narration beat before everyone pastes.</p>
 <p><strong>Open hooks mean student input.</strong> When a prompt ends with a colon, the student supplies the bug, task, feature, or concern. Do not turn every prompt into a fill-in-the-blank form; when Claude can infer the referent from scrollback, let the back-reference do the work.</p>
@@ -1937,7 +1937,7 @@ body.workbook { padding-top: 3rem; }
 <p><strong>Minimal send-off is intentional.</strong> Some send-off prompts rely on the surrounding artifact trail. Do not over-engineer them live with every possible instruction; the contrast between un-packaged and packaged work is the point.</p>
 <p><strong>Push back on question dumps.</strong> If Claude asks five discovery questions after a one-question-at-a-time prompt, stop and correct it. That moment teaches steering better than explaining steering abstractly.</p>
 <p><strong>After a side effect, ask what changed.</strong> Prefer &quot;tell me what you wrote&quot; after saves, edits, or generated files. Add show-before-save only when the operation is hard to reverse or the exercise explicitly needs pre-approval.</p>
-<h2>Live Triage</h2>
+<h2 id="live-triage">Live Triage</h2>
 <p>Protect the core live run. Each session has one main exercise, sometimes two medium ones before the midpoint. If time slips, compress framing, run the prompt, and move polish or extended comparison to homework. Do not try to &quot;cover&quot; the module at the cost of the exercise. AE101 teaches through artifacts and traces, not explanation.</p>
 <p>Do not script the cut order too tightly. The trainer is also an adult professional reading the room. The default bias is to preserve the live run and the trace it produces; after that, framing, debrief, comparison, and polish can flex.</p>
 <p>Vary the teaching move. Sometimes name the concept before the prompt, sometimes run first and name it afterward, sometimes explain from a student&#39;s output. Use whichever route suits the room and the moment. A forced pattern makes sessions dull.</p>
@@ -1958,7 +1958,7 @@ body.workbook { padding-top: 3rem; }
 <p>Most AE101 runs are not long. In the few places where the agent may run for five minutes, use the wait to re-explain the concept and narrate what is actually happening: tool use, files touched, assumptions forming, or why the prompt is shaping the behavior you expect.</p>
 <p>If the room is slow, compress optional asides rather than sprinting. If the room is fast, do not pad. Spend the time on a deeper comparison or leave the room to its own rhythm.</p>
 <p>The most common AE101 failure is oversized task selection. Push early. &quot;Not a typo-fix, not an epic&quot; is the condition that lets the long-running loop produce evidence the next module can read.</p>
-<h2>What Not To Do</h2>
+<h2 id="what-not-to-do">What Not To Do</h2>
 <ul>
 <li>Do not read maintainer blocks during the session.</li>
 <li>Do not lecture from slides.</li>
@@ -1968,7 +1968,7 @@ body.workbook { padding-top: 3rem; }
 <li>Do not auto-promote personal learnings to team PRs.</li>
 <li>Do not let a contrast exercise collapse because the trainer rescued the first run too early.</li>
 </ul>
-<h2>Feedback Loop</h2>
+<h2 id="feedback-loop">Feedback Loop</h2>
 <p>After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.</p>
 <p>If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture mechanism is being designed, see <code>pre-cohort-todos.md</code>. Until it lands, don&#39;t rely on memory.</p>
 
@@ -2161,6 +2161,35 @@ body.workbook { padding-top: 3rem; }
         return md
             .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
             .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
+    }
+
+    // GitHub-style heading slugger. Used to generate stable `id="..."` attrs
+    // on h1–h6 so cross-doc links to `target.md#section-anchor` resolve in
+    // both workbook and SPA. Behaviour matches `github-slugger`: lowercase,
+    // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
+    // then per-character whitespace → "-" (preserves the double-hyphen at
+    // stripped em-dash positions).
+    function slugifyHeading(text) {
+        return String(text)
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .trim()
+            .replace(/\s/g, '-');
+    }
+
+    // Wire heading-id generation into a marked instance. SPA calls this with
+    // the CDN-loaded `marked`; workbook build calls it with the npm-loaded
+    // `marked` from require(). Single source of truth, identical IDs across
+    // both renderers.
+    function configureMarked(markedRef) {
+        markedRef.use({
+            renderer: {
+                heading: function (text, level) {
+                    var id = slugifyHeading(text);
+                    return '<h' + level + ' id="' + id + '">' + text + '</h' + level + '>\n';
+                }
+            }
+        });
     }
 
     function stripMaintainerTail(md) {
@@ -2665,6 +2694,8 @@ body.workbook { padding-top: 3rem; }
         // Pure (Node-safe)
         esc: esc,
         rewriteCrossDocLinks: rewriteCrossDocLinks,
+        slugifyHeading: slugifyHeading,
+        configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,

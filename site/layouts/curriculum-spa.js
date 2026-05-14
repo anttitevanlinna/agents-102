@@ -10,6 +10,12 @@
     var extractBigIdea = CurriculumRuntime.extractBigIdea;
     var stripMaintainerTail = CurriculumRuntime.stripMaintainerTail;
 
+    // Wire heading-id generation into the CDN-loaded marked so cross-doc
+    // anchor links (`target.md#section-anchor`) resolve in SPA renders.
+    if (typeof marked !== 'undefined') {
+        CurriculumRuntime.configureMarked(marked);
+    }
+
     // Prompt registry — fetched once at startup, used by expandPrompts() in
     // the markdown pipeline. Compiled into site/prompts.json by
     // scripts/compile-prompts.js during build. Empty registry is a safe

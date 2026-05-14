@@ -30,6 +30,10 @@ const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
 
+// Wire heading-id generation into marked so cross-doc anchor links
+// (`target.md#section-anchor`) resolve in workbook output.
+CR.configureMarked(marked);
+
 // Load the prompt registry once at script start. readMd() expands
 // `{{prompt:key}}` markers using this registry before any markdown processing.
 // The same registry is also written to site/prompts.json for the SPA path.

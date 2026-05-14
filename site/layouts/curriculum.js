@@ -185,6 +185,35 @@
             .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
     }
 
+    // GitHub-style heading slugger. Used to generate stable `id="..."` attrs
+    // on h1–h6 so cross-doc links to `target.md#section-anchor` resolve in
+    // both workbook and SPA. Behaviour matches `github-slugger`: lowercase,
+    // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
+    // then per-character whitespace → "-" (preserves the double-hyphen at
+    // stripped em-dash positions).
+    function slugifyHeading(text) {
+        return String(text)
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .trim()
+            .replace(/\s/g, '-');
+    }
+
+    // Wire heading-id generation into a marked instance. SPA calls this with
+    // the CDN-loaded `marked`; workbook build calls it with the npm-loaded
+    // `marked` from require(). Single source of truth, identical IDs across
+    // both renderers.
+    function configureMarked(markedRef) {
+        markedRef.use({
+            renderer: {
+                heading: function (text, level) {
+                    var id = slugifyHeading(text);
+                    return '<h' + level + ' id="' + id + '">' + text + '</h' + level + '>\n';
+                }
+            }
+        });
+    }
+
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
@@ -687,6 +716,8 @@
         // Pure (Node-safe)
         esc: esc,
         rewriteCrossDocLinks: rewriteCrossDocLinks,
+        slugifyHeading: slugifyHeading,
+        configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,

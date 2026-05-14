@@ -1,7 +1,5 @@
 # Why mostly right fails
 
-**Time:** 6 minutes. Mini-lecture for Claude Basics Module 2.
-
 Claude can sound the same when it is right, wrong, or guessing. Fluency is not evidence. Confidence is not correctness. That is why the team does not ask *"does this look good?"* The team asks *"which claims can we ground, and which ones stay open?"*
 
 ## Fifty claims is enough
@@ -48,13 +46,11 @@ One finds claims floating with no ground. The other finds claims that look groun
 
 The team is not trying to prove Claude safe or unsafe. The team is learning which checks catch useful wrongness, then writing that method into the system so future sessions use it again.
 
-**Time:** 6 minutes.
-
 <!-- maintainer -->
 
 **Quality:** draft 2026-04-29
 - draft 2026-04-29 (new mini-lecture borrowing Agents 101 M5 reliability math for Claude Basics M2; sim/eval not run)
 
-**Lecture meta:** *Short concept beat before the M2 exercise. Borrowed from Agents 101 M5's groundedness lecture, compressed for Claude Basics. Do not expand into the full four-detector benchmark frame.*
+**Lecture meta:** *6-minute mini-lecture for Claude Basics Module 2. Short concept beat before the M2 exercise. Borrowed from Agents 101 M5's groundedness lecture, compressed for Claude Basics. Do not expand into the full four-detector benchmark frame.*
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

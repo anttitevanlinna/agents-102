@@ -23,11 +23,11 @@ Surface where the tool list comes from, then how MCP-connector tools land in the
 **Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
 - judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 
-**Meta:** *Mini-supplementary for AE101. Referenced from `compound-and-close.md`'s timebox callout. Audience: senior engineers who want to look under the hood while the room finishes the MCP install. ~5 minutes.*
+**Meta:** *Mini-supplementary for AE101. Referenced from `getting-going.md`'s "if time allows" callout (M1 opener) and `compound-and-close.md`'s timebox callout (M1 closer). Audience: senior engineers who want to look under the hood while the room finishes the MCP install. ~5 minutes.*
 
 **Role:** answers the foundational *what's an agent / harness / loop* question AE101 otherwise leaves implicit. Senior-engineer audience; assumed-known is the default. This is the looking-under-the-hood opt-in for the engineer who wants the mechanism, not just the use.
 
-**Placement:** referenced from `compound-and-close.md` timebox callout. Optional read while the room finishes the MCP-connector install. Can be re-read post-cohort as reference.
+**Placement:** two M1 callouts — `getting-going.md` ("if time allows" — opener) and `compound-and-close.md` (timebox while MCP-connector install finishes — closer). Optional both times. Can be re-read post-cohort as reference.
 
 **Voice:** Boris-flat technical (mechanism description, not framing).
 

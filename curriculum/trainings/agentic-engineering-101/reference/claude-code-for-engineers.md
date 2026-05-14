@@ -4,7 +4,9 @@ Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding. Wh
 
 Source of truth is Anthropic's docs. Links and verbatim quotes below point at [code.claude.com/docs/en/memory.md](https://code.claude.com/docs/en/memory.md), [skills](https://code.claude.com/docs/en/skills), [sub-agents](https://code.claude.com/docs/en/sub-agents), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [cli-reference](https://code.claude.com/docs/en/cli-reference). This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.
 
-**Last verified against docs:** 2026-04-23.
+**Last verified against docs:** 2026-05-14.
+
+**Stale if older than:** 30 days. Re-verify against [code.claude.com/docs/en/](https://code.claude.com/docs/en/) and run a live capability check (`claude --version`, `/help`, `claude-code-guide` subagent) before the next cohort.
 
 ---
 
@@ -153,26 +155,27 @@ Docs: [memory.md § Import additional files](https://code.claude.com/docs/en/mem
 Plan mode: Claude researches and proposes a plan instead of writing files. You approve the plan; Claude executes.
 
 **Toggle on:**
-- Prompt: *"Enable plan mode."*
-- Shift+Tab cycles permission modes (Default → Auto-accept → Plan → Auto)
+- Prompt: *"Enable plan mode."* or prefix a single prompt with `/plan`
+- Shift+Tab cycles permission modes (default → acceptEdits → plan). `auto` and `bypassPermissions` slot in after `plan` only when enabled per-account (live-verified 2026-05-14)
 - Desktop mode dropdown: pick *Plan*
 
-**Four approval paths when the plan is ready:**
+**Five approval paths when the plan is ready** (live-verified 2026-05-14 against `code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode`):
 
 | Option | Behavior | Pick when |
 |---|---|---|
-| **1. Yes, and use auto mode** | Full execution, no further approval | Plan looks right, work is reversible or low-stakes |
-| **2. Yes, manually approve edits** | Claude pauses per file write | Plan looks right, work touches something you need to watch |
-| **3. No, refine with Ultraplan on Claude Code on the web** | Cloud-based plan refinement | Plan needs more thought than you want to spend in-session |
-| **4. Tell Claude what to change** | Text box for targeted feedback; Claude rewrites plan | Plan is 80% there; one or two named fixes |
+| **Approve and start in auto mode** | Full execution, no further approval | Plan looks right, work is reversible or low-stakes; auto-mode requirements met |
+| **Approve and accept edits** | Auto-approves file edits; Bash still prompts on non-filesystem commands | Plan looks right, edits-only is the shape of the work |
+| **Approve and review each edit manually** | Claude pauses per file write | Plan looks right, work touches something you need to watch |
+| **Keep planning with feedback** | Push back with specific items; Claude regenerates the plan | Plan is 80% there; one or two named fixes |
+| **Refine with Ultraplan** | Hand off to a Claude Code on the web session in plan mode for browser-based review | Plan needs more thought than you want to spend in-session; cloud surface gives you per-section comments |
 
-**Exit without executing:** *"Disable plan mode,"* mode dropdown, or Shift+Tab cycle.
+**Exit without executing:** Shift+Tab again, or mode dropdown.
 
 **Keep-planning-with-feedback (before approval):** instead of approving, push back with specific items. Claude regenerates. Use when you want to sharpen the plan without restarting the whole prompt.
 
 **AE101 cross-refs:** M2 exercise `push-back-on-the-plan.md` teaches the two-read pattern (human push-back → Pocock `grill-me` second-pass → approve). M1 deliberately runs without plan mode (trivial bug doesn't earn it).
 
-Docs: [plan mode overview](https://code.claude.com/docs/en/overview).
+Docs: [plan mode](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode), [Ultraplan](https://code.claude.com/docs/en/ultraplan).
 
 ---
 
@@ -229,13 +232,17 @@ Docs: [Claude Code desktop → Connectors](https://code.claude.com/docs/en/deskt
 
 Three mechanisms. Pick by intent.
 
-**`/loop` (in-session only.)** `/loop 5m <prompt>` runs the prompt every 5 minutes while the session is open. Closes when you close the session. Use for: polling during a work block, watching a build, monitoring a long-running task's intermediate output.
+**`/loop` (in-session only.)** Two forms (live-verified 2026-05-14 against `code.claude.com/docs/en/scheduled-tasks`):
+- **Fixed interval:** `/loop 5m <prompt>` runs the prompt every 5 minutes while the session is open. Closes when you close the session.
+- **Self-paced:** `/loop <prompt>` (omit interval). Claude picks the cadence (1 min to 1 hour) based on activity — short waits while a build is finishing, longer waits when nothing is pending. Bare `/loop` (no prompt either) runs the built-in maintenance prompt at a dynamically chosen interval, or a `.claude/loop.md` if you've written one.
+
+Use for: polling during a work block, watching a build, monitoring a long-running task's intermediate output, continuous polish on active work.
 
 **Desktop scheduled tasks — local (the everyday choice).** Sidebar: **Schedule → New task → New local task.** Name, prompt, frequency. Runs on your laptop when the task fires; inherits your connectors.
 
 **Missed-run behavior:** if the laptop was asleep at scheduled time, Claude Code catches up **once** for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (*"only run if it's before 10:00am; otherwise report skipped"*).
 
-**Routines — remote (Anthropic's cloud).** Same Schedule sidebar: **New task → New remote task.** Runs on Anthropic's infra regardless of your laptop. **Requires a cloud-based Git repo** as working directory — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows.
+**Routines / `/schedule` — remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI, or sidebar: **New task → New remote task.** Runs on Anthropic's infra regardless of your laptop. **Requires a cloud-based Git repo** as working directory — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub triggers are web-only.
 
 **M4/M5/M6 send-off implications:** the un-packaged M4 send-off runs in the **same Claude Code session** (not `/loop`, not scheduled). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents are the generalisation M6 names as a callout, not an authoring exercise.
 
@@ -244,7 +251,7 @@ Three mechanisms. Pick by intent.
 2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
 3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic run can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
 
-Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works.md). Ctrl+C corruption tracked in GitHub issues #3003, #17466, #18880.
+Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines). Ctrl+C corruption verified against [GitHub issues #3003, #17466, #18880](https://github.com/anthropics/claude-code/issues/3003) (2026-05-14 — all three closed with repros; #3003 documents `messages.N: tool_use ids were found without tool_result blocks` after mid-tool interrupt + `--resume`).
 
 ---
 
@@ -294,20 +301,22 @@ Why both layers: git tells you what changed. The transcript tells you why the ag
 
 ---
 
-## 11. Session-hygiene commands — `/memory`, `/init`, `/compact`
+## 11. Session-hygiene commands — `/memory`, `/init`, `/context`, `/clear`, `/compact`
 
 **`/memory`** — lists every `CLAUDE.md`, `CLAUDE.local.md`, and rules file loaded in the current session. Toggle auto memory on/off. Link to open the auto memory folder in your editor. **First stop when Claude seems to be ignoring a rule** — check it actually loaded.
 
 **`/init`** — scans your codebase and drafts a starting `CLAUDE.md`. If one exists, `/init` suggests improvements rather than overwriting. Multi-phase interactive variant: `CLAUDE_CODE_NEW_INIT=1 claude` runs an interactive flow (asks which artifacts to set up — CLAUDE.md, skills, hooks — then explores with a subagent and proposes).
 
-**`/compact`** — summarises the conversation to free context. What survives:
-- Project-root `CLAUDE.md` re-reads from disk and re-injects
-- Nested subdirectory CLAUDE.md files **do NOT** re-inject; they reload next time Claude reads a file in that subdir
-- Conversation-only instructions (things you said in chat but didn't write to a file) are LOST
+**`/context`** — visualises current context-window usage as a coloured grid. Per-item breakdown of what's loaded (CLAUDE.md, memory, rules, skills, MCP, tool results, conversation). Optimisation suggestions for context-heavy tools, memory bloat, capacity warnings. Pass `all` to expand the per-item view in fullscreen mode. **Use when the conversation feels heavy** — see where the tokens are going before you reach for `/compact` or `/clear`.
+
+**`/clear` and `/compact` — two verbs split the work** (live-verified 2026-05-14 against `code.claude.com/docs/en/commands`):
+
+- **`/clear`** starts a new conversation with empty context. The previous conversation stays available in `/resume` (pass a name to label it in the picker — `/clear my-old-thread`). Aliases: `/reset`, `/new`. Project memory (CLAUDE.md, rules, auto-memory) re-loads on the fresh thread. Use when the task is genuinely done and the next task wants its own slate.
+- **`/compact`** summarises the conversation in place — same thread, smaller context. Project-root `CLAUDE.md` re-reads from disk and re-injects; nested subdirectory CLAUDE.md files **do NOT** re-inject (they reload next time Claude reads a file in that subdir); conversation-only instructions (things you said in chat but didn't write to a file) are LOST. Optionally pass focus instructions: `/compact keep the auth-flow diagnosis verbatim`. Use when you want to keep going on the same task with less weight.
 
 If an instruction disappeared after `/compact`, it was either conversation-only or lives in a subdirectory CLAUDE.md that hasn't reloaded. Persistent instructions belong in a file, not just in scrollback.
 
-Docs: [memory.md § View and edit with `/memory`](https://code.claude.com/docs/en/memory.md#view-and-edit-with-memory), [context-window § What survives compaction](https://code.claude.com/docs/en/context-window#what-survives-compaction).
+Docs: [memory.md § View and edit with `/memory`](https://code.claude.com/docs/en/memory.md#view-and-edit-with-memory), [commands § `/context` / `/clear` / `/compact`](https://code.claude.com/docs/en/commands), [context-window § What survives compaction](https://code.claude.com/docs/en/context-window#what-survives-compaction).
 
 ---
 

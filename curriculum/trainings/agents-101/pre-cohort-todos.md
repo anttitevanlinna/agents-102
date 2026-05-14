@@ -63,18 +63,17 @@ These are not easy to choose from text alone. Decide before polishing body furth
 - **Wire `agent-ready-data.md` and `personal-to-company-gap.md` into Agents 101.** Both ship in `curriculum/trainings/agents-101/supplementary/` but aren't declared in the TRAININGS registry (`site/layouts/curriculum.js` → `agents-101.supplementaries`) and no module body links them. Pick which module(s) each serves, add body link, register. Until then the workbook surfaces nothing for them; the files ride along in any tarball that reads the dir directly.
 - **Wire `agent-trigger-list.md` into Agents 101, or remove.** Same orphan shape: ships in `curriculum/trainings/agents-101/supplementary/` but no registry entry and no module link. The 2026-05-09 audit also flagged that its line-92 prompt pastes Agents-101-style paths (`./crux.md`, `module-3/stances/`, `judges/groundedness-judge.md`), confirm these resolve in the current Agents-101 starter scaffold before wiring; if any path has drifted, fix before students paste.
 
-### `claude-quick-reference.md` audit findings (2026-05-09)
+### `claude-quick-reference.md` audit findings (2026-05-09; refreshed 2026-05-14)
 
-Captured by audit subagent against the Agents-101 reference file. Original report `/tmp/ae101-audit/reference-findings.md` (lost on tmp wipe).
+Captured by audit subagent against the Agents-101 reference file. Some items now have evidence from the 2026-05-14 AE101 verification pass.
 
 **HIGH (own-audience):**
 
-- **Doc-host root inconsistency.** Line 7 root link points at `docs.anthropic.com`; individual sections (line 121 etc.) point at `code.claude.com/docs/en/...`. Pick one canonical root for the SVP audience and link the rest as sub-paths.
-
-**MED (verify or fill):**
-
-- **Lines 53–56 plan-mode entry paths + Shift+Tab cycle order**, cross-check matches `curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` §5; live-test current CLI before next cohort (modes have been renamed before).
-- **Line 71, option 3 "Ultraplan on Claude Code on the web"**, cross-check still exists at Anthropic; AE101 engineer-ref also names it (lines 159–167). If renamed/removed since 2026-04-23, both files trip.
+- **Doc-host root.** `code.claude.com` confirmed canonical 2026-05-14 (`docs.anthropic.com` 301-redirects). Sweep `claude-quick-reference.md` line 7 to `code.claude.com/docs/en/`.
+- **Plan-mode approval-paths drift + Shift+Tab cycle drift (both confirmed in primary docs 2026-05-14).** Lines 56, 64–72:
+ - Approval options have gone from 4 to 5 with re-worded names. Docs verbatim: *Approve and start in auto mode / Approve and accept edits / Approve and review each edit manually / Keep planning with feedback / Refine with Ultraplan.* "Tell Claude what to change" → "Keep planning with feedback." "Refine with Ultraplan on the web" is now its own option, not the only no-approve path.
+ - Shift+Tab default cycle is `default → acceptEdits → plan`. `auto` and `bypassPermissions` slot in **after** `plan` only when enabled per-account (auto mode requires Max/Team/Enterprise plan + specific model + Anthropic API; bypassPermissions requires `--dangerously-skip-permissions`). The "Default → Auto-accept → Plan → Auto" cycle described at line 56 is wrong for typical accounts, `auto` is no longer in the default cycle.
+ - Same root drift hits `curriculum/exercises/build-your-challenge-memory.md` line 45 (the *four options... option 1 / option 4* explanation in M2 prework). Sweep both files together; phrasing must match (Agents 101 SVP register vs AE101 engineer register).
 - **Lines 102, 145, 153, "*Official docs:..."* references with no clickable URL.** SVP audience needs the link, not a generic pointer. Three instances.
 
 **LOW:**

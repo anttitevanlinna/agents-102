@@ -1,7 +1,5 @@
 # How do you make your system learn?
 
-**Time:** 7 minutes. Closing lecture for Module 1.
-
 A system, just built. It runs on a task that matters, with rules written here, in a folder that will still be there after this session. The next move is what makes it worth keeping.
 
 ## A snapshot, not a forever-file

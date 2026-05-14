@@ -30,7 +30,7 @@ The room harvests everyone's before the training adds its own.
 
 [Compound and close](exercises/compound-and-close.md)
 
-> **If time allows.** Try the harness introspection on your live session: [The agent loop](trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
+> **If time allows.** Try the harness introspection on your live session: [The agent loop](../../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
 
 ## Key Concepts
 - The loop is orient → fix → compound → close. M1 ran it end-to-end on a trivial bug; every later module rides on this shape

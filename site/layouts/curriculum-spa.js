@@ -349,7 +349,7 @@
         var sectionsHtml = CurriculumRuntime.buildTocSections(t, {
             trainingKey: trainingKey,
             moduleHref: function (k, s) { return 'curriculum.html?training=' + k + '&module=' + s; },
-            fileHref: function (kind, s) { return 'curriculum.html?file=' + kind + '/' + s; },
+            fileHref: function (kind, s) { return 'curriculum.html?file=trainings/' + trainingKey + '/' + kind + '/' + s; },
             trainerGuideHref: 'curriculum.html?file=trainer-guide',
             bigIdeaFor: null,
             showModuleCountHeading: true,

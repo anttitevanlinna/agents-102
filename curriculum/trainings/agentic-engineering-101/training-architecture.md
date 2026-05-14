@@ -112,7 +112,7 @@ Verified by direct WebFetch on `geminicli.com` (the official Google docs site, c
 | 7 | Multiple parallel sessions on same repo (worktree) | M2+ | ✅ | ✅ generic `git worktree`, runtime-agnostic | n/a |
 | 8 | Plan mode (read-only proposal turn) | M2 | ✅ | ✅ `/plan [goal]` or Shift+Tab cycle; explicit user approval to exit; auto-YOLO in CI | `geminicli.com/docs/cli/plan-mode/` |
 | 9 | Show context-window usage as percentage | M1 | ✅ `/context` (% filled) | ❌ no native % display; `/stats` shows token counts only, not percentage of window | `geminicli.com/docs/reference/commands/` |
-| 10 | Reset / compact session context | optional | ✅ `/clear` (compacts) | ⚠️ verb fork: `/clear` is visual-only (clears display, not session); `/compress` is the actual context summariser | `geminicli.com/docs/reference/commands/` |
+| 10 | Reset / compact session context | optional | ✅ two verbs: `/clear` resets to fresh context (prior conversation saved, resumable); `/compact` summarises history in place | ⚠️ verb fork: `/clear` is visual-only (clears display, not session); `/compress` is the actual context summariser | `geminicli.com/docs/reference/commands/` |
 | 11 | Recurring local task scheduler | reference page only | ✅ `/loop <interval>` | ❌ no native equivalent; reference page calls out gap | `geminicli.com/docs/reference/commands/` |
 | 12 | User-extensible slash commands | M3+ | ✅ | ✅ TOML files at `~/.gemini/commands/` (user) + `<project>/.gemini/commands/` (project) | `geminicli.com/docs/reference/commands/` |
 | 13 | Skills, installable, invokable | M3, M6 | ✅ | ✅ Agent Skills at `~/.gemini/skills/<name>/SKILL.md` (also `~/.agents/skills/` alias). Activated via `activate_skill` tool | `geminicli.com/docs/cli/skills/` |
@@ -130,7 +130,7 @@ Verified by direct WebFetch on `geminicli.com` (the official Google docs site, c
 
 1. **Subagent parallelism, uncertain, not confirmed ✅.** Vendor blog asserts parallel; docs page describes sequential. Live-test before activation. Was previously stated as ✅.
 2. **`/context` → `/stats` is NOT a clean rename.** Gemini's `/stats` shows token counts, no native percentage display. AE101 M1's introspection beat (*"type /context, look at the unread-slice number"*) does not translate as a one-word rename; it needs reshape (different mechanic, same teaching point, *"how full is your window?"* answered via token math).
-3. **`/clear` semantics differ.** Claude Code's `/clear` compacts session; Gemini's `/clear` is visual-only and `/compress` is the real summariser. Verb fork.
+3. **`/clear` semantics differ.** Claude Code splits the work across two verbs, `/clear` resets to a fresh context window (prior conversation saved, resumable), `/compact` summarises history in place. Gemini's `/clear` is visual-only and `/compress` is the real summariser. Verb fork on both sides, with different defaults.
 4. **Session-transcript path is two paths, not one.** `~/.gemini/history/<project_hash>` (git snapshots) + `~/.gemini/tmp/<project_hash>/checkpoints` (chat). Resume via `/restore`. M5's "fresh session reads M4's transcript" needs path-fork in the personal-rules path map.
 5. **Hooks, `UserPromptSubmit` is renamed `BeforeAgent`.** Same firing moment, different name. Rename, not gap.
 6. **Latest version v0.41.2 (2026-05-06)**, not v0.40.0. Confirms sub-monthly minor-release cadence; pre-1.0 churn risk holds.

@@ -2,7 +2,7 @@
 
 Lookup page for the three ways Claude Code runs on a clock. Pick the one that matches the shape of your work. Composes with any skill you have installed.
 
-**Root docs:** [docs.anthropic.com](https://docs.anthropic.com) for the source of truth. This page is a shortcut.
+**Root docs:** [code.claude.com/docs/en/](https://code.claude.com/docs/en/) for the source of truth (live-verified 2026-05-14 — `docs.anthropic.com` 301-redirects to `code.claude.com`). This page is a shortcut.
 
 ## The three primitives
 

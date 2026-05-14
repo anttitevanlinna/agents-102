@@ -1,7 +1,5 @@
 # The data question
 
-**Time:** 7 minutes. Closing lecture for Module 2.
-
 Output, just verified. Some rows cleared. Some didn't. The row that didn't clear is partly a verification question and partly something else: a data question. Where Claude got the input from, what Claude did with it, where the result lives, who else can see it.
 
 A teammate who wasn't in this room will eventually ask: *"Is it safe to use Claude for X?"* This lecture is the version of the answer the team can give plainly.

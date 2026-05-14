@@ -1,7 +1,5 @@
 # Agentic systems demo script
 
-**Time:** 35 minutes.
-
 This is a live demo script for the agents-102 repo and the Claude Basics workbook. The point is not to tour files. The point is to show how an agentic system behaves when rules, prompts, checks, build output, and compounding sit in one working system.
 
 ## 1. Start with the question
@@ -50,7 +48,7 @@ Close by naming the loop: rules, inspect, plan, edit, check, build, compound. Th
 
 <!-- maintainer -->
 
-**Lecture meta:** *Live demo script for Claude Basics Module 1. Keep this as a demo spine, not a reading. Do not expand into a file-by-file repo tour.*
+**Lecture meta:** *35-minute live demo script for Claude Basics Module 1. Keep this as a demo spine, not a reading. Do not expand into a file-by-file repo tour.*
 
 **Quality:** draft 2026-04-30
 - draft 2026-04-30 (created from rough agentic system demo script; sim/eval not run)

@@ -122,11 +122,12 @@ Every piece of curriculum content goes through this loop. Skipping a step is how
 
 **This pattern generalizes beyond curriculum.** Articles, research findings, future trainings all follow the same shape: *input → plan → measure → contract → make → evaluate → improve*.
 
-**Maintainer-block TODO discipline — three rules, canonical bodies live in `memory/compounded/`:**
+**TODO discipline — per-bullet and per-section, canonical bodies live in `memory/compounded/`:**
 
 - **Closed TODOs get deleted, not strikethroughed.** Provenance lives in git + Quality dimension-log. → `compounded/2026-04-28-content_creation-remove-done-todos-not-strikethrough.md`
 - **TODO vs DEFERRED.** TODO = active autonomous-sweepable; DEFERRED = explicitly held with evidence (Antti-held call, time-defer, upstream-infra). Sweep greps TODO only. → `compounded/2026-04-28-content_creation-todo-vs-deferred-marker.md`
 - **Autonomous sweep verb is EVALUATE, not DEFER.** Read close-condition, check artifact state, then close / keep TODO / relabel DEFERRED with evidence. >50% DEFERRED on first pass = the verb slipped. → `compounded/2026-04-28-content_creation-evaluate-dont-default-defer.md`
+- **TODO surfaces hold open decisions only.** A tracking surface declared as "canonical home for open decisions before X" (`pre-cohort-todos.md` and analogs) must not accrete: (a) carve-out / FP catalogs (route to `memory/compounded/`); (b) audit narrative or record sections (route to git log + per-file Quality blocks); (c) restatements of rules that live elsewhere (one-line pointer is fine; don't re-narrate). Diagnostic before adding a section: *"is this an OPEN DECISION the maintainer needs to make before X?"* If no, route to canonical home. When restructuring, sweep internal numerical references that stale after deletions. → `compounded/2026-05-14-content_creation-todo-surface-open-decisions-only.md`
 
 ## The mood arc — load-bearing constraint
 

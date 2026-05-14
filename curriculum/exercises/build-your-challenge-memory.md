@@ -42,7 +42,7 @@ Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stay
 
 <div class="rt-code">
 
-Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with four options. For this exercise: **option 1 (Yes, and use auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **option 4 (Tell Claude what to change)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (manual per-file approval) and 3 (Ultraplan on web) aren't needed here. Full rundown in the [quick reference](../trainings/agents-101/reference/claude-quick-reference.md).
+Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* with five options. For this exercise: **option 1 (Approve and start in auto mode)** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **option 4 (Keep planning with feedback)** and type one sentence of feedback; Claude rewrites the plan. Options 2 (accept edits), 3 (review each edit), and 5 (Ultraplan) aren't needed here. Full rundown in the [quick reference](../trainings/agents-101/reference/claude-quick-reference.md).
 
 </div>
 <div class="rt-cowork">

@@ -4,7 +4,7 @@ Lookup material for the hands-on parts of the training. Curriculum content stays
 
 Scan, find what you need, copy the prompt. For deep feature documentation, each section points to the official Anthropic docs.
 
-**Root docs:** [docs.anthropic.com](https://docs.anthropic.com) — the source of truth for Claude Code features. This reference is a shortcut; the docs are the full answer.
+**Root docs:** [code.claude.com/docs/en/](https://code.claude.com/docs/en/) — the source of truth for Claude Code features. This reference is a shortcut; the docs are the full answer. (The older `docs.anthropic.com/en/docs/claude-code/...` URLs 301-redirect here.)
 
 ## Pick your surface — three modes
 
@@ -25,7 +25,7 @@ The exercises run on any of these three. Same engine underneath, three ways to r
 
 **Fallback if Cowork is unavailable.** Use Claude Code Desktop or Claude Code CLI. The Agents 101 prompts and artifacts are written to work across all three surfaces. Do not use an API-key-only route as the default backup for this training: it would skip the local working folder, personal skills, connector UI, and participant-visible agent workflow the curriculum teaches.
 
-**Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [docs.anthropic.com → Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) cover direct install.
+**Install through your company's approved channel.** Most companies have an IT self-service catalog, a software request process, or a policy for developer tools. Check there first for Claude, Claude Code, Git, and Python — getting them through the sanctioned path avoids the compliance conversation later. If you're on a personal laptop or your company doesn't have a policy, the official docs at [code.claude.com → overview](https://code.claude.com/docs/en/overview) cover direct install.
 
 ## First time in a terminal? (CLI path)
 
@@ -53,23 +53,25 @@ Claude Code has **plan mode**: Claude researches and proposes a plan instead of 
 **Toggle it on — three ways, pick whichever:**
 - Tell Claude *"Enable plan mode."* (Works anywhere. Recommended default.)
 - Use the **mode dropdown** at the bottom of the Claude Code desktop app — pick *Plan* from the list.
-- Keyboard: Shift+Tab to cycle permission modes (Default → Auto-accept → Plan → Auto).
+- Keyboard: Shift+Tab to cycle permission modes (default → acceptEdits → plan). Two extra modes (`auto` and `bypassPermissions`) slot in after `plan` only when your account has them enabled; most Agents 101 students will see the three-mode cycle.
 
 **When the footer reads *plan mode*** and you paste a prompt, Claude returns a plan instead of writing files. When the plan is ready, Claude Code pauses and asks:
 
 > *Claude has written up a plan and is ready to execute. Would you like to proceed?*
 >
-> *1. Yes, and use auto mode*
-> *2. Yes, manually approve edits*
-> *3. No, refine with Ultraplan on Claude Code on the web*
-> *4. Tell Claude what to change*
+> *1. Approve and start in auto mode*
+> *2. Approve and accept edits*
+> *3. Approve and review each edit manually*
+> *4. Keep planning with feedback*
+> *5. Refine with Ultraplan*
 
 **What each option does, and when to pick it:**
 
-- **1. Yes, and use auto mode** — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). **This is the friendly default for most Agents 101 exercises.**
-- **2. Yes, manually approve edits** — Claude pauses for each file write. You OK each one. Slower, safer. Pick this when the plan touches something you care deeply about (editing a live policy file, modifying production-adjacent work).
-- **3. No, refine with Ultraplan on Claude Code on the web** — Sends the plan to a cloud-based refinement tool. Not used in Agents 101; ignore.
-- **4. Tell Claude what to change** — Opens a text box. You type specific feedback (*"merge buyer-tone and buyer-segments into one page,"* *"add a topic for competitive response"*). Claude rewrites the plan. Pick this when the plan is mostly right but something is off. Cheaper than re-running the whole prompt from scratch.
+- **1. Approve and start in auto mode** — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). **This is the friendly default for most Agents 101 exercises.**
+- **2. Approve and accept edits** — Claude auto-approves file writes but still pauses for non-file commands (terminal actions, etc.). A useful middle ground when the plan is edits-only.
+- **3. Approve and review each edit manually** — Claude pauses for each file write. You OK each one. Slower, safer. Pick this when the plan touches something you care deeply about (editing a live policy file, modifying production-adjacent work).
+- **4. Keep planning with feedback** — Opens a text box. You type specific feedback (*"merge buyer-tone and buyer-segments into one page,"* *"add a topic for competitive response"*). Claude rewrites the plan. Pick this when the plan is mostly right but something is off. Cheaper than re-running the whole prompt from scratch.
+- **5. Refine with Ultraplan** — Sends the plan to a cloud-based refinement tool. Not used in Agents 101; ignore.
 
 **Rule of thumb for Agents 101:** plan looks solid → option 1. Plan is close but needs a tweak → option 4 with one sentence of feedback. Plan is fundamentally wrong → option 4 describing the change, or exit plan mode and re-paste the prompt with sharper instructions.
 
@@ -168,11 +170,11 @@ Rule of thumb: if the current conversation is producing confused output, start a
 
 **I want to start over on this exercise.** New project. The current project stays where it is; the new one starts clean.
 
-*Troubleshooting deeper than this: [docs.anthropic.com support section](https://docs.anthropic.com) + Anthropic's status page for platform issues.*
+*Troubleshooting deeper than this: [code.claude.com/docs/en/](https://code.claude.com/docs/en/) + Anthropic's status page for platform issues.*
 
 ---
 
-**This document grows.** If you hit something during the training that belongs here and isn't, flag it — the reference gets updated. For anything feature-specific, the [official Anthropic docs](https://docs.anthropic.com) are the source of truth.
+**This document grows.** If you hit something during the training that belongs here and isn't, flag it — the reference gets updated. For anything feature-specific, the [official Claude Code docs](https://code.claude.com/docs/en/) are the source of truth.
 
 <!-- maintainer -->
 

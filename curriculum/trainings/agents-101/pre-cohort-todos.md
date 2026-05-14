@@ -69,12 +69,7 @@ Captured by audit subagent against the Agents-101 reference file. Some items now
 
 **HIGH (own-audience):**
 
-- **Doc-host root.** `code.claude.com` confirmed canonical 2026-05-14 (`docs.anthropic.com` 301-redirects). Sweep `claude-quick-reference.md` line 7 to `code.claude.com/docs/en/`.
-- **Plan-mode approval-paths drift + Shift+Tab cycle drift (both confirmed in primary docs 2026-05-14).** Lines 56, 64–72:
- - Approval options have gone from 4 to 5 with re-worded names. Docs verbatim: *Approve and start in auto mode / Approve and accept edits / Approve and review each edit manually / Keep planning with feedback / Refine with Ultraplan.* "Tell Claude what to change" → "Keep planning with feedback." "Refine with Ultraplan on the web" is now its own option, not the only no-approve path.
- - Shift+Tab default cycle is `default → acceptEdits → plan`. `auto` and `bypassPermissions` slot in **after** `plan` only when enabled per-account (auto mode requires Max/Team/Enterprise plan + specific model + Anthropic API; bypassPermissions requires `--dangerously-skip-permissions`). The "Default → Auto-accept → Plan → Auto" cycle described at line 56 is wrong for typical accounts, `auto` is no longer in the default cycle.
- - Same root drift hits `curriculum/exercises/build-your-challenge-memory.md` line 45 (the *four options... option 1 / option 4* explanation in M2 prework). Sweep both files together; phrasing must match (Agents 101 SVP register vs AE101 engineer register).
-- **Lines 102, 145, 153, "*Official docs:..."* references with no clickable URL.** SVP audience needs the link, not a generic pointer. Three instances.
+- **Three "*Official docs:..."* references with no clickable URL** in `claude-quick-reference.md` (currently lines ~104, 147, 155, file tools, Skills, Subagents). SVP audience needs the link, not a generic pointer.
 
 **LOW:**
 

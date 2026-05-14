@@ -27,8 +27,6 @@ Most 2026-05-09 items closed by the 2026-05-14 verification pass (`/tmp/ae101-to
 - **`supplementary/how-the-best-do-ci-cd.md` Curran 19.2% scope.** Curran's 19.2% is org-wide in the source; file frames it as "lowest tier" (lines 17, 33, 53). Defensible from context but not verbatim. Tighten before first cohort if precision matters. Klaassen 14-agent count and 10-people headcount fixed inline; Ramp four numbers stay sourced-unconfirmed (X.com paywalled today).
 - **Register-call: `/loop` version floors + lifecycle**, `/loop` requires v2.1.72+; Ultraplan requires v2.1.91+; recurring `/loop` tasks auto-expire 7 days after creation; `Esc` (not Ctrl+C) interrupts the bare-`/loop` wait. Subagent left these out of engineer-ref to preserve "behaviour-named, not version-pinned" register. Maintainer call whether to land any of them.
 
-**Cross-training drift contamination (out-of-AE101-scope; for Agents 101 todo):** the 4→5 approval-paths and Shift+Tab cycle drifts also live in `curriculum/trainings/agents-101/reference/claude-quick-reference.md` (lines 56, 64–72) and `curriculum/exercises/build-your-challenge-memory.md` line 45 (Agents 101 M2 only). Same root drift; same fix shape.
-
 ## Per-file specific concerns (not caught by auto-fire)
 
 - **`reading-the-return.md` + `learning-through-contrast.md`**, custom-persona sim: dual-mode reader (pre-read + in-room handout) at the M5 openers. Standard Maija/Greg/Jin trio doesn't simulate the dual-mode use.

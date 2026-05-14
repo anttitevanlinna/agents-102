@@ -1,5 +1,7 @@
 # Practitioner Signals — March 2026 Cycle Update
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 *Cycle update building on practitioner-signals-march-2026.md. Research date: March 23, 2026.*
 
 ---
@@ -31,7 +33,6 @@
 - "I don't think I've typed like a line of code probably since December" — the shift happened in December 2025 when he went from 80/20 human/agent to 20/80, then to zero manual coding
 - "Code's not even the right verb anymore" — he now "expresses his will to agents for 16 hours a day"
 - Runs **multiple coding agents in parallel on a tiled monitor**, assigning features to each and reviewing outputs as they return
-- Describes being in a "state of psychosis" trying to figure out what's possible
 - Built "Dobby the House Elf" — a home agent controlling sound, lighting, HVAC, security, pool via WhatsApp natural language commands
 - Coding agent skills are "atrophying" because agents crossed a "coherence threshold" around December 2025
 
@@ -39,8 +40,9 @@
 
 **Sources:**
 - https://podscripts.co/podcasts/no-priors-artificial-intelligence-technology-startups/andrej-karpathy-on-code-agents-autoresearch-and-the-loopy-era-of-ai [practitioner direct — podcast transcript]
-- https://fortune.com/2026/03/21/andrej-karpathy-openai-cofounder-ai-agents-coding-state-of-psychosis-openclaw/ [general press — bare facts only]
 - https://glenrhodes.com/andrej-karpathys-no-priors-podcast-take-on-the-phase-shift-in-engineering-and-second-order-effects-of-coding-agents/ [practitioner analysis]
+
+*Evidence downgraded 2026-05-14: 1 source removed as hallucinated.*
 
 **Evidence level:** Level 2 (single practitioner, but extremely high-profile and specific about workflow changes).
 

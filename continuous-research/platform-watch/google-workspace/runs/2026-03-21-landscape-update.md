@@ -1,5 +1,7 @@
 # Agent Platform Landscape Update — 2026-03-21
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 **Purpose:** Track major developments across the agent platform landscape (March 2026) that affect the CTO platform question.
 
 ## Queries Used
@@ -12,7 +14,6 @@
 - agent framework consolidation merger shutdown pivot March 2026
 - Google ADK agent development kit March 2026
 - AG-UI protocol agent user interface 2026
-- NVIDIA agent toolkit NemoClaw GTC 2026 enterprise agents
 - OpenAI Frontier agent platform enterprise March 2026
 - AI agent production failure postmortem 2026
 
@@ -36,18 +37,7 @@
 ---
 
 ### Finding 2: NVIDIA Agent Toolkit — new infrastructure-layer entrant at GTC 2026
-**Source:** [NVIDIA Newsroom](https://nvidianews.nvidia.com/news/ai-agents) — [vendor press release], [Futurum Group analysis](https://futurumgroup.com/insights/at-gtc-2026-nvidia-stakes-its-claim-on-autonomous-agent-infrastructure/) — [practitioner analysis], [CNBC](https://www.cnbc.com/2026/03/10/nvidia-open-source-ai-agent-platform-nemoclaw-wired-agentic-tools-openclaw-clawdbot-moltbot.html) — [general press]
-**Date:** March 10-18, 2026
-**Evidence level:** Level 0 (vendor announcement) + Level 1 (analyst opinion)
-**What:** NVIDIA announced Agent Toolkit at GTC 2026 — a modular stack comprising:
-- **NemoClaw** — enterprise version of the viral OpenClaw agent runtime (launched Jan 2026). Adds sandboxing, least-privilege access, privacy router. Runs on any hardware (not NVIDIA-only).
-- **AI-Q Blueprint** — open agent blueprint for deep research tasks with planning, memory, execution.
-- **Nemotron models** — open models that can run locally on RTX PCs, workstations, or DGX hardware.
-- 17 enterprise partners: Adobe, Atlassian, SAP, Salesforce, ServiceNow, Siemens, CrowdStrike, etc.
-
-Jensen Huang: "For CEOs, the question is, what's your OpenClaw strategy?"
-
-**CTO relevance:** NVIDIA is positioning itself as the infrastructure layer for agents, not the application layer. NemoClaw addresses the runtime security problem (sandboxing, policy enforcement) but is alpha-stage. The hardware-agnostic approach is notable — they're selling the software stack, not just GPU lock-in. Analyst caution: NemoClaw alone is not sufficient governance.
+> *Section removed 2026-05-14: contained material from the hallucinated OpenClaw/ClawHub/NemoClaw cluster.*
 
 ---
 
@@ -208,10 +198,10 @@ Visual Studio 2026 (18.4.0, March 10) shipped MCP governance via GitHub allowlis
 The three-protocol architecture (MCP + A2A + AG-UI) is becoming the default assumption for enterprise agent systems. CTOs should evaluate platforms against all three. As of March 2026, **Bedrock AgentCore is the only managed platform supporting all three**.
 
 ### Infrastructure layer is the new battleground
-NVIDIA (NemoClaw), AWS (AgentCore), OpenAI (Frontier), and Google (ADK + Vertex) are all competing to be the infrastructure layer where agents run. The differentiation is moving from "which model" to "which runtime, governance, and observability."
+AWS (AgentCore), OpenAI (Frontier), and Google (ADK + Vertex) are all competing to be the infrastructure layer where agents run. The differentiation is moving from "which model" to "which runtime, governance, and observability."
 
 ### Governance is no longer optional
-MCP enterprise governance frameworks (7 launched), AgentCore Policy GA, NemoClaw sandboxing — governance is becoming table stakes. CTOs who deploy agents without governance infrastructure are taking on operational risk.
+MCP enterprise governance frameworks (7 launched) and AgentCore Policy GA — governance is becoming table stakes. CTOs who deploy agents without governance infrastructure are taking on operational risk.
 
 ### Compound reliability remains the hard problem
 No platform has solved the fundamental issue: multi-step agent workflows have exponentially declining reliability. The Compaction API (Anthropic), Policy enforcement (AWS), and evaluation frameworks are all partial solutions. This remains the #1 blocker for business-domain agents.

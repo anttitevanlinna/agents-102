@@ -1,5 +1,7 @@
 # Research Cycle 70 — March 24, 2026 (Hour 18)
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 *Three parallel research tracks: Platform Agents, Practitioner Signals, Nordic Deployments.*
 
 ---
@@ -129,13 +131,9 @@ Enterprise platform for building, deploying, and managing multi-vendor AI agents
 
 **Evidence level:** Level 0-1. Named customers, no metrics.
 
-### NEW: NVIDIA NemoClaw (GTC March 16)
+### NEW: NVIDIA agent runtime (GTC March 16)
 
-Open-source secure agent runtime. Security/governance focus: sandboxing, least-privilege, privacy router.
-Partners: Adobe, Atlassian, Cisco, CrowdStrike, Red Hat, SAP, Salesforce, ServiceNow, Siemens.
-Status: **Alpha.** No deployments.
-
-**Source:** https://nvidianews.nvidia.com/news/ai-agents [vendor press release — Level 0]
+> *Section removed 2026-05-14: contained material from the hallucinated OpenClaw/ClawHub/NemoClaw cluster.*
 
 ### Google ADK v1.0.0 — Production-Ready, Still Zero Deployments
 
@@ -157,8 +155,9 @@ No Priors podcast. Zero manual coding since Dec 2025. "I don't think a normal pe
 **Autoresearch** released March 7-8: 630-line Python tool, AI agents run autonomous ML experiments. 700 experiments in 2 days. Shopify CEO Lutke independently achieved 19% improvement. Agents-building-agents made concrete → Module 8 content.
 
 **Sources:**
-- https://fortune.com/2026/03/21/andrej-karpathy-openai-cofounder-ai-agents-coding-state-of-psychosis-openclaw/ [general press]
 - https://github.com/karpathy/autoresearch [practitioner direct]
+
+*Evidence downgraded 2026-05-14: 1 source removed as hallucinated.*
 
 ### Willison — Pragmatic Summit Dense Content (March 14)
 

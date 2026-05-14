@@ -1,5 +1,7 @@
 # Eval Instance — Agents 101 / Module 3 prework
 
+> *Preserved for historical record 2026-05-14: this eval instance references the hallucinated OpenClaw content that was removed from `curriculum/exercises/module-3-prework.md`. Findings here apply to the pre-2026-05-14 state.*
+
 Filled-in instance of `curriculum/evals/exercise.md` for the Module 3 prework in the Agents 101 training. Prework is exercise-shaped (reading + note-taking activity), so the exercise eval template applies.
 
 **Target file:** `curriculum/exercises/module-3-prework.md`

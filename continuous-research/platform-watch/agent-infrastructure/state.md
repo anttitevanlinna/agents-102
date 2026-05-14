@@ -1,5 +1,7 @@
 # Agent Infrastructure & Governance — Platform State
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 Last updated: 2026-04-20 (cycle 106)
 OODA cycles: 3
 
@@ -39,7 +41,7 @@ The biggest bet: treating AI agents as first-class identities in the enterprise 
 - **Certification workflows:** Agents brought into standard access-review cycles, human owners assigned, access revocable
 - **SIEM integration:** Agent activity (tool calls, authorization decisions, access attempts) logged to existing SIEM
 - **8,200+ platform integrations** extended to include Boomi, DataRobot, Google Vertex AI as agent-aware platforms
-- **Status:** GA April 30, 2026. EA active now. First enterprise governance product to cross the GA threshold (all others — ConductorOne, Stacklok, Vorlon, Astrix, NVIDIA OpenShell — remain pre-GA as of April 2026).
+- **Status:** GA April 30, 2026. EA active now. First enterprise governance product to cross the GA threshold (all others — ConductorOne, Stacklok, Vorlon, Astrix — remain pre-GA as of April 2026).
 - **Evidence level:** Level 0 for all capabilities (Okta sources). Level 1 bare fact for GA timing — independently confirmed by MSSP Alert and SiliconAngle. Zero independent deployment evidence.
 - **WARNING — DISQUALIFIED SOURCE:** Fortune article (fortune.com/2026/04/13/ai-agents-governance-identity-risk-okta/) appeared credible but author is Dan Mountstephen, SVP at Okta — undisclosed guest contributor. Level 0 vendor thought leadership. McDonald's chatbot breach and Replit database deletion cited in the article are real incidents documented independently elsewhere.
 - Sources: [Okta blog — AI Agents EA announcement](https://www.okta.com/blog/ai/okta-ai-agents-early-access-announcement/) [vendor press release]; [Okta Showcase 2026 press release](https://www.okta.com/newsroom/press-releases/showcase-2026/) [vendor press release]; [MSSP Alert coverage](https://www.msspalert.com/news/okta-wants-ai-agents-treated-like-identities-heres-why-that-matters) [domain trade publication]; [SiliconAngle — framework launch](https://siliconangle.com/2026/03/16/okta-unveils-new-framework-manage-ai-agents-upcoming-okta-ai-agents-platform/) [tech press, bare facts]
@@ -62,24 +64,15 @@ Most technically detailed discovery approach. Four-method architecture announced
 - **NHI Fingerprinting:** Detects agents that were never registered in any AI platform — monitors the credential layer (OAuth apps, service accounts, API keys, PATs) across cloud, IdP, SaaS, and DevOps tools
 - **Four discovery methods:** (1) AI Platform Integrations (Copilot, Bedrock, Vertex, OpenAI, Agentforce), (2) NHI Fingerprinting, (3) Sensor Telemetry on endpoints, (4) Bring-Your-Own-Service plug-in model
 - **Agent Control Plane (ACP):** Real-time policy engine controlling what agents can do
-- **OpenClaw/Moltbot scanner:** Discovers shadow agents specifically
 - **Evidence level:** Level 0 — vendor blog, PR Newswire press release. No independent deployment evidence.
 - Sources: [Astrix RSAC 2026 blog](https://astrix.security/learn/blog/what-were-announcing-at-rsac-2026-discovery-across-every-layer-and-control-over-what-agents-can-do/) [vendor press release]; [PR Newswire announcement](https://www.prnewswire.com/news-releases/astrix-security-delivers-the-most-comprehensive-ai-agent-discovery-and-enhances-security-with-agent-policy-enforcement-302719653.html) [vendor press release]; [Help Net Security coverage](https://www.helpnetsecurity.com/2026/03/23/astrix-security-ai-agent-security-platform-expansion/) [domain trade publication]
 
 ## 2. Runtime Security — Agent Sandboxing & Execution Control
 
-### NVIDIA OpenShell + NemoClaw — Open-Source Agent Sandboxing
+### [Removed]
+> *Section removed 2026-05-14: contained material from the hallucinated OpenClaw/ClawHub/NemoClaw cluster.*
 
-Open-source runtime isolation for agents. The infrastructure play: kernel-level sandboxing, not prompt-level guardrails.
-
-- **OpenShell:** Core of NVIDIA Agent Toolkit. Out-of-process policy enforcement, sandboxed execution, granular permissions, privacy router
-- **NemoClaw:** Security layer for OpenClaw agents. Adds Landlock + seccomp + network namespace isolation — OS-level lockdown
-- **Key architecture decision:** Policies enforced OUTSIDE the agent process. Even a compromised agent can't bypass policy enforcement
-- **15+ enterprise partners** (vendor-claimed, no names published)
-- **Status:** "Early preview" — GitHub README explicitly says "not production ready"
-- **Known vulnerability:** Agent could copy settings file (openclaw.json) and restart pointing at the modified copy, bypassing gateway security settings. Patched, but demonstrates the immaturity
-- **Evidence level:** Level 0-1 — vendor blog, GitHub repo. The guardrail bypass is practitioner-found counter-evidence.
-- Sources: [NVIDIA Technical Blog — OpenShell](https://developer.nvidia.com/blog/run-autonomous-self-evolving-agents-more-safely-with-nvidia-openshell/) [vendor press release]; [NemoClaw GitHub](https://github.com/NVIDIA/NemoClaw) [practitioner direct]; [NemoClaw guardrail bypass analysis](https://www.buildmvpfast.com/blog/nemoclaw-guardrail-bypass-ai-agent-security-2026) [practitioner analysis]; [CIO coverage](https://www.cio.com/article/4146545/nvidia-nemoclaw-promises-to-run-openclaw-agents-securely.html) [general press]
+*Category evidence reduced 2026-05-14 after cargo removal; reassess before citing.*
 
 ### Cisco AI Defense — MCP-Layer Runtime Protection
 
@@ -200,7 +193,6 @@ All vendor-sourced. All should be treated with caution. But the convergence acro
 - **Okta** is closest to becoming the identity meta-layer (agents as first-class identities in Universal Directory, cross-platform discovery). But it's not GA until April 30 and has zero reported deployments.
 - **Astrix** has the most technically detailed discovery approach (four methods including NHI fingerprinting). But it's a point solution, not a governance platform.
 - **ConductorOne** claims the broadest MCP coverage (3,000+ servers). But governance without identity is just access management.
-- **NVIDIA OpenShell** solves runtime isolation but only for OpenClaw agents — not a cross-platform play.
 - **Standards bodies** (OWASP, NIST, CSA) are setting frameworks but won't deliver implementable standards before H2 2026 at earliest.
 
 **The architectural gap:** No product today can discover agents across Copilot + Bedrock + Vertex + OpenAI + custom-built, apply unified governance policies, and provide forensic audit — from a single pane. Each vendor covers one or two layers. The CTO must stitch together 3-5 products to get what they need, with no proven integration patterns.
@@ -211,7 +203,6 @@ All vendor-sourced. All should be treated with caution. But the convergence acro
 
 - [ ] **Independent deployment evidence** — is ANY enterprise actually using Okta for AI Agents, Astrix, ConductorOne, or Vorlon in production? Who? With what results?
 - [ ] **Okta GA reality check (May 2026)** — after April 30 GA, do enterprises actually adopt agent-as-identity? Or is it shelfware?
-- [ ] **OpenShell/NemoClaw adoption** — who are the 15+ enterprise partners? Anyone beyond NVIDIA's own ecosystem?
 - [ ] **Cross-platform governance** — is anyone stitching together identity + runtime + forensics from different vendors? What does the integration look like?
 - [ ] **The shadow agent problem** — Astrix and Okta both claim shadow agent discovery. Has anyone actually found shadow agents in an enterprise? How many? What were they doing?
 - [ ] **Nordic signal** — any Nordic companies deploying agent governance tools? Any Nordic-origin governance startups?
@@ -227,6 +218,4 @@ All sources cited inline above. Key source pages:
 - [Gravitee State of AI Agent Security 2026](https://www.gravitee.io/state-of-ai-agent-security)
 - [CSA CSAI Foundation launch](https://cloudsecurityalliance.org/press-releases/2026/03/23/csa-securing-the-agentic-control-plane)
 - [Okta for AI Agents](https://www.okta.com/products/govern-ai-agent-identity/)
-- [NVIDIA OpenShell blog](https://developer.nvidia.com/blog/run-autonomous-self-evolving-agents-more-safely-with-nvidia-openshell/)
-- [NemoClaw GitHub](https://github.com/NVIDIA/NemoClaw)
 - [Astrix RSAC 2026 announcements](https://astrix.security/learn/blog/what-were-announcing-at-rsac-2026-discovery-across-every-layer-and-control-over-what-agents-can-do/)

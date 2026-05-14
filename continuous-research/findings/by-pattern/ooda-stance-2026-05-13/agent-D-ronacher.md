@@ -1,5 +1,7 @@
 # OODA stance-axis test — Armin Ronacher deep-dive — 2026-05-13
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 Armin Ronacher (creator of Flask, Jinja; Sentry's first CTO) is the closest the field has to a sceptical insider on agentic coding. He posts essays at `lucumr.pocoo.org` as his canonical channel — 36 posts in 2025 alone, ~18% of his lifetime blog output, mostly on agents. This deep-dive tests him against the 5-axis convergence hypothesis and isolates his distinctive positions.
 
 ## Sources (byline-checked, freshness-checked)
@@ -13,7 +15,6 @@ All within the 6-month freshness window (Nov 2025 – May 2026). All authored by
 - https://lucumr.pocoo.org/2025/12/22/a-year-of-vibes/ — [practitioner direct] — 2025-12-22 — "A Year Of Vibes." Year-end retrospective; explicitly self-aware that his preferences are vibes-not-evidence.
 - https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] — 2026-01-14 — "Porting MiniJinja to Go With an Agent." Single-experiment write-up: $60, 2.2M tokens, 10 hours agent / 45 min human.
 - https://lucumr.pocoo.org/2026/1/18/agent-psychosis/ — [practitioner direct] — 2026-01-18 — "Agent Psychosis: Are We Going Insane?" Slop critique; "amazing AND massive slop machines."
-- https://lucumr.pocoo.org/2026/1/31/pi/ — [practitioner direct] — 2026-01-31 — "Pi: The Minimal Agent Within OpenClaw." Endorses Mario Zechner's 4-tool minimal agent + self-modification.
 - https://lucumr.pocoo.org/2026/2/9/a-language-for-agents/ — [practitioner direct] — 2026-02-09 — "A Language For Agents." Argues for greppability, explicit syntax, local reasoning as language design criteria.
 - https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/ — [practitioner direct] — 2026-02-13 — "The Final Bottleneck." Argues human accountability/review is the irreducible bottleneck.
 - https://lucumr.pocoo.org/2026/3/5/theseus/ — [practitioner direct] — 2026-03-05 — "AI And The Ship of Theseus." Slopforks; legal/economic dislocation from cheap re-implementation.

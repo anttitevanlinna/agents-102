@@ -1,4 +1,7 @@
 # Search Log: Nordic Enterprise AI
+
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 **Date:** 2026-02-23
 **Scope:** Nordic (Finland, Sweden, Norway, Denmark, Iceland)
 
@@ -184,7 +187,6 @@
 | 97 | https://careers.wolt.com/en/blog/tech/machine-learning-at-wolt-our-journey-towards-mlops | Machine learning at Wolt: journey towards MLOps | practitioner-direct | not-agentic | Finland: Wolt ML infrastructure, not agentic |
 | 98 | https://retailtechinnovationhub.com/home/2025/4/10/doordash-and-coco-ramp-up-partnership-with-us-sidewalk-robot-delivery-launch-following-wolt-pilot | DoorDash/Coco robot delivery after Wolt pilot | press-coverage | truly-agentic | Finland: Coco autonomous delivery robots piloted in Helsinki |
 | 99 | https://intelligentplatforms.ai/platform-strategy-as-a-sequence-of-steps-wolts-recipe/ | Platform Strategy: Wolt's Recipe | practitioner-analysis | not-agentic | Wolt platform strategy analysis |
-| 100 | https://lobehub.com/skills/openclaw-skills-wolt-orders | wolt-orders LobeHub skill | market-context | not-agentic | Third-party Wolt ordering integration |
 
 ### Query 11: "Lovable.dev AI agent Sweden startup 2026 results"
 

@@ -1,5 +1,7 @@
 # Agent Orchestration Platforms — OODA Research
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 **Date:** 2026-02-21
 **Rounds:** 4 (broad scan, deep dive, agent server category, practitioner sentiment)
 **Evidence standard:** Practitioner reports and documentation over vendor marketing. Claims marked with confidence where ambiguous.
@@ -672,7 +674,7 @@ Use **Letta** for agents that need persistent memory across sessions and self-im
 
 1. **Bedrock AgentCore — 5 features in March:** Policy GA (Cedar-based agent governance outside agent code), Stateful MCP (session persistence in microVMs), AG-UI protocol (agent-user interface standard), Memory Streaming (Kinesis push for long-term memory), Shell Command API. First platform supporting all three protocols (MCP + A2A + AG-UI). ([AWS announcements](https://aws.amazon.com/about-aws/whats-new/2026/03/policy-amazon-bedrock-agentcore-generally-available/), Mar 2026)
 
-2. **LangChain + NVIDIA enterprise partnership (Mar 16):** Deep Agents (long-running agent harness), NVIDIA AI-Q Blueprint (#1 deep research benchmark), OpenShell (secure sandbox), NIM microservices (2.6x throughput). LangChain: 1B cumulative downloads, 300+ enterprise LangSmith customers. ([LangChain blog](https://blog.langchain.com/nvidia-enterprise/), Mar 2026)
+2. **LangChain + NVIDIA enterprise partnership (Mar 16):** Deep Agents (long-running agent harness), NVIDIA AI-Q Blueprint (#1 deep research benchmark), NIM microservices (2.6x throughput). LangChain: 1B cumulative downloads, 300+ enterprise LangSmith customers. ([LangChain blog](https://blog.langchain.com/nvidia-enterprise/), Mar 2026)
 
 3. **OpenAI Frontier (Feb 5):** Enterprise agent platform. Multi-vendor (supports Claude, Gemini, GPT). Named customers: HP, Intuit, Oracle, State Farm, Uber. Vendor-sourced results: manufacturer reduced 6 weeks → 1 day; investment firm freed 90% of sales time; energy producer +5% output = $1B+. Zero independent verification at 6+ weeks post-launch. ([OpenAI](https://openai.com/index/introducing-openai-frontier/); [TechCrunch](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/), Feb 2026)
 
@@ -681,8 +683,6 @@ Use **Letta** for agents that need persistent memory across sessions and self-im
 5. **A2A Protocol v0.3:** gRPC support, security card signing. Integrated into LangSmith Agent Server and Spring AI. 150+ partner organizations. Google offering Agent Engine, Cloud Run, GKE deployment paths. ([Google Cloud Blog](https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade), Mar 2026)
 
 6. **New entrant — Dify:** No-code/low-code agent platform, $30M funding, claims 280 enterprises and 1.4M deployments. Vendor claims, no independent verification.
-
-6. **NVIDIA Agent Toolkit / NemoClaw (GTC 2026, Mar 10-18):** Enterprise agent runtime with sandboxing, least-privilege, privacy router. AI-Q Blueprint for deep research. 17 enterprise partners. Hardware-agnostic. Alpha stage. Jensen Huang: "For CEOs, the question is, what's your OpenClaw strategy?" ([NVIDIA Newsroom](https://nvidianews.nvidia.com/news/ai-agents), Mar 2026)
 
 7. **Google ADK 2.0 Alpha:** Graph-based workflows (competing with LangGraph), now supporting Python + TypeScript + Go + Java. Built-in A2A support. ([Google ADK docs](https://google.github.io/adk-docs/), Mar 2026)
 
@@ -860,9 +860,8 @@ Enterprise platform for building/deploying/managing agents. "Agent-as-employee" 
 Source: [OpenAI Frontier](https://openai.com/index/introducing-openai-frontier/) [vendor press release]
 
 #### OpenClaw
-Open-source agent tool, 100K+ GitHub stars. Intermediary between LLMs and computers. Creator subsequently joined OpenAI.
 
-Source: [KDnuggets](https://www.kdnuggets.com/openclaw-explained-the-free-ai-agent-tool-going-viral-already-in-2026) [tech press]
+> *Section removed 2026-05-14: contained material from the hallucinated OpenClaw/ClawHub/NemoClaw cluster.*
 
 #### New Relic AI Agent Platform (Feb 24, 2026)
 Observability-focused agent platform with OpenTelemetry tooling. Combines agent creation with monitoring.
@@ -958,7 +957,7 @@ The February recommendations remain sound with these adjustments:
 - CrewAI v1.10 and A2A support
 - Strands Agents v1.30 and Strands Labs
 - Microsoft Agent Framework RC
-- OpenAI Frontier, OpenClaw, New Relic AI Agent Platform
+- OpenAI Frontier, New Relic AI Agent Platform
 
 **Round 7: Cloud Runtimes (March 22, 2026)**
 - AgentCore 5 March GA launches (policy, MCP, memory, AG-UI, shell)

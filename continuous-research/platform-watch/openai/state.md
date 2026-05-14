@@ -14,6 +14,8 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 Last updated: 2026-04-28 (cycle 113)
 OODA cycles: 17
 
@@ -436,7 +438,7 @@ See `runs/` for detailed research logs:
 - `runs/2026-03-21-cycle17.md` — Market share reversal, Frontier still vapor, EEA blocker, computer use first evidence, reliability convergence
 - `runs/2026-03-21-cycle20.md` — Enterprise decline accelerating (Ramp data), super-app merge, EEA partial rollout, hybrid computer-use convergence, Open Responses stalled
 - `runs/2026-03-21-cycle23.md` — PE joint venture, Axios revenue reversal, Frontier still zero evidence, AWS multi-cloud + Microsoft lawsuit risk, five-front strategy fragmentation
-- `runs/2026-03-21-cycle26.md` — Promptfoo acquisition, Agents SDK business deployments, cross-platform scan (Agentforce expansion, NVIDIA OpenShell, Anthropic Dispatch, Alibaba Wukong)
+- `runs/2026-03-21-cycle26.md` — Promptfoo acquisition, Agents SDK business deployments, cross-platform scan (Agentforce expansion, Anthropic Dispatch, Alibaba Wukong)
 - `runs/2026-03-21-cycle29.md` — AAIF growth (146+ members), agentic commerce fragmentation, GPT-5.4 first field test (Bridgers), Codex business aspirational, Frontier still zero, super-app strategic retreat
 - `runs/2026-03-22-cycle32.md` — Super-app merge now public (Codex surviving platform), Salesforce Agentforce-ChatGPT integration live, IPO driving strategy, GPT-5.4 mini/nano, business agent deployment gap Level 3, EEA rebrand same restrictions, Frontier tenth consecutive zero
 - `runs/2026-03-22-cycle35.md` — Frontier eleventh consecutive zero at 8+ weeks, API spend completely flipped (Anthropic ~80%), AWS deal $138B + Microsoft lawsuit risk, EEA Agent mode still blocked + US-only inference, Codex non-coding zero adoption, IPO Polymarket 36%, Deutsche Telekom Level 0

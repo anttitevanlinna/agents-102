@@ -8,15 +8,15 @@ Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to 
 
 **Reading 1. Five practitioners, automating their life.**
 
-Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded **Claude Code** and **OpenClaw** (the open-source counterpart to Claude Code in the agent-coding space) into daily research, writing, shipping. You don't need to install OpenClaw for anything in this training; you're just seeing how practitioners pick between the two.
+Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded Claude Code into daily research, writing, and shipping.
 
 Five people worth knowing. **Pick three. Read one piece each.**
 
-1. **Simon Willison** (*simonwillison.net*). Daily public journal of using Claude Code, OpenClaw, and his own `llm` CLI on real projects: Datasette, research notes, blog automation. Browse the recent "Claude Code" and "OpenClaw" tags.
-2. **Andrej Karpathy** (*karpathy.ai + X.com/karpathy*). Showed you the LLM Wiki pattern already in Module 2 prework; has been publicly comparing Claude Code and OpenClaw on coding-agent workflows (including the recent Fortune interview on "the loopy era of AI"). Look at his recent threads and podcast appearances.
-3. **Thorsten Ball** (*thorstenball.com + the Sourcegraph blog*). Direct, opinionated Claude Code vs. OpenClaw comparisons from someone who ships tooling for both. Read his most recent piece.
-4. **Mitchell Hashimoto** (*mitchellh.com*). HashiCorp founder, now Ghostty. Writes candidly about using Claude Code as daily driver on his own codebases and poking at OpenClaw for self-hosted work. Find his "how I use Claude Code" posts.
-5. **Geoffrey Huntley** (*ghuntley.com*). Long-form on agentic coding and personal workflow automation; OSS-leaning, so OpenClaw shows up. Read his most recent "agents" piece.
+1. **Simon Willison** (*simonwillison.net*). Daily public journal of using Claude Code (and his own `llm` CLI) on real projects: Datasette, research notes, blog automation. Browse the recent "Claude Code" tag.
+2. **Andrej Karpathy** (*karpathy.ai + X.com/karpathy*). Showed you the LLM Wiki pattern already in Module 2 prework; talks publicly about how he uses coding agents day to day. Look at his recent threads and podcast appearances.
+3. **Thorsten Ball** (*thorstenball.com + the Sourcegraph blog*). Direct, opinionated essays from someone who ships agent tooling for a living. Read his most recent piece on Claude Code.
+4. **Mitchell Hashimoto** (*mitchellh.com*). HashiCorp founder, now Ghostty. Writes candidly about using Claude Code as daily driver on his own codebases. Find his "how I use Claude Code" posts.
+5. **Geoffrey Huntley** (*ghuntley.com*). Long-form on agentic coding and personal workflow automation. Read his most recent "agents" piece.
 
 For each one you pick, note one thing in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
 
@@ -46,8 +46,9 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
-- judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** draft 2026-05-14 (writing@degraded story@56f9332 technical@degraded behavior@56f9332)
+- compendium-audited 2026-05-09 (behavior@56f9332) — judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+- 2026-05-14: OpenClaw hallucination removed from body + maintainer; writing + technical degraded; story + behavior carried forward (frame unchanged — still five practitioners on Claude Code workflows)
 
 **Frameworks riffed on:**
 - Practitioner-before-pattern — read five people doing the thing before hearing the name for the thing. Same move as Module 2's Karpathy-first sequencing.
@@ -59,9 +60,8 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 - Web access — all five practitioner sites are public.
 
 **URL verification owed (before first delivery):**
-- Confirm each of the five practitioners has a piece from the last 6 months that explicitly covers Claude Code or OpenClaw in personal-workflow terms. The names and domains are solid; specific recent titles should be captured closer to delivery so freshness holds. Karpathy is anchored by the Mar 21 2026 Fortune piece ("state of psychosis — OpenClaw") + the No Priors podcast episode — both logged in `continuous-research/findings/archive/`. For the other four, run a quick per-practitioner crawl to confirm a recent OpenClaw-adjacent or dual-tool piece; swap any whose recent output has drifted.
+- Confirm each of the five practitioners has a Claude-Code-relevant piece from the last 6 months in personal-workflow terms. The names and domains are solid; specific recent titles should be captured closer to delivery so freshness holds. For each of the five, run a quick per-practitioner crawl; swap any whose recent output has drifted.
 - Subagent documentation URL — find the current Anthropic docs URL and either link it directly or update the "search for..." instruction with the exact path. Verify via `claude-code-guide` capability check.
-- OpenClaw context sentence — verify the Jensen Huang / CEO-strategy quote is current and still quotable by the time of first delivery. If NVIDIA's positioning has shifted, swap for a more current anchor.
 
 **Capability notes (confirmed, no check owed):**
 - Subagent launch phrasing ("Launch a subagent to…" / "Launch these three subagents in parallel") confirmed by Antti as working reliably in current Claude Code — no `claude-code-guide` check needed.
@@ -73,10 +73,10 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 - Participant hits a paywall or dead link on one of the practitioner sites — swap for another from the list; the shape of the exercise survives with any three.
 
 **Why this composition (vs. alternatives):**
-- Karpathy's LLM Wiki was Module 2 prework; listed here but NOT the assigned single piece — keeps the Module 2 reading distinct and primes students to read something of his *other* than the Wiki post. The Fortune "loopy era of AI" / OpenClaw interview (Mar 21 2026) is the target.
-- The five selected span: tooling-maker (Ball), builder (Hashimoto), researcher-communicator (Willison), teacher-researcher (Karpathy), workflow-practitioner (Huntley). Different vantage points on the same "one agent, real work" move; all plausibly dual-tool (Claude Code + OpenClaw) though per-practitioner verification is in the URL-verification block above.
-- Alternative candidates considered but not selected: Matt Pocock (too novice-angled — Module 2 prework already cites his plan-mode video), Steve Yegge (Sourcegraph, adjacent to Ball — duplication), Armin Ronacher (strong candidate — swap-in if any of the five drifts or doesn't actually cover OpenClaw).
-- OpenClaw anchors: `continuous-research/findings/archive/computer-use-and-nordic-signals-march-24-2026.md` (positions OpenClaw as the OSS fourth path alongside Claude Code Computer Use, OpenAI Operator, Perplexity Computer), `continuous-research/findings/archive/cycle-70-march-24-2026-h18.md` + `practitioner-signals-march-2026-cycle-update.md` (Karpathy's Fortune piece + No Priors podcast), `continuous-research/platform-watch/cross-platform/runs/2026-03-22-cycle48.md` (ClawHub supply-chain incidents — CVE-2026-25253). Research exists; the prework can lean on it.
+- Karpathy's LLM Wiki was Module 2 prework; listed here but NOT the assigned single piece — keeps the Module 2 reading distinct and primes students to read something of his *other* than the Wiki post.
+- The five selected span: tooling-maker (Ball), builder (Hashimoto), researcher-communicator (Willison), teacher-researcher (Karpathy), workflow-practitioner (Huntley). Different vantage points on the same "one agent, real work" move.
+- Alternative candidates considered but not selected: Matt Pocock (too novice-angled — Module 2 prework already cites his plan-mode video), Steve Yegge (Sourcegraph, adjacent to Ball — duplication), Armin Ronacher (strong candidate — swap-in if any of the five drifts).
+- Pre-2026-05-14 versions of this file framed the reading as Claude Code vs. a fabricated "OpenClaw" tool. The hallucination propagated into `continuous-research/findings/archive/` (`computer-use-and-nordic-signals-march-24-2026.md`, `cycle-70-march-24-2026-h18.md`, `practitioner-signals-march-2026-cycle-update.md`) and `continuous-research/platform-watch/cross-platform/runs/2026-03-22-cycle48.md` (referenced "ClawHub" + a fabricated CVE). Sweep those before any rebuild that leans on the archive.
 
 **Deferred per student-facing-first rule:**
 - Facilitator notes: Module 3 opening Connections can start with "which practitioner surprised you most?" as a warm entry into the multi-agent frame.

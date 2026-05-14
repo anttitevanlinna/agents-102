@@ -50,9 +50,8 @@
 
 
 ### module-3-prework — 1 blocking, 0 TODOs
-- [BLOCK] **check_writing.md#14** — Watch out for planting jargon too early.
-  - line 9: "Claude Code and OpenClaw" appear in prework opener without operational primers. Parenthetical defines relationship, not operation. Student hasn't seen either tool run yet.
-  - **fix:** Add one sentence explaining operationally what Claude Code and OpenClaw each DO (not what they are) before naming them in the list context at line 11. Example: 'Claude Code is Anthropic's official age
+<!-- 2026-05-14: original BLOCK referenced now-removed OpenClaw content; re-audit owed. -->
+
 
 
 ### module-4-prework — 4 blocking, 1 TODOs

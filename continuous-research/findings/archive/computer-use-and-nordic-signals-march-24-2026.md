@@ -1,5 +1,7 @@
 # Research Findings: Claude Computer Use Reactions + Nordic AI Signals
 
+> *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
+
 *Research date: March 24, 2026. Covers signals from the last 48 hours (computer use) and last 2 weeks (Nordic).*
 
 ---
@@ -25,14 +27,13 @@ Claude Computer Use launched March 23, 2026 as a research preview for Pro/Max su
 
 ---
 
-### Finding 2: Computer Use Wars — Four Players, Three Architectures
+### Finding 2: Computer Use Wars — Three Players, Three Architectures
 
 **What's new:** The competitive landscape has crystallized around three distinct architectural approaches:
 
 1. **Anthropic (Claude Computer Use):** Local machine control, permission-first, macOS only. Prioritizes native integrations, falls back to screen-based. OSWorld score: previously 15%, now 72.5% (per Anthropic's claim post-Vercept acquisition).
 2. **OpenAI (Operator/CUA):** Virtual browser environment on OpenAI's cloud. OSWorld: 38.1%. WebVoyager: 87%. $200/month via ChatGPT Pro. Hands control back to user for sensitive actions like logins.
 3. **Perplexity (Computer / Personal Computer):** Dedicated Mac mini running 24/7. Orchestrates 19 models (Claude Opus 4.6 for reasoning, Gemini for research, GPT-5.2 for long-context recall). $200/month. Enterprise version with Slack/Snowflake connectors announced March 11.
-4. **OpenClaw:** Open-source approach (details less clear from search results).
 
 **Why it matters for our training:** Three fundamentally different trust models:
 - Anthropic: "We run on YOUR machine, with YOUR permission"

@@ -66,6 +66,7 @@ Antti
 
 **Quality:** compendium-audited 2026-05-03 (behavior@fd0bb8e)
 - judges @fd0bb8e: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (all-6-prompts-mitigated-see-pre-cohort-todos)
+- mechanical @e840433: PASS — ae101-m6 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):

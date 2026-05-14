@@ -24,6 +24,57 @@ AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runt
 
 AE101 usually runs weekly. At the start of every non-first session, name last week's state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.
 
+## Two-Day Cohort Schedule
+
+Default rhythm for a two-day Nordic cohort: 08:30 start, 1h15 lunch, 20-min breaks. Adjust to your sponsor's cadence. The architectural commitments are: M1–M3 on Day 1, M4–M6 on Day 2; lunch between M5 and M6 on Day 2 so both async runs have time to produce something M6 can read.
+
+### Day 1, M1, M2, M3
+
+Lunch at 12:00 sharp lands mid-M2, between Exercise Phase 4 (Second-pass read) and Phase 5 (Stop. See the design pattern). The pause IS Phase 5's "stop." Post-lunch the room returns to name the pattern.
+
+| Time | Block |
+|---|---|
+| 08:30 – 10:30 | M1 (2h) |
+| 10:30 – 10:50 | Break (20 min) |
+| 10:50 – 12:00 | M2 part 1: Connections + Lecture + Exercise Phases 1–4 (1h10) |
+| 12:00 – 13:15 | Lunch (1h15) |
+| 13:15 – 13:45 | M2 part 2: Exercise Phase 5 + Debrief + Bridge (30 min) |
+| 13:45 – 14:05 | Break (20 min) |
+| 14:05 – 15:55 | M3 (1h50) |
+| 15:55 – 16:10 | Closing Day 1 (15 min) |
+
+Day total ~7h40.
+
+**M3 closes with the M4 task-pick homework.** The "Bring to Module 4" section instructs students to scope the task overnight. M4 Phase 1 then becomes a 2-minute confirm instead of a 10-minute scope. That reclaimed time is what makes M4 fit in 90 minutes on Day 2.
+
+### Day 2, M4, M5, M6
+
+| Time | Block |
+|---|---|
+| 08:30 – 10:00 | M4 (1h30, compressed from 1h45) |
+| 10:00 – 10:20 | Break (20 min) |
+| 10:20 – 12:20 | M5 (2h, 15-min cushion over budget) |
+| 12:20 – 13:35 | Lunch (1h15) |
+| 13:35 – 13:50 | Re-entry (15 min) |
+| 13:50 – 15:35 | M6 (1h45) |
+| 15:35 – 15:50 | Closing Day 2 (15 min) |
+
+Day total ~7h20.
+
+**M4 compression specifics.** Drop Connections from 10 to 5 (cohort is warmed up from Day 1); cut Bridge (the 20-min break absorbs the transition); compress the Phase 2→3 time-check banter to ~5 minutes if the slot runs tight. Phase 1 task-pick is a 2-minute confirm because the task came in as homework.
+
+**M5 cushion.** The 15 min over budget goes to the worktree setup demo (real engineering call, students often fumble) and the closing lecture (Ronacher's three-pattern earned from felt evidence, the lecture IS the lesson; don't squeeze it).
+
+**Re-entry nudge.** M5's packaged re-send fires at M5 close (~12:20) and runs through lunch (~75 min by re-entry). The 15-min re-entry window is for: nudging the agent if it stalled (the dark-humor "Continue" prompt from M4 still works), settling into email or scrollback reading, and letting the run proceed a few more minutes before M6 reads it. After the nudge, leave the M5 session running and open M6 in a fresh Claude Code session at the same worktree path.
+
+**Why M6 is a fresh session.** M5's session is still autonomously running the packaged re-send. Joining that session interrupts the run. M6 opens fresh, reads both runs from disk (git refs + on-disk transcripts under `~/.claude/projects/`). Two Claude Code sessions coexist on the same worktree, supported, harmless.
+
+### Why not split M4 across Day 1 close and Day 2 open?
+
+1. M4's internal flow is one sequential beat: pick → walk → fill → see-frame → send-off. The send-off is the close. Splitting means the send-off either fires from a half-built setup at Day 1 close (thin evidence, M5 has nothing to diagnose) or fires Day 2 open after overnight re-orientation (loses the walk-then-send-off pedagogy).
+2. Day 1 + M4 ≈ 9-hour day. Too much for a Nordic cohort.
+3. The legitimate Day 1→Day 2 spillover already exists: the M3 close → M4 task-pick homework. Task is picked overnight; M4 Phase 1 confirms in 2 minutes. That spillover is the right shape; full M4 displacement is not.
+
 ## Prep Before Each Session
 
 - Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.

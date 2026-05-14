@@ -5,9 +5,11 @@ Walk what you've built against a real task you'd send off rather than nudge bit 
 
 ## Prework
 
-Bring one or two candidate tasks from your backlog. The kind you'd send off rather than nudge bit by bit, not a typo-fix and not a quarter-long epic.
+The scoped task you picked as homework.
 
 **Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
+
+Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -43,11 +45,11 @@ No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skill
 
 Before you send: pin a clean starting SHA. Module 5 will worktree from this commit to re-run the same task packaged, so the comparison starts from the same code state. Ask Claude to commit current state on a feature branch and tell you the short SHA. Keep it noted.
 
-{{prompt:ae101-m3-commit-starting-point}}
+{{prompt:ae101-m4-commit-starting-point}}
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
-{{prompt:ae101-m3-take-task-end-to-end}}
+{{prompt:ae101-m4-take-task-end-to-end}}
 
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stopping the run is fine; the trace is the result.
@@ -58,13 +60,19 @@ Nudging by hand is fine if you're watching. Answer a question, correct a path, p
 
 If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:
 
-{{prompt:ae101-m3-nudge-continue}}
+{{prompt:ae101-m4-nudge-continue}}
 
 Before you close: read [Reading the return](lectures/reading-the-return.md). It plants the question and the three failure modes you'll use to read what comes back.
 
 ## Next
 
 Module 5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your Module 4 session directly. See [Claude Code for engineers, session transcripts](reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened). Close the session after the run is done if you want; the trace is on disk either way.
+
+## Bring to Module 5
+
+A run that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute.
+
+Come to Module 5 without a run and you'll be scrambling for material while the room is already reading theirs. Your call.
 
 ## Pre-reads before Module 5
 
@@ -81,6 +89,7 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 
 **Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
 - judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+- mechanical @e840433: PASS — ae101-m4 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

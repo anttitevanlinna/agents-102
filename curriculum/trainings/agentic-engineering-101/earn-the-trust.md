@@ -25,6 +25,8 @@ After this module, you will be able to:
 
 The question, to you: what's the feature, and what's the surface you're most nervous about a teammate missing in review? The room's features will differ wildly; that's the point.
 
+[Exercise: Open the side quest](exercises/open-the-side-quest.md)
+
 [Lecture: Skills from the frontier, skills of your own](lectures/skills-from-the-frontier.md)
 
 [Exercise: Map the access surface](exercises/map-the-access-surface.md)
@@ -50,7 +52,7 @@ Ask Claude to sharpen the one weakest section of the authored skill, then integr
 
 {{prompt:ae101-m2-sharpen-skill}}
 
-This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
+This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
 ## Clear the session
 
@@ -68,21 +70,23 @@ Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to 
 
 ## Bring to Module 4
 
-One or two candidate tasks from your backlog. The kind you'd send off rather than nudge bit by bit, not a typo-fix and not a quarter-long epic.
+One scoped task you'd send off rather than nudge bit by bit. Picked, sized, named in one sentence.
 
 **Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
+
+Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
+- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS (0 blocking; 2 TODOs: self-report-inflation med on ae101-m2-ready-to-clear [load_bearing false]; preamble-before-action + niceness-tax downgraded to low on ae101-m2-sharpen-skill via body-callout carve-out)
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
-- **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably.
+- **Session runtime:** 1h50 (Connections 10 / Open the side quest 5 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h50 in-class. Self-study follow-along runs comparably.
 - **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; optional OWASP deeper scan 20 min.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder holds the two curated skills; all compounding artifacts (ADR, authored skill, `CLAUDE.local.md` update) live in the student's real repo; team-worthy rules get flagged for separate PR against team `CLAUDE.md`; authored skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.

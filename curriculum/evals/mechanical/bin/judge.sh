@@ -13,6 +13,8 @@
 #   agents-101-m4-audit      <transcript-path>
 #   agents-101-m5            <setup_tr> <det1..5_tr> <scorer_tr>   # 7 transcripts
 #   agents-101-m6            <setup_tr> <run_tr> [<judge-baseline-shasum>]
+#   ae101-prework            <transcript-path>
+#   ae101-m1                 <transcript-path>
 #
 # All judges write instances/<runner-slug>-judge-report.md and exit 0 on PASS / 1 on FAIL.
 #
@@ -37,6 +39,13 @@ slug_to_file() {
     agents-101-m4-audit)  echo "curriculum/trainings/agents-101/security.md" ;;
     agents-101-m5)        echo "curriculum/trainings/agents-101/output-quality.md" ;;
     agents-101-m6)        echo "curriculum/trainings/agents-101/evaluations.md" ;;
+    ae101-prework)        echo "curriculum/trainings/agentic-engineering-101/prework.md" ;;
+    ae101-m1)             echo "curriculum/trainings/agentic-engineering-101/getting-going.md" ;;
+    ae101-m2-pushback)    echo "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md" ;;
+    ae101-m3)             echo "curriculum/trainings/agentic-engineering-101/earn-the-trust.md" ;;
+    ae101-m4)             echo "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md" ;;
+    ae101-m5)             echo "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md" ;;
+    ae101-m6)             echo "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md" ;;
     *) echo "" ;;
   esac
 }
@@ -121,6 +130,53 @@ case "$SLUG" in
     run_inspector "agents-101-m6-setup" "$1"
     run_inspector "agents-101-m6-run" "$2"
     ;;
+  ae101-prework)
+    if [[ $# -lt 1 ]]; then
+      echo "usage: $0 ae101-prework <transcript> [--inspect]" >&2
+      exit 2
+    fi
+    bash "$SCRIPT_DIR/judge-ae101-prework.sh" "$SCRIPT_DIR/../scratch/ae101-prework" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-prework" "$1"
+    ;;
+  ae101-m1)
+    if [[ $# -lt 1 ]]; then
+      echo "usage: $0 ae101-m1 <transcript> [--inspect]" >&2
+      exit 2
+    fi
+    bash "$SCRIPT_DIR/judge-ae101-m1.sh" "$SCRIPT_DIR/../scratch/ae101-m1" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-m1" "$1"
+    ;;
+  ae101-m2-pushback)
+    if [[ $# -lt 1 ]]; then
+      echo "usage: $0 ae101-m2-pushback <transcript> [--inspect]" >&2
+      exit 2
+    fi
+    bash "$SCRIPT_DIR/judge-ae101-m2-pushback.sh" "$SCRIPT_DIR/../scratch/ae101-m2-pushback" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-m2-pushback" "$1"
+    ;;
+  ae101-m3)
+    if [[ $# -lt 1 ]]; then
+      echo "usage: $0 ae101-m3 <transcript> [--inspect]" >&2
+      exit 2
+    fi
+    bash "$SCRIPT_DIR/judge-ae101-m3.sh" "$SCRIPT_DIR/../scratch/ae101-m3" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-m3" "$1"
+    ;;
+  ae101-m4)
+    if [[ $# -lt 1 ]]; then echo "usage: $0 ae101-m4 <transcript> [--inspect]" >&2; exit 2; fi
+    bash "$SCRIPT_DIR/judge-ae101-m4.sh" "$SCRIPT_DIR/../scratch/ae101-m4" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-m4" "$1"
+    ;;
+  ae101-m5)
+    if [[ $# -lt 1 ]]; then echo "usage: $0 ae101-m5 <transcript> [--inspect]" >&2; exit 2; fi
+    bash "$SCRIPT_DIR/judge-ae101-m5.sh" "$SCRIPT_DIR/../scratch/ae101-m5" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-m5" "$1"
+    ;;
+  ae101-m6)
+    if [[ $# -lt 1 ]]; then echo "usage: $0 ae101-m6 <transcript> [--inspect]" >&2; exit 2; fi
+    bash "$SCRIPT_DIR/judge-ae101-m6.sh" "$SCRIPT_DIR/../scratch/ae101-m6" "$1"; post_pass "$SLUG" $?
+    run_inspector "ae101-m6" "$1"
+    ;;
   all)
     # Fire M1-M3 (no transcript args needed). M4-M6 require transcript paths from this session;
     # for batch runs, dispatch through their per-module entry points.
@@ -139,7 +195,7 @@ case "$SLUG" in
     ;;
   *)
     echo "unknown slug: $SLUG" >&2
-    echo "valid: agents-101-m1 | agents-101-m2 | agents-101-m3 | agents-101-m4-author | agents-101-m4-audit | agents-101-m5 | agents-101-m6 | all" >&2
+    echo "valid: agents-101-m1 | agents-101-m2 | agents-101-m3 | agents-101-m4-author | agents-101-m4-audit | agents-101-m5 | agents-101-m6 | ae101-prework | ae101-m1 | ae101-m2-pushback | ae101-m3 | all" >&2
     exit 2
     ;;
 esac

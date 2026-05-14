@@ -1,20 +1,18 @@
 # Orient and introspect
 
+**Time:** 15–20 minutes.
+
 **Session** *(new, "Module 1 - Orient and introspect")*
 
-Start a new Claude Code session at your repo root.
+Start a new Claude Code session at your repo root. Optionally rename to `m1-orient`.
 
 ```
 /rename m1-orient
 ```
 
-**What you do:** have Claude read your repo, then interrogate what it read. The introspection prompt shows what Claude says it read; `/context` shows how full your context window has gotten.
-
-**What happened:** Claude reports what it read and why, what it skipped and why. You see the bounded window directly. The self-report is a hypothesis. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Start digging.
+**What you do:** have Claude read your repo, then interrogate what it read.
 
 **The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig the self-report.
-
-**Time:** 15–20 minutes.
 
 Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then introspection on what Claude says it read, then a look at your context budget.
 
@@ -30,7 +28,7 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 {{prompt:orient-and-introspect-2}}
 
 
-Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a hypothesis, not ground truth. Claude confabulates reasons sometimes. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Spot-check by quoting back a specific file or function and asking Claude to confirm it.
+Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a reconstruction, not ground truth. Claude confabulates reasons sometimes. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Spot-check by quoting back a specific file or function and asking Claude to confirm it.
 
 Now look at your context budget. In the Claude Code chat, type:
 
@@ -40,7 +38,7 @@ Now look at your context budget. In the Claude Code chat, type:
 
 That's the slash command that shows how full your context window is, total used and breakdown by category (system prompt, messages, memory, skills). Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
 
-The window has shown itself. Hand off to the fix.
+You've seen what's loaded and what isn't. Hand off to the fix.
 
 <!-- maintainer -->
 

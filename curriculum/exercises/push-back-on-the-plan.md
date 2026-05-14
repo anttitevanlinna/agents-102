@@ -1,5 +1,7 @@
 # Push back on the plan
 
+**Time:** 60 minutes.
+
 **Session** *(new, "Module 2 - Plan mode done right")*
 
 Start a new Claude Code session at your repo root.
@@ -8,13 +10,9 @@ Start a new Claude Code session at your repo root.
 /rename m2-plan-mode
 ```
 
-**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent that walks down every unresolved branch and surfaces what you missed. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
+**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**What happened:** Claude writes a plan. You pick *keep planning with feedback* and send two push-backs: what YOU see. Claude regenerates. Then you run a second-pass read: Claude asks one question at a time, walking down branches you didn't think to check, suggesting answers. You confirm or correct. The plan sharpens again. You approve. You don't run the code. You ask Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
-
-**The point:** reading a plan is finite. A first pass by a human plus a second pass by an agent isn't belt-and-braces. It's the complete read. Two different kinds of scrutiny catch two different kinds of miss. The exercise installs the pairing as a move. No execution needed; the work of making the plan good is the work. **Execution is next module's concern.**
-
-**Time:** 60 minutes.
+**The point:** two reads, paired. **Execution is next module's concern.**
 
 ## Phase 1: Bring a real task
 
@@ -82,6 +80,8 @@ Ask Claude whether the `./CLAUDE.local.md` you carried in from M1 actually rides
 
 On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
+**What happened:** Claude wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. Claude regenerated. Then you ran a second-pass read: Claude asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
+
 <!-- maintainer -->
 
 
@@ -142,3 +142,5 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - Compound engineering (Klaassen) — one line, continuation from M1
 - Plan-mode approval inflation — exercise-named pattern, not a practitioner attribution
 - "What would have to be true" (Martin) — optional attribution at Debrief if it lands naturally
+
+**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design.

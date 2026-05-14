@@ -9,7 +9,7 @@ Surface one multi-file backlog task in conversation with Claude. Criteria: non-t
 
 **Just a simple task that spans a few files. Not an epic.**
 
-Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md).
+Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the four approval paths in one table.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -37,7 +37,7 @@ The room harvests everyone's before the lecture names the pattern.
 
 ## Save the rule if it earned itself
 
-The full compound move ran at Module 1. Module 2's compound is opportunistic. If a plan-reading rule earned itself this session (a specific branch the second read surfaced, a push-back that sharpened a real assumption) save it now. If nothing earned itself, the Bridge is next.
+The full compound move ran at M1. M2's is opportunistic. If a branch from the second-pass read changed how you'd read the next plan, save it now.
 
 Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 
@@ -54,11 +54,11 @@ Ask Claude to integrate the one branch that earned itself into your personal `./
 
 ## Next
 
-You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the extra read. Module 3 takes the same move into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; Module 3 reveals that and has you author your first one.
+You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the extra read. At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
 
 ## Pre-reads before Module 3
 
-Optional. Skipping either piece does not break Module 3. The point is to land STRIDE and access-control inside the wider modern agentic-security picture rather than as a substitute for it.
+Optional. Lands the modern agentic-security frame before STRIDE and access-control.
 
 **Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (foundational framing from June 2025, canonical naming of the threat class, used as reference not as fresh evidence). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
 
@@ -69,6 +69,7 @@ Optional. Skipping either piece does not break Module 3. The point is to land ST
 
 **Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
 - judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+- mechanical @6121abd: PASS — ae101-m2-pushback via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

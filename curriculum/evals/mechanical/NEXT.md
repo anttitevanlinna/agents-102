@@ -1,6 +1,6 @@
 # Mechanical-test framework — next-session state
 
-**Last updated:** 2026-05-02 (Agents 101 M1-M6 all PASS; script-only judges across the battery)
+**Last updated:** 2026-05-14 (AE101 prework + M1 landed; both PASS first-fire post-registry).
 
 ## Agents 101 battery — current verdict
 
@@ -14,7 +14,48 @@
 | M5 | **PASS 30/30** | `bin/judge-m5.sh` | setup + 5 detectors (parallel) + scorer |
 | M6 | **PASS 35/35** | `bin/judge-m6.sh` | setup + run; J1 shasum confirms judges/groundedness-judge.md byte-identical |
 
-**Total: 210 assertions pass across all 7 runner-pairs. No LLM Judge dispatch in the pipeline.**
+**Total: 210 assertions pass across all 7 Agents 101 runner-pairs.** Last fired 2026-05-02 — pre-prompts-registry SHAs; the parse layer is marker-aware (76b70a7), so the assertions should still hold, but the SHA pins are stale. Re-fire as a regression check when convenient.
+
+## AE101 battery — current verdict (NEW 2026-05-14)
+
+| Module | Verdict | Judge script | Notes |
+|---|---|---|---|
+| prework | **PASS 19/19** | `bin/judge-ae101-prework.sh` | 3 prompts (download / extract+install / one-at-a-time fallback). Substitutions: prompt-001 `URL:` open-hook → pre-staged tarball path, `~/Downloads/` → `Downloads-stub/`, `~/Documents/` → `Documents-stub/`, `~/.claude/skills/` → `.claude-user-stub/skills/`. Mock student inputs at `/tmp/ae101-mocks/student-inputs.md`. |
+| M1 chain | **PASS 37/37** | `bin/judge-ae101-m1.sh` | 9 prompts across 3 exercises (orient-and-introspect, fix-tests-first, compound-and-close). Substitutions: `/rename`, `/context`, `gh pr create`, MCP connector → path-3 manual paste. Real `npm test` green-check at end. Branch `fix/totals-negative-summation` ships the fix; `CLAUDE.local.md` born from session; `docs/tickets/AE-42.md` Resolution section appended. |
+| M2 push-back | **PASS 20/20** | `bin/judge-ae101-m2-pushback.sh` | 4 prompts (push-back-on-the-plan). Plan-mode substitution → write plan to `<scratch>/repo/.claude-plans/groupbyreason-helper.md`. Stop discipline enforced. |
+| M2 extract | **READY (LLM-Judge era)** | `runners/ae101-m2-extract.{actor,judge}.md` | 4 prompts (extract-the-task-shaping-rule). Pre-registry LLM-orchestrated. TODO: lift to script-only. |
+| M3 chain | **PASS 41/41** | `bin/judge-ae101-m3.sh` | 11 prompts × 3 exercises (map+stride+author). Skill-as-subagent → inline; authored test-strategy skill with YAML frontmatter + TODO; ADR + surface map + threat list with HIGH-flagged entry. |
+| M4 chain | **PASS 29/29** | `bin/judge-ae101-m4.sh` | 7 prompts (walk-and-send-off + module body). Substitutions: `/rename`, audit-as-subagent → inline, walk-away simulated. Deliberate M4 partial-shipping (no README update, no bin entry, no RFC 4180 escaping) preserved for M5 to diagnose. m4/ branch carries the work commit. |
+| M5 chain | **PASS 29/29** | `bin/judge-ae101-m5.sh` | 8 prompts (worktree + diagnose-and-resend + re-run). Substitutions: worktree → in-place branch, `~/.claude/projects/...` transcript path → `.claude-projects-stub/`. Verifier hook + plan.md + reference.md ship; M4 gaps closed (escaping + README + bin entry). |
+| M6 chain | **PASS 26/26** | `bin/judge-ae101-m6.sh` | 6 prompts (spot-gaps + arc-retrospective). Reads BOTH m4 + m5 transcript stubs; cuts a stale rule from CLAUDE.local.md; authors second skill (YAML + TODO); writes arc-retrospective with quoted artefacts. |
+
+**Total: 201 assertions pass across seven script-only AE101 runner-pairs** (prework + M1 + M2-pushback + M3 + M4 + M5 + M6). The `ae101-m2-extract` runner is the one remaining LLM-orchestrated piece of the AE101 battery.
+
+**Stage script flag (`--module`):** `bin/stage-ae101-m1.sh <scratch> --module <m4|m5|m6>` pre-stages simulated prior-run state (M3 artefacts → M4; +m4 branch + transcript stub → M5; +m5 worktree + both transcripts → M6).
+
+**Known pre-existing curriculum-source Sev-1s** (surfaced by `prompt-source-audit.sh`, treated as informational by M4-M6 Judges; targets for the suspicion sweep):
+
+- `walk-and-send-off-2` and `walk-and-send-off-4`: P4 curriculum-vocab leak ("M3", "the send-off"). Real prompt-source issue, NOT a runner/Judge bug.
+- `run-the-first-experiment` module body: P4 leak similarly. To be cleaned in the suspicion sweep.
+
+### AE101 playground
+
+- **Seed repo:** `playgrounds/ae101-m1-seed/` — tiny Node library (`daily-totals`) with `node --test`. Planted bug: `if (n < 0) continue;` in `src/totals.js` skips negative line items. Existing tests cover happy paths only; the bug fails silently until a negative-input test fires.
+- **Content stub:** `playgrounds/ae101-content-stub/` — minimal shape (lectures/exercises/reference/supplementary/content/skills/) with two stub SKILL.md files. Tarballed by `stage-ae101-m1.sh` into the scratch's `Downloads-stub/`.
+- **Mocks:** `playgrounds/ae101-mocks/student-inputs.md` — substituted student answers (3 candidate bugs, the pick, the bug description, the diff push-back, the root-cause push, the close-out path choice). Stage script copies it to `/tmp/ae101-mocks/`.
+- **Stage:** `bin/stage-ae101-m1.sh` builds `scratch/ae101-m1/{repo,Downloads-stub,Documents-stub,.claude-user-stub}` from scratch. Idempotent — re-runnable any time.
+
+### AE101 — what's left
+
+| Surface | Status |
+|---|---|
+| prework | PASS |
+| M1 (getting-going) | PASS — chain runner covers orient/fix/compound |
+| M2 (plan-mode-done-right) | PASS — `ae101-m2-pushback` covers push-back-on-the-plan; `ae101-m2-extract` covers extract-the-task-shaping-rule (LLM-Judge era, lift to script-only later) |
+| M3 (earn-the-trust) | PASS — `ae101-m3` chain covers map+stride+author |
+| M4 (run-the-first-experiment) | PASS — chain runner covers walk-and-send-off + send-off |
+| M5 (learn-from-the-test) | PASS — chain runner covers worktree + diagnose-and-resend + re-run |
+| M6 (spot-gaps-build-the-loop) | PASS — chain runner covers spot-gaps + arc-retrospective |
 
 ## How prompt-rot is detected (four layers)
 

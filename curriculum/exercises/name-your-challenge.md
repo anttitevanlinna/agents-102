@@ -1,5 +1,7 @@
 # Exercise: Name your next big *challenge*
 
+**Time:** 15 minutes.
+
 **Session** *(new, "Module 2 - Building agent systems")*
 
 <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
@@ -11,8 +13,6 @@
 **What you do:**
 
 Module 2 builds you a memory: a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before anything gets built, the problem gets pinned.
-
-**Time:** 15 minutes.
 
 *You've read two pieces on this move in prework. One showed the pattern on a personal scale: LLM as librarian, not answerer. The other argued that the same move scales to company knowledge: files, not wikis; version it like code. In this opener you name the one challenge it all aims at.*
 

@@ -1,5 +1,7 @@
 # Diagnose and re-send
 
+**Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) is owned by the module file.
+
 **Session** *(new, "Module 5 worktree session")*
 
 Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at module open).
@@ -10,11 +12,7 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 
 **What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
 
-**What happened:** You end the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. The module's Debrief takes over from there: self-compound `CLAUDE.local.md`, then re-send.
-
 **The point:** Ronacher's three-pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.
-
-**Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) is owned by the module file.
 
 ---
 
@@ -86,6 +84,8 @@ Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
 
 Read both files. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
+
+**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. Each piece earned its place against a failure you read in your own artefact, not a slide.
 
 **The exercise ends here.** The module's Debrief takes over: self-compound `CLAUDE.local.md`, then re-send the same task with reference + plan.md + verifier all in play.
 

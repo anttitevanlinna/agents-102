@@ -1,5 +1,7 @@
 # Walk and send off
 
+**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close Module 4.
+
 **Session** *(new, "Module 4 - Run the first experiment")*
 
 Start a new Claude Code session at your repo root.
@@ -10,11 +12,7 @@ Start a new Claude Code session at your repo root.
 
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
-**What happened:** You end the module with the task in flight (or stopped with traces to read), your personal `CLAUDE.local.md` rewritten from session evidence (gitignored, not team `CLAUDE.md`), memory and ADRs rearranged into Huryn's three blocks, and a business-rules pointer wired at the sponsor-stated home (or a clean statement of the gap). Module 5 opens with whatever came back.
-
 **The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
-
-**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close Module 4.
 
 ---
 
@@ -67,6 +65,8 @@ Speed up the gap-fill if prose Q&A is dragging.
 
 ---
 
+> **Time check.** Different paces hit this beat at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
+
 ## Phase 3: See the frame
 
 Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
@@ -80,6 +80,8 @@ Once the frame is named through your own material, let Claude propose the actual
 
 **Framework**: Huryn's three-block memory. Not a template you fill; a frame that names what you've been building.
 
+**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange memory and ADRs into Huryn's three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief's send-off.
+
 ---
 
 ## What closes the module (owned by the module's Debrief section)
@@ -91,6 +93,10 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 
 <!-- maintainer -->
+
+**Time-check callout — deliberate exception to `check_student_facing.md` preamble (room-share commands).** The Phase 2→Phase 3 callout uses *"to share what surfaced, where the audit missed, and why the agent sometimes goes lazy."* The preamble bans room-share commands (`share with your neighbor`, `tell the room`, `say X out loud`); *to share* without an addressee reads as invitational room-energy, not a student-action mandate. The blockquote shape + named 5–10 min window is a trainer cue (catch-up window for slower paces + banter beat on agent laziness). Future judges should not re-flag.
+
+**Prompt register — `walk-and-send-off-3` deliberately short.** The Phase 2 gap-fill speed-up prompt (`You propose solutions and ask questions. Use the ask-questions tool to speed up my work.`) is intentionally brief, lowercase-hyphenated tool name, no honorifics. It models the casual one-line ask a tired engineer types mid-conversation when prose Q&A is dragging. The `ask-questions tool` phrasing is the curriculum's runtime-agnostic term (`AskUserQuestion` is the Claude Code implementation; the prompt avoids tying to one runtime). Pairs with the M2 `push-back-on-the-plan-4` carve-out — both encode end-of-flow tired-engineer register. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design.
 
 **Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
 - judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS

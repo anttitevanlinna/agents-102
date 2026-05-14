@@ -1,5 +1,7 @@
 # Exercise: Build your challenge *memory*
 
+**Time:** 45 minutes.
+
 **What you do:**
 
 A chat forgets. A memory remembers.
@@ -7,8 +9,6 @@ A chat forgets. A memory remembers.
 You've just pinned your challenge in `./challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
 The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session (the chat window you opened in the opener)</span><span class="rt-cowork">task (the workspace you opened in the opener)</span> running. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
-
-**Time:** 45 minutes.
 
 **Phase 1. Curate, ingest, build.**
 

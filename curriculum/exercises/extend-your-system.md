@@ -1,5 +1,7 @@
 # Exercise: Extend your system
 
+**Time:** 25 minutes. If you finish early, ship a second one.
+
 **Session** *(new, "Module 8 - Agents building agents")*
 
 <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
@@ -19,8 +21,6 @@ Three shapes to choose from (pick one):
 - **New data source.** An agent that reads from somewhere your current system doesn't: a second wiki, a folder of PDFs, a connector you just enabled, a different team's `memory/`.
 - **New output.** An agent that produces a shape you don't have yet: a one-page brief, a weekly digest, a pre-meeting prep note, a Slack-ready summary of something you usually write long-form.
 - **New perspective.** An agent that reads the same memory but argues with it: a skeptic, a devil's advocate, a persona-agent that holds the view your own voice suppresses.
-
-**Time:** 25 minutes. If you finish early, ship a second one.
 
 **Phase 1. Describe (5 min).**
 

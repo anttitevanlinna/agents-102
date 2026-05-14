@@ -16,6 +16,8 @@ One decision, and you probably have a strong candidate already: which repo are y
 
 Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule, every memory, every skill you build during the training lands here.
 
+*Really stuck for a repo that fits? Ask your trainer. There's a fallback repo you can use for the training.*
+
 ## 2. Start a new Claude Code session in THAT repo
 
 CLI or desktop, your call. Open a new session with the repo as the working directory.
@@ -24,7 +26,7 @@ CLI or desktop, your call. Open a new session with the repo as the working direc
 
 You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths to the same destination. Pick whichever fits your network and trust posture.
 
-**3.a. Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`. (If your work network blocks the download, your trainer can email it or share via SharePoint. Same destination.)
+**3.a. Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`.
 
 **3.b. Or have Claude download it for you.** Ask Claude to fetch the content tarball to `~/Downloads/`.
 
@@ -38,16 +40,21 @@ When Claude gets to the bug screen, push back if it dumps all four criteria at o
 
 {{prompt:ae101-prework-extract-and-install}}
 
-If Step 4's screening feels like Claude is asking everything at once, ask it to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.
+If Step 4's screening feels like Claude is asking everything at once, ask Claude to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.
+
+{{prompt:ae101-prework-one-at-a-time}}
+
+*Small steer, small trick. A minute here, another there. You find them.*
 
 ## Bring to Module 1
 
-Connections question at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a frustration instead.
+Connections question at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
+**Quality:** compendium-audited 2026-05-14 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
 - judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+- mechanical @6121abd: PASS — ae101-prework via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **DEFERRED** (held — not for autonomous fix; sim-surfaced 2026-04-27, structural call, decided together):

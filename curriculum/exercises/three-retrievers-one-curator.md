@@ -1,18 +1,14 @@
 # Exercise: Three retrievers, one curator
 
+**Time:** ~28 minutes.
+
 **What you do:**
 
 Hire three agents to fetch raw material on your challenge, wiki, docs, the open web. Hire a fourth to curate the findings into your memory in real time, while the retrievers are still running.
 
-**What happened:**
-
-Four sessions ran on the same shared folder at once. Three retrievers streamed findings into `sources/`; the fourth (the synthesizer) read `sources/` as it grew and integrated into `memory/`, the curated layer that's been compounding since Module 2. Two layers filled at the same time.
-
 **The point:**
 
 Multi-agent's first shape: separate sessions on shared files. Each agent runs in its own context, sees the others' work via the filesystem, has its own connectors and history. The feeling, files materialising in two folders at once, four windows churning on one question, is the lesson.
-
-**Time:** ~28 minutes.
 
 The crux and the decision question both live in `./crux.md` from the opening exercise. Retrievers and the synthesizer all read it.
 

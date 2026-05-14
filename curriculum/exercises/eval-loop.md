@@ -1,5 +1,7 @@
 # Exercise: The eval loop runs itself
 
+**Time:** 35-45 min. Phase 0 manual run ~5 min, Phase 1 kickoff ~3 min, walk-away window ~20-25 min, Phase 2 return and read notes ~10 min.
+
 **Session** *(new, "Module 6 - Evaluations")*
 
 Start a new Claude session at your training-directory root.
@@ -11,8 +13,6 @@ Start a new Claude session at your training-directory root.
 **What you do:**
 
 In Module 5 you ran a benchmark on four detectors and picked the one that caught the most fabrication. The winner got saved as `judges/groundedness-judge.md`. That judge is now yours. It works. You watched it work.
-
-**Time:** 35-45 min. Phase 0 manual run ~5 min, Phase 1 kickoff ~3 min, walk-away window ~20-25 min, Phase 2 return and read notes ~10 min.
 
 Now you stop running it by hand.
 

@@ -1,5 +1,7 @@
 # Exercise: Share your work
 
+**Time:** 55–70 minutes. Some phases will run long. That's where the learning lives.
+
 **Session** *(new, "Module 7 - Personal to team")*
 
 <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
@@ -19,8 +21,6 @@ So the starting question is theirs, not yours: **what job is my teammate trying 
 You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome, not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll find the absorption bottleneck, test the switch, and name the likely failure before it happens. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
 
 **What you do:**
-
-**Time:** 55–70 minutes. Some phases will run long. That's where the learning lives.
 
 **Phase 1. Interview for the job (12 min).**
 

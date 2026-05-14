@@ -1,0 +1,52 @@
+# Painting the picture with the LLM
+
+## The wizard is dead
+
+The wizard typing in neat Perl syntax is dead. Auto-complete was a thing. Auto-complete is no longer a thing. A part of high-end engineering skill has been taken on by the LLM.
+
+## The LLM is an infinite chameleon
+
+The LLM can do good work and bad work. It will be what fits the session. It flatters. It progresses. It mirrors your stance.
+
+Seth Godin has been making the same argument about tools for decades: the tool is not the thing. The taste behind the tool is the thing. The LLM is the infinite version of that argument. Your stance as input to session is mirrored in the output.
+
+That is the design, not a flaw. Your stance is the ceiling.
+
+## You prime, the LLM scales
+
+The stance and the approach matter more now, not less. The session bends to what sits in the context window. You prime it. The LLM scales it.
+
+The rules file. The prompt. What sits on disk for the agent to read. Whatever you put in front of the LLM is what the LLM scales.
+
+If you want a shotgun, you have a shotgun. If you want a cannon, you have that too. The smart ones stay smart.
+
+## Two frontiers
+
+Two questions out in front. Neither has a settled answer.
+
+How can a system like this learn faster than a human practitioner can write things down?
+
+And once it can learn fast, how does it learn the right things, and not just any things?
+
+Let's go.
+
+<!-- maintainer -->
+
+
+**Quality:** draft 2026-05-09
+
+**Lecture meta:** *~3 min closer for Module 1, after the compound-and-close exercise. Self-standing; no Module 2 bridge.*
+
+**Meta:**
+- **Role:** closer. Does not pre-teach M2; does not summarise M1.
+- **Mood target:** recognition. Stance is now the load-bearing part. No doom, no hype.
+- **Voice:** Sutherland-tilt for chameleon; Godin for tool/taste; Boris-flat on wizard.
+
+**Source — MUST DO before first cohort:** Godin paraphrase un-cited. Pin one essay or book line supporting *"the tool is not the thing; the taste behind the tool is the thing,"* or drop the attribution.
+
+**Watch-fors (delivery):**
+- Don't expand the wizard beat into Perl history.
+- Don't over-explain "infinite chameleon."
+- "If you want a cannon" is a koan; let it sit.
+- Frontiers section names two open questions — do NOT answer them. The training answers by accretion through M1–M6.
+- "Let's go" closes. No further punchline.

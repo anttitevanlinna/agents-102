@@ -1,26 +1,18 @@
 # Exercise: Map the access surface
 
-**Session** *(new, "Module 3 - Earn the trust")*
+**Time:** 20 minutes.
 
-Start a new Claude Code session at your repo root.
-
-```
-/rename m3-access-surface
-```
+**Window:** *m3-security* (the main lane from *Open the side quest*; m3-quality stays parked).
 
 **What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
 
-**What happened:** The access-control analysis skill runs a structured pass across the feature: user boundaries, trust boundaries, data flows, tool/connector calls, external integration points, authorization checkpoints. It produces a surface map. You read it against your own knowledge of the feature and decide what's missing or wrong. Your delta is the artifact, not the raw skill output.
-
 **The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment that the skill can't have.
-
-**Time:** 20 minutes.
 
 ---
 
 ## Phase 1: invoke the skill
 
-Start a new Claude Code session at your repo root. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name.
+The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session.
 
 First, see what skills your Claude has loaded. In the Claude Code chat, type:
 
@@ -41,7 +33,7 @@ Ask Claude to invoke the access-control-analysis skill on the feature you'll nam
 {{prompt:map-the-access-surface-2}}
 
 
-Answer the one-sentence feature question. Let the skill run. It'll read the code, walk the surfaces, and produce the map. You watch.
+Answer the one-sentence feature question. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill reads the code, walks the surfaces, and produces the map. You watch.
 
 ## Phase 2: walk the map in conversation
 
@@ -72,6 +64,8 @@ Most people skip this. Some want the pause. Your call.
 
 ---
 
+**What happened:** You ended with a short delta-note in your repo: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn't catch. The delta is the artifact, not the raw skill output.
+
 ## What this sets up
 
 The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE will threat-model a thin map; if you sat with it, STRIDE has something real to chew on.
@@ -79,8 +73,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
+- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -104,5 +98,10 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 **Plug points:**
 - Student's own feature (from Connections)
 - Curated access-control analysis skill — ships in content folder at `content/skills/access-control-analysis/SKILL.md`, installed to `~/.claude/skills/access-control-analysis/SKILL.md` at prework.
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day):
+1. **Invokes the access-control-analysis skill as a subagent on a real PR or feature before code review.** Falsifiable: PR comment quotes the skill's structured output, or a commit message references a surface the skill flagged.
+2. **Writes a delta note that names one surface the skill called out harder than expected AND one surface the skill missed.** Falsifiable: a delta artifact in the repo (file, PR description, or scrollback paste) with both shapes present, not generic ("webhooks need auth") but codebase-specific ("the billing webhook re-hits the queue on retry").
+3. **Adds at least one codebase-specific surface to the map that the generic skill didn't catch.** Falsifiable: the delta note contains a surface entry with a one-line reason naming a codebase invariant (auth pattern, retry shape, integration boundary) the skill wouldn't know.
 
 **Scratch path:** Claude picks a temp directory for the student's OS (`$TMPDIR`, `/tmp`, or equivalent) and reports the absolute path back. Kept deliberately outside the repo — this is session scratch, not memory. M4 teaches the durable tier (`.claude/memory/`); the contrast between `/tmp/`-tier ephemeral and `.claude/memory/`-tier durable is pedagogy. No gitignore concern; nothing lives in the repo. Windows-native caveat: if a cohort lands without WSL, revisit — `%TEMP%` is fine but path conventions differ.

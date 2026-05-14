@@ -1,12 +1,12 @@
 # Exercise: Author your test-strategy skill
 
+**Time:** 18–22 minutes.
+
+**Window:** *m3-quality* (the side-quest lane; switch from m3-security for Phases 1 and 2's authoring conversation). Phase 2's invocation switches back to m3-security; the callout fires there.
+
 **What you do:** Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn't fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on the feature you just security-tested, ask Claude if the test strategy is any good, sharpen if needed, and ship it personally first.
 
-**What happened:** You end with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in your personal skills folder. A strong candidate for a team PR. But that PR starts with a human conversation, not an agent commit.
-
 **The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at Module 6 (M6).
-
-**Time:** 18–22 minutes.
 
 > **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is Module 6 (M6)'s job.
 
@@ -26,6 +26,8 @@ This skill encodes codebase conventions, so it's team-shaped by nature. But it s
 Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
 
 ## Phase 2: invoke the skill on the security-tested feature
+
+**Switch to:** *m3-security window*. The skill at `~/.claude/skills/test-strategy/SKILL.md` is auto-discovered in every session, so the m3-security window picks it up. The access-surface notes and the hardening ADR live in the main lane's working tree, so invocation belongs there.
 
 Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.
 
@@ -49,6 +51,8 @@ Agents don't unilaterally change shared team infrastructure. You do. The convers
 
 Personal stays a fine final home. Not every skill needs to graduate to a shared kit; the test you'll apply is whether teammates would use it as-written, and whether the skill carries enough codebase truth to survive their review.
 
+**What happened:** You ended with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in your personal skills folder. A strong candidate for a team PR, but the PR starts with a human conversation, not an agent commit.
+
 Shipped. Debrief will integrate the session.
 
 ---
@@ -60,8 +64,8 @@ Module 4 (memory that reads your system) consumes the test-strategy skill as a B
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
+- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

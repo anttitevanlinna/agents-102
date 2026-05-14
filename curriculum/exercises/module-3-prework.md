@@ -1,10 +1,10 @@
 # Exercise: Prework before Module 3
 
+**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
+
 **What you do:**
 
 Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything. Just to arrive with your eyes calibrated.
-
-**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
 
 **Reading 1. Five practitioners, automating their life.**
 

@@ -1,12 +1,10 @@
 # Fix tests-first
 
+**Time:** 35–40 minutes.
+
 **What you do:** fix the bug you brought from prework, tests-first. Ship the PR.
 
-**What happened:** a real PR ships. A failing test lands in the codebase before the fix does. The diff is read line-by-line with at least one push-back.
-
 **The point:** tests-first and root-cause-driven is one discipline. Running it with an agent is a second discipline: reading the diff, pushing back when a line is not what you would have written. Both get practised here. The compound move (writing down what you learned) lives in the next exercise.
-
-**Time:** 35–40 minutes.
 
 You know what's loaded and what isn't. Now fix the bug.
 
@@ -21,15 +19,17 @@ Claude writes the failing test, watches it fail, fixes the code, watches it pass
 
 When Claude says done, push once on the depth. Ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
 
-Ask Claude to interrogate the fix and name what's still surface.
+**Optional.** Skip if the test you wrote already names the contract and the fix is the contract, no deeper layer to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.
 
 {{prompt:fix-tests-first-2}}
 
-Ask Claude to do the proper TDD fix on what self-critique surfaced.
+**Optional.** Send only if the interrogation surfaced a deeper layer worth a second TDD pass.
 
 {{prompt:fix-tests-first-3}}
 
-Ask Claude to commit, push a branch, and open the PR (merge or draft, your call).
+Ask Claude to commit, push a branch, and open the PR. How far you let Claude drive Git is your call.
+
+**What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. You read the diff, pushed back on at least one line, and ran the root-cause interrogation before the second TDD pass.
 
 The PR is shipped. The move is warm. Hand off to the compound step.
 

@@ -1,5 +1,7 @@
 # Exercise: Hallucination benchmark
 
+**Time:** 45–60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
+
 **Session** *(new, "Module 5 - Hallucination benchmark")*
 
 <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
@@ -13,8 +15,6 @@
 Four detectors, same briefing, one scoreboard. You don't hunt for ungrounded claims by hand. You set up a benchmark: a 30-claim pool, four different detection methods, and a scorer that adjudicates the claims against the evidence. The winner (or the ensemble) becomes a judge file you carry into Module 6.
 
 The move is empirical. You don't pick a detection method because somebody said so. You run the candidates, measure, and keep the one that caught what mattered on *your* output.
-
-**Time:** 45–60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
 
 Four phases. The work is mostly done by the claim extractor, the four detectors, and the scorer. Your job is to set the benchmark up, start the run, and watch the scoreboard fill in.
 

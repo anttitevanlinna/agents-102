@@ -1,5 +1,7 @@
 # Exercise: *Audit* your agent
 
+**Time:** 35 minutes. Phase 1 ~3, Phase 2 ~12, Phase 3 ~10, Phase 4 ~10.
+
 **Session** *(new, "Module 4 - Security audit")*
 
 <span class="rt-code">Start a new Claude Code session at your training-directory root. The personal skill you saved in Exercise 1 autoloads.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder. The personal skill you saved in Exercise 1 autoloads.</span>
@@ -11,8 +13,6 @@
 **What you do:**
 
 Load the reusable security check you authored in the previous exercise, then run it against the system you built in modules 2-3. Two reusable-lens reports: the same skill, two different checks. One mitigation. One residual-risk decision added to the report; residual risk means what remains after mitigation. The goal is not a clean bill of health. The goal is to run the loop (assess, mitigate, reassess residual) on the system you actually built.
-
-**Time:** 35 minutes. Phase 1 ~3, Phase 2 ~12, Phase 3 ~10, Phase 4 ~10.
 
 Four phases. Bring the policy raw report from the previous exercise; that is the baseline. Bring the reusable check you just authored; that is the expert. Bring your Module 3 system; that is the target.
 

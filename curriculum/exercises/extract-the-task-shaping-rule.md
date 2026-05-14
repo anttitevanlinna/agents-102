@@ -1,12 +1,10 @@
 # Extract the task-shaping rule
 
+**Time:** 12 minutes.
+
 **What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
 
-**What happened:** Claude reads the scrollback and proposes the rules. You rewrite or reject at least one. You name the file and the path. Claude writes it. You ask one open question about where the file could go next. Claude proposes shapes. You read. Optional: you paste one real ticket, and Claude infers how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
-
 **The point:** the file is the artifact. You captured how *you* factored *this* task on *this* codebase. Templates stay generic; this file carries your rules. The mini-lecture that follows names three places this kind of file ends up.
-
-**Time:** 12 minutes.
 
 ## Phase 1: Surface the rules from this session
 
@@ -50,6 +48,8 @@ Then ask Claude to infer how the fields are being used.
 Read the output as a first pass, not a policy. One ticket can reverse-engineer basic rules: which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it. Iterate for depth. Three to five tickets from different work types will surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
 
 When Claude finishes, the lecture is next.
+
+**What happened:** Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
 
 <!-- maintainer -->
 

@@ -23,6 +23,15 @@ Calibration fix candidates (judge-side, not curriculum-side): (a) tighten `curri
 
 Write `reference/hooks-and-loops.md` (1–2 page reference doc): stop-hook vs. command-loop tradeoff, two minimal examples, when to reach for which. Link from M3 + M5 maintainer blocks. Separate session.
 
+## Collapse § 9 vs scheduled-agents.md; rescue session-lifecycle; incorporate new `/goal` command
+
+Bundled rework, separate session.
+
+- **Collapse `claude-code-for-engineers.md` § 9 to a one-paragraph pointer at `scheduled-agents.md`.** Closes items 45 + 46 below (no `/loop` or `/schedule` reconciliation needed if § 9 stops describing them). `scheduled-agents.md` becomes the canonical scheduling page; reference page stops competing with it.
+- **Rescue the session-lifecycle three gotchas** (laptop sleep freezes the session; Ctrl+C mid-tool can corrupt `.jsonl`; no per-session budget cap) out of § 9 into their own short section in `claude-code-for-engineers.md`. They apply to any long-running session, not just scheduled ones, and M4's un-packaged send-off depends on them whether or not a scheduler is involved.
+- **Check across and incorporate the new `/goal` command.** Live-test scope, audit `claude-code-for-engineers.md` § 11 (slash-command coverage) + `scheduled-agents.md` + any module body that should reference it. Land it where it fits; update the related slash-command items below (44) at the same pass.
+- **Update the "Related AE101 modules" footer in `claude-code-for-engineers.md`** while in the file, M2/M3/M6 now actually link the page (2026-05-11 pass), trim or rewrite the footer to match reality rather than overclaim cross-refs.
+
 ## AE101 reference + supplementary audit findings (2026-05-09)
 
 Captured by `/research-review`-shaped audit subagents against the 4 AE101 references + 2 AE101 supplementaries that survived the per-training split. Original report: `/tmp/ae101-audit/{reference,supplementary}-findings.md` (lost on tmp wipe; load-bearing items copied here).

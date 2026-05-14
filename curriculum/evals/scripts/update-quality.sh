@@ -85,9 +85,20 @@ keep_judges=""
 keep_mechanical=""
 keep_maintainer=""
 keep_cohorts=""
+prior_top=""
+# Prior per-class SHA pins from the existing top-line. Empty if absent.
+# Used when a class is in `keep` state so the top-line tuple is preserved.
+prior_pin_writing=""
+prior_pin_story=""
+prior_pin_technical=""
+prior_pin_behavior=""
 in_block=0
 while IFS= read -r line; do
-  if [[ "$line" == "**Quality:**"* ]]; then in_block=1; continue; fi
+  if [[ "$line" == "**Quality:**"* ]]; then
+    in_block=1
+    prior_top="$line"
+    continue
+  fi
   if [[ $in_block -eq 1 ]]; then
     case "$line" in
       "- judges:"*|"- judges "*)                     keep_judges="$line" ;;
@@ -98,6 +109,46 @@ while IFS= read -r line; do
     esac
   fi
 done < "$FILE"
+
+# Extract prior per-class pins from `(<cls>@<sha> ...)` group on the top-line.
+# Pattern: writing@abc1234 story@def5678 technical@ghi9012 behavior@jkl3456.
+# Tolerates extra spaces and any subset of the four classes.
+if [[ -n "$prior_top" ]]; then
+  for cls in writing story technical behavior; do
+    pin=$(printf '%s\n' "$prior_top" | sed -nE "s/.*[^a-z]($cls@[a-zA-Z0-9_-]+).*/\1/p")
+    case "$cls" in
+      writing)    prior_pin_writing="$pin" ;;
+      story)      prior_pin_story="$pin" ;;
+      technical)  prior_pin_technical="$pin" ;;
+      behavior)   prior_pin_behavior="$pin" ;;
+    esac
+  done
+fi
+
+# Fallback: recover per-class pins from the `- judges @<sha>: <verdicts>` row
+# when the top-line tuple was dropped by an earlier broken stamp. The judges
+# row records a SINGLE row-level SHA and per-class verdict strings; lift the
+# row SHA onto each class that is currently marked PASS (or PASS:*). Classes
+# in REVISE / grandfathered / N/A get no pin (correct — they're not in PASS
+# state). This restores spec-conformant top-lines on files whose tuples were
+# previously clobbered.
+if [[ -z "$prior_pin_writing$prior_pin_story$prior_pin_technical$prior_pin_behavior" \
+      && -n "$keep_judges" ]]; then
+  row_sha=$(printf '%s\n' "$keep_judges" | sed -nE 's/^- judges @([a-zA-Z0-9_-]+):.*/\1/p')
+  if [[ -n "$row_sha" ]]; then
+    judges_body="${keep_judges#*: }"
+    for cls in writing story technical behavior; do
+      if printf '%s\n' "$judges_body" | grep -qE "(^|, )$cls PASS(\b|,|$)"; then
+        case "$cls" in
+          writing)   prior_pin_writing="$cls@$row_sha"   ;;
+          story)     prior_pin_story="$cls@$row_sha"     ;;
+          technical) prior_pin_technical="$cls@$row_sha" ;;
+          behavior)  prior_pin_behavior="$cls@$row_sha"  ;;
+        esac
+      fi
+    done
+  fi
+fi
 
 # ---- Render the judges row (rolls up four per-class states) ------------------
 render_class_inline() {
@@ -120,6 +171,43 @@ for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior"; d
   [[ "$v" != "keep" ]] && all_keep=0
 done
 
+# Parse prior judges-row body into per-class verdict entries so `keep` classes
+# preserve their prior state rather than collapsing to grandfathered.
+prior_judges_writing=""
+prior_judges_story=""
+prior_judges_technical=""
+prior_judges_behavior=""
+if [[ -n "$keep_judges" ]]; then
+  judges_body_prior="${keep_judges#*: }"
+  IFS=',' read -r -a verdict_arr <<< "$judges_body_prior"
+  for entry in "${verdict_arr[@]}"; do
+    entry="${entry#"${entry%%[![:space:]]*}"}"  # ltrim
+    case "$entry" in
+      writing\ *)   prior_judges_writing="$entry"   ;;
+      story\ *)     prior_judges_story="$entry"     ;;
+      technical\ *) prior_judges_technical="$entry" ;;
+      behavior\ *)  prior_judges_behavior="$entry"  ;;
+    esac
+  done
+fi
+
+# Convert a rendered "<cls> PASS (note)" entry back to internal state value.
+prior_state_for() {
+  local cls="$1" entry="$2"
+  [[ -z "$entry" ]] && { echo ""; return; }
+  local body="${entry#"$cls "}"
+  case "$body" in
+    PASS)                  echo "PASS" ;;
+    "PASS ("*)             local n="${body#PASS (}"; echo "PASS:${n%)}" ;;
+    "REVISE ("*)           local n="${body#REVISE (}"; echo "REVISE:${n%)}" ;;
+    grandfathered)         echo "grandfathered" ;;
+    "grandfathered ("*)    local n="${body#grandfathered (}"; echo "grandfathered:${n%)}" ;;
+    "N/A")                 echo "na" ;;
+    "N/A ("*)              local n="${body#N/A (}"; echo "na:${n%)}" ;;
+    *)                     echo "grandfathered" ;;  # unrecognised — degrade safely
+  esac
+}
+
 if [[ $all_keep -eq 1 ]]; then
   judges_row="${keep_judges:-- judges: not yet judge-audited}"
 else
@@ -129,8 +217,13 @@ else
     cls="${pair%% *}"
     raw="${pair#* }"
     if [[ "$raw" == "keep" ]]; then
-      # Try to reuse from existing judges row if present (best-effort: keep value)
-      raw=grandfathered
+      case "$cls" in
+        writing)    raw=$(prior_state_for writing   "$prior_judges_writing")   ;;
+        story)      raw=$(prior_state_for story     "$prior_judges_story")     ;;
+        technical)  raw=$(prior_state_for technical "$prior_judges_technical") ;;
+        behavior)   raw=$(prior_state_for behavior  "$prior_judges_behavior")  ;;
+      esac
+      [[ -z "$raw" ]] && raw=grandfathered  # no prior judges row at all
     fi
     rendered=$(render_class_inline "$cls" "$raw")
     parts+="${parts:+, }$rendered"
@@ -157,7 +250,12 @@ mechanical_row=$(render_axis_row mechanical "$state_mechanical" "$keep_mechanica
 maintainer_row=$(render_axis_row maintainer-reviewed "$state_maintainer_reviewed" "$keep_maintainer")
 cohorts_row=$(render_axis_row cohorts "$state_cohorts" "$keep_cohorts")
 
-# ---- Build top-state line: SHA pins for PASS judge-classes only --------------
+# ---- Build top-state line: SHA pins for PASS judge-classes ------------------
+# Resolution order per class:
+#   1. State set this invocation to PASS / PASS:*  → pin @ current SHA.
+#   2. State left as `keep` → re-use prior pin if one existed.
+#   3. State explicitly REVISE / grandfathered / na → no pin (judge-class is
+#      not in a PASS state, so no SHA token on the top-line).
 sha_pins=""
 for pair in "writing $state_writing" "story $state_story" \
             "technical $state_technical" "behavior $state_behavior"; do
@@ -165,9 +263,25 @@ for pair in "writing $state_writing" "story $state_story" \
   raw="${pair#* }"
   if [[ "$raw" == "PASS" || "$raw" == PASS:* ]]; then
     sha_pins+="${sha_pins:+ }$cls@$SHA"
+  elif [[ "$raw" == "keep" ]]; then
+    case "$cls" in
+      writing)   [[ -n "$prior_pin_writing"   ]] && sha_pins+="${sha_pins:+ }$prior_pin_writing"   ;;
+      story)     [[ -n "$prior_pin_story"     ]] && sha_pins+="${sha_pins:+ }$prior_pin_story"     ;;
+      technical) [[ -n "$prior_pin_technical" ]] && sha_pins+="${sha_pins:+ }$prior_pin_technical" ;;
+      behavior)  [[ -n "$prior_pin_behavior"  ]] && sha_pins+="${sha_pins:+ }$prior_pin_behavior"  ;;
+    esac
   fi
 done
-NEW_TOP="**Quality:** compendium-audited $DATE${sha_pins:+ ($sha_pins)}"
+
+# Top-line date: bump to DATE iff a judge-class state was actually set this run.
+# Otherwise preserve the prior date so a mechanical-only stamp doesn't lie about
+# when the compendium audit happened.
+top_date="$DATE"
+if [[ $all_keep -eq 1 && -n "$prior_top" ]]; then
+  prior_date=$(printf '%s\n' "$prior_top" | sed -nE 's/.*compendium-audited ([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p')
+  [[ -n "$prior_date" ]] && top_date="$prior_date"
+fi
+NEW_TOP="**Quality:** compendium-audited $top_date${sha_pins:+ ($sha_pins)}"
 
 # ---- Splice into file --------------------------------------------------------
 TMP="$(mktemp)"

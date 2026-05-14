@@ -1,18 +1,14 @@
 # Exercise: Three minds, one synthesis
 
+**Time:** ~22 minutes (15 min synthesis + 7 min Close).
+
 **What you do:**
 
 Spawn three subagents inside one session. Each holds a different stance against your curated memory. The main session reads them back, applies a strategy framework, and writes the answer back into your `./crux.md` as a third section.
 
-**What happened:**
-
-Three voices, three short notes. The main session read them side by side, applied Rumelt's strategy kernel, diagnosis, guiding policy, coherent actions, inline, wrote the synthesis. Single artifact carries the full strategic frame: crux + question + answer.
-
 **The point:**
 
 Multi-agent's second shape: subagents inside one session. Each runs in its own context, returns and disappears. Quick parallel thinking, bounded return, without juggling four windows.
-
-**Time:** ~22 minutes (15 min synthesis + 7 min Close).
 
 The previous exercise left you with a curated `memory/` (the synthesizer's output) and the same `./crux.md` you've been building since the opening.
 
@@ -48,6 +44,7 @@ If the volume is in the way, ask Claude to choose the fixes that aim for optimal
 
 {{prompt:three-minds-one-synthesis-3}}
 
+**What happened:** Three voices, three short notes. The main session read them side by side, applied Rumelt's strategy kernel (diagnosis, guiding policy, coherent actions) inline, wrote the synthesis. A single artifact carried the full strategic frame: crux + question + answer.
 
 **Close. Does this feel right?**
 

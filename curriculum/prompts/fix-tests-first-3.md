@@ -1,7 +1,6 @@
 ---
 key: fix-tests-first-3
 dest: Claude Code
-context: optional
 runtime: any
 origin: exercises/fix-tests-first
 ---

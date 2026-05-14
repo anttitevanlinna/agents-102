@@ -1,5 +1,7 @@
 # Exercise: *Run and package* a security skill
 
+**Time:** 40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.
+
 **Session** *(new, "Module 4 - Security skill")*
 
 <span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
@@ -11,8 +13,6 @@
 **What you do:**
 
 Run the policy files raw against the system you built in modules 2-3. Then package the useful move into reusable expertise: one personal skill with two lenses. Stop when the skill exists.
-
-**Time:** 40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.
 
 Three phases. The raw run proves the policy files are runnable. The package makes the check reusable. The loading and audit come next.
 

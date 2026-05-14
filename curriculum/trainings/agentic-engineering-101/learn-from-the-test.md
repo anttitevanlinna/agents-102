@@ -25,7 +25,7 @@ A real engineering call lives in this fork: gitignored files (your `CLAUDE.local
 
 If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
 
-{{prompt:ae101-m4-worktree-setup}}
+{{prompt:ae101-m5-worktree-setup}}
 
 Open a new Claude Code session in the worktree. The rest of Module 5 runs there.
 
@@ -51,7 +51,7 @@ Now the re-send. Same task as Module 4, packaged this time. The prompt can be sh
 
 Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.
 
-{{prompt:ae101-m4-rerun-packaged}}
+{{prompt:ae101-m5-rerun-packaged}}
 
 The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. Your call on whether to push.
 
@@ -62,6 +62,12 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 ## Next
 
 Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its full name as an eval, and the team kit takes its first inherited skill.
+
+## Bring to Module 6
+
+A packaged re-run with substance. Read the scrollback or commits from the Debrief re-send; check the agent didn't just stall in the first minute.
+
+Come to Module 6 without the packaged run and you'll be reading one run while the room is reading two. Your call.
 
 ## Pre-reads before Module 6
 
@@ -74,6 +80,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 
 **Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
 - judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+- mechanical @e840433: PASS — ae101-m5 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

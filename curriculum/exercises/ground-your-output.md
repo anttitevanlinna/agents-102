@@ -1,16 +1,18 @@
 # Exercise: *Ground* your output
 
+**Time:** 45 minutes. Phase 1 ~10, Phase 2 ~15, Phase 3 ~15, Close ~5.
+
 **What you do:**
 
-There is truth out there. Your sources represent pieces of it. Your retrievals, your memory, your call notes — each carries a shard of what actually happened and what's actually the case. The agent's job is to connect its output to that ground.
+There is truth out there. Your sources represent pieces of it. Your retrievals, your memory, your call notes, each carries a shard of what actually happened and what's actually the case. The agent's job is to connect its output to that ground.
 
-When it can't reach the ground — when you ask for more than the sources carry — it fills the gap. Confidently. Plausibly. With good grammar. The output is ungrounded, and the agent won't tell you which parts.
+When it can't reach the ground, when you ask for more than the sources carry, it fills the gap. Confidently. Plausibly. With good grammar. The output is ungrounded, and the agent won't tell you which parts.
 
-Your job today: ask for too much, see the ungrounded output appear, classify where the ground is and isn't, and add rules that force the agent back to the ground. Three phases. 45 minutes. Target material: your Module 3 synthesized answer (`module-3/stances/*.md` and the combined output).
+Your job today: ask for too much, classify where the ground is and isn't, and add rules that force the agent back to the ground. Three phases. 45 minutes. Target material: your Module 3 synthesized answer (`module-3/stances/*.md` and the combined output).
 
-**Phase 1 — Ask for more than the ground carries.**
+**Phase 1, Ask for more than the ground carries.**
 
-You've seen your Module 3 system produce an plain synthesised answer. Now you'll ask it for the kind of briefing your CEO would love and your sources can't support. The prompt below requests specific numbers, named competitors' internal strategy, verbatim quotes, analyst opinions — things your sources almost certainly don't contain. The agent will write something anyway. That something is ungrounded output.
+You've seen your Module 3 system produce an plain synthesised answer. Now you'll ask it for the kind of briefing your CEO would love and your sources can't support. The prompt below requests specific numbers, named competitors' internal strategy, verbatim quotes, analyst opinions, things your sources almost certainly don't contain. The agent will write something anyway. That something is ungrounded output.
 
 Open a fresh Claude Code session in your training directory. Paste:
 
@@ -27,15 +29,15 @@ The briefing should be specific and confident. Include:
 Use the sources on disk. If you need to, blend in general knowledge from your training data to round out the picture — don't leave gaps. Write it as a one-page briefing I could hand to my CEO. Save to module-5/briefing-v1.md.
 ```
 
-Watch it write. Notice how the agent fills every gap the sources don't cover — because you told it to. The last sentence of the prompt gives permission to leave the ground, and the agent will take it.
+Watch it write. Notice how the agent fills every gap the sources don't cover, because you told it to. The last sentence of the prompt gives permission to leave the ground, and the agent will take it.
 
-Open `module-5/briefing-v1.md`. Read it as if you were about to forward it. Something's off — you can feel it before you can name it. That feeling is you noticing ungrounded content. It sounds right and you can't cite it.
+Open `module-5/briefing-v1.md`. Read it as if you were about to forward it. Something's off, you can feel it before you can name it. That feeling is you noticing ungrounded content. It sounds right and you can't cite it.
 
-**Phase 2 — Find where the ground is. And where it isn't.**
+**Phase 2, Find where the ground is. And where it isn't.**
 
 You are the domain expert. The agent is not. Your job is to walk through the briefing, claim by claim, and mark each one: is it grounded, and how well?
 
-Copy the briefing into this prompt and paste (or, if v1 ran long, skip the paste and tell Claude to read `module-5/briefing-v1.md` directly — both work):
+Copy the briefing into this prompt and paste (or, if v1 ran long, skip the paste and tell Claude to read `module-5/briefing-v1.md` directly, both work):
 
 ```
 I'll paste a briefing you produced. Read it back with a cold eye. For each specific claim, classify it as one of:
@@ -55,13 +57,13 @@ Briefing follows (or read module-5/briefing-v1.md from disk if I tell you to):
 [paste briefing-v1.md here, or delete this line and say: read module-5/briefing-v1.md directly]
 ```
 
-Read the classified output. Let the pattern show itself — don't come in expecting a verdict. Look for which category the agent keeps landing on, and where it hedges between two. That shape is the shape of your v1 problem.
+Read the classified output. Let the pattern show itself, don't come in expecting a verdict. Look for which category the agent keeps landing on, and where it hedges between two. That shape is the shape of your v1 problem.
 
-Write one sentence to `module-5/pattern.md`: *"In v1, [X%] of specific claims were grounded; the briefing's dominant failure is [category] — it [describe in plain English]."* Something specific.
+Write one sentence to `module-5/pattern.md`: *"In v1, [X%] of specific claims were grounded; the briefing's dominant failure is [category], it [describe in plain English]."* Something specific.
 
 This is the shape of ungroundedness in your system, today. Every agent you build for the rest of your career will have some version of it.
 
-**Phase 3 — Rules that force the output back to the ground.**
+**Phase 3, Rules that force the output back to the ground.**
 
 Fabrication is what happens when the agent is allowed to speak beyond the ground. Tighten the rules and you force it back. You're going to add three grounding rules, regenerate, and see what changes.
 
@@ -81,38 +83,36 @@ Re-read the sources and retrievals. Produce the briefing again with these three 
 At the end, add a short note: what did you have to drop or soften compared to v1 because it couldn't be grounded?
 ```
 
-Read `module-5/briefing-v2.md` next to v1. Read slowly. Notice what happened to the ungrounded content. Notice what happened to the confidence. Notice what's shorter. Notice what got dropped that you sort of wish had stayed — because grounded rules are not free, and somewhere in v2 you've paid for the directness.
+Read `module-5/briefing-v2.md` next to v1. Read slowly. Notice what happened to the ungrounded content. Notice what happened to the confidence. Notice what's shorter. Notice what got dropped that you sort of wish had stayed, because grounded rules are not free, and somewhere in v2 you've paid for the directness.
 
 Add one paragraph to `module-5/pattern.md` under a heading `## The grounding tradeoff`:
 
 *"With the three grounding rules, my briefing lost [what you lost] but gained [what you gained]. For this output, grounded [tight / medium / loose] is the right setting because [why]. Looser would buy [what], at the cost of [what]."*
 
-That paragraph is the artifact. You ran the loop once — ask, notice ungrounding, add grounding rules, regenerate, judge the tradeoff — on your own material. The loop is portable to every agent output you'll ever read.
+That paragraph is the artifact. You ran the loop once, ask, notice ungrounding, add grounding rules, regenerate, judge the tradeoff, on your own material. The loop is portable to every agent output you'll ever read.
 
-**Close — what grounding can't reach.**
+**Close, what grounding can't reach.**
 
 Grounding catches a lot. It doesn't catch everything.
 
 Even with citations, some things are still uncertain:
-- **The citation might not actually back the claim.** Agents learn to cite because citations look good; the cited file doesn't always say what the citation claims. Pick three of v2's citations. Open each file. Does the source actually say what the briefing claims? This is the first of the three detection techniques from the lecture — citation re-verification. Run it on your own v2 before trusting it.
+- **The citation might not actually back the claim.** Agents learn to cite because citations look good; the cited file doesn't always say what the citation claims. Pick three of v2's citations. Open each file. Does the source actually say what the briefing claims? This is the first of the three detection techniques from the lecture, citation re-verification. Run it on your own v2 before trusting it.
 - A claim grounded in a source where the source itself is wrong or outdated.
-- A claim that's technically grounded but the framing tilts it ("only 12% of customers left" is grounded in the same data as "88% stayed" — different story).
-- What you chose to include and exclude — framing decisions that shape the conclusion.
-- Whether the Monday action is actually the right move — strategic judgment the ground can't settle.
+- A claim that's technically grounded but the framing tilts it ("only 12% of customers left" is grounded in the same data as "88% stayed", different story).
+- What you chose to include and exclude, framing decisions that shape the conclusion.
+- Whether the Monday action is actually the right move, strategic judgment the ground can't settle.
 
 Grounding is the discipline of not *inventing*. It isn't the discipline of *being right*. The next layer is harder.
 
-Write one line to `module-5/still-uncertain.md`: *"Even with grounded output, the thing I still can't trust about this briefing is X."* That line is what Module 6 comes back for. Evals automate the grounding check at scale — and then start to reach toward the next layer.
+Write one line to `module-5/still-uncertain.md`: *"Even with grounded output, the thing I still can't trust about this briefing is X."* That line is what Module 6 comes back for. Evals automate the grounding check at scale, and then start to reach toward the next layer.
 
 **What happened:**
 
-You produce an ungrounded briefing, classify where the ground is and isn't with your domain expertise, add three rules that force the agent to cite or stop, regenerate a grounded version, and judge what you gained and lost. You walk out with the grounding loop as a practice you can run on any output, any Monday — and a clear-eyed sense of what grounding reaches and what it doesn't.
+You produce an ungrounded briefing, classify where the ground is and isn't with your domain expertise, add three rules that force the agent to cite or stop, regenerate a grounded version, and judge what you gained and lost. You walk out with the grounding loop as a practice you can run on any output, any Monday, and a clear-eyed sense of what grounding reaches and what it doesn't.
 
 **The point:**
 
 There is truth out there. Your sources carry shards of it. The agent's job is to stay connected to the ground; when it can't, it invents. Spotting the gap between the output and the ground is your expertise. Encoding rules that make the agent prefer "I don't know" over invention is your leverage. The confidence of the output is not evidence of its truth; its grounding is. Train your eye today, encode the discipline into rules, let the rules carry it when you're not in the room.
-
-**Time:** 45 minutes. Phase 1 ~10, Phase 2 ~15, Phase 3 ~15, Close ~5.
 
 <!-- maintainer -->
 

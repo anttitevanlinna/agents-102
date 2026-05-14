@@ -1,12 +1,10 @@
 # Arc retrospective
 
+**Time:** 15–20 minutes.
+
 **What you do:** Ask an agent to read everything you've authored across the training and write a one-page note on what changed. The agent names the arc from your own evidence, not a template.
 
-**What happened:** You end with a short written note in your repo (ADR-shaped or a loose memo, your call) that names how your practice changed across the modules. Not a self-congratulation round. A reading of your own artefacts by a fresh agent who has the patience to look at all of them at once.
-
 **The point:** The throughline of the training is that everything is scaling of learning. Each module's loop is the same loop at a wider scope. That's only visible retrospectively, and only from your own artefacts. The agent's job here is to name the arc so you see it too.
-
-**Time:** 15–20 minutes.
 
 > **Quick timebox note.** The read across Modules 1–6 artefacts is wide; the beat stays short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. No perfect note to chase. The arc is yours; the note is just the agent helping you see it.
 
@@ -23,6 +21,8 @@ If the read runs ten minutes plus, interrupt with *"enough. just tell me now."*,
 Read the note. That's the read of your six modules from outside the work.
 
 If the note reads true, save it. You'll have your agent re-read it when the next long task stalls.
+
+**What happened:** You ended with a short written note in your repo (ADR-shaped or a loose memo, your call) that named how your practice changed across the modules. The agent read across all six modules' artefacts and wrote the arc from your own evidence, not a template.
 
 <!-- maintainer -->
 

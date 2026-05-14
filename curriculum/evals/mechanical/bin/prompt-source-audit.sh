@@ -23,8 +23,23 @@ if [[ $# -lt 1 ]]; then
 fi
 
 SLUG="$1"
-EXERCISE_FILE="${2:-curriculum/exercises/$SLUG.md}"
+EXERCISE_FILE="${2:-}"
 PROMPTS_DIR="/tmp/prompts/$SLUG"
+
+# Auto-resolve exercise file if not given. Prework + per-training meta files
+# live under curriculum/trainings/<training>/; exercises under curriculum/exercises/.
+if [[ -z "$EXERCISE_FILE" ]]; then
+  if [[ -f "curriculum/exercises/$SLUG.md" ]]; then
+    EXERCISE_FILE="curriculum/exercises/$SLUG.md"
+  else
+    # Try every training dir
+    for cand in curriculum/trainings/*/$SLUG.md; do
+      [[ -f "$cand" ]] && EXERCISE_FILE="$cand" && break
+    done
+    # Final fallback for missing file (will be reported as skipped)
+    : "${EXERCISE_FILE:=curriculum/exercises/$SLUG.md}"
+  fi
+fi
 
 SEV1=0
 SEV2=0
@@ -70,8 +85,17 @@ else
     # P2: skill path. Sev-1 only if the path is being INVOKED
     # (invoke/use/call/run/load near the path); otherwise Sev-2 (reference
     # or authoring destination). Exempt ~/.claude/projects/.
+    # Install-workflow carve-out: prompts about extracting a tarball or
+    # installing skills legitimately reference `content/skills/` (the source
+    # directory) and `~/.claude/skills/` (the install destination). The
+    # compendium rule guards skill INVOCATION shape (skills invoke by name);
+    # install-workflow prompts are a different surface and out of scope.
+    is_install_workflow=0
+    if grep -qiE '\b(install|tarball|extract|\.tar\.gz)\b' "$prompt" && grep -qiE '\bskill' "$prompt"; then
+      is_install_workflow=1
+    fi
     p2_hits=$(grep -nE '(~/\.claude/skills/|\.claude/skills/|content/skills/)' "$prompt" || true)
-    if [[ -n "$p2_hits" ]]; then
+    if [[ -n "$p2_hits" && "$is_install_workflow" -eq 0 ]]; then
       while IFS= read -r line; do
         if echo "$line" | grep -qiE '\b(invoke|use the|call|run|load|dispatch)\b.*(skills/|SKILL\.md)'; then
           note_sev1 "P2 skill invoked by path in $name: $line"
@@ -88,8 +112,15 @@ else
       note_sev2 "P3 markdown shout in $name: $(echo "$p3_hits" | head -1)"
     fi
 
-    # P4: curriculum-vocab leak.
-    p4_hits=$(grep -nwE 'M[1-9]|the training|the send-off|compounding|the kit|requirement-weaving|the M-arc' "$prompt" || true)
+    # P4: curriculum-vocab leak. Carve-out per check_prompts.md rule 32 —
+    # M-references are exempt when they're load-bearing identifiers (branch
+    # names, literal commit messages, worktree paths, transcript-path slugs).
+    # Strip those before checking:
+    #   - backtick code spans (paths, branch names like `m4/<slug>`)
+    #   - double-quoted strings (literal commit messages like "M4 starting point")
+    #   - paths containing m[1-9]/ or -m[1-9] (worktree dirs, branch refs)
+    p4_clean=$(sed -E -e 's/`[^`]*`//g' -e 's/"[^"]*"//g' -e 's|[^ ]*[-/]m[1-9][^ ]*||g' "$prompt")
+    p4_hits=$(echo "$p4_clean" | grep -nwE 'M[1-9]|the training|the send-off|compounding|the kit|requirement-weaving|the M-arc' || true)
     if [[ -n "$p4_hits" ]]; then
       note_sev1 "P4 curriculum vocab in $name: $(echo "$p4_hits" | head -1)"
     fi

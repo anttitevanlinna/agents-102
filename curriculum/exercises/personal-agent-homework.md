@@ -1,10 +1,10 @@
 # Exercise: Your first *scheduled* agent
 
+**Time:** 35 minutes to set up. One glance a day for a week.
+
 **What you do:**
 
 You built a memory today. One live challenge, curated sources, a compiled set of claims. Now give it a pulse. This homework puts a scheduled agent in front of your memory so it reads the thing every morning and tells you something useful before you've had coffee.
-
-**Time:** 35 minutes to set up. One glance a day for a week.
 
 **Pick one of three jobs.** Choose whichever fits your week:
 

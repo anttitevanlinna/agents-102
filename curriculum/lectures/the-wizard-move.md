@@ -12,7 +12,7 @@ Two Claude chat windows.
 
 In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
 
-In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs.
+In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs. But not as reliably.
 
 Same words. Different answer. The first exchange became context, and the context colored everything after.
 

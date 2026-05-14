@@ -127,6 +127,30 @@
     "origin": "agents-101/prework",
     "text": "Build me a snake game as a single HTML file. Save it as `prework/snake.html`."
   },
+  "ae101-agent-loop-ascii": {
+    "key": "ae101-agent-loop-ascii",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/supplementary/the-agent-loop",
+    "text": "Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step, and how tool results feed back to the LLM."
+  },
+  "ae101-agent-loop-tool-injection": {
+    "key": "ae101-agent-loop-tool-injection",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/supplementary/the-agent-loop",
+    "text": "Explain how you know what tools you can call in this session. Then explain how MCP-connector tools get injected into the same set."
+  },
+  "ae101-agent-loop-tools-list": {
+    "key": "ae101-agent-loop-tools-list",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/supplementary/the-agent-loop",
+    "text": "List the tools you have available in this session. One line each."
+  },
   "ae101-m1-integrate-branch": {
     "key": "ae101-m1-integrate-branch",
     "dest": "Claude Code",
@@ -159,40 +183,56 @@
     "origin": "agentic-engineering-101/earn-the-trust",
     "text": "Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back.\n\nFirst: find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.\n\nThen, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write."
   },
-  "ae101-m3-commit-starting-point": {
-    "key": "ae101-m3-commit-starting-point",
+  "ae101-m3-fork-quality-side": {
+    "key": "ae101-m3-fork-quality-side",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/earn-the-trust",
+    "text": "Confirm the repo state: working tree is clean (or stage-and-commit what's pending), and `./CLAUDE.local.md` is loaded if it exists.\n\nThen fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if it exists)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across."
+  },
+  "ae101-m3-quality-side-orient": {
+    "key": "ae101-m3-quality-side-orient",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/earn-the-trust",
+    "text": "Fresh session in the sibling worktree. Confirm worktree state:\n\n- which directory you're in\n- which branch is checked out\n- whether `./CLAUDE.md` and `./CLAUDE.local.md` loaded\n- whether the codebase is visible (`git ls-files | head` is fine)\n\nReport the four lines back. Then wait."
+  },
+  "ae101-m4-commit-starting-point": {
+    "key": "ae101-m4-commit-starting-point",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
     "text": "Commit the current state of the repo on a fresh feature branch named m4/<short-task-slug>. Stage everything, commit with message \"M4 starting point\". Tell me the short SHA."
   },
-  "ae101-m3-nudge-continue": {
-    "key": "ae101-m3-nudge-continue",
+  "ae101-m4-nudge-continue": {
+    "key": "ae101-m4-nudge-continue",
     "dest": "Claude Code",
     "context": "optional",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
     "text": "Continue --- you can do it. Can't you?"
   },
-  "ae101-m3-take-task-end-to-end": {
-    "key": "ae101-m3-take-task-end-to-end",
+  "ae101-m4-take-task-end-to-end": {
+    "key": "ae101-m4-take-task-end-to-end",
     "dest": "Claude Code",
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
     "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't."
   },
-  "ae101-m4-rerun-packaged": {
-    "key": "ae101-m4-rerun-packaged",
+  "ae101-m5-rerun-packaged": {
+    "key": "ae101-m5-rerun-packaged",
     "dest": "Claude Code",
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
     "text": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nBefore you start, ask for or write anything else you want for this run.\n\nTell me what shipped, what didn't, and what the verifier surfaced."
   },
-  "ae101-m4-worktree-setup": {
-    "key": "ae101-m4-worktree-setup",
+  "ae101-m5-worktree-setup": {
+    "key": "ae101-m5-worktree-setup",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
@@ -205,7 +245,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
-    "text": "Download the AE101 content tarball to ~/Downloads. Use Bash:\n\n  curl -fsSL <CONTENT_URL> -o ~/Downloads/agents-102-content.tar.gz\n\nConfirm the file exists and report its size."
+    "text": "Download the AE101 content tarball to `~/Downloads/agents-102-content.tar.gz` using curl. Report the file's size.\n\nURL:"
   },
   "ae101-prework-extract-and-install": {
     "key": "ae101-prework-extract-and-install",
@@ -214,6 +254,14 @@
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
     "text": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.\n\n1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.\n\n2. Extract ~/Downloads/agents-102-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.\n\n3. Install these as personal Claude Code skills:\n   - access-control-analysis\n   - stride\n\n   Use the extracted content/skills/ folder as the source. Install them wherever personal Claude Code skills belong on this machine. Confirm each installed skill has a SKILL.md file and tell me the absolute path.\n\n4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.\n\n5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.\n\nReport success on each step and tell me what you did."
+  },
+  "ae101-prework-one-at-a-time": {
+    "key": "ae101-prework-one-at-a-time",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/prework",
+    "text": "Use the AskUserQuestion tool for speeding up screening and making suggestions. One candidate at a time."
   },
   "agent-loop-raw-1": {
     "key": "agent-loop-raw-1",
@@ -429,7 +477,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran and cite the practitioner who wrote it up if one fits.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know."
+    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran. List 2–3 practitioners whose published work runs a similar loop, one short clause naming each person's frame. Practitioners worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison, Huryn. If you can name fewer than two without guessing, list only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know."
   },
   "compound-and-close-2": {
     "key": "compound-and-close-2",
@@ -445,7 +493,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR you opened earlier. If we needed to create the ticket just now, create it first, then update. Tell me what you wrote."
+    "text": "Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR if you opened one (otherwise link the branch). If we needed to create the ticket just now, create it first, then update. Tell me what you wrote."
   },
   "compound-and-close-4": {
     "key": "compound-and-close-4",
@@ -618,7 +666,7 @@
   "fix-tests-first-2": {
     "key": "fix-tests-first-2",
     "dest": "Claude Code",
-    "context": "optional",
+    "context": "",
     "runtime": "any",
     "origin": "exercises/fix-tests-first",
     "text": "Was the change you just made the root cause of the bug, or a layer above it? If a layer above, name what the deeper edit would touch. Don't change anything yet. Re-read your own diff and tell me what's still surface."
@@ -626,7 +674,7 @@
   "fix-tests-first-3": {
     "key": "fix-tests-first-3",
     "dest": "Claude Code",
-    "context": "optional",
+    "context": "",
     "runtime": "any",
     "origin": "exercises/fix-tests-first",
     "text": "Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit."

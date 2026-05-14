@@ -1,22 +1,20 @@
 # Spot gaps, build the loop
 
-**Session** *(return, "Module 5 worktree session")*
+**Time:** 40–50 minutes inside a 2h module slot.
 
-Continue in your M5 worktree session at `../<repo>-m5`. If that session isn't still open, start a new Claude Code session at the same worktree path.
+**Session** *(new, "Module 6 worktree session")*
+
+Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's session may still be running the re-send. Leave it; M6 reads both runs from disk.
 
 **What you do:** Diff the packaged M5 re-run against the un-packaged M4 baseline. Name what packaging caught, what it missed, and what new gaps surfaced. Then author a session-shaper skill through conversation. Shape follows what the two runs taught. Self-critique, invoke on the packaged run, ship personally.
 
-**What happened:** You end with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/<skill-name>/SKILL.md`. Auto-discovered in every future session. Whichever shape the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates flagged for a human conversation, not an auto-PR.
-
 **The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
-
-**Time:** 40–50 minutes inside a 2h module slot.
 
 ---
 
 ## Phase 1: Diff and name the gaps
 
-Open a new Claude Code session in the M5 worktree (the same one you ran M5 in, at `../<repo>-m5`). Two runs of the same task are accessible from there: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/` in folders matching the original repo path. That's the auto-stored scrollback Claude Code keeps for every session.
+Two runs of the same task are accessible from the worktree: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/` in folders matching the original repo path. That's the auto-stored scrollback Claude Code keeps for every session.
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
@@ -79,6 +77,8 @@ If the output doesn't catch the dominant gap, sharpen the skill itself and invok
 The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md` and auto-discovers in every future session you run, across every repo. That's the ship.
 
 **Team-kit candidate, via human conversation.** If the skill encodes something your whole team would benefit from, a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team's project shape, it's a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: *"does this match how you'd check this kind of work?"* If they say yes, PR it. If they push back, you got the real review for free. Agents don't unilaterally change shared team infrastructure. You do.
+
+**What happened:** You ended with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/<skill-name>/SKILL.md`. Auto-discovered in every future session. The shape followed what the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates were flagged for a human conversation, not an auto-PR.
 
 <!-- maintainer -->
 

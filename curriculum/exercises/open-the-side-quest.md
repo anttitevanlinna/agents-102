@@ -1,0 +1,59 @@
+# Open the side quest
+
+**Time: ~5 min**
+
+Module 3 runs in two windows. Security is the main guest in your Module 2 repo. Quality is a side-quest in a sibling worktree.
+
+A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn't share a scrollback. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there (a separate window with its own working directory, not a tab in the same one), both sessions see the same git history but keep their own working state. Personal files (`CLAUDE.local.md`, `.claude/memory/`) don't sync between worktrees, they get copied across once at fork time, then evolve independently.
+
+**Session** *(new, "m3-security")*
+
+Start a new Claude Code session in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.
+
+Before firing the fork, decide where to base the side-quest worktree from, it branches off your current local HEAD. Clean main is the safe default; pick another branch if you have a reason. Switch now if you need to.
+
+Paste the prompt as-is. Claude reads `<repo-name>` as your repo's folder name from the working directory.
+
+{{prompt:ae101-m3-fork-quality-side}}
+
+Claude reports the sibling worktree path.
+
+**Session** *(new, "m3-quality")*
+
+Start a second Claude Code session in another window (a separate window with its own working directory, not a tab in the main lane's window), in the sibling worktree directory Claude just named. This is your side-quest lane. You author the test-strategy skill here while the main lane does security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke on the security-tested feature.
+
+{{prompt:ae101-m3-quality-side-orient}}
+
+Two windows live side by side from here. Each holds its own scrollback. Module 3's exercises name which window the work runs in.
+
+**What happened:**
+
+You forked a sibling worktree for the quality side, opened two Claude Code sessions (one in your repo, one in the sibling), and confirmed each reads the same codebase from a different working directory. Security picks up in the main window at the next exercise. The quality side waits.
+
+<!-- maintainer -->
+
+**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
+- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
+
+**Time:** ~5 min.
+
+**Phase:** Module 3 opener, before *Map the access surface*.
+
+**Pedagogical role:** First felt multi-session moment in AE101. Introduces no new primitive. Packages M3's existing Q+S split into two windows so the side-quest is visibly waiting during S exercises. Side-quest converges at Exercise 3 invocation; the authored test-strategy skill installs to `~/.claude/skills/test-strategy/SKILL.md` (user scope) and crosses worktrees freely.
+
+**Why two windows, not two tabs:** projection legibility. The trainer's screen-share shows both worktrees side by side from minute one. Cognitive separation matches the Quality versus Security framing.
+
+**Plug points:** student's Module 2 inherited repo (main window); worktree directory name (default `../<repo>-m3-quality`, sponsor or student override allowed); fresh branch name on the side (default `m3/quality`).
+
+**Push-back moves** (trainer in cohort, Nerd in self-study):
+- Student opens both sessions in the same working directory. Trainer / Nerd: *"one window per worktree, not two windows on the same folder. The later write wins; the earlier session goes sideways."* Source: `multi-session-git.md` rule (one session per working directory).
+- Student opens a shell and runs `git worktree add` themselves. Redirect to conversation: the fork happens via Claude in the main lane; AE101's agentic-end-to-end rule holds.
+- Student forgets to copy `CLAUDE.local.md` and `.claude/memory/` into the sibling. The fork prompt names the copy step; if it gets skipped, the side-quest session has no personal rules loaded. Recovery: ask Claude in the side lane to copy them from the main repo.
+
+**Prompts:**
+- `ae101-m3-fork-quality-side` — main-lane prompt that forks the sibling worktree at `../<repo-name>-m3-quality` on a fresh `m3/quality` branch and copies `CLAUDE.local.md` + `.claude/memory/` into it.
+- `ae101-m3-quality-side-orient` — side-lane orientation that confirms worktree directory, branch, loaded rules, codebase visibility — then waits.
+
+**Frameworks riffed on:**
+- Worktree-as-side-quest framing inherited from Boris Cherny, *Mastering Claude Code in 30 minutes* (parallel worktrees as productivity unlock).
+- Side-quest convergence-via-user-scope-skill pattern follows Claude Code's skill loading model (skills at `~/.claude/skills/<name>/` auto-discovered every session regardless of working directory).

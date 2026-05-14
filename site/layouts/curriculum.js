@@ -44,7 +44,7 @@
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
+            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -55,7 +55,8 @@
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
+                { slug: 'the-agent-loop',             title: 'The agent loop' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },

@@ -1,12 +1,12 @@
 # Exercise: Threat-model with STRIDE
 
-**What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. The skill will walk the six STRIDE categories against every surface on your map and produce a threat list. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
+**Time:** 20 minutes.
 
-**What happened:** STRIDE does the breadth: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege, across every surface. That's a lot of threat entries. You're not going to harden against all of them in one exercise window and shouldn't try. You make one call, write the ADR, and the decision ships to the repo.
+**Window:** *m3-security* (continuing the main lane; m3-quality stays parked).
+
+**What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
 
 **The point:** Threat modeling is only useful if it produces a decision. STRIDE's value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.
-
-**Time:** 20 minutes.
 
 ---
 
@@ -47,6 +47,8 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file, Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
 
+**What happened:** You made one call, wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed as evidence; not a hardening backlog.
+
 ---
 
 ## What this sets up
@@ -56,8 +58,8 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
+- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
@@ -82,5 +84,24 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 - Student's access surface map from Ex1 (in the temp directory Claude chose; path in scrollback) — Phase 1 input
 - Sponsor-stated ADR home (from pre-engagement contract) — Phase 3 output path
 - Curated STRIDE skill — ships in content folder at `content/skills/stride/SKILL.md`, installed to `~/.claude/skills/stride/SKILL.md` at prework.
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day):
+1. **Writes a most-plausible-incident story before picking the STRIDE threat to harden against.** Falsifiable: the ADR's Context or scrollback shows the incident story preceded the threat pick, not the other way around.
+2. **Rejects the other STRIDE threats explicitly in the ADR's Alternatives considered.** Falsifiable: the ADR's Alternatives section names at least two threats and the reason each was rejected (acceptable risk, already mitigated, out of scope), not left as backlog.
+3. **Writes the hardening decision as an ADR in the repo's convention with all four standard sections (context, decision, alternatives, constraint).** Falsifiable: a file at the sponsor-stated ADR path with the four sections filled in, not a stub.
+
+**Artefact contracts** (per `check_pedagogy.md` rule 46):
+
+| Artefact | Stable identifier | Produced by | Consumed by |
+|---|---|---|---|
+| Hardening-decision ADR | Sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Phase 3 (`{{prompt:threat-model-with-stride-3}}`) | M3 Ex3 *Author your test-strategy skill* (the hardening decision becomes a test case the test-strategy invocation reads); M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*); M4 Phase 4 three-block frame (ADRs become Block 2 examples) |
+
+**Per-phase failure modes** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
+
+| Phase forcing function | Dominant failure mode | Escape hatch |
+|---|---|---|
+| Phase 1 *"invoke STRIDE on the access-surface map"* | P1 skill-invocation ambiguity — student points the skill at the feature rather than the map | Trainer / Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."* |
+| Phase 2 *"name the worst realistic case, pick the one threat"* | P2 menu-shopping — student picks the easiest threat, not the real one | Trainer / Nerd: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."* |
+| Phase 3 *"write the ADR in repo convention with Alternatives considered"* | P3 ADR drift toward compliance voice OR Alternatives section missing | Trainer / Nerd: *"write it for the engineer who takes over this feature in six months. The alternatives ARE the reasoning — without them, the ADR is an assertion, not a decision."* |
 
 **Scratch path:** threat list lands alongside Ex1's surface map in the same Claude-chosen temp directory. Outside the repo; no gitignore concern. See Ex1 maintainer note on the `/tmp`-tier vs `.claude/memory/`-tier pedagogy.

@@ -1,23 +1,19 @@
 # Compound and close
 
-**What you do:** let Claude review the whole session and write your `./CLAUDE.local.md` from session evidence. Wire one MCP connector. Close the bug's ticket outside the repo.
-
-**What happened:** your rules file is born from how you actually worked, not from a template. The first move outside the repo happens on a real job: the ticket for the bug you just shipped.
-
-**The point:** the compound step (plan → work → review → compound, Kieran Klaassen's loop) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread. Then Claude updates the bug's status in the tracker.
-
 **Time:** 30 minutes.
 
-The PR shipped. Now compound the session, then make the first move outside the repo.
+**What you do:** let Claude review the whole session and write your `./CLAUDE.local.md` from session evidence. Wire one MCP connector. Close the bug's ticket outside the repo.
+
+**The point:** the compound step (plan → work → review → compound, Kieran Klaassen's loop) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
+
+The PR shipped. Now compound the session, then close the bug's ticket. That's the first move outside the repo.
 
 ## Compound
 
 {{prompt:compound-and-close-1}}
 
 
-Read Claude's summary. Push back where it misreads. Quote the moment. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
-
-> **Quick timebox note.** Second connectors and deeper MCP debugging both regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework.
+Read Claude's summary. Push back where it misreads. Quote the moment from your session back at Claude. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
 
 ## MCP: why your agent needs to reach outside the repo
 
@@ -35,9 +31,11 @@ Ask Claude to write the close-out note: what the root cause was, how you fixed i
 
 The teaching moment is the agent reaching across a tool boundary with a real engineering note, not the install choreography.
 
-If you have a live connector (1 or 2):
+**For paths 1 or 2: get your connector up and running.**
 
-Ask Claude to read the ticket for your bug and report what's on it.
+> **Quick timebox note.** Second connectors and deeper MCP debugging may regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework. For something to chew on while the connector lands: [The agent loop](../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
+
+Ask Claude to read the ticket for your bug and report what's on it. Paste a ticket ID, a URL, or "create me a new one" if there isn't one.
 
 {{prompt:compound-and-close-2}}
 
@@ -58,6 +56,8 @@ You're near the end of the Module 1 session. One more sweep on `./CLAUDE.local.m
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
 
 {{prompt:compound-and-close-4}}
+
+**What happened:** Your rules file was born from how you actually worked, not from a template. The first move outside the repo happened on a real job: the ticket for the bug you just shipped. Claude reviewed the session, you pushed back where it misread, and the close-out landed in the tracker where your team reads it.
 
 The loop ran. The PR is open, the rules file was born from session evidence, the ticket is updated where your team reads it. Setup in place.
 

@@ -1,5 +1,7 @@
 # Exercise: Agent Proposal Forum, diagnose and guide
 
+**Time:** 60 minutes. Sponsor challenge five, grounding five, initial stance eight, cross-check eight, shared proposals twelve, synthesizer selection eight, critique and better ideas nine, final agent set + plan five.
+
 **What you do:**
 
 In Module 7 you ran three thinking-disciplines on your own sharing problem: Rumelt's *crux*, Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*. One person, one problem. Today the buyer or sponsor seeds a live company challenge, and the room's agents form a proposal forum around it: take an initial stance, cross-check with each other, make proposals on the shared surface, criticize the emerging selections, and let one or two central synthesizers keep choosing the best ideas.
@@ -7,8 +9,6 @@ In Module 7 you ran three thinking-disciplines on your own sharing problem: Rume
 The deliverable: a Rumelt-style strategy kernel (diagnosis, guiding policy, near-term experiments, ranked risks), a suggested set of agents, and the plan. Not the CEO's strategy from a consulting deck. Not an averaged room consensus. Your strategy, selected from the strongest claims your agents can defend against each other, then turned into an agent build-out and execution plan.
 
 The shape is closer to a governed agent forum than a relay. Agents start privately enough to have a point of view, ask their human for missing judgment when useful, cross-check with other agents, then move onto the shared proposal surface. The central synthesizers do not summarize everything. They keep publishing selections, and the other agents keep criticizing and improving those selections.
-
-**Time:** 60 minutes. Sponsor challenge five, grounding five, initial stance eight, cross-check eight, shared proposals twelve, synthesizer selection eight, critique and better ideas nine, final agent set + plan five.
 
 The steps start in this sequence, but the room is not a clean queue. Agents continue reading, revising, and reacting while later steps begin. The sequence is the launch order, not a ban on overlap.
 

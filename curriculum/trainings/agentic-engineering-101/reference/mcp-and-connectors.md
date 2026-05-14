@@ -2,52 +2,54 @@
 
 Flat lookup. How to wire your agent to a ticket tracker (and other outside-the-repo systems) in Claude Code. Updated as the install surface changes; the exercise body stays stable.
 
-**Last verified: 2026-04-23** against Claude Code MCP docs, Atlassian Rovo MCP, `gh` CLI.
+**Last verified: 2026-05-14** against Claude Code MCP docs, Atlassian remote MCP server docs, Linear MCP changelog, GitHub MCP server repo, local `claude mcp add --help`.
 
-## The CLI-first reality (as of 2026-Q2)
+## Three paths to a work-app action
 
-Claude Code today installs MCP servers from the command line — `claude mcp add ...`. No GUI marketplace yet; no Settings → Connectors panel. One command, one time, per connector.
+Three ways an action becomes callable in a Claude Code session:
 
-If that feels off for a training that's otherwise agent-first: you're right. Treat connector install as one-time setup per tracker, not a repeating step.
+1. **Claude.ai connector inheritance.** A connector added at [claude.ai/customize/connectors](https://claude.ai/customize/connectors) is automatically available when the CLI is logged in to the same account. Best path for Jira and Linear.
+2. **`claude mcp add` from the command line.** Install an MCP server directly. Covers connectors not in the Claude.ai directory, project-scoped servers (`.mcp.json` in the repo), and local stdio MCPs.
+3. **First-party CLI via Bash.** When the work app ships a CLI (`gh`, `aws`, `gcloud`), Claude calls it through Bash — no MCP. Best ergonomics where the CLI exists; `gh` is the canonical case.
 
-Three words that land together:
+Per-tracker install commands below. Plugins distribute Path 2 at scale — see the [Plugins and marketplaces](#plugins-and-marketplaces--mcp-servers-bundled-for-distribution) section.
 
-- **Connector** — the wire into a work app (the word Claude Code's configuration uses)
-- **Action** — a verb with effect in the world (*read ticket, comment on ticket, close ticket*)
-- **Tool** — the umbrella term for anything the model can call
+**Vocabulary.** MCP is the protocol. **Connector** = the wire into a work app (the word Claude Code's configuration uses). **Action** = a verb with effect in the world (*read ticket, comment, close*). **Tool** = the umbrella term for anything the model can call. A first-party CLI exposes actions through Bash; an MCP server exposes them through the protocol. Same end state from the agent's point of view.
 
-MCP is the protocol. Connectors are the things you install. Actions are what they expose.
+**Sources:** [Claude Code MCP docs](https://code.claude.com/docs/en/mcp) · [Use MCP servers from Claude.ai](https://code.claude.com/docs/en/mcp#use-mcp-servers-from-claude-ai) · [Anthropic Directory](https://claude.ai/directory) · [Model Context Protocol spec](https://modelcontextprotocol.io/introduction)
 
-## Per-tracker install
+## GitHub Issues
 
-### GitHub Issues — two clean paths
-
-**Path A — `gh` CLI (simplest).** `gh` is GitHub's official CLI, pre-installed on most developer machines, and Claude Code's Bash tool calls it directly. No MCP needed.
+**Default for AE101: `gh` CLI (Path 3).** GitHub ships [`gh`](https://cli.github.com), an official CLI pre-installed on most developer machines. Claude Code's Bash tool calls it directly — no MCP server, no PAT management, no allowlist work for IT.
 
 ```
 gh auth status     # check
 gh auth login      # if not signed in
 ```
 
-Ask Claude to *read issue NNN* or *comment on issue NNN with this body*. Claude runs `gh issue view` / `gh issue comment` via Bash.
+Ask Claude to *read issue NNN*, *comment on issue NNN with this body*, *open a PR from this branch*, or *check the failing GH Action*. Claude runs `gh issue view`, `gh issue comment`, `gh pr create`, `gh run view`, `gh api`, etc. via Bash. The surface is broad: every GitHub REST/GraphQL endpoint is reachable via `gh api`, so `gh` covers what the MCP server covers for nearly every practical task.
 
-**Path B — official GitHub MCP server.** If you want the full MCP tooling surface in Claude Code (discoverable actions, structured arguments):
+**When to add the official GitHub MCP server instead.** Pick MCP (Path 1 or Path 2) when you want discoverable tool definitions in `/mcp`, structured arguments rather than CLI prose, multiple GitHub accounts in one Claude session (`gh` is single-account), or you're working with another agent runtime that lacks shell access.
+
+**MCP install (Path 2):**
 
 ```
-claude mcp add --transport http github https://api.githubcopilot.com/mcp --header "Authorization: Bearer YOUR_PAT"
+claude mcp add --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer YOUR_PAT"
 ```
 
-Requires a GitHub Personal Access Token with repo scope. More capability than `gh`; more setup.
+Trailing slash is canonical. Requires a GitHub fine-grained Personal Access Token with appropriate scopes (commonly `repo` for issue/PR access; pick narrower scopes if your work is read-only). OAuth via Claude.ai inheritance (Path 1) is the smoother modern option where supported.
 
-**Default recommendation for AE101:** Path A. You get the Bash-driven loop without extra auth dance.
+**Sources:** [`gh` CLI](https://cli.github.com) · [`gh` manual](https://cli.github.com/manual/) · [GitHub MCP server repo](https://github.com/github/github-mcp-server) · [GitHub PAT settings](https://github.com/settings/personal-access-tokens)
 
-### Jira — Atlassian Rovo MCP (official)
+## Jira — Atlassian Rovo MCP (official)
 
-Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, JSM, and Bitbucket. OAuth 2.1 flow.
+Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, and Bitbucket (Jira Service Management rides on Jira). OAuth 2.1 flow. Docs: [support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/).
 
-**Install:**
+**Easiest path: Claude.ai inheritance.** Add Atlassian at [claude.ai/customize/connectors](https://claude.ai/customize/connectors), complete OAuth, then start a Claude Code session logged in to the same account. The connector appears in `/mcp`. No `claude mcp add` needed. On Team and Enterprise Claude.ai plans, only admins can add at this surface.
+
+**CLI install (when you want project scope or a different Claude.ai account):**
 ```
-claude mcp add --transport http jira https://mcp.atlassian.com/v1/mcp
+claude mcp add --transport http jira https://mcp.atlassian.com/v1/mcp/authv2
 ```
 
 Then in Claude Code:
@@ -55,49 +57,77 @@ Then in Claude Code:
 /mcp
 ```
 
-Browser opens; you sign in to your Atlassian org; scopes approve at user level. **Individual engineers don't need admin approval** — admins control which tools connect, not whether individuals can install.
+Browser opens; you sign in to your Atlassian org; scopes approve at user level. **Once your org's first 3LO consent is complete and the domain is allowed, individual engineers don't need per-install admin approval** — admins control product scopes and which domains can connect, not whether individuals can install after that.
 
-**Note:** the older `/sse` endpoint stops working 2026-06-30. Use `/mcp` path for new setups.
+**Note:** the older `https://mcp.atlassian.com/v1/sse` endpoint stops working 2026-06-30 per [Atlassian's support docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/). The current canonical endpoint is `/v1/mcp/authv2`.
 
-### Linear — first-party MCP (official)
+**Sources:** [Atlassian Rovo MCP docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/) · [Atlassian admin console](https://admin.atlassian.com/) · [Composio Jira MCP](https://composio.dev/content/jira-mcp-server)
 
-Linear now publishes its own MCP server. No admin gate; OAuth at user level.
+## Linear — first-party MCP (official)
 
-**Install:**
+Linear publishes its own MCP server. Reference: [linear.app/changelog](https://linear.app/changelog) (search "MCP").
+
+**Easiest path: Claude.ai inheritance.** Add Linear at [claude.ai/customize/connectors](https://claude.ai/customize/connectors), complete OAuth, then start a Claude Code session logged in to the same account. The connector appears in `/mcp`. On Team and Enterprise Claude.ai plans, only admins can add at this surface.
+
+**CLI install:**
 ```
 claude mcp add --transport http linear https://mcp.linear.app/mcp
 ```
 
-Cleanest UX of the three trackers for solo engineers.
+Cleanest UX of the three trackers for solo engineers, regardless of path.
 
 **Fallbacks when a tenant blocks the first-party server:** Composio or Merge Agent Handler host third-party bridges; a local stdio MCP with a personal Linear API token works without any external host.
 
-### Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)
+**Sources:** [Linear changelog](https://linear.app/changelog) · [Linear MCP endpoint](https://mcp.linear.app/mcp) · [Linear API token settings](https://linear.app/settings/account/security)
 
-Check the [MCP server directory](https://modelcontextprotocol.io/servers) and your tracker's own docs. Most have a third-party MCP or a CLI fallback (like `gh`).
+## Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)
 
-## Tenant-admin fallbacks — when IT gates install
+Check the [Anthropic Directory](https://claude.ai/directory) for reviewed connectors and your tracker's own docs. Most have a third-party MCP or a CLI fallback (like `gh`).
 
-Corporate tenants may lock MCP install via `managed-mcp.json`, allowlists, or OAuth scope pinning. Practical fallbacks:
+**Sources:** [Anthropic Directory](https://claude.ai/directory) · [Model Context Protocol examples](https://modelcontextprotocol.io/examples)
 
-1. **GitHub Issues + `gh`.** `gh` is not an MCP — it's a CLI most orgs already approve. Claude calls it via Bash. Works in nearly every tenant.
-2. **Jira where Rovo is pre-approved.** Many large orgs pre-approve `mcp.atlassian.com` — check before assuming it's gated.
-3. **Local stdio MCP with personal API token.** Runs on your machine; no external URL to block. Works for Linear and for Jira when Rovo is unavailable.
-4. **Service-desk ticket to IT.** Legitimate path for a regulated tenant. Name the connector you need and the business reason (training, productivity); most IT orgs approve it within a few days.
+## Plugins and marketplaces — MCP servers bundled for distribution
 
-## What Claude Code doesn't do yet (as of 2026-04-23)
+A Claude Code **plugin** is a packaged extension that can bundle skills, agents, hooks, MCP servers, LSP servers, and background monitors into one installable unit. A **marketplace** is a catalog (a `marketplace.json` file hosted in a git repo) that lists plugins and where to fetch them. Plugins distributed this way are the most ergonomic path when one MCP server needs to land on many machines — a team marketplace install replaces N copies of `claude mcp add`.
+
+**How MCPs ride inside plugins.** A plugin author puts a standard `.mcp.json` at the plugin root; when the plugin is enabled, every server in that file loads automatically. Plugin-provided MCP servers occupy their own scope in Claude Code's precedence hierarchy (above Claude.ai connectors, below user / project / local-CLI scopes), so a server installed via Path 2 still wins on URL collisions. Plugins can ship more than MCP — a single plugin can deliver a tracker server plus the skills and agents that use it — but for tracker workflows the MCP-bundle dimension is the one this page covers.
+
+**Add a marketplace, then install a plugin:**
+
+```
+/plugin marketplace add owner/repo
+/plugin install plugin-name@marketplace-name
+```
+
+The first argument to `marketplace add` accepts a GitHub `owner/repo`, a full git URL (`https://gitlab.com/company/plugins.git`), or a local path. Refresh a marketplace's catalog with `/plugin marketplace update`. Non-interactive equivalents exist as `claude plugin marketplace ...` for scripting.
+
+**Official vs team marketplaces.** Anthropic operates a set of official marketplaces (reserved names include `claude-plugins-official`, `anthropic-marketplace`, `agent-skills`). Teams and individuals host their own — public or private — by putting `marketplace.json` in a git repo. Private repositories work the same as any other git operation: Claude Code reuses your existing credentials (`gh auth login`, macOS Keychain, `ssh-agent`, `git-credential-store`).
+
+**Enterprise pre-registration.** The managed settings file (`managed-settings.json` on supported OSes) can pre-register approved marketplaces via `extraKnownMarketplaces` (so users don't need to run `/plugin marketplace add` at all) and restrict additions via `strictKnownMarketplaces`. Pairs with `managed-mcp.json` as the second half of tenant-side plugin policy.
+
+**When to reach for plugin distribution over plain `claude mcp add`.** When the same connector needs to land on a team of N (one marketplace registration, one install command, one update path); when the MCP comes with companion skills or agents you want shipped alongside; when you want versioned releases and `/plugin marketplace update` semantics rather than ad-hoc re-adds. For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler.
+
+**Sources:** [Claude Code plugins overview](https://code.claude.com/docs/en/plugins) · [Discover and install plugins](https://code.claude.com/docs/en/discover-plugins) · [Create and distribute a marketplace](https://code.claude.com/docs/en/plugin-marketplaces) · [Plugins reference (manifest + scope)](https://code.claude.com/docs/en/plugins-reference) · [Anthropic plugins on GitHub](https://github.com/anthropics/claude-plugins-official)
+
+## What Claude Code doesn't do yet (as of 2026-05-14)
 
 Flagged for honesty, not complaint:
 
-- No GUI marketplace or Settings → Connectors panel for MCP install in Claude Code (claude.ai has one, gated to admins on Team/Enterprise)
-- No single-click OAuth across every connector (Rovo and Linear support it; most others don't)
-- No in-chat picker of connector actions
+- No standalone GUI marketplace for arbitrary MCP server install. MCP servers ride inside plugins: the in-CLI `/plugin` Discover tab installs plugin-bundled MCPs (e.g. `atlassian`, `linear`, `github` from `claude-plugins-official`), and OAuth connectors install at [claude.ai/customize/connectors](https://claude.ai/customize/connectors) and inherit into Claude Code (Team/Enterprise: admin-only). There is no in-CLI picker for adding a raw `claude mcp add --transport http <url>` server outside of a plugin. Claude Desktop's Settings → Connectors panel manages built-in OAuth connectors, not arbitrary MCP servers.
+- No single-click OAuth across every MCP connector (Rovo, Linear, and Anthropic Directory connectors support it; most others don't).
+- No in-chat picker of connector actions.
 
 When any of these land, this file updates. The training's exercises stay stable across changes.
 
-## When this reference needs an update
+**Sources:** [Claude Code MCP docs](https://code.claude.com/docs/en/mcp) · [Claude.ai connector panel](https://claude.ai/customize/connectors) · [Anthropic Directory](https://claude.ai/directory)
 
-Run the update when any of these happen:
+<!-- maintainer -->
+
+**Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Ships in content folder's `reference/` directory to students.
+
+**Update cadence:** re-verify on each cohort delivery; full audit via `claude-code-guide` monthly or at any Claude Code release known to touch MCP.
+
+**When this reference needs an update.** Run the update when any of these happen:
 
 - A cohort reports an install command that no longer works
 - `claude-code-guide` flags a new MCP install surface (marketplace, settings panel, single-click flow)
@@ -106,15 +136,15 @@ Run the update when any of these happen:
 
 Bump the **Last verified** date at the top. Note what changed in the commit message. The exercises reading this file don't change.
 
-<!-- maintainer -->
+**Source verification (2026-05-14, subagent fact-check pass):** 22 claims checked against authoritative sources — 1 FAIL (`/plugin` Discover-tab GUI contradicted "no GUI marketplace" framing — rewritten), 3 DRIFTs (Rovo coverage list, Atlassian admin-gating absoluteness, managed-settings filename framing — all softened), 16 PASS, 1 UNVERIFIED-adjacent (Linear "no admin gate" matches practitioner behavior; changelog doesn't quote the negation — left as-is). Report at `/tmp/mcp-ref-factcheck.md` (not committed; transient).
 
-**Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Ships in content folder's `reference/` directory to students.
-
-**Update cadence:** re-verify on each cohort delivery; full audit via `claude-code-guide` monthly or at any Claude Code release known to touch MCP.
-
-**Source verification (2026-04-23):**
-- Claude Code MCP docs: https://code.claude.com/docs/en/mcp.md `[platform docs]`
-- Atlassian Rovo MCP: https://www.atlassian.com/platform/rovo-mcp `[platform docs]`
+**Source verification (2026-05-14):**
+- Claude Code MCP docs: https://code.claude.com/docs/en/mcp `[platform docs]` — confirms `claude mcp add --transport http <name> <url>` + `--header` flag shape; SSE transport deprecated in favour of HTTP; documents Claude.ai connector inheritance ("MCP servers you've added in Claude.ai are automatically available in Claude Code") and the `ENABLE_CLAUDEAI_MCP_SERVERS=false` opt-out; documents `managed-mcp.json` as the canonical enterprise-policy filename with OS-specific install paths and exclusive-control semantics
+- Atlassian remote MCP server docs: https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/ `[platform docs]` — canonical endpoint `/v1/mcp/authv2`; `/v1/sse` sunset 2026-06-30
+- Linear MCP: https://linear.app/changelog `[platform docs]` — endpoint `https://mcp.linear.app/mcp`; `/sse` deprecated
+- GitHub MCP server: https://github.com/github/github-mcp-server `[platform docs]` — endpoint `https://api.githubcopilot.com/mcp/` (trailing slash canonical); fine-grained PAT, scopes per repo access required
+- Anthropic Directory: https://claude.ai/directory `[platform docs]` — replaces the older `modelcontextprotocol.io/servers` URL referenced before 2026-Q2; reviewed connector listings; same MCP infrastructure as Claude Code
+- Claude.ai connector panel: https://claude.ai/customize/connectors `[platform docs]` — install surface for connectors that inherit into Claude Code; Team/Enterprise admin-gated
 - `gh` CLI: https://cli.github.com `[platform docs]`
 - Composio Jira setup: https://composio.dev/content/jira-mcp-server `[third-party bridge docs]`
 

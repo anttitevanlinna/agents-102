@@ -1,0 +1,53 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-agent-loop.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call s",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Four named sub-elements may prompt a brief 'I'll diagram these four parts' opening, but single-output request, no planning required — preamble is minimal.",
+          "fix_hint": "Optional body primer ('Claude may open with a framing sentence — skip to the diagram') if delivery experience shows disruption."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "List the tools you have available in this session. One line each.",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Explain how you know what tools you can call in this session. Then explain how MCP-con",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "'Then explain...' two-part structure invites brief framing before diving in; below the 4+-sub-step structural trigger threshold.",
+          "fix_hint": "One-line body primer after the fence if preamble disrupts flow in delivery; not blocking."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Claude explains its own tool-injection mechanism; minor over-confidence risk on introspective account. Student's Prompt 2 output provides immediate ground truth.",
+          "fix_hint": "No fix needed; Prompt 2 list serves as natural verification anchor."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

@@ -3,37 +3,226 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
   "verdict": "PASS",
   "training": "ae101",
+  "sha": "3bd1dd0",
+  "evaluated_at": "2026-05-14",
   "rules_evaluated": [
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities before assert", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions are the unit of work", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label mandatory; maintainer-block scope", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness 6 months", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fenced blocks", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "One-sentence action lead-in", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Skills by name, never by path", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Marker resolves to registry file", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 13, "rule_lead": "Artifact-realism (skills installed)", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false}
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop); no Cowork for AE101.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No speculative capability claims in student-facing body. Maintainer-block claims are consistent with shipped Claude Code behavior per compendium records.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4a",
+      "rule_lead": "Maintain living capability notes; consult before asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer claim 'Skills install to ~/.claude/skills/ (user-level), auto-discover in every session regardless of cwd' is consistent with known Claude Code behavior for user-level skills and does not conflict with rule 6d (which covers CLAUDE.md auto-load, a separate mechanism).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load is filename-based, not folder-based.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer block's 'auto-discover in every session' refers to skill auto-discovery, a different mechanism from CLAUDE.md filename-based auto-load. No student-facing claims about auto-load. N/A in body.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Line 23: 'Open a new session with the repo as the working directory.' Uses correct session-unit language.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "<CONTENT_URL> appears in body prose (line 29), not inside a fenced block. Documented exception in maintainer block (line 68): build-time substituted by scripts/build-workbook.js. The 'URL:' open-hook in ae101-prework-download-tarball is a valid rule 1d open-hook — student must supply the customer-specific URL that Claude cannot know.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All three prompts have lead-ins: '**3.b. Or have Claude download it for you.** Ask Claude to fetch the content tarball…'; 'Ask Claude to extract the tarball, install the curated skills…'; 'If Step 4's screening feels like Claude is asking everything at once…'.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "ae101-prework-extract-and-install: 'Install them wherever personal Claude Code skills belong on this machine.' Deliberately path-agnostic — correct per rule 4.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No bold/italic markdown found inside any of the three fenced prompt bodies.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — structural trigger: 4+ named sub-steps or plan mode.",
+      "verdict": "PASS",
+      "evidence": "ae101-prework-extract-and-install (5 sub-steps): first sentence is 'Walk these in order, ask one question at a time if you need to, no preamble.'",
+      "fix_hint": "Suppressor is at the TOP of the prompt, not as the canonical last-line form ('No preamble. <first action>' as the prompt's last line per rule 17a). Functionally present but non-canonical shape. TODO: move to last line for strict canonical compliance. Non-blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in the registry; module files reference by marker.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All three prompts exist in registry: ae101-prework-download-tarball.md, ae101-prework-extract-and-install.md, ae101-prework-one-at-a-time.md. Module file uses {{prompt:…}} markers. Correct.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "No module-name references in prompt prose.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "ae101-prework-extract-and-install contains 'Module 1' in 'confirm the repo is ready for Module 1' — readiness-target colloquial use, not a curriculum-internal identifier the agent must pattern-match. Not a path, branch, or commit reference. Non-blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No research citations, practitioner claims, or statistics in this file. Prework is setup-only; research-claims rules are N/A.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No statistics in this file.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism — every named tool, skill, or path must exist.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "access-control-analysis exists at ~/.claude/skills/access-control-analysis/. stride exists at ~/.claude/skills/stride/. agentic-nerd exists at ~/.claude/skills/agentic-nerd/ (mentioned in maintainer block only). All three install targets are real shipped skills.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Body prose around prompts describes steps, not mechanics. The forcing function for question-dump handling is in the prompt itself ('ask one question at a time if you need to') and in the optional steering prompt ae101-prework-one-at-a-time. Correct.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Prework does not build verification machinery — N/A.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Prework is setup-only; context-tier teaching belongs in M1+. N/A here.",
+      "blocking": false
+    }
   ],
   "platform_claims_checked": [
-    {"claim": "Claude Code (CLI + Desktop) only; no Cowork; no async cloud agents", "line": 0, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Skills installed at ~/.claude/skills/<name>/SKILL.md auto-discover", "line": 0, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Plan mode via Shift+Tab cycle", "line": 0, "verdict": "PASS", "source": "claude-code-guide"}
+    {
+      "claim": "CLI or desktop, your call. Open a new session with the repo as the working directory.",
+      "line": 23,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Claude will need to write outside the repo (~/.claude/skills/); approve the permission prompts when they fire.",
+      "line": 37,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Skills install to ~/.claude/skills/ (user-level), auto-discover in every session regardless of cwd. [maintainer block]",
+      "line": 66,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
   ],
   "citations_checked": [],
   "skills_referenced": [
-    {"name": "access-control-analysis", "line": 0, "exists": true},
-    {"name": "stride", "line": 0, "exists": true}
+    {
+      "name": "access-control-analysis",
+      "line": 41,
+      "exists": true
+    },
+    {
+      "name": "stride",
+      "line": 41,
+      "exists": true
+    },
+    {
+      "name": "agentic-nerd",
+      "line": 66,
+      "exists": true
+    }
   ],
   "urls_sampled": [
-    {"url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/", "alive": true, "status_code": 200},
-    {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200},
-    {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200}
+    {
+      "url": "https://agents102.bosser.consulting/clients/acme/agentic-engineering-101/agents-102-content.tar.gz",
+      "alive": true,
+      "status_code": 200,
+      "note": "Example URL from maintainer block build-time-substitution note. Only URL in the file; no student-facing HTTP URLs to sample (CONTENT_URL is build-time substituted at render)."
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1,
+  "todos": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "prompt_key": "ae101-prework-extract-and-install",
+      "note": "Preamble suppressor 'no preamble' is at the START of the 5-sub-step prompt, not as the canonical last-line form required by rule 17a ('No preamble. <first action>' as the prompt's last line). Functionally present; canonical shape is last-line. Non-blocking TODO."
+    }
+  ]
 }

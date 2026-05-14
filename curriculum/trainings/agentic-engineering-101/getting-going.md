@@ -125,8 +125,8 @@ The shipped PR and the closed ticket via MCP connector are produced this module 
 
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex3 is the student's own TDD-style preference.
-- **Compound engineering** — Kieran Klaassen (Every Inc.) [practitioner direct]. Plan → Work → Review → Compound. Attributed inside Claude's Ex3 compound summary, not in a lecture.
-- **Three-block memory** — Paweł Huryn (productcompass.pm) [practitioner direct]. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4 via recognition — explicit naming here would steal it.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Plan → Work → Review → Compound. Attributed inside Claude's Ex3 compound summary, not in a lecture.
+- **Three-block memory** — Paweł Huryn (productcompass.pm) [practitioner direct, vendor venue]. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4 via recognition — explicit naming here would steal it. URL deferred to M4 reveal.
 
 **Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):
 - Boris Cherny, *Mastering Claude Code in 30 minutes* (homework, body line 49) — `https://www.youtube.com/watch?v=6eBSHbLKuN0` [practitioner direct]. Verify URL still resolves; freshness-rule exception logged (kept outside the 6-month window by decision; pedagogy match unbeaten by successors). If the video becomes unavailable, fallback framing names the move (parallel worktrees, plan mode, subagent map-reduce) and points students at Cherny's later talks for the same content.

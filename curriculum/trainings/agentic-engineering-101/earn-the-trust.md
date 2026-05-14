@@ -50,7 +50,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 Module 3's compound runs against two artifacts: the skill (its file content carries the conventions m3-quality encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
-Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, paste it into chat before firing the prompt, the side-quest's scrollback is gone after its /clear but you remember the friction.
+Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security's chat before firing the prompt.
 
 {{prompt:ae101-m3-sharpen-skill}}
 
@@ -62,13 +62,15 @@ In m3-security, signal the wrap-up. The agent converges what's still loose.
 
 {{prompt:ae101-m3-ready-to-clear}}
 
+> Might be slightly leaky. But this time simple gets mostly right.
+
 If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 
 {{prompt:ae101-m3-clear-session}}
 
 ## Next
 
-Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria you named today become Block 3 of the three-block memory; the access-surface facts become Block 1 observations; the hardening decision is a Block 2 entry already.
+Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria, the access-surface facts, and the hardening decision all feed into what M4 builds.
 
 ## Bring to Module 4
 
@@ -81,8 +83,8 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
-- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@533a77b story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @533a77b: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

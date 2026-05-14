@@ -11,4 +11,8 @@ Rules: run the verifier per plan.md cadence; don't paper over failures; if you g
 
 Before you start, ask for or write anything else you want for this run.
 
-Tell me what shipped, what didn't, and what the verifier surfaced.
+Report back as three lists, no narrative, no hedging:
+  shipped — each artefact + path
+  did NOT ship — each item, no "partial" / "mostly" / "in progress"
+  verifier — last output line of each run, pasted verbatim
+If any list is empty, say "none."

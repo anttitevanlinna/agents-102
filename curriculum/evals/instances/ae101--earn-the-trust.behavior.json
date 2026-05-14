@@ -3,12 +3,12 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
+  "trace_status": "full_regen",
   "prompts_evaluated": 3,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the ac",
+      "prompt_lead": "Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. ",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
@@ -21,19 +21,19 @@
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Prompt has 4+ named sub-steps — body callout after the fence names preamble risk ('Claude may open with a plan before showing the diff') and gives recovery ('tell it to skip preamble and lead with the before/after diff'); body-callout carve-out applied",
+          "evidence": "Prompt has 4+ named sub-steps — body callout after the fence names preamble risk ('Claude may open with a plan before showing the diff') and gives recovery ('tell it to skip preamble and lead with the before/after diff'); structural trigger (rule 17) satisfied by body primer; body-callout carve-out applied",
           "fix_hint": "No fix needed; body callout gives the student the preamble recovery move."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "find the one section of the skill where session evidence shows it underdelivered — body callout names charity risk ('same-context-window self-audit under-flags') and provides concrete evidence surfaces + recovery (over-flag or fresh-session subagent); evidence-backed Debrief carve-out applied",
+          "evidence": "find the one section of the skill where invocation evidence shows it underdelivered — body callout names charity risk ('same-context-window self-audit under-flags') and provides over-flag variant and fresh-session subagent as recovery; evidence-backed Debrief carve-out applied",
           "fix_hint": "No fix needed; named evidence surfaces and over-flag / fresh-session alternatives present in adjacent prose."
         },
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
-          "evidence": "integrate it into ./CLAUDE.local.md — personal-scope carve-out applies: path is ./CLAUDE.local.md, fence says 'personal file, not team ./CLAUDE.md', section describes iterative-evolution pedagogy",
+          "evidence": "integrate it into ./CLAUDE.local.md — personal-scope carve-out applies: path is ./CLAUDE.local.md, prompt fence says 'personal file, not team ./CLAUDE.md', surrounding section describes iterative-evolution compound pedagogy",
           "fix_hint": "No fix needed; integrate-verb on personal-scope file with explicit personal-scope markers is design intent."
         }
       ]
@@ -47,7 +47,7 @@
         {
           "pattern_id": "self-report-inflation",
           "confidence": "med",
-          "evidence": "All learnings in? — Claude defaults to affirmation rather than enumeration; same-session self-audit under-flags uncaptured branches",
+          "evidence": "All learnings in? — Claude defaults to affirmation rather than enumeration; same-session self-audit under-flags uncaptured branches; no adjacent body callout neutralises this (blockquote after covers accept-loss decision, not uncaptured-content enumeration)",
           "fix_hint": "Add an enumeration hook: 'List what landed in the skill or rules-file versus what is still only in scrollback' — forces enumeration over confirmation. Low-stakes since load_bearing is false."
         }
       ]

@@ -35,10 +35,10 @@ Let's go.
 
 **Quality:** draft 2026-05-09
 
-**Lecture meta:** *~3 min closer for Module 1, after the compound-and-close exercise. Self-standing; no Module 2 bridge.*
+**Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*
 
 **Meta:**
-- **Role:** closer. Does not pre-teach M2; does not summarise M1.
+- **Role:** opener. First lecture of M1; lands stance + two-frontiers framing before the wizard-move demo and the exercises.
 - **Mood target:** recognition. Stance is now the load-bearing part. No doom, no hype.
 - **Voice:** Sutherland-tilt for chameleon; Godin for tool/taste; Boris-flat on wizard.
 

@@ -4,9 +4,15 @@ An **agent** is an LLM that runs in a loop, calling tools to take action. Each i
 
 Three prompts to make the loop concrete in your current session.
 
+Ask Claude to draw the loop as an ASCII diagram.
+
 {{prompt:ae101-agent-loop-ascii}}
 
+Get the tool list this session is actually carrying.
+
 {{prompt:ae101-agent-loop-tools-list}}
+
+Surface where the tool list comes from, then how MCP-connector tools land in the same set.
 
 {{prompt:ae101-agent-loop-tool-injection}}
 
@@ -14,7 +20,8 @@ Three prompts to make the loop concrete in your current session.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-14
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 
 **Meta:** *Mini-supplementary for AE101. Referenced from `compound-and-close.md`'s timebox callout. Audience: senior engineers who want to look under the hood while the room finishes the MCP install. ~5 minutes.*
 

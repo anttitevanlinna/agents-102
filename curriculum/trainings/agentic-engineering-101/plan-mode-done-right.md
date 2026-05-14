@@ -43,6 +43,8 @@ Ask Claude to integrate the one branch that earned itself into your personal `./
 
 {{prompt:ae101-m2-integrate-branch}}
 
+> LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
+
 ## Key Concepts
 - A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
@@ -139,5 +141,5 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
 - **Plan mode** (Anthropic Claude Code). Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop). Push-back via *keep planning with feedback* at the approval prompt — chat-based, the exercise's path. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`.
-- **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `https://every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
+- **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `https://every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct, vendor venue]`.
 - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). Vision-layer attribution, optional at Debrief; most engineers have seen this in strategy readings.

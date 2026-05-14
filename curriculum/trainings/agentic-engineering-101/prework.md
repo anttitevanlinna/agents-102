@@ -52,8 +52,8 @@ Connections question at the opening: *what's one trick you figured out with Clau
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-14 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-prework via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

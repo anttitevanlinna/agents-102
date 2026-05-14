@@ -4,9 +4,9 @@
   "verdict": "REVISE",
   "training": "ae101",
   "trace_status": "partial_regen",
-  "generated_at": "2026-05-14T12:10:50.084Z",
+  "generated_at": "2026-05-14T14:22:00.000Z",
   "prompts_evaluated": 2,
-  "blocking_findings_count": 2,
+  "blocking_findings_count": 1,
   "todos_count": 0,
   "prompts_findings": [
     {
@@ -18,42 +18,36 @@
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "med",
-          "evidence": "`<repo-name>` angle-bracket placeholders on three cp-command lines inside the fence; cp silently no-ops if Claude substitutes the literal string, personal files don't copy into the worktree, M5/M6 compounding breaks without visible error.",
-          "fix_hint": "Replace `<repo-name>` with a self-resolution instruction inside the fence: 'Determine the repo name from `basename $(pwd)` and substitute in all paths below.'"
+          "evidence": "Three cp-command lines embed `<repo-name>` angle-bracket placeholders: `../<repo-name>-m5`, `cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/`, `cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/`. Claude Code can likely infer repo name from CWD but may substitute the literal angle-bracket string or pause to confirm; a wrong-path cp with `(if it exists)` suffix fails silently, leaving M5/M6 compounding without M1/M3 personal rules — silent, no error surface. Personal-scope integrate-verb carve-out does NOT apply: these are cp shell commands, not integrate/merge/reshape verbs.",
+          "fix_hint": "Replace `<repo-name>` placeholders with self-resolution inside the fence: 'Determine the repo name from `basename $(pwd)` and substitute it in all paths below' — removes placeholders while keeping the prompt self-contained."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Four chained sub-steps (find branch, create worktree, copy files, report) with no in-fence suppressor and no body primer after the closing fence.",
-          "fix_hint": "Add a one-sentence body primer after the fence pointing the student to the shell-command output confirming the worktree path and which files copied across."
+          "evidence": "Prompt chains four distinct sub-steps (find branch, create worktree, copy files, report) with no `No preamble` suppressor and no body primer immediately after the fence naming the preamble + skim-past cue. Rule 17 structural trigger fires: 4+ named sub-steps require one of: (a) in-fence `No preamble. <first action>` suppressor; (b) body primer right after fence with preamble + skim cue. The post-fence body callout addresses multi-branch grep disambiguation, not preamble behavior.",
+          "fix_hint": "Add a body primer immediately after the fence: 'Claude will narrate before acting; look for the shell command output confirming the worktree path and which files copied across.' No prompt edit required."
         }
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.",
-      "verdict": "REVISE",
+      "prompt_lead": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "niceness-tax",
-          "confidence": "med",
-          "evidence": "'Tell me what shipped, what didn't' — anti-softening covers the run itself, not the final report; RLHF softening frames partial failures as partial successes in the close-out summary M6 reads.",
-          "fix_hint": "Extend report-back: 'Be specific about failures — don't soften them. The contrast with the previous run is what the next session reads.'"
+          "confidence": "low",
+          "evidence": "New version bakes anti-softening structurally into the fence: `no narrative, no hedging`, `did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"`. Body callout after fence explicitly names RLHF softening risk and gives recovery move. §50 convenience-bias carve-out applies: in-fence enforcement + body callout together neutralise. SHA changed from 9bab148f to 2954ce2c — regenerated entry.",
+          "fix_hint": "Pattern mitigated by structural in-fence enforcement and body callout. No action needed."
         },
         {
           "pattern_id": "self-report-inflation",
-          "confidence": "med",
-          "evidence": "Self-summary of a long autonomous run; Claude inflates shipped count, undercounts verifier firings; summary is primary M6 diagnostic input.",
-          "fix_hint": "Add loose body callout after the fence: 'If the summary feels polished, ask Claude which artifact the verifier actually fired on, and whether the failure was resolved or logged in RUN-NOTES.md.'"
+          "confidence": "low",
+          "evidence": "`verifier — last output line of each run, pasted verbatim` forces literal artifact evidence rather than Claude's summary. Binary shipped/not-shipped list with explicit no-qualification language prevents inflation at list level. Body callout names inflation risk and gives push-back move. §50 carve-out applies. SHA changed from 9bab148f to 2954ce2c — regenerated entry.",
+          "fix_hint": "Pattern mitigated by `pasted verbatim` constraint and binary list format. No action needed."
         }
       ]
     }
-  ],
-  "maintainer_acceptance": {
-    "original_verdict": "REVISE",
-    "original_blocking_findings_count": 2,
-    "accepted_at": "2026-05-03",
-    "note": "Prompt 2 risks (niceness-tax, self-report-inflation) carried forward from cached trace — body callout after the fence and body-prose anti-softening address via accepted-with-mitigation per pedagogy rule 50. Prompt 1 file-preservation-gap re-evaluated 2026-05-14 (SHA changed after prompt edit): placeholders remain; preamble-before-action newly flagged. Prompt 1 acceptance requires maintainer review."
-  }
+  ]
 }

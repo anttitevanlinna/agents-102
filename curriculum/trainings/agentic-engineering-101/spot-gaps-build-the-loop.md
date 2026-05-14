@@ -140,8 +140,8 @@ Antti
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
 - **Cherny's three verifier shapes** — Boris Cherny `[practitioner direct]`. The second-skill authoring picks a shape from this menu.
 - **Ramp Dojo** — 350-skill marketplace `[practitioner direct]`, as the team kit's destination shape. Closing lecture attribution.
-- **Intercom Tier 1/2/3** — Darragh Curran `[practitioner direct]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D. Closing lecture org-scale anchor.
-- **Compound engineering** — Kieran Klaassen `[practitioner direct]`. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
+- **Intercom Tier 1/2/3** — Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D — all numbers vendor-self-reported, verify before citing live. Closing lecture org-scale anchor.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue]`. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
 
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?

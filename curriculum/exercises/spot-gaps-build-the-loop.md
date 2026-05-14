@@ -54,7 +54,7 @@ Author through conversation. No markdown editor, no hand-crafting SKILL.md in a 
 
 {{prompt:spot-gaps-build-the-loop-3}}
 
-If Claude shows you the full question list up front instead of asking one at a time, ask it to use the AskUserQuestion tool, or to ask one and wait. Your call.
+If Claude narrates a plan or shows you the full question list before asking one at a time, ask it to skip the preamble and use the AskUserQuestion tool. Your call.
 
 Answer each question. When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment: *"no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically."*
 

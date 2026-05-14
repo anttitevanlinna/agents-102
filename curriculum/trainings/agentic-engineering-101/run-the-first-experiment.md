@@ -152,7 +152,7 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 | Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer / Nerd: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
 
 **Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):
-- Boris Cherny / Klaassen / Entis / Uncle Bob references appear only in pre-reads (M5-bound, lines 87–91). All three Klaassen / Entis URLs and the Uncle Bob supplementary need URL-resolves checks before first cohort. Klaassen / Entis on `every.to` [practitioner direct] and [practitioner analysis] respectively per byline. Uncle Bob via `supplementary/clean-code-is-steering.md` — verify that file's source references stay current.
+- Boris Cherny / Klaassen / Entis / Uncle Bob references appear only in pre-reads (M5-bound, lines 87–91). All three Klaassen / Entis URLs and the Uncle Bob supplementary need URL-resolves checks before first cohort. Klaassen on `every.to` [practitioner direct, vendor venue] (Every is his employer); Entis-on-Klaassen [practitioner analysis] per byline. Uncle Bob via `supplementary/clean-code-is-steering.md` — verify that file's source references stay current.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Huryn's three-block memory** — Paweł Huryn. Frame earns its name at Phase 3 through recognition in the student's own material.

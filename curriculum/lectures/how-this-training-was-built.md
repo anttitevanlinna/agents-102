@@ -57,7 +57,7 @@ The loop is the shape. The bug today was the excuse.
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).
 - **Time band:** 5–7 min closer inside M1's 2h slot. Shorter than the 10–15 min default because it frames rather than teaches; the exercises did the teaching.
-- **Arc position:** closes M1, after `compound-and-close` (Ex3) and before the Bridge to M2. Pairs with `the-wizard-move` lecture (demo-style opener): wizard-move shows the ceiling before the student runs the loop; this one names the pattern after they have lived through it. The meta-frame only lands once the student has the muscle memory.
+- **Arc position:** closes M1, after `compound-and-close` (Ex3) and before the Bridge to M2. Pairs with the opener stack (`painting-the-picture-with-the-llm` sets the frame; `the-wizard-move` runs the demo): the openers show the ceiling before the student runs the loop; this one names the pattern after they have lived through it. The meta-frame only lands once the student has the muscle memory.
 
 **Frameworks riffed on:**
 - **Compound engineering** — Kieran Klaassen (Every Inc.) `[practitioner direct]`. Plan → Work → Review → Compound. Named at this lecture's close as the deterministic seam to Ex3's retro citation. The lecture tells the story experientially first; the practitioner lands at the end so the four-step term arrives after the student has run all four steps. Removes the prior gamble where Klaassen's name lived only in the retro prompt and depended on Claude reliably citing him.

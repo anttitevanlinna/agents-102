@@ -1,31 +1,31 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "trace_status": "partial_regen",
-  "generated_at": "2026-05-14T14:22:00.000Z",
+  "generated_at": "2026-05-14T15:10:00.000Z",
   "prompts_evaluated": 2,
-  "blocking_findings_count": 1,
-  "todos_count": 0,
+  "blocking_findings_count": 0,
+  "todos_count": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_lead": "Find the branch starting with `m4/` (run `git branch -a | grep 'm4/'`). There ma",
-      "verdict": "REVISE",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "file-preservation-gap",
-          "confidence": "med",
-          "evidence": "Three cp-command lines embed `<repo-name>` angle-bracket placeholders: `../<repo-name>-m5`, `cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/`, `cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/`. Claude Code can likely infer repo name from CWD but may substitute the literal angle-bracket string or pause to confirm; a wrong-path cp with `(if it exists)` suffix fails silently, leaving M5/M6 compounding without M1/M3 personal rules — silent, no error surface. Personal-scope integrate-verb carve-out does NOT apply: these are cp shell commands, not integrate/merge/reshape verbs.",
-          "fix_hint": "Replace `<repo-name>` placeholders with self-resolution inside the fence: 'Determine the repo name from `basename $(pwd)` and substitute it in all paths below' — removes placeholders while keeping the prompt self-contained."
+          "confidence": "low",
+          "evidence": "Body callout immediately before the prompt fence ('Claude figures out `<repo-name>` from the working directory. Help it if it gets confused.') names the resolution mechanism and gives the student the recovery move. Body-callout mitigation per judge template § 'Body-callout carve-out' applies — callout is directly adjacent, names the failure mode, gives student action. Downgraded from med (prior run) to low.",
+          "fix_hint": "Mitigated by body callout. If further hardening wanted: add self-resolution instruction inside the fence ('Determine the repo name from `basename $(pwd)` and substitute in all paths below') to make it fully self-contained without body dependency."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Prompt chains four distinct sub-steps (find branch, create worktree, copy files, report) with no `No preamble` suppressor and no body primer immediately after the fence naming the preamble + skim-past cue. Rule 17 structural trigger fires: 4+ named sub-steps require one of: (a) in-fence `No preamble. <first action>` suppressor; (b) body primer right after fence with preamble + skim cue. The post-fence body callout addresses multi-branch grep disambiguation, not preamble behavior.",
-          "fix_hint": "Add a body primer immediately after the fence: 'Claude will narrate before acting; look for the shell command output confirming the worktree path and which files copied across.' No prompt edit required."
+          "evidence": "Prompt chains four distinct sub-steps (find branch, create worktree, copy files, report) with no `No preamble` suppressor and no body primer after the fence naming preamble + skim-past cue. Rule 17 structural trigger fires on 4+ named sub-steps. Post-fence body callout addresses multi-branch disambiguation, not preamble behavior.",
+          "fix_hint": "Add a body primer immediately after the closing fence: 'Claude will narrate before acting; look for the shell command output confirming the worktree path and which files copied across.' No prompt edit required."
         }
       ]
     },
@@ -38,14 +38,14 @@
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "New version bakes anti-softening structurally into the fence: `no narrative, no hedging`, `did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"`. Body callout after fence explicitly names RLHF softening risk and gives recovery move. §50 convenience-bias carve-out applies: in-fence enforcement + body callout together neutralise. SHA changed from 9bab148f to 2954ce2c — regenerated entry.",
-          "fix_hint": "Pattern mitigated by structural in-fence enforcement and body callout. No action needed."
+          "evidence": "In-fence structural enforcement (`no narrative, no hedging`, binary shipped/not-shipped list, explicit no-qualification language) plus body callout naming RLHF softening risk neutralise. §50 convenience-bias carve-out applies.",
+          "fix_hint": "Pattern mitigated. No action needed."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "`verifier — last output line of each run, pasted verbatim` forces literal artifact evidence rather than Claude's summary. Binary shipped/not-shipped list with explicit no-qualification language prevents inflation at list level. Body callout names inflation risk and gives push-back move. §50 carve-out applies. SHA changed from 9bab148f to 2954ce2c — regenerated entry.",
-          "fix_hint": "Pattern mitigated by `pasted verbatim` constraint and binary list format. No action needed."
+          "evidence": "`verifier — last output line of each run, pasted verbatim` forces literal artifact evidence. Binary list with no-qualification language prevents inflation. Body callout names risk and gives push-back move. §50 carve-out applies.",
+          "fix_hint": "Pattern mitigated. No action needed."
         }
       ]
     }

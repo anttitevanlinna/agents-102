@@ -83,8 +83,8 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@533a77b story@0f32201 technical@0f32201 behavior@0f32201)
-- judges @533a77b: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@533a77b story@0f32201 technical@0f32201 behavior@ab4b0bd)
+- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

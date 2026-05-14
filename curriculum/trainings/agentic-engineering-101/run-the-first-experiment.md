@@ -87,8 +87,8 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201)
-- judges @0f32201: writing PASS, story PASS, technical PASS, behavior REVISE (0/0 see instances/ae101--run-the-first-experiment.behavior.json — deliberate-antipattern carve-out (pedagogy rule 51) re-confirmed 2026-05-14; M4 un-packaged return shape is M5's contrast specimen)
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
+- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @e840433: PASS — ae101-m4 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

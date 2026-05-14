@@ -25,6 +25,8 @@ A real engineering call lives in this fork: gitignored files (your `CLAUDE.local
 
 If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
 
+**Claude figures out `<repo-name>` from the working directory.** Help it if it gets confused.
+
 {{prompt:ae101-m5-worktree-setup}}
 
 **The grep may hit multiple branches.** A push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`; a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the "M4 starting point" commit (`git log <branch> --oneline | grep 'M4 starting point'`). If that commit message has been rewritten, fall back to the SHA Claude reported at Module 4 close. It is in the M4 session transcript at `~/.claude/projects/<encoded>/`.
@@ -80,8 +82,8 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201)
-- judges @0f32201: writing PASS, story PASS, technical PASS, behavior REVISE (1/0 see instances/ae101--learn-from-the-test.behavior.json (rerun-packaged report-back fixed; worktree-setup placeholder open))
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
+- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @e840433: PASS — ae101-m5 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

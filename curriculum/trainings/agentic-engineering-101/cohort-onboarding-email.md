@@ -42,8 +42,8 @@ Looking forward to it.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
-- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (behavior@ab4b0bd)
+- judges @ab4b0bd: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Send timing:** 5 working days before Day 1. From the trainer (named human, not a shared mailbox). The job: get every laptop install-ready before the student opens prework. Prework runs solo; the trainer cannot rescue install issues during prework, and a half-installed Claude Code is the single biggest source of asynchronous prework abandonment.

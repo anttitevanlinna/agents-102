@@ -326,3 +326,83 @@ See also: `bosser-strategy:practitioner-essays-year-one.md` (private — `bosser
 ---
 
 *Research directions identified from enterprise transformation practitioner research, March 2026. Updated April 2026.*
+
+---
+
+## Priority 1: The Stance Behind Agentic Coding — and the Smallest Prosthetic That Produces It
+
+**Finding (provisional):** Across the practitioners who got agentic coding really working — Boris Cherny (Anthropic), Kieran Klaassen + Dan Shipper (Every), Darragh Curran (Intercom), Geoff Charles (Ramp), Andrej Karpathy, Simon Willison, Tobi Lütke (Shopify), Armin Ronacher (the loyal opposition) — the **techniques diverge** (vanilla Claude Code vs. a built harness vs. a plugin vs. essays only), but the **stance converges.** Five candidate stance-axes, each held by 4+ of the named practitioners:
+
+1. **Scientist-not-engineer disposition.** Codebase as lab. CLAUDE.md as notebook. PR as experiment. Replication as verifier-runs-10-times. Public reversal on evidence (Karpathy reversing himself on agents) treated as virtue, not weakness.
+2. **Writing-down IS the work.** The act of capturing a rule into CLAUDE.md / skills / playbooks is the work, not documentation about the work. Intercom 267 skills, Ramp 350+, LinkedIn 500+ — same instinct.
+3. **Ship cheaper than argue.** Twenty small experiments before a study would scope. Karpathy's 700 experiments in 2 days. Charles: "Most companies are still debating their AI strategy. They are overthinking it."
+4. **Taste as the irreducible asset.** Klaassen: "you're the bread in the AI sandwich." Karpathy: "the researcher's new job is writing the spec." Cherny: "code is not the bottleneck." Effort goes into the brief, the verifier, and the rule — never the implementation.
+5. **Reagents-not-opex cost frame.** Curran, Charles, Cherny converge: cost is the wrong frame at the experiment stage. Ration once you know what to scale.
+
+**The composite portrait:** scientist with builder's hands and writer's discipline, suspicious of vendors, citing peers obsessively, publicly committed to outcomes they don't yet know how to deliver.
+
+**The question:** This disposition does not look anything like the median enterprise engineering org. **What is the smallest cultural prosthetic that reliably produces it in a normal organization?** Not the platform — the disposition. The platform is downstream.
+
+### What to investigate
+
+1. **Stance-convergence proof or refutation.** Sample 5 more practitioners outside the named roster — including failure cases (people who tried agentic coding seriously and abandoned it) — and test whether the five stance-axes hold. If the convergence is real, it's a Level 3+ finding on disposition. If failure cases show the same stance, the prosthetic question dies (stance isn't sufficient).
+
+2. **Candidate prosthetics — which produce which axis?** Each documented program is a candidate prosthetic. Map prosthetic → stance-axis it produces:
+   - Ramp's L0–L3 ladder + leaderboard → "ship cheaper than argue" via peer-visible activity
+   - Intercom's public 2x memo + tiering → "scientist disposition" via published-experiment culture
+   - Anthropic's "do the simple thing that works" + Member-of-Technical-Staff flat structure → "taste as irreducible" via lack of hierarchy to defer to
+   - Shopify's "prove AI can't do it before hiring" → "ship cheaper than argue" via decision-structure change
+   - Every's compound-engineering plugin → "writing-down IS the work" via toolchain forcing function
+   - F-Secure's 200+ Agents 101 cohort (curriculum as prosthetic) → which stance-axes emerge? Curriculum-driven stance change is the most-portable prosthetic candidate; testing this is high-value for Bosser specifically.
+   - Are there cases where a prosthetic produced the *opposite* stance? (Shopify's mandate-with-performance-reviews allegedly produced performative compliance, per Foster Fletcher critique — a candidate negative case.)
+
+3. **Stance vs. selection effect.** Are these practitioners exhibiting the stance because of the prosthetic, or because the prosthetic attracted people who already had the stance? Ramp is explicit about velocity-biased starting culture. Anthropic's "extreme talent density" is selection, not prosthetic. The distinguishing question: any case where a normal-disposition person developed the stance *after* the prosthetic, not before?
+
+4. **The Nordic / non-SV question.** Every named convergence case is SV-culture-adjacent (Every, Intercom, Ramp, Anthropic, Shopify, Block). Is there a single documented case of this stance emerging in a Nordic, German, or non-tech-sector org? Spotify is the obvious candidate to investigate first — does Honk's emergence carry the stance signature or only the technical practice?
+
+5. **The Ronacher position specifically.** Ronacher is the practitioner whose public output documents *where the stance fails* — frontend at scale, conceptual errors propagating through PRs, the 80→100 gap. He holds the scientist disposition (publishes failures) but is sceptical of the convergence enthusiasm. Worth a dedicated observation file. **What makes Ronacher's stance distinct from the convergence — and is that distinction load-bearing or stylistic?**
+
+### Named people to start with
+
+**Primary (already in roster, deepen evidence):**
+- Armin Ronacher — `lucumr.pocoo.org` essays, X.com, conference talks. The dedicated observation file is overdue.
+- Boris Cherny — re-read 2026 X.com and Threads output through stance lens, not technique lens.
+- Kieran Klaassen + Dan Shipper — Every essays already mined for technique; re-read for disposition signal.
+- Geoff Charles (Ramp), Darragh Curran (Intercom) — the public commitment memos themselves *are* prosthetics worth analysing.
+
+**Secondary (extend the sample):**
+- Mitchell Hashimoto (Ghostty, ex-HashiCorp) — has written about agentic coding adoption stance.
+- Thorsten Ball (Sourcegraph, ampcode.com) — frequent essays on agentic engineering practice.
+- Geoffrey Huntley — *"The Way of Code"*, *"Yes, Claude Code Can Replace Most Engineers"* — high-volume practitioner output, clear stance signal.
+- Steve Yegge — *"Revenge of the Junior Developer"* and follow-ups — stance signal from a long-career engineer.
+- Will Larson (Imprint) — already cited as Klaassen's independent validator; his own writing on the stance is its own evidence.
+- Birgitta Böckeler (Thoughtworks) — sceptical-but-engaged practitioner voice; useful balance against the SV cluster.
+- Hamel Husain — eval/quality-discipline voice; stance on what disciplined agentic work looks like.
+
+**Failure-case candidates (high value if found):**
+- Anyone who publicly committed to agentic coding, ran it for 3+ months, and reversed. Klarna-style reversals exist in CS; do they exist in coding?
+
+### What we do NOT want
+
+- Vendor case studies on "developer productivity gains" (the metric is wrong; we're looking at stance, not output)
+- Analyst reports on "AI coding adoption" (the unit of analysis is wrong; cohort-level percentages don't reveal disposition)
+- Tooling tutorials, prompt-library posts, "10 tips for Claude Code" content (technique layer, not stance layer)
+- Anything pre-Dec-2025 phase shift as primary evidence (use as historical context only — see freshness rule)
+
+### Output shape
+
+- `observations/armin-ronacher.md` (dedicated practitioner file, mirrors `kieran-klaassen.md` / `boris-cherny.md` shape)
+- `synthesis/practitioner-convergent-stance.md` — the 5 stance-axes with practitioner-by-axis mapping, evidence-ladder labelled per axis, counter-evidence section
+- Update to `findings/by-pattern/competence-first.md` if the stance-as-prerequisite-for-competence connection holds
+- New pattern candidate: `findings/by-pattern/cultural-prosthetic-for-stance.md` if the prosthetic→stance mapping survives the investigation
+
+### Why this matters
+
+The CTO question we keep being asked is *"which platform?"* The honest answer is *"the platform is downstream of the stance, and your org doesn't have the stance."* But that answer is useless unless we can name the stance precisely and point at the smallest intervention that produces it. Training is one such prosthetic — but only one. If we can map prosthetic-to-stance-axis with evidence, the consulting conversation changes from *"buy Claude Code"* to *"here's the smallest intervention that produces the disposition that makes Claude Code worth buying."* That is a moat no vendor can sell.
+
+It also closes the loop on three existing patterns: **competence-first** (stance is the deepest layer of competence), **conditions-creator** (the conditions are the prosthetics), **absorption-bottleneck** (the bottleneck is partly dispositional, not just procedural).
+
+**Hold loose.** The five stance-axes are a hypothesis, not a finding. The first OODA cycle's job is to test the convergence, not confirm it. Six practitioners ≠ Level 3; threshold is 10–20. Actively search for counter-evidence (per confirmation-bias guard in `.claude/rules/research-rules.md`).
+
+**Date added:** 2026-05-13
+**Source:** User signal — Antti asking about practitioner beliefs/principles framed as disposition, not technique (see `user-signals/questions/2026-05-13-agentic-coding-practitioner-beliefs.md`).

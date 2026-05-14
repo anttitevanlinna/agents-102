@@ -22,7 +22,7 @@ After this module, you will be able to:
 
 You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
-> **Packaged run thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. Skip the opening lecture. Practice is core. Lectures can be read later.
+> **Packaged run thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
 
 > **Just can't get the M5 run working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 

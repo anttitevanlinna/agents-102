@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's session may still be running the re-send. Leave it; M6 reads both runs from disk.
+Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
 
 **What you do:** Diff the packaged M5 re-run against the un-packaged M4 baseline. Name what packaging caught, what it missed, and what new gaps surfaced. Then author a session-shaper skill through conversation. Shape follows what the two runs taught. Self-critique, invoke on the packaged run, ship personally.
 

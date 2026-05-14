@@ -67,9 +67,9 @@ Day total ~7h20.
 
 **M5 cushion.** The 15 min over budget goes to the worktree setup demo (real engineering call, students often fumble) and the closing lecture (Ronacher's three-pattern earned from felt evidence, the lecture IS the lesson; don't squeeze it).
 
-**Re-entry nudge.** M5's packaged re-send fires at M5 close (~12:20) and runs through lunch (~75 min by re-entry). The 15-min re-entry window is for: nudging the agent if it stalled (the dark-humor "Continue" prompt from M4 still works), settling into email or scrollback reading, and letting the run proceed a few more minutes before M6 reads it. After the nudge, leave the M5 session running and open M6 in a fresh Claude Code session at the same worktree path.
+**Re-entry nudge.** M5's packaged re-send fires at M5 close (~12:20) and runs through lunch (~75 min by re-entry). The 15-min re-entry window is for: nudging the agent if it stalled (the dark-humor "Continue" prompt from M4 still works), settling into email or scrollback reading, and letting the run proceed a few more minutes before M6 reads it. After the nudge, leave the M5 session running if that is the right call and open M6 in a fresh Claude Code session at the same worktree path. M6 starts by reading; before it writes, students choose whether to wait, stop M5, or accept the partial run as the artefact.
 
-**Why M6 is a fresh session.** M5's session is still autonomously running the packaged re-send. Joining that session interrupts the run. M6 opens fresh, reads both runs from disk (git refs + on-disk transcripts under `~/.claude/projects/`). Two Claude Code sessions coexist on the same worktree, supported, harmless.
+**Why M6 is a fresh session.** M5's session may still be autonomously running the packaged re-send. Joining that session interrupts the run. M6 opens fresh and begins by reading both runs from disk (git refs + on-disk transcripts under `~/.claude/projects/`). Same-worktree overlap is an intentional classroom handoff, not the general multi-session rule: read first, then make the engineering call before any M6 write.
 
 ### Why not split M4 across Day 1 close and Day 2 open?
 

@@ -4,55 +4,69 @@
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "partial_regen",
-  "prompts_evaluated": 2,
+  "prompts_evaluated": 3,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Download the AE101 content tarball to ~/Downloads. Use Bash:",
-      "verdict": "PASS",
+      "prompt_lead": "Download the AE101 content tarball to `~/Downloads/agents-102-content.tar.gz` using cur",
+      "verdict": "TODO",
       "load_bearing": false,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Direct Bash-tool invocation suppresses most preamble variants; Claude may open with a one-liner ('Running the download now…') but the mechanical task structure and short execution path keep this below the 30% threshold.",
-          "fix_hint": "Prime the student above the prompt if preamble is observed in cohort: 'Claude will confirm before running; skim past the opening line and look for the file-exists confirmation.'"
+          "evidence": "Single-action Bash fetch; brief opener ('I'll download that now') possible in ~20% of runs but non-disruptive on a housekeeping step.",
+          "fix_hint": "No edit needed; preamble on a setup-only prompt does not affect learning outcome."
         }
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order,",
+      "prompt_lead": "I'm starting a six-module training called Agentic Engineering 101. Walk these in",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "'no preamble' is present but a five-step numbered task reliably triggers a confirmatory opening ('I'll work through these in order…') in ~40% of runs. Explicit suppression reduces but does not eliminate the pattern.",
-          "fix_hint": "Add a body-side primer above the prompt: 'Claude may narrate the plan before acting; skim past the opening summary and look for step-1 output.' Pairs with the existing 'no preamble' instruction for belt-and-callout coverage."
+          "evidence": "Five-step numbered task; 'no preamble' suppressor present but confirmatory opener ('I'll work through these in order…') persists in ~40% of runs at this complexity level.",
+          "fix_hint": "Add body primer immediately after the fence: 'Claude will narrate before acting; skim past the opening and look for the step number.'"
         },
         {
           "pattern_id": "question-dump",
           "confidence": "low",
-          "evidence": "CARVE-OUT APPLIED (2026-05-03 new callout). Step 4 elicitation ('Ask me for three trivial-and-visible candidate bugs') would invite a criteria-dump at med confidence in isolation. Two body callouts satisfy the carve-out shape: (1) pre-prompt within ~1 paragraph: 'When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.' (2) post-prompt immediately after: 'If Step 4's screening feels like Claude is asking everything at once, ask it to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.' Both callouts name the failure mode, give a recovery move, and give student agency. Downgraded from med to low per carve-out rule; not blocking.",
-          "fix_hint": "Carve-out satisfied — no prompt edit required. Body callout is the legal alternative shape per check_prompts.md §15."
+          "evidence": "CARVE-OUT APPLIED. Step 4 elicitation has two body callouts satisfying the carve-out shape: pre-prompt names failure mode + recovery ('push back if it dumps all four criteria at once'); post-prompt names the AskUserQuestion tool + one-at-a-time option + student agency ('Your call.'). Downgraded from med to low.",
+          "fix_hint": "Carve-out satisfied — no prompt edit required."
         },
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "Step 3 installs skills to '~/.claude/skills/' with no explicit overwrite instruction. If a same-named skill already exists, Claude will pause to ask before overwriting. Most first-time students won't have a collision, keeping this low.",
-          "fix_hint": "Add 'If a skill with that name already exists at ~/.claude/skills/, overwrite it.' to the step 3 install instruction to remove the ambiguity that triggers the pause."
+          "evidence": "Step 3 installs to ~/.claude/skills/ without explicit overwrite instruction; pause-to-ask fires on skill-name collision, rare for first-time installs.",
+          "fix_hint": "Optional: add 'overwrite if exists' to step 3 for repeat-run safety."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "'Report success on each step and tell me what you did' invites a self-summary after skill install. Claude may claim installation confirmed when the SKILL.md path check was approximate. Non-load-bearing for prework's teaching goal.",
-          "fix_hint": "Not blocking at low confidence. If cohort feedback shows install-path confusion, add an explicit verification step: 'Show me the full absolute path to each installed SKILL.md.'"
+          "evidence": "'Report success on each step and tell me what you did' invites self-summary; Claude may claim install confirmed when path check was approximate. Non-load-bearing for prework's teaching goal.",
+          "fix_hint": "Not blocking at low confidence. If cohort shows install-path confusion, add explicit path-verification: 'Show me the full absolute path to each installed SKILL.md.'"
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Use the AskUserQuestion tool for speeding up screening and making suggestions. One cand",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "One-liner tool-switch command; 'Sure, switching to AskUserQuestion' opener possible but compliance is near-certain and disruption minimal.",
+          "fix_hint": "No edit needed; one-liner compliance commands have negligible preamble impact."
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 3
 }

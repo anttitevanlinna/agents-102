@@ -40,7 +40,7 @@ This module measures what the system actually says inside its scope. Four detect
 - **Benchmarking teaches evaluating evaluators.** The real move isn't "build a detector"; it's "build the thing that benchmarks detectors." Once you've run a benchmark once, you've seen what evaluating evaluators looks like, and the idea transfers to every future quality question.
 - **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend. A judge that tries to do everything does nothing well.
 - **Grounded is the discipline; the benchmark is how you build the check.** There IS truth out there. Sources carry shards of it. A judge that's been measured against a benchmark is the machine that keeps the output connected to the ground when you're not in the room.
-- **What the judge can't reach.** The benchmark was 30 claims. A production judge wants hundreds, running on every build, learning from its own corrections. Same method, bigger scale. Next module.
+- **What the judge can't reach.** The benchmark was 30 claims. A production judge wants hundreds, running on every build, learning from its own corrections. Same method, bigger scale.
 
 ## Debrief
 

@@ -7,6 +7,8 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).
 
+Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [scheduled agents](../../trainings/agentic-engineering-101/reference/scheduled-agents.md) for when one task becomes a pattern.
+
 ## What You'll Learn
 After this module, you will be able to:
 - **Diagnose** (Analyze) the packaged Module 5 run alongside the un-packaged Module 4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
@@ -20,6 +22,8 @@ After this module, you will be able to:
 
 You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
+[The 2 frontiers](lectures/the-2-frontiers.md)
+
 [Story of Module 6](lectures/story-of-module-6.md)
 
 [Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
@@ -29,15 +33,11 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 [Arc-named retrospective](exercises/arc-retrospective.md)
 
 ## Key Concepts
-- The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
+- The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed. **Remember: the artefact rules, self-reports don't.**
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
 - The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with Module 3
-- Encoding is the third phase of test → learn → encode. Two runs tested; this module's reading learned; the skill encodes
-
-**Compounding (Theme 2):** Review + Compound made explicit across two runs of the same task. Iterative encoding, not single-pass retrospective. The second skill and the team-kit accretion move carry it.
-
-**Self-aware / grain of salt (Theme 4):** the whole module is conversation with Claude about Claude's output across two runs. The artefacts rule; self-reports don't. Phase 1 push-backs and the closing lecture's judge-built-from-diagnosis move surface it.
+- Encoding is the third phase of test → learn → encode. Two runs tested; this module's reading learned; the skill encodes. **Remember: the loop closes when the lesson ships.**
 
 ## Human close
 

@@ -32,7 +32,6 @@ This module's outputs land in `module-1/`.
 - Guardrails are structured context, not a checklist
 - You are the world's best evaluator of your own profile. Domain expertise IS the eval
 - The guardrail IS the control: average output becomes great not because you prompted better
-- **You made this. Module 2 compounds it.**
 
 ## Debrief
 

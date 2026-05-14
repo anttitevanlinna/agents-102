@@ -41,12 +41,11 @@ You sent off an un-packaged run at the close of Module 4 and read the pre-read. 
 
 ## Key Concepts
 - The three failure modes earn their names by reading them in your own artefact, not from a slide
-- The three-pattern (Ronacher) is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
+- The three-pattern is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
 - The three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson. No lecture replicates this
-- **Practice beats external proof.** You read the failure in your own artefact, named the three modes from what you saw, and shaped the validation yourself. No benchmark told you what went wrong; the run did. From here, that's the discipline that carries the work
+- No benchmark told you what went wrong; the artefact did. **Remember: the artefact rules, self-reports don't.**
 - Your verifier is your first eval. Module 6 gives evals their full weight as team infrastructure
-- The kit grows: subagents for context isolation and `/compact` at ~60% extend session length without packaging. Worth knowing alongside the three-pattern
 
 Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
 

@@ -9,6 +9,8 @@ Bring a small feature you're working on right now. **Not a typo-fix, not a quart
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
+If you want the primitives this module uses at a glance, [subagents in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#6-subagents--task-tool-fresh-context) and [skills in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#7-skills) cover what each is and when to reach for it. Optional.
+
 ## What You'll Learn
 After this module, you will be able to:
 - **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context). Read what it surfaces, name what a first-read missed
@@ -32,19 +34,13 @@ The question, to you: what's the feature, and what's the surface you're most ner
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
 ## Key Concepts
-- A curated skill is upstream work packaged for you to invoke. You don't re-derive it
+- A curated skill is upstream work packaged for you to invoke. You don't re-derive it. **Remember: strong, not oracular, last 10% is yours.**
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; breadth is the team kit's job across many engineers, not yours in the exercise window
-- A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's
+- A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's. **Remember: your codebase teaches the skill, not the manual.**
 - Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre
 - One skill shipped beats three skills drafted; the team kit grows by accretion
-
-**Self-aware / grain of salt (Theme 4):** Exercise 3's move is to ask the authored skill to disclose its own weakest part, then push back on the critique; the skill introspects, you verify against the session artifact.
-
-**Mirror (Theme 3):** the access-control and STRIDE skills produce a structured read of your feature's access surface. Comparing your first read to theirs is where the gap becomes legible.
-
-**90% correct (Theme 1):** curated skills from the frontier are strong, not oracular; the hardening decision in Exercise 2 and the weak-spot push-back in Exercise 3 are where the last 10% earns your judgement rather than a rubber stamp.
 
 ## Sharpen the skill from evidence
 
@@ -81,6 +77,7 @@ One or two candidate tasks from your backlog. The kind you'd send off rather tha
 
 **Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
 - judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+- mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

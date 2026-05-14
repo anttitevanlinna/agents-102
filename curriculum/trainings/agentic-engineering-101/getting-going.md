@@ -30,13 +30,15 @@ The room harvests everyone's before the training adds its own.
 
 [Compound and close](exercises/compound-and-close.md)
 
+> **If time allows.** Try the harness introspection on your live session: [The agent loop](../../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
+
 ## Key Concepts
-- Plan mode is overhead on a trivial bug. Module 2 is where it earns its keep
-- The agent can introspect on its own read; the self-report is a hypothesis, not ground truth. Assume 10% of what it says or does is misrepresentation and dig
-- `/context` shows how much of your window has filled up. The slice of the repo Claude didn't load is the bounded-window reality, your job is to steer what lands in those bytes
-- A `CLAUDE.local.md` born from how you actually worked reads different from one written from a blank page
-- The compound step lives in Exercise 3, after the PR ships. One move: review the whole session, write the rule from evidence, name the shape
-- Personal rules (`./CLAUDE.local.md`, gitignored) vs. team rules (`./CLAUDE.md`, PR-reviewed) is a split worth learning early. Session compounds default to personal; team-worthy rules earn their own PR
+- The loop is orient → fix → compound → close. M1 ran it end-to-end on a trivial bug; every later module rides on this shape
+- `/context` shows what landed in the window. The slice the agent didn't read is the bounded-window reality, and you choose what fills the next round. **Remember: context is what you put in it.**
+- The agent's self-report is a hypothesis, not ground truth. About a tenth of what it says or does misrepresents. Dig until you find it. **Remember: assume 90% on first pass.**
+- A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
+- A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. **Remember: rules grow from evidence, not blank pages.**
+- Closing the ticket via connector is the first move past the repo. The loop ends outside the code
 
 ## Debrief
 The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Exercise 1 + Exercise 2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, you push back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so you can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
@@ -57,8 +59,9 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-03 (behavior@60b1b6c)
+**Quality:** compendium-audited 2026-05-14 (behavior@60b1b6c)
 - judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+- mechanical @6121abd: PASS — ae101-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

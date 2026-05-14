@@ -30,11 +30,11 @@ Three modules of short loops sit behind today: a bug fix, a plan read, a feature
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
 
 ## Key Concepts
-- Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever
+- Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever. **Remember: the system you have is what gets tested.**
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
 - Un-packaged is by design. Module 5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
-- The rules files you finalise at Debrief (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers, the memory hierarchy](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md))
-- Traces are data. Stop the run when you've seen what you needed to see
+- Your rules files (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers, the memory hierarchy](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#1-the-memory-hierarchy--where-your-rules-actually-live))
+- Traces are data. Stop the run when you've seen what you needed to see. **Remember: stopping is reading, not failing.**
 - Every send-off is an experiment, not a production run you need to get right first time
 
 ## Send the task off

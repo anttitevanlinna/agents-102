@@ -12,6 +12,18 @@ This skill audits the learning store and surfaces stale candidates. It does NOT 
 
 Memory root: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/`
 
+## Step 0 — Backup before audit
+
+Every `/refresh` invocation, regardless of scope, runs `./scripts/backup-claude-state.sh` first. This writes a dated zip to `bosser/claude-memory-backups/` in Google Drive containing:
+
+- The agents-102 auto-memory (`memory/` — all compendiums + compounded entries).
+- The user-level `~/.claude/` generation/eval surface (CLAUDE.md, settings.json, skills/, agents/, hooks/).
+- The project-level gitignored `agents-102/.claude/` surface (hooks/, rules/, agents/, lints/, agent-memory/).
+
+Reasoning: `/refresh` is the natural cadence beat for backing this up — already opt-in monthly or after large content sessions, already touches the same surfaces, and the audit's edits (Update / Consolidate / Replace / Delete) are exactly when a pre-audit snapshot is most valuable. The script is idempotent on date (re-running same day overwrites that day's zip); cross-day re-runs keep a rolling history.
+
+If the Drive folder isn't mounted, the script exits non-zero — surface the error and ask Antti whether to proceed without backup or abort. **Default: abort.** An audit without a backup is worth less than a delayed audit; the whole point is that these files only exist on disk today.
+
 ## When to invoke
 
 - **Opt-in cadence:** monthly, or after a large content session (post-module-build, post-article-ship, post-major-strategy-shift)

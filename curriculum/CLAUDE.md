@@ -20,20 +20,32 @@ Every student-facing artifact (module, exercise, lecture, prework) carries a Qua
 
 **Format** (top-state line + dimension log in maintainer block):
 ```
-**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha>)
-- compendium-audited <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha>) — four-class judges PASS
+**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha>)
+- judges @<sha>: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @<set-sha>: PASS — set=[<M(N)>, <M(N+1)>, ...]    # module-set scope; only when ≥2 modules audited together
 - maintainer-reviewed <YYYY-MM-DD> (<one-line note>)
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling or behavior judge regen + PASS
 - mechanical-tested <YYYY-MM-DD> (<judge-report-path> @ <short-sha> PASS)
 - cohorts: <none yet | cohort-name + date + post-cohort changes>
 ```
 
-The `compendium-audited` row carries **four per-class git short-SHA pins** (refactored 2026-05-02 from a single SHA; behavior class added second pass when sim split into Class A persona-reader + Class B prompt-behavior). The four classes mirror the compendium split: `writing` (banned words / register / surface lints), `story` (mood / teaching moment / arc — Class A sim trace), `technical` (platform claims / citations / static prompt mechanics), `behavior` (per-prompt distribution-of-Claude-responses against the 15-pattern catalog — Class B sim trace). Each class's SHA is the file's git short-SHA at the moment that class judge passed.
+The `compendium-audited` row carries **six per-class git short-SHA pins** (refactored 2026-05-02 from a single SHA to four; expanded 2026-05-14 to six with the `pedagogy` and `strategy` judges + module-set-scoped `cross_module`). The six per-file classes mirror the compendium split:
+
+- `writing` (banned words / register / surface lints) — `check_writing.md`
+- `story` (mood / teaching moment / arc — Class A sim trace) — storytelling-class compendiums
+- `technical` (platform claims / citations / static prompt mechanics) — technical-class compendiums
+- `behavior` (per-prompt distribution-of-Claude-responses against the 15-pattern catalog — Class B sim trace) — `check_prompts.md` + behavior-class compendiums
+- `pedagogy` (module architecture + dynamics, static) — `check_pedagogy.md`
+- `strategy` (file × strategy-doc alignment, static) — `check_strategy_tie_in.md`
+
+Each class's SHA is the file's git short-SHA at the moment that class judge passed.
+
+**Cross_module** is a separate axis (its own dimension row), not a per-file pin — it fires at module-set scope (`/curriculum-pre-ship-audit` when ≥2 modules audited together) and stamps each module in the set with `- cross_module @<set-sha>: PASS — set=[...]`. Touching any module in the set degrades the row for every member; the row is restored when the set re-audits clean.
 
 **Key rules:**
 - **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
-- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; the other three carry forward. Touching a prompt block invalidates `behavior@<sha>` (and usually `technical@<sha>`). The `eval-class-router.sh` PostToolUse hook classifies each edit (writing-only / structure-change / prompt-change / behavior-change) and writes to `/tmp/claude-eval-queue-<sid>` so the next `/wind-down` knows which class to re-audit per file.
-- **Grandfather rule for files audited before 2026-05-02.** A pre-refactor `compendium-audited <date> @ <sha>` row satisfies all four classes IF the file's mtime is unchanged since that audit. As soon as the file is touched, the four classes auto-degrade per the per-class rule above.
+- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; the other five carry forward. Touching a prompt block invalidates `behavior@<sha>` (and usually `technical@<sha>`). Touching `## Phase` / `## Plug Points` / `## Bridge` invalidates `pedagogy@<sha>`. Touching `## Big Idea` / `## Key Concepts` / `## What You'll Learn` invalidates `strategy@<sha>`. The `eval-class-router.sh` PostToolUse hook classifies each edit and writes to `/tmp/claude-eval-queue-<sid>` so the next `/wind-down` knows which class to re-audit per file.
+- **Grandfather rule for files audited before 2026-05-14.** A pre-expansion `compendium-audited <date> @ <sha>` row satisfies the four old classes (writing / story / technical / behavior) IF the file's mtime is unchanged since that audit. The two new classes (`pedagogy@`, `strategy@`) are `grandfathered` until next touch; first audit after touch establishes the pin. As soon as the file is touched, the per-class rule above kicks in for all six classes.
 - **SHA pin on `mechanical-tested`** is mandatory — instance reports overwrite on rerun, SHA is the only drift detector.
 - **Reference files (`curriculum/trainings/<training>/reference/`) are exempt** — flat lookup material, no mood contract or sim surface.
 

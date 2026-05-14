@@ -50,7 +50,7 @@ What did Claude Code, Codex, Cursor, Amp, and adjacent harnesses ship in the las
 - https://github.com/anthropics/claude-code/issues/43696 [practitioner direct — bug report]
 - https://dev.to/lef237/clauhist-browse-full-claude-code-history-and-resume-sessions-across-projects-1c1o [practitioner direct]
 
-### 5. Subagent / Task tool as session extender
+### 5. Subagent / Agent tool as session extender
 
 **What shipped.** Each subagent runs in its own context window, returns only the final message to the parent. This is the recommended primitive for "serious, long-running engineering work" per the official guide and multiple practitioner write-ups in 2026.
 - https://claude.com/blog/subagents-in-claude-code [vendor — bare fact]

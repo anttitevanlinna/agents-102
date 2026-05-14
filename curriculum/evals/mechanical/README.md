@@ -137,9 +137,9 @@ Known substitutions the Actor logs and the Judge treats as PASS-with-FLAG (not F
 | `gh pr create` | `git commit` on the branch, note "no gh" | `gh` not authenticated in subagent |
 | Plan mode | Produce plan as text, no Write/Edit/Bash-that-mutates | No plan-mode primitive in subagent |
 | Write to `.claude/settings.local.json` | **Log the intended JSON edit; do NOT attempt the write.** Sandbox denies self-modification of the subagent's own `.claude/`; Judge grades the logged intent. | Platform sandbox on subagent self-config |
-| Dispatch skill as subagent (`Task` tool) | Run skill inline, label as substitution | Nested Task-in-Task currently unavailable (see TODO below); content-fidelity only, isolation property not tested |
+| Dispatch skill as subagent (`Agent` tool) | Run skill inline, label as substitution | Nested Agent-in-Agent currently unavailable (see TODO below); content-fidelity only, isolation property not tested |
 
-**TODO — confirm subagents can launch skills reliably.** M3 + M4 mechanical runs surfaced the same gap: nested subagents (Actor → skill via Task) did not have the `Task` tool available, so `access-control-analysis` / `stride` ran inline under a harness-substitution note. Before shipping AE101 to a cohort, verify in a real (non-nested) session that a student's Actor can launch a skill as a subagent and carry on.
+**TODO — confirm subagents can launch skills reliably.** M3 + M4 mechanical runs surfaced the same gap: nested subagents (Actor → skill via Agent) did not have the `Agent` tool available, so `access-control-analysis` / `stride` ran inline under a harness-substitution note. Before shipping AE101 to a cohort, verify in a real (non-nested) session that a student's Actor can launch a skill as a subagent and carry on.
 
 ## Orchestrator discipline — per-dispatch artifacts
 

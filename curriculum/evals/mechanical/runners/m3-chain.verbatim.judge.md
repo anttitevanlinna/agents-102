@@ -31,7 +31,7 @@ For each of 8 prompt files: `verbatim-check.sh <prompt> <scrollback>`. Report ex
 
 ### Ex1 — access surface
 
-- **A1.** Actor dispatched a subagent via Task tool with `access-control-analysis` in the prompt: `jq` on transcript for `tool_use.name == "Task"` AND grep "access-control-analysis" in input.
+- **A1.** Actor dispatched a subagent via Agent tool with `access-control-analysis` in the prompt: `jq` on transcript for `tool_use.name == "Agent"` AND grep "access-control-analysis" in input.
 - **A2.** Surface map output landed outside `<scratch>` (under `/tmp/` or `$TMPDIR`): grep Actor report for path; `test ! -d <scratch>/<surface-map-path>`.
 - **A3.** Surface map file contains `Codebase-tuned delta` heading AND mentions both `CORS` and `db.js` (or relative-path SQLite): `grep -c` on each.
 

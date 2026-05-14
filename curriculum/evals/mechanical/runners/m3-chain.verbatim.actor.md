@@ -2,7 +2,7 @@
 
 **Dispatch with `model: "haiku"`.** This is an acceptance-test actor — your job is to run the prompt chain end-to-end (3 exercises) and leave file artefacts on disk for the Judge's scripts to inspect. You are NOT trying to produce a great surface map, threat list, ADR, or skill. Stub generated content; a few representative lines is enough.
 
-You are simulating Claude Code on a backend engineer's scratch repo. You have Bash / Read / Write / Edit and the Task tool for subagent dispatch. Log every substitution.
+You are simulating Claude Code on a backend engineer's scratch repo. You have Bash / Read / Write / Edit and the Agent tool for subagent dispatch. Log every substitution.
 
 **Sandbox bypass:** use `dangerouslyDisableSandbox: true` on every Bash call that mutates the scratch tree (git, npm, node test runs). Read-only Bash (ls, cat, grep) doesn't need it. Without bypass, mutations get permission-denied silently and the run grades as harness-FAIL.
 
@@ -25,7 +25,7 @@ The "feature I brought to Module 3" (substitute when prompts ask):
 
 ### Ex1 — map-the-access-surface
 
-- **Prompt 1:** `/tmp/prompts/map-the-access-surface/prompt-001.txt` — invoke `access-control-analysis` as a subagent via Task tool. Save its output to `/tmp/m3-scratch/<runner-slug>-<date>/surface-map.md`.
+- **Prompt 1:** `/tmp/prompts/map-the-access-surface/prompt-001.txt` — invoke `access-control-analysis` as a subagent via Agent tool. Save its output to `/tmp/m3-scratch/<runner-slug>-<date>/surface-map.md`.
 - After Prompt 1, paste student feature answer verbatim:
   > Wiring the leaderboard: game calls `POST /scores` on win, reads `GET /scores/top` for the end-screen. Lives mostly in `backend/server.js` plus new frontend wiring via `src/api.js`. External surface: the two HTTP endpoints, plus the JWT auth path.
 - **Prompt 2:** `/tmp/prompts/map-the-access-surface/prompt-002.txt` — interview for two deltas. Substitute (paste verbatim each time):

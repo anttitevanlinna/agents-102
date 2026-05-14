@@ -50,7 +50,7 @@ New failure shapes that only exist because of sim/eval.
 
 **3. LLM-judge J10 em-dash scoring without context.** Eval scored the closer J10 = 3/5 for moderate em-dash use. The judge does not know the M5 references shipped with em-dashes. The score reads as a bug; the actual issue is compendium inconsistency. The judge over-fits on the rule as written, under-fits on the practice as shipped.
 
-**4. Capability-check scope drift.** The check caught `/schedule` vs. local tasks cleanly. It did not verify Task-tool sub-task reliability in the arc-retrospective prompt (flagged as a standing TODO: *"Confirm Task-tool sub-task read reliability before first cohort"*). Scope was implicitly *"check the things we're asserting new capabilities on"*, not *"check all tool dependencies in prompts"*. Good scoping for this run; a future gap-finder needs the broader scope.
+**4. Capability-check scope drift.** The check caught `/schedule` vs. local tasks cleanly. It did not verify Agent-tool sub-task reliability in the arc-retrospective prompt (flagged as a standing TODO: *"Confirm Agent-tool sub-task read reliability before first cohort"*). Scope was implicitly *"check the things we're asserting new capabilities on"*, not *"check all tool dependencies in prompts"*. Good scoping for this run; a future gap-finder needs the broader scope.
 
 **5. Greg re-sim echo-chamber risk.** Greg's 7.0 → 8.0 climb on re-sim is per Greg's own stated delta. Re-simming the same persona after fixes measures persona-consistency more than actual improvement. Useful signal but not independent.
 

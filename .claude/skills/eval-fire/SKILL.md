@@ -1,7 +1,7 @@
 ---
 name: eval-fire
-description: Run a single eval class (writing | story | technical | behavior) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full four-class audit lives in `/curriculum-pre-ship-audit`; this skill is the single-class on-demand fire.
-argument-hint: <class:writing|story|technical|behavior> [--personas N] <file-path> [<file-path> ...]
+description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (six per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
+argument-hint: <class:writing|story|technical|behavior|pedagogy|strategy|cross_module> [--personas N] <file-path> [<file-path> ...]
 ---
 
 # /eval-fire — single-class judge dispatch
@@ -30,6 +30,9 @@ Fires one eval class against one or more curriculum files. The class determines 
 | `story` | `sonnet` | `curriculum/evals/judges/story.md` | `sim-cache/<slug>.persona.json` (Class A persona-reader, per-phase SHA) | every `memory/check_*.md` with `eval_classes:` containing `storytelling`; strategy doc per training |
 | `technical` | `sonnet` | `curriculum/evals/judges/technical.md` | none | every `memory/check_*.md` with `eval_classes:` containing `technical` |
 | `behavior` | `sonnet` | `curriculum/evals/judges/prompt-behavior.md` | `sim-cache/<slug>.behavior.json` (Class B prompt-behavior, per-prompt SHA) | `.claude/skills/content-creation/simulation-behavior.md` catalog; `check_prompts.md` + `check_pedagogy.md` |
+| `pedagogy` | `sonnet` | `curriculum/evals/judges/pedagogy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `pedagogy` (primarily `check_pedagogy.md`) |
+| `strategy` | `sonnet` | `curriculum/evals/judges/strategy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `strategy` (primarily `check_strategy_tie_in.md`); strategy doc per training |
+| `cross_module` | `sonnet` | `curriculum/evals/judges/cross-module.md` | none | `check_cross_module.md`; supplied module-set paths (≥2) |
 
 The orchestrator (you) does NOT inline compendium content into the prompt — the judge subagent reads them on demand. This keeps the orchestrator's context clean and lets the subagent quote line numbers accurately.
 
@@ -37,7 +40,9 @@ The orchestrator (you) does NOT inline compendium content into the prompt — th
 
 ### Step 1 — Parse arguments
 
-`$ARGUMENTS[0]` is the class. Validate it's one of `writing`, `story`, `technical`, `behavior`. If invalid or missing, stop and ask.
+`$ARGUMENTS[0]` is the class. Validate it's one of `writing`, `story`, `technical`, `behavior`, `pedagogy`, `strategy`, `cross_module`. If invalid or missing, stop and ask.
+
+**Cross_module class is module-set-scoped.** It requires ≥2 file paths and ALL must be module files (`curriculum/trainings/<training>/<slug>.md` shape) from the SAME training. Passing 1 file or files from different trainings: stop and ask.
 
 Optional `--personas N` (only valid for `story`): N is 1, 2, or 3. Default 1. If N > 1, the storytelling judge will run the audience triangle.
 
@@ -50,6 +55,12 @@ Glob `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check
 For the storytelling class, the class name in compendium frontmatter is `storytelling` (full word). For the args, accept `story` as shorthand and translate.
 
 For the behavior class, the compendium set is fixed: `check_prompts.md` + `check_pedagogy.md`. The catalog at `.claude/skills/content-creation/simulation-behavior.md` is the primary input — pass its path as `{{catalog_path}}`.
+
+For the **pedagogy** class, the primary compendium is `check_pedagogy.md` (frontmatter `eval_classes:` contains `pedagogy`). Cross-module rules that moved to `check_cross_module.md` are stub redirects in `check_pedagogy.md` — the judge returns N/A on those numbers. No sim trace.
+
+For the **strategy** class, the primary compendium is `check_strategy_tie_in.md` (frontmatter `eval_classes:` contains `strategy`). Pass `{{strategy_doc_paths}}` per the file's training (`bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101). No sim trace.
+
+For the **cross_module** class, the compendium is fixed: `check_cross_module.md`. Substitute `{{module_set_paths}}` with the list of file paths passed as args (joined by newline). No sim trace.
 
 ### Step 3 — Read the judge prompt template
 

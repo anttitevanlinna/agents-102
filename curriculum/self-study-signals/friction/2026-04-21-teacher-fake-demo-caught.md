@@ -2,7 +2,7 @@
 
 **Signal:** The previous SKILL.md design told Teacher to *"be the model in the demo"* — generate fresh-context answers itself. But Teacher is one Claude, in one conversation; pretending to be three isolated sessions reads as performance, not real evidence. The student sees through it because the answers all sound like the same Teacher voice.
 
-**Fix:** Teacher uses real subagents (Agent / Task tool) to run demo prompts in genuinely isolated sessions. Each subagent is a fresh Claude with no shared context — exactly what "another session" needs to be. Real, not theatrical.
+**Fix:** Teacher uses real subagents (Agent tool) to run demo prompts in genuinely isolated sessions. Each subagent is a fresh Claude with no shared context — exactly what "another session" needs to be. Real, not theatrical.
 
 **Critical: never say "subagent" to the student.** Subagents are deep magic — internal mechanism, not vocabulary. Student-facing language: *"simulating a session"* / *"running this in a fresh session, with no memory of what came before"* / *"a fresh Claude with no context."* The mechanism is invisible; the mechanic is the point.
 

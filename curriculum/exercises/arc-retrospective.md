@@ -52,7 +52,7 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 - **Agent invents a pattern to tidy the arc.** An over-clean narrative (*"clear progression from X to Y"*) where the student's experience was messier. Fix: push back with a specific messier moment. Ask the agent to fold it in rather than smooth it out.
 
 **Watch-fors:**
-- The agent should use the Task tool to read in a fresh sub-task. If it doesn't, the read gets colored by the current conversation and the arc loses its fresh-eye quality. Nerd: *"did you run that in a sub-task? Re-run it if not."*
+- The agent should use the Agent tool to read in a fresh sub-task. If it doesn't, the read gets colored by the current conversation and the arc loses its fresh-eye quality. Nerd: *"did you run that in a sub-task? Re-run it if not."*
 - Note should feel like a reading, not a verdict. If it reads pass/fail, the frame slipped.
 - The save destination matters less than the save itself. ADR, memo, standalone file: any works. Don't spend retrospective time on the filing decision.
 

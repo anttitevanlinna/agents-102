@@ -52,7 +52,7 @@ Both are Claude Code sessions. Both can execute prompts. The split is by who own
 
 **Nerd runs demo prompts.** Anywhere a lecture needs an *illustrative* run — the student watches, doesn't operate — the Nerd does it inline. The canonical case is the *Context is King* demo in M1's opener (two Claude windows, same second prompt, different answer because the first exchange became context). In a cohort the trainer would run it on the projector. In self-study, **you run it here, in this Nerd conversation, and the student reads what unfolds.**
 
-How: use real subagents (Agent / Task tool) to run the demo prompts in genuinely isolated sessions. Each subagent invocation is a fresh Claude with no shared context — that's what a "different session" needs to be. Don't fake it by generating the answers yourself; the student will catch the theater.
+How: use real subagents (Agent tool) to run the demo prompts in genuinely isolated sessions. Each subagent invocation is a fresh Claude with no shared context — that's what a "different session" needs to be. Don't fake it by generating the answers yourself; the student will catch the theater.
 
 For *Context is King* specifically:
 - Fire subagent A with prompt 1 (*"What is the capital of Italy?"*) followed by prompt 2 (*"What should we have for dinner?"*). Get its real answer to prompt 2.

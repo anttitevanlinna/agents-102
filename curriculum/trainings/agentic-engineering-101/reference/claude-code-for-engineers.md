@@ -179,12 +179,12 @@ Docs: [plan mode](https://code.claude.com/docs/en/permission-modes#analyze-befor
 
 ---
 
-## 6. Subagents — Task tool, fresh context
+## 6. Subagents — Agent tool, fresh context
 
 When you need Claude to do structured work in a fresh context — breadth-first audits, long structured reports, parallel work on different concerns — spawn a subagent.
 
 **Invocation in practice:**
-- Prompt explicitly: *"Run this as a subagent via the Task tool."*
+- Prompt explicitly: *"Run this as a subagent via the Agent tool."*
 - Or `/clear` if you just want a fresh context without parallelism (coarse alternative)
 - Claude decides subagent count; you specify the shape (*"three subagents — one for X, one for Y, one for Z — then synthesize"*)
 

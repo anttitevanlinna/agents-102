@@ -59,7 +59,7 @@ Log both substitutions. Do NOT walk `~/.claude/projects/`.
 
 ### Ex2 — arc-retrospective
 
-- **Prompt 5:** `/tmp/prompts/arc-retrospective/prompt-001.txt` — read across the training, write a one-page arc note. Dispatch via Task; if unavailable, run inline and note "Task tool unavailable — inline substitution." Show before saving.
+- **Prompt 5:** `/tmp/prompts/arc-retrospective/prompt-001.txt` — read across the training, write a one-page arc note. Dispatch via Agent; if unavailable, run inline and note "Agent tool unavailable — inline substitution." Show before saving.
 - Substitute student approval (verbatim):
   > Save to `.claude/memory/arc-note.md` — session-derived reflection, fits observations/hypotheses/rules block.
 

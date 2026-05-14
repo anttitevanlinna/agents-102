@@ -13,11 +13,11 @@ If you want the primitives this module uses at a glance, [subagents in the refer
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context). Read what it surfaces, name what a first-read missed
+- **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context) and name what your first read missed
 - **Apply** a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo's convention
-- **Discriminate** when a job belongs in a subagent (breadth-first curated skills, long structured output) versus the main thread (one-question-at-a-time authoring, interactive steering)
-- **Author** a test-strategy skill through conversation with Claude (one question at a time) tuned to your codebase's actual testing conventions, not a generic pyramid
-- **Evaluate** the authored skill by asking it to disclose its own weakest part, then pushing back on the critique
+- **Split** jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread
+- **Author** a test-strategy skill through conversation with Claude (one question at a time), tuned to your codebase's actual testing conventions
+- **Test** the authored skill: ask it to disclose its own weakest part, then push back on the critique
 - **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
 - **Ship** one authored skill personal-first, and know when it's a team PR
 
@@ -46,17 +46,19 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 ## Sharpen the skill from evidence
 
-Module 3's compound runs in two places: the skill you authored (where session push-back evidence lands) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or skill authoring on this codebase earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
+**Window:** *m3-security*. Module 3's compound runs in the main lane. The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session. The canonical `./CLAUDE.local.md` lives in the main repo, not the side-quest's worktree copy, so rule integration belongs here.
 
-Ask Claude to sharpen the one weakest section of the authored skill, then integrate a rule into `./CLAUDE.local.md` if one earned itself. Run this in the same session you authored the skill in.
+Module 3's compound runs against two artifacts: the skill (its file content carries the conventions m3-quality encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
+
+Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, paste it into chat before firing the prompt, the side-quest's scrollback is gone after its /clear but you remember the friction.
 
 {{prompt:ae101-m3-sharpen-skill}}
 
-This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
+Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
 ## Clear the session
 
-Before you close the session, signal the wrap-up. The agent converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
+In m3-security, signal the wrap-up. The agent converges what's still loose.
 
 {{prompt:ae101-m3-ready-to-clear}}
 
@@ -79,8 +81,8 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
-- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS (0 blocking; 2 TODOs: self-report-inflation med on ae101-m3-ready-to-clear [load_bearing false]; preamble-before-action + niceness-tax downgraded to low on ae101-m3-sharpen-skill via body-callout carve-out)
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

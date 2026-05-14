@@ -10,9 +10,9 @@ Complete the prework at the top of this workbook.
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo
-- **Introspect** on the agent's read of your repo. Use `/context` to see how much your context window has filled up. Assume 10% of what Claude says or does is misrepresentation and dig until you find it
+- **Introspect** the agent's read of your repo and dig until you find what it's misrepresenting
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
-- **Compound** the session into your personal `./CLAUDE.local.md` (gitignored, yours; [the four CLAUDE.md layers](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) for the hierarchy) and close the bug's ticket via one connector. The first move outside the repo
+- **Compound** one rule from the session into `./CLAUDE.local.md` and close the bug's ticket via one connector. The first move outside the repo
 
 ## Start here
 
@@ -59,8 +59,8 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (behavior@60b1b6c)
-- judges @60b1b6c: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

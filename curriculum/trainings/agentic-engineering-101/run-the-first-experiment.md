@@ -13,11 +13,11 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Pick** a real task you'd send off rather than nudge bit by bit, demanding sustained coherence, requirement-weaving, and multi-file reasoning. Scope it in conversation with Claude
-- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + Module 3-authored skill + connectors) against that task, using gap analysis: a subagent audit you then push back on
+- **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
+- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + Module 3-authored skill + connectors) against the task as a subagent audit, then push back on the audit
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
-- **Recognize** the three-block memory pattern in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria). Not built-to-spec, arranged from what you've been making for four modules
-- **Send off** the task un-packaged in the same Claude Code session (no plan.md, no verifier, no reference artifact) and let it run; traces are data either way
+- **Name** the three blocks in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria)
+- **Send off** the task un-packaged in the same Claude Code session, no plan.md, no verifier, no reference artifact, and let it run
 
 ## Start here
 
@@ -87,8 +87,8 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior REVISE (0/0 see instances/ae101--run-the-first-experiment.behavior.json — deliberate-antipattern carve-out (pedagogy rule 51) re-confirmed 2026-05-14; M4 un-packaged return shape is M5's contrast specimen)
 - mechanical @e840433: PASS — ae101-m4 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

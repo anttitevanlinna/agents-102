@@ -11,8 +11,8 @@ Optional prep in the Module 4 to Module 5 gap: watch Laura Entis on Kieran Klaas
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** an un-packaged multi-hour run through three named failure-mode lenses (goal drift, context rot, plausible-but-wrong), quoting specific moments in your own artefact for each
-- **Earn** the three-pattern (reference artefact + plan.md + external verifier) by mapping each piece to the failure it would have caught. The three pieces become tools, not vocabulary
+- **Diagnose** your un-packaged multi-hour run through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens
+- **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
 - **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task Module 4 sent off
 - **Re-send** the packaged version of the same task in the same Claude Code session and let it run a second time
@@ -80,8 +80,8 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior REVISE (1/0 see instances/ae101--learn-from-the-test.behavior.json (rerun-packaged report-back fixed; worktree-setup placeholder open))
 - mechanical @e840433: PASS — ae101-m5 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

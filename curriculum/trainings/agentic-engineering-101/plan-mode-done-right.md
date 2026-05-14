@@ -13,13 +13,13 @@ Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claud
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions: the three things that separate a plan from a draft
-- **Push back** twice via *keep planning with feedback* (a soft item plus either an assumption or a committed change) so the plan reflects what you can see
-- **Run** a second-pass read that walks down unresolved branches you didn't think to check, one question at a time, with a recommended answer per branch
-- **Recognize** the pairing as a repeatable design pattern: human read → push-back → agent walk-down → approve
-- **Name** plan-mode approval inflation as the thing the pairing defeats, not a moralistic warning
-- **Extract** three to five task-shaping rules from your own session into a `.md` file at a location you choose, sharpening at least one before saving
-- **Recognize** three shapes for turning a rules file into automation (Slack triage, issue webhook, scheduled read), without building one today
+- **Run** plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions
+- **Push back** twice on the plan via *keep planning with feedback*, surfacing what the agent didn't see
+- **Walk down** unresolved branches one question at a time, with a recommended answer per branch
+- **Pair** human read with agent walk-down: read → push-back → walk-down → approve
+- **Spot** approval inflation in your own past plans
+- **Extract** task-shaping rules from your session into a `.md` file, sharpening at least one before saving
+- **Name** three shapes for turning a rules file into automation: Slack triage, issue webhook, scheduled read
 
 ## Start here
 
@@ -67,8 +67,8 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-m2-pushback via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet

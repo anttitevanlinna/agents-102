@@ -11,12 +11,12 @@ Optional lookup pages: [session transcripts in the reference](../../trainings/ag
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** (Analyze) the packaged Module 5 run alongside the un-packaged Module 4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
-- **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill, using two runs' evidence, not prescription.
-- **Compound by subtraction** (Evaluate), cut one rule the two-run diagnosis killed from `./CLAUDE.local.md`; rules-files have a half-life.
-- **Author** (Create) a session-shaper skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
-- **Name** (Understand) evals as the broader family, verifier in your repo, judge in your test, gate in your CI, same function, different surfaces. Anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
-- **Articulate** (Evaluate) one key learning and one personal thought on the future in the Debrief round. Not a performance; a marker of where your practice stands after six modules.
+- **Diagnose** the packaged Module 5 run alongside the un-packaged Module 4 baseline, name gaps the three-pattern didn't anticipate, quoted from your own artefacts
+- **Route** each gap to its home: memory, sharper verifier, or new skill, backed by two runs' evidence
+- **Cut** one rule from `./CLAUDE.local.md` that the two-run diagnosis killed
+- **Author** a session-shaper skill through conversation, sharpened-verifier, judge, or gap-finder shape based on what the two runs demanded; self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`
+- **Map** evals across three surfaces, verifier in your repo, judge in your test, gate in your CI. Anchored by Ramp Dojo and Intercom Tier 1/2/3
+- **Name** one key learning and one open question on the future in the Debrief round
 
 ## Start here
 
@@ -70,8 +70,8 @@ Antti
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-03 (behavior@fd0bb8e)
-- judges @fd0bb8e: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS (all-6-prompts-mitigated-see-pre-cohort-todos)
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201)
+- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @e840433: PASS — ae101-m6 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

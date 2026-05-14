@@ -30,7 +30,7 @@ The room harvests everyone's before the training adds its own.
 
 [Compound and close](exercises/compound-and-close.md)
 
-> **If time allows.** Try the harness introspection on your live session: [The agent loop](../../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
+> **If time allows.** Try the harness introspection on your live session: [The agent loop](trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
 
 ## Key Concepts
 - The loop is orient → fix → compound → close. M1 ran it end-to-end on a trivial bug; every later module rides on this shape
@@ -59,8 +59,8 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@5d170d3 technical@0f32201 behavior@ab4b0bd)
+- judges @5d170d3: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @6121abd: PASS — ae101-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

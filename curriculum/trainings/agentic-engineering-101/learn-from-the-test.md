@@ -45,7 +45,7 @@ You sent off an un-packaged run at the close of Module 4 and read the pre-read. 
 
 ## Key Concepts
 - The three failure modes earn their names by reading them in your own artefact, not from a slide
-- The three-pattern is one move per failure mode, not three moves to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
+- One move per failure mode, not three to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
 - The three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson. No lecture replicates this
 - No benchmark told you what went wrong; the artefact did. **Remember: the artefact rules, self-reports don't.**
@@ -82,8 +82,8 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-14 (writing@5d170d3 story@0f32201 technical@0f32201 behavior@ab4b0bd)
+- judges @5d170d3: writing PASS, story PASS, technical PASS, behavior PASS
 - mechanical @e840433: PASS — ae101-m5 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

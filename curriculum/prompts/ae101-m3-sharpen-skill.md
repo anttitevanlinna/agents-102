@@ -1,5 +1,5 @@
 ---
-key: ae101-m2-sharpen-skill
+key: ae101-m3-sharpen-skill
 dest: Claude Code
 runtime: any
 origin: agentic-engineering-101/earn-the-trust

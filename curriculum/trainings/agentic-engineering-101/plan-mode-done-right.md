@@ -41,7 +41,7 @@ The full compound move ran at M1. M2's is opportunistic. If a branch from the se
 
 Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 
-{{prompt:ae101-m1-integrate-branch}}
+{{prompt:ae101-m2-integrate-branch}}
 
 ## Key Concepts
 - A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
@@ -108,7 +108,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 **Plug points (trainer):**
 - Student's own repo (carried from M1) — sponsor-stated example repos by team type if a student arrives without one suitable
 - Student's own backlog task (surfaced in M2 prework) — sponsor-stated tracker (Linear / Jira / GitHub Issues) seeded the surfacing prompt
-- Sponsor-stated rules home for the Compound step — `~/.claude/memory/` is the cross-session default; `./CLAUDE.local.md` is repo-personal; sponsor's preferred notes location overrides if different
+- Sponsor-stated rules home for the Compound step — auto-loaded options are `./CLAUDE.local.md` (repo-personal) and `~/.claude/CLAUDE.md` (cross-repo); anything else, including `~/.claude/memory/<file>.md` or a notes folder, only loads when a prompt names the path or an `@import` line inside an auto-loaded `CLAUDE.md` pulls it in; sponsor's preferred notes location overrides if different
 - Push-back moves at P3 (trainer covers in cohort; Nerd covers only in self-study)
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
@@ -120,7 +120,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Task-shaping rule file | Student-picked location: `~/.claude/memory/task-shaping.md` (cross-session auto-load), `./CLAUDE.local.md` (repo-personal auto-load), or student's existing notes location | Exercise 2 (extract-the-task-shaping-rule) — Claude reads M2 scrollback, proposes 3–5 rules, student rewrites or rejects at least one | M4 walk-and-fill Phase 1 (audit subagent reads it as part of *"system you have"* when picking the M4 candidate task); any future task-shaping conversation in the same loading scope |
+| Task-shaping rule file | Student-picked location. Auto-loaded: `./CLAUDE.local.md` (repo-personal) or `~/.claude/CLAUDE.md` (cross-repo). Not auto-loaded but legal: a notes folder, `~/.claude/memory/<file>.md`, or any sponsor-stated path — read only when a prompt names the path or when an `@import` line inside an auto-loaded `CLAUDE.md` pulls it in. | Exercise 2 (extract-the-task-shaping-rule) — Claude reads M2 scrollback, proposes 3–5 rules, student rewrites or rejects at least one. If the picked path doesn't auto-load, Claude should also propose the `@import` wire-up so the rule fires next session. | M4 walk-and-fill Phase 1 (audit subagent reads `CLAUDE.md` / `CLAUDE.local.md` / `.claude/memory/` repo-level / ADRs / skills; user-level `~/.claude/memory/` is silent unless `@import`-wired from `~/.claude/CLAUDE.md`). Any future task-shaping conversation in the same loading scope. |
 | Personal rules update (optional, opportunistic) | `./CLAUDE.local.md` (repo-personal, gitignored) | "Save the rule if it earned itself" prompt at module close — Claude integrates one branch from the second-pass read, only if one earned itself | Every future session in this repo (auto-loads at session-cold start); M3 sharpens further with security/skill-authoring rules |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

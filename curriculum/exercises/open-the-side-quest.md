@@ -4,7 +4,7 @@
 
 Module 3 runs in two windows. Security is the main guest in your Module 2 repo. Quality is a side-quest in a sibling worktree.
 
-A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn't share a scrollback. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there (a separate window with its own working directory, not a tab in the same one), both sessions see the same git history but keep their own working state. Personal files (`CLAUDE.local.md`, `.claude/memory/`) don't sync between worktrees, they get copied across once at fork time, then evolve independently.
+A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn't share a scrollback. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (`CLAUDE.local.md`, `.claude/memory/`) don't sync between worktrees, they get copied across once at fork time, then evolve independently.
 
 **Session** *(new, "m3-security")*
 
@@ -20,7 +20,7 @@ Claude reports the sibling worktree path.
 
 **Session** *(new, "m3-quality")*
 
-Start a second Claude Code session in another window (a separate window with its own working directory, not a tab in the main lane's window), in the sibling worktree directory Claude just named. This is your side-quest lane. You author the test-strategy skill here while the main lane does security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke on the security-tested feature.
+Start a second Claude Code session in another window, in the sibling worktree directory Claude just named. This is your side-quest lane. You author the test-strategy skill here while the main lane does security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke on the security-tested feature.
 
 {{prompt:ae101-m3-quality-side-orient}}
 

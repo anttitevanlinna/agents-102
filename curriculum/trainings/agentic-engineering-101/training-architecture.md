@@ -44,7 +44,9 @@ AE101 assumes a fresh agent session at the start of each module. Engineers arriv
 Two session verbs:
 
 - **`new`**, fresh session at the working directory. Default for module openings.
-- **`return`**, pick up a prior session by name; if it is not still open, start a fresh one at the same working directory. Use at boundaries where the prior session's scrollback is load-bearing (M5's M4 send-off return; long-running async waits resumed later).
+- **`return`**, pick up a prior session by name at the same working directory; if it is not still open, start a fresh one at the same working directory. Use when the prior session's scrollback is load-bearing and the session window is still alive (e.g. an in-flight send-off resumed after a short break, a mid-module wait picked up later).
+
+Cross-working-directory boundaries always open `new`. M5 forks a worktree at `../<repo>-m5` and starts a fresh session there; M4's evidence travels by disk (the transcript at `~/.claude/projects/<encoded>/<uuid>.jsonl`, the starting-point branch and SHA in shared `.git`, the personal rules and `.claude/memory/` copied at fork time). The same-cwd `return` verb does not cross worktrees.
 
 Inside a module, keep the same session running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise plus files written on disk.
 

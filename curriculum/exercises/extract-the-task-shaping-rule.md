@@ -24,6 +24,8 @@ Decide the location with Claude. The dimension that matters is when the rules fi
 {{prompt:extract-the-task-shaping-rule-2}}
 
 
+If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `~/.claude/CLAUDE.md`, ask Claude to also propose the `@import` line that wires the file in. A rule at `~/.claude/memory/task-shaping.md` (or any notes folder) sits silently on disk until something reads it; adding `@~/.claude/memory/task-shaping.md` to `~/.claude/CLAUDE.md` is what makes "fires anywhere on this laptop" actually fire.
+
 Read the three rules Claude shows back. If any drifted from your wording, push back and have Claude rewrite.
 
 ## Phase 3: Where could this go next?
@@ -73,7 +75,7 @@ When Claude finishes, the lecture is next.
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Nerd: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*
 - **P1 default-acceptance** — student saves all five rules verbatim without rewriting any. Nerd: *"pick one. Read it aloud. Rewrite it so it sounds like you, or reject it."*
-- **P2 location-paralysis** — student stalls choosing the path. Nerd: *"the location is reversible. Pick the one whose loading model matches how you want the rules to fire; you can move it later."*
+- **P2 location-paralysis** — student stalls choosing the path. Nerd: *"the location is reversible. `./CLAUDE.local.md` and `~/.claude/CLAUDE.md` auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
 - **P3 building-instinct** — student starts asking Claude to write the Slack bot. Nerd: *"the lecture is next. Today is capture; application is downstream."*
 - **Optional task-manager overreach** — student treats one-ticket inference as policy. Nerd: *"one ticket gives basic rules. Mark guesses, then test them on more tickets later."*
 

@@ -24,6 +24,8 @@ AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runt
 
 AE101 usually runs weekly. At the start of every non-first session, name last week's state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.
 
+**FYI: `.claude/memory/` is a convention, not a Claude Code primitive.** AE101 has students author a three-block memory folder at `.claude/memory/` in their repo (introduced at M4). The path looks Claude-Code-shaped because of the `.claude/` parent and the word "memory," but it is not auto-loaded. The agent reads it when a prompt names the path, the same way it reads ADRs. Claude Code's actual auto-memory lives at `~/.claude/projects/<project>/memory/`, written by the agent for its own recall and surfaced via `/memory`. AE101 deliberately leaves auto-memory out: the point of compounding is that the student steers what gets remembered, and an opaque system-written store works against that. Expect at least one student to ask why their `.claude/memory/` entries aren't showing in `/memory`. The answer is here.
+
 ## Two-Day Cohort Schedule
 
 Default rhythm for a two-day Nordic cohort: 08:30 start, 1h15 lunch, 20-min breaks. Adjust to your sponsor's cadence. The architectural commitments are: M1–M3 on Day 1, M4–M6 on Day 2; lunch between M5 and M6 on Day 2 so both async runs have time to produce something M6 can read.

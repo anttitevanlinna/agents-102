@@ -25,10 +25,12 @@ Three ways to have "another copy of this code to work on." They behave different
 **Worktrees** are the middle path. One repo, many working directories, each checked out to its own branch. Shared Git history, independent working trees. Switching between them is `cd`, not `git checkout`.
 
 ```
-git worktree add ../my-repo-feature-x feature-x
+git worktree add -b feature-x ../my-repo-feature-x
 ```
 
-That creates a sibling directory on the branch `feature-x`. Your original working directory stays on whatever branch it was on. Two folders, two branches, zero checkout churn.
+That creates a sibling directory on a new branch `feature-x`. Your original working directory stays on whatever branch it was on. Two folders, two branches, zero checkout churn.
+
+If the branch already exists, drop the `-b`: `git worktree add ../my-repo-feature-x feature-x`.
 
 ## Opening N Claude Code sessions on the same codebase
 
@@ -36,9 +38,9 @@ Each Claude Code session opens in a working directory. A worktree gives you one 
 
 The flow:
 
-1. `git worktree add ../repo-bug-fix bug/issue-412`
-2. `git worktree add ../repo-refactor refactor/auth-module`
-3. `git worktree add ../repo-feature feature/export-csv`
+1. `git worktree add -b bug/issue-412 ../repo-bug-fix`
+2. `git worktree add -b refactor/auth-module ../repo-refactor`
+3. `git worktree add -b feature/export-csv ../repo-feature`
 4. Open three Claude Code sessions, one per folder, one task each.
 
 Each session has its own scrollback, its own working directory, its own branch. They do not see each other.

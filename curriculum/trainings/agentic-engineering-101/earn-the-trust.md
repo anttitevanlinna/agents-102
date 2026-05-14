@@ -50,7 +50,7 @@ Module 3's compound runs in two places: the skill you authored (where session pu
 
 Ask Claude to sharpen the one weakest section of the authored skill, then integrate a rule into `./CLAUDE.local.md` if one earned itself. Run this in the same session you authored the skill in.
 
-{{prompt:ae101-m2-sharpen-skill}}
+{{prompt:ae101-m3-sharpen-skill}}
 
 This grill happens in the same session that authored the skill, Claude is critiquing its own work with full context. Convenient (the session evidence is right there) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
@@ -58,11 +58,11 @@ This grill happens in the same session that authored the skill, Claude is critiq
 
 Before you close the session, signal the wrap-up. The agent converges: anything still in scrollback that should have landed in the skill or rules-file, anything you flagged as team-worthy that isn't yet in the summary, anything the session noticed that nobody compounded yet.
 
-{{prompt:ae101-m2-ready-to-clear}}
+{{prompt:ae101-m3-ready-to-clear}}
 
 If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 
-{{prompt:ae101-m2-clear-session}}
+{{prompt:ae101-m3-clear-session}}
 
 ## Next
 
@@ -80,7 +80,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 
 **Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
-- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS (0 blocking; 2 TODOs: self-report-inflation med on ae101-m2-ready-to-clear [load_bearing false]; preamble-before-action + niceness-tax downgraded to low on ae101-m2-sharpen-skill via body-callout carve-out)
+- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS (0 blocking; 2 TODOs: self-report-inflation med on ae101-m3-ready-to-clear [load_bearing false]; preamble-before-action + niceness-tax downgraded to low on ae101-m3-sharpen-skill via body-callout carve-out)
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

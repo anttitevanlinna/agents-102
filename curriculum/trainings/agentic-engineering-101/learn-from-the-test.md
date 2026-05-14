@@ -27,6 +27,8 @@ If your Module 4 Claude Code session is still open, ask it. Otherwise open a fre
 
 {{prompt:ae101-m5-worktree-setup}}
 
+**The grep may hit multiple branches.** A push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`; a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the "M4 starting point" commit (`git log <branch> --oneline | grep 'M4 starting point'`). If that commit message has been rewritten, fall back to the SHA Claude reported at Module 4 close. It is in the M4 session transcript at `~/.claude/projects/<encoded>/`.
+
 Open a new Claude Code session in the worktree. The rest of Module 5 runs there.
 
 ## Start here
@@ -132,7 +134,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 | Plan.md | `plan.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 | M5 re-send (Claude re-reads plan.md when it drifts); M6 diff |
 | Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config) | Phase 3 (build-verifier) | M5 re-send (verifier fires per plan.md cadence during the packaged run); M6 second-skill authoring reads the verifier as a precedent for the encode loop |
 | Run notes from packaged re-send | `RUN-NOTES.md` at worktree root | Re-send prompt — Claude writes in-flight when stuck | M6 diff (subtler-misses pattern); M6 second-skill authoring (gap-finder shape often emerges from notes) |
-| Sharpened personal rules | `./CLAUDE.local.md` in worktree (independent from original after fork) | Debrief self-compound prompt | M6 in worktree; eventual decision post-M6 about merging back to original repo |
+| Personal rules carried into M5 worktree | `./CLAUDE.local.md` in worktree (copied at fork, independent from original after) | Worktree-setup prompt (`ae101-m5-worktree-setup`) — no M5 sharpening by design; the re-send + the M4↔M5 contrast IS M5's compound move | M6 Phase 1 reads them as part of the system that produced both runs; M6 Phase 2 cuts one stale rule from this copy; eventual decision post-M6 about merging back to original repo |
 | M5 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` | Claude Code runtime, persisted automatically | M6 opening session reads M5 transcript directly to ground the read of the packaged run |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

@@ -10,6 +10,8 @@ Start a new Claude Code session at your repo root.
 /rename m4-walk-send
 ```
 
+**Start clean.** M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into Phase 4's `m4/<slug>` commit and M5's fork.
+
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
@@ -48,7 +50,13 @@ Read the ranked list. Name which ones you already knew about, which surprised yo
 
 Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. You'll see next module what the others were for.
 
-Memory-path note, first time through: the default home is `.claude/memory/` in your repo, gitignored (parallel to `CLAUDE.local.md`). If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on. If `.claude/memory/` is new to your repo, ask Claude to add it to `.gitignore` the first time it writes there. (This is the three-block memory you're authoring, separate from Claude Code's auto memory at `~/.claude/projects/<project>/memory/`, which Claude writes for its own recall.)
+Memory-path note, first time through: the default home is `.claude/memory/` in your repo, gitignored. If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on.
+
+**If `.claude/memory/` is new to your repo, ask Claude to add it to `.gitignore` before any writes.** The fills below land there; you don't want them tracked.
+
+This is a convention you're authoring, not a Claude Code feature. The agent reads `.claude/memory/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are.
+
+Claude Code also has an auto-memory of its own at `~/.claude/projects/<project>/memory/`, written by the agent for its own recall and surfaced via `/memory`. AE101 leaves that one out by design. You choose what is worth remembering and write it yourself. Auto-memory has its place; here, compounding stays legible, gitignored, and yours.
 
 For each of the three, keep it conversational:
 

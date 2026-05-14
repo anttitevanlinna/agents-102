@@ -151,37 +151,21 @@
     "origin": "agentic-engineering-101/supplementary/the-agent-loop",
     "text": "List the tools you have available in this session. One line each."
   },
-  "ae101-m1-integrate-branch": {
-    "key": "ae101-m1-integrate-branch",
+  "ae101-m2-integrate-branch": {
+    "key": "ae101-m2-integrate-branch",
     "dest": "Claude Code",
     "context": "only if something earned itself",
     "runtime": "any",
     "origin": "agentic-engineering-101/plan-mode-done-right",
     "text": "If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). Name the branch, not the rule. Quote the specific moment. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and stop."
   },
-  "ae101-m2-clear-session": {
-    "key": "ae101-m2-clear-session",
+  "ae101-m3-clear-session": {
+    "key": "ae101-m3-clear-session",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/earn-the-trust",
     "text": "/clear"
-  },
-  "ae101-m2-ready-to-clear": {
-    "key": "ae101-m2-ready-to-clear",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Ready to clear? All learnings in?"
-  },
-  "ae101-m2-sharpen-skill": {
-    "key": "ae101-m2-sharpen-skill",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back.\n\nFirst: find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.\n\nThen, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write."
   },
   "ae101-m3-fork-quality-side": {
     "key": "ae101-m3-fork-quality-side",
@@ -189,7 +173,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Confirm the repo state: working tree is clean (or stage-and-commit what's pending), and `./CLAUDE.local.md` is loaded if it exists.\n\nThen fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if it exists)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across."
+    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  mkdir -p ../<repo-name>-m3-quality/.claude/\n  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if .claude/memory/ exists in this repo)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across."
   },
   "ae101-m3-quality-side-orient": {
     "key": "ae101-m3-quality-side-orient",
@@ -197,7 +181,23 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Fresh session in the sibling worktree. Confirm worktree state:\n\n- which directory you're in\n- which branch is checked out\n- whether `./CLAUDE.md` and `./CLAUDE.local.md` loaded\n- whether the codebase is visible (`git ls-files | head` is fine)\n\nReport the four lines back. Then wait."
+    "text": "Confirm worktree state:\n\n- which directory you're in\n- which branch is checked out\n- whether `./CLAUDE.md` and `./CLAUDE.local.md` loaded\n- whether the codebase is visible (`git ls-files | head` is fine)\n\nReport the four lines back. Then wait."
+  },
+  "ae101-m3-ready-to-clear": {
+    "key": "ae101-m3-ready-to-clear",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/earn-the-trust",
+    "text": "Ready to clear? All learnings in?"
+  },
+  "ae101-m3-sharpen-skill": {
+    "key": "ae101-m3-sharpen-skill",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/earn-the-trust",
+    "text": "Read the test-strategy SKILL.md I authored earlier. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment I invoked the skill on the security-tested feature, the place I pushed back.\n\nFirst: find the one section of the skill where session evidence shows it underdelivered (a convention I named in conversation that isn't encoded, a codebase-specific failure mode the skill missed, an assumption I had to correct mid-invocation). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.\n\nThen, separately: if one rule about how I worked with security skills, wrote ADRs, or authored skills on this codebase earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write."
   },
   "ae101-m4-commit-starting-point": {
     "key": "ae101-m4-commit-starting-point",
@@ -237,7 +237,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Find the branch starting with `m4/` (run `git branch -a | grep '/m4/'` — there'll be one) and the commit messaged \"M4 starting point\" on it. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so M5/M6 compounding has the M1/M3 evidence to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if it exists)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across."
+    "text": "Find the branch starting with `m4/` (run `git branch -a | grep 'm4/'` — there'll be one) and the commit messaged \"M4 starting point\" on it. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so M5/M6 compounding has the M1/M3 evidence to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if it exists)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across."
   },
   "ae101-prework-download-tarball": {
     "key": "ae101-prework-download-tarball",
@@ -533,7 +533,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep '/m4/'` — it'll be the only branch starting with `m4/`). Start with the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state. Then read the previous session's transcript at the path you just found. The file changes alone miss the drift and the dead-ends.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one."
+    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep 'm4/'` — it'll be the only branch starting with `m4/`). Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one."
   },
   "diagnose-and-resend-3": {
     "key": "diagnose-and-resend-3",
@@ -1061,7 +1061,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep '/m4/'`); the packaged re-run is on a branch starting with `m5/`. The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.\n\nRead both. Start with repo state: commits on the `m4/` branch after the \"M4 starting point\" commit, commits on the `m5/` branch after the worktree fork, what each run touched. Then read both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-folder>/<uuid>.jsonl` — the encoded-folder is the absolute path of the original repo (not this worktree) with `/` replaced by `-`. Use `git rev-parse --git-common-dir` to find the original repo path, then walk the un-packaged session's transcript and the packaged session's transcript. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads."
+    "text": "I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep 'm4/'`); the packaged re-run is on a branch starting with `m5/` (run `git branch -a | grep 'm5/'`). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.\n\nRead both. Start with both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-cwd>/<uuid>.jsonl`, where `<encoded-cwd>` is the absolute path of the directory the session ran in with `/` replaced by `-`. One folder per working directory. The M4 session ran in the original repo, so M4 transcripts are under the encoded-original folder. The M5 session ran in this worktree, so M5 transcripts are under the encoded-worktree folder. Two sibling folders under `~/.claude/projects/`, not nested. The encoded-worktree path is the current working directory with `/` → `-`; the encoded-original path is `git rev-parse --git-common-dir` with the trailing `/.git` stripped, then `/` → `-`. List `.jsonl` files in each, take the most recent in each, and read both. Then check repo state: commits on the `m4/` branch after the \"M4 starting point\" commit, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads."
   },
   "spot-gaps-build-the-loop-2": {
     "key": "spot-gaps-build-the-loop-2",
@@ -1205,7 +1205,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including the test-strategy skill I authored at M3), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap."
+    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Task tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap."
   },
   "walk-and-send-off-3": {
     "key": "walk-and-send-off-3",

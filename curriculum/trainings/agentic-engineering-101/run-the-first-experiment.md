@@ -43,7 +43,7 @@ Three modules of short loops sit behind today: a bug fix, a plan read, a feature
 
 No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
-Before you send: pin a clean starting SHA. Module 5 will worktree from this commit to re-run the same task packaged, so the comparison starts from the same code state. Ask Claude to commit current state on a feature branch and tell you the short SHA. Keep it noted.
+Before you send: pin a clean starting SHA you'll return to in Module 5. Whatever's in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. Ask Claude to commit current state on a feature branch and tell you the short SHA. Keep it noted.
 
 {{prompt:ae101-m4-commit-starting-point}}
 

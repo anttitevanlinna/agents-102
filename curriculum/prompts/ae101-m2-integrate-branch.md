@@ -1,5 +1,5 @@
 ---
-key: ae101-m1-integrate-branch
+key: ae101-m2-integrate-branch
 dest: Claude Code
 context: only if something earned itself
 runtime: any

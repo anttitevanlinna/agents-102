@@ -14,7 +14,7 @@ Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's se
 
 ## Phase 1: Diff and name the gaps
 
-Two runs of the same task are accessible from the worktree: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/` in folders matching the original repo path. That's the auto-stored scrollback Claude Code keeps for every session.
+Two runs of the same task are accessible from the worktree: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/`. That's the auto-stored scrollback Claude Code keeps for every session. One folder per working directory the session ran in: M4 ran in the original repo, so its transcripts live under the encoded-original folder; M5 ran in this worktree, so its transcripts live under the encoded-worktree folder. The two folders sit side by side, not nested. Phase 1 reads from both.
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 

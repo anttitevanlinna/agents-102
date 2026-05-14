@@ -4,7 +4,7 @@ dest: Claude Code
 runtime: any
 origin: agentic-engineering-101/earn-the-trust
 ---
-Fresh session in the sibling worktree. Confirm worktree state:
+Confirm worktree state:
 
 - which directory you're in
 - which branch is checked out

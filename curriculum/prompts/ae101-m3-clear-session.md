@@ -1,7 +1,7 @@
 ---
-key: ae101-m2-ready-to-clear
+key: ae101-m3-clear-session
 dest: Claude Code
 runtime: any
 origin: agentic-engineering-101/earn-the-trust
 ---
-Ready to clear? All learnings in?
+/clear

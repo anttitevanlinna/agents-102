@@ -9,12 +9,12 @@ You can't tell if your agent is safe by looking at its output. You need a way to
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** distilled policy files directly, then package the useful check as reusable expertise in your runtime
-- **Author** a small security check with two lenses (a policy lens drawn from your company's rules, and an agent-risk lens covering named risk patterns), then load it in your runtime
-- **Apply** named agent risk patterns (prompt injection direct and indirect, secrets-in-context, tool-confusion, skill supply-chain) to a working agent system, alongside a plain access review
-- **Distinguish** compliant / violating / "I can't tell" for each rule (and recognise that "I can't tell" is a real answer, not a failure)
-- **Apply** an agent mitigation (scope, split, filter, gate, review) layered on top of normal company controls, and observe the residual risk shift
-- **Evaluate** residual risk plainly: what's left after mitigation, and what future sessions should remember before they touch the system again
+- **Run** distilled policy files directly, then package the useful check into your runtime
+- **Author** a small security check with two lenses (policy + agent-risk) and load it in your runtime
+- **Apply** named agent risk patterns (prompt injection direct and indirect, secrets-in-context, tool-confusion, skill supply-chain) to a working agent system, plus a plain access review
+- **Distinguish** compliant / violating / "I can't tell" for each rule
+- **Apply** an agent mitigation (scope, split, filter, gate, review) on top of normal company controls and see how residual risk shifts
+- **Evaluate** residual risk: what's left after mitigation, and what future sessions need before they touch the system
 
 ## Start here
 

@@ -9,11 +9,11 @@ Absorption bottleneck pre-read: your organisation cannot absorb capability faste
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Interview** for the job your teammate is trying to get done, using an agentic Jobs-to-be-Done pattern (the agent reads your memory, drafts a hypothesis, asks you targeted questions), and write the outcome statement that becomes the design contract
-- **Select** the smallest shareable surface from the four that work (share context / share a skill / share the output / share an interface) against the outcome the teammate wants moved, not against the infrastructure you happen to have
-- **Redesign** for shared use by producing both a technical plan and a people plan (ownership, governance, operating, accountability, propagation)
-- **Test** the switch the teammate would have to make, surfacing the assumptions they would need to absorb and use your candidate
-- **Name** the likely adoption failure before it happens, especially the social failure you're not seeing
+- **Interview** for your teammate's job-to-be-done using the agentic JTBD pattern, and write the outcome statement as the design contract
+- **Select** the smallest shareable surface (share context / share a skill / share the output / share an interface) for the outcome the teammate wants moved
+- **Redesign** for shared use: technical plan + people plan (ownership, governance, operating, accountability, propagation)
+- **Test** the switch the teammate would make and surface the assumptions they'd need to absorb
+- **Name** the likely adoption failure before it happens, including the social failure that's hardest to see
 
 ## Start here
 

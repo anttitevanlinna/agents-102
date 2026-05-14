@@ -12,10 +12,9 @@ Walk in with one sentence per case: "the missing organisational check was X."
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Evaluate** detection methods empirically: set up a 30-claim benchmark, compare methods against it, pick the winner with measured reasoning rather than intuition
-- **Synthesize** the winning method into a reusable judge file that names what it catches and where it stops
-- **Explain** why method selection for agent quality work is empirical, not authoritative, and why the scoreboard is the readable evidence behind the winner
-- **Identify** what a judge can and can't reach: the difference between a narrow tool that works and a broad tool that pretends
+- **Test** detection methods on a 30-claim benchmark and pick the winner
+- **Build** a reusable judge file from the winning method that names what it catches and where it stops
+- **Identify** what a judge can reach and what it can't, narrow and working beats broad and pretending
 
 ## Start here
 

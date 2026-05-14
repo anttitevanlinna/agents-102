@@ -12,7 +12,7 @@ After this module, you will be able to:
 - **Use** Claude Code to generate a new agent that extends your system
 - **Orchestrate** three thinking-disciplines from Rumelt, Roger Martin, and Klein and Kahneman at room scale against a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
-- **Read** the flywheel itself (why the cycle that sharpened the kernel just now is the one that sharpens it again after Agents 101)
+- **Read** the flywheel, the cycle that just sharpened the kernel is the one that keeps sharpening it
 
 ## Start here
 

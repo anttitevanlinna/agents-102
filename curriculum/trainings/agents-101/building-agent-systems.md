@@ -10,9 +10,9 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 ## What You'll Learn
 After this module, you will be able to:
 - **Build** an LLM memory on your next big challenge, curated from internal wikis, recent work, and practitioner best practice
-- **Construct** your first custom agent (a plain markdown file with instructions: what it's for, and the rules it follows) that does real work against that challenge using the memory
+- **Build** your first custom agent (a markdown file of instructions) and run it on your memory against the challenge
 <span class="rt-code">- **Use** Claude Code's plan mode to review multi-step agent actions before they run</span><span class="rt-cowork">- **Ask** Claude to write a plan first, and review multi-step agent actions before they run</span>
-- **Analyze** the three layers of the system (raw sources, the memory, the rules file) and explain why plain text beats a database here
+- **See** the three layers of the system, raw sources, memory, rules file, and why plain text beats a database here
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here

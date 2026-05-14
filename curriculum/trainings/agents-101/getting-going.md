@@ -9,10 +9,10 @@ Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Generate** a visible personal artifact (an HTML one-pager) so you can inspect what the agent produced
-- **Apply** structured guardrails and observe how the agent's output changes
-- **Identify** fabrication in LLM output by using your own domain knowledge as the evaluator
-- **Package** what you learned into reusable generation rules for the next similar task
+- **Generate** an HTML one-pager and read what the agent put in it
+- **Apply** structured guardrails and see how the output changes
+- **Identify** fabrication in LLM output where your domain knowledge says it's wrong
+- **Package** what you learned into reusable generation rules
 
 ## Start here
 

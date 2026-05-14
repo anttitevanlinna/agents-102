@@ -9,10 +9,10 @@ The eval that ran once in Module 5 now runs on every output, and the work tighte
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Construct** a self-improving eval loop: the main Claude session runs the loop, generation and judging happen in separate agents, and the judge from Module 5 scores each round unchanged
-- **Evaluate** how the generator's tactic sharpens across rounds by reading the tactic changes and final eval notes
+- **Build** a self-improving eval loop: main session runs it, generation and judging happen in separate agents, the Module 5 judge scores each round unchanged
+- **Read** how the generator's tactic sharpens across rounds in the tactic changes and final eval notes
 - **Create** eval infrastructure that holds the judge fixed and tightens the work under it: on disk, re-runnable, sharper outputs each cycle
-- **Distinguish** the one-off judge you picked in Module 5 from one that runs on every output as a fixed yardstick the work tightens against
+- **Distinguish** the one-off Module 5 judge from one that runs on every output, the fixed yardstick the work tightens against
 
 ## Start here
 

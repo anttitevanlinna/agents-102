@@ -21,7 +21,7 @@ Naming it matters because the word is what lets you compose. Once you see the ve
 
 ## The shape it grows into
 
-Darragh Curran runs engineering at Intercom. In April he published a post called *"2x, nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The org is 500 people.
+Darragh Curran runs engineering at Intercom. In April he published a post called *"2x, nine months later."* The numbers are concrete. 19.2% of pull requests are auto-approved with no human reviewer. Those PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of the auto-approved PRs are 20 lines or fewer. The R&D org is around 470 people inside a 1,300-person company.
 
 Read that as your verifier from M5, scaled. Same primitive. An automated check that says *this meets the bar.* Placed in CI, fed by convention, trusted by a human team that set the thresholds. The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
 
@@ -50,8 +50,8 @@ That stance survives every model change. Practitioner fluency lives in the stanc
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26
-- compendium-audited 2026-04-26 (check_writing — em-dashes cleared L9/L37/L45/L55 + L36 list-introducers swapped to colons; check_student_facing, check_lectures meta-frame closer, check_strategy_tie_in. **check_research_claims:** Curran 19.2%/14.6/75.8/86%/500-people VERIFIED against `https://ideas.fin.ai/p/2x-nine-months-later` 2026-04-16 [practitioner direct] (see `curriculum/evals/instances/ae101-m5-m6-source-verification.md`). **check_platform_and_boundaries:** `/schedule` + `/loop` + Desktop local task primitives confirmed against Claude Code docs 2026-04-26; L34 phrasing tightened to *"Desktop local tasks (invoked from the Schedule sidebar)"* per claude-code-guide verdict.)
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *15–18 min closing lecture for AE101 M6. Names evals with full weight from the skill you just authored. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room.*
 **Word count:** ~950 words body.

@@ -3,15 +3,41 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
-    {"prompt_index": 1, "prompt_lead": "Enable plan mode.  Read these artefacts end to end:  - ./CLAUDE.local.md  - .cla", "verdict": "TODO", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "plan-mode-preamble-bloat", "confidence": "med", "evidence": "Plan-mode + 3-question output; 'No preamble' suppressor in-fence.", "fix_hint": "Suppressor present; no edit."},
-      {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Explicit 'No preamble' suppressor.", "fix_hint": "No edit."},
-      {"pattern_id": "default-acceptance", "confidence": "med", "evidence": "Body prose names pushback recovery.", "fix_hint": "No edit; mitigation present."},
-      {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Fresh-session destination is structural mitigation.", "fix_hint": "No edit."}
-    ]}
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Enable plan mode.  Read these artefacts end to end:  - ./CLAUDE.local.md  - .cla",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "plan-mode-preamble-bloat",
+          "confidence": "med",
+          "evidence": "Plan-mode invocation with structured 3-question output; 'No preamble' suppressor in-fence partially mitigates but plan-mode openers carry inherent bloat risk.",
+          "fix_hint": "If live-test shows Claude opens with a contextual framing paragraph, add 'Answer each question directly — no framing, no contextual summary first' before the question list."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "'No preamble' explicit suppressor in fence reduces risk below blocking threshold.",
+          "fix_hint": "Carries forward; no action needed unless live-test shows violation."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "Body callout carve-out applied: 'Read what comes back the way you read any plan. Push back where the proposals miss the codebase situation Claude cannot see' names failure mode + gives recovery move + grants student agency. Downgraded from med to low.",
+          "fix_hint": "Body callout is sufficient; no in-fence change needed."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Fresh-session destination (per parenthetical chip 'fresh session in the same repo') provides structural mitigation.",
+          "fix_hint": "No action needed."
+        }
+      ]
+    }
   ],
   "blocking_findings_count": 0,
   "todos_count": 1

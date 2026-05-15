@@ -1,0 +1,124 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/steering-the-wiring.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load is filename-based, not folder-based.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7b",
+      "rule_lead": "Cross-working-directory boundaries always open new; evidence travels by disk.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "gitignored files (`CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them",
+      "line": 3,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Matches check_platform_and_boundaries.md §7b verbatim: 'gitignored files (CLAUDE.local.md, .claude/memory/) don't cross worktrees by git — copy at fork time and accept independent divergence after.'"
+    },
+    {
+      "claim": "~/.claude/CLAUDE.md (user-level, auto-loads in every working directory)",
+      "line": 11,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Matches check_platform_and_boundaries.md §6d: '~/.claude/CLAUDE.md (user-level, cross-repo)' is one of the three auto-load filenames. Claim is accurate."
+    },
+    {
+      "claim": "AE101's default chose `cp` at fork time — your M1/M3 evidence rode forward",
+      "line": 3,
+      "verdict": "PASS",
+      "source": "inferred",
+      "note": "Internal curriculum architecture claim about AE101 design, not a platform capability claim. Consistent with §7b's documented cp-at-fork pattern."
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 9,
+      "claim": "All practitioner postures are guesses — none of them have written this up",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "File explicitly disclaims citation status for all four practitioner readings. No source URL or type label required — these are presented as guesses, not evidence-ladder claims. check_research_claims.md §11 fires on 'named practitioner + specific URL + load-bearing number'; none of these conditions hold here."
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "open_todos": [
+    {
+      "line": 40,
+      "note": "Maintainer-block open item: 'Live-test whether ~/.claude/CLAUDE.md user-level auto-load is the actual current Cherny default (his own rules-file location).' The auto-load behavior of ~/.claude/CLAUDE.md itself is verified correct (§6d). The open item is about what Boris Cherny personally uses — a stylistic/attribution refinement, not a platform-claim correctness gap. Non-blocking TODO."
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 1
+}

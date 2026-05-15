@@ -3,11 +3,12 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
   "verdict": "PASS",
   "training": "ae101",
+  "audited_at_sha": "1ff6f8a",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 4,
-      "rule_lead": "Verify capabilities before assert",
+      "rule_lead": "Verify capabilities before assert.",
       "verdict": "PASS",
       "evidence": null,
       "fix_hint": null,
@@ -16,180 +17,216 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 6,
-      "rule_lead": "Known correct Claude Code facts — transcript path format",
+      "rule_lead": "Known correct Claude Code facts — transcript path format.",
       "verdict": "PASS",
-      "evidence": "Body (line 30) uses '<encoded>' which is correct. Maintainer artefact table uses '<project-folder>' (imprecise vs canonical '<encoded-cwd>') but lives below <!-- maintainer --> and does not reach students.",
-      "fix_hint": "Maintainer-block imprecision only; student-visible line 30 is correct. Low-priority cleanup.",
+      "evidence": "Student-visible body (line 32) uses '~/.claude/projects/<encoded>/' correctly. Maintainer artefact table uses '<project-folder>' (imprecise vs canonical '<encoded-cwd>') but lives below <!-- maintainer --> and is not student-facing.",
+      "fix_hint": "Maintainer-block imprecision only; low-priority cleanup.",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6e",
-      "rule_lead": "Transcript-by-mtime selection fragile; marker-based selection required",
+      "rule_lead": "Transcript-by-mtime selection fragile; marker-based selection required.",
       "verdict": "PASS",
-      "evidence": "Module body correctly references the M4 session transcript via fallback to 'SHA Claude reported at Module 4 close' — marker-based, not mtime-only. Artefact contract table documents <session-id>.jsonl correctly.",
+      "evidence": "Module body (line 32) references M4 session transcript via fallback to 'SHA Claude reported at Module 4 close' — marker-based, not mtime-only. Artefact contract table documents <session-id>.jsonl correctly.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "7b",
-      "rule_lead": "Cross-working-directory boundaries always open new",
+      "rule_lead": "Cross-working-directory boundaries always open new.",
       "verdict": "PASS",
-      "evidence": "Module correctly instructs 'Open a new Claude Code session in the worktree' after forking — not 'return' or 'resume'.",
+      "evidence": "Line 34: 'Open a new Claude Code session in the worktree' — correctly uses new, not return/resume, for the cross-cwd worktree boundary.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
-      "rule_lead": "Sessions are the unit of work — open a new session, not open Claude Code",
+      "rule_lead": "Sessions are the unit of work — use 'start/open a new session,' not 'open Claude Code in X.'",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Lines 26, 34 use 'open a fresh session' and 'Open a new Claude Code session' — names the session explicitly, not just the app.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "bare-paths",
+      "rule_lead": "Source .md files use bare paths; depth-counted ../../ prefixes are forbidden.",
+      "verdict": "REVISE",
+      "evidence": "line:10: `[Clean Code Is Steering: Insights from Uncle Bob](../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md)` — depth-counted prefix added in commit 46b5947. Renderer accepts it but convention forbids it (curriculum/CLAUDE.md § Cross-doc links; compounded/2026-04-26-platform-bare-paths-renderer-rewrites.md).",
+      "fix_hint": "Replace with bare path: `trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md`",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load is filename-based, not folder-based.",
+      "verdict": "PASS",
+      "evidence": "Module correctly describes CLAUDE.local.md and .claude/memory/ as files that must be explicitly copied at fork time, not auto-loaded. No claims of automatic cross-worktree propagation.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label mandatory; maintainer-block scope",
+      "rule_lead": "Source URL + type label mandatory; labels in maintainer block only.",
       "verdict": "PASS",
-      "evidence": "Source-verification maintainer block present. Prework URLs include Entis/Klaassen (every.to) with correct attribution pattern: 'Laura Entis on Kieran Klaassen' (practitioner analysis). Klaassen's own articles cited as practitioner direct. Labels live in maintainer block only; body uses builder voice.",
+      "evidence": "Source-verification maintainer block present. Prework citations use correct attribution: 'Laura Entis on Kieran Klaassen' ([practitioner analysis]). Klaassen's own articles labeled [practitioner direct, vendor venue]. Labels live below <!-- maintainer --> only; body uses builder voice.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness 6 months",
+      "rule_lead": "Freshness 6 months.",
       "verdict": "PASS",
-      "evidence": "Source-verification block includes 'freshness re-check before first cohort' instructions. All three every.to URLs confirmed alive 2026-05-14.",
+      "evidence": "Source-verification block explicitly includes 'freshness re-check before first cohort' for each practitioner citation. All four URLs sampled alive as of 2026-05-15.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 3,
-      "rule_lead": "Zombie stat guard",
-      "verdict": "PASS",
-      "evidence": "No round-number AI failure/success statistics in student-facing body. Specific number '19.2% auto-approved' (Curran/Intercom) lives in maintainer source-verification block with explicit verify-before-cohort instruction.",
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": "No round-number AI failure/success stats in student-facing body. The specific '19.2% auto-approved' number (Curran/Intercom) lives in the maintainer source-verification block with explicit flag as vendor-self-reported.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 11,
-      "rule_lead": "Source-verification maintainer block on student-facing files with practitioner citations",
+      "rule_lead": "Source-verification maintainer block on student-facing files with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "Maintainer block contains '**Source verification — MUST DO before first cohort**' section listing every URL, specific numbers to triple-check (19.2%), fallback framings, and freshness re-check instructions.",
+      "evidence": "Block present at lines 156–161 with: every URL to open, numbers to verify (19.2%), named fallback framings, freshness re-check instructions for each source. Compliant with all four §11 requirements.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
-      "rule_lead": "No placeholders inside fenced blocks",
+      "rule_lead": "No placeholders inside fenced blocks.",
       "verdict": "PASS",
-      "evidence": "Angle-bracket templates (<repo-name>, <slug>) appear in ae101-m5-worktree-setup prompt body. Rule 1 bans [BRACKETS] square-bracket placeholders only; angle-bracket templates are derive-from-context instructions Claude resolves at runtime. See compounded/2026-05-03-platform-technical-judge-fp-square-vs-angle-and-scrollback-chain.md — known FP shape, marked PASS per calibration.",
+      "evidence": "Angle-bracket templates (<repo-name>, <slug>) appear in ae101-m5-worktree-setup prompt body. Rule 1 targets [BRACKETS] square-bracket placeholders. Angle-bracket forms are derive-from-context instructions Claude resolves from the active working directory at runtime; body line 28 confirms 'Claude figures out <repo-name> from the working directory.'",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in",
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
       "verdict": "PASS",
-      "evidence": "Both prompt markers have action lead-ins before them in the module body.",
+      "evidence": "Both prompt markers have action lead-ins in the module body: worktree-setup is preceded by 'Claude figures out <repo-name>...' framing; rerun-packaged is preceded by 'Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.'",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 5,
-      "rule_lead": "Chain prompts by back-reference and deterministic path, not invented alias",
+      "rule_lead": "Chain prompts by back-reference and deterministic path, not invented alias.",
       "verdict": "PASS",
-      "evidence": "ae101-m5-rerun-packaged uses 'the paths we wrote in this session' — a scrollback-review chain, which rule 5 explicitly PREFERS. Not a deterministic-path violation.",
+      "evidence": "ae101-m5-rerun-packaged: 'The reference, plan.md, and verifier are at the paths we wrote in this session' — scrollback-review chain. Rule 5 explicitly prefers transcript-as-authoritative-memory for chains; no deterministic-path violation.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "Neither ae101-m5-worktree-setup nor ae101-m5-rerun-packaged registry bodies contain **bold** or *italic* markup inside the fenced content.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "Preamble before action — structural trigger at 4+ sub-steps requires suppressor or body primer",
+      "rule_lead": "Preamble before action — structural trigger at 4+ sub-steps requires suppressor or body primer.",
       "verdict": "REVISE",
-      "evidence": "ae101-m5-worktree-setup (prompt-001, expanded at line 28) has 6 named sub-steps: find branch, validate log, spin worktree, cp CLAUDE.local.md, mkdir .claude/, cp memory/. No in-fence 'No preamble.' suppressor at end of registry body. No body primer immediately after the marker naming the preamble + skim-past cue. The body text after the marker is a multi-result fallback callout (rule 33), not a preamble primer.",
-      "fix_hint": "Add body primer immediately after {{prompt:ae101-m5-worktree-setup}}: 'Claude will narrate before acting; skip past the opening and look for the worktree path and file-copy confirmation.'",
+      "evidence": "ae101-m5-worktree-setup prompt (expanded) has 6 named sub-steps: find branch, validate log, spin worktree, cp CLAUDE.local.md, mkdir .claude/, cp memory/. No in-fence 'No preamble.' suppressor. No body primer immediately after {{prompt:ae101-m5-worktree-setup}} naming preamble + skim-past cue. The bolded callout that follows ('The grep may hit multiple branches.') serves the rule-33 fallback, not a preamble primer.",
+      "fix_hint": "Add body primer after {{prompt:ae101-m5-worktree-setup}}: 'Claude will narrate before acting; skip past the opening and look for the worktree path and file-copy confirmation.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly **Prompt** — custom labels break the renderer.",
+      "verdict": "PASS",
+      "evidence": "Expanded output shows both prompts render with canonical **Prompt** *(Claude Code)* label shape. Registry frontmatter `dest: Claude Code` correctly drives the chip.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 31,
-      "rule_lead": "Prompts live in registry; module files reference by marker",
+      "rule_lead": "Prompts live in registry; module files reference by marker.",
       "verdict": "PASS",
-      "evidence": "Both prompts use {{prompt:ae101-m5-worktree-setup}} and {{prompt:ae101-m5-rerun-packaged}} markers. Registry files exist at curriculum/prompts/ with correct frontmatter (key, dest, runtime, origin).",
+      "evidence": "Both prompts use registry markers {{prompt:ae101-m5-worktree-setup}} and {{prompt:ae101-m5-rerun-packaged}}. Registry files exist at curriculum/prompts/ with correct frontmatter (key, dest, runtime, origin). expand-md.js resolves both cleanly.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 32,
-      "rule_lead": "No module-name references in prompt prose",
+      "rule_lead": "No module-name references in prompt prose.",
       "verdict": "REVISE",
-      "evidence": "ae101-m5-worktree-setup prompt body (prompt-001) line 9: 'so M5/M6 compounding has the M1/M3 evidence to build on' — four bare M-number references (M5, M6, M1, M3) in prose, not inside backtick code spans, double-quotes, or path segments. Also 'compounding' is flagged by the P4 rule in prompt-source-audit.sh. Exemptions (branch names in code spans, commit messages in double-quotes) do not apply to this prose line.",
-      "fix_hint": "Rewrite prose line to reference artefacts not module numbers: e.g. 'so the verifier-build and re-send have the personal-rules and memory evidence from earlier sessions to build on'.",
+      "evidence": "ae101-m5-worktree-setup registry body line 9: 'so M5/M6 compounding has the M1/M3 evidence to build on' — four bare M-number references (M5, M6, M1, M3) in prose outside backticks, double-quotes, or path segments. Exemptions (branch names in code spans, commit messages in double-quotes) do not apply.",
+      "fix_hint": "Rewrite to reference artefacts: e.g. 'so the verifier-build and re-send have the personal-rules and memory evidence from earlier sessions to build on.'",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 33,
-      "rule_lead": "Git-output greps that assert exact-N need multi-result fallback",
+      "rule_lead": "Git-output greps that assert exact-N need multi-result fallback.",
       "verdict": "PASS",
-      "evidence": "ae101-m5-worktree-setup prompt-001 includes 'There may be more than one' inside the fence AND the body immediately after the marker has a bolded callout 'The grep may hit multiple branches.' with specific fallback instructions (log-grep + SHA from transcript). Rule 33 option A correctly implemented.",
+      "evidence": "ae101-m5-worktree-setup fence includes 'There may be more than one' + log-validation instruction. Body callout after the marker ('The grep may hit multiple branches.') provides the rule-33 option-A fallback with specific recovery steps. Correctly implemented.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation and decision logic belong in the prompt fence, not body callouts.",
+      "verdict": "PASS",
+      "evidence": "ae101-m5-worktree-setup prompt fence carries the full disambiguation logic for multi-branch case inline. Body callout mirrors the explanation for the student but does not carry logic the fence omits.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 4,
-      "rule_lead": "Installed skills invoke by name, never by path",
+      "rule_lead": "Installed skills invoke by name, never by path.",
       "verdict": "PASS",
-      "evidence": "No skill invocations inside fenced prompt blocks. 'Ralph re-feed' is a concept/shape name in LOs and leap test (body text), not a [Skill: ralph-loop] invocation.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 13,
-      "rule_lead": "Artifact-realism — named tools, skills, files must exist and be accessible",
-      "verdict": "PASS",
-      "evidence": "All referenced exercises and lectures exist: diagnose-and-resend.md (curriculum/exercises/), reading-the-return.md, learning-through-contrast.md, what-packaging-is.md (curriculum/lectures/). Registry prompts exist. No named skills invoked in prompts.",
+      "evidence": "No skill invocations inside fenced prompt blocks. 'Ralph re-feed' appears as a concept name in LOs and leap test (body text only), not as a [Skill: ralph-loop] prompt invocation.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose",
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Phase-level forcing functions live inside the exercise file (diagnose-and-resend.md). The two prompts in this module file (worktree-setup, rerun-packaged) encode their own forcing functions inside their fenced blocks.",
+      "evidence": "Phase-level forcing functions for the exercise live in diagnose-and-resend.md (exercise file). The two prompts in this module file encode their own forcing functions inside fenced blocks.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 36,
-      "rule_lead": "Verification machinery needs smoke-test before trusted",
+      "rule_lead": "Verification machinery needs smoke-test.",
       "verdict": "PASS",
-      "evidence": "Verifier-build is in the exercise file (Phase 3 of diagnose-and-resend.md). The re-send prompt chains on the built verifier after it is constructed and tested in Phase 3. Per-phase failure-mode table names the verifier-shape mismatch failure and escape hatch.",
+      "evidence": "Verifier is built and tested in Phase 3 of the exercise before the re-send prompt chains on it. Per-phase failure-mode table names verifier-shape mismatch and escape hatch.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 37,
-      "rule_lead": "Context-loading tiers as staged progression",
+      "rule_lead": "Context-loading tiers — auto-load assumptions checked.",
       "verdict": "PASS",
-      "evidence": "Module correctly treats CLAUDE.local.md and .claude/memory/ as explicit-load artefacts requiring explicit copy at worktree fork. No auto-load assumptions made about personal files crossing worktree boundaries.",
+      "evidence": "CLAUDE.local.md and .claude/memory/ correctly described as requiring explicit copy at fork time. No auto-load claims across worktree boundaries.",
       "fix_hint": null,
       "blocking": false
     }
@@ -203,22 +240,29 @@
     },
     {
       "claim": "M4 session transcript at ~/.claude/projects/<encoded>/ (student-visible body)",
-      "line": 30,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Cross-working-directory boundary (worktree) opens new session — 'Open a new Claude Code session in the worktree'",
       "line": 32,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
+      "claim": "Open a new Claude Code session in the worktree. The rest of Module 5 runs there.",
+      "line": 34,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Prework link: ../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md",
+      "line": 10,
+      "verdict": "REVISE",
+      "source": "compendium",
+      "note": "Depth-counted path works at runtime (renderer accepts (?:\\.\\.\\/)*) but violates bare-path convention. Bare path: trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md"
+    },
+    {
       "claim": "M5 session transcript at ~/.claude/projects/<project-folder>/<session-id>.jsonl (maintainer artefact table)",
-      "line": 138,
+      "line": 141,
       "verdict": "PASS",
       "source": "compendium",
-      "note": "Uses '<project-folder>' instead of canonical '<encoded-cwd>'; imprecise but maintainer-block-only. Student-visible reference (line 30) uses '<encoded>' correctly."
+      "note": "Maintainer-block only; uses '<project-folder>' (imprecise vs canonical '<encoded-cwd>') but does not reach students."
     }
   ],
   "citations_checked": [
@@ -239,8 +283,16 @@
       "evidence_level_honest": true
     },
     {
-      "line": 78,
+      "line": 80,
       "claim": "Kieran Klaassen, 'My AI Had Already Fixed the Code Before I Saw It' (every.to)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 159,
+      "claim": "Darragh Curran / Intercom — 2x Nine Months Later (ideas.fin.ai); 19.2% auto-approved flagged as vendor-self-reported",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -263,8 +315,14 @@
       "url": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
       "alive": true,
       "status_code": 200
+    },
+    {
+      "url": "https://ideas.fin.ai/p/2x-nine-months-later",
+      "alive": true,
+      "status_code": 200
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 3,
+  "notes": "File was modified at commit 46b5947 (2026-05-15) after the technical@ audit SHA (0f32201, 2026-05-14). The prework line change (body only, no prompt block) added the depth-counted path violation (finding #6 above) and a writing-surface change; per per-class auto-degrade rules, writing@ is degraded but technical@ is degraded only if a platform-relevant change occurred. The depth-counted path is a platform-convention violation introduced by that commit, so technical@ should be re-pinned after the bare-path fix is landed."
 }

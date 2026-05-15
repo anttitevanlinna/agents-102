@@ -24,7 +24,7 @@ These are your reading lens. Every artefact gets read through all three, even if
 
 ## One operational move
 
-The diagnosis session will fill its own working window. What works, per recent practitioner posts: trigger `/compact` manually at around 60% context. Don't wait for auto-compact. Auto fires when the model decides; manual at 60% means you choose what to keep (the diagnosis quotes, the failure-mode mapping, the validation shape you're sketching for Phase 3). Watch the context indicator at the bottom of Claude Code.
+The diagnosis session will fill its own working window. What works, per recent practitioner posts: trigger `/compact` manually at around 60% context. Don't wait for auto-compact. Auto fires when the model decides; manual at 60% means you choose what to keep (the diagnosis quotes, the failure-mode mapping, the validation shape you're sketching for Phase 3). Run `/context` when you want a current read on how full the window is.
 
 This is session-management, not packaging. Packaging is what the exercise builds for the re-send.
 
@@ -54,8 +54,8 @@ Open your repo. Let's go.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical REVISE (1/0 see instances/ae101--learning-through-contrast.technical.json - /context replaces UI-location claim 2026-05-15), behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~340 words body.
 

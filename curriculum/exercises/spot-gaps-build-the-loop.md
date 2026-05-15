@@ -6,7 +6,7 @@
 
 Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
 
-**What you do:** Diff the packaged M5 re-run against the un-packaged M4 baseline. Name what packaging caught, what it missed, and what new gaps surfaced. Then author a session-shaper skill through conversation. Shape follows what the two runs taught. Self-critique, invoke on the packaged run, ship personally.
+**What you do:** Diff two runs of the same task, route the dominant gap to its home, author a second skill from the diagnosis.
 
 **The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
 
@@ -40,7 +40,9 @@ Claude may pause before editing `./CLAUDE.local.md`, a named config file looks r
 
 Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
 
-The three prompts below (author, critique, invoke) are decomposed for pacing. If you've run this move before and are working solo, collapse them: paste the first prompt and ask the same conversation to critique before save and invoke after. The three moves don't change.
+The three prompts below (author, critique, invoke) are decomposed for pacing.
+
+> **Solo or fluent in this move?** Collapse the three prompts: paste the first, ask the same conversation to critique before save and invoke after. The three moves don't change.
 
 Three common shapes from the convergence of practitioners running long tasks:
 

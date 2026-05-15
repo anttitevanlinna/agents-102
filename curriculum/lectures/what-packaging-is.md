@@ -37,6 +37,12 @@ That matters because the LLM is forgetful. Drift, half-remembered rules, the lon
 
 Practitioner convention. Must happen → hook. Recommended → prompt or rule. Anything that breaks the work if it skips belongs in a hook (the verifier you just wrote; a pre-commit guard; a session-start context loader). Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget." Bought at the cost of flexibility, given to the work that demands certainty.
 
+## What you didn't build today
+
+**Subagents for isolation.** When a phase of a long task wants a sandbox, exploring a third-party API, reading untrusted code, doing a search you'd rather not pollute the main session with, spin a subagent and let it return only what matters. The main session stays clean; the subagent's context is discarded after it reports. Adjacent move to the verifier; same instinct: keep the long-running thread coherent by routing the noisy work elsewhere.
+
+**Context for long runs is one of the murkier places.** Some practitioners suggest manual `/compact` at around 60%. Some go the full subagent route to keep the main session clean. Some rely on the 1M context window and don't compact at all. The original Ralph reconstructs fresh sessions continuously, letting each one give up and rebuilding from the durable state. Some split plan-mode from execute-mode entirely, planning in one session and running a fresh one against the written plan. Different shapes for different jobs; the field hasn't converged.
+
 ## At org scale: Intercom's Tier 1/2/3
 
 Darragh Curran (CTO, Intercom) published a post in April 2026 called "2x, nine months later." His R&D org runs a tiered review structure with auto-approval at the lowest tier. The numbers are concrete. 19.2% of pull requests are auto-approved (no human reviewer). Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of auto-approved PRs are 20 lines or fewer.
@@ -68,8 +74,8 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-26
-- compendium-audited 2026-04-26 (check_writing voice-quartet, check_student_facing #14 body em-dashes inside cited titles/quotes only, check_lectures meta-frame closer, check_strategy_tie_in. **check_research_claims:** all citations verified per `curriculum/evals/instances/ae101-m5-m6-source-verification.md` — Cherny three-shape framing softened to "all three appear in his stop-hook practice; the menu form is the synthesis"; Klaassen 80/20 reframed from "stated verbatim in *Definitive Guide*" to "the ratio practitioners take from his compound-engineering posture" since the verbatim claim couldn't be sourced; Ronacher attribution reframed as practitioner convergence with reference + verifier from his work and plan.md from Huntley/Klaassen; Amp counter-camp pinned to `https://ampcode.com/news/handoff` 2025-10-23 [practitioner direct from a vendor]; Curran/Intercom 19.2%/14.6/75.8/86%/500/267-skill/31% all VERIFIED.)
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--what-packaging-is.strategy.json - extension-primitives divergence beat added 2026-05-15)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–15 min closing lecture for M5. Names Ronacher's three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide. Bridges to M6's evals-as-team-infrastructure move.*
 **Word count:** ~770 words body.

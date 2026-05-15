@@ -5,22 +5,24 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 ## Prework
 
-Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).
+Walk in with the M5 worktree at `../<repo>-m5` carrying both runs: the un-packaged M4 send-off branch, the packaged M5 re-run (`reference.md`, `plan.md`, the verifier you built, `RUN-NOTES.md`), and the M5 session transcript under `~/.claude/projects/<encoded-cwd>/`. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).
 
 Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when one task becomes a pattern, scheduled, looped, or condition-gated.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** the packaged Module 5 run alongside the un-packaged Module 4 baseline, name gaps the three-pattern didn't anticipate, quoted from your own artefacts
-- **Route** each gap to its home: memory, sharper verifier, or new skill, backed by two runs' evidence
-- **Cut** one rule from `./CLAUDE.local.md` that the two-run diagnosis killed
-- **Author** a session-shaper skill through conversation, sharpened-verifier, judge, or gap-finder shape based on what the two runs demanded; self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`
-- **Map** evals across three surfaces, verifier in your repo, judge in your test, gate in your CI. Anchored by Ramp Dojo and Intercom Tier 1/2/3
-- **Name** one key learning and one open question on the future in the Debrief round
+- **Diagnose** the gap two runs of the same task surface
+- **Route** each gap to its home: memory, sharper verifier, or new skill
+- **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
+- **Author** a session-shaper skill through conversation, ship to your personal kit
+- **Map** evals across verifier, judge, and gate
+- **Encode** the lesson so the next loop inherits it
 
 ## Start here
 
 You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
+
+> **Open M6 in a new Claude Code session inside the M5 worktree at `../<repo>-m5`, no fork.** The packaged re-run's evidence (`reference.md`, `plan.md`, the verifier, `RUN-NOTES.md`) is already on disk there, alongside `./CLAUDE.local.md` and `.claude/memory/`. M6 reads, diagnoses, and ships in place.
 
 > **Packaged run thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
 
@@ -72,8 +74,9 @@ Antti
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--spot-gaps-build-the-loop-module.strategy.json - WYL bullet reshape landed 2026-05-15)
+- cross_module: REVISE — 2/0 see instances/ae101--m5-m6.cross_module.json - rule 3+4 fixes landed 2026-05-15
 - mechanical @e840433: PASS — ae101-m6 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

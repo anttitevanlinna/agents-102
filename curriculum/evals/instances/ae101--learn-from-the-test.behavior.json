@@ -3,8 +3,8 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "partial_regen",
-  "generated_at": "2026-05-14T15:10:00.000Z",
+  "trace_status": "full_regen",
+  "generated_at": "2026-05-15T00:00:00.000Z",
   "prompts_evaluated": 2,
   "blocking_findings_count": 0,
   "todos_count": 1,
@@ -16,35 +16,35 @@
       "load_bearing": true,
       "risks_fired": [
         {
-          "pattern_id": "file-preservation-gap",
-          "confidence": "low",
-          "evidence": "Body callout immediately before the prompt fence ('Claude figures out `<repo-name>` from the working directory. Help it if it gets confused.') names the resolution mechanism and gives the student the recovery move. Body-callout mitigation per judge template § 'Body-callout carve-out' applies — callout is directly adjacent, names the failure mode, gives student action. Downgraded from med (prior run) to low.",
-          "fix_hint": "Mitigated by body callout. If further hardening wanted: add self-resolution instruction inside the fence ('Determine the repo name from `basename $(pwd)` and substitute in all paths below') to make it fully self-contained without body dependency."
-        },
-        {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Prompt chains four distinct sub-steps (find branch, create worktree, copy files, report) with no `No preamble` suppressor and no body primer after the fence naming preamble + skim-past cue. Rule 17 structural trigger fires on 4+ named sub-steps. Post-fence body callout addresses multi-branch disambiguation, not preamble behavior.",
-          "fix_hint": "Add a body primer immediately after the closing fence: 'Claude will narrate before acting; look for the shell command output confirming the worktree path and which files copied across.' No prompt edit required."
+          "evidence": "Prompt chains 5+ distinct sub-steps (find branch, disambiguate multi-result, pick correct branch, spin worktree, cp CLAUDE.local.md, cp .claude/memory/, report) with no in-fence `No preamble` suppressor as the last line and no body primer immediately after the closing fence naming the preamble + skim-past cue. Rule 17 structural trigger fires: 4+ named sub-steps require one of (a) in-fence suppressor or (b) immediate post-fence body primer. The post-fence body callout ('The grep may hit multiple branches…') re-explains disambiguation to the student but does not name or mitigate preamble behavior.",
+          "fix_hint": "Add a body primer immediately after the closing fence: 'Claude will narrate before acting; skip past the opening and look for the shell command output confirming the worktree path and which files copied across.' No prompt edit required — body prose is not gated by the prompt-approval gate."
         }
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths",
+      "prompt_lead": "Re-run the task we just packaged. The reference, plan.md, and verifier are at th",
       "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "'Before you start, ask for or write anything else you want for this run.' is a designed self-augment invitation per the minimal hand-off pattern (check_prompts.md rule 19); the pre-action exchange is the design intent. Downgraded to low — accepted preamble shape.",
+          "fix_hint": "No action needed; self-augment invitation is the pedagogical intent. Low-risk residual: if Claude's augmentation turn runs very long, body callout could cap it ('if Claude asks more than two questions before starting, tell it to pick the most important one and begin')."
+        },
+        {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "In-fence structural enforcement (`no narrative, no hedging`, binary shipped/not-shipped list, explicit no-qualification language) plus body callout naming RLHF softening risk neutralise. §50 convenience-bias carve-out applies.",
+          "evidence": "In-fence three-list format with explicit anti-softening constraints ('no narrative, no hedging'; 'did NOT ship — each item, no partial / mostly / in progress'; 'verifier — last output line of each run, pasted verbatim') structurally enforces candor. Body callout after fence names RLHF softening risk and gives student a recovery move. Body-callout mitigation carve-out applies.",
           "fix_hint": "Pattern mitigated. No action needed."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "`verifier — last output line of each run, pasted verbatim` forces literal artifact evidence. Binary list with no-qualification language prevents inflation. Body callout names risk and gives push-back move. §50 carve-out applies.",
+          "evidence": "Verbatim verifier paste requirement forces literal artifact evidence rather than Claude's summary. Binary shipped/did-NOT-ship split with no-qualification language prevents grade inflation. Body callout names inflation risk and gives push-back move. Evidence-backed Debrief carve-out applies.",
           "fix_hint": "Pattern mitigated. No action needed."
         }
       ]

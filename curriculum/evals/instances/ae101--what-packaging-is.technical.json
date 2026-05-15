@@ -1,0 +1,168 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Hook event names described in plain English in body ('session start, prompt submit, before each tool call, after each tool call, on stop') match canonical names (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop) verified against repo's .claude/settings.json and Claude Code 2.1.142 per maintainer block. Body uses plain English — appropriate for student-facing prose. No canonical name is misstated.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Source-type labels correctly live in maintainer block only, not body. Frameworks-attributed block present with [practitioner direct] labels. Klaassen URL present inline in body for the TDD quote. Curran, Ronacher, Amp URLs in maintainer block source-verification section. Pattern is compliant.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "REVISE",
+      "evidence": "line 48: Klaassen article linked at https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — published 2025-08-18, now 8.9 months old (>6-month window). Line 88 maintainer: Amp counter-camp pinned to 2025-10-23 — 6.8 months old. Both are stale relative to today (2026-05-15).",
+      "fix_hint": "For both stale citations: (a) locate a more recent source that supports the same claim, OR (b) explicitly date them as historical context. Klaassen TDD quote is still accurate and the URL is live — acceptable as historical if labeled 'August 2025' inline. Amp handoff philosophy appears architecturally stable; flag for freshness re-check at delivery and add explicit date inline.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 4,
+      "rule_lead": "Hold short OODA loose — single-source numbers get labeled single-source.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "80/20 ratio attributed as 'the ratio practitioners take from Kieran Klaassen's compound-engineering posture' — appropriately hedged to posture/practice rather than a verbatim quote. Maintainer block acknowledges the verbatim claim couldn't be sourced and reframing was applied. The Klaassen URL supports TDD shape but NOT the 80/20 number itself. Acceptable as convergent practitioner characterisation, not a stat claim. Pre-cohort source-verification block explicitly flags this for triple-check.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 7,
+      "rule_lead": "Vision × Detail split — detail layer must have KB backing.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block — MUST DO before first cohort.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer block contains a complete source-verification section with all URLs, numbers to triple-check, named fallback framings, and a freshness re-check reminder. Compliant.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "A hook in Claude Code's hook system fires on a named event: session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more.",
+      "line": 34,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Plain-English description of canonical hook events SessionStart / UserPromptSubmit / PreToolUse / PostToolUse / Stop. All five confirmed in repo .claude/settings.json. 'Plus a few more' is safe hedge; Claude Code docs list PreToolUse / PostToolUse / Notification / Stop / SubagentStop as the full set — the 'few more' is honest."
+    },
+    {
+      "claim": "The runtime fires the script; the agent has no say in whether it runs.",
+      "line": 34,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Accurate characterisation of hook firing semantics per Claude Code hook system docs and repo settings.json use."
+    },
+    {
+      "claim": "All three appear in Boris Cherny's stop-hook practice (Cherny built Claude Code); the menu form is the synthesis.",
+      "line": 24,
+      "verdict": "PASS",
+      "source": "inferred",
+      "note": "Attribution is explicitly hedged — 'appear in his stop-hook practice' and 'the menu form is the synthesis'. Maintainer block requires pre-cohort verification that Cherny framed three shapes in the cited interview. If the framing is ours, body already carries the fallback language ('three shapes practitioners use'). No blocking misattribution."
+    },
+    {
+      "claim": "Geoffrey Huntley's Ralph technique builds entire ticket-triage systems on this single primitive.",
+      "line": 16,
+      "verdict": "PASS",
+      "source": "inferred",
+      "note": "Maintainer block flags for verification against Huntley's writing. Not a Claude Code capability claim — a practitioner methodology claim. Appropriately flagged for pre-cohort check."
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 48,
+      "claim": "Klaassen TDD quote: 'Claude writes the test. The test fails, the natural first step in test-driven development (TDD)'",
+      "label_present": false,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true,
+      "note": "Label lives in maintainer block ([practitioner direct]) per check_research_claims §1 scope rule. URL verified alive; quote confirmed verbatim in article. Article dated 2025-08-18 — stale per 6-month rule. No zombie stat."
+    },
+    {
+      "line": 42,
+      "claim": "Curran/Intercom: 19.2% auto-approved, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D org",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": true,
+      "evidence_level_honest": true,
+      "note": "Label and URL in maintainer block per §1 scope rule. URL https://ideas.fin.ai/p/2x-nine-months-later verified alive; all four numbers confirmed. Article dated April 2026 — within 6-month window. Label in maintainer block is [practitioner direct, vendor venue] — correct per check_research_claims §1 vendor-venue sub-clause."
+    },
+    {
+      "line": 14,
+      "claim": "Ronacher MiniJinja port — reference artefact and verifier pattern",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": true,
+      "evidence_level_honest": true,
+      "note": "URL https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ verified alive. 10h runtime, 2.2M tokens confirmed. plan.md not named explicitly in the post but durable-state pattern cleanly inferable from agent workflow described. Attribution is appropriately hedged ('names reference and verifier in his work'). Dated January 2026 — within 6-month window."
+    },
+    {
+      "line": 57,
+      "claim": "Sourcegraph Amp counter-philosophy: rejects auto-compaction, bets on short focused sessions",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": true,
+      "evidence_level_honest": true,
+      "note": "URL https://ampcode.com/news/handoff verified alive; quote 'What we want to encourage are focused threads' confirmed present. Dated 2025-10-23 — 6.8 months from 2026-05-15, borderline stale. Maintainer block notes 'Freshness OK for cohorts before April 2026' — now out of window. TODO: re-verify freshness at delivery."
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://ideas.fin.ai/p/2x-nine-months-later",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://ampcode.com/news/handoff",
+      "alive": true,
+      "status_code": 200
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2,
+  "todos": [
+    "Klaassen article (every.to, 2025-08-18) is 8.9 months old — stale per 6-month freshness rule. Add explicit date inline or find fresher source for TDD/compounding claim.",
+    "Amp counter-camp URL (ampcode.com/news/handoff, 2025-10-23) is 6.8 months old — freshness window expired as of ~2026-04-23. Maintainer block 'OK before April 2026' note is now itself stale. Re-verify at delivery; add explicit date inline if keeping the source."
+  ]
+}

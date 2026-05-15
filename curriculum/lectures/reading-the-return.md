@@ -26,13 +26,13 @@ Armin Ronacher ran a port between two languages in roughly ten hours of agent ti
 
 The artefact (whatever your run produced, including a stopped run). The three failure modes above as your reading lens.
 
-M5 opens with reading it together.
+M5 opens with the artefact on screen and the three lenses in hand.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~370 words body.
 

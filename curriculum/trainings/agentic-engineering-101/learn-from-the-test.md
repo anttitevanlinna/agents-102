@@ -7,7 +7,7 @@ Read the un-packaged Module 4 run through three failure-mode lenses, build the v
 
 Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Insights from Uncle Bob](../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -28,6 +28,8 @@ If your Module 4 Claude Code session is still open, ask it. Otherwise open a fre
 **Claude figures out `<repo-name>` from the working directory.** Help it if it gets confused.
 
 {{prompt:ae101-m5-worktree-setup}}
+
+**Claude will narrate before acting.** It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
 
 **The grep may hit multiple branches.** A push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`; a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the "M4 starting point" commit (`git log <branch> --oneline | grep 'M4 starting point'`). If that commit message has been rewritten, fall back to the SHA Claude reported at Module 4 close. It is in the M4 session transcript at `~/.claude/projects/<encoded>/`.
 
@@ -82,9 +84,9 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@5d170d3 story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @5d170d3: writing PASS, story PASS, technical PASS, behavior PASS
-- cross_module @689e7e0: PASS — set=[run-the-first-experiment, learn-from-the-test]
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module: REVISE — 2/0 see instances/ae101--m5-m6.cross_module.json - rule 3+4 fixes landed in M6 file 2026-05-15
 - mechanical @e840433: PASS — ae101-m5 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

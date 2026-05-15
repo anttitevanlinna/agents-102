@@ -1,0 +1,150 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "full_regen",
+  "prompts_evaluated": 6,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "I have two runs of the same long-running task on disk. Find them: the un-package",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Structural trigger met: 4 named dimensions (what packaging caught / missed / introduced / where fix belongs) plus multi-step transcript discovery across two encoded-cwd folders. Body primer immediately post-prompt: 'Claude will likely open with a four-dimension plan summary... Skim past the opening; the contrast moments are what you're reading for.' Body-primer carve-out per judge template applied — downgraded from high to low.",
+          "fix_hint": "Body primer is present and well-formed; no prompt-fence change needed."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "No in-fence 'don't soften' anchor on the damage ranking; Claude will over-credit packaging performance on first pass. Body callout: 'Expect Claude to over-credit the packaging on first pass. A fair push-back is name one thing the verifier missed, concretely.' Body-callout mitigation per judge template applied — downgraded from med to low.",
+          "fix_hint": "Body callout names the over-credit bias and gives a concrete recovery move; no prompt change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just rank",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "evidence": "Target is ./CLAUDE.local.md — personal-scope file (gitignored per AE101 delivery architecture). Verb is 'cut from in place' — destructive subtraction. Personal-scope integrate-verb carve-out per judge template §63–69: cutting a stale rule is the design intent (compound-by-subtraction pedagogy). Downgraded from med to low.",
+          "fix_hint": "Personal-scope carve-out fully satisfied; no change needed."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "Named config file risks pause-before-edit or over-edit beyond targeted rule. Body callout post-prompt: 'Claude may pause before editing ./CLAUDE.local.md... If it asks, just say go. If the diff touches more than the one rule you flagged, push back.' Body-callout carve-out per judge template applied — downgraded from med to low.",
+          "fix_hint": "Body callout covers both the pause-and-ask and the over-edit directions; no change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Author a session-shaper as a personal skill. The skill's job is to shape future ",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "Both legal shapes present: structural in-prompt enforcement ('Interview me one question at a time') AND body callout post-prompt: 'If Claude narrates a plan or shows you the full question list before asking one at a time, ask it to skip the preamble and use the AskUserQuestion tool. Your call.' Both carve-out shapes per judge template §56–61 fully satisfied — downgraded to low.",
+          "fix_hint": "Carve-out fully satisfied via structural enforcement + body callout; no change needed."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "5 named interview sub-areas (fires-on, quality bar, flag-vs-let-through, output format, failure shape when skill is wrong). Body callout immediately post-prompt covers the narration scenario: 'If Claude narrates a plan or shows you the full question list before asking one at a time, ask it to skip the preamble.' Callout names the failure mode and gives the recovery move — body-callout carve-out per judge template applied — downgraded from med to low.",
+          "fix_hint": "Body callout covers preamble narration scenario; adding an in-fence 'No preamble. First question:' suppressor would be a belt-and-suspenders upgrade but not blocking."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "Claude proposes a skill name and SKILL.md draft; student may accept without engaging. Body callout post-prompt: 'When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment.' Body-callout mitigation per judge template applied — downgraded from med to low.",
+          "fix_hint": "Body callout names failure mode and gives recovery move; no change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Same-session self-critique of just-produced SKILL.md is canonical self-charity setup. 'Don't reassure me. Name weak parts.' is a partial in-fence suppressor. Body callout post-prompt: 'convenient (the authoring context is right there) but charitable (same-context-window self-audit under-flags by design).' Offers two opt-up paths: over-flag ('flag at least three things, be harsher than necessary') OR fresh-session dispatch (subagent with SKILL.md pasted cold). Convenience-bias-callout carve-out per check_pedagogy §50 + evidence-backed Debrief carve-out per judge template §73 applied — downgraded from high to low.",
+          "fix_hint": "Convenience-bias carve-out satisfied; opt-up paths present; no change needed."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "'Don't reassure me' partial suppressor present in prompt fence. Body callout additionally offers harsher opt-up path ('be harsher than necessary'). Downgraded from med to low.",
+          "fix_hint": "Partial suppressor + body opt-up cover niceness drift; no change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Skill invocation AND self-grading of that invocation in a single turn; same-context self-charity well-documented. Body callout post-prompt: 'That's biased by design, the same context window self-charity is well-documented. The shape is one paste, one wait, one read, convenient over rigorous.' Offers two-prompt split as opt-up. Convenience-bias-callout carve-out per check_pedagogy §50 applied — downgraded from high to low.",
+          "fix_hint": "Body callout names bias and provides two-prompt opt-up; no change needed."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Same single-context-window invocation-and-grade shape. Same body callout and opt-up as self-report-inflation entry. Downgraded from high to low.",
+          "fix_hint": "Same mitigation as self-report-inflation; no change needed."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Multi-part prompt (invoke + produce output + self-assess). Primary action is concrete ('Invoke the skill we just authored — by its name'); concrete action lead reduces plan-narration probability. Body prose focuses on self-charity bias, not preamble. Low confidence given concrete action anchor.",
+          "fix_hint": "Low probability given concrete action lead; no change needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Read my work across this repo. Specifically:",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Complex multi-artifact orchestration (6 artifact types + sub-task dispatch via Agent tool) guarantees plan-narration opener. Body primer post-prompt in arc-retrospective exercise: 'Claude will likely open with a plan-summary paragraph... Skim past the opening; the note is what you're reading for.' Body-primer carve-out per judge template applied — downgraded from high to low.",
+          "fix_hint": "Body primer present and well-formed; no change needed."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Arc-reading of student's own artefacts risks inflation / invented clean narrative. Evidence-backed Debrief carve-out per judge template §73 applies: prompt names 6 concrete evidence surfaces, requires artifact-level quoting ('Quote from my files'), includes anti-inflation instruction ('Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where'). Sub-task dispatch also provides fresh-context view. Downgraded from med to low.",
+          "fix_hint": "Anti-inflation instruction + sub-task isolation + quote requirement fully address; no change needed."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "'Show me the note before you save it. I'll push back, then we save.' is an explicit in-fence pre-save gate. Adjacent body in arc-retrospective exercise names failure mode: 'Student accepts the first draft. Fix: ask what one sentence in the note isn't true to your experience.' Body-callout carve-out per judge template applied — downgraded from med to low.",
+          "fix_hint": "Pre-save gate in fence + body failure-mode callout fully cover default-acceptance; no change needed."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

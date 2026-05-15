@@ -25,7 +25,8 @@ At the start of this training, you might have asked someone what the right wirin
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-28 (new lecture; not yet sim/audited)
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta:**

@@ -40,6 +40,8 @@ TRAINER_ONLY=(
   cohort-onboarding-email.md
 )
 
+# Tarball filename owned by curriculum/trainings/agentic-engineering-101/training-architecture.md
+# § Material distribution. Rename there first; this line and downstream consumers follow.
 OUT="ae101-content.tar.gz"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT

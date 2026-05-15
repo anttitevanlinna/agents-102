@@ -207,6 +207,7 @@ const DETECTORS = [
   {
     id: 'content-bundle',
     label: 'AE101 content bundle',
+    // Tarball name owned by curriculum/trainings/agentic-engineering-101/training-architecture.md.
     regex: /ae101-content\.tar\.gz|AE101 content directory|content folder|content\/skills\//gi,
     requiresContract: true,
     trainings: ['agentic-engineering-101'],

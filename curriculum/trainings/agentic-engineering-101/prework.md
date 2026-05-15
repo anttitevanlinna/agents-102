@@ -12,7 +12,7 @@ One decision, and you probably have a strong candidate already: which repo are y
 
 - One you ship to regularly and will still work in six months
 - Real code, real tests, real history, somewhere with enough surface area for rules and memory to land on
-- Real work ahead at two sizes. Module 1 ships a one-line fix. Module 4 onward runs experiments on bigger things: an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
+- Real work ahead at two sizes. Module 1 ships a small fix, a few lines here and there. Module 4 onward runs experiments on bigger things: an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
 
 Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule, every memory, every skill you build during the training lands here.
 
@@ -36,11 +36,11 @@ You need `ae101-content.tar.gz` saved to `~/Downloads/`. Two paths to the same d
 
 ## 4. Hand the rest to Claude
 
-> **Trivial bug means trivial.** A one-line fix or a small typo-shaped thing. Not an epic, not a multi-file refactor.
-
 Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1. Claude will need to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
 
 When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.
+
+Trivial means a few lines here and there, not a multi-file refactor.
 
 {{prompt:ae101-prework-extract-and-install}}
 
@@ -88,4 +88,4 @@ Connections question at the opening: *what's one trick you figured out with Clau
 | Chosen trivial bug | Prework session scrollback in the chosen repo, plus tracker/repo context if one exists | Prework Step 4 bug-screen conversation | M1 `fix-tests-first` prompt consumes the selected bug |
 | Repo readiness read | Prework session summary: test command or named check path, git status, PR readiness blockers | Prework Step 4 readiness check | M1 trainer/student triage; M1 `fix-tests-first` and `compound-and-close` assume the repo can test, branch, commit, and open or draft a PR |
 
-**Packaging:** `scripts/build-ae101-content-tarball.sh` builds `ae101-content.tar.gz` from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/trainings/agentic-engineering-101/reference/`, `curriculum/trainings/agentic-engineering-101/supplementary/`, `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into `site/clients/<customer>/agentic-engineering-101/ae101-content.tar.gz`, and substitutes `<CONTENT_URL>` at workbook-render time.
+**Packaging:** `scripts/build-ae101-content-tarball.sh` builds the AE101 content tarball (filename owned by `training-architecture.md` § Material distribution) from `curriculum/lectures/`, `curriculum/exercises/`, `curriculum/trainings/agentic-engineering-101/reference/`, `curriculum/trainings/agentic-engineering-101/supplementary/`, and `content/skills/` (excluding the optional `agentic-nerd` host skill — cohort-default install ships only `access-control-analysis` + `stride`). Maintainer blocks stripped at build time. `scripts/build-workbook.js` invokes the tarball script for AE101, copies the result into the customer's deploy directory, and substitutes `<CONTENT_URL>` at workbook-render time.

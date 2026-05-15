@@ -1,0 +1,174 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/build-your-system.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts — /rename is CLI-only.",
+      "verdict": "REVISE",
+      "evidence": "line:92 — `/rename build-system-style` appears in a bare fenced block after line:89 instructs the student to 'Open a new Cowork session'. Exercise is Cowork-only; §25 states 'No runtime rename API in Cowork or Desktop — CLI /rename is the only path.' The block has no rt-cli wrapper. Cowork students cannot execute /rename.",
+      "fix_hint": "Remove the /rename block or wrap it in an rt-cli div with a Cowork-runtime callout explaining the session name must be set at task-creation time; alternatively drop the rename entirely since the Session widget already names the task.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts — auto-load is filename-based, not folder-based.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load is filename-based: CLAUDE.md auto-loads; arbitrary files like styling-rules.md do not.",
+      "verdict": "REVISE",
+      "evidence": "line:89 — 'This is the break that proves `CLAUDE.md` and `styling-rules.md` are loaded from disk, not remembered from chat.' — implies styling-rules.md auto-loads. Per §6d, only CLAUDE.md is an auto-load filename; styling-rules.md loads only because CLAUDE.md instructs Claude to read it. The mechanism matters for students building their own systems.",
+      "fix_hint": "Rewrite line 89 to distinguish: 'CLAUDE.md auto-loads because it is the folder instruction file; styling-rules.md is read because CLAUDE.md tells Claude to use it — same effect, different mechanism.' This precision guards against students wondering why arbitrary .md files don't auto-load.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "No session rename in Cowork or Desktop — CLI /rename is the only path.",
+      "verdict": "REVISE",
+      "evidence": "line:91-93 — bare fenced block containing `/rename build-system-style` with no runtime fork (no rt-cli div). Exercise is Cowork-only throughout (all **Prompt** blocks labelled *(Cowork)*). The renderer wraps /rename blocks in .rt-cli per §25 only when the author uses plain markdown — but the surrounding instruction at line:87 sets a new Cowork Session widget, giving no signal that the rename step is CLI-exclusive. Cowork users will paste /rename into Cowork chat, where it has no effect.",
+      "fix_hint": "Either (a) remove the /rename block — the Session widget at line:87 already names the session 'Build your system - styled answer', making the rename redundant; or (b) add an explicit rt-cli div and a Cowork-runtime callout ('In Cowork the task name is set when you open the task; skip this step').",
+      "blocking": true
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "Open-hook — ONLY when student input is genuinely required.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — structural trigger: 4+ named sub-steps requires suppressor or body primer.",
+      "verdict": "REVISE",
+      "evidence": "line:65-83 — Phase 2 prompt has 7 action-level steps (Use audit, Use style source, From source propose styling-rules.md, Capture rules, Save styling-rules.md, Propose CLAUDE.md, Save CLAUDE.md). No 'No preamble.' suppressor in the fence and no body primer after the fence. line:125-137 — Phase 4 prompt has 5 action steps with no suppressor or primer.",
+      "fix_hint": "Add a body primer immediately after the Phase 2 and Phase 4 fences: 'Claude will narrate before acting; skip past the opening sentence and look for the proposed styling-rules.md content.' Alternatively add 'No preamble.' as the last line inside each fence.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly **Prompt** — no custom labels.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory on every claim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "CLAUDE.md that tells Cowork to use those rules",
+      "line": 5,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Choose an empty local folder on your computer and open Cowork on it",
+      "line": 7,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "This is the break that proves `CLAUDE.md` and `styling-rules.md` are loaded from disk, not remembered from chat",
+      "line": 89,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "/rename build-system-style (in Cowork context)",
+      "line": 92,
+      "verdict": "REVISE",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 1,
+  "todos_count": 2
+}

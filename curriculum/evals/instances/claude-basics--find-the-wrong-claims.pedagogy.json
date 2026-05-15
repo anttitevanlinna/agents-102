@@ -1,0 +1,280 @@
+{
+  "class": "pedagogy",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/find-the-wrong-claims.md",
+  "verdict": "PASS",
+  "training": "claude-basics",
+  "maintainer_acceptance": [
+    {
+      "rule_index": 16,
+      "original_verdict": "REVISE",
+      "original_blocking": true,
+      "accept_reason": "Risk is real-but-unlikely. M3 is self-study homework — the participant follows phase-to-phase without an impulse to edit `source-answer.md` between Phase 1 (generate) and Phase 2 (run separate checker). The 'Do not fix it yet' constraint sits in body prose and that's enough. Moving it into the fence would address a near-zero-probability flow break and add prompt overhead the common case doesn't need.",
+      "accepted_on": "2026-05-15"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+)",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Exercise quality ladder — target 8, design 9 for peaks",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n>=2 instances with contrast",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation boundaries — student brings, Claude screens",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach the principle and the technique — default",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go — and forcing functions live in prompts, not body prose",
+      "verdict": "REVISE",
+      "evidence": "Phase 1 body prose (between P1 prompt and Phase 2 header): 'Read the answer quickly. Do not fix it yet.' — 'Do not fix it yet' is a load-bearing forcing function: if the student edits before the checker runs, the contrast design breaks. Speed-runners reading prompt-to-prompt will skip it. It belongs inside the Phase 1 fenced prompt (e.g., appended: 'Do not edit source-answer.md — a separate checker will test it next.').",
+      "fix_hint": "Move 'Do not fix it yet' into the Phase 1 fenced prompt as a trailing constraint line. The Phase 1 prompt already ends with a topic drop-in; append one sentence: 'Do not edit the briefing — a separate fact-checker runs next.'",
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra is nice-to-have, never a forcing function",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort-delivered exercises run on trainer-paced concurrent execution",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill is optional; default cohort is no host-skill",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats prefer in-chat over file-write",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom is the default delivery mode; body teaches the work",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification is banned — Claude audits Claude",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report and self-audit charity — verify at artifact, not summary",
+      "verdict": "REVISE",
+      "evidence": "Phase 6 prompt closes with 'After saving, tell me: what you fixed / what the final checker still flagged / whether CLAUDE.md needs one sharper rule' — this is a self-summary of what Claude did, with no push-back prompt giving the student a copyable challenge ('which of these did NOT actually change? Be honest.'). The student is left trusting Claude's own account of its fixes.",
+      "fix_hint": "Add a paste-ready push-back prompt in Phase 6 body after the fenced prompt: 'Which of the three did NOT actually improve? Be specific — I'd rather know.' Alternatively, instruct the student to open source-answer-final.md and fact-check-final.md directly rather than relying on the chat summary.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need a forced-engagement mechanic — defaults and plans alike get rubber-stamped",
+      "verdict": "REVISE",
+      "evidence": "Phase 3: Claude writes a new CLAUDE.md rule and reports it in chat. No forced-engagement mechanic is included — the student accepts whatever rule Claude authors without being asked to read it critically or rewrite one line that doesn't sound right. The rule goes into the folder as a Claude-authored artifact the student never actively owns.",
+      "fix_hint": "After the Phase 3 fenced prompt, add a loose body line (optional push-back for the engaged student): 'Read the rule Claude added. If it would not actually stop you from over-claiming, rewrite it so it would.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "When task selection drives learning outcome, name floor AND ceiling explicitly",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX — file must be both plug-able and operable",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — name three observable Monday-morning outcomes",
+      "verdict": "REVISE",
+      "evidence": "Maintainer block has no dedicated leap-test block naming three observable verbs the student exhibits on their own work by next working day. The Meta section describes the method but states no falsifiable Monday-morning outcomes.",
+      "fix_hint": "Add a 'Leap test' block in the maintainer section with three observable bullets, e.g.: 'runs a separate fact-checker subagent on a Claude-generated briefing before sending it'; 'adds a source-verification rule to CLAUDE.md in their working folder'; 'compares two fact-check rounds and identifies which claims improved and which didn't.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch — every forcing function names its dominant failure and one move that recovers",
+      "verdict": "REVISE",
+      "evidence": "Maintainer block contains no per-phase failure-mode or escape-hatch rows. Phases 2, 5, and 6 each invoke a subagent fact-checker; dominant failure (subagent re-uses the generator's session context and rubber-stamps the answer rather than checking independently) is not named and no escape hatch (e.g., 'if findings look identical to the answer, run the checker in a fresh Cowork session') is documented.",
+      "fix_hint": "Add a failure-modes section to the maintainer block covering at minimum Phase 2/5/6: dominant failure = checker inherits generator context and self-validates; escape hatch = open a genuinely new Cowork session for the checker, or paste source-answer.md text cold into the checker prompt.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get a body-side recovery callout",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias get body-side acknowledgment callouts",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts are class-judge exempt — flagged-by-design",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — source shape; place by learning flow",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Pre-action framing blocks don't preview the prompt's payoff",
+      "verdict": "REVISE",
+      "evidence": "Phase 5 body between session widget and fenced prompt: 'Watch whether Cowork actually runs this as a separate checker. The point is not the label; the point is that the checker reads the sources and the answer as its own job, then reports findings instead of rewriting.' This previews the felt-evidence the Phase 5 prompt is meant to surface — the student arrives knowing what to look for rather than discovering it.",
+      "fix_hint": "Cut the 'Watch whether... rewriting.' sentences from Phase 5 body. The observation can move to a post-prompt body line (past-tense recap shape) after the student has run the prompt and seen the result.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session ships as packaging, not as a new taught primitive",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "/clear is a tool with a purpose, not a ceremony",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 5
+}

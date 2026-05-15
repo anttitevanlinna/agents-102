@@ -4,11 +4,11 @@
 
 You start with a plain Claude HTML answer. You leave with a small working system on a task that matters to your work: `styling-rules.md` for a reusable look and `CLAUDE.md` that tells Cowork to use those rules.
 
-Choose an empty local folder on your computer and open Cowork on it. Everything in this exercise saves there.
-
 **The task** is one small thing you could actually use. Good default: a simple HTML explainer you could send internally. Other options: a one-page answer to a Claude question you keep getting, a short explanation of the difference between Claude and ChatGPT for your own work, or a short guide to which connectors you should enable for a personal workflow.
 
 **Session** *(new, "Build your system - baseline")*
+
+Start in any empty working folder you wish to use. Everything in this exercise saves there.
 
 ## Phase 0. Add base material (3 minutes)
 
@@ -88,10 +88,6 @@ A useful style rule names visible choices, not vibes. *"Use the company's style"
 
 Close this Cowork session. Open a new Cowork session on the same local folder. This is the break that proves `CLAUDE.md` and `styling-rules.md` are loaded from disk, not remembered from chat.
 
-```
-/rename build-system-style
-```
-
 ## Phase 3. Style it from the saved system (4 minutes)
 
 Same HTML answer. New system. Make the thing better.
@@ -136,7 +132,7 @@ Then tell me what changed in the file.
 What I want the next version to do better:
 ```
 
-Look at the file again. The point is not a perfect page. The point is that the folder now knows one more thing.
+Open `response.html` to see what actually shifted, Cowork's chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next run.
 
 When the page is visibly closer and the folder carries the rule forward, stop. The system is small, but it now has something reusable.
 
@@ -153,10 +149,7 @@ Steer what you need to steer.
 **Meta:**
 - **Length:** 26 minutes. 3 + 5 + 7 + 4 + 7 = 26 phase budget
 
-**Quality:** draft 2026-04-29
-- compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. rule #3 + § 2(b) never-abbreviate-modules, check_prompts v2026-04-27)
-- sim-passed 2026-04-27 — STALE since rule-#3 sweep touched body prose at exercise opener and close; re-sim recommended before next cohort
-- mechanical-tested 2026-04-28 (`curriculum/evals/mechanical/instances/claude-basics-m1-verbatim-judge-report.md` @ 18affa1) PASS 13/13 — STALE after the 2026-04-29 prompt/path redesign
-- draft 2026-04-30 (self-study architecture edit: exercise now runs in a local folder; prompt-chain tests not rerun)
+**Quality:** compendium-audited 2026-05-15 (writing@eb1168f pedagogy@eb1168f strategy@eb1168f)
+- judges @eb1168f: writing PASS, story REVISE (see-instances/claude-basics--build-your-system.story.json), technical REVISE (see-instances/claude-basics--build-your-system.technical.json), behavior REVISE (see-instances/claude-basics--build-your-system.behavior.json), pedagogy PASS, strategy PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

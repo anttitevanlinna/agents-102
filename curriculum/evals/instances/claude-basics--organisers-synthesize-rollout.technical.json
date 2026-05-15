@@ -1,0 +1,171 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/organisers-synthesize-rollout.md",
+  "verdict": "PASS",
+  "training": "claude-basics",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompt blocks: No dual-runtime forks in Cowork-only training.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI for public/private content split.",
+      "verdict": "PASS",
+      "evidence": "line:88 — `bosser-strategy:content-strategy-claude-basics.md` pseudo-URI used correctly in maintainer block.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — no session rename in Cowork or Desktop.",
+      "verdict": "REVISE",
+      "evidence": "line:7 — `**Session** *(new, \"Organisers rollout synthesis\")*` in a Cowork-only exercise. Per rule 25, Cowork has no rename API; task names must be set at New-task creation. The session widget renderer auto-wraps `/rename` `<pre>` blocks in `.rt-cli` — meaning the name instruction renders only for CLI users. In a Cowork-only context, this widget may produce a chip the student cannot act on, or silently not render.",
+      "fix_hint": "Verify whether the session widget renders usefully in Cowork (task name set at creation, not via /rename). If not, replace with a plain instruction naming what to call the Cowork task at creation time.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": "line:73 — `Let's focus on:` is the last line of Prompt 3; this is an open-hook pattern (colon invites student input), not a bracket placeholder. Student input is genuinely required (they name which point to draft). Open-hook is valid per rule 1 qualifier.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "REVISE",
+      "evidence": "line:62-63 — Lead-in before Prompt 3 is conditional: \"If the first answer gives you the right angle but not the words yet, ask Claude to draft the point in plain organiser language.\" Rule 2 requires an imperative command-verb lead-in under 20 words. This is a conditional/explanatory sentence, not an action lead-in.",
+      "fix_hint": "Rewrite as imperative: \"Ask Claude to draft the share-back point in plain organiser language.\" Move the conditional context to surrounding body prose.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip.",
+      "verdict": "PASS",
+      "evidence": "Claude Basics is Cowork-only; no dual-runtime forks required per training CLAUDE.md.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "**Session** *(new, \"Organisers rollout synthesis\")* — session widget implies naming a Cowork task via rename",
+      "line": 7,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "All three prompts labeled *(Cowork, organisers only)* — runtime claim that Cowork supports reading shared/ folder files and updating chat readout",
+      "line": 13,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "\"Continuously read the group rollout synthesis files in `shared/`\" and \"After each update, wait briefly, check `shared/` again\" — continuous autonomous polling loop in Cowork",
+      "line": 16,
+      "verdict": "PASS",
+      "source": "inferred"
+    },
+    {
+      "claim": "Save the latest version as `shared/organisers-rollout-readout.md` — Cowork can write to the connected shared/ folder",
+      "line": 34,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "No dual-runtime fork divs used — consistent with Cowork-only training architecture",
+      "line": 1,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

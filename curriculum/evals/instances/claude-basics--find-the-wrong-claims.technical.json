@@ -1,0 +1,189 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/find-the-wrong-claims.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — no session rename in Cowork or Desktop.",
+      "verdict": "REVISE",
+      "evidence": "line:90 — bare code fence ```` ``` /rename fact-check-second-run ``` ```` appears in a Cowork-only training exercise immediately after 'Close this Cowork session. Open a new Cowork session on the same local folder.' The fence is standalone, not inside a **Session** widget inner `<pre>`, so the renderer's `.rt-cli` auto-wrap does NOT fire. The student is instructed to run `/rename` in Cowork where no rename API exists.",
+      "fix_hint": "Remove the `/rename` fence or replace with the Cowork-native alternative — task name is set at New-task creation in Cowork; the session widget should name the session at creation via the `**Session** *(new, \"fact-check-second-run\")` source shape already present on line 85, making the separate `/rename` fence redundant and wrong.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "25a",
+      "rule_lead": "Cowork subagent UI — Read tool calls show in main task UI as if main did them.",
+      "verdict": "REVISE",
+      "evidence": "line:39-40 — exercise body teaches 'Fresh context matters because the checker should not inherit the generator's confidence or wording. It should see the answer and the source material as evidence...' but provides no callout that visually the subagent's reads appear as if main task did them (per §25a). The student may believe the checker is running in isolation when the UI shows both in the same task pane.",
+      "fix_hint": "Add a body callout after the Phase 2 prompt block naming the Cowork-specific UI behaviour: the checker's reads show in the same task UI as main — fresh context is wired into the subagent's job description, not visible from the UI alone.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "REVISE",
+      "evidence": "line:41 — Phase 2 prompt is preceded by 'Fresh context matters because the checker should not inherit the generator's confidence or wording. It should see the answer and the source material as evidence, not as something it just wrote and wants to defend.' — this is a two-sentence rationale paragraph, not a command-verb action lead-in. line:113 — Phase 5 prompt is preceded by 'Watch whether Cowork actually runs this as a separate checker. The point is not the label; the point is that the checker reads the sources and the answer as its own job, then reports findings instead of rewriting.' — descriptive observation, not an action lead-in.",
+      "fix_hint": "Phase 2: add a one-sentence command-verb lead-in immediately before **Prompt**, e.g. 'Run a separate fact-checking subagent on the briefing, isolated from the generator's context.' Phase 5: add e.g. 'Run the same two-check fact-checker on the second briefing and compare results with the first run.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — label with destination.",
+      "verdict": "REVISE",
+      "evidence": "line:21,41,67,97,113,133 — all six prompts use **Prompt** *(Cowork)* destination. Per check_prompts §10, writing *(Cowork)* short-circuits the renderer's auto-swap and the canonical chip shows 'Cowork' rather than the runtime-adaptive 'Claude Code'. The claude-basics training CLAUDE.md explicitly exempts rule 10 runtime-fork divs, but the canonical §3 destination tokens listed are *(Claude Code)* and *(Builder Claude)*. For a Cowork-only training the *(Cowork)* label is deliberate but is not in the canonical token list.",
+      "fix_hint": "Confirm with maintainer whether *(Cowork)* is the intended chip for this training — if so, accept as training-specific exception; if canonical behaviour is required, change to *(Claude Code)* and confirm the renderer auto-swap produces 'Cowork' at runtime. Non-blocking clarification.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement in the prompt.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check — every named tool, skill, path must exist and be available.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load is filename-based, not folder-based.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Close this Cowork session. Open a new Cowork session on the same local folder.",
+      "line": 87,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "/rename fact-check-second-run (in bare code fence on Cowork-only exercise)",
+      "line": 90,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "Run a separate fact-checking subagent on `source-answer.md`.",
+      "line": 44,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "Add one small rule to `CLAUDE.md` for future source-based writing in this folder.",
+      "line": 72,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "This tests whether `CLAUDE.md` changes the next run.",
+      "line": 87,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 1,
+  "todos_count": 2
+}

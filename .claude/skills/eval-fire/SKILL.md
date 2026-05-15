@@ -58,7 +58,7 @@ For the behavior class, the compendium set is fixed: `check_prompts.md` + `check
 
 For the **pedagogy** class, the primary compendium is `check_pedagogy.md` (frontmatter `eval_classes:` contains `pedagogy`). Cross-module rules that moved to `check_cross_module.md` are stub redirects in `check_pedagogy.md` — the judge returns N/A on those numbers. No sim trace.
 
-For the **strategy** class, the primary compendium is `check_strategy_tie_in.md` (frontmatter `eval_classes:` contains `strategy`). Pass `{{strategy_doc_paths}}` per the file's training (`bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101). No sim trace.
+For the **strategy** class, the primary compendium is `check_strategy_tie_in.md` (frontmatter `eval_classes:` contains `strategy`). Pass `{{strategy_doc_paths}}` per the file's training (`bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101; `bosser-strategy:content-strategy-claude-basics.md` for Claude Basics). For shared exercise/lecture files (`curriculum/exercises/<slug>.md`, `curriculum/lectures/<slug>.md`), determine training by slug-matching against the per-training module lists in `site/layouts/curriculum.js` TRAININGS registry. No sim trace.
 
 For the **cross_module** class, the compendium is fixed: `check_cross_module.md`. Substitute `{{module_set_paths}}` with the list of file paths passed as args (joined by newline). No sim trace.
 

@@ -82,7 +82,7 @@ Let's focus on:
 - **Output:** `shared/organisers-rollout-readout.md`
 - **Dependency:** optional for participant success. The group synthesis files are the core artifact
 
-**Quality:** draft 2026-04-29
-- draft 2026-04-29 (organisers-only rollout synthesis split out; sim/mechanical/eval not rerun)
+**Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f)
+- judges @eb1168f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*

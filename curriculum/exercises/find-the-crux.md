@@ -24,6 +24,8 @@ Start with: "What's the first difficulty you see?" After my answer, push back on
 
 When I've answered all three with push-back, ask me for my first name. Then save the conversation as `rollout-notes.md` in the folder named with my first name.
 
+If you can't find my folder, ask me. If somebody else has written there already, ask me.
+
 Include the three difficulties and the push-back answers, in my voice. Don't summarize them into your own register.
 ```
 
@@ -98,6 +100,14 @@ Your job is to correct weak assumptions before they harden into the saved synthe
 
 Before saving, push back until the crux sounds like the group's real trouble, not Claude's neat version of it.
 
+If a participant was slow to save or had sync issues, ask Claude to re-check the group's folders for new content before you finalise.
+
+**Prompt** *(Cowork, group driver, optional)*
+
+```
+Re-check each of the group's first-name folders. Tell me what's new in `rollout-notes.md` since you last read it, or any new file. Redo the crux analysis with the new material and show me whether the synthesis should change.
+```
+
 If the group wants to compare alternatives before approving the synthesis, ask Claude to list the other possible cruxes.
 
 **Prompt** *(Cowork, group driver, optional)*
@@ -156,6 +166,8 @@ Then run cycles. In each cycle:
    If other group files are ready, visit up to two of them. Prefer files we have not commented on yet, but re-read any file that has changed since you last saw it.
    For each:
    - read the file
+   - if it already has a section starting with "Comments from <our group name>", add anything new and relevant from this cycle to that section — don't duplicate bullets you already wrote
+   - just before appending, re-read the file. If another group has added comments since your first read, factor them in before writing yours.
    - append a section named with our group name, for example "Comments from Atlas", with two or three bullets: one idea worth borrowing or extending, one comment or sharper question from our group, plus a flag if you see overlap with our crux
    - save the file
 
@@ -190,9 +202,8 @@ Whenever the group says stop, stop. The artifact is the synthesis file plus what
 - **Maintainer-acceptance — Cowork loop capability (technical class):** the Phase 3 prompt asks Claude to run cycles continuously without re-prompt, and to detect "new sections since last check" across cycles. Pre-ship audit on 2026-05-05 flagged both as UNVERIFIED platform-capability claims. Maintainer accepts — Cowork supports this loop shape per Antti's direct knowledge. Reference: `memory/compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md` (Cowork capability surface). Mechanical re-run still queued pre-cohort against the new Phase 3 prompt
 - **Pre-cohort TODO:** re-run mechanical harness against the reshaped Phase 3 cross-pollination prompt before the first Claude Basics cohort. Existing mechanical-tested row (2026-04-28 @ c25d7c4) is STALE. Capability is maintainer-accepted; mechanical confirms the prompt mechanics (detection, narration cap, stop behavior) actually fire as designed
 
-**Quality:** draft 2026-05-06
-- draft 2026-05-06 (sentence-level cleanup in group-driver guidance; eval not rerun)
-- judges @edf18d5: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f pedagogy@eb1168f strategy@eb1168f)
+- judges @eb1168f: writing PASS, story PASS, technical PASS, behavior REVISE (see-instances/claude-basics--find-the-crux.behavior.json), pedagogy PASS, strategy PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

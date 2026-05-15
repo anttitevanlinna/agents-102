@@ -1,0 +1,138 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/find-the-wrong-claims.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 6,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Based on material in this folder, make a 1 page briefing.",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "source-type-blindness",
+          "confidence": "med",
+          "evidence": "Based on material in this folder",
+          "fix_hint": "Add an extraction-depth check line: 'for each source file, rate how much content you extracted (1-10); flag any under 6'."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Based on material in this folder, make a 1 page briefing.",
+          "fix_hint": "Short single-action prompt; preamble risk is low and structural suppressor is not warranted here."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Run a separate fact-checking subagent on `source-answer.md`.",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Run a separate fact-checking subagent on `source-answer.md`. Give the checker this job: [4 sub-steps] After the checker finishes, summarize the findings in chat:",
+          "fix_hint": "Add a body primer after the fence: 'Claude will narrate briefly before dispatching; skip past the opening sentence and look for the fact-check findings.'"
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Run a separate fact-checking subagent on `source-answer.md`. Give the checker this job:",
+          "fix_hint": "Fresh-context subagent carve-out applies; risk is mitigated. No action needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Use `fact-check-1.md`. Add one small rule to `CLAUDE.md` for future source-based writing",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "append-vs-integrate",
+          "confidence": "med",
+          "evidence": "Add one small rule to `CLAUDE.md` for future source-based writing in this folder.",
+          "fix_hint": "Name integration mode: 'if CLAUDE.md already has a rules or writing-defaults section, insert it there; otherwise add it at the top'."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Add one small rule to `CLAUDE.md` for future source-based writing in this folder.",
+          "fix_hint": "Clarify overwrite behavior: 'append the rule to the existing CLAUDE.md; create the file if it does not exist yet'."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Use `generation-prompt.md`. Run that prompt again and save the new briefing as `source-answer-2.md`.",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Use `generation-prompt.md`. Run that prompt again",
+          "fix_hint": "Two-line prompt; preamble risk is below threshold. No action needed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Run a separate fact-checking subagent on `source-answer-2.md`. Use the same two checks:",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Run a separate fact-checking subagent on `source-answer-2.md`. Use the same two checks: [...] Save the checker findings as `fact-check-2.md`. Then compare `fact-check-2.md` with `fact-check-1.md` in chat. Tell me what improved, what stayed risky, and what is still unclear.",
+          "fix_hint": "Add a body primer after the fence naming the preamble and the skim-past cue; or add a 'No preamble.' suppressor as the last line of the fence."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "Then compare `fact-check-2.md` with `fact-check-1.md` in chat. Tell me what improved, what stayed risky, and what is still unclear.",
+          "fix_hint": "Parent-session Claude generated source-answer-2.md and now grades the delta; add 'Be harsher than necessary — assume regression until the checker proves otherwise' or move comparison into the same subagent to isolate authorship."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "Tell me what improved, what stayed risky, and what is still unclear.",
+          "fix_hint": "Reorder the ask to lead with risks and unclear items: 'what stayed risky, what is still unclear, and what (if anything) improved'."
+        }
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Use `source-answer-2.md` and `fact-check-2.md`. Fix the answer. Save the corrected version",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "high",
+          "evidence": "After saving, tell me: - what you fixed",
+          "fix_hint": "Add a diff step before the self-report: 'Read source-answer-2.md and source-answer-final.md side by side and show the specific sentences that changed' — or dispatch a subagent to enumerate sentence-level changes."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "whether `CLAUDE.md` needs one sharper rule",
+          "fix_hint": "Use self-critique register: 'Audit the rule in CLAUDE.md against what fact-check-final.md found; name one specific way the rule is still too weak, or confirm it was sufficient'."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Use `source-answer-2.md` and `fact-check-2.md`. Fix the answer. Save the corrected version as `source-answer-final.md`. Then run a separate fact-checking subagent... After saving, tell me: [3 items]",
+          "fix_hint": "Add a body primer after the fence: 'Claude will narrate its fix plan briefly; skip past the opening and look for the list of what was fixed'."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 3,
+  "todos_count": 2
+}

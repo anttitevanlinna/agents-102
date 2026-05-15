@@ -1,0 +1,155 @@
+{
+  "class": "storytelling",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/build-your-system.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "module_mood_contract": "capable next step — I can practice this on my own work",
+  "trace_status": "generated_first_time",
+  "rules_evaluated": [
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named and honored.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood doesn't resolve early — arc stays open.",
+      "verdict": "PASS",
+      "evidence": "Phase 3 close: 'One thing should look more like the source. One thing should still be worth improving. That is enough for the next pass.' Correctly refuses to resolve the gap fully until Phase 4. Closer: 'Steer what you need to steer.' hands off to student's own rollout work without tying a bow.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Teaching moment lands — the named teaching moment reliably triggers across persona-skill variation.",
+      "verdict": "PASS",
+      "evidence": "trace.phases[1]: persona sees generic HTML, runs audit, names 5 generic choices. trace.phases[2]: persona creates styling-rules.md + CLAUDE.md — folder-as-system feeling lands. trace.phases[3]: one rule visibly fires after session restart. trace.phases[4]: folder updated with targeted rule. The arc is coherent and the teaching beat (folder is the system) reliably fires.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Big Idea fidelity — exercise honors the M3 hero move.",
+      "verdict": "PASS",
+      "evidence": "Strategy doc M3 hero move: 'Build a small CLAUDE.md-backed system on a task that matters to your work.' Exercise delivers exactly this: CLAUDE.md + styling-rules.md on a student-chosen real task. 'capable next step' mood contract honored.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Pre-action framing blocks don't preview the prompt's payoff.",
+      "verdict": "REVISE",
+      "evidence": "line:44 — 'The gap between generic and yours is the point of Phase 1; let Claude name it.' This sentence sits in body prose BEFORE the audit prompt in reading order. The student reads it, then pastes the audit prompt. By the time Claude names the gap, the student already knows what to expect. Per rule 53 diagnostic axis (d): body names what the prompt will REVEAL — CUT. trace.phases[1].confusion_flags[0] confirms: persona arrives at the audit with the discovery pre-disclosed, mood 7 instead of 8.\n\nSecond instance — line:139 — 'The point is not a perfect page. The point is that the folder now knows one more thing.' Appears in Phase 4 body BEFORE the Phase 4 prompt in reading order. Names the felt-evidence the prompt is meant to deliver. Same rule 53 axis (d) violation. trace.phases[4].confusion_flags[0] confirms.",
+      "fix_hint": "Move or rephrase both pre-announcement sentences to post-prompt position, or cut the 'the point is' naming and let the artifact state speak.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "All core teaching moves are encoded in fenced prompts. Body prose between prompts provides orientation but does not substitute forcing functions. Open-hook pattern correctly used in P1, P2, P4 prompts for student-supplied input.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Body teaches the work; no authored cohort-management sentences.",
+      "verdict": "PASS",
+      "evidence": "No 'share with neighbor', 'tell the room', or comparison-prompt beats found. Self-study delivery — body stays focused on work.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Module-to-module arc — close hands off correctly.",
+      "verdict": "PASS",
+      "evidence": "Strategy doc: 'There is no next live module. There is homework, then the rollout.' The closer 'Steer what you need to steer.' hands off to the student's own rollout work. No next module arc to check; the exercise is M3 terminal.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — regeneration prompts name the overwrite behavior.",
+      "verdict": "REVISE",
+      "evidence": "line:110 — Phase 3 prompt ends with 'Save the updated file.' No explicit overwrite instruction naming 'Overwrite response.html'. Claude will likely pause to ask 'overwrite or create response-v2.html?' trace.phases[3].confusion_flags[0] confirms. Self-study persona ends up with two versions and is unsure which is current.",
+      "fix_hint": "Change 'Save the updated file.' to 'Overwrite response.html with the updated version.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body 'look at it' after visual artifact output is dead weight.",
+      "verdict": "REVISE",
+      "evidence": "line:115 — 'Open response.html and look at it.' After the Phase 3 prompt regenerates and saves the file, this instruction tells the student to do what they're already doing. line:138 — 'Look at the file again.' Same pattern in Phase 4. Both instances are post-prompt body narration of an obvious student action.",
+      "fix_hint": "Cut both 'look at it' sentences or replace with a specific named observation the student should make for the next move.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Rename command in bare code block — no prompt label or lead-in.",
+      "verdict": "REVISE",
+      "evidence": "lines:91-93 — A bare code block contains '/rename build-system-style' with no **Prompt** label, no destination chip, and no lead-in sentence. trace.phases[2].confusion_flags[0]: persona unsure whether to paste in Cowork chat or treat as code example. Some skip it entirely. Per check_prompts rule 3, every copy-paste instruction needs canonical label shape.",
+      "fix_hint": "If the rename is instructional, add a **Prompt** *(Cowork)* label and a one-sentence lead-in. If it is optional flavor, move it to a body parenthetical and remove the code block.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task-selection ceiling named explicitly.",
+      "verdict": "REVISE",
+      "evidence": "line:9 — 'The task is one small thing you could actually use.' gives good floor examples but no explicit ceiling callout (e.g., 'Not a multi-week project. Not a full site redesign.'). Per pedagogy rule 34, both floor AND ceiling must be named. A rollout custodian who picks 'redesign our whole intranet style' hits timeline problems in a 26-minute exercise.",
+      "fix_hint": "Add a one-line bolded anti-pattern callout near line 9: e.g. 'Not a full site or system — one small thing you can see in a browser in under a minute.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget source shape and placement.",
+      "verdict": "PASS",
+      "evidence": "Two session widgets used correctly: exercise-top widget at line 11 (**Session** *(new, \"Build your system - baseline\")*) and mid-exercise re-fork widget at line 87 (**Session** *(new, \"Build your system - styled answer\")*). Both follow the canonical `**Session** *(verb, \"name\")*` source shape. Mid-exercise widget is appropriate for a proof-of-disk-load teaching beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood not punitive — unease is not-knowing, not having-done-wrong.",
+      "verdict": "N/A",
+      "evidence": "M3 mood is 'capable next step', not unease. Rule does not apply.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate — chat-level audience gets plain .md prompt files.",
+      "verdict": "PASS",
+      "evidence": "All prompts are plain fenced blocks in a Cowork-targeted exercise. No skill installs, no Claude Code mechanics. Correct substrate for Claude Basics rollout-custodian audience.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "mood_summary": {
+    "phase_scores": [null, 7, 8, 8, 9],
+    "close_score": 9,
+    "any_below_8": true,
+    "stealing_the_mood": [
+      "Phase 1 (teaching beat, mood 7): body pre-announces the gap ('the point of Phase 1') before the audit prompt runs — audit discovery deflated by one point. Fix: move or cut the pre-announcement."
+    ]
+  },
+  "blocking_findings_count": 1,
+  "todos_count": 4
+}

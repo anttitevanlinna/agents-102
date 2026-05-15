@@ -6,7 +6,7 @@ Start in the same local folder you used for the build-your-system homework, or c
 
 Same folder is OK. If your build-your-system folder already has `CLAUDE.md`, keep using it. This exercise adds a source-checking habit to the same small system.
 
-Add 1 or 2 source files you know well. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.
+Create a `sources/` subfolder and add 1 or 2 source files you know well there. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.
 
 You choose the briefing topic. The first prompt should feel like a normal work request.
 
@@ -21,7 +21,7 @@ Ask Cowork to draft from the source files.
 **Prompt** *(Cowork)*
 
 ```
-Based on material in this folder, make a 1 page briefing.
+Based on material in the `sources/` subfolder, make a 1 page briefing.
 
 Save the briefing as `source-answer.md`.
 
@@ -38,13 +38,15 @@ Now split the work. The generator wrote the answer. A separate checker tests it 
 
 Fresh context matters because the checker should not inherit the generator's confidence or wording. It should see the answer and the source material as evidence, not as something it just wrote and wants to defend.
 
+Ask Claude to dispatch a separate fact-checker.
+
 **Prompt** *(Cowork)*
 
 ```
 Run a separate fact-checking subagent on `source-answer.md`.
 
 Give the checker this job:
-- use only the material in this folder as ground
+- use only the material in the `sources/` subfolder as ground
 - check whether important factual claims in `source-answer.md` are supported by that material
 - check whether any claim overreaches, generalizes, softens, or contradicts that material
 - do not rewrite the answer
@@ -57,6 +59,8 @@ After the checker finishes, summarize the findings in chat:
 - overreaches
 - anything the checker could not tell
 ```
+
+**Subagent:** a Cowork primitive, Claude can dispatch a fresh session to run any task in its own context. Here we use one as a fact-checker, so the check doesn't inherit what the generator just wrote.
 
 Look at the findings. The useful result is often not "wrong." It is "not in the sources" or "too broad."
 
@@ -71,9 +75,9 @@ Use `fact-check-1.md`.
 
 Add one small rule to `CLAUDE.md` for future source-based writing in this folder.
 
-The rule should say that before finalizing an answer based on material in the folder, Cowork should run a separate fact-checking subagent that checks:
+The rule should say that before finalizing an answer based on material in the `sources/` subfolder, Cowork should run a separate fact-checking subagent that checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Keep the rule short and practical.
 
@@ -85,10 +89,6 @@ The rule does not make Claude perfect. It gives the folder a better default move
 **Session** *(new, "Find wrong claims - second run")*
 
 Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether `CLAUDE.md` changes the next run.
-
-```
-/rename fact-check-second-run
-```
 
 ## Phase 4. Generate again (5 minutes)
 
@@ -117,7 +117,7 @@ Run a separate fact-checking subagent on `source-answer-2.md`.
 
 Use the same two checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Save the checker findings as `fact-check-2.md`.
 
@@ -139,7 +139,7 @@ Fix the answer. Save the corrected version as `source-answer-final.md`.
 
 Then run a separate fact-checking subagent on `source-answer-final.md` using the same two checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Save the final checker findings as `fact-check-final.md`.
 
@@ -148,6 +148,8 @@ After saving, tell me:
 - what the final checker still flagged
 - whether `CLAUDE.md` needs one sharper rule
 ```
+
+**Caveat:** Self-reporting is known to be spotty. If Cowork's account of what it fixed doesn't match what `source-answer-final.md` actually shows, trust the file.
 
 > Even after this, the answer might still contain errors. Today's LLM will not arrive at complete truth on its own. The loop makes the work better, but human oversight is what keeps the operation truthful.
 >
@@ -159,8 +161,7 @@ After saving, tell me:
 - **Length:** 35-40 minutes self-study. Six-phase loop: generate → fact-check → persist rule → new session → generate → fact-check → fix → fact-check again.
 - **Core method:** separate generator from checker. The checker uses source support and overreach against known local material.
 
-**Quality:** draft 2026-04-29
-- draft 2026-04-30 (self-study redesign: local-folder input, two detection methods, personal CLAUDE.md rule write; sim/mechanical/eval not rerun)
-- revised 2026-05-06 (source-file generation loop with separate fact-checking subagent; eval not rerun)
+**Quality:** compendium-audited 2026-05-15 (story@eb1168f pedagogy@eb1168f strategy@eb1168f)
+- judges @eb1168f: writing REVISE (see-instances/claude-basics--find-the-wrong-claims.writing.json), story PASS, technical REVISE (see-instances/claude-basics--find-the-wrong-claims.technical.json), behavior REVISE (see-instances/claude-basics--find-the-wrong-claims.behavior.json), pedagogy PASS (accept-rule-16-self-study-low-prob), strategy PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

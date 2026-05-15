@@ -1,0 +1,198 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/organisers-prepare-claude-basics.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work — write 'start a new session in X,' not 'open Claude Code in X.'",
+      "verdict": "REVISE",
+      "evidence": "line:90 \"The driver opens Cowork on the SharePoint workshop folder root\"; line:100 \"one organiser opens Cowork on the SharePoint workshop folder root\"; line:125 \"start a new Cowork session on the same workshop folder root\"; line:142 \"start a new Cowork session on the same workshop folder root\"",
+      "fix_hint": "Cowork's correct UI verb is 'Click New task and select <path> as the working folder' (per reference_cowork_capabilities.md 2026-04-28); 'opens Cowork on' and 'start a new Cowork session' use Code-style vocabulary in a Cowork-only exercise.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Cowork vocabulary: unit of work is 'task', not 'session'.",
+      "verdict": "REVISE",
+      "evidence": "line:32 \"another Cowork session can read a file\"; line:47 \"another Cowork session can read a file\"",
+      "fix_hint": "Inside the CLAUDE.md content block (lines 30-33) and body prose, 'Cowork session' should read 'Cowork task' to match verified Cowork vocabulary (reference_cowork_capabilities.md §Vocabulary, verified 2026-04-28).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7a",
+      "rule_lead": "CLAUDE.md describes the runtime, not just the task.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — task names set at New-task creation.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in. Under 20 words.",
+      "verdict": "REVISE",
+      "evidence": "line:142 \"After Phase 3 creates one group synthesis file in `shared/`, start a new Cowork session on the same workshop folder root and ask Claude to create two more fake group syntheses.\" (31 words)",
+      "fix_hint": "Trim to a semantic summary of what the prompt does, under 20 words — e.g. 'Ask Claude to generate two more fake group synthesis files from the rehearsal pattern.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Prompt 1 (line 106) references 'the rollout-notes.md file you just created in the first-name folder from the participant rehearsal' — same-session scrollback is valid, and the path is genuinely variable (organiser's own name choice); no deterministic path is constructible. Mark as TODO for mechanical runner coverage.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompt blocks: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — structural trigger: 4+ named sub-steps require a preamble suppressor or body primer.",
+      "verdict": "REVISE",
+      "evidence": "Prompt 1 (lines 106-121): 5 action items (Use/Create/Keep/Make/After saving). Prompt 2 (lines 146-158): 5 action items (Scan/Read/Use as pattern/Make different/After saving). Neither fence contains 'No preamble.' and neither has a body primer immediately after the fenced block.",
+      "fix_hint": "Add 'No preamble.' as the last line of each prompt fence, or add a body primer sentence after each fence: 'Claude will narrate before acting; skip past the opening and look for the listed files.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly **Prompt** — custom labels break the renderer.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Participants copy the workbook prompts into Cowork",
+      "line": 43,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "OneDrive may need a moment before another Cowork session can read a file that was just saved by a different session",
+      "line": 32,
+      "verdict": "PASS",
+      "source": "inferred"
+    },
+    {
+      "claim": "start a new Cowork session on the same workshop folder root",
+      "line": 125,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "opens Cowork on the SharePoint workshop folder root",
+      "line": 100,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "Session widget: **Session** *(new, \"Dry run - participant notes\")*",
+      "line": 98,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 1
+}

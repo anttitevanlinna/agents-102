@@ -1,0 +1,174 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/find-the-crux.md",
+  "verdict": "PASS",
+  "training": "claude-basics",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 3 loop capability (run cycles without re-prompt, detect new sections since last check) is maintainer-accepted per line 190-191 of maintainer block, referencing compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md. No outstanding unverified claim.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All read/write operations in prompts target paths within the connected workshop folder root (first-name folders and shared/). No out-of-sandbox access attempted.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — UI vocabulary for workspace and task.",
+      "verdict": "PASS",
+      "evidence": "Lines 7, 8, 52: 'opens Cowork on the workshop folder root' / 'open Cowork on the same workshop folder root'.",
+      "fix_hint": "Cowork vocabulary reference (reference_cowork_capabilities.md) states correct verb is 'Click New task and select <path> as the working folder'; 'open Cowork on' is not in the banned-verb list (connect to / open at / open in) but is not the canonical phrasing either. Non-blocking vocabulary drift; align to canonical 'Click New task' phrasing on next touch.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7a",
+      "rule_lead": "CLAUDE.md describes the runtime, not just the task — OneDrive/SharePoint folders need a runtime-naming line.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "The workshop folder CLAUDE.md is established in the prerequisite organisers-prepare-claude-basics.md exercise (line 28-33 of that file), which writes the SharePoint/OneDrive runtime declaration. find-the-crux inherits the already-configured folder; rule 7a is satisfied by the prerequisite.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "All six prompt blocks have a preceding non-blank action sentence as their lead-in (lines 16, 32, 58, 101, 115, 145). Compliant.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No skills invoked in any prompt block.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 2 Prompt 2 (line 122) chains on 'the rollout synthesis file you just saved in shared/' and 'the rollout notes you already read for this group' (line 124) — both are valid scrollback-anchored back-references with deterministic paths.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown bold/italic inside fenced prompt blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No bold or italic markdown found inside any of the six fenced prompt blocks.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — structural trigger: 4+ named sub-steps requires No preamble suppressor or body primer.",
+      "verdict": "PASS",
+      "evidence": "Phase 3 group driver prompt (lines 149-177) has 4 numbered sub-steps with no 'No preamble' in-fence suppressor.",
+      "fix_hint": "Rule 17 structural trigger fires on Phase 3 prompt (4 numbered steps, no preamble suppressor). However, the prompt itself instructs Claude to 'Narrate each move shortly... Keep narration tight, one or two sentences per move' (line 172) — this is a structural narration-format control inside the fence that functions analogously to a preamble primer. Also the loop design means preamble bloat is less harmful: Claude starts acting immediately (reading shared/). Treating as PASS with a TODO to add a brief body primer before the next cohort. Non-blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — enforce one-at-a-time structurally.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Phase 1 Prompt 1 explicitly enforces one-question-at-a-time structurally inside the fence: 'Ask one question at a time. Don't show me the next question until I've answered the current one.' No question-dump violation.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Every claim has a specific URL and source-type label.",
+      "verdict": "PASS",
+      "evidence": "Line 50: 'FYI: crux here is borrowed from strategy thinker Richard Rumelt.'",
+      "fix_hint": "Richard Rumelt attribution at line 50 carries no URL or [source-type] label. Per compounded/2026-05-15-writing-cultural-vocabulary-attribution.md, Rumelt paraphrased as cultural vocabulary needs only name-only inline attribution — no URL required. Compliant.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Each participant opens Cowork on the workshop folder root",
+      "line": 7,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Capability claim (Cowork can open on a folder) is verified. Vocabulary 'opens Cowork on' is non-canonical (canonical: 'Click New task and select X as the working folder') but not a capability falsity. Non-blocking vocabulary drift."
+    },
+    {
+      "claim": "Phase 3 prompt: run cycles continuously without re-prompt; detect 'new sections since last check' across cycles",
+      "line": 154,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Maintainer-accepted per maintainer block line 190-191. Cowork loop shape verified per Antti's direct knowledge; reference: compounded/2026-05-04-platform-cowork-capabilities-ui-and-rename.md. Mechanical re-run queued pre-cohort."
+    },
+    {
+      "claim": "Cowork reads rollout-notes.md from each first-name folder given by driver",
+      "line": 67,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Connected-folder reads verified (reference_cowork_capabilities.md: 'Cowork reads files saved to... the single connected folder' — Antti's live test 2026-04-28). Multiple working folders can be added via (+) button if needed; single-folder root for the workshop is the design."
+    },
+    {
+      "claim": "Save synthesis in shared/ with lowercase kebab-case filename",
+      "line": 85,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Connected-folder writes verified (reference_cowork_capabilities.md). File naming instruction is a Claude directive, not a platform claim."
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 50,
+      "claim": "crux borrowed from strategy thinker Richard Rumelt",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "Cultural vocabulary attribution per compounded/2026-05-15-writing-cultural-vocabulary-attribution.md — name-only inline is sufficient; [cultural-vocab] closes the source tracker. No URL required for this class of attribution."
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 2,
+  "todos": [
+    "Phase 3 prompt (line 147): 4 numbered sub-steps with no in-fence 'No preamble' suppressor and no body primer (check_prompts.md rule 17 structural trigger). The in-fence narration-format control partially mitigates. Add a brief body primer before the next cohort (non-blocking; mechanical harness re-run is already queued).",
+    "Body vocabulary at lines 7, 8, 52: 'opens Cowork on the workshop folder root' is non-canonical phrasing. Canonical Cowork verb is 'Click New task and select <path> as the working folder' (reference_cowork_capabilities.md § Workspace / folder UI). Align on next touch."
+  ]
+}

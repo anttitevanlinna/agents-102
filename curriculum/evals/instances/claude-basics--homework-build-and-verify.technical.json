@@ -1,0 +1,144 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/claude-basics/homework-build-and-verify.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "REVISE",
+      "evidence": "line:35 — \"`CLAUDE.md` tells Cowork when to use it\" — CLAUDE.md auto-load behavior in Cowork is not documented in reference_cowork_capabilities.md. Platform rule 6d documents auto-load for Claude Code sessions; no equivalent entry exists for Cowork tasks. The build-your-system exercise (line 89) asserts the same claim implicitly. Unverified for the Cowork runtime.",
+      "fix_hint": "Add a verified Cowork CLAUDE.md auto-load entry to reference_cowork_capabilities.md (probe: open a fresh Cowork task on a folder containing CLAUDE.md; ask 'What rules are you following?'; confirm whether the file is auto-read). Then backport the confirmed or corrected phrasing to this line and the build-your-system exercise.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work — write 'start a new session in X,' not 'open Claude Code in X.'",
+      "verdict": "REVISE",
+      "evidence": "line:24 — \"Open Cowork on that folder.\" — The Cowork capabilities reference explicitly says: \"Don't say 'connect to', 'open at', or 'open in' — those are wrong verbs for Cowork.\" The correct affordance is \"Click **New task** and select `<path>` as the working folder.\"\nline:45 — \"Open a new Cowork session on the same folder.\" — The capabilities reference specifies the Cowork unit is \"task\" not \"session.\" Curriculum prose at the Cowork seam must use \"task\" or a generic recast per capabilities doc.",
+      "fix_hint": "Line 24: replace with 'Click **New task** in Cowork and select this folder as the working folder.' Line 45: replace 'Open a new Cowork session' with 'Start a new Cowork task' (or 'Click **New task** in Cowork and select the same folder').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork is sandboxed to its connected working directories.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "REVISE",
+      "evidence": "The section intro ('When both exercises are done, ask Claude to summarize what your folder can now do.') is separated from the prompt block by the Session widget and a setup instruction ('Open a new Cowork session on the same folder.'). Per the canonical shape (rule 3), the lead-in must be immediately before the **Prompt** label. The intervening setup line reads as a mechanical instruction, not the semantic action lead-in.",
+      "fix_hint": "Move the semantic lead-in to immediately precede the prompt marker, or add a second lead-in sentence directly above the marker ('Ask Claude to summarize what this folder can do and which habits are worth carrying forward.') after the setup instruction.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "REVISE",
+      "evidence": "The prompt in cb-homework-folder-summary.md has 4 named question sub-steps under 'Tell me:' (what I can do, reusable patterns, rule/habit worth carrying, what to run through a separate checker). Rule 17's structural trigger fires at 4+ named sub-steps. No in-fence 'No preamble.' suppressor is present, and no body primer appears after the prompt block (the next section is '## Follow-up' with 'The live session is over.').",
+      "fix_hint": "Either add 'No preamble.' as the final line of the prompt in the registry file cb-homework-folder-summary.md (requires maintainer approval per rule 22), or add a one-line body primer immediately after the {{prompt:cb-homework-folder-summary}} marker: 'Claude will narrate briefly before listing; skim past the opening sentence and read the bullets.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in the registry; module files reference them by marker.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "Open Cowork on that folder.",
+      "line": 24,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "`CLAUDE.md` tells Cowork when to use it",
+      "line": 35,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "Open a new Cowork session on the same folder.",
+      "line": 45,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "Everything you save in these exercises stays there.",
+      "line": 24,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
+  ],
+  "citations_checked": [],
+  "skills_referenced": [
+    {
+      "name": "cb-homework-folder-summary (prompt registry)",
+      "line": 47,
+      "exists": true
+    }
+  ],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 4
+}

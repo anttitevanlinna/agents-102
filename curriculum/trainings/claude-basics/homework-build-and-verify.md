@@ -57,8 +57,9 @@ The live session is over. The rollout is not. Keep the folder summary and the op
 - **Length:** 60-90 minutes async self-study
 - **Runtime:** Cowork in an empty local folder chosen by the participant. No cohort working tree or group-driver dependency
 
-**Quality:** draft 2026-04-30
-- draft 2026-04-30 (new homework-launch module after strategy restructure; sim/mechanical/eval not rerun)
+**Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f behavior@eb1168f pedagogy@eb1168f)
+- judges @eb1168f: writing PASS, story PASS, technical REVISE (see-instances/claude-basics--homework-build-and-verify.technical.json), behavior PASS, pedagogy PASS, strategy REVISE (see-instances/claude-basics--homework-build-and-verify.strategy.json)
+- cross_module @eb1168f: PASS — set=[M1,M2,M3,M4]
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*
 

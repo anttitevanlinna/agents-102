@@ -1,0 +1,138 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/find-the-crux.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "trace_status": "full_regen",
+  "prompts_evaluated": 6,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Interview me about the top three difficulties I see in our team's Claude rollout",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "push back once: ask for a specific example, or ask whether that's the actual difficulty or a symptom of something deeper",
+          "fix_hint": "Strengthen the push-back instruction to 'name the deeper cause and ask which is the real difficulty' — less room to land softly."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "4 named structural steps (start with question, push back, ask name, save); no preamble suppressor",
+          "fix_hint": "Add 'No preamble. Start with: \"What's the first difficulty you see?\"' as the prompt's last line."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "I have a few ideas about what we should do next with Claude rollout.  Interview ",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "capture those ideas clearly in my `rollout-notes.md` — no append/overwrite instruction; file already contains Phase 1 interview content",
+          "fix_hint": "Add 'Append the ideas to rollout-notes.md — do not overwrite existing content.' to name the integration mode explicitly."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "Show me the proposed addition in chat before saving it — pre-confirm pattern may produce a hesitate-and-ask loop after each idea",
+          "fix_hint": "Replace with 'Tell me what you added after saving it' to use post-action-report shape and eliminate the confirm loop."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Create our group's rollout synthesis.  First ask me for the exact folder names o",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "7+ named sequential sub-steps with no in-fence 'No preamble.' suppressor and no rule-17-compliant body primer post-fence",
+          "fix_hint": "Add 'No preamble. Ask me for the folder names first.' as the prompt's last line, OR add a body primer immediately after the fence naming the preamble + skim-past cue."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "Propose the crux. Use Richard Rumelt's meaning: the one difficulty that, if our team got it right, would make the others follow — no explicit single-commitment instruction",
+          "fix_hint": "Add 'Name exactly ONE crux. Do not offer alternatives. The group will push back if you are wrong.' before the show-in-chat step."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Based on what you have read, list the other possible cruxes. ",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Based on what you have read — relies on retained reading context; may inflate or invent if session has compacted",
+          "fix_hint": "Add 'only from the rollout notes you read in this session; do not invent' to anchor to evidence."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Confirm the rollout synthesis file exists in `shared/`. If it does not exist, sa",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "5 named sequential sub-steps (confirm, read synthesis, scan notes, ask group, append+read+save+summarise); no in-fence suppressor; no rule-17-compliant body primer",
+          "fix_hint": "Add 'No preamble. Check shared/ first.' as the prompt's last line, or add a one-sentence body primer after the fence."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "add your brief read below them: which idea best fits the crux, which might be premature — 'might be premature' allows hedged non-committal reads",
+          "fix_hint": "Add 'if you cannot distinguish, name the weakest fit explicitly anyway' to force a concrete call."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "which might be premature — Claude may rate every idea as useful and avoid naming a clear weak fit",
+          "fix_hint": "Same recovery as self-audit-charity above."
+        }
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Use the same group name from the synthesis file you just saved. If you cannot te",
+      "verdict": "REVISE",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "high",
+          "evidence": "4 numbered cycle steps with 6+ nested sub-items; no in-fence 'No preamble.' suppressor and no post-fence body primer meeting rule-17 structural trigger shape",
+          "fix_hint": "Add 'No preamble. Start cycle 1 now.' as the prompt's last line, or add a body primer: 'Claude will narrate before acting; skip to the first action line.'"
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "med",
+          "evidence": "one comment or sharper question from our group — 'sharper question' may soften to a gentle observation rather than a pointed challenge of the crux selection",
+          "fix_hint": "Strengthen to 'one pointed question that challenges whether the crux they named is the real constraint' rather than 'one comment or sharper question'."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "evidence": "append a section named with our group name … save the file — explicit append verb mitigates; low risk on repeated re-visits within same loop",
+          "fix_hint": "Add 'do not modify existing sections' to the append instruction if concerned about repeated cycle visits to the same file."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 2,
+  "todos_count": 1
+}

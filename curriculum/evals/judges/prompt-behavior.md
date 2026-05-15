@@ -35,6 +35,10 @@ and use the EXPANDED output as the file under audit. The expander resolves each 
 
 `{{file_path}}` is still the canonical identity for instance JSON and Quality stamping — only the file CONTENT view shifts to expanded.
 
+## Hard boundary — read-only on the target file
+
+You do NOT modify the target file. Not the body, not the maintainer block, not the `**Quality:**` line, not the `behavior@<sha>` pin. Verdicts only — return the JSON, write to the instance file path, write to the trace cache path. Quality stamping is the orchestrator's job via `update-quality.sh`, called AFTER your verdict returns. The mention of "Quality stamping" above refers to what the orchestrator does with your verdict, not what you do yourself. Canonical source: `memory/compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`.
+
 ## What you evaluate
 
 For each `**Prompt**` fenced code block in the body (above any `<!-- maintainer -->` cut, excluding maintainer-block prompts), reason about:

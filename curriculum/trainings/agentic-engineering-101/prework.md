@@ -20,6 +20,8 @@ Pick one. Every module of this training starts from a Claude Code session in thi
 
 ## 2. Start a new Claude Code session in THAT repo
 
+**Session** *(new, "prework")*
+
 CLI or desktop, your call. Open a new session with the repo as the working directory.
 
 ## 3. Get the content folder onto your laptop
@@ -33,6 +35,8 @@ You need `agents-102-content.tar.gz` saved to `~/Downloads/`. Two paths to the s
 {{prompt:ae101-prework-download-tarball}}
 
 ## 4. Hand the rest to Claude
+
+> **Trivial bug means trivial.** A one-line fix or a small typo-shaped thing. Not an epic, not a multi-file refactor.
 
 Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1. Claude will need to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
 
@@ -48,12 +52,17 @@ If Step 4's screening feels like Claude is asking everything at once, ask Claude
 
 ## Bring to Module 1
 
+Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
+
+A picked bug from Step 4. Come to Module 1 without one and you'll be scrambling to find one while the room is already fixing theirs. Your call.
+
 Connections question at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@0f32201 technical@0f32201 behavior@ab4b0bd pedagogy@3605eee strategy@3605eee)
+- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @3605eee: PASS — set=[prework, getting-going]
 - mechanical @6121abd: PASS — ae101-prework via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
@@ -74,7 +83,7 @@ Connections question at the opening: *what's one trick you figured out with Clau
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| AE101 content bundle | `~/Downloads/agents-102-content.tar.gz` extracted to `~/Documents/ae101-content/` (or student-confirmed equivalent) | Prework Step 3/4 download + extract prompt | Every module as local reference material; M3 skill install source; scheduled-agents/reference links remain browsable from the content folder |
+| AE101 content bundle | `~/Downloads/agents-102-content.tar.gz` extracted to `~/Documents/ae101-content/` (or student-confirmed equivalent) | Prework Step 3/4 download + extract prompt | Every module as local reference material; M3 skill install source; reference + supplementary links remain browsable from the content folder |
 | Curated security skills | `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md` | Prework Step 4 install prompt | M3 Exercise 1 invokes `access-control-analysis`; M3 Exercise 2 invokes `stride` |
 | Chosen trivial bug | Prework session scrollback in the chosen repo, plus tracker/repo context if one exists | Prework Step 4 bug-screen conversation | M1 `fix-tests-first` prompt consumes the selected bug |
 | Repo readiness read | Prework session summary: test command or named check path, git status, PR readiness blockers | Prework Step 4 readiness check | M1 trainer/student triage; M1 `fix-tests-first` and `compound-and-close` assume the repo can test, branch, commit, and open or draft a PR |

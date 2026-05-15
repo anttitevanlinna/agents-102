@@ -8,14 +8,6 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 Write `reference/hooks-and-loops.md` (1–2 page reference doc): stop-hook vs. command-loop tradeoff, two minimal examples, when to reach for which. Link from M3 + M5 maintainer blocks. Separate session.
 
-## Collapse § 9 vs scheduled-agents.md; rescue session-lifecycle; incorporate new `/goal` command
-
-Bundled rework, separate session.
-
-- **Collapse `claude-code-for-engineers.md` § 9 to a one-paragraph pointer at `scheduled-agents.md`.** `scheduled-agents.md` becomes the canonical scheduling page; reference page stops competing with it. (The 2026-05-14 verification reconciled `/loop` + `/schedule` inside §9; if §9 collapses later, the reconciliation moves with it.)
-- **Rescue the session-lifecycle three gotchas** (laptop sleep freezes the session; Ctrl+C mid-tool can corrupt `.jsonl`; no per-session budget cap) out of § 9 into their own short section in `claude-code-for-engineers.md`. They apply to any long-running session, not just scheduled ones, and M4's un-packaged send-off depends on them whether or not a scheduler is involved.
-- **Check across and incorporate the new `/goal` command.** Live-test scope, audit `claude-code-for-engineers.md` § 11 (slash-command coverage) + `scheduled-agents.md` + any module body that should reference it. Land it where it fits.
-
 ## AE101 reference + supplementary audit findings (2026-05-09; refreshed 2026-05-14)
 
 Most 2026-05-09 items closed by the 2026-05-14 verification pass (`/tmp/ae101-todo-zero/{engineer-ref-and-scheduled,mcp-and-connectors,cicd-supp-zombie-audit}.md`). Real bugs fixed: plan-mode URL pointed at product `/overview` (now permission-modes anchor); Shift+Tab cycle order was wrong (`acceptEdits` not `Auto-accept`, `auto` no longer in default cycle); plan-mode approval options drifted from 4 to 5 with re-wording (rewrote table verbatim); Atlassian MCP endpoint moved to `/v1/mcp/authv2`. `/context` + `/clear` added to §11 with "two verbs split the work" framing; `/schedule` + self-paced `/loop` added to §9; `code.claude.com` confirmed canonical (`docs.anthropic.com` 301-redirects); stale-after line added to engineer-ref footer. AE101 M2 `plan-mode-done-right.md` line 12 corrected (count dropped).
@@ -30,13 +22,15 @@ Most 2026-05-09 items closed by the 2026-05-14 verification pass (`/tmp/ae101-to
 
 - **`reading-the-return.md` + `learning-through-contrast.md`**, custom-persona sim: dual-mode reader (pre-read + in-room handout) at the M5 openers. Standard Maija/Greg/Jin trio doesn't simulate the dual-mode use.
 - **`learning-through-contrast.md`**, cross-file framing alignment with its pre-read (no contradictions, no different vocabulary). Auto-fire is per-file; cross-file consistency needs explicit invocation.
-- **`the-loop-has-a-name.md`**, custom-persona sim: CTO (vendor-plug risk on Ramp/Intercom anchoring), senior engineer (recognition vs remedial), engineer who never went past M1–M6 (does the scheduled-agents callout grow a need-to-try-now itch).
+- **`the-loop-has-a-name.md`**, custom-persona sim: CTO (vendor-plug risk on Ramp/Intercom anchoring), senior engineer (recognition vs remedial), engineer who never went past M1–M6 (does the long-running-shapes callout grow a need-to-try-now itch).
 - **`the-loop-has-a-name.md`**, `/schedule` and `/loop` capability recheck via `claude-code-guide` within two weeks of any cohort date. Delivery-time exercise, not a content-time check.
 - **`arc-retrospective.md`**, confirm Agent-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route through main conversation with the same quote rule.
 - **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for Nerd's M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
 
 ## Cross-cutting ops
 
+- **`update-quality.sh` supports only one `cross_module` row per file (2026-05-15).** When a module is in multiple adjacent-pair audits (M1 is in [prework, M1] AND [M1, M2]; M2 will be in [M1, M2] AND [M2, M3]; etc.), stamping the second pair overwrites the first row. After this session's audit, `getting-going.md` shows only the M1↔M2 cross_module stamp; the prework↔M1 stamp is preserved on `prework.md` but invisible from M1. Enhancement: support multiple `- cross_module @<sha>: PASS, set=[...]` rows when a module participates in more than one audited adjacent pair. Script change, not a content TODO. Decision: pre-cohort hygiene only if M1 ever gets re-audited and the missing row matters; otherwise leave for the next eval-system maintenance window.
+- **Sweep the other 5 judge templates for "Quality" mentions.** 2026-05-15 found `prompt-behavior.md` and `technical.md` invited judge subagents to advance their own SHA pins; both templates tightened with explicit hard-boundary sections. The other 5 (`writing.md`, `story.md`, `pedagogy.md`, `strategy.md`, `cross-module.md`) need the same audit, check whether any mention "Quality" in actor-ambiguous wording and add the same hard-boundary section. Canonical source: `memory/compounded/2026-05-15-platform-judge-subagent-must-not-stamp-quality-block.md`.
 - **Architecture integrity reference**, write `reference/architecture-under-agentic-velocity.md`: how teams preserve architectural intent while agents make local changes quickly. Survey practitioner patterns (Klaassen / Curran on review structure, Cherny on stop-hooks as architectural enforcement, Ramp's skill marketplace as crystallized convention). Candid about being a survey, not a settled answer. Source: Uncle Bob (Robert C. Martin) on architecture + agentic coding. Separate session.
 - **Trainer post-cohort feedback capture mechanism**, design how trainer's classroom observations route into module-file edits. `trainer-guide.md` § Feedback Loop currently points at this file (*"Capture mechanism is being designed, see pre-cohort-todos.md"*). Decision deferred 2026-05-14 to after first cohort runs; first cohort will reveal what shape is actually needed.
 

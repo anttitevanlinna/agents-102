@@ -5,7 +5,7 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 
 ## Prework
 
-Complete the prework at the top of this workbook.
+Complete the prework at the top of this workbook. You'll open the first session in the repo you picked there.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -46,7 +46,7 @@ The compound step runs inside the `compound-and-close` exercise. The agent revie
 [How this training was built](lectures/how-this-training-was-built.md)
 
 ## Next
-Module 1 ran the loop once on a trivial bug, no plan mode. Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context).
+Module 1 ran the loop once on a trivial bug, no plan mode. Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session when the ticket lands; Module 2 opens fresh in the same repo.
 
 ## Homework after Module 1, between-module reading
 
@@ -59,8 +59,9 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@5d170d3 technical@0f32201 behavior@ab4b0bd)
-- judges @5d170d3: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@5d170d3 technical@0f32201 behavior@ab4b0bd)
+- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy grandfathered, strategy grandfathered
+- cross_module @3605eee: PASS — set=[getting-going, plan-mode-done-right]
 - mechanical @6121abd: PASS — ae101-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
@@ -105,6 +106,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
+| Chosen trivial bug (incoming) | Prework session scrollback in the chosen repo + tracker/repo context if one exists | Prework Step 4 bug-screen conversation | M1 Ex2 `fix-tests-first` prompt consumes the selected bug as the failing-test target |
 | Personal rules file | `./CLAUDE.local.md` (repo-personal, gitignored; create-or-integrate) | Exercise 3 compound prompt — Claude reviews full session, writes from evidence, user pushes back | Every future session in this repo (auto-loads at session-cold start); M2 plan-reading session opens with these rules already in context; M4 walk-and-fill audit subagent reads as part of *"system you have"*; M3 sharpens further with security/skill-authoring rules |
 
 The shipped PR and the closed ticket via MCP connector are produced this module but live in external systems (the PR system, the ticket tracker) — neither is consumed by a downstream module by stable path, so per rule 46's carve-out they're exempt from the contract requirement. Both still ship; just not as cross-module file artefacts.

@@ -50,7 +50,7 @@ Pedagogy compendium technical sub-rules (items the plan-pressure-test identified
 ## Out of scope (do NOT do)
 
 - Real Claude runs against prompts. The mechanical harness at `curriculum/evals/mechanical/runners/` owns that. If you suspect a prompt would mis-execute, mark a TODO referencing the runner; do not run it yourself.
-- Editing the file. Verdicts only.
+- **Editing ANY part of the target file, including the maintainer block.** Verdicts only. Do NOT update the `**Quality:**` line. Do NOT advance `technical@<sha>` pins. Do NOT touch dimension-log rows. Quality stamping is the orchestrator's job via `update-quality.sh`, called AFTER you return the verdict — see `memory/compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`. The mention of "Quality stamping" elsewhere in this template refers to what the orchestrator does with your verdict, not what you do yourself.
 - Deep webfetch of every URL. Sample 3–5; if all are alive, mark URL-liveness PASS with note "<N>/<N> sampled alive."
 
 ## Capability-check shortcut

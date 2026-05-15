@@ -5,9 +5,11 @@ Reading a plan is finite. Your own read catches some of it, a second agent walki
 
 ## Prework
 
-Surface one multi-file backlog task in conversation with Claude. Criteria: non-trivial agent work, touching wrong file matters, you'd ship it today if you had the hour.
+Open a new Claude Code session in the repo you used for Module 1. Surface one multi-file backlog task in conversation with Claude. Criteria: non-trivial agent work, touching wrong file matters, you'd ship it today if you had the hour.
 
 **Just a simple task that spans a few files. Not an epic.**
+
+Come to Module 2 without a surfaced task and you'll be scrambling to find one while the room is already in plan mode. Your call.
 
 Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
 
@@ -69,8 +71,9 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@0f32201 technical@0f32201 behavior@ab4b0bd)
+- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy grandfathered, strategy grandfathered
+- cross_module @3605eee: PASS — set=[getting-going, plan-mode-done-right]
 - mechanical @6121abd: PASS — ae101-m2-pushback via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet

@@ -36,8 +36,8 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee)
+- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
@@ -65,3 +65,8 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 **Arc:**
 - Picks up from: `orient-and-introspect` — fix happens in the window the student just mapped.
 - Hands off to: `compound-and-close` — the retro extends the rule, the connector closes the ticket.
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
+1. **Writes a failing test that proves the bug exists before touching the fix** on a real backlog bug. Falsifiable: commit history shows a test commit before or with the fix commit, with the test demonstrably reflecting the bug.
+2. **Pushes back on at least one line in a diff** before merging. Falsifiable: session scrollback or commit body shows a line-level objection or "I'd have done X" before the merge.
+3. **Runs root-cause interrogation before accepting Claude's first fix** when the first answer feels surface-level. Falsifiable: scrollback shows a *"what's the root cause?"* or *"are you sure?"* turn before any commit.

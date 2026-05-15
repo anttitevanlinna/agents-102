@@ -33,7 +33,8 @@ Let's go.
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-05-09
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee technical@3605eee)
+- judges @3605eee: writing PASS, story grandfathered, technical PASS, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
 
 **Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*
 
@@ -42,7 +43,7 @@ Let's go.
 - **Mood target:** recognition. Stance is now the load-bearing part. No doom, no hype.
 - **Voice:** Sutherland-tilt for chameleon; Godin for tool/taste; Boris-flat on wizard.
 
-**Source — MUST DO before first cohort:** Godin paraphrase un-cited. Pin one essay or book line supporting *"the tool is not the thing; the taste behind the tool is the thing,"* or drop the attribution.
+**Source:** Godin paraphrase `[cultural-vocab]` per `check_writing.md §6` sub-clause. Name-only attribution is sufficient for public-domain thinkers paraphrased as cultural vocabulary; no URL pinning required.
 
 **Watch-fors (delivery):**
 - Don't expand the wizard beat into Perl history.

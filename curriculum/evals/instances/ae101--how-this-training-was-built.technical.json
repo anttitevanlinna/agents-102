@@ -1,0 +1,187 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-this-training-was-built.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load is filename-based, not folder-based.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "REVISE",
+      "evidence": "line:63 — `**Compound engineering** — Kieran Klaassen (Every Inc.) \\`[practitioner direct]\\`.` — label present but no clickable URL attached to the citation in the maintainer block.",
+      "fix_hint": "Add URL to the Frameworks-riffed-on entry, e.g. `https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents` (confirmed in research KB).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "A rule in memory that does not force is worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement in the prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {
+      "claim": "A rule in `./CLAUDE.md` is a thing every session inherits.",
+      "line": 27,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Rule 6d confirms ./CLAUDE.md auto-loads at session cold-start. Accurate."
+    },
+    {
+      "claim": "A rule promoted into a compendium is a thing every subagent reads before it writes a word.",
+      "line": 27,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Narrative framing describing the training's designed behavior (injection via skills/rules files), not a raw Claude Code auto-load claim. Contextualized to 'this training's agents.' Rule 6d distinguishes auto-load from explicit-load; this lecture is describing system-level intent, not asserting compendiums auto-load natively. Non-blocking in a meta-frame lecture."
+    },
+    {
+      "claim": "The rule sits in a file called `./CLAUDE.local.md`, which is yours, gitignored, alongside you.",
+      "line": 41,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Rule 6d confirms CLAUDE.local.md is project-level, gitignored, auto-loads at session start. Accurate."
+    },
+    {
+      "claim": "Claude Code opens a session, loads the rules, plans inside them.",
+      "line": 25,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Accurate description of CLAUDE.md auto-load behavior per rule 6d."
+    },
+    {
+      "claim": "plan mode for an hour",
+      "line": 33,
+      "verdict": "PASS",
+      "source": "compendium",
+      "note": "Casual narrative reference to plan mode. No specific capability claim (no shortcut or command asserted). Not a platform claim requiring verification."
+    }
+  ],
+  "citations_checked": [
+    {
+      "line": 45,
+      "claim": "Kieran Klaassen at Every calls it *compound engineering*. The retro you just ran was step four of his loop: plan, work, review, compound.",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "Body prose ships citation in builder voice per check_research_claims §1 scope rule — correct, no label or URL required in body. Label and URL responsibility falls to maintainer block."
+    },
+    {
+      "line": 63,
+      "claim": "Maintainer block: Kieran Klaassen (Every Inc.) [practitioner direct] — compound engineering loop.",
+      "label_present": true,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "Source-type label is present and honest. URL is absent. check_research_claims §1 requires a specific clickable URL alongside the label. URL confirmed in research KB: https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents. Non-blocking (label present, source verified in KB) but is a TODO."
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
+  "blocking_findings_count": 0,
+  "todos_count": 1,
+  "notes": "No prompt blocks in the file; surfaces 4 (prompt design mechanics) is N/A. No URLs to sample; surface 5 (URL liveness) is N/A. No skills referenced; surface 3 (skill availability) is N/A. The single TODO is: add Klaassen URL to the maintainer block Frameworks-riffed-on entry (line 63). Confirmed URL from research KB: https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents or https://every.to/source-code/compound-engineering-the-definitive-guide. §11 source-verification block not strictly required (no load-bearing number in the citation, four-step loop name is descriptive not statistical), but adding the URL resolves §1."
+}

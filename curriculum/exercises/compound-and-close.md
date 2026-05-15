@@ -10,6 +10,8 @@ The PR shipped. Now compound the session, then close the bug's ticket. That's th
 
 ## Compound
 
+> **Long session, long read.** Claude reviews the whole scrollback in one shot. If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.
+
 {{prompt:compound-and-close-1}}
 
 
@@ -66,8 +68,8 @@ You can now clear. What you stored may or may not help you in future sessions. L
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee)
+- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).
@@ -95,3 +97,23 @@ You can now clear. What you stored may or may not help you in future sessions. L
 **Arc:**
 - Picks up from: `fix-tests-first` — the rule seeded at that exercise is the file the retro rewrites.
 - Hands off to: M1 Bridge → M2 (plan mode at depth on multi-file work).
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
+1. **Compounds one rule from session evidence into `./CLAUDE.local.md`** after a non-trivial session, integrating rather than appending. Falsifiable: file mtime + content shows a session-derived rule added since the prior version, with the rule quoting a specific session moment that earned it.
+2. **Closes a bug ticket via connector or `gh` from the agent**, not manually via the tracker UI, at least once. Falsifiable: ticket comment authored by Claude / `gh` API appears in the tracker history.
+3. **Quotes the specific session moment that earned a rule** when reviewing Claude's compound summary, instead of rubber-stamping. Falsifiable: scrollback shows a *"quote the moment"* or *"which session beat earned this"* turn before the rule lands.
+
+**Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
+
+| Phase forcing function | Dominant failure mode | Escape hatch |
+|---|---|---|
+| Compound — *"Claude reviews the whole session, writes from evidence, you push back"* | Retro confabulation — Claude name-drops moments without quoting | Trainer / Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."* |
+| Compound — *"integrate, don't append"* | Self-charity on rule self-review — Claude under-flags weak rules in its own summary | Body callout below the prompt names the push-back; if the student rubber-stamps, push: *"read each rule aloud — does it quote a specific moment, or just summarize a theme?"* |
+| MCP — *"close the ticket via the agent, not the tracker UI"* | MCP install gate — corporate tenant blocks connector install | Tenant-admin fallback per tracker; path 3 (manual paste of Claude-written close-out) is always available |
+| MCP — *"one connector, two actions (read + update)"* | Connector install exceeds timebox — second-connector debugging eats the slot | Timebox callout in body names this; trainer calls path 3 if install bleeds past the budget |
+| Close-out — *"write the close-out then push back if stiff"* | Close-out rubber-stamp — student ships the agent's first draft without reading | Trainer / Nerd push: *"read the close-out aloud — does it sound like how your team writes ticket comments?"* |
+
+**Accept-with-mitigation** (per `check_pedagogy.md` §50 and §51 — judge findings carried as design-intent, not blockers):
+
+- **§32 forced-engagement on compound-and-close-1 prompt:** the prompt offers structured output (rules file rewrite) for student acceptance, and §32 wants the engagement step inside the fence. Mitigation: body prose immediately below the prompt (*"Read Claude's summary. Push back where it misreads. Quote the moment from your session back at Claude."*) IS the engagement step. Convenience-bias callout (§50) covers the self-charity risk — keeping the engagement in body keeps the prompt copy-paste-clean.
+- **§50 convenience-bias callout on self-review:** the compound prompt asks Claude to review its own session and propose rules. Self-charity bias is real. Mitigation: same body callout names the push-back move with the *"quote the moment"* harsher alternative. Fence stays convenient; body carries the design accept.

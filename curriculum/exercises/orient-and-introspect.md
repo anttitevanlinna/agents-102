@@ -18,6 +18,8 @@ Claude Code is open on your repo. You have a trivial bug picked from prework. No
 
 Ask Claude to read your repo deliberately and report shape, structure, what's load-bearing, what's stale.
 
+> **Big repo? The read can fan out.** If Claude starts naming dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
+
 {{prompt:orient-and-introspect-1}}
 
 
@@ -30,21 +32,19 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a reconstruction, not ground truth. Claude confabulates reasons sometimes. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Spot-check by quoting back a specific file or function and asking Claude to confirm it.
 
-Now look at your context budget. In the Claude Code chat, type:
+Now look at your context budget, the slash command that shows how full your context window is, total used and breakdown by category (system prompt, messages, memory, skills).
 
-```
-/context
-```
+{{prompt:orient-and-introspect-3}}
 
-That's the slash command that shows how full your context window is, total used and breakdown by category (system prompt, messages, memory, skills). Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
+Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
 
 You've seen what's loaded and what isn't. Hand off to the fix.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@88a1dd4 technical@3605eee behavior@3605eee pedagogy@3605eee)
+- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
@@ -65,3 +65,8 @@ You've seen what's loaded and what isn't. Hand off to the fix.
 **Arc:**
 - Picks up from: Connections (trick exchange) + the-wizard-move lecture.
 - Hands off to: `fix-tests-first` — the bug gets fixed in the window you just mapped.
+
+**Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
+1. **Runs `/context` on a working session and reads the unread-slice percentage** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move within the first ten minutes, not a feature tour.
+2. **Asks Claude what it skipped and why after a repo-read**, before taking any code action. Falsifiable: a follow-up introspection prompt appears in scrollback after the initial orient prompt.
+3. **Spot-checks Claude's self-report by quoting a specific file or function back** when the report feels off. Falsifiable: scrollback shows a quote-back move under a "you said you read X, what's actually in it?" shape.

@@ -26,7 +26,7 @@ Once the rules lived in a file Claude Code could read, they stopped being remind
 
 This is the move. A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule promoted into a compendium is a thing every subagent reads before it writes a word.
 
-The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints now has a companion compendium for every writing surface: student-facing, sales copy, pedagogy, writing, research claims, platform claims. Each fires at the moment it matters and no other moment.
+The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints now has a companion checklist for every writing surface: student-facing, sales copy, pedagogy, writing, research claims, platform claims. Each fires at the moment it matters and no other moment.
 
 ## Then the agents started checking the agents
 
@@ -51,8 +51,8 @@ The loop is the shape. The bug today was the excuse.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-25
-- compendium-audited 2026-04-25 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in)
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee)
+- judges @3605eee: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).

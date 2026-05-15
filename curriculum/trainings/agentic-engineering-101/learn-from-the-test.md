@@ -7,7 +7,7 @@ Read the un-packaged Module 4 run through three failure-mode lenses, build the v
 
 Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep in the Module 4 to Module 5 gap: watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Insights from Uncle Bob](../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -84,6 +84,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 
 **Quality:** compendium-audited 2026-05-14 (writing@5d170d3 story@0f32201 technical@0f32201 behavior@ab4b0bd)
 - judges @5d170d3: writing PASS, story PASS, technical PASS, behavior PASS
+- cross_module @689e7e0: PASS — set=[run-the-first-experiment, learn-from-the-test]
 - mechanical @e840433: PASS — ae101-m5 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
@@ -161,9 +162,10 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
-- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; closing lecture confirms attribution.
+- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; closing lecture confirms attribution. Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 13.
 - **Intercom Tier 1/2/3** — Darragh Curran. Closing lecture only; the org-scale anchor.
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
+- **Hook-vs-prompt partition (must vs should)** — convergent practitioner pattern; named in the closing lecture's *"Hooks always fire"* section.
 
 **First-cohort observation questions:**
 - Verifier-shape calibration: does the three-shape menu cover the failure modes students surface, or does a fourth/fifth shape want naming?

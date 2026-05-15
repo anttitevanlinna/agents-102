@@ -29,6 +29,14 @@ Three shapes practitioners use. All three appear in Boris Cherny's stop-hook pra
 
 **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.
 
+## Hooks always fire
+
+The deterministic shell hook from the menu above is one shape of a runtime primitive worth naming. A hook in Claude Code's hook system fires on a named event: session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script; the agent has no say in whether it runs.
+
+That matters because the LLM is forgetful. Drift, half-remembered rules, the longer the session runs the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
+
+Practitioner convention. Must happen → hook. Recommended → prompt or rule. Anything that breaks the work if it skips belongs in a hook (the verifier you just wrote; a pre-commit guard; a session-start context loader). Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget." Bought at the cost of flexibility, given to the work that demands certainty.
+
 ## At org scale: Intercom's Tier 1/2/3
 
 Darragh Curran (CTO, Intercom) published a post in April 2026 called "2x, nine months later." His R&D org runs a tiered review structure with auto-approval at the lowest tier. The numbers are concrete. 19.2% of pull requests are auto-approved (no human reviewer). Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of auto-approved PRs are 20 lines or fewer.
@@ -89,6 +97,9 @@ URLs to verify:
 - **Ralph technique** — Geoffrey Huntley [practitioner direct].
 - **Subagents-for-isolation + /compact-at-60%** — convergent practitioner pattern; no single attribution.
 - **Sourcegraph Amp counter-philosophy** — Sourcegraph (vendor); pin a specific practitioner post before delivery.
+- **Hook-vs-prompt partition (must vs should)** — convergent practitioner pattern; no single attribution.
+
+**Source verification — Hooks always fire addition (2026-05-15):** Hook event names (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop) live-verified against this repo's own working `.claude/settings.json` configs + Claude Code 2.1.142. The "fires on every named event" property is the defining behavior of Claude Code's hook system; canonical docs at `https://code.claude.com/docs/en/hooks`. Re-audit writing / story / technical classes after this addition — Quality dimension-log will need new SHA pins.
 
 **Watch-fors (delivery):**
 - The opening pause is load-bearing. You just built each piece; this is the moment of recognition. Don't rush it.

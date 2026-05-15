@@ -83,8 +83,9 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@533a77b story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @ab4b0bd: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@533a77b story@0f32201 technical@0f32201 behavior@ab4b0bd pedagogy@689e7e0 strategy@689e7e0)
+- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @689e7e0: PASS — set=[earn-the-trust, run-the-first-experiment]
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
@@ -155,3 +156,4 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 - **Test strategy as discipline** — Kent Beck + James Bach's exploratory-testing lineage + Google Testing Blog's test-pyramid framing. Named at lecture; the student's authored skill is theirs, not a framework import.
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
+- **Hooks as deterministic-fire primitive** — sibling to skills (which Claude invokes on judgment). Hooks fire on named runtime events regardless of agent judgment. Not authored at M3, but the partition (skill = recommended invocation, hook = always-fires) lands at the M5 closer lecture. Hook system reference: `claude-code-for-engineers.md` § 13.

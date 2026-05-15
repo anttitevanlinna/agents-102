@@ -362,11 +362,86 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 ---
 
-## 13. Hooks — `InstructionsLoaded` for debugging
+## 13. Hooks — runtime extension points
 
-When a rule isn't firing and `/memory` confirms it's loaded, next stop is the `InstructionsLoaded` hook. Logs exactly which instruction files loaded, when, and why. Useful for path-scoped rules and lazy-loaded subdirectory files.
+A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. That property is what the M5 closer lecture names — *"hooks always fire"* — and what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
 
-Hooks configure via `.claude/settings.json` or user settings. Not our primary teaching surface; reach for it when you need the introspection.
+**Nine canonical events** (verified 2026-05-15 against Claude Code 2.1.142 — five via this repo's working `.claude/settings.json` configs, four via the CLI's own hook-event listing):
+
+| Event | Fires | Common use |
+|---|---|---|
+| `SessionStart` | When a new session opens at this working directory | Inject context (today's date, recent commits, session-start reminders) |
+| `SessionEnd` | When a session closes | Persist session signals; log run metadata |
+| `UserPromptSubmit` | After the user submits a prompt, before Claude responds | Surface preflight (load relevant compendium, gate restricted prompts) |
+| `PreToolUse` | Before a tool call runs | Gate dangerous operations; require approval; redirect path |
+| `PostToolUse` | After a tool call returns | Lint / format / auto-fix the file Claude just touched; queue downstream audits |
+| `Notification` | When Claude emits a notification (idle, needs input) | Forward to OS notification, Slack ping, paging integration |
+| `Stop` | When Claude completes a turn | Surface end-of-turn nudges, run wind-down checks, log session signals |
+| `SubagentStop` | When a dispatched subagent completes | Roll up subagent results, trigger downstream audits |
+| `PreCompact` | Before auto-compaction summarises history | Capture mid-context state to disk before it folds into the summary |
+
+This repo's own `.claude/settings.json` wires five of these (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop) — useful working configs to grep when authoring your first hook.
+
+**Config shape (`.claude/settings.json`):**
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "/abs/path/to/script.sh" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+The `matcher` filters which tools fire the hook (regex matched against tool name). Omit `matcher` to fire on every event of that type.
+
+**Two minimal examples:**
+
+*Stop-hook verifier* — runs the test suite after each Claude turn that touched files, blocks the next turn if tests fail:
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "cd $CLAUDE_PROJECT_DIR && npm test" }] }
+    ]
+  }
+}
+```
+
+*UserPromptSubmit preflight* — surfaces a context reminder before Claude reads the prompt:
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "/abs/path/to/surface-detector.sh" }] }
+    ]
+  }
+}
+```
+
+The hook script receives JSON on stdin (event metadata, tool name + args for tool events, prompt text for UserPromptSubmit) and can emit JSON on stdout to inject context, block the action, or report a message.
+
+**When to reach for a hook** (vs other primitives):
+
+| If you need... | Use |
+|---|---|
+| Something that **must** happen on every event (verifier always runs, formatter always fires, secret never leaks) | **Hook** |
+| Something Claude should consider but can override based on context (style preference, naming convention, suggested approach) | **`CLAUDE.md` rule** |
+| A reusable move Claude invokes on demand (security review, threat-model walk, test-strategy authoring) | **Skill** |
+| A check loop that re-runs until a condition holds | **`/goal`** (§ 9) or **Ralph re-feed verifier** (M5) |
+| An event-driven sequence Claude orchestrates within one turn | Tool calls inside Claude's response — no hook needed |
+
+**Debugging hooks that don't fire:** run `claude --debug hooks` to see hook-loading and event-firing logs. Useful when `/memory` confirms the config is loaded but the hook still isn't running on the expected event.
+
+**AE101 cross-refs:** M5 closer lecture (`what-packaging-is.md`) names hooks as the runtime primitive behind Cherny's shell-hook verifier shape. M3 leans on hooks implicitly via the `eval-class-router` PostToolUse pattern (curriculum's own infrastructure; not student-authored at M3 but referenced as exemplar).
 
 Docs: [hooks](https://code.claude.com/docs/en/hooks).
 

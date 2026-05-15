@@ -1926,30 +1926,21 @@ body.workbook { padding-top: 3rem; }
 <section class="phase phase--lecture" id="lectures-agentic-systems-demo-script">
 <div class="phase-kicker">Lecture</div>
 
-<h1 id="agentic-systems-demo-script">Agentic systems demo script</h1>
-<p>This is a live demo script for the agents-102 repo and the Claude Basics workbook. The point is not to tour files. The point is to show how an agentic system behaves when rules, prompts, checks, build output, and compounding sit in one working system.</p>
-<h2 id="1-start-with-the-question">1. Start with the question</h2>
-<p>Ask what makes this different from a good chat answer. The answer to look for is repeatability: a chat gives a response, while a system leaves behind structure that can run again.</p>
-<h2 id="2-show-the-workbook-first">2. Show the workbook first</h2>
-<p>Open the deployed Claude Basics workbook. Start from the page the room will actually use, then work backward to show that the page is built output, not a hand-written slide deck.</p>
-<h2 id="3-show-the-rules">3. Show the rules</h2>
-<p>Ask Claude Code what rules govern Claude Basics work in this repo. Let it name the root <code>CLAUDE.md</code>, <code>curriculum/CLAUDE.md</code>, and the Claude Basics rules before opening anything manually.</p>
-<h2 id="4-show-how-rules-steer-behavior">4. Show how rules steer behavior</h2>
-<p>Ask why the workbook says &quot;people helping their organisation roll out Claude.&quot; This makes the rules visible as judgment, not decoration: the workbook is written for everyone who may need to help the rollout succeed.</p>
-<h2 id="5-inspect-the-system">5. Inspect the system</h2>
-<p>Ask Claude Code to find the module order, source module files, shared exercises, and build command. The point is the map: source content, rendering code, generated customer output, and deployment path all live in the same system.</p>
-<h2 id="6-make-one-small-strategic-change">6. Make one small strategic change</h2>
-<p>Use a tiny wording or structure change, not a rewrite. Ask Claude Code to explain the plan before editing so the room sees the discipline: inspect, propose, edit, verify.</p>
-<h2 id="7-rebuild-the-customer-workbook">7. Rebuild the customer workbook</h2>
-<p>Run the customer build command for <code>acme claude-basics</code>. Show that one source change becomes a customer workbook change through the build system.</p>
-<h2 id="8-run-checks">8. Run checks</h2>
-<p>Ask Claude Code to grep for the old wording and run the cheap checks that fit the change. The teaching point is reliability math in miniature: the system does not trust a clean-looking answer; it checks the artifact.</p>
-<h2 id="9-show-the-diff">9. Show the diff</h2>
-<p>Ask Claude Code to summarize the diff. The diff is the system&#39;s receipt: what changed in source, what changed in generated output, and what stayed untouched.</p>
-<h2 id="10-show-compounding">10. Show compounding</h2>
-<p>Ask what rule or memory should change so the same mistake is less likely next time. This is the compounding move: the output is not only the workbook, but the improved system that will shape the next edit.</p>
-<h2 id="11-name-the-pattern">11. Name the pattern</h2>
-<p>Close by naming the loop: rules, inspect, plan, edit, check, build, compound. That loop is the difference between asking Claude for help and working inside an agentic system.</p>
+<h1 id="an-agentic-system-end-to-end">An agentic system, end to end</h1>
+<p>This is a 30-minute live demo. You watch; you don&#39;t run anything yourself. The point isn&#39;t to show off a tool. The point is to make an agentic system inspectable. By the end you&#39;ll be able to describe one to a colleague, with edges, files, and a working loop.</p>
+<p>You&#39;ll see five things.</p>
+<p><strong>The folders are the system.</strong> Before any prompt runs, the workbook you&#39;ve been reading gets traced back to its source. Module files in <code>curriculum/</code>. Rule files (<code>CLAUDE.md</code>) that govern how those modules are written. A memory directory of decisions the system has compounded over time. A customer build that turns all of it into the page in front of you. The system isn&#39;t hiding anywhere. It&#39;s in folders with names.</p>
+<p><strong>Rules are visible to the agent itself.</strong> Claude is asked which rules govern Claude Basics content. The agent answers in seconds, not by guessing but by reading the same <code>CLAUDE.md</code> files a person would. The first follow-up question pulls out the audience definition that shapes the workbook&#39;s voice. The second pulls a rule you&#39;d never have thought to ask for. The reveal: the agent isn&#39;t smart in a vague way. It&#39;s smart because the rules are written down, and it reads them.</p>
+<p><strong>One agent works in the background while the demo continues.</strong> Claude is asked to author a full Claude Basics module from an Agents 101 source. A real ten-page job that would take a person most of an afternoon. The session launches. The demo doesn&#39;t wait. The work happens while everything else continues. This is the move rollout custodians use most: launch, leave, come back.</p>
+<p><strong>A small fix becomes a system change.</strong> A real gap in this lecture gets spotted. The agent plans the change, edits the file, and proposes the rule update that would have caught the gap in the first place. Two diffs, side by side. The artifact got better, and so did the system that produces the next artifact. The word for what just happened is <em>compounding</em>.</p>
+<p><strong>The pattern, named.</strong> Inspect, plan, edit, check, build, compound. That sequence is the difference between asking Claude for help and operating a Claude system. The same moves work whether the artifact is a workbook, a policy document, or the rollout plan you&#39;ll write yourself.</p>
+<p>If the room and the clock cooperate, five more moves lie in reserve.</p>
+<p><strong>The agent grades its own work.</strong> The session that ran in the background comes back. The agent reads what it wrote and audits it against the same rule files the system carries. It returns the three things it would fix, ranked. It doesn&#39;t fix them yet. The agent is judged by the same rules that shaped it.</p>
+<p><strong>Source to customer page, one command.</strong> A build runs against the source. Ten seconds later the deployed customer workbook carries the fix from a moment ago. No release process, no waiting on someone else. The build is part of the system.</p>
+<p><strong>One source, many customers.</strong> A small config file tells the build which customer to render: branding, audience copy, which modules ship. The same curriculum becomes twenty workbooks for twenty cohorts. The plug-in points are visible files, not a hidden CMS.</p>
+<p><strong>Memory the system actually keeps.</strong> A recent rule the system compounded for itself gets opened and walked through. What got missed before. What got added. Where it now fires next time. Chat forgets when the window closes. This writes things down.</p>
+<p><strong>Six audits, at once.</strong> One command fires six different reviewers against one file: writing, story, technical, behavior, pedagogy, strategy. They run in parallel. None waits on the others. Verdicts come back as one structured summary read in thirty seconds.</p>
+<p>When the demo closes, the room doesn&#39;t have a new piece of software. It has a map.</p>
 </section>
 
 
@@ -2005,6 +1996,8 @@ Start with: &quot;What&#39;s the first difficulty you see?&quot; After my answer
 
 When I&#39;ve answered all three with push-back, ask me for my first name. Then save the conversation as `rollout-notes.md` in the folder named with my first name.
 
+If you can&#39;t find my folder, ask me. If somebody else has written there already, ask me.
+
 Include the three difficulties and the push-back answers, in my voice. Don&#39;t summarize them into your own register.
 </code></pre>
 <p>Answer Claude&#39;s questions in plain language. When the file saves, you&#39;re done with Phase 1.</p>
@@ -2059,6 +2052,10 @@ The saved file must include:
 <p>In the dry run, Claude dismissed &quot;no time to experiment&quot; as something that could not be addressed. Clearly it can.</p>
 <p>Your job is to correct weak assumptions before they harden into the saved synthesis.</p>
 <p>Before saving, push back until the crux sounds like the group&#39;s real trouble, not Claude&#39;s neat version of it.</p>
+<p>If a participant was slow to save or had sync issues, ask Claude to re-check the group&#39;s folders for new content before you finalise.</p>
+<p><strong>Prompt</strong> <em>(Cowork, group driver, optional)</em></p>
+<pre><code>Re-check each of the group&#39;s first-name folders. Tell me what&#39;s new in `rollout-notes.md` since you last read it, or any new file. Redo the crux analysis with the new material and show me whether the synthesis should change.
+</code></pre>
 <p>If the group wants to compare alternatives before approving the synthesis, ask Claude to list the other possible cruxes.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver, optional)</em></p>
 <pre><code>Based on what you have read, list the other possible cruxes.
@@ -2098,6 +2095,8 @@ Then run cycles. In each cycle:
    If other group files are ready, visit up to two of them. Prefer files we have not commented on yet, but re-read any file that has changed since you last saw it.
    For each:
    - read the file
+   - if it already has a section starting with &quot;Comments from &lt;our group name&gt;&quot;, add anything new and relevant from this cycle to that section — don&#39;t duplicate bullets you already wrote
+   - just before appending, re-read the file. If another group has added comments since your first read, factor them in before writing yours.
    - append a section named with our group name, for example &quot;Comments from Atlas&quot;, with two or three bullets: one idea worth borrowing or extending, one comment or sharper question from our group, plus a flag if you see overlap with our crux
    - save the file
 
@@ -2159,9 +2158,9 @@ Stop when I say stop.
 <h1 id="exercise-build-your-system">Exercise: Build your system</h1>
 <p><strong>Time:</strong> 26 minutes. Five phases.</p>
 <p>You start with a plain Claude HTML answer. You leave with a small working system on a task that matters to your work: <code>styling-rules.md</code> for a reusable look and <code>CLAUDE.md</code> that tells Cowork to use those rules.</p>
-<p>Choose an empty local folder on your computer and open Cowork on it. Everything in this exercise saves there.</p>
 <p><strong>The task</strong> is one small thing you could actually use. Good default: a simple HTML explainer you could send internally. Other options: a one-page answer to a Claude question you keep getting, a short explanation of the difference between Claude and ChatGPT for your own work, or a short guide to which connectors you should enable for a personal workflow.</p>
 <p><strong>Session</strong> <em>(new, &quot;Build your system - baseline&quot;)</em></p>
+<p>Start in any empty working folder you wish to use. Everything in this exercise saves there.</p>
 <h2 id="phase-0-add-base-material-3-minutes">Phase 0. Add base material (3 minutes)</h2>
 <p>Add one or two base materials to the folder. Use content that helps Claude answer the task, not style references yet.</p>
 <p>Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the folder.</p>
@@ -2217,8 +2216,6 @@ The style source is:
 <p>A useful style rule names visible choices, not vibes. <em>&quot;Use the company&#39;s style&quot;</em> is too weak. <em>&quot;Use short section headings, compact white panels, blue action buttons, and plain labels&quot;</em> gives Claude something to reuse.</p>
 <p><strong>Session</strong> <em>(new, &quot;Build your system - styled answer&quot;)</em></p>
 <p>Close this Cowork session. Open a new Cowork session on the same local folder. This is the break that proves <code>CLAUDE.md</code> and <code>styling-rules.md</code> are loaded from disk, not remembered from chat.</p>
-<pre><code>/rename build-system-style
-</code></pre>
 <h2 id="phase-3-style-it-from-the-saved-system-4-minutes">Phase 3. Style it from the saved system (4 minutes)</h2>
 <p>Same HTML answer. New system. Make the thing better.</p>
 <p>Ask Claude to restyle the file using the folder setup you just created.</p>
@@ -2250,7 +2247,7 @@ Then tell me what changed in the file.
 
 What I want the next version to do better:
 </code></pre>
-<p>Look at the file again. The point is not a perfect page. The point is that the folder now knows one more thing.</p>
+<p>Open <code>response.html</code> to see what actually shifted, Cowork&#39;s chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next run.</p>
 <p>When the page is visibly closer and the folder carries the rule forward, stop. The system is small, but it now has something reusable.</p>
 <h2 id="style-is-just-one-aspect">Style Is Just One Aspect</h2>
 <p>This exercise used style because visual differences are easy to see. The same pattern works for any output quality you need to steer.</p>
@@ -2269,14 +2266,14 @@ What I want the next version to do better:
 <p><strong>Time:</strong> 35-40 minutes. Six phases. Self-study.</p>
 <p>Start in the same local folder you used for the build-your-system homework, or choose another empty local folder on your computer.</p>
 <p>Same folder is OK. If your build-your-system folder already has <code>CLAUDE.md</code>, keep using it. This exercise adds a source-checking habit to the same small system.</p>
-<p>Add 1 or 2 source files you know well. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.</p>
+<p>Create a <code>sources/</code> subfolder and add 1 or 2 source files you know well there. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.</p>
 <p>You choose the briefing topic. The first prompt should feel like a normal work request.</p>
 <p><strong>Session</strong> <em>(new, &quot;Find wrong claims - first run&quot;)</em></p>
 <p>Open Cowork on this folder for the first run.</p>
 <h2 id="phase-1-generate-from-sources-6-minutes">Phase 1. Generate from sources (6 minutes)</h2>
 <p>Ask Cowork to draft from the source files.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Based on material in this folder, make a 1 page briefing.
+<pre><code>Based on material in the `sources/` subfolder, make a 1 page briefing.
 
 Save the briefing as `source-answer.md`.
 
@@ -2288,11 +2285,12 @@ Make the briefing on the following:
 <h2 id="phase-2-fact-check-with-a-separate-checker-8-minutes">Phase 2. Fact-check with a separate checker (8 minutes)</h2>
 <p>Now split the work. The generator wrote the answer. A separate checker tests it against the sources.</p>
 <p>Fresh context matters because the checker should not inherit the generator&#39;s confidence or wording. It should see the answer and the source material as evidence, not as something it just wrote and wants to defend.</p>
+<p>Ask Claude to dispatch a separate fact-checker.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Run a separate fact-checking subagent on `source-answer.md`.
 
 Give the checker this job:
-- use only the material in this folder as ground
+- use only the material in the `sources/` subfolder as ground
 - check whether important factual claims in `source-answer.md` are supported by that material
 - check whether any claim overreaches, generalizes, softens, or contradicts that material
 - do not rewrite the answer
@@ -2305,6 +2303,7 @@ After the checker finishes, summarize the findings in chat:
 - overreaches
 - anything the checker could not tell
 </code></pre>
+<p><strong>Subagent:</strong> a Cowork primitive, Claude can dispatch a fresh session to run any task in its own context. Here we use one as a fact-checker, so the check doesn&#39;t inherit what the generator just wrote.</p>
 <p>Look at the findings. The useful result is often not &quot;wrong.&quot; It is &quot;not in the sources&quot; or &quot;too broad.&quot;</p>
 <h2 id="phase-3-persist-the-checking-rule-7-minutes">Phase 3. Persist the checking rule (7 minutes)</h2>
 <p>The checker helped once. Now make the folder remember the method.</p>
@@ -2313,9 +2312,9 @@ After the checker finishes, summarize the findings in chat:
 
 Add one small rule to `CLAUDE.md` for future source-based writing in this folder.
 
-The rule should say that before finalizing an answer based on material in the folder, Cowork should run a separate fact-checking subagent that checks:
+The rule should say that before finalizing an answer based on material in the `sources/` subfolder, Cowork should run a separate fact-checking subagent that checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Keep the rule short and practical.
 
@@ -2324,8 +2323,6 @@ After saving `CLAUDE.md`, tell me the rule you added.
 <p>The rule does not make Claude perfect. It gives the folder a better default move.</p>
 <p><strong>Session</strong> <em>(new, &quot;Find wrong claims - second run&quot;)</em></p>
 <p>Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether <code>CLAUDE.md</code> changes the next run.</p>
-<pre><code>/rename fact-check-second-run
-</code></pre>
 <h2 id="phase-4-generate-again-5-minutes">Phase 4. Generate again (5 minutes)</h2>
 <p>Use the saved generation prompt. Do not improve it yet.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2342,7 +2339,7 @@ Run that prompt again and save the new briefing as `source-answer-2.md`.
 
 Use the same two checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Save the checker findings as `fact-check-2.md`.
 
@@ -2358,7 +2355,7 @@ Fix the answer. Save the corrected version as `source-answer-final.md`.
 
 Then run a separate fact-checking subagent on `source-answer-final.md` using the same two checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Save the final checker findings as `fact-check-final.md`.
 
@@ -2367,6 +2364,7 @@ After saving, tell me:
 - what the final checker still flagged
 - whether `CLAUDE.md` needs one sharper rule
 </code></pre>
+<p><strong>Caveat:</strong> Self-reporting is known to be spotty. If Cowork&#39;s account of what it fixed doesn&#39;t match what <code>source-answer-final.md</code> actually shows, trust the file.</p>
 <blockquote>
 <p>Even after this, the answer might still contain errors. Today&#39;s LLM will not arrive at complete truth on its own. The loop makes the work better, but human oversight is what keeps the operation truthful.</p>
 <p>Your source files may not be 100% accurate either. Some problems live in the evidence, the policy, the notes, or the team&#39;s current understanding. Not everything can be fixed by fixing the generation.</p>
@@ -2586,7 +2584,7 @@ Make the two new files plausible outputs from different groups in the same live 
 
 After saving, list the two files you created.
 </code></pre>
-<p>Next, run the organiser synthesis exercise below on the rollout synthesis files in <code>shared/</code>.</p>
+<p>Next, run <a href="#exercises-organisers-synthesize-rollout">Exercise: Organisers synthesize rollout</a> on the rollout synthesis files in <code>shared/</code>.</p>
 <p><strong>Watch out for:</strong> The first readout may flatten the three cruxes into one bland theme. Correct it in chat until it preserves useful disagreement and names what organisers need to decide next.</p>
 <p>After the readout is saved, delete the test folders and fake files before the workshop.</p>
 <h2 id="phase-5-check-readiness">Phase 5. Check readiness</h2>
@@ -2668,6 +2666,14 @@ Let&#39;s focus on:
 
 <h2 id="close">Close</h2>
 <p>When the workspace is tested and the organiser readout path is clear, the workbook is ready for delivery.</p>
+<h2 id="changes-since-last-build">Changes since last build</h2>
+<p>Entries since the workbook sent on 2026-05-06.</p>
+<ul>
+<li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 1: prompt now asks Claude to stop and check with the participant if it can&#39;t find the named folder, or if someone else has already written there. Catches misnamed first-name folders and duplicate-name collisions without adding overhead to the common case.</li>
+<li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 2: new optional group-driver prompt to re-check the group&#39;s folders for late-arriving notes and redo the crux analysis if anything new shows up. Use when a participant was slow to save or had sync issues.</li>
+<li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 3: cross-pollination cycle now re-reads each target file right before appending and extends an existing &quot;Comments from...&quot; section instead of duplicating it. Reduces OneDrive write-race risk when multiple group drivers comment on the same file at once.</li>
+<li><strong>2026-05-15</strong>, M3 homework <em>Find the wrong claims</em>: source files now live in a <code>sources/</code> subfolder. Phase 1 generates from <code>sources/</code>; Phase 2 checks against <code>sources/</code>. Stops the briefing from pulling in leftover files when the participant reuses the build-your-system folder.</li>
+</ul>
 
 </section>
 </main>

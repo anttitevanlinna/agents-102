@@ -2021,7 +2021,7 @@ body.workbook { padding-top: 3rem; }
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
+            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -2032,7 +2032,9 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
+                { slug: 'the-agent-loop',             title: 'The agent loop' },
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -2141,12 +2143,14 @@ body.workbook { padding-top: 3rem; }
     //       trainings/<training>/(reference|supplementary)/<slug>.md
     //         →  ?file=trainings/<training>/<kind>/<slug>
     // Both patterns tolerate any number of `../` prefixes.
-    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
-    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Trailing `(#anchor)?` captures heading fragments like `target.md#5-plan-mode-at-depth`
+    // so callers can route them to the heading slug instead of dropping the fragment.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md(#[^)]*)?\)/g;
     // Workbook-side helper: same training-specific match as above but with kind+slug
     // exposed as separate capture groups, for callers that need to construct in-page
     // anchors of the form `#<kind>-<slug>`.
-    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -2158,8 +2162,8 @@ body.workbook { padding-top: 3rem; }
 
     function rewriteCrossDocLinks(md) {
         return md
-            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
-            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
     }
 
     // GitHub-style heading slugger. Used to generate stable `id="..."` attrs

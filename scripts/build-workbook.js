@@ -108,10 +108,13 @@ function readMd(absPath) {
 //                                  pages aren't rendered in the workbook so the
 //                                  anchor is non-resolving by design — students
 //                                  read those files locally from the tarball).
+// When the source link carries a `#anchor` fragment we route to that heading's
+// slug directly (heading IDs are page-unique on the single-page workbook).
+// Without a fragment, fall back to the section wrapper anchor `#<kind>-<slug>`.
 function rewriteCrossDocLinksToAnchors(md) {
   return md
-    .replace(CR.CROSS_DOC_SHARED_RE,      '](#$1-$2)')
-    .replace(CR.CROSS_DOC_TRAINING_KS_RE, '](#$1-$2)');
+    .replace(CR.CROSS_DOC_SHARED_RE,      (_, kind, slug, hash) => hash ? '](' + hash + ')' : '](#' + kind + '-' + slug + ')')
+    .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, kind, slug, hash) => hash ? '](' + hash + ')' : '](#' + kind + '-' + slug + ')');
 }
 
 // escapeTildes lives in shared CR for SPA + workbook parity.
@@ -244,8 +247,8 @@ ${buildToc(trainingKey, t)}
     let md = readMd(docPath);
     if (md === null) return '';
     md = md
-      .replace(CR.CROSS_DOC_SHARED_RE,      '](#$1-$2)')
-      .replace(CR.CROSS_DOC_TRAINING_KS_RE, '](#$1-$2)');
+      .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')')
+      .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')');
     md = escapeTildes(md);
     const labelKind = kind === 'supplementary' ? 'Supplementary' : 'Reference';
     return `<section class="module" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>\n${marked.parse(md)}\n</section>`;
@@ -329,8 +332,8 @@ function buildTrainerGuide(customer, trainingKey) {
   // and land in the workbook's matching section. No SPA, no router — anchor
   // targets only.
   md = md
-    .replace(CR.CROSS_DOC_SHARED_RE,      '](./#$1-$2)')
-    .replace(CR.CROSS_DOC_TRAINING_KS_RE, '](./#$1-$2)');
+    .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](./' + hash + ')' : '](./#' + k + '-' + s + ')')
+    .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](./' + hash + ')' : '](./#' + k + '-' + s + ')');
   const bodyHtml = marked.parse(md);
 
   const cover = `

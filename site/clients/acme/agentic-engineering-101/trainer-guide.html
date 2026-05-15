@@ -1906,6 +1906,101 @@ body.workbook { padding-top: 3rem; }
 <p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
 <p>AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see <a href="training-architecture.md">training-architecture.md §Future TODO</a>; not yet active for delivery.</p>
 <p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
+<p><strong>FYI: <code>.claude/memory/</code> is a convention, not a Claude Code primitive.</strong> AE101 has students author a three-block memory folder at <code>.claude/memory/</code> in their repo (introduced at M4). The path looks Claude-Code-shaped because of the <code>.claude/</code> parent and the word &quot;memory,&quot; but it is not auto-loaded. The agent reads it when a prompt names the path, the same way it reads ADRs. Claude Code&#39;s actual auto-memory lives at <code>~/.claude/projects/&lt;project&gt;/memory/</code>, written by the agent for its own recall and surfaced via <code>/memory</code>. AE101 deliberately leaves auto-memory out: the point of compounding is that the student steers what gets remembered, and an opaque system-written store works against that. Expect at least one student to ask why their <code>.claude/memory/</code> entries aren&#39;t showing in <code>/memory</code>. The answer is here.</p>
+<h2 id="two-day-cohort-schedule">Two-Day Cohort Schedule</h2>
+<p>Default rhythm for a two-day Nordic cohort: 08:30 start, 1h15 lunch, 20-min breaks. Adjust to your sponsor&#39;s cadence. The architectural commitments are: M1–M3 on Day 1, M4–M6 on Day 2; lunch between M5 and M6 on Day 2 so both async runs have time to produce something M6 can read.</p>
+<h3 id="day-1-m1-m2-m3">Day 1, M1, M2, M3</h3>
+<p>Lunch at 12:00 sharp lands mid-M2, between Exercise Phase 4 (Second-pass read) and Phase 5 (Stop. See the design pattern). The pause IS Phase 5&#39;s &quot;stop.&quot; Post-lunch the room returns to name the pattern.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>08:30 – 10:30</td>
+<td>M1 (2h)</td>
+</tr>
+<tr>
+<td>10:30 – 10:50</td>
+<td>Break (20 min)</td>
+</tr>
+<tr>
+<td>10:50 – 12:00</td>
+<td>M2 part 1: Connections + Lecture + Exercise Phases 1–4 (1h10)</td>
+</tr>
+<tr>
+<td>12:00 – 13:15</td>
+<td>Lunch (1h15)</td>
+</tr>
+<tr>
+<td>13:15 – 13:45</td>
+<td>M2 part 2: Exercise Phase 5 + Debrief + Bridge (30 min)</td>
+</tr>
+<tr>
+<td>13:45 – 14:05</td>
+<td>Break (20 min)</td>
+</tr>
+<tr>
+<td>14:05 – 15:55</td>
+<td>M3 (1h50)</td>
+</tr>
+<tr>
+<td>15:55 – 16:10</td>
+<td>Closing Day 1 (15 min)</td>
+</tr>
+</tbody></table>
+<p>Day total ~7h40.</p>
+<p><strong>M3 closes with the M4 task-pick homework.</strong> The &quot;Bring to Module 4&quot; section instructs students to scope the task overnight. M4 Phase 1 then becomes a 2-minute confirm instead of a 10-minute scope. That reclaimed time is what makes M4 fit in 90 minutes on Day 2.</p>
+<h3 id="day-2-m4-m5-m6">Day 2, M4, M5, M6</h3>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>08:30 – 10:00</td>
+<td>M4 (1h30, compressed from 1h45)</td>
+</tr>
+<tr>
+<td>10:00 – 10:20</td>
+<td>Break (20 min)</td>
+</tr>
+<tr>
+<td>10:20 – 12:20</td>
+<td>M5 (2h, 15-min cushion over budget)</td>
+</tr>
+<tr>
+<td>12:20 – 13:35</td>
+<td>Lunch (1h15)</td>
+</tr>
+<tr>
+<td>13:35 – 13:50</td>
+<td>Re-entry (15 min)</td>
+</tr>
+<tr>
+<td>13:50 – 15:35</td>
+<td>M6 (1h45)</td>
+</tr>
+<tr>
+<td>15:35 – 15:50</td>
+<td>Closing Day 2 (15 min)</td>
+</tr>
+</tbody></table>
+<p>Day total ~7h20.</p>
+<p><strong>M4 compression specifics.</strong> Drop Connections from 10 to 5 (cohort is warmed up from Day 1); cut Bridge (the 20-min break absorbs the transition); compress the Phase 2→3 time-check banter to ~5 minutes if the slot runs tight. Phase 1 task-pick is a 2-minute confirm because the task came in as homework.</p>
+<p><strong>M5 cushion.</strong> The 15 min over budget goes to the worktree setup demo (real engineering call, students often fumble) and the closing lecture (Ronacher&#39;s three-pattern earned from felt evidence, the lecture IS the lesson; don&#39;t squeeze it).</p>
+<p><strong>Re-entry nudge.</strong> M5&#39;s packaged re-send fires at M5 close (~12:20) and runs through lunch (~75 min by re-entry). The 15-min re-entry window is for: nudging the agent if it stalled (the dark-humor &quot;Continue&quot; prompt from M4 still works), settling into email or scrollback reading, and letting the run proceed a few more minutes before M6 reads it. After the nudge, leave the M5 session running if that is the right call and open M6 in a fresh Claude Code session at the same worktree path. M6 starts by reading; before it writes, students choose whether to wait, stop M5, or accept the partial run as the artefact.</p>
+<p><strong>Why M6 is a fresh session.</strong> M5&#39;s session may still be autonomously running the packaged re-send. Joining that session interrupts the run. M6 opens fresh and begins by reading both runs from disk (git refs + on-disk transcripts under <code>~/.claude/projects/</code>). Same-worktree overlap is an intentional classroom handoff, not the general multi-session rule: read first, then make the engineering call before any M6 write.</p>
+<h3 id="why-not-split-m4-across-day-1-close-and-day-2-open">Why not split M4 across Day 1 close and Day 2 open?</h3>
+<ol>
+<li>M4&#39;s internal flow is one sequential beat: pick → walk → fill → see-frame → send-off. The send-off is the close. Splitting means the send-off either fires from a half-built setup at Day 1 close (thin evidence, M5 has nothing to diagnose) or fires Day 2 open after overnight re-orientation (loses the walk-then-send-off pedagogy).</li>
+<li>Day 1 + M4 ≈ 9-hour day. Too much for a Nordic cohort.</li>
+<li>The legitimate Day 1→Day 2 spillover already exists: the M3 close → M4 task-pick homework. Task is picked overnight; M4 Phase 1 confirms in 2 minutes. That spillover is the right shape; full M4 displacement is not.</li>
+</ol>
 <h2 id="prep-before-each-session">Prep Before Each Session</h2>
 <ul>
 <li>Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.</li>
@@ -2022,7 +2117,7 @@ body.workbook { padding-top: 3rem; }
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
+            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -2033,7 +2128,9 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
+                { slug: 'the-agent-loop',             title: 'The agent loop' },
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -2142,12 +2239,14 @@ body.workbook { padding-top: 3rem; }
     //       trainings/<training>/(reference|supplementary)/<slug>.md
     //         →  ?file=trainings/<training>/<kind>/<slug>
     // Both patterns tolerate any number of `../` prefixes.
-    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
-    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Trailing `(#anchor)?` captures heading fragments like `target.md#5-plan-mode-at-depth`
+    // so callers can route them to the heading slug instead of dropping the fragment.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md(#[^)]*)?\)/g;
     // Workbook-side helper: same training-specific match as above but with kind+slug
     // exposed as separate capture groups, for callers that need to construct in-page
     // anchors of the form `#<kind>-<slug>`.
-    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -2159,8 +2258,8 @@ body.workbook { padding-top: 3rem; }
 
     function rewriteCrossDocLinks(md) {
         return md
-            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
-            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
     }
 
     // GitHub-style heading slugger. Used to generate stable `id="..."` attrs

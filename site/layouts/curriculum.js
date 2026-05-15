@@ -166,12 +166,14 @@
     //       trainings/<training>/(reference|supplementary)/<slug>.md
     //         →  ?file=trainings/<training>/<kind>/<slug>
     // Both patterns tolerate any number of `../` prefixes.
-    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
-    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Trailing `(#anchor)?` captures heading fragments like `target.md#5-plan-mode-at-depth`
+    // so callers can route them to the heading slug instead of dropping the fragment.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md(#[^)]*)?\)/g;
     // Workbook-side helper: same training-specific match as above but with kind+slug
     // exposed as separate capture groups, for callers that need to construct in-page
     // anchors of the form `#<kind>-<slug>`.
-    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -183,8 +185,8 @@
 
     function rewriteCrossDocLinks(md) {
         return md
-            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
-            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
     }
 
     // GitHub-style heading slugger. Used to generate stable `id="..."` attrs

@@ -35,6 +35,8 @@ The teaching moment is the agent reaching across a tool boundary with a real eng
 
 **For paths 1 or 2: get your connector up and running.**
 
+> **Connector added after this session started?** Check MCP status and authenticate with `/mcp`. If the new connector still isn't there, exit the session and resume it with `claude --resume <session-id>`.
+
 > **Quick timebox note.** Second connectors and deeper MCP debugging may regress to install yak-shaving. One connector firing on one ticket is the proof the loop closes outside the repo. The rest is homework. For something to chew on while the connector lands: [The agent loop](../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
 
 Ask Claude to read the ticket for your bug and report what's on it. Paste a ticket ID, a URL, or "create me a new one" if there isn't one.

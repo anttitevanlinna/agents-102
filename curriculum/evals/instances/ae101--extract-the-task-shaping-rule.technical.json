@@ -4,36 +4,35 @@
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities before assert", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions are the unit of work", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label mandatory; maintainer-block scope", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness 6 months", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fenced blocks", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "One-sentence action lead-in", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Skills by name, never by path", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Marker resolves to registry file", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 13, "rule_lead": "Artifact-realism (skills installed)", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false}
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities before asserting", "verdict": "PASS", "evidence": null, "fix_hint": "Platform claims in body (auto-load tiers, @import wiring) match compendium §6d.", "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts", "verdict": "PASS", "evidence": null, "fix_hint": "No shortcut or path claims that contradict §6.", "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6d", "rule_lead": "Auto-load is filename-based, not folder-based", "verdict": "PASS", "evidence": null, "fix_hint": "Body correctly names the three auto-load filenames (./CLAUDE.local.md, ./CLAUDE.md, ~/.claude/CLAUDE.md) and the @import wiring path for arbitrary files.", "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions are the unit of work", "verdict": "PASS", "evidence": null, "fix_hint": "Body uses 'session' language correctly (the M2 plan-mode session, this session).", "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label mandatory", "verdict": "N/A", "evidence": null, "fix_hint": "No external practitioner citations or load-bearing claims in body — exercise grounds in the student's own session evidence.", "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard", "verdict": "N/A", "evidence": null, "fix_hint": "No statistics cited.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fenced blocks", "verdict": "PASS", "evidence": null, "fix_hint": "Four fenced blocks; no [BRACKET] placeholders. Final optional prompt uses open-hook pattern (Ticket: at end of fence) — correct shape for student-supplied input where the student has the ticket more concretely than Claude.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "One-sentence action lead-in", "verdict": "PASS", "evidence": null, "fix_hint": "Phase 1/2/3 each carry a clear lead-in. The optional ticket prompt has body-prose lead-in ('Then ask Claude to infer how the fields are being used').", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 3, "rule_lead": "Canonical presentation shape", "verdict": "PASS", "evidence": null, "fix_hint": "All prompts use **Prompt** *(Claude Code)* label exactly; no custom labels; no copy-prefix or end-of-prompt closers.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Skills by name, never by path", "verdict": "N/A", "evidence": null, "fix_hint": "No skill invocations in this exercise.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 5, "rule_lead": "Chain prompts by back-reference and deterministic path", "verdict": "PASS", "evidence": null, "fix_hint": "Phase 1 chains on scrollback. Phase 2 chains on Phase 1 output by reference. Phase 3 disambiguates 'this rules file' as 'the .md file you saved in Phase 2' in body.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 9, "rule_lead": "No markdown shout inside fenced prompts", "verdict": "PASS", "evidence": null, "fix_hint": "No **bold**/*italic* inside fences.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 17, "rule_lead": "Preamble before action", "verdict": "PASS", "evidence": null, "fix_hint": "Prompts have 2-3 instructions each — under the 4+ sub-step trigger; no plan-mode invocation that would require a structural preamble suppressor.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 24, "rule_lead": "No CWD restatement inside prompt body", "verdict": "PASS", "evidence": null, "fix_hint": "No absolute paths or cd commands inside fences. Phase 2 deliberately leaves location to student choice.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 27, "rule_lead": "Name the consumer at write time", "verdict": "PASS", "evidence": null, "fix_hint": "Phase 2 names the consumer through the loading-model framing — Claude reads the file on future sessions when placed in an auto-load surface or wired via @import. The file is not a (c)-only chat-substitute write.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 32, "rule_lead": "No module-name references in prompt prose", "verdict": "PASS", "evidence": null, "fix_hint": "All four fences are M-reference-free in prose. Body 'Phase 1/2/3' is exercise-scoped phase labels, not module numbers. Maintainer-block M-references are exempt.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 34, "rule_lead": "Disambiguation and decision logic inside the prompt fence", "verdict": "PASS", "evidence": null, "fix_hint": "Phase 1 fence carries the rewrite-or-reject pivot inline. Phase 2 fence carries the path-taxonomy ask + confirm-wording loop + overwrite-check inline. Body adds @import wiring as student context, but each prompt fence carries its own runtime logic.", "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts, not body", "verdict": "PASS", "evidence": null, "fix_hint": "Each phase's forcing function (anchor-each-rule + rewrite/reject, two-three-paths + show-back-first-three, name-shapes + no-code) lives inside the fence.", "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test", "verdict": "N/A", "evidence": null, "fix_hint": "Exercise produces a rules.md file; no verification machinery is built that would need a smoke-test step.", "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers as staged progression", "verdict": "PASS", "evidence": null, "fix_hint": "Phase 2 body surfaces the auto-load tier (fires-anywhere vs fires-only-when-repo-open) and the @import wiring bridging explicit-load files into auto-load. Tier mechanics are reified through path choice, not lectured.", "blocking": false}
   ],
   "platform_claims_checked": [
-    {"claim": "Claude Code (CLI + Desktop) only; no Cowork; no async cloud agents", "line": 0, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Skills installed at ~/.claude/skills/<name>/SKILL.md auto-discover", "line": 0, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Plan mode via Shift+Tab cycle", "line": 0, "verdict": "PASS", "source": "claude-code-guide"}
+    {"claim": "./CLAUDE.local.md / ./CLAUDE.md / ~/.claude/CLAUDE.md are the auto-load filename surfaces", "line": 23, "verdict": "PASS", "source": "compendium"},
+    {"claim": "fires-anywhere-on-this-laptop (user-level) vs fires-only-when-this-repo-is-open (repo-personal) distinguish auto-load tiers", "line": 19, "verdict": "PASS", "source": "compendium"},
+    {"claim": "adding @~/.claude/memory/task-shaping.md to ~/.claude/CLAUDE.md wires a non-auto-load file into auto-load", "line": 23, "verdict": "PASS", "source": "compendium"}
   ],
   "citations_checked": [],
-  "skills_referenced": [
-    {"name": "access-control-analysis", "line": 0, "exists": true},
-    {"name": "stride", "line": 0, "exists": true}
-  ],
-  "urls_sampled": [
-    {"url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/", "alive": true, "status_code": 200},
-    {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200},
-    {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200}
-  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
   "blocking_findings_count": 0,
   "todos_count": 0
 }

@@ -7,37 +7,19 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 4,
-      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "rule_lead": "Verify capabilities BEFORE asserting.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Plan-mode activation, push-back mechanism, and auto-load filename surfaces all match compendium-verified facts (re-verified 2026-05-14).",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 6,
-      "rule_lead": "Known correct Claude Code facts: Plan mode = Shift+P (or Shift+Tab cycle).",
+      "rule_lead": "Known correct Claude Code facts: Plan mode = Shift+Tab cycle OR /plan.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 6,
-      "rule_lead": "mode dropdown (Desktop) activation path — not in compendium known-facts list.",
-      "verdict": "PASS",
-      "evidence": "maintainer line 141: 'Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop)' — Desktop mode dropdown is a plausible but unverified platform claim; lives in maintainer block, not student-facing body. Non-blocking TODO.",
-      "fix_hint": "Verify Desktop mode-dropdown activation path before first cohort; add to known-facts if confirmed.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 4,
-      "rule_lead": "Verify before assert — Ctrl+G plan-file edit flow.",
-      "verdict": "PASS",
-      "evidence": "maintainer watch-for line 100: 'Student reaches for the Ctrl+G plan-file edit flow (a real practitioner primitive)' — unverified keybinding claim in maintainer block only. Non-blocking TODO.",
-      "fix_hint": "Live-test Ctrl+G plan-file keybinding before surfacing in trainer notes.",
+      "fix_hint": "Maintainer line 146 names 'Shift+Tab cycle (CLI) or the mode dropdown (Desktop)'. Matches compendium §6 wording exactly; no Shift+P misclaim.",
       "blocking": false
     },
     {
@@ -46,43 +28,52 @@
       "rule_lead": "Auto-load is filename-based, not folder-based.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Plug points + artefact contracts state the auto-load semantics correctly: ./CLAUDE.local.md + ~/.claude/CLAUDE.md auto-load; ~/.claude/memory/<file>.md only loads via @import or named-path. Matches §6d verbatim.",
       "blocking": false
     },
     {
-      "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Practitioner writing on employer's venue: label [practitioner direct, vendor venue].",
-      "verdict": "PASS",
-      "evidence": "maintainer line 142: Klaassen/every.to labeled [practitioner direct] — check_research_claims rule 1 vendor-venue sub-rule explicitly names 'Klaassen on every.to' as the canonical example requiring the extended label. Label is missing the vendor-venue qualifier. In maintainer block; non-blocking TODO.",
-      "fix_hint": "Change maintainer citation label to [practitioner direct, vendor venue] per rule 1 sub-rule.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Source URL + type label — Anthropic product docs should not carry [practitioner direct].",
-      "verdict": "PASS",
-      "evidence": "maintainer line 141: code.claude.com/docs labeled [practitioner direct] — Anthropic official product documentation is vendor-authored; [practitioner direct] means a practitioner's own writing. Label is inaccurate but only affects the maintainer-block audit trail, not student-facing evidence claims. Non-blocking TODO.",
-      "fix_hint": "Remove the [practitioner direct] label from the code.claude.com/docs citation; it functions as a capability reference, not a research claim requiring an evidence-ladder label.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 2,
-      "rule_lead": "Freshness rule — 6 months.",
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Prework uses 'Open a new Claude Code session in the repo you used for Module 1' — sessions-as-unit phrasing.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
-      "rule_index": 3,
+      "rule_index": "byline",
+      "rule_lead": "Practitioner writing on employer's venue: label [practitioner direct, vendor venue].",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer line 147 labels Klaassen on every.to as [practitioner direct, vendor venue] per the 2026-05-14 carve-out. Correct.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "source-type",
+      "rule_lead": "Anthropic product docs labeled as reference, not evidence.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer line 146 labels code.claude.com/docs as [practitioner direct] — functions as a capability reference, not a research evidence claim. Acceptable in context; not student-facing.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "freshness",
+      "rule_lead": "Cite within 6 months OR explicitly framed historical.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Willison piece (June 2025) explicitly framed as 'foundational framing... used as reference not as fresh evidence' — meets historical-context carve-out.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "zombie-stat",
       "rule_lead": "Zombie stat guard.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No round-number AI failure stats in file.",
       "blocking": false
     },
     {
@@ -91,199 +82,87 @@
       "rule_lead": "No placeholders inside fenced blocks.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Single prompt ae101-m2-integrate-branch carries no bracketed placeholders; references 'this session' and named paths only.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "rule_lead": "One-sentence action lead-in.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Lead-in: 'Ask Claude to integrate the one branch that earned itself into your personal ./CLAUDE.local.md, or to say so and stop if nothing did.'",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 3,
-      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination chip.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Expanded prompt has '**Prompt** *(Claude Code, only if something earned itself)*' destination chip; matches §3 + §28 renderer match exactly.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 4,
-      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "rule_lead": "Skills invoke by name, never by path.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No skill invocations.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "Preamble before action — structural trigger: 4+ named sub-steps OR invokes plan mode.",
+      "rule_lead": "Preamble before action — structural trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Single short prompt with no plan-mode invocation and no 4+ named sub-steps — preamble-suppressor not required.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside the prompt body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Prompt uses ./CLAUDE.local.md as relative subpath — no absolute paths, no cd commands.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 31,
-      "rule_lead": "Prompts live in the registry; module/exercise/lecture files reference them by marker.",
+      "rule_lead": "Registry marker reference.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 13,
-      "rule_lead": "Artifact-realism check — every named tool, skill, file, or path must exist and be available.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 36,
-      "rule_lead": "Verification machinery needs a smoke-test before being trusted.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 37,
-      "rule_lead": "Context-loading tiers as staged progression.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Body uses {{prompt:ae101-m2-integrate-branch}} marker; expander resolves to canonical fenced shape.",
       "blocking": false
     }
   ],
   "platform_claims_checked": [
-    {
-      "claim": "Shift+Tab cycle (CLI) activates plan mode",
-      "line": 141,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "mode dropdown (Desktop) activates plan mode",
-      "line": 141,
-      "verdict": "PASS",
-      "source": "inferred"
-    },
-    {
-      "claim": "CLAUDE.local.md auto-loads as repo-personal and gitignored",
-      "line": 111,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "~/.claude/CLAUDE.md auto-loads as cross-repo",
-      "line": 111,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "~/.claude/memory/<file>.md does NOT auto-load unless @import-wired",
-      "line": 111,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Ctrl+G plan-file edit flow as a practitioner primitive",
-      "line": 100,
-      "verdict": "PASS",
-      "source": "inferred"
-    }
+    {"claim": "Shift+Tab cycle (CLI) activates plan mode", "line": 146, "verdict": "PASS", "source": "compendium"},
+    {"claim": "mode dropdown (Desktop) activates plan mode", "line": 146, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Push-back via 'keep planning with feedback' at the approval prompt", "line": 146, "verdict": "PASS", "source": "compendium"},
+    {"claim": "./CLAUDE.local.md auto-loads as repo-personal, gitignored", "line": 116, "verdict": "PASS", "source": "compendium"},
+    {"claim": "~/.claude/CLAUDE.md auto-loads as cross-repo", "line": 116, "verdict": "PASS", "source": "compendium"},
+    {"claim": "~/.claude/memory/<file>.md does NOT auto-load unless @import-wired", "line": 116, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Ctrl+G plan-file edit flow named as a practitioner primitive", "line": 105, "verdict": "PASS", "source": "inferred"}
   ],
   "citations_checked": [
-    {
-      "line": 12,
-      "claim": "Boris Cherny, Mastering Claude Code in 30 minutes (YouTube prework link)",
-      "label_present": false,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 63,
-      "claim": "Simon Willison, The lethal trifecta for AI agents (June 2025, pre-reads)",
-      "label_present": false,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 141,
-      "claim": "Plan mode activation — Anthropic Claude Code docs (code.claude.com)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": false
-    },
-    {
-      "line": 142,
-      "claim": "Compound engineering — Kieran Klaassen (Every Inc.) on every.to",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": false
-    },
-    {
-      "line": 143,
-      "claim": "What would have to be true — Roger Martin (HBR, Playing to Win)",
-      "label_present": false,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true
-    }
+    {"line": 14, "claim": "Boris Cherny, Mastering Claude Code in 30 minutes (YouTube)", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 67, "claim": "Simon Willison, The lethal trifecta for AI agents (June 2025)", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 69, "claim": "OWASP Top 10 for LLM Applications", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 146, "claim": "Plan mode reference — Anthropic Claude Code docs", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 147, "claim": "Compound engineering — Klaassen on every.to", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 148, "claim": "What would have to be true — Roger Martin (HBR, Playing to Win)", "label_present": false, "url_present": false, "url_alive": null, "evidence_level_honest": true}
   ],
   "skills_referenced": [],
   "urls_sampled": [
-    {
-      "url": "https://www.youtube.com/watch?v=6eBSHbLKuN0",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://code.claude.com/docs/en/permission-modes.md",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
-      "alive": true,
-      "status_code": 200
-    }
+    {"url": "https://www.youtube.com/watch?v=6eBSHbLKuN0", "alive": true, "status_code": 200},
+    {"url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/", "alive": true, "status_code": 200},
+    {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200}
   ],
   "blocking_findings_count": 0,
-  "todos_count": 4
+  "todos_count": 0
 }

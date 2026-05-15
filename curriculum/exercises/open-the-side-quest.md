@@ -32,8 +32,8 @@ You forked a sibling worktree for the quality side, opened two Claude Code sessi
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
-- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0)
+- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 
 **Time:** ~5 min.
 
@@ -57,3 +57,8 @@ You forked a sibling worktree for the quality side, opened two Claude Code sessi
 **Frameworks riffed on:**
 - Worktree-as-side-quest framing inherited from Boris Cherny, *Mastering Claude Code in 30 minutes* (parallel worktrees as productivity unlock).
 - Side-quest convergence-via-user-scope-skill pattern follows Claude Code's skill loading model (skills at `~/.claude/skills/<name>/` auto-discovered every session regardless of working directory).
+
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- opens a sibling worktree from a chosen branch when two angles on the same code shouldn't share a scrollback
+- runs two Claude Code sessions side by side on the same git history, one window per worktree
+- routes work between windows by lane/window callout rather than tab-switching mid-prompt

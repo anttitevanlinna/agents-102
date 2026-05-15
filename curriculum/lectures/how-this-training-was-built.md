@@ -24,7 +24,7 @@ The rules were not right the first time either. Some were overscoped. Some fired
 
 Once the rules lived in a file Claude Code could read, they stopped being reminders and started being load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft loads them too. The rules cross the boundary between the person writing them and the agents using them.
 
-This is the move. A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule promoted into a compendium is a thing every subagent reads before it writes a word.
+This is the move. A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule in a shared checklist is a thing every subagent reads before it writes a word.
 
 The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints now has a companion checklist for every writing surface: student-facing, sales copy, pedagogy, writing, research claims, platform claims. Each fires at the moment it matters and no other moment.
 

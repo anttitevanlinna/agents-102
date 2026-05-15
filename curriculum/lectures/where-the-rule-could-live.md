@@ -35,12 +35,9 @@ M3 starts with a feature you're shipping.
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-04-29
-- draft 2026-04-29 (aligned with optional task-manager reverse-engineering add-on in `extract-the-task-shaping-rule.md`; needs compendium re-audit + sim before restoring higher tier)
-- compendium-audited 2026-04-28 (check_writing v2026-04-26 voice-quintet + #11 attribution-cap; check_lectures v2026-04-24 #1 meta-frame-closer; check_student_facing v2026-04-27; check_strategy_tie_in v2026-04-25; check_research_claims — body ships un-attributed by deliberate strategic choice, named landings deferred to M5–M6)
+**Quality:** compendium-audited 2026-05-15 (story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe)
+- judges @0fafbbe: writing grandfathered, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-- sim-passed 2026-04-28 (Mid-competent 8.0 / Opinionated-senior 7.0 — gripes "agents build agents" as bumper-sticker but Antti's verbatim-frame-cite holds per check_writing #10; Nitpicker — "guardrail" metaphor flagged but kept; "memory" framing stripped + practitioner names stripped per Antti corrections, all same cycle)
-- mechanical-tested: not applicable — lecture is read-aloud content, no prompt-chain to execute. Coverage flows through `extract-the-task-shaping-rule.md`'s mechanical run, which exercises the lecture's hand-off into Phase 3.
 - cohorts: none yet
 
 **Lecture meta:** *Meta-frame closer. ~4–5 min reading-aloud. Forward-looking; voice tilts Risto (Siilasmaa) — points at what becomes possible, cues the move now. Mood-arc check: M2 is grounded competence, past sustained unease — Risto-tilt is appropriate at the closer because the leverage horizon is what M2 is building toward, and the lecture explicitly defers application rather than promising it.*

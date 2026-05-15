@@ -47,6 +47,8 @@ Ask Claude to integrate the one branch that earned itself into your personal `./
 
 > LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
 
+Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
+
 ## Key Concepts
 - A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
@@ -60,6 +62,8 @@ Ask Claude to integrate the one branch that earned itself into your personal `./
 
 You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the extra read. At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
 
+Close this session when the second read lands; Module 3 opens fresh in the repo holding the small feature you'll bring.
+
 ## Pre-reads before Module 3
 
 Optional. Lands the modern agentic-security frame before STRIDE and access-control.
@@ -71,9 +75,9 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@0f32201 technical@0f32201 behavior@ab4b0bd)
-- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy grandfathered, strategy grandfathered
-- cross_module @3605eee: PASS — set=[getting-going, plan-mode-done-right]
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe)
+- judges @0fafbbe: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @689e7e0: PASS — set=[plan-mode-done-right, earn-the-trust]
 - mechanical @6121abd: PASS — ae101-m2-pushback via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet

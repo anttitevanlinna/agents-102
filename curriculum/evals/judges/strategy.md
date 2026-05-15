@@ -33,7 +33,7 @@ Specific judgments that strategy owns:
 - **Mood contract framing.** The file does not flatten or resolve the strategy doc's deliberate mood for this module. Note: mood *landing* (sim-trace evidence) is the story judge's surface; mood *framing* (does the file frame the right mood arc?) is yours. Diagnostic: does the file's opening framing match the strategy doc's mood-arc position for this module?
 - **Key Concepts shape — § 6 of `check_strategy_tie_in.md`.** Bullets emergent (not lectured-before-doing), lead with discipline (§3), don't front-run downstream modules (§4), strategic-theme breadcrumbs on 1–3 survivors. **Run §§3/4/5 first as gates, decorate survivors with §6 breadcrumbs second.** Any bullet that fails §3/§4/§5 is REVISE regardless of breadcrumb shape — cut, don't decorate.
 - **What-You'll-Learn shape — § 7 of `check_strategy_tie_in.md`.** Capability register, strategic-theme verbs LEAD bullets, no Bloom-tag parentheticals, no mechanism tails, no author-defence asides, no didactic taxonomy stamps. Run §§3/4 gates first.
-- **Strategic themes recur in Key Concepts** (§5). The module surfaces at least 2–3 theme-instances per the training's recurring strategic themes (AE101: Compound, Earn, Mirror, Ground, Introspect, Sharpen, Capture). Themes are not rules — they're the *why* underneath rules.
+- **Strategic themes recur in Key Concepts** (§5). The module surfaces at least 2–3 theme-instances per the training's recurring strategic themes (AE101: Compound, Earn, Mirror, Ground, Introspect, Sharpen, Capture). Claude Basics is shorter (4 modules, 3-hour live) and doesn't pin a fixed recurring-themes list — strategic-vocab gate fires against the doc's two-questions framing (Can you be the person your org trusts to run this? / Where is this all going?) + mood-arc beats (concrete awe, expanded horizon, capable next step, operational clarity). Themes are not rules — they're the *why* underneath rules.
 - **Lead with discipline, not failure mode** (§3). Big Ideas, Key Concepts, What-You'll-Learn use positive disciplines (grounded, steering, compounding, practice of risk), not failure words (fabrication, violation, hallucination).
 - **Strategy-fidelity check** (§4). Cross-module sequencing claims from the strategy doc — *"first X lands at module N,"* *"no Y before module M,"* *"M_k owns Z"* — must be honored. Front-running a downstream teaching moment is REVISE.
 - **Epistemic mood ≠ punitive mood** (§2). When mood is "unease," the unease is *not-knowing*, never *having-done-wrong*.
@@ -53,7 +53,7 @@ Return ONE JSON object, exactly this shape:
   "class": "strategy",
   "file": "<absolute path>",
   "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "shared",
+  "training": "agents-101" | "ae101" | "claude-basics" | "shared",
   "strategy_doc_section_loaded": "<which per-module section was consulted>",
   "rules_evaluated": [
     {
@@ -83,6 +83,6 @@ OUTPUT ONLY THE JSON. No markdown fence, no commentary, no preamble.
 
 Loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class is `strategy`. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{strategy_doc_paths}}`.
 
-`{{strategy_doc_paths}}` is determined by the file's training: `bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101; `bosser-strategy:content-strategy-engineering-management.md` for EM.
+`{{strategy_doc_paths}}` is determined by the file's training: `bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101; `bosser-strategy:content-strategy-claude-basics.md` for Claude Basics; `bosser-strategy:content-strategy-engineering-management.md` for EM.
 
 No sim trace — strategy reads file + strategy doc statically.

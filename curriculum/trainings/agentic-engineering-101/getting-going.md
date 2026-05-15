@@ -30,6 +30,8 @@ The room harvests everyone's before the training adds its own.
 
 [Compound and close](exercises/compound-and-close.md)
 
+[How this training was built](lectures/how-this-training-was-built.md)
+
 > **If time allows.** Try the harness introspection on your live session: [The agent loop](../../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
 
 ## Key Concepts
@@ -39,11 +41,6 @@ The room harvests everyone's before the training adds its own.
 - A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. **Remember: rules grow from evidence, not blank pages.**
 - Closing the ticket via connector is the first move past the repo. The loop ends outside the code
-
-## Debrief
-The compound step runs inside the `compound-and-close` exercise. The agent reviews the full session (Exercise 1 + Exercise 2) and writes `./CLAUDE.local.md` from evidence (personal, gitignored; creates it if it doesn't exist, integrates if it does), reports 3–5 lines, you push back. If any rule is team-worthy (one every engineer on this codebase would benefit from) the agent calls it out in the summary so you can open a PR against team `./CLAUDE.md` separately. No separate module-level Debrief block; the Bridge picks up right after the ticket close-out.
-
-[How this training was built](lectures/how-this-training-was-built.md)
 
 ## Next
 Module 1 ran the loop once on a trivial bug, no plan mode. Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session when the ticket lands; Module 2 opens fresh in the same repo.

@@ -5,35 +5,43 @@
   "training": "ae101",
   "rules_evaluated": [
     {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities before assert", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions are the unit of work", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label mandatory; maintainer-block scope", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness 6 months", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fenced blocks", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "One-sentence action lead-in", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts (Agent tool, /rename, /memory, auto-memory path)", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6.4, "rule_lead": "Auto-load is filename-based (CLAUDE.md / CLAUDE.local.md / ~/.claude/CLAUDE.md); .claude/memory/ does NOT auto-load — body says so explicitly", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions are the unit of work — 'start a new Claude Code session'", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Cultural-vocabulary names (Huryn, Klaassen) — name-only allowed under 2026-05-15 carve-out; named technique flagged in maintainer block", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness 6 months", "verdict": "N/A", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard", "verdict": "N/A", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No [BRACKET] placeholders inside fences; open-hook in Prompt 1 ends with 'Candidates:'", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "One-sentence action lead-in present for all four prompts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 3, "rule_lead": "Canonical Prompt shape — lead-in, label with destination, fenced block", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
     {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Skills by name, never by path", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Marker resolves to registry file", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 13, "rule_lead": "Artifact-realism (skills installed)", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false}
+    {"compendium": "check_prompts.md", "rule_index": 5, "rule_lead": "Chain by back-reference and deterministic path — 'the task we just scoped' / 'Rearrange what's there'", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 9, "rule_lead": "Markdown shout inside fenced prompt blocks is dead weight in Claude Code", "verdict": "REVISE", "evidence": "walk-and-send-off-1.md fenced block uses `- **Send-off shape:** ...`, `- **Requirement-weaving:** ...`, `- **Multi-file reasoning:** ...`; pasted asterisks render literal in Claude Code input.", "fix_hint": "Drop the asterisks: `- Send-off shape:` etc. Stylistic prompt-mechanic nit; non-blocking per technical-judge criteria.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 17, "rule_lead": "Preamble suppressor / body primer when 4+ sub-steps or plan mode", "verdict": "PASS", "evidence": null, "fix_hint": "Prompts 1, 2, 4 have multiple steps but no plan-mode invocation; rule trigger not met (4+ named sub-steps OR plan mode). Tolerable.", "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 24, "rule_lead": "No CWD restatement inside prompt body", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 25, "rule_lead": "Subagent allowed in prompt blocks; explain why outside fence — Prompt 2 names 'sub-task via the Agent tool' with body reason", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 28, "rule_lead": "Strong-bold prompt label is exactly `**Prompt**`", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Marker `{{prompt:<key>}}` resolves to registry file under curriculum/prompts/", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_prompts.md", "rule_index": 32, "rule_lead": "No M-number references in prompt prose; branch-name code spans (`m4/<slug>`) exempt", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts (audit + Huryn rearrangement encoded in prompts, not body)", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test", "verdict": "N/A", "evidence": null, "fix_hint": null, "blocking": false},
+    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers — Phase 2 audit names CLAUDE.md, CLAUDE.local.md, .claude/memory/, ADRs, skills (.claude/skills + ~/.claude/skills), connectors", "verdict": "PASS", "evidence": null, "fix_hint": null, "blocking": false}
   ],
   "platform_claims_checked": [
-    {"claim": "Claude Code (CLI + Desktop) only; no Cowork; no async cloud agents", "line": 0, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Skills installed at ~/.claude/skills/<name>/SKILL.md auto-discover", "line": 0, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Plan mode via Shift+Tab cycle", "line": 0, "verdict": "PASS", "source": "claude-code-guide"}
+    {"claim": "Start a new Claude Code session at your repo root", "line": 8, "verdict": "PASS", "source": "compendium"},
+    {"claim": "/rename m4-walk-send (CLI-only path; widget auto-wraps .rt-cli)", "line": 11, "verdict": "PASS", "source": "compendium"},
+    {"claim": "spawn a sub-task via the Agent tool", "line": 44, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Claude Code auto-memory at ~/.claude/projects/<project>/memory/ surfaced via /memory", "line": 59, "verdict": "PASS", "source": "compendium"},
+    {"claim": "CLAUDE.md / CLAUDE.local.md auto-load; .claude/memory/ does not", "line": 57, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Laptop-sleep freezes session; Ctrl+C mid-tool-call can corrupt .jsonl; no per-session token budget", "line": 147, "verdict": "PASS", "source": "compendium"},
+    {"claim": "reference/claude-code-for-engineers.md § 9 covers long-running shapes", "line": 147, "verdict": "PASS", "source": "inferred"}
   ],
-  "citations_checked": [],
-  "skills_referenced": [
-    {"name": "access-control-analysis", "line": 0, "exists": true},
-    {"name": "stride", "line": 0, "exists": true}
+  "citations_checked": [
+    {"line": 119, "claim": "Paweł Huryn — Huryn's three-block memory", "label_present": true, "url_present": false, "url_alive": null, "evidence_level_honest": true},
+    {"line": 120, "claim": "Kieran Klaassen — Compound engineering", "label_present": true, "url_present": false, "url_alive": null, "evidence_level_honest": true}
   ],
-  "urls_sampled": [
-    {"url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/", "alive": true, "status_code": 200},
-    {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200},
-    {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200}
-  ],
+  "skills_referenced": [],
+  "urls_sampled": [],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

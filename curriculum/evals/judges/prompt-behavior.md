@@ -129,7 +129,7 @@ Return ONE JSON object, exactly this shape:
   "class": "behavior",
   "file": "<absolute path>",
   "verdict": "PASS" | "REVISE",
-  "training": "agents-101" | "ae101" | "shared" | "unknown",
+  "training": "agents-101" | "ae101" | "claude-basics" | "shared" | "unknown",
   "trace_status": "cached" | "partial_regen" | "full_regen" | "generated_first_time",
   "prompts_evaluated": <int>,
   "prompts_findings": [

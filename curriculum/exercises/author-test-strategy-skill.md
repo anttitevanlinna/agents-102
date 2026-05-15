@@ -35,7 +35,7 @@ Authoring without invocation is theatre. Run the skill on the feature you just a
 
 This prompt asks Claude to invoke the skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. Does the strategy cover the hardening decision? Or does it read generic?"* Your call.
 
-Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. Don't loop. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what Module 3 is installing; perfection waits for M6.
+Read the output. If the strategy doesn't cover the hardening decision, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what Module 3 is installing; perfection waits for M6.
 
 ## Phase 3: ship
 
@@ -64,14 +64,19 @@ Module 4 (memory that reads your system) consumes the test-strategy skill as a B
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
-- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0)
+- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Time:** 18–22 minutes (12 / 6 / 2)
 - **Primary Bloom's level:** Create + Evaluate
 - **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I invoked it on a real feature, I sharpened it from what came back, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: Nerd pushes at the pyramid-dressed-as-codebase-specific question during Phase 1 and at the invoke-and-critique in Phase 2.
+
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- invokes the test-strategy skill on a real feature they're shipping within a week, not a sample one
+- sharpens the skill from one self-critique loop after invocation, then re-invokes on the same feature
+- opens a team-PR conversation with at least one teammate before promoting the skill team-side
 
 **Push-back moves** (trainer delivers in cohort; Nerd delivers only in self-study):
 - **P1 question-dump.** Claude fires all questions at once instead of one at a time. Nerd: *"tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill."*

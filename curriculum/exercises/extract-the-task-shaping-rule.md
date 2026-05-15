@@ -56,8 +56,8 @@ When Claude finishes, the lecture is next.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@88a1dd4 story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe)
+- judges @0fafbbe: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 
@@ -71,6 +71,11 @@ When Claude finishes, the lecture is next.
   - Phase 3 asks Claude to NAME shapes, not to invoke any. M5 owns verifier-as-eval; M6 owns eval-encoding. Today's discipline is capture-not-apply.
   - Free-choice location respects the M3 forthcoming auto-load / lazy-load / explicit-load tier reveal — rules file lands in whichever tier the student picks; no curriculum prescription.
 - **Themes earned:** capture-your-world (the rule file IS the captured world; user-chosen location respects that it's THEIR world); compounding (Block 1 — observation → rule, written down); mirror (Claude's extraction reflects what you actually did this session); self-aware + grain of salt (Phase 3 asks Claude to introspect on automation paths — generates hypotheses, doesn't ship them).
+
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- adds one rule born from a real planning session to `./CLAUDE.local.md` or `~/.claude/CLAUDE.md`
+- names the loading mechanism (auto-load vs lazy-load vs `@import`) when deciding where a rule belongs
+- deflects the build instinct toward capture-first when proposing automation against a backlog
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Nerd: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*

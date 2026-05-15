@@ -85,8 +85,8 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@88a1dd4 story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe)
+- judges @0fafbbe: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
@@ -99,7 +99,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
   - No training-dir state.
 - **Frameworks riffed on:**
   - **Plan mode** (Anthropic Claude Code). Activation via Shift+Tab; push-back via *keep planning with feedback* at the approval prompt. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
-  - **Socratic walk-down-branches move** — Matt Pocock's grill-me skill ([mattpocock/skills](https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md), MIT license, commit `a6bdfd9`, 2026-04-22). Socratic requirement elicitation — walks down branches of a decision tree one at a time with recommended answers. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved. **In M2 we inline the behaviour as a prompt; the skill reveal — "that second-pass read you did was a skill all along, here's how to author one" — lands in M3 as authoring material, so we don't front-run M3's first-Skill-use moment by invoking it by name here.**
+  - **Socratic walk-down-branches move** — Matt Pocock's grill-me skill ([mattpocock/skills](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md), MIT license, commit `62f43a1`, re-verified 2026-05-15 — upstream relocated from repo-root `grill-me/` to `skills/productivity/grill-me/`). Socratic requirement elicitation — walks down branches of a decision tree one at a time with recommended answers. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved. **In M2 we inline the behaviour as a prompt; the skill reveal — "that second-pass read you did was a skill all along, here's how to author one" — lands in M3 as authoring material, so we don't front-run M3's first-Skill-use moment by invoking it by name here.**
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's four-step loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
   - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
@@ -142,5 +142,10 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - Compound engineering (Klaassen) — one line, continuation from M1
 - Plan-mode approval inflation — exercise-named pattern, not a practitioner attribution
 - "What would have to be true" (Martin) — optional attribution at Debrief if it lands naturally
+
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- picks plan mode before approving a multi-file change
+- sends two specific push-backs naming step numbers before approving a non-trivial plan
+- runs a second-pass walk-down on any plan that touches more than two files
 
 **Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design.

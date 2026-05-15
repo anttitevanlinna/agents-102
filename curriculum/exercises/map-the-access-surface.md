@@ -73,8 +73,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-14 (writing@e840433 story@e840433 technical@e840433 behavior@e840433)
-- judges @e840433: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0)
+- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

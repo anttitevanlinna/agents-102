@@ -23,13 +23,11 @@ Run one. Today, un-packaged. You'll walk what you've built against the task, fil
 
 Run two. M5, packaged. You'll read what came back, find what went wrong, and learn what packaging adds by watching each piece of Ronacher's three-pattern close a specific gap you just saw. Then re-send the same task, packaged.
 
-The contrast is the lesson. No lecture on generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands. That's why M4 launches un-packaged: to earn the M5 teaching moment.
+The contrast is the lesson. No lecture on generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands.
 
-## Two frameworks you'll use today
+## One move you'll use today
 
 **Gap analysis.** Walk the system you have against the system the task needs. Claude audits your setup as a subagent, returns a ranked list of thin spots, and you fill the worst three. You'll use this move on every future agent hand-off, forever. Not a template. A question: *what's between what I've got and what this task is asking for?*
-
-**Huryn's three-block memory.** Paweł Huryn's frame for how a practitioner's memory organises itself: Block 1 observations → hypotheses → rules, Block 2 decisions with alternatives, Block 3 quality criteria. The punchline: you've already been building this for four modules. Your M1 `CLAUDE.local.md` seed is Block 1. Your M3 ADR is Block 2. Your test-strategy skill is Block 3. At Phase 3 today, Claude will show you the frame in your own material. You'll recognise it, not learn it.
 
 ## One rule about running the experiment
 
@@ -41,27 +39,26 @@ What you owe the experiment is a result you can read, not a completed artifact. 
 
 ## What happens after
 
-M5 opens with the return when the next slot lands. You read what came back, diagnose what went wrong, and learn packaging not from a slide but from *"here's the piece that would have caught this specific thing."*
+M5 opens with the return when the next slot lands. You read what came back, diagnose what went wrong, decide what to change.
 
-**Rehearse, apply, fail, try again.** That's the loop you're stepping into. The first run wasn't supposed to be the right one.
+**Rehearse, apply, fail, try again.** This is how practitioners run a first experiment: un-packaged, see what happens, read the result.
 
-Walk your system. Fill the gaps. See the three blocks in your own work. Send it off, un-packaged. Read the result.
+Walk your system. Fill the gaps. Send it off. Read what comes back.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-04-27 (check_writing, check_student_facing, check_lectures, check_strategy_tie_in, check_research_claims)
-- compendium-audited 2026-04-27 (this cycle: re-stamp to clear touch-based auto-degrade; no prose changes — lecture has no fenced student-prompts)
-- compendium-audited 2026-04-26 (prior audit) — superseded
+**Quality:** compendium-audited 2026-05-15 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0)
+- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-**Lecture meta:** *10–12 min lecture. Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the two frameworks the exercise riffs on — gap analysis and Huryn's three-block memory.*
+**Lecture meta:** *10–12 min lecture. Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis. Huryn's three-block memory is seeded in body language (walk-your-memory shape, no attribution) and lands by name at the exercise's Phase 3 when materials get rearranged. See strategy doc § Huryn.*
 **Word count:** ~620 words body.
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" section is load-bearing — it's where the experimental stance lands.
 
 **Frameworks attributed:**
 - **Gap analysis** — generic business-analysis framework; no single attribution. Named as *walk the system you have against the system the task needs.*
-- **Huryn's three-block memory** — Paweł Huryn `[practitioner direct]`. Freshness re-check required before first cohort delivery.
+- **Huryn's three-block memory** — Paweł Huryn `[practitioner direct]`. NOT named in this lecture body — attribution lives at the M4 exercise Phase 3 (`walk-and-send-off.md`) when materials get rearranged. Freshness re-check required before first cohort delivery.
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Named here only as forward reference to M5 (reference artifact + plan.md + external verifier). M5 owns the teaching; this lecture just puts the word on the table so the student knows what's coming.
 - **Compound engineering** — Kieran Klaassen `[practitioner direct]`. Implicit in the *test → learn → encode* framing; not name-attributed in this lecture (Klaassen attribution lives at Debrief in M1 and here-onwards is experienced, not recited).
 
@@ -77,3 +74,9 @@ Walk your system. Fill the gaps. See the three blocks in your own work. Send it 
 - Don't turn "cancel is legit" into a disclaimer. It's a practitioner rule, not a safety net. Frame it as *what real operators do*, not *what nervous students can fall back on*.
 
 **Source freshness:** Huryn `productcompass.pm/p/claude-md-snippets` verified at 2026-03-31 — within 6 months.
+
+**Source verification, MUST DO before first cohort:**
+- Re-open Huryn `https://www.productcompass.pm/p/claude-md-snippets` (200 verified 2026-05-15). Confirm the three-block frame language is still on the page. Fallback if removed: paraphrase the three blocks as observation-rule / decision-with-alternatives / quality-criterion, no name attribution — let M4 exercise Phase 3 carry the naming.
+- Re-open Ronacher's three-pattern source `https://lucumr.pocoo.org/2025/6/12/agentic-coding/` (200 verified 2026-05-15). Confirm reference / plan / verifier vocabulary still maps to the three-pattern frame. Fallback: name the three patterns descriptively (reference artifact, plan file, external verifier) — M5 lecture owns the named-pattern teaching, this lecture is forward-pointer only.
+- Re-open Klaassen compound-engineering `https://every.to/source-code/compound-engineering-the-definitive-guide` (200 verified 2026-05-15). The four-step loop is implicit framing here; explicit attribution lives at M1 Debrief and is experiential by M4. Fallback: no edit needed.
+- 6-month re-check stamp at first cohort delivery. If any source 404s and fallback is taken, log a `[UNVERIFIED]` note in this maintainer block + flag at the M4 dry-run.

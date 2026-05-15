@@ -43,6 +43,7 @@ Ask Claude to audit your system as a subagent and return a ranked top-5 of what 
 
 {{prompt:walk-and-send-off-2}}
 
+Heavy run expected. Skim past the opening summary, look for the ranked thin-spots list, that's the payoff.
 
 Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
 
@@ -81,6 +82,7 @@ Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, 
 
 {{prompt:walk-and-send-off-4}}
 
+Skim past the opening summary, look for the quoted-example-per-block payoff, that's where the three blocks earn their names.
 
 Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
 
@@ -106,8 +108,8 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 
 **Prompt register — `walk-and-send-off-3` deliberately short.** The Phase 2 gap-fill speed-up prompt (`You propose solutions and ask questions. Use the ask-questions tool to speed up my work.`) is intentionally brief, lowercase-hyphenated tool name, no honorifics. It models the casual one-line ask a tired engineer types mid-conversation when prose Q&A is dragging. The `ask-questions tool` phrasing is the curriculum's runtime-agnostic term (`AskUserQuestion` is the Claude Code implementation; the prompt avoids tying to one runtime). Pairs with the M2 `push-back-on-the-plan-4` carve-out — both encode end-of-flow tired-engineer register. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design.
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-15 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0)
+- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~750 words body.
@@ -118,6 +120,11 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 - **Gap analysis** (Phase 2) — generic business-analysis framework; named in prose as *walk the system you have against the system the task needs*.
 - **Huryn's three-block memory** (Phase 3) — Paweł Huryn. Earns its name through quote-from-own-work before naming.
 - **Compound engineering** (module Debrief) — Kieran Klaassen. Review + Compound step as Debrief's self-rewrite pattern, now in its fourth rep for the student.
+
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- opens a worktree on a clean branch when a real task warrants the un-watched send-off shape
+- walks an audit prompt against a real backlog task before sending it off, fills the worst three gaps
+- sends off un-packaged in the same Claude Code session and cancels when the trace is enough, treating the cancel as data not failure
 
 **Failure modes + diagnostics:**
 - **Phase 1 task-sprawl** — student picks the quarterly epic. Diagnostic: the scoped task doesn't have a "done" the student can name. Fix: Nerd forces a slice; better a smaller task that runs the full arc.

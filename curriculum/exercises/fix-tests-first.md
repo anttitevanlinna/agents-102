@@ -1,6 +1,6 @@
 # Fix tests-first
 
-**Time:** 35–40 minutes.
+**Time:** 25 minutes.
 
 **What you do:** fix the bug you brought from prework, tests-first. Ship the PR.
 
@@ -27,11 +27,15 @@ When Claude says done, push once on the depth. Ask whether the change is the roo
 
 {{prompt:fix-tests-first-3}}
 
+Dig into code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* The goal is to make a neat and clean fix. Might need a number of nudges. You steer.
+
 Ask Claude to commit, push a branch, and open the PR. How far you let Claude drive Git is your call.
 
 **What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. You read the diff, pushed back on at least one line, and ran the root-cause interrogation before the second TDD pass.
 
 The PR is shipped. The move is warm. Hand off to the compound step.
+
+*For those finishing early: chatter about making sure the LLM doesn't fake tests or write tests that just pass. How do you catch that efficiently?*
 
 <!-- maintainer -->
 
@@ -41,7 +45,7 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
-- **Time:** 35–40 min inside M1's 2h slot. Second of three exercises on the same bug / same repo. Shorter than the earlier 40–45 min band — the rule-write move moved to Ex3 where the compound step lives.
+- **Time:** 25 min inside M1's 2h slot. Second of three exercises on the same bug / same repo. Earlier 35–40 min band assumed a meatier bug than prework's trivial-bug spec (under 50 lines, wrong error message / off-by-one / wrong total) actually invites — recalibrated 2026-05-15 after AE101 dry-run flagged the budget as padded.
 - **Prompt progression note:** the commit / push / PR move is intentionally prose-led, not a fenced prompt block. At this point the Builder is already in the repo with the fixed diff in context; the student can ask in their own words. Do not add a paste-ready commit prompt unless the exercise design changes.
 
 **Frameworks riffed on:**
@@ -55,8 +59,8 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 - **Diff rubber-stamp.** Student says *"looks fine"* under 30 seconds. Nerd push: *"find me one line you'd have written differently — not wrong, just different."*
 
 **Decision points:**
-- **Runs over 50 min.** Bug wasn't trivial. Let it complete; trim the next exercise (MCP close-out) to read-only, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.
-- **Finishes under 25 min.** Picked something too small. Offer second bug, or use saved time to revisit the introspection move.
+- **Runs over 35 min.** Bug wasn't trivial. Let it complete; trim the next exercise (MCP close-out) to read-only, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.
+- **Finishes under 15 min.** Picked something too small. Offer second bug, or use saved time to revisit the introspection move.
 - **Repo has no test infrastructure.** Exercise ends without test verification. Log *"no verifier on this path"* in the `./CLAUDE.local.md` rule — real finding, not exercise failure. M4 picks it up.
 
 **Plug points:**

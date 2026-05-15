@@ -61,7 +61,7 @@ Return ONE JSON object, exactly this shape:
 {
   "class": "cross_module",
   "module_set": ["<path-1>", "<path-2>", ...],
-  "training": "agents-101" | "ae101" | "shared",
+  "training": "agents-101" | "ae101" | "claude-basics" | "shared",
   "verdict": "PASS" | "REVISE",
   "module_pairs_evaluated": [
     {

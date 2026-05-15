@@ -3,25 +3,25 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
+  "trace_status": "cached",
   "prompts_evaluated": 4,
   "prompts_findings": [
     {"prompt_index": 1, "prompt_lead": "I'm about to run my first long-running experiment. Screen the candidates below a", "verdict": "PASS", "load_bearing": true, "risks_fired": [
       {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook + schema compress preamble.", "fix_hint": "No edit."},
       {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout names pushback move.", "fix_hint": "No edit."}
     ]},
-    {"prompt_index": 2, "prompt_lead": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if", "verdict": "TODO", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Heavy multi-source audit; subagent dispatch likely opens with main-thread plan summary.", "fix_hint": "Optional: prepend 'No preamble — dispatch the subagent and stream the ranked findings.' Body primer alternative."},
+    {"prompt_index": 2, "prompt_lead": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if", "verdict": "PASS", "load_bearing": true, "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer added 2026-05-15: 'Heavy run expected. Skim past the opening summary, look for the ranked thin-spots list — that's the payoff.' Closes the preamble-before-action carve-out for the Phase 2 audit prompt."}, "risks_fired": [
+      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Heavy multi-source audit; subagent dispatch likely opens with main-thread plan summary.", "fix_hint": "Body primer added 2026-05-15. MAINTAINER-RESOLVED."},
       {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Top-5 cap; body prose names scoping recovery.", "fix_hint": "No edit."},
       {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Subagent isolation is the structural mitigation per fresh-session carve-out.", "fix_hint": "No edit."}
     ]},
     {"prompt_index": 3, "prompt_lead": "You propose solutions and ask questions. Use the ask-questions tool to speed up ", "verdict": "PASS", "load_bearing": false, "risks_fired": []},
-    {"prompt_index": 4, "prompt_lead": "Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange ", "verdict": "TODO", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Long structured prompt; summary-opener likely.", "fix_hint": "Optional: prepend 'No preamble — start with one quoted example per block.'"},
+    {"prompt_index": 4, "prompt_lead": "Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange ", "verdict": "PASS", "load_bearing": true, "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer added 2026-05-15: 'Skim past the opening summary, look for the quoted-example-per-block payoff — that's where the three blocks earn their names.' Closes the preamble-before-action carve-out for the Phase 3 Huryn-rearrange prompt."}, "risks_fired": [
+      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Long structured prompt; summary-opener likely.", "fix_hint": "Body primer added 2026-05-15. MAINTAINER-RESOLVED."},
       {"pattern_id": "append-vs-integrate", "confidence": "low", "evidence": "Explicit 'Don't invent new material. Rearrange what's there.' Body-callout recovery.", "fix_hint": "No edit; mitigation explicit."},
       {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Quote-from-own-work-first gate.", "fix_hint": "No edit."}
     ]}
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 0
 }

@@ -418,7 +418,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 ## Related AE101 modules (where these primitives land)
 
-- **M1 Getting going** — first `CLAUDE.md` seed (user-level or `CLAUDE.local.md`), one connector wire
+- **M1 Getting going** — §§ 1 (first `CLAUDE.md` seed, user-level or `CLAUDE.local.md`), 8 (one connector wire)
 - **M2 Plan mode, done right** — § 5, plus Pocock `grill-me` skill as second-pass read
 - **M3 Earn the trust** — §§ 6 (subagents), 7 (skills); first skill use + first authoring
 - **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off), 10 (transcript as trace)

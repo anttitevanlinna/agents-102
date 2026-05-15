@@ -15,7 +15,7 @@ Source: `curriculum/trainings/agentic-engineering-101/prework.md:33`
 ```
 Download the AE101 content tarball to ~/Downloads. Use Bash:
 
-  curl -fsSL <CONTENT_URL> -o ~/Downloads/agents-102-content.tar.gz
+  curl -fsSL <CONTENT_URL> -o ~/Downloads/ae101-content.tar.gz
 
 Confirm the file exists and report its size.
 ```
@@ -32,7 +32,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
 1. Extract the content folder. Use Bash:
 
      mkdir -p ~/Documents/ae101-content
-     tar xzf ~/Downloads/agents-102-content.tar.gz -C ~/Documents/ae101-content
+     tar xzf ~/Downloads/ae101-content.tar.gz -C ~/Documents/ae101-content
 
    Confirm the absolute path of ~/Documents/ae101-content back to me. The tarball expands to lectures/, exercises/, reference/, supplementary/, content/skills/.
 

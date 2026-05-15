@@ -437,9 +437,9 @@ function parseCli(argv) {
 function buildPayload(trainingKey, customer, outDir) {
   // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
   // The payload URL is training-scoped so one customer can host multiple
-  // trainings without agents-102-content.tar.gz / agents-101-starter.tar.gz overwriting each other.
+  // trainings without ae101-content.tar.gz / agents-101-starter.tar.gz overwriting each other.
   //
-  // AE101      — agents-102-content.tar.gz (lectures/exercises/reference/supplementary/skills;
+  // AE101      — ae101-content.tar.gz (lectures/exercises/reference/supplementary/skills;
   //                                         extracted at ~/Documents/ae101-content/)
   // Agents 101 — agents-101-starter.tar.gz  (empty working-folder skeleton; extracts in-place
   //                               into the student's connected/working folder at
@@ -447,12 +447,12 @@ function buildPayload(trainingKey, customer, outDir) {
   if (trainingKey === 'agentic-engineering-101') {
     console.log('Building content tarball...');
     execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
-    const tarSrc = path.join(ROOT, 'agents-102-content.tar.gz');
-    const tarDst = path.join(outDir, 'agents-102-content.tar.gz');
+    const tarSrc = path.join(ROOT, 'ae101-content.tar.gz');
+    const tarDst = path.join(outDir, 'ae101-content.tar.gz');
     fs.copyFileSync(tarSrc, tarDst);
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/agents-102-content.tar.gz`;
+    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/ae101-content.tar.gz`;
   }
 
   if (trainingKey === 'agents-101') {

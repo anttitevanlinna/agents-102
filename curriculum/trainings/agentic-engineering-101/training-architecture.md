@@ -18,7 +18,7 @@ Today AE101 ships only on Claude Code (CLI + Desktop). Gemini CLI is the planned
 
 Two artefacts per student:
 
-1. **Content folder.** `agents-102-content-agentic-engineering-101.tar.gz`, shipped at training start. Contains `lectures/`, `exercises/`, `prework/`, `reference/`, `supplementary/`, and `content/skills/` (source files for the curated skills M3 uses). All markdown. Read in place at the agent's direction; skim when you want to. Same files render via the cohort site for projection and human browsing, the file-on-disk is the source of truth for agentic reading.
+1. **Content folder.** `ae101-content.tar.gz`, shipped at training start. Contains `lectures/`, `exercises/`, `prework/`, `reference/`, `supplementary/`, and `content/skills/` (source files for the curated skills M3 uses). All markdown. Read in place at the agent's direction; skim when you want to. Same files render via the cohort site for projection and human browsing, the file-on-disk is the source of truth for agentic reading.
 
 2. **The student's real repo.** Where compounding actually happens. Picked in prework against four criteria: owned or co-owned, still active in six months, dense enough that compounding has somewhere to land, real work ahead at both sizes (a one-line bug for M1, an epic or refactor for M4 onward).
 

@@ -63,7 +63,7 @@ GIT_COMMITTER_DATE="2026-04-20T11:00:00+0000" \
 cd - >/dev/null
 
 # ── 2. Tarball + mocks (always) ────────────────────────────────────────────
-TARBALL="$SCRATCH/Downloads-stub/agents-102-content.tar.gz"
+TARBALL="$SCRATCH/Downloads-stub/ae101-content.tar.gz"
 tar -czf "$TARBALL" -C "$SEED_CONTENT" .
 
 mkdir -p /tmp/ae101-mocks

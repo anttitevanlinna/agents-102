@@ -35,7 +35,7 @@ For every assertion: run the named script, capture exit code + first line of std
 
 ### File-existence + extraction (A-series)
 
-- **A1.** Tarball still in place: `test -f <scratch>/Downloads-stub/agents-102-content.tar.gz`. PASS on exit 0.
+- **A1.** Tarball still in place: `test -f <scratch>/Downloads-stub/ae101-content.tar.gz`. PASS on exit 0.
 - **A2.** Content extracted: `test -d <scratch>/Documents-stub/ae101-content/lectures && test -d <scratch>/Documents-stub/ae101-content/exercises && test -d <scratch>/Documents-stub/ae101-content/reference && test -d <scratch>/Documents-stub/ae101-content/supplementary && test -d <scratch>/Documents-stub/ae101-content/content/skills`. PASS on exit 0.
 - **A3.** Skill installed: `test -f <scratch>/.claude-user-stub/skills/access-control-analysis/SKILL.md`. PASS on exit 0.
 - **A4.** Skill installed: `test -f <scratch>/.claude-user-stub/skills/stride/SKILL.md`. PASS on exit 0.

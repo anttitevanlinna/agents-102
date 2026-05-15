@@ -8,7 +8,7 @@ I'm starting a six-module training called Agentic Engineering 101. Walk these in
 
 1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.
 
-2. Extract ~/Downloads/agents-102-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.
+2. Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.
 
 3. Install these as personal Claude Code skills:
    - access-control-analysis

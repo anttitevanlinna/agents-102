@@ -26,11 +26,11 @@ Read **once** at session start: `/tmp/ae101-mocks/student-inputs.md`. It carries
 
 | Real-world surface | Scratch substitution | Why |
 |---|---|---|
-| `~/Downloads/agents-102-content.tar.gz` | `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/Downloads-stub/agents-102-content.tar.gz` | Sandbox can't write to `~/`; tarball pre-staged by `stage-ae101-m1.sh` |
+| `~/Downloads/ae101-content.tar.gz` | `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/Downloads-stub/ae101-content.tar.gz` | Sandbox can't write to `~/`; tarball pre-staged by `stage-ae101-m1.sh` |
 | `~/Documents/ae101-content/` | `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/Documents-stub/ae101-content/` | Same |
 | `~/.claude/skills/access-control-analysis/` | `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/.claude-user-stub/skills/access-control-analysis/` | Subagent can't write to its own `.claude/` even with bypass |
 | `~/.claude/skills/stride/` | `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/.claude-user-stub/skills/stride/` | Same |
-| `URL:` open-hook in prompt-001 (student appends real URL at runtime) | Acknowledge the open-hook; report the pre-staged tarball path as the URL value; do **not** execute a real `curl`. `ls -l` the pre-staged tarball at `<scratch>/Downloads-stub/agents-102-content.tar.gz` and report its size. | The `<CONTENT_URL>` placeholder was removed from the source prompt 2026-05-14; harness uses pre-staging instead of network. |
+| `URL:` open-hook in prompt-001 (student appends real URL at runtime) | Acknowledge the open-hook; report the pre-staged tarball path as the URL value; do **not** execute a real `curl`. `ls -l` the pre-staged tarball at `<scratch>/Downloads-stub/ae101-content.tar.gz` and report its size. | The `<CONTENT_URL>` placeholder was removed from the source prompt 2026-05-14; harness uses pre-staging instead of network. |
 
 Log every substitution once at the top of its phase as `[harness substitution — <surface>]`.
 
@@ -41,7 +41,7 @@ Log every substitution once at the top of its phase as `[harness substitution �
 **Exercise:** prework
 **Reads:** prompt-001.txt
 
-The prompt ends with `URL:` as an open-hook (student appends the real URL at runtime). **Do not execute a real `curl`.** Substitute: append the pre-staged tarball path as the URL value in your blockquote-paste, then confirm the pre-staged tarball at `<scratch>/Downloads-stub/agents-102-content.tar.gz` exists (`ls -l` it), report its size. Log the harness substitution once.
+The prompt ends with `URL:` as an open-hook (student appends the real URL at runtime). **Do not execute a real `curl`.** Substitute: append the pre-staged tarball path as the URL value in your blockquote-paste, then confirm the pre-staged tarball at `<scratch>/Downloads-stub/ae101-content.tar.gz` exists (`ls -l` it), report its size. Log the harness substitution once.
 
 ### Phase 2 — extract-and-install
 
@@ -52,7 +52,7 @@ The prompt walks five numbered steps. Walk them in order, one assistant turn per
 
 **Step 1.** `mkdir -p <scratch>/Documents-stub/ae101-content`. Confirm.
 
-**Step 2.** Extract: `tar -xzf <scratch>/Downloads-stub/agents-102-content.tar.gz -C <scratch>/Documents-stub/ae101-content`. Then `ls <scratch>/Documents-stub/ae101-content` and confirm the five expected subdirs are present (`lectures/`, `exercises/`, `reference/`, `supplementary/`, `content/`).
+**Step 2.** Extract: `tar -xzf <scratch>/Downloads-stub/ae101-content.tar.gz -C <scratch>/Documents-stub/ae101-content`. Then `ls <scratch>/Documents-stub/ae101-content` and confirm the five expected subdirs are present (`lectures/`, `exercises/`, `reference/`, `supplementary/`, `content/`).
 
 **Step 3.** Install the two skills. Copy `<scratch>/Documents-stub/ae101-content/content/skills/access-control-analysis/` → `<scratch>/.claude-user-stub/skills/access-control-analysis/`. Same for `stride`. Confirm each has a `SKILL.md` and report the absolute path. Log the substitution once.
 

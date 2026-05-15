@@ -3,16 +3,16 @@
 ## Phase 1: download-tarball
 
 **Prompt:**
-> Download the AE101 content tarball to `~/Downloads/agents-102-content.tar.gz` using curl. Report the file's size.
+> Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using curl. Report the file's size.
 >
-> URL: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/Downloads-stub/agents-102-content.tar.gz`
+> URL: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/ae101-prework/Downloads-stub/ae101-content.tar.gz`
 
 [harness substitution — <CONTENT_URL>: using pre-staged tarball path instead of real network URL]
 
 Confirming the pre-staged tarball exists:
 
 ```
--rw-r--r--  1 anttitevanlinna  staff   767B May 14 09:50 agents-102-content.tar.gz
+-rw-r--r--  1 anttitevanlinna  staff   767B May 14 09:50 ae101-content.tar.gz
 ```
 
 **Phase 1 complete.** Tarball is 767 bytes, ready for extraction.
@@ -26,7 +26,7 @@ Confirming the pre-staged tarball exists:
 >
 > 1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.
 >
-> 2. Extract ~/Downloads/agents-102-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.
+> 2. Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.
 >
 > 3. Install these as personal Claude Code skills:
 >    - access-control-analysis

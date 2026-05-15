@@ -1,6 +1,6 @@
 # ae101-content-stub playground
 
-Stand-in for the real `agents-102-content.tar.gz` shipped at AE101 prework. The mechanical-test stage script tars this directory into `<scratch>/Downloads-stub/agents-102-content.tar.gz` so the prework Actor can extract it without hitting the network.
+Stand-in for the real `ae101-content.tar.gz` shipped at AE101 prework. The mechanical-test stage script tars this directory into `<scratch>/Downloads-stub/ae101-content.tar.gz` so the prework Actor can extract it without hitting the network.
 
 ## Shape
 

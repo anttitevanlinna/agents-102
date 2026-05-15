@@ -207,7 +207,7 @@ const DETECTORS = [
   {
     id: 'content-bundle',
     label: 'AE101 content bundle',
-    regex: /agents-102-content\.tar\.gz|AE101 content directory|content folder|content\/skills\//gi,
+    regex: /ae101-content\.tar\.gz|AE101 content directory|content folder|content\/skills\//gi,
     requiresContract: true,
     trainings: ['agentic-engineering-101'],
   },

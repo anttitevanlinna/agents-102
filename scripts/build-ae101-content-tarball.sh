@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build the AE101 content tarball that the student lands at ~/Documents/ae101-content/.
 #
-# Output: agents-102-content.tar.gz at repo root.
+# Output: ae101-content.tar.gz at repo root.
 #
 # Ships only AE101-relevant material:
 #   - reference/, supplementary/ from curriculum/trainings/agentic-engineering-101/{reference,supplementary}/
@@ -40,7 +40,7 @@ TRAINER_ONLY=(
   cohort-onboarding-email.md
 )
 
-OUT="agents-102-content.tar.gz"
+OUT="ae101-content.tar.gz"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
@@ -171,7 +171,7 @@ fi
 # ---- Pack ----------------------------------------------------------------
 # Run tar from inside ROOT so the archive has lectures/, exercises/, reference/,
 # supplementary/, content/, prompts/ at the top level.
-# Extraction: `tar xzf agents-102-content.tar.gz -C ~/Documents/ae101-content`
+# Extraction: `tar xzf ae101-content.tar.gz -C ~/Documents/ae101-content`
 rm -f "$OUT"
 (cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)
 

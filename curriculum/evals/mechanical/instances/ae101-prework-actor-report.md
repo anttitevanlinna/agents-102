@@ -19,7 +19,7 @@ done
 5. Verified repo ready: tests pass (7/7), git clean, no remote configured
 
 ## Substitutions
-- <CONTENT_URL> → pre-staged tarball at Downloads-stub/agents-102-content.tar.gz
+- <CONTENT_URL> → pre-staged tarball at Downloads-stub/ae101-content.tar.gz
 - ~/Downloads/ → Downloads-stub
 - ~/Documents/ → Documents-stub
 - ~/.claude/skills/ → .claude-user-stub/skills

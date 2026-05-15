@@ -17,7 +17,7 @@ Outputs:
 site/clients/<customer>/index.html
 site/clients/<customer>/<training>/index.html
 site/clients/<customer>/<training>/trainer-guide.html   # if curriculum/trainings/<training>/trainer-guide.md exists
-site/clients/<customer>/<training>/agents-102-content.tar.gz   # AE101 only
+site/clients/<customer>/<training>/ae101-content.tar.gz   # AE101 only
 site/clients/<customer>/<training>/agents-101-starter.tar.gz   # Agents 101 only
 ```
 
@@ -61,7 +61,7 @@ Training URLs are:
 https://agents102.bosser.consulting/clients/<customer>/<training>/
 ```
 
-Payload URLs are training-scoped on purpose. For example, Agents 101 and AE101 can both be deployed for `acme` without `agents-101-starter.tar.gz` and `agents-102-content.tar.gz` colliding at the customer root.
+Payload URLs are training-scoped on purpose. For example, Agents 101 and AE101 can both be deployed for `acme` without `agents-101-starter.tar.gz` and `ae101-content.tar.gz` colliding at the customer root.
 
 ## Sibling Repo Note
 

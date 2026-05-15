@@ -51,7 +51,7 @@ for i in 001 002 003; do
 done
 
 # ── A-series: file existence ───────────────────────────────────────────────
-test -f "$SCRATCH/Downloads-stub/agents-102-content.tar.gz" \
+test -f "$SCRATCH/Downloads-stub/ae101-content.tar.gz" \
   && record "A1" "PASS" "tarball present at Downloads-stub" \
   || record "A1" "FAIL" "tarball missing"
 

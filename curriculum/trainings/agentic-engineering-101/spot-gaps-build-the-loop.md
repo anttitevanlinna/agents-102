@@ -7,7 +7,7 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 Walk in with both Module 4 (un-packaged) and Module 5 (packaged) run artefacts. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).
 
-Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [scheduled agents](../../trainings/agentic-engineering-101/reference/scheduled-agents.md) for when one task becomes a pattern.
+Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when one task becomes a pattern, scheduled, looped, or condition-gated.
 
 ## What You'll Learn
 After this module, you will be able to:

@@ -34,6 +34,22 @@ Ask Claude Code to enter plan mode, read the evidence from the two runs and the 
 
 Read what comes back the way you read any plan. Push back where the proposals miss the codebase situation Claude cannot see. Approve the one or two that earn their place. Author them.
 
+## Ralph
+
+Geoffrey Huntley saw a lever. An agent runs, drifts, needs nudging. The fix already existed in shell:
+
+```bash
+while :; do cat PROMPT.md | claude-code; done
+```
+
+He called it Ralph, after the Simpsons. One line, no scaffolding. Hacky, simple, powerful. Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes when a multi-hour task wants a stop-and-check.
+
+Months later, Claude Code shipped `/goal`. The runtime version of the same move. A condition, a check each turn. The shell hack is now a slash command.
+
+Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The platform watched, and shipped the move native.
+
+That's the M6 leap. The next Ralph is yours.
+
 ## Where the loop ends
 
 There is no last turn. Each run surfaces the next gap. Each gap proposes the next move. Each move makes the next run cheaper. The kit grows, the rules sharpen, the skills accumulate, and the model underneath gets replaced every few months without changing the move.
@@ -55,7 +71,9 @@ The training closes. The flywheel does not.
 
 **Mood target:** practitioner fluency continued, with a forward-tilt. The mood arc names *unleashed leverage* for the meta-frame end of Module 6; this lecture lands the leverage as a runnable move, not a slogan. Watch for: drift toward autonomous-agent fantasy ("the agent writes its own next skill") — the *what this is not* beat is the load-bearing carve-out. If the mood reads triumphal or vendor-pitch-shaped, the carve-out got cut.
 
-**Frameworks attributed:** none new. The flywheel framing builds on what Module 3 → Module 5 → Module 6 already named. Klaassen's compound-engineering move sits underneath without re-attribution (already credited in *The loop has a name*).
+**Frameworks attributed:** Geoffrey Huntley, Ralph Loop, [practitioner direct], https://ghuntley.com/ralph/ (2025-07-14, historical foundational — outside 6-month freshness, cite as origin not current evidence). The flywheel framing builds on what Module 3 → Module 5 → Module 6 already named. Klaassen's compound-engineering move sits underneath without re-attribution (already credited in *The loop has a name*).
+
+**Source verification — Ralph → /goal addition (2026-05-15):** Huntley URL `https://ghuntley.com/ralph/` resolves, post live. `/goal` live-verified against Claude Code 2.1.142 — `claude -p "/goal"` returns `No goal set. Usage: /goal <condition>`, confirming the command ships and the syntax matches. Worker/judge model split (doc-claimed) NOT live-tested in this pass; body prose softened to observable behavior only (*"a check each turn"*, no claim about which model evaluates).
 
 **Prompt block:** one new prompt added (NEW prompt — no prior version to diff against; flagged per check_prompts #22).
 
@@ -63,3 +81,4 @@ The training closes. The flywheel does not.
 - Three-persona sim: senior engineer (does the *what this is not* beat read as a real carve-out or as hedging?), engineer mid-training (does the prompt feel runnable or aspirational?), CTO observer (does the lecture stay practitioner-shaped or drift into vendor pitch?).
 - Live-test the prompt on a real Module 6 close. Confirm Claude in plan mode actually returns the three-question plan rather than narrating a meta-summary.
 - Watch whether *the second skill you just shipped* in the prompt block needs a more concrete back-reference. The student named the skill in Module 6 Phase 2; the bracket-free wording assumes scrollback or kit memory carries the name. If sim flags ambiguity, switch to *the skill in `~/.claude/skills/` you authored at Module 6*.
+- **Re-audit writing / story / technical classes after Ralph→/goal addition (2026-05-15).** Quality dimension-log needs new SHA pins per touched class (writing, story, technical degraded; behavior carries). Re-fire three-persona sim with CTO attention on the *"the platform watched, and shipped the move native"* line — does it stay practitioner-shaped or tilt to vendor-warm? AE101 is Claude Code-canonical so naming the product is in-bounds, but the anthropomorphism (*platform watched*) is the specific risk.

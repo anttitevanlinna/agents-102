@@ -228,28 +228,54 @@ Docs: [Claude Code desktop → Connectors](https://code.claude.com/docs/en/deskt
 
 ---
 
-## 9. Scheduling — `/loop`, Desktop scheduled tasks, Routines
+## 9. Long-running shapes — `/loop`, scheduled tasks, Routines, `/goal`
 
-Three mechanisms. Pick by intent.
+Four primitives. Pick by intent. Composes with any installed skill.
 
-**`/loop` (in-session only.)** Two forms (live-verified 2026-05-14 against `code.claude.com/docs/en/scheduled-tasks`):
+**`/loop` — in-session recurring.** Two forms (live-verified 2026-05-14 against `code.claude.com/docs/en/scheduled-tasks`):
 - **Fixed interval:** `/loop 5m <prompt>` runs the prompt every 5 minutes while the session is open. Closes when you close the session.
 - **Self-paced:** `/loop <prompt>` (omit interval). Claude picks the cadence (1 min to 1 hour) based on activity — short waits while a build is finishing, longer waits when nothing is pending. Bare `/loop` (no prompt either) runs the built-in maintenance prompt at a dynamically chosen interval, or a `.claude/loop.md` if you've written one.
 
-Use for: polling during a work block, watching a build, monitoring a long-running task's intermediate output, continuous polish on active work.
+Use for polling during a work block, watching a build, monitoring a long-running task's intermediate output, continuous polish on active work. *"Check the build every 5 minutes until it passes."* *"Re-run the verifier every 2 minutes on each new commit."* Ralph-style re-feed sits here.
 
-**Desktop scheduled tasks — local (the everyday choice).** Sidebar: **Schedule → New task → New local task.** Name, prompt, frequency. Runs on your laptop when the task fires; inherits your connectors.
+**Desktop scheduled tasks — local (the everyday choice).** Sidebar: **Schedule → New task → New local task.** Name, prompt, frequency. Runs on your laptop when the task fires; inherits your connectors automatically (no re-auth needed).
 
 **Missed-run behavior:** if the laptop was asleep at scheduled time, Claude Code catches up **once** for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (*"only run if it's before 10:00am; otherwise report skipped"*).
 
-**Routines / `/schedule` — remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI, or sidebar: **New task → New remote task.** Runs on Anthropic's infra regardless of your laptop. **Requires a cloud-based Git repo** as working directory — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub triggers are web-only.
+**Routines / `/schedule` — remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI, or sidebar: **New task → New remote task.** Runs on Anthropic's infra regardless of your laptop. **Requires a cloud-based Git repo** as working directory — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub triggers are web-only. No catch-up on wake (the cloud doesn't sleep).
 
-**M4/M5/M6 send-off implications:** the un-packaged M4 send-off runs in the **same Claude Code session** (not `/loop`, not scheduled). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents are the generalisation M6 names as a callout, not an authoring exercise.
+**`/goal <condition>` — condition-driven autonomy.** Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds, then stops. Status with bare `/goal`, stop with `/goal clear`. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. *"All tests pass"* works. *"Code is optimised"* doesn't (too subjective). Different shape from the three above: not scheduled, not interval-driven, condition-driven. The runtime-shipped sibling of the verifier students author at Module 5. Verified live 2026-05-15 against Claude Code 2.1.142.
 
-**Session lifecycle — three gotchas** (verified 2026-04-23):
+### When each fits
+
+| Primitive | Good for | Not for |
+|---|---|---|
+| `/loop` | Iterative polish on active work, continuous check-and-fix, Ralph-style re-feed patterns | Morning automation when you're not at the laptop |
+| Desktop local task | Standing verifier runs, nightly codebase sweeps, rule-drift monitoring, scheduled research OODA loops. Catch-up on wake means weekend misses don't drop on Monday | Anything that needs to react in the same session you're actively working in |
+| `/schedule` (Routines) | Cloud-Git workflows, multi-machine scenarios where any laptop might be off | Local-repo training work (AE101 default) |
+| `/goal` | Multi-hour work with a measurable end-state you can name in one sentence; runtime-shipped condition gate | Vague "good enough" goals; subjective quality bars |
+
+### How it composes with an authored skill
+
+The scheduler or condition invokes the skill. The skill is the thing that catches the gap, judges the output, or packages the move. The scheduler tells it when; `/goal` tells it until-what.
+
+**Nightly verifier run.** Desktop local task at 2:00am → prompt reads *"Invoke the `commit-verifier` skill on the last 24h of commits. Report anything the skill flags."* The skill is the check; the schedule is the cadence.
+
+**Continuous polish loop.** `/loop 3m` while editing → prompt reads *"Invoke the `tighten-draft` skill on the current file. Propose changes."* The skill is the move; the loop is the rhythm.
+
+**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."* Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.
+
+### Session lifecycle — three gotchas
+
+Apply to any long-running session, scheduled or not. M4's un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` run does. Verified 2026-04-23.
+
 1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight runs, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
 2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
 3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic run can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
+
+### M4/M5/M6 send-off implications
+
+The un-packaged M4 send-off runs in the **same Claude Code session** (not `/loop`, not scheduled, not `/goal`). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents and `/goal` are the generalisations M6 names as a callout, not authoring exercises.
 
 Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines). Ctrl+C corruption verified against [GitHub issues #3003, #17466, #18880](https://github.com/anthropics/claude-code/issues/3003) (2026-05-14 — all three closed with repros; #3003 documents `messages.N: tool_use ids were found without tool_result blocks` after mid-tool interrupt + `--resume`).
 
@@ -423,7 +449,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 - **M3 Earn the trust** — §§ 6 (subagents), 7 (skills); first skill use + first authoring
 - **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off), 10 (transcript as trace)
 - **M5 Learn from the test, re-send packaged** — §§ 5 (plan.md authoring), 7 (verifier as eval), 9 (send-off), 10 (read transcript plus git)
-- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (scheduled-agents callout), 10 (compare two run transcripts)
+- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (long-running shapes callout in closer + Ralph→`/goal` story), 10 (compare two run transcripts)
 
 ---
 

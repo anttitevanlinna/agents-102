@@ -33,7 +33,7 @@ Claude Code ships three scheduling primitives. Desktop local tasks (invoked from
 
 Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 
-Keep the primitive in the kit. You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The scheduled-agents reference page in the content folder walks through the specifics. ([Scheduled agents](../trainings/agentic-engineering-101/reference/scheduled-agents.md).)
+Keep the primitive in the kit. You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The [Long-running shapes section in Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) walks through the four primitives, when each fits, and how a skill plugs into each.
 
 ## Why the loop survives the model
 

@@ -14,7 +14,7 @@ The gap between agent throughput and review/merge/deploy capacity is where this 
 
 Six forces bend an agent-scale CI/CD loop in ways a pre-agent loop never had to handle. Get any one of these wrong and the others start compensating badly.
 
-**Throughput decouples from merge rate.** Agents ship code fast. Your review queue grows at the same rate. If merge capacity is flat, the queue is where agent productivity gets destroyed and morale follows. Intercom's 19.2% auto-approval rate on the smallest, lowest-risk PRs is a direct response to this: the smallest slice of the queue, automated, pulls the median down for everyone ([Curran](https://ideas.fin.ai/p/2x-nine-months-later)).
+**Throughput decouples from merge rate.** Agents ship code fast. Your review queue grows at the same rate. If merge capacity is flat, the queue is where agent productivity gets destroyed and morale follows. Intercom auto-approves 19.2% of all merges through its lowest-risk tier — small, narrow changes that ship without human review, pulling the median cycle time down for everyone ([Curran](https://ideas.fin.ai/p/2x-nine-months-later)).
 
 **Blast-radius stratification.** A CSS tweak and an auth change do not deserve the same gate. One gate for both means either the tweak takes too long or the auth change ships too loose. Tiered gating sorts PRs by what could go wrong, not by who wrote them.
 
@@ -50,7 +50,7 @@ There is also a social pace gap the CTO should watch. An engineer running hot fo
 
 Three named operations to study. Each answers a different question.
 
-**Intercom: Tier 1/2/3 review as auto-merge gate.** 93.6% of PRs are agent-drafted; 19.2% auto-approve at the lowest tier; auto-approved PRs merge in 14.6 min against a 75.8-min org median; 86% of auto-approved PRs are 20 lines or fewer ([Curran, *2x nine months later*](https://ideas.fin.ai/p/2x-nine-months-later)). The move to study: how the criteria for each tier get defined and evolved, and how auto-approval scope expanded methodically from the safest slice outward.
+**Intercom: Tier 1/2/3 review as auto-merge gate.** 93.6% of PRs are agent-drafted; 19.2% of all merges flow through the lowest-tier auto-approve path; those auto-approved PRs merge in 14.6 min against a 75.8-min org median; 86% of them are 20 lines or fewer ([Curran, *2x nine months later*](https://ideas.fin.ai/p/2x-nine-months-later)). The move to study: how the criteria for each tier get defined and evolved, and how auto-approval scope expanded methodically from the safest slice outward.
 
 **Ramp: Dojo as skill marketplace.** 350+ skills shared across 99.5% AI-active team, 84% using coding agents weekly, 12% of production PRs opened by non-engineers ([Geoff Charles](https://x.com/geoffintech/status/2042002590758572377)). Dojo matters for CI/CD because the skills that earn their way into the marketplace are the skills that then show up in PRs. The merge gate becomes a filter on which skills can ride into production, not just which lines of code. If your CI cannot reason about skills-as-artifacts, your agents are shipping without traceable authorship.
 

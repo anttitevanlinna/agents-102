@@ -24,7 +24,7 @@ Most 2026-05-09 items closed by the 2026-05-14 verification pass (`/tmp/ae101-to
 **REMAINING from this verification pass:**
 
 - **`reference/claude-code-for-engineers.md` §13 hooks coverage is a one-paragraph stub.** M3 + M5 lean on hooks. Closes when `reference/hooks-and-loops.md` ships (see *Hook mechanics depth* above).
-- **`supplementary/how-the-best-do-ci-cd.md` Curran 19.2% scope.** Curran's 19.2% is org-wide in the source; file frames it as "lowest tier" (lines 17, 33, 53). Defensible from context but not verbatim. Tighten before first cohort if precision matters. Klaassen 14-agent count and 10-people headcount fixed inline; Ramp four numbers stay sourced-unconfirmed (X.com paywalled today).
+- **`supplementary/how-the-best-do-ci-cd.md` Ramp four numbers stay sourced-unconfirmed** (X.com paywalled at last check). Re-verify before first cohort if X.com access opens up.
 - **Register-call: `/loop` version floors + lifecycle**, `/loop` requires v2.1.72+; Ultraplan requires v2.1.91+; recurring `/loop` tasks auto-expire 7 days after creation; `Esc` (not Ctrl+C) interrupts the bare-`/loop` wait. Subagent left these out of engineer-ref to preserve "behaviour-named, not version-pinned" register. Maintainer call whether to land any of them.
 
 ## Per-file specific concerns (not caught by auto-fire)
@@ -63,7 +63,6 @@ Surfaced by `/refresh` audit 2026-05-14 (compendiums + compounded scopes). Three
 
 **Compounded cleanup (low-priority):**
 
-- **3 deferred deletes + cross-reference sweep.** Audit flagged three 2026-04-23 entries as clean deletes (rule absorbed into compendium, no recurrence): the action-headers entry, the em-dash-ban entry, and the lab-speak-banned-word entry (filenames in `/tmp/refresh-compounded.md`). Held back today because the third one has 2 incoming references from sibling entries (`2026-04-23-writing-maintainer-vocabulary-leaks-into-body.md`, `2026-04-26-writing-atmospheric-phrasing-tone-scan.md`). Delete only after fixing the dangling pointers, ~10 min job.
 - **Older MEMORY.md bullets also bloated** (audit flagged the pre-2026-05-14 entries too). Today's compression handled the 22 newest. Next /refresh: sweep the rest under the same ≤200-char target. Fold into the bigger re-group pass; touching them piecemeal is churn.
 
 **Canonical sources:** `/tmp/refresh-compendiums.md` + `/tmp/refresh-compounded.md` (this session's audit punch lists) + `memory/compounded/2026-05-14-content_creation-todo-surface-open-decisions-only.md` (why this section is here and not in module files).

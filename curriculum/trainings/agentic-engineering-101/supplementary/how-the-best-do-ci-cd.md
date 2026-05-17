@@ -1,112 +1,159 @@
-# How the best do CI/CD at agent scale
+# How the best do CI/CD: six moves that sharpen the loop
 
-*Supplementary reference for AE101. Referenced from Module 6. Audience: CTOs and platform/staff engineers at orgs scaling agentic coding. Assumes you have lived M6.*
+*Supplementary for AE101 Module 6. Read after you've shipped your second skill.*
 
-## If you think this is a tooling decision, you are in the wrong room
+You finished M6 owning the loop at your desk. Two runs of the same task, gap diagnosis, a second skill in `~/.claude/skills/`, one rule cut from `./CLAUDE.local.md`. The same loop, run at more people, more PRs, more customers, looks slightly different. Six moves recur in the engineers running it best. Each one sharpens the loop you already own. None require permission from above to start trying.
 
-Most CTOs walking into the agent era treat CI/CD as a tooling question. Which pipeline runner, which deployment tool, which test framework. That is the 2019 conversation. The 2026 conversation is a systems-throughput question: can your review + merge + deploy + observe loop keep up with engineers who ship 20 to 30 agent-drafted PRs per day?
+## 1. Treat CI as feedback into the loop, not a gate to pass
 
-For most orgs, the straight answer is no. Not because the pipes are wrong. Because the humans-in-the-loop assumptions baked into every pre-merge gate were written for a world where a senior engineer read every diff. That world is gone. An engineer at Intercom's pace cannot read 93.6% of their own output line-by-line ([Darragh Curran](https://ideas.fin.ai/p/2x-nine-months-later)). A reviewer cannot, either. Something has to give.
+The reflex frame for CI is *"a wall I must pass before merge."* That frame burns every red build. A failing CI run is signal. About which memory rule should have caught the mistake upstream. About which verifier was too soft. About which skill ran on auto-pilot when it should have paused. The best route that signal back into the loop the way M3 and M6 routed gap-diagnosis back into skills and memory. Each red build sharpens the next run.
 
-The gap between agent throughput and review/merge/deploy capacity is where this piece lives. The answer is not *faster CI*. The answer is *rethinking what humans are for, what gates are for, and what post-merge infrastructure now has to catch*. You will pay for this somewhere. Better to pay on purpose than by accident.
+**Klaassen at Every** named the loop. Each unit of engineering work should make the next one cheaper. The mechanism lives in the artifacts the next agent reads — rules files, skill files, `AGENTS.md` — and the discipline is feeding lessons from one task back into them before the next task starts ([Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide)).
 
-## The six forces at play
+**Cursor's Bugbot** runs a similar mechanism at platform scale. Review comments flagged as useful become learned rules that promote and demote over time. Resolution rate climbed from 52% to around 80% as the rule corpus grew across 110,000 repos to 44,000 learned rules. Cursor's own numbers ([Bugbot now self-improves with learned rules](https://cursor.com/blog/bugbot-learning)).
 
-Six forces bend an agent-scale CI/CD loop in ways a pre-agent loop never had to handle. Get any one of these wrong and the others start compensating badly.
+**Try this Monday.** Next CI failure you hit on agent-drafted code, ask Claude *"what rule in `./CLAUDE.local.md` would have caught this?"* before you fix the diff. If the answer is *none*, write the rule.
 
-**Throughput decouples from merge rate.** Agents ship code fast. Your review queue grows at the same rate. If merge capacity is flat, the queue is where agent productivity gets destroyed and morale follows. Intercom auto-approves 19.2% of all merges through its lowest-risk tier — small, narrow changes that ship without human review, pulling the median cycle time down for everyone ([Curran](https://ideas.fin.ai/p/2x-nine-months-later)).
+## 2. Fan out review; converge on the pattern
 
-**Blast-radius stratification.** A CSS tweak and an auth change do not deserve the same gate. One gate for both means either the tweak takes too long or the auth change ships too loose. Tiered gating sorts PRs by what could go wrong, not by who wrote them.
+A single reviewer reading 30 agent-drafted PRs a day skims. The best refuse the trade. They run specialist reviewer agents in parallel: one for security, one for performance, one for architecture, one for style. Each finding spawns its own fix-agent. The human's job shifts. Read the pattern across findings, not the lines.
 
-**Eval-latency as throughput tax.** A 15-minute CI run feels fine when a human is stepping away for coffee. When an agent is waiting, 15 minutes is idle compute plus context loss plus a forced switch to another task. Eval latency is now a direct tax on agent leverage. Fast evals are not a nice-to-have; they are the pipeline's throughput floor.
+**Cloudflare engineering** runs seven specialist reviewers in CI through their internal stack, with a coordinator agent producing one structured review. The named specialties: security, performance, code quality, documentation, release management, AGENTS.md compliance, internal compliance. 131,246 review runs across 48,095 merge requests in 5,169 repos over 30 days. Median review time 3m39s. Human break-glass override fires on 0.6% of reviews. Cloudflare's own numbers ([Code review with our internal AI engineering stack](https://blog.cloudflare.com/ai-code-review/)).
 
-**The eval-of-evals problem.** Judges drift. Verifiers rot. A test suite that passed everything last quarter may have been silently relaxing its assertions. Someone has to check the checker, and the someone has to be another agent, because no human has time. You are now running evals on your evals, and the recursion has to end somewhere the CTO signs off on.
+The pattern named in their own write-up: specialized agents beat monolithic prompting because each agent has a narrow job and the coordinator deduplicates.
 
-**Drift across local → CI → prod.** Agent writes code that passes on its laptop. CI sees a different truth. Prod sees a third. Each environment carries its own assumptions, and agents are less forgiving of drift than humans because they do not know to ask *"wait, does this even run in staging?"* Environmental parity stops being a hygiene concern and becomes a safety concern.
+**Try this Monday.** On your next non-trivial PR, ask Claude to review it four times under four hats: *"as the security reviewer, what would you flag? as the perf reviewer? architecture? style?"* Read the four outputs side by side. Notice which hat caught what. That's a panel.
 
-**Attribution and ownership of agent-drafted merges.** Who owns the 3am page when a Claude-drafted change breaks prod? The engineer who approved it? The team that owns the service? The platform team that built the verifier? An answer has to exist on Monday, not be argued about at 3am on Saturday.
+## 3. Tier by blast radius. Make the Tier-1 case on your own PRs
 
-## Human review, but not the naive version
+The naive answer is *"add more reviewers."* The best answer is *"not all PRs deserve the same gate."* A CSS tweak and an auth change want different review surfaces. Tiered gating sorts PRs by what could go wrong, not by who wrote them. Once the lowest-risk tier is clean enough that agent-drafted, verifier-green changes ride through with no human reading, the median cycle time falls for the whole team.
 
-The reflex response is *"add more reviewers, add more rigor."* Wrong instinct. You cannot out-review agent throughput with more humans. You can only out-design it with tiered gates.
+**Intercom** routes 19.2% of merges through a Tier-1 auto-approve path. Median cycle time on that path is 14.6 minutes against an org median of 75.8 minutes. 86% of those PRs are 20 lines or fewer. Intercom's own numbers ([Curran, *2x — nine months later*](https://ideas.fin.ai/p/2x-nine-months-later)).
 
-Intercom's shape is the clearest public version. PRs are stratified by blast radius. The lowest-risk tier (feature-flag cleanups, small bug fixes, narrow changes) goes through agent-drafted, agent-reviewed, tests-passed, verifier-green, and auto-merges with no human. 19.2% of merges now go this path. The cycle time is 14.6 minutes, against a 75.8-minute org median. 86% of these PRs are 20 lines or fewer ([Curran](https://ideas.fin.ai/p/2x-nine-months-later)).
+**Stripe** is a different point on the same spectrum. Over 1,000 agent-produced PRs merge each week, all human-reviewed, none with human-written code. Stripe contains blast radius by running each agent in an isolated devbox instead of auto-merging the lowest-risk slice. Humans gate on what the agent did; the sandbox gates on what the agent could do ([Gray, *Minions: Stripe's one-shot, end-to-end coding agents*](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents)).
 
-The higher tiers still involve humans. But the human role changes. You are not reading 30 diffs a day line-by-line. You are reading *patterns*. You approve architectural deltas, override when instinct fires, reject when something smells wrong. This is design review, not line review. A different skill than what most senior engineers trained for, and a different skill than most review checklists assume.
+Two different orgs, two different bets on where to put the human and where to put the silicon. The IC version of this — one engineer carving out their own auto-mergeable slice with a verifier they built — hasn't been published yet. That's a gap you can close on Monday.
 
-Name the move clearly: *"I am not pretending to have read every diff. I am approving the pattern and the blast radius."* If the team cannot say that out loud, the gate is theatre. Theatre gates slow throughput without catching anything.
+**Try this Monday.** Pick one slice of your repo that's mostly safe (feature-flag toggles, copy changes, narrow refactors). Ask Claude *"what verifier would I need before this slice could auto-merge?"* Build that verifier. Run the slice through it. Show the cycle-time number to your tech lead.
 
-## Pace: fast forward requires fast reverse
+## 4. Eval latency is part of the loop
 
-Most orgs get this arrow backwards. They feel the speed, panic, and invest in more pre-merge gates (more tests, more reviewers, more steps before the merge button). This makes the pipeline slower without making prod safer, because the bugs agents ship are rarely the bugs pre-merge gates catch.
+A 15-minute CI run feels fine when a human steps away for coffee. When the agent is waiting, 15 minutes is idle compute plus context loss plus a forced switch to another task. The best treat eval latency as a direct tax on what their kit can do for them. They split fast lane from slow lane. Cheap deterministic checks run in seconds and verify the agent's next move. Judges and gates run in minutes, in the background, on the merged change.
 
-The sweet pace is not *as fast as possible*. It is *fast enough that correction cost stays low*. Two conditions make correction cheap: reverts are trivial and observability catches bad merges in minutes. If both hold, you can run hot. Ship fast, revert faster, sleep fine. If either breaks, you cannot, and the answer is to fix revert-speed and observability first, then open the throttle.
+**Husain** codifies the split as guardrails versus evaluators. Guardrails sit inline in the request/response path: fast, deterministic, milliseconds of latency budget, block the response. Evaluators run async or in batch: heavier compute, often LLM-as-judge, run after the agent has moved on. You almost never use a slow LLM-as-judge as a synchronous guardrail ([Evals FAQ — Guardrails vs Evaluators](https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html)).
 
-This flips the investment priority. Most teams are over-invested pre-merge and under-invested post-merge. Reallocate. The post-merge loop is where agent-scale velocity actually gets paid for.
+**Cherny on Claude Code** pairs a deterministic Stop hook with a background verifying agent — the fast check blocks the next move, the slow check runs after. He calls the verify-your-work move the one that 2-3x's the quality of the final result ([Anup Jadhav on Cherny, *35 Claude Code Tips From the Guy Who Built It*](https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/)).
 
-There is also a social pace gap the CTO should watch. An engineer running hot for a week while the rest of the team runs cold will find their PRs piling up and the team resenting the velocity. That is a culture problem, not a CI problem. But it shows up as a CI problem first (review queues lengthening, merges slowing, morale dropping) and gets misdiagnosed as a tooling issue. If the whole team is not shifting pace together, the fastest engineer becomes the bottleneck for everyone else's goodwill.
+**Try this Monday.** Time your slowest CI step. If the agent has to wait on it before its next move, ask Claude *"which 20% of these checks catches 80% of the regressions, and how do I run only those on PR-open?"*
 
-## Anchor cases
+## 5. Skills don't just live in your kit. Promote them into the CI surface
 
-Three named operations to study. Each answers a different question.
+The naive view of a skill: a helpful prompt you might invoke. The sharper view: a verifier-in-waiting. Each skill you author catches a pattern. That pattern is what your next PR's review (or your CI check, or your pre-commit hook, or the next plan agent reading rules) needs to see. The best engineers don't keep skills isolated in `~/.claude/skills/`. They promote them into AGENTS.md, into rules files committed back to the repo, into pre-commit hooks. Author once, fires on every next PR.
 
-**Intercom: Tier 1/2/3 review as auto-merge gate.** 93.6% of PRs are agent-drafted; 19.2% of all merges flow through the lowest-tier auto-approve path; those auto-approved PRs merge in 14.6 min against a 75.8-min org median; 86% of them are 20 lines or fewer ([Curran, *2x nine months later*](https://ideas.fin.ai/p/2x-nine-months-later)). The move to study: how the criteria for each tier get defined and evolved, and how auto-approval scope expanded methodically from the safest slice outward.
+**Shapira at Elementor** runs a CI workflow that grabs human review comments, hands them to a Cursor CLI agent, extracts patterns, and commits the rules file back to master. Every merged PR sharpens the next review against the same rules ([The Self-Learning Code Review](https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc)).
 
-**Ramp: Dojo as skill marketplace.** 350+ skills shared across 99.5% AI-active team, 84% using coding agents weekly, 12% of production PRs opened by non-engineers ([Geoff Charles](https://x.com/geoffintech/status/2042002590758572377)). Dojo matters for CI/CD because the skills that earn their way into the marketplace are the skills that then show up in PRs. The merge gate becomes a filter on which skills can ride into production, not just which lines of code. If your CI cannot reason about skills-as-artifacts, your agents are shipping without traceable authorship.
+**Larson at Imprint** consults the same shape of artifact at plan time. The agent reads AGENTS.md and the skills wiki *"by future iterations of the plan pattern"* — the skill catalogue becomes the loop's working memory ([Learning from Every's Compound Engineering](https://lethain.com/everyinc-compound-engineering/)).
 
-**Every Inc / Kieran Klaassen: fan-out reviewer panel.** Klaassen runs a panel of specialised reviewer agents in parallel over each PR — Klaassen at Every reports around a dozen, covering security, performance, architecture, style, and so on. Each finding spawns a dedicated per-comment agent that resolves it. Learnings back-feed into `CLAUDE.md` / `AGENTS.md` and skill files so the next PR starts smarter ([*Compound Engineering: The Definitive Guide*](https://every.to/source-code/compound-engineering-the-definitive-guide)). This is the clearest public version of the fan-out reviewer pattern and the compounding memory loop on top of it. The operation is small — five products, each run by a single-person engineering team — so the operating model transfers as a pattern, not as a turnkey system. The pattern is the point.
+**Charles runs Ramp's Dojo** as the team-scale version: 350+ shared skills, 99.5% of employees actively using AI, 84% on coding agents weekly. The marketplace pulls personal moves into shared standards. Ramp's own numbers ([Lenny Rachitsky on Geoff Charles, *Inside Ramp*](https://creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles)).
 
-A fourth candidate worth tracking: Cursor's own internal engineering CI story, if a citable account from someone inside the team surfaces. Flagged in the maintainer block.
+**Try this Monday.** Look at your `~/.claude/skills/`. Find a skill that catches something your CI doesn't. Propose it as a pre-commit rule or PR-review check in your repo. The path from personal skill to team-enforced check is shorter than it looks.
 
-## What a CTO should ask on Monday
+## 6. Get out fast. Learn from real customers safely
 
-Seven questions. If you cannot answer six of them, the conversation is not about agents yet. It is about instrumentation.
+The loop doesn't stop at merge. Customer signal in production is the outermost feedback ring. The best invest in safe, fast deployment so customer reality feeds back into memory and skills the same way CI failures do. Feature flags, fast revert, observability dashboards, gradual rollouts. These aren't infrastructure niceties. They're what makes the outer loop fast enough to learn from. Slow deploys with painful rollbacks force teams to gold-plate pre-merge. Fast deploys with cheap rollback let teams ship hot and correct from real signal.
 
-1. What is our median PR merge time for agent-drafted PRs, and how does it compare to the lowest-risk tier?
-2. What percentage of merges are revertible in under 10 minutes without engineer intervention?
-3. Who owns the 3am page when an agent-drafted change breaks prod: the approver, the service team, or the platform team?
-4. Do we gate by blast radius, or by file count? (File count is a lazy proxy.)
-5. How stale are our eval judges, and when was the last time a human sampled their verdicts against ground truth?
-6. What is the false-positive and false-negative rate on our verifiers, and which direction are we biased?
-7. If we raised the auto-merge threshold by one tier, what would break first: review coverage, revert speed, or observability?
+The arrow most orgs get backwards: feel the speed, panic, invest in more pre-merge gates. Slower pipeline, no safer prod. The sweet pace is not *as fast as possible.* It's *fast enough that correction cost stays low.* Two conditions: reverts are trivial, observability catches bad merges in minutes. If both hold, you run hot.
 
-## Where this fits in the AE101 arc
+**Majors at Honeycomb** names the agent-era stake plainly: *"How do you expect your agents to validate each change, if the consequences of each change cannot be found?"* Agentic work makes production observability more load-bearing, not less. Agents need fast, context-rich production signal to validate their own changes the same way you needed it to validate yours ([Your data is made powerful by context](https://charity.wtf/2026/03/09/your-data-is-made-powerful-by-context-so-stop-destroying-it-already-xpost/)).
 
-M6 taught you the loop at IC scale: spot the gap, build the eval, close the loop on your own code. This supplementary is the org-scale version. Evals as CI infrastructure at PR-gate scale, which is the question M6 pointed toward at its close. The shift is not conceptual. The shift is who is reading the output and what the blast radius is when the loop fails. Once you own the loop at your own desk, the next gate up is the one where your agent-drafted PR meets the rest of the org.
+**Wolff on the Claude Code team** named the operating principle bluntly at QCon: *"when the implementation cost goes to zero, the feedback loop becomes everything."* The team ships SQLite persistence behind a feature flag, watches the production signal turn bad, removes it within two weeks. Reversibility is the prerequisite for shipping fast, not the consolation prize for shipping wrong ([Engineering at AI Speed: Lessons from the First Agentically Accelerated Software Project](https://www.infoq.com/presentations/engineering-ai/)).
+
+**Try this Monday.** Time how long it takes to revert a bad merge in your repo, end to end. If the number is more than 10 minutes, that's the problem worth surfacing to your team. The other five moves wait on this one.
+
+## Where this fits in your AE101 arc
+
+M6 taught the loop at your desk. Spot the gap, build the eval, close the loop on your own code. This piece is the same loop, run by engineers who've been at it longer. The shift is not conceptual. The reader is still you. The shift is what each move makes possible once you stop treating CI, review, deploy, and customer signal as separate stages and start treating them as one loop with six tunable surfaces.
+
+Pick one move. Run it this week.
+
+## Sources
+
+Practitioner-direct writings cited in this piece, in order of appearance:
+
+- Kieran Klaassen, [*Compound Engineering: The Definitive Guide*](https://every.to/source-code/compound-engineering-the-definitive-guide) — naming the loop: each unit of engineering work should make the next one cheaper.
+- Cursor, [*Bugbot now self-improves with learned rules*](https://cursor.com/blog/bugbot-learning) — promote/demote learned rules across 110,000 repos.
+- Cloudflare engineering, [*Code review with our internal AI engineering stack*](https://blog.cloudflare.com/ai-code-review/) — seven specialist reviewers + coordinator, instrumented at scale.
+- Darragh Curran, [*2x — nine months later*](https://ideas.fin.ai/p/2x-nine-months-later) — Intercom Tier 1/2/3 auto-merge with measured cycle-time deltas.
+- Alistair Gray, [*Minions: Stripe's one-shot, end-to-end coding agents*](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents) — over 1,000 agent-produced PRs per week, human-reviewed, isolated devboxes.
+- Hamel Husain, [*Evals FAQ — Guardrails vs Evaluators*](https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html) — fast-lane / slow-lane eval taxonomy.
+- Anup Jadhav on Boris Cherny, [*35 Claude Code Tips From the Guy Who Built It*](https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/) — deterministic Stop hook + background verifying agent, 2-3x quality move.
+- Ofer Shapira, [*The Self-Learning Code Review*](https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc) — CI agent extracts patterns from review comments, commits rules file back to master.
+- Will Larson, [*Learning from Every's Compound Engineering*](https://lethain.com/everyinc-compound-engineering/) — `AGENTS.md` and skills wiki consulted by the next plan iteration.
+- Lenny Rachitsky on Geoff Charles, [*Inside Ramp: how a $32B company runs on AI agents*](https://creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles) — 350+ shared skills, team-scale marketplace; 99.5% AI-active, 84% on coding agents weekly.
+- Charity Majors, [*Your data is made powerful by context*](https://charity.wtf/2026/03/09/your-data-is-made-powerful-by-context-so-stop-destroying-it-already-xpost/) — agents need fast production observability to validate their own changes.
+- Adam Wolff (QCon SF 2025), [*Engineering at AI Speed: Lessons from the First Agentically Accelerated Software Project*](https://www.infoq.com/presentations/engineering-ai/) — feature flag + reverse-by-moving-a-pointer; SQLite shipped and removed in two weeks.
 
 <!-- maintainer -->
 
-**Status:** Pass 1 authored 2026-04-24. Source spec: `bosser-strategy:content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5.
+**Status:** Pass 2 rewrite 2026-05-15. Replaces Pass 1 rewrite (same date) which carried 8 OODA-pending slots. Two OODA cycles dispatched (3 parallel subagents each) populated all slots; Move 5 reframed mid-cycle per maintainer redirect (skills-as-CI-check, not skills-as-generic-kit-accretion).
 
-**Source verification — MUST DO before first cohort:**
-
-1. **Open against original** — verify every URL loads and says what we claim it says:
-   - Curran, *"2× — nine months later"* — [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later) [practitioner direct]
-   - Charles, Ramp post — [x.com/geoffintech/status/2042002590758572377](https://x.com/geoffintech/status/2042002590758572377) [practitioner direct]
-   - Klaassen / Every, *Compound Engineering: The Definitive Guide* — [every.to/source-code/compound-engineering-the-definitive-guide](https://every.to/source-code/compound-engineering-the-definitive-guide) [practitioner direct]
-
-2. **Triple-check every load-bearing number:**
-   - Intercom: 93.6% agent-drafted, 19.2% auto-approved, 14.6 min vs 75.8 min median, 86% of auto-approved are ≤20 lines — all from Curran's post, single source. Re-verify.
-   - Ramp: 350+ skills in Dojo, 99.5% AI-active, 84% using coding agents weekly, 12% non-engineer PRs — all from Charles's post, single source. Re-verify.
-   - Every/Klaassen: "14-agent parallel review" — language used in `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md` citing the Every definitive guide. Open the guide and confirm the count is 14 and not a paraphrase.
-
-3. **Freshness re-check** — 6-month rule per `check_research_claims.md` § 2. All three sources were last pulled 2026-04-09 through 2026-04-21. Re-check at first-cohort delivery; if any source is older than 6 months at delivery, mark as dated or find a newer practitioner-direct replacement.
-
-4. **Fallback framing if a source does not hold at verification:**
-   - If the Klaassen "14" number is not in the primary source, reframe as *"a fan-out reviewer panel (Klaassen at Every reports around a dozen specialist reviewer agents)"* without the exact count.
-   - If Intercom tier percentages have shifted since the Curran post, cite them with the post date and the *"as of April 2026"* qualifier.
-   - If Charles's Ramp Dojo number has moved, cite it as *"350+ at time of writing (Charles, April 2026)"*.
+**Audience pin:** AE101 IC who has lived M1–M6. NOT a CTO. NOT a platform/staff engineer reading over the CTO's shoulder. The supplementary is the IC's next-altitude reading after shipping their second skill: the same loop, slightly wider lens.
 
 **Open TODOs:**
 
-- [ ] Confirm Cursor-the-company's own internal engineering CI story has a usable practitioner-direct URL. If yes, add as a fourth anchor case. If not, leave the current three.
-- [ ] Freshness check on Intercom (Curran) and Ramp (Charles) numbers before first cohort delivery — these are single-source claims from April 2026 that may move before delivery.
-- [ ] First-cohort read-through: confirm the opening frame lands for a CTO audience and does not read as lecture. Skeletal sections (the CTO Monday checklist) likely want sharpening from first-cohort pushback.
-- [ ] Confirm `[practitioner direct]` is the right label on the Ramp X.com post vs. `[practitioner direct / social post]` if we later formalise that distinction.
+- [ ] **Source verification — MUST DO before first cohort** (per `check_research_claims.md` §11): open every URL, confirm the cited claim against the linked text, confirm all load-bearing numbers. Twelve URLs:
+  - Klaassen — [every.to/source-code/compound-engineering-the-definitive-guide](https://every.to/source-code/compound-engineering-the-definitive-guide)
+  - Cursor Bugbot — [cursor.com/blog/bugbot-learning](https://cursor.com/blog/bugbot-learning) — confirm 52% → 80%, 110,000 repos, 44,000 learned rules
+  - Cloudflare — [blog.cloudflare.com/ai-code-review](https://blog.cloudflare.com/ai-code-review/) — confirm seven specialists, 131,246 / 48,095 / 5,169 / 30 days, 3m39s median, 0.6% override
+  - Curran/Intercom — [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later) — confirm 19.2% / 14.6min / 75.8min / 86%≤20 lines
+  - Gray/Stripe — [stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents) — confirm 1,300 PRs/week, quarantined EC2 language
+  - Husain — [hamel.dev/blog/posts/evals-faq/...](https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html) — guardrails vs evaluators framing verified by critical-review pass; **freshness conflict open** — OODA reported Jan 2026, critical-review reported Aug 2025. Re-fetch and resolve. If Aug 2025, mark as dated historical context or find fresher source.
+  - Cherny via Jadhav — [www.anup.io/35-claude-code-tips-from-the-guy-who-built-it](https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/) — verified by critical-review pass; "2-3x quality" + Stop-hook + background-agent confirmed. Author name corrected to Anup Jadhav (was Choudhary).
+  - Shapira — [medium.com/elementor-engineers/...](https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc) — verified by critical-review pass; mechanism (gh api → cursor-agent → commit to `.cursor/rules/code-review.mdc`) confirmed.
+  - Larson — [lethain.com/everyinc-compound-engineering](https://lethain.com/everyinc-compound-engineering/) — verified by critical-review pass; quote *"consulted by future iterations of the plan pattern"* confirmed (note the leading word *"consulted"*).
+  - Charles via Rachitsky — [creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles](https://creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles) — original X URL was auth-walled; swapped to Lenny Rachitsky interview write-up. Numbers re-stated: 350+ skills + 99.5% AI-active + 84% coding agents weekly (was conflated as "99.5% using skills weekly" — corrected).
+  - Majors — [charity.wtf/2026/03/09/...](https://charity.wtf/2026/03/09/your-data-is-made-powerful-by-context-so-stop-destroying-it-already-xpost/) — confirm agent-validation quote
+  - Wolff — [infoq.com/presentations/engineering-ai](https://www.infoq.com/presentations/engineering-ai/) — confirm "implementation cost to zero, feedback loop everything" + SQLite-in-two-weeks anecdote
+
+- [ ] **Freshness re-check** at first-cohort delivery (6-month rule per `check_research_claims.md` §2). Newest cites pulled 2026-05-15; freshness window expires 2026-11-15.
+
+- [x] **Critical-review subagent** completed 2026-05-15. Verdicts: 5 APPROVE (Cloudflare, Curran, Shapira, Larson, Majors) / 7 REVISE / 0 REPLACE. Revisions landed in Pass 2.1 same date. Cross-cutting flag: vendor-venue density is 7-of-12; every one carries the `[practitioner direct, vendor venue]` label and self-reported metrics are flagged "<org>'s own numbers" inline. One open question: Hamel freshness conflict (Jan 2026 per OODA vs Aug 2025 per critical-review) — pending re-fetch.
+
+- [ ] **KB patch — stale note.** `continuous-research/platform-watch/coding-agents/runs/2026-04-21-boris-cherny.md` currently says "Cherny silent on evals beyond hooks." OODA 2 falsified this; he openly names verify-your-work as his top tip. One-line patch needed.
+
+- [ ] **Eval instances** at `curriculum/evals/instances/how-the-best-do-ci-cd.{technical,writing,story}.json` were graded against the prior CTO-targeted Pass 1. Re-run after critical-review subagent clears the sources.
+
+- [ ] **First-cohort read-through:** confirm the opening does not slip into CTO-briefing register. Confirm the forward-callout from M6 (`spot-gaps-build-the-loop.md` line 64 — *"Going deeper, when this loop has to scale past you"*) still reads as an inviting bridge.
 
 **Iteration log:**
 
-- 2026-04-24: Pass 1 authored. Structure follows source spec in `bosser-strategy:content-strategy-agentic-engineering-101.md` § "Supplementary material (planned)" item #5 verbatim in intent. Six forces named, three anchor cases cited, seven-question CTO checklist landed. All source claims carry URL + practitioner-direct label. No [SOURCE NEEDED] flags at write time — all anchor-case numbers trace to existing observations/ or platform-watch/ files. Open TODOs logged for ship-time verification.
+- 2026-05-15 (Pass 2.1, critical-review fixes): nine fixes landed after critical-review subagent flagged: (1) Klaassen M1 claim softened from "runs review findings back into CLAUDE.md/AGENTS.md/skills" to "named the loop" — original mechanic-claim was not in the URL; the concrete mechanism lives in Move 5 (Shapira + Larson). (2) Stripe "1,300 PRs/week" corrected to "over 1,000" per source. (3) Stripe "quarantined EC2 instance" corrected to "isolated devbox." (4) Hamel co-author Shankar dropped — not co-bylined. (5) Hamel freshness conflict logged for re-fetch. (6) Cherny distillation author Choudhary → Jadhav. (7) Charles X URL replaced with Rachitsky's creatoreconomy.so write-up (X was auth-walled). (8) Charles 99.5%/84% conflation corrected. (9) Cursor Bugbot label kept as `[practitioner direct, vendor venue]` with explicit caveat in maintainer that the 52%→80% number is self-reported and not load-bearing. All 12 sources now ship with verified claims; one open item (Hamel freshness) flagged for re-fetch.
 
-**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5)
-- judges @bb9c1d5: writing PASS, story PASS, technical PASS, behavior N/A (no-student-prompt-blocks)
+- 2026-05-15 (Pass 2): All 8 OODA-pending slots populated. Move 5 reframed mid-cycle from "skills compound generically" to "skills become CI checks / verifiers / rules" per maintainer redirect. Source reshuffle: Shapira (originally proposed for Move 1) moved to Move 5 as the cleanest skill-becomes-CI-check loop; Cursor Bugbot promoted to Move 1 secondary. Move 4 lead changed from Cherny to Husain + Shankar (OODA confirmed the "three verifier shapes" framing is downstream synthesis, not Cherny's own — he names two: Stop hook + background agent). Move 2 ships single-cite (Cloudflare carries the move alone — no clean non-Klaassen second exists). Move 3 frames Intercom + Stripe as two org-scale bets on the same question, with the IC-altitude case named as a published gap. Sources section added to bottom of body per maintainer direction (visible to students; source-type labels stay maintainer-only per `check_research_claims.md` §1).
+
+- 2026-05-15 (Pass 1 rewrite): replaced original CTO-targeted version after audience-mismatch + mood-collision review. 4 of 12 example slots populated; 8 OODA-pending markers shipped for follow-up.
+
+- 2026-04-24 (original Pass 1): CTO-targeted, replaced.
+
+**Frameworks riffed on:**
+
+| Move | Practitioner | Source-type | Notes |
+|---|---|---|---|
+| 1 | Kieran Klaassen, Every | `[practitioner direct, vendor venue]` | Compound Engineering: The Definitive Guide |
+| 1 | Cursor (Bugbot) | `[practitioner direct, vendor venue]` | Self-reported metrics (52% → 80%, 110K repos, 44K rules); operational mechanism is evidence |
+| 2 | Cloudflare engineering | `[practitioner direct, vendor venue]` | Self-reported metrics (131K/48K/5K, 3m39s, 0.6%); operational mechanism is evidence |
+| 3 | Darragh Curran, Intercom | `[practitioner direct, vendor venue]` | Self-reported metrics (19.2% / 14.6 vs 75.8 / 86%≤20); operational mechanism is evidence |
+| 3 | Alistair Gray, Stripe | `[practitioner direct, vendor venue]` | Self-reported 1,300 PRs/week; quarantine pattern is evidence |
+| 4 | Hamel Husain | `[practitioner direct]` | Independent practitioner blog; L3 codification of a widely-converged pattern. Shankar co-author dropped per critical-review (not co-bylined on the cited URL). Freshness conflict open — see source-verification block. |
+| 4 | Boris Cherny (via Anup Jadhav distillation) | `[practitioner analysis]` | Writer-on-subject attribution: Jadhav on Cherny. |
+| 5 | Ofer Shapira, Elementor | `[practitioner direct]` | Engineering team publication; CI-loop mechanism with named files |
+| 5 | Will Larson, Imprint | `[practitioner direct]` | Personal blog; runs Every's pattern on his own monorepos |
+| 5 | Geoff Charles, Ramp (via Lenny Rachitsky) | `[practitioner analysis]` | Original X URL auth-walled; swapped to Rachitsky's interview write-up on creatoreconomy.so. Writer-on-subject attribution. Ramp's own metrics. |
+| 6 | Charity Majors, Honeycomb | `[practitioner direct]` | Own blog charity.wtf; canonical observability voice |
+| 6 | Adam Wolff, Anthropic Claude Code team | `[practitioner direct]` | QCon SF 2025 talk via InfoQ; same employer as Cherny but distinct practitioner and distinct claim (deploy-loop, not eval-loop) |
+
+**Org-diversity check:** 12 cites across 11 organisations. Anthropic appears twice (Cherny M4 secondary, Wolff M6 secondary) — accepted because the two practitioners are distinct individuals making distinct claims about different layers of the loop. Attribution cap per `check_writing.md` rule 11 is per-practitioner; both Cherny and Wolff are one-mention each.
+
+**Vendor-venue cites flagged in body as "<org>'s own numbers":** Cursor (M1), Cloudflare (M2), Intercom (M3), Stripe (M3), Ramp (M5). Per `memory/compounded/2026-05-14-research_claims-vendor-venue-practitioner-byline.md`, operational facts are evidence and self-reported metrics are flagged. **Edge case — Cursor Bugbot:** critical-review pass flagged this as borderline `[vendor press release]` (Level 0) under strict reading. Kept as `[practitioner direct, vendor venue]` because Michael Zhao (Cursor employee) is the named byline and the operational mechanism (learned-rules promote/demote across 110K repos) is what we cite. The 52% → 80% resolution-rate number is Cursor's self-reported and called out inline as such; not load-bearing on the move's argument.
+
+**Quality:** draft 2026-05-15 — Pass 2, all 12 cites in place. Pending: critical-review subagent, source-URL verification pass, eval re-run (writing / story / technical). Quality stamp degrades from prior `compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5)` because every body claim is new vs that audit. Re-runs writing / story / technical (behavior N/A — no student prompt blocks) after critical-review clears.

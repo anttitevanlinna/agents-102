@@ -1,5 +1,13 @@
 # When a plan is good
 
+**Session** *(new, "Module 2 - Plan mode done right")*
+
+Start a new Claude Code session at your repo root.
+
+```
+/rename m2-plan-mode
+```
+
 Three things a good plan has. Three pressures that quietly make bad plans look good. That's the lecture. Then you go and push back on one.
 
 ## What plan mode actually is
@@ -39,7 +47,7 @@ Three things. That's the read.
 
 In the exercise, you push back twice with what you can see (one soft item, then either an assumption check or a committed change) via *keep planning with feedback* at the approval prompt. Claude regenerates. Then you ask Claude for a second-pass read that walks down every unresolved branch of the decision tree, one question at a time, suggesting answers. You confirm or correct each. The plan sharpens again. You approve.
 
-Then you stop. No execution. The work is the exercise.
+Then you stop. No execution this time.
 
 The discipline isn't the mode. It's two reads, paired: yours, then the agent's walk-down. One kind of scrutiny catches one kind of miss. Paired, they usually give the complete read.
 

@@ -2,17 +2,9 @@
 
 **Time:** 60 minutes.
 
-**Session** *(new, "Module 2 - Plan mode done right")*
-
-Start a new Claude Code session at your repo root.
-
-```
-/rename m2-plan-mode
-```
-
 **What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**The point:** two reads, paired. **Execution is next module's concern.**
+**The point:** two reads, paired. **Making the plan good is the work.**
 
 ## Phase 1: Bring a real task
 
@@ -52,12 +44,23 @@ Ask Claude to walk down every unresolved branch of the plan one question at a ti
 
 {{prompt:push-back-on-the-plan-2}}
 
+> **Watch for slowness.** Plan rewrites between every Q-and-A turn can make the walk crawl. The prompt above tries to prevent that by locking the plan file until you say *lock it in.* If the agent touches the plan file mid-walk anyway, push back.
 
 The second read asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
 
 Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
+
+*Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The version above is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
+
+{{prompt:push-back-on-the-plan-2-original}}
+
+## Approve
+
+Say *lock it in.* The agent writes the sharpened plan. Approve at the prompt.
+
+Then just hit stop.
 
 ## Phase 5: Stop. See the design pattern
 
@@ -74,10 +77,6 @@ Neither is complete. Paired, they usually are.
 
 **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
 
-Ask Claude whether the `./CLAUDE.local.md` you carried in from M1 actually rides into every session.
-
-{{prompt:push-back-on-the-plan-4}}
-
 On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 **What happened:** Claude wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. Claude regenerated. Then you ran a second-pass read: Claude asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
@@ -92,6 +91,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
 - **Exercise time band:** 60 min inside a 1h45 module (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Phase breakdown: P1 5 / P2 15 / P3 15 / P4 15 / P5 10. The second-pass read (P4) can stretch on real codebases; Debrief absorbs the overflow.
 - **Execution-free by design.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern. When asked *"why don't we execute?"* the trainer answers: *"you've done the work of making the plan good; recognising a good plan is the skill."*
+- **"Stop" repeats across the Approve section and Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop. See the design pattern."* (pedagogical stop — name the move, do not execute). Same word, two registers, both load-bearing.
 - **Artifact locations — governed by the pre-engagement contract:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
   - Execution artifacts (diff, PR) → student's real repo
@@ -99,7 +99,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
   - No training-dir state.
 - **Frameworks riffed on:**
   - **Plan mode** (Anthropic Claude Code). Activation via Shift+Tab; push-back via *keep planning with feedback* at the approval prompt. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`, current as of 2026-04-22.
-  - **Socratic walk-down-branches move** — Matt Pocock's grill-me skill ([mattpocock/skills](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md), MIT license, commit `62f43a1`, re-verified 2026-05-15 — upstream relocated from repo-root `grill-me/` to `skills/productivity/grill-me/`). Socratic requirement elicitation — walks down branches of a decision tree one at a time with recommended answers. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved. **In M2 we inline the behaviour as a prompt; the skill reveal — "that second-pass read you did was a skill all along, here's how to author one" — lands in M3 as authoring material, so we don't front-run M3's first-Skill-use moment by invoking it by name here.**
+  - **Socratic walk-down-branches move** — Matt Pocock's grill-me skill ([mattpocock/skills](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md), MIT license, commit `62f43a1`, re-verified 2026-05-15 — upstream relocated from repo-root `grill-me/` to `skills/productivity/grill-me/`). Socratic requirement elicitation — walks down branches of a decision tree one at a time with recommended answers. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved. **In M2 we inline the behaviour as a prompt and credit Pocock's original at the end of Phase 4 (after the timebox callout), where the unfiltered original is also offered as an optional deeper variant for next-time runs. The skill reveal — "here's how to author one yourself from a known-good pattern" — lands in M3 as authoring material.**
   - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's four-step loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct]`.
   - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
@@ -118,6 +118,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - **P3 exceeds 12 min:** compress P4's watch time; let Claude run while student reads. Note: this student reads plans seriously; M3 judge-building will go fast.
 - **P4 completes in under 15 min:** the task was too small for plan mode. Log for the Debrief: *"plan mode is overkill below ~30 min of agent work — know the floor."*
 - **Student asks about Ctrl+G plan-file editing:** it's a real practitioner move (opens the plan in $EDITOR for in-place edits) and fine to mention at Debrief as a next-tier tool — but not the exercise's forcing function. The chat-based push-back stays in conversation with the agent, which is the whole training's shape.
+- **P4 turn-time on real codebases — likely needs surgery before first cohort.** The second-pass prompt's codebase-read fallback (*"if a question can be answered by reading the codebase, read it"*) ran 13m15s + pulled 37.7K tokens on a single Q-and-A turn (2026-05-15 dry-run, newspapering verb in the activity log). One question eats the whole 15-min slot. The unfiltered Pocock variant runs slower still by design. Options to test before cohort: (a) cap question count in the prompt body (*"ask 5 sharp questions, then stop"*), (b) drop the codebase-read fallback (shallower questions but seconds-not-minutes per turn), (c) constrain reads (*"answer from the plan file and one targeted read, not a full scan"*), (d) widen P4 to 30 min with the heavy turns priced in. (a)+(c) likely the cheapest fix; (b) sacrifices the move's depth.
 
 **Plug points:**
 - Student's own repo (chosen in prework, carried from M1)

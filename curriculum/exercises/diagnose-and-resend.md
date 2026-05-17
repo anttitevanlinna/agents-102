@@ -82,8 +82,13 @@ Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
 {{prompt:diagnose-and-resend-6}}
 
+> **Watch for slowness.** Two files rewritten between every grill turn is the slowness pattern. The prompt above locks both files until you say *lock it in.* If the agent touches either file mid-grill anyway, push back.
 
-Read both files. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
+Read both files in prose. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
+
+## Approve
+
+Say *lock it in.* The agent writes both files. Read the diffs.
 
 **What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. Each piece earned its place against a failure you read in your own artefact, not a slide.
 

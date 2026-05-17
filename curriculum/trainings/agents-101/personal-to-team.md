@@ -55,6 +55,7 @@ Five minutes. Claude reviews the sharing deliverable and sharpens whichever shar
 
 {{prompt:a101-m7-debrief-sharing-artifact}}
 
+> **Watch for slowness.** When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. The prompt above tells it to. If Claude reaches for Write on the whole artifact anyway, push back: *"Edit just the section I named."*
 
 Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you're sharpening something for another person to use, "what got sharpened" without the actual lines is a draft pretending to be a finished thing. The before-and-after quote is how you know the sharpening reached the file, not just the summary.
 

@@ -1,5 +1,7 @@
 # Plan mode, done right
 
+> You might want to run this exercise with medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.
+
 ## Big Idea
 Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see; run a second-pass read for what you can't. Paired, they give a complete read; neither alone does.
 
@@ -41,7 +43,11 @@ The room harvests everyone's before the lecture names the pattern.
 
 The full compound move ran at M1. M2's is opportunistic. If a branch from the second-pass read changed how you'd read the next plan, save it now.
 
-Ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
+First check that the M1 rules actually ride into every session in this repo.
+
+{{prompt:push-back-on-the-plan-4}}
+
+Then ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
 
 {{prompt:ae101-m2-integrate-branch}}
 
@@ -107,7 +113,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 - Lecture over-runs to 15+ min. Cut the three-pressures section to 60 seconds if tight; the exercise teaches them.
 - Connections drifts into war-stories about bad agent behavior. Cap at 10 min, let the stories be short.
 - Student reaches for the Ctrl+G plan-file edit flow (a real practitioner primitive). Fine to acknowledge at Debrief as a next-tier move; not this exercise's path.
-- Student asks *"why don't we execute?"* near P5. Answer: making the plan good IS the work; recognising a good plan is the skill this module installs. Execution is M3's concern.
+- Student asks *"why don't we execute?"* near P5. Answer: making the plan good IS the work; recognising a good plan is the skill this module installs.
 
 **Decision points:**
 - **Exercise runs to 70 min:** the second read went deep (common on real codebases). Compress Debrief to 10 min, keep the pattern-naming step.
@@ -142,7 +148,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 | P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration — Claude acknowledges and re-softens | Trainer / Nerd: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."* |
 | P4 — *"let the walk-down run until it's out of branches"* | P4 walk-skip — student calls the second read done after 2–3 questions | Trainer / Nerd: *"let the walk-down run until it's out of branches; you don't decide when it's finished."* |
 | P4 — *"reject at least one recommended answer"* | P4 auto-accept — student accepts every recommended answer | Trainer / Nerd: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."* |
-| P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer / Nerd: *"making the plan good IS the work; recognising a good plan is the skill this module installs. Execution is M3's concern."* |
+| P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer / Nerd: *"making the plan good IS the work; recognising a good plan is the skill this module installs."* |
 | P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection — student reports *"the second read did all the work"* | Trainer / Nerd: *"quote one thing your push-back caught that the second read would have missed."* |
 | Compound — *"save the rule only if one earned itself"* | Compound skip — student skips the compound when one DID earn itself | Trainer / Nerd: *"did any branch from the second read change how you'd read the next plan? if yes, integrate it now; if no, the Bridge is next."* |
 

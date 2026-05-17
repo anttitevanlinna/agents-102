@@ -85,6 +85,12 @@ Captured by audit subagent against the Agents-101 reference file. Some items now
 - **Newlines on copy from prompt blocks.** Fix shipped 2026-05-04: `code.innerText` → `code.textContent` in `addCopyButton` (`site/layouts/curriculum.js`). Verify newlines preserve across CLI / Cowork / Desktop / terminal paste targets before first cohort.
 - **Paths inside copied prompts auto-converted to markdown links on paste.** Fix shipped 2026-05-04: multi-format clipboard write via `ClipboardItem` (text/plain + text/html). HTML uses `<div>` + `<br>` + `&nbsp;` + `<wbr>` shape, destinations don't recognize as code (no dark-theme styling triggered) and `<wbr>` defeats URL pattern matching on `*.md` strings. Verify across Cowork / Desktop / Slack / terminal that paths land plain and newlines preserve.
 
+## 10. Repeated-Q&A slowness audit (2026-05-15)
+
+Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-plan-2 dry-run hit 13m15s + 37.7K tokens on one Q-and-A turn. Real traps need the five-element fix (lock-in trigger + sectional Edit + three-at-a-time + slowness-watch callout + Approve section); fix-element selection depends on prompt shape (single-shot rewrite vs. iterative grill).
+
+- **`new-human-role-in-the-loop-1.md` (line 11):** *"Keep asking until the dimension is judgeable"* inside an 8–10 minute closing lecture. Could drift into an unbounded eval-design interview. Apply the cadence cap (three-at-a-time + recommend-an-answer) plus an explicit stop condition. Prompt-side and body-side fix both apply.
+
 ---
 
 **Canonical home:** this file. New pre-cohort open items go here, not into module files, unless the item is a local maintainer note needed by the trainer while delivering that specific module.

@@ -20,6 +20,8 @@ Second, plan.md. A working document the agent owns and mutates as it runs. Shoul
 - A "decisions log" section the agent appends to when it makes a load-bearing choice
 - A "what I tried that didn't work" section to prevent context-rot re-derivations
 
-Propose the file paths (next to each other; same task-scoped folder). Show me both files before you save. I'll push back, then we save.
+Propose the file paths (next to each other; same task-scoped folder). Show me both files in prose.
 
-Before you save, grill me on missing details that can ruin the smooth run.
+Don't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.
+
+Before lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer.

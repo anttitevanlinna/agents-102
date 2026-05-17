@@ -12,4 +12,6 @@ Look back over the session: surface at least two flywheel stalls (an agent waiti
 
 Then rewrite the file. If you are uncertain which file carried the most weight, default to the central synthesizer rules file; do not pause. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Preserve any rule not directly contradicted by session evidence. Don't add a "retro notes" section; rewrite the file as the better version. Do not close every loop — some of what didn't resolve should stay open, named.
 
+After the rewrite, when I push back on something specific, use Edit on the section I'm pushing back on, not Write on the whole file. Don't re-rewrite the whole file unless I say 'rewrite from scratch.'
+
 When you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. Name which critique was raised but not acted on, and which file's rules directly contradicted what happened. If you think every critique was acted on, quote the evidence. Name one thing the session genuinely didn't resolve.

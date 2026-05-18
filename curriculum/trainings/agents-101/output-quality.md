@@ -34,12 +34,12 @@ This module measures what the system actually says inside its scope. Four detect
 
 ## Key Concepts
 - **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll ever automate (tone, brand, compliance, steering). Groundedness is just the first instance.
-- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works every time you need a machine to make a judgment reliably.
+- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works wherever a machine has to make the judgment.
 - **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one detector won and where another lost.
 - **Benchmarking teaches evaluating evaluators.** The real move isn't "build a detector"; it's "build the thing that benchmarks detectors." Once you've run a benchmark once, you've seen what evaluating evaluators looks like, and the idea transfers to every future quality question.
 - **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend. A judge that tries to do everything does nothing well.
 - **Grounded is the discipline; the benchmark is how you build the check.** There IS truth out there. Sources carry shards of it. A judge that's been measured against a benchmark is the machine that keeps the output connected to the ground when you're not in the room.
-- **What the judge can't reach.** The benchmark was 30 claims. A production judge wants hundreds, running on every build, learning from its own corrections. Same method, bigger scale.
+- **What the judge can't reach.** A small benchmark is enough to prove the method. A production judge wants hundreds of claims, running on every build, learning from its own corrections. Same method, bigger scale.
 
 ## Debrief
 

@@ -43,6 +43,7 @@ This is a shared, multi-user repository. Research runs continuously on remote br
 - **During session:** Commit and push user signal files every 30–60 minutes of active work, or whenever a meaningful signal is captured.
 - **At session end:** Always commit any uncommitted signal files and push. A user's questions and comments are lost to the research system if they stay local.
 - **Branching model:** `main` is the shared knowledge base — the source of truth. Research agents running the OODA cycle prompt can push directly to main (cycle prompt enforces quality gates). Users and experimental work should use branches; Antti reviews and merges those.
+- **Never `git stash` unless Antti explicitly asks.** This is a trunk-based, multi-session workflow — uncommitted changes are deliberate WIP carried across sessions. Stashing is invisible state the next session won't know to pop: silent work-loss risk. If `git pull` complains about unstaged changes, just `git fetch` (or commit the WIP if it's ready); don't manufacture clean-state for the pull's sake. No rebasing either — plain `git pull` (merge) is the default here.
 
 ## Copyright — two-tier rule
 

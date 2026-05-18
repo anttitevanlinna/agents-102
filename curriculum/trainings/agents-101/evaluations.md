@@ -37,9 +37,9 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 ## Key Concepts
 - **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
 - **Role separation.** Generation and judging happen in separate agents. The generator does not grade itself.
-- **Walk-away autonomy.** The first true leave-the-chair moment. The system runs; you come back to the notes.
+- **Walk-away autonomy.** The system runs; you come back to the notes.
 - **The work gets sharper because the judge stays still.** The main session reads what the judge flagged each round and rewrites `./generation-tactic.md`. The judge doesn't move. That's why round 3's score has anything to say about round 1's. A yardstick you rewrite is not a yardstick.
-- **Loop ownership.** One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The shape the student recognizes from Module 3's fan-out, now running a quality discipline instead of a content discipline.
+- **Loop ownership.** One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.
 
 ## Debrief
 

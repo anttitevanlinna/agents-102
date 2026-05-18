@@ -38,7 +38,7 @@ You've had three agents search your company and three more decide. What doesn't 
 - **"I can't tell" is a real answer.** Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
 - **Agent mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: network controls, identity and access management, logging, supplier review, and security review. Loop design is additive. A leader who concludes "the agent check replaces security" ships a breach. The floor stays; the loop adds new surfaces above it.
 - **Residual risk is a first-class artifact.** After mitigation, something remains. You name it and accept it on record. The report should not pretend that a narrower instruction erased the risk; it should show what changed and what stayed true.
-- **Skills as expertise injection.** A skill is how an agent borrows capability it doesn't natively have. It scopes DOWN (what the agent can't do) and scopes UP (what expertise it brings). Module 4 is where you author your first reusable security check.
+- **Skills as expertise injection.** A skill is how an agent borrows capability it doesn't natively have. It scopes DOWN (what the agent can't do) and scopes UP (what expertise it brings). The security check is one instance of a much broader move.
 
 ## Debrief
 

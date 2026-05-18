@@ -91,21 +91,6 @@ Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-pla
 
 - **`new-human-role-in-the-loop-1.md` (line 11):** *"Keep asking until the dimension is judgeable"* inside an 8–10 minute closing lecture. Could drift into an unbounded eval-design interview. Apply the cadence cap (three-at-a-time + recommend-an-answer) plus an explicit stop condition. Prompt-side and body-side fix both apply.
 
-## 11. Key Concepts critical pass (2026-05-18)
-
-AE101 M1–M6 received a `check_strategy_tie_in.md` § 3–6 critical pass this session. Eleven instances of curriculum-meta in Key Concepts bullets across six files (module-number references, *"the exercise,"* *"the exercise window,"* *"no lecture can land,"* *"not from a slide,"* *"this module's reading,"* *"in this training"*). Also found: inverted-direction breadcrumbs (90%-trust-prior instead of 10%-discipline-hunt), verbatim breadcrumb duplication across adjacent modules, redundant body-and-breadcrumb saying the same thing, and brochure/value-prop tails (*"a move you'll use forever"*).
-
-Agents 101 hasn't had the equivalent pass. Apply same critical review to the eight modules' Key Concepts sections before first cohort. Look for:
-
-- Curriculum-meta: any bullet referencing Module N, *the exercise*, *this module*, *the lecture*, *the slide*, *this training*. Belongs in `## Next` / `## Bridge` / maintainer block.
-- Inverted breadcrumb direction: *"Remember: assume 90% on first pass"* trust-prior framing should be *"Remember: at least 10% wrong"* discipline-hunt framing. The breadcrumb's verb must name the move, not the trust ratio.
-- Verbatim breadcrumb repetition across adjacent modules, themes recur, exact phrasings shouldn't.
-- Body + breadcrumb saying the same thing, drop one (usually the body's repetitive sentence).
-- Brochure tails, *"a move you'll use forever,"* *"a lesson no lecture can land."* Value-prop register; cut.
-- Lead bullet check: is it worldview or curriculum-summary? If summary, demote.
-
-Pattern lives in `check_strategy_tie_in.md` § 6; compendium amendment for explicit curriculum-meta sub-rule expected at the same wind-down that filed this TODO.
-
 ---
 
 **Canonical home:** this file. New pre-cohort open items go here, not into module files, unless the item is a local maintainer note needed by the trainer while delivering that specific module.

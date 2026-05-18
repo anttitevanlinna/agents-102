@@ -36,9 +36,9 @@ The three thinking-disciplines you applied in Module 7 on your own sharing probl
 
 - **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
 - **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan grounded in your own files, not a single consultant's read.
-- **The three predictable walls after Agents 101**: data access, runtime platform, discoverability. The plan you produced already names which wall bites first for your company. That you can see them is the sign the kernel works.
+- **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
 - **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't Module 8 props and they aren't installed skills. They're named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the Module 2 Debrief move.
+- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're named, portable disciplines you ask Claude to run on any decision that feels too big to eyeball.
 - **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory. With it, the pushback rounds have something to push back at.
 
 ## Debrief

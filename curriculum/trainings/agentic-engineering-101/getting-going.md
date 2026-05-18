@@ -35,9 +35,9 @@ The room harvests everyone's before the training adds its own.
 > **If time allows.** Try the harness introspection on your live session: [The agent loop](../../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
 
 ## Key Concepts
-- The loop is orient → fix → compound → close. M1 ran it end-to-end on a trivial bug; every later module rides on this shape
-- `/context` shows what landed in the window. The slice the agent didn't read is the bounded-window reality, and you choose what fills the next round. **Remember: context is what you put in it.**
-- The agent's self-report is a hypothesis, not ground truth. About a tenth of what it says or does misrepresents. Dig until you find it. **Remember: assume 90% on first pass.**
+- The loop is orient → fix → compound → close
+- `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. **Remember: context is what you put in it.**
+- The agent's self-report is a hypothesis, not ground truth. Dig until you find what misrepresents. **Remember: claims aren't evidence.**
 - A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. **Remember: rules grow from evidence, not blank pages.**
 - Closing the ticket via connector is the first move past the repo. The loop ends outside the code

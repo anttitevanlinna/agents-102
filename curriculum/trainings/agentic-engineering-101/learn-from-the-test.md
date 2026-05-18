@@ -21,7 +21,7 @@ After this module, you will be able to:
 
 Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny's productivity unlock from the Module 2 pre-read lands here.
 
-A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 and Module 3 evidence rides forward; Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.
+A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you've completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.
 
 If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
 
@@ -46,12 +46,12 @@ You sent off an un-packaged run at the close of Module 4 and read the pre-read. 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
 ## Key Concepts
-- The three failure modes earn their names by reading them in your own artefact, not from a slide
+- The three failure modes earn their names by reading them in your own artefact
 - One move per failure mode, not three to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
-- The three verifier shapes are pickable against the failure shape you diagnosed. Same eval, different mechanism
-- Same task run twice with packaging as the only changed variable IS the lesson. No lecture replicates this
+- You pick the verifier shape against the failure shape. Same eval, different mechanism
+- Same task run twice with packaging as the only changed variable IS the lesson
 - No benchmark told you what went wrong; the artefact did. **Remember: the artefact rules, self-reports don't.**
-- Your verifier is your first eval. Module 6 gives evals their full weight as team infrastructure
+- Your verifier is your first eval. The team kit's evals grow from here
 
 Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
 

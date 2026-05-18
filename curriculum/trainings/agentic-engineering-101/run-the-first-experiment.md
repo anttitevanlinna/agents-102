@@ -14,14 +14,14 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 ## What You'll Learn
 After this module, you will be able to:
 - **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
-- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + Module 3-authored skill + connectors) against the task as a subagent audit, then push back on the audit
+- **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit, then push back on the audit
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
 - **Name** the three blocks in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria)
 - **Send off** the task un-packaged in the same Claude Code session, no plan.md, no verifier, no reference artifact, and let it run
 
 ## Start here
 
-Three modules of short loops sit behind today: a bug fix, a plan read, a feature ship with Q+S. Today is the first long one. Multi-hour, sustained, running without you watching. Three modules in, the practice is yours now.
+Short loops sit behind you so far: a bug fix, a plan read. This is the first long one. Multi-hour, sustained, running without you watching. The practice is yours now.
 
 **The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Not a typo-fix, not a quarter-long epic. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
@@ -32,10 +32,9 @@ Three modules of short loops sit behind today: a bug fix, a plan read, a feature
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
 
 ## Key Concepts
-- Gap analysis is *walk the system you have against the system the task needs*. A move you'll use forever. **Remember: the system you have is what gets tested.**
-- Huryn's three blocks aren't a template you fill; they're a frame that names what you've been building for four modules
-- Un-packaged is by design. Module 5 teaches packaging by diagnosing what the un-packaged run gets wrong, a lesson no lecture can land
-- Your rules files (`CLAUDE.md` + `CLAUDE.local.md`) go into the test with the agent. Claude Code loads both at session start (see [Claude Code for engineers, the memory hierarchy](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#1-the-memory-hierarchy--where-your-rules-actually-live))
+- Gap analysis is *walk the system you have against the system the task needs*. **Remember: the system you have is what gets tested.**
+- Huryn's three blocks aren't a template you fill; they're a frame that names what you've already built
+- Un-packaged is by design. The packaging move only lands once you've seen what un-packaged gets wrong
 - Traces are data. Stop the run when you've seen what you needed to see. **Remember: stopping is reading, not failing.**
 - Every send-off is an experiment, not a production run you need to get right first time
 
@@ -104,7 +103,7 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 - **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Nerd: *"which of these will hurt the agent most given the task? fill those."*
 - **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Nerd: *"Three is the budget. Skip the other two — you'll see next module why."*
 - **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode: skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Nerd hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
-- **Phase 3 Huryn-as-lecture** — Claude names the three-block frame before quoting the student's own ADR as the Block 2 example. Nerd interrupts: *"name the frame only after showing me one of my own ADRs as Block 2 — recognition first."*
+- **Phase 3 Huryn-as-lecture** — Claude names the three-block frame before quoting the student's own decision as the Block 2 example. Nerd interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."*
 - **Debrief pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Nerd: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
 - **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Nerd: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
 - **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Nerd: *"the gap IS the finding. Write one line in memory naming what's missing."*
@@ -118,7 +117,7 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 **Decision points:**
 - **Phase 1 runs long (>15 min):** task is too big. Force a slice. Better a smaller task that runs the full arc than a large one the student can't scope in 15 min.
 - **Phase 2 runs long (>40 min):** audit surfaced genuinely useful gaps. Let it run; compress Phase 3 to 10 min if needed (Huryn recognition is quick when materials are rich).
-- **Phase 3 runs short (<10 min):** student didn't recognise the frame in their own work. Diagnostic: did Claude quote from their own ADRs? If not, redo the prompt.
+- **Phase 3 runs short (<10 min):** student didn't recognise the frame in their own work. Diagnostic: did Claude quote from their own ADRs or recorded decisions? If not, redo the prompt.
 - **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 Nerd push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
 
 **Plug points (trainer):**
@@ -147,7 +146,7 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 | Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer / Nerd runs three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
 | Phase 2 — *"pick the worst three gaps from the audit, fill those"* | Phase 2 over-fill — student tries to close all five gaps | Trainer / Nerd: *"Three is the budget. Skip the other two — you'll see next module why."* |
 | Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer / Nerd hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
-| Phase 3 — *"Claude quotes one of your own ADRs as the Block 2 example BEFORE naming the three-block frame"* | Phase 3 Huryn-as-lecture — Claude names the three-block frame before showing the student's own ADR | Trainer / Nerd interrupts: *"name the frame only after showing me one of my own ADRs as Block 2 — recognition first."* |
+| Phase 3 — *"Claude quotes one of your own recorded decisions (ADR or otherwise) as the Block 2 example BEFORE naming the three-block frame"* | Phase 3 Huryn-as-lecture — Claude names the three-block frame before showing the student's own decision | Trainer / Nerd interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."* |
 | Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer / Nerd: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
 | Send-off — *"send un-packaged"* | Debrief pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer / Nerd: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
 | Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer / Nerd: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |

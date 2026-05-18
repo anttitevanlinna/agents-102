@@ -68,9 +68,9 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 
 You can also just run the plan. You choose.
 
-Close this session when the second read lands; Module 3 opens fresh in the repo holding the small feature you'll bring.
+Close this session when the second read lands. The next module opens fresh in the repo with the feature you'll bring.
 
-## Pre-reads before Module 3
+## Pre-reads for Module 3
 
 Optional. Lands the modern agentic-security frame before STRIDE and access-control.
 

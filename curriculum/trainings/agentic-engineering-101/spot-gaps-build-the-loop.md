@@ -39,11 +39,11 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 [Arc-named retrospective](exercises/arc-retrospective.md)
 
 ## Key Concepts
-- The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed. **Remember: the artefact rules, self-reports don't.**
+- The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
-- The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits. Writing it in conversation (not by opening a markdown file) keeps the authoring discipline continuous with Module 3
-- Encoding is the third phase of test → learn → encode. Two runs tested; this module's reading learned; the skill encodes. **Remember: the loop closes when the lesson ships.**
+- The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits.
+- Encoding is the third phase of test → learn → encode. Two runs tested; the diagnosis learned; the skill encodes. **Remember: the loop closes when the lesson ships.**
 
 ## Human close
 
@@ -98,7 +98,7 @@ Antti
 - **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer / Nerd asks for quoted moments from each run separately before any synthesis.
 - **Phase 1 — Compound move (cut stale rule).** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to Phase 1's quoted-moments check.
 - **Phase 2 — Author the skill (interview).** Failure: skill-shape mismatch — student picks sharpened-verifier when the dominant gap was qualitative drift, or judge shape when the gap is deterministic. Escape: Nerd surfaces the menu — *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
-- **Phase 2 — Author the skill (interview).** Failure: author-in-editor-not-conversation — student tries to open a markdown file and type the skill directly. Escape: Nerd holds the line — *"M3 authored the first skill in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
+- **Phase 2 — Author the skill (interview).** Failure: author-in-editor-not-conversation — student tries to open a markdown file and type the skill directly. Escape: Nerd holds the line — *"The first skill in this training was authored in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
 - **Phase 2 — Self-critique before ship.** Failure: rubber-stamp self-audit — student or Claude marks the skill complete without finding the section where session evidence shows it underdelivered. Escape: prompt forces enumeration of one named convention from the session that the skill failed to encode; hedged language like *"minor polish"* is rejected.
 - **Phase 2 — Invoke on actual run.** Failure: skill-as-documentation — student writes a SKILL.md that describes the gap instead of moving to catch it. Escape: diagnostic — the skill's `description` ends with an outcome, not a topic; if it reads like a topic page, re-scope in conversation.
 - **Arc retrospective — single-move exercise.** Failure: arc-as-trainer-monologue — Claude writes the arc note in a voice that sounds like a training testimonial. Escape: push-back prompt — *"write from my artefacts, quote me where you can, skip the summary of what the training taught."*
@@ -115,7 +115,7 @@ Antti
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Nerd: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
 - **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Nerd: *"two runs, maybe three gaps each. Pick the three that cost the most. The second skill you author at Phase 2 fits one shape."*
 - **Phase 2 skill-shape mismatch** — student picks a sharpened-verifier shape when the dominant gap was a drift the verifier wouldn't have seen, or a judge shape when the gap is deterministic. Nerd surfaces the menu: *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
-- **Phase 2 author-in-editor-not-conversation** — student tries to open a markdown file and type the skill directly. Nerd: *"M3 authored the first skill in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
+- **Phase 2 author-in-editor-not-conversation** — student tries to open a markdown file and type the skill directly. Nerd: *"The first skill in this training was authored in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
 - **Arc-retro scope drift** — student's retrospective prompt asks Claude to read the whole training history including decisions they don't have in the repo. Nerd: *"bounded read. Root rules file, memory folder, ADRs if you have them, both authored skills, the two run artefacts. Claude names the arc from that evidence — not from the training's marketing."*
 - **Debrief round awkwardness** — self-study student finds the two-part articulation stilted in solo mode. Teacher Claude: *"type what you'd say out loud. No frame, no performance. The marker is where your practice stands, not how the sentence reads."*
 - **Closing lecture pre-empt** — Nerd accidentally uses the phrase *"your verifier is an eval"* in Phase 1 or Phase 2. Don't. The closing lecture earns it from the just-built second skill. If the Nerd uses the term earlier, the closer has nothing to land.
@@ -131,7 +131,7 @@ Antti
 - **Phase 1 runs short (<10 min):** student didn't engage both runs. Diagnostic: did they quote specific moments from each, or summarise generically? If summary, redo with quote-required prompt.
 - **Phase 1 runs long (>20 min):** student is over-diagnosing. Force ranking — top three gaps, dominant first, one per home (memory / verifier / skill).
 - **Phase 2 runs short (<15 min):** the second skill is too thin. Diagnostic: does it fire on the gap shape it's targeting? If not, re-scope in conversation.
-- **Phase 2 runs long (>35 min):** the skill is becoming a manifesto. Cap at the shape M3's test-strategy skill held — tight SKILL.md, named invocation pattern, one or two illustrative examples.
+- **Phase 2 runs long (>35 min):** the skill is becoming a manifesto. Cap at the shape of a tight SKILL.md — named invocation pattern, one or two illustrative examples.
 - **Arc-retrospective runs long (>25 min):** scope drifted. Re-cut the read-list; the retrospective is a one-page note, not a training memoir.
 - **Whole-room mood below 7:** practitioner fluency isn't landing. Check Phase 1: did the diagnosis name SPECIFIC gaps with quoted moments from BOTH runs? Specificity-across-two-runs is where this mood lives.
 

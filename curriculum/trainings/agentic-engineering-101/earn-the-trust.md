@@ -36,10 +36,10 @@ The question, to you: what's the feature, and what's the surface you're most ner
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
 ## Key Concepts
-- A curated skill is upstream work packaged for you to invoke. You don't re-derive it. **Remember: strong, not oracular, last 10% is yours.**
+- A curated skill is upstream work packaged for you to invoke. You don't re-derive it. **Remember: invoke, don't re-derive.**
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
-- One hardening decision is enough; breadth is the team kit's job across many engineers, not yours in the exercise window
-- A test-strategy skill authored on your codebase is worth more than a perfect generic one. The skill carries your conventions, not a textbook's. **Remember: your codebase teaches the skill, not the manual.**
+- One hardening decision is enough; the team kit's breadth grows across many features
+- A test-strategy skill authored on your codebase is worth more than a perfect generic one. **Remember: your codebase teaches the skill, not the manual.**
 - Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre
 - One skill shipped beats three skills drafted; the team kit grows by accretion

@@ -4,7 +4,7 @@
 
 **What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
 
-**The point:** the file is the artifact. You captured how *you* factored *this* task on *this* codebase. Templates stay generic; this file carries your rules. The mini-lecture that follows names three places this kind of file ends up.
+**The point:** the file is the artifact. You captured how *you* factored *this* task on *this* codebase. Templates stay generic; this file carries your rules. The next small lecture names three places this kind of file ends up.
 
 ## Phase 1: Surface the rules from this session
 
@@ -28,16 +28,14 @@ If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `
 
 Read the three rules Claude shows back. If any drifted from your wording, push back and have Claude rewrite.
 
-## Phase 3: Where could this go next?
+## Phase 3: Automating refinement
 
-Now the open question. The prompt asks for shapes, not code.
-
-"This rules file" means the `.md` file you saved in Phase 2. The first automation attempt starts by pointing an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
+Refinement is the backlog-grooming loop: sizing, splitting, and sharpening tickets before they're worked. The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt starts by pointing an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
 {{prompt:extract-the-task-shaping-rule-3}}
 
 
-Read the answer. The shapes Claude names are the same ones the mini-lecture grounds in real practitioner work.
+Read the answer. The next small lecture walks the same shapes with the trigger and runtime for each.
 
 ## Optional: Reverse-engineer your task manager
 

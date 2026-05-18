@@ -41,13 +41,11 @@ The room harvests everyone's before the lecture names the pattern.
 
 ## Save the rule if it earned itself
 
-The full compound move ran at M1. M2's is opportunistic. If a branch from the second-pass read changed how you'd read the next plan, save it now.
-
-First check that the M1 rules actually ride into every session in this repo.
+The full compound move ran at M1. M2's is opportunistic. Before saving, ask Claude whether anything from this session has made it to auto-load yet.
 
 {{prompt:push-back-on-the-plan-4}}
 
-Then ask Claude to integrate the one branch that earned itself into your personal `./CLAUDE.local.md`, or to say so and stop if nothing did.
+If a branch from the second-pass read sharpened how plans get made in this codebase, ask Claude to integrate that one branch into your personal `./CLAUDE.local.md`. If nothing earned itself, ask Claude to say so and stop.
 
 {{prompt:ae101-m2-integrate-branch}}
 
@@ -56,17 +54,19 @@ Then ask Claude to integrate the one branch that earned itself into your persona
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
 ## Key Concepts
-- A plan with a specific file list has made decisions; a plan with "the relevant files" hasn't
-- Verification steps that could actually fail are gates; verification steps that always pass are decoration
-- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. **Push-backs ship into memory.**
-- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. **Assume 90% on first pass.**
+- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. **Remember: at least 10% wrong.**
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
-- You don't have to execute a plan to know it's good. The work of making it good is the exercise
-- Plan mode is a permission state, not a mood. It's what makes the read possible, not the read itself
+- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. **Remember: push-backs ship into memory.**
+- A plan with a specific file list has made decisions; a plan without one hasn't
+- Verification steps that could actually fail are gates; verification steps that always pass are decoration
+- You don't have to execute a plan to know it's good. Making it good IS the work.
+- Plan mode makes the read possible; it isn't the read
 
 ## Next
 
 You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the extra read. At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
+
+You can also just run the plan. You choose.
 
 Close this session when the second read lands; Module 3 opens fresh in the repo holding the small feature you'll bring.
 

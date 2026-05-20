@@ -1,6 +1,19 @@
 # Prework: before Module 1
 
+> Run prework on `high` thinking effort. xhigh adds latency without commensurate value on the mechanical setup work.
+
 Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked. (The framing lands live in Module 1; no pre-read.)
+
+## What to bring
+
+The training runs on YOUR real work, not exercises. Across six modules you'll work at four task sizes, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
+
+- **Trivial bug** for Module 1: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
+- **A small multi-file task** for Module 2: work you'd ship today if you had the hour. Plan mode wants something a few files wide.
+- **A small feature** for Module 3: external or user-facing surface, shippable in a few hours.
+- **A real task you'd send off** for Module 4 onward: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
+
+Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. The curated security skills install in Step 4; no need to do it manually beforehand.
 
 ## 0. Get Claude Code started
 
@@ -28,7 +41,7 @@ CLI or desktop, your call. Open a new session with the repo as the working direc
 
 You need `ae101-content.tar.gz` saved to `~/Downloads/`. Two paths to the same destination. Pick whichever fits your network and trust posture.
 
-**3.a. Download from the cohort URL.** Open <CONTENT_URL> in your browser. Save to `~/Downloads/`.
+**3.a. Download from the cohort URL.** [Click here to download `ae101-content.tar.gz`](<CONTENT_URL>). Save it to `~/Downloads/`.
 
 **3.b. Or have Claude download it for you.** Ask Claude to fetch the content tarball to `~/Downloads/`.
 
@@ -54,7 +67,7 @@ If Step 4's screening feels like Claude is asking everything at once, ask Claude
 
 Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
 
-A picked bug from Step 4. Come to Module 1 without one and you'll be scrambling to find one while the room is already fixing theirs. Your call.
+A picked bug from Step 4. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into M1. Come to Module 1 without one and you'll be scrambling for one while the room is already fixing theirs. Your call.
 
 Connections question at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 

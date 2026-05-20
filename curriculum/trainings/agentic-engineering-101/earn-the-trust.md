@@ -5,7 +5,9 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 ## Prework
 
-Bring a small feature you're working on right now. **Not a typo-fix, not a quarter-long epic.** Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
+M3 continues in the same repo as M1 and M2. The session opens at the first exercise.
+
+Bring a small feature you're working on right now. **This is not a continuation of the M2 plan, pick a real feature from your backlog.** Not a typo-fix, not a quarter-long epic. Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 

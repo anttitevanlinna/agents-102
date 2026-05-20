@@ -7,7 +7,7 @@ Reading a plan is finite. Your own read catches some of it, a second agent walki
 
 ## Prework
 
-Open a new Claude Code session in the repo you used for Module 1. Surface one multi-file backlog task in conversation with Claude. Criteria: non-trivial agent work, touching wrong file matters, you'd ship it today if you had the hour.
+Surface one multi-file backlog task in the repo you used for Module 1. Criteria: non-trivial agent work, touching wrong file matters, you'd ship it today if you had the hour. From your tracker, your head, or in conversation with Claude, your choice.
 
 **Just a simple task that spans a few files. Not an epic.**
 
@@ -68,7 +68,7 @@ You built a plan you trust without running it, and you ran a second-pass walk-do
 
 You can also just run the plan. You choose.
 
-Close this session when the second read lands. The next module opens fresh in the repo with the feature you'll bring.
+Close this session when the second read lands. The next module opens fresh in the repo with the feature you'll bring. M3 is not a continuation of this plan, the feature comes from your backlog, not from here.
 
 ## Pre-reads for Module 3
 

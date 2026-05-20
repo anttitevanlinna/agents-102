@@ -40,6 +40,18 @@ Claude may pause before editing `./CLAUDE.local.md`, a named config file looks r
 
 Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
 
+Before you pick a shape, expand the menu. There is real way and real time to build exhaustive, well-grilled checkers on the fly, Claude names primitives in 30 seconds, evaluates fit in another 30, you grill the candidates, ship the one that fits.
+
+Ask Claude to list 5–10 atomic verification primitives and evaluate fit for your dominant gap.
+
+{{prompt:spot-gaps-build-the-loop-primitives}}
+
+Expect to see: test-writing, browser-testing, PR-building, lint / typecheck / format gates, compile / build, smoke-test on a real path, code-review, git-diff inspection, schema / contract validation, eval suites for agent outputs themselves. Your list won't be exact; the recognition is the point, the primitives Claude names are the ones your codebase already runs.
+
+**The shape wraps the primitive.** Test-writing usually fits a sharpened verifier (deterministic check); qualitative checks (does the tone match, does the answer fit) fit an LLM-judge; pre-run checks (is the context thin, is the plan stale) fit a gap-finder.
+
+> **Did the menu priming in the LLM context help Claude do a better job?** Unknowable. Only benchmarking would tell. Some of this is intuition, some heuristics. All of it is moving.
+
 The three prompts below (author, critique, invoke) are decomposed for pacing.
 
 > **Solo or fluent in this move?** Collapse the three prompts: paste the first, ask the same conversation to critique before save and invoke after. The three moves don't change.

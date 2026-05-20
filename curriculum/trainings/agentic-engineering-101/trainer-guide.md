@@ -77,6 +77,25 @@ Day total ~7h20.
 2. Day 1 + M4 ≈ 9-hour day. Too much for a Nordic cohort.
 3. The legitimate Day 1→Day 2 spillover already exists: the M3 close → M4 task-pick homework. Task is picked overnight; M4 Phase 1 confirms in 2 minutes. That spillover is the right shape; full M4 displacement is not.
 
+### Alternative 2-day shape: M1, M2, M4 / M5, M3, M6
+
+The default 2-day above keeps M3 on Day 1 so its Q+S discipline is in hand before M4's send-off. A cohort can also run the reorder **M1, M2, M4 / M5, M3, M6** when it wants the M4-overnight-M5 hinge instead. Same 3+3 day shape; different pedagogical bet.
+
+What it buys you:
+- M4 ends Day 1; the un-packaged send-off runs overnight; M5 opens Day 2 morning with the return. The mirror moment lands when the room is fresh, not at the end of Day 2.
+- M3's Q+S discipline lands AFTER students have just read the un-packaged failure. Earn-the-trust reads as response to felt-need rather than prophylactic. Engineers respond to diagnosis, not prescription, the reorder applies that frame to M3 itself.
+
+What it costs:
+- M4 Phase 2 / Phase 3 reference the M3 test-strategy skill and ADRs as audit targets. Conditional phrasing (`any skills you've authored`, `any ADRs`) covers the gap, but Block 3 of Huryn's three-block frame anchors on existing test conventions rather than an authored skill. Block 2 leans on whatever recorded decisions the repo already has.
+- M4 task-pick homework moves from the M3 close to the M2 close (or prework). M4 Phase 1 still compresses to a 2-minute confirm, but the homework hand-off lives one module earlier.
+- The "discipline before you need it" framing flips to "discipline once you've felt the failure." Defensible either way; pick the one that fits your cohort.
+
+When to choose which:
+- Default 3+3 (M1-M3 / M4-M6), broadest fit, no overnight gap, Q+S installed before any long-running send-off.
+- Reorder 3+3 (M1-M2-M4 / M5-M3-M6), when the sponsor wants the M4-overnight-M5 mirror and the cohort is comfortable with M3 landing after the felt failure.
+
+If you run the reorder, dry-run M4's Phase 2 / Phase 3 prompts (`walk-and-send-off-2`, `walk-and-send-off-4`) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.
+
 ## Prep Before Each Session
 
 - Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.

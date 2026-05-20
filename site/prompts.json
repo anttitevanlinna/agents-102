@@ -133,7 +133,10 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/supplementary/the-agent-loop",
-    "text": "Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step, and how tool results feed back to the LLM."
+    "text": "Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step, and how tool results feed back to the LLM.",
+    "requires": [],
+    "produces": [],
+    "note": "supplementary exploration prompt (standalone agent-loop introspection); no curriculum artifact flow"
   },
   "ae101-agent-loop-tool-injection": {
     "key": "ae101-agent-loop-tool-injection",
@@ -141,7 +144,10 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/supplementary/the-agent-loop",
-    "text": "Explain how you know what tools you can call in this session. Then explain how MCP-connector tools get injected into the same set."
+    "text": "Explain how you know what tools you can call in this session. Then explain how MCP-connector tools get injected into the same set.",
+    "requires": [],
+    "produces": [],
+    "note": "supplementary exploration prompt; no curriculum artifact flow"
   },
   "ae101-agent-loop-tools-list": {
     "key": "ae101-agent-loop-tools-list",
@@ -149,7 +155,10 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/supplementary/the-agent-loop",
-    "text": "List the tools you have available in this session. One line each."
+    "text": "List the tools you have available in this session. One line each.",
+    "requires": [],
+    "produces": [],
+    "note": "supplementary exploration prompt; no curriculum artifact flow"
   },
   "ae101-m2-integrate-branch": {
     "key": "ae101-m2-integrate-branch",
@@ -157,7 +166,26 @@
     "context": "only if something earned itself",
     "runtime": "any",
     "origin": "agentic-engineering-101/plan-mode-done-right",
-    "text": "If one branch from this session sharpened how plans get made in this codebase, write the rule into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). The file gets the rule alone — one paragraph naming what Claude should do when making the next plan, no narrative, no session quotes, no multi-section headers.\n\nIn chat, show me which branch you picked, the moment that earned it, and why. Flag if it's team-worthy so I can open a separate PR against ./CLAUDE.md later.\n\nIf nothing earned itself, say so and stop."
+    "text": "If one branch from this session sharpened how plans get made in this codebase, write the rule into ./CLAUDE.local.md (create + gitignore if missing; personal file, not team ./CLAUDE.md). The file gets the rule alone — one paragraph naming what Claude should do when making the next plan, no narrative, no session quotes, no multi-section headers.\n\nIn chat, show me which branch you picked, the moment that earned it, and why. Flag if it's team-worthy so I can open a separate PR against ./CLAUDE.md later.\n\nIf nothing earned itself, say so and stop.",
+    "requires": [
+      {
+        "id": "design-pattern-named",
+        "source": "prompt:push-back-on-the-plan-3"
+      }
+    ],
+    "produces": [
+      {
+        "id": "plan-shaping-rule",
+        "location": "./CLAUDE.local.md (create + gitignore if missing)",
+        "conditional": "branch-earned-itself",
+        "consumed-by": [
+          "module:earn-the-trust",
+          "module:run-the-first-experiment",
+          "module:learn-from-the-test",
+          "module:spot-gaps-build-the-loop"
+        ]
+      }
+    ]
   },
   "ae101-m3-clear-session": {
     "key": "ae101-m3-clear-session",
@@ -165,23 +193,55 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "/clear"
+    "text": "/clear",
+    "requires": [],
+    "produces": []
   },
   "ae101-m3-fork-quality-side": {
     "key": "ae101-m3-fork-quality-side",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  mkdir -p ../<repo-name>-m3-quality/.claude/\n  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if .claude/memory/ exists in this repo)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across."
+    "origin": "exercises/open-the-side-quest",
+    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  mkdir -p ../<repo-name>-m3-quality/.claude/\n  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if .claude/memory/ exists in this repo)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across.",
+    "requires": [],
+    "produces": [
+      {
+        "id": "m3-quality-worktree",
+        "location": "../<repo-name>-m3-quality/",
+        "consumed-by": [
+          "prompt:ae101-m3-quality-side-orient"
+        ],
+        "note": "also serves as cwd for every other M3 prompt (environmental, not formally required)"
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "claude-local-md",
+        "if-present-at": "./CLAUDE.local.md",
+        "rationale": "born at M1's compound-and-close-1; copied if M1 ran"
+      },
+      {
+        "id": "memory-folder",
+        "if-present-at": "./.claude/memory/",
+        "rationale": "born at M4's walk-and-send-off Phase 2; copied if M4 ran (reorder order) — prompt body's \"(if exists)\" handles absence gracefully"
+      }
+    ]
   },
   "ae101-m3-quality-side-orient": {
     "key": "ae101-m3-quality-side-orient",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Confirm worktree state:\n\n- which directory you're in\n- which branch is checked out\n- whether `./CLAUDE.md` and `./CLAUDE.local.md` loaded\n- whether the codebase is visible (`git ls-files | head` is fine)\n\nReport the four lines back. Then wait."
+    "origin": "exercises/open-the-side-quest",
+    "text": "Confirm worktree state:\n\n- which directory you're in\n- which branch is checked out\n- whether `./CLAUDE.md` and `./CLAUDE.local.md` loaded\n- whether the codebase is visible (`git ls-files | head` is fine)\n\nReport the four lines back. Then wait.",
+    "requires": [
+      {
+        "id": "m3-quality-worktree",
+        "source": "prompt:ae101-m3-fork-quality-side"
+      }
+    ],
+    "produces": []
   },
   "ae101-m3-ready-to-clear": {
     "key": "ae101-m3-ready-to-clear",
@@ -189,7 +249,9 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Ready to clear? All learnings in?"
+    "text": "Ready to clear? All learnings in?",
+    "requires": [],
+    "produces": []
   },
   "ae101-m3-sharpen-skill": {
     "key": "ae101-m3-sharpen-skill",
@@ -197,7 +259,53 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/earn-the-trust",
-    "text": "Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange.\n\nFirst: find the one section of the skill where invocation evidence shows it underdelivered (a convention the skill claims that the invocation didn't enforce, a codebase-specific failure mode the skill missed, an assumption the invocation had to correct). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.\n\nThen, separately: if one rule about how I worked with security skills, wrote ADRs, or sequenced the access-map → STRIDE → test-strategy flow earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write."
+    "text": "Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange.\n\nFirst: find the one section of the skill where invocation evidence shows it underdelivered (a convention the skill claims that the invocation didn't enforce, a codebase-specific failure mode the skill missed, an assumption the invocation had to correct). Rewrite that section in place. Do not append a critique addendum. Show me before and after, two or three lines each.\n\nThen, separately: if one rule about how I worked with security skills, wrote ADRs, or sequenced the access-map → STRIDE → test-strategy flow earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don't append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.",
+    "requires": [
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1"
+      },
+      {
+        "id": "access-surface-map",
+        "source": "prompt:map-the-access-surface-2"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3"
+      },
+      {
+        "id": "test-strategy-output",
+        "source": "prompt:author-test-strategy-skill-2"
+      },
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "test-strategy-skill",
+        "location": "~/.claude/skills/test-strategy/SKILL.md (in-place sharpening update)",
+        "consumed-by": [
+          "prompt:walk-and-send-off-2",
+          "prompt:walk-and-send-off-4",
+          "prompt:diagnose-and-resend-6",
+          "module:spot-gaps-build-the-loop"
+        ]
+      },
+      {
+        "id": "claude-local-md",
+        "location": "./CLAUDE.local.md (in-place integration of security-working rules if a rule earned itself)",
+        "conditional": "rule-earned-itself",
+        "consumed-by": [
+          "prompt:walk-and-send-off-2",
+          "prompt:diagnose-and-resend-6",
+          "prompt:spot-gaps-build-the-loop-2",
+          "prompt:arc-retrospective-1"
+        ]
+      }
+    ]
   },
   "ae101-m4-commit-starting-point": {
     "key": "ae101-m4-commit-starting-point",
@@ -205,7 +313,24 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "Commit the current state of the repo on a fresh feature branch named m4/<short-task-slug>. Stage everything, commit with message \"M4 starting point\". Tell me the short SHA."
+    "text": "Commit the current state of the repo on a fresh feature branch named m4/<short-task-slug>. Stage everything, commit with message \"M4 starting point\". Tell me the short SHA.",
+    "requires": [
+      {
+        "id": "scoped-task",
+        "source": "prompt:walk-and-send-off-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m4-starting-point-sha",
+        "location": "git (m4/<task-slug> branch, \"M4 starting point\" commit)",
+        "consumed-by": [
+          "prompt:ae101-m5-worktree-setup",
+          "prompt:diagnose-and-resend-2"
+        ],
+        "note": "spot-gaps-build-the-loop-1 finds the m4/ branch via `git branch -a | grep m4/`, not the SHA directly — branch ref carries the artifact forward"
+      }
+    ]
   },
   "ae101-m4-nudge-continue": {
     "key": "ae101-m4-nudge-continue",
@@ -213,7 +338,15 @@
     "context": "optional",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "Continue --- you can do it. Can't you?"
+    "text": "Continue --- you can do it. Can't you?",
+    "requires": [
+      {
+        "id": "un-packaged-run-artefact",
+        "source": "prompt:ae101-m4-take-task-end-to-end",
+        "conditional": "agent-stalled"
+      }
+    ],
+    "produces": []
   },
   "ae101-m4-take-task-end-to-end": {
     "key": "ae101-m4-take-task-end-to-end",
@@ -221,7 +354,57 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't."
+    "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.",
+    "requires": [
+      {
+        "id": "scoped-task",
+        "source": "prompt:walk-and-send-off-1"
+      },
+      {
+        "id": "m4-starting-point-sha",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      },
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      },
+      {
+        "id": "memory-folder",
+        "source": "module:run-the-first-experiment"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "un-packaged-run-artefact",
+        "location": "m4/<task-slug> branch (commits + changed files)",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-2",
+          "prompt:spot-gaps-build-the-loop-1",
+          "prompt:arc-retrospective-1"
+        ]
+      },
+      {
+        "id": "m4-session-transcript",
+        "location": "~/.claude/projects/<encoded-original-cwd>/<uuid>.jsonl",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-1",
+          "prompt:diagnose-and-resend-2",
+          "prompt:spot-gaps-build-the-loop-1",
+          "prompt:arc-retrospective-1"
+        ]
+      }
+    ]
   },
   "ae101-m5-rerun-packaged": {
     "key": "ae101-m5-rerun-packaged",
@@ -229,7 +412,66 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nBefore you start, ask for or write anything else you want for this run.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\""
+    "text": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nBefore you start, ask for or write anything else you want for this run.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
+    "requires": [
+      {
+        "id": "m5-worktree",
+        "source": "prompt:ae101-m5-worktree-setup"
+      },
+      {
+        "id": "reference-artefact",
+        "source": "prompt:diagnose-and-resend-6"
+      },
+      {
+        "id": "plan-md",
+        "source": "prompt:diagnose-and-resend-6"
+      },
+      {
+        "id": "verifier",
+        "source": "prompt:diagnose-and-resend-4"
+      },
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "packaged-run-artefact",
+        "location": "m5/<task-slug> branch (commits, changed files, RUN-NOTES.md)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-1",
+          "prompt:spot-gaps-build-the-loop-5",
+          "prompt:arc-retrospective-1"
+        ]
+      },
+      {
+        "id": "m5-session-transcript",
+        "location": "~/.claude/projects/<encoded-worktree-cwd>/<uuid>.jsonl",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-1",
+          "prompt:arc-retrospective-1"
+        ]
+      },
+      {
+        "id": "run-notes",
+        "location": "RUN-NOTES.md (at worktree root)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-1"
+        ]
+      }
+    ]
   },
   "ae101-m5-worktree-setup": {
     "key": "ae101-m5-worktree-setup",
@@ -237,7 +479,36 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Find the branch starting with `m4/` (run `git branch -a | grep 'm4/'`). There may be more than one — a push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`, and a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the \"M4 starting point\" commit. If that commit message has been rewritten, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so M5/M6 compounding has the M1/M3 evidence to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  mkdir -p ../<repo-name>-m5/.claude/\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across."
+    "text": "Find the branch starting with `m4/` (run `git branch -a | grep 'm4/'`). There may be more than one — a push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`, and a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the \"M4 starting point\" commit. If that commit message has been rewritten, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so M5/M6 compounding has the M1/M3 evidence to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  mkdir -p ../<repo-name>-m5/.claude/\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.",
+    "requires": [
+      {
+        "id": "m4-starting-point-sha",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m5-worktree",
+        "location": "../<repo-name>-m5/ (m5/<task-slug> branch)",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-1",
+          "prompt:ae101-m5-rerun-packaged"
+        ],
+        "note": "also serves as cwd for diagnose-and-resend-2..6, spot-gaps-build-the-loop-*, arc-retrospective-1 (environmental, not formally required)"
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "claude-local-md",
+        "if-present-at": "../<repo-name>/CLAUDE.local.md",
+        "rationale": "born at M1's compound-and-close-1; copied so M5/M6 compounding has M1/M3 evidence"
+      },
+      {
+        "id": "memory-folder",
+        "if-present-at": "../<repo-name>/.claude/memory/",
+        "rationale": "born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4"
+      }
+    ]
   },
   "ae101-prework-download-tarball": {
     "key": "ae101-prework-download-tarball",
@@ -245,7 +516,22 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
-    "text": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using curl. Report the file's size.\n\nURL:"
+    "text": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using curl. Report the file's size.\n\nURL:",
+    "requires": [
+      {
+        "id": "tarball-url",
+        "source": "scrollback (student or trainer pastes the URL)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "ae101-content-tarball",
+        "location": "~/Downloads/ae101-content.tar.gz",
+        "consumed-by": [
+          "prompt:ae101-prework-extract-and-install"
+        ]
+      }
+    ]
   },
   "ae101-prework-extract-and-install": {
     "key": "ae101-prework-extract-and-install",
@@ -253,7 +539,47 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
-    "text": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.\n\n1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.\n\n2. Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.\n\n3. Install these as personal Claude Code skills:\n   - access-control-analysis\n   - stride\n\n   Use the extracted content/skills/ folder as the source. Install them wherever personal Claude Code skills belong on this machine. Confirm each installed skill has a SKILL.md file and tell me the absolute path.\n\n4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.\n\n5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.\n\nReport success on each step and tell me what you did."
+    "text": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.\n\n1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.\n\n2. Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.\n\n3. Install these as personal Claude Code skills:\n   - access-control-analysis\n   - stride\n\n   Use the extracted content/skills/ folder as the source. Install them wherever personal Claude Code skills belong on this machine. Confirm each installed skill has a SKILL.md file and tell me the absolute path.\n\n4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.\n\n5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.\n\nReport success on each step and tell me what you did.",
+    "requires": [
+      {
+        "id": "ae101-content-tarball",
+        "source": "prompt:ae101-prework-download-tarball"
+      },
+      {
+        "id": "candidate-bugs",
+        "source": "scrollback (student names three trivial-and-visible candidates at Step 4)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "ae101-content-dir",
+        "location": "~/Documents/ae101-content/ (or sponsor-stated path)",
+        "consumed-by": [
+          "module:getting-going"
+        ]
+      },
+      {
+        "id": "stride-skill",
+        "location": "~/.claude/skills/stride/SKILL.md",
+        "consumed-by": [
+          "prompt:threat-model-with-stride-1"
+        ]
+      },
+      {
+        "id": "access-control-analysis-skill",
+        "location": "~/.claude/skills/access-control-analysis/SKILL.md",
+        "consumed-by": [
+          "prompt:map-the-access-surface-2"
+        ]
+      },
+      {
+        "id": "picked-bug",
+        "location": "scrollback (student picks from screened candidates at Step 4-5)",
+        "consumed-by": [
+          "prompt:fix-tests-first-1"
+        ]
+      }
+    ]
   },
   "ae101-prework-one-at-a-time": {
     "key": "ae101-prework-one-at-a-time",
@@ -261,7 +587,10 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
-    "text": "Use the AskUserQuestion tool for speeding up screening and making suggestions. One candidate at a time."
+    "text": "Use the AskUserQuestion tool for speeding up screening and making suggestions. One candidate at a time.",
+    "requires": [],
+    "produces": [],
+    "note": "tool-use directive (use AskUserQuestion for screening) invoked alongside ae101-prework-extract-and-install Step 4. No artifact flow of its own."
   },
   "agent-loop-raw-1": {
     "key": "agent-loop-raw-1",
@@ -301,7 +630,62 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/arc-retrospective",
-    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).\n- The M4 un-packaged run artefact (commits, files, session transcript). The M4 session ran in the original repo, so the transcript lives in the encoded-original folder under `~/.claude/projects/`, not this worktree. Get the original repo path via `git rev-parse --git-common-dir` minus the trailing `/.git`; encode it with `/` → `-`.\n- The M5 packaged re-run artefact (commits, files, session transcript). The M5 session ran in this worktree, so the transcript lives in the encoded-worktree folder (current cwd with `/` → `-`). In each folder, pick the most recent `.jsonl` that isn't this current session.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save."
+    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).\n- The M4 un-packaged run artefact (commits, files, session transcript). The M4 session ran in the original repo, so the transcript lives in the encoded-original folder under `~/.claude/projects/`, not this worktree. Get the original repo path via `git rev-parse --git-common-dir` minus the trailing `/.git`; encode it with `/` → `-`.\n- The M5 packaged re-run artefact (commits, files, session transcript). The M5 session ran in this worktree, so the transcript lives in the encoded-worktree folder (current cwd with `/` → `-`). In each folder, pick the most recent `.jsonl` that isn't this current session.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
+    "requires": [
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      },
+      {
+        "id": "memory-folder",
+        "source": "module:run-the-first-experiment",
+        "conditional": "m4-completed"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "second-authored-skill",
+        "source": "prompt:spot-gaps-build-the-loop-5"
+      },
+      {
+        "id": "un-packaged-run-artefact",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      },
+      {
+        "id": "m4-session-transcript",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      },
+      {
+        "id": "packaged-run-artefact",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      },
+      {
+        "id": "m5-session-transcript",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      },
+      {
+        "id": "stale-rule-cut",
+        "source": "prompt:spot-gaps-build-the-loop-2",
+        "conditional": "rule-earned-cutting"
+      }
+    ],
+    "produces": [
+      {
+        "id": "arc-retrospective-note",
+        "location": "student-picked (ADR, .claude/memory/ memo, or standalone file)",
+        "consumed-by": [],
+        "note": "terminal artefact — closes the M1-M6 arc"
+      }
+    ]
   },
   "audit-your-agent-1": {
     "key": "audit-your-agent-1",
@@ -381,7 +765,31 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/author-test-strategy-skill",
-    "text": "I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.\n\nCover at minimum: which testing framework, what's mocked and what isn't, where the integration boundary actually runs (real dependencies vs. stubs), what \"flaky\" means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what's NOT worth testing here (and why).\n\nAsk ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says \"write unit tests first\" is useless. I need you to extract codebase-specific detail.\n\nWhen you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving."
+    "text": "I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.\n\nCover at minimum: which testing framework, what's mocked and what isn't, where the integration boundary actually runs (real dependencies vs. stubs), what \"flaky\" means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what's NOT worth testing here (and why).\n\nAsk ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says \"write unit tests first\" is useless. I need you to extract codebase-specific detail.\n\nWhen you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.",
+    "requires": [
+      {
+        "id": "feature-being-shipped",
+        "source": "scrollback (student input at M3 Connections)"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-stride-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "test-strategy-skill",
+        "location": "~/.claude/skills/test-strategy/SKILL.md",
+        "consumed-by": [
+          "prompt:author-test-strategy-skill-2",
+          "prompt:walk-and-send-off-2",
+          "prompt:walk-and-send-off-4",
+          "prompt:diagnose-and-resend-6",
+          "module:spot-gaps-build-the-loop"
+        ]
+      }
+    ]
   },
   "author-test-strategy-skill-2": {
     "key": "author-test-strategy-skill-2",
@@ -389,7 +797,31 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/author-test-strategy-skill",
-    "text": "Invoke the test-strategy skill we just wrote on the feature I'm shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.\n\nProduce the test strategy the skill asks you to produce.\n\nThen, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?"
+    "text": "Invoke the test-strategy skill we just wrote on the feature I'm shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.\n\nProduce the test strategy the skill asks you to produce.\n\nThen, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?",
+    "requires": [
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1"
+      },
+      {
+        "id": "feature-being-shipped",
+        "source": "scrollback (same feature from M3 Connections)"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-stride-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "test-strategy-output",
+        "location": "scrollback (test strategy generated by invoked skill)",
+        "consumed-by": [
+          "prompt:ae101-m3-sharpen-skill"
+        ]
+      }
+    ]
   },
   "build-your-challenge-memory-1": {
     "key": "build-your-challenge-memory-1",
@@ -477,7 +909,41 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran. List 2–3 practitioners whose published work runs a similar loop, one short clause naming each person's frame. Practitioners worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison, Huryn. If you can name fewer than two without guessing, list only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know."
+    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran. List 2–3 practitioners whose published work runs a similar loop, one short clause naming each person's frame. Practitioners worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison, Huryn. If you can name fewer than two without guessing, list only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
+    "requires": [
+      {
+        "id": "read-self-report",
+        "source": "prompt:orient-and-introspect-2"
+      },
+      {
+        "id": "context-window-read",
+        "source": "prompt:orient-and-introspect-3"
+      },
+      {
+        "id": "shipped-bug-fix",
+        "source": "prompt:fix-tests-first-3"
+      }
+    ],
+    "produces": [
+      {
+        "id": "claude-local-md",
+        "location": "./CLAUDE.local.md (created + gitignored if missing)",
+        "consumed-by": [
+          "prompt:compound-and-close-4",
+          "prompt:ae101-m3-sharpen-skill",
+          "prompt:walk-and-send-off-2",
+          "prompt:diagnose-and-resend-6",
+          "prompt:ae101-m5-rerun-packaged",
+          "prompt:spot-gaps-build-the-loop-2",
+          "prompt:arc-retrospective-1"
+        ],
+        "opportunistic-copy-by": [
+          "prompt:ae101-m3-fork-quality-side",
+          "prompt:ae101-m5-worktree-setup"
+        ],
+        "note": "ae101-m2-integrate-branch WRITES to ./CLAUDE.local.md (creates if missing) but doesn't strictly consume it as a precondition"
+      }
+    ]
   },
   "compound-and-close-2": {
     "key": "compound-and-close-2",
@@ -485,7 +951,26 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.\n\nTicket:"
+    "text": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.\n\nTicket:",
+    "requires": [
+      {
+        "id": "shipped-bug-fix",
+        "source": "prompt:fix-tests-first-3"
+      },
+      {
+        "id": "ticket-tracker",
+        "source": "external (Linear / Jira / GitHub Issues via MCP connector)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "ticket-summary",
+        "location": "scrollback (ticket fields + comments read back)",
+        "consumed-by": [
+          "prompt:compound-and-close-3"
+        ]
+      }
+    ]
   },
   "compound-and-close-3": {
     "key": "compound-and-close-3",
@@ -493,7 +978,25 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR if you opened one (otherwise link the branch). If we needed to create the ticket just now, create it first, then update. Tell me what you wrote."
+    "text": "Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR if you opened one (otherwise link the branch). If we needed to create the ticket just now, create it first, then update. Tell me what you wrote.",
+    "requires": [
+      {
+        "id": "ticket-summary",
+        "source": "prompt:compound-and-close-2"
+      },
+      {
+        "id": "shipped-bug-fix",
+        "source": "prompt:fix-tests-first-3"
+      }
+    ],
+    "produces": [
+      {
+        "id": "ticket-close-out",
+        "location": "external (ticket updated via MCP connector)",
+        "consumed-by": [],
+        "note": "terminal artifact — the closed ticket lives in the team's tracker, not the training corpus"
+      }
+    ]
   },
   "compound-and-close-4": {
     "key": "compound-and-close-4",
@@ -501,7 +1004,32 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "We're preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don't append. Tell me in 2–3 lines what you added, or \"nothing new\" if nothing did."
+    "text": "We're preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don't append. Tell me in 2–3 lines what you added, or \"nothing new\" if nothing did.",
+    "requires": [
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "claude-local-md",
+        "location": "./CLAUDE.local.md (in-place integrate; second-pass compound)",
+        "consumed-by": [
+          "prompt:ae101-m3-sharpen-skill",
+          "prompt:walk-and-send-off-2",
+          "prompt:diagnose-and-resend-6",
+          "prompt:ae101-m5-rerun-packaged",
+          "prompt:spot-gaps-build-the-loop-2",
+          "prompt:arc-retrospective-1"
+        ],
+        "opportunistic-copy-by": [
+          "prompt:ae101-m3-fork-quality-side",
+          "prompt:ae101-m5-worktree-setup"
+        ],
+        "note": "ae101-m2-integrate-branch WRITES to ./CLAUDE.local.md (creates if missing) but doesn't strictly consume it as a precondition"
+      }
+    ]
   },
   "compounding-1": {
     "key": "compounding-1",
@@ -525,7 +1053,26 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Find the path to the previous session's transcript .jsonl. Claude Code stores every session's scrollback at `~/.claude/projects/<encoded-folder>/<uuid>.jsonl`. The `<encoded-folder>` name is the absolute path of the original repo (where the un-packaged run happened) with `/` replaced by `-` — e.g., `/Users/me/Projects/lemmings` → `-Users-me-Projects-lemmings`. Since you're in a worktree, find the original repo path via `git rev-parse --git-common-dir` (its parent is the original repo). List the .jsonl files in that folder by mtime; pick the one in which the agent created the \"M4 starting point\" commit on the `m4/` branch. Tell me the absolute path."
+    "text": "Find the path to the previous session's transcript .jsonl. Claude Code stores every session's scrollback at `~/.claude/projects/<encoded-folder>/<uuid>.jsonl`. The `<encoded-folder>` name is the absolute path of the original repo (where the un-packaged run happened) with `/` replaced by `-` — e.g., `/Users/me/Projects/lemmings` → `-Users-me-Projects-lemmings`. Since you're in a worktree, find the original repo path via `git rev-parse --git-common-dir` (its parent is the original repo). List the .jsonl files in that folder by mtime; pick the one in which the agent created the \"M4 starting point\" commit on the `m4/` branch. Tell me the absolute path.",
+    "requires": [
+      {
+        "id": "m5-worktree",
+        "source": "prompt:ae101-m5-worktree-setup"
+      },
+      {
+        "id": "m4-session-transcript",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m4-transcript-path",
+        "location": "scrollback (absolute path Claude found)",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-2"
+        ]
+      }
+    ]
   },
   "diagnose-and-resend-2": {
     "key": "diagnose-and-resend-2",
@@ -533,7 +1080,35 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep 'm4/'` — it'll be the only branch starting with `m4/`). Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one."
+    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep 'm4/'` — it'll be the only branch starting with `m4/`). Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.",
+    "requires": [
+      {
+        "id": "m4-transcript-path",
+        "source": "prompt:diagnose-and-resend-1"
+      },
+      {
+        "id": "un-packaged-run-artefact",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      },
+      {
+        "id": "m4-session-transcript",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      },
+      {
+        "id": "m4-starting-point-sha",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      }
+    ],
+    "produces": [
+      {
+        "id": "three-failure-lens-read",
+        "location": "scrollback (drift / context-rot / plausible-but-wrong + dominant failure named)",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-3",
+          "prompt:diagnose-and-resend-4"
+        ]
+      }
+    ]
   },
   "diagnose-and-resend-3": {
     "key": "diagnose-and-resend-3",
@@ -541,7 +1116,23 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?\n\nPractitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:\n\n- **A re-readable spec.** Scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.\n- **A working document the agent owns and updates.** Durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.\n- **An automated check on produced work.** Tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.\n\nFor each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).\n\nDon't name frameworks or practitioners by label (\"Ronacher's three-pattern,\" \"Huntley's Ralph,\" etc.) — walk from the specific failure to the specific validation. The naming happens later."
+    "text": "For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?\n\nPractitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:\n\n- **A re-readable spec.** Scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.\n- **A working document the agent owns and updates.** Durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.\n- **An automated check on produced work.** Tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.\n\nFor each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).\n\nDon't name frameworks or practitioners by label (\"Ronacher's three-pattern,\" \"Huntley's Ralph,\" etc.) — walk from the specific failure to the specific validation. The naming happens later.",
+    "requires": [
+      {
+        "id": "three-failure-lens-read",
+        "source": "prompt:diagnose-and-resend-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "validation-mapping",
+        "location": "scrollback (each failure mapped to re-readable-spec / working-doc / automated-check)",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-4",
+          "prompt:diagnose-and-resend-6"
+        ]
+      }
+    ]
   },
   "diagnose-and-resend-4": {
     "key": "diagnose-and-resend-4",
@@ -549,7 +1140,29 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Build the verifier for my dominant failure, scoped to the task we ran un-packaged. The verifier should fire on agent-produced work and decide pass/fail against a quality bar that, if it had been in place, would have caught the failure I diagnosed.\n\nIf shell-hook: write the script and tell me where it lives in this repo (CI config, `.claude/hooks/`, or pre-commit, whichever fits the repo's existing conventions).\n\nIf background-agent: write the prompt and tell me how to invoke it (slash-command, sub-task dispatch, or scheduled run).\n\nIf Ralph re-feed: write the loop wrapper and the check it runs each iteration.\n\nShow me the verifier before you save anything; I'll push back, then we save.\n\nShape:"
+    "text": "Build the verifier for my dominant failure, scoped to the task we ran un-packaged. The verifier should fire on agent-produced work and decide pass/fail against a quality bar that, if it had been in place, would have caught the failure I diagnosed.\n\nIf shell-hook: write the script and tell me where it lives in this repo (CI config, `.claude/hooks/`, or pre-commit, whichever fits the repo's existing conventions).\n\nIf background-agent: write the prompt and tell me how to invoke it (slash-command, sub-task dispatch, or scheduled run).\n\nIf Ralph re-feed: write the loop wrapper and the check it runs each iteration.\n\nShow me the verifier before you save anything; I'll push back, then we save.\n\nShape:",
+    "requires": [
+      {
+        "id": "validation-mapping",
+        "source": "prompt:diagnose-and-resend-3"
+      },
+      {
+        "id": "three-failure-lens-read",
+        "source": "prompt:diagnose-and-resend-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "verifier",
+        "location": "path varies (script in .claude/hooks/, CI config, pre-commit, or slash-command — student picks)",
+        "consumed-by": [
+          "prompt:diagnose-and-resend-5",
+          "prompt:diagnose-and-resend-6",
+          "prompt:ae101-m5-rerun-packaged",
+          "prompt:spot-gaps-build-the-loop-1"
+        ]
+      }
+    ]
   },
   "diagnose-and-resend-5": {
     "key": "diagnose-and-resend-5",
@@ -557,7 +1170,21 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Smoke-test the verifier you just built. Fire it on two synthetic inputs: one designed to PASS (matches the quality bar) and one designed to FAIL (the failure shape we diagnosed). Show me what fired, what each input returned, and what would have to change for the verifier to actually be in play during the packaged re-send. If a wiring step (hook install, slash-command registration, file path) is missing, name it and fix it before we move on."
+    "text": "Smoke-test the verifier you just built. Fire it on two synthetic inputs: one designed to PASS (matches the quality bar) and one designed to FAIL (the failure shape we diagnosed). Show me what fired, what each input returned, and what would have to change for the verifier to actually be in play during the packaged re-send. If a wiring step (hook install, slash-command registration, file path) is missing, name it and fix it before we move on.",
+    "requires": [
+      {
+        "id": "verifier",
+        "source": "prompt:diagnose-and-resend-4"
+      }
+    ],
+    "produces": [
+      {
+        "id": "verifier-smoke-test-result",
+        "location": "scrollback (PASS + FAIL synthetic inputs + wiring fixes named)",
+        "consumed-by": [],
+        "note": "confirms verifier readiness for the packaged re-send; ae101-m5-rerun-packaged consumes the verifier itself, not the smoke-test report"
+      }
+    ]
   },
   "diagnose-and-resend-6": {
     "key": "diagnose-and-resend-6",
@@ -565,7 +1192,55 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.\n\nFirst, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:\n- The task scope and success criteria, in two or three sentences\n- Pointers to the memory pages, ADRs, skills, and connectors most relevant to THIS task\n- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)\n- **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.\n- A \"done means\" line — what the agent should produce that signals task completion (tests green + requirements met)\n\nSecond, plan.md. A working document the agent owns and mutates as it runs. Should start with:\n- The task broken into 3–7 phases the agent can re-anchor against\n- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.\n- A \"current phase\" line the agent updates as it progresses\n- A \"decisions log\" section the agent appends to when it makes a load-bearing choice\n- A \"what I tried that didn't work\" section to prevent context-rot re-derivations\n\nPropose the file paths (next to each other; same task-scoped folder). Show me both files in prose.\n\nDon't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.\n\nBefore lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer."
+    "text": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.\n\nFirst, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:\n- The task scope and success criteria, in two or three sentences\n- Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task\n- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)\n- **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.\n- A \"done means\" line — what the agent should produce that signals task completion (tests green + requirements met)\n\nSecond, plan.md. A working document the agent owns and mutates as it runs. Should start with:\n- The task broken into 3–7 phases the agent can re-anchor against\n- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.\n- A \"current phase\" line the agent updates as it progresses\n- A \"decisions log\" section the agent appends to when it makes a load-bearing choice\n- A \"what I tried that didn't work\" section to prevent context-rot re-derivations\n\nPropose the file paths (next to each other; same task-scoped folder). Show me both files in prose.\n\nDon't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.\n\nBefore lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer.",
+    "requires": [
+      {
+        "id": "validation-mapping",
+        "source": "prompt:diagnose-and-resend-3"
+      },
+      {
+        "id": "verifier",
+        "source": "prompt:diagnose-and-resend-4"
+      },
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "memory-folder",
+        "source": "module:run-the-first-experiment",
+        "conditional": "m4-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "reference-artefact",
+        "location": "task-local file at worktree (path Claude proposes)",
+        "consumed-by": [
+          "prompt:ae101-m5-rerun-packaged",
+          "prompt:spot-gaps-build-the-loop-1"
+        ]
+      },
+      {
+        "id": "plan-md",
+        "location": "plan.md (at worktree root, next to reference)",
+        "consumed-by": [
+          "prompt:ae101-m5-rerun-packaged",
+          "prompt:spot-gaps-build-the-loop-1"
+        ]
+      }
+    ]
   },
   "eval-loop-1": {
     "key": "eval-loop-1",
@@ -629,7 +1304,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/extract-the-task-shaping-rule",
-    "text": "Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn't. Rules about task shape, not about plan-reading craft. After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing."
+    "text": "Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn't. Rules about task shape, not about plan-reading craft. After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.",
+    "requires": [
+      {
+        "id": "m2-session-scrollback",
+        "source": "scrollback (push-back-on-the-plan exercise session)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "task-shaping-rules-draft",
+        "location": "scrollback (3-5 proposed one-liners)",
+        "consumed-by": [
+          "prompt:extract-the-task-shaping-rule-2"
+        ]
+      }
+    ]
   },
   "extract-the-task-shaping-rule-2": {
     "key": "extract-the-task-shaping-rule-2",
@@ -637,7 +1327,23 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/extract-the-task-shaping-rule",
-    "text": "Let's decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you'd pick for these rules and why. I'll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting."
+    "text": "Let's decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you'd pick for these rules and why. I'll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.",
+    "requires": [
+      {
+        "id": "task-shaping-rules-draft",
+        "source": "prompt:extract-the-task-shaping-rule-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "task-shaping-rules-file",
+        "location": "student-picked (./CLAUDE.local.md, ~/.claude/CLAUDE.md, or notes folder)",
+        "consumed-by": [
+          "prompt:extract-the-task-shaping-rule-3",
+          "module:run-the-first-experiment"
+        ]
+      }
+    ]
   },
   "extract-the-task-shaping-rule-3": {
     "key": "extract-the-task-shaping-rule-3",
@@ -645,7 +1351,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/extract-the-task-shaping-rule",
-    "text": "Suppose I wanted this rules file to drive automated task-splitting in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting epics into shippable slices using these rules as the guardrail. What two or three shapes does that automation typically take? Name each shape, what would invoke it, and where the rules file would sit in the loop. Don't propose code today."
+    "text": "Suppose I wanted this rules file to drive automated task-splitting in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting epics into shippable slices using these rules as the guardrail. What two or three shapes does that automation typically take? Name each shape, what would invoke it, and where the rules file would sit in the loop. Don't propose code today.",
+    "requires": [
+      {
+        "id": "task-shaping-rules-file",
+        "source": "prompt:extract-the-task-shaping-rule-2"
+      }
+    ],
+    "produces": []
   },
   "extract-the-task-shaping-rule-4": {
     "key": "extract-the-task-shaping-rule-4",
@@ -653,7 +1366,20 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/extract-the-task-shaping-rule",
-    "text": "Reverse-engineer how this team uses its task manager from one ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, links, and custom fields.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose five basic rules a backlog-refinement agent could use on future tickets.\n\nTicket:"
+    "text": "Reverse-engineer how this team uses its task manager from one ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, links, and custom fields.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose five basic rules a backlog-refinement agent could use on future tickets.\n\nTicket:",
+    "requires": [
+      {
+        "id": "ticket-data",
+        "source": "scrollback (student pastes one ticket)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "backlog-refinement-rules",
+        "location": "scrollback (5 proposed rules)",
+        "consumed-by": []
+      }
+    ]
   },
   "fix-tests-first-1": {
     "key": "fix-tests-first-1",
@@ -661,7 +1387,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/fix-tests-first",
-    "text": "Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.\n\nLet's work on this bug:"
+    "text": "Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.\n\nLet's work on this bug:",
+    "requires": [
+      {
+        "id": "picked-bug",
+        "source": "prompt:ae101-prework-extract-and-install"
+      }
+    ],
+    "produces": [
+      {
+        "id": "first-pass-tdd-diff",
+        "location": "git working tree (uncommitted changes from first-pass TDD)",
+        "consumed-by": [
+          "prompt:fix-tests-first-2"
+        ]
+      }
+    ]
   },
   "fix-tests-first-2": {
     "key": "fix-tests-first-2",
@@ -669,7 +1410,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/fix-tests-first",
-    "text": "Was the change you just made the root cause of the bug, or a layer above it? If a layer above, name what the deeper edit would touch. Don't change anything yet. Re-read your own diff and tell me what's still surface."
+    "text": "Was the change you just made the root cause of the bug, or a layer above it? If a layer above, name what the deeper edit would touch. Don't change anything yet. Re-read your own diff and tell me what's still surface.",
+    "requires": [
+      {
+        "id": "first-pass-tdd-diff",
+        "source": "prompt:fix-tests-first-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "deeper-issue-named",
+        "location": "scrollback (Claude identifies the root that's still surface)",
+        "consumed-by": [
+          "prompt:fix-tests-first-3"
+        ]
+      }
+    ]
   },
   "fix-tests-first-3": {
     "key": "fix-tests-first-3",
@@ -677,7 +1433,24 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/fix-tests-first",
-    "text": "Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit."
+    "text": "Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit.",
+    "requires": [
+      {
+        "id": "deeper-issue-named",
+        "source": "prompt:fix-tests-first-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "shipped-bug-fix",
+        "location": "git (commit on a feature branch; PR if student opens one)",
+        "consumed-by": [
+          "prompt:compound-and-close-1",
+          "prompt:compound-and-close-2",
+          "prompt:compound-and-close-3"
+        ]
+      }
+    ]
   },
   "hallucination-bakeoff-1": {
     "key": "hallucination-bakeoff-1",
@@ -813,7 +1586,16 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/map-the-access-surface",
-    "text": "List my installed skills. Tell me also their storage location and whether or not they are loaded onto context."
+    "text": "List my installed skills. Tell me also their storage location and whether or not they are loaded onto context.",
+    "requires": [],
+    "produces": [
+      {
+        "id": "installed-skills-list",
+        "location": "scrollback",
+        "consumed-by": [],
+        "note": "human-facing install verification before access-2 invokes the curated skill"
+      }
+    ]
   },
   "map-the-access-surface-2": {
     "key": "map-the-access-surface-2",
@@ -821,7 +1603,30 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/map-the-access-surface",
-    "text": "Invoke the access-control-analysis skill on the feature I'll name. Save the surface map to a temp directory and tell me the path. Use the skill's default output shape; don't prompt me to customize.\n\nThe feature is:"
+    "text": "Invoke the access-control-analysis skill on the feature I'll name. Save the surface map to a temp directory and tell me the path. Use the skill's default output shape; don't prompt me to customize.\n\nThe feature is:",
+    "requires": [
+      {
+        "id": "feature-being-shipped",
+        "source": "scrollback (student input at M3 Connections)"
+      },
+      {
+        "id": "access-control-analysis-skill",
+        "source": "external (curated skill installed at prework)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "access-surface-map",
+        "location": "temp directory (path Claude reports)",
+        "consumed-by": [
+          "prompt:map-the-access-surface-3",
+          "prompt:map-the-access-surface-4",
+          "prompt:map-the-access-surface-5",
+          "prompt:threat-model-with-stride-1",
+          "prompt:ae101-m3-sharpen-skill"
+        ]
+      }
+    ]
   },
   "map-the-access-surface-3": {
     "key": "map-the-access-surface-3",
@@ -829,7 +1634,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/map-the-access-surface",
-    "text": "Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I'll tell you in the next phase."
+    "text": "Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I'll tell you in the next phase.",
+    "requires": [
+      {
+        "id": "access-surface-map",
+        "source": "prompt:map-the-access-surface-2"
+      }
+    ],
+    "produces": []
   },
   "map-the-access-surface-4": {
     "key": "map-the-access-surface-4",
@@ -837,7 +1649,23 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/map-the-access-surface",
-    "text": "Update the surface-map file in the temp directory to integrate the delta below — pull the item to the top of its category and explain in one line why this codebase's deployment model elevates it. Show me the diff.\n\nThe surface the skill called out harder than I would have:"
+    "text": "Update the surface-map file in the temp directory to integrate the delta below — pull the item to the top of its category and explain in one line why this codebase's deployment model elevates it. Show me the diff.\n\nThe surface the skill called out harder than I would have:",
+    "requires": [
+      {
+        "id": "access-surface-map",
+        "source": "prompt:map-the-access-surface-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "access-surface-map",
+        "location": "temp directory (in-place update)",
+        "consumed-by": [
+          "prompt:map-the-access-surface-5",
+          "prompt:threat-model-with-stride-1"
+        ]
+      }
+    ]
   },
   "map-the-access-surface-5": {
     "key": "map-the-access-surface-5",
@@ -845,7 +1673,23 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/map-the-access-surface",
-    "text": "Add a new surface to the map that the skill didn't catch but matters in this codebase. One sentence on what it is, one sentence on why the skill missed it (likely codebase-specific: framework, deployment model, team convention). Show me the diff.\n\nThe surface the skill missed that I know matters is:"
+    "text": "Add a new surface to the map that the skill didn't catch but matters in this codebase. One sentence on what it is, one sentence on why the skill missed it (likely codebase-specific: framework, deployment model, team convention). Show me the diff.\n\nThe surface the skill missed that I know matters is:",
+    "requires": [
+      {
+        "id": "access-surface-map",
+        "source": "prompt:map-the-access-surface-4"
+      }
+    ],
+    "produces": [
+      {
+        "id": "access-surface-map",
+        "location": "temp directory (in-place update)",
+        "consumed-by": [
+          "prompt:threat-model-with-stride-1",
+          "prompt:ae101-m3-sharpen-skill"
+        ]
+      }
+    ]
   },
   "name-your-challenge-1": {
     "key": "name-your-challenge-1",
@@ -893,7 +1737,17 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/orient-and-introspect",
-    "text": "Read enough of this repo to tell me what's here: the shape, the structure, what looks load-bearing, what's been touched recently, what looks stale. Don't try to be complete. Read what you judge worth reading; skip what you judge isn't."
+    "text": "Read enough of this repo to tell me what's here: the shape, the structure, what looks load-bearing, what's been touched recently, what looks stale. Don't try to be complete. Read what you judge worth reading; skip what you judge isn't.",
+    "requires": [],
+    "produces": [
+      {
+        "id": "repo-shape-report",
+        "location": "scrollback (Claude's read of what's in the repo)",
+        "consumed-by": [
+          "prompt:orient-and-introspect-2"
+        ]
+      }
+    ]
   },
   "orient-and-introspect-2": {
     "key": "orient-and-introspect-2",
@@ -901,7 +1755,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/orient-and-introspect",
-    "text": "What did you read, and why those files? What didn't you read, and why not? Name the specific files or directories you skipped and the call you made on each."
+    "text": "What did you read, and why those files? What didn't you read, and why not? Name the specific files or directories you skipped and the call you made on each.",
+    "requires": [
+      {
+        "id": "repo-shape-report",
+        "source": "prompt:orient-and-introspect-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "read-self-report",
+        "location": "scrollback (Claude's introspection — read vs skipped, with reasoning)",
+        "consumed-by": [
+          "prompt:compound-and-close-1"
+        ]
+      }
+    ]
   },
   "orient-and-introspect-3": {
     "key": "orient-and-introspect-3",
@@ -909,7 +1778,18 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/orient-and-introspect",
-    "text": "/context"
+    "text": "/context",
+    "requires": [],
+    "produces": [
+      {
+        "id": "context-window-read",
+        "location": "scrollback (/context output showing window utilization)",
+        "consumed-by": [
+          "prompt:compound-and-close-1"
+        ],
+        "note": "pedagogical delta against read-self-report reveals the unread slice"
+      }
+    ]
   },
   "personal-site-with-guardrails-1": {
     "key": "personal-site-with-guardrails-1",
@@ -965,7 +1845,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/push-back-on-the-plan",
-    "text": "Plan the task I describe below. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you'd write or update before any code lands, and what you'd check before declaring it done. Detail over brevity.\n\nMy task:"
+    "text": "Plan the task I describe below. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you'd write or update before any code lands, and what you'd check before declaring it done. Detail over brevity.\n\nMy task:",
+    "requires": [
+      {
+        "id": "multi-file-task",
+        "source": "scrollback (student input at M2 Prework / Connections)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "initial-plan",
+        "location": "plan file (Claude Code default location in working directory)",
+        "consumed-by": [
+          "prompt:push-back-on-the-plan-2"
+        ]
+      }
+    ]
   },
   "push-back-on-the-plan-2-original": {
     "key": "push-back-on-the-plan-2-original",
@@ -981,7 +1876,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/push-back-on-the-plan",
-    "text": "Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree three at a time: dependencies, decisions, side-effects I haven't named.\n\nAnswer me in prose. Don't touch the plan file until I say 'lock it in.' When you do edit the plan, use Edit on the changed section, not Write on the whole file.\n\nAsk me three questions at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct three at a time."
+    "text": "Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree three at a time: dependencies, decisions, side-effects I haven't named.\n\nAnswer me in prose. Don't touch the plan file until I say 'lock it in.' When you do edit the plan, use Edit on the changed section, not Write on the whole file.\n\nAsk me three questions at a time. For each question, recommend an answer. If a question can be answered by reading the codebase, read the codebase instead of asking me. I'll confirm or correct three at a time.",
+    "requires": [
+      {
+        "id": "initial-plan",
+        "source": "prompt:push-back-on-the-plan-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "revised-plan",
+        "location": "plan file (in-place edit after 'lock it in')",
+        "consumed-by": [
+          "prompt:push-back-on-the-plan-3"
+        ]
+      }
+    ]
   },
   "push-back-on-the-plan-3": {
     "key": "push-back-on-the-plan-3",
@@ -989,15 +1899,33 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/push-back-on-the-plan",
-    "text": "Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?"
+    "text": "Looking back at this session: what new information and decisions did the second-pass read surface that my two push-backs didn't? Would any of them have mattered in execution? What's the design pattern I just ran, as a repeatable move I could apply to my next non-trivial plan?",
+    "requires": [
+      {
+        "id": "revised-plan",
+        "source": "prompt:push-back-on-the-plan-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "design-pattern-named",
+        "location": "scrollback (the plan-reading move named as repeatable)",
+        "consumed-by": [
+          "prompt:ae101-m2-integrate-branch"
+        ],
+        "note": "extract-the-task-shaping-rule-1 reads the whole M2 session scrollback (which contains this named pattern) rather than the pattern as a discrete artifact"
+      }
+    ]
   },
   "push-back-on-the-plan-4": {
     "key": "push-back-on-the-plan-4",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/push-back-on-the-plan",
-    "text": "are these rules auto-loaded to each session context?"
+    "origin": "agentic-engineering-101/plan-mode-done-right",
+    "text": "are these rules auto-loaded to each session context?",
+    "requires": [],
+    "produces": []
   },
   "self-consistency-after-scoreboard-1": {
     "key": "self-consistency-after-scoreboard-1",
@@ -1077,7 +2005,51 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep 'm4/'`); the packaged re-run is on a branch starting with `m5/` (run `git branch -a | grep 'm5/'`). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.\n\nRead both. Start with both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-cwd>/<uuid>.jsonl`, where `<encoded-cwd>` is the absolute path of the directory the session ran in with `/` replaced by `-`. One folder per working directory. The M4 session ran in the original repo, so M4 transcripts are under the encoded-original folder. The M5 session ran in this worktree, so M5 transcripts are under the encoded-worktree folder. Two sibling folders under `~/.claude/projects/`, not nested. The encoded-worktree path is the current working directory with `/` → `-`; the encoded-original path is `git rev-parse --git-common-dir` with the trailing `/.git` stripped, then `/` → `-`. List `.jsonl` files in each, take the most recent that isn't this current session, and read both. Then check repo state: commits on the `m4/` branch after the \"M4 starting point\" commit, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads."
+    "text": "I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep 'm4/'`); the packaged re-run is on a branch starting with `m5/` (run `git branch -a | grep 'm5/'`). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.\n\nRead both. Start with both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-cwd>/<uuid>.jsonl`, where `<encoded-cwd>` is the absolute path of the directory the session ran in with `/` replaced by `-`. One folder per working directory. The M4 session ran in the original repo, so M4 transcripts are under the encoded-original folder. The M5 session ran in this worktree, so M5 transcripts are under the encoded-worktree folder. Two sibling folders under `~/.claude/projects/`, not nested. The encoded-worktree path is the current working directory with `/` → `-`; the encoded-original path is `git rev-parse --git-common-dir` with the trailing `/.git` stripped, then `/` → `-`. List `.jsonl` files in each, take the most recent that isn't this current session, and read both. Then check repo state: commits on the `m4/` branch after the \"M4 starting point\" commit, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.",
+    "requires": [
+      {
+        "id": "un-packaged-run-artefact",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      },
+      {
+        "id": "m4-session-transcript",
+        "source": "prompt:ae101-m4-take-task-end-to-end"
+      },
+      {
+        "id": "packaged-run-artefact",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      },
+      {
+        "id": "m5-session-transcript",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      },
+      {
+        "id": "reference-artefact",
+        "source": "prompt:diagnose-and-resend-6"
+      },
+      {
+        "id": "plan-md",
+        "source": "prompt:diagnose-and-resend-6"
+      },
+      {
+        "id": "verifier",
+        "source": "prompt:diagnose-and-resend-4"
+      },
+      {
+        "id": "run-notes",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      }
+    ],
+    "produces": [
+      {
+        "id": "two-run-gap-map",
+        "location": "scrollback (ranked gap list with quoted moments + dominant gap)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-2",
+          "prompt:spot-gaps-build-the-loop-3"
+        ]
+      }
+    ]
   },
   "spot-gaps-build-the-loop-2": {
     "key": "spot-gaps-build-the-loop-2",
@@ -1085,7 +2057,28 @@
     "context": "only if a rule earned cutting",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap. Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop."
+    "text": "Read ./CLAUDE.local.md. Read this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap. Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.",
+    "requires": [
+      {
+        "id": "two-run-gap-map",
+        "source": "prompt:spot-gaps-build-the-loop-1"
+      },
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "stale-rule-cut",
+        "location": "./CLAUDE.local.md (in-place; one rule removed)",
+        "conditional": "rule-earned-cutting",
+        "consumed-by": [
+          "prompt:arc-retrospective-1"
+        ]
+      }
+    ]
   },
   "spot-gaps-build-the-loop-3": {
     "key": "spot-gaps-build-the-loop-3",
@@ -1093,7 +2086,29 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, propose a skill name. Write `~/.claude/skills/<proposed-name>/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving."
+    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, propose a skill name. Write `~/.claude/skills/<proposed-name>/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving.",
+    "requires": [
+      {
+        "id": "two-run-gap-map",
+        "source": "prompt:spot-gaps-build-the-loop-1"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed",
+        "note": "referenced as authoring-pattern template"
+      }
+    ],
+    "produces": [
+      {
+        "id": "session-shaper-skill-draft",
+        "location": "~/.claude/skills/<student-named>/SKILL.md (personal, auto-discovered)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-4",
+          "prompt:spot-gaps-build-the-loop-5"
+        ]
+      }
+    ]
   },
   "spot-gaps-build-the-loop-4": {
     "key": "spot-gaps-build-the-loop-4",
@@ -1101,7 +2116,26 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:\n\n- What's the weakest part? Name the assumption most likely to be wrong for my codebase, or the section a teammate would push back on first.\n- Is there anything generic dressed up as codebase-specific? Advice a pyramid-shaped test book would give, or a verifier template from a blog post.\n- Is there anything from the two runs' diff that didn't make it into the skill? A quoted failure moment I named in Phase 1 that would sharpen the skill if it were encoded?\n\nDon't reassure me. Name weak parts."
+    "text": "Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:\n\n- What's the weakest part? Name the assumption most likely to be wrong for my codebase, or the section a teammate would push back on first.\n- Is there anything generic dressed up as codebase-specific? Advice a pyramid-shaped test book would give, or a verifier template from a blog post.\n- Is there anything from the two runs' diff that didn't make it into the skill? A quoted failure moment I named in Phase 1 that would sharpen the skill if it were encoded?\n\nDon't reassure me. Name weak parts.",
+    "requires": [
+      {
+        "id": "session-shaper-skill-draft",
+        "source": "prompt:spot-gaps-build-the-loop-3"
+      },
+      {
+        "id": "two-run-gap-map",
+        "source": "prompt:spot-gaps-build-the-loop-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "skill-self-critique",
+        "location": "scrollback (named weak parts before shipping)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-5"
+        ]
+      }
+    ]
   },
   "spot-gaps-build-the-loop-5": {
     "key": "spot-gaps-build-the-loop-5",
@@ -1109,7 +2143,44 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.\n\nProduce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).\n\nThen, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?"
+    "text": "Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.\n\nProduce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).\n\nThen, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?",
+    "requires": [
+      {
+        "id": "session-shaper-skill-draft",
+        "source": "prompt:spot-gaps-build-the-loop-3"
+      },
+      {
+        "id": "skill-self-critique",
+        "source": "prompt:spot-gaps-build-the-loop-4"
+      },
+      {
+        "id": "packaged-run-artefact",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      }
+    ],
+    "produces": [
+      {
+        "id": "second-authored-skill",
+        "location": "~/.claude/skills/<name>/SKILL.md (sharpened after invocation on real artefacts)",
+        "consumed-by": [
+          "prompt:arc-retrospective-1"
+        ]
+      }
+    ],
+    "anchors": [
+      {
+        "move": "skill-by-name",
+        "span": "by its name"
+      },
+      {
+        "move": "self-critique-register",
+        "span": "in the same response, answer: is the skill any good?"
+      },
+      {
+        "move": "disambiguation-criteria",
+        "span": "Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?"
+      }
+    ]
   },
   "threat-model-with-stride-1": {
     "key": "threat-model-with-stride-1",
@@ -1117,7 +2188,26 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/threat-model-with-stride",
-    "text": "Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next. Report whether or not the skill loaded in the subagent."
+    "text": "Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next. Report whether or not the skill loaded in the subagent.",
+    "requires": [
+      {
+        "id": "access-surface-map",
+        "source": "prompt:map-the-access-surface-5"
+      },
+      {
+        "id": "stride-skill",
+        "source": "external (curated skill installed at prework)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "stride-threat-list",
+        "location": "next to the surface map (file) + scrollback (high-severity flags)",
+        "consumed-by": [
+          "prompt:threat-model-with-stride-2"
+        ]
+      }
+    ]
   },
   "threat-model-with-stride-2": {
     "key": "threat-model-with-stride-2",
@@ -1125,7 +2215,22 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/threat-model-with-stride",
-    "text": "Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story (one or two sentences, from the access surface and threat list), then map that story to the STRIDE class it best fits (S/T/R/I/D/E), name what the threat actually is in one sentence, and propose the hardening shape (scope/split/filter/gate/review). I'll steer if the story or mapping misses."
+    "text": "Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story (one or two sentences, from the access surface and threat list), then map that story to the STRIDE class it best fits (S/T/R/I/D/E), name what the threat actually is in one sentence, and propose the hardening shape (scope/split/filter/gate/review). I'll steer if the story or mapping misses.",
+    "requires": [
+      {
+        "id": "stride-threat-list",
+        "source": "prompt:threat-model-with-stride-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "picked-threat-and-hardening",
+        "location": "scrollback (student picks one threat + hardening shape)",
+        "consumed-by": [
+          "prompt:threat-model-with-stride-3"
+        ]
+      }
+    ]
   },
   "threat-model-with-stride-3": {
     "key": "threat-model-with-stride-3",
@@ -1133,7 +2238,33 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/threat-model-with-stride",
-    "text": "Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).\n\nGround each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.\n\nShow me the ADR before saving."
+    "text": "Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).\n\nGround each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.\n\nShow me the ADR before saving.",
+    "requires": [
+      {
+        "id": "picked-threat-and-hardening",
+        "source": "prompt:threat-model-with-stride-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "stride-adr",
+        "location": "docs/adr/NNNN-slug.md (or repo's adr convention)",
+        "conditional": "m3-stride-completed",
+        "consumed-by": [
+          "prompt:threat-model-with-stride-4",
+          "prompt:author-test-strategy-skill-1",
+          "prompt:author-test-strategy-skill-2",
+          "prompt:ae101-m3-sharpen-skill",
+          "prompt:walk-and-send-off-2",
+          "prompt:walk-and-send-off-4",
+          "prompt:diagnose-and-resend-6",
+          "prompt:ae101-m5-rerun-packaged",
+          "module:run-the-first-experiment",
+          "module:learn-from-the-test",
+          "module:spot-gaps-build-the-loop"
+        ]
+      }
+    ]
   },
   "threat-model-with-stride-4": {
     "key": "threat-model-with-stride-4",
@@ -1141,7 +2272,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/threat-model-with-stride",
-    "text": "Will ADRs auto-load to future sessions?"
+    "text": "Will ADRs auto-load to future sessions?",
+    "requires": [
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3"
+      }
+    ],
+    "produces": []
   },
   "three-minds-one-synthesis-1": {
     "key": "three-minds-one-synthesis-1",
@@ -1213,7 +2351,24 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "I'm about to run my first long-running experiment. Screen the candidates below against three criteria:\n\n- Send-off shape: the task lets the agent push past 3-4 ambiguities without checking in at every step.\n- Requirement-weaving: the task has multiple constraints that interact — getting one right means knowing the others.\n- Multi-file reasoning: touches at least 3 files where touching the wrong one matters.\n\nFor each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.\n\nCandidates:"
+    "text": "I'm about to run my first long-running experiment. Screen the candidates below against three criteria:\n\n- Send-off shape: the task lets the agent push past 3-4 ambiguities without checking in at every step.\n- Requirement-weaving: the task has multiple constraints that interact — getting one right means knowing the others.\n- Multi-file reasoning: touches at least 3 files where touching the wrong one matters.\n\nFor each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.\n\nCandidates:",
+    "requires": [
+      {
+        "id": "candidate-tasks",
+        "source": "scrollback (student arrives with 1-2 candidate tasks per M4 Connections)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "scoped-task",
+        "location": "scrollback (task scoped into 2-3 sentences)",
+        "consumed-by": [
+          "prompt:walk-and-send-off-2",
+          "prompt:ae101-m4-commit-starting-point",
+          "prompt:ae101-m4-take-task-end-to-end"
+        ]
+      }
+    ]
   },
   "walk-and-send-off-2": {
     "key": "walk-and-send-off-2",
@@ -1221,7 +2376,38 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap."
+    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
+    "requires": [
+      {
+        "id": "scoped-task",
+        "source": "prompt:walk-and-send-off-1"
+      },
+      {
+        "id": "claude-local-md",
+        "source": "prompt:compound-and-close-1",
+        "conditional": "m1-completed"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "gap-audit-report",
+        "location": "scrollback (ranked top-5 thin spots + cheapest fixes)",
+        "consumed-by": [
+          "prompt:walk-and-send-off-3",
+          "prompt:walk-and-send-off-4"
+        ]
+      }
+    ]
   },
   "walk-and-send-off-3": {
     "key": "walk-and-send-off-3",
@@ -1229,7 +2415,15 @@
     "context": "optional",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "You propose solutions and ask questions. Use the ask-questions tool to speed up my work."
+    "text": "You propose solutions and ask questions. Use the ask-questions tool to speed up my work.",
+    "requires": [
+      {
+        "id": "gap-audit-report",
+        "source": "prompt:walk-and-send-off-2"
+      }
+    ],
+    "produces": [],
+    "note": "tool-use directive (use AskUserQuestion to speed gap-fill Q&A); no artifact flow of its own"
   },
   "walk-and-send-off-4": {
     "key": "walk-and-send-off-4",
@@ -1237,7 +2431,35 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; the ADRs live here)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; the test-strategy skill contributes)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR I've already written (Block 2), a specific check from my test-strategy skill (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that."
+    "text": "Look at everything in my memory, my ADRs (if any), and any skills I've authored. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
+    "requires": [
+      {
+        "id": "gap-audit-report",
+        "source": "prompt:walk-and-send-off-2"
+      },
+      {
+        "id": "memory-folder",
+        "source": "module:run-the-first-experiment"
+      },
+      {
+        "id": "stride-adr",
+        "source": "prompt:threat-model-with-stride-3",
+        "conditional": "m3-completed"
+      },
+      {
+        "id": "test-strategy-skill",
+        "source": "prompt:author-test-strategy-skill-1",
+        "conditional": "m3-completed"
+      }
+    ],
+    "produces": [
+      {
+        "id": "three-block-frame",
+        "location": "scrollback (Huryn frame recognition with quoted examples)",
+        "consumed-by": [],
+        "note": "pedagogical artefact — the frame names what's there but doesn't itself flow into the M4 send-off; the underlying memory/ADRs/skills do"
+      }
+    ]
   },
   "when-a-plan-is-good-1": {
     "key": "when-a-plan-is-good-1",

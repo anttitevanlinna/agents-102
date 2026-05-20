@@ -3,6 +3,21 @@ key: diagnose-and-resend-2
 dest: Claude Code
 runtime: any
 origin: exercises/diagnose-and-resend
+requires:
+  - id: m4-transcript-path
+    source: prompt:diagnose-and-resend-1
+  - id: un-packaged-run-artefact
+    source: prompt:ae101-m4-take-task-end-to-end
+  - id: m4-session-transcript
+    source: prompt:ae101-m4-take-task-end-to-end
+  - id: m4-starting-point-sha
+    source: prompt:ae101-m4-commit-starting-point
+produces:
+  - id: three-failure-lens-read
+    location: scrollback (drift / context-rot / plausible-but-wrong + dominant failure named)
+    consumed-by:
+      - prompt:diagnose-and-resend-3
+      - prompt:diagnose-and-resend-4
 ---
 I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
 

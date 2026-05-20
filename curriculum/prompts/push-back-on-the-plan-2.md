@@ -3,6 +3,14 @@ key: push-back-on-the-plan-2
 dest: Claude Code
 runtime: any
 origin: exercises/push-back-on-the-plan
+requires:
+  - id: initial-plan
+    source: prompt:push-back-on-the-plan-1
+produces:
+  - id: revised-plan
+    location: plan file (in-place edit after 'lock it in')
+    consumed-by:
+      - prompt:push-back-on-the-plan-3
 ---
 Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree three at a time: dependencies, decisions, side-effects I haven't named.
 

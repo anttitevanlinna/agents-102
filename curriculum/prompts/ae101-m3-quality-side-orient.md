@@ -2,7 +2,11 @@
 key: ae101-m3-quality-side-orient
 dest: Claude Code
 runtime: any
-origin: agentic-engineering-101/earn-the-trust
+origin: exercises/open-the-side-quest
+requires:
+  - id: m3-quality-worktree
+    source: prompt:ae101-m3-fork-quality-side
+produces: []
 ---
 Confirm worktree state:
 

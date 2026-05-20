@@ -3,6 +3,19 @@ key: spot-gaps-build-the-loop-3
 dest: Claude Code
 runtime: any
 origin: exercises/spot-gaps-build-the-loop
+requires:
+  - id: two-run-gap-map
+    source: prompt:spot-gaps-build-the-loop-1
+  - id: test-strategy-skill
+    source: prompt:author-test-strategy-skill-1
+    conditional: m3-completed
+    note: referenced as authoring-pattern template
+produces:
+  - id: session-shaper-skill-draft
+    location: ~/.claude/skills/<student-named>/SKILL.md (personal, auto-discovered)
+    consumed-by:
+      - prompt:spot-gaps-build-the-loop-4
+      - prompt:spot-gaps-build-the-loop-5
 ---
 Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.
 

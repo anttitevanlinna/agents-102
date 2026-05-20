@@ -3,6 +3,15 @@ key: diagnose-and-resend-3
 dest: Claude Code
 runtime: any
 origin: exercises/diagnose-and-resend
+requires:
+  - id: three-failure-lens-read
+    source: prompt:diagnose-and-resend-2
+produces:
+  - id: validation-mapping
+    location: scrollback (each failure mapped to re-readable-spec / working-doc / automated-check)
+    consumed-by:
+      - prompt:diagnose-and-resend-4
+      - prompt:diagnose-and-resend-6
 ---
 For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?
 

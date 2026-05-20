@@ -3,6 +3,14 @@ key: fix-tests-first-1
 dest: Claude Code
 runtime: any
 origin: exercises/fix-tests-first
+requires:
+  - id: picked-bug
+    source: prompt:ae101-prework-extract-and-install
+produces:
+  - id: first-pass-tdd-diff
+    location: git working tree (uncommitted changes from first-pass TDD)
+    consumed-by:
+      - prompt:fix-tests-first-2
 ---
 Find the root cause of this bug by writing the tests that would reveal it. Run the tests and confirm they fail the way you'd expect. Then fix the root cause, not the symptom. Run the tests again. Show me the diff before you commit.
 

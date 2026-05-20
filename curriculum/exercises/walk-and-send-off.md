@@ -144,7 +144,7 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 - **Phase 1 >15 min** — task is too big. Force a slice.
 - **Phase 2 audit >15 min** — Claude returned too much. Re-run with ranked-top-5 enforcement.
 - **Phase 2 fill short (<15 min)** — student accepted Claude's drafts without push-back. Nerd prompts for a codebase-specific correction on at least one fill.
-- **Phase 3 <10 min** — frame didn't land. Diagnostic: did Claude quote student's OWN ADR as Block 2? If not, redo.
+- **Phase 3 <10 min** — frame didn't land. Diagnostic: did Claude quote student's OWN recorded decision (ADR if they have one, otherwise a CLAUDE.md design note or commit message) as Block 2? If not, redo.
 - **Whole-room mood below 7** — curious readiness isn't landing. Check Phase 1: real task or compliance task? Task-selection is where this mood starts or dies.
 
 **Send-off mechanism (Debrief step 3):**

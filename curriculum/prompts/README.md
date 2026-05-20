@@ -39,13 +39,30 @@ Then list the top-level entries so I can see the layout.
 
 ### Frontmatter fields
 
+**Core rendering fields** (consumed by the renderer at expansion time):
+
 | field | required | values | meaning |
 |---|---|---|---|
 | `key` | yes | kebab-case | stable identifier; matches filename |
 | `dest` | no | `Claude Code` (default), `Cowork`, `Builder Claude`, custom string | destination chip in rendered header |
 | `context` | no | string | em-paren note after dest (e.g. `optional`, `final move of the module`) |
 | `runtime` | no | `any` (default), `cli`, `cowork`, `desktop` | informational; future runtime-fork wrapping |
-| `origin` | no | `<training>/<file>` | documentation only; helps grep |
+| `origin` | no | `<training>/<file>` or `exercises/<slug>` | must match the file where the `{{prompt:<key>}}` marker actually lives; helps grep + keeps the back-reference honest |
+
+**Dependency-graph fields** (passed through to `prompts.json`; consumed by audit / lint scripts; inert at the renderer today):
+
+| field | required | values | meaning |
+|---|---|---|---|
+| `requires` | no | list of `{id, source, conditional?}` | artefacts this prompt depends on. `source` is `prompt:<key>`, `module:<slug>`, `scrollback (...)`, or `external`. `conditional` flags order-dependent existence (e.g. `m3-completed`) |
+| `produces` | no | list of `{id, location, consumed-by?, conditional?, note?}` | artefacts this prompt creates. `id` matches downstream `requires.id` for graph reconciliation. `location` is a filesystem path or `scrollback`. `consumed-by` is a forward index of `prompt:<key>` / `module:<slug>` references |
+| `opportunistic-copy` | no | list of `{id, if-present-at, rationale}` | artefacts the prompt uses *if present* and no-ops on if absent. Different from `requires`: handled gracefully in the prompt body |
+| `opportunistic-copy-by` | no | list of prompt refs (sibling of `consumed-by`) | added to a producer's `produces` entry to forward-index opportunistic copiers |
+| `anchors` | no | list of `{move, span}` | reserved for future prompt-anatomy highlights; passed through to `prompts.json` but not rendered today. `move` is a move-catalog id, `span` is the verbatim quoted clause (see `curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md`) |
+| `note` | no | string | informal carve-out / context; readable inline alongside the structured fields |
+
+**Linter:** every `requires.id` with `source: prompt:<key>` must resolve to a real producer; every `consumed-by` reference must match a downstream `requires.id`. Run with `python3` over the corpus; see `/Users/anttitevanlinna/Projects/agents-102` for the inline check script (no dedicated binary yet).
+
+**Gate behaviour:** edits to dependency-graph fields (between the leading `---` markers) are NOT card-gated per `check_prompts.md` rule 22; frontmatter is metadata, the prompt body is the student-pasted content. See `.claude/hooks/prompt-edit-gate.sh` for the region-aware enforcement.
 
 ### Body
 

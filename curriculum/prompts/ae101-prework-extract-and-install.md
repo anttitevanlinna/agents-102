@@ -3,6 +3,28 @@ key: ae101-prework-extract-and-install
 dest: Claude Code
 runtime: any
 origin: agentic-engineering-101/prework
+requires:
+  - id: ae101-content-tarball
+    source: prompt:ae101-prework-download-tarball
+  - id: candidate-bugs
+    source: scrollback (student names three trivial-and-visible candidates at Step 4)
+produces:
+  - id: ae101-content-dir
+    location: ~/Documents/ae101-content/ (or sponsor-stated path)
+    consumed-by:
+      - module:getting-going
+  - id: stride-skill
+    location: ~/.claude/skills/stride/SKILL.md
+    consumed-by:
+      - prompt:threat-model-with-stride-1
+  - id: access-control-analysis-skill
+    location: ~/.claude/skills/access-control-analysis/SKILL.md
+    consumed-by:
+      - prompt:map-the-access-surface-2
+  - id: picked-bug
+    location: scrollback (student picks from screened candidates at Step 4-5)
+    consumed-by:
+      - prompt:fix-tests-first-1
 ---
 I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
 

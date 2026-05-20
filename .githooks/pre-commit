@@ -32,6 +32,46 @@ if [ -z "$staged" ]; then
     exit 0
 fi
 
+# Region check (added 2026-05-18): per check_prompts.md rule 22 + rule 26 carve-out,
+# the gate applies to the BODY of the prompt (what students paste). Frontmatter
+# edits (between leading `---` markers) and maintainer-block edits (below
+# `<!-- maintainer -->`) are NOT gated. Compare the body region of each staged
+# prompt against HEAD; if no body region changed, skip confirmation.
+if command -v python3 >/dev/null 2>&1; then
+    body_changed=$(STAGED_FILES="$staged" python3 - <<'PYEOF'
+import os, re, subprocess, sys
+
+def body(content):
+    fm = re.match(r'^---\n.*?\n---\n', content, re.DOTALL)
+    fm_end = fm.end() if fm else 0
+    mb_idx = content.find("<!-- maintainer -->")
+    mb_start = mb_idx if mb_idx != -1 else len(content)
+    return content[fm_end:mb_start]
+
+staged = [f for f in os.environ.get("STAGED_FILES", "").splitlines() if f.strip()]
+
+for fp in staged:
+    try:
+        new = subprocess.check_output(["git", "show", f":{fp}"], text=True)
+    except subprocess.CalledProcessError:
+        # Couldn't read staged version (deleted file). Gate to be safe.
+        print(1); sys.exit(0)
+    try:
+        old = subprocess.check_output(["git", "show", f"HEAD:{fp}"], text=True, stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError:
+        # New file with no HEAD version. Gate.
+        print(1); sys.exit(0)
+    if body(old) != body(new):
+        print(1); sys.exit(0)
+
+print(0)
+PYEOF
+)
+    if [ "$body_changed" = "0" ]; then
+        exit 0
+    fi
+fi
+
 # Inform the human and require confirmation. Commit hooks run in a non-tty
 # context inside many GUIs / IDE clients — fall back to /dev/tty for the read.
 echo "──────────────────────────────────────────────────────────────────────"

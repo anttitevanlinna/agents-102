@@ -3,6 +3,34 @@ key: ae101-m3-sharpen-skill
 dest: Claude Code
 runtime: any
 origin: agentic-engineering-101/earn-the-trust
+requires:
+  - id: test-strategy-skill
+    source: prompt:author-test-strategy-skill-1
+  - id: access-surface-map
+    source: prompt:map-the-access-surface-2
+  - id: stride-adr
+    source: prompt:threat-model-with-stride-3
+  - id: test-strategy-output
+    source: prompt:author-test-strategy-skill-2
+  - id: claude-local-md
+    source: prompt:compound-and-close-1
+    conditional: m1-completed
+produces:
+  - id: test-strategy-skill
+    location: ~/.claude/skills/test-strategy/SKILL.md (in-place sharpening update)
+    consumed-by:
+      - prompt:walk-and-send-off-2
+      - prompt:walk-and-send-off-4
+      - prompt:diagnose-and-resend-6
+      - module:spot-gaps-build-the-loop
+  - id: claude-local-md
+    location: ./CLAUDE.local.md (in-place integration of security-working rules if a rule earned itself)
+    conditional: rule-earned-itself
+    consumed-by:
+      - prompt:walk-and-send-off-2
+      - prompt:diagnose-and-resend-6
+      - prompt:spot-gaps-build-the-loop-2
+      - prompt:arc-retrospective-1
 ---
 Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange.
 

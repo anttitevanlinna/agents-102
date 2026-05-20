@@ -3,6 +3,37 @@ key: arc-retrospective-1
 dest: Claude Code
 runtime: any
 origin: exercises/arc-retrospective
+requires:
+  - id: claude-local-md
+    source: prompt:compound-and-close-1
+    conditional: m1-completed
+  - id: memory-folder
+    source: module:run-the-first-experiment
+    conditional: m4-completed
+  - id: stride-adr
+    source: prompt:threat-model-with-stride-3
+    conditional: m3-completed
+  - id: test-strategy-skill
+    source: prompt:author-test-strategy-skill-1
+    conditional: m3-completed
+  - id: second-authored-skill
+    source: prompt:spot-gaps-build-the-loop-5
+  - id: un-packaged-run-artefact
+    source: prompt:ae101-m4-take-task-end-to-end
+  - id: m4-session-transcript
+    source: prompt:ae101-m4-take-task-end-to-end
+  - id: packaged-run-artefact
+    source: prompt:ae101-m5-rerun-packaged
+  - id: m5-session-transcript
+    source: prompt:ae101-m5-rerun-packaged
+  - id: stale-rule-cut
+    source: prompt:spot-gaps-build-the-loop-2
+    conditional: rule-earned-cutting
+produces:
+  - id: arc-retrospective-note
+    location: student-picked (ADR, .claude/memory/ memo, or standalone file)
+    consumed-by: []
+    note: terminal artefact — closes the M1-M6 arc
 ---
 Read my work across this repo. Specifically:
 

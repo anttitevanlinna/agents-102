@@ -3,6 +3,16 @@ key: spot-gaps-build-the-loop-4
 dest: Claude Code
 runtime: any
 origin: exercises/spot-gaps-build-the-loop
+requires:
+  - id: session-shaper-skill-draft
+    source: prompt:spot-gaps-build-the-loop-3
+  - id: two-run-gap-map
+    source: prompt:spot-gaps-build-the-loop-1
+produces:
+  - id: skill-self-critique
+    location: scrollback (named weak parts before shipping)
+    consumed-by:
+      - prompt:spot-gaps-build-the-loop-5
 ---
 Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:
 

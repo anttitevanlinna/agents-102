@@ -3,12 +3,40 @@ key: diagnose-and-resend-6
 dest: Claude Code
 runtime: any
 origin: exercises/diagnose-and-resend
+requires:
+  - id: validation-mapping
+    source: prompt:diagnose-and-resend-3
+  - id: verifier
+    source: prompt:diagnose-and-resend-4
+  - id: claude-local-md
+    source: prompt:compound-and-close-1
+    conditional: m1-completed
+  - id: stride-adr
+    source: prompt:threat-model-with-stride-3
+    conditional: m3-completed
+  - id: test-strategy-skill
+    source: prompt:author-test-strategy-skill-1
+    conditional: m3-completed
+  - id: memory-folder
+    source: module:run-the-first-experiment
+    conditional: m4-completed
+produces:
+  - id: reference-artefact
+    location: task-local file at worktree (path Claude proposes)
+    consumed-by:
+      - prompt:ae101-m5-rerun-packaged
+      - prompt:spot-gaps-build-the-loop-1
+  - id: plan-md
+    location: plan.md (at worktree root, next to reference)
+    consumed-by:
+      - prompt:ae101-m5-rerun-packaged
+      - prompt:spot-gaps-build-the-loop-1
 ---
 Build me two task-scoped artefacts for re-running the un-packaged task packaged.
 
 First, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:
 - The task scope and success criteria, in two or three sentences
-- Pointers to the memory pages, ADRs, skills, and connectors most relevant to THIS task
+- Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task
 - The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)
 - **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
 - A "done means" line — what the agent should produce that signals task completion (tests green + requirements met)

@@ -3,6 +3,29 @@ key: spot-gaps-build-the-loop-1
 dest: Claude Code
 runtime: any
 origin: exercises/spot-gaps-build-the-loop
+requires:
+  - id: un-packaged-run-artefact
+    source: prompt:ae101-m4-take-task-end-to-end
+  - id: m4-session-transcript
+    source: prompt:ae101-m4-take-task-end-to-end
+  - id: packaged-run-artefact
+    source: prompt:ae101-m5-rerun-packaged
+  - id: m5-session-transcript
+    source: prompt:ae101-m5-rerun-packaged
+  - id: reference-artefact
+    source: prompt:diagnose-and-resend-6
+  - id: plan-md
+    source: prompt:diagnose-and-resend-6
+  - id: verifier
+    source: prompt:diagnose-and-resend-4
+  - id: run-notes
+    source: prompt:ae101-m5-rerun-packaged
+produces:
+  - id: two-run-gap-map
+    location: scrollback (ranked gap list with quoted moments + dominant gap)
+    consumed-by:
+      - prompt:spot-gaps-build-the-loop-2
+      - prompt:spot-gaps-build-the-loop-3
 ---
 I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep 'm4/'`); the packaged re-run is on a branch starting with `m5/` (run `git branch -a | grep 'm5/'`). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.
 

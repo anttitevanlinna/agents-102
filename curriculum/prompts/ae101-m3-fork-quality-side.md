@@ -2,7 +2,21 @@
 key: ae101-m3-fork-quality-side
 dest: Claude Code
 runtime: any
-origin: agentic-engineering-101/earn-the-trust
+origin: exercises/open-the-side-quest
+requires: []
+produces:
+  - id: m3-quality-worktree
+    location: ../<repo-name>-m3-quality/
+    consumed-by:
+      - prompt:ae101-m3-quality-side-orient
+    note: also serves as cwd for every other M3 prompt (environmental, not formally required)
+opportunistic-copy:
+  - id: claude-local-md
+    if-present-at: ./CLAUDE.local.md
+    rationale: born at M1's compound-and-close-1; copied if M1 ran
+  - id: memory-folder
+    if-present-at: ./.claude/memory/
+    rationale: born at M4's walk-and-send-off Phase 2; copied if M4 ran (reorder order) — prompt body's "(if exists)" handles absence gracefully
 ---
 Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:
 

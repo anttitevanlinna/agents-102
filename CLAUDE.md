@@ -67,6 +67,7 @@ When a task spans many files (audits, research runs, bulk edits), preserve main-
 3. **Subagents write, not talk.** Structured output to disk. Main thread reads only summary files, not source files.
 4. **Synthesize from summaries.** After agents complete, main thread reads small structured output files and synthesizes a single verdict for the user.
 5. **Launch all agents in one message** to maximize parallelism. Use `run_in_background: true` so the main thread stays responsive.
+6. **Validate sweep output at apply time.** When the orchestrator pattern includes a sweep step that produces structured data for downstream bulk-apply (`requires:`/`produces:` frontmatter, source-type labels, file-renames, etc.), validate each item at the apply-time Read before the corresponding Edit. Explore agents infer from file paths, names, and selective body reads; they don't read every body. Catch the inference errors as you go, not after the bulk-apply lands. The Edit tool's "Read first" rule is the natural validation point — turn it into the validation step. Canonical source: `memory/compounded/2026-05-18-platform-explore-sweep-validate-each-at-apply-time.md`.
 
 ## Self-Review Protocol
 

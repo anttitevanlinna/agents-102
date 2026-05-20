@@ -11,6 +11,23 @@
 //   context: optional           # optional, becomes em-paren note after dest
 //   runtime: any                # any | cli | cowork | desktop (informational)
 //   origin: agents-101/prework  # documentation-only; helps grep
+//   requires:                   # optional; artefacts this prompt depends on
+//     - id: <stable-id>
+//       source: prompt:<key> | module:<slug> | scrollback (...) | external
+//       conditional: <flag>     # optional, e.g. m3-completed
+//   produces:                   # optional; artefacts this prompt creates
+//     - id: <stable-id>
+//       location: <path or scrollback>
+//       consumed-by:            # optional, forward index
+//         - prompt:<key>
+//   opportunistic-copy:         # optional; uses-if-present, no-ops if absent
+//     - id: <stable-id>
+//       if-present-at: <path>
+//       rationale: <one line>
+//   anchors:                    # optional; future prompt-anatomy highlight metadata
+//     - move: <move-name>
+//       span: <quoted clause>
+//   note: <one-liner>           # optional; informal carve-out / context
 //   ---
 //   <prompt body — what the student copies>
 //
@@ -50,7 +67,7 @@ function loadRegistry(promptsDir) {
     }
     const text = parsed.body.replace(/^\n+/, '').replace(/\n+$/, '');
     if (!text) throw new Error(`${file}: prompt body is empty`);
-    registry[key] = {
+    const entry = {
       key: key,
       dest: meta.dest || 'Claude Code',
       context: meta.context || '',
@@ -58,6 +75,16 @@ function loadRegistry(promptsDir) {
       origin: meta.origin || '',
       text: text
     };
+    // Pass through metadata fields when present. Inert at the SPA layer today
+    // (renderer uses dest/context/text only) but consumed by:
+    //   - lint / audit scripts that walk the dependency graph
+    //   - future prompt-anatomy highlight tooling (anchors)
+    //   - downstream tooling that needs to find producers / consumers by id
+    // Keep these optional; absence is normal for short / supplementary prompts.
+    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'note']) {
+      if (meta[field] !== undefined) entry[field] = meta[field];
+    }
+    registry[key] = entry;
   }
   return registry;
 }

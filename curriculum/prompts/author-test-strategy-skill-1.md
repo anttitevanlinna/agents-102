@@ -3,6 +3,21 @@ key: author-test-strategy-skill-1
 dest: Claude Code
 runtime: any
 origin: exercises/author-test-strategy-skill
+requires:
+  - id: feature-being-shipped
+    source: scrollback (student input at M3 Connections)
+  - id: stride-adr
+    source: prompt:threat-model-with-stride-3
+    conditional: m3-stride-completed
+produces:
+  - id: test-strategy-skill
+    location: ~/.claude/skills/test-strategy/SKILL.md
+    consumed-by:
+      - prompt:author-test-strategy-skill-2
+      - prompt:walk-and-send-off-2
+      - prompt:walk-and-send-off-4
+      - prompt:diagnose-and-resend-6
+      - module:spot-gaps-build-the-loop
 ---
 I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.
 

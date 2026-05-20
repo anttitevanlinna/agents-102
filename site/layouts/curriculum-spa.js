@@ -26,6 +26,19 @@
         .then(function (json) { PROMPT_REGISTRY = json; })
         .catch(function () { PROMPT_REGISTRY = {}; });
 
+    // Anatomy data — prompt-anatomy.md entries compiled to JSON by
+    // scripts/compile-anatomy.js. Populates window.__ANATOMY so the runtime's
+    // click-popup on .prompt-anchor can surface entries by slug. Built workbook
+    // inlines this at build time; SPA fetches on boot. Failure mode is silent:
+    // no anatomy data → anchors still render with their dotted underline, click
+    // shows nothing. Acceptable degradation for a reference-page-driven feature.
+    if (!window.__ANATOMY) {
+        fetch('anatomy.json')
+            .then(function (res) { return res.ok ? res.json() : {}; })
+            .then(function (json) { window.__ANATOMY = json; })
+            .catch(function () { window.__ANATOMY = {}; });
+    }
+
     // Fill the legal footer from shared source.
     (function () {
         var mount = document.getElementById('curriculum-footer-mount');
@@ -147,6 +160,7 @@
                 container.innerHTML = marked.parse(md);
                 CurriculumRuntime.decorateSessions(container);
                 CurriculumRuntime.decoratePrompts(container);
+                CurriculumRuntime.attachAnchorPopups(document.body);
                 var h1 = container.querySelector('h1');
                 document.title = (h1 ? h1.textContent : fallbackTitle) + ' — Agents 102';
                 if (typeof mod !== 'undefined' && mod) buildModuleHero(mod);

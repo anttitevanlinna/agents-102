@@ -1,0 +1,158 @@
+{
+  "input-binding-by-path": {
+    "title": "Input-binding by path",
+    "html": "<p><strong>Names the exact file the agent should read. Five characters of insurance against an invisible failure.</strong> The agent will guess a path that exists (a near-neighbour, a stale version, the one it cached three sessions ago) and you won&#39;t catch it because the output reads plausible. The bug doesn&#39;t announce itself. The prompt seems to work. The answer is wrong about a different file. Precision early beats wandering later.</p>\n<p><em>&quot;Read the test-strategy skill file at <code>~/.claude/skills/test-strategy/SKILL.md</code>.&quot;</em></p>\n"
+  },
+  "primed-context-list": {
+    "title": "Primed context list",
+    "html": "<p><strong>Names which moments of scrollback to weight. Not <em>everything</em>, which yields an averaged read.</strong> <em>Read the scrollback</em> returns the polite median. <em>Read these four beats</em> returns evidence. Without the list, the agent samples broadly and treats every moment as equally important, which means none of them is. The list is a weighting function dressed as a sentence.</p>\n<p><em>&quot;Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange.&quot;</em></p>\n"
+  },
+  "open-hook": {
+    "title": "Open hook",
+    "html": "<p><strong>The prompt ends with a colon. You paste your input after, all inside one fenced block.</strong> You have the value more concretely than Claude does: a bug you live with, a feature you own, a delta only you noticed. The hook lets you supply it without a <em>paste this into chat, then describe your bug</em> dance. Pasting and typing in one go is the kind of small ergonomic that adds up over a training week.</p>\n<p><em>&quot;The surface the skill called out harder than I would have:&quot;</em></p>\n"
+  },
+  "sealed-context": {
+    "title": "Sealed context",
+    "html": "<p><strong>Names what Claude has to work with, then closes the door against fabrication.</strong> <em>That&#39;s everything you have</em> tells the agent: missing context is a fact about the world, not a permission to invent. You also get one line you can audit against later: <em>did the agent stay inside the seal, or did something quietly leak in?</em> The seal is most valuable on long-running prompts where you won&#39;t be there to push back. The negative form (a hard blacklist naming files the agent must NOT read) is the same move from the other side: when the run has to stay independent of a prior artifact, blocking the read is the seal.</p>\n<p><em>&quot;Work from the rules I&#39;ve set up (<code>CLAUDE.md</code> team and <code>CLAUDE.local.md</code> personal both load automatically), plus the memory at <code>.claude/memory/</code>, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.&quot;</em></p>\n<p><em>&quot;The subagent must NOT read: <code>module-5/briefing.md</code>, <code>module-5/claim-pool.md</code>, <code>module-5/scoreboard.md</code>, anything in <code>module-5/detectors/</code>.&quot;</em></p>\n"
+  },
+  "singular-target": {
+    "title": "Singular target",
+    "html": "<p><strong>Names <em>one</em> of the thing, not <em>some</em> of the thing.</strong> <em>Find sections that underdelivered</em> returns a polite tour. <em>Find the one section</em> returns a commitment. People given options pick the easiest. Constrained to one, they argue with themselves until the choice is defensible. The argument is where the value comes from, not the answer.</p>\n<p><em>&quot;First: find the one section of the skill where invocation evidence shows it underdelivered.&quot;</em></p>\n"
+  },
+  "disambiguation-criteria": {
+    "title": "Disambiguation criteria",
+    "html": "<p><strong>A parenthetical naming the concrete shapes that count as the target.</strong> Words like <em>underdelivered</em>, <em>thin</em>, <em>load-bearing</em> are vague. Three concrete shapes in a parenthetical give the agent (and you, reading after) a way to recognise the answer. Without criteria, the fuzzy adjective collapses to <em>could be better</em>, which is true of everything and useful for nothing.</p>\n<p><em>&quot;(a convention the skill claims that the invocation didn&#39;t enforce, a codebase-specific failure mode the skill missed, an assumption the invocation had to correct)&quot;</em></p>\n"
+  },
+  "earnable-threshold": {
+    "title": "Earnable threshold",
+    "html": "<p><strong>Names a condition under which the work happens, and names refusal as a valid outcome.</strong> Most sessions don&#39;t produce a durable rule, a ship-worthy artifact, or a team-PR candidate. Without a threshold word, the prompt reads as a request and the agent fulfils it whether or not the work is there to do. <em>If one earned itself</em> invites <em>no</em> as a first-class answer. Pair with <strong>null-case escape</strong> to give <em>no</em> somewhere to go.</p>\n<p><em>&quot;If one branch from this session sharpened how plans get made in this codebase, write the rule into <code>./CLAUDE.local.md</code>.&quot;</em></p>\n"
+  },
+  "bounded-count": {
+    "title": "Bounded count",
+    "html": "<p><strong>Caps the number of items the agent returns. Usually three, five, or ten.</strong> <em>List issues</em> returns nine. <em>Ranked top five</em> returns five with judgment about which mattered more. The cap is also a covert quality test. If the agent can&#39;t fill five, the question was over-asked. If it spills into nine, the bar was too low. You learn something about the work whichever way it lands.</p>\n<p><em>&quot;Return a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools…&quot;</em></p>\n"
+  },
+  "bounded-format": {
+    "title": "Bounded format",
+    "html": "<p><strong>Caps the size and shape of the response. <em>Two or three lines each. One paragraph. One diff.</em></strong> <em>Show me the diff</em> returns 40 lines no one reads. <em>Before and after, two lines each</em> returns something a human scans in five seconds. The bound also reveals when the change was cosmetic: if the agent can&#39;t pick three load-bearing lines, you&#39;ve discovered the edit didn&#39;t earn its diff without doing extra work.</p>\n<p><em>&quot;Show me before and after, two or three lines each.&quot;</em></p>\n"
+  },
+  "anti-pattern-guard": {
+    "title": "Anti-pattern guard",
+    "html": "<p><strong>Names the wrong shape of output explicitly so the agent doesn&#39;t default to it.</strong> Claude has well-rehearsed defaults: appending a <em>Critique</em> heading rather than rewriting, adding a <em>Brand voice</em> section rather than voice-shaping every paragraph, ending plans with <em>would you like me to proceed?</em> Naming the failure mode out loud is the cheapest way to prevent it. Sometimes the only way.</p>\n<p><em>&quot;Do not append a critique addendum.&quot;</em></p>\n"
+  },
+  "integration-mode": {
+    "title": "Integration mode",
+    "html": "<p><strong>Names whether the new input rewrites <em>through</em> the existing artifact or <em>adds a new section</em> to it.</strong> Without specification, the agent appends, and you end up with a <em>Brand voice</em> section instead of a voice-shaped homepage. <em>Integrate, not append</em> tells it the new input reshapes the whole. <em>Add as a new section titled X</em> tells it the opposite. No middle ground. The unspoken default is always <em>append</em>.</p>\n<p><em>&quot;…integrate it into <code>./CLAUDE.local.md</code> (integrate, don&#39;t append; personal file, not team <code>./CLAUDE.md</code>).&quot;</em></p>\n"
+  },
+  "sequencing-signal": {
+    "title": "Sequencing signal",
+    "html": "<p><strong>Words like <em>first / then / before / after / separately</em> break the prompt into ordered moves.</strong> Without the sequence, the agent merges adjacent moves into one wall of output and the boundary between two judgments dissolves. <em>Then, separately</em> does surprising labor. It tells the agent <em>two artifacts, two before/afters, two places to push back.</em> Punctuation marks a thinking pause. Sequencing words mark a working pause.</p>\n<p><em>&quot;First: find the one section… Then, separately: if one rule about how I worked with security skills… earned itself…&quot;</em></p>\n"
+  },
+  "post-action-report": {
+    "title": "Post-action report",
+    "html": "<p><strong>Asks the agent to tell you what it did <em>after</em> doing it, rather than show you what it&#39;ll do before.</strong> Pre-confirm adds a round-trip. You steer hypotheticals. Post-action report fires your push-back after the action lands, against real evidence. It also surfaces what the agent <em>couldn&#39;t</em> do: <em>I updated the ticket but I don&#39;t have a PR link</em> arrives as candid accounting instead of fabrication. Carve-out: for irreversible actions (deploys, mass sends), keep the pre-confirm.</p>\n<p><em>&quot;Tell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn&#39;t need to open the file to know.&quot;</em></p>\n"
+  },
+  "dont-smooth-disagreement": {
+    "title": "Don't smooth disagreement",
+    "html": "<p><strong>When synthesizing multiple sources or runs, name where they disagreed, and which one you sided with.</strong> Default agent behavior is to harmonize. Take three contradictory inputs and produce one diplomatic output that loses the information. <em>Don&#39;t smooth the disagreement</em> keeps the dissent visible. The agreement points are easy. The disagreement points are where the real strategic call lives. If a synthesis reads as if everyone agreed, the synthesis was a lie.</p>\n<p><em>&quot;Name where the three stances disagreed and which one you sided with and why; don&#39;t smooth the disagreement.&quot;</em></p>\n"
+  },
+  "append-only-collaboration": {
+    "title": "Append-only collaboration",
+    "html": "<p><strong>When multiple processes share state via files, write append-only. Never overwrite earlier findings.</strong> Streaming append unlocks parallel work: another session can read the file while this one writes to it, finding-by-finding. Overwrites in shared state are how concurrent agents step on each other&#39;s outputs and produce nothing usable. The discipline matters most when work is split across sessions or runs.</p>\n<p><em>&quot;Append each finding to <code>sources/wiki-retrieval.md</code> as soon as you have it… Never overwrite earlier findings.&quot;</em></p>\n"
+  },
+  "no-summarize-completion": {
+    "title": "No-summarize completion",
+    "html": "<p><strong>When the eval has to be honest, tell the agent not to summarize the artifact in chat after writing it.</strong> A summary spoils the read. If you (or the next agent) are about to evaluate the briefing without bias, the briefing&#39;s content must not leak into context. <em>Only confirm that the file exists.</em> The agent&#39;s instinct to recap is the default. The discipline of suppressing it is the move.</p>\n<p><em>&quot;When the subagent finishes, do not summarize the briefing in chat. Only confirm that <code>module-5/briefing.md</code> exists.&quot;</em></p>\n"
+  },
+  "skill-by-name": {
+    "title": "Skill by name",
+    "html": "<p><strong>Invokes a Claude Code Skill by its registered short name.</strong> Skills register at install time and Claude addresses them by name: <code>access-control-analysis</code>, <code>stride</code>, <code>test-strategy</code>. The folder where <code>SKILL.md</code> lives is install-time infrastructure; quoting it inside an invocation prompt is bookkeeping the agent doesn&#39;t read. If the skill isn&#39;t installed yet, the fix is to install it (a separate prework step), not to point at a path.</p>\n<p><em>&quot;Invoke the access-control-analysis skill on the feature I&#39;ll name.&quot;</em></p>\n"
+  },
+  "subagent-isolation": {
+    "title": "Subagent isolation",
+    "html": "<p><strong>Dispatches a sub-task into a fresh context so the breadth doesn&#39;t flood the main thread.</strong> A six-category STRIDE report inside your main conversation pushes everything else off-screen. The subagent reads, processes, returns a structured summary. Your main thread stays scannable for steering. Useful when the sub-task does breadth (audits, sweeps, parallel reads) and you want the main thread for judgment.</p>\n<p><em>&quot;Run it in a subagent so the six-category output doesn&#39;t flood this thread.&quot;</em></p>\n"
+  },
+  "parallel-stance-dispatch": {
+    "title": "Parallel-stance dispatch",
+    "html": "<p><strong>Spawn N subagents in parallel, each with a <em>different</em> named stance or framing.</strong> The independence is what makes the method work. Three agents given the same prompt produce three indistinguishable answers, and you&#39;ve burned three times the tokens for nothing. Three agents told <em>plan backward, test assumptions, find the reframe</em> produce divergent reads that you can then triangulate. The variance is the signal. The named stances are what create the variance.</p>\n<p><em>&quot;Spawn three subagents in parallel, each with a different stance. Subagent 1: Backward-from-end planner. Subagent 2: Assumption experimenter. Subagent 3: Counterintuitive reframer.&quot;</em></p>\n"
+  },
+  "preamble-suppressor": {
+    "title": "Preamble suppressor",
+    "html": "<p><strong>Tells the agent to skip its <em>I&#39;ll now read X and propose…</em> narration and lead with the artifact.</strong> Claude defaults to two-to-four sentences of preamble before producing anything. Plan mode is the worst case: the highest-attention slot at the top of the response, the only lines a skimmer reads, gets eaten by narration. <em>No preamble. Lead with the diff</em> doesn&#39;t kill the habit but bites it down to something you can skim past. Pair with a body primer naming where to look on the page.</p>\n<p><em>&quot;No preamble. Start with the SHA.&quot;</em></p>\n"
+  },
+  "research-before-ask": {
+    "title": "Research before ask",
+    "html": "<p><strong>Permits the agent to read the codebase rather than escalating a question to you.</strong> By default, agents ask. Every uncertain branch becomes a question to the human, and ten of those is a tax on your day. <em>If a question can be answered by reading the codebase, read the codebase</em> shifts the failure mode from over-questioning to under-questioning. That&#39;s the better failure mode once you&#39;ve named the rest of the inputs cleanly.</p>\n<p><em>&quot;If a question can be answered by reading the codebase, read the codebase instead of asking me.&quot;</em></p>\n"
+  },
+  "fail-loud-not-fabricate": {
+    "title": "Fail loud, not fabricate",
+    "html": "<p><strong>Tells the agent to surface a stuck state rather than invent a way forward.</strong> Agents default to producing <em>something</em>. Without an explicit fail-loud instruction, a stuck agent fabricates a plausible-looking continuation, and you don&#39;t notice because the output reads competent. <em>Write what you tried and why it didn&#39;t work</em> gives the agent somewhere to go besides invention. The instinct most worth installing in any engineer is the same one.</p>\n<p><em>&quot;If you get stuck, write what you tried and why it didn&#39;t work rather than inventing a way forward.&quot;</em></p>\n"
+  },
+  "iteration-lock-in": {
+    "title": "Iteration lock-in",
+    "html": "<p><strong>Separates the conversation about the artifact from the writing of the artifact.</strong> <em>Don&#39;t touch the file until I say &#39;lock it in.&#39;</em> Without the lock-in, the agent rewrites the file after every turn of dialog. Each rewrite costs 30+ seconds, tokens you didn&#39;t budget, and the conversation crawls. With the lock-in, dialog is cheap and the write happens once on your trigger. The phrase <em>lock it in</em> is the line between iteration and persistence.</p>\n<p><em>&quot;Don&#39;t touch the plan file until I say &#39;lock it in.&#39; When you do edit the plan, use Edit on the changed section, not Write on the whole file.&quot;</em></p>\n"
+  },
+  "batched-not-dumped": {
+    "title": "Batched, not dumped",
+    "html": "<p><strong>Caps how many questions the agent asks per turn. Usually one, sometimes three.</strong> Asked for <em>the questions you need to encode the skill,</em> the agent posts a seven-question list and you answer two before drifting. <em>Ask one at a time</em> installs conversational rhythm. <em>Three at a time</em> trades some rhythm for batch efficiency. Pick by how exploratory the dialog is. Either beats the form-filling default.</p>\n<p><em>&quot;Ask one question, wait for my answer, then ask the next. Don&#39;t show me the next question until I&#39;ve answered the previous one.&quot;</em></p>\n"
+  },
+  "push-back-invitation": {
+    "title": "Push-back invitation",
+    "html": "<p><strong>Names the moment the agent should expect disagreement, and tells it not to soften.</strong> Default agent behavior is collaborative-leadership mode: every disagreement gets absorbed, every edge sanded smooth. <em>Push back when my answer is generic</em> gives the agent explicit permission to do the unflattering thing. Without that permission you get politeness. With it, you get pressure. Pressure is what produces the codebase-specific answer rather than the pyramid-shaped one.</p>\n<p><em>&quot;Push back when my answer is generic. A judge that says &#39;check if the output is good&#39; is useless.&quot;</em></p>\n"
+  },
+  "self-critique-register": {
+    "title": "Self-critique register",
+    "html": "<p><strong>Uses self-critique verbs (<em>re-read, audit, find what&#39;s still surface</em>). Never defense verbs (<em>defend, justify, prove</em>) when asking the agent to interrogate its own work.</strong> <em>Defend</em> primes Claude&#39;s helpful-advocate mode and produces rationalisations. <em>Find what&#39;s still surface</em> gives it explicit permission to find fault. Same content, opposite framings, opposite outputs. Defense surfaces excuses. Self-critique surfaces gaps.</p>\n<p><em>&quot;…ask the skill to disclose its weakest part before you ship.&quot;</em></p>\n"
+  },
+  "scope-guard": {
+    "title": "Scope guard",
+    "html": "<p><strong>Names which file the work writes to, with the opposite case named out loud.</strong> Agents don&#39;t intuitively distinguish personal-gitignored from team-PR-reviewed. <em>Personal file, not team <code>./CLAUDE.md</code></em> puts the boundary in front of the agent rather than expecting it to infer. The opposite-case clause is what makes the boundary work. It&#39;s the <em>not that</em> against the <em>this</em>. One without the other is half a guard.</p>\n<p><em>&quot;…integrate it into <code>./CLAUDE.local.md</code> (integrate, don&#39;t append; personal file, not team <code>./CLAUDE.md</code>).&quot;</em></p>\n"
+  },
+  "escalation-lane": {
+    "title": "Escalation lane",
+    "html": "<p><strong>Names the path team-worthy work takes. <em>Outside</em> the current session.</strong> Some rules belong on the team rules file. Agents don&#39;t unilaterally open PRs against shared infrastructure (and you don&#39;t want them to). The escalation lane gives the agent a verb, <em>flag</em>, that hands the work back to you for the human conversation that has to happen next. Flagging is the right verb. Committing would be the wrong one.</p>\n<p><em>&quot;If the rule is team-worthy, flag it in your summary so I can open a separate PR against <code>./CLAUDE.md</code> later.&quot;</em></p>\n"
+  },
+  "null-case-escape": {
+    "title": "Null-case escape",
+    "html": "<p><strong>Names <em>nothing happened</em> as a valid outcome. Probably the most important clause in any prompt.</strong> Without it, the agent fabricates a rule, a finding, or a recommendation rather than admit the session didn&#39;t produce one. The RLHF instinct to please runs deep. <em>Say so and skip</em> promotes refusal to a first-class output. A session that earned nothing and reports earning nothing is a healthier signal than a session that invented one to be helpful.</p>\n<p><em>&quot;If nothing earned itself, say so and skip the rules-file write.&quot;</em></p>\n"
+  },
+  "source-or-flag": {
+    "title": "Source-or-flag",
+    "html": "<p><strong>Every claim cites the file or page it came from. If you can&#39;t cite, mark <code>[NOT FOUND]</code> and don&#39;t fill from prior knowledge.</strong> Distinct from null-case escape, which is about whole-prompt refusal. This is about claim-level honesty inside a longer output. The agent&#39;s default is to fill gaps with plausible content from training data. The flag turns gaps into evidence the human can act on rather than hidden fabrication. <em>&quot;I can&#39;t tell&quot; is a better answer than a confident guess</em> is the same move from a different angle.</p>\n<p><em>&quot;Every finding cites the specific page title and URL you actually opened. If you can&#39;t find a source for a claim, write &#39;[NOT FOUND]&#39;, do not fill from prior knowledge.&quot;</em></p>\n"
+  },
+  "multi-result-fallback": {
+    "title": "Multi-result fallback",
+    "html": "<p><strong>When a grep or filter returns more than one match, names the disambiguation.</strong> <em>Find the branch starting with <code>m4/</code></em> assumes one. Reality: pushed branches show local plus remote-tracking, replays leave several <code>m4/</code>-prefixed branches, autonomous runs sometimes rewrite the commit message you were keying on. The fallback shape (<em>if multiple, pick the one whose log includes <marker>; if missing, ask me for the SHA</em>) is what makes the prompt survive real machine state.</p>\n<p><em>&quot;There may be more than one — a push leaves both <code>m4/&lt;slug&gt;</code> and <code>remotes/origin/m4/&lt;slug&gt;</code>, and a replay can leave several… Pick the one whose log includes the &#39;M4 starting point&#39; commit. If that commit message has been rewritten, ask me for the SHA.&quot;</em></p>\n"
+  },
+  "chain-back-reference": {
+    "title": "Chain back-reference",
+    "html": "<p><strong>Refers to an earlier artifact by both anchor (<em>the file you just created</em>) and path (<code>notes/X.md</code>).</strong> The anchor is for Claude. It recognises the conversational thread. The path is for replay. A fresh session reads the file by name. Together they survive both same-session continuity and cross-session resumption. Without either, a typo in a filename creates a silent second file and the chain breaks downstream.</p>\n<p><em>&quot;Invoke the test-strategy skill we just wrote on the feature I&#39;m shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.&quot;</em></p>\n"
+  },
+  "concreteness-forcing-function": {
+    "title": "Concreteness forcing function",
+    "html": "<p><strong>Names the moment, quotes the beat. Rules with evidence beat rules without.</strong> Rules abstracted from their origin become advice (<em>&quot;always run STRIDE before access-mapping&quot;</em>). Rules tied to a moment (<em>&quot;STRIDE returned six categories and I picked the wrong one because I hadn&#39;t read the access surface first&quot;</em>) carry their evidence with them. The quote is the proof the rule earned itself. Without it, anything can be smuggled in under the label <em>learned</em>.</p>\n<p><em>&quot;Name the moment, not the rule. Quote the specific session beat.&quot;</em></p>\n"
+  },
+  "the-compound-prompt": {
+    "title": "The Compound prompt",
+    "html": "<p><em>Singular target + scope guard + null-case escape.</em></p>\n<p>Fires at every module close. <em>If one rule earned itself, write it to <code>./CLAUDE.local.md</code> (personal, not team <code>./CLAUDE.md</code>). If nothing earned itself, say so and skip the write.</em> Pick one thing. Write to the right scope. Allow refusal. The third move is what keeps Compound candid. Without null-case escape, the agent invents a rule rather than admit a quiet session.</p>\n<p>Example: <code>ae101-m2-integrate-branch</code>, <code>compound-and-close-1</code>, <code>ae101-m3-sharpen-skill</code>.</p>\n"
+  },
+  "the-audit-prompt": {
+    "title": "The audit prompt",
+    "html": "<p><em>Sealed context + subagent isolation + bounded count.</em></p>\n<p>Fires whenever a prompt asks the agent to read a lot and return a little. <em>Read these inputs and no others, in a fresh subagent, return a ranked top five.</em> The seal blocks fabrication. The subagent keeps the main thread scannable. The cap drives prioritisation. Together they convert a wide read into a narrow report.</p>\n<p>Example: <code>walk-and-send-off-2</code>, the <code>diagnose-and-resend</code> family, the introspection moves in <code>orient-and-introspect</code>.</p>\n"
+  },
+  "the-walk-away-prompt": {
+    "title": "The walk-away prompt",
+    "html": "<p><em>Sealed context + fail-loud-not-fabricate + post-action report.</em></p>\n<p>Fires at long-running send-offs where you can&#39;t push back in real time. The prompt has to hold the agent candid across the gap on its own: name what&#39;s available, refuse fabrication when stuck, tell the truth on return. Three moves, all aimed at the same failure mode. The agent that produced <em>something</em> because it was asked to produce.</p>\n<p>Example: <code>ae101-m4-take-task-end-to-end</code>, <code>ae101-m5-rerun-packaged</code>.</p>\n"
+  },
+  "the-grill-before-save": {
+    "title": "The grill-before-save",
+    "html": "<p><em>Iteration lock-in + batched-not-dumped + push-back invitation.</em></p>\n<p>Fires when an artifact needs cross-examination before it persists. <em>Don&#39;t touch the file until I say &#39;lock it in.&#39; Ask three questions at a time. Push back when my answer is generic.</em> The lock-in protects the file. The batching keeps the dialog efficient. The push-back instruction tells the agent to drop the niceness tax.</p>\n<p>Example: <code>push-back-on-the-plan-2</code>, <code>diagnose-and-resend-6</code>.</p>\n"
+  },
+  "the-skill-author-conversation": {
+    "title": "The skill-author conversation",
+    "html": "<p><em>Batched-not-dumped + push-back invitation + scope guard.</em></p>\n<p>Fires when authoring a Claude Code skill from session evidence rather than from a template. <em>Ask one question at a time. Push back when my answer is generic. Save to <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>. Personal first, team PR later, separately.</em> The first two install the rhythm. The third names the ship destination so the agent doesn&#39;t quietly write to a team-shared path.</p>\n<p>Example: <code>author-test-strategy-skill-1</code>, <code>spot-gaps-build-the-loop-3</code>.</p>\n"
+  },
+  "the-multi-perspective-synthesis": {
+    "title": "The multi-perspective synthesis",
+    "html": "<p><em>Parallel-stance dispatch + don&#39;t smooth disagreement + source-or-flag.</em></p>\n<p>Fires when strategic questions need triangulation rather than a single answer. <em>Spawn three subagents with named stances. Read the three reads side by side. Name where they disagreed and which one you sided with. Cite every claim or mark <code>[NOT FOUND]</code>.</em> The Agents 101 backbone at M3. The three moves work as a unit: independent sampling, preserved dissent, sourced claims. Drop any one and the method collapses to elaborate-sounding self-confirmation.</p>\n<p>Example: <code>three-minds-one-synthesis-1</code>, <code>three-retrievers-one-curator-1</code>, <code>self-consistency-after-scoreboard-1</code>.</p>\n"
+  }
+}

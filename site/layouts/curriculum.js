@@ -63,7 +63,8 @@
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' },
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]
         },
         'claude-basics': {
@@ -231,11 +232,39 @@
     //   ```
     // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
     // following <pre>; this output is byte-equivalent to a hand-authored block.
+    // Sentinel pair using Mathematical White Square Brackets ⟦ ⟧ (U+27E6 / U+27E7).
+    // These survive markdown code-fence rendering and HTML escape unchanged
+    // (not in HTML special chars), and don't appear in any realistic prompt
+    // content — safer than ASCII-square-bracket sentinels which would collide
+    // with prompt blocks that quote markdown link syntax in the body. The
+    // decoratePrompts pass converts these to <span class="prompt-anchor"> at
+    // DOM time; the Copy button's textContent read passes through the span
+    // and lands the original prompt verbatim on the clipboard.
+    function injectAnchorSentinels(text, anchors) {
+        if (!anchors || !anchors.length) return text;
+        var out = text;
+        anchors.forEach(function (a) {
+            if (!a || !a.span || !a.move) return;
+            if (!/^[a-z0-9-]+$/.test(a.move)) return; // slug must be CSS-class-safe
+            var idx = out.indexOf(a.span);
+            if (idx < 0) return; // span no longer matches body — silent skip
+            out = out.slice(0, idx) +
+                  '⟦A:' + a.move + '⟧' +
+                  a.span +
+                  '⟦/A⟧' +
+                  out.slice(idx + a.span.length);
+        });
+        return out;
+    }
+
     function renderPromptBlock(entry) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        if (entry && entry.anchors && entry.anchors.length) {
+            text = injectAnchorSentinels(text, entry.anchors);
+        }
         var fence = '```\n' + text + '\n```';
         return label + '\n\n' + fence;
     }
@@ -452,6 +481,92 @@
         });
     }
 
+    // Convert ⟦A:slug⟧content⟦/A⟧ sentinels (planted by injectAnchorSentinels
+    // at prompt-expand time) into <span class="prompt-anchor" data-move="slug">
+    // wrappers in the rendered <pre><code>. Runs once per prompt block during
+    // decoratePrompts. The Copy button's textContent read sees through the
+    // span and copies the original prompt; visual treatment is CSS-driven.
+    var ANCHOR_SENTINEL_RE = /⟦A:([a-z0-9-]+)⟧([\s\S]*?)⟦\/A⟧/g;
+    function convertAnchorSentinels(pre) {
+        if (!pre) return;
+        var code = pre.querySelector('code') || pre;
+        var html = code.innerHTML;
+        if (html.indexOf('⟦A:') < 0) return;
+        var replaced = html.replace(ANCHOR_SENTINEL_RE, function (m, slug, content) {
+            return '<span class="prompt-anchor" data-move="' + slug + '">' + content + '</span>';
+        });
+        if (replaced !== html) code.innerHTML = replaced;
+    }
+
+    // Click handler on .prompt-anchor spans: look up the matching anatomy
+    // entry by data-move slug in window.__ANATOMY, render a popup card next
+    // to the anchor. One popup at a time; click another anchor → moves the
+    // popup; click outside → closes; Esc → closes. Idempotent installer:
+    // attaches one delegated click listener per root, guarded by a flag so
+    // re-renders don't double-bind. Silent no-op if anatomy data is missing.
+    function attachAnchorPopups(root) {
+        if (!root || root.__anchorPopupsBound) return;
+        root.__anchorPopupsBound = true;
+
+        var popup = null;
+        function close() {
+            if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+            popup = null;
+        }
+
+        function open(anchor) {
+            var slug = anchor.getAttribute('data-move');
+            if (!slug) return;
+            var data = (window.__ANATOMY || {})[slug];
+            if (!data) return;
+            close();
+            popup = document.createElement('div');
+            popup.className = 'prompt-anatomy-popup';
+            popup.innerHTML =
+                '<button class="prompt-anatomy-popup__close" type="button" aria-label="Close">×</button>' +
+                '<div class="prompt-anatomy-popup__kicker">Anatomy</div>' +
+                '<h3 class="prompt-anatomy-popup__title">' + esc(data.title) + '</h3>' +
+                '<div class="prompt-anatomy-popup__body">' + data.html + '</div>';
+            document.body.appendChild(popup);
+
+            // Position: prefer below + left-aligned with the anchor; clamp
+            // to viewport so the card never gets cut off on narrow windows.
+            var rect = anchor.getBoundingClientRect();
+            var popRect = popup.getBoundingClientRect();
+            var top = window.scrollY + rect.bottom + 8;
+            var left = window.scrollX + rect.left;
+            var maxLeft = window.scrollX + window.innerWidth - popRect.width - 20;
+            if (left > maxLeft) left = maxLeft;
+            if (left < window.scrollX + 20) left = window.scrollX + 20;
+            // If it'd run off the bottom of viewport, flip above the anchor.
+            var bottomOverflow = (top - window.scrollY + popRect.height) - window.innerHeight;
+            if (bottomOverflow > 0) {
+                top = window.scrollY + rect.top - popRect.height - 8;
+            }
+            popup.style.top = top + 'px';
+            popup.style.left = left + 'px';
+
+            popup.querySelector('.prompt-anatomy-popup__close')
+                .addEventListener('click', function (ev) { ev.preventDefault(); close(); });
+        }
+
+        root.addEventListener('click', function (ev) {
+            var anchor = ev.target.closest && ev.target.closest('.prompt-anchor');
+            if (anchor) {
+                ev.preventDefault();
+                open(anchor);
+                return;
+            }
+            // Click outside the popup → close (clicks inside the popup are
+            // safe; the close button handles its own dismissal).
+            if (popup && !ev.target.closest('.prompt-anatomy-popup')) close();
+        });
+
+        document.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Escape') close();
+        });
+    }
+
     function decoratePrompts(root) {
         Array.from(root.querySelectorAll('p')).forEach(function (p) {
             var strong = p.querySelector('strong');
@@ -488,6 +603,7 @@
             p.remove();
 
             addCopyButton(pre, header);
+            convertAnchorSentinels(pre);
         });
 
         // Universal copy buttons on every standalone <pre>.
@@ -735,6 +851,7 @@
         // DOM (browser only)
         decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
+        attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,

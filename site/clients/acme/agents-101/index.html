@@ -487,6 +487,106 @@ main::before {
     background: var(--bg-2);
 }
 
+/* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
+   in curriculum.js when an entry declares `anchors:` in its frontmatter, then
+   wrapped at DOM time by convertAnchorSentinels(). Dotted underline in the
+   accent colour so a scanning reader notices the affordance without it
+   pulling focus. Hover raises contrast; the Tufte sidenote panel (Step 3,
+   follow-up) reads the data-move attribute and surfaces the matching
+   prompt-anatomy entry. */
+.module .prompt-block .prompt-anchor {
+    border-bottom: 1.5px dotted var(--accent);
+    cursor: help;
+    transition: border-bottom-color 0.15s ease, background-color 0.15s ease;
+}
+
+.module .prompt-block .prompt-anchor:hover {
+    border-bottom-style: solid;
+    background-color: var(--accent-soft);
+}
+
+/* Anatomy popup card — surfaces the prompt-anatomy.md entry when a student
+   clicks a .prompt-anchor span. Absolute-positioned by attachAnchorPopups()
+   relative to the document, anchored to the clicked span. One popup at a
+   time; click outside or press Esc to close. Body comes from compile-anatomy
+   pre-rendered HTML (window.__ANATOMY[slug].html). */
+.prompt-anatomy-popup {
+    position: absolute;
+    z-index: 1000;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--fg-3);
+    border-radius: 4px;
+    padding: 1rem 1.2rem 1.1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.prompt-anatomy-popup__kicker {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
+.prompt-anatomy-popup__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    color: var(--fg);
+}
+
+.prompt-anatomy-popup__body p {
+    margin: 0.5rem 0;
+}
+
+.prompt-anatomy-popup__body p:first-child {
+    margin-top: 0;
+}
+
+.prompt-anatomy-popup__body p:last-child {
+    margin-bottom: 0;
+}
+
+.prompt-anatomy-popup__body code {
+    background: var(--bg-2);
+    padding: 0 0.3em;
+    border-radius: 2px;
+    font-size: 0.88em;
+}
+
+.prompt-anatomy-popup__body em {
+    color: var(--fg-2);
+}
+
+.prompt-anatomy-popup__close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.55rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--fg-3);
+    border-radius: 3px;
+    transition: color 0.12s ease, background 0.12s ease;
+}
+
+.prompt-anatomy-popup__close:hover {
+    color: var(--fg);
+    background: var(--bg-2);
+}
+
 /* Copy button — two flavours.
    1. In-header (.copy-btn--in-header): mounted into the prompt-block header,
       pushed to the right edge. Always visible, no overlay. This is the prompt
@@ -2837,9 +2937,9 @@ Do not fix anything yet. Show me the failure chain in 5 bullets: what happened, 
 
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
-<li><strong>Two multi-agent shapes in Claude Code.</strong> Separate sessions on shared files (Phase 1: long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (Phase 2: quick parallel thinking, bounded return). Different shapes, different territories, the lecture draws the line.</li>
+<li><strong>Two multi-agent shapes in Claude Code.</strong> Separate sessions on shared files (long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (quick parallel thinking, bounded return). Different shapes, different territories.</li>
 <li><strong>Splitting earns its keep when the agents genuinely can&#39;t be one.</strong> Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn&#39;t need to split.</li>
-<li><strong>Seams are where it fails.</strong> Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is where the lesson lives.</li>
+<li><strong>Seams are where it fails.</strong> Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.</li>
 <li><strong>Three stances beat one summarizer.</strong> Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a <em>what-would-have-to-be-true</em> experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.</li>
 <li><strong>Frameworks are the synthesizer&#39;s spine.</strong> Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.</li>
 </ul>
@@ -3157,7 +3257,7 @@ The risk:
 <li><strong>&quot;I can&#39;t tell&quot; is a real answer.</strong> Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an &quot;I can&#39;t tell&quot; requires evidence, not confidence.</li>
 <li><strong>Agent mitigations are layered, not replacements.</strong> Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: network controls, identity and access management, logging, supplier review, and security review. Loop design is additive. A leader who concludes &quot;the agent check replaces security&quot; ships a breach. The floor stays; the loop adds new surfaces above it.</li>
 <li><strong>Residual risk is a first-class artifact.</strong> After mitigation, something remains. You name it and accept it on record. The report should not pretend that a narrower instruction erased the risk; it should show what changed and what stayed true.</li>
-<li><strong>Skills as expertise injection.</strong> A skill is how an agent borrows capability it doesn&#39;t natively have. It scopes DOWN (what the agent can&#39;t do) and scopes UP (what expertise it brings). Module 4 is where you author your first reusable security check.</li>
+<li><strong>Skills as expertise injection.</strong> A skill is how an agent borrows capability it doesn&#39;t natively have. It scopes DOWN (what the agent can&#39;t do) and scopes UP (what expertise it brings). The security check is one instance of a much broader move.</li>
 </ul>
 <h2 id="debrief">Debrief</h2>
 <p>Five minutes. Claude reviews the audit session and compounds one to five rules into the root <code>CLAUDE.md</code> for future sessions. The evidence is what the audit produced: the raw policy report, the packaged policy report, the security report with its residual decision, the &quot;I can&#39;t tell&quot; rows, and the mitigation you applied. Claude updates <code>CLAUDE.md</code> and reports what changed. You push back on anything that&#39;s off.</p>
@@ -3520,12 +3620,12 @@ No preamble. First message is your first question.
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
 <li><strong>Benchmarking as a pattern.</strong> N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you&#39;ll ever automate (tone, brand, compliance, steering). Groundedness is just the first instance.</li>
-<li><strong>Empirical method selection over authority.</strong> You don&#39;t pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works every time you need a machine to make a judgment reliably.</li>
+<li><strong>Empirical method selection over authority.</strong> You don&#39;t pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works wherever a machine has to make the judgment.</li>
 <li><strong>The scoreboard is the artifact.</strong> Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one detector won and where another lost.</li>
 <li><strong>Benchmarking teaches evaluating evaluators.</strong> The real move isn&#39;t &quot;build a detector&quot;; it&#39;s &quot;build the thing that benchmarks detectors.&quot; Once you&#39;ve run a benchmark once, you&#39;ve seen what evaluating evaluators looks like, and the idea transfers to every future quality question.</li>
 <li><strong>A judge is narrow on purpose.</strong> The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend. A judge that tries to do everything does nothing well.</li>
 <li><strong>Grounded is the discipline; the benchmark is how you build the check.</strong> There IS truth out there. Sources carry shards of it. A judge that&#39;s been measured against a benchmark is the machine that keeps the output connected to the ground when you&#39;re not in the room.</li>
-<li><strong>What the judge can&#39;t reach.</strong> The benchmark was 30 claims. A production judge wants hundreds, running on every build, learning from its own corrections. Same method, bigger scale.</li>
+<li><strong>What the judge can&#39;t reach.</strong> A small benchmark is enough to prove the method. A production judge wants hundreds of claims, running on every build, learning from its own corrections. Same method, bigger scale.</li>
 </ul>
 <h2 id="debrief">Debrief</h2>
 <p>Five minutes. Claude reviews the benchmark and compounds the useful part into the training-root <code>CLAUDE.md</code>: when future sessions should run a groundedness check before trusting or using an output. The evidence is what the scoreboard produced: the evidence roster, claim pool, adjudicated claims, detector outputs, scoreboard, and the judge you saved. Claude updates the operating rules, reports what changed, and you push back on anything that&#39;s off.</p>
@@ -3853,9 +3953,9 @@ Then save the eval as `./goal-nudger-eval.md`. Show me what you wrote and ask fo
 <ul>
 <li><strong>Eval as infrastructure.</strong> The judge moves from object to live machinery. It&#39;s not inspected, it&#39;s watched.</li>
 <li><strong>Role separation.</strong> Generation and judging happen in separate agents. The generator does not grade itself.</li>
-<li><strong>Walk-away autonomy.</strong> The first true leave-the-chair moment. The system runs; you come back to the notes.</li>
+<li><strong>Walk-away autonomy.</strong> The system runs; you come back to the notes.</li>
 <li><strong>The work gets sharper because the judge stays still.</strong> The main session reads what the judge flagged each round and rewrites <code>./generation-tactic.md</code>. The judge doesn&#39;t move. That&#39;s why round 3&#39;s score has anything to say about round 1&#39;s. A yardstick you rewrite is not a yardstick.</li>
-<li><strong>Loop ownership.</strong> One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The shape the student recognizes from Module 3&#39;s fan-out, now running a quality discipline instead of a content discipline.</li>
+<li><strong>Loop ownership.</strong> One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.</li>
 </ul>
 <h2 id="debrief">Debrief</h2>
 <p>Five minutes. Claude reviews the eval loop&#39;s run and sharpens the generator&#39;s tactic file one more time. The evidence is the round-by-round trail: what changed in the tactic, what the judge kept catching, what the tactic never absorbed. Claude reviews, rewrites the tactic in place, reports what changed. The judge file stays untouched. That&#39;s the integrity of the loop. You push back on anything that&#39;s off.</p>
@@ -4135,10 +4235,10 @@ Save to module-7/failure-stories.md.
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
 <li><strong>Interview for the outcome before designing the solution.</strong> The transferable skill. The teammate&#39;s job comes first; your candidate comes second. When work resumes you&#39;ll face a different adoption problem and the move is the same. Agent reads your context, drafts a JTBD hypothesis (Clayton Christensen&#39;s Jobs-to-be-Done pattern), asks you seven targeted questions, produces a brief with an outcome statement.</li>
-<li><strong>The agent does the heavy lifting on the interview.</strong> Your memory already carries 80% of the teammate&#39;s job. Phase 1&#39;s move is the agent reading what&#39;s on disk, hypothesising, then asking a defined set of questions to plug the real holes. Not freeform chat. A bounded ask. That&#39;s what makes it reliable.</li>
+<li><strong>The agent does the heavy lifting on the interview.</strong> Your memory already carries 80% of the teammate&#39;s job. The move is the agent reading what&#39;s on disk, hypothesising, then asking a defined set of questions to plug the real holes. Not freeform chat. A bounded ask. That&#39;s what makes it reliable.</li>
 <li><strong>The outcome statement is the design contract.</strong> In the form <em>&quot;minimize/increase [metric] when [doing the job],&quot;</em> everything downstream runs against that statement: the candidate, the patterns, the plans, the assumptions, and the failure stories. A candidate that doesn&#39;t move the metric isn&#39;t a candidate.</li>
 <li><strong>The third outcome vector is where the interview earns its keep.</strong> Speed and quality are the obvious axes. The non-obvious one (dependency removed, anxiety reduced, scope expanded, workload shifted) is what chatting surfaces. If an interview returns only speed and quality, it went shallow.</li>
-<li><strong>Absorption bottleneck.</strong> Access is easy; absorption is the scarce thing you are actually designing for. Your technical plan filled quickly; your people plan stalled on names.</li>
+<li><strong>Absorption bottleneck.</strong> Access is easy; absorption is the scarce thing the design is actually for. The technical plan fills quickly; the people plan stalls on names.</li>
 <li><strong>The four sharing shapes.</strong> Share the context / share a skill / share the output (push) / share an interface (pull). &quot;Share the whole agent&quot; is not on the list. The choice between the four IS the design decision.</li>
 <li><strong>The pattern catalog is a design language.</strong> Not a menu. You pick one to three patterns, match them to the outcome you&#39;re moving, stack where useful. Different outcomes call for different combinations. That&#39;s the point.</li>
 <li><strong>The people plan weighs equal to the technical plan.</strong> Ownership, governance, operating, accountability, propagation. A deliverable missing the people plan is incomplete even with a perfect technical plan. A perfect technical plan with no people plan is a PowerPoint.</li>
@@ -4153,8 +4253,13 @@ Review this session and sharpen the sharing artifact. Read everything in module-
 
 Then rewrite the sharing artifact. Overwrite the file in place at its current path in module-7/; do not create a separate version. Integrate, don&#39;t append. Name the teammate&#39;s job explicitly at the top, tighten the surface area so it fits the job (not your whole system), add the one line the people plan needed. Keep the edge in the critique; the gap between people plan and real ownership is the message, not something to soften. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version.
 
+After the rewrite, when I push back on something specific, use Edit on the section I&#39;m pushing back on, not Write on the whole file. Don&#39;t re-rewrite the whole artifact unless I say &#39;rewrite from scratch.&#39;
+
 When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. If you cannot quote the before-line, do not claim the change. Name the one assumption the artifact still depends on.
 </code></pre>
+<blockquote>
+<p><strong>Watch for slowness.</strong> When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. The prompt above tells it to. If Claude reaches for Write on the whole artifact anyway, push back: <em>&quot;Edit just the section I named.&quot;</em></p>
+</blockquote>
 <p>Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you&#39;re sharpening something for another person to use, &quot;what got sharpened&quot; without the actual lines is a draft pretending to be a finished thing. The before-and-after quote is how you know the sharpening reached the file, not just the summary.</p>
 <p>Read Claude&#39;s summary. Push back where it&#39;s wrong. <em>&quot;The teammate&#39;s job wasn&#39;t vague, you just didn&#39;t see it&quot;</em> / <em>&quot;you pulled too much out of the skill, put the edge cases back.&quot;</em> The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It&#39;s the bridge to when work resumes.</p>
 <h2 id="next">Next</h2>
@@ -4432,9 +4537,9 @@ Write the plan for the next two weeks. Include sequence, owners, agent dependenc
 <ul>
 <li><strong>Self-improvement</strong>: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer&#39;s selection.</li>
 <li><strong>Org capability</strong>: many agents reading and proposing in parallel produce a kernel, agent set, and plan grounded in your own files, not a single consultant&#39;s read.</li>
-<li><strong>The three predictable walls after Agents 101</strong>: data access, runtime platform, discoverability. The plan you produced already names which wall bites first for your company. That you can see them is the sign the kernel works.</li>
+<li><strong>The three predictable walls past the laptop loop</strong>: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.</li>
 <li><strong>Domain prediction framework</strong>: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company&#39;s 200 processes to pick the first 5 to try.</li>
-<li><strong>Thinking disciplines you take home as named moves.</strong> Crux, <em>what would have to be true?</em>, pre-mortem aren&#39;t Module 8 props and they aren&#39;t installed skills. They&#39;re named, portable disciplines you ask Claude to run after training, on any decision that feels too big to eyeball, same shape as the Module 2 Debrief move.</li>
+<li><strong>Thinking disciplines you take home as named moves.</strong> Crux, <em>what would have to be true?</em>, pre-mortem aren&#39;t props and they aren&#39;t installed skills. They&#39;re named, portable disciplines you ask Claude to run on any decision that feels too big to eyeball.</li>
 <li><strong>Grounding when agents read agents.</strong> Every agent publishes what it read, what it couldn&#39;t find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other&#39;s memory. With it, the pushback rounds have something to push back at.</li>
 </ul>
 <h2 id="debrief">Debrief</h2>
@@ -4448,8 +4553,13 @@ Look back over the session: surface at least two flywheel stalls (an agent waiti
 
 Then rewrite the file. If you are uncertain which file carried the most weight, default to the central synthesizer rules file; do not pause. Integrate, don&#39;t append. Add the role that was underspec&#39;d, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Preserve any rule not directly contradicted by session evidence. Don&#39;t add a &quot;retro notes&quot; section; rewrite the file as the better version. Do not close every loop — some of what didn&#39;t resolve should stay open, named.
 
+After the rewrite, when I push back on something specific, use Edit on the section I&#39;m pushing back on, not Write on the whole file. Don&#39;t re-rewrite the whole file unless I say &#39;rewrite from scratch.&#39;
+
 When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. Name which critique was raised but not acted on, and which file&#39;s rules directly contradicted what happened. If you think every critique was acted on, quote the evidence. Name one thing the session genuinely didn&#39;t resolve.
 </code></pre>
+<blockquote>
+<p><strong>Watch for slowness.</strong> When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large; full-file rewrites per pushback turn drag. If Claude reaches for Write on the whole file anyway, push back: <em>&quot;Edit just the section I named.&quot;</em></p>
+</blockquote>
 <p>Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur.</p>
 <p>This is a self-audit of a live agent round. Convenient, not neutral. If the summary sounds too clean, ask the harsher read: <em>&quot;Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line.&quot;</em></p>
 <p>Read Claude&#39;s summary. Push back where it&#39;s wrong. Some of what didn&#39;t resolve shouldn&#39;t resolve. It&#39;s the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don&#39;t yet know you have. You just watched it compound.</p>
@@ -5019,7 +5129,8 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' },
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]
         },
         'claude-basics': {
@@ -5187,11 +5298,39 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     //   ```
     // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
     // following <pre>; this output is byte-equivalent to a hand-authored block.
+    // Sentinel pair using Mathematical White Square Brackets ⟦ ⟧ (U+27E6 / U+27E7).
+    // These survive markdown code-fence rendering and HTML escape unchanged
+    // (not in HTML special chars), and don't appear in any realistic prompt
+    // content — safer than ASCII-square-bracket sentinels which would collide
+    // with prompt blocks that quote markdown link syntax in the body. The
+    // decoratePrompts pass converts these to <span class="prompt-anchor"> at
+    // DOM time; the Copy button's textContent read passes through the span
+    // and lands the original prompt verbatim on the clipboard.
+    function injectAnchorSentinels(text, anchors) {
+        if (!anchors || !anchors.length) return text;
+        var out = text;
+        anchors.forEach(function (a) {
+            if (!a || !a.span || !a.move) return;
+            if (!/^[a-z0-9-]+$/.test(a.move)) return; // slug must be CSS-class-safe
+            var idx = out.indexOf(a.span);
+            if (idx < 0) return; // span no longer matches body — silent skip
+            out = out.slice(0, idx) +
+                  '⟦A:' + a.move + '⟧' +
+                  a.span +
+                  '⟦/A⟧' +
+                  out.slice(idx + a.span.length);
+        });
+        return out;
+    }
+
     function renderPromptBlock(entry) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        if (entry && entry.anchors && entry.anchors.length) {
+            text = injectAnchorSentinels(text, entry.anchors);
+        }
         var fence = '```\n' + text + '\n```';
         return label + '\n\n' + fence;
     }
@@ -5408,6 +5547,92 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         });
     }
 
+    // Convert ⟦A:slug⟧content⟦/A⟧ sentinels (planted by injectAnchorSentinels
+    // at prompt-expand time) into <span class="prompt-anchor" data-move="slug">
+    // wrappers in the rendered <pre><code>. Runs once per prompt block during
+    // decoratePrompts. The Copy button's textContent read sees through the
+    // span and copies the original prompt; visual treatment is CSS-driven.
+    var ANCHOR_SENTINEL_RE = /⟦A:([a-z0-9-]+)⟧([\s\S]*?)⟦\/A⟧/g;
+    function convertAnchorSentinels(pre) {
+        if (!pre) return;
+        var code = pre.querySelector('code') || pre;
+        var html = code.innerHTML;
+        if (html.indexOf('⟦A:') < 0) return;
+        var replaced = html.replace(ANCHOR_SENTINEL_RE, function (m, slug, content) {
+            return '<span class="prompt-anchor" data-move="' + slug + '">' + content + '</span>';
+        });
+        if (replaced !== html) code.innerHTML = replaced;
+    }
+
+    // Click handler on .prompt-anchor spans: look up the matching anatomy
+    // entry by data-move slug in window.__ANATOMY, render a popup card next
+    // to the anchor. One popup at a time; click another anchor → moves the
+    // popup; click outside → closes; Esc → closes. Idempotent installer:
+    // attaches one delegated click listener per root, guarded by a flag so
+    // re-renders don't double-bind. Silent no-op if anatomy data is missing.
+    function attachAnchorPopups(root) {
+        if (!root || root.__anchorPopupsBound) return;
+        root.__anchorPopupsBound = true;
+
+        var popup = null;
+        function close() {
+            if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+            popup = null;
+        }
+
+        function open(anchor) {
+            var slug = anchor.getAttribute('data-move');
+            if (!slug) return;
+            var data = (window.__ANATOMY || {})[slug];
+            if (!data) return;
+            close();
+            popup = document.createElement('div');
+            popup.className = 'prompt-anatomy-popup';
+            popup.innerHTML =
+                '<button class="prompt-anatomy-popup__close" type="button" aria-label="Close">×</button>' +
+                '<div class="prompt-anatomy-popup__kicker">Anatomy</div>' +
+                '<h3 class="prompt-anatomy-popup__title">' + esc(data.title) + '</h3>' +
+                '<div class="prompt-anatomy-popup__body">' + data.html + '</div>';
+            document.body.appendChild(popup);
+
+            // Position: prefer below + left-aligned with the anchor; clamp
+            // to viewport so the card never gets cut off on narrow windows.
+            var rect = anchor.getBoundingClientRect();
+            var popRect = popup.getBoundingClientRect();
+            var top = window.scrollY + rect.bottom + 8;
+            var left = window.scrollX + rect.left;
+            var maxLeft = window.scrollX + window.innerWidth - popRect.width - 20;
+            if (left > maxLeft) left = maxLeft;
+            if (left < window.scrollX + 20) left = window.scrollX + 20;
+            // If it'd run off the bottom of viewport, flip above the anchor.
+            var bottomOverflow = (top - window.scrollY + popRect.height) - window.innerHeight;
+            if (bottomOverflow > 0) {
+                top = window.scrollY + rect.top - popRect.height - 8;
+            }
+            popup.style.top = top + 'px';
+            popup.style.left = left + 'px';
+
+            popup.querySelector('.prompt-anatomy-popup__close')
+                .addEventListener('click', function (ev) { ev.preventDefault(); close(); });
+        }
+
+        root.addEventListener('click', function (ev) {
+            var anchor = ev.target.closest && ev.target.closest('.prompt-anchor');
+            if (anchor) {
+                ev.preventDefault();
+                open(anchor);
+                return;
+            }
+            // Click outside the popup → close (clicks inside the popup are
+            // safe; the close button handles its own dismissal).
+            if (popup && !ev.target.closest('.prompt-anatomy-popup')) close();
+        });
+
+        document.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Escape') close();
+        });
+    }
+
     function decoratePrompts(root) {
         Array.from(root.querySelectorAll('p')).forEach(function (p) {
             var strong = p.querySelector('strong');
@@ -5444,6 +5669,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
             p.remove();
 
             addCopyButton(pre, header);
+            convertAnchorSentinels(pre);
         });
 
         // Universal copy buttons on every standalone <pre>.
@@ -5691,6 +5917,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         // DOM (browser only)
         decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
+        attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,

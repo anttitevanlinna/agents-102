@@ -1,5 +1,7 @@
 # Agentic systems, shown in the repo
 
+Welcome in. You're about to see the system that built the workbook you're sitting in, and once you see it, you won't unsee the shape anywhere else.
+
 ## Big Idea
 
 Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.

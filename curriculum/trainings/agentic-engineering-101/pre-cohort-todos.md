@@ -43,8 +43,6 @@ Landed in-session 2026-05-20: M2→M3 task-continuity trap (sentence at `plan-mo
 
 ### Tactical fixes ready for an agent pass
 
-- **M1, pre-made prompt for the test-case creation pushing-part.** Learner asked for a ready-to-paste prompt at the "push the test case" step rather than freeform composition. Promotes consistency in the cohort and saves seconds in flow. Find the test-case beat in M1's `fix-tests-first.md` exercise body, add a `{{prompt:...}}` block at the pushing step. Source: [M1 raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M1.md).
-
 - **M1, clarify "the room harvests everyone's before the training adds its own".** Phrasing is opaque on first read; the meta-pattern (cohort surfaces individual cases, then the lecture names what they share) is the move but the sentence reads as a riddle. One-sentence rewrite. Source: [M1 raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M1.md).
 
 

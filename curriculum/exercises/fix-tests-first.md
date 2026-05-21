@@ -17,6 +17,8 @@ Ask Claude to write the failing test, fix the root cause, and show the diff. Dro
 
 Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
 
+Your own wording and viewpoint is important here. Hence no pre-made prompt. You'll return to this at the compound step.
+
 When Claude says done, push once on the depth. Ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
 
 **Optional.** Skip if the test you wrote already names the contract and the fix is the contract, no deeper layer to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.

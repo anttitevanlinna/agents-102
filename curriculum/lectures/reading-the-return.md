@@ -1,12 +1,14 @@
 # Reading the return
 
-The laptop closed at the end of M4 with the agent working. By the time this lands, the run has either finished, hit its budget, or been stopped because enough was seen. Whatever came back is the artefact M5 starts from.
+You stepped away at the end of M4 with the agent working. By the time this lands, the run has either finished, hit its budget, or been stopped because enough was seen. Whatever came back is the artefact M5 starts from.
 
 Here is the question that drives M5.
 
-**What would have caught this at hour 2, not hour 6?**
+**What would have caught this earlier in the run?**
 
-Not "did the run succeed." Not "should I have spec'd it tighter." A diagnostic question. You read the artefact, you find what went wrong, and for each thing you ask: what would have caught this earlier?
+Practitioners running these for hours sharpen it as *at hour 2, not hour 6.* At your scale, *at minute 10, not minute 25.* Same diagnostic question, different clock.
+
+Not "did the run succeed." Not "should I have spec'd it tighter." A diagnostic. You read the artefact, you find what went wrong, and for each thing you ask: what would have caught this earlier?
 
 ## Three failure modes you'll use to read
 

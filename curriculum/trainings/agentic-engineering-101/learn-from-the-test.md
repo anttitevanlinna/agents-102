@@ -11,7 +11,7 @@ Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Ins
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** your un-packaged multi-hour run through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens
+- **Diagnose** your un-packaged Module 4 send-off through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens
 - **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
 - **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task Module 4 sent off
@@ -142,7 +142,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 - Sponsor-stated test/CI conventions (Phase 3 shell-hook verifier shape integrates here) — sponsor names the test framework + CI gate convention so the verifier shape matches what teammates already run
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
-1. **Reads an agent's multi-hour artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and quotes specific moments per lens. Falsifiable: a real artefact-read produces a written diagnosis with at least one quoted moment per failure mode, not a generic summary.
+1. **Reads an agent's long-running artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and quotes specific moments per lens. Falsifiable: a real artefact-read produces a written diagnosis with at least one quoted moment per failure mode, not a generic summary.
 2. **Builds a verifier shaped against the dominant failure mode** of a real long-running agent task, picking from the three-shape menu (background-agent, shell-hook, Ralph re-feed). Falsifiable: a verifier file exists at a stable path; its first 10 lines name the failure mode it targets and the check-shape that catches it.
 3. **Sends the same task twice with packaging as the changed variable**, reads the contrast. Falsifiable: two distinct agent runs of the same scoped task exist (un-packaged baseline + packaged re-run); the diff is the artefact M6 reads.
 
@@ -168,7 +168,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 | Phase 2 — *"align then reverse: what would have caught this in minutes, not hours?"* | Phase 2 prescription-skip — student goes straight from named failure to building the fix | Trainer / Nerd: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"* |
 | Phase 3 — *"verifier shape matches the failure shape"* | Phase 3 verifier-shape mismatch — student picks shell-hook for a qualitative failure (or LLM-judge for a deterministic one) | Trainer / Nerd surfaces the menu again: *"qualitative failure wants a judge. Deterministic wants a hook. Drift wants a re-feed. Which is yours?"* |
 | Phase 4 — *"reference is task-local, not a rules-file rewrite"* | Phase 4 reference-as-rewrite — student rewrites `CLAUDE.local.md` instead of authoring a task-scoped reference | Trainer / Nerd: *"the reference is task-local. Lives next to the plan.md. Your rules file is for the codebase; the reference is for this task."* |
-| Debrief — *"send the packaged version, close the laptop"* | Debrief re-send anxiety — student hesitates at the second send-off | Trainer / Nerd: *"same task, packaged. Same close-the-laptop move. The point is to read the contrast at M6, not to nail it this run."* |
+| Debrief — *"send the packaged version, step away"* | Debrief re-send anxiety — student hesitates at the second send-off | Trainer / Nerd: *"same task, packaged. Same step-away move. The point is to read the contrast at M6, not to nail it this run."* |
 | Closing lecture — *"name Ronacher's three-pattern only AFTER the felt evidence lands"* | Closing lecture pre-empt — Nerd or trainer accidentally names the three-pattern before the closing lecture | Trainer / Nerd: don't. The closing lecture earns the name from felt evidence. If the term gets used in Phases 1–4, the closing has nothing to add. |
 
 **Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):

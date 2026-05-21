@@ -5,7 +5,7 @@
 
 Three modules in, the loops have been short. M1 closed a bug and wired a connector. M2 read one plan twice. M3 shipped a feature with security mapped and a test-strategy skill authored in conversation. Every one finished inside the session. All inside one session.
 
-Today is structurally different. Today you launch a multi-hour task and close the laptop. The agent keeps going while you aren't there to steer. You'll come back to a result whenever the next M5 slot lands. That result is the point.
+Today is structurally different. Today you launch a long-running task and step away. The agent keeps going while you aren't there to steer turn-by-turn. Fifteen to thirty minutes is enough for the clues and learnings the rest of M5 reads. Engineers run these for hours at work when the task warrants it; ambition and length grow with practice. You'll come back to a result whenever the next M5 slot lands. That result is the point.
 
 ## The spirit
 
@@ -33,7 +33,7 @@ The contrast is the lesson. No lecture on generic long-running-agent advice land
 
 **Cancel is legitimate. Traces are data.**
 
-If you launch the task and after twenty minutes you can see Claude is hallucinating file paths, arguing with itself, or missing a requirement you now realise wasn't in the prompt, stop it. You've got the data you need. Burning six hours to confirm it doesn't teach you more than stopping at twenty minutes with an observation.
+If you launch the task and after twenty minutes you can see Claude is hallucinating file paths, arguing with itself, or missing a requirement you now realise wasn't in the prompt, stop it. You've got the data you need. Letting it run another hour doesn't teach you more than stopping at twenty with an observation.
 
 What you owe the experiment is a result you can read, not a completed artifact. Any trace counts.
 

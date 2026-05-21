@@ -55,6 +55,22 @@ You sent off an un-packaged run at the close of Module 4 and read the pre-read. 
 
 Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
 
+**Session** *(new, "M5 long-run")*
+
+Open a new Claude Code session in the worktree at `../<repo>-m5`. The packaging files live on disk; the worktree's auto-loaded rules (`CLAUDE.md`, `CLAUDE.local.md`) load fresh into the new session. The exercise session can stay open if you want to glance back at the assembly conversation.
+
+```
+/rename m5-long-run
+```
+
+Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every long-run turn would otherwise pay cache-read on that prefix, $20-30 saved at Opus prices, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
+
+Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
+
+{{prompt:ae101-m5-clear-before-rerun}}
+
+Either way, the re-send prompt below stands alone: Claude lists the worktree root and reads what it finds.
+
 Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.
 
 {{prompt:ae101-m5-rerun-packaged}}

@@ -39,7 +39,7 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
 ---
-Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.
+Run the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).
 
 Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.
 

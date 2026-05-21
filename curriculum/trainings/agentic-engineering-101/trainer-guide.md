@@ -96,6 +96,26 @@ When to choose which:
 
 If you run the reorder, dry-run M4's Phase 2 / Phase 3 prompts (`walk-and-send-off-2`, `walk-and-send-off-4`) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.
 
+## M6, lecture-dense by design
+
+M6 carries more lecture surface than the other modules. By Module 6 the student is a practitioner, and some moves at this point in the training are read about rather than prompt-drilled. The closer area runs lecture-after-lecture (Human close → Composing the workflow → The loop has a name → Agents that build agents). Manage transitions, and **invite student reflections and opinion across the lectures** by design. The mood is practitioner fluency, not lecture-hall: a room of engineers reading the field together, with the trainer as one voice among several.
+
+**The full M6 lecture stack:**
+
+- **[The 2 frontiers](lectures/the-2-frontiers.md)**, opener.
+- **[Story of Module 6](lectures/story-of-module-6.md)**, opener; permission-giving memo from this module's own generation.
+- **[Quality is grounding](lectures/quality-is-grounding.md)**, opener-bridge. Read between Story of Module 6 and the main exercise. ~4–6 min. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 test-strategy skill → M5 verifier → M6 second skill), then reframes quality's evolution from spec-and-tests to grounding and human signal. Stakes-setter before the build move. Cites Agentics Helsinki's first meetup (fall 2025) as historical anchor for the 500K-lines-in-weeks demos. Maintainer-block source-verification debt is logged; check before first cohort.
+- **[Steering the wiring](lectures/steering-the-wiring.md)**, mid-module.
+- **[Composing the workflow](lectures/composing-the-workflow.md)**, closer-area pointer. Read after Human close, before The loop has a name. ~3–4 min. Names the practitioner-mode shift (*"there is no prompt to drill at this point"*) and walks five live lineages of workflow composition in one line each: Klaassen (file paths between subagents, hard gates), Cherny (parallel subagents in worktrees), Pocock (weakly-coupled toolkit), Cognition (single writer with advisor agents), Amp (vendor-shipped primitives). Plus Ronacher's counter-voice (composition is throttling, not multiplication). Points at the [workflow-composition-lineages supplementary](supplementary/workflow-composition-lineages.md) for depth.
+- **[The loop has a name](lectures/the-loop-has-a-name.md)**, closer; names *eval* from the just-built second skill.
+- **[Agents that build agents](lectures/agents-that-build-agents.md)**, forward closer.
+
+**How to invite reflection.** Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What's their review bandwidth, and what does Ronacher's counter-voice land as? Open prompts, not Q&A. Two beats of silence is fine; engineers think before they speak. Self-study Nerd mirrors this with conversation prompts in the same slots.
+
+**Pacing the close.** Lecture density means reading the room sharply. If energy is high, give the lineage conversation room. If energy is low, name fewer lineages in delivery, point at the supplementary, move to the closer pair faster. The supplementary carries the depth regardless; the lecture body is the pointer, not the survey.
+
+**Composition is a reading move at M6.** If a student asks where the composition exercise is, point them at the [workflow-composition-lineages supplementary](supplementary/workflow-composition-lineages.md). The lecture walks the lineages; the supplementary carries the depth. *Your intuition* is the close of composing-the-workflow and the register the section asks the room to land in.
+
 ## Prep Before Each Session
 
 - Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.

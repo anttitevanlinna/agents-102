@@ -516,13 +516,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
-    "text": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using curl. Report the file's size.\n\nURL:",
-    "requires": [
-      {
-        "id": "tarball-url",
-        "source": "scrollback (student or trainer pastes the URL)"
-      }
-    ],
+    "text": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using curl. Report the file's size.\n\nURL: <CONTENT_URL>",
     "produces": [
       {
         "id": "ae101-content-tarball",
@@ -2179,6 +2173,29 @@
       {
         "move": "disambiguation-criteria",
         "span": "Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?"
+      }
+    ]
+  },
+  "spot-gaps-build-the-loop-primitives": {
+    "key": "spot-gaps-build-the-loop-primitives",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/spot-gaps-build-the-loop",
+    "text": "I'm about to author a skill that wraps a checking primitive against my dominant gap. Before I commit to a shape, expand my menu.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-run / mid-run / post-run / continuous).\n\nThen evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Don't recommend a skill shape yet; recommend the primitives.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
+    "requires": [
+      {
+        "id": "two-run-gap-map",
+        "source": "prompt:spot-gaps-build-the-loop-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "primitive-menu",
+        "location": "scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-3"
+        ]
       }
     ]
   },

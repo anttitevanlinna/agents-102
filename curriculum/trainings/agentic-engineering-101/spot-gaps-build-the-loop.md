@@ -32,6 +32,8 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 
 [Story of Module 6](lectures/story-of-module-6.md)
 
+[Quality is grounding](lectures/quality-is-grounding.md)
+
 [Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
 
 [Steering the wiring](lectures/steering-the-wiring.md)
@@ -52,6 +54,8 @@ No compound prompt here. The encode step already happened when you shipped the s
 *Three runs of the loop on your own work. The kit, yours.*
 
 **Self-study variant.** Close the laptop. The encode step already happened when you shipped the second skill. If you can name the move in one sentence, that's the marker; no further articulation required.
+
+[Composing the workflow](lectures/composing-the-workflow.md)
 
 [The loop has a name](lectures/the-loop-has-a-name.md)
 

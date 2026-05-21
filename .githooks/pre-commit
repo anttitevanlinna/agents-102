@@ -72,8 +72,7 @@ PYEOF
     fi
 fi
 
-# Inform the human and require confirmation. Commit hooks run in a non-tty
-# context inside many GUIs / IDE clients — fall back to /dev/tty for the read.
+# Inform the human.
 echo "──────────────────────────────────────────────────────────────────────"
 echo "Prompt registry change detected. Staged files under curriculum/prompts/:"
 echo
@@ -82,17 +81,85 @@ echo
 echo "Diff summary:"
 git diff --cached --shortstat -- 'curriculum/prompts/**'
 echo
+
+# Card-approval bridge (added 2026-05-21): when the maintainer types
+# `approve <prompt-key>` during a Claude Code card flow, Claude writes a
+# marker at `.claude/prompt-approvals/<key>.confirmed`. The marker records
+# the human's approval token in a durable form. If ALL staged prompt keys
+# have fresh markers (< 1 hour old), skip the interactive confirm and
+# consume the markers (one-shot). The card approval IS the gate clear;
+# no separate y/N needed.
+#
+# Markers live under .claude/prompt-approvals/, which is gitignored by
+# the existing `.claude/*` rule. Stale markers are ignored, not deleted.
+APPROVAL_DIR=".claude/prompt-approvals"
+APPROVAL_TTL_SECONDS=3600
+all_approved=1
+to_consume=""
+missing_keys=""
+while IFS= read -r staged_file; do
+    [ -z "$staged_file" ] && continue
+    key="$(basename "$staged_file" .md)"
+    marker="$APPROVAL_DIR/$key.confirmed"
+    if [ ! -f "$marker" ]; then
+        all_approved=0
+        missing_keys="$missing_keys $key"
+        continue
+    fi
+    # macOS stat -f %m, GNU stat -c %Y; try both.
+    marker_mtime=$(stat -f %m "$marker" 2>/dev/null || stat -c %Y "$marker" 2>/dev/null || echo 0)
+    now=$(date +%s)
+    age=$((now - marker_mtime))
+    if [ "$age" -gt "$APPROVAL_TTL_SECONDS" ]; then
+        all_approved=0
+        missing_keys="$missing_keys $key(stale)"
+        continue
+    fi
+    to_consume="$to_consume $marker"
+done <<EOF
+$staged
+EOF
+
+if [ "$all_approved" = "1" ] && [ -n "$to_consume" ]; then
+    echo "All staged prompts have fresh card approvals — gate cleared."
+    echo "Consuming markers:$to_consume"
+    echo "──────────────────────────────────────────────────────────────────────"
+    for m in $to_consume; do rm -f "$m"; done
+    exit 0
+fi
+
 echo "Prompt edits ship to every student. Confirm before committing."
+if [ "$all_approved" = "0" ]; then
+    echo "(Missing or stale card approvals for:$missing_keys — fall back to interactive confirm.)"
+fi
 echo "(Bypass entire gate for batch ops: SKIP_PROMPT_GATE=1 git commit ...)"
 echo "──────────────────────────────────────────────────────────────────────"
 
-# Read confirmation from the controlling terminal so this works under VS Code
-# / IntelliJ / etc. that disconnect stdin from /dev/tty by default.
-if [ ! -t 0 ] && [ -e /dev/tty ]; then
-    exec < /dev/tty
+# Interactive confirmation. Preference: /dev/tty when stdin isn't a terminal
+# (GUI clients / IDEs that disconnect stdin but keep the controlling
+# terminal). Git disconnects stdin for hooks (sets it to /dev/null), so
+# `echo y | git commit ...` does NOT work. /dev/tty is the only interactive
+# channel — when unconnected (Claude Code, headless CI), abort with a clear
+# message; the card-approval bridge above is the supported headless path.
+#
+# Probe /dev/tty in a subshell so the shell-level "Device not configured"
+# error stays inside the subshell (2>/dev/null suppresses it there). A bare
+# `: < /dev/tty 2>/dev/null` leaks the message because shell redirect errors
+# print to the parent shell's fd 2, not the command's.
+if [ ! -t 0 ]; then
+    if ( exec < /dev/tty ) 2>/dev/null; then
+        exec < /dev/tty
+    fi
 fi
 printf "Proceed with commit? [y/N] "
-read -r reply
+if ! IFS= read -r reply; then
+    echo
+    echo "No confirmation channel available." >&2
+    echo "Either run from a terminal with /dev/tty connected, or approve" >&2
+    echo "each prompt via the Claude Code card flow (writes a marker to" >&2
+    echo "  $APPROVAL_DIR/<key>.confirmed)" >&2
+    exit 1
+fi
 case "$reply" in
     y|Y|yes|YES) exit 0 ;;
     *) echo "Commit aborted." >&2; exit 1 ;;

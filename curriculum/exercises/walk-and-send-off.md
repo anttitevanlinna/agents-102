@@ -49,7 +49,7 @@ Read the ranked list. Name which ones you already knew about, which surprised yo
 
 ### Fill the gaps
 
-Pick the ones that will hurt the agent most (probably two or three, not all five). Close each in conversation. You'll see next module what the others were for.
+Pick the ones that will hurt the agent most (probably two or three, not all five). You'll see next module what the others were for.
 
 Memory-path note, first time through: the default home is `.claude/memory/` in your repo, gitignored. If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on.
 
@@ -59,18 +59,18 @@ This is a convention you're authoring, not a Claude Code feature. The agent read
 
 Claude Code also has an auto-memory of its own at `~/.claude/projects/<project>/memory/`, written by the agent for its own recall and surfaced via `/memory`. AE101 leaves that one out by design. You choose what is worth remembering and write it yourself. Auto-memory has its place; here, compounding stays legible, gitignored, and yours.
 
-For each of the three, keep it conversational:
-
-- **Observation or rule:** *"Add this to memory: the payments service treats idempotency keys case-sensitively even though the docs don't say so."*
-- **Sharpen an existing rule:** *"In my `CLAUDE.local.md`, under 'testing', replace the current mocking rule with one that says: integration tests hit a real Postgres in Docker; unit tests mock at the service boundary, never at the repository."* (Team-worthy version would go in a PR against `CLAUDE.md` separately.)
-- **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-run.
-- **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in memory naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context.
-
-Push back when Claude writes something that doesn't match the codebase. The memory is what you just admitted is thin in spots; don't let it re-seed itself with drift.
-
-Speed up the gap-fill if prose Q&A is dragging.
+Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.
 
 {{prompt:walk-and-send-off-3}}
+
+A fill looks like one of these shapes (the audit at Phase 2 tags each gap with one):
+
+- **Observation or rule:** *"Add this to memory: the payments service treats idempotency keys case-sensitively even though the docs don't say so."* Lands in `.claude/memory/`.
+- **Sharpen an existing rule:** *"In my `CLAUDE.local.md`, under 'testing', replace the current mocking rule with one that says: integration tests hit a real Postgres in Docker; unit tests mock at the service boundary, never at the repository."* Lands in `./CLAUDE.local.md`. (Team-worthy version would go in a PR against `CLAUDE.md` separately.)
+- **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-run. Claude Code action, not a file write.
+- **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in memory naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context. Lands in `.claude/memory/`.
+
+Push back when Claude writes something that doesn't match the codebase. The memory is what you just admitted is thin in spots; don't let it re-seed itself with drift.
 
 ---
 
@@ -106,7 +106,7 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 
 **Time-check callout — deliberate exception to `check_student_facing.md` preamble (room-share commands).** The Phase 2→Phase 3 callout uses *"to share what surfaced, where the audit missed, and why the agent sometimes goes lazy."* The preamble bans room-share commands (`share with your neighbor`, `tell the room`, `say X out loud`); *to share* without an addressee reads as invitational room-energy, not a student-action mandate. The blockquote shape + named 5–10 min window is a trainer cue (catch-up window for slower paces + banter beat on agent laziness). Future judges should not re-flag.
 
-**Prompt register — `walk-and-send-off-3` deliberately short.** The Phase 2 gap-fill speed-up prompt (`You propose solutions and ask questions. Use the ask-questions tool to speed up my work.`) is intentionally brief, lowercase-hyphenated tool name, no honorifics. It models the casual one-line ask a tired engineer types mid-conversation when prose Q&A is dragging. The `ask-questions tool` phrasing is the curriculum's runtime-agnostic term (`AskUserQuestion` is the Claude Code implementation; the prompt avoids tying to one runtime). Pairs with the M2 `push-back-on-the-plan-4` carve-out — both encode end-of-flow tired-engineer register. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design.
+**Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`.claude/memory/` for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
 
 **Quality:** compendium-audited 2026-05-15 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0)
 - judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS

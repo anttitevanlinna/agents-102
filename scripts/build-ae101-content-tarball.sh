@@ -29,7 +29,9 @@ TRAINING="agentic-engineering-101"
 TRAINING_DIR="curriculum/trainings/$TRAINING"
 
 # Per-training skill whitelist. Sourced from training-architecture.md §Skills.
-SKILLS=(access-control-analysis stride)
+# `security-tools` carries the M3 "external skills are a supply-chain vector"
+# live demo (rick-roll); see pre-cohort-todos.md "Surprise-skill live demo".
+SKILLS=(access-control-analysis stride security-tools)
 
 # Trainer-only files in the training dir — excluded from reachability walk.
 TRAINER_ONLY=(
@@ -197,6 +199,8 @@ EXPECTED=(
   "supplementary/clean-code-is-steering.md"
   "content/skills/access-control-analysis/SKILL.md"
   "content/skills/stride/SKILL.md"
+  "content/skills/security-tools/SKILL.md"
+  "content/skills/security-tools/check.sh"
   "content/pre-engagement-contract.md"
 )
 MISSING=()

@@ -759,7 +759,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/author-test-strategy-skill",
-    "text": "I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.\n\nCover at minimum: which testing framework, what's mocked and what isn't, where the integration boundary actually runs (real dependencies vs. stubs), what \"flaky\" means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what's NOT worth testing here (and why).\n\nAsk ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says \"write unit tests first\" is useless. I need you to extract codebase-specific detail.\n\nWhen you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.",
+    "text": "I want to author a test-strategy skill for this codebase. Ask me the questions you need to encode it well: the ones that'd make the skill give a teammate on a different service a test strategy tuned to OUR system, not a generic pyramid.\n\nCover at minimum: which testing framework, what's mocked and what isn't, where the integration boundary actually runs (real dependencies vs. stubs), what \"flaky\" means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what's NOT worth testing here (and why).\n\nUse the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next. Push back if my answer is generic. A test-strategy skill that says \"write unit tests first\" is useless. I need you to extract codebase-specific detail.\n\nWhen you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.",
     "requires": [
       {
         "id": "feature-being-shipped",
@@ -2368,7 +2368,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "I'm about to run my first long-running experiment. Screen the candidates below against three criteria:\n\n- Send-off shape: the task lets the agent push past 3-4 ambiguities without checking in at every step.\n- Requirement-weaving: the task has multiple constraints that interact — getting one right means knowing the others.\n- Multi-file reasoning: touches at least 3 files where touching the wrong one matters.\n\nFor each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.\n\nCandidates:",
+    "text": "I'm about to run my first long-running experiment. Screen the candidates below against three criteria:\n\n- Send-off shape: the task lets the agent push past 3-4 ambiguities without checking in at every step.\n- Requirement-weaving: the task has multiple constraints that interact — getting one right means knowing the others.\n- Multi-file reasoning: touches at least 3 files where touching the wrong one matters.\n\nFor each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what's missing; if both fit, push me to pick the one that'll teach me more.\n\nOnce we've settled on one, save the scope as `./task.md` in the repo root (overwrite if it exists) so the send-off commit has something to capture and a later session can recover the task from disk.\n\nCandidates:",
     "requires": [
       {
         "id": "candidate-tasks",
@@ -2384,6 +2384,14 @@
           "prompt:ae101-m4-commit-starting-point",
           "prompt:ae101-m4-take-task-end-to-end"
         ]
+      },
+      {
+        "id": "task-md",
+        "location": "./task.md (repo root; inherits to m5 worktree via starting-point SHA)",
+        "consumed-by": [
+          "prompt:ae101-m4-commit-starting-point"
+        ],
+        "note": "disk persistence of scoped-task; recovery anchor if scrollback compacts mid-long-run; optional seed for M5 diagnose-and-resend-6 reference build and M6 spot-gaps original-spec lookup (downstream prompts work without it)"
       }
     ]
   },
@@ -2448,7 +2456,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Look at everything in my memory, my ADRs (if any), and any skills I've authored. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
+    "text": "Look at the observations and rules I just added to `.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
     "requires": [
       {
         "id": "gap-audit-report",

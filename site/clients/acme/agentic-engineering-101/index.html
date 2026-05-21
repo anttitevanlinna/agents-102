@@ -2311,8 +2311,8 @@ Ticket:
 &quot;Every claim about Claude Code must have been verified within the last month.&quot;</p>
 <p>The rules were not right the first time either. Some were overscoped. Some fired on the wrong surface. Some only held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.</p>
 <h2 id="the-rules-started-doing-the-work">The rules started doing the work</h2>
-<p>Once the rules lived in a file Claude Code could read, they stopped being reminders and started being load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft loads them too. The rules cross the boundary between the person writing them and the agents using them.</p>
-<p>This is the move. A rule written down is a thing one person knows. A rule in <code>./CLAUDE.md</code> is a thing every session inherits. A rule in a shared checklist is a thing every subagent reads before it writes a word.</p>
+<p>Once the rules lived in a file Claude Code could read, they stopped being reminders and started being load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft is handed them in its brief by the session that dispatched it. The rules cross the boundary between the person writing them and the agents using them.</p>
+<p>This is the move. A rule written down is a thing one person knows. A rule in <code>./CLAUDE.md</code> is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.</p>
 <p>The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints now has a companion checklist for every writing surface: student-facing, sales copy, pedagogy, writing, research claims, platform claims. Each fires at the moment it matters and no other moment.</p>
 <h2 id="then-the-agents-started-checking-the-agents">Then the agents started checking the agents</h2>
 <p>Somewhere along the way, the sessions got longer. What used to be one person in a thirty-minute turn became plan mode for an hour, then a subagent running in the background for two, then four agents in parallel auditing a file against four compendiums while a fifth checked the neighbours. The work-per-session went up. The care-per-line went up. Sweeping changes that would have taken a week got made in an afternoon because the rules were tight enough to hand off.</p>
@@ -2840,7 +2840,7 @@ Show me the ADR before saving.
 
 Cover at minimum: which testing framework, what&#39;s mocked and what isn&#39;t, where the integration boundary actually runs (real dependencies vs. stubs), what &quot;flaky&quot; means in our system (what actually fails intermittently and why), what regression scope looks like on this team, which tests are load-bearing (the ones reviewers always check), what&#39;s NOT worth testing here (and why).
 
-Ask ONLY question 1 first. Do not preview questions 2-N. Wait for my reply, then ask the next. Push back if my answer is generic. A test-strategy skill that says &quot;write unit tests first&quot; is useless. I need you to extract codebase-specific detail.
+Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next. Push back if my answer is generic. A test-strategy skill that says &quot;write unit tests first&quot; is useless. I need you to extract codebase-specific detail.
 
 When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.
 </code></pre>
@@ -2995,6 +2995,8 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 
 For each candidate, give me your read (fit / marginal / wrong shape) and why. If one is a clear fit, scope it into two or three sentences I can refer back to. If neither fits, tell me what&#39;s missing; if both fit, push me to pick the one that&#39;ll teach me more.
 
+Once we&#39;ve settled on one, save the scope as `./task.md` in the repo root (overwrite if it exists) so the send-off commit has something to capture and a later session can recover the task from disk.
+
 Candidates:
 </code></pre>
 <p>Push back when the read misses something about the codebase. Claude is reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you&#39;ve scoped too big; slice it down to one end-to-end thing the agent can chew on.</p>
@@ -3039,7 +3041,7 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 <h2 id="phase-3-see-the-frame">Phase 3: See the frame</h2>
 <p>Ask Claude to rearrange your memory, ADRs, and skill into Huryn&#39;s three blocks, quoting your own work for each block before naming the frame.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Look at everything in my memory, my ADRs (if any), and any skills I&#39;ve authored. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
+<pre><code>Look at the observations and rules I just added to `.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I&#39;ve authored one. Don&#39;t scan beyond those. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
 
 - Block 1: observations → hypotheses → rules (what I&#39;ve noticed about this codebase, what I&#39;ve started to suspect, what I&#39;ve decided to treat as true)
 - Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)
@@ -3693,9 +3695,9 @@ Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, o
 
 <h1 id="composing-the-workflow">Composing the workflow</h1>
 <hr>
-<p>By now you&#39;ve shipped enough on your own that the next question stops being one a prompt can answer for you. You have a kit: a test-strategy skill, a verifier, a second skill. How practitioners compose kits like this into workflows is a conversation the field is having right now. Not one converged shape. At least five live lineages, each disagreeing with the others on load-bearing details, plus a strong counter-voice arguing composition is mostly throttling. There is no prompt to drill at this point. The move is to read.</p>
-<p>Klaassen wires composition by file paths between subagents, with hard gates at every seam. Cherny runs specialised subagents in parallel across worktrees. Pocock keeps the toolkit weakly coupled and lets the human pick the chain at runtime. Cognition argues for a single writer surrounded by advisor agents that contribute intelligence, not actions. Amp ships composition primitives like <code>/handoff</code> as vendor-shipped built-ins. Ronacher, the counter-voice, argues composition is mostly throttling, not multiplication, and keeps his own skills disposable. These lineages disagree about what <em>subagent</em> even means, where memory closes, and whether the human should be doing the chaining or the chain should be doing the human.</p>
-<p>The reading walks each lineage with what&#39;s distinctive, the canonical URL, and where a practitioner running that lineage actually starts. Two or three practitioners is enough to track. Pick across the lineages whose shape resembles your day. The conversation will keep moving. The slower-moving signal is the shape of work each lineage handles.</p>
+<p>By now you&#39;ve shipped enough on your own that the next question stops being one a prompt can answer for you. You have a kit: a test-strategy skill, a verifier, a second skill. How practitioners compose kits like this into workflows is a conversation the field is having right now. Not one converged shape. At least five approaches in active use among the practitioners this curriculum surveys, plus a counter-position arguing the human reviewer is the constraint, not the composition. There is no prompt to drill at this point. The move is to read.</p>
+<p>Klaassen ships Compound Engineering as a named framework: file paths between subagents, with hard gates at every seam. Cherny publishes scattered composition primitives on X: subagents, slash commands, hooks, MCP, verifier discipline. He has not unified them under a framework label. Pocock ships a public kit of small named skills the human invokes one at a time as the task calls for them. Cognition argues for a single writer surrounded by advisor agents that contribute intelligence, not actions. Amp ships composition features and methodologies, vendor-side. Ronacher, the counter-voice, argues review bandwidth is the constraint composition cannot relax, and keeps his own skills disposable. These approaches disagree about what <em>subagent</em> even means, where memory closes, and whether the human should be doing the chaining or the chain should be doing the human.</p>
+<p>The reading walks each approach with what&#39;s distinctive, the canonical URL, and where a practitioner running it actually starts. Two or three practitioners is enough to track. Pick across the approaches whose shape resembles your day. The conversation will keep moving. The slower-moving signal is the shape of work each approach handles.</p>
 <p>This is one level higher in abstraction and composition. Compound engineering already ships as a plugin you can install. Your Claude Code can build the kit you need once it finds the right thread to pull. Choice in the world is approaching infinite. This is one of those places that calls for intuition and taste. Your intuition.</p>
 <p><a href="#supplementary-workflow-composition-lineages">Workflow composition lineages</a></p>
 </section>

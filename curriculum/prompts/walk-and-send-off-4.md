@@ -20,7 +20,7 @@ produces:
     consumed-by: []
     note: pedagogical artefact — the frame names what's there but doesn't itself flow into the M4 send-off; the underlying memory/ADRs/skills do
 ---
-Look at everything in my memory, my ADRs (if any), and any skills I've authored. Rearrange what's there into Paweł Huryn's three-block memory frame:
+Look at the observations and rules I just added to `.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:
 
 - Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)
 - Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)

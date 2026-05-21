@@ -6,6 +6,8 @@ origin: exercises/spot-gaps-build-the-loop
 requires:
   - id: two-run-gap-map
     source: prompt:spot-gaps-build-the-loop-1
+  - id: primitive-menu
+    source: prompt:spot-gaps-build-the-loop-primitives
   - id: test-strategy-skill
     source: prompt:author-test-strategy-skill-1
     conditional: m3-completed

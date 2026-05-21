@@ -50,6 +50,8 @@ Open a new Cowork session on the same folder.
 
 The live session is over. The rollout is not. Keep the folder summary and the open verification rows close to your work.
 
+**Optional bonus self-study:** if you want a second, more personal pass at the same loop, work through [Paint by agent with guardrails](#personal-site-with-guardrails). Same do → capture → reflect → sharpen move, applied to a personal site built from your own LinkedIn. Lighter stakes than the rollout system, the artifact is yours, the rules file at the close travels onto any future personal-shaped task.
+
 <!-- maintainer -->
 
 **Meta:**

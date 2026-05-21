@@ -85,6 +85,18 @@ Captured by audit subagent against the Agents-101 reference file. Some items now
 - **Newlines on copy from prompt blocks.** Fix shipped 2026-05-04: `code.innerText` → `code.textContent` in `addCopyButton` (`site/layouts/curriculum.js`). Verify newlines preserve across CLI / Cowork / Desktop / terminal paste targets before first cohort.
 - **Paths inside copied prompts auto-converted to markdown links on paste.** Fix shipped 2026-05-04: multi-format clipboard write via `ClipboardItem` (text/plain + text/html). HTML uses `<div>` + `<br>` + `&nbsp;` + `<wbr>` shape, destinations don't recognize as code (no dark-theme styling triggered) and `<wbr>` defeats URL pattern matching on `*.md` strings. Verify across Cowork / Desktop / Slack / terminal that paths land plain and newlines preserve.
 
+## 11. M1 source-shape fixes flagged via Claude Basics bonus M4 port (2026-05-21)
+
+When porting `exercises/personal-site-with-guardrails.md` to Claude Basics bonus M4 as `-cb`, the pedagogy-class judge flagged five source-shape issues that the original 2026-04-30 draft never received a pedagogy-class audit on (the class came online 2026-05-14). The `-cb` port has these fixes applied; the canonical Agents 101 file still carries the source shape. Decide whether to backport.
+
+- **Phase 1 body, scripted-reaction sentence.** *"Don't skip it, even if your instinct is 'I know what's coming.'"* prescribes overriding the student's instinct; not a forcing function. Removal test passes (Phase 1 pedagogy survives the cut). Per `check_pedagogy.md` rule 16. `-cb` cuts the sentence.
+- **Close prompt last line, *"shouldn't have to open the file."*** Exact rule 31(a) anti-pattern, explicitly tells the student not to verify at the artifact. `-cb` keeps the chat summary instruction but adds a body sentence after the prompt: open the file, read the first two rules, push back if a rule doesn't match what actually happened.
+- **No leap test in maintainer block.** Three observable Monday-morning outcomes required per rule 45. `-cb` adds them: site.html, personal-brand-generation.md, felt distinction between *generic* and *genuinely mine*.
+- **No per-phase failure mode + escape hatch.** Each phase's forcing function needs a row per rule 47. `-cb` adds a 7-row table (Phases 1–6 + Close).
+- **Phase 5 warm-session self-audit, no convenience-bias callout.** Rule 50 fires: the convenience choice (same session, no cold subagent) accepts the known LLM self-charity bias. `-cb` adds a body callout after the prompt naming the bias and offering two escape hatches (over-flag re-run, or paste Phase 1 site cold into a fresh session).
+
+Module file `getting-going.md` also had two strategy-class findings flagged at the same audit: KC bullet 3 is grammatically truncated (*"average output becomes great not because you prompted better"*, missing the *"but because [Y]"* tail) and WYL bullet 3 leads with the failure-mode noun *"fabrication"*. Both source-side too. `-cb` module fixes applied; backport pending.
+
 ## 10. Repeated-Q&A slowness audit (2026-05-15)
 
 Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-plan-2 dry-run hit 13m15s + 37.7K tokens on one Q-and-A turn. Real traps need the five-element fix (lock-in trigger + sectional Edit + three-at-a-time + slowness-watch callout + Approve section); fix-element selection depends on prompt shape (single-shot rewrite vs. iterative grill).

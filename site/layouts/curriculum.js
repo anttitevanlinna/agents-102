@@ -75,6 +75,7 @@
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
                 { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         }

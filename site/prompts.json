@@ -318,6 +318,10 @@
       {
         "id": "scoped-task",
         "source": "prompt:walk-and-send-off-1"
+      },
+      {
+        "id": "task-md",
+        "source": "prompt:walk-and-send-off-1"
       }
     ],
     "produces": [
@@ -406,13 +410,24 @@
       }
     ]
   },
+  "ae101-m5-clear-before-rerun": {
+    "key": "ae101-m5-clear-before-rerun",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/learn-from-the-test",
+    "text": "/clear",
+    "requires": [],
+    "produces": [],
+    "note": "in-session shortcut path before the M5 re-send — drops the exercise scrollback (verifier scaffolding, hook wiring, plan.md drafts) so the long-run doesn't pay Opus cache-read on the heavy prefix. ae101-m5-rerun-packaged is self-bootstrapping after this; packaging files at the worktree root + auto-loaded rules carry forward. Alternative path: open a new Claude Code session in the worktree (see Session widget in learn-from-the-test.md). New session is the default; this prompt is the in-session shortcut.\n"
+  },
   "ae101-m5-rerun-packaged": {
     "key": "ae101-m5-rerun-packaged",
     "dest": "Claude Code",
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Re-run the task we just packaged. The reference, plan.md, and verifier are at the paths we wrote in this session.\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nBefore you start, ask for or write anything else you want for this run.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
+    "text": "Run the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nBefore you start, ask for or write anything else you want for this run.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
     "requires": [
       {
         "id": "m5-worktree",
@@ -2087,6 +2102,10 @@
         "source": "prompt:spot-gaps-build-the-loop-1"
       },
       {
+        "id": "primitive-menu",
+        "source": "prompt:spot-gaps-build-the-loop-primitives"
+      },
+      {
         "id": "test-strategy-skill",
         "source": "prompt:author-test-strategy-skill-1",
         "conditional": "m3-completed",
@@ -2437,18 +2456,26 @@
   "walk-and-send-off-3": {
     "key": "walk-and-send-off-3",
     "dest": "Claude Code",
-    "context": "optional",
+    "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "You propose solutions and ask questions. Use the ask-questions tool to speed up my work.",
+    "text": "Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: `.claude/memory/` for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
     "requires": [
       {
         "id": "gap-audit-report",
         "source": "prompt:walk-and-send-off-2"
       }
     ],
-    "produces": [],
-    "note": "tool-use directive (use AskUserQuestion to speed gap-fill Q&A); no artifact flow of its own"
+    "produces": [
+      {
+        "id": "gap-fills",
+        "location": ".claude/memory/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
+        "consumed-by": [
+          "prompt:walk-and-send-off-4"
+        ],
+        "note": "2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label"
+      }
+    ]
   },
   "walk-and-send-off-4": {
     "key": "walk-and-send-off-4",
@@ -2461,6 +2488,10 @@
       {
         "id": "gap-audit-report",
         "source": "prompt:walk-and-send-off-2"
+      },
+      {
+        "id": "gap-fills",
+        "source": "prompt:walk-and-send-off-3"
       },
       {
         "id": "memory-folder",

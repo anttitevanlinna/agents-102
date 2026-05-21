@@ -6,6 +6,8 @@ origin: agentic-engineering-101/run-the-first-experiment
 requires:
   - id: scoped-task
     source: prompt:walk-and-send-off-1
+  - id: task-md
+    source: prompt:walk-and-send-off-1
 produces:
   - id: m4-starting-point-sha
     location: git (m4/<task-slug> branch, "M4 starting point" commit)

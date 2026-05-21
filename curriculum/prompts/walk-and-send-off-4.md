@@ -6,6 +6,8 @@ origin: exercises/walk-and-send-off
 requires:
   - id: gap-audit-report
     source: prompt:walk-and-send-off-2
+  - id: gap-fills
+    source: prompt:walk-and-send-off-3
   - id: memory-folder
     source: module:run-the-first-experiment
   - id: stride-adr

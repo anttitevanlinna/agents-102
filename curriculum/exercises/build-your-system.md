@@ -12,14 +12,14 @@ Start in any empty working folder you wish to use. Everything in this exercise s
 
 ## Phase 0. Add base material (3 minutes)
 
-Add one or two base materials to the folder. Use content that helps Claude answer the task, not style references yet.
+Create a `sources/` subfolder and add one or two base materials there. Use content that helps Claude answer the task, not style references yet.
 
-Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the folder.
+Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the subfolder.
 
 Good base materials:
 
 - a policy, FAQ, internal note, or pasted text file that the answer should draw from
-- a short note you write yourself, such as `source-notes.md`, with the facts, audience, and purpose of the answer
+- a short note you write yourself, such as `sources/source-notes.md`, with the facts, audience, and purpose of the answer
 
 ## Phase 1. The boring baseline (5 minutes)
 
@@ -32,7 +32,7 @@ Tell Claude the task, ask for an HTML draft, and save it in this folder. Type yo
 ```
 Draft a one-page HTML answer I can use in my own work.
 
-First read the base materials in this folder. Use them as the source material for the answer.
+First read the base materials in the `sources/` subfolder. Use them as the source material for the answer.
 
 Use no saved rules or style source yet. Create simple, self-contained HTML and CSS in one file.
 
@@ -99,7 +99,7 @@ Ask Claude to restyle the file using the folder setup you just created.
 ```
 Regenerate the HTML in `response.html`.
 
-Read the base materials again and use the folder instructions.
+Read the base materials in the `sources/` subfolder again and use the folder instructions.
 
 Keep it as simple, self-contained HTML and CSS in one file. Save the updated file.
 
@@ -125,7 +125,7 @@ Add one small rule to the right file in this folder:
 
 The rule should help with the next similar output, not everything.
 
-After adding the rule, read the base materials again and use the updated folder instructions to regenerate `response.html`.
+After adding the rule, read the base materials in the `sources/` subfolder again and use the updated folder instructions to regenerate `response.html`.
 
 Then tell me what changed in the file.
 

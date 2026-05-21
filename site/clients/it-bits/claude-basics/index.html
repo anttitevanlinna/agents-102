@@ -487,6 +487,106 @@ main::before {
     background: var(--bg-2);
 }
 
+/* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
+   in curriculum.js when an entry declares `anchors:` in its frontmatter, then
+   wrapped at DOM time by convertAnchorSentinels(). Dotted underline in the
+   accent colour so a scanning reader notices the affordance without it
+   pulling focus. Hover raises contrast; the Tufte sidenote panel (Step 3,
+   follow-up) reads the data-move attribute and surfaces the matching
+   prompt-anatomy entry. */
+.module .prompt-block .prompt-anchor {
+    border-bottom: 1.5px dotted var(--accent);
+    cursor: help;
+    transition: border-bottom-color 0.15s ease, background-color 0.15s ease;
+}
+
+.module .prompt-block .prompt-anchor:hover {
+    border-bottom-style: solid;
+    background-color: var(--accent-soft);
+}
+
+/* Anatomy popup card — surfaces the prompt-anatomy.md entry when a student
+   clicks a .prompt-anchor span. Absolute-positioned by attachAnchorPopups()
+   relative to the document, anchored to the clicked span. One popup at a
+   time; click outside or press Esc to close. Body comes from compile-anatomy
+   pre-rendered HTML (window.__ANATOMY[slug].html). */
+.prompt-anatomy-popup {
+    position: absolute;
+    z-index: 1000;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--fg-3);
+    border-radius: 4px;
+    padding: 1rem 1.2rem 1.1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.prompt-anatomy-popup__kicker {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
+.prompt-anatomy-popup__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    color: var(--fg);
+}
+
+.prompt-anatomy-popup__body p {
+    margin: 0.5rem 0;
+}
+
+.prompt-anatomy-popup__body p:first-child {
+    margin-top: 0;
+}
+
+.prompt-anatomy-popup__body p:last-child {
+    margin-bottom: 0;
+}
+
+.prompt-anatomy-popup__body code {
+    background: var(--bg-2);
+    padding: 0 0.3em;
+    border-radius: 2px;
+    font-size: 0.88em;
+}
+
+.prompt-anatomy-popup__body em {
+    color: var(--fg-2);
+}
+
+.prompt-anatomy-popup__close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.55rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--fg-3);
+    border-radius: 3px;
+    transition: color 0.12s ease, background 0.12s ease;
+}
+
+.prompt-anatomy-popup__close:hover {
+    color: var(--fg);
+    background: var(--bg-2);
+}
+
 /* Copy button — two flavours.
    1. In-header (.copy-btn--in-header): mounted into the prompt-block header,
       pushed to the right edge. Always visible, no overlay. This is the prompt
@@ -2162,12 +2262,12 @@ Stop when I say stop.
 <p><strong>Session</strong> <em>(new, &quot;Build your system - baseline&quot;)</em></p>
 <p>Start in any empty working folder you wish to use. Everything in this exercise saves there.</p>
 <h2 id="phase-0-add-base-material-3-minutes">Phase 0. Add base material (3 minutes)</h2>
-<p>Add one or two base materials to the folder. Use content that helps Claude answer the task, not style references yet.</p>
-<p>Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the folder.</p>
+<p>Create a <code>sources/</code> subfolder and add one or two base materials there. Use content that helps Claude answer the task, not style references yet.</p>
+<p>Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the subfolder.</p>
 <p>Good base materials:</p>
 <ul>
 <li>a policy, FAQ, internal note, or pasted text file that the answer should draw from</li>
-<li>a short note you write yourself, such as <code>source-notes.md</code>, with the facts, audience, and purpose of the answer</li>
+<li>a short note you write yourself, such as <code>sources/source-notes.md</code>, with the facts, audience, and purpose of the answer</li>
 </ul>
 <h2 id="phase-1-the-boring-baseline-5-minutes">Phase 1. The boring baseline (5 minutes)</h2>
 <p>Pose the task to Claude with base material, but no saved rules, no style source, and no folder instructions. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
@@ -2175,7 +2275,7 @@ Stop when I say stop.
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Draft a one-page HTML answer I can use in my own work.
 
-First read the base materials in this folder. Use them as the source material for the answer.
+First read the base materials in the `sources/` subfolder. Use them as the source material for the answer.
 
 Use no saved rules or style source yet. Create simple, self-contained HTML and CSS in one file.
 
@@ -2222,7 +2322,7 @@ The style source is:
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Regenerate the HTML in `response.html`.
 
-Read the base materials again and use the folder instructions.
+Read the base materials in the `sources/` subfolder again and use the folder instructions.
 
 Keep it as simple, self-contained HTML and CSS in one file. Save the updated file.
 
@@ -2241,7 +2341,7 @@ After saving, tell me:
 
 The rule should help with the next similar output, not everything.
 
-After adding the rule, read the base materials again and use the updated folder instructions to regenerate `response.html`.
+After adding the rule, read the base materials in the `sources/` subfolder again and use the updated folder instructions to regenerate `response.html`.
 
 Then tell me what changed in the file.
 
@@ -2673,6 +2773,7 @@ Let&#39;s focus on:
 <li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 2: new optional group-driver prompt to re-check the group&#39;s folders for late-arriving notes and redo the crux analysis if anything new shows up. Use when a participant was slow to save or had sync issues.</li>
 <li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 3: cross-pollination cycle now re-reads each target file right before appending and extends an existing &quot;Comments from...&quot; section instead of duplicating it. Reduces OneDrive write-race risk when multiple group drivers comment on the same file at once.</li>
 <li><strong>2026-05-15</strong>, M3 homework <em>Find the wrong claims</em>: source files now live in a <code>sources/</code> subfolder. Phase 1 generates from <code>sources/</code>; Phase 2 checks against <code>sources/</code>. Stops the briefing from pulling in leftover files when the participant reuses the build-your-system folder.</li>
+<li><strong>2026-05-21</strong>, M3 homework <em>Build your system</em>: Phase 0 now creates the same <code>sources/</code> subfolder. Phase 1, Phase 3, and Phase 4 prompts read base materials from <code>sources/</code>. Aligns with <em>Find the wrong claims</em> so a participant who reuses the same folder for both exercises has one filing convention, not two.</li>
 </ul>
 
 </section>
@@ -2744,7 +2845,8 @@ Let&#39;s focus on:
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' },
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]
         },
         'claude-basics': {
@@ -2847,12 +2949,14 @@ Let&#39;s focus on:
     //       trainings/<training>/(reference|supplementary)/<slug>.md
     //         →  ?file=trainings/<training>/<kind>/<slug>
     // Both patterns tolerate any number of `../` prefixes.
-    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
-    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Trailing `(#anchor)?` captures heading fragments like `target.md#5-plan-mode-at-depth`
+    // so callers can route them to the heading slug instead of dropping the fragment.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md(#[^)]*)?\)/g;
     // Workbook-side helper: same training-specific match as above but with kind+slug
     // exposed as separate capture groups, for callers that need to construct in-page
     // anchors of the form `#<kind>-<slug>`.
-    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -2864,8 +2968,8 @@ Let&#39;s focus on:
 
     function rewriteCrossDocLinks(md) {
         return md
-            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
-            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
     }
 
     // GitHub-style heading slugger. Used to generate stable `id="..."` attrs
@@ -2910,11 +3014,39 @@ Let&#39;s focus on:
     //   ```
     // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
     // following <pre>; this output is byte-equivalent to a hand-authored block.
+    // Sentinel pair using Mathematical White Square Brackets ⟦ ⟧ (U+27E6 / U+27E7).
+    // These survive markdown code-fence rendering and HTML escape unchanged
+    // (not in HTML special chars), and don't appear in any realistic prompt
+    // content — safer than ASCII-square-bracket sentinels which would collide
+    // with prompt blocks that quote markdown link syntax in the body. The
+    // decoratePrompts pass converts these to <span class="prompt-anchor"> at
+    // DOM time; the Copy button's textContent read passes through the span
+    // and lands the original prompt verbatim on the clipboard.
+    function injectAnchorSentinels(text, anchors) {
+        if (!anchors || !anchors.length) return text;
+        var out = text;
+        anchors.forEach(function (a) {
+            if (!a || !a.span || !a.move) return;
+            if (!/^[a-z0-9-]+$/.test(a.move)) return; // slug must be CSS-class-safe
+            var idx = out.indexOf(a.span);
+            if (idx < 0) return; // span no longer matches body — silent skip
+            out = out.slice(0, idx) +
+                  '⟦A:' + a.move + '⟧' +
+                  a.span +
+                  '⟦/A⟧' +
+                  out.slice(idx + a.span.length);
+        });
+        return out;
+    }
+
     function renderPromptBlock(entry) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        if (entry && entry.anchors && entry.anchors.length) {
+            text = injectAnchorSentinels(text, entry.anchors);
+        }
         var fence = '```\n' + text + '\n```';
         return label + '\n\n' + fence;
     }
@@ -3131,6 +3263,92 @@ Let&#39;s focus on:
         });
     }
 
+    // Convert ⟦A:slug⟧content⟦/A⟧ sentinels (planted by injectAnchorSentinels
+    // at prompt-expand time) into <span class="prompt-anchor" data-move="slug">
+    // wrappers in the rendered <pre><code>. Runs once per prompt block during
+    // decoratePrompts. The Copy button's textContent read sees through the
+    // span and copies the original prompt; visual treatment is CSS-driven.
+    var ANCHOR_SENTINEL_RE = /⟦A:([a-z0-9-]+)⟧([\s\S]*?)⟦\/A⟧/g;
+    function convertAnchorSentinels(pre) {
+        if (!pre) return;
+        var code = pre.querySelector('code') || pre;
+        var html = code.innerHTML;
+        if (html.indexOf('⟦A:') < 0) return;
+        var replaced = html.replace(ANCHOR_SENTINEL_RE, function (m, slug, content) {
+            return '<span class="prompt-anchor" data-move="' + slug + '">' + content + '</span>';
+        });
+        if (replaced !== html) code.innerHTML = replaced;
+    }
+
+    // Click handler on .prompt-anchor spans: look up the matching anatomy
+    // entry by data-move slug in window.__ANATOMY, render a popup card next
+    // to the anchor. One popup at a time; click another anchor → moves the
+    // popup; click outside → closes; Esc → closes. Idempotent installer:
+    // attaches one delegated click listener per root, guarded by a flag so
+    // re-renders don't double-bind. Silent no-op if anatomy data is missing.
+    function attachAnchorPopups(root) {
+        if (!root || root.__anchorPopupsBound) return;
+        root.__anchorPopupsBound = true;
+
+        var popup = null;
+        function close() {
+            if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+            popup = null;
+        }
+
+        function open(anchor) {
+            var slug = anchor.getAttribute('data-move');
+            if (!slug) return;
+            var data = (window.__ANATOMY || {})[slug];
+            if (!data) return;
+            close();
+            popup = document.createElement('div');
+            popup.className = 'prompt-anatomy-popup';
+            popup.innerHTML =
+                '<button class="prompt-anatomy-popup__close" type="button" aria-label="Close">×</button>' +
+                '<div class="prompt-anatomy-popup__kicker">Anatomy</div>' +
+                '<h3 class="prompt-anatomy-popup__title">' + esc(data.title) + '</h3>' +
+                '<div class="prompt-anatomy-popup__body">' + data.html + '</div>';
+            document.body.appendChild(popup);
+
+            // Position: prefer below + left-aligned with the anchor; clamp
+            // to viewport so the card never gets cut off on narrow windows.
+            var rect = anchor.getBoundingClientRect();
+            var popRect = popup.getBoundingClientRect();
+            var top = window.scrollY + rect.bottom + 8;
+            var left = window.scrollX + rect.left;
+            var maxLeft = window.scrollX + window.innerWidth - popRect.width - 20;
+            if (left > maxLeft) left = maxLeft;
+            if (left < window.scrollX + 20) left = window.scrollX + 20;
+            // If it'd run off the bottom of viewport, flip above the anchor.
+            var bottomOverflow = (top - window.scrollY + popRect.height) - window.innerHeight;
+            if (bottomOverflow > 0) {
+                top = window.scrollY + rect.top - popRect.height - 8;
+            }
+            popup.style.top = top + 'px';
+            popup.style.left = left + 'px';
+
+            popup.querySelector('.prompt-anatomy-popup__close')
+                .addEventListener('click', function (ev) { ev.preventDefault(); close(); });
+        }
+
+        root.addEventListener('click', function (ev) {
+            var anchor = ev.target.closest && ev.target.closest('.prompt-anchor');
+            if (anchor) {
+                ev.preventDefault();
+                open(anchor);
+                return;
+            }
+            // Click outside the popup → close (clicks inside the popup are
+            // safe; the close button handles its own dismissal).
+            if (popup && !ev.target.closest('.prompt-anatomy-popup')) close();
+        });
+
+        document.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Escape') close();
+        });
+    }
+
     function decoratePrompts(root) {
         Array.from(root.querySelectorAll('p')).forEach(function (p) {
             var strong = p.querySelector('strong');
@@ -3167,6 +3385,7 @@ Let&#39;s focus on:
             p.remove();
 
             addCopyButton(pre, header);
+            convertAnchorSentinels(pre);
         });
 
         // Universal copy buttons on every standalone <pre>.
@@ -3414,6 +3633,7 @@ Let&#39;s focus on:
         // DOM (browser only)
         decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
+        attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,

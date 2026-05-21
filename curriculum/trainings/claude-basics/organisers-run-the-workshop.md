@@ -39,6 +39,7 @@ Entries since the workbook sent on 2026-05-06.
 - **2026-05-15**, M2 *Find the rollout challenge*, Phase 2: new optional group-driver prompt to re-check the group's folders for late-arriving notes and redo the crux analysis if anything new shows up. Use when a participant was slow to save or had sync issues.
 - **2026-05-15**, M2 *Find the rollout challenge*, Phase 3: cross-pollination cycle now re-reads each target file right before appending and extends an existing "Comments from..." section instead of duplicating it. Reduces OneDrive write-race risk when multiple group drivers comment on the same file at once.
 - **2026-05-15**, M3 homework *Find the wrong claims*: source files now live in a `sources/` subfolder. Phase 1 generates from `sources/`; Phase 2 checks against `sources/`. Stops the briefing from pulling in leftover files when the participant reuses the build-your-system folder.
+- **2026-05-21**, M3 homework *Build your system*: Phase 0 now creates the same `sources/` subfolder. Phase 1, Phase 3, and Phase 4 prompts read base materials from `sources/`. Aligns with *Find the wrong claims* so a participant who reuses the same folder for both exercises has one filing convention, not two.
 
 <!-- maintainer -->
 

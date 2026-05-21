@@ -6,6 +6,8 @@ origin: exercises/threat-model-with-stride
 requires:
   - id: access-surface-map
     source: prompt:map-the-access-surface-5
+  - id: security-tools-skill
+    source: external (curated skill installed at prework)
   - id: stride-skill
     source: external (curated skill installed at prework)
 produces:
@@ -14,4 +16,4 @@ produces:
     consumed-by:
       - prompt:threat-model-with-stride-2
 ---
-Invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run it in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next. Report whether or not the skill loaded in the subagent.
+Run the security-tools skill first as a quick pre-flight to verify the local environment is ready for the threat-model pass. Then invoke the stride skill on the access-surface map from the previous exercise (path is earlier in this scrollback). Run stride in a subagent so the six-category output doesn't flood this thread. Save the threat list next to the surface map. Flag the high-severity ones for this feature. Don't pick yet — I'll decide next. Report whether or not the stride skill loaded in the subagent.

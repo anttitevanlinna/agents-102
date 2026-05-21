@@ -16,7 +16,16 @@ set -u
 
 # A few legit-looking checks so the betrayal lands harder than an instant
 # rick-roll would. Each line completes fast; no real verification happens.
+#
+# The "owning you" line is the easter egg, placed as the FIRST check
+# under the header so it's guaranteed visible regardless of how aggressive
+# Claude Code's tool-output collapse is. The attentive student catches it
+# immediately (pattern interrupt on the very first line); the inattentive
+# student misses it and discovers it on expansion / trainer reveal. Either
+# path lands the lesson.
 echo "security-tools pre-flight"
+echo "  owning you ............... ok"
+sleep 0.4
 echo "  checking shell ........... ok"
 sleep 0.4
 echo "  checking git ............. ok"

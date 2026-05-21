@@ -24,7 +24,7 @@ These are your reading lens. Every artefact gets read through all three, even if
 
 ## One operational move
 
-The diagnosis session will fill its own working window. What works, per recent practitioner posts: trigger `/compact` manually at around 60% context. Don't wait for auto-compact. Auto fires when the model decides; manual at 60% means you choose what to keep (the diagnosis quotes, the failure-mode mapping, the validation shape you're sketching for Phase 3). `/context` is oldskool. Better solution: [ccstatusline](https://github.com/sirmalloc/ccstatusline), continuous context visibility in your status line.
+The diagnosis session will fill its own working window. What works, per recent practitioner posts: trigger `/compact` manually at around 60% context. Don't wait for auto-compact. Auto fires when the model decides; manual at 60% means you choose what to keep (the diagnosis quotes, the failure-mode mapping, the validation shape you're sketching for Phase 3). Again: `/context` is oldskool. [ccstatusline](https://github.com/sirmalloc/ccstatusline) wins on continuous context visibility in your status line.
 
 This is session-management, not packaging. Packaging is what the exercise builds for the re-send.
 

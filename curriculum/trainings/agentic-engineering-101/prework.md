@@ -1,6 +1,8 @@
 # Prework: before Module 1
 
-> Run prework on `high` thinking effort. xhigh adds latency without commensurate value on the mechanical setup work.
+> Pick your model when you open a session. `/model` swaps between Sonnet and Opus. Sonnet runs every exercise in this training. Opus is the heavier option if you want it. Your call.
+>
+> Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. M2 calls out a medium override at the top of that module.
 
 Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked. (The framing lands live in Module 1; no pre-read.)
 

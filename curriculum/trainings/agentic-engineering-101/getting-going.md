@@ -1,6 +1,6 @@
 # Getting going + context (+ MCP)
 
-> Run M1 on `high` thinking effort. xhigh adds latency without commensurate value on a small fix.
+> Run M1 on `high` thinking effort (the prework default).
 
 ## Big Idea
 The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session, close the bug's ticket via one connector. The loop every module after this one rides on.

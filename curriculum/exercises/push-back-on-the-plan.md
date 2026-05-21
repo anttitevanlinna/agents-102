@@ -20,6 +20,8 @@ Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'l
 
 {{prompt:push-back-on-the-plan-1}}
 
+Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While Claude works, take in the side material that fits the wait: the [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md) if you skipped it in the gap, or the plan-mode-at-depth section of [Claude Code for engineers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) for the approval-paths table. The pattern repeats every module: when Claude is on a long-running prompt, that's when you take in selected side reading or watch a demo. Wait isn't dead time.
+
 Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan all the way through before pushing back.** Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice

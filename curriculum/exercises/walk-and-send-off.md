@@ -55,9 +55,9 @@ Memory-path note, first time through: the default home is `.claude/memory/` in y
 
 **If `.claude/memory/` is new to your repo, ask Claude to add it to `.gitignore` before any writes.** The fills below land there; you don't want them tracked.
 
-This is a convention you're authoring, not a Claude Code feature. The agent reads `.claude/memory/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are.
+This is a convention you're authoring, not a Claude Code feature. The agent reads `.claude/memory/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are. If you'd rather think of this as `CLAUDE.md` + context files in a subdirectory, the mechanism is the same: files on disk, structured by convention, read when a prompt names them. The word *memory* is shorthand for the structure (Huryn's three blocks below), not a Claude Code feature.
 
-Claude Code also has an auto-memory of its own at `~/.claude/projects/<project>/memory/`, written by the agent for its own recall and surfaced via `/memory`. AE101 leaves that one out by design. You choose what is worth remembering and write it yourself. Auto-memory has its place; here, compounding stays legible, gitignored, and yours.
+Claude Code's own auto-memory lives at `~/.claude/projects/<project>/memory/`, written by the agent for its own recall and surfaced via `/memory`. That one has invited criticism: opaque storage, agent-written, hard to audit. AE101 leaves it out by design and gives you a folder you steer instead. If the word *memory* rubs you wrong, it's likely auto-memory you're reacting to; what you're authoring here is something different.
 
 Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.
 

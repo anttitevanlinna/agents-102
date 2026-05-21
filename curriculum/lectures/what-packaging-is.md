@@ -37,6 +37,14 @@ That matters because the LLM is forgetful. Drift, half-remembered rules, the lon
 
 Practitioner convention. Must happen → hook. Recommended → prompt or rule. Anything that breaks the work if it skips belongs in a hook (the verifier you just wrote; a pre-commit guard; a session-start context loader). Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget." Bought at the cost of flexibility, given to the work that demands certainty.
 
+The canonical examples carry the shape. Your repo has its own demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more.
+
+Open the session where you built the verifier. Ask Claude to propose five hooks tied to this repo and the work you just did, beyond formatting and linting.
+
+{{prompt:what-packaging-is-1}}
+
+Read what comes back. The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.
+
 ## What you didn't build today
 
 **Subagents for isolation.** When a phase of a long task wants a sandbox, exploring a third-party API, reading untrusted code, doing a search you'd rather not pollute the main session with, spin a subagent and let it return only what matters. The main session stays clean; the subagent's context is discarded after it reports. Adjacent move to the verifier; same instinct: keep the long-running thread coherent by routing the noisy work elsewhere.
@@ -74,8 +82,8 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a)
-- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--what-packaging-is.strategy.json - extension-primitives divergence beat added 2026-05-15)
+**Quality:** compendium-audited 2026-05-21 (writing@2b5ae1b story@2b5ae1b technical@2b5ae1b behavior@2b5ae1b pedagogy@2b5ae1b strategy@2b5ae1b)
+- judges @2b5ae1b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–15 min closing lecture for M5. Names Ronacher's three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide. Bridges to M6's evals-as-team-infrastructure move.*
 **Word count:** ~770 words body.

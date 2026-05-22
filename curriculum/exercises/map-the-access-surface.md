@@ -33,7 +33,7 @@ Ask Claude to invoke the access-control-analysis skill on the feature you'll nam
 {{prompt:map-the-access-surface-2}}
 
 
-Answer the one-sentence feature question. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill reads the code, walks the surfaces, and produces the map. You watch.
+Paste a plan path, a ticket link, a design-doc path, or the feature description, Claude reads whatever you give it. Then send. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map. You watch.
 
 ## Phase 2: walk the map in conversation
 
@@ -43,7 +43,12 @@ Ask Claude to walk you through the surface map in chat (categories, key findings
 
 ## Phase 3: write the delta
 
-Now you decide.
+Now you decide which surface goes on each side of the delta. Two reads:
+
+- Where did the map flag something you'd have under-weighted? Lower-risk in your read, higher-risk in the skill's.
+- What's missing that you know matters? Often the "weird bit" of your feature, the part you'd describe as not-quite-standard.
+
+If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those, push back if the reasons read generic.
 
 Ask Claude to integrate the surface the skill called out harder than you would have into the map.
 

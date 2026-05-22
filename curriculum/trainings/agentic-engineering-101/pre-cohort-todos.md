@@ -43,11 +43,6 @@ Landed in-session 2026-05-20: M2→M3 task-continuity trap (sentence at `plan-mo
 
 ### Tactical fixes ready for an agent pass
 
-- **M1, clarify "the room harvests everyone's before the training adds its own".** Phrasing is opaque on first read; the meta-pattern (cohort surfaces individual cases, then the lecture names what they share) is the move but the sentence reads as a riddle. One-sentence rewrite. Source: [M1 raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M1.md).
-
-
-- **M2, tag each prompt with expected Claude Code mode.** Prompts currently don't name whether they want plan / edit / auto-accept. Adding a mode tag (or chip in the rendered prompt block) speeds the student's read. Source: [M2 raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M2.md). May want renderer-side support (tag in prompt frontmatter → chip in rendered block); design before implementing.
-
 - **Cohort-validate the `medium` recommendation on M2 + M3.** Two modules carry a medium thinking-effort recommendation: M2 (`plan-mode-done-right.md:3`, recommended for the slot) and M3 (`earn-the-trust.md:3`, opt-in if progress feels sluggish). Neither has been run on medium by a cohort. After the next AE101 cohort: confirm medium holds on M2 (lock it) or fall back to `high` and remove the override; same call on M3's opt-in (keep, remove, or sharpen the trigger language). Source: [M2 raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M2.md).
 
 
@@ -67,10 +62,6 @@ Landed in-session 2026-05-20: M2→M3 task-continuity trap (sentence at `plan-mo
 - **prework, restructure step 4 to lead with the prompt.** Deferred from 2026-05-20 in-session bundle (bigger reshape than the 4-edit bundle scope). Current Step 4 (lines 38-52) has heading + 3 context paragraphs + prompt + more guidance + 2 more prompts. Restructure: lead with a one-sentence "what you're doing" + first prompt, then context paragraphs after. Source: [prework raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/prework.md). Wants maintainer review before landing, the inverted shape diverges from the AE101 default (body sets up, prompt fires).
 
 ### Tactical fixes requiring investigation before patching
-
-- **M3 "Phase 3 scaffolding", which phase?** Learner noted (M3 11:34Z) *"Phase 3 is unclear and can go wrong if you don't know what you're doing"* without naming which exercise. M3 has three exercises, each with a Phase 3. Most plausible candidates: `exercises/map-the-access-surface.md` Phase 3 (delta write, lines 44-55) or `exercises/author-test-strategy-skill.md` Phase 3 (ship, lines 40-50). Investigation: read the M3 transcript scrollback against each candidate phase to identify which one the learner hit. Then add "Claude proposes, you redirect" scaffolding. Source: [M3 raw, 11:34Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M3.md).
-
-- **"guest" / "quest" typo (M3), check renderer chain.** Source grep of `exercises/open-the-side-quest.md` and `trainings/agentic-engineering-101/earn-the-trust.md` shows every instance reads *"side quest"* (correct). The learner saw the typo (M3 10:45Z); investigate whether `site/curriculum.html`, the workbook renderer, or the rendered live site introduces the swap. Source-side is clean. Source: [M3 raw, 10:45Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M3.md).
 
 ### Site / renderer (not curriculum body)
 

@@ -29,7 +29,7 @@ After this module, you will be able to:
 
 **The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work?
 
-The room harvests everyone's before the lecture names the pattern.
+Everyone names a moment first; the lecture names the pattern.
 
 [Lecture: When a plan is good](lectures/when-a-plan-is-good.md)
 
@@ -64,11 +64,9 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 ## Next
 
-You built a plan you trust without running it, and you ran a second-pass walk-down on something small enough that the pairing *felt* worth the extra read. At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch the second read surfaced today, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
+At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
 
-You can also just run the plan. You choose.
-
-Close this session when the second read lands. The next module opens fresh in the repo with the feature you'll bring. M3 is not a continuation of this plan, the feature comes from your backlog, not from here.
+Ask Claude where it wrote the plan file, note the path; M3 reads it. Close this session when the second read lands. M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
 ## Pre-reads for Module 3
 

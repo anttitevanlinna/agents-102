@@ -40,7 +40,7 @@ Stuck on the soft item? Ask Claude which step it's least confident about. That a
 
 ## Phase 4: Second-pass read
 
-Now hand the plan to a second agent that reads differently than you do.
+Now hand the plan to a second agent that reads differently than you do. Still in plan mode, the plan file is the artifact you're walking, and the lock-it-in convention only fires inside plan mode.
 
 Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.
 
@@ -67,6 +67,8 @@ Then just hit stop.
 ## Phase 5: Stop. See the design pattern
 
 **Don't execute the plan.** The work of making it good is the exercise. Execution is next module's concern.
+
+Out of plan mode now, you approved and stopped, so Claude Code is back to default mode for this last beat.
 
 Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
 

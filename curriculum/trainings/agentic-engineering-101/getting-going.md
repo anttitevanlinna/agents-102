@@ -20,7 +20,7 @@ After this module, you will be able to:
 
 **The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
 
-The room harvests everyone's before the training adds its own.
+Everyone names a trick first; the training picks up from there.
 
 [Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)
 
@@ -45,7 +45,7 @@ The room harvests everyone's before the training adds its own.
 - Closing the ticket via connector is the first move past the repo. The loop ends outside the code
 
 ## Next
-Module 1 ran the loop once on a trivial bug, no plan mode. Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session when the ticket lands; Module 2 opens fresh in the same repo.
+Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session when the ticket lands; Module 2 opens fresh in the same repo.
 
 ## Homework after Module 1, between-module reading
 

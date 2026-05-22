@@ -9,7 +9,7 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 M3 continues in the same repo as M1 and M2. The session opens at the first exercise.
 
-Bring a small feature you're working on right now. **This is not a continuation of the M2 plan, pick a real feature from your backlog.** Not a typo-fix, not a quarter-long epic. Something with an external or user-facing surface that you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
+Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Not a typo-fix, not a quarter-long epic. Something you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
@@ -78,9 +78,7 @@ Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to 
 
 ## Bring to Module 4
 
-One scoped task you'd send off rather than nudge bit by bit. Picked, sized, named in one sentence.
-
-**Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
+**One scoped task you'd send off rather than nudge bit by bit. Not an epic. Not a typo-fix. A real slice with a 'done' you can name in a sentence.**
 
 Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 

@@ -2,7 +2,7 @@
 
 **Time: ~5 min**
 
-Module 3 runs in two windows. Security is the main guest in your Module 2 repo. Quality is a side-quest in a sibling worktree.
+Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
 
 A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn't share a scrollback. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (`CLAUDE.local.md`, `.claude/memory/`) don't sync between worktrees, they get copied across once at fork time, then evolve independently.
 

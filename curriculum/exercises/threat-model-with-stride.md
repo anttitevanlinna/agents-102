@@ -43,6 +43,14 @@ Read it. If the Decision section reads like it was written for a compliance revi
 
 If STRIDE's six categories feel like the wrong lens for your feature (some features are really abuse-case or insider-threat shaped, where Elevation-of-Privilege + Repudiation carry everything and Spoofing + Tampering don't fit), say so in the Alternatives considered section. *"STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y's terms"* is a legitimate ADR move. The skill is a tool; the call is yours.
 
+**Where did the ADR actually land?** Check the path Claude proposed. Is it in your main session's repo, or in the M3 worktree?
+
+If it's in the main repo, skip ahead.
+
+If it's in the worktree, the agent reasoned itself there. M3 forked a worktree at turn 1, and "this is M3 work" has been the scrollback's framing since. From the agent's vantage, the worktree was created specifically *for M3*, so M3's artifacts look like they belong there. The fork prompt called it "the side-quest"; the agent inferred "M3 = side-quest = worktree" and skipped the architectural detail that only the *quality* side belongs there. `pwd` would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.
+
+Just tell Claude to move it over.
+
 Ask Claude whether this ADR rides into future sessions automatically.
 
 {{prompt:threat-model-with-stride-4}}

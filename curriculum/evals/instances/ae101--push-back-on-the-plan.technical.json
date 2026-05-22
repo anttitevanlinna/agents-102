@@ -10,61 +10,61 @@
       "rule_lead": "Verify capabilities BEFORE asserting.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Plan-mode activation and permission-modes URL within compendium freshness; maintainer block dates citations explicitly (2026-04-22).",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 6,
-      "rule_lead": "Known correct Claude Code facts (Plan mode = Shift+Tab cycle or /plan, NOT Shift+P).",
+      "rule_lead": "Known correct Claude Code facts (Plan mode = Shift+Tab, NOT Shift+P).",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "File uses 'Shift+Tab until the status bar shows plan' — matches canonical fact. No Shift+P drift.",
+      "fix_hint": "Body uses 'Shift+Tab until the status bar shows plan' — matches canonical fact in compendium §6.",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
       "rule_lead": "Sessions are the unit of work.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Session widget 'Module 2 - Plan mode done right' + 'Start a new Claude Code session at your repo root' uses correct vocabulary.",
+      "fix_hint": "Exercise has no session widget — the plan-mode shift happens inside the existing M2 session opened upstream by the module file.",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 12,
-      "rule_lead": "No as-is imports from the internet — fork + LICENSE + attribution.",
+      "rule_lead": "No as-is imports — fork + LICENSE + attribution.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Maintainer block names the fork path (curriculum/skills/external/pocock-skills/grill-me/), LICENSE preservation, commit SHA, MIT license. Fork directory exists on disk (SKILL.md present).",
+      "fix_hint": "Pocock grill-me forked into curriculum/skills/external/pocock-skills/grill-me/ (SKILL.md present on disk); MIT license + commit 62f43a1 + re-verification date 2026-05-15 all named in maintainer block.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
-      "rule_lead": "No placeholders inside fenced blocks.",
+      "rule_lead": "No placeholders inside fenced blocks; open-hook for genuine student input.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "P2 prompt closes with 'My task:' open-hook — correct per rule 1d (student input genuinely required: their backlog task).",
+      "fix_hint": "push-back-on-the-plan-1 uses open-hook ('My task:') for the student's backlog task — correct per rule 1d. No bracket placeholders in any fence.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
-      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "rule_lead": "Action lead-in.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All four prompts carry semantic lead-ins (plan, walk down branches, name the design pattern, auto-load query).",
+      "fix_hint": "All three included prompts carry semantic lead-ins (plan the task; walk down branches; name the design pattern).",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 3,
-      "rule_lead": "Canonical presentation shape: lead-in, label, fenced block.",
+      "rule_lead": "Canonical presentation shape.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All prompts use `**Prompt** *(Claude Code)*` label, blank line, fenced block. No custom labels.",
+      "fix_hint": "All prompts render as `**Prompt** *(Claude Code)*` + fenced block via expand-md.js; mode-aware sentinels (⟦M:plan⟧) on plan-mode prompts; no custom labels.",
       "blocking": false
     },
     {
@@ -73,25 +73,25 @@
       "rule_lead": "Skills invoke by name, never by path.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No skill invocations inside prompt fences. Grill-me skill referenced in maintainer block as design source only.",
+      "fix_hint": "No skill invocations inside fenced prompts. Grill-me referenced only as design credit in maintainer block.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "P2 prompt back-references 'the current plan' (file written by P1); P3 references 'this session' (scrollback). Chain robust.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "Preamble before action — design around it (4+ sub-steps or plan-mode trigger).",
-      "verdict": "REVISE",
-      "evidence": "P2 prompt (Phase 2) invokes plan mode and names 4+ sub-steps (files touched, shape of the change, tests, what to check before done) — rule 17 structural trigger fires. No in-fence 'No preamble' suppressor or body primer immediately after the fence cuing student to skim past Claude's narration.",
-      "fix_hint": "Add either an in-fence final line ('No preamble. Begin reading the codebase.') or a body primer right after the fence ('Claude will narrate before reading; skim past the opening sentence and look for the plan file path.'). Non-blocking — pattern, not correctness violation.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 24,
-      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "rule_lead": "Preamble before action — design around it (4+ sub-steps / plan-mode trigger).",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No absolute paths or cd commands inside fences.",
+      "fix_hint": "Body around push-back-on-the-plan-1 frames the long plan-mode wait explicitly ('Plan mode takes minutes on real codebases. Eight to twelve isn't unusual'); paragraph after the fence cues the student on what to look for in the plan file. Preamble absorbed into design.",
       "blocking": false
     },
     {
@@ -100,7 +100,7 @@
       "rule_lead": "Strong-bold prompt label is exactly **Prompt**.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Expanded output emits `**Prompt** *(Claude Code)*` for each prompt; renderer match preserved.",
       "blocking": false
     },
     {
@@ -109,25 +109,43 @@
       "rule_lead": "No module-name references in prompt prose.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Body uses 'next module's concern' (not 'M3'); prompts contain no M1-M8 tokens; maintainer-block M-references are exempt.",
+      "fix_hint": "Prompt bodies contain no M-tokens. Body uses 'next module's concern' rather than 'M3'; maintainer-block M-references exempt.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A needs operator-trigger gating + sectional edits + slowness watch.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "push-back-on-the-plan-2 carries the five-element shape: 'Don't touch the plan file until I say lock it in' (trigger), 'use Edit on the changed section, not Write on the whole file' (sectional), three-at-a-time batching (cadence), the 'If it feels sluggish, ask why' blockquote callout right after the fence (slowness-watch), and the explicit ## Approve section (operational trigger home).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "permission-mode frontmatter + chip when mode matters.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Plan-mode-dependent prompts (push-back-on-the-plan-1, -2, -2-original) carry ⟦M:plan⟧ sentinel in expanded output (frontmatter permission-mode field declared). push-back-on-the-plan-3 (post-approval, default mode per body 'Out of plan mode now') carries no chip — correctly absent.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Every claim has [source-type] label + URL.",
-      "verdict": "REVISE",
-      "evidence": "Maintainer block 'Frameworks riffed on' bullet: mattpocock/skills grill-me at https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md returned 404; raw.githubusercontent equivalent also 404. Repo root (github.com/mattpocock/skills) is alive but the grill-me/SKILL.md path no longer resolves at commit a6bdfd9 on main.",
-      "fix_hint": "Re-verify the skill path on mattpocock/skills (may have moved, been renamed, or commit a6bdfd9 is no longer reachable on main). Either update the URL to a live commit-pinned permalink, point at the forked copy at curriculum/skills/external/pocock-skills/grill-me/, or mark [UNVERIFIED ATTRIBUTION] until resolved. Non-blocking because the claim sits in maintainer-block attribution prose, not in student-copied content, and the forked-copy exists in-repo (preserving the attribution chain).",
+      "rule_lead": "Source URL + type label.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Maintainer block 'Frameworks riffed on' carries URL + [practitioner direct] label on Anthropic permission-modes (2026-04-22), Pocock grill-me (commit 62f43a1, re-verified 2026-05-15), and Klaassen compound engineering. Martin ('What would have to be true') is cultural-vocab — name-only attribution acceptable per §1 carve-out.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness 6 months.",
+      "rule_lead": "Freshness — 6 months.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All cited dates (2026-04-22 permission-modes, 2026-04-21 Klaassen run) within window.",
+      "fix_hint": "All cited dates (2026-04-21 Klaassen, 2026-04-22 Anthropic docs, 2026-05-15 Pocock re-verification) within 6 months of audit date 2026-05-22.",
       "blocking": false
     },
     {
@@ -136,28 +154,54 @@
       "rule_lead": "Zombie stat guard.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No round-number AI failure stats in this file.",
+      "fix_hint": "No round-number AI failure stats cited.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Load-bearing forcing functions ('three at a time', 'Don't touch the plan file until lock it in', 'use Edit on the changed section') live inside push-back-on-the-plan-2 fence; body callouts (slowness-watch, timebox) sit alongside as recovery moves per rule 48.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Exercise builds no verification machinery — pure plan-reading + push-back. Judge-building lands in M3.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "Context-loading tier reveal is not the beat of this exercise.",
       "blocking": false
     }
   ],
   "platform_claims_checked": [
-    {"claim": "Shift+Tab until the status bar shows plan", "line": 24, "verdict": "PASS", "source": "compendium"},
-    {"claim": "keep planning with feedback (approval-prompt option)", "line": 36, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Claude Code's plan directory (auto, descriptive filename)", "line": 0, "verdict": "PASS", "source": "inferred"},
-    {"claim": "./CLAUDE.local.md auto-loads (closing prompt's framing)", "line": 73, "verdict": "PASS", "source": "compendium"}
+    {"claim": "Shift+Tab until the status bar shows plan", "line": 23, "verdict": "PASS", "source": "compendium"},
+    {"claim": "keep planning with feedback (approval-prompt option)", "line": 29, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Claude Code writes plan file to its plan directory with descriptive name", "line": 25, "verdict": "PASS", "source": "compendium"},
+    {"claim": "./CLAUDE.local.md auto-loads (Debrief framing)", "line": 84, "verdict": "PASS", "source": "compendium"}
   ],
   "citations_checked": [
-    {"line": 0, "claim": "Anthropic plan-mode docs (permission-modes.md, 2026-04-22)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 0, "claim": "mattpocock grill-me skill (commit a6bdfd9, 2026-04-22)", "label_present": false, "url_present": true, "url_alive": false, "evidence_level_honest": true},
-    {"line": 0, "claim": "Klaassen compound engineering (every.to source-code)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 0, "claim": "Roger Martin 'What would have to be true' (Playing to Win)", "label_present": false, "url_present": false, "url_alive": null, "evidence_level_honest": true}
+    {"line": 105, "claim": "Anthropic plan-mode docs (permission-modes.md, 2026-04-22)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 106, "claim": "Pocock grill-me skill, MIT, commit 62f43a1, re-verified 2026-05-15", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 107, "claim": "Klaassen compound engineering definitive guide (every.to)", "label_present": true, "url_present": true, "url_alive": null, "evidence_level_honest": true},
+    {"line": 108, "claim": "Roger Martin 'What would have to be true' (Playing to Win)", "label_present": false, "url_present": false, "url_alive": null, "evidence_level_honest": true}
   ],
   "skills_referenced": [],
   "urls_sampled": [
     {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200},
-    {"url": "https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md", "alive": false, "status_code": 404},
-    {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200}
+    {"url": "https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md", "alive": true, "status_code": 200}
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 0
 }

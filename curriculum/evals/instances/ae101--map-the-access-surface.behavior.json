@@ -3,18 +3,54 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/map-the-access-surface.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
+  "trace_status": "cached",
   "prompts_evaluated": 5,
   "prompts_findings": [
-    {"prompt_index": 1, "prompt_lead": "List my installed skills. Tell me also their storage location and whether or not", "verdict": "PASS", "load_bearing": false, "risks_fired": []},
-    {"prompt_index": 2, "prompt_lead": "Invoke the access-control-analysis skill on the feature I'll name. Save the surf", "verdict": "PASS", "load_bearing": true, "risks_fired": [{"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook + tool-call compresses preamble.", "fix_hint": "No edit."}]},
-    {"prompt_index": 3, "prompt_lead": "Read the surface map you wrote at the path you told me. Walk me through it in ch", "verdict": "PASS", "load_bearing": true, "risks_fired": [{"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'Concise' instruction compresses self-flattery; phase-3 push-back is the verification beat.", "fix_hint": "No edit."}]},
-    {"prompt_index": 4, "prompt_lead": "Update the surface-map file in the temp directory to integrate the delta below —", "verdict": "PASS", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "Temp-dir target + show-diff requirement; carve-out applies (temp-dir is ephemeral working draft, not personal-rules).", "fix_hint": "No edit; show-diff is the safety net."},
-      {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Show-diff gates the write.", "fix_hint": "No edit."}
-    ]},
-    {"prompt_index": 5, "prompt_lead": "Add a new surface to the map that the skill didn't catch but matters in this cod", "verdict": "PASS", "load_bearing": true, "risks_fired": [{"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout 'Push back on the sharpening question' is the codebase-specificity recovery.", "fix_hint": "No edit; body-callout mitigation present."}]}
+    {
+      "prompt_index": 1,
+      "prompt_lead": "List my installed skills. Tell me also their storage location and whether or not",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Invoke the access-control-analysis skill on the feature I'll name. Save the surf",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook + skill invocation; tool-call shape compresses preamble.", "fix_hint": "No edit warranted — open-hook + subagent dispatch keeps preamble brief."}
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Read the surface map you wrote at the path you told me. Walk me through it in ch",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'Walk me through' invites favourable characterisation of subagent output; 'concise' instruction compresses the risk.", "fix_hint": "Phase 3 push-back beat is the verification — no in-prompt edit warranted at low confidence."}
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Update the surface-map file in the temp directory to integrate the delta below —",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "Temp-dir target (Claude-chosen, ephemeral, outside repo). 'integrate' is reshape-intent on a working draft. Show-diff requirement gates surprise rewrites; integrate-verb carve-out applies on the ephemeral working draft.", "fix_hint": "Show-diff is the safety net — no edit."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Show-diff before commit gates the write.", "fix_hint": "No edit."}
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Add a new surface to the map that the skill didn't catch but matters in this cod",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Why-skill-missed sentence may go generic; body callout 'Push back on the sharpening question until the reason names something specific to your codebase' is the recovery.", "fix_hint": "Body-callout mitigation present — no edit."}
+      ]
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 4
 }

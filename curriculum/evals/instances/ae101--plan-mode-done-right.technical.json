@@ -19,7 +19,7 @@
       "rule_lead": "Known correct Claude Code facts: Plan mode = Shift+Tab cycle OR /plan.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Maintainer line 146 names 'Shift+Tab cycle (CLI) or the mode dropdown (Desktop)'. Matches compendium §6 wording exactly; no Shift+P misclaim.",
+      "fix_hint": "Frameworks-block names 'Shift+Tab cycle (CLI) or the mode dropdown (Desktop)'; leap-test #1 also names 'Shift+Tab cycle'. Matches compendium §6 verbatim — no Shift+P misclaim.",
       "blocking": false
     },
     {
@@ -28,7 +28,7 @@
       "rule_lead": "Auto-load is filename-based, not folder-based.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Plug points + artefact contracts state the auto-load semantics correctly: ./CLAUDE.local.md + ~/.claude/CLAUDE.md auto-load; ~/.claude/memory/<file>.md only loads via @import or named-path. Matches §6d verbatim.",
+      "fix_hint": "Plug Points + Artefact Contracts state auto-load semantics correctly: ./CLAUDE.local.md + ~/.claude/CLAUDE.md auto-load; ~/.claude/memory/<file>.md only loads via @import or named-path. Matches §6d.",
       "blocking": false
     },
     {
@@ -37,7 +37,7 @@
       "rule_lead": "Sessions are the unit of work.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prework uses 'Open a new Claude Code session in the repo you used for Module 1' — sessions-as-unit phrasing.",
+      "fix_hint": "Bridge text ('M3 opens fresh and runs security skills...') uses session-as-unit phrasing; no 'open Claude Code in' substitution drift.",
       "blocking": false
     },
     {
@@ -46,16 +46,16 @@
       "rule_lead": "Practitioner writing on employer's venue: label [practitioner direct, vendor venue].",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Maintainer line 147 labels Klaassen on every.to as [practitioner direct, vendor venue] per the 2026-05-14 carve-out. Correct.",
+      "fix_hint": "Klaassen on every.to labeled [practitioner direct, vendor venue] per the 2026-05-14 carve-out. Correct.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "source-type",
-      "rule_lead": "Anthropic product docs labeled as reference, not evidence.",
+      "rule_lead": "Source-type labels in maintainer block.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Maintainer line 146 labels code.claude.com/docs as [practitioner direct] — functions as a capability reference, not a research evidence claim. Acceptable in context; not student-facing.",
+      "fix_hint": "Plan-mode docs labeled [practitioner direct] in Frameworks block; Klaassen labeled [practitioner direct, vendor venue]; Martin treated as cultural-vocab (vision-layer, no URL required per §1 cultural-vocab carve-out).",
       "blocking": false
     },
     {
@@ -64,7 +64,7 @@
       "rule_lead": "Cite within 6 months OR explicitly framed historical.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Willison piece (June 2025) explicitly framed as 'foundational framing... used as reference not as fresh evidence' — meets historical-context carve-out.",
+      "fix_hint": "Willison piece (June 2025) explicitly framed as 'foundational framing... used as reference not as fresh evidence' — meets historical-context carve-out. OWASP framed as broader-checklist reference.",
       "blocking": false
     },
     {
@@ -82,7 +82,7 @@
       "rule_lead": "No placeholders inside fenced blocks.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Single prompt ae101-m2-integrate-branch carries no bracketed placeholders; references 'this session' and named paths only.",
+      "fix_hint": "Both referenced prompts (push-back-on-the-plan-4, ae101-m2-integrate-branch) carry no bracketed placeholders.",
       "blocking": false
     },
     {
@@ -91,7 +91,7 @@
       "rule_lead": "One-sentence action lead-in.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Lead-in: 'Ask Claude to integrate the one branch that earned itself into your personal ./CLAUDE.local.md, or to say so and stop if nothing did.'",
+      "fix_hint": "Body lead-ins present for both prompts — 'Before saving, ask Claude whether anything from this session has made it to auto-load yet' and the integrate-branch lead-in.",
       "blocking": false
     },
     {
@@ -100,7 +100,7 @@
       "rule_lead": "Canonical presentation shape — lead-in, label with destination chip.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Expanded prompt has '**Prompt** *(Claude Code, only if something earned itself)*' destination chip; matches §3 + §28 renderer match exactly.",
+      "fix_hint": "Expanded prompts render '**Prompt** *(Claude Code)*' and '**Prompt** *(Claude Code, only if something earned itself)*' destination chips; matches §3 + §28.",
       "blocking": false
     },
     {
@@ -118,7 +118,7 @@
       "rule_lead": "Preamble before action — structural trigger.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Single short prompt with no plan-mode invocation and no 4+ named sub-steps — preamble-suppressor not required.",
+      "fix_hint": "Neither prompt invokes plan mode or carries 4+ named sub-steps — preamble-suppressor not required.",
       "blocking": false
     },
     {
@@ -127,40 +127,96 @@
       "rule_lead": "Don't restate session CWD inside the prompt body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prompt uses ./CLAUDE.local.md as relative subpath — no absolute paths, no cd commands.",
+      "fix_hint": "Prompts use ./CLAUDE.local.md as relative subpath — no absolute paths, no cd commands.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 31,
-      "rule_lead": "Registry marker reference.",
+      "rule_lead": "Prompts live in registry; module references via marker.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Body uses {{prompt:ae101-m2-integrate-branch}} marker; expander resolves to canonical fenced shape.",
+      "fix_hint": "Body uses {{prompt:push-back-on-the-plan-4}} and {{prompt:ae101-m2-integrate-branch}} markers; both registry entries exist with correct frontmatter.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "No module-name refs in prompt prose.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Neither registry prompt body contains bare M-tokens. Module file body uses 'Module 1' / 'Module 2' / 'Module 3' references — exempt because rule 32 fires on prompt body, not host file body.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "ae101-m2-integrate-branch (3 logical moves: file-write, chat-output, null-case) is split into 3 paragraphs; push-back-on-the-plan-4 is single short prompt.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism — every named tool/path exists.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Referenced exercises (push-back-on-the-plan, extract-the-task-shaping-rule) and lectures (when-a-plan-is-good, where-the-rule-could-live) all present in curriculum/exercises and curriculum/lectures. Reference docs (multi-session-git.md, claude-code-for-engineers.md) present.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory that does not force is worse than no rule.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Save-the-rule beat uses ./CLAUDE.local.md (auto-load filename per platform §6d) — the rule fires next session because the location auto-loads.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No verification machinery built in this module — plan-mode push-back is the move; no judges/hooks/loops.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "push-back-on-the-plan-4 ('are these rules auto-loaded to each session context?') is the auto-load tier-1 surface-reveal move per pedagogy §37.",
       "blocking": false
     }
   ],
   "platform_claims_checked": [
-    {"claim": "Shift+Tab cycle (CLI) activates plan mode", "line": 146, "verdict": "PASS", "source": "compendium"},
-    {"claim": "mode dropdown (Desktop) activates plan mode", "line": 146, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Push-back via 'keep planning with feedback' at the approval prompt", "line": 146, "verdict": "PASS", "source": "compendium"},
-    {"claim": "./CLAUDE.local.md auto-loads as repo-personal, gitignored", "line": 116, "verdict": "PASS", "source": "compendium"},
-    {"claim": "~/.claude/CLAUDE.md auto-loads as cross-repo", "line": 116, "verdict": "PASS", "source": "compendium"},
-    {"claim": "~/.claude/memory/<file>.md does NOT auto-load unless @import-wired", "line": 116, "verdict": "PASS", "source": "compendium"},
-    {"claim": "Ctrl+G plan-file edit flow named as a practitioner primitive", "line": 105, "verdict": "PASS", "source": "inferred"}
+    {"claim": "Shift+Tab cycle (CLI) activates plan mode", "line": 126, "verdict": "PASS", "source": "compendium"},
+    {"claim": "mode dropdown (Desktop) activates plan mode", "line": 151, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Push-back via 'keep planning with feedback' at the approval prompt", "line": 151, "verdict": "PASS", "source": "compendium"},
+    {"claim": "./CLAUDE.local.md auto-loads as repo-personal, gitignored", "line": 121, "verdict": "PASS", "source": "compendium"},
+    {"claim": "~/.claude/CLAUDE.md auto-loads as cross-repo", "line": 121, "verdict": "PASS", "source": "compendium"},
+    {"claim": "~/.claude/memory/<file>.md does NOT auto-load unless @import-wired", "line": 121, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Ctrl+G plan-file edit flow named as a practitioner primitive (Watch-fors)", "line": 110, "verdict": "PASS", "source": "inferred"}
   ],
   "citations_checked": [
-    {"line": 14, "claim": "Boris Cherny, Mastering Claude Code in 30 minutes (YouTube)", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 67, "claim": "Simon Willison, The lethal trifecta for AI agents (June 2025)", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 69, "claim": "OWASP Top 10 for LLM Applications", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 146, "claim": "Plan mode reference — Anthropic Claude Code docs", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 147, "claim": "Compound engineering — Klaassen on every.to", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 148, "claim": "What would have to be true — Roger Martin (HBR, Playing to Win)", "label_present": false, "url_present": false, "url_alive": null, "evidence_level_honest": true}
+    {"line": 16, "claim": "Boris Cherny, Mastering Claude Code in 30 minutes (YouTube)", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 75, "claim": "Simon Willison, The lethal trifecta for AI agents (June 2025)", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 77, "claim": "OWASP Top 10 for LLM Applications", "label_present": false, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 151, "claim": "Plan mode reference — Anthropic Claude Code docs", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 152, "claim": "Compound engineering — Klaassen on every.to", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
+    {"line": 153, "claim": "What would have to be true — Roger Martin (HBR, Playing to Win)", "label_present": false, "url_present": false, "url_alive": null, "evidence_level_honest": true}
   ],
   "skills_referenced": [],
   "urls_sampled": [
     {"url": "https://www.youtube.com/watch?v=6eBSHbLKuN0", "alive": true, "status_code": 200},
     {"url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/", "alive": true, "status_code": 200},
+    {"url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/", "alive": true, "status_code": 200},
+    {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200},
     {"url": "https://every.to/source-code/compound-engineering-the-definitive-guide", "alive": true, "status_code": 200}
   ],
   "blocking_findings_count": 0,

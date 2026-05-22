@@ -3,45 +3,52 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "partial_regen",
-  "prompts_evaluated": 1,
+  "trace_status": "full_regen",
+  "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "If one branch from this session sharpened how plans get read in this codebase, i",
+      "prompt_lead": "are these rules auto-loaded to each session context?",
       "verdict": "PASS",
       "load_bearing": false,
-      "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer added 2026-05-15: 'Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading.' Closes the preamble-before-action carve-out. Other risks (self-report-inflation, self-audit-charity, file-preservation-gap, overwrite-anxiety) all carry existing carve-outs."},
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "If one branch from this session sharpened how plans get made in this codebase, w",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer present 2026-05-15 ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading.') satisfies rule 17's body-primer requirement for conditional/multi-sub-step prompts. Other risks (self-report-inflation, self-audit-charity, file-preservation-gap, overwrite-anxiety) all carry existing carve-outs. Verdict carried forward across the 2026-05-22 prompt-text refresh (read→made + body lead-in re-phrasing) — fenced content SHAs changed but the design intent and carve-outs are unchanged."},
       "risks_fired": [
         {
           "pattern_id": "self-report-inflation",
           "confidence": "med",
           "evidence": "If nothing earned itself, say so and stop — Claude co-produced the session and RLHF biases toward finding something to integrate.",
-          "fix_hint": "Residual by design on an opportunistic Debrief-class compound: 'Quote the specific moment' is an artifact-level gate that partially counters the inflation bias and the body blockquote names the charity risk. Non-blocking on a non-load-bearing module-close prompt; if cohort surfaces inflated rules consider a paste-ready harsher alternative."
+          "fix_hint": "Residual by design on an opportunistic Debrief-class compound: 'show me ... the moment that earned it' is an artifact-level gate that partially counters the inflation bias and the body blockquote names the charity risk with a pushback move. Non-blocking on a non-load-bearing module-close prompt. If a cohort surfaces inflated rules, consider a paste-ready harsher alternative."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "If one branch from this session sharpened how plans get read in this codebase",
-          "fix_hint": "Carve-out applied: adjacent blockquote ('LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.') names the charity risk AND gives a pushback move; 'Quote the specific moment' is an artifact-level evidence gate. Downgraded from med to low."
+          "evidence": "If one branch from this session sharpened how plans get made in this codebase",
+          "fix_hint": "Carve-out applied: adjacent blockquote names the charity risk AND gives a pushback move; quote-the-moment is an artifact-level evidence gate."
         },
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
-          "evidence": "integrate it into ./CLAUDE.local.md",
-          "fix_hint": "Carve-out applied (integrate-verb + personal-scope): 'personal file, not team ./CLAUDE.md' and 'create + gitignore if missing' are both present — full reshape is design intent; preserve-vs-replace constraint does not apply."
+          "evidence": "write the rule into ./CLAUDE.local.md",
+          "fix_hint": "Carve-out applied (integrate-verb + personal-scope): 'personal file, not team ./CLAUDE.md' and 'create + gitignore if missing' both present — full reshape is design intent."
         },
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "integrate it into ./CLAUDE.local.md (create + gitignore if missing)",
-          "fix_hint": "Carve-out applied (personal-scope): file is explicitly gitignored personal scope — overwrite is the intended default; Claude hesitation not expected."
+          "evidence": "write the rule into ./CLAUDE.local.md (create + gitignore if missing)",
+          "fix_hint": "Carve-out applied (personal-scope): gitignored personal scope — overwrite is the intended default."
         },
         {
           "pattern_id": "preamble-before-action",
-          "confidence": "med",
-          "evidence": "If one branch from this session sharpened how plans get read in this codebase, integrate it into ./CLAUDE.local.md ... If nothing earned itself, say so and stop.",
-          "fix_hint": "Body primer added 2026-05-15 ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading.'). MAINTAINER-RESOLVED."
+          "confidence": "low",
+          "evidence": "If one branch from this session sharpened how plans get made in this codebase, write the rule into ./CLAUDE.local.md ... If nothing earned itself, say so and stop.",
+          "fix_hint": "Body primer present ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading.') satisfies rule 17. MAINTAINER-RESOLVED."
         }
       ]
     }

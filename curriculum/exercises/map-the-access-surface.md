@@ -20,7 +20,7 @@ First, see what skills your Claude has loaded. In the Claude Code chat, type:
 /skills
 ```
 
-You should see `access-control-analysis` and `stride` listed under **User**. (If they don't, the prework install didn't land, see prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 will land in User too.
+You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 will land in User too.
 
 Then ask Claude to fill in what `/skills` doesn't show.
 

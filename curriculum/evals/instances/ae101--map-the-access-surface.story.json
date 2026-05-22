@@ -4,24 +4,141 @@
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust opening — first curated-skill invocation as subagent (M3 Ex1)",
-  "trace_status": "generated_first_time",
+  "trace_status": "regenerated",
   "rules_evaluated": [
-    {"compendium": "check_pedagogy.md", "rule_index": 13, "rule_lead": "Artifact-realism check — skill installed before invoked.", "verdict": "PASS", "evidence": "access-control-analysis installed at prework Step 4. Body line 23 confirms 'auto-discovers it by name'. Line 31: 'You should see access-control-analysis listed under User.'", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions live in prompts.", "verdict": "PASS", "evidence": "Five registry-expanded prompts. The 'sit with it' Phase 2 + delta-write Phase 3 forcing functions encoded in the prompts.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers as staged progression — lazy-load (skills) revealed via /skills.", "verdict": "PASS", "evidence": "Body line 25-29: '/skills' typed in chat to reveal User vs Project. Lazy-load tier earns its name through the surface that proves it.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 11, "rule_lead": "Delegation boundaries — student names feature, Claude screens.", "verdict": "PASS", "evidence": "Phase 1 prompt 2 takes the feature 'after the colon' (open-hook pattern); Claude does breadth on access-control via subagent.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 52, "rule_lead": "Session widget canonical shape.", "verdict": "PASS", "evidence": "Line 3: `**Session** *(new, \"Module 3 - Earn the trust\")*` + inner `/rename m3-access-surface`.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "Open-hook for student input.", "verdict": "PASS", "evidence": "Phase 1 prompt 2: 'invoke...on the feature you'll name after the colon' — open-hook pattern; student supplies feature concretely.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Skills invoke by name, never path.", "verdict": "PASS", "evidence": "Body invokes 'access-control-analysis' by name; no ~/.claude/skills/ path leak in any prompt.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Registry markers + lead-ins.", "verdict": "PASS", "evidence": "Five markers each preceded by action lead-in.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 1, "rule_lead": "Mood contract — earned trust opening.", "verdict": "PASS", "evidence": "Maintainer block line 89: 'earned trust, opening beat.' Watch-for: passivity (delta zero entries) — mitigated by Phase 3 push-back rules.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 4, "rule_lead": "Strategy-fidelity — STRIDE-before-access-mapping is pub-quiz.", "verdict": "PASS", "evidence": "Body line 15: 'STRIDE without an access-surface map is pub-quiz threat modeling.' Strategy doc M3 calls this out explicitly.", "fix_hint": null, "blocking": false},
-    {"compendium": "story.md", "rule_index": null, "rule_lead": "Mood lands 8+ at teaching beats.", "verdict": "PASS", "evidence": "Phases 1-3 at 8; Phase 4 setup-exempt; close 8.", "fix_hint": null, "blocking": true},
-    {"compendium": "story.md", "rule_index": null, "rule_lead": "Mood doesn't resolve early.", "verdict": "PASS", "evidence": "Hands to STRIDE exercise; STRIDE territory not pre-empted (no threat-categorisation, no ADR move).", "fix_hint": null, "blocking": true},
-    {"compendium": "story.md", "rule_index": null, "rule_lead": "Teaching moment — delta IS the artefact.", "verdict": "PASS", "evidence": "Body line 13: 'Your delta is the artifact, not the raw skill output.' Force the codebase-specific reason at Phase 3.", "fix_hint": null, "blocking": true},
-    {"compendium": "story.md", "rule_index": null, "rule_lead": "Big Idea fidelity to strategy M3 Ex1.", "verdict": "PASS", "evidence": "Body matches strategy: invoke curated skill as subagent, name delta. Subagent introduced here as designed.", "fix_hint": null, "blocking": true}
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named — mood-floor 8+/10 on teaching beats.",
+      "verdict": "PASS",
+      "evidence": "Phase 1=8, Phase 2=8, Phase 3=8 (all teaching beats clear floor). Phase 4 = setup/handoff, mood-exempt per carve-out (compresses to parenthetical).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity — don't front-run downstream teaching moments.",
+      "verdict": "PASS",
+      "evidence": "Strategy doc M3 Ex1 (line 326): 'Invoke the curated access-control analysis skill on the feature as a subagent... Name the delta — this is the access-mapping that STRIDE will consume.' File body delivers exactly this; hands off to STRIDE in 'What this sets up' (line 76).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood, not punitive.",
+      "verdict": "PASS",
+      "evidence": "Body framing is 'curated skill does breadth; you own codebase-specific judgment.' Earned-trust register, not failure-shame.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Forcing moves (invoke skill, walk the map, add the delta) live in prompts map-the-access-surface-1 through -5. Body line 62 ('Push back on the sharpening question until the reason names something specific to your codebase') is the engineer-audience body callout per §56 — recoverable in <1min, codebase-specific contrast example grounds it. Maintainer P3 push-back covers the failure mode.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Body teaches work, no authored conversations.",
+      "verdict": "PASS",
+      "evidence": "No 'share with neighbor', 'tell the room', or pair-discussion authoring in body. Line 68 ('Most people skip this. Some want the pause. Your call.') is student-agency framing per §10, not cohort management.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — three observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block lines 107-110: three falsifiable outcomes (invokes ACA as subagent before review; writes delta note with both shapes codebase-specific; adds at least one codebase-specific surface).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Maintainer Push-back moves (lines 91-96) cover P1 blocker, P1 skill-invocation, P2 skip, P3 generic, P3 zero misses, P4 rush — each with named failure + Nerd recovery line.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX — operability.",
+      "verdict": "PASS",
+      "evidence": "Plug points (lines 103-105) name student's feature + ACA skill with install location. Skill install referenced in body (line 14). Window callout (line 5) routes session.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session as packaging — window callout.",
+      "verdict": "PASS",
+      "evidence": "Line 5: '**Window:** *m3-security* (the main lane from *Open the side quest*; m3-quality stays parked).' One-line lane callout, doesn't disturb teaching content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle and technique.",
+      "verdict": "PASS",
+      "evidence": "Body line 9 names the principle: 'STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting.' Mechanism (skill does breadth, student owns codebase-specific judgment) is explicit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "Exercise file; Key Concepts section lives in module spine, not exercise. AE101 M3 themes (mirror, 90% correct, mechanically self-aware) instance through the delta move (skill's read mirrored against student's read).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Lecture placement.",
+      "verdict": "N/A",
+      "evidence": "No lecture in this exercise file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Pre-action framing doesn't preview prompt payoff.",
+      "verdict": "PASS",
+      "evidence": "'What you do' (line 7) names activity sequence; 'The point' (line 9) names the discipline. Neither previews what the prompts will REVEAL. 'What happened' (line 72) sits POST-action as recap.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout.",
+      "verdict": "PASS",
+      "evidence": "Body line 62 push-back guidance is body-callout shape; engineer can notice generic-delta miss in <1min via maintainer P3 push-back. No silent miss carries downstream.",
+      "fix_hint": null,
+      "blocking": false
+    }
   ],
-  "mood_summary": {"phase_scores": [8, 8, 8, null], "close_score": 8, "any_below_8": false, "stealing_the_mood": []},
+  "mood_summary": {
+    "phase_scores": [8, 8, 8, null],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
   "blocking_findings_count": 0,
   "todos_count": 0
 }

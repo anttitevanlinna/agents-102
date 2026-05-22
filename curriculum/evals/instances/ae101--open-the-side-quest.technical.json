@@ -1,0 +1,197 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Worktree mechanics, per-cwd session boundary, gitignored-files-don't-cross-by-git all match compendium §6d / §7b / §7c shipped reality.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions are the unit of work — write 'start a new session in X'.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Body uses 'Start a new Claude Code session in your repo' / 'Start a second Claude Code session in another window' — correct sessions-as-unit framing.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Cross-cwd boundaries always open `new`; evidence travels by disk.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Sibling worktree fork = different cwd = new session. Body names personal files (`CLAUDE.local.md`, `.claude/memory/`) don't sync by git — copy at fork time + diverge independently. Exact mapping to §7b.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "REVISE",
+      "evidence": "L58: 'Worktree-as-side-quest framing inherited from Boris Cherny, *Mastering Claude Code in 30 minutes* (parallel worktrees as productivity unlock).' — named talk, no URL.",
+      "fix_hint": "Maintainer-block 'Frameworks riffed on' attribution to a specific named talk normally takes a URL when natural. Non-load-bearing (no number/quote being cited) — TODO not blocker. Either add URL (YouTube / event page) or note as `[cultural-vocab]` if treating as community-vocabulary level.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No load-bearing practitioner number/quote in student-facing body; maintainer-block framework attribution is acknowledgement, not load-bearing citation. Section not required.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fenced blocks.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "`<repo-name>` tokens inside the fenced prompt are agent-resolved variables (Claude reads its cwd folder name and substitutes), not student fill-ins. Body line above the prompt explicitly tells Claude how to resolve them. Per rule 32's exemptions for branch/worktree-path identifiers in backticks, the angle-bracket convention is acceptable here.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block gets a one-sentence action lead-in.",
+      "verdict": "REVISE",
+      "evidence": "L15: 'Paste the prompt as-is. Claude reads `<repo-name>` as your repo's folder name from the working directory.' and L23: 'Start a second Claude Code session in another window, in the sibling worktree directory Claude just named...' — neither is a one-sentence command-verb summary of what the prompt does.",
+      "fix_hint": "Add a semantic action lead-in for each prompt — e.g., 'Ask Claude to fork a sibling worktree at the default path and copy your personal files across.' for the first; 'Ask Claude to confirm the worktree state and wait.' for the second. Body context already orients the student to the move; the lead-in is the skim-cue rule 2 asks for.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical presentation shape — lead-in, label with destination, blank line, fenced block.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Expander reconstructs canonical `**Prompt** *(Claude Code)*` shape per registry frontmatter. Verified in expand-md.js output.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Claude Code Skills invoke by name, never by path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "No skill invocations in either prompt body.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain prompts by back-reference and deterministic path.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Registry frontmatter on `ae101-m3-quality-side-orient` declares `requires: m3-quality-worktree` from `ae101-m3-fork-quality-side`. First prompt reports the absolute worktree path; second-prompt body in the exercise says 'in the sibling worktree directory Claude just named' (back-reference). Chain mechanics sound.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout inside fenced blocks is dead weight.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "No bold/italic markdown inside either fenced block. Bullets use plain hyphens. Backticks used only for path strings (acceptable as quote-marks per rule 9).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "AE101-scoped exercise — rule 23 carve-out explicitly exempts AE101 (student's existing repo as cwd, no training-imposed structure).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside the prompt body.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Carve-out applies: the first prompt's intent IS to change/create a working directory (worktree fork), so explicit paths inside the fence are the action, not bookkeeping.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in the registry; module/exercise files reference them by marker.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Both prompts properly migrated to `curriculum/prompts/ae101-m3-fork-quality-side.md` and `curriculum/prompts/ae101-m3-quality-side-orient.md`; exercise references by `{{prompt:<key>}}` markers.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "No module-name references in prompt prose.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Neither prompt body contains bare M-tokens. Exercise body's 'Module 3' mentions are in student-facing prose, not in the fenced prompts.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare permission-mode when the paste requires a specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Neither prompt depends on plan/acceptEdits mode. Default-mode paste; no chip required. Frontmatter correctly omits the field.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism — every named tool/skill/connector must exist.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "`git worktree add` is a real git subcommand. `~/.claude/skills/test-strategy/SKILL.md` is forward-named — the student authors it in M3 Ex3, which the body explicitly states. No artifact-existence violation.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Second prompt IS the smoke-test for the worktree fork — confirms cwd / branch / loaded rules / codebase visibility before downstream M3 work depends on it.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "Second prompt explicitly checks whether `./CLAUDE.md` and `./CLAUDE.local.md` auto-loaded — surface-running the auto-load tier, consistent with the staged-progression principle.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [
+    {"claim": "git worktree add makes a sibling folder on its own branch", "line": 7, "verdict": "PASS", "source": "compendium"},
+    {"claim": "Personal files (CLAUDE.local.md, .claude/memory/) don't sync between worktrees", "line": 7, "verdict": "PASS", "source": "compendium"},
+    {"claim": "both sessions see the same git history but keep their own working state", "line": 7, "verdict": "PASS", "source": "compendium"},
+    {"claim": "skills installed to user scope cross worktrees freely", "line": 42, "verdict": "PASS", "source": "compendium"},
+    {"claim": "skills at ~/.claude/skills/<name>/ auto-discovered every session regardless of working directory", "line": 59, "verdict": "PASS", "source": "compendium"}
+  ],
+  "citations_checked": [
+    {"line": 58, "claim": "Boris Cherny, Mastering Claude Code in 30 minutes — parallel worktrees as productivity unlock", "label_present": false, "url_present": false, "url_alive": null, "evidence_level_honest": true}
+  ],
+  "skills_referenced": [
+    {"name": "test-strategy", "line": 23, "exists": false}
+  ],
+  "urls_sampled": [
+    {"url": "../trainings/agentic-engineering-101/reference/multi-session-git.md", "alive": true, "status_code": null}
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

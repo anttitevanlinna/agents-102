@@ -3,9 +3,9 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "partial_regen",
-  "generated_at": "2026-05-14T13:11:11Z",
-  "content_sha": "48f75ac8429c349c1d0aab62a81dd73c849d0dc188f810d428dc8e94872ce5c0",
+  "trace_status": "full_regen",
+  "generated_at": "2026-05-22T16:14:43Z",
+  "content_sha": "d939627af870521fdcf0bbf5f3cc2a6988cf6f2d9aff2952ae91b3a14fa6cc0b",
   "prompts_evaluated": 3,
   "prompts_findings": [
     {
@@ -30,33 +30,33 @@
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
-          "confidence": "med",
-          "evidence": "Five-step numbered task; 'no preamble' suppressor present but confirmatory opener ('I'll work through these in order…') persists in ~40% of runs at this complexity level.",
-          "fix_hint": "Add body primer immediately after the fence: 'Claude will narrate before acting; skim past the opening and look for the step number.'"
+          "confidence": "low",
+          "evidence": "In-fence 'no preamble' suppressor present at end of first sentence ('...ask one question at a time if you need to, no preamble.'). Per check_prompts §17 structural-trigger (4+ sub-steps), the in-fence suppressor satisfies the requirement; residual confirmatory-opener risk drops to ~15%.",
+          "fix_hint": "Suppressor in place; no edit required. Optional body primer could trim residual risk further but is not load-bearing for this housekeeping arc."
         },
         {
           "pattern_id": "question-dump",
           "confidence": "low",
-          "evidence": "CARVE-OUT APPLIED. Step 4 elicitation has two body callouts satisfying the carve-out shape: pre-prompt names failure mode + recovery ('push back if it dumps all four criteria at once'); post-prompt names the AskUserQuestion tool + one-at-a-time option + student agency ('Your call.'). Downgraded from med to low.",
+          "evidence": "CARVE-OUT APPLIED twice. Step 4 elicitation has paired body callouts satisfying the carve-out shape per check_prompts §15 + 2026-05-03 update: pre-prompt names failure mode + recovery ('push back if it dumps all four criteria at once. One bug at a time, then the next.'); post-prompt names the AskUserQuestion tool + one-at-a-time alternative + student agency ('Your call.').",
           "fix_hint": "Carve-out satisfied — no prompt edit required."
         },
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "Step 3 installs to ~/.claude/skills/ without explicit overwrite instruction; pause-to-ask fires on skill-name collision, rare for first-time installs.",
-          "fix_hint": "Optional: add 'overwrite if exists' to step 3 for repeat-run safety."
+          "evidence": "Step 3 installs to ~/.claude/skills/ without explicit overwrite instruction; pause-to-ask fires on skill-name collision, rare for first-time cohort installs.",
+          "fix_hint": "Optional: add 'overwrite if exists' to step 3 for repeat-run safety; not blocking."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "'Report success on each step and tell me what you did' invites self-summary; Claude may claim install confirmed when path check was approximate. Non-load-bearing for prework's teaching goal.",
-          "fix_hint": "Not blocking at low confidence. If cohort shows install-path confusion, add explicit path-verification: 'Show me the full absolute path to each installed SKILL.md.'"
+          "evidence": "'Report success on each step and tell me what you did' invites self-summary; outcomes are deterministic and student-verifiable from scrollback. Non-load-bearing for prework's teaching goal.",
+          "fix_hint": "Defer; if cohort shows install-path confusion, tighten step 5 to 'tell me what you wrote' per check_prompts §21."
         }
       ]
     },
     {
       "prompt_index": 3,
-      "prompt_lead": "Use the AskUserQuestion tool for speeding up screening and making suggestions. One cand",
+      "prompt_lead": "Use the AskUserQuestion tool for speeding up screening and making suggestions. On",
       "verdict": "TODO",
       "load_bearing": false,
       "risks_fired": [

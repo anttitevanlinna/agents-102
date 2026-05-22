@@ -48,6 +48,7 @@ Then list the top-level entries so I can see the layout.
 | `context` | no | string | em-paren note after dest (e.g. `optional`, `final move of the module`) |
 | `runtime` | no | `any` (default), `cli`, `cowork`, `desktop` | informational; future runtime-fork wrapping |
 | `origin` | no | `<training>/<file>` or `exercises/<slug>` | must match the file where the `{{prompt:<key>}}` marker actually lives; helps grep + keeps the back-reference honest |
+| `permission-mode` | no | `default` \| `acceptEdits` \| `plan` \| `auto` \| `bypassPermissions` | declared when the prompt's correct paste requires a specific Claude Code permission mode. Renders as a leftmost solid-accent chip in the prompt-block header. Omit when mode is not load-bearing (no chip renders, no constraint implied). See `check_prompts.md` rule 39. |
 
 **Dependency-graph fields** (passed through to `prompts.json`; consumed by audit / lint scripts; inert at the renderer today):
 

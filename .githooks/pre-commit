@@ -27,7 +27,10 @@ fi
 # Find staged changes under curriculum/prompts/ — registry only.
 # Inline **Prompt** fenced blocks elsewhere (modules, exercises, lectures
 # pre-migration) are NOT in scope; those remain protected by review.
-staged=$(git diff --cached --name-only -- 'curriculum/prompts/**' 2>/dev/null || true)
+# Exclude README.md — maintainer-facing documentation, not a prompt entry;
+# matches the README carve-out in .claude/hooks/prompt-edit-gate.sh so the
+# two hook layers stay symmetric.
+staged=$(git diff --cached --name-only -- 'curriculum/prompts/**' ':(exclude)curriculum/prompts/README.md' 2>/dev/null || true)
 if [ -z "$staged" ]; then
     exit 0
 fi

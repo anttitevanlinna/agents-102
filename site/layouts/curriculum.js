@@ -55,6 +55,7 @@
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
+                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
                 { slug: 'the-agent-loop',             title: 'The agent loop' },
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' }

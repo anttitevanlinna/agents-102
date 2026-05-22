@@ -262,6 +262,16 @@
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
+        // Permission-mode sentinel, mirrors the ⟦A:slug⟧ anchor pattern.
+        // decoratePrompts() parses this off the label paragraph and renders it
+        // as a separate chip in the prompt-block header. Sentinel is appended
+        // after the label so marked() treats it as inline text inside the same
+        // paragraph — survives the render cycle untouched (U+27E6/U+27E7 are
+        // not HTML-special and not in any realistic prompt label).
+        var mode = entry && entry['permission-mode'];
+        if (mode && /^[A-Za-z]+$/.test(mode)) {
+            label += ' ⟦M:' + mode + '⟧';
+        }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
         if (entry && entry.anchors && entry.anchors.length) {
             text = injectAnchorSentinels(text, entry.anchors);
@@ -587,11 +597,25 @@
                   '<span class="rt-cli">Claude Code CLI</span>'
                 : esc(dest);
 
+            // Permission-mode sentinel ⟦M:<mode>⟧ sits in the paragraph text
+            // after the em-paren label; renderPromptBlock plants it when the
+            // prompt's frontmatter declares `permission-mode:`. Parse it off
+            // here, strip from the paragraph so the literal sentinel never
+            // renders, surface as a separate header chip.
+            var mode = '';
+            var pHtml = p.innerHTML;
+            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
+            if (modeMatch) {
+                mode = modeMatch[1];
+                p.innerHTML = pHtml.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
+            }
+
             var wrap = document.createElement('div');
             wrap.className = 'prompt-block';
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
+                (mode ? '<span class="prompt-block__mode prompt-block__mode--' + esc(mode) + '" title="Paste this prompt in ' + esc(mode) + ' mode">' + esc(mode) + ' mode</span>' : '') +
                 '<span class="prompt-block__label">Prompt</span>' +
                 '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
                 '<span class="prompt-block__dest">' + destHtml + '</span>' +

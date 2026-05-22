@@ -474,6 +474,39 @@ main::before {
     color: var(--fg-4);
 }
 
+/* Permission-mode chip — emitted by decoratePrompts() when a prompt's
+   frontmatter declares `permission-mode:`. Sits leftmost in the header so
+   a scanning reader hits "what mode do I need to be in" before reading
+   anything else. Canonical Claude Code tokens per
+   code.claude.com/docs/en/permission-modes: default | acceptEdits | plan
+   | auto | bypassPermissions. Mode-specific modifier classes carry the
+   colour so the chip reads at a glance. */
+.module .prompt-block__mode {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: var(--fg-2);
+    color: var(--bg);
+    white-space: nowrap;
+}
+
+.module .prompt-block__mode--plan {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.module .prompt-block__mode--acceptEdits {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+}
+
 .module .prompt-block .prompt-block__pre {
     margin: 0;
     border: 0;

@@ -1,6 +1,7 @@
 ---
 key: push-back-on-the-plan-2-original
 dest: Claude Code
+permission-mode: plan
 runtime: any
 origin: exercises/push-back-on-the-plan
 ---

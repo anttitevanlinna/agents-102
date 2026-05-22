@@ -9,6 +9,11 @@
 //   key: a101-prework-extract-tarball
 //   dest: Claude Code           # default; renders as destination chip label
 //   context: optional           # optional, becomes em-paren note after dest
+//   permission-mode: plan       # optional; renders as a separate mode chip in
+//                               # the prompt header. canonical Claude Code mode
+//                               # tokens: default | acceptEdits | plan | auto |
+//                               # bypassPermissions. omit when mode is not
+//                               # load-bearing for the paste — no chip renders.
 //   runtime: any                # any | cli | cowork | desktop (informational)
 //   origin: agents-101/prework  # documentation-only; helps grep
 //   requires:                   # optional; artefacts this prompt depends on
@@ -81,7 +86,7 @@ function loadRegistry(promptsDir) {
     //   - future prompt-anatomy highlight tooling (anchors)
     //   - downstream tooling that needs to find producers / consumers by id
     // Keep these optional; absence is normal for short / supplementary prompts.
-    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'note']) {
+    for (const field of ['requires', 'produces', 'opportunistic-copy', 'opportunistic-copy-by', 'anchors', 'note', 'permission-mode']) {
       if (meta[field] !== undefined) entry[field] = meta[field];
     }
     registry[key] = entry;

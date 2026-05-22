@@ -69,5 +69,4 @@ After you've done it once, you'll feel when a plan needs the second read and whe
   - The three-things / three-pressures shape is exercise-scaffold, not a cited framework.
 - **Philosophy callout budget:** zero. The lecture is short and operational. The philosophy beat (*memory is my edge, not my keystrokes*; *mastery is structural practice*) lands naturally in the M2 Debrief when `CLAUDE.md` grows.
 
-**Open for Pass 3:**
-- Consider a 30-second worked example between *"three things a good plan has"* and *"three pressures"* — show a real plan snippet and point at the file list / verification / assumption. Current draft assumes the engineer can picture it; adding an example adds ~2 min to runtime but may sharpen the beat for less-experienced students. Decide after first cohort sim.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

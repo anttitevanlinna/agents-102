@@ -84,7 +84,6 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 - cross_module @689e7e0: PASS — set=[plan-mode-done-right, earn-the-trust]
 - mechanical @6121abd: PASS — ae101-m2-pushback via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-- cohorts: none yet
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
@@ -93,8 +92,6 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (strategy doc §"Delivery architecture"): content folder already unzipped from M1; all compounding artifacts in the student's real repo (`CLAUDE.local.md` for session compounds, team `CLAUDE.md` only on PR, plan files in Claude Code's default location, diffs/PRs in the repo itself). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.
-
-**Connections-as-room-read — deliberate exception to `check_pedagogy.md` rule 27.** The Connections paragraph names the room-harvest move explicitly. Rule 27 (no cohort-management cues in body) carves out Connections, where the harvest IS the work — not a stage direction, not a pause beat. Body prose names the move; trainer / Nerd executes it. Same exception applies in M1. Future judges should treat the Connections room-read paragraph as in-scope-by-design, not a rule-27 violation.
 
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **P1 blocker** — student can't surface a fitting task. Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.

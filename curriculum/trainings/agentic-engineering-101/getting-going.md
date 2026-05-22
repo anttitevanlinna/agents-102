@@ -74,8 +74,6 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
-**Connections-as-room-read — deliberate exception to `check_pedagogy.md` rule 27.** The Connections paragraph names the room-harvest move explicitly. Rule 27 (no cohort-management cues in body) carves out Connections, where the harvest IS the work — not a stage direction, not a pause beat. Body prose names the move; trainer / Nerd executes it. Same exception applies in M2 (the lecture-names-the-pattern variant). Future judges should treat the Connections room-read paragraph as in-scope-by-design, not a rule-27 violation.
-
 **Push-back moves** (trainer delivers by default; Nerd in self-study):
 - **Connections trick** (Nerd only; cohort skips) — student shares one trick; Nerd drops one observation about working rhythm + one watch-for in M1. Don't extract themes from one trick. Nerd push: *"You reach for `/clear` between tasks — watch whether you let `/context` surprise you at Ex1, or just confirm what you already think."*
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
@@ -129,5 +127,4 @@ The shipped PR and the closed ticket via MCP connector are produced this module 
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Plan → Work → Review → Compound. Attributed inside Claude's Ex3 compound summary, not in a lecture.
 - **Three-block memory** — Paweł Huryn (productcompass.pm) [practitioner direct, vendor venue]. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4 via recognition — explicit naming here would steal it. URL deferred to M4 reveal.
 
-**Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):
-- Boris Cherny, *Mastering Claude Code in 30 minutes* (homework, body line 49) — `https://www.youtube.com/watch?v=6eBSHbLKuN0` [practitioner direct]. Verify URL still resolves; freshness-rule exception logged (kept outside the 6-month window by decision; pedagogy match unbeaten by successors). If the video becomes unavailable, fallback framing names the move (parallel worktrees, plan mode, subagent map-reduce) and points students at Cherny's later talks for the same content.
+**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

@@ -129,7 +129,7 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 - **Override handling** — classroom delivery keeps this trainer-owned: the trainer writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution, then collects these for the close memo. Optional self-study may automate the same move later, but Agentic Nerd stays invisible to classroom cohorts.
 - **Team-kit assumption** — if the team-kit home is still being debated, Modules 4–6 can continue in personal clones/worktrees. Students do not need to push shared kit changes during the cohort; they can flag candidates and promote later once the home is decided.
 - **Future asset companions:**
-  - Cohort-close memo template ("what your engineers said about the four homes") — DEFERRED (post-first-cohort).
+  - Cohort-close memo template ("what your engineers said about the four homes") — post-first-cohort companion; authoring window opens after Cohort 1 (see `pre-cohort-todos.md`).
   - Sponsor one-pager on the pre-engagement contract's purpose (belongs in the sales pack, different audience — the sponsor who hasn't signed yet, doing diligence on the program).
 
 **Artefact contracts** (sponsor-stage setup artefact consumed by the cohort bundle and trainer):

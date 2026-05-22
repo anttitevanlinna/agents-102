@@ -136,7 +136,7 @@ When any of these land, this file updates. The training's exercises stay stable 
 
 Bump the **Last verified** date at the top. Note what changed in the commit message. The exercises reading this file don't change.
 
-**Source verification (2026-05-14, subagent fact-check pass):** 22 claims checked against authoritative sources — 1 FAIL (`/plugin` Discover-tab GUI contradicted "no GUI marketplace" framing — rewritten), 3 DRIFTs (Rovo coverage list, Atlassian admin-gating absoluteness, managed-settings filename framing — all softened), 16 PASS, 1 UNVERIFIED-adjacent (Linear "no admin gate" matches practitioner behavior; changelog doesn't quote the negation — left as-is). Report at `/tmp/mcp-ref-factcheck.md` (not committed; transient).
+**Source verification (2026-05-14, subagent fact-check pass):** 22 claims checked against authoritative sources — 1 FAIL (`/plugin` Discover-tab GUI contradicted "no GUI marketplace" framing — rewritten), 3 DRIFTs (Rovo coverage list, Atlassian admin-gating absoluteness, managed-settings filename framing — all softened), 16 PASS, 1 UNVERIFIED-adjacent (Linear "no admin gate" matches practitioner behavior; changelog doesn't quote the negation — left as-is).
 
 **Source verification (2026-05-14):**
 - Claude Code MCP docs: https://code.claude.com/docs/en/mcp `[platform docs]` — confirms `claude mcp add --transport http <name> <url>` + `--header` flag shape; SSE transport deprecated in favour of HTTP; documents Claude.ai connector inheritance ("MCP servers you've added in Claude.ai are automatically available in Claude Code") and the `ENABLE_CLAUDEAI_MCP_SERVERS=false` opt-out; documents `managed-mcp.json` as the canonical enterprise-policy filename with OS-specific install paths and exclusive-control semantics

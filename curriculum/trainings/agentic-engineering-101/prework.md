@@ -81,10 +81,6 @@ Connections question at the opening: *what's one trick you figured out with Clau
 - mechanical @6121abd: PASS — ae101-prework via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
-**DEFERRED** (held — not for autonomous fix; sim-surfaced 2026-04-27, structural call, decided together):
-- Fast-operator + opinionated-senior flagged: collapse Step 0+2 into one move (5/6 mood scores there); demote 3.a to a one-line footnote for cohort default; split Step 4 prompt at the seam between mechanical install and interactive bug-screen.
-- Mid-competent: Windows path/shell assumptions (`~/Downloads/`, `tar xzf`, `mkdir -p`) unstated; acknowledge Git Bash once. Step 4's 12-min budget tight when student hasn't pre-thought a candidate bug; consider rebadging as "mechanical setup + bring-a-bug homework."
-
 **Meta:**
 - **Runtime:** 30 min target. Step breakdown: get Claude Code started 1 / pick repo 10 / start session 2 / content folder 3 / hand rest to Claude 12. Steps 1–3 are crisp; step 4 is where time can expand if the student's repo is messy.
 - **Delivery architecture:** student's repo is the working directory across every module. The content folder sits on disk for the student's own browsing reference (lectures + exercises + reference also render on the workbook site). Claude doesn't read exercise/lecture bodies by default; the canonical reading surface is the rendered workbook. Exception: when the student invokes the `agentic-nerd` self-study skill, it resolves `{{prompt:<key>}}` markers in exercise bodies against the prompt registry shipped alongside at `~/Documents/ae101-content/prompts/`. Skills install to `~/.claude/skills/` (user-level), auto-discover in every session regardless of cwd. Compounding artifacts split clean: rules → `CLAUDE.local.md` (personal, gitignored); team rules → `CLAUDE.md` via PR.
@@ -92,7 +88,7 @@ Connections question at the opening: *what's one trick you figured out with Clau
 - **`<CONTENT_URL>` placeholder is build-time substituted** by `scripts/build-workbook.js` per-customer (e.g., `https://agents102.bosser.consulting/clients/acme/agentic-engineering-101/ae101-content.tar.gz`). Source markdown carries the literal placeholder so the substitution is auditable; rendered workbook never shows the placeholder. Rule-compliance note: this is the explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build-time substitution, not student fill-in.
 - **No pre-fabricated files.** Violates the *ask-the-agent-don't-type-in-a-terminal* pedagogy. Student generates all state in conversation with Claude. The exception is the manual download (3.a), a transport primitive, not a file-edit.
 - **Artifacts at end of prework:** chosen repo (Claude Code session started in it), content folder on disk, one picked bug (in the scrollback), two curated skills installed personally at `~/.claude/skills/access-control-analysis/SKILL.md` and `~/.claude/skills/stride/SKILL.md`.
-- **Install blockers:** one-line help prompt in the cohort Slack for classroom; self-study fallback DEFERRED (needs ops decision). Don't absorb install debugging into Module 1 time.
+- **Install blockers:** one-line help prompt in the cohort Slack for classroom. Don't absorb install debugging into Module 1 time. Self-study fallback path open — see `pre-cohort-todos.md`.
 
 **Artefact contracts** (M0 setup artefacts consumed by later modules; maintainer-only metadata for handoff audits):
 

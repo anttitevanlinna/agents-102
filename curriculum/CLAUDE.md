@@ -9,6 +9,14 @@ This CLAUDE.md governs curriculum work.
 
 Current state of what's built vs. what's next lives in `bosser-strategy:content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
 
+## Active focus
+
+**Agentic Engineering 101, M1–M3 to done-done first. Then M4–M6.**
+
+"Done-done" = Quality block at `cohort-tested` or `battle-tested`, six per-class judge SHAs pinned current, maintainer-reviewed, trainer-guide present, no open audit TODOs in `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md` scoped to that module. Anything short of that is not done — partial passes don't count.
+
+Sequence matters: don't start M4 substantive work while M1–M3 has open REVISE verdicts or grandfathered class pins. Cosmetic cross-module consistency edits on M4–M6 are fine; new exercises, new prompts, new lectures wait. When M1–M3 closes, this section flips to M4–M6.
+
 ## Quality-state tagging
 
 Every student-facing artifact (module, exercise, lecture, prework) carries a Quality line in its maintainer block. The tag is the contract between sessions.

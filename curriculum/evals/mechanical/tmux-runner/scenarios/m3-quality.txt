@@ -1,0 +1,16 @@
+# M3 (AE101) side-quest — quality lane, runs in the worktree.
+# Driven by run-m3.sh in parallel with m3-main.txt.
+#
+# author-test-strategy-skill-1 normally interviews the student via
+# AskUserQuestion. In a headless runner that hangs forever, so the tail
+# below dumps the answers preemptively (lazy student) and asks Claude
+# to skip the tool call. The literal-text line after is the "yes save"
+# approval for the skill file.
+
+ae101-m3-quality-side-orient
+
+author-test-strategy-skill-1 I'm doing a headless dry-run, please don't call AskUserQuestion — use what you can read from the codebase plus my answers below; for anything else, use your best judgment and note the gap inline. Answers preemptively: (1) Framework is node:test (built-in, no jest/vitest). (2) Mocked vs real: tests run in Node against a hand-rolled DOM stub at tests/_dom-stub.js — the stub is a known lie about the runtime (see CLAUDE.local.md M1 rule "stubs are miniature lies about the runtime"); anything that requires real browser rendering, real DOM event dispatch, or real innerHTML parsing cannot be tested here. (3) Integration boundary: none — no backend, no fetch, no third-party SDK. The browser is the integration boundary and the test suite does not exercise it. (4) Flaky: rare in this codebase. When tests/levels.test.js geometry diagnostics fail (e.g. the bash-clear-walk interaction) it's usually a real bug surfacing, not flakiness — caused by an off-by-one in the procedural game loop, not by timing. (5) Regression scope: the whole suite — ~6 test files, runs in under a second. (6) Load-bearing tests reviewers always check first: tests/levels.test.js geometry diagnostics, tests/main.test.js step+HUD assertions. These are the ones that catch off-by-one bugs in lemming.js / terrain.js. (7) Not worth testing here: pure canvas rendering (stub can't model it), pure setInterval cadence, CSS. For the Share-a-level feature specifically: the ADR's textContent hardening at src/ui.js:49 cannot be verified by the Node DOM stub because the stub models innerHTML as a plain string field; the test for that hardening has to be a browser-level test (Playwright or manual) — name that gap explicitly in the skill rather than pretending node:test can prove the XSS-safe.
+
+* Yep. Just give it to me and save like you want it.
+
+author-test-strategy-skill-2

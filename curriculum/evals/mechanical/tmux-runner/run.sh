@@ -8,12 +8,14 @@
 #   # comments allowed
 #   a101-m1-debrief-cold-critic                    # key only
 #   map-the-access-surface-2 The feature lives at /tmp/spec.md   # key + tail
+#   * Yep. Just give it to me and save like you want it.         # literal
 #
-# Line shape: <prompt-key> [tail...]
-# Tail (everything after the first whitespace) is appended to the resolved
-# prompt body on a new line. Use when a prompt expects student-supplied
-# follow-on text (e.g. ends with "The feature is:" and you fill in the rest).
+# Line shapes:
+#   <prompt-key> [tail...]   — resolve key from registry; append tail on a new line
+#   * <literal text>         — send the literal text as the turn (no resolve)
 #
+# Literal lines are for student-shaped interjections that aren't curriculum
+# prompts: "yes save it" approvals, lazy-student answers, quick redirects.
 # Keys resolve against $PROMPT_REGISTRY (default: ~/Projects/agents-102/curriculum/prompts).
 # Bodies are inflated at send-time. Scenarios never duplicate prompt text.
 set -euo pipefail
@@ -61,21 +63,26 @@ trap 'pane_capture "$session" "$run_dir/transcript.txt" || true; pane_kill "$ses
 
 while IFS= read -r line || [[ -n "$line" ]]; do
   [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
-  # Split line into key (first whitespace-delimited token) and tail (rest).
-  key="${line%%[[:space:]]*}"
-  tail=""
-  if [[ "$line" == *[[:space:]]* ]]; then
-    tail="${line#*[[:space:]]}"
-    # Trim leading whitespace on tail.
-    tail="${tail#"${tail%%[![:space:]]*}"}"
-  fi
   seq=$((seq + 1))
-  echo "[runner] turn=$seq key=$key${tail:+ tail=${tail:0:60}...}"
 
-  body="$(resolve_prompt "$key")"
-  if [[ -n "$tail" ]]; then
-    body="${body}"$'\n'"${tail}"
+  if [[ "$line" == \** ]]; then
+    body="${line#\*}"
+    body="${body# }"
+    echo "[runner] turn=$seq literal=${body:0:60}..."
+  else
+    key="${line%%[[:space:]]*}"
+    tail=""
+    if [[ "$line" == *[[:space:]]* ]]; then
+      tail="${line#*[[:space:]]}"
+      tail="${tail#"${tail%%[![:space:]]*}"}"
+    fi
+    echo "[runner] turn=$seq key=$key${tail:+ tail=${tail:0:60}...}"
+    body="$(resolve_prompt "$key")"
+    if [[ -n "$tail" ]]; then
+      body="${body}"$'\n'"${tail}"
+    fi
   fi
+
   pane_send_text "$session" "$body"
   echo "$body" > "$run_dir/turn-$seq.prompt.txt"
 

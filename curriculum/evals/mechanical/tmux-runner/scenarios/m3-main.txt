@@ -1,0 +1,30 @@
+# M3 (AE101) main lane — fork the worktree, then security side.
+# Driven by run-m3.sh; the sharpen closer is fired separately by the
+# orchestrator after the quality scenario completes.
+#
+# Tails on map-the-access-surface-4/5 are real student judgment calls
+# from the first M3 run (round-trip amplification it caught;
+# browser-history it missed). The literal-text line after
+# threat-model-with-stride-3 acts as the "yes save the ADR" approval.
+
+# Phase A: create the worktree for the quality side.
+ae101-m3-fork-quality-side
+
+# Phase B (security side): map → STRIDE → ADR (with approval) → auto-load Q.
+map-the-access-surface-2 The feature is described in the plan at /Users/anttitevanlinna/.claude/plans/harmonic-stargazing-wren.md — read it first, then invoke the skill on what's described there.
+
+map-the-access-surface-3
+
+map-the-access-surface-4 The round-trip amplification finding (your #8 in bypasses): a user who loads a malicious shared URL and then clicks Share writes the same malicious URL back to their clipboard. I'd have missed this — I was modelling the Share button as "serialises my level" without noticing that the level being serialised may itself be attacker-controlled. The Vercel deployment model elevates it because every share link is a one-click vector with no warning.
+
+map-the-access-surface-5 Browser history. The ?level= URL persists in window.history; Back/Forward re-executes the payload on the same origin without re-validation. The skill modelled E1 as a one-shot at page load; it didn't model that the same URL stays in history and gets re-decoded on popstate. Codebase-specific because lemmings has no client-side router that would intercept popstate — the default browser behaviour applies.
+
+threat-model-with-stride-1
+
+threat-model-with-stride-2
+
+threat-model-with-stride-3
+
+* Yep. Just give it to me and save like you want it.
+
+threat-model-with-stride-4

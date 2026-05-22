@@ -23,7 +23,7 @@ You invoke both on a feature you're shipping today. The judgement these skills c
 
 You can. Because you'll author it the way the training authors everything: through conversation with Claude, not by hand-crafting markdown. Claude asks you what it needs to encode the skill. You push back where your codebase doesn't fit the default. The skill comes out tuned to your system because YOU fed it your system.
 
-**Voice three: your skills folder, starting today.** The skill you author at the end of this module ships to your personal `~/.claude/skills/test-strategy/`. Auto-discovered in every session you run. That's the ship. Personal-first is the through-line: M1 was `CLAUDE.local.md` (personal, gitignored), M3 is your first authored skill in your personal kit. Promotion to a team home is the next move, not this one: a conversation with teammates, then a PR (to your repo's `.claude/skills/`, to a shared Git repo, to whichever home your team picks now or later). Intercom's 267-skill plugin repo (31% of R&D contributing) was born that way: one engineer's personal skill, then a teammate's, then accretion. Not a platform-team design document.
+**Voice three: your skills folder, starting today.** The skill you author at the end of this module ships to your personal `~/.claude/skills/test-strategy/`. Auto-discovered in every session you run. That's the ship. Personal-first is the through-line: M1 was `CLAUDE.local.md` (personal, gitignored), M3 is your first authored skill in your personal kit. Promotion to a team home is the next move, not this one: a conversation with teammates, then a PR (to your repo's `.claude/skills/`, to a shared Git repo, to whichever home your team picks now or later). Intercom's 267-skill plugin repo (153 contributors, 31% of R&D, as of April 2026) was born that way: one engineer's personal skill, then a teammate's, then accretion. Not a platform-team design document.
 
 ## Why this proportion matters
 
@@ -70,7 +70,7 @@ Go.
 **Frameworks attributed:**
 - STRIDE — Kohnfelder & Garg (Microsoft, 1999) `[academic/research]`. Sharpened by Shostack (*Threat Modeling: Designing for Security*, 2014) `[academic/research]`.
 - Least-privilege principle — Saltzer & Schroeder (*The Protection of Information in Computer Systems*, 1975) `[academic/research]`.
-- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) `[practitioner direct]` + Intercom's 267-skill plugin repo `[practitioner direct]` (observations/intercom.md).
+- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) `[practitioner direct]` + Intercom's 267-skill plugin repo `[practitioner direct]` (Darragh Curran, *"2x – nine months later: We did it. You can too."*, [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later), 2026-04-16; re-verified live 2026-05-22 — 153 contributors / 267 skills / 31% of R&D confirmed in source). Evolving deployment data — re-verify before each cohort and refresh date anchor in body.
 - Test strategy as discipline — Kent Beck `[practitioner direct]` + Google Testing Blog's test-pyramid framing `[practitioner analysis]`. Named but not leaned on — the student's authored skill is theirs.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

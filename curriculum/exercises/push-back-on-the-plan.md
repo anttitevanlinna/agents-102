@@ -46,7 +46,7 @@ Ask Claude to walk down every unresolved branch of the plan one question at a ti
 
 {{prompt:push-back-on-the-plan-2}}
 
-> **Watch for slowness.** Plan rewrites between every Q-and-A turn can make the walk crawl. The prompt above tries to prevent that by locking the plan file until you say *lock it in.* If the agent touches the plan file mid-walk anyway, push back.
+> **If it feels sluggish, ask why.** Stop the turn, ask Claude what's making it slow, then relax the requirement that's making it crawl. The prompt is a starting recipe, not a contract, loosen what's costing you the slot.
 
 The second read asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
 
@@ -88,8 +88,8 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@88a1dd4 story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe)
-- judges @0fafbbe: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
+- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)

@@ -32,8 +32,8 @@ You forked a sibling worktree for the quality side, opened two Claude Code sessi
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-15 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0)
-- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
+- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 
 **Time:** ~5 min.
 

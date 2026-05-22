@@ -76,6 +76,8 @@ If the agent names something missed, decide whether to compound it now or accept
 
 Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria, the access-surface facts, and the hardening decision all feed into what M4 builds.
 
+Optional forward-look before M4: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md).
+
 ## Bring to Module 4
 
 **One scoped task you'd send off rather than nudge bit by bit. Not an epic. Not a typo-fix. A real slice with a 'done' you can name in a sentence.**
@@ -85,9 +87,9 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@533a77b story@0f32201 technical@0f32201 behavior@ab4b0bd pedagogy@689e7e0 strategy@689e7e0)
-- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
-- cross_module @689e7e0: PASS — set=[earn-the-trust, run-the-first-experiment]
+**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
+- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @1a9e10b: PASS — set=[prework, getting-going, plan-mode-done-right, earn-the-trust]
 - mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

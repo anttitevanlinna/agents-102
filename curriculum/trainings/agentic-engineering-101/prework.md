@@ -75,9 +75,9 @@ Connections question at the opening: *what's one trick you figured out with Clau
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@0f32201 technical@0f32201 behavior@ab4b0bd pedagogy@3605eee strategy@3605eee)
-- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
-- cross_module @3605eee: PASS — set=[prework, getting-going]
+**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
+- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @1a9e10b: PASS — set=[prework, getting-going, plan-mode-done-right, earn-the-trust]
 - mechanical @6121abd: PASS — ae101-prework via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

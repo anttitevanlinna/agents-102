@@ -56,8 +56,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@88a1dd4 story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe)
-- judges @0fafbbe: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
+- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Time:** 10–12 min, inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5).

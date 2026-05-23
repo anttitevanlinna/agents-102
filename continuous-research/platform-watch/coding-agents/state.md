@@ -1,15 +1,15 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-04-24 (cycle 109)
-OODA cycles: 4
+Last updated: 2026-05-23 (cycle 112)
+OODA cycles: 5
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
 
-## Key Verdict (as of 2026-04-24)
+## Key Verdict (as of 2026-05-23)
 
-**The meta-platform thesis has its first enterprise-scale evidence.** Cloudflare's April 2026 disclosure shows coding agents building 13 production MCP servers + 182 tools at 60% company adoption (93% R&D) — the meta-platform loop at organizational scale. Three platforms now exceed $2B ARR (Cursor $2B, Claude Code $2.5B, GitHub Copilot estimated $2B+). OpenAI Codex crossed from developer tool to general-purpose AI workspace (April 16, 2026 update: computer use, memory, 90+ plugins). The competitive frame is no longer "coding tools" — it is "AI operating systems for technical work." Compound engineering has Level 2 replication (Every Inc. + Imprint). The remaining gap: zero other Fortune 1000 company has published Cloudflare-comparable MCP-at-scale deployment evidence.
+**The competitive frame has shifted from model capability to agent runtime infrastructure.** At Code with Claude 2026 (May 6), Anthropic made the strategic choice to ship orchestration features (Dreaming, Outcomes, multi-agent fleet coordination) rather than a new model — signaling that the next competitive axis is runtime quality, not benchmark scores. Three platforms now exceed $2B ARR (Cursor $2B, Claude Code $2.5B, GitHub Copilot estimated $2B+). Mercado Libre (23K engineers) is targeting 90% autonomous coding by Q3 2026 — the most ambitious named enterprise commitment to date (vendor-event, Level 1). Rate limits doubled across all paid Claude Code plans. Claude Security (Opus 4.7-powered vulnerability scanning and patching) reached public beta for all Enterprise customers May 1. The remaining gap: zero independent Fortune 1000 company has published Cloudflare-comparable MCP-at-scale deployment evidence (Cloudflare remains the lone named example after 5 cycles).
 
 ---
 
@@ -121,6 +121,36 @@ Two practitioner write-ups published within two weeks of the April 8 launch:
 
 **Antspace/BYOC status — resolved:**
 The "Antspace" BYOC thread that was silent for 30+ cycles has been resolved. Antspace was Anthropic's internal deployment infrastructure (revealed via reverse-engineering by AprilNEA). The public-facing product became: (1) Claude Cowork (now GA) for managed graphical interface, (2) Claude Managed Agents for hosted agent runtime, (3) BYOC support within Managed Agents for enterprise data-residency. No separate "Antspace" product launch — it was always infrastructure, not a product. [AprilNEA reverse-engineering post — practitioner analysis] (https://aprilnea.me/en/blog/reverse-engineering-claude-code-antspace)
+
+---
+
+**May 2026 — Code with Claude 2026 event + Claude Security (cycle 112, May 23):**
+
+**1. Code with Claude 2026 (May 6)** — Anthropic's annual developer event. Strategic signal: **no new model shipped.** The choice to ship orchestration infrastructure instead of a model benchmark upgrade signals where Anthropic believes the next competitive axis is.
+
+New Managed Agents capabilities:
+
+- **Dreaming:** Scheduled overnight process reviews prior agent sessions, identifies gaps, writes new memory entries that the next session uses. Self-improvement without retraining. Simon Willison (practitioner direct): "really interesting" — found it the most notable technical feature at the event. Harvey (legal AI) pilot: ~6x task completion rate improvement (vendor-event, Level 1). Wisedocs (medical docs): 50% review time reduction (vendor-event, Level 1). [claude.com/blog/new-in-claude-managed-agents — vendor; simonwillison.net/2026/May/6/code-w-claude-2026/ — practitioner direct]
+
+- **Outcomes:** Builder writes a success rubric; a separate grading agent (that has NOT seen the task agent's reasoning) evaluates the output and kicks it back if it fails. Explicit eval loop in the runtime — no custom code required. Internal Anthropic benchmark: +10pp output quality from the grading loop (vendor-internal, Cookbook — not independently verified). [claude.com/blog/new-in-claude-managed-agents — vendor]
+
+- **Multi-agent orchestration:** Lead agent runs investigation while specialist subagents fan through deploy history, error logs, metrics, tickets in parallel. Incident response workflow as a first-class pattern. [claude.com/blog/new-in-claude-managed-agents — vendor]
+
+**Additional May 6 signals:**
+- Rate limits doubled across Pro, Max, Team, Enterprise plans; peak-hour throttle lifted entirely
+- SpaceX Colossus deal (300+ megawatts) disclosed — compute capacity had been the binding constraint on growth
+- Mercado Libre: 23,000 engineers, targeting 90% autonomous coding by Q3 2026 (vendor-event showcase, Level 1 — not independently verified, but the most specific named enterprise commitment in the coding agent space to date)
+- Boris Cherny quote: "The default isn't 'I'm going to prompt Claude' — the default is now 'I'm going to have Claude prompt itself'"
+- Shashi.co practitioner analysis: reads the event as "a platform declaration, not a product launch"; notes Anthropic claimed 80x annualized Q1 2026 growth — **treat as directional, vendor-event sourced, not independently verified** [shashi.co/2026/05/anthropics-platform-bet-code-with.html — practitioner analysis]
+
+**Independent practitioner reaction (Simon Willison, May 6):** Keynote was "all a little bit too inspirational" — was hoping for model/product/feature news. SpaceX and Dreaming the only concrete items. Got "a little lost in the demo" for Outcomes and orchestration. Measured skepticism maintained throughout. This is a credible counter-signal to the event's enthusiastic framing. [simonwillison.net/2026/May/6/code-w-claude-2026/ — practitioner direct]
+
+**MIT Technology Review (May 21):** Independent assessment notes that at the London event, "nearly half the audience had shipped pull requests entirely written by Claude, with most admitting they hadn't reviewed the code." Anthropic acknowledged concerns about security vulnerabilities in unreviewed generated code but maintained "all of the old software development best practices still apply." [technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-showed-off-codings-future-whether-you-like-it-or-not/ — general press, independent]
+
+**2. Claude Security — Public Beta (May 1, 2026):**
+AI-powered vulnerability scanning and patching for Claude Enterprise customers. Previously "Claude Code Security" in limited beta (February 2026). Now GA to all Enterprise globally; Team and Max access coming soon. Powered by Opus 4.7. Traces data flows and cross-file interactions as a security researcher would — not signature-based. Multi-stage validation pipeline with independent finding review, scheduled scans, directory-level targeting, CSV/Markdown audit export. Closes the enterprise software development lifecycle loop: code generation → security review → governance. [helpnetsecurity.com/2026/05/04/anthropic-claude-security-public-beta/ — domain trade publication; devops.com — domain trade publication]
+
+**Evidence level for all May 6 features:** Level 1 (too new for independent deployment evidence). Dreaming and Outcomes architectural concepts are verifiable; practitioner deployment outcomes are not yet documented independently.
 
 ---
 

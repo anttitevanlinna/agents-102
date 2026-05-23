@@ -1,12 +1,12 @@
 ---
 type: synthesis
 domain: cross-domain
-updated: 2026-03-28
+updated: 2026-05-23
 nordic: true
 answers: ["Nordic agents", "Nordic enterprise AI", "Nordic readiness", "Nordic deployments"]
 ---
 
-# Nordic Agent Landscape (March 2026)
+# Nordic Agent Landscape (May 2026)
 
 ## The Core Finding: Nordic is Pre-Adoption
 
@@ -51,11 +51,13 @@ First genuine Nordic agentic operations cluster: **Danish companies.**
 
 ## Nordic AI Maturity Data
 
-- **BCG Nordic report:** Only 4% of Nordic companies achieve strong AI returns. 60% allocate <5% to agentic.
+- **Deloitte State of AI in Nordics 2026 (N=170 senior executives, DK/FI/NO/SE, benchmarked against 3,235 global):** Only 5% of Nordic organizations report high expertise in agentic AI. 49% expect agentic AI transformation to be more than 3 years away. Strategic readiness dropped sharply from 61% → 43% YoY — AI awareness rose but strategic readiness declined (overwhelm effect?). Talent preparedness: only 14%. Share of orgs where 40%+ employees have access to approved AI tools: 37% → 56% in one year (access spreading fast). Only 18% achieve revenue growth from AI. 84% cite data privacy/security concerns. 67% prioritize security investments. ([Deloitte Finland](https://www.deloitte.com/fi/fi/Industries/technology/research/state-of-ai-in-the-nordics.html), published April–May 2026 — [practitioner analysis / consulting firm survey])
+- **BCG Nordic report (March 2026):** Only 4% of Nordic companies achieve strong AI returns. 60% allocate <5% to agentic.
 - **Vivicta survey (n=340):** AI maturity at levels 1-2 out of 5. Only 31% have an AI strategy. Sweden leads (87% CxO integration, 77% upskilling).
 - **Solita (3K+ respondents):** "Embrace but don't prepare" paradox.
 - **EY:** 23% of Finnish employees used agents.
 - **Nordic CxO pattern:** 75% integrate AI into most initiatives, but only 26% of CEOs directly involved in AI strategy.
+- **Lovable (Finnish/Nordic origin):** Raised $653M in funding as of January 2026 — highest among Nordic agentic AI companies. A Nordic-origin AI-native startup succeeding globally, but product is a coding/building tool, not enterprise business agent. ([Tracxn](https://tracxn.com/d/explore/agentic-ai-startups-in-nordics/__NqYXQKSwbGhafqBWMcpVnhQNookbWaEIAvN4bPlb72Y), Jan 2026)
 
 ## Regulatory (Nordic-specific)
 

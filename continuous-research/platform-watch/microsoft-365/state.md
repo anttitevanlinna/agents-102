@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
 nordic: true
-updated: 2026-04-11
-cycle: 96
+updated: 2026-05-23
+cycle: 112
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -350,6 +350,13 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Practitioner assessment (Quickenden, independent MVP):** "Right product at right time" — the identity and governance layer is structurally sound for the transition from agents-as-assistants to agents-as-actors. Four gaps named: (1) unclear licensing for autonomous agents not running on behalf of users; (2) vague capacity and scaling mechanics; (3) undefined per-organization agent limits; (4) "commercial model still catching up with the technology." Aligns with Gartner "assess now, adopt later" — but Quickenden is more positive on the underlying architecture. ([robquickenden.blog](https://robquickenden.blog/2026/03/agent-365-nears-ga/) — practitioner direct, March 2026)
 - **A2A in Azure AI Foundry production.** Cross-confirmed at Google Cloud Next: A2A 1.x running in production in Azure AI Foundry AND Amazon Bedrock AgentCore. The cross-cloud interoperability story is now more verifiable — Microsoft is a TSC member and running the protocol in production, not just announcing support.
 - **Status: Watch May 2-15 for first post-GA practitioner reports. If deployment gap persists through May, transitions from "early" to "structural" as flagged.**
+
+### From cycle 112 (May 2026 gap scan, May 23, 2026):
+- **Work Trend Index 2026 — first M365 agent telemetry: 15x YoY active agent growth.** Published May 5, 2026. Key telemetry: 15x YoY increase in active agents on Microsoft 365 (18x in large enterprises). This is system-level activation data, not self-report — more reliable than survey stats. Survey component (N=20,000, Edelman Data x Intelligence, February–April 2026): 78% of knowledge workers report using AI agents at least weekly. **Critical caveat: survey was limited to workers who already use AI at work. This is not a general workforce finding — it inflates the figure substantially vs. total workforce.** Organizational factors (culture, manager support, talent practices) account for 67% of reported AI impact vs. 32% for individual factors — survey finding, directional. ([Microsoft Work Trend Index](https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization) — vendor; [GeekWire](https://www.geekwire.com/2026/microsofts-new-research-finds-an-ai-paradox-holding-companies-back/) — general press, independent)
+- **Agent 365 GA delivery confirmed May 1.** Windows 365 for Agents previewed. Shadow AI detection (Entra) GA. GPT-5 now underlies declarative agents in M365 Copilot. Three-year Copilot purchasing option in CSP. E7 suite active. ([Microsoft](https://news.microsoft.com/annual-work-trend-index-2026/) — vendor; [Releasebot](https://releasebot.io/updates/microsoft/microsoft-copilot) — vendor documentation)
+- **EY Copilot expansion: 150K → 400K+ employees — all metrics from joint press release, no independent verification.** EY claims: 81% time savings, 95% faster Finance lead times, 37% operational cost reduction (via Copilot + intelligent agents). Source: EY/Microsoft partnership announcement May 21. No independent verification of metrics. Level 0 — treat as "this was announced," not as evidence of outcomes. ([Microsoft blog](https://blogs.microsoft.com/blog/2026/05/21/from-ai-pilots-to-enterprise-impact-why-execution-is-the-new-differentiator/) — vendor; [Microsoft newsroom](https://news.microsoft.com/source/2026/05/21/ey-and-microsoft-announce-global-initiative-to-help-clients-scale-ai-enterprisewide-value-creation-and-move-beyond-experimentation/) — vendor)
+- **Microsoft Build 2026 is June 2–3 (San Francisco) — has not happened yet.** Rescan required post-June 3 for agent infrastructure announcements.
+- **Deployment gap assessment (May 23):** Agent 365 GA is 22 days old. No independent enterprise deployment reports found. The "Watch May 2-15" window passed without evidence. Transitioning to **STRUCTURAL** deployment gap designation — mirrors the Foundry post-GA pattern. The 15x agent activation growth (telemetry) confirms agents ARE running inside M365 environments, but independently verified business-use-case deployments remain zero.
 
 ### Open questions for next cycles:
 - [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.

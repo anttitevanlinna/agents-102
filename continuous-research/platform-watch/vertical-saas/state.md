@@ -14,8 +14,8 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-04-20 (cycle 106)
-OODA cycles: 16
+Last updated: 2026-05-23 (cycle 112)
+OODA cycles: 17
 
 ## Focus
 
@@ -140,6 +140,10 @@ Vertical SaaS platforms that have shipped agent capabilities for business users.
 - **Spring 2026 release:** Agentforce Contact Center (voice + digital + CRM), Agentforce Builder (no-code to pro-code). Acquisitions: Qualified (marketing agents), Cimulate (product discovery/commerce). Partners leading 70% of implementations. ([Salesforce](https://www.salesforce.com/news/stories/spring-2026-product-release-announcement/) — Level 0)
 - **93% accuracy claim insufficient for enterprise** — Six Sigma = 99.999%. Gap between claimed and observed accuracy is the story. ([Salesforce Ben adoption reality](https://www.salesforceben.com/where-are-we-really-at-with-agentforce-adoption/), Mar 2026)
 - **Nordic signal:** Strong. Finnair + reMarkable. Salesforce opened Stockholm office Dec 2025 for Nordic Agentforce adoption. World Tour events: Copenhagen (Apr 23), Oslo (May 20), Stockholm (May 27). Hiring Forward Deployed Engineers across Nordic capitals. Majblomman (Swedish nonprofit) won hackathon concept — not production.
+- **Cycle 112 — Agentforce Operations GA (April 29, 2026) + Summer '26 roadmap:**
+  - **Agentforce Operations (GA April 29):** Extends Agentforce from customer-facing into internal back-office: auditing, onboarding, compliance verification, approval chains, cross-system data sync. Competes with ServiceNow's ITSM territory. Vendor claims: 50-70% cycle time reduction, 80% manual data entry reduction. **No named customer deployments with independent verification.** Only external quote: PwC US partnership ("helping clients transform manual operations") — partner, not deployer. Ecosystem integration (auto-sync with Salesforce Flow) entering beta May 2026. ([Salesforce newsroom](https://www.salesforce.com/news/stories/agentforce-operations-announcement/) — vendor; [SiliconAngle](https://siliconangle.com/2026/04/29/salesforce-introduces-agentforce-operations-automate-outdated-back-office-tasks/) — domain trade publication, Apr 29 2026)
+  - **Summer '26 release (waves from May 15):** Multi-Agent Orchestration, Agentforce Self-Service, Tableau MCP, agents in Flow Builder, 50+ out-of-the-box IT agents for Slack + Teams. ([Salesforce newsroom](https://www.salesforce.com/news/stories/summer-2026-product-release-announcement/) — Level 0)
+  - **Assessment:** The back-office expansion addresses the vertical SaaS structural advantage (existing data + workflows + trust). But the pattern holds from CS: GA without named deployer metrics. Salesforce's track record is CS first; back-office will need 3-6 months for independent evidence to surface. The 50+ IT agents in Slack/Teams signals direct competition with ServiceNow Autonomous Workforce for the employee experience layer.
 - **Evidence level:** Level 2-3 (customer service convergence; counter-evidence also at Level 2-3)
 
 ### Zendesk AI Agents — Customer Service

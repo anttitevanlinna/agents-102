@@ -1,0 +1,29 @@
+# Prework (AE101) — download → extract+install → screen+ready.
+# Driven by run-prework.sh. Session opens in the lemmings repo (the
+# stand-in for "THE repo" the student grows across the training).
+#
+# Re-runnable by construction: prework writes NOTHING to the repo. The
+# only durable writes land OUTSIDE it — ~/Downloads/ae101-content.tar.gz,
+# ~/Documents/ae101-content/, and the three curated skills under
+# ~/.claude/skills/. run-prework.sh resets all three before each run
+# (deletes the installed personal skills, clears the download + extract
+# dirs), so the scenario replays from a clean slate every time. An
+# end-of-run gate asserts the repo's tracked-file state is unchanged.
+#
+# <CONTENT_URL> substitution: the download prompt ships the literal
+# <CONTENT_URL> placeholder (build-time substituted in production by
+# scripts/build-workbook.js). run-prework.sh builds the tarball, serves
+# it on localhost, and rewrites <CONTENT_URL> to that local URL before
+# sending T1 — the harness standing in for the deploy-time substitution.
+#
+# Scoped OUT: ae101-prework-one-at-a-time. That prompt MANDATES the
+# AskUserQuestion tool, which hangs the headless runner forever (no
+# arrow-key + Enter ever arrives). The screen-and-ready turn below
+# carries the standard lazy-student guard tail instead, with three
+# candidate bugs inline (README § AskUserQuestion guards).
+
+ae101-prework-download-tarball
+
+ae101-prework-extract-and-install
+
+ae101-prework-screen-and-ready I'm doing a headless dry-run, so please don't call the AskUserQuestion tool — use your judgment and walk me through it in plain text. Here are my three candidate bugs from this repo's backlog: (1) the HUD 'Out' counter shows the cumulative spawned count instead of the currently-active count, so it still reads 12 after the round clears with zero lemmings on the playfield; (2) the win-screen saved tally looks off by one; (3) a debug log line prints the wrong phase name. Screen them against the criteria, tell me which is the most trivial-and-visible, pick it, then confirm the repo can test (or name how it checks code), git status is clean enough, and I can open a PR.

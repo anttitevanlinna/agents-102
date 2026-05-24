@@ -15,7 +15,7 @@ The training runs on YOUR real work, not exercises. Across six modules you'll wo
 - **A small feature** for Module 3: external or user-facing surface, shippable in a few hours.
 - **A real task you'd send off** for Module 4 onward: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
 
-Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. On Windows, Claude Code runs through Git Bash, the shell paths below resolve normally there. The curated security skills install in Step 4; no need to do it manually beforehand.
+Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. The curated security skills install in Step 4; no need to do it manually beforehand.
 
 ## 1. Pick THE repo
 
@@ -73,16 +73,17 @@ Connections question at the opening: *what's one trick you figured out with Clau
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-24 (reshaped post-audit; re-audit pending)
-- judges @1a9e10b: writing/story/technical/behavior/pedagogy/strategy PASS — 2026-05-22, INVALIDATED by the 2026-05-24 reshape (69c72a0: Step 0→2 collapse, Step 4→4+5 split, new `screen-and-ready` prompt, security-tools added to install)
-- cross_module @1a9e10b: degraded — prework touched 2026-05-24; set=[prework, getting-going, plan-mode-done-right, earn-the-trust] needs re-audit
+**Quality:** compendium-audited 2026-05-24 (writing@1fd0f66 story@1fd0f66 technical@1fd0f66 behavior@1fd0f66 pedagogy@1fd0f66 strategy@1fd0f66)
+- judges @1fd0f66: writing PASS, story PASS, technical PASS, behavior PASS (override-fresh-install-context-no-collision-norm-see-instances/ae101--prework.behavior.json), pedagogy PASS, strategy PASS
+- cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
 - mechanical: pending re-run on tmux-runner `run-prework.sh` (supersedes `bin/judge.sh`); prior PASS @6121abd 2026-05-14, pre-reshape
+- maintainer-reviewed 2026-05-24 (Antti — Windows-claim correction: deleted student-facing Git-Bash sentence; Transport bullet re-verified live against `code.claude.com/docs/en/setup`, OS floor 1809 not 1803, conditional Git Bash. Supersedes judge re-fire for this edit.)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 
 **Meta:**
 - **Runtime:** 30 min target. Step breakdown: pick repo 10 / open session 3 / content folder 3 / extract + install 5 / pick bug + readiness 8. Steps 1–4 are crisp; step 5 is where time can expand if the student's repo is messy.
 - **Delivery architecture** (working dir, content folder, skills install, compounding-artifact split): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Skills / §Rule files. Not restated here.
-- **Transport:** two download paths — agentic default (Claude `curl`s `<CONTENT_URL>`) and manual browser fallback; both land the same tarball, Steps 4–5 identical after. Cross-platform via Claude Code's Bash tool (macOS/Linux native, Windows via Git Bash). Platform claim verified against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs (Win10 1803+ ships native `curl.exe` + `tar.exe`).
+- **Transport:** two download paths — agentic default (Claude `curl`s `<CONTENT_URL>`) and manual browser fallback; both land the same tarball, Steps 4–5 identical after. Cross-platform via Claude Code's Bash tool. **Windows shell, verified 2026-05-24 against `code.claude.com/docs/en/setup`:** Claude Code requires **Win10 1809+/Server 2019+** (not 1803 — `curl.exe`+`tar.exe` ship from 1803/build 17063, but Claude Code's own floor is 1809, and that's the binding number). Git for Windows is **optional**; with it the Bash tool runs through Git Bash, without it Claude Code falls back to the **PowerShell tool**, and WSL is a third path. No student-facing Windows note needed: a pro who has `git worktree` already has Git Bash or WSL, and on the PowerShell-tool path the agent translates the M3/M5 worktree prompts' shell snippets (`cp -r`, `mkdir -p`, `git branch -a | grep`) into PowerShell itself — they sit under a natural-language lead-in ("copy the gitignored personal files into the worktree…") as intent-illustration, not a literal script, so `runtime: any` holds.
 - **`<CONTENT_URL>`:** literal placeholder in source, build-time substituted per-customer by `scripts/build-workbook.js`. Explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build substitution, not student fill-in.
 - **No pre-fabricated files.** Student generates all state in conversation (the *ask-the-agent-don't-type-in-a-terminal* pedagogy); the manual-download fallback is a transport primitive, not a file-edit.
 - **Install blockers are non-fatal.** Curated skills first fire at M3, so a failed Step-4 install is repairable before then — don't absorb debugging into M1. Rescue paths (classroom live, self-study email) in `trainer-guide.md`.

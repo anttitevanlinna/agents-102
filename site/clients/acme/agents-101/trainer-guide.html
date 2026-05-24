@@ -384,6 +384,7 @@ main::before {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 500;
+    font-size: 1.05em;
     color: var(--accent);
 }
 
@@ -478,6 +479,39 @@ main::before {
     content: "·";
     margin-right: 0.5rem;
     color: var(--fg-4);
+}
+
+/* Permission-mode chip — emitted by decoratePrompts() when a prompt's
+   frontmatter declares `permission-mode:`. Sits leftmost in the header so
+   a scanning reader hits "what mode do I need to be in" before reading
+   anything else. Canonical Claude Code tokens per
+   code.claude.com/docs/en/permission-modes: default | acceptEdits | plan
+   | auto | bypassPermissions. Mode-specific modifier classes carry the
+   colour so the chip reads at a glance. */
+.module .prompt-block__mode {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: var(--fg-2);
+    color: var(--bg);
+    white-space: nowrap;
+}
+
+.module .prompt-block__mode--plan {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.module .prompt-block__mode--acceptEdits {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
 }
 
 .module .prompt-block .prompt-block__pre {
@@ -2000,7 +2034,7 @@ body.workbook { padding-top: 3rem; }
 <p>You project the workbook page. There are no slides. You demo each exercise prompt slowly while the room copy-pastes into their own runtime. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
 <p>Your screen is shared most of the session. There is no private trainer pane. Read maintainer blocks during prep only, never while screen-sharing. If a cue is missing from student-visible prose, flag it after the session rather than toggling to a hidden source file.</p>
 <p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
-<p>In cohort delivery, you carry the push-backs by default. Teacher Claude or an Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.</p>
+<p>In cohort delivery, you carry the push-backs.</p>
 <h2 id="delivery-architecture">Delivery Architecture</h2>
 <p>Agents 101 uses a local training directory that compounds over time. Early work is scoped; later work adds durable system artifacts. The exercise files are the source of truth for exact working directory, paths, and handoffs.</p>
 <p>Root rules are earned from session evidence. Do not ship or improvise a prewritten root rules file before the exercise asks students to create it.</p>
@@ -2132,9 +2166,12 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
+                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
                 { slug: 'the-agent-loop',             title: 'The agent loop' },
-                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' }
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
+                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
+                { slug: 'skill-stacking',             title: 'Skill stacking system' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -2152,6 +2189,7 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
                 { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         }
@@ -2338,6 +2376,16 @@ body.workbook { padding-top: 3rem; }
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
+        // Permission-mode sentinel, mirrors the ⟦A:slug⟧ anchor pattern.
+        // decoratePrompts() parses this off the label paragraph and renders it
+        // as a separate chip in the prompt-block header. Sentinel is appended
+        // after the label so marked() treats it as inline text inside the same
+        // paragraph — survives the render cycle untouched (U+27E6/U+27E7 are
+        // not HTML-special and not in any realistic prompt label).
+        var mode = entry && entry['permission-mode'];
+        if (mode && /^[A-Za-z]+$/.test(mode)) {
+            label += ' ⟦M:' + mode + '⟧';
+        }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
         if (entry && entry.anchors && entry.anchors.length) {
             text = injectAnchorSentinels(text, entry.anchors);
@@ -2663,11 +2711,25 @@ body.workbook { padding-top: 3rem; }
                   '<span class="rt-cli">Claude Code CLI</span>'
                 : esc(dest);
 
+            // Permission-mode sentinel ⟦M:<mode>⟧ sits in the paragraph text
+            // after the em-paren label; renderPromptBlock plants it when the
+            // prompt's frontmatter declares `permission-mode:`. Parse it off
+            // here, strip from the paragraph so the literal sentinel never
+            // renders, surface as a separate header chip.
+            var mode = '';
+            var pHtml = p.innerHTML;
+            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
+            if (modeMatch) {
+                mode = modeMatch[1];
+                p.innerHTML = pHtml.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
+            }
+
             var wrap = document.createElement('div');
             wrap.className = 'prompt-block';
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
+                (mode ? '<span class="prompt-block__mode prompt-block__mode--' + esc(mode) + '" title="Paste this prompt in ' + esc(mode) + ' mode">' + esc(mode) + ' mode</span>' : '') +
                 '<span class="prompt-block__label">Prompt</span>' +
                 '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
                 '<span class="prompt-block__dest">' + destHtml + '</span>' +

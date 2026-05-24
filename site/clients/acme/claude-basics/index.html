@@ -384,6 +384,7 @@ main::before {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 500;
+    font-size: 1.05em;
     color: var(--accent);
 }
 
@@ -480,10 +481,143 @@ main::before {
     color: var(--fg-4);
 }
 
+/* Permission-mode chip — emitted by decoratePrompts() when a prompt's
+   frontmatter declares `permission-mode:`. Sits leftmost in the header so
+   a scanning reader hits "what mode do I need to be in" before reading
+   anything else. Canonical Claude Code tokens per
+   code.claude.com/docs/en/permission-modes: default | acceptEdits | plan
+   | auto | bypassPermissions. Mode-specific modifier classes carry the
+   colour so the chip reads at a glance. */
+.module .prompt-block__mode {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: var(--fg-2);
+    color: var(--bg);
+    white-space: nowrap;
+}
+
+.module .prompt-block__mode--plan {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.module .prompt-block__mode--acceptEdits {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+}
+
 .module .prompt-block .prompt-block__pre {
     margin: 0;
     border: 0;
     border-radius: 0;
+    background: var(--bg-2);
+}
+
+/* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
+   in curriculum.js when an entry declares `anchors:` in its frontmatter, then
+   wrapped at DOM time by convertAnchorSentinels(). Dotted underline in the
+   accent colour so a scanning reader notices the affordance without it
+   pulling focus. Hover raises contrast; the Tufte sidenote panel (Step 3,
+   follow-up) reads the data-move attribute and surfaces the matching
+   prompt-anatomy entry. */
+.module .prompt-block .prompt-anchor {
+    border-bottom: 1.5px dotted var(--accent);
+    cursor: help;
+    transition: border-bottom-color 0.15s ease, background-color 0.15s ease;
+}
+
+.module .prompt-block .prompt-anchor:hover {
+    border-bottom-style: solid;
+    background-color: var(--accent-soft);
+}
+
+/* Anatomy popup card — surfaces the prompt-anatomy.md entry when a student
+   clicks a .prompt-anchor span. Absolute-positioned by attachAnchorPopups()
+   relative to the document, anchored to the clicked span. One popup at a
+   time; click outside or press Esc to close. Body comes from compile-anatomy
+   pre-rendered HTML (window.__ANATOMY[slug].html). */
+.prompt-anatomy-popup {
+    position: absolute;
+    z-index: 1000;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--fg-3);
+    border-radius: 4px;
+    padding: 1rem 1.2rem 1.1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.prompt-anatomy-popup__kicker {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
+.prompt-anatomy-popup__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    color: var(--fg);
+}
+
+.prompt-anatomy-popup__body p {
+    margin: 0.5rem 0;
+}
+
+.prompt-anatomy-popup__body p:first-child {
+    margin-top: 0;
+}
+
+.prompt-anatomy-popup__body p:last-child {
+    margin-bottom: 0;
+}
+
+.prompt-anatomy-popup__body code {
+    background: var(--bg-2);
+    padding: 0 0.3em;
+    border-radius: 2px;
+    font-size: 0.88em;
+}
+
+.prompt-anatomy-popup__body em {
+    color: var(--fg-2);
+}
+
+.prompt-anatomy-popup__close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.55rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--fg-3);
+    border-radius: 3px;
+    transition: color 0.12s ease, background 0.12s ease;
+}
+
+.prompt-anatomy-popup__close:hover {
+    color: var(--fg);
     background: var(--bg-2);
 }
 
@@ -1891,7 +2025,8 @@ body.workbook { padding-top: 3rem; }
       <li><a href="#agentic-systems-repo-demo" data-target="agentic-systems-repo-demo">M1</a></li>
       <li><a href="#where-is-this-all-going" data-target="where-is-this-all-going">M2</a></li>
       <li><a href="#homework-build-and-verify" data-target="homework-build-and-verify">M3</a></li>
-      <li><a href="#organisers-run-the-workshop" data-target="organisers-run-the-workshop">M4</a></li>
+      <li><a href="#personal-site-with-guardrails" data-target="personal-site-with-guardrails">M4</a></li>
+      <li><a href="#organisers-run-the-workshop" data-target="organisers-run-the-workshop">M5</a></li>
   </ol>
 </nav>
 <main>
@@ -1904,11 +2039,12 @@ body.workbook { padding-top: 3rem; }
 
 <nav class="workbook-toc">
   <h2>Contents</h2>
-<ol class="module-list index-modules"><li data-slug="agentic-systems-repo-demo"><a href="#agentic-systems-repo-demo"><span class="module-n">01</span><span class="module-body"><span class="module-title">Agentic systems, shown in the repo</span><span class="module-big">Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</span></span><span class="module-arrow">→</span></a></li><li data-slug="where-is-this-all-going"><a href="#where-is-this-all-going"><span class="module-n">02</span><span class="module-body"><span class="module-title">Where is this all going?</span><span class="module-big">In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the challenge that matters.</span></span><span class="module-arrow">→</span></a></li><li data-slug="homework-build-and-verify"><a href="#homework-build-and-verify"><span class="module-n">03</span><span class="module-body"><span class="module-title">Separate homework: build and verify</span><span class="module-big">The live session gives you the shape. Homework turns it into a small system in your own folder.</span></span><span class="module-arrow">→</span></a></li><li data-slug="organisers-run-the-workshop"><a href="#organisers-run-the-workshop"><span class="module-n">04</span><span class="module-body"><span class="module-title">Organisers: run the workshop</span><span class="module-big">The same workbook carries the organiser runbook, but organiser work stays separate from the participant path.</span></span><span class="module-arrow">→</span></a></li></ol>
+<ol class="module-list index-modules"><li data-slug="agentic-systems-repo-demo"><a href="#agentic-systems-repo-demo"><span class="module-n">01</span><span class="module-body"><span class="module-title">Agentic systems, shown in the repo</span><span class="module-big">Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</span></span><span class="module-arrow">→</span></a></li><li data-slug="where-is-this-all-going"><a href="#where-is-this-all-going"><span class="module-n">02</span><span class="module-body"><span class="module-title">Where is this all going?</span><span class="module-big">In 60 minutes each group produces a clean synthesis of what would make the Claude rollout work. The hard part isn&#39;t picking a tool. It&#39;s finding the challenge that matters.</span></span><span class="module-arrow">→</span></a></li><li data-slug="homework-build-and-verify"><a href="#homework-build-and-verify"><span class="module-n">03</span><span class="module-body"><span class="module-title">Separate homework: build and verify</span><span class="module-big">The live session gives you the shape. Homework turns it into a small system in your own folder.</span></span><span class="module-arrow">→</span></a></li><li data-slug="personal-site-with-guardrails"><a href="#personal-site-with-guardrails"><span class="module-n">04</span><span class="module-body"><span class="module-title">Paint by agent with guardrails</span><span class="module-big">With the right guardrails, you create output that&#39;s genuinely yours, not generic.</span></span><span class="module-arrow">→</span></a></li><li data-slug="organisers-run-the-workshop"><a href="#organisers-run-the-workshop"><span class="module-n">05</span><span class="module-body"><span class="module-title">Organisers: run the workshop</span><span class="module-big">The same workbook carries the organiser runbook, but organiser work stays separate from the participant path.</span></span><span class="module-arrow">→</span></a></li></ol>
 </nav>
 
 <section class="module" id="agentic-systems-repo-demo">
 <h1 id="agentic-systems-shown-in-the-repo">Agentic systems, shown in the repo</h1>
+<p>Welcome in. You&#39;re about to see the system that built the workbook you&#39;re sitting in, and once you see it, you won&#39;t unsee the shape anywhere else.</p>
 <h2 id="big-idea">Big Idea</h2>
 <p>Agentic systems become visible when you know where to look: rules, prompts, memory, checks, build scripts, customer versions, and commits.</p>
 <h2 id="what-this-workshop-builds">What This Workshop Builds</h2>
@@ -1926,31 +2062,21 @@ body.workbook { padding-top: 3rem; }
 <section class="phase phase--lecture" id="lectures-agentic-systems-demo-script">
 <div class="phase-kicker">Lecture</div>
 
-<h1 id="agentic-systems-demo-script">Agentic systems demo script</h1>
-<p><strong>Time:</strong> 35 minutes.</p>
-<p>This is a live demo script for the agents-102 repo and the Claude Basics workbook. The point is not to tour files. The point is to show how an agentic system behaves when rules, prompts, checks, build output, and compounding sit in one working system.</p>
-<h2 id="1-start-with-the-question">1. Start with the question</h2>
-<p>Ask what makes this different from a good chat answer. The answer to look for is repeatability: a chat gives a response, while a system leaves behind structure that can run again.</p>
-<h2 id="2-show-the-workbook-first">2. Show the workbook first</h2>
-<p>Open the deployed Claude Basics workbook. Start from the page the room will actually use, then work backward to show that the page is built output, not a hand-written slide deck.</p>
-<h2 id="3-show-the-rules">3. Show the rules</h2>
-<p>Ask Claude Code what rules govern Claude Basics work in this repo. Let it name the root <code>CLAUDE.md</code>, <code>curriculum/CLAUDE.md</code>, and the Claude Basics rules before opening anything manually.</p>
-<h2 id="4-show-how-rules-steer-behavior">4. Show how rules steer behavior</h2>
-<p>Ask why the workbook says &quot;people helping their organisation roll out Claude.&quot; This makes the rules visible as judgment, not decoration: the workbook is written for everyone who may need to help the rollout succeed.</p>
-<h2 id="5-inspect-the-system">5. Inspect the system</h2>
-<p>Ask Claude Code to find the module order, source module files, shared exercises, and build command. The point is the map: source content, rendering code, generated customer output, and deployment path all live in the same system.</p>
-<h2 id="6-make-one-small-strategic-change">6. Make one small strategic change</h2>
-<p>Use a tiny wording or structure change, not a rewrite. Ask Claude Code to explain the plan before editing so the room sees the discipline: inspect, propose, edit, verify.</p>
-<h2 id="7-rebuild-the-customer-workbook">7. Rebuild the customer workbook</h2>
-<p>Run the customer build command for <code>acme claude-basics</code>. Show that one source change becomes a customer workbook change through the build system.</p>
-<h2 id="8-run-checks">8. Run checks</h2>
-<p>Ask Claude Code to grep for the old wording and run the cheap checks that fit the change. The teaching point is reliability math in miniature: the system does not trust a clean-looking answer; it checks the artifact.</p>
-<h2 id="9-show-the-diff">9. Show the diff</h2>
-<p>Ask Claude Code to summarize the diff. The diff is the system&#39;s receipt: what changed in source, what changed in generated output, and what stayed untouched.</p>
-<h2 id="10-show-compounding">10. Show compounding</h2>
-<p>Ask what rule or memory should change so the same mistake is less likely next time. This is the compounding move: the output is not only the workbook, but the improved system that will shape the next edit.</p>
-<h2 id="11-name-the-pattern">11. Name the pattern</h2>
-<p>Close by naming the loop: rules, inspect, plan, edit, check, build, compound. That loop is the difference between asking Claude for help and working inside an agentic system.</p>
+<h1 id="an-agentic-system-end-to-end">An agentic system, end to end</h1>
+<p>This is a 30-minute live demo. You watch; you don&#39;t run anything yourself. The point isn&#39;t to show off a tool. The point is to make an agentic system inspectable. By the end you&#39;ll be able to describe one to a colleague, with edges, files, and a working loop.</p>
+<p>You&#39;ll see five things.</p>
+<p><strong>The folders are the system.</strong> Before any prompt runs, the workbook you&#39;ve been reading gets traced back to its source. Module files in <code>curriculum/</code>. Rule files (<code>CLAUDE.md</code>) that govern how those modules are written. A memory directory of decisions the system has compounded over time. A customer build that turns all of it into the page in front of you. The system isn&#39;t hiding anywhere. It&#39;s in folders with names.</p>
+<p><strong>Rules are visible to the agent itself.</strong> Claude is asked which rules govern Claude Basics content. The agent answers in seconds, not by guessing but by reading the same <code>CLAUDE.md</code> files a person would. The first follow-up question pulls out the audience definition that shapes the workbook&#39;s voice. The second pulls a rule you&#39;d never have thought to ask for. The reveal: the agent isn&#39;t smart in a vague way. It&#39;s smart because the rules are written down, and it reads them.</p>
+<p><strong>One agent works in the background while the demo continues.</strong> Claude is asked to author a full Claude Basics module from an Agents 101 source. A real ten-page job that would take a person most of an afternoon. The session launches. The demo doesn&#39;t wait. The work happens while everything else continues. This is the move rollout custodians use most: launch, leave, come back.</p>
+<p><strong>A small fix becomes a system change.</strong> A real gap in this lecture gets spotted. The agent plans the change, edits the file, and proposes the rule update that would have caught the gap in the first place. Two diffs, side by side. The artifact got better, and so did the system that produces the next artifact. The word for what just happened is <em>compounding</em>.</p>
+<p><strong>The pattern, named.</strong> Inspect, plan, edit, check, build, compound. That sequence is the difference between asking Claude for help and operating a Claude system. The same moves work whether the artifact is a workbook, a policy document, or the rollout plan you&#39;ll write yourself.</p>
+<p>If the room and the clock cooperate, five more moves lie in reserve.</p>
+<p><strong>The agent grades its own work.</strong> The session that ran in the background comes back. The agent reads what it wrote and audits it against the same rule files the system carries. It returns the three things it would fix, ranked. It doesn&#39;t fix them yet. The agent is judged by the same rules that shaped it.</p>
+<p><strong>Source to customer page, one command.</strong> A build runs against the source. Ten seconds later the deployed customer workbook carries the fix from a moment ago. No release process, no waiting on someone else. The build is part of the system.</p>
+<p><strong>One source, many customers.</strong> A small config file tells the build which customer to render: branding, audience copy, which modules ship. The same curriculum becomes twenty workbooks for twenty cohorts. The plug-in points are visible files, not a hidden CMS.</p>
+<p><strong>Memory the system actually keeps.</strong> A recent rule the system compounded for itself gets opened and walked through. What got missed before. What got added. Where it now fires next time. Chat forgets when the window closes. This writes things down.</p>
+<p><strong>Six audits, at once.</strong> One command fires six different reviewers against one file: writing, story, technical, behavior, pedagogy, strategy. They run in parallel. None waits on the others. Verdicts come back as one structured summary read in thirty seconds.</p>
+<p>When the demo closes, the room doesn&#39;t have a new piece of software. It has a map.</p>
 </section>
 
 
@@ -2006,6 +2132,8 @@ Start with: &quot;What&#39;s the first difficulty you see?&quot; After my answer
 
 When I&#39;ve answered all three with push-back, ask me for my first name. Then save the conversation as `rollout-notes.md` in the folder named with my first name.
 
+If you can&#39;t find my folder, ask me. If somebody else has written there already, ask me.
+
 Include the three difficulties and the push-back answers, in my voice. Don&#39;t summarize them into your own register.
 </code></pre>
 <p>Answer Claude&#39;s questions in plain language. When the file saves, you&#39;re done with Phase 1.</p>
@@ -2060,6 +2188,10 @@ The saved file must include:
 <p>In the dry run, Claude dismissed &quot;no time to experiment&quot; as something that could not be addressed. Clearly it can.</p>
 <p>Your job is to correct weak assumptions before they harden into the saved synthesis.</p>
 <p>Before saving, push back until the crux sounds like the group&#39;s real trouble, not Claude&#39;s neat version of it.</p>
+<p>If a participant was slow to save or had sync issues, ask Claude to re-check the group&#39;s folders for new content before you finalise.</p>
+<p><strong>Prompt</strong> <em>(Cowork, group driver, optional)</em></p>
+<pre><code>Re-check each of the group&#39;s first-name folders. Tell me what&#39;s new in `rollout-notes.md` since you last read it, or any new file. Redo the crux analysis with the new material and show me whether the synthesis should change.
+</code></pre>
 <p>If the group wants to compare alternatives before approving the synthesis, ask Claude to list the other possible cruxes.</p>
 <p><strong>Prompt</strong> <em>(Cowork, group driver, optional)</em></p>
 <pre><code>Based on what you have read, list the other possible cruxes.
@@ -2099,6 +2231,8 @@ Then run cycles. In each cycle:
    If other group files are ready, visit up to two of them. Prefer files we have not commented on yet, but re-read any file that has changed since you last saw it.
    For each:
    - read the file
+   - if it already has a section starting with &quot;Comments from &lt;our group name&gt;&quot;, add anything new and relevant from this cycle to that section — don&#39;t duplicate bullets you already wrote
+   - just before appending, re-read the file. If another group has added comments since your first read, factor them in before writing yours.
    - append a section named with our group name, for example &quot;Comments from Atlas&quot;, with two or three bullets: one idea worth borrowing or extending, one comment or sharper question from our group, plus a flag if you see overlap with our crux
    - save the file
 
@@ -2160,16 +2294,16 @@ Stop when I say stop.
 <h1 id="exercise-build-your-system">Exercise: Build your system</h1>
 <p><strong>Time:</strong> 26 minutes. Five phases.</p>
 <p>You start with a plain Claude HTML answer. You leave with a small working system on a task that matters to your work: <code>styling-rules.md</code> for a reusable look and <code>CLAUDE.md</code> that tells Cowork to use those rules.</p>
-<p>Choose an empty local folder on your computer and open Cowork on it. Everything in this exercise saves there.</p>
 <p><strong>The task</strong> is one small thing you could actually use. Good default: a simple HTML explainer you could send internally. Other options: a one-page answer to a Claude question you keep getting, a short explanation of the difference between Claude and ChatGPT for your own work, or a short guide to which connectors you should enable for a personal workflow.</p>
 <p><strong>Session</strong> <em>(new, &quot;Build your system - baseline&quot;)</em></p>
+<p>Start in any empty working folder you wish to use. Everything in this exercise saves there.</p>
 <h2 id="phase-0-add-base-material-3-minutes">Phase 0. Add base material (3 minutes)</h2>
-<p>Add one or two base materials to the folder. Use content that helps Claude answer the task, not style references yet.</p>
-<p>Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the folder.</p>
+<p>Create a <code>sources/</code> subfolder and add one or two base materials there. Use content that helps Claude answer the task, not style references yet.</p>
+<p>Most formats are fine: PDF, Word, text, markdown, or a copied note. Use whatever is easiest to get into the subfolder.</p>
 <p>Good base materials:</p>
 <ul>
 <li>a policy, FAQ, internal note, or pasted text file that the answer should draw from</li>
-<li>a short note you write yourself, such as <code>source-notes.md</code>, with the facts, audience, and purpose of the answer</li>
+<li>a short note you write yourself, such as <code>sources/source-notes.md</code>, with the facts, audience, and purpose of the answer</li>
 </ul>
 <h2 id="phase-1-the-boring-baseline-5-minutes">Phase 1. The boring baseline (5 minutes)</h2>
 <p>Pose the task to Claude with base material, but no saved rules, no style source, and no folder instructions. Plain Cowork session, plain prompt. The output will be plausibly fine and quietly generic. That gap is the point of Phase 1.</p>
@@ -2177,7 +2311,7 @@ Stop when I say stop.
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Draft a one-page HTML answer I can use in my own work.
 
-First read the base materials in this folder. Use them as the source material for the answer.
+First read the base materials in the `sources/` subfolder. Use them as the source material for the answer.
 
 Use no saved rules or style source yet. Create simple, self-contained HTML and CSS in one file.
 
@@ -2218,15 +2352,13 @@ The style source is:
 <p>A useful style rule names visible choices, not vibes. <em>&quot;Use the company&#39;s style&quot;</em> is too weak. <em>&quot;Use short section headings, compact white panels, blue action buttons, and plain labels&quot;</em> gives Claude something to reuse.</p>
 <p><strong>Session</strong> <em>(new, &quot;Build your system - styled answer&quot;)</em></p>
 <p>Close this Cowork session. Open a new Cowork session on the same local folder. This is the break that proves <code>CLAUDE.md</code> and <code>styling-rules.md</code> are loaded from disk, not remembered from chat.</p>
-<pre><code>/rename build-system-style
-</code></pre>
 <h2 id="phase-3-style-it-from-the-saved-system-4-minutes">Phase 3. Style it from the saved system (4 minutes)</h2>
 <p>Same HTML answer. New system. Make the thing better.</p>
 <p>Ask Claude to restyle the file using the folder setup you just created.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Regenerate the HTML in `response.html`.
 
-Read the base materials again and use the folder instructions.
+Read the base materials in the `sources/` subfolder again and use the folder instructions.
 
 Keep it as simple, self-contained HTML and CSS in one file. Save the updated file.
 
@@ -2245,13 +2377,13 @@ After saving, tell me:
 
 The rule should help with the next similar output, not everything.
 
-After adding the rule, read the base materials again and use the updated folder instructions to regenerate `response.html`.
+After adding the rule, read the base materials in the `sources/` subfolder again and use the updated folder instructions to regenerate `response.html`.
 
 Then tell me what changed in the file.
 
 What I want the next version to do better:
 </code></pre>
-<p>Look at the file again. The point is not a perfect page. The point is that the folder now knows one more thing.</p>
+<p>Open <code>response.html</code> to see what actually shifted, Cowork&#39;s chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next run.</p>
 <p>When the page is visibly closer and the folder carries the rule forward, stop. The system is small, but it now has something reusable.</p>
 <h2 id="style-is-just-one-aspect">Style Is Just One Aspect</h2>
 <p>This exercise used style because visual differences are easy to see. The same pattern works for any output quality you need to steer.</p>
@@ -2270,14 +2402,14 @@ What I want the next version to do better:
 <p><strong>Time:</strong> 35-40 minutes. Six phases. Self-study.</p>
 <p>Start in the same local folder you used for the build-your-system homework, or choose another empty local folder on your computer.</p>
 <p>Same folder is OK. If your build-your-system folder already has <code>CLAUDE.md</code>, keep using it. This exercise adds a source-checking habit to the same small system.</p>
-<p>Add 1 or 2 source files you know well. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.</p>
+<p>Create a <code>sources/</code> subfolder and add 1 or 2 source files you know well there. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.</p>
 <p>You choose the briefing topic. The first prompt should feel like a normal work request.</p>
 <p><strong>Session</strong> <em>(new, &quot;Find wrong claims - first run&quot;)</em></p>
 <p>Open Cowork on this folder for the first run.</p>
 <h2 id="phase-1-generate-from-sources-6-minutes">Phase 1. Generate from sources (6 minutes)</h2>
 <p>Ask Cowork to draft from the source files.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
-<pre><code>Based on material in this folder, make a 1 page briefing.
+<pre><code>Based on material in the `sources/` subfolder, make a 1 page briefing.
 
 Save the briefing as `source-answer.md`.
 
@@ -2289,11 +2421,12 @@ Make the briefing on the following:
 <h2 id="phase-2-fact-check-with-a-separate-checker-8-minutes">Phase 2. Fact-check with a separate checker (8 minutes)</h2>
 <p>Now split the work. The generator wrote the answer. A separate checker tests it against the sources.</p>
 <p>Fresh context matters because the checker should not inherit the generator&#39;s confidence or wording. It should see the answer and the source material as evidence, not as something it just wrote and wants to defend.</p>
+<p>Ask Claude to dispatch a separate fact-checker.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
 <pre><code>Run a separate fact-checking subagent on `source-answer.md`.
 
 Give the checker this job:
-- use only the material in this folder as ground
+- use only the material in the `sources/` subfolder as ground
 - check whether important factual claims in `source-answer.md` are supported by that material
 - check whether any claim overreaches, generalizes, softens, or contradicts that material
 - do not rewrite the answer
@@ -2306,6 +2439,7 @@ After the checker finishes, summarize the findings in chat:
 - overreaches
 - anything the checker could not tell
 </code></pre>
+<p><strong>Subagent:</strong> a Cowork primitive, Claude can dispatch a fresh session to run any task in its own context. Here we use one as a fact-checker, so the check doesn&#39;t inherit what the generator just wrote.</p>
 <p>Look at the findings. The useful result is often not &quot;wrong.&quot; It is &quot;not in the sources&quot; or &quot;too broad.&quot;</p>
 <h2 id="phase-3-persist-the-checking-rule-7-minutes">Phase 3. Persist the checking rule (7 minutes)</h2>
 <p>The checker helped once. Now make the folder remember the method.</p>
@@ -2314,9 +2448,9 @@ After the checker finishes, summarize the findings in chat:
 
 Add one small rule to `CLAUDE.md` for future source-based writing in this folder.
 
-The rule should say that before finalizing an answer based on material in the folder, Cowork should run a separate fact-checking subagent that checks:
+The rule should say that before finalizing an answer based on material in the `sources/` subfolder, Cowork should run a separate fact-checking subagent that checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Keep the rule short and practical.
 
@@ -2325,8 +2459,6 @@ After saving `CLAUDE.md`, tell me the rule you added.
 <p>The rule does not make Claude perfect. It gives the folder a better default move.</p>
 <p><strong>Session</strong> <em>(new, &quot;Find wrong claims - second run&quot;)</em></p>
 <p>Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether <code>CLAUDE.md</code> changes the next run.</p>
-<pre><code>/rename fact-check-second-run
-</code></pre>
 <h2 id="phase-4-generate-again-5-minutes">Phase 4. Generate again (5 minutes)</h2>
 <p>Use the saved generation prompt. Do not improve it yet.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -2343,7 +2475,7 @@ Run that prompt again and save the new briefing as `source-answer-2.md`.
 
 Use the same two checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Save the checker findings as `fact-check-2.md`.
 
@@ -2359,7 +2491,7 @@ Fix the answer. Save the corrected version as `source-answer-final.md`.
 
 Then run a separate fact-checking subagent on `source-answer-final.md` using the same two checks:
 - source support
-- overreach against the material in this folder
+- overreach against the material in the `sources/` subfolder
 
 Save the final checker findings as `fact-check-final.md`.
 
@@ -2368,6 +2500,7 @@ After saving, tell me:
 - what the final checker still flagged
 - whether `CLAUDE.md` needs one sharper rule
 </code></pre>
+<p><strong>Caveat:</strong> Self-reporting is known to be spotty. If Cowork&#39;s account of what it fixed doesn&#39;t match what <code>source-answer-final.md</code> actually shows, trust the file.</p>
 <blockquote>
 <p>Even after this, the answer might still contain errors. Today&#39;s LLM will not arrive at complete truth on its own. The loop makes the work better, but human oversight is what keeps the operation truthful.</p>
 <p>Your source files may not be 100% accurate either. Some problems live in the evidence, the policy, the notes, or the team&#39;s current understanding. Not everything can be fixed by fixing the generation.</p>
@@ -2400,6 +2533,223 @@ Keep it to five bullets.
 </code></pre>
 <h2 id="follow-up">Follow-up</h2>
 <p>The live session is over. The rollout is not. Keep the folder summary and the open verification rows close to your work.</p>
+<p><strong>Optional bonus self-study:</strong> if you want a second, more personal pass at the same loop, work through <a href="#personal-site-with-guardrails">Paint by agent with guardrails</a>. Same do → capture → reflect → sharpen move, applied to a personal site built from your own LinkedIn. Lighter stakes than the rollout system, the artifact is yours, the rules file at the close travels onto any future personal-shaped task.</p>
+
+</section>
+
+<section class="module" id="personal-site-with-guardrails">
+<h1 id="paint-by-agent-with-guardrails">Paint by agent with guardrails</h1>
+<h2 id="big-idea">Big Idea</h2>
+<p>With the right guardrails, you create output that&#39;s genuinely yours, not generic.</p>
+<h2 id="prework">Prework</h2>
+<p>Cowork set up (you&#39;ve been using it in the live session and homework). Your own LinkedIn profile open in another tab.</p>
+<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<p>After this module, you will be able to:</p>
+<ul>
+<li><strong>Generate</strong> an HTML one-pager and read what the agent put in it</li>
+<li><strong>Apply</strong> structured guardrails and see how the output changes</li>
+<li><strong>Catch</strong> statistical-default output where your own knowledge says the agent is filling in a gap with generic</li>
+<li><strong>Package</strong> what you learned into a reusable generation rules file</li>
+</ul>
+<h2 id="start-here">Start here</h2>
+<p>This bonus module is self-study. The build-and-verify homework gave you a small system on a work task. This one gives you the inverse: a personal artifact, fast feedback, and the first rules file the agent can re-read on any future personal-shaped task.</p>
+<p><strong>The question, to you:</strong> when you&#39;ve used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?</p>
+<p><strong>Context is king.</strong> You steer your agent by the context you give it. You paint by choosing the brush.</p>
+<section class="phase phase--lecture" id="lectures-context-is-king-cb">
+<div class="phase-kicker">Lecture</div>
+
+<h1 id="context-is-king">Context is King</h1>
+<p>The same question. Two answers. What makes the difference?</p>
+<h2 id="the-demo-you39re-about-to-see">The demo you&#39;re about to see</h2>
+<p>Two Claude chat windows.</p>
+<p>In one, the first prompt is <em>&quot;What is the capital of Italy?&quot;</em> Claude answers <em>Rome.</em> Then the second prompt: <em>&quot;What should we have for dinner?&quot;</em> Claude suggests something Italian, pasta, osso buco, risotto.</p>
+<p>In the other window, the first prompt is <em>&quot;What is the largest lake in Finland?&quot;</em> Claude answers <em>Saimaa.</em> Then the same second prompt as before. Claude suggests something Finnish, salmon, rye bread, meatballs.</p>
+<p>Same words. Different answer. The first exchange became context, and the context colored everything after.</p>
+<p>Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you&#39;re about to learn.</p>
+<h2 id="what-just-happened">What just happened</h2>
+<p>Claude isn&#39;t looking your question up in a database. It reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are now <em>part of the input</em> to the second prompt. Change the front, change the back.</p>
+<p>That&#39;s context. Unglamorous, isn&#39;t it? And yet every useful thing in the rest of this exercise is built on this one idea.</p>
+<h2 id="context-isn39t-only-about-countries">Context isn&#39;t only about countries</h2>
+<p>One more window. The first prompt: <em>&quot;I&#39;m a cardiologist preparing dinner for my patients.&quot;</em></p>
+<p>Then the same second prompt about dinner.</p>
+<p>The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking, because you told it who you are, and every answer after took that into account.</p>
+<p>Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.</p>
+<h2 id="the-move-you39re-about-to-make">The move you&#39;re about to make</h2>
+<p>So far the context has been one message you typed. Ephemeral. Gone when you close the chat window.</p>
+<p>What if the context was a file the agent reads at the start of every conversation? A file you wrote once, tuned carefully, that shaped every answer without you ever retyping it? Same mechanism. Different shelf life.</p>
+<p>That&#39;s a guardrail. That&#39;s your turn.</p>
+</section>
+
+
+
+
+
+<section class="phase phase--exercise" id="exercises-personal-site-with-guardrails-cb">
+<div class="phase-kicker">Exercise</div>
+
+<h1 id="exercise-paint-by-agent-with-guardrails">Exercise: Paint by agent with guardrails</h1>
+<p><strong>Time:</strong> 60–90 minutes. Banter expected.</p>
+<p><strong>Session</strong> <em>(new Cowork task, &quot;Paint by agent with guardrails&quot;)</em></p>
+<p>Start a new Cowork task with your personal homework folder as the working folder. The one you used for the build-and-verify homework is fine, or open a fresh one.</p>
+<p><strong>What you do:</strong></p>
+<p>The site is the canvas. The real move is iterate and learn: change the context, watch the agent&#39;s output shift, then package what you learned so the next run starts smarter. By the end, you have a personal site you actually like AND a small rules file the agent can re-read on any future personal-shaped task.</p>
+<p><strong>Phase 1. The boring baseline.</strong></p>
+<p>The baseline is boring on purpose. You need it boring so you can feel how much the later phases change.</p>
+<p>Three small steps:</p>
+<ol>
+<li><strong>Open your LinkedIn profile in your browser.</strong> The page with your photo, headline, About, Experience, Education, the lot. Your own profile, not someone else&#39;s.</li>
+<li><strong>Select all and copy.</strong> Cmd+A then Cmd+C on Mac, Ctrl+A then Ctrl+C on Windows. Yes, the whole page (headers, navigation, the recommendations sidebar, all of it). It will look like a wall of text. That&#39;s fine. Claude reads through it.</li>
+<li><strong>Drop your LinkedIn text into the prompt below, after the colon. Send as one message.</strong></li>
+</ol>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Build me a personal HTML one-pager site from the LinkedIn profile below. Save it as `site.html`.
+
+LinkedIn:
+</code></pre>
+<p>The mess is the point. Claude sorts the signal from the page chrome. If you over-curate the input now, you&#39;ll never feel how much the <em>later</em> context changes the output.</p>
+<p>Watch the result. It works. It looks okay. It&#39;s also generic. The site a competent LLM produces from a résumé when it doesn&#39;t know what matters. Every later phase overwrites <code>site.html</code>, so the latest version always lives at that path.</p>
+<p><strong>Phase 2. Apply a framework you know.</strong></p>
+<p>The goal of this site isn&#39;t to sell anything. It&#39;s the opposite: when a colleague (yours, or a peer outside the company you&#39;d happily work with) lands on it, they should think <em>&quot;this is the person I want to work with more, on the things they&#39;re great at.&quot;</em> Not <em>&quot;I should book a discovery call.&quot;</em> A colleague relationship, not a sales funnel.</p>
+<p>Donald Miller&#39;s <strong>StoryBrand</strong> is the obvious framework for <em>&quot;what kind of help is this person to others.&quot;</em> Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. You&#39;ll invoke it explicitly AND <strong>tune</strong> it: the hero isn&#39;t you, it&#39;s the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What&#39;s left is the part that actually says <em>&quot;I&#39;m the greatest colleague ever; let&#39;s work more together.&quot;</em></p>
+<p>Notice the move you&#39;re about to make: <strong>name the framework, tune it, ask Claude to run it.</strong> The model already knows StoryBrand. You don&#39;t have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin&#39;s strategic-choices, Jobs-to-be-Done. <em>&quot;Hey Claude, apply X to Y, but tune for Z.&quot;</em> That&#39;s the move.</p>
+<p>One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the <em>whole site</em>, the colleague becomes the protagonist of the page, and you get a service site with your name in the footer. Wrong shape. <strong>The site stays a personal site; you stay the protagonist of the page.</strong> StoryBrand shapes the <em>colleague-help section</em>, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page&#39;s spine.</p>
+<p>One liners and short answers usually give enough clue. Make it quick and iterate.</p>
+<p>Ask Claude to apply tuned StoryBrand to the help section, one beat at a time.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Hey Claude — apply Donald Miller&#39;s StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think &quot;this is the person I want to work with more, on the things they&#39;re great at.&quot; Not buying a service. Not booking a call. A colleague relationship.
+
+Important: this is a PERSONAL site. The protagonist of the SITE is me — my name, my identity, my actual work. The headline is about me, not a question to the visitor. The StoryBrand tune shapes how I describe the help relationship; it does NOT restructure the whole site to make the colleague the hero of the page.
+
+Use these StoryBrand beats for the help section: Character (the colleague — hero of the help relationship, not of the site), Problem (what work they&#39;re stuck on or want more of, that I see clearly), Guide (what makes me their natural ally), Plan (what working with me actually feels like — low-friction, informal is fine), Success (what it looks like a year later when we&#39;ve worked together more — what we shipped, what changed for them).
+
+Skip Stakes and Call-to-Action — no fear-framing, no &quot;book a chat.&quot; The site&#39;s vibe is the CTA.
+
+Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate `site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don&#39;t soften.
+</code></pre>
+<p>Claude walks you through the five tuned beats. Answer each in your own words; don&#39;t polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for <em>&quot;let&#39;s work more together,&quot;</em> with you still the subject of the page.</p>
+<p><strong>Phase 3. Strengths.</strong></p>
+<p>Your strengths shape how the whole site sounds. List 3–5 in one line each, Claude takes the rest from there.</p>
+<p>Tell Claude your strengths and have it regenerate the site.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Use the strengths below as voice-shaping context for the site — letting them change what the page CLAIMS and how it sounds, not as a new bullet list. Keep me as the protagonist of the page. Keep the StoryBrand-tuned help section from before. Keep the edge; don&#39;t soften the strengths into virtues.
+
+Then regenerate `site.html`.
+
+My 3-5 strengths are:
+</code></pre>
+<p>Read the regenerated site. Same StoryBrand spine, sharper because the site now sounds like someone with your specific strengths.</p>
+<p><strong>Phase 4. Anti-branding (the mirror).</strong></p>
+<p>Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they&#39;re great at. The fix isn&#39;t to try harder on the praise; it&#39;s to <strong>invert the easy thing</strong>. <strong>Anti-branding.</strong> Adam Grant calls a version of this the <em>energy audit</em>; Patagonia famously did <em>&quot;Don&#39;t Buy This Jacket&quot;</em>; Taleb calls it <em>via negativa</em>. Same move: define what you&#39;re for by inverting what you&#39;re against. Then make the inverted version the spine.</p>
+<p>Same agentic pattern again: <strong>name the framework, tune it, ask Claude to run it.</strong> Second time you&#39;re using it in this exercise; at this point it&#39;s a move you own.</p>
+<p>Give Claude a few specific things you hate about work. Not categories (&quot;bureaucracy,&quot; &quot;vague strategy&quot;) but the actual things (&quot;meetings where nobody disagrees,&quot; &quot;decks where every page says &#39;iterating&#39;&quot;). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.</p>
+<p>Ask Claude to apply anti-branding using your hate list.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Hey Claude — apply anti-branding (Adam Grant&#39;s energy audit version) to my personal site. I&#39;ll paste a list of things I hate about work right after this. For each:
+1. Take the hate.
+2. Associate it with the offerings / colleague-types it implies (what kind of work, what kind of people produce this).
+3. Be the opposite — but always speak in the positive. Don&#39;t lead with &quot;I don&#39;t do X&quot;; lead with what I do instead.
+4. Turn blockers / slowness / gaps into progress and outcomes — what I move toward, not what I push away from.
+
+After step 4, regenerate `site.html`. Use the anti-branding as VOICE — sharpen the headline, the hero line, the section framings, the overall stance. Not as a new &quot;What I&#39;m against&quot; section. The site should sound like someone with a spine wrote it. Keep the edge; don&#39;t soften.
+
+Then take maximum freedom on presentation: rethink the page so a colleague lands on it and instantly wants to spend more time with you. You decide structure, ordering, sections, visual rhythm — whatever makes the page actually land. Keep the substance (StoryBrand-tuned help, strengths shaping the voice, anti-branding edge); free hand on the rest.
+
+My hate list:
+</code></pre>
+<p>Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the whole site sounds. That&#39;s the move.</p>
+<p><strong>Phase 5. Look back.</strong></p>
+<p>Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you&#39;ll skim past what&#39;s missing.</p>
+<p>Ask Claude to compare versions and name three generic claims.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Look at the very first site you generated from just my LinkedIn profile, before I added any differentiation context. Find three specific claims you made in that version that turned out to be generic, empty, or wrong about me once we added real context. Name them and say why each one was a statistical default rather than something true of me.
+</code></pre>
+<p>One thing to know: Claude is reading its own work in the chat where it just wrote it. That&#39;s a warm-session self-audit, and the LLM tends to be lovely about its own prior output. If the three picks come back soft (<em>&quot;could be a touch more specific,&quot;</em> not <em>&quot;this whole line is wrong&quot;</em>), there are two easy moves. Ask Claude to over-flag, no charity, run it again. Or open a fresh Cowork session, paste just the Phase 1 site cold, and run the same prompt without the rest of the context riding along. Cold reads catch sharper picks. Either works; both are quick.</p>
+<p>Read Claude&#39;s three answers. Those are the LLM filling in gaps with statistical defaults. What most LinkedIn profiles of people like you look like, not what&#39;s actually true of you. Not a bug. It&#39;s what happens when context is thin. Context fixed it. You&#39;ll meet this mechanism again wherever the stakes are higher in your own work, the more it matters that the output is yours, the more the context has to be.</p>
+<p>No regeneration in this phase. Just observation.</p>
+<p><strong>Phase 6. Free iteration.</strong></p>
+<p>Now make it yours. Color, layout, tone, a quote at the top, a section that shouldn&#39;t exist on most sites but does on yours because the rest of you doesn&#39;t fit a template either. Iterate until looking at the screen makes you say <em>&quot;yes, this is me.&quot;</em></p>
+<p>Open prompts. You drive.</p>
+<p><strong>Tip: steal a look and feel by naming the site.</strong> Claude knows the design DNA of famous sites by name. <em>&quot;Make it look like Stripe&#39;s design language&quot;</em> / <em>&quot;use Linear&#39;s typography and spacing&quot;</em> / <em>&quot;make it feel like Anthropic.com&quot;</em> / <em>&quot;go full Patagonia (earthy, no-nonsense, lots of white space)&quot;</em> / <em>&quot;channel Craigslist if Craigslist had taste&quot;</em>. All valid one-line moves. You don&#39;t need to know CSS; you need to know the site whose feel you&#39;d happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. <em>&quot;Hey Claude, restyle <code>site.html</code> to feel like X.&quot;</em> Try two or three, keep the one that lands.</p>
+<p><strong>Close. Package what you learned.</strong></p>
+<p>The site is done. The agent behavior is not. What&#39;s left is to <em>capture the move</em> so you can do it again on someone else&#39;s bio next week, without re-explaining everything to a fresh Claude. You&#39;ll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.</p>
+<p>Ask Claude to write your first generation rules file.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Write a generation rules file at `personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague&#39;s bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.
+
+When you&#39;re done, tell me in 4–6 lines what&#39;s in the file: the structure you used, the strongest 2–3 rules, anything you weren&#39;t sure about. I shouldn&#39;t have to open the file to know what landed.
+</code></pre>
+<p>Claude writes the file and summarises in chat. Read the summary, then open <code>personal-brand-generation.md</code> and look at the first two or three rules end-to-end. The chat summary rounds corners; the file is the thing that travels. If a rule in the file doesn&#39;t match what you actually did, push back and have Claude rewrite it. The first packaged agent behaviour of your own, sitting in your own folder, ready to be reused. Different from CLAUDE.md (the working-agreement file you&#39;ve seen in the live demo and homework). Same fundamental mechanism: instructions in a file. A genuinely good thing to have.</p>
+<p><strong>What happened:</strong></p>
+<p>Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. The agent&#39;s output is shaped by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely &quot;you&quot; the output.</p>
+<p>That&#39;s the whole of this exercise&#39;s big idea, proven with your own name on it.</p>
+<p><strong>The point:</strong></p>
+<p>Generic output comes from generic context. The LLM didn&#39;t get better between Phase 1 and Phase 6. You did. You became better at feeding it what it needs to produce YOUR output instead of everyone-else&#39;s. The same mechanism scales: rollout briefings, policy summaries, vendor reviews, internal answers about Claude. Anything where output quality depends on <em>&quot;is this genuinely ours or just fine?&quot;</em></p>
+<p>You just ran a recipe end-to-end: baseline without context, colleague-as-buyer frame, anti-branding mirror, free iteration loop, portable guardrails file at the close. The move travels, any personal-shaped output (a colleague&#39;s bio, a team page, a client one-pager) earns a rules file in the same shape.</p>
+</section>
+
+
+
+
+
+<section class="phase phase--lecture" id="lectures-what-just-happened-cb">
+<div class="phase-kicker">Lecture</div>
+
+<h1 id="iterate-and-learn">Iterate and Learn</h1>
+<p>Think back an hour. <em>Context</em> was a word someone might put on a slide. You had a vague sense it mattered. Now it&#39;s something you can point at, the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.</p>
+<p>That&#39;s a small thing. It&#39;s also the whole thing.</p>
+<p>The rest of running Claude well is more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again. You just did a round of it; you&#39;ll do a lot more.</p>
+<p>The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next run.</p>
+<p>And the artifact is yours. Not the generic one from Phase 1 (the one a competent LLM produces from any LinkedIn) but the site that came out of Phase 6. The StoryBrand tune that&#39;s about <em>your</em> colleagues. The strengths that are yours. The anti-branding edge nobody else would have written. That&#39;s a different object. So is the rules file sitting next to it. Both will still be on your disk next week. Both are reusable on the next personal-shaped task someone asks you to do. They&#39;re yours.</p>
+<p>Two beats worth naming, because the mechanism you just used is older than AI.</p>
+<p><strong>You act on the future to know what&#39;s real.</strong> Nobody knows where agents are going. Not Anthropic, not your board, not the people running this training. What&#39;s known: the people who&#39;ll figure it out first are the ones running the experiment. Reading a McKinsey report on the agentic enterprise is not the same category of activity as what you just did. One produces opinions about a future. The other produces muscle memory for it. Guess which one transfers.</p>
+<p><strong>Mental models only come from doing.</strong> Before today, you had a vocabulary. Now you have a little piece of felt experience. Those are different goods. A vocabulary is cheap; a felt model is the thing a custodian uses to make a judgement call at 4pm on a Tuesday when the rollout question lands in their inbox. Nobody can give you a felt model. You can only catch one by reaching for it.</p>
+<p>Whatever comes next, the rest of the rollout, Agents 101 for the builder leaders, your own daily work, is more of this. More reaching, more watching, more adjusting, more rules that make the next run start smarter. Don&#39;t expect a lecture to replace the doing. There isn&#39;t one.</p>
+<p>Now: five minutes with Claude. The debrief.</p>
+</section>
+
+
+
+<h2 id="key-concepts">Key Concepts</h2>
+<ul>
+<li><strong>Guardrails as structured context.</strong> Not a checklist; a stance the agent reads at the start of the task.</li>
+<li><strong>Domain expertise IS the eval.</strong> You are the world&#39;s best evaluator of your own profile. Your gut on what&#39;s uniquely you and what&#39;s generic carries more weight than Claude&#39;s.</li>
+<li><strong>Context is the control, not clever prompting.</strong> Average output becomes great because of what&#39;s loaded ahead of the task, not because the prompt got smarter.</li>
+<li><strong>Do → capture → reflect → sharpen.</strong> Compound interest on an agent file. Every round of doing the work and reflecting makes the next round start sharper. <strong>Remember: every round of doing sharpens the next.</strong></li>
+</ul>
+<h2 id="debrief">Debrief</h2>
+<p>Five minutes. A retro, and <strong>the second pass on your rules file.</strong> You wrote the first version of <code>personal-brand-generation.md</code> at the close of the exercise, capturing what you noticed <em>while doing the work</em>. The retro is Claude reading the file against the actual session. A different lens, surfacing what landed, what fell flat, what to keep, what to drop. Two passes; the second is where the file starts compounding.</p>
+<p>Ask Claude to retro your rules file.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Start by reading the file. No plan or preamble.
+
+Read `personal-brand-generation.md`. Then re-read what we did building the site. Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What&#39;s missing the rules should have caught? Find what&#39;s still surface; don&#39;t defend the file as-is.
+
+Assume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.
+
+Then overwrite `personal-brand-generation.md` with the retro applied. Sharpen what&#39;s weak. Add what&#39;s missing. Drop what&#39;s wrong. Rewrite the file in place; don&#39;t append a &quot;retro notes&quot; section.
+
+When you&#39;re done, list:
+- dropped: rule text + reason
+- sharpened: before -&gt; after
+- added: rule text + why the session needed it
+- still uncertain: anything the rules should cover but you want me to weigh in on first
+</code></pre>
+<p>Claude runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.</p>
+<p>Two patterns to watch. The LLM is generous to a rules file it just helped write. <em>&quot;Mostly worked, small sharpens&quot;</em> is the agent grading its own work charitably. The prose summary rounds corners.</p>
+<p>Push back on anything that doesn&#39;t match your sense of the work. That&#39;s the pattern: every time you do work like this and reflect, the rules file gets sharper. <strong>Compound interest on a rules file.</strong> This is the move you&#39;ll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules.</p>
+<p><strong>Then, Claude as cold critic.</strong> Now that you&#39;ve reflected on your own experience, get an unbiased verdict.</p>
+<p>Ask Claude to spawn an agent to read the site cold.</p>
+<p><strong>Prompt</strong> <em>(Cowork)</em></p>
+<pre><code>Spawn an agent to give an unbiased read on `site.html`. The agent should read it cold, with no memory of building it.
+
+Have the agent answer:
+1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).
+2. Quote the most generic line that could be copy-pasted from anyone&#39;s site.
+</code></pre>
+<p>One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into appreciation. The praise carries forward into the generic-line call. Both picks come back softer than they probably should. Your own gut on what&#39;s uniquely you and what&#39;s generic carries more weight than Claude&#39;s.</p>
+<p>Compare Claude&#39;s picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there and regenerate. Where Claude&#39;s pick of <em>&quot;uniquely you&quot;</em> matches your own gut: solid ground.</p>
+<h2 id="bridge">Bridge</h2>
+<p>You just made great output AND packaged what you learned into a file the agent can re-read next time. That&#39;s the move that compounds. The move travels: any personal-shaped output (a colleague&#39;s bio, a team page, a client one-pager) earns a rules file in the same shape. When the rollout asks you for the next level (building agents, writing evals, multi-step systems), you take that step in Agents 101.</p>
 
 </section>
 
@@ -2587,7 +2937,7 @@ Make the two new files plausible outputs from different groups in the same live 
 
 After saving, list the two files you created.
 </code></pre>
-<p>Next, run the organiser synthesis exercise below on the rollout synthesis files in <code>shared/</code>.</p>
+<p>Next, run <a href="#exercises-organisers-synthesize-rollout">Exercise: Organisers synthesize rollout</a> on the rollout synthesis files in <code>shared/</code>.</p>
 <p><strong>Watch out for:</strong> The first readout may flatten the three cruxes into one bland theme. Correct it in chat until it preserves useful disagreement and names what organisers need to decide next.</p>
 <p>After the readout is saved, delete the test folders and fake files before the workshop.</p>
 <h2 id="phase-5-check-readiness">Phase 5. Check readiness</h2>
@@ -2669,6 +3019,15 @@ Let&#39;s focus on:
 
 <h2 id="close">Close</h2>
 <p>When the workspace is tested and the organiser readout path is clear, the workbook is ready for delivery.</p>
+<h2 id="changes-since-last-build">Changes since last build</h2>
+<p>Entries since the workbook sent on 2026-05-06.</p>
+<ul>
+<li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 1: prompt now asks Claude to stop and check with the participant if it can&#39;t find the named folder, or if someone else has already written there. Catches misnamed first-name folders and duplicate-name collisions without adding overhead to the common case.</li>
+<li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 2: new optional group-driver prompt to re-check the group&#39;s folders for late-arriving notes and redo the crux analysis if anything new shows up. Use when a participant was slow to save or had sync issues.</li>
+<li><strong>2026-05-15</strong>, M2 <em>Find the rollout challenge</em>, Phase 3: cross-pollination cycle now re-reads each target file right before appending and extends an existing &quot;Comments from...&quot; section instead of duplicating it. Reduces OneDrive write-race risk when multiple group drivers comment on the same file at once.</li>
+<li><strong>2026-05-15</strong>, M3 homework <em>Find the wrong claims</em>: source files now live in a <code>sources/</code> subfolder. Phase 1 generates from <code>sources/</code>; Phase 2 checks against <code>sources/</code>. Stops the briefing from pulling in leftover files when the participant reuses the build-your-system folder.</li>
+<li><strong>2026-05-21</strong>, M3 homework <em>Build your system</em>: Phase 0 now creates the same <code>sources/</code> subfolder. Phase 1, Phase 3, and Phase 4 prompts read base materials from <code>sources/</code>. Aligns with <em>Find the wrong claims</em> so a participant who reuses the same folder for both exercises has one filing convention, not two.</li>
+</ul>
 
 </section>
 </main>
@@ -2720,7 +3079,7 @@ Let&#39;s focus on:
         },
         'agentic-engineering-101': {
             label: 'Agentic Engineering 101',
-            lede: 'Six modules for software engineers. Become the Claude wizard — mastery, not remediation.',
+            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
             prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
@@ -2731,13 +3090,19 @@ Let&#39;s focus on:
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }
+                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
+                { slug: 'the-agent-loop',             title: 'The agent loop' },
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
+                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
+                { slug: 'skill-stacking',             title: 'Skill stacking system' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'scheduled-agents',          title: 'Scheduled agents' }
+                { slug: 'scheduled-agents',          title: 'Scheduled agents' },
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]
         },
         'claude-basics': {
@@ -2748,6 +3113,7 @@ Let&#39;s focus on:
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
                 { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         }
@@ -2840,12 +3206,14 @@ Let&#39;s focus on:
     //       trainings/<training>/(reference|supplementary)/<slug>.md
     //         →  ?file=trainings/<training>/<kind>/<slug>
     // Both patterns tolerate any number of `../` prefixes.
-    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md\)/g;
-    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md\)/g;
+    // Trailing `(#anchor)?` captures heading fragments like `target.md#5-plan-mode-at-depth`
+    // so callers can route them to the heading slug instead of dropping the fragment.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md(#[^)]*)?\)/g;
     // Workbook-side helper: same training-specific match as above but with kind+slug
     // exposed as separate capture groups, for callers that need to construct in-page
     // anchors of the form `#<kind>-<slug>`.
-    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md\)/g;
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
 
     // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
 
@@ -2857,8 +3225,8 @@ Let&#39;s focus on:
 
     function rewriteCrossDocLinks(md) {
         return md
-            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2)')
-            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1)');
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
     }
 
     // GitHub-style heading slugger. Used to generate stable `id="..."` attrs
@@ -2903,11 +3271,49 @@ Let&#39;s focus on:
     //   ```
     // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
     // following <pre>; this output is byte-equivalent to a hand-authored block.
+    // Sentinel pair using Mathematical White Square Brackets ⟦ ⟧ (U+27E6 / U+27E7).
+    // These survive markdown code-fence rendering and HTML escape unchanged
+    // (not in HTML special chars), and don't appear in any realistic prompt
+    // content — safer than ASCII-square-bracket sentinels which would collide
+    // with prompt blocks that quote markdown link syntax in the body. The
+    // decoratePrompts pass converts these to <span class="prompt-anchor"> at
+    // DOM time; the Copy button's textContent read passes through the span
+    // and lands the original prompt verbatim on the clipboard.
+    function injectAnchorSentinels(text, anchors) {
+        if (!anchors || !anchors.length) return text;
+        var out = text;
+        anchors.forEach(function (a) {
+            if (!a || !a.span || !a.move) return;
+            if (!/^[a-z0-9-]+$/.test(a.move)) return; // slug must be CSS-class-safe
+            var idx = out.indexOf(a.span);
+            if (idx < 0) return; // span no longer matches body — silent skip
+            out = out.slice(0, idx) +
+                  '⟦A:' + a.move + '⟧' +
+                  a.span +
+                  '⟦/A⟧' +
+                  out.slice(idx + a.span.length);
+        });
+        return out;
+    }
+
     function renderPromptBlock(entry) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
+        // Permission-mode sentinel, mirrors the ⟦A:slug⟧ anchor pattern.
+        // decoratePrompts() parses this off the label paragraph and renders it
+        // as a separate chip in the prompt-block header. Sentinel is appended
+        // after the label so marked() treats it as inline text inside the same
+        // paragraph — survives the render cycle untouched (U+27E6/U+27E7 are
+        // not HTML-special and not in any realistic prompt label).
+        var mode = entry && entry['permission-mode'];
+        if (mode && /^[A-Za-z]+$/.test(mode)) {
+            label += ' ⟦M:' + mode + '⟧';
+        }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        if (entry && entry.anchors && entry.anchors.length) {
+            text = injectAnchorSentinels(text, entry.anchors);
+        }
         var fence = '```\n' + text + '\n```';
         return label + '\n\n' + fence;
     }
@@ -3124,6 +3530,92 @@ Let&#39;s focus on:
         });
     }
 
+    // Convert ⟦A:slug⟧content⟦/A⟧ sentinels (planted by injectAnchorSentinels
+    // at prompt-expand time) into <span class="prompt-anchor" data-move="slug">
+    // wrappers in the rendered <pre><code>. Runs once per prompt block during
+    // decoratePrompts. The Copy button's textContent read sees through the
+    // span and copies the original prompt; visual treatment is CSS-driven.
+    var ANCHOR_SENTINEL_RE = /⟦A:([a-z0-9-]+)⟧([\s\S]*?)⟦\/A⟧/g;
+    function convertAnchorSentinels(pre) {
+        if (!pre) return;
+        var code = pre.querySelector('code') || pre;
+        var html = code.innerHTML;
+        if (html.indexOf('⟦A:') < 0) return;
+        var replaced = html.replace(ANCHOR_SENTINEL_RE, function (m, slug, content) {
+            return '<span class="prompt-anchor" data-move="' + slug + '">' + content + '</span>';
+        });
+        if (replaced !== html) code.innerHTML = replaced;
+    }
+
+    // Click handler on .prompt-anchor spans: look up the matching anatomy
+    // entry by data-move slug in window.__ANATOMY, render a popup card next
+    // to the anchor. One popup at a time; click another anchor → moves the
+    // popup; click outside → closes; Esc → closes. Idempotent installer:
+    // attaches one delegated click listener per root, guarded by a flag so
+    // re-renders don't double-bind. Silent no-op if anatomy data is missing.
+    function attachAnchorPopups(root) {
+        if (!root || root.__anchorPopupsBound) return;
+        root.__anchorPopupsBound = true;
+
+        var popup = null;
+        function close() {
+            if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+            popup = null;
+        }
+
+        function open(anchor) {
+            var slug = anchor.getAttribute('data-move');
+            if (!slug) return;
+            var data = (window.__ANATOMY || {})[slug];
+            if (!data) return;
+            close();
+            popup = document.createElement('div');
+            popup.className = 'prompt-anatomy-popup';
+            popup.innerHTML =
+                '<button class="prompt-anatomy-popup__close" type="button" aria-label="Close">×</button>' +
+                '<div class="prompt-anatomy-popup__kicker">Anatomy</div>' +
+                '<h3 class="prompt-anatomy-popup__title">' + esc(data.title) + '</h3>' +
+                '<div class="prompt-anatomy-popup__body">' + data.html + '</div>';
+            document.body.appendChild(popup);
+
+            // Position: prefer below + left-aligned with the anchor; clamp
+            // to viewport so the card never gets cut off on narrow windows.
+            var rect = anchor.getBoundingClientRect();
+            var popRect = popup.getBoundingClientRect();
+            var top = window.scrollY + rect.bottom + 8;
+            var left = window.scrollX + rect.left;
+            var maxLeft = window.scrollX + window.innerWidth - popRect.width - 20;
+            if (left > maxLeft) left = maxLeft;
+            if (left < window.scrollX + 20) left = window.scrollX + 20;
+            // If it'd run off the bottom of viewport, flip above the anchor.
+            var bottomOverflow = (top - window.scrollY + popRect.height) - window.innerHeight;
+            if (bottomOverflow > 0) {
+                top = window.scrollY + rect.top - popRect.height - 8;
+            }
+            popup.style.top = top + 'px';
+            popup.style.left = left + 'px';
+
+            popup.querySelector('.prompt-anatomy-popup__close')
+                .addEventListener('click', function (ev) { ev.preventDefault(); close(); });
+        }
+
+        root.addEventListener('click', function (ev) {
+            var anchor = ev.target.closest && ev.target.closest('.prompt-anchor');
+            if (anchor) {
+                ev.preventDefault();
+                open(anchor);
+                return;
+            }
+            // Click outside the popup → close (clicks inside the popup are
+            // safe; the close button handles its own dismissal).
+            if (popup && !ev.target.closest('.prompt-anatomy-popup')) close();
+        });
+
+        document.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Escape') close();
+        });
+    }
+
     function decoratePrompts(root) {
         Array.from(root.querySelectorAll('p')).forEach(function (p) {
             var strong = p.querySelector('strong');
@@ -3143,11 +3635,25 @@ Let&#39;s focus on:
                   '<span class="rt-cli">Claude Code CLI</span>'
                 : esc(dest);
 
+            // Permission-mode sentinel ⟦M:<mode>⟧ sits in the paragraph text
+            // after the em-paren label; renderPromptBlock plants it when the
+            // prompt's frontmatter declares `permission-mode:`. Parse it off
+            // here, strip from the paragraph so the literal sentinel never
+            // renders, surface as a separate header chip.
+            var mode = '';
+            var pHtml = p.innerHTML;
+            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
+            if (modeMatch) {
+                mode = modeMatch[1];
+                p.innerHTML = pHtml.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
+            }
+
             var wrap = document.createElement('div');
             wrap.className = 'prompt-block';
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
+                (mode ? '<span class="prompt-block__mode prompt-block__mode--' + esc(mode) + '" title="Paste this prompt in ' + esc(mode) + ' mode">' + esc(mode) + ' mode</span>' : '') +
                 '<span class="prompt-block__label">Prompt</span>' +
                 '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
                 '<span class="prompt-block__dest">' + destHtml + '</span>' +
@@ -3160,6 +3666,7 @@ Let&#39;s focus on:
             p.remove();
 
             addCopyButton(pre, header);
+            convertAnchorSentinels(pre);
         });
 
         // Universal copy buttons on every standalone <pre>.
@@ -3407,6 +3914,7 @@ Let&#39;s focus on:
         // DOM (browser only)
         decorateSessions: decorateSessions,
         decoratePrompts: decoratePrompts,
+        attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,

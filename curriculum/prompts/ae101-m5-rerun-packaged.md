@@ -34,16 +34,25 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
       - prompt:arc-retrospective-1
+  - id: m5-run-coordinates
+    location: plan.md (worktree root; protected top block "Run coordinates"; m5/ branch + transcript path, recorded at run start)
+    consumed-by:
+      - prompt:spot-gaps-build-the-loop-1
+      - prompt:arc-retrospective-1
+      - prompt:agents-that-build-agents-1
+    note: M6 readers get the m5 branch + transcript path from plan.md instead of branch-grep + mtime transcript search
   - id: run-notes
     location: RUN-NOTES.md (at worktree root)
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
 ---
+Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.
+
+Then ask for or write anything else you want for the run.
+
 Run the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).
 
 Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.
-
-Before you start, ask for or write anything else you want for this run.
 
 Report back as three lists, no narrative, no hedging:
   shipped — each artefact + path

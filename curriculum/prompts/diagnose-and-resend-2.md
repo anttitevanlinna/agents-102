@@ -6,12 +6,12 @@ origin: exercises/diagnose-and-resend
 requires:
   - id: m4-transcript-path
     source: prompt:diagnose-and-resend-1
+  - id: m4-run-coordinates
+    source: prompt:ae101-m4-commit-starting-point
   - id: un-packaged-run-artefact
     source: prompt:ae101-m4-take-task-end-to-end
   - id: m4-session-transcript
     source: prompt:ae101-m4-take-task-end-to-end
-  - id: m4-starting-point-sha
-    source: prompt:ae101-m4-commit-starting-point
 produces:
   - id: three-failure-lens-read
     location: scrollback (drift / context-rot / plausible-but-wrong + dominant failure named)
@@ -21,7 +21,7 @@ produces:
 ---
 I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.
 
-Read what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep 'm4/'` — it'll be the only branch starting with `m4/`). Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the "M4 starting point" commit, files modified, branch state.
+Read what the un-packaged agent did. The `m4/` branch is named in `./task.md`'s run coordinates. Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the "M4 starting point" commit, files modified, branch state.
 
 Then walk the work through three lenses:
 

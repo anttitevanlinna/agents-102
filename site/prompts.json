@@ -313,7 +313,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "Commit the current state of the repo on a fresh feature branch named m4/<short-task-slug>. Stage everything, commit with message \"M4 starting point\". Tell me the short SHA.",
+    "text": "Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name, and the transcript path you just located. Then stage everything, commit with message \"M4 starting point\", and tell me the short SHA.",
     "requires": [
       {
         "id": "scoped-task",
@@ -322,6 +322,10 @@
       {
         "id": "task-md",
         "source": "prompt:walk-and-send-off-1"
+      },
+      {
+        "id": "m4-transcript-path-printed",
+        "source": "prompt:ae101-m4-locate-transcript"
       }
     ],
     "produces": [
@@ -332,7 +336,38 @@
           "prompt:ae101-m5-worktree-setup",
           "prompt:diagnose-and-resend-2"
         ],
-        "note": "spot-gaps-build-the-loop-1 finds the m4/ branch via `git branch -a | grep m4/`, not the SHA directly — branch ref carries the artifact forward"
+        "note": "ae101-m5-worktree-setup uses this as the fork point; later readers get the branch and transcript path from m4-run-coordinates rather than rediscovering them by search"
+      },
+      {
+        "id": "m4-run-coordinates",
+        "location": "./task.md (repo root; protected \"Run coordinates\" block with branch name + transcript path; written BEFORE the commit so it rides the m5 worktree fork)",
+        "consumed-by": [
+          "prompt:ae101-m5-worktree-setup",
+          "prompt:diagnose-and-resend-1",
+          "prompt:diagnose-and-resend-2",
+          "prompt:spot-gaps-build-the-loop-1",
+          "prompt:arc-retrospective-1",
+          "prompt:agents-that-build-agents-1"
+        ],
+        "note": "replaces branch-grep + transcript marker-search in M5/M6 readers; the coordinates are recorded at creation rather than reconstructed by search"
+      }
+    ]
+  },
+  "ae101-m4-locate-transcript": {
+    "key": "ae101-m4-locate-transcript",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/run-the-first-experiment",
+    "text": "Show me where Claude Code is keeping the record of this session. Every session's scrollback is written live to a `.jsonl` file under `~/.claude/projects/`: the folder is this working directory's full path with each `/` turned into `-`, and the filename is this session's id, which lives in the `CLAUDE_CODE_SESSION_ID` environment variable. Build the full path, confirm the file is there, and show me the path.",
+    "produces": [
+      {
+        "id": "m4-transcript-path-printed",
+        "location": "scrollback (absolute path printed)",
+        "consumed-by": [
+          "prompt:ae101-m4-commit-starting-point"
+        ],
+        "note": "teaching beat — surfaces that each session keeps a transcript and where it lives. Fires BEFORE the starting-point commit; the commit reads this path and records it into task.md so it rides the m5 worktree fork."
       }
     ]
   },
@@ -427,7 +462,7 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Run the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nBefore you start, ask for or write anything else you want for this run.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
+    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the run.\n\nRun the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
     "requires": [
       {
         "id": "m5-worktree",
@@ -480,6 +515,16 @@
         ]
       },
       {
+        "id": "m5-run-coordinates",
+        "location": "plan.md (worktree root; protected top block \"Run coordinates\"; m5/ branch + transcript path, recorded at run start)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-1",
+          "prompt:arc-retrospective-1",
+          "prompt:agents-that-build-agents-1"
+        ],
+        "note": "M6 readers get the m5 branch + transcript path from plan.md instead of branch-grep + mtime transcript search"
+      },
+      {
         "id": "run-notes",
         "location": "RUN-NOTES.md (at worktree root)",
         "consumed-by": [
@@ -494,10 +539,14 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Find the branch starting with `m4/` (run `git branch -a | grep 'm4/'`). There may be more than one — a push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`, and a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the \"M4 starting point\" commit. If that commit message has been rewritten, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  mkdir -p ../<repo-name>-m5/.claude/\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.",
+    "text": "Read `./task.md` and use its recorded run coordinates for the M4 run. Those coordinates name the exact `m4/` branch; do not rediscover it with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the \"M4 starting point\" commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  mkdir -p ../<repo-name>-m5/.claude/\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.",
     "requires": [
       {
         "id": "m4-starting-point-sha",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      },
+      {
+        "id": "m4-run-coordinates",
         "source": "prompt:ae101-m4-commit-starting-point"
       }
     ],
@@ -548,15 +597,11 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/prework",
-    "text": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.\n\n1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.\n\n2. Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.\n\n3. Install these as personal Claude Code skills:\n   - access-control-analysis\n   - stride\n\n   Use the extracted content/skills/ folder as the source. Install them wherever personal Claude Code skills belong on this machine. Confirm each installed skill has a SKILL.md file and tell me the absolute path.\n\n4. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.\n\n5. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.\n\nReport success on each step and tell me what you did.",
+    "text": "I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.\n\n1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.\n\n2. Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory. Confirm the extracted folder contains lectures/, exercises/, reference/, supplementary/, and content/skills/.\n\n3. Install these as personal Claude Code skills:\n   - access-control-analysis\n   - stride\n   - security-tools\n\n   Use the extracted content/skills/ folder as the source. Install them wherever personal Claude Code skills belong on this machine. Confirm each installed skill has a SKILL.md file and tell me the absolute path.\n\nReport success on each step and tell me what you did.",
     "requires": [
       {
         "id": "ae101-content-tarball",
         "source": "prompt:ae101-prework-download-tarball"
-      },
-      {
-        "id": "candidate-bugs",
-        "source": "scrollback (student names three trivial-and-visible candidates at Step 4)"
       }
     ],
     "produces": [
@@ -564,7 +609,8 @@
         "id": "ae101-content-dir",
         "location": "~/Documents/ae101-content/ (or sponsor-stated path)",
         "consumed-by": [
-          "module:getting-going"
+          "module:getting-going",
+          "prompt:ae101-prework-screen-and-ready"
         ]
       },
       {
@@ -582,10 +628,10 @@
         ]
       },
       {
-        "id": "picked-bug",
-        "location": "scrollback (student picks from screened candidates at Step 4-5)",
+        "id": "security-tools-skill",
+        "location": "~/.claude/skills/security-tools/SKILL.md",
         "consumed-by": [
-          "prompt:fix-tests-first-1"
+          "prompt:threat-model-with-stride-1"
         ]
       }
     ]
@@ -600,6 +646,40 @@
     "requires": [],
     "produces": [],
     "note": "tool-use directive (use AskUserQuestion for screening) invoked alongside ae101-prework-extract-and-install Step 4. No artifact flow of its own."
+  },
+  "ae101-prework-screen-and-ready": {
+    "key": "ae101-prework-screen-and-ready",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/prework",
+    "text": "Walk these in order, ask one question at a time if you need to, no preamble.\n\n1. Ask me for three trivial-and-visible candidate bugs in this repo. Screen against: under 50 lines changed, visible (wrong error message, date off by a day, wrong total, a log line that lies), mine or co-owned, shippable. Help me pick the most trivial-and-visible one.\n\n2. Once I've picked, confirm the repo is ready for Module 1. Tests run (or name how the repo checks code), git status is clean, I can make a PR. Flag anything that would get in my way.\n\nReport success on each step and tell me what you did.",
+    "requires": [
+      {
+        "id": "ae101-content-dir",
+        "source": "prompt:ae101-prework-extract-and-install"
+      },
+      {
+        "id": "candidate-bugs",
+        "source": "scrollback (student names three trivial-and-visible candidates after this prompt fires)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "picked-bug",
+        "location": "scrollback (student picks from screened candidates)",
+        "consumed-by": [
+          "prompt:fix-tests-first-1"
+        ]
+      },
+      {
+        "id": "repo-readiness",
+        "location": "scrollback (test command or named check path, git status, PR readiness blockers)",
+        "consumed-by": [
+          "module:getting-going"
+        ]
+      }
+    ]
   },
   "agent-loop-raw-1": {
     "key": "agent-loop-raw-1",
@@ -631,7 +711,17 @@
     "context": "fresh session in the same repo",
     "runtime": "any",
     "origin": "lectures/agents-that-build-agents",
-    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- .claude/memory/\n- the most recent un-packaged run's commit history and modified files\n- the most recent packaged run's commit history and modified files\n- the SKILL.md of the skill you authored at Module 6, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble."
+    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- .claude/memory/\n- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)\n- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)\n- the SKILL.md of the skill you authored at Module 6, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble.",
+    "requires": [
+      {
+        "id": "m4-run-coordinates",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      },
+      {
+        "id": "m5-run-coordinates",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      }
+    ]
   },
   "arc-retrospective-1": {
     "key": "arc-retrospective-1",
@@ -639,7 +729,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/arc-retrospective",
-    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).\n- The M4 un-packaged run artefact (commits, files, session transcript). The M4 session ran in the original repo, so the transcript lives in the encoded-original folder under `~/.claude/projects/`, not this worktree. Get the original repo path via `git rev-parse --git-common-dir` minus the trailing `/.git`; encode it with `/` → `-`.\n- The M5 packaged re-run artefact (commits, files, session transcript). The M5 session ran in this worktree, so the transcript lives in the encoded-worktree folder (current cwd with `/` → `-`). In each folder, pick the most recent `.jsonl` that isn't this current session.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
+    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).\n- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
     "requires": [
       {
         "id": "claude-local-md",
@@ -674,11 +764,19 @@
         "source": "prompt:ae101-m4-take-task-end-to-end"
       },
       {
+        "id": "m4-run-coordinates",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      },
+      {
         "id": "packaged-run-artefact",
         "source": "prompt:ae101-m5-rerun-packaged"
       },
       {
         "id": "m5-session-transcript",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      },
+      {
+        "id": "m5-run-coordinates",
         "source": "prompt:ae101-m5-rerun-packaged"
       },
       {
@@ -1062,21 +1160,21 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Find the path to the previous session's transcript .jsonl. Claude Code stores every session's scrollback at `~/.claude/projects/<encoded-folder>/<uuid>.jsonl`. The `<encoded-folder>` name is the absolute path of the original repo (where the un-packaged run happened) with `/` replaced by `-` — e.g., `/Users/me/Projects/lemmings` → `-Users-me-Projects-lemmings`. Since you're in a worktree, find the original repo path via `git rev-parse --git-common-dir` (its parent is the original repo). List the .jsonl files in that folder by mtime; pick the one in which the agent created the \"M4 starting point\" commit on the `m4/` branch. Tell me the absolute path.",
+    "text": "I'm working in a fresh worktree. A run I sent off earlier left its `task.md` at the root here, with the run's coordinates recorded in it: the `m4/` branch the run happened on, and the path to its session transcript. Print that transcript path and confirm the `.jsonl` is there. That transcript is the previous run's full scrollback, drift and dead-ends included.",
     "requires": [
       {
         "id": "m5-worktree",
         "source": "prompt:ae101-m5-worktree-setup"
       },
       {
-        "id": "m4-session-transcript",
-        "source": "prompt:ae101-m4-take-task-end-to-end"
+        "id": "m4-run-coordinates",
+        "source": "prompt:ae101-m4-commit-starting-point"
       }
     ],
     "produces": [
       {
         "id": "m4-transcript-path",
-        "location": "scrollback (absolute path Claude found)",
+        "location": "scrollback (read from ./task.md coordinates that rode the worktree fork; not searched)",
         "consumed-by": [
           "prompt:diagnose-and-resend-2"
         ]
@@ -1089,11 +1187,15 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. Find the previous-run branch (run `git branch -a | grep 'm4/'` — it'll be the only branch starting with `m4/`). Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.",
+    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. The `m4/` branch is named in `./task.md`'s run coordinates. Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.",
     "requires": [
       {
         "id": "m4-transcript-path",
         "source": "prompt:diagnose-and-resend-1"
+      },
+      {
+        "id": "m4-run-coordinates",
+        "source": "prompt:ae101-m4-commit-starting-point"
       },
       {
         "id": "un-packaged-run-artefact",
@@ -1102,10 +1204,6 @@
       {
         "id": "m4-session-transcript",
         "source": "prompt:ae101-m4-take-task-end-to-end"
-      },
-      {
-        "id": "m4-starting-point-sha",
-        "source": "prompt:ae101-m4-commit-starting-point"
       }
     ],
     "produces": [
@@ -2017,7 +2115,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep 'm4/'`); the packaged re-run is on a branch starting with `m5/` (run `git branch -a | grep 'm5/'`). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.\n\nRead both. Start with both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-cwd>/<uuid>.jsonl`, where `<encoded-cwd>` is the absolute path of the directory the session ran in with `/` replaced by `-`. One folder per working directory. The M4 session ran in the original repo, so M4 transcripts are under the encoded-original folder. The M5 session ran in this worktree, so M5 transcripts are under the encoded-worktree folder. Two sibling folders under `~/.claude/projects/`, not nested. The encoded-worktree path is the current working directory with `/` → `-`; the encoded-original path is `git rev-parse --git-common-dir` with the trailing `/.git` stripped, then `/` → `-`. List `.jsonl` files in each, take the most recent that isn't this current session, and read both. Then check repo state: commits on the `m4/` branch after the \"M4 starting point\" commit, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.",
+    "text": "I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.",
     "requires": [
       {
         "id": "un-packaged-run-artefact",
@@ -2028,11 +2126,19 @@
         "source": "prompt:ae101-m4-take-task-end-to-end"
       },
       {
+        "id": "m4-run-coordinates",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      },
+      {
         "id": "packaged-run-artefact",
         "source": "prompt:ae101-m5-rerun-packaged"
       },
       {
         "id": "m5-session-transcript",
+        "source": "prompt:ae101-m5-rerun-packaged"
+      },
+      {
+        "id": "m5-run-coordinates",
         "source": "prompt:ae101-m5-rerun-packaged"
       },
       {
@@ -2281,7 +2387,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/threat-model-with-stride",
-    "text": "Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).\n\nGround each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.\n\nShow me the ADR before saving.",
+    "text": "Write an ADR for the hardening decision we just made. Use my repo's ADR convention: check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md with a minimal template (Context / Decision / Consequences / Alternatives considered).\n\nGround each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.\n\nSave the ADR to that path, then show me the diff.",
     "requires": [
       {
         "id": "picked-threat-and-hardening",

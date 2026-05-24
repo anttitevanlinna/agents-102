@@ -22,9 +22,13 @@ requires:
     source: prompt:ae101-m4-take-task-end-to-end
   - id: m4-session-transcript
     source: prompt:ae101-m4-take-task-end-to-end
+  - id: m4-run-coordinates
+    source: prompt:ae101-m4-commit-starting-point
   - id: packaged-run-artefact
     source: prompt:ae101-m5-rerun-packaged
   - id: m5-session-transcript
+    source: prompt:ae101-m5-rerun-packaged
+  - id: m5-run-coordinates
     source: prompt:ae101-m5-rerun-packaged
   - id: stale-rule-cut
     source: prompt:spot-gaps-build-the-loop-2
@@ -41,8 +45,8 @@ Read my work across this repo. Specifically:
 - Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
 - The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).
 - Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).
-- The M4 un-packaged run artefact (commits, files, session transcript). The M4 session ran in the original repo, so the transcript lives in the encoded-original folder under `~/.claude/projects/`, not this worktree. Get the original repo path via `git rev-parse --git-common-dir` minus the trailing `/.git`; encode it with `/` → `-`.
-- The M5 packaged re-run artefact (commits, files, session transcript). The M5 session ran in this worktree, so the transcript lives in the encoded-worktree folder (current cwd with `/` → `-`). In each folder, pick the most recent `.jsonl` that isn't this current session.
+- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.
+- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.
 
 Run this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.
 

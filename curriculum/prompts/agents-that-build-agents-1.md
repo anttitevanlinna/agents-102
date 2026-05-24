@@ -4,6 +4,11 @@ dest: Claude Code
 context: fresh session in the same repo
 runtime: any
 origin: lectures/agents-that-build-agents
+requires:
+  - id: m4-run-coordinates
+    source: prompt:ae101-m4-commit-starting-point
+  - id: m5-run-coordinates
+    source: prompt:ae101-m5-rerun-packaged
 ---
 Enable plan mode.
 
@@ -11,8 +16,8 @@ Read these artefacts end to end:
 
 - ./CLAUDE.local.md
 - .claude/memory/
-- the most recent un-packaged run's commit history and modified files
-- the most recent packaged run's commit history and modified files
+- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)
+- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)
 - the SKILL.md of the skill you authored at Module 6, in `~/.claude/skills/`
 
 Then design the next iteration of the kit. Three questions:

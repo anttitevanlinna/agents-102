@@ -6,6 +6,8 @@ origin: agentic-engineering-101/learn-from-the-test
 requires:
   - id: m4-starting-point-sha
     source: prompt:ae101-m4-commit-starting-point
+  - id: m4-run-coordinates
+    source: prompt:ae101-m4-commit-starting-point
 produces:
   - id: m5-worktree
     location: ../<repo-name>-m5/ (m5/<task-slug> branch)
@@ -21,7 +23,7 @@ opportunistic-copy:
     if-present-at: ../<repo-name>/.claude/memory/
     rationale: born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4
 ---
-Find the branch starting with `m4/` (run `git branch -a | grep 'm4/'`). There may be more than one — a push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`, and a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the "M4 starting point" commit. If that commit message has been rewritten, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
+Read `./task.md` and use its recorded run coordinates for the M4 run. Those coordinates name the exact `m4/` branch; do not rediscover it with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the "M4 starting point" commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
 
 Then copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:
   cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)

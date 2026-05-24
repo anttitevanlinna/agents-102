@@ -8,9 +8,13 @@ requires:
     source: prompt:ae101-m4-take-task-end-to-end
   - id: m4-session-transcript
     source: prompt:ae101-m4-take-task-end-to-end
+  - id: m4-run-coordinates
+    source: prompt:ae101-m4-commit-starting-point
   - id: packaged-run-artefact
     source: prompt:ae101-m5-rerun-packaged
   - id: m5-session-transcript
+    source: prompt:ae101-m5-rerun-packaged
+  - id: m5-run-coordinates
     source: prompt:ae101-m5-rerun-packaged
   - id: reference-artefact
     source: prompt:diagnose-and-resend-6
@@ -27,9 +31,9 @@ produces:
       - prompt:spot-gaps-build-the-loop-2
       - prompt:spot-gaps-build-the-loop-3
 ---
-I have two runs of the same long-running task on disk. Find them: the un-packaged run is on a branch starting with `m4/` (run `git branch -a | grep 'm4/'`); the packaged re-run is on a branch starting with `m5/` (run `git branch -a | grep 'm5/'`). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three pieces in play, verifier fired during the run.
+I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.
 
-Read both. Start with both session transcripts. Claude Code stores every session's scrollback under `~/.claude/projects/<encoded-cwd>/<uuid>.jsonl`, where `<encoded-cwd>` is the absolute path of the directory the session ran in with `/` replaced by `-`. One folder per working directory. The M4 session ran in the original repo, so M4 transcripts are under the encoded-original folder. The M5 session ran in this worktree, so M5 transcripts are under the encoded-worktree folder. Two sibling folders under `~/.claude/projects/`, not nested. The encoded-worktree path is the current working directory with `/` → `-`; the encoded-original path is `git rev-parse --git-common-dir` with the trailing `/.git` stripped, then `/` → `-`. List `.jsonl` files in each, take the most recent that isn't this current session, and read both. Then check repo state: commits on the `m4/` branch after the "M4 starting point" commit, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
+Read both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
 
 Walk the diff across four dimensions:
 

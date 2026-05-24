@@ -299,7 +299,9 @@ The encoded project path is the absolute working-directory path with `/` replace
 
 In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the M5 worktree may have different encoded folders.
 
-Ask Claude to find and read the right transcript. Expect a narration before the findings; skim past the opening to the numbered list.
+Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` environment variable holds this session's id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is `~/.claude/projects/<encoded-cwd>/$CLAUDE_CODE_SESSION_ID.jsonl`. That makes the durable move recording, not searching: when a run will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into `task.md` (Module 4) and `plan.md` (Module 5) so the next session reads it instead of hunting.
+
+If you arrive at a run with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.
 
 **Prompt** *(Claude Code)*
 

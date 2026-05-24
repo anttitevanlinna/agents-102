@@ -3,8 +3,8 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
   "verdict": "PASS",
   "training": "ae101",
-  "sha": "24133c3",
-  "evaluated_at": "2026-05-22",
+  "sha": "post-69c72a0-reshape",
+  "evaluated_at": "2026-05-24",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -21,16 +21,7 @@
       "rule_lead": "Verify capabilities BEFORE asserting.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Body claims are consistent with shipped Claude Code behavior. `/model` swaps Sonnet/Opus and thinking-effort levels (high / xhigh / medium) are documented platform features. Maintainer block claims build pipeline confirmed at scripts/build-workbook.js:161.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "6d",
-      "rule_lead": "Auto-load is filename-based, not folder-based.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "Maintainer-block 'auto-discover in every session' refers to skill auto-discovery (lazy-load tier), distinct from CLAUDE.md filename-based auto-load. Correct vocabulary.",
+      "fix_hint": "/model swap (Sonnet/Opus), thinking-effort levels (high/xhigh/medium), AskUserQuestion tool, Windows-via-Git-Bash, and Bash-tool cross-platform claims all match shipped reality. Maintainer block notes platform claim verified against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs for Win10 1803+ curl.exe/tar.exe.",
       "blocking": false
     },
     {
@@ -39,25 +30,16 @@
       "rule_lead": "Sessions are the unit of work.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Line 36 'Start a new Claude Code session in THAT repo' uses correct session-unit language. Step 0 'Fire up Claude Code' is acceptable for the prework one-time-launch case.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 13,
-      "rule_lead": "Pseudo-URI + kill-switch for public/private split.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Step 2 'Open a new Claude Code session in that repo' uses correct session-unit language. Maintainer block names 'prework session closes; the bug needs to survive into M1' — session-boundary discipline preserved.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label \u2014 mandatory.",
+      "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No practitioner citations or statistics in student-facing body. Prework is setup-only.",
+      "fix_hint": "No practitioner citations or statistics in student-facing body. Prework is operational setup only.",
       "blocking": false
     },
     {
@@ -72,10 +54,10 @@
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 13,
-      "rule_lead": "Artifact-realism \u2014 every named tool/skill/path must exist.",
+      "rule_lead": "Artifact-realism — every named tool/skill/path must exist.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Skills access-control-analysis + stride confirmed installed at ~/.claude/skills/. Build scripts confirmed: scripts/build-workbook.js (CONTENT_URL substitution at line 161) and scripts/build-ae101-content-tarball.sh. content/skills/ source dir exists with both shipped skills plus agentic-nerd + security-tools.",
+      "fix_hint": "All three skills (access-control-analysis, stride, security-tools) confirmed at /Users/anttitevanlinna/Projects/agents-102/content/skills/ with SKILL.md present. Build pipeline scripts/build-ae101-content-tarball.sh referenced in maintainer block. ~/.claude/skills/ install target matches Claude Code shipped behavior.",
       "blocking": false
     },
     {
@@ -84,7 +66,16 @@
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "One-at-a-time question discipline lives in fenced prompt 2 ('ask one question at a time if you need to') and fenced prompt 3 ('One candidate at a time.'). Body callout at line 56 mirrors the in-fence forcing function for the skim-reader.",
+      "fix_hint": "ae101-prework-extract-and-install and ae101-prework-screen-and-ready both carry 'Walk these in order, ask one question at a time if you need to, no preamble' INSIDE the fence. Body callout at line 56 ('push back if it dumps all four criteria at once') mirrors but is paired with the sibling escape-hatch prompt ae101-prework-one-at-a-time which IS executable. Force-or-omit principle satisfied.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule that does not force is worse than no rule.",
+      "verdict": "PASS",
+      "evidence": null,
+      "fix_hint": "The 'push back if Claude dumps all four criteria' body warning is paired with a real second-paste prompt (ae101-prework-one-at-a-time) that invokes AskUserQuestion. Body warning is not orphaned.",
       "blocking": false
     },
     {
@@ -93,7 +84,7 @@
       "rule_lead": "Verification machinery needs a smoke-test.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prompt 2 Step 3 ends 'Confirm each installed skill has a SKILL.md file and tell me the absolute path' \u2014 smoke-test on install. Step 5 confirms repo readiness (tests run, git clean, PR-able). Built+tested, not built-only.",
+      "fix_hint": "Extract-and-install Step 3 ends with 'Confirm each installed skill has a SKILL.md file and tell me the absolute path' — install smoke-test. Screen-and-ready Step 2 confirms 'Tests run (or name how the repo checks code), git status is clean, I can make a PR' — readiness smoke-test for M1. Built + tested, not built only.",
       "blocking": false
     },
     {
@@ -111,7 +102,7 @@
       "rule_lead": "No placeholders inside fenced blocks.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "<CONTENT_URL> in fenced prompt 1 is the explicit documented exception per maintainer block: build-time substituted by scripts/build-workbook.js (verified at line 161). Source markdown carries the literal placeholder so substitution is auditable; rendered workbook never shows it. Not student-fill-in.",
+      "fix_hint": "<CONTENT_URL> in ae101-prework-download-tarball body is the documented exception per maintainer block: build-time substituted by scripts/build-workbook.js per-customer. Source carries the literal placeholder so substitution is auditable; rendered workbook never shows it. Not a student fill-in.",
       "blocking": false
     },
     {
@@ -120,7 +111,7 @@
       "rule_lead": "One-sentence action lead-in before prompt block.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All three prompts have lead-ins with command verbs (fetch / extract+install+screen+confirm / use AskUserQuestion).",
+      "fix_hint": "Step 3 lead-in: 'Ask Claude to fetch ae101-content.tar.gz to ~/Downloads/.' Step 5 lead-in: 'Now the interactive beat. Claude walks three trivial bug candidates...' Sibling: 'If Claude's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool...'. All command-verb-led, semantic, under 30 words.",
       "blocking": false
     },
     {
@@ -129,7 +120,7 @@
       "rule_lead": "Canonical lead-in + Prompt label + fenced shape.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Registry-sourced; expander reconstructs **Prompt** *(Claude Code)* canonical shape.",
+      "fix_hint": "Registry-sourced markers; expander reconstructs **Prompt** *(Claude Code)* canonical shape with dest: Claude Code from frontmatter.",
       "blocking": false
     },
     {
@@ -138,7 +129,7 @@
       "rule_lead": "Skills invoke by name, not path.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prompt 2 names skills by slug. Step 3 says 'Install them wherever personal Claude Code skills belong on this machine' \u2014 path-agnostic. The 'content/skills/ folder as the source' reference is the install-source folder, not a skill invocation path; acceptable.",
+      "fix_hint": "Extract-and-install Step 3 names skills by slug. 'Use the extracted content/skills/ folder as the source' references the install-SOURCE folder, not a skill invocation path — correct usage. Step 3 also says 'wherever personal Claude Code skills belong on this machine' — path-agnostic install target.",
       "blocking": false
     },
     {
@@ -147,7 +138,7 @@
       "rule_lead": "Chain prompts by back-reference + deterministic path.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Frontmatter requires/produces chain: ae101-prework-download-tarball produces ae101-content-tarball at ~/Downloads/ae101-content.tar.gz, consumed by ae101-prework-extract-and-install. Deterministic path; correct.",
+      "fix_hint": "Frontmatter requires/produces chain auditable: download-tarball produces ae101-content-tarball at ~/Downloads/ae101-content.tar.gz → extract-and-install requires it, produces ae101-content-dir + three skills → screen-and-ready requires ae101-content-dir. Deterministic paths throughout.",
       "blocking": false
     },
     {
@@ -162,10 +153,10 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "Preamble before action \u2014 design around it.",
+      "rule_lead": "Preamble before action — design around it.",
       "verdict": "PASS",
-      "evidence": "Prompt 2 (5 sub-steps): opening line 'Walk these in order, ask one question at a time if you need to, no preamble.'",
-      "fix_hint": "Maintainer decision 2026-05-22: opening-line placement of no preamble suppressor intentional for prework prompt 2; relocation to canonical last-line declined. Stop carrying TODO forward.",
+      "evidence": "Both multi-step prompts (extract-and-install with 3 numbered sub-steps; screen-and-ready with 2 numbered sub-steps) open with 'no preamble' suppressor.",
+      "fix_hint": "Maintainer decision (carried from 2026-05-22): opening-line placement of suppressor intentional for prework. Canonical last-line shape per rule 17 not enforced here; non-blocking. Note: rule 17's structural trigger fires at 4+ sub-steps OR plan mode — screen-and-ready has 2 sub-steps so suppressor not strictly required but present anyway. Defensible.",
       "blocking": false
     },
     {
@@ -174,16 +165,7 @@
       "rule_lead": "Prompt-body edits require maintainer approval.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 23,
-      "rule_lead": "Artifact destinations are explicit subpaths (Agents 101-specific).",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "AE101 uses student's existing repo; rule scope is Agents 101.",
+      "fix_hint": "Judge does not edit; verdict-only.",
       "blocking": false
     },
     {
@@ -192,7 +174,7 @@
       "rule_lead": "Don't restate session CWD inside prompt body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prompts reference ~/Downloads and ~/Documents because these are deliberately outside the repo CWD \u2014 they name what the prompt acts on. No bare absolute paths restating session root.",
+      "fix_hint": "Prompts reference ~/Downloads, ~/Documents/ae101-content, ~/.claude/skills because these are deliberately outside the session CWD — they name what the prompt acts on. No bare absolute paths restating session root.",
       "blocking": false
     },
     {
@@ -201,7 +183,7 @@
       "rule_lead": "Prompts live in registry; module files reference by marker.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All three prompts at curriculum/prompts/ae101-prework-*.md with proper frontmatter; module uses {{prompt:<key>}} markers (lines 50, 60, 64).",
+      "fix_hint": "All four prompts at curriculum/prompts/ae101-prework-*.md with proper frontmatter; module uses {{prompt:<key>}} markers (lines 42, 50, 58, 62). No inline **Prompt** fenced blocks remain in the prework file.",
       "blocking": false
     },
     {
@@ -209,8 +191,17 @@
       "rule_index": 32,
       "rule_lead": "No module-name references in prompt prose.",
       "verdict": "PASS",
+      "evidence": "ae101-prework-extract-and-install: 'I'm starting a six-module training called Agentic Engineering 101'. ae101-prework-screen-and-ready: 'confirm the repo is ready for Module 1'.",
+      "fix_hint": "'six-module training' is non-cohort-specific framing; 'Module 1' is a load-bearing forward-pointer that the agent must understand as the next-target for readiness checks. Defensible as load-bearing identifier the agent needs to recognize. Non-blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move.",
+      "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "ae101-prework-extract-and-install names 'Module 1' as the next-target the agent must confirm readiness for. Load-bearing forward-pointer in prework, not a cross-cohort curriculum-internal reference. Non-blocking.",
+      "fix_hint": "Extract-and-install uses numbered list (1./2./3.) + standalone 'Report success...' closing line. Screen-and-ready splits its two moves into numbered items. Download-tarball is single-move + URL line. One-at-a-time is one move.",
       "blocking": false
     },
     {
@@ -219,7 +210,7 @@
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prompt 1 body lead-in 'fetch the content tarball to ~/Downloads/' rhymes with prompt 'Download the AE101 content tarball to ~/Downloads/...'. Prompt 3 body lead-in mirrors AskUserQuestion + one-at-a-time. Prompt 2 lead-in summarizes the numbered moves.",
+      "fix_hint": "Step 3 body 'fetch ae101-content.tar.gz to ~/Downloads/' rhymes with prompt 'Download the AE101 content tarball to ~/Downloads/...'. Step 4 body 'extract the bundle and install the curated skills' rhymes with prompt's three-step extract+install structure. Step 5 sibling lead-in 'use the AskUserQuestion tool' mirrors prompt's 'Use the AskUserQuestion tool for speeding up screening'.",
       "blocking": false
     },
     {
@@ -228,44 +219,44 @@
       "rule_lead": "Declare permission-mode when paste requires a specific mode.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Prework prompts run in default mode. No plan/acceptEdits/auto/bypassPermissions dependency.",
+      "fix_hint": "All four prework prompts run in default mode. No plan/acceptEdits/auto/bypassPermissions dependency.",
       "blocking": false
     }
   ],
   "platform_claims_checked": [
     {
-      "claim": "/model swaps between Sonnet and Opus",
+      "claim": "/model swaps between Sonnet and Opus. Sonnet runs every exercise in this training.",
       "line": 3,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
-      "claim": "thinking effort levels (high / xhigh / medium)",
+      "claim": "Run modules on high thinking effort by default. xhigh adds latency without commensurate value.",
       "line": 5,
       "verdict": "PASS",
       "source": "inferred"
     },
     {
-      "claim": "CLI or desktop, your call. Open a new session with the repo as the working directory.",
-      "line": 40,
+      "claim": "On Windows, Claude Code runs through Git Bash, the shell paths below resolve normally there.",
+      "line": 18,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
-      "claim": "Claude will need to write outside the repo (~/Documents/ae101-content/ and ~/.claude/skills/); approve the permission prompts.",
-      "line": 54,
+      "claim": "Claude needs to write outside the repo (~/Documents/ae101-content/ and ~/.claude/skills/); approve the permission prompts when they fire.",
+      "line": 48,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
-      "claim": "Skills install to ~/.claude/skills/ (user-level), auto-discover in every session regardless of cwd.",
-      "line": 86,
+      "claim": "AskUserQuestion tool for speeding up screening and making suggestions.",
+      "line": 62,
       "verdict": "PASS",
-      "source": "compendium"
+      "source": "inferred"
     },
     {
-      "claim": "Windows: Git Bash ships native curl.exe and tar.exe (Win10 1803+).",
-      "line": 87,
+      "claim": "Cross-platform via Claude Code's Bash tool (macOS/Linux native, Windows via Git Bash). Verified against 2026-04 Anthropic Claude Code setup docs + Microsoft devblogs (Win10 1803+ ships native curl.exe + tar.exe).",
+      "line": 85,
       "verdict": "PASS",
       "source": "compendium"
     }
@@ -274,17 +265,17 @@
   "skills_referenced": [
     {
       "name": "access-control-analysis",
-      "line": 60,
+      "line": 36,
       "exists": true
     },
     {
       "name": "stride",
-      "line": 60,
+      "line": 37,
       "exists": true
     },
     {
-      "name": "agentic-nerd",
-      "line": 86,
+      "name": "security-tools",
+      "line": 38,
       "exists": true
     }
   ],
@@ -293,17 +284,17 @@
       "url": "<CONTENT_URL>",
       "alive": null,
       "status_code": null,
-      "note": "Build-time placeholder; substituted per-customer by scripts/build-workbook.js at line 161. No live URL to sample in source; rendered workbook carries the customer-specific URL."
+      "note": "Build-time placeholder substituted per-customer by scripts/build-workbook.js. No live URL to sample in source; rendered workbook carries the customer-specific URL."
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "todos": [
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
       "prompt_key": "ae101-prework-extract-and-install",
-      "note": "Preamble suppressor 'no preamble' sits at prompt opening, not as the canonical last-line form per rule 17a. Functionally fires; canonical shape is 'No preamble. <first action>' as the last line. Carried from prior audit; non-blocking."
+      "note": "Preamble suppressor 'no preamble' sits at prompt opening (alongside 'Walk these in order, ask one question at a time if you need to'), not the canonical last-line 'No preamble. <first action>' form. Functionally fires; prior maintainer decision (2026-05-22) accepted the opening-line placement. Carried; non-blocking."
     }
   ]
 }

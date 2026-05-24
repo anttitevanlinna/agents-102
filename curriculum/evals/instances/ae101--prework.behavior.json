@@ -1,74 +1,118 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
   "trace_status": "full_regen",
-  "generated_at": "2026-05-22T16:14:43Z",
-  "content_sha": "d939627af870521fdcf0bbf5f3cc2a6988cf6f2d9aff2952ae91b3a14fa6cc0b",
-  "prompts_evaluated": 3,
+  "generated_at": "2026-05-24T12:00:00Z",
+  "content_sha": "c89acbe5796eaa3d00f8208654be8f095beb9731af53703df439bfdcf1942f60",
+  "prompts_evaluated": 4,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using cur",
-      "verdict": "TODO",
+      "prompt_sha": "1708f2c1073872f274b2e16b03761cd7f6c4d07c8f501bfd591b3a4615e00742",
+      "prompt_lead": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using c",
+      "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Single-action Bash fetch; brief opener ('I'll download that now') possible in ~20% of runs but non-disruptive on a housekeeping step.",
+          "evidence": "Single-action Bash fetch; brief 'I'll download that now' opener possible in ~20% of runs but non-disruptive on a housekeeping step. Body provides manual-download fallback if curl fails.",
           "fix_hint": "No edit needed; preamble on a setup-only prompt does not affect learning outcome."
         }
       ]
     },
     {
       "prompt_index": 2,
+      "prompt_sha": "621705cc68d2111bba01ee255ec855c82a5842f1380a397ee41ea82b43d390bf",
       "prompt_lead": "I'm starting a six-module training called Agentic Engineering 101. Walk these in",
-      "verdict": "TODO",
+      "verdict": "REVISE",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "In-fence 'no preamble' suppressor present at end of first sentence ('...ask one question at a time if you need to, no preamble.'). Per check_prompts §17 structural-trigger (4+ sub-steps), the in-fence suppressor satisfies the requirement; residual confirmatory-opener risk drops to ~15%.",
-          "fix_hint": "Suppressor in place; no edit required. Optional body primer could trim residual risk further but is not load-bearing for this housekeeping arc."
-        },
-        {
-          "pattern_id": "question-dump",
-          "confidence": "low",
-          "evidence": "CARVE-OUT APPLIED twice. Step 4 elicitation has paired body callouts satisfying the carve-out shape per check_prompts §15 + 2026-05-03 update: pre-prompt names failure mode + recovery ('push back if it dumps all four criteria at once. One bug at a time, then the next.'); post-prompt names the AskUserQuestion tool + one-at-a-time alternative + student agency ('Your call.').",
-          "fix_hint": "Carve-out satisfied — no prompt edit required."
+          "confidence": "med",
+          "evidence": "In-fence 'no preamble' present, but numbered three-step task combined with stage-setting first sentence ('I'm starting a six-module training...') reliably triggers a confirmatory opening ('Got it, working through these now') in 30-50% of runs before step 1 executes. Suppressor reduces but does not eliminate the pattern when the task envelope is this rich.",
+          "fix_hint": "Body primer above prompt: add 'Claude may open with a short summary line, that's fine, watch the per-step output.' Optional but neutralises the residual."
         },
         {
           "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "Step 3 installs to ~/.claude/skills/ without explicit overwrite instruction; pause-to-ask fires on skill-name collision, rare for first-time cohort installs.",
-          "fix_hint": "Optional: add 'overwrite if exists' to step 3 for repeat-run safety; not blocking."
+          "confidence": "med",
+          "evidence": "Step 3 installs THREE skills (access-control-analysis, stride, security-tools) to ~/.claude/skills/ with no explicit overwrite directive. The 2026-05-24 reshape added security-tools as a third install target, materially raising collision odds: re-runs, prior install attempts, students who installed security-tools via other channels (Bosser kit, ArcticRex bundle, public repo) all trigger a mid-sequence pause-to-ask. Body callout above prompt addresses OS-level permission prompts ('approve the permission prompts when they fire') but NOT same-name skill collision. Confidence escalates from low (prior audit, 2 skills) to med post-reshape.",
+          "fix_hint": "Add to Step 3: 'If a skill with that name already exists at ~/.claude/skills/, overwrite it.' Closes the collision-pause path on re-runs and bundled-kit students."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "'Report success on each step and tell me what you did' invites self-summary; outcomes are deterministic and student-verifiable from scrollback. Non-load-bearing for prework's teaching goal.",
-          "fix_hint": "Defer; if cohort shows install-path confusion, tighten step 5 to 'tell me what you wrote' per check_prompts §21."
+          "evidence": "'Report success on each step and tell me what you did' invites self-summary; outcomes are deterministic and student-verifiable from scrollback. Non-load-bearing for prework's teaching goal — install failures surface concretely at M3 when the skill fails to invoke.",
+          "fix_hint": "Defer; if cohort shows install-path confusion, tighten to 'tell me what you wrote' per check_prompts §21."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "'Use ~/Documents/ae101-content unless there is a good reason not to' offers a default the student may not push back on. Acceptable here — sane default, treated as canonical in artefact contracts. Not load-bearing.",
+          "fix_hint": "No edit needed; default is intentional and supports artefact-contract consumption by later modules."
         }
       ]
     },
     {
       "prompt_index": 3,
-      "prompt_lead": "Use the AskUserQuestion tool for speeding up screening and making suggestions. On",
-      "verdict": "TODO",
+      "prompt_sha": "d9ff19421e23b945c9a75f36743c19a27c4fb2b6a7e6e1c9be1e8fbec2902429",
+      "prompt_lead": "Walk these in order, ask one question at a time if you need to, no preamble.",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "CARVE-OUT APPLIED. Paired body callouts satisfy check_prompts §15: pre-prompt names failure mode + recovery ('When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.'); post-prompt names AskUserQuestion tool + one-at-a-time alternative + student agency ('If Claude's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.'). In-fence suppressor 'ask one question at a time' also present.",
+          "fix_hint": "Carve-out satisfied — no prompt edit required."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "'no preamble' explicit; first step is itself an ask-the-student move, suppressing plan-talk naturally. Residual: 'Sure, let me start by asking...' courtesy bridge in <20% of runs.",
+          "fix_hint": "No edit needed."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "Step 1's 'Help me pick the most trivial-and-visible one' may rubber-stamp the student's first candidate. Body callout reinforces 'Trivial means a few lines here and there, not a multi-file refactor' which primes the student to enforce.",
+          "fix_hint": "Optional: add 'If the bug looks bigger than 50 lines once you look at it, say so and ask for another candidate' to step 1 — TODO, non-blocking."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Step 2's readiness check ends with 'Flag anything that would get in my way' which actively counters inflation by inviting a problem-list. Risk of shallow readiness (git status clean, no branch+push dry-run) — student discovers protected-branch rules at M1.",
+          "fix_hint": "Optional: add 'Confirm I can push a branch and open a PR on this remote, not just that git is clean locally' to step 2 — TODO, non-blocking."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_sha": "4d01bbf3a4233d2e22c0a689226ccaef6a690fc0ed81746df2ada9985a192ddd",
+      "prompt_lead": "Use the AskUserQuestion tool for speeding up screening and making suggestions. O",
+      "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "One-liner tool-switch command; 'Sure, switching to AskUserQuestion' opener possible but compliance is near-certain and disruption minimal.",
-          "fix_hint": "No edit needed; one-liner compliance commands have negligible preamble impact."
+          "evidence": "One-liner tool-switch command; 'Sure, switching to AskUserQuestion' opener possible but compliance is near-certain and disruption minimal. Framed as 'small steer, small trick' in surrounding body.",
+          "fix_hint": "No edit needed."
         }
       ]
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 3
+  "blocking_findings_count": 1,
+  "todos_count": 4,
+  "blocking_summary": "Prompt 2 (extract + install three skills): two med-confidence risks fire on a load-bearing setup prompt. (1) preamble-before-action — numbered three-step task + rich opener triggers confirmatory plan-talk in 30-50% of runs despite 'no preamble'. (2) overwrite-anxiety — 2026-05-24 reshape added security-tools as a third install target with no overwrite directive; collision-pause path now likelier on re-runs and students with bundled-kit installs. Required fix: add explicit overwrite directive to Step 3.",
+  "todos": [
+    "BLOCKING: Step 3 of Prompt 2 — add 'If a skill with that name already exists at ~/.claude/skills/, overwrite it.' Closes overwrite-anxiety med risk introduced by the 2026-05-24 three-skill expansion.",
+    "Optional: body line above Prompt 2 — add 'Claude may open with a short summary line, that's fine, watch the per-step output' to neutralise residual preamble-before-action.",
+    "Optional: Prompt 3 step 2 — add 'Confirm I can push a branch and open a PR on this remote, not just that git is clean locally' to close shallow-readiness path.",
+    "Optional: Prompt 3 step 1 — add 'If the bug looks bigger than 50 lines once you look at it, say so and ask for another candidate' to counter default-acceptance on bug size."
+  ],
+  "cache_path": "curriculum/evals/sim-cache/prework.behavior.json"
 }

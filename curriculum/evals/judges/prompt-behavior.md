@@ -78,6 +78,14 @@ Carve-outs (extend as compounded knowledge grows):
 
 - **`default-acceptance`, `preamble-before-action`, and heavy-run risks — body-callout mitigation.** Adjacent prose can mitigate a probabilistic behavior risk when it names the failure mode and gives the student an action after the prompt. Minimal prompt edits are preferred over forcing every risk into the fenced block.
 
+- **`overwrite-anxiety` and `file-preservation-gap` — fresh-install-context carve-out** per `memory/compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md`. When a prompt installs to a target directory the student is arriving at fresh as part of curriculum-delivered prework (curated tarball, scripted install, vendor bundle) AND no body marker indicates the student should expect prior installations, the collision-pause path is not the modal case — do NOT fire `overwrite-anxiety` or `file-preservation-gap` as blocking. Adding an overwrite directive on such prompts implies a collision norm that doesn't exist and reads weird on the modal path (students arrive empty).
+
+  **Fresh-install markers** (any one is sufficient): prework framing, body says *"install the bundle"* / *"curated set"* / *"extract the tarball"*, install target is `~/.claude/skills/` and the body frames it as the student's first encounter, the prompt is part of a vendor/curriculum onboarding flow.
+
+  **Carve-out does NOT apply:** prompt regenerates an artifact the student authored earlier (sibling 2026-04-27 regeneration entry — fire as before), OR body context names a likely prior-install scenario (re-running setup, bundled-kit students, opt-in upgrades).
+
+  Third axis in the overwrite-anxiety family: regeneration (`memory/compounded/2026-04-27-prompts-overwrite-anxiety.md`), personal-scope-integrate-verb (`memory/compounded/2026-05-03-pedagogy-integrate-verb-personal-scope-carveout.md`), fresh-install-context (this carve-out).
+
 When you apply a carve-out, record it in the trace's `risks_fired` entry with `confidence: low` and evidence pointing at the callout/marker line, OR omit the risk entirely. Either way, do not let the carve-out path produce a BLOCKING verdict.
 
 ## Cache lookup

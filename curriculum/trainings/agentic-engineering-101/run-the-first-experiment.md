@@ -40,7 +40,7 @@ Short loops sit behind you so far: a bug fix, a plan read. This is the first lon
 
 ## Send the task off
 
-No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
+No Debrief. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
 Before you send, set up the two markers you'll return to in Module 5.
 
@@ -71,6 +71,10 @@ If Claude stalls and you want to see if it picks itself back up, dark-humour nud
 
 {{prompt:ae101-m4-nudge-continue}}
 
+The task is running. One open question while it works.
+
+[Lecture: Will company memory emerge?](lectures/will-company-memory-emerge.md)
+
 Before you close: read [Reading the return](lectures/reading-the-return.md). It plants the question and the three failure modes you'll use to read what comes back.
 
 ## Next
@@ -96,8 +100,8 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@0f32201 story@0f32201 technical@0f32201 behavior@ab4b0bd pedagogy@689e7e0 strategy@689e7e0)
-- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-05-24 (writing@4c539ba story@4c539ba technical@0f32201 behavior@ab4b0bd pedagogy@4c539ba strategy@4c539ba)
+- judges @4c539ba: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @689e7e0: PASS — set=[run-the-first-experiment, learn-from-the-test]
 - mechanical @e840433: PASS — ae101-m4 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)

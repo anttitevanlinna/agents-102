@@ -49,9 +49,9 @@ You need `ae101-content.tar.gz` saved to `~/Downloads/`. Two paths to the same d
 
 {{prompt:ae101-prework-download-tarball}}
 
-## 4. Hand the rest to Claude
+## 4. The handoff to Claude
 
-Ask Claude to extract the tarball, install the curated skills, screen three candidate bugs, and confirm the repo is ready for Module 1. Claude will need to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
+This step bundles four moves into one prompt: tarball extraction, curated-skill install, a three-bug screen, and a Module-1 readiness check. Claude will need to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
 
 When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.
 

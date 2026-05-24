@@ -76,7 +76,7 @@ Before Phase 4, smoke-test that the verifier actually fires. A built-but-unteste
 
 ## Phase 4: Assemble reference + plan.md
 
-Reference artefact pins the task's success criteria and points at the relevant memory, skills, and connectors. plan.md is the durable working document the agent re-reads when its window fills.
+Reference artefact pins the task's success criteria and points at the relevant memory, skills, and connectors. `plan.md` is the durable working document the agent re-reads when its window fills. Not the plan-mode plan; this is the agent's mutable working document during the run.
 
 Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 

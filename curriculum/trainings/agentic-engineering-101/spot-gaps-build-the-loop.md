@@ -152,6 +152,14 @@ Antti
 - **Intercom Tier 1/2/3** — Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D — all numbers vendor-self-reported, verify before citing live. Closing lecture org-scale anchor.
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue]`. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
 
+**Source verification — MUST DO before first cohort:**
+
+- **Ronacher's three-pattern** — verify `https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/`. Confirm reference / plan.md-equivalent / verifier are explicitly named or cleanly inferable; 10h, 2.2M tokens; Rust snapshot test reuse. Freshness re-check at delivery.
+- **Cherny's three verifier shapes** — verify `https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually` + `https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny`. Confirm Cherny frames three shapes (background-agent / shell-hook / Ralph re-feed) in the cited interview, NOT paraphrased into existence. If the three-shape framing is our synthesis, reframe as "three shapes practitioners use" without single attribution.
+- **Ramp Dojo 350-skill marketplace** — verify against `continuous-research/observations/ramp.md` or the Lenny Rachitsky interview at `creatoreconomy.so/p/inside-ramp-...` (source swapped from the original X.com thread after paywall). Three numbers carried in supplementary: 350+ shared skills / 99.5% AI-active / 84% coding agents weekly. Live re-verify + stamp before first cohort.
+- **Intercom Tier 1/2/3** — verified live against Curran 2026-05-21 (commit `69c8134`). Re-verify at delivery — must be within six-month window of cohort date.
+- **Klaassen compounding** — verify `https://every.to/source-code/compound-engineering-the-definitive-guide`. The four-step loop + 80/20 ratio (80% planning+review, 20% execution) carry the closing lecture; freshness re-check at delivery. Klaassen own-byline pieces drift fastest.
+
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?
 - Skill-shape menu — do the three shapes cover the gaps students surface?

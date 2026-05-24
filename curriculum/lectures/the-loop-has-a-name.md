@@ -17,6 +17,8 @@ Practitioners call them judges when the check is itself an LLM reading the work.
 
 An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. The word carries more weight in the vendor literature than it deserves. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules.
 
+The same shape fires on any workflow with a quality bar, not only agent runs. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
+
 Naming it matters because the word is what lets you compose. Once you see the verifier, the judge, the gate, and the skill as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 
 ## The shape it grows into

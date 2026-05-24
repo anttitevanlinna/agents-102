@@ -87,6 +87,10 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 **Known TODOs:**
 - Antti's rewrite pass in final voice (~15 min).
 
+**Source verification — MUST DO before first cohort:**
+
+- Geoff Charles verbatim quote ("The models were good enough. The harness wasn't.") at L29 — verify at `https://x.com/geoffintech/status/2042002590758572377`. Cross-check against `continuous-research/observations/ramp.md` or the Lenny Rachitsky write-up at `creatoreconomy.so/p/inside-ramp-...` (the Ramp source swapped to Rachitsky after the X.com paywall blocked the original verification). Freshness re-check at delivery — past 6-month window. **Fallback framing if the quote can't be re-verified:** drop the verbatim attribution and reframe as "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model." The lesson — paraphrase shipped as quote — stays; the named attribution drops.
+
 **Frameworks attributed:**
 - Non-determinism framing — Antti's working position, reshaped from earlier *"we live what we teach"* credibility framing after the Claude-generated recommendation was cut at turn 7.
 - Rules-loaded-but-bypassed pattern — emergent from session notes. Candidate for compound-rule amendment at session close.

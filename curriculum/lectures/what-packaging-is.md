@@ -59,7 +59,7 @@ That is your verifier from Phase 3, scaled to a 500-person engineering org. Same
 
 ## The 80/20 ratio
 
-You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution. The TDD shape carries it, Klaassen: *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
+You just felt the shape of it. The un-packaged run underdelivered; the packaged re-send of the same task landed. Most of the work that made it land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution. The TDD shape carries it, Klaassen (August 2025): *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
 
 ## What the run cost
 
@@ -67,7 +67,7 @@ Name it plainly. The re-send consumed some number of hours of Opus time, and tho
 
 ## The counter-camp
 
-Not everyone agrees that the right move is to extend session length. Sourcegraph's Amp (their coding-agent product) explicitly rejects auto-compaction and bets on short focused sessions plus manual handoff between them. The argument: the cleanest context is a fresh one, and the engineer's job is to package the handoff, not to keep one session running.
+Not everyone agrees that the right move is to extend session length. Sourcegraph's Amp (their coding-agent product, October 2025) explicitly rejects auto-compaction and bets on short focused sessions plus manual handoff between them. The argument: the cleanest context is a fresh one, and the engineer's job is to package the handoff, not to keep one session running.
 
 Two camps, both real. M5 teaches the extend camp because your task wanted it. The handoff camp is also a serious answer. Worth knowing it exists.
 
@@ -99,7 +99,8 @@ URLs to verify:
 - Boris Cherny three stop-hook shapes — currently sourced via the same OODA citing `getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually` and `newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny`. Verify: Cherny actually frames three shapes (background agent / shell hook / Ralph re-feed) in the cited interview, NOT paraphrased into existence. If the three-shape framing is our synthesis rather than Cherny's, reframe as "three shapes practitioners use" without single attribution. Verify date is within 6-month window at delivery.
 - `https://ideas.fin.ai/p/2x-nine-months-later` — Curran "2x nine months later." Confirm: 19.2% auto-approved, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D scale. *(Source: `continuous-research/observations/intercom.md`.)*
 - Geoffrey Huntley Ralph reference — verify the ticket-triage framing is accurate to his writing, not ours.
-- Sourcegraph Amp counter-philosophy — pinned to `https://ampcode.com/news/handoff` (Sourcegraph Amp official, 2025-10-23): *"What we want to encourage are focused threads, because we think that's how agents yield the best results."* [practitioner direct from a vendor — acceptable for naming a counter-camp]. Freshness OK for cohorts before April 2026.
+- Sourcegraph Amp counter-philosophy — pinned to `https://ampcode.com/news/handoff` (Sourcegraph Amp official, 2025-10-23): *"What we want to encourage are focused threads, because we think that's how agents yield the best results."* [practitioner direct from a vendor — acceptable for naming a counter-camp]. Inline-dated "October 2025" in body 2026-05-22; past 6-month window — re-verify at delivery, escalate to find a fresher counter-camp source if Amp's public stance has shifted.
+- Klaassen "My AI Had Already Fixed the Code Before I Saw It" — pinned to `https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it` (Every.to, 2025-08-18). Inline-dated "August 2025" in body 2026-05-22; past 6-month window — re-verify at delivery, or swap to a fresher Klaassen TDD/compounding piece if one has surfaced.
 - Subagents-for-isolation + /compact-at-60% — convergent practitioner pattern from `2026-04-23-scaling-session-length-2-platform-mechanics.md`. "Three independent practitioners" claim must be backable when the OODA file is finalised. If the count drifts under post-fix review, reword.
 
 **Numbers to triple-check before delivery:** 10h MiniJinja, 2.2M tokens, 19.2% auto-approve, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D org.

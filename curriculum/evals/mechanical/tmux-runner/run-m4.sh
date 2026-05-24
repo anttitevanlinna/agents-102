@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+# run-m4.sh — drive AE101 M4 (Run the First Experiment) end-to-end.
+#
+# Single session in the main repo. Walks scenarios/m4.txt: scope → audit →
+# gap-fill → Huryn frame → commit starting point → send-off (walk away).
+#
+# What's different from run.sh:
+#   - Per-turn timeout: last turn (send-off) gets a long timeout (default 1h);
+#     other turns get the standard 10-min timeout.
+#   - Pre/post snapshot of ~/.claude/projects/<encoded-cwd>/ so we can identify
+#     the new session UUID that M5 will need to find the M4 transcript.
+#   - Post-run: greps the M4 starting-point SHA from the commit turn's
+#     transcript and writes everything M5 needs into `out/<run-id>/m4-state.json`.
+#
+# Usage: run-m4.sh --cwd /path/to/repo [--task-slug <slug>]
+#
+# state.json shape:
+#   {
+#     "m4_cwd": "/Users/.../lemmings",
+#     "m4_sha": "abc1234",
+#     "m4_branch": "m4/fix-blocker-deadlock",
+#     "m4_session_uuid": "0123abcd-...",
+#     "m4_transcript_path": "/Users/.../.claude/projects/-Users-...-lemmings/0123abcd-....jsonl"
+#   }
+set -euo pipefail
+
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$HERE/lib/resolve-prompt.sh"
+source "$HERE/lib/tmux.sh"
+source "$HERE/lib/sync.sh"
+
+sut_cwd=""
+task_slug=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --cwd)        sut_cwd="$2"; shift 2 ;;
+    --task-slug)  task_slug="$2"; shift 2 ;;
+    *) echo "unknown arg: $1" >&2; exit 2 ;;
+  esac
+done
+
+if [[ -z "$sut_cwd" || ! -d "$sut_cwd" ]]; then
+  echo "usage: $0 --cwd <repo> [--task-slug <slug>]" >&2
+  exit 2
+fi
+
+scenario="$HERE/scenarios/m4.txt"
+[[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
+
+run_id="$(date +%Y%m%d-%H%M%S)-$$"
+run_dir="$HERE/out/$run_id"
+sentinel_dir="$run_dir/sentinels"
+mkdir -p "$sentinel_dir"
+
+session="runner-$run_id"
+launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
+warmup="${CLAUDE_RUNNER_WARMUP:-10}"
+
+# Encoded transcript dir for this cwd — Claude Code stores sessions at
+# ~/.claude/projects/<encoded-cwd>/<uuid>.jsonl where <encoded-cwd> is the
+# absolute cwd with `/` replaced by `-`. Snapshot before launch.
+encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
+transcripts_dir="$HOME/.claude/projects/$encoded_cwd"
+mkdir -p "$transcripts_dir"
+pre_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
+
+echo "[m4] cwd=$sut_cwd run=$run_id"
+echo "[m4] transcripts dir=$transcripts_dir"
+echo "[m4] launching: $launch_cmd"
+
+pane_start "$session" "$sut_cwd" "$launch_cmd"
+sleep "$warmup"
+
+cleanup() {
+  pane_capture "$session" "$run_dir/transcript.txt" 2>/dev/null || true
+  pane_kill "$session"
+}
+trap cleanup EXIT
+
+# Read scenario into array.
+lines=()
+while IFS= read -r line || [[ -n "$line" ]]; do
+  [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+  lines+=("$line")
+done < "$scenario"
+
+total=${#lines[@]}
+echo "[m4] turns=$total"
+
+# Per-turn timeout: standard 600s, except the last turn (send-off) which
+# gets the long-run budget. Override either via env vars.
+standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-600}"
+sendoff_timeout="${CLAUDE_RUNNER_M4_SENDOFF_TIMEOUT:-3600}"
+
+seq=0
+for line in "${lines[@]}"; do
+  seq=$((seq + 1))
+
+  if [[ "$line" == \** ]]; then
+    body="${line#\*}"; body="${body# }"
+    echo "[m4] turn=$seq literal=${body:0:60}..."
+  else
+    key="${line%%[[:space:]]*}"
+    tail=""
+    if [[ "$line" == *[[:space:]]* ]]; then
+      tail="${line#*[[:space:]]}"
+      tail="${tail#"${tail%%[![:space:]]*}"}"
+    fi
+    echo "[m4] turn=$seq key=$key${tail:+ tail=${tail:0:60}...}"
+    body="$(resolve_prompt "$key")"
+    [[ -n "$tail" ]] && body="${body}"$'\n'"${tail}"
+  fi
+
+  pane_send_text "$session" "$body"
+  printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
+
+  # Last turn is the send-off; everything else uses the standard timeout.
+  if [[ "$seq" -eq "$total" ]]; then
+    turn_timeout="$sendoff_timeout"
+    echo "[m4] turn=$seq is send-off; timeout=${turn_timeout}s"
+  else
+    turn_timeout="$standard_timeout"
+  fi
+
+  if ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
+    pane_capture "$session" "$run_dir/transcript.txt"
+    echo "[m4] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2
+    exit 1
+  fi
+  pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
+done
+
+pane_capture "$session" "$run_dir/transcript.txt"
+
+# Post-run: identify new session UUID by diffing transcripts dir.
+post_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
+new_uuid=""
+for f in $post_transcripts; do
+  if ! echo " $pre_transcripts " | grep -qF " $f "; then
+    new_uuid="${f%.jsonl}"
+    break
+  fi
+done
+
+# Grep the M4 starting-point SHA from the commit-turn transcript (turn 5).
+# Pattern: a 7+ hex-char short SHA. Find the most relevant one in turn-5.
+commit_turn_transcript="$run_dir/turn-5.transcript.txt"
+m4_sha=""
+if [[ -f "$commit_turn_transcript" ]]; then
+  # Look for "short SHA" or any 7-12 hex sequence after "starting point" / commit
+  m4_sha="$(grep -oE '[0-9a-f]{7,12}' "$commit_turn_transcript" | head -1)"
+fi
+
+# Branch is m4/<task-slug>. Default to whatever the SHA-bearing commit's branch is.
+m4_branch=""
+if [[ -n "$m4_sha" ]]; then
+  m4_branch="$(cd "$sut_cwd" && git branch -a --contains "$m4_sha" 2>/dev/null | grep -oE 'm4/[a-z0-9-]+' | head -1 || true)"
+fi
+
+state_file="$run_dir/m4-state.json"
+cat > "$state_file" <<EOF
+{
+  "run_id": "$run_id",
+  "m4_cwd": "$sut_cwd",
+  "m4_sha": "$m4_sha",
+  "m4_branch": "$m4_branch",
+  "m4_session_uuid": "$new_uuid",
+  "m4_transcript_path": "$transcripts_dir/$new_uuid.jsonl",
+  "task_slug": "$task_slug"
+}
+EOF
+
+echo "[m4] PASS turns=$seq — out: $run_dir"
+echo "[m4] state.json: $state_file"
+cat "$state_file"

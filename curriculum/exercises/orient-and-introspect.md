@@ -56,8 +56,8 @@ You've seen what's loaded and what isn't. Hand off to the fix.
 - **Theme 1 (90% correct)** — `/context` makes the unread slice visible.
 
 **Watch-fors:**
-- **Introspection skipped.** Student reads Claude's repo summary and moves to the bug fix without the second prompt. Nerd push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
-- **`/context` skipped.** The slash command reads as prose, not as a command to type. Nerd push: *"type /context in the chat — look at the number."*
+- **Introspection skipped.** Student reads Claude's repo summary and moves to the bug fix without the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
+- **`/context` skipped.** The slash command reads as prose, not as a command to type. Trainer push: *"type /context in the chat — look at the number."*
 
 **Plug points:**
 - Student's own repo (chosen in prework).

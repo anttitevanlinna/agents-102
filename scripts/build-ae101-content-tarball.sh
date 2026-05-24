@@ -18,7 +18,7 @@
 #
 # Module files (curriculum/trainings/agentic-engineering-101/*.md at the dir root)
 # are NOT included — those render via the customer workbook URL in browser.
-# Trainer-only files (pre-cohort-todos.md, sponsor-prework.md, trainer-guide.md,
+# Trainer-only files (pre-cohort-todos.md, trainer-guide.md,
 # training-architecture.md, cohort-onboarding-email.md) are never in scope.
 
 set -euo pipefail
@@ -36,7 +36,6 @@ SKILLS=(access-control-analysis stride security-tools)
 # Trainer-only files in the training dir — excluded from reachability walk.
 TRAINER_ONLY=(
   pre-cohort-todos.md
-  sponsor-prework.md
   trainer-guide.md
   training-architecture.md
   cohort-onboarding-email.md

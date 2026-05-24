@@ -42,7 +42,17 @@ Short loops sit behind you so far: a bug fix, a plan read. This is the first lon
 
 No Debrief. The send-off is the close. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
-Before you send: pin a clean starting SHA you'll return to in Module 5. Whatever's in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. Ask Claude to commit current state on a feature branch and tell you the short SHA. Keep it noted.
+Before you send, set up the two markers you'll return to in Module 5.
+
+First, the record of this run. Claude Code keeps a full transcript of every session on disk, the complete scrollback, written live and automatically. Find yours now; at Module 5 you'll point a fresh session straight at it.
+
+Ask Claude where the record of this session lives.
+
+{{prompt:ae101-m4-locate-transcript}}
+
+Now pin the starting point. Whatever's in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. The commit also writes the branch name and that transcript path into `task.md`, so a later session recovers this run from disk instead of hunting for it.
+
+Ask Claude to commit current state on a feature branch, record the coordinates, and tell you the short SHA.
 
 {{prompt:ae101-m4-commit-starting-point}}
 
@@ -65,7 +75,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md). It 
 
 ## Next
 
-Module 5 opens with what came back, or what you caught before it went further. When the next slot lands, start a fresh Claude Code session in the same repo. Claude Code stores every session transcript under `~/.claude/projects/` in a folder matching this repo, so the new session can find and read your Module 4 session directly. See [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened). Close the session after the run is done if you want; the trace is on disk either way.
+Module 5 opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session after the run is done if you want; the trace is on disk either way.
 
 ## Bring to Module 5
 
@@ -95,18 +105,18 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.
 - **Prep / bridge timing:** `reading-the-return.md` 5 min at M4 close; Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
-- **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: Nerd reframes — *"enough is a question for M5. The experiment is the point."*
+- **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner. 15-30 minutes is enough for the clues the M5 read needs; engineers run these for hours at work, ambition grows with practice.
 
-**Push-back moves** (trainer delivers by default; Nerd in self-study):
-- **Connections blocker** — student can't name a task. Nerd runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over a long crunch window).
-- **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Nerd: *"which of these will hurt the agent most given the task? fill those."*
-- **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Nerd: *"Three is the budget. Skip the other two — you'll see next module why."*
-- **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode: skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Nerd hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
-- **Phase 3 Huryn-as-lecture** — Claude names the three-block frame before quoting the student's own decision as the Block 2 example. Nerd interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."*
-- **Debrief pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Nerd: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
-- **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Nerd: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
-- **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Nerd: *"the gap IS the finding. Write one line in memory naming what's missing."*
+**Push-back moves** (trainer delivers):
+- **Connections blocker** — student can't name a task. Trainer runs three-candidate conversation with the size rule; pushes against too-small (Claude will crunch it and learn nothing) and too-large (won't cohere over a long crunch window).
+- **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Trainer push: *"which of these will hurt the agent most given the task? fill those."*
+- **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."*
+- **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode: skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
+- **Phase 3 Huryn-as-lecture** — Claude names the three-block frame before quoting the student's own decision as the Block 2 example. Trainer interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."*
+- **Debrief pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
+- **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
+- **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Trainer push: *"the gap IS the finding. Write one line in memory naming what's missing."*
 
 **Watch-fors (cross-phase):**
 - Task sprawl — student brings the whole epic at Connections. Cap during pick; redirect to a sliceable sub-piece that still needs the three load-bearing properties (sustained coherence, requirement-weaving, multi-file reasoning).
@@ -118,7 +128,7 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 - **Phase 1 runs long (>15 min):** task is too big. Force a slice. Better a smaller task that runs the full arc than a large one the student can't scope in 15 min.
 - **Phase 2 runs long (>40 min):** audit surfaced genuinely useful gaps. Let it run; compress Phase 3 to 10 min if needed (Huryn recognition is quick when materials are rich).
 - **Phase 3 runs short (<10 min):** student didn't recognise the frame in their own work. Diagnostic: did Claude quote from their own ADRs or recorded decisions? If not, redo the prompt.
-- **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 Nerd push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
+- **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 trainer push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
 
 **Plug points (trainer):**
 - Student's own task you'd send off rather than nudge bit by bit (Connections pick) — sponsor-stated example tasks by team type (web / back / data / ML) help calibration when the student stalls
@@ -143,13 +153,13 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
-| Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer / Nerd runs three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
-| Phase 2 — *"pick the worst three gaps from the audit, fill those"* | Phase 2 over-fill — student tries to close all five gaps | Trainer / Nerd: *"Three is the budget. Skip the other two — you'll see next module why."* |
-| Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer / Nerd hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
-| Phase 3 — *"Claude quotes one of your own recorded decisions (ADR or otherwise) as the Block 2 example BEFORE naming the three-block frame"* | Phase 3 Huryn-as-lecture — Claude names the three-block frame before showing the student's own decision | Trainer / Nerd interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."* |
-| Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer / Nerd: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
-| Send-off — *"send un-packaged"* | Debrief pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer / Nerd: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
-| Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer / Nerd: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
+| Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer runs three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
+| Phase 2 — *"pick the worst three gaps from the audit, fill those"* | Phase 2 over-fill — student tries to close all five gaps | Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."* |
+| Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
+| Phase 3 — *"Claude quotes one of your own recorded decisions (ADR or otherwise) as the Block 2 example BEFORE naming the three-block frame"* | Phase 3 Huryn-as-lecture — Claude names the three-block frame before showing the student's own decision | Trainer interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."* |
+| Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer push: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
+| Send-off — *"send un-packaged"* | Debrief pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
+| Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
 
 **Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):
 - Boris Cherny / Klaassen / Entis / Uncle Bob references appear only in pre-reads (M5-bound, lines 87–91). All three Klaassen / Entis URLs and the Uncle Bob supplementary need URL-resolves checks before first cohort. Klaassen on `every.to` [practitioner direct, vendor venue] (Every is his employer); Entis-on-Klaassen [practitioner analysis] per byline. Uncle Bob via `supplementary/clean-code-is-steering.md` — verify that file's source references stay current.

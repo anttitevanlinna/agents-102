@@ -81,19 +81,19 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 8 / 5)
 - **Primary Bloom's level:** Apply + Evaluate
-- **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: Nerd makes student name the specific future engineer they'd want this ADR to be useful for.
+- **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: trainer makes student name the specific future engineer they'd want this ADR to be useful for.
 
-**Push-back moves** (trainer delivers in cohort; Nerd delivers only in self-study):
-- **P1 skill invocation ambiguity.** Student points the skill at the feature rather than the access-surface map. Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."*
-- **P2 menu-shopping.** Student picks the easiest-to-harden threat rather than the real one. Nerd: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."*
-- **P2 everything-is-high.** Student wants to harden against three. Nerd: *"which one keeps you awake — or keeps your staff engineer awake on your behalf? That's the one. The others get rejected explicitly in the ADR, which is better than hardening against all of them half-heartedly."*
-- **P3 ADR drift toward compliance voice.** Nerd: *"write it for the engineer who takes over this feature in six months. What would they want to know?"*
-- **P3 ADR missing Alternatives considered.** Nerd: *"the alternatives ARE the reasoning. Without them, the ADR is an assertion, not a decision."*
+**Push-back moves:**
+- **P1 skill invocation ambiguity.** Student points the skill at the feature rather than the access-surface map. Trainer push: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."*
+- **P2 menu-shopping.** Student picks the easiest-to-harden threat rather than the real one. Trainer push: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."*
+- **P2 everything-is-high.** Student wants to harden against three. Trainer push: *"which one keeps you awake — or keeps your staff engineer awake on your behalf? That's the one. The others get rejected explicitly in the ADR, which is better than hardening against all of them half-heartedly."*
+- **P3 ADR drift toward compliance voice.** Trainer push: *"write it for the engineer who takes over this feature in six months. What would they want to know?"*
+- **P3 ADR missing Alternatives considered.** Trainer push: *"the alternatives ARE the reasoning. Without them, the ADR is an assertion, not a decision."*
 
 **Watch-fors:**
 - STRIDE output overwhelms the student. Normal on first pass. The teaching is *reject most*, not *address all*.
-- Student argues with a threat the skill surfaced because they'd already thought about it. Good — that IS the team-kit feed. Nerd: *"note it in the ADR's Alternatives considered — 'threat X considered, mitigated by Y which already exists.'"*
-- Student says *"STRIDE doesn't really fit this feature."* Might be right (low-risk internal service) or might be avoidance. Nerd: *"name one surface and one STRIDE category — if neither category applies, you're right; if one does, let's pick."*
+- Student argues with a threat the skill surfaced because they'd already thought about it. Good — that IS the team-kit feed. Trainer push: *"note it in the ADR's Alternatives considered — 'threat X considered, mitigated by Y which already exists.'"*
+- Student says *"STRIDE doesn't really fit this feature."* Might be right (low-risk internal service) or might be avoidance. Trainer push: *"name one surface and one STRIDE category — if neither category applies, you're right; if one does, let's pick."*
 - ADR home not resolved — sponsor's pre-engagement contract hadn't named one. Default to `docs/adr/` and flag at Debrief.
 
 **Plug points:**
@@ -116,8 +116,8 @@ The next exercise authors a test-strategy skill and invokes it on this feature, 
 
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
-| Phase 1 *"invoke STRIDE on the access-surface map"* | P1 skill-invocation ambiguity — student points the skill at the feature rather than the map | Trainer / Nerd: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."* |
-| Phase 2 *"name the worst realistic case, pick the one threat"* | P2 menu-shopping — student picks the easiest threat, not the real one | Trainer / Nerd: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."* |
-| Phase 3 *"write the ADR in repo convention with Alternatives considered"* | P3 ADR drift toward compliance voice OR Alternatives section missing | Trainer / Nerd: *"write it for the engineer who takes over this feature in six months. The alternatives ARE the reasoning — without them, the ADR is an assertion, not a decision."* |
+| Phase 1 *"invoke STRIDE on the access-surface map"* | P1 skill-invocation ambiguity — student points the skill at the feature rather than the map | Trainer push: *"the map is the input — STRIDE runs against surfaces the map identified, not raw code."* |
+| Phase 2 *"name the worst realistic case, pick the one threat"* | P2 menu-shopping — student picks the easiest threat, not the real one | Trainer push: *"name the worst realistic incident first. If your pick doesn't match that story, you're optimising for effort, not for risk."* |
+| Phase 3 *"write the ADR in repo convention with Alternatives considered"* | P3 ADR drift toward compliance voice OR Alternatives section missing | Trainer push: *"write it for the engineer who takes over this feature in six months. The alternatives ARE the reasoning — without them, the ADR is an assertion, not a decision."* |
 
 **Scratch path:** threat list lands alongside Ex1's surface map in the same Claude-chosen temp directory. Outside the repo; no gitignore concern. See Ex1 maintainer note on the `/tmp`-tier vs `.claude/memory/`-tier pedagogy.

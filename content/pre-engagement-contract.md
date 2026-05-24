@@ -6,10 +6,10 @@ Five conventions the sponsor names before Day 1. Where the sponsor has stated a 
 
 Each of the five sections has two slots:
 
-- **Sponsor's convention.** Filled in from the sponsor-prework worksheet. If empty, the sponsor named no convention.
-- **Standard default.** What ships when the sponsor has none. Not a fallback, a real working answer.
+- **Sponsor's convention.** Filled in by the trainer if the sponsor named one in an onboarding conversation. Empty by default.
+- **Standard default.** What ships when no sponsor convention is named. Not a fallback, a real working answer.
 
-The trainer reads the relevant section at the module blocker. The student sees a populated answer, not a placeholder. In optional self-study, the Agentic Nerd reads the same file at the same moment.
+The trainer reads the relevant section at the module blocker. The student sees a populated answer, not a placeholder.
 
 Engineers override the sponsor default in the room. Overrides are collected per-cohort and handed back to the sponsor at close.
 
@@ -98,6 +98,6 @@ Engineers override the sponsor default in the room. The trainer captures overrid
 
 ## Provenance
 
-This contract is populated from the sponsor's answers on the AE101 sponsor-prework worksheet. The sponsor fills the worksheet in 15–20 minutes; ops copies their answers into the five sections above. Standard defaults stay in place when the sponsor leaves a slot empty.
+This contract ships with standard defaults filled. If the sponsor names a convention during onboarding (sales call, contract signature conversation, or any pre-cohort chat), the trainer adds it to the relevant section before delivery. Standard defaults stay in place when no sponsor convention is named.
 
 When no sponsor exists yet (asset preview, internal demo, dry-run cohort), the file ships with all sponsor-convention slots empty and the standard defaults engaged. The cohort has a working contract from defaults alone.

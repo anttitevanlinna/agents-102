@@ -90,7 +90,7 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 
 **Time:** 12–15 min at presentation pace.
 
-**Delivery mode:** In-room close after Debrief. Self-study Nerd reads the same content as the M5 Conclusions.
+**Delivery mode:** In-room close after Debrief.
 
 **Source verification — MUST DO before first cohort. Every URL and number below is currently sourced from internal OODA runs and observation files; each must be opened against the original and confirmed.**
 

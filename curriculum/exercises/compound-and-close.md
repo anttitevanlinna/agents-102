@@ -86,7 +86,7 @@ You can now clear. What you stored may or may not help you in future sessions. L
 - **Three-block memory** — Paweł Huryn (productcompass.pm). Level 2 single-experiment. Source: `continuous-research/insights.md` lines 1051–1065. URL: `productcompass.pm/p/claude-md-snippets` `[practitioner direct]`. Materials seeded across the three M1 exercises; the three-block *frame* earns its name in M4 when the materials get rearranged.
 
 **Watch-fors:**
-- **Retro confabulation.** Claude's 3–5 line summary name-drops moments without quoting. Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
+- **Retro confabulation.** Claude's 3–5 line summary name-drops moments without quoting. Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
 - **MCP install gate.** Corporate tenant blocks connector install. Tenant-admin fallback named per tracker in `reference/mcp-and-connectors.md`. Do not treat as blocker — fallback path always exists.
 
 **Decision points:**
@@ -94,7 +94,7 @@ You can now clear. What you stored may or may not help you in future sessions. L
 
 **Plug points:**
 - Sponsor-stated tracker (Linear / Jira / GitHub Issues / other).
-- Push-back moves at retro and MCP gate (trainer covers in cohort; Nerd covers only in self-study).
+- Push-back moves at retro and MCP gate (trainer delivers).
 
 **Arc:**
 - Picks up from: `fix-tests-first` — the rule seeded at that exercise is the file the retro rewrites.
@@ -109,11 +109,11 @@ You can now clear. What you stored may or may not help you in future sessions. L
 
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
-| Compound — *"Claude reviews the whole session, writes from evidence, you push back"* | Retro confabulation — Claude name-drops moments without quoting | Trainer / Nerd push: *"quote the specific session moment that made you add rule X. If you can't, take it out."* |
+| Compound — *"Claude reviews the whole session, writes from evidence, you push back"* | Retro confabulation — Claude name-drops moments without quoting | Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."* |
 | Compound — *"integrate, don't append"* | Self-charity on rule self-review — Claude under-flags weak rules in its own summary | Body callout below the prompt names the push-back; if the student rubber-stamps, push: *"read each rule aloud — does it quote a specific moment, or just summarize a theme?"* |
 | MCP — *"close the ticket via the agent, not the tracker UI"* | MCP install gate — corporate tenant blocks connector install | Tenant-admin fallback per tracker; path 3 (manual paste of Claude-written close-out) is always available |
 | MCP — *"one connector, two actions (read + update)"* | Connector install exceeds timebox — second-connector debugging eats the slot | Timebox callout in body names this; trainer calls path 3 if install bleeds past the budget |
-| Close-out — *"write the close-out then push back if stiff"* | Close-out rubber-stamp — student ships the agent's first draft without reading | Trainer / Nerd push: *"read the close-out aloud — does it sound like how your team writes ticket comments?"* |
+| Close-out — *"write the close-out then push back if stiff"* | Close-out rubber-stamp — student ships the agent's first draft without reading | Trainer push: *"read the close-out aloud — does it sound like how your team writes ticket comments?"* |
 
 **Accept-with-mitigation** (per `check_pedagogy.md` §50 and §51 — judge findings carried as design-intent, not blockers):
 

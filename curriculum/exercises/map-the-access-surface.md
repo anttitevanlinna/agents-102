@@ -85,15 +85,15 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 **Meta (trainer):**
 - **Time:** 20 minutes (7 / 3 / 7 / 3)
 - **Primary Bloom's level:** Apply + Evaluate
-- **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: Nerd pushes Phase 3 harder.
+- **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: trainer pushes Phase 3 harder.
 
-**Push-back moves** (trainer delivers in cohort; Nerd delivers only in self-study):
-- **P1 blocker — student can't point Claude at the feature.** Nerd runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*
-- **P1 skill-invocation confusion.** Nerd: *"the skill was installed as a personal skill at prework; Claude Code auto-discovers it by name. You don't need a path. Just name the feature in one sentence and let the skill run as a subagent."*
-- **P2 skip (student starts typing immediately after skill finishes).** Nerd interrupts: *"three minutes, read the map first. The delta is the teaching moment, not the skill output."*
-- **P3 generic delta entry.** Nerd: *"is that reason true for this codebase, or true for any codebase? sharpen to something your codebase has that a generic stack wouldn't."*
-- **P3 zero misses.** Student reports the skill caught everything. Nerd: *"that's rare. Look again at the part of your feature you'd describe as 'the weird bit.' Often that's where the skill's generic pass is thinnest."*
-- **P4 rush.** Student declares done in 15 min. Nerd: *"read the map as if you were the engineer who didn't write the feature. Does it read?"*
+**Push-back moves:**
+- **P1 blocker — student can't point Claude at the feature.** Trainer runs a three-question conversation: *"which file is the feature mostly in?"* → *"which files does it call or get called by?"* → *"is there an external boundary — webhook, API, queue?"*
+- **P1 skill-invocation confusion.** Trainer push: *"the skill was installed as a personal skill at prework; Claude Code auto-discovers it by name. You don't need a path. Just name the feature in one sentence and let the skill run as a subagent."*
+- **P2 skip (student starts typing immediately after skill finishes).** Trainer interrupts: *"three minutes, read the map first. The delta is the teaching moment, not the skill output."*
+- **P3 generic delta entry.** Trainer push: *"is that reason true for this codebase, or true for any codebase? sharpen to something your codebase has that a generic stack wouldn't."*
+- **P3 zero misses.** Student reports the skill caught everything. Trainer push: *"that's rare. Look again at the part of your feature you'd describe as 'the weird bit.' Often that's where the skill's generic pass is thinnest."*
+- **P4 rush.** Student declares done in 15 min. Trainer push: *"read the map as if you were the engineer who didn't write the feature. Does it read?"*
 
 **Watch-fors:**
 - Feature sprawl from Connections carries in — student can't point the skill at a single feature. Redirect to a sliceable sub-part.

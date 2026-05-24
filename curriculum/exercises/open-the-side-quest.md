@@ -45,8 +45,8 @@ You forked a sibling worktree for the quality side, opened two Claude Code sessi
 
 **Plug points:** student's Module 2 inherited repo (main window); worktree directory name (default `../<repo>-m3-quality`, sponsor or student override allowed); fresh branch name on the side (default `m3/quality`).
 
-**Push-back moves** (trainer in cohort, Nerd in self-study):
-- Student opens both sessions in the same working directory. Trainer / Nerd: *"one window per worktree, not two windows on the same folder. The later write wins; the earlier session goes sideways."* Source: `multi-session-git.md` rule (one session per working directory).
+**Push-back moves:**
+- Student opens both sessions in the same working directory. Trainer push: *"one window per worktree, not two windows on the same folder. The later write wins; the earlier session goes sideways."* Source: `multi-session-git.md` rule (one session per working directory).
 - Student opens a shell and runs `git worktree add` themselves. Redirect to conversation: the fork happens via Claude in the main lane; AE101's agentic-end-to-end rule holds.
 - Student forgets to copy `CLAUDE.local.md` and `.claude/memory/` into the sibling. The fork prompt names the copy step; if it gets skipped, the side-quest session has no personal rules loaded. Recovery: ask Claude in the side lane to copy them from the main repo.
 

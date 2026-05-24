@@ -97,18 +97,18 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 1h50 (Connections 10 / Open the side quest 5 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h50 in-class. Self-study follow-along runs comparably.
 - **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; optional OWASP deeper scan 20 min.
-- **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: Nerd surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
+- **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: trainer surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (content folder, compounding-artifact split, skills install, no training-dir state): canonical in `training-architecture.md` §Material distribution / §Working directory model / §Rule files / §Skills. Not restated here. M3-specific: the content folder holds three curated skills (`access-control-analysis` + `stride` + `security-tools`); the authored test-strategy skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with a sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 
-**Push-back moves** (trainer delivers by default; Nerd in self-study):
-- **Connections blocker** — student can't pick a feature. Nerd runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
-- **Ex1 passivity** — student reads access-control output and moves on without deciding. Nerd: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."*
-- **Ex2 menu-shopping** — student picks a STRIDE threat because it's easiest, not because it's real. Nerd: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."*
-- **Ex2 missing ADR** — student decides but doesn't write. Nerd: *"write the decision before you forget why. One paragraph, alternatives considered, the constraint you picked."*
-- **Ex3 question-dump** — Claude dumps all five authoring questions at once. Nerd reminds student to push back: *"one at a time — answer this one, ask the next."*
-- **Ex3 default-acceptance on first SKILL.md** — student ships Claude's first draft. Nerd runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."*
-- **Ex3 invocation skip** — student ships without invoking on the feature. Nerd: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"*
-- **Debrief generic rule** — Claude writes "always use curated skills" or similar boilerplate. Nerd: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"*
+**Push-back moves:**
+- **Connections blocker** — student can't pick a feature. Trainer runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
+- **Ex1 passivity** — student reads access-control output and moves on without deciding. Trainer push: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."*
+- **Ex2 menu-shopping** — student picks a STRIDE threat because it's easiest, not because it's real. Trainer push: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."*
+- **Ex2 missing ADR** — student decides but doesn't write. Trainer push: *"write the decision before you forget why. One paragraph, alternatives considered, the constraint you picked."*
+- **Ex3 question-dump** — Claude dumps all five authoring questions at once. Trainer reminds student to push back: *"one at a time — answer this one, ask the next."*
+- **Ex3 default-acceptance on first SKILL.md** — student ships Claude's first draft. Trainer runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."*
+- **Ex3 invocation skip** — student ships without invoking on the feature. Trainer push: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"*
+- **Debrief generic rule** — Claude writes "always use curated skills" or similar boilerplate. Trainer push: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"*
 
 **Watch-fors (cross-phase):**
 - Feature sprawl — student brings the whole epic. Cap at Connections; redirect to a sliceable sub-part.
@@ -118,7 +118,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 - Team-worthy flag drifts to generic — student frames the team-worthy decision as "yes, every team should know about STRIDE." Push: name a codebase-specific call (an auth pattern, an ADR convention, a verifier) — not a universal claim.
 
 **Decision points:**
-- **Ex1 runs long (>25 min):** access-control skill is finding a lot — let it, compress Ex2's decision beat to 15 min by making the Nerd name the worst case more aggressively.
+- **Ex1 runs long (>25 min):** access-control skill is finding a lot — let it, compress Ex2's decision beat to 15 min by making the trainer name the worst case more aggressively.
 - **Ex2 runs long (>25 min):** STRIDE surfacing multiple real threats. Pick the hardening that will inform Ex3's test strategy (they wire together). Compress Ex3's conversation phase, not the invocation-and-self-critique.
 - **Ex3 finishes under 20 min:** student accepted defaults. Run the self-critique move as a rescue — *"ask the skill what's weakest; push back; re-invoke."* Turn the default-acceptance into the teaching moment.
 - **Whole room mood below 7:** earned-trust isn't landing. Check: did the hardening decision in Ex2 feel real (a call the student would defend) or theatrical (a menu pick)? Did the test-strategy skill's invocation surface codebase-specific things (real) or generic pyramid wisdom (theatrical)? If theatrical, the feature was probably too small.
@@ -128,12 +128,12 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 - Sponsor-stated ADR home (Ex2) — `docs/adr/NNNN-slug.md` is the default; sponsor's actual convention overrides if different
 - Sponsor-stated team-kit home (for skill promotion when teams choose it) — pre-engagement contract surfaces this if the team has one. M3's authored skill ships personal at `~/.claude/skills/test-strategy/` regardless. Sponsor non-answer needs no spin-up; cohort may emerge a team-kit home spontaneously at any module and log it as override.
 - Sponsor-named test framework / mocking policy (Ex3 authoring conversation) — what Claude asks the student to encode; student answers from the codebase, not generic
-- Push-back moves at each rubber-stamp risk (trainer covers in cohort; Nerd covers only in self-study)
+- Push-back moves at each rubber-stamp risk
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day):
 1. **Invokes a curated security skill (access-control-analysis or STRIDE) as a subagent on a real PR before review.** Falsifiable: the PR review shows a comment quoting the skill's structured output, or the student's commit message references the surface delta the skill flagged.
 2. **Writes an ADR for one architectural decision under named pressure**, with alternatives + the constraint that picked the winner, in the repo's ADR convention. Falsifiable: a new file at the sponsor-stated ADR path with the four standard sections (context, decision, alternatives, constraint).
-3. **Invokes the authored test-strategy skill on a feature without being prompted to.** Falsifiable: scrollback of a normal working session shows *"invoke the test-strategy skill on this"* (or equivalent) without a teacher / Nerd cue earlier in the session.
+3. **Invokes the authored test-strategy skill on a feature without being prompted to.** Falsifiable: scrollback of a normal working session shows *"invoke the test-strategy skill on this"* (or equivalent) without a teacher cue earlier in the session.
 
 **Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact is a contract row with stable identifier + producing prompt + consuming module):
 
@@ -147,12 +147,12 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
-| Ex1 *"name the surface delta"* | Ex1 passivity — student reads access-control output and moves on without naming a delta | Trainer / Nerd push: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."* |
-| Ex2 *"pick THE threat worth hardening, write the ADR"* | Ex2 menu-shopping — student picks a threat because it's easy, not because it's real | Trainer / Nerd push: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."* |
-| Ex3 *"one question at a time"* (Claude asks; student answers from codebase) | Ex3 question-dump — Claude dumps all five authoring questions at once | Trainer / Nerd reminds student to push back: *"one at a time — answer this one, ask the next."* |
-| Ex3 *"ask the skill to disclose its weakest part before shipping"* | Ex3 default-acceptance on first SKILL.md — student ships Claude's first draft | Trainer / Nerd runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."* |
-| Ex3 *"invoke on the feature you just security-tested"* | Ex3 invocation skip — student ships without invoking on the feature | Trainer / Nerd: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"* |
-| Debrief *"name a branch, not a rule"* | Debrief generic rule — Claude writes "always use curated skills" or boilerplate | Trainer / Nerd: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"* (escape hatch IS the forcing function — restated as recovery) |
+| Ex1 *"name the surface delta"* | Ex1 passivity — student reads access-control output and moves on without naming a delta | Trainer push: *"which surface did it flag that you'd underweighted? which did it miss that you know matters? name one of each."* |
+| Ex2 *"pick THE threat worth hardening, write the ADR"* | Ex2 menu-shopping — student picks a threat because it's easy, not because it's real | Trainer push: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."* |
+| Ex3 *"one question at a time"* (Claude asks; student answers from codebase) | Ex3 question-dump — Claude dumps all five authoring questions at once | Trainer reminds student to push back: *"one at a time — answer this one, ask the next."* |
+| Ex3 *"ask the skill to disclose its weakest part before shipping"* | Ex3 default-acceptance on first SKILL.md — student ships Claude's first draft | Trainer runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."* |
+| Ex3 *"invoke on the feature you just security-tested"* | Ex3 invocation skip — student ships without invoking on the feature | Trainer push: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"* |
+| Debrief *"name a branch, not a rule"* | Debrief generic rule — Claude writes "always use curated skills" or boilerplate | Trainer push: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"* (escape hatch IS the forcing function — restated as recovery) |
 
 **Frameworks riffed on (attributed in lecture):**
 - **STRIDE** — Loren Kohnfelder & Praerit Garg (1999 Microsoft memo), sharpened by Adam Shostack (*Threat Modeling: Designing for Security*, 2014). Curated skill ships in `content/skills/stride/`.

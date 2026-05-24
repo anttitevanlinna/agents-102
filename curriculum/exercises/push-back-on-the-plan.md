@@ -129,14 +129,14 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - Student's own backlog task (surfaced at P1)
 - Sponsor-stated rules home for the Debrief's Compound step
 
-**Push-back moves** (trainer delivers by default; Nerd in self-study):
-- **P1:** if student can't surface a fitting task, Nerd runs the three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
-- **P3 rubber-stamp:** if student approves before 60s with no push-back messages in scrollback, Nerd invokes the forcing-function: *"pick keep planning with feedback. Send one soft item — one step that reads clean but skips something."*
-- **P3 performative:** if push-back messages appear in under 3 min without step numbers or specific concerns, Nerd asks for specificity — *"which step, which words? say the thing you'd want a senior reviewer to catch."*
-- **P3 softening:** if Claude's regenerated plan is no sharper than the original on a flagged step, Nerd: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
+**Push-back moves:**
+- **P1:** if student can't surface a fitting task, trainer runs the three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
+- **P3 rubber-stamp:** if student approves before 60s with no push-back messages in scrollback, trainer invokes the forcing-function: *"pick keep planning with feedback. Send one soft item — one step that reads clean but skips something."*
+- **P3 performative:** if push-back messages appear in under 3 min without step numbers or specific concerns, trainer asks for specificity — *"which step, which words? say the thing you'd want a senior reviewer to catch."*
+- **P3 softening:** if Claude's regenerated plan is no sharper than the original on a flagged step, trainer push: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
 - **P3 senior refusal:** if student defends the plan as tight and refuses to produce forced push-backs, accept it — ask for a one-line defense per axis instead of push-backs on auto-pilot. The defense IS the read.
-- **P4 tab-away:** fast operators will tab away during execution. Nerd stays silent unless Claude pauses and the student misses the pause.
-- **P5:** stay silent until Claude names the shape. Then the Nerd says the label — "plan-mode approval inflation" — one line. The corollary (*find is easier than judge*) is in the exercise body and lands the non-obvious beat.
+- **P4 tab-away:** fast operators will tab away during execution. Trainer stays silent unless Claude pauses and the student misses the pause.
+- **P5:** stay silent until Claude names the shape. Then the trainer says the label — "plan-mode approval inflation" — one line. The corollary (*find is easier than judge*) is in the exercise body and lands the non-obvious beat.
 
 **Arc:**
 - Picks up from: M1's Plan → Work → Review → Compound loop, run on a 60-min trivial bug. M2 runs the same loop at deeper Plan scope.

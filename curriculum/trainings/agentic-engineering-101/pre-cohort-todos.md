@@ -6,6 +6,8 @@
 
 Open decisions before the first paying cohort. Module files carry zero TODOs; this is the single tracking surface.
 
+**Item types.** Bullets are open decisions or tactical fixes by default, something has to happen before cohort. Prefix a bullet with **`[watch]`** to mark *currently accepted, no pre-cohort action*, the behaviour may bite us, but we've decided to ship as-is and see. Watch items convert to action items if the cohort run surfaces the failure; otherwise they get deleted like any other closed bullet. Don't let watches accumulate as a dustbin: a watch with no named firing condition is procrastination dressed up.
+
 Sim sweeps and platform-capability checks are not tracked here. The `curriculum-pre-ship-audit` skill auto-fires on touched files; `check_platform_and_boundaries.md` fires on platform claims at content-time. **Per-class verdicts (PASS / REVISE / grandfathered) live in each module's own `**Quality:**` block**, `update-quality.sh` stamps both PASS and REVISE with the instance-JSON path so a successor can grep Quality blocks for state without consulting this file.
 
 ## Per-file specific concerns (not caught by auto-fire)
@@ -15,7 +17,8 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`the-loop-has-a-name.md`**, custom-persona sim: CTO (vendor-plug risk on Ramp/Intercom anchoring), senior engineer (recognition vs remedial), engineer who never went past M1–M6 (does the long-running-shapes callout grow a need-to-try-now itch).
 - **`the-loop-has-a-name.md`**, `/schedule` and `/loop` capability recheck via `claude-code-guide` within two weeks of any cohort date. Delivery-time exercise, not a content-time check.
 - **`arc-retrospective.md`**, confirm Agent-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route through main conversation with the same quote rule.
-- **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for Nerd's M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
+- **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
+- **`[watch]` `extract-the-task-shaping-rule-2` save-path ambiguity (M2).** Prompt asks Claude to "propose two-three plausible paths" for the rules file and pick one. Codesearch M2 dry-run (2026-05-24) had the agent integrate the new rules INTO the existing `CLAUDE.local.md` (created at M1's compound), a legit "integrate, don't append" reading, but it means `m2_rules_file` and `m2_claude_local_md` in run-m2.sh's state.json point at the same path. Lemmings runs typically save to a distinct file. **Accepted as-is for first cohort.** Fires if any downstream module prompt (M3 sharpen-skill, M4 walk-and-send-off, M5 diagnose-and-resend, M6 spot-gaps) loads "the rules file" and `CLAUDE.local.md` as separate inputs and silently de-dupes or overwrites, observe whether any module behaves differently when the two paths collapse to one.
 
 ### From M5+M6 pre-ship audit 2026-05-15
 
@@ -44,8 +47,6 @@ Landed 2026-05-22: M5 plan.md disambiguation (`diagnose-and-resend.md:79` *"not 
 - **M6, Phase 2 pacing.** Learner noted (M6 10:28Z) *"Phase 2 takes quite long."* No body change made, per the steer-don't-pre-empt rule (compounded 2026-05-22), a pre-emption-shaped "you'll be here a while" callout would rot the moment the underlying mechanics change. Decision: wait for first-cohort delivery; if pacing pressure still surfaces, add a *steering* callout (notice → ask Claude what's slow → relax the constraint) rather than the expectation-setting line. Source: [M6 raw, 10:28Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md).
 
 ### Site / renderer (not curriculum body)
-
-- **M3, two-window section side-by-side layout (first-cohort observation, not pre-cohort surgery).** Module names two windows + concurrent flow textually (`exercises/open-the-side-quest.md:25-27`). Renderer change deferred, textual framing carries the meaning; first-cohort signal will tell whether the room misses the visual reinforcement. If reinstated post-cohort: when a module contains two `**Session**` widgets in sequence with different names, render their following exercise blocks as a two-column layout. Touches `site/layouts/curriculum.js` + `site/layouts/curriculum.css`. Source: [M3 raw, 11:54Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M3.md).
 
 - **M6, italic font readability.** Learner reported (M6 10:05Z) *"italic font is hard to read at the moment. Needs size bump or other treatment."* CSS change in `site/layouts/curriculum.css`, bump italic size or restyle (heavier weight, different colour, underline). Touches all italic prose, not just M6. Source: [M6 raw, 10:05Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md).
 
@@ -92,14 +93,6 @@ Source: M1 + M2 + M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/m
 ### Cross-module / meta
 
 - **M3 + M4 orchestrators still report sentinel-PASS without per-turn artifact assertions.** M1 + M2 closed in `918b90d` via `assert_turn()` T1–T9 in `run-m1.sh` / `run-m2.sh`. `run-m3.sh` and `run-m4.sh` are still parallel race-loop / sentinel-completion gated, no per-turn assertions. The M4 Huryn-additions silent-drop class is uncaught at the runner layer; M3 ADR drops would be too if they recurred. Engineering item for `curriculum/evals/mechanical/tmux-runner/`, port the M1/M2 assertion shape into M3 + M4.
-
-## Embedded TODOs swept from M1-M3 files (2026-05-22)
-
-Four-bucket sweep (modules + prework + onboarding / exercises / lectures + reference + supplementary / prompt-registry) routed the following items out of their host files. Module / exercise / lecture maintainer blocks are now pointer-only ("Pre-cohort open items: pre-cohort-todos.md"); the punchlist below is the canonical home.
-
-- **Sponsor-prework post-first-cohort companion: cohort-close memo template.** ("what your engineers said about the four homes"), companion asset to ship after Cohort 1 informs the shape. Sponsor-facing close-out artifact, not the trainer-internal close. Author window opens after first cohort runs. Source: swept from `sponsor-prework.md:132`.
-
-- **`git worktree` mental-model framing, Cohort 1 reassess.** Does AE101 want `git worktree` as the default multi-session mental model, or as an advanced move taught only after students have landed the single-session loop? Current stance: optional homework (`reference/multi-session-git.md`), not a prerequisite. Reassess after Cohort 1 reports whether students hit the worktree wall before reading it. Source: swept from `reference/multi-session-git.md:100`.
 
 ## Cross-cutting ops
 

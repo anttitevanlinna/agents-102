@@ -68,7 +68,7 @@ AE101 ships three curated skills in the content tarball (build whitelist `SKILLS
 
 All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill.
 
-The optional `agentic-nerd` host skill (self-study facilitator) installs only when a cohort runs self-study or hybrid. Cohort-default delivery does not install it.
+The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-study facilitator the engaged self-study student can install. Cohort delivery does not install or depend on it; it is not part of the curated three above.
 
 ## Prework
 
@@ -76,7 +76,7 @@ Prework is agentic end-to-end. The student unzips the content folder, points the
 
 ## Replay
 
-Repo change mid-training is supported, not remedial. The student replays M1 → M(current) on the new repo in an evening. Replay is artifact regeneration, not re-learning, the pedagogy already landed. The host (trainer in cohort, Nerd in self-study) fast-paths replay.
+Repo change mid-training is supported, not remedial. The student replays M1 → M(current) on the new repo in an evening. Replay is artifact regeneration, not re-learning, the pedagogy already landed. The trainer fast-paths replay.
 
 Every module's exercises must produce artefacts deterministically enough to replay. Modules with a room-scale moment (M7 deliberation, optional) or a multi-day wait (M5 send-off) carry an explicit replay-variant path.
 

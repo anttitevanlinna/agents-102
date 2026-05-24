@@ -89,20 +89,20 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Session runtime:** 1h45 (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
 - **Prep timing:** backlog-task surfacing 10 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
-- **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: Nerd surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
+- **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location; the four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.
 
-**Push-back moves** (trainer delivers by default; Nerd in self-study):
-- **P1 blocker** — student can't surface a fitting task. Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
-- **P3 rubber-stamp** — student approves under 60s with no push-back messages. Nerd: *"pick keep planning with feedback — send one soft item before approving."*
-- **P3 generic push-back** — messages lack step numbers or specific concerns. Nerd: *"which step, which words? say the thing you'd want a senior reviewer to catch."*
-- **P3 softening on regeneration** — Claude acknowledges the push-back but re-softens the flagged step in the revised plan. Nerd: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
-- **P4 walk-skip** — student calls the second read done after 2–3 questions. Nerd: *"let the walk-down run until it's out of branches; you don't decide when it's finished."*
-- **P4 auto-accept** — student accepts every recommended answer without correcting any. Nerd: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."*
-- **P5 deflection** — student reports *"the second read did all the work, my push-back was pointless."* Nerd: *"quote one thing your push-back caught that the second read would have missed. You're reading differently; different isn't worse."*
-- **P5 naming** — if Claude frames the pattern as *"use plan mode carefully,"* Nerd pushes for structural naming: *"the pattern is human read → push-back → agent walk-down → approve. Name the pairing, not the moral."*
-- **Debrief** — self-compounding. If Claude writes a generic rubric, Nerd: *"name a pattern specific to THIS codebase, from THIS session's evidence — what branch did grill surface that a first read would miss on this repo?"*
+**Push-back moves:**
+- **P1 blocker** — student can't surface a fitting task. Trainer runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
+- **P3 rubber-stamp** — student approves under 60s with no push-back messages. Trainer: *"pick keep planning with feedback — send one soft item before approving."*
+- **P3 generic push-back** — messages lack step numbers or specific concerns. Trainer: *"which step, which words? say the thing you'd want a senior reviewer to catch."*
+- **P3 softening on regeneration** — Claude acknowledges the push-back but re-softens the flagged step in the revised plan. Trainer: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
+- **P4 walk-skip** — student calls the second read done after 2–3 questions. Trainer: *"let the walk-down run until it's out of branches; you don't decide when it's finished."*
+- **P4 auto-accept** — student accepts every recommended answer without correcting any. Trainer: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."*
+- **P5 deflection** — student reports *"the second read did all the work, my push-back was pointless."* Trainer: *"quote one thing your push-back caught that the second read would have missed. You're reading differently; different isn't worse."*
+- **P5 naming** — if Claude frames the pattern as *"use plan mode carefully,"* trainer pushes for structural naming: *"the pattern is human read → push-back → agent walk-down → approve. Name the pairing, not the moral."*
+- **Debrief** — self-compounding. If Claude writes a generic rubric, trainer: *"name a pattern specific to THIS codebase, from THIS session's evidence — what branch did grill surface that a first read would miss on this repo?"*
 
 **Watch-fors (cross-phase):**
 - Lecture over-runs to 15+ min. Cut the three-pressures section to 60 seconds if tight; the exercise teaches them.
@@ -119,7 +119,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 - Student's own repo (carried from M1) — sponsor-stated example repos by team type if a student arrives without one suitable
 - Student's own backlog task (surfaced in M2 prework) — sponsor-stated tracker (Linear / Jira / GitHub Issues) seeded the surfacing prompt
 - Sponsor-stated rules home for the Compound step — auto-loaded options are `./CLAUDE.local.md` (repo-personal) and `~/.claude/CLAUDE.md` (cross-repo); anything else, including `~/.claude/memory/<file>.md` or a notes folder, only loads when a prompt names the path or an `@import` line inside an auto-loaded `CLAUDE.md` pulls it in; sponsor's preferred notes location overrides if different
-- Push-back moves at P3 (trainer covers in cohort; Nerd covers only in self-study)
+- Push-back moves at P3
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Enters plan mode (Shift+Tab cycle) on a non-trivial multi-file task before approving** anything Claude writes. Falsifiable: scrollback of a working session shows the mode-cycle move on a task that touches two or more files.
@@ -138,15 +138,15 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
-| P1 — *"surface a multi-file task that fits the criteria"* | P1 blocker — student can't find a fitting task | Trainer / Nerd runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters. |
-| P3 — *"push back twice via keep-planning-with-feedback"* | P3 rubber-stamp — student approves under 60s with no push-back | Trainer / Nerd: *"pick keep-planning-with-feedback — send one soft item before approving."* |
-| P3 — *"the push-back names a step number AND a specific word"* | P3 generic push-back — messages lack specifics | Trainer / Nerd: *"which step, which words? say the thing you'd want a senior reviewer to catch."* |
-| P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration — Claude acknowledges and re-softens | Trainer / Nerd: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."* |
-| P4 — *"let the walk-down run until it's out of branches"* | P4 walk-skip — student calls the second read done after 2–3 questions | Trainer / Nerd: *"let the walk-down run until it's out of branches; you don't decide when it's finished."* |
-| P4 — *"reject at least one recommended answer"* | P4 auto-accept — student accepts every recommended answer | Trainer / Nerd: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."* |
-| P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer / Nerd: *"making the plan good IS the work; recognising a good plan is the skill this module installs."* |
-| P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection — student reports *"the second read did all the work"* | Trainer / Nerd: *"quote one thing your push-back caught that the second read would have missed."* |
-| Compound — *"save the rule only if one earned itself"* | Compound skip — student skips the compound when one DID earn itself | Trainer / Nerd: *"did any branch from the second read change how you'd read the next plan? if yes, integrate it now; if no, the Bridge is next."* |
+| P1 — *"surface a multi-file task that fits the criteria"* | P1 blocker — student can't find a fitting task | Trainer runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters. |
+| P3 — *"push back twice via keep-planning-with-feedback"* | P3 rubber-stamp — student approves under 60s with no push-back | Trainer push: *"pick keep-planning-with-feedback — send one soft item before approving."* |
+| P3 — *"the push-back names a step number AND a specific word"* | P3 generic push-back — messages lack specifics | Trainer push: *"which step, which words? say the thing you'd want a senior reviewer to catch."* |
+| P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration — Claude acknowledges and re-softens | Trainer push: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."* |
+| P4 — *"let the walk-down run until it's out of branches"* | P4 walk-skip — student calls the second read done after 2–3 questions | Trainer push: *"let the walk-down run until it's out of branches; you don't decide when it's finished."* |
+| P4 — *"reject at least one recommended answer"* | P4 auto-accept — student accepts every recommended answer | Trainer push: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."* |
+| P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer push: *"making the plan good IS the work; recognising a good plan is the skill this module installs."* |
+| P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection — student reports *"the second read did all the work"* | Trainer push: *"quote one thing your push-back caught that the second read would have missed."* |
+| Compound — *"save the rule only if one earned itself"* | Compound skip — student skips the compound when one DID earn itself | Trainer push: *"did any branch from the second read change how you'd read the next plan? if yes, integrate it now; if no, the Bridge is next."* |
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
 - **Plan mode** (Anthropic Claude Code). Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop). Push-back via *keep planning with feedback* at the approval prompt — chat-based, the exercise's path. Reference: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`.

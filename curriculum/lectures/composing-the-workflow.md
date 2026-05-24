@@ -26,7 +26,7 @@ This is one level higher in abstraction and composition. Compound engineering al
 
 **Attribution-cap exception (per `check_writing.md` rule 11):** The lecture body names seven practitioners (Klaassen / Cherny / Pocock / Cognition / Amp / Ronacher in P2's field walk + Dino in P3 as the worked-example pointer), each once. Rule 11 caps repetition of one practitioner; this lecture's content IS the lineage walk + worked-example pointer, so each named once is the artefact's shape. Future judges should not re-flag.
 
-**Delivery mode:** Read aloud in-room at the closer area, or skipped if cohort is tight on time (the supplementary is the load-bearing piece; the lecture is the pointer). Self-study Nerd reads it as the bridge from M6 module work to the supplementary reading.
+**Delivery mode:** Read aloud in-room at the closer area, or skipped if cohort is tight on time (the supplementary is the load-bearing piece; the lecture is the pointer).
 
 **Source verification — MUST DO before first cohort:**
 - All practitioner names + URLs verified in the OODA findings files at `continuous-research/findings/by-pattern/workflow-composition-{1a,1b,2a,2b,3-confirmation}.md` plus the 2026-05-21 direct-source verification batch (Cherny X thread, Pocock README, Yan/Cognition post, Metcalf/Amp post, Amp handoff post, Ronacher posts). Re-verify each link is live before first cohort.

@@ -116,9 +116,9 @@ The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md`
 
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
-- **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Nerd: *"name one thing the verifier missed, concretely. Quote the scrollback."*
+- **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
 - **Phase 2 skill-shape mismatch** — student picks the shape they're most comfortable building (usually verifier) regardless of what the diff pointed at. Diagnostic: does the skill fire on the gap you ranked dominant? If not, re-scope.
-- **Phase 2 default-acceptance** — student ships Claude's first draft of SKILL.md without the self-critique beat. Diagnostic: the skill reads like a blog-post template. Nerd enforces the critique prompt.
+- **Phase 2 default-acceptance** — student ships Claude's first draft of SKILL.md without the self-critique beat. Diagnostic: the skill reads like a blog-post template. Trainer enforces the critique prompt.
 - **Phase 2 markdown-editor drift** — student opens SKILL.md in an editor and hand-crafts it. The authoring move is conversation; redirect every time. Same load-bearing rule as M3.
 - **Phase 2 invocation-skip** — student ships without running the skill on the packaged run. Authoring without invocation is theatre; the invocation-as-test is the learning moment.
 - **Phase 2 auto-PR instinct** — student asks Claude to open a PR against the team kit. Stop. Skills ship personal first; team PRs start with a human conversation. Rule extends M3's same constraint.
@@ -131,7 +131,7 @@ The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md`
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diffing. The diff is data for Phase 2, not an essay. Force a rank and move on.
 - **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
-- **Phase 2 question loop >15 min** — Claude is asking too many questions or the student is answering generically. Nerd: *"answer one with a quote from the diff instead."*
+- **Phase 2 question loop >15 min** — Claude is asking too many questions or the student is answering generically. Trainer push: *"answer one with a quote from the diff instead."*
 - **Phase 2 >35 min** — gold-plating. The skill is good enough when it catches the dominant gap on invocation. Ship with a TODO; refine later.
 - **Whole-room mood below 7** — practitioner fluency isn't landing. Check Phase 2 invocation: did the skill fire on the packaged run? If not, the encode step didn't close — student doesn't feel *"I know how to encode"* because they didn't see the skill work.
 

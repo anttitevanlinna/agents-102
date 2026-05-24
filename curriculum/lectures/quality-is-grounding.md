@@ -16,7 +16,7 @@ Some of the early agentic engineering demos were single devs shipping 500K lines
 
 **Time:** 4–6 min at presentation pace.
 
-**Delivery mode:** Read in-room early in M6, between Story of Module 6 and the main exercise. Sets the quality-arc stakes before the build move. Self-study Nerd reads it the same way — opener-bridge, not closer.
+**Delivery mode:** Read in-room early in M6, between Story of Module 6 and the main exercise. Sets the quality-arc stakes before the build move.
 
 **Source verification — MUST DO before first cohort. The event is pinned; the number is Antti's direct observation, no public anchor.**
 

@@ -12,7 +12,7 @@ Your screen is shared most of the session. There is no private trainer pane. Rea
 
 Every exercise is follow-along. The time budget is `max(trainer, student)`, not trainer time plus student time. You paste and narrate; students paste and run concurrently.
 
-In cohort delivery, you carry the push-backs by default. Teacher Claude or an Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.
+In cohort delivery, you carry the push-backs.
 
 ## Delivery Architecture
 

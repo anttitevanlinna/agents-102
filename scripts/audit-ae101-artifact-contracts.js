@@ -34,7 +34,6 @@ const TRAINING_CONFIGS = {
   'agentic-engineering-101': {
     title: 'AE101',
     stages: [
-      { slug: 'sponsor-prework', title: 'Sponsor prework', index: -1 },
       { slug: 'prework', title: 'Prework', index: 0 },
     ],
   },

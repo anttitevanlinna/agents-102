@@ -12,7 +12,7 @@ Your screen is shared most of the session. There is no private trainer pane. Rea
 
 Every exercise is follow-along. The time budget is `max(trainer, student)`, not trainer time plus student time. You paste and narrate; students paste and run concurrently.
 
-In cohort delivery, you carry the push-backs by default. The Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.
+In cohort delivery, you carry the push-backs.
 
 ## Delivery Architecture
 
@@ -136,7 +136,7 @@ M6 carries more lecture surface than the other modules. By Module 6 the student 
 - **[The loop has a name](lectures/the-loop-has-a-name.md)**, closer; names *eval* from the just-built second skill.
 - **[Agents that build agents](lectures/agents-that-build-agents.md)**, forward closer.
 
-**How to invite reflection.** Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What's their review bandwidth, and what does Ronacher's counter-voice land as? After Dino's worked example, the natural question is the transfer one: looking at the second skill they just shipped at M6, is it a route, a leaf, an orchestrator, or a hand-off? Open prompts, not Q&A. Two beats of silence is fine; engineers think before they speak. Self-study Nerd mirrors this with conversation prompts in the same slots.
+**How to invite reflection.** Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What's their review bandwidth, and what does Ronacher's counter-voice land as? After Dino's worked example, the natural question is the transfer one: looking at the second skill they just shipped at M6, is it a route, a leaf, an orchestrator, or a hand-off? Open prompts, not Q&A. Two beats of silence is fine; engineers think before they speak.
 
 **Pacing the close.** Lecture density means reading the room sharply. If energy is high, give the lineage conversation room. If energy is low, name fewer lineages in delivery, point at the supplementary, move to the closer pair faster. The supplementary carries the depth regardless; the lecture body is the pointer, not the survey.
 

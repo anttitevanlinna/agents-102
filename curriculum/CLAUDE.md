@@ -249,7 +249,7 @@ Classroom (cohort + trainer) is the primary delivery mode. Self-study is bonus /
 
 **What this DOESN'T mean:**
 
-- Self-study isn't second-class — it just inherits the same structure. The engaged student paces themselves; the host-skill (Teacher Claude / Agentic Nerd, per `check_pedagogy.md` #25) is available for clarifying the work, not for substituting cohort dynamics. Designing for classroom-first usually produces self-study material that works without modification.
+- Self-study isn't second-class — it just inherits the same structure. The engaged student paces themselves; the optional host-skill (per `check_pedagogy.md` #25) is available for clarifying the work, not for substituting cohort dynamics. Designing for classroom-first usually produces self-study material that works without modification.
 
 ## Content Boundaries
 

@@ -71,20 +71,20 @@ Module 4 (memory that reads your system) consumes the test-strategy skill as a B
 **Meta (trainer):**
 - **Time:** 18–22 minutes (12 / 6 / 2)
 - **Primary Bloom's level:** Create + Evaluate
-- **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I invoked it on a real feature, I sharpened it from what came back, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: Nerd pushes at the pyramid-dressed-as-codebase-specific question during Phase 1 and at the invoke-and-critique in Phase 2.
+- **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I invoked it on a real feature, I sharpened it from what came back, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: trainer pushes at the pyramid-dressed-as-codebase-specific question during Phase 1 and at the invoke-and-critique in Phase 2.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - invokes the test-strategy skill on a real feature they're shipping within a week, not a sample one
 - sharpens the skill from one self-critique loop after invocation, then re-invokes on the same feature
 - opens a team-PR conversation with at least one teammate before promoting the skill team-side
 
-**Push-back moves** (trainer delivers in cohort; Nerd delivers only in self-study):
-- **P1 question-dump.** Claude fires all questions at once instead of one at a time. Nerd: *"tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill."*
-- **P1 generic answers.** Student gives pyramid-shaped answers (*"unit first, then integration, then e2e"*). Nerd: *"is that actually how your codebase's tests run, or how you think they should? A skill encoding the first is useful; the second is a wish."*
-- **P1 missed detail.** Student mentions something in conversation that doesn't make it into SKILL.md. Nerd catches: *"you said X earlier — is that in the skill? if not, add it."*
-- **P2 invoke-skip.** Student ships without running the skill on the feature. Nerd: *"authoring without invocation is theatre. Run it on the feature we just threat-modeled and ask 'is it good?'"*
-- **P2 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Nerd: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
-- **P3 ship-confusion.** Team-kit home ambiguous. Nerd checks: *"the skill ships to your personal `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1). That's the ship for today. The team-PR move is a separate human conversation later, after teammates have weighed in. The pre-engagement contract's team-kit slot names where a skill goes if it graduates, not whether this one ships now."*
+**Push-back moves:**
+- **P1 question-dump.** Claude fires all questions at once instead of one at a time. Trainer push: *"tell Claude to ask one at a time, wait for your answer, then ask the next. You want the conversation to surface detail, not a form to fill."*
+- **P1 generic answers.** Student gives pyramid-shaped answers (*"unit first, then integration, then e2e"*). Trainer push: *"is that actually how your codebase's tests run, or how you think they should? A skill encoding the first is useful; the second is a wish."*
+- **P1 missed detail.** Student mentions something in conversation that doesn't make it into SKILL.md. Trainer catches: *"you said X earlier — is that in the skill? if not, add it."*
+- **P2 invoke-skip.** Student ships without running the skill on the feature. Trainer push: *"authoring without invocation is theatre. Run it on the feature we just threat-modeled and ask 'is it good?'"*
+- **P2 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Trainer push: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
+- **P3 ship-confusion.** Team-kit home ambiguous. Trainer checks: *"the skill ships to your personal `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1). That's the ship for today. The team-PR move is a separate human conversation later, after teammates have weighed in. The pre-engagement contract's team-kit slot names where a skill goes if it graduates, not whether this one ships now."*
 
 **Watch-fors:**
 - Student opens an editor to hand-craft SKILL.md. Redirect to conversation — the authoring move is prompting Claude, not keyboard-crafting markdown. This rule is load-bearing for the training; catch it every time.

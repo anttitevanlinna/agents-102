@@ -127,12 +127,12 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 - sends off un-packaged in the same Claude Code session and cancels when the trace is enough, treating the cancel as data not failure
 
 **Failure modes + diagnostics:**
-- **Phase 1 task-sprawl** — student picks the quarterly epic. Diagnostic: the scoped task doesn't have a "done" the student can name. Fix: Nerd forces a slice; better a smaller task that runs the full arc.
+- **Phase 1 task-sprawl** — student picks the quarterly epic. Diagnostic: the scoped task doesn't have a "done" the student can name. Fix: trainer forces a slice; better a smaller task that runs the full arc.
 - **Phase 2 audit busywork** — Claude returns 12 items instead of 5, student drowns. Diagnostic: prompt wasn't ranked-top-5 enforced. Fix: re-run the prompt; enforce ranking; student picks top 3.
-- **Phase 2 over-fill** — student tries to close all five gaps. Diagnostic: *"just one more"* creep. Fix: Nerd names the sponge-not-rock rule; M5 will teach the other two.
+- **Phase 2 over-fill** — student tries to close all five gaps. Diagnostic: *"just one more"* creep. Fix: trainer names the sponge-not-rock rule; M5 will teach the other two.
 - **Phase 3 Huryn-as-lecture** — Claude names the frame before quoting from the student's own work. Diagnostic: student reads the three-block definition without recognition. Fix: re-run the prompt; insist on quote-first, name-second.
-- **Debrief package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: Nerd names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
-- **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: Nerd names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
+- **Debrief package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: trainer names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
+- **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: trainer names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
 
 **Plug points:**
 - Student's own task you'd send off rather than nudge bit by bit (Phase 1 pick)
@@ -143,7 +143,7 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 **Decision points (pacing):**
 - **Phase 1 >15 min** — task is too big. Force a slice.
 - **Phase 2 audit >15 min** — Claude returned too much. Re-run with ranked-top-5 enforcement.
-- **Phase 2 fill short (<15 min)** — student accepted Claude's drafts without push-back. Nerd prompts for a codebase-specific correction on at least one fill.
+- **Phase 2 fill short (<15 min)** — student accepted Claude's drafts without push-back. Trainer prompts for a codebase-specific correction on at least one fill.
 - **Phase 3 <10 min** — frame didn't land. Diagnostic: did Claude quote student's OWN recorded decision (ADR if they have one, otherwise a CLAUDE.md design note or commit message) as Block 2? If not, redo.
 - **Whole-room mood below 7** — curious readiness isn't landing. Check Phase 1: real task or compliance task? Task-selection is where this mood starts or dies.
 

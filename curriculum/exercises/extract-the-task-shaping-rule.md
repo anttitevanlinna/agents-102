@@ -75,16 +75,16 @@ When Claude finishes, the lecture is next.
 - names the loading mechanism (auto-load vs lazy-load vs `@import`) when deciding where a rule belongs
 - deflects the build instinct toward capture-first when proposing automation against a backlog
 
-**Push-back moves** (trainer delivers by default; Nerd in self-study):
-- **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Nerd: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*
-- **P1 default-acceptance** — student saves all five rules verbatim without rewriting any. Nerd: *"pick one. Read it aloud. Rewrite it so it sounds like you, or reject it."*
-- **P2 location-paralysis** — student stalls choosing the path. Nerd: *"the location is reversible. `./CLAUDE.local.md` and `~/.claude/CLAUDE.md` auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
-- **P3 building-instinct** — student starts asking Claude to write the Slack bot. Nerd: *"the lecture is next. Today is capture; application is downstream."*
-- **Optional task-manager overreach** — student treats one-ticket inference as policy. Nerd: *"one ticket gives basic rules. Mark guesses, then test them on more tickets later."*
+**Push-back moves:**
+- **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Trainer push: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*
+- **P1 default-acceptance** — student saves all five rules verbatim without rewriting any. Trainer push: *"pick one. Read it aloud. Rewrite it so it sounds like you, or reject it."*
+- **P2 location-paralysis** — student stalls choosing the path. Trainer push: *"the location is reversible. `./CLAUDE.local.md` and `~/.claude/CLAUDE.md` auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
+- **P3 building-instinct** — student starts asking Claude to write the Slack bot. Trainer push: *"the lecture is next. Today is capture; application is downstream."*
+- **Optional task-manager overreach** — student treats one-ticket inference as policy. Trainer push: *"one ticket gives basic rules. Mark guesses, then test them on more tickets later."*
 
 **Watch-fors:**
 - **P1 too long** — student over-reads, won't accept any rule as good enough. Decision: send the timer; the rule that ships imperfect rides into M3 and sharpens there.
-- **P2 student saves to a Agents 101-style training-dir path** — they may have prework muscle memory. Nerd: *"AE101 has no training-dir; the rule lives in your tooling, not the training's."*
+- **P2 student saves to a Agents 101-style training-dir path** — they may have prework muscle memory. Trainer push: *"AE101 has no training-dir; the rule lives in your tooling, not the training's."*
 - **P3 Claude proposes one shape only** — push for two more; the lecture grounds three.
 - **Optional step consumes lecture time** — skip it. The required artifact is the task-shaping `.md`; task-manager reverse-engineering is a time-left demo or homework move.
 

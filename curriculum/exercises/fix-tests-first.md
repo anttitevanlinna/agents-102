@@ -57,8 +57,8 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 - **Theme 4 (self-aware, grain of salt)** — the diff push-back; Claude explains what it wrote and the student verifies. Compounding theme lands in Ex3.
 
 **Watch-fors:**
-- **Tests-skipped.** Student pastes the bug and Claude jumps straight to a fix. Common failure mode. Nerd push: *"back up — what's the failing test that would prove this bug exists?"* If the repo has no test infrastructure on this path, log *"no verifier here"* and name it as the first Quality-Gate entry (landing in M4).
-- **Diff rubber-stamp.** Student says *"looks fine"* under 30 seconds. Nerd push: *"find me one line you'd have written differently — not wrong, just different."*
+- **Tests-skipped.** Student pastes the bug and Claude jumps straight to a fix. Common failure mode. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* If the repo has no test infrastructure on this path, log *"no verifier here"* and name it as the first Quality-Gate entry (landing in M4).
+- **Diff rubber-stamp.** Student says *"looks fine"* under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*
 
 **Decision points:**
 - **Runs over 35 min.** Bug wasn't trivial. Let it complete; trim the next exercise (MCP close-out) to read-only, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.

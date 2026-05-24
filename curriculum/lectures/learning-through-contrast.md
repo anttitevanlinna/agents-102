@@ -63,7 +63,7 @@ Open your repo. Let's go.
 
 **Design intent:** Names the M5 spirit (read first, fix later) and the diagnostic stance the exercise depends on. Doesn't name the three-pattern. The exercise earns it.
 
-**Delivery mode:** In-room only. Self-study Nerd opens M5 with the same content as the C1 framing for the exercise.
+**Delivery mode:** In-room only.
 
 **Source verification — MUST DO before first cohort:**
 - The three failure modes are convergent practitioner vocabulary (sourced via the 2026-04-21 long-running OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md`). Confirm against pre-read attribution at delivery time; the lecture must NOT diverge from the pre-read on these terms.

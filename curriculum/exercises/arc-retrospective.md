@@ -46,13 +46,13 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 
 **Failure modes + diagnostics:**
 - **Agent writes a template retrospective.** *"You learned X, then Y, then Z."* No quotes, no specificity. Diagnostic: zero file quotes in the note. Fix: re-run the prompt; insist on quotes from the student's actual files.
-- **Agent praises without evidence.** *"Your test-strategy skill shows strong thinking."* Diagnostic: an adjective without a quoted line underneath. Fix: Nerd push *"quote the line in the skill that earns that sentence."*
+- **Agent praises without evidence.** *"Your test-strategy skill shows strong thinking."* Diagnostic: an adjective without a quoted line underneath. Fix: trainer push *"quote the line in the skill that earns that sentence."*
 - **Student accepts the first draft.** Default-acceptance, same failure mode as every authoring move. Diagnostic: the student saves without a push-back turn. Fix: ask what one sentence in the note isn't true to your experience. Revise from the answer.
 - **Artefact list empty or thin.** If the student didn't ship artefacts at one or more modules (common for remote / self-study variants), the agent's arc reads thin. Fix: the note names the gap directly. The absence is data.
 - **Agent invents a pattern to tidy the arc.** An over-clean narrative (*"clear progression from X to Y"*) where the student's experience was messier. Fix: push back with a specific messier moment. Ask the agent to fold it in rather than smooth it out.
 
 **Watch-fors:**
-- The agent should use the Agent tool to read in a fresh sub-task. If it doesn't, the read gets colored by the current conversation and the arc loses its fresh-eye quality. Nerd: *"did you run that in a sub-task? Re-run it if not."*
+- The agent should use the Agent tool to read in a fresh sub-task. If it doesn't, the read gets colored by the current conversation and the arc loses its fresh-eye quality. Trainer push: *"did you run that in a sub-task? Re-run it if not."*
 - Note should feel like a reading, not a verdict. If it reads pass/fail, the frame slipped.
 - The save destination matters less than the save itself. ADR, memo, standalone file: any works. Don't spend retrospective time on the filing decision.
 

@@ -5,14 +5,15 @@ Captured 2026-05-24 after self-introspection on the M1+M2 dry-run sweep. Numbere
 ## Done
 
 - [x] Read M1 + M2 transcripts turn-by-turn (not just sampled final artifacts) — done 2026-05-24, findings logged below the list.
+- [x] Fix wait_for_turn cleanup hang — done 2026-05-24. Added `pane_capture_safe` in `lib/tmux.sh` that wraps `tmux capture-pane` in a hard wall-clock alarm (gtimeout → timeout → perl-alarm fallback for macOS). All FAIL-path captures + EXIT trap captures in run-m1.sh and run-m2.sh now use it. Previously a high-effort claude rendering past the runner's sentinel timeout could hold the bash trap hostage for an hour.
+- [x] Backport key_seq dispatch to run-m1.sh — done 2026-05-24. Lets the same runner drive both `scenarios/m1.txt` (no literals) and `scenarios/m1-codesearch.txt` (with `* One commit, no PR` literal). Cases 6+7 updated to handle commit-at-T6 (m1.txt tail) OR commit-at-literal (m1-codesearch.txt default).
+- [x] N=4 of M1 non-deterministic save-gate — collapsed via m1.txt tail rewrite (lazy-student "don't call AskUserQuestion + don't commit at T4" guard). m2-codesearch.txt by other agent uses the smarter ask-and-wait pattern (preserves Q&A in chat text + canned student-voice replies).
 
-## Caught 2026-05-24 run #4
+## Caught 2026-05-24 run #4 — RESOLVED
 
-- [ ] **wait_for_turn fires correctly but pane cleanup may hang.** Run `20260524-161444-3437` timed out at T4 after 600s (timeout msg in output), but the bash process stayed alive ~60 more min before exiting. tmux pane was still being driven by claude (the high-effort thinking ran to completion). Cleanup likely blocked on `pane_capture` of an actively-rendering pane. Investigate: should the trap force-kill the tmux session before pane_capture? Or capture-then-kill with a timeout? Not blocking but unhygienic.
-
-- [ ] **N=4 of M1 shows non-deterministic save-gate behavior at T4.** Runs 1–3: Claude asked in TEXT ("one commit or two? PR or hold?"). Run 4: Claude used `AskUserQuestion` choice UI ("Commit scope" with options). UI form hangs the runner. Same prompt, same tail (initially without no-AskUserQuestion guard), different behavior. Adding the AskUserQuestion guard to the tail collapses the variability. Pattern: **prompts with implicit choice points have non-deterministic ask-form (text vs UI)** — every save-gate prompt needs an explicit AskUserQuestion guard if mechanically tested headlessly.
-
-- [ ] **N=4 also shows committing-early variant.** Run 4: Claude proposed commit at T4 (fix-tests-first-1) rather than waiting for T6 (fix-tests-first-3). The curriculum DOES allow this (both prompts end "Show me the diff before you commit"). Real-cohort risk: students who commit at T4 then hit T5 "Don't change anything yet... what's still surface?" + T6 "do it properly TDD-style" may be confused about workflow. Worth a curriculum-side question: is commit-at-T4 a desired path or accidental? If accidental, T4 prompt should say "show me the diff but DON'T commit yet." If desired, T6 needs to handle "previous commit exists" smoothly.
+- [x] **wait_for_turn fires correctly but pane cleanup may hang** — fixed via `pane_capture_safe`. See Done section.
+- [x] **N=4 of M1 shows non-deterministic save-gate behavior at T4** — collapsed via m1.txt tail rewrite. See Done section.
+- [ ] **N=4 also shows committing-early variant** — STILL OPEN, this is a curriculum question, not a runner bug. Run 4 proposed commit at T4 rather than waiting for T6. The curriculum DOES allow this (both prompts end "Show me the diff before you commit"). Real-cohort risk: students who commit at T4 then hit T5's "Don't change anything yet... what's still surface?" + T6's "do it properly TDD-style" may be confused. Worth a curriculum-side question: is commit-at-T4 desired or accidental?
 
 ## Highest yield, smallest effort
 

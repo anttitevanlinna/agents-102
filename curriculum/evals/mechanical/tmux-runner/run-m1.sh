@@ -68,7 +68,12 @@ pane_start "$session" "$sut_cwd" "$launch_cmd"
 sleep "$warmup"
 
 cleanup() {
-  pane_capture "$session" "$run_dir/transcript.txt" 2>/dev/null || true
+  # Bounded-time capture before kill — pane_capture_safe wraps tmux
+  # capture-pane in a hard wall-clock alarm so the trap can't be held
+  # hostage by an actively-rendering pane (claude at high effort can
+  # keep rendering for an hour past the runner's sentinel timeout,
+  # blocking the unbounded pane_capture indefinitely).
+  pane_capture_safe "$session" "$run_dir/transcript.txt" 10
   pane_kill "$session"
 }
 trap cleanup EXIT
@@ -120,24 +125,39 @@ assert_turn() {
         # Soft observation only: scrollback names a deeper layer.
         assert_or_warn assert_scrollback_grep "T5 deeper-named" "$transcript" "root|deeper|layer|surface|still"
         ;;
-    6)  # fix-tests-first-3 — TDD deeper pass + commit at end (tail tells
-        # Claude not to wait for approval). Two checks: new commit lands
-        # since baseline, AND tree advanced past T4 (deeper pass added
-        # something — catches no-op T6). Tree compare is done on the
-        # COMMITTED state via HEAD's tree SHA, since the commit may have
-        # absorbed all working-tree changes.
-        if ! assert_new_commit "T6 commit after deeper pass" "$sut_cwd" "$baseline_sha"; then
-          return 1
-        fi
+    6)  # fix-tests-first-3 — TDD deeper pass. Commit MAY land here
+        # (m1.txt tail says "commit at end") OR at a literal turn that
+        # follows (m1-codesearch.txt's `* One commit, no PR` literal).
+        # Both variants must produce a tree that advanced past T4 —
+        # either as a new commit OR as additional working-tree changes.
+        # Tree compare uses git stash create on working tree (catches
+        # uncommitted advance) OR HEAD^{tree} (catches committed advance).
         local tree_sha_now
-        tree_sha_now="$(cd "$sut_cwd" && git rev-parse HEAD^{tree} 2>/dev/null || true)"
+        local committed_tree
+        committed_tree="$(cd "$sut_cwd" && git rev-parse HEAD^{tree} 2>/dev/null || true)"
+        local working_tree
+        working_tree="$(cd "$sut_cwd" && git stash create 2>/dev/null || true)"
+        # Pick whichever differs from the T4 baseline.
+        if [[ "$working_tree" != "$tree_sha_after_t4" && -n "$working_tree" ]]; then
+          tree_sha_now="$working_tree"
+        elif [[ "$committed_tree" != "$tree_sha_after_t4" ]]; then
+          tree_sha_now="$committed_tree"
+        else
+          tree_sha_now=""
+        fi
         if [[ -z "$tree_sha_now" || "$tree_sha_now" == "$tree_sha_after_t4" ]]; then
-          echo "[assert] FAIL T6 tree content unchanged from T4 (sha=$tree_sha_now) — deeper TDD pass produced nothing new" >&2
+          echo "[assert] FAIL T6 tree content unchanged from T4 — deeper TDD pass produced nothing new" >&2
           return 1
         fi
         echo "[assert] PASS T6 tree content advanced past T4 (T4=${tree_sha_after_t4:0:8} T6=${tree_sha_now:0:8})"
         ;;
-    7)  # compound-and-close-1 — ./CLAUDE.local.md exists.
+    7)  # compound-and-close-1 — ./CLAUDE.local.md exists AND a commit
+        # has landed since baseline (in either variant, the commit MUST
+        # exist by now — m1.txt commits at T6, m1-codesearch.txt commits
+        # at the literal between T6 and T7).
+        if ! assert_new_commit "T7 commit landed by compound" "$sut_cwd" "$baseline_sha"; then
+          return 1
+        fi
         assert_file_exists "T7 CLAUDE.local.md" "$claude_local_md"
         ;;
     8)  # compound-and-close-4 — file mtime advanced OR "nothing new".
@@ -154,20 +174,24 @@ assert_turn() {
 }
 
 seq=0
+key_seq=0
 for line in "${lines[@]}"; do
   seq=$((seq + 1))
+  is_literal=0
 
   if [[ "$line" == \** ]]; then
     body="${line#\*}"; body="${body# }"
+    is_literal=1
     echo "[m1] turn=$seq literal=${body:0:60}..."
   else
+    key_seq=$((key_seq + 1))
     key="${line%%[[:space:]]*}"
     tail=""
     if [[ "$line" == *[[:space:]]* ]]; then
       tail="${line#*[[:space:]]}"
       tail="${tail#"${tail%%[![:space:]]*}"}"
     fi
-    echo "[m1] turn=$seq key=$key${tail:+ tail=${tail:0:60}...}"
+    echo "[m1] turn=$seq key_seq=$key_seq key=$key${tail:+ tail=${tail:0:60}...}"
     body="$(resolve_prompt "$key")"
     [[ -n "$tail" ]] && body="${body}"$'\n'"${tail}"
   fi
@@ -183,15 +207,22 @@ for line in "${lines[@]}"; do
     echo "[m1] turn=$seq slash-command (no sentinel) — bridging via lib"
     fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
   elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
+    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
     echo "[m1] FAIL turn=$seq (sentinel timeout after ${standard_timeout}s) — see $run_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
 
-  if ! assert_turn "$seq" "$run_dir/turn-$seq.transcript.txt"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
-    echo "[m1] FAIL turn=$seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
+  # Literal turns (e.g. `* One commit, no PR` in m1-codesearch.txt) carry
+  # no assertion — the next prompt-key turn picks up downstream state.
+  if [[ "$is_literal" -eq 1 ]]; then
+    echo "[m1] turn=$seq literal — no assertion (downstream key-turn will gate)"
+    continue
+  fi
+
+  if ! assert_turn "$key_seq" "$run_dir/turn-$seq.transcript.txt"; then
+    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
+    echo "[m1] FAIL turn=$seq key_seq=$key_seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
   fi
 done

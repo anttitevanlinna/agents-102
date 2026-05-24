@@ -38,6 +38,23 @@ pane_capture() {
   tmux capture-pane -t "$name" -p -S - -E - > "$out"
 }
 
+pane_capture_safe() {
+  # Like pane_capture, but with a hard wall-clock timeout (default 10s).
+  # Use on FAIL paths where capturing from an actively-rendering pane
+  # would block the bash trap indefinitely (claude at high effort can
+  # render for an hour past the runner's sentinel timeout).
+  # Falls back to perl-alarm wrapper since macOS lacks GNU timeout.
+  local name="$1" out="$2" wall="${3:-10}"
+  if command -v gtimeout >/dev/null 2>&1; then
+    gtimeout "$wall" tmux capture-pane -t "$name" -p -S - -E - > "$out" 2>/dev/null || true
+  elif command -v timeout >/dev/null 2>&1; then
+    timeout "$wall" tmux capture-pane -t "$name" -p -S - -E - > "$out" 2>/dev/null || true
+  else
+    perl -e 'alarm shift; exec @ARGV' "$wall" \
+      tmux capture-pane -t "$name" -p -S - -E - > "$out" 2>/dev/null || true
+  fi
+}
+
 pane_kill() {
   local name="$1"
   tmux kill-session -t "$name" 2>/dev/null || true

@@ -74,7 +74,9 @@ pane_start "$session" "$sut_cwd" "$launch_cmd"
 sleep "$warmup"
 
 cleanup() {
-  pane_capture "$session" "$run_dir/transcript.txt" 2>/dev/null || true
+  # Bounded-time capture so the trap can't be held hostage by an
+  # actively-rendering pane (see run-m1.sh for the high-effort case).
+  pane_capture_safe "$session" "$run_dir/transcript.txt" 10
   pane_kill "$session"
 }
 trap cleanup EXIT
@@ -268,7 +270,7 @@ for line in "${lines[@]}"; do
     echo "[m2] turn=$seq slash-command (no sentinel) — bridging via lib"
     fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
   elif ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
+    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
     echo "[m2] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2
     exit 1
   fi
@@ -284,7 +286,7 @@ for line in "${lines[@]}"; do
   fi
 
   if ! assert_turn "$key_seq" "$run_dir/turn-$seq.transcript.txt"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
+    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
     echo "[m2] FAIL turn=$seq key_seq=$key_seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
   fi

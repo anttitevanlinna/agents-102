@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-04-26
-cycle: 111
+updated: 2026-05-24
+cycle: 114
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,16 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-04-02 (cycle 70)
-OODA cycles: 8
+Last updated: 2026-05-24 (cycle 114)
+OODA cycles: 9
+
+**Cycle 114 updates (May 24, 2026):**
+- **PwC expanded partnership (May 14, 2026).** 30,000 PwC professionals trained and certified on Claude Code and Claude Cowork. Joint Center of Excellence established. Claimed results in joint press release: 70% delivery improvement across production deployments; insurance underwriting cut from 10 weeks to 10 days; security work cut from hours to minutes. Evidence quality: VENDOR CLAIM — joint Anthropic/PwC release, no auditor named, no client attributed for specific metrics. Source: [PwC press release](https://www.pwc.com/us/en/about-us/newsroom/press-releases/anthropic-pwc-expand-alliance-agentic-enterprise.html) — [vendor]; [PR Newswire] — [vendor]. Evidence level: Level 0-1 for outcomes; Level 1 for scale of rollout (30K professionals is a concrete, verifiable commitment).
+- **KPMG global alliance (May 19, 2026).** All 276,000+ KPMG employees worldwide will get Claude access via KPMG Digital Gateway. Hosted on Microsoft Azure. Deployment beginning with Tax & Legal; full rollout targeted September 2026. No outcomes reported — pre-deployment announcement. Source: [Anthropic newsroom](https://www.anthropic.com/news/anthropic-kpmg) — [vendor press release]. Evidence level: Level 1 for scope (276K employees is a concrete, legally committed rollout plan); Level 0 for outcomes (deployment not complete).
+- **Claude for Small Business (May 2026).** Claude integrated with QuickBooks, PayPal, HubSpot, Canva, DocuSign, Google Workspace, Microsoft 365. Pre-built workflows for payroll, invoicing, sales, marketing. Source: [Yahoo Finance](https://finance.yahoo.com/news/anthropic-debuts-claude-for-small-business-as-it-continues-its-enterprise-software-push-160500355.html) — [general press]. Evidence level: Level 1 (product announced); no user adoption metrics yet.
+- **Claude Managed Agents: self-hosted sandboxes + MCP tunnels (May 19, 2026).** Two new enterprise security features: (1) **Self-hosted sandboxes (public beta)** — tool execution runs on customer-controlled infrastructure or four managed providers (Cloudflare, Daytona, Modal, Vercel); Cloudflare announced this independently on their own blog. (2) **MCP tunnels** — agents reach private-network MCP servers via outbound encrypted tunnel without exposing them publicly. **Significance:** These two features directly address the top structural concerns from cycle 97-98: "every tool call runs through Anthropic's infrastructure" and EU/Nordic data residency constraints. Self-hosted sandboxes shift execution to the customer's perimeter. Sources: [9to5Mac](https://9to5mac.com/2026/05/19/anthropic-enhances-claude-managed-agents-with-two-new-privacy-and-security-features/) — [tech press]; [InfoQ](https://www.infoq.com/news/2026/05/claude-mcp-tunnels/) — [domain trade publication]; [Cloudflare blog](https://blog.cloudflare.com/claude-managed-agents/) — [independently confirmed by Cloudflare]. Evidence level: Level 2 (independently confirmed product feature; Cloudflare independently announcing their hosting partnership is stronger than vendor-only confirmation).
+- **Anthropic revenue: $30B+ ARR, Q2 2026 first profitable quarter projected (May 20, 2026).** CNBC reporting from unnamed internal source: annualized revenue surpassed $30B run-rate; company on track for first profitable quarter in Q2 2026 with ~$10.9B Q2 revenue projected. **Caution: single unnamed source — cannot independently corroborate.** If accurate, this represents a significant inflection point — company moved from $19B ARR (March 2026) to $30B ARR (May 2026) in ~two months. Source: [CNBC](https://www.cnbc.com/2026/05/20/anthropic-revenue-explosive-growth-ipo-profitable-quarter.html) — [general press, unnamed source]. Evidence level: Level 1 (single-source, unnamed; high-significance if accurate).
+- **$900B valuation talks (May 2026).** Anthropic in discussions with investors to raise at ~$900B valuation, up from $380B Series G (February 2026). Shadow market (Forge) already pricing near-trillion. IPO anticipated 2026 or 2027 — no S-1 filed as of May 24. Sources: [CNBC](https://www.cnbc.com/2026/05/20/anthropic-revenue-explosive-growth-ipo-profitable-quarter.html); [Yahoo Finance shadow market](https://finance.yahoo.com/markets/article/anthropics-shadow-ipo-market-is-already-flashing-trillion-dollar-prices-141451664.html) — [general press/financial]. Evidence level: Level 1 for valuation discussions (financial press citing multiple sources).
 
 ## Focus
 

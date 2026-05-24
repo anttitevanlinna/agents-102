@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
 nordic: true
-updated: 2026-05-23
-cycle: 112
+updated: 2026-05-24
+cycle: 114
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -14,8 +14,15 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-04-18 (cycle 104)
-OODA cycles: 20
+Last updated: 2026-05-24 (cycle 114)
+OODA cycles: 21
+
+**Cycle 114 updates (May 24, 2026):**
+- **Agent 365 GA confirmed (May 1, 2026).** Launched at $15/user/month standalone or included in M365 E7. Key GA capabilities: shadow AI discovery targeting Claude Code, GitHub Copilot CLI, and OpenAI Codex CLI inside enterprise networks; cloud agent registry sync with AWS Bedrock and Google Cloud (preview); asset context mapping showing agent-to-resource relationships (preview, June); policy-based runtime blocking of malicious agent behavior; Windows 365 for Agents (managed cloud environments for agent workloads). Named enterprise customer: **NTT DATA Group Corporation** — governance quote only, no quantified results. **SAMexpert pre-GA prediction confirmed:** Two-bill problem validated (M365 governance cost + separate Azure consumption cost); autonomous agent identities remain in preview at GA; threat detection features in public preview, not fully GA. Source: [Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/) — [vendor, May 1, 2026]. Evidence level: Level 1 for product facts; Level 0 for customer outcomes.
+- **E7 GA (May 1, 2026): Federated Copilot Connectors and Cowork expansion.** Federated Copilot Connectors GA for HubSpot, LSEG, Moody's, Notion; Excel integration coming summer 2026. S&P Global Energy, Miro, monday.com announced as upcoming connector partners. Copilot Cowork expanded to iOS and Android (was macOS/Windows only). Source: [Microsoft 365 Blog, May 5, 2026] — [vendor]. Evidence level: Level 1 (product announcements, independently verifiable as features ship).
+- **M365 Copilot scale (vendor-reported aggregate, May 2026):** 420M monthly active users across all tiers (including free). 20M+ paid M365 Copilot enterprise seats. Named enterprise rollouts confirmed (all vendor case studies, no independent metric verification): PwC (230K users, 100+ countries), Accenture (200K users; claimed "97% of employees complete routine tasks 15x faster" — vendor-sponsored study, unaudited), Publicis Groupe (70%+ pilot productivity, 40% faster creative decks — self-reported pilot results). Source: Vendor case studies + analyst synthesis. Evidence level: Level 2 for scale of confirmed rollouts (named organizations, committed seat counts); Level 1 for productivity metrics (vendor-administered studies).
+- **D365 + Power Platform agentic Role-Based Agents (2026 Wave 1).** Role-based agents shipping for D365 functions: D365 Sales Copilot (CRM + M365 email/meeting unified context), D365 Customer Service AI admin, D365 Supply Chain (picking, stock rebalancing, hands-free scanning), D365 Finance Agent (reconciliation, variance analysis, Excel integration). Power Automate: agent-based authoring, optimization, self-healing flows. Copilot Studio: multi-agent orchestration, evaluation features. **Zero named enterprise customers with quantified outcomes for any of these.** Source: Cloud Wars analyst synthesis of Microsoft Wave 1 release notes — [trade analyst]. Evidence level: Level 1 (capability roadmap confirmed; deployment evidence absent).
+- **Microsoft Agent Governance Toolkit (open-source, April 2, 2026) — missed in prior cycles.** MIT-licensed seven-package toolkit for runtime agent security. Sub-millisecond policy enforcement (p99 < 0.1ms). Cryptographic agent identity via decentralized identifiers (DIDs) with Ed25519. Dynamic trust scoring (0–1000 scale). Covers all 10 OWASP Agentic AI Top 10 risks. Framework integrations: LangChain, CrewAI, Google ADK, LangGraph, OpenAI Agents SDK, Haystack, LlamaIndex. Early integration confirmed in Dify marketplace and LlamaIndex TrustedAgentWorker. **Regulatory driver:** EU AI Act high-risk obligations active August 2026; Colorado AI Act enforcing June 2026. No named enterprise production adopters yet. Source: [Microsoft Open Source Blog](https://opensource.microsoft.com) — [vendor]; [Help Net Security](https://helpnetsecurity.com) — [independent security trade press, Apr 2026]. Evidence level: Level 2 for product (GitHub code verifiable, framework integrations on PyPI/NuGet); Level 0 for enterprise adoption (too new).
 
 ## Focus
 

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [langgraph, crewai, mastra, microsoft-agent-framework, google-adk, ruflo]
 nordic: false
-updated: 2026-04-17
-cycle: 3
+updated: 2026-05-24
+cycle: 4
 answers:
   - "should we build our own agent stack instead of buying vertical SaaS?"
   - "which open-source agent framework is production-ready for business processes?"
@@ -14,8 +14,15 @@ answers:
 
 # Open-Source Agent Frameworks -- Platform State
 
-Last updated: 2026-04-17 (cycle 3 — Microsoft Agent Framework 1.0 GA, Google ADK rapid release cadence, LangGraph CVE critical)
-OODA cycles: 3
+Last updated: 2026-05-24 (cycle 4 — Google ADK 2.0 at Google I/O, Mastra Fortune-500 production evidence, MCP security gap, governance tooling regulatory pressure)
+OODA cycles: 4
+
+**Cycle 4 updates (May 24, 2026):**
+- **Google ADK 2.0 at Google I/O (May 19, 2026).** Major framework revision. Unified graph-based engine with a "slider" between dynamic model-led reasoning and deterministic workflows — directly targeting LangGraph's architectural advantage. Three subagent coordination modes (chat / task / single-turn). Kotlin support enabling Android on-device agents. New alongside ADK 2.0: **Managed Agents API** (Google-hosted runtime, analogous to Anthropic Managed Agents and AWS AgentCore), **Agent Studio** (low-code entry point), and **A2A (Agent-to-Agent) protocol integration** for composing across heterogeneous agent systems. The A2A integration is the enterprise interoperability play — ADK agents can call non-ADK agents. Still GCP-native: no named enterprise customer at launch. Source: [Google Cloud Blog, May 19, 2026] — [vendor]; [Virtualization Review, May 19, 2026] — [independent trade press]. Evidence level: Level 1 (announcement confirmed by independent press); Level 0 for enterprise deployment outcomes.
+- **Mastra production evidence strengthened (Fortune 500 scale).** Two named production deployments now confirmed in independent trade press: (1) **Replit:** Deployed Mastra in Agent 3. Task success rate improved 80% → 96% across thousands of daily sessions. (2) **Marsh McLennan:** Deployed Mastra-based search tool to 75,000 employees. Also named (without deployment specifics): PayPal, Adobe. 300,000 weekly npm downloads (up from 150K in earlier tracking). **Assessment:** Marsh McLennan at 75,000 employees is Fortune 500-scale. The Replit 80%→96% improvement is the most specific quantified practitioner metric in this search cycle. Mastra remains underreported — most analyst rankings still call it "emerging" while these deployments indicate production-grade scale. Source: [Chanl Blog — "AI Agent Frameworks Compared: Which Ones Ship," March 31, 2026] — [trade analysis, medium independence]. Evidence level: Level 2 for Replit and Marsh McLennan (named company, specific metric, trade publication coverage); Level 1 for PayPal/Adobe.
+- **MCP security gap: 1,800+ unauthenticated public servers.** Stacklok security research (January 2026, independent security vendor): 1,800+ active MCP servers on the public internet with no authentication whatsoever. Against the backdrop of 97M monthly SDK downloads and MCP's broad platform adoption (OpenAI, Google, Microsoft, Salesforce all shipping MCP support), this is a near-term enterprise liability. **MCP roadmap response:** OAuth 2.1 with PKCE (Q2 2026), SAML/OIDC enterprise IdP integration on roadmap. A July 2026 release candidate (forward-looking from May 24) targets stateless core for load-balanced HTTP — removes sticky session requirement, enabling standard enterprise load balancers. This is the infrastructure change needed for genuine enterprise-scale MCP deployment. Source: [Stacklok State of MCP, January 2026] — [independent security vendor research]. Evidence level: Level 3 for the security gap (independent security research, independently verifiable). Level 1 for roadmap fixes (official roadmap, not yet shipped).
+- **Governance tooling regulatory pressure driving adoption.** EU AI Act high-risk AI obligations: August 2026. Colorado AI Act: June 2026. Two governance tools shipped in the window: (1) Microsoft Agent Governance Toolkit (April 2, MIT licensed) — covers all 10 OWASP Agentic AI Top 10; sub-millisecond policy enforcement; DID-based agent identity; integrates LangChain, CrewAI, Google ADK, LangGraph, OpenAI Agents SDK. (2) Gravitee survey finding (2026): only 24.4% of organizations have full visibility into which AI agents communicate with each other; >50% of all agents run without any security oversight or logging. **Pattern:** governance tools shipped before the agents they govern are deployed at scale. The supply-demand mismatch documented since cycle 38 has not closed. Source: [Microsoft Open Source Blog] — [vendor]; [Gravitee 2026 survey] — [vendor survey, directional]; [Help Net Security] — [independent security trade press]. Evidence level: Level 2 for product capabilities (verifiable on GitHub); Level 2 for the security visibility gap (vendor-administered survey, directionally consistent with independent research).
+- **MCP Linux Foundation donation + industry-wide adoption confirmed.** Anthropic donated MCP to the Linux Foundation with OpenAI, Google, and Microsoft as co-sponsors — converting it from a proprietary protocol to industry infrastructure. 97M monthly SDK downloads (Anthropic-reported, March 2026). Source: [MCP official blog] — [vendor]; [CIO magazine] — [trade press]. Evidence level: Level 2 for adoption (97M downloads self-reported but protocol is genuinely embedded across four major platforms — independently verifiable via their SDK changelogs).
 
 ## Focus
 

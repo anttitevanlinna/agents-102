@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-04-28
-cycle: 113
+updated: 2026-05-24
+cycle: 114
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -14,8 +14,30 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-05-23 (cycle 112)
-OODA cycles: 17
+Last updated: 2026-05-24 (cycle 114)
+OODA cycles: 18
+
+**Cycle 114 updates (May 24, 2026) — Conference intelligence: Knowledge 2026 + SAP Sapphire + Zendesk Relate:**
+
+**ServiceNow Knowledge 2026 (May 5–7, Las Vegas) — HIGHEST QUALITY INDEPENDENT EVIDENCE THIS CYCLE:**
+- **Standard Chartered Bank (85,000 global employees) — practitioner-stated, independently reported.** Started as 50,000-person Hong Kong pilot; scaled to 85,000 globally. Case deflection rate: 77% → 90% (vs. industry baseline 25–30%). Source: Diginomica customer panel session at Knowledge 2026, independently reported by analyst Derek du Preez. Evidence level: Level 3 (practitioner speaking on record at public conference, reported by independent trade analyst — the strongest independent deployment evidence found in this research cycle). [Diginomica, Knowledge 2026 customer panel coverage] — [domain trade publication, independent].
+- **Hitachi Energy (70,000 employees) — practitioner-stated, independently reported.** 10x spike in employee self-service usage in the week AI went live. 25% reduction in IT service desk calls. Expected $3.2M savings in IT and HR departments; $7.7M in savings over three years. Source: Diginomica customer panel session at Knowledge 2026. Evidence level: Level 3 (same independence standard as Standard Chartered). [Diginomica, Knowledge 2026 customer panel coverage] — [domain trade publication, independent].
+- **Autonomous Workforce expanded to every major business function.** ServiceNow announced at Knowledge 2026: Autonomous Workforce now covers IT, CRM, HR, finance, legal, procurement, security/risk. New AI specialists execute end-to-end processes, not just individual tasks. Moveworks integration into the platform confirmed. Partnership expansions: AWS, Google Cloud, Microsoft, NVIDIA for deployment infrastructure. L1 IT Service Desk AI Specialist: controlled availability → GA expected Q2 2026. CRM specialists available now. IT specialists expected June; security/risk September GA. Source: [ServiceNow newsroom](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function/default.aspx) — [vendor]; [Fortune](https://fortune.com/2026/05/05/servicenow-knowledge-2026-autonomous-workforce-microsoft-nvidia-ai-announcements/) — [general press]; [Diginomica](https://diginomica.com/servicenow-knowledge-2026-ai-control-tower-expands-autonomous-workforce-reaches-every-function-and) — [independent trade publication]. Evidence level: Level 2 for platform expansion (confirmed by independent sources); Level 0 for customer outcomes from the function expansion (too new).
+- **ServiceNow intelligence summary:** Standard Chartered and Hitachi Energy are now the highest-quality independent evidence in the vertical SaaS category overall — practitioner-stated, conference-reported, named companies with specific numbers. These move ServiceNow's evidence base to Level 3 for IT/HR service automation at scale (50K–85K employee deployments with quantified outcomes).
+
+**Salesforce:**
+- **Customer growth acceleration.** Added 6,000 enterprise customers in one quarter (Q1 FY2027, ending April 30, 2026). Source: [VentureBeat](https://venturebeat.com/technology/while-everyone-talks-about-an-ai-bubble-salesforce-quietly-added-6-000) — [general press]. Evidence level: Level 2 (earnings-adjacent reporting, verifiable via Salesforce Q1 FY2027 earnings).
+- **ARR signal — note discrepancy with prior state.** Research found "$1.4B Agentforce + Data 360 ARR, up 114% YoY" via CX Today (May 2026). Prior state shows "$2.9B Agentforce + Data 360 ARR (up 200%+ YoY)" from FY2026 results. These may reflect different time periods (Q1 FY2027 vs FY2026 full year) or different sub-segment definitions. Do not overwrite prior figure — flag for reconciliation at next earnings cycle (Q1 FY2027 call expected late May 2026). Source: [CX Today, May 2026] — [domain trade publication]. Evidence level: Level 2, pending reconciliation.
+- **Agentforce Operations GA (April 29 — carried into cycle 114):** Already documented in cycle 112. No new independent customer deployments found in the May 2026 research window. Pattern holds: GA without named deployer metrics.
+
+**SAP Sapphire 2026 (May 11–13, Orlando):**
+- **Joule Studio GA.** SAP shipped Joule Studio (developer version) to GA at Sapphire. **Joule Studio 2.0 (managed)** — zero infrastructure, zero config version — announced in Early Adopter Care through end of 2026; GA targeted Q3. Supports Claude Code and Cursor as IDE options within Joule Studio (confirmed by The New Stack). Source: [SAP News Center](https://news.sap.com/2026/05/new-joule-studio-enterprise-scale-agentic-development/) — [vendor]; [The New Stack](https://thenewstack.io/sap-joule-studio-managed-agents/) — [independent trade publication]. Evidence level: Level 2 for product facts (independently confirmed); Level 0 for customer deployment outcomes.
+- **SAP Autonomous Suite.** 50+ domain-specific Joule Assistants across finance, supply chain, procurement, HCM, CX. 200+ specialized agents. 2,400 Joule Skills. Most capabilities targeting Q3 2026 GA. Named customer evidence: RWE (offshore wind, no metrics), Accenture (partner test, 48 scenarios — not an enterprise deployer). Source: [SAP newsroom](https://news.sap.com/2026/05/sap-sapphire-sap-unveils-autonomous-enterprise/) — [vendor]; [Constellation Research](https://www.constellationr.com/insights/news/sap-sapphire-2026) — [independent analyst]. Evidence level: Level 1 for platform capabilities; Level 0 for deployment outcomes (Sapphire was an announcements conference, not a customer deployment conference — pattern consistent with prior cycles).
+
+**Zendesk Relate 2026 (May 19):**
+- **Outcome-based pricing launched May 11.** Zendesk now charges only for verifiably resolved tickets — double-verification: AI agent confirms resolution, then a separate evaluation model independently confirms. This structural change shifts risk to Zendesk and signals confidence in actual resolution rates. **Most strategically significant pricing signal in enterprise AI this cycle.** If this pricing model proves viable, every platform will face pressure to defend resolution rates with evidence, not demos. Source: [Diginomica](https://diginomica.com/zendesk-relate-2026-resolution-platform-ai-driven-service-delivery) — [independent trade publication]; [BusinessWire](https://www.businesswire.com/news/home/20260519168171/en/Zendesk-Introduces-the-Autonomous-Service-Workforce-Defining-the-Future-of-Customer-and-Employee-Service) — [vendor press release]; [The Letter Two](https://thelettertwo.com/2026/05/19/zendesk-relate-2026-autonomous-service-workforce) — [independent analyst]. Evidence level: Level 2 for pricing structure (independently confirmed by Diginomica and other sources).
+- **Resolution Platform scale:** ~20,000 customers using Zendesk AI. Trained on ~20 billion ticket interactions. $200M AI ARR projected 2026. No named enterprise customer with independently verified resolution-rate outcomes from Relate 2026. Source: Vendor and trade press. Evidence level: Level 1 for scale figures (vendor-reported); Level 0 for customer outcomes at Relate (no named practitioner published independent results).
+- **"Autonomous Service Workforce" framing:** Replacing deflection-based bots with specialized AI agents across messaging, email, and voice. Agent Copilot targets 30%+ ticket resolution from day one. MCP support announced. Source: [CMSWire](https://www.cmswire.com/customer-experience/zendesk-unveils-autonomous-ai-workforce-at-relate-2026/) — [trade press]. Evidence level: Level 1 for product capability; Level 0 for deployment outcomes.
 
 ## Focus
 

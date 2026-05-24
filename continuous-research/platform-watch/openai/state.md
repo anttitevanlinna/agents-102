@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-04-26
-cycle: 111
+updated: 2026-05-24
+cycle: 114
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-04-28 (cycle 113)
-OODA cycles: 17
+Last updated: 2026-05-24 (cycle 114)
+OODA cycles: 18
+
+**Cycle 114 updates (May 24, 2026):**
+- **OpenAI Deployment Company + Tomoro acquisition (May 12, 2026).** OpenAI launched the OpenAI Deployment Company backed by $4B+ (TPG/Advent/Bain Capital/Brookfield + 19 global firms). Simultaneously acquired Tomoro, a London-based applied AI consulting firm (~150 engineers). Regulatory approval pending. Purpose: embed Forward Deployed Engineers directly into enterprise organizations. **Structural interpretation:** This is an implicit admission that Frontier cannot self-serve enterprises. Deploying AI in production requires human expertise, not just API access. OpenAI is standing up a consulting arm to close the gap between "we have an API" and "your business runs on agents." Sources: [Bloomberg](https://www.bloomberg.com/news/articles/2026-05-11/openai-to-buy-consulting-firm-for-private-equity-joint-venture) — [general press]; [OpenAI newsroom](https://openai.com/index/openai-launches-the-deployment-company/) — [vendor]; [Tomoro.ai](https://tomoro.ai/insights/tomoro-acquired-by-openai-deployment-company) — [vendor]. Evidence level: Level 1 (announced, regulatory close pending).
+- **IPO S-1 confidential filing (May 20, 2026).** Goldman Sachs + Morgan Stanley leading. Q4 2026 target listing. Key S-1 figures (legal document — high confidence for revenue/user numbers): $25B annualized revenue run rate (March 2026); 40%+ of revenue from enterprise; Q1 2026 losing $1.22 for every $1 of revenue; $14B projected full-year 2026 loss; profitability not expected until ~2030; 50M consumer subscribers + 7M+ enterprise workplace seats; 92% Fortune 500 "using ChatGPT" (any form — not enterprise-grade deployment). Sources: [CNBC](https://www.cnbc.com/2026/05/20/openai-ipo-filing.html) — [general press]; [Fortune](https://fortune.com/2026/05/22/openai-ipo-filing-1-trillion-may-finally-answer-these-big-questions/) — [general press]. Evidence quality: HIGH for financial figures (SEC filing liability). LOW for "92% Fortune 500" — almost certainly includes any ChatGPT usage, not Frontier-grade deployment.
+- **Workspace Agents: credit pricing live May 6. Zero independent deployment evidence with outcomes.** Research preview remains the description; no named practitioner has published specific workflow results from Workspace Agents. EKM exclusion (cycle 113) continues to block most security-conscious regulated enterprises. [Cycle 114 check — Level 3 gap finding confirmed: 18+ consecutive cycles with zero named practitioner publishing business (non-coding) agent workflow results at a named company.]
+- **Frontier: 18th+ consecutive cycle with zero independent named deployment evidence.** Named logos confirmed (HP, Oracle, State Farm, Uber, BBVA, Cisco, T-Mobile) — all partnership announcements. Quantified case studies remain anonymous ("major manufacturer: production optimization 6 weeks → 1 day"; "large energy producer: +$1B revenue"). No named practitioner at any named company has independently published Frontier workflow results. Source: [Futurum Group](https://futurumgroup.com/insights/openai-frontier-close-the-enterprise-ai-opportunity-gap-or-widen-it/) — [analyst, skeptical]. Evidence level: Level 0 for deployment outcomes; Level 1 for partnership announcements.
 
 **Cycle 113 updates (April 28, 2026):**
 - **GPT-5.5 hallucination rate — structural contradiction with agentic positioning (Level 2).** Artificial Analysis AA-Omniscience eval: GPT-5.5 scores **86% hallucination rate** vs Claude Opus 4.7 at **36%** — a 2.5x gap. Gemini 3.1 Pro: 50%. The "knows more, lies more" pattern — increased knowledge base correlates with confident false answers. GPT-5.5 leads Terminal-Bench 2.0 (82.7%) but this applies to executable, verifiable code tasks only, not document synthesis, email analysis, or knowledge work. Unsuitable for medical, legal, or regulatory agentic applications. Cost note: GPT-5.5 medium tier matches Opus 4.7 maximum performance at ~25% of inference cost — potential cost advantage for code-only use cases. Sources: [DEV Community analysis](https://dev.to/kowshik_jallipalli_a7e0a5/gpt-55-just-dropped-heres-what-the-benchmarks-are-hiding-3ich) — [practitioner analysis]; [HandyAI Substack](https://handyai.substack.com/p/model-drop-gpt-55) — [practitioner analysis]; Artificial Analysis AA-Omniscience eval — [independent benchmark]

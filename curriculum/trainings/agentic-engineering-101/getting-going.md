@@ -70,7 +70,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 - **Prep timing:** prework 30 min; optional Cherny video 30 min; optional multi-session reference 10 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: Nerd surfaces the agentic specificity — *"the loop you just ran was orient → fix → compound → close on YOUR repo, with a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** trainer demos a wizard-level move on a volunteer's codebase → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (compound-and-close) compound `./CLAUDE.local.md` from session evidence + ticket close-out via connector. No separate module-level Debrief.
-- **Delivery architecture** (strategy doc §"Delivery architecture"): content folder unzipped by student at prework; all compounding artifacts land in the student's real repo — session compounds to `./CLAUDE.local.md` (personal, gitignored), team rules to `./CLAUDE.md` via PR, `.claude/memory/` from M4 (gitignored by default; team-kit override respected). No training-dir state. See `reference/claude-code-for-engineers.md § 1` for the four-layer hierarchy.
+- **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
@@ -92,7 +92,7 @@ Optional. Skipping either piece does not break Module 2. Both sit in the gap bet
 - Student's repo (chosen in prework) — sponsor-stated example repos by team type if a student arrives without one
 - Bug Claude surfaced in prework — sponsor-stated bug-tracking convention informs how the prework prompt phrases the surfacing
 - Sponsor-stated ticket tracker (Linear / Jira / GitHub Issues) — MCP install per tracker; tenant-admin fallback path documented in `reference/mcp-and-connectors.md`
-- Repo change mid-training is a supported replay path, not a failure mode
+- Repo change mid-training is a supported replay path — model in `training-architecture.md` §Replay
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Runs `/context` on a working session and reads the unread-slice number** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move (not a feature tour) within the first ten minutes.

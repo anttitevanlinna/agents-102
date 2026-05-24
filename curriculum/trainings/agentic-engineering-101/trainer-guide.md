@@ -112,7 +112,7 @@ Prework installs a curated bundle of skills. One is called `security-tools`. M3'
 
 - Every link got trusted: the tarball link, the SKILL.md you didn't read, the Bash authorization Claude asked for.
 - One layer up from this module's exercise: the same access-surface and authorization logic, applied to AI tooling rather than features.
-- This is exactly why curated > random; why "fork + read LICENSE + vet + adapt" beats "install from a Discord link"; why M3's two security skills are curated for a reason.
+- This is exactly why curated > random; why "fork + read LICENSE + vet + adapt" beats "install from a Discord link"; why `access-control-analysis` and `stride` were vetted before they reached you, and `security-tools` is what skipping that step looks like.
 
 Back to the STRIDE pass.
 
@@ -252,6 +252,8 @@ After delivery, capture friction where editors will see it. Cohort-specific note
 If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture mechanism is being designed, see `pre-cohort-todos.md`. Until it lands, don't rely on memory.
 
 <!-- maintainer -->
+
+**Delivery architecture canonical home:** training-architecture.md (§Platform, §Material distribution, §Working directory model, §Session boundaries, §Rule files, §Skills, §Prework, §Replay, §Local-only work). This guide's body restates the delivery contract for in-room prep by design; the architecture doc is the source of truth when the two diverge.
 
 **Quality:** draft 2026-04-30
 - draft 2026-04-30 (training-specific trainer guide; delivery material folded in, not yet compendium-audited or sim-passed)

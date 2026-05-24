@@ -117,13 +117,14 @@ That's the most common case. Pick the one you'd trial for this cohort, note that
 
 <!-- maintainer -->
 
+**Delivery architecture canonical home:** training-architecture.md (§Material distribution, §Prework). The content tarball + real-repo split and the agentic prework flow live there; this block carries only what's unique to the sponsor-stage pre-engagement contract.
+
 **Maintainer notes:**
 - **Audience:** the sponsor CTO (or equivalent buyer) who signed the cohort for their team.
 - **Runtime:** 15–20 minutes.
 - **Purpose:** answer the one question the training needs settled before Day 1: where does durable engineering knowledge live in this company so an agent can read it next time?
-- **Fate of the answers:** populated into `content/pre-engagement-contract.md` in the cohort's content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes the sponsor's answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file.
-- This is the asset sent to the sponsor after contract signature, weeks before Day 1. It's a pre-engagement deliverable, not a training artifact.
-- Ship alongside the signed contract and the cohort prework email. Sponsor fills in 15–20 minutes; ops converts the five answers into `content/pre-engagement-contract.md` in the content bundle.
+- **Fate of the answers:** ops converts the five answers into `content/pre-engagement-contract.md` in the cohort content bundle. In classroom delivery, the trainer uses it at the right blocker in each module and substitutes the sponsor's answer into the student's workflow. In optional self-study, the Agentic Nerd may read the same file.
+- This is the asset sent to the sponsor after contract signature, weeks before Day 1, alongside the signed contract and the cohort prework email. It's a pre-engagement deliverable, not a training artifact.
 - **Asset status:** v0 — sponsor-facing, not yet sent to a real sponsor. First cohort delivery is the first test. Iterate from sponsor feedback.
 - **Tone check:** sponsor is a builder CTO (reads Willison, uses Claude Code daily). Direct, short, no consultant padding. The Rory beats ("Half the CTOs who fill this worksheet discover…") earn their keep because the sponsor wants a transformation artifact, not a training-supplier intake form. If a real sponsor finds any line reads like sales boilerplate, trim.
 - **Override handling** — classroom delivery keeps this trainer-owned: the trainer writes student overrides to a per-cohort `content/overrides.md` or appends to the contract with attribution, then collects these for the close memo. Optional self-study may automate the same move later, but Agentic Nerd stays invisible to classroom cohorts.

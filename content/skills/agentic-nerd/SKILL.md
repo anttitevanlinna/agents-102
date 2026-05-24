@@ -76,7 +76,7 @@ If the student invokes `/agentic-nerd reset`, delete the config and start fresh.
 
 ## First session — setup
 
-The student has just invoked `/agentic-nerd` for the first time. They've already done prework (repo picked, content folder unzipped + added to their Builder session via `/add-dir`, two curated skills installed, one bug surfaced). Don't re-explain prework; verify state and move to M1.
+The student has just invoked `/agentic-nerd` for the first time. They've already done prework (repo picked, content folder unzipped + added to their Builder session via `/add-dir`, three curated skills installed, one bug surfaced). Don't re-explain prework; verify state and move to M1.
 
 1. **Greet briefly.** *"I'm your running companion for Agents 102 Agentic Engineering 101. Let's check your setup and get to Module 1."*
 

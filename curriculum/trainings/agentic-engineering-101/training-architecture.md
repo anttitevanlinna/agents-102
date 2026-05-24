@@ -60,12 +60,13 @@ The **team rules file** (`./CLAUDE.md`, PR-reviewed) changes only when a rule is
 
 ## Skills
 
-AE101 ships two curated skills in the content tarball:
+AE101 ships three curated skills in the content tarball (build whitelist `SKILLS=()` in `scripts/build-ae101-content-tarball.sh`):
 
 - `access-control-analysis`, used at M3 to analyze the engineer's own codebase access surface.
 - `stride`, used at M3 for STRIDE threat-modelling on the same codebase.
+- `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in `trainer-guide.md` §"M3, the security-tools surprise".
 
-Both install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill.
+All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill.
 
 The optional `agentic-nerd` host skill (self-study facilitator) installs only when a cohort runs self-study or hybrid. Cohort-default delivery does not install it.
 

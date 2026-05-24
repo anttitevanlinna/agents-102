@@ -46,9 +46,9 @@ Looking forward to it.
 - judges @ab4b0bd: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
-**Send timing:** 5 working days before Day 1. From the trainer (named human, not a shared mailbox). The job: get every laptop install-ready before the student opens prework. Prework runs solo; the trainer cannot rescue install issues during prework, and a half-installed Claude Code is the single biggest source of asynchronous prework abandonment.
+**Delivery architecture canonical home:** training-architecture.md (§Platform, §Material distribution, §Prework). Prework runtime, step breakdown, and skill-install mechanics live in prework.md's maintainer block. Don't restate either here.
 
-**Prework runtime:** about 30 minutes.
+**Send timing:** 5 working days before Day 1. Earlier and the engineer forgets; later and IT can't help. From the trainer (named human, not a shared mailbox). The job: get every laptop install-ready before the student opens prework. Prework runs solo; the trainer cannot rescue install issues during prework, and a half-installed Claude Code is the single biggest source of asynchronous prework abandonment.
 
 **Pairing:** this email pairs with prework Step 2 (open a Claude Code session — first beat where install failure surfaces, with a safety-net note in body). Belt and braces.
 
@@ -56,7 +56,5 @@ Looking forward to it.
 - Replace bracketed placeholders (`[Day 1 date and time]`, `[or admin name]`, `[X working days before Day 1]`, `[Trainer name]`).
 - If the cohort runs on org-managed Claude through a custom auth path (Bedrock, Vertex, internal proxy), swap "claude.ai" + "claude.com/code" for the customer's actual install instructions in §1 and §2. The structure stays the same; the URLs flex.
 - If the customer has a designated L&D contact for tooling escalation, add their name + channel below "Help" (don't replace the trainer-as-point-of-contact line; the trainer wants the signal).
-
-**When to send:** 5 working days before Day 1. Earlier and the engineer forgets; later and IT can't help.
 
 **Why this email exists:** the JTBD-zero (install + auth + license + network) lives nowhere else in the curriculum. Prework Step 2 ("Open a Claude Code session in that repo") is the inline safety net for the student who skipped this email — its body line names install as the prerequisite to going further. This email is the proactive shot. Both fire because the silent-failure cliff (engineer arrives at prework with broken Claude Code, no trainer rescue path) is the single biggest first-cohort risk.

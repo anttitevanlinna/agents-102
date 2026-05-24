@@ -76,7 +76,7 @@ Captures generation + eval infrastructure that lives outside the agents-102 git 
   - hooks/ (personal hook scripts)
 - \`project-claude/\` — agents-102 project-level (\`agents-102/.claude/\`, gitignored):
   - hooks/ (eval-class-router.sh, banned-phrase-grep.sh, prompt-edit-gate.sh, etc.)
-  - rules/ (content-rules.md, research-rules.md — mandatory subagent injection)
+  - rules/ (content-rules.md — mandatory subagent injection; research-rules.md lives in continuous-research/ — tracked in repo)
   - agents/ (project-specific agent definitions)
   - lints/ (additional lint scripts)
   - agent-memory/ (agent-managed memory)

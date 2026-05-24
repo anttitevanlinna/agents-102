@@ -1,6 +1,6 @@
 # Content style guide — "Deploying Agents" articles
 
-Article-surface conventions (byline, structure, length, chasm-crossing rule). Compendium-routed rules apply: research claims → `.claude/rules/research-rules.md` + `memory/check_research_claims.md`; voice + banned words → `memory/check_writing.md` + `memory/check_sales_copy.md`; article-as-CTO-targeted-copy → `memory/check_sales_copy.md`. See `.claude/rules/content-rules.md` for the full surface-to-compendium router.
+Article-surface conventions (byline, structure, length, chasm-crossing rule). Compendium-routed rules apply: research claims → `continuous-research/research-rules.md` + `memory/check_research_claims.md`; voice + banned words → `memory/check_writing.md` + `memory/check_sales_copy.md`; article-as-CTO-targeted-copy → `memory/check_sales_copy.md`. See `.claude/rules/content-rules.md` for the full surface-to-compendium router.
 
 ## Byline
 
@@ -45,7 +45,7 @@ This is the identity. Not ghostwritten. Not "AI-assisted." The AI wrote it, a hu
 
 ## Source verification
 
-Evidence ladder + source-type labels + freshness rules: see `.claude/rules/research-rules.md` (canonical). For article-specific research-claim checks at ship-time: `memory/check_research_claims.md`.
+Evidence ladder + source-type labels + freshness rules: see `continuous-research/research-rules.md` (canonical). For article-specific research-claim checks at ship-time: `memory/check_research_claims.md`.
 
 ## Voice and banned words
 

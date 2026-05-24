@@ -32,7 +32,7 @@ Accept `$ARGUMENTS[0]` as the file path. If missing, ask for one. Do not run on 
 Launch all four persona agents in a single message (parallel tool calls). Each gets:
 
 - The target file path
-- A copy of `.claude/rules/research-rules.md` prepended to the prompt
+- A copy of `continuous-research/research-rules.md` prepended to the prompt
 - Explicit instruction: return JSON per the agent's output format, no prose
 
 Agents:

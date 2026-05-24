@@ -402,7 +402,7 @@ The CTO question we keep being asked is *"which platform?"* The honest answer is
 
 It also closes the loop on three existing patterns: **competence-first** (stance is the deepest layer of competence), **conditions-creator** (the conditions are the prosthetics), **absorption-bottleneck** (the bottleneck is partly dispositional, not just procedural).
 
-**Hold loose.** The five stance-axes are a hypothesis, not a finding. The first OODA cycle's job is to test the convergence, not confirm it. Six practitioners ≠ Level 3; threshold is 10–20. Actively search for counter-evidence (per confirmation-bias guard in `.claude/rules/research-rules.md`).
+**Hold loose.** The five stance-axes are a hypothesis, not a finding. The first OODA cycle's job is to test the convergence, not confirm it. Six practitioners ≠ Level 3; threshold is 10–20. Actively search for counter-evidence (per confirmation-bias guard in `continuous-research/research-rules.md`).
 
 **Date added:** 2026-05-13
 **Source:** User signal — Antti asking about practitioner beliefs/principles framed as disposition, not technique (see `user-signals/questions/2026-05-13-agentic-coding-practitioner-beliefs.md`).

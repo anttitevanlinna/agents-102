@@ -106,7 +106,7 @@ The article moment is when segment 2 starts confirming what segment 1 has been s
 
 ## Research Quality Protocol
 
-Research rules (evidence ladder L0–L4, source-type labels, freshness, zombie-stat guard, three admission gates) live at **`.claude/rules/research-rules.md`** — canonical. Main-thread work routes there via `memory/check_research_claims.md`; subagents read the rules file prepended to their prompt.
+Research rules (evidence ladder L0–L4, source-type labels, freshness, zombie-stat guard, three admission gates) live at **`continuous-research/research-rules.md`** — canonical, auto-loaded when working under `continuous-research/`. Main-thread work routes there via `memory/check_research_claims.md`; subagents read the rules file prepended to their prompt.
 
 The strategic frame — the *why* behind the rules — stays here:
 

@@ -40,7 +40,7 @@ Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `evals/`, `scripts/`
 ## Subagent rule injection
 
 Subagents don't read CLAUDE.md. Prepend the canonical rule file to every launch:
-- Research → `.claude/rules/research-rules.md`
+- Research → `continuous-research/research-rules.md`
 - Content → `.claude/rules/content-rules.md` (routes to `memory/check_*.md`)
 
 ## Orchestrator pattern

@@ -24,3 +24,18 @@ wait_for_turn() {
     fi
   done
 }
+
+is_slash_only() {
+  # Pure slash command (no args): /context, /clear, /memory, etc.
+  # These render client-side — no LLM call, no Stop hook, no sentinel.
+  [[ "$1" =~ ^/[a-zA-Z][a-zA-Z0-9-]*$ ]]
+}
+
+fake_sentinel_after_render() {
+  # Bridge a slash-only turn into the sentinel sequence:
+  # sleep for the client render, then touch the expected turn-N.done
+  # so the counter stays consistent for the rest of the run.
+  local sentinel_dir="$1" seq="$2" sleep_s="${3:-3}"
+  sleep "$sleep_s"
+  touch "$sentinel_dir/turn-$seq.done"
+}

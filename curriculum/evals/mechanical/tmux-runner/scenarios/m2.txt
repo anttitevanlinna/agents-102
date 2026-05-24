@@ -1,0 +1,47 @@
+# M2 (AE101) — Plan mode, done right.
+# Driven by run-m2.sh. Single session in lemmings repo, starting from
+# after M1's fix (caller positions cwd; m1-state.json's m1_ending_sha is
+# the canonical hand-off when chained).
+#
+# Multi-file task (mirrors the M2 dry-run commit 00ded59): add bash
+# geometry fix + Levels 2 & 3 + test scaffolding. Real backlog work,
+# touches src/main.js, src/terrain.js, src/lemming.js, tests/levels.test.js,
+# and possibly src/ui.js / index.html.
+#
+# AskUserQuestion guards:
+#  - push-back-on-the-plan-1 normally runs inside plan mode (Shift+Tab),
+#    but the headless tmux runner can't engage plan mode — Claude defaults
+#    to auto-mode and the prompt's "Write the plan to a plan file" is
+#    interpreted ad hoc. The tail forbids AskUserQuestion and pins the
+#    plan location to ~/.claude/plans/<descriptive-slug>.md so the runner
+#    can locate the artifact via plan-dir snapshot diff.
+#  - push-back-on-the-plan-2 loops "three questions at a time" by design;
+#    the tail tells Claude to walk all branches in one pass with prose
+#    recommendations and wait for the literal "lock it in" line.
+#  - extract-the-task-shaping-rule-1 ends asking which rule to rewrite/
+#    reject; the tail keeps all proposed rules as-is.
+#  - extract-the-task-shaping-rule-2 negotiates a save path interactively;
+#    the tail tells Claude to pick its own recommendation and save.
+#
+# Save-gate (check_platform_and_boundaries.md § 16a):
+#  - push-back-on-the-plan-2 explicitly says "Don't touch the plan file
+#    until I say 'lock it in.'" The literal line that follows is the
+#    approval that triggers the in-place plan edit.
+
+push-back-on-the-plan-1 I'm doing a headless dry-run, please don't call AskUserQuestion. For any ambiguity, state your assumption in prose and proceed under it. Write the plan to ~/.claude/plans/m2-add-levels-2-3-<adjective>-<animal>.md (mkdir -p the dir if needed; pick your own adjective/animal). My task: add Levels 2 and 3 to lemmings. Right now there's only one level hardcoded in src/main.js (the geometry comes from src/terrain.js's buildTerrain). I want the geometry per-level (so each level has its own walls, gaps, spawn points), the loadLevel path to advance from level 1 → 2 → 3 on win, and the HUD to show the current level. While we're at it, the bash skill has an off-by-one I want covered with a test in a new tests/levels.test.js — bash on a landmark at the rightmost column escapes the playfield instead of stopping at the wall. Touches src/main.js, src/terrain.js, src/lemming.js, tests/levels.test.js, src/ui.js, index.html. About 30-60 min agent work.
+
+push-back-on-the-plan-2 I'm doing a headless dry-run, please don't call AskUserQuestion and don't ask me three-at-a-time interactively. Walk down every unresolved branch in one pass (dependencies, decisions, side-effects). For each branch, state your recommended answer in prose and proceed under that assumption. Don't touch the plan file yet — wait for me to say 'lock it in' as a separate message.
+
+* lock it in
+
+push-back-on-the-plan-3
+
+extract-the-task-shaping-rule-1 I'm doing a headless dry-run, please don't call AskUserQuestion and don't pause for rewrite/reject. Propose the 3-5 rules in prose and continue — assume I'm keeping all of them as proposed.
+
+extract-the-task-shaping-rule-2 I'm doing a headless dry-run, please don't call AskUserQuestion. Propose two-three plausible paths with their loading models, pick your recommendation, and write the rules to the chosen path without waiting for confirmation. If a file already exists at the path, integrate rather than overwrite. After saving, echo the saved path on its own line as `SAVED-PATH: <abs path>` so the run can capture it.
+
+extract-the-task-shaping-rule-3
+
+push-back-on-the-plan-4
+
+ae101-m2-integrate-branch

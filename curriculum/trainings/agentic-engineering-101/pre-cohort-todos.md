@@ -34,8 +34,6 @@ Landed 2026-05-22: M5 plan.md disambiguation (`diagnose-and-resend.md:79` *"not 
 
 ### Tactical fixes ready for an agent pass
 
-- **Cohort-validate the `medium` recommendation on M2 + M3.** Two modules carry a medium thinking-effort recommendation: M2 (`plan-mode-done-right.md:3`, recommended for the slot) and M3 (`earn-the-trust.md:3`, opt-in if progress feels sluggish). Neither has been run on medium by a cohort. After the next AE101 cohort: confirm medium holds on M2 (lock it) or fall back to `high` and remove the override; same call on M3's opt-in (keep, remove, or sharpen the trigger language). Source: [M2 raw](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M2.md).
-
 - **Branch hygiene across course renames (M4-surfaced, applies broadly).** Learner reported (M4 12:21Z) that when a course renames a project mid-flow, existing branches carry stale framing. Open question: do we want a `git checkout -b m<N>-<slug>` reset step at module-start to immunize against rename drift? Or accept that branch names carry historical residue and that's fine? Decision item, not auto-applicable. Source: [M4 raw, 12:21Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M4.md).
 
 - **M5, `plan.md` disambiguation in Phase 4.** Landed 2026-05-22 as a one-sentence parenthetical at `exercises/diagnose-and-resend.md:79`. Pre-cohort: confirm the disambiguation reads clean on a live walk-through.
@@ -44,23 +42,15 @@ Landed 2026-05-22: M5 plan.md disambiguation (`diagnose-and-resend.md:79` *"not 
 
 ### Site / renderer (not curriculum body)
 
-- **M3, two-window section side-by-side layout.** Module already names two windows + concurrent flow textually (`exercises/open-the-side-quest.md:25-27`), but the rendered page doesn't visually reinforce side-by-side execution. Renderer change: when a module contains two `**Session**` widgets in sequence with different names, render their following exercise blocks as a two-column layout. Touches `site/layouts/curriculum.js` + `site/layouts/curriculum.css`. Source: [M3 raw, 11:54Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M3.md).
+- **M3, two-window section side-by-side layout (first-cohort observation, not pre-cohort surgery).** Module names two windows + concurrent flow textually (`exercises/open-the-side-quest.md:25-27`). Renderer change deferred, textual framing carries the meaning; first-cohort signal will tell whether the room misses the visual reinforcement. If reinstated post-cohort: when a module contains two `**Session**` widgets in sequence with different names, render their following exercise blocks as a two-column layout. Touches `site/layouts/curriculum.js` + `site/layouts/curriculum.css`. Source: [M3 raw, 11:54Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M3.md).
 
 - **M6, italic font readability.** Learner reported (M6 10:05Z) *"italic font is hard to read at the moment. Needs size bump or other treatment."* CSS change in `site/layouts/curriculum.css`, bump italic size or restyle (heavier weight, different colour, underline). Touches all italic prose, not just M6. Source: [M6 raw, 10:05Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md).
-
-### Skill maintainer routing (not curriculum)
-
-- **stride skill, Phase 1 surface-map handoff to subagent.** `content/skills/stride/SKILL.md` Phase 1 doesn't actually deliver the surface-map artefact to the subagent it dispatches. Learner workaround (M3 11:39Z): read the map and skill themselves, then ran the pass manually. Route to the stride skill maintainer; not a curriculum fix. Source: [M3 raw, 11:39Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M3.md).
 
 ### Structural design conversations (separate sessions, not patches)
 
 - **Three-layer context architecture (company / team / personal, all git-tracked).** Learner's verbatim (M6 10:39Z): *"No professional copies `CLAUDE.local.md` files. The real move: push to repo (git-tracked); for skills, symlink personal `~/.claude/skills` to the repo's `/skills` folder so always-on rules load automatically wherever you work. Local-only files are not a real option for professionals, always git, always."* Current architecture (`training-architecture.md:53-69`) carries team `CLAUDE.md` + personal `CLAUDE.local.md` (gitignored) + user-global `~/.claude/CLAUDE.md`, no company layer, personal layer is gitignored. Open question for the design conversation: is "company" a third layer for AE101's audience, or is the team layer doing both jobs already? The "memory" → "context" rename rides along with this decision. **Scheduled as a separate design session, not a punchlist item to fix inline.** Sources: [M6 raw, 10:39Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md) + [M4 raw, 12:39Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M4.md) + [summary, "headline disagreements" section](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/summary.md).
 
 - **M6 Monday-close reframe vs as-is.** Learner critique (M6 10:47Z): the *"Monday, pick a task your team is sitting on, send it off packaged"* close at `spot-gaps-build-the-loop.md:62` is wrong-shape; should lead with verification primitives. The atomic-primitives recognition pass landed in-session partially addresses the "verification primitives" gap. First-cohort observation item: after the atomic-primitives change runs through one cohort, re-evaluate whether the Monday close still reads wrong-shape. Source: [M6 raw, 10:47Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md).
-
-### Surprise-skill rick-roll status
-
-- **`content/skills/security-tools/` shipped 2026-05-21.** SKILL.md + check.sh present; build script wires the install through prework; M3 invokes via `threat-model-with-stride-1` prompt; exercise body carries the supply-chain-vector lesson framing. **Trainer-guide framing missing**, punchlist item (d) called for an explicit post-stunt supply-chain lesson section in `trainer-guide.md`. Also unresolved: punchlist item (e), decision whether the skill survives M3 (extracted as a lesson exercise) or carries forward.
 
 ### From 2026-05-21 fact-check on quality-arc + composition build
 
@@ -74,9 +64,25 @@ Built today in response to the now-closed cohort-run items on quality depth-bala
 
 - **Methodology lesson landed at compendium + memory layer.** `check_research_claims.md §1` carries a new sub-clause "Fan-digest source-laundering, open the page before labelling" (added 2026-05-21). Matching compounded entry at `memory/compounded/2026-05-21-research_claims-fan-digest-source-laundering.md`. Not a pre-cohort item; a research-system-process item, captured here for traceability.
 
-## From 2026-05-24 tmux-runner mechanical dry-runs, M3 + M4
+## From 2026-05-24 tmux-runner mechanical dry-runs, M1–M4
 
-Source: M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/mechanical/tmux-runner/`) against the lemmings SUT. M3 ran twice (security-only + full main+quality parallel). M4 ran once with the blocker-deadlock task. M5+M6 entries below are scout-derived from an Explore-agent survey, not from actual runs; flagged as hypotheses to verify when those modules are mechanically run.
+Source: M1 + M2 + M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/mechanical/tmux-runner/`) against the lemmings SUT. M1 ran on `bdd0919` (initial commit, tally bug); M2 ran on `f771484` (M1 endpoint, with M1's CLAUDE.local.md in place). M3 ran twice (security-only + full main+quality parallel). M4 ran once with the blocker-deadlock task. M5+M6 entries below are scout-derived from an Explore-agent survey, not from actual runs; flagged as hypotheses to verify when those modules are mechanically run.
+
+### Confirmed from M1 run
+
+- **`fix-tests-first-3` is a save-gate.** Prompt body ends with *"Show me the diff before you commit."* In the 2026-05-24 mechanical run, Claude showed the diff and then asked *"Want them as one commit (the bug + its proper fix) or two? And then PR via gh, or hold?"*, without an approval literal-text line the commit never lands and the assertion *"new commit since baseline"* falsifies. Same family as the M3 ADR / M4 Huryn-additions silent-drops. Pre-cohort: either tighten the prompt to be more imperative (*"Show me the diff, then commit it as one commit, no PR."*) or accept that the interactive moment is the pedagogy and leave the dry-run guarded by a literal-line approval. The runner's `scenarios/m1.txt` already carries the approval line; this entry is the curriculum-side note.
+
+- **`compound-and-close-2` and `-3` need a connector to function.** Both prompts read or update an external tracker via MCP connector. Headless dry-runs without a configured tracker can't exercise them; scenarios/m1.txt scopes them out of the headless battery and treats `compound-and-close-4` as the closer. Pre-cohort: when a cohort tenant blocks MCP install, the `mcp-and-connectors.md` reference's fallback path becomes load-bearing, verify it still resolves at delivery date. (Not a curriculum-body fix; an operational pre-flight.)
+
+### Confirmed from M2 run
+
+- **`push-back-on-the-plan-1` calls `AskUserQuestion` when run without explicit plan-mode engagement.** The prompt's frontmatter declares `permission-mode: plan` but the headless tmux runner has no way to engage plan mode (no Shift+Tab in non-interactive sessions). In the 2026-05-24 mechanical run, Claude defaulted to the new structured-question UI (*"Skill budgets / Bash geometry / Submit"* checkboxes) for two scoped ambiguities. Without an explicit *"don't call AskUserQuestion"* tail the runner hangs forever. Pre-cohort: real cohorts do engage plan mode, so this is not a curriculum-body issue, the trainer's *"Shift+Tab until the status bar shows **plan**"* line at exercise body line 18 stays load-bearing. Mechanical-runner-only workaround in `scenarios/m2.txt`.
+
+- **`push-back-on-the-plan-2` is a save-gate.** Prompt body explicitly says *"Don't touch the plan file until I say 'lock it in.'"* This is by design (separates the second-pass walk-down from the plan edit). The `* lock it in` literal-text line on the next scenario line is required for the in-place plan edit to fire. Same shape as the M3 ADR approval.
+
+- **`extract-the-task-shaping-rule-2` save location is unconstrained.** Prompt invites Claude to pick a path (auto-load vs lazy-load tier). Mechanical-runner workaround: tail asks Claude to echo `SAVED-PATH: <abs path>` on its own line so the assertion can locate the file. In the 2026-05-24 run Claude picked `~/.claude/projects/<encoded-cwd>/memory/task-shaping.md` (cwd-scoped agent-memory dir, NOT auto-loaded, requires `@import` from an auto-loaded CLAUDE.md to fire in future sessions). The prompt body explicitly suggests the `@import` move at exercise line 27, but the dry-run skipped that follow-up. Pre-cohort: trainer push if a cohort student picks a non-auto-load path without wiring the `@import`.
+
+- **`ae101-m2-integrate-branch` fires the auto-load question prompt (`push-back-on-the-plan-4`) right before it.** Prompt `-4` is intentionally terse / lowercase / no end-punctuation (the maintainer block calls this register-by-design). Mechanical run handled it fine; flagged here as a known stylistic outlier so future audit-class judges treat it as accepted-by-design.
 
 ### Confirmed from M4 run
 
@@ -87,8 +93,6 @@ Source: M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/mechanical/
 - **`.claude/memory/` gitignore step is a forcing function mechanical runs can skip silently.** Exercise body line 56: *"If `.claude/memory/` is new to your repo, ask Claude to add it to `.gitignore` before any writes."* The mechanical run's lazy-student tail for `-3` told Claude to persist directly without the AskUserQuestion loop; Claude ended up writing one fill to `CLAUDE.local.md` (already gitignored), so the gitignore question never arose. The trap is real for any flow that does write to `.claude/memory/`, `ae101-m4-commit-starting-point` runs `git add -A` and would track the writes. Pre-cohort: confirm interactive flow consistently triggers the gitignore step before any memory write.
 
 ### Confirmed from M3 runs
-
-- **`threat-model-with-stride-3` ADR-write save-gate produces silent drops in mechanical runs.** Prompt body says *"Show me the ADR before saving"*; agent shows path + draft, asks *"Save to <path>?"*. Both 2026-05-22 mechanical runs hit this; both were unblocked by an inline `* Yep. Just give it to me and save like you want it.` literal-text line in the scenario file. The 2026-05-22 body edit at `exercises/threat-model-with-stride.md` (*Where did the ADR actually land?* beat) addresses the deeper cwd-drift but leaves the save-gate itself. Decision item: keep the gate as-is (pedagogically useful for interactive students; document the *yep* approval as the mechanical-battery convention) OR tighten the prompt to imperative (*"Save the ADR to docs/adr/, then show me the diff"*) matching `walk-and-send-off-1`'s shape. Same shape as M4's `-4` verb-mismatch above.
 
 ### Hypotheses from M5/M6 scout (not from running)
 
@@ -106,15 +110,7 @@ Source: M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/mechanical/
 
 Four-bucket sweep (modules + prework + onboarding / exercises / lectures + reference + supplementary / prompt-registry) routed the following items out of their host files. Module / exercise / lecture maintainer blocks are now pointer-only ("Pre-cohort open items: pre-cohort-todos.md"); the punchlist below is the canonical home.
 
-- **Prework structural reshape, three sim-surfaced items (2026-04-27, structural call, decided together).** (a) Fast-operator + opinionated-senior flagged: collapse Step 0+2 into one move (5/6 mood scores there); demote 3.a to a one-line footnote for cohort default; split Step 4 prompt at the seam between mechanical install and interactive bug-screen. (b) Mid-competent: Windows path/shell assumptions (`~/Downloads/`, `tar xzf`, `mkdir -p`) unstated; acknowledge Git Bash once. (c) Step 4's 12-min budget tight when student hasn't pre-thought a candidate bug; consider rebadging as "mechanical setup + bring-a-bug homework." Held, not for autonomous fix. Source: swept from `prework.md:84-86`.
-
-- **Prework self-study install-blocker fallback, ops decision.** Classroom path carries a one-line help prompt in the cohort Slack; self-study needs an equivalent fallback. Currently no agreed move when self-study student hits install friction. Decide before first self-study cohort opens. Source: swept from `prework.md:95`.
-
 - **Sponsor-prework post-first-cohort companion: cohort-close memo template.** ("what your engineers said about the four homes"), companion asset to ship after Cohort 1 informs the shape. Sponsor-facing close-out artifact, not the trainer-internal close. Author window opens after first cohort runs. Source: swept from `sponsor-prework.md:132`.
-
-- **M3 Windows/WSL scratch-path conditional.** `map-the-access-surface.md` scratch-path move picks `$TMPDIR` / `/tmp` / equivalent; Windows-native (no WSL) uses `%TEMP%` with different path conventions. If a cohort lands without WSL, revisit the scratch-path beat. Source: swept from `map-the-access-surface.md:112`.
-
-- **M2 worked-example beat, first-cohort observation.** `when-a-plan-is-good.md` lecture: consider a 30-second worked example between *"three things a good plan has"* and *"three pressures"*, show a real plan snippet and point at the file list / verification / assumption. Current draft assumes the engineer can picture it; adding an example adds ~2 min runtime but may sharpen the beat for less-experienced students. Decide after first cohort sim. Source: swept from `when-a-plan-is-good.md:72-73`.
 
 - **`git worktree` mental-model framing, Cohort 1 reassess.** Does AE101 want `git worktree` as the default multi-session mental model, or as an advanced move taught only after students have landed the single-session loop? Current stance: optional homework (`reference/multi-session-git.md`), not a prerequisite. Reassess after Cohort 1 reports whether students hit the worktree wall before reading it. Source: swept from `reference/multi-session-git.md:100`.
 
